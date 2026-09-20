@@ -10,6 +10,7 @@ import '../../../styles/components/physio-content.css';
 import '../../../styles/components/physio-promax-hub.css';
 import '../../../styles/components/epidemiology-hub.css';
 import '../css/physio-shared.css';
+import '../css/basic-medical-mobile.css';
 import { renderMoACardHtml } from '../diagrams/moa-visualizer';
 import { renderBasicMedicalNav } from './basic-medical-nav';
 
@@ -159,6 +160,73 @@ export function renderCoCheBenhSinhView(): string {
               <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- MOBILE SPECIALTY PICKER TRIGGER (VISIBLE ON MOBILE ONLY) -->
+      <button class="bm-mobile-drawer-trigger" id="bmSystemPickerBtn" type="button" aria-label="Chọn chuyên khoa bệnh học">
+        <span><i class="fa-solid fa-microscope" style="color: var(--dsp-emerald, #10b981); margin-right: 6px;"></i> Danh mục 11 Chuyên Khoa Bệnh Học</span>
+        <span style="font-size: 0.8rem; color: var(--dsp-emerald, #10b981); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+          <span>Xem tất cả</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </button>
+
+      <!-- MOBILE BOTTOM SHEET DRAWER -->
+      <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
+      <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn chuyên khoa">
+        <div class="bm-drawer-header">
+          <h3 class="bm-drawer-title">
+            <i class="fa-solid fa-microscope" style="color: var(--dsp-emerald, #10b981);"></i>
+            <span>Chuyên Khoa Bệnh Học (11 Khoa)</span>
+          </h3>
+          <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
+        </div>
+        <div class="bm-drawer-body">
+          <a href="#patho-timmach-section" class="bm-drawer-item active">
+            <span><i class="fa-solid fa-heart-pulse" style="color:#f43f5e; margin-right:8px;"></i> 1. Tim mạch</span>
+            <span class="bm-drawer-item-badge">5</span>
+          </a>
+          <a href="#patho-hohap-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-lungs" style="color:#0284c7; margin-right:8px;"></i> 2. Hô hấp</span>
+            <span class="bm-drawer-item-badge">6</span>
+          </a>
+          <a href="#patho-than-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-filter" style="color:#10b981; margin-right:8px;"></i> 3. Thận - Tiết niệu</span>
+            <span class="bm-drawer-item-badge">7</span>
+          </a>
+          <a href="#patho-tieuhoa-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-bowl-food" style="color:#f59e0b; margin-right:8px;"></i> 4. Tiêu hóa - Gan mật</span>
+            <span class="bm-drawer-item-badge">14</span>
+          </a>
+          <a href="#patho-noitiet-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-dna" style="color:#8b5cf6; margin-right:8px;"></i> 5. Nội tiết - Chuyển hóa</span>
+            <span class="bm-drawer-item-badge">8</span>
+          </a>
+          <a href="#patho-thankinh-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-brain" style="color:#ec4899; margin-right:8px;"></i> 6. Thần kinh</span>
+            <span class="bm-drawer-item-badge">3</span>
+          </a>
+          <a href="#patho-nhiemtrung-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-virus-covid" style="color:#ef4444; margin-right:8px;"></i> 7. Truyền nhiễm</span>
+            <span class="bm-drawer-item-badge">11</span>
+          </a>
+          <a href="#patho-huyethoc-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-droplet" style="color:#e11d48; margin-right:8px;"></i> 8. Huyết học - Miễn dịch</span>
+            <span class="bm-drawer-item-badge">2</span>
+          </a>
+          <a href="#patho-capcuu-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-truck-medical" style="color:#ea580c; margin-right:8px;"></i> 9. Cấp cứu - Hồi sức</span>
+            <span class="bm-drawer-item-badge">3</span>
+          </a>
+          <a href="#patho-sanphukhoa-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-person-pregnant" style="color:#a855f7; margin-right:8px;"></i> 10. Sản phụ khoa</span>
+            <span class="bm-drawer-item-badge">1</span>
+          </a>
+          <a href="#patho-nhikhoa-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-child-reaching" style="color:#06b6d4; margin-right:8px;"></i> 11. Nhi khoa</span>
+            <span class="bm-drawer-item-badge">8</span>
+          </a>
         </div>
       </div>
 

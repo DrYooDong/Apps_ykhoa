@@ -2,9 +2,9 @@
   "meta": {
     "ten": "Kho tri thức bệnh học lâm sàng — Master Diseases Database (33 Bệnh lý)",
     "phienBan": 4,
-    "capNhat": "2026-09-20T02:35:33.409Z",
+    "capNhat": "2026-09-20T05:30:21.670Z",
     "symptomsSource": "clinical-rules-symptoms.json",
-    "totalDiseases": 40
+    "totalDiseases": 14
   },
   "benh": [
     {
@@ -2889,7 +2889,7 @@
     },
     {
       "id": "sot_xuat_huyet_dengue",
-      "ten": "Sốt xuất huyết Dengue (Bao gồm Dengue có dấu hiệu cảnh báo & Sốc Dengue)",
+      "ten": "Sốt xuất huyết Dengue",
       "icd": "A97",
       "nhom": "Truyền nhiễm",
       "baoDong": true,
@@ -3156,11 +3156,11 @@
     {
       "id": "thuy_dau",
       "ten": "Thủy đậu (Varicella / Chickenpox)",
-      "icd": "B01",
+      "icd": "B01.9",
       "nhom": "Truyền nhiễm",
       "baoDong": true,
-      "ghiChuBaoDong": "Cảnh báo nguy cơ bội nhiễm vi khuẩn hoại tử da (GAS, S. aureus), Viêm phổi do VZV, Viêm não hoặc Thủy đậu sơ sinh/bẩm sinh đe dọa tính mạng",
-      "tomTat": "Bệnh truyền nhiễm cấp tính do Varicella-Zoster Virus (VZV) lây qua đường hô hấp và tiếp xúc trực tiếp. Đặc trưng bởi sốt nhẹ và phát ban mụn nước bóng mỏng nổi thành từng đợt đa lứa tuổi toàn thân.",
+      "ghiChuBaoDong": "Cảnh báo nguy cơ Bội nhiễm vi khuẩn da nặng (GAS/Tụ cầu vàng, Viêm gân cơ hoại tử, STSS), Viêm phổi VZV ở người lớn/thai phụ, Viêm não và Thủy đậu sơ sinh quanh sinh.",
+      "tomTat": "Thủy đậu là bệnh truyền nhiễm cấp tính do vi-rút Varicella-Zoster (VZV) gây ra, lây truyền qua đường hô hấp hoặc tiếp xúc trực tiếp. Đặc trưng bởi sốt và ban phỏng nước nông mọc thành từng đợt, phân bố hướng tâm, tồn tại đa lứa tuổi.",
       "danSo": {
         "gioiTinh": "any",
         "tuoiMin": 0,
@@ -3168,79 +3168,93 @@
       },
       "dd": [
         [
-          "cls_vzv_pcr_duong_tinh",
-          5,
-          "dt"
-        ],
-        [
-          "sophan_mun_nuoc_nhieu_lua_tuoi",
+          "ban_phong_nuoc_giot_suong",
           4.5,
           "dt"
         ],
         [
-          "yeu_to_dich_te_tiep_xuc_vzv",
-          3.5,
+          "ton_thuong_da_da_lua_tuoi",
+          4,
           "dt"
         ],
         [
-          "hoi_chung_tien_trieu_phat_ban",
+          "pcr_vzv_dich_bong_nuoc_duong_tinh",
+          5,
+          "dt"
+        ],
+        [
+          "dien_tien_ban_huong_tam",
+          3,
+          "gy"
+        ],
+        [
+          "khan_thuong_niem_mac_enanthem",
           2.5,
           "gy"
         ],
         [
-          "ton_thuong_niem_mac_enanthem",
+          "ngua_du_doi_ngoai_da",
           2,
-          "gy"
+          "ht"
         ],
         [
-          "sophan_dermatome_khong_doi_xung",
-          -4.5,
+          "sot_nhe_trung_binh",
+          1.5,
+          "ht"
+        ],
+        [
+          "ban_mop_phong_nuoc_dong_trung_trung_ly",
+          -5,
           "loaitru"
         ]
       ],
       "phacDo": {
         "tuyen": [
-          "Trạm y tế (Ngoại trú): Thể nhẹ ở trẻ khỏe mạnh. Cách ly tại nhà, hạ sốt bằng Paracetamol (TUYỆT ĐỐI KHÔNG dùng Aspirin/Ibuprofen), bôi xanh Methylene sát khuẩn nốt mụn vỡ, uống Antihistamine chống ngứa.",
-          "Bệnh viện Huyện (Nội trú): Thể trung bình/người lớn/nguy cơ cao. Dùng Acyclovir PO 20 mg/kg/lần (trẻ em) hoặc 800 mg/lần (người lớn) x 4-5 lần/ngày x 5-7 ngày. Bắt đầu sớm trong 24-72h đầu.",
-          "Bệnh viện Tỉnh / ICU (Hồi sức): Thể nặng có biến chứng (Viêm phổi VZV, Viêm não, Bội nhiễm hoại tử, Thủy đậu sơ sinh). Acyclovir IV 10-15 mg/kg q8h x 7-10 ngày, hỗ trợ hô hấp, kháng sinh phổ rộng."
+          "Trạm y tế (Ngoại trú): Điều trị triệu chứng cho trẻ lành lặn (1-12 tuổi): Hạ sốt bằng Paracetamol (10-15 mg/kg), kháng Histamine H1 giảm ngứa, chấm dung dịch Methylene blue/Chlorhexidine lên nốt vỡ, cách ly tại nhà. CẤM Aspirin và CẤM Ibuprofen/NSAIDs.",
+          "Bệnh viện Huyện (Nội trú): Chỉ định Acyclovir đường uống (Trẻ em ≥ 12 tuổi, người lớn: 800 mg x 5 lần/ngày x 7 ngày; Trẻ em nguy cơ: 20 mg/kg x 4 lần/ngày) trong 24-48h đầu phát ban. Bù nước, chăm sóc da, dùng kháng sinh nếu có bội nhiễm.",
+          "Bệnh viện Tỉnh / ICU (Cấp cứu): Nhập viện ICU cho ca bệnh nặng, có biến chứng (Viêm phổi VZV, Viêm hoại tử da, Viêm nào), trẻ sơ sinh quanh sinh, hoặc người suy giảm miễn dịch. Dùng Acyclovir IV liều cao (10-15 mg/kg q8h truyền IV) x 7-14 ngày + VZIG/IVIG."
         ],
         "thuoc": [
           [
-            "Acyclovir (Đường uống PO)",
-            "Trẻ 2-12t: 20 mg/kg/lần (max 800mg) PO x 4 lần/ngày. Người lớn: 800 mg PO x 5 lần/ngày x 5-7 ngày",
-            "Khởi đầu sớm trong 24-72h đầu phát ban để giảm mật độ tổn thương và số ngày sốt"
+            "Acyclovir (Đường uống - PO)",
+            "Trẻ em > 2 tuổi (nguy cơ): 20 mg/kg/lần (max 800 mg) x 4 lần/ngày. Người lớn / Thanh thiếu niên: 800 mg/lần x 5 lần/ngày x 5-7 ngày",
+            "Khởi đầu sớm trong 24-48h đầu mọc ban. Rút ngắn thời gian bệnh và giảm mọc nốt mới."
           ],
           [
-            "Acyclovir (Đường Tĩnh mạch IV)",
-            "Trẻ < 12t: 10-15 mg/kg IV q8h (hoặc 500 mg/m2 IV q8h). Người lớn: 10 mg/kg IV q8h x 7-10 ngày",
-            "Bắt buộc cho thể nặng, biến chứng phổi/não, sơ sinh hoặc suy giảm miễn dịch. Truyền IV chậm > 1h"
+            "Acyclovir (Tĩnh mạch - IV)",
+            "Trẻ em: 10-15 mg/kg/lần q8h. Người lớn: 10 mg/kg/lần q8h truyền IV trong 60 phút x 7-14 ngày",
+            "Chỉ định bắt buộc cho Thủy đậu nặng, biến chứng Viêm phổi/Viêm não, suy giảm miễn dịch, sơ sinh quanh sinh. Bù đủ dịch tránh kết tinh Acyclovir tại thận."
           ],
           [
             "Paracetamol (Acetaminophen)",
-            "10-15 mg/kg/lần PO mỗi 4-6h khi sốt > 38.5°C (tối đa 60 mg/kg/ngày)",
-            "Thuốc hạ sốt an toàn duy nhất. CHỐNG CHỈ ĐỊNH Aspirin (Reye) và Ibuprofen/NSAIDs (bội nhiễm GAS)"
+            "10-15 mg/kg/lần (PO/PR/IV), cách 4-6h khi sốt ≥ 38.5°C (tối đa ≤ 60 mg/kg/24h ở trẻ em hoặc ≤ 3g/24h ở người lớn)",
+            "Chỉ dùng Paracetamol đơn chất. TUYỆT ĐỐI CẤM Aspirin (nguy cơ Hội chứng Reye) và CẤM Ibuprofen/NSAIDs (nguy cơ bội nhiễm da nặng do GAS)."
           ],
           [
-            "Dung dịch Xanh Methylene 1% / Chlorhexidine",
-            "Chấm tại chỗ tổn thương 2-3 lần/ngày",
-            "Sát khuẩn nốt mụn nước đã vỡ để ngăn ngừa bội nhiễm tụ cầu/liên cầu"
+            "Varicella-Zoster Immune Globulin (VariZIG) / IVIG",
+            "VariZIG 125 UI / 10 kg (max 625 UI) tiêm bắp; hoặc IVIG 400 mg/kg IV",
+            "Dự phòng sau tiếp xúc (PEP) trong vòng 96h đến 10 ngày cho thai phụ, trẻ sơ sinh mẹ mắc bệnh quanh sinh (D-5 đến D+2), người suy giảm miễn dịch."
           ],
           [
-            "VariZIG / VZIG (Varicella-Zoster Immune Globulin)",
-            "125 U/10kg IM (tối thiểu 62.5 U, tối đa 625 U) tiêm bắp 1 liều duy nhất",
-            "Dự phòng sau tiếp xúc (PEP) trong vòng 10 ngày cho trẻ sơ sinh có mẹ mắc bệnh, thai phụ, trẻ cực non"
+            "Thuốc kháng Histamine H1 (Loratadine / Cetirizine / Chlorpheniramine)",
+            "Liều lượng theo tuổi (PO) x 5-7 ngày",
+            "Giảm ngứa, hạn chế gãi xước làm vỡ phỏng nước gây bội nhiễm vi khuẩn thứ phát."
           ]
         ],
         "theoDoi": [
-          "Sự xuất hiện nốt mụn nước mới, dấu hiệu hóa mủ sưng tấy đỏ da, tình trạng ngứa và nhiệt độ 2-3 lần/ngày",
-          "Theo dõi sinh hiệu, SpO2, nhịp thở và tri giác để phát hiện sớm biến chứng viêm phổi/viêm não do VZV"
+          "Theo dõi sát số lượng nốt phỏng nước, dấu hiệu bội nhiễm vi khuẩn (sưng tấy đỏ, chảy mủ đục, sốt lại).",
+          "Đánh giá nhịp thở, SpO2, ho khó thở (phát hiện sớm Viêm phổi VZV) và tri giác, co giật, đi loạng choạng (phát hiện Viêm não / Thất điệp tiểu não).",
+          "Theo dõi công thức máu (WBC, PLT) và chức năng gan thận (AST, ALT, Creatinine) ở bệnh nhân dùng Acyclovir IV."
         ],
         "luuY": [
-          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin (nguy cơ Hội chứng Reye tử vong) và Ibuprofen/NSAIDs (nguy cơ viêm gân hoại tử do Streptococcus nhóm A).",
-          "Cách ly người bệnh đến khi toàn bộ nốt mụn nước đã khô đóng vảy hoàn toàn (thường 7-10 ngày)."
+          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin ở trẻ em mắc Thủy đậu do nguy cơ Hội chứng Reye đe dọa tính mạng (suy gan cấp và bệnh não).",
+          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Ibuprofen và các thuốc NSAIDs do làm tăng nguy cơ bội nhiễm vi khuẩn da/mô mềm nặng (Viêm gân cơ hoại tử, STSS do Liên cầu nhóm A).",
+          "Cách ly đường không khí (Airborne) và tiếp xúc (Contact) tuyệt đối cho đến khi 100% nốt phỏng nước đã khô và đóng vảy hoàn toàn."
         ],
         "nguon": [
-          "Quyết định Bộ Y Tế Việt Nam, WHO Varicella Position Paper, CDC ACIP Guidelines & RCOG Green-top Guideline No. 13"
+          "CDC/ACIP Varicella Guidelines 2021 & WHO Varicella Position Paper 2014",
+          "StatPearls - Varicella-Zoster Virus (Chickenpox) 2025",
+          "RCOG Green-top Guideline No. 13 (2024) & BMJ Paediatrics Open 2019"
         ]
       }
     },
@@ -3783,6 +3797,109 @@
         ],
         "nguon": [
           "Quyết định số 1740/QĐ-BYT ngày 16/06/2026 của Bộ Y Tế Việt Nam &amp; Hướng dẫn EASL 2025 / AASLD 2018-2025"
+        ]
+      }
+    },
+    {
+      "id": "suy_gan_cap_tren_nen_man_aclf",
+      "ten": "Suy gan cấp trên nền mạn (Acute-on-Chronic Liver Failure - ACLF)",
+      "icd": "K72.1",
+      "nhom": "Hồi sức cấp cứu / Tiêu hóa - Gan mật",
+      "baoDong": true,
+      "ghiChuBaoDong": "CẢNH BÁO CẤP CỨU NGUY HIỂM TÍNH MẠNG: Hội chứng suy đa tạng diễn tiến cấp tính trên nền bệnh gan mạn, nguy cơ tử vong 28 ngày cực cao (30% - 80%). Cần chuyển ngay Khoa Hồi sức Tích cực (ICU), bù Albumin, vận mạch, điều trị nguyên nhân (NAs) và đánh giá Fast-track ghép gan khẩn.",
+      "tomTat": "Suy gan cấp trên nền mạn (ACLF) là hội chứng cấp tính bùng phát ở bệnh nhân xơ gan hoặc bệnh gan mạn tiến triển, đặc trưng bởi suy đa tạng (gan, thận, não, đông máu, tuần hoàn, hô hấp) và bão phản ứng viêm hệ thống. Nguyên nhân hàng đầu tại Việt Nam và Châu Á là đợt bùng phát vi rút viêm gan B (HBV reactivation) và nhiễm trùng vi khuẩn.",
+      "danSo": {
+        "gioiTinh": "any",
+        "tuoiMin": 0,
+        "tuoiMax": 120
+      },
+      "dd": [
+        [
+          "trieu_chung_suy_than_cap_creatinine_cao",
+          4.5,
+          "dt"
+        ],
+        [
+          "trieu_chung_vang_da_dam_cap_tinh",
+          4,
+          "dt"
+        ],
+        [
+          "trieu_chung_benh_nao_gan_do_2_3",
+          3.8,
+          "dt"
+        ],
+        [
+          "trieu_chung_roi_loan_dong_mau_nang_inr",
+          3.5,
+          "dt"
+        ],
+        [
+          "trieu_chung_hbv_dna_tang_cao",
+          3,
+          "gy"
+        ],
+        [
+          "trieu_chung_co_truong_tien_trien_nhanh",
+          2.5,
+          "gy"
+        ],
+        [
+          "trieu_chung_sot_cao_co_giat",
+          -3,
+          "loaitru"
+        ]
+      ],
+      "phacDo": {
+        "tuyen": [
+          "Trạm Y tế / Khám ngoại trú: Chẩn đoán nghi ngờ khi bệnh nhân xơ gan/viêm gan mạn có vàng da tăng nhanh, lơ mơ hoặc tiểu ít. Băng nẹp bảo vệ, chuyển khẩn cấp lên tuyến trên, tuyệt đối không cho dùng thuốc lợi tiểu, NSAIDs hay Paracetamol liều cao.",
+          "Bệnh viện Huyện / Nội khoa: Xử trí ban đầu khẩn cấp: Đặt đường truyền IV, ngừng ngay toàn bộ thuốc lợi tiểu và thuốc độc thận. Xả dung dịch Albumin 20% (1.5 g/kg) nếu có suy thận/SBT. Chuyển tuyến Hồi sức Tích cực (ICU) Bệnh viện Tỉnh / Trung ương.",
+          "Bệnh viện Tỉnh / Trung ương (Khoa ICU / Trung tâm Gan mật): Tiếp nhận 100% tại ICU. Đặt catheter đo MAP liên tục. Dùng ngay Tenofovir (TDF 300mg hoặc TAF 25mg) hoặc Entecavir 1mg nếu do HBV. Điều trị AKI-HRS bằng Terlipressin (1-2 mg q6h) + Albumin 20%. Đặt NKT thở máy nếu Bệnh não gan Grade III-IV. Lọc máu CRRT / Trao đổi huyết tương thể tích lớn (TPE-HV). Đánh giá Fast-track ghép gan cấp cứu."
+        ],
+        "thuoc": [
+          [
+            "Tenofovir disoproxil fumarate (TDF)",
+            "300 mg/ngày (PO), uống 1 viên duy nhất/ngày",
+            "Chỉ định ngay trong 24h đầu cho 100% bệnh nhân ACLF do bùng phát HBV. Hiệu chỉnh liều theo eGFR nếu suy thận nặng."
+          ],
+          [
+            "Tenofovir alafenamide (TAF)",
+            "25 mg/ngày (PO), uống 1 viên duy nhất/ngày",
+            "Lựa chọn ưu tiên hàng đầu cho bệnh nhân ACLF có suy thận đi kèm (eGFR ≥ 15 mL/min không cần chỉnh liều)."
+          ],
+          [
+            "Entecavir (ETV)",
+            "0.5 - 1.0 mg/ngày (PO), uống lúc bụng đói",
+            "Dùng liều 1.0 mg/ngày cho bệnh nhân mất bù nặng hoặc từng kháng Lamivudine. Chỉnh liều theo eGFR."
+          ],
+          [
+            "Human Albumin 20%",
+            "Liều 1.5 g/kg IV ngày 1, sau đó 1.0 g/kg IV ngày 3; hoặc 20-40 g/ngày",
+            "Mở rộng thể tích lòng mạch, chống suy tuần hoàn, điều trị AKI-HRS và SBP."
+          ],
+          [
+            "Terlipressin",
+            "1 - 2 mg IV chậm mỗi 4 - 6 giờ hoặc truyền liên tục 2-12 mg/24h",
+            "Co mạch tạng, phối hợp Albumin điều trị AKI-HRS và suy tuần hoàn trong ACLF."
+          ],
+          [
+            "Norepinephrine",
+            "Truyền TM liên tục 0.05 - 0.5 mcg/kg/phút chỉnh liều đạt MAP ≥ 65-70 mmHg",
+            "Thuốc vận mạch lựa chọn hàng đầu trong sốc giãn mạch / suy tuần hoàn ở bệnh nhân ACLF."
+          ]
+        ],
+        "theoDoi": [
+          "Mạch, huyết áp, HA trung bình (MAP), SpO2, nhịp thở và bài niệu từng giờ (mục tiêu bài niệu ≥ 0.5 mL/kg/h).",
+          "Đánh giá tri giác và mức độ Bệnh não gan theo thang điểm West Haven mỗi 2-4 giờ.",
+          "Xét nghiệm Creatinine, Bilirubin toàn phần, INR, Khí máu động mạch, Lactate máu mỗi 12-24 giờ để tính điểm CLIF-OF / CLIF-C ACLF score."
+        ],
+        "luuY": [
+          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI thuốc lợi tiểu (Spironolactone, Furosemide) và thuốc độc thận (NSAIDs, Aminoglycoside, thuốc cản quang) khi đang có ACLF / AKI.",
+          "KHÔNG trì hoãn khởi đầu thuốc kháng vi rút NAs (TDF/TAF/ETV) ở bệnh nhân ACLF do đợt bùng phát HBV.",
+          "Nếu bệnh nhân diễn tiến suy ≥ 4 tạng hoặc CLIF-C ACLF score > 64 sau 3-7 ngày hồi sức tích cực mà không có khả năng ghép gan, cần xem xét dừng can thiệp vô ích (futility)."
+        ],
+        "nguon": [
+          "Quyết định 2026 Bộ Y tế Việt Nam (Hướng dẫn chẩn đoán, điều trị viêm gan B) & EASL Clinical Practice Guidelines on Decompensated Cirrhosis/ACLF 2018"
         ]
       }
     }

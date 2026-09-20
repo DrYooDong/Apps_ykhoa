@@ -20,6 +20,7 @@ import vgsv_C from './vgsv_C.json';
 import viem_mang_nao from './viem_mang_nao.json';
 import xo_gan from './xo_gan.json';
 import _template_disease_protocol from './_template_disease_protocol.json';
+import aclf from './aclf.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'leptospira': leptospira as unknown as DiseaseReactionChainDefinition,
@@ -32,6 +33,7 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'viem_mang_nao': viem_mang_nao as unknown as DiseaseReactionChainDefinition,
   'xo_gan': xo_gan as unknown as DiseaseReactionChainDefinition,
   '_template_disease_protocol': _template_disease_protocol as unknown as DiseaseReactionChainDefinition,
+  'aclf': aclf as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);

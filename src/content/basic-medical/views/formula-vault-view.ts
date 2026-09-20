@@ -46,15 +46,15 @@ export function renderFormulaVaultView(): string {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap: 0.5rem; margin-bottom: 1rem;">
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Na⁺ (mmol/L):</label>
-              <input type="number" id="ag-na" value="140" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
+              <input type="number" inputmode="decimal" id="ag-na" value="140" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Cl⁻ (mmol/L):</label>
-              <input type="number" id="ag-cl" value="104" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
+              <input type="number" inputmode="decimal" id="ag-cl" value="104" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">HCO₃⁻ (mmol/L):</label>
-              <input type="number" id="ag-hco3" value="24" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
+              <input type="number" inputmode="decimal" id="ag-hco3" value="24" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcAg()" />
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export function renderFormulaVaultView(): string {
 
           <div style="margin-bottom: 1rem;">
             <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">HCO₃⁻ đo được (mmol/L):</label>
-            <input type="number" id="winters-hco3" value="15" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcWinters()" />
+            <input type="number" inputmode="decimal" id="winters-hco3" value="15" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcWinters()" />
           </div>
 
           <div style="background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 10px; padding: 0.85rem; text-align: center;">
@@ -96,19 +96,19 @@ export function renderFormulaVaultView(): string {
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">UNa (mmol/L):</label>
-              <input type="number" id="fena-una" value="15" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
+              <input type="number" inputmode="decimal" id="fena-una" value="15" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">PNa (mmol/L):</label>
-              <input type="number" id="fena-pna" value="140" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
+              <input type="number" inputmode="decimal" id="fena-pna" value="140" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">UCr (μmol/L):</label>
-              <input type="number" id="fena-ucr" value="10000" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
+              <input type="number" inputmode="decimal" id="fena-ucr" value="10000" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">PCr (μmol/L):</label>
-              <input type="number" id="fena-pcr" value="250" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
+              <input type="number" inputmode="decimal" id="fena-pcr" value="250" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcFena()" />
             </div>
           </div>
 
@@ -130,11 +130,11 @@ export function renderFormulaVaultView(): string {
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Creatinine (μmol/L):</label>
-              <input type="number" id="egfr-cr" value="120" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
+              <input type="number" inputmode="decimal" id="egfr-cr" value="120" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Tuổi:</label>
-              <input type="number" id="egfr-age" value="65" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
+              <input type="number" inputmode="decimal" id="egfr-age" value="65" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcEgfr()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">Giới tính:</label>
@@ -163,11 +163,11 @@ export function renderFormulaVaultView(): string {
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">PaO₂ Khí Máu (mmHg):</label>
-              <input type="number" id="pf-pao2" value="80" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
+              <input type="number" inputmode="decimal" id="pf-pao2" value="80" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
             </div>
             <div>
               <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted, #64748b); display: block; margin-bottom: 4px;">FiO₂ Thở Vào (%):</label>
-              <input type="number" id="pf-fio2" value="60" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
+              <input type="number" inputmode="decimal" id="pf-fio2" value="60" style="width: 100%; padding: 0.55rem; font-size: 16px; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; background: var(--color-bg, #f8fafc); color: var(--color-text, #0f172a); outline: none; box-sizing: border-box;" oninput="window.calcPf()" />
             </div>
           </div>
 

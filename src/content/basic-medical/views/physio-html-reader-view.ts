@@ -167,6 +167,45 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
         </div>
       </main>
 
+      <!-- MOBILE FLOATING BOTTOM ACTION BAR (TOUCH-FIRST & THUMB-ZONE) -->
+      <nav class="physio-reader-bottom-bar" aria-label="Điều khiển đọc bài giảng di động">
+        <a href="${parentModuleUrl}" class="physio-reader-bar-btn" title="Quay lại ${parentModuleName}">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>${parentModuleName}</span>
+        </a>
+        <button type="button" class="physio-reader-bar-btn" onclick="openPhysioMobileToc()" title="Xem mục lục bài đọc">
+          <i class="fa-solid fa-list-ul"></i>
+          <span>Mục lục</span>
+        </button>
+        <button type="button" class="physio-reader-bar-btn" onclick="cyclePhysioReaderFontSize()" title="Thay đổi cỡ chữ đọc">
+          <i class="fa-solid fa-font"></i>
+          <span id="bmMobileFontSizeLabel">${savedFontSize}px</span>
+        </button>
+        <button type="button" class="physio-reader-bar-btn" onclick="togglePhysioReaderTheme(event)" title="Chuyển chế độ sáng/tối">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+          <span>Giao diện</span>
+        </button>
+        <button type="button" class="physio-reader-bar-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" title="Lên đầu trang">
+          <i class="fa-solid fa-chevron-up"></i>
+          <span>Đầu trang</span>
+        </button>
+      </nav>
+
+      <!-- MOBILE TOC DRAWER SHEET -->
+      <div class="bm-mobile-drawer-backdrop" id="bmReaderTocBackdrop" onclick="closePhysioMobileToc()"></div>
+      <div class="bm-mobile-drawer-sheet" id="bmReaderTocSheet" role="dialog" aria-modal="true" aria-label="Mục lục bài giảng">
+        <div class="bm-drawer-header">
+          <h3 class="bm-drawer-title">
+            <i class="fa-solid fa-book-open" style="color: var(--dsp-sky, #0284c7);"></i>
+            <span>Mục Lục Bài Giảng</span>
+          </h3>
+          <button class="bm-drawer-close-btn" onclick="closePhysioMobileToc()" aria-label="Đóng mục lục">&times;</button>
+        </div>
+        <div class="bm-drawer-body" id="bmReaderTocBody">
+          <div style="text-align: center; padding: 2rem 1rem; color: var(--color-text-muted);">Đang chuẩn bị mục lục...</div>
+        </div>
+      </div>
+
     </div>
   `;
 }
@@ -1644,6 +1683,7 @@ export function togglePhysioReaderWidthMode(): void {
 export function adjustPhysioReaderFontSize(delta: number): void {
   const mount = document.getElementById('physio-article-mount');
   const display = document.getElementById('physio-reader-font-size-display');
+  const mobileLabel = document.getElementById('bmMobileFontSizeLabel');
   if (!mount) return;
 
   let currentSize = parseInt(localStorage.getItem('cp_reader_font_size') || '16', 10);
@@ -1651,7 +1691,94 @@ export function adjustPhysioReaderFontSize(delta: number): void {
 
   mount.style.fontSize = `${currentSize}px`;
   if (display) display.textContent = `${currentSize}px`;
+  if (mobileLabel) mobileLabel.textContent = `${currentSize}px`;
   localStorage.setItem('cp_reader_font_size', currentSize.toString());
+}
+
+/**
+ * Mở Drawer Mục Lục Di Động (Mobile TOC Bottom Sheet)
+ */
+export function openPhysioMobileToc(): void {
+  const backdrop = document.getElementById('bmReaderTocBackdrop');
+  const sheet = document.getElementById('bmReaderTocSheet');
+  const body = document.getElementById('bmReaderTocBody');
+  const mount = document.getElementById('physio-article-mount');
+
+  if (!backdrop || !sheet || !body || !mount) return;
+
+  const headings = mount.querySelectorAll<HTMLElement>('h2, h3, h4, .section-title, .subsection-title');
+  if (headings.length === 0) {
+    body.innerHTML = `
+      <div style="text-align: center; padding: 2rem 1rem; color: var(--color-text-muted);">
+        <i class="fa-solid fa-file-lines" style="font-size: 2rem; margin-bottom: 0.75rem; opacity: 0.6;"></i>
+        <p style="margin: 0; font-size: 0.88rem;">Bài giảng không có tiêu đề phân đoạn.</p>
+      </div>
+    `;
+  } else {
+    body.innerHTML = Array.from(headings).map((h, idx) => {
+      let id = h.id;
+      if (!id) {
+        id = `article-heading-${idx}`;
+        h.id = id;
+      }
+      const isH2 = h.tagName.toLowerCase() === 'h2' || h.classList.contains('section-title');
+      const text = h.textContent?.replace(/^[0-9\.\s]+/, '').trim() || `Mục ${idx + 1}`;
+      return `
+        <a href="#${id}" class="bm-drawer-item" style="padding: ${isH2 ? '0.75rem 1rem' : '0.55rem 0.85rem 0.55rem 1.75rem'}; font-size: ${isH2 ? '0.88rem' : '0.82rem'}; font-weight: ${isH2 ? '800' : '600'};">
+          <span>${isH2 ? '<i class="fa-solid fa-bookmark" style="color:var(--color-primary); margin-right:6px; font-size:0.8rem;"></i> ' : '<i class="fa-solid fa-angle-right" style="margin-right:6px; opacity:0.6;"></i> '}${text}</span>
+        </a>
+      `;
+    }).join('');
+
+    body.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        closePhysioMobileToc();
+        const href = link.getAttribute('href');
+        if (href) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  }
+
+  sheet.classList.add('active');
+  backdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Đóng Drawer Mục Lục Di Động
+ */
+export function closePhysioMobileToc(): void {
+  const backdrop = document.getElementById('bmReaderTocBackdrop');
+  const sheet = document.getElementById('bmReaderTocSheet');
+  sheet?.classList.remove('active');
+  backdrop?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/**
+ * Xoay vòng cỡ chữ đọc trên Mobile (14px -> 16px -> 18px -> 20px -> 14px)
+ */
+export function cyclePhysioReaderFontSize(): void {
+  const mount = document.getElementById('physio-article-mount');
+  const label = document.getElementById('bmMobileFontSizeLabel');
+  const desktopDisplay = document.getElementById('physio-reader-font-size-display');
+  if (!mount) return;
+
+  const fontSizes = [14, 16, 18, 20];
+  let currentSize = parseInt(localStorage.getItem('cp_reader_font_size') || '16', 10);
+  const nextIdx = (fontSizes.indexOf(currentSize) + 1) % fontSizes.length;
+  const newSize = fontSizes[nextIdx >= 0 ? nextIdx : 1];
+
+  mount.style.fontSize = `${newSize}px`;
+  if (label) label.textContent = `${newSize}px`;
+  if (desktopDisplay) desktopDisplay.textContent = `${newSize}px`;
+  localStorage.setItem('cp_reader_font_size', newSize.toString());
 }
 
 // Global click outside listener
@@ -1673,4 +1800,7 @@ if (typeof window !== 'undefined') {
   win.syncPhysioReaderThemeUI = syncPhysioReaderThemeUI;
   win.togglePhysioReaderWidthMode = togglePhysioReaderWidthMode;
   win.adjustPhysioReaderFontSize = adjustPhysioReaderFontSize;
+  win.openPhysioMobileToc = openPhysioMobileToc;
+  win.closePhysioMobileToc = closePhysioMobileToc;
+  win.cyclePhysioReaderFontSize = cyclePhysioReaderFontSize;
 }

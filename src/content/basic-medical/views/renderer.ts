@@ -3,6 +3,7 @@
  */
 import { PHYSIO_FLASHCARDS_DATA, PHYSIO_FORMULAS_DATA } from '../data/data';
 import { PhysioFlashcard } from '../types/types';
+import { scrollActiveBasicMedicalNavIntoView } from './basic-medical-nav';
 
 export function initPhysioFlashcardEngine(): void {
   const modal = document.getElementById('flashcard-modal');
@@ -281,4 +282,48 @@ export function initPathophysiologyHub(): void {
   });
 
   initPhysioFlashcardEngine();
+  scrollActiveBasicMedicalNavIntoView();
+  initMobileSystemPickerDrawer();
+}
+
+/**
+ * Điều khiển Bottom Sheet Drawer chọn Hệ cơ quan / Chuyên khoa trên Mobile
+ */
+export function initMobileSystemPickerDrawer(): void {
+  const triggerBtn = document.getElementById('bmSystemPickerBtn');
+  const drawerSheet = document.getElementById('bmMobileDrawerSheet');
+  const drawerBackdrop = document.getElementById('bmMobileDrawerBackdrop');
+  const closeBtn = document.getElementById('bmMobileDrawerClose');
+
+  if (!triggerBtn || !drawerSheet) return;
+
+  function openDrawer() {
+    drawerSheet?.classList.add('active');
+    drawerBackdrop?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawerSheet?.classList.remove('active');
+    drawerBackdrop?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  triggerBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+
+  drawerSheet.querySelectorAll<HTMLAnchorElement>('.bm-drawer-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      closeDrawer();
+      const href = item.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
 }

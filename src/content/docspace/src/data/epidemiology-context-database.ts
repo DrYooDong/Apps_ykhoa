@@ -494,5 +494,21 @@ export function matchEpidemiologyBoost(
   return {
     score: Math.min(score, 15), // Chặn trên tối đa 15 điểm boost
     reasons,
-  };
+    aclf: {
+    diseaseId: 'aclf',
+    diseaseName: 'Suy gan cấp trên nền mạn (Acute-on-Chronic Liver Failure - ACLF)',
+    icdCode: 'K72.1',
+    specialty: 'Hồi sức cấp cứu / Tiêu hóa - Gan mật',
+    endemicAreas: ["Việt Nam là vùng lưu hành dịch tễ cao của Viêm gan vi rút B (HBV)", 'Toàn quốc'],
+    peakSeasons: ["Ghi nhận gia tăng ca ACLF do tái hoạt HBV ở bệnh nhân tự ý ngưng thuốc kháng vi rút"],
+    vectors: ["Tiền sử nhiễm HBV mạn tính chưa được quản lý điều trị thuốc kháng vi rút (NAs) liên tục"],
+    occupationalRisks: ['Nhân viên y tế phơi nhiễm nghề nghiệp', 'Người lao động có nguy cơ tiếp xúc'],
+    foodWaterRisks: ['Tuân thủ vệ sinh an toàn thực phẩm và nguồn nước sinh hoạt'],
+    transmissionRoutes: ["Cảnh báo đợt bùng phát/tái hoạt vi rút B cấp tính trên nền bệnh gan mạn"],
+    incubationPeriod: 'Thời gian ủ bệnh thay đổi tùy thuộc độc lực tác nhân và cơ địa người bệnh',
+    highRiskPopulations: ['Người có bệnh nền mạn tính', 'Người cao tuổi hoặc trẻ nhỏ', 'Người suy giảm miễn dịch'],
+    outbreakPotential: 'sporadic',
+    clinicalPearls: 'Khai thác kỹ tiền sử tiếp xúc, yếu tố phơi nhiễm dịch tễ và các triệu chứng cảnh báo sớm tại vùng lưu hành để chẩn đoán kịp thời.'
+  },
+};
 }

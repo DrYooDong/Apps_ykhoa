@@ -11,6 +11,7 @@ import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/biochemistry-hub.css';
 import '../../../styles/components/physio-promax-hub.css';
 import '../../../styles/components/epidemiology-hub.css';
+import '../css/basic-medical-mobile.css';
 import { BIOCHEMISTRY_DATA } from '../data/biochemistry-data';
 import { BiochemistryBlock, BiochemistryTopic } from '../types/biochemistry.types';
 import { renderBasicMedicalNav } from './basic-medical-nav';
@@ -141,6 +142,35 @@ export function renderBiochemistryView(): string {
               <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- MOBILE BLOCK PICKER TRIGGER (VISIBLE ON MOBILE ONLY) -->
+      <button class="bm-mobile-drawer-trigger" id="bmSystemPickerBtn" type="button" aria-label="Chọn khối hóa sinh">
+        <span><i class="fa-solid fa-flask-vial" style="color: var(--dsp-violet, #8b5cf6); margin-right: 6px;"></i> Danh mục 7 Khối Hóa Sinh</span>
+        <span style="font-size: 0.8rem; color: var(--dsp-violet, #8b5cf6); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+          <span>Xem tất cả</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </button>
+
+      <!-- MOBILE BOTTOM SHEET DRAWER -->
+      <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
+      <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn khối hóa sinh">
+        <div class="bm-drawer-header">
+          <h3 class="bm-drawer-title">
+            <i class="fa-solid fa-flask-vial" style="color: var(--dsp-violet, #8b5cf6);"></i>
+            <span>Khối Kiến Thức Hóa Sinh (7 Khối)</span>
+          </h3>
+          <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
+        </div>
+        <div class="bm-drawer-body">
+          ${BIOCHEMISTRY_DATA.blocks.map((b, idx) => `
+            <a href="#${b.id}-section" class="bm-drawer-item ${idx === 0 ? 'active' : ''}">
+              <span><i class="fa-solid ${b.icon}" style="margin-right:8px; color:#8b5cf6;"></i> ${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '')}</span>
+              <span class="bm-drawer-item-badge">${BIOCHEMISTRY_DATA.topics.filter(t => t.blockId === b.id).length}</span>
+            </a>
+          `).join('')}
         </div>
       </div>
 

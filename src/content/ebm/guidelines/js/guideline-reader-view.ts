@@ -159,6 +159,20 @@ export function renderGuidelineReader(slug: string): string {
         </div>
       </main>
 
+      <!-- Floating Reader Control Pill on Mobile -->
+      <div class="mobile-reader-floating-bar">
+        <button class="mob-read-btn" onclick="adjustReaderFontSize(-1); event.stopPropagation();" title="Giảm cỡ chữ (A-)">A-</button>
+        <span id="mob-read-font-display" style="font-weight: 700; font-size: 0.78rem; min-width: 32px; text-align: center; color: var(--color-primary, #0284c7);">${savedFontSize}px</span>
+        <button class="mob-read-btn" onclick="adjustReaderFontSize(1); event.stopPropagation();" title="Tăng cỡ chữ (A+)">A+</button>
+        <div style="width: 1px; height: 18px; background: var(--color-border, #cbd5e1); margin: 0 4px;"></div>
+        <button class="mob-read-btn" onclick="toggleReaderTheme(event)" title="Chế độ Tối/Sáng">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="mob-read-btn" onclick="copyGuidelineSoapNote()" title="Sao chép EBM Note">
+          <i class="fa-solid fa-clipboard-list"></i>
+        </button>
+      </div>
+
     </div>
   `;
 }
@@ -656,6 +670,8 @@ export function adjustReaderFontSize(delta: number): void {
   
   mountEl.style.fontSize = `${newSize}px`;
   if (displayEl) displayEl.textContent = `${newSize}px`;
+  const mobDisplayEl = document.getElementById('mob-read-font-display');
+  if (mobDisplayEl) mobDisplayEl.textContent = `${newSize}px`;
   localStorage.setItem('cp_reader_font_size', String(newSize));
 }
 

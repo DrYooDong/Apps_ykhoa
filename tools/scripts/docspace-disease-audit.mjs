@@ -125,7 +125,8 @@ function auditDisease(slug) {
 
   // 4. Kiểm tra Chuẩn hóa Chuyên khoa (Specialty)
   const specialty = enrichedData?.specialty?.trim();
-  if (specialty && VALID_SPECIALTIES.has(specialty)) {
+  const primarySpecialty = specialty ? specialty.split('/')[0].trim() : '';
+  if (specialty && (VALID_SPECIALTIES.has(specialty) || VALID_SPECIALTIES.has(primarySpecialty))) {
     logPass(`4. Chuyên khoa chuẩn y tế: "${specialty}"`);
     passCount++;
   } else {
@@ -212,6 +213,7 @@ function auditDisease(slug) {
     if (slugLower.includes('sot_xuat_huyet')) return normTen.includes('sxh') || normTen.includes('dengue');
     if (slugLower.includes('viem_mang_nao')) return normTen.includes('màng não') || normTen.includes('não mô cầu');
     if (slugLower.includes('leptospira')) return normTen.includes('leptospira');
+    if (slugLower.includes('thuy_dau') || slugLower.includes('thuy-dau')) return normTen.includes('thủy đậu') || normTen.includes('thuy dau') || normTen.includes('varicella');
     return normTen.includes(normSlug) || (enrichedData?.diseaseName && normTen.includes(enrichedData.diseaseName.toLowerCase().split('(')[0].trim()));
   });
 
@@ -248,6 +250,7 @@ function auditDisease(slug) {
     }
     if (slugLower.includes('sot_xuat_huyet')) return sid.includes('sot_xuat_huyet') || sfile.includes('sot_xuat_huyet');
     if (slugLower.includes('leptospira')) return sid.includes('leptospira') || sfile.includes('leptospira') || stitle.includes('leptospira');
+    if (slugLower.includes('thuy_dau') || slugLower.includes('thuy-dau')) return sid.includes('thuy_dau') || sid.includes('thuy-dau') || sfile.includes('thuy_dau') || stitle.includes('thủy đậu') || stitle.includes('varicella');
     return sid.includes(slugLower) || sid.includes(slugLower.replace(/_/g, '-')) || sfile.includes(slugLower) || stitle.includes(normSlug);
   });
 

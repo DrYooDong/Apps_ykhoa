@@ -221,7 +221,10 @@ function syncClinicalEngine(enrichedKey, diseaseEntityJson) {
 
   let content = fs.readFileSync(enginePath, 'utf8');
   const targetIds = [enrichedKey, diseaseEntityJson?.id].filter(Boolean);
-  const isInf = (diseaseEntityJson?.nhom || '').toLowerCase().includes('nhiễm');
+  const isInf = (diseaseEntityJson?.nhom || '').toLowerCase().includes('nhiễm') ||
+                (diseaseEntityJson?.nhom || '').toLowerCase().includes('gan') ||
+                (diseaseEntityJson?.nhom || '').toLowerCase().includes('hồi sức') ||
+                (diseaseEntityJson?.id || '').includes('aclf');
   if (!isInf) return;
 
   const missingIds = targetIds.filter(id => !content.includes(`b.id === '${id}'`) && !content.includes(`b.id === "${id}"`));
@@ -370,6 +373,15 @@ function runIngestion(inputFile) {
       xuat_huyet_tieu_hoa: { ten: 'Xuất huyết tiêu hóa (Nôn ra máu, đi ngoài phân đen)', nhom: 'Tiêu hóa', loai: ['cn', 'tt'], tuKhoa: ['xuat huyet tieu hoa', 'non ra mau', 'phan den'] },
       nao_gan: { ten: 'Bệnh não gan (Hôn mê gan / Rối loạn tri giác do suy tế bào gan)', nhom: 'Thần kinh', loai: ['tt'], tuKhoa: ['nao gan', 'hon me gan', 'hepatic encephalopathy'] },
       hbsag_pos: { ten: 'Kháng nguyên bề mặt viêm gan B (HBsAg) dương tính', nhom: 'Cận lâm sàng', loai: ['cls'], tuKhoa: ['hbsag duong tinh', 'hbsag (+)', 'khang nguyen viem gan b'] },
+      trieu_chung_co_truong_tien_trien_nhanh: { ten: 'Cổ trướng tiến triển nhanh / lượng nhiều', nhom: 'Tiêu hóa', loai: ['tt'], tuKhoa: ['cổ trướng tiến triển', 'cổ trướng nhanh', 'báng bụng căng', 'dịch ổ bụng nhiều'] },
+      trieu_chung_sot_cao_co_giat: { ten: 'Sốt cao co giật', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['sốt cao co giật', 'co giật do sốt'] },
+      trieu_chung_khong_xuat_huyet_tieu_hoa: { ten: 'Không có xuất huyết tiêu hóa (Không nôn máu, không đi cầu phân đen)', nhom: 'Tiêu hóa', loai: ['cn', 'tt'], tuKhoa: ['không nôn ra máu', 'không đi cầu phân đen', 'không xuất huyết tiêu hóa'] },
+      trieu_chung_khong_sot_cao_co_giat: { ten: 'Không sốt cao co giật', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['không sốt cao co giật'] },
+      dien_tien_ban_huong_tam: { ten: 'Diễn tiến ban hướng tâm (mọc từ thân mình, mặt lan ra gốc chi)', nhom: 'Da niêm', loai: ['cn', 'tt'], tuKhoa: ['hướng tâm', 'mọc từ thân mình', 'lan ra chi'] },
+      sot_nhe_trung_binh: { ten: 'Sốt nhẹ đến sốt vừa (37.8°C - 38.8°C)', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['sốt nhẹ', 'sốt vừa', 'sốt'] },
+      ban_mop_phong_nuoc_dong_trung_trung_ly: { ten: 'Ban mụn nước lõm giữa đồng lứa tuổi kiểu Đậu mùa / Monkeypox', nhom: 'Da niêm', loai: ['tt'], tuKhoa: ['lõm giữa', 'đậu mùa', 'monkeypox', 'đồng lứa tuổi'] },
+      ho_kho_tho_kieu_viem_phoi: { ten: 'Ho, khó thở kiểu viêm phổi', nhom: 'Hô hấp', loai: ['cn', 'tt'], tuKhoa: ['ho khó thở', 'viêm phổi', 'thở nhanh'] },
+      roi_loan_tri_giac_co_giat: { ten: 'Rối loạn tri giác, co giật', nhom: 'Thần kinh', loai: ['cn', 'tt'], tuKhoa: ['rối loạn tri giác', 'co giật', 'lơ mơ'] },
     };
 
     // Kiểm tra thêm các triệu chứng trong negated/selected của ca mẫu để chống orphan

@@ -617,9 +617,33 @@ function renderFlashcardsMode(
 
   // Attach Flip Event
   const cardEl = document.getElementById('activeFlashcard');
-  cardEl?.addEventListener('click', () => {
+  cardEl?.addEventListener('click', (e) => {
+    // Avoid flipping if user clicked a link
+    if ((e.target as HTMLElement).closest('a')) return;
     cardEl.classList.toggle('flipped');
   });
+
+  // Attach Touch Swipe Gestures for Mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+  cardEl?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  cardEl?.addEventListener('touchend', (e) => {
+    const diffX = e.changedTouches[0].screenX - touchStartX;
+    const diffY = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX < 0 && currentCardIndex < filteredCards.length - 1) {
+        currentCardIndex++;
+        renderFlashcardsMode(container, specialty, search, onProgressUpdate);
+      } else if (diffX > 0 && currentCardIndex > 0) {
+        currentCardIndex--;
+        renderFlashcardsMode(container, specialty, search, onProgressUpdate);
+      }
+    }
+  }, { passive: true });
 
   // Attach Next/Prev
   function advanceCard(isMasteredAction: boolean) {

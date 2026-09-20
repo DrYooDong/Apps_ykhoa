@@ -130,6 +130,11 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
 
   // ── Toàn bộ các bệnh lý đã làm giàu chuyên sâu từ Prompt 08/09 (thư mục enriched/) ──
   ...ENRICHED_DISEASES,
+  'thuy_dau': ENRICHED_DISEASES['thuy_dau'],
+  'thuy-dau': ENRICHED_DISEASES['thuy_dau'],
+  'suy_gan_cap_tren_nen_man_aclf': ENRICHED_DISEASES['aclf'],
+  'suy-gan-cap-tren-nen-man-aclf': ENRICHED_DISEASES['aclf'],
+  'aclf': ENRICHED_DISEASES['aclf'],
   'sot_xuat_huyet_dengue': ENRICHED_DISEASES['sot_xuat_huyet_dengue'],
   'sot-xuat-huyet-dengue': ENRICHED_DISEASES['sot_xuat_huyet_dengue'],
   'sot_ret': ENRICHED_DISEASES['sot_ret'],

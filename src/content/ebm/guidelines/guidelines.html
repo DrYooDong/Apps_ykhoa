@@ -270,6 +270,12 @@
             <div class="search-box">
               <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, chuyên khoa, đối tượng..." aria-label="Tìm kiếm" oninput="if(window.handleSearch) window.handleSearch(event)">
             </div>
+
+            <!-- Nút mở Bộ Lọc Nhanh trên Mobile -->
+            <button class="btn btn-primary" id="mob-filter-trigger-btn" onclick="toggleMobileFilterSheet(true)" title="Mở bộ lọc nâng cao" style="display:none; align-items:center; gap:6px;">
+              <span>⚡ Lọc</span>
+              <span id="mob-filter-btn-badge" style="display:none; background:#ffffff; color:var(--accent); font-size:0.68rem; font-weight:800; border-radius:10px; padding:1px 6px;">0</span>
+            </button>
             
             <button class="btn" id="filter-icd-btn" onclick="openIcdFilterModal()" title="Lọc theo mã bệnh ICD-10" style="margin-right: auto;">
               🔍 Lọc ICD-10
@@ -1328,6 +1334,81 @@
       </div>
     </div>
   </div>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       📱 MOBILE FILTER BOTTOM SHEET
+       ════════════════════════════════════════════════════════════════ -->
+  <div class="mobile-filter-backdrop" id="mobile-filter-backdrop" onclick="toggleMobileFilterSheet(false)"></div>
+  <div class="mobile-filter-sheet" id="mobile-filter-sheet" role="dialog" aria-modal="true" aria-label="Bộ lọc chuyên sâu">
+    <div class="mobile-filter-handle-bar" onclick="toggleMobileFilterSheet(false)">
+      <div class="mobile-filter-handle"></div>
+    </div>
+    <div class="mobile-filter-header">
+      <div class="mobile-filter-title">
+        <span>⚡ Bộ Lọc Nghiên Cứu &amp; Guidelines</span>
+      </div>
+      <button class="mobile-filter-close-btn" onclick="toggleMobileFilterSheet(false)" aria-label="Đóng">&times;</button>
+    </div>
+    <div class="mobile-filter-content" id="mobile-filter-content">
+      <div class="mobile-filter-group">
+        <div class="mobile-filter-section-title">🩺 Chuyên khoa lâm sàng</div>
+        <div class="mobile-filter-grid-pills" id="mob-specialty-pills"></div>
+      </div>
+      <div class="mobile-filter-group">
+        <div class="mobile-filter-section-title">🏛️ Nguồn tài liệu</div>
+        <div class="mobile-filter-grid-pills" id="mob-source-type-pills"></div>
+      </div>
+      <div class="mobile-filter-group">
+        <div class="mobile-filter-section-title">🔥 Mức ảnh hưởng</div>
+        <div class="mobile-filter-grid-pills" id="mob-impact-pills"></div>
+      </div>
+      <div class="mobile-filter-group">
+        <div class="mobile-filter-section-title">🔬 Thiết kế nghiên cứu</div>
+        <div class="mobile-filter-grid-pills" id="mob-design-pills"></div>
+      </div>
+      <div class="mobile-filter-group">
+        <div class="mobile-filter-section-title">📅 Thời gian công bố</div>
+        <div class="mobile-filter-grid-pills" id="mob-period-pills"></div>
+      </div>
+    </div>
+    <div class="mobile-filter-footer">
+      <button class="btn btn-outline" onclick="resetFilters(); toggleMobileFilterSheet(false);" style="flex:1; min-height:44px;">
+        🔄 Đặt lại
+      </button>
+      <button class="btn btn-primary" onclick="toggleMobileFilterSheet(false);" style="flex:2; min-height:44px; font-weight:700;">
+        ✅ Áp dụng (<span id="mob-sheet-display-count">0</span>)
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       📱 MOBILE BOTTOM NAVIGATION BAR (Thumb Zone Ergonomics)
+       ════════════════════════════════════════════════════════════════ -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Điều hướng chính di động">
+    <button class="mobile-nav-item active" id="mob-nav-list" onclick="switchTab('list')" aria-label="Danh sách tài liệu">
+      <span class="mob-nav-icon">📋</span>
+      <span class="mob-nav-label">Danh sách</span>
+    </button>
+    <button class="mobile-nav-item" id="mob-nav-saved" onclick="switchTab('saved')" aria-label="Đã lưu trữ">
+      <span class="mob-nav-icon">⭐</span>
+      <span class="mob-nav-label">Đã lưu</span>
+      <span class="mob-nav-badge" id="mob-saved-count" style="display:none;">0</span>
+    </button>
+    <button class="mobile-nav-item" id="mob-nav-compare" onclick="switchTab('compare')" aria-label="So sánh tài liệu">
+      <span class="mob-nav-icon">🔄</span>
+      <span class="mob-nav-label">So sánh</span>
+      <span class="mob-nav-badge" id="mob-compare-count" style="display:none;">0</span>
+    </button>
+    <button class="mobile-nav-item" id="mob-nav-analytics" onclick="switchTab('analytics')" aria-label="Thống kê &amp; Phân tích">
+      <span class="mob-nav-icon">📊</span>
+      <span class="mob-nav-label">Thống kê</span>
+    </button>
+    <button class="mobile-nav-item" id="mob-nav-filter" onclick="toggleMobileFilterSheet(true)" aria-label="Mở bộ lọc">
+      <span class="mob-nav-icon">⚡</span>
+      <span class="mob-nav-label">Bộ lọc</span>
+      <span class="mob-nav-badge" id="mob-filter-active-count" style="display:none;">0</span>
+    </button>
+  </nav>
 
   <script src="../../../../js/core/cliniportal-sync.js"></script>
   <script type="module" src="../js/ebm-format-loader.ts"></script>

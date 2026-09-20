@@ -240,6 +240,7 @@ declare global {
     renderUpdates?: () => void;
     renderTable?: () => void;
     renderFilterPills?: () => void;
+    toggleMobileFilterSheet?: (show?: boolean) => void;
 
     openEditModal?: (id: string) => void;
     openAddModal?: () => void;

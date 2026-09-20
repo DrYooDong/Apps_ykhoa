@@ -85,7 +85,11 @@ function bundleDiseases() {
   if (fs.existsSync(OUT_KB_PATH)) {
     try {
       const kb = JSON.parse(fs.readFileSync(OUT_KB_PATH, 'utf8'));
-      kb.benh = allDiseases;
+      const existingMap = new Map((kb.benh || []).map(b => [b.id, b]));
+      for (const d of allDiseases) {
+        existingMap.set(d.id, d);
+      }
+      kb.benh = Array.from(existingMap.values());
       delete kb.trieuChung; // Giảm gánh nặng: Triệu chứng đã được quản lý độc lập tại clinical-rules-symptoms.json
 
       if (!kb.meta) kb.meta = {};

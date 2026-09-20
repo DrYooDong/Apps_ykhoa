@@ -282,43 +282,52 @@ export function renderFilterPills(): void {
   }
 
   const sourceContainer = document.getElementById('source-type-pills');
-  if (sourceContainer && window.SOURCE_TYPES) {
+  const mobSourceContainer = document.getElementById('mob-source-type-pills');
+  if ((sourceContainer || mobSourceContainer) && window.SOURCE_TYPES) {
     let sourceHtml = `<button class="filter-pill ${window.filters.sourceType === null ? 'active' : ''}" onclick="setFilter('sourceType', null)">Tất cả</button>`;
     Object.entries(window.SOURCE_TYPES).forEach(([key, src]) => {
       sourceHtml += `<button class="filter-pill ${window.filters.sourceType === key ? 'active' : ''}" onclick="setFilter('sourceType', '${key}')">${src.name}</button>`;
     });
-    sourceContainer.innerHTML = sourceHtml;
+    if (sourceContainer) sourceContainer.innerHTML = sourceHtml;
+    if (mobSourceContainer) mobSourceContainer.innerHTML = sourceHtml;
   }
 
   const specContainer = document.getElementById('specialty-pills');
-  if (specContainer && window.SPECIALTIES) {
+  const mobSpecContainer = document.getElementById('mob-specialty-pills');
+  if ((specContainer || mobSpecContainer) && window.SPECIALTIES) {
     let specHtml = `<button class="filter-pill ${window.filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">Tất cả</button>`;
     Object.entries(window.SPECIALTIES).forEach(([key, spec]) => {
       specHtml += `<button class="filter-pill ${window.filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">${spec.name}</button>`;
     });
-    specContainer.innerHTML = specHtml;
+    if (specContainer) specContainer.innerHTML = specHtml;
+    if (mobSpecContainer) mobSpecContainer.innerHTML = specHtml;
   }
 
   const designContainer = document.getElementById('design-pills');
-  if (designContainer && window.DESIGNS) {
+  const mobDesignContainer = document.getElementById('mob-design-pills');
+  if ((designContainer || mobDesignContainer) && window.DESIGNS) {
     let designHtml = `<button class="filter-pill ${window.filters.design === null ? 'active' : ''}" onclick="setFilter('design', null)">Tất cả</button>`;
     Object.entries(window.DESIGNS).forEach(([key, des]) => {
       designHtml += `<button class="filter-pill ${window.filters.design === key ? 'active' : ''}" onclick="setFilter('design', '${key}')">${des.name}</button>`;
     });
-    designContainer.innerHTML = designHtml;
+    if (designContainer) designContainer.innerHTML = designHtml;
+    if (mobDesignContainer) mobDesignContainer.innerHTML = designHtml;
   }
 
   const impactContainer = document.getElementById('impact-pills');
-  if (impactContainer && window.IMPACTS) {
+  const mobImpactContainer = document.getElementById('mob-impact-pills');
+  if ((impactContainer || mobImpactContainer) && window.IMPACTS) {
     let impactHtml = `<button class="filter-pill ${window.filters.impact === null ? 'active' : ''}" onclick="setFilter('impact', null)">Tất cả</button>`;
     Object.entries(window.IMPACTS).forEach(([key, imp]) => {
       impactHtml += `<button class="filter-pill ${window.filters.impact === key ? 'active' : ''}" onclick="setFilter('impact', '${key}')" style="border-color:${imp.color}30; color:${imp.color}; background:${imp.bg};">${imp.name}</button>`;
     });
-    impactContainer.innerHTML = impactHtml;
+    if (impactContainer) impactContainer.innerHTML = impactHtml;
+    if (mobImpactContainer) mobImpactContainer.innerHTML = impactHtml;
   }
 
   const periodContainer = document.getElementById('period-pills');
-  if (periodContainer) {
+  const mobPeriodContainer = document.getElementById('mob-period-pills');
+  if (periodContainer || mobPeriodContainer) {
     const currentYear = new Date().getFullYear();
     const periods = [
       { key: null, label: 'Tất cả' },
@@ -330,7 +339,8 @@ export function renderFilterPills(): void {
     const periodHtml = periods.map(p =>
       `<button class="filter-pill ${window.filters.period === p.key ? 'active' : ''}" onclick="setFilter('period', ${p.key === null ? 'null' : `'${p.key}'`})">${p.label}</button>`
     ).join('');
-    periodContainer.innerHTML = periodHtml;
+    if (periodContainer) periodContainer.innerHTML = periodHtml;
+    if (mobPeriodContainer) mobPeriodContainer.innerHTML = periodHtml;
   }
 
   const specFilterList = document.getElementById('spec-filter-list');
@@ -567,12 +577,34 @@ export function resetFilters(): void {
   renderTable();
 }
 
+export function toggleMobileFilterSheet(show?: boolean): void {
+  const sheet = document.getElementById('mobile-filter-sheet');
+  const backdrop = document.getElementById('mobile-filter-backdrop');
+  if (!sheet || !backdrop) return;
+  const isCurrentlyActive = sheet.classList.contains('active');
+  const willShow = typeof show === 'boolean' ? show : !isCurrentlyActive;
+  if (willShow) {
+    sheet.classList.add('active');
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    sheet.classList.remove('active');
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 export function switchTab(tabName: string): void {
   window.currentTab = tabName;
 
   document.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active'));
   const activeBtn = document.getElementById(`tab-${tabName}`);
   if (activeBtn) activeBtn.classList.add('active');
+
+  // Đồng bộ trạng thái trên Mobile Bottom Navigation
+  document.querySelectorAll('.mobile-nav-item').forEach(btn => btn.classList.remove('active'));
+  const mobActiveBtn = document.getElementById(`mob-nav-${tabName}`);
+  if (mobActiveBtn) mobActiveBtn.classList.add('active');
 
   const sideStudies = document.getElementById('sidebar-btn-studies');
   const sideSaved = document.getElementById('sidebar-btn-saved');
@@ -1044,6 +1076,48 @@ export function renderTable(): void {
   if (heroVn) heroVn.textContent = String(allStudies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length);
   if (heroSpecialty) heroSpecialty.textContent = String(allStudies.filter(s => s.quartile === 'Q1' || s.quartile === 'Q2' || (s.impactFactor && s.impactFactor >= 10)).length || '118+');
 
+  // Cập nhật số liệu trên Mobile Navigation & Bottom Sheet
+  const mobSaved = document.getElementById('mob-saved-count');
+  const mobCompare = document.getElementById('mob-compare-count');
+  const mobFilterBadge = document.getElementById('mob-filter-btn-badge');
+  const mobNavFilterBadge = document.getElementById('mob-filter-active-count');
+  const mobSheetCount = document.getElementById('mob-sheet-display-count');
+
+  const savedCount = allStudies.filter(s => s.bookmarked).length;
+  if (mobSaved) {
+    mobSaved.textContent = String(savedCount);
+    mobSaved.style.display = savedCount > 0 ? 'inline-flex' : 'none';
+  }
+  const compareCount = window.selectedIds ? window.selectedIds.size : 0;
+  if (mobCompare) {
+    mobCompare.textContent = String(compareCount);
+    mobCompare.style.display = compareCount > 0 ? 'inline-flex' : 'none';
+  }
+  if (mobSheetCount) {
+    mobSheetCount.textContent = String(filtered.length);
+  }
+
+  const activeFilterCount = [
+    window.filters.sourceType,
+    window.filters.specialty,
+    window.filters.condition,
+    window.filters.design,
+    window.filters.impact,
+    window.filters.period,
+    window.filters.asianData ? 'asian' : null,
+    window.filters.hasSummary ? 'summary' : null,
+    window.filters.hasSubgroup ? 'subgroup' : null,
+    window.filters.icd10
+  ].filter(Boolean).length;
+
+  if (mobFilterBadge) {
+    mobFilterBadge.textContent = String(activeFilterCount);
+    mobFilterBadge.style.display = activeFilterCount > 0 ? 'inline-block' : 'none';
+  }
+  if (mobNavFilterBadge) {
+    mobNavFilterBadge.textContent = String(activeFilterCount);
+    mobNavFilterBadge.style.display = activeFilterCount > 0 ? 'inline-flex' : 'none';
+  }
 
   if (!tbody) return;
 
@@ -1303,4 +1377,5 @@ if (typeof window !== 'undefined') {
   window.toggleExpandRow = toggleExpandRow;
   window.deleteStudy = deleteStudy;
   window.deleteSelectedStudies = deleteSelectedStudies;
+  window.toggleMobileFilterSheet = toggleMobileFilterSheet;
 }

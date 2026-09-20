@@ -10,6 +10,7 @@ import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
 import '../../../styles/components/epidemiology-hub.css';
+import '../css/basic-medical-mobile.css';
 import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' | 'biochem' = 'all'): string {

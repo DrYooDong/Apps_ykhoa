@@ -1,0 +1,699 @@
+/**
+ * CliniPortal — Basic Medical Sciences Mobile-First Responsive Stylesheet
+ * Path: src/content/basic-medical/css/basic-medical-mobile.css
+ * Standards: Touch-First (>=44px), Safe-Area Aware, Thumb-Zone Ergonomics, WCAG 2.2 AAA
+ */
+
+/* ==========================================================================
+   1. GLOBAL MOBILE RESET & ANTI-OVERFLOW (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll bleed */
+  body, #app, #mainContent, .promax-wrapper {
+    max-width: 100vw !important;
+    overflow-x: clip !important;
+  }
+
+  .promax-wrapper {
+    padding: 0.5rem 0.75rem calc(4rem + var(--dsp-safe-bottom, 0px)) !important;
+  }
+
+  /* Breadcrumb compact */
+  .promax-wrapper .breadcrumb {
+    font-size: 0.76rem !important;
+    margin-bottom: 0.85rem !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 2px !important;
+  }
+  .promax-wrapper .breadcrumb::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Universal Touch Target Guarantee */
+  button, 
+  .btn, 
+  .promax-tool-pill-btn, 
+  .epi-tool-pill-btn,
+  .bm-nav-link,
+  .part-nav-item,
+  .toggle-btn {
+    min-height: var(--dsp-touch-min, 44px) !important;
+    touch-action: manipulation;
+  }
+
+  /* Touch micro-press feedback */
+  .bm-nav-link:active,
+  .part-nav-item:active,
+  .specialty-card:active,
+  .promax-tool-pill-btn:active,
+  .epi-tool-pill-btn:active {
+    transform: scale(0.975) !important;
+    transition: transform 80ms ease-out !important;
+  }
+}
+
+/* ==========================================================================
+   2. MOBILE UNIVERSAL SUB-NAV (STICKY COLLAPSED BAR)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .basic-medical-universal-nav {
+    position: sticky !important;
+    top: var(--dsp-header-mobile-h, 54px) !important;
+    z-index: 95 !important;
+    margin-bottom: 1rem !important;
+    padding: 4px 6px !important;
+    border-radius: 12px !important;
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid var(--dsp-border-subtle) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  [data-theme="light"] .basic-medical-universal-nav {
+    background: rgba(255, 255, 255, 0.92) !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bm-nav-link {
+    padding: 6px 10px !important;
+    font-size: 11.5px !important;
+    gap: 5px !important;
+    border-radius: 8px !important;
+    scroll-snap-align: center;
+  }
+
+  .bm-nav-link .bm-label-full {
+    display: none !important;
+  }
+
+  .bm-nav-link .bm-label-short {
+    display: inline !important;
+  }
+
+  .bm-nav-link span[style*="border-radius:var(--dsp-radius-full)"] {
+    display: none !important; /* Hide badges on mobile to keep items compact */
+  }
+}
+
+@media (min-width: 769px) {
+  .bm-nav-link .bm-label-short {
+    display: none !important;
+  }
+  .bm-nav-link .bm-label-full {
+    display: inline !important;
+  }
+}
+
+/* ==========================================================================
+   3. COMPACT HERO SECTION & KPI METRICS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .promax-hero {
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .promax-hero-grid {
+    display: block !important;
+    position: relative !important;
+  }
+
+  .tcm-hero-decor {
+    position: absolute !important;
+    right: -15px !important;
+    top: -10px !important;
+    opacity: 0.15 !important;
+    pointer-events: none !important;
+    transform: scale(0.7) !important;
+    z-index: 1 !important;
+  }
+
+  .promax-hero-title {
+    font-size: clamp(1.2rem, 5vw, 1.55rem) !important;
+    line-height: 1.25 !important;
+    margin: 0.4rem 0 0.5rem !important;
+  }
+
+  .promax-hero-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .promax-kpi-bar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .promax-kpi-pill {
+    padding: 0.45rem 0.65rem !important;
+    border-radius: 10px !important;
+    gap: 0.55rem !important;
+  }
+
+  .promax-kpi-num {
+    font-size: 1.05rem !important;
+  }
+
+  .promax-kpi-lbl {
+    font-size: 0.68rem !important;
+  }
+}
+
+/* ==========================================================================
+   4. COMPACT TOOLKIT SUITE (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .epi-compact-toolkit-bar,
+  .promax-compact-toolkit-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0.75rem !important;
+    gap: 0.65rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .epi-toolkit-badge {
+    font-size: 0.78rem !important;
+  }
+
+  .epi-toolkit-pills {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 4px !important;
+    gap: 0.45rem !important;
+    scrollbar-width: none !important;
+  }
+  .epi-toolkit-pills::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .epi-tool-pill-btn {
+    flex-shrink: 0 !important;
+    font-size: 0.76rem !important;
+    padding: 0.4rem 0.7rem !important;
+  }
+}
+
+/* ==========================================================================
+   5. PROMAX SEARCH & FILTER TOOLBAR (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .promax-toolbar {
+    padding: 0.65rem !important;
+    gap: 0.5rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .promax-search-wrap {
+    min-width: 100% !important;
+  }
+
+  .promax-search-input {
+    height: 42px !important;
+    font-size: 0.84rem !important;
+    padding-left: 2.4rem !important;
+    padding-right: 2rem !important;
+  }
+
+  .promax-shortcut-pill {
+    display: none !important; /* Hide Ctrl+K on touch devices */
+  }
+
+  .view-toggle-container {
+    display: none !important; /* Grid view default on mobile */
+  }
+}
+
+/* ==========================================================================
+   6. LESSONS GRID & SPECIALTY CARDS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .lessons-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .specialty-card {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .specialty-card-title {
+    font-size: 0.98rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .specialty-card-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .specialty-card-footer {
+    margin-top: 0.5rem !important;
+    padding-top: 0.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   7. MOBILE BOTTOM SHEET DRAWER FOR ORGAN SYSTEMS (9 HỆ & 16 CHUYÊN KHOA)
+   ========================================================================== */
+.bm-mobile-drawer-trigger {
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .bm-mobile-drawer-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #cbd5e1);
+    color: var(--color-text, #0f172a);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    min-height: var(--dsp-touch-min, 44px);
+  }
+
+  [data-theme="dark"] .bm-mobile-drawer-trigger {
+    background: var(--dsp-surface-2, #1e293b);
+    border-color: var(--dsp-border);
+    color: #f1f5f9;
+  }
+
+  /* Drawer Backdrop */
+  .bm-mobile-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .bm-mobile-drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Drawer Sheet */
+  .bm-mobile-drawer-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 80vh;
+    background: var(--color-surface, #ffffff);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35);
+    z-index: 1001;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--dsp-safe-bottom, 1rem);
+  }
+
+  [data-theme="dark"] .bm-mobile-drawer-sheet {
+    background: #0f172a;
+    border-top: 1px solid var(--dsp-border);
+  }
+
+  .bm-mobile-drawer-sheet.active {
+    transform: translateY(0);
+  }
+
+  /* Drawer Header */
+  .bm-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem 0.75rem;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+  }
+
+  [data-theme="dark"] .bm-drawer-header {
+    border-bottom-color: #1e293b;
+  }
+
+  .bm-drawer-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-text, #0f172a);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .bm-drawer-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--color-text-muted, #64748b);
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    min-height: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Drawer Body List */
+  .bm-drawer-body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .bm-drawer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text, #334155);
+    background: var(--color-bg, #f8fafc);
+    border: 1px solid var(--color-border, #e2e8f0);
+    min-height: var(--dsp-touch-min, 44px);
+    transition: all 0.15s ease;
+  }
+
+  [data-theme="dark"] .bm-drawer-item {
+    background: #1e293b;
+    border-color: #334155;
+    color: #cbd5e1;
+  }
+
+  .bm-drawer-item.active {
+    background: var(--dsp-sky-light, rgba(2, 132, 199, 0.12));
+    color: var(--dsp-sky, #0284c7);
+    border-color: var(--dsp-sky, #0284c7);
+    box-shadow: 0 2px 8px var(--dsp-sky-glow);
+  }
+
+  .bm-drawer-item-badge {
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--color-border, #e2e8f0);
+    color: var(--color-text-muted, #64748b);
+  }
+
+  [data-theme="dark"] .bm-drawer-item-badge {
+    background: #334155;
+    color: #94a3b8;
+  }
+
+  .bm-drawer-item.active .bm-drawer-item-badge {
+    background: var(--dsp-sky, #0284c7);
+    color: #ffffff;
+  }
+}
+
+/* ==========================================================================
+   8. MOBILE SIMULATORS CANVAS & CONTROLS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .sim-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Force canvas container order: Canvas first, controls second */
+  .sim-grid > .sim-card:nth-child(2) {
+    order: 1 !important;
+  }
+  .sim-grid > .sim-card:nth-child(1) {
+    order: 2 !important;
+  }
+
+  .sim-card {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  .sim-card canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    touch-action: pan-y !important;
+  }
+
+  .sim-slider {
+    height: 10px !important;
+  }
+
+  .sim-slider::-webkit-slider-thumb {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .sim-slider::-moz-range-thumb {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  /* Micro stepper buttons for fine tuning */
+  .sim-stepper-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sim-step-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border, #cbd5e1);
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #0f172a);
+    font-size: 1.1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  [data-theme="dark"] .sim-step-btn {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+}
+
+/* ==========================================================================
+   9. MOBILE FORMULAS, KATEX & TABLES (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* KaTeX Math Horizontal Overflow Protection */
+  .katex-display,
+  .katex-display-scroll {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.5rem 0 !important;
+    margin: 0.5rem 0 !important;
+    scrollbar-width: thin !important;
+  }
+
+  /* Table responsive with fade shadow */
+  .table-responsive {
+    position: relative;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 1rem !important;
+    border-radius: 8px !important;
+  }
+
+  .table-responsive table {
+    font-size: 0.8rem !important;
+    min-width: 480px;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    padding: 0.5rem 0.6rem !important;
+  }
+
+  /* 2x2 Contingency Table for Epidemiology */
+  .epi-matrix-table {
+    width: 100% !important;
+    font-size: 0.82rem !important;
+  }
+  .epi-matrix-table input {
+    height: 40px !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
+  }
+}
+
+/* ==========================================================================
+   10. MOBILE ERGONOMIC READER FLOATING BOTTOM ACTION BAR (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .guideline-reader-wrapper {
+    padding-bottom: calc(5rem + var(--dsp-safe-bottom, 0px)) !important;
+  }
+
+  /* Hide top desktop toolbar actions on mobile; replace with bottom bar */
+  .reader-toolbar-actions .reader-settings-dropdown-wrapper {
+    display: none !important;
+  }
+
+  .physio-reader-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--dsp-bottom-bar-h, 56px) + var(--dsp-safe-bottom, 0px));
+    padding-bottom: var(--dsp-safe-bottom, 0px);
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--dsp-border-subtle);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  [data-theme="light"] .physio-reader-bottom-bar {
+    background: rgba(255, 255, 255, 0.95);
+    border-top-color: #cbd5e1;
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  .physio-reader-bar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    color: var(--dsp-text-secondary, #94a3b8);
+    font-size: 0.68rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 8px;
+    min-height: var(--dsp-touch-min, 44px);
+    min-width: 48px;
+    transition: all 0.15s ease;
+  }
+
+  [data-theme="light"] .physio-reader-bar-btn {
+    color: #475569;
+  }
+
+  .physio-reader-bar-btn i {
+    font-size: 1rem;
+    color: var(--dsp-sky, #0284c7);
+  }
+
+  .physio-reader-bar-btn:active {
+    transform: scale(0.92);
+    color: var(--dsp-sky, #0284c7);
+  }
+}
+
+@media (min-width: 769px) {
+  .physio-reader-bottom-bar {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   11. MOBILE 3D FLASHCARDS & CASCADE BUILDER (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .flashcard-wrapper {
+    height: 380px !important;
+    max-width: 100% !important;
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    padding: 1.25rem 1rem !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .flashcard-front h2 {
+    font-size: 1.15rem !important;
+  }
+
+  .flashcard-front p {
+    font-size: 0.9rem !important;
+  }
+
+  .flashcard-rating-bar {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+  }
+
+  .flashcard-rate-btn {
+    padding: 0.5rem 0.4rem !important;
+    font-size: 0.72rem !important;
+    flex: none !important;
+    min-height: var(--dsp-touch-min, 44px) !important;
+  }
+
+  /* Quiz Case Card */
+  .quiz-case-card {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  .quiz-case-header h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .quiz-option-btn {
+    padding: 0.75rem 0.85rem !important;
+    font-size: 0.84rem !important;
+    min-height: var(--dsp-touch-min, 44px) !important;
+  }
+}
+

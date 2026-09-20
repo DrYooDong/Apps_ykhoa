@@ -301,6 +301,7 @@ if (typeof window !== 'undefined') {
 
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        if (typeof (window as any).toggleMobileFilterSheet === 'function') (window as any).toggleMobileFilterSheet(false);
         if (window.closeAddModal) window.closeAddModal();
         if (window.closeImportModal) window.closeImportModal();
         if (window.closeSubgroupModal) window.closeSubgroupModal();

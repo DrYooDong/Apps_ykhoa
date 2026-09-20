@@ -107,7 +107,7 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
 export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
   return `
     <nav class="basic-medical-universal-nav" aria-label="Phân hệ Cơ sở Y khoa" style="background:var(--dsp-glass-bg); border:1px solid var(--dsp-border-subtle); border-radius:var(--dsp-radius-lg); padding:6px; margin-bottom:1.5rem; box-shadow:var(--dsp-shadow-sm); position:sticky; top:64px; z-index:var(--dsp-z-sticky); backdrop-filter:var(--dsp-backdrop-blur); -webkit-backdrop-filter:var(--dsp-backdrop-blur);">
-      <div style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px;" class="hide-scrollbar">
+      <div style="display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px; scroll-snap-type:x mandatory;" class="hide-scrollbar" id="bmNavContainer">
         ${BASIC_MEDICAL_TABS.map(tab => {
           const isActive = tab.key === activeKey;
           return `
@@ -128,9 +128,10 @@ export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
               flex-shrink:0;
             ">
               <i class="fa-solid ${tab.icon}" style="color:${isActive ? '#ffffff' : tab.color}; font-size:12px;"></i>
-              <span>${tab.label}</span>
+              <span class="bm-label-full">${tab.label}</span>
+              <span class="bm-label-short">${tab.shortLabel}</span>
               ${tab.badge ? `
-                <span style="
+                <span class="bm-tab-badge" style="
                   font-size:9.5px;
                   font-weight:800;
                   padding:1.5px 6px;
@@ -145,4 +146,17 @@ export function renderBasicMedicalNav(activeKey: BasicMedicalTabKey): string {
       </div>
     </nav>
   `;
+}
+
+/**
+ * Tự động căn giữa tab đang kích hoạt trên thiết bị di động
+ */
+export function scrollActiveBasicMedicalNavIntoView(): void {
+  if (typeof document === 'undefined') return;
+  setTimeout(() => {
+    const activeNav = document.querySelector<HTMLElement>('.basic-medical-universal-nav .bm-nav-link.active');
+    if (activeNav) {
+      activeNav.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }, 50);
 }

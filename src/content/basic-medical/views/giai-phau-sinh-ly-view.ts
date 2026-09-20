@@ -10,6 +10,7 @@ import '../../../styles/components/physio-content.css';
 import '../../../styles/components/formula-vault.css';
 import '../../../styles/components/physio-promax-hub.css';
 import '../../../styles/components/epidemiology-hub.css';
+import '../css/basic-medical-mobile.css';
 import { renderBasicMedicalNav } from './basic-medical-nav';
 
 export function renderGiaiPhauSinhLyView(): string {
@@ -138,6 +139,65 @@ export function renderGiaiPhauSinhLyView(): string {
               <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- MOBILE SYSTEM PICKER TRIGGER (VISIBLE ON MOBILE ONLY) -->
+      <button class="bm-mobile-drawer-trigger" id="bmSystemPickerBtn" type="button" aria-label="Chọn hệ cơ quan">
+        <span><i class="fa-solid fa-layer-group" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i> Danh mục 9 Hệ Cơ Quan</span>
+        <span style="font-size: 0.8rem; color: var(--color-primary, #0284c7); font-weight: 800; display: flex; align-items: center; gap: 4px;">
+          <span>Xem tất cả</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </button>
+
+      <!-- MOBILE BOTTOM SHEET DRAWER -->
+      <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
+      <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn hệ cơ quan">
+        <div class="bm-drawer-header">
+          <h3 class="bm-drawer-title">
+            <i class="fa-solid fa-layer-group" style="color: var(--color-primary, #0284c7);"></i>
+            <span>Hệ Thống Cơ Quan (9 Hệ)</span>
+          </h3>
+          <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
+        </div>
+        <div class="bm-drawer-body">
+          <a href="#part1-section" class="bm-drawer-item active">
+            <span><i class="fa-solid fa-microscope" style="color:#0284c7; margin-right:8px;"></i> 1. Đại cương &amp; Tế bào</span>
+            <span class="bm-drawer-item-badge">3</span>
+          </a>
+          <a href="#part2-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-brain" style="color:#8b5cf6; margin-right:8px;"></i> 2. Thần kinh &amp; Cơ</span>
+            <span class="bm-drawer-item-badge">8</span>
+          </a>
+          <a href="#part3-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-droplet" style="color:#ef4444; margin-right:8px;"></i> 3. Máu &amp; Miễn dịch</span>
+            <span class="bm-drawer-item-badge">5</span>
+          </a>
+          <a href="#part4-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-heart-pulse" style="color:#f43f5e; margin-right:8px;"></i> 4. Tim mạch &amp; Hô hấp</span>
+            <span class="bm-drawer-item-badge">6</span>
+          </a>
+          <a href="#part5-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-bowl-food" style="color:#f59e0b; margin-right:8px;"></i> 5. Tiêu hóa &amp; Chuyển hóa</span>
+            <span class="bm-drawer-item-badge">6</span>
+          </a>
+          <a href="#part6-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-filter" style="color:#10b981; margin-right:8px;"></i> 6. Thận &amp; Dịch cơ thể</span>
+            <span class="bm-drawer-item-badge">4</span>
+          </a>
+          <a href="#part7-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-venus-mars" style="color:#ec4899; margin-right:8px;"></i> 7. Nội tiết &amp; Sinh sản</span>
+            <span class="bm-drawer-item-badge">6</span>
+          </a>
+          <a href="#part8-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-person-pregnant" style="color:#a855f7; margin-right:8px;"></i> 8. Sản phụ khoa</span>
+            <span class="bm-drawer-item-badge">2</span>
+          </a>
+          <a href="#part9-section" class="bm-drawer-item">
+            <span><i class="fa-solid fa-child-reaching" style="color:#06b6d4; margin-right:8px;"></i> 9. Sinh lý Nhi khoa</span>
+            <span class="bm-drawer-item-badge">8</span>
+          </a>
         </div>
       </div>
 

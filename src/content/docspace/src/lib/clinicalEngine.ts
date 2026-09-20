@@ -319,6 +319,8 @@ export function analyzeClinicalCase(
         b.id === 'xo_gan_mat_bu' ||
         b.id === 'xo_gan_con_bu' ||
         b.id === 'xo-gan-con-bu' ||
+        b.id === 'aclf' ||
+        b.id === 'suy_gan_cap_tren_nen_man_aclf' ||
         b.id === 'viem_phoi';
 
       // 1. Sốt xuất huyết Dengue: Vector muỗi Aedes, ổ dịch SXH, mùa mưa
@@ -468,6 +470,32 @@ export function analyzeClinicalCase(
             points: 15,
           };
           notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Xơ gan còn bù (cACLD)');
+        }
+      }
+
+      // 6.6. Suy gan cấp trên nền mạn (Acute-on-Chronic Liver Failure - ACLF)
+      if (
+        b.id === 'aclf' ||
+        b.id === 'suy_gan_cap_tren_nen_man_aclf'
+      ) {
+        const epiMatch =
+          normalizeText(epiContext.vectorExposure).includes('hbv') ||
+          normalizeText(epiContext.vectorExposure).includes('nas') ||
+          normalizeText(epiContext.vectorExposure).includes('ngung') ||
+          normalizeText(epiContext.vectorExposure).includes('khang vi rut') ||
+          normalizeText(epiContext.outbreakAlert).includes('bung phat') ||
+          normalizeText(epiContext.outbreakAlert).includes('tai hoat') ||
+          normalizeText(epiContext.outbreakAlert).includes('aclf') ||
+          normalizeText(epiContext.endemicArea).includes('viem gan') ||
+          normalizeText(epiContext.endemicArea).includes('hbv');
+        if (epiMatch && matched.length > 0) {
+          factor *= 1.25;
+          epiBoostInfo = {
+            boosted: true,
+            reason: 'Tam giác Dịch tễ: Vùng lưu hành HBV / Bùng phát tái hoạt do ngưng thuốc NAs trên nền gan mạn',
+            points: 15,
+          };
+          notes.push('Dịch tễ học ủng hộ mạnh mẽ chẩn đoán Suy gan cấp trên nền mạn (ACLF)');
         }
       }
 
