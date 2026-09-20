@@ -637,10 +637,10 @@ function renderFlashcardsMode(
     if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
       if (diffX < 0 && currentCardIndex < filteredCards.length - 1) {
         currentCardIndex++;
-        renderFlashcardsMode(container, specialty, search, onProgressUpdate);
+        renderFlashcardsMode(container, categoryFilter, search, onProgressUpdate);
       } else if (diffX > 0 && currentCardIndex > 0) {
         currentCardIndex--;
-        renderFlashcardsMode(container, specialty, search, onProgressUpdate);
+        renderFlashcardsMode(container, categoryFilter, search, onProgressUpdate);
       }
     }
   }, { passive: true });
