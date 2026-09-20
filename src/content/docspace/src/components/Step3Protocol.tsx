@@ -33,6 +33,7 @@ import {
 } from '../lib/guidelineBridge.ts';
 import { getSimilarSoapCases } from '../lib/crossReferenceEngine.ts';
 import { getDailyTreatmentTimeline } from '../lib/dailyTreatmentTimeline.ts';
+import { resolvePatientPhenotype } from '../lib/patientPhenotypeEngine.ts';
 
 // 6 Subcomponents in step3/
 import { ProtocolTopNav } from './step3/ProtocolTopNav.tsx';
@@ -447,6 +448,54 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     );
   }, [activeChain]);
 
+  // Personalized Clinical Stratification Engine (PCSE) State & Memos
+  const [isRenalAdjustmentApplied, setIsRenalAdjustmentApplied] = useState<boolean>(false);
+
+  const patientPhenotype = useMemo(() => {
+    return resolvePatientPhenotype(
+      form,
+      vitals,
+      labs,
+      selectedGradeIdx,
+      severityGrades[selectedGradeIdx]?.grade,
+      activeComplicationIndices.size
+    );
+  }, [form, vitals, labs, selectedGradeIdx, severityGrades, activeComplicationIndices.size]);
+
+  // Tự động kích hoạt cờ hiệu chỉnh thận khi phát hiện nguy cơ thận rõ
+  useEffect(() => {
+    if (patientPhenotype.hasRenalRisk) {
+      setIsRenalAdjustmentApplied(true);
+    }
+  }, [patientPhenotype.hasRenalRisk]);
+
+  // Danh sách biến chứng cấp được kích hoạt chuyển giao sang Bảng 3 cột (Mục 2)
+  const appliedComplications = useMemo(() => {
+    const list: Array<{ id: string; name: string; orders: string[]; monitoring?: string; urgency?: string }> = [];
+    activeComplicationIndices.forEach((idx) => {
+      const comp = activeComplications[idx];
+      if (comp) {
+        const orders: string[] = [];
+        if (comp.orderSet && Array.isArray(comp.orderSet)) {
+          comp.orderSet.forEach((o: any) => orders.push(`${o.drug}: ${o.dosage}${o.note ? ' (' + o.note + ')' : ''}`));
+        } else if (comp.preventiveAction) {
+          orders.push(comp.preventiveAction);
+        }
+        if (comp.onCallAlertText) {
+          orders.push(`Lệnh trực: ${comp.onCallAlertText}`);
+        }
+        list.push({
+          id: comp.id || `comp_${idx}`,
+          name: comp.name,
+          orders: orders.length > 0 ? orders : ['Theo dõi sát và xử trí triệu chứng khẩn cấp'],
+          monitoring: comp.warningSigns ? `Dấu hiệu báo động: ${comp.warningSigns.join(', ')}` : undefined,
+          urgency: 'urgent',
+        });
+      }
+    });
+    return list;
+  }, [activeComplications, activeComplicationIndices]);
+
   const handleToggleComplication = (idx: number) => {
     setActiveComplicationIndices((prev) => {
       const next = new Set(prev);
@@ -594,6 +643,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     lines.push(`Thời gian lập: ${new Date().toLocaleString('vi-VN')}`);
     lines.push(`Bệnh nhân: ${form?.lyDo || 'Chưa định danh'} | Giới tính: ${form?.gioiTinh || '—'} | Tuổi: ${form?.tuoi || '—'}`);
     lines.push(`Chẩn đoán chính: ${currentDisease.ten} (ICD-10: ${currentDisease.icd})`);
+    if (patientPhenotype) {
+      lines.push(`Kiểu hình cá thể hóa (PCSE): ${patientPhenotype.ageLabel} | Giới tính: ${patientPhenotype.gender === 'nam' ? 'Nam' : 'Nữ'}${patientPhenotype.eGfr ? ` | eGFR: ${patientPhenotype.eGfr} mL/ph (${patientPhenotype.ckdStage || 'CKD'})` : ''}`);
+      if (isRenalAdjustmentApplied) {
+        lines.push(`⚡ Hiệu chỉnh y lệnh: ĐÃ ÁP DỤNG HIỆU CHỈNH LIỀU THẬN HỌC`);
+      }
+      if (appliedComplications.length > 0) {
+        lines.push(`🚨 Biến chứng cấp kích hoạt: ${appliedComplications.map((c) => c.name).join('; ')}`);
+      }
+    }
     if (activeSeverityGrade) {
       lines.push(`Phân độ / Thể bệnh: ${activeSeverityGrade.grade} (${activeSeverityGrade.severity.toUpperCase()})`);
       lines.push(`Tuyến điều trị: ${activeSeverityGrade.triage}`);
@@ -737,13 +795,17 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               labs={labs}
               patientAge={form?.tuoi}
               patientGender={form?.gioiTinh}
+              form={form}
+              patientPhenotype={patientPhenotype}
+              isRenalAdjustmentApplied={isRenalAdjustmentApplied}
+              onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
               onOpenVaultDrawer={onOpenVaultDrawer}
             />
           </CollapsibleProtocolSection>
 
           {/* ========================================================================= */}
-          {/* ĐẦU MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (BẢNG 4 CỘT)                         */}
-          {/* Phân loại | Giai đoạn & Mục tiêu | Phác đồ & Y lệnh | Theo dõi LS & CLS     */}
+          {/* ĐẦU MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (ĐỊNH HƯỚNG VẤN ĐỀ - 3 CỘT)          */}
+          {/* 1. Vấn đề | 2. Phác đồ & Y lệnh | 3. Theo dõi                              */}
           {/* ========================================================================= */}
           <CollapsibleProtocolSection
             id="protocol"
@@ -754,8 +816,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 <ClipboardCheck className="w-4 h-4" />
               </div>
             }
-            title="2. Phác đồ điều trị chi tiết (Bảng 4 cột)"
-            subtitle="Phân loại &bull; Giai đoạn & Mục tiêu &bull; Phác đồ & Y lệnh &bull; Theo dõi (Lâm sàng & Cận lâm sàng)"
+            title="2. Phác đồ điều trị chi tiết"
+            subtitle="1. Vấn đề &bull; 2. Phác đồ &amp; y lệnh &bull; 3. Theo dõi (Lâm sàng &amp; Cận lâm sàng)"
             badgeText={`${currentCheckedCount}/${totalAllOrders} y lệnh (${progressPercent}%)`}
             badgeColor="bg-blue-100 text-blue-800 border-blue-200"
           >
@@ -763,6 +825,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               diseaseId={currentDisease.id}
               diseaseName={currentDisease.ten}
               selectedGradeIdx={selectedGradeIdx}
+              onSelectGradeIdx={setSelectedGradeIdx}
+              severityGrades={severityGrades}
               activeSeverityGrade={activeSeverityGrade}
               phacDo={phacDo}
               timelinePhases={timelinePhases}
@@ -783,6 +847,10 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               patientAge={form?.tuoi}
               patientGender={form?.gioiTinh}
               patientCreatinine={labs?.lCre}
+              appliedComplications={appliedComplications}
+              isRenalAdjustmentApplied={isRenalAdjustmentApplied}
+              renalEgfr={patientPhenotype.eGfr}
+              renalStage={patientPhenotype.ckdStage}
               onOpenVaultDrawer={onOpenVaultDrawer}
               onOpenCdssModal={onOpenCdssModal}
             />
@@ -811,6 +879,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               cautionItems={phacDo.luuY}
               timelinePhases={timelinePhases}
               activeSeverityGrade={activeSeverityGrade}
+              patientPhenotype={patientPhenotype}
+              specificTreatmentNotice={(() => {
+                const normName = (currentDisease?.ten || '').toLowerCase();
+                const idLower = (currentDisease?.id || '').toLowerCase();
+                if (idLower.includes('dengue') || normName.includes('dengue') || normName.includes('sốt xuất huyết')) {
+                  return 'Bệnh Sốt xuất huyết Dengue hiện CHƯA CÓ THUỐC ĐIỀU TRỊ ĐẶC HIỆU (chống virus). Tuyệt đối không dùng Corticoid, Kháng sinh hoặc thuốc kháng virus bừa bãi khi chưa có bằng chứng đồng nhiễm khuẩn. Bù dịch nấc thang đúng phác đồ và phát hiện sớm dấu hiệu cảnh báo là biện pháp cứu mạng chính yếu.';
+                }
+                return undefined;
+              })()}
               structuredCautions={(() => {
                 const raw =
                   (activeChain as any)?.protocol?.cautionsAndDischarge ||
@@ -852,6 +929,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               patientAge={form?.tuoi}
               patientGender={form?.gioiTinh}
               prescribedDrugs={allPrescribedDrugNames}
+              patientPhenotype={patientPhenotype}
               onOpenVaultDrawer={onOpenVaultDrawer}
             />
           </CollapsibleProtocolSection>

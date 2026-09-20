@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
+  Activity,
+  AlertOctagon,
   AlertTriangle,
   Baby,
+  CheckCircle2,
+  ChevronRight,
+  Droplets,
   Heart,
   Layers,
   ShieldAlert,
   Sparkles,
   UserCheck,
   Users,
+  Zap,
 } from 'lucide-react';
 import {
   DiseaseComplicationItem,
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
-import { LabsState, VitalsState } from '../../types.ts';
+import { ClinicalFormState, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
 import { SeverityGradingPanel } from './SeverityGradingPanel.tsx';
 import { ComplicationsTriageSection } from './ComplicationsTriageSection.tsx';
+import { calculateEgfrCkdEpi, resolvePatientPhenotype } from '../../lib/patientPhenotypeEngine.ts';
 
 interface ProtocolClassificationSectionProps {
   severityGrades: SeverityGradingItem[];
@@ -35,6 +42,10 @@ interface ProtocolClassificationSectionProps {
   labs?: LabsState;
   patientAge?: string;
   patientGender?: string;
+  form?: ClinicalFormState;
+  patientPhenotype?: PatientPhenotype;
+  isRenalAdjustmentApplied?: boolean;
+  onToggleRenalAdjustment?: (applied: boolean) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
 }
 
@@ -55,16 +66,33 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   labs,
   patientAge,
   patientGender,
+  form,
+  patientPhenotype: externalPhenotype,
+  isRenalAdjustmentApplied = false,
+  onToggleRenalAdjustment,
   onOpenVaultDrawer,
 }) => {
   // Tab state for 1a, 1b, 1c
   const [activeTab, setActiveTab] = useState<'1a' | '1b' | '1c'>('1a');
 
+  // Tính toán hồ sơ kiểu hình cá thể hoá nội bộ nếu chưa truyền từ ngoài
+  const phenotype = useMemo(() => {
+    if (externalPhenotype) return externalPhenotype;
+    return resolvePatientPhenotype(
+      form,
+      vitals,
+      labs,
+      selectedGradeIdx,
+      severityGrades[selectedGradeIdx]?.grade,
+      activeComplicationIndices.size
+    );
+  }, [externalPhenotype, form, vitals, labs, selectedGradeIdx, severityGrades, activeComplicationIndices.size]);
+
   const ageNum = patientAge ? parseInt(patientAge, 10) : undefined;
-  const isElderly = ageNum !== undefined && ageNum >= 65;
-  const isPediatric = ageNum !== undefined && ageNum < 16;
-  const isFemale = patientGender === 'nu';
-  const hasRenalRisk = labs?.lCre ? parseFloat(labs.lCre) > 115 : false;
+  const isElderly = phenotype.ageCategory === 'elderly';
+  const isPediatric = phenotype.ageCategory === 'pediatric' || phenotype.ageCategory === 'infant';
+  const isFemale = phenotype.gender === 'nu';
+  const hasRenalRisk = phenotype.hasRenalRisk;
 
   const customSpecialPopulations: Array<{
     population: string;
@@ -74,6 +102,109 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
+      {/* ========================================================================= */}
+      {/* 🚀 PERSONALIZED PATIENT COCKPIT RIBBON (ĐỈNH CAO CÔNG THÁI HỌC LÂM SÀNG)    */}
+      {/* ========================================================================= */}
+      <div className="p-3.5 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border-b border-indigo-900/50">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-2.5">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-indigo-500/20 text-indigo-400 border border-indigo-400/30 flex items-center justify-center">
+              <Sparkles className="w-3.5 h-3.5" />
+            </div>
+            <span className="text-xs font-bold tracking-wide text-indigo-200 uppercase">
+              Personalized Patient Cockpit &bull; Phân Tầng Kiểu Hình Cá Thể Hóa
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {hasRenalRisk && onToggleRenalAdjustment && (
+              <button
+                type="button"
+                onClick={() => onToggleRenalAdjustment(!isRenalAdjustmentApplied)}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1.5 transition-all cursor-pointer border ${
+                  isRenalAdjustmentApplied
+                    ? 'bg-emerald-500 text-white border-emerald-400 shadow-xs'
+                    : 'bg-amber-500/20 text-amber-300 border-amber-400/40 hover:bg-amber-500/30'
+                }`}
+                title="Bật/tắt hiệu chỉnh liều thuốc đào thải qua thận trong Bảng phác đồ Mục 2"
+              >
+                <Zap className="w-3 h-3" />
+                <span>
+                  {isRenalAdjustmentApplied ? 'Đã kích hoạt chỉnh liều Thận' : 'Kích hoạt chỉnh liều eGFR'}
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Bento Grid Mini Indicators */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {/* Card 1: Cơ địa sinh lý */}
+          <div className="bg-white/5 border border-white/10 rounded-lg p-2 flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded bg-indigo-500/20 text-indigo-300 flex items-center justify-center shrink-0">
+              <Users className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-400 uppercase font-medium">Cơ địa / Tuổi</div>
+              <div className="text-xs font-bold text-white truncate">
+                {phenotype.ageLabel} &bull; {phenotype.gender === 'nam' ? 'Nam' : 'Nữ'}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Chức năng thận eGFR */}
+          <div className={`border rounded-lg p-2 flex items-center gap-2.5 ${
+            hasRenalRisk
+              ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
+              : 'bg-white/5 border-white/10 text-slate-200'
+          }`}>
+            <div className={`w-7 h-7 rounded flex items-center justify-center shrink-0 ${
+              hasRenalRisk ? 'bg-amber-500/20 text-amber-400' : 'bg-emerald-500/20 text-emerald-400'
+            }`}>
+              <Droplets className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-400 uppercase font-medium">Thận học (eGFR)</div>
+              <div className="text-xs font-bold truncate">
+                {phenotype.eGfr ? `${phenotype.eGfr} mL/ph (${phenotype.ckdStage || 'CKD'})` : (labs?.lCre ? `Cre ${labs.lCre} µmol/L` : 'Bình thường')}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Phân tầng Mức độ */}
+          <div className="bg-white/5 border border-white/10 rounded-lg p-2 flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+              <Layers className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-400 uppercase font-medium">Phân độ đang chọn</div>
+              <div className="text-xs font-bold text-white truncate">
+                {severityGrades[selectedGradeIdx]?.grade || 'Chưa chọn'}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Biến chứng Sentinel */}
+          <div className={`border rounded-lg p-2 flex items-center gap-2.5 ${
+            activeComplicationIndices.size > 0
+              ? 'bg-rose-500/15 border-rose-500/30 text-rose-200'
+              : 'bg-white/5 border-white/10 text-slate-200'
+          }`}>
+            <div className={`w-7 h-7 rounded flex items-center justify-center shrink-0 ${
+              activeComplicationIndices.size > 0 ? 'bg-rose-500/20 text-rose-400' : 'bg-slate-700 text-slate-400'
+            }`}>
+              <AlertOctagon className="w-3.5 h-3.5" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[10px] text-slate-400 uppercase font-medium">Biến chứng cấp</div>
+              <div className="text-xs font-bold truncate">
+                {activeComplicationIndices.size > 0 ? `${activeComplicationIndices.size} biến chứng kích hoạt` : 'Chưa ghi nhận'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Tab switcher: 1a, 1b, 1c */}
       <div className="p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-slate-600 font-medium">
@@ -341,7 +472,7 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
               <div
                 className={`p-3.5 rounded-xl border flex flex-col justify-between gap-2.5 transition-all ${
                   hasRenalRisk
-                    ? 'bg-amber-50/90 border-amber-300 ring-2 ring-amber-400/40'
+                    ? 'bg-amber-50/90 border-amber-300 ring-2 ring-amber-400/40 shadow-xs'
                     : 'bg-white border-slate-200 shadow-2xs'
                 }`}
               >
@@ -352,11 +483,26 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                       <span>Suy giảm chức năng thận (CKD / AKI)</span>
                     </span>
                     {hasRenalRisk && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-200 text-amber-900 border border-amber-300 animate-pulse">
-                        Cre: {labs?.lCre} µmol/L
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-200 text-amber-900 border border-amber-300 animate-pulse">
+                        {phenotype.eGfr ? `eGFR: ${phenotype.eGfr} mL/ph` : `Cre: ${labs?.lCre} µmol/L`}
                       </span>
                     )}
                   </div>
+
+                  {phenotype.eGfr !== undefined && (
+                    <div className="mb-2 p-2 bg-white/80 rounded-lg border border-amber-200 text-xs">
+                      <div className="flex items-center justify-between text-[11px] mb-1">
+                        <span className="text-slate-600">Phân tầng KDIGO:</span>
+                        <span className="font-bold text-amber-800">{phenotype.ckdStage || 'CKD'}</span>
+                      </div>
+                      <div className="text-[11px] text-slate-700 leading-snug">
+                        {hasRenalRisk
+                          ? 'Cần giảm 25–50% liều các kháng sinh thải qua thận (Vancomycin, Aminoglycoside, Cefepime).'
+                          : 'Chức năng thận bảo tồn, dùng liều chuẩn.'}
+                      </div>
+                    </div>
+                  )}
+
                   <ul className="text-xs text-slate-700 space-y-1.5 leading-relaxed">
                     <li className="flex items-start gap-1.5">
                       <span className="text-amber-600 font-bold shrink-0">•</span>
@@ -372,8 +518,23 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                     </li>
                   </ul>
                 </div>
-                <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-500 italic">
-                  Khuyến cáo: Xét nghiệm Ure, Creatinine, Điện giải đồ (K+) định kỳ mỗi 24-48 giờ.
+
+                <div className="pt-2 border-t border-amber-200 flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-[11px] text-slate-500 italic">Định kỳ Ure, Cre, K+ q24-48h</span>
+                  {onToggleRenalAdjustment && (
+                    <button
+                      type="button"
+                      onClick={() => onToggleRenalAdjustment(!isRenalAdjustmentApplied)}
+                      className={`px-2.5 py-1 rounded text-[11px] font-bold cursor-pointer transition-all flex items-center gap-1 border ${
+                        isRenalAdjustmentApplied
+                          ? 'bg-emerald-600 text-white border-emerald-700 shadow-2xs'
+                          : 'bg-amber-600 hover:bg-amber-700 text-white border-amber-700 shadow-2xs'
+                      }`}
+                    >
+                      <Zap className="w-3 h-3" />
+                      <span>{isRenalAdjustmentApplied ? 'Đã Áp Dụng Vào Phác Đồ' : 'Áp Dụng Vào Phác Đồ (Mục 2)'}</span>
+                    </button>
+                  )}
                 </div>
               </div>
 

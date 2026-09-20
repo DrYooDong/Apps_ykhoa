@@ -99,8 +99,7 @@ updated: "2026-08-21"
 2. Perspect Health Inf Manag. 2021 Oct 1;18(4):1h
 
 # Lý do nhập viện (Chief complaints)
-# • Lý do nhập viện (than phiền chính) : triệu chứng nổi bật, là nguyên
-# nhân chính khiến bệnh nhân tìm đến chăm sóc y khoa .
+• Lý do nhập viện (than phiền chính) : triệu chứng nổi bật, là nguyên nhân chính khiến bệnh nhân tìm đến chăm sóc y khoa .
 
 # Cấu trúc bệnh án nội khoa
 # 1. Hành chính
@@ -499,23 +498,7 @@ Warner MJ, Hutchison J, Varacallo M. Bell Palsy. [Updated 2023 Aug 17]
 # o Nêu bật các cận lâm sàng mang giá trị chẩn đoán cao, cấp cứu .
 # o Lý giải kết quả cận lâm sàng theo bệnh cảnh lâm sàng .
 
-# Cấu trúc bệnh án nội khoa
-# 1. Hành chính
-# 8. Đặt vấn đề
-# 2. Lý do nhập viện
-# 9. Biện luận
-# 3. Bệnh sử
-# 10. CĐ sơ bộ và CĐ phân biệt
-# 4. Tiền căn
-# 11. Đề nghị CLS và kết quả CLS
-# 5. Lược qua các cơ quan
-# 12. Chẩn đoán xác định
-# 6. Khám lâm sàng
-# 13. Điều trị
-# 7. Tóm tắt bệnh án
-# 14. Tiên lượng
-1. Med Care. 1981 Mar;19(3):310 - 5
-2. Perspect Health Inf Manag. 2021 Oct 1;18(4):1h
+
 
 # Chẩn đoán xác định
 # • Đưa ra chẩn đoán xác định dựa trên mối liên quan giữa dữ kiện
@@ -527,52 +510,19 @@ Warner MJ, Hutchison J, Varacallo M. Bell Palsy. [Updated 2023 Aug 17]
 # o Biến chứng
 # o Bệnh kèm theo
 
-# Cấu trúc bệnh án nội khoa
-# 1. Hành chính
-# 8. Đặt vấn đề
-# 2. Lý do nhập viện
-# 9. Biện luận
-# 3. Bệnh sử
-# 10. CĐ sơ bộ và CĐ phân biệt
-# 4. Tiền căn
-# 11. Đề nghị CLS và kết quả CLS
-# 5. Lược qua các cơ quan
-# 12. Chẩn đoán xác định
-# 6. Khám lâm sàng
-# 13. Điều trị
-# 7. Tóm tắt bệnh án
-# 14. Tiên lượng
-1. Med Care. 1981 Mar;19(3):310 - 5
-2. Perspect Health Inf Manag. 2021 Oct 1;18(4):1h
 
 # Điều trị
-# • Nguyên tắc điều trị .
-# • Điều trị cụ thể :
-# o Điều trị cấp cứu .
-# o Điều trị nội viện .
-# o Điều trị sau xuất viện :
-# ▪ Kế hoạch lâu dài .
-# ▪ Điều trị thuốc .
-# ▪ Điều trị không thuốc .
-# • Đánh giá kết quả điều trị .
+• Nguyên tắc điều trị .
+• Điều trị cụ thể :
+	o Điều trị cấp cứu .
+	o Điều trị nội viện .
+	o Điều trị sau xuất viện :
+▪ Kế hoạch lâu dài .
+▪ Điều trị thuốc .
+▪ Điều trị không thuốc .
+Đánh giá kết quả điều trị .
 
-# Cấu trúc bệnh án nội khoa
-# 1. Hành chính
-# 8. Đặt vấn đề
-# 2. Lý do nhập viện
-# 9. Biện luận
-# 3. Bệnh sử
-# 10. CĐ sơ bộ và CĐ phân biệt
-# 4. Tiền căn
-# 11. Đề nghị CLS và kết quả CLS
-# 5. Lược qua các cơ quan
-# 12. Chẩn đoán xác định
-# 6. Khám lâm sàng
-# 13. Điều trị
-# 7. Tóm tắt bệnh án
-# 14. Tiên lượng
-1. Med Care. 1981 Mar;19(3):310 - 5
-2. Perspect Health Inf Manag. 2021 Oct 1;18(4):1h
+
 
 # Tiên lượng
 # • Tiên lượng gần :
@@ -587,36 +537,8 @@ Warner MJ, Hutchison J, Varacallo M. Bell Palsy. [Updated 2023 Aug 17]
 # • Tiên lượng : Tốt, xấu, dè dặt, tử vong .
 
 # Kết luận
-# • Bệnh án là văn bản ghi nhận các thông tin về bệnh nhân, phục vụ
-# cho quá trình chẩn đoán và điều trị .
-# • Bệnh án là phương tiện hiệu quả giúp sinh viên, học viên trong
-# quá trình thực hành lâm sàng và lượng giá lâm sàng .
+- # • Bệnh án là văn bản ghi nhận các thông tin về bệnh nhân, phục vụ
+- # cho quá trình chẩn đoán và điều trị .
+- # • Bệnh án là phương tiện hiệu quả giúp sinh viên, học viên trong
+- # quá trình thực hành lâm sàng và lượng giá lâm sàng .
 
-# QUỐC HỘI CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
-Luật số: 15/2023/QH15 Độc lập - Tự do - Hạnh phúc Ñ Ñ —  —<ÍỞ — Điều 69. Hỗ sơ bệnh án
-1. Người bệnh điều trị nội trú, điều trị ban ngày và điều trị ngoại trú trong
-LUẬT các cơ sở khám bệnh, chữa.  N được lập, cập nhật hồ sơ bệnh án.
-KHÁM BỆNH, CHỮA BỆNH Hồ sơ bệnh án được lập bằng giấy hoặc bạn điện tử có giá trị pháp lý như
-- S nhau. Mẫu hồ sơ bệnh án và mẫu bản tóm tắt hồ sơ bệnh án do Bộ trưởng Bộ Ÿ
-PIN NPEIRPRP tế ban hành.
-Căn cứ Hiên pháp nước Cộng hoà xã hội chủ nghĩa Việt Nam; 2. Hồ sơ bệnh án phải dược lưu giữ và giữ bí mật theo quy định của pháp Quốc hội ban hành Luật Khám bệnh, chữa bệnh. luật; trường hợp hồ sơ bệnh án thuộc phạm vi bí mật nhà nước thì thực hiện theo quy định của pháp luật về bảo vệ bí mật nhà nước. Việc lưu trữ hồ sơ bệnh án được thực hiện theo quy định của pháp luật về lưu trữ.
-3, Việc khai thác hồ sơ bệnh án đang trong quá trình điêu trị được thực hiện :
-như sau: a) Học sinh, sinh viên, học viên, nghiên cứu viên của các cơ sở nghiên cứu, cơ sở đảo tạo, người hành nghề, người trực tiếp tham gia điều trị người bệnh trong cơ sở khám bệnh, chữa bệnh được đọc nhưng chỉ được sao chép khi có sự đồng ý của cơ sở khám bệnh, chữa bệnh;
-4. Việc khai thác hồ sơ bệnh án đã hoàn thành quá trình điều trị và được
-chuyễn lưu trữ được thực hiện như sau: . .
-b) Học sinh, sinh viên, học viên, nghiên cứu viên của các cơ sở nghiên cứu, cơ sở đào tạo, người hành nghề trong cơ sở khám bệnh, chữa bệnh được mượn hồ
-### sơ bệnh án tại chỗ đề đọc hoặc sao chép phục vụ cho việc nghiên cứu hoặc công
-tác chuyên môn kỹ thuật khi có sự đồng ý của cơ sở khám bệnh, chữa bệnh;
-
-# f2 CÁ; cíýa Xuân #7D3
-
-ĐẠI HỌC Y DƯỢC TPHCM "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NĂM.
-# KHOA Y Độc lập = Tự do ~ Hanh nhúc Giãng viên hướn| Giáng viên hướn 7
-## BỘ MÔN NỘI TÔNG QUÁT --t---- | =Ị=se==|— Xi
-TP Hỗ Chỉ Minh, ngày 26 tháng 07 năm 2023 LÍ. | BS.CEO Thể BS Và Thị Hạnh Như B8. Hà 'ThS.BS Nguyễn Thị Nhã Đoan . — .:_-— TS.BST Th§S.BS Đặng Minh Luân LỊCH SINH HOẠT BÁC SĨ NỌI TRỤ VÀ SAU ĐẠI HỌC ThS.BS ThS.BS Võ Phạm Phương Uyên BỘ MÔN NỘI TÓNG QUÁẮT NĂM 2023-2024 TSBSE ThS.BS Lưu Ngọc Mai PGSTSBS Trân | IS.BSL 'ThS.BS Huỳnh Mạnh Tiền NI § ng v |Ths.Bs BS.CK2 Lê Đình Quang L Lịch sinh hoạt Bác sĩ nội trú và Sau Đại học 4.1 29122023 TT ThSBS BS Hà Thúc Nhượng - gu Giáng | Thư ký phụ nh ưương | Tng ps TS.BS Trương Phi Hùng TT Thời ni in .BS .BS Trương Phi Hùng gian K-S. Giảng viên tham luậ E. Phi Hùng ThS.BS ThS.BS Lý Quang Sang.
-TS BS Trương Phí Hùng ThS.BS TS BS Huỳnh Ngọc Phương Thảo ThS.BS Lý Quang Sang Tan, PGS.TS .BS Trần T- h8 14 Phạn Ngọ mì TS.BS Lê Khắc Bảo s ThBEA Hưng | mgpsNgg ta yên Y GĐI v
-### án Thì Thuý Tư TSBST 31032024 | Thận \gỏ Bích Tuyể -
-„| Th&.BS Trần Thị Thuý Tưởng ươm S Ngô Bích Tuyển i ĩ PGSTSBSLS |Thềng Nguyễn Hỗ am SỐ ThS.BS ti l 8 |Th§.BS Bùi Thị Ngọc Yên Ñ ; | Thượng Vũ ThS Bề Ngô Nguyễn Hải Thanh TS.BSL ThS.BS Nguyễn Sơn Lâm 29092023 | HöHấp |TS.HS Dương | Thế BS Nguyễn Đăng Khoa ĐGDĐ | Trình ThS.BS 'ThS.BS Nguyễn Thị Thu Thủy Phi Hùng Bề CKO Bài Xuân Phác PGSTS.BSLê |ThS.BS 'ThS.BS Lễ Nguyễn Xuân Điền H 4 Hải Thượng Vũ ThS.BS ThS.BS Trần Minh Hoài BS.CK2 Âu Thanh Tì Li lon BS CR2 Tần Ngọc Thái Hoà $ | 2901293 | HôHÍp |[rspgTrương |ThSpS TS.BS Trương Phi Hùng BS .CK2 Lê Thị Km Chỉ Phi Hùng BS.CR2 ThS.BS Lý Quang Sang BS.CK2 Dương Minh Ngọc BS.CK2 'TS.BS Lê Khắc Bảo 'GS.TS.B§ Trương Quang Bình BC? „  |ThS.BS Trần Thị Thuý Tưởng PGS.TS.BS Trần Kim Trang B. _. T8 hà LẺ Thể Bề Nguên Hỗ lan Thanh 'TS.BS Trần Hỏa > 28/06/2024. | Hô Hải In SN E B5 Khonx GĐI Sinh 'TS.BS Trương Phi Hùng Tháng 2/2024; TẾt Mạ P |TsBSTrươg |Th§BS Nguyễn Đăng Khoa „ 'TS.BS Nguyễn Đức Khánh Phi Hùng BS.CK2 Bùi Xuân Phúc 'ThS.BS Vũ Hoàng Vũ GSTSI BS.CK2 Âu Thanh Tùng 'ThS.BS Nguyễn Trường Duy. PGS.TS BS CK2 Trần Ngọc Thái Hoà ThS.BS Nguyễn Trần Tuyết Trình TSBS1 BS.CK2 Lê Thị Kim Chí PGSTS.BS ThS.BS Trần Công Duy TS.BS1 BS CK2 Dương Minh Ngọc 2 | 27102023 | Tìm mạch | pos Van sỹ | TRS BS Nguyễn Đỉnh Quốc Anh li vì TS5.BS` . 3 | ThS.BS Nguyễn Ngọc Thanh Vân ThS.BS ThS.BS Trần Đại Cường ThS BS II. Thành phải ThS.BS Nguyễn Minh Kha ThS.BS - : là " tham dự ThS.BS Lý Quang Sang PGSTSBS ThS.BS + Điều phỗi viên: TS.BS Trương Phi Hùng BS.CK2Lê Hoài Nam. 6 | 29/032024 | Tìnmeeh |HoosVansg |[hS.BS + Hỗ trợ chính: ThS.BS Lý Quang Sang BS.CK2 Bùi Cao Mỹ Ái Mộ n. * Quý Thầy Cô trong Bộ môn Nội Tổng quát ĐS.CKI Trân Thanh Tuần. s s_ Bác sĩ nội trú Bộ môn Nội Tổng quát BS .CKI Văn Thị Bích Thủy ThS.BS ên bắc 1 CR2, Cỉ á AI Tầng nuá BS CKI Trần Cao Cường ThSBS ® Học viên bác sĩ CK2, CKI, cao học Bộ môn Nội Tổng quát TS. BS Trương Phi Hùng BS.CK2 * Quý đồng nghiệp có quan tâm chương trình ThS.BS Lý Quang Sang BS.CK2 II. Địa chỉ PGS.TS.BS Bùi Hữu Hoàng BS.CKI \ PGSTSBS PGS.TS.BS Võ Duy Thống BS.CKI s Giảng đường Đại học Y Dược TPHCM (Quách Trọng 'ThS.BS Võ Thị Lương Trần BS.CKI * Thời gian: 13h30-16h00 các ngày trong lịch (thứ 6 tuần cuối mỗi thần,
-## g Bì gây trong gì
-3 | 21172023 | Tiêu Hóa | Đức 'ThS.BS Vũ Thị Hạnh Như GÐI Sinh PGSTS.BS TS.BST TS.BSTrơng | ThS.BS Nguyễn Thị Nhã Đoan (Quách Trọng ThS.BS CHỦ NHIỆM BỘ MÔN Phi Hùng ThS.BS Đăng Minh Luân 7 | 26/042024 | Tiêu Hóa | Đức PGS.TS EM BỘ MÔ) 'ThS.BS Võ Phạm Phương Uyên TSBSTưương |PGS.TS Ảng Văn Sỹ “ThS BS Lưu Ngọc Mai - Phi Hùng ThSBS PGS.TS BS Hoàng Văn Sỹ
-## ThS.BS Huỳnh Mạnh Tiền

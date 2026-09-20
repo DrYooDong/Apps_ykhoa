@@ -1,6 +1,6 @@
 # ==============================================================================
 # CLINIPORTAL NOTEBOOKLM — PROMPT 02: KHO PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN (KHO PDDT)
-# (TÁI CẤU TRÚC THEO 6 ĐẦU MỤC CHUẨN HÓA & BẢNG 4 CỘT LÂM SÀNG THỰC CHIẾN)
+# (TÁI CẤU TRÚC THEO 6 ĐẦU MỤC CHUẨN HÓA & BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ POMR)
 # PROMPT CHUNG DÙNG CHO MỌI BỆNH LÝ — ĐIỀN SẴN MẪU SỐT XUẤT HUYẾT DENGUE
 # ==============================================================================
 # MỤC ĐÍCH:
@@ -10,8 +10,8 @@
 # - Header tinh giản: Tên bệnh, ICD-10, Chuyên khoa, Nguồn văn bản (loại bỏ banner đỏ dài dòng)
 # - 6 Đầu mục chuẩn hóa:
 #   1. Phân loại (cá thể hoá): 1a Phân độ nặng nhẹ, 1b Phân độ biến chứng, 1c Đối tượng đặc biệt
-#   2. Phác đồ điều trị chi tiết (BẢNG 4 CỘT): Phân loại | Giai đoạn & Mục tiêu | Phác đồ & Y lệnh | Theo dõi
-#   3. Lưu ý lâm sàng: [1] Cảnh báo quan trọng, [2] Chống chỉ định (CCĐ), [3] Tiêu chuẩn xuất viện/chuyển tuyến
+#   2. Phác đồ điều trị chi tiết (BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ): 1. Vấn đề (LS/CLS/ĐT đặc hiệu/Biến chứng) | 2. Phác đồ & Y lệnh | 3. Theo dõi + Bảng biến chứng chung
+#   3. Lưu ý lâm sàng: 3.1 Chỉ định ĐT đặc hiệu, [1] Cảnh báo quan trọng, [2] Chống chỉ định (CCĐ), [3] Tiêu chuẩn xuất viện/chuyển tuyến
 #   4. Vấn đề người bệnh quan tâm: Tư vấn & giải thích bệnh (Kho TV: Teach-Back, Cờ đỏ, Bài trừ sai lầm, Dinh dưỡng)
 #   5. Kiến thức cho nhân viên y tế: 5a Cơ sở (GPSL/SLB), 5b Lâm sàng (DTH/CD/BC/Dược), 5c Guidelines EBM & RCTs
 #   6. Các ca bệnh liên quan: Hồ sơ ca thực chiến SOAP Markdown & Prompt AI hội chẩn tại giường
@@ -101,22 +101,76 @@ sources:
 
 ---
 
-## 2. 📋 Phác Đồ Điều Trị Chi Tiết (Bảng 4 Cột - Detailed Treatment Matrix)
+## 2. 📋 Phác Đồ Điều Trị Chi Tiết (Bảng 3 Cột Định Hướng Vấn Đề - Problem-Oriented Matrix)
 
-| Phân loại / Thể bệnh | Giai đoạn & Mục tiêu (Day Range & Goal) | Phác đồ & Y lệnh (Quy trình, Thuốc chuẩn, BHYT, DDI, Chỉnh liều eGFR) | Theo dõi (Lâm sàng & Cận lâm sàng) |
-| :--- | :--- | :--- | :--- |
-| **Độ 1: Thể nhẹ (Ngoại trú)** | **N1 – N3: Giai đoạn sốt cấp**<br>• Mục tiêu: Hạ sốt an toàn, bù nước Oresol PO, phát hiện sớm dấu hiệu cảnh báo trở nặng. | • **Paracetamol (BHYT)** 10–15 mg/kg PO q4–6h khi sốt $\ge 38.5^\circ\text{C}$ (Max 60 mg/kg/ngày, người lớn max 3 g/ngày).<br>• **Oresol chuẩn WHO (BHYT)** pha đúng 1 gói/1L nước đun sôi để nguội, uống 1500–2500 mL/ngày.<br>• Nghỉ ngơi tại giường, ăn nhẹ dễ tiêu, tránh thức ăn/nước uống màu sẫm.<br>• *Cảnh báo DDI*: Tuyệt đối không kết hợp NSAIDs/Aspirin.<br>• *eGFR < 30*: Giãn khoảng cách Paracetamol mỗi 8h. | • **LS**: Nhiệt độ & tri giác q4h; Lượng nước tiểu đảm bảo $\ge 1.0\text{ mL/kg/h}$.<br>• **CLS**: Công thức máu (CTM) theo dõi Hct và Tiểu cầu q24h; Test nhanh NS1 Ag (N1–N5). |
-| **Độ 2: Thể cảnh báo (Nội trú)** | **N4 – N5: Cửa sổ nguy hiểm**<br>• Mục tiêu: Ngăn ngừa sốc giảm thể tích, bù dịch tĩnh mạch có kiểm soát, theo dõi động học Hct. | • **Ringer Lactate (BHYT)** truyền tĩnh mạch theo bậc thang:<br>&nbsp;&nbsp;+ $6\text{–}7\text{ mL/kg/h}$ trong 1–2h đầu<br>&nbsp;&nbsp;+ $5\text{ mL/kg/h}$ trong 2–4h tiếp theo<br>&nbsp;&nbsp;+ $3\text{ mL/kg/h}$ trong 4–6h<br>&nbsp;&nbsp;+ $1.5\text{ mL/kg/h}$ trong 6–12h.<br>• Đánh giá lại sinh hiệu và Hct sau mỗi cữ dịch để quyết định hạ bậc hoặc nâng bậc.<br>• Ưu tiên **Ringer Acetate** khi men gan AST/ALT $\ge 400\text{ U/L}$. | • **LS**: Mạch, HA, Hiệu áp, CRT q2–4h; Nhận diện sớm hiệu áp kẹp $\le 20\text{ mmHg}$; Đo nước tiểu q2–4h (đích $\ge 0.5\text{–}1.0\text{ mL/kg/h}$).<br>• **CLS**: Hct trước và sau mỗi đợt chỉnh dịch; Men gan AST/ALT, Creatinine, Siêu âm bụng tìm dịch màng bụng/màng phổi. |
-| **Độ 3: Sốc Dengue (ICU)** | **N4 – N6: Hồi sức giờ vàng**<br>• Mục tiêu: Nâng HATT $\ge 90$, $\text{MAP} \ge 65$, Hiệu áp $> 20$, khôi phục tưới máu tạng, ngăn sốc kéo dài. | • **Giờ thứ 1 (Cắt cơn sốc)**: Ringer Lactate $15\text{–}20\text{ mL/kg/h}$ IV xả nhanh.<br>• *Nếu sốc mất bù ($HA = 0$)*: RL $20\text{ mL/kg}$ trong 15 phút.<br>• **Giờ thứ 2 trở đi**: Nếu Hct giảm và sinh hiệu cải thiện $\to$ giảm tinh thể xuống $10 \to 7.5 \to 5 \to 3\text{ mL/kg/h}$.<br>• *Nếu tái sốc hoặc Hct vẫn cao*: Chuyển **Cao phân tử Dextran 40 / HES 6% (BHYT)** $10\text{–}15\text{ mL/kg/h}$ trong 1h.<br>• *Nếu Hct tụt sâu ($< 35\%$)* nghi xuất huyết ẩn: Truyền khẩn **Khối hồng cầu lắng** $5\text{–}10\text{ mL/kg}$.<br>• **Vận mạch**: Noradrenaline qua bơm tiêm điện chỉ dùng khi đã bù đủ dịch lòng mạch (CVP $\ge 10\text{–}12$). | • **LS**: Sinh hiệu, SpO2, CRT mỗi 15–30 phút đến khi ra sốc; Đặt sonde tiểu theo dõi nước tiểu mỗi giờ (đích $\ge 1\text{ mL/kg/h}$).<br>• **CLS**: Đo Hct tại giường trước và sau mỗi cữ dịch; Khí máu động mạch (Lactate máu, toan chuyển hóa); Đông máu toàn bộ (PT/INR, APTT, Fibrinogen); Đo CVP. |
-| **Hồi phục (Sau sốc / N7-N8)** | **N7 – N8: Tái hấp thu dịch**<br>• Mục tiêu: Ngừng dịch truyền đúng thời điểm, phòng ngừa phù phổi cấp huyết động. | • **BẮT BUỘC NGỪNG DỊCH TRUYỀN TM** sau khi cắt sốc 24–48h hoặc khi bệnh nhân thèm ăn, tiểu nhiều.<br>• **Furosemide (BHYT)** 10–20 mg IV: CHỈ DÙNG khi có biểu hiện quá tải tuần hoàn / dọa phù phổi cấp VÀ huyết động đã hoàn toàn ổn định.<br>• Bồi hoàn dinh dưỡng lỏng mềm, bổ sung vitamin, hướng dẫn vận động nhẹ. | • **LS**: Đếm nhịp thở, nghe phổi tìm ran ẩm q4h, giám sát SpO2; Theo dõi nhịp tim chậm hồi phục (thường gặp, lành tính).<br>• **CLS**: CTM kiểm tra: Hct về bình thường, Tiểu cầu hồi phục $> 50\text{ G/L}$; X-quang phổi nếu nghi ngờ tràn dịch/phù phổi. |
+> **Hướng dẫn cấu trúc**:
+> 1. Phân loại (Mức độ / Phân tầng) và Giai đoạn & Mục tiêu được chuyển lên các thanh điều hướng phía trên; các giai đoạn điều trị được trình bày cuộn liên tục.
+> 2. Bảng gồm đúng 3 cột: **`1. Vấn đề`** | **`2. Phác đồ & y lệnh`** | **`3. Theo dõi`**.
+> 3. Cột `1. Vấn đề` bao gồm:
+>    - `🎯 [ĐIỀU TRỊ ĐẶC HIỆU]`: Nếu bệnh **chưa có** điều trị đặc hiệu $\to$ Cột 2 ghi: *"Chưa có điều trị đặc hiệu (nêu định hướng hỗ trợ & hồi sức)"*, Cột 3 để trống (`—`). Nếu bệnh **có** điều trị đặc hiệu $\to$ Ghi rõ phác đồ kèm note nhỏ chỉ định điều trị và nhắc lại kỹ trong *Mục 3. Lưu ý lâm sàng*.
+>    - `🩺 [LÂM SÀNG]`: Các bất thường triệu chứng lâm sàng thường gặp trong giai đoạn.
+>    - `🧪 [CẬN LÂM SÀNG]`: Các bất thường xét nghiệm / chẩn đoán hình ảnh độc lập (cô đặc máu, hạ tiểu cầu, toan kiềm...).
+>    - `⚠️ [BIẾN CHỨNG GIAI ĐOẠN]`: Biến chứng đặc thù riêng mà giai đoạn đó có thể có (tránh lặp lại giữa các giai đoạn).
+> 4. Chuẩn hóa viết tắt quốc tế: **`PLT`** (Tiểu cầu - Platelets), **`WBC`** (Bạch cầu - White Blood Cells), **`Hct`** (Hematocrit).
 
-*Ghi chú thực hành: Tích hợp thanh tiến độ thực thi y lệnh (%) và nút sao chép EMR chuẩn HIS để xuất y lệnh trực tiếp vào hồ sơ bệnh án điện tử.*
+### 2.1. Giai Đoạn 1: N1 – N3 (Giai đoạn Sốt cấp tính)
+🎯 **Mục tiêu lâm sàng**: Hạ sốt an toàn, bù nước Oresol PO sớm, kiểm soát thân nhiệt, phát hiện sớm cơ địa nguy cơ cao.
+
+| 1. Vấn đề | 2. Phác đồ & y lệnh | 3. Theo dõi |
+| :--- | :--- | :--- |
+| **🎯 [ĐIỀU TRỊ ĐẶC HIỆU]**<br>Điều trị căn nguyên virus Dengue | Chưa có thuốc điều trị đặc hiệu chống virus Dengue (chủ yếu bù nước, hạ sốt an toàn và hồi sức hỗ trợ theo dõi sát DHCB). | — |
+| **🩺 [LÂM SÀNG]**<br>Sốt cao liên tục $\ge 38.5^\circ\text{C}$ & Đau mỏi cơ khớp | • **Paracetamol (BHYT)** 10–15 mg/kg PO q4–6h khi sốt $\ge 38.5^\circ\text{C}$ (Max 60 mg/kg/ngày, người lớn max 3 g/ngày).<br>• Cấm tuyệt đối dùng Aspirin, Ibuprofen và các thuốc NSAIDs khác (nguy cơ XHTH nặng, toan máu). | • **Thân nhiệt (T°)**: q4h (Hạ sốt an toàn, tránh hạ nhiệt đột ngột).<br>• Khám dấu hiệu xuất huyết da niêm q12h. |
+| **🩺 [LÂM SÀNG]**<br>Mất nước qua da & Nguy cơ giảm thể tích sớm | • **Oresol chuẩn WHO (BHYT)** pha đúng tỷ lệ 1 gói/1L nước đun sôi để nguội, uống 1500–2500 mL/ngày.<br>• Bổ sung nước hoa quả tươi, nước cháo muối loãng; chưa truyền dịch tĩnh mạch khi người bệnh còn tự uống được.<br>• Nghỉ ngơi tại giường, ăn nhẹ dễ tiêu, tránh thức ăn/nước uống màu đỏ, nâu, đen (tránh nhầm lẫn XHTH). | • **Lượng nước tiểu 24h**: q4–6h (Đảm bảo $\ge 1.0\text{ mL/kg/h}$).<br>• Tri giác và vẻ mặt q4–6h. |
+| **🧪 [CẬN LÂM SÀNG]**<br>Xác định căn nguyên & Đánh giá trị số Hct, PLT nền | • Chỉ định lấy máu làm Test nhanh Dengue NS1 Ag và Tổng phân tích tế bào máu ngoại vi (CTM) thiết lập trị số Hct & PLT nền trước khi bước vào giai đoạn nguy hiểm. | • **NS1 Ag**: 1 lần trong N1–N5 (Dương tính khẳng định Dengue).<br>• **CTM (Hct, PLT, WBC)**: q24h (Hct nền ổn định, PLT $> 100\text{ G/L}$). |
+| **⚠️ [BIẾN CHỨNG GIAI ĐOẠN]**<br>Co giật do sốt cao (Trẻ em / Cơ địa co giật) | • Hạ sốt tích cực, nới rộng quần áo, lau mát bằng nước ấm.<br>• Nếu cơn co giật kéo dài $> 5$ phút: **Diazepam** 0.5 mg/kg bơm hậu môn hoặc 0.2 mg/kg IV chậm. | • Giám sát cơn co giật và tri giác liên tục trong cơn (Cắt cơn co giật, thở đều). |
+
+---
+
+### 2.2. Giai Đoạn 2: N4 – N6 (Giai đoạn Nguy hiểm & Thoát huyết tương)
+🎯 **Mục tiêu lâm sàng**: Phát hiện sớm Dấu hiệu cảnh báo (DHCB) & Sốc Dengue; Hồi sức dịch TTM nấc thang; Duy trì Hct 38–42%, MAP $\ge 65\text{ mmHg}$.
+
+| 1. Vấn đề | 2. Phác đồ & y lệnh | 3. Theo dõi |
+| :--- | :--- | :--- |
+| **🎯 [ĐIỀU TRỊ ĐẶC HIỆU]**<br>Điều trị căn nguyên virus Dengue | Chưa có điều trị đặc hiệu (hồi sức dịch truyền tĩnh mạch nấc thang đúng phác đồ là can thiệp cứu mạng cốt lõi). | — |
+| **🧪 [CẬN LÂM SÀNG]**<br>Thoát huyết tương & Cô đặc máu ($Hct \ge 20\%$ so với nền) | • **Ringer Lactate (RL) / Ringer Acetate (RA) (BHYT)** truyền tĩnh mạch bậc thang:<br>&nbsp;&nbsp;+ $6\text{–}7\text{ mL/kg/h}$ trong 1–3 giờ đầu<br>&nbsp;&nbsp;+ Giảm xuống $5\text{ mL/kg/h}$ (2–4h) nếu cải thiện<br>&nbsp;&nbsp;+ Giảm tiếp $3\text{ mL/kg/h}$ (2–4h) $\to 1.5\text{ mL/kg/h}$ rồi ngưng.<br>• Đánh giá lại sinh hiệu và Hct trước và sau mỗi nấc dịch. | • **Dung tích hồng cầu (Hct)**: Đo trước và sau mỗi nấc dịch (q1–2h) (Đích: Hct giảm ổn định về 38–42%).<br>• **Nước tiểu qua sonde Foley**: q1h (Duy trì $\ge 0.5\text{–}1.0\text{ mL/kg/h}$).<br>• **Siêu âm ngực/bụng**: q12–24h (Đánh giá tràn dịch màng phổi, báng bụng). |
+| **🩺 [LÂM SÀNG]**<br>Hạ sốt đột ngột kèm Mệt lả / Dấu hiệu cảnh báo (DHCB) | • Thở oxy qua gọng kính $2\text{–}4\text{ L/p}$ nếu $\text{SpO}_2 < 95\%$ hoặc thở co kéo.<br>• Lập sẵn 1–2 đường truyền tĩnh mạch lớn (G18–G20). Nằm đầu bằng, ủ ấm chi. | • **Mạch, Huyết áp, Hiệu áp**: q1–2h (DHCB) (Đích: Hiệu áp $> 20\text{ mmHg}$, an toàn $\ge 30\text{ mmHg}$, mạch rõ).<br>• **Thời gian đổ đầy mao mạch (CRT)**: q1–2h (Đích: $\text{CRT} < 2\text{s}$, chi ấm). |
+| **🧪 [CẬN LÂM SÀNG]**<br>Giảm tiểu cầu nhanh ($\text{PLT} < 50\text{ G/L}$) & Rối loạn đông máu | • Nghỉ ngơi tuyệt đối tại giường; tránh tiêm bắp, tránh đặt sonde mũi nếu không cấp thiết.<br>• KHÔNG truyền tiểu cầu dự phòng nếu không có xuất huyết nặng đe dọa sinh mạng trên lâm sàng. | • **Số lượng Tiểu cầu (PLT)**: q12–24h (Theo dõi tốc độ tụt PLT).<br>• Khám dấu hiệu xuất huyết niêm mạc/nội tạng q4h. |
+| **⚠️ [BIẾN CHỨNG GIAI ĐOẠN]**<br>Sốc sốt xuất huyết Dengue (Sốc mất bù / Tụt HA) | • **RL xả nhanh $15\text{–}20\text{ mL/kg/h}$** trong 1 giờ đầu.<br>• Nếu không ra sốc hoặc Hct tiếp tục tăng cao: Đổi ngay sang **Dung dịch Cao phân tử Dextran 40 / HES 6% (BHYT)** $10\text{–}15\text{ mL/kg/h}$. | • **Sinh hiệu, Mạch, HA**: q15–30 phút (Thoát sốc: Mạch rõ, $\text{HATT} \ge 90\text{ mmHg}$, Hiệu áp $> 20\text{ mmHg}$).<br>• **Hct cấp cứu tại giường**: q1h trong sốc. |
+| **⚠️ [BIẾN CHỨNG GIAI ĐOẠN]**<br>Xuất huyết tiêu hóa ồ ạt (Ói ra máu, đi cầu phân đen) | • Truyền **Khối hồng cầu lắng** $5\text{–}10\text{ mL/kg}$ khi Hct tụt nhanh.<br>• Truyền **Khối tiểu cầu (PLT)** khi $\text{PLT} < 50\text{ G/L}$ kèm xuất huyết nặng đe dọa tính mạng. | • Theo dõi màu sắc chất nôn, phân mỗi lần tiêu/nôn.<br>• **Hct & Đông máu toàn bộ (PT, aPTT, Fibrinogen)**: q6–12h. |
+
+---
+
+### 2.3. Giai Đoạn 3: N7 – N10 (Giai đoạn Hồi phục & Tái hấp thu)
+🎯 **Mục tiêu lâm sàng**: Ngăn ngừa quá tải dịch / Phù phổi cấp do tái hấp thu; Đánh giá tiêu chuẩn xuất viện an toàn.
+
+| 1. Vấn đề | 2. Phác đồ & y lệnh | 3. Theo dõi |
+| :--- | :--- | :--- |
+| **🎯 [ĐIỀU TRỊ ĐẶC HIỆU]**<br>Điều trị căn nguyên virus Dengue | Chưa có điều trị đặc hiệu (ngưng dịch truyền tĩnh mạch đúng thời điểm là can thiệp cốt lõi). | — |
+| **🩺 [LÂM SÀNG]**<br>Tái hấp thu dịch từ mô kẽ vào lòng mạch | • **NGƯNG TRUYỀN DỊCH TĨNH MẠCH HOÀN TOÀN** khi lâm sàng ổn định, người bệnh uống được và tiểu tốt để tránh nguy cơ phù phổi cấp.<br>• Ăn cháo, súp giàu dinh dưỡng; uống nước quả/nước lọc theo nhu cầu tự nhiên của cơ thể. | • **Dấu hiệu sinh tồn**: q8–12h (Mạch chậm dần — nhịp tim chậm sinh lý hồi phục, HA ổn định).<br>• **Ban hồi phục (Convalescent Rash)**: Quan sát hàng ngày (Ban đỏ viền trắng đảo da bình thường, tránh nhầm dị ứng thuốc). |
+| **🧪 [CẬN LÂM SÀNG]**<br>Tiểu cầu (PLT) hồi phục & Hct ổn định | • Đánh giá phục hồi tủy xương và tiêu chuẩn cho người bệnh ra viện an toàn. | • **CTM (Hct, Tiểu cầu PLT)**: q24h (Đích: $\text{PLT} > 50\text{ G/L}$, Hct trở về trị số nền bình thường). |
+| **⚠️ [BIẾN CHỨNG GIAI ĐOẠN]**<br>Quá tải dịch / Phù phổi cấp do truyền dịch khi tái hấp thu | • Ngưng ngay lập tức dịch truyền TM.<br>• Cho thở oxy qua cannula hoặc mask.<br>• Tiêm tĩnh mạch chậm **Furosemide (BHYT)** 10–20 mg khi huyết động đã hoàn toàn ổn định. | • **Khám phổi, nhịp thở, SpO2**: q1–2h (Đích: Hết ran ẩm đáy phổi, $\text{SpO}_2 \ge 95\%$ thở khí phòng). |
+
+---
+
+### 2.4. 🚨 Bảng Theo Dõi & Xử Trí Biến Chứng Chung (Xuyên Suốt Các Giai Đoạn)
+> *Bảng đặt ở cuối Phần 2, tổng hợp các biến chứng toàn thân, biến chứng do thủ thuật hoặc bội nhiễm có thể xảy ra ở bất kỳ thời điểm nào của bệnh, giúp bác sĩ rà soát toàn diện tránh bỏ sót:*
+
+| 1. Vấn đề biến chứng | 2. Hướng xử trí & Y lệnh cấp cứu | 3. Theo dõi phát hiện sớm |
+| :--- | :--- | :--- |
+| **⚠️ Toan chuyển hóa & Tăng Lactate máu nặng**<br>*(Do thiếu tưới máu mô kéo dài khi sốc)* | • Khẩn trương hồi sức phục hồi thể tích tuần hoàn và tưới máu mô.<br>• Bù **Natri Bicarbonate 4.2% hoặc 8.4% IV** theo công thức khi toan máu nặng ($\text{pH} < 7.15$ hoặc $\text{HCO}_3^- < 10\text{ mmol/L}$). | • **Khí máu động mạch (KMĐM)**: q2–4h (Đánh giá pH, Lactate máu, $\text{HCO}_3^-$).<br>• Giám sát $\text{SpO}_2$ liên tục. |
+| **⚠️ Tổn thương gan cấp nặng**<br>*(AST/ALT $\ge 1000\text{ U/L}$, Suy tế bào gan)* | • **N-Acetylcysteine (NAC)** truyền tĩnh mạch theo phác đồ suy gan cấp.<br>• Dinh dưỡng tĩnh mạch giàu Glucose (Glucose 10–20%).<br>• Ngưng ngay toàn bộ các thuốc có độc tính trên gan. | • **Men gan AST, ALT, Bilirubin, INR, Đường huyết mao mạch**: q24–48h.<br>• Khám tri giác phát hiện sớm bệnh não gan. |
+| **⚠️ Xuất huyết tạng nặng & Rối loạn đông máu (DIC)** | • Truyền Khối hồng cầu lắng bù thể tích thiếu hụt.<br>• Truyền Khối tiểu cầu (PLT) khi $\text{PLT} < 50\text{ G/L}$ kèm xuất huyết nặng.<br>• Truyền **Huyết tương tươi đông lạnh (FFP)** $10\text{–}15\text{ mL/kg}$ nếu $\text{INR} > 1.5$. | • **CTM (Hct, PLT), Fibrinogen, PT/INR**: q6–12h.<br>• Theo dõi màu sắc phân, dịch dạ dày, các vết tiêm truyền. |
+| **⚠️ Nhiễm trùng huyết thứ phát / Bội nhiễm vi khuẩn** | • Cấy máu 2 vị trí, cấy nước tiểu, cấy đàm trước khi dùng kháng sinh.<br>• Khởi đầu kháng sinh phổ rộng theo kinh nghiệm (**Ceftriaxone** hoặc **Piperacillin/Tazobactam**). | • **CTM (WBC, Neutrophil%), CRP, Procalcitonin**.<br>• Theo dõi cấy vi sinh sau 48–72 giờ. |
 
 ---
 
 ## 3. ⚠️ Lưu Ý Lâm Sàng & An Toàn Người Bệnh (Clinical Cautions & Safety)
 
-### 3.1. [1] Cảnh Báo Quan Trọng (Critical Warnings)
+### 3.1. 🎯 Chỉ Định & Lưu Ý Điều Trị Đặc Hiệu (Etiological & Specific Therapy)
+- **Căn nguyên virus Dengue**: Hiện tại **CHƯA CÓ THUỐC ĐIỀU TRỊ ĐẶC HIỆU** (kháng virus) được phê duyệt. Can thiệp điều trị tập trung 100% vào hồi sức bù dịch nấc thang, kiểm soát triệu chứng và phát hiện sớm các dấu hiệu cảnh báo.
+- **Cảnh báo lạm dụng thuốc**: Tuyệt đối KHÔNG sử dụng Corticoid, Kháng sinh hoặc thuốc kháng virus bừa bãi khi chưa có bằng chứng đồng nhiễm khuẩn rõ ràng.
+
+### 3.2. [1] Cảnh Báo Quan Trọng (Critical Warnings)
 - 🚨 **Cạm bẫy chuyển giai đoạn khi hết sốt**: Thời điểm hết sốt (ngày 4–6) KHÔNG PHẢI là khỏi bệnh mà chính là thời điểm bắt đầu cửa sổ thoát huyết tương vào sốc nguy hiểm nhất!
 - 🚨 **Phòng ngừa phù phổi cấp quá tải thể tích**: Quá tải dịch truyền là nguyên nhân hàng đầu gây tử vong ở trẻ em và người già trong giai đoạn tái hấp thu (ngày 6–7). Tuyệt đối không truyền dịch duy trì khi huyết động đã ổn định.
 - 🚨 **Nhận diện sớm hiệu áp kẹp**: Hiệu áp $\le 20\text{ mmHg}$ (ví dụ $100/80\text{ mmHg}$) là dấu hiệu dọa sốc khẩn cấp, cần can thiệp xả dịch ngay trước khi huyết áp tụt hẳn về 0.

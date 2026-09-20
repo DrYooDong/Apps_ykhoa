@@ -6,6 +6,7 @@ import {
   MessageSquare,
   Search,
 } from 'lucide-react';
+import { PatientPhenotype } from '../types.ts';
 import { VAULT_CATALOG, getKnowledgeVaultWebUrl } from '../lib/vaultBridge.ts';
 
 interface PatientCounselingProps {
@@ -14,12 +15,14 @@ interface PatientCounselingProps {
   patientAge?: string;
   patientGender?: string;
   prescribedDrugs?: string[];
+  patientPhenotype?: PatientPhenotype;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
 }
 
 export const PatientCounselingPanel: React.FC<PatientCounselingProps> = ({
   diseaseName,
   icd10,
+  patientPhenotype,
   onOpenVaultDrawer,
 }) => {
   // Find matching TV article in Vault Catalog (Kho Tư Vấn - TV)
@@ -132,6 +135,43 @@ export const PatientCounselingPanel: React.FC<PatientCounselingProps> = ({
           </div>
         )}
       </div>
+
+      {/* Cá thể hóa nội dung dặn dò theo Kiểu hình bệnh nhân (PCSE) */}
+      {patientPhenotype && (
+        <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-lg flex flex-col gap-2">
+          <div className="font-bold text-xs text-amber-950 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+            <span>Trọng tâm dặn dò cá thể hóa theo cơ địa ({patientPhenotype.ageLabel}):</span>
+          </div>
+
+          <ul className="text-xs text-slate-800 space-y-1.5 leading-relaxed">
+            {patientPhenotype.isPregnant && (
+              <li className="flex items-start gap-1.5">
+                <span className="text-amber-600 font-bold shrink-0">•</span>
+                <span><b>Thai kỳ:</b> Hướng dẫn thai phụ đếm cử động thai (ít nhất 4 lần/giờ khi nằm nghỉ). Nếu có đau bụng từng cơn, ra huyết âm đạo hoặc sốt cao liên tục phải nhập viện cấp cứu ngay.</span>
+              </li>
+            )}
+            {(patientPhenotype.ageCategory === 'pediatric' || patientPhenotype.ageCategory === 'infant') && (
+              <li className="flex items-start gap-1.5">
+                <span className="text-blue-600 font-bold shrink-0">•</span>
+                <span><b>Trẻ em:</b> Bù dịch Oresol từng thìa nhỏ, không ép uống nhiều một lúc gây nôn. Theo dõi số lần ướt tã (ít nhất 4–6 lần/ngày) và đưa đi viện ngay nếu trẻ li bì, khó đánh thức hoặc co giật.</span>
+              </li>
+            )}
+            {patientPhenotype.ageCategory === 'elderly' && (
+              <li className="flex items-start gap-1.5">
+                <span className="text-amber-600 font-bold shrink-0">•</span>
+                <span><b>Người cao tuổi:</b> Tránh thay đổi tư thế đột ngột phòng ngừa hạ huyết áp tư thế và té ngã. Uống nước ấm từng ngụm rải đều trong ngày, không uống dồn lượng lớn nước một lúc.</span>
+              </li>
+            )}
+            {patientPhenotype.hasRenalRisk && (
+              <li className="flex items-start gap-1.5">
+                <span className="text-rose-600 font-bold shrink-0">•</span>
+                <span><b>Chức năng thận giảm:</b> Theo dõi lượng nước tiểu 24 giờ. Tuyệt đối không tự ý mua các thuốc giảm đau kháng viêm (Ibuprofen, Diclofenac, Naproxen) hoặc thuốc nam không rõ nguồn gốc.</span>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

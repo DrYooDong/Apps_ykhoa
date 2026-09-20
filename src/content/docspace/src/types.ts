@@ -267,3 +267,42 @@ export interface GuidelineRecommendationItem {
   matchReason: string;
 }
 
+// ==============================================================================
+// 🧬 PERSONALIZED CLINICAL STRATIFICATION ENGINE (PCSE) TYPES
+// ==============================================================================
+export type AgeCategory = 'neonatal' | 'infant' | 'pediatric' | 'adolescent' | 'adult' | 'elderly';
+export type CkdStage = 'G1' | 'G2' | 'G3a' | 'G3b' | 'G4' | 'G5' | 'Normal';
+
+export interface PatientPhenotype {
+  age?: number;
+  ageCategory: AgeCategory;
+  ageLabel: string;
+  gender: Gender;
+  isPregnant?: boolean;
+  bmi?: number;
+  bmiCategory?: 'Underweight' | 'Normal' | 'Overweight' | 'Obese';
+  eGfr?: number;
+  ckdStage?: CkdStage;
+  hasRenalRisk: boolean;
+  hasHepaticRisk: boolean;
+  activeGradeIdx: number;
+  activeGradeTitle?: string;
+  activeComplicationsCount: number;
+  keyAlerts: string[];
+}
+
+export interface AppliedComplicationAction {
+  id: string;
+  name: string;
+  orders: string[];
+  monitoring: string;
+  urgency: 'stat' | 'urgent' | 'routine';
+}
+
+export interface AppliedDoseAdjustment {
+  type: 'renal' | 'hepatic' | 'pediatric' | 'pregnancy' | 'elderly';
+  title: string;
+  rule: string;
+  cautions: string[];
+  contraindicatedDrugs?: string[];
+}

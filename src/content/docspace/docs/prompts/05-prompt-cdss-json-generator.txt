@@ -10,13 +10,16 @@
 # Sau đó chỉ cần chạy: node tools/scripts/build-enriched-cdss.mjs
 # Hệ thống sẽ tự động bundle vào Chu trình lâm sàng (Bước 3 & Bước 4)!
 #
-# 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING CHO 6 ĐẦU MỤC & BẢNG 4 CỘT BƯỚC 4):
+# 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING CHO 6 ĐẦU MỤC & BẢNG 3 CỘT BƯỚC 4):
 #   • "criteria": Ánh xạ vào BƯỚC 3 (Tiêu chuẩn phân độ lâm sàng) & Mục 1a Bước 4 (Phân độ nặng nhẹ).
 #     BẮT BUỘC chứa các tiền tố bóc tách: [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn],
 #     [Dấu hiệu cảnh báo]. TUYỆT ĐỐI KHÔNG chứa tuyến tiếp nhận, xử trí hay mục tiêu sinh hiệu tại đây!
 #   • "specialPopulations": Ánh xạ vào Mục 1c Bước 4 (Đối tượng đặc biệt: Người cao tuổi, Trẻ em, Thai phụ, Suy thận eGFR, Suy gan).
-#   • "timelinePhases": Ánh xạ trực tiếp vào BẢNG 4 CỘT tại Mục 2 Bước 4 (Lộ trình chi tiết từng ngày: Giai đoạn & Mục tiêu, Phác đồ & Y lệnh, Theo dõi LS & CLS).
-#   • "clinicalCautions": Ánh xạ vào Mục 3 Bước 4 ([1] Cảnh báo quan trọng, [2] Chống chỉ định CCĐ, [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến).
+#   • "timelinePhases": Ánh xạ trực tiếp vào BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ tại Mục 2 Bước 4:
+#     - Phân loại (Mức độ) và Giai đoạn & Mục tiêu nằm ở các thanh điều hướng phía trên bảng.
+#     - Bảng 3 cột: 1. Vấn đề (ĐT đặc hiệu, Lâm sàng, Cận lâm sàng, Biến chứng riêng giai đoạn) | 2. Phác đồ & Y lệnh | 3. Theo dõi (nếu chưa có ĐT đặc hiệu thì cột này bỏ trống).
+#   • "generalComplications": BẢNG BIẾN CHỨNG CHUNG riêng biệt đặt ở cuối Mục 2 (Xuyên suốt các giai đoạn).
+#   • "clinicalCautions": Ánh xạ vào Mục 3 Bước 4 (3.1 Chỉ định ĐT đặc hiệu, [1] Cảnh báo quan trọng, [2] Chống chỉ định CCĐ, [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến).
 #   • "vaultPathways": Ánh xạ vào Mục 5 & 6 Bước 4 (Kiến thức nhân viên y tế & Ca bệnh liên quan).
 # ==============================================================================
 
@@ -242,13 +245,72 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       "cautions": "[Nguy cơ suy gan cấp và bệnh não gan]"
     }
   ],
-  // MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (BẢNG 4 CỘT - TIMELINE PHASES)
+  // MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ - TIMELINE PHASES)
   "timelinePhases": [
     {
       "id": "phase_1",
       "dayRange": "N1 - N3",
       "phaseName": "[Tên giai đoạn 1: ví dụ Giai đoạn Sốt cấp tính]",
       "clinicalGoal": "[Mục tiêu lâm sàng: Hạ sốt an toàn, bù nước Oresol PO, phát hiện sớm dấu hiệu chuyển độ]",
+      "problems": [
+        {
+          "id": "p1_spec",
+          "problemName": "Điều trị đặc hiệu",
+          "problemType": "specific",
+          "isNoSpecificTreatment": true, // Nếu bệnh chưa có ĐT đặc hiệu thì true, nếu có thì false kèm phác đồ và chỉ định
+          "treatments": [
+            { "category": "ĐT Đặc hiệu", "content": "Chưa có điều trị đặc hiệu (chủ yếu bù dịch, hạ sốt an toàn & hồi sức hỗ trợ)." }
+          ],
+          "monitoring": [] // Để trống hoàn toàn nếu chưa có ĐT đặc hiệu
+        },
+        {
+          "id": "p1_fever",
+          "problemName": "Sốt cao liên tục & Đau nhức cơ khớp",
+          "problemType": "clinical",
+          "treatments": [
+            { "category": "Hạ sốt", "content": "Paracetamol 10-15 mg/kg khi sốt >= 38.5°C, cách mỗi 4-6h (tối đa 60 mg/kg/ngày hoặc 3g/ngày người lớn).", "isHighlighted": true }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Thân nhiệt (T°)", "frequency": "q4h", "target": "Hạ sốt an toàn, tránh hạ nhiệt đột ngột" }
+          ]
+        },
+        {
+          "id": "p1_dehydration",
+          "problemName": "Mất nước qua da & Nguy cơ giảm thể tích tuần hoàn sớm",
+          "problemType": "clinical",
+          "treatments": [
+            { "category": "Bù dịch uống", "content": "Oresol pha chuẩn 1500-2500 mL/ngày + nước hoa quả/cháo loãng. Không truyền dịch TM khi tự uống được." }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Lượng nước tiểu 24h", "frequency": "q4-6h", "target": "Duy trì >= 1.0 mL/kg/h" }
+          ]
+        },
+        {
+          "id": "p1_baseline_labs",
+          "problemName": "Xác định căn nguyên & Đánh giá Hct, PLT nền",
+          "problemType": "paraclinical",
+          "treatments": [
+            { "category": "Chỉ định CLS", "content": "Test nhanh NS1 Ag và CTM thiết lập trị số Hct & PLT nền trước khi vào giai đoạn nguy hiểm." }
+          ],
+          "monitoring": [
+            { "type": "CLS", "metric": "Công thức máu (Hct, PLT, WBC)", "frequency": "q24h", "target": "Hct nền ổn định, theo dõi PLT" },
+            { "type": "CLS", "metric": "Xét nghiệm căn nguyên (NS1 Ag)", "frequency": "1 lần (N1-N5)", "target": "Xác chẩn căn nguyên" }
+          ]
+        }
+      ],
+      "phaseComplications": [
+        {
+          "id": "p1_comp_seizure",
+          "problemName": "Co giật do sốt cao (Trẻ em hoặc cơ địa sốt co giật)",
+          "problemType": "complication",
+          "treatments": [
+            { "category": "Cấp cứu co giật", "content": "Hạ sốt tích cực; Diazepam 0.5 mg/kg bơm hậu môn nếu co giật > 5 phút." }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Cơn co giật & Tri giác", "frequency": "Liên tục trong cơn", "target": "Cắt cơn co giật, thở đều" }
+          ]
+        }
+      ],
       "treatments": [
         { "category": "Hạ sốt", "content": "Paracetamol 10-15 mg/kg khi sốt >= 38.5°C, cách mỗi 4-6h (tối đa 60 mg/kg/ngày hoặc 3g/ngày người lớn).", "isHighlighted": true },
         { "category": "Bù dịch uống", "content": "Oresol pha chuẩn 1500-2500 mL/ngày + nước hoa quả/cháo loãng. Không truyền dịch TM khi tự uống được." },
@@ -257,8 +319,8 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       "monitoring": [
         { "type": "LS", "metric": "Thân nhiệt & Tri giác", "frequency": "q4h", "target": "Hạ sốt an toàn, tỉnh táo" },
         { "type": "LS", "metric": "Lượng nước tiểu 24h", "frequency": "q4-6h", "target": "Duy trì >= 1.0 mL/kg/h" },
-        { "type": "CLS", "metric": "Công thức máu (Hct, Tiểu cầu, Bạch cầu)", "frequency": "q24h", "target": "Hct nền ổn định, theo dõi tiểu cầu" },
-        { "type": "CLS", "metric": "Xét nghiệm căn nguyên (NS1 Ag / PCR)", "frequency": "1 lần (N1-N5)", "target": "Xác chẩn căn nguyên" }
+        { "type": "CLS", "metric": "Công thức máu (Hct, PLT, WBC)", "frequency": "q24h", "target": "Hct nền ổn định, theo dõi PLT" },
+        { "type": "CLS", "metric": "Xét nghiệm căn nguyên (NS1 Ag)", "frequency": "1 lần (N1-N5)", "target": "Xác chẩn căn nguyên" }
       ],
       "cautionsAndDischarge": {
         "cautions": ["[Cấm dùng NSAIDs/Aspirin]", "[Tái khám mỗi ngày hoặc khi có cờ đỏ]"],
@@ -269,7 +331,67 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       "id": "phase_2",
       "dayRange": "N4 - N6",
       "phaseName": "[Tên giai đoạn 2: ví dụ Giai đoạn Nguy hiểm / Thoát huyết tương]",
-      "clinicalGoal": "[Mục tiêu lâm sàng: Duy trì thể tích lòng mạch, ngừa sốc mất bù, phát hiện và xử trí xuất huyết sớm]",
+      "clinicalGoal": "[Mục tiêu lâm sàng: Duy trì thể tích lòng mạch, ngừa sốc mất bù, kiểm soát Hct 38-42%]",
+      "problems": [
+        {
+          "id": "p2_spec",
+          "problemName": "Điều trị đặc hiệu",
+          "problemType": "specific",
+          "isNoSpecificTreatment": true,
+          "treatments": [
+            { "category": "ĐT Đặc hiệu", "content": "Chưa có điều trị đặc hiệu (hồi sức dịch truyền tĩnh mạch nấc thang là can thiệp cứu mạng cốt lõi)." }
+          ],
+          "monitoring": []
+        },
+        {
+          "id": "p2_leak",
+          "problemName": "Thoát huyết tương & Cô đặc máu (Hct tăng >= 20%)",
+          "problemType": "paraclinical",
+          "treatments": [
+            { "category": "Dịch truyền TM bậc thang", "content": "Ringer Lactate 6-7 -> 5 -> 3 -> 1.5 mL/kg/h dựa trên đáp ứng sinh hiệu và Hct.", "isHighlighted": true }
+          ],
+          "monitoring": [
+            { "type": "CLS", "metric": "Hematocrit tại giường", "frequency": "Trước & sau mỗi cữ dịch truyền", "target": "Hct giảm ổn định về 38-42%" },
+            { "type": "LS", "metric": "Lượng nước tiểu qua sonde Foley", "frequency": "q1h", "target": ">= 0.5 - 1.0 mL/kg/h" }
+          ]
+        },
+        {
+          "id": "p2_warning",
+          "problemName": "Hạ sốt đột ngột kèm Mệt lả / Dấu hiệu cảnh báo DHCB",
+          "problemType": "clinical",
+          "treatments": [
+            { "category": "Hỗ trợ hô hấp & Cấp cứu", "content": "Thở oxy qua gọng kính 2-4 L/p khi SpO2 < 95% hoặc thở co kéo. Lập 1-2 đường truyền TM lớn (G18-G20)." }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Mạch, HA, Hiệu áp, CRT", "frequency": "q1-2h khi dọa sốc, q15-30p khi sốc", "target": "HATT >= 90, Hiệu áp > 20 mmHg, CRT < 2s" }
+          ]
+        },
+        {
+          "id": "p2_thrombocytopenia",
+          "problemName": "Giảm tiểu cầu nhanh (PLT < 50 G/L) & Rối loạn đông máu",
+          "problemType": "paraclinical",
+          "treatments": [
+            { "category": "Hạn chế can thiệp xâm lấn", "content": "Nghỉ ngơi tại giường, tránh tiêm bắp. Không truyền PLT dự phòng nếu không có xuất huyết nặng." }
+          ],
+          "monitoring": [
+            { "type": "CLS", "metric": "Số lượng Tiểu cầu (PLT)", "frequency": "q12-24h", "target": "Theo dõi tốc độ tụt PLT" }
+          ]
+        }
+      ],
+      "phaseComplications": [
+        {
+          "id": "p2_comp_shock",
+          "problemName": "Sốc sốt xuất huyết Dengue (Sốc mất bù / Tụt huyết áp)",
+          "problemType": "complication",
+          "treatments": [
+            { "category": "Hồi sức chống sốc", "content": "RL xả nhanh 15-20 mL/kg/h giờ đầu; chuyển Cao phân tử Dextran 40 10-15 mL/kg/h nếu tái sốc hoặc kháng tinh thể.", "isHighlighted": true }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Sinh hiệu, Mạch, HA", "frequency": "q15-30 phút", "target": "Thoát sốc: Mạch rõ, HATT >= 90 mmHg, Hiệu áp > 20 mmHg" },
+            { "type": "CLS", "metric": "Hct cấp cứu tại giường", "frequency": "q1h trong sốc", "target": "Hct giảm dần kèm huyết động cải thiện" }
+          ]
+        }
+      ],
       "treatments": [
         { "category": "Dịch truyền TM", "content": "Ringer Lactate bậc thang 6-7 -> 5 -> 3 -> 1.5 mL/kg/h dựa trên đáp ứng sinh hiệu và Hct.", "isHighlighted": true },
         { "category": "Hồi sức sốc", "content": "Nếu sốc: Tinh thể 15-20 mL/kg/h giờ đầu; chuyển Cao phân tử Dextran 40 10-15 mL/kg/h nếu tái sốc hoặc kháng tinh thể.", "isHighlighted": true },
@@ -290,6 +412,54 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       "dayRange": "N7 - N8",
       "phaseName": "[Tên giai đoạn 3: ví dụ Giai đoạn Hồi phục & Tái hấp thu]",
       "clinicalGoal": "[Mục tiêu lâm sàng: Ngừng dịch truyền đúng thời điểm, phòng ngừa phù phổi cấp quá tải thể tích]",
+      "problems": [
+        {
+          "id": "p3_spec",
+          "problemName": "Điều trị đặc hiệu",
+          "problemType": "specific",
+          "isNoSpecificTreatment": true,
+          "treatments": [
+            { "category": "ĐT Đặc hiệu", "content": "Chưa có điều trị đặc hiệu (ngừng dịch truyền TM kịp thời là can thiệp cốt lõi)." }
+          ],
+          "monitoring": []
+        },
+        {
+          "id": "p3_reabsorption",
+          "problemName": "Tái hấp thu dịch từ mô kẽ vào lòng mạch",
+          "problemType": "clinical",
+          "treatments": [
+            { "category": "Ngừng dịch truyền", "content": "BẮT BUỘC ngừng dịch truyền TM sau cắt sốc 24-48h hoặc khi bệnh nhân thèm ăn, tiểu nhiều.", "isHighlighted": true }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Nhịp thở, SpO2, nghe phổi", "frequency": "q4h", "target": "Không ran ẩm đáy phổi, SpO2 >= 96% khí trời" },
+            { "type": "LS", "metric": "Ban hồi phục & Cảm giác thèm ăn", "frequency": "q12h", "target": "Ban đảo trắng biển đỏ, người bệnh tỉnh táo thèm ăn" }
+          ]
+        },
+        {
+          "id": "p3_platelet",
+          "problemName": "Tiểu cầu (PLT) hồi phục & Hct bình thường hóa",
+          "problemType": "paraclinical",
+          "treatments": [
+            { "category": "Đánh giá xuất viện", "content": "Kiểm tra CTM khẳng định tủy xương hồi phục tốt." }
+          ],
+          "monitoring": [
+            { "type": "CLS", "metric": "CTM kiểm tra", "frequency": "q24h", "target": "Hct về bình thường, Tiểu cầu hồi phục > 50 G/L" }
+          ]
+        }
+      ],
+      "phaseComplications": [
+        {
+          "id": "p3_comp_overload",
+          "problemName": "Quá tải dịch / Phù phổi cấp do truyền dịch khi tái hấp thu",
+          "problemType": "complication",
+          "treatments": [
+            { "category": "Lợi tiểu", "content": "Ngưng ngay dịch truyền TM; Furosemide 10-20 mg IV khi có dấu hiệu quá tải dịch và huyết động đã hoàn toàn ổn định." }
+          ],
+          "monitoring": [
+            { "type": "LS", "metric": "Khám phổi, nhịp thở, SpO2", "frequency": "q1-2h", "target": "Hết ran ẩm đáy phổi, SpO2 >= 95%" }
+          ]
+        }
+      ],
       "treatments": [
         { "category": "Ngừng dịch truyền", "content": "BẮT BUỘC ngừng dịch truyền TM sau cắt sốc 24-48h hoặc khi bệnh nhân thèm ăn, tiểu nhiều.", "isHighlighted": true },
         { "category": "Lợi tiểu", "content": "Furosemide 10-20 mg IV chỉ dùng khi có dấu hiệu quá tải dịch / phù phổi cấp và huyết động đã hoàn toàn ổn định." }
@@ -297,12 +467,42 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       "monitoring": [
         { "type": "LS", "metric": "Nhịp thở, SpO2, nghe phổi", "frequency": "q4h", "target": "Không ran ẩm đáy phổi, SpO2 >= 96% khí trời" },
         { "type": "LS", "metric": "Ban hồi phục & Cảm giác thèm ăn", "frequency": "q12h", "target": "Ban đảo trắng biển đỏ, người bệnh tỉnh táo thèm ăn" },
-        { "type": "CLS", "metric": "CTM kiểm tra", "frequency": "q24h", "target": "Hct về bình thường, Tiểu cầu hồi phục > 50 G/L" }
+        { "type": "CLS", "metric": "CTM kiểm tra (Hct, PLT)", "frequency": "q24h", "target": "Hct về bình thường, Tiểu cầu hồi phục > 50 G/L" }
       ],
       "cautionsAndDischarge": {
         "cautions": ["[Tuyệt đối không truyền dịch duy trì phòng ngừa phù phổi]", "[Cảnh báo nhịp tim chậm hồi phục]"],
         "triageOrDischargeCriteria": "[Đủ 4 tiêu chuẩn xuất viện an toàn]"
       }
+    }
+  ],
+  // MỤC 2.x: BẢNG BIẾN CHỨNG CHUNG (XUYÊN SUỐT CÁC GIAI ĐOẠN)
+  "generalComplications": [
+    {
+      "id": "comp_acidosis",
+      "complicationName": "Toan chuyển hóa & Tăng Lactate máu nặng",
+      "problemType": "paraclinical",
+      "warningLevel": "critical",
+      "manifestation": "[Thở nhanh sâu, da nổi bông, tri giác li bì, Lactate > 4 mmol/L, pH < 7.20 do sốc kéo dài]",
+      "actionProtocol": "[Hồi sức tưới máu mô bằng dịch truyền; Bù Natri Bicarbonate 4.2% hoặc 8.4% IV khi pH < 7.15 hoặc HCO3- < 10 mmol/L]",
+      "monitoringMetrics": "[Khí máu động mạch q2-4h, Lactate máu, SpO2 liên tục]"
+    },
+    {
+      "id": "comp_liver",
+      "complicationName": "Tổn thương gan cấp nặng (AST/ALT >= 1000 U/L)",
+      "problemType": "paraclinical",
+      "warningLevel": "high",
+      "manifestation": "[Gan to đau tăng nhanh, vàng da, men gan AST/ALT >= 1000 U/L]",
+      "actionProtocol": "[N-Acetylcysteine (NAC) IV theo phác đồ suy gan cấp; Dinh dưỡng đường tĩnh mạch giàu glucose; Tránh thuốc độc gan]",
+      "monitoringMetrics": "[AST, ALT, Bilirubin, INR, Đường huyết mao mạch q24-48h]"
+    },
+    {
+      "id": "comp_superinfection",
+      "complicationName": "Nhiễm trùng huyết thứ phát / Bội nhiễm vi khuẩn bệnh viện",
+      "problemType": "clinical",
+      "warningLevel": "high",
+      "manifestation": "[Sốt cao trở lại sau hạ nhiệt; Bạch cầu WBC tăng cao ưu thế đa nhân, CRP và Procalcitonin tăng]",
+      "actionProtocol": "[Cấy máu 2 vị trí, cấy nước tiểu, cấy đàm trước khi dùng kháng sinh; Khởi đầu KS phổ rộng kinh nghiệm]",
+      "monitoringMetrics": "[CTM (WBC, Neutrophil%), CRP, Procalcitonin, cấy vi sinh sau 48-72h]"
     }
   ],
   // MỤC 3: LƯU Ý LÂM SÀNG (3 NHÓM CHUẨN)

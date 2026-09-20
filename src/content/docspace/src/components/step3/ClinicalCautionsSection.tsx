@@ -11,11 +11,14 @@ import {
 } from 'lucide-react';
 import { DailyTimelinePhase } from '../../lib/dailyTreatmentTimeline.ts';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
+import { PatientPhenotype } from '../../types.ts';
 
 interface ClinicalCautionsSectionProps {
   cautionItems: string[];
   timelinePhases: DailyTimelinePhase[];
   activeSeverityGrade?: SeverityGradingItem;
+  specificTreatmentNotice?: string;
+  patientPhenotype?: PatientPhenotype;
   structuredCautions?: {
     cautions?: string[];
     contraindications?: string[];
@@ -27,6 +30,8 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
   cautionItems,
   timelinePhases,
   activeSeverityGrade,
+  specificTreatmentNotice,
+  patientPhenotype,
   structuredCautions,
 }) => {
   // Phân loại tự động 3 nhóm:
@@ -38,7 +43,29 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
   const criticalAlerts: string[] = [];
   const dischargeCriteria: Array<{ dayRange?: string; phaseName?: string; text: string }> = [];
 
-  // 0. Nạp trực tiếp từ structuredCautions của Enriched JSON (nếu có)
+  // 0. Bổ sung các Cờ Đỏ Ngữ Cảnh Cá Thể Hóa từ PatientPhenotype
+  if (patientPhenotype?.hasRenalRisk) {
+    const renalText = `🚫 [CƠ ĐỊA THẬN]: Chống chỉ định tuyệt đối NSAIDs & Aminoglycoside liều cao ở bệnh nhân có suy giảm chức năng thận (eGFR ${patientPhenotype.eGfr || '< 60'} mL/ph).`;
+    if (!contraindications.includes(renalText)) contraindications.push(renalText);
+
+    const alertText = `⚠️ [BILAN THẬN]: Theo dõi thể tích nước tiểu mỗi 4–6 giờ (duy trì ≥ 0.5 mL/kg/h) và kiểm tra lại Creatinine, Điện giải đồ (K+) sau 24–48h.`;
+    if (!criticalAlerts.includes(alertText)) criticalAlerts.push(alertText);
+  }
+
+  if (patientPhenotype?.isPregnant) {
+    const pregContra = `🚫 [THAI KỲ]: Chống chỉ định các thuốc Phân loại FDA C/D/X (Quinolone, Tetracycline, NSAIDs trong 3 tháng cuối do nguy cơ đóng sớm ống động mạch).`;
+    if (!contraindications.includes(pregContra)) contraindications.push(pregContra);
+
+    const pregAlert = `⚠️ [SẢN KHOA]: Theo dõi sát tim thai, cơn gò tử cung và nguy cơ dọa sinh non / chuyển dạ sớm mỗi 6–12 giờ.`;
+    if (!criticalAlerts.includes(pregAlert)) criticalAlerts.push(pregAlert);
+  }
+
+  if (patientPhenotype?.ageCategory === 'elderly') {
+    const elderlyAlert = `⚠️ [LÃO KHOA]: Nguy cơ quá tải tuần hoàn khi truyền dịch tốc độ nhanh. Thường xuyên nghe đáy phổi tìm ran ẩm và theo dõi SpO2.`;
+    if (!criticalAlerts.includes(elderlyAlert)) criticalAlerts.push(elderlyAlert);
+  }
+
+  // 0b. Nạp trực tiếp từ structuredCautions của Enriched JSON (nếu có)
   if (structuredCautions?.cautions && Array.isArray(structuredCautions.cautions)) {
     structuredCautions.cautions.forEach((c) => {
       if (c && !criticalAlerts.includes(c)) criticalAlerts.push(c);
@@ -117,8 +144,23 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
 
   return (
     <div className="space-y-4">
-      {/* Content: 3 Visual Blocks */}
+      {/* Content: Visual Blocks */}
       <div className="space-y-4">
+        {/* Khối Chỉ định điều trị đặc hiệu (nếu có hoặc lưu ý căn nguyên) */}
+        {specificTreatmentNotice && (
+          <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+            <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-indigo-200/80">
+              <span className="text-base">🎯</span>
+              <h5 className="font-bold text-xs sm:text-sm text-indigo-950">
+                Chỉ định &amp; Lưu ý Điều trị Đặc hiệu (Etiological &amp; Specific Therapy)
+              </h5>
+            </div>
+            <p className="text-xs text-indigo-900 leading-relaxed font-medium">
+              {specificTreatmentNotice}
+            </p>
+          </div>
+        )}
+
         {/* [1] Lưu ý, cảnh báo quan trọng */}
         <div className="bg-amber-50/60 border border-amber-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-amber-200/80">

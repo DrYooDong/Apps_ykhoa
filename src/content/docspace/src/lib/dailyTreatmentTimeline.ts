@@ -19,11 +19,39 @@ export interface MonitoringItem {
   target?: string;
 }
 
+export interface TreatmentProblemRow {
+  id?: string;
+  problemName: string;
+  problemType: 'specific' | 'clinical' | 'paraclinical' | 'complication';
+  badgeLabel?: string; // "ĐIỀU TRỊ ĐẶC HIỆU" | "LÂM SÀNG" | "CẬN LÂM SÀNG" | "BIẾN CHỨNG"
+  indicationNote?: string;
+  isNoSpecificTreatment?: boolean;
+  treatments: {
+    category?: string;
+    content: string;
+    timing?: string;
+    isHighlighted?: boolean;
+  }[];
+  monitoring?: MonitoringItem[];
+}
+
+export interface GeneralComplicationItem {
+  id: string;
+  complicationName: string;
+  problemType?: 'clinical' | 'paraclinical';
+  manifestation: string;
+  actionProtocol: string;
+  monitoringMetrics: string;
+  warningLevel?: 'high' | 'critical' | 'medium';
+}
+
 export interface DailyTreatmentPhase {
   id: string;
   dayRange: string;
   phaseName: string;
   clinicalGoal: string;
+  problems?: TreatmentProblemRow[];
+  phaseComplications?: TreatmentProblemRow[];
   treatments: TreatmentItem[];
   monitoring: MonitoringItem[];
   cautionsAndDischarge: {
@@ -62,6 +90,93 @@ export function getDailyTreatmentTimeline(
         dayRange: 'N1 - N3',
         phaseName: 'Giai đoạn Sốt cấp tính (Febrile Phase)',
         clinicalGoal: 'Hạ sốt an toàn, bù nước-điện giải sớm PO, KS thân nhiệt, phát hiện sớm cơ địa nguy cơ cao.',
+        problems: [
+          {
+            id: 'dengue_p1_spec',
+            problemName: 'Điều trị đặc hiệu',
+            problemType: 'specific',
+            badgeLabel: 'ĐIỀU TRỊ ĐẶC HIỆU',
+            isNoSpecificTreatment: true,
+            treatments: [
+              {
+                category: 'ĐT Đặc hiệu',
+                content: 'Chưa có điều trị đặc hiệu (chủ yếu bù dịch, hạ sốt an toàn & hồi sức hỗ trợ theo dõi sát DHCB).',
+              },
+            ],
+            monitoring: [], // Bỏ trống theo đúng yêu cầu
+          },
+          {
+            id: 'dengue_p1_fever',
+            problemName: 'Sốt cao liên tục & Đau nhức cơ khớp toàn thân',
+            problemType: 'clinical',
+            badgeLabel: 'LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Hạ sốt',
+                content: 'Paracetamol 10-15 mg/kg khi T° ≥ 38.5°C, q4-6h (max 60 mg/kg/24h, NL max 3g/ngày). Tuyệt đối CCĐ Aspirin & NSAIDs.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Thân nhiệt (T°)', frequency: 'q4h', target: 'Hạ sốt an toàn, tránh hạ nhiệt đột ngột' },
+              { type: 'LS', metric: 'Khám dấu hiệu xuất huyết da niêm', frequency: 'q12h', target: 'Chấm xuất huyết, chảy máu răng' },
+            ],
+          },
+          {
+            id: 'dengue_p1_dehydration',
+            problemName: 'Mất nước qua da & Nguy cơ giảm thể tích tuần hoàn sớm',
+            problemType: 'clinical',
+            badgeLabel: 'LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Bù dịch đường uống',
+                content: 'Oresol pha chuẩn 1500-2500 mL/ngày + nước hoa quả/cháo muối. Không truyền dịch TM khi còn uống được.',
+              },
+              {
+                category: 'Chăm sóc & Nghỉ ngơi',
+                content: 'Nghỉ ngơi tại giường, ăn thức ăn lỏng dễ tiêu. Tránh thức ăn/nước uống màu đỏ, nâu, đen (tránh nhầm XHTH).',
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Nước tiểu 24h', frequency: 'q4-6h', target: 'Đảm bảo ≥ 1.0 mL/kg/h' },
+              { type: 'LS', metric: 'Tri giác & Vẻ mặt', frequency: 'q4-6h', target: 'Tỉnh táo, tiếp xúc tốt' },
+            ],
+          },
+          {
+            id: 'dengue_p1_lab_baseline',
+            problemName: 'Xác định căn nguyên & Đánh giá trị số Hct, PLT nền',
+            problemType: 'paraclinical',
+            badgeLabel: 'CẬN LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Chỉ định cận lâm sàng',
+                content: 'Lấy máu làm Test nhanh Dengue NS1 Ag và CTM thiết lập trị số Hct & PLT nền trước khi vào giai đoạn thoát dịch.',
+              },
+            ],
+            monitoring: [
+              { type: 'CLS', metric: 'NS1 Ag (ELISA/Test nhanh)', frequency: '1 lần (N1-N5)', target: 'Dương tính khẳng định Dengue' },
+              { type: 'CLS', metric: 'CTM (Hct, PLT, WBC)', frequency: 'q24h', target: 'Thiết lập Hct nền, PLT > 100 G/L' },
+            ],
+          },
+        ],
+        phaseComplications: [
+          {
+            id: 'dengue_p1_comp_seizure',
+            problemName: 'Co giật do sốt cao (Trẻ em hoặc cơ địa sốt co giật)',
+            problemType: 'complication',
+            badgeLabel: 'BIẾN CHỨNG GIAI ĐOẠN',
+            treatments: [
+              {
+                category: 'Cấp cứu co giật',
+                content: 'Hạ sốt tích cực, lau mát nước ấm. Nếu co giật > 5 phút: Diazepam 0.5 mg/kg bơm hậu môn hoặc 0.2 mg/kg IV chậm.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Cơn co giật & Tri giác', frequency: 'Liên tục trong cơn', target: 'Cắt cơn co giật, thở đều' },
+            ],
+          },
+        ],
         treatments: [
           {
             category: 'Hạ sốt',
@@ -80,7 +195,7 @@ export function getDailyTreatmentTimeline(
         monitoring: [
           { type: 'LS', metric: 'T° & Tri giác', frequency: 'q4h', target: 'Hạ sốt an toàn, tỉnh táo' },
           { type: 'LS', metric: 'Nước tiểu 24h', frequency: 'q4-6h', target: 'Đảm bảo ≥ 1.0 mL/kg/h' },
-          { type: 'CLS', metric: 'CTM (Hct, TC, BC)', frequency: 'q24h', target: 'Hct nền, theo dõi TC' },
+          { type: 'CLS', metric: 'CTM (Hct, PLT, WBC)', frequency: 'q24h', target: 'Hct nền, theo dõi PLT' },
           { type: 'CLS', metric: 'NS1 Ag (ELISA/Test nhanh)', frequency: '1 lần (N1-N5)', target: 'Xác định căn nguyên Dengue' },
         ],
         cautionsAndDischarge: {
@@ -97,6 +212,108 @@ export function getDailyTreatmentTimeline(
         dayRange: 'N4 - N6',
         phaseName: 'Giai đoạn Nguy hiểm & Thoát huyết tương (Critical Phase)',
         clinicalGoal: 'Phát hiện sớm DHCB & Sốc Dengue; Hồi sức dịch TTM nấc thang; Duy trì Hct 38-42%, MAP ≥ 65 mmHg.',
+        problems: [
+          {
+            id: 'dengue_p2_spec',
+            problemName: 'Điều trị đặc hiệu',
+            problemType: 'specific',
+            badgeLabel: 'ĐIỀU TRỊ ĐẶC HIỆU',
+            isNoSpecificTreatment: true,
+            treatments: [
+              {
+                category: 'ĐT Đặc hiệu',
+                content: 'Chưa có điều trị đặc hiệu (hồi sức dịch truyền nấc thang là can thiệp cứu mạng then chốt).',
+              },
+            ],
+            monitoring: [],
+          },
+          {
+            id: 'dengue_p2_plasma_leak',
+            problemName: 'Thoát huyết tương & Cô đặc máu (Hct tăng ≥ 20%)',
+            problemType: 'paraclinical',
+            badgeLabel: 'CẬN LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Dịch truyền bậc thang',
+                content: 'RL / RA bậc thang: 6-7 mL/kg/h (1-3h) → 5 mL/kg/h (2-4h) → 3 mL/kg/h (2-4h) → 1.5 mL/kg/h rồi ngưng. ĐG Hct trước & sau mỗi nấc dịch.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'CLS', metric: 'Hematocrit (Hct)', frequency: 'Trước & sau mỗi nấc dịch (q1-2h)', target: 'Hct giảm ổn định về 38-42%' },
+              { type: 'LS', metric: 'Nước tiểu qua thông Foley', frequency: 'q1h', target: 'Duy trì ≥ 0.5 - 1.0 mL/kg/h' },
+              { type: 'CLS', metric: 'Siêu âm ngực / bụng', frequency: 'q12-24h', target: 'ĐG tràn dịch màng phổi, báng bụng' },
+            ],
+          },
+          {
+            id: 'dengue_p2_warning_signs',
+            problemName: 'Hạ sốt đột ngột kèm Mệt lả / Dấu hiệu cảnh báo (DHCB)',
+            problemType: 'clinical',
+            badgeLabel: 'LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Hỗ trợ hô hấp & Cấp cứu',
+                content: 'O2 gọng kính 2-4 L/p nếu SpO2 < 95% hoặc thở co kéo. Lập 1-2 đường truyền TM ngoại biên lớn (G18-G20). Nằm đầu bằng, ủ ấm.',
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Mạch, HA, Hiệu áp', frequency: 'q1-2h (DHCB)', target: 'Hiệu áp > 20 mmHg (an toàn ≥ 30), M rõ' },
+              { type: 'LS', metric: 'Thời gian đổ đầy mao mạch (CRT)', frequency: 'q1-2h', target: 'CRT < 2 giây, chi ấm' },
+            ],
+          },
+          {
+            id: 'dengue_p2_thrombocytopenia',
+            problemName: 'Giảm tiểu cầu nhanh (PLT < 50 G/L) & Nguy cơ xuất huyết',
+            problemType: 'paraclinical',
+            badgeLabel: 'CẬN LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Bảo vệ thành mạch & Hạn chế can thiệp',
+                content: 'Nghỉ tuyệt đối tại giường, tránh tiêm bắp, tránh đặt sonde mũi nếu không cấp thiết. KHÔNG truyền PLT dự phòng nếu không có xuất huyết nặng.',
+              },
+            ],
+            monitoring: [
+              { type: 'CLS', metric: 'Số lượng Tiểu cầu (PLT)', frequency: 'q12-24h', target: 'Theo dõi tốc độ tụt PLT' },
+              { type: 'LS', metric: 'Dấu hiệu xuất huyết niêm mạc/tạng', frequency: 'q4h', target: 'Phát hiện sớm ói máu, tiêu phân đen' },
+            ],
+          },
+        ],
+        phaseComplications: [
+          {
+            id: 'dengue_p2_comp_shock',
+            problemName: 'Sốc sốt xuất huyết Dengue (Sốc mất bù / Tụt huyết áp)',
+            problemType: 'complication',
+            badgeLabel: 'BIẾN CHỨNG GIAI ĐOẠN',
+            treatments: [
+              {
+                category: 'Hồi sức chống sốc',
+                content: 'RL xả nhanh 15-20 mL/kg/h (1h đầu). Nếu không ra sốc hoặc Hct tiếp tục tăng: đổi Dung dịch Cao phân tử (Dextran 40 / HES 6% 200/0.5) 10-15 mL/kg/h.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Sinh hiệu, Mạch, Huyết áp', frequency: 'q15-30 phút', target: 'Thoát sốc: Mạch rõ, HA tâm thu ≥ 90 mmHg, HA kẹp > 20 mmHg' },
+              { type: 'CLS', metric: 'Hematocrit (Hct) cấp cứu tại giường', frequency: 'q1h trong sốc', target: 'Hct giảm dần kèm huyết động cải thiện' },
+            ],
+          },
+          {
+            id: 'dengue_p2_comp_bleeding',
+            problemName: 'Xuất huyết tiêu hóa nặng ồ ạt (Ói máu, tiêu phân đen)',
+            problemType: 'complication',
+            badgeLabel: 'BIẾN CHỨNG GIAI ĐOẠN',
+            treatments: [
+              {
+                category: 'Cầm máu & Bù máu',
+                content: 'Truyền Khối hồng cầu lắng 5-10 mL/kg khi Hct tụt mạnh; Truyền Khối tiểu cầu đậm đặc khi PLT < 50 G/L kèm xuất huyết đe dọa sinh mạng.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Màu sắc phân, chất nôn, sonde dạ dày', frequency: 'Mỗi lần đi tiêu/nôn', target: 'Ngừng chảy máu tiêu hóa' },
+              { type: 'CLS', metric: 'Hct & Đông máu toàn bộ (PT, aPTT, Fib)', frequency: 'q6-12h', target: 'Duy trì Hb > 8-10 g/dL' },
+            ],
+          },
+        ],
         treatments: [
           {
             category: 'Dịch truyền bậc thang (Có DHCB)',
@@ -133,6 +350,76 @@ export function getDailyTreatmentTimeline(
         dayRange: 'N7 - N10',
         phaseName: 'Giai đoạn Hồi phục & Tái hấp thu (Recovery Phase)',
         clinicalGoal: 'Ngăn ngừa biến chứng quá tải dịch / Phù phổi cấp do tái hấp thu; Đánh giá tiêu chuẩn xuất viện.',
+        problems: [
+          {
+            id: 'dengue_p3_spec',
+            problemName: 'Điều trị đặc hiệu',
+            problemType: 'specific',
+            badgeLabel: 'ĐIỀU TRỊ ĐẶC HIỆU',
+            isNoSpecificTreatment: true,
+            treatments: [
+              {
+                category: 'ĐT Đặc hiệu',
+                content: 'Chưa có điều trị đặc hiệu (ngưng dịch truyền tĩnh mạch kịp thời là can thiệp cốt lõi).',
+              },
+            ],
+            monitoring: [],
+          },
+          {
+            id: 'dengue_p3_reabsorption',
+            problemName: 'Tái hấp thu dịch từ khoang thứ ba vào lòng mạch',
+            problemType: 'clinical',
+            badgeLabel: 'LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Ngưng truyền dịch',
+                content: 'NGƯNG TTM hoàn toàn khi LS ổn định, uống được và tiểu tốt để tránh quá tải dịch.',
+                isHighlighted: true,
+              },
+              {
+                category: 'Dinh dưỡng hồi phục',
+                content: 'Ăn cháo, súp giàu dinh dưỡng; Uống nước lọc/nước quả theo nhu cầu tự nhiên của cơ thể.',
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Dấu hiệu sinh tồn', frequency: 'q8-12h', target: 'M chậm dần (nhịp chậm hồi phục sinh lý), HA ổn' },
+              { type: 'LS', metric: 'Ban hồi phục (Convalescent Rash)', frequency: 'Quan sát hàng ngày', target: 'Ban đỏ viền trắng đảo da bình thường (tránh nhầm dị ứng)' },
+            ],
+          },
+          {
+            id: 'dengue_p3_platelet_recovery',
+            problemName: 'Tiểu cầu (PLT) hồi phục & Hct trở về bình thường',
+            problemType: 'paraclinical',
+            badgeLabel: 'CẬN LÂM SÀNG',
+            treatments: [
+              {
+                category: 'Đánh giá tiêu chuẩn xuất viện',
+                content: 'Kiểm tra CTM khẳng định tủy xương hồi phục tốt, không có biến chứng muộn.',
+              },
+            ],
+            monitoring: [
+              { type: 'CLS', metric: 'CTM (Hct, Tiểu cầu PLT)', frequency: 'q24h', target: 'PLT tăng dần (> 50 G/L), Hct ổn định theo chỉ số nền' },
+            ],
+          },
+        ],
+        phaseComplications: [
+          {
+            id: 'dengue_p3_comp_fluid_overload',
+            problemName: 'Quá tải dịch / Phù phổi cấp do tiếp tục truyền dịch khi tái hấp thu',
+            problemType: 'complication',
+            badgeLabel: 'BIẾN CHỨNG GIAI ĐOẠN',
+            treatments: [
+              {
+                category: 'Xử trí quá tải dịch cấp',
+                content: 'Ngưng ngay lập tức dịch truyền TM, cho thở O2 gọng kính hoặc qua mask. Tiêm Furosemide 1 mg/kg IV chậm khi huyết động ổn định.',
+                isHighlighted: true,
+              },
+            ],
+            monitoring: [
+              { type: 'LS', metric: 'Khám phổi, nhịp thở, SpO2', frequency: 'q1-2h', target: 'Hết ran ẩm đáy phổi, SpO2 ≥ 95% thở khí phòng' },
+            ],
+          },
+        ],
         treatments: [
           {
             category: 'Dịch truyền',
@@ -151,14 +438,14 @@ export function getDailyTreatmentTimeline(
         monitoring: [
           { type: 'LS', metric: 'Dấu hiệu sinh tồn', frequency: 'q8-12h', target: 'M chậm dần (nhịp chậm hồi phục), HA ổn' },
           { type: 'LS', metric: 'Ban hồi phục (Convalescent Rash)', frequency: 'Quan sát hàng ngày', target: 'Ban đỏ viền trắng đảo da bình thường' },
-          { type: 'CLS', metric: 'CTM (Hct, Tiểu cầu)', frequency: 'q24h', target: 'TC tăng dần (> 50 G/L), Hct ổn định' },
+          { type: 'CLS', metric: 'CTM (Hct, Tiểu cầu PLT)', frequency: 'q24h', target: 'PLT tăng dần (> 50 G/L), Hct ổn định' },
         ],
         cautionsAndDischarge: {
           cautions: [
             'Hiện tượng tái hấp thu dịch ồ ạt từ khoang màng phổi/bụng vào lòng mạch → Nguy cơ phù phổi cấp nếu tiếp tục truyền dịch.',
             'Nhịp tim chậm sinh lý giai đoạn hồi phục là lành tính, không can thiệp Atropine nếu HA bình thường.',
           ],
-          triageOrDischargeCriteria: 'Tiêu chuẩn ra viện: Hết sốt ≥ 48h K dùng hạ sốt, tỉnh táo, ăn ngon, huyết động ổn định, tiểu nhiều, TC > 50 G/L & Hct bình thường.',
+          triageOrDischargeCriteria: 'Tiêu chuẩn ra viện: Hết sốt ≥ 48h K dùng hạ sốt, tỉnh táo, ăn ngon, huyết động ổn định, tiểu nhiều, PLT > 50 G/L & Hct bình thường.',
         },
       },
     ];
@@ -955,4 +1242,166 @@ export function getDailyTreatmentTimeline(
       },
     },
   ];
+}
+
+/**
+ * Danh mục Biến chứng chung toàn diện (Xuyên suốt các giai đoạn điều trị)
+ * Đặt ở cuối Phần 2 để bác sĩ rà soát tránh bỏ sót
+ */
+export function getGeneralComplications(diseaseId: string, diseaseName: string): GeneralComplicationItem[] {
+  const idLower = (diseaseId || '').toLowerCase();
+  const nameLower = (diseaseName || '').toLowerCase();
+
+  if (idLower.includes('dengue') || nameLower.includes('dengue') || nameLower.includes('sốt xuất huyết')) {
+    return [
+      {
+        id: 'comp_dengue_acidosis',
+        complicationName: 'Toan chuyển hóa & Tăng Lactate máu nặng',
+        problemType: 'paraclinical',
+        warningLevel: 'critical',
+        manifestation: 'Thở nhanh sâu (Kussmaul), da nổi bông, tri giác li bì, SpO2 giảm dù oxy hóa tốt, Lactate máu > 4 mmol/L, pH < 7.20 do sốc kéo dài/thiếu tưới máu mô.',
+        actionProtocol: 'Khẩn trương hồi sức phục hồi tưới máu mô bằng dịch truyền; Bù Natri Bicarbonate 4.2% hoặc 8.4% IV theo công thức khi pH < 7.15 hoặc HCO3- < 10 mmol/L.',
+        monitoringMetrics: 'Khí máu động mạch (KMĐM) q2-4h, kiểm tra Lactate máu định kỳ, theo dõi SpO2 liên tục.',
+      },
+      {
+        id: 'comp_dengue_liver',
+        complicationName: 'Tổn thương gan cấp nặng (AST/ALT > 1000 U/L)',
+        problemType: 'paraclinical',
+        warningLevel: 'high',
+        manifestation: 'Gan to đau tiến triển nhanh, vàng da/vàng mắt, rối loạn đông máu kèm men gan AST/ALT tăng vọt > 1000 U/L (thường gặp sau sốc hoặc dùng quá liều Paracetamol).',
+        actionProtocol: 'N-Acetylcysteine (NAC) truyền tĩnh mạch theo phác đồ suy gan cấp; Dinh dưỡng đường tĩnh mạch giàu glucose; Ngưng ngay toàn bộ thuốc độc cho gan.',
+        monitoringMetrics: 'AST, ALT, Bilirubin toàn phần/trực tiếp, INR, Đường huyết mao mạch q24-48h.',
+      },
+      {
+        id: 'comp_dengue_dic',
+        complicationName: 'Xuất huyết tạng nặng & Rối loạn đông máu nội mạch rải rác (DIC)',
+        problemType: 'clinical',
+        warningLevel: 'critical',
+        manifestation: 'Xuất huyết tiêu hóa ồ ạt, chảy máu mũi/chân răng không cầm, tiểu máu, xuất huyết âm đạo bất thường, Hct tụt nhanh nhưng huyết áp không cải thiện.',
+        actionProtocol: 'Truyền Khối hồng cầu lắng khi Hct tụt; Truyền Khối tiểu cầu (PLT) khi PLT < 50 G/L kèm xuất huyết nặng; Truyền Huyết tương tươi đông lạnh (FFP) 10-15 mL/kg nếu INR > 1.5.',
+        monitoringMetrics: 'CTM (Hct, PLT), Fibrinogen, PT/INR q6-12h; theo dõi màu sắc phân, dịch dạ dày và vị trí tiêm truyền.',
+      },
+      {
+        id: 'comp_dengue_superinfection',
+        complicationName: 'Nhiễm trùng huyết thứ phát / Bội nhiễm vi khuẩn bệnh viện',
+        problemType: 'clinical',
+        warningLevel: 'high',
+        manifestation: 'Sốt cao trở lại sau giai đoạn hạ sốt; Bạch cầu (WBC) tăng cao ưu thế đa nhân (trái ngược với giảm bạch cầu thông thường của SXHD), CRP và Procalcitonin tăng cao.',
+        actionProtocol: 'Cấy máu 2 vị trí, cấy nước tiểu, cấy đàm trước khi dùng kháng sinh; Khởi đầu kháng sinh phổ rộng (Ceftriaxone hoặc Piperacillin/Tazobactam) theo kinh nghiệm.',
+        monitoringMetrics: 'CTM (WBC, Neutrophil%), CRP, Procalcitonin, cấy vi sinh sau 48-72h.',
+      },
+    ];
+  }
+
+  // Danh mục biến chứng chung mặc định cho các bệnh khác
+  return [
+    {
+      id: 'comp_gen_acidosis',
+      complicationName: 'Toan kiềm & Rối loạn điện giải nặng',
+      problemType: 'paraclinical',
+      warningLevel: 'high',
+      manifestation: 'Hạ Natri máu nặng, Tăng/Hạ Kali máu, Toan chuyển hóa do giảm tưới máu hoặc suy thận cấp.',
+      actionProtocol: 'Hiệu chỉnh điện giải theo phác đồ từng chất, bù dịch tinh thể đảm bảo tưới máu tạng.',
+      monitoringMetrics: 'Ion đồ (Na+, K+, Cl-, Ca2+), Khí máu động mạch (KMĐM) q12-24h.',
+    },
+    {
+      id: 'comp_gen_hospital_inf',
+      complicationName: 'Nhiễm khuẩn bệnh viện (HAP/VAP, Nhiễm trùng tiểu do catheter, Nhiễm trùng huyết)',
+      problemType: 'clinical',
+      warningLevel: 'high',
+      manifestation: 'Sốt tái phát, tăng bạch cầu WBC, đờm mủ, tiểu buốt/tiểu đục hoặc suy giảm huyết động đột ngột.',
+      actionProtocol: 'Rút hoặc đổi sonde/catheter xâm lấn; Cấy vi sinh làm kháng sinh đồ; Kháng sinh phổ rộng.',
+      monitoringMetrics: 'CTM (WBC), CRP/Procalcitonin, cấy vi sinh định kỳ.',
+    },
+    {
+      id: 'comp_gen_dvt',
+      complicationName: 'Huyết khối tĩnh mạch sâu (DVT) & Thuyên tắc phổi (PE)',
+      problemType: 'clinical',
+      warningLevel: 'medium',
+      manifestation: 'Sưng đau bắp chân một bên, khó thở đột ngột, nhịp tim nhanh không giải thích được.',
+      actionProtocol: 'Tập vận động thụ động, mang tất áp lực y khoa; Cân nhắc Heparin trọng lượng phân tử thấp (LMWH) nếu không có CCĐ xuất huyết.',
+      monitoringMetrics: 'Siêu âm Doppler mạch máu chi dưới, D-Dimer nếu nghi ngờ PE.',
+    },
+  ];
+}
+
+/**
+ * Hàm adapter chuẩn hóa dữ liệu: Chuyển đổi DailyTreatmentPhase thành TreatmentProblemRow[]
+ * Tự động phân chia Điều trị đặc hiệu, Vấn đề LS, Cận lâm sàng và Biến chứng
+ */
+export function adaptPhaseToProblemRows(
+  phase: DailyTreatmentPhase,
+  diseaseId: string,
+  diseaseName: string
+): TreatmentProblemRow[] {
+  if (phase.problems && phase.problems.length > 0) {
+    return phase.problems;
+  }
+
+  const idLower = (diseaseId || '').toLowerCase();
+  const nameLower = (diseaseName || '').toLowerCase();
+  const isDengue = idLower.includes('dengue') || nameLower.includes('dengue') || nameLower.includes('sốt xuất huyết');
+
+  const rows: TreatmentProblemRow[] = [];
+
+  // 1. Dòng Điều trị đặc hiệu
+  if (isDengue) {
+    rows.push({
+      id: `${phase.id}_spec`,
+      problemName: 'Điều trị đặc hiệu',
+      problemType: 'specific',
+      badgeLabel: 'ĐIỀU TRỊ ĐẶC HIỆU',
+      isNoSpecificTreatment: true,
+      treatments: [
+        {
+          category: 'ĐT Đặc hiệu',
+          content: 'Chưa có điều trị đặc hiệu (chủ yếu bù dịch, hạ sốt an toàn & hồi sức hỗ trợ).',
+        },
+      ],
+      monitoring: [],
+    });
+  }
+
+  // 2. Gom nhóm treatments theo category
+  const treatments = phase.treatments || [];
+  const monitoring = phase.monitoring || [];
+
+  treatments.forEach((tr, idx) => {
+    const title = tr.category || 'Vấn đề lâm sàng';
+    const isParaclinical = /hct|tiểu cầu|plt|xét nghiệm|cls|cận lâm sàng|điện giải|khí máu|siêu âm|x-quang/i.test(
+      `${title} ${tr.content}`
+    );
+    const isComplication = /sốc|biến chứng|xuất huyết nặng|co giật|quá tải|phù phổi/i.test(
+      `${title} ${tr.content}`
+    );
+
+    let problemType: 'clinical' | 'paraclinical' | 'complication' = 'clinical';
+    let badgeLabel = 'LÂM SÀNG';
+
+    if (isComplication) {
+      problemType = 'complication';
+      badgeLabel = 'BIẾN CHỨNG GIAI ĐOẠN';
+    } else if (isParaclinical) {
+      problemType = 'paraclinical';
+      badgeLabel = 'CẬN LÂM SÀNG';
+    }
+
+    // Gán monitoring tương ứng nếu phù hợp
+    const relatedMonitoring = monitoring.filter((m) => {
+      if (isParaclinical && m.type === 'CLS') return true;
+      if (!isParaclinical && m.type === 'LS') return true;
+      return false;
+    });
+
+    rows.push({
+      id: `${phase.id}_tr_${idx}`,
+      problemName: title,
+      problemType,
+      badgeLabel,
+      treatments: [tr],
+      monitoring: idx === 0 ? monitoring : relatedMonitoring.slice(0, 2),
+    });
+  });
+
+  return rows;
 }
