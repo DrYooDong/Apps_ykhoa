@@ -19,7 +19,11 @@ import {
   getKnowledgeVaultWebUrl,
   PathwayArticles,
 } from '../../lib/vaultBridge.ts';
-import { getGuidelineWebUrl } from '../../lib/guidelineBridge.ts';
+import {
+  getGuidelineWebUrl,
+  getGuidelinesHubUrl,
+  getGuidelinesDbUrl,
+} from '../../lib/guidelineBridge.ts';
 
 interface HealthcareWorkerKnowledgeSectionProps {
   diseaseName: string;
@@ -368,56 +372,127 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
         {/* 5c. Hướng dẫn thực hành lâm sàng (Guidelines - EBM) */}
         {activeTab === '5c' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between gap-2 p-3 bg-purple-50/70 border border-purple-200 rounded-lg text-xs text-purple-950">
-              <span className="flex items-center gap-1.5 font-medium">
-                <FileText className="w-4 h-4 text-purple-700 shrink-0" />
-                <span>Hướng dẫn điều trị chuẩn EBM từ Bộ Y tế và các Hiệp hội Quốc tế (AHA, ESC, ATS, IDSA, GOLD)</span>
-              </span>
-              <span className="font-mono font-bold text-[11px] bg-white px-2 py-0.5 rounded border border-purple-200">
-                {matchedGuidelines.length} khuyến cáo
-              </span>
+            {/* Top Toolbar & Quick Links */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-purple-50/80 border border-purple-200/90 rounded-xl text-xs text-purple-950 shadow-2xs">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h6 className="font-bold text-slate-900 leading-tight">
+                    Khuyến Cáo & Hướng Dẫn Điều Trị EBM Chuẩn Hóa
+                  </h6>
+                  <p className="text-[11px] text-purple-900/80">
+                    Từ Bộ Y tế Việt Nam & các Hiệp hội Quốc tế (AHA, ESC, ATS, IDSA, GOLD, EASL)
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center flex-wrap gap-1.5 shrink-0">
+                <span className="font-mono font-bold text-[11px] bg-white px-2.5 py-1 rounded-lg border border-purple-200 text-purple-900 shadow-2xs">
+                  {matchedGuidelines.length} khuyến cáo
+                </span>
+                <a
+                  href={getGuidelinesHubUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white hover:bg-purple-100/60 text-purple-800 border border-purple-200 text-[11px] font-semibold transition-colors shadow-2xs"
+                  title="Mở Kho Tóm Tắt Guidelines 2026 trên giao diện chính"
+                >
+                  <BookOpen className="w-3 h-3 text-purple-700" />
+                  <span>Kho Guidelines (156)</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-60" />
+                </a>
+                {onOpenVaultDrawer && (
+                  <button
+                    type="button"
+                    onClick={() => onOpenVaultDrawer(diseaseName, '', 'GUIDELINE')}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-purple-700 hover:bg-purple-800 text-white text-[11px] font-semibold transition-colors shadow-2xs cursor-pointer"
+                    title="Mở ngăn kéo tri thức EBM Drawer"
+                  >
+                    <Search className="w-3 h-3" />
+                    <span>EBM Drawer</span>
+                  </button>
+                )}
+              </div>
             </div>
 
             {matchedGuidelines.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                 {matchedGuidelines.map(({ study, matchReason }, idx) => {
                   const isApplied = appliedStudies.has(study.id);
+                  const isVnMOH = study.sourceType === 'vn-moh';
+                  const orgLabel = study.organization || study.society || (isVnMOH ? 'Bộ Y Tế Việt Nam' : 'EBM Landmark');
+                  const guidelineWebUrl = getGuidelineWebUrl(study);
+
                   return (
                     <div
                       key={study.id || idx}
-                      className="p-4 rounded-xl border border-slate-200 bg-white shadow-2xs flex flex-col justify-between gap-3"
+                      className="p-4 rounded-xl border border-slate-200 bg-white hover:border-purple-300 hover:shadow-xs transition-all flex flex-col justify-between gap-3 relative"
                     >
                       <div>
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="px-2 py-0.5 rounded text-[10.5px] font-mono font-bold bg-purple-100 text-purple-800 border border-purple-200">
-                            {study.society || study.source || 'EBM Landmark'}
+                        <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                          <span
+                            className={`px-2 py-0.5 rounded text-[10.5px] font-mono font-bold border ${
+                              isVnMOH
+                                ? 'bg-red-50 text-red-800 border-red-200'
+                                : 'bg-purple-50 text-purple-800 border-purple-200'
+                            }`}
+                          >
+                            {orgLabel}
                           </span>
-                          <span className="text-[10px] font-mono text-slate-400">{study.year || '2024'}</span>
+                          <div className="flex items-center gap-1.5 text-[10.5px] font-mono text-slate-500">
+                            {study.year && (
+                              <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">
+                                {study.year}
+                              </span>
+                            )}
+                            {study.specialty && (
+                              <span className="uppercase text-[10px] text-slate-400">
+                                {study.specialty}
+                              </span>
+                            )}
+                          </div>
                         </div>
 
-                        <h5 className="font-bold text-xs sm:text-sm text-slate-900 leading-snug mb-1">
+                        <h5 className="font-bold text-xs sm:text-sm text-slate-900 leading-snug mb-1.5">
                           {study.title}
                         </h5>
 
+                        {matchReason && (
+                          <div className="mb-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10.5px] font-medium">
+                            <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                            <span>{matchReason}</span>
+                          </div>
+                        )}
+
                         <p className="text-[11.5px] text-slate-600 leading-relaxed line-clamp-3">
-                          {study.summary || study.recommendationText || matchReason}
+                          {study.summary || study.recommendationText || study.detailedConclusion || matchReason}
                         </p>
 
                         {study.keyEvidence && (
-                          <div className="mt-2 p-2 bg-slate-50 rounded border border-slate-200 text-[11px] text-slate-700">
-                            <b>Bằng chứng cốt lõi:</b> {study.keyEvidence}
+                          <div className="mt-2.5 p-2 bg-slate-50 rounded-lg border border-slate-200 text-[11px] text-slate-700 leading-relaxed">
+                            <b className="text-purple-900">Bằng chứng cốt lõi:</b> {study.keyEvidence}
+                          </div>
+                        )}
+
+                        {study.drug && (
+                          <div className="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-800 bg-emerald-50/80 px-2 py-1 rounded-md border border-emerald-200">
+                            <Pill className="w-3 h-3 text-emerald-700 shrink-0" />
+                            <span className="font-semibold shrink-0">Thuốc chính:</span>
+                            <span className="truncate">{study.drug}</span>
                           </div>
                         )}
                       </div>
 
-                      <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                      <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
                         <a
-                          href={getGuidelineWebUrl(study.id)}
+                          href={guidelineWebUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-xs font-semibold text-blue-600 hover:underline flex items-center gap-1"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-purple-700 hover:text-purple-900 hover:bg-purple-50 transition-colors"
                         >
-                          <span>Xem chi tiết Landmark</span>
+                          <span>Xem bài đọc Guideline</span>
                           <ExternalLink className="w-3 h-3" />
                         </a>
 
@@ -426,7 +501,7 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
                             type="button"
                             onClick={() => handleApply(study)}
                             disabled={isApplied}
-                            className={`flex items-center gap-1 px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
+                            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                               isApplied
                                 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 cursor-default'
                                 : 'bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200'
@@ -440,7 +515,7 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
                             ) : (
                               <>
                                 <Plus className="w-3 h-3" />
-                                <span>Áp dụng thuốc khuyến cáo</span>
+                                <span>Áp dụng thuốc</span>
                               </>
                             )}
                           </button>
@@ -451,8 +526,31 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
                 })}
               </div>
             ) : (
-              <div className="p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200">
-                Chưa có hướng dẫn EBM khớp riêng cho mã bệnh này. Tham khảo phác đồ chuẩn Bộ Y tế trong Mục 2.
+              <div className="p-6 text-center text-xs text-slate-500 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <p className="text-slate-600">
+                  Chưa có hướng dẫn EBM khớp riêng biệt cho mã bệnh này. Bạn có thể tra cứu toàn bộ 156 bài Guidelines hoặc tham khảo phác đồ chuẩn Bộ Y tế trong Mục 2.
+                </p>
+                <div className="flex items-center justify-center gap-2">
+                  <a
+                    href={getGuidelinesHubUrl()}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-700 text-white font-semibold text-xs hover:bg-purple-800 shadow-2xs"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Mở Kho Guidelines (156 bài)</span>
+                  </a>
+                  {onOpenVaultDrawer && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenVaultDrawer(diseaseName, '', 'GUIDELINE')}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-100 shadow-2xs cursor-pointer"
+                    >
+                      <Search className="w-3.5 h-3.5 text-purple-700" />
+                      <span>Tra cứu theo từ khóa</span>
+                    </button>
+                  )}
+                </div>
               </div>
             )}
           </div>

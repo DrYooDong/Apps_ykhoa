@@ -66,6 +66,12 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   const isFemale = patientGender === 'nu';
   const hasRenalRisk = labs?.lCre ? parseFloat(labs.lCre) > 115 : false;
 
+  const customSpecialPopulations: Array<{
+    population: string;
+    adjustments: string;
+    cautions?: string;
+  }> = (activeChain as any)?.protocol?.specialPopulations || (activeChain as any)?.specialPopulations || [];
+
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
       {/* Tab switcher: 1a, 1b, 1c */}
@@ -169,6 +175,45 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                   <b>Hướng dẫn hiệu chỉnh phác đồ trên đối tượng đặc biệt:</b> Xem xét thận trọng dược động học, thanh thải thận/gan, tương tác đa thuốc và các nguy cơ tiềm ẩn ở từng nhóm bệnh nhân.
                 </span>
               </div>
+            </div>
+
+            {/* Hiển thị khuyến cáo cá thể hoá theo bệnh học chuyên sâu nếu có trong Enriched JSON */}
+            {customSpecialPopulations.length > 0 && (
+              <div className="space-y-2.5">
+                <div className="text-xs font-bold text-teal-900 flex items-center gap-1.5 px-0.5">
+                  <span className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></span>
+                  <span>Khuyến cáo cá thể hoá theo bệnh học chuyên sâu (EBM Guideline):</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {customSpecialPopulations.map((pop, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 rounded-xl border border-teal-200 bg-teal-50/40 shadow-2xs flex flex-col justify-between gap-2.5 hover:border-teal-300 transition-colors"
+                    >
+                      <div>
+                        <div className="font-bold text-xs text-teal-950 flex items-center gap-1.5 mb-1.5">
+                          <Users className="w-3.5 h-3.5 text-teal-700 shrink-0" />
+                          <span>{pop.population}</span>
+                        </div>
+                        <div className="text-xs text-slate-700 leading-relaxed">
+                          <span className="font-semibold text-slate-900">Hiệu chỉnh:</span> {pop.adjustments}
+                        </div>
+                      </div>
+                      {pop.cautions && (
+                        <div className="pt-2 border-t border-teal-100 text-[11px] text-amber-900 flex items-start gap-1.5 bg-amber-50/60 p-2 rounded-md border border-amber-200/60">
+                          <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                          <span><b>Lưu ý:</b> {pop.cautions}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="text-xs font-bold text-slate-700 flex items-center gap-1.5 px-0.5 pt-1">
+              <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+              <span>Đánh giá nguy cơ theo nhóm cơ địa sinh lý nền:</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">

@@ -331,13 +331,15 @@ function runIngestion(inputFile) {
     }
   }
 
+  const isMasterClinicalGuide = rawText.includes('Master_Clinical_Guide') || rawText.includes('CD_PDDT_BC_DTH');
+
   // Báo cáo kết quả bóc tách
   console.log(`   ➔ Ca mẫu (Prompt 06 - P1): ${sampleCaseJson ? '✅ Tìm thấy' : '❌ Không tìm thấy'}`);
   console.log(`   ➔ Triệu chứng (Prompt 06 - P2.1): ${symptomsJson ? `✅ Tìm thấy (${symptomsJson.length} mục)` : '❌ Không tìm thấy'}`);
   console.log(`   ➔ Bệnh lý & Trọng số CDSS (Prompt 06 - P2.2): ${diseaseEntityJson ? `✅ Tìm thấy [${diseaseEntityJson.id}]` : '❌ Không tìm thấy'}`);
-  console.log(`   ➔ Hồ sơ SOAP (Prompt 07): ${soapCaseId ? `✅ Tìm thấy [${soapCaseId}]` : '❌ Không tìm thấy'}`);
+  console.log(`   ➔ Hồ sơ SOAP (Prompt 07): ${soapCaseId ? `✅ Tìm thấy [${soapCaseId}]` : (isMasterClinicalGuide ? 'ℹ️ Phát hiện bài báo nghệ Master Clinical Guide (4 Kho EBM)' : '❌ Không tìm thấy')}`);
 
-  if (!sampleCaseJson && !symptomsJson && !diseaseEntityJson && !soapCaseId) {
+  if (!sampleCaseJson && !symptomsJson && !diseaseEntityJson && !soapCaseId && !isMasterClinicalGuide) {
     console.error('\n❌ Không thể bóc tách bất kỳ khối dữ liệu hợp lệ nào từ tệp nguồn. Vui lòng kiểm tra định dạng.');
     process.exit(1);
   }
@@ -510,6 +512,32 @@ function runIngestion(inputFile) {
       console.log('   ✅ Đã nạp thành công vào vault-catalog-thuc-hanh.json và vault-catalog.json.');
     } catch (err) {
       console.warn('   ⚠️ Không thể chạy ingest-notebooklm-case.mjs:', err.message);
+    }
+  } else {
+    // 5.1 Lưu Master Clinical Guide nếu có
+    if (isMasterClinicalGuide) {
+      const protocolsDir = path.join(ROOT_DIR, 'src/content/knowledge-vault/protocols');
+      if (!fs.existsSync(protocolsDir)) fs.mkdirSync(protocolsDir, { recursive: true });
+      const targetSlug = diseaseEntityJson?.id || 'xo_gan';
+      const guideFile = path.join(protocolsDir, `master-clinical-guide-${targetSlug}.md`);
+      const p7Idx = rawText.indexOf('Prompt 07');
+      const guideBody = p7Idx !== -1 ? rawText.slice(p7Idx + 9).trim() : rawText.trim();
+      fs.writeFileSync(guideFile, guideBody + '\n', 'utf8');
+      console.log(`   ✅ Đã lưu trữ Master Clinical Guide vào: protocols/master-clinical-guide-${targetSlug}.md`);
+    }
+
+    // 5.2 Kiểm tra xem đã có sẵn file SOAP trong ba/ chưa
+    const targetSlug = diseaseEntityJson?.id || 'xo_gan';
+    const existingSoap = fs.readdirSync(BA_DIR).find(f => (f.includes(targetSlug) || f.includes(targetSlug.replace(/_/g, '-'))) && f.endsWith('.md'));
+    if (existingSoap) {
+      const existingSoapPath = path.join(BA_DIR, existingSoap);
+      console.log(`   ℹ️ Đã tìm thấy hồ sơ SOAP tương ứng [${existingSoap}] trong kho ba/. Đang đồng bộ catalog...`);
+      try {
+        execSync(`node tools/scripts/ingest-notebooklm-case.mjs "${existingSoapPath}"`, { cwd: ROOT_DIR, stdio: 'pipe' });
+        console.log('   ✅ Đã đồng bộ thành công vào catalog thực hành.');
+      } catch (err) {
+        console.warn('   ⚠️ Không thể chạy ingest-notebooklm-case.mjs:', err.message);
+      }
     }
   }
 

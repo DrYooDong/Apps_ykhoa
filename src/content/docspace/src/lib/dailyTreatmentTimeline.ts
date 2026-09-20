@@ -32,6 +32,8 @@ export interface DailyTreatmentPhase {
   };
 }
 
+export type DailyTimelinePhase = DailyTreatmentPhase;
+
 /**
  * Trích xuất lộ trình điều trị chi tiết từng ngày theo bệnh học
  */
@@ -41,8 +43,16 @@ export function getDailyTreatmentTimeline(
   _activeSeverityGrade?: any,
   phacDo?: any
 ): DailyTreatmentPhase[] {
-  const idLower = diseaseId.toLowerCase();
-  const nameLower = diseaseName.toLowerCase();
+  // Ưu tiên nạp trực tiếp timelinePhases nếu đã được cấu hình trong phacDo hoặc enriched JSON
+  if (phacDo?.timelinePhases && Array.isArray(phacDo.timelinePhases) && phacDo.timelinePhases.length > 0) {
+    return phacDo.timelinePhases;
+  }
+  if (phacDo?.protocol?.timelinePhases && Array.isArray(phacDo.protocol.timelinePhases) && phacDo.protocol.timelinePhases.length > 0) {
+    return phacDo.protocol.timelinePhases;
+  }
+
+  const idLower = (diseaseId || '').toLowerCase();
+  const nameLower = (diseaseName || '').toLowerCase();
 
   // 1. SỐT XUẤT HUYẾT DENGUE (SXHD)
   if (idLower.includes('dengue') || nameLower.includes('dengue') || nameLower.includes('sốt xuất huyết')) {

@@ -16,12 +16,18 @@ interface ClinicalCautionsSectionProps {
   cautionItems: string[];
   timelinePhases: DailyTimelinePhase[];
   activeSeverityGrade?: SeverityGradingItem;
+  structuredCautions?: {
+    cautions?: string[];
+    contraindications?: string[];
+    dischargeCriteria?: string[];
+  };
 }
 
 export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = ({
   cautionItems,
   timelinePhases,
   activeSeverityGrade,
+  structuredCautions,
 }) => {
   // Phân loại tự động 3 nhóm:
   // [1] Lưu ý & Cảnh báo quan trọng
@@ -32,15 +38,34 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
   const criticalAlerts: string[] = [];
   const dischargeCriteria: Array<{ dayRange?: string; phaseName?: string; text: string }> = [];
 
+  // 0. Nạp trực tiếp từ structuredCautions của Enriched JSON (nếu có)
+  if (structuredCautions?.cautions && Array.isArray(structuredCautions.cautions)) {
+    structuredCautions.cautions.forEach((c) => {
+      if (c && !criticalAlerts.includes(c)) criticalAlerts.push(c);
+    });
+  }
+  if (structuredCautions?.contraindications && Array.isArray(structuredCautions.contraindications)) {
+    structuredCautions.contraindications.forEach((cc) => {
+      if (cc && !contraindications.includes(cc)) contraindications.push(cc);
+    });
+  }
+  if (structuredCautions?.dischargeCriteria && Array.isArray(structuredCautions.dischargeCriteria)) {
+    structuredCautions.dischargeCriteria.forEach((dc) => {
+      if (dc && !dischargeCriteria.some((x) => x.text === dc)) {
+        dischargeCriteria.push({ text: dc });
+      }
+    });
+  }
+
   // 1. Phân loại từ cautionItems (phacDo.luuY)
   cautionItems.forEach((item) => {
     const lower = item.toLowerCase();
     if (/ccđ|chống chỉ định|cấm|tuyệt đối không|không được dùng|tránh dùng/i.test(lower)) {
-      contraindications.push(item);
+      if (!contraindications.includes(item)) contraindications.push(item);
     } else if (/xuất viện|ra viện|chuyển tuyến|chuyển tầng|chuyển viện|tiêu chuẩn ra|tiêu chí ra/i.test(lower)) {
-      dischargeCriteria.push({ text: item });
+      if (!dischargeCriteria.some((x) => x.text === item)) dischargeCriteria.push({ text: item });
     } else {
-      criticalAlerts.push(item);
+      if (!criticalAlerts.includes(item)) criticalAlerts.push(item);
     }
   });
 

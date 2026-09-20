@@ -57,11 +57,20 @@ function generateId(prefix, text) {
 }
 
 function parseFrontmatter(content) {
-  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  let raw = content;
+  if (raw.startsWith('```')) {
+    raw = raw.replace(/^```[a-zA-Z]*\r?\n/, '');
+    const endCode = raw.indexOf('```');
+    if (endCode !== -1 && endCode < 3000) {
+      raw = raw.slice(0, endCode) + raw.slice(endCode + 3);
+    }
+  }
+
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return { meta: {}, body: content };
 
   const rawMeta = match[1];
-  const body = content.slice(match[0].length);
+  const body = raw.slice(match[0].length);
   const meta = {};
 
   const lines = rawMeta.split('\n');

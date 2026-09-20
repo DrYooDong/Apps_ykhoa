@@ -315,6 +315,8 @@ export function analyzeClinicalCase(
         b.id === 'sot_ret' ||
         b.id === 'dot_bung_phat_vgsv_B' ||
         b.id === 'dot-bung-phat-viem-gan-b' ||
+        b.id === 'xo_gan' ||
+        b.id === 'xo_gan_mat_bu' ||
         b.id === 'xo_gan_con_bu' ||
         b.id === 'xo-gan-con-bu' ||
         b.id === 'viem_phoi';
@@ -441,8 +443,13 @@ export function analyzeClinicalCase(
         }
       }
 
-      // 6.5. Xơ gan còn bù (cACLD)
-      if (b.id === 'xo_gan_con_bu' || b.id === 'xo-gan-con-bu') {
+      // 6.5. Xơ gan còn bù & Xơ gan mất bù (cACLD / Cirrhosis)
+      if (
+        b.id === 'xo_gan' ||
+        b.id === 'xo_gan_mat_bu' ||
+        b.id === 'xo_gan_con_bu' ||
+        b.id === 'xo-gan-con-bu'
+      ) {
         const epiMatch =
           normalizeText(epiContext.vectorExposure).includes('hbv') ||
           normalizeText(epiContext.vectorExposure).includes('hcv') ||

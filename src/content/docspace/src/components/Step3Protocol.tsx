@@ -385,9 +385,26 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     );
   }, [activeSeverityGrade, activeChain, currentDisease]);
 
-  // Timeline phases
+  // Timeline phases - Cơ chế phân giải đa tầng: Phân độ riêng -> Protocol của Chain -> Root Chain -> phacDo -> Thư viện timeline
   const timelinePhases = useMemo(() => {
     if (!currentDisease) return [];
+    // 1. Phân độ cụ thể đang chọn có timelinePhases riêng
+    if (
+      activeSeverityGrade?.protocol?.timelinePhases &&
+      Array.isArray(activeSeverityGrade.protocol.timelinePhases) &&
+      activeSeverityGrade.protocol.timelinePhases.length > 0
+    ) {
+      return activeSeverityGrade.protocol.timelinePhases;
+    }
+    // 2. Protocol trong Enriched Chain (chuẩn Prompt 05/06/07)
+    if (
+      (activeChain as any)?.protocol?.timelinePhases &&
+      Array.isArray((activeChain as any).protocol.timelinePhases) &&
+      (activeChain as any).protocol.timelinePhases.length > 0
+    ) {
+      return (activeChain as any).protocol.timelinePhases;
+    }
+    // 3. Root của Enriched Chain
     if (
       (activeChain as any)?.timelinePhases &&
       Array.isArray((activeChain as any).timelinePhases) &&
@@ -395,6 +412,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     ) {
       return (activeChain as any).timelinePhases;
     }
+    // 4. Trong phacDo
+    if (
+      (phacDo as any)?.timelinePhases &&
+      Array.isArray((phacDo as any).timelinePhases) &&
+      (phacDo as any).timelinePhases.length > 0
+    ) {
+      return (phacDo as any).timelinePhases;
+    }
+    // 5. Thư viện timeline tự động
     return getDailyTreatmentTimeline(
       currentDisease.id,
       currentDisease.ten,
@@ -413,7 +439,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   }, [phacDo, customOrders]);
 
   const activeComplications = useMemo(() => {
-    return activeChain?.complications || [];
+    return (
+      activeChain?.complications ||
+      (activeChain as any)?.protocol?.complications ||
+      (activeChain as any)?.protocol?.complicationsManagement ||
+      []
+    );
   }, [activeChain]);
 
   const handleToggleComplication = (idx: number) => {
@@ -780,6 +811,19 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               cautionItems={phacDo.luuY}
               timelinePhases={timelinePhases}
               activeSeverityGrade={activeSeverityGrade}
+              structuredCautions={(() => {
+                const raw =
+                  (activeChain as any)?.protocol?.cautionsAndDischarge ||
+                  (activeChain as any)?.cautionsAndDischarge ||
+                  (activeChain as any)?.clinicalCautions ||
+                  (activeChain as any)?.protocol?.clinicalCautions;
+                if (!raw) return undefined;
+                return {
+                  cautions: raw.cautions || raw.warnings || [],
+                  contraindications: raw.contraindications || [],
+                  dischargeCriteria: raw.dischargeCriteria || [],
+                };
+              })()}
             />
           </CollapsibleProtocolSection>
 

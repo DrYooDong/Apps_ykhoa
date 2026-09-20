@@ -77,3 +77,5 @@
 | `TP-TASK-01` | Architecture | Tái cấu trúc thanh điều hướng trên cùng & thanh hiển thị tên bệnh tinh gọn (`ProtocolTopNav.tsx`, `ProtocolDiseaseHeader.tsx`) | 2026-09-19 | ✅ Đạt chuẩn tối giản |
 | `TP-TASK-02` | UI & Matrix | Xây dựng Bảng 4 Cột chi tiết (`DetailedTreatmentTable.tsx`) tích hợp tiến độ thực thi & chép EMR | 2026-09-19 | ✅ Đạt chuẩn 4 cột EBM |
 | `TP-TASK-03` | Modularization | Triển khai 6 Sub-components chuẩn hóa: `ProtocolClassificationSection` (1a, 1b, 1c), `ClinicalCautionsSection` ([1], [2], [3]), `HealthcareWorkerKnowledgeSection` (5a, 5b, 5c), `SoapCasesSection` | 2026-09-19 | ✅ Pass TypeScript 100% |
+| `TP-TASK-08` | Data & UI Pipeline | Chuẩn hóa Dynamic Resolvers nạp `timelinePhases`, `specialPopulations` (Mục 1c) và `cautionsAndDischarge` (Mục 3) trực tiếp từ Enriched JSON | 2026-09-20 | ✅ Pass 100% Type & Data Contract |
+| `TP-TASK-09` | Tooling & QA Gate | Xây dựng File Template Chuẩn `_template_disease_protocol.json` & Script kiểm định tự động `validate-protocol-schema.mjs` | 2026-09-20 | ✅ Pass 9/9 Bệnh lý (xo_gan Hoàn Hảo) |
