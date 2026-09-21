@@ -1,0 +1,407 @@
+{
+    "icdCode": "G00",
+    "icdPrefixes": [
+        "G00.0",
+        "G00.1",
+        "G00.2",
+        "G00.3",
+        "G00.8",
+        "G00.9",
+        "A39.0"
+    ],
+    "diseaseName": "Viêm màng não do vi khuẩn (Acute Bacterial Meningitis - ABM)",
+    "specialty": "Truyền nhiễm / Thần kinh / Hồi sức Cấp cứu",
+    "severity": "emergency",
+    "summary": "Viêm màng não do vi khuẩn (Acute Bacterial Meningitis - ABM) là tình trạng nhiễm trùng cấp tính tính mạng của màng nhện, khoang dưới nhện và màng mềm bao bọc não bộ và tủy sống, đòi hỏi cấp cứu y khoa trì hoãn điều trị dẫn đến tử vong hoặc di chứng nặng nề. Bệnh biểu hiện kinh điển bằng hội chứng màng não cấp tính (sốt, đau đầu dữ dội, cứng gáy, rối loạn tri giác), tiến triển nhanh tới tăng áp lực nội sọ, tụt kẹt não, co giật và sốc nhiễm khuẩn. Nguyên nhân thường gặp nhất ở người lớn và trẻ em trên 1 tháng tuổi là Streptococcus pneumoniae (Phế cầu), Neisseria meningitidis (Não mô cầu), Haemophilus influenzae type b và Listeria monocytogenes. Chẩn đoán dựa trên biến đổi dịch tễ, lâm sàng và chẩn đoán xác định qua chọc dò tủy sống (DNT đục, tăng bạch cầu đa nhân trung tính, protein tăng cao, glucose giảm dốc) kết hợp nuôi cấy/PCR vi sinh. Can thiệp cốt lõi là dùng kháng sinh tĩnh mạch phổ rộng liều cao trong vòng 1 giờ vàng kể từ khi tiếp nhận phối hợp Dexamethasone sớm.",
+    "goldStandard": "Nuôi cấy dịch não tủy (CSF Culture) kèm Kháng sinh đồ (AST) là tiêu chuẩn vàng kinh điển để xác định chủng vi khuẩn gây bệnh và độ nhạy cảm kháng sinh. Xét nghiệm sinh học phân tử PCR DNT (đơn mồi hoặc đa mồi) có độ nhạy và độ đặc hiệu cao giúp xác định nhanh các căn nguyên S. pneumoniae, N. meningitidis, H. influenzae ngay cả khi bệnh nhân đã sử dụng kháng sinh trước khi chọc dò.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "vmn_vk_lam_sang_ho_chung_mang_nao"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định Viêm màng não do vi khuẩn khi bệnh nhân thỏa mãn Tiêu chuẩn Bắt buộc (Hội chứng màng não cấp tính) VÀ ít nhất 2 Tiêu chuẩn Bắt buộc/Chính cận lâm sàng (DNT biến đổi kiểu mủ đục) VÀ ít nhất 1 Tiêu chuẩn Vi sinh/Sinh học phân tử khẳng định căn nguyên."
+    },
+    "criteria": [
+        {
+            "id": "vmn_vk_lam_sang_ho_chung_mang_nao",
+            "type": "mandatory",
+            "label": "[Lâm sàng] Hội chứng màng não cấp tính (Tam chứng kinh điển & Dấu hiệu Cờ đỏ)",
+            "description": "Sốt cao đột ngột (thường > 38.5°C), đau đầu dữ dội không giảm với thuốc hạ sốt thông thường, cứng gáy (hoặc dấu hiệu Kernig / Brudzinski dương tính), kèm theo rối loạn tri giác (ngủ gà, lơ mơ, kích thích, sảng hoặc hôn mê GCS < 15). Ở trẻ sơ sinh và trẻ nhỏ, triệu chứng có thể không điển hình với thóp phồng, bỏ bú, quấy khóc liên tục, thẫn thờ hoặc giảm trương lực cơ.",
+            "sourceGuideline": "WHO Guidelines on Meningitis 2025/2026, Quyết định 4068/QĐ-BYT, ESCMID Guidelines 2016 & NICE Guidance 2024 (NG240)"
+        },
+        {
+            "id": "vmn_vk_lam_sang_ban_xuat_huyet",
+            "type": "major",
+            "label": "[Lâm sàng] Ban xuất huyết hoại tử da (Petechial / Purpuric Rash) nghi Não mô cầu",
+            "description": "Xuất hiện ban xuất huyết hoại tử không mất màu khi ấn kính (non-blanching rash), kích thước từ chấm xuất huyết (petechiae) đến tử ban hoại tử rải rác ở thân mình, cẳng chân, kết mạc mắt, gợi ý mạnh mẽ nhiễm Não mô cầu (Neisseria meningitidis) hoặc nhiễm trùng huyết do vi khuẩn dọa Purpura Fulminans.",
+            "sourceGuideline": "WHO Practical Manual 2026, NICE Guidance 2024 & ESCMID Guidelines 2016"
+        },
+        {
+            "id": "vmn_vk_dnt_bien_doi",
+            "type": "major",
+            "label": "[Cận lâm sàng] Dịch não tủy biến đổi đặc trưng viêm màng não mủ",
+            "description": "Chọc dò tủy sống ghi nhận: Áp lực mở DNT tăng cao > 180 - 300 mmH2O; Mắt thường nhìn DNT mờ, đục hoặc như nước vo gạo; Tăng bạch cầu DNT đáng kể (thường > 100 - 5.000 tế bào/mm3) với ưu thế Bạch cầu đa nhân trung tính (Neutrophils > 50 - 80%); Nồng độ Protein DNT tăng cao > 100 - 500 mg/dL (> 1.0 - 5.0 g/L); Nồng độ Glucose DNT giảm sâu < 40 mg/dL (< 2.2 mmol/L) hoặc Tỷ lệ Glucose DNT/Máu <= 0.4.",
+            "sourceGuideline": "Quyết định 4068/QĐ-BYT, WHO Guidelines 2025/2026 & IDSA Practice Guidelines 2004"
+        },
+        {
+            "id": "vmn_vk_cls_dinh_luong_lactate",
+            "type": "lab",
+            "label": "[Cận lâm sàng] Nồng độ Lactate DNT tăng cao (Cut-off >= 3.5 - 3.9 mmol/L)",
+            "description": "Nồng độ Lactate trong DNT tăng cao >= 3.5 - 3.9 mmol/L (>= 31.5 - 35.1 mg/dL) có độ nhạy (93-95%) và độ đặc hiệu (94-99%) rất cao giúp biệt lập nhanh Viêm màng nội do vi khuẩn với Viêm màng nào do virus ở bệnh nhân chưa dùng kháng sinh trước chọc dò.",
+            "labThreshold": "Lactate DNT >= 3.5 mmol/L (hoặc >= 31.5 mg/dL)",
+            "sourceGuideline": "WHO Guidelines 2025/2026, ESCMID Guidelines 2016 & AAFP 2021"
+        },
+        {
+            "id": "vmn_vk_cls_vi_sinh_gold",
+            "type": "lab",
+            "label": "[Cận lâm sàng] Vi sinh DNT (Nhuộm Gram, Nuôi cấy & PCR DNT)",
+            "description": "Soi tươi nhuộm Gram DNT phát hiện vi khuẩn: Song cầu Gram (+) dạng ngọn nến nghi Phế cầu (S. pneumoniae); Song cầu Gram (-) hạt cà phê nghi Não mô cầu (N. meningitidis); Trực trực khuẩn Gram (-) nghi H. influenzae; Trực khuẩn Gram (+) nghi Listeria. Cấy DNT (+) hoặc PCR DNT (+) khẳng định chắc chắn 100% căn nguyên vi khuẩn gây bệnh.",
+            "labThreshold": "Cấy DNT (+) hoặc PCR DNT (+) hoặc Soi Gram (+)",
+            "sourceGuideline": "WHO Guidelines 2025/2026, Quyết định 4068/QĐ-BYT & ESCMID Guidelines 2016"
+        },
+        {
+            "id": "vmn_vk_hinh_anh_hoc_ct",
+            "type": "imaging",
+            "label": "[Chẩn đoán hình ảnh] CT scan / MRI Sọ não có cản quang",
+            "description": "Chụp CT scan hoặc MRI não giúp loại trừ khối choáng chỗ, tổn thương lệch đường giữa, phù não diện rộng hoặc tắc nghẽn lưu thông DNT trước khi chọc dò tủy sống ở bệnh nhân có nguy cơ cao tụt kẹt não. Hình ảnh CT/MRI cũng giúp phát hiện các biến chứng áp xe não, tụ mủ dưới màng cứng, viêm màng não thất, nhồi máu não do viêm mạch hoặc huyết khối xoang tĩnh mạch.",
+            "labThreshold": "Bằng chứng xóa các bể não, di lệch đường giữa > 5mm, khối áp xe/tụ mủ hoặc xẹp não thất",
+            "sourceGuideline": "WHO Guidelines 2025/2026, ESCMID Guidelines 2016 & IDSA Guidelines 2004/2017"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 - Thể nhẹ / Chưa có biến chứng đe dọa sinh mạng",
+            "severity": "standard",
+            "criteria": "[Lâm sàng]: Bệnh nhân tỉnh táo (GCS 14-15), sốt, đau đầu, cứng gáy rõ, không có dấu thần kinh khu trú, không co giật, huyết động hoàn toàn ổn định. [Cận lâm sàng]: DNT đục/tăng bạch cầu đa nhân trung tính điển hình, SpO2 >= 96%, sinh hóa gan thận bình thường. [Tiêu chuẩn an toàn]: Không có dấu hiệu tăng áp lực nội sọ nặng, không thuộc nhóm chống chỉ định hoãn chọc dò tủy sống.",
+            "triage": "Nhập viện Nội trú 100% tại Khoa Truyền nhiễm / Khoa Thần kinh.",
+            "primaryAction": "Thực hiện ngay chọc dò tủy sống xét nghiệm DNT, cấy máu 2 mẫu, dùng ngay Kháng sinh tĩnh mạch kinh nghiệm (Ceftriaxone 2g q12h hoặc Cefotaxime 2g q4-6h) phối hợp Dexamethasone 10mg IV q6h (tiêm trước hoặc cùng liều kháng sinh đầu) trong 4 ngày.",
+            "targetVitals": "GCS 15, HATT 100-130 mmHg, Mạch 60-90 l/p, SpO2 >= 96%, Bài niệu >= 0.5 - 1.0 mL/kg/h."
+        },
+        {
+            "grade": "Mức độ 2 - Thể nặng / Có dấu hiệu cảnh báo & Rối loạn tri giác",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Rối loạn tri giác nhẹ đến trung bình (GCS 10-13), co giật khu trú hoặc toàn thể mới khởi phát, dấu thần kinh khu trú (liệt dây thần kinh sọ III, VI, VII, yếu nửa người), hoặc xuất hiện tử ban xuất huyết hoại tử da nghi Não mô cầu. [Cận lâm sàng]: DNT tăng áp lực mở > 250-300 mmH2O, Lactate DNT > 4.5 mmol/L, Bạch cầu máu tăng cao > 15-20 G/L, CRP/Procalcitonin tăng rất cao. [Tiêu chuẩn an toàn]: Thuộc nhóm cần hoãn chọc dò tủy sống và chụp CT scan não trước nếu có GCS < 10, dấu thần kinh khu trú, co giật mới, phù gai thị.",
+            "triage": "Nhập viện Nội trú Theo dõi Sát tại Khoa Cấp cứu / Khoa Hồi sức Tích cực (ICU).",
+            "primaryAction": "Cấy máu khẩn 2 mẫu, Dexamethasone 10mg IV + Kháng sinh kinh nghiệm phổ rộng TM (Ceftriaxone 2g q12h + Vancomycin 15-20 mg/kg q8-12h; thêm Ampicillin 2g q4h nếu > 60 tuổi, thai phụ hoặc suy giảm miễn dịch). Chụp CT scan não khẩn để kiểm tra khối choáng chỗ/tụt kẹt trước khi chọc dò DNT. Cắt cơn co giật bằng Diazepam IV hoặc Levetiracetam.",
+            "targetVitals": "Duy trì GCS >= 12, HATT >= 90 mmHg, MAP >= 65 mmHg, SpO2 >= 95%, kiểm soát áp lực nội sọ."
+        },
+        {
+            "grade": "Mức độ 3 - Thể nguy kịch / Sốc nhiễm khuẩn / Hôn mê & Tụt kẹt脑",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Hôn mê sâu (GCS < 10 hoặc tụt dốc dốc đứng), Sốc nhiễm khuẩn (tụt huyết áp HATT < 90 mmHg, chi lạnh, CRT > 3s, Lactate máu > 2.4 mmol/L), Dấu hiệu Tụt kẹt não tiến triển (Tam chứng Cushing: Mạch chậm, Tăng huyết áp, Rối loạn nhịp thở; dãn đồng tử một hoặc hai bên), Hoặc hội chứng Tử ban bùng phát Purpura Fulminans / DIC. [Cận lâm sàng]: Rối loạn đông máu nặng (PT/INR tăng, Fibrinogen giảm, Tiểu cầu < 50 G/L), Suy đa tạng (MODS). [Dấu hiệu nguy hiểm]: Chống chỉ định tuyệt đối chọc dò Tủy sống cho đến khi ổn định sinh hiệu và loại trừ tụt kẹt.",
+            "triage": "Nhập ngay Khoa Hồi sức Tích cực (ICU) / Phòng Cấp cứu Báo động đỏ.",
+            "primaryAction": "Hồi sức cấp cứu khẩn theo ABCD: Đặt nội khí quản thông khí hỗ trợ, bù dịch tinh thể Ringer Lactate/NaCl 0.9% 20 mL/kg khẩn, dùng thuốc vận mạch (Norepinephrine). DÙNG NGAY Kháng sinh kinh nghiệm TM (Ceftriaxone + Vancomycin + Ampicillin) VÀ Dexamethasone 10mg IV TRƯỚC KHI thực hiện bất kỳ chẩn đoán hình ảnh nào. Hoãn hoàn toàn chọc dò Tủy sống. Điều trị hạ áp lực nội sọ bằng Mannitol 20% (0.5-1.0 g/kg IV) hoặc NaCl 3%.",
+            "targetVitals": "HATT >= 90 mmHg, MAP >= 65 mmHg, SpO2 >= 95%, PaCO2 35-40 mmHg, Bài niệu >= 0.5 mL/kg/h, Lactate máu < 2.0 mmol/L."
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Điều trị Viêm Màng Não Do Vi Khuẩn (Chuẩn Hướng dẫn WHO 2025/2026, Quyết định 4068/QĐ-BYT, ESCMID & IDSA)",
+        "guideline": "Quyết định 4068/QĐ-BYT của Bộ Y Tế Việt Nam, Hướng dẫn WHO 2025/2026 về Chẩn đoán và Điều trị Viêm màng nào, ESCMID Guidelines 2016 & IDSA Practice Guidelines 2004/2017",
+        "targetGoals": [
+            "Khởi đầu kháng sinh tĩnh mạch liều đầu tiên trong vòng 1 GIỜ VÀNG kể từ khi bệnh nhân đến viện (Door-to-Antibiotic time < 1h).",
+            "Diệt sạch vi khuẩn trong dịch não tủy và kiểm soát triệt để phản ứng viêm màng não.",
+            "Kiểm soát áp lực nội sọ, duy trì áp lực tưới máu não (CPP > 60-70 mmHg), phòng ngừa tụt kẹt não.",
+            "Giảm thiểu tối đa tỷ lệ tử vong và các di chứng thần kinh / thính lực lâu dài."
+        ],
+        "initialManagement": [
+            "Đánh giá khẩn cấp sinh hiệu (ABCDE) và khai thác Tam chứng màng não / Dấu hiệu cờ đỏ cấp cứu.",
+            "Cấy máu ngay 2 vị trí trước khi dùng kháng sinh (nếu không làm chậm trễ quá 15-30 phút).",
+            "Chọc dò tủy sống khẩn cấp nếu không có chống chỉ định tuyệt đối/tương đối.",
+            "Nếu có chống chỉ định tương đối (GCS < 10, liệt khu trú, co giật mới, phù gai thị, suy giảm miễn dịch) hoặc chờ chụp CT scan, DÙNG NGAY KHÁNG SINH VÀ DEXAMETHASONE TĨNH MẠCH TRƯỚC."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Ceftriaxone",
+                "class": "Cephalosporin thế hệ 3",
+                "route": "Tiêm tĩnh mạch (IV)",
+                "dosage": "Người lớn: 2g IV mỗi 12 giờ (tổng 4g/ngày). Trẻ em (> 1 tháng): 50 - 100 mg/kg/ngày IV chia 2 lần (tối đa 4g/ngày)",
+                "frequency": "Mỗi 12 giờ",
+                "instructions": "Kháng sinh đầu tay kinh nghiệm bao phủ Phế cầu, Não mô cầu, H. influenzae. Tiêm IV chậm hoặc truyền IV 30 phút.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Cefotaxime",
+                "class": "Cephalosporin thế hệ 3",
+                "route": "Tiêm tĩnh mạch (IV)",
+                "dosage": "Người lớn: 2g IV mỗi 4-6 giờ (tổng 8-12g/ngày). Trẻ em (> 1 tháng): 50 - 75 mg/kg IV mỗi 6 giờ (tối đa 12g/ngày)",
+                "frequency": "Mỗi 4 - 6 giờ",
+                "instructions": "Lựa chọn thay thế tương đương Ceftriaxone. Bắt buộc ưu tiên dùng cho trẻ sơ sinh bị chống chỉ định Ceftriaxone.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Vancomycin",
+                "class": "Glycopeptide",
+                "route": "Truyền tĩnh mạch (IV)",
+                "dosage": "Người lớn: 15 - 20 mg/kg IV mỗi 8-12 giờ. Trẻ em: 60 mg/kg/ngày IV chia 4 lần",
+                "frequency": "Mỗi 8 - 12 giờ",
+                "instructions": "Bắt buộc phối hợp với Ceftriaxone/Cefotaxime tại các vùng có tỷ lệ Phế cầu (S. pneumoniae) kháng Penicillin/Cephalosporin cao. Duy trì nồng độ đáy huyết thanh Ctrough = 15 - 20 mcg/mL.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Ampicillin (hoặc Amoxicillin)",
+                "class": "Aminopenicillin",
+                "route": "Tiêm tĩnh mạch (IV)",
+                "dosage": "Người lớn: 2g IV mỗi 4 giờ (tổng 12g/ngày). Trẻ em: 50 mg/kg IV mỗi 4 giờ (200 mg/kg/ngày)",
+                "frequency": "Mỗi 4 giờ",
+                "instructions": "Bắt buộc bổ sung vào phác đồ Ceftriaxone + Vancomycin ở bệnh nhân > 60 tuổi, phụ nữ mang thai hoặc người suy giảm miễn dịch để bao phủ Listeria monocytogenes.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Dexamethasone",
+                "class": "Corticosteroid",
+                "route": "Tiêm tĩnh mạch (IV)",
+                "dosage": "Người lớn: 10 mg IV mỗi 6 giờ. Trẻ em (> 1 tháng): 0.15 mg/kg IV mỗi 6 giờ",
+                "frequency": "Mỗi 6 giờ trong 4 ngày",
+                "instructions": "Bắt buộc tiêm tĩnh mạch 15-20 phút TRƯỚC HẶC CÙNG LÚC với liều kháng sinh đầu tiên. Ngừng Dexamethasone nếu xác định căn nguyên không phải Phế cầu hoặc H. influenzae type b.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Meropenem",
+                "class": "Carbapenem",
+                "route": "Truyền tĩnh mạch (IV)",
+                "dosage": "Người lớn: 2g IV mỗi 8 giờ. Trẻ em: 40 mg/kg IV mỗi 8 giờ (tối đa 6g/ngày)",
+                "frequency": "Mỗi 8 giờ",
+                "instructions": "Dùng khi dị ứng nặng với Beta-lactam hoặc nghi ngờ vi khuẩn Gram âm kháng thuốc / Pseudomonas aeruginosa.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Chloramphenicol",
+                "class": "Phenicol",
+                "route": "Tiêm tĩnh mạch (IV)",
+                "dosage": "Người lớn: 1g IV mỗi 6 giờ (tối đa 4g/ngày). Trẻ em: 25 mg/kg IV mỗi 6 giờ",
+                "frequency": "Mỗi 6 giờ",
+                "instructions": "Lựa chọn thay thế phối hợp với Ampicillin/Benzylpenicillin khi không có sẵn Ceftriaxone/Cefotaxime ở tuyến tuyến dưới.",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Hỗ trợ hô hấp: Thở oxy gọng kính 2-4 L/p khi SpO2 < 95%; Đặt nội khí quản thông khí hỗ trợ khi GCS < 9 hoặc suy hô hấp.",
+            "Liệu pháp dịch truyền: Bù dịch tĩnh mạch đẳng trương NaCl 0.9% hoặc Ringer Lactate duy trì thể tích lòng mạch; tuyệt đối tránh dùng dung dịch nhược trương (Dextrose 5%) để phòng ngừa phù não nặng thêm.",
+            "Xử trí Tăng áp lực nội sọ: Nằm đầu cao 30 độ, nằm thẳng cổ; dùng Mannitol 20% (0.5 - 1.0 g/kg IV truyền nhanh 15-30 phút q6-8h) hoặc NaCl 3% khi có biểu hiện TALNS nặng.",
+            "Hạ sốt & Kiểm soát co giật: Hạ sốt bằng Paracetamol IV/PO (10-15 mg/kg q4-6h); Cắt cơn co giật khẩn bằng Diazepam 10mg IV chậm (hoặc 0.5 mg/kg bơm hậu môn ở trẻ em) phối hợp Levetiracetam."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Tăng áp lực nội sọ & Tụt kẹt脑 (Raised ICP & Brain Herniation)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Nhức đầu dữ dội, nôn vọt, tri giác giảm dốc đứng (GCS tụt), Tam chứng Cushing (Mạch chậm, Tăng HA, Thở rối loạn), đồng tử dãn không phản xạ một hoặc hai bên.",
+            "preventiveAction": "Nằm đầu cao 30 độ, truyền Mannitol 20% 0.5-1.0 g/kg IV hoặc NaCl 3%, thông khí nhân tạo duy trì PaCO2 35-40 mmHg, hoãn chọc dò tủy sống khẩn.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: TỤT KẸT NÃO: Nằm đầu cao 30°, xả khẩn Mannitol 20% 100-200 mL IV trong 15 phút, hoãn chọc dò Tủy sống, gọi Hội chẩn Hồi sức/Ngoại thần kinh khẩn!"
+        },
+        {
+            "name": "Sốc nhiễm khuẩn & Suy đa tạng (Septic Shock & MODS)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Tụt huyết áp (HATT < 90 mmHg hoặc MAP < 65 mmHg), Mạch nhanh nhẹ khó bắt, chi lạnh, CRT > 3s, thiểu niệu (< 0.5 mL/kg/h), Lactate máu > 2.0 - 4.0 mmol/L.",
+            "preventiveAction": "Truyền nhanh dịch tinh thể Ringer Lactate/NaCl 0.9% 20 mL/kg trong 30-60 phút, dùng sớm thuốc vận mạch Norepinephrine (khởi đầu 0.05-0.1 mcg/kg/min), cấy máu và tiêm ngay kháng sinh TM.",
+            "onCallAlertText": "Y LỆNH TRỰC: SỐC NHIỄM KHUẨN: Bù nhanh Ringer Lactate 500 mL IV, chuẩn bị bơm tiêm điện Norepinephrine, thử ngay Khí máu động mạch & Lactate!"
+        },
+        {
+            "name": "Co giật kéo dài & Trạng thái động kinh (Status Epilepticus)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Cơn co giật toàn thể hoặc cục bộ kéo dài > 5 phút hoặc nhiều cơn co giật liên tiếp không hồi phục tri giác giữa các cơn.",
+            "preventiveAction": "Cắt cơn co giật ngay bằng Diazepam 10mg IV chậm (hoặc 0.5 mg/kg bơm hậu môn ở trẻ em), tiếp theo duy trì Levetiracetam 30-60 mg/kg IV hoặc Phenytoin.",
+            "onCallAlertText": "Y LỆNH TRỰC: CO GIẬT KÉO DÀI: Diazepam 10mg IV chậm (hoặc Midazolam 5mg IV/tiêm bắp), thở oxy gọng kính 5L/p, chuẩn bị Levetiracetam IV!"
+        },
+        {
+            "name": "Điếc cảm tiếp & Giảm thính lực (Sensorineural Hearing Loss)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bệnh nhân không phản ứng với âm thanh, ù tai, điếc đột ngột một hoặc hai bên (đặc biệt phổ biến sau viêm màng não do Phế cầu S. pneumoniae).",
+            "preventiveAction": "Dùng Dexamethasone tĩnh mạch sớm từ đầu, bắt buộc đo thính lực OAE/BERA trước khi xuất viện hoặc trong vòng 4 tuần, chuyển Tai Mũi Họng đánh giá cấy ốc tai điện tử khẩn nếu điếc nặng.",
+            "onCallAlertText": "Y LỆNH TRỰC: THEO DÕI THÍNH LỰC: Đăng ký đo thính lực OAE/BERA trước khi xuất viện cho 100% bệnh nhân VMN vi khuẩn!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (WBC, Neutrophil%), C-reactive protein (CRP) hoặc Procalcitonin (PCT) mỗi 24-48h để theo dõi đáp ứng điều trị.",
+        "Điện giải đồ máu (Na+, K+, Cl-), Đường huyết, Chức năng gan thận (AST, ALT, Urea, Creatinine) mỗi 24-48h.",
+        "Khí máu động mạch, Nồng độ Lactate máu ở bệnh nhân có rối loạn tri giác hoặc nghi sốc nhiễm khuẩn.",
+        "Chọc dò Tủy sống kiểm tra lại sau 48h NẾU bệnh nhân không cải thiện lâm sàng hoặc nghi ngờ vi khuẩn kháng thuốc (đặc biệt Phế cầu kháng Penicillin)."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Người cao tuổi (≥ 60 tuổi)",
+            "adjustments": "Bắt buộc bổ sung Ampicillin 2g IV q4h vào phác đồ Ceftriaxone + Vancomycin để bao phủ Listeria monocytogenes.",
+            "cautions": "Triệu chứng lâm sàng thường không điển hình (sốt nhẹ, không cứng gáy, lú lẫn/sảng), dễ bỏ sót chẩn đoán và dễ quá tải tuần hoàn khi truyền dịch."
+        },
+        {
+            "population": "Trẻ em và Nhũ nhi (> 1 tháng tuổi)",
+            "adjustments": "Ceftriaxone 50-100 mg/kg/ngày IV chia 2 lần + Vancomycin 60 mg/kg/ngày IV chia 4 lần + Dexamethasone 0.15 mg/kg q6h trong 4 ngày.",
+            "cautions": "Đo thính lực bắt buộc trước khi xuất viện; theo dõi sát nguy cơ co giật do sốt cao và biến chứng tụ mủ dưới màng cứng."
+        },
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "Bắt buộc bổ sung Ampicillin 2g IV q4h phối hợp Ceftriaxone 2g q12h để bao phủ Listeria monocytogenes.",
+            "cautions": "Nguy cơ sảy thai, sinh non hoặc nhiễm trùng sơ sinh; theo dõi sát tim thai và hội chẩn chuyên khoa Sản."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 60 mL/min)",
+            "adjustments": "Hiệu chỉnh liều Vancomycin dựa trên nồng độ đáy huyết thanh (trough 15-20 mcg/mL) và độ thanh thải Creatinine; Ceftriaxone không cần chỉnh liều nếu suy thận đơn thuần.",
+            "cautions": "Tránh dùng Amikacin/Gentamicin phối hợp ngoại trừ khi bắt buộc; giám sát sát độc tính trên thận."
+        },
+        {
+            "population": "Bệnh nhân suy giảm miễn dịch / HIV / Sau ghép tạng",
+            "adjustments": "Phác đồ kinh nghiệm bắt buộc phối hợp Ceftriaxone + Vancomycin + Ampicillin; Cần tầm soát phân biệt Viêm màng nào do Cryptococcus (xét nghiệm CrAg DNT/Máu) và Viêm màng nào do Lao (PCR Xpert Ultra DNT).",
+            "cautions": "Tránh dùng Corticoid nếu nghi ngờ do Nấm Cryptococcus hoặc Ký sinh trùng."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "0 - 24 giờ",
+            "phaseName": "Giai đoạn Cấp cứu Khẩn cấp & Khởi đầu Phác đồ",
+            "clinicalGoal": "Đánh giá sinh tồn (ABCDE), phân tầng nguy cơ, tiêm tĩnh mạch Kháng sinh kinh nghiệm + Dexamethasone trong vòng 1 giờ, loại trừ tụt kẹt trước khi chọc dò DNT.",
+            "problems": [
+                {
+                    "id": "p1_spec",
+                    "problemName": "Điều trị đặc hiệu kinh nghiệm khẩn cấp",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh kinh nghiệm",
+                            "content": "Ceftriaxone 2g IV q12h (hoặc Cefotaxime 2g IV q4-6h) + Vancomycin 15-20 mg/kg IV q8-12h (nếu vùng có tỷ lệ Phế cầu kháng Penicillin cao) (+ Ampicillin 2g IV q4h nếu > 60 tuổi, thai phụ, suy giảm miễn dịch).",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Liệu pháp Corticoid hỗ trợ",
+                            "content": "Dexamethasone 10mg IV q6h tiêm trước hoặc cùng lúc với liều kháng sinh đầu tiên.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thời gian Door-to-Antibiotic",
+                            "frequency": "Khẩn cấp",
+                            "target": "< 60 phút từ khi tiếp nhận"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_icp",
+                    "problemName": "Dọa tăng áp lực nội sọ & Nguy cơ tụt kẹt脑",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Xử trí TALNS",
+                            "content": "Nằm đầu cao 30 độ, Mannitol 20% 0.5-1.0 g/kg IV q6-8h nếu có dấu hiệu TALNS. Chụp CT scan脑 khẩn nếu có GCS < 10, dấu thần kinh khu trú, co giật mới khởi phát hoặc phù gai thị.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Glasgow Coma Scale & Đồng tử",
+                            "frequency": "q1h",
+                            "target": "GCS ổn định, không có dấu Cushing"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "Ngày 2 - Ngày 7",
+            "phaseName": "Giai đoạn Điều trị Đặc hiệu & Giám sát Bệnh học",
+            "clinicalGoal": "Điều chỉnh kháng sinh theo kết quả Nhuộm Gram/Cấy/Kháng sinh đồ DNT, quyết định duy trì/ngừng Dexamethasone, kiểm soát biến chứng thần kinh & mạch máu.",
+            "problems": [
+                {
+                    "id": "p2_spec",
+                    "problemName": "Tối ưu hóa Kháng sinh theo Vi sinh DNT",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh đặc hiệu",
+                            "content": "Phế cầu (S. pneumoniae) nhạy Penicillin: Penicillin G 4 triệu đơn vị IV q4h hoặc Ampicillin 2g IV q4h; Phế cầu kháng Penicillin: Ceftriaxone 2g IV q12h + Vancomycin 15-20 mg/kg q8-12h. Não mô cầu (N. meningitidis): Ceftriaxone 2g IV q12h hoặc Penicillin G. Listeria: Ampicillin 2g IV q4h + Gentamicin. H. influenzae: Ceftriaxone 2g IV q12h.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả Cấy DNT & Kháng sinh đồ",
+                            "frequency": "q24-48h",
+                            "target": "Xác định vi khuẩn & MIC"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "Ngày 8 - Ngày 21",
+            "phaseName": "Giai đoạn Hoàn thành Liệu trình & Tầm soát Di chứng",
+            "clinicalGoal": "Hoàn thành đủ thời gian kháng sinh (Não mô cầu/H. influenzae: 7 ngày; Phế cầu: 10-14 ngày; GBS: 14-21 ngày; Listeria/Gram âm: >= 21 ngày). Đo thính lực toàn diện và đánh giá di chứng thần kinh trước xuất viện.",
+            "problems": [
+                {
+                    "id": "p3_sequelae",
+                    "problemName": "Tầm soát di chứng thính lực & thần kinh",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Tầm soát di chứng",
+                            "content": "Thực hiện đo thính lực OAE/BERA cho 100% bệnh nhân trước khi xuất viện. Khám thần kinh toàn diện (vận động, nhận thức, ngôn ngữ). Chuyển Tai Mũi Họng/Cấy ốc tai điện tử sớm nếu phát hiện điếc nặng.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "OAE / BERA Thính lực",
+                            "frequency": "1 lần trước xuất viện",
+                            "target": "Thính lực bình thường 2 bên"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "Cảnh báo 1: Dùng kháng sinh tĩnh mạch liều đầu tiên chậm trễ (> 1 giờ) làm tăng dốc đứng tỷ lệ tử vong và di chứng thần kinh vĩnh viễn.",
+            "Cảnh báo 2: Tuyệt đối không hoãn dùng kháng sinh để chờ chụp CT scan não hoặc chờ chọc dò Tủy sống.",
+            "Cảnh báo 3: Chọc dò Tủy sống ở bệnh nhân có khối choáng chỗ / tụt kẹt脑 có thể gây lún kẹt não tử vong cấp tính.",
+            "Cảnh báo 4: Giảm thính lực/điếc cảm tiếp diễn tiến rất nhanh do xơ hóa/vôi hóa ốc tai sau viêm màng não do Phế cầu, cần đo thính lực và can thiệp cấy ốc tai điện tử khẩn trương."
+        ],
+        "contraindications": [
+            "Chống chỉ định tuyệt đối chọc dò Tủy sống khi có nhiễm trùng da vùng châm kim, rối loạn đông máu nặng (PT/INR tăng cao, tiểu cầu < 50 G/L) hoặc sốc nhiễm khuẩn chưa ổn định sinh hiệu.",
+            "Chống chỉ định Dexamethasone nếu nghi ngờ Viêm màng nào do Nấm Cryptococcus, Lao hoặc Ký sinh trùng."
+        ],
+        "dischargeCriteria": [
+            "Bệnh nhân hết sốt và sinh hiệu ổn định liên tục ít nhất 48-72 giờ.",
+            "Hoàn thành đủ thời gian điều trị kháng sinh đường tĩnh mạch theo căn nguyên vi khuẩn.",
+            "Phân độ GCS hồi phục về 15 (hoặc mức nền trước bệnh).",
+            "Đã hoàn thành đo thính lực tầm soát điếc và có kế hoạch tái khám / phục hồi chức năng."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm màng não do vi khuẩn",
+            "searchKeyword": "viem_mang_nao_vi_khuan_chan_doan"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác ĐỒ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh Viêm màng nào do vi khuẩn",
+            "searchKeyword": "viem_mang_nao_vi_khuan_phac_do"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng và yếu tố nguy cơ Viêm màng não do vi khuẩn",
+            "searchKeyword": "viem_mang_nao_vi_khuan_dich_te"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng trong Viêm màng não do vi khuẩn",
+            "searchKeyword": "viem_mang_nao_vi_khuan_bien_chung"
+        }
+    ]
+}

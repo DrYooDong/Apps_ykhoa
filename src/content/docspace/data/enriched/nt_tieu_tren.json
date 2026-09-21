@@ -1,0 +1,567 @@
+{
+    "icdCode": "N10",
+    "icdPrefixes": [
+        "N10",
+        "N11",
+        "N12",
+        "N13.6",
+        "N39.0"
+    ],
+    "diseaseName": "Nhiễm trùng đường tiết niệu trên / Viêm thận bể thận cấp (Upper Urinary Tract Infection / Acute Pyelonephritis / Systemic UTI)",
+    "specialty": "Thận - Tiết niệu",
+    "severity": "severe",
+    "summary": "Nhiễm trùng đường tiết niệu trên (Upper UTI), chủ yếu thể hiện dưới dạng Viêm thận bể thận cấp (Acute Pyelonephritis), là tình trạng vi khuẩn xâm nhập và gây viêm nhiễm cấp tính ở nhu mô thận và hệ thống đài bể thận. Theo phân loại EAU 2025/2026, Upper UTI được xếp vào nhóm Nhiễm trùng tiết niệu toàn thân (Systemic UTI), đặc trưng bởi hội chứng nhiễm trùng toàn thân (sốt cao, ớn lạnh, mệt lả) kết hợp đau hông lưng/vùng góc sườn sống (CVA tenderness) và triệu chứng kích thích bàng quang. Căn nguyên hàng đầu là Escherichia coli (75–95%). Chẩn đoán xác định dựa vào tổng phân tích nước tiểu, cấy nước tiểu định lượng và chẩn đoán hình ảnh. Điều trị bắt buộc dùng kháng sinh có nồng độ cao trong nhu mô thận và huyết thanh (Fluoroquinolones, Cephalosporins thế hệ 3, Carbapenems); tuyệt đối chống chỉ định các thuốc chỉ đạt nồng độ niệu bàng quang như Nitrofurantoin, Fosfomycin đơn liều và Pivmecillinam.",
+    "goldStandard": "Cấy nước tiểu định lượng (Urine Culture & AST) xác định chủng uropathogen với ngưỡng >= 10^4 CFU/mL (nước tiểu giữa dòng ở bệnh nhân có triệu chứng toàn thân) hoặc >= 10^3 CFU/mL (qua thông bàng quang), kết hợp xét nghiệm tổng phân tích nước tiểu có Bạch cầu niệu >= 10 WBC/HPF hoặc Nitrite (+) VÀ bằng chứng tổn thương nhu mô/đài bể thận trên chẩn đoán hình ảnh (Siêu âm hoặc CT Scan ổ bụng - tiết niệu).",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "upper_uti_clinical_triad"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định Nhiễm trùng đường tiết niệu trên (Viêm thận bể thận cấp) khi có Hội chứng nhiễm trùng toàn thân & đau hông lưng (Tiêu chuẩn bắt buộc) VÀ ít nhất 2 Tiêu chuẩn chính (Bạch cầu niệu/Nitrite (+) VÀ Cấy nước tiểu dương tính đạt ngưỡng CFU) VÀ ít nhất 1 Tiêu chuẩn cận lâm sàng/chẩn đoán hình ảnh (WBC/CRP/PCT tăng HOẶC tổn thương nhu mô thận trên Siêu âm/CT Scan)."
+    },
+    "criteria": [
+        {
+            "id": "upper_uti_clinical_triad",
+            "type": "mandatory",
+            "label": "Hội chứng nhiễm trùng toàn thân và đau hông lưng (CVA tenderness (+))",
+            "description": "Sốt cao >= 38.0°C, ớn lạnh, rét rung, đau hông lưng một hoặc hai bên, ấn đau góc sườn sống (Costovertebral Angle Tenderness - CVA (+)), buồn nôn/nôn, có thể kèm tiểu buốt, tiểu rắt, tiểu gấp.",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2025/2026 & IDSA Guidelines 2025"
+        },
+        {
+            "id": "upper_uti_pyuria_nitrite",
+            "type": "major",
+            "label": "Tổng phân tích nước tiểu có Bạch cầu niệu hoặc Nitrite dương tính",
+            "description": "Bạch cầu niệu (Pyuria) >= 10 WBC/HPF hoặc que thử dipstick Leukocyte Esterase (+); VÀ/HOẶC Nitrite (+) do vi khuẩn Gram-âm khử Nitrate.",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026 / WikiGuidelines 2024"
+        },
+        {
+            "id": "upper_uti_urine_culture",
+            "type": "major",
+            "label": "Cấy nước tiểu định lượng dương tính với uropathogen đơn chủng",
+            "description": "Phát hiện vi khuẩn uropathogen (chủ yếu E. coli, K. pneumoniae, Proteus mirabilis) với số lượng: >= 10^4 CFU/mL (nước tiểu giữa dòng ở người có triệu chứng toàn thân) hoặc >= 10^3 CFU/mL (qua thông bàng quang).",
+            "labThreshold": ">= 10^4 CFU/mL (Midstream) / >= 10^3 CFU/mL (Catheter)",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026 / IDSA Guidelines"
+        },
+        {
+            "id": "upper_uti_inflammatory_markers",
+            "type": "lab",
+            "label": "Dấu ấn phản ứng pha cấp trong máu tăng cao (WBC, CRP, Procalcitonin)",
+            "description": "Phản ánh tình trạng xâm lấn nhu mô thận và đáp ứng viêm toàn thân: Bạch cầu máu (WBC) > 12 G/L (Neutrophil > 85%), CRP > 20 mg/L, Procalcitonin (PCT) > 0.5 ng/mL gợi ý nguy cơ urosepsis.",
+            "labThreshold": "WBC > 12 G/L / CRP > 20 mg/L / PCT > 0.5 ng/mL",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        },
+        {
+            "id": "upper_uti_blood_culture",
+            "type": "lab",
+            "label": "Cấy máu dương tính khẳng định vi khuẩn huyết nguồn tiết niệu (Bacteremia)",
+            "description": "Cấy máu 2 vị trí phát hiện cùng chủng uropathogen mọc trong nước tiểu, xác định biến chứng vi khuẩn huyết xâm nhập từ đường tiết niệu trên.",
+            "labThreshold": "Cấy máu dương tính với uropathogen",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        },
+        {
+            "id": "upper_uti_ultrasound",
+            "type": "imaging",
+            "label": "Siêu âm hệ tiết niệu (Thận - Bàng quang) khẩn cấp",
+            "description": "Đánh giá tổn thương hình thái nhu mô thận (thận to, thâm nhiễm phù nề, mất ranh giới tủy vỏ), loại trừ tắc nghẽn đài bể thận do sỏi, ứ mủ thận (pyonephrosis) hoặc áp xe nhu mô.",
+            "labThreshold": "Thận to phù nề, giãn đài bể thận, thành bể thận dày, sỏi tắc nghẽn",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        },
+        {
+            "id": "upper_uti_ct_scan",
+            "type": "imaging",
+            "label": "Chụp cắt lớp vi tính (CT Scan) ổ bụng - tiết niệu cản quang",
+            "description": "Chỉ định bắt buộc khi sốt kéo dài > 48-72h dù đã dùng kháng sinh, nghi ngờ áp xe thận/quanh thận hoặc viêm thận bể thận hoại tử sinh hơi (Emphysematous Pyelonephritis).",
+            "labThreshold": "Vùng nhu mô giảm ngấm thuốc dạng hình nêm, ổ tụ mủ áp xe hoặc khí trong mô thận",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Nhiễm trùng đường tiết niệu trên thể nhẹ - trung bình (Acute Pyelonephritis nhẹ ngoại trú)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sốt nhẹ - trung bình < 38.5°C, đau hông lưng nhẹ, không nôn ói, uống được thuốc, tỉnh táo, không triệu chứng sốc. [Cận lâm sàng]: WBC máu 10 - 15 G/L, CRP 20 - 50 mg/L, Cấy nước tiểu >= 10^4 CFU/mL. [Tiêu chuẩn an toàn]: Huyết động ổn định (HATT >= 100 mmHg), bài niệu tốt >= 0.5 mL/kg/h, không có bệnh nền đe dọa, đủ điều kiện theo dõi ngoại trú có giám sát.",
+            "triage": "Ngoại trú / Phòng khám Thận - Tiết niệu / Trạm Y tế",
+            "primaryAction": "Kháng sinh đường uống Fluoroquinolones đầu tay (Ciprofloxacin 500-750mg PO bid x 7 ngày HOẶC Levofloxacin 750mg PO qd x 5 ngày) nếu tỷ lệ kháng địa phương < 10%. Nếu tỷ lệ kháng > 10%, tiêm 1 liều Ceftriaxone 1g IV ban đầu trước khi dùng thuốc uống.",
+            "targetVitals": "Cắt sốt sau 48h, Mạch 60-90 l/p, HATT >= 90 mmHg, Bài niệu >= 0.5-1.0 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 2 — Nhiễm trùng đường tiết niệu trên thể nặng (Acute Pyelonephritis nặng nhập viện nội trú)",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Sốt cao >= 38.5 - 39.5°C, ớn lạnh rét rung, đau hông lưng dữ dội, CVA tenderness (+), nôn ói nhiều không dung nạp thuốc uống, mệt lả. [Cận lâm sàng]: WBC máu > 15 G/L, PCT > 0.5 - 2.0 ng/mL, CRP > 50 mg/L, Siêu âm có thâm nhiễm nhu mô hoặc giãn nhẹ đài bể thận. [Tiêu chuẩn an toàn]: Huyết động còn bù (HATT >= 90 mmHg), bài niệu ổn định, chưa có dấu hiệu suy tạng.",
+            "triage": "Nội trú Khoa Thận - Tiết niệu / Khoa Bệnh Nhiệt đới / Khoa Nội tổng hợp",
+            "primaryAction": "Nhập viện điều trị kháng sinh đường tiêm truyền tĩnh mạch (Ceftriaxone 1-2g IV q24h HOẶC Cefotaxime 2g IV q8h HOẶC Ciprofloxacin 400mg IV q12h x 7-10 ngày). Cấy nước tiểu & Cấy máu trước liều kháng sinh đầu tiên. Siêu âm khẩn loại trừ tắc nghẽn.",
+            "targetVitals": "Thân nhiệt < 37.5°C sau 48-72h, HATT >= 90 mmHg, MAP >= 65 mmHg, Nước tiểu >= 0.5-1.0 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3 — Nhiễm trùng đường tiết niệu trên nguy kịch (Urosepsis / Áp xe thận / Viêm hoại tử sinh hơi)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: Sốc nhiễm trùng nguồn tiết niệu (Uroseptic Shock), tụt huyết áp (HATT < 90 mmHg, MAP < 65 mmHg), Mạch nhanh nhỏ > 110 l/p, chi lạnh ẩm, CRT > 2s, thiểu niệu/vô niệu, rối loạn tri giác; HOẶC Áp xe thận > 2cm / Viêm hoại tử sinh hơi. [Cận lâm sàng]: Lactate máu > 2 mmol/L, PCT > 2.0 ng/mL, Cấy máu (+), Suy thận cấp Creatinine tăng vọt, Tiểu cầu giảm < 100 G/L. [Dấu hiệu cảnh báo]: Tắc nghẽn đường niệu ứ mủ chèn ép đe dọa tử vong.",
+            "triage": "Hồi sức tích cực (ICU) / Khoa Cấp cứu Bệnh viện Đa khoa Tỉnh/Trung ương",
+            "primaryAction": "H hồi sức chống sốc dịch truyền Ringer Lactate 30 mL/kg trong 3h đầu; Kháng sinh phổ rộng IV khẩn cấp (Meropenem 1g IV q8h HOẶC Piperacillin/Tazobactam 4.5g IV q6h +/- Vancomycin); Dùng Noradrenaline duy trì MAP >= 65 mmHg; Can thiệp giải áp đường tiết niệu khẩn cấp (đặt xond JJ hoặc dẫn lưu bể thận qua da).",
+            "targetVitals": "MAP >= 65 mmHg, Lactate < 2 mmol/L, SpO2 >= 95%, Nước tiểu >= 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ chẩn đoán, điều trị & Sử dụng kháng sinh hợp lý trong Nhiễm trùng đường tiết niệu trên (EAU Guidelines 2025/2026 & IDSA/WikiGuidelines)",
+        "guideline": "European Association of Urology (EAU) Guidelines on Urological Infections 2025/2026 & IDSA Guidelines 2025",
+        "targetGoals": [
+            "Diệt sạch vi khuẩn uropathogen nhu mô thận và dứt điểm triệu chứng lâm sàng trong 48 - 72 giờ",
+            "Khôi phục bài niệu >= 0.5 - 1.0 mL/kg/h, duy trì huyết động ổn định (MAP >= 65 mmHg)",
+            "Phòng ngừa biến chứng urosepsis, áp xe thận, sẹo thận mạn tính và giảm thiểu đề kháng vi khuẩn ESBL"
+        ],
+        "initialManagement": [
+            "Phân tầng tiếp nhận ngay: Ngoại trú (thể nhẹ) vs Nội trú (thể nặng) vs ICU (Urosepsis / Áp xe thận)",
+            "Lấy mẫu nước tiểu giữa dòng (hoặc qua xond) cấy vi sinh & AST VÀ Cấy máu (ở bệnh nhân nhập viện) TRƯỚC KHI dùng liều kháng sinh đầu tiên",
+            "Thực hiện Siêu âm hệ tiết niệu khẩn cấp loại trừ tắc nghẽn ứ mủ bể thận; lập đường truyền tĩnh mạch lớn"
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Ciprofloxacin",
+                "class": "Kháng sinh Fluoroquinolone thế hệ 2",
+                "route": "PO / IV",
+                "dosage": "500 - 750 mg PO x 2 lần/ngày HOẶC 400 mg IV q12h",
+                "frequency": "Mỗi 12 giờ x 7 ngày",
+                "instructions": "Đầu tay cho Pyelonephritis ngoại trú/nội trú khi tỷ lệ kháng Fluoroquinolone địa phương < 10%.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Levofloxacin",
+                "class": "Kháng sinh Fluoroquinolone thế hệ 3",
+                "route": "PO / IV",
+                "dosage": "750 mg PO / IV x 1 lần/ngày",
+                "frequency": "Mỗi 24 giờ x 5 ngày",
+                "instructions": "Liều cao ngắn ngày cho Pyelonephritis cấp nhẹ - trung bình.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Ceftriaxone",
+                "class": "Kháng sinh Cephalosporin thế hệ 3 tiêm truyền",
+                "route": "IV / IM",
+                "dosage": "1 g - 2 g x 1 lần/ngày",
+                "frequency": "Mỗi 24 giờ x 7 đến 10 ngày",
+                "instructions": "Lựa chọn ưu tiên hàng đầu cho Pyelonephritis nhập viện nội trú hoặc tiêm 1 liều IV ban đầu nếu dùng kháng sinh uống mà tỷ lệ kháng địa phương > 10%.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Cefotaxime",
+                "class": "Kháng sinh Cephalosporin thế hệ 3 tiêm truyền",
+                "route": "IV",
+                "dosage": "2 g x 3 lần/ngày (q8h)",
+                "frequency": "Mỗi 8 giờ x 7 đến 10 ngày",
+                "instructions": "Thay thế Ceftriaxone cho bệnh nhân nhập viện hoặc suy gan.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Trimethoprim-Sulfamethoxazole (TMP-SMX)",
+                "class": "Kháng sinh phối hợp Sulfa-Trimethoprim",
+                "route": "PO",
+                "dosage": "160/800 mg (1 viên DS) x 2 lần/ngày",
+                "frequency": "Mỗi 12 giờ x 14 ngày",
+                "instructions": "Chỉ dùng khi vi khuẩn uropathogen đã xác định nhạy cảm trên kháng sinh đồ."
+            },
+            {
+                "drugName": "Piperacillin / Tazobactam",
+                "class": "Kháng sinh Penicillin phổ rộng kết hợp ức chế Beta-lactamase",
+                "route": "IV",
+                "dosage": "4.5 g x 4 lần/ngày (q6h)",
+                "frequency": "Mỗi 6 giờ x 7 đến 14 ngày",
+                "instructions": "Chỉ định cho Upper UTI nặng nhập viện, nhiễm trùng bệnh viện hoặc nguy cơ vi khuẩn Gram-âm đa kháng."
+            },
+            {
+                "drugName": "Meropenem",
+                "class": "Kháng sinh Carbapenem",
+                "route": "IV",
+                "dosage": "1 g x 3 lần/ngày (q8h)",
+                "frequency": "Mỗi 8 giờ x 7 đến 14 ngày",
+                "instructions": "Dành riêng cho Sốc nhiễm trùng Urosepsis, bệnh nhân nguy cơ tử vong cao hoặc vi khuẩn tiết ESBL."
+            },
+            {
+                "drugName": "Ceftolozane / Tazobactam",
+                "class": "Kháng sinh Cephalosporin thế hệ mới kết hợp ức chế Beta-lactamase",
+                "route": "IV",
+                "dosage": "1.5 g x 3 lần/ngày (q8h)",
+                "frequency": "Mỗi 8 giờ x 7 đến 14 ngày",
+                "instructions": "Chỉ định cho Upper UTI phức tạp do vi khuẩn Gram-âm đa kháng Pseudomonas aeruginosa hoặc ESBL."
+            }
+        ],
+        "supportiveCare": [
+            "Bù dịch tĩnh mạch/uống duy trì bài niệu >= 0.5 - 1.0 mL/kg/h để tăng đào thải vi khuẩn",
+            "Giảm đau hạ sốt Paracetamol 500-1000 mg PO q6h khi sốt >= 38.5°C hoặc đau hông lưng nhiều (Max 3g/ngày)",
+            "Giải áp đường tiết niệu khẩn cấp (đặt ống thông JJ hoặc dẫn lưu bể thận qua da) khi có tắc nghẽn ứ mủ đài bể thận"
+        ]
+    },
+    "complications": [
+        {
+            "name": "Sốc nhiễm trùng nguồn tiết niệu (Urosepsis)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Huyết áp tụt (HATT < 90 mmHg, MAP < 65 mmHg), Mạch nhanh > 110 l/p, chi lạnh ẩm, Lactate máu > 2 mmol/L, thở nhanh > 24 l/p, rối loạn tri giác.",
+            "preventiveAction": "Hồi sức dịch truyền Ringer Lactate 30 mL/kg trong 3h đầu, tiêm IV ngay kháng sinh phổ rộng (Meropenem/Pip-Tazo), dùng thuốc vận mạch Noradrenaline nếu MAP < 65 mmHg.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: UROSEPSIS: Bù dịch Ringer Lactate 30 mL/kg khẩn, tiêm Meropenem 1g IV, đo Lactate máu, gọi ICU hội chẩn!"
+        },
+        {
+            "name": "Áp xe thận & Viêm thận bể thận hoại tử sinh hơi (Emphysematous Pyelonephritis)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt cao rét rung kéo dài > 48-72h dù đã dùng kháng sinh đúng phổ, đau hông lưng dữ dội, đề kháng cơ bụng, tụt huyết áp dai dẳng.",
+            "preventiveAction": "Chụp CT scan ổ bụng cản quang khẩn cấp; phối hợp kháng sinh phổ rộng IV kèm chọc hút/dẫn lưu mủ qua da dưới hướng dẫn siêu âm/CT hoặc phẫu thuật giải áp.",
+            "onCallAlertText": "Y LỆNH TRỰC: NGHI ÁP XE THẬN / VIÊM HOẠI TỬ SINH HƠI: Cho chụp CT Scan ổ bụng có cản quang khẩn, hội chẩn Ngoại Tiết niệu dẫn lưu mủ!"
+        },
+        {
+            "name": "Suy thận cấp trước thận & tại thận nguồn tiết niệu (AKI)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Creatinine huyết thanh tăng > 50% so với nền, thiểu niệu < 0.5 mL/kg/h kéo dài > 6h, rối loạn điện giải (tăng K+ máu).",
+            "preventiveAction": "Bù dịch tĩnh mạch tối ưu hóa tưới máu thận, ngưng các thuốc độc thận (NSAIDs, Aminoglycoside), hiệu chỉnh liều kháng sinh theo eGFR.",
+            "onCallAlertText": "Y LỆNH TRỰC: THIỂU NIỆU / TĂNG CREATININE MÁU: Bù dịch tĩnh mạch, ngưng thuốc độc thận, hiệu chỉnh liều kháng sinh theo eGFR!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (WBC, Neutrophil%), CRP, Procalcitonin theo dõi đáp ứng viêm hàng ngày ở bệnh nhân nội trú",
+        "Cấy nước tiểu & Kháng sinh đồ (AST) trả kết quả sau 48-72h để xuống thang kháng sinh",
+        "Chức năng thận (Creatinine, Urea, eGFR) và Điện giải đồ (K+, Na+) q24-48h",
+        "Siêu âm / CT Scan ổ bụng kiểm tra lại sau 48-72h nếu bệnh nhân tiếp tục sốt cao kéo dài",
+        "Cấy nước tiểu kiểm tra sau khi hoàn tất liệu trình kháng sinh 7-14 ngày ở đối tượng nguy cơ cao (phụ nữ mang thai, bất thường đường niệu)"
+    ],
+    "specialPopulations": [
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "Ưu tiên Ceftriaxone 1-2g IV/ngày, Amoxicillin/Clavulanate 1g bid PO hoặc Cefuroxime axetil 500mg bid PO x 10-14 ngày. Nhập viện theo dõi sát nguy cơ sinh non và suy hô hấp.",
+            "cautions": "TUYỆT ĐỐI CẤM Fluoroquinolones (độc sụn khớp), TMP-SMX (tránh 3 tháng đầu & 3 tháng cuối do nguy cơ vàng da nhân Kernicterus) và Nitrofurantoin."
+        },
+        {
+            "population": "Trẻ em (Pediatric Pyelonephritis)",
+            "adjustments": "Trẻ < 2 tháng hoặc sốt độc chất: Nhập viện dùng Ampicillin + Gentamicin IV hoặc Cefotaxime IV x 10-14 ngày. Trẻ > 2 tháng ngoại trú: Cefixime 8 mg/kg/ngày PO hoặc Cefpodoxime 8-10 mg/kg/ngày x 7-10 ngày.",
+            "cautions": "Bắt buộc siêu âm hệ tiết niệu ở trẻ sốt UTI lần đầu để tầm soát Trào ngược bàng quang - niệu quản (VUR) và phòng ngừa sẹo thận mạn tính."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 60 mL/min)",
+            "adjustments": "Hiệu chỉnh liều các kháng sinh đào thải qua thận (Ciprofloxacin, Levofloxacin, Piperacillin/Tazobactam) theo eGFR.",
+            "cautions": "Chống chỉ định Nitrofurantoin khi eGFR < 30 mL/min do giảm nồng độ niệu và tăng nguy cơ độc tính thần kinh ngoại biên."
+        },
+        {
+            "population": "Bệnh nhân đặt ống thông tiểu (CAUTI) & Người cao tuổi",
+            "adjustments": "Thay hoặc rút ống thông tiểu cũ trước khi lấy mẫu cấy nước tiểu và bắt đầu kháng sinh. Điều trị kháng sinh 7-10 ngày cho CAUTI có triệu chứng toàn thân.",
+            "cautions": "TUYỆT ĐỐI KHÔNG điều trị vi khuẩn niệu không triệu chứng (ABU) ở bệnh nhân mang xond tiểu hoặc người cao tuổi sống tại viện dưỡng lão."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Cấp tính & Khởi đầu kháng sinh kinh nghiệm đường tiêm/uống",
+            "clinicalGoal": "Kiểm soát triệu chứng sốt/đau hông lưng, lấy mẫu cấy vi sinh trước dùng thuốc, phân tầng điều trị Ngoại trú vs Nội trú vs ICU",
+            "problems": [
+                {
+                    "id": "p1_spec",
+                    "problemName": "Khởi đầu kháng sinh kinh nghiệm nhu mô thận",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh kinh nghiệm",
+                            "content": "Pyelonephritis nội trú: Ceftriaxone 1-2g IV q24h HOẶC Cefotaxime 2g IV q8h. Pyelonephritis ngoại trú: Ciprofloxacin 500-750mg bid PO HOẶC Levofloxacin 750mg qd x 5-7d.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": []
+                },
+                {
+                    "id": "p1_fever_pain",
+                    "problemName": "Sốt cao rét rung & Đau hông lưng dữ dội",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Giảm đau & Hạ sốt",
+                            "content": "Paracetamol 500-1000 mg PO khi sốt >= 38.5°C hoặc đau hông lưng nhiều (q6h, tối đa 3g/ngày). Bù dịch truyền Ringer Lactate duy trì bài niệu."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & Đau hông lưng CVA",
+                            "frequency": "q4-6h",
+                            "target": "Giảm sốt, giảm mức độ đau hông lưng sau 24-48h"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_labs_ultrasound",
+                    "problemName": "Xác định uropathogen & Siêu âm loại trừ tắc nghẽn ứ mủ",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Xét nghiệm & Siêu âm khẩn",
+                            "content": "Lấy nước tiểu giữa dòng cấy định lượng + AST; Cấy máu 2 vị trí (nội trú); CTM, CRP/PCT; Siêu âm hệ tiết niệu khẩn loại trừ tắc nghẽn sỏi/ứ mủ."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tổng phân tích nước tiểu & Kết quả Cấy máu/nước tiểu",
+                            "frequency": "N1 (trước KS) & N3",
+                            "target": "Xác định chủng vi khuẩn và bản đồ nhạy cảm kháng sinh"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_urosepsis",
+                    "problemName": "Sốc nhiễm trùng tiết niệu (Urosepsis) / Tụt huyết áp",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức chống sốc",
+                            "content": "Bù dịch Ringer Lactate 30 mL/kg; Meropenem 1g IV q8h; gọi ICU phối hợp đặt Noradrenaline duy trì MAP >= 65 mmHg."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mạch, Huyết áp, MAP, Lactate máu",
+                            "frequency": "q15-30 phút",
+                            "target": "MAP >= 65 mmHg, Lactate < 2 mmol/L, Bài niệu >= 0.5 mL/kg/h"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh",
+                    "content": "Dùng Ceftriaxone 1-2g IV/ngày (nội trú) hoặc Ciprofloxacin 500-750mg bid PO (ngoại trú).",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu & Bài niệu",
+                    "frequency": "q4-8h",
+                    "target": "Thân nhiệt giảm, bài niệu ổn định >= 0.5-1.0 mL/kg/h"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Bắt buộc cấy nước tiểu và cấy máu trước liều kháng sinh đầu tiên]",
+                    "[TUYỆT ĐỐI KHÔNG dùng Nitrofurantoin, Fosfomycin đơn liều hay Pivmecillinam cho Viêm thận bể thận cấp]"
+                ],
+                "triageOrDischargeCriteria": "[Chỉ định điều trị nội trú nếu sốt cao, nôn ói, nguy cơ urosepsis hoặc có tắc nghẽn]"
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N4 - N7",
+            "phaseName": "Giai đoạn Điều chỉnh theo Kháng sinh đồ & Down-step (Xuống thang)",
+            "clinicalGoal": "Xuống thang kháng sinh nhắm trúng đích, chuyển từ tiêm sang uống (step-down), chụp CT scan nếu sốt kéo dài > 48-72h",
+            "problems": [
+                {
+                    "id": "p2_deescalate",
+                    "problemName": "Điều chỉnh kháng sinh theo kết quả Kháng sinh đồ (AST)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Xuống thang kháng sinh",
+                            "content": "Chuyển sang kháng sinh phổ hẹp đường uống (Cefixime, Cefpodoxime, TMP-SMX hoặc Ciprofloxacin) dựa trên kết quả cấy nhạy cảm khi bệnh nhân hết sốt 24-48h và dung nạp thuốc uống.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kháng sinh đồ (AST)",
+                            "frequency": "N3 - N4",
+                            "target": "Chọn kháng sinh uống nhạy cảm cao nhất"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_fever_persists",
+                    "problemName": "Sốt kéo dài > 48-72h dù đã dùng kháng sinh đúng phổ",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Chẩn đoán hình ảnh bổ sung",
+                            "content": "Chụp CT Scan ổ bụng có cản quang tìm ổ áp xe thận, áp xe quanh thận hoặc viêm thận bể thận hoại tử sinh hơi."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & Đau hông lưng",
+                            "frequency": "q6h",
+                            "target": "Cắt sốt hoàn toàn"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_abscess",
+                    "problemName": "Áp xe thận / Ứ mủ bể thận do tắc nghẽn",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Can thiệp ngoại khoa / Dẫn lưu",
+                            "content": "Chọc hút dẫn lưu mủ qua da dưới hướng dẫn siêu âm/CT hoặc đặt xond JJ giải áp đường tiết niệu khẩn."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dẫn lưu mủ & Bạch cầu máu",
+                            "frequency": "q24h",
+                            "target": "Giảm lượng mủ dẫn lưu, WBC máu về bình thường"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh uống xuống thang",
+                    "content": "Hoàn tất liệu trình kháng sinh đường uống 7-14 ngày.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu & Triệu chứng toàn thân",
+                    "frequency": "q12h",
+                    "target": "Thân nhiệt bình thường 48h liên tục"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Sốt > 72h bắt buộc chụp CT scan ổ bụng cản quang]",
+                    "[Không chuyển thuốc uống khi bệnh nhân còn nôn ói hoặc huyết động chưa ổn]"
+                ],
+                "triageOrDischargeCriteria": "[Đủ điều kiện xuất viện khi hết sốt 24-48h và dung nạp thuốc uống tốt]"
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N8 - N14",
+            "phaseName": "Giai đoạn Hoàn tất phác đồ & Đánh giá hồi phục",
+            "clinicalGoal": "Hoàn tất thời gian kháng sinh tối ưu 7-14 ngày, kiểm soát chức năng thận và tư vấn phòng ngừa tái phát",
+            "problems": [
+                {
+                    "id": "p3_completion",
+                    "problemName": "Hoàn tất thời gian kháng sinh tối ưu 7-14 ngày",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hoàn tất liệu trình",
+                            "content": "Uống đủ thời gian kháng sinh (Fluoroquinolone 5-7 ngày, Cephalosporin/TMP-SMX 10-14 ngày). Khuyên uống đủ 2L nước/ngày."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Creatinine & eGFR kiểm tra",
+                            "frequency": "Tái khám sau ngưng thuốc 7-14 ngày",
+                            "target": "Chức năng thận hồi phục về mức nền"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [],
+            "treatments": [
+                {
+                    "category": "Kháng sinh hoàn tất",
+                    "content": "Dùng đủ thời gian kháng sinh theo khuyến cáo.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Cấy nước tiểu kiểm tra (nếu có chỉ định)",
+                    "frequency": "Sau ngưng kháng sinh 7-14 ngày",
+                    "target": "Nước tiểu vô trùng"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Hạn chế lạm dụng kháng sinh kéo dài không cần thiết]",
+                    "[Tái khám ngay khi có triệu chứng sốt hoặc đau hông lưng trở lại]"
+                ],
+                "triageOrDischargeCriteria": "[Hoàn thành xuất viện an toàn]"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_urosepsis_shock",
+            "complicationName": "Sốc nhiễm trùng nguồn tiết niệu (Uroseptic Shock)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Tụt huyết áp MAP < 65 mmHg, Mạch > 110 l/p, chi lạnh ẩm, CRT > 2s, Lactate máu > 2 mmol/L, thiểu niệu]",
+            "actionProtocol": "[Hồi sức dịch Ringer Lactate 30 mL/kg, tiêm IV khẩn Meropenem 1g hoặc Pip-Tazo 4.5g, dùng Noradrenaline duy trì MAP >= 65 mmHg, giải áp tắc nghẽn đường niệu]",
+            "monitoringMetrics": "[Mạch, HA, MAP, Lactate máu, Khí máu động mạch q1-2h, Bài niệu q1h]"
+        },
+        {
+            "id": "comp_renal_abscess",
+            "complicationName": "Áp xe thận / Viêm thận bể thận hoại tử sinh hơi",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "[Sốt cao rét rung kéo dài > 72h dù dùng kháng sinh nhạy cảm, đau hông lưng dồn dập, có khí hoặc tụ mủ trên CT]",
+            "actionProtocol": "[Chụp CT scan cản quang khẩn, dẫn lưu mủ qua da hoặc phẫu thuật mở giải áp, kháng sinh IV phổ rộng]",
+            "monitoringMetrics": "[CT scan ổ bụng, CTM (WBC), CRP/PCT q24-48h]"
+        },
+        {
+            "id": "comp_aki",
+            "complicationName": "Suy thận cấp trước thận & tại thận nguồn tiết niệu (AKI)",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Creatinine huyết thanh tăng > 50% so với nền, thiểu niệu < 0.5 mL/kg/h kéo dài > 6h, rối loạn điện giải]",
+            "actionProtocol": "[Bù dịch tĩnh mạch tối ưu hóa tưới máu thận, ngưng các thuốc độc thận (NSAIDs, Aminoglycoside), hiệu chỉnh liều kháng sinh theo eGFR]",
+            "monitoringMetrics": "[Creatinine, Urea, Điện giải đồ (K+, Na+), Lượng nước tiểu q12-24h]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: TUYỆT ĐỐI KHÔNG sử dụng Nitrofurantoin, Fosfomycin đơn liều hoặc Pivmecillinam cho Nhiễm trùng đường tiết niệu trên / Viêm thận bể thận cấp do các thuốc này không đạt nồng độ điều trị trong nhu mô thận và máu!]",
+            "[Cảnh báo 2: Bệnh nhân Viêm thận bể thận cấp sốt kéo dài > 48-72h dù đã dùng kháng sinh nhạy cảm BẮT BUỘC phải chụp CT scan hoặc Siêu âm khẩn cấp để tìm ổ áp xe thận hoặc tắc nghẽn ứ mủ!]",
+            "[Cảnh báo 3: Nếu tỷ lệ kháng Fluoroquinolones địa phương > 10%, bắt buộc phải tiêm 1 liều kháng sinh tĩnh mạch phổ rộng kéo dài (như Ceftriaxone 1g IV) ban đầu trước khi khởi đầu kháng sinh đường uống ngoại trú!]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định Nitrofurantoin, Fosfomycin đơn liều và Pivmecillinam cho Viêm thận bể thận cấp / Upper UTI]",
+            "[Chống chỉ định Fluoroquinolones và Trimethoprim-Sulfamethoxazole ở phụ nữ mang thai]",
+            "[Chống chỉ định dùng các thuốc độc thận mà không hiệu chỉnh liều theo eGFR]"
+        ],
+        "dischargeCriteria": [
+            "[Tiêu chuẩn 1: Hết sốt hoàn toàn trong ít nhất 24 - 48 giờ liên tục, tỉnh táo, sinh hiệu ổn định]",
+            "[Tiêu chuẩn 2: Dung nạp tốt thuốc kháng sinh đường uống, hết nôn ói]",
+            "[Tiêu chuẩn 3: Chức năng thận (Creatinine) và bài niệu hồi phục về mức bình thường (>= 0.5-1.0 mL/kg/h)]",
+            "[Tiêu chuẩn 4: Đã xử lý giải áp các tổn thương tắc nghẽn đường niệu (nếu có) và có lịch tái khám hẹn trước]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Nhiễm trùng đường tiết niệu trên theo EAU 2025/2026",
+            "searchKeyword": "chan doan nhiem trung duong tiet nieu tren pyelonephritis eau"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & sử dụng kháng sinh trong Nhiễm trùng đường tiết niệu trên",
+            "searchKeyword": "phac do dieu tri viem than be than cap upper uti pyelonephritis"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng & ma trận yếu tố nguy cơ Nhiễm trùng đường tiết niệu trên",
+            "searchKeyword": "dich te hoc viem than be than pyelonephritis"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu Urosepsis và áp xe thận trong Nhiễm trùng đường tiết niệu trên",
+            "searchKeyword": "bien chung urosepsis ap xe than pyelonephritis"
+        }
+    ]
+}

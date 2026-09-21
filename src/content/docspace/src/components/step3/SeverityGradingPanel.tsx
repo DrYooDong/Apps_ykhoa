@@ -110,13 +110,13 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
               let badgeColor = 'border-emerald-300 bg-emerald-50 text-emerald-900';
               let pillBg = 'bg-emerald-200 text-emerald-800';
 
-              if (s === 'critical' || s === 'severe_4' || s === 'grade-4' || (severityGrades.length > 3 && idx === severityGrades.length - 1)) {
+              if (s === 'critical' || s === 'emergency' || s === 'severe_4' || s === 'grade-4' || (severityGrades.length > 3 && idx === severityGrades.length - 1)) {
                 badgeColor = 'border-red-400 bg-red-50/90 text-red-900';
                 pillBg = 'bg-red-200 text-red-800';
               } else if (s === 'severe' || s === 'grade-3' || (severityGrades.length >= 4 && idx === severityGrades.length - 2)) {
                 badgeColor = 'border-orange-300 bg-orange-50 text-orange-900';
                 pillBg = 'bg-orange-200 text-orange-800';
-              } else if (s === 'moderate' || s === 'grade-2' || (severityGrades.length >= 3 && idx === 1)) {
+              } else if (s === 'moderate' || s === 'grade-2' || (severityGrades.length >= 3 && idx === 1) || (severityGrades.length === 2 && idx === 1)) {
                 badgeColor = 'border-amber-300 bg-amber-50 text-amber-900';
                 pillBg = 'bg-amber-200 text-amber-800';
               } else if (s === 'phenotype' || s === 'form' || s === 'type') {

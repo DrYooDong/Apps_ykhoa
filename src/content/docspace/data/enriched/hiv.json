@@ -1,0 +1,539 @@
+{
+    "icdCode": "B20",
+    "icdPrefixes": [
+        "B20",
+        "B21",
+        "B22",
+        "B23",
+        "B24"
+    ],
+    "diseaseName": "Nhiễm HIV/AIDS (Human Immunodeficiency Virus / Acquired Immunodeficiency Syndrome)",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Nhiễm vi rút suy giảm miễn dịch ở người (HIV) dẫn đến phá hủy tiến triển tế bào T-CD4, đưa đến hội chứng suy giảm miễn dịch mắc phải (AIDS). Bệnh nhân đối mặt với nguy cơ cao mắc các nhiễm trùng cơ hội đe dọa tính mạng (Lao, Viêm màng não Cryptococcus, PCP, Talaromycosis) và các khối u liên quan (Kaposi Sarcoma, Lymphoma). Điều trị bằng thuốc kháng vi rút (ARV) ngay khi chẩn đoán giúp ức chế tải lượng vi rút dưới ngưỡng phát hiện, phục hồi miễn dịch và đạt trạng thái K=K (Không phát hiện = Không lây truyền).",
+    "goldStandard": "Chẩn đoán xác định nhiễm HIV ở người lớn và trẻ ≥ 18 tháng bằng Xét nghiệm huyết thanh học khẳng định theo Chiến lược III (dương tính với 3 sinh phẩm xét nghiệm có nguyên lý hoặc chuẩn bị kháng nguyên khác nhau). Ở trẻ < 18 tháng tuổi và người trong giai đoạn cửa sổ: Xét nghiệm sinh học phân tử NAT/RT-PCR phát hiện HIV-DNA/RNA.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "hiv_gold_serology_or_pcr"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định HIV bắt buộc có Kết quả xét nghiệm khẳng định dương tính (3 phương cách huyết thanh học cho người ≥ 18 tháng hoặc NAT/RT-PCR cho trẻ < 18 tháng) KÈM THEO đánh giá Giai đoạn lâm sàng WHO (1-4) và Mức độ suy giảm miễn dịch CD4."
+    },
+    "criteria": [
+        {
+            "id": "hiv_gold_serology_or_pcr",
+            "type": "mandatory",
+            "label": "[Vi sinh Gold Standard]: Khẳng định nhiễm HIV bằng 3 phương cách huyết thanh học hoặc NAT/RT-PCR",
+            "description": "[Cận lâm sàng]: Xét nghiệm huyết thanh học 3 sinh phẩm phản ứng dương tính (Chiến lược III Bộ Y Tế) đối với người ≥ 18 tháng tuổi; hoặc xét nghiệm NAT/RT-PCR (HIV-RNA/DNA) dương tính đối với trẻ < 18 tháng tuổi hoặc người trong giai đoạn cửa sổ.",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & Quyết định 2670/QĐ-BYT Bộ Y Tế"
+        },
+        {
+            "id": "hiv_cd4_count_quant",
+            "type": "lab",
+            "label": "[Cận lâm sàng định lượng]: Số lượng tế bào Lympho T-CD4 giảm (< 200 tế bào/mm³ xác định Bệnh HIV tiến triển)",
+            "description": "[Cận lâm sàng]: Định lượng tế bào T-CD4 phản ánh mức độ suy giảm miễn dịch. Mức CD4 < 200 cells/mm³ (hoặc T-CD4 % < 15% ở trẻ) chỉ ra suy giảm miễn dịch nặng, nguy cơ bùng phát nhiễm trùng cơ hội cao.",
+            "labThreshold": "CD4 < 200 cells/mm³ (Bệnh HIV tiến triển / AIDS)",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & WHO Guidelines 2025"
+        },
+        {
+            "id": "hiv_viral_load_quant",
+            "type": "lab",
+            "label": "[Cận lâm sàng định lượng]: Tải lượng vi rút HIV RNA trong máu (Viral Load)",
+            "description": "[Cận lâm sàng]: Đo tải lượng HIV RNA bằng Real-time RT-PCR. Mức > 1000 bản sao/mL chỉ ra vi rút đang nhân lên mạnh hoặc thất bại điều trị ARV. Mức < 50 bản sao/mL xác định ức chế vi rút hoàn hảo (K=K).",
+            "labThreshold": "HIV RNA < 50 copies/mL (Ức chế hoàn toàn); > 1000 copies/mL (Chưa ức chế / Thất bại vi rút học)",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & WHO Guidelines 2025"
+        },
+        {
+            "id": "hiv_clinical_stage_3_4",
+            "type": "major",
+            "label": "[Lâm sàng]: Dấu hiệu Bệnh HIV tiến triển hoặc Nhiễm trùng cơ hội (Giai đoạn lâm sàng 3 & 4)",
+            "description": "[Lâm sàng]: Sụt cân > 10% không rõ nguyên nhân, sốt kéo dài > 1 tháng, tiêu chảy mạn tính > 1 tháng, nấm Candida thực quản, Lao phổi/ngoài phổi, Viêm phổi PCP, Viêm màng não Cryptococcus, Talaromycosis, Kaposi Sarcoma.",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & Phụ lục 1 Lâm sàng WHO"
+        },
+        {
+            "id": "hiv_risk_epidemiology",
+            "type": "major",
+            "label": "[Dịch tễ]: Yếu tố nguy cơ lây nhiễm HIV cao",
+            "description": "[Dịch tễ]: Quan hệ tình dục không an toàn với nhiều bạn tình / bạn tình nhiễm HIV, nam quan hệ tình dục đồng giới (MSM), tiêm chích ma túy, phụ nữ hành nghề gián tiếp, trẻ sinh ra từ mẹ nhiễm HIV, phơi nhiễm rủi ro nghề nghiệp y tế.",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Giai đoạn Lâm sàng 1 & 2 — Suy giảm miễn dịch nhẹ / Chưa triệu chứng (CD4 ≥ 350 cells/mm³)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Không có triệu chứng hoặc chỉ có Bệnh lý hạch toàn thân dai dẳng (PGL), sụt cân nhẹ < 10%, nhiễm trùng hô hấp trên tái phát, Bệnh Zoster (Giời bò) trong vòng 5 năm qua, viêm khóe miệng, loét miệng tái phát. [Cận lâm sàng]: T-CD4 ≥ 350 cells/mm³, tải lượng vi rút biến thiên. [Tiêu chuẩn an toàn]: Chưa có nhiễm trùng cơ hội nặng, huyết động và thể trạng ổn định.",
+            "triage": "Ngoại trú 100% / Phòng khám OPC Tỉnh - Huyện / Trung tâm Y tế",
+            "primaryAction": "Khởi động điều trị ARV ngay lập tức (Trong ngày hoặc trong vòng 7 ngày) với Phác đồ ưu tiên TLD (TDF + 3TC + DTG). Tư vấn tuân thủ điều trị, an toàn tình dục và K=K.",
+            "targetVitals": "Thể trạng ổn định, CD4 duy trì > 350 cells/mm³, HIV RNA < 50 copies/mL sau 6 tháng"
+        },
+        {
+            "grade": "Giai đoạn Lâm sàng 3 — Suy giảm miễn dịch tiến triển (CD4 200–349 cells/mm³)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sụt cân nặng > 10% không rõ nguyên nhân, tiêu chảy mạn tính > 1 tháng, sốt kéo dài > 1 tháng không rõ nguyên nhân, nấm Candida miệng dai dẳng, bạch sản dạng lông ở miệng, Lao phổi, nhiễm khuẩn nặng tái diễn (viêm phổi, viêm mủ màng phổi, nhiễm trùng xương khớp). [Cận lâm sàng]: T-CD4 200–349 cells/mm³, Hb < 8 g/dL, Bạch cầu trung tính < 0.5 G/L, Tiểu cầu < 50 G/L.",
+            "triage": "Khám chuyên khoa Truyền nhiễm / Khám nội trú ngắn hạn nếu có nhiễm trùng cấp tính",
+            "primaryAction": "Điều trị ARV ngay; Khởi động Điều trị dự phòng Nhiễm trùng cơ hội bằng Co-trimoxazole (CTX 960mg/ngày); Sàng lọc Lao tích cực (Xpert/LF-LAM) và điều trị Lao tiềm ẩn (3HP) nếu âm tính.",
+            "targetVitals": "Kiểm soát triệt để các nhiễm trùng cơ hội, T-CD4 tăng > 50 cells/mm³ sau 3–6 tháng"
+        },
+        {
+            "grade": "Giai đoạn Lâm sàng 4 — Bệnh HIV tiến triển / AIDS (CD4 < 200 cells/mm³ hoặc Cờ đỏ Cấp cứu)",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Hội chứng suy mòn do HIV, Viêm phổi PCP, Nấm Candida thực quản, Lao ngoài phổi/Lao lan tỏa, Viêm màng não Cryptococcus, Talaromycosis lan tỏa, Viêm võng mạc do CMV, Toxoplasma não, Kaposi Sarcoma, Lymphoma. [Cận lâm sàng]: T-CD4 < 200 cells/mm³ (hoặc < 100 cells/mm³ cực kỳ nguy cơ), CrAg máu (+), LF-LAM nước tiểu (+).",
+            "triage": "Nhập viện Hồi sức / Cấp cứu Truyền nhiễm Bệnh viện Tuyến Tỉnh / Trung ương",
+            "primaryAction": "Nạp Gói chăm sóc Bệnh HIV tiến triển (AHD Package): Sàng lọc CrAg máu, LF-LAM nước tiểu, Xpert MTB/RIF. Điều trị tấn công NTCH trước; Trì hoãn ARV 4–6 tuần nếu có Viêm màng não Cryptococcus hoặc Lao màng não (ngừa IRIS tử vong); Khởi động ARV sớm trong 2 tuần cho các NTCH khác.",
+            "targetVitals": "Sinh hiệu ổn định, cắt sốt, ngắt nguy cơ co giật/tăng áp lực nội sọ, nâng T-CD4 > 200 cells/mm³"
+        }
+    ],
+    "protocol": {
+        "title": "Hướng dẫn Điều trị và Chăm sóc HIV/AIDS (Quyết định 5968/QĐ-BYT Bộ Y Tế & WHO Guidelines 2025)",
+        "guideline": "Quyết định số 5968/QĐ-BYT ngày 31/12/2021 của Bộ Y tế Việt Nam & WHO Updated Recommendations on HIV Clinical Management 2025",
+        "targetGoals": [
+            "Ức chế tối đa và lâu dài quá trình nhân lên của vi rút HIV (Đạt tải lượng HIV RNA < 50 copies/mL máu).",
+            "Phục hồi chức năng miễn dịch (Nâng số lượng tế bào T-CD4 > 350–500 cells/mm³), giảm tỷ lệ mắc bệnh và tử vong do NTCH.",
+            "Đạt và duy trì trạng thái K=K (Không phát hiện = Không lây truyền) nhằm ngăn ngừa lây truyền HIV sang bạn tình và lây truyền từ mẹ sang con."
+        ],
+        "initialManagement": [
+            "Khởi động điều trị ARV ngay sau khi có chẩn đoán xác định nhiễm HIV (kể cả điều trị trong ngày - Same Day ART nếu bệnh nhân sẵn sàng và không có chống chỉ định).",
+            "Sàng lọc bắt buộc các bệnh đồng nhiễm và NTCH đe dọa tính mạng trước khi uống ARV: Lao (Xpert/LF-LAM), Viêm màng não Cryptococcus (CrAg máu khi CD4 < 200), Viêm gan B (HBsAg), Viêm gan C (Anti-HCV).",
+            "Đánh giá tiêu chuẩn Bệnh HIV tiến triển (AHD) để chỉ định Gói can thiệp dự phòng tích cực (Co-trimoxazole, Fluconazole, 3HP)."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "TLD (Tenofovir disoproxil fumarate 300mg + Lamivudine 300mg + Dolutegravir 50mg)",
+                "class": "Viên kết hợp liều cố định FDC (2 NRTIs + 1 INSTI)",
+                "route": "PO (Đường uống)",
+                "dosage": "01 viên nén/ngày, uống vào một giờ cố định (buổi tối hoặc buổi sáng)",
+                "frequency": "1 lần/ngày",
+                "instructions": "Phác đồ ưu tiên hàng đầu cho người lớn, phụ nữ mang thai/cho con bú và trẻ vị thành niên (≥ 10 tuổi, nặng ≥ 30kg). Thuốc có hiệu lực ức chế vi rút mạnh, hàng rào kháng thuốc cao, ít tác dụng phụ.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Co-trimoxazole (Trimethoprim 160mg / Sulfamethoxazole 800mg - CTX DS)",
+                "class": "Kháng sinh dự phòng Nhiễm trùng cơ hội",
+                "route": "PO (Đường uống)",
+                "dosage": "01 viên DS (960mg) mỗi ngày",
+                "frequency": "1 lần/ngày",
+                "instructions": "Chỉ định dự phòng hàng đầu cho người lớn/trẻ em có CD4 ≤ 350 cells/mm³ hoặc Giai đoạn lâm sàng 3, 4 hoặc đồng nhiễm Lao. Dự phòng hiệu quả Viêm phổi PCP, Toxoplasma và nhiễm khuẩn đường hô hấp/tiêu hóa.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "3HP (Isoniazid 300mg + Rifapentine 300mg)",
+                "class": "Phác đồ dự phòng Lao tiềm ẩn ngắn hạn (TPT)",
+                "route": "PO (Đường uống)",
+                "dosage": "Isoniazid 900mg + Rifapentine 900mg (3 viên FDC) uống hàng tuần trong 12 tuần (12 liều)",
+                "frequency": "1 lần/tuần x 12 tuần",
+                "instructions": "Phác đồ dự phòng Lao tiềm ẩn ưu tiên cho người nhiễm HIV sau khi đã loại trừ bệnh Lao hoạt động. Tương thích hoàn hảo với phác đồ ARV chứa Dolutegravir (TLD) không cần chỉnh liều.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Phác đồ Bậc 2: AZT + 3TC + LPV/r (hoặc DRV/r)",
+                "class": "Phác đồ Bậc hai khi thất bại vi rút học Bậc 1 chứa TDF/DTG",
+                "route": "PO (Đường uống)",
+                "dosage": "Zidovudine 300mg + Lamivudine 150mg (1 viên x 2 lần/ngày) + Lopinavir/ritonavir 200/50mg (2 viên x 2 lần/ngày) hoặc Darunavir/ritonavir 600/100mg (1 viên x 2 lần/ngày)",
+                "frequency": "2 lần/ngày cách 12 giờ",
+                "instructions": "Chỉ định khi bệnh nhân thất bại điều trị vi rút học (Tải lượng HIV > 1000 copies/mL ở 2 lần xét nghiệm liên tiếp cách nhau 3 tháng dù đã tư vấn tăng cường tuân thủ).",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Tư vấn tăng cường tuân thủ điều trị (Adherence Counseling) ở mọi lần tái khám.",
+            "Tư vấn dinh dưỡng giàu đạm, cao năng lượng; hướng dẫn vệ sinh an toàn thực phẩm tránh nhiễm khuẩn đường ruột.",
+            "Tư vấn tâm lý xã hội, bộc lộ tình trạng HIV, kết nối nhóm đồng đẳng/người hỗ trợ cộng đồng.",
+            "Chăm sóc giảm nhẹ, kiểm soát đau và cải thiện chất lượng cuộc sống cho bệnh nhân giai đoạn muộn."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Bệnh Lao (Tuberculosis - MTB) đồng nhiễm HIV (Lao phổi & Lao ngoài phổi)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Sốt kéo dài, ho húng hắng hoặc ho có đờm/máu > 2 tuần, sụt cân nhanh, đổ mồ hôi đêm, hạch cổ/nách sưng to không đau.",
+            "preventiveAction": "Sàng lọc hệ thống bằng thuật toán 4 triệu chứng; Chẩn đoán nhanh bằng GeneXpert MTB/RIF và LF-LAM nước tiểu; Điều trị Lao ngay theo phác đồ BYT; Bắt đầu ARV sau 2 tuần điều trị Lao (hoặc sau 4–8 tuần nếu Lao màng não).",
+            "onCallAlertText": "Y LỆNH TRỰC LAO/HIV: Sốt ho kéo dài -> Cho làm GeneXpert đờm + LF-LAM nước tiểu khẩn! Nếu dương tính, khởi động phác đồ chống Lao ngay!"
+        },
+        {
+            "name": "Viêm màng não do Nấm Cryptococcus neoformans",
+            "timeframe": "acute_24h",
+            "warningSigns": "Đau đầu dữ dội dai dẳng, sốt nhẹ hoặc sốt cao, sợ ánh sáng, nôn vọt, cổ cứng, rối loạn ý thức, dấu hiệu thần kinh khu trú.",
+            "preventiveAction": "Sàng lọc CrAg máu cho bệnh nhân CD4 < 200 cells/mm³. Nếu CrAg (+), chọc dò dịch não tủy đo áp lực và làm CrAg DNT. Điều trị tấn công bằng Liposomal Amphotericin B 3-4mg/kg/ngày + Flucytosine 100mg/kg/ngày x 1 tuần (hoặc Fluconazole 1200mg/ngày x 2 tuần). TRÌ HOÃN ARV 4–6 TUẦN để tránh IRIS tử vong.",
+            "onCallAlertText": "BÁO ĐỘNG ĐỎ VIÊM MÀNG NÃO CRYPTOCOCCUS: Chọc DNT đo áp lực mở, làm CrAg DNT khẩn! Xả Liposomal Amphotericin B + Flucytosine! Tuyệt đối CHƯA cho uống ARV!"
+        },
+        {
+            "name": "Viêm phổi do Pneumocystis jirovecii (PCP)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Khó thở tiến triển dồn dập, ho khô không có đờm, sốt, SpO2 tụt sâu khi sức co kéo cơ hô hấp tăng, X-quang phổi có thâm nhiễm kẽ lan tỏa 2 bên hình cánh bướm.",
+            "preventiveAction": "Điều trị cấp cứu Co-trimoxazole liều cao (TMP 15–20 mg/kg/ngày + SMX 75–100 mg/kg/ngày chia 3 lần/ngày x 21 ngày). Thêm Prednisolone 40mg x 2 lần/ngày (nếu PaO2 < 70 mmHg hoặc SpO2 < 90%). Thở oxy/NCPAP hỗ trợ.",
+            "onCallAlertText": "Y LỆNH CẤP CỨU PCP: Khó thở ho khô SpO2 < 90% -> Truyền/uống Co-trimoxazole liều cao + Prednisolone 40mg IV/PO ngay! Thở oxy gọng kính 4-6L/p!"
+        },
+        {
+            "name": "Hội chứng Viêm phục hồi miễn dịch (IRIS - Immune Reconstitution Inflammatory Syndrome)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt cao trở lại, tổn thương NTCH cũ bùng phát nặng lên cấp tính (hạch lao hóa mủ vỡ, tổn thương phổi xấu đi, áp lực nội sọ tăng) trong vòng 2–12 tuần sau khi bắt đầu uống ARV.",
+            "preventiveAction": "TIẾP TỤC ĐIỀU TRỊ ARV (không ngắt thuốc trừ trường hợp đe dọa tính mạng); Điều trị tích cực NTCH căn nguyên; Dùng Corticosteroid (Prednisolone 0.5–1.0 mg/kg/ngày trong 1–2 tuần) để giảm phản ứng viêm quá mức.",
+            "onCallAlertText": "Y LỆNH BÁO ĐỘNG IRIS: Bệnh nhân mới uống ARV bùng sốt/sưng hạch -> Tiếp tục duy trì ARV, hội chẩn dùng Prednisolone 0.5mg/kg/ngày khẩn!"
+        }
+    ],
+    "monitoringLabs": [
+        "Xét nghiệm T-CD4: Lúc bắt đầu điều trị, sau 6 tháng, 12 tháng, sau đó mỗi 12 tháng (khi CD4 < 350) hoặc ngưng làm khi CD4 > 350 và vi rút bị ức chế.",
+        "Xét nghiệm Tải lượng vi rút HIV (HIV RNA): Lúc 6 tháng sau khởi động ARV, 12 tháng, sau đó định kỳ 12 tháng/lần. Mục tiêu bắt buộc: HIV RNA < 50 copies/mL.",
+        "Công thức máu (Hct, Hb, WBC, PLT): Kiểm tra trước điều trị và khi theo dõi độc tính (đặc biệt phác đồ có AZT gây thiếu máu).",
+        "Chức năng gan, thận (AST, ALT, Creatinine, eGFR): Kiểm tra trước điều trị và định kỳ 6–12 tháng (theo dõi độc tính TDF trên thận và DTG/EFV trên gan).",
+        "Sàng lọc bệnh đồng nhiễm: HBsAg, Anti-HCV, Giang mai (RPR/TPHA) lúc vào chăm sóc và định kỳ hàng năm cho nhóm nguy cơ cao."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Phụ nữ mang thai và cho con bú nhiễm HIV (Dự phòng lây truyền mẹ sang con - PMTCT)",
+            "adjustments": "Điều trị ARV ngay lập tức bằng phác đồ TLD (TDF + 3TC + DTG) không phụ thuộc tuổi thai hay CD4. Đo tải lượng vi rút ở tuần 34–36 của thai kỳ.",
+            "cautions": "Nếu HIV RNA < 50 copies/mL ở tuần 36: Cho phép sinh đường âm đạo. Trẻ sinh ra uống NVP hoặc AZT dự phòng 6 tuần. Nếu HIV RNA > 1000 copies/mL: Mổ lấy thai chủ động lúc 38 tuần và điều trị dự phòng cho trẻ bằng phác đồ 3 thuốc (AZT + 3TC + NVP) trong 6 tuần."
+        },
+        {
+            "population": "Bệnh nhân suy thận (Mức lọc cầu thận eGFR < 50 mL/phút)",
+            "adjustments": "Thay thế TDF bằng TAF (Tenofovir Alafenamide 25mg) hoặc Abacavir (ABC 600mg - nếu HLA-B*5701 âm tính). Hiệu chỉnh liều Lamivudine (3TC) theo eGFR.",
+            "cautions": "TDF gây độc ống thận cấp và hội chứng Fanconi; chống chỉ định TDF khi eGFR < 50 mL/phút."
+        },
+        {
+            "population": "Bệnh nhân đồng nhiễm Viêm gan B (HIV/HBV Coinfection)",
+            "adjustments": "BẮT BUỘC dùng phác đồ ARV có chứa TDF (hoặc TAF) + 3TC (hoặc FTC) để hiệp đồng ức chế cả vi rút HIV và vi rút Viêm gan B.",
+            "cautions": "Tuyệt đối KHÔNG được tự ý ngừng TDF/TAF vì nguy cơ bùng phát viêm gan B cấp dồn dập (Hepatic Flare) gây suy gan cấp tử vong."
+        },
+        {
+            "population": "Bệnh nhân đồng nhiễm Viêm gan C (HIV/HCV Coinfection)",
+            "adjustments": "Khởi động ARV bằng TLD trước; Sau khi ổn định, điều trị Viêm gan C bằng thuốc DAA uống (Sofosbuvir/Velpatasvir hoặc Sofosbuvir/Daclatasvir) trong 12 tuần.",
+            "cautions": "Tránh dùng EFV đồng thời với SOF/VEL; chú ý kiểm tra tương tác thuốc DAA với ARV trên Liverpool HIV Drug Interactions."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1_initiation",
+            "dayRange": "N1 - N14",
+            "phaseName": "Giai đoạn Khởi động ART & Sàng lọc Bệnh HIV tiến triển",
+            "clinicalGoal": "Xác chẩn HIV, sàng lọc triệt để các nhiễm trùng cơ hội nặng, khởi động phác đồ ARV TLD và điều trị dự phòng CTX/3HP.",
+            "problems": [
+                {
+                    "id": "p1_art_initiation",
+                    "problemName": "Khởi động ARV bậc 1 ưu tiên (TLD)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc ARV Bậc 1",
+                            "content": "TLD (TDF 300mg + 3TC 300mg + DTG 50mg) 1 viên uống buổi tối trước khi đi ngủ.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tác dụng phụ ban đầu (buồn nôn, chóng mặt, mất ngủ)",
+                            "frequency": "N7, N14",
+                            "target": "Bệnh nhân dung nạp thuốc tốt"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_oi_prophylaxis",
+                    "problemName": "Dự phòng Nhiễm trùng cơ hội (PCP, Toxoplasma, Lao)",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Dự phòng CTX",
+                            "content": "Co-trimoxazole 960mg x 1 viên/ngày (nếu CD4 ≤ 350 hoặc LS giai đoạn 3,4).",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Dự phòng Lao 3HP",
+                            "content": "3HP (Isoniazid 900mg + Rifapentine 900mg) uống 1 lần/tuần x 12 tuần (sau khi loại trừ Lao hoạt động).",
+                            "isHighlighted": false
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Công thức máu, Men gan, Creatinine",
+                            "frequency": "Trước điều trị & N14",
+                            "target": "Không có độc tính tủy xương/gan"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_hypersensitivity",
+                    "problemName": "Phản ứng quá mẫn / Dị ứng thuốc (DTG, CTX, EFV)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí dị ứng",
+                            "content": "Ngừng ngay thuốc gây dị ứng nếu có phát ban nặng/Stevens-Johnson; dùng Antihistamine, Corticoid nếu cần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Da niêm mạc, niêm mạc mắt/miệng, nhiệt độ",
+                            "frequency": "q24h",
+                            "target": "Không có bong tróc da hay sốt dị ứng"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD (TDF 300mg + 3TC 300mg + DTG 50mg) 1 viên/ngày.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Dự phòng NTCH",
+                    "content": "Co-trimoxazole 960mg/ngày + Phác đồ 3HP dự phòng Lao.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Đánh giá sự tuân thủ uống thuốc & Tác dụng phụ",
+                    "frequency": "N7, N14",
+                    "target": "Tuân thủ uống thuốc > 95%"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "CTM, AST, ALT, Creatinine, Xpert/LF-LAM",
+                    "frequency": "Lúc khởi đầu",
+                    "target": "Xác định đáp ứng an toàn"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[BẮT BUỘC sàng lọc Lao và Viêm màng não Cryptococcus trước khi cho uống TLD]",
+                    "[Tư vấn kỹ tác dụng phụ rối loạn giấc ngủ hoặc buồn nôn nhẹ trong vài ngày đầu]"
+                ],
+                "triageOrDischargeCriteria": "Bệnh nhân ngoại trú hẹn tái khám sau 14 ngày; Bệnh nhân nội trú xuất viện khi các NTCH cấp tính đã kiểm soát ổn định."
+            }
+        },
+        {
+            "id": "phase_2_consolidation",
+            "dayRange": "N15 - N180",
+            "phaseName": "Giai đoạn Theo dõi Ức chế Vi rút & Củng cố Miễn dịch",
+            "clinicalGoal": "Duy trì tuân thủ điều trị tuyệt đối, kiểm soát hội chứng IRIS, kiểm tra Tải lượng vi rút HIV lần thứ 1 ở tháng thứ 6.",
+            "problems": [
+                {
+                    "id": "p2_viral_suppression",
+                    "problemName": "Đánh giá hiệu quả ức chế vi rút học",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Duy trì ARV",
+                            "content": "Tiếp tục TLD 1 viên/ngày. Tư vấn nhắc lịch uống thuốc bằng điện thoại/đồng hồ.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tải lượng HIV RNA máu (Real-time RT-PCR)",
+                            "frequency": "Tháng thứ 6",
+                            "target": "HIV RNA < 50 copies/mL (Ức chế vi rút hoàn hảo)"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_iris",
+                    "problemName": "Hội chứng Viêm phục hồi miễn dịch (IRIS)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí IRIS",
+                            "content": "Duy trì ARV; Điều trị căn nguyên NTCH bùng phát; Dùng Prednisolone 0.5mg/kg/ngày x 1–2 tuần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Triệu chứng sốt, hạch sưng, tổn thương phổi/thần kinh",
+                            "frequency": "Tái khám mỗi tháng",
+                            "target": "Kiểm soát phản ứng viêm"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD 1 viên/ngày duy trì liên tục.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Tải lượng HIV RNA lúc 6 tháng, T-CD4",
+                    "frequency": "Tháng thứ 6",
+                    "target": "HIV RNA < 50 copies/mL, CD4 tăng > 100 cells/mm³"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Nếu Tải lượng HIV > 1000 copies/mL ở tháng thứ 6: Tiến hành ngay 3 buổi Tư vấn tăng cường tuân thủ (EAC) và làm lại Tải lượng vi rút sau 3 tháng]",
+                    "[Nếu HIV RNA vẫn > 1000 copies/mL lần 2: Khẳng định Thất bại vi rút học -> Chuyển phác đồ Bậc 2 (AZT + 3TC + LPV/r)]"
+                ],
+                "triageOrDischargeCriteria": "Cấp đơn thuốc ARV 30–90 ngày/lần cho bệnh nhân đạt tiêu chuẩn điều trị ổn định."
+            }
+        },
+        {
+            "id": "phase_3_maintenance",
+            "dayRange": "N181 - Lâu dài",
+            "phaseName": "Giai đoạn Duy trì Lâu dài & Quản lý Trạng thái K=K",
+            "clinicalGoal": "Duy trì ức chế vi rút bền vững, bảo vệ trạng thái K=K, quản lý các bệnh không lây nhiễm (THA, Đái tháo đường, Rối loạn lipid) ở người cao tuổi.",
+            "problems": [
+                {
+                    "id": "p3_u_equals_u",
+                    "problemName": "Duy trì K=K & Quản lý sức khỏe toàn diện",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Duy trì ARV",
+                            "content": "TLD 1 viên/ngày liên tục suốt đời. Khám định kỳ và cấp thuốc BHYT 3 tháng/lần (90 ngày).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tải lượng HIV RNA định kỳ",
+                            "frequency": "12 tháng/lần",
+                            "target": "HIV RNA < 50 copies/mL liên tục"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "Đường huyết, Lipid máu, Huyết áp, Chức năng thận",
+                            "frequency": "12 tháng/lần",
+                            "target": "Phát hiện sớm bệnh không lây nhiễm"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_ncd",
+                    "problemName": "Tăng huyết áp, Đái tháo đường, Rối loạn lipid máu, Tăng cân do INSTI",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Điều trị NCDs",
+                            "content": "Điều chỉnh chế độ ăn, vận động thể lực; Dùng thuốc hạ áp, hạ đường huyết, Statin (Atorvastatin/Rosuvastatin - chú ý tương tác thuốc)."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "BMI, Vòng eo, Huyết áp",
+                            "frequency": "Mỗi lần tái khám",
+                            "target": "BMI 18.5 - 23 kg/m², HA < 130/80 mmHg"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD 1 viên/ngày duy trì suốt đời.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Tải lượng HIV RNA 12 tháng/lần",
+                    "frequency": "12 tháng/lần",
+                    "target": "Duy trì HIV RNA < 50 copies/mL (K=K)"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Cảnh báo bệnh nhân không tự ý ngừng ARV dù cảm thấy hoàn toàn khỏe mạnh]",
+                    "[Tái khám ngay khi có hành vi quên thuốc kéo dài hoặc xuất hiện triệu chứng bất thường]"
+                ],
+                "triageOrDischargeCriteria": "Quản lý ngoại trú dài hạn tại tuyến cơ sở, kê đơn ARV 90 ngày."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_tb_coinfection",
+            "complicationName": "Đồng nhiễm Lao / HIV (TB/HIV Co-infection)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Sốt kéo dài, ho hoảng, sụt cân nặng, vã mồ hôi đêm, hạch to lan tỏa, Xpert MTB (+), LF-LAM (+)]",
+            "actionProtocol": "[Điều trị Lao ngay theo phác đồ RHZE 2 tháng đầu + RH 4 tháng tiếp theo; Bắt đầu ARV phác đồ TLD sau 2 tuần điều trị Lao (Tăng liều DTG lên 50mg x 2 lần/ngày nếu dùng Rifampicin)]",
+            "monitoringMetrics": "[Đờm soi trực tiếp/Xpert lúc 2, 5, 6 tháng; Công thức máu, Men gan AST/ALT q2-4w]"
+        },
+        {
+            "id": "comp_cryptococcal_meningitis",
+            "complicationName": "Viêm màng não do Nấm Cryptococcus (Cryptococcal Meningitis)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Đau đầu dữ dội, sốt, nôn vọt, cổ cứng, rối loạn ý thức, áp lực mở DNT tăng cao > 200 mmH2O, CrAg DNT (+)]",
+            "actionProtocol": "[Tấn công: Liposomal Amphotericin B 3-4 mg/kg/ngày + Flucytosine 100 mg/kg/ngày x 1 tuần; Củng cố: Fluconazole 800 mg/ngày x 8 tuần; Duy trì: Fluconazole 200 mg/ngày; TRÌ HOÃN ARV 4-6 TUẦN]",
+            "monitoringMetrics": "[Chọc dò DNT xả áp lực khi đau đầu; Điện giải đồ (K+, Mg2+), Creatinine máu q2d trong đợt Amphotericin B]"
+        },
+        {
+            "id": "comp_virologic_failure",
+            "complicationName": "Thất bại điều trị ARV về Vi rút học (Virologic Failure)",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Tải lượng HIV RNA > 1000 copies/mL ở 2 lần xét nghiệm liên tiếp cách nhau 3 tháng dù đã tư vấn tăng cường tuân thủ EAC]",
+            "actionProtocol": "[Tiến hành 3 buổi EAC; Nếu vẫn > 1000 copies/mL -> Chuyển phác đồ ARV Bậc 2 (AZT + 3TC + LPV/r hoặc DRV/r); Xét nghiệm gen HIV kháng thuốc nếu có điều kiện]",
+            "monitoringMetrics": "[Tải lượng HIV RNA sau 3 tháng EAC và sau 6 tháng chuyển phác đồ Bậc 2]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: BẮT BUỘC sàng lọc Lao và Viêm màng não do Cryptococcus trước khi khởi động ARV để tránh Hội chứng IRIS đe dọa tính mạng]",
+            "[Cảnh báo 2: Thời điểm 2–12 tuần sau khi uống ARV là cửa sổ nguy cơ cao nhất xuất hiện Hội chứng IRIS, cần dặn bệnh nhân tái khám ngay khi có sốt bùng phát]",
+            "[Cảnh báo 3: Không được tự ý ngưng TDF/TAF ở bệnh nhân đồng nhiễm Viêm gan B vì nguy cơ đợt bùng phát viêm gan B cấp tính (Hepatic Flare) gây suy gan tử vong]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định dùng Nevirapine (NVP) cho nữ có CD4 > 250 cells/mm³ hoặc nam có CD4 > 400 cells/mm³ do độc tính trên gan nặng]",
+            "[Chống chỉ định dùng Abacavir (ABC) cho người có gen HLA-B*5701 dương tính do nguy cơ phản ứng quá mẫn tử vong]",
+            "[Chống chỉ định dùng Tenofovir disoproxil fumarate (TDF) khi mức lọc cầu thận eGFR < 50 mL/phút]",
+            "[Chống chỉ định ngưng điều trị ARV đột ngột trừ trường hợp độc tính thuốc mức độ 4 đe dọa tính mạng]"
+        ],
+        "dischargeCriteria": [
+            "[Lâm sàng hoàn toàn ổn định, đã kiểm soát triệt để các nhiễm trùng cơ hội cấp tính]",
+            "[Tải lượng vi rút HIV RNA đạt ngưỡng ức chế (< 50 copies/mL) hoặc đang dung nạp tốt với phác đồ ARV TLD]",
+            "[Bệnh nhân hiểu rõ tầm quan trọng của tuân thủ điều trị hàng ngày, biết cách xử trí khi quên liều và cam kết tái khám nhận thuốc định kỳ]",
+            "[Đã được tư vấn đầy đủ về thông báo tình trạng HIV cho bạn tình, dự phòng lây nhiễm và nguyên tắc K=K]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Nhiễm HIV/AIDS và Phân loại giai đoạn lâm sàng WHO",
+            "searchKeyword": "chan doan hiv 3 phuong cach cd4 giai doan lam sang who"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị ARV bậc 1, bậc 2, bậc 3 và Tối ưu hóa điều trị bằng phác đồ TLD",
+            "searchKeyword": "phac do arv tld tdf 3tc dtg byt 2021"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học HIV/AIDS, Các đường lây truyền và Chiến lược Dự phòng PrEP / PEP / K=K",
+            "searchKeyword": "dich te hiv prep pep k bang k du phong lay truyen"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và Xử trí Cấp cứu các Nhiễm trùng cơ hội nặng (Lao, Cryptococcus, PCP, IRIS)",
+            "searchKeyword": "nhiem trung co hoi hiv lao cryptococcus pcp iris"
+        }
+    ]
+}

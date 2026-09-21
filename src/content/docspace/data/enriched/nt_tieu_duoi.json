@@ -1,0 +1,491 @@
+{
+    "icdCode": "N30.0",
+    "icdPrefixes": [
+        "N30.0",
+        "N30.9",
+        "N34.1",
+        "N39.0"
+    ],
+    "diseaseName": "Nhiễm trùng đường tiết niệu dưới / Viêm bàng quang cấp (Lower Urinary Tract Infection / Localized UTI / Acute Cystitis)",
+    "specialty": "Thận - Tiết niệu",
+    "severity": "mild",
+    "summary": "Nhiễm trùng đường tiết niệu dưới (Lower UTI), điển hình là Viêm bàng quang cấp (Acute Cystitis), là tình trạng viêm vi trùng khu trú tại niêm mạc bàng quang và niệu đạo mà không có biểu hiện xâm lấn mô nhu mô hay đáp ứng viêm toàn thân. Theo phân loại EAU Guidelines 2025/2026, bệnh được xếp vào nhóm Nhiễm trùng tiết niệu tại chỗ (Localized UTI), đặc trưng bởi tam chứng kích thích đường niệu dưới: tiểu buốt (dysuria), tiểu rắt/nhiều lần (frequency), tiểu gấp (urgency) và đau tức vùng trên xương mu (suprapubic pain), hoàn toàn KHÔNG có sốt, ớn lạnh hay đau hông lưng. Căn nguyên chính do Escherichia coli (75–95%). Chẩn đoán chủ yếu dựa vào lâm sàng và xét nghiệm que thử nước tiểu (bạch cầu niệu, nitrite); cấy nước tiểu chỉ chỉ định trong các trường hợp đặc biệt. Điều trị ưu tiên sử dụng kháng sinh niệu đầu tay (Nitrofurantoin, Fosfomycin trometamol, Pivmecillinam, Nitroxoline) hoặc liệu pháp phi kháng sinh (BNO 1045, D-mannose, Oestrogen đặt âm đạo); tuyệt đối tránh lạm dụng Fluoroquinolones và Aminopenicillins nhằm thực thi chương trình quản lý kháng sinh (Antimicrobial Stewardship) và hạn chế collateral damage.",
+    "goldStandard": "Chẩn đoán lâm sàng kết hợp xét nghiệm tổng phân tích nước tiểu có Bạch cầu niệu (Pyuria >= 10 WBC/HPF) hoặc Leukocyte Esterase (+) VÀ/HOẶC Nitrite (+). Cấy nước tiểu định lượng (Urine Culture & AST) không bắt buộc cho viêm bàng quang cấp đơn thuần lần đầu ở phụ nữ, nhưng là tiêu chuẩn vàng khi triệu chứng tái phát/không điển hình với ngưỡng >= 10^4 CFU/mL uropathogen giữa dòng (hoặc >= 10^3 CFU/mL qua thông bàng quang) và không có triệu chứng toàn thân.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "localized_uti_symptom_triad"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định Nhiễm trùng đường tiết niệu dưới (Viêm bàng quang cấp) khi có Triệu chứng kích thích bàng quang tại chỗ và KHÔNG có triệu chứng toàn thân (Tiêu chuẩn bắt buộc) VÀ có ít nhất 1 Tiêu chuẩn chính xét nghiệm nước tiểu (Bạch cầu niệu hoặc Nitrite dương tính) VÀ 1 Tiêu chuẩn loại trừ / cận lâm sàng hỗ trợ."
+    },
+    "criteria": [
+        {
+            "id": "localized_uti_symptom_triad",
+            "type": "mandatory",
+            "label": "Hội chứng kích thích đường tiết niệu dưới tại chỗ (Localized LUTS) KHÔNG có triệu chứng toàn thân",
+            "description": "Xuất hiện đột ngột các triệu chứng: tiểu buốt (dysuria - đau, rát, đái buốt), tiểu rắt/thường xuyên (frequency), tiểu gấp (urgency), tiểu khó/không tự chủ, đau tức hoặc co thắt vùng trên xương mu (suprapubic pain/cramping). KHÔNG có sốt (thân nhiệt < 37.5°C), KHÔNG ớn lạnh, KHÔNG đau hông lưng góc sườn sống (CVA tenderness (-)) và KHÔNG có khí hư/viêm âm đạo.",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2025/2026 & IDSA Guidelines 2025"
+        },
+        {
+            "id": "localized_uti_pyuria_leukocyte",
+            "type": "major",
+            "label": "Tổng phân tích nước tiểu có Bạch cầu niệu (Pyuria) hoặc Leukocyte Esterase (+)",
+            "description": "Bạch cầu niệu trong soi cặn nước tiểu tươi không ly tâm >= 10 WBC/HPF (hoặc >= 10 WBC/µL) hoặc que thử dipstick Leukocyte Esterase dương tính, phản ánh phản ứng viêm niêm mạc bàng quang.",
+            "labThreshold": ">= 10 WBC/HPF hoặc Dipstick Leukocyte Esterase (+)",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026 / WikiGuidelines 2024"
+        },
+        {
+            "id": "localized_uti_nitrite",
+            "type": "major",
+            "label": "Que thử nước tiểu dương tính với Nitrite",
+            "description": "Nitrite (+) trên que thử dipstick phản ánh sự hiện diện của vi khuẩn Gram-âm họ Enterobacteriaceae (E. coli, Klebsiella, Proteus) có khả năng khử Nitrate thành Nitrite.",
+            "labThreshold": "Dipstick Nitrite (+)",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        },
+        {
+            "id": "localized_uti_urine_culture",
+            "type": "lab",
+            "label": "Cấy nước tiểu định lượng dương tính (Chỉ định khi rUTI hoặc triệu chứng thất bại)",
+            "description": "Cấy nước tiểu giữa dòng phát hiện uropathogen đơn chủng >= 10^4 CFU/mL ở phụ nữ có triệu chứng tiểu buốt (hoặc >= 10^3 CFU/mL ở nam giới / qua xond). Không khuyến cáo làm cấy nước tiểu thường quy cho viêm bàng quang đơn thuần lần đầu.",
+            "labThreshold": ">= 10^4 CFU/mL (Midstream) / >= 10^3 CFU/mL (Catheter)",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026 / IDSA Guidelines"
+        },
+        {
+            "id": "localized_uti_no_vaginitis",
+            "type": "mandatory",
+            "label": "Loại trừ viêm nhiễm đường sinh dục (Vaginitis / Cervicitis)",
+            "description": "Không có tiết dịch âm đạo bất thường (vaginal discharge), không huyết trắng hôi, không ngứa âm hộ, loại trừ chlamydia/gonorrhea hoặc nấm âm đạo.",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026 / NICE 2024"
+        },
+        {
+            "id": "localized_uti_ultrasound_normal",
+            "type": "imaging",
+            "label": "Siêu âm hệ tiết niệu bình thường (Chỉ thực hiện khi có nguy cơ tái phát/phức tạp)",
+            "description": "Siêu âm thận - bàng quang không thấy giãn đài bể thận, thành bàng quang có thể dày nhẹ do viêm (< 4mm khi đầy), nước tiểu tồn lưu (PVR) < 50 mL, không có sỏi hoặc u chèn ép.",
+            "labThreshold": "PVR < 50 mL, thành bàng quang < 4mm, không ứ nước thận",
+            "sourceGuideline": "EAU Guidelines on Urological Infections 2026"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Viêm bàng quang cấp đơn thuần tại chỗ nhẹ (Acute Uncomplicated Localized UTI / Cystitis)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Tiểu buốt nhẹ, tiểu rắt, đau nhẹ vùng trên xương mu. Thân nhiệt bình thường (< 37.5°C), thể trạng tốt, ăn uống bình thường. [Cận lâm sàng]: Dipstick WBC (+), Nitrite (+). Không có triệu chứng toàn thân. [Tiêu chuẩn an toàn]: Bệnh nhân nữ trẻ, không thai kỳ, không yếu tố nguy cơ cấu trúc/chức năng.",
+            "triage": "Ngoại trú / Trạm Y tế / Phòng khám Ban đầu",
+            "primaryAction": "Tư vấn phương pháp phi kháng sinh (BNO 1045 / Canephron N HOẶC uống đủ 2.0 - 2.5L nước/ngày) HOẶC Kháng sinh niệu đầu tay ngắn ngày: Nitrofurantoin 100mg bid x 5 ngày HOẶC Pivmecillinam 400mg tid x 3 ngày HOẶC Fosfomycin 3g liều duy nhất. Không cần cấy nước tiểu.",
+            "targetVitals": "Hết tiểu buốt dắt trong 48-72h, bài niệu >= 1.5 - 2.0 L/24h, sinh hiệu bình thường"
+        },
+        {
+            "grade": "Mức độ 2 — Viêm bàng quang cấp có yếu tố nguy cơ / Tái phát (Localized UTI with Risk Factors / Recurrent Cystitis)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Triệu chứng tiểu buốt rắt rầm rộ, tiểu máu vi thể/mắt thường (haematuria), đau tức khó chịu nhiều vùng hạ vị, hoặc triệu chứng tái phát >= 2 đợt/6 tháng. KHÔNG sốt, KHÔNG đau hông lưng. [Cận lâm sàng]: WBC niệu (++), Nitrite (+), Cấy nước tiểu dương tính >= 10^4 CFU/mL. [Tiêu chuẩn an toàn]: Bệnh nhân có yếu tố nguy cơ (đái tháo đường, mãn kinh, nam giới trẻ tuổi, sau đặt xond tiểu) nhưng huyết động hoàn toàn ổn định.",
+            "triage": "Ngoại trú có quản lý / Phòng khám Chuyên khoa Thận - Tiết niệu",
+            "primaryAction": "Lấy mẫu cấy nước tiểu & AST trước khi dùng thuốc. Khởi đầu kháng sinh niệu đầu tay: Nitrofurantoin 100mg bid x 5-7 ngày HOẶC Pivmecillinam 400mg tid x 5 ngày HOẶC Nitroxoline 250mg tid x 5 ngày. Đánh giá lại theo kết quả cấy vi sinh sau 48-72h.",
+            "targetVitals": "Thuyên giảm hoàn toàn triệu chứng sau 72h, cấy nước tiểu âm tính sau điều trị (nếu rUTI)"
+        },
+        {
+            "grade": "Mức độ 3 — Viêm bàng quang cấp nghi ngờ diễn tiến Nhiễm trùng toàn thân / Viêm thận bể thận đe dọa",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Triệu chứng bàng quang rầm rộ kèm bắt đầu xuất hiện sốt nhẹ (37.8 - 38.2°C), ớn lạnh, đau mỏi thắt lưng nhẹ, buồn nôn hoặc triệu chứng không cải thiện sau 72h dùng kháng sinh niệu. [Cận lâm sàng]: WBC máu tăng nhẹ, CRP 10 - 30 mg/L, cấy nước tiểu mọc vi khuẩn Gram-âm. [Dấu hiệu cảnh báo]: Chuyển tầng từ Localized UTI sang Systemic UTI (Viêm thận bể thận cấp).",
+            "triage": "Chuyển tuyến khám Chuyên khoa Thận - Tiết niệu / Nhập viện theo dõi",
+            "primaryAction": "Đổi phác đồ sang kháng sinh đạt nồng độ huyết thanh và nhu mô thận (Ceftriaxone 1g IV/IM HOẶC Ciprofloxacin 500mg PO bid / Levofloxacin 500mg qd x 7 ngày); cho chụp Siêu âm/CT scan loại trừ tắc nghẽn.",
+            "targetVitals": "Cắt sốt hoàn toàn, Mạch 60-90 l/p, HATT >= 90 mmHg, Nước tiểu >= 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ chẩn đoán, điều trị & Sử dụng kháng sinh hợp lý trong Nhiễm trùng đường tiết niệu dưới (EAU Guidelines 2025/2026, IDSA & NICE 2024)",
+        "guideline": "European Association of Urology (EAU) Guidelines on Urological Infections 2025/2026, IDSA 2025 & NICE Guidelines NG109/NG112",
+        "targetGoals": [
+            "Dứt điểm hoàn toàn triệu chứng tiểu buốt, tiểu rắt, tiểu gấp trong 24 - 48 giờ",
+            "Diệt sạch vi khuẩn bàng quang, tối ưu hóa bài niệu >= 1.5 - 2.0 L/ngày",
+            "Thực thi Antimicrobial Stewardship: Tránh collateral damage, bảo tồn Fluoroquinolones và ngăn ngừa tái phát (rUTI)"
+        ],
+        "initialManagement": [
+            "Đánh giá phân loại Localized UTI (chỉ có triệu chứng bàng quang tại chỗ) vs Systemic UTI (có sốt, ớn lạnh, đau hông lưng)",
+            "Thực hiện que thử nước tiểu Dipstick (Leukocyte Esterase & Nitrite) tại phòng khám; loại trừ nguyên nhân viêm âm đạo/cổ tử cung",
+            "Không cấy nước tiểu thường quy cho viêm bàng quang đơn thuần lần đầu; BẮT BUỘC cấy nước tiểu ở bệnh nhân tái phát (rUTI), phụ nữ mang thai, nam giới hoặc khi triệu chứng thất bại sau 48-72h"
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Nitrofurantoin monohydrate/macrocrystals",
+                "class": "Kháng sinh nitrofuran niệu",
+                "route": "PO",
+                "dosage": "100 mg x 2 lần/ngày (b.i.d) (hoặc Macrocrystals 50-100mg q.i.d)",
+                "frequency": "Mỗi 12 giờ x 5 ngày",
+                "instructions": "Lựa chọn hàng đầu cho Viêm bàng quang cấp ở phụ nữ. Nồng độ niệu rất cao, tỷ lệ kháng thấp (< 5%), không ảnh hưởng thảm vi sinh ruột. Chống chỉ định khi eGFR < 30 mL/min hoặc nghi ngờ Viêm thận bể thận.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Fosfomycin trometamol",
+                "class": "Kháng sinh dẫn xuất Phosphonic acid",
+                "route": "PO",
+                "dosage": "3 g x 1 liều duy nhất (single dose)",
+                "frequency": "Uống 1 liều duy nhất trước khi đi ngủ, hòa tan trong 100ml nước sau khi đã đi tiểu",
+                "instructions": "Lựa chọn đầu tay rất tiện lợi cho phụ nữ. Tác dụng diệt khuẩn nhanh tại bàng quang kéo dài 36-48h. Không dùng cho Viêm thận bể thận do không đạt nồng độ mô.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Pivmecillinam",
+                "class": "Kháng sinh Penicillin bán tổng hợp (Penam)",
+                "route": "PO",
+                "dosage": "400 mg x 3 lần/ngày (t.i.d)",
+                "frequency": "Mỗi 8 giờ x 3 đến 5 ngày",
+                "instructions": "Đầu tay tại các nước Châu Âu. Đặc hiệu cho đường tiết niệu, tỷ lệ kháng E. coli rất thấp và cực kỳ ít collateral damage.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Nitroxoline",
+                "class": "Kháng sinh dẫn xuất Hydroxyquinoline niệu",
+                "route": "PO",
+                "dosage": "250 mg x 3 lần/ngày (t.i.d)",
+                "frequency": "Mỗi 8 giờ x 5 ngày",
+                "instructions": "Lựa chọn đầu tay mới trong EAU 2026 cho viêm bàng quang cấp ở phụ nữ. Nhạy cảm cao với vi khuẩn Gram-âm và nấm Candida niệu.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Trimethoprim-Sulfamethoxazole (TMP-SMX)",
+                "class": "Kháng sinh phối hợp Sulfa-Trimethoprim",
+                "route": "PO",
+                "dosage": "160/800 mg (1 viên DS) x 2 lần/ngày",
+                "frequency": "Mỗi 12 giờ x 3 ngày ở phụ nữ (hoặc x 7 ngày ở nam giới)",
+                "instructions": "Chỉ dùng làm lựa chọn đầu tay khi tỷ lệ kháng E. coli tại địa phương < 20% hoặc có kết quả kháng sinh đồ nhạy cảm."
+            },
+            {
+                "drugName": "Trimethoprim",
+                "class": "Kháng sinh ức chế Dihydrofolate reductase",
+                "route": "PO",
+                "dosage": "200 mg x 2 lần/ngày",
+                "frequency": "Mỗi 12 giờ x 5 ngày",
+                "instructions": "Chỉ dùng khi tỷ lệ kháng địa phương < 20%. Chống chỉ định trong 3 tháng đầu thai kỳ."
+            },
+            {
+                "drugName": "Cefadroxil / Cefpodoxime proxetil",
+                "class": "Kháng sinh Cephalosporin thế hệ 1 / thế hệ 3 đường uống",
+                "route": "PO",
+                "dosage": "Cefadroxil 500mg bid HOẶC Cefpodoxime 100mg bid",
+                "frequency": "Mỗi 12 giờ x 3 ngày",
+                "instructions": "Lựa chọn thay thế khi bệnh nhân dị ứng hoặc không dung nạp các thuốc đầu tay. Hiệu quả lâm sàng thấp hơn và dễ gây đề kháng hơn."
+            }
+        ],
+        "supportiveCare": [
+            "Bù nước đường uống tích cực 2.0 - 2.5 L/ngày giúp tăng chu chuyển dòng niệu và đào thải vi khuẩn bàng quang",
+            "Liệu pháp thảo dược không kháng sinh BNO 1045 (Canephron N: kết hợp Trác đường, Đương quy, Hương thảo) 2 viên tid x 7-10 ngày (EAU 2026 chứng minh không kém hơn Fosfomycin)",
+            "Giảm đau bàng quang: Paracetamol 500mg PO q6h khi đau tức nhiều; Phenazopyridine 100-200mg tid x 2 ngày (nếu đau buốt dữ dội, dặn bệnh nhân nước tiểu màu cam)",
+            "D-mannose 2g/ngày đường uống giúp giảm sự bám dính của vi khuẩn E. coli lên niêm mạc bàng quang"
+        ]
+    },
+    "complications": [
+        {
+            "name": "Diễn tiến lên Nhiễm trùng đường tiết niệu trên / Viêm thận bể thận cấp (Systemic UTI)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bệnh nhân bắt đầu xuất hiện sốt >= 38.0°C, ớn lạnh, đau thắt lưng/hông lưng, ấn đau góc sườn sống CVA (+), buồn nôn/nôn.",
+            "preventiveAction": "Dừng ngay các thuốc kháng sinh niệu đơn thuần (Nitrofurantoin/Fosfomycin); đổi sang Ceftriaxone IV hoặc Fluoroquinolone đường uống x 7-10 ngày; cấy nước tiểu và siêu âm khẩn.",
+            "onCallAlertText": "Y LỆNH TRỰC: XUẤT HIỆN SỐT / ĐAU HÔNG LƯNG: Đổi phác đồ sang Ceftriaxone 1g IV/ngày, lấy mẫu cấy nước tiểu, cho Siêu âm thận - bàng quang khẩn!"
+        },
+        {
+            "name": "Viêm bàng quang xuất huyết (Hemorrhagic Cystitis)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Tiểu ra máu toàn bãi, đái máu mắt thường kèm cục máu đông nhỏ, đau co thắt bàng quang dữ dội, tiểu rắt liên tục.",
+            "preventiveAction": "Uống nhiều nước, dùng thuốc cầm máu nếu cần, cấy nước tiểu loại trừ vi khuẩn đa kháng hoặc tác nhân virus (BK virus/Adenovirus ở người giảm miễn dịch); tiếp tục kháng sinh niệu thích hợp.",
+            "onCallAlertText": "Y LỆNH TRỰC: VIÊM BÀNG QUANG XUẤT HUYẾT: Cho uống nhiều nước, kiểm tra CTM (Hb/HCT), cấy nước tiểu và siêu âm bàng quang loại trừ huyết khối gây bí niệu!"
+        },
+        {
+            "name": "Viêm bàng quang tái phát dai dẳng (Recurrent UTI - rUTI) & Gia tăng vi khuẩn đa kháng (ESBL)",
+            "timeframe": "chronic_30d",
+            "warningSigns": "Tái phát >= 2 đợt trong 6 tháng hoặc >= 3 đợt trong 12 tháng; triệu chứng tiểu buốt tái diễn ngay sau khi ngưng kháng sinh.",
+            "preventiveAction": "Cấy nước tiểu làm AST; áp dụng các biện pháp dự phòng phi kháng sinh (D-mannose 2g/ngày, Oestrogen đặt âm đạo cho phụ nữ mãn kinh, Methenamine hippurate 1g bid); hạn chế lạm dụng kháng sinh kéo dài.",
+            "onCallAlertText": "Y LỆNH TRỰC: VIÊM BÀNG QUANG TÁI PHÁT (rUTI): Cho cấy nước tiểu + AST, tư vấn Oestrogen đặt âm đạo / D-mannose, hội chẩn Thận - Tiết niệu!"
+        }
+    ],
+    "monitoringLabs": [
+        "Tổng phân tích nước tiểu Dipstick (WBC, Nitrite, RBC) đánh giá lại sau 48-72h nếu triệu chứng không thuyên giảm",
+        "Cấy nước tiểu & Kháng sinh đồ (AST) trả kết quả sau 48h (chỉ định bắt buộc khi rUTI hoặc điều trị ban đầu thất bại)",
+        "Soi tươi dịch âm đạo / PCR Chlamydia, Neisseria gonorrhoeae khi có triệu chứng tiết dịch âm đạo hoặc nghi ngờ bệnh lây truyền qua đường tình dục (STI)",
+        "Siêu âm hệ tiết niệu & Đo lượng nước tiểu tồn lưu (PVR) ở bệnh nhân nam giới hoặc phụ nữ tái phát rUTI nhiều đợt",
+        "Không khuyến cáo làm cấy nước tiểu kiểm tra sau điều trị ở bệnh nhân hết sạch triệu chứng lâm sàng"
+    ],
+    "specialPopulations": [
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "Ưu tiên Amoxicillin/Clavulanate (625mg tid x 7d), Cefuroxime axetil (500mg bid x 7d) HOẶC Fosfomycin trometamol (3g liều duy nhất). Tầm soát và điều trị bắt buộc cả vi khuẩn niệu không triệu chứng (ABU).",
+            "cautions": "TUYỆT ĐỐI CẤM Fluoroquinolones (độc sụn khớp), TMP-SMX (tránh 3 tháng đầu & 3 tháng cuối do nguy cơ vàng da nhân Kernicterus) và Nitrofurantoin ở tuần cận sinh (nguy cơ tán huyết ở sơ sinh)."
+        },
+        {
+            "population": "Nam giới bị Viêm bàng quang (Male Cystitis)",
+            "adjustments": "Viêm bàng quang đơn thuần ở nam giới rất hiếm gặp. Ưu tiên Pivmecillinam 400mg tid x 5-7 ngày HOẶC TMP-SMX 160/800mg bid x 7 ngày HOẶC Fluoroquinolone (nếu cấy vi sinh nhạy cảm).",
+            "cautions": "Bắt buộc thăm trực tràng (DRE) và cấy nước tiểu để loại trừ Viêm tuyến tiền liệt cấp (Acute Bacterial Prostatitis). Nếu có nghi ngờ tiền liệt tuyến, thời gian điều trị phải kéo dài ít nhất 2 - 4 tuần."
+        },
+        {
+            "population": "Phụ nữ hậu mãn kinh (Postmenopausal Women)",
+            "adjustments": "Khuyên dùng Oestrogen đặt âm đạo (Vaginal Oestrogen cream/pessary) kéo dài để phục hồi niêm mạc âm đạo và hệ vi sinh Lactobacillus giúp ngăn ngừa tái phát rUTI.",
+            "cautions": "Không tự ý dùng kháng sinh dự phòng uống kéo dài khi chưa thử nghiệm các biện pháp phi kháng sinh."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 60 mL/min)",
+            "adjustments": "Hiệu chỉnh liều các kháng sinh đào thải qua thận.",
+            "cautions": "Chống chỉ định Nitrofurantoin khi eGFR < 30 mL/min do thuốc không đạt nồng độ điều trị trong nước tiểu và gia tăng nguy cơ độc tính thần kinh ngoại biên."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Khởi đầu điều trị & Giảm nhẹ triệu chứng kích thích",
+            "clinicalGoal": "Kiểm soát dứt điểm tiểu buốt dắt trong 24-48h, lựa chọn kháng sinh niệu đầu tay hoặc liệu pháp phi kháng sinh",
+            "problems": [
+                {
+                    "id": "p1_spec",
+                    "problemName": "Khởi đầu kháng sinh niệu đầu tay cho Localized UTI",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh niệu đầu tay",
+                            "content": "Nitrofurantoin 100mg bid x 5d HOẶC Fosfomycin 3g 1 liều duy nhất HOẶC Pivmecillinam 400mg tid x 3-5d HOẶC Nitroxoline 250mg tid x 5d.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": []
+                },
+                {
+                    "id": "p1_dysuria",
+                    "problemName": "Hội chứng tiểu buốt, tiểu rắt & Đau tức trên xương mu",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hỗ trợ & Giảm đau bàng quang",
+                            "content": "Uống đủ 2.0 - 2.5L nước/ngày. BNO 1045 (Canephron N) 2 viên tid. Paracetamol 500-1000mg PO khi đau nhiều."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mức độ đau buốt & Số lần đi tiểu",
+                            "frequency": "q12-24h",
+                            "target": "Giảm hoàn toàn cảm giác rát buốt sau 48h"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_fever",
+                    "problemName": "Diễn tiến sốt / Di chuyển thành Viêm thận bể thận cấp",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Chuyển tầng điều trị",
+                            "content": "Nếu xuất hiện sốt > 38°C hoặc đau hông lưng: Đổi kháng sinh sang Ceftriaxone 1g IV HOẶC Ciprofloxacin 500mg bid x 7d; cho cấy nước tiểu + AST và siêu âm khẩn."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & Đau hông lưng CVA",
+                            "frequency": "q6h",
+                            "target": "Không xuất hiện triệu chứng toàn thân"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh niệu",
+                    "content": "Dùng kháng sinh niệu đầu tay theo phác đồ ngắn ngày (1-5 ngày).",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Triệu chứng tiểu buốt rắt",
+                    "frequency": "q24h",
+                    "target": "Cải thiện rõ rệt sau 24-48h"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[TUYỆT ĐỐI KHÔNG dùng Fluoroquinolones (Ciprofloxacin/Levofloxacin) hoặc Aminopenicillins cho Viêm bàng quang đơn thuần]",
+                    "[TUYỆT ĐỐI KHÔNG dùng Nitrofurantoin hay Fosfomycin đơn liều nếu nghi ngờ Viêm thận bể thận]"
+                ],
+                "triageOrDischargeCriteria": "[Điều trị ngoại trú an toàn, hướng dẫn các dấu hiệu cờ đỏ cần tái khám]"
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N4 - N7",
+            "phaseName": "Giai đoạn Đánh giá hồi phục & Xử trí trường hợp thất bại điều trị",
+            "clinicalGoal": "Xác nhận sạch triệu chứng lâm sàng, đánh giá kết quả cấy nước tiểu nếu có chỉ định, điều chỉnh thuốc nếu triệu chứng dai dẳng",
+            "problems": [
+                {
+                    "id": "p2_persistent_symptoms",
+                    "problemName": "Triệu chứng không cải thiện hoặc tái phát sau khi ngưng thuốc",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Điều chỉnh theo cấy vi sinh",
+                            "content": "Thực hiện cấy nước tiểu + AST (nếu chưa làm); đổi sang kháng sinh phổ hẹp khác thuộc nhóm khác dựa trên AST x 7 ngày."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả Cấy nước tiểu & Kháng sinh đồ",
+                            "frequency": "N4 - N5",
+                            "target": "Xác định vi khuẩn kháng thuốc (ESBL) hoặc tác nhân không điển hình"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [],
+            "treatments": [
+                {
+                    "category": "Hoàn tất phác đồ",
+                    "content": "Hoàn tất liệu trình 3-5 ngày kháng sinh niệu.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Tần suất đi tiểu & Cảm giác dễ chịu khi tiểu",
+                    "frequency": "q24h",
+                    "target": "Trở về trạng thái đi tiểu bình thường"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không làm cấy nước tiểu kiểm tra nếu bệnh nhân đã hết hoàn toàn triệu chứng]",
+                    "[Bệnh nhân còn tiểu buốt sau 7 ngày bắt buộc phải tái khám Chuyên khoa Tiết niệu]"
+                ],
+                "triageOrDischargeCriteria": "[Hoàn tất điều trị ngoại trú]"
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N8 - N14",
+            "phaseName": "Giai đoạn Dự phòng tái phát phi kháng sinh (rUTI Prevention)",
+            "clinicalGoal": "Tư vấn vệ sinh hành vi, áp dụng các biện pháp dự phòng không kháng sinh (D-mannose, Oestrogen đặt âm đạo, Cranberry)",
+            "problems": [
+                {
+                    "id": "p3_prevention",
+                    "problemName": "Dự phòng viêm bàng quang tái phát (rUTI) theo chuẩn NICE 2024 / EAU 2026",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Tư vấn dự phòng EBM",
+                            "content": "Khuyên uống đủ 2.0L nước/ngày, không nhịn tiểu, lau từ trước ra sau; dùng D-mannose 2g/ngày; Oestrogen đặt âm đạo cho phụ nữ mãn kinh; Methenamine hippurate 1g bid nếu tái phát nhiều lần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tần suất tái phát đợt mới",
+                            "frequency": "Theo dõi 3 - 6 tháng",
+                            "target": "Không tái phát UTI"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [],
+            "treatments": [
+                {
+                    "category": "Dự phòng phi kháng sinh",
+                    "content": "Áp dụng chiến lược dự phòng bậc thang: Hành vi -> Thảo dược/D-mannose/Oestrogen -> Kháng sinh dự phòng liều thấp (nếu thất bại).",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Nhật ký đi tiểu & Số đợt tái phát",
+                    "frequency": "Tái khám hẹn 1-3 tháng",
+                    "target": "Chất lượng cuộc sống cải thiện tốt"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Tránh tự ý mua kháng sinh uống mỗi khi tiểu buốt nhẹ]",
+                    "[Kháng sinh dự phòng liên tục chỉ là lựa chọn cuối cùng khi các biện pháp phi kháng sinh thất bại]"
+                ],
+                "triageOrDischargeCriteria": "[Chăm sóc và dự phòng dài hạn tại cộng đồng]"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_pyelonephritis_progression",
+            "complicationName": "Diễn tiến Viêm thận bể thận cấp / Nhiễm trùng tiết niệu toàn thân (Systemic UTI)",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "[Sốt cao >= 38.0°C, ớn lạnh, đau hông lưng một hoặc hai bên, ấn đau góc sườn sống CVA (+), buồn nôn/nôn]",
+            "actionProtocol": "[Chuyển phác đồ sang kháng sinh tĩnh mạch (Ceftriaxone 1-2g IV/ngày) hoặc Fluoroquinolone uống (Ciprofloxacin 500-750mg bid x 7 ngày), lấy mẫu cấy nước tiểu + Cấy máu, siêu âm hệ tiết niệu khẩn]",
+            "monitoringMetrics": "[Thân nhiệt q4-6h, Đau hông lưng, CTM (WBC), CRP/PCT, Cấy nước tiểu]"
+        },
+        {
+            "id": "comp_hemorrhagic_cystitis",
+            "complicationName": "Viêm bàng quang xuất huyết cấp tính (Acute Hemorrhagic Cystitis)",
+            "problemType": "clinical",
+            "warningLevel": "moderate",
+            "manifestation": "[Tiểu máu toàn bãi mắt thường, tiểu ra cục máu đông nhỏ, đau co thắt bàng quang dữ dội]",
+            "actionProtocol": "[Uống bù dịch tích mạch/uống 2.5-3.0L/ngày, dùng kháng sinh niệu thích hợp, theo dõi Hb/HCT, siêu âm bàng quang loại trừ huyết khối gây tắc nghẽn đường xuất niệu]",
+            "monitoringMetrics": "[Màu sắc nước tiểu, HCT, CTM, Siêu âm bàng quang q24h]"
+        },
+        {
+            "id": "comp_rutI_esbl",
+            "complicationName": "Viêm bàng quang tái phát dai dẳng (rUTI) & Chọn lọc vi khuẩn đa kháng (ESBL)",
+            "problemType": "paraclinical",
+            "warningLevel": "moderate",
+            "manifestation": "[Triệu chứng tiểu buốt dắt tái phát nhiều lần trong năm, cấy nước tiểu mọc E. coli / K. pneumoniae kháng Ampicillin, Cephalosporin thế hệ 1-3]",
+            "actionProtocol": "[Chuyển dùng kháng sinh theo AST (Pivmecillinam, Nitroxoline, Fosfomycin hoặc Ertapenem/Nitrofurantoin), áp dụng phác đồ dự phòng phi kháng sinh (D-mannose, Vaginal Oestrogen, Methenamine)]",
+            "monitoringMetrics": "[Kháng sinh đồ (AST) cấy nước tiểu, Tần suất đợt tái phát/năm]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: TUYỆT ĐỐI CẤM lạm dụng Fluoroquinolones (Ciprofloxacin, Levofloxacin) cho Viêm bàng quang đơn thuần tại chỗ (Localized UTI) do quyết định pháp lý của EMA 2019 và EAU 2026 về độc tính kéo dài trên gân/thần kinh và nguy cơ bùng phát đề kháng vi khuẩn!]",
+            "[Cảnh báo 2: TUYỆT ĐỐI KHÔNG sử dụng Nitrofurantoin, Fosfomycin đơn liều hoặc Pivmecillinam khi nghi ngờ có Viêm thận bể thận cấp / Systemic UTI vì các thuốc này KHÔNG đạt nồng độ điều trị trong nhu mô thận và máu!]",
+            "[Cảnh báo 3: KHÔNG điều trị kháng sinh cho Vi khuẩn niệu không triệu chứng (Asymptomatic Bacteriuria - ABU) ở người cao tuổi, bệnh nhân tiểu đường, người mang xond tiểu hoặc phụ nữ sau mãn kinh, ngoại trừ phụ nữ mang thai và trước thủ thuật tiết niệu xâm lấn có chảy máu!]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định Nitrofurantoin khi eGFR < 30 mL/min hoặc nghi ngờ Viêm thận bể thận cấp]",
+            "[Chống chỉ định Fluoroquinolones và Trimethoprim-Sulfamethoxazole ở phụ nữ mang thai]",
+            "[Chống chỉ định dùng Fosfomycin đơn liều cho nhiễm trùng đường tiết niệu trên hay nam giới bị viêm tiền liệt tuyến]"
+        ],
+        "dischargeCriteria": [
+            "[Tiêu chuẩn 1: Thuyên giảm và hết hoàn toàn triệu chứng tiểu buốt, tiểu rắt, tiểu gấp]",
+            "[Tiêu chuẩn 2: Không xuất hiện triệu chứng toàn thân (thân nhiệt bình thường < 37.5°C, không đau hông lưng)]",
+            "[Tiêu chuẩn 3: Bài niệu tốt >= 1.5 - 2.0 L/24h, dung nạp tốt thuốc uống ngoại trú]",
+            "[Tiêu chuẩn 4: Đã tư vấn hướng dẫn các biện pháp vệ sinh hành vi và dự phòng tái phát phi kháng sinh]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Nhiễm trùng đường tiết niệu dưới / Viêm bàng quang cấp theo EAU 2025/2026",
+            "searchKeyword": "chan doan nhiem trung duong tiet nieu duoi cystitis localized uti eau"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & kháng sinh niệu đầu tay trong Viêm bàng quang cấp",
+            "searchKeyword": "phac do dieu tri viem bang quang cap nitrofurantoin fosfomycin pivmecillinam"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, vi sinh học & dự phòng tái phát phi kháng sinh trong Localized UTI",
+            "searchKeyword": "dich te hoc viem bang quang du phong ruti d mannose oestrogen"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện biến chứng diễn tiến viêm thận bể thận và quản lý kháng sinh trong Viêm bàng quang cấp",
+            "searchKeyword": "bien chung viem bang quang cap antimicrobial stewardship"
+        }
+    ]
+}

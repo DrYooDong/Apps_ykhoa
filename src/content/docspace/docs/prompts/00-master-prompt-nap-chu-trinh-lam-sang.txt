@@ -108,7 +108,12 @@ Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
     }
   ],
   "severityGrading": [
-    // LƯU Ý QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING CHO 6 ĐẦU MỤC & BẢNG 3 CỘT BƯỚC 4):
+    // LƯU Ý QUY TẮC PHÂN TẦNG LÂM SÀNG ĐỘNG (DYNAMIC CLINICAL STAGING):
+    // - "severityGrading": Mảng ĐỘNG từ 2 đến 5+ phân độ hoặc thể bệnh bám sát theo Quyết định của Bộ Y Tế / Guideline (hoặc [] nếu tiếp cận hội chứng).
+    //   * Bệnh 2 phân độ: Xơ gan (Còn bù / Mất bù); Viêm phổi (Ngoại trú / Nội trú).
+    //   * Bệnh 3 phân độ: Sốt xuất huyết, Sốt rét, Thủy đậu (Nhẹ / Cảnh báo / Nặng).
+    //   * Bệnh 4-5 phân độ: Nhiễm trùng tiểu (4 thể), ACLF (4 độ), Tay chân miệng (4-5 độ), Uốn ván (4 độ Ablett).
+    //   * Nhãn "severity" hợp lệ: "mild" | "moderate" | "severe" | "emergency" | "critical" | "phenotype" | "grade-1" | "grade-2" | "grade-3" | "grade-4"
     // - "criteria": Hiển thị tại Bước 3 (Tiêu chuẩn phân độ lâm sàng) & Mục 1a Bước 4 (Phân độ nặng nhẹ).
     // - "specialPopulations": Hiển thị tại Mục 1c Bước 4 (Đối tượng đặc biệt: Người cao tuổi, Trẻ em, Thai phụ, Suy thận eGFR, Suy gan).
     // - "timelinePhases": Hiển thị trực tiếp vào BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ tại Mục 2 Bước 4:
@@ -118,7 +123,7 @@ Xuất một khối JSON hợp lệ duy nhất có cấu trúc chính xác sau:
     // - "cautionsAndDischarge": Hiển thị tại Mục 3 Bước 4 (3.1 Chỉ định ĐT đặc hiệu, [1] Cảnh báo quan trọng, [2] Chống chỉ định CCĐ, [3] Tiêu chuẩn xuất viện/chuyển tuyến).
     // - "triage", "primaryAction", "targetVitals": Ánh xạ vào chiến lược tổng quan và hỗ trợ phân luồng nhanh.
     {
-      "grade": "[Tên phân độ 1: Thể nhẹ / Ngoại trú]",
+      "grade": "[Tên phân độ 1: Thể nhẹ / Ngoại trú, hoặc Còn bù, hoặc Viêm bàng quang]",
       "severity": "mild",
       "criteria": "[Lâm sàng: sốt nhẹ/vừa, không dấu hiệu cảnh báo; Cận lâm sàng: Hct bình thường, tiểu cầu >= 100 G/L; Tiêu chuẩn an toàn: tự uống được, sinh hiệu ổn định]",
       "triage": "[Tuyến tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám theo dõi tại nhà]",

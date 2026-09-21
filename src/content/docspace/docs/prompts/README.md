@@ -421,6 +421,19 @@ Khi biên soạn dữ liệu CDSS cho bệnh truyền nhiễm, AI và Bác sĩ b
 > - Phân loại biện pháp phòng ngừa lây nhiễm: **Phòng ngừa chuẩn (Standard)**, **Đường tiếp xúc (Contact)**, **Giọt bắn (Droplet)**, hoặc **Đường không khí (Airborne)**.
 > - Nhắc nhở khai báo bệnh truyền nhiễm thuộc nhóm A, B, C theo quy định tại **Thông tư 54/2015/TT-BYT** của Bộ Y Tế.
 
+> [!IMPORTANT]
+>
+> ### 6. Quy Tắc Phân Tầng Lâm Sàng Động (Dynamic Clinical Staging: 2, 3, hoặc >3 Phân Độ)
+>
+> - Tuyệt đối không gò ép mọi bệnh lý vào mô hình 3 phân độ. Trường `severityGrading` là một mảng động (Dynamic Array) tuân thủ 100% theo Quyết định của Bộ Y Tế hoặc Guidelines chuyên khoa quốc tế:
+>   - **2 Phân độ / Thể bệnh:** Ví dụ Xơ gan (Còn bù / Mất bù); Viêm phổi cộng đồng (Ngoại trú CRB-65=0 / Nhập viện CRB-65≥1).
+>   - **3 Phân độ:** Ví dụ Sốt xuất huyết Dengue, Sốt rét, Thủy đậu (Nhẹ / Cảnh báo / Nặng).
+>   - **> 3 Phân độ / Thể lâm sàng:** Ví dụ Nhiễm trùng tiểu (4 thể: Viêm bàng quang / Viêm đài bể thận / NTT có biến chứng / Urosepsis); ACLF (4 độ: Grade 1a / 1b / 2 / 3); Tay chân miệng (4-5 phân độ: Độ 1, 2a, 2b, 3, 4); Uốn ván (4 độ Ablett I, II, III, IV).
+> - **Phân định rõ 3 Nhánh tại Mục 1 Bước 4:**
+>   - **1a. Phân độ nặng nhẹ / Thể lâm sàng cốt lõi:** Dành cho các bậc bệnh/thể bệnh chính.
+>   - **1b. Phân độ biến chứng:** Đưa các biến chứng cơ quan / ngoại khoa (Áp xe, hoại tử nhú, sốc...) vào tab 1b để tích chọn đa biến chứng song hành.
+>   - **1c. Đối tượng đặc biệt:** Quy hoạch phụ nữ mang thai, người cao tuổi, suy thận giảm eGFR, suy gan để cá thể hoá y lệnh và chỉnh liều.
+
 ---
 
 ## 🤖 7. HỆ THỐNG SKILLS & AI AGENT CHUYÊN TRÁCH DOCSPACE

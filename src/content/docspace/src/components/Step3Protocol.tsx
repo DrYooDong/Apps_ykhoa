@@ -326,6 +326,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     ];
   }, [activeChain]);
 
+  // Kiểm tra phân tầng theo thể lâm sàng hay theo bậc phân độ nặng nhẹ
+  const isPhenotypeStaging = useMemo(() => {
+    return (
+      activeChain?.stagingType === 'phenotype' ||
+      severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
+    );
+  }, [activeChain?.stagingType, severityGrades]);
+
   // Auto-suggest grade index based on vitals/labs
   const autoSuggestedGradeIndex = useMemo(() => {
     if (!vitals) return 0;
@@ -805,8 +813,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </div>
             }
             title="1. Phân loại (cá thể hoá)"
-            subtitle="1a. Phân độ nặng nhẹ &bull; 1b. Phân độ biến chứng &bull; 1c. Các đối tượng đặc biệt"
-            badgeText={`${severityGrades.length} phân độ`}
+            subtitle={`${isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ'} • 1b. Phân độ biến chứng • 1c. Các đối tượng đặc biệt`}
+            badgeText={
+              severityGrades.length === 0
+                ? 'Tiếp cận toàn diện'
+                : `${severityGrades.length} ${isPhenotypeStaging ? 'thể bệnh' : 'phân độ'}`
+            }
             badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
           >
             <ProtocolClassificationSection

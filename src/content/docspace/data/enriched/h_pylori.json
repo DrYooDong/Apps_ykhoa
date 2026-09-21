@@ -1,0 +1,349 @@
+{
+    "icdCode": "B98.0",
+    "icdPrefixes": [
+        "B98.0",
+        "K25",
+        "K26",
+        "K29.3",
+        "K29.5",
+        "C16",
+        "M83.2"
+    ],
+    "diseaseName": "Nhiễm Helicobacter pylori (H. pylori Infection)",
+    "specialty": "Tiêu hóa / Truyền nhiễm",
+    "severity": "standard",
+    "summary": "Helicobacter pylori là vi khuẩn Gram âm vi hiếu khí, cư trú tại lớp nhầy niêm mạc dạ dày và là căn nguyên hàng đầu gây viêm dạ dày mạn, loét dạ dày - tá tràng, MALT lymphoma và ung thư biểu mô dạ dày. Tại Việt Nam, tỷ lệ nhiễm trong cộng đồng dao động từ 30% đến 70%, đồng thời tình trạng đề kháng kháng sinh gia tăng nghiêm trọng (kháng Clarithromycin 81.3%, Levofloxacin 53.6%), đòi hỏi chiến lược chẩn đoán chính xác và phác đồ tiệt trừ cá thể hóa 14 ngày.",
+    "goldStandard": "Chẩn đoán xác chẩn căn nguyên bằng Xét nghiệm Urease nhanh (CLO test) / Mô bệnh học qua sinh thiết nội soi dạ dày, hoặc Test hơi thở Ure (UBT 13C/14C) không xâm lấn. Với ca thất bại điều trị &gt;= 2 lần, nuôi cấy + kháng sinh đồ hoặc xét nghiệm PCR/NGS phát hiện đột biến gen kháng thuốc (23S rRNA, gyrA, pbp1, rdxA) là tiêu chuẩn vàng định hướng.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "hp_mand_lab_confirmation"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 0,
+        "ruleDescription": "BẮT BUỘC có ít nhất 01 xét nghiệm vi sinh / sinh học phân tử / test chức năng khẳng định sự hiện diện của H. pylori (+) VÀ kèm theo ít nhất 01 biểu hiện lâm sàng hoặc tổn thương nội soi dạ dày - tá tràng."
+    },
+    "criteria": [
+        {
+            "id": "hp_mand_lab_confirmation",
+            "type": "mandatory",
+            "label": "Bằng chứng vi sinh / Xét nghiệm khẳng định nhiễm H. pylori (+)",
+            "description": "Kết quả dương tính từ một trong các phương pháp: Test hơi thở Ure (UBT 13C/14C), Xét nghiệm kháng nguyên trong phân (Stool Antigen), Xét nghiệm Urease nhanh (CLO test), Mô bệnh học, Nuôi cấy vi khuẩn (+), hoặc PCR/NGS phát hiện DNA H. pylori.",
+            "sourceGuideline": "ACG Clinical Guideline 2024 &amp; Khuyến cáo Hội Tiêu hóa Việt Nam 2023"
+        },
+        {
+            "id": "hp_major_epigastric_pain",
+            "type": "major",
+            "label": "Hội chứng đau thượng vị &amp; Rối loạn tiêu hóa trên",
+            "description": "Đau âm ỉ hoặc nóng rát vùng thượng vị (thường xuất hiện khi đói đối với loét tá tràng hoặc sau ăn đối với loét dạ dày), kèm đầy bụng, khó tiêu, ợ chua, buồn nôn.",
+            "sourceGuideline": "Maastricht VI/VII Consensus Report 2022"
+        },
+        {
+            "id": "hp_major_endoscopic_lesion",
+            "type": "major",
+            "label": "Tổn thương nội soi dạ dày - tá tràng",
+            "description": "Hình ảnh nội soi thấy xung huyết, trợt xước, viêm hạt vùng hang vị, ổ loét dạ dày (vị trí bờ cong nhỏ, hang vị) hoặc loét hành tá tràng.",
+            "sourceGuideline": "JSGE Evidence-based Clinical Practice Guidelines for Peptic Ulcer Disease 2020"
+        },
+        {
+            "id": "hp_lab_ubt",
+            "type": "lab",
+            "label": "Test hơi thở Ure (UBT 13C hoặc 14C)",
+            "description": "Độ nhạy ~95%, độ đặc hiệu ~95%. Là lựa chọn ưu tiên hàng đầu không xâm lấn để chẩn đoán ban đầu và kiểm tra tiệt trừ sau điều trị.",
+            "labThreshold": "DOB (Delta Over Baseline) >= 4.0 (đối với 13C-UBT) hoặc Cpm >= 200 (đối với 14C-UBT)",
+            "sourceGuideline": "JAMA Clinical Update 2026 & ACG 2024"
+        },
+        {
+            "id": "hp_lab_stool_ag",
+            "type": "lab",
+            "label": "Xét nghiệm kháng nguyên H. pylori trong phân (Stool Antigen Test)",
+            "description": "Độ nhạy ~94%, độ đặc hiệu ~97%. Phương pháp không xâm lấn tin cậy, chi phí thấp, thích hợp cho cả người lớn và trẻ em.",
+            "labThreshold": "Kết quả Dương tính (Positive)",
+            "sourceGuideline": "ACG Clinical Guideline 2024"
+        },
+        {
+            "id": "hp_lab_clo_test",
+            "type": "lab",
+            "label": "Xét nghiệm Urease nhanh qua sinh thiết nội soi (CLO test / RUT)",
+            "description": "Mẫu sinh thiết mảnh niêm mạc hang vị/thân vị đổi màu dung dịch thử từ vàng sang hồng/đỏ trong vòng 1-24 giờ do enzyme urease của vi khuẩn phân hủy urea.",
+            "labThreshold": "Đổi màu Dương tính (+ đến +++) trong 24 giờ",
+            "sourceGuideline": "Khuyến cáo Hội Tiêu hóa Việt Nam 2023"
+        },
+        {
+            "id": "hp_lab_pcr_ngs",
+            "type": "lab",
+            "label": "Xét nghiệm Sinh học phân tử PCR / NGS phát hiện gen kháng thuốc",
+            "description": "Phát hiện DNA H. pylori kèm các đột biến điểm kháng kháng sinh: 23S rRNA (A2142G, A2143G, A2144G) kháng Clarithromycin; gyrA (Asn87, Asp91) kháng Levofloxacin; pbp1 kháng Amoxicillin.",
+            "labThreshold": "Phát hiện mẫu gen đột biến kháng thuốc tương ứng",
+            "sourceGuideline": "Frontiers in Cellular and Infection Microbiology 2024 / JAMA 2026"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 - Nhiễm H. pylori không biến chứng / Viêm dạ dày mạn",
+            "severity": "standard",
+            "criteria": "[Lâm sàng]: Đau nhẹ thượng vị, ợ hơi, đầy bụng nhẹ hoặc không triệu chứng. [Cận lâm sàng]: UBT (+) hoặc Stool Ag (+); Nội soi thấy viêm xung huyết nhẹ, không có ổ loét. [Tiêu chuẩn an toàn]: Sinh hiệu ổn định, không có tiền sử xuất huyết tiêu hóa, không có triệu chứng cờ đỏ (sụt cân, nuốt nghẹn, nôn ra máu).",
+            "triage": "Điều trị ngoại trú tại Phòng khám Tiêu hóa",
+            "primaryAction": "Khởi đầu phác đồ tiệt trừ H. pylori 14 ngày (BQT 4 thuốc có Bismuth hoặc Vonoprazan + Amoxicillin Dual). Dặn dò tuân thủ thuốc.",
+            "targetVitals": "Sinh hiệu ổn định: Mạch 60-90 lần/phút, HA 110-120/70-80 mmHg, SpO2 &gt;= 96%"
+        },
+        {
+            "grade": "Mức độ 2 - Nhiễm H. pylori kèm Loét dạ dày - tá tràng chưa biến chứng",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Đau thượng vị rõ rệt, đau liên quan bữa ăn, buồn nôn, ợ chua. [Cận lâm sàng]: Nội soi có ổ loét dạ dày hoặc loét tá tràng (Forrest III hoặc IIc); CLO test (+) hoặc UBT (+); CTM có thể có thiếu máu nhẹ (Hb &gt; 10 g/dL). [Tiêu chuẩn an toàn]: Huyết động ổn định, không có dấu hiệu xuất huyết đang tiến triển.",
+            "triage": "Điều trị ngoại trú có theo dõi sát hoặc nhập viện ngắn ngày nếu đau nhiều",
+            "primaryAction": "Phác đồ tiệt trừ H. pylori 14 ngày kết hợp kéo dài PPI đơn thuần thêm 4-8 tuần để làm lành ổ loét. Tránh hoàn toàn NSAID/Aspirin.",
+            "targetVitals": "Mạch 60-90 lần/phút, HA ổn định, Hb theo dõi không giảm"
+        },
+        {
+            "grade": "Mức độ 3 - Nhiễm H. pylori thất bại điều trị nhiều lần (Kháng đa thuốc / Refractory H. pylori)",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Triệu chứng dạ dày kéo dài hoặc tái phát sau &gt;= 2 liệu trình tiệt trừ chuẩn. [Cận lâm sàng]: UBT (+) sau &gt; 4 tuần kết thúc phác đồ trước; Kết quả nuôi cấy/PCR/NGS ghi nhận chủng H. pylori đa kháng (Clarithromycin, Metronidazole, Levofloxacin). [Tiêu chuẩn an toàn]: Không có biến chứng ngoại khoa cấp tính.",
+            "triage": "Khám Chuyên khoa Tiêu hóa tuyến Tỉnh / Trung ương",
+            "primaryAction": "Nội soi lấy mẫu sinh thiết nuôi cấy làm Kháng sinh đồ hoặc PCR đột biến. Chuyển sang phác đồ cứu nguy (Rifabutin Triple 14 ngày hoặc phác đồ cá thể hóa theo NGS/Kháng sinh đồ).",
+            "targetVitals": "Theo dõi đáp ứng triệu chứng và công thức máu (WBC, BCT) khi dùng Rifabutin"
+        },
+        {
+            "grade": "Mức độ 4 - Nhiễm H. pylori có biến chứng cấp tính (Xuất huyết tiêu hóa / Thủng dạ dày - tá tràng)",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Nôn ra máu tươi/máu cục, đi ngoài phân đen như bã cà phê, hoặc đau bụng đột ngột dữ dội như dao dâm, co cứng thành bụng (bụng cứng như gỗ). [Cận lâm sàng]: Nội soi có ổ loét chảy máu (Forrest Ia, Ib, IIa, IIb); CTM có Hb giảm cấp tính; X-quang bụng đao có liềm hơi dưới cơ hoành (khi thủng). [Tiêu chuẩn an toàn]: Mất an toàn huyết động, nguy cơ sốc giảm thể tích.",
+            "triage": "Cấp cứu / Hồi sức Cấp cứu (ICU) / Khoa Ngoại Tiêu hóa",
+            "primaryAction": "Hồi sức chống sốc, Bù dịch/máu, Can thiệp can thiệp nội soi cầm máu hoặc Phẫu thuật khâu lỗ thủng. Khởi đầu PPI tĩnh mạch liều cao. Chỉ khởi đầu phác đồ tiệt trừ H. pylori sau khi bệnh nhân ổn định huyết động và dung nạp đường uống (thường sau 72-96 giờ).",
+            "targetVitals": "Mạch &lt; 100 lần/phút, HATT &gt;= 90 mmHg, SpO2 &gt;= 95%, Bài niệu &gt;= 0.5 mL/kg/h"
+        }
+    ],
+    "treatmentPhases": [
+        {
+            "phaseId": "phase_first_line",
+            "phaseName": "Giai đoạn 1: Phác đồ Khởi đầu (First-Line Eradication) - 14 ngày",
+            "clinicalGoal": "Đạt tỷ lệ tiệt trừ vi khuẩn > 85-90% ngay từ liệu trình đầu tiên, kiểm soát tiết acid dạ dày và phục hồi niêm mạc.",
+            "problems": [
+                {
+                    "id": "p1_bqt_regimen",
+                    "problemName": "Phác đồ 4 thuốc có Bismuth (BQT - PTMB) 14 ngày (Lựa chọn Ưu tiên mặc định tại Việt Nam)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Ức chế tiết acid (PPI)",
+                            "content": "Esomeprazole 40 mg PO x 2 lần/ngày (hoặc Rabeprazole 20 mg PO x 2 lần/ngày, Pantoprazole 40 mg PO x 2 lần/ngày), uống trước bữa ăn 30 phút.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Bismuth",
+                            "content": "Bismuth subcitrate (hoặc subsalicylate) 120-240 mg PO x 4 lần/ngày, uống trước ăn 30 phút hoặc sau ăn.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Kháng sinh 1",
+                            "content": "Tetracycline 500 mg PO x 4 lần/ngày (uống sau ăn và trước khi đi ngủ với nhiều nước). *Lưu ý: Không thay thế bằng Doxycycline do làm giảm rõ rệt hiệu quả tiệt trừ.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Kháng sinh 2",
+                            "content": "Metronidazole 500 mg PO x 3-4 lần/ngày (uống sau ăn).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tác dụng phụ đường tiêu hóa (buồn nôn, đắng miệng, phân đen do Bismuth, sạm lưỡi)",
+                            "frequency": "Theo dõi mỗi ngày trong 14 ngày",
+                            "target": "Bệnh nhân tuân thủ > 90% lượng thuốc, không tự ý ngưng thuốc"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_va_dual_regimen",
+                    "problemName": "Phác đồ Vonoprazan + Amoxicillin Dual (VA Dual) 14 ngày (Lựa chọn Thay thế First-Line hiện đại)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "P-CAB (Chẹn acid cạnh tranh Potassium)",
+                            "content": "Vonoprazan 20 mg PO x 2 lần/ngày, uống trước hoặc sau ăn.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Kháng sinh liều cao",
+                            "content": "Amoxicillin 1000 mg PO x 3 lần/ngày (hoặc 750 mg x 4 lần/ngày, tổng liều 3.0g/ngày) để duy trì nồng độ nạp liên tục trên MIC.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dấu hiệu dị ứng Penicillin (ban da, mẩn ngứa), tiêu chảy nhẹ",
+                            "frequency": "q24h",
+                            "target": "Dung nạp tốt, tỷ lệ tiệt trừ đạt ~89.9-97.9%"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": []
+        },
+        {
+            "phaseId": "phase_second_line",
+            "phaseName": "Giai đoạn 2: Phác đồ Thay thế / Thất bại Lần 1 (Second-Line Eradication) - 14 ngày",
+            "clinicalGoal": "Tiệt trừ vi khuẩn khi thất bại phác đồ đầu tay, thay đổi họ kháng sinh để tránh cơ chế kháng chéo.",
+            "problems": [
+                {
+                    "id": "p2_after_va_failure",
+                    "problemName": "Xử trí nếu thất bại sau phác đồ VA Dual First-Line",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Chuyển sang BQT 14 ngày",
+                            "content": "Chuyển sang Phác đồ 4 thuốc có Bismuth (PPI + Bismuth + Tetracycline 500mg x 4 + Metronidazole 500mg x 3-4) trong 14 ngày.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": []
+                },
+                {
+                    "id": "p2_after_bqt_failure",
+                    "problemName": "Xử trí nếu thất bại sau phác đồ BQT First-Line",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Phác đồ Levofloxacin Triple/Quadruple",
+                            "content": "PPI (hoặc Vonoprazan 20mg BID) + Amoxicillin 1000mg BID + Levofloxacin 500mg 1 lần/ngày x 14 ngày (Chỉ dùng khi có kết quả PCR/Kháng sinh đồ xác nhận nhạy Levofloxacin do tỷ lệ kháng tại VN đã &gt; 53%).",
+                            "isHighlighted": false
+                        },
+                        {
+                            "category": "Phác đồ Thay thế Bismuth phối hợp Kháng sinh mới",
+                            "content": "Sử dụng BQT phối hợp Minocycline hoặc Cefuroxime theo chuyên khoa.",
+                            "isHighlighted": false
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Đau gân gót / Viêm gân Achilles (Tác dụng phụ của Levofloxacin)",
+                            "frequency": "Mỗi ngày",
+                            "target": "Ngừng Levofloxacin ngay nếu có đau gân"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": []
+        },
+        {
+            "phaseId": "phase_third_line",
+            "phaseName": "Giai đoạn 3: Phác đồ Cứu nguy / Thất bại &gt;= 2 lần (Third-Line &amp; Refractory) - 14 ngày",
+            "clinicalGoal": "Khống chế các chủng H. pylori đa kháng thuốc bằng xét nghiệm di truyền/nuôi cấy và phác đồ dự trữ chuyên sâu.",
+            "problems": [
+                {
+                    "id": "p3_rifabutin_regimen",
+                    "problemName": "Phác đồ 3 thuốc có Rifabutin (Rifabutin Triple) 14 ngày",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Ức chế acid",
+                            "content": "Esomeprazole 40 mg PO x 2 lần/ngày (hoặc Vonoprazan 20 mg PO x 2 lần/ngày).",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Kháng sinh 1",
+                            "content": "Amoxicillin 1000 mg PO x 2-3 lần/ngày.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Kháng sinh dự trữ",
+                            "content": "Rifabutin 150 mg PO x 2 lần/ngày x 14 ngày.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Công thức máu (WBC, Neutrophil) &amp; Men gan (AST, ALT)",
+                            "frequency": "Mỗi 2 tuần",
+                            "target": "Theo dõi nguy cơ giảm bạch cầu hạt và độc tính trên gan do Rifabutin"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": []
+        },
+        {
+            "phaseId": "phase_test_of_cure",
+            "phaseName": "Giai đoạn 4: Đánh giá &amp; Tái kiểm tra Tiệt trừ (Test-of-Cure)",
+            "clinicalGoal": "Xác nhận vi khuẩn H. pylori đã được tiệt trừ hoàn toàn, phòng ngừa tái phát loét và ung thư dạ dày.",
+            "problems": [
+                {
+                    "id": "p4_toc_protocol",
+                    "problemName": "Quy chuẩn Tái kiểm tra sau điều trị",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Thời điểm xét nghiệm",
+                            "content": "Thực hiện xét nghiệm kiểm tra lại sau ÍT NHẤT 4 TẦẦN kể từ ngày kết thúc kháng sinh và Bismuth.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Ngừng thuốc trước test",
+                            "content": "BẮT BUỘC ngừng thuốc PPI ít nhất 14 ngày, ngừng Kháng sinh và Bismuth ít nhất 4 tuần trước khi làm xét nghiệm để tránh âm tính giả.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Phương pháp lựa chọn",
+                            "content": "Ưu tiên Test hơi thở Ure (13C/14C UBT) hoặc Xét nghiệm kháng nguyên trong phân. TUYỆT ĐỐI KHÔNG dùng xét nghiệm Huyết thanh (anti-HP IgG) để kiểm tra tiệt trừ.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả UBT hoặc Stool Ag",
+                            "frequency": "Sau 4-6 tuần hoàn thành điều trị",
+                            "target": "Kết quả Âm tính (-)"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": []
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_ugib",
+            "complicationName": "Xuất huyết tiêu hóa trên do Loét dạ dày - tá tràng nhiễm H. pylori",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Nôn ra máu tươi/máu cục, đi ngoài phân đen như bã cà phê, váng đầu, hoa mắt, HA tụt, Mạch nhanh nhỏ.",
+            "actionProtocol": "Nội soi can thiệp cầm máu khẩn cấp (kẹp clip, tiêm xơ, đốt nhiệt); Truyền PPI tĩnh mạch liều cao (Esomeprazole 80mg bolus -&gt; 8mg/h duy trì 72h); Bù hồng cầu lắng. Khởi đầu tiệt trừ H. pylori khi bệnh nhân ăn lại được đường uống.",
+            "monitoringMetrics": "Mạch, HA q1-2h, Hct, Hb mao mạch, dấu hiệu đi ngoài phân đen"
+        },
+        {
+            "id": "comp_perforation",
+            "complicationName": "Thủng ổ loét dạ dày - tá tràng",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Đau bụng đột ngột dữ dội vùng thượng vị lan ra toàn bụng, co cứng cơ thành bụng (bụng cứng như gỗ), phản ứng ứng phúc mạc (+), liềm hơi dưới cơ hoành trên X-quang.",
+            "actionProtocol": "Mổ cấp cứu khâu lỗ thủng (mổ nội soi hoặc mổ mở) + đặt dẫn lưu. Đặt xông dạ dày hút dịch, kháng sinh toàn thân phổ rộng. Tiệt trừ H. pylori sau mổ giúp làm lành ổ loét và ngừa tái phát thủng.",
+            "monitoringMetrics": "Dấu hiệu viêm phúc mạc, bài niệu, sinh hiệu liên tục"
+        },
+        {
+            "id": "comp_gastric_cancer",
+            "complicationName": "Ung thư biểu mô dạ dày (Gastric Adenocarcinoma) / MALT Lymphoma",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "H. pylori gây viêm mạn tính kéo dài -&gt; Teo niêm mạc -&gt; Metaplasia ruột -&gt; Loạn sản -&gt; Ung thư. Triệu chứng cờ đỏ: sụt cân nhanh, chán ăn, nuốt nghẹn, nôn kéo dài, khối vùng thượng vị.",
+            "actionProtocol": "Sinh thiết nhiều mảnh niêm mạc nghi ngờ qua nội soi gửi Mô bệnh học. Sinh thiết nhuộm Giemsa/IHC tìm H. pylori. Tiệt trừ H. pylori bắt buộc ở ca MALT lymphoma độ thấp (có thể thoái triển hoàn toàn tumor) và sau phẫu thuật cắt dạ dày do K sớm.",
+            "monitoringMetrics": "Nội soi định kỳ tầm soát tổn thương tiền ung thư, CEA, CA 72-4"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "CẢNH BÁO 1: Tuyệt đối KHÔNG sử dụng phác đồ 3 thuốc PAC (PPI + Amoxicillin + Clarithromycin) theo kinh nghiệm tại Việt Nam do tỷ lệ kháng Clarithromycin nội địa đã vượt 81.3% (ngưỡng cho phép &lt; 15%).",
+            "CẢNH BÁO 2: Tuyệt đối KHÔNG dùng xét nghiệm Huyết thanh chẩn đoán (anti-HP IgG) để kiểm tra hiệu quả tiệt trừ sau điều trị, vì kháng thể có thể tồn tại nhiều tháng đến nhiều năm sau khi vi khuẩn đã bị tiêu diệt.",
+            "CẢNH BÁO 3: Âm tính giả trên UBT và CLO test rất phổ biến nếu bệnh nhân chưa ngừng PPI đủ 14 ngày hoặc chưa ngừng Kháng sinh/Bismuth đủ 4 tuần trước khi làm xét nghiệm.",
+            "CẢNH BÁO 4: Thất bại điều trị lên tới 30% do bệnh nhân bỏ thuốc giữa chừng vì tác dụng phụ (đắng miệng, buồn nôn, phân đen). Cần tư vấn kỹ trước khi kê đơn để đảm bảo tuân thủ đủ 14 ngày."
+        ]
+    },
+    "triageOrDischargeCriteria": "Đủ tiêu chuẩn kết thúc liệu trình ngoại trú khi: Bệnh nhân hoàn thành đủ 14 ngày thuốc, hết triệu chứng đau rát thượng vị cấp, không có dấu hiệu cờ đỏ hay biến chứng chảy máu. Đã dặn dò tái khám làm UBT sau 4-6 tuần."
+}

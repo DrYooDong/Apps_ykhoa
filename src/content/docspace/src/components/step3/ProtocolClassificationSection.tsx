@@ -100,6 +100,13 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
     cautions?: string;
   }> = (activeChain as any)?.protocol?.specialPopulations || (activeChain as any)?.specialPopulations || [];
 
+  const isPhenotypeStaging = useMemo(() => {
+    return (
+      activeChain?.stagingType === 'phenotype' ||
+      severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
+    );
+  }, [activeChain?.stagingType, severityGrades]);
+
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
       {/* ========================================================================= */}
@@ -221,7 +228,7 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            <span>1a. Phân độ nặng nhẹ</span>
+            <span>{isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ'}</span>
             {severityGrades.length > 0 && (
               <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-indigo-50 text-indigo-700 border border-indigo-200">
                 {severityGrades.length}

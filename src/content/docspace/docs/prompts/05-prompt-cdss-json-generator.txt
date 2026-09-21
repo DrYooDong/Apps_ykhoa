@@ -11,9 +11,12 @@
 # Hệ thống sẽ tự động bundle vào Chu trình lâm sàng (Bước 3 & Bước 4)!
 #
 # 🌟 QUY TẮC ÁNH XẠ GIAO DIỆN (UI MAPPING CHO 6 ĐẦU MỤC & BẢNG 3 CỘT BƯỚC 4):
-#   • "criteria": Ánh xạ vào BƯỚC 3 (Tiêu chuẩn phân độ lâm sàng) & Mục 1a Bước 4 (Phân độ nặng nhẹ).
-#     BẮT BUỘC chứa các tiền tố bóc tách: [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn],
-#     [Dấu hiệu cảnh báo]. TUYỆT ĐỐI KHÔNG chứa tuyến tiếp nhận, xử trí hay mục tiêu sinh hiệu tại đây!
+#   • "criteria" & "severityGrading": Ánh xạ vào BƯỚC 3 (Tiêu chuẩn phân độ lâm sàng) & Mục 1a Bước 4 (Phân loại cá thể hóa / Phân độ nặng nhẹ).
+#     - MẢNG ĐỘNG LINH HOẠT (DYNAMIC ARRAY): Số lượng phân độ phụ thuộc 100% vào Quyết định của Bộ Y Tế hoặc Guidelines chuyên khoa của bệnh đó (hỗ trợ từ 2 đến 5+ phân độ / thể bệnh, hoặc để [] nếu tiếp cận hội chứng).
+#       * Ví dụ 2 phân độ: Xơ gan (Còn bù / Mất bù); Viêm phổi (Ngoại trú / Nội trú).
+#       * Ví dụ 3 phân độ: Sốt xuất huyết, Sốt rét, Thủy đậu (Nhẹ / Cảnh báo / Nặng).
+#       * Ví dụ 4-5 phân độ: Nhiễm trùng tiểu (Viêm bàng quang / Viêm đài bể thận / NTT biến chứng / Urosepsis); Tay chân miệng (Độ 1, 2a, 2b, 3, 4); ACLF (Grade 1a, 1b, 2, 3); Uốn ván (Ablett I, II, III, IV).
+#     - Tiền tố bóc tách trong "criteria": BẮT BUỘC chứa [Lâm sàng], [Cận lâm sàng], [Tiêu chuẩn an toàn], [Dấu hiệu cảnh báo]. TUYỆT ĐỐI KHÔNG chứa tuyến tiếp nhận, xử trí hay mục tiêu sinh hiệu tại đây (chuyển sang triage, primaryAction, targetVitals)!
 #   • "specialPopulations": Ánh xạ vào Mục 1c Bước 4 (Đối tượng đặc biệt: Người cao tuổi, Trẻ em, Thai phụ, Suy thận eGFR, Suy gan).
 #   • "timelinePhases": Ánh xạ trực tiếp vào BẢNG 3 CỘT ĐỊNH HƯỚNG VẤN ĐỀ tại Mục 2 Bước 4:
 #     - Phân loại (Mức độ) và Giai đoạn & Mục tiêu nằm ở các thanh điều hướng phía trên bảng.
@@ -124,9 +127,11 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
       \"sourceGuideline\": \"[Văn bản tham chiếu]\"
     }
   ],
+  // severityGrading: MẢNG ĐỘNG LINH HOẠT TỪ 2 ĐẾN 5+ PHẦN TỬ THEO ĐÚNG GUIDELINE (Hoặc [] nếu không chia bậc).
+  // Giá trị "severity" hợp lệ: "mild" | "moderate" | "severe" | "emergency" | "critical" | "phenotype" | "grade-1" | "grade-2" | "grade-3" | "grade-4"
   "severityGrading": [
     {
-      "grade": "[Tên phân độ 1: ví dụ Mức độ 1 - Thể nhẹ / Không dấu hiệu cảnh báo]",
+      "grade": "[Tên phân độ 1: ví dụ Mức độ 1 - Thể nhẹ / Ngoại trú, hoặc Còn bù, hoặc Viêm bàng quang]",
       "severity": "mild",
       "criteria": "[Lâm sàng]: Sốt cấp tính < 7 ngày, không dấu hiệu cảnh báo, tự uống nước tốt. [Cận lâm sàng]: Hematocrit bình thường hoặc tăng nhẹ < 10%, tiểu cầu bình thường hoặc hạ nhẹ > 100 G/L. [Tiêu chuẩn an toàn]: Không có bệnh nền đe dọa, huyết động ổn định, đủ điều kiện theo dõi ngoại trú.",
       "triage": "[Nơi tiếp nhận: Ngoại trú / Trạm y tế / Phòng khám]",

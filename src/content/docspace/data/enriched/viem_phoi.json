@@ -1,0 +1,371 @@
+{
+    "icdCode": "J18",
+    "icdPrefixes": [
+        "J18.0",
+        "J18.1",
+        "J18.8",
+        "J18.9",
+        "J13",
+        "J14",
+        "J15"
+    ],
+    "diseaseName": "Viêm phổi mắc phải cộng đồng ở người lớn (Community-Acquired Pneumonia - CAP)",
+    "specialty": "Hô hấp",
+    "severity": "severe",
+    "summary": "Viêm phổi mắc phải cộng đồng (VPMPCĐ) là tình trạng nhiễm trùng cấp tính nhu mô phổi xảy ra ở ngoài bệnh viện. Bệnh khởi phát với sốt, ho khạc đờm mủ, đau ngực màng phổi và hội chứng đông đặc phổi. Mức độ nặng biến thiên từ nhẹ điều trị ngoại trú đến rất nặng gây suy hô hấp cấp, sốc nhiễm khuẩn và tử vong.",
+    "goldStandard": "Chẩn đoán xác định dựa trên lâm sàng nhiễm trùng đường hô hấp dưới cấp tính, hình ảnh X-quang ngực/CT ngực có thâm nhiễm nhu mô phổi mới xuất hiện (đông đặc phế nang/kính mờ/mô kẽ), kết hợp xét nghiệm căn nguyên vi sinh (nhuộm Gram/cấy đờm, cấy máu, multiplex PCR hô hấp, test kháng nguyên nước tiểu).",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "cap_mand_cxr_infiltrate"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "BẮT BUỘC có tổn thương thâm nhiễm mới trên X-quang/CT ngực VÀ ít nhất 2 triệu chứng lâm sàng hô hấp VÀ ít nhất 1 bằng chứng cận lâm sàng viêm định lượng."
+    },
+    "criteria": [
+        {
+            "id": "cap_mand_cxr_infiltrate",
+            "type": "mandatory",
+            "label": "Tổn thương thâm nhiễm mới trên chẩn đoán hình ảnh phổi",
+            "description": "Hình ảnh mờ đông đặc phế nang (có hình phế quản hơi), tổn thương phế quản phổi rải rác hoặc thâm nhiễm kẽ mới xuất hiện trên X-quang ngực thẳng hoặc CT scan ngực.",
+            "sourceGuideline": "Quyết định 2147/QĐ-BYT 2026 &amp; Quyết định 4815/QĐ-BYT 2020"
+        },
+        {
+            "id": "cap_maj_fever_cough",
+            "type": "major",
+            "label": "Hội chứng nhiễm trùng đường hô hấp dưới cấp tính",
+            "description": "Sốt cao đột ngột rét run (hoặc hạ thân nhiệt &lt; 36°C ở người già), ho khạc đờm mủ/đờm rỉ sắt, đau ngực kiểu màng phổi, khó thở, thở nhanh.",
+            "sourceGuideline": "Quyết định 2147/QĐ-BYT 2026"
+        },
+        {
+            "id": "cap_maj_consolidation_signs",
+            "type": "major",
+            "label": "Hội chứng đông đặc phổi &amp; Ran nổ khu trú",
+            "description": "Thăm khám ghi nhận gõ đục, rung thanh tăng, rì rào phế nang giảm và ran nổ/ran ẩm khu trú tại vùng tổn thương nhu mô phổi.",
+            "sourceGuideline": "Quyết định 2147/QĐ-BYT 2026"
+        },
+        {
+            "id": "cap_lab_wbc_elevated",
+            "type": "lab",
+            "label": "Tăng hoặc giảm bạch cầu máu bất thường",
+            "description": "Số lượng bạch cầu máu WBC &gt; 10.000/mm3 (hoặc &lt; 4.000/mm3) với ưu thế bạch cầu đa nhân trung tính Neutrophil &gt; 80%.",
+            "labThreshold": "WBC &gt; 10 G/L hoặc &lt; 4 G/L",
+            "sourceGuideline": "Quyết định 2147/QĐ-BYT 2026"
+        },
+        {
+            "id": "cap_lab_crp_pct_high",
+            "type": "lab",
+            "label": "Chỉ số phản ứng viêm CRP và Procalcitonin tăng cao",
+            "description": "Nồng độ C-reactive protein (CRP) tăng &gt; 35 mg/L và Procalcitonin (PCT) máu tăng &gt; 0,25 ng/mL (hoặc &gt; 0,5 ng/mL gợi ý nhiễm vi khuẩn).",
+            "labThreshold": "CRP &gt; 35 mg/L, PCT &gt; 0.25 ng/mL",
+            "sourceGuideline": "Quyết định 2147/QĐ-BYT 2026"
+        },
+        {
+            "id": "cap_imaging_multilobar",
+            "type": "imaging",
+            "label": "Thâm nhiễm nhiều thùy phổi hoặc tràn dịch màng phổi kèm theo",
+            "description": "Phim X-quang/CT ngực cho thấy tổn thương lan rộng &gt; 1 thùy phổi hoặc tràn dịch màng phổi cận viêm phổi.",
+            "labThreshold": "Tổn thương &gt; 1 thùy phổi",
+            "sourceGuideline": "ATS/IDSA CAP Guidelines &amp; Quyết định 2147/QĐ-BYT 2026"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1: Viêm phổi nhẹ (Ngoại trú - CURB-65 0-1 điểm / PSI nhóm I-II)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Sốt nhẹ hoặc trung bình, ho khạc đờm, không lú lẫn, nhịp thở &lt; 30 lần/phút, huyết áp ổn định (HATT &gt;= 90 mmHg, HATTr &gt; 60 mmHg), SpO2 &gt;= 95%. [Cận lâm sàng]: Bạch cầu tăng nhẹ, Ure máu &lt;= 7 mmol/L, tổn thương X-quang khu trú 1 thùy. [Tiêu chuẩn an toàn]: Người bệnh &lt; 65 tuổi, không bệnh mạn tính đi kèm, có khả năng uống thuốc và chăm sóc tại nhà.",
+            "triage": "Điều trị ngoại trú tại Trạm y tế / Phòng khám ngoại trú Bệnh viện",
+            "primaryAction": "Kháng sinh đường uống: Amoxicillin 1g x 3 lần/ngày hoặc Amoxicillin/Clavulanic 875/125mg x 2 lần/ngày kết hợp Macrolid (Azithromycin/Clarithromycin). Tái khám sau 48-72 giờ.",
+            "targetVitals": "Nhịp thở &lt; 24 lần/phút, SpO2 &gt;= 95%, HATT &gt;= 90 mmHg, hết sốt sau 48-72h."
+        },
+        {
+            "grade": "Mức độ 2: Viêm phổi trung bình (Nội trú khoa Hô hấp - CURB-65 2 điểm / PSI nhóm III-IV)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sốt cao, ho khạc đờm mủ, nhịp thở 24-30 lần/phút, có thể mệt mỏi/lú lẫn nhẹ ở người già, SpO2 90-94%. [Cận lâm sàng]: Ure máu &gt; 7 mmol/L (BUN &gt; 20 mg/dL), CRP/PCT tăng cao, X-quang mờ đông đặc 1 hoặc nhiều thùy. [Tiêu chuẩn an toàn]: Người &gt;= 65 tuổi hoặc có bệnh nền (COPD, ĐTĐ, suy tim, suy thận) cần nhập viện theo dõi.",
+            "triage": "Nhập viện nội trú Khoa Nội tổng hợp / Khoa Hô hấp / Khoa Truyền nhiễm",
+            "primaryAction": "Kháng sinh đường tĩnh mạch: Ceftriaxon 1-2g/ngày TTM (hoặc Cefotaxim 2g q8h / Ampicillin-Sulbactam 1.5-3g q6h) PHỐI HỢP với Azithromycin 500mg/ngày TTM hoặc Levofloxacin 750mg/ngày TTM. Thở oxy qua gọng kính.",
+            "targetVitals": "SpO2 &gt;= 92-96%, nhịp thở &lt; 24 lần/phút, huyết áp ổn định, hết rale nổ."
+        },
+        {
+            "grade": "Mức độ 3: Viêm phổi nặng (Nội trú ICU - CURB-65 3-5 điểm / PSI nhóm V / Thỏa ATS/IDSA)",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Suy hô hấp cấp, thở nhanh &gt;= 30 lần/phút, co kéo cơ hô hấp phụ, lú lẫn/mất định hướng, tụt huyết áp cần bù dịch hoặc vận mạch, SpO2 &lt; 90%. [Cận lâm sàng]: PaO2/FiO2 &lt;= 250, Ure máu &gt; 11 mmol/L, bạch cầu giảm &lt; 4 G/L hoặc tiểu cầu &lt; 100 G/L, thâm nhiễm đa thùy trên X-quang. [Tiêu chuẩn an toàn]: Nguy cơ tử vong cao (22-40%), cần hỗ trợ hô hấp xâm nhập/khống chế sốc.",
+            "triage": "Nhập viện khẩn cấp Khoa Hồi sức tích cực (ICU) / Khoa Cấp cứu",
+            "primaryAction": "Kháng sinh phối hợp phổ rộng TTM: Piperacillin/Tazobactam 4.5g q6h (hoặc Meropenem 1g q8h / Cefepim 2g q8h) + Levofloxacin 750mg/ngày TTM. Bổ sung Vancomycin/Linezolid nếu nghi CA-MRSA. Thở HFNC/NIV hoặc đặt nội khí quản thở máy.",
+            "targetVitals": "PaO2/FiO2 &gt; 300, SpO2 &gt;= 92%, MAP &gt;= 65 mmHg, bài niệu &gt;= 0.5 mL/kg/h."
+        }
+    ],
+    "specialPopulations": [
+        {
+            "population": "Người cao tuổi (&gt;= 65 tuổi)",
+            "considerations": "Triệu chứng lâm sàng thường kín đáo (không sốt cao, ho ít), dễ đan xen rối loạn ý thức, lú lẫn, té ngã. Ưu tiên dùng thang điểm PSI/CURB-65 để đánh giá nhập viện. Theo dõi sát chức năng thận để hiệu chỉnh liều kháng sinh."
+        },
+        {
+            "population": "Bệnh nhân suy thận mạn (eGFR &lt; 50 mL/min)",
+            "considerations": "BẮT BUỘC hiệu chỉnh liều các kháng sinh thải trừ qua thận (Ampicillin/Sulbactam, Cefotaxim, Cefepim, Meropenem, Levofloxacin, Vancomycin, Aminoglycosid) theo độ thanh thải Creatinin (Clcr) để tránh độc tính trên thần kinh và thận."
+        },
+        {
+            "population": "Bệnh nhân có bệnh phổi mạn tính (COPD / Giãn phế quản)",
+            "considerations": "Tăng nguy cơ nhiễm vi khuẩn Gram âm đa kháng (Pseudomonas aeruginosa, Enterobacterales). Phác đồ điều trị ban đầu cần cân nhắc bao phủ Trực khuẩn mủ xanh bằng Piperacillin/Tazobactam, Cefepim hoặc Meropenem."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "phaseName": "Giai đoạn 1: Tiếp nhận Cấp cứu &amp; Khởi đầu Kháng sinh Kinh nghiệm (0 - 24 giờ đầu)",
+            "problems": [
+                {
+                    "id": "p1_cap_empiric_abx",
+                    "problemName": "Khởi đầu liệu pháp kháng sinh kinh nghiệm sớm &amp; Đúng phân tầng",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh kinh nghiệm",
+                            "content": "Ngoại trú: Amoxicillin/Clavulanic 875/125mg PO q12h + Azithromycin 500mg PO. Nội trú Hô hấp: Ceftriaxon 2g TTM/ngày + Azithromycin 500mg TTM/ngày. Nội trú ICU: Piperacillin/Tazobactam 4.5g TTM q6h + Levofloxacin 750mg TTM/ngày.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dấu hiệu sinh tồn (Mạch, HA, T°, Nhịp thở, SpO2)",
+                            "frequency": "q2-4h",
+                            "target": "SpO2 &gt;= 92%, HATT &gt;= 90 mmHg, nhịp thở &lt; 24 l/p"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_cap_hypoxia",
+                    "problemName": "Suy hô hấp cấp &amp; Giảm oxy máu nhu mô phổi",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Liệu pháp Oxy",
+                            "content": "Thở oxy gọng kính 2-5 L/phút duy trì SpO2 92-96%. Chuyển HFNC hoặc NIV nếu SpO2 &lt; 90% dù thở oxy mask."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "SpO2 &amp; Khí máu động mạch",
+                            "frequency": "q1-2h",
+                            "target": "PaO2 &gt; 60 mmHg, SpO2 &gt;= 92%"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_cap_microbiology_labs",
+                    "problemName": "Thu thập bệnh phẩm vi sinh trước kháng sinh &amp; Xét nghiệm hỗ trợ",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Chỉ định CLS",
+                            "content": "Lấy 1 mẫu đờm nhuộm Gram/cấy, cấy máu 2 vị trí, Multiplex PCR hô hấp, CTM, CRP, PCT, Ure, Creatinin, Điện giải, X-quang ngực thẳng."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả soi nhuộm Gram đờm &amp; CTM",
+                            "frequency": "Khi có KQ",
+                            "target": "Định hướng vi khuẩn Gram (+)/Gram (-)"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_septic_shock",
+                    "problemName": "Sốc nhiễm khuẩn tụt huyết áp &amp; Suy đa tạng",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức sốc",
+                            "content": "Bù dịch Ringer Lactate 30 mL/kg trong 3h đầu; dùng Noradrenalin TTM duy trì MAP &gt;= 65 mmHg nếu huyết áp không nâng."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp động mạch trung bình (MAP) &amp; Bài niệu",
+                            "frequency": "Liên tục",
+                            "target": "MAP &gt;= 65 mmHg, nước tiểu &gt;= 0.5 mL/kg/h"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [],
+            "monitoring": []
+        },
+        {
+            "phaseName": "Giai đoạn 2: Theo dõi Đánh giá Đáp ứng Lâm sàng &amp; Điều chỉnh Kháng sinh (48 - 72 giờ)",
+            "problems": [
+                {
+                    "id": "p2_cap_response_eval",
+                    "problemName": "Đánh giá đáp ứng điều trị lâm sàng &amp; Cận lâm sàng động học",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Đánh giá phác đồ",
+                            "content": "Nếu cải thiện lâm sàng (cắt sốt, giảm ho, SpO2 ổn định): Tiếp tục phác đồ KS đủ 5-7 ngày. Xuống thang KS nếu có kết quả vi sinh đồ."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Procalcitonin (PCT) động học &amp; CRP",
+                            "frequency": "q48h",
+                            "target": "PCT giảm &gt; 80% so với ban đầu hoặc &lt; 0.25 ng/mL"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_cap_iv_to_po",
+                    "problemName": "Chuyển đổi kháng sinh đường tĩnh mạch sang đường uống (IV-to-PO)",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Chuyển KS uống",
+                            "content": "Chuyển sang Amoxicillin/Clavulanic 875/125mg PO q12h hoặc Levofloxacin 750mg PO q24h khi bệnh nhân hết sốt 2 lần cách 8h, hết khó thở và uống được."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Nhiệt độ &amp; Khả năng dung nạp đường uống",
+                            "frequency": "q12h",
+                            "target": "Dung nạp thuốc uống, sinh hiệu ổn định 24h"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_treatment_failure",
+                    "problemName": "Thất bại điều trị (Lâm sàng xấu đi hoặc sốt dai dẳng sau 72h)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí thất bại",
+                            "content": "Chụp CT ngực tìm biến chứng (áp xe, mủ màng phổi); cấy lại đờm/máu; xem xét mở rộng phổ kháng sinh bao phủ Pseudomonas, MRSA, Nấm hoặc Lao."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "CT scan ngực &amp; Siêu âm màng phổi",
+                            "frequency": "Khi thất bại",
+                            "target": "Phát hiện ổ mủ/ổ hoại tử để chọc dẫn lưu"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [],
+            "monitoring": []
+        },
+        {
+            "phaseName": "Giai đoạn 3: Hồi phục, Xuất viện &amp; Kế hoạch Dự phòng (Ngày 5 - Ngày 7+)",
+            "problems": [
+                {
+                    "id": "p3_cap_discharge_plan",
+                    "problemName": "Đủ tiêu chuẩn xuất viện &amp; Kế hoạch dùng thuốc nối tiếp",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Xuất viện",
+                            "content": "Cho xuất viện khi lâm sàng ổn định &gt;= 24h. Hoàn thành tổng thời gian dùng kháng sinh 5-7 ngày (kéo dài 10-14 ngày nếu do Pseudomonas/MRSA/hoại tử)."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tái khám ngoại trú",
+                            "frequency": "Sau 7 ngày",
+                            "target": "Tổn thương phổi thoái triển hoàn toàn"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [],
+            "treatments": [],
+            "monitoring": [],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "Cảnh báo không tiêm tĩnh mạch nhanh các kháng sinh beta-lactam để tránh phản vệ",
+                    "Kiểm tra tổn thương phổi tồn tại sau 4-6 tuần để loại trừ ung thư phổi ở người nghiện thuốc lá"
+                ],
+                "triageOrDischargeCriteria": "Đủ 5 tiêu chuẩn xuất viện an toàn: Hết sốt &gt;= 24h, nhịp thở &lt; 24 l/p, SpO2 &gt;= 92% khí trời, HATT &gt;= 90 mmHg, dung nạp tốt thuốc uống."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_cap_ards",
+            "complicationName": "Hội chứng Suy hô hấp cấp tiến triển (ARDS)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Khó thở dữ dội tiến triển nhanh, thở nhanh nông, tím tái, SpO2 tụt dốc, X-quang phổi thâm nhiễm mờ lan tỏa 2 bên, PaO2/FiO2 &lt;= 200.",
+            "actionProtocol": "Đặt nội khí quản thở máy bảo vệ phổi (Vt thấp 4-8 mL/kg IBW, Pplat &lt; 30 cmH2O, PEEP tối ưu); nằm sấp nếu PaO2/FiO2 &lt; 150.",
+            "monitoringMetrics": "Khí máu động mạch q2-4h, PaO2/FiO2, Pplat, Cstat."
+        },
+        {
+            "id": "comp_cap_empyema",
+            "complicationName": "Tràn mủ màng phổi &amp; Tràn dịch màng phổi cận viêm",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "Sốt dai dẳng dù dùng kháng sinh đúng, đau ngực màng phổi tăng, rung thanh giảm, gõ đục vùng đáy phổi, siêu âm/CT thấy dịch màng phổi có vách hóa.",
+            "actionProtocol": "Chọc dò xét nghiệm dịch màng phổi (protein, LDH, pH, đờm/cấy). Chỉ định đặt ống dẫn lưu màng phổi khi dịch đại thể là mủ, pH &lt; 7.2, Glucose &lt; 40 mg/dL hoặc vi khuẩn (+).",
+            "monitoringMetrics": "Siêu âm màng phổi hằng ngày, lượng dịch dẫn lưu 24h."
+        },
+        {
+            "id": "comp_cap_necrotizing",
+            "complicationName": "Viêm phổi hoại tử &amp; Áp xe phổi",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "Ho khạc đờm mủ thối lượng nhiều, sốt cao dao động, gầy sút cân, CT ngực có hình hang nhỏ vách mỏng chứa mủ/khí trong vùng nhu mô đông đặc.",
+            "actionProtocol": "Kéo dài thời gian dùng kháng sinh 3-4 tuần. Bổ sung kháng sinh diệt Tụ cầu (Vancomycin/Linezolid) hoặc Trực khuẩn mủ xanh. Hội chẩn Ngoại Hô hấp nếu có chỉ định phẫu thuật.",
+            "monitoringMetrics": "CT scan ngực kiểm tra sau 2 tuần, tính chất đờm khạc."
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "CẢNH BÁO 1: Tuyệt đối KHÔNG TIÊM TĨNH MẠCH NHANH các kháng sinh nhóm Beta-lactam để tránh tai biến biến chứng phản vệ nguy hiểm đe dọa tính mạng.",
+            "CẢNH BÁO 2: Luôn kiểm tra và hiệu chỉnh liều kháng sinh theo độ thanh thải Creatinin (Clcr) ở bệnh nhân suy thận mạn hoặc người cao tuổi.",
+            "CẢNH BÁO 3: Theo dõi sát nguy cơ kéo dài khoảng QT khi dùng phối hợp kháng sinh Macrolid (Azithromycin, Clarithromycin) với Fluoroquinolon hô hấp."
+        ],
+        "contraindications": [
+            "Chống chỉ định dùng Fluoroquinolone hô hấp (Levofloxacin, Moxifloxacin) đơn trị liệu cho người bệnh ngoại trú không có bệnh nền để tránh nguy cơ đề kháng kháng sinh.",
+            "Chống chỉ định dùng ciprofloxacin/levofloxacin cho phụ nữ mang thai trừ trường hợp không có lựa chọn thay thế."
+        ],
+        "dischargeCriteria": [
+            "Hết sốt liên tục &gt;= 24 giờ mà không cần dùng thuốc hạ sốt.",
+            "Dấu hiệu sinh tồn hoàn toàn ổn định: Mạch &lt; 100 nhịp/phút, nhịp thở &lt; 24 lần/phút, huyết áp tâm thu &gt;= 90 mmHg, SpO2 &gt;= 92% thở khí trời.",
+            "Dung nạp tốt kháng sinh đường uống và tâm thần trí tuệ trở về trạng thái nền trước bệnh."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm phổi mắc phải cộng đồng ở người lớn",
+            "searchKeyword": "chan doan viem phoi cong dong Quyết định 2147 BYT CURB65 PSI ATS IDSA"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư &amp; tư vấn người bệnh Viêm phổi mắc phải cộng đồng",
+            "searchKeyword": "phac do dieu tri viem phoi cong dong khang sinh amoxicillin ceftriaxone levofloxacin vancomycin"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ &amp; Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng &amp; ma trận yếu tố nguy cơ nhiễm vi khuẩn đa kháng trong VPMPCĐ",
+            "searchKeyword": "dich te viem phoi phap cau phe cau pseudomonas mrsa nhan to nguy co"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng của Viêm phổi cộng đồng",
+            "searchKeyword": "bien chung viem phoi ards soc nhiễm khuan tran mu mang phoi viem phoi hoai tu"
+        }
+    ]
+}

@@ -19,6 +19,14 @@ import vgsv_B from './vgsv_B.json';
 import vgsv_C from './vgsv_C.json';
 import sot_ret from './sot_ret.json';
 import leptospira from './leptospira.json';
+import nt_tieu_tren from './nt_tieu_tren.json';
+import nt_tieu_duoi from './nt_tieu_duoi.json';
+import nt_tieuhoa from './nt_tieuhoa.json';
+import vmn_vk from './vmn_vk.json';
+import vmn_sv from './vmn_sv.json';
+import hiv from './hiv.json';
+import nt_cohoi from './nt_cohoi.json';
+import vmn_nam from './vmn_nam.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
@@ -30,6 +38,14 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'vgsv_C': vgsv_C as unknown as DiseaseReactionChainDefinition,
   'sot_ret': sot_ret as unknown as DiseaseReactionChainDefinition,
   'leptospira': leptospira as unknown as DiseaseReactionChainDefinition,
+  'nt_tieu_tren': nt_tieu_tren as unknown as DiseaseReactionChainDefinition,
+  'nt_tieu_duoi': nt_tieu_duoi as unknown as DiseaseReactionChainDefinition,
+  'nt_tieuhoa': nt_tieuhoa as unknown as DiseaseReactionChainDefinition,
+  'vmn_vk': vmn_vk as unknown as DiseaseReactionChainDefinition,
+  'vmn_sv': vmn_sv as unknown as DiseaseReactionChainDefinition,
+  'hiv': hiv as unknown as DiseaseReactionChainDefinition,
+  'nt_cohoi': nt_cohoi as unknown as DiseaseReactionChainDefinition,
+  'vmn_nam': vmn_nam as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);
