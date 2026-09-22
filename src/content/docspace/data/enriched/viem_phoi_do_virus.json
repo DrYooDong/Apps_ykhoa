@@ -1,0 +1,624 @@
+{
+    "icdCode": "J12.9",
+    "icdPrefixes": [
+        "J12.9",
+        "J12.0",
+        "J12.1",
+        "J12.2",
+        "J12.8",
+        "J10.0",
+        "J11.0",
+        "U07.1"
+    ],
+    "diseaseName": "Viêm phổi do virus (Viral Pneumonia / Severe Viral Pneumonia - SVP)",
+    "specialty": "Hô hấp - Truyền nhiễm - Hồi sức cấp cứu",
+    "severity": "emergency",
+    "summary": "Viêm phổi do virus là tình trạng nhiễm trùng cấp tính nhu mô phổi do các tác nhân vi rút đường hô hấp (Cúm A/B, RSV, SARS-CoV-2, Adenovirus, Parainfluenza, HMPV, Rhinovirus), đặc trưng bởi tổn thương phế nang - mô kẽ, thâm nhiễm dạng kính mờ/nốt lưới ngoại vi hai bên phổi và nguy cơ tiến triển nhanh thành Hội chứng suy hô hấp cấp tiến triển (ARDS), sốc nhiễm trùng và bội nhiễm vi khuẩn thứ phát. Bệnh lây truyền qua giọt bắn và không khí, có tỷ lệ tử vong cao ở người cao tuổi, trẻ em dưới 2 tuổi, thai phụ và bệnh nhân có bệnh nền mạn tính.",
+    "goldStandard": "Chẩn đoán xác định căn nguyên virus bằng kỹ thuật Sinh học phân tử Real-time RT-PCR (hoặc Multiplex PCR đa tác nhân hô hấp) dương tính từ mẫu bệnh phẩm đường hô hấp (dịch phết tỵ hầu, dịch hút nội khí quản ETA, dịch rửa phế quản phế nang BAL) KÈM THEO tổn thương thâm nhiễm nhu mô phổi tiến triển trên X-quang hoặc CT ngực.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "vp_virus_time_onset",
+            "vp_virus_radiology_infiltrate"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định Viêm phổi do virus khi có Hội chứng nhiễm trùng hô hấp cấp tính KÈM tổn thương thâm nhiễm phế nang/mô kẽ mới trên X-quang/CT ngực VÀ đáp ứng ít nhất 2 tiêu chuẩn lâm sàng/CLS chính VÀ có bằng chứng xét nghiệm vi sinh/PCR dương tính với virus đường hô hấp."
+    },
+    "criteria": [
+        {
+            "id": "vp_virus_time_onset",
+            "type": "mandatory",
+            "label": "Hội chứng nhiễm trùng hô hấp cấp tính (Sốt + Ho + Khó thở)",
+            "description": "Khởi phát cấp tính với sốt (≥ 38.0°C hoặc tiền sử sốt), ho (ho khan hoặc ho đờm), khó thở, đau họng, chảy mũi hoặc mệt mỏi toàn thân trong vòng 14 ngày.",
+            "sourceGuideline": "Quyết định 5372/QĐ-BYT 2020 & Hướng dẫn CĐ&ĐTVPMPCĐ 2026 - Bộ Y tế"
+        },
+        {
+            "id": "vp_virus_radiology_infiltrate",
+            "type": "mandatory",
+            "label": "Tổn thương thâm nhiễm mô kẽ / phế nang trên X-quang hoặc CT ngực",
+            "description": "Hình ảnh tổn thương hai bên phổi, mờ dạng kính mờ (ground-glass opacities), thâm nhiễm nốt lưới lan tỏa ngoại vi/đáy phổi, hoặc đông đặc đa ổ tiến triển nhanh.",
+            "sourceGuideline": "Hướng dẫn CĐ&ĐTVPMPCĐ 2026 - Bộ Y tế"
+        },
+        {
+            "id": "vp_virus_fever_chills",
+            "type": "major",
+            "label": "Sốt cao đột ngột (≥ 38.5°C) kèm rét run hoặc Rối loạn thân nhiệt",
+            "description": "Sốt cao liên tục, đáp ứng kém với thuốc hạ sốt thông thường, kèm đau mỏi cơ khớp sâu, đau đầu dữ dội (đặc trưng của virus cúm/SARS-CoV-2).",
+            "sourceGuideline": "Quyết định 5372/QĐ-BYT 2020"
+        },
+        {
+            "id": "vp_virus_hypoxemia",
+            "type": "major",
+            "label": "Suy hô hấp cấp / Giảm SpO2 (< 94% khí trời) hoặc PaO2/FiO2 ≤ 300 mmHg",
+            "description": "Tình trạng thiếu oxy máu tiến triển, thở nhanh (> 24 lần/phút ở người lớn, co kéo cơ hô hấp phụ), cần thở oxy hỗ trợ.",
+            "labThreshold": "SpO2 < 94% (hoặc SpO2 < 92% ở bệnh nhân COPD) hoặc PaO2/FiO2 ≤ 300 mmHg",
+            "sourceGuideline": "Hướng dẫn CĐ&ĐTVPMPCĐ 2026 - Bộ Y tế"
+        },
+        {
+            "id": "vp_virus_leukocytes_normal_low",
+            "type": "lab",
+            "label": "Số lượng Bạch cầu máu bình thường hoặc giảm (< 4.000/µL), Giảm Lympho",
+            "description": "Bạch cầu máu không tăng (WBC < 10.000/µL) hoặc giảm (WBC < 4.000/µL) với tỷ lệ Lympho giảm sâu (< 1.000/µL hoặc < 15%), đặc trưng cho nhiễm virus cấp.",
+            "labThreshold": "WBC < 4.000 /µL hoặc Lympho < 1.000 /µL",
+            "sourceGuideline": "Hướng dẫn CĐ&ĐTVPMPCĐ 2026 - Bộ Y tế"
+        },
+        {
+            "id": "vp_virus_pcr_gold",
+            "type": "lab",
+            "label": "Xét nghiệm Sinh học phân tử Real-time RT-PCR / Multiplex PCR dương tính",
+            "description": "Phát hiện RNA/DNA của virus đường hô hấp (Cúm A/H1N1, A/H5N1, Cúm B, RSV, SARS-CoV-2, Adenovirus, Parainfluenza, HMPV) từ dịch phết tỵ hầu hoặc dịch đường hô hấp dưới.",
+            "labThreshold": "Real-time RT-PCR (+), Ct value < 35",
+            "sourceGuideline": "Quyết định 5372/QĐ-BYT 2020 & Hướng dẫn CĐ&ĐTVPMPCĐ 2026"
+        },
+        {
+            "id": "vp_virus_procalcitonin_low",
+            "type": "lab",
+            "label": "Định lượng Procalcitonin (PCT) máu thấp (< 0.25 ng/mL)",
+            "description": "PCT máu không tăng hoặc tăng nhẹ (< 0.25 - 0.5 ng/mL) giúp phân biệt nhiễm virus thuần túy với bội nhiễm vi khuẩn (PCT > 0.5 - 1.0 ng/mL).",
+            "labThreshold": "PCT < 0.25 ng/mL (chỉ ra nhiễm virus thuần túy chưa bội nhiễm)",
+            "sourceGuideline": "Hướng dẫn CĐ&ĐTVPMPCĐ 2026 - Bộ Y tế"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Viêm phổi do virus thể nhẹ / Trung bình (Ngoại trú hoặc Nội trú khoa Thường)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Bệnh nhân sốt, ho, đau họng, SpO2 ≥ 94% khí trời, nhịp thở < 24 lần/phút, huyết động ổn định (HATT ≥ 90 mmHg), không khó thở nặng. [Cận lâm sàng]: X-quang phổi có tổn thương thâm nhiễm kẽ nhẹ < 1 thùy, WBC bình thường/giảm, PCT < 0.25 ng/mL. [Tiêu chuẩn an toàn]: Không thuộc nhóm cơ địa cờ đỏ (người > 65 tuổi, có bệnh nền mạn tính, thai phụ, suy giảm miễn dịch).",
+            "triage": "Điều trị Ngoại trú có hẹn tái khám hoặc Nội trú Khoa Truyền nhiễm / Khoa Hô hấp",
+            "primaryAction": "Điều trị kháng virus đặc hiệu sớm trong 48h đầu nếu do Cúm (Oseltamivir 75mg PO b.i.d x 5 ngày) hoặc COVID-19 (Nirmatrelvir/ritonavir); điều trị triệu chứng (hạ sốt Paracetamol, bù nước Oresol, ho); KHÔNG dùng kháng sinh thường quy.",
+            "targetVitals": "SpO2 ≥ 95% khí trời, nhịp thở 16-20 lần/phút, HATT ≥ 90 mmHg, hết sốt sau 48-72h"
+        },
+        {
+            "grade": "Mức độ 2 — Viêm phổi do virus thể nặng (SVP / Severe Viral Pneumonia - Nhập viện Nội trú)",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Suy hô hấp cấp: SpO2 < 92% (hoặc PaO2/FiO2 ≤ 250 mmHg), nhịp thở ≥ 30 lần/phút, thở co kéo cơ hô hấp phụ; sốt cao liên tục; tổn thương phổi tiến triển lan rộng > 50% trong 24-48h. [Cận lâm sàng]: PaO2/FiO2 150 - 250 mmHg, X-quang/CT ngực thâm nhiễm kính mờ 2 bên phổi, Lympho máu giảm sâu (< 800/µL), PCT bắt đầu tăng (> 0.5 ng/mL - nghi bội nhiễm). [Dấu hiệu cờ đỏ]: Bệnh nhân cao tuổi, thai phụ, béo phì (BMI > 30), hoặc mắc cúm A/H5N1, A/H7N9.",
+            "triage": "Nhập viện 100% tại Khoa Hồi sức Hô hấp / Khoa Bệnh Nhiệt đới / Cấp cứu",
+            "primaryAction": "Thở oxy dòng cao HFNC hoặc thở máy không xâm nhập NIV; Oseltamivir liều cao (150mg PO b.i.d) nếu do Cúm nặng; Dexamethasone 6mg/ngày IV (chỉ định cho COVID-19 hoặc ARDS nặng); Đánh giá bội nhiễm vi khuẩn để phối hợp kháng sinh Beta-lactam/macrolid.",
+            "targetVitals": "SpO2 92-96%, PaO2/FiO2 > 200 mmHg, HATT ≥ 90 mmHg, nhịp thở < 25 lần/phút"
+        },
+        {
+            "grade": "Mức độ 3 — Viêm phổi do virus biến chứng ARDS nặng & Sốc nhiễm trùng / Suy đa tạng (ICU)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: ARDS nặng (PaO2/FiO2 < 150 mmHg dưới PEEP ≥ 5 cmH2O), sốc nhiễm trùng (cần Noradrenaline giữ MAP ≥ 65 mmHg và Lactate máu > 2 mmol/L), rối loạn tri giác, tím tái. [Cận lâm sàng]: PaO2/FiO2 < 100 mmHg, X-quang phổi mờ trắng 2 bên ('phổi trắng'), Bội nhiễm vi khuẩn đa kháng (S. aureus, P. aeruginosa, S. pneumoniae) với PCT > 2.0 ng/mL, suy thận cấp, tăng men gan, rối loạn đông máu.",
+            "triage": "Khoa Hồi sức tích cực (ICU) / Phòng cách ly hồi sức áp lực âm",
+            "primaryAction": "Đặt NKQ thở máy bảo vệ phổi (Vt 4-6 mL/kg IBW, Pplat ≤ 30 cmH2O, PEEP cao), nằm sấp Prone position 16h/ngày, hồi sức sốc bằng Noradrenaline; Thuốc kháng virus phối hợp Kháng sinh phổ rộng chống bội nhiễm (Meropenem + Linezolid/Vancomycin); Cân nhắc VV-ECMO nếu PaO2/FiO2 < 80 mmHg.",
+            "targetVitals": "PaO2/FiO2 > 150 mmHg, MAP ≥ 65 mmHg, Lactate < 2.0 mmol/L, Bài niệu ≥ 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Điều trị Viêm phổi do virus & Viêm phổi nặng do vi rút (SVP) theo Hướng dẫn Bộ Y tế 2026/2020",
+        "guideline": "Quyết định 5372/QĐ-BYT 2020 & Hướng dẫn Chẩn đoán và Điều trị VPMPCĐ ở người lớn (Quyết định 2147/QĐ-BYT 2026 - Bộ Y tế)",
+        "targetGoals": [
+            "Kiểm soát suy hô hấp cấp, duy trì SpO2 92-96% (hoặc 88-92% ở bệnh nhân COPD) và PaO2/FiO2 > 200 mmHg.",
+            "Sử dụng thuốc kháng virus đặc hiệu càng sớm càng tốt (trong 48h đầu kể từ khi khởi phát triệu chứng).",
+            "Phòng ngừa và xử trí kịp thời bội nhiễm vi khuẩn thứ phát (S. pneumoniae, S. aureus, H. influenzae).",
+            "Hạn chế tiến triển thành ARDS nặng, giảm tỷ lệ đặt nội khí quản xâm lấn và tử vong tại ICU."
+        ],
+        "initialManagement": [
+            "Cách ly người bệnh tại phòng thoáng khí hoặc phòng áp lực âm (đối với tác nhân nguy hiểm như Cúm gia cầm A/H5N1, SARS-CoV-2).",
+            "Thở oxy liệu pháp ngay khi SpO2 < 94%: ưu tiên thở oxy qua gọng kính 2-5 L/phút, chuyển HFNC (40-60 L/phút) nếu suy hô hấp tiến triển.",
+            "Lấy bệnh phẩm phết tỵ hầu/dịch đường hô hấp dưới làm xét nghiệm Real-time RT-PCR / Multiplex PCR tìm căn nguyên virus KÈM cấy đờm, cấy máu tìm vi khuẩn trước khi dùng kháng sinh.",
+            "Hạ sốt an toàn bằng Paracetamol 10-15 mg/kg khi T° ≥ 38.5°C; bù nước và điện giải qua đường uống (Oresol) hoặc truyền tĩnh mạch đẳng trương."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Oseltamivir (Tamiflu)",
+                "class": "Thuốc ức chế men Neuraminidase (Đặc trị Virus Cúm A và Cúm B)",
+                "route": "PO / Qua sonde dạ dày",
+                "dosage": "75 mg x 2 lần/ngày trong 5 ngày (Người lớn). Ở ca nặng/SVP hoặc suy giảm miễn dịch: dùng liều gấp đôi 150 mg x 2 lần/ngày x 10 ngày.",
+                "frequency": "Mỗi 12 giờ (dùng sớm trong 48h đầu có hiệu quả tối ưu, nhưng ca nặng vẫn dùng dù sau 48h)",
+                "instructions": "Chỉ định cho tất cả bệnh nhân viêm phổi do virus Cúm A (bao gồm A/H1N1, A/H5N1, A/H7N9) và Cúm B nhập viện.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Dexamethasone (hoặc Methylprednisolone)",
+                "class": "Corticosteroid hệ thống (Chống viêm bão Cytokine trong ARDS / COVID-19 nặng)",
+                "route": "IV / PO",
+                "dosage": "Dexamethasone 6 mg/ngày IV/PO trong 7 - 10 ngày (hoặc Methylprednisolone 0.5 - 1.0 mg/kg/ngày IV chia 2 lần)",
+                "frequency": "Mỗi 24 giờ (Dexamethasone) hoặc mỗi 12 giờ (Methylprednisolone)",
+                "instructions": "BẮT BUỘC chỉ định trong viêm phổi do SARS-CoV-2 có thở oxy hoặc ARDS nặng do virus. KHÔNG dùng thường quy cho cúm nhẹ vì làm chậm thải trừ virus.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Nirmatrelvir / Ritonavir (Paxlovid) hoặc Molnupiravir",
+                "class": "Thuốc kháng virus đặc hiệu SARS-CoV-2",
+                "route": "PO",
+                "dosage": "Nirmatrelvir 300mg + Ritonavir 100mg uống 2 lần/ngày x 5 ngày; Molnupiravir 800mg uống 2 lần/ngày x 5 ngày",
+                "frequency": "Mỗi 12 giờ x 5 ngày",
+                "instructions": "Chỉ định sớm trong 5 ngày đầu cho bệnh nhân nhiễm SARS-CoV-2 có nguy cơ tiến triển nặng.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Ampicillin / Sulbactam (hoặc Ceftriaxone / Cefotaxime)",
+                "class": "Beta-lactam phối hợp chất ức chế Beta-lactamase (Bao phủ vi khuẩn bội nhiễm sau virus)",
+                "route": "IV / TTM",
+                "dosage": "Ampicillin/sulbactam 1.5g - 3.0g q6h IV; Ceftriaxone 2.0g q24h IV TTM; Cefotaxime 2.0g q8h IV",
+                "frequency": "Mỗi 6 giờ (Ampicillin/sulbactam) hoặc mỗi 24 giờ (Ceftriaxone)",
+                "instructions": "Bổ sung khi có bằng chứng bội nhiễm vi khuẩn thứ phát (PCT > 0.5 ng/mL, đờm mủ, bạch cầu tăng cao, CTM nhiễm trùng).",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Vancomycin (hoặc Linezolid)",
+                "class": "Kháng sinh bao phủ Tụ cầu vàng kháng Methicillin (CA-MRSA bội nhiễm sau Cúm)",
+                "route": "IV / TTM",
+                "dosage": "Vancomycin 15-20 mg/kg q8-12h (TDM AUC/MIC 400-600); Linezolid 600mg IV q12h",
+                "frequency": "Mỗi 8-12 giờ",
+                "instructions": "Chỉ định bắt buộc khi nghi ngờ bội nhiễm CA-MRSA sau nhiễm Cúm (X-quang có tổn thương hoại tử/tạo hang, đờm mủ máu, sốc nhiễm trùng).",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Remdesivir",
+                "class": "Thuốc kháng virus ức chế RNA Polymerase",
+                "route": "IV TTM",
+                "dosage": "Liều nạp 200mg IV ngày 1, sau đó 100mg IV/ngày từ ngày 2 đến ngày 5",
+                "frequency": "Mỗi 24 giờ x 5 ngày",
+                "instructions": "Chỉ định cho bệnh nhân viêm phổi do SARS-CoV-2 nhập viện cần thở oxy nhưng chưa đặt NKQ.",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Hỗ trợ hô hấp không xâm nhập sớm: Sử dụng thở oxy dòng cao HFNC (FiO2 40-100%, flow 40-60 L/phút) giúp giảm tỷ lệ đặt NKQ so với oxy thông thường.",
+            "Thông khí nhân tạo bảo vệ phổi khi có ARDS: Cài đặt Vt 4-6 mL/kg cân nặng lý tưởng (IBW), Pplat ≤ 30 cmH2O, PEEP điều chỉnh theo bảng PEEP/FiO2, áp dụng nằm sấp (Prone position) 16h/ngày.",
+            "Kiểm soát nhiễm khuẩn & Cách ly: Mang khẩu trang N95, kính bảo hộ, áo phế phẩm phòng hộ khi làm thủ thuật tạo khí dung; thông thoáng phòng bệnh.",
+            "Dinh dưỡng & Bù dịch vừa đủ: Tránh bù dịch quá mức gây nặng thêm phù phổi kẽ; dinh dưỡng đường tiêu hóa sớm qua sonde dạ dày."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Hội chứng suy hô hấp cấp tiến triển do virus (ARDS / Severe Viral Pneumonia)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Khó thở dâng cao, SpO2 tụt nhanh < 90% dù đang thở oxy gọng kính 5 L/p, nhịp thở > 30/p, PaO2/FiO2 < 200 mmHg, X-quang phổi thâm nhiễm mờ lan tỏa 2 bên.",
+            "preventiveAction": "Chuyển thở HFNC hoặc NIV; nếu không cải thiện trong 2-4h thì đặt NKQ thở máy bảo vệ phổi (Vt 6 mL/kg IBW, PEEP 10-14 cmH2O), dùng Dexamethasone 6mg IV/ngày và nằm sấp.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: ARDS DO VIRUS: Chuyển thở HFNC flow 50 L/p FiO2 60%, làm Khí máu động mạch khẩn, chuẩn bị bộ đặt nội khí quản & Dexamethasone 6mg IV!"
+        },
+        {
+            "name": "Bội nhiễm vi khuẩn thứ phát nặng (S. aureus hoại tử / S. pneumoniae / P. aeruginosa)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bệnh nhân sốt lại sau khi đã hạ sốt 2-3 ngày, đờm chuyển sang dạng mủ đặc hoặc mủ máu, PCT tăng vọt > 1.0 ng/mL, bạch cầu máu tăng cao (WBC > 15.000/µL), X-quang phổi xuất hiện hang hoại tử.",
+            "preventiveAction": "Cấy lại đờm/dịch đường hô hấp và cấy máu; phối hợp ngay kháng sinh Beta-lactam chống Pseudomonas (Piperacillin/tazobactam 4.5g q6h) + Thuốc chống MRSA (Linezolid 600mg q12h hoặc Vancomycin).",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG: BỘI NHIỄM VI KHUẨN SẠC/CÚM: Lấy đờm cấy vi sinh & cấy máu khẩn, làm lại PCT, cho ngay Piperacillin/tazobactam 4.5g IV + Linezolid 600mg IV!"
+        },
+        {
+            "name": "Sốc nhiễm trùng & Suy đa tạng do virus / Bội nhiễm (Septic Shock & MODS)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Mạch nhanh nhỏ (> 120 l/p), HATT < 90 mmHg hoặc MAP < 65 mmHg, da nổi bông, chi lạnh, Lactate máu > 2.0 mmol/L, thiểu niệu < 0.5 mL/kg/h.",
+            "preventiveAction": "Xả dịch tinh thể Ringer Lactate 30 mL/kg trong 3h đầu; dùng sớm Noradrenaline giữ MAP ≥ 65 mmHg; cấy máu và dùng kháng sinh phổ rộng trong 1h đầu.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: SỐC NHIỄM TRÙNG: Xả Ringer Lactate 30 mL/kg, thiết lập Noradrenaline qua bơm tiêm điện giữ MAP ≥ 65 mmHg, đo Lactate máu khẩn!"
+        },
+        {
+            "name": "Tràn khí màng phổi & Tràn khí trung thất (Pneumothorax / Pneumomediastinum)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Khó thở kịch phát đột ngột, đau ngực dữ dội một bên, SpO2 tụt dốc, lồng ngực gồ một bên, mất rì rào phế nang, áp lực đỉnh đường thở (Ppeak) trên máy thở tăng vọt.",
+            "preventiveAction": "Chụp X-quang/Siêu âm phổi tại giường khẩn cấp; chọc dò giải áp khoang màng phổi bằng kim lớn G14-16 tại khoang liên sườn II đường trung đòn, sau đó đặt dẫn lưu Pigtail/chest tube khẩn.",
+            "onCallAlertText": "Y LỆNH TRỰC: TRÀN KHÍ MÀNG PHỔI CẤP: Cho Siêu âm/X-quang ngực tại giường khẩn, chuẩn bị bộ chọc giải áp & dẫn lưu màng phổi!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (WBC, Neutrophil%, Lympho abs) theo dõi mỗi 24-48 giờ (chú ý tình trạng giảm Lympho tiến triển).",
+        "Định lượng Procalcitonin (PCT) và C-reactive protein (CRP) máu vào Ngày 1, Ngày 3, Ngày 5 để phát hiện bội nhiễm vi khuẩn.",
+        "Xét nghiệm Real-time RT-PCR / Multiplex PCR virus hô hấp lặp lại khi cần đánh giá thải trừ virus.",
+        "Khí máu động mạch (PaO2, PaCO2, pH, HCO3-, PaO2/FiO2) và Lactate máu mỗi 6-12h ở ca suy hô hấp/ARDS.",
+        "Chức năng gan (AST, ALT, Bilirubin), Chức năng thận (Creatinine, Ure, eGFR) và Điện giải đồ mỗi 24-48h.",
+        "Đông máu toàn bộ (PT, APTT, D-dimer, Fibrinogen) giám sát nguy cơ huyết khối tĩnh mạch/DIC ở bệnh nhân COVID-19/Cúm nặng.",
+        "Chụp X-quang ngực tại giường hoặc Siêu âm phổi (LUS) đánh giá tiến triển tổn thương kính mờ/đông đặc nhu mô phổi."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Phụ nữ mang thai (Thai phụ mắc Cúm / COVID-19)",
+            "adjustments": "Ưu tiên dùng Oseltamivir liều chuẩn 75mg x 2 lần/ngày x 5 ngày (an toàn tuyệt đối cho thai nhi). Dexamethasone 6mg/ngày dùng khi có suy hô hấp cần thở oxy. Theo dõi sát cử động thai và tim thai.",
+            "cautions": "Thai phụ mắc Cúm A/H1N1 hoặc COVID-19 có nguy cơ tiến triển ARDS và tử vong cao gấp 3-5 lần; cần hội chẩn Sản - Hồi sức sớm."
+        },
+        {
+            "population": "Người cao tuổi (≥ 65 tuổi) có nhiều bệnh nền mạn tính (COPD, Đái tháo đường, Suy tim)",
+            "adjustments": "Điều trị Oseltamivir sớm ngay khi nghi ngờ Cúm; kiểm soát đường huyết chặt chẽ (đích 8-10 mmol/L); theo dõi sát nguy cơ bội nhiễm vi khuẩn thứ phát (S. pneumoniae, K. pneumoniae).",
+            "cautions": "Triệu chứng lâm sàng thường không điển hình (không sốt cao mà lú lẫn, té ngã, mệt lả), dễ bỏ sót chẩn đoán viêm phổi nặng."
+        },
+        {
+            "population": "Trẻ em / Trẻ nhũ nhi (< 2 tuổi)",
+            "adjustments": "Tính liều Oseltamivir theo cân nặng (Trẻ < 15kg: 30mg x 2 lần/ngày; 15-23kg: 45mg x 2 lần/ngày; 23-40kg: 60mg x 2 lần/ngày). Thở oxy qua cannula hoặc nCPAP nếu có thở nhanh co kéo.",
+            "cautions": "Trẻ nhỏ nhiễm RSV hoặc Influenza dễ biến chứng Viêm tiểu phế quản cấp, co giật do sốt cao và suy hô hấp rất nhanh."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 60 mL/min) hoặc lọc máu",
+            "adjustments": "Hiệu chỉnh liều Oseltamivir theo eGFR (eGFR 30-60 mL/min: 30mg x 2 lần/ngày; eGFR 10-30 mL/min: 30mg x 1 lần/ngày; lọc máu IHD: 30mg sau mỗi buổi lọc). Dexamethasone không cần chỉnh liều.",
+            "cautions": "Thận trọng với nguy cơ quá tải thể tích khi bù dịch; theo dõi Creatinine máu sát sao."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1_viral_replication",
+            "dayRange": "N1 - N5",
+            "phaseName": "Giai đoạn Nhân lên của Virus & Khởi phát Lâm sàng (N1 - N5)",
+            "clinicalGoal": "Dùng thuốc kháng virus đặc hiệu sớm trong 48h đầu, hạ sốt an toàn, kiểm soát hô hấp và cách ly phòng lây nhiễm.",
+            "problems": [
+                {
+                    "id": "p1_viral_infection",
+                    "problemName": "Nhiễm virus đường hô hấp cấp tính (Cúm A/B, RSV, SARS-CoV-2)",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Kháng virus đặc hiệu",
+                            "content": "Oseltamivir 75mg PO q12h x 5 ngày (dùng ngay khi nghi ngờ Cúm); hoặc Nirmatrelvir/ritonavir x 5 ngày (nếu SARS-CoV-2). Khởi đầu càng sớm càng tốt trong 48h đầu.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Real-time RT-PCR / Multiplex PCR virus hô hấp",
+                            "frequency": "1 lần tại thời điểm tiếp nhận",
+                            "target": "Xác định căn nguyên virus"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_fever_myalgia",
+                    "problemName": "Sốt cao, Đau mỏi cơ khớp & Đau đầu dữ dội",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hạ sốt & Chăm sóc",
+                            "content": "Paracetamol 10-15 mg/kg PO q4-6h khi sốt ≥ 38.5°C (tối đa 3g/ngày người lớn). Bù nước Oresol PO 1500-2000 mL/ngày. Nghỉ ngơi tại giường."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & SpO2",
+                            "frequency": "q4h",
+                            "target": "T° < 38.0°C, SpO2 ≥ 95% khí trời"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_hypoxia",
+                    "problemName": "Giảm oxy máu sớm (SpO2 < 94%)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hỗ trợ hô hấp",
+                            "content": "Thở oxy gọng kính 2-4 L/phút giữ SpO2 92-96%. Chụp X-quang phổi đánh giá tổn thương thâm nhiễm kẽ."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "SpO2 & Nhịp thở",
+                            "frequency": "q2-4h",
+                            "target": "SpO2 92-96%, nhịp thở < 24 l/p"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng virus",
+                    "content": "Oseltamivir 75mg q12h x 5 ngày (nếu Cúm) hoặc Paxlovid x 5 ngày (nếu COVID-19).",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Hạ sốt & Hỗ trợ",
+                    "content": "Paracetamol 10-15 mg/kg q4-6h khi sốt ≥ 38.5°C; Oresol PO; Thở oxy nếu SpO2 < 94%."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu, SpO2 & Nhịp thở",
+                    "frequency": "q4h",
+                    "target": "SpO2 ≥ 95%"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "RT-PCR virus & Công thức máu (Lympho)",
+                    "frequency": "N1",
+                    "target": "Xác chẩn virus"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[BẮT BUỘC dùng thuốc kháng virus trong 48h đầu]",
+                    "[Không tự ý dùng Corticoid ở giai đoạn nhân lên virus nhẹ]",
+                    "[Áp dụng biện pháp phòng ngừa lây nhiễm qua giọt bắn/không khí]"
+                ],
+                "triageOrDischargeCriteria": "[Theo dõi ngoại trú nếu SpO2 ≥ 95% và không có cờ đỏ, hoặc nhập viện nếu có khó thở]"
+            }
+        },
+        {
+            "id": "phase_2_inflammatory_ARDS",
+            "dayRange": "N6 - N10",
+            "phaseName": "Giai đoạn Đáp ứng Viêm Bão Cytokine & Suy Hô Hấp / ARDS (N6 - N10)",
+            "clinicalGoal": "Kiểm soát bão Cytokine, chống suy hô hấp cấp/ARDS bằng HFNC/thở máy bảo vệ phổi và Dexamethasone, phát hiện sớm bội nhiễm vi khuẩn.",
+            "problems": [
+                {
+                    "id": "p2_ards_respiratory_failure",
+                    "problemName": "Suy hô hấp cấp tiến triển (ARDS) do phản ứng viêm bão Cytokine",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hỗ trợ hô hấp & Chống viêm",
+                            "content": "Thở HFNC (flow 40-60 L/p, FiO2 40-80%); Dexamethasone 6mg IV/PO q24h x 7-10 ngày. Nếu PaO2/FiO2 < 150: đặt NKQ thở máy bảo vệ phổi (Vt 6 mL/kg IBW, PEEP cao, nằm sấp 16h/ngày).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Khí máu động mạch (PaO2/FiO2)",
+                            "frequency": "q4-6h",
+                            "target": "PaO2/FiO2 > 200 mmHg, pH 7.35-7.45"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_bacterial_superinfection",
+                    "problemName": "Bội nhiễm vi khuẩn thứ phát (S. pneumoniae, S. aureus, Enterobacterales)",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh phối hợp",
+                            "content": "Ceftriaxone 2g IV q24h + Azithromycin 500mg IV q24h (hoặc Ampicillin/sulbactam 3g q6h). Nếu nghi CA-MRSA: Bổ sung Linezolid 600mg IV q12h hoặc Vancomycin.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Procalcitonin (PCT) & Cấy đờm/máu",
+                            "frequency": "q48h (Ngày 6 và Ngày 8)",
+                            "target": "PCT < 0.5 ng/mL"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_septic_shock",
+                    "problemName": "Sốc nhiễm trùng & Suy đa tạng",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức huyết động",
+                            "content": "Bù dịch Ringer Lactate 30 mL/kg; Khởi đầu Noradrenaline IV qua bơm tiêm điện duy trì MAP ≥ 65 mmHg."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp MAP & Bài niệu qua sonde",
+                            "frequency": "q15-30 phút",
+                            "target": "MAP ≥ 65 mmHg, Nước tiểu ≥ 0.5 mL/kg/h"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Hỗ trợ hô hấp",
+                    "content": "Thở HFNC hoặc thở máy xâm lấn Vt 6 mL/kg IBW, PEEP 10-14 cmH2O, nằm sấp.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Chống viêm & Kháng sinh",
+                    "content": "Dexamethasone 6mg/ngày IV + Ceftriaxone 2g/ngày IV (+ Linezolid 600mg q12h nếu nghi MRSA).",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Nhịp thở, SpO2 & Công thở",
+                    "frequency": "q1-2h",
+                    "target": "SpO2 92-96%"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "Khí máu động mạch & PCT máu",
+                    "frequency": "q6-12h",
+                    "target": "PaO2/FiO2 > 200, PCT < 0.5 ng/mL"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Giám sát sát cờ đỏ suy hô hấp tiến triển để chuyển HFNC/đặt NKQ kịp thời]",
+                    "[Dexamethasone chỉ dùng khi có suy hô hấp cần thở oxy]",
+                    "[Tầm soát bội nhiễm vi khuẩn bằng PCT mỗi 48h]"
+                ],
+                "triageOrDischargeCriteria": "[Nằm điều trị nội trú 100% tại ICU/Hồi sức Hô hấp]"
+            }
+        },
+        {
+            "id": "phase_3_recovery_resolution",
+            "dayRange": "N11 - N14+",
+            "phaseName": "Giai đoạn Hồi phục, Cai thở máy & Thoái triển Tổn thương (N11 - N14+)",
+            "clinicalGoal": "Cai thở máy/giảm dần hỗ trợ oxy, giảm liều và ngưng Corticoid/Kháng sinh, tập vật lý trị liệu hô hấp.",
+            "problems": [
+                {
+                    "id": "p3_weaning_rehab",
+                    "problemName": "Hồi phục chức năng trao đổi khí & Cai hỗ trợ hô hấp",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Cai máy & Giảm oxy",
+                            "content": "Giảm dần FiO2 HFNC < 40%, chuyển sang oxy gọng kính 2 L/p; tập vỗ rung lồng ngực, tập hít sâu thở chậm."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "SpO2 khí trời & Mức độ tự thở",
+                            "frequency": "q4h",
+                            "target": "SpO2 ≥ 95% khí trời, nhịp thở < 22 l/p"
+                        }
+                    ]
+                },
+                {
+                    "id": "p3_deescalation_abx",
+                    "problemName": "Ngừng Corticoid & Xuống thang/Ngừng Kháng sinh",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Ngừng thuốc an toàn",
+                            "content": "Ngừng Dexamethasone sau đủ 7-10 ngày; ngừng kháng sinh sau đủ 5-7 ngày nếu PCT < 0.25 ng/mL và hết sốt > 48h."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Procalcitonin & X-quang ngực kiểm tra",
+                            "frequency": "N14",
+                            "target": "PCT < 0.25 ng/mL, tổn thương phổi thoái triển"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_fibrosis",
+                    "problemName": "Xơ phổi sau nhiễm trùng do virus (Post-viral Lung Fibrosis)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Theo dõi xơ phổi",
+                            "content": "Chụp CT ngực độ phân giải cao (HRCT) đánh giá tổn thương dải xơ; đo chức năng hô hấp (KĐH/DLCO) sau 4-6 tuần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "HRCT ngực & Thăm dò chức năng hô hấp",
+                            "frequency": "Tái khám sau 4 tuần",
+                            "target": "Đánh giá mức độ hồi phục nhu mô phổi"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Ngừng thuốc",
+                    "content": "Ngừng Dexamethasone sau 7-10 ngày; ngừng kháng sinh khi PCT < 0.25 ng/mL.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Phục hồi chức năng",
+                    "content": "Vật lý trị liệu hô hấp, vận động nhẹ tại giường, thở oxy ngắt quãng."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "SpO2 & Nhịp thở khi vận động",
+                    "frequency": "q6h",
+                    "target": "SpO2 ≥ 95% không cần thở oxy"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "X-quang ngực trước xuất viện",
+                    "frequency": "1 lần N14",
+                    "target": "Tổn thương phổi hấp thu tốt"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không kéo dài Corticoid quá 10 ngày nếu không có chỉ định đặc biệt]",
+                    "[Hẹn tái khám đánh giá di chứng xơ phổi sau 4 tuần]"
+                ],
+                "triageOrDischargeCriteria": "[Đủ tiêu chuẩn xuất viện: SpO2 ≥ 95% khí trời, hết sốt > 48h, ăn uống và tự vận động tốt]"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_viral_ards",
+            "complicationName": "Hội chứng suy hô hấp cấp tiến triển do virus (Severe Viral ARDS)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Thở nhanh nông co kéo, PaO2/FiO2 < 150 mmHg dưới PEEP ≥ 5 cmH2O, thâm nhiễm kính mờ lan tỏa 2 bên phổi trên X-quang/CT ngực]",
+            "actionProtocol": "[Thông khí bảo vệ phổi Vt 4-6 mL/kg IBW, Pplat ≤ 30 cmH2O, PEEP cao 10-14 cmH2O, Dexamethasone 6mg/ngày IV, nằm sấp Prone position 16h/ngày, cân nhắc ECMO nếu PaO2/FiO2 < 80 mmHg]",
+            "monitoringMetrics": "[Khí máu động mạch q4-6h, Pplat, Driving Pressure ≤ 14 cmH2O, SpO2 liên tục]"
+        },
+        {
+            "id": "comp_bacterial_superinfection",
+            "complicationName": "Bội nhiễm vi khuẩn thứ phát đe dọa tính mạng (CA-MRSA, S. pneumoniae, P. aeruginosa)",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Sốt lại đột ngột sau giai đoạn đỡ bệnh, đờm mủ đục hoặc đờm mủ máu, Procalcitonin tăng vọt > 1.0 ng/mL, bạch cầu máu tăng cao WBC > 15.000/µL, tổn thương phổi hoại tử tạo hang]",
+            "actionProtocol": "[Cấy đờm/dịch rửa phế quản BAL và cấy máu 2 vị trí khẩn; đổi phác đồ kháng sinh phối hợp Piperacillin/tazobactam 4.5g q6h + Linezolid 600mg q12h hoặc Meropenem + Vancomycin TDM]",
+            "monitoringMetrics": "[Cấy vi sinh lặp lại sau 48h, Procalcitonin q48h, Công thức máu, X-quang phổi tại giường]"
+        },
+        {
+            "id": "comp_myocarditis_pericarditis",
+            "complicationName": "Viêm cơ tim cấp & Viêm màng ngoài tim do virus (Viral Myocarditis)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Đau ngực sau xương ức, hồi hộp đánh trống ngực, Mạch nhanh không tương ứng với thân nhiệt, Troponin T/I tăng cao vọt, ECG có ST lệch đoạn hoặc loạn nhịp, Siêu âm tim giảm EF < 45%]",
+            "actionProtocol": "[Nghỉ ngơi tại giường tuyệt đối, hội chẩn Tim mạch hồi sức; dùng thuốc hỗ trợ co bóp cơ tim Dobutamine/Milrinone; điều trị chống rối loạn nhịp; cân nhắc VA-ECMO nếu sốc tim nặng]",
+            "monitoringMetrics": "[Định lượng Troponin T/I & NT-proBNP q12-24h, Điện tâm đồ ECG liên tục, Siêu âm tim tại giường]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[CẢNH BÁO 1: Phải khởi đầu thuốc kháng virus đặc hiệu Oseltamivir/Paxlovid CÀNG SỚM CÀNG TỐT, tốt nhất trong vòng 48 giờ đầu kể từ khi khởi phát triệu chứng]",
+            "[CẢNH BÁO 2: TUYỆT ĐỐI KHÔNG dùng kháng sinh thường quy cho viêm phổi do virus thuần túy khi chưa có bằng chứng bội nhiễm vi khuẩn (Procalcitonin < 0.25 ng/mL) để tránh kháng thuốc]",
+            "[CẢNH BÁO 3: KHÔNG dùng Corticoid (Dexamethasone) thường quy cho các trường hợp nhiễm virus nhẹ/trung bình không suy hô hấp, vì Corticoid làm chậm thải trừ virus và tăng nguy cơ bội nhiễm]",
+            "[CẢNH BÁO 4: Cảnh giác cao độ với biến chứng bội nhiễm Tụ cầu vàng kháng Methicillin (CA-MRSA) gây viêm phổi hoại tử sau nhiễm Cúm A/H1N1]",
+            "[CẢNH BÁO 5: Bắt buộc cách ly phòng hộ cá nhân (khẩu trang N95, phòng áp lực âm/thông thoáng) để tránh lây nhiễm chéo virus nguy hiểm (Cúm A/H5N1, SARS-CoV-2) cho nhân viên y tế]"
+        ],
+        "contraindications": [
+            "[CHỐNG CHỈ ĐỊNH 1: Chống chỉ định dùng Aspirin hoặc Salicylate ở trẻ em và thanh thiếu niên nhiễm virus Cúm hoặc Thủy đậu do nguy cơ Hội chứng Reye đe dọa tính mạng]",
+            "[CHỐNG CHỈ ĐỊNH 2: Chống chỉ định phối hợp Nirmatrelvir/ritonavir (Paxlovid) với các thuốc chuyển hóa qua CYP3A4 có khoảng điều trị hẹp (Amiodarone, Carbamazepine, Simvastatin, Rifampicin)]",
+            "[CHỐNG CHỈ ĐỊNH 3: Chống chỉ định dùng Corticoid liều cao kéo dài (> 2 tuần) trong điều trị viêm phổi do virus nếu không có chỉ định chuyên khoa]"
+        ],
+        "triageOrDischargeCriteria": "[TIÊU CHUẨN XUẤT VIỆN AN TOÀN: (1) Hết sốt liên tục > 48 giờ không cần dùng thuốc hạ sốt; (2) SpO2 ≥ 95% khi tự thở khí trời (hoặc về mức nền ở bệnh nhân mạn tính); (3) Nhịp thở ổn định < 22 lần/phút, không còn khó thở hay co kéo; (4) Xét nghiệm Procalcitonin < 0.25 ng/mL và bạch cầu máu về bình thường; (5) Bệnh nhân ăn uống, uống thuốc tốt và tổn thương X-quang phổi có dấu hiệu thoái triển]."
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm phổi do virus & Giám sát Viêm phổi nặng do vi rút (SVP)",
+            "searchKeyword": "chẩn đoán viêm phổi do virus SVP cúm SARS-CoV-2"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, thuốc kháng virus & hồi sức suy hô hấp do viêm phổi virus",
+            "searchKeyword": "phác đồ điều trị viêm phổi virus oseltamivir dexamethasone ARDS"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học virus đường hô hấp, hệ thống giám sát SVP và cơ địa nguy cơ tiến triển nặng",
+            "searchKeyword": "dịch tễ viêm phổi do virus cúm H5N1 giám sát SVP"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu bão Cytokine, ARDS nặng và bội nhiễm vi khuẩn thứ phát sau nhiễm virus",
+            "searchKeyword": "biến chứng ARDS bội nhiễm vi khuẩn sau cúm viêm phổi virus"
+        }
+    ]
+}

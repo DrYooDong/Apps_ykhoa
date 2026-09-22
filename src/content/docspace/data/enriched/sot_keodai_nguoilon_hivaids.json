@@ -1,0 +1,540 @@
+{
+    "icdCode": "R50.9",
+    "icdPrefixes": [
+        "R50",
+        "R50.9",
+        "B20",
+        "B20.0",
+        "B20.1",
+        "B20.2",
+        "B20.7",
+        "B20.8",
+        "B24"
+    ],
+    "diseaseName": "Sốt kéo dài ở người lớn trong bệnh cảnh HIV/AIDS (Fever of Unknown Origin in HIV/AIDS Patients)",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Sốt kéo dài (Fever of Unknown Origin - FUO) ở người lớn nhiễm HIV/AIDS được xác định khi nhiệt độ cơ thể ≥ 38.3°C (hoặc > 38.5°C) kéo dài trên 14 đến 21 ngày mà chưa tìm được nguyên nhân sau các xét nghiệm cơ bản. Đây là thách thức lâm sàng phức tạp, phản ánh tình trạng suy giảm miễn dịch nặng (trung vị CD4 là 19 cells/mm³, 88.6% có CD4 < 100 cells/mm³). Căn nguyên nhiễm trùng cơ hội (NTCH) chiếm ưu thế tuyệt đối (93.3%), trong đó Lao (M. tuberculosis) là nguyên nhân hàng đầu (46.7%), tiếp theo là Nấm Talaromyces marneffei (29.2%), Viêm phổi PCP (20.5%), Viêm phổi vi khuẩn (11.3%), Nhiễm trùng huyết (10.3%), Cytomegalovirus (10.3%), Toxoplasma (5.6%), Cryptococcus (2.6%) và MAC (1.0%). Căn nguyên không nhiễm trùng chiếm 3.6% (Hội chứng thực bào máu HLH 2.1%, U lympho Non-Hodgkin 1.5%). Đáng chú ý, 46.2% bệnh nhân đồng nhiễm từ 2 đến 3 tác nhân cùng lúc.",
+    "goldStandard": "Chẩn đoán nguyên nhân sốt kéo dài ở bệnh nhân HIV dựa trên thuật toán cận lâm sàng đa tầng phân loại theo mức CD4: (1) Sàng lọc hệ thống vi sinh/phân tử nhanh (GeneXpert MTB/RIF, LF-LAM nước tiểu, CrAg LFA máu/DNT, cấy máu/da/tủy xương tìm T. marneffei và Vi khuẩn, PCR CMV/PCP/Toxoplasma); (2) Thăm dò hình ảnh học (CT ngực/bụng, Siêu âm ổ bụng, MRI não); (3) Sinh thiết hạch / Chọc hút tủy xương làm Tủy đồ & Mô bệnh học khi các xét nghiệm không xâm lấn chưa xác định được căn nguyên.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "fuo_hiv_definition_and_cd4"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán Sốt kéo dài trên người nhiễm HIV khi có Tiêu chuẩn Lâm sàng (Sốt ≥ 38.3°C kéo dài > 14 ngày chưa rõ nguyên nhân) KÈM THEO đánh giá Mức độ suy giảm miễn dịch CD4 VÀ xác định ít nhất 01 Căn nguyên nguyên nhân (NTCH, Bệnh lý huyết học/ác tính hoặc Phản ứng thuốc)."
+    },
+    "criteria": [
+        {
+            "id": "fuo_hiv_definition_and_cd4",
+            "type": "mandatory",
+            "label": "[Bắt buộc]: Xác chẩn HIV kèm Hội chứng Sốt kéo dài chưa rõ nguyên nhân (FUO)",
+            "description": "[Lâm sàng & CLS]: Bệnh nhân đã xác chẩn nhiễm HIV (3 phương cách huyết thanh học) có sốt nách/miệng ≥ 38.3°C (101°F) kéo dài > 14 ngày (ngoại trú) hoặc > 3 ngày nhập viện thăm dò mà chưa tìm ra nguyên nhân. Đánh giá số lượng tế bào T-CD4 để phân tầng nguy cơ.",
+            "sourceGuideline": "BYT Quyết định 5968/QĐ-BYT 2021 & Hướng dẫn BYT 2019 & Nguyen et al. BMC Infect Dis 2022"
+        },
+        {
+            "id": "fuo_tb_evidence",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 1]: Căn nguyên Bệnh Lao (M. tuberculosis - Chiếm 46.7% các ca FUO)",
+            "description": "[Lâm sàng & CLS]: Sốt ho kéo dài, sụt cân, vã mồ hôi đêm. Xpert MTB/RIF (+), LF-LAM nước tiểu (+), AFB đờm/dịch rửa phế quản/dịch màng phổi/hạch (+), hoặc tổn thương thâm nhiễm/hang/hạch ổ bụng trên CT.",
+            "sourceGuideline": "Quyết định 4067/QĐ-BYT & Nguyen et al. 2022 (NHTĐ)"
+        },
+        {
+            "id": "fuo_talaromyces_evidence",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 2]: Căn nguyên Nấm Talaromyces marneffei lan tỏa (Chiếm 29.2% các ca FUO, đặc biệt khi CD4 < 50)",
+            "description": "[Lâm sàng & CLS]: Sốt kéo dài, sẩn hoại tử rốn trung tâm ở mặt/thân mình, gan lách to, thiếu máu dốc đứng. Soi tươi/cấy máu, da, hạch, tủy xương phát hiện nấm T. marneffei chia đôi hình xúc xích.",
+            "sourceGuideline": "BYT 2021 & Nguyen et al. BMC Infect Dis 2022"
+        },
+        {
+            "id": "fuo_pcp_and_sepsis",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 3]: Căn nguyên PCP (20.5%), Viêm phổi vi khuẩn (11.3%) hoặc Nhiễm trùng huyết (10.3%)",
+            "description": "[Lâm sàng & CLS]: Ho khô khó thở dồn dập (PCP); Ho đờm mủ/ran phổi (Viêm phổi VK); Cấy máu (+) với Salmonella spp., E. coli, S. aureus, Pseudomonas aeruginosa.",
+            "sourceGuideline": "BYT 2021 & Nguyen et al. 2022"
+        },
+        {
+            "id": "fuo_cd4_under_50_quant",
+            "type": "lab",
+            "label": "[Cận lâm sàng định lượng]: Mức suy giảm miễn dịch nặng T-CD4 < 50 cells/mm³",
+            "description": "[Cận lâm sàng]: Định lượng T-CD4 < 50 cells/mm³ là yếu tố nguy cơ cốt lõi bùng phát Talaromycosis, Cryptococcus, MAC, CMV tạng và Hội chứng thực bào máu (HLH).",
+            "labThreshold": "T-CD4 < 50 cells/mm³ (Chiếm 74.4% các ca sốt kéo dài trong bệnh cảnh HIV)",
+            "sourceGuideline": "Nguyen et al. BMC Infect Dis 2022 & WHO Guidelines 2025"
+        },
+        {
+            "id": "fuo_non_infectious_biopsy",
+            "type": "imaging",
+            "label": "[Hình ảnh học & Mô bệnh học]: Căn nguyên không nhiễm trùng (HLH 2.1%, U lympho Non-Hodgkin 1.5%)",
+            "description": "[Cận lâm sàng & Giải phẫu bệnh]: Giảm 3 dòng tế bào máu, Ferritin máu tăng vọt > 1000 ng/mL, hình ảnh thực bào tế bào máu trên tủy đồ (HLH); Sinh thiết hạch/khối u xác định U lympho tế bào B/não.",
+            "labThreshold": "Ferritin > 1000 ng/mL; Tủy đồ có hình ảnh thực bào tế bào máu; Sinh thiết hạch (+)",
+            "sourceGuideline": "BYT 2021 & Nguyen et al. 2022"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1: Sốt kéo dài ở người nhiễm HIV có CD4 ≥ 200 cells/mm³ (Tỷ lệ nguy cơ NTCH lan tỏa thấp)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Sốt nhẹ hoặc từng đợt, thể trạng tương đối ổn định, không khó thở, không có tổn thương thần kinh trung ương. [Cận lâm sàng]: T-CD4 ≥ 200 cells/mm³. Căn nguyên thường gặp: Lao phổi/ngoại phổi sớm, Viêm phổi vi khuẩn, Dị ứng thuốc (CTX, NVP, ABC), Sốt do HIV.",
+            "triage": "Khám Ngoại trú OPC / Khám chuyên khoa Truyền nhiễm",
+            "primaryAction": "Tầm soát Lao (GeneXpert đờm/dịch, X-quang phổi); Cấy máu, CTM; Rà soát tiền sử dùng thuốc ngừa dị ứng; Khởi động ARV TLD nếu chưa điều trị.",
+            "targetVitals": "Sinh hiệu ổn định, cắt sốt sau khi điều trị nguyên nhân, CD4 nâng > 350 cells/mm³"
+        },
+        {
+            "grade": "Mức độ 2: Sốt kéo dài ở người nhiễm HIV có CD4 50–199 cells/mm³ (Suy giảm miễn dịch nặng - NTCH tiến triển)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sốt kéo dài > 2–4 tuần, sụt cân > 10%, ho, tiêu chảy mạn tính, hạch to, gầy mòn. [Cận lâm sàng]: T-CD4 50–199 cells/mm³. Căn nguyên thường gặp: Lao lan tỏa/Lao ổ bụng, Viêm phổi PCP, Talaromycosis, Toxoplasma não, Nhiễm trùng huyết Salmonella.",
+            "triage": "Nhập viện Nội trú Khoa Truyền nhiễm Tuyến Tỉnh / Trung ương",
+            "primaryAction": "Thực hiện Gói xét nghiệm AHD khẩn (LF-LAM, CrAg máu, GeneXpert, cấy máu tìm vi khuẩn & nấm); Điều trị kinh nghiệm NTCH theo định hướng lâm sàng; Trì hoãn ARV 2–4 tuần nếu có NTCH cấp tính.",
+            "targetVitals": "Cắt sốt, ngắt nguy cơ suy hô hấp, SpO2 > 95% khí trời, hemoglobin ổn định"
+        },
+        {
+            "grade": "Mức độ 3: Sốt kéo dài ở người nhiễm HIV có CD4 < 50 cells/mm³ / Cực kỳ nguy cơ hoặc Cờ đỏ Cấp cứu",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Sốt cao liên tục, suy kiệt nặng (BMI < 16), sẩn hoại tử da hoại tử rốn trung tâm, rối loạn tri giác, khó thở cấp, giảm 3 dòng tế bào máu sâu. [Cận lâm sàng]: T-CD4 < 50 cells/mm³ (chiếm 74.4% ca sốt kéo dài), nguy cơ cực cao mắc Talaromycosis lan tỏa, Cryptococcus, MAC, CMV tạng, HLH, hoặc Đồng nhiễm 2-3 tác nhân (chiếm 46.2%).",
+            "triage": "Hồi sức Cấp cứu (ICU) / Cấp cứu Truyền nhiễm Bệnh viện Tuyến Tỉnh - Trung ương",
+            "primaryAction": "Hồi sức chức năng sống; Nạp trọn gói AHD & Chọc hút tủy xương / Sinh thiết hạch khẩn; Truyền Liposomal Amphotericin B nếu nghi Talaromyces/Cryptococcus; Co-trimoxazole liều cao nếu nghi PCP; Phác đồ Chống Lao nếu nghi Lao; Dùng Corticoid/Etoposide nếu xác chẩn HLH.",
+            "targetVitals": "Khống chế suy đa tạng, SpO2 ≥ 95%, nâng huyết áp, cắt sốt, bài niệu > 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Hướng dẫn Tiếp cận Chẩn đoán và Xử trí Sốt kéo dài ở người lớn nhiễm HIV/AIDS (BYT Quyết định 5968/QĐ-BYT 2021 & Hướng dẫn Lâm sàng BYT 2019)",
+        "guideline": "Quyết định 5968/QĐ-BYT ngày 31/12/2021 Bộ Y tế Việt Nam & Hướng dẫn Chẩn đoán và Điều trị HIV/AIDS BYT 2019",
+        "targetGoals": [
+            "Xác định chính xác căn nguyên gây sốt kéo dài (ưu tiên phát hiện Lao, Talaromyces, PCP, Sepsis, Cryptococcus, HLH, NHL).",
+            "Phát hiện và xử trí tình trạng ĐỒNG NHIỄM ĐA TÁC NHÂN (xuất hiện ở 46.2% bệnh nhân sốt kéo dài có CD4 < 50 cells/mm³).",
+            "Cắt sốt an toàn, hồi sức thể trạng, phòng ngừa suy đa tạng và khởi động ARV phác đồ TLD đúng thời điểm vàng."
+        ],
+        "initialManagement": [
+            "Hỏi tiền sử & Bệnh sử tỉ mỉ: Các thuốc đã dùng (CTX, NVP, ABC, ARV khác), thời gian sốt, tiền sử mắc Lao/NTCH cũ, triệu chứng kèm theo (ho, đau đầu, tiêu chảy, phát ban, nuốt đau).",
+            "Thăm khám lâm sàng toàn diện: Tìm nấm miệng Candida, phát ban sẩn hoại tử da (T. marneffei), hạch ngoại vi, gan lách to, dấu hiệu màng não, khám soi đáy mắt (CMV).",
+            "Thực hiện thuật toán xét nghiệm nấc thang theo mức CD4: CTM, CD4, Xpert MTB/RIF đờm/dịch, LF-LAM nước tiểu, CrAg máu, Cấy máu tìm vi khuẩn & nấm, Chọc tủy xương (khi thiếu máu/giảm 3 dòng)."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Phác đồ Điều trị Lao phối hợp (2RHZE / 4RH)",
+                "class": "Điều trị căn nguyên Lao (Chiếm 46.7% các ca FUO)",
+                "route": "PO",
+                "dosage": "Rifampicin + Isoniazid + Pyrazinamide + Ethambutol uống hàng ngày vào buổi sáng lúc đói",
+                "frequency": "1 lần/ngày",
+                "instructions": "BẮT BUỘC dùng thuốc chống Lao ngay khi có bằng chứng Xpert (+), LF-LAM (+) hoặc lâm sàng/X-quang hướng tới Lao. Tăng liều DTG lên 50mg x 2 lần/ngày khi phối hợp với Rifampicin.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Liposomal Amphotericin B / Amphotericin B deoxycholate",
+                "class": "Thuốc kháng nấm đường tĩnh mạch điều trị Talaromyces marneffei lan tỏa (29.2%) & Cryptococcus (2.6%)",
+                "route": "IV",
+                "dosage": "Talaromycosis: Liposomal Amphotericin B 3–5 mg/kg/ngày (hoặc Amphotericin B 0.7–1.0 mg/kg/ngày) x 2 tuần; Cryptococcus: L-AmB 3–4 mg/kg/ngày x 1–2 tuần",
+                "frequency": "Truyền tĩnh mạch chậm 1 lần/ngày",
+                "instructions": "Truyền 500–1000 mL Ringer Lactate + 20 mEq KCl trước khi truyền Amphotericin B để ngừa độc thận và hạ Kali máu. Chuyển Fluconazole 800mg/ngày hoặc Itraconazole 400mg/ngày củng cố.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Co-trimoxazole liều cao (Trimethoprim / Sulfamethoxazole)",
+                "class": "Kháng sinh điều trị PCP (20.5%) & Viêm não Toxoplasma (5.6%)",
+                "route": "PO / IV",
+                "dosage": "PCP: TMP 15–20 mg/kg/ngày + SMX 75–100 mg/kg/ngày chia 3 lần/ngày x 21 ngày; Toxoplasma: TMP 10 mg/kg/ngày x 6 tuần",
+                "frequency": "Chia 3–4 lần/ngày cách 6–8 giờ",
+                "instructions": "Thêm Prednisolone 40mg x 2 lần/ngày x 5 ngày (sau đó giảm liều) nếu PCP gây suy hô hấp SpO2 < 90%.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Kháng sinh phổ rộng đường tĩnh mạch (Ceftriaxone / Piperacillin-Tazobactam / Meropenem)",
+                "class": "Điều trị Nhiễm trùng huyết (10.3%) & Viêm phổi vi khuẩn (11.3%)",
+                "route": "IV",
+                "dosage": "Ceftriaxone 2g/ngày IV; Piperacillin-Tazobactam 4.5g q6h IV hoặc Meropenem 1g q8h IV",
+                "frequency": "Mỗi 6–12 giờ tùy thuốc",
+                "instructions": "Chỉ định khi nghi ngờ nhiễm trùng huyết vi khuẩn Gram âm/Gram dương hoặc viêm phổi bội nhiễm nặng.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Ganciclovir / Valganciclovir",
+                "class": "Thuốc kháng virus điều trị Bệnh do Cytomegalovirus - CMV tạng (10.3%)",
+                "route": "IV / PO",
+                "dosage": "Ganciclovir 5 mg/kg IV q12h x 14–21 ngày; hoặc Valganciclovir 900 mg PO bid x 21 ngày",
+                "frequency": "2 lần/ngày cách 12 giờ",
+                "instructions": "Chỉ định khi có viêm võng mạc CMV, viêm thực quản/đại tràng CMV hoặc sốt kéo dài do CMV có PCR CMV tải lượng cao ở bệnh nhân CD4 < 50."
+            },
+            {
+                "drugName": "Clarithromycin + Ethambutol (+ Rifabutin)",
+                "class": "Phác đồ điều trị Nhiễm Phức hợp Mycobacterium avium (MAC - 1.0%)",
+                "route": "PO",
+                "dosage": "Clarithromycin 500mg x 2 lần/ngày + Ethambutol 15 mg/kg/ngày (+ Rifabutin 300mg/ngày)",
+                "frequency": "Hàng ngày",
+                "instructions": "Cân nhắc chẩn đoán MAC khi bệnh nhân sốt kéo dài CD4 < 50 không đáp ứng với điều trị Lao sau 2–4 tuần."
+            }
+        ],
+        "supportiveCare": [
+            "Rà soát ngưng các thuốc nghi ngờ gây dị ứng (NVP, ABC, Co-trimoxazole) nếu nghi sốt do dị ứng thuốc.",
+            "Chọc hút tủy xương làm Tủy đồ & Sinh thiết tủy xương nếu có giảm 3 dòng tế bào máu để tìm Nấm T. marneffei, Lao, HLH hoặc U lympho.",
+            "Hồi sức dinh dưỡng cao năng lượng, truyền khối hồng cầu nếu Hb < 7-8 g/dL, theo dõi cẩn trọng Hội chứng IRIS."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Đồng nhiễm Đa tác nhân (Multiopathogen Co-infections - Chiếm 46.2% các ca FUO)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Sốt cao dai dẳng không giảm dù đã điều trị 1 căn nguyên, xuất hiện đồng thời tổn thương da hoại tử (Talaromyces) + ho suy hô hấp (PCP/Lao).",
+            "preventiveAction": "Không dừng lại ở 1 chẩn đoán đơn độc khi bệnh nhân có CD4 < 50 cells/mm³; Tầm soát song song Lao + Talaromyces + PCP + CMV; Phối hợp phác đồ điều trị đa căn nguyên.",
+            "onCallAlertText": "BÁO ĐỘNG ĐỎ ĐỒNG NHIỄM ĐA TÁC NHÂN: Bệnh nhân CD4 < 50 sốt kéo dài không hạ -> Cho làm GeneXpert + cấy máu nấm + PCR PCP/CMV khẩn! Cân nhắc phối hợp chống Lao + Kháng nấm!"
+        },
+        {
+            "name": "Hội chứng Thực bào máu thứ phát do HIV / NTCH (Hemophagocytic Lymphohistiocytosis - HLH - Chiếm 2.1%)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Sốt cao liên tục không hạ, gan lách to, giảm dốc đứng 2 hoặc 3 dòng tế bào máu (Hb, WBC, PLT), Ferritin máu tăng cực cao (> 1000–10.000 ng/mL), Triglyceride tăng, Fibrinogen giảm.",
+            "preventiveAction": "Làm Tủy đồ khẩn tìm hình ảnh thực bào tế bào máu; Điều trị nguyên nhân NTCH nền (Lao, Talaromyces); Cân nhắc dùng Dexamethasone/Etoposide theo chuyên khoa Huyết học.",
+            "onCallAlertText": "Y LỆNH CẤP CỨU HLH THỨ PHÁT: Sốt cao + Ferritin > 1000 + Giảm 3 dòng máu -> Cho chọc tủy đồ khẩn! Hội chẩn Huyết học dùng Dexamethasone!"
+        },
+        {
+            "name": "U lympho Không Hodgkin (Non-Hodgkin Lymphoma - NHL - Chiếm 1.5%)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt kéo dài kèm vã mồ hôi đêm, sụt cân nặng, hạch to lan tỏa nhiều vùng cứng chắc không đau, khối u ổ bụng/trung thất, LDH máu tăng cao.",
+            "preventiveAction": "Sinh thiết hạch ngoại vi hoặc khối u làm Mô bệnh học & Hóa mô miễn dịch; Chụp CT ngực/bụng; Chuyển chuyên khoa Ung bướu/Huyết học điều trị hóa chất.",
+            "onCallAlertText": "Y LỆNH SÔI BỘ NHL: Hạch to lan tỏa + Sốt vã mồ hôi đêm -> Cho sinh thiết hạch khẩn làm giải phẫu bệnh!"
+        },
+        {
+            "name": "Hội chứng Viêm phục hồi miễn dịch (IRIS) bùng phát sốt sau uống ARV",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bệnh nhân mới khởi động ARV trong vòng 2–12 tuần xuất hiện sốt cao bùng phát trở lại, hạch lao hóa mủ vỡ, tổn thương nấm/lao cũ bùng phát nặng dồn dập.",
+            "preventiveAction": "TIẾP TỤC ĐIỀU TRỊ ARV; Tăng cường điều trị đặc hiệu NTCH căn nguyên; Dùng Prednisolone 0.5–1.0 mg/kg/ngày x 1–2 tuần.",
+            "onCallAlertText": "Y LỆNH BÁO ĐỘNG IRIS: Bệnh nhân mới uống ARV bùng sốt dồn dập -> Duy trì ARV, cho Prednisolone 0.5mg/kg/ngày!"
+        }
+    ],
+    "monitoringLabs": [
+        "Số lượng T-CD4: Lúc tiếp nhận chẩn đoán FUO và sau 3–6 tháng điều trị.",
+        "Cấy máu tìm Vi khuẩn & Nấm Talaromyces marneffei: Làm ít nhất 2 mẫu cấy máu ở các thời điểm sốt.",
+        "GeneXpert MTB/RIF đờm/dịch & LF-LAM nước tiểu: Tầm soát Lao hệ thống ở tất cả bệnh nhân sốt kéo dài.",
+        "Công thức máu & Tủy đồ: Đánh giá tình trạng thiếu máu, giảm tiểu cầu, bạch cầu và tìm hình ảnh thực bào tế bào máu (HLH) hoặc tế bào nấm/lao.",
+        "Ferritin, Fibrinogen, Triglyceride, LDH: Tầm soát Hội chứng thực bào máu HLH và U lympho NHL khi sốt kéo dài chưa rõ nguyên nhân.",
+        "Men gan (AST, ALT), Creatinine, eGFR: Theo dõi độc tính thuốc chống Lao, Amphotericin B và ARV."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Bệnh nhân sốt kéo dài có CD4 < 50 cells/mm³ (74.4% các ca bệnh)",
+            "adjustments": "Tầm soát diện rộng lập tức: Lao (GeneXpert + LF-LAM) + Nấm Talaromyces (Soi/cấy máu/da) + PCP (Soi/PCR đờm) + CMV (PCR máu) + Cryptococcus (CrAg máu).",
+            "cautions": "Đặc biệt lưu ý nguy cơ Đồng nhiễm từ 2–3 tác nhân cùng lúc (46.2%). Không thỏa mãn với một chẩn đoán duy nhất nếu sốt không cải thiện."
+        },
+        {
+            "population": "Bệnh nhân đang điều trị ARV xuất hiện Sốt kéo dài",
+            "adjustments": "Phân biệt 3 khả năng: (1) Hội chứng IRIS bùng phát NTCH tiềm ẩn; (2) Thất bại điều trị ARV (Đo tải lượng vi rút HIV RNA); (3) Dị ứng thuốc ARV/CTX.",
+            "cautions": "Nếu HIV RNA > 1000 copies/mL: Tiến hành tư vấn EAC và xem xét chuyển phác đồ Bậc 2."
+        },
+        {
+            "population": "Bệnh nhân sốt kéo dài kèm Giảm 3 dòng tế bào máu (Thiếu máu + Giảm bạch cầu + Giảm tiểu cầu)",
+            "adjustments": "Chỉ định Chọc hút tủy xương làm Tủy đồ, Cấy tủy xương tìm Lao/Nấm và Sinh thiết tủy xương.",
+            "cautions": "Cảnh giác cao độ với Talaromycosis tủy xương, Lao tủy xương, Hội chứng thực bào máu HLH và U lympho tủy xương."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1_fuo_triage",
+            "dayRange": "N1 - N7",
+            "phaseName": "Giai đoạn Sàng lọc Cấp cứu & Tiếp cận Hội chứng Sốt kéo dài",
+            "clinicalGoal": "Đánh giá sinh hiệu nguy hiểm, phân tầng nguy cơ theo CD4, thực hiện Gói xét nghiệm nhanh AHD (GeneXpert, LF-LAM, CrAg, Cấy máu/da) và rà soát dị ứng thuốc.",
+            "problems": [
+                {
+                    "id": "p1_fuo_screening",
+                    "problemName": "Tầm soát các nguyên nhân NTCH phổ biến hàng đầu (Lao 46.7%, Talaromyces 29.2%, PCP 20.5%)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Gói Xét nghiệm AHD",
+                            "content": "Làm GeneXpert đờm/dịch + LF-LAM nước tiểu + CrAg máu + Cấy máu vi khuẩn/nấm + Soi cấy tổn thương da.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Điều trị kinh nghiệm",
+                            "content": "Dùng Co-trimoxazole liều cao nếu nghi PCP/Toxoplasma; Dùng Kháng sinh phổ rộng nếu nghi Nhiễm trùng huyết; Khởi động Chống Lao nếu LF-LAM (+) hoặc nghi Lao rõ.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt (T°), Nhịp thở, SpO2, Mạch, HA, Tổn thương da mới",
+                            "frequency": "q4-8h",
+                            "target": "Kiểm soát sinh hiệu, phát hiện cờ đỏ cấp cứu"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_septic_shock",
+                    "problemName": "Sốc nhiễm trùng / Suy hô hấp cấp ở bệnh nhân sốt kéo dài suy kiệt",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức Cấp cứu",
+                            "content": "Thở oxy mask/CPAP, bù dịch Ringer Lactate, dùng Vận mạch Noradrenaline nếu HA tụt."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp trung bình (MAP), SpO2, Bài niệu",
+                            "frequency": "q1h",
+                            "target": "MAP >= 65 mmHg, SpO2 >= 95%"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc đặc hiệu/Kinh nghiệm",
+                    "content": "Phác đồ chống Lao 2RHZE / CTX liều cao PCP / Kháng sinh phổ rộng / Kháng nấm Amphotericin B.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Thân nhiệt q4h, Mạch, HA, SpO2",
+                    "frequency": "q4h",
+                    "target": "Ổn định sinh hiệu"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[BẮT BUỘC cấy máu tìm Nấm T. marneffei & Vi khuẩn trước khi cho kháng sinh/kháng nấm]",
+                    "[Rà soát ngưng các thuốc nghi ngờ gây dị ứng sốt (CTX, NVP, ABC)]"
+                ],
+                "triageOrDischargeCriteria": "Nhập viện nội trú 100% đối với tất cả bệnh nhân HIV sốt kéo dài có CD4 < 200 cells/mm³."
+            }
+        },
+        {
+            "id": "phase_2_fuo_deep_investigation",
+            "dayRange": "N8 - N21",
+            "phaseName": "Giai đoạn Chẩn đoán Chuyên sâu, Sinh thiết & Điều trị Đặc hiệu",
+            "clinicalGoal": "Thực hiện các thủ thuật xâm lấn (Chọc tủy xương, Sinh thiết hạch) cho các ca chưa rõ nguyên nhân, điều trị triệt để căn nguyên và xử trí Đồng nhiễm.",
+            "problems": [
+                {
+                    "id": "p2_invasive_diagnostics",
+                    "problemName": "Thăm dò xâm lấn khi xét nghiệm không xâm lấn âm tính (Tìm HLH, NHL, Lao/Nấm ẩn)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thủ thuật Chẩn đoán",
+                            "content": "Chọc hút tủy xương làm Tủy đồ + Cấy tủy xương + Sinh thiết hạch/khối u gửi Mô bệnh học.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Điều trị đặc hiệu nhắm đích",
+                            "content": "L-AmB cho Talaromyces/Cryptococcus; 2RHZE cho Lao; Co-trimoxazole cho PCP; Dexamethasone cho HLH.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả Tủy đồ, Ferritin, CTM, Men gan, Creatinine",
+                            "frequency": "q3-7d",
+                            "target": "Xác định căn nguyên & Đánh giá đáp ứng"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_drug_toxicity",
+                    "problemName": "Độc tính chồng lấp của thuốc (Độc gan do Thuốc Lao/ARV, Suy thận do Amphotericin B)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí độc tính",
+                            "content": "Bù Ringer Lactate + KCl ngừa độc thận L-AmB; Theo dõi men gan AST/ALT."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Creatinine, K+, Mg2+, AST, ALT",
+                            "frequency": "q48h trong đợt truyền Amphotericin B",
+                            "target": "Creatinine và Điện giải đồ ổn định"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc đặc hiệu",
+                    "content": "Thuốc Chống Lao / Kháng nấm Amphotericin B / Co-trimoxazole / Kháng sinh.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Biểu đồ nhiệt độ hàng ngày, Đáp ứng lâm sàng",
+                    "frequency": "q24h",
+                    "target": "Xu hướng hạ sốt rõ rệt"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Nếu sốt không giảm sau 7–10 ngày điều trị Lao: Cần đánh giá ngay nguy cơ ĐỒNG NHIỄM Nấm T. marneffei hoặc Kháng thuốc Lao]",
+                    "[Trì hoãn ARV 2–4 tuần trong giai đoạn điều trị cấp tính NTCH]"
+                ],
+                "triageOrDischargeCriteria": "Tiếp tục quản lý nội trú đến khi cắt sốt hoàn toàn ít nhất 48 giờ."
+            }
+        },
+        {
+            "id": "phase_3_fuo_consolidation_art",
+            "dayRange": "N22 - Lâu dài",
+            "phaseName": "Giai đoạn Củng cố, Khởi động ARV & Dự phòng Tái phát",
+            "clinicalGoal": "Chuyển sang phác đồ củng cố đường uống (Fluconazole/Itraconazole/RH), khởi động ARV phác đồ TLD, theo dõi IRIS và quản lý ngoại trú.",
+            "problems": [
+                {
+                    "id": "p3_art_and_prophylaxis",
+                    "problemName": "Khởi động ARV phác đồ TLD & Duy trì dự phòng NTCH",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Khởi động ARV",
+                            "content": "Bắt đầu TLD (TDF + 3TC + DTG) 1 viên/ngày uống buổi tối. Tăng DTG 50mg x 2 lần/ngày nếu đang dùng Rifampicin trị Lao.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Dự phòng NTCH",
+                            "content": "Duy trì Co-trimoxazole 960mg/ngày + Itraconazole 200mg/ngày (dự phòng Talaromyces) + 3HP (dự phòng Lao tiềm ẩn nếu chưa mắc Lao).",
+                            "isHighlighted": false
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dấu hiệu báo động IRIS (Sốt bùng phát, hạch sưng vỡ mủ)",
+                            "frequency": "Tái khám sau 2 tuần và mỗi tháng",
+                            "target": "Không có IRIS nặng"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "Tải lượng vi rút HIV RNA & CD4",
+                            "frequency": "Tháng thứ 6 sau khi uống ARV",
+                            "target": "HIV RNA < 50 copies/mL (K=K)"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_iris_relapse",
+                    "problemName": "Hội chứng IRIS bùng phát hoặc Tái phát NTCH do bỏ trị",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí IRIS/Tái phát",
+                            "content": "Duy trì ARV; Dùng Prednisolone 0.5mg/kg/ngày x 1–2 tuần cho IRIS; Tái củng cố phác đồ NTCH."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt, Hạch sưng, Lâm sàng",
+                            "frequency": "Mỗi lần tái khám",
+                            "target": "Duy trì trạng thái cắt sốt"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD 1 viên/ngày liên tục suốt đời.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Tải lượng HIV RNA 6–12 tháng/lần",
+                    "frequency": "6-12 tháng/lần",
+                    "target": "HIV RNA < 50 copies/mL"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không ngắt ARV khi có IRIS nhẹ - trung bình]",
+                    "[Tư vấn kỹ bệnh nhân tuân thủ uống thuốc ARV > 95% hàng ngày]"
+                ],
+                "triageOrDischargeCriteria": "Xuất viện quản lý ngoại trú OPC khi đã cắt sốt ổn định, dung nạp tốt ARV và phác đồ củng cố."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_multi_oi_coinfection",
+            "complicationName": "Đồng nhiễm Đa tác nhân (Multiopathogen Co-infections - Chiếm 46.2%)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Sốt cao kéo dài không hạ dù đang điều trị 1 căn nguyên, xuất hiện phối hợp Lao + Talaromyces + PCP hoặc CMV trên bệnh nhân CD4 < 50 cells/mm³]",
+            "actionProtocol": "[Tầm soát toàn diện gói AHD; Không dừng lại ở 1 chẩn đoán; Phối hợp phác đồ điều trị đa căn nguyên (Chống Lao + Kháng nấm Amphotericin B + Co-trimoxazole)]",
+            "monitoringMetrics": "[Thân nhiệt q4h, Biểu đồ sốt, Xpert, Cấy máu nấm/vi khuẩn q7d]"
+        },
+        {
+            "id": "comp_hlh_syndrome",
+            "complicationName": "Hội chứng Thực bào máu thứ phát (HLH - Chiếm 2.1%)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Sốt cao liên tục, gan lách to, giảm 3 dòng tế bào máu sâu, Ferritin > 1000 ng/mL, Triglyceride tăng, Fibrinogen giảm]",
+            "actionProtocol": "[Chọc tủy đồ xác định hình ảnh thực bào tế bào máu; Điều trị NTCH nền; Dùng Dexamethasone theo phác đồ Huyết học]",
+            "monitoringMetrics": "[Ferritin, Fibrinogen, CTM, Triglyceride q3d]"
+        },
+        {
+            "id": "comp_drug_fever_allergy",
+            "complicationName": "Sốt do Dị ứng Thuốc (Drug-Induced Fever - CTX, NVP, ABC)",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "[Sốt xuất hiện sau khi dùng thuốc nghi ngờ, kèm phát ban sẩn ngứa/Stevens-Johnson, tăng bạch cầu ái toan (Eosinophil), các xét nghiệm vi sinh NTCH hoàn toàn âm tính]",
+            "actionProtocol": "[Rà soát và tạm ngưng thuốc nghi ngờ gây dị ứng; Chuyển đổi sang phác đồ ARV/Kháng sinh thay thế; Dùng Antihistamine/Corticoid nếu dị ứng nặng]",
+            "monitoringMetrics": "[Thân nhiệt, Bạch cầu ái toan CTM, Thương tổn da q24h]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: Luôn nghĩ đến ĐỒNG NHIỄM ĐA TÁC NHÂN (chiếm 46.2%) ở bệnh nhân HIV sốt kéo dài có CD4 < 50 cells/mm³; không dừng lại khi mới tìm thấy 1 nguyên nhân]",
+            "[Cảnh báo 2: Nấm Talaromyces marneffei là căn nguyên gây sốt kéo dài đứng thứ 2 (29.2%) chỉ sau Lao (46.7%) tại Việt Nam, đặc biệt ở nhóm CD4 < 50 cells/mm³]",
+            "[Cảnh báo 3: BẮT BUỘC chọc hút tủy xương làm Tủy đồ & Cấy tủy xương ở bệnh nhân sốt kéo dài có giảm 3 dòng tế bào máu để không bỏ sót Talaromyces, Lao tủy, HLH hoặc U lympho]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định quy kết sốt kéo dài là do bản thân virus HIV mà chưa tiến hành thăm dò loại trừ triệt để các NTCH và bệnh lý ác tính]",
+            "[Chống chỉ định ngưng điều trị chống Lao khi mới điều trị 1–2 tuần mà chưa hạ sốt (Lao ở người HIV CD4 thấp thường đáp ứng hạ sốt chậm hơn)]",
+            "[Chống chỉ định khởi động ARV ngay lập tức khi bệnh nhân đang sốt cấp tính chưa rõ nguyên nhân hoặc chưa loại trừ Viêm màng não Cryptococcus/Lao màng não]"
+        ],
+        "dischargeCriteria": [
+            "[Đã xác định được căn nguyên gây sốt kéo dài và bệnh nhân đã cắt sốt liên tục ít nhất 48–72 giờ]",
+            "[Các chỉ số sinh hiệu (SpO2, Mạch, HA) hoàn toàn ổn định, dung nạp tốt với phác đồ điều trị đặc hiệu đường uống]",
+            "[Đã khởi động ARV phác đồ TLD an toàn hoặc có kế hoạch hẹn thời điểm khởi động ARV rõ ràng]",
+            "[Bệnh nhân và gia đình được tư vấn đầy đủ về tuân thủ điều trị, lịch tái khám và các dấu hiệu cờ đỏ IRIS cần nhập viện ngay]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán Sốt kéo dài chưa rõ nguyên nhân (FUO) ở người lớn nhiễm HIV/AIDS",
+            "searchKeyword": "chan doan sot keo dai hiv fuo cd4 < 50 nguyen 2022"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị nấc thang sốt kéo dài ở người nhiễm HIV theo nguyên nhân (Lao, Talaromyces, PCP, HLH)",
+            "searchKeyword": "phac do dieu tri sot keo dai hiv lao talaromyces pcp hlh byt"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học căn nguyên sốt kéo dài tại Việt Nam (NHTĐ 2016-2019) và Ma trận phân tầng nguy cơ theo CD4",
+            "searchKeyword": "dich te sot keo dai hiv viet nam nhtd lao talaromyces"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và Xử trí Cấp cứu Hội chứng Thực bào máu HLH, U lympho NHL & Đồng nhiễm đa tác nhân",
+            "searchKeyword": "bien chung sot keo dai hiv hlh non hodgkin lymphoma dong nhiem"
+        }
+    ]
+}

@@ -3743,6 +3743,34 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504840/pdf/13017_2017_Article_141.pdf"
   },
   {
+    "id": "2019-byt-hiv",
+    "title": "Bộ Y Tế 2019: Hướng Dẫn Điều Trị & Chăm Sóc HIV/AIDS (QĐ 5456/QĐ-BYT) — Toàn Diện ARV, K=K, Phác Đồ Bậc 1–2, Nhiễm Trùng Cơ Hội & Tiếp Cận Hội Chứng Lâm Sàng",
+    "titleEn": "Vietnam MOH 2019 Guidelines on HIV/AIDS Treatment and Care (Decision 5456/QD-BYT) — Comprehensive ART, U=U, First- and Second-line Regimens, Opportunistic Infections and Syndromic Approaches",
+    "sourceType": "vn-moh",
+    "specialty": "infect",
+    "design": "guideline",
+    "impact": "practice-changing",
+    "year": 2019,
+    "organization": "Bộ Y tế Việt Nam",
+    "journal": "Bộ Y tế Việt Nam",
+    "file": "2019-byt-hiv.mdx",
+    "conditionKey": "hiv-aids",
+    "icd10": [
+      "B20",
+      "B24",
+      "Z21"
+    ],
+    "intervention": "Khởi động ARV ngay trong ngày (Same-day ART) hoặc trong vòng 7 ngày cho mọi người nhiễm HIV; Phác đồ bậc một ưu tiên TDF + 3TC + DTG (TLD); Lan tỏa thông điệp K=K (Không phát hiện = Không lây truyền khi tải lượng < 200 bản sao/mL); Tiêu chuẩn chẩn đoán thất bại vi rút học (≥ 1.000 bản sao/mL) và phác đồ bậc hai AZT + 3TC + DTG (hoặc LPV/r); Phối hợp điều trị Lao và tăng gấp đôi liều DTG khi dùng chung Rifampicin; Phân tầng nguy cơ PMTCT (NVP hoặc NVP+AZT 6-12 tuần); Dự phòng PrEP hàng ngày và ED-PrEP 2+1+1 cho MSM; Dự phòng PEP 72 giờ vàng bằng TLD x 28 ngày; Dự phòng Lao tiềm ẩn (TPT 3HP/6H) và Co-trimoxazole (CTX 960mg); Phác đồ điều trị NTCH (PCP, Cryptococcus, Talaromyces, Toxoplasma não, MAC, CMV, STIs); Đồng nhiễm HBV/HCV & tương tác DAAs-ARV; Bảng điểm Child-Pugh chỉnh liều ARV suy gan; Quy trình bộc lộ tình trạng bệnh ở trẻ 6 và 10-12 tuổi; Thuật toán tiếp cận 14 hội chứng lâm sàng người lớn và trẻ em.",
+    "primaryEndpoint": "Cung cấp khung hướng dẫn quốc gia toàn diện về chẩn đoán, điều trị kháng vi-rút ARV, kiểm soát tải lượng vi-rút, dự phòng phơi nhiễm và quản lý nhiễm trùng cơ hội nhằm đạt mục tiêu 90-90-90 và chấm dứt đại dịch AIDS tại Việt Nam.",
+    "keyResults": "Khởi động ARV không phụ thuộc số lượng tế bào CD4 | Tải lượng vi-rút < 200 bản sao/mL triệt tiêu nguy cơ lây truyền qua đường tình dục (K=K) | Phác đồ ưu tiên hàng đầu TDF+3TC+DTG | Thất bại vi rút học khi tải lượng ≥ 1.000 bản sao/mL sau 3 tháng can thiệp EAC | PrEP giảm 97% nguy cơ lây truyền qua đường tình dục | Điều trị sớm PCP bằng CTX liều cao phối hợp Corticoid | Điều trị tấn công nấm Cryptococcus bằng Amphotericin B + Flucytosine và chọc tháo DNT.",
+    "summary": "Hướng dẫn quốc gia toàn diện ban hành theo Quyết định 5456/QĐ-BYT ngày 20/11/2019 của Bộ Y tế: Tích hợp đầy đủ tiêu chuẩn Same-day ART, phác đồ TLD, thông điệp K=K, dự phòng kép PrEP & PEP, quản lý đồng nhiễm Lao/HBV/HCV, độc tính ARV, và hệ thống 15 sơ đồ thuật toán tiếp cận hội chứng lâm sàng chi tiết ở người lớn và trẻ em.",
+    "detailedConclusion": "Bác sĩ lâm sàng áp dụng nguyên tắc 5Cs trong xét nghiệm, khởi động ARV phác đồ TLD ngay cho mọi người nhiễm HIV, theo dõi tải lượng định kỳ để bảo đảm mục tiêu K=K. Tích cực sàng lọc 4 triệu chứng Lao và chỉ định TPT/CTX dự phòng. Khi người bệnh có biểu hiện hội chứng lâm sàng (sốt kéo dài, hô hấp, thần kinh, tiêu chảy, hạch to, nuốt đau, thiếu máu, tổn thương da niêm, suy mòn), tuân thủ nghiêm ngặt lưu đồ tiếp cận từng bước để phát hiện và điều trị kịp thời các bệnh nhiễm trùng cơ hội nguy hiểm.",
+    "drug": "Tenofovir, Lamivudine, Emtricitabine, Dolutegravir, Efavirenz, Nevirapine, Zidovudine, Abacavir, Lopinavir/ritonavir, Atazanavir/ritonavir, Darunavir/ritonavir, Raltegravir, Co-trimoxazole, Isoniazid, Rifapentine, Rifampicin, Fluconazole, Amphotericin B, Flucytosine, Itraconazole, Clarithromycin, Ethambutol, Ganciclovir, Valganciclovir, Acyclovir, Benzathine Penicillin G, Ceftriaxone, Azithromycin, Doxycycline, Sofosbuvir, Velpatasvir, Daclatasvir",
+    "population": "Người lớn, phụ nữ mang thai, trẻ vị thành niên, trẻ em và trẻ sơ sinh nhiễm HIV hoặc phơi nhiễm với HIV; nhóm quần thể đích có nguy cơ cao (MSM, phụ nữ bán dâm, người tiêm chích ma túy).",
+    "asianData": true,
+    "bookmarked": false
+  },
+  {
     "id": "2021-byt-hiv",
     "title": "Bộ Y Tế 2021: Hướng Dẫn Điều Trị & Chăm Sóc HIV/AIDS (QĐ 5968/QĐ-BYT) — Chẩn Đoán, Dự Phòng PrEP & PEP 72 Giờ Vàng",
     "titleEn": "Vietnam MOH 2021 Guidelines on HIV/AIDS Treatment and Care (Decision 5968/QD-BYT) — Diagnosis, PrEP and 72-Hour Golden Window PEP",

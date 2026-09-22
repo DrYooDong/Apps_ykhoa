@@ -27,6 +27,11 @@ import vmn_sv from './vmn_sv.json';
 import hiv from './hiv.json';
 import nt_cohoi from './nt_cohoi.json';
 import vmn_nam from './vmn_nam.json';
+import viem_phoi_benh_vien from './viem_phoi_benh_vien.json';
+import sot_keodai_nguoilon_hivaids from './sot_keodai_nguoilon_hivaids.json';
+import viem_phoi_do_virus from './viem_phoi_do_virus.json';
+import tieu_chay_man_nguoilon_hivaids from './tieu_chay_man_nguoilon_hivaids.json';
+import hach_to_nguoilon_hivaids from './hach_to_nguoilon_hivaids.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
@@ -46,6 +51,11 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'hiv': hiv as unknown as DiseaseReactionChainDefinition,
   'nt_cohoi': nt_cohoi as unknown as DiseaseReactionChainDefinition,
   'vmn_nam': vmn_nam as unknown as DiseaseReactionChainDefinition,
+  'viem_phoi_benh_vien': viem_phoi_benh_vien as unknown as DiseaseReactionChainDefinition,
+  'sot_keodai_nguoilon_hivaids': sot_keodai_nguoilon_hivaids as unknown as DiseaseReactionChainDefinition,
+  'viem_phoi_do_virus': viem_phoi_do_virus as unknown as DiseaseReactionChainDefinition,
+  'tieu_chay_man_nguoilon_hivaids': tieu_chay_man_nguoilon_hivaids as unknown as DiseaseReactionChainDefinition,
+  'hach_to_nguoilon_hivaids': hach_to_nguoilon_hivaids as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);
