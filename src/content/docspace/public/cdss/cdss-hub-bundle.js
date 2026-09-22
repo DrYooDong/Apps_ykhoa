@@ -1,5 +1,5 @@
 (() => {
-  // src/content/docspace/public/cdss/cdss-registry.ts
+  // public/cdss/cdss-registry.ts
   var CDSS_MODULES = [
     {
       id: "cdss-dengue-fluid",
@@ -171,7 +171,7 @@
     return CDSS_MODULES.find((m) => m.slug === slug);
   }
 
-  // src/content/docspace/public/cdss/dengue/dengue-data.ts
+  // public/cdss/dengue/dengue-data.ts
   var CDC_STANDARD_WEIGHT = {
     2: { male: 13, female: 12 },
     3: { male: 14, female: 14 },
@@ -599,7 +599,7 @@
     'B\xE0n giao c\u1EEF r\xF5 r\xE0ng: D\xF9ng n\xFAt "Sao Ch\xE9p B\u1EA3ng B\xE0n Giao C\u1EEF" tr\xEAn CDSS \u0111\u1EC3 d\xE1n v\xE0o phi\u1EBFu theo d\xF5i giao ban.'
   ];
 
-  // src/content/docspace/public/cdss/dengue/dengue-engine.ts
+  // public/cdss/dengue/dengue-engine.ts
   function classifyAgeGroup(ageYears) {
     if (ageYears >= 16) return "adult";
     if (ageYears >= 13) return "adolescent";
@@ -794,7 +794,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     };
   }
 
-  // src/content/docspace/public/cdss/dengue/dengue-ui.ts
+  // public/cdss/dengue/dengue-ui.ts
   var DengueCDSSController = class {
     constructor(containerId) {
       this.currentPlan = null;
@@ -1400,7 +1400,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   };
 
-  // src/content/docspace/public/cdss/xray/xray-canvas-renderer.ts
+  // public/cdss/xray/xray-canvas-renderer.ts
   var XRayCanvasRenderer = class {
     constructor(canvas) {
       this.W = 600;
@@ -1898,7 +1898,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   };
 
-  // src/content/docspace/public/cdss/xray/xray-cases.ts
+  // public/cdss/xray/xray-cases.ts
   var DEFAULT_CASES = [
     {
       id: "case-copd-001",
@@ -2485,7 +2485,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   ];
 
-  // src/content/docspace/public/cdss/xray/xray-ui.ts
+  // public/cdss/xray/xray-ui.ts
   var XRayCDSSController = class {
     constructor(containerId) {
       this.cases = DEFAULT_CASES;
@@ -3030,7 +3030,7 @@ ${findingsSummary}
     }
   };
 
-  // src/content/docspace/public/cdss/index.ts
+  // public/cdss/index.ts
   function initCDSSHub(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;

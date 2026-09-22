@@ -854,6 +854,40 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                         Hiệu chỉnh liều theo CrCl Cockcroft-Gault, eGFR CKD-EPI, lọc máu HD/CRRT, cảnh báo tương tác DDI.
                       </p>
                     </div>
+
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('vancomycin');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('vancomycin'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50/50 hover:from-teal-100/70 hover:to-emerald-100/70 border border-teal-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-teal-700 bg-teal-100 border border-teal-300">
+                          ASHP 2020 &amp; TDM
+                        </span>
+                        <a
+                          href={getCdssAppUrl('vancomycin')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-teal-500 hover:text-teal-700 rounded hover:bg-teal-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-teal-950 group-hover:text-teal-700 transition-colors">
+                        9. CDSS Quản Lý Liều Vancomycin (ASHP 2020)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Tính liều nạp, liều duy trì, chỉnh liều béo phì (Zhang 2024), lọc máu IHD, nồng độ đáy Trough &amp; TDM AUC24/MIC.
+                      </p>
+                    </div>
                   </div>
                 )}
 

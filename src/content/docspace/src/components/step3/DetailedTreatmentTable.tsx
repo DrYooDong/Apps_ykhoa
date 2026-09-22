@@ -63,7 +63,7 @@ interface DetailedTreatmentTableProps {
   renalEgfr?: number;
   renalStage?: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
-  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'vancomycin' | 'hub') => void;
 }
 
 export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({

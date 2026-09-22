@@ -21,6 +21,7 @@ import {
   getRenalDoseAdjustment,
   InteractionSeverity,
 } from '../data/drug-interaction-database.ts';
+import { CdssToolSlug } from '../lib/vaultBridge.ts';
 
 interface SafePrescribingProps {
   prescribedDrugNames?: string[];
@@ -29,7 +30,7 @@ interface SafePrescribingProps {
   patientGender?: string;
   patientCreatinine?: string; // µmol/L hoặc mg/dL
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
-  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
+  onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
 
 export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
@@ -219,8 +220,25 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
             title="Mở CDSS Quản Lý Liều Kháng Sinh & Suy Thận (WHO AWaRe & Sanford)"
           >
             <Pill className="w-3 h-3" />
-            <span className="hidden sm:inline">CDSS Liều Kháng Sinh</span>
+            <span className="hidden sm:inline">CDSS Kháng Sinh</span>
             <span className="sm:hidden">CDSS KS</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (onOpenCdssModal) {
+                onOpenCdssModal('vancomycin');
+              } else {
+                onOpenVaultDrawer?.(undefined, 'vancomycin', 'CDSS');
+              }
+            }}
+            className="flex items-center gap-1 px-2.5 py-1 bg-teal-600 hover:bg-teal-700 text-white border border-teal-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
+            title="Mở CDSS Quản Lý Liều & Dược Động Học Vancomycin (ASHP 2020 & TDM AUC/MIC)"
+          >
+            <Zap className="w-3 h-3 text-amber-300" />
+            <span className="hidden sm:inline">CDSS Vancomycin</span>
+            <span className="sm:hidden">Vanco PK</span>
           </button>
 
           <button

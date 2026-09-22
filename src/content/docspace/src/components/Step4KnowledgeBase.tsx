@@ -865,10 +865,23 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                           type="button"
                           onClick={() => {
                             const t = art.title.toLowerCase();
-                            if (t.includes('kháng sinh') || art.id.toLowerCase().includes('antibiotic')) {
+                            const id = art.id.toLowerCase();
+                            if (t.includes('vancomycin') || id.includes('vancomycin')) {
+                              onOpenCdssModal('vancomycin');
+                            } else if (t.includes('kháng sinh') || id.includes('antibiotic')) {
                               onOpenCdssModal('antibiotic');
                             } else if (t.includes('dengue')) {
                               onOpenCdssModal('dengue');
+                            } else if (t.includes('khí máu') || id.includes('abg')) {
+                              onOpenCdssModal('abg');
+                            } else if (t.includes('x-quang') || id.includes('xray')) {
+                              onOpenCdssModal('xray');
+                            } else if (t.includes('gan') || id.includes('hepa')) {
+                              onOpenCdssModal('hepa');
+                            } else if (t.includes('thần kinh') || id.includes('neuro')) {
+                              onOpenCdssModal('neuro');
+                            } else if (t.includes('vi sinh') || id.includes('microbio')) {
+                              onOpenCdssModal('microbio');
                             } else {
                               onOpenCdssModal('hub');
                             }

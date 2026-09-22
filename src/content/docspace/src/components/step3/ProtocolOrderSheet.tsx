@@ -32,7 +32,7 @@ interface ProtocolOrderSheetProps {
   patientGender?: string;
   patientCreatinine?: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
-  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
+  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'vancomycin' | 'hub') => void;
 }
 
 export const ProtocolOrderSheet: React.FC<ProtocolOrderSheetProps> = ({

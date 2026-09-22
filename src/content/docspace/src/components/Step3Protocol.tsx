@@ -26,6 +26,7 @@ import { ENRICHED_DISEASES } from '../../data/enriched/index.ts';
 import {
   getPathwayArticles,
   VaultArticle,
+  CdssToolSlug,
 } from '../lib/vaultBridge.ts';
 import {
   extractRecommendedDrugs,
@@ -62,7 +63,7 @@ interface Step3Props {
   form?: ClinicalFormState;
   vitals?: VitalsState;
   labs?: LabsState;
-  onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'hub') => void;
+  onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
 
 export const Step3Protocol: React.FC<Step3Props> = ({

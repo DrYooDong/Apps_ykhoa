@@ -12,6 +12,7 @@ import {
   Minimize2,
   Pill,
   Scan,
+  Syringe,
   Wind,
   X,
 } from 'lucide-react';
@@ -108,6 +109,15 @@ const CDSS_TABS: ToolTabMeta[] = [
     colorClass: 'text-sky-700 border-sky-300 bg-sky-50',
     activeBgClass: 'bg-sky-600 text-white shadow-sm',
     desc: 'Tính CrCl Cockcroft-Gault, eGFR CKD-EPI, lọc máu HD/CRRT/CAPD, tương tác DDI và xuất PDF.',
+  },
+  {
+    id: 'vancomycin',
+    title: 'Dược Động Học Vancomycin (ASHP 2020)',
+    badge: 'ASHP 2020 & TDM',
+    icon: <Syringe className="w-4 h-4 text-emerald-600" />,
+    colorClass: 'text-emerald-700 border-emerald-300 bg-emerald-50',
+    activeBgClass: 'bg-emerald-600 text-white shadow-sm',
+    desc: 'Tính liều nạp, liều duy trì, chỉnh liều béo phì (Zhang 2024), lọc máu IHD, nồng độ đáy Trough và AUC24/MIC.',
   },
   {
     id: 'hub',
