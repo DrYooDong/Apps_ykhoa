@@ -144,6 +144,24 @@
       badge: "WHO AWaRe + Sanford + HD/CRRT",
       isStandalone: true,
       standaloneUrl: "antibiotic/index.html"
+    },
+    {
+      id: "cdss-vancomycin-pk",
+      slug: "vancomycin",
+      title: "Qu\u1EA3n L\xFD Li\u1EC1u & D\u01B0\u1EE3c \u0110\u1ED9ng H\u1ECDc Vancomycin (ASHP/IDSA 2020)",
+      titleEn: "Vancomycin Precision Dosing & TDM AUC/MIC CDSS",
+      shortDesc: "H\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng t\xEDnh to\xE1n li\u1EC1u n\u1EA1p, li\u1EC1u duy tr\xEC, ch\u1EC9nh li\u1EC1u theo CrCl/eGFR, b\xE9o ph\xEC (Zhang 2024), l\u1ECDc m\xE1u IHD, gi\xE1m s\xE1t n\u1ED3ng \u0111\u1ED9 \u0111\xE1y Trough v\xE0 TDM AUC24/MIC m\u1EE5c ti\xEAu 400-600 theo h\u01B0\u1EDBng d\u1EABn ASHP/IDSA 2020 v\xE0 BV\u0110K C\xE0 Mau.",
+      category: "pharmacology",
+      categoryName: "D\u01B0\u1EE3c l\xFD & Kh\xE1ng sinh",
+      version: "2.0.0 (ASHP 2020 & BV C\xE0 Mau)",
+      updatedAt: "2026-09-22",
+      author: "CliniPortal Pharmacology Squad & H\u01B0\u1EDBng d\u1EABn ASHP/IDSA/PIDS/SIDP 2020 & BV\u0110K C\xE0 Mau",
+      guidelineSource: "ASHP/IDSA/PIDS/SIDP 2020 Therapeutic Monitoring of Vancomycin & H\u01B0\u1EDBng D\u1EABn S\u1EED D\u1EE5ng Vancomycin BV\u0110K C\xE0 Mau",
+      icd10: ["Z16", "N18", "A41", "A49", "B95.6"],
+      icon: "fa-solid fa-syringe",
+      badge: "ASHP 2020 + TDM AUC/MIC + B\xE9o Ph\xEC",
+      isStandalone: true,
+      standaloneUrl: "vancomycin/index.html"
     }
   ];
   function getCDSSModuleById(id) {

@@ -27,6 +27,7 @@ Mỗi module CDSS độc lập có thể được xây dựng bằng Vanilla Typ
 | `cdss-neuro-exam` | `neuro/` | Thần kinh & Đột quỵ | React 19 Pre-built Bundle | `neuro/index.html` |
 | `cdss-microbiology-mahon` | `microbio/` | Truyền nhiễm & Vi sinh | React 19 + IIFE Fallback | `microbio/index.html` |
 | `cdss-antibiotic-dosing` | `antibiotic/` | Dược lý & Kháng sinh | React 19 + Tailwind v4 + IIFE Fallback | `antibiotic/index.html` |
+| `cdss-vancomycin-pk` | `vancomycin/` | Dược lý & Kháng sinh | React 19 + Tailwind v4 + IIFE Fallback | `vancomycin/index.html` |
 
 ---
 

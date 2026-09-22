@@ -149,6 +149,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'WHO AWaRe + Sanford + HD/CRRT',
     isStandalone: true,
     standaloneUrl: 'antibiotic/index.html'
+  },
+  {
+    id: 'cdss-vancomycin-pk',
+    slug: 'vancomycin',
+    title: 'Quản Lý Liều & Dược Động Học Vancomycin (ASHP/IDSA 2020)',
+    titleEn: 'Vancomycin Precision Dosing & TDM AUC/MIC CDSS',
+    shortDesc: 'Hỗ trợ ra quyết định lâm sàng tính toán liều nạp, liều duy trì, chỉnh liều theo CrCl/eGFR, béo phì (Zhang 2024), lọc máu IHD, giám sát nồng độ đáy Trough và TDM AUC24/MIC mục tiêu 400-600 theo hướng dẫn ASHP/IDSA 2020 và BVĐK Cà Mau.',
+    category: 'pharmacology',
+    categoryName: 'Dược lý & Kháng sinh',
+    version: '2.0.0 (ASHP 2020 & BV Cà Mau)',
+    updatedAt: '2026-09-22',
+    author: 'CliniPortal Pharmacology Squad & Hướng dẫn ASHP/IDSA/PIDS/SIDP 2020 & BVĐK Cà Mau',
+    guidelineSource: 'ASHP/IDSA/PIDS/SIDP 2020 Therapeutic Monitoring of Vancomycin & Hướng Dẫn Sử Dụng Vancomycin BVĐK Cà Mau',
+    icd10: ['Z16', 'N18', 'A41', 'A49', 'B95.6'],
+    icon: 'fa-solid fa-syringe',
+    badge: 'ASHP 2020 + TDM AUC/MIC + Béo Phì',
+    isStandalone: true,
+    standaloneUrl: 'vancomycin/index.html'
   }
 ];
 
