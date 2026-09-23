@@ -13,6 +13,82 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    "id": "2025-who-dieu-tri-lao",
+    "title": "WHO 2025: Hướng Dẫn Vận Hành Điều Trị Bệnh Lao (Module 4: Treatment & Care) — Phác Đồ 6 Tháng BPaLM/BPaL, BDLLfxC, Phác Đồ 9 Tháng endTB & Đồng Điều Trị DAA HCV",
+    "titleEn": "WHO Consolidated Guidelines on Tuberculosis. Module 4: Treatment and Care (2025 Update)",
+    "drug": "Bedaquiline, Pretomanid, Linezolid, Moxifloxacin, Levofloxacin, Delamanid, Clofazimine, Pyrazinamide, Isoniazid, Rifampicin, Rifapentine, Ethambutol, Sofosbuvir, Daclatasvir",
+    "sourceType": "intl-guideline",
+    "specialty": "infect",
+    "design": "guideline",
+    "intervention": "Chuẩn hóa phác đồ điều trị lao DS-TB 6 tháng 2HRZE/4HR hàng ngày và mở rộng 2 phác đồ rút ngắn 4 tháng (2HPMZ cho người ≥ 12 tuổi, 2HRZ(E) cho trẻ em lao không nặng); đột phá phác đồ 6 tháng toàn đường uống BPaLM/BPaL (TB-PRACTECAL, ZeNix) cho MDR/RR-TB và BDLLfxC (BEAT-TB) cho phụ nữ mang thai, cho con bú, trẻ em; triển khai 3 phác đồ cải tiến 9 tháng toàn uống chứa Bedaquiline (endTB: 9BLMZ > 9BLLfxCZ > 9BDLLfxZ); xây dựng phác đồ kéo dài >18 tháng nhóm A/B/C loại bỏ hoàn toàn thuốc tiêm độc tính; điều trị lao Hr-TB bằng 6(H)RZELfx; đồng điều trị song song thuốc DAA viêm gan C (Sofosbuvir, Daclatasvir) cùng phác đồ MDR-TB; chuyển đổi mô hình chăm sóc ngoại trú phân tán tuyến cơ sở và điều trị qua video (VST).",
+    "primaryEndpoint": "Khung khuyến cáo hợp nhất Module 4 của WHO về điều trị lao nhạy thuốc, lao kháng thuốc (MDR/RR-TB, Pre-XDR-TB, XDR-TB), lao đồng nhiễm HIV, lao đồng nhiễm HCV và gói can thiệp chăm sóc hỗ trợ tuân thủ.",
+    "keyResults": "BPaLM đạt tỷ lệ thành công 89% và chi phí hiệu quả vượt trội | BDLLfxC thành công 86.1% tương đương SoC, giảm biến cố Grade 3-5 (34.2% vs 38.0%) | 3 phác đồ 9 tháng endTB đạt thành công 85.2–89.0%, chi phí từ $297 | Đồng điều trị DAA tăng 25% thành công lao (RR 1.25), SVR12 > 95% mà không tăng độc tính gan.",
+    "impact": "practice-changing",
+    "year": 2025,
+    "organization": "WHO",
+    "journal": "World Health Organization (ISBN: 978-92-4-010724-3)",
+    "phase": "Consolidated Guidelines / EBM",
+    "population": "Bệnh nhân mới và tái phát mắc lao nhạy cảm thuốc (DS-TB), lao kháng Isoniazid (Hr-TB), lao kháng Rifampicin/đa kháng thuốc (MDR/RR-TB), lao tiền siêu kháng (Pre-XDR-TB), phụ nữ mang thai, trẻ em, người nhiễm HIV và người đồng nhiễm HCV.",
+    "summary": "Hướng dẫn Hợp nhất Module 4 (Điều trị và Chăm sóc) cập nhật 2025 của WHO đánh dấu bước chuyển mình mang tính lịch sử: xóa bỏ hoàn toàn các phác đồ tiêm độc tính gây điếc và suy thận, xác lập kỷ nguyên phác đồ toàn đường uống rút ngắn 6 tháng (BPaLM, BPaL, BDLLfxC) và 9 tháng (9BLMZ, 9BLLfxCZ). Hướng dẫn cũng chuẩn hóa phác đồ rút ngắn 4 tháng cho lao nhạy thuốc, cho phép đồng điều trị song song DAA viêm gan C trên bệnh nhân MDR-TB và mở rộng y tế số VST tại tuyến y tế cơ sở.",
+    "detailedConclusion": "Phác đồ 6 tháng toàn uống BPaLM (Bedaquiline, Pretomanid, Linezolid 600mg, Moxifloxacin) là lựa chọn ưu tiên hàng đầu cho MDR/RR-TB nhạy FQ; rút FQ dùng BPaL khi kháng FQ. Phụ nữ mang thai và trẻ em dùng phác đồ an toàn BDLLfxC. Ba phác đồ 9 tháng chứa Bedaquiline (9BLMZ, 9BLLfxCZ, 9BDLLfxZ) đạt tỷ lệ thành công 85.2-89.0%, chi phí từ $297; cấm dùng phác đồ 9 tháng không chứa Bedaquiline. Khuyến cáo đồng điều trị DAA viêm gan C song song với thuốc lao MDR-TB. Cấm dùng Kanamycin và Capreomycin trong phác đồ kéo dài.",
+    "file": "2025-who-dieu-tri-lao.mdx",
+    "conditionKey": "tuberculosis",
+    "icd10": [
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "B18.2",
+      "B20"
+    ],
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Hiệu quả phác đồ 6 tháng toàn uống": "HBAR: Thành công duy trì BPaLM (%): 89.0% | Thành công duy trì BDLLfxC (%): 86.1% | Giảm biến cố nặng BDLLfxC vs SoC (%): 34.2% | Bỏ trị phác đồ BDLLfxC (%): 1.0%",
+      "Hiệu quả phác đồ 9 tháng endTB": "HBAR: Phác đồ 9BLMZ thành công (%): 89.0% | Phác đồ 9BLLfxCZ thành công (%): 88.7% | Phác đồ 9BDLLfxZ thành công (%): 85.2% | Phác đồ không Bdq thất bại (%): 11.2%",
+      "Đồng điều trị HCV DAA + MDR-TB": "HBAR: Thành công điều trị lao đồng thời (%): 87.6% | SVR12 khỏi viêm gan C (%): 95.1% | Giảm thất bại lao (RR): 0.3% | Độc tính gan tương đương (%): 29.6%"
+    }
+  },
+  {
+    "id": "2025-who-chan-doan-lao",
+    "title": "WHO 2025: Hướng Dẫn Vận Hành Chẩn Đoán Bệnh Lao (Module 3: Diagnosis) — Các Lớp Xét Nghiệm mWRD, tNGS, 4 Thuật Toán & Nhiễm Lao",
+    "titleEn": "WHO Operational Handbook on Tuberculosis. Module 3: Diagnosis (2025 Update)",
+    "drug": "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Levofloxacin, Moxifloxacin, Bedaquiline, Linezolid, Clofazimine, Pretomanid, Amikacin, Delamanid",
+    "sourceType": "intl-guideline",
+    "specialty": "infect",
+    "design": "guideline",
+    "intervention": "Thay thế hoàn toàn soi đờm kính hiển vi bằng xét nghiệm phân tử nhanh mWRD (LC-aNAATs: Xpert Ultra/Truenat, MC-aNAATs: Abbott/BD MAX/cobas/FluoroType) làm xét nghiệm chẩn đoán ban đầu cho mọi người nghi lao; xét nghiệm đồng thời mWRD và LF-LAM nước tiểu cho người nhiễm HIV; xét nghiệm đờm và phân cho trẻ em; chỉ định targeted NGS (tNGS) phát hiện sớm kháng 10 thuốc chống lao; chuẩn hóa nồng độ tới hạn CC và điểm cắt lâm sàng CB; áp dụng chuỗi 4 thuật toán lâm sàng và mạng lưới phân tầng 3 cấp.",
+    "primaryEndpoint": "Tiêu chuẩn toàn cầu về tiếp cận phổ cập chẩn đoán nhanh (12 mốc chuẩn theo 4 bước chuỗi chăm sóc), 21 khuyến cáo chính thức của WHO theo GRADE, thông số kỹ thuật 9 lớp xét nghiệm, hướng dẫn vận hành tNGS và quy trình triển khai 10 bước.",
+    "keyResults": "LC-aNAATs: Se 90.4%, Sp 94.9% (lao phổi) & Se 95.1%, Sp 98.1% (kháng RIF) | MC-aNAATs: Se 93.0%, Sp 97.7% (lao phổi) & Se 96.7%, Sp 98.9% (kháng RIF) | tNGS: Se 96.5% (INH), 95.8-96.5% (FQ), 90.0% (PZA), Sp 95.2-99.8% | 100% người bệnh nghi lao được tiếp cận WRD ban đầu.",
+    "impact": "practice-changing",
+    "year": 2025,
+    "organization": "WHO",
+    "journal": "World Health Organization (ISBN: 978-92-4-011099-1)",
+    "phase": "Operational Handbook / EBM Guidelines",
+    "population": "Người lớn, vị thành niên và trẻ em nghi mắc bệnh lao phổi hoặc ngoài phổi, người nhiễm HIV, người tiếp xúc hộ gia đình, bệnh nhân lao kháng thuốc (MDR/RR-TB, Pre-XDR-TB, XDR-TB) và đối tượng sàng lọc nhiễm lao.",
+    "summary": "Hướng dẫn vận hành Module 3 (Chẩn đoán) cập nhật 2025 của WHO thiết lập chuẩn mực toàn cầu mới về chẩn đoán bệnh lao: chấm dứt kỷ nguyên phụ thuộc soi đờm kính hiển vi, chuyển giao toàn diện sang xét nghiệm phân tử nhanh (mWRD: Xpert Ultra, Truenat, BD MAX, cobas, FluoroType, RealTime), tích hợp LF-LAM cho người nhiễm HIV và mẫu phân cho trẻ em. Hướng dẫn đưa targeted NGS (tNGS) vào thực hành lâm sàng thường quy để định danh kháng thuốc hàng 2 ngay trên mẫu đờm, cập nhật điểm cắt nồng độ tới hạn thuốc (CC/CB) và tối ưu hóa 4 thuật toán lâm sàng kết nối phác đồ rút ngắn 6 tháng (BPaLM/BPaL) cùng mạng lưới phân tầng 3 cấp.",
+    "detailedConclusion": "Chấm dứt hoàn toàn vai trò của soi đờm kính hiển vi làm xét nghiệm ban đầu; 100% người nghi mắc lao phải được làm mWRD. Mọi ca lao vi khuẩn học xác định phải làm xét nghiệm kháng RIF; mọi ca RR-TB phải được xét nghiệm ngay kháng FQ để phân tầng điều trị BPaLM (nhạy FQ) hay BPaL (kháng FQ). Targeted NGS cho phép phát hiện kháng đồng thời 10 thuốc trong 5 giờ đến 48 giờ. Tuyệt đối không dùng TST/IGRA để chẩn đoán lao bệnh hoạt động tại các nước thu nhập thấp và trung bình.",
+    "file": "2025-who-chan-doan-lao.mdx",
+    "conditionKey": "tuberculosis",
+    "icd10": [
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "Z20.1",
+      "Z11.1"
+    ],
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Độ chính xác mWRD ban đầu": "HBAR: LC-aNAATs Se lao phổi (%): 90.4% | MC-aNAATs Se lao phổi (%): 93.0% | LC-aNAATs Se kháng RIF (%): 95.1% | MC-aNAATs Se kháng RIF (%): 96.7%",
+      "Độ chính xác tNGS kháng thuốc": "HBAR: Phát hiện kháng INH (%): 96.5% | Kháng Levofloxacin (%): 95.8% | Kháng Moxifloxacin (%): 96.5% | Kháng Pyrazinamide (%): 90.0%",
+      "Chỉ tiêu tiếp cận toàn cầu 2025": "HBAR: Tiếp cận WRD ban đầu mục tiêu (%): 100.0% | Tỷ lệ lỗi máy tối đa cho phép (%): 5.0% | Khám lại đọc TBST/IGRA trong 72h (%): 100.0%"
+    }
+  },
+  {
     "id": "2026-diagnostics-lao-thai-ky",
     "title": "Diagnostics 2026: Quản Lý Bệnh Lao Trong Thai Kỳ — Chẩn Đoán, Phác Đồ Hàng 1, MDR-TB & Chăm Sóc Chu Sinh",
     "titleEn": "Tuberculosis in Pregnancy: An Updated Narrative Review (Diagnostics 2026)",
