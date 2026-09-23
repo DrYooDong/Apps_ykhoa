@@ -1,0 +1,154 @@
+---
+title: "Thủy đậu"
+part: "P1"
+aliases:
+  - "Thủy đậu"
+keywords:
+  - "thủy đậu"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+# **BÀI HỌC: SINH LÝ BỆNH THỦY ĐẬU (PHẦN 1) - CẤU TRÚC VIRUS, SỰ XÂM NHẬP VÀ SỰ LAN TRUYỀN TOÀN THÂN**
+
+---
+
+### **1. Nội Dung Sinh Lý Học Chi Tiết**
+
+#### **I. Đặc Điểm Sinh Học và Cấu Trúc của Varicella Zoster Virus (VZV)**
+
+- **Phân loại**: Varicella Zoster Virus (VZV), hay còn gọi là **Human alphaherpesvirus 3**, là một virus thuộc phân họ **Alphaherpesvirinae**, họ **Herpesviridae**, chi **Varicellovirus**.
+- **Cấu trúc hạt virus (Virion)**: Hạt virus VZV trưởng thành có **dạng hình cầu**, đường kính dao động từ **180–200 nm**. Nó được cấu thành từ các thành phần chính bao gồm:
+    - **Lõi bộ gen**: Chứa một phân tử **DNA sợi kép tuyến tính** có chiều dài khoảng **125.000 cặp base (bp)**. Bộ gen này chứa **ít nhất 71 khung đọc mở (ORFs)** được dự đoán hoặc đã biết. Bộ gen của VZV cực kỳ ổn định về mặt di truyền, được chia thành **5 vùng lặp lại ngắn** (được ký hiệu từ **R1 đến R5**), tạo nên đặc trưng phân lập riêng biệt cho các chủng.
+    - **Vỏ nucleocapsid**: Là một cấu trúc đối xứng **20 mặt (icosahedral)** với đường kính khoảng **100 nm**, được tạo thành từ **162 capsomere** hình lục giác và ngũ giác. Lớp vỏ này được cấu thành từ các protein mã hóa bởi các gen _orf20, orf21, orf23, orf33, orf40_ và _orf41_.
+    - **Chất đệm (Tegument)**: Là lớp protein lỏng lẻo nằm giữa capsid và vỏ ngoài. Lớp này chứa các **protein điều hòa hoạt động phiên mã** cực sớm (Immediate-Early) như **IE62 (mã hóa bởi orf62/orf71), IE63 (mã hóa bởi orf63/orf70)**, cụm gen _orf9-orf12_, và **hai kinase virus quan trọng là ORF47 và ORF66**.
+    - **Vỏ bọc ngoài (Envelope)**: Là một **màng lipid** có nguồn gốc từ màng tế bào chủ, trên bề mặt đính các **gai glycoprotein dài khoảng 8 nm**. Các glycoprotein vỏ được biết đến bao gồm **gB, gC, gE, gH, gI, gK và gL**. Khác biệt quan trọng với Herpes Simplex Virus (HSV) là **VZV không có glycoprotein tương đương với gD**.
+
+##### **Hình ảnh/Sơ đồ liên quan:**
+
+- **Tên Hình/Sơ đồ**: **Figure 1: Structure of Varicella Zoster Virus** (Cấu trúc của Varicella Zoster Virus)
+- **Thuộc tài liệu**: _Varicella+Zoster+Virus+Infection_Molecular+Insights,+Clinical+Spectrum,.pdf_ (Trích dẫn nguồn gốc từ Han, 2017).
+	![[Pasted image 20260818202526.png]]
+- **Mô tả hình họa**: Sơ đồ này minh họa cấu trúc không gian ba chiều cắt lớp của hạt virus VZV. Lõi trung tâm chứa **DNA sợi kép (Double stranded DNA)** được bao bọc trực tiếp bởi lớp **vỏ Nucleocapsid** đối xứng dạng đa diện. Bên ngoài nucleocapsid là lớp **chất đệm protein (Tegument)** dày đặc. Ngoài cùng là lớp **vỏ bọc lipid (lipid envelope)** được đính các **gai glycoprotein (Glycoprotein spikes)** phân bố đều trên bề mặt vỏ để giúp hạt virus thực hiện quá trình bám dính và hòa màng với tế bào ký chủ.
+
+---
+
+#### **II. Cơ Chế Lây Truyền và Con Đường Xâm Nhập Niêm Mạc Ban Đầu**
+
+- **Vật chủ tự nhiên**: VZV là tác nhân gây bệnh **đặc hiệu chỉ trên con người** và hầu như không gây nhiễm trùng hoặc bị hạn chế nghiêm trọng trên các loài động vật khác.
+- **Đường lây truyền**: Virus lây truyền rất dễ dàng từ người sang người thông qua **tiếp xúc trực tiếp với các nốt phát ban**, hoặc thông qua việc **hít phải các khí dung (aerosols) từ dịch bóng nước** của tổn thương da (ở bệnh nhân thủy đậu hoặc zona) hoặc **hít phải các giọt bắn từ dịch tiết đường hô hấp** chứa virus.
+- **Thời gian lây truyền**: Bệnh nhân thủy đậu có khả năng lây truyền cao nhất từ **1–2 ngày trước khi bắt đầu xuất hiện phát ban** cho đến khi **tất cả các tổn thương da đã đóng vảy hoàn toàn** (thường từ 5–6 ngày sau khi phát ban ở người có miễn dịch bình thường).
+- **Cơ chế hòa màng và xâm nhập**:
+    - Virus tiếp cận và xâm nhập vào vật chủ thông qua **niêm mạc đường hô hấp trên hoặc kết mạc mắt**.
+    - Quá trình lây nhiễm bắt đầu bằng việc các glycoprotein vỏ virus bám vào các thụ thể trên bề màng tế bào chủ, bao gồm **heparan sulfate proteoglycans** và các thụ thể xâm nhập đặc hiệu như **enzyme phân hủy insulin (insulin-degrading enzyme - IDE)**.
+    - Các glycoprotein vỏ bao gồm phức hợp lõi **gB** và **gH/gL** (cùng với vai trò hỗ trợ của **gE/gI**) trung gian cho quá trình **hòa màng (membrane fusion)** giữa vỏ virus và màng tế bào, cho phép giải phóng hạt capsid và chất đệm vào tế bào chất của ký chủ.
+
+---
+
+#### **III. Quá Trình Nhân Lên Ban Đầu, Nhiễm Virus Huyết Tiên Phát và Thứ Phát**
+
+Bệnh sinh của thủy đậu sau khi virus xâm nhập được mô tả qua một chuỗi các sự kiện nhân lên và lan truyền theo hệ thống tuần hoàn:
+
+1. **Nhân lên cục bộ**: Sau khi bám dính, virus nhân lên đầu tiên tại các **tế bào biểu mô của niêm mạc hô hấp trên**.
+2. **Lan đến mô lympho**: Virus nhanh chóng lan đến các hạch bạch huyết khu vực và mô bạch huyết hầu họng (chẳng hạn như **vòng bạch huyết Waldeyer ở amidan**) trong vòng **2–4 ngày** đầu sau phơi nhiễm. Tại đây, các tế bào dendritic (như tế bào Langerhans và tế bào dendritic dạng plasmacytoid) ở niêm mạc hô hấp bị nhiễm trùng hoạt động, sau đó di chuyển đến các hạch lympho lân cận và chuyển giao hạt virus sang cho các tế bào T.
+3. **Nhiễm virus huyết tiên phát (Primary viremia)**: Quá trình nhân lên ban đầu tại các mô lympho vùng dẫn đến sự giải phóng virus vào máu, tạo ra đợt nhiễm virus huyết tiên phát xảy ra trong khoảng **4–6 ngày sau khi nhiễm**. Đợt này đưa virus di chuyển đến và nhân lên tại các **tế bào hệ lưới nội mô ở các cơ quan nội tạng** như gan, lách và các vị trí khác.
+4. **Nhiễm virus huyết thứ phát (Secondary viremia)**: Sau khi nhân lên mạnh mẽ ở các cơ quan nội tạng khoảng một tuần, virus tái xâm nhập vào hệ tuần hoàn với số lượng lớn, tạo ra đợt nhiễm virus huyết thứ phát diễn ra từ **10–12 ngày sau nhiễm**. Đợt nhiễm virus huyết thứ phát này chịu trách nhiệm chính trong việc đưa virus đến các cơ quan nội tạng sâu và biểu bì da, dẫn đến sự xuất hiện của các tổn thương da đặc trưng.
+5. **Đặc tính hướng tế bào T (T cell tropism)**:
+
+- Trong máu, VZV di chuyển dưới dạng **liên kết chặt chẽ với tế bào (cell-associated viremia)**, chủ yếu nằm trong các tế bào **T CD3+ (bao gồm cả phân nhóm CD4+, CD8+)**.
+- Các tế bào T CD4+ bị nhiễm chủ yếu mang kiểu hình **tế bào T nhớ hoạt hóa** và biểu hiện các dấu ấn hướng da đặc hiệu như **CLA (cutaneous leukocyte antigen)** và **CCR4 (CC-chemokine receptor 4)**. Các dấu ấn này định hướng cho tế bào T nhiễm trùng di chuyển trực tiếp đến hệ vi tuần hoàn ở da.
+- VZV thúc đẩy sự sống sót của các tế bào T bị nhiễm này bằng cách kích hoạt con đường **STAT3 (signal transducer and activator of transcription 3)** để tăng cường biểu hiện protein chống chết tế bào **survivin**, giúp tế bào T có đủ thời gian di chuyển trong dòng máu đến các mô đích.
+- Đáng chú ý, VZV có cơ chế kiểm soát đặc hiệu để **không kích hoạt sự hòa màng giữa các tế bào T bị nhiễm**, giúp các tế bào này giữ nguyên hình thái đơn lẻ và duy trì khả năng di chuyển xuyên mạch tự do.
+
+##### **Hình ảnh/Sơ đồ liên quan:**
+
+- **Tên Hình/Sơ đồ**: **Figure 1 | VZV life cycle and replication** (Sơ đồ vòng đời và sự nhân lên của VZV)
+    
+- **Thuộc tài liệu**: _VaricellaZosterNature Rev2014.pdf_ (hoặc bản trực tuyến _nihms583856.pdf_).
+	![[Pasted image 20260818202710.png]]
+    
+- **Nội dung mô tả dưới sơ đồ**:
+    
+    - **Sơ đồ a (Vòng đời của VZV)**: Mô tả quá trình VZV xâm nhập qua đường hô hấp trên, nhân lên tại chỗ rồi di chuyển đến amidan (vòng Waldeyer), lây nhiễm tế bào T. Tế bào T bị nhiễm di chuyển trong máu (T cell viremia) và vận chuyển virus đến da để gây ra bệnh cảnh thủy đậu (Varicella). Từ các tổn thương da, virus đi ngược chiều sợi trục thần kinh (retrograde transport) để đến nhân của các neuron hạch cảm giác rễ sau (dorsal root ganglion), thiết lập trạng thái ẩn nấp (latency). Khi tái hoạt động, virus đi xuôi chiều sợi trục (anterograde transport) đến da chi phối bởi hạch thần kinh tương ứng để gây bệnh cảnh zona (Zoster).
+    - **Sơ đồ b (Cơ chế nhân lên của VZV ở mức độ tế bào)**: Thể hiện các bước bám dính, hòa màng tế bào, giải phóng capsid và protein chất đệm. Capsid không vỏ cập bến tại lỗ nhân (nuclear pore), bơm DNA bộ gen vào nhân tế bào. Quá trình phiên mã diễn ra theo thứ tự gen cực sớm (IE), sớm (E) và muộn (L). Các nucleocapsid mới được lắp ráp trong nhân, nảy chồi qua màng nhân trong để đi vào tế bào chất. Sau đó, capsid trải qua quá trình tạo vỏ bọc thứ cấp (secondary envelopment) tại các bể chứa của mạng lưới trans-Golgi (TGN), nhận thêm protein chất đệm và glycoprotein vỏ, trước khi được đóng gói vào các túi post-Golgi để vận chuyển ra bề mặt tế bào và phóng thích.
+- **Tên Hình/Sơ đồ**: **Figure 2 | VZV T cell tropism** (Hướng tế bào T của VZV)
+    
+- **Thuộc tài liệu**: _VaricellaZosterNature Rev2014.pdf_ (hoặc bản trực tuyến _nihms583856.pdf_).
+![[Pasted image 20260818202801.png]]
+    
+- **Nội dung mô tả dưới sơ đồ**: Sơ đồ này mô tả chi tiết quá trình VZV xâm nhập tế bào T và cơ chế di chuyển:
+    
+    - **Bên trái**: Tế bào T di chuyển qua lớp biểu mô vảy lót trong hốc amidan (tonsillar crypts) và bị lây nhiễm virus từ các tế bào biểu mô đường hô hấp.
+    - **Ở giữa**: VZV có ái tính cao với tế bào T nhớ CD4+ hoạt hóa có biểu hiện các thụ thể hướng da (skin homing markers) như CLA và CCR4. Glycoprotein gE (qua đầu N độc nhất), gI và các kinase ORF47, ORF66 đóng vai trò cốt lõi cho sự lây nhiễm này. Virus hoạt hóa STAT3 (pSTAT3), pZap70, pAkt để ngăn chặn tế bào T chết theo chương trình và ức chế STAT1 (pSTAT1) để trốn tránh interferon. Tế bào T nhiễm virus sau đó đi vào mạch bạch huyết hướng tâm để vào tuần hoàn hệ thống.
+    - **Bên phải**: Tế bào T nhiễm VZV theo dòng máu đến biểu mô da, thực hiện di chuyển xuyên mạch (diapedesis) tại các vi mạch máu quanh nang lông (hair follicles) - nơi có mạng lưới mạch máu vô cùng phong phú, giải phóng virus trực tiếp vào các mô da xung quanh để bắt đầu pha nhân lên tại da.
+
+---
+
+#### **IV. Cơ Thế Hướng Da và Sự Hình Thành Tổn Thương Da của Thủy Đậu**
+
+- **Sự xâm nhập mô da**: Tế bào T bị nhiễm di chuyển xuyên mạch qua thành mao mạch biểu bì quanh nang lông để đưa virus tiếp cận và lây nhiễm cho các tế bào biểu bì (keratinocytes) và các nguyên bào sợi ở trung bì da.
+- **Hình thành tổn thương mụn nước**:
+    - Tại da, VZV nhân lên mạnh mẽ, kích hoạt hiện tượng hòa màng tế bào-tế bào để tạo thành các **hợp bào hay tế bào đa nhân khổng lồ (polykaryocytes hay syncytia)**. Quá trình này được trung gian bởi phức hợp hòa màng tối thiểu gB và gH/gL.
+    - Sự hòa màng tế bào ở da được kiểm soát chặt chẽ bởi **motif ITIM** (immunoreceptor tyrosine-based inhibition motif) ở đuôi tế bào chất của gB (thông qua quá trình phosphoryl hóa gốc Tyrosine 881). Nếu sự phosphoryl hóa này bị ức chế, hiện tượng siêu hòa màng (hyperfusion) bất thường sẽ xảy ra ở lớp tế bào sừng ngoài cùng, làm giảm đáng kể khả năng tạo ra các hạt virus trưởng thành.
+    - Các tế bào bị nhiễm giải phóng các cytokine gây viêm, dẫn đến phản ứng viêm cấp tính, giãn mạch và hình thành phát ban tiến triển rất nhanh qua các giai đoạn: **dát đỏ (macules) -> sẩn (papules) -> mụn nước (vesicles) -> mụn mủ (pustules) -> đóng vảy (crusts/scabs)** trong vòng 24–48 giờ. Tổn thương điển hình là các mụn nước nông chứa dịch trong suốt, nằm trên một nền hồng ban bao quanh ("giọt sương trên cánh hoa hồng").
+- **Cơ chế phân tử của sự thoát mạch virus tự do (Cell-free virus egress)**:
+    - Khi nuôi cấy trong ống nghiệm, VZV liên kết cực kỳ chặt chẽ với tế bào và rất khó thu được virus tự do. Nguyên nhân là do hầu hết các hạt virus mới lắp ráp bị định hướng di chuyển vào các endosome muộn để phân hủy bởi **thụ thể mannose-6-phosphate (M6PR)** tế bào.
+    - Tuy nhiên, trong quá trình biệt hóa cuối cùng của các tế bào biểu sừng ở thượng bì da, **thụ thể M6PR bị giảm điều hòa (downregulation) mạnh mẽ**.
+    - Sự thiếu hụt M6PR ở biểu bì da giúp bảo vệ hạt virus khỏi bị phân hủy trong lysosome, từ đó cho phép VZV được lắp ráp hoàn chỉnh và phóng thích một lượng cực kỳ lớn **virus tự do không liên kết tế bào (cell-free virus) vào dịch mụn nước** sát bề mặt da. Nồng độ virus tự do khổng lồ này chính là yếu tố cốt lõi giúp thủy đậu lây truyền hiệu quả qua không khí và tiếp xúc dịch tiết.
+- **Giải phẫu bệnh (Histopathology)**: Dưới kính hiển vi, tổn thương da thủy đậu biểu hiện các đặc trưng: **thoái hóa phồng (ballooning degeneration)** của tế bào keratin, sự hiện diện của **tế bào khổng lồ đa nhân** do hòa màng tế bào, hiện tượng **tiêu gai (acantholysis)** làm các tế bào sừng tách rời tự do trong khoang mụn nước, chất nhiễm sắc rìa nhân tích tụ sát màng nhân, và các **thể bao hàm ưa acid trong nhân (intranuclear inclusion bodies)**.
+- **Sự trốn tránh miễn dịch bẩm sinh tại da**:
+    - Các tế bào chưa nhiễm xung quanh nốt tổn thương sẽ tăng cường biểu hiện **Interferon-alpha (IFN-a), Interferon-beta (IFN-b)** cùng các yếu tố **STAT1, NF-kB** để tạo ra một hàng rào cytokine bẩm sinh ngăn virus lan rộng.
+    - Để vô hiệu hóa hàng rào này, VZV sử dụng các protein nội tại: **IE62** và **ORF47** ức chế quá trình phosphoryl hóa IRF3 (Interferon Regulatory Factor 3) để chặn sản xuất IFN-b; **IE63** ức chế sự phosphoryl hóa yếu tố khởi đầu eIF2 để chặn tác dụng hạ nguồn của IFN-a; **ORF66** ngăn chặn hoạt hóa STAT1; và virus giữ lại dị hợp tử p50-p65 của NF-kB trong tế bào chất bằng cách ngăn phân hủy IkBa.
+    - Đồng thời, protein **ORF61** của virus sử dụng các motif tương tác SUMO (SIMs) để liên kết, phân tán và phá hủy hoàn toàn cấu trúc của **thể nhân PML (PML-NBs / ND10)** - vốn là các lồng giam giữ hạt virus trong nhân tế bào.
+
+##### **Hình ảnh/Sơ đồ liên quan:**
+
+- **Tên Hình/Sơ đồ**: **Figure 3 | VZV skin tropism** (Hướng da của VZV)
+- **Thuộc tài liệu**: _VaricellaZosterNature Rev2014.pdf_ (hoặc bản trực tuyến _nihms583856.pdf_).
+	![[Pasted image 20260818202833.png]]
+- **Nội dung mô tả dưới sơ đồ**: Sơ đồ biểu diễn sự tương tác phức tạp giữa các yếu tố virus và tế bào ký chủ tại lớp da:
+    - **Bên trái (Các yếu tố virus)**: VZV được tế bào T mang đến hoặc từ sợi trục thần kinh cảm giác phóng thích ra. Tổn thương phát triển hướng ra bề mặt biểu bì (Epidermis) và lớp trung bì (Dermis), hình thành các tế bào khổng lồ đa nhân (multinucleated polykaryocytes). Sơ đồ nhấn mạnh vai trò của protein **ORF61** giúp phân tán cấu trúc lồng PML (PML nuclear bodies) và đuôi tế bào chất của **gB** giúp kiểm soát điều hòa sự hòa màng tế bào để tối ưu hóa sự lan truyền của virus mà không phá hủy cấu trúc da quá sớm.
+    - **Bên phải (Các yếu tố tế bào chủ)**:
+        - **Trong tế bào bị nhiễm**: VZV tái lập trình tế bào bằng cách hoạt hóa mạnh mẽ con đường **STAT3 (pSTAT3)** và tăng biểu hiện protein chống chết tế bào **survivin**, đồng thời ức chế phản ứng đáp ứng viêm thông qua việc khóa STAT1 và ngăn chặn sản xuất IFN-alpha.
+        - **Trong tế bào chưa bị nhiễm lân cận**: Các tế bào xung quanh phản ứng bằng cách dựng lên **Hàng rào cytokine bẩm sinh (Innate cytokine barrier)** thông qua tăng tiết IFN-alpha, hoạt hóa STAT1 (pSTAT1), biểu hiện tiền-IL-1alpha (+) và tăng cường mật độ các thể nhân PML để cô lập nốt tổn thương, hạn chế sự lây lan của virus.
+
+---
+
+#### **V. Sự Di Chuyển Ngược Chiều Sợi Trục Thần Kinh Đến Các Hạch Cảm Giác**
+
+- **Xâm nhập tận cùng thần kinh**: Trong giai đoạn mụn nước bùng phát ở da, lượng virus tự do (cell-free virus) dồi dào trong dịch mụn nước sẽ tiếp cận trực tiếp với các đầu tận cùng sợi trục thần kinh cảm giác (sensory nerve endings) phân bố ngay tại lớp biểu bì và trung bì dưới đáy nốt tổn thương.
+- **Cơ chế vận chuyển ngược chiều (Retrograde axonal transport)**:
+    - Nhờ các cấu trúc đuôi giả (filopodia) do virus cảm ứng tạo ra trên màng tế bào thần kinh, hạt virus bám dính và xâm nhập vào các đầu tận cùng sợi trục.
+    - Sau khi cởi bỏ lớp vỏ bọc ngoài, nucleocapsid của VZV liên kết với hệ thống protein vận chuyển ngược chiều sợi trục của tế bào thần kinh.
+    - Virus được vận chuyển dọc theo các sợi trục cảm giác thần kinh sọ hoặc thần kinh tủy sống để di chuyển về phía thân tế bào thần kinh (soma) nằm trong **các hạch cảm giác rễ sau (dorsal root ganglia - DRG)** hoặc **các hạch thần kinh sọ (như hạch sinh ba - trigeminal ganglia)**.
+- **Xâm nhập qua đường máu**: Ngoài con đường thần kinh, virus cũng có thể đi vào các hạch cảm giác này trực tiếp thông qua máu (viremia) dưới sự vận chuyển của các tế bào T bị nhiễm trùng di chuyển xuyên mạch vào mô hạch.
+- **Khởi đầu trạng thái ẩn nấp**: Khi capsid tiếp cận lỗ nhân tế bào thần kinh, nó giải phóng DNA bộ gen vào trong nhân. Tại đây, DNA virus tròn hóa thành cấu trúc **episome vòng** độc lập, không tích hợp vào bộ gen người, liên kết với các protein histone của tế bào chủ và bắt đầu bị tắt tiếng phiên mã (epigenetic silencing). Quá trình này chính thức thiết lập trạng thái **nhiễm trùng ẩn nấp suốt đời (lifelong latency)** của VZV trong hệ thần kinh cảm giác.
+
+##### **Hình ảnh/Sơ đồ liên quan:**
+
+- **Tên Hình/Sơ đồ**: **Figure 4 | VZV neurotropism in DRG xenografts** (Hướng thần kinh của VZV trong các mảnh ghép hạch rễ sau)
+- **Thuộc tài liệu**: _VaricellaZosterNature Rev2014.pdf_ (hoặc bản trực tuyến _nihms583856.pdf_).
+![[Pasted image 20260818202858.png]]
+- **Nội dung mô tả dưới sơ đồ**: Sơ đồ này so sánh hai trạng thái sinh lý bệnh của VZV trong tế bào thần kinh hạch cảm giác:
+    - **Pha nhiễm trùng hoạt động (Active infection - Bên trái)**: Đặc trưng bởi sự phiên mã mạnh mẽ của các gen thuộc chu kỳ tan (như mRNA của gB, IE62, IE63). Quá trình này dẫn đến sự nhân đôi DNA, lắp ráp hạt virus trong cả tế bào thần kinh (neuron) và tế bào vệ tinh (satellite cell) lân cận. Virus giải phóng vào khoảng kẽ kích thích sự hòa màng bất thường giữa các neuron và tế bào vệ tinh tạo nên các hợp bào đa nhân. Một số hạt virus mới lắp ráp bị giam giữ trong lồng bảo vệ của thể nhân PML (PML-NB).
+    - **Pha ẩn nấp (Latency - Bên phải)**: Bộ gen DNA của virus tồn tại dai dẳng trong nhân tế bào thần kinh cảm giác dưới dạng episome. Ở trạng thái này, quá trình biểu hiện các gen muộn (như gB mRNA) hoàn toàn bị khóa và sự lắp ráp hạt virus bị đình chỉ hoàn toàn. Sự phiên mã bị hạn chế nghiêm trọng, chỉ ghi nhận một lượng rất ít các bản phiên mã cực sớm (như mRNA của IE62, IE63) hoặc bản phiên mã liên quan ẩn nấp (VLT).
+    - **Nhiễm trùng mạn tính bất thường (Aberrant chronic infection - Hộp viền đen)**: Minh họa hiện tượng xảy ra khi nhiễm trùng bằng các virus đột biến (như khóa liên kết gE-gI hoặc xóa gen gI). Quá trình chuyển sang ẩn nấp bị phá vỡ, virus tiếp tục sao chép ở mức độ thấp, gây ra phản ứng hủy hoại mô nghiêm trọng kéo dài, phá hủy chất nền liên kết tế bào, tiêu diệt nhiều tế bào thần kinh cảm giác và kích thích sự tăng sinh phản ứng của các tế bào vệ tinh.
+
+---
+
+### **2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA**
+
+1. Yen LTH, Thien DH, Phuong NP, Bach NK, Anh NV, Thuy DT, Ly NT, Huong NTT, Anh NTH. Xác định vật liệu di truyền trong mẫu vắc xin thủy đậu thương mại tại Việt Nam bằng kỹ thuật PCR. _Journal of Control Vaccines and Biologicals_. 2022;2(1):25-35.
+2. World Health Organization. Varicella and herpes zoster vaccines: WHO position paper, 20 June 2014. _Weekly Epidemiological Record_. 2014;89(25):265-288.
+3. Zerboni L, Sen N, Oliver SL, Arvin AM. Molecular mechanisms of varicella zoster virus pathogenesis. _Nature Reviews Microbiology_. 2014;12(3):197-210.
+4. Iheukwumere IH, Iheukwumere CM, Unaeze BC, Ike VE, Nnadozie HC, Onyema SO. Varicella Zoster Virus Infection: Molecular Insights, Clinical Spectrum, and Advances in the Prevention and Management of Chickenpox and Shingles. _Health Science Research International_. 2025;1(1):16-24.
+5. Eshleman E, Shahzad A, Cohrs RJ. Varicella zoster virus latency. _Future Virology_. 2011;6(3):341-355.
+6. StatPearls. Varicella-Zoster Virus (Chickenpox). Treasure Island (FL): StatPearls Publishing; 2024.
+
+---

@@ -1,0 +1,164 @@
+---
+title: "Bệnh não gan"
+part: "P1"
+aliases:
+  - "Bệnh não gan"
+keywords:
+  - "bệnh não gan"
+  - "tiêu hóa - gan mật"
+specialty: "Tiêu hóa - Gan mật"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+### BÀI HỌC: SINH LÝ BỆNH VỀ BỆNH NÃO GAN (HE) – PHẦN 1
+
+---
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết
+
+#### Định nghĩa và Tổng quan về Bệnh Não Gan (HE)
+
+**Bệnh não gan (Hepatic Encephalopathy - HE)** là tình trạng rối loạn chức năng hệ thần kinh trung ương do tình trạng **suy giảm chức năng gan và/hoặc hiện tượng thông nối cửa-chủ** gây ra. Lâm sàng của hội chứng này biểu hiện qua một phổ rộng các bất thường về thần kinh và tâm thần, di chuyển dọc theo một trục liên tục từ các thay đổi nhận thức cận lâm sàng (thể tối thiểu) cho đến tình trạng suy giảm ý thức nặng nề và hôn mê sâu.
+
+Sự xuất hiện của HE đánh dấu một bước chuyển dịch nghiêm trọng trong diễn tiến tự nhiên của bệnh lý xơ gan. Thống kê cho thấy có đến **40% bệnh nhân xơ gan sẽ xuất hiện biến chứng bệnh não gan** trong cuộc đời. Biến chứng này không chỉ làm suy giảm nghiêm trọng chất lượng cuộc sống của người bệnh và gia đình họ mà còn là một chỉ dấu tiên lượng cực kỳ xấu: thời gian sống sót trung bình của bệnh nhân sau khi có chẩn đoán bệnh não gan lâm sàng bị sụt giảm xuống còn **2 năm (chỉ còn 1 năm đối với bệnh nhân trên 65 tuổi)**. Đáng chú ý, tỷ lệ tử vong trong vòng 1 năm sau đợt HE lâm sàng rõ rệt đầu tiên lên tới **64%** và tăng lên đến **85% sau 5 năm**.
+
+---
+
+#### Phân loại Bệnh Não Gan theo EASL/AASLD
+
+Để chuẩn hóa chẩn đoán và định hướng điều trị, bệnh não gan được phân loại chặt chẽ dựa trên 3 tiêu chí cốt lõi: loại bệnh lý gan nền, mức độ nặng của biểu hiện lâm sàng, và diễn tiến theo thời gian.
+
+##### 1. Phân loại theo Bệnh lý nền (Loại HE):
+
+- **Loại A (Type A):** Xuất hiện trong bệnh cảnh **suy gan cấp tính (Acute liver failure)**.
+- **Loại B (Type B):** Xuất hiện do các luồng **thông nối hệ thống cửa-chủ (Portosystemic shunting)** bẩm sinh hoặc nhân tạo mà không đi kèm bệnh lý gan thực thể đáng kể.
+- **Loại C (Type C):** Xuất hiện trên nền bệnh nhân **xơ gan và tăng áp lực tĩnh mạch cửa (Cirrhosis)**.
+
+##### 2. Phân loại theo Mức độ lâm sàng:
+
+- **Bệnh não gan thể ẩn (Covert HE):** Gồm bệnh não gan tối thiểu (Minimal HE - MHE) và HE độ I theo thang West Haven. Ở thể này, bệnh nhân trông hoàn toàn bình thường trên lâm sàng nhưng biểu hiện các khiếm khuyết về chú ý, tốc độ xử lý thông tin và thị giác không gian khi thực hiện các trắc nghiệm tâm lý vận động đặc hiệu.
+- **Bệnh não gan lâm sàng rõ rệt (Overt HE):** Được xác định từ độ II đến độ IV theo thang West Haven, đặc trưng bởi các triệu chứng mất định hướng, lơ mơ, hành vi không phù hợp và hôn mê.
+
+##### 3. Phân loại theo Diễn tiến thời gian:
+
+- **Từng đợt (Episodic HE):** Đợt bùng phát cấp tính, thường có yếu tố thúc đẩy rõ ràng.
+- **Tái phát (Recurrent HE):** Định nghĩa khi có **từ 2 đợt HE lâm sàng xuất hiện trong vòng 6 tháng**.
+- **Dai dẳng (Persistent HE):** Tình trạng suy giảm chức năng nhận thức kéo dài liên tục và bệnh nhân không thể phục hồi hoàn toàn về trạng thái bình thường giữa các đợt bùng phát.
+
+---
+
+_Trích xuất Bảng thông tin về các công cụ đánh giá lâm sàng:_
+
+> #### Bảng 3: Các công cụ đánh giá bệnh não gan được sử dụng trong các nghiên cứu lâm sàng
+> 
+> - **Thuộc tài liệu:** _Rifaximin for prevention and treatment of hepatic encephalopathy in people with cirrhosis_ (CD011585.pdf)
+> 
+> | Công cụ đánh giá | Mô tả đặc điểm | Ưu điểm | Nhược điểm | | :--- | :--- | :--- | :--- | | **Thang đo mức độ Asterixis** _(Asterixis Severity Scale)_ | Đánh giá mức độ run vẩy lâm sàng từ độ 0 (không run) đến độ 4 (flapping gần như liên tục). | Nhanh, dễ thực hiện tại giường bệnh, không tốn tài nguyên. | Dễ bị sai lệch chủ quan giữa những người quan sát; là phương pháp đánh giá thô sơ và không đặc hiệu riêng cho HE. | | **Định lượng Amoniac máu** _(Blood ammonia)_ | Định lượng nồng độ amoniac trong máu động mạch hoặc tĩnh mạch. | Khách quan, ít bị ảnh hưởng bởi các yếu tố nhiễu nhân khẩu học như tuổi tác, học vấn. | Tương quan kém với mức độ nghiêm trọng lâm sàng của HE ở bệnh nhân xơ gan; quy trình lấy và xử lý mẫu phức tạp (yêu cầu vận chuyển lạnh). | | **PSE Sum và Index** _(Portal-Systemic Encephalopathy Index)_ | Chỉ số tổng hợp điểm số từ trạng thái tâm thần (West Haven), asterixis, thời gian thực hiện test nối số A (NCT-A), nồng độ amoniac máu và tần số sóng điện não đồ (EEG). | Rất toàn diện, phản ánh đa chiều tình trạng bệnh. | Tốn thời gian thực hiện; máy điện não đồ (EEG) thường không có sẵn tại giường bệnh. | | **Điểm số PHES** _(Psychometric Hepatic Encephalopathy Score)_ | Bộ 5 bài test giấy bút đánh giá sự chú ý, tốc độ tâm thần vận động và điều phối thị giác (bao gồm NCT-A, NCT-B, Digit Symbol Test, Line Tracing Test, Serial Dotting Test). | Tiêu chuẩn vàng để tầm soát bệnh não gan tối thiểu (MHE); độ nhạy và độ đặc hiệu cao. | Đánh giá trí nhớ kém; tốn thời gian thực hiện (~20 phút); phụ thuộc nhiều vào vận động tinh của tay và thiếu dữ liệu chuẩn hóa ở nhiều quốc gia. | | **Stroop Test (EncephalApp)** | Ứng dụng trên điện thoại thông minh yêu cầu bệnh nhân phản hồi nhanh với màu sắc của các ký tự (hash signs hoặc distractor words). | Đơn giản, di động, thực hiện nhanh (5-10 phút). | Độ đặc hiệu ở mức vừa phải; hoàn toàn không phù hợp cho người bị mù màu. | | **Tiêu chuẩn West Haven/Điểm Conn** | Phân độ lâm sàng HE dựa trên trạng thái ý thức, nhận thức và chức năng vận động. | Rất đơn giản, thực hiện nhanh (<5 phút), được thừa nhận và sử dụng rộng rãi nhất trên toàn cầu. | Không đặc hiệu riêng cho HE; dễ sai lệch chủ quan giữa những người đánh giá ở các độ nhẹ (độ I). |
+
+---
+
+#### Cơ chế nhiễm độc Amoniac (The Ammonia Hypothesis)
+
+**Amoniac (\(NH_3\))** là độc tố thần kinh trung tâm được nghiên cứu nhiều nhất và giữ vai trò nền tảng trong thuyết bệnh sinh của HE.
+
+##### 1. Nguồn gốc sinh amoniac và quá trình chuyển hóa bình thường:
+
+Trong cơ thể, amoniac được tạo ra chủ yếu từ 4 nguồn chính:
+
+- Sự chuyển hóa các hợp chất chứa nitơ từ chế độ ăn uống.
+- Quá trình phân hủy urê và protein của quần thể vi khuẩn tại đại tràng.
+- Sự khử amin của axit amin glutamine bởi enzyme glutaminase ở ruột non.
+- Quá trình giải phóng gốc amoni từ thận.
+
+Ở người khỏe mạnh, amoniac hấp thu qua thành ruột vào tĩnh mạch cửa và được đưa trực tiếp về gan. Tại các **tế bào gan quanh tĩnh mạch cửa (periportal hepatocytes)**, amoniac được chuyển hóa triệt để thành chất không độc là urê thông qua chu trình urê để đào thải qua thận.
+
+##### 2. Cơ chế tăng amoniac máu trong xơ gan:
+
+Ở bệnh nhân xơ gan, sự cân bằng này bị phá vỡ hoàn toàn do:
+
+- **Suy giảm chức năng nhu mô gan:** Sự xơ hóa và hủy hoại tế bào gan làm sụt giảm nghiêm trọng hoạt động của chu trình urê, khiến gan không thể chuyển hóa hết lượng amoniac đi vào.
+- **Thông nối cửa-chủ (Portosystemic shunting):** Tình trạng tăng áp lực tĩnh mạch cửa buộc dòng máu chứa đầy độc chất amoniac từ ruột đi qua các nhánh tuần hoàn bàng hệ cửa-chủ tự phát hoặc nhân tạo (như sau can thiệp đặt giá đỡ TIPS) để đổ thẳng vào tĩnh mạch chủ dưới mà không hề qua màng lọc gan.
+- **Hội chứng loạn khuẩn và tăng sinh vi khuẩn đường ruột (SIBO):** Sự suy giảm nhu động ruột non ở bệnh nhân xơ gan tạo điều kiện cho vi khuẩn sinh urease tăng sinh quá mức, tăng sản xuất và thúc đẩy hấp thu amoniac vào tuần hoàn.
+
+Khi amoniac tích tụ trong máu dưới dạng khí tự do (\(NH_3\)), nó dễ dàng đi qua hàng rào máu não (BBB) để xâm nhập trực tiếp vào hệ thần kinh trung ương.
+
+---
+
+_Trích xuất lưu đồ phân tích hiệu quả hạ amoniac của LOLA:_
+
+> #### Hình 1: Fig. 1 Forest plot indicating the pooled effect of LOLA versus placebo/no intervention for the lowering of blood ammonia.
+> 
+> - **Thuộc tài liệu:** _L-Ornithine L-Aspartate (LOLA) for Hepatic Encephalopathy in Cirrhosis: Results of Randomized Controlled Trials and Meta-Analyses_ (Butterworth-McPhail2019_Article_L-OrnithineL-AspartateLOLAForH.pdf)
+> 
+> ```
+>                           Làm giảm Amoniac
+>     [Nghiên cứu RCT] <=======================> [Giả dược / Không can thiệp]
+>                            (Favours LOLA)           (Favours Control)
+> ```
+> 
+> **Mô tả nội dung chi tiết dưới hình:** Biểu đồ Forest plot này thể hiện kết quả tổng hợp từ 10 thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCTs), chứng minh hiệu quả giảm amoniac máu tĩnh mạch rõ rệt của L-ornithine L-aspartate (LOLA) so với giả dược/không điều trị. Cơ sở sinh lý học của LOLA dựa trên việc cung cấp hai amino acid nội sinh là L-ornithine và L-aspartate, kích thích trực tiếp chu trình urê tại các tế bào gan còn hoạt động, đồng thời thúc đẩy quá trình gắn amoniac vào glutamate để tạo thành glutamine ở cơ vân.
+
+---
+
+#### Sinh lý bệnh học tại Tế bào sao (Astrocyte Swelling and Cerebral Edema)
+
+Não bộ không có chu trình urê hoạt động để tự giải độc amoniac. Trong nhu mô não, **tế bào sao (astrocytes)** là loại tế bào duy nhất sở hữu enzyme **glutamine synthetase**.
+
+Khi amoniac từ máu tràn vào não quá mức, tế bào sao sẽ tăng cường hoạt động của enzyme này để kết hợp amoniac với glutamate tạo thành **glutamine**. Tuy nhiên, sự tích tụ một lượng lớn glutamine trong nội bào sao tạo ra một áp lực thẩm thấu nội bào cực lớn, kéo nước liên tục từ khoang kẽ vào trong tế bào. Hậu quả là gây ra tình trạng **phì đại tế bào sao (astrocyte swelling)** và hình thành **phù não kẽ mức độ nhẹ (low-grade cerebral edema)**.
+
+Tình trạng phù tế bào sao mạn tính làm biến đổi cấu trúc màng tế bào, rối loạn chức năng của các kênh ion, giảm hấp thu các chất dẫn truyền thần kinh và kích hoạt các phản ứng viêm nội sọ. Trên hình ảnh cộng hưởng từ phổ (\(^1\text{H-MRS}\)), hiện tượng này được phản ánh đặc trưng bởi sự sụt giảm nồng độ myoinositol và choline cùng với sự gia tăng mạnh mẽ của glutamine trong nhu mô não.
+
+---
+
+#### Cơ chế Teo cơ (Sarcopenia) và Rối loạn Axit Amin
+
+Cơ thể có một hệ thống thải trừ amoniac ngoại gan vô cùng quan trọng chính là **cơ vân (skeletal muscle)**. Cơ vân sở hữu lượng lớn enzyme glutamine synthetase để chuyển hóa amoniac thành glutamine.
+
+- **Hậu quả của Teo cơ (Sarcopenia):** Ở bệnh nhân xơ gan tiến triển, tình trạng suy dinh dưỡng và teo cơ xảy ra rất phổ biến. Sự sụt giảm nghiêm trọng khối lượng cơ vân làm mất đi con đường giải độc amoniac dự phòng thiết yếu này, khiến nồng độ amoniac tự do trong máu tăng vọt, trực tiếp đẩy bệnh nhân vào đợt cấp của HE.
+- **Sự mất cân bằng Axit amin:** Trong xơ gan, có một sự mất cân bằng sâu sắc giữa nồng độ axit amin phân nhánh (BCAAs: leucine, isoleucine, valine) và axit amin vòng (AAAs: tyrosine, phenylalanine, tryptophan) trong huyết tương.
+    - Nồng độ **BCAAs giảm mạnh** do cơ vân tăng cường tiêu thụ các axit amin này để làm nguồn nitơ và năng lượng phục vụ chuyển hóa amoniac thành glutamine.
+    - Nồng độ **AAAs tăng cao** do gan bị tổn thương không thể chuyển hóa chúng.
+- **Thuyết chất dẫn truyền thần kinh giả:** BCAAs và AAAs cạnh tranh nhau gay gắt qua hệ thống vận chuyển L1 để đi qua hàng rào máu não. Sự sụt giảm tỷ lệ BCAA/AAA tạo điều kiện cho AAAs tràn ngập vào não bộ. Tại đây, phenylalanine và tyrosine bị chuyển hóa lệch hướng thành các **chất dẫn truyền thần kinh giả (pseudoneurotransmitters)** như octopamine và phenylethanolamine, cạnh tranh và đẩy các chất dẫn truyền thực sự (dopamine, norepinephrine) ra khỏi các thụ thể, gây ức chế thần kinh trung ương và rối loạn nhận thức.
+
+---
+
+#### Vai trò của Viêm hệ thống, Độc tố nội thể và Trục Ruột-Gan-Não
+
+Các bằng chứng y học hiện đại chỉ ra rằng amoniac không hoạt động đơn độc, mà có sự **hợp lực sinh lý bệnh (synergistic effect) mạnh mẽ giữa amoniac và phản ứng viêm hệ thống** để thúc đẩy bệnh não gan.
+
+```
+ [Loạn khuẩn ruột] ──> [Tăng tính thấm ruột] ──> [Chuyển vị vi khuẩn & LPS]
+                                                            │
+ [Đợt cấp HE] <── [Viêm thần kinh] <── [Cytokine tiền viêm] <┘
+```
+
+1. **Loạn khuẩn ruột và Suy giảm hàng rào ruột:** Bệnh nhân xơ gan biểu hiện tình trạng loạn khuẩn ruột nghiêm trọng, giảm các vi khuẩn có lợi (_Lachnospiraceae_, _Ruminococcaceae_) và tăng sinh các chủng vi khuẩn sinh amoniac và dễ gây viêm (_Enterobacteriaceae_). Tình trạng này phá hủy các liên kết chặt chẽ của tế bào biểu mô ruột (leaky gut).
+2. **Chuyển vị vi khuẩn và Thúc đẩy phản ứng viêm:** Vi khuẩn cùng các sản phẩm phụ của chúng, đặc biệt là **độc tố nội thể Lipopolysaccharide (LPS/Endotoxin)**, dễ dàng xuyên qua hàng rào ruột đi vào tĩnh mạch cửa. Tại tuần hoàn hệ thống, LPS kích hoạt hệ thống miễn dịch giải phóng ồ ạt các cytokine tiền viêm như \(\text{TNF-}\alpha\), \(\text{IL-1}\beta\), và \(\text{IL-6}\).
+3. **Viêm thần kinh (Neuroinflammation):** Các cytokine tiền viêm này di chuyển lên não, làm tăng tính thấm của hàng rào máu não và kích hoạt các **tế bào vi khuẩn đệm (microglia)** nội sọ. Tế bào vi khuẩn đệm bị kích hoạt sẽ sản sinh ra các chất trung gian gây viêm cục bộ, dẫn đến tình trạng viêm thần kinh. Phản ứng viêm thần kinh này làm tăng độ nhạy cảm của các tế bào thần kinh với amoniac, hiệp đồng làm trầm trọng thêm tình trạng phù tế bào sao ngay cả khi nồng độ amoniac máu tăng ở mức vừa phải.
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Fatima S, Compare mean change in serum ammonia level with probiotics in the management of hepatic encephalopathy. _World J Pharm Res_. 2020;9(10):1328-1337.
+2. Tun KM, Hong AS, Batra K, Naga Y, Ohning G. A Systematic Review of the Efficacy and Safety of Fecal Microbiota Transplantation in the Treatment of Hepatic Encephalopathy and Clostridioides difficile Infection in Patients With Cirrhosis. _Cureus_. 2022;14(5):e25537.
+3. Butterworth RF, McPhail MJW. L-Ornithine L-Aspartate (LOLA) for Hepatic Encephalopathy in Cirrhosis: Results of Randomized Controlled Trials and Meta-Analyses. _Drugs_. 2019;79(Suppl 1):17-21.
+4. Gluud LL, Vilstrup H, Morgan MY. Non-absorbable disaccharides versus placebo/no intervention and lactulose versus lactitol for the prevention and treatment of hepatic encephalopathy in people with cirrhosis. _Cochrane Database Syst Rev_. 2016;(5):CD003044.
+5. Morgan MY, et al. Rifaximin for prevention and treatment of hepatic encephalopathy in people with cirrhosis. _Cochrane Database Syst Rev_. 2023;(3):CD011585.
+6. Wang Z, Chu P, Wang W. Combination of rifaximin and lactulose improves clinical efficacy and mortality in patients with hepatic encephalopathy. _Drug Des Devel Ther_. 2019;13:1-11.
+7. Fang Y, et al. Systematic review and meta-analysis of clinical prediction models for hepatic encephalopathy after transjugular intrahepatic portosystemic shunt. _Front Med (Lausanne)_. 2026;13:1707035.
+8. Fu J, Gao Y, Shi L. Combination therapy with rifaximin and lactulose in hepatic encephalopathy: A systematic review and meta-analysis. _PLoS One_. 2022;17(4):e0267647.
+9. Hu Y, Zhang X, Xiao Y, Wu Z, Wang Y. Efficacy and safety of rifaximin in the prevention of hepatic encephalopathy in patients with cirrhosis: A systematic review and meta-analysis. _PLoS One_. 2025;20(5):e0323359.
+10. European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatic encephalopathy. _J Hepatol_. 2022;77(3):807-824.
+11. Yokobori S, Yatabe T, Kondo Y, et al. Intravenous branched-chain amino acid administration for the acute treatment of hepatic encephalopathy: a systematic review and meta-analysis. _J Intensive Care_. 2025;13:2.
+
+---
+
+_Trong bài học tiếp theo (Phần 2), chúng ta sẽ tiếp tục phân tích chi tiết về các yếu tố thúc đẩy đợt bùng phát HE cấp tính, cơ chế tác dụng sinh lý của các nhóm thuốc điều trị chính (Lactulose, Rifaximin, LOLA, BCAA) và quy trình chẩn đoán phân biệt trên lâm sàng._
+
+📝 Bạn có muốn tôi chuẩn bị trước một sơ đồ tổng hợp tóm tắt toàn bộ chu trình chuyển hóa Amoniac giữa các cơ quan Gan - Ruột - Cơ vân - Thận - Não để đính kèm vào tài liệu học tập này không?

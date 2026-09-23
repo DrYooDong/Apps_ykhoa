@@ -1,0 +1,96 @@
+---
+title: "Xuất huyết tiêu hóa trên"
+part: "P1"
+aliases:
+  - "Xuất huyết tiêu hóa trên"
+  - "Gastrointestinal Bleeding"
+  - "GI Bleeding"
+  - "UGIB"
+  - "LGIB"
+  - "XHTH trên"
+  - "XHTH dưới"
+keywords:
+  - "xuất huyết tiêu hóa trên"
+  - "tim mạch"
+  - "tiêu hóa - gan mật"
+  - "noi soi da day cap cuu"
+  - "rockall score"
+  - "glasgow-blatchford"
+  - "non ra mau"
+  - "di ngoai phan den"
+  - "ppi truyen tinh mach"
+  - "octreotide"
+icd10:
+  - "K92.0"
+  - "K92.1"
+  - "K92.2"
+specialty: "Tim mạch"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết
+
+[[Xuất huyết]] tiêu hóa trên (XHTHT) được định nghĩa là tình trạng chảy máu xuất phát từ các vị trí thuộc thực quản, dạ dày hoặc tá tràng,. Biểu hiện lâm sàng đặc trưng của XHTHT bao gồm [[Nôn ói|nôn]] ra máu (máu đỏ tươi hoặc dịch màu bã cà phê), tiêu phân đen (phân đen, sệt như hắc ín), hoặc tiêu phân máu đỏ/đỏ mận trong các trường hợp chảy máu ồ ạt,.
+
+XHTHT thường được chia thành hai nhóm cơ chế bệnh sinh chính: XHTHT do vỡ giãn tĩnh mạch (thường liên quan đến tăng áp lực tĩnh mạch cửa) và XHTHT không do vỡ giãn tĩnh mạch (phổ biến nhất là loét dạ dày - tá tràng),. Khi xảy ra tình trạng mất máu cấp tính, hậu quả sinh lý bệnh chung là sự suy giảm tưới máu mô và các cơ quan.
+
+#### Cơ Chế Bệnh Sinh XHTHT Do Tăng Áp Lực Tĩnh Mạch Cửa (Variceal Bleeding)
+
+Tăng áp lực tĩnh mạch cửa là rối loạn sinh lý bệnh trung tâm dẫn đến sự hình thành và vỡ các búi giãn tĩnh mạch dạ dày - thực quản.
+
+- **Sự gia tăng sức cản mạch máu:** Bất kể nguyên nhân cơ bản là gì (thường gặp nhất là xơ [[Gan]]), sự tiến triển của quá trình xơ hóa và biến đổi cấu trúc dạng nốt của nhu mô [[Gan]] làm tăng sức cản mạch máu trong gan.
+- **Thay đổi huyết động hệ tạng:** Áp lực tĩnh mạch cửa gia tăng kích hoạt sự phát triển của các tuần hoàn bàng hệ cửa-chủ. Bên cạnh những thay đổi về cấu trúc, sự thay đổi vi tuần hoàn tạng (được trung gian một phần bởi nitric oxide) cũng góp phần làm thay đổi huyết động học của hệ cửa và hệ thống ở bệnh nhân xơ gan.
+- **Cơ chế vỡ tĩnh mạch:** [[Xuất huyết]] tĩnh mạch cấp tính (AVB) xảy ra khi áp lực tĩnh mạch cửa tăng cao liên tục, khiến sức căng trên thành của búi giãn tĩnh mạch vượt quá giới hạn đàn hồi của nó, dẫn đến vỡ mạch. Do đó, nền tảng của điều trị XHTHT do vỡ giãn tĩnh mạch là làm giảm áp lực tĩnh mạch cửa chứ không phải là điều chỉnh các bất thường về cầm máu. Các búi giãn tĩnh mạch ở dạ dày (đặc biệt là vùng phình vị) thường nằm sâu hơn và có đặc điểm huyết động học khác biệt nên chảy máu thường ồ ạt và khó kiểm soát hơn so với tĩnh mạch thực quản,.
+
+> **[TRÍCH XUẤT SƠ ĐỒ/HÌNH ẢNH MINH HỌA CƠ CHẾ VÀ ĐIỀU TRỊ]**
+> 
+> - **Tên Hình/Sơ Đồ:** Hình 1 (Fig. 1) - Endoscopic treatment in patients with acute variceal bleeding.
+> - **Thuộc Tài Liệu:** s12876-025-04088-3.pdf
+> - **Nội Dung Mô Tả:** Hình ảnh minh họa cơ chế can thiệp trực tiếp vào tổn thương vỡ giãn. Phân đoạn A và B biểu diễn phương pháp thắt tĩnh mạch thực quản bằng vòng cao su (Endoscopic variceal ligation - EVL) giúp thắt nút cơ học dòng máu; Phân đoạn C và D biểu diễn phương pháp tiêm xơ (EIS) và tiêm chất kết dính mô (cyanoacrylate) vào trong búi giãn tĩnh mạch dạ dày cấp tính để tạo huyết khối tắc mạch,.
+
+> - **Tên Hình/Sơ Đồ:** Figure 1 - Management of acute variceal bleeding.
+> - **Thuộc Tài Liệu:** untitled.pdf
+> - **Nội Dung Mô Tả:** Lưu đồ sinh lý bệnh - điều trị. Hồi sức huyết động với mục tiêu duy trì Hemoglobin ở mức 7-9 g/dL để không làm tăng thể tích tuần hoàn quá mức (tránh làm tăng thêm áp lực tĩnh mạch cửa). Sử dụng thuốc vận mạch (vasoactive drugs) để co mạch tạng trong 2-5 ngày, phối hợp thắt tĩnh mạch qua nội soi. Trong trường hợp áp lực quá cao gây chảy máu dai dẳng (Salvage TIPS), hoặc nguy cơ tái phát cao (Preemptive TIPS), phương pháp đặt shunt cửa-chủ qua tĩnh mạch cảnh trong (TIPS) được sử dụng để giải áp lực tĩnh mạch cửa trực tiếp,.
+
+#### Cơ Chế Bệnh Sinh XHTHT Không Do Vỡ Giãn Tĩnh Mạch (Non-variceal Bleeding)
+
+Loét dạ dày - tá tràng là nguyên nhân gây xuất huyết không do vỡ giãn tĩnh mạch phổ biến nhất,. Các nguyên nhân khác bao gồm bệnh lý viêm xước niêm mạc, khối u ác tính, hội chứng Mallory-Weiss và tổn thương Dieulafoy.
+
+- **Vai trò của Acid dạ dày đối với cục máu đông:** Cơ chế sinh lý quan trọng trong chảy máu do loét là sự ổn định của cục máu đông (clot). Dữ liệu _in vitro_ cho thấy acid trong dạ dày thúc đẩy quá trình tiêu sợi huyết (ly giải cục máu đông) thông qua việc kích hoạt pepsin ở mức pH < 4-5,. Do đó, việc giảm bài tiết acid dạ dày (duy trì pH môi trường cao) sẽ ức chế sự ly giải do pepsin, từ đó thúc đẩy sự hình thành và duy trì độ bền vững của cục máu đông,.
+- **Bệnh lý đi kèm và yếu tố cản trở cầm máu:** Bệnh nhân mắc bệnh [[Thận]] giai đoạn cuối (ESRD) có nguy cơ tái xuất huyết loét dạ dày tá tràng cao hơn do hội chứng xuất huyết (bleeding diathesis). Cơ chế sinh lý bệnh là do rối loạn chức năng [[Tiểu cầu]] trong môi trường tăng urê máu (uremia), cũng như sự tương tác kém giữa [[Tiểu cầu]] và thành mạch máu bị tổn thương. Quá trình chạy [[Thận]] nhân tạo cũng góp phần gây chảy máu do tiếp xúc với heparin và sự kích hoạt tiểu cầu liên tục khi máu tiếp xúc với bề mặt nhân tạo. Ngoài ra, ESRD thường đi kèm với nồng độ albumin thấp và dinh dưỡng kém, dẫn đến quá trình lành ổ loét diễn ra chậm hơn.
+
+> **[TRÍCH XUẤT SƠ ĐỒ/HÌNH ẢNH MINH HỌA CƠ CHẾ VÀ ĐIỀU TRỊ]**
+> 
+> - **Tên Hình/Sơ Đồ:** Box 1 - Endoscopic hemostasis toolbox (Cơ chế các phương pháp cầm máu nội soi).
+> - **Thuộc Tài Liệu:** 2021_a_1369_5274.pdf
+> - **Nội Dung Mô Tả:** Mô tả cơ sở sinh lý của các kỹ thuật cầm máu ổ loét:
+>     - **Liệu pháp tiêm (Injection therapy):** Cơ chế chính là chèn ép cục bộ do hiệu ứng thể tích. Epinephrine pha loãng có tác dụng phụ là tạo sự co mạch tại chỗ. Các chất tiêm xơ (ethanol, polidocanol) tạo cầm máu bằng cách gây tổn thương mô trực tiếp và tạo huyết khối,.
+>     - **Liệu pháp nhiệt (Thermal therapy):** Nhiệt truyền vào mô mục tiêu dẫn đến khô bề mặt, [[Phù]] nề, đông vón protein mô, co mạch và gián tiếp kích hoạt dòng thác đông máu, tạo ra liên kết cầm máu (coaptive coagulation).
+>     - **Liệu pháp cơ học (Mechanical therapy):** Sử dụng các loại kẹp clip (qua kênh thủ thuật hoặc gắn ở đầu ống soi) đóng chặt vào mô mục tiêu để cầm máu bằng sức ép cơ học đè bẹp trực tiếp vị trí chảy máu,.
+>     - **Liệu pháp tại chỗ (Topical therapy):** Sử dụng bột cầm máu vô cơ (như TC-325) xịt vào vùng chảy máu, bột này hấp thụ nhanh chóng và tập trung các yếu tố đông máu tại vị trí chảy máu, hình thành một khối máu đông cục bộ (coagulum).
+
+> - **Tên Hình/Sơ Đồ:** Figure 3 - Algorithm for the endoscopic management of nonvariceal upper gastrointestinal hemorrhage (NVUGIH) secondary to peptic ulcer.
+> - **Thuộc Tài Liệu:** 2021_a_1369_5274.pdf
+> - **Nội Dung Mô Tả:** Phân loại Forrest phản ánh sinh lý bệnh mạch máu tại ổ loét để định hướng điều trị.
+>     - Nhóm mạch máu đang chảy thành tia hoặc rỉ máu (FIa, FIb) hoặc có điểm mạch lộ rõ (FIIa): Rất dễ tiếp tục chảy máu, bắt buộc cầm máu qua nội soi (kết hợp các cơ chế tiêm và nhiệt/cơ học ở Box 1) kèm ức chế bơm proton (PPI) liều cao tĩnh mạch,,.
+>     - Nhóm có cục máu đông bám dính (FIIb): Cân nhắc phá bỏ cục máu đông để bộc lộ mạch máu bên dưới và can thiệp, kết hợp PPI,.
+>     - Nhóm đáy sạch hoặc có cặn sắc tố phẳng (FIIc, FIII): Nguy cơ chảy máu lại thấp, không cần can thiệp cầm máu cơ học/nhiệt, chỉ dùng PPI đường uống,.
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Gralnek IM, Stanley AJ, Morris AJ, et al. Endoscopic diagnosis and management of nonvariceal upper gastrointestinal hemorrhage (NVUGIH): European Society of Gastrointestinal Endoscopy (ESGE) Guideline – Update 2021. _Endoscopy_. 2021;53(3):300-332.
+2. Laine L, Barkun AN, Saltzman JR, Martel M, Leontiadis GI. ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding. _Am J Gastroenterol_. 2021;116(5):899-917.
+3. Popovic DD, Marjanovic-Haljilji M, Mijac D, et al. Diagnosis and treatment of variceal bleeding. _Medicinska istraživanja_. 2026.
+4. Wang J, Bao YX, Bai M, et al. Restrictive vs liberal transfusion for upper gastrointestinal bleeding: A meta-analysis of randomized controlled trials. _World J Gastroenterol_. 2013;19(40):6919-6927.
+5. Luo S, Wu K, Zhou X. Timing of endoscopy in patients with acute variceal bleeding in cirrhosis: an updated systematic review and meta-analysis. _BMC Gastroenterol_. 2025;25:488.
+6. Mohanty A, Garcia-Tsao G. Management of acute variceal bleeding. _Clin Liver Dis_. 2024;23:e0176.
+7. El Ouali S, Barkun AN, Martel M, Maggio D. Timing of rebleeding in high-risk peptic ulcer bleeding after successful hemostasis: A systematic review. _Can J Gastroenterol Hepatol_. 2014;28(10):543-548.

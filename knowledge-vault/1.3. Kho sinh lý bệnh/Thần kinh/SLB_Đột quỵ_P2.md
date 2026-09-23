@@ -1,0 +1,97 @@
+---
+title: "Đột quỵ"
+part: "P2"
+aliases:
+  - "Đột quỵ"
+  - "Stroke"
+  - "Tai biến mạch máu não"
+  - "TBMMN"
+  - "Nhồi máu não"
+  - "Xuất huyết não"
+  - "Ischemic Stroke"
+  - "Hemorrhagic Stroke"
+keywords:
+  - "đột quỵ"
+  - "tim mạch"
+  - "thần kinh"
+  - "fast"
+  - "nihss"
+  - "ct so nao khong can quang"
+  - "mri diffusion"
+  - "tpa tieu soi huyet"
+  - "lay huyet khoi co hoc"
+  - "cua so vang"
+icd10:
+  - "I63"
+  - "I61"
+  - "I64"
+specialty: "Tim mạch"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+[[3. Nội tổng quát/3.5. Thần kinh/3.5.1. Đột quỵ & Mạch máu não/Đột quỵ/Đột quỵ/Đột quỵ.md|← Quay lại Đột quỵ]]
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết (Phần 2: Bổ Sung Các Cơ Chế Bệnh Sinh Khác)
+
+#### 1.1. Cơ Chế Bệnh Sinh Huyết Khối Tĩnh Mạch Não (Cerebral Venous Thrombosis - CVT)
+
+Huyết khối tĩnh mạch não (HKTMN) là tình trạng bệnh lý liên quan đến hệ thống tĩnh mạch não, bao gồm các xoang tĩnh mạch nông, xoang tĩnh mạch sâu và các tĩnh mạch [[Vỏ não]]. Khác với nhồi máu động mạch, cơ chế bệnh sinh của HKTMN diễn ra theo hai con đường chính:
+
+- **Tắc nghẽn xoang tĩnh mạch và tổn thương nhu mô não:** Sự tắc nghẽn dẫn đến tăng áp lực tĩnh mạch, làm giảm áp lực tưới máu mao mạch và tăng thể tích máu não. Sự giãn nở của các tĩnh mạch não đóng vai trò quan trọng trong giai đoạn đầu. Áp lực tăng cao phá vỡ hàng rào máu não gây ra hiện tượng [[Phù]] mạch (rò rỉ huyết tương vào khoảng kẽ). Khi áp lực tiếp tục tăng, hoạt động của bơm $Na+/K+$ ATPase bị đình trệ khiến nước tràn vào trong tế bào, dẫn đến [[Phù]] não do nhiễm độc tế bào (cytotoxic edema). Hậu quả nặng nề nhất là mao mạch hoặc tĩnh mạch bị vỡ, gây ra [[Xuất huyết|chảy máu]] tĩnh mạch.
+- **Suy giảm hấp thu [[Dịch nào tủy|dịch não tủy]]:** HKTMN cản trở dòng thoát của [[Dịch nào tủy|dịch não tủy]] vào hệ thống tĩnh mạch, dẫn đến tăng áp lực nội sọ. Tình trạng này thường xuyên xảy ra hơn nếu huyết khối nằm ở xoang tĩnh mạch dọc trên, nhưng cũng có thể gặp trong huyết khối xoang ngang.
+
+#### 1.2. Cơ Chế Bệnh Sinh Hình Thành Và Nguy Cơ Vỡ Phình Động Mạch Não
+
+Phình động mạch não hình thành chủ yếu do sự bất thường trong cấu trúc của thành mạch máu não kết hợp với tác động của huyết động học.
+
+- **Tổn thương cấu trúc thành mạch:** Tính toàn vẹn của lớp cơ chun trong bị tổn hại, kèm theo các bất thường ở lớp chun giữa và lớp áo ngoài. Tại các vị trí phân nhánh của mạch máu, sự mất liên tục của cấu trúc bình thường kết hợp với sự hỗ trợ kém của nhu mô não xung quanh khiến thành mạch dễ bị tổn thương dưới áp lực mạn tính của dòng máu, từ đó hình thành túi phình,.
+- **Yếu tố huyết động và nguy cơ vỡ:** Phình mạch ở các nhánh xa có thể nhỏ hơn so với các vị trí gần nền sọ nhưng nguy cơ vỡ có thể cao do độ dày thành động mạch tại đây mỏng hơn. Nguy cơ vỡ gia tăng đáng kể dựa trên kích thước phình mạch, vị trí (đặc biệt là động mạch thông trước, đỉnh động mạch thân nền, hệ tuần hoàn sau), hình thái nhiều thùy, và tỷ lệ kích thước đáy/cổ túi phình > 1,6.
+
+**Trích Xuất Sơ Đồ/Lưu Đồ/Bảng:**
+
+> **Tên Hình/Sơ Đồ:** Bảng 1. Thang điểm PHASES tiên lượng nguy cơ vỡ phình mạch não hàng năm (theo Jacoba P.Greving). **Thuộc Tài Liệu:** QD-3312.pdf **Mô Tả Dưới Bảng:** Bảng đánh giá đa yếu tố nhằm tính toán nguy cơ vỡ phình mạch não dựa trên các cơ chế bệnh sinh và dịch tễ. Các tiêu chí cộng điểm bao gồm: Phân bố dân cư (Nhật Bản, Phần Lan nguy cơ cao hơn); [[Tăng huyết áp]] (1 điểm); Tuổi $\ge70$ (1 điểm); Kích thước phình mạch (từ 7.0mm trở lên điểm nguy cơ tăng vọt, $\ge20$ mm cộng 10 điểm); Tiền sử [[Xuất huyết|chảy máu]] dưới nhện do vỡ phình khác (1 điểm); Vị trí phình mạch (hệ cảnh trong ít nguy cơ nhất 0 điểm, động mạch não giữa 2 điểm, động mạch não trước/thông sau/tuần hoàn sau nguy cơ cao nhất 4 điểm). Tổng điểm PHASES càng cao (tối đa 22), nguy cơ vỡ phình mạch trong 5 năm tiếp theo càng lớn.
+
+#### 1.3. Cơ Chế Gây Triệu Chứng Và Biến Chứng Của Dị Dạng Thông Động Tĩnh Mạch Não (AVM)
+
+Dị dạng động-tĩnh mạch (AVM) não là sự kết nối bất thường trực tiếp giữa động mạch và tĩnh mạch mà không qua hệ thống mao mạch. Bệnh nguyên thực sự hầu như chưa xác định rõ nhưng các cơ chế gây biến chứng đã được mô tả chi tiết:
+
+- **Cơ chế chảy máu não (Vỡ AVM):** Đây là biểu hiện lâm sàng thường gặp và nguy hiểm nhất (chiếm 50-70% trường hợp). Những AVM có nguy cơ vỡ cao thường mang các đặc điểm huyết động và cấu trúc: kích thước nhỏ, nằm ở vị trí sâu (dưới lều/trên lều), dẫn lưu tĩnh mạch sâu, áp lực ở động mạch nuôi cao, có túi phình đi kèm, tĩnh mạch dẫn lưu bị hẹp, và ít tĩnh mạch dẫn lưu,.
+- **Cơ chế gây [[Động kinh]]:** [[Động kinh]] là triệu chứng phổ biến thứ hai (18-35%). Đặc điểm giải phẫu làm tăng nguy cơ động kinh do AVM bao gồm: Kích thước AVM lớn, lõi dị dạng (nidus) hoặc động mạch nuôi nằm sát [[Vỏ não]], và vị trí AVM nằm ở thùy thái dương.
+
+**Trích Xuất Sơ Đồ/Lưu Đồ/Bảng:**
+
+> **Tên Hình/Sơ Đồ:** Phân loại theo Spetzler và Martin. **Thuộc Tài Liệu:** QD-3312.pdf **Mô Tả Dưới Bảng:** Bảng phân loại Spetzler và Martin đánh giá mức độ phức tạp, nguy cơ chảy máu và độ khó phẫu thuật của AVM não dựa trên 3 đặc điểm bệnh sinh và giải phẫu: (1) Kích cỡ AVM: Nhỏ <3cm (1 điểm), Trung bình 3-6cm (2 điểm), Lớn >6cm (3 điểm); (2) Vùng não chức năng: Nếu AVM nằm ở vùng não có chức năng quan trọng (cảm giác - vận động, ngôn ngữ, thị giác, đồi thị, bao trong, thân não...) cộng 1 điểm; (3) Tĩnh mạch dẫn lưu: Nếu dẫn lưu tĩnh mạch sâu cộng 1 điểm, dẫn lưu nông 0 điểm. Tổng điểm giúp định hướng điều trị (từ Grade I đến Grade V),.
+
+> **Tên Hình/Sơ Đồ:** Quy trình chẩn đoán và điều trị vỡ phình mạch não (theo De Oliveira Manoel). **Thuộc Tài Liệu:** QD-3312.pdf **Mô Tả Dưới Sơ Đồ:** Sơ đồ mô tả quy trình tiếp cận người bệnh nghi ngờ chảy máu dưới nhện (SAH) do vỡ phình mạch. Khởi đầu bằng [[CT Scan]]:
+> 
+> 1. Nếu CT điển hình chảy máu dưới nhện -> Chụp mạch (CTA, DSA) -> Phát hiện phình mạch -> Điều trị.
+> 2. Nếu CT không điển hình/bình thường -> Bắt buộc chọc dịch não tủy. Nếu có máu hoặc sản phẩm thoái biến hemoglobin -> Chụp mạch (CTA, DSA) -> Phát hiện phình mạch -> Điều trị.
+> 3. Nếu CTA/DSA lần 1 bình thường -> Chụp lại CTA/DSA sau 1-3 tuần để tránh bỏ sót do túi phình siêu nhỏ (<3mm) bị co thắt mạch che lấp tạm thời,.
+
+#### 1.4. Cơ Chế Thuyên Tắc Nghịch Lý Qua Lỗ Bầu Dục (PFO) Kết Hợp Xơ Vữa Động Mạch Tương Đương
+
+Trong các trường hợp đột quỵ ẩn danh (Cryptogenic stroke) hoặc đột quỵ thuyên tắc không rõ nguồn gốc (ESUS), cơ chế thuyên tắc nghịch lý (paradoxical embolism) và xơ vữa động mạch trên [[Tim]] đóng vai trò quan trọng:
+
+- **Thuyên tắc nghịch lý qua PFO:** Cơ chế khởi phát liên quan đến sự di chuyển của các huyết khối (thường là huyết khối đỏ hình thành do tình trạng ứ trệ máu ở hệ tĩnh mạch). Các cục huyết khối này đi qua luồng thông phải-trái tại lỗ bầu dục (PFO) ở [[Tim]], vượt qua vòng tuần hoàn [[Phổi]], và trực tiếp thâm nhập vào các động mạch cung cấp máu cho não. Huyết khối đỏ trong trường hợp này nhạy cảm với thuốc chống đông đường uống (OACs) hơn là thuốc kháng [[Tiểu cầu]].
+- **Sự chồng lấp cơ chế (Competing embolic sources):** Ở những người bệnh ESUS có nguy cơ xơ vữa động mạch trên tim cao (supracardiac atherosclerosis - mảng bám không hẹp $\le5$dot ở cung động mạch chủ, động mạch cảnh, động mạch đốt sống), các mảng xơ vữa không hẹp này có thể nổi lên như một nguồn thuyên tắc cạnh tranh bên cạnh luồng thông phải-trái qua PFO.
+
+#### 1.5. Cơ Chế Bệnh Sinh Sa Sút Trí Tuệ Nguyên Nhân Mạch Máu (Vascular Dementia)
+
+Sa sút trí tuệ do nguyên nhân mạch máu (SSTT mạch máu) xảy ra khi có các tổn thương ảnh hưởng đến nguồn cung cấp máu cho não, dẫn đến suy giảm chức năng nhận thức. Các cơ chế tổn thương mô não bao gồm:
+
+- **Tổn thương nhồi máu đa ổ hoặc ổ khuyết:** Bệnh sinh xảy ra khi nhiều ổ nhồi máu não (hoặc chảy máu não) kích thước nhỏ cộng dồn lại, gây mất tế bào thần kinh hoặc tổn thương dải sợi trục đủ nhiều để làm giảm chức năng não bộ.
+- **Nhồi máu ở vị trí chiến lược (Strategic infarct):** Sa sút trí tuệ có thể khởi phát chỉ do một nhồi máu não duy nhất nếu nó xảy ra tại khu vực cực kỳ quan trọng đối với chức năng nhận thức (ví dụ: hồi góc, đồi thị).
+- **Bệnh não do xơ vữa động mạch dưới vỏ (Bệnh Binswanger):** Cơ chế liên quan đến tình trạng [[Tăng huyết áp]] nặng, kiểm soát kém và bệnh mạch máu toàn thân. Hậu quả là tổn thương lan tỏa, không đều các sợi trục và vỏ myelin, kèm theo sự tăng sinh tế bào thần kinh đệm lan rộng và mất nhu mô do thiếu máu cục bộ mạn tính.
+- **Giảm tưới máu não mạn tính:** Sự sụt giảm lưu lượng máu do bệnh lý tim mạch gây thiếu máu cục bộ mạn tính. Quá trình này gây tổn thương tế bào thần kinh trực tiếp và kích hoạt các bất thường trong quá trình tổng hợp protein, làm tăng nguy cơ sa sút trí tuệ.
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. 495.full.pdf. _Anticoagulants or antiplatelets for secondary prevention of cryptogenic stroke: an updated systematic review and meta-analysis_.
+2. QD-3312.pdf. _Hướng dẫn chẩn đoán và điều trị đột quỵ não_ (Quyết định 3312/QĐ-BYT).

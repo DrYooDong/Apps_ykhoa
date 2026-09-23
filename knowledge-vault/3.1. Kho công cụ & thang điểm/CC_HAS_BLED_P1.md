@@ -1,0 +1,34 @@
+---
+title: "HAS-BLED Đánh giá nguy cơ xuất huyết"
+aliases: ["HAS-BLED Đánh giá nguy cơ xuất huyết", "HAS_BLED", "HAS-BLED", "xuất huyết", "kháng đông", "chảy máu"]
+keywords: ["HAS-BLED", "xuất huyết", "kháng đông", "chảy máu"]
+icd10: ["I48"]
+specialty: "Tim mạch"
+tags: ["CliniPortal", "ClinicalCalculator", "KhoCongCu", "Tim mạch"]
+type: "calculator"
+---
+
+# HAS-BLED Đánh giá nguy cơ xuất huyết
+
+> [!NOTE]
+> **Chuyên khoa:** Tim mạch | **Mã ICD-10:** I48 | **Phân hệ:** Kho Công Cụ Lâm Sàng
+
+## 1. Mục Đích & Ý Nghĩa Lâm Sàng
+Thang điểm / công thức **HAS-BLED Đánh giá nguy cơ xuất huyết** được áp dụng rộng rãi trong thực hành lâm sàng nhằm lượng hóa nguy cơ, hỗ trợ ra quyết định phân tầng bệnh nhân và hướng dẫn xử trí chính xác theo khuyến cáo Y học Chứng cứ (EBM).
+
+## 2. Các Thông Số Đầu Vào Cần Thu Thập
+- Tiêu chuẩn lâm sàng & sinh hiệu
+- Các chỉ số xét nghiệm và dấu ấn sinh học liên quan
+- Tiền sử bệnh lý và yếu tố nguy cơ nền
+
+## 3. Bảng Điểm & Phân Tầng Nguy Cơ
+
+| Điểm số / Giá trị | Phân tầng nguy cơ | Khuyến cáo xử trí lâm sàng |
+| :--- | :--- | :--- |
+| **Nguy cơ thấp** | Theo dõi an toàn | Có thể điều trị ngoại trú hoặc theo dõi định kỳ |
+| **Nguy cơ trung bình** | Cần nhập viện theo dõi | Nhập khoa nội / phòng bệnh thông thường |
+| **Nguy cơ cao / Nguy kịch** | Can thiệp tích cực | Nhập ICU / HDU, hồi sức khẩn cấp |
+
+## 4. Điểm Ngọc Lâm Sàng & Thận Trọng
+> [!TIP]
+> **Điểm ngọc:** Luôn đánh giá phối hợp với toàn trạng lâm sàng thực tế của bệnh nhân, không áp dụng máy móc thang điểm nếu có yếu tố loại trừ hoặc bệnh cảnh phức tạp.

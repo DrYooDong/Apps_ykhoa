@@ -1,0 +1,71 @@
+---
+title: "Cơ chế bệnh sinh & Phân loại sốc (Phần 3)"
+part: "P3"
+aliases:
+  - "Cơ chế bệnh sinh & Phân loại sốc (Phần 3)"
+keywords:
+  - "cơ chế bệnh sinh & phân loại sốc (phần 3)"
+  - "thần kinh"
+  - "hồi sức - cấp cứu"
+specialty: "Thần kinh"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/than-kinh"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết: Các Cơ Chế Bệnh Sinh Bổ Sung Và Đặc Thù
+
+Mặc dù hai phần trước đã bao quát các cơ chế huyết động và vi tuần hoàn cốt lõi, các tài liệu nguồn vẫn cung cấp thêm những cơ chế sinh lý bệnh chuyên sâu của các dạng [[Sốc]] đặc thù, cũng như giải thích cơ chế chuyển hóa ở cấp độ tế bào chưa được đề cập.
+
+#### 1.1. Sinh Bệnh Học [[Sốc]] Thần Kinh (Neurogenic Shock)
+
+Sốc thần kinh là trạng thái mất cân bằng giữa sự điều hòa của hệ thần kinh giao cảm và phó giao cảm lên hoạt động của tim và cơ trơn mạch máu. Đặc trưng nổi bật là sự giãn mạch sâu sắc với tình trạng giảm thể tích tương đối, trong khi thể tích máu thực tế ban đầu không thay đổi. Sốc thần kinh thường xảy ra nhất do tổn thương tủy sống ở vùng cổ hoặc ngực cao (trên mức T6),. Cơ chế sinh bệnh học được chia thành 3 nhóm cơ bản:
+
+1. Tổn thương trực tiếp các trung tâm điều hòa tuần hoàn ở hành não do chèn ép, thiếu máu cục bộ (ví dụ: huyết khối động mạch nền) hoặc tác dụng của thuốc.
+2. Thay đổi các luồng tín hiệu hướng tâm đến trung tâm tuần hoàn ở hành não do sợ hãi, căng thẳng, đau đớn dữ dội hoặc rối loạn phản xạ phế vị.
+3. Gián đoạn kết nối đi xuống từ các trung tâm điều hòa hành não đến tủy sống (thường gặp trong liệt nửa người do chấn thương tủy sống).
+
+Sự mất trương lực giao cảm dẫn đến giảm sức cản mạch máu hệ thống và giảm cung lượng tim, kết hợp với trương lực phó giao cảm (dây phế vị) không bị đối kháng dẫn đến nhịp tim chậm nghiêm trọng.
+
+> **Sơ Đồ: Pathomechanism of neurogenic shock: Connections in the autonomic system for heart rate and blood pressure regulation (Cơ chế bệnh sinh của sốc thần kinh: Các kết nối trong hệ thần kinh tự chủ để điều hòa nhịp tim và huyết áp)** _Trích từ tài liệu: "Dtsch_Arztebl_Int-115_0757.pdf"_ Mô tả hình họa: Sơ đồ thể hiện các đường dẫn truyền thần kinh tự chủ điều hòa tim và mạch máu. Tín hiệu từ các vùng hành não (như nhân vận động lưng dây phế vị, nhân bó đơn độc) đi xuống tủy sống. Khi có tổn thương làm gián đoạn các sợi thần kinh giao cảm (Sympathetic fibers) và các sợi co mạch (Vasoconstrictor fibers) chi phối cho hệ mạch máu nội tạng (Splanchnic vessels) và mạch máu cơ vân, cơ thể sẽ mất hoàn toàn khả năng co mạch duy trì huyết áp và mất nhịp tim bù trừ.
+
+#### 1.2. Cơ Chế Phức Hợp Đa Yếu Tố Trong Sốc Phản Vệ (Anaphylactic Shock)
+
+Mặc dù sốc phản vệ thường được phân loại là sốc phân bố, cơ chế bệnh sinh thực tế phức tạp hơn và là sự kết hợp của nhiều loại sốc. Sự giải phóng các chất trung gian hóa học từ tế bào mast và [[Bạch cầu]] ái kiềm dẫn đến 3 cơ chế đồng thời:
+
+1. **Sốc phân bố:** Giãn mạch hệ thống và giảm sâu trương lực tĩnh mạch.
+2. **Sốc giảm thể tích:** Rò rỉ dịch ra ngoài mạch (thoát dịch mô kẽ) gây ra tình trạng giảm thể tích nội mạch nghiêm trọng.
+3. **Sốc tim:** Suy giảm chức năng [[Tim|cơ tim]] trực tiếp (do chất trung gian ức chế [[Tim|cơ tim]]) hoặc do giảm tưới máu mạch vành gây ra sốc tim.
+
+Sự kết hợp của việc mất máu tĩnh mạch trở về (giảm tiền gánh) và tâm thất đổ đầy kém làm giảm nghiêm trọng cung lượng tim, trong khi các biến đổi điện tâm đồ, rối loạn nhịp tim (như nhịp nhanh trên thất) và thiếu máu cục bộ cơ tim tiếp tục làm tình trạng suy bơm tồi tệ hơn.
+
+#### 1.3. Cơ Chế Đa Dạng Của Tăng Lactate Máu Trong Sốc (Hyperlactatemia)
+
+Sự gia tăng nồng độ lactate trong máu phản ánh chức năng tế bào bất thường và là dấu ấn của sốc. Trong các trạng thái lưu lượng máu thấp (sốc giảm thể tích, sốc tim, sốc tắc nghẽn), cơ chế chính của tăng lactate máu là thiếu oxy mô dẫn đến chuyển hóa kỵ khí.
+
+Tuy nhiên, trong sốc phân bố (đặc biệt là [[Sốc nhiễm khuẩn]]), sinh lý bệnh của lactate phức tạp hơn rất nhiều. Tăng lactate máu ở đây KHÔNG chỉ do thiếu oxy mà còn do sự gia tăng quá trình đường phân (glycolysis) và sự ức chế enzyme pyruvate dehydrogenase, làm chuyển hướng con đường chuyển hóa tế bào sang tạo lactate ngay cả khi mô vẫn có oxy (hiện tượng tăng lactate hiếu khí),. Thêm vào đó, sự thanh thải lactate cũng có thể bị tích tụ do suy giảm chức năng [[Gan]]. Do vậy, nồng độ lactate còn được dùng để đánh giá mức độ stress chuyển hóa của cơ thể.
+
+#### 1.4. Kiểu Hình Suy Đa Tạng Liên Quan Giảm [[Tiểu cầu]] (TAMOF) Trong [[Sốc nhiễm khuẩn]]
+
+TAMOF (Thrombocytopenia-Associated Multiple Organ Failure - Suy đa tạng liên quan đến giảm [[Tiểu cầu]]) là một kiểu hình lâm sàng viêm cực kỳ nghiêm trọng trong sốc nhiễm khuẩn. Về mặt sinh bệnh học, cơ chế của TAMOF được trung gian thông qua sự suy giảm hoạt động của enzyme ADAMTS-13 (một enzyme cắt cắt yếu tố đông máu), kết hợp với sự gia tăng hoạt tính của yếu tố von Willebrand (VWF) và sự hiện diện của các chuỗi VWF siêu lớn trong huyết tương. Sự mất cân bằng này thúc đẩy bệnh lý vi mạch huyết khối (microangiopathy) và hình thành các vi huyết khối lan tỏa trong hệ thống vi tuần hoàn, dẫn đến tắc nghẽn dòng máu vi mạch và là nguyên nhân trực tiếp thúc đẩy suy đa tạng.
+
+#### 1.5. Sốc Nội Tiết (Endocrine Shock) và Hội Chứng Sốc Nhiễm Độc (TSS)
+
+- **Suy Thượng [[Thận]] Cấp Của Bệnh Lý Nguy Kịch (AICI):** Sốc có thể xảy ra hoặc trở nên kháng trị do trục hạ đồi - tuyến yên - thượng [[Thận]] không thể sản xuất đủ cortisol để đáp ứng với tình trạng viêm hệ thống và stress sinh lý. Khi thiếu hụt cortisol, cơ thể mất khả năng duy trì trương lực mạch máu, dẫn đến hạ huyết áp trơ, [[Hạ đường huyết]] và viêm hệ thống dai dẳng, không đáp ứng với các loại thuốc vận mạch thông thường.
+- **Hội chứng sốc nhiễm độc (Toxic Shock Syndrome - TSS):** Có cơ chế sinh bệnh học liên quan chặt chẽ với sốc nhiễm khuẩn, thường được kích hoạt bởi các ngoại độc tố (toxins) từ vi khuẩn tụ cầu (Staphylococci). Các độc tố này hoạt động như các siêu kháng nguyên (superantigens), bỏ qua các cơ chế trình diện kháng nguyên thông thường và kích hoạt trực tiếp hàng loạt tế bào lympho T. Điều này dẫn đến sự giải phóng ồ ạt các chất trung gian hóa học (cơn bão cytokine), gây [[Sốt]], hạ huyết áp nghiêm trọng, ban đỏ trên da và biểu hiện lâm sàng giãn mạch, rò rỉ mao mạch tương tự như sốc nhiễm khuẩn.
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Standl T, Annecke T, Cascorbi I, et al. The Nomenclature, Definition and Distinction of Types of Shock. _Dtsch Arztebl Int_. 2018;115:757-768. (Nguồn: Dtsch_Arztebl_Int-115_0757.pdf).
+2. Mergoum AM, Rhone AR, Larson NJ, et al. A Guide to the Use of Vasopressors and Inotropes for Patients in Shock. _J Intensive Care Med_. 2024. (Nguồn: huong-dan-su-dung-thuoc-van-mach-va-thuoc-tang-co-bop-cho-benh-nhan-bi-soc-ban-goc-trungtamthuoc.pdf).
+3. Resuscitation Council UK. _Emergency Treatment of Anaphylaxis_. May 2021. (Nguồn: Emergency Treatment of Anaphylaxis May 2021_0.pdf).
+4. Vincent JL, De Backer D. Circulatory Shock. _N Engl J Med_. 2013;369(18):1726-1734. (Nguồn: circulatory_shock_review_-_nejm.pdf).
+5. Weiss SL, Peters MJ, Oczkowski SJW, et al. Surviving [[Nhiễm trùng huyết|Sepsis]] Campaign International Guidelines for the Management of [[Nhiễm trùng huyết|Sepsis]] and Septic Shock in Children 2026. _Intensive Care Med_. 2026;52:937-983. (Nguồn: s00134-026-08360-2.pdf).
+6. Moore DJ. Pathogenesis and Management of Septic Shock. _Dalhousie Medical Journal_. (Nguồn: jbergman,+5.Pathogenesis+and+Management+of+Septic+Shock.pdf).
