@@ -299,6 +299,8 @@ declare global {
     syncCurrentSpecialtyOffline?: () => void;
     openIcdFilterModal?: () => void;
     closeIcdFilterModal?: () => void;
+    selectIcdFilter?: (code: string, condKey?: string) => void;
+    clearSearch?: () => void;
     toggleHasSummaryFilter?: () => void;
     handleAsianFilterChange?: () => void;
     setCompareMode?: (mode: string) => void;
