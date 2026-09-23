@@ -399,8 +399,8 @@ export function loadStudies(): void {
     if (storedCustom) {
       const parsed = JSON.parse(storedCustom);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        // Chỉ giữ lại các bài hợp lệ có trong danh mục chuẩn 1:1 với .mdx
-        rawList = parsed.filter(item => item && item.id && validSlugs.has(item.id) && item.file);
+        // Giữ lại các bài hợp lệ: trong danh mục chuẩn HOẶC bài tự thêm / tùy chỉnh của người dùng
+        rawList = parsed.filter(item => item && item.id && (validSlugs.has(item.id) || String(item.id).startsWith('study_') || item.isCustom));
       }
     }
   } catch (e) {}

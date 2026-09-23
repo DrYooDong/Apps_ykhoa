@@ -428,6 +428,211 @@
    6. BENTO 4-GRID & COMPACT CARDS (DOCSPACE HIGH-DENSITY ERGONOMICS)
    ══════════════════════════════════════════════════════════════════════════ */
 
+.ebm-bento-2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 820px) {
+  .ebm-bento-2-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ebm-pillar-card {
+  position: relative;
+  border-radius: var(--dsp-radius-xl, 16px);
+  padding: 1.6rem 1.75rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--dsp-transition, 0.25s ease);
+  border: 1px solid var(--dsp-border);
+  background: var(--dsp-glass-bg);
+  backdrop-filter: var(--dsp-backdrop-blur);
+  -webkit-backdrop-filter: var(--dsp-backdrop-blur);
+  color: var(--dsp-text);
+  box-shadow: var(--dsp-shadow-sm);
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.ebm-pillar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dsp-transition, 0.25s ease);
+  pointer-events: none;
+  background: radial-gradient(circle at 90% 10%, var(--card-glow, var(--dsp-sky-glow)), transparent 65%);
+}
+
+.ebm-pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--dsp-shadow-lg), var(--card-glow, 0 12px 30px rgba(0, 0, 0, 0.15));
+  border-color: var(--card-accent, var(--dsp-sky));
+}
+
+.ebm-pillar-card:hover::before {
+  opacity: 1;
+}
+
+.ebm-pillar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.ebm-pillar-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  background: var(--card-icon-bg, var(--dsp-sky-light));
+  color: var(--card-accent, var(--dsp-sky));
+  transition: transform var(--dsp-transition, 0.25s ease);
+}
+
+.ebm-pillar-card:hover .ebm-pillar-icon-box {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.ebm-pillar-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--dsp-radius-full);
+  background: var(--card-icon-bg, var(--dsp-sky-light));
+  color: var(--card-accent, var(--dsp-sky));
+  border: 1px solid currentColor;
+}
+
+.ebm-pillar-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 0.45rem 0;
+  color: var(--dsp-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ebm-pillar-desc {
+  font-size: 0.86rem;
+  color: var(--dsp-text-muted);
+  line-height: 1.55;
+  margin: 0 0 1rem 0;
+}
+
+.ebm-pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.15rem;
+}
+
+.ebm-pillar-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: var(--dsp-surface-2);
+  border: 1px solid var(--dsp-border);
+  color: var(--dsp-text-secondary);
+}
+
+.ebm-pillar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--dsp-border);
+  margin-top: auto;
+}
+
+.ebm-pillar-stats {
+  font-size: 0.76rem;
+  color: var(--dsp-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ebm-pillar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--card-accent, var(--dsp-sky));
+  transition: gap var(--dsp-transition, 0.25s ease);
+}
+
+.ebm-pillar-card:hover .ebm-pillar-cta {
+  gap: 0.75rem;
+}
+
+/* Quick Utility Strip */
+.ebm-quick-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--dsp-surface);
+  border: 1px solid var(--dsp-border);
+  border-radius: var(--dsp-radius-lg, 12px);
+  margin-bottom: 2rem;
+}
+
+.ebm-quick-strip-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dsp-text);
+}
+
+.ebm-quick-strip-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ebm-quick-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: var(--dsp-surface-2);
+  color: var(--dsp-text);
+  border: 1px solid var(--dsp-border);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ebm-quick-link-btn:hover {
+  background: var(--dsp-sky-light);
+  color: var(--dsp-sky);
+  border-color: var(--dsp-sky);
+}
+
 .ebm-bento-4-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));

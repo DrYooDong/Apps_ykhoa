@@ -514,40 +514,42 @@ function renderActiveFilterChips(): void {
 
 export function setFilter(type: string, value: any): void {
   if (type === 'specialty') {
-    window.filters.specialty = value;
+    window.filters.specialty = (window.filters.specialty === value) ? null : value;
     window.filters.condition = null;
   } else {
-    (window.filters as any)[type] = value;
+    (window.filters as any)[type] = ((window.filters as any)[type] === value) ? null : value;
   }
   renderFilterPills();
   renderTable();
 }
 
 export function filterByHasSummary(): void {
-  document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
-  const sideBtn = document.getElementById('sidebar-btn-summary');
-  if (sideBtn) sideBtn.classList.add('active');
   window.filters.hasSummary = !window.filters.hasSummary;
+  const sideBtn = document.getElementById('sidebar-btn-summary');
+  if (sideBtn) sideBtn.classList.toggle('active', !!window.filters.hasSummary);
   const btn = document.getElementById('filter-summary-btn');
-  if (btn) btn.classList.toggle('active', window.filters.hasSummary);
+  if (btn) btn.classList.toggle('active', !!window.filters.hasSummary);
+  renderFilterPills();
   renderTable();
 }
 
 export function filterBySubgroupData(): void {
-  document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
+  window.filters.hasSubgroup = !window.filters.hasSubgroup;
   const btn = document.getElementById('sidebar-btn-subgroup');
-  if (btn) btn.classList.add('active');
-  window.filters.hasSubgroup = true;
-  window.filters.asianData = false;
+  if (btn) btn.classList.toggle('active', !!window.filters.hasSubgroup);
+  renderFilterPills();
   renderTable();
 }
 
 export function filterByAsianData(): void {
-  document.querySelectorAll('.left-nav-link').forEach(l => l.classList.remove('active'));
+  window.filters.asianData = !window.filters.asianData;
   const btn = document.getElementById('sidebar-btn-asian');
-  if (btn) btn.classList.add('active');
-  window.filters.asianData = true;
-  window.filters.hasSubgroup = false;
+  if (btn) btn.classList.toggle('active', !!window.filters.asianData);
+  const quickBtn = document.getElementById('quick-asian-data-btn');
+  if (quickBtn) quickBtn.classList.toggle('active', !!window.filters.asianData);
+  const asianCb = document.getElementById('asian-data-filter') as HTMLInputElement | null;
+  if (asianCb) asianCb.checked = !!window.filters.asianData;
+  renderFilterPills();
   renderTable();
 }
 
@@ -571,8 +573,14 @@ export function resetFilters(): void {
   if (asianCb) asianCb.checked = false;
   const btn = document.getElementById('filter-summary-btn');
   const sideBtn = document.getElementById('sidebar-btn-summary');
+  const sideSubgroup = document.getElementById('sidebar-btn-subgroup');
+  const sideAsian = document.getElementById('sidebar-btn-asian');
+  const quickAsian = document.getElementById('quick-asian-data-btn');
   if (btn) btn.classList.remove('active');
   if (sideBtn) sideBtn.classList.remove('active');
+  if (sideSubgroup) sideSubgroup.classList.remove('active');
+  if (sideAsian) sideAsian.classList.remove('active');
+  if (quickAsian) quickAsian.classList.remove('active');
   renderFilterPills();
   renderTable();
 }
@@ -667,13 +675,15 @@ export function setViewMode(mode: 'full' | 'compact'): void {
 
 export function toggleAdvancedFilters(): void {
   window.showAdvancedFilters = !window.showAdvancedFilters;
+  const advPanel = document.getElementById('advanced-filter-panel');
+  if (advPanel) advPanel.style.display = window.showAdvancedFilters ? 'flex' : 'none';
   const fSpec = document.getElementById('filter-row-specialty');
   const fDes = document.getElementById('filter-row-design');
   const fPer = document.getElementById('filter-row-period');
-  const advBtn = document.getElementById('advanced-filters-btn');
   if (fSpec) fSpec.style.display = window.showAdvancedFilters ? 'flex' : 'none';
   if (fDes) fDes.style.display = window.showAdvancedFilters ? 'flex' : 'none';
   if (fPer) fPer.style.display = window.showAdvancedFilters ? 'flex' : 'none';
+  const advBtn = document.getElementById('advanced-filters-btn');
   if (advBtn) advBtn.classList.toggle('active', window.showAdvancedFilters);
 }
 
@@ -776,21 +786,21 @@ export function renderSummaryActionButton(study: Study): string {
   if (parts.length === 0) return '';
   if (parts.length === 1) {
     const fileUrl = window.resolveStudyFile ? window.resolveStudyFile((parts[0] as any).file) : (parts[0] as any).file;
-    return `<a href="${fileUrl}" class="btn btn-small btn-primary" title="Đọc bài tóm tắt" onclick="event.stopPropagation()">📖</a>`;
+    return `<a href="${fileUrl}" class="table-action-btn table-action-primary" title="Đọc bài tóm tắt" onclick="event.stopPropagation()"><i class="fa-solid fa-book-open"></i></a>`;
   }
   const menuId = 'summary-parts-act-' + study.id + '-' + Math.floor(Math.random() * 10000);
   const itemsHtml = parts.map((p: any, idx: number) => `
     <a href="${window.resolveStudyFile ? window.resolveStudyFile(p.file) : p.file}" class="summary-parts-item" onclick="event.stopPropagation()">
-      <i class="fa-solid fa-file-lines" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i>
+      <i class="fa-solid fa-file-lines" style="color: var(--accent); margin-right: 6px;"></i>
       <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
     </a>
   `).join('');
   return `
     <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
-      <button type="button" class="btn btn-small btn-primary" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Đọc bài tóm tắt (${parts.length} phần)">📖 <span style="font-size:8px;">▼</span></button>
+      <button type="button" class="table-action-btn table-action-primary" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Đọc bài tóm tắt (${parts.length} phần)"><i class="fa-solid fa-book-open"></i></button>
       <div id="${menuId}" class="summary-parts-menu" style="right:0; left:auto;" onclick="event.stopPropagation()">
         <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); padding: 4px 8px 6px; border-bottom: 1px solid var(--border-light); margin-bottom: 4px;">
-          📚 Danh sách bài tóm tắt (${parts.length} phần):
+          Danh sách bài tóm tắt (${parts.length} phần):
         </div>
         ${itemsHtml}
       </div>
@@ -967,6 +977,23 @@ export function getFilteredStudies(): Study[] {
       }
     }
 
+    if (window.filters.icd10) {
+      const targetCode = String(window.filters.icd10).toUpperCase().trim();
+      let studyIcds: string[] = [];
+      if (Array.isArray(study.icd10)) {
+        study.icd10.forEach((item: any) => {
+          if (typeof item === 'string') {
+            studyIcds.push(item.replace(/[\[\]"']/g, '').trim().toUpperCase());
+          }
+        });
+      } else if (typeof study.icd10 === 'string' && (study.icd10 as string).trim()) {
+        const clean = (study.icd10 as string).replace(/[\[\]"']/g, '').split(/[,;\s]+/);
+        studyIcds.push(...clean.map(x => x.trim().toUpperCase()).filter(Boolean));
+      }
+      const match = studyIcds.some(c => c === targetCode || c.startsWith(targetCode) || targetCode.startsWith(c));
+      if (!match) return false;
+    }
+
     return true;
   });
 }
@@ -1118,6 +1145,15 @@ export function renderTable(): void {
     mobNavFilterBadge.textContent = String(activeFilterCount);
     mobNavFilterBadge.style.display = activeFilterCount > 0 ? 'inline-flex' : 'none';
   }
+  const advFilterBadge = document.getElementById('adv-filter-count-badge');
+  if (advFilterBadge) {
+    advFilterBadge.textContent = String(activeFilterCount);
+    advFilterBadge.style.display = activeFilterCount > 0 ? 'inline-flex' : 'none';
+  }
+  const searchBoxEl = document.querySelector('.search-box');
+  if (searchBoxEl) {
+    searchBoxEl.classList.toggle('has-text', !!(window.filters.search && window.filters.search.trim()));
+  }
 
   if (!tbody) return;
 
@@ -1224,12 +1260,13 @@ export function renderTable(): void {
         <td class="col-icd10" style="display:${showCol('icd10')};">${escapeHtml(Array.isArray(study.icd10) ? study.icd10.join(', ') : (study.icd10 || 'N/A'))}</td>
         <td class="col-actions" onclick="event.stopPropagation()">
           <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
-            <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
-            <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học">🔬</button>
+            <button class="table-action-btn ${study.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${study.id}')" title="${study.bookmarked ? 'Bỏ lưu' : 'Lưu trữ'}"><i class="${study.bookmarked ? 'fa-solid' : 'fa-regular'} fa-star"></i></button>
+            <button class="table-action-btn" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh"><i class="fa-solid fa-scale-balanced"></i></button>
+            <button class="table-action-btn" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học"><i class="fa-solid fa-microscope"></i></button>
             ${renderSummaryActionButton(study)}
-            ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-small" title="Mở tài liệu gốc / văn bản BYT" onclick="event.stopPropagation()">🔗</a>` : ''}
-            <button class="btn btn-small" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa">✏️</button>
-            <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
+            ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="table-action-btn" title="Mở tài liệu gốc / văn bản BYT" onclick="event.stopPropagation()"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+            <button class="table-action-btn" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="table-action-btn table-action-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </td>
       </tr>

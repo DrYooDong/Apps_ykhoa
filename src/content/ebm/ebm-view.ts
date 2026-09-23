@@ -58,130 +58,104 @@ export function renderEbmView(): string {
         </div>
       </section>
 
-      <!-- 4 COMPACT MAIN MODULE CARDS (4 COLUMNS) -->
-      <section style="margin-bottom: 1.5rem;" aria-label="Phân hệ chính Y học chứng cứ">
-        <div class="ebm-bento-4-grid">
+      <!-- 2 PRIMARY PILLAR CARDS (WEB GUIDELINES & THỐNG KÊ Y HỌC) -->
+      <section style="margin-bottom: 1.25rem;" aria-label="Phân hệ trọng tâm Y học chứng cứ">
+        <div class="ebm-bento-2-grid">
           
-          <!-- Card 1: Thống Kê Y Học & Thiết Kế Nghiên Cứu -->
-          <a href="#/ebm/thong-ke-y-hoc" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-sky); --card-icon-bg:var(--dsp-sky-light); --card-glow:var(--dsp-sky-glow);">
+          <!-- Pillar 1: Web Guidelines & Cơ Sở Dữ Liệu Phác Đồ -->
+          <a href="#/ebm/guidelines" class="ebm-pillar-card ebm-holo-bento" style="--card-accent:var(--dsp-sky); --card-icon-bg:var(--dsp-sky-light); --card-glow:var(--dsp-sky-glow);">
             <div>
-              <div class="ebm-bento-top-row-sm">
-                <div class="ebm-bento-icon-box-sm">
-                  <i class="fa-solid fa-chart-line"></i>
-                </div>
-                <span class="ebm-bento-badge-pill-sm">Thống Kê</span>
-              </div>
-              <h2 class="ebm-bento-title-sm">Thống Kê Y Học</h2>
-              <p class="ebm-bento-desc-sm">
-                Thử nghiệm RCT, Phân tích gộp Meta-analysis, Forest Plot và đánh giá sai số RoB-2.
-              </p>
-              <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">RCT &amp; Cohort</span>
-                <span class="ebm-bento-tag-item-sm">Forest Plot</span>
-              </div>
-            </div>
-            <div class="ebm-bento-action-btn-sm">
-              <span>Vào phân hệ</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </a>
-
-          <!-- Card 2: Web Guidelines & Cơ Sở Dữ Liệu Phác Đồ -->
-          <a href="#/ebm/guidelines" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-violet); --card-icon-bg:var(--dsp-violet-light); --card-glow:var(--dsp-violet-glow);">
-            <div>
-              <div class="ebm-bento-top-row-sm">
-                <div class="ebm-bento-icon-box-sm">
+              <div class="ebm-pillar-top">
+                <div class="ebm-pillar-icon-box">
                   <i class="fa-solid fa-book-medical"></i>
                 </div>
-                <span class="ebm-bento-badge-pill-sm">Database</span>
+                <span class="ebm-pillar-badge">Khuyến Cáo Lâm Sàng</span>
               </div>
-              <h2 class="ebm-bento-title-sm">Web Guidelines</h2>
-              <p class="ebm-bento-desc-sm">
-                Cơ sở dữ liệu phác đồ điều trị, khuyến cáo thực hành lâm sàng Bộ Y Tế, ESC, AHA, KDIGO, GOLD, GINA và bộ lọc đa chiều.
+              <h2 class="ebm-pillar-title">
+                <span>Web Guidelines</span>
+                <i class="fa-solid fa-circle-check" style="font-size: 0.85rem; color: var(--dsp-sky);"></i>
+              </h2>
+              <p class="ebm-pillar-desc">
+                Cơ sở dữ liệu phác đồ điều trị và khuyến cáo lâm sàng thực hành chuẩn hóa từ Bộ Y Tế, ESC, AHA/ACC, KDIGO, GOLD, GINA với bộ lọc chuyên khoa đa chiều.
               </p>
-              <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">Tra Cứu Phác Đồ</span>
-                <span class="ebm-bento-tag-item-sm">Bộ Lọc Đa Chiều</span>
+              <div class="ebm-pillar-tags">
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-filter" style="color: var(--dsp-sky); margin-right: 4px;"></i>Bộ Lọc Đa Chiều</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-hospital" style="color: var(--dsp-sky); margin-right: 4px;"></i>Bộ Y Tế &amp; Quốc Tế</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-layer-group" style="color: var(--dsp-sky); margin-right: 4px;"></i>Phân Tầng GRADE</span>
               </div>
             </div>
-            <div class="ebm-bento-action-btn-sm">
-              <span>Vào tra cứu</span>
-              <i class="fa-solid fa-arrow-right"></i>
+            <div class="ebm-pillar-footer">
+              <div class="ebm-pillar-stats">
+                <i class="fa-solid fa-database" style="color: var(--dsp-sky);"></i>
+                <span>Kho dữ liệu hướng dẫn điều trị chính thức</span>
+              </div>
+              <div class="ebm-pillar-cta">
+                <span>Tra cứu phác đồ</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </a>
 
-          <!-- Card 3: Guideline Radar (Diff Studio) -->
-          <a href="#/ebm/radar" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-emerald); --card-icon-bg:var(--dsp-emerald-light); --card-glow:var(--dsp-emerald-glow);">
+          <!-- Pillar 2: Thống Kê Y Học & Thiết Kế Nghiên Cứu -->
+          <a href="#/ebm/thong-ke-y-hoc" class="ebm-pillar-card ebm-holo-bento" style="--card-accent:var(--dsp-emerald); --card-icon-bg:var(--dsp-emerald-light); --card-glow:var(--dsp-emerald-glow);">
             <div>
-              <div class="ebm-bento-top-row-sm">
-                <div class="ebm-bento-icon-box-sm">
-                  <i class="fa-solid fa-satellite-dish"></i>
+              <div class="ebm-pillar-top">
+                <div class="ebm-pillar-icon-box">
+                  <i class="fa-solid fa-chart-line"></i>
                 </div>
-                <span class="ebm-bento-badge-pill-sm">Diff View</span>
+                <span class="ebm-pillar-badge" style="color: var(--dsp-emerald); border-color: var(--dsp-emerald); background: var(--dsp-emerald-light);">Phương Pháp Nghiên Cứu</span>
               </div>
-              <h2 class="ebm-bento-title-sm">Guideline Radar</h2>
-              <p class="ebm-bento-desc-sm">
-                Quét và so sánh đối sánh thay đổi Trước vs Sau, cảnh báo Practice-Changing.
+              <h2 class="ebm-pillar-title">
+                <span>Thống Kê Y Học</span>
+                <i class="fa-solid fa-circle-check" style="font-size: 0.85rem; color: var(--dsp-emerald);"></i>
+              </h2>
+              <p class="ebm-pillar-desc">
+                Thiết kế thử nghiệm lâm sàng ngẫu nhiên đối chứng (RCT), đoàn hệ (Cohort), phân tích gộp (Meta-analysis), trực quan hóa Forest Plot và thẩm định nguy cơ sai số RoB-2.
               </p>
-              <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">So sánh Trước/Sau</span>
-                <span class="ebm-bento-tag-item-sm">Practice Changing</span>
+              <div class="ebm-pillar-tags">
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-chart-simple" style="color: var(--dsp-emerald); margin-right: 4px;"></i>RCT &amp; Meta-Analysis</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-sliders" style="color: var(--dsp-emerald); margin-right: 4px;"></i>Forest Plot Studio</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-shield-halved" style="color: var(--dsp-emerald); margin-right: 4px;"></i>Đánh Giá Sai Số RoB-2</span>
               </div>
             </div>
-            <div class="ebm-bento-action-btn-sm">
-              <span>Xem Radar</span>
-              <i class="fa-solid fa-arrow-right"></i>
+            <div class="ebm-pillar-footer">
+              <div class="ebm-pillar-stats">
+                <i class="fa-solid fa-square-poll-vertical" style="color: var(--dsp-emerald);"></i>
+                <span>Công cụ phân tích chứng cứ &amp; thống kê</span>
+              </div>
+              <div class="ebm-pillar-cta" style="color: var(--dsp-emerald);">
+                <span>Vào phân hệ</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
             </div>
           </a>
 
-          <!-- Card 4: EBM Practice Lab & Bedside Tools -->
-          <a href="#/ebm/ebm-lab" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:var(--dsp-teal); --card-icon-bg:var(--dsp-teal-light); --card-glow:var(--dsp-teal-glow);">
-            <div>
-              <div class="ebm-bento-top-row-sm">
-                <div class="ebm-bento-icon-box-sm">
-                  <i class="fa-solid fa-flask-vial"></i>
-                </div>
-                <span class="ebm-bento-badge-pill-sm">Thực Hành</span>
-              </div>
-              <h2 class="ebm-bento-title-sm">EBM Practice Lab</h2>
-              <p class="ebm-bento-desc-sm">
-                PICO Builder, Thẩm định CASP, Máy tính NNT, ARR, RRR, Odds Ratio.
-              </p>
-              <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">PICO Builder</span>
-                <span class="ebm-bento-tag-item-sm">CASP Scale</span>
-              </div>
-            </div>
-            <div class="ebm-bento-action-btn-sm">
-              <span>Vào Practice Lab</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </a>
+        </div>
 
-          <!-- Card 5: DocSpace MedLens Clinical Case & SOAP Studio -->
-          <a href="#/docspace" class="ebm-bento-card-compact ebm-holo-bento" style="--card-accent:#0284c7; --card-icon-bg:rgba(2,132,199,0.12); --card-glow:rgba(2,132,199,0.25);">
-            <div>
-              <div class="ebm-bento-top-row-sm">
-                <div class="ebm-bento-icon-box-sm" style="color: #0284c7;">
-                  <i class="fa-solid fa-stethoscope"></i>
-                </div>
-                <span class="ebm-bento-badge-pill-sm" style="color: #0284c7; background: rgba(2,132,199,0.1);">Lâm Sàng</span>
-              </div>
-              <h2 class="ebm-bento-title-sm">DocSpace MedLens</h2>
-              <p class="ebm-bento-desc-sm">
-                Áp dụng Guidelines vào Bệnh án SOAP, Suy luận chẩn đoán & Y lệnh điều trị.
-              </p>
-              <div class="ebm-bento-tags-row-sm">
-                <span class="ebm-bento-tag-item-sm">SOAP Studio</span>
-                <span class="ebm-bento-tag-item-sm">Clinical CDSS</span>
-              </div>
-            </div>
-            <div class="ebm-bento-action-btn-sm" style="color: #0284c7;">
-              <span>Mở Không Gian Lâm Sàng</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </a>
-
+        <!-- QUICK UTILITY STRIP -->
+        <div class="ebm-quick-strip">
+          <div class="ebm-quick-strip-left">
+            <i class="fa-solid fa-compass" style="color: var(--dsp-sky);"></i>
+            <span>Lối tắt tiện ích nhanh:</span>
+          </div>
+          <div class="ebm-quick-strip-actions">
+            <a href="#/ebm/kho-guidelines" class="ebm-quick-link-btn">
+              <i class="fa-solid fa-folder-open" style="color: var(--dsp-sky);"></i>
+              <span>Kho Tóm Tắt Chuyên Sâu</span>
+            </a>
+            <a href="#frameworkViewPyramid" class="ebm-quick-link-btn" onclick="document.querySelector('[data-tab=\'pyramid\']')?.click();">
+              <i class="fa-solid fa-cubes-stacked" style="color: #f59e0b;"></i>
+              <span>Tháp 6S Haynes</span>
+            </a>
+            <a href="#frameworkView5as" class="ebm-quick-link-btn" onclick="document.querySelector('[data-tab=\'5as\']')?.click();">
+              <i class="fa-solid fa-arrows-spin" style="color: #6366f1;"></i>
+              <span>Chu Trình 5As</span>
+            </a>
+            <a href="#ebm-calc-title" class="ebm-quick-link-btn">
+              <i class="fa-solid fa-calculator" style="color: var(--dsp-emerald);"></i>
+              <span>Máy Tính NNT Bedside</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -412,9 +386,9 @@ export function renderEbmView(): string {
                     </div>
                   </div>
 
-                  <a id="ebm5asActionBtn" href="#/ebm/ebm-lab" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.55rem 1rem; border-radius: 8px; background: var(--color-primary, #0284c7); color: #ffffff; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: filter 0.2s ease;">
-                    <i class="fa-solid fa-flask-vial"></i>
-                    <span>Mở PICO Builder tại EBM Lab</span>
+                  <a id="ebm5asActionBtn" href="#/ebm/thong-ke-y-hoc" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.55rem 1rem; border-radius: 8px; background: var(--color-primary, #0284c7); color: #ffffff; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: filter 0.2s ease;">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Xem Thiết Kế Nghiên Cứu PICO</span>
                   </a>
                 </div>
               </div>
@@ -647,32 +621,41 @@ export function renderEbmView(): string {
             </div>
           </section>
 
-          <!-- PRACTICE-CHANGING UPDATES WIDGET -->
+          <!-- EBM EVIDENCE HIERARCHY & GRADE REFERENCE CARD -->
           <section style="background: var(--hub-surface); border: 1px solid var(--hub-border); border-radius: 14px; padding: 1.15rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
               <h3 style="margin: 0; font-size: 0.98rem; font-weight: 800; color: var(--hub-text); display: flex; align-items: center; gap: 0.4rem;">
-                <i class="fa-solid fa-tower-broadcast" style="color: #10b981;"></i> Radar Feed Mới Nhất
+                <i class="fa-solid fa-award" style="color: #f59e0b;"></i> Thang Phân Tầng Bằng Chứng
               </h3>
-              <a href="#/ebm/radar" style="font-size: 0.74rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Xem tất cả</a>
+              <a href="#frameworkViewPyramid" onclick="document.querySelector('[data-tab=\'pyramid\']')?.click();" style="font-size: 0.74rem; font-weight: 700; color: var(--color-primary); text-decoration: none;">Xem Tháp 6S</a>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-              <div style="padding: 0.75rem 0.85rem; background: var(--hub-surface-2); border-radius: 10px; border: 1px solid var(--hub-border);">
+              <div style="padding: 0.7rem 0.8rem; background: var(--hub-surface-2); border-radius: 10px; border: 1px solid var(--hub-border);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                  <span style="font-size: 0.68rem; font-weight: 800; color: #dc2626; background: #fee2e2; padding: 1px 5px; border-radius: 4px;">Practice Changing</span>
-                  <span style="font-size: 0.7rem; color: var(--hub-text-muted);">2026</span>
+                  <span style="font-size: 0.7rem; font-weight: 800; color: #16a34a; background: rgba(22, 163, 74, 0.12); padding: 2px 6px; border-radius: 4px;">GRADE High • Class I</span>
+                  <span style="font-size: 0.7rem; color: var(--hub-text-muted); font-weight: 700;">Mức Ia / Ib</span>
                 </div>
-                <h4 style="margin: 0 0 0.25rem 0; font-size: 0.88rem; font-weight: 800; color: var(--hub-text);">SGLT2i trong Bệnh Thận Mạn (CKD)</h4>
-                <p style="margin: 0; font-size: 0.76rem; color: var(--hub-text-muted); line-height: 1.4;">Chỉ định mức độ 1A cho bệnh nhân CKD không phụ thuộc tình trạng ĐTĐ để bảo vệ thận.</p>
+                <h4 style="margin: 0 0 0.2rem 0; font-size: 0.85rem; font-weight: 800; color: var(--hub-text);">Khuyến Cáo Mạnh (Strongly Recommended)</h4>
+                <p style="margin: 0; font-size: 0.75rem; color: var(--hub-text-muted); line-height: 1.4;">Bằng chứng từ tổng quan hệ thống RCTs hoặc đa thử nghiệm RCT lớn có phương pháp chuẩn xác.</p>
               </div>
 
-              <div style="padding: 0.75rem 0.85rem; background: var(--hub-surface-2); border-radius: 10px; border: 1px solid var(--hub-border);">
+              <div style="padding: 0.7rem 0.8rem; background: var(--hub-surface-2); border-radius: 10px; border: 1px solid var(--hub-border);">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                  <span style="font-size: 0.68rem; font-weight: 800; color: #0284c7; background: #e0f2fe; padding: 1px 5px; border-radius: 4px;">Bộ Y Tế VN</span>
-                  <span style="font-size: 0.7rem; color: var(--hub-text-muted);">2025</span>
+                  <span style="font-size: 0.7rem; font-weight: 800; color: #0284c7; background: rgba(2, 132, 199, 0.12); padding: 2px 6px; border-radius: 4px;">GRADE Moderate • Class IIa</span>
+                  <span style="font-size: 0.7rem; color: var(--hub-text-muted); font-weight: 700;">Mức IIa / IIb</span>
                 </div>
-                <h4 style="margin: 0 0 0.25rem 0; font-size: 0.88rem; font-weight: 800; color: var(--hub-text);">Phác Đồ Phối Hợp Đôi Sớm THA</h4>
-                <p style="margin: 0; font-size: 0.76rem; color: var(--hub-text-muted); line-height: 1.4;">Khởi trị ngay bằng viên phối hợp đôi cố định liều (SPC) cho đa số bệnh nhân THA Độ 1.</p>
+                <h4 style="margin: 0 0 0.2rem 0; font-size: 0.85rem; font-weight: 800; color: var(--hub-text);">Cân Nhắc Thực Hiện (Should be Considered)</h4>
+                <p style="margin: 0; font-size: 0.75rem; color: var(--hub-text-muted); line-height: 1.4;">Bằng chứng từ nghiên cứu thuần tập, bệnh-chứng hoặc phân tích dưới nhóm (Subgroup Analysis).</p>
+              </div>
+
+              <div style="padding: 0.7rem 0.8rem; background: var(--hub-surface-2); border-radius: 10px; border: 1px solid var(--hub-border);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                  <span style="font-size: 0.7rem; font-weight: 800; color: #d97706; background: rgba(217, 119, 6, 0.12); padding: 2px 6px; border-radius: 4px;">GRADE Low • Class IIb/III</span>
+                  <span style="font-size: 0.7rem; color: var(--hub-text-muted); font-weight: 700;">Mức III / IV</span>
+                </div>
+                <h4 style="margin: 0 0 0.2rem 0; font-size: 0.85rem; font-weight: 800; color: var(--hub-text);">Đồng Thuận Chuyên Gia (Expert Consensus)</h4>
+                <p style="margin: 0; font-size: 0.75rem; color: var(--hub-text-muted); line-height: 1.4;">Ý kiến từ hội đồng chuyên gia, báo cáo loạt ca bệnh (Case Series) khi chưa có thử nghiệm đối chứng.</p>
               </div>
             </div>
           </section>
@@ -873,8 +856,8 @@ export function mountEbmController(): void {
         { label: 'Xác định kết cục (O):', text: 'Tỷ lệ tử vong, biến cố tim mạch chính (MACE), chất lượng sống.' }
       ],
       pearl: 'Luôn ưu tiên các kết cục lâm sàng định lượng cứng (Patient-Important Outcomes như tử vong, tái nhập viện) thay vì chỉ nhìn vào các chỉ số thay thế (Surrogate Endpoints).',
-      actionText: 'Mở PICO Builder tại EBM Lab',
-      actionUrl: '#/ebm/ebm-lab'
+      actionText: 'Xem Thiết Kế Nghiên Cứu PICO',
+      actionUrl: '#/ebm/thong-ke-y-hoc'
     },
     '2': {
       title: '2. Acquire — Tìm Kiếm Bằng Chứng Y Khoa Tốt Nhất',
@@ -907,8 +890,8 @@ export function mountEbmController(): void {
         { label: 'Đánh giá xung đột lợi ích:', text: 'Kiểm tra nguồn tài trợ nghiên cứu và tính độc lập của tác giả.' }
       ],
       pearl: 'Một kết quả có ý nghĩa thống kê (p < 0.05) chưa chắc đã có ý nghĩa lâm sàng (Clinical Significance). Luôn nhìn vào chỉ số NNT và khoảng tin cậy 95% CI.',
-      actionText: 'Mở Thang CASP & Bộ Tính Toán NNT',
-      actionUrl: '#/ebm/ebm-lab'
+      actionText: 'Mở Máy Tính NNT Bedside',
+      actionUrl: '#ebm-calc-title'
     },
     '4': {
       title: '4. Apply — Tích Hợp Bằng Chứng Vào Quyết Định Lâm Sàng',
@@ -924,8 +907,8 @@ export function mountEbmController(): void {
         { label: 'Khả thi & Nguồn lực:', text: 'Thuốc hoặc kỹ thuật có sẵn tại bệnh viện và bảo hiểm y tế chi trả không?' }
       ],
       pearl: 'Bằng chứng khoa học chỉ là một trong ba chân kiềng của EBM. Thiếu sự thấu hiểu nguyện vọng bệnh nhân và kinh nghiệm lâm sàng thì không thể đạt hiệu quả điều trị tối ưu.',
-      actionText: 'Xem Guideline Radar So Sánh',
-      actionUrl: '#/ebm/radar'
+      actionText: 'Tra Cứu Khuyến Cáo Web Guidelines',
+      actionUrl: '#/ebm/guidelines'
     },
     '5': {
       title: '5. Assess — Lượng Giá Kết Quả & Kiểm Toán Lâm Sàng',

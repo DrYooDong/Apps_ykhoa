@@ -20,29 +20,29 @@ export interface JournalMetricsItem {
 }
 
 export const SPECIALTIES: Record<string, SpecialtyMeta> = {
-  cardio: { name: 'Tim mạch', color: '#dc2626', bg: '#fef2f2' },
-  pulmo: { name: 'Hô hấp', color: '#2563eb', bg: '#eff6ff' },
-  gi: { name: 'Tiêu hóa', color: '#ca8a04', bg: '#fefce8' },
-  endo: { name: 'Nội tiết', color: '#7c3aed', bg: '#faf5ff' },
-  neuro: { name: 'Thần kinh', color: '#c026d3', bg: '#fdf4ff' },
-  infect: { name: 'Truyền nhiễm', color: '#16a34a', bg: '#f0fdf4' },
-  renal: { name: 'Thận học', color: '#0891b2', bg: '#ecfeff' },
-  rheum: { name: 'Cơ xương khớp', color: '#ea580c', bg: '#fff7ed' },
-  hema: { name: 'Huyết học', color: '#db2777', bg: '#fdf2f8' },
-  onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' },
-  pedia: { name: 'Nhi khoa', color: '#0284c7', bg: '#f0f9ff' },
-  obgyn: { name: 'Sản phụ khoa', color: '#e11d48', bg: '#fff1f2' },
-  icu: { name: 'Hồi sức tích cực', color: '#059669', bg: '#ecfdf5' },
-  derma: { name: 'Da liễu', color: '#ec4899', bg: '#fdf2f8' },
-  ent: { name: 'Tai Mũi Họng', color: '#06b6d4', bg: '#ecfeff' },
-  nutri: { name: 'Dinh dưỡng', color: '#65a30d', bg: '#f7fee7' }
+  cardio: { name: 'Tim mạch', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  pulmo: { name: 'Hô hấp', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  gi: { name: 'Tiêu hóa', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  endo: { name: 'Nội tiết', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  neuro: { name: 'Thần kinh', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  infect: { name: 'Truyền nhiễm', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  renal: { name: 'Thận học', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  rheum: { name: 'Cơ xương khớp', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  hema: { name: 'Huyết học', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  onco: { name: 'Ung thư', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  pedia: { name: 'Nhi khoa', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  obgyn: { name: 'Sản phụ khoa', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  icu: { name: 'Hồi sức tích cực', color: '#059669', bg: 'rgba(5, 150, 105, 0.08)' },
+  derma: { name: 'Da liễu', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  ent: { name: 'Tai Mũi Họng', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  nutri: { name: 'Dinh dưỡng', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' }
 };
 
 export const SOURCE_TYPES: Record<string, SourceTypeMeta> = {
-  'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#6366f1', bg: '#e0e7ff' },
-  'intl-guideline': { name: 'Guideline Quốc tế', color: '#0d9488', bg: '#ccfbf1' },
-  'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#dc2626', bg: '#fee2e2' },
-  'vn-association': { name: 'Hội chuyên khoa VN', color: '#16a34a', bg: '#dcfce7' }
+  'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#475569', bg: 'rgba(71, 85, 105, 0.08)' },
+  'intl-guideline': { name: 'Guideline Quốc tế', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#059669', bg: 'rgba(5, 150, 105, 0.1)' },
+  'vn-association': { name: 'Hội chuyên khoa VN', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' }
 };
 
 export const DESIGNS: Record<string, DesignMeta> = {
@@ -56,11 +56,11 @@ export const DESIGNS: Record<string, DesignMeta> = {
 };
 
 export const IMPACTS: Record<string, ImpactMeta> = {
-  'practice-changing': { name: 'Practice-Changing', color: '#dc2626', bg: '#fef2f2' },
-  'informative': { name: 'Informative', color: '#2563eb', bg: '#eff6ff' },
-  'early-signal': { name: 'Early Signal', color: '#d97706', bg: '#fffbeb' },
-  'negative': { name: 'Negative/Âm tính', color: '#4b5563', bg: '#f3f4f6' },
-  'regulatory': { name: 'Regulatory', color: '#7c3aed', bg: '#faf5ff' }
+  'practice-changing': { name: 'Practice-Changing', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.1)' },
+  'informative': { name: 'Informative', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  'early-signal': { name: 'Early Signal', color: '#475569', bg: 'rgba(71, 85, 105, 0.08)' },
+  'negative': { name: 'Negative/Âm tính', color: '#64748b', bg: 'rgba(100, 116, 139, 0.08)' },
+  'regulatory': { name: 'Regulatory', color: '#334155', bg: 'rgba(51, 65, 85, 0.08)' }
 };
 
 export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {

@@ -31,9 +31,9 @@ export function renderKhoGuidelinesHubView(): string {
               <i class="fa-solid fa-table-list" style="color: #0284c7;"></i>
               <span>Web Tra cứu &amp; Chỉ số IF (${totalSummaries}+)</span>
             </a>
-            <a href="#/ebm/radar" class="btn btn-outline" style="padding: 0.45rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-size: 0.82rem; font-weight: 700; color: var(--color-text, #334155); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--color-surface, #fff); transition: all 0.2s ease;">
-              <i class="fa-solid fa-radar" style="color: #10b981;"></i>
-              <span>Guideline Radar (Diff)</span>
+            <a href="#/ebm/thong-ke-y-hoc" class="btn btn-outline" style="padding: 0.45rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--color-border, #cbd5e1); font-size: 0.82rem; font-weight: 700; color: var(--color-text, #334155); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--color-surface, #fff); transition: all 0.2s ease;">
+              <i class="fa-solid fa-chart-line" style="color: #10b981;"></i>
+              <span>Thống Kê Y Học &amp; Meta-Analysis</span>
             </a>
           </div>
         </nav>

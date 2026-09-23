@@ -34,11 +34,101 @@ export function syncCurrentSpecialtyOffline(): void {
 export function openIcdFilterModal(): void {
   const modal = document.getElementById('icd10-modal');
   if (modal) modal.classList.add('active');
+  const input = document.getElementById('icd-search-input') as HTMLInputElement | null;
+  if (input) {
+    input.value = '';
+    setTimeout(() => input.focus(), 50);
+    input.oninput = (e: any) => {
+      renderIcdSearchResults(e.target.value);
+    };
+  }
+  renderIcdSearchResults('');
 }
 
 export function closeIcdFilterModal(): void {
   const modal = document.getElementById('icd10-modal');
   if (modal) modal.classList.remove('active');
+}
+
+export function renderIcdSearchResults(query: string = ''): void {
+  const container = document.getElementById('icd-results-container');
+  if (!container) return;
+
+  const conditions = window.CLINICAL_CONDITIONS ? Object.values(window.CLINICAL_CONDITIONS) : [];
+  const q = query.trim().toLowerCase();
+
+  const matched = conditions.filter(c => {
+    if (!q) return true;
+    const nameMatch = (c.name || '').toLowerCase().includes(q);
+    const idMatch = (c.id || '').toLowerCase().includes(q);
+    const icds = Array.isArray(c.icd10) ? c.icd10.join(' ').toLowerCase() : String(c.icd10 || '').toLowerCase();
+    const icdMatch = icds.includes(q);
+    return nameMatch || idMatch || icdMatch;
+  });
+
+  if (matched.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-size: 0.85rem;">
+        <i class="fa-solid fa-circle-question" style="font-size: 1.6rem; opacity: 0.5; margin-bottom: 0.5rem; display: block;"></i>
+        Không tìm thấy mã bệnh hoặc vấn đề lâm sàng phù hợp với "<strong>${escapeHtml(query)}</strong>".
+      </div>
+    `;
+    return;
+  }
+
+  const html = matched.map(c => {
+    const icdList = Array.isArray(c.icd10) ? c.icd10 : [c.icd10];
+    const icdChips = icdList.map(code => `
+      <button type="button" class="btn btn-small" onclick="selectIcdFilter('${code}', '${c.id}')" style="font-family: monospace; font-weight: 700; padding: 2px 7px; font-size: 0.72rem;" title="Lọc theo mã ${code}">
+        ${code}
+      </button>
+    `).join(' ');
+
+    return `
+      <div style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+        <div>
+          <div style="font-weight: 700; font-size: 0.86rem; color: var(--text);">${escapeHtml(c.name)}</div>
+          <div style="display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; align-items: center;">
+            <span style="font-size: 0.7rem; color: var(--text-muted);">Mã ICD-10:</span>
+            ${icdChips}
+          </div>
+        </div>
+        <button type="button" class="btn btn-small btn-primary" onclick="selectIcdFilter('${icdList[0] || ''}', '${c.id}')" style="flex-shrink: 0;">
+          <i class="fa-solid fa-filter"></i> Lọc
+        </button>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = html;
+}
+
+export function selectIcdFilter(code: string, condKey?: string): void {
+  if (window.filters) {
+    window.filters.icd10 = code || null;
+    if (condKey) window.filters.condition = condKey;
+  }
+  closeIcdFilterModal();
+  if (typeof window.renderFilterPills === 'function') window.renderFilterPills();
+  if (typeof window.renderTable === 'function') window.renderTable();
+}
+
+export function clearSearch(): void {
+  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+  if (searchInput) searchInput.value = '';
+  if (window.filters) window.filters.search = '';
+  const searchBox = document.querySelector('.search-box');
+  if (searchBox) searchBox.classList.remove('has-text');
+  if (typeof window.renderTable === 'function') window.renderTable();
+}
+
+function escapeHtml(str?: string): string {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 export function toggleHasSummaryFilter(): void {
@@ -173,6 +263,8 @@ if (typeof window !== 'undefined') {
   window.closeSubgroupModal = closeSubgroupModal;
   window.closeNntModal = closeNntModal;
   window.calculateNNTFromHR = calculateNNTFromHR;
+  window.selectIcdFilter = selectIcdFilter;
+  window.clearSearch = clearSearch;
 
   window.GuidelineTools = {
     toggleCommandPalette: () => window.toggleCommandPalette && window.toggleCommandPalette(),
