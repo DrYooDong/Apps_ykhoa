@@ -626,10 +626,17 @@
 ══════════════════════════════════════════════════════════ */
 .glass-grid-layout {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
   gap: 1.25rem;
   width: 100%;
   align-items: start;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1180px) {
+  .glass-grid-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -643,6 +650,8 @@
   flex-direction: column;
   gap: 1.25rem;
   min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -878,54 +887,93 @@
 /* ══════════════════════════════════════════════════════════
    FEATURE: SMART APP LAUNCHER (Grid App Tần suất cao)
 ══════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   FEATURE: SMART APP LAUNCHER (Grid App Tần suất cao / CDSS)
+══════════════════════════════════════════════════════════ */
+.cdss-hub-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--glass-radius-pill);
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  transition: var(--glass-transition);
+  white-space: nowrap;
+}
+
+.cdss-hub-header-badge:hover {
+  background: rgba(2, 132, 199, 0.16);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
 .launcher-search-box {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.85rem;
+  gap: 0.65rem;
+  padding: 0.6rem 0.9rem;
   background: var(--glass-bg-subtle);
   border: 1px solid var(--glass-border);
   border-radius: var(--glass-radius-md);
   margin-bottom: 0.85rem;
   transition: var(--glass-transition);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .launcher-search-box:focus-within {
   border-color: var(--color-primary);
+  background: var(--glass-bg-hover);
   box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
 .launcher-search-box i {
   color: var(--color-text-muted);
   font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .launcher-search-input {
   border: none;
   background: transparent;
   outline: none;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--color-text);
   width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.launcher-search-input::placeholder {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
 }
 
 .launcher-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .launcher-grid {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
 }
 
 .launcher-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 0.85rem;
+  gap: 0.7rem;
+  padding: 0.72rem 0.82rem;
   background: var(--glass-bg-subtle);
   border: 1px solid var(--glass-border);
   border-radius: var(--glass-radius-md);
@@ -933,27 +981,48 @@
   color: var(--color-text);
   transition: var(--glass-transition);
   position: relative;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .launcher-item:hover {
   background: var(--glass-bg-hover);
   border-color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px -3px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 8px 22px -4px rgba(2, 132, 199, 0.22);
+}
+
+[data-theme="dark"] .launcher-item:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 8px 24px -4px rgba(2, 132, 199, 0.35);
 }
 
 .launcher-icon-box {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--glass-radius-sm);
-  background: rgba(2, 132, 199, 0.14);
+  background: rgba(2, 132, 199, 0.12);
   color: var(--color-primary);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   flex-shrink: 0;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+[data-theme="dark"] .launcher-icon-box {
+  background: rgba(2, 132, 199, 0.2);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.launcher-item:hover .launcher-icon-box {
+  transform: scale(1.06);
+  background: rgba(2, 132, 199, 0.22);
 }
 
 .launcher-text-box {
@@ -961,43 +1030,85 @@
   flex-direction: column;
   min-width: 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .launcher-name {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.86rem;
-  font-weight: 800;
+  font-size: 0.84rem;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: -0.01em;
   color: var(--color-text);
+  line-height: 1.35;
 }
 
 .launcher-cat {
-  font-size: 0.72rem;
+  font-size: 0.71rem;
   color: var(--color-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 500;
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+.launcher-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .launcher-pin-btn {
   background: transparent;
   border: none;
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
+  opacity: 0.6;
   cursor: pointer;
   padding: 0.3rem;
-  font-size: 0.9rem;
-  transition: color 0.2s ease, transform 0.2s ease;
+  font-size: 0.85rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--glass-radius-sm);
+  transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
-.launcher-pin-btn:hover,
+.launcher-pin-btn:hover {
+  color: #f59e0b;
+  opacity: 1;
+  background: rgba(245, 158, 11, 0.12);
+  transform: scale(1.12);
+}
+
 .launcher-pin-btn.pinned {
   color: #f59e0b;
-  transform: scale(1.15);
+  opacity: 1;
+}
+
+.launcher-ext-icon {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  opacity: 0.4;
+  padding: 0.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.launcher-item:hover .launcher-ext-icon {
+  opacity: 1;
+  color: var(--color-primary);
+  transform: translate(1px, -1px);
 }
 
 /* ══════════════════════════════════════════════════════════

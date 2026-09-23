@@ -73,18 +73,33 @@ export const CLINICAL_PEARLS: ClinicalPearlItem[] = [
   }
 ];
 
-// ── 2. DATABASE: DOCSPACE CDSS APPS ──
+// ── 2. DATABASE: DOCSPACE CDSS APPS (STANDALONE ARCHITECTURE) ──
+export const CANONICAL_CDSS_URLS: Record<string, string> = {
+  'cdss-dengue': './src/content/docspace/public/cdss/dengue/index.html',
+  'cdss-ecg': './src/content/docspace/public/cdss/ecg/index.html',
+  'cdss-abg': './src/content/docspace/public/cdss/abg/index.html',
+  'cdss-xray': './src/content/docspace/public/cdss/xray/index.html',
+  'cdss-hepa': './src/content/docspace/public/cdss/hepa/index.html',
+  'cdss-neuro': './src/content/docspace/public/cdss/neuro/index.html',
+  'cdss-microbio': './src/content/docspace/public/cdss/microbio/index.html',
+  'cdss-antibiotic': './src/content/docspace/public/cdss/antibiotic/index.html',
+  'cdss-vancomycin': './src/content/docspace/public/cdss/vancomycin/index.html',
+  'cdss-sepsis': './src/content/docspace/public/cdss/sepsis/index.html',
+  'cdss-hub': './src/content/docspace/public/cdss/index.html'
+};
+
 export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
-  { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: "#/docspace/studios/dengue", icon: "💧", count: 35 },
-  { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", category: "Tim Mạch • 21 Ca & Caliper", url: "#/docspace/studios/ecg", icon: "📈", count: 32 },
-  { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: "#/docspace/studios/abg", icon: "🫁", count: 28 },
-  { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: "#/docspace/studios/xray", icon: "🩻", count: 25 },
-  { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: "#/docspace/studios/hepa", icon: "🧪", count: 22 },
-  { id: "cdss-neuro", title: "Khám Thần Kinh (NeuroExam)", category: "Thần Kinh • Mô Phỏng 3D", url: "#/docspace/studios/neuro", icon: "🧠", count: 20 },
-  { id: "cdss-microbio", title: "Vi Sinh & KSĐ (Mahon)", category: "Vi Sinh • CLSI M100", url: "#/docspace/studios/microbio", icon: "🦠", count: 18 },
-  { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: "#/docspace/studios/antibiotic", icon: "💊", count: 16 },
-  { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "#/docspace/studios/vancomycin", icon: "💉", count: 14 },
-  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối CDSS", url: "#/docspace/studios", icon: "🧬", count: 12 }
+  { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: "./src/content/docspace/public/cdss/dengue/index.html", icon: "💧", count: 35 },
+  { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", category: "Tim Mạch • 21 Ca & Caliper", url: "./src/content/docspace/public/cdss/ecg/index.html", icon: "📈", count: 32 },
+  { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: "./src/content/docspace/public/cdss/abg/index.html", icon: "🫁", count: 28 },
+  { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: "./src/content/docspace/public/cdss/xray/index.html", icon: "🩻", count: 25 },
+  { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: "./src/content/docspace/public/cdss/hepa/index.html", icon: "🧪", count: 22 },
+  { id: "cdss-neuro", title: "Khám Thần Kinh (NeuroExam)", category: "Thần Kinh • Mô Phỏng 3D", url: "./src/content/docspace/public/cdss/neuro/index.html", icon: "🧠", count: 20 },
+  { id: "cdss-microbio", title: "Vi Sinh & KSĐ (Mahon)", category: "Vi Sinh • CLSI M100", url: "./src/content/docspace/public/cdss/microbio/index.html", icon: "🦠", count: 18 },
+  { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: "./src/content/docspace/public/cdss/antibiotic/index.html", icon: "💊", count: 16 },
+  { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "./src/content/docspace/public/cdss/vancomycin/index.html", icon: "💉", count: 14 },
+  { id: "cdss-sepsis", title: "Phân Tầng Nguy Cơ Sepsis", category: "Hồi Sức • NICE & SSC 2024", url: "./src/content/docspace/public/cdss/sepsis/index.html", icon: "☣️", count: 13 },
+  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối CDSS", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
 ];
 
 let currentPearlIdx = 0;
@@ -135,12 +150,38 @@ export function initClinicalPearl(): void {
 export function getAppUsageData(): LauncherAppItem[] {
   try {
     const raw = localStorage.getItem('cliniportal_cdss_usage_v2') || localStorage.getItem('cliniportal_app_usage');
-    if (!raw) return DEFAULT_LAUNCHER_APPS;
-    const parsed: LauncherAppItem[] = JSON.parse(raw);
+    if (!raw) {
+      saveAppUsageData(DEFAULT_LAUNCHER_APPS);
+      return DEFAULT_LAUNCHER_APPS;
+    }
+    let parsed: LauncherAppItem[] = JSON.parse(raw);
     const hasCdss = Array.isArray(parsed) && parsed.some(item => item.id && item.id.startsWith('cdss-'));
     if (!hasCdss) {
       saveAppUsageData(DEFAULT_LAUNCHER_APPS);
       return DEFAULT_LAUNCHER_APPS;
+    }
+
+    // Đồng bộ sang canonical URL standalone (đảm bảo mở file .html riêng biệt)
+    let needsUpdate = false;
+    parsed = parsed.map(item => {
+      const canonical = CANONICAL_CDSS_URLS[item.id];
+      if (canonical && item.url !== canonical) {
+        needsUpdate = true;
+        return { ...item, url: canonical };
+      }
+      return item;
+    });
+
+    // Bổ sung các CDSS app mới nếu người dùng lưu phiên cũ
+    DEFAULT_LAUNCHER_APPS.forEach(defApp => {
+      if (!parsed.some(p => p.id === defApp.id)) {
+        parsed.push({ ...defApp });
+        needsUpdate = true;
+      }
+    });
+
+    if (needsUpdate) {
+      saveAppUsageData(parsed);
     }
     return parsed;
   } catch (e) {
@@ -202,16 +243,20 @@ export function renderLauncher(filterText: string = ''): void {
 
   grid.innerHTML = apps.map(app => {
     const isPinned = pinned.includes(app.id);
+    const targetUrl = CANONICAL_CDSS_URLS[app.id] || app.url;
     return `
-      <a href="${app.url}" class="launcher-item" data-id="${app.id}">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="launcher-item" data-id="${app.id}" title="${app.title} (Mở tab riêng)">
         <div class="launcher-icon-box">${app.icon}</div>
         <div class="launcher-text-box">
           <span class="launcher-name">${app.title}</span>
           <span class="launcher-cat">${app.category}</span>
         </div>
-        <button type="button" class="launcher-pin-btn ${isPinned ? 'pinned' : ''}" data-pin-id="${app.id}" title="${isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}">
-          <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
-        </button>
+        <div class="launcher-item-actions">
+          <button type="button" class="launcher-pin-btn ${isPinned ? 'pinned' : ''}" data-pin-id="${app.id}" title="${isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}">
+            <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+          </button>
+          <span class="launcher-ext-icon" title="Mở trong tab riêng"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
       </a>
     `;
   }).join('');
@@ -257,17 +302,21 @@ export function getRecentlyUsed(): RecentChipItem[] {
   try {
     const raw = localStorage.getItem('cliniportal_recent_chips');
     if (raw) {
-      const parsed: RecentChipItem[] = JSON.parse(raw);
+      let parsed: RecentChipItem[] = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.some(item => item.id && item.id.startsWith('cdss-'))) {
+        parsed = parsed.map(item => ({
+          ...item,
+          url: CANONICAL_CDSS_URLS[item.id] || item.url
+        }));
         return parsed;
       }
     }
     return [
-      { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: "#/docspace/studios/dengue" },
-      { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", icon: "📈", url: "#/docspace/studios/ecg" },
-      { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: "#/docspace/studios/abg" },
-      { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: "#/docspace/studios/xray" },
-      { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: "#/docspace/studios/antibiotic" }
+      { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: "./src/content/docspace/public/cdss/dengue/index.html" },
+      { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", icon: "📈", url: "./src/content/docspace/public/cdss/ecg/index.html" },
+      { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: "./src/content/docspace/public/cdss/abg/index.html" },
+      { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: "./src/content/docspace/public/cdss/xray/index.html" },
+      { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: "./src/content/docspace/public/cdss/antibiotic/index.html" }
     ];
   } catch (e) {
     return [];
@@ -279,8 +328,9 @@ export function recordRecentlyUsed(appId: string): void {
   const app = apps.find(a => a.id === appId);
   if (!app) return;
 
+  const targetUrl = CANONICAL_CDSS_URLS[app.id] || app.url;
   let recents = getRecentlyUsed().filter(r => r.id !== appId);
-  recents.unshift({ id: app.id, title: app.title, icon: app.icon, url: app.url });
+  recents.unshift({ id: app.id, title: app.title, icon: app.icon, url: targetUrl });
   recents = recents.slice(0, 5);
 
   try {
@@ -301,9 +351,10 @@ export function renderRecentlyUsed(): void {
   }
 
   container.innerHTML = recents.map(r => `
-    <a href="${r.url}" class="recent-chip">
+    <a href="${r.url}" target="_blank" rel="noopener noreferrer" class="recent-chip" title="${r.title} (Mở tab riêng)">
       <span class="recent-chip-icon">${r.icon}</span>
       <span>${r.title}</span>
+      <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem; opacity: 0.45; margin-left: 0.25rem;"></i>
     </a>
   `).join('');
 }

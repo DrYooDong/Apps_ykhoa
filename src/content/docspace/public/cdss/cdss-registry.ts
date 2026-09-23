@@ -167,6 +167,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'ASHP 2020 + TDM AUC/MIC + Béo Phì',
     isStandalone: true,
     standaloneUrl: 'vancomycin/index.html'
+  },
+  {
+    id: 'cdss-sepsis-risk',
+    slug: 'sepsis',
+    title: 'Phân Tầng Nguy Cơ Nhiễm Trùng & Sốc Nhiễm Khuẩn (SepsisCDSS)',
+    titleEn: 'Sepsis & Septic Shock Clinical Decision Support System',
+    shortDesc: 'Sàng lọc đa phương thức, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn theo NICE 2024/2026, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 (Nhi khoa), Obstetric SOFA, LP-NEWS và tỷ số NLR.',
+    category: 'resuscitation',
+    categoryName: 'Hồi sức Cấp cứu',
+    version: '2.0.0 (NICE & Sepsis-3 & Phoenix)',
+    updatedAt: '2026-09-23',
+    author: 'CliniPortal Critical Care Squad & NICE NG253 / SSC 2024',
+    guidelineSource: 'NICE NG253 (2024/2026 update), Surviving Sepsis Campaign (SSC) & Phoenix Sepsis Criteria 2024',
+    icd10: ['A41.9', 'R65.2', 'R65.21', 'A40', 'A41'],
+    icon: 'fa-solid fa-biohazard',
+    badge: 'NICE 2024 + Phoenix 2024 + Sepsis-3',
+    isStandalone: true,
+    standaloneUrl: 'sepsis/index.html'
   }
 ];
 

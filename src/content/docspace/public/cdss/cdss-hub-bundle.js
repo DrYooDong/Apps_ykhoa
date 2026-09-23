@@ -1,5 +1,5 @@
 (() => {
-  // public/cdss/cdss-registry.ts
+  // src/content/docspace/public/cdss/cdss-registry.ts
   var CDSS_MODULES = [
     {
       id: "cdss-dengue-fluid",
@@ -162,6 +162,24 @@
       badge: "ASHP 2020 + TDM AUC/MIC + B\xE9o Ph\xEC",
       isStandalone: true,
       standaloneUrl: "vancomycin/index.html"
+    },
+    {
+      id: "cdss-sepsis-risk",
+      slug: "sepsis",
+      title: "Ph\xE2n T\u1EA7ng Nguy C\u01A1 Nhi\u1EC5m Tr\xF9ng & S\u1ED1c Nhi\u1EC5m Khu\u1EA9n (SepsisCDSS)",
+      titleEn: "Sepsis & Septic Shock Clinical Decision Support System",
+      shortDesc: "S\xE0ng l\u1ECDc \u0111a ph\u01B0\u01A1ng th\u1EE9c, nh\u1EADn di\u1EC7n v\xE0 ph\xE2n t\u1EA7ng nguy c\u01A1 nhi\u1EC5m tr\xF9ng, nhi\u1EC5m khu\u1EA9n huy\u1EBFt (Sepsis) v\xE0 s\u1ED1c nhi\u1EC5m khu\u1EA9n theo NICE 2024/2026, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 (Nhi khoa), Obstetric SOFA, LP-NEWS v\xE0 t\u1EF7 s\u1ED1 NLR.",
+      category: "resuscitation",
+      categoryName: "H\u1ED3i s\u1EE9c C\u1EA5p c\u1EE9u",
+      version: "2.0.0 (NICE & Sepsis-3 & Phoenix)",
+      updatedAt: "2026-09-23",
+      author: "CliniPortal Critical Care Squad & NICE NG253 / SSC 2024",
+      guidelineSource: "NICE NG253 (2024/2026 update), Surviving Sepsis Campaign (SSC) & Phoenix Sepsis Criteria 2024",
+      icd10: ["A41.9", "R65.2", "R65.21", "A40", "A41"],
+      icon: "fa-solid fa-biohazard",
+      badge: "NICE 2024 + Phoenix 2024 + Sepsis-3",
+      isStandalone: true,
+      standaloneUrl: "sepsis/index.html"
     }
   ];
   function getCDSSModuleById(id) {
@@ -171,7 +189,7 @@
     return CDSS_MODULES.find((m) => m.slug === slug);
   }
 
-  // public/cdss/dengue/dengue-data.ts
+  // src/content/docspace/public/cdss/dengue/dengue-data.ts
   var CDC_STANDARD_WEIGHT = {
     2: { male: 13, female: 12 },
     3: { male: 14, female: 14 },
@@ -599,7 +617,7 @@
     'B\xE0n giao c\u1EEF r\xF5 r\xE0ng: D\xF9ng n\xFAt "Sao Ch\xE9p B\u1EA3ng B\xE0n Giao C\u1EEF" tr\xEAn CDSS \u0111\u1EC3 d\xE1n v\xE0o phi\u1EBFu theo d\xF5i giao ban.'
   ];
 
-  // public/cdss/dengue/dengue-engine.ts
+  // src/content/docspace/public/cdss/dengue/dengue-engine.ts
   function classifyAgeGroup(ageYears) {
     if (ageYears >= 16) return "adult";
     if (ageYears >= 13) return "adolescent";
@@ -794,7 +812,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     };
   }
 
-  // public/cdss/dengue/dengue-ui.ts
+  // src/content/docspace/public/cdss/dengue/dengue-ui.ts
   var DengueCDSSController = class {
     constructor(containerId) {
       this.currentPlan = null;
@@ -1400,7 +1418,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   };
 
-  // public/cdss/xray/xray-canvas-renderer.ts
+  // src/content/docspace/public/cdss/xray/xray-canvas-renderer.ts
   var XRayCanvasRenderer = class {
     constructor(canvas) {
       this.W = 600;
@@ -1898,7 +1916,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   };
 
-  // public/cdss/xray/xray-cases.ts
+  // src/content/docspace/public/cdss/xray/xray-cases.ts
   var DEFAULT_CASES = [
     {
       id: "case-copd-001",
@@ -2485,7 +2503,7 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
   ];
 
-  // public/cdss/xray/xray-ui.ts
+  // src/content/docspace/public/cdss/xray/xray-ui.ts
   var XRayCDSSController = class {
     constructor(containerId) {
       this.cases = DEFAULT_CASES;
@@ -3030,7 +3048,7 @@ ${findingsSummary}
     }
   };
 
-  // public/cdss/index.ts
+  // src/content/docspace/public/cdss/index.ts
   function initCDSSHub(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;

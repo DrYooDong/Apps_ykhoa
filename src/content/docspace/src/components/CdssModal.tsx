@@ -120,6 +120,15 @@ const CDSS_TABS: ToolTabMeta[] = [
     desc: 'Tính liều nạp, liều duy trì, chỉnh liều béo phì (Zhang 2024), lọc máu IHD, nồng độ đáy Trough và AUC24/MIC.',
   },
   {
+    id: 'sepsis',
+    title: 'Phân Tầng Nguy Cơ Sepsis',
+    badge: 'NICE 2024 & Phoenix',
+    icon: <Activity className="w-4 h-4 text-rose-600" />,
+    colorClass: 'text-rose-700 border-rose-300 bg-rose-50',
+    activeBgClass: 'bg-rose-600 text-white shadow-sm',
+    desc: 'Nhận diện & phân tầng nguy cơ nhiễm trùng, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 Nhi khoa và sốc nhiễm khuẩn.',
+  },
+  {
     id: 'hub',
     title: 'Danh Mục CDSS',
     badge: 'Tổng quan Hub',

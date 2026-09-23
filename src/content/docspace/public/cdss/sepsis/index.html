@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SepsisCDSS — Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn | CliniPortal CDSS</title>
+    <meta name="description" content="Hệ thống CDSS hỗ trợ sàng lọc, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn đa phương pháp (NICE 2024/2026, Sepsis-3, Phoenix 2024, Obstetric SOFA, LP-NEWS, NLR)." />
+    <meta property="og:title" content="SepsisCDSS — Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn | CliniPortal CDSS" />
+    <meta property="og:description" content="Hệ thống CDSS hỗ trợ sàng lọc, nhận diện và phân tầng nguy cơ nhiễm trùng, nhiễm khuẩn huyết (Sepsis) và sốc nhiễm khuẩn đa phương pháp (NICE 2024/2026, Sepsis-3, Phoenix 2024, Obstetric SOFA, LP-NEWS, NLR)." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CliniPortal CDSS Shell Styles & Theme Script -->
+    <link rel="stylesheet" href="../shared/cdss-shell.css">
+    <script src="../shared/cdss-shell.js"></script>
+
+    <link rel="stylesheet" href="./assets/index-C1IKOhNO.css">
+    <script type="module" crossorigin src="./assets/index-SXf60w6w.js"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-600 selection:text-white">
+    <!-- CliniPortal Master Navigation Bar -->
+    <header class="cdss-portal-navbar">
+      <div class="cdss-portal-nav-breadcrumbs">
+        <a href="../../index.html" class="crumb-hide-mobile"><i class="fa-solid fa-graduation-cap"></i> Knowledge Vault</a>
+        <i class="fa-solid fa-chevron-right separator crumb-hide-mobile"></i>
+        <a href="../index.html"><i class="fa-solid fa-network-wired"></i> Kho CDSS</a>
+        <i class="fa-solid fa-chevron-right separator"></i>
+        <span class="active"><i class="fa-solid fa-biohazard text-teal-600"></i> Phân Tầng Nguy Cơ Nhiễm Trùng &amp; Sốc Nhiễm Khuẩn (SepsisCDSS)</span>
+      </div>
+
+      <div class="cdss-portal-nav-right">
+        <a href="../../docspace/index.html" class="cdss-portal-nav-btn" title="Mở trong Hồ Sơ Bệnh Án DocSpace">
+          <i class="fa-solid fa-user-doctor"></i> <span>DocSpace Pro</span>
+        </a>
+        <a href="../index.html" class="cdss-portal-nav-btn" title="Trở về Trung Tâm CDSS">
+          <i class="fa-solid fa-th-large"></i> <span>Danh Mục CDSS</span>
+        </a>
+        <button id="theme-toggle" class="cdss-portal-theme-btn" title="Chuyển chế độ Sáng/Tối" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mount Point for Full React Application -->
+    <div id="root"></div>
+
+    <!-- Offline file:/// Fallback Loader -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const rootEl = document.getElementById('root');
+          if (rootEl && rootEl.children.length === 0) {
+            console.info('Module blocked or pending under file:///, activating standalone IIFE bundle...');
+            const s = document.createElement('script');
+            s.src = './assets/sepsis-app.iife.js?v=' + Date.now();
+            document.body.appendChild(s);
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
