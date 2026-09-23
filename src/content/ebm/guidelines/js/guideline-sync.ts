@@ -390,20 +390,29 @@ export function loadStudies(): void {
     localStorage.removeItem('internalMedicineStudies');
   } catch (e) {}
 
+  const sampleStudies: Study[] = window.SAMPLE_STUDIES || [];
+  const validSlugs = new Set(sampleStudies.map(s => s.id));
+
   let rawList: any[] = [];
   try {
     const storedCustom = localStorage.getItem('cliniportal_custom_studies');
     if (storedCustom) {
       const parsed = JSON.parse(storedCustom);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        rawList = parsed;
+        // Chỉ giữ lại các bài hợp lệ có trong danh mục chuẩn 1:1 với .mdx
+        rawList = parsed.filter(item => item && item.id && validSlugs.has(item.id) && item.file);
       }
     }
   } catch (e) {}
 
-  const combined = [...rawList, ...(window.SAMPLE_STUDIES || [])];
+  const combined = [...rawList, ...sampleStudies];
   window.studies = processAndDeduplicateStudies(combined);
   window.studies.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
+
+  // Tự động đồng bộ dọn sạch rác cũ trong localStorage trên thiết bị
+  try {
+    localStorage.setItem('cliniportal_custom_studies', JSON.stringify(window.studies));
+  } catch (e) {}
 }
 
 export function saveStudies(): void {

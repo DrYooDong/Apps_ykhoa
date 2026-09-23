@@ -55,68 +55,6 @@ export function renderEbmView(): string {
             Hệ thống tinh hoa tổng hợp thiết kế nghiên cứu khoa học (RCT, Meta-analysis), phương pháp thống kê y học, tháp bằng chứng 6S, chu trình 5As và kho hướng dẫn thực hành lâm sàng EBM chuẩn hóa từ Bộ Y Tế, ESC, ADA, KDIGO, GOLD, GINA.
           </p>
 
-          <!-- OMNISEARCH BAR (Linear/Raycast Style) -->
-          <div class="hub-command-search-wrapper">
-            <div class="hub-command-search">
-              <i class="fa-solid fa-magnifying-glass" style="color: rgba(255,255,255,0.7); margin-right: 0.75rem; font-size: 1.1rem;"></i>
-              <input type="text" id="ebmOmniSearchInput" placeholder="Tìm nhanh phác đồ, nghiên cứu RCT, phân tích gộp, thang điểm EBM... (Ctrl + K)" autocomplete="off" />
-              <span class="hub-hotkey-badge">Ctrl + K</span>
-              <button type="button" id="ebmOmniSearchBtn" title="Tìm kiếm">
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            </div>
-            <div class="hub-search-tags">
-              <span style="font-size: 0.72rem; color: rgba(255,255,255,0.7); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">
-                <i class="fa-solid fa-fire" style="color:#f59e0b;"></i> Chủ đề nóng:
-              </span>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="SGLT2i">SGLT2i CKD &amp; HF</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Tăng huyết áp">Tăng Huyết Áp 2024</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="COPD">GOLD 2025</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Kháng sinh">Kháng Sinh BYT</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="Meta-analysis">Meta-analysis Forest Plot</button>
-              <button type="button" class="hub-search-tag-chip js-quick-tag" data-tag="DOAC">DOACs Rung Nhĩ</button>
-            </div>
-          </div>
-
-          <!-- REALTIME KPI METRICS GRID -->
-          <div class="hub-kpi-grid">
-            <div class="hub-kpi-card ebm-kpi-holo">
-              <div class="hub-kpi-top">
-                <span class="hub-kpi-label">Tổng Guidelines</span>
-                <i class="fa-solid fa-layer-group hub-kpi-icon" style="color: #38bdf8;"></i>
-              </div>
-              <div class="hub-kpi-val" id="ebmKpiTotal">59+</div>
-              <div class="hub-kpi-sub">Đồng bộ tự động</div>
-            </div>
-
-            <div class="hub-kpi-card ebm-kpi-holo">
-              <div class="hub-kpi-top">
-                <span class="hub-kpi-label">Practice-Changing</span>
-                <i class="fa-solid fa-trophy hub-kpi-icon" style="color: #fbbf24;"></i>
-              </div>
-              <div class="hub-kpi-val" id="ebmKpiPractice">42</div>
-              <div class="hub-kpi-sub">Thay đổi thực hành</div>
-            </div>
-
-            <div class="hub-kpi-card ebm-kpi-holo">
-              <div class="hub-kpi-top">
-                <span class="hub-kpi-label">Bộ Y Tế / Hội VN</span>
-                <i class="fa-solid fa-flag hub-kpi-icon" style="color: #f87171;"></i>
-              </div>
-              <div class="hub-kpi-val" id="ebmKpiVn">28</div>
-              <div class="hub-kpi-sub">Khuyến cáo chuẩn</div>
-            </div>
-
-            <div class="hub-kpi-card ebm-kpi-holo">
-              <div class="hub-kpi-top">
-                <span class="hub-kpi-label">Quốc Tế (ESC/ADA)</span>
-                <i class="fa-solid fa-globe hub-kpi-icon" style="color: #34d399;"></i>
-              </div>
-              <div class="hub-kpi-val" id="ebmKpiIntl">31+</div>
-              <div class="hub-kpi-sub">Cập nhật toàn cầu</div>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -751,38 +689,7 @@ export function renderEbmView(): string {
  * Controller mount logic for interactive elements
  */
 export function mountEbmController(): void {
-  // 1. OmniSearch
-  const searchInput = document.getElementById('ebmOmniSearchInput') as HTMLInputElement | null;
-  const searchBtn = document.getElementById('ebmOmniSearchBtn');
-  const quickTags = document.querySelectorAll<HTMLButtonElement>('.js-quick-tag');
-
-  const executeSearch = (term: string) => {
-    if (!term.trim()) return;
-    window.location.hash = `#/ebm/kho-guidelines?q=${encodeURIComponent(term.trim())}`;
-  };
-
-  if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        executeSearch(searchInput.value);
-      }
-    });
-  }
-
-  if (searchBtn && searchInput) {
-    searchBtn.addEventListener('click', () => {
-      executeSearch(searchInput.value);
-    });
-  }
-
-  quickTags.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tag = btn.getAttribute('data-tag');
-      if (tag) executeSearch(tag);
-    });
-  });
-
-  // 2. Specialty Filter for PubMed Guidelines Feed
+  // 1. Specialty Filter for PubMed Guidelines Feed
   const specChips = document.querySelectorAll<HTMLButtonElement>('.ebm-spec-chip');
   const pubmedCards = document.querySelectorAll<HTMLElement>('.pubmed-item-card');
 

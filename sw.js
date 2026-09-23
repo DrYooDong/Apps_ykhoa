@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cliniportal-v2.1';
+const CACHE_NAME = 'cliniportal-v2.2';
 
 // Essential App Shell resources to precache
 const PRECACHE_ASSETS = [

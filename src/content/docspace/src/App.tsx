@@ -191,7 +191,7 @@ export function MainApp() {
         setClinicalStep('t4');
       } else if (intent.action === 'open-cdss-studio') {
         const studio = (intent.payload?.studio || 'hub').toLowerCase();
-        const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
+        const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'hub'];
         if (validTools.includes(studio as CdssToolSlug)) {
           handleOpenCdss(studio as CdssToolSlug);
         } else {
@@ -236,7 +236,7 @@ export function MainApp() {
       setClinicalStep('t4');
     } else if (fallback.studio) {
       const studio = fallback.studio.toLowerCase();
-      const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'hub'];
+      const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'hub'];
       if (validTools.includes(studio as CdssToolSlug)) {
         handleOpenCdss(studio as CdssToolSlug);
       } else {

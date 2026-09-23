@@ -73,16 +73,18 @@ export const CLINICAL_PEARLS: ClinicalPearlItem[] = [
   }
 ];
 
-// ── 2. DATABASE: DEFAULT APPS ──
+// ── 2. DATABASE: DOCSPACE CDSS APPS ──
 export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
-  { id: "icd10", title: "Tra cứu ICD-10", category: "Công cụ", url: "#/calculators/tracuu-ma-icd10", icon: "🔍", count: 28 },
-  { id: "ecg", title: "Đọc ECG cơ bản", category: "Kỹ năng", url: "#/skills/doc-ecg-co-ban", icon: "📈", count: 24 },
-  { id: "cbc", title: "Phân tích CBC", category: "Kỹ năng", url: "#/skills/doc-tpttb-mau", icon: "🩸", count: 20 },
-  { id: "renal", title: "Chức năng Thận eGFR", category: "Công cụ", url: "#/skills/doc-sh-than", icon: "🧪", count: 18 },
-  { id: "abg", title: "Khí máu ĐM (ABG)", category: "Công cụ", url: "#/calculators/dg-abg-studio", icon: "🫁", count: 16 },
-  { id: "sepsis", title: "Kháng sinh kinh nghiệm", category: "Dược lý", url: "#/skills/luachon-khangsinh", icon: "💊", count: 15 },
-  { id: "dengue", title: "Xử trí SXH Dengue", category: "Cấp cứu", url: "#/calculators/ql-bu-dich-studio", icon: "🦟", count: 12 },
-  { id: "stroke", title: "Đột quỵ & NIHSS", category: "Cấp cứu", url: "#/calculators/stroke-pro-studio", icon: "🧠", count: 10 }
+  { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: "#/docspace/studios/dengue", icon: "💧", count: 35 },
+  { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", category: "Tim Mạch • 21 Ca & Caliper", url: "#/docspace/studios/ecg", icon: "📈", count: 32 },
+  { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: "#/docspace/studios/abg", icon: "🫁", count: 28 },
+  { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: "#/docspace/studios/xray", icon: "🩻", count: 25 },
+  { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: "#/docspace/studios/hepa", icon: "🧪", count: 22 },
+  { id: "cdss-neuro", title: "Khám Thần Kinh (NeuroExam)", category: "Thần Kinh • Mô Phỏng 3D", url: "#/docspace/studios/neuro", icon: "🧠", count: 20 },
+  { id: "cdss-microbio", title: "Vi Sinh & KSĐ (Mahon)", category: "Vi Sinh • CLSI M100", url: "#/docspace/studios/microbio", icon: "🦠", count: 18 },
+  { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: "#/docspace/studios/antibiotic", icon: "💊", count: 16 },
+  { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "#/docspace/studios/vancomycin", icon: "💉", count: 14 },
+  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối CDSS", url: "#/docspace/studios", icon: "🧬", count: 12 }
 ];
 
 let currentPearlIdx = 0;
@@ -132,8 +134,15 @@ export function initClinicalPearl(): void {
 // ── 4. SMART APP LAUNCHER CONTROLLER ──
 export function getAppUsageData(): LauncherAppItem[] {
   try {
-    const raw = localStorage.getItem('cliniportal_app_usage');
-    return raw ? JSON.parse(raw) : DEFAULT_LAUNCHER_APPS;
+    const raw = localStorage.getItem('cliniportal_cdss_usage_v2') || localStorage.getItem('cliniportal_app_usage');
+    if (!raw) return DEFAULT_LAUNCHER_APPS;
+    const parsed: LauncherAppItem[] = JSON.parse(raw);
+    const hasCdss = Array.isArray(parsed) && parsed.some(item => item.id && item.id.startsWith('cdss-'));
+    if (!hasCdss) {
+      saveAppUsageData(DEFAULT_LAUNCHER_APPS);
+      return DEFAULT_LAUNCHER_APPS;
+    }
+    return parsed;
   } catch (e) {
     return DEFAULT_LAUNCHER_APPS;
   }
@@ -141,6 +150,7 @@ export function getAppUsageData(): LauncherAppItem[] {
 
 export function saveAppUsageData(data: LauncherAppItem[]): void {
   try {
+    localStorage.setItem('cliniportal_cdss_usage_v2', JSON.stringify(data));
     localStorage.setItem('cliniportal_app_usage', JSON.stringify(data));
   } catch (e) {}
 }
@@ -246,11 +256,18 @@ export function initAppLauncher(): void {
 export function getRecentlyUsed(): RecentChipItem[] {
   try {
     const raw = localStorage.getItem('cliniportal_recent_chips');
-    return raw ? JSON.parse(raw) : [
-      { id: "icd10", title: "Tra cứu ICD-10", icon: "🔍", url: "#/calculators/tracuu-ma-icd10" },
-      { id: "ecg", title: "Đọc ECG cơ bản", icon: "📈", url: "#/skills/doc-ecg-co-ban" },
-      { id: "abg", title: "Khí Máu ĐM", icon: "🫁", url: "#/calculators/dg-abg-studio" },
-      { id: "cbc", title: "Tế Bào Máu", icon: "🩸", url: "#/skills/doc-tpttb-mau" }
+    if (raw) {
+      const parsed: RecentChipItem[] = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.some(item => item.id && item.id.startsWith('cdss-'))) {
+        return parsed;
+      }
+    }
+    return [
+      { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: "#/docspace/studios/dengue" },
+      { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", icon: "📈", url: "#/docspace/studios/ecg" },
+      { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: "#/docspace/studios/abg" },
+      { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: "#/docspace/studios/xray" },
+      { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: "#/docspace/studios/antibiotic" }
     ];
   } catch (e) {
     return [];

@@ -6,7 +6,7 @@
  * cho toàn bộ tài liệu lâm sàng trong thư mục kho-guidelines/
  * Dùng làm nguồn dữ liệu EBM cơ sở cho SOAP & Tra cứu EBM nhanh.
  *
- * Cập nhật đồng bộ: 2026-09-18 (161 tài liệu lâm sàng — Đã lọc sạch trùng lặp)
+ * Cập nhật đồng bộ: 2026-09-23 (108 tài liệu lâm sàng chuẩn hóa 1:1 với kho-guidelines/*.mdx)
  */
 
 import { Study } from './guidelines-types';
@@ -83,30 +83,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     }
   },
   {
-    "id": "1783647198144-47alsfrq9",
-    "title": "ACOG Cervical Cancer Screening 2026",
-    "drug": "Xét nghiệm hrHPV và tế bào học cổ tử cung",
-    "sourceType": "intl-guideline",
-    "specialty": "obgyn",
-    "design": "guideline",
-    "intervention": "Xét nghiệm tế bào học, hrHPV nguyên phát (do nhân viên y tế hoặc tự lấy mẫu) và đồng xét nghiệm",
-    "primaryEndpoint": "Cập nhật khuyến cáo sàng lọc ung thư cổ tử cung theo nhóm tuổi và phương pháp đánh giá",
-    "keyResults": "Tế bào học mỗi 3 năm (21-29 tuổi); hrHPV nguyên phát mỗi 5 năm hoặc tự lấy mẫu hrHPV mỗi 3 năm (30-65 tuổi)",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "ACOG",
-    "phase": "Guidelines",
-    "population": "Bệnh nhân nữ có nguy cơ trung bình từ 21-29 tuổi, 30-65 tuổi và trên 65 tuổi",
-    "summary": "Hướng dẫn cập nhật năm 2026 của ACOG ủng hộ các khuyến cáo sàng lọc ung thư cổ tử cung của WPSI, nhấn mạnh việc bổ sung tùy chọn xét nghiệm hrHPV nguyên phát tự lấy mẫu tại nhà đối với bệnh nhân từ 30-65 tuổi.",
-    "detailedConclusion": "Đối với nhóm 21-29 tuổi, sàng lọc bằng tế bào học đơn thuần mỗi 3 năm. Ở nhóm 30-65 tuổi, ưu tiên cao nhất là xét nghiệm hrHPV nguyên phát do bác sĩ thực hiện mỗi 5 năm; các lựa chọn thay thế bao gồm đồng xét nghiệm (co-testing) mỗi 5 năm hoặc tự lấy mẫu hrHPV nguyên phát mỗi 3 năm (chỉ khi có hệ thống theo dõi và bộ kit chuẩn FDA). Đối với bệnh nhân trên 65 tuổi hoặc đã phẫu thuật cắt tử cung (bao gồm cả cổ tử cung) mà không có tiền sử tổn thương tiền ung thư nguy cơ cao, khuyến cáo ngừng sàng lọc định kỳ nếu các kết quả tầm soát trước đó đạt tiêu chuẩn âm tính đầy đủ.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://journals.lww.com/greenjournal/fulltext/10.1097/aog.0000000000006257~screening-for-cervical-cancer?fbclid=IwY2xjawS9KeBleHRuA2FlbQIxMABicmlkETFIQ3dhTVF4MFFJVzJTWVBqc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsVRfKF2Aadtwh8WCUTA5dsbDMRjyKkYvHUDA5i5OOcpuA60HI-CDhYAa_lh_aem_qqD6zR1DEevkppqtsGbRhww/view?usp=sharing",
-    "icd10": [
-      "C53",
-      "Z12.4"
-    ]
-  },
-  {
     "id": "2026-ada-diabetes",
     "title": "ADA 2026: Tiêu chuẩn Chăm sóc Y tế trong Bệnh Đái tháo đường (Standards of Care)",
     "titleEn": "Standards of Care in Diabetes—2026 (American Diabetes Association)",
@@ -117,7 +93,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Hiệp hội Đái tháo đường Hoa Kỳ (ADA)",
     "journal": "Diabetes Care",
-    "file": "2026-ada-diabetes.html",
+    "file": "2026-ada-diabetes.mdx",
     "conditionKey": "diabetes-t2d",
     "icd10": [
       "E11",
@@ -134,31 +110,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true,
     "subgroups": "{\"Sàng lọc ĐTĐ sớm ở người gốc Á\":\"Sàng lọc ở người lớn không triệu chứng khi thừa cân hoặc béo phì (ngưỡng BMI riêng cho người gốc Á là >= 23 kg/m2)\",\"Chẩn đoán ĐTĐ (HbA1c/FPG/OGTT)\":\"A1C >= 6.5% | FPG >= 126 mg/dL | 2-h PG >= 200 mg/dL trong nghiệm pháp OGTT 75g\",\"Tiêu chuẩn phân nhóm nguy cơ suy tim (BNP/NT-proBNP)\":\"COL: Sàng lọc suy tim giai đoạn A hoặc B ở bệnh nhân ĐTĐ bằng định lượng peptid lợi niệu (BNP / NT-proBNP) | Bất thường cần siêu âm tim\"}",
     "fdaStatus": "N/A"
-  },
-  {
-    "id": "1783874294993-yjz84uitu",
-    "title": "AHA 2026 Scientific Statement: Deprescribing in CVD",
-    "author": "Robert J. DiDomenico et al.",
-    "drug": "Chiến lược giảm kê đơn (Deprescribing)",
-    "sourceType": "intl-guideline",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Quy trình giảm kê đơn 5 bước, sử dụng công cụ sàng lọc (Beers, STOPP/START) và ra quyết định chia sẻ (SDM)",
-    "primaryEndpoint": "Đồng thuận khoa học về chiến lược quản lý tình trạng đa hành thuốc (polypharmacy) và giảm kê đơn an toàn ở bệnh nhân tim mạch",
-    "keyResults": "Cung cấp quy trình 5 bước đa chuyên khoa và danh sách các thuốc tim mạch/phi tim mạch (như Aspirin dự phòng tiên phát, PPI kéo dài) có thể xem xét giảm liều hoặc ngừng thuốc",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "AHA",
-    "phase": "Scientific Statement",
-    "population": "Bệnh nhân mắc bệnh tim mạch (CVD) ở mọi lứa tuổi có tình trạng đa thuốc (polypharmacy, dùng từ 5 loại thuốc trở lên)",
-    "summary": "Tuyên bố khoa học AHA 2026 cung cấp khung hướng dẫn lâm sàng toàn diện về chiến lược giảm kê đơn nhằm giải quyết gánh nặng đa thuốc ở bệnh nhân tim mạch, tối ưu hóa điều trị và giảm tác dụng phụ.",
-    "detailedConclusion": "Tình trạng đa thuốc (polypharmacy) ngày càng phổ biến trong tim mạch do việc áp dụng các phác đồ GDMT. Khuyến cáo đề xuất quy trình giảm kê đơn gồm 5 bước: (1) Nhận diện bệnh nhân (đặc biệt người có biến cố bất lợi, té ngã), (2) Rà soát lại danh sách thuốc bằng các công cụ chuẩn hóa như AGS Beers hoặc STOPP/START, (3) Thảo luận ra quyết định chia sẻ (SDM) cùng bệnh nhân, (4) Ngừng hoặc giảm liều thuốc từ từ đối với những thuốc mà nguy cơ vượt quá lợi ích (ví dụ: Aspirin dự phòng tiên phát ở người lớn tuổi, chẹn beta không còn chỉ định, thuốc gây suy giảm nhận thức, PPI kéo dài), (5) Theo dõi sát sự tái phát triệu chứng hoặc hội chứng cai thuốc. Quá trình này đòi hỏi cách tiếp cận đa chuyên khoa bao gồm bác sĩ, dược sĩ và điều dưỡng.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://drive.google.com/file/d/1Fz7ONjZ8dZ91KJbVp-XKWgId2WA6czlc/view?fbclid=IwY2xjawTAobtleHRuA2FlbQIxMABicmlkETFGRUpTMUhMOVZqTjNMQjJac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHl3MvI-XReuvY8bMx2CuBMcvTkzc_WCRQ6YSy31Wwthk0xvTW-Rnv58_2jL4_aem_47BuknflxIm6BWGRgtgEcA",
-    "icd10": [
-      "I50",
-      "I10"
-    ]
   },
   {
     "id": "2026-aha-acc-ckm-syndrome",
@@ -224,55 +175,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "keyResults": "HBAR: Ức chế DNA 10 năm TDF: 100% | Ức chế DNA 8 năm TAF: 95% | Đảo ngược xơ gan Ishak≥5 TDF: 74% | Peg-IFN add-on HBsAg loss: RR 4.52 | Chuyển đổi Peg-IFN HBsAg loss: RR 12.15 | Giảm tử vong TDF: aHR 0.06 | Giảm HCC TAF: HR 0.27"
   },
   {
-    "id": "1784201252511-jcbmlv86w",
-    "title": "Australian Pediatric Hypertension Guideline 2026",
-    "author": "N. G. Larkins et al.",
-    "drug": "Thuốc hạ huyết áp (ACEi, ARB, CCB)",
-    "sourceType": "intl-guideline",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Sàng lọc huyết áp định kỳ, chẩn đoán bằng đo huyết áp lưu động (ABPM), can thiệp lối sống và điều trị thuốc hạ áp",
-    "primaryEndpoint": "Đồng thuận các khuyến cáo lâm sàng về sàng lọc, chẩn đoán, đánh giá tổn thương cơ quan đích và quản lý tăng huyết áp",
-    "keyResults": "Ngưỡng sàng lọc đơn giản hóa: 120/80 mmHg (6-11 tuổi) và 130/85 mmHg (12-17 tuổi); thuốc hạ áp đầu tay là ACEi/ARB hoặc CCB kéo dài",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "RACP",
-    "phase": "Guidelines",
-    "population": "Trẻ em và thanh thiếu niên (dưới 18 tuổi) mắc hoặc có nguy cơ tăng huyết áp tại Úc",
-    "summary": "Hướng dẫn năm 2026 của Úc cung cấp khung thực hành lâm sàng thống nhất nhằm tầm soát, chẩn đoán và quản lý bệnh tăng huyết áp ở trẻ em và thanh thiếu niên, giới thiệu các ngưỡng sàng lọc đơn giản hóa và nhấn mạnh vai trò của đo huyết áp lưu động (ABPM).",
-    "detailedConclusion": "Hướng dẫn khuyến cáo tầm soát huyết áp định kỳ ở độ tuổi 7-9 và 13-15 tuổi cho trẻ không có yếu tố nguy cơ. Để dễ dàng áp dụng tại cơ sở y tế tuyến đầu, các ngưỡng sàng lọc được đơn giản hóa: 120/80 mmHg cho trẻ 6-11 tuổi và 130/85 mmHg cho trẻ 12-17 tuổi. Việc chẩn đoán xác định cần ưu tiên sử dụng đo huyết áp lưu động (ABPM) để loại trừ tăng huyết áp áo choàng trắng. Can thiệp lối sống (như chế độ ăn DASH, giảm muối, vận động 30-60 phút 3-5 ngày/tuần) là nền tảng điều trị ban đầu. Khi cần dùng thuốc, ưu tiên chỉ định thuốc ức chế men chuyển (ACEi), chẹn thụ thể (ARB) hoặc chẹn kênh canxi (CCB) tác dụng kéo dài. Riêng đối với bệnh nhân có bệnh thận mạn tính (CKD), ACEi/ARB là ưu tiên tuyệt đối với mục tiêu kiểm soát huyết áp khắt khe hơn (< bách phân vị thứ 50 theo ABPM).",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://drive.google.com/file/d/1qgSquawHKm4l2frdQQzB2jgOhUKQdyvp/view?fbclid=IwY2xjawTFn6hleHRuA2FlbQIxMABicmlkETFncnRmeXJvVnJYVDRkYWlCc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHttm44dtCe8LCSTKXC8Z49q9sNThHfKYDKpNSrznlBXVPrR-WMVbgtnyaDD4_aem_kIy-6UToAS4mS3XQa3W7fw",
-    "icd10": [
-      "I50",
-      "I10"
-    ]
-  },
-  {
-    "id": "1783647960484-ct1gj3c7f",
-    "title": "BMJ 2026 Meta-analysis: Calcium and Vitamin D",
-    "drug": "Canxi và/hoặc Vitamin D",
-    "sourceType": "intl-study",
-    "specialty": "rheum",
-    "design": "meta",
-    "intervention": "Bổ sung Canxi, Vitamin D hoặc phối hợp cả hai so với giả dược/không điều trị",
-    "primaryEndpoint": "Nguy cơ gãy xương bất kỳ (risk of any fracture)",
-    "keyResults": "Phối hợp: RR 0.91 (95% CI 0.84-0.99); Vitamin D đơn độc: RR 1.00 (95% CI 0.95-1.06). Giảm tuyệt đối không đạt ý nghĩa lâm sàng.",
-    "impact": "negative",
-    "year": 2026,
-    "organization": "BMJ",
-    "phase": "Meta-analysis",
-    "sampleSize": 153902,
-    "population": "Người lớn (≥18 tuổi) phần lớn sống tại cộng đồng và không dùng thuốc điều trị loãng xương",
-    "summary": "Phân tích gộp quy mô lớn từ 69 thử nghiệm kết luận rằng việc bổ sung canxi, vitamin D đơn thuần hoặc phối hợp mang lại rất ít hoặc không có lợi ích trong việc phòng ngừa gãy xương và té ngã ở người lớn.",
-    "detailedConclusion": "Nghiên cứu cho thấy bổ sung vitamin D hoặc canxi đơn độc không làm giảm nguy cơ gãy xương hay té ngã (RR đối với vitamin D đơn độc là 1.00). Việc kết hợp canxi và vitamin D làm giảm nguy cơ gãy xương bất kỳ có ý nghĩa trên phương diện thống kê (RR 0.91; 95% CI 0.84-0.99), tuy nhiên mức giảm rủi ro tuyệt đối lại rất nhỏ (khoảng 1%) và không đạt ngưỡng có ý nghĩa lâm sàng. Bài báo không ủng hộ việc thường quy kê đơn bổ sung canxi và vitamin D để phòng ngừa gãy xương hay té ngã, đồng thời khuyến cáo các hiệp hội nên đánh giá lại hướng dẫn lâm sàng hiện tại.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://doi.org/10.1136/bmj-2025-088050",
-    "icd10": [
-      "Z00"
-    ]
-  },
-  {
     "id": "2026-byt-hanta",
     "title": "Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Do Vi Rút Hanta (HFRS & HPS)",
     "titleEn": "Vietnam MOH 2026 Guidelines on Diagnosis and Treatment of Hantavirus Disease (HFRS & HPS)",
@@ -311,7 +213,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam (QĐ-BYT)",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-copd.html",
+    "file": "2026-byt-copd.mdx",
     "conditionKey": "copd",
     "icd10": [
       "J44",
@@ -341,7 +243,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-ebola.html",
+    "file": "2026-byt-ebola.mdx",
     "conditionKey": "hemorrhagic-fever",
     "icd10": [
       "A98.4"
@@ -367,7 +269,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam (QĐ-BYT)",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-viem-gan-b.html",
+    "file": "2026-byt-viem-gan-b.mdx",
     "conditionKey": "hepatitis-b",
     "icd10": [
       "B18.0",
@@ -390,7 +292,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam (QĐ-BYT)",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-viem-phoi-cong-dong.html",
+    "file": "2026-byt-viem-phoi-cong-dong.mdx",
     "conditionKey": "pneumonia",
     "icd10": [
       "J18",
@@ -419,7 +321,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-u-xo-tu-cung.html",
+    "file": "2026-byt-u-xo-tu-cung.mdx",
     "conditionKey": "uterine-fibroids",
     "icd10": [
       "D25",
@@ -446,7 +348,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-nipah.html",
+    "file": "2026-byt-nipah.mdx",
     "conditionKey": "hemorrhagic-fever",
     "icd10": [
       "A98"
@@ -501,7 +403,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2026-byt-tom-tat-viem-gan-b.html",
+    "file": "2026-byt-tom-tat-viem-gan-b.mdx",
     "conditionKey": "hepatitis-b",
     "icd10": [
       "B18.1"
@@ -537,7 +439,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "ESCMID / ESICM",
     "journal": "Lancet Infect Dis",
-    "file": "2026-icu-ca-the-hoa-beta-lactam.html",
+    "file": "2026-icu-ca-the-hoa-beta-lactam.mdx",
     "conditionKey": "icu",
     "icd10": [
       "A41",
@@ -584,33 +486,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://www.chestcc.org/article/S2949-7884(26)00038-9/fulltext"
   },
   {
-    "id": "2026-plant-based-diets-alblaji",
-    "title": "Chế độ ăn dựa trên thực vật đối với sức khỏe con người với những ảnh hưởng đến sức khỏe tim mạch - chuyển hóa, hệ vi sinh đường ruột và sự đầy đủ về dinh dưỡng",
-    "author": "Alblaji M",
-    "drug": "Chế độ ăn thuần chay, Chế độ ăn chay, Chế độ ăn cá, Chế độ ăn bán chay",
-    "sourceType": "intl-study",
-    "specialty": "nutri",
-    "design": "review",
-    "intervention": "Phân tích tác động tổng hợp của các mô hình ăn thực vật (thuần chay, ăn chay, ăn cá, bán chay) đối với sức khỏe lâm sàng và tính bền vững môi trường dựa trên các nghiên cứu dịch tễ học và thử nghiệm ngẫu nhiên.",
-    "primaryEndpoint": "Đánh giá mối liên quan giữa chế độ ăn thực vật với nguy cơ mắc bệnh tim mạch - chuyển hóa, ung thư, sự điều hòa hệ vi sinh đường ruột và tình trạng đầy đủ dinh dưỡng.",
-    "keyResults": "Ăn thuần chay giảm nguy cơ bệnh tim thiếu máu cục bộ 25%-30% vs Ăn chay giảm 20%-25%; Giảm 20%-50% tỷ lệ mắc đái tháo đường típ 2; Nhóm thuần chay giảm 8%-16% nguy cơ ung thư toàn bộ so với nhóm ăn mặn; Thực phẩm siêu chế biến thực vật làm tăng 20%-30% nguy cơ tử vong do mọi nguyên nhân",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "Qassim University",
-    "phase": "Literature Review",
-    "population": "Người trưởng thành áp dụng các mô hình ăn dựa trên thực vật; các nhóm đối tượng đặc biệt nhạy cảm cần lưu ý bao gồm phụ nữ mang thai, phụ nữ cho con bú, trẻ em và người cao tuổi.",
-    "summary": "Nghiên cứu tổng quan hệ thống hóa lợi ích vượt trội của chế độ ăn thực vật lành mạnh đối với tim mạch, đái tháo đường và hệ tiêu hóa nhờ cơ chế tăng sinh axit béo chuỗi ngắn (SCFA). Đồng thời, bài báo cảnh báo nguy cơ thiếu hụt vi chất (B12, sắt, kẽm, calci, omega-3) và tác hại nghiêm trọng của thực phẩm thực vật siêu chế biến.",
-    "detailedConclusion": "Chế độ ăn thực vật được thiết kế tốt (well-planned) an toàn và đáp ứng đầy đủ dinh dưỡng cho mọi giai đoạn vòng đời. Người ăn thuần chay (vegan) bắt buộc phải bổ sung Vitamin B12 hàng ngày do không có nguồn thực vật tự nhiên đáng tin cậy. Nên ngâm, nảy mầm hoặc lên men để giảm phytate từ 50%-90%, giúp cải thiện hấp thu sắt và kẽm không heme có sinh khả dụng thấp (2%-20%). Cần hạn chế tối đa thực phẩm siêu chế biến thực vật vốn chứa lượng natri rất cao (400-900 mg/phần) và chất béo bão hòa từ dầu dừa/cọ nhằm bảo toàn tối đa lợi ích tim mạch.",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://www.mdpi.com/2072-6643/12/12/3774",
-    "asianData": true,
-    "icd10": [
-      "E66",
-      "E46"
-    ],
-    "subgroups": "{\"Sức khỏe Tim mạch - Chuyển hóa\":\"Giảm 25% - 30% nguy cơ bệnh tim thiếu máu cục bộ (thuần chay) vs Giảm 20% - 25% (ăn chay)\",\"Tử vong do thực phẩm siêu chế biến\":\"COL: Nhóm tiêu thụ nhiều thực phẩm thực vật siêu chế biến: Tăng 20% - 30% nguy cơ tử vong do mọi nguyên nhân | Nhóm đối chứng: Không tăng\",\"Hệ vi sinh đường ruột\":\"HBAR: Tăng Faecalibacterium, Roseburia, Bifidobacterium: Cao | Tỷ lệ giảm TMAO: Rất tốt\"}"
-  },
-  {
     "id": "2026-icu-khang-sinh-cho-bn-nang",
     "title": "Kháng Sinh Cho Bệnh Nhân Nặng (ICU) — Tối Ưu Hóa PK/PD & Phác Đồ Lâm Sàng 2026",
     "titleEn": "Antimicrobial Optimization in Critically Ill Patients: PK/PD Principles and Regimens (2026)",
@@ -641,31 +516,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "bookmarked": false
   },
   {
-    "id": "crrt-ai-choray-2026",
-    "title": "CRRT 4.0: Trí tuệ nhân tạo, Dữ liệu lớn và Kết nối hệ thống trong tối ưu hóa điều trị AKI",
-    "drug": "Không áp dụng",
-    "sourceType": "vn-association",
-    "specialty": "icu",
-    "design": "review",
-    "intervention": "Ứng dụng các thuật toán Học máy (Machine Learning như Random Forest, XGBoost) và Trí tuệ nhân tạo (AI, LLM) trong quản lý, phân tầng nguy cơ và ra quyết định lâm sàng cho bệnh nhân lọc máu liên tục.",
-    "primaryEndpoint": "Hiệu năng dự đoán (thông qua AUROC, Accuracy, F1-score) của các mô hình học máy so với các thang điểm truyền thống (APACHE II, SOFA) trong tiên lượng tử vong và khả năng cai CRRT thành công.",
-    "keyResults": "Các mô hình Tree-based (RF, XGBoost) có AUROC vượt trội (lên đến 0.95) so với APACHE II/SOFA; Yếu tố dự báo tử vong mạnh nhất là pH; Yếu tố dự báo cai CRRT thành công mạnh nhất là lượng nước tiểu (Urine output); GPT-4 đạt độ chính xác 92% xử lý báo động máy.",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "Hội Hồi sức Cấp cứu và Chống độc Việt Nam (VNACCEMT) - Bệnh viện Chợ Rẫy",
-    "phase": "Conference Presentation",
-    "population": "Bệnh nhân người lớn mắc tổn thương thận cấp (AKI) có chỉ định điều trị lọc máu liên tục (CRRT) tại khoa hồi sức tích cực.",
-    "summary": "Bài báo cáo tại Hội nghị VNACCEMT lần thứ 26 trình bày bức tranh toàn cảnh về sự dịch chuyển sang y học cá thể hóa trong CRRT nhờ Trí tuệ nhân tạo (AI). Phân tích tổng hợp từ nhiều nghiên cứu cho thấy các thuật toán học máy (đặc biệt là Random Forest và XGBoost) vượt trội hơn hẳn các thang điểm kinh điển trong việc tiên đoán tử vong, hạ huyết áp và dự báo khả năng cai CRRT thành công.",
-    "detailedConclusion": "Ứng dụng AI/ML trong CRRT tập trung vào hai mảng chính: Lâm sàng (phân độ nguy cơ, thời điểm khởi trị, chỉnh liều, cai máy) và Quản lý chất lượng (tối ưu nguồn lực, phòng biến chứng). Về mặt lâm sàng, nghiên cứu của Kang (2020) và Wang (2024) chỉ ra mô hình Random Forest (RF) dự đoán tử vong chính xác hơn APACHE II và SOFA, với yếu tố có trọng số cao nhất là pH máu. Đối với việc dự đoán cai CRRT thành công (định nghĩa là không cần lọc lại sau 72h - 7 ngày), RF và XGBoost đạt AUROC lên tới 0.95, trong đó lượng nước tiểu (Urine output) và Cystatin C là những chỉ số quyết định. Hơn nữa, AI ngôn ngữ lớn (GPT-4) chứng minh độ chính xác 92% khi hỗ trợ giải quyết 50 tình huống báo động máy thực tế. Tuy nhiên, rào cản lớn nhất hiện nay là vấn đề tích hợp dữ liệu (EMR/EHR kết nối trực tiếp với máy CRRT qua Middleware/TrueVue) và nguyên lý cốt lõi 'Garbage In, Garbage Out' (chất lượng dữ liệu quyết định chất lượng mô hình), đòi hỏi phải kiểm soát chặt chẽ tính thiên lệch (bias) của thuật toán.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://docs.google.com/presentation/d/1ev6twPX5ga9b_7CgE9S-ngNyB2Lh8iJv/edit?slide=id.p2#slide=id.p2",
-    "asianData": true,
-    "icd10": [
-      "A41"
-    ],
-    "subgroups": "{\"Tiên lượng tử vong (Nghiên cứu Kang & Wang)\":\"Thuật toán Tree-based (RF, XGBoost) ưu việt hơn thang điểm truyền thống. Biến số có độ quan trọng cao nhất (Gain/Gini) là pH, Số lượng bạch cầu (WBC) và Creatinine.\",\"Tiên lượng cai CRRT thành công (Sheng & Liang)\":\"RF và XGBoost đạt AUROC ~0.95; các yếu tố lâm sàng quyết định hàng đầu gồm Lượng nước tiểu (Urine output), Non-renal SOFA và Cystatin C máu.\",\"Xử lý báo động máy CRRT (Sheikh 2024)\":\"So với đáp án chuẩn từ bác sĩ hồi sức, ChatGPT-3.5 đạt độ chính xác 84-86%, trong khi GPT-4 đạt 90-92%.\"}"
-  },
-  {
     "id": "2026-esc-udmi-nmct",
     "title": "Đồng Thuận Toàn Cầu Lần Thứ 5 Về Định Nghĩa Nhồi Máu Cơ Tim (Fifth UDMI 2026)",
     "titleEn": "Fifth Universal Definition of Myocardial Infarction (2026) — Joint ESC/ACC/AHA/WHF Task Force",
@@ -676,7 +526,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "ESC / ACC / AHA / WHF",
     "journal": "Eur Heart J",
-    "file": "2026-esc-udmi-nmct.html",
+    "file": "2026-esc-udmi-nmct.mdx",
     "conditionKey": "myocardial-infarction",
     "icd10": [
       "I21",
@@ -739,7 +589,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Hội Tim mạch Châu Âu (ESC)",
     "journal": "Eur Heart J",
-    "file": "2026-esc-cvd-ckd.html",
+    "file": "2026-esc-cvd-ckd.mdx",
     "conditionKey": "cardiorenal-syndrome",
     "icd10": [
       "I50",
@@ -828,30 +678,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "bookmarked": false
   },
   {
-    "id": "mews-a9-bachmai-2026",
-    "title": "Giá trị thang điểm MEWS trong phân tầng nguy cơ và tiên lượng tử vong tại khoa cấp cứu (The value of MEWS in A9 Emergency Center, Bach Mai Hospital)",
-    "drug": "Không áp dụng",
-    "sourceType": "vn-association",
-    "specialty": "icu",
-    "design": "cohort",
-    "intervention": "Sử dụng thang điểm cảnh báo sớm sửa đổi (MEWS) tại thời điểm nhập viện để phân tầng nguy cơ, đánh giá khả năng tiên lượng tử vong và so sánh với thang điểm APACHE II.",
-    "primaryEndpoint": "Kết cục lâm sàng bất lợi bao gồm: tỷ lệ nhập đơn vị hồi sức tích cực (ICU), suy chức năng cơ quan cấp tính và tử vong nội viện.",
-    "keyResults": "Nhóm MEWS ≥ 5 có tỷ lệ tử vong 43.6% và 41.0% nhập ICU; AUC tiên lượng tử vong của MEWS là 0.835 (cao hơn APACHE II 0.745); điểm cắt tối ưu là MEWS = 4 (Độ nhạy 67.8%, Độ đặc hiệu 88.8%).",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "Tạp chí Y học Việt Nam (Bệnh viện Bạch Mai)",
-    "phase": "Cohort Study",
-    "sampleSize": 963,
-    "population": "Bệnh nhân từ 16 tuổi trở lên, được xác nhận có tình trạng cấp cứu và tiếp nhận điều trị ban đầu tại Trung tâm Cấp cứu A9 - Bệnh viện Bạch Mai.",
-    "summary": "Nghiên cứu thuần tập tiến cứu trên 963 bệnh nhân tại Trung tâm Cấp cứu A9 khẳng định MEWS là công cụ phân tầng nguy cơ và tiên lượng tử vong rất hiệu quả. MEWS có khả năng dự báo tử vong vượt trội hơn APACHE II ở giai đoạn sàng lọc ban đầu nhờ tính đơn giản và nhanh chóng.",
-    "detailedConclusion": "Thang điểm MEWS phân loại bệnh nhân cấp cứu thành ba nhóm rõ rệt giúp tối ưu hóa nguồn lực: Nhóm an toàn (MEWS ≤ 2) chiếm 75.9% với tỷ lệ tử vong rất thấp (2.05%); Nhóm cảnh báo vàng (MEWS 3-4) có tỷ lệ tử vong 6.5% đòi hỏi tăng cường theo dõi; Nhóm báo động đỏ (MEWS ≥ 5) đối diện nguy cơ tử vong 43.6% và cần can thiệp khẩn cấp. Phân tích đường cong ROC cho thấy MEWS (AUC 0.835) nhạy hơn APACHE II (AUC 0.745) ngay tại cửa khoa cấp cứu. Nghiên cứu khuyến cáo sử dụng kết hợp MEWS cho sàng lọc tuyến đầu và APACHE II cho các đánh giá chuyên sâu trong ICU.",
-    "fdaStatus": "Không áp dụng",
-    "asianData": true,
-    "icd10": [
-      "A41"
-    ]
-  },
-  {
     "id": "2026-gina-asthma",
     "title": "GINA 2026: Chiến lược Toàn cầu về Quản lý và Phòng ngừa Hen suyễn (Asthma)",
     "titleEn": "Global Strategy for Asthma Management and Prevention (GINA 2026)",
@@ -862,7 +688,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Global Initiative for Asthma (GINA)",
     "journal": "Eur Respir J",
-    "file": "2026-gina-asthma.html",
+    "file": "2026-gina-asthma.mdx",
     "conditionKey": "asthma",
     "icd10": [
       "J45",
@@ -880,94 +706,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "fdaStatus": "N/A"
   },
   {
-    "id": "2026-who-dementia-risk-reduction",
-    "title": "Hướng dẫn giảm nguy cơ suy giảm nhận thức và sa sút trí tuệ: Hướng dẫn của Tổ chức Y tế Thế giới (WHO), xuất bản lần thứ hai",
-    "drug": "Vitamin B, Vitamin E, Omega-3, Đa vi chất, Liệu pháp hormone thay thế (MHT)",
-    "sourceType": "intl-guideline",
-    "specialty": "neuro",
-    "design": "guideline",
-    "intervention": "Can thiệp đa miền tích hợp bao gồm thúc đẩy lối sống lành mạnh (hoạt động thể chất, nhận thức, xã hội; cai thuốc lá, giảm rượu bia; chế độ ăn cân bằng) và quản lý các bệnh lý tim mạch - chuyển hóa, thính lực, ô nhiễm không khí xung quanh.",
-    "primaryEndpoint": "Giảm nguy cơ hoặc làm chậm tiến trình suy giảm nhận thức và/hoặc sa sút trí tuệ ở người trưởng thành.",
-    "keyResults": "Huấn luyện nhận thức: cải thiện nhận thức nhỏ (Hedges’ g 0.25) nhưng không giảm sa sút trí tuệ sau 5 năm (HR 1.00); Hoạt động xã hội: giảm nguy cơ sa sút trí tuệ (RR 0.81); Không khuyến cáo bổ sung Vitamin B, E, Omega-3 (Khuyến cáo mạnh); Chống chỉ định liệu pháp hormone (MHT) ở phụ nữ ≥65 tuổi vì không giảm nguy cơ sa sút trí tuệ (estrogen đơn trị: HR 1.49, estrogen + progestogen: HR 1.76); Ô nhiễm PM2.5 làm tăng nguy cơ sa sút trí tuệ (HR 1.40); Can thiệp đa miền cải thiện nhận thức nhỏ ở người bình thường (SMD 0.01-0.08) và người MCI (SMD 0.00-0.18)",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "WHO",
-    "phase": "Clinical Guideline",
-    "population": "Người trưởng thành không bị sa sút trí tuệ, bao gồm người có nhận thức bình thường và người suy giảm nhận thức nhẹ (MCI), có hoặc không kèm bệnh lý nền khác.",
-    "summary": "Hướng dẫn cập nhật lần thứ hai của WHO (2026) đưa ra hệ thống các khuyến cáo dựa trên y học chứng cứ nhằm giảm thiểu nguy cơ suy giảm nhận thức và sa sút trí tuệ thông qua kiểm soát 19 yếu tố nguy cơ có thể thay đổi. Tài liệu nhấn mạnh việc tiếp cận tích hợp xuyên suốt cuộc đời, phối hợp thay đổi hành vi cá nhân với quản lý y khoa và các chính sách môi trường xã hội.",
-    "detailedConclusion": "Tài liệu đưa ra khuyến cáo mạnh mẽ (Strong) đối với hoạt động thể chất ở người nhận thức bình thường, cai thuốc lá và phản đối bổ sung vitamin B, E, omega-3 hoặc đa vi chất nếu không có chẩn đoán thiếu hụt. Khuyến cáo có điều kiện (Conditional) được đưa ra cho việc huấn luyện nhận thức, tham gia hoạt động xã hội, duy trì chế độ ăn lành mạnh (như Địa Trung Hải), kiểm soát cân nặng và điều trị các bệnh nền (tăng huyết áp, đái tháo đường, thính lực). Liệu pháp hormone thay thế (MHT) không được khuyến cáo ở phụ nữ ≥65 tuổi để ngừa sa sút trí tuệ. Giảm phơi nhiễm ô nhiễm không khí (đặc biệt là hạt mịn PM2.5) và áp dụng các can thiệp đa miền cá thể hóa cũng được khuyến nghị có điều kiện.",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://iris.who.int/server/api/core/bitstreams/ea44b7f6-b09f-4e6f-b8c7-2e5b0fcc9a99/content",
-    "asianData": true,
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Thúc đẩy hành vi lành mạnh\":\"Khuyến cáo mạnh: Hoạt động thể chất (người nhận thức bình thường), Cai thuốc lá | Khuyến cáo có điều kiện: Hoạt động xã hội, Thúc đẩy hoạt động nhận thức, Chế độ ăn Địa Trung Hải\",\"Quản lý bệnh lý nội khoa\":\"COL: Nhóm béo phì, đái tháo đường, tăng huyết áp, giảm thính lực: Khuyến cáo điều trị (Conditional) | Nhóm trầm cảm, đột quỵ, chấn thương sọ não, thị lực: Chưa đủ bằng chứng khuyến cáo riêng biệt\",\"Can thiệp môi trường & Đa miền\":\"HBAR: Giảm ô nhiễm hạt mịn PM2.5: Khuyến nghị có điều kiện | Can thiệp đa miền cá thể hóa: Khuyến nghị có điều kiện (Chứng cứ trung bình-cao)\"}"
-  },
-  {
-    "id": "2026-surviving-sepsis-pediatric",
-    "title": "Hướng dẫn Quốc tế của Chiến dịch Sống sót sau Nhiễm trùng về Quản lý Nhiễm trùng huyết và Sốc nhiễm trùng ở Trẻ em — 2026",
-    "drug": "Epinephrine, Norepinephrine, Vasopressin, Dopamine, Angiotensin II, Methylene blue, Corticosteroids (Hydrocortisone), Vitamin C (Ascorbic acid), Thiamine (Vitamin B1), Vitamin D, Natri bicarbonate, Dịch tinh thể cân bằng, NaCl 0.9%",
-    "sourceType": "intl-guideline",
-    "specialty": "pedia",
-    "design": "guideline",
-    "intervention": "Thiết lập quy trình nhận diện và xử trí nhiễm trùng huyết/sốc nhiễm trùng ở trẻ em bao gồm kiểm soát nguồn nhiễm trùng, hồi sức dịch tích cực bằng dịch tinh thể cân bằng, sử dụng sớm thuốc vận mạch qua đường ngoại vi, tối ưu hóa hỗ trợ hô hấp với đích oxy bảo tồn SpO2 88-92% và áp dụng siêu lọc liên tục thể tích cao.",
-    "primaryEndpoint": "Giảm tỷ lệ tử vong, rút ngắn thời gian nằm viện, hạn chế tổn thương cơ quan tiến triển và cải thiện chất lượng cuộc sống lâu dài cho bệnh nhi bị nhiễm trùng huyết hoặc sốc nhiễm trùng.",
-    "keyResults": "Hồi sức dịch tinh thể cân bằng ưu tiên hơn NaCl 0.9% (Khuyến cáo có điều kiện); Chống chỉ định truyền dịch bolus nếu không có hồi sức tích cực và không tụt huyết áp (Khuyến cáo mạnh); Đích oxy bảo tồn (SpO2 88-92% sau hồi sức): giảm ngày nằm viện [RR 0.39 (95% CI 0.11-0.66)] và thời gian thở máy; Lọc máu thể tích cao (>35 mL/kg/h) ưu tiên hơn thể tích chuẩn (Khuyến cáo có điều kiện); Khuyên cáo chống lại việc sử dụng thường quy Vitamin C (Khuyến cáo có điều kiện) và Thiamine (Khuyến cáo có điều kiện).",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "SCCM & ESICM",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhi (bao gồm trẻ sơ sinh, trẻ nhỏ và trẻ vị thành niên) nghi ngờ hoặc xác định mắc nhiễm trùng huyết (sepsis) hoặc sốc nhiễm trùng (septic shock).",
-    "summary": "Hướng dẫn lâm sàng quốc tế cập nhật năm 2026 của Chiến dịch Sống sót sau Nhiễm trùng (SSC) đưa ra các khuyến nghị tối ưu hóa điều trị nhiễm trùng huyết và sốc nhiễm trùng ở trẻ em. Tài liệu tập trung cải thiện kết cục lâm sàng thông qua các phác đồ hồi sức tuần hoàn cá thể hóa, tối ưu hóa đích oxy bảo tồn để tránh độc tính hyperoxia, chuẩn hóa chỉ định lọc máu liên tục thể tích cao và hạn chế các can thiệp hỗ trợ chưa đủ bằng chứng.",
-    "detailedConclusion": "Đối với hồi sức ban đầu, khuyến cáo sử dụng dịch tinh thể cân bằng/đệm thay vì NaCl 0.9% (Khuyến cáo có điều kiện). Ở các cơ sở y tế không có hồi sức tích cực (ICU), khuyến cáo mạnh mẽ KHÔNG truyền dịch bolus cho trẻ có nhiễm trùng huyết nếu không có tụt huyết áp, mà chỉ truyền dịch duy trì. Thuốc vận mạch (epinephrine hoặc norepinephrine) nên được bắt đầu sớm qua đường truyền tĩnh mạch ngoại vi hoặc đường trong xương nếu chưa thiết lập được đường truyền trung tâm để tránh trì hoãn hồi sức (Khuyến cáo có điều kiện). Sau khi hồi sức ban đầu ở trẻ thở máy, khuyến nghị duy trì đích oxy bảo tồn SpO2 từ 88-92% thay vì đích tự do >94% giúp rút ngắn ngày nằm viện (RR 0.39, 95% CI 0.11-0.66) và thời gian thở máy (Khuyến cáo có điều kiện). Khuyên cáo chống lại việc sử dụng thường quy hydrocortison ngoại trừ khi sốc không đáp ứng với dịch và thuốc vận mạch hoặc có suy thượng thận kèm theo. Đồng thời, không khuyến nghị sử dụng thường quy Vitamin C, thiamine, vitamin D (trừ khi có thiếu hụt lâm sàng rõ rệt) và bicarbonat natri cho toan chuyển hóa thường quy. Đối với trẻ suy thận cấp cần lọc máu liên tục, nên sử dụng phương pháp lọc máu thể tích cao (>35 mL/kg/giờ) để cải thiện hiệu quả điều trị (Khuyến cáo có điều kiện).",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://link.springer.com/article/10.1007/s00134-026-08360-2",
-    "asianData": true,
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Hồi sức dịch tuần hoàn và vận mạch ban đầu\":\"Không truyền dịch bolus nếu không có ICU và không có tụt HA | Ưu tiên dịch tinh thể cân bằng | Epinephrine hoặc Norepinephrine có thể bắt đầu qua tĩnh mạch ngoại vi/đường trong xương\",\"Hỗ trợ hô hấp & Đích oxy hóa bảo tồn\":\"COL: Đích SpO2 bảo tồn (88-92%): Giảm ngày nằm viện [RR 0.39 (95% CI 0.11-0.66)] và rút ngắn thời gian thở máy | Đích SpO2 tự do (>94%): Nguy cơ tổn thương phổi và hệ mạch do tăng oxy máu\",\"Liệu pháp thay thế thận và bổ trợ\":\"HBAR: Siêu lọc liên tục thể tích cao (>35 mL/kg/h): Khuyến cáo có điều kiện | Sử dụng Vitamin C & Thiamine bổ trợ: Khuyên cáo chống lại việc sử dụng thường quy (Khuyến cáo có điều kiện)\"}"
-  },
-  {
-    "id": "2026-jsge-jsh-masld",
-    "title": "Hướng dẫn thực hành lâm sàng dựa trên bằng chứng về Bệnh gan thoái hóa mỡ liên quan đến rối loạn chức năng chuyển hóa (MASLD) năm 2026",
-    "drug": "Liraglutide, Semaglutide, Tirzepatide, Pioglitazone, Vitamin E, Pemafibrate, Statins, Resmetirom",
-    "sourceType": "intl-guideline",
-    "specialty": "gi",
-    "design": "guideline",
-    "intervention": "Ứng dụng khung chẩn đoán đồng thuận quốc tế mới năm 2023 cho bệnh gan thoái hóa mỡ (SLD/MASLD); phân tầng nguy cơ xơ hóa gan bằng chỉ số FIB-4 và số lượng tiểu cầu làm sàng lọc đầu tay; áp dụng các biện pháp can thiệp lối sống bền vững (giảm cân ≥5-10%, tập thể dục ≥150 phút/tuần) và cá thể hóa chỉ định điều trị nội khoa hoặc phẫu thuật giảm béo.",
-    "primaryEndpoint": "Sàng lọc sớm xơ hóa gan tiến triển, thiết lập mô hình quản lý phối hợp đa chuyên khoa giữa bác sĩ chăm sóc ban đầu và bác sĩ chuyên khoa tiêu hóa/gan mật nhằm giảm thiểu các biến cố tim mạch, suy gan và ung thư biểu mô tế bào gan.",
-    "keyResults": "COL: Hiện mắc toàn cầu: 30.0% | Hiện mắc tại Nhật Bản: 25.5% | Nam giới Nhật Bản: 37.4% | Nữ giới Nhật Bản: 18.1%",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "The Japanese Society of Gastroenterology (JSGE) / Japan Society of Hepatology (JSH)",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân mắc hoặc nghi ngờ mắc bệnh gan thoái hóa mỡ (SLD), bao gồm các phân nhóm MASLD, MetALD, và bệnh gan do rượu (ALD) ở trẻ em và người trưởng thành.",
-    "summary": "Hướng dẫn lâm sàng đồng thuận năm 2026 của JSGE và JSH cập nhật toàn diện việc quản lý bệnh gan thoái hóa mỡ liên quan đến rối loạn chức năng chuyển hóa (MASLD) thay thế cho thuật ngữ NAFLD/NASH cũ. Hướng dẫn thiết lập lưu đồ sàng lọc xơ hóa gan đa tầng sử dụng chỉ số FIB-4 và số lượng tiểu cầu làm bộ lọc ban đầu, đồng thời cá thể hóa chỉ định chuyển tuyến chuyên khoa gan mật và ứng dụng các liệu pháp nội khoa mới.",
-    "detailedConclusion": "Chẩn đoán MASLD dựa trên sự hiện diện của mỡ gan ≥ 5% (qua chẩn đoán hình ảnh hoặc sinh thiết) kết hợp với ít nhất một yếu tố nguy cơ tim mạch - chuyển hóa (CMRF) và loại trừ các nguyên nhân thứ phát khác. Quy trình sàng lọc xơ hóa gan đầu tay bắt buộc sử dụng chỉ số FIB-4; chuyển tuyến chuyên khoa khi FIB-4 > 2.67 hoặc khi FIB-4 từ 1.3 - 2.67 kèm theo kết quả NILDA vượt ngưỡng cắt (như VCTE ≥ 8 kPa, MRE ≥ 3.14 kPa, hoặc ELF ≥ 9.2 - 9.8). Can thiệp lối sống là nền tảng bắt buộc với đích giảm cân ≥ 5% để cải thiện mỡ gan và ≥ 10% để đảo ngược xơ hóa, phối hợp tập thể dục ≥ 150 phút/tuần. Đối với bệnh nhân MASH nguy cơ cao, hướng dẫn đề xuất vai trò của các thuốc đồng vận thụ thể GLP-1 (như Semaglutide đạt tỷ lệ thoái lui MASH 63% và cải thiện xơ hóa 37% trong thử nghiệm ESSENCE) và đồng vận kép GIP/GLP-1 (Tirzepatide đạt tỷ lệ thoái lui MASH 62% và cải thiện xơ hóa 51% trong thử nghiệm SYNERGY-MASH), mặc dù tính đến năm 2025 các thuốc này chưa được bảo hiểm chi trả cho chỉ định MASLD tại Nhật Bản.",
-    "sourceUrl": "https://link.springer.com/article/10.1007/s00535-026-02408-2",
-    "asianData": true,
-    "subgroups": "{\"Yếu tố nguy cơ tim mạch - chuyển hóa (CMRF) ở người lớn\":\"BMI châu Á ≥ 23 kg/m2, Vòng eo Nam > 94cm / Nữ > 80cm, Đường huyết đói ≥ 100 mg/dL, HA ≥ 130/85 mmHg, Triglycerides ≥ 150 mg/dL, HDL-C Nam ≤ 40 / Nữ ≤ 50 mg/dL.\",\"Ngưỡng đánh giá xơ hóa gan ≥ F2 bằng kỹ thuật không xâm lấn (NILDA)\":\"HBAR: Đo độ cứng gan bằng VCTE (kPa): 8.0% | Đo độ cứng gan bằng MRE (kPa): 3.1% | Đo độ cứng gan bằng SWE (kPa): 8.0% | Chỉ số ELF score: 9.2%\",\"Tỷ lệ thoái lui MASH trong các thử nghiệm lâm sàng\":\"COL: Semaglutide (ESSENCE): 63.0% | Tirzepatide (SYNERGY-MASH): 62.0% | Liraglutide (LEAN): 39.0%\",\"Tỷ lệ cải thiện xơ hóa gan trong các thử nghiệm lâm sàng\":\"COL: Tirzepatide 15mg: 51.0% | Semaglutide: 37.0%\"}"
-  },
-  {
-    "id": "2026-esscd-coeliac-disease-management",
-    "title": "Hướng dẫn thực hành lâm sàng ESsCD 2025: Cập nhật quản lý bệnh Coeliac ở người trưởng thành và các thể bệnh phức tạp",
-    "drug": "Budesonide, Tofacitinib, Prednisolone, Cladribine, Azathioprine, Prednisone, Thioguanine, Infliximab, Calcium, Vitamin D, Pancreatic enzyme replacement therapy (PERT)",
-    "sourceType": "intl-guideline",
-    "specialty": "gi",
-    "design": "guideline",
-    "intervention": "Áp dụng chế độ ăn không gluten (GFD) nghiêm ngặt với ngưỡng tiêu thụ tối đa 10 mg/ngày, theo dõi có cấu trúc đa chuyên khoa (phối hợp bác sĩ tiêu hóa và chuyên gia dinh dưỡng), đánh giá loãng xương (DXA) và tiêm phòng phế cầu; thiết lập lưu đồ đánh giá triệu chứng dai dẳng để phân biệt triệu chứng chức năng, không dung nạp dinh dưỡng đồng mắc, bệnh Coeliac đáp ứng chậm hoặc bệnh Coeliac kháng trị (RCD-I và RCD-II); can thiệp dược lý cá thể hóa bằng budesonide dạng nang mở hoặc chất ức chế JAK (Tofacitinib) cho thể kháng trị.",
-    "primaryEndpoint": "Chuẩn hóa việc quản lý lâu dài bệnh Coeliac, hướng dẫn xây dựng chế độ ăn GFD cân bằng, thiết lập quy trình theo dõi định kỳ, xử trí triệu chứng dai dẳng và kiểm soát các biến chứng phức tạp như bệnh Coeliac kháng trị (RCD) và nguy cơ chuyển dạng ác tính (u lympho tế bào T liên kết bệnh ruột - EATL).",
-    "keyResults": "HBAR: Ngưỡng dung nạp gluten an toàn tối đa (mg/ngày): 10.0% | Độ nhạy của chuyên gia dinh dưỡng phát hiện teo nhung mao: 64.0% | Độ đặc hiệu của chuyên gia dinh dưỡng phát hiện teo nhung mao: 80.0% | Tỷ lệ tiến triển sang EATL ở bệnh nhân RCD-II: 50.0%",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "European Society for the Study of Coeliac Disease (ESsCD)",
-    "population": "Người trưởng thành mắc bệnh Coeliac (CeD) đã chẩn đoán xác định, bệnh nhân có triệu chứng kéo dài hoặc nghi ngờ bệnh Coeliac kháng trị (RCD) tiến triển.",
-    "summary": "Hướng dẫn thực hành lâm sàng cập nhật năm 2025/2026 của Hội Nghiên cứu Bệnh Coeliac Châu Âu (ESsCD) cung cấp một khung khuyến nghị toàn diện, dựa trên bằng chứng về quản lý bệnh Coeliac ở người trưởng thành và các thể phức tạp. Tài liệu nhấn mạnh vai trò cốt lõi của chế độ ăn không gluten (GFD) cân bằng (ngưỡng an toàn < 10 mg/ngày) dưới sự giám sát của chuyên gia dinh dưỡng chuyên biệt, rà soát sàng lọc loãng xương, tiêm phòng phế cầu và chuẩn hóa phác đồ chẩn đoán, điều trị bệnh Coeliac kháng trị (RCD) nhằm tối ưu hóa chất lượng cuộc sống và ngăn ngừa ung thư lympho liên kết bệnh ruột (EATL).",
-    "detailedConclusion": "Khuyến cáo duy trì chế độ ăn GFD nghiêm ngặt với lượng gluten nạp vào dưới 10 mg/ngày. Theo dõi định kỳ nên phối hợp chặt chẽ giữa bác sĩ tiêu hóa và chuyên gia dinh dưỡng chuyên biệt để đánh giá tuân thủ và phát hiện thiếu hụt vi chất (sử dụng xét nghiệm peptid sinh miễn dịch gluten - GIP trong phân hoặc nước tiểu để đo lường khách quan lượng gluten nạp vào gần đây). Sàng lọc loãng xương bằng DXA được khuyến nghị cho các nhóm đối tượng nguy cơ cao, đồng thời khuyến cáo bổ sung 1000 UI Vitamin D và 1000 mg Canxi hàng ngày. Tiêm phòng phế cầu được chỉ định cho bệnh nhân Coeliac có teo lách chức năng, bệnh tự miễn đồng mắc hoặc RCD-II, và người trên 65 tuổi. Đối với triệu chứng dai dẳng sau 12 tháng dùng GFD, cần rà soát kỹ chẩn đoán ban đầu, loại trừ nhiễm gluten ẩn hoặc các bệnh tiêu hóa đồng mắc như loạn chức năng ruột-não, thiểu năng tụy ngoại tiết (chỉ định liệu pháp thay thế men tụy - PERT). Trường hợp xác định RCD, cần phân tuýp rõ ràng bằng hóa mô miễn dịch học và dòng chảy tế bào (flow cytometry) biểu hiện thụ thể lymphocyte nội biểu mô (IEL): RCD-I (IEL bình thường) có thể điều trị bằng budesonide dạng nang mở (9 mg/ngày) hoặc thuốc ức chế JAK (Tofacitinib 10 mg x 2 lần/ngày); RCD-II (IEL dị dạng ≥ 20%) bắt buộc phải được quản lý tại trung tâm chuyên khoa sâu do nguy cơ tiến triển sang EATL đạt tới 50% và tiên lượng sống còn 5 năm rất kém."
-  },
-  {
     "id": "2026-icm-namsap-ards",
     "title": "ICM 2026: Thông khí Nằm sấp và Chiến lược Bảo vệ Phổi trong ARDS Nặng",
     "titleEn": "Prone Positioning and Lung-Protective Ventilation in Moderate-to-Severe ARDS",
@@ -978,7 +716,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "European Society of Intensive Care Medicine (ESICM)",
     "journal": "Intensive Care Med",
-    "file": "2026-icm-namsap-ards.html",
+    "file": "2026-icm-namsap-ards.mdx",
     "conditionKey": "pneumonia",
     "icd10": [
       "J80",
@@ -1004,7 +742,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Hiệp hội Bệnh Truyền nhiễm Hoa Kỳ (IDSA)",
     "journal": "Clin Infect Dis",
-    "file": "2026-idsa-amr.html",
+    "file": "2026-idsa-amr.mdx",
     "conditionKey": "icu",
     "icd10": [
       "A41",
@@ -1022,53 +760,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://www.idsociety.org/globalassets/idsa/practice-guidelines/amr-guidance/5.0/amr-guidance-update.pdf"
   },
   {
-    "id": "1783608849340-ft8geb9jd",
-    "title": "IDSA/ESCMID 2026 SAB Guidelines",
-    "drug": "Kháng sinh điều trị S. aureus",
-    "sourceType": "intl-guideline",
-    "specialty": "infect",
-    "design": "guideline",
-    "intervention": "Khung phân tầng nguy cơ, chẩn đoán (cấy máu, TTE, TEE, PET/CT) và cá thể hóa thời gian điều trị",
-    "primaryEndpoint": "Đồng thuận các khuyến cáo lâm sàng về phân tầng nguy cơ, chẩn đoán và quản lý thời gian điều trị kháng sinh",
-    "keyResults": "Cấy máu theo dõi mỗi 24-48h; TTE thường quy ở người lớn; điều trị chuẩn 14 ngày cho bệnh nhân không có bằng chứng nhiễm trùng sâu",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "IDSA/ESCMID",
-    "phase": "Guidelines",
-    "population": "Bệnh nhân người lớn và trẻ em mắc nhiễm khuẩn huyết do Staphylococcus aureus (SAB)",
-    "summary": "Khuyến cáo IDSA/ESCMID 2026 thay thế cách phân loại SAB 'phức tạp/không phức tạp' bằng một khung phân tầng nguy cơ mới, giúp định hướng các bước chẩn đoán lâm sàng và tối ưu hóa thời gian sử dụng kháng sinh.",
-    "detailedConclusion": "Mọi bệnh nhân người lớn mắc SAB cần được cấy máu theo dõi từ mốc 48 giờ và siêu âm tim TTE thường quy. Bệnh nhân không có bằng chứng ổ nhiễm trùng sâu hoặc di căn được khuyến cáo điều trị kháng sinh 14 ngày (kể từ ngày cấy máu âm tính), áp dụng cho cả nhóm nguy cơ thấp và nhóm nguy cơ tăng cao. Các phương pháp chuyên sâu như TEE hoặc chẩn đoán hình ảnh toàn thân (ví dụ: [18F]FDG-PET/CT) chỉ được cân nhắc cho nhóm có nguy cơ tăng cao hoặc chưa rõ ổ nhiễm trùng. Riêng đối với trẻ em, tất cả đều phải được đánh giá ổ nhiễm trùng sâu cẩn thận do hiện tại chưa đủ dữ liệu để xác định nhóm trẻ em thuộc 'nguy cơ thấp'.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://academic.oup.com/cid/advance-article/doi/10.1093/cid/ciaf460/8384446",
-    "icd10": [
-      "A41"
-    ]
-  },
-  {
-    "id": "1783615193671-10j8695hy",
-    "title": "JAMA 2026: Alcohol-Related Liver Disease Review",
-    "drug": "Cai rượu và các thuốc hỗ trợ (Baclofen, Naltrexone)",
-    "sourceType": "intl-study",
-    "specialty": "gi",
-    "design": "review",
-    "intervention": "Tầm soát bằng xét nghiệm không xâm lấn (FIB-4, VCTE, ELF) và can thiệp ngừng sử dụng rượu",
-    "primaryEndpoint": "Cập nhật dữ liệu về dịch tễ học, sinh lý bệnh, chẩn đoán, điều trị và tiên lượng bệnh gan liên quan đến rượu (ALD)",
-    "keyResults": "Kiêng rượu giúp giảm tỷ lệ tử vong liên quan đến gan ở bệnh nhân xơ gan do rượu (HR 0.43; 95% CI 0.26-0.70)",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "JAMA",
-    "phase": "Review",
-    "population": "Người bệnh uống rượu nhiều mạn tính hoặc mắc bệnh gan liên quan đến rượu (ALD)",
-    "summary": "Bài tổng quan hệ thống hóa cách tiếp cận chẩn đoán sớm bệnh gan liên quan đến rượu (ALD) bằng các công cụ không xâm lấn và nhấn mạnh mục tiêu điều trị chính yếu là cai rượu hoàn toàn.",
-    "detailedConclusion": "ALD là nguyên nhân hàng đầu gây tử vong do bệnh gan ở Mỹ và Châu Âu. Phần lớn bệnh nhân không có triệu chứng ở giai đoạn đầu, do đó những người uống rượu mạn tính (>20g/ngày với nữ, >30g/ngày với nam) cần được tầm soát bằng điểm FIB-4, kết hợp với các đánh giá chuyên sâu hơn như siêu âm đàn hồi gan (VCTE) hoặc ELF. Việc kiêng rượu hoàn toàn có thể làm đảo ngược tình trạng bệnh ở giai đoạn sớm và giảm thiểu tỷ lệ tử vong do gan. Bệnh nhân có viêm gan do rượu nặng hoặc xơ gan mất bù nên được xem xét đánh giá ghép gan.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://drive.google.com/file/d/1V5DncIbtZpYhtfRfiF6phXIF2RCL14iY/view?usp=sharing",
-    "icd10": [
-      "K70",
-      "K70.3"
-    ]
-  },
-  {
     "id": "2026-jcem-bao-giap",
     "title": "JCEM 2026: Hướng dẫn Chẩn đoán và Xử trí Cấp cứu Bão giáp (Thyroid Storm)",
     "titleEn": "Emergency Management and Contemporary Diagnosis of Thyroid Storm",
@@ -1079,7 +770,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Endocrine Society / ATA",
     "journal": "JCEM",
-    "file": "2026-jcem-bao-giap.html",
+    "file": "2026-jcem-bao-giap.mdx",
     "conditionKey": "thyroid",
     "icd10": [
       "E05.5",
@@ -1134,7 +825,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Society of Cardiovascular Anesthesiologists",
     "journal": "Intensive Care Med",
-    "file": "2026-jcva-soc-tim.html",
+    "file": "2026-jcva-soc-tim.mdx",
     "conditionKey": "heart-failure",
     "icd10": [
       "R57.0",
@@ -1162,7 +853,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Japanese Respiratory Society (JRS)",
     "journal": "Eur Respir J",
-    "file": "2026-jrs-copd.html",
+    "file": "2026-jrs-copd.mdx",
     "conditionKey": "copd",
     "icd10": [
       "J44"
@@ -1211,107 +902,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true
   },
   {
-    "id": "bb-ccb-interaction-2026",
-    "title": "Khuyến cáo Cảnh báo Phối hợp Chẹn Beta & Chẹn Canxi Non-Dihydropyridine",
-    "drug": "Metoprolol, Verapamil",
-    "sourceType": "intl-guideline",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Đánh giá nguy cơ biến cố ức chế nút nhĩ thất khi phối hợp Beta-blocker (Metoprolol) và Non-DHP CCB (Verapamil)",
-    "primaryEndpoint": "Tỷ lệ chậm nhịp tim nặng, block AV độ II/III và nhập viện do suy tim cấp",
-    "keyResults": "HR 2.45 (95% CI 1.80-3.34, p<0.001) — Nguy cơ block AV độ III tăng gấp 2.45 lần khi phối hợp Metoprolol + Verapamil",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "ACC / AHA Guidelines",
-    "phase": "Clinical Alert",
-    "sampleSize": 14200,
-    "population": "Bệnh nhân Tăng huyết áp, Đau thắt ngực và Rung nhĩ kiểm soát tần số",
-    "summary": "Cảnh báo chống chỉ định phối hợp Metoprolol với Verapamil do nguy cơ hiệp đồng ức chế nút xoang và nút nhĩ thất, gây chậm nhịp tim nặng và suy tim mất bù.",
-    "detailedConclusion": "Cả Metoprolol và Verapamil đều có tác dụng inotropic âm và dromotropic âm mạnh. Tránh dùng phối hợp đường uống hoặc tiêm tĩnh mạch. Nếu cần chẹn beta, khuyến cáo chuyển sang nhóm Dihydropyridine CCB (Amlodipine).",
-    "fdaStatus": "ACC/AHA Class III Warning (Harm)",
-    "sourceUrl": "https://www.acc.org/guidelines",
-    "asianData": true,
-    "icd10": [
-      "I50",
-      "I50.9",
-      "I10"
-    ],
-    "subgroups": "{\"Bệnh nhân EF < 40%\":\"HR 3.12 (95% CI 2.10-4.63, p<0.001)\",\"Tuổi >= 75\":\"HR 2.85 (95% CI 1.95-4.16, p<0.001)\"}"
-  },
-  {
-    "id": "2026-nutrition-critically-ill-patel",
-    "title": "Liệu pháp dinh dưỡng ở người lớn bị bệnh nguy kịch",
-    "drug": "Enteral nutrition (Dinh dưỡng qua đường tiêu hóa), Parenteral nutrition (Dinh dưỡng tĩnh mạch), Thiamine, Insulin",
-    "sourceType": "intl-study",
-    "specialty": "nutri",
-    "design": "review",
-    "intervention": "Thiết lập lộ trình, thời điểm và liều lượng năng lượng/protein cho bệnh nhân ICU trong giai đoạn cấp tính, so sánh giữa các chiến lược nuôi ăn hạn chế (trophic/hypocaloric) và chiến lược nuôi ăn liều đầy đủ (full-dose).",
-    "primaryEndpoint": "Đánh giá tác động lâm sàng của lộ trình nuôi ăn đối với tỷ lệ tử vong, khả năng phục hồi chức năng và các tai biến tiêu hóa - chuyển hóa ở bệnh nhân nặng.",
-    "keyResults": "Tỷ lệ sống sót sau 60 ngày (REFEEDING): Nhóm hạn chế calo tăng dần 91% vs Nhóm calo chuẩn 78% (p=0.002); Tỷ lệ thiếu máu ruột (NUTRIREA-2): EN sớm 2% vs PN sớm <1% (p=0.007); Mất cơ xương: Giảm 2%/ngày trong tuần đầu ICU; Đích kiểm soát glucose: <180 mg/dL (10 mmol/L)",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "Medical College of Wisconsin & University of Louisville School of Medicine",
-    "phase": "Literature Review",
-    "population": "Bệnh nhân trưởng thành bị bệnh nguy kịch (nhiễm trùng huyết, chấn thương, ARDS, sốc tuần hoàn) điều trị tại ICU không thể tự ăn bằng đường miệng.",
-    "summary": "Bài tổng quan hệ thống hóa các bằng chứng lâm sàng hiện đại về liệu pháp dinh dưỡng ở bệnh nhân ICU giai đoạn cấp tính. Nghiên cứu thách thức các thực hành tăng dưỡng (hyperalimentation) truyền thống và chứng minh tính ưu việt của chiến lược tiếp cận dinh dưỡng hạn chế hoặc nuôi ăn tối thiểu (trophic feeding) trong việc giảm thiểu tai biến tiêu hóa và rối loạn chuyển hóa.",
-    "detailedConclusion": "Dinh dưỡng tĩnh mạch (PN) ngắn hạn sớm là giải pháp thay thế an toàn khi dinh dưỡng đường tiêu hóa (EN) có chống chỉ định. Trong giai đoạn cấp tính sớm (24-36 giờ đầu), nên bắt đầu EN liều hạn chế (trophic feed 10-20 ml/h hoặc khoảng 25% năng lượng đích) để bảo vệ niêm mạc ruột và tránh quá tải chuyển hóa, đặc biệt ở bệnh nhân sốc tuần hoàn hoặc có nguy cơ hội chứng nuôi ăn lại (refeeding syndrome). Tránh sử dụng protein liều cao (>2.0 g/kg/ngày) vì không cải thiện tiên lượng và có thể gây hại cho bệnh nhân tổn thương thận cấp (AKI). Việc theo dõi thể tích tồn dư dạ dày (GRV) định kỳ không làm giảm nguy cơ viêm phổi hít nhưng lại gây gián đoạn nuôi dưỡng và được khuyến cáo mạnh mẽ là nên loại bỏ khỏi quy trình theo dõi thường quy.",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://drive.google.com/file/d/1LfrTEqe2__It5cKg13Vb9bYj0CFyPtEw/view?fbclid=IwY2xjawS9KSVleHRuA2FlbQIxMABicmlkETFIQ3dhTVF4MFFJVzJTWVBqc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhYWPqj4QZmBvCTH_MPZxHeOgcMwOKzcc1fB8U-J-m77or-ZXcl0SGKH0IL5_aem_lDpzizMRsrfQM5CfK28L9w",
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Thử nghiệm REFEEDING\":\"Sự sống còn sau 60 ngày: Hạn chế calo tăng dần: 91% | Calo chuẩn: 78% (p=0.002)\",\"Biến chứng NUTRIREA-2\":\"COL: Tỷ lệ thiếu máu cơ tim/ruột ở nhóm EN sớm: 2.0% | Nhóm PN sớm: <1.0% (p=0.007)\",\"Phân phối năng lượng theo giai đoạn\":\"HBAR: Cấp tính sớm (Ngày 1-2): Nuôi ăn hạn chế (~25% đích) | Cấp tính muộn (Ngày 3-7): Tăng dần (~50-80% đích) | Giai đoạn muộn (>Ngày 7): Nuôi ăn đầy đủ (80-100% đích)\"}"
-  },
-  {
-    "id": "2026-logical-trial-cardiac-arrest",
-    "title": "LOGICAL — Thử Nghiệm Lâm Sàng So Sánh Mục Tiêu Oxy Hạn Chế và Tự Do ở Bệnh Nhân Thở Máy Sau Ngừng Tuần Hoàn",
-    "drug": "Oxy",
-    "sourceType": "intl-study",
-    "specialty": "icu",
-    "design": "rct",
-    "intervention": "So sánh mục tiêu oxy hóa máu hạn chế (SpO2 mục tiêu 95% với FiO2 tối thiểu cho phép là 0.21) so với mục tiêu oxy hóa tự do cao hơn (FiO2 tối thiểu cho phép là 0.3) trong vòng 48 giờ ở bệnh nhân hôn mê thở máy sau ngừng tuần hoàn.",
-    "primaryEndpoint": "Tỷ lệ bệnh nhân đạt kết cục chức năng thần kinh có lợi, tử vong do mọi nguyên nhân và số ngày nằm viện tại thời điểm 180 ngày.",
-    "keyResults": "Oxy hạn chế 95% vs Oxy tự do (Tương đương kết cục chức năng thần kinh có lợi và tử vong tại 180 ngày)",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "LOGICAL Investigators & ANZICS Clinical Trials Group",
-    "phase": "Phase III RCT",
-    "sampleSize": 1840,
-    "population": "Bệnh nhân trưởng thành hôn mê được thở máy xâm nhập sau khi hồi phục tuần hoàn tự nhiên (ROSC) sau ngừng tim ngoại viện hoặc nội viện.",
-    "summary": "Thử nghiệm lâm sàng ngẫu nhiên phân nhóm lớn (LOGICAL) trên 1840 bệnh nhân sau ngừng tuần hoàn cho thấy chiến lược duy trì oxy hóa máu hạn chế (SpO2 mục tiêu 95%, FiO2 tối thiểu 0.21) mang lại tỷ lệ kết cục thần kinh tốt, tỷ lệ tử vong và số ngày nằm viện tương đương so với chiến lược oxy hóa tự do hơn (FiO2 tối thiểu 0.3). Kết quả này ủng hộ thực hành lâm sàng an toàn nhắm tới đích SpO2 ở giới hạn dưới của khoảng 95-98% nhằm tránh độc tính của tình trạng tăng oxy máu.",
-    "detailedConclusion": "Chiến lược kiểm soát oxy hóa hạn chế duy trì đích SpO2 95% (FiO2 tối thiểu 0.21) không làm tăng các biến cố bất lợi hoặc suy giảm chức năng thần kinh so với nhóm oxy hóa tự do (FiO2 tối thiểu 0.3). Kết quả tương đương về tỷ lệ sống sót và phục hồi chức năng thần kinh tại thời điểm 180 ngày sau ngừng tim. Khuyến cáo thực hành lâm sàng nên nhắm tới đích SpO2 từ 95% đến 98% (ưu tiên cận dưới 95%) để giảm thiểu nguy cơ tổn thương tái tưới máu do tăng oxy máu ở bệnh nhân tổn thương não sau ngừng tuần hoàn.",
-    "fdaStatus": "N/A",
-    "icd10": [
-      "A41"
-    ],
-    "subgroups": "{\"Mục tiêu SpO2 hạn chế\":\"SpO2 mục tiêu 95% (FiO2 tối thiểu 0.21)\",\"Mục tiêu SpO2 tự do\":\"SpO2 mục tiêu cao hơn (FiO2 tối thiểu 0.3)\",\"Biến cố bất lợi giữa hai nhóm\":\"Tương đương và không có sự khác biệt có ý nghĩa thống kê\"}"
-  },
-  {
-    "id": "1784102700625-ai6idq5dz",
-    "title": "MDPI 2026: Rare NFGNB Pneumonia Review",
-    "author": "Alessandro Capone et al.",
-    "drug": "Kháng sinh (TMP-SMX, Fluoroquinolones, Carbapenems, Cefiderocol, CZA)",
-    "sourceType": "intl-study",
-    "specialty": "infect",
-    "design": "review",
-    "intervention": "Chẩn đoán định danh vi khuẩn bằng MALDI-TOF MS/16S rRNA và cá thể hóa điều trị kháng sinh dựa trên giá trị MIC",
-    "primaryEndpoint": "Tổng quan về dịch tễ học, yếu tố nguy cơ và chiến lược điều trị kháng sinh đối với viêm phổi do vi khuẩn Gram âm không lên men (NFGNB) hiếm gặp",
-    "keyResults": "Điều trị theo kinh nghiệm thường thất bại do đề kháng nội tại; phác đồ bắt buộc dựa vào MIC và phối hợp kháng sinh trong trường hợp nhiễm trùng nặng",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "MDPI",
-    "phase": "Review",
-    "population": "Bệnh nhân viêm phổi do vi khuẩn Gram âm không lên men (NFGNB) hiếm gặp, thường có suy giảm miễn dịch, xơ nang (CF) hoặc điều trị tại ICU",
-    "summary": "Bài tổng quan hệ thống hóa các đặc điểm dịch tễ học, yếu tố nguy cơ và cung cấp thuật toán tiếp cận chẩn đoán, tối ưu hóa điều trị kháng sinh dựa trên MIC cho bệnh viêm phổi do các vi khuẩn NFGNB hiếm gặp.",
-    "detailedConclusion": "Các chủng NFGNB hiếm gặp (như Achromobacter, Burkholderia, Sphingomonas, Aeromonas) ngày càng phổ biến trong các ca viêm phổi bệnh viện và viêm phổi liên quan đến thở máy, đặc biệt ở bệnh nhân xơ nang (CF) hoặc suy giảm miễn dịch. Do các vi khuẩn này có tỷ lệ kháng thuốc tự nhiên và đa kháng (MDR) cao, phương pháp điều trị theo kinh nghiệm thường không đủ hiệu quả. Hướng dẫn nhấn mạnh việc sử dụng MALDI-TOF MS để nhận diện vi khuẩn sớm và điều chỉnh phác đồ kháng sinh theo giá trị MIC. Mặc dù TMP-SMX, Fluoroquinolones và Carbapenems thường được sử dụng, lựa chọn thuốc thay đổi mạnh tùy theo loài. Trong các trường hợp nhiễm trùng nặng, cần xem xét liệu pháp phối hợp hoặc sử dụng các thuốc mới như Cefiderocol hay Ceftazidime-avibactam (CZA).",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13203845/?fbclid=IwY2xjawTEHU5leHRuA2FlbQIxMABicmlkETFQV2dUWGRSZDV5OEE1S3F5c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvKc1VMjuOGKfAdbHl3QjO8_z4PRsiO2PwW7JTNdTG4GVq9CU5fCSSU4thh4_aem_HaykP2KlgRizVr1MPvaE0Q",
-    "asianData": true,
-    "icd10": [
-      "A41"
-    ]
-  },
-  {
     "id": "2026-nature-reviews-mrsa",
     "title": "Nature Reviews 2026: Tụ Cầu Vàng Kháng Methicillin (MRSA) — Dịch Tễ, Cơ Chế, Động Học Cư Trú & Phác Đồ",
     "titleEn": "Methicillin-resistant Staphylococcus aureus (Nature Reviews Disease Primers 2026)",
@@ -1322,7 +912,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "Nature Reviews Disease Primers",
     "journal": "Nat Med",
-    "file": "2026-nature-reviews-mrsa.html",
+    "file": "2026-nature-reviews-mrsa.mdx",
     "conditionKey": "icu",
     "icd10": [
       "A41.02",
@@ -1350,7 +940,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "NEJM Review Article",
     "journal": "N Engl J Med",
-    "file": "2026-nejm-ngat.html",
+    "file": "2026-nejm-ngat.mdx",
     "conditionKey": "cad",
     "icd10": [
       "R55",
@@ -1377,7 +967,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "LWW Medical Pharmacology Series",
     "journal": "Lancet Infect Dis",
-    "file": "2026-lww-khang-sinh-co-ban.html",
+    "file": "2026-lww-khang-sinh-co-ban.mdx",
     "conditionKey": "icu",
     "icd10": [
       "Z16",
@@ -1424,75 +1014,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true
   },
   {
-    "id": "mental-health-qol-cancer-2026",
-    "title": "Phân tích mạng lưới về sức khỏe tâm thần và chất lượng cuộc sống ở bệnh nhân nam ung thư (Network Analysis of Mental Health and Quality of Life Among Male Cancer Patients)",
-    "drug": "Không áp dụng",
-    "sourceType": "vn-association",
-    "specialty": "onco",
-    "design": "other",
-    "intervention": "Sử dụng các thang đo GAD-7, PHQ-9, DT, QLQ-C30 kết hợp phân tích đồ họa Gaussian (Glasso) để đánh giá mạng lưới tương quan.",
-    "primaryEndpoint": "Chỉ số trung tâm của mạng lưới và các mối liên kết tương quan giữa sức khỏe tâm thần (trầm cảm, lo âu) và các khía cạnh chất lượng cuộc sống.",
-    "keyResults": "Trầm cảm là nút trung tâm nhất của mạng lưới, kế tiếp là triệu chứng mệt; trầm cảm có tương quan dương mạnh với mất ngủ, ăn kém và đau.",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "Tạp chí Y học Việt Nam (ĐHYD TPHCM)",
-    "phase": "Cross-sectional",
-    "sampleSize": 155,
-    "population": "Bệnh nhân nam giới mắc ung thư tại Bệnh viện Đại học Y Dược và Bệnh viện Ung Bướu TP.HCM.",
-    "summary": "Nghiên cứu cắt ngang đa trung tâm áp dụng phân tích mạng lưới chỉ ra rằng trầm cảm đóng vai trò là nút trung tâm, chi phối mạnh mẽ nhất đến chất lượng cuộc sống của bệnh nhân nam ung thư, tiếp sau đó là triệu chứng mệt mỏi.",
-    "detailedConclusion": "Nghiên cứu thực hiện trên 155 bệnh nhân nam ung thư cho thấy các vấn đề tâm thần và thể chất đan xen phức tạp. Phân tích mạng lưới Gaussian xác định trầm cảm là nút trung tâm có kết nối mạnh mẽ nhất, trực tiếp khuếch đại các triệu chứng thể chất như mất ngủ, chán ăn và đau. Ngược lại, cụm triệu chứng thực thể (mệt mỏi, khó thở, đau) có tương quan thuận với nhau. Cả triệu chứng mệt mỏi và trầm cảm đều có tương quan nghịch rõ rệt với tình trạng sức khỏe toàn cầu. Do đó, trong thực hành ung thư học lâm sàng, bên cạnh việc điều trị đặc hiệu khối u, cần tích cực tầm soát và can thiệp tâm lý - tâm thần sớm nhằm cải thiện toàn diện chất lượng cuộc sống cho bệnh nhân.",
-    "fdaStatus": "Không áp dụng",
-    "asianData": true,
-    "icd10": [
-      "Z00"
-    ]
-  },
-  {
-    "id": "2026-predict-aedh-trial",
-    "title": "PREDICT-AEDH — Thử Nghiệm Lâm Sàng So Sánh Mở Hộp Sọ Giải Ép và Mở Hộp Sọ Tiêu Chuẩn trong Lấy Máu Tụ Ngoài Màng Cứng Cấp Tính có Thoát Vị Não",
-    "drug": "An thần, Giảm đau",
-    "sourceType": "intl-study",
-    "specialty": "neuro",
-    "design": "rct",
-    "intervention": "Phẫu thuật mở hộp sọ giải ép (decompressive craniectomy) so với mở hộp sọ tiêu chuẩn (standard craniotomy) để lấy khối máu tụ ngoài màng cứng (EDH) cấp tính kèm theo dấu hiệu thoát vị lều tiểu não.",
-    "primaryEndpoint": "Tỷ lệ bệnh nhân đạt kết cục chức năng thần kinh có lợi (được đánh giá bằng thang điểm GOS-E) tại thời điểm 6 tháng sau phẫu thuật.",
-    "keyResults": "COL: Kết cục thần kinh tốt (Mở xương sọ): 79.0% | Kết cục thần kinh tốt (Mở nắp sọ): 84.0%",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "Lancet Neurology",
-    "phase": "Phase III RCT",
-    "sampleSize": 120,
-    "population": "Bệnh nhân chấn thương sọ não cấp tính có khối máu tụ ngoài màng cứng (EDH) lớn, có dấu hiệu thoát vị lều lâm sàng và thời gian từ khi chấn thương đến khi mổ trung vị là 4 giờ.",
-    "summary": "Thử nghiệm lâm sàng ngẫu nhiên đa trung tâm tại Trung Quốc (PREDICT-AEDH) trên 120 bệnh nhân EDH cấp tính kèm thoát vị lều chứng minh mở nắp sọ bảo tồn (craniotomy) mang lại kết quả phục hồi chức năng thần kinh có lợi sau 6 tháng tương đương mở xương sọ giải ép (craniectomy) (79% so với 84%). Tuy nhiên, phẫu thuật mở xương sọ giải ép liên quan đến tỷ lệ xuất huyết nội sọ sau mổ cao hơn đáng kể (36% so với 13% ở nhóm mở nắp sọ).",
-    "detailedConclusion": "Mở nắp sọ tiêu chuẩn (craniotomy) là phương pháp phẫu thuật ưu việt hơn mở xương sọ giải ép (craniectomy) trong điều trị lấy máu tụ ngoài màng cứng cấp tính nhờ giảm tỷ lệ chảy máu nội sọ thứ phát sau mổ (13% so với 36%, p < 0.05). Tỷ lệ nhồi máu não sau mổ và tử vong trong vòng 30 ngày tương đương giữa hai nhóm. Khuyến cáo thực hành lâm sàng nên ưu tiên lựa chọn phương pháp mở nắp sọ bảo tồn xương ngay cả khi bệnh nhân đã có biểu hiện thoát vị não cấp tính, trừ các trường hợp chấn thương muộn hoặc có kèm theo phù não lan rộng/thương tổn nhu mô phối hợp nặng chưa được đánh giá trong nghiên cứu.",
-    "fdaStatus": "N/A",
-    "asianData": true
-  },
-  {
-    "id": "2026-bp-management-neurologic-emergencies-wagstaff",
-    "title": "Quản lý huyết áp trong các cấp cứu thần kinh",
-    "drug": "Nicardipine, Labetalol, Clevidipine, Hydralazine, Esmolol, Nitroprusside, Magnesium sulfate, Nimodipine, Verapamil, Nifedipine",
-    "sourceType": "intl-study",
-    "specialty": "neuro",
-    "design": "review",
-    "intervention": "Đánh giá, phân tích và hệ thống hóa các chiến lược kiểm soát huyết áp cấp tính cá thể hóa trong các bệnh cảnh cấp cứu thần kinh tối cấp bao gồm đột quỵ, chấn thương sọ não, tiền sản giật và các hội chứng não mạch liên quan.",
-    "primaryEndpoint": "Thiết lập khung hướng dẫn lâm sàng tối ưu hóa huyết áp động mạch nhằm giảm thiểu tối đa tỷ lệ tử vong và cải thiện kết cục chức năng thần kinh dài hạn cho bệnh nhân.",
-    "keyResults": "SITS-ISTR (AIS dùng IVT có SBP > 170 mmHg): Tăng gấp 4 lần nguy cơ xuất huyết não có triệu chứng; TBI (chỉ 1 đợt tụt huyết áp): Tăng gấp 2 lần tỷ lệ tử vong; EPIC TBI (12000+ ca): Tỷ lệ tử vong thấp nhất ở khoảng SBP 130-180 mmHg; RIGHT-2 (GTN trước viện): Giảm SBP 18 mmHg nhưng không cải thiện chức năng hoặc tử vong",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "University of Utah",
-    "phase": "Clinical Review",
-    "population": "Bệnh nhân cấp cứu thần kinh bao gồm đột quỵ thiếu máu cục bộ cấp (AIS), xuất huyết não (ICH), cơn thiếu máu não thoáng qua (TIA), hội chứng bệnh não sau có hồi phục (PRES), hội chứng co thắt mạch máu não có hồi phục (RCVS), tiền sản giật/sản giật và chấn thương sọ não (TBI).",
-    "summary": "Bài tổng quan lâm sàng tích hợp các bằng chứng y học hiện đại và khuyến cáo từ các hội chuyên khoa lớn (AHA/ASA, ESO, ACOG, BTF) về quản lý huyết áp cấp tính trong các tình huống cấp cứu thần kinh. Nghiên cứu nhấn mạnh việc cá thể hóa đích huyết áp dựa trên cơ chế sinh lý bệnh, sự bảo toàn áp lực tưới máu não và phòng tránh các biến chứng xuất huyết thứ phát.",
-    "detailedConclusion": "Hạ áp trong cấp cứu thần kinh cần tiếp cận cá thể hóa và tránh hạ áp quá mức làm trầm trọng thêm tình trạng thiếu máu não cục bộ. Đối với đột quỵ thiếu máu cục bộ cấp (AIS) không tái tưới máu, chỉ can thiệp khi huyết áp > 220/120 mmHg; nếu có chỉ định tiêu sợi huyết (IVT), duy trì đích SBP ≤ 185/110 mmHg trước tiêm và < 180/105 mmHg trong 24 giờ sau đó. Với xuất huyết não (ICH), khuyến cáo hạ áp mịn về đích SBP 130-150 mmHg sớm trong vòng 2-3 giờ đầu để ngăn khối máu tụ lan rộng. Trong PRES và RCVS, đích SBP nên duy trì < 160 mmHg, giảm không quá 25% trị số ban đầu trong giờ đầu bằng Nicardipine hoặc Labetalol tĩnh mạch. Đối với TBI, tụt huyết áp là yếu tố tiên lượng tử vong độc lập, bắt buộc duy trì SBP ≥ 110 mmHg (tối ưu từ 130-150 mmHg) và chống chỉ định hồi sức dịch bằng Albumin. Tiền sản giật nặng (BP ≥ 160/110 mmHg) yêu cầu hạ áp khẩn cấp trong vòng 30 phút bằng Labetalol, Hydralazine hoặc Nifedipine uống, kết hợp Magnesium sulfate để dự phòng co giật.",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://drive.google.com/file/d/1zlunTMq3wgs5GunkW3zkR2KGtex8XI__/view?fbclid=IwY2xjawTAo4ZleHRuA2FlbQIxMABicmlkETFGRUpTMUhMOVZqTjNMQjJac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhhgiBA1oMibkyKEzkvAAlCqQRnyNEaLH3ZqpXi7OlyEXGWRClmHt85yOa0W_aem_fUd4xF4QalgdNwcaSCMFbw",
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Đột quỵ thiếu máu cục bộ cấp (AIS)\":\"COL: Nhóm không tái tưới máu: Chỉ hạ áp khi BP > 220/120 mmHg | Nhóm dùng IVT/EVT: Đích BP ≤ 185/110 mmHg trước can thiệp và < 180/105 mmHg sau can thiệp\",\"Xuất huyết não cấp tính (ICH)\":\"HBAR: Hạ áp khẩn cấp trong 2h & đạt đích trong 1h: Giảm lan rộng khối máu tụ | Đích SBP khuyến cáo: 130 - 150 mmHg (mức độ khuyến cáo IA/IIa)\",\"Chấn thương sọ não (TBI)\":\"COL: Tụt huyết áp SBP < 90 mmHg: Tăng gấp đôi tỷ lệ tử vong | Đích SBP tối ưu (EPIC/IMPACT): 120 - 150 mmHg (hoặc MAP 85 - 110 mmHg)\"}"
-  },
-  {
     "id": "2026-nejm-staree-atorvastatin-elderly",
     "title": "STAREE: Atorvastatin 40 mg Dự Phòng Cấp 1 Ở Người Cao Tuổi (≥ 70 Tuổi) – NEJM 2026",
     "titleEn": "Atorvastatin, Cardiovascular Events, and Disability-free Survival in Older Adults: The STAREE Randomized Controlled Trial (Zoungas et al., N Engl J Med 2026)",
@@ -1534,7 +1055,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "SCCM / ESICM (Surviving Sepsis Campaign)",
     "journal": "Crit Care Med",
-    "file": "2026-ssc-sepsis.html",
+    "file": "2026-ssc-sepsis.mdx",
     "conditionKey": "icu",
     "icd10": [
       "A41",
@@ -1553,57 +1074,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://drive.google.com/file/d/1L_JENmD8bHufLZSVI18VRWGM39fxR_zf/view"
   },
   {
-    "id": "1783645774879-tvow6fzc6",
-    "title": "TB in Pregnancy Review 2026",
-    "drug": "Phác đồ chống lao hàng thứ nhất (HRZE) và các thuốc hàng hai",
-    "sourceType": "intl-study",
-    "specialty": "pulmo",
-    "design": "review",
-    "intervention": "Sàng lọc lâm sàng, chẩn đoán bằng Xpert MTB/RIF, X-quang ngực và điều trị kháng lao trong thai kỳ",
-    "primaryEndpoint": "Tổng quan cập nhật về dịch tễ học, thách thức chẩn đoán, biến chứng thai kỳ và quản lý điều trị bệnh lao",
-    "keyResults": "Lao thai kỳ làm tăng tử vong chu sinh (OR 4.2) và sẩy thai (gấp 9 lần); điều trị bằng phác đồ chuẩn đạt tỷ lệ khỏi bệnh 88%",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "MDPI",
-    "phase": "Review",
-    "population": "Phụ nữ mang thai, hậu sản và trẻ sơ sinh mắc hoặc có nguy cơ tiếp xúc với bệnh lao",
-    "summary": "Bài tổng quan hệ thống hóa các hướng dẫn hiện tại về việc sàng lọc, ứng dụng chẩn đoán hình ảnh và phân tử, cùng chiến lược quản lý bệnh lao ở phụ nữ mang thai nhằm tối ưu hóa kết cục cho mẹ và bé.",
-    "detailedConclusion": "Bệnh lao thai kỳ thường bị chẩn đoán muộn do triệu chứng trùng lấp với sinh lý thai kỳ. Chẩn đoán ưu tiên sử dụng xét nghiệm phân tử (Xpert MTB/RIF) và X-quang ngực (an toàn khi che bụng). Phác đồ điều trị chuẩn (2HRZE/4HR) được khuyến cáo là an toàn, mang lại tỷ lệ khỏi bệnh 88% và phải được khởi trị sớm để tránh các biến chứng như sinh non, sẩy thai và tử vong chu sinh. Đối với lao đa kháng thuốc (MDR-TB), quá trình điều trị đòi hỏi cá thể hóa với các thuốc hàng hai có thể cân nhắc (như Fluoroquinolone, Bedaquiline) và chống chỉ định tuyệt đối nhóm Aminoglycoside do độc tính tai/thận đối với thai nhi.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13282933/?fbclid=IwY2xjawS9JnBleHRuA2FlbQIxMABicmlkETFIQ3dhTVF4MFFJVzJTWVBqc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjuNlFIqObJK9YDHJxTglxwGjjfDuaCeVocnVT8l9Ka2ksQY4OP2EiVEOkqr_aem_a-VSTC4DpxlUMJQyk-egIw",
-    "asianData": true,
-    "icd10": [
-      "A15",
-      "O98.0"
-    ]
-  },
-  {
-    "id": "acc-antihypertensive-pregnancy-2026",
-    "title": "Tiếp cận thực tiễn về sử dụng thuốc chống tăng huyết áp trong thai kỳ và thời kỳ cho con bú (Antihypertensive Medications in Pregnancy and Lactation: A Practical Approach)",
-    "drug": "Nifedipine, Labetalol, Amlodipine, Enalapril, Hydralazine, Methyldopa, Thuốc lợi tiểu, Thuốc ức chế RAAS",
-    "sourceType": "intl-guideline",
-    "specialty": "obgyn",
-    "design": "guideline",
-    "intervention": "Lựa chọn và phân loại mức độ an toàn của các loại thuốc chống tăng huyết áp được sử dụng trong thai kỳ và thời kỳ hậu sản (cho con bú).",
-    "primaryEndpoint": "Cung cấp khung hướng dẫn thực hành (practical framework) nhằm lựa chọn thuốc hạ áp an toàn, giảm bệnh suất cho mẹ và cải thiện kết cục cho thai nhi.",
-    "keyResults": "Nifedipine giải phóng kéo dài và Labetalol là lựa chọn đầu tay trong thai kỳ; Nifedipine, Amlodipine, Enalapril và Labetalol là lựa chọn đầu tay khi cho con bú; Chống chỉ định tuyệt đối ACEi, ARB, ARNI và Spironolactone trong thai kỳ.",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "American College of Cardiology (ACC)",
-    "phase": "Guidelines",
-    "population": "Phụ nữ mang thai và phụ nữ đang cho con bú mắc các rối loạn tăng huyết áp.",
-    "summary": "Bài phân tích chuyên gia của ACC năm 2026 cung cấp hướng dẫn rõ ràng về việc sử dụng thuốc hạ áp. Nifedipine giải phóng kéo dài và Labetalol được khẳng định là ưu tiên hàng đầu trong thai kỳ. Hướng dẫn nghiêm cấm việc sử dụng các thuốc tác động lên hệ RAAS và Atenolol trong thời kỳ mang thai, nhưng Enalapril lại an toàn và được ưu tiên trong thời kỳ cho con bú.",
-    "detailedConclusion": "Hướng dẫn thực hành phân loại rõ rệt phác đồ hạ áp thành hai giai đoạn. (1) TRONG THAI KỲ: Lựa chọn đầu tay (First-line) là Nifedipine giải phóng kéo dài (khởi đầu 30mg, tối đa 120mg/ngày) và Labetalol (khởi đầu 200mg x 2 lần/ngày, tối đa 2400mg/ngày). Các thuốc thay thế bao gồm Methyldopa, Hydralazine, Amlodipine, Metoprolol. Thuốc cần thận trọng là Verapamil, Diltiazem, Clonidine. Các thuốc CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI do độc tính thai nhi bao gồm toàn bộ nhóm ức chế RAAS (ACEi, ARB, ARNI), Spironolactone (do tính kháng androgen), Atenolol (gây chậm nhịp tim, hạ đường huyết thai nhi) và Chlorthalidone. (2) TRONG THỜI KỲ CHO CON BÚ (Lactation): Nifedipine ER và Labetalol tiếp tục là lựa chọn đầu tay; bổ sung thêm Amlodipine và Enalapril do chuyển hóa qua sữa mẹ rất thấp. Spironolactone và Hydralazine cũng an toàn khi cho con bú. Chống chỉ định Atenolol và Chlorthalidone ở nhóm này.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://www.acc.org/latest-in-cardiology/articles/2026/07/02/15/04/antihypertensive-medications-in-pregnancy-and-lactation",
-    "icd10": [
-      "O13",
-      "O14",
-      "I10"
-    ],
-    "subgroups": "{\"Bệnh thận mạn (CKD giai đoạn ≥ 4)\":\"Cần thận trọng khi sử dụng Enalapril (trong giai đoạn cho con bú) do nguy cơ tăng kali máu và tổn thương thận cấp.\",\"Bệnh cơ tim (Cardiomyopathy / Cần điều trị GDMT)\":\"Vì các thuốc ưu tiên trong GDMT (ACEi, ARB, ARNI, Spironolactone) bị chống chỉ định trong thai kỳ, có thể cân nhắc sử dụng Hydralazine kết hợp với Nitrates để thay thế.\",\"Hen suyễn (Asthma)\":\"Thận trọng khi sử dụng Labetalol do nguy cơ gây co thắt phế quản.\"}"
-  },
-  {
     "id": "2026-dash-diet-hypertension",
     "title": "Tổng quan Chế độ ăn DASH và Can thiệp Lối sống trong Kiểm soát Huyết áp",
     "titleEn": "DASH Dietary Pattern and Lifestyle Modifications for Blood Pressure Control",
@@ -1614,7 +1084,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "AHA / NHLBI",
     "journal": "Circulation",
-    "file": "2026-dash-diet-hypertension.html",
+    "file": "2026-dash-diet-hypertension.mdx",
     "conditionKey": "hypertension",
     "icd10": [
       "I10",
@@ -1640,7 +1110,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2026,
     "organization": "ATS / ESICM Review",
     "journal": "Am J Respir Crit Care Med",
-    "file": "2026-mbm-tongquan-ards.html",
+    "file": "2026-mbm-tongquan-ards.mdx",
     "conditionKey": "pneumonia",
     "icd10": [
       "J80"
@@ -1653,30 +1123,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Bệnh nhân mắc hội chứng suy hô hấp cấp tiến triển (ARDS) ở cả người lớn, trẻ em và trẻ sơ sinh.",
     "asianData": true,
     "fdaStatus": "N/A"
-  },
-  {
-    "id": "oral-hemangiomas-2026",
-    "title": "U máu vùng miệng (Oral Hemangiomas - StatPearls)",
-    "drug": "Propranolol, Prednisone, Các chất gây xơ (Sodium tetradecyl sulfate 3%, Ethanolamine oleate)",
-    "sourceType": "intl-study",
-    "specialty": "onco",
-    "design": "review",
-    "intervention": "Quản lý bảo tồn theo dõi sự thoái triển tự nhiên hoặc can thiệp nội khoa/ngoại khoa/tiêm xơ đối với các u máu có triệu chứng",
-    "primaryEndpoint": "Đặc điểm lâm sàng, phân loại, chẩn đoán và hướng dẫn lựa chọn điều trị cho u máu vùng miệng",
-    "keyResults": "Khoảng 85-90% u máu tự thoái triển không cần can thiệp; Propranolol (2-3 mg/kg/ngày) là lựa chọn nội khoa đầu tay mang lại cải thiện sau 1-2 ngày",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "StatPearls Publishing",
-    "phase": "Review",
-    "population": "Bệnh nhân mắc khối u máu ở khoang miệng, đặc biệt là trẻ sơ sinh và trẻ nhỏ",
-    "summary": "Bài tổng quan từ StatPearls cung cấp kiến thức toàn diện về u máu vùng miệng, khẳng định đây là bệnh lý lành tính, hầu hết sẽ tự thoái triển theo thời gian. Các can thiệp y tế (đặc biệt là Propranolol) chỉ đặt ra khi u tồn tại dai dẳng hoặc đe dọa các chức năng sống cơ bản.",
-    "detailedConclusion": "U máu vùng miệng là những khối u lành tính phát triển do sự tăng sinh tế bào nội mô, thường gặp ở môi, lưỡi, niêm mạc má và vòm miệng với tỷ lệ nữ:nam là 3:1. Hầu hết các khối u sẽ trải qua các giai đoạn: tăng sinh nhanh, ổn định và tự thoái triển (85-90% trường hợp tự khỏi trong 4 năm). Chẩn đoán chủ yếu dựa vào lâm sàng với đặc điểm khối mềm, ấn kính mất màu (diascopy positive). Do khả năng tự phục hồi, điều trị không được khuyến cáo thường quy. Tuy nhiên, ở khoảng 10-20% bệnh nhân có tổn thương tồn tại dai dẳng hoặc gây loét (biến chứng hay gặp nhất), chảy máu, ảnh hưởng hô hấp, nuốt hoặc nói, can thiệp điều trị là bắt buộc. Propranolol uống (2-3 mg/kg/ngày chia 3 lần) là tiêu chuẩn vàng điều trị nội khoa đầu tay. Nếu điều trị nội khoa thất bại hoặc tổn thương khu trú nhỏ, có thể chỉ định phẫu thuật cắt bỏ hoặc liệu pháp tiêm xơ mạch máu.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://www.ncbi.nlm.nih.gov/books/NBK560768/",
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Điều trị nội khoa\":\"Propranolol là thuốc đầu tay, cần theo dõi biến chứng nhịp chậm, hạ huyết áp, hạ đường huyết. Prednisone toàn thân là lựa chọn thứ hai nhưng có nhiều tác dụng phụ, nên ngừng thuốc nếu không cải thiện sau 2 tuần.\",\"Chỉ định ngoại khoa/Tiêm xơ\":\"Phẫu thuật phù hợp với tổn thương nhỏ ở môi, má (tránh cắt bỏ diện rộng ở lưỡi gây ảnh hưởng chức năng). Tiêm xơ đang là phương pháp thay thế hiệu quả nhưng có nguy cơ huyết khối.\"}"
   },
   {
     "id": "2026-ucsf-ssti",
@@ -1710,79 +1156,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": false
   },
   {
-    "id": "ai-cap-108-2026",
-    "title": "Ứng dụng Trí tuệ nhân tạo (XGBoost) trong tiên lượng bệnh nhân Viêm phổi mắc phải tại cộng đồng",
-    "drug": "Không áp dụng",
-    "sourceType": "vn-association",
-    "specialty": "icu",
-    "design": "cohort",
-    "intervention": "Sử dụng mô hình học máy XGBoost (eXtreme Gradient Boosting) dựa trên các đặc điểm lâm sàng và cận lâm sàng lúc nhập viện để dự báo nguy cơ nhập ICU, so sánh với thang điểm CURB-65.",
-    "primaryEndpoint": "Nhu cầu nhập viện tại khoa Hồi sức tích cực (ICU) ở bệnh nhân viêm phổi mắc phải cộng đồng (CAP).",
-    "keyResults": "Mô hình XGBoost có AUC 0.876 vượt trội hơn CURB-65 (AUC 0.826); Độ nhạy 0.95 vs 0.71; Độ chính xác (Accuracy) 0.89 vs 0.73. Biến dự báo quan trọng nhất là Rối loạn ý thức và Urê máu.",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "Hội Hồi sức Cấp cứu và Chống độc Việt Nam (Bệnh viện TWQĐ 108)",
-    "phase": "Cohort Study",
-    "sampleSize": 350,
-    "population": "Bệnh nhân ≥ 18 tuổi được chẩn đoán viêm phổi cộng đồng nhập viện điều trị tại các khoa lâm sàng, có đầy đủ dữ liệu y tế trong 24 giờ đầu.",
-    "summary": "Nghiên cứu hồi cứu tại Bệnh viện TWQĐ 108 ứng dụng thuật toán học máy XGBoost cho thấy hiệu suất dự báo nguy cơ nhập ICU ở bệnh nhân viêm phổi cộng đồng vượt trội hơn hẳn so với thang điểm CURB-65 truyền thống.",
-    "detailedConclusion": "Phân tích trên 350 bệnh nhân CAP nhập viện (có 21.4% phải nhập ICU) đã giúp thiết lập mô hình học máy XGBoost. Mô hình chỉ ra 6 biến số độc lập có tầm quan trọng hàng đầu trong dự báo độ nặng, sắp xếp theo mức độ giảm dần gồm: Rối loạn ý thức, Tăng urê máu, Giảm tiểu cầu, Tăng tần số thở, Thâm nhiễm đa thùy phổi và Tăng số lượng bạch cầu Neutrophil. Về mặt hiệu suất, XGBoost thể hiện khả năng phân loại xuất sắc với AUC đạt 0.876 (so với 0.826 của CURB-65), độ nhạy 95% (so với 71%), và độ chính xác tổng thể (Accuracy) lên tới 89% (so với 73%). Biểu đồ phân tích đường cong quyết định (DCA) cũng tái khẳng định mô hình XGBoost đem lại lợi ích ròng chuẩn hóa cao hơn ở mọi ngưỡng nguy cơ. Kết quả cho thấy XGBoost là công cụ hỗ trợ ra quyết định lâm sàng rất hứa hẹn tại khoa Cấp cứu nhằm sàng lọc sớm và phân bổ nguồn lực chính xác cho nhóm bệnh nhân CAP nguy cơ cao.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://docs.google.com/presentation/d/1Y-5Sur-O_bIgRy6whpb-Rnnkce99PCym/edit?slide=id.p10#slide=id.p10",
-    "asianData": true,
-    "icd10": [
-      "A41"
-    ],
-    "subgroups": "{\"Nhóm bệnh nhân phải nhập ICU (n=75)\":\"Đặc trưng bởi tuổi trung bình cao hơn (81.2 vs 71.4), tỷ lệ rối loạn ý thức rất cao (62.7% vs 10.9%), thâm nhiễm đa thùy (74.7% vs 34.9%), Urê máu tăng cao (13.7 vs 7.2 mmol/L) và tiểu cầu giảm đáng kể (234 vs 292 G/L) so với nhóm không nhập ICU.\"}"
-  },
-  {
-    "id": "2026-med-diet-secondary-prevention",
-    "title": "Vai trò của Chế độ ăn Địa Trung Hải trong Dự phòng Thứ phát Bệnh Tim mạch: Tổng quan hệ thống và Phân tích gộp các Nghiên cứu thuần tập tiến cứu",
-    "drug": "Chế độ ăn Địa Trung Hải",
-    "sourceType": "intl-study",
-    "specialty": "cardio",
-    "design": "meta",
-    "intervention": "Đánh giá mối liên quan giữa việc tuân thủ chế độ ăn Địa Trung Hải (so sánh mức độ tuân thủ cao nhất so với thấp nhất) và các kết cục lâm sàng ở bệnh nhân có bệnh tim mạch từ trước thông qua tổng hợp dữ liệu từ 13 nghiên cứu thuần tập tiến cứu (~54.000 bệnh nhân).",
-    "primaryEndpoint": "Tỷ lệ tử vong do mọi nguyên nhân, tử vong do tim mạch, và tỷ lệ tái phát các biến cố tim mạch (như nhồi máu cơ tim, đột quỵ, suy tim, tái thông mạch máu hoặc nhập viện do tim mạch).",
-    "keyResults": "RR 0.74 (95% CI 0.65-0.84, p<0.001)",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "Harokopio University of Athens & University of Barcelona",
-    "phase": "Systematic Review and Meta-Analysis",
-    "sampleSize": 54034,
-    "population": "Bệnh nhân trưởng thành có tiền sử bệnh tim mạch đã xác định (như nhồi máu cơ tim, hội chứng mạch vành cấp, đột quỵ, bệnh lý đa mạch xơ vữa hoặc bệnh mạch vành ổn định).",
-    "summary": "Phân tích gộp quy mô lớn từ 13 nghiên cứu thuần tập tiến cứu chứng minh vai trò cardioprotective vượt trội của chế độ ăn Địa Trung Hải đối với bệnh nhân có bệnh tim mạch sẵn có. Kết quả chỉ ra tuân thủ chế độ ăn Địa Trung Hải giúp giảm mạnh 26% tử vong do mọi nguyên nhân, 16% tử vong do tim mạch và 40% nguy cơ tái phát biến cố tim mạch, cung cấp bằng chứng thực tế vững chắc hỗ trợ nâng cấp mức độ khuyến cáo chế độ ăn Địa Trung Hải trong dự phòng thứ phát.",
-    "detailedConclusion": "So sánh nhóm tuân thủ chế độ ăn Địa Trung Hải cao nhất và thấp nhất cho thấy tỷ lệ giảm đáng kể đối với tử vong do mọi nguyên nhân (RR 0.74, 95% CI 0.648-0.844, p<0.001), tử vong do tim mạch (RR 0.84, 95% CI 0.745-0.942, p=0.0031) và tái phát biến cố tim mạch (RR 0.60, 95% CI 0.387-0.919, p=0.0192). Cơ chế bảo vệ tim mạch bao gồm khả năng cải thiện chức năng nội mạc bằng cách tăng hoạt tính nitric oxide, giảm viêm hệ thống thông qua hạ cytokine pro-inflammatory, giảm stress oxy hóa nhờ các polyphenols (như hydroxytyrosol, resveratrol), cải thiện huyết áp và cải thiện độ nhạy insulin. Kết quả hỗ trợ mạnh mẽ việc tích hợp chế độ ăn Địa Trung Hải như một liệu pháp phối hợp bắt buộc cùng với điều trị thuốc chuẩn (như statins) cho bệnh nhân tim mạch.",
-    "subgroups": "{\"Tử vong do mọi nguyên nhân (All-cause mortality)\":\"RR 0.74 (95% CI 0.65-0.84, p<0.001)\",\"Tử vong do tim mạch (Cardiovascular mortality)\":\"RR 0.84 (95% CI 0.75-0.94, p=0.003)\",\"Tái phát biến cố tim mạch (Recurrent CVD events)\":\"RR 0.60 (95% CI 0.39-0.92, p=0.019)\"}"
-  },
-  {
-    "id": "2026-fob-sputum-negative-tb-chauda",
-    "title": "Vai trò của nội soi phế quản sợi mềm ở bệnh nhân nghi ngờ lao phổi có soi đờm âm tính và có biểu hiện lâm sàng - X-quang nghi ngờ lao phổi",
-    "author": "Manas Chauda et al.",
-    "drug": "N/A",
-    "sourceType": "intl-study",
-    "specialty": "pulmo",
-    "design": "cohort",
-    "intervention": "Nội soi phế quản sợi mềm (FOB) để thu thập dịch rửa phế quản phế nang (BAL), sau đó tiến hành nhuộm soi tìm trực khuẩn kháng toan (AFB) bằng phương pháp nhuộm Ziehl-Neelsen (ZN) và xét nghiệm khuếch đại axit nucleic dựa trên hộp (CBNAAT/GeneXpert).",
-    "primaryEndpoint": "Xác định hiệu suất chẩn đoán (tỷ lệ dương tính) của xét nghiệm CBNAAT dịch BAL ở bệnh nhân có xét nghiệm nhuộm soi đờm âm tính trực tiếp.",
-    "keyResults": "Tỷ lệ chẩn đoán lao phổi bằng BAL-CBNAAT đạt 91.75% (89/97) so với tỷ lệ chẩn đoán bằng phương pháp nhuộm soi AFB dịch BAL là 0% (0/97).",
-    "impact": "informative",
-    "year": 2026,
-    "organization": "L.N. Medical College and Research Centre and J.K. Hospital, Bhopal, India",
-    "phase": "Cross-sectional Observational Study",
-    "sampleSize": 97,
-    "population": "Bệnh nhân trưởng thành (≥18 tuổi) nghi ngờ lao phổi dựa trên các biểu hiện lâm sàng và hình ảnh X-quang ngực gợi ý nhưng có ít nhất 2 mẫu đờm âm tính với AFB bằng phương pháp nhuộm ZN.",
-    "summary": "Nghiên cứu cắt ngang tiến hành trên 97 bệnh nhân nghi ngờ lao phổi có soi đờm âm tính trực tiếp nhằm xác định hiệu suất của phương pháp nội soi phế quản ống mềm lấy dịch BAL thực hiện xét nghiệm sinh học phân tử GeneXpert (CBNAAT). Kết quả cho thấy BAL-CBNAAT có tỷ lệ dương tính cao vượt trội (91.75%), trong khi phương pháp nhuộm soi AFB dịch BAL quy ước hoàn toàn thất bại (0% dương tính). Phương pháp này chứng tỏ tính ưu việt giúp thu nhận bằng chứng vi sinh nhanh chóng, khắc phục các hạn chế của xét nghiệm dựa trên đờm thông thường.",
-    "detailedConclusion": "Nội soi phế quản ống mềm lấy dịch BAL kết hợp với xét nghiệm phân tử CBNAAT (GeneXpert) mang lại hiệu suất chẩn đoán xác định cao (91.75%) cho bệnh nhân lao phổi đờm âm tính, cung cấp bằng chứng vi sinh học tin cậy trong vòng 2-6 tuần nhanh hơn nuôi cấy. Việc nhuộm soi AFB dịch BAL có độ nhạy rất thấp (0% dương tính) và không nên sử dụng làm chỉ số đơn độc để loại trừ bệnh. Khuyến cáo thực hiện sớm nội soi phế quản ống mềm phối hợp làm CBNAAT cho bệnh nhân nghi ngờ lao phổi đờm âm tính nhằm hạn chế tối đa việc trì hoãn điều trị, giảm việc áp dụng phác đồ điều trị bao vây không hợp lý và kiểm soát lây lan cộng đồng.",
-    "fdaStatus": "N/A",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13251655/?fbclid=IwY2xjawTBQXlleHRuA2FlbQIxMABicmlkETE5bEkxWFFNYUU0VFRXb1M3c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHq6wwDAFZvVv8STC_k7ivxd56QD0LtkUWYDrCJBiii6qBVierxyHUqVyHbZs_aem_XGSslsPMYoEhclubX4EEWw",
-    "asianData": true,
-    "icd10": [
-      "J44"
-    ],
-    "subgroups": "{\"Sự liên quan giữa triệu chứng lâm sàng và độ dương tính CBNAAT\":\"Ho: 85.56% (83/88) | Sụt cân: 76.28% (74/77) | Sốt: 81.44% (79/83) | Đổ mồ hôi trộm: 56.70% (55/56) (tất cả p < 0.05)\",\"Hiệu quả chẩn đoán của xét nghiệm trên dịch rửa phế quản (BAL)\":\"COL: BAL-AFB nhuộm ZN: 0% (0/97) | BAL-CBNAAT (GeneXpert): 91.75% (89/97)\",\"Triệu chứng lâm sàng phổ biến nhất ở bệnh nhân nghi ngờ lao\":\"HBAR: Ho: 90.7% (88/97) | Sốt: 85.6% (83/97) | Sụt cân: 79.4% (77/97) | Đổ mồ hôi đêm: 57.7% (56/97)\"}"
-  },
-  {
     "id": "2026-vuna-tang-kali-mau",
     "title": "VUNA / VNUA 2026: Khuyến Cáo Quốc Gia Chẩn Đoán & Điều Trị Tăng Kali Máu",
     "titleEn": "Vietnam VUNA/VNUA 2026 National Guidelines on Diagnosis and Management of Hyperkalemia",
@@ -1810,26 +1183,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Bệnh nhân mắc tăng kali máu cấp và mạn tính (đặc biệt nhóm nguy cơ cao: bệnh thận mạn, tổn thương thận cấp, suy tim, đái tháo đường, đang sử dụng thuốc RAASi/MRA).",
     "asianData": true,
     "sourceUrl": "https://drive.google.com/file/d/1TdzWpTIPFsMV4SbodUVE7gwWm7-91N2F/view?pli=1"
-  },
-  {
-    "id": "2026-years-active-cancer",
-    "title": "YEARS — Thử Nghiệm Lâm Sàng So Sánh Thuật Toán YEARS và Chụp CTPA Tiêu Chuẩn để Loại Trêu Thuyên Tắc Phổi ở Bệnh Nhân Ung Thư Đang Hoạt Động",
-    "drug": "Kháng đông",
-    "sourceType": "intl-study",
-    "specialty": "onco",
-    "design": "rct",
-    "intervention": "Ứng dụng thuật toán YEARS hiệu chỉnh nồng độ D-dimer theo xác suất lâm sàng để loại trừ thuyên tắc phổi (PE) so với quy trình chụp cắt lớp vi tính động mạch phổi (CTPA) tiêu chuẩn.",
-    "primaryEndpoint": "Tỷ lệ thất bại chẩn đoán (được định nghĩa là xuất hiện thuyên tắc huyết khối tĩnh mạch thứ phát) tại thời điểm 90 ngày theo dõi.",
-    "keyResults": "Thuật toán YEARS 1.8% vs Chụp CTPA chuẩn 5.0%",
-    "impact": "practice-changing",
-    "year": 2026,
-    "organization": "JAMA",
-    "phase": "Phase III RCT",
-    "sampleSize": 698,
-    "population": "Bệnh nhân ung thư đang hoạt động nghi ngờ bị thuyên tắc phổi cấp tính, loại trừ các bệnh nhân có tiên lượng sống dưới 3 tháng.",
-    "summary": "Thử nghiệm lâm sàng ngẫu nhiên trên 698 bệnh nhân ung thư đang hoạt động nghi ngờ thuyên tắc phổi chứng minh thuật toán YEARS (hiệu chỉnh D-dimer theo xác suất lâm sàng) an toàn tương đương chụp CTPA tiêu chuẩn để loại trừ PE. Tỷ lệ thất bại chẩn đoán (thuyên tắc huyết khối tái phát tại ngày thứ 90) là 1.8% ở nhóm YEARS so với 5.0% ở nhóm CTPA tiêu chuẩn, cho thấy YEARS có thể ứng dụng an toàn để giảm tải việc chụp CTPA không cần thiết ở đối tượng này.",
-    "detailedConclusion": "Thuật toán YEARS giúp phân nhóm hiệu quả bệnh nhân ung thư nghi ngờ thuyên tắc phổi mà không làm tăng nguy cơ bỏ sót huyết khối tĩnh mạch sâu hoặc thuyên tắc phổi thứ phát trong vòng 90 ngày (1.8% ở nhóm YEARS so với 5.0% ở nhóm chụp CTPA). Hạn chế của nghiên cứu bao gồm thiết kế mở (open-label), nghiên cứu bị dừng sớm hơn dự kiến, chưa phân tích dưới nhóm theo vị trí/giai đoạn ung thư và loại trừ bệnh nhân có thời gian sống thêm <3 tháng. Tuy nhiên, kết quả này hỗ trợ mạnh mẽ việc sử dụng YEARS hiệu chỉnh D-dimer như một công cụ sàng lọc không xâm lấn an toàn, giúp tránh bức xạ và độc tính của thuốc cản quang cho bệnh nhân ung thư.",
-    "fdaStatus": "N/A"
   },
   {
     "id": "2025-aace-dyslipidemia",
@@ -1872,7 +1225,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "American Association for the Study of Liver Diseases (AASLD)",
     "journal": "Hepatology",
-    "file": "2025-aasld-nilda.html",
+    "file": "2025-aasld-nilda.mdx",
     "conditionKey": "cirrhosis",
     "icd10": [
       "K74",
@@ -1904,7 +1257,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "AHA/ACC",
     "journal": "Circulation",
-    "file": "2025-aha-acc-hypertension.html",
+    "file": "2025-aha-acc-hypertension.mdx",
     "conditionKey": "hypertension",
     "icd10": [
       "I10",
@@ -1933,7 +1286,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "British Society of Gastroenterology (BSG)",
     "journal": "Gut",
-    "file": "2025-bsg-ibd.html",
+    "file": "2025-bsg-ibd.mdx",
     "conditionKey": "ibd",
     "icd10": [
       "K50",
@@ -2021,7 +1374,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2025-byt-soi.html",
+    "file": "2025-byt-soi.mdx",
     "conditionKey": "measles",
     "icd10": [
       "B05",
@@ -2036,30 +1389,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true,
     "subgroups": "{\"Lịch bổ sung Vitamin A liều cao theo độ tuổi\":\"Trẻ < 6 tháng: 50.000 IU/liều x 2 lần cách nhau 24 giờ | Trẻ 6 - 11 tháng: 100.000 IU/liều x 2 lần cách nhau 24 giờ | Trẻ ≥ 12 tháng: 200.000 IU/liều x 2 lần cách nhau 24 giờ (bổ sung liều thứ 3 sau 4-6 tuần nếu có suy dinh dưỡng nặng hoặc thiếu hụt Vitamin A rõ)\",\"Liệu pháp Immunoglobulin đường tĩnh mạch (IVIG)\":\"COL: Chỉ định: Nhiễm trùng sởi nặng kèm tăng đáp ứng viêm, suy hô hấp tiến triển nhanh (ARDS với PaO2/FiO2 < 300), hoặc viêm não | Liều dùng: 0.25 g/kg/ngày truyền tĩnh mạch chậm trong 8 - 10 giờ, dùng liên tiếp trong 3 ngày (tổng liều có thể đạt 1g/kg trong 2-4 ngày)\",\"Bậc thang hỗ trợ hô hấp trong viêm phổi do sởi\":\"HBAR: SpO2 < 94%: Hỗ trợ thở oxy qua gọng kính (Oxy cannula) từ 2-3 lít/phút (tối đa 6 lít/phút) | Thất bại với oxy cannula: NCPAP áp lực 4-6 cmH2O (hoặc xem xét thở HFNC) | Thất bại với NCPAP/HFNC hoặc có chỉ định đặt nội khí quản tuyệt đối: Đặt nội khí quản và thở máy xâm nhập | Suy hô hấp/suy tuần hoàn nguy kịch trơ với máy thở: Chỉ định ECMO\"}",
     "fdaStatus": "N/A"
-  },
-  {
-    "id": "2025-circulating-lncrnas-severe-dengue",
-    "title": "Các lncRNA lưu hành trong máu làm chất chỉ thị sinh học dự báo sốt xuất huyết nặng bằng phương pháp học máy",
-    "drug": "OAS1lncRNA, IFI6lnc1, IFI6lnc2, EPB41L4A-AS1, HID1, ILK-4",
-    "sourceType": "intl-study",
-    "specialty": "infect",
-    "design": "cohort",
-    "intervention": "Xác định bảng gồm 6 lncRNA huyết tương tại thời điểm nhập viện thông qua phân tích sinh tin học và qPCR, áp dụng thuật toán học máy (hồi quy logistic phạt glmnet và XGBoost) để dự đoán nguy cơ tiến triển thành sốt xuất huyết nặng (SD).",
-    "primaryEndpoint": "Phát hiện và dự báo chính xác khả năng tiến triển thành sốt xuất huyết nặng (SD) của bệnh nhân tại thời điểm nhập viện nhằm nâng cao hiệu quả phân tầng điều trị.",
-    "keyResults": "AUC 0.98 (95% CI 0.96-1.0); Độ nhạy 91.67%; Độ đặc hiệu 100% tại ngưỡng Youden; Phát hiện sớm 17/18 ca tử vong tại thời điểm nhập viện.",
-    "impact": "practice-changing",
-    "year": 2025,
-    "organization": "Đại học Tel Aviv, Học viện Quân y Việt Nam, Viện Oswaldo Cruz",
-    "phase": "Clinical Cohort and Machine Learning Modeling Study",
-    "sampleSize": 377,
-    "population": "Bệnh nhân sốt xuất huyết Dengue người lớn (từ 16 tuổi trở lên) nhập viện tại Bệnh viện Quân y 103, Hà Nội, Việt Nam và các đối tượng kiểm chứng từ Israel.",
-    "summary": "Nghiên cứu lâm sàng kết hợp trí tuệ nhân tạo chứng minh vai trò tiên lượng vượt trội của bảng gồm 6 lncRNA lưu hành trong huyết tương đối với sốt xuất huyết nặng. Mô hình học máy áp dụng tại thời điểm nhập viện đạt độ chính xác cực cao (AUC 0.98), vượt qua các hạn chế về độ nhạy và tính chủ quan của hệ thống cảnh báo lâm sàng của WHO năm 2009.",
-    "detailedConclusion": "Nồng độ của cả 6 lncRNA (OAS1lncRNA, IFI6lnc1, IFI6lnc2, EPB41L4A-AS1, HID1, và ILK-4) trong huyết tương tăng tương ứng theo mức độ nặng lâm sàng của sốt xuất huyết và không bị nhiễu bởi yếu tố tuổi tác. Mô hình học máy dựa trên hồi quy logistic phạt (glmnet) đạt hiệu suất tiên lượng tối ưu với AUC 0.98 (95% CI 0.96-1.0), độ nhạy 91.67% và độ đặc hiệu 100%, cho phép phát hiện sớm 17 trong số 18 ca tử vong ngay khi nhập viện (so với chỉ 9 ca phát hiện bằng dấu hiệu cảnh báo của WHO). Về mặt cơ chế, các lncRNA này đóng vai trò điều hòa trực tiếp sự nhân lên của vi-rút DENV, trong đó OAS1lncRNA làm giảm 48.2% RNA DENV, và EPB41L4A-AS1 có tính chất ức chế vi-rút. Dù số lượng tiểu cầu (PLT) lúc nhập viện không thể phân biệt giữa nhóm DWS+ và nhóm SD, điểm số dự báo DENV score từ mô hình lncRNA phân biệt rõ rệt hai nhóm này (p < 0.0001). Xét nghiệm multiplex PCR 6 mục tiêu có chi phí thấp (5-25 USD) và thời gian thực hiện nhanh (3-5 giờ), hoàn toàn khả thi để ứng dụng lâm sàng thường quy.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "A90"
-    ]
   },
   {
     "id": "2025-cureus-statin-cvd-outcomes",
@@ -2093,31 +1422,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true
   },
   {
-    "id": "2025-il10-profiles-dengue-vietnam",
-    "title": "Đặc điểm lâm sàng, vi-rút học và nồng độ IL-10 của bệnh nhân sốt xuất huyết tại Việt Nam trong các đợt bùng phát dịch năm 2021–2022",
-    "drug": "Interleukin-10 (IL-10) promoter variants",
-    "sourceType": "intl-study",
-    "specialty": "infect",
-    "design": "cohort",
-    "intervention": "Đánh giá đặc điểm lâm sàng, định lượng nồng độ IL-10 huyết tương bằng ELISA và giải trình tự trực tiếp Sanger các đa hình promoter gen IL-10 (-1082G/A, -819C/T, -592C/A) của 306 bệnh nhân sốt xuất huyết tại Hà Nội để đánh giá tương tác ký chủ-vật chủ.",
-    "primaryEndpoint": "Khảo sát mối tương quan của nồng độ IL-10 huyết tương và đa hình di truyền vùng khởi động gen IL-10 với mức độ nặng lâm sàng và tính nhạy cảm với sốt xuất huyết trong quần thể người Việt.",
-    "keyResults": "IL-10 trung vị: DF 9.9 pg/mL vs DWS 18.0 pg/mL vs SD 46.3 pg/mL (p < 0.05); Genotype -1082GA bảo vệ: OR = 0.45 (95% CI 0.27-0.72, p=0.009); Haplotype GTA bảo vệ: OR = 0.31 (95% CI 0.14-0.67, p=0.003); Allele -819C tăng nguy cơ: OR = 1.5 (95% CI 1.1-2.0, p=0.04).",
-    "impact": "practice-changing",
-    "year": 2025,
-    "organization": "Đại học Tübingen, Trung tâm Nhiệt đới Việt-Đức (VG-CARE), Bệnh viện Trung ương Quân đội 108",
-    "phase": "Clinical Cohort and Genetic Association Study",
-    "sampleSize": 306,
-    "population": "Bệnh nhân sốt xuất huyết nhập viện tại Bệnh viện Trung ương Quân đội 108, Hà Nội (đại diện dân tộc Kinh) và 300 người hiến máu khỏe mạnh đối chứng.",
-    "summary": "Nghiên cứu di truyền miễn dịch đầu tiên tại Việt Nam chỉ ra mối liên quan mật thiết giữa nồng độ IL-10 huyết tương với mức độ tiến triển nặng của sốt xuất huyết. Nghiên cứu cũng xác định vai trò bảo vệ mạnh mẽ của haplotype GTA vùng khởi động gen IL-10, giải thích phần nào gánh nặng sốt xuất huyết nặng tại Việt Nam do tỷ lệ lưu hành ưu thế của haplotype nguy cơ di truyền trong quần thể người Kinh.",
-    "detailedConclusion": "Nồng độ Interleukin-10 (IL-10) huyết tương tăng cao rõ rệt theo các mức độ nặng lâm sàng của sốt xuất huyết: DF (trung vị 9.9 pg/mL), DWS (trung vị 18.0 pg/mL) và SD (trung vị 46.3 pg/mL) với khác biệt có ý nghĩa thống kê giữa cả ba phân nhóm (p < 0.05). Về di truyền học, allele di truyền -819C liên quan đến việc tăng nguy cơ mắc bệnh sốt xuất huyết (OR = 1.5 [95% CI 1.1-2.0], p=0.04). Ngược lại, genotype dị hợp tử -1082GA có tác động bảo vệ chống nhiễm vi-rút DENV (OR = 0.45 [95% CI 0.27-0.72], p=0.009), và allele -1082G bảo vệ chống lại việc tiến triển thành thể có dấu hiệu cảnh báo DWS (OR = 0.44 [95% CI 0.22-0.81], p=0.049). Đặc biệt, haplotype GTA (-1082G/-819T/-592A) có vai trò bảo vệ cao nhất chống nhiễm bệnh (OR = 0.31 [95% CI 0.14-0.67], p=0.003). Do haplotype di truyền ưu thế nhất ở người Kinh Việt Nam là haplotype nguy cơ ATA (-1082A/-819T/-592A) chiếm đến 70%, yếu tố di truyền chủng tộc này có thể là nguyên nhân quan trọng giải thích gánh nặng sốt xuất huyết cao trong cộng đồng. Những phát hiện này hỗ trợ phát triển các phác đồ sàng lọc dựa trên đặc điểm di truyền học miễn dịch của bệnh nhân để nâng cao hiệu quả phòng ngừa sớm.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "A90"
-    ],
-    "subgroups": "{\"Nồng độ IL-10 huyết tương trung vị theo độ nặng lâm sàng\":\"Sốt xuất huyết không có dấu hiệu cảnh báo (DF): trung vị 9.9 pg/mL | Sốt xuất huyết có dấu hiệu cảnh báo (DWS): trung vị 18.0 pg/mL | Sốt xuất huyết nặng (SD): trung vị 46.3 pg/mL (sự khác biệt giữa cả ba nhóm đều có ý nghĩa p < 0.05).\",\"Phân tích Haplotype promoter gen IL-10 liên quan nhiễm DENV\":\"COL: Haplotype ATA (-1082A/-819T/-592A): Chiếm ưu thế tuyệt đối ~70% ở cả bệnh nhân và đối chứng, là haplotype nguy cơ nền | Haplotype GTA (-1082G/-819T/-592A): Bảo vệ mạnh mẽ chống nhiễm DENV (OR = 0.31 [95% CI 0.14-0.67], p=0.003) | Haplotype ACC (-1082A/-819C/-592C): Tăng nguy cơ mắc bệnh với mức ý nghĩa cận biên (OR = 1.36).\",\"Độ phân phối di truyền SNPs vùng khởi động gen IL-10\":\"HBAR: Biến thể rs1800896 (-1082GA): Giảm nguy cơ nhiễm DENV (OR = 0.45) | Biến thể rs1800871 (-819C): Tăng nguy cơ nhiễm DENV (OR = 1.5) | Biến thể rs1800872 (-592C/A): Không tìm thấy mối liên quan có ý nghĩa thống kê với tính nhạy cảm hoặc mức độ nặng.\"}"
-  },
-  {
     "id": "2025-esc-eas-dyslipidemia",
     "title": "ESC/EAS 2025: Hướng Dẫn Cập Nhật Tiêu Điểm Về Quản Lý Rối Loạn Lipid Máu — Tăng Cường Dự Phòng, Phân Tầng Nguy Cơ & Điều Trị Trúng Đích",
     "titleEn": "2025 ESC/EAS Dyslipidemia Guidelines Focused Update: Intensifying Prevention, Risk Stratification, and Therapy (Pradhan et al., Am J Cardiol 2026 / Eur Heart J 2025)",
@@ -2148,30 +1452,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Người trưởng thành cần dự phòng biến cố tim mạch sơ cấp hoặc thứ cấp thông qua quản lý rối loạn lipid máu, bao gồm cả các nhóm đặc biệt như bệnh nhân hội chứng vành cấp (ACS), bệnh nhân nhiễm HIV (PLHIV), bệnh nhân ung thư đang điều trị hóa trị anthracyclines, bệnh nhân tăng triglyceride máu nặng và bệnh nhân tăng cholesterol máu gia đình (HoFH/HeFH) [1-3, 7, 8, 12, 13].",
     "asianData": true,
     "sourceUrl": "https://www.diazyme.com/content/2025_ESC_EAS_Dyslipidemia_Guidlines_Update.pdf"
-  },
-  {
-    "id": "2025-efficacy-public-health-impact-takeda-dengue-vaccine",
-    "title": "Hiệu quả, tác động sức khỏe cộng đồng và sử dụng tối ưu vắc-xin sốt xuất huyết Takeda",
-    "drug": "Qdenga, TAK-003",
-    "sourceType": "intl-study",
-    "specialty": "infect",
-    "design": "meta",
-    "intervention": "Đánh giá hiệu quả vắc-xin (VE) Qdenga qua mô hình sống sót thuần tập Bayesian khớp với dữ liệu thử nghiệm lâm sàng pha III (~21.000 trẻ từ 4-16 tuổi tại Châu Á và Mỹ Latinh), kết hợp mô hình lan truyền ngẫu nhiên để dự báo tác động y tế công cộng sau 10-15 năm tiêm chủng thường quy.",
-    "primaryEndpoint": "Đánh giá hiệu quả vắc-xin (VE) bảo vệ chống sốt xuất huyết triệu chứng và nhập viện theo tình trạng kháng thể nền, độ tuổi, tuýp huyết thanh (DENV1-4) và dự báo số ca mắc/nhập viện được ngăn ngừa.",
-    "keyResults": "VE VCD triệu chứng: 61.2% (95% CI 56.0-65.8) | VE VCD nhập viện: 84.1% (95% CI 77.8-88.6) | Tác động cộng đồng (SP9 > 60%): Giảm 10% - 22% số ca nhập viện | Tác động cá thể (SP9 = 60%): Ngăn ngừa 95 ca mắc (95% CrI 25-178) và 14 ca nhập viện (95% CrI 6-23) trên 1.000 trẻ",
-    "impact": "practice-changing",
-    "year": 2025,
-    "organization": "Imperial College London",
-    "phase": "Phase III modeling analysis",
-    "sampleSize": 21000,
-    "population": "Trẻ em và thanh thiếu niên (4-16 tuổi trong nghiên cứu lâm sàng, mô hình hóa tiêm chủng từ 6-12 tuổi) sống tại khu vực lưu hành dịch tễ sốt xuất huyết ở Châu Á và Mỹ Latinh.",
-    "summary": "Nghiên cứu sử dụng mô hình toán học tích hợp dữ liệu thử nghiệm lâm sàng pha III của vắc-xin Qdenga nhằm đánh giá hiệu quả bảo vệ và tác động y tế công cộng theo tuýp vi-rút, độ tuổi và tình trạng kháng thể nền. Kết quả cho thấy Qdenga bảo vệ vượt trội đối với DENV2 bất kể tình trạng kháng thể nền, hiệu quả trung bình với các tuýp khác ở người đã có kháng thể trước đó, nhưng cảnh báo nguy cơ tăng độ nặng của bệnh (enhancement) đối với DENV3 và DENV4 ở đối tượng âm tính nền. Nghiên cứu ủng hộ khuyến cáo của WHO về việc ưu tiên tiêm chủng thường quy cho trẻ từ 6 tuổi trở lên tại vùng có dịch tễ trung bình đến cao mà không cần sàng lọc trước tiêm.",
-    "detailedConclusion": "Hiệu quả bảo vệ của Qdenga suy giảm theo thời gian và phụ thuộc mạnh mẽ vào tình trạng miễn dịch nền của cá thể và tuýp vi-rút gây bệnh. Vắc-xin đạt hiệu quả bảo vệ vượt trội và bền vững chống lại chủng DENV2 bất kể tình trạng kháng thể nền, và bảo vệ trung bình đối với DENV1, 3, 4 ở những người đã có kháng thể (seropositive). Tuy nhiên, ở trẻ âm tính với kháng thể nền (seronegative), nghiên cứu phát hiện bằng chứng về nguy cơ tăng độc lực gây bệnh (enhancement) đối với DENV3 và DENV4 sau khoảng 3 năm tiêm chủng, đặc biệt ở nhóm trẻ dưới 6 tuổi. Việc triển khai tiêm chủng thường quy cho trẻ ≥6 tuổi tại các vùng dịch tễ có tỷ lệ lưu hành cao (SP9 >60%) ước tính giúp giảm từ 10% đến 22% gánh nặng nhập viện do sốt xuất huyết trong vòng 10 năm. WHO hiện không khuyến cáo sàng lọc kháng thể trước tiêm vì chiến lược này sẽ làm giảm đáng kể tác động bảo vệ cộng đồng đối với các chủng DENV1 và DENV2.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "A90"
-    ]
   },
   {
     "id": "2025-ats-cap",
@@ -2221,7 +1501,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "Hiệp hội Tụy học Quốc tế (IAP), APA, EPC, IPC & JPS",
     "journal": "Pancreatology",
-    "file": "2025-iap-acute-pancreatitis.html",
+    "file": "2025-iap-acute-pancreatitis.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K85",
@@ -2238,29 +1518,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Trẻ em, người trưởng thành, phụ nữ mang thai bị nghi ngờ hoặc đã xác định mắc viêm tụy cấp (bao gồm cả thể mô kẽ nhẹ và thể hoại tử nặng).",
     "asianData": true,
     "subgroups": "{\"Tác động của mức độ bù dịch ban đầu (Thử nghiệm WATERFALL)\":\"COL: Quá tải dịch (Bù tích cực): 21.0% | Quá tải dịch (Bù trung bình): 6.0%\",\"Đích sinh lý đánh giá bù dịch tối ưu (Q12)\":\"HBAR: Huyết áp động mạch trung bình (MAP): 65-85 mmHg | Thể tích nước tiểu tối thiểu: 0.5 mL/kg/giờ | Hematocrit mục tiêu: < 44.0% | Blood Urea Nitrogen (BUN): < 20.0 mg/dL\",\"Hiệu quả dự phòng viêm tụy sau ERCP (PEP) (Q68-71)\":\"HBAR: Đặt stent ống tụy + NSAID trực tràng: Ưu việt cho nhóm nguy cơ cao | Chỉ dùng NSAID trực tràng (Indomethacin/Diclofenac): Khuyến cáo cho tất cả bệnh nhân có nguy cơ trung bình | Truyền dịch LR chu phẫu: Giảm tần suất và độ nặng của PEP\",\"Chỉ định can thiệp cơ học đối với hoại tử tụy hoại tử (Q36)\":\"HBAR: Hoại tử nhiễm trùng kèm suy sụp lâm sàng: Chỉ định tuyệt đối | WON vô trùng có triệu chứng kéo dài (đau, tắc nghẽn, suy dinh dưỡng): Chỉ định can thiệp trì hoãn | Biến chứng chảy máu tụy hoặc thiếu máu cục bộ ruột: Can thiệp cấp cứu tối khẩn\"}"
-  },
-  {
-    "id": "2025-glp1-nutrition-interventions",
-    "title": "Ứng dụng can thiệp dinh dưỡng kết hợp với liệu pháp GLP-1: Đánh giá tổng quan về thách thức và giải pháp",
-    "drug": "Liraglutide, Semaglutide, Tirzepatide",
-    "sourceType": "intl-study",
-    "specialty": "nutri",
-    "design": "review",
-    "intervention": "Quản lý dinh dưỡng toàn diện (nạp protein 1.0-1.5 g/kg/ngày, tập kháng lực 2-3 lần/tuần, cấp nước >2-3 L/ngày) kết hợp với các thuốc đồng vận GLP-1/GIP ở bệnh nhân thừa cân, béo phì.",
-    "primaryEndpoint": "Nhận diện các thách thức về giảm cơ bắp (sarcopenic obesity) và suy dinh dưỡng do giảm thèm ăn khi dùng GLP-1, đồng thời đề xuất giải pháp can thiệp lối sống đa chuyên khoa để cải thiện kết cục sức khỏe.",
-    "keyResults": "COL: Tỷ lệ nạc giảm trên tổng cân mất: 40.0% | Nguy cơ thiếu Vitamin D sau 1 năm: 14.0% | Mất cơ chẩn đoán sau 1 năm: 3.0%",
-    "impact": "informative",
-    "year": 2025,
-    "organization": "Obesity Pillars (Elsevier)",
-    "phase": "Clinical Review",
-    "population": "Bệnh nhân thừa cân, béo phì đang điều trị bằng các thuốc chống béo phì nhóm đồng vận thụ thể GLP-1 (như Liraglutide, Semaglutide, Tirzepatide).",
-    "summary": "Bài tổng quan năm 2025 đánh giá những thách thức về dinh dưỡng ở bệnh nhân dùng liệu pháp GLP-1, đặc biệt là nguy cơ giảm khối lượng cơ (sarcopenic obesity) và thiếu hụt vi chất. Việc thiết lập phác đồ dinh dưỡng cá thể hóa, tập trung nạp đủ protein và rèn luyện kháng lực, đóng vai trò sống còn để bảo vệ khối lượng nạc và tối ưu hóa kết cục điều trị dài hạn.",
-    "detailedConclusion": "Liệu pháp GLP-1 làm giảm đáng kể lượng calo nạp vào (lên đến 40%), dẫn đến làm giảm cả khối lượng nạc (chiếm 25-60% tổng lượng cân giảm). Trong thử nghiệm STEP-1 và SURMOUNT-1, tỷ lệ mất cơ xương ước tính >=10%. Nhằm ngăn ngừa béo phì thiểu cơ (sarcopenic obesity), bệnh nhân bắt buộc phải nạp 1.0 - 1.5 g protein/kg cân nặng mỗi ngày kết hợp tập kháng lực ít nhất 2 lần/tuần. Tác dụng phụ trên đường tiêu hóa như buồn nôn, tiêu chảy ảnh hưởng lớn đến sự tuân thủ điều trị (tần suất lên tới 43% đối với buồn nôn); do đó cần tư vấn bệnh nhân chia nhỏ bữa ăn và uống đủ nước (>2-3 L/ngày) để bảo vệ chức năng thận. Bệnh nhân cần được chuyên gia dinh dưỡng (dietitian) theo dõi sát sao để phát hiện sớm các nguy cơ thiếu hụt vi chất và rối loạn cơ bắp.",
-    "fdaStatus": "N/A",
-    "icd10": [
-      "E66",
-      "E46"
-    ]
   },
   {
     "id": "2025-who-advanced-hiv-disease-ahd",
@@ -2303,7 +1560,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2025,
     "organization": "Tổ chức Y tế Thế giới (WHO)",
     "journal": "WHO Guidelines Approved by the Guidelines Review Committee",
-    "file": "2025-who-arboviral-diseases.html",
+    "file": "2025-who-arboviral-diseases.mdx",
     "conditionKey": "dengue-fever",
     "icd10": [
       "A90",
@@ -2397,7 +1654,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "American Association for the Study of Liver Diseases (AASLD)",
     "journal": "Hepatology",
-    "file": "2024-aasld-tang-ap-cua.html",
+    "file": "2024-aasld-tang-ap-cua.mdx",
     "conditionKey": "cirrhosis",
     "icd10": [
       "K74",
@@ -2428,7 +1685,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "American College of Gastroenterology (ACG)",
     "journal": "Am J Gastroenterol",
-    "file": "2024-acg-viemgandoruou.html",
+    "file": "2024-acg-viemgandoruou.mdx",
     "conditionKey": "cirrhosis",
     "icd10": [
       "K70",
@@ -2489,7 +1746,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Bộ Y tế Việt Nam / Chương trình Chống Lao Quốc gia",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2024-byt-lao-p1.html",
+    "file": "2024-byt-lao-p1.mdx",
     "conditionKey": "tb",
     "icd10": [
       "A15",
@@ -2524,7 +1781,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2024-byt-lao-p2.html",
+    "file": "2024-byt-lao-p2.mdx",
     "conditionKey": "tb",
     "icd10": [
       "A15",
@@ -2546,7 +1803,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Bộ Y tế Việt Nam (QĐ-BYT)",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2024-byt-aspergillus-cpa.html",
+    "file": "2024-byt-aspergillus-cpa.mdx",
     "conditionKey": "invasive-fungal",
     "icd10": [
       "B44",
@@ -2601,7 +1858,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2024-byt-vgsvc.html",
+    "file": "2024-byt-vgsvc.mdx",
     "conditionKey": "hepatitis-c",
     "icd10": [
       "B18.2"
@@ -2615,44 +1872,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": true,
     "subgroups": "{\"Phân tầng phác đồ DAA điều trị lần đầu\":\"Không xơ gan (≥3 tuổi): SOF/VEL x 12 tuần, SOF/DAC x 12 tuần, G/P x 8 tuần (SOF/LED x 12 tuần cho kiểu gen 1,4,5,6) | Xơ gan còn bù (≥3 tuổi): SOF/VEL x 12 tuần, G/P x 8 tuần, SOF/DAC x 24 tuần, SOF/LED x 12 tuần (kiểu gen 1,4,5,6)\",\"Phác đồ xơ gan mất bù (Child-Pugh B hoặc C)\":\"COL: Phối hợp Ribavirin: 12 tuần (SOF/DAC + RBV; SOF/VEL + RBV; SOF/LED + RBV) | Không phối hợp Ribavirin (khi có chống chỉ định): 24 tuần (SOF/DAC; SOF/VEL; SOF/LED) | Chống chỉ định phác đồ xơ gan mất bù: Không sử dụng phác đồ có chứa hoạt chất ức chế protease NS3/4A (Glecaprevir, Voxilaprevir, Grazoprevir)\",\"Đánh giá mức độ xơ hóa gan không xâm lấn (Phụ lục 1)\":\"HBAR: Đo độ đàn hồi gan FibroScan: F0-F1 < 7.1 kPa | F2: 7.1 - < 9.5 kPa | F3: 9.5 - < 12.5 kPa | F4 (Xơ gan): ≥ 12.5 kPa || Chỉ số APRI: F0-F1 < 0.5 | F2-F3: 0.5 - 1.0 | F4 (Xơ gan): > 1.0 || Chỉ số FIB-4: F0-F1 < 1.45 | F2-F3: 1.45 - 3.25 | F4 (Xơ gan): > 3.25\"}",
     "fdaStatus": "N/A"
-  },
-  {
-    "id": "2024-fao-who-healthy-diets",
-    "title": "Chế độ ăn uống lành mạnh: Tuyên bố chung của Tổ chức Lương thực và Nông nghiệp Liên Hợp Quốc (FAO) và Tổ chức Y tế Thế giới (WHO) 2024",
-    "drug": "Carbohydrate, Chất béo, Protein, Natri, Kali, Đường tự do, Chất xơ",
-    "sourceType": "intl-guideline",
-    "specialty": "nutri",
-    "design": "guideline",
-    "intervention": "Thiết lập 4 nguyên tắc cốt lõi của chế độ ăn lành mạnh (Đầy đủ, Cân bằng, Tiết chế, Đa dạng); quy chuẩn hóa các ngưỡng khuyến nghị định lượng đối với dinh dưỡng đa lượng, vi lượng, đường tự do, muối ăn và chất béo nhằm xây dựng các hướng dẫn dinh dưỡng bền vững.",
-    "primaryEndpoint": "Phòng ngừa mọi hình thức suy dinh dưỡng, thúc đẩy tăng trưởng và phát triển toàn diện, nâng cao sức khỏe thể chất và tinh thần, đồng thời giảm thiểu gánh nặng các bệnh không lây nhiễm (NCDs) liên quan đến chế độ ăn.",
-    "keyResults": "HBAR: Carbohydrate: 60.0% | Chất béo: 22.5% | Protein: 12.5% | Đường tự do: 10.0%",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "FAO & WHO",
-    "phase": "Clinical Guideline",
-    "population": "Dân số chung ở mọi lứa tuổi trên toàn cầu, bao gồm trẻ em, thanh thiếu niên, người trưởng thành và các nhóm đối tượng sinh lý đặc biệt (phụ nữ mang thai và cho con bú).",
-    "summary": "Tuyên bố chung năm 2024 của FAO và WHO thống nhất định nghĩa toàn cầu về chế độ ăn uống lành mạnh dựa trên 4 nguyên tắc cốt lõi: Đầy đủ, Cân bằng, Tiết chế và Đa dạng. Hướng dẫn thiết lập các ngưỡng định lượng cụ thể dựa trên y học chứng cứ cho các chất dinh dưỡng đa lượng và vi lượng, đồng thời nhấn mạnh vai trò không thể tách rời của an toàn thực phẩm đối với sức khỏe con người.",
-    "detailedConclusion": "Lượng năng lượng hàng ngày cần được cân đối hài hòa giữa các nguồn dinh dưỡng: Carbohydrate chiếm 45-75%, Chất béo từ 15-30% (lên đến 35% ở trẻ em), và Protein chiếm 10-15% tổng năng lượng. Khuyến nghị kiểm soát nghiêm ngặt lượng acid béo bão hòa ở mức dưới 10%, acid béo trans dưới 1%, và đường tự do dưới 10% (giảm dưới 5% để đạt lợi ích bổ sung) tổng năng lượng hàng ngày. Lượng natri nạp vào cần giới hạn dưới 2 g/ngày (tương đương 5 g muối ăn) ở người lớn và điều chỉnh thấp hơn cho trẻ em; đồng thời khuyến khích tăng lượng kali từ thực phẩm lên ít nhất 3.510 mg/ngày (90 mmol/ngày) để giảm huyết áp và nguy cơ tim mạch. Người lớn nên tiêu thụ ít nhất 400 g rau quả và tối thiểu 25 g chất xơ tự nhiên mỗi ngày để nâng cao chất lượng dinh dưỡng.",
-    "asianData": true,
-    "subgroups": "{\"Phân phối dinh dưỡng đa lượng theo tỷ lệ năng lượng (%)\":\"COL: Carbohydrate: 60.0% | Chất béo: 22.5% | Protein: 12.5%\",\"Các thành phần cần tiết chế tối đa trong khẩu phần (%)\":\"HBAR: Acid béo bão hòa: 10.0% | Đường tự do: 10.0% | Acid béo trans: 1.0%\",\"Đích khuyến nghị hàng ngày về rau quả và vi chất ở người lớn\":\"HBAR: Rau và trái cây (g/ngày): 400.0% | Chất xơ tự nhiên (g/ngày): 25.0% | Muối ăn tối đa (g/ngày): 5.0%\"}"
-  },
-  {
-    "id": "2024-who-afro-diphtheria-outbreak-preparedness",
-    "title": "Diphtheria Outbreaks: Comprehensive Guidance for the Public Health Preparedness and Response in the WHO African Region — Hướng dẫn toàn diện của WHO Châu Phi năm 2024 về sẵn sàng ứng phó và kiểm soát dịch Bạch hầu",
-    "drug": "Erythromycin, Azithromycin, Benzathine benzylpenicillin, Procaine benzylpenicillin, Aqueous benzylpenicillin, Clindamycin, Diphtheria antitoxin (DAT), Mupirocin, Chlorhexidine, Paracetamol, Hydrogen peroxide",
-    "sourceType": "intl-guideline",
-    "specialty": "infect",
-    "design": "guideline",
-    "intervention": "Áp dụng khung chẩn đoán vi sinh tiêu chuẩn (nuôi cấy tellurite/cystinase, kiểm tra độc tố Elek, PCR sinh độc tố); thiết lập quy trình cách ly giọt bắn và tiếp xúc tại bệnh viện; điều trị ca bệnh bằng kháng sinh 14 ngày kết hợp DAT; theo dõi sát biến chứng tim mạch/thần kinh và súc miệng bằng hydrogen peroxide 1%; đồng thời quản lý tiếp xúc gần bằng kháng sinh dự phòng 7 ngày (Penicillin/Erythromycin/Azithromycin) và tiêm chủng đuổi diện rộng.",
-    "primaryEndpoint": "Chuẩn hóa quy trình sẵn sàng và phản ứng khẩn cấp cho các quốc gia thành viên tại Châu Phi để kiểm soát hiệu quả dịch bạch hầu tái bùng phát, kiểm soát nguồn lây, giảm tỷ lệ tử vong (CFR) xuống dưới mức mục tiêu ≤ 5-10% và tăng độ bao phủ vắc-xin bảo vệ cộng đồng.",
-    "keyResults": "COL: Chỉ tiêu CFR tối đa: 10.0% | Chỉ tiêu lấy mẫu trước kháng sinh: 80.0% | Chỉ tiêu dùng kháng sinh tiếp xúc 7 ngày: 85.0% | Chỉ tiêu hoàn thành 3 mũi vắc-xin tiếp xúc gần: 85.0%",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "WHO African Region (WHO AFRO)",
-    "sampleSize": 12351,
-    "population": "Người dân, nhân viên y tế, người tiếp xúc gần và các nhà quản lý y tế công cộng tại Khu vực Châu Phi của WHO, đặc biệt là ở các nước thuộc các nhóm ưu tiên khẩn cấp (Nigeria, Guinea, Niger, Mauritania, Nam Phi, Angola, v.v.).",
-    "summary": "Hướng dẫn toàn diện của Văn phòng Khu vực Châu Phi của WHO (AFRO) ban hành tháng 2 năm 2024 nhằm ứng phó với sự bùng phát bạch hầu nghiêm trọng ở khu vực Tây Phi. Tài liệu tích hợp các quy chuẩn giám sát dựa trên ca bệnh, chẩn đoán xét nghiệm vi sinh chi tiết, cách ly kiểm soát nhiễm khuẩn (IPC) tại bệnh viện, phác đồ điều trị nội khoa kết hợp và các can thiệp y tế công cộng then chốt như truy vết tiếp xúc gần, dùng kháng sinh dự phòng 7 ngày và triển khai chiến dịch tiêm chủng đuổi tại vùng có nguy cơ cao.",
-    "detailedConclusion": "Tài liệu phân tầng mức độ tổn thương của các quốc gia Châu Phi thành 4 nhóm (Tier 1 đến Tier 4) để tối ưu hóa việc phân phối nguồn lực DAT và vắc-xin. Việc lấy mẫu bệnh phẩm yêu cầu lấy cả tăm bông họng và tăm bông mũi bằng que dacron/polyester (không dùng cotton do ức chế PCR) để nuôi cấy trên môi trường tellurite (Tinsdale) và kiểm tra Elek/PCR sinh độc tố. Bệnh nhân nghi ngờ bạch hầu hô hấp phải được cách ly phòng giọt bắn ngay lập tức (phòng đơn hoặc duy trì khoảng cách tối thiểu 1 mét) và có thể súc miệng bằng dung dịch hydrogen peroxide 1% để hỗ trợ bong màng giả. Phác đồ điều trị kéo dài 14 ngày bằng Erythromycin đường uống (40-50 mg/kg/ngày, tối đa 2 g/ngày) hoặc Penicillin G tiêm (Aqueous benzylpenicillin 100.000 units/kg/ngày hoặc Procaine benzylpenicillin 50 mg/kg/ngày). Mọi tiếp xúc gần (contacts) phải được theo dõi trong 10 ngày, lấy mẫu phết và dùng kháng sinh dự phòng trong 7 ngày bằng Benzathine penicillin G tiêm bắp liều đơn hoặc Erythromycin/Azithromycin đường uống; nếu tiếp xúc gần có kết quả cấy dương tính với C. diphtheriae sinh độc tố, họ được phân loại là ca bệnh xác định và phải điều trị đầy đủ 14 ngày bằng kháng sinh."
   },
   {
     "id": "2024-esc-atrial-fibrillation",
@@ -2716,53 +1935,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Trẻ em và người lớn nghi ngờ hoặc được chẩn đoán xác định mắc áp-xe não do vi khuẩn hoặc các tác nhân cơ hội khác.",
     "asianData": false,
     "sourceUrl": "https://www.clinicalmicrobiologyandinfection.org/action/showPdf?pii=S1198-743X%2823%2900399-3"
-  },
-  {
-    "id": "2024-byt-dtd-type-1-tre-em-thanh-thieu-nien",
-    "title": "Hướng dẫn chẩn đoán và điều trị bệnh đái tháo đường típ 1 ở trẻ em và thanh thiếu niên (Ban hành kèm theo Quyết định số 1760/QĐ-BYT năm 2024 của Bộ trưởng Bộ Y tế)",
-    "drug": "Insulin aspart, Insulin lispro, Insulin glulisine, Insulin regular, Insulin NPH, Insulin glargine, Insulin detemir, Insulin degludec, Glucagon, Glucose, Metformin, Captopril, Enalapril, Lisinopril, Simvastatin, Lovastatin, Pravastatin",
-    "sourceType": "vn-moh",
-    "specialty": "endo",
-    "design": "guideline",
-    "intervention": "Thực hiện quy trình chẩn đoán phân biệt đái tháo đường típ 1, típ 2 và đơn gen; tối ưu hóa liệu pháp insulin tích cực bằng phác đồ tiêm nhiều lần trong ngày (MDI) hoặc bơm insulin dưới da liên tục (CSII); thiết lập chế độ tự theo dõi glucose huyết mao mạch (SMBG) hoặc liên tục (CGM) kết hợp tư vấn dinh dưỡng đếm carbohydrate và tập luyện.",
-    "primaryEndpoint": "Chuẩn hóa quy trình chẩn đoán sớm và quản lý điều trị toàn diện nhằm kiểm soát glucose huyết tối ưu (đích HbA1c < 7.0%), giảm tỷ lệ xuất hiện các biến chứng cấp tính (nhiễm toan ceton, hạ đường huyết nghiêm trọng) và biến chứng vi mạch mạn tính (bệnh thận, võng mạc, thần kinh) ở bệnh nhi.",
-    "keyResults": "COL: Đích TIR (70-180 mg/dL): 70.0% | DKA khi mới chẩn đoán: 35.0% | Tổn thương thận cấp trong DKA: 44.5% | Tử vong do DKA: 8.0%",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Trẻ em và thanh thiếu niên (dưới 18 tuổi) bị nghi ngờ hoặc đã được xác định mắc bệnh đái tháo đường típ 1 trên phạm vi cả nước.",
-    "summary": "Hướng dẫn chuyên môn quốc gia năm 2024 của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 1760/QĐ-BYT quy định chi tiết việc quản lý và điều trị đái tháo đường típ 1 ở trẻ em và thanh thiếu niên. Tài liệu chuẩn hóa việc chẩn đoán phân loại dựa trên kháng thể tự miễn, thiết lập vai trò của các phác đồ insulin tích cực (MDI hoặc bơm insulin), công cụ theo dõi hiện đại (CGM) và cung cấp lưu đồ xử trí cấp cứu biến chứng nhiễm toan ceton (DKA) chi tiết.",
-    "detailedConclusion": "Liệu pháp insulin tích cực (như MDI với tổng liều khởi đầu 0.8 - 1.0 UI/kg/ngày) được khuyến cáo mạnh cho trẻ em trên 10 tuổi; trẻ nhỏ dưới 10 tuổi có thể bắt đầu bằng phác đồ 2 mũi insulin trộn sẵn. Đích HbA1c kiểm soát lý tưởng là < 7.0% (< 53 mmol/mol) đối với hầu hết bệnh nhi; và đích theo dõi CGM yêu cầu thời gian trong phạm vi mục tiêu (TIR 70-180 mg/dL) đạt > 70%, dưới ngưỡng (< 70 mg/dL) < 4% và dưới 54 mg/dL < 1%. Khi xảy ra nhiễm toan ceton (DKA) (chẩn đoán khi glucose > 11 mmol/L, pH < 7.3, HCO3- < 15 mmol/L, ceton máu ≥ 3 mmol/L), bắt buộc bù dịch NaCl 0.9% trước, sau đó truyền tĩnh mạch insulin liều thấp 0.05 - 0.1 UI/kg/giờ (0.03 UI/kg/giờ ở trẻ < 3 tuổi) từ giờ thứ hai, bù kali sớm và chỉ dùng bicarbonate khi pH < 6.9 kèm giảm sức co bóp cơ tim. Biến chứng vi mạch (thận, võng mạc, thần kinh) bắt đầu sàng lọc hàng năm từ 11 tuổi hoặc tuổi dậy thì với thời gian mắc bệnh từ 2 - 5 năm.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "E11"
-    ]
-  },
-  {
-    "id": "2024-byt-benh-than-man-2388",
-    "title": "Hướng dẫn chẩn đoán và điều trị bệnh thận mạn và một số bệnh lý thận (Ban hành kèm theo Quyết định số 2388/QĐ-BYT năm 2024 của Bộ trưởng Bộ Y tế)",
-    "drug": "Metformin, Dapagliflozin, Empagliflozin, Canagliflozin, Liraglutide, Lixisenatide, Spironolactone, Finerenone, Allopurinol, Febuxostat, Colchicine, Epoetin alfa, Epoetin beta, Methoxy polyethylene glycol-epoetin beta, Sắt sucrose, Sắt dextran, Prednisolone, Methylprednisolone, Cyclophosphamide, Mycophenolate mofetil, Azathioprine, Tacrolimus, Cyclosporine, Budesonide, Rituximab, Tolvaptan",
-    "sourceType": "vn-moh",
-    "specialty": "renal",
-    "design": "guideline",
-    "intervention": "Áp dụng quy trình sàng lọc, phân độ CGA và quản lý toàn diện bệnh thận mạn (BTM) thông qua kiểm soát huyết áp, đường máu, lipid máu, thiếu máu, rối loạn điện giải và chuyển hóa xương; phối hợp phác đồ dinh dưỡng hạn chế đạm với các liệu pháp dược lý bảo vệ tim mạch - thận cốt lõi.",
-    "primaryEndpoint": "Làm chậm sự tiến triển của bệnh thận mạn (BTM) đến giai đoạn cuối, điều trị hiệu quả các biến chứng (thiếu máu, suy dinh dưỡng, bệnh xương và chất khoáng) và kiểm soát các yếu tố nguy cơ tim mạch nhằm giảm tỷ lệ tử vong [1].",
-    "keyResults": "HA tâm thu mục tiêu (KDIGO 2024): < 120 mmHg; Đích Hb điều trị thiếu máu: 10 - 12 g/dL; Khởi trị SGLT2i khi eGFR ≥ 20 mL/min/1.73 m²; Chế độ ăn protein LPD: 0.55 - 0.60 g/kg/ngày; Chuyển chuyên khoa Thận khi nguy cơ suy thận 5 năm đạt 3% - 5%",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân bị bệnh thận mạn, tổn thương thận cấp, bệnh thận đái tháo đường, viêm thận Lupus, bệnh thận IgA, bệnh cầu thận thay đổi tối thiểu, xơ cầu thận ổ-cục bộ, bệnh cầu thận màng và các bệnh lý cầu thận thứ phát tại Việt Nam.",
-    "summary": "Tài liệu chuyên môn quốc gia năm 2024 của Bộ Y tế Việt Nam thiết lập khung tiêu chuẩn lâm sàng toàn diện cho việc chẩn đoán, phân tầng nguy cơ và điều trị bảo tồn bệnh thận mạn. Hướng dẫn chuẩn hóa các công thức ước tính mức lọc cầu thận, siết chặt huyết áp mục tiêu theo các khuyến cáo quốc tế và cập nhật chi tiết phác đồ quản lý biến chứng, chỉ định điều trị thay thế thận.",
-    "detailedConclusion": "Chẩn đoán bệnh thận mạn (BTM) dựa trên mức lọc cầu thận (MLCT) < 60 mL/phút/1.73 m² hoặc có chỉ dấu tổn thương thận kéo dài trên 3 tháng (như UACR ≥ 30 mg/g) [2]. Hướng dẫn khuyến cáo siết chặt huyết áp tâm thu mục tiêu xuống < 120 mmHg nếu bệnh nhân dung nạp được [3], ưu tiên khởi trị bằng các thuốc nhóm ức chế hệ RAA (ACEi/ARB) đặc biệt khi có tăng albumin niệu [3]. Liệu pháp ức chế SGLT2 (Dapagliflozin hoặc Empagliflozin 10 mg/ngày) được khuyến cáo mạnh mẽ với mức chứng cứ 1A cho bệnh nhân đái tháo đường típ 2 kèm BTM có MLCT ≥ 20 mL/phút/1.73 m² [4]. Kiểm soát thiếu máu bằng cách bù sắt tối ưu (đích Ferritin 100-500 µg/L ở bệnh nhân không lọc máu) [5] và sử dụng thuốc kích thích tạo hồng cầu (ESA) để duy trì đích Hb từ 10-12 g/dL [6]. Khuyến nghị chế độ ăn giảm protein (LPD 0.55-0.60 g/kg/ngày) hoặc rất giảm protein (VLPD 0.28-0.43 g/kg/ngày) phối hợp với keto analog cho BTM giai đoạn 3-5 ổn định chưa lọc máu [7, 8]. Bệnh nhân cần được chuyển tuyến chuyên khoa Thận theo dõi khi MLCT < 30 mL/phút/1.73 m² hoặc có chỉ số nguy cơ suy thận sau 5 năm từ 3-5% [9, 10].",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "N18"
-    ],
-    "subgroups": "{\"Phân tầng nguy cơ tiến triển BTM (KDIGO 2024)\":\"Nguy cơ thấp (Xanh - G1/2-A1): khám hàng năm | Nguy cơ vừa (Vàng): khám ≥ 1 lần/năm | Nguy cơ cao (Cam): khám ≥ 2 lần/năm | Nguy cơ rất cao (Đỏ/Đỏ sẫm): khám 3-4 lần/năm bởi bác sĩ chuyên khoa Thận [11-13].\",\"Mục tiêu kiểm soát huyết áp & hệ RAA\":\"COL: HA mục tiêu theo KDIGO 2024: SBP < 120 mmHg | HA mục tiêu theo VNHA 2022: 120-129/70-79 mmHg [3] | Xét nghiệm creatinin và kali máu sau 2-4 tuần khởi trị/tăng liều: Bắt buộc [14]\",\"Kiểm soát đái tháo đường & đường máu\":\"HBAR: HbA1C mục tiêu cá thể hóa: 6.5% - 8.0% [15] | Ngưỡng ngắt Metformin: eGFR < 30 mL/phút/1.73 m² [16] | Ngưỡng ngắt SGLT2i: tiếp tục dùng khi eGFR < 20 cho đến khi lọc máu/ghép thận [17]\"}"
   },
   {
     "id": "2024-idsa-chan-doan-hinh-anh-ap-xe-o-bung",
@@ -2897,7 +2069,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Kidney Disease: Improving Global Outcomes (KDIGO)",
     "journal": "Kidney Int",
-    "file": "2024-kdigo-ckd.html",
+    "file": "2024-kdigo-ckd.mdx",
     "conditionKey": "ckd",
     "icd10": [
       "N18",
@@ -2949,32 +2121,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://discovery.ucl.ac.uk/id/eprint/10204476/1/meningitis-bacterial-and-meningococcal-disease-recognition-diagnosis-and-management-pdf-66143949881029.pdf"
   },
   {
-    "id": "cavernous-hemangioma-tongue-2024",
-    "title": "U máu thể hang ở lưỡi ở người lớn (Cavernous Hemangioma of the Tongue in an Adult)",
-    "drug": "Phẫu thuật cắt bỏ, Sclerotherapy, Propranolol, Systemic steroids",
-    "sourceType": "intl-study",
-    "specialty": "onco",
-    "design": "case-report",
-    "intervention": "Phẫu thuật cắt bỏ khối u máu thể hang ở lưỡi so sánh với các lựa chọn điều trị bảo tồn (thuốc, tiêm xơ, laser)",
-    "primaryEndpoint": "Đặc điểm lâm sàng, phương pháp tiếp cận chẩn đoán và hiệu quả phục hồi sau phẫu thuật của u máu thể hang ở người cao tuổi",
-    "keyResults": "Khối u kích thước 2x1 cm được cắt bỏ thành công dưới gây tê cục bộ; bệnh nhân hồi phục hoàn toàn sau 1 tháng, không có biến chứng chảy máu hay tái phát",
-    "impact": "informative",
-    "year": 2024,
-    "organization": "Cureus (Dr. D. Y. Patil Medical College, Ấn Độ)",
-    "phase": "Case Report",
-    "sampleSize": 1,
-    "population": "Bệnh nhân nữ người lớn (76 tuổi) mắc khối u máu thể hang (cavernous hemangioma) ở vùng đầu lưỡi",
-    "summary": "Báo cáo ca lâm sàng mô tả một trường hợp hiếm gặp về u máu thể hang ở lưỡi phát hiện ở một phụ nữ 76 tuổi. Tổn thương được xử trí thành công bằng phẫu thuật cắt bỏ, nhấn mạnh đây là một lựa chọn an toàn, triệt để đối với các khối u nhỏ ở vị trí dễ tiếp cận.",
-    "detailedConclusion": "U máu (Hemangioma) thường phổ biến ở trẻ sơ sinh và trẻ nhỏ (chiếm 60-70% ở vùng đầu cổ) nhưng cực kỳ hiếm gặp ở người cao tuổi như trong ca bệnh 76 tuổi này. Khám lâm sàng ghi nhận khối u màu xanh tím 2x1 cm ở mặt lưng đầu lưỡi phải, mềm, ấn xẹp (blanched on pressure). Chẩn đoán phân biệt đặt ra gồm u bạch mạch và u hạt sinh mủ (pyogenic granuloma). Báo cáo đặc biệt lưu ý chống chỉ định chọc hút bằng kim nhỏ (FNA) hoặc sinh thiết trước mổ đối với các tổn thương mạch máu này do nguy cơ chảy máu ồ ạt khó kiểm soát. Đối với khối u lớn, siêu âm Doppler hoặc CT/MRI mạch máu là cần thiết để xác định mạch nuôi và thuyên tắc trước mổ. Ở bệnh nhân này, phẫu thuật cắt bỏ được ưu tiên thực hiện dưới gây tê cục bộ do tổn thương nhỏ, vị trí thuận lợi, đồng thời giúp tránh được các biến chứng huyết khối tắc mạch nếu dùng liệu pháp tiêm xơ (sclerotherapy) ở người già. Hình ảnh mô bệnh học xác nhận các khoang chứa đầy hồng cầu lót bởi tế bào nội mô - đặc trưng của u máu thể hang. Bệnh nhân lành thương hoàn toàn sau 1 tháng.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://doi.org/10.7759/cureus.62800",
-    "asianData": true,
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{}"
-  },
-  {
     "id": "2024-who-cum",
     "title": "WHO 2024: Hướng Dẫn Lâm Sàng Điều Trị & Dự Phòng Bệnh Cúm (Influenza)",
     "titleEn": "WHO Clinical Practice Guidelines for Influenza (2024)",
@@ -2985,7 +2131,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Tổ chức Y tế Thế giới (WHO)",
     "journal": "Lancet Infect Dis",
-    "file": "2024-who-cum.html",
+    "file": "2024-who-cum.mdx",
     "conditionKey": "flu",
     "icd10": [
       "J09",
@@ -3013,7 +2159,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2024,
     "organization": "Tổ chức Y tế Thế giới (WHO)",
     "journal": "WHO Guidelines",
-    "file": "2024-who-bach-hau.html",
+    "file": "2024-who-bach-hau.mdx",
     "conditionKey": "diphtheria",
     "icd10": [
       "A36",
@@ -3032,24 +2178,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Trẻ em, người lớn và phụ nữ có thai nghi ngờ hoặc đã được chẩn đoán xác định mắc bệnh bạch hầu đường hô hấp.",
     "asianData": true,
     "sourceUrl": "https://iris.who.int/server/api/core/bitstreams/634a55a5-327e-459b-a633-0650fe8ad6c9/content"
-  },
-  {
-    "id": "2024-who-diph-dat-poster-a",
-    "title": "WHO Diphtheria Antitoxin Poster A — Áp phích Hướng dẫn Lâm sàng của WHO năm 2024 về sử dụng Huyết thanh kháng độc tố Bạch hầu (DAT)",
-    "drug": "Diphtheria antitoxin (DAT), Epinephrine (Adrenaline), Antihistamines, Bronchodilators, Corticosteroids",
-    "sourceType": "intl-guideline",
-    "specialty": "infect",
-    "design": "guideline",
-    "intervention": "Bảng tóm tắt nhanh quy trình lâm sàng chuẩn bị, bảo quản và phân tầng liều dùng của Huyết thanh kháng độc tố Bạch hầu (DAT) cho trẻ em và người lớn; không làm test mẫn cảm da thường quy để tránh làm chậm trễ thời gian truyền dịch cứu mạng; luôn chuẩn bị sẵn sàng thuốc và trang bị hồi sức chống phản vệ tại giường.",
-    "primaryEndpoint": "Cung cấp công cụ tra cứu nhanh tại giường bệnh cho các bác sĩ lâm sàng để tối ưu hóa liều lượng DAT, rút ngắn thời gian chuẩn bị và truyền dịch, đảm bảo an toàn tối đa cho bệnh nhân bạch hầu hô hấp.",
-    "keyResults": "HBAR: Nhẹ (Viêm thanh/họng < 48 giờ - 20k IU): 2.0% | Vừa (Viêm mũi họng < 48 giờ - 40k IU): 4.0% | Nặng (Cổ bạnh/Bệnh ≥ 48 giờ/Sốc - 80k IU): 8.0%",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "World Health Organization (WHO)",
-    "population": "Bác sĩ lâm sàng, điều dưỡng trực tiếp điều trị bệnh nhân bạch hầu hô hấp ở mọi lứa tuổi (trẻ sơ sinh, trẻ nhỏ, người lớn, phụ nữ mang thai).",
-    "summary": "Áp phích hướng dẫn lâm sàng của WHO (Poster A) năm 2024 được thiết kế như một công cụ hỗ trợ quyết định nhanh tại giường bệnh về cách sử dụng huyết thanh kháng độc tố bạch hầu (DAT). Tài liệu hướng dẫn chi tiết hai dạng chế phẩm DAT hiện có (dung dịch tiêm truyền và bột đông khô tái hòa tan), quy chuẩn hóa phác đồ liều đơn phân tầng theo 3 mức độ nặng lâm sàng (20k, 40k và 80k IU) và thiết lập quy trình chuẩn bị an toàn không cần test mẫn cảm thường quy.",
-    "detailedConclusion": "DAT được chỉ định tuyệt đối cho tất cả bệnh nhân có chẩn đoán nghi ngờ hoặc xác định bạch hầu (bao gồm cả trẻ em, người lớn và phụ nữ có thai) mà không cần chờ kết quả nuôi cấy. Chế phẩm có hai dạng: dung dịch tiêm trong ống 10 mL (10.000 IU) bảo quản lạnh 2-8 °C và dạng bột đông khô (10.000 IU) kèm 10 mL nước cất bảo quản dưới 30 °C tránh ánh sáng. Không thực hiện test mẫn cảm da thường quy để tránh trì hoãn truyền thuốc cứu sống người bệnh. Tuy nhiên, do DAT được sản xuất từ huyết thanh ngựa nên luôn có nguy cơ phản vệ nghiêm trọng; do đó, bắt buộc phải có sẵn hộp thuốc cấp cứu (epinephrine 1:1000, antihistamine, corticosteroid, thuốc giãn phế quản) và máy đo SpO2 tại giường truyền. Liều dùng được xác định thống nhất cho cả trẻ em và người lớn (không điều chỉnh theo cân nặng): 20.000 IU (2 lọ) cho viêm thanh/họng < 48 giờ; 40.000 IU (4 lọ) cho viêm mũi họng < 48 giờ; và 80.000 IU (8 lọ) nếu bệnh ≥ 48 giờ, có sưng cổ bạnh hoặc có dấu hiệu nặng (shock, suy hô hấp).",
-    "asianData": true
   },
   {
     "id": "2023-byt-sot-xuat-huyet-dengue",
@@ -3089,7 +2217,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2023,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2023-byt-benh-phoi-mo-ke.html",
+    "file": "2023-byt-benh-phoi-mo-ke.mdx",
     "conditionKey": "interstitial-lung",
     "icd10": [
       "J84",
@@ -3118,7 +2246,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2023,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2023-byt-sot-ret.html",
+    "file": "2023-byt-sot-ret.mdx",
     "conditionKey": "malaria",
     "icd10": [
       "B50",
@@ -3147,7 +2275,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2023,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2023-byt-covid19.html",
+    "file": "2023-byt-covid19.mdx",
     "conditionKey": "covid19",
     "icd10": [
       "U07.1"
@@ -3173,7 +2301,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2023,
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
-    "file": "2023-byt-marburg.html",
+    "file": "2023-byt-marburg.mdx",
     "conditionKey": "hemorrhagic-fever",
     "icd10": [
       "A98.3"
@@ -3199,7 +2327,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2023,
     "organization": "Mạng lưới Nghiên cứu CRICS-TriGGERSep (Pháp) / NEJM",
     "journal": "N Engl J Med",
-    "file": "2023-nejm-cape-cod-hydrocortisone-severe-cap.html",
+    "file": "2023-nejm-cape-cod-hydrocortisone-severe-cap.mdx",
     "conditionKey": "pneumonia",
     "icd10": [
       "J18.9",
@@ -3216,173 +2344,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Bệnh nhân trưởng thành nhập khoa hồi sức tích cực (ICU) do viêm phổi cộng đồng nặng (đáp ứng tiêu chuẩn thở máy xâm nhập/không xâm nhập, oxy dòng cao hoặc mặt nạ túi dự trữ), loại trừ các trường hợp có sốc nhiễm trùng kèm theo.",
     "asianData": false,
     "subgroups": "{\"Kết cục lâm sàng chính tại ngày thứ 28\":\"Hydrocortisone: Tử vong 6.2%, Đặt nội khí quản 18.0%, Dùng thuốc vận mạch 15.3% | Giả dược: Tử vong 11.9%, Đặt nội khí quản 29.5%, Dùng thuốc vận mạch 25.0%\",\"Tần suất các biến cố an toàn và tác dụng phụ\":\"COL: Nhiễm trùng bệnh viện (Hydrocortisone): 9.8% | Nhiễm trùng bệnh viện (Giả dược): 11.1% | Xuất huyết tiêu hóa (Hydrocortisone): 2.2% | Xuất huyết tiêu hóa (Giả dược): 3.3%\",\"Liều lượng insulin trung vị sử dụng trong tuần đầu (UI/ngày)\":\"COL: Nhóm Hydrocortisone: 35.5% | Nhóm Giả dược: 20.5%\"}"
-  },
-  {
-    "id": "1784205417171-l1erx437u",
-    "title": "CRAVE Trial: Effects of Coffee Consumption on Health",
-    "author": "Gregory M. Marcus et al.",
-    "drug": "Cà phê có chứa caffeine",
-    "sourceType": "intl-study",
-    "specialty": "cardio",
-    "design": "rct",
-    "intervention": "Uống cà phê có chứa caffeine so với tránh hoàn toàn caffeine (thiết kế case-crossover)",
-    "primaryEndpoint": "Số lượng ngoại tâm thu nhĩ (premature atrial contractions) trung bình hàng ngày",
-    "keyResults": "Không khác biệt ý nghĩa về ngoại tâm thu nhĩ (RR 1.09; 95% CI 0.98-1.20; p=0.10); tăng ngoại tâm thu thất (RR 1.51), tăng 1058 bước chân/ngày và giảm 36 phút ngủ/đêm",
-    "impact": "informative",
-    "year": 2023,
-    "organization": "NEJM",
-    "phase": "RCT",
-    "sampleSize": 100,
-    "population": "Người lớn khỏe mạnh ngoại trú không có tiền sử rung nhĩ hoặc suy tim",
-    "summary": "Thử nghiệm ngẫu nhiên cho thấy tiêu thụ cà phê không làm tăng các cơn ngoại tâm thu nhĩ, nhưng có liên quan đến việc gia tăng ngoại tâm thu thất, tăng cường mức độ hoạt động thể chất và làm giảm thời gian ngủ.",
-    "detailedConclusion": "Nghiên cứu CRAVE áp dụng thiết kế case-crossover trên 100 người tham gia được gắn thiết bị theo dõi liên tục. Kết quả cho thấy uống cà phê chứa caffeine không làm tăng ý nghĩa thống kê số cơn ngoại tâm thu nhĩ so với khi không dùng caffeine. Tuy nhiên, việc uống cà phê làm tăng số cơn ngoại tâm thu thất (154 so với 102 cơn/ngày). Về mặt lối sống, uống cà phê giúp tăng đáng kể số bước chân (thêm trung bình 1058 bước/ngày) nhưng lại làm giảm thời gian ngủ (ít hơn 36 phút/đêm). Không có tác động nào đến mức đường huyết trung bình hàng ngày được ghi nhận. Các phân tích cho thấy tác động của cà phê lên giấc ngủ có khuynh hướng trầm trọng hơn ở nhóm người có gen chuyển hóa caffeine chậm.",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa2204737",
-    "asianData": true,
-    "icd10": [
-      "I50",
-      "I10"
-    ]
-  },
-  {
-    "id": "2023-byt-hoi-chung-mach-vanh-man",
-    "title": "Hướng dẫn chẩn đoán và điều trị Hội chứng mạch vành mạn (Ban hành kèm theo Quyết định năm 2023 của Bộ trưởng Bộ Y tế)",
-    "drug": "Aspirin, Clopidogrel, Prasugrel, Rivaroxaban, Ticagrelor, Statins, Ezetimibe, PCSK9i, Thuốc ức chế men chuyển, Thuốc ức chế thụ thể, Thuốc chẹn beta giao cảm, Thuốc chẹn kênh calci, Nitrates, Ivabradine, Nicorandil, Ranolazine, Trimetazidine, Verapamil, Diltiazem",
-    "sourceType": "vn-moh",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Áp dụng chiến lược tiếp cận chẩn đoán 6 bước gồm đánh giá triệu chứng lâm sàng, xác suất tiền nghiệm (PTP) và khả năng thực mắc bệnh mạch vành (BĐMV); chỉ định các thăm dò không xâm lấn (siêu âm gắng sức, chụp CLVT ĐMV, cMRI) hoặc xâm lấn (chụp ĐMV qua da, IVUS, FFR/iwFR); kết hợp tối ưu hóa điều trị nội khoa dự phòng biến cố huyết khối, kiểm soát triệu chứng đau thắt ngực và can thiệp tái thông ĐMV (PCI/CABG) theo phân tầng nguy cơ.",
-    "primaryEndpoint": "Phòng ngừa biến cố tim mạch cấp tính (giảm tỷ lệ nhồi máu cơ tim và tử vong do tim mạch) VÀ giảm triệu chứng đau thắt ngực, thiếu máu cục bộ cơ tim do gắng sức nhằm cải thiện chất lượng cuộc sống lâu dài cho người bệnh.",
-    "keyResults": "Mục tiêu giảm LDL-C ≥ 50% và đích LDL-C < 1.4 mmol/L (< 55 mg/dL) (Khuyến cáo mạnh); Ngưỡng thăm dò chức năng xâm lấn chỉ định tái thông: FFR ≤ 0.8 hoặc iwFR ≤ 0.89; SPECT/PET chẩn đoán vùng thiếu máu cơ tim nguy cơ cao: ≥ 10%; Tỷ lệ điện tâm đồ bình thường lúc nghỉ ở bệnh nhân HCMVM: > 60%; Aspirin liều 75 - 100 mg/ngày được khuyến cáo duy trì suốt đời cho dự phòng thứ phát.",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân nghi ngờ hoặc đã được xác định mắc Hội chứng động mạch vành mạn (bệnh động mạch vành ổn định, đau thắt ngực ổn định, đau thắt ngực vi mạch hoặc co thắt mạch vành) bao gồm cả người bệnh sau hội chứng mạch vành cấp hoặc sau tái thông mạch vành.",
-    "summary": "Hướng dẫn lâm sàng quốc gia năm 2023 của Bộ Y tế Việt Nam chính thức cập nhật và hệ thống hóa toàn bộ các khuyến cáo chẩn đoán, phân tầng nguy cơ và điều trị Hội chứng mạch vành mạn (HCMVM) dựa trên các đồng thuận mới nhất của ESC và ACC/AHA. Hướng dẫn thay thế thuật ngữ bệnh động mạch vành ổn định truyền thống bằng HCMVM để phản ánh chính xác bản chất tiến triển liên tục và phức tạp của bệnh lý xơ vữa động mạch.",
-    "detailedConclusion": "Tiếp cận chẩn đoán HCMVM bắt buộc thực hiện theo quy trình 6 bước, chú trọng khai thác tính chất cơn đau thắt ngực điển hình và phân tầng khả năng thực mắc BĐMV dựa trên xác suất tiền nghiệm PTP (chia các mức nguy cơ > 15%, 5-15% và < 5%). Điều trị nội khoa phòng ngừa biến cố tim mạch bắt buộc sử dụng Aspirin 75-100 mg/ngày duy trì suốt đời (hoặc Clopidogrel 75 mg/ngày nếu dị ứng), kết hợp liệu pháp statin cường độ cao nhằm đưa LDL-C < 1.4 mmol/L; cân nhắc liệu pháp kháng huyết khối kép (phối hợp thêm Rivaroxaban liều thấp 2.5 mg x 2 lần/ngày hoặc kháng tiểu cầu thứ 2) ở bệnh nhân có nguy cơ tắc mạch cao hoặc trung bình và không có nguy cơ xuất huyết cao. Để điều trị triệu chứng đau thắt ngực, thuốc chẹn beta giao cảm (BB) và/hoặc chẹn kênh calci (CCB) là chỉ định đầu tay bước một, có thể phối hợp thêm các thuốc nhóm hai (nitrat tác dụng dài, ivabradine, nicorandil, ranolazine, trimetazidine) tùy thuộc vào huyết áp, nhịp tim và bệnh đồng mắc đồng hành. Chỉ định tái thông ĐMV bằng can thiệp qua da (PCI) hoặc mổ bắc cầu (CABG) được khuyến cáo cùng điều trị nội khoa khi bệnh nhân đau ngực kháng trị, có vùng thiếu máu rộng > 10% thất trái, phân suất tống máu LVEF ≤ 35% do bệnh ĐMV, hoặc tổn thương giải phẫu hẹp ý nghĩa cơ học (FFR ≤ 0.8 hoặc iwFR ≤ 0.89).",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "I25"
-    ],
-    "subgroups": "{\"Phân loại mức độ đau thắt ngực ổn định theo CCS\":\"Độ I: Đau xảy ra khi làm việc nặng hoặc gắng sức nhiều | Độ II: Đau xảy ra khi hoạt động thể lực ở mức độ trung bình (đi bộ nhanh, leo cầu thang sau ăn, trời lạnh, gió hoặc căng thẳng) | Độ III: Đau xảy ra khi hoạt động thể lực ở mức độ nhẹ (đi bộ 1-2 dãy nhà, leo cầu thang 1 tầng gác với tốc độ bình thường) | Độ IV: Đau thắt ngực xảy ra ngay cả khi nghỉ ngơi\",\"Tiêu chuẩn nguy cơ biến cố cao qua các thăm dò\":\"COL: ĐTĐ gắng sức: Tử vong tim mạch > 3%/năm theo thang điểm Duke | SPECT/PET: Vùng thiếu máu cơ tim ≥ 10% | Siêu âm tim gắng sức: Giảm hoặc không vận động ≥ 3/16 vùng cơ tim khi gắng sức | CHT tim (cMRI): Giảm tưới máu ≥ 2/16 vùng cơ tim khi gắng sức hoặc ≥ 3 vùng rối loạn chức năng khi dùng dobutamine | Thăm dò xâm lấn: FFR ≤ 0.8 hoặc iwFR ≤ 0.89 ở mạch lớn | Chẩn đoán hình ảnh giải phẫu: Bệnh 3 thân ĐMV có hẹp đoạn gần, tổn thương LM hoặc đoạn gần LAD\",\"Phác đồ điều trị lâu dài chống thiếu máu cục bộ\":\"HBAR: Tần số tim ≥ 80 lần/phút: Ưu tiên BB, Verapamil, Diltiazem, Ivabradine | Suy tim đồng mắc: Ưu tiên BB, Ivabradine, Trimetazidine | Nhịp tim chậm < 50 lần/phút: CCĐ chẹn beta, Verapamil, Diltiazem, Ivabradine (Ưu tiên CCB-DHP, Nitrates, Nicorandil) | Co thắt mạch vành: CCĐ chẹn beta (Ưu tiên CCB, Nitrates, Nicorandil)\"}"
-  },
-  {
-    "id": "2023-byt-tsltttl-luts",
-    "title": "Hướng dẫn chẩn đoán và điều trị triệu chứng đường tiểu dưới do tăng sinh lành tính tuyến tiền liệt (Ban hành kèm theo Quyết định số 1531/QĐ-BYT năm 2023 của Bộ trưởng Bộ Y tế)",
-    "drug": "Alfuzosin, Doxazosin, Tamsulosin, Dutasteride, Finasteride, Oxybutynin, Solifenacin, Mirabegron, Desmopressin, Tadalafil, Serenoa repens",
-    "sourceType": "vn-moh",
-    "specialty": "renal",
-    "design": "guideline",
-    "intervention": "Áp dụng quy trình chẩn đoán hệ thống (IPSS, QoL, thăm trực tràng, siêu âm đo PVR, PSA, niệu dòng đồ, nhật ký đi tiểu) kết hợp điều trị nội khoa tối ưu (chẹn alpha, 5ARI, thuốc kháng muscarinic, đồng vận beta-3, desmopressin, PDE5i, dịch chiết thực vật) hoặc can thiệp ngoại khoa (mổ mở, cắt đốt nội soi, bốc hơi, bóc nhân bằng điện/laser, TUIP) theo thể tích tuyến tiền liệt và biến chứng lâm sàng.",
-    "primaryEndpoint": "Cải thiện triệu chứng đường tiểu dưới (LUTS), nâng cao chất lượng cuộc sống (QoL) cho người bệnh, duy trì hiệu quả điều trị lâu dài, làm chậm sự phát triển của bướu, hạn chế tiến triển bệnh và phòng ngừa các biến chứng nguy hiểm như bí tiểu cấp hoặc suy giảm chức năng thận.",
-    "keyResults": "Giảm 30 - 40% điểm IPSS và tăng 16 - 25% Qmax (Thuốc chẹn alpha); Giảm 57% nguy cơ bí tiểu cấp và giảm 48% nguy cơ phẫu thuật (5ARI); CombAT (Phối hợp chẹn α + 5ARI): Giảm 68% nguy cơ bí tiểu cấp và giảm 71% nguy cơ phẫu thuật; Serenoa repens: giảm 4.4 điểm IPSS sau 12 tháng",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Nam giới lớn tuổi có các triệu chứng đường tiểu dưới (LUTS) nghi ngờ hoặc xác định do tăng sinh lành tính tuyến tiền liệt (TSLTTTL), bao gồm cả các trường hợp đã xuất hiện biến chứng cấp hoặc mạn tính.",
-    "summary": "Hướng dẫn quốc gia năm 2023 của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 1531/QĐ-BYT quy định chi tiết phác đồ chẩn đoán, phân tầng mức độ triệu chứng và điều trị triệu chứng đường tiểu dưới do tăng sinh lành tính tuyến tiền liệt. Tài liệu chuẩn hóa quy trình điều trị bảo tồn nội khoa, phối hợp thuốc tối ưu và các can thiệp ngoại khoa từ mổ mở đến các phẫu thuật ít xâm lấn sử dụng dao điện lưỡng cực hoặc công nghệ LASER tiên tiến.",
-    "detailedConclusion": "Đánh giá ban đầu nam giới > 50 tuổi có TCĐTD bắt buộc thực hiện hỏi bệnh, tính điểm IPSS, QoL, khám trực tràng (sau khi làm PSA), siêu âm hệ niệu và đo PVR, định lượng PSA và đo niệu dòng đồ. Với triệu chứng nhẹ (IPSS 0-7) và chưa tắc nghẽn nặng, khuyến cáo theo dõi định kỳ mỗi 3-6 tháng kết hợp điều chỉnh lối sống (uống đủ nước, hạn chế uống sau 5h chiều, không nhịn tiểu, chống táo bón). Điều trị nội khoa chỉ định cho triệu chứng trung bình - nặng (IPSS ≥ 8): thuốc chẹn alpha-1 (Alfuzosin, Doxazosin, Tamsulosin) có tác dụng nhanh; thuốc 5ARI (Dutasteride, Finasteride) chỉ định khi TTL > 40ml giúp giảm thể tích và tiến triển bệnh, đạt hiệu quả tối đa từ tháng thứ 3; phối hợp chẹn alpha và 5ARI được khuyến cáo mạnh mẽ để điều trị lâu dài (> 12 tháng) giúp giảm tối đa nguy cơ bí tiểu cấp và phẫu thuật. Ngoài ra, có thể phối hợp thêm kháng muscarinic (Oxybutynin, Solifenacin) hoặc đồng vận beta-3 (Mirabegron) khi có triệu chứng chứa đựng bàng quang tăng hoạt (OAB) nổi trội và PVR < 150ml; dùng Desmopressin cho đa niệu đêm; hoặc Tadalafil khi kèm rối loạn cương dương. Chỉ định ngoại khoa tuyệt đối khi có biến chứng: nhiễm khuẩn tiết niệu tái diễn, sỏi bàng quang, tiểu máu tái diễn, bí tiểu cấp tái diễn, giãn niệu quản gây suy thận, túi thừa bàng quang. Lựa chọn phương pháp ngoại khoa dựa trên thể tích tuyến: xẻ rãnh TTL khi tuyến < 30ml; cắt đốt nội soi đơn cực/lưỡng cực, bốc hơi lưỡng cực hoặc bóc nhân bằng laser (HoLEP, ThuLEP) cho tuyến 30-80ml; phẫu thuật mở bóc nhân, bóc nhân bằng laser hoặc dao lưỡng cực cho tuyến > 80ml.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "N40"
-    ],
-    "subgroups": "{\"Phân tầng mức độ triệu chứng theo IPSS và QoL\":\"Triệu chứng lâm sàng (IPSS): Nhẹ: 0-7 điểm | Trung bình: 8-19 điểm | Nặng: 20-35 điểm. Chất lượng cuộc sống (QoL): Ít ảnh hưởng: 1-2 điểm | Ảnh hưởng vừa: 3-4 điểm | Ảnh hưởng nặng nề: 5-6 điểm\",\"Tiêu chuẩn đánh giá tắc nghẽn đường tiểu\":\"COL: Tắc nghẽn trung bình: Qmax 10-15 ml/s | Tắc nghẽn nặng: Qmax < 10 ml/s | Có giá trị chẩn đoán tắc nghẽn khi thể tích nước tiểu mỗi lần đi tiểu ≥ 150 ml\",\"Chỉ định điều trị ngoại khoa tăng sinh lành tính tuyến tiền liệt\":\"HBAR: Chỉ định tuyệt đối: NKĐTN tái diễn, Sỏi bàng quang, Tiểu máu tái diễn, Bí tiểu cấp tái diễn, Giãn niệu quản gây suy giảm chức năng thận, Túi thừa bàng quang | Chỉ định tương đối: Điều trị nội khoa thất bại\"}"
-  },
-  {
-    "id": "2023-byt-du-phong-thuyen-tac-huyet-khoi-tinh-mach-3908",
-    "title": "Hướng dẫn điều trị dự phòng thuyên tắc huyết khối tĩnh mạch (Ban hành kèm theo Quyết định số 3908/QĐ-BYT năm 2023 của Bộ trưởng Bộ Y tế)",
-    "drug": "Enoxaparin, Fondaparinux, Heparin không phân đoạn, Rivaroxaban, Dabigatran, Apixaban, Warfarin, Protamine sulfate, Idarucizumab, Vitamin K, Bivalirudin, Argatroban, Tranexamic acid, Pethidin, Heparin",
-    "sourceType": "vn-moh",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Thực hiện quy trình đánh giá nguy cơ thuyên tắc huyết khối tĩnh mạch (TTHKTM) dựa trên các thang điểm Padua (nội khoa), Caprini (ngoại khoa, ung thư), Khorana (nội ung thư), SAVED (đa u tủy) và nguy cơ sản khoa, kết hợp đánh giá nguy cơ xuất huyết (thang điểm IMPROVE) để chỉ định dự phòng cơ học (IPC, GCS) hoặc dược lý (LMWH, UFH, DOACs) cá thể hóa.",
-    "primaryEndpoint": "Giảm thiểu tối đa sự hình thành huyết khối tĩnh mạch sâu (HKTMS) chi dưới và thuyên tắc động mạch phổi (TTP), ngăn ngừa biến cố tử vong do tắc mạch cấp tính ở bệnh nhân nội viện, đồng thời kiểm soát và xử trí an toàn các biến chứng xuất huyết do quá liều kháng đông.",
-    "keyResults": "Tỷ lệ HKTMS chi dưới ở bệnh nhân ICU nội khoa: 46% sau 1 tuần nằm viện; Tỷ lệ HKTMS ở bệnh nhân suy tim mạn tính NYHA III/IV: 42.6% (NYHA III: 31.3% vs NYHA IV: 70%); Tử vong do TTP cấp ở bệnh nhân đột quỵ cấp: chiếm 13 - 29% nguyên nhân tử vong; Khởi trị dự phòng dược lý khi có Padua ≥ 4 hoặc Caprini ≥ 5 (Khuyến cáo I B); Ngưỡng tiểu cầu chống chỉ định dự phòng dược lý: < 50 G/L",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân nội trú tại các khoa lâm sàng bao gồm bệnh nhân nội khoa cấp tính, bệnh nhân điều trị hồi sức tích cực (ICU), bệnh nhân đột quỵ cấp, bệnh nhân ung thư, bệnh nhân ngoại khoa chung, chấn thương chỉnh hình, phẫu thuật sọ não, phẫu thuật ung thư và bệnh nhân sản khoa.",
-    "summary": "Hướng dẫn chuyên môn quốc gia năm 2023 của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 3908/QĐ-BYT quy chuẩn hóa toàn diện quy trình đánh giá, phân tầng nguy cơ thuyên tắc và chỉ định các phương pháp dự phòng TTHKTM trong cả nước. Tài liệu cung cấp một khung thực hành lâm sàng chi tiết cho các nhóm đối tượng đặc biệt, tích hợp hướng dẫn chẩn đoán/xử trí giảm tiểu cầu do Heparin (HIT) và các bước hồi phục huyết động khi xảy ra xuất huyết lớn do quá liều thuốc kháng đông.",
-    "detailedConclusion": "Tất cả bệnh nhân nội khoa cấp tính nhập viện cần được đánh giá nguy cơ TTHKTM bằng thang điểm Padua trong vòng 24 giờ. Bệnh nhân có điểm Padua ≥ 4 kèm nguy cơ xuất huyết thấp (IMPROVE < 7) được khuyến cáo mạnh mẽ dự phòng bằng Enoxaparin 40 mg tiêm dưới da hàng ngày (giảm liều còn 30 mg/ngày nếu CrCl 15-29 mL/phút, chống chỉ định nếu CrCl < 15 mL/phút) (Khuyến cáo I B). Đối với ngoại khoa chung, phân tầng nguy cơ dựa trên thang điểm Caprini, trong đó nhóm nguy cơ cao (Caprini ≥ 5) cần dự phòng bằng Enoxaparin 40 mg/ngày phối hợp phương pháp cơ học (IPC/GCS) ngay từ đầu. Bệnh nhân phẫu thuật thay khớp háng hoặc khớp gối là nhóm nguy cơ rất cao, bắt buộc dự phòng thường quy bằng LMWH hoặc Rivaroxaban 10 mg/ngày uống kéo dài 28 ngày. Sản phụ có nguy cơ cao (thang điểm trước/sau sinh ≥ 4) cần được dự phòng bằng LMWH chỉnh liều theo cân nặng (từ 20-80 mg/ngày). Khi xảy ra biến chứng xuất huyết lớn đe dọa tính mạng, nguyên tắc xử trí là ngừng kháng đông ngay, định lượng đông máu đặc hiệu và sử dụng chất hóa giải (Idarucizumab cho Dabigatran, Protamine cho nhóm Heparin, Vitamin K cho kháng vitamin K) hoặc truyền PCC, aPCC, huyết tương tươi đông lạnh khi không có chất hóa giải đặc hiệu.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "I82"
-    ],
-    "subgroups": "{\"Phân tầng và xử trí dự phòng bệnh nhân nội khoa cấp tính\":\"Nguy cơ TTHKTM thấp (Padua < 4): Khuyến khích vận động sớm, đảm bảo đủ dịch | Nguy cơ TTHKTM cao (Padua ≥ 4) + IMPROVE < 7: Enoxaparin 40 mg tiêm dưới da hàng ngày | Nguy cơ TTHKTM cao + IMPROVE ≥ 7: Khởi động IPC (thiết bị bơm hơi áp lực ngắt quãng) ngay khi vào viện\",\"Chiến lược dự phòng TTHKTM ở các phân nhóm ngoại khoa\":\"COL: Chấn thương sọ não nặng: Khởi động IPC khi nhập viện; phối hợp thêm LMWH/UFH sau 48 giờ khi đã đạt cầm máu thỏa đáng | Thay khớp háng/gối: IPC/GCS + Heparin TLPTT hoặc Rivaroxaban 10 mg/ngày duy trì 28 ngày | Đột quỵ cấp do tắc mạch: Dự phòng IPC trong vòng 72 giờ đầu + cân nhắc Enoxaparin sau 48 giờ và kéo dài trong vòng 2-6 tuần\",\"Tiêu chuẩn chẩn đoán và xử trí giảm tiểu cầu do Heparin (HIT)\":\"HBAR: Chẩn đoán nguy cơ: Thang điểm 4T's (0-3: Thấp -> tiếp tục dùng Heparin; 4-5: Trung bình & 6-8: Cao -> dừng ngay mọi chế phẩm Heparin và chuyển sang kháng đông thay thế) | Kháng đông thay thế: Argatroban truyền tĩnh mạch (chỉnh liều để APTT gấp 1.5 - 3 lần nền), hoặc Fondaparinux, Apixaban, Dabigatran, Rivaroxaban (không dùng trong pha cấp)\"}"
-  },
-  {
-    "id": "2023-aasld-nafld-practice-guidance",
-    "title": "Hướng dẫn Thực hành Lâm sàng AASLD 2023: Đánh giá lâm sàng và quản lý bệnh gan thoái hóa mỡ không do rượu (NAFLD)",
-    "drug": "Vitamin E, Pioglitazone, Semaglutide, Liraglutide, Statins, Ezetimibe, Fibrates, Omega-3 fatty acids, Icosapent ethyl",
-    "sourceType": "intl-guideline",
-    "specialty": "gi",
-    "design": "guideline",
-    "intervention": "Áp dụng thuật toán sàng lọc nguy cơ xơ hóa gan đa tầng dựa trên chỉ số FIB-4 làm bộ lọc ban đầu; can thiệp lối sống toàn diện (chế độ ăn thâm hụt calo ưu tiên Địa Trung Hải, rèn luyện thể chất); cá thể hóa chỉ định dược lý off-label bằng Pioglitazone, Semaglutide hoặc Vitamin E cho các trường hợp NASH hoạt động có xơ hóa.",
-    "primaryEndpoint": "Phân tầng nguy cơ xơ hóa gan để xác định sớm nhóm bệnh nhân có xơ hóa đáng kể (≥ F2) hoặc xơ gan (F4), tối ưu hóa kiểm soát các bệnh lý đồng mắc chuyển hóa và giảm thiểu nguy cơ biến cố tim mạch và ung thư biểu mô tế bào gan.",
-    "keyResults": "Semaglutide 59% vs Giả dược 17%",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "American Association for the Study of Liver Diseases (AASLD)",
-    "phase": "Clinical Guidance",
-    "population": "Bệnh nhân trưởng thành mắc hoặc có nguy cơ cao bị bệnh gan thoái hóa mỡ không do rượu (NAFLD/NASH), bao gồm cả nhóm có đái tháo đường típ 2, béo phì lâm sàng, và nhóm thể trạng gầy (lean NAFLD).",
-    "summary": "Hướng dẫn thực hành lâm sàng năm 2023 của Hiệp hội Nghiên cứu Bệnh gan Hoa Kỳ (AASLD) cập nhật các khuyến nghị dựa trên bằng chứng về chẩn đoán không xâm lấn và quản lý toàn diện NAFLD/NASH. Tài liệu chuẩn hóa vai trò của chỉ số FIB-4 trong sàng lọc đầu tay tại các cơ sở chăm sóc ban đầu, đồng thời định hướng chi tiết việc ứng dụng các thuốc điều trị bệnh đồng mắc có lợi ích cải thiện mô học gan như Semaglutide, Pioglitazone và Vitamin E.",
-    "detailedConclusion": "Sàng lọc xơ hóa gan tiến triển bắt buộc thực hiện bằng chỉ số FIB-4 mỗi 1-2 năm cho bệnh nhân ĐTĐ típ 2 hoặc có ≥ 2 yếu tố nguy cơ tim mạch - chuyển hóa. Nếu FIB-4 < 1.3, bệnh nhân được phân loại nguy cơ thấp và tiếp tục quản lý tại chăm sóc ban đầu; nếu FIB-4 ≥ 1.3, cần thực hiện thêm các xét nghiệm NITs thứ hai như đo độ cứng gan (VCTE, MRE) hoặc ELF score để loại trừ hoặc xác định xơ hóa nâng cao. Can thiệp lối sống là nền tảng bắt buộc hướng tới thâm hụt calo và duy trì tập thể dục cường độ phù hợp. Đối với bệnh nhân mắc NASH có xơ hóa (≥ F2) nhưng không có xơ gan, hướng dẫn đề xuất xem xét sử dụng các thuốc off-label có bằng chứng cải thiện mô học bao gồm: Pioglitazone (cho người có ĐTĐ típ 2), Semaglutide (cho người có ĐTĐ hoặc béo phì), và Vitamin E 800 IU/ngày (cho người không ĐTĐ). Đáng chú ý, các thuốc này chưa chứng minh được lợi ích cải thiện xơ hóa trực tiếp và không được khuyến cáo sử dụng cho bệnh nhân xơ gan mất bù. Metformin, UDCA và silymarin không có lợi ích mô học đáng kể và chống chỉ định điều trị NASH. Statins được khẳng định là an toàn trên toàn bộ phổ bệnh NAFLD (bao gồm cả xơ gan bù trừ) và khuyến cáo mạnh mẽ để dự phòng biến cố tim mạch.",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10735173/pdf/nihms-1948413.pdf",
-    "subgroups": "{\"Tỷ lệ thoái lui NASH trong các thử nghiệm lâm sàng\":\"COL: Semaglutide 0.4mg: 59.0% | Giả dược (Semaglutide): 17.0% | Pioglitazone: 47.0% | Giả dược (Pioglitazone): 21.0%\",\"Ngưỡng âm tính cao để loại trừ xơ hóa tiến triển (≥ F3)\":\"HBAR: Chỉ số FIB-4: 1.3% | Đo độ cứng gan bằng VCTE (kPa): 8.0% | Chỉ số ELF score: 7.7% | Đo độ cứng gan bằng MRE (kPa): 2.55%\",\"Ngưỡng dương tính cao để xác định xơ hóa tiến triển (≥ F3)\":\"HBAR: Chỉ số FIB-4: 2.67% | Đo độ cứng gan bằng VCTE (kPa): 12.0% | Chỉ số ELF score: 9.8% | Đo độ cứng gan bằng MRE (kPa): 3.63%\"}"
-  },
-  {
-    "id": "2023-kta-subclinical-hypothyroidism",
-    "title": "Quản lý Suy giáp dưới lâm sàng: Trọng tâm vào các Hiệu quả Sức khỏe đã được chứng minh trong Hướng dẫn của Hiệp hội Tuyến giáp Hàn Quốc (KTA) năm 2023",
-    "drug": "Levothyroxine",
-    "sourceType": "intl-guideline",
-    "specialty": "endo",
-    "design": "guideline",
-    "intervention": "Thiết lập ngưỡng chẩn đoán TSH mới (6.8 mIU/L); phân loại suy giáp dưới lâm sàng (SCH) thành mức độ nhẹ (6.8-10.0 mIU/L) và nặng (>10.0 mIU/L); cá thể hóa chỉ định điều trị bằng Levothyroxine (LT4) dựa trên nhóm tuổi (dưới 70 và từ 70 tuổi trở lên) và các bệnh lý tim mạch đồng mắc.",
-    "primaryEndpoint": "Khuyến cáo tiêu chuẩn chẩn đoán chính xác hơn dựa trên đặc điểm quần thể, tối ưu hóa điều trị LT4 để cải thiện các kết cục tim mạch, rối loạn lipid máu ở người lớn và tránh điều trị quá mức không mang lại lợi ích ở người cao tuổi.",
-    "keyResults": "COL: Tỷ lệ mắc ở dân số chung (Mỹ): 4.3% | Người trên 65 tuổi (Mỹ): 12.7% | Nữ giới (Hàn Quốc): 16.4% | Nam giới (Hàn Quốc): 6.5%",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "Hiệp hội Tuyến giáp Hàn Quốc (KTA)",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân mắc suy giáp dưới lâm sàng (SCH) ở mọi độ tuổi (tập trung vào người trưởng thành và người cao tuổi từ 70 tuổi trở lên), không bao gồm phụ nữ có thai và trẻ em.",
-    "summary": "Hướng dẫn năm 2023 của Hiệp hội Tuyến giáp Hàn Quốc (KTA) thiết lập tiêu chuẩn chẩn đoán suy giáp dưới lâm sàng (SCH) với ngưỡng TSH giới hạn trên được nâng lên 6.8 mIU/L, phân loại SCH thành mức độ nhẹ (6.8-10.0 mIU/L) và nặng (>10.0 mIU/L). Hướng dẫn cá thể hóa việc điều trị bằng Levothyroxine (LT4), nhấn mạnh lợi ích điều trị ở người dưới 70 tuổi có SCH nặng kèm bệnh tim mạch, đồng thời khuyến cáo không điều trị LT4 thường quy cho người từ 70 tuổi trở lên.",
-    "detailedConclusion": "Chẩn đoán SCH yêu cầu TSH > 6.8 mIU/L và fT4 bình thường, cần khẳng định lại bằng xét nghiệm sau 2-3 tháng kèm định lượng kháng thể TPO. Ở người lớn (<70 tuổi), không khuyến cáo điều trị LT4 cho SCH nhẹ; nhưng bắt buộc điều trị cho SCH nặng nếu có bệnh mạch vành hoặc suy tim, và cân nhắc điều trị để cải thiện rối loạn lipid máu (giúp giảm LDL-C và cholesterol toàn phần). Đối với người cao tuổi (≥70 tuổi), không khuyến cáo sử dụng LT4 cho cả SCH nhẹ và nặng do thiếu bằng chứng về sự cải thiện triệu chứng, nhận thức hay giảm biến cố tim mạch. Khi có chỉ định, điều trị cần bắt đầu với liều 12.5 - 25 μg/ngày ở người cao tuổi hoặc có nguy cơ tim mạch và theo dõi định kỳ TSH mỗi 1-2 tháng để điều chỉnh liều LT4 phù hợp.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "E11"
-    ]
-  },
-  {
-    "id": "2023-wolbachia-yogyakarta",
-    "title": "Tác động của việc thả muỗi Aedes aegypti mang vi khuẩn Wolbachia chủng wMel đối với số ca bệnh sốt xuất huyết báo cáo và phun hóa chất diệt muỗi tại thành phố Yogyakarta]",
-    "drug": "Wolbachia (wMel)",
-    "sourceType": "intl-study",
-    "specialty": "infect",
-    "design": "cohort",
-    "intervention": "Thả muỗi Aedes aegypti mang vi khuẩn Wolbachia chủng wMel để thay thế quần thể muỗi bản địa tại thành phố Yogyakarta, Indonesia, kết hợp phân tích chuỗi thời gian ngắt quãng (ITS) trên số liệu giám sát bệnh thường quy và tần suất phun hóa chất dập dịch.",
-    "primaryEndpoint": "Đánh giá hiệu quả giảm số ca sốt xuất huyết Dengue (DHF) báo cáo qua hệ thống giám sát và giảm số lần phun hóa chất diệt côn trùng quanh ổ dịch của các đội y tế công cộng.",
-    "keyResults": "IRR 0.17 (95% CI 0.14-0.20) đối với ca DHF ở vùng phủ hoàn toàn; IRR 0.17 (95% CI 0.10-0.30) đối với tần suất phun hóa chất; Chi phí phun thuốc giảm 39.6%.",
-    "impact": "practice-changing",
-    "year": 2023,
-    "organization": "World Mosquito Program, Đại học Gadjah Mada, Đại học Monash",
-    "phase": "Phase III Trial - Predefined Secondary Analysis",
-    "sampleSize": 313000,
-    "population": "Người dân sinh sống tại khu vực 35 phường (kelurahans) thuộc địa bàn nghiên cứu của thử nghiệm AWED tại thành phố Yogyakarta, Indonesia.",
-    "summary": "Nghiên cứu bán thực nghiệm sử dụng dữ liệu chuỗi thời gian ngắt quãng từ tháng 1/2006 đến tháng 5/2022 để kiểm chứng lại hiệu quả của công nghệ sinh học Wolbachia trong thực tế. Kết quả xác nhận mức giảm 83% số ca nhập viện do sốt xuất huyết Dengue và giảm tương ứng 83% tần suất phun hóa chất dập dịch, củng cố bằng chứng thực tiễn vững chắc cho công nghệ kiểm soát véc-tơ này.",
-    "detailedConclusion": "Thiết lập Wolbachia (wMel) bền vững trong quần thể muỗi bản địa tại Yogyakarta giúp giảm 83% tỷ lệ mắc sốt xuất huyết Dengue (DHF) nhập viện (IRR 0.17 [95% CI 0.14-0.20]) và giảm 69% số ca sốt xuất huyết Dengue thông thường (DF) (IRR 0.31 [95% CI 0.23-0.41]). Hiệu quả bảo vệ của can thiệp thể hiện rõ mối tương quan liều-đáp ứng theo tỷ lệ muỗi nhiễm Wolbachia, đạt mức giảm ca bệnh tương đương nhau tại ngưỡng mật độ 60-80% (76% hiệu quả) và 80-100% (78% hiệu quả). Can thiệp sinh học này giúp giảm 83% số lần phun hóa chất dập dịch quanh ca bệnh của hệ thống y tế công cộng (IRR 0.17 [95% CI 0.10-0.30]), tiết kiệm 39.6% ngân sách chi tiêu thường niên cho hóa chất diệt côn trùng của thành phố. Khuyến cáo nhân rộng mô hình thả muỗi Wolbachia như một giải pháp không hóa chất, an toàn, hiệu quả lâu dài và có giá trị kinh tế y tế cao đối với các nước lưu hành dịch tễ sốt xuất huyết.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "A90"
-    ],
-    "subgroups": "{\"Hiệu quả can thiệp theo mức độ mật độ Wolbachia\":\"Mức phủ 80-100%: giảm 78% ca DHF (IRR 0.23 [95% CI 0.18-0.30]) | Mức phủ 60-80%: giảm 76% ca DHF (IRR 0.24 [95% CI 0.18-0.32]) | Mức phủ 40-60%: giảm 63% ca DHF (IRR 0.37 [95% CI 0.29-0.49]) | Mức phủ 20-40%: giảm 53% ca DHF (IRR 0.47 [95% CI 0.36-0.63]).\",\"Tác động giảm gánh nặng véc-tơ và chi phí hóa chất\":\"COL: Tần suất phun hóa chất dập dịch: Giảm 83% (IRR 0.17 [95% CI 0.10-0.30]) | Ngân sách chi cho hóa chất diệt muỗi: Giảm 39.6% từ 79,914 USD (năm 2016-2017) xuống còn 44,592 USD (năm 2018-2019).\",\"Hiệu quả bảo vệ đối với các thể lâm sàng sốt xuất huyết\":\"HBAR: Ca sốt xuất huyết Dengue nặng/nhập viện (DHF): Giảm 83% (IRR 0.17 [95% CI 0.14-0.20]) | Ca sốt xuất huyết thông thường (DF): Giảm 69% (IRR 0.31 [95% CI 0.23-0.41]).\"}"
   },
   {
     "id": "2023-wgo-probiotics-prebiotics",
@@ -3453,7 +2414,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2022,
     "organization": "American College of Gastroenterology (ACG)",
     "journal": "Am J Gastroenterol",
-    "file": "2022-acg-gerd.html",
+    "file": "2022-acg-gerd.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K21",
@@ -3481,7 +2442,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2022,
     "organization": "Hiệp hội Nghiên cứu Bệnh Gan Châu Âu (EASL) & Baveno VII Faculty",
     "journal": "J Hepatol",
-    "file": "2022-easl-baveno-vii-portal-hypertension-consensus.html",
+    "file": "2022-easl-baveno-vii-portal-hypertension-consensus.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K76.6",
@@ -3525,79 +2486,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504840/pdf/13017_2017_Article_141.pdf"
   },
   {
-    "id": "schadler-petechiae-2022",
-    "title": "Đốm xuất huyết sau cơn giật như một biểu hiện ngoài da sau cơn co giật toàn thể cứng-giật rung (Postictal Petechiae as a Cutaneous Manifestation Following Generalized Tonic-Clonic Seizures)",
-    "drug": "levetiracetam",
-    "sourceType": "intl-study",
-    "specialty": "neuro",
-    "design": "case-report",
-    "intervention": "Tiến hành đánh giá lâm sàng toàn diện và thực hiện xét nghiệm cận lâm sàng (công thức máu, tiểu cầu, sinh hóa) để loại trừ các bệnh lý huyết học, nhiễm trùng nguy hiểm hoặc phát ban do thuốc; chẩn đoán xác định đốm xuất huyết sau cơn giật lành tính và theo dõi tự thoái lui.",
-    "primaryEndpoint": "Chẩn đoán phân biệt chính xác đốm xuất huyết sau cơn giật (postictal petechiae) với các nguyên nhân xuất huyết nghiêm trọng khác nhằm tránh lo lắng không cần thiết và ngăn ngừa việc chẩn đoán sai phát ban do thuốc kháng động kinh.",
-    "keyResults": "Báo cáo chẩn đoán thành công đốm xuất huyết lành tính sau cơn co giật toàn thể cứng-giật rung kéo dài 5 phút ở bệnh nhân nam 20 tuổi; tiểu cầu bình thường (297 K/µL); tổn thương tự giới hạn và biến mất hoàn toàn sau vài ngày mà không cần điều trị da liễu đặc hiệu.",
-    "impact": "informative",
-    "year": 2022,
-    "organization": "University of Michigan",
-    "phase": "Case Report",
-    "sampleSize": 1,
-    "population": "Bệnh nhân nam 20 tuổi có tiền sử động kinh giật cơ thiếu niên (juvenile myoclonic epilepsy) bị lên cơn co giật toàn thể cứng-giật rung bùng phát.",
-    "summary": "Bài báo trình bày một ca lâm sàng hiếm gặp về đốm xuất huyết lành tính vùng mặt, cổ và lưng xuất hiện sau một cơn co giật toàn thể cứng-giật rung (GTC) kéo dài 5 phút. Tổn thương da liễu này dễ bị nhầm lẫn với phát ban do thuốc kháng động kinh và cần được chẩn đoán loại trừ cẩn thận với các bệnh lý huyết học hoặc nhiễm trùng nghiêm trọng.",
-    "detailedConclusion": "Đốm xuất huyết sau cơn giật (postictal petechiae) là biểu hiện da liễu lành tính, tự giới hạn xảy ra do vỡ các mao mạch mỏng dưới da dưới tác động của áp lực tĩnh mạch ngoại vi tăng vọt trong quá trình co cơ mạnh mẽ (Valsalva vô thức). Trước khi đưa ra chẩn đoán xác định, bác sĩ lâm sàng cần thực hiện các xét nghiệm cơ bản để loại trừ giảm tiểu cầu, nhiễm trùng đe dọa tính mạng (như nhiễm não mô cầu) hoặc phát ban do thuốc. Khi đã xác định đúng bệnh, không cần can thiệp điều trị đặc hiệu nào ngoài việc giải thích và trấn an bệnh nhân cùng gia đình.",
-    "fdaStatus": "N/A",
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Cơ chế bệnh sinh đề xuất\":\"Tăng áp lực tĩnh mạch ngoại vi do nghiệm pháp Valsalva vô thức khi co cơ mạnh trong cơn giật (thuyết thuyết phục nhất) hoặc vai trò của các cytokine viêm (IL-6) và chất co mạch\",\"Chẩn đoán phân biệt chính\":\"Loại trừ giảm tiểu cầu, nhiễm trùng nặng (meningococcemia, RMSF, viêm nội tâm mạc nhiễm khuẩn) và phát ban do thuốc kháng động kinh\",\"Đặc điểm tổn thương lâm sàng\":\"Đốm xuất huyết kích thước < 4 mm, không viêm, không ấn mất màu, phân bố khu trú ở vùng quanh hốc mắt, má, cổ và lưng, tự thoái lui sau vài ngày\"}"
-  },
-  {
-    "id": "2022-byt-suy-tim-cap-va-man",
-    "title": "Hướng dẫn chẩn đoán và điều trị suy tim cấp và mạn (Ban hành kèm theo Quyết định số 1857/QĐ-BYT năm 2022 của Bộ trưởng Bộ Y tế)",
-    "drug": "Sacubitril/Valsartan, Captopril, Enalapril, Lisinopril, Perindopril, Ramipril, Trandolapril, Bisoprolol, Carvedilol, Metoprolol succinate, Nebivolol, Spironolactone, Dapagliflozin, Empagliflozin, Candesartan, Losartan, Valsartan, Furosemide, Bumetanide, Torsemide, Hydrochlorothiazide, Indapamide, Metolazone, Amiloride, Tolvaptan, Ivabradine, Digoxin, Hydralazine, Isosorbide dinitrate, Dobutamine, Dopamine, Milrinone, Norepinephrine, Epinephrine, Morphin",
-    "sourceType": "vn-moh",
-    "specialty": "cardio",
-    "design": "guideline",
-    "intervention": "Tầm soát, chẩn đoán xác định và phân loại suy tim dựa trên phân suất tống máu (PSTM) thất trái và nồng độ peptide bài niệu; thiết lập phác đồ điều trị nội khoa suy tim mạn nền tảng bằng 4 trụ cột chính (ARNI/ACEI/ARB, chẹn beta, MRA, SGLT2i) cá thể hóa, kết hợp điều trị suy tim cấp bằng oxy liệu pháp, lợi tiểu quai tĩnh mạch, giãn mạch, tăng co bóp cơ tim và hỗ trợ tuần hoàn cơ học.",
-    "primaryEndpoint": "Giảm tỷ lệ tử vong, dự phòng tái nhập viện do suy tim mất bù, cải thiện triệu chứng, khả năng gắng sức và chất lượng cuộc sống cho người bệnh suy tim.",
-    "keyResults": "Ngưỡng loại trừ suy tim mạn ngoại trú: BNP < 35 pg/mL hoặc NT-proBNP < 125 pg/mL; Chẩn đoán xác định suy tim cấp: BNP ≥ 100 pg/mL hoặc NT-proBNP ≥ 300 pg/mL (theo lứa tuổi); Thở oxy khi SpO2 < 90% hoặc PaO2 < 60 mmHg; Đích HA tâm thu chỉ định giãn mạch tĩnh mạch: SBP ≥ 110 mmHg.",
-    "impact": "practice-changing",
-    "year": 2022,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Người bệnh ở mọi lứa tuổi nghi ngờ hoặc xác định mắc suy tim cấp hoặc suy tim mạn tính (PSTM giảm, giảm nhẹ hoặc bảo tồn), bao gồm cả người có yếu tố nguy cơ tiến triển suy tim.",
-    "summary": "Hướng dẫn chuyên môn quốc gia năm 2022 của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 1857/QĐ-BYT chính thức thay thế phiên bản năm 2020 để bổ sung toàn diện phác đồ suy tim cấp và mạn tính áp dụng thống nhất trong cả nước. Hướng dẫn tích hợp các tiến bộ y học chứng cứ quốc tế mới nhất, thiết lập vai trò nền tảng của 4 trụ cột điều trị nội khoa giúp cải thiện đáng kể tỷ lệ tử vong và tái nhập viện, đồng thời chuẩn hóa lưu đồ điều trị lợi tiểu và hỗ trợ tuần hoàn trong suy tim cấp.",
-    "detailedConclusion": "Chẩn đoán suy tim dựa trên sự kết hợp các triệu chứng lâm sàng với định lượng peptide bài niệu (loại trừ suy tim mạn ngoại trú khi BNP < 35 pg/mL hoặc NT-proBNP < 125 pg/mL) và siêu âm tim. Phác đồ điều trị suy tim mạn phân suất tống máu giảm (EF ≤ 40%) bắt buộc tối ưu hóa sớm 4 nhóm thuốc trụ cột bao gồm: (1) Kháng hệ RAA ưu tiên ARNI Sacubitril/Valsartan (khởi đầu 49/51 mg x 2 lần/ngày, đích 97/103 mg x 2 lần/ngày) hoặc ACEI/ARB (nếu không dùng được ARNI, lưu ý ngừng ACEI ít nhất 36 giờ trước khi chuyển sang ARNI); (2) Chẹn beta giao cảm (Bisoprolol, Carvedilol, Metoprolol succinate, Nebivolol) tăng dần liều khi lâm sàng ổn định; (3) Kháng aldosterone MRA (Spironolactone 25-50 mg/ngày) chống chỉ định khi suy thận nặng/tăng kali máu; (4) Ức chế SGLT2 (Dabagliflozin hoặc Empagliflozin 10 mg/ngày) bất kể có đái tháo đường hay không. Lợi tiểu quai (Furosemide) chỉ định khi có ứ trệ dịch. Trong suy tim cấp, điều trị cần bắt đầu khẩn trương bằng thở oxy (nếu SpO2 < 90% hoặc PaO2 < 60 mmHg), dùng Furosemide tĩnh mạch (liều khởi đầu bằng 1-2 lần liều uống hàng ngày hoặc 20-40 mg tiêm tĩnh mạch, điều chỉnh liều dựa theo natri niệu sau 2 giờ hoặc lượng nước tiểu sau 6 giờ), dùng thuốc giãn mạch tĩnh mạch khi SBP ≥ 110 mmHg, và chỉ định ngắn ngày thuốc tăng co bóp cơ tim (Dobutamine, Dopamine, Milrinone) phối hợp thuốc co mạch (Norepinephrine) khi có tụt huyết áp hoặc dấu hiệu giảm tưới máu mô.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "I50.9",
-      "I50"
-    ],
-    "subgroups": "{\"Phân loại suy tim theo phân suất tống máu (PSTM)\":\"Suy tim PSTM giảm (HFrEF): EF ≤ 40% kèm triệu chứng | Suy tim PSTM giảm nhẹ (HFmrEF): EF 41 - 49% kèm triệu chứng | Suy tim PSTM bảo tồn (HFpEF): EF ≥ 50% kèm triệu chứng và bằng chứng khách quan bất thường cấu trúc/chức năng tim, phù hợp rối loạn tâm trương/tăng áp lực đổ đầy thất trái (bao gồm tăng peptide bài niệu).\",\"Quy trình xử trí lợi tiểu tĩnh mạch trong suy tim cấp (Hình 7)\":\"COL: Liều khởi đầu: Tiêm tĩnh mạch Furosemide bằng 1-2 lần liều uống trước đó (hoặc 20-40 mg nếu chưa dùng) | Đánh giá đáp ứng sau 2 giờ (Natri niệu ≥ 50-70 mEq/L) hoặc 6 giờ (Thể tích nước tiểu ≥ 100-150 mL/giờ) | Đạt đích đáp ứng: Lặp lại liều tương tự mỗi 12 giờ cho đến khi hết sung huyết | Không đạt đích đáp ứng: Tăng gấp đôi liều tiêm tĩnh mạch cho đến liều tối đa hàng ngày (400-600 mg).\",\"Chỉ định điều trị bằng thiết bị trong suy tim mạn (EF ≤ 35%)\":\"HBAR: Tạo nhịp tái đồng bộ cơ tim (CRT): EF ≤ 35%, nhịp xoang, QRS ≥ 130 ms, có dạng block nhánh trái (LBBB) dù đã tối ưu hóa nội khoa | Máy phá rung tự động cấy vào cơ thể (ICD): Dự phòng tiên phát ở bệnh nhân EF ≤ 35%, NYHA II-III do bệnh cơ tim giãn hoặc bệnh cơ tim thiếu máu cục bộ; hoặc dự phòng thứ phát ở bệnh nhân có tiền sử ngừng tim do rung thất/nhanh thất gây huyết động không ổn định.\"}"
-  },
-  {
-    "id": "2022-byt-benh-vong-mac-dtd",
-    "title": "Hướng dẫn chẩn đoán, điều trị và quản lý Bệnh võng mạc đái tháo đường (Ban hành kèm theo Quyết định số 2558/QĐ-BYT năm 2022 của Bộ trưởng Bộ Y tế)",
-    "drug": "Fenofibrate, Kháng VEGF, Corticosteroid",
-    "sourceType": "vn-moh",
-    "specialty": "endo",
-    "design": "guideline",
-    "intervention": "Thực hiện quy trình sàng lọc phát hiện sớm biến chứng võng mạc bằng chụp ảnh đáy mắt không huỳnh quang hoặc soi đáy mắt; kiểm soát chặt chẽ các mục tiêu toàn thân (đường huyết, huyết áp, lipid máu); kết hợp điều trị nội khoa tại mắt (kháng VEGF, Corticosteroid), laser quang đông võng mạc (PRP), và phẫu thuật cắt dịch kính khi xảy ra biến chứng.",
-    "primaryEndpoint": "Phát hiện sớm các tổn thương võng mạc do đái tháo đường và can thiệp kịp thời nhằm ngăn ngừa suy giảm thị lực, bảo vệ chức năng hoàng điểm và phòng chống nguy cơ mù lòa vĩnh viễn cho người bệnh.",
-    "keyResults": "Tỷ lệ mắc VMĐTĐ sau 15 năm (ĐTĐ típ 1): 80%; Độ nhạy chụp đáy mắt không huỳnh quang: 76% - 97% (độ đặc hiệu 91% - 99%); Tỷ lệ người mắc ĐTĐ bị biến chứng VMĐTĐ: 20% - 35%; Tỷ lệ glôcôm tân mạch ở ca tăng sinh không điều trị: ~5%",
-    "impact": "practice-changing",
-    "year": 2022,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Bệnh nhân mắc bệnh đái tháo đường (típ 1, típ 2 và đái tháo đường thai kỳ) nghi ngờ hoặc xác định có biến chứng võng mạc tại các cơ sở khám bệnh, chữa bệnh trên toàn quốc.",
-    "summary": "Hướng dẫn chuyên môn quốc gia năm 2022 của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2558/QĐ-BYT quy chuẩn hóa toàn diện quy trình chẩn đoán, phân tầng giai đoạn bệnh và xử trí điều trị bệnh võng mạc đái tháo đường (VMĐTĐ). Tài liệu chuẩn hóa vai trò của các kỹ thuật khám đáy mắt (soi đáy mắt, chụp không huỳnh quang, OCT, FA), siết chặt các mục tiêu kiểm soát chuyển hóa toàn thân và thiết lập mạng lưới quản lý - chuyển tuyến y tế nhịp nhàng.",
-    "detailedConclusion": "Tất cả bệnh nhân đái tháo đường (ĐTĐ) cần được tầm soát biến chứng võng mạc định kỳ: bắt đầu sau 5 năm chẩn đoán đối với ĐTĐ típ 1, bắt đầu ngay tại thời điểm chẩn đoán đối với ĐTĐ típ 2, và ngay khi có thai đối với phụ nữ mang thai nhiễm ĐTĐ (mỗi 3 tháng trong thai kỳ và tái khám 1 năm sau sinh). Kiểm soát nội khoa toàn thân tối ưu là nền tảng cốt lõi ngăn ngừa tiến triển thông qua duy trì HbA1c < 7%, huyết áp < 140/90 mmHg (hoặc < 130/80 mmHg khi có biến chứng thận/nguy cơ tim mạch) và LDL-C < 100 mg/dL (hoặc < 70 mg/dL nếu có xơ vữa). Ở giai đoạn không tăng sinh nhẹ hoặc vừa, khuyến cáo phối hợp Fenofibrate (145-200 mg/ngày) để làm giảm tốc độ tiến triển của bệnh võng mạc. Khi bệnh tiến triển đến giai đoạn tăng sinh hoặc có phù hoàng điểm ĐTĐ, tiêm các chất kháng VEGF nội nhãn là lựa chọn điều trị đầu tay ưu việt giúp bảo tồn thị trường và giảm phù, có thể kết hợp với laser quang đông toàn võng mạc (PRP) để hủy bỏ các vùng võng mạc thiếu máu. Có thể cân nhắc sử dụng Corticosteroid nội nhãn cho một số trường hợp cụ thể như mắt đã đặt thấu kính hoặc sau cắt dịch kính. Chỉ định can thiệp phẫu thuật cắt dịch kính khi có các biến chứng nặng đe dọa thị lực như xuất huyết dịch kính, bong võng mạc co kéo vùng hoàng điểm hoặc phù hoàng điểm kéo dài kháng trị.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "E11.3"
-    ],
-    "subgroups": "{\"Phân loại giai đoạn bệnh VMĐTĐ (theo ICO 2017)\":\"Không bệnh VMĐTĐ: Không có tổn thương đáy mắt | Không tăng sinh nhẹ: Chỉ có ít vi phình mạch ở cực sau | Không tăng sinh vừa: Có vi phình mạch và tổn thương khác (chấm xuất huyết, xuất tiết cứng/mềm) nhưng nhẹ hơn giai đoạn nặng | Không tăng sinh nặng: Có thêm xuất huyết võng mạc cả 4 cung phần tư (≥ 20 điểm mỗi vùng), phình tĩnh mạch chuỗi hạt ở ≥ 2 cung phần tư, hoặc bất thường vi mạch trong võng mạc ở ≥ 1 cung phần tư | Tăng sinh: Bệnh giai đoạn nặng kèm theo tân mạch võng mạc/đĩa thị/mống mắt hoặc các biến chứng xuất huyết dịch kính/trước võng mạc, bong võng mạc co kéo, glôcôm tân mạch.\",\"Mục tiêu kiểm soát toàn thân ở người lớn đái tháo đường\":\"COL: HbA1c mục tiêu: < 7% (ĐTĐ thai kỳ: < 6%) | Huyết áp mục tiêu: < 140/90 mmHg (có biến chứng thận: < 130/80 mmHg) | Glucose huyết tương lúc đói/trước ăn: 80 - 130 mg/dL (4.4 - 7.2 mmol/L) | Đỉnh glucose huyết tương sau ăn 1-2 giờ: < 180 mg/dL (10.0 mmol/L) | LDL-C mục tiêu: < 100 mg/dL (chưa biến chứng tim mạch) hoặc < 70 mg/dL (đã có bệnh tim mạch do xơ vữa)\",\"Khuyến cáo thời gian tái khám đáy mắt định kỳ\":\"HBAR: Không bệnh VMĐTĐ hoặc Không tăng sinh nhẹ: Tái khám định kỳ mỗi 3 - 6 tháng (Tuyến huyện, tỉnh, trung ương) | Không tăng sinh vừa: Tái khám định kỳ mỗi 3 - 6 tháng (Tuyến huyện, tỉnh, trung ương) | Không tăng sinh nặng: Tái khám sát dưới < 3 tháng (Chuyên khoa mắt tuyến tỉnh, trung ương) | Bệnh VMĐTĐ tăng sinh: Tái khám sát dưới < 1 tháng (Chuyên khoa mắt tuyến tỉnh, trung ương) | Phù hoàng điểm ngoài trung tâm: Tái khám mỗi 3 - 6 tháng | Phù hoàng điểm trung tâm: Tái khám mỗi 1 - 3 tháng\"}"
-  },
-  {
     "id": "2021-aasld-dinh-duong-suy-yeu-teo-co",
     "title": "AASLD 2021: Hướng Dẫn Dinh Dưỡng, Suy Yếu & Teo Cơ Ở Bệnh Nhân Xơ Gan",
     "titleEn": "Malnutrition, Frailty, and Sarcopenia in Patients with Cirrhosis: 2021 Practice Guidance by AASLD",
@@ -3636,7 +2524,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2021,
     "organization": "American College of Gastroenterology (ACG)",
     "journal": "Am J Gastroenterol",
-    "file": "2021-acg-ibs.html",
+    "file": "2021-acg-ibs.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K58",
@@ -3665,7 +2553,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2021,
     "organization": "American College of Gastroenterology (ACG)",
     "journal": "Gastroenterology",
-    "file": "2021-acg-ugib.html",
+    "file": "2021-acg-ugib.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K25",
@@ -3694,7 +2582,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2021,
     "organization": "Hiệp hội Tiêu hóa Hoa Kỳ (AGA)",
     "journal": "Gastroenterology",
-    "file": "2021-aag-nafld.html",
+    "file": "2021-aag-nafld.mdx",
     "conditionKey": "masld-mash",
     "icd10": [
       "K76.0",
@@ -3800,31 +2688,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504840/pdf/13017_2017_Article_141.pdf"
   },
   {
-    "id": "erc-2021",
-    "title": "Hướng dẫn Hồi sức Tim phổi của Hội đồng Hồi sức Châu Âu 2021: Tóm tắt Khuyến cáo (European Resuscitation Council Guidelines 2021: Executive summary)",
-    "drug": "Adrenaline, Amiodarone, Lidocaine",
-    "sourceType": "intl-guideline",
-    "specialty": "icu",
-    "design": "guideline",
-    "intervention": "Cập nhật các khuyến cáo lâm sàng về Hồi sức tim phổi cơ bản (BLS), nâng cao (ALS), cấp cứu nhi khoa/sơ sinh, các tình huống đặc biệt và chăm sóc sau ngừng tim.",
-    "primaryEndpoint": "Cung cấp khung hướng dẫn toàn diện từ phòng ngừa, cấp cứu ban đầu đến phục hồi chức năng nhằm cải thiện tỷ lệ sống còn và kết cục thần kinh sau ngừng tim.",
-    "keyResults": "Ép tim chất lượng cao và phá rung sớm là cốt lõi; Adrenaline tiêm tĩnh mạch càng sớm càng tốt với nhịp không sốc được; Khuyến cáo áp dụng Quản lý nhiệt độ mục tiêu (TTM) từ 32-36°C.",
-    "impact": "practice-changing",
-    "year": 2021,
-    "organization": "European Resuscitation Council (ERC)",
-    "phase": "Guidelines",
-    "population": "Bệnh nhân người lớn, trẻ em và s�� sinh bị ngừng tim ngoại viện (OHCA) hoặc nội viện (IHCA).",
-    "summary": "Hướng dẫn ERC 2021 cung cấp các cập nhật quan trọng dựa trên bằng chứng khoa học mới nhất từ ILCOR 2020. Khuyến cáo nhấn mạnh tầm quan trọng của chuỗi sinh tồn, cá thể hóa quản lý đường thở, kiểm soát nhiệt độ mục tiêu và đa phương thức tiên lượng thần kinh.",
-    "detailedConclusion": "Hướng dẫn ERC 2021 khẳng định ép tim ngoài lồng ngực liên tục (tần số 100-120 l/p, độ sâu >5cm nhưng <6cm, nảy lồng ngực hoàn toàn) và sốc điện sớm là yếu tố quyết định sự sống còn. Về kiểm soát đường thở, khuyến cáo áp dụng chiến lược leo thang từ cơ bản đến nâng cao; chỉ đặt nội khí quản nếu người cấp cứu có độ thuần thục cao (tỷ lệ thành công >95% trong vòng tối đa 2 lần thử), nếu không nên dùng Mask thanh quản (SGA). Đối với nhịp không sốc được, Adrenaline 1mg được tiêm ngay lập tức. Đối với nhịp sốc được, Adrenaline được chỉ định sau cú sốc thứ 3 và Amiodarone 300mg sau cú sốc thứ 3. Chăm sóc sau ngừng tim khuyến cáo áp dụng Quản lý Nhiệt độ Mục tiêu (TTM) hằng định ở một mức giữa 32-36°C liên tục trong tối thiểu 24 giờ. Việc tiên lượng thần kinh phải dựa trên tiếp cận đa phương thức (khám lâm sàng, điện não đồ, SSEP, NSE, hình ảnh học) và không được đưa ra quyết định sớm trước 72 giờ sau khi tái lập tuần hoàn tự nhiên (ROSC).",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://doi.org/10.1016/j.resuscitation.2021.02.003",
-    "icd10": [
-      "I46",
-      "I46.9"
-    ],
-    "subgroups": "{\"Nhịp sốc được (VF/pVT)\":\"Tiến hành sốc điện ngay lập tức, tiêm Adrenaline 1mg và Amiodarone 300mg sau nhát sốc thứ 3.\",\"Nhịp không sốc được (Asystole/PEA)\":\"Tiêm Adrenaline 1mg IV/IO càng sớm càng tốt ngay khi có đường truyền, lặp lại mỗi 3-5 phút.\"}"
-  },
-  {
     "id": "2020-jsge-pud",
     "title": "JSGE 2020: Hướng dẫn Lâm sàng Dựa trên Bằng chứng về Bệnh Loét Dạ dày - Tá tràng",
     "titleEn": "Evidence-based Clinical Practice Guidelines for Peptic Ulcer Disease 2020 (JSGE)",
@@ -3835,7 +2698,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2021,
     "organization": "Japanese Society of Gastroenterology (JSGE)",
     "journal": "J Gastroenterol",
-    "file": "2020-jsge-pud.html",
+    "file": "2020-jsge-pud.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K25",
@@ -3885,31 +2748,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "bookmarked": false
   },
   {
-    "id": "2020-hpd-weight-loss",
-    "title": "Bằng chứng lâm sàng và cơ chế giảm cân do chế độ ăn giàu Protein",
-    "drug": "Chế độ ăn giàu protein (HPD)",
-    "sourceType": "intl-study",
-    "specialty": "nutri",
-    "design": "review",
-    "intervention": "Áp dụng chế độ ăn giàu protein (HPD, lượng protein > 0.8g/kg/ngày hoặc chiếm 25-35% tổng năng lượng) trong các phác đồ giảm calo hoặc tiêu chuẩn để kiểm soát cân nặng, kết hợp so sánh với chế độ ăn protein tiêu chuẩn (SPD).",
-    "primaryEndpoint": "Đánh giá hiệu quả giảm cân, cải thiện thành phần cơ thể (bảo tồn khối lượng nạc, giảm khối lượng mỡ) và khám phá các cơ chế sinh lý (hormone ruột, tiêu hao năng lượng) của chế độ ăn giàu protein.",
-    "keyResults": "HBAR: Sinh nhiệt (DIT) do Protein: 25.0% | Sinh nhiệt (DIT) do Carbohydrate: 7.5% | Sinh nhiệt (DIT) do Chất béo: 1.5%",
-    "impact": "informative",
-    "year": 2020,
-    "organization": "Journal of Obesity & Metabolic Syndrome",
-    "phase": "Clinical Review",
-    "population": "Người trưởng thành thừa cân, béo phì hoặc người khỏe mạnh có nhu cầu giảm cân, cải thiện thành phần cơ thể và duy trì cân nặng sau giảm.",
-    "summary": "Bài tổng quan đánh giá các bằng chứng lâm sàng và cơ chế sinh lý của chế độ ăn giàu protein (HPD) đối với việc giảm cân. Kết quả cho thấy HPD không chỉ giúp giảm cân hiệu quả mà còn bảo tồn khối lượng nạc (FFM), tăng cảm giác no thông qua các hormone ruột (GLP-1, CCK, PYY) và làm tăng đáng kể mức tiêu hao năng lượng nghỉ.",
-    "detailedConclusion": "Chế độ ăn giàu protein (HPD) mang lại lợi ích giảm cân an toàn và hiệu quả lâu dài (6-12 tháng), đồng thời ngăn ngừa tăng cân trở lại. Cơ chế chính bao gồm: tăng tiết hormone gây no (GLP-1, CCK, PYY), giảm hormone tạo cảm giác đói (Ghrelin), tăng sinh nhiệt do chế độ ăn (DIT của protein đạt trung bình 20-30%, cao hơn nhiều so với carbohydrate và chất béo), và kích hoạt quá trình tân tạo đường. Bằng chứng lâm sàng cho thấy HPD giúp giảm mỡ hiệu quả hơn và giữ khối nạc tốt hơn so với chế độ ăn thông thường. Đáng chú ý, không có bằng chứng nào cho thấy HPD gây hại lên mật độ xương hoặc chức năng thận ở người trưởng thành khỏe mạnh, tuy nhiên cần thận trọng định lượng ở bệnh nhân suy thận.",
-    "fdaStatus": "N/A",
-    "asianData": true,
-    "icd10": [
-      "E66",
-      "E46"
-    ],
-    "subgroups": "{\"Hiệu ứng sinh nhiệt theo đại lượng (DIT)\":\"HBAR: DIT do Protein: 25.0% | DIT do Carbohydrate: 7.5% | DIT do Chất béo: 1.5%\",\"Tỷ lệ thành phần giảm cân theo chế độ ăn\":\"COL: Tỷ lệ mỡ giảm (HPD): 89.0% | Tỷ lệ nạc giảm (HPD): 11.0% | Tỷ lệ mỡ giảm (SPD): 75.0% | Tỷ lệ nạc giảm (SPD): 25.0%\"}"
-  },
-  {
     "id": "2020-byt-bach-hau",
     "title": "Bộ Y Tế 2020: Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Bạch Hầu (QĐ 2957/QĐ-BYT)",
     "titleEn": "Vietnam MOH 2020 Guidelines on Diagnosis and Treatment of Diphtheria (Decision 2957/QD-BYT)",
@@ -3937,52 +2775,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Trẻ em và người lớn nghi ngờ hoặc xác định mắc bệnh bạch hầu hoặc có tiền sử tiếp xúc gần với ca bệnh trong vòng 7 ngày.",
     "asianData": true,
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504840/pdf/13017_2017_Article_141.pdf"
-  },
-  {
-    "id": "byt2020",
-    "title": "Hướng dẫn chẩn đoán và điều trị đái tháo đường típ 2 - Bộ Y tế",
-    "drug": "Metformin, SGLT2i, GLP-1 RA, DPP-4i, SU, Insulin",
-    "sourceType": "vn-moh",
-    "specialty": "endo",
-    "design": "guideline",
-    "intervention": "Cá thể hóa phác đồ kết hợp Metformin, SGLT2i, GLP-1 RA dựa trên nguy cơ tim mạch",
-    "primaryEndpoint": "Kiểm soát HbA1c và bảo vệ tim mạch/thận",
-    "keyResults": "Phác đồ ưu tiên hàng đầu cho bệnh nhân kèm suy tim, bệnh thận mạn",
-    "impact": "practice-changing",
-    "year": 2020,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Guidelines",
-    "population": "Bệnh nhân đái tháo đường típ 2 tại Việt Nam",
-    "summary": "Phác đồ điều trị ĐTĐ típ 2 cập nhật của Bộ Y tế Việt Nam, cá thể hóa điều trị dựa trên bệnh lý tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn kèm theo.",
-    "detailedConclusion": "Ưu tiên lựa chọn SGLT2i hoặc GLP-1 RA độc lập với mức HbA1c ở bệnh nhân ĐTĐ típ 2 kèm bệnh tim mạch do xơ vữa, suy tim hoặc bệnh thận mạn để bảo vệ tim mạch và thận.",
-    "fdaStatus": "Quyết định số 4800/QĐ-BYT",
-    "sourceUrl": "https://kcb.vn/",
-    "asianData": true,
-    "icd10": [
-      "E11",
-      "E11.9"
-    ]
-  },
-  {
-    "id": "2020-byt-quan-ly-khang-sinh-5631",
-    "title": "Hướng dẫn thực hiện quản lý sử dụng kháng sinh trong bệnh viện (Ban hành kèm theo Quyết định số 5631/QĐ-BYT năm 2020 của Bộ trưởng Bộ Y tế)",
-    "drug": "Ceftolozan-tazobactam, Tigecyclin, Colistin, Fosfomycin, Linezolid, Amphotericin B phức hợp lipid, Micafungin, Voriconazol, Anidulafungin, Isavuconazol, Amphotericin B dạng liposom, Meropenem, Imipenem, Doripenem, Ertapenem, Vancomycin, Teicoplanin, Amphotericin B deoxycholat, Aciclovir, Valganciclovir, Posaconazol, Aminoglycosid, Fluoroquinolon",
-    "sourceType": "vn-moh",
-    "specialty": "infect",
-    "design": "guideline",
-    "intervention": "Thành lập Ban quản lý sử dụng kháng sinh đa chuyên khoa tại bệnh viện và triển khai 6 nhiệm vụ cốt lõi: ban hành hướng dẫn sử dụng kháng sinh chung, xây dựng danh mục kháng sinh cần ưu tiên quản lý (Nhóm 1 và Nhóm 2) kèm quy trình phê duyệt, triển khai can thiệp lâm sàng (tối ưu hóa liều PK/PD, liệu pháp xuống thang, chuyển đổi tiêm-uống IV-to-PO), giám sát tiêu thụ (DDD, DOT, LOT) và đề kháng kháng sinh, tập huấn đào tạo và đánh giá phản hồi.",
-    "primaryEndpoint": "Nâng cao hiệu quả điều trị bệnh nhiễm trùng, đảm bảo an toàn và giảm thiểu biến cố bất lợi cho người bệnh, giảm khả năng xuất hiện đề kháng của vi sinh vật gây bệnh và tối ưu hóa chi phí điều trị.",
-    "keyResults": "COL: Thời gian duyệt cấp cứu tối đa: 48.0% | Thời gian sử dụng tối đa mỗi lần duyệt: 14.0% | Sinh khả dụng đường uống kháng sinh Nhóm 1: 90.0% | Sinh khả dụng đường uống kháng sinh Nhóm 2: 75.0%",
-    "impact": "practice-changing",
-    "year": 2020,
-    "organization": "Bộ Y tế Việt Nam",
-    "phase": "Clinical Guideline",
-    "population": "Bác sĩ lâm sàng, dược sĩ lâm sàng, điều dưỡng, nhân viên phòng xét nghiệm vi sinh và người bệnh tại các bệnh viện có giường bệnh trên phạm vi toàn quốc.",
-    "summary": "Hướng dẫn chuyên môn quốc gia của Bộ Y tế Việt Nam ban hành theo Quyết định số 5631/QĐ-BYT năm 2020 quy chuẩn hóa toàn diện quy trình Quản lý sử dụng kháng sinh (AMS) trong môi trường bệnh viện. Tài liệu hệ thống hóa cơ cấu tổ chức Ban quản lý đa chuyên khoa, thiết lập quy chế phê duyệt bắt buộc đối với danh mục kháng sinh dự trữ cần ưu tiên quản lý (Nhóm 1), đồng thời cung cấp các lưu đồ can thiệp lâm sàng để tối ưu hóa PK/PD, áp dụng xuống thang và chuyển đổi tiêm-uống an toàn.",
-    "detailedConclusion": "Quy trình AMS quy định danh mục kháng sinh Nhóm 1 (như Ceftolozan-tazobactam, Tigecyclin, Colistin, Linezolid...) bắt buộc phải được duyệt trước khi kê đơn, hoặc duyệt trong vòng 24 - 48 giờ đối với ca cấp cứu, với thời hạn sử dụng tối đa cho mỗi lần duyệt không vượt quá 14 ngày. Can thiệp lâm sàng ưu tiên hiệu chỉnh liều theo đích PK/PD dựa trên cá thể hóa bệnh nhân và chỉ định TDM (cho Aminoglycosid, Vancomycin). Khuyến khích rà soát xuống thang điều trị đích trong vòng 48 - 72 giờ từ khi khởi trị dựa trên đáp ứng lâm sàng và kết quả vi sinh. Quá trình chuyển đổi kháng sinh từ đường tiêm sang đường uống (IV-to-PO) được tiến hành theo các tiêu chuẩn: huyết động ổn định, không sốt trong ít nhất 24 giờ, chức năng hấp thu của đường tiêu hóa tốt và sẵn có hoạt chất đường uống tương đương có sinh khả dụng cao.",
-    "file": "2020-byt-huong-dan-thuc-hien-quan-ly-su-dung-khang-sinh-trong-benh-vien.mdx",
-    "asianData": true,
-    "subgroups": "{\"Phân loại các nhóm kháng sinh chuyển đổi tiêm-uống\":\"Nhóm 1: Sinh khả dụng uống cao >90% (Levofloxacin, Linezolid, Cotrimoxazol, Moxifloxacin, Fluconazol, Metronidazol) | Nhóm 2: Sinh khả dụng uống thấp hơn (70-80%) nhưng bù bằng tăng liều (Ciprofloxacin, Voriconazol) | Nhóm 3: Sinh khả dụng uống cao nhưng liều tối đa thấp hơn đường tiêm (Clindamycin) | Nhóm 4: Sinh khả dụng uống thấp và liều tối đa thấp hơn đường tiêm (Cefuroxim).\",\"Chống chỉ định tuyệt đối chuyển đổi kháng sinh IV-to-PO\":\"Nhiễm trùng nặng hoặc khó đạt nồng độ điều trị tại đích bằng đường uống bao gồm: Nhiễm khuẩn huyết nặng, nhiễm khuẩn huyết do S.aureus, viêm màng não/viêm não, viêm nội tâm mạc nhiễm khuẩn, viêm xương tủy, áp xe sâu, viêm mủ màng phổi, viêm trung thất, hoặc nhiễm trùng liên quan đến thiết bị cấy ghép.\",\"6 nhiệm vụ cốt lõi của Chương trình AMS bệnh viện\":\"HBAR: Thành lập Ban QLSDKS bệnh viện: 100.0% | Xây dựng các quy định/hướng dẫn sử dụng kháng sinh: 100.0% | Giám sát sử dụng và đề kháng kháng sinh: 100.0% | Triển khai can thiệp lâm sàng tại khoa phòng: 100.0% | Đào tạo, tập huấn cho nhân viên y tế: 100.0% | Đánh giá thực hiện, báo cáo và phản hồi: 100.0%\"}"
   },
   {
     "id": "2020-idsa-lao-mang-nao",
@@ -4053,7 +2845,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2020,
     "organization": "Nutrients Meta-Analysis",
     "journal": "Nat Med",
-    "file": "2020-nutrients-lowcarb-vs-lowfat.html",
+    "file": "2020-nutrients-lowcarb-vs-lowfat.mdx",
     "conditionKey": "obesity",
     "icd10": [
       "E66",
@@ -4098,55 +2890,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "asianData": false
   },
   {
-    "id": "panditray-adult-hemangioma-2018",
-    "title": "Điều trị U máu vùng đầu cổ ở người lớn: Propranolol uống so với Itraconazole uống kết hợp tiêm Sodium Tetradecyl Sulphate (Management of Head and Neck Hemangiomas in Adults: Oral Propranolol Versus Oral Itraconazole in Conjugation with Injection Sodium Tetra Decyl Sulphate)",
-    "drug": "Propranolol, Itraconazole, Sodium tetradecyl sulphate (STS)",
-    "sourceType": "intl-study",
-    "specialty": "onco",
-    "design": "rct",
-    "intervention": "Propranolol uống (40mg/ngày) hoặc Itraconazole uống (200mg/ngày) kết hợp với tiêm xơ tại chỗ Sodium tetradecyl sulphate trong 8 tuần",
-    "primaryEndpoint": "Giảm thể tích u máu và tỷ lệ thoái triển hoàn toàn sau 8 tuần điều trị",
-    "keyResults": "Cả hai nhóm đều giảm thể tích đáng kể (Propranolol giảm 91.92% p=0.018; Itraconazole giảm 88.97% p=0.025); không có sự khác biệt thống kê giữa 2 phác đồ (p=0.766) nhưng Propranolol có 3 ca thoái triển hoàn toàn so với 1 ca của Itraconazole",
-    "impact": "informative",
-    "year": 2018,
-    "organization": "Indian Journal of Otolaryngology and Head & Neck Surgery",
-    "phase": "Clinical Trial",
-    "sampleSize": 30,
-    "population": "Bệnh nhân người lớn mắc u máu vùng đầu cổ (chủ yếu ở vòm miệng, lưỡi) không có tổn thương lớn > 10cm",
-    "summary": "Thử nghiệm lâm sàng song song ngẫu nhiên chứng minh việc kết hợp thuốc uống (Propranolol hoặc Itraconazole) với tiêm xơ STS làm gi���m đáng kể thể tích khối u máu ở người lớn một cách an toàn.",
-    "detailedConclusion": "Nghiên cứu được thực hiện trên 30 bệnh nhân người lớn bị u máu đầu cổ để đánh giá hiệu quả phối hợp giữa tiêm xơ (Sodium tetradecyl sulphate 30mg/2ml mỗi 30 ngày) và thuốc uống (Propranolol 40mg/ngày hoặc Itraconazole 200mg/ngày). Kết quả sau 8 tuần cho thấy cả hai nhóm đều ghi nhận sự sụt giảm thể tích khối u rất ấn tượng (lần lượt 91.92% và 88.97%) so với ban đầu. Mặc dù không có sự khác biệt có ý nghĩa thống kê về hiệu quả giảm thể tích giữa hai nhóm (p=0.766), Propranolol cho thấy ưu thế hơn về tỷ lệ thoái triển tổn thương hoàn toàn (3 bệnh nhân so với 1 bệnh nhân ở nhóm Itraconazole). Tác dụng phụ ở cả hai nhóm đều nhẹ (buồn nôn, nhức đầu, giảm ham muốn) và không gây gián đoạn điều trị. Phác đồ kết hợp này được khuyến cáo là một giải pháp thay thế an toàn và rút ngắn thời gian điều trị cho u máu người lớn (đặc biệt các u < 3cm).",
-    "fdaStatus": "Không áp dụng",
-    "sourceUrl": "https://doi.org/10.1007/s12070-018-1410-8",
-    "asianData": true,
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Nhóm Propranolol\":\"Giảm 91.92% thể tích khối u, có 3/15 bệnh nhân thoái triển hoàn toàn, được đánh giá có ưu thế nhỉnh hơn do ức chế trực tiếp tạo mạch và kích thích apoptosis.\",\"Nhóm Itraconazole\":\"Giảm 88.97% thể tích khối u, 1/15 bệnh nhân thoái triển hoàn toàn. Thuốc ức chế con đường Hedgehog và VEGFR2 nhưng ít trường hợp sạch tổn thương hoàn toàn hơn.\"}"
-  },
-  {
-    "id": "issva-2018",
-    "title": "Phân loại ISSVA cho các bất thường mạch máu 2018 (ISSVA Classification for Vascular Anomalies)",
-    "drug": "Không áp dụng",
-    "sourceType": "intl-guideline",
-    "specialty": "onco",
-    "design": "guideline",
-    "intervention": "Hệ thống hóa phân loại toàn cầu dựa trên sinh lý bệnh, mô học và di truyền, phân chia thành hai nhánh lớn: Khối u mạch máu và Dị dạng mạch máu",
-    "primaryEndpoint": "Cung cấp khung danh pháp chuẩn để chẩn đoán đúng loại bất thường mạch máu, hướng dẫn chẩn đoán phân biệt và chỉ điểm gen đột biến gây bệnh",
-    "keyResults": "Bổ sung đột biến gen chi tiết: PIK3CA (Dị dạng bạch huyết/tĩnh mạch, PROS), GNAQ/GNA11 (Dị dạng mao mạch, u máu bẩm sinh); liên kết các loại u với rối loạn đông máu huyết học",
-    "impact": "practice-changing",
-    "year": 2018,
-    "organization": "ISSVA (International Society for the Study of Vascular Anomalies)",
-    "phase": "Guidelines",
-    "population": "Bệnh nhân mắc các khối u mạch máu hoặc dị dạng mạch máu bẩm sinh/mắc phải",
-    "summary": "Bản cập nhật ISSVA 2018 là tiêu chuẩn vàng toàn cầu cho việc phân loại các bất thường mạch máu, tách biệt rạch ròi giữa bản chất 'khối u' (tăng sinh tế bào) và 'dị dạng' (lỗi hình thái cấu trúc), đi kèm chi tiết các đột biến gen đích.",
-    "detailedConclusion": "Phân loại ISSVA giải quyết sự nhầm lẫn danh pháp lịch sử (ví dụ: dùng sai từ 'hemangioma' cho mọi tổn thương). Hệ thống phân loại chia bất thường mạch máu thành 2 loại cốt lõi. (1) Khối u mạch máu (Vascular tumors): Gồm u lành tính (như U máu nhũ nhi, U máu bẩm sinh RICH/NICH), u giáp biên/xâm lấn cục bộ (Kaposiform hemangioendothelioma - KHE, Tufted angioma) và u ác tính (Angiosarcoma). (2) Dị dạng mạch máu (Vascular malformations): Dị dạng cấu trúc mạch máu không có tế bào nội mô tăng sinh, được chia thành thể đơn giản (mao mạch, tĩnh mạch, bạch huyết, động tĩnh mạch), thể kết hợp, và thể kèm bất thường hệ thống (như hội chứng Klippel-Trenaunay, CLOVES, Sturge-Weber). Hướng dẫn năm 2018 cập nhật quy mô lớn các gen gây bệnh, đặc biệt là PIK3CA liên quan đến phổ quá phát (PROS) và các bất thường đông máu (hiện tượng Kasabach-Merritt chỉ gặp ở KHE/Tufted angioma chứ không gặp ở U máu nhũ nhi).",
-    "fdaStatus": "Không áp dụng",
-    "icd10": [
-      "Z00"
-    ],
-    "subgroups": "{\"Hiện tượng Kasabach-Merritt (KMP)\":\"Liên quan trực tiếp đến Kaposiform hemangioendothelioma (KHE) và Tufted angioma. Đặc trưng bởi giảm tiểu cầu sâu kéo dài và tiêu thụ yếu tố đông máu, tăng D-Dimer.\",\"Đông máu nội mạch cục bộ (LIC)\":\"Thường gặp ở dị dạng tĩnh mạch (VM) và bạch huyết (LM), với tăng D-dimer và có nguy cơ bùng phát thành DIC sau chấn thương hoặc phẫu thuật.\"}"
-  },
-  {
     "id": "2018-tg18-viem-duong-mat",
     "title": "Tokyo Guidelines 2018 (TG18): Chẩn đoán, Phân độ nặng và Dẫn lưu Viêm đường mật cấp",
     "titleEn": "Tokyo Guidelines 2018: Diagnostic criteria, severity grading, and management bundles for acute cholangitis",
@@ -4157,7 +2900,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2018,
     "organization": "Hội Gan Mật Tụy Nhật Bản (JSHBPS) & Ủy ban TG18",
     "journal": "J Hepatobiliary Pancreat Sci",
-    "file": "2018-tg18-viem-duong-mat.html",
+    "file": "2018-tg18-viem-duong-mat.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K83.0",
@@ -4195,7 +2938,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2018,
     "organization": "Hội Gan Mật Tụy Nhật Bản (JSHBPS) & Ủy ban TG18",
     "journal": "J Hepatobiliary Pancreat Sci",
-    "file": "2018-tg18-viem-tui-mat.html",
+    "file": "2018-tg18-viem-tui-mat.mdx",
     "conditionKey": "gerd-peptic",
     "icd10": [
       "K80.0",
@@ -4315,7 +3058,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "year": 2015,
     "organization": "Boehringer Ingelheim & Eli Lilly / NEJM",
     "journal": "N Engl J Med",
-    "file": "2015-nejm-empareg-outcome.html",
+    "file": "2015-nejm-empareg-outcome.mdx",
     "conditionKey": "heart-failure",
     "icd10": [
       "E11",
@@ -4428,34 +3171,5 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Bệnh nhân trưởng thành bị tổn thương gan cấp tính tiến triển thành suy gan cấp, đặc trưng bởi sự khởi phát của bệnh não gan và rối loạn đông máu (INR ≥ 1.5) trên nền gan lành không xơ hóa.",
     "asianData": true,
     "subgroups": "{\"Nguy cơ phù não (ICH) theo nồng độ Amoniac động mạch\":\"HBAR: Amoniac <75 uM (Hiếm gặp ICH): 1.0% | Amoniac >100 uM (Yếu tố nguy cơ độc lập): 100.0% | Amoniac >200 uM (Dự báo phù não tiến triển): 100.0%\",\"Các đích số liệu kiểm soát hồi sức tại ICU\":\"HBAR: Đích áp lực động mạch trung bình MAP (mmHg): 75.0% | Đích áp lực tưới máu não CPP (mmHg): 60.0% | Đích nồng độ Natri phòng phù não (mEq/L): 145.0%\",\"Hiệu quả tiên lượng tử vong không do Acetaminophen\":\"COL: Độ nhạy của Tiêu chuẩn King's College: 68.5% | Độ đặc hiệu của Tiêu chuẩn King's College: 87.0%\"}"
-  },
-  {
-    "id": "2009-nejm-macronutrient-diets",
-    "title": "So sánh các chế độ ăn giảm cân với thành phần Chất béo, Protein và Carbohydrate khác nhau",
-    "drug": "Chế độ ăn giảm calo",
-    "sourceType": "intl-study",
-    "specialty": "nutri",
-    "design": "rct",
-    "intervention": "Phân ngẫu nhiên bệnh nhân vào 4 chế độ ăn giảm calo (-750 kcal/ngày) với tỷ lệ macronutrient khác nhau (Béo: 20-40%; Protein: 15-25%; Carbohydrate: 35-65%) kết hợp tư vấn nhóm và cá nhân trong 2 năm.",
-    "primaryEndpoint": "Sự thay đổi trọng lượng cơ thể tại thời điểm 2 năm theo phân tích giai thừa 2x2 (béo thấp vs béo cao, protein trung bình vs protein cao, carb cao nhất vs carb thấp nhất).",
-    "keyResults": "HBAR: Giảm trên 5% cân nặng: 37.0% | Giảm trên 10% cân nặng: 15.0% | Giảm trên 20kg: 4.0%",
-    "impact": "practice-changing",
-    "year": 2009,
-    "organization": "NEJM",
-    "phase": "Phase III RCT",
-    "sampleSize": 811,
-    "population": "Người trưởng thành thừa cân và béo phì (BMI 25-40), độ tuổi 30-70, không mắc đái tháo đường hay các bệnh lý tim mạch không ổn định.",
-    "summary": "Thử nghiệm lâm sàng ngẫu nhiên lớn trên 811 người thừa cân chứng minh rằng các chế độ ăn giảm calo đều mang lại hiệu quả giảm cân có ý nghĩa lâm sàng tương đương nhau sau 2 năm, bất kể thành phần macronutrient (chất béo, protein hay carbohydrate) được nhấn mạnh là gì. Sự tuân thủ tham gia các buổi tư vấn hành vi là yếu tố dự báo cốt lõi cho hiệu quả giảm cân dài hạn.",
-    "detailedConclusion": "Sau 6 tháng, bệnh nhân ở mọi nhóm đều giảm trung bình 6 kg (7% trọng lượng ban đầu) và bắt đầu tăng cân dần lại sau 12 tháng. Tại thời điểm 2 năm, mức giảm cân duy trì tương đương và không có khác biệt thống kê giữa các nhóm: protein 25% vs 15% (3.6 kg vs 3.0 kg, p=0.22); béo 40% vs 20% (3.3 kg vs 3.3 kg, p=0.94); và carbohydrate 65% vs 35% (2.9 kg vs 3.4 kg, p>0.20). Các chế độ ăn đều giúp cải thiện các yếu tố nguy cơ tim mạch như lipid máu và insulin lúc đói một cách tương ứng. Tỷ lệ bệnh nhân giảm được ít nhất 10% trọng lượng ban đầu đạt khoảng 14-15% ở cả 4 nhóm. Không có sự khác biệt về cảm giác no, đói hay sự hài lòng với bữa ăn. Yếu tố dự báo mạnh mẽ nhất cho việc duy trì cân nặng là số buổi tư vấn nhóm tham gia, với mức giảm thêm 0.2 kg cho mỗi buổi. Khuyến cáo thực hành lâm sàng nên cá thể hóa tỷ lệ thành phần thức ăn theo sở thích cá nhân để tối ưu hóa mức độ tuân thủ.",
-    "fdaStatus": "N/A",
-    "icd10": [
-      "E66",
-      "E46"
-    ]
   }
 ];
-
-// Đồng bộ sang window để đảm bảo tương thích ngược 100% với các legacy scripts
-if (typeof window !== 'undefined') {
-  (window as any).KHO_GUIDELINES_STATIC = KHO_GUIDELINES_STATIC;
-}
