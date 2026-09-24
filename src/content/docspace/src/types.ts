@@ -106,6 +106,37 @@ export interface MissingEvidence {
   role: RoleType;
 }
 
+// ==============================================================================
+// 🧠 HỘI CHỨNG LÂM SÀNG (CLINICAL SYNDROME ENGINE)
+// Định nghĩa: Hội chứng lâm sàng là tập hợp ít nhất 02 triệu chứng
+// ==============================================================================
+export interface SyndromeDefinition {
+  id: string;                    // VD: "hc_warning_signs_dengue"
+  ten: string;                   // VD: "Hội chứng Dấu hiệu Cảnh báo SXHD"
+  chuyenKhoa?: string;           // VD: "Truyền nhiễm"
+  moTa: string;                  // Mô tả lâm sàng
+  nguong: {
+    loai: 'at_least_n' | 'all' | 'percentage';
+    n: number;                   // Tối thiểu n triệu chứng để coi là ĐẠT
+    phanTram?: number;
+  };
+  trieuChung: string[];          // Danh sách IDs triệu chứng thành phần (tối thiểu >= 2 triệu chứng)
+  goldStandardRelated?: boolean;
+}
+
+export interface SyndromeMatchResult {
+  syndromeId: string;
+  ten: string;
+  matchedCount: number;          // Số triệu chứng hiện có
+  totalCount: number;            // Tổng số triệu chứng trong hội chứng (VD: 10)
+  threshold: number;             // Ngưỡng đạt (VD: 2)
+  isMet: boolean;                // matchedCount >= threshold
+  ratioText: string;             // "2/10", "3/7", "2/5"
+  matchedSymptoms: Array<{ id: string; ten: string }>; // Triệu chứng đã có
+  missingSymptoms: Array<{ id: string; ten: string }>; // Triệu chứng chưa có
+  summaryText: string;           // "Đạt 2/10 triệu chứng (Ngưỡng: ≥ 2)"
+}
+
 export interface AnalysisResult {
   b: Benh;
   pct: number;
@@ -114,6 +145,8 @@ export interface AnalysisResult {
   matched: MatchedEvidence[];
   missing: MissingEvidence[];
   notes: string[];
+  syndromeMatches?: Record<string, SyndromeMatchResult>;
+  leadSyndromes?: SyndromeMatchResult[];
   epiBoost?: {
     boosted: boolean;
     reason: string;

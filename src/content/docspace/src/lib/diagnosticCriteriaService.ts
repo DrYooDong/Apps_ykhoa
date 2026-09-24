@@ -11,12 +11,19 @@ import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,
 } from '../../data/diagnostic-criteria-database.ts';
+import { findSyndromeByCriterionId, SYNDROME_REGISTRY } from './syndromeRegistry.ts';
 
 export interface DiagnosticCriterionItem {
   id: string;
   ten: string;
   role: RoleType;
   trongSo: number;
+  isSyndrome?: boolean;
+  syndromeId?: string;
+  syndromeRatio?: string;
+  syndromeTotalCount?: number;
+  syndromeThreshold?: number;
+  syndromeSymptomsList?: string[];
 }
 
 export interface DiagnosticCardData {
@@ -185,14 +192,23 @@ export function buildDiagnosticCards(kb: KnowledgeBase): DiagnosticCardData[] {
     // Tìm bài viết tương ứng trong Kho Phác Đồ (2.4) nếu có
     const pddtArt = findMatchingPddtArticle(b.ten, [], [b.icd]);
 
-    // Chuẩn hóa tiêu chuẩn & trọng số từ kb.benh.dd
+    // Chuẩn hóa tiêu chuẩn & trọng số từ kb.benh.dd, tích hợp nhận diện Hội chứng lâm sàng
     const tieuChuan: DiagnosticCriterionItem[] = b.dd.map(([tcId, w, role]) => {
       const tc = vocabMap.get(tcId);
+      const syn = findSyndromeByCriterionId(tcId);
+      const isSyndrome = !!syn;
+
       return {
         id: tcId,
         ten: tc?.ten || tcId,
         role: role as RoleType,
         trongSo: w,
+        isSyndrome,
+        syndromeId: syn?.id,
+        syndromeRatio: syn ? `≥ ${syn.nguong.n}/${syn.trieuChung.length}` : undefined,
+        syndromeTotalCount: syn?.trieuChung.length,
+        syndromeThreshold: syn?.nguong.n,
+        syndromeSymptomsList: syn?.trieuChung,
       };
     });
 

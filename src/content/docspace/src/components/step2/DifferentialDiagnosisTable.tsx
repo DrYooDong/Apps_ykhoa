@@ -283,6 +283,25 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
                         .join(', ')}
                       {diff.matched.length > 3 ? '...' : ''}
                     </div>
+
+                    {/* Badge Hội chứng lâm sàng đã đạt */}
+                    {diff.leadSyndromes && diff.leadSyndromes.some((s) => s.isMet) && (
+                      <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                        {diff.leadSyndromes
+                          .filter((s) => s.isMet)
+                          .map((s) => (
+                            <span
+                              key={s.syndromeId}
+                              className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1"
+                              title={`Tiêu chuẩn hội chứng lâm sàng: ${s.summaryText}`}
+                            >
+                              <span>🧩 {s.ten}:</span>
+                              <b className="font-mono-custom text-emerald-900">{s.ratioText}</b>
+                              <span>✓ Đạt</span>
+                            </span>
+                          ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Progress Bar & Actions */}

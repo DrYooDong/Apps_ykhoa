@@ -184,6 +184,76 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
         {/* TAB 1: TIÊU CHUẨN CHẨN ĐOÁN */}
         {activeTab === 'criteria' && (
           <div className="space-y-4">
+            {/* KHỐI ĐÁNH GIÁ HỘI CHỨNG LÂM SÀNG (SYNDROME ENGINE) */}
+            {topResult.leadSyndromes && topResult.leadSyndromes.length > 0 && (
+              <div className="p-3 bg-gradient-to-r from-blue-50/90 via-indigo-50/60 to-slate-50 border border-blue-200 rounded-lg text-xs space-y-2.5">
+                <div className="flex items-center justify-between flex-wrap gap-1">
+                  <span className="font-bold text-blue-950 flex items-center gap-1.5">
+                    <Layers className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Hội chứng lâm sàng đã đối soát ({topResult.leadSyndromes.filter((s) => s.isMet).length} hội chứng đạt tiêu chuẩn):</span>
+                  </span>
+                  <span className="text-[10px] text-blue-600 bg-white/80 px-2 py-0.5 rounded border border-blue-100 font-mono-custom font-semibold">
+                    Quy tắc: Tập hợp ≥ 02 triệu chứng
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {topResult.leadSyndromes.map((syn) => (
+                    <div
+                      key={syn.syndromeId}
+                      className={`p-2.5 rounded-lg border text-xs flex flex-col justify-between gap-1.5 transition-all ${
+                        syn.isMet
+                          ? 'bg-white border-emerald-300 shadow-2xs ring-1 ring-emerald-500/10'
+                          : 'bg-white/80 border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <b className="text-slate-800 leading-tight">{syn.ten}</b>
+                        <span
+                          className={`px-2 py-0.5 rounded text-[11px] font-mono-custom font-extrabold shrink-0 flex items-center gap-1 ${
+                            syn.isMet
+                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                              : 'bg-amber-50 text-amber-800 border border-amber-200'
+                          }`}
+                        >
+                          <span>{syn.ratioText}</span>
+                          <span>{syn.isMet ? '✓ ĐẠT' : `(Cần ≥ ${syn.threshold})`}</span>
+                        </span>
+                      </div>
+
+                      <div className="text-[11px] text-slate-600 space-y-1">
+                        {syn.matchedSymptoms.length > 0 && (
+                          <div className="flex items-center gap-1 flex-wrap">
+                            <span className="text-emerald-700 font-medium">Hiện có ({syn.matchedCount}):</span>
+                            {syn.matchedSymptoms.map((m) => (
+                              <span
+                                key={m.id}
+                                className="px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10.5px]"
+                              >
+                                ✓ {m.ten}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        {syn.missingSymptoms.length > 0 && !syn.isMet && (
+                          <div className="flex items-center gap-1 flex-wrap">
+                            <span className="text-slate-500">Chưa ghi nhận:</span>
+                            {syn.missingSymptoms.slice(0, 3).map((m) => (
+                              <span
+                                key={m.id}
+                                className="px-1.5 py-0.2 rounded bg-slate-50 text-slate-600 border border-slate-200 text-[10.5px]"
+                              >
+                                ○ {m.ten}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {enrichedChain?.diagnosticCriteria ? (
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-slate-100">
@@ -283,6 +353,42 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
         {/* TAB 3: BẰNG CHỨNG CDSS */}
         {activeTab === 'evidence' && (
           <div className="space-y-3">
+            {/* Tóm lược Hội chứng Lâm sàng */}
+            {topResult.leadSyndromes && topResult.leadSyndromes.length > 0 && (
+              <div className="p-3 bg-blue-50/50 border border-blue-200 rounded-lg text-xs space-y-2">
+                <span className="font-bold text-blue-950 flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Đánh giá Hội chứng Lâm sàng (Tập hợp ≥ 02 triệu chứng):</span>
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {topResult.leadSyndromes.map((syn) => (
+                    <div
+                      key={syn.syndromeId}
+                      className={`px-2.5 py-1.5 rounded-md border text-xs flex items-center gap-2 ${
+                        syn.isMet
+                          ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
+                          : 'bg-white border-slate-200 text-slate-700'
+                      }`}
+                    >
+                      <span className="font-semibold">{syn.ten}:</span>
+                      <span
+                        className={`px-1.5 py-0.2 rounded font-mono-custom font-extrabold text-[11px] ${
+                          syn.isMet
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-amber-100 text-amber-900 border border-amber-300'
+                        }`}
+                      >
+                        {syn.ratioText}
+                      </span>
+                      <span className="text-[10.5px]">
+                        {syn.isMet ? '✓ Đạt' : `(Cần ≥ ${syn.threshold})`}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Matched */}
               <div className="p-3 bg-emerald-50/40 border border-emerald-200 rounded-lg text-xs space-y-2">

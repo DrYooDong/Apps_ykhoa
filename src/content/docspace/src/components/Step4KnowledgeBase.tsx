@@ -418,9 +418,22 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                           return (
                             <div
                               key={idx}
-                              className="px-2 py-0.5 bg-slate-50 border border-slate-200 rounded text-[11px] flex items-center gap-1"
+                              className={`px-2 py-0.5 rounded text-[11px] flex items-center gap-1.5 flex-wrap ${
+                                tc.isSyndrome
+                                  ? 'bg-amber-50/70 border border-amber-200 text-amber-950'
+                                  : 'bg-slate-50 border border-slate-200'
+                              }`}
                             >
                               <span className="text-slate-800 font-medium">{tc.ten}</span>
+                              {tc.isSyndrome && (
+                                <span
+                                  className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-amber-100/80 text-amber-900 border border-amber-300 flex items-center gap-1"
+                                  title={`Tiêu chuẩn hội chứng: Cần đạt ${tc.syndromeRatio} triệu chứng thành phần`}
+                                >
+                                  <span>Hội chứng</span>
+                                  <b className="font-mono-custom text-blue-700">{tc.syndromeRatio}</b>
+                                </span>
+                              )}
                               <span className={`text-[9.5px] px-1 rounded ${roleCfg.badgeClass}`}>
                                 {roleCfg.label}
                               </span>

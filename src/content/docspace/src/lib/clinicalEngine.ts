@@ -14,6 +14,11 @@ import {
 } from '../types.ts';
 import { normalizeText } from './normalizeUtils.ts';
 import { expandSearchTerms } from './medicalAbbreviations.ts';
+import {
+  evaluateAllSyndromes,
+  findSyndromeByCriterionId,
+  SYNDROME_REGISTRY,
+} from './syndromeRegistry.ts';
 export { normalizeText };
 
 export function evaluateThreshold(
@@ -215,6 +220,37 @@ export function analyzeClinicalCase(
     }
   });
 
+  // ==========================================
+  // ĐÁNH GIÁ HỘI CHỨNG LÂM SÀNG (SYNDROME ENGINE)
+  // Hội chứng = tập hợp ít nhất 2 triệu chứng
+  // ==========================================
+  const currentPresentIds = new Set<string>(Object.keys(present));
+  const syndromeResults = evaluateAllSyndromes(currentPresentIds, vocabMap);
+
+  // Tự động suy ra tiêu chuẩn hội chứng nếu hội chứng đạt
+  for (const [synId, synRes] of Object.entries(syndromeResults)) {
+    if (synRes.isMet) {
+      if (vocabMap[synId] && !present[synId]) {
+        present[synId] = { via: '⚙ tự suy' };
+      }
+      if (synId === 'hc_warning_signs_dengue') {
+        if (vocabMap['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi'] && !present['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi']) {
+          present['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi'] = { via: '⚙ tự suy' };
+        }
+      }
+      if (synId === 'hc_soc_sxhd') {
+        if (vocabMap['tc_soc_mach_nhanh_ha_kep_hoac_tut'] && !present['tc_soc_mach_nhanh_ha_kep_hoac_tut']) {
+          present['tc_soc_mach_nhanh_ha_kep_hoac_tut'] = { via: '⚙ tự suy' };
+        }
+      }
+      if (synId === 'hc_mang_nao') {
+        if (vocabMap['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao'] && !present['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao']) {
+          present['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao'] = { via: '⚙ tự suy' };
+        }
+      }
+    }
+  }
+
   const results: AnalysisResult[] = [];
 
   for (const b of kb.benh) {
@@ -237,13 +273,17 @@ export function analyzeClinicalCase(
         continue;
       }
 
-      if (present[tcId]) {
+      // Kiểm tra xem tiêu chí này có tương ứng với một hội chứng lâm sàng hay không
+      const matchedSyndrome = findSyndromeByCriterionId(tcId);
+      const synEval = matchedSyndrome ? syndromeResults[matchedSyndrome.id] : undefined;
+
+      if (present[tcId] || (synEval && synEval.isMet)) {
         score += w;
         matched.push({
           tc,
           w,
           role,
-          via: present[tcId].via,
+          via: present[tcId]?.via || '⚙ tự suy',
         });
       } else {
         missing.push({ tc, w, role });
@@ -585,6 +625,10 @@ export function analyzeClinicalCase(
       notes.push(`Bị trừ điểm do vắng mặt: ${negHits.map((h) => h.tc.ten).join(', ')}`);
     }
 
+    const relevantSyndromes = Object.values(syndromeResults)
+      .filter((s) => s.isMet || s.matchedCount > 0)
+      .sort((s1, s2) => (s2.isMet ? 1 : 0) - (s1.isMet ? 1 : 0) || s2.matchedCount - s1.matchedCount);
+
     results.push({
       b,
       pct,
@@ -593,6 +637,8 @@ export function analyzeClinicalCase(
       matched,
       missing,
       notes,
+      syndromeMatches: syndromeResults,
+      leadSyndromes: relevantSyndromes,
       epiBoost: epiBoostInfo,
     });
   }
