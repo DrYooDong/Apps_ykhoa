@@ -1,6 +1,6 @@
 # 📘 CLINIPORTAL — DANH MỤC TỪ VỰNG LÂM SÀNG CHUẨN (MASTER SYMPTOM DICTIONARY)
 
-> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-09-24 | **Tổng số triệu chứng chuẩn**: 25
+> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-09-24 | **Tổng số triệu chứng chuẩn**: 26
 > **Vị trí lưu trữ**: `src/content/knowledge-vault/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`
 > **Mục đích**: Bản đồ từ vựng tham chiếu chuẩn mực (Anchor Vocabulary). Dùng để nạp trực tiếp vào **Google NotebookLM** cùng với tài liệu Guideline để AI đối chiếu, tái sử dụng mã ID sẵn có và tuyệt đối tránh tạo triệu chứng trùng lặp.
 
@@ -31,7 +31,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 
 ## 🗂️ BẢNG TỪ VỰNG CHI TIẾT THEO HỆ CƠ QUAN
 
-### 1. Toàn thân & Sinh hiệu chung (`toan-than.json` — 5 mục)
+### 1. Toàn thân & Sinh hiệu chung (`toan-than.json` — 6 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -40,6 +40,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 3 | `met_moi` | Mệt mỏi toàn thân | CN | mệt mỏi, uể oải, kiệt sức, fatigue, mệt nhọc, suy nhược, uể oải toàn thân, mệt lả | — |
 | 4 | `da_xanh` | Da xanh, niêm mạc nhợt nhạt | TT | da xanh, niêm nhợt, da tái, pallor, da niêm nhợt, niêm mạc mắt nhợt, xanh xao, thiếu máu lâm sàng | — |
 | 5 | `dau_co` | Đau mỏi cơ, khớp | CN | đau cơ, đau khớp, nhức mỏi, myalgia, arthralgia, đau nhức cơ bắp, mỏi cơ, đau mình mẩy | — |
+| 6 | `nhuc_hai_ho_mat` | Nhức hai hố mắt | CN | nhức hố mắt, đau sau hốc mắt, retro-orbital pain, nhuc hai ho mat, đau hốc mắt | — |
 
 ### 2. Hệ Tim mạch & Huyết động (`tim-mach.json` — 4 mục)
 
@@ -73,7 +74,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
-| 1 | `dau_dau` | Đau đầu dữ dội | CN | đau đầu, nhức đầu, headache, đau nhức đầu, đau nhức nửa đầu, đau sau hốc mắt, nhức óc, đau trán thái dương | — |
+| 1 | `dau_dau` | Đau đầu dữ dội | CN | đau đầu, nhức đầu, headache, đau nhức đầu, đau nhức nửa đầu, nhức óc, đau trán thái dương | — |
 
 ### 6. Da niêm & Dị ứng lâm sàng (`da-niem.json` — 1 mục)
 

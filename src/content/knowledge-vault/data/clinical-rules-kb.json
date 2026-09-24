@@ -2,7 +2,7 @@
   "meta": {
     "ten": "Kho tri thức bệnh học lâm sàng — Master Diseases Database (33 Bệnh lý)",
     "phienBan": 4,
-    "capNhat": "2026-09-24T04:19:38.476Z",
+    "capNhat": "2026-09-24T05:07:32.153Z",
     "symptomsSource": "clinical-rules-symptoms.json",
     "totalDiseases": 1
   },
@@ -13,8 +13,8 @@
       "icd": "A97",
       "nhom": "Truyền nhiễm",
       "baoDong": true,
-      "ghiChuBaoDong": "CẢNH BÁO CẤP CỨU: Diễn tiến giai đoạn nguy hiểm (N4-N7) với hiện tượng tăng thấm mao mạch gây thoát huyết tương, cô đặc máu, tiểu cầu tụt dốc nhanh, nguy cơ sốc giảm thể tích (DSS), xuất huyết tạng nặng và suy đa tạng.",
-      "tomTat": "Sốt xuất huyết Dengue là bệnh nhiễm trùng cấp tính do vi rút Dengue (DENV-1, DENV-2, DENV-3, DENV-4) gây ra, lây truyền trung gian qua muỗi Aedes aegypti. Diễn tiến qua 3 giai đoạn lâm sàng: Sốt cấp tính (N1-N3), Nguy hiểm (N4-N7 với thoát huyết tương, cô đặc máu, giảm tiểu cầu, nguy cơ sốc DSS) và Hồi phục (N7-N10 với sự tái hấp thu dịch). Việc bù dịch tĩnh mạch đẳng trương kịp thời theo nấc bậc thang là yếu tố quyết định giảm tỷ lệ tử vong theo Quyết định 2760/QĐ-BYT 2023 và WHO Guidelines 2024-2025.",
+      "ghiChuBaoDong": "Cảnh báo cấp cứu khẩn cấp: Dấu hiệu cảnh báo thoát huyết tương, cô đặc máu (Hct tăng &gt; 20%), tiểu cầu tụt dốc (&lt; 100 G/L), nguy cơ sốc giảm thể tích (DSS) và xuất huyết nặng trong giai đoạn nguy hiểm (N4-N7).",
+      "tomTat": "Bệnh truyền nhiễm cấp tính do vi rút Dengue (DEN-1, DEN-2, DEN-3, DEN-4) gây ra qua trung gian muỗi Aedes aegypti. Diễn tiến qua 3 giai đoạn: Sốt (N1-N3), Nguy hiểm (N4-N7 với nguy cơ thoát huyết tương, cô đặc máu, sốc, xuất huyết và suy tạng) và Hồi phục (N7-N10). Bù dịch nấc thang và hồi sức chống sốc chuẩn là can thiệp cốt lõi.",
       "danSo": {
         "gioiTinh": "any",
         "tuoiMin": 0,
@@ -27,8 +27,8 @@
           "dt"
         ],
         [
-          "tc_xuat_huyet_da_niem_lacet_duong_tinh",
-          4,
+          "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+          4.5,
           "dt"
         ],
         [
@@ -37,28 +37,18 @@
           "dt"
         ],
         [
+          "tc_giam_tieu_cau_duoi_100_g_l",
+          4,
+          "dt"
+        ],
+        [
           "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
           5,
           "dt"
         ],
         [
-          "tc_soc_mach_nhanh_ha_kep_hoac_tut",
-          5,
-          "dt"
-        ],
-        [
-          "tc_giam_tieu_cau_duoi_100_g_l",
-          3.5,
-          "gy"
-        ],
-        [
-          "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
-          3.5,
-          "gy"
-        ],
-        [
-          "chi_lanh_crt_keo_dai",
-          4.5,
+          "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+          4,
           "dt"
         ],
         [
@@ -67,59 +57,74 @@
           "dt"
         ],
         [
-          "tc_ho_co_dom_hoac_viem_am_i_keo_dai",
-          -5,
-          "loaitru"
+          "dau_dau",
+          2.5,
+          "gy"
+        ],
+        [
+          "dau_co",
+          2.5,
+          "gy"
+        ],
+        [
+          "buon_non_non",
+          2,
+          "gy"
+        ],
+        [
+          "gan_to_dau",
+          3.5,
+          "gy"
+        ],
+        [
+          "nhuc_hai_ho_mat",
+          2,
+          "gy"
         ]
       ],
       "phacDo": {
         "tuyen": [
-          "Tuyến trạm y tế / Cơ sở: Nhận diện sớm dấu hiệu cảnh báo (đau bụng vùng gan, nôn nhiều, Hct tăng kèm tiểu cầu giảm nhanh). Chuyển tuyến an toàn bằng dung dịch Ringer Lactate nếu huyết động bất ổn.",
-          "Tuyến bệnh viện quận/huyện: Sốt xuất huyết Dengue có dấu hiệu cảnh báo: Truyền dịch Ringer Lactate bậc thang 6-7 ml/kg/h -> 5 ml/kg/h -> 3 ml/kg/h. Theo dõi Hct mỗi 2-4 giờ.",
-          "Tuyến chuyên khoa / ICU hồi sức: Sốc SXH Dengue: Thở oxy, bù dịch tinh thể Ringer Lactate 15 ml/kg trong giờ đầu tiên. Nếu thất bại hoặc tái sốc: Sử dụng dung dịch cao phân tử (Dextran 40 hoặc HES 200/0.5) 10-15 ml/kg/h. Đo Hct trước và sau mỗi đợt dịch."
+          "Trạm Y tế (Ngoại trú): Hạ sốt bằng Paracetamol đơn chất 10-15 mg/kg, bù nước bằng Oresol uống 1500-2500 mL/ngày, theo dõi tái khám hàng ngày.",
+          "Bệnh viện Huyện (Nội trú): Nhập viện 100% khi có dấu hiệu cảnh báo. Bù dịch tĩnh mạch Ringer Lactate 6 mL/kg/h trong 1-2h, giảm dần tốc độ theo đáp ứng Hct.",
+          "Bệnh viện Tỉnh / ICU (Cấp cứu): Chống sốc bằng Ringer Lactate 15-20 mL/kg/h giờ đầu, chuyển Cao phân tử Dextran 40 nếu tái sốc hoặc kháng tinh thể, thở oxy, đo CVP."
         ],
         "thuoc": [
           [
-            "Ringer Lactate (Chai 500ml)",
-            "15 ml/kg/giờ đầu tiên (Sốc SXH)",
-            "Dung dịch tinh thể đẳng trương đầu tay chống sốc theo QĐ 2760/QĐ-BYT"
+            "Paracetamol (Acetaminophen)",
+            "10-15 mg/kg/lần (PO/PR/IV), cách mỗi 4-6h khi sốt ≥ 38.5°C",
+            "Tối đa ≤ 60 mg/kg/24h (trẻ em) hoặc ≤ 3g/24h (người lớn). Tuyệt đối CẤM dùng Aspirin, Ibuprofen do nguy cơ xuất huyết tiêu hóa dữ dội."
           ],
           [
-            "Dextran 40 10% trong NaCl 0.9% (Chai 500ml)",
-            "10 - 15 ml/kg/h IV",
-            "Dung dịch cao phân tử chỉ định khi sốc không đáp ứng điện giải hoặc tái sốc"
+            "Dung dịch Oresol (ORS chuẩn WHO)",
+            "2000-3000 mL/ngày (người lớn) hoặc 50-100 mL/kg/ngày (trẻ em)",
+            "Pha đúng tỷ lệ 1 gói/1000 mL nước, uống rải rác từng ngụm nhỏ liên tục trong ngày."
           ],
           [
-            "Hydroxyethyl Starch (HES 6% 200/0.5)",
-            "10 - 15 ml/kg/h IV",
-            "Dung dịch keo tổng hợp chống sốc thay thế Dextran"
+            "Dung dịch Ringer Lactate / Acetate",
+            "6 mL/kg/h (có dấu hiệu cảnh báo) hoặc 15-20 mL/kg/h (khi vào sốc)",
+            "Rút tốc độ dịch từng nấc (6 -&gt; 3 -&gt; 1.5 mL/kg/h) theo động học Hct. BẮT BUỘC ngưng dịch trong 24-48h khi ra sốc."
           ],
           [
-            "Khối hồng cầu (KHC)",
-            "5 - 10 ml/kg IV",
-            "Chỉ định khi sốc kèm xuất huyết nặng hoặc Hct tụt nhanh < 35% mà huyết động không cải thiện"
+            "Dung dịch Keo Dextran 40 / HES 6%",
+            "10-15-20 mL/kg/h trong 1 giờ đầu",
+            "Chỉ định khi sốc kháng dịch tinh thể hoặc tái sốc kèm Hct còn cao. Giới hạn tổng liều CPT ≤ 30-50 mL/kg/24h."
           ],
           [
-            "Paracetamol 500mg",
-            "10 - 15 mg/kg/lần (tối đa 60 mg/kg/ngày)",
-            "Hạ sốt an toàn khi sốt >= 38.5°C; tuyệt đối không dùng Aspirin hoặc NSAID"
+            "Khối hồng cầu lắng / Máu toàn phần",
+            "Khối hồng cầu 5-10 mL/kg hoặc Máu toàn phần 10-20 mL/kg",
+            "Chỉ định khẩn cấp khi sốc có xuất huyết nặng hoặc Hct tụt dốc đột ngột &lt; 35% mà huyết áp chưa nâng."
           ]
         ],
         "theoDoi": [
-          "Mạch, Huyết áp, Nhịp thở, SpO2 mỗi 15-30 phút trong giai đoạn chống sốc",
-          "Hematocrit (Hct) trước khi truyền dịch, sau 1 giờ bù dịch và mỗi 2-4 giờ cho đến khi huyết động ổn định",
-          "Nước tiểu qua sonde bàng quang, đảm bảo lượng nước tiểu >= 0.5 - 1 ml/kg/h",
-          "Phát hiện sớm dấu hiệu quá tải dịch: Thở nhanh, ran ẩm ở phổi, gan to nhanh, CVP tăng cao"
+          "Mạch, huyết áp, nhịp thở, SpO2, tri giác và nước tiểu mỗi 1-2h (khi sốc) hoặc 4h (dấu hiệu cảnh báo).",
+          "Kiểm tra Hematocrit (Hct) và tiểu cầu mỗi ngày hoặc ngay sau mỗi cữ dịch truyền chống sốc."
         ],
         "luuY": [
-          "Tuyệt đối không dùng kháng sinh thường quy trong sốt xuất huyết Dengue",
-          "Chống chỉ định tuyệt đối Aspirin, Ibuprofen và các thuốc NSAID do nguy cơ gây loét dạ dày và xuất huyết ồ ạt",
-          "Ngưng dịch truyền đúng thời điểm khi bệnh nhân bước vào giai đoạn tái hấp thu (thường sau 24-48 giờ từ khi sốc) để tránh phù phổi cấp"
+          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin, Ibuprofen và các thuốc NSAIDs do nguy cơ xuất huyết tiêu hóa ồ ạt và toan máu.",
+          "Không truyền dịch kéo dài sang ngày thứ 6-7 (giai đoạn tái hấp thu) để tránh phù phổi cấp do quá tải tuần hoàn."
         ],
         "nguon": [
-          "Quyết định 2760/QĐ-BYT năm 2023",
-          "WHO Dengue Guidelines 2024",
-          "Hội Truyền Nhiễm Việt Nam"
+          "Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam &amp; WHO Dengue Guidelines 2024-2025"
         ]
       }
     }

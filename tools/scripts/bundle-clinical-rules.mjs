@@ -48,11 +48,11 @@ function bundleDiseases() {
   for (const file of files) {
     const fPath = path.join(DISEASES_DIR, file);
     try {
-      const items = JSON.parse(fs.readFileSync(fPath, 'utf8'));
-      if (Array.isArray(items)) {
-        summary[file] = items.length;
-        let fileModified = false;
-        for (const d of items) {
+      const raw = JSON.parse(fs.readFileSync(fPath, 'utf8'));
+      const items = Array.isArray(raw) ? raw : Object.values(raw);
+      summary[file] = items.length;
+      let fileModified = false;
+      for (const d of items) {
           if (seenIds.has(d.id)) {
             console.warn(`⚠️ Cảnh báo: Trùng lặp mã bệnh ID "${d.id}" trong ${file}!`);
           }
@@ -70,7 +70,6 @@ function bundleDiseases() {
         if (fileModified) {
           fs.writeFileSync(fPath, JSON.stringify(items, null, 2), 'utf8');
         }
-      }
     } catch (e) {
       console.error(`❌ Lỗi đọc tệp ${file}:`, e.message);
     }

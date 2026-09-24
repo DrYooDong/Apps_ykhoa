@@ -58,7 +58,8 @@ let totalDisRules = 0;
 let totalDisCount = 0;
 
 disFiles.forEach(f => {
-  const list = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+  const rawData = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+  const list = Array.isArray(rawData) ? rawData : Object.values(rawData);
   totalDisCount += list.length;
   list.forEach(d => {
     const rules = d.dd || d.trieuChung || [];
@@ -122,7 +123,8 @@ report(2, 'Symptom Dictionary Deduplication & Multi-file Sync', dupIds.length ==
 const validRoles = new Set(['dt', 'gy', 'ht', 'loaitru']);
 let invalidRoles = 0;
 disFiles.forEach(f => {
-  const list = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+  const rawData = JSON.parse(fs.readFileSync(path.join(disDir, f), 'utf8'));
+  const list = Array.isArray(rawData) ? rawData : Object.values(rawData);
   list.forEach(d => {
     const rules = d.dd || d.trieuChung || [];
     rules.forEach(r => {
