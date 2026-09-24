@@ -24,6 +24,7 @@
     "migrate:validate": "tsc --noEmit",
     "lint:content": "node tools/scripts/medical-linter.mjs",
     "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
+    "sync:cdss": "node tools/scripts/sync-clinical-db.mjs",
     "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode"
   },
   "keywords": [

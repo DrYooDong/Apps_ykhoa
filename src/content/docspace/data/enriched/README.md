@@ -120,6 +120,11 @@ node tools/qa/docspace-medical-qa-gate.mjs
 ### 1. Đồng bộ & Nạp dữ liệu (Sync & Ingestion)
 
 ```powershell
+# 🌟 [KHUYÊN DÙNG] Lệnh hợp nhất 1-Chạm: Gom triệu chứng, bệnh lý, build CDSS & kiểm định tự động
+npm run sync:cdss
+# Hoặc: node tools/scripts/sync-clinical-db.mjs
+
+# --- Hoặc chạy từng lệnh riêng lẻ khi cần ---
 # Gom toàn bộ triệu chứng (12 tệp) & bệnh lý (9 tệp) vào Master KB (Bắt buộc chạy sau khi thêm/sửa)
 node tools/scripts/bundle-clinical-rules.mjs
 

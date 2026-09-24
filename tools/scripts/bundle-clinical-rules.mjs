@@ -52,7 +52,19 @@ function bundleDiseases() {
       const items = Array.isArray(raw) ? raw : Object.values(raw);
       summary[file] = items.length;
       let fileModified = false;
-      for (const d of items) {
+      const normalizedItems = [];
+      for (let d of items) {
+          // Auto-Healer: Nếu bệnh bị bọc thừa bởi key { "slug": { id, ... } }
+          if (!d.id && typeof d === 'object' && d !== null) {
+            const innerValues = Object.values(d);
+            if (innerValues.length === 1 && innerValues[0] && typeof innerValues[0] === 'object' && innerValues[0].id) {
+              console.warn(`🩹 Auto-Healer: Đang gỡ bỏ lớp bọc dư thừa cho bệnh "${innerValues[0].id}" trong ${file}...`);
+              d = innerValues[0];
+              fileModified = true;
+            }
+          }
+          normalizedItems.push(d);
+
           if (seenIds.has(d.id)) {
             console.warn(`⚠️ Cảnh báo: Trùng lặp mã bệnh ID "${d.id}" trong ${file}!`);
           }
@@ -68,7 +80,7 @@ function bundleDiseases() {
           allDiseases.push(d);
         }
         if (fileModified) {
-          fs.writeFileSync(fPath, JSON.stringify(items, null, 2), 'utf8');
+          fs.writeFileSync(fPath, JSON.stringify(normalizedItems, null, 2), 'utf8');
         }
     } catch (e) {
       console.error(`❌ Lỗi đọc tệp ${file}:`, e.message);
