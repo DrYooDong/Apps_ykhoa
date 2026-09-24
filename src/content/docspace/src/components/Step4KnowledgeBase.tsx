@@ -295,39 +295,47 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
           <div className="flex items-center justify-between flex-wrap gap-2 px-1 text-xs">
             <div className="flex items-center gap-1.5">
               <span className="text-slate-500 font-medium">Nguồn dữ liệu:</span>
-              <button
-                type="button"
-                onClick={() => setCriteriaSource('all')}
-                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
-                  criteriaSource === 'all'
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                Tất cả tiêu chuẩn ({allDiagnosticCards.length})
-              </button>
-              <button
-                type="button"
-                onClick={() => setCriteriaSource('core')}
-                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
-                  criteriaSource === 'core'
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                Bộ luật CDSS cốt lõi ({coreCardsCount})
-              </button>
-              <button
-                type="button"
-                onClick={() => setCriteriaSource('vault')}
-                className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
-                  criteriaSource === 'vault'
-                    ? 'bg-blue-600 text-white shadow-2xs'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                Kho Chẩn Đoán CDSS ({vaultCardsCount})
-              </button>
+              {vaultCardsCount > 0 ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setCriteriaSource('all')}
+                    className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                      criteriaSource === 'all'
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    Tất cả tiêu chuẩn ({allDiagnosticCards.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCriteriaSource('core')}
+                    className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                      criteriaSource === 'core'
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    Bộ luật CDSS cốt lõi ({coreCardsCount})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCriteriaSource('vault')}
+                    className={`px-2.5 py-1 rounded text-xs font-semibold cursor-pointer transition-colors ${
+                      criteriaSource === 'vault'
+                        ? 'bg-blue-600 text-white shadow-2xs'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    Kho Chẩn Đoán CDSS ({vaultCardsCount})
+                  </button>
+                </>
+              ) : (
+                <span className="px-2.5 py-1 rounded text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                  Bộ luật CDSS cốt lõi ({coreCardsCount})
+                </span>
+              )}
             </div>
 
             <div className="text-[11px] text-slate-500">

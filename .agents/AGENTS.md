@@ -27,6 +27,8 @@ d:\Apps_ykhoa\.agents/
 │   ├── FILE_MAP.md                   # Bản đồ cấu trúc file
 │   ├── WORKFLOW_CHECKLISTS.md        # Bộ bảng kiểm quy trình
 │   ├── DESIGN_SQUAD_KANBAN.md        # Bảng điều phối Kanban của Design Squad
+│   ├── EBM_RESEARCH_SQUAD_KANBAN.md  # 🔬 Bảng điều phối Master Kanban của 5 Đội ngũ Nghiên cứu Khoa học & Tóm tắt Y văn Chuẩn Nature/EBM
+│   ├── RESEARCH_SUMMARY_DESIGN_SYSTEM.md # 📜 Quy chuẩn Thiết kế & Trình bày Bài Tóm tắt Nghiên cứu Y khoa Đỉnh cao Chuẩn Nature
 │   ├── DOCSPACE_4STEPS_AGENT_KANBAN.md # 🩺 Bảng điều phối Master Kanban của 4 Đội ngũ Chu trình Lâm sàng DocSpace (Bước 1 - Bước 4)
 │   ├── DOCSPACE_UI_FEATURE_KANBAN.md # 🩺 Bảng điều phối Kanban của DocSpace UI/UX & Feature Squad
 │   ├── DOCSPACE_MEDICAL_QA_KANBAN.md # 🩺 Bảng điều phối Kanban của DocSpace Medical Knowledge Squad
@@ -58,7 +60,7 @@ d:\Apps_ykhoa\.agents/
     ├── Agent Intelligence & Memory   # agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
     ├── Healthcare AI & Safety        # cdss-standalone-manager, cdss-ui-sync-squad, cdss-module-builder, docspace-oneclick-ingest-agent, docspace-step1-ingestion-squad, docspace-step2-reasoning-squad, docspace-step3-cdss-squad, docspace-step4-protocol-squad, docspace-treatment-data-engineering-squad, docspace-treatment-protocol-ui-squad, docspace-clinical-simulation-squad, docspace-case-ingestion-squad, docspace-medical-qa-squad, cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
     ├── UI/UX & Design Engineering    # cdss-ui-sync-squad, docspace-step4-protocol-squad, docspace-treatment-protocol-ui-squad, docspace-ui-feature-squad, design-engineering, stop-making-ui-slop, antigravity-ui-motion-design, mobile-design-system, canvas-design, design-components, algorithmic-art, ui-ux-designer, d-web-experience, brand-guidelines...
-    ├── Research & Knowledge Hub      # scholar-evaluation, research-synthesizer, auto-research, hypothesis-generation, knowledge-extraction, brain-to-docs, search-first-research, data-structure-protocol-dsp, obsidian-cli...
+    ├── Research & Evidence Hub       # medical-research-card, research-synthesizer, scholar-evaluation, medical-scientific-figure, medical-journal-club-deck, guideline-summary-module, pubmed-research-linker, auto-research, hypothesis-generation, knowledge-extraction, brain-to-docs, search-first-research...
     ├── Workflow & Quality Skills     # brainstorming, code-reviewer, find-bugs, ui-review, simplify-code, multi-agent-optimization, subagent-coding-workflow...
     ├── Performance & Standards       # performance-optimizer, wcag-audit-patterns, accessibility-wcag-medical...
     ├── Medical Content & SEO         # schema-markup-generator, medical-seo-structure, pubmed-research-linker...
@@ -72,6 +74,10 @@ d:\Apps_ykhoa\.agents/
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
+| Nghiên Cứu Khoa Học & Y Học Chứng Cứ (EBM) | Skill `medical-research-card`, `research-synthesizer`, `scholar-evaluation`, `.agents/docs/EBM_RESEARCH_SQUAD_KANBAN.md` & `.agents/docs/RESEARCH_SUMMARY_DESIGN_SYSTEM.md` |
+| Đồ Họa Xuất Bản, Sơ Đồ Cơ Chế & PRISMA | Skill `medical-scientific-figure`, `medical-editorial-diagram`, `flowchart-module` |
+| Báo Cáo Sinh Hoạt Khoa Học / Journal Club | Skill `medical-journal-club-deck` & Reveal.js Presentation Engine |
+| Tóm tắt Guideline & Landmark Trials MDX | Skill `guideline-summary-module` & `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` |
 | Nạp Thần Tốc 1-Chạm (Prompt 05, 06, 07) | Skill `docspace-oneclick-ingest-agent` & `tools/scripts/docspace-oneclick-ingester.mjs` |
 | UI/UX & Tính năng DocSpace | Skill `docspace-ui-feature-squad`, `.agents/docs/DOCSPACE_UI_FEATURE_KANBAN.md` & `src/content/docspace/docs/UI_FEATURE_DESIGN_SYSTEM.md` |
 | Kiểm định Dữ liệu Lâm sàng, Viết tắt & Lọc trùng | Skill `docspace-clinical-data-qa-squad`, `.agents/docs/DOCSPACE_CLINICAL_DATA_QA_KANBAN.md` |

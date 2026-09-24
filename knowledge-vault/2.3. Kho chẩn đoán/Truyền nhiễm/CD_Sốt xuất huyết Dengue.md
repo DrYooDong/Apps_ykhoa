@@ -1,33 +1,37 @@
-```
 ---
-
-title: "Chẩn đoán: Sốt xuất huyết Dengue" aliases:
-
-- "Chẩn đoán Sốt xuất huyết Dengue"
-- "Chẩn đoán SXHD"
-- "Dengue Fever Diagnosis"
-- "Tiêu chuẩn chẩn đoán Sốt xuất huyết Dengue" keywords:
-- "chẩn đoán sốt xuất huyết dengue"
-- "tiêu chuẩn chẩn đoán sxhd"
-- "dấu hiệu lâm sàng triệu chứng cơ năng thực thể"
-- "cận lâm sàng xét nghiệm định lượng hình ảnh học"
-- "tiêu chuẩn vàng gold standard"
-- "chẩn đoán phân biệt differential diagnosis" icd10:
-- "A97: Sốt xuất huyết Dengue"
-- "A97.0: Sốt xuất huyết Dengue không có dấu hiệu cảnh báo"
-- "A97.1: Sốt xuất huyết Dengue có dấu hiệu cảnh báo"
-- "A97.2: Sốt xuất huyết Dengue nặng" specialty: "Truyền nhiễm" kho: "2.3. Kho chẩn đoán" type: "diagnostic" tags:
-- "CliniPortal"
-- "Diagnostic"
-- "KhoChanDoan"
-- "TruyenNhiem"
-- "SotXuatHuyetDengue" updated: "2026-09-19" sources:
-- "Quyết định 2760/QĐ-BYT năm 2023 của Bộ Y tế Việt Nam"
-- "WHO Guidelines for clinical management of arboviral diseases 2025"
-- "WHO Laboratory testing for dengue virus interim guidance 2025"
-
+title: "Chẩn đoán Y khoa Toàn diện: Sốt xuất huyết Dengue"
+aliases:
+  - "Chẩn đoán Sốt xuất huyết Dengue"
+  - "Chẩn đoán SXHD"
+  - "Dengue Fever Diagnosis"
+  - "Tiêu chuẩn chẩn đoán Sốt xuất huyết Dengue"
+keywords:
+  - "chẩn đoán sốt xuất huyết dengue"
+  - "tiêu chuẩn chẩn đoán sxhd"
+  - "dấu hiệu lâm sàng triệu chứng cơ năng thực thể"
+  - "cận lâm sàng xét nghiệm định lượng hình ảnh học"
+  - "tiêu chuẩn vàng gold standard"
+  - "chẩn đoán phân biệt differential diagnosis"
+icd10:
+  - "A97: Sốt xuất huyết Dengue"
+  - "A97.0: Sốt xuất huyết Dengue không có dấu hiệu cảnh báo"
+  - "A97.1: Sốt xuất huyết Dengue có dấu hiệu cảnh báo"
+  - "A97.2: Sốt xuất huyết Dengue nặng"
+specialty: "Truyền nhiễm"
+kho: "2.3. Kho chẩn đoán"
+type: "diagnostic"
+tags:
+  - "CliniPortal"
+  - "Diagnostic"
+  - "KhoChanDoan"
+  - "TruyenNhiem"
+  - "SotXuatHuyetDengue"
+updated: "2026-09-19"
+sources:
+  - "Quyết định 2760/QĐ-BYT năm 2023 của Bộ Y tế Việt Nam"
+  - "WHO Guidelines for clinical management of arboviral diseases 2025"
+  - "WHO Laboratory testing for dengue virus interim guidance 2025"
 ---
-```
 
 # 🩺 CHẨN ĐOÁN Y KHOA TOÀN DIỆN: SỐT XUẤT HUYẾT DENGUE
 

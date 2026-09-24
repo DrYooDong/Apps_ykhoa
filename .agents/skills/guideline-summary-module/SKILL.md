@@ -61,6 +61,7 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
    - Sử dụng Node.js script / Python helper script hoặc công cụ ghi file trực tiếp để ghi file UTF-8 an toàn.
 9. **Kiểm Tra HTML & Tag Integrity**: Chạy `node tools/scratch/check_tags.js <file>.mdx` sau khi tạo/sửa để đảm bảo không có thẻ mở/đóng sai lệch hoặc lỗi cú pháp JSX.
 10. **Bắt Buộc Đăng Ký Kho Lưu Trữ Tĩnh (`kho-guidelines-registry.ts`)**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` (tự động nạp vào `SAMPLE_STUDIES` và `window.studies`).
+11. **TIÊU CHUẨN TÓM TẮT NGHIÊN CỨU & LANDMARK RCTS CHUẨN NATURE (Nature-Grade Medical Research Card Standard)**: Khi tóm tắt các thử nghiệm lâm sàng trọng điểm (Landmark RCTs từ NEJM, Lancet, JAMA, Nature Medicine...), bắt buộc áp dụng toàn diện **Khung 16 Mục Chuẩn Hóa** từ Skill `medical-research-card` và `GUIDELINE_MDX_DESIGN_SPEC.md` Mục 12: Khung PICO Bento Grid (`.pico-bento-grid`), Bảng Điểm Kết Thúc Thử Nghiệm (`.trial-endpoints-table`), Đánh giá Nguy cơ Sai lệch Cochrane RoB 2.0 (`.rob-card`), và Hộp Phán Quyết Thực Hành Lâm Sàng (`.verdict-box`).
 
 ---
 

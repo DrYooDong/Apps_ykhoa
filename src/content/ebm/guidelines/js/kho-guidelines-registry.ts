@@ -13,6 +13,40 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+    "id": "2014-idsa-ssti",
+    "title": "IDSA 2014: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Nhiễm Trùng Da & Mô Mềm (SSTI)",
+    "titleEn": "Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update by the IDSA",
+    "drug": "Vancomycin, Daptomycin, Linezolid, Cefazolin, Cephalexin, Nafcillin, Oxacillin, Dicloxacillin, Penicillin VK, Clindamycin, TMP-SMX, Doxycycline, Piperacillin-Tazobactam, Mupirocin, Prednisone",
+    "sourceType": "intl-guideline",
+    "specialty": "infect",
+    "design": "guideline",
+    "intervention": "Phân đôi tiếp cận Có mủ (Purulent do Tụ cầu) vs Không mủ (Non-purulent do Liên cầu) theo 3 mức độ nhẹ/vừa/nặng của hội chứng SIRS; Rạch và dẫn lưu (I&D) cơ học đơn thuần cho áp xe nhẹ; Phối hợp Penicillin + Clindamycin kháng độc tố (hiệu ứng Eagle) trong viêm cân mạc hoại tử; Chỉ định kháng sinh chọn lọc cho nhiễm trùng vết mổ (SSIs); Liệu pháp Prednisone 40mg/7d bổ trợ cho viêm mô tế bào ở người không ĐTĐ; Dự phòng vết cắn bằng Amoxicillin-Clavulanate.",
+    "primaryEndpoint": "Khung khuyến cáo chẩn đoán và quản lý nhiễm trùng da và mô mềm (SSTI), nhiễm trùng vết mổ, viêm cân mạc hoại tử, viêm cơ mủ, vết cắn động vật/người và SSTI ở bệnh nhân sốt giảm bạch cầu.",
+    "keyResults": "Áp xe nhẹ chỉ cần I&D cơ học không cần kháng sinh | Clindamycin dập tắt bão ngoại độc tố trong hoại tử liên cầu A | Giảm nằm viện khi dùng Prednisone bổ trợ trong viêm mô tế bào | Cắt chỉ dẫn lưu là bắt buộc trong vết mổ nhiễm trùng.",
+    "impact": "practice-changing",
+    "year": 2014,
+    "organization": "IDSA",
+    "journal": "Clinical Infectious Diseases (CID 2014; 59(2):147–159, doi:10.1093/cid/ciu444)",
+    "phase": "Practice Guidelines / EBM",
+    "population": "Trẻ em và người lớn mắc nhiễm trùng da và mô mềm từ thể nông đến hoại tử mô sâu đe dọa tính mạng hoặc suy giảm miễn dịch.",
+    "summary": "Hướng dẫn thực hành kinh điển của IDSA 2014 định hình tiếp cận SSTI toàn cầu: Phân đôi Có mủ (Tụ cầu) vs Không mủ (Liên cầu), xác lập vai trò sống còn của I&D cơ học và phối hợp Clindamycin kháng độc tố (hiệu ứng Eagle), hạn chế lạm dụng kháng sinh bao phủ MRSA.",
+    "detailedConclusion": "Áp xe nhẹ chỉ cần I&D đơn thuần. Viêm mô tế bào không mủ ưu tiên Penicillin VK/Cephalexin/Cefazolin, không cần bao phủ MRSA thường quy. Viêm cân mạc hoại tử do Liên cầu A bắt buộc mổ cấp cứu cắt lọc + phối hợp Penicillin và Clindamycin. Nhiễm trùng vết mổ chỉ dùng kháng sinh khi hồng ban > 5cm hoặc có SIRS. Vết cắn động vật ưu tiên Amoxicillin-Clavulanate 875/125mg BID.",
+    "file": "2014-idsa-ssti.mdx",
+    "conditionKey": "ssti",
+    "icd10": [
+      "L03",
+      "L02",
+      "L01",
+      "M72.6",
+      "T81.4"
+    ],
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Phân tầng SSTI IDSA": "HBAR: Áp xe nhẹ (I&D đơn thuần): 100% | Viêm mô tế bào không mủ (Kháng sinh kháng liên cầu): 90% | Viêm cân hoại tử (Mổ cấp cứu + Clindamycin): 100%"
+    }
+  },
+  {
     "id": "2025-who-dieu-tri-lao",
     "title": "WHO 2025: Hướng Dẫn Vận Hành Điều Trị Bệnh Lao (Module 4: Treatment & Care) — Phác Đồ 6 Tháng BPaLM/BPaL, BDLLfxC, Phác Đồ 9 Tháng endTB & Đồng Điều Trị DAA HCV",
     "titleEn": "WHO Consolidated Guidelines on Tuberculosis. Module 4: Treatment and Care (2025 Update)",
