@@ -1,6 +1,6 @@
 # 📘 CLINIPORTAL — DANH MỤC TỪ VỰNG LÂM SÀNG CHUẨN (MASTER SYMPTOM DICTIONARY)
 
-> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-09-24 | **Tổng số triệu chứng chuẩn**: 26
+> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-09-24 | **Tổng số triệu chứng chuẩn**: 29
 > **Vị trí lưu trữ**: `src/content/knowledge-vault/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`
 > **Mục đích**: Bản đồ từ vựng tham chiếu chuẩn mực (Anchor Vocabulary). Dùng để nạp trực tiếp vào **Google NotebookLM** cùng với tài liệu Guideline để AI đối chiếu, tái sử dụng mã ID sẵn có và tuyệt đối tránh tạo triệu chứng trùng lặp.
 
@@ -70,11 +70,13 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 3 | `tc_dau_hieu_canh_bao_dau_bung_gan_non_oi` | Đau bụng vùng gan, nôn ói nhiều (Dấu hiệu cảnh báo) | CN, TT | đau bụng gan, nôn ói nhiều, dấu hiệu cảnh báo, warning signs dengue, đau bụng nhiều liên tục, nôn liên tục, đau vùng gan liên tục | — |
 | 4 | `non_ra_mau_phan_den` | Xuất huyết tiêu hóa: Nôn ra máu / Đi cầu phân đen | CN, TT | nôn ra máu, tiêu phân đen, hematemesis, melena, xuất huyết tiêu hóa, ói ra máu, đi tiêu phân đen như hắc ín, ỉa phân đen | — |
 
-### 5. Hệ Thần kinh & Ý thức (`than-kinh.json` — 1 mục)
+### 5. Hệ Thần kinh & Ý thức (`than-kinh.json` — 3 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
 | 1 | `dau_dau` | Đau đầu dữ dội | CN | đau đầu, nhức đầu, headache, đau nhức đầu, đau nhức nửa đầu, nhức óc, đau trán thái dương | — |
+| 2 | `cung_gay_dieu_tri_mang_nao` | Dấu hiệu Cứng gáy / Hội chứng kích thích màng não | CN, TT | cứng gáy, nuchal rigidity, hội chứng màng não, kernig, brudzinski, cứng gáy, dấu màng nào, kernig dương tính | — |
+| 3 | `photophobia_so_anh_sang` | Sợ ánh sáng / Sợ tiếng động (Photophobia / Hyperacusis) | CN | sợ ánh sáng, photophobia, nhạy cảm ánh sáng, sợ tiếng động, hyperacusis, so anh sang, nhay cam anh sang, chói mắt | — |
 
 ### 6. Da niêm & Dị ứng lâm sàng (`da-niem.json` — 1 mục)
 
@@ -82,7 +84,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 |:---:|:---|:---|:---:|:---|:---:|
 | 1 | `tc_xuat_huyet_da_niem_lacet_duong_tinh` | Xuất huyết dưới da, niêm mạc, Dây thắt (Lacet) (+) | TT | xuất huyết dưới da, chấm xuất huyết, lacet dương tính, chảy máu cam, chảy máu chân răng, chấm xuất huyết rải rác, mảng bầm tím, chảy máu niêm mạc | — |
 
-### 7. Cận lâm sàng (Huyết học, Sinh hóa, Vi sinh, CĐHA) (`can-lam-sang.json` — 5 mục)
+### 7. Cận lâm sàng (Huyết học, Sinh hóa, Vi sinh, CĐHA) (`can-lam-sang.json` — 6 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -91,6 +93,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 3 | `tc_giam_tieu_cau_duoi_100_g_l` | Tiểu cầu giảm sâu (< 100 G/L) | CLS | tiểu cầu giảm, giảm tiểu cầu, thrombocytopenia, plt < 100, tiểu cầu tụt, plt giảm, tiểu cầu < 100.000, tiểu cầu dốc đứng | `lTC <= 100` |
 | 4 | `tran_dich_mang_phoi_mang_bung` | Thoát huyết tương: Tràn dịch màng phổi, tràn dịch màng bụng trên siêu âm/X-quang | CLS, TT | tràn dịch màng phổi, tràn dịch màng bụng, cổ trướng, thoát huyết tương, phù nề thành túi mật, dịch màng phổi, dịch tự do ổ bụng, dày phù nề thành túi mật | — |
 | 5 | `men_gan_tang` | Men gan AST/ALT tăng cao (> 2 lần bình thường) | CLS | men gan tăng, ast tăng, alt tăng, transaminase, tăng men gan, tổn thương tế bào gan, ast/alt cao, men gan > 40 | `lAST > 80` |
+| 6 | `dnt_duc_duc_duc_tang_te_bao_da_nhan` | Dịch脑tủy đục / Mủ, tăng bạch cầu đa nhân và giảm glucose | CLS | dNT đục, bạch cầu DNT tăng, glucose DNT giảm, protein DNT tăng, dnt mủ, pleocytosis, dnt vi khuẩn, ty le glucose dnt mau giam | — |
 
 ### 8. Hệ Tiết niệu & Chức năng thận (`tiet-nieu.json` — 0 mục)
 

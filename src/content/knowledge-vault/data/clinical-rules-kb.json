@@ -2,19 +2,259 @@
   "meta": {
     "ten": "Kho tri thức bệnh học lâm sàng — Master Diseases Database (33 Bệnh lý)",
     "phienBan": 4,
-    "capNhat": "2026-09-24T05:07:32.153Z",
+    "capNhat": "2026-09-24T06:25:46.897Z",
     "symptomsSource": "clinical-rules-symptoms.json",
-    "totalDiseases": 1
+    "totalDiseases": 4
   },
   "benh": [
     {
-      "id": "sot_xuat_huyet_dengue",
-      "ten": "Sốt xuất huyết Dengue",
-      "icd": "A97",
-      "nhom": "Truyền nhiễm",
+      "sot_xuat_huyet_dengue_co_dau_hieu_canh_bao": {
+        "id": "sot_xuat_huyet_dengue_co_dau_hieu_canh_bao",
+        "ten": "Sốt xuất huyết Dengue (Có dấu hiệu cảnh báo)",
+        "icd": "A97.1",
+        "nhom": "truyen-nhiem",
+        "baoDong": true,
+        "ghiChuBaoDong": "CẢNH BÁO NHẬP VIỆN NỘI TRÚ 100%: Bệnh nhân Sốt xuất huyết Dengue có dấu hiệu cảnh báo (nôn ói nhiều, đau bụng vùng gan, Hct tăng 46%, tiểu cầu tụt &lt; 50 G/L) cần nhập viện theo dõi sát và chỉ định truyền dịch tĩnh mạch Ringer Lactate nấc thang 6 mL/kg/h theo Quyết định 2760/QĐ-BYT để phòng ngừa tiến triển sang Sốc SXHD.",
+        "tomTat": "Sốt xuất huyết Dengue có dấu hiệu cảnh báo thường xảy ra vào giai đoạn nguy hiểm (ngày 3-7) khi sốt bắt đầu giảm. Biểu hiện gồm vật vã/lừ đừ, đau bụng nhiều vùng gan, nôn ói liên tục, chảy máu niêm mạc, gan to &gt; 2cm, Hct tăng kèm tiểu cầu giảm nhanh (&lt; 100 G/L). Nhập viện nội trú và truyền dịch tinh thể đẳng trương nấc thang là can thiệp cốt lõi.",
+        "danSo": {
+          "gioiTinh": "any",
+          "tuoiMin": 0,
+          "tuoiMax": 120
+        },
+        "dd": [
+          [
+            "tc_sot_cao_dot_ngot_duoi_7_ngay",
+            4.5,
+            "dt"
+          ],
+          [
+            "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+            4.5,
+            "dt"
+          ],
+          [
+            "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+            4.5,
+            "dt"
+          ],
+          [
+            "tc_giam_tieu_cau_duoi_100_g_l",
+            4,
+            "dt"
+          ],
+          [
+            "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+            5,
+            "dt"
+          ],
+          [
+            "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+            4,
+            "dt"
+          ],
+          [
+            "gan_to_dau",
+            3.5,
+            "gy"
+          ],
+          [
+            "tran_dich_mang_phoi_mang_bung",
+            4,
+            "dt"
+          ],
+          [
+            "dau_dau",
+            2.5,
+            "gy"
+          ],
+          [
+            "dau_co",
+            2.5,
+            "gy"
+          ],
+          [
+            "buon_non_non",
+            2,
+            "gy"
+          ],
+          [
+            "met_moi",
+            2.5,
+            "gy"
+          ]
+        ],
+        "phacDo": {
+          "tuyen": [
+            "Trạm Y tế / Phòng khám (Sơ bộ Triage): Phát hiện dấu hiệu cảnh báo -&gt; Chuyển ngay lên Bệnh viện tuyến Quận/Huyện/Tỉnh để nhập viện điều trị nội trú 100%.",
+            "Bệnh viện Quận/Huyện/Tỉnh (Nội trú 100%): Cho nhập viện Khoa Bệnh Nhiệt đới / Khoa Nhi / Khoa Nội. Chỉ định truyền dịch tĩnh mạch Ringer Lactate 6 mL/kg/h x 1-2h khi nôn ói nhiều, không uống được và Hct tăng cao. Giảm dần tốc độ dịch (6 -&gt; 3 -&gt; 1.5 mL/kg/h) theo Hct và lâm sàng.",
+            "Bệnh viện Tỉnh / ICU: Nhập ICU khi có dấu hiệu chuyển sang sốc, tái sốc hoặc xuất huyết niêm mạc nặng."
+          ],
+          "thuoc": [
+            [
+              "Dung dịch Ringer Lactate (hoặc NaCl 0.9%)",
+              "6 mL/kg/h x 1-2h (Người lớn) hoặc 6-7 mL/kg/h (Trẻ em)",
+              "Dịch truyền đầu tay bù thể tích lòng mạch. Rút tốc độ dịch từng nấc (6 -&gt; 3 -&gt; 1.5 mL/kg/h) dựa trên động học Hct và đáp ứng lâm sàng."
+            ],
+            [
+              "Paracetamol (Acetaminophen)",
+              "10 - 15 mg/kg/lần (PO/PR/IV) khi sốt ≥ 38.5°C",
+              "Tối đa ≤ 60 mg/kg/24h hoặc ≤ 3g/24h ở người lớn. Chỉ dùng Paracetamol đơn chất."
+            ],
+            [
+              "Dung dịch Oresol (ORS chuẩn WHO)",
+              "1500 - 2500 mL/ngày (uống theo nhu cầu khi còn uống được)",
+              "Khuyến khích bệnh nhân uống rải rác từng ngụm nhỏ liên tục trong ngày."
+            ]
+          ],
+          "theoDoi": [
+            "Đo sinh hiệu (Mạch, Huyết áp, Nhịp thở, SpO2, Tri giác, Lượng nước tiểu) và các Dấu hiệu cảnh báo mỗi 2-4 giờ.",
+            "Theo dõi bài niệu qua tã / bô / sonde (Mục tiêu bài niệu ≥ 0.5 - 1.0 mL/kg/h).",
+            "Xét nghiệm Hematocrit (Hct) và công thức máu tại giường trước và sau mỗi cữ chỉnh dịch (mỗi 2-4 giờ)."
+          ],
+          "luuY": [
+            "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin, Ibuprofen và các thuốc NSAIDs khác do nguy cơ gây xuất huyết tiêu hóa dữ dội.",
+            "TUYỆT ĐỐI CẤM TIÊM BẮP (IM) mọi loại thuốc do nguy cơ tụ máu lớn trong cơ.",
+            "Ngừng dịch truyền tĩnh mạch sau 24-48 giờ hoặc khi bệnh nhân vào giai đoạn hồi phục (thèm ăn, tiểu nhiều, Hct ổn định)."
+          ],
+          "nguon": [
+            "Quyết định số 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam (Phụ lục 4, Phụ lục 6)"
+          ]
+        }
+      }
+    },
+    {
+      "sot_xuat_huyet_dengue_the_soc": {
+        "id": "sot_xuat_huyet_dengue_the_soc",
+        "ten": "Sốt xuất huyết Dengue (Thể Sốc - DSS / Sốc SXHD Nặng)",
+        "icd": "A97.2",
+        "nhom": "truyen-nhiem",
+        "baoDong": true,
+        "ghiChuBaoDong": "BÁO ĐỘNG ĐỎ CẤP CỨU HỒI SỨC: Bệnh nhân Sốt xuất huyết Dengue nặng thể sốc giảm thể tích (DSS) ngày 5 do thoát huyết tương ồ ạt, cô đặc máu nặng (Hct 48%), hiệu áp kẹp 15 mmHg (85/70 mmHg), CRT 3.5s. Cần hồi sức chống sốc ngay lập tức bằng dịch truyền tinh thể đẳng trương Ringer Lactate 15 mL/kg/h giờ đầu theo Quyết định 2760/QĐ-BYT.",
+        "tomTat": "Sốt xuất huyết Dengue nặng thể sốc (DSS) xảy ra phổ biến nhất vào giai đoạn nguy hiểm (ngày 4-7) do thoát huyết tương cấp tính qua thành mạch. Biểu hiện mạch nhanh nhỏ, huyết áp kẹp (hiệu áp ≤ 20 mmHg) hoặc tụt huyết áp, chi lạnh ẩm, CRT &gt; 2s, Hct tăng dốc đứng kèm giảm tiểu cầu sâu. Bù dịch nấc thang Ringer Lactate/Cao phân tử khẩn cấp là chìa khóa sống còn.",
+        "danSo": {
+          "gioiTinh": "any",
+          "tuoiMin": 0,
+          "tuoiMax": 120
+        },
+        "dd": [
+          [
+            "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+            5,
+            "dt"
+          ],
+          [
+            "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+            4.5,
+            "dt"
+          ],
+          [
+            "chi_lanh_crt_keo_dai",
+            4.5,
+            "dt"
+          ],
+          [
+            "tc_giam_tieu_cau_duoi_100_g_l",
+            4,
+            "dt"
+          ],
+          [
+            "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+            5,
+            "dt"
+          ],
+          [
+            "tran_dich_mang_phoi_mang_bung",
+            4,
+            "dt"
+          ],
+          [
+            "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+            4,
+            "dt"
+          ],
+          [
+            "tc_sot_cao_dot_ngot_duoi_7_ngay",
+            4,
+            "dt"
+          ],
+          [
+            "gan_to_dau",
+            3.5,
+            "gy"
+          ],
+          [
+            "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+            3.5,
+            "dt"
+          ],
+          [
+            "met_moi",
+            2.5,
+            "gy"
+          ],
+          [
+            "buon_non_non",
+            2,
+            "gy"
+          ]
+        ],
+        "phacDo": {
+          "tuyen": [
+            "Trạm Y tế / Tuyến cơ sở (Cấp cứu chuyển tuyến): Lập ngay đường truyền TM Ringer Lactate 20 mL/kg/h xả nhanh trong khi chuẩn bị xe cấp cứu chuyển gấp Bệnh viện tuyến Tỉnh/Chuyên khoa.",
+            "Bệnh viện Quận/Huyện/Tỉnh (Khoa Cấp cứu / ICU): Thở oxy qua cannula 2-4 L/phút, lập 2 đường truyền TM lớn. Chống sốc Ringer Lactate 15 mL/kg/h giờ đầu (người lớn) hoặc 15-20 mL/kg/h (trẻ em). Đánh giá lại sinh hiệu &amp; Hct mỗi 1 giờ.",
+            "Trung tâm Hồi sức Tích cực ICU / BV Tuyến Trung ương: Nếu sốc kéo dài hoặc tái sốc: Chuyển Cao phân tử Dextran 40 / HES 6% 10-15 mL/kg/h, theo dõi CVP, HA ĐM xâm lấn, Lactate máu, xử trí toan chuyển hóa, rối loạn đông máu và xuất huyết nặng."
+          ],
+          "thuoc": [
+            [
+              "Dung dịch Ringer Lactate (hoặc NaCl 0.9%)",
+              "15 mL/kg/h trong 1 giờ đầu (Sốc SXHD người lớn)",
+              "Theo dõi sát sinh hiệu q15-30p và Hct q1h. Nếu cải thiện, giảm dần tốc độ dịch: 10 mL/kg/h x 2h -&gt; 6 mL/kg/h x 2h -&gt; 3 mL/kg/h x 5-7h -&gt; 1.5 mL/kg/h x 12h."
+            ],
+            [
+              "Dung dịch Cao phân tử Dextran 40 (hoặc HES 6% 200/0.5)",
+              "10 - 15 mL/kg/h x 1 giờ",
+              "Chỉ định khi Sốc SXHD không đáp ứng với 15-20 mL/kg dịch tinh thể giờ đầu hoặc khi tái sốc kèm Hct còn cao. Giới hạn tổng liều CPT ≤ 30-50 mL/kg/24h."
+            ],
+            [
+              "Khối hồng cầu lắng (hoặc Máu toàn phần)",
+              "Khối hồng cầu 5 - 10 mL/kg (hoặc Máu toàn phần 10 - 20 mL/kg)",
+              "Chỉ định khẩn cấp khi sốc kèm xuất huyết nặng hoặc Hct tụt đột ngột &lt; 35% mà huyết áp chưa nâng."
+            ],
+            [
+              "Paracetamol (Acetaminophen)",
+              "10 - 15 mg/kg/lần (PO/PR/IV) khi sốt ≥ 38.5°C",
+              "Tối đa ≤ 60 mg/kg/24h hoặc ≤ 3g/24h ở người lớn. Chỉ dùng Paracetamol đơn chất."
+            ],
+            [
+              "Dung dịch Natri Bicarbonate 4.2% hoặc 8.4%",
+              "Bù theo kiềm dư BE hoặc liều 1-2 mL/kg IV chậm",
+              "Chỉ định khi có toan chuyển hóa nặng (pH &lt; 7.15 hoặc HCO3- &lt; 10 mmol/L) do sốc kéo dài giảm tưới máu mô."
+            ]
+          ],
+          "theoDoi": [
+            "Đo sinh hiệu (Mạch, HA, Hiệu áp, CRT, Nhịp thở, SpO2, Tri giác) mỗi 15-30 phút trong giờ đầu chống sốc, sau đó mỗi 1 giờ cho đến khi ra sốc hoàn toàn.",
+            "Theo dõi bài niệu qua sonde Foley mỗi 1 giờ (Mục tiêu bài niệu ≥ 0.5 - 1.0 mL/kg/h).",
+            "Xét nghiệm Hematocrit (Hct) tại giường mỗi 1 giờ trong giai đoạn sốc active và mỗi 2-4 giờ sau khi huyết động bắt đầu ổn định."
+          ],
+          "luuY": [
+            "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin, Ibuprofen và các thuốc NSAIDs khác.",
+            "TUYỆT ĐỐI CẤM TIÊM BẮP (IM) mọi loại thuốc do nguy cơ tụ máu lớn trong cơ.",
+            "Ngừng dịch truyền tĩnh mạch sau 24-48 giờ ra sốc hoặc khi bước sang giai đoạn tái hấp thu (N7-N10) để tránh nguy cơ phù phổi cấp do quá tải tuần hoàn."
+          ],
+          "nguon": [
+            "Quyết định số 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam (Phụ lục 16.1 &amp; 16.2)"
+          ]
+        }
+      }
+    },
+    {
+      "id": "viem_mang_nao_do_vi_khuan",
+      "ten": "Viêm màng não do vi khuẩn (Acute Bacterial Meningitis)",
+      "icd": "G00",
+      "nhom": "truyen-nhiem",
       "baoDong": true,
-      "ghiChuBaoDong": "Cảnh báo cấp cứu khẩn cấp: Dấu hiệu cảnh báo thoát huyết tương, cô đặc máu (Hct tăng &gt; 20%), tiểu cầu tụt dốc (&lt; 100 G/L), nguy cơ sốc giảm thể tích (DSS) và xuất huyết nặng trong giai đoạn nguy hiểm (N4-N7).",
-      "tomTat": "Bệnh truyền nhiễm cấp tính do vi rút Dengue (DEN-1, DEN-2, DEN-3, DEN-4) gây ra qua trung gian muỗi Aedes aegypti. Diễn tiến qua 3 giai đoạn: Sốt (N1-N3), Nguy hiểm (N4-N7 với nguy cơ thoát huyết tương, cô đặc máu, sốc, xuất huyết và suy tạng) và Hồi phục (N7-N10). Bù dịch nấc thang và hồi sức chống sốc chuẩn là can thiệp cốt lõi.",
+      "ghiChuBaoDong": "CÁCH LY VÀ BÁO ĐỘNG ĐỎ CẤP CỨU: Viêm màng nào do vi khuẩn là tình trạng cấp cứu khẩn cấp! BẮT BUỘC tiêm kháng sinh tĩnh mạch liều cao diệt khuẩn kết hợp Dexamethasone 10mg IV trong vòng 1 giờ đầu tiên nhập viện (Door-to-Antibiotic &lt; 1h) để ngăn ngừa tử vong, tụt não và di chứng điếc vĩnh viễn.",
+      "tomTat": "Viêm màng nào do vi khuẩn là nhiễm trùng mủ cấp tính ở màng nhện, khoang dưới nhện và dịch não tủy do Streptococcus pneumoniae, Neisseria meningitidis, Haemophilus influenzae, Listeria monocytogenes gây ra. Bệnh tiến triển cực kỳ nhanh chóng với tỷ lệ tử vong cao và nguy cơ di chứng thần kinh nặng nề.",
       "danSo": {
         "gioiTinh": "any",
         "tuoiMin": 0,
@@ -22,109 +262,181 @@
       },
       "dd": [
         [
-          "tc_sot_cao_dot_ngot_duoi_7_ngay",
-          4.5,
-          "dt"
-        ],
-        [
-          "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
-          4.5,
-          "dt"
-        ],
-        [
-          "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
-          4.5,
-          "dt"
-        ],
-        [
-          "tc_giam_tieu_cau_duoi_100_g_l",
-          4,
-          "dt"
-        ],
-        [
-          "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+          "hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao",
           5,
           "dt"
         ],
         [
-          "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+          "dnt_bien_doi_vmn_vi_khuan_dinh_luong",
+          5,
+          "dt"
+        ],
+        [
+          "vi_sinh_dnt_nhuom_gram_pcr_nuoi_cay_duong_tinh",
+          5,
+          "dt"
+        ],
+        [
+          "co_giat_va_dau_than_kinh_khu_tru_dau_hieu_co_do",
+          4.5,
+          "dt"
+        ],
+        [
+          "chi_dinh_ct_scan_truoc_khi_choc_do_tuy_song",
           4,
           "dt"
         ],
         [
-          "tran_dich_mang_phoi_mang_bung",
-          4,
-          "dt"
-        ],
-        [
-          "dau_dau",
-          2.5,
+          "sot",
+          3,
           "gy"
         ],
         [
-          "dau_co",
-          2.5,
+          "dau_dau",
+          3,
           "gy"
         ],
         [
           "buon_non_non",
           2,
-          "gy"
+          "ht"
         ],
         [
-          "gan_to_dau",
-          3.5,
-          "gy"
-        ],
-        [
-          "nhuc_hai_ho_mat",
-          2,
+          "ha_huyet_ap",
+          2.5,
           "gy"
         ]
       ],
       "phacDo": {
         "tuyen": [
-          "Trạm Y tế (Ngoại trú): Hạ sốt bằng Paracetamol đơn chất 10-15 mg/kg, bù nước bằng Oresol uống 1500-2500 mL/ngày, theo dõi tái khám hàng ngày.",
-          "Bệnh viện Huyện (Nội trú): Nhập viện 100% khi có dấu hiệu cảnh báo. Bù dịch tĩnh mạch Ringer Lactate 6 mL/kg/h trong 1-2h, giảm dần tốc độ theo đáp ứng Hct.",
-          "Bệnh viện Tỉnh / ICU (Cấp cứu): Chống sốc bằng Ringer Lactate 15-20 mL/kg/h giờ đầu, chuyển Cao phân tử Dextran 40 nếu tái sốc hoặc kháng tinh thể, thở oxy, đo CVP."
+          "Trạm Y Tế / Khám Cấp Cứu Ban Đầu: Nhận diện sớm triệu chứng nghi ngờ (Sốt cao, đau đầu, cổ cứng). Đặt đường truyền tĩnh mạch lớn, bù dịch nhanh nếu có sốc, hỗ trợ hô hấp oxy kính và chuyển ngay đến bệnh viện đa khoa gần nhất bằng xe cấp cứu chuyên dụng.",
+          "Bệnh Viện Huyện / Bệnh Viện Đa Khoa (Khoa Cấp Cứu / Bệnh Nhiễm): Cấy máu 2 mẫu khẩn cấp. Phân loại chống chỉ định chọc dò tủy sống. Nếu không có chống chỉ định -&gt; Thực hiện Chọc dò DNT ngay -&gt; Tiêm Dexamethasone 10mg IV + Tiêm Kháng sinh kinh nghiệm TM (Vancomycin + Ceftriaxone 2g) trong giờ đầu nhập viện. Nếu có chống chỉ định chọc dò (phù gai thị, dấu TK khu trú) -&gt; Tiêm Dexamethasone + Kháng sinh TM ngay -&gt; Đưa đi chụp CT scan đầu.",
+          "Bệnh Viện Tỉnh / Trung Ương / Khoa Hồi Sức Tích Cực (ICU): H hồi sức cấp cứu nâng cao theo ABCD. Điều chỉnh kháng sinh đặc hiệu nhắm đích ngay khi có kết quả nhuộm Gram/cấy DNT (Phế cầu: Vancomycin + Ceftriaxone 10-14 ngày; Não mô cầu: Ceftriaxone 7 ngày; Listeria: bổ sung Ampicillin 12g/ngày 21-28 ngày). Kiểm soát tăng áp lực nội sọ bằng Mannitol 20%, chống co giật và thở máy hỗ trợ nếu GCS &lt; 10."
         ],
         "thuoc": [
           [
-            "Paracetamol (Acetaminophen)",
-            "10-15 mg/kg/lần (PO/PR/IV), cách mỗi 4-6h khi sốt ≥ 38.5°C",
-            "Tối đa ≤ 60 mg/kg/24h (trẻ em) hoặc ≤ 3g/24h (người lớn). Tuyệt đối CẤM dùng Aspirin, Ibuprofen do nguy cơ xuất huyết tiêu hóa dữ dội."
+            "Vancomycin",
+            "30 - 45 mg/kg/24h IV (chia q8-12h)",
+            "Bắt buộc phối hợp với Cephalosporin thế hệ 3 trong phác đồ kinh nghiệm cho người lớn 2-50t và &gt;50t. Duy trì nồng độ đáy (trough level) 15 - 20 mcg/mL. Hiệu chỉnh liều theo eGFR."
           ],
           [
-            "Dung dịch Oresol (ORS chuẩn WHO)",
-            "2000-3000 mL/ngày (người lớn) hoặc 50-100 mL/kg/ngày (trẻ em)",
-            "Pha đúng tỷ lệ 1 gói/1000 mL nước, uống rải rác từng ngụm nhỏ liên tục trong ngày."
+            "Ceftriaxone",
+            "4 g/24h IV (tiêm/truyền TM 2 g mỗi 12 giờ hoặc 4 g truyền 1 lần/ngày)",
+            "Kháng sinh cốt lõi bao phủ N. meningitidis, S. pneumoniae, H. influenzae."
           ],
           [
-            "Dung dịch Ringer Lactate / Acetate",
-            "6 mL/kg/h (có dấu hiệu cảnh báo) hoặc 15-20 mL/kg/h (khi vào sốc)",
-            "Rút tốc độ dịch từng nấc (6 -&gt; 3 -&gt; 1.5 mL/kg/h) theo động học Hct. BẮT BUỘC ngưng dịch trong 24-48h khi ra sốc."
+            "Cefotaxime",
+            "8 - 12 g/24h IV (chia 2 g mỗi 4 - 6 giờ)",
+            "Dùng thay thế Ceftriaxone với hiệu quả tương đương."
           ],
           [
-            "Dung dịch Keo Dextran 40 / HES 6%",
-            "10-15-20 mL/kg/h trong 1 giờ đầu",
-            "Chỉ định khi sốc kháng dịch tinh thể hoặc tái sốc kèm Hct còn cao. Giới hạn tổng liều CPT ≤ 30-50 mL/kg/24h."
+            "Ampicillin",
+            "12 g/24h IV (chia 2 g mỗi 4 giờ)",
+            "BẮT BUỘC bổ sung vào phác đồ kinh nghiệm cho bệnh nhân &gt; 50 tuổi, phụ nữ mang thai hoặc có cơ địa ức chế miễn dịch để diệt Listeria monocytogenes."
           ],
           [
-            "Khối hồng cầu lắng / Máu toàn phần",
-            "Khối hồng cầu 5-10 mL/kg hoặc Máu toàn phần 10-20 mL/kg",
-            "Chỉ định khẩn cấp khi sốc có xuất huyết nặng hoặc Hct tụt dốc đột ngột &lt; 35% mà huyết áp chưa nâng."
+            "Dexamethasone",
+            "10 mg IV q6h x 3 - 5 ngày",
+            "Tiêm TM trước 15-20 phút hoặc cùng lúc với liều kháng sinh đầu tiên. Bắt buộc phối hợp Ranitidine 150mg uống q12h hoặc Omeprazole 20-40mg/ngày để bảo vệ dạ dày."
           ]
         ],
-        "theoDoi": [
-          "Mạch, huyết áp, nhịp thở, SpO2, tri giác và nước tiểu mỗi 1-2h (khi sốc) hoặc 4h (dấu hiệu cảnh báo).",
-          "Kiểm tra Hematocrit (Hct) và tiểu cầu mỗi ngày hoặc ngay sau mỗi cữ dịch truyền chống sốc."
+        "nguon": [
+          "Quyết định số 4068/QĐ-BYT ngày 01/10/2021 của Bộ trưởng Bộ Y tế ban hành Quy trình chuyên môn KCB Viêm màng nào vi khuẩn ở người lớn",
+          "WHO Guidelines on Meningitis Diagnosis, Treatment and Care (2025/2026) &amp; IDSA Practice Guidelines for Bacterial Meningitis"
+        ]
+      }
+    },
+    {
+      "id": "viem_mang_nao_do_vi_rut",
+      "ten": "Viêm màng nào do vi rút / siêu vi (Acute Viral Meningitis)",
+      "icd": "A87",
+      "nhom": "truyen-nhiem",
+      "baoDong": false,
+      "ghiChuBaoDong": "CẢNH BÁO PHÂN BIỆT LÂM SÀNG: Đa số các trường hợp do Enterovirus có tiến triển lành tính và tự khỏi. Tuy nhiên, BẮT BUỘC phải phân biệt chính xác với Viêm màng nào vi khuẩn ngay giờ đầu nhập viện. Nếu chưa loại trừ được vi khuẩn, tạm dùng 1 liều kháng sinh kinh nghiệm TM; ngưng ngay kháng sinh khi DNT/PCR khẳng định vi rút. BẮT BUỘC dùng Aciclovir 10mg/kg IV q8h nếu nghi ngờ do HSV-1, HSV-2 hoặc VZV.",
+      "tomTat": "Viêm màng nào do vi rút là tình trạng viêm màng nhện cấp tính lành tính do Enterovirus (Coxsackievirus, Echovirus), HSV-2, VZV, Mumps virus gây ra. Bệnh đặc trưng bởi DNT trong, tăng bạch cầu Lympho, Glucose DNT bình thường và đáp ứng tốt với điều trị nâng đỡ.",
+      "danSo": {
+        "gioiTinh": "any",
+        "tuoiMin": 0,
+        "tuoiMax": 120
+      },
+      "dd": [
+        [
+          "hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao",
+          5,
+          "dt"
         ],
-        "luuY": [
-          "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Aspirin, Ibuprofen và các thuốc NSAIDs do nguy cơ xuất huyết tiêu hóa ồ ạt và toan máu.",
-          "Không truyền dịch kéo dài sang ngày thứ 6-7 (giai đoạn tái hấp thu) để tránh phù phổi cấp do quá tải tuần hoàn."
+        [
+          "dnt_bien_doi_vmn_vi_rut_lympho",
+          5,
+          "dt"
+        ],
+        [
+          "pcr_dnt_xac_dinh_gen_vi_rut",
+          5,
+          "dt"
+        ],
+        [
+          "trieu_chung_goi_y_can_nguyen_vi_rut_dac_hieu",
+          4,
+          "dt"
+        ],
+        [
+          "photophobia_so_anh_sang",
+          3,
+          "gy"
+        ],
+        [
+          "sot",
+          3,
+          "gy"
+        ],
+        [
+          "dau_dau",
+          3,
+          "gy"
+        ],
+        [
+          "buon_non_non",
+          2,
+          "ht"
+        ],
+        [
+          "dnt_duc_duc_duc_tang_te_bao_da_nhan",
+          -5,
+          "loaitru"
+        ]
+      ],
+      "phacDo": {
+        "tuyen": [
+          "Trạm Y Tế / Khám Ngoại Trú: Nhận diện triệu chứng sốt, đau đầu, cổ cứng. Nếu bệnh nhân tỉnh táo (GCS 15 điểm), không có dấu thần kinh khu trú, tư vấn và chuyển tuyến Bệnh viện Đa khoa để chọc dò DNT xác định căn nguyên.",
+          "Bệnh Viện Huyện / Bệnh Viện Đa Khoa: Thực hiện Chọc dò tủy sống &amp; Xét nghiệm DNT (Tế bào, Glucose DNT/máu, Protein, Nhuộm Gram). Nếu DNT trong, Lympho ưu thế, Glucose bình thường -&gt; Chẩn đoán VMN vi rút -&gt; Điều trị triệu chứng (Paracetamol, bù dịch), ngưng kháng sinh. Nếu có mụn nước da/niêm mạc -&gt; Tiêm Aciclovir 10mg/kg IV q8h.",
+          "Bệnh Viện Tỉnh / Trung Ương: Thực hiện PCR DNT định danh chính xác vi rút (Enterovirus, HSV-1/2, VZV). Điều trị Aciclovir tĩnh mạch 7-14 ngày cho HSV/VZV. Chăm sóc hỗ trợ, theo dõi bí tiểu cấp (Hội chứng Elsberg) và phòng ngừa chuyển dạng viêm não."
+        ],
+        "thuoc": [
+          [
+            "Aciclovir (Acyclovir)",
+            "10 mg/kg mỗi 8 giờ (truyền tĩnh mạch chậm trong 1 giờ) x 7 - 14 ngày",
+            "Chỉ định BẮT BUỘC khi nghi ngờ hoặc xác định do HSV-1, HSV-2 hoặc VZV. Duy trì bù đủ dịch tĩnh mạch để phòng suy thận cấp do tinh thể."
+          ],
+          [
+            "Paracetamol (Acetaminophen)",
+            "10 - 15 mg/kg (người lớn 500 - 1000 mg) PO/IV q4-6h",
+            "Thuốc hạ sốt, giảm đau đầu cốt lõi (tối đa 4 g/ngày)."
+          ],
+          [
+            "Dung dịch Natri Chlorid 0.9% / Oresol",
+            "Bù dịch uống 1500-2500 mL/ngày hoặc truyền TM NaCl 0.9% 1000-2000 mL/ngày",
+            "Đảm bảo thể tích tuần hoàn và bảo vệ chức năng thận."
+          ],
+          [
+            "Valaciclovir",
+            "1000 mg uống q8h",
+            "Dùng thay thế Aciclovir đường uống khi bệnh nhân ổn định dung nạp tốt."
+          ]
         ],
         "nguon": [
-          "Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam &amp; WHO Dengue Guidelines 2024-2025"
+          "WHO Guidelines on Meningitis Diagnosis, Treatment and Care (2025) &amp; WHO Practical Manual on Meningitis (2026)",
+          "Hướng dẫn Chẩn đoán và Điều trị các Bệnh Nhiễm trùng Thần kinh - Bộ Y tế Việt Nam"
         ]
       }
     }

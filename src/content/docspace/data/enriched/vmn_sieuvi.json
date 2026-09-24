@@ -1,0 +1,614 @@
+{
+    "icdCode": "A87",
+    "icdPrefixes": [
+        "A87.0",
+        "A87.8",
+        "A87.9",
+        "B00.3",
+        "B02.1"
+    ],
+    "diseaseName": "Viêm màng não do vi rút / siêu vi (Acute Viral Meningitis / Aseptic Meningitis)",
+    "specialty": "Truyền nhiễm",
+    "severity": "severe",
+    "summary": "Viêm màng não do vi rút (siêu vi) hay còn gọi là viêm màng não vô khuẩn (aseptic meningitis) là tình trạng viêm cấp tính màng nhện và khoang dưới nhện do các tác nhân vi rút gây ra. Căn nguyên phổ biến nhất là các Enterovirus (Coxsackievirus, Echovirus - chiếm 50 - 80%), Herpes Simplex Virus type 2 (HSV-2), Varicella-Zoster Virus (VZV), Arbovirus (Sốt xuất huyết Dengue, Viêm脑Nhật Bản, West Nile) và Mumps virus (Quai bị). Bệnh đặc trưng bởi hội chứng màng nào cấp tính (sốt, đau đầu dữ dội, sợ ánh sáng, cứng gáy) nhưng tri giác thường tỉnh táo và không có dấu thần kinh khu trú nặng. Dịch脑tủy (DNT) điển hình có màu trong, tăng bạch cầu ưu thế Lympho, Glucose DNT bình thường và Protein tăng nhẹ. Đa số các trường hợp do Enterovirus có tiên lượng lành tính, tự giới hạn và chỉ cần điều trị hỗ trợ (hạ sốt, giảm đau, bù dịch). Thuốc chống vi rút đặc hiệu Aciclovir tĩnh mạch được chỉ định bắt buộc cho các trường hợp do HSV-1, HSV-2 hoặc VZV.",
+    "goldStandard": "Xét nghiệm sinh học phân tử PCR DNT (CSF Multiplex/Singleplex PCR) xác định ADN/RNA của vi rút (Enterovirus, HSV-1, HSV-2, VZV, CMV...) VÀ/HOẶC xét nghiệm huyết thanh học / phân lập vi rút.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định khi có Hội chứng màng nào lâm sàng VÀ kết quả xét nghiệm DNT biến đổi kiểu vi rút (trong, tăng bạch cầu lympho, glucose bình thường, Gram/cấy vi khuẩn âm tính) VÀ/HOẶC PCR DNT phát hiện ADN/RNA vi rút gây bệnh."
+    },
+    "criteria": [
+        {
+            "id": "hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao",
+            "type": "mandatory",
+            "label": "Hội chứng lâm sàng màng nào cấp tính (Sốt, Đau đầu, Cứng gáy, Sợ ánh sáng)",
+            "description": "[Lâm sàng]: Khởi phát sốt cấp tính nhẹ đến trung bình, đau đầu dữ dội toàn bộ đầu, buồn nôn/nôn, sợ ánh sáng (photophobia), nhạy cảm âm thanh (hyperacusis). Khám thấy dấu kích thích màng nào: Cứng gáy, dấu Kernig (+), dấu Brudzinski (+). Bệnh nhân thường tỉnh táo (GCS 15 điểm) hoặc lơ mơ nhẹ.",
+            "sourceGuideline": "WHO Guidelines on Meningitis 2025 & Hướng dẫn Bộ Y Tế",
+            "symptomIds": [
+                "sot",
+                "dau_dau",
+                "buon_non_non",
+                "cung_gay_dieu_tri_mang_nao"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "trieu_chung_goi_y_can_nguyen_vi_rut_dac_hieu",
+            "type": "major",
+            "label": "Dấu hiệu lâm sàng gợi ý căn nguyên vi rút đặc hiệu (Cờ đỏ vi rút)",
+            "description": "[Lâm sàng]: Xuất hiện mụn nước dạng Zona/Thủy đậu theo khoanh tủy (gợi ý VZV), mụn nước sinh dục tái phát hoặc tiền căn viêm màng nào tái phát Mollaret (gợi ý HSV-2), ban sẩn phỏng nước tay chân miệng (gợi ý Enterovirus EV71/Coxsackie), phì đại tuyến mang tai (gợi ý Mumps/Quai bị), hoặc yếu tố dịch tễ mùa hè - thu.",
+            "sourceGuideline": "WHO Guidelines on Meningitis 2025",
+            "symptomIds": [
+                "sot",
+                "dau_dau"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.0
+        },
+        {
+            "id": "dnt_bien_doi_vmn_vi_rut_lympho",
+            "type": "lab",
+            "label": "Biến đổi Dịch nào tủy (DNT) đặc trưng viêm màng nào vi rút",
+            "description": "[Cận lâm sàng]: DNT trong suốt hoặc hơi ánh vàng, Áp lực DNT bình thường hoặc tăng nhẹ (180 - 250 mmH2O); Tăng bạch cầu DNT mức độ vừa (10 - 500 tế bào/mm³), ưu thế Bạch cầu Lympho (> 80%); Glucose DNT BÌNH THƯỜNG (> 50 mg/dL hoặc tỷ lệ DNT/máu > 0.5); Protein DNT bình thường hoặc tăng nhẹ (50 - 100 mg/dL / < 1.0 g/L); Lactate DNT bình thường (< 2.5 mmol/L). Nhuộm Gram và Nuôi cấy vi khuẩn DNT ÂM TÍNH.",
+            "labThreshold": "Áp lực 180-250 mmH2O, WBC DNT 10-500/mm3 (Lympho > 80%), Glucose DNT bình thường (DNT/máu > 0.5), Protein DNT < 100 mg/dL, Lactate < 2.5 mmol/L",
+            "sourceGuideline": "WHO Guidelines on Meningitis 2025 & Phụ lục C Quyết định 4068/QĐ-BYT",
+            "symptomIds": [
+                "dnt_duc_duc_duc_tang_te_bao_da_nhan"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "pcr_dnt_xac_dinh_gen_vi_rut",
+            "type": "lab",
+            "label": "Xét nghiệm Sinh học phân tử PCR DNT phát hiện vi rút (+)",
+            "description": "[Cận lâm sàng]: Bảng xét nghiệm Multiplex PCR DNT (như BioFire ME Panel) hoặc RT-PCR đơn mồi phát hiện ARN/ADN của Enterovirus, HSV-1, HSV-2, VZV, CMV, EBV, hoặc Arbovirus.",
+            "labThreshold": "PCR DNT (+)",
+            "sourceGuideline": "WHO Guidelines on Meningitis 2025",
+            "symptomIds": [],
+            "cdssRole": "dt",
+            "weight": 5.0
+        }
+    ],
+    "trieuChungMoi": [
+        {
+            "id": "photophobia_so_anh_sang",
+            "ten": "Sợ ánh sáng / Sợ tiếng động (Photophobia / Hyperacusis)",
+            "nhom": "Thần kinh",
+            "loai": [
+                "cn"
+            ],
+            "tuKhoa": [
+                "sợ ánh sáng",
+                "photophobia",
+                "nhạy cảm ánh sáng",
+                "sợ tiếng động",
+                "hyperacusis"
+            ],
+            "aliases": [
+                "so anh sang",
+                "nhay cam anh sang",
+                "chói mắt"
+            ],
+            "map": null
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1: Viêm màng nào do vi rút nhẹ / Nhập viện theo dõi hoặc Ngoại trú an toàn",
+            "severity": "standard",
+            "criteria": "[Lâm sàng]: Sốt nhẹ/vừa, đau đầu mức độ vừa, nôn ít, cổ cứng nhẹ. Bệnh nhân hoàn toàn tỉnh táo (GCS 15 điểm), không có dấu thần kinh khu trú, không co giật, không có dấu hiệu viêm não (không lú lẫn, không hành vi bất thường). [Cận lâm sàng]: DNT trong, PCR nghi ngờ hoặc xác định Enterovirus/Mumps, Glucose DNT bình thường. [Tiêu chuẩn an toàn]: Người trẻ, không có bệnh nền ức chế miễn dịch, tự ăn uống bù dịch tốt.",
+            "triage": "Phòng khám Ngoại trú / Khoa Bệnh Nhiễm - Bệnh viện Đa khoa",
+            "primaryAction": "Hạ sốt/giảm đau Paracetamol, bù nước Oresol đường uống, nghỉ ngơi tại giường, theo dõi cờ đỏ. Không dùng kháng sinh hoặc corticoid.",
+            "targetVitals": "GCS 15 điểm, Thân nhiệt < 38.0°C, SpO2 >= 96%, HATT >= 90 mmHg"
+        },
+        {
+            "grade": "Mức độ 2: Viêm màng nào do vi rút mức độ trung bình - nặng / Khởi đầu Acyclovir (Nghi HSV/VZV/Cơ địa ƯCMD)",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Đau đầu dữ dội, nôn nhiều không uống được, sốt cao, có tổn thương mụn nước Zona/Herpes trên da/niêm mạc, hoặc bệnh nhân có cơ địa ức chế miễn dịch (HIV, ghép tạng, dùng Corticoid kéo dài). Tri giác ngủ gà nhẹ nhưng không có rối loạn nhận thức sâu. [Cận lâm sàng]: DNT tăng bạch cầu Lympho, PCR dương tính hoặc nghi ngờ HSV-1/2 hoặc VZV.",
+            "triage": "Khoa Bệnh Nhiễm / Khoa Thần kinh - Bệnh viện Tỉnh / Trung ương",
+            "primaryAction": "Nhập viện nội trú. Bù dịch tĩnh mạch NaCl 0.9%. Dùng ngay Aciclovir (Acyclovir) 10 mg/kg IV q8h truyền tĩnh mạch trong 1 giờ. Ngưng hoàn toàn kháng sinh kinh nghiệm khi DNT/PCR loại trừ vi khuẩn.",
+            "targetVitals": "GCS 14-15 điểm, HATT >= 90 mmHg, SpO2 >= 95%, Nước tiểu >= 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3: Thể biến chứng Viêm não - màng nào (Encephalitis) / Cấp cứu thần kinh",
+            "severity": "emergency",
+            "criteria": "[Dấu hiệu cảnh báo nguy hiểm]: Bệnh nhân xuất hiện rối loạn tri giác sâu (GCS < 13 điểm), lú lẫn, ảo giác, thay đổi hành vi, co giật toàn thể hoặc khu trú, hoặc có dấu thần kinh khu trú (yếu liệt nửa người, liệt dây thần kinh sọ). Dọa tăng áp lực nội sọ nặng. [Cận lâm sàng]: MRI/CT scan não có tổn thương thùy thái dương (đặc trưng HSV-1) hoặc tổn thương nhu mô brain.",
+            "triage": "Khoa Hồi sức tích cực (ICU) / Phòng Cấp cứu Báo động đỏ",
+            "primaryAction": "Hồi sức theo ABCD, đặt NKT nếu GCS < 10. Dùng khẩn cấp Aciclovir 10 mg/kg IV q8h kết hợp Chống phù não (Mannitol 20% / Saline ưu trương nếu có tăng APLNS), kiểm soát co giật bằng Diazepam/Phenytoin.",
+            "targetVitals": "MAP >= 65 mmHg, PaCO2 35-40 mmHg, SpO2 95-98%, Bài niệu >= 0.5 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Quy trình chẩn đoán & điều trị Viêm màng nào do vi rút theo Hướng dẫn Bộ Y Tế & WHO Guidelines 2025",
+        "guideline": "WHO Guidelines on Meningitis Diagnosis, Treatment and Care (2025) & Hướng dẫn Chẩn đoán Điều trị Bộ Y tế Việt Nam",
+        "targetGoals": [
+            "Mục tiêu 1 (Phân biệt cấp cứu): Phân biệt nhanh chóng và chính xác Viêm màng nào vi rút với Viêm màng nào vi khuẩn để ngưng kháng sinh không cần thiết.",
+            "Mục tiêu 2 (Khống chế vi rút): Tiêm Aciclovir TM sớm trong vòng 6-8 giờ đầu nếu nghi ngờ hoặc xác định căn nguyên HSV/VZV.",
+            "Mục tiêu 3 (Điều trị triệu chứng & Bù dịch): Kiểm soát tốt đau đầu, sốt và tình trạng mất nước qua đường uống hoặc truyền dịch.",
+            "Mục tiêu 4 (An toàn & Xuất viện): Không để xảy ra biến chứng viêm não, bí tiểu hoặc di chứng thần kinh."
+        ],
+        "initialManagement": [
+            "Bước 1: Đánh giá sinh hiệu và phân loại tri giác (GCS). Nếu tri giác tỉnh táo, không dấu thần kinh khu trú -> Tiến hành Chọc dò tủy sống ngay cấp cứu.",
+            "Bước 2: Trong thời gian chờ kết quả DNT/PCR, nếu không thể loại trừ ngay viêm màng nào vi khuẩn trên lâm sàng, cho 1 liều kháng sinh kinh nghiệm TM (Ceftriaxone 2g) + Dexamethasone 10mg IV.",
+            "Bước 3: Phân tích kết quả DNT:",
+            "  - Nếu DNT trong, Bạch cầu Lympho chiếm ưu thế, Glucose DNT bình thường, Lactate < 2.5 mmol/L -> Hướng tới Viêm màng nào vi rút -> NGƯNG KHI ĐÓ Kháng sinh và Dexamethasone.",
+            "  - Nếu có mụn nước da/niêm mạc hoặc tổn thương thùy thái dương trên MRI -> Khởi đầu Aciclovir 10 mg/kg IV q8h."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Aciclovir (Acyclovir)",
+                "class": "Thuốc kháng vi rút họ Herpes (HSV-1, HSV-2, VZV)",
+                "route": "IV (Truyền tĩnh mạch)",
+                "dosage": "10 mg/kg mỗi 8 giờ (truyền tĩnh mạch chậm trong ít nhất 1 giờ), dùng liên tục từ 7 - 14 ngày",
+                "frequency": "Mỗi 8 giờ",
+                "instructions": "Chỉ định BẮT BUỘC khi xác định hoặc nghi ngờ cao do HSV-1, HSV-2 hoặc VZV. Bắt buộc duy trì bù đủ dịch tĩnh mạch để tránh lắng tụ tinh thể Aciclovir gây suy thận cấp.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Paracetamol (Acetaminophen)",
+                "class": "Thuốc hạ sốt, giảm đau trung ương",
+                "route": "PO / IV",
+                "dosage": "10 - 15 mg/kg (người lớn 500 - 1000 mg) mỗi 4 - 6 giờ khi sốt >= 38.5°C hoặc đau đầu dữ dội (tối đa 4 g/ngày)",
+                "frequency": "Mỗi 4 - 6 giờ",
+                "instructions": "Thuốc nền tảng giảm đau đầu và hạ sốt trong viêm màng nào vi rút.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Dịch truyền Natri Chlorid 0.9% / Oresol",
+                "class": "Dịch bù điện giải và thể tích tuần hoàn",
+                "route": "PO / IV",
+                "dosage": "Bù dịch đường uống Oresol 1500 - 2500 mL/ngày hoặc truyền tĩnh mạch NaCl 0.9% 1000 - 2000 mL/ngày tùy mức độ nôn",
+                "frequency": "Duy trì hàng ngày",
+                "instructions": "Đảm bảo đủ thể tích tuần hoàn, đặc biệt khi dùng Aciclovir tĩnh mạch.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Valaciclovir",
+                "class": "Thuốc kháng vi rút đường uống (Tiền chất Aciclovir)",
+                "route": "PO (Uống)",
+                "dosage": "1000 mg mỗi 8 giờ",
+                "frequency": "Mỗi 8 giờ",
+                "instructions": "Dùng thay thế Aciclovir TM khi bệnh nhân ổn định dung nạp tốt đường uống hoặc dùng bước xuống (step-down) điều trị HSV-2/VZV.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Ganciclovir",
+                "class": "Thuốc kháng vi rút đặc hiệu Cytomegalovirus (CMV)",
+                "route": "IV (Tĩnh mạch)",
+                "dosage": "5 mg/kg mỗi 12 giờ",
+                "frequency": "Mỗi 12 giờ",
+                "instructions": "Chỉ định khi PCR DNT xác định căn nguyên do CMV trên bệnh nhân suy giảm miễn dịch (HIV/AIDS).",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Nghỉ ngơi tuyệt đối tại phòng yên tĩnh, giảm ánh sáng (để giảm triệu chứng sợ ánh sáng photophobia).",
+            "Dinh dưỡng đường uống dễ tiêu, giàu vitamin.",
+            "Theo dõi sát tình trạng cầu bàng quang / bí tiểu (đặc biệt trong viêm màng nào HSV-2 - Hội chứng Elsberg).",
+            "Tập vận động nhẹ nhàng khi bớt đau đầu."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Chuyển dạng Viêm nào - Màng nào (Encephalitis / Meningoencephalitis)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Rối loạn tri giác (GCS tụt), lú lẫn, ảo giác, thay đổi nhân cách, co giật mới xuất hiện, liệt thần kinh khu trú.",
+            "preventiveAction": "Dùng Aciclovir TM liều cao 10 mg/kg q8h sớm; chụp MRI não kiểm tra tổn thương thùy thái dương; chống phù não.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG VIÊM NÃO: Chuyển ICU, truyền Aciclovir 10mg/kg IV khẩn, làm ngay MRI não & Điện não đồ (EEG)!"
+        },
+        {
+            "name": "Hội chứng Bí tiểu cấp & Rối loạn cơ vòng (Hội chứng Elsberg do HSV-2)",
+            "timeframe": "subacute_days",
+            "warningSigns": "Bệnh nhân đau hạ vị, không tiểu được, cầu bàng quang căng to, kèm dị cảm vùng tầng sinh môn.",
+            "preventiveAction": "Siêu âm hạ vị kiểm tra thể tích nước tiểu tồn lưu, đặt xông tiểu lưu dẫn lưu nước tiểu, tiếp tục Aciclovir TM/PO.",
+            "onCallAlertText": "Y LỆNH TRỰC BÍ TIỂU: Siêu âm bàng quang tại giường, đặt xông tiểu mềm vô khuẩn dẫn lưu nước tiểu liên tục!"
+        },
+        {
+            "name": "Đau đầu kéo dài sau chọc dò tủy sống (Post-dural puncture headache)",
+            "timeframe": "subacute_days",
+            "warningSigns": "Đau đầu tăng lên dữ dội khi ngồi/đứng dậy, giảm rõ rệt khi nằm phẳng.",
+            "preventiveAction": "Nằm đầu phẳng không kê gối 6-12h sau chọc dò, bù dịch uống/TM 2-3 lít/ngày, giảm đau Paracetamol + Caffeine.",
+            "onCallAlertText": "Y LỆNH TRỰC ĐAU ĐẦU SAU CHỌC DÒ: Nằm phẳng tuyệt đối tại giường, truyền NaCl 0.9% 1000mL IV, uống Paracetamol/Caffeine!"
+        }
+    ],
+    "monitoringLabs": [
+        "Theo dõi DNT (Tế bào, Protein, Glucose DNT/máu) nếu lâm sàng diễn tiến xấu nghi ngờ vi khuẩn.",
+        "Bảng xét nghiệm PCR DNT tìm vi rút (Enterovirus, HSV-1/2, VZV, CMV) - trả kết quả sau 12-24 giờ.",
+        "Công thức máu, Điện giải đồ (Natri, Kali), Chức năng gan thận (Urea, Creatinine) hàng ngày khi dùng Aciclovir.",
+        "Chụp MRI não có thuốc đối quang nếu xuất hiện tri giác xấu hoặc dấu thần kinh khu trú."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Trẻ em và Trẻ sơ sinh",
+            "adjustments": "Enterovirus và EV71 là nguyên nhân hàng đầu ở trẻ em. Cần theo dõi sát các dấu hiệu giật mình, chới với, sẩn phỏng nước lòng bàn tay chân để loại trừ Tay chân miệng độ nặng. Aciclovir liều nhi 20 mg/kg q8h nếu do HSV.",
+            "cautions": "Trẻ sơ sinh nhiễm HSV nguy cơ tử vong cao, cần điều trị Aciclovir IV liều cao 20 mg/kg q8h trong 21 ngày."
+        },
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "Viêm màng nào do HSV-2 hoặc VZV ở thai phụ cần điều trị Aciclovir TM an toàn cho thai nhi. Theo dõi sát tình trạng dọa sinh non.",
+            "cautions": "Aciclovir phân loại nhóm B thai kỳ, lợi ích vượt trội so với nguy cơ."
+        },
+        {
+            "population": "Bệnh nhân suy giảm miễn dịch (HIV/AIDS, Ghép tạng)",
+            "adjustments": "Thường do VZV, CMV, EBV hoặc HSV tái phát nặng. Cần làm PCR DNT mở rộng bao phủ CMV (dùng Ganciclovir nếu CMV (+)). Thời gian điều trị Aciclovir kéo dài 14 - 21 ngày.",
+            "cautions": "Nguy cơ cao tái phát và chuyển dạng viêm não tiến triển."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 50 mL/min)",
+            "adjustments": "Hiệu chỉnh khoảng cách liều Aciclovir IV dựa theo eGFR (ví dụ eGFR 25-50: q12h; eGFR 10-25: q24h; eGFR < 10: giảm 50% liều q24h).",
+            "cautions": "Aciclovir gây kết tủa ở ống thận nếu truyền nhanh hoặc bệnh nhân thiếu dịch."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N2",
+            "phaseName": "Giai đoạn Tiếp nhận Cấp cứu, Phân biệt với Viêm màng nào Vi khuẩn & Khởi đầu Xử trí",
+            "clinicalGoal": "Chọc dò DNT; thực hiện PCR vi rút; phân biệt chính xác với viêm màng nào vi khuẩn; khởi đầu Aciclovir nếu nghi HSV/VZV.",
+            "problems": [
+                {
+                    "id": "p1_dx_diff",
+                    "problemName": "Chẩn đoán phân biệt Viêm màng nào Vi rút vs Vi khuẩn & Chọc dò DNT",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Chỉ định CLS khẩn",
+                            "content": "Chọc dò DNT xét nghiệm Tế bào, Protein, Glucose DNT/máu, Lactate, Nhuộm Gram, Cấy DNT và PCR vi rút (BioFire ME panel)."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tế bào DNT, Glucose DNT/máu, Lactate DNT",
+                            "frequency": "Khẩn N1",
+                            "target": "DNT trong, Lympho ưu thế, Glucose DNT/máu > 0.5, Lactate < 2.5"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_antiviral_empiric",
+                    "problemName": "Khởi đầu Aciclovir TM nếu có chỉ định nghi ngờ HSV/VZV",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc vi rút đặc hiệu",
+                            "content": "Aciclovir 10 mg/kg IV q8h (truyền TM trong 1h) nếu có tổn thương mụn nước, tri giác ngủ gà hoặc nghi HSV/VZV.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Xử trí kháng sinh kinh nghiệm",
+                            "content": "Nếu chưa loại trừ được hoàn toàn vi khuẩn ở giờ đầu, tạm dùng 1 liều Ceftriaxone 2g TM; NGƯNG NGAY khi DNT khẳng định vi rút."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tri giác GCS, Thân nhiệt, Đau đầu",
+                            "frequency": "q4h",
+                            "target": "GCS 15 điểm, giảm đau đầu"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_symptom_relief",
+                    "problemName": "Kiểm soát đau đầu dữ dội, sốt & Bù dịch",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Giảm đau hạ sốt",
+                            "content": "Paracetamol 10-15 mg/kg (hoặc 500-1000mg người lớn) uống/TM q4-6h."
+                        },
+                        {
+                            "category": "Bù dịch",
+                            "content": "Oresol uống hoặc truyền NaCl 0.9% 1000-2000 mL/ngày."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mức độ đau đầu (thang điểm VAS) & Thân nhiệt",
+                            "frequency": "q4-6h",
+                            "target": "VAS < 3, Thân nhiệt < 38.0°C"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_bacterial_miss",
+                    "problemName": "Bỏ sót Viêm màng nào Vi khuẩn giai đoạn sớm",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Đánh giá lại",
+                            "content": "Nếu Glucose DNT < 40 mg/dL hoặc BC đa nhân > 80% -> Duy trì Kháng sinh vi khuẩn Vancomycin + Ceftriaxone."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Soi Gram DNT & Kết quả Cấy DNT",
+                            "frequency": "N1 - N2",
+                            "target": "Xác định rõ bản chất vi khuẩn hay vi rút"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Hạ sốt giảm đau",
+                    "content": "Paracetamol 500-1000mg q4-6h.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Thuốc vi rút (nếu nghi HSV/VZV)",
+                    "content": "Aciclovir 10mg/kg IV q8h.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "GCS, Sinh hiệu, Đau đầu",
+                    "frequency": "q4h",
+                    "target": "Ổn định tri giác"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Bắt buộc ngưng kháng sinh khi DNT/PCR loại trừ vi khuẩn]",
+                    "[Không dùng Dexamethasone khi đã xác định do vi rút]",
+                    "[Đảm bảo đủ dịch khi truyền Aciclovir]"
+                ],
+                "triageOrDischargeCriteria": "[Nội trú theo dõi tại Khoa Bệnh Nhiễm]"
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N3 - N7",
+            "phaseName": "Giai đoạn Điều trị Theo Kết quả PCR & Hồi phục Lâm sàng",
+            "clinicalGoal": "Hoàn thành phác đồ Aciclovir (nếu HSV/VZV) hoặc điều trị nâng đỡ (nếu Enterovirus); cắt sốt; hết đau đầu.",
+            "problems": [
+                {
+                    "id": "p2_pcr_guided",
+                    "problemName": "Xử trí theo kết quả PCR DNT định danh tác nhân vi rút",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Enterovirus / Mumps (+)",
+                            "content": "Không có thuốc vi rút đặc hiệu. TIẾP TỤC ĐIỀU TRỊ HỖ TRỢ (Paracetamol, Bù dịch). Chuẩn bị xuất viện khi hết triệu chứng.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "HSV-1 / HSV-2 / VZV (+)",
+                            "content": "TIẾP TỤC Aciclovir 10 mg/kg IV q8h đủ 7 - 14 ngày (hoặc chuyển Valaciclovir 1000mg uống q8h khi lâm sàng dung nạp tốt).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Chức năng thận Urea, Creatinine",
+                            "frequency": "Mỗi 48 giờ",
+                            "target": "Creatinine máu trong giới hạn bình thường"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_urinary_retention",
+                    "problemName": "Theo dõi và phát hiện Bí tiểu cấp (Hội chứng Elsberg)",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Xử trí bí tiểu",
+                            "content": "Đặt xông tiểu lưu nếu có cầu bàng quang; rút xông khi triệu chứng thần kinh hồi phục."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Lượng nước tiểu & Cầu bàng quang",
+                            "frequency": "q8h",
+                            "target": "Tự tiểu tiện dễ dàng"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_nephrotoxicity",
+                    "problemName": "Độc tính trên thận do Aciclovir lắng tụ tinh thể",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Bảo vệ thận",
+                            "content": "Truyền NaCl 0.9% 500mL trước mỗi cữ Aciclovir; kéo dài thời gian truyền TM > 1 giờ."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Creatinine & Nước tiểu 24h",
+                            "frequency": "q48h",
+                            "target": "Không tăng Creatinine > 26.5 umol/L"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Điều trị nhắm đích",
+                    "content": "Aciclovir IV/PO cho HSV/VZV; Điều trị triệu chứng cho Enterovirus.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Thân nhiệt, Cổ cứng, Tự ăn uống",
+                    "frequency": "q8h",
+                    "target": "Hết sốt, cổ bớt cứng hoàn toàn"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không dùng thuốc kháng vi rút kéo dài không cần thiết cho Enterovirus]",
+                    "[Theo dõi chức năng thận khi dùng Aciclovir]"
+                ],
+                "triageOrDischargeCriteria": "[Đủ tiêu chuẩn xuất viện khi hết sốt, hết đau đầu, tự ăn uống tốt]"
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N8 - N14+",
+            "phaseName": "Giai đoạn Hoàn thành Đợt Điều trị, Đánh giá Xuất viện & Tái khám",
+            "clinicalGoal": "Hoàn thành đủ đợt Aciclovir (nếu HSV/VZV); đánh giá tiêu chuẩn xuất viện an toàn; hướng dẫn theo dõi tái phát.",
+            "problems": [
+                {
+                    "id": "p3_discharge_eval",
+                    "problemName": "Đánh giá tiêu chuẩn xuất viện an toàn cho bệnh nhân Viêm màng nào vi rút",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Đánh giá xuất viện",
+                            "content": "Xác nhận bệnh nhân hết sốt liên tục >= 48h, không đau đầu, không nôn, tri giác hoàn toàn tỉnh táo, tự sinh hoạt bình thường."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Thân nhiệt & Tri giác GCS",
+                            "frequency": "Hàng ngày",
+                            "target": "Thân nhiệt bình thường, GCS 15 điểm"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_mollaret",
+                    "problemName": "Viêm màng nào vô khuẩn tái phát nhiều đợt (Hội chứng Mollaret do HSV-2)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Tư vấn & Dự phòng",
+                            "content": "Tư vấn khả năng tái phát của HSV-2; cân nhắc điều trị dự phòng Valaciclovir 500mg/ngày uống kéo dài nếu tái phát >= 3 lần/năm."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tái phát triệu chứng đau đầu sốt",
+                            "frequency": "Tái khám sau 2-4 tuần",
+                            "target": "Không tái phát"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Hoàn thành thuốc",
+                    "content": "Ngưng mọi thuốc khi lâm sàng hồi phục hoàn toàn."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Lâm sàng tổng quát",
+                    "frequency": "Hàng ngày",
+                    "target": "Khỏe mạnh hoàn toàn"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Dặn dò bệnh nhân tái khám ngay nếu đau đầu tái phát hoặc sốt lại]",
+                    "[Không cần xét nghiệm DNT kiểm tra trước xuất viện nếu lâm sàng bình thường]"
+                ],
+                "triageOrDischargeCriteria": "[Đủ tiêu chuẩn xuất viện an toàn]"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_viral_encephalitis_transformation",
+            "complicationName": "Chuyển dạng Viêm nào - Màng nào (Viral Meningoencephalitis)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Lú lẫn, thay đổi nhân cách, hành vi bất thường, rối loạn tri giác GCS < 13, co giật, tổn thương thùy thái dương trên MRI do HSV-1]",
+            "actionProtocol": "[Chuyển ngay ICU; dùng khẩn Aciclovir 10 mg/kg IV q8h truyền TM chậm 1h; Chống phù brain bằng Saline ưu trương/Mannitol; Kiểm soát co giật; Đặt NKT bảo vệ đường thở nếu GCS < 10]",
+            "monitoringMetrics": "[Điểm GCS, Dấu thần kinh khu trú, Cơn co giật, MRI/CT scan não q24-48h]"
+        },
+        {
+            "id": "comp_elsberg_syndrome_urinary",
+            "complicationName": "Rối loạn tủy - rễ thần kinh hạ vị & Bí tiểu cấp (Hội chứng Elsberg do HSV-2/VZV)",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "[Bí tiểu cấp, căng đau hạ vị, cầu bàng quang dương tính, yếu nhẹ hai chân, mất phản xạ vùng tầng sinh môn]",
+            "actionProtocol": "[Siêu âm kiểm tra thể tích bàng quang; Đặt xông tiểu lưu thoát nước tiểu vô khuẩn; Tiếp tục phác đồ Aciclovir TM/PO; Rút xông tiểu khi bệnh nhân hồi phục cảm giác]",
+            "monitoringMetrics": "[Thể tích nước tiểu dư thừa, Cầu bàng quang, Cảm giác tầng sinh môn q8h]"
+        },
+        {
+            "id": "comp_post_herpetic_neuralgia",
+            "complicationName": "Đau thần kinh sau Zona / Biến chứng dây thần kinh sọ do VZV",
+            "problemType": "clinical",
+            "warningLevel": "moderate",
+            "manifestation": "[Đau bỏng rát kéo dài theo khoanh tủy Zona sau khi mụn nước đã lành, liệt dây thần kinh VII ngoại biên (Hội chứng Ramsay Hunt)]",
+            "actionProtocol": "[Điều trị giảm đau thần kinh bằng Gabapentin 300mg q8h hoặc Pregabalin 75mg q12h; Chăm sóc da vô khuẩn; Tập vật lý trị liệu cơ mặt nếu liệt mặt]",
+            "monitoringMetrics": "[Mức độ đau theo thang điểm VAS, Chức năng vận động dây thần kinh sọ]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[CẢNH BÁO PHÂN BIỆT VMN VI KHUẨN]: Luôn nghi ngờ viêm màng nào vi khuẩn và dùng kháng sinh kinh nghiệm giờ đầu nếu chưa có kết quả DNT/PCR, đặc biệt khi DNT chưa loại trừ hẳn vi khuẩn.",
+            "[CẢNH BÁO ACICLOVIR]: Bắt buộc truyền tĩnh mạch Aciclovir chậm trong ít nhất 1 giờ và bù đủ dịch để tránh lắng tụ tinh thể Aciclovir gây suy thận cấp.",
+            "[CẢNH BÁO NGƯNG KHÁNG SINH & CORTICOID]: Ngay khi có kết quả DNT/PCR khẳng định do vi rút và loại trừ vi khuẩn, BẮT BUỘC NGƯNG hoàn toàn kháng sinh kinh nghiệm và Dexamethasone (vì Dexamethasone không có lợi trong viêm màng nào vi rút).",
+            "[CẢNH BÁO CHUYỂN DẠNG VIÊM NÃO]: Theo dõi sát tri giác và hành vi bệnh nhân; bất kỳ rối loạn nhận thức nào đều gợi ý chuyển dạng Viêm não do HSV-1 cần xử trí cấp cứu ICU."
+        ],
+        "contraindications": [
+            "[CHỐNG CHỈ ĐỊNH CORTICOID THƯỜNG QUY]: Chống chỉ định dùng Dexamethasone / Corticoid kéo dài cho bệnh nhân viêm màng nào do vi rút (trừ trường hợp C-IRIS hoặc biến chứng đặc biệt do VZV theo chỉ định chuyên khoa).",
+            "[CHỐNG CHỈ ĐỊNH DÙNG KHÁNG SINH KÉO DÀI]: Chống chỉ định tiếp tục duy trì kháng sinh khi DNT đã khẳng định là vi rút (Bạch cầu Lympho, Glucose bình thường, Gram/Cấy âm tính, PCR vi rút dương tính).",
+            "[CHỐNG CHỈ ĐỊNH TRUYỀN ACICLOVIR NHANH]: Chống chỉ định tiêm trực tiếp TM (IV push) hoặc truyền Aciclovir nhanh dưới 1 giờ do nguy cơ kết tủa tại ống thận."
+        ],
+        "dischargeCriteria": [
+            "[TIÊU CHUẨN XUẤT VIỆN 1]: Triệu chứng lâm sàng cải thiện hoàn toàn, hết sốt liên tục ít nhất 48 giờ không cần thuốc hạ sốt.",
+            "[TIÊU CHUẨN XUẤT VIỆN 2]: Đau đầu giảm rõ rệt (VAS < 3), không còn nôn ói, tự ăn uống và bù dịch tốt bằng đường uống.",
+            "[TIÊU CHUẨN XUẤT VIỆN 3]: Tri giác hoàn toàn tỉnh táo (GCS 15 điểm), không có dấu thần kinh khu trú tiến triển.",
+            "[TIÊU CHUẨN XUẤT VIỆN 4]: Hoàn thành đợt Aciclovir (nếu do HSV/VZV) hoặc chức năng thận bình thường."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm màng nào do vi rút / siêu vi theo WHO Guidelines 2025 & Bộ Y Tế",
+            "searchKeyword": "chẩn đoán viêm màng nào vi rút siêu vi pcr dịch nào tủy"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, Aciclovir & chăm sóc hỗ trợ Viêm màng nào do vi rút",
+            "searchKeyword": "phác đồ điều trị viêm màng nào vi rút aciclovir enterovirus hsv"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học & Căn nguyên vi rút gây Viêm màng nào cấp tính (Enterovirus, HSV-2, VZV)",
+            "searchKeyword": "dịch tễ viêm màng nào vi rút enterovirus coxsackie mollaret"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí chuyển dạng viêm não, hội chứng Elsberg & biến chứng do vi rút Herpes",
+            "searchKeyword": "biến chứng viêm màng nào vi rút viêm nào hsv elsberg bí tiểu"
+        }
+    ]
+}
