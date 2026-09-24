@@ -1,56 +1,21 @@
 [
   {
-    "id": "dau_nguc",
-    "ten": "Đau thắt ngực sau xương ức",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau ngực",
-      "thắt ngực",
-      "sau xương ức"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_lan",
-    "ten": "Đau lan vai trái / hàm dưới",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "lan tay trái",
-      "lan vai",
-      "lan hàm"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_mang_phoi",
-    "ten": "Đau ngực tăng khi hít sâu",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "hít sâu",
-      "kiểu màng phổi"
-    ],
-    "map": null
-  },
-  {
     "id": "mach_nhanh",
-    "ten": "Mạch nhanh > 100/ph",
+    "ten": "Mạch nhanh (> 100 lần/phút)",
     "nhom": "Tim mạch",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
       "mạch nhanh",
-      "nhịp nhanh",
-      "tim nhanh"
+      "nhịp tim nhanh",
+      "tachycardia",
+      "tim đập nhanh"
+    ],
+    "aliases": [
+      "nhịp nhanh xoang",
+      "mạch > 100",
+      "tim đập dồn dập"
     ],
     "map": {
       "fld": "vMach",
@@ -60,249 +25,26 @@
   },
   {
     "id": "ha_huyet_ap",
-    "ten": "HA tụt < 90 mmHg",
+    "ten": "Huyết áp tụt (< 90 mmHg)",
     "nhom": "Tim mạch",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
       "huyết áp tụt",
-      "ha tụt",
-      "hạ huyết áp"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "phu_2_chan",
-    "ten": "Phù 2 chi dưới",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù 2",
-      "phù chân"
-    ],
-    "map": null
-  },
-  {
-    "id": "tm_co_noi",
-    "ten": "Tĩnh mạch cổ nổi",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tĩnh mạch cổ"
-    ],
-    "map": null
-  },
-  {
-    "id": "sung_dau_chan_1_ben",
-    "ten": "Sưng đau 1 bên bắp chân",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "bắp chân",
-      "sưng chân"
-    ],
-    "map": null
-  },
-  {
-    "id": "mach_nhanh_kich_phat_giap",
-    "ten": "Nhịp tim rất nhanh > 130–140 l/ph, rung nhĩ nhanh",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tim nhanh > 130",
-      "nhịp nhanh kịch phát",
-      "tachycardia"
-    ],
-    "map": {
-      "fld": "vMach",
-      "op": ">=",
-      "val": 130
-    }
-  },
-  {
-    "id": "tut_ha_khang_truyen_dich",
-    "ten": "Tụt huyết áp trơ với bù dịch tinh thể (suy thượng thận)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tụt huyết áp trơ",
       "hạ huyết áp",
-      "adrenal crisis"
+      "hypotension",
+      "ha thap"
     ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "huyet_ap_tang_cao",
-    "ten": "HA tâm thu ≥ 140 mmHg hoặc HA tâm trương ≥ 90 mmHg",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tăng huyết áp",
-      "huyết áp cao",
-      "hypertension"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": ">=",
-      "val": 140
-    }
-  },
-  {
-    "id": "con_tang_ha_cap_cuu",
-    "ten": "Cơn tăng huyết áp cấp cứu: HA ≥ 180/120 mmHg kèm tổn thương cơ quan đích",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tăng huyết áp khẩn cấp",
-      "cơn tăng huyết áp",
-      "hypertensive crisis"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": ">=",
-      "val": 180
-    }
-  },
-  {
-    "id": "loan_nhip_hoan_toan",
-    "ten": "Loạn nhịp hoàn toàn: Tiếng tim T1 lúc to nhỏ, nhịp tim không đều",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "loạn nhịp hoàn toàn",
-      "rung nhĩ",
-      "tiếng tim không đều"
-    ],
-    "map": null
-  },
-  {
-    "id": "hut_mach_rung_nhi",
-    "ten": "Hụt mạch: Tần số tim trên ống nghe > Tần số mạch quay",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hụt mạch",
-      "pulse deficit"
-    ],
-    "map": null
-  },
-  {
-    "id": "ha_tut_soc",
-    "ten": "Tụt huyết áp: HA tâm thu < 90 mmHg hoặc MAP < 65 mmHg",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
+    "aliases": [
       "tụt huyết áp",
-      "hạ huyết áp",
-      "sốc",
-      "hypotension"
+      "hatt < 90",
+      "huyết áp thấp",
+      "tụt áp"
     ],
     "map": {
       "fld": "vHATT",
       "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "phan_hoi_gan_tm",
-    "ten": "Phản hồi gan - tĩnh mạch cổ (+)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phản hồi gan",
-      "hepatojugular reflux"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieng_t3",
-    "ten": "Tiếng T3 ngựa phi (Gallop T3)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "t3 gallop",
-      "ngựa phi"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_tren_20p",
-    "ten": "Cơn đau thắt ngực kéo dài > 20 phút",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau ngực > 20 phút",
-      "đau ngực kéo dài"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_hop",
-    "ten": "Hồi hộp, đánh trống ngực từng cơn",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "hồi hộp",
-      "đánh trống ngực",
-      "palpitation"
-    ],
-    "map": null
-  },
-  {
-    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
-    "ten": "Sốc: Mạch nhanh nhỏ, HA kẹp <= 20 mmHg hoặc Tụt HA",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "soc sxh",
-      "mach nhanh nho",
-      "ha kep",
-      "tut ha",
-      "ha = 0",
-      "chi lanh"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<=",
       "val": 90
     }
   },
@@ -314,12 +56,45 @@
       "tt"
     ],
     "tuKhoa": [
-      "chi lanh",
-      "crt keo dai",
-      "dau chi lanh",
-      "tay chan lanh",
-      "tuoi mau mo kem"
+      "chi lạnh",
+      "crt kéo dài",
+      "đầu chi lạnh ẩm",
+      "capillary refill",
+      "tưới máu kém"
+    ],
+    "aliases": [
+      "tay chân lạnh",
+      "chi lạnh vã mồ hôi",
+      "crt > 2s",
+      "tưới máu ngoại vi kém"
     ],
     "map": null
+  },
+  {
+    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+    "ten": "Sốc: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốc",
+      "sốc sxh",
+      "huyết áp kẹp",
+      "mạch nhanh nhỏ",
+      "dengue shock syndrome"
+    ],
+    "aliases": [
+      "sốc giảm thể tích",
+      "hiệu áp kẹp",
+      "dss",
+      "huyết áp kẹt",
+      "mạch quay không bắt được"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 90
+    }
   }
 ]

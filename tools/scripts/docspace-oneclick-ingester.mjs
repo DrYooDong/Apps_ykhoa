@@ -24,6 +24,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { resolveSymptom, registerNewSymptom } from './fuzzy-alias-resolver.mjs';
+import { bundleSymptoms } from './bundle-symptoms.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -102,6 +104,50 @@ function handlePrompt05(enrichedData) {
   console.log(`\n📦 [Xử lý Prompt 05] Enriched CDSS JSON: ${enrichedData.diseaseName || enrichedData.slug}...`);
   if (!fs.existsSync(ENRICHED_DIR)) {
     fs.mkdirSync(ENRICHED_DIR, { recursive: true });
+  }
+
+  // 1. Phân giải và chuẩn hóa symptomIds trong criteria[] qua Fuzzy Alias Resolver
+  if (Array.isArray(enrichedData.criteria)) {
+    let resolvedCount = 0;
+    enrichedData.criteria.forEach(c => {
+      if (Array.isArray(c.symptomIds)) {
+        c.symptomIds = c.symptomIds.map(symId => {
+          const res = resolveSymptom(symId);
+          if (!res.isNew) {
+            if (res.resolvedId !== symId) {
+              console.log(`   🔄 Criteria [${c.id}]: Ánh xạ [${symId}] -> [${res.resolvedId}] (${res.matchType})`);
+            }
+            resolvedCount++;
+            return res.resolvedId;
+          }
+          console.warn(`   ✨ Triệu chứng mới trong criteria [${c.id}]: [${symId}]. Đang tự động đăng ký...`);
+          registerNewSymptom({
+            id: symId,
+            ten: symId.replace(/_/g, ' '),
+            nhom: 'Toàn thân',
+            loai: ['tt'],
+            tuKhoa: [symId.replace(/_/g, ' ')],
+            aliases: []
+          });
+          return symId;
+        });
+      }
+    });
+    if (resolvedCount > 0) {
+      console.log(`   ✅ Đã phân giải và đối soát ${resolvedCount} liên kết symptomIds trong criteria.`);
+    }
+  }
+
+  // 2. Xử lý mảng trieuChungMoi nếu có
+  if (Array.isArray(enrichedData.trieuChungMoi)) {
+    for (const sym of enrichedData.trieuChungMoi) {
+      const res = resolveSymptom(sym.id);
+      if (res.isNew) {
+        registerNewSymptom(sym);
+      } else {
+        console.log(`   ℹ️ Triệu chứng mới đề xuất [${sym.id}] đã trùng với mã [${res.resolvedId}]. Bỏ qua.`);
+      }
+    }
   }
 
   const slug = enrichedData.slug || 'benh-chuyen-sau';

@@ -28,28 +28,52 @@
       "type": "mandatory",
       "label": "[Lâm sàng]: Sốt cao đột ngột liên tục 2–7 ngày kèm yếu tố dịch tễ vùng lưu hành",
       "description": "Sốt cao đột ngột 39–40°C, khó hạ sốt bằng thuốc hạ sốt thông thường, sống hoặc đi đến vùng dịch tễ lưu hành sốt xuất huyết Dengue trong vòng 14 ngày.",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO Dengue Guidelines 2024–2025"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO Dengue Guidelines 2024–2025",
+      "symptomIds": [
+        "tc_sot_cao_dot_ngot_duoi_7_ngay",
+        "sot"
+      ],
+      "cdssRole": "dt",
+      "weight": 4.5
     },
     {
       "id": "sxhd_clinical_syndrome",
       "type": "major",
       "label": "[Lâm sàng]: Hội chứng sốt xuất huyết kinh điển",
       "description": "Biểu hiện ít nhất 2 trong các triệu chứng: Nhức đầu dữ dội, đau nhức hốc mắt, đau cơ khớp sâu, phát ban sung huyết da, buồn nôn, nôn ói.",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "dau_dau",
+        "dau_co",
+        "buon_non_non"
+      ],
+      "cdssRole": "gy",
+      "weight": 3.5
     },
     {
       "id": "sxhd_hemorrhage_lacet",
       "type": "major",
       "label": "[Lâm sàng]: Dấu hiệu xuất huyết da niêm hoặc Nghiệm pháp dây thắt (Lacet) (+)",
       "description": "Nghiệm pháp dây thắt dương tính (>= 20 chấm xuất huyết/1 inch vuông), chấm xuất huyết rải rác dưới da, chảy máu chân răng, chảy máu mũi.",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_xuat_huyet_da_niem_lacet_duong_tinh"
+      ],
+      "cdssRole": "dt",
+      "weight": 4
     },
     {
       "id": "sxhd_warning_signs",
       "type": "warning",
       "label": "[Dấu hiệu cảnh báo 1-7]: Dấu hiệu cảnh báo chuyển độ nặng (Warning Signs)",
       "description": "Đau bụng nhiều/ấn đau vùng gan, nôn ói liên tục (>= 3 lần/1h hoặc >= 4 lần/6h), lừ đừ/bứt rứt/vật vã, xuất huyết niêm mạc (chảy máu mũi/chân răng/nôn ra máu/tiêu phân đen), gan to > 2cm dưới bờ sườn, tiểu ít (< 0.5 mL/kg/h), tràn dịch màng bụng/màng phổi trên siêu âm.",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO 2024–2025"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO 2024–2025",
+      "symptomIds": [
+        "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+        "gan_to_dau"
+      ],
+      "cdssRole": "gy",
+      "weight": 3.5
     },
     {
       "id": "sxhd_lab_hct_surge",
@@ -57,7 +81,12 @@
       "label": "[Cận lâm sàng]: Hematocrit tăng cô đặc máu > 20% so với trị số nền",
       "description": "Hematocrit tăng dốc đứng biểu hiện tình trạng thoát huyết tương vào khoang kẽ (ví dụ Hct tăng từ 38% lên >= 46%).",
       "labThreshold": "Hct tăng > 20% so với trị số nền hoặc Hct > 45% ở nam / > 42% ở nữ",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_co_dac_mau_hct_tang_tren_20_phan_tram"
+      ],
+      "cdssRole": "dt",
+      "weight": 4.5
     },
     {
       "id": "sxhd_lab_thrombocytopenia",
@@ -65,7 +94,12 @@
       "label": "[Cận lâm sàng]: Giảm tiểu cầu nhanh dốc đứng (< 100 G/L)",
       "description": "Số lượng tiểu cầu giảm sâu do ức chế tủy xương và tiêu thụ ngoại vi bởi phức hợp miễn dịch.",
       "labThreshold": "PLT < 100 G/L (100.000/mm³), đặc biệt tụt dốc đứng < 50 G/L",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_giam_tieu_cau_duoi_100_g_l"
+      ],
+      "cdssRole": "gy",
+      "weight": 3.5
     },
     {
       "id": "sxhd_lab_ns1_pcr",
@@ -73,7 +107,12 @@
       "label": "[Cận lâm sàng]: Xét nghiệm vi sinh xác chẩn DENV (NS1 Ag / RT-PCR / IgM)",
       "description": "Test nhanh NS1 Ag dương tính trong 1–5 ngày đầu; RT-PCR xác định tuýp virus; IgM dương tính từ ngày thứ 5 trở đi.",
       "labThreshold": "NS1 Ag (+) hoặc RT-PCR DENV (+) hoặc IgM (+)",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO 2025"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 & WHO 2025",
+      "symptomIds": [
+        "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh"
+      ],
+      "cdssRole": "dt",
+      "weight": 5
     },
     {
       "id": "sxhd_imaging_leakage",
@@ -81,7 +120,12 @@
       "label": "[Cận lâm sàng]: Tràn dịch đa màng & Dày thành túi mật trên Siêu âm",
       "description": "Siêu âm ổ bụng và màng phổi phát hiện tràn dịch tự do khoang màng bụng, tràn dịch màng phổi (thường bên phải) và dày thành túi mật > 3 mm do phù nề lớp dưới niêm mạc.",
       "labThreshold": "Độ dày thành túi mật > 3 mm, có dịch khoang màng bụng/màng phổi",
-      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023"
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tran_dich_mang_phoi_mang_bung"
+      ],
+      "cdssRole": "dt",
+      "weight": 4
     }
   ],
   "severityGrading": [

@@ -217,10 +217,37 @@ report(6, 'Clinical Humanizer & Anti-AI-ism Quality Pass', aiMatchesCount === 0,
 ]);
 
 // =========================================================================
+// PILLAR 7: ALIAS COLLISION & FUZZY DUPLICATE DETECTION GATE
+// =========================================================================
+const aliasMap = new Map();
+const aliasCollisions = [];
+
+symptoms.forEach(s => {
+  const allAliases = [
+    ...(s.aliases || []),
+    ...(s.tuKhoa || [])
+  ];
+  allAliases.forEach(a => {
+    const norm = a.toLowerCase().trim();
+    if (aliasMap.has(norm) && aliasMap.get(norm) !== s.id) {
+      aliasCollisions.push(`Xung đột alias/từ khóa "${norm}": giữa [${aliasMap.get(norm)}] và [${s.id}]`);
+    } else {
+      aliasMap.set(norm, s.id);
+    }
+  });
+});
+
+report(7, 'Alias Collision & Fuzzy Duplicate Detection Gate', aliasCollisions.length === 0, [
+  `Quét ma trận alias & từ khóa nhằm phát hiện triệu chứng trùng lặp tiềm ẩn`,
+  `Tổng số alias/từ khóa đã kiểm tra: ${aliasMap.size}`,
+  `Số cặp xung đột alias phát hiện: ${aliasCollisions.length}`
+]);
+
+// =========================================================================
 // SUMMARY
 // =========================================================================
 console.log('══════════════════════════════════════════════════════════════════════');
-console.log(`KẾT QUẢ KIỂM ĐỊNH Y HỌC: ${passCount}/6 PILLARS PASS | ${failCount} FAIL`);
+console.log(`KẾT QUẢ KIỂM ĐỊNH Y HỌC: ${passCount}/7 PILLARS PASS | ${failCount} FAIL`);
 console.log('══════════════════════════════════════════════════════════════════════\n');
 
 if (failCount > 0) {

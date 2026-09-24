@@ -6,11 +6,14 @@
 
 export interface DiagnosticCriterionItem {
   id: string;
-  type: 'mandatory' | 'major' | 'minor' | 'lab' | 'imaging' | 'exclusion';
+  type: 'mandatory' | 'major' | 'minor' | 'lab' | 'imaging' | 'exclusion' | 'warning' | string;
   label: string;
   description?: string;
   sourceGuideline?: string;
   labThreshold?: string;
+  symptomIds?: string[];
+  cdssRole?: 'dt' | 'gy' | 'ht' | 'loaitru';
+  weight?: number;
 }
 
 export interface DrugChainOption {

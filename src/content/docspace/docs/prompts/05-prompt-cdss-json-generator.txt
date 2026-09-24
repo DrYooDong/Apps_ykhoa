@@ -72,60 +72,100 @@ BẮT BUỘC XUẤT DUY NHẤT ĐỐI TƯỢNG JSON HỢP LỆ (VALID JSON), KH�
     \"minMinorRequired\": 1,
     \"ruleDescription\": \"[Quy tắc logic xác định bệnh: ví dụ Có tiêu chuẩn bắt buộc VÀ ít nhất 2 tiêu chuẩn chính VÀ ít nhất 1 tiêu chuẩn cận lâm sàng]\"
   },
-  \"criteria\": [
+  "criteria": [
+    // ⭐ QUY TẮC ĐỐI SOÁT TỪ ĐIỂN TRIỆU CHỨNG (DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md):
+    // NotebookLM ĐÃ ĐƯỢC NẠP FILE `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`.
+    // Mỗi tiêu chuẩn BẮT BUỘC có "symptomIds" ánh xạ xuống mã ID chuẩn trong từ điển này:
+    //   - Tra cứu cột "Từ khóa & Biến thể / Aliases" trước. Nếu tương đương -> DÙNG LẠI MÃ ID CÓ SẴN.
+    //   - "cdssRole": "dt" (đặc trưng) | "gy" (gợi ý) | "ht" (hỗ trợ) | "loaitru" (loại trừ)
+    //   - "weight": trọng số suy luận (từ 1.0 đến 5.0)
+    //   - CHỈ KHI NÀO là triệu chứng ĐẶC THÙ chưa từng có trong từ điển -> mới tạo mã mới và đề xuất trong mảng "trieuChungMoi".
     {
-      \"id\": \"[slug_tieu_chuan_bat_buoc_1]\",
-      \"type\": \"mandatory\",
-      \"label\": \"[Tiêu chuẩn bắt buộc: Sốt hoặc triệu chứng tiên quyết kèm yếu tố dịch tễ vùng lưu hành/nguồn lây]\",
-      \"description\": \"[Mô tả chi tiết biểu hiện lâm sàng, thời gian sốt, mức độ đáp ứng hạ sốt]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu Bộ Y Tế / WHO]\"
+      "id": "[slug_tieu_chuan_bat_buoc_1]",
+      "type": "mandatory",
+      "label": "[Tiêu chuẩn bắt buộc: Sốt hoặc triệu chứng tiên quyết kèm yếu tố dịch tễ vùng lưu hành/nguồn lây]",
+      "description": "[Mô tả chi tiết biểu hiện lâm sàng, thời gian sốt, mức độ đáp ứng hạ sốt]",
+      "sourceGuideline": "[Văn bản tham chiếu Bộ Y Tế / WHO]",
+      "symptomIds": ["sot", "tc_sot_cao_dot_ngot_duoi_7_ngay"],
+      "cdssRole": "dt",
+      "weight": 4.5
     },
     {
-      \"id\": \"[slug_tieu_chuan_chinh_1]\",
-      \"type\": \"major\",
-      \"label\": \"[Tiêu chuẩn chính 1: Hội chứng lâm sàng kinh điển của bệnh]\",
-      \"description\": \"[Mô tả các dấu hiệu cơ năng và thực thể điển hình]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_tieu_chuan_chinh_1]",
+      "type": "major",
+      "label": "[Tiêu chuẩn chính 1: Hội chứng lâm sàng kinh điển của bệnh]",
+      "description": "[Mô tả các dấu hiệu cơ năng và thực thể điển hình]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan_1>", "<ma_id_chuan_2>"],
+      "cdssRole": "gy",
+      "weight": 3.5
     },
     {
-      \"id\": \"[slug_tieu_chuan_chinh_2]\",
-      \"type\": \"major\",
-      \"label\": \"[Tiêu chuẩn chính 2: Nghiệm pháp lâm sàng hoặc Dấu hiệu cảnh báo nguy hiểm]\",
-      \"description\": \"[Cách thực hiện nghiệm pháp, ngưỡng dương tính hoặc biểu hiện cảnh báo]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_tieu_chuan_chinh_2]",
+      "type": "major",
+      "label": "[Tiêu chuẩn chính 2: Nghiệm pháp lâm sàng hoặc Dấu hiệu cảnh báo nguy hiểm]",
+      "description": "[Cách thực hiện nghiệm pháp, ngưỡng dương tính hoặc biểu hiện cảnh báo]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan>"],
+      "cdssRole": "dt",
+      "weight": 4.0
     },
     {
-      \"id\": \"[slug_cls_dinh_luong_1]\",
-      \"type\": \"lab\",
-      \"label\": \"[Cận lâm sàng then chốt 1 kèm ngưỡng định lượng: ví dụ Hematocrit tăng > 20%, Men gan AST/ALT > 1000 U/L...]\",
-      \"description\": \"[Ý nghĩa bệnh sinh và động học thay đổi]\",
-      \"labThreshold\": \"[Ngưỡng số học cụ thể bắt buộc]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_cls_dinh_luong_1]",
+      "type": "lab",
+      "label": "[Cận lâm sàng then chốt 1 kèm ngưỡng định lượng: ví dụ Hematocrit tăng > 20%, Men gan AST/ALT > 1000 U/L...]",
+      "description": "[Ý nghĩa bệnh sinh và động học thay đổi]",
+      "labThreshold": "[Ngưỡng số học cụ thể bắt buộc]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan_xet_nghiem>"],
+      "cdssRole": "dt",
+      "weight": 4.5
     },
     {
-      \"id\": \"[slug_cls_dinh_luong_2]\",
-      \"type\": \"lab\",
-      \"label\": \"[Cận lâm sàng then chốt 2 kèm ngưỡng: ví dụ Giảm tiểu cầu < 100 G/L, Bạch cầu giảm...]\",
-      \"description\": \"[Ý nghĩa tiên lượng]\",
-      \"labThreshold\": \"[Ngưỡng số học cụ thể bắt buộc]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_cls_dinh_luong_2]",
+      "type": "lab",
+      "label": "[Cận lâm sàng then chốt 2 kèm ngưỡng: ví dụ Giảm tiểu cầu < 100 G/L, Bạch cầu giảm...]",
+      "description": "[Ý nghĩa tiên lượng]",
+      "labThreshold": "[Ngưỡng số học cụ thể bắt buộc]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan_cls_2>"],
+      "cdssRole": "gy",
+      "weight": 3.5
     },
     {
-      \"id\": \"[slug_cls_vi_sinh_gold]\",
-      \"type\": \"lab\",
-      \"label\": \"[Xét nghiệm căn nguyên vi sinh / Sinh học phân tử: RT-PCR, Kháng nguyên, Kháng thể...]\",
-      \"description\": \"[Thời điểm lấy mẫu tối ưu và độ tin cậy]\",
-      \"labThreshold\": \"[Kết quả dương tính cụ thể]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_cls_vi_sinh_gold]",
+      "type": "lab",
+      "label": "[Xét nghiệm căn nguyên vi sinh / Sinh học phân tử: RT-PCR, Kháng nguyên, Kháng thể...]",
+      "description": "[Thời điểm lấy mẫu tối ưu và độ tin cậy]",
+      "labThreshold": "[Kết quả dương tính cụ thể]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan_vi_sinh>"],
+      "cdssRole": "dt",
+      "weight": 5.0
     },
     {
-      \"id\": \"[slug_hinh_anh_hoc]\",
-      \"type\": \"imaging\",
-      \"label\": \"[Chẩn đoán hình ảnh: Dấu hiệu trên Siêu âm / X-quang / CT...]\",
-      \"description\": \"[Dấu hiệu thoát dịch kẽ, tràn dịch đa màng hoặc tổn thương nhu mô]\",
-      \"labThreshold\": \"[Tiêu chuẩn kích thước định lượng cụ thể: ví dụ Dày thành túi mật > 3mm, dịch màng bụng...]\",
-      \"sourceGuideline\": \"[Văn bản tham chiếu]\"
+      "id": "[slug_hinh_anh_hoc]",
+      "type": "imaging",
+      "label": "[Chẩn đoán hình ảnh: Dấu hiệu trên Siêu âm / X-quang / CT...]",
+      "description": "[Dấu hiệu thoát dịch kẽ, tràn dịch đa màng hoặc tổn thương nhu mô]",
+      "labThreshold": "[Tiêu chuẩn kích thước định lượng cụ thể: ví dụ Dày thành túi mật > 3mm, dịch màng bụng...]",
+      "sourceGuideline": "[Văn bản tham chiếu]",
+      "symptomIds": ["<ma_id_chuan_hinh_anh>"],
+      "cdssRole": "dt",
+      "weight": 4.0
     }
+  ],
+  // MẢNG ĐỀ XUẤT TRIỆU CHỨNG MỚI (CHỈ KHI CHƯA CÓ TRONG DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md):
+  "trieuChungMoi": [
+    // {
+    //   "id": "ma_id_moi_khong_dau",
+    //   "ten": "Tên tiếng Việt có dấu đầy đủ",
+    //   "nhom": "Toàn thân | Tim mạch | Hô hấp | Tiêu hóa | Thần kinh | Da niêm | Cận lâm sàng...",
+    //   "loai": ["cn"] hoặc ["tt"] hoặc ["cls"] hoặc ["tc"],
+    //   "tuKhoa": ["từ khóa 1", "từ khóa 2"],
+    //   "aliases": ["biến thể 1", "biến thể 2"],
+    //   "map": null // hoặc { "fld": "vNhiet", "op": ">=", "val": 38.5 }
+    // }
   ],
   // severityGrading: MẢNG ĐỘNG LINH HOẠT TỪ 2 ĐẾN 5+ PHẦN TỬ THEO ĐÚNG GUIDELINE (Hoặc [] nếu không chia bậc).
   // Giá trị "severity" hợp lệ: "mild" | "moderate" | "severe" | "emergency" | "critical" | "phenotype" | "grade-1" | "grade-2" | "grade-3" | "grade-4"

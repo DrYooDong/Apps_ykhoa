@@ -68,23 +68,22 @@ Tạo 01 đối tượng JSON ca bệnh hoàn chỉnh với số liệu sinh hi�
     "lALT": "[ALT/GPT U/L men gan: ví dụ 195]",
     "lCre": "[Creatinine huyết thanh µmol/L: ví dụ 85]"
   },
+  // ⭐ BẮT BUỘC ĐỐI CHIẾU FILE TỪ ĐIỂN TRIỆU CHỨNG (DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md):
+  // Các mảng "selected", "sel", "negated" CHỈ ĐƯỢC DÙNG mã ID chuẩn đã có trong từ điển.
+  // Tuyệt đối KHÔNG tự sáng tác mã ID mới cho các triệu chứng/xét nghiệm đã có mặt.
   "selected": [
-    "[id_trieu_chung_1]",
-    "[id_trieu_chung_2]",
-    "[id_trieu_chung_3]",
-    "[id_trieu_chung_4]",
-    "[id_trieu_chung_5]"
+    "[id_chuan_tu_file_tu_dien_1]",
+    "[id_chuan_tu_file_tu_dien_2]",
+    "[id_chuan_tu_file_tu_dien_3]"
   ],
   "sel": [
-    "[id_trieu_chung_1]",
-    "[id_trieu_chung_2]",
-    "[id_trieu_chung_3]",
-    "[id_trieu_chung_4]",
-    "[id_trieu_chung_5]"
+    "[id_chuan_tu_file_tu_dien_1]",
+    "[id_chuan_tu_file_tu_dien_2]",
+    "[id_chuan_tu_file_tu_dien_3]"
   ],
   "negated": [
-    "[id_trieu_chung_am_tinh_gia_tri_1]",
-    "[id_trieu_chung_am_tinh_gia_tri_2]"
+    "[id_chuan_am_tinh_gia_tri_1]",
+    "[id_chuan_am_tinh_gia_tri_2]"
   ],
   "epiContext": {
     "endemicArea": "Việt Nam là vùng lưu hành dịch tễ của SXH Dengue",
@@ -156,13 +155,17 @@ Cung cấp 2 đoạn code JSON nạp vào CSDL Tri thức Suy luận CDSS:
     \"tuoiMin\": 0,
     \"tuoiMax\": 120
   },
-  \"dd\": [
-    [\"[id_trieu_chung_dac_trung_1]\", 4.5, \"dt\"],
-    [\"[id_trieu_chung_dac_trung_2]\", 3.5, \"dt\"],
-    [\"[id_trieu_chung_goi_y_1]\", 2.5, \"gy\"],
-    [\"[id_trieu_chung_goi_y_2]\", 2.0, \"gy\"],
-    [\"[id_trieu_chung_ho_tro_1]\", 1.5, \"ht\"],
-    [\"[id_trieu_chung_loai_tru]\", -5.0, \"loaitru\"]
+  // ⭐ MA TRẬN SUY LUẬN CDSS (dd):
+  // BẮT BUỘC lấy mã triệu chứng từ trường "symptomIds" của criteria (đã xác định ở Prompt 05)
+  // hoặc tra cứu mã ID chuẩn trong file DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md.
+  // Tuyệt đối KHÔNG tự sáng tác mã ID khác với tiêu chuẩn chẩn đoán.
+  "dd": [
+    ["[id_trieu_chung_dac_trung_1]", 4.5, "dt"],
+    ["[id_trieu_chung_dac_trung_2]", 3.5, "dt"],
+    ["[id_trieu_chung_goi_y_1]", 2.5, "gy"],
+    ["[id_trieu_chung_goi_y_2]", 2.0, "gy"],
+    ["[id_trieu_chung_ho_tro_1]", 1.5, "ht"],
+    ["[id_trieu_chung_loai_tru]", -5.0, "loaitru"]
   ],
   \"phacDo\": {
     \"tuyen\": [

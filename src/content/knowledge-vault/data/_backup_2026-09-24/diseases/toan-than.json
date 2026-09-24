@@ -1,0 +1,181 @@
+[
+  {
+    "id": "soc_nhiem_khuan",
+    "ten": "Sốc nhiễm khuẩn & Nhiễm khuẩn huyết (Sepsis-3)",
+    "icd": "A41.9",
+    "nhom": "Toàn thân",
+    "baoDong": true,
+    "ghiChuBaoDong": "Báo động đỏ ICU! Tử vong tăng 7.6% mỗi giờ chậm trễ kháng sinh. HATT < 90 hoặc Lactate > 2 despite hồi sức dịch.",
+    "tomTat": "Rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa của cơ thể đối với nhiễm trùng (SOFA tăng ≥ 2 điểm). Sốc nhiễm khuẩn là phân nhóm có tụt huyết áp cần thuốc vận mạch và Lactate > 2 mmol/L.",
+    "danSo": {
+      "gioiTinh": "any",
+      "tuoiMin": 0,
+      "tuoiMax": 120
+    },
+    "dd": [
+      [
+        "ha_tut_soc",
+        5,
+        "dt"
+      ],
+      [
+        "lactate_tang_cao",
+        4.5,
+        "dt"
+      ],
+      [
+        "qsofa_trieu_chung",
+        4,
+        "dt"
+      ],
+      [
+        "sot",
+        2,
+        "ht"
+      ],
+      [
+        "bc_tang",
+        2.5,
+        "ht"
+      ],
+      [
+        "thieu_nieu_vo_nieu",
+        3,
+        "gy"
+      ],
+      [
+        "mach_nhanh_kich_phat_giap",
+        2.5,
+        "gy"
+      ]
+    ],
+    "phacDo": {
+      "tuyen": [
+        "Gói 1 giờ đầu (Hour-1 Bundle): Đo Lactate máu ngay; Cấy máu trước khi dùng kháng sinh; Dùng kháng sinh phổ rộng IV trong ≤ 1 giờ",
+        "Hồi sức thể tích: Truyền dịch tinh thể Ringer Lactate 30 mL/kg trong 3 giờ đầu khi có tụt HA hoặc Lactate ≥ 4 mmol/L",
+        "Thuốc vận mạch đầu tay: Noradrenaline (Norepinephrine) truyền tĩnh mạch qua catheter trung tâm, mục tiêu duy trì MAP ≥ 65 mmHg",
+        "Phối hợp Vasopressin (0.03 UI/ph) nếu liều Noradrenaline tăng cao; Hydrocortisone 200mg/ngày IV nếu sốc trơ vận mạch"
+      ],
+      "thuoc": [
+        [
+          "Noradrenaline",
+          "Khởi đầu 0.05 - 0.1 mcg/kg/phút truyền TM, chỉnh liều duy trì MAP ≥ 65",
+          "Vận mạch đầu tay co mạch"
+        ],
+        [
+          "Meropenem",
+          "1g - 2g tiêm TM mỗi 8 giờ (kéo dài trong 3h)",
+          "Kháng sinh phổ rộng Gram âm/dương"
+        ],
+        [
+          "Vancomycin",
+          "Liều nạp 25-30 mg/kg, sau đó 15-20 mg/kg mỗi 8-12h",
+          "Phủ MRSA nếu nghi ngờ"
+        ],
+        [
+          "Hydrocortisone",
+          "50mg tiêm TM mỗi 6 giờ",
+          "Sốc nhiễm khuẩn kháng vận mạch"
+        ]
+      ],
+      "theoDoi": [
+        "Huyết áp động mạch xâm lấn (IBP) và MAP liên tục",
+        "Động học Lactate máu mỗi 2-4 giờ cho đến khi về bình thường (đánh giá thanh thải Lactate)",
+        "ScvO2, áp lực tĩnh mạch trung tâm (CVP), lượng nước tiểu từng giờ"
+      ],
+      "luuY": [
+        "Không dùng Dopamine làm thuốc vận mạch hàng đầu (nguy cơ loạn nhịp tim cao)",
+        "Kiểm soát ổ nhiễm khuẩn khẩn cấp (dẫn lưu ổ mủ, mổ viêm phúc mạc, rút catheter nhiễm trùng) trong vòng 6-12 giờ"
+      ],
+      "nguon": [
+        "Surviving Sepsis Campaign 2021",
+        "Bộ Y Tế"
+      ]
+    }
+  },
+  {
+    "id": "soc_phan_ve",
+    "ten": "Sốc phản vệ & Phản ứng phản vệ (Anaphylaxis)",
+    "icd": "T78.2",
+    "nhom": "Toàn thân",
+    "baoDong": true,
+    "ghiChuBaoDong": "BÁO ĐỘNG TỐI KHẨN CẤP! Adrenaline là thuốc duy nhất cứu sống bệnh nhân. Tiêm bắp ngay không chần chừ!",
+    "tomTat": "Phản ứng dị ứng toàn thân nặng nề, khởi phát nhanh trong vài phút đến vài giờ sau tiếp xúc dị nguyên (thuốc, thức ăn, nọc côn trùng). Xuất hiện đồng thời triệu chứng ở đường thở, tuần hoàn, da niêm hoặc tiêu hóa.",
+    "danSo": {
+      "gioiTinh": "any",
+      "tuoiMin": 0,
+      "tuoiMax": 120
+    },
+    "dd": [
+      [
+        "may_day_phu_quinke",
+        4.5,
+        "dt"
+      ],
+      [
+        "tho_rit_thanh_quan_stridor",
+        5,
+        "dt"
+      ],
+      [
+        "ha_tut_soc",
+        5,
+        "dt"
+      ],
+      [
+        "kho_tho_thi_tho_ra",
+        3.5,
+        "gy"
+      ],
+      [
+        "buon_non_non",
+        2.5,
+        "ht"
+      ]
+    ],
+    "phacDo": {
+      "tuyen": [
+        "BƯỚC 1: Ngừng ngay tiếp xúc dị nguyên (rút kim truyền thuốc, gắp nọc ong...)",
+        "BƯỚC 2: TIÊM BẮP ADRENALINE NGAY LẬP TỨC: Người lớn 0.5 mL (1/2 ống 1mg/1mL); Trẻ em 0.01 mg/kg (tối đa 0.3 mL) vào mặt trước ngoài đùi. Lặp lại mỗi 3-5 phút nếu chưa đáp ứng",
+        "BƯỚC 3: Đặt bệnh nhân nằm đầu bằng, chân kê cao (nếu khó thở hoặc nôn thì nằm nghiêng an toàn)",
+        "BƯỚC 4: Thở oxy lưu lượng cao qua mask (6-8 L/ph), lập 2 đường truyền tĩnh mạch lớn bù Ringer Lactate hoặc NaCl 0.9% nhanh",
+        "Thuốc hỗ trợ thứ hai (sau Adrenaline): Methylprednisolone 1-2 mg/kg IV + Diphenhydramine hoặc Dimedrol tiêm bắp"
+      ],
+      "thuoc": [
+        [
+          "Adrenaline 1mg/1mL",
+          "Tiêm bắp 0.5 mL (1/2 ống) mặt trước ngoài đùi",
+          "Thuốc cứu sinh duy nhất"
+        ],
+        [
+          "Methylprednisolone",
+          "40mg - 80mg tiêm TM chậm",
+          "Chống phản vệ pha hai tái phát"
+        ],
+        [
+          "Dimedrol 10mg",
+          "10mg - 20mg tiêm bắp",
+          "Kháng Histamin H1 giảm ngứa mày đay"
+        ],
+        [
+          "Ringer Lactate",
+          "1000 - 2000 mL truyền TM nhanh",
+          "Hồi sức thể tích chống giãn mạch"
+        ]
+      ],
+      "theoDoi": [
+        "Mạch, huyết áp, nhịp thở, SpO2 mỗi 3-5 phút cho đến khi ổn định",
+        "Cảnh giác phản vệ pha hai (Biphasic Anaphylaxis) có thể tái phát sau 4-12 giờ",
+        "Theo dõi tại khoa Cấp cứu tối thiểu 24-72 giờ"
+      ],
+      "luuY": [
+        "KHÔNG BAO GIỜ dùng Corticoid hoặc Kháng Histamin để thay thế Adrenaline trong cấp cứu phản vệ",
+        "Tiêm bắp mặt trước ngoài đùi hấp thu nhanh và đạt nồng độ đỉnh trong máu cao hơn tiêm cơ Delta cánh tay"
+      ],
+      "nguon": [
+        "Thông tư 51/2017/TT-BYT",
+        "WAO Guidelines"
+      ]
+    }
+  }
+]

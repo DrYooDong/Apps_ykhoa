@@ -16,6 +16,7 @@ export interface TrieuChung {
   nhom: string;
   loai: CategoryType[];
   tuKhoa: string[];
+  aliases?: string[];
   map: ThresholdMap | null;
 }
 

@@ -24,6 +24,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { resolveSymptom, registerNewSymptom } from './fuzzy-alias-resolver.mjs';
+import { bundleSymptoms } from './bundle-symptoms.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -348,102 +350,80 @@ function runIngestion(inputFile) {
   }
 
   // ─────────────────────────────────────────────────────────────
-  // BƯỚC 2: NẠP TỪ ĐIỂN TRIỆU CHỨNG (clinical-rules-symptoms.json)
+  // BƯỚC 2: NẠP TỪ ĐIỂN TRIỆU CHỨNG & FUZZY ALIAS RESOLVER
   // ─────────────────────────────────────────────────────────────
-  console.log('\n📝 [2/7] Đang cập nhật từ điển triệu chứng...');
-  if (fs.existsSync(SYMPTOMS_PATH)) {
-    let existingSymptoms = JSON.parse(fs.readFileSync(SYMPTOMS_PATH, 'utf8'));
-    const existingIds = new Set(existingSymptoms.map(s => s.id));
-    let addedSymCount = 0;
+  console.log('\n📝 [2/7] Đang đồng bộ và chuẩn hóa từ điển triệu chứng (Fuzzy Alias Resolver)...');
 
-    if (symptomsJson) {
-      for (const sym of symptomsJson) {
-        if (!existingIds.has(sym.id)) {
-          existingSymptoms.push(sym);
-          existingIds.add(sym.id);
-          addedSymCount++;
-        }
+  // 2.1 Xử lý mảng symptomsJson nếu có đề xuất triệu chứng mới
+  if (Array.isArray(symptomsJson)) {
+    for (const sym of symptomsJson) {
+      const res = resolveSymptom(sym.id);
+      if (res.isNew) {
+        registerNewSymptom(sym);
+      } else {
+        console.log(`   ℹ️ Triệu chứng [${sym.id}] khớp với mã chuẩn [${res.resolvedId}] (${res.matchType}).`);
       }
-    }
-
-    const COMMON_SYMPTOM_NAMES = {
-      alt_ast_tang_nhe: { ten: 'Men gan AST/ALT tăng nhẹ', nhom: 'Cận lâm sàng', loai: ['cls'], tuKhoa: ['men gan tang', 'ast alt tang', 'transaminase tang'] },
-      co_truong: { ten: 'Cổ trướng (Báng bụng / Dịch tự do ổ bụng)', nhom: 'Tiêu hóa', loai: ['tt'], tuKhoa: ['co truong', 'bang bung', 'dich o bung'] },
-      vang_da_mat: { ten: 'Vàng da, vàng mắt (Hoàng đản)', nhom: 'Tiêu hóa', loai: ['tt'], tuKhoa: ['vang da', 'vang mat', 'hoang dan', 'jaundice'] },
-      xuat_huyet_tieu_hoa: { ten: 'Xuất huyết tiêu hóa (Nôn ra máu, đi ngoài phân đen)', nhom: 'Tiêu hóa', loai: ['cn', 'tt'], tuKhoa: ['xuat huyet tieu hoa', 'non ra mau', 'phan den'] },
-      nao_gan: { ten: 'Bệnh não gan (Hôn mê gan / Rối loạn tri giác do suy tế bào gan)', nhom: 'Thần kinh', loai: ['tt'], tuKhoa: ['nao gan', 'hon me gan', 'hepatic encephalopathy'] },
-      hbsag_pos: { ten: 'Kháng nguyên bề mặt viêm gan B (HBsAg) dương tính', nhom: 'Cận lâm sàng', loai: ['cls'], tuKhoa: ['hbsag duong tinh', 'hbsag (+)', 'khang nguyen viem gan b'] },
-      trieu_chung_co_truong_tien_trien_nhanh: { ten: 'Cổ trướng tiến triển nhanh / lượng nhiều', nhom: 'Tiêu hóa', loai: ['tt'], tuKhoa: ['cổ trướng tiến triển', 'cổ trướng nhanh', 'báng bụng căng', 'dịch ổ bụng nhiều'] },
-      trieu_chung_sot_cao_co_giat: { ten: 'Sốt cao co giật', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['sốt cao co giật', 'co giật do sốt'] },
-      trieu_chung_khong_xuat_huyet_tieu_hoa: { ten: 'Không có xuất huyết tiêu hóa (Không nôn máu, không đi cầu phân đen)', nhom: 'Tiêu hóa', loai: ['cn', 'tt'], tuKhoa: ['không nôn ra máu', 'không đi cầu phân đen', 'không xuất huyết tiêu hóa'] },
-      trieu_chung_khong_sot_cao_co_giat: { ten: 'Không sốt cao co giật', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['không sốt cao co giật'] },
-      dien_tien_ban_huong_tam: { ten: 'Diễn tiến ban hướng tâm (mọc từ thân mình, mặt lan ra gốc chi)', nhom: 'Da niêm', loai: ['cn', 'tt'], tuKhoa: ['hướng tâm', 'mọc từ thân mình', 'lan ra chi'] },
-      sot_nhe_trung_binh: { ten: 'Sốt nhẹ đến sốt vừa (37.8°C - 38.8°C)', nhom: 'Toàn thân', loai: ['cn', 'tt'], tuKhoa: ['sốt nhẹ', 'sốt vừa', 'sốt'] },
-      ban_mop_phong_nuoc_dong_trung_trung_ly: { ten: 'Ban mụn nước lõm giữa đồng lứa tuổi kiểu Đậu mùa / Monkeypox', nhom: 'Da niêm', loai: ['tt'], tuKhoa: ['lõm giữa', 'đậu mùa', 'monkeypox', 'đồng lứa tuổi'] },
-      ho_kho_tho_kieu_viem_phoi: { ten: 'Ho, khó thở kiểu viêm phổi', nhom: 'Hô hấp', loai: ['cn', 'tt'], tuKhoa: ['ho khó thở', 'viêm phổi', 'thở nhanh'] },
-      roi_loan_tri_giac_co_giat: { ten: 'Rối loạn tri giác, co giật', nhom: 'Thần kinh', loai: ['cn', 'tt'], tuKhoa: ['rối loạn tri giác', 'co giật', 'lơ mơ'] },
-    };
-
-    // Kiểm tra thêm các triệu chứng trong negated/selected của ca mẫu để chống orphan
-    if (sampleCaseJson) {
-      const allSampleSyms = [...(sampleCaseJson.sel || []), ...(sampleCaseJson.selected || []), ...(sampleCaseJson.negated || [])];
-      for (const symId of allSampleSyms) {
-        if (!existingIds.has(symId)) {
-          const fallback = COMMON_SYMPTOM_NAMES[symId] || {
-            ten: symId.replace(/_/g, ' '),
-            nhom: 'Lâm sàng',
-            loai: ['tt'],
-            tuKhoa: [symId.replace(/_/g, ' ')],
-            map: null
-          };
-          console.warn(`   ⚠️ Phát hiện triệu chứng [${symId}] từ ca mẫu chưa có trong từ điển. Đang tự động bổ sung (${fallback.ten})...`);
-          existingSymptoms.push({
-            id: symId,
-            ten: fallback.ten,
-            nhom: fallback.nhom,
-            loai: fallback.loai,
-            tuKhoa: fallback.tuKhoa,
-            map: null
-          });
-          existingIds.add(symId);
-          addedSymCount++;
-        }
-      }
-    }
-
-    // Kiểm tra thêm các triệu chứng trong ma trận dd của thực thể bệnh để chống orphan
-    if (diseaseEntityJson && Array.isArray(diseaseEntityJson.dd)) {
-      for (const [symId] of diseaseEntityJson.dd) {
-        if (!existingIds.has(symId)) {
-          const fallback = COMMON_SYMPTOM_NAMES[symId] || {
-            ten: symId.replace(/_/g, ' '),
-            nhom: 'Cận lâm sàng',
-            loai: ['cls'],
-            tuKhoa: [symId.replace(/_/g, ' ')],
-            map: null
-          };
-          console.warn(`   ⚠️ Phát hiện triệu chứng [${symId}] từ ma trận dd chưa có trong từ điển. Đang tự động bổ sung (${fallback.ten})...`);
-          existingSymptoms.push({
-            id: symId,
-            ten: fallback.ten,
-            nhom: fallback.nhom,
-            loai: fallback.loai,
-            tuKhoa: fallback.tuKhoa,
-            map: null
-          });
-          existingIds.add(symId);
-          addedSymCount++;
-        }
-      }
-    }
-
-    if (addedSymCount > 0) {
-      fs.writeFileSync(SYMPTOMS_PATH, JSON.stringify(existingSymptoms, null, 2) + '\n', 'utf8');
-      console.log(`   ✅ Đã thêm ${addedSymCount} triệu chứng mới vào clinical-rules-symptoms.json`);
-    } else {
-      console.log(`   ℹ️ Toàn bộ triệu chứng đã tồn tại trong từ điển, không cần cập nhật thêm.`);
     }
   }
+
+  // 2.2 Chuẩn hóa và ánh xạ các ID trong sampleCaseJson (sel, selected, negated)
+  if (sampleCaseJson) {
+    ['sel', 'selected', 'negated'].forEach(field => {
+      if (Array.isArray(sampleCaseJson[field])) {
+        sampleCaseJson[field] = sampleCaseJson[field].map(symId => {
+          const res = resolveSymptom(symId);
+          if (!res.isNew) {
+            if (res.resolvedId !== symId) {
+              console.log(`   🔄 Ánh xạ ca mẫu [${symId}] -> [${res.resolvedId}] (${res.matchType})`);
+            }
+            return res.resolvedId;
+          }
+          console.warn(`   ✨ Triệu chứng mới từ ca mẫu: [${symId}]. Đang đăng ký vào hệ thống...`);
+          registerNewSymptom({
+            id: symId,
+            ten: symId.replace(/_/g, ' '),
+            nhom: 'Toàn thân',
+            loai: ['tt'],
+            tuKhoa: [symId.replace(/_/g, ' ')],
+            aliases: []
+          });
+          return symId;
+        });
+      }
+    });
+  }
+
+  // 2.3 Chuẩn hóa và ánh xạ các ID trong ma trận dd của diseaseEntityJson
+  if (diseaseEntityJson && Array.isArray(diseaseEntityJson.dd)) {
+    diseaseEntityJson.dd = diseaseEntityJson.dd.map(rule => {
+      const symId = Array.isArray(rule) ? rule[0] : rule.id;
+      const weight = Array.isArray(rule) ? rule[1] : (rule.weight || rule.trongSo || 3);
+      const role = Array.isArray(rule) ? rule[2] : (rule.role || 'dt');
+
+      const res = resolveSymptom(symId);
+      let finalId = symId;
+      if (!res.isNew) {
+        if (res.resolvedId !== symId) {
+          console.log(`   🔄 Ánh xạ ma trận dd [${symId}] -> [${res.resolvedId}] (${res.matchType})`);
+        }
+        finalId = res.resolvedId;
+      } else {
+        console.warn(`   ✨ Triệu chứng mới từ ma trận dd: [${symId}]. Đang đăng ký vào hệ thống...`);
+        registerNewSymptom({
+          id: symId,
+          ten: symId.replace(/_/g, ' '),
+          nhom: 'Cận lâm sàng',
+          loai: ['cls'],
+          tuKhoa: [symId.replace(/_/g, ' ')],
+          aliases: []
+        });
+      }
+      return [finalId, weight, role];
+    });
+  }
+
+  // Luôn đảm bảo đồng bộ 2 tệp Master (clinical-rules-symptoms.json & DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md)
+  bundleSymptoms();
 
   // ─────────────────────────────────────────────────────────────
   // BƯỚC 3: NẠP THỰC THỂ BỆNH & TRỌNG SỐ CDSS (diseases/<chuyen-khoa>.json)

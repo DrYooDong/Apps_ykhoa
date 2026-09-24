@@ -1,7 +1,7 @@
 [
   {
     "id": "sot",
-    "ten": "Sốt ≥ 38°C",
+    "ten": "Sốt (≥ 38.0°C)",
     "nhom": "Toàn thân",
     "loai": [
       "cn",
@@ -10,7 +10,17 @@
     "tuKhoa": [
       "sốt",
       "fever",
-      "nhiệt độ"
+      "nhiệt độ cao",
+      "pyrexia"
+    ],
+    "aliases": [
+      "sốt cao",
+      "sốt nhẹ",
+      "sốt vừa",
+      "nóng sốt",
+      "thân nhiệt tăng",
+      "sốt dao động",
+      "nhiệt độ >= 38"
     ],
     "map": {
       "fld": "vNhiet",
@@ -19,16 +29,31 @@
     }
   },
   {
-    "id": "sot_ve_chieu",
-    "ten": "Sốt nhẹ về chiều",
+    "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
+    "ten": "Sốt cao đột ngột liên tục ≤ 7 ngày",
     "nhom": "Toàn thân",
     "loai": [
-      "cn"
+      "cn",
+      "tt"
     ],
     "tuKhoa": [
-      "về chiều"
+      "sốt cao đột ngột",
+      "sốt liên tục",
+      "sốt dengue",
+      "sốt dưới 7 ngày",
+      "sot dot ngot"
     ],
-    "map": null
+    "aliases": [
+      "sốt cao liên tục",
+      "sốt cấp tính",
+      "sốt bùng phát",
+      "sốt cao khó hạ"
+    ],
+    "map": {
+      "fld": "vNhiet",
+      "op": ">=",
+      "val": 38.5
+    }
   },
   {
     "id": "met_moi",
@@ -38,104 +63,16 @@
       "cn"
     ],
     "tuKhoa": [
-      "mệt"
+      "mệt mỏi",
+      "uể oải",
+      "kiệt sức",
+      "fatigue"
     ],
-    "map": null
-  },
-  {
-    "id": "va_mo_hoi",
-    "ten": "Vã mồ hôi / Mồ hôi trộm về ban đêm",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "vã mồ hôi",
-      "mồ hôi lạnh",
-      "mồ hôi trộm"
-    ],
-    "map": null
-  },
-  {
-    "id": "sut_can",
-    "ten": "Sụt cân không chủ ý",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sụt cân",
-      "sụt kí"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_co",
-    "ten": "Đau mỏi cơ, khớp",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau cơ",
-      "nhức mỏi",
-      "đau mỏi"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hau_mon_orbital",
-    "ten": "Đau sau hốc mắt",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sau hốc mắt",
-      "sau mắt"
-    ],
-    "map": null
-  },
-  {
-    "id": "phu_hai_chi_duoi",
-    "ten": "Phù mềm 2 chi dưới",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù chân",
-      "phù mềm",
-      "ấn lõm",
-      "edema"
-    ],
-    "map": null
-  },
-  {
-    "id": "phu_mat_toan_than",
-    "ten": "Phù mặt, mí mắt, phù toàn thân",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù mặt",
-      "nặng mi mắt",
-      "phù trắng mềm"
-    ],
-    "map": null
-  },
-  {
-    "id": "qsofa_trieu_chung",
-    "ten": "Tiêu chuẩn qSOFA ≥ 2 điểm (Thở ≥ 22, Glasgow < 15, HATT ≤ 100)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "qsofa",
-      "nhiễm khuẩn huyết",
-      "sepsis"
+    "aliases": [
+      "mệt nhọc",
+      "suy nhược",
+      "uể oải toàn thân",
+      "mệt lả"
     ],
     "map": null
   },
@@ -149,410 +86,57 @@
     "tuKhoa": [
       "da xanh",
       "niêm nhợt",
+      "da tái",
       "pallor"
     ],
-    "map": null
-  },
-  {
-    "id": "dau_mat_nuoc",
-    "ten": "Dấu mất nước nặng: Môi khô, véo da mất chậm, mắt trũng",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "mất nước",
-      "véo da",
-      "mắt trũng",
-      "môi khô"
+    "aliases": [
+      "da niêm nhợt",
+      "niêm mạc mắt nhợt",
+      "xanh xao",
+      "thiếu máu lâm sàng"
     ],
     "map": null
   },
   {
-    "id": "yeu_co",
-    "ten": "Yếu cơ, chuột rút, giảm trương lực cơ",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "yếu cơ",
-      "chuột rút",
-      "muscle weakness"
-    ],
-    "map": null
-  },
-  {
-    "id": "nhin_mo_mat",
-    "ten": "Nhìn mờ, giảm thị lực tiến triển",
+    "id": "dau_co",
+    "ten": "Đau mỏi cơ, khớp",
     "nhom": "Toàn thân",
     "loai": [
       "cn"
     ],
     "tuKhoa": [
-      "nhìn mờ",
-      "mờ mắt",
-      "blurry vision"
-    ],
-    "map": null
-  },
-  {
-    "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
-    "ten": "Sốt cao đột ngột liên tục <= 7 ngày",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sot cao",
-      "sot dot ngot",
-      "sot dengue",
-      "sot lien tuc"
-    ],
-    "map": {
-      "fld": "vNhiet",
-      "op": ">=",
-      "val": 38.5
-    }
-  },
-  {
-    "id": "vm_sot_cao_canh_bao",
-    "ten": "Sốt cao đột ngột (>= 38.5°C)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sốt cao",
-      "sot cao",
-      "sốt rét run"
-    ],
-    "map": {
-      "fld": "vNhiet",
-      "op": ">=",
-      "val": 38.5
-    }
-  },
-  {
-    "id": "yeu_to_dich_te_tiep_xuc_vzv",
-    "ten": "Tiền sử tiếp xúc nguồn lây Thủy đậu hoặc Zona trong 10-21 ngày",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tiếp xúc thủy đậu",
-      "nguồn lây vzv",
-      "tiếp xúc zona",
-      "dịch tễ thủy đậu"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_chung_tien_trieu_phat_ban",
-    "ten": "Hội chứng tiền triệu (Sốt nhẹ, mệt mỏi, chán ăn, đau đầu 24-48h trước phát ban)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sốt nhẹ",
-      "tiền triệu",
-      "chán ăn",
-      "đau đầu",
-      "prodrome"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_family_hcc_cirrhosis",
-    "ten": "Tiền sử gia đình có người thân mắc xơ gan hoặc ung thư gan (HCC)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tc"
-    ],
-    "tuKhoa": [
-      "tiền sử gia đình ung thư gan",
-      "gia đình xơ gan",
-      "tiền sử ung thư gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_bap_chan_du_doi",
-    "ten": "Đau nhức cơ bắp chân và cơ thắt lưng dữ dội (ấn đau chói, hạn chế vận động)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "đau bắp chân",
       "đau cơ",
-      "ấn bắp chân đau",
-      "đau cơ thắt lưng",
-      "calf myalgia"
+      "đau khớp",
+      "nhức mỏi",
+      "myalgia",
+      "arthralgia"
     ],
-    "map": null
-  },
-  {
-    "id": "sot_cao_co_giat_ret_run",
-    "ten": "sot cao co giat ret run",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "sot cao co giat ret run"
-    ],
-    "map": null
-  },
-  {
-    "id": "met_moi_keo_dai",
-    "ten": "Mệt mỏi kéo dài, uể uả vô lý",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "met moi",
-      "ue a",
-      "met moi keo dai"
-    ],
-    "map": null
-  },
-  {
-    "id": "sot_con_ret_run_va_mo_hoi",
-    "ten": "Cơn sốt rét điển hình 3 giai đoạn (Rét run -> Sốt cao -> Vã mồ hôi)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sot ret",
-      "ret run",
-      "va mo hoi",
-      "sot con chu ky",
-      "con sot ret"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_dau_dau_moi_co",
-    "ten": "Đau nhức đầu dữ dội, đau mỏi cơ khớp toàn thân",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "dau dau",
-      "dau moi co",
-      "nhuc dau",
-      "moi co"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hieu_canh_bao_ac_tinh_sot_ret",
-    "ten": "Dấu hiệu cảnh báo sốt rét ác tính (Li bì, nôn liên tục, KSTSR mật độ cao)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "canh bao ac tinh",
-      "sot ret ac tinh",
-      "li bi",
-      "non nhieu",
-      "kst cao"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_pso_mat_moi_chan_an_nang",
-    "ten": "Mệt lả, chán ăn nặng, sợ mỡ dồn dập",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "mat loi",
-      "chan an",
-      "so mo",
-      "fatigue",
-      "anorexia"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_sot_cao_ret_run",
-    "ten": "Sốt cao liên tục kèm cơn rét run mạnh",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sốt cao rét run",
-      "cơn rét run",
-      "sốt rét run"
-    ],
-    "map": null
-  },
-  {
-    "id": "khong_sot_cao_co_giat",
-    "ten": "khong sot cao co giat",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "khong sot cao co giat"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_benh_nao_gan_do_2_3",
-    "ten": "Bệnh não gan từ Độ II đến Độ IV (West Haven)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "lơ mơ",
-      "hôn mê gan",
-      "bệnh não gan",
-      "rối loạn tri giác",
-      "west haven"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_khong_sot_cao_co_giat",
-    "ten": "Không sốt cao co giật",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "không sốt cao co giật"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_sot_cao_co_giat",
-    "ten": "Sốt cao co giật",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sốt cao co giật",
-      "co giật do sốt"
-    ],
-    "map": null
-  },
-  {
-    "id": "ngua_du_doi_ngoai_da",
-    "ten": "Ngứa dữ dội vùng da tổn thương",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ngứa",
-      "ngứa dữ dội",
-      "gãi"
-    ],
-    "map": null
-  },
-  {
-    "id": "sot_nhe_trung_binh",
-    "ten": "Sốt nhẹ đến sốt vừa (37.8°C - 38.8°C)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sốt nhẹ",
-      "sốt vừa",
-      "sốt"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_phu_hai_chan_an_lom",
-    "ten": "Phù mềm ấn lõm hai cẳng chân (Giảm áp lực keo huyết tương)",
-    "nhom": "Toàn thân",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù hai chân",
-      "phù mềm ấn lõm",
-      "phù chân xơ gan",
-      "phù mềm"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc",
-    "ten": "Đau thắt ngực sau xương ức",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau ngực",
-      "thắt ngực",
-      "sau xương ức"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_lan",
-    "ten": "Đau lan vai trái / hàm dưới",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "lan tay trái",
-      "lan vai",
-      "lan hàm"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_mang_phoi",
-    "ten": "Đau ngực tăng khi hít sâu",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "hít sâu",
-      "kiểu màng phổi"
+    "aliases": [
+      "đau nhức cơ bắp",
+      "mỏi cơ",
+      "đau mình mẩy",
+      "đau khớp toàn thân",
+      "đau nhức xương khớp"
     ],
     "map": null
   },
   {
     "id": "mach_nhanh",
-    "ten": "Mạch nhanh > 100/ph",
+    "ten": "Mạch nhanh (> 100 lần/phút)",
     "nhom": "Tim mạch",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
       "mạch nhanh",
-      "nhịp nhanh",
-      "tim nhanh"
+      "nhịp tim nhanh",
+      "tachycardia",
+      "tim đập nhanh"
+    ],
+    "aliases": [
+      "nhịp nhanh xoang",
+      "mạch > 100",
+      "tim đập dồn dập"
     ],
     "map": {
       "fld": "vMach",
@@ -562,249 +146,26 @@
   },
   {
     "id": "ha_huyet_ap",
-    "ten": "HA tụt < 90 mmHg",
+    "ten": "Huyết áp tụt (< 90 mmHg)",
     "nhom": "Tim mạch",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
       "huyết áp tụt",
-      "ha tụt",
-      "hạ huyết áp"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "phu_2_chan",
-    "ten": "Phù 2 chi dưới",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù 2",
-      "phù chân"
-    ],
-    "map": null
-  },
-  {
-    "id": "tm_co_noi",
-    "ten": "Tĩnh mạch cổ nổi",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tĩnh mạch cổ"
-    ],
-    "map": null
-  },
-  {
-    "id": "sung_dau_chan_1_ben",
-    "ten": "Sưng đau 1 bên bắp chân",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "bắp chân",
-      "sưng chân"
-    ],
-    "map": null
-  },
-  {
-    "id": "mach_nhanh_kich_phat_giap",
-    "ten": "Nhịp tim rất nhanh > 130–140 l/ph, rung nhĩ nhanh",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tim nhanh > 130",
-      "nhịp nhanh kịch phát",
-      "tachycardia"
-    ],
-    "map": {
-      "fld": "vMach",
-      "op": ">=",
-      "val": 130
-    }
-  },
-  {
-    "id": "tut_ha_khang_truyen_dich",
-    "ten": "Tụt huyết áp trơ với bù dịch tinh thể (suy thượng thận)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tụt huyết áp trơ",
       "hạ huyết áp",
-      "adrenal crisis"
+      "hypotension",
+      "ha thap"
     ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "huyet_ap_tang_cao",
-    "ten": "HA tâm thu ≥ 140 mmHg hoặc HA tâm trương ≥ 90 mmHg",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tăng huyết áp",
-      "huyết áp cao",
-      "hypertension"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": ">=",
-      "val": 140
-    }
-  },
-  {
-    "id": "con_tang_ha_cap_cuu",
-    "ten": "Cơn tăng huyết áp cấp cứu: HA ≥ 180/120 mmHg kèm tổn thương cơ quan đích",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tăng huyết áp khẩn cấp",
-      "cơn tăng huyết áp",
-      "hypertensive crisis"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": ">=",
-      "val": 180
-    }
-  },
-  {
-    "id": "loan_nhip_hoan_toan",
-    "ten": "Loạn nhịp hoàn toàn: Tiếng tim T1 lúc to nhỏ, nhịp tim không đều",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "loạn nhịp hoàn toàn",
-      "rung nhĩ",
-      "tiếng tim không đều"
-    ],
-    "map": null
-  },
-  {
-    "id": "hut_mach_rung_nhi",
-    "ten": "Hụt mạch: Tần số tim trên ống nghe > Tần số mạch quay",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hụt mạch",
-      "pulse deficit"
-    ],
-    "map": null
-  },
-  {
-    "id": "ha_tut_soc",
-    "ten": "Tụt huyết áp: HA tâm thu < 90 mmHg hoặc MAP < 65 mmHg",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
+    "aliases": [
       "tụt huyết áp",
-      "hạ huyết áp",
-      "sốc",
-      "hypotension"
+      "hatt < 90",
+      "huyết áp thấp",
+      "tụt áp"
     ],
     "map": {
       "fld": "vHATT",
       "op": "<",
-      "val": 90
-    }
-  },
-  {
-    "id": "phan_hoi_gan_tm",
-    "ten": "Phản hồi gan - tĩnh mạch cổ (+)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phản hồi gan",
-      "hepatojugular reflux"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieng_t3",
-    "ten": "Tiếng T3 ngựa phi (Gallop T3)",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "t3 gallop",
-      "ngựa phi"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_tren_20p",
-    "ten": "Cơn đau thắt ngực kéo dài > 20 phút",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau ngực > 20 phút",
-      "đau ngực kéo dài"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_hop",
-    "ten": "Hồi hộp, đánh trống ngực từng cơn",
-    "nhom": "Tim mạch",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "hồi hộp",
-      "đánh trống ngực",
-      "palpitation"
-    ],
-    "map": null
-  },
-  {
-    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
-    "ten": "Sốc: Mạch nhanh nhỏ, HA kẹp <= 20 mmHg hoặc Tụt HA",
-    "nhom": "Tim mạch",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "soc sxh",
-      "mach nhanh nho",
-      "ha kep",
-      "tut ha",
-      "ha = 0",
-      "chi lanh"
-    ],
-    "map": {
-      "fld": "vHATT",
-      "op": "<=",
       "val": 90
     }
   },
@@ -816,13 +177,46 @@
       "tt"
     ],
     "tuKhoa": [
-      "chi lanh",
-      "crt keo dai",
-      "dau chi lanh",
-      "tay chan lanh",
-      "tuoi mau mo kem"
+      "chi lạnh",
+      "crt kéo dài",
+      "đầu chi lạnh ẩm",
+      "capillary refill",
+      "tưới máu kém"
+    ],
+    "aliases": [
+      "tay chân lạnh",
+      "chi lạnh vã mồ hôi",
+      "crt > 2s",
+      "tưới máu ngoại vi kém"
     ],
     "map": null
+  },
+  {
+    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+    "ten": "Sốc: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốc",
+      "sốc sxh",
+      "huyết áp kẹp",
+      "mạch nhanh nhỏ",
+      "dengue shock syndrome"
+    ],
+    "aliases": [
+      "sốc giảm thể tích",
+      "hiệu áp kẹp",
+      "dss",
+      "huyết áp kẹt",
+      "mạch quay không bắt được"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 90
+    }
   },
   {
     "id": "kho_tho",
@@ -833,304 +227,69 @@
       "tt"
     ],
     "tuKhoa": [
-      "khó thở"
+      "khó thở",
+      "dyspnea",
+      "thở hụt hơi",
+      "thở gắng sức"
+    ],
+    "aliases": [
+      "ngột ngạt khó thở",
+      "thở hổn hển",
+      "thở mệt",
+      "tức ngực khó thở"
     ],
     "map": null
   },
   {
-    "id": "kho_tho_nam",
-    "ten": "Khó thở khi nằm / phải ngồi thở",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "khi nằm",
-      "orthopnea",
-      "ngồi thở"
-    ],
-    "map": null
-  },
-  {
-    "id": "tho_rut",
-    "ten": "Nhịp thở nhanh > 22/ph",
+    "id": "tho_nhanh",
+    "ten": "Thở nhanh (> 20 lần/phút)",
     "nhom": "Hô hấp",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
       "thở nhanh",
-      "nhịp thở"
+      "tachypnea",
+      "tần số thở tăng",
+      "thở nông nhanh"
+    ],
+    "aliases": [
+      "thở > 20 l/p",
+      "thở > 22 l/p",
+      "tăng nhịp thở",
+      "tho_rut"
     ],
     "map": {
       "fld": "vTho",
       "op": ">",
-      "val": 22
+      "val": 20
     }
   },
   {
-    "id": "spo2_thap",
-    "ten": "SpO₂ < 94%",
+    "id": "spo2_giam",
+    "ten": "SpO₂ giảm (< 94%)",
     "nhom": "Hô hấp",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
-      "spo2",
-      "bão hòa oxy"
+      "spo2 giảm",
+      "giảm oxy máu",
+      "hypoxemia",
+      "spo2 thấp"
+    ],
+    "aliases": [
+      "spo2_thap",
+      "độ bão hòa oxy giảm",
+      "spo2 < 94%",
+      "tụt spo2",
+      "thiếu oxy máu"
     ],
     "map": {
       "fld": "vSpo2",
       "op": "<",
       "val": 94
     }
-  },
-  {
-    "id": "ho",
-    "ten": "Ho",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ho"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_dai_dang",
-    "ten": "Ho kéo dài > 2 tuần",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ho kéo dài"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_dam",
-    "ten": "Ho khạc đàm đục / mủ",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đàm",
-      "đờm",
-      "khạc"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_mau",
-    "ten": "Ho ra máu",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ho ra máu"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_khac_dam_man",
-    "ten": "Ho khạc đờm mạn tính ≥ 3 tháng trong 2 năm liên tiếp",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ho mạn tính",
-      "khạc đờm mạn",
-      "copd"
-    ],
-    "map": null
-  },
-  {
-    "id": "kho_tho_gang_suc_copd",
-    "ten": "Khó thở tăng dần khi gắng sức, dai dẳng nặng dần",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "khó thở gắng sức",
-      "khó thở copd"
-    ],
-    "map": null
-  },
-  {
-    "id": "long_nguc_hinh_thung",
-    "ten": "Lồng ngực hình thùng, gõ vang, rì rào phế nang giảm",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hình thùng",
-      "gõ vang",
-      "rrpn giảm",
-      "khí phế thũng"
-    ],
-    "map": null
-  },
-  {
-    "id": "ran_rit_ran_ngay",
-    "ten": "Ran rít, ran ngáy lan tỏa 2 phế trường",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "ran rít",
-      "ran ngáy",
-      "wheezing",
-      "rhonchi"
-    ],
-    "map": null
-  },
-  {
-    "id": "con_kho_tho_ve_dem_sang",
-    "ten": "Cơn khó thở khò khè tái phát về đêm và sáng sớm",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "khò khè về đêm",
-      "hen phế quản",
-      "cơn hen"
-    ],
-    "map": null
-  },
-  {
-    "id": "kho_tho_thi_tho_ra",
-    "ten": "Khó thở thì thở ra, tiếng rít cò cử",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "thở ra kéo dài",
-      "tiếng cò cử",
-      "thở rít"
-    ],
-    "map": null
-  },
-  {
-    "id": "dap_ung_thuoc_gian_pq",
-    "ten": "Cắt cơn nhanh sau khi hít thuốc giãn phế quản SABA",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đáp ứng salbutamol",
-      "cắt cơn hen",
-      "ventolin"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_chung_ba_giam",
-    "ten": "Hội chứng 3 giảm: Gõ đục, rung thanh giảm, RRPN giảm (tràn dịch màng phổi)",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hội chứng 3 giảm",
-      "tràn dịch màng phổi",
-      "gõ đục"
-    ],
-    "map": null
-  },
-  {
-    "id": "tam_chung_gaillard",
-    "ten": "Tam chứng Gaillard: Gõ vang trống, rung thanh mất, RRPN mất (tràn khí màng phổi)",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tam chứng gaillard",
-      "tràn khí màng phổi",
-      "gõ vang"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_nguc_nhon_khi_hit",
-    "ten": "Đau ngực nhọn như dao đâm, tăng lên khi hít sâu hoặc ho",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau ngực kiểu màng phổi",
-      "đau nhọn",
-      "pleuritic pain"
-    ],
-    "map": null
-  },
-  {
-    "id": "tho_rit_thanh_quan_stridor",
-    "ten": "Thở rít thanh quản (Stridor), nghẹt thở, phù nề đường thở cấp",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "stridor",
-      "thở rít thanh quản",
-      "co thắt thanh quản"
-    ],
-    "map": null
-  },
-  {
-    "id": "ran_no",
-    "ten": "Ran nổ, ran ẩm khu trú phế trường",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "ran nổ",
-      "ran ẩm",
-      "crackles",
-      "rales"
-    ],
-    "map": null
-  },
-  {
-    "id": "kho_tho_kich_phat",
-    "ten": "Cơn khó thở kịch phát về đêm (PND)",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "khó thở về đêm",
-      "paroxysmal nocturnal dyspnea",
-      "pnd"
-    ],
-    "map": null
-  },
-  {
-    "id": "ran_am_phoi",
-    "ten": "Ran ẩm dâng từ 2 đáy phổi",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "ran ẩm 2 đáy phổi",
-      "ứ trệ phổi"
-    ],
-    "map": null
   },
   {
     "id": "tc_ho_co_dom_hoac_viem_am_i_keo_dai",
@@ -1140,37 +299,21 @@
       "cn"
     ],
     "tuKhoa": [
-      "ho dom duc",
-      "viem phoi vi khuan",
-      "sot keo dai tren 10 ngay"
+      "ho đờm đục",
+      "viêm hô hấp",
+      "ho có đờm",
+      "nhiễm khuẩn hô hấp"
+    ],
+    "aliases": [
+      "ho khạc đờm mủ",
+      "ho đàm vàng xanh",
+      "viêm phế quản phổi"
     ],
     "map": null
   },
   {
-    "id": "ho_kho_tho_spo2_giam",
-    "ten": "Ho, khó thở, SpO2 giảm (Biến chứng viêm phổi do VZV)",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "khó thở",
-      "ho",
-      "spo2 giảm",
-      "viêm phổi",
-      "dyspnea",
-      "varicella pneumonia"
-    ],
-    "map": {
-      "fld": "vSpo2",
-      "op": "<",
-      "val": 95
-    }
-  },
-  {
     "id": "ho_ra_mau_xuat_huyet_phoi",
-    "ten": "Ho ra máu, thở nhanh nông, nghe rale ẩm phổi (Hội chứng xuất huyết phổi / ARDS)",
+    "ten": "Ho ra máu, xuất huyết phổi",
     "nhom": "Hô hấp",
     "loai": [
       "cn",
@@ -1178,229 +321,79 @@
     ],
     "tuKhoa": [
       "ho ra máu",
-      "haemoptysis",
-      "thâm nhiễm phổi",
+      "hemoptysis",
       "xuất huyết phổi",
-      "ARDS"
+      "khạc máu"
     ],
-    "map": null
-  },
-  {
-    "id": "suy_ho_hap_spo2_giam",
-    "ten": "Suy hô hấp cấp (SpO2 < 92%, thở nhanh > 30 l/p, phù phổi cấp / ARDS)",
-    "nhom": "Hô hấp",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "suy ho hap",
-      "spo2 giam",
-      "tho nhanh",
-      "phu phoi cap",
-      "ards"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_kho_tho_kieu_viem_phoi",
-    "ten": "Ho, khó thở kiểu viêm phổi",
-    "nhom": "Hô hấp",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "ho khó thở",
-      "viêm phổi",
-      "thở nhanh"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hong_phai",
-    "ten": "Đau hố chậu phải",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "hố chậu phải",
-      "hcp"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hoai_lan",
-    "ten": "Đau quanh rốn → khu trú HCP",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "quanh rốn"
-    ],
-    "map": null
-  },
-  {
-    "id": "mac_burney",
-    "ten": "Ấn đau điểm MacBurney",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "macburney",
-      "mac burney"
-    ],
-    "map": null
-  },
-  {
-    "id": "phan_ung_tb",
-    "ten": "Phản ứng thành bụng / đề kháng",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phản ứng thành bụng",
-      "đề kháng",
-      "co cứng thành bụng"
+    "aliases": [
+      "khạc đờm lẫn máu",
+      "ho máu sét đánh",
+      "chảy máu đường thở"
     ],
     "map": null
   },
   {
     "id": "buon_non_non",
-    "ten": "Buồn nôn / nôn",
+    "ten": "Buồn nôn / Nôn",
     "nhom": "Tiêu hóa",
     "loai": [
       "cn"
     ],
     "tuKhoa": [
       "buồn nôn",
+      "nôn",
       "nôn ói",
-      "nôn"
+      "nausea",
+      "vomiting"
+    ],
+    "aliases": [
+      "nôn nhiều lần",
+      "nôn khan",
+      "mắc ói",
+      "nôn mửa"
     ],
     "map": null
   },
   {
-    "id": "chan_an",
-    "ten": "Chán ăn",
+    "id": "gan_to_dau",
+    "ten": "Gan to dưới bờ sườn, ấn đau tức vùng hạ sườn phải",
     "nhom": "Tiêu hóa",
     "loai": [
-      "cn"
+      "tt"
     ],
     "tuKhoa": [
-      "chán ăn"
+      "gan to",
+      "ấn đau gan",
+      "gan lớn",
+      "đau hạ sườn phải",
+      "hepatomegaly"
+    ],
+    "aliases": [
+      "gan to đau",
+      "gan to > 2cm",
+      "ấn đau vùng gan",
+      "tức vùng hạ sườn phải"
     ],
     "map": null
   },
   {
-    "id": "dau_thuong_vi",
-    "ten": "Đau vùng thượng vị",
+    "id": "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+    "ten": "Đau bụng vùng gan, nôn ói nhiều (Dấu hiệu cảnh báo)",
     "nhom": "Tiêu hóa",
     "loai": [
       "cn",
       "tt"
     ],
     "tuKhoa": [
-      "thượng vị"
+      "đau bụng gan",
+      "nôn ói nhiều",
+      "dấu hiệu cảnh báo",
+      "warning signs dengue"
     ],
-    "map": null
-  },
-  {
-    "id": "lan_sau_lung",
-    "ten": "Đau lan / xuyên ra sau lưng",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "lan sau lưng",
-      "xuyên lưng",
-      "lan ra lưng"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hcp",
-    "ten": "Đau hạ sườn phải",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "hạ sườn phải"
-    ],
-    "map": null
-  },
-  {
-    "id": "lan_len_vai_p",
-    "ten": "Đau lan lên vai / bả vai phải",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "lan vai phải",
-      "lan bả vai"
-    ],
-    "map": null
-  },
-  {
-    "id": "murphy",
-    "ten": "Dấu Murphy (+)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "murphy"
-    ],
-    "map": null
-  },
-  {
-    "id": "vang_da_niem",
-    "ten": "Vàng da niêm mạc",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "vàng da",
-      "vàng mắt",
-      "jaundice",
-      "icterus"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_chuong",
-    "ten": "Cổ trướng / Báng bụng",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng",
-      "báng bụng",
-      "ascites",
-      "bụng to"
-    ],
-    "map": null
-  },
-  {
-    "id": "tuan_hoan_bang_he",
-    "ten": "Tuần hoàn bàng hệ cửa - chủ",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tuần hoàn bàng hệ",
-      "tĩnh mạch nổi",
-      "caput medusae"
+    "aliases": [
+      "đau bụng nhiều liên tục",
+      "nôn liên tục",
+      "đau vùng gan liên tục"
     ],
     "map": null
   },
@@ -1417,782 +410,13 @@
       "tiêu phân đen",
       "hematemesis",
       "melena",
-      "non ra mau",
-      "phan den",
-      "vo gian tinh mach thuc quan"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_thuong_vi_luc_doi",
-    "ten": "Đau rát bỏng vùng thượng vị, liên quan bữa ăn (đau lúc đói hoặc sau ăn)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau thượng vị",
-      "đau dạ dày",
-      "đau lúc đói",
-      "epigastric pain"
-    ],
-    "map": null
-  },
-  {
-    "id": "o_chua_o_nong",
-    "ten": "Ợ chua, ợ nóng, đầy chướng bụng",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ợ chua",
-      "ợ nóng",
-      "heartburn",
-      "trào ngược"
-    ],
-    "map": null
-  },
-  {
-    "id": "chuong_bung",
-    "ten": "Bụng chướng, giảm hoặc mất nhu động ruột",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "bụng chướng",
-      "liệt ruột",
-      "nhu động ruột"
-    ],
-    "map": null
-  },
-  {
-    "id": "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
-    "ten": "Đau bụng gan, Nôn ói nhiều, Lừ đừ",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "dau bung gan",
-      "non oi nhieu",
-      "lu du",
-      "li bi",
-      "gan to"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_fatigue_right_hypochondrial_pain",
-    "ten": "Mệt mỏi, chán ăn kèm đau tức âm ỉ vùng hạ sườn phải",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau tức hạ sườn phải",
-      "mệt mỏi chán ăn",
-      "tức vùng gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_decompensated_cirrhosis_signs",
-    "ten": "Dấu hiệu xơ gan mất bù (vàng da nặng, cổ trướng, phù chi, xuất huyết tiêu hóa, bệnh não gan)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "xơ gan mất bù",
-      "cổ trướng",
-      "bệnh não gan",
-      "sao mạch",
-      "phù chân"
-    ],
-    "map": null
-  },
-  {
-    "id": "vang_da_niem_mac_tang_bilirubin",
-    "ten": "Vàng da, vàng mắt (Bilirubin huyết thanh tăng)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "vang da niem mac tang bilirubin"
-    ],
-    "map": null
-  },
-  {
-    "id": "chan_an_day_bung",
-    "ten": "Chán ăn, đầy bụng, rối loạn tiêu hóa nhẹ",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "chan an",
-      "day bung",
-      "an khong ngon"
-    ],
-    "map": null
-  },
-  {
-    "id": "vang_da_mat",
-    "ten": "Vàng da, vàng củng mạc mắt",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "vang da mat"
-    ],
-    "map": null
-  },
-  {
-    "id": "xuat_huyet_tieu_hoa",
-    "ten": "xuat huyet tieu hoa",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "xuat huyet tieu hoa"
-    ],
-    "map": null
-  },
-  {
-    "id": "lach_to_lam_sang",
-    "ten": "Khám thực thể lách to dưới bờ sườn (Độ I - IV)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "lach to",
-      "so thay lach",
-      "lach to do 1",
-      "splenomegaly"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_vang_da_vang_mat_tien_trien",
-    "ten": "Vàng da, vàng mắt tiến triển sậm màu",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "vang da",
-      "vang mat",
-      "tieu vang sam",
-      "icterus",
-      "jaundice"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_dau_tuc_ha_suon_phai",
-    "ten": "Đau tức âm ỉ hạ sườn phải (vùng gan)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "dau ha suon phai",
-      "gan to an dau",
-      "right upper quadrant pain"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_truong_lam_sang",
-    "ten": "Cổ trướng (Báng bụng) phát hiện trên lâm sàng hoặc siêu âm",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng",
-      "báng bụng",
-      "dịch ổ bụng",
-      "gõ đục vùng thấp",
-      "dấu sóng vỗ"
-    ],
-    "map": null
-  },
-  {
-    "id": "xuathuyet_tieu_hoa_vo_gian_tmtq",
-    "ten": "Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản (Nôn ra máu / Tiêu phân đen)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "vỡ giãn tĩnh mạch thực quản",
-      "nôn ra máu",
-      "đi cầu phân đen",
       "xuất huyết tiêu hóa"
     ],
-    "map": null
-  },
-  {
-    "id": "c_non_oi_lien_tuc",
-    "ten": "Buồn nôn và nôn ói liên tục kéo dài",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "nôn ói liên tục",
-      "buồn nôn",
-      "nôn nhiều",
-      "nôn liên tục"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_co_truong_bang_bung",
-    "ten": "Cổ trướng / Báng bụng căng dịch rõ",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng",
-      "báng bụng căng",
-      "bụng bè"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_truong_do_3",
-    "ten": "Cổ trướng căng / Dịch ổ bụng lượng nhiều (Ascites Grade 3)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "co truong",
-      "dich o bung",
-      "bung truong cang",
-      "song vo"
-    ],
-    "map": null
-  },
-  {
-    "id": "decompensation_event",
-    "ten": "Biến cố mất bù xơ gan lâm sàng (Cổ trướng / Vỡ giãn TMTQ / Bệnh não gan)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "mất bù",
-      "cổ trướng",
-      "vỡ giãn tĩnh mạch thực quản",
-      "bệnh não gan",
-      "hôn mê gan",
-      "xuất huyết do vỡ giãn"
-    ],
-    "map": null
-  },
-  {
-    "id": "tuan_hoan_bang_he_ron",
-    "ten": "Tuần hoàn bàng hệ kiểu gánh chủ / quanh rốn",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tuần hoàn bàng hệ",
-      "bàng hệ quanh rốn",
-      "gánh chủ",
-      "caput medusae"
-    ],
-    "map": null
-  },
-  {
-    "id": "thung_tang_rong",
-    "ten": "Dấu hiệu thủng tạng rỗng (Bụng co cứng như gỗ, liềm hơi dưới hoành)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "thủng tạng rỗng",
-      "bụng như gỗ",
-      "co cứng thành bụng",
-      "liềm hơi"
-    ],
-    "map": null
-  },
-  {
-    "id": "gan_to_dau",
-    "ten": "Gan to dưới bờ sườn, ấn đau tức vùng hạ sườn phải",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "gan to",
-      "ấn đau hạ sườn phải",
-      "gan lớn"
-    ],
-    "map": null
-  },
-  {
-    "id": "cn_non_ra_mau_tuoi_vtmw",
-    "ten": "Nôn ra máu tươi / máu cục (Vỡ giãn tĩnh mạch thực quản - dạ dày)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "nôn ra máu",
-      "vỡ giãn tĩnh mạch thực quản",
-      "xuất huyết tiêu hóa cấp"
-    ],
-    "map": null
-  },
-  {
-    "id": "cn_di_tieu_phan_den_nhao",
-    "ten": "Đi tiêu phân đen nhão bốc mùi hôi khắm",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đi tiêu phân đen",
-      "phân hôi khắm",
-      "xuất huyết tiêu hóa trên"
-    ],
-    "map": null
-  },
-  {
-    "id": "tt_co_chuong_tu_do",
-    "ten": "Cổ trướng tự do ổ bụng (Ascites)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng",
-      "bụng chướng dịch",
-      "gõ đục vùng thấp"
-    ],
-    "map": null
-  },
-  {
-    "id": "tt_lach_to_tuan_hoan_bang_he",
-    "ten": "Lách to & Tuần hoàn bàng hệ cửa - chủ",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "lách to",
-      "tuần hoàn bàng hệ",
-      "tăng áp cửa"
-    ],
-    "map": null
-  },
-  {
-    "id": "khong_dau_bung_kieu_ngoai_khoa",
-    "ten": "khong dau bung kieu ngoai khoa",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "khong dau bung kieu ngoai khoa"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_vang_da_dam_cap_tinh",
-    "ten": "Vàng da đậm tiến triển cấp tính (Bilirubin ≥ 12 mg/dL)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "vàng da đậm",
-      "vàng mắt",
-      "bilirubin tăng cao",
-      "ứ mật nặng"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_co_truong_tien_trien_nhanh",
-    "ten": "Cổ trướng tiến triển nhanh / lượng nhiều",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng tiến triển",
-      "cổ trướng nhanh",
-      "báng bụng căng",
-      "dịch ổ bụng nhiều"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_khong_xuat_huyet_tieu_hoa",
-    "ten": "Không có xuất huyết tiêu hóa (Không nôn máu, không đi cầu phân đen)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "không nôn ra máu",
-      "không đi cầu phân đen",
-      "không xuất huyết tiêu hóa"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_khong_co_dich_co_truong",
-    "ten": "Hoàn toàn không có dịch cổ trướng (Lâm sàng & Siêu âm)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "không cổ trướng",
-      "không dịch màng bụng",
-      "bụng thon phẳng"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_co_truong_cang_tu_do",
-    "ten": "Cổ trướng tự do lượng nhiều / trướng căng (SAAG ≥ 11 g/L)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ trướng căng",
-      "dịch màng bụng lượng nhiều",
-      "trướng bụng",
-      "gõ đục vùng thấp"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_vang_da_niem_mac_mat",
-    "ten": "Vàng da, vàng củng mạc mắt (Bilirubin toàn phần tăng cao)",
-    "nhom": "Tiêu hóa",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "vàng da",
-      "vàng mắt",
-      "vàng củng mạc",
-      "bilirubin tăng"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hong_lung_lan",
-    "ten": "Đau hông lưng dữ dội lan bẹn",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "hông lưng",
-      "lan bẹn",
-      "cơn đau quặn thận"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieu_mau",
-    "ten": "Tiểu máu / hồng cầu niệu",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn",
-      "cls"
-    ],
-    "tuKhoa": [
-      "tiểu máu",
-      "hồng cầu niệu"
-    ],
-    "map": null
-  },
-  {
-    "id": "thieu_nieu_vo_nieu",
-    "ten": "Thiểu niệu (< 400 mL/24h) hoặc vô niệu",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "thiểu niệu",
-      "vô niệu",
-      "ít nước tiểu",
-      "oliguria",
-      "anuria"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieu_buot_dat",
-    "ten": "Tiểu buốt, tiểu rắt, tiểu gấp",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tiểu buốt",
-      "tiểu rắt",
-      "tiểu gắt",
-      "dysuria"
-    ],
-    "map": null
-  },
-  {
-    "id": "nuoc_tieu_duc",
-    "ten": "Nước tiểu đục, có mủ hoặc mùi hôi",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "tt",
-      "cn"
-    ],
-    "tuKhoa": [
-      "nước tiểu đục",
-      "tiểu mủ",
-      "pyuria"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_hong_lung_rung_than",
-    "ten": "Đau hông lưng, dấu rung thận (+)",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "rung thận",
-      "ấn điểm niệu quản",
-      "đau hông lưng"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_quan_than_dien_hinh",
-    "ten": "Cơn đau quặn thận kịch phát lan xuống bẹn/sinh dục",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "cơn đau quặn thận",
-      "đau quặn thận",
-      "renal colic",
-      "lan xuống bẹn"
-    ],
-    "map": null
-  },
-  {
-    "id": "thieu_nieu_co_la_colored_urine",
-    "ten": "Thiểu niệu/vô niệu (< 400 mL/24h) kèm nước tiểu sẫm màu như nước chè/màu xá xíu",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "thiểu niệu",
-      "vô niệu",
-      "tiểu ít",
-      "nước tiểu màu trà",
-      "nước tiểu màu xá xíu",
-      "cola colored urine"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieu_nuoc_tieu_den_huyet_cau_to",
-    "ten": "Đái huyết cầu tố (Nước tiểu màu đen hoặc màu nước vối sẫm)",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "nuoc tieu den",
-      "dai huyet cau to",
-      "nuoc voi",
-      "tan mau o at"
-    ],
-    "map": null
-  },
-  {
-    "id": "suy_than_vo_nieu",
-    "ten": "Suy thận cấp (Creatinine > 265 µmol/L, thiểu niệu hoặc vô niệu)",
-    "nhom": "Tiết niệu",
-    "loai": [
-      "cls",
-      "tt"
-    ],
-    "tuKhoa": [
-      "suy than cap",
-      "creatinine tang",
-      "thieu nieu",
-      "vo nieu"
-    ],
-    "map": null
-  },
-  {
-    "id": "tieu_nhieu",
-    "ten": "Tiểu nhiều",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tiểu nhiều",
-      "đa niệu"
-    ],
-    "map": null
-  },
-  {
-    "id": "khat_nuoc",
-    "ten": "Khát nước, uống nhiều",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "khát nước",
-      "uống nhiều"
-    ],
-    "map": null
-  },
-  {
-    "id": "kussmaul",
-    "ten": "Kiểu thở Kussmaul",
-    "nhom": "Nội tiết",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "kussmaul"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_aceton",
-    "ten": "Hơi thở mùi acetone / trái cây",
-    "nhom": "Nội tiết",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "acetone",
-      "aceton",
-      "mùi trái cây"
-    ],
-    "map": null
-  },
-  {
-    "id": "hoi_chung_bon_nhieu",
-    "ten": "Hội chứng 4 nhiều: Ăn nhiều, uống nhiều, tiểu nhiều, sụt cân",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "ăn nhiều",
-      "uống nhiều",
-      "tiểu nhiều",
-      "sụt cân",
-      "khát nước"
-    ],
-    "map": null
-  },
-  {
-    "id": "va_mo_hoi_lanh_run_tay",
-    "ten": "Vã mồ hôi lạnh, run tay chân, tim đập nhanh, đói cồn cào",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "vã mồ hôi lạnh",
-      "run tay",
-      "đói cồn cào",
-      "tim đập nhanh"
-    ],
-    "map": null
-  },
-  {
-    "id": "tam_chung_whipple",
-    "ten": "Tam chứng Whipple xác định hạ đường huyết",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn",
-      "tt",
-      "cls"
-    ],
-    "tuKhoa": [
-      "whipple",
-      "tam chứng whipple"
-    ],
-    "map": null
-  },
-  {
-    "id": "sot_cao_ac_tinh_giap",
-    "ten": "Sốt cao 38.5–41°C, vã mồ hôi, da nóng ẩm",
-    "nhom": "Nội tiết",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sốt cao",
-      "cơn bão giáp",
-      "da nóng ẩm",
-      "thyroid storm"
-    ],
-    "map": {
-      "fld": "vNhiet",
-      "op": ">=",
-      "val": 38.5
-    }
-  },
-  {
-    "id": "buou_giap",
-    "ten": "Bướu giáp lan tỏa to, có rung miu hoặc âm thổi mạch",
-    "nhom": "Nội tiết",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "bướu giáp",
-      "bướu mạch",
-      "goiter"
+    "aliases": [
+      "ói ra máu",
+      "đi tiêu phân đen như hắc ín",
+      "ỉa phân đen",
+      "xuat huyet tieu hoa"
     ],
     "map": null
   },
@@ -2205,1623 +429,63 @@
     ],
     "tuKhoa": [
       "đau đầu",
-      "nhức đầu"
+      "nhức đầu",
+      "headache",
+      "đau nhức đầu"
     ],
-    "map": null
-  },
-  {
-    "id": "so_sang",
-    "ten": "Sợ ánh sáng",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "sợ ánh sáng"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_cung",
-    "ten": "Cổ cứng / gáy cứng",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cổ cứng",
-      "cứng cổ",
-      "gáy cứng"
-    ],
-    "map": null
-  },
-  {
-    "id": "kernig",
-    "ten": "Kernig / Brudzinski (+)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "kernig",
-      "brudzinski"
-    ],
-    "map": null
-  },
-  {
-    "id": "liet_nua_nguoi",
-    "ten": "Yếu / liệt nửa người đột ngột",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "liệt",
-      "yếu tay",
-      "yếu chân",
-      "nửa người"
-    ],
-    "map": null
-  },
-  {
-    "id": "meo_mieng",
-    "ten": "Méo miệng / liệt mặt",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "méo miệng",
-      "liệt mặt"
-    ],
-    "map": null
-  },
-  {
-    "id": "noi_kho",
-    "ten": "Nói khó, nói đớ, thất ngôn",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "nói khó",
-      "nói đớ",
-      "thất ngôn"
-    ],
-    "map": null
-  },
-  {
-    "id": "roi_loan_tri_giac",
-    "ten": "Lơ mơ / Rối loạn tri giác (Glasgow < 15)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "lơ mơ",
-      "tri giác",
-      "hôn mê"
-    ],
-    "map": null
-  },
-  {
-    "id": "chong_mat",
-    "ten": "Chóng mặt / ngất xỉu",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "chóng mặt",
-      "ngất"
-    ],
-    "map": null
-  },
-  {
-    "id": "kich_dong_me_sang_giap",
-    "ten": "Kích động, bồn chồn, mê sảng, loạn thần hoặc lú lẫn",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "kích động",
-      "mê sảng",
-      "loạn thần",
-      "bão giáp"
-    ],
-    "map": null
-  },
-  {
-    "id": "roi_loan_tri_giac_ha_natri",
-    "ten": "Lú lẫn, ngủ gà, co giật, hôn mê do phù não giảm natri",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "phù não",
-      "hạ natri",
-      "co giật do natri"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_dau_vung_cham",
-    "ten": "Đau đầu vùng chẩm buổi sáng, hoa mắt, chóng mặt",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đau đầu vùng chẩm",
-      "hoa mắt",
-      "chóng mặt"
-    ],
-    "map": null
-  },
-  {
-    "id": "non_vot_nao",
-    "ten": "Nôn vọt kiểu thần kinh (không liên quan bữa ăn)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "nôn vọt",
-      "tăng áp lực nội sọ"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_giat",
-    "ten": "Co giật toàn thể hoặc cục bộ, hôn mê",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "co giật",
-      "seizure",
-      "hôn mê"
-    ],
-    "map": null
-  },
-  {
-    "id": "te_bi_chan_tay",
-    "ten": "Tê bì, dị cảm kiến bò đối xứng ở ngọn chi",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "tê bì",
-      "dị cảm",
-      "kiến bò",
-      "neuropathy"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_cung_gay_duong_tinh",
-    "ten": "Dấu hiệu cứng gáy / Màng não (+)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "cứng gáy",
-      "cung gay",
-      "kernig",
-      "brudzinski",
-      "cổ cứng"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_co_giat_cuc_bo",
-    "ten": "Co giật cục bộ / Dấu thần kinh khu trú",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "co giật cục bộ",
-      "co giật khu trú"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_tiet_dich_tai_mui_sau_chan_thuong",
-    "ten": "Tiết dịch tai/mũi sau chấn thương (Rò DNT)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "chảy dịch tai",
-      "chảy dịch mũi",
-      "rò dịch não tủy",
-      "rò dnt"
-    ],
-    "map": null
-  },
-  {
-    "id": "co_giat_roi_loan_tri_giac",
-    "ten": "Co giật / Rối loạn tri giác / Hôn mê (Biến chứng thần kinh/viêm não)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "co giật",
-      "hôn mê",
-      "lơ mơ",
-      "rối loạn tri giác",
-      "viêm não",
-      "seizure",
-      "altered mental status"
-    ],
-    "map": null
-  },
-  {
-    "id": "nao_gan",
-    "ten": "Bệnh não gan (Hepatic Encephalopathy)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "nao gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "hon_me_roi_loan_tri_giac",
-    "ten": "Hôn mê, rối loạn tri giác (Sốt rét ác tính thể não / Glasgow < 11)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hon me",
-      "roi loan tri giac",
-      "sot ret the nao",
-      "glasgow giam"
-    ],
-    "map": null
-  },
-  {
-    "id": "benh_nao_gan",
-    "ten": "Bệnh não gan / Hôn mê gan (Rối loạn giấc ngủ, lú lẫn, run vỗ cánh Asterixis)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "bệnh não gan",
-      "hôn mê gan",
-      "run vỗ cánh",
-      "asterixis",
-      "flapping tremor",
-      "lú lẫn"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_roi_loan_tri_giac_hon_me_gan",
-    "ten": "Rối loạn tri giác, ngủ gà, lơ mơ hoặc hôn mê gan",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "hôn mê gan",
-      "rối loạn tri giác",
-      "ngủ gà",
-      "lơ mơ"
-    ],
-    "map": null
-  },
-  {
-    "id": "run_vo_canh_flapping_tremor",
-    "ten": "Run vỗ cánh (Asterixis / Flapping tremor) - Bệnh脑 gan",
-    "nhom": "Thần kinh",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "asterixis",
-      "flapping tremor",
-      "run vo canh",
-      "benh nao gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "roi_loan_tri_giac_co_giat",
-    "ten": "Rối loạn tri giác, co giật",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "rối loạn tri giác",
-      "co giật",
-      "lơ mơ"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_khong_benh_nao_gan",
-    "ten": "Không có biểu hiện bệnh não gan (Tri giác tỉnh táo, không run vẫy Flapping tremor)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "không bệnh não gan",
-      "tri giác tỉnh",
-      "không flapping tremor"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_khong_benh_nao_gan_nang",
-    "ten": "Không có biến chứng bệnh não gan nặng (Tri giác tỉnh, tiếp xúc tốt, West Haven Grade 0)",
-    "nhom": "Thần kinh",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "không bệnh não gan nặng",
-      "tri giác tỉnh",
-      "west haven grade 0",
-      "tiếp xúc tốt"
-    ],
-    "map": null
-  },
-  {
-    "id": "ban_xuat_huyet",
-    "ten": "Ban / chấm xuất huyết",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "xuất huyết",
-      "chấm xuất huyết",
-      "petechiae",
-      "dây thắt"
-    ],
-    "map": null
-  },
-  {
-    "id": "sao_mach_ban_tay_son",
-    "ten": "Sao mạch (Spider nevi) / Lòng bàn tay son (Palmar erythema)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "sao mạch",
-      "bàn tay son",
-      "spider angioma",
-      "palmar erythema"
-    ],
-    "map": null
-  },
-  {
-    "id": "may_day_phu_quinke",
-    "ten": "Mày đay cấp, phù Quincke mi mắt, môi, thanh quản sau vài phút",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "mày đay",
-      "phù quincke",
-      "dị ứng cấp",
-      "urticaria",
-      "angioedema"
-    ],
-    "map": null
-  },
-  {
-    "id": "cham_xuat_huyet",
-    "ten": "Chấm, nốt xuất huyết dưới da tự nhiên",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "chấm xuất huyết",
-      "petechiae",
-      "purpura"
+    "aliases": [
+      "đau nhức nửa đầu",
+      "đau sau hốc mắt",
+      "nhức óc",
+      "đau trán thái dương"
     ],
     "map": null
   },
   {
     "id": "tc_xuat_huyet_da_niem_lacet_duong_tinh",
-    "ten": "Xuất huyết da niêm / Dây thắt (Lacet) (+)",
+    "ten": "Xuất huyết dưới da, niêm mạc, Dây thắt (Lacet) (+)",
     "nhom": "Da niêm",
     "loai": [
       "tt"
     ],
     "tuKhoa": [
-      "lacet (+)",
-      "cham xuat huyet",
-      "bam tim",
-      "chay mau cam",
-      "chay mau chan rang"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_tu_ban_hoai_tu",
-    "ten": "Tử ban hoại tử da (Meningococcal rash)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "tử ban",
-      "tu ban",
-      "hoại tử da",
-      "xuất huyết da",
-      "non blanching rash"
-    ],
-    "map": null
-  },
-  {
-    "id": "sophan_mun_nuoc_nhieu_lua_tuoi",
-    "ten": "Ban mụn nước bóng hình giọt sương nhiều lứa tuổi (sẩn, mụn nước, vảy tiết)",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "mụn nước",
-      "giọt sương",
-      "thủy đậu",
-      "nhiều lứa tuổi",
-      "vesicle",
-      "varicella rash"
-    ],
-    "map": null
-  },
-  {
-    "id": "ton_thuong_niem_mac_enanthem",
-    "ten": "Tổn thương niêm mạc họng/miệng/kết mạc (mụn nước vỡ thành vết loét nông)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "loét niêm mạc miệng",
-      "phỏng họng",
-      "enanthem",
-      "loét họng"
-    ],
-    "map": null
-  },
-  {
-    "id": "sophan_dermatome_khong_doi_xung",
-    "ten": "Phát ban mụn nước khu trú theo khoanh da (Dermatome) một bên không đối xứng",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "dermatome",
-      "zona",
-      "khoanh da",
-      "một bên",
-      "khu trú",
-      "herpes zoster"
-    ],
-    "map": null
-  },
-  {
-    "id": "mun_nuoc_hoa_mu_sung_do_tay_boi_nhiem",
-    "ten": "Mụn nước hóa mủ, sưng đỏ tấy chân nốt (Bội nhiễm da mô mềm tụ cầu/liên cầu)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "mụn mủ",
-      "hóa mủ",
-      "sưng tấy đỏ",
-      "bội nhiễm da",
-      "nhiễm trùng da",
-      "superinfection"
-    ],
-    "map": null
-  },
-  {
-    "id": "sung_huyet_ket_mac_2_ben",
-    "ten": "Sung huyết kết mạc mắt 2 bên (đỏ mắt không có tiết dịch mủ / Conjunctival suffusion)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "sung huyết kết mạc",
-      "đỏ mắt",
-      "đỏ mắt không mủ",
-      "conjunctival suffusion"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_xuat_huyet_duoi_da_niem_mac",
-    "ten": "Chấm xuất huyết dưới da, mảng bầm tím hoặc chảy máu chân răng/niêm mạc",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
+      "xuất huyết dưới da",
       "chấm xuất huyết",
-      "mảng bầm tím",
-      "chảy máu chân răng",
-      "chảy máu niêm mạc"
-    ],
-    "map": null
-  },
-  {
-    "id": "tt_sao_mach_ban_do_long_ban_tay",
-    "ten": "Dấu Sao mạch (Spider angioma) & Ban đỏ lòng bàn tay (Palmar erythema)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "sao mạch",
-      "ban đỏ lòng bàn tay",
-      "suy tế bào gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "ban_phong_nuoc_giot_suong",
-    "ten": "Ban phỏng nước nông chứa dịch trong trên nền da đỏ ('dew drops on a rose petal')",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "ban phỏng nước",
-      "giọt sương",
-      "phỏng nước trong"
-    ],
-    "map": null
-  },
-  {
-    "id": "ton_thuong_da_da_lua_tuoi",
-    "ten": "Tổn thương da xuất hiện đa lứa tuổi (sẩn, phỏng nước, mủ, vảy tiết đồng thời)",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "đa lứa tuổi",
-      "nhiều đợt",
-      "vảy tiết"
-    ],
-    "map": null
-  },
-  {
-    "id": "khan_thuong_niem_mac_enanthem",
-    "ten": "Khán thương niêm mạc (nốt trợt loét nông đau ngứa ở khoang miệng, hầu họng)",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "loét niêm mạc",
-      "loét miệng",
-      "enanthem"
-    ],
-    "map": null
-  },
-  {
-    "id": "dien_tien_ban_huong_tam",
-    "ten": "Diễn tiến ban hướng tâm (mọc từ thân mình, mặt lan ra gốc chi)",
-    "nhom": "Da niêm",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "hướng tâm",
-      "mọc từ thân mình",
-      "lan ra chi"
-    ],
-    "map": null
-  },
-  {
-    "id": "ban_mop_phong_nuoc_dong_trung_trung_ly",
-    "ten": "Ban mụn nước lõm giữa đồng lứa tuổi kiểu Đậu mùa / Monkeypox",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "lõm giữa",
-      "đậu mùa",
-      "monkeypox",
-      "đồng lứa tuổi"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_sao_mach_ban_tay_son",
-    "ten": "Dấu chứng cấu trúc xơ gan (Sao mạch Spider nevi & Bàn tay son)",
-    "nhom": "Da niêm",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "sao mạch",
-      "bàn tay son",
-      "spider nevi",
-      "palmar erythema"
-    ],
-    "map": null
-  },
-  {
-    "id": "chay_mau_cam",
-    "ten": "Chảy máu cam / chân răng",
-    "nhom": "Huyết học",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
+      "lacet dương tính",
       "chảy máu cam",
-      "chân răng",
-      "chảy máu"
-    ],
-    "map": null
-  },
-  {
-    "id": "tien_su_tiem_chich_xam_hinh_truyen_mau",
-    "ten": "Tiền sử tiêm chích / xăm hình / phẫu thuật / truyền máu qua đường máu",
-    "nhom": "Huyết học",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "xam minh",
-      "truyen mau",
-      "tiem chich",
-      "phau thuat"
-    ],
-    "map": null
-  },
-  {
-    "id": "thieu_mau_da_xanh_niem_nhot",
-    "ten": "Thiếu máu tán huyết (da xanh xao, niêm mạc nhợt)",
-    "nhom": "Huyết học",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "thieu mau",
-      "da xanh niem nhot",
-      "tan huyet",
-      "hb giam"
-    ],
-    "map": null
-  },
-  {
-    "id": "dau_bung_duoi",
-    "ten": "Đau bụng dưới / hạ vị",
-    "nhom": "Sản phụ khoa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "bụng dưới",
-      "hạ vị"
-    ],
-    "map": null
-  },
-  {
-    "id": "tre_kinh",
-    "ten": "Trễ kinh",
-    "nhom": "Sản phụ khoa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "trễ kinh",
-      "chậm kinh",
-      "mất kinh"
-    ],
-    "map": null
-  },
-  {
-    "id": "rong_kinh",
-    "ten": "Rối loạn / rong kinh",
-    "nhom": "Sản phụ khoa",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "rong kinh",
-      "kinh nguyệt"
-    ],
-    "map": null
-  },
-  {
-    "id": "xuat_huyet_ad",
-    "ten": "Ra huyết âm đạo bất thường",
-    "nhom": "Sản phụ khoa",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "huyết âm đạo",
-      "ra máu âm đạo"
-    ],
-    "map": null
-  },
-  {
-    "id": "bc_tang",
-    "ten": "Bạch cầu / neutrophil tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "bạch cầu tăng",
-      "bc tăng",
-      "neutro"
-    ],
-    "map": {
-      "fld": "lBC",
-      "op": ">",
-      "val": 10
-    }
-  },
-  {
-    "id": "tieu_cau_giam",
-    "ten": "Tiểu cầu giảm",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tiểu cầu giảm",
-      "plt giảm"
-    ],
-    "map": {
-      "fld": "lTC",
-      "op": "<",
-      "val": 150
-    }
-  },
-  {
-    "id": "men_tuy",
-    "ten": "Lipase / Amylase > 3 lần BT",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "lipase",
-      "amylase"
-    ],
-    "map": null
-  },
-  {
-    "id": "troponin",
-    "ten": "Troponin tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "troponin",
-      "hs-ctn"
-    ],
-    "map": {
-      "fld": "lTrop",
-      "op": ">",
-      "val": 14
-    }
-  },
-  {
-    "id": "st_chenh",
-    "ten": "ECG: ST chênh lên / LBBB mới",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "st chênh",
-      "st elevation",
-      "lbbb"
-    ],
-    "map": null
-  },
-  {
-    "id": "xq_phoi_tham_nhiem",
-    "ten": "X-quang phổi: thâm nhiễm / đông đặc",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "thâm nhiễm",
-      "đông đặc"
-    ],
-    "map": null
-  },
-  {
-    "id": "xq_phoi_dinh_hang",
-    "ten": "X-quang: tổn thương đỉnh phổi / hang",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "đỉnh phổi",
-      "hang"
-    ],
-    "map": null
-  },
-  {
-    "id": "afb_xpert",
-    "ten": "Đàm AFB / GeneXpert (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "afb",
-      "genexpert",
-      "x-pert"
-    ],
-    "map": null
-  },
-  {
-    "id": "d_dimer",
-    "ten": "D-dimer tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "d-dimer"
-    ],
-    "map": null
-  },
-  {
-    "id": "ctpa",
-    "ten": "CTPA: huyết khối ĐM phổi",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ctpa",
-      "ct mạch máu phổi",
-      "thuyên tắc phổi"
-    ],
-    "map": null
-  },
-  {
-    "id": "sa_tui_mat",
-    "ten": "SA: sỏi / thành túi mật dày >4mm",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "túi mật"
-    ],
-    "map": null
-  },
-  {
-    "id": "sa_than",
-    "ten": "SA/CT: sỏi niệu, thận ứ nước",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "sỏi thận",
-      "sỏi niệu",
-      "ứ nước",
-      "sỏi niệu quản"
-    ],
-    "map": null
-  },
-  {
-    "id": "hcg_duong",
-    "ten": "hCG nước tiểu / máu (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hcg"
-    ],
-    "map": null
-  },
-  {
-    "id": "sa_tu_cung_rong",
-    "ten": "SA: buồng TC rỗng / dịch Douglas",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tử cung rỗng",
-      "douglas",
-      "túi cùng"
-    ],
-    "map": null
-  },
-  {
-    "id": "dh_tang",
-    "ten": "Đường huyết > 13,9 mmol/L",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "đường huyết",
-      "glucose máu"
-    ],
-    "map": {
-      "fld": "lGlu",
-      "op": ">",
-      "val": 13.9
-    }
-  },
-  {
-    "id": "khoang_anion",
-    "ten": "Toan chuyển hóa (pH↓, HCO₃⁻↓)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "toan chuyển hóa",
-      "hco3",
-      "anion gap"
-    ],
-    "map": null
-  },
-  {
-    "id": "ceton_duong",
-    "ten": "Ceton máu / niệu (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ceton",
-      "ketone"
-    ],
-    "map": null
-  },
-  {
-    "id": "ntp_bnp",
-    "ten": "NT-proBNP tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "nt-probnp",
-      "bnp"
-    ],
-    "map": null
-  },
-  {
-    "id": "sa_tim_ef",
-    "ten": "SA tim: EF giảm / rối loạn vận động vùng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ef giảm",
-      "siêu âm tim"
-    ],
-    "map": null
-  },
-  {
-    "id": "xq_phoi_phu",
-    "ten": "X-quang: bóng tim to / sung huyết phổi",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "bóng tim",
-      "sung huyết",
-      "phù phổi"
-    ],
-    "map": null
-  },
-  {
-    "id": "ct_so",
-    "ten": "CT sọ não: loại trừ xuất huyết",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ct sọ",
-      "ct não",
-      "không xuất huyết"
-    ],
-    "map": null
-  },
-  {
-    "id": "vi_khuan_dich_nao",
-    "ten": "DNT: đục, đa nhân, glucose↓, protein↑",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "dịch não tủy",
-      "dnt",
-      "chọc dò"
-    ],
-    "map": null
-  },
-  {
-    "id": "bilirubin",
-    "ten": "Bilirubin / men gan tăng nhẹ",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "bilirubin",
-      "men gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "sieu_am_gan_tho",
-    "ten": "Siêu âm gan thô, bờ không đều, lách to",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "gan thô",
-      "xơ gan",
-      "lách to",
-      "dịch ổ bụng"
-    ],
-    "map": null
-  },
-  {
-    "id": "inr_keo_dai",
-    "ten": "INR kéo dài > 1.2 / PT kéo dài",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr",
-      "đông máu kéo dài",
-      "pt"
-    ],
-    "map": null
-  },
-  {
-    "id": "men_gan_tang",
-    "ten": "Men gan AST/ALT tăng > 40 U/L",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ast",
-      "alt",
-      "men gan",
-      "transaminase"
-    ],
-    "map": {
-      "fld": "lAST",
-      "op": ">",
-      "val": 40
-    }
-  },
-  {
-    "id": "creatinine_tang",
-    "ten": "Creatinine máu tăng > 115 µmol/L (nam) hoặc > 90 µmol/L (nữ)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "creatinine",
-      "suy thận",
-      "creatinin"
-    ],
-    "map": {
-      "fld": "lCre",
-      "op": ">=",
-      "valNam": 115,
-      "valNu": 90
-    }
-  },
-  {
-    "id": "egfr_giam",
-    "ten": "Mức lọc cầu thận eGFR giảm < 60 mL/ph/1.73m²",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "egfr",
-      "gfr",
-      "mức lọc cầu thận"
-    ],
-    "map": null
-  },
-  {
-    "id": "tang_kali_mau",
-    "ten": "Tăng Kali máu > 5.0 mmol/L",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tăng kali",
-      "hyperkalemia",
-      "k máu"
-    ],
-    "map": null
-  },
-  {
-    "id": "protein_nieu_tang",
-    "ten": "Protein niệu 24h > 3.5 g/24h (ngưỡng thận hư)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "protein niệu",
-      "đạm niệu",
-      "proteinuria"
-    ],
-    "map": null
-  },
-  {
-    "id": "tpnt_bc_nitrite",
-    "ten": "Tổng phân tích nước tiểu: Bạch cầu (+), Nitrite (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "nitrite",
-      "leukocyte",
-      "bạch cầu niệu"
-    ],
-    "map": null
-  },
-  {
-    "id": "sieu_am_soi_u_nuoc",
-    "ten": "Siêu âm / CT: Có sỏi cản quang, giãn đài bể thận ứ nước",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "sỏi thận",
-      "sỏi niệu quản",
-      "ứ nước thận",
-      "hydronephrosis"
-    ],
-    "map": null
-  },
-  {
-    "id": "duong_huyet_tang",
-    "ten": "Glucose máu lúc đói ≥ 7.0 mmol/L hoặc bất kỳ ≥ 11.1 mmol/L",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "đường huyết tăng",
-      "tăng glucose",
-      "hyperglycemia"
-    ],
-    "map": {
-      "fld": "lGlu",
-      "op": ">=",
-      "val": 11.1
-    }
-  },
-  {
-    "id": "hba1c_tang",
-    "ten": "HbA1c ≥ 6.5%",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hba1c",
-      "a1c"
-    ],
-    "map": null
-  },
-  {
-    "id": "duong_huyet_ha",
-    "ten": "Glucose máu < 3.9 mmol/L (< 70 mg/dL)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hạ đường huyết",
-      "hạ glucose",
-      "hypoglycemia"
-    ],
-    "map": {
-      "fld": "lGlu",
-      "op": "<=",
-      "val": 3.9
-    }
-  },
-  {
-    "id": "ft3_ft4_tang_tsh_uc_che",
-    "ten": "FT3/FT4 tăng cao, TSH giảm < 0.01 µIU/mL",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ft3",
-      "ft4",
-      "tsh giảm",
-      "nhiễm độc giáp"
-    ],
-    "map": null
-  },
-  {
-    "id": "ha_natri_tang_kali",
-    "ten": "Hạ Natri máu (< 135 mmol/L) kèm tăng Kali máu (> 5.0 mmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hạ natri",
-      "tăng kali",
-      "điện giải đồ"
-    ],
-    "map": null
-  },
-  {
-    "id": "natri_mau_giam_nang",
-    "ten": "Natri máu giảm < 135 mmol/L (nặng < 125 mmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hạ natri máu",
-      "hyponatremia",
-      "natri giảm"
-    ],
-    "map": null
-  },
-  {
-    "id": "ecg_rung_nhi_mat_p",
-    "ten": "ECG: Mất sóng P, sóng f lăn tăn, khoảng RR không đều",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ecg rung nhĩ",
-      "sóng f",
-      "afib",
-      "atrial fibrillation"
-    ],
-    "map": null
-  },
-  {
-    "id": "ho_hap_ky_tac_nghen",
-    "ten": "Hô hấp ký: FEV1/FVC < 0.70 sau nghiệm pháp giãn phế quản",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hô hấp ký",
-      "fev1/fvc",
-      "tắc nghẽn thông khí"
-    ],
-    "map": null
-  },
-  {
-    "id": "xquang_tran_dich_khi",
-    "ten": "X-quang ngực: Đường cong Damoiseau (dịch) hoặc phế trường sáng mất vân (khí)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "damoiseau",
-      "tràn dịch x quang",
-      "tràn khí x quang"
-    ],
-    "map": null
-  },
-  {
-    "id": "lactate_tang_cao",
-    "ten": "Lactate máu động mạch > 2.0 mmol/L",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "lactate",
-      "toan lactic"
-    ],
-    "map": null
-  },
-  {
-    "id": "noi_soi_o_chay_mau",
-    "ten": "Nội soi dạ dày tá tràng: Có ổ loét Forrest I/II hoặc giãn vỡ búi TMTQ",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "nội soi dạ dày",
-      "forrest",
-      "vỡ giãn tĩnh mạch thực quản"
-    ],
-    "map": null
-  },
-  {
-    "id": "noi_soi_loet_da_day",
-    "ten": "Nội soi dạ dày tá tràng: Có tổn thương ổ loét niêm mạc",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "loét dạ dày",
-      "loét tá tràng",
-      "pud"
-    ],
-    "map": null
-  },
-  {
-    "id": "test_hp_duong_tinh",
-    "ten": "Test vi khuẩn Helicobacter pylori (+) (CLO test / Urease thở)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "h pylori",
-      "hp dương tính",
-      "clo test"
-    ],
-    "map": null
-  },
-  {
-    "id": "crp_tang",
-    "ten": "CRP > 20 mg/L hoặc Procalcitonin > 0.25 ng/mL",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "crp",
-      "procalcitonin",
-      "viêm"
-    ],
-    "map": {
-      "fld": "lCRP",
-      "op": ">=",
-      "val": 20
-    }
-  },
-  {
-    "id": "s1q3t3",
-    "ten": "ECG: Dấu hiệu S1Q3T3 (gánh thất phải cấp)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "s1q3t3",
-      "gánh thất phải",
-      "pe ecg"
-    ],
-    "map": null
-  },
-  {
-    "id": "ct_tuy_hoai_tu",
-    "ten": "CT scan: Tụy hoại tử, tụ dịch quanh tụy Balthazar D/E",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ct tụy",
-      "hoại tử tụy",
-      "balthazar"
-    ],
-    "map": null
-  },
-  {
-    "id": "ef_giam",
-    "ten": "Siêu âm tim: Phân suất tống máu LVEF giảm",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ef giảm",
-      "lvef",
-      "siêu âm tim"
-    ],
-    "map": null
-  },
-  {
-    "id": "hct_giam_cls",
-    "ten": "Hematocrit giảm < 30% / Hemoglobin giảm",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hct giảm",
-      "thiếu máu cấp"
-    ],
-    "map": {
-      "fld": "lHct",
-      "op": "<=",
-      "val": 30
-    }
-  },
-  {
-    "id": "thieu_mau_cls",
-    "ten": "Thiếu máu mạn tính: Hb giảm",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "thiếu máu",
-      "anemia",
-      "hb giảm"
-    ],
-    "map": null
-  },
-  {
-    "id": "toan_chuyen_hoa",
-    "ten": "Khí máu động mạch: Toan chuyển hóa (pH < 7.30, HCO3 < 18)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "toan chuyển hóa",
-      "acidosis",
-      "ph giảm"
-    ],
-    "map": null
-  },
-  {
-    "id": "cay_nuoc_tieu",
-    "ten": "Cấy nước tiểu: Vi khuẩn ≥ 10⁵ CFU/mL",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "cấy nước tiểu",
-      "cfu/ml",
-      "nhiễm khuẩn niệu"
-    ],
-    "map": null
-  },
-  {
-    "id": "lipid_tang",
-    "ten": "Rối loạn lipid máu: Cholesterol TP ≥ 5.2 mmol/L, Triglyceride tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "cholesterol tăng",
-      "lipid máu",
-      "triglyceride"
-    ],
-    "map": null
-  },
-  {
-    "id": "sa_khoi_canh_tc",
-    "ten": "Siêu âm: Khối cạnh tử cung / Dịch cùng đồ Douglas",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "khối cạnh tử cung",
-      "dịch douglas",
-      "thai ngoài"
+      "chảy máu chân răng"
+    ],
+    "aliases": [
+      "chấm xuất huyết rải rác",
+      "mảng bầm tím",
+      "chảy máu niêm mạc",
+      "tourniquet test positive"
     ],
     "map": null
   },
   {
     "id": "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
-    "ten": "Cô đặc máu (Hematocrit tăng > 20%)",
+    "ten": "Cô đặc máu (Hematocrit tăng > 20% so với giá trị nền)",
     "nhom": "Cận lâm sàng",
     "loai": [
       "cls"
     ],
     "tuKhoa": [
-      "co dac mau",
-      "hct tang",
+      "cô đặc máu",
+      "hct tăng",
       "hematocrit cao",
-      "hct > 42%"
+      "hemoconcentration"
+    ],
+    "aliases": [
+      "hct tăng dốc đứng",
+      "hct > 45%",
+      "hct tăng trên 20%",
+      "thoát dịch cô đặc máu"
     ],
     "map": {
       "fld": "lHct",
       "op": ">=",
       "val": 42
-    }
-  },
-  {
-    "id": "tc_giam_tieu_cau_duoi_100_g_l",
-    "ten": "Tiểu cầu giảm sâu (< 100 G/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tieu cau giam",
-      "giam tieu cau",
-      "plt < 100",
-      "tieu cau tụt"
-    ],
-    "map": {
-      "fld": "lTC",
-      "op": "<=",
-      "val": 100
     }
   },
   {
@@ -3832,522 +496,43 @@
       "cls"
     ],
     "tuKhoa": [
+      "ns1 dương tính",
+      "pcr dengue dương tính",
+      "ns1 ag (+)",
+      "dengue test"
+    ],
+    "aliases": [
       "ns1 (+)",
-      "pcr dengue (+)",
-      "igm dengue (+)",
-      "test nhanh dengue (+)"
+      "test nhanh dengue ns1 (+)",
+      "rt-pcr denv (+)",
+      "dengue igm (+)"
     ],
     "map": null
   },
   {
-    "id": "vm_dnt_duc_mu",
-    "ten": "Dịch não tủy đục mủ / Áp lực tăng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "dnt đục",
-      "dnt mủ",
-      "dịch não tủy đục",
-      "áp lực dnt tăng"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_dnt_tang_bach_cau_da_nhan",
-    "ten": "DNT Tăng Bạch cầu đa nhân trung tính (> 100 cells/mm³, Neutrophil > 80%)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "bạch cầu dnt tăng",
-      "neutrophil dnt",
-      "đa nhân trung tính dnt"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_dnt_giam_glucose",
-    "ten": "DNT Giảm Glucose (< 2.2 mmol/L hoặc DNT/Máu <= 0.4)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "glucose dnt giảm",
-      "đường dnt giảm",
-      "tỷ lệ glucose dnt máu"
-    ],
-    "map": {
-      "fld": "lGlu",
-      "op": "<=",
-      "val": 2.2
-    }
-  },
-  {
-    "id": "vm_dnt_tang_protein",
-    "ten": "DNT Tăng Protein (> 1 g/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "protein dnt tăng",
-      "tăng protein dịch não tủy",
-      "protein dnt"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_dnt_lactate_tang",
-    "ten": "DNT Tăng Lactate (> 3.5 mmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "lactate dnt",
-      "tăng lactate dnt",
-      "lactate dịch não tủy"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_vzv_pcr_duong_tinh",
-    "ten": "Real-time PCR VZV DNA từ phết dịch mụn nước hoặc vảy tiết dương tính (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "pcr vzv",
-      "pcr thủy đậu",
-      "vzv dna (+)",
-      "pcr varicella"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_hbsag_pos_6m",
-    "ten": "Xét nghiệm HBsAg dương tính kéo dài ≥ 6 tháng",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "HBsAg dương tính",
-      "HBsAg (+)",
-      "nhiễm HBV mạn",
-      "HBsAg kéo dài 6 tháng"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_dna_above_2000",
-    "ten": "Tải lượng HBV DNA > 2000 IU/mL (hoặc > 10^4 copies/mL)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "HBV DNA > 2000 IU/mL",
-      "tải lượng HBV DNA cao",
-      "RT-PCR HBV DNA"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_alt_elevated",
-    "ten": "Men gan ALT tăng > ULN (> 30 U/L ở nam, > 19 U/L ở nữ)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ALT tăng",
-      "men gan ALT > ULN",
-      "ALT > 30 U/L",
-      "viêm tế bào gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_fibrosis_f2",
-    "ten": "Xơ hóa gan đáng kể (FibroScan ≥ 7.0 kPa hoặc APRI > 0.5)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "FibroScan > 7 kPa",
-      "APRI > 0.5",
-      "xơ hóa gan F2",
-      "FibroScan F2"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_hbeag_pos",
-    "ten": "Kháng nguyên HBeAg dương tính",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "HBeAg (+)",
-      "HBeAg dương tính",
-      "vi rút nhân lên mạnh"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_anti_hbs_pos_isolated",
-    "ten": "Kháng thể Anti-HBs dương tính đơn độc (HBsAg âm tính)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "Anti-HBs (+)",
-      "có miễn dịch tiêm ngừa",
-      "HBsAg âm tính anti-HBs dương tính"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_cpk_tang_cao",
-    "ten": "Creatine Phosphokinase (CPK) tăng cao (> 443 U/L) do tiêu cơ vân/viêm cơ",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "CPK tăng",
-      "creatine phosphokinase",
-      "tăng cpk"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_mat_duong_tinh",
-    "ten": "Xét nghiệm Microscopic Agglutination Test (MAT) dương tính (Titer ≥ 1:100 hoặc tăng 4 lần)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "MAT dương tính",
-      "microscopic agglutination test",
-      "xét nghiệm MAT"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_creatinine_tang_cao",
-    "ten": "Creatinine máu tăng cao (> 154 µmol/L hoặc > 1.75 mg/dL)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "creatinine tăng",
-      "suy thận cấp",
-      "tăng suy thận"
-    ],
-    "map": null
-  },
-  {
-    "id": "ky_sinh_truung_sot_ret_duong_tinh",
-    "ten": "ky sinh truung sot ret duong tinh",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "ky sinh truung sot ret duong tinh"
-    ],
-    "map": null
-  },
-  {
-    "id": "hcv_anti_hcv_pos",
-    "ten": "Kháng thể Anti-HCV dương tính",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "anti hcv",
-      "khang the viem gan c",
-      "anti hcv duong tinh"
-    ],
-    "map": null
-  },
-  {
-    "id": "hcv_rna_pos",
-    "ten": "Tải lượng HCV RNA dương tính trên ngưỡng phát hiện (hoặc HCVcAg (+))",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hcv rna",
-      "tai luong vi rut c",
-      "pcr viem gan c",
-      "hcv cag"
-    ],
-    "map": null
-  },
-  {
-    "id": "fibroscan_f2_f3",
-    "ten": "FibroScan 7.1 - < 12.5 kPa (Xơ hóa gan F2-F3) hoặc APRI 0.5 - 1.0",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "fibroscan f2",
-      "fibroscan f3",
-      "xo hoa dang ke",
-      "xo hoa tien trien"
-    ],
-    "map": null
-  },
-  {
-    "id": "fibroscan_f4",
-    "ten": "FibroScan >= 12.5 kPa hoặc APRI >= 1.0 (Xơ gan F4)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "fibroscan f4",
-      "apri f4",
-      "xo gan f4"
-    ],
-    "map": null
-  },
-  {
-    "id": "alt_ast_tang_nhe",
-    "ten": "alt ast tang nhe",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "tt"
-    ],
-    "tuKhoa": [
-      "alt ast tang nhe"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbsag_pos",
-    "ten": "Kháng nguyên bề mặt viêm gan B (HBsAg) dương tính",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hbsag duong tinh",
-      "hbsag (+)",
-      "khang nguyen viem gan b"
-    ],
-    "map": null
-  },
-  {
-    "id": "kstsr_lam_giemsa_pos",
-    "ten": "Ký sinh trùng sốt rét (Plasmodium) dương tính trên lam máu nhuộm Giemsa",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "lam mau giemsa",
-      "ky sinh trung sot ret",
-      "plasmodium",
-      "the nhan",
-      "kstsr duong tinh"
-    ],
-    "map": null
-  },
-  {
-    "id": "rdt_malaria_pos",
-    "ten": "Test chẩn đoán nhanh kháng nguyên sốt rét (RDTs / HRP-2 hoặc pLDH) dương tính",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "test nhanh sot ret",
-      "rdt sot ret",
-      "hrp2",
-      "pldh",
-      "rdt malaria"
-    ],
-    "map": null
-  },
-  {
-    "id": "ha_duong_huyet",
-    "ten": "Hạ đường huyết (Glucose máu < 2.2 mmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "ha duong huyet",
-      "glucose giam",
-      "hypoglycemia"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_alt_tang_tren_5_uln",
-    "ten": "Men gan ALT tăng đột ngột > 5 lần ULN (hoặc > 3 lần mức nền)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "alt tang cao",
-      "men gan tang doc",
-      "transaminitis"
-    ],
-    "map": {
-      "fld": "lALT",
-      "op": "&gt;=",
-      "val": 200
-    }
-  },
-  {
-    "id": "cls_bilirubin_tren_3_mg_dl",
-    "ten": "Bilirubin toàn phần > 3.0 mg/dL (51 µmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hyperbilirubinemia",
-      "bilirubin tang cao"
-    ],
-    "map": {
-      "fld": "lBili",
-      "op": "&gt;=",
-      "val": 3
-    }
-  },
-  {
-    "id": "cls_inr_tren_1_5",
-    "ten": "Tỷ số chuẩn hóa quốc tế INR > 1.5 (PT % giảm < 50%)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr tang",
-      "coagulopathy",
-      "roi loan dong mau gan"
-    ],
-    "map": {
-      "fld": "lINR",
-      "op": "&gt;=",
-      "val": 1.5
-    }
-  },
-  {
-    "id": "cls_hbv_dna_tang_cao",
-    "ten": "Tải lượng HBV DNA tăng > 2 log10 hoặc > 2.000 IU/mL",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hbv dna cao",
-      "tai luong vi rut tang"
-    ],
-    "map": {
-      "fld": "lHBVDNA",
-      "op": "&gt;=",
-      "val": 2000
-    }
-  },
-  {
-    "id": "xo_gan_f4_non_invasive",
-    "ten": "Bằng chứng xơ hóa gan F4 / cACLD (FibroScan ≥ 12.5 kPa / APRI > 1.0 / FIB-4 > 3.25)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "FibroScan",
-      "VCTE",
-      "APRI",
-      "FIB-4",
-      "cACLD",
-      "xơ hóa gan F4"
-    ],
-    "map": null
-  },
-  {
-    "id": "child_pugh_a_compensated",
-    "ten": "Thang điểm Child-Pugh Class A (5-6 điểm - Xơ gan còn bù)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "Child-Pugh A",
-      "Child A",
-      "còn bù"
-    ],
-    "map": null
-  },
-  {
-    "id": "lab_tieu_cau_giam",
-    "ten": "Giảm tiểu cầu máu ngoại vi (PLT < 150 G/L)",
+    "id": "tc_giam_tieu_cau_duoi_100_g_l",
+    "ten": "Tiểu cầu giảm sâu (< 100 G/L)",
     "nhom": "Cận lâm sàng",
     "loai": [
       "cls"
     ],
     "tuKhoa": [
       "tiểu cầu giảm",
-      "PLT giảm",
-      "thrombocytopenia"
+      "giảm tiểu cầu",
+      "thrombocytopenia",
+      "plt < 100"
+    ],
+    "aliases": [
+      "tiểu cầu tụt",
+      "plt giảm",
+      "tiểu cầu < 100.000",
+      "tiểu cầu dốc đứng"
     ],
     "map": {
       "fld": "lTC",
-      "op": "&lt;",
-      "val": 150
+      "op": "<=",
+      "val": 100
     }
-  },
-  {
-    "id": "imaging_nhu_mo_gan_co_not",
-    "ten": "Hình ảnh nhu mô gan thô, bờ không đều, lách to trên siêu âm/CT",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "gan thô",
-      "bờ gồ ghề",
-      "lách to",
-      "tĩnh mạch cửa giãn"
-    ],
-    "map": null
-  },
-  {
-    "id": "hbv_dna_duong_tinh",
-    "ten": "Định lượng HBV DNA dương tính / Tải lượng virus phát hiện",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hbv dna",
-      "hbv-dna dương tính",
-      "tải lượng virus viêm gan b",
-      "đo tải lượng hbv"
-    ],
-    "map": null
   },
   {
     "id": "tran_dich_mang_phoi_mang_bung",
@@ -4358,637 +543,43 @@
       "tt"
     ],
     "tuKhoa": [
-      "tran dich mang phoi",
-      "tran dich mang bung",
-      "co truong",
-      "thoat huyet tuong",
-      "phu ne thanh tui mat"
+      "tràn dịch màng phổi",
+      "tràn dịch màng bụng",
+      "cổ trướng",
+      "thoát huyết tương",
+      "phù nề thành túi mật"
+    ],
+    "aliases": [
+      "dịch màng phổi",
+      "dịch tự do ổ bụng",
+      "dày phù nề thành túi mật",
+      "plasma leakage"
     ],
     "map": null
   },
   {
-    "id": "giam_albumin_mau",
-    "ten": "Giảm Albumin máu (< 35 g/L)",
+    "id": "men_gan_tang",
+    "ten": "Men gan AST/ALT tăng cao (> 2 lần bình thường)",
     "nhom": "Cận lâm sàng",
     "loai": [
       "cls"
     ],
     "tuKhoa": [
-      "giam albumin",
-      "albumin mau thap"
+      "men gan tăng",
+      "ast tăng",
+      "alt tăng",
+      "transaminase"
+    ],
+    "aliases": [
+      "tăng men gan",
+      "tổn thương tế bào gan",
+      "ast/alt cao",
+      "men gan > 40"
     ],
     "map": {
-      "fld": "lAlbumin",
-      "op": "&lt;=",
-      "val": 28
+      "fld": "lAST",
+      "op": ">",
+      "val": 80
     }
-  },
-  {
-    "id": "tang_inr_pt",
-    "ten": "Rối loạn đông máu (INR > 1.7 / PT < 50%)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr tang",
-      "pt giam",
-      "coagulation"
-    ],
-    "map": {
-      "fld": "lINR",
-      "op": ">=",
-      "val": 1.7
-    }
-  },
-  {
-    "id": "xo_gan_evidence",
-    "ten": "Bằng chứng xơ hóa gan F4 / Xơ gan (FibroScan > 12.5 kPa hoặc Mô bệnh học)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "xơ gan",
-      "xơ hóa gan",
-      "f4",
-      "fibroscan",
-      "mô bệnh học gan",
-      "cirrhosis"
-    ],
-    "map": null
-  },
-  {
-    "id": "imaging_portal_htn",
-    "ten": "Hình ảnh tăng áp lực tĩnh mạch cửa (Đường kính TM cửa > 13mm / Lách to)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tăng áp lực tĩnh mạch cửa",
-      "tĩnh mạch cửa",
-      "lách to",
-      "dãn tĩnh mạch cửa"
-    ],
-    "map": null
-  },
-  {
-    "id": "lab_child_pugh_score",
-    "ten": "Thang điểm Child-Turcotte-Pugh B/C (≥ 7 điểm)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "child-pugh",
-      "child pugh",
-      "child b",
-      "child c"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_fibroscan_lsm_>=_12_5_kpa",
-    "ten": "FibroScan LSM ≥ 12.5 kPa (Xơ gan F4)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "fibroscan xơ gan",
-      "lsm 12.5",
-      "độ đàn hồi gan f4"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_fibroscan_lsm_>=_20_kpa",
-    "ten": "FibroScan LSM ≥ 20–25 kPa hoặc SSM > 50 kPa (Tăng áp cửa có ý nghĩa lâm sàng - CSPH)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "csph fibroscan",
-      "lsm 20 kpa",
-      "ssm 50 kpa"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_apri_>_1_fib4_>_3_25",
-    "ten": "Chỉ số sinh hóa không xâm lấn APRI > 1.0 / FIB-4 > 3.25",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "apri xơ gan",
-      "fib-4 xơ gan",
-      "sinh hóa xơ hóa gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_tieu_cau_giam_<100_gl",
-    "ten": "Số lượng Tiểu cầu giảm < 100 G/L (Cường lách do tăng áp cửa)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "tiểu cầu giảm",
-      "giảm tiểu cầu xơ gan",
-      "cường lách"
-    ],
-    "map": {
-      "fld": "lTC",
-      "op": "<",
-      "val": 100
-    }
-  },
-  {
-    "id": "cls_albumin_giam_<35_gl",
-    "ten": "Albumin huyết thanh giảm < 35 g/L (hoặc < 28 g/L thể nặng)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "albumin giảm",
-      "hạ albumin máu",
-      "suy chức năng gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_bilirubin_tang_>35_umol",
-    "ten": "Bilirubin toàn phần tăng > 35 µmol/L (> 2.0 mg/dL)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "bilirubin tăng",
-      "vàng da xơ gan",
-      "tăng bilirubin"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_inr_keo_dai_>1_7",
-    "ten": "Thời gian Prothrombin kéo dài / Tỷ số INR > 1.7",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr kéo dài",
-      "rối loạn đông máu",
-      "giảm tỷ lệ prothrombin"
-    ],
-    "map": null
-  },
-  {
-    "id": "cls_pmn_dich_co_chuong_>=250",
-    "ten": "Bạch cầu đa nhân trung tính (PMN) dịch cổ trướng ≥ 250/mm3 (SBP)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "pmn dịch cổ trướng",
-      "viêm màng bụng tự phát",
-      "sbp xơ gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "khong_co_ton_thuong_gan_mankhang_bi_mo_hoc",
-    "ten": "khong co ton thuong gan mankhang bi mo hoc",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "khong co ton thuong gan mankhang bi mo hoc"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_suy_than_cap_creatinine_cao",
-    "ten": "Suy thận cấp trong xơ gan / ACLF (Creatinine ≥ 2.0 mg/dL / 176 µmol/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "creatinine tăng",
-      "suy thận cấp",
-      "aki-hrs",
-      "thiểu niệu"
-    ],
-    "map": {
-      "fld": "lCre",
-      "op": ">=",
-      "val": 176
-    }
-  },
-  {
-    "id": "trieu_chung_roi_loan_dong_mau_nang_inr",
-    "ten": "Rối loạn đông máu nặng do suy gan (INR ≥ 2.5)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr tăng cao",
-      "rối loạn đông máu",
-      "suy đông máu",
-      "pt giảm"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_hbv_dna_tang_cao",
-    "ten": "Tải lượng vi rút HBV DNA tăng cao (Tái hoạt / Bùng phát HBV)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "hbv dna cao",
-      "bùng phát viêm gan b",
-      "hbv reactivation",
-      "hbeag dương"
-    ],
-    "map": null
-  },
-  {
-    "id": "pcr_vzv_dich_bong_nuoc_duong_tinh",
-    "ten": "Xét nghiệm Real-time PCR VZV ADN từ dịch phỏng nước (+)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "PCR VZV",
-      "VZV ADN",
-      "ORF-7"
-    ],
-    "map": {
-      "fld": "lBC",
-      "op": ">=",
-      "val": 0
-    }
-  },
-  {
-    "id": "trieu_chung_xo_hoa_gan_f4_fibroscan",
-    "ten": "Bằng chứng Xơ gan F4 (FibroScan ≥ 12.5 kPa / APRI > 1.0 / FIB-4 > 3.25)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "fibroscan f4",
-      "xơ gan f4",
-      "apri cao",
-      "fib-4 cao"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_child_pugh_a_con_bu",
-    "ten": "Chức năng gan còn bù - Đạt thang điểm Child-Pugh A (5 - 6 điểm)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "child pugh a",
-      "child-pugh 5 điểm",
-      "chức năng gan còn bù"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_giam_tieu_cau_nhe_do_tang_ap_cua",
-    "ten": "Giảm tiểu cầu nhẹ do lách to / Tăng áp lực tĩnh mạch cửa (PLT 100 - 150 G/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "giảm tiểu cầu nhẹ",
-      "tăng áp cửa",
-      "lách to"
-    ],
-    "map": {
-      "fld": "lTC",
-      "op": "<=",
-      "val": 150
-    }
-  },
-  {
-    "id": "trieu_chung_child_pugh_c_mat_bu",
-    "ten": "Suy gan mức độ nặng - Thang điểm Child-Pugh C (10 - 15 điểm)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "child pugh c",
-      "suy gan nặng",
-      "xơ gan mất bù nặng"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_saag_dich_co_truong_cao",
-    "ten": "Độ chênh Albumin Huyết thanh - Dịch ổ bụng SAAG ≥ 11 g/L (Tăng áp cửa)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "saag cao",
-      "saag >= 11",
-      "tăng áp lực tĩnh mạch cửa"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_giam_albumin_mau_nang",
-    "ten": "Giảm Albumin máu nặng do suy gan (Albumin < 28 g/L)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "albumin giảm nặng",
-      "giảm albumin máu",
-      "suy tổng hợp gan"
-    ],
-    "map": null
-  },
-  {
-    "id": "trieu_chung_inr_keo_dai_suy_gan",
-    "ten": "Rối loạn chức năng đông máu do xơ gan (INR > 1.5 / PT < 50%)",
-    "nhom": "Cận lâm sàng",
-    "loai": [
-      "cls"
-    ],
-    "tuKhoa": [
-      "inr kéo dài",
-      "pt giảm",
-      "suy đông máu"
-    ],
-    "map": null
-  },
-  {
-    "id": "thc_tha",
-    "ten": "Tăng huyết áp",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tăng huyết áp",
-      "cao huyết áp"
-    ],
-    "map": null
-  },
-  {
-    "id": "dt_dai_duong",
-    "ten": "Đái tháo đường",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "đái tháo đường",
-      "tiểu đường"
-    ],
-    "map": null
-  },
-  {
-    "id": "roi_loan_lipid",
-    "ten": "Rối loạn lipid máu",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "lipid",
-      "mỡ máu",
-      "cholesterol"
-    ],
-    "map": null
-  },
-  {
-    "id": "uong_ruou",
-    "ten": "Uống rượu nhiều / thường xuyên",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "rượu",
-      "bia"
-    ],
-    "map": null
-  },
-  {
-    "id": "phau_thuat_bat_dong",
-    "ten": "Phẫu thuật / bất động gần đây",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "phẫu thuật",
-      "bất động",
-      "nằm lâu",
-      "sau mổ"
-    ],
-    "map": null
-  },
-  {
-    "id": "thuoc_tranh_thai",
-    "ten": "Thuốc tránh thai / nội tiết",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tránh thai",
-      "nội tiết"
-    ],
-    "map": null
-  },
-  {
-    "id": "rung_nhi",
-    "ten": "Rung nhĩ",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn",
-      "cls"
-    ],
-    "tuKhoa": [
-      "rung nhĩ"
-    ],
-    "map": null
-  },
-  {
-    "id": "tiep_xuc_lao",
-    "ten": "Tiếp xúc nguồn lao",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "tiếp xúc lao",
-      "nguồn lây"
-    ],
-    "map": null
-  },
-  {
-    "id": "benh_ly_tim",
-    "ten": "Bệnh mạch vành / suy tim cũ",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "mạch vành",
-      "nhồi máu cơ tim cũ",
-      "suy tim"
-    ],
-    "map": null
-  },
-  {
-    "id": "soi_mat",
-    "ten": "Sỏi túi mật đã biết",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "sỏi mật",
-      "sỏi túi mật"
-    ],
-    "map": null
-  },
-  {
-    "id": "tien_su_corticoid_keo_dai",
-    "ten": "Tiền sử dùng Corticoid kéo dài ngưng đột ngột",
-    "nhom": "Tiền căn",
-    "loai": [
-      "tc"
-    ],
-    "tuKhoa": [
-      "corticoid",
-      "prednisolone",
-      "dexamethasone",
-      "thuốc tễ",
-      "thuốc nam"
-    ],
-    "map": null
-  },
-  {
-    "id": "tien_su_hut_thuoc_la",
-    "ten": "Tiền sử hút thuốc lá / thuốc lào ≥ 20 gói-năm",
-    "nhom": "Tiền căn",
-    "loai": [
-      "tc"
-    ],
-    "tuKhoa": [
-      "hút thuốc",
-      "thuốc lào",
-      "gói năm",
-      "smoking"
-    ],
-    "map": null
-  },
-  {
-    "id": "tien_su_co_dia_di_ung",
-    "ten": "Tiền sử bản thân hoặc gia đình có cơ địa dị ứng (chàm, viêm mũi dị ứng)",
-    "nhom": "Tiền căn",
-    "loai": [
-      "tc"
-    ],
-    "tuKhoa": [
-      "cơ địa dị ứng",
-      "viêm mũi dị ứng",
-      "chàm",
-      "atopy"
-    ],
-    "map": null
-  },
-  {
-    "id": "vm_chan_thuong_nao_khong_nhiem_trung",
-    "ten": "Chấn thương sọ não không nhiễm trùng",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn",
-      "tt"
-    ],
-    "tuKhoa": [
-      "chấn thương sọ não",
-      "tai nạn va đập đầu"
-    ],
-    "map": null
-  },
-  {
-    "id": "tiep_xuc_nuoc_ban_ngap_lut",
-    "ten": "Tiền sử lội nước bẩn, bùn lầy, ngập lụt hoặc tiếp xúc động vật gặm nhấm (chuột/chuồng trại)",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn",
-      "tc"
-    ],
-    "tuKhoa": [
-      "lội nước",
-      "ngập lụt",
-      "nước bẩn",
-      "chuột",
-      "nước tiểu chuột",
-      "nông dân",
-      "vệ sinh cống rãnh"
-    ],
-    "map": null
-  },
-  {
-    "id": "yeu_to_dich_te_sot_ret",
-    "ten": "Yếu tố dịch tễ sốt rét (Sống, đến hoặc trở về từ vùng sốt rét lưu hành trong 14 ngày)",
-    "nhom": "Tiền căn",
-    "loai": [
-      "cn"
-    ],
-    "tuKhoa": [
-      "dich te sot ret",
-      "vung sot ret",
-      "di rung",
-      "ngu ray",
-      "anopheles"
-    ],
-    "map": null
-  },
-  {
-    "id": "c_tien_su_ngung_nas_hoac_uc_che_mien_dich",
-    "ten": "Tiền sử ngưng NAs đột ngột hoặc dùng thuốc ức chế miễn dịch/hóa trị",
-    "nhom": "Tiền căn",
-    "loai": [
-      "tc"
-    ],
-    "tuKhoa": [
-      "ngung thuoc khang vi rut",
-      "ngung tenofovir",
-      "ngung entecavir",
-      "dung corticoid",
-      "hoa tri ung thu"
-    ],
-    "map": null
   }
 ]
