@@ -957,14 +957,14 @@
                 "description": "Phác đồ phân nhánh điều trị chi tiết theo căn nguyên xơ gan, tập trung vào Xơ gan do Virus (HBV, HCV, HDV) và Xơ gan do Rượu (Alcohol-related Liver Disease - ALD / Alcoholic Hepatitis). Phác đồ nhấn mạnh việc kiểm soát triệt để tác nhân gây tổn thương nền nhằm dừng tiến triển xơ hóa, hạ áp lực tĩnh mạch cửa và thúc đẩy quá trình tái bù trừ (Recompensation) theo Baveno VII.",
                 "branches": [
                     {
-                        "id": "etio_viral",
-                        "name": "Nhánh 1: Xơ gan do Virus (Viêm gan vi rút B, C, D)",
-                        "badgeText": "Do Virus (HBV / HCV / HDV)",
+                        "id": "etio_infectious_viral",
+                        "name": "Nhánh 1: Xơ gan do nhiễm trùng (liên quan viêm gan vi rút HBV, HCV, HDV)",
+                        "badgeText": "Do Nhiễm trùng / Vi rút",
                         "color": "blue",
-                        "criteria": "Xơ gan do nhiễm virus viêm gan mạn tính: (1) Viêm gan B mạn: HBsAg (+) > 6 tháng, HBV DNA phát hiện được hoặc dưới ngưỡng; (2) Viêm gan C mạn: Anti-HCV (+) và HCV RNA (+) / HCV core Ag (+); (3) Đồng nhiễm HBV/HCV hoặc HBV/HDV (Anti-HDV +, HDV RNA +).",
-                        "triage": "Ngoại trú chuyên khoa Truyền nhiễm / Tiêu hóa Gan mật đối với xơ gan còn bù; Nhập viện nội trú nếu xơ gan mất bù hoặc có đợt bùng phát vi rút (HBV flare).",
-                        "targetVitals": "Tải lượng vi rút dưới ngưỡng phát hiện (HBV DNA < 10-20 IU/mL hoặc HCV RNA dưới ngưỡng SVR12), Men gan (ALT/AST) trở về bình thường, Chức năng gan ổn định hoặc cải thiện Child-Pugh.",
-                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Bùng phát vi rút B cấp tính (HBV Reactivation / Flare) gây Bilirubin > 5mg/dL, INR > 1.5, Bệnh não gan -> Dùng ngay TDF/TAF/ETV + Hồi sức suy gan; Hoặc thất bại điều trị DAA HCV (HCV RNA (+) sau điều trị) -> Hội chẩn chuyên khoa chuyển phác đồ rescue (SOF/VEL/VOX).",
+                        "criteria": "Xơ gan do nhiễm vi rút viêm gan mạn tính: (1) Viêm gan B mạn: HBsAg (+) &gt; 6 tháng, HBV DNA phát hiện được hoặc dưới ngưỡng; (2) Viêm gan C mạn: Anti-HCV (+) và HCV RNA (+) / HCV core Ag (+); (3) Đồng nhiễm HBV/HCV hoặc HBV/HDV (Anti-HDV +, HDV RNA +); hoặc đợt nhiễm trùng vi rút cấp gây bùng phát tổn thương gan (HBV reactivation/flare).",
+                        "triage": "Ngoại trú chuyên khoa Truyền nhiễm / Tiêu hóa Gan mật đối với xơ gan còn bù; Nhập viện nội trú nếu xơ gan mất bù hoặc có đợt bùng phát vi rút cấp tính (HBV flare).",
+                        "targetVitals": "Tải lượng vi rút dưới ngưỡng phát hiện (HBV DNA &lt; 10-20 IU/mL, HCV RNA dưới ngưỡng SVR12, HDV RNA âm tính), Men gan (ALT/AST) trở về bình thường, Chức năng gan ổn định hoặc cải thiện Child-Pugh.",
+                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Đợt bùng phát viêm gan vi rút B cấp tính (HBV Reactivation / Flare) gây suy gan nặng (Bilirubin &gt; 5 mg/dL, INR &gt; 1.5, Bệnh não gan) -&gt; Dùng ngay TDF/TAF/ETV + Hồi sức suy gan cấp / ACLF; Hoặc thất bại điều trị DAA HCV (HCV RNA (+) sau điều trị) -&gt; Hội chẩn chuyên khoa chuyển phác đồ rescue (SOF/VEL/VOX).",
                         "dischargeCriteria": "HBV DNA dưới ngưỡng phát hiện hoặc HCV RNA âm tính; Dung nạp tốt thuốc kháng virus; Không có biến cố tương tác thuốc nặng; Đạt mốc theo dõi SVR12 (với HCV) hoặc duy trì tuân thủ uống thuốc hàng ngày (với HBV).",
                         "drugs": [
                             [
@@ -975,12 +975,12 @@
                             [
                                 "Tenofovir alafenamide (TAF)",
                                 "25 mg PO q24h (uống cùng thức ăn)",
-                                "Thuốc NAs ưu tiên cho bệnh nhân HBV có bệnh thận mạn (eGFR < 60 mL/phút), loãng xương hoặc người bệnh > 60 tuổi."
+                                "Thuốc NAs ưu tiên cho bệnh nhân HBV có bệnh thận mạn (eGFR &lt; 60 mL/phút), loãng xương hoặc người bệnh &gt; 60 tuổi."
                             ],
                             [
                                 "Entecavir (ETV)",
-                                "0.5 mg PO q24h (uống lúc bụng đói, trước/sau ăn 2h); Dùng liều 1.0 mg/ngày nếu có tiền sử kháng Lamivudine",
-                                "Thuốc NAs ưu tiên cho HBV. Cần điều chỉnh liều theo mức lọc cầu thận (CrCl) nếu eGFR < 50 mL/phút."
+                                "0.5 mg PO q24h (uống lúc bụng đói); Dùng liều 1.0 mg/ngày nếu có tiền sử kháng Lamivudine",
+                                "Thuốc NAs ưu tiên cho HBV. Cần điều chỉnh liều theo mức lọc cầu thận (CrCl) nếu eGFR &lt; 50 mL/phút."
                             ],
                             [
                                 "Sofosbuvir / Velpatasvir (SOF/VEL)",
@@ -993,26 +993,26 @@
                                 "Phác đồ DAA phối hợp điều trị HCV cho tất cả kiểu gen. Tăng liều Daclatasvir lên 90mg/ngày nếu dùng chung với Efavirenz (EFV)."
                             ],
                             [
-                                "Glecaprevir / Pibrentasvir (G/P)",
-                                "300 mg / 120 mg (3 viên phối hợp 100/40mg) PO q24h cùng thức ăn x 8 - 12 tuần",
-                                "Phác đồ DAA ngắn hạn cho HCV xơ gan còn bù. Chống chỉ định cho xơ gan mất bù (Child-Pugh B/C)."
+                                "Bulevirtide",
+                                "2 mg SC q24h tiêm dưới da kéo dài",
+                                "Thuốc ức chế thụ thể NTCP thế hệ mới điều trị viêm gan D mạn tính (HDV) ở bệnh nhân xơ gan còn bù có đồng nhiễm HBV/HDV."
                             ],
                             [
                                 "Ribavirin (RBV)",
-                                "1000 mg/ngày (< 75kg) hoặc 1200 mg/ngày (≥ 75kg) PO chia 2 lần, phối hợp DAA cho xơ gan mất bù HCV",
-                                "Chỉnh liều theo Hemoglobin và chức năng thận (eGFR 30-59 mL/phút dùng 600mg/ngày; eGFR < 30 mL/phút dùng 200-400mg/ngày)."
+                                "1000 mg/ngày (&lt; 75kg) hoặc 1200 mg/ngày (≥ 75kg) PO chia 2 lần, phối hợp DAA cho xơ gan mất bù HCV",
+                                "Chỉnh liều theo Hemoglobin và chức năng thận (eGFR 30-59 mL/phút dùng 600mg/ngày; eGFR &lt; 30 mL/phút dùng 200-400mg/ngày)."
                             ]
                         ],
                         "timelinePhases": [
                             {
-                                "id": "ev_phase_1",
+                                "id": "ev1_phase_1",
                                 "dayRange": "N1 - N90",
-                                "phaseName": "Giai đoạn Khởi đầu Ức chế / Diệt Vi rút & Đánh giá An toàn Thuốc",
-                                "clinicalGoal": "Bắt đầu ngay thuốc kháng virus đặc hiệu (NAs cho HBV, DAA cho HCV), kiểm soát tương tác thuốc, đạt giảm tải lượng vi rút tối đa.",
+                                "phaseName": "Giai đoạn Khởi đầu Ức chế / Diệt Vi rút &amp; Đánh giá An toàn Thuốc",
+                                "clinicalGoal": "Bắt đầu ngay thuốc kháng virus đặc hiệu (NAs cho HBV, DAA cho HCV, Bulevirtide cho HDV), kiểm soát tương tác thuốc, đạt giảm tải lượng vi rút tối đa.",
                                 "problems": [
                                     {
-                                        "id": "ev_prob_antiviral_initiation",
-                                        "problemName": "Khởi đầu điều trị đặc hiệu HBV / HCV / HDV",
+                                        "id": "ev1_prob_antiviral",
+                                        "problemName": "Điều trị đặc hiệu nhiễm trùng vi rút HBV / HCV / HDV",
                                         "problemType": "specific",
                                         "treatments": [
                                             {
@@ -1026,36 +1026,36 @@
                                                 "isHighlighted": true
                                             },
                                             {
-                                                "category": "Đồng nhiễm HBV/HCV hoặc HBV/HIV",
-                                                "content": "Đồng nhiễm HBV/HCV: Bắt buộc điều trị NAs dự phòng tái hoạt HBV song song với DAA HCV. Đồng nhiễm HBV/HIV: Dùng phác đồ ARV có chứa TDF/FTC hoặc TAF/FTC.",
+                                                "category": "Điều trị Viêm gan D mạn (HDV) &amp; Đồng nhiễm",
+                                                "content": "Đồng nhiễm HBV/HDV: Dùng Bulevirtide 2mg tiêm dưới da q24h phối hợp NAs HBV. Đồng nhiễm HBV/HCV: Bắt buộc điều trị NAs dự phòng tái hoạt HBV song song với DAA HCV.",
                                                 "isHighlighted": true
                                             }
                                         ],
                                         "monitoring": [
                                             {
                                                 "type": "CLS",
-                                                "metric": "Tải lượng HBV DNA / HCV RNA, ALT, AST, Bilirubin, Creatinine, eGFR, Công thức máu",
+                                                "metric": "Tải lượng HBV DNA / HCV RNA / HDV RNA, ALT, AST, Bilirubin, Creatinine, eGFR, Công thức máu",
                                                 "frequency": "Tháng thứ 1 và tháng thứ 3 (Tuần 4 và Tuần 12)",
-                                                "target": "HCV RNA dưới ngưỡng phát hiện ở tuần 12; HBV DNA giảm > 2 log10; Men gan ALT/AST giảm tốt"
+                                                "target": "HCV RNA dưới ngưỡng phát hiện ở tuần 12; HBV DNA giảm &gt; 2 log10; Men gan ALT/AST giảm tốt"
                                             }
                                         ]
                                     },
                                     {
-                                        "id": "ev_prob_drug_interactions",
-                                        "problemName": "Rà soát & Quản lý Tương tác Thuốc DAA / NAs",
+                                        "id": "ev1_prob_drug_interactions",
+                                        "problemName": "Rà soát Tương tác Thuốc &amp; Dự phòng Tái hoạt Vi rút",
                                         "problemType": "clinical",
                                         "treatments": [
                                             {
-                                                "category": "Kiểm tra tương tác thuốc (Drug Interactions)",
-                                                "content": "Chống chỉ định phối hợp Sofosbuvir với Amiodarone (nguy cơ chậm nhịp tim nặng đe dọa tính mạng). Tránh dùng DAA cùng các thuốc chống co giật (Carbamazepin, Phenobarbital) hoặc Rifampicin. Giảm liều Rosuvastatin/Atorvastatin khi dùng chung với DAA.",
+                                                "category": "Kiểm tra tương tác thuốc DAA",
+                                                "content": "Chống chỉ định phối hợp Sofosbuvir với Amiodarone (nguy cơ chậm nhịp tim nặng đe dọa tính mạng). Tránh dùng DAA cùng Carbamazepin, Phenobarbital hoặc Rifampicin. Giảm liều Rosuvastatin khi dùng DAA.",
                                                 "isHighlighted": true
                                             }
                                         ],
                                         "monitoring": [
                                             {
                                                 "type": "LS",
-                                                "metric": "Tần số tim (nếu dùng Amiodarone/SOF), Dấu hiệu tiêu cơ vân (khi dùng Statin), Tuân thủ uống thuốc",
-                                                "frequency": "Mỗi lần tái khám nhận thuốc (hàng tháng)",
+                                                "metric": "Tần số tim (nếu dùng Amiodarone/SOF), Dấu hiệu tiêu cơ vân, Tuân thủ uống thuốc",
+                                                "frequency": "Mỗi tháng",
                                                 "target": "Uống thuốc đúng giờ ≥ 95% số liều, Không có tác dụng phụ nặng"
                                             }
                                         ]
@@ -1063,14 +1063,14 @@
                                 ]
                             },
                             {
-                                "id": "ev_phase_2",
+                                "id": "ev1_phase_2",
                                 "dayRange": "N91 - N365+",
-                                "phaseName": "Giai đoạn Đánh giá Khỏi bệnh HCV (SVR12), Duy trì NAs HBV & Tầm soát HCC Định kỳ",
+                                "phaseName": "Giai đoạn Đánh giá Khỏi bệnh HCV (SVR12), Duy trì NAs HBV &amp; Tầm soát HCC Định kỳ",
                                 "clinicalGoal": "Đạt SVR12 xác nhận khỏi hoàn toàn HCV, duy trì HBV DNA âm tính bền vững, tầm soát HCC mỗi 6 tháng và đánh giá tái bù trừ (Recompensation).",
                                 "problems": [
                                     {
-                                        "id": "ev_prob_svr12_and_longterm_hbv",
-                                        "problemName": "Xác nhận Đáp ứng Vi rút Bền vững (SVR12) & Duy trì NAs",
+                                        "id": "ev1_prob_svr12_hbv_maintenance",
+                                        "problemName": "Xác nhận Đáp ứng Vi rút Bền vững (SVR12) &amp; Duy trì NAs",
                                         "problemType": "specific",
                                         "treatments": [
                                             {
@@ -1087,25 +1087,25 @@
                                         "monitoring": [
                                             {
                                                 "type": "CLS",
-                                                "metric": "HCV RNA (tuần 12 sau điều trị DAA); HBV DNA mỗi 6 tháng; FibroScan LSM mỗi 12 tháng",
+                                                "metric": "HCV RNA (tuần 12 sau DAA); HBV DNA mỗi 6 tháng; FibroScan LSM mỗi 12 tháng",
                                                 "frequency": "Mỗi 6 - 12 tháng",
                                                 "target": "Đạt SVR12 HCV, HBV DNA dưới ngưỡng, Độ đàn hồi gan LSM cải thiện/giảm"
                                             }
                                         ]
                                     },
                                     {
-                                        "id": "ev_prob_hcc_surveillance_viral",
-                                        "problemName": "Tầm soát Ung thư Gan (HCC) & Giám sát Tái bù trừ",
+                                        "id": "ev1_prob_hcc_surveillance",
+                                        "problemName": "Tầm soát Ung thư Gan (HCC) &amp; Giám sát Tái bù trừ",
                                         "problemType": "paraclinical",
                                         "treatments": [
                                             {
                                                 "category": "Tầm soát HCC bắt buộc",
-                                                "content": "Dù đã diệt sạch HCV (đạt SVR12) hay đã ức chế HBV DNA, bệnh nhân xơ gan VẪN CÓ NGUY CƠ HCC. Bắt buộc Siêu âm bụng + Xét nghiệm bộ ba chỉ dấu (AFP, AFP-L3, PIVKA-II) định kỳ mỗi 6 tháng.",
+                                                "content": "Bắt buộc Siêu âm bụng + Xét nghiệm bộ ba chỉ dấu (AFP, AFP-L3, PIVKA-II) định kỳ mỗi 6 tháng cho mọi bệnh nhân xơ gan vi rút.",
                                                 "isHighlighted": true
                                             },
                                             {
                                                 "category": "Đánh giá Tái bù trừ (Recompensation Baveno VII)",
-                                                "content": "Nếu duy trì diệt/ức chế vi rút > 12 tháng, không còn biến cố mất bù (cổ trướng, vỡ GEV, HE) và điểm Child-Pugh trở về A: Đánh giá đạt trạng thái Tái bù trừ.",
+                                                "content": "Nếu duy trì ức chế vi rút &gt; 12 tháng, không còn biến cố mất bù (cổ trướng, vỡ GEV, HE) và điểm Child-Pugh trở về A: Đánh giá đạt trạng thái Tái bù trừ.",
                                                 "isHighlighted": true
                                             }
                                         ],
@@ -1123,194 +1123,677 @@
                         ]
                     },
                     {
-                        "id": "etio_alcohol",
-                        "name": "Nhánh 2: Xơ gan do Rượu (Alcohol-related Liver Disease - ALD / Alcoholic Hepatitis)",
-                        "badgeText": "Do Rượu (ALD / ASH)",
+                        "id": "etio_toxic_metabolic",
+                        "name": "Nhánh 2: Xơ gan do độc chất / chuyển hóa (Rượu ALD/ASH, MASH/MASLD, Hemochromatosis, Wilson)",
+                        "badgeText": "Độc chất / Chuyển hóa",
                         "color": "amber",
-                        "criteria": "Xơ gan có tiền sử tiêu thụ rượu lượng nhiều kéo dài (> 40-60g cồn/ngày ở nam, > 20-40g/ngày ở nữ trong > 5 năm); Rối loạn sinh hóa đặc trưng: Tỷ lệ AST/ALT > 2, GGT tăng cao vượt trội, Thể tích trung bình hồng cầu MCV > 100 fL; Có thể kèm Viêm gan do rượu cấp nặng (Severe Alcoholic Hepatitis - AH) với điểm Maddrey DF ≥ 32.",
-                        "triage": "Ngoại trú chuyên khoa Gan mật (nếu xơ gan còn bù đơn thuần); Nhập viện Cấp cứu / ICU / Khoa Nội Tiêu hóa nếu có Viêm gan do rượu cấp nặng (MDF ≥ 32) hoặc xơ gan mất bù.",
-                        "targetVitals": "Cai rượu hoàn toàn 100% (Abstinence), Bilirubin toàn phần giảm < 35 µmol/L, Bạch cầu trung tính trở về bình thường, Cân nặng và khối cơ (Sarcopenia) được phục hồi, Không bùng phát Hội chứng cai rượu.",
-                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Viêm gan do rượu cấp nặng (MDF ≥ 32) không đáp ứng Steroid sau 7 ngày (Lille Score > 0.45) -> Ngưng Prednisolone, tầm soát nhiễm trùng bệnh viện nghiêm trọng, cân nhắc chỉ định Ghép gan Cấp cứu khẩn cấp (Early Liver Transplantation); Hoặc xuất hiện Sảng rượu (Delirium Tremens) / Sốc nhiễm khuẩn.",
-                        "dischargeCriteria": "Kiểm soát hoàn toàn Viêm gan do rượu cấp; Vượt qua Hội chứng cai rượu an toàn; Đạt cân bằng dinh dưỡng đạm-năng lượng; Bệnh nhân và gia đình cam kết tham gia chương trình cai rượu dài hạn (AUD therapy).",
+                        "criteria": "Xơ gan do tổn thương độc chất hoặc rối loạn chuyển hóa mạn tính: (1) Do rượu (ALD/ASH): uống cồn kéo dài, AST/ALT &gt; 2, GGT tăng; (2) Do xơ gan mỡ chuyển hóa (MASH/MASLD): béo phì, đái tháo đường type 2, rối loạn lipid; (3) Do ứ sắt di truyền (Hemochromatosis): Ferritin &gt; 1000 ng/mL, độ bão hòa Transferrin TSAT &gt; 45%; (4) Do bệnh Wilson ứ đồng: Ceruloplasmin &lt; 20 mg/dL, vòng Kayser-Fleischer, đồng niệu 24h &gt; 100 µg.",
+                        "triage": "Ngoại trú chuyên khoa Gan mật / Chuyển hóa; Nhập viện Cấp cứu / ICU nếu có Viêm gan do rượu cấp nặng (MDF ≥ 32), đợt bùng phát Wilson cấp (tán huyết + suy gan) hoặc xơ gan mất bù.",
+                        "targetVitals": "Cai rượu hoàn toàn 100%, BMI 20-23 kg/m², HbA1c &lt; 6.5-7.0%, Ferritin &lt; 300 ng/mL, Đồng tự do trong máu &lt; 10 µg/dL, Triệt tiêu hoàn toàn độc chất.",
+                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Viêm gan do rượu cấp nặng (MDF ≥ 32) Lille score N7 &gt; 0.45; Hoặc Bùng phát bệnh Wilson cấp (Suy gan cấp + Tán huyết Coombs âm tính + Suy thận) -&gt; Lọc máu trao đổi huyết tương (TPE) / CRRT + Chuẩn bị Ghép gan khẩn cấp.",
+                        "dischargeCriteria": "Kiểm soát tốt căn nguyên chuyển hóa/độc chất; Cai rượu hoàn toàn; Nồng độ sắt/đồng máu kiểm soát ổn định; Đạt mục tiêu kiểm soát glucose và lipid máu.",
                         "drugs": [
                             [
                                 "Prednisolone",
-                                "40 mg PO q24h (uống buổi sáng) x 28 ngày, sau đó giảm liều dần trong 2-4 tuần (hoặc ngưng ngay nếu N7 Lille score > 0.45)",
+                                "40 mg PO q24h x 28 ngày, giảm liều dần trong 2-4 tuần (hoặc ngưng ngay nếu N7 Lille score &gt; 0.45)",
                                 "Liều chuẩn đầu tay cho Viêm gan do rượu cấp nặng (Severe Alcoholic Hepatitis) khi điểm Maddrey Discriminant Function (MDF) ≥ 32 và không có chống chỉ định nhiễm trùng."
                             ],
                             [
-                                "Pentoxifylline",
-                                "400 mg PO q8h (uống trong bữa ăn) x 28 ngày",
-                                "Thuốc ức chế TNF-alpha thay thế Prednisolone khi có chống chỉ định với Corticosteroid (nhiễm trùng nặng hoạt động, xuất huyết tiêu hóa cấp, suy thận AKI)."
+                                "Acamprosate / Baclofen",
+                                "Acamprosate 333 - 666 mg PO q8h hoặc Baclofen 5 - 10 mg PO q8h",
+                                "Thuốc hỗ trợ duy trì cai rượu (AUD pharmacotherapy) an toàn cho bệnh nhân xơ gan do rượu, giúp giảm cảm giác thèm rượu kéo dài."
+                            ],
+                            [
+                                "D-Penicillamine",
+                                "250 - 500 mg PO q8h (uống bụng đói trước ăn 1h)",
+                                "Thuốc chelating thải đồng đầu tay cho bệnh Wilson. Phải bổ sung Pyridoxine (Vitamin B6) 25-50mg/ngày đi kèm."
+                            ],
+                            [
+                                "Trientine dihydrochloride",
+                                "250 - 500 mg PO q8h (uống bụng đói)",
+                                "Thuốc chelating thải đồng thay thế D-Penicillamine nếu bệnh nhân không dung nạp hoặc có tác dụng phụ nặng."
+                            ],
+                            [
+                                "Zinc Acetate / Zinc Sulfate",
+                                "50 mg elemental zinc PO q8h (uống xa bữa ăn)",
+                                "Kẽm giúp kích thích tổng hợp Metallothionein ở ruột, ngăn chặn hấp thu đồng vào máu; dùng duy trì cho bệnh Wilson."
+                            ],
+                            [
+                                "Resmetirom / GLP-1 RA (Semaglutide / Tirzepatide)",
+                                "Resmetirom 80-100 mg PO q24h hoặc Semaglutide 0.5-1.0 mg SC hàng tuần",
+                                "Điều trị đặc hiệu xơ gan MASH/MASLD còn bù giúp giảm tích tụ mỡ, cải thiện xơ hóa gan và kiểm soát chuyển hóa."
                             ],
                             [
                                 "Thiamine (Vitamin B1)",
-                                "100 - 300 mg/ngày IV truyền tĩnh mạch hoặc PO x 7 - 14 ngày (liều 500mg IV q8h x 3-5 ngày nếu nghi ngờ Hội chứng Wernicke-Korsakoff)",
-                                "Bắt buộc bổ sung ngay cho 100% bệnh nhân xơ gan do rượu nhập viện TRƯỚC KHI truyền đường Glucose để phòng ngừa tổn thương não Wernicke cấp tính."
-                            ],
-                            [
-                                "Acamprosate",
-                                "333 - 666 mg PO q8h (uống trong bữa ăn)",
-                                "Thuốc hỗ trợ duy trì cai rượu (AUD pharmacotherapy) an toàn cho bệnh nhân xơ gan, giúp giảm cảm giác thèm rượu và ngăn ngừa tái nghiện."
-                            ],
-                            [
-                                "Baclofen",
-                                "Khởi đầu 5 mg PO q8h, tăng dần liều lên 10 mg PO q8h",
-                                "Thuốc đồng vận GABA-B giúp giảm thèm rượu an toàn ở bệnh nhân xơ gan do rượu theo các nghiên cứu lâm sàng."
-                            ],
-                            [
-                                "BCAA (Branched-Chain Amino Acids: Leucine, Isoleucine, Valine)",
-                                "12 - 14 g/ngày PO (uống muộn trước khi đi ngủ) hoặc truyền IV hỗn hợp BCAA",
-                                "Bổ sung axit amin chuỗi nhánh giúp đảo ngược tình trạng teo cơ (sarcopenia), cải thiện cân bằng nitơ và giảm nguy cơ Bệnh não gan."
-                            ],
-                            [
-                                "Vitamin B-complex & Folic Acid & Kẽm (Zinc)",
-                                "Vitamin B3, B6, Acid Folic 5mg/ngày, Zinc Sulfate 220mg/ngày PO",
-                                "Bổ sung vi chất dinh dưỡng thiết yếu bị thiếu hụt nghiêm trọng do ngộ độc rượu mạn tính."
+                                "100 - 300 mg/ngày IV/PO x 7 - 14 ngày",
+                                "Bắt buộc bổ sung cho bệnh nhân xơ gan do rượu TRƯỚC KHI truyền Glucose để phòng ngừa tổn thương não Wernicke."
                             ]
                         ],
                         "timelinePhases": [
                             {
-                                "id": "ea_phase_1",
-                                "dayRange": "N1 - N28",
-                                "phaseName": "Giai đoạn Cắt Cơn Cai Rượu, Đánh giá MDF & Điều trị Viêm Gan Do Rượu Cấp Nặng (Severe AH)",
-                                "clinicalGoal": "Cắt cơn cai rượu an toàn (phòng Sảng rượu), tính điểm Maddrey DF điều trị Prednisolone 28 ngày nếu MDF ≥ 32, bù Thiamine liều cao và dinh dưỡng tích cực.",
+                                "id": "etm_phase_1",
+                                "dayRange": "N1 - N30",
+                                "phaseName": "Giai đoạn Loại bỏ Độc chất, Thải Đồng/Sắt Cấp &amp; Kiểm soát Chuyển hóa Cấp",
+                                "clinicalGoal": "Cắt cơn cai rượu, xử trí Viêm gan do rượu cấp nặng bằng Prednisolone (nếu MDF ≥ 32), khởi đầu thải đồng (Wilson) / trích máu thải sắt (Hemochromatosis) và tối ưu hóa chuyển hóa MASH.",
                                 "problems": [
                                     {
-                                        "id": "ea_prob_alcoholic_hepatitis_severe",
-                                        "problemName": "Xử trí Viêm gan do rượu cấp nặng (Severe Alcoholic Hepatitis)",
+                                        "id": "etm_prob_ald_ash",
+                                        "problemName": "Xử trí Xơ gan do rượu &amp; Viêm gan do rượu cấp nặng (AH)",
                                         "problemType": "specific",
                                         "treatments": [
                                             {
-                                                "category": "Tính điểm Tiên lượng Maddrey DF / MELD",
-                                                "content": "Công thức Maddrey DF = 4.6 x [PT bệnh nhân - PT chứng (giây)] + Bilirubin toàn phần (mg/dL). Nếu MDF ≥ 32 (hoặc MELD > 20): Chẩn đoán Viêm gan do rượu cấp nặng, có nguy cơ tử vong 30-50% trong 30 ngày.",
+                                                "category": "Liệu pháp Prednisolone cho Viêm gan do rượu cấp",
+                                                "content": "Cho Prednisolone 40mg/ngày PO x 28 ngày nếu MDF ≥ 32. Đánh giá Lille Score tại Ngày 7: Nếu Lille &lt; 0.45 tiếp tục đủ 28 ngày; nếu Lille &gt; 0.45 (không đáp ứng) -&gt; Ngưng Prednisolone ngay.",
                                                 "isHighlighted": true
                                             },
                                             {
-                                                "category": "Liệu pháp Corticosteroid (Prednisolone)",
-                                                "content": "Cho Prednisolone 40mg/ngày PO x 28 ngày nếu không có nhiễm trùng hoạt động. ĐÁNH GIÁ ĐÁP ỨNG TẠI NGÀY THỨ 7 bằng Thang điểm Lille Score. Nếu Lille Score < 0.45: Tiếp tục đủ 28 ngày. Nếu Lille Score > 0.45 (không đáp ứng): Ngưng Prednisolone ngay vì không có lợi ích và tăng nguy cơ nhiễm trùng.",
+                                                "category": "Bổ sung Thiamine &amp; Dinh dưỡng",
+                                                "content": "Tiêm Thiamine 100-300mg/ngày trước khi truyền dịch Glucose. Bổ sung đạm 1.2-1.5 g/kg/ngày và BCAA.",
                                                 "isHighlighted": true
-                                            },
-                                            {
-                                                "category": "Thuốc thay thế Pentoxifylline",
-                                                "content": "Nếu có chống chỉ định Steroid (nhiễm trùng SBP, xuất huyết, AKI): Dùng Pentoxifylline 400mg x 3 lần/ngày PO x 28 ngày.",
-                                                "isHighlighted": false
                                             }
                                         ],
                                         "monitoring": [
                                             {
                                                 "type": "LS/CLS",
-                                                "metric": "Bilirubin toàn phần, PT/INR, Bạch cầu, Lille Score (tại N7), Dấu hiệu nhiễm trùng",
+                                                "metric": "Bilirubin toàn phần, PT/INR, Lille Score (N7), Thang điểm CIWA-Ar",
                                                 "frequency": "N1, N7, N14, N28",
-                                                "target": "Lille score N7 < 0.45, Bilirubin N28 giảm > 50% so với đỉnh, Không có nhiễm trùng mới"
+                                                "target": "Lille score N7 &lt; 0.45, Bilirubin giảm &gt; 50%, CIWA-Ar &lt; 10"
                                             }
                                         ]
                                     },
                                     {
-                                        "id": "ea_prob_alcohol_withdrawal_thiamine",
-                                        "problemName": "Dự phòng Sảng Rượu & Bổ sung Thiamine Cấp cứu",
+                                        "id": "etm_prob_wilson_hemochromatosis",
+                                        "problemName": "Thải Đồng (Bệnh Wilson) &amp; Thải Sắt (Hemochromatosis)",
                                         "problemType": "specific",
                                         "treatments": [
                                             {
-                                                "category": "Bổ sung Thiamine (Vitamin B1) khẩn cấp",
-                                                "content": "Tiêm/ truyền tĩnh mạch Thiamine 100-300mg/ngày TRƯỚC KHI truyền dịch ưu trương Glucose để tránh khởi phát Bệnh não Wernicke.",
+                                                "category": "Thải Đồng trong bệnh Wilson",
+                                                "content": "Bắt đầu D-Penicillamine 750-1500mg/ngày PO (chia 3 lần) + Pyridoxine 25mg/ngày. Nếu không dung nạp chuyển Trientine. Khi ổn định phối hợp Kẽm 150mg/ngày.",
                                                 "isHighlighted": true
                                             },
                                             {
-                                                "category": "Theo dõi Hội chứng Cai Rượu (Alcohol Withdrawal)",
-                                                "content": "Đánh giá thang điểm CIWA-Ar. Dùng Benzodiazepine ngắn hạn (Oxazepam / Lorazepam - các thuốc không chuyển hóa qua P450 gan) nếu có run tay, vã mồ hôi, vật vã, kích động.",
-                                                "isHighlighted": true
-                                            }
-                                        ],
-                                        "monitoring": [
-                                            {
-                                                "type": "LS",
-                                                "metric": "Thang điểm CIWA-Ar, Tri giác, Nhịp tim, HA, Dấu hiệu rung giật nhãn cầu / thất động",
-                                                "frequency": "Mỗi 4-8h trong 7 ngày đầu",
-                                                "target": "CIWA-Ar < 10 điểm, Không biến chứng sảng rượu hay co giật"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": "ea_prob_malnutrition_sarcopenia",
-                                        "problemName": "Hỗ trợ Dinh dưỡng Đạm-Năng lượng Cao & BCAA",
-                                        "problemType": "clinical",
-                                        "treatments": [
-                                            {
-                                                "category": "Chế độ ăn cho xơ gan do rượu",
-                                                "content": "Năng lượng cao 35-40 kcal/kg/ngày, Đạm 1.2-1.5 g/kg/ngày (không hạn chế đạm trừ khi có Bệnh não gan cấp severe). Cho ăn đường miệng hoặc nuôi dưỡng qua sonde dạ dày nhẹ nếu chán ăn.",
-                                                "isHighlighted": true
-                                            },
-                                            {
-                                                "category": "Bữa ăn nhẹ muộn (Late-Night Snack) & BCAA",
-                                                "content": "Bắt buộc bổ sung Bữa ăn nhẹ trước khi đi ngủ (chứa 50g carbohydrate phức hợp) phối hợp BCAA 12-14g/ngày để chống dị hóa đạm ban đêm.",
-                                                "isHighlighted": true
-                                            }
-                                        ],
-                                        "monitoring": [
-                                            {
-                                                "type": "LS/CLS",
-                                                "metric": "Lượng calo nhập hàng ngày, Albumin, Prealbumin, Dung nạp thức ăn",
-                                                "frequency": "Mỗi ngày",
-                                                "target": "Đạt ≥ 80% mục tiêu calo và đạm hàng ngày"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "ea_phase_2",
-                                "dayRange": "N29 - N365+",
-                                "phaseName": "Giai đoạn Duy trì Cai Rượu Tuyệt đối Lâu dài, Phục hồi Khối Cơ & Tái Bù Trừ (Recompensation)",
-                                "clinicalGoal": "Duy trì cai rượu tuyệt đối 100% bằng tâm lý trị liệu + Acamprosate/Baclofen, cải thiện suy dinh dưỡng/teo cơ, tầm soát HCC mỗi 6 tháng và hướng tới Tái bù trừ Baveno VII.",
-                                "problems": [
-                                    {
-                                        "id": "ea_prob_longterm_abstinence_aud",
-                                        "problemName": "Duy trì Cai Rượu Bền vững (Abstinence & AUD Therapy)",
-                                        "problemType": "specific",
-                                        "treatments": [
-                                            {
-                                                "category": "Thuốc hỗ trợ cai rượu (AUD Pharmacotherapy)",
-                                                "content": "Cho Acamprosate 333-666mg x 3 lần/ngày hoặc Baclofen 5-10mg x 3 lần/ngày PO để giảm thèm rượu kéo dài.",
-                                                "isHighlighted": true
-                                            },
-                                            {
-                                                "category": "Trị liệu tâm lý & Tự trợ giúp",
-                                                "content": "Kết nối bệnh nhân vào các nhóm hỗ trợ cai rượu, tư vấn hành vi gia đình. Cai rượu là ĐIỀU KIỆN TIÊN QUYẾT ĐỂ TÁI BÙ TRỪ VÀ CẢI THIỆN SỐNG CÒN.",
-                                                "isHighlighted": true
-                                            }
-                                        ],
-                                        "monitoring": [
-                                            {
-                                                "type": "LS/CLS",
-                                                "metric": "Tình trạng tiêu thụ rượu (khai báo + xét nghiệm GGT, %CDT mạn tính), Chức năng gan (Child-Pugh)",
-                                                "frequency": "Mỗi 1 - 3 tháng",
-                                                "target": "Cai rượu hoàn toàn 100%, GGT giảm về bình thường, Child-Pugh cải thiện"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "id": "ea_prob_recompensation_sarcopenia_rehab",
-                                        "problemName": "Giám sát Tái Bù Trừ (Recompensation) & Tầm soát HCC",
-                                        "problemType": "paraclinical",
-                                        "treatments": [
-                                            {
-                                                "category": "Tiêu chuẩn Tái bù trừ Baveno VII do Rượu",
-                                                "content": "Nếu cai rượu tuyệt đối ≥ 12 tháng: Tế bào gan có khả năng tái tạo ngoạn mục, cổ trướng và HE có thể biến mất hoàn toàn, điểm Child-Pugh trở về A (5-6 điểm).",
-                                                "isHighlighted": true
-                                            },
-                                            {
-                                                "category": "Tầm soát HCC định kỳ do Rượu",
-                                                "content": "Bệnh nhân xơ gan do rượu đã cai rượu VẪN CẦN TẦM SOÁT HCC mỗi 6 tháng bằng Siêu âm bụng + AFP / PIVKA-II.",
+                                                "category": "Thải Sắt trong Hemochromatosis",
+                                                "content": "Khởi đầu Rút máu (Phlebotomy) 450-500 mL/lần (tương đương rút 200mg sắt) mỗi 1-2 tuần nếu xơ gan còn bù và Hb &gt; 11 g/dL. Dùng Deferoxamine nếu không rút máu được.",
                                                 "isHighlighted": true
                                             }
                                         ],
                                         "monitoring": [
                                             {
                                                 "type": "CLS",
-                                                "metric": "Siêu âm bụng, AFP, PIVKA-II, MELD-Na, Child-Pugh, Lực nắm cơ tay (Handgrip strength)",
+                                                "metric": "Đồng niệu 24h, Ceruloplasmin, Ferritin, Độ bão hòa Transferrin (TSAT), Hb",
+                                                "frequency": "Mỗi 2 - 4 tuần",
+                                                "target": "Ferritin &lt; 300 ng/mL, TSAT &lt; 50%, Đồng tự do huyết thanh &lt; 10 µg/dL"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "etm_prob_mash_lifestyle",
+                                        "problemName": "Quản lý Xơ gan mỡ chuyển hóa (MASH / MASLD)",
+                                        "problemType": "clinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Thay đổi lối sống &amp; Giảm cân",
+                                                "content": "Giảm 7-10% trọng lượng cơ thể (giảm từ từ 0.5-1 kg/tuần). Chế độ ăn Địa Trung Hải, hạn chế fructose và đường tinh chế. Dùng GLP-1 RA (Semaglutide/Tirzepatide) nếu có đái tháo đường/béo phì.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "Cân nặng, BMI, Vòng eo, HbA1c, Lipid máu, ALT/AST",
+                                                "frequency": "Mỗi tháng",
+                                                "target": "Giảm 5-10% cân nặng, HbA1c &lt; 7.0%"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "etm_phase_2",
+                                "dayRange": "N31 - N365+",
+                                "phaseName": "Giai đoạn Duy trì Thải Độc/Chuyển hóa Lâu dài &amp; Giám sát Tái Bù Trừ",
+                                "clinicalGoal": "Duy trì cai rượu tuyệt đối, duy trì liều kẽm/chelator thải đồng/sắt, kiểm soát bền vững MASH và tầm soát HCC mỗi 6 tháng.",
+                                "problems": [
+                                    {
+                                        "id": "etm_prob_longterm_metabolic_maintenance",
+                                        "problemName": "Duy trì điều trị căn nguyên chuyển hóa lâu dài",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Duy trì cai rượu &amp; Thải độc lâu dài",
+                                                "content": "Duy trì Acamprosate hoặc Baclofen kết hợp trị liệu tâm lý AUD. Duy trì Kẽm / D-Penicillamine liều thấp cho Wilson. Duy trì trích máu định kỳ (mỗi 2-3 tháng) giữ Ferritin 50-100 ng/mL cho Hemochromatosis.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Ferritin, TSAT, Đồng niệu 24h, GGT, ALT/AST, FibroScan LSM",
+                                                "frequency": "Mỗi 3 - 6 tháng",
+                                                "target": "Ferritin 50-100 ng/mL, Đồng niệu 24h 20-50 µg/ngày, GGT bình thường"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "etm_prob_hcc_surveillance_metabolic",
+                                        "problemName": "Tầm soát Ung thư Gan (HCC) &amp; Đánh giá Tái Bù Trừ",
+                                        "problemType": "paraclinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Tầm soát HCC",
+                                                "content": "Siêu âm bụng + Bộ ba chỉ dấu ung thư gan (AFP, AFP-L3, PIVKA-II) định kỳ mỗi 6 tháng (đặc biệt bệnh nhân Hemochromatosis có nguy cơ HCC rất cao).",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Siêu âm bụng, AFP, PIVKA-II, Thang điểm Child-Pugh",
                                                 "frequency": "Mỗi 6 tháng",
-                                                "target": "Không có u gan mới, Child-Pugh duy trì A, Khối cơ tay và thể trạng phục hồi tốt"
+                                                "target": "Không có nốt u gan mới, Child-Pugh duy trì A"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "etio_autoimmune",
+                        "name": "Nhánh 3: Xơ gan tự miễn (Viêm gan tự miễn AIH, Xơ hóa đường mật nguyên phát PBC, Viêm đường mật xơ hóa nguyên phát PSC)",
+                        "badgeText": "Tự miễn (AIH / PBC / PSC)",
+                        "color": "purple",
+                        "criteria": "Xơ gan do tổn thương miễn dịch mạn tính: (1) Viêm gan tự miễn (Autoimmune Hepatitis - AIH): IgG tăng cao, ANA (+), SMA (+), LKM-1 (+), điểm Simplified AIH Score ≥ 6-7; (2) Xơ hóa đường mật nguyên phát (Primary Biliary Cholangitis - PBC): ALP &amp; GGT tăng &gt; 1.5 lần, AMA-M2 (+) dương tính mạnh; (3) Viêm đường mật xơ hóa nguyên phát (Primary Sclerosing Cholangitis - PSC): MRCP / ERCP có hình ảnh chuỗi hạt đường mật (beaded pattern), p-ANCA (+), thường kèm bệnh viêm ruột (IBD).",
+                        "triage": "Ngoại trú chuyên khoa Gan mật - Miễn dịch; Nhập viện Nội trú / ICU nếu có đợt bùng phát viêm gan tự miễn cấp nặng (Acute severe AIH flare), Viêm đường mật cấp do PSC hoặc xơ gan mất bù.",
+                        "targetVitals": "IgG máu trở về bình thường, Men gan ALT/AST &lt; 1.5 lần giới hạn trên bình thường (cho AIH), ALP &lt; 1.57 lần giới hạn trên bình thường &amp; Bilirubin bình thường (cho PBC/PSC - Tiêu chuẩn Paris II / Toronto), Không bùng phát đợt tự miễn mới.",
+                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Đợt bùng phát Viêm gan tự miễn cấp nặng (Acute Severe AIH) gây suy gan cấp (INR &gt; 1.5, Bilirubin &gt; 6 mg/dL) không đáp ứng sau 7-14 ngày dùng Corticosteroid liều cao -&gt; Chuẩn bị Ghép gan khẩn cấp; Hoặc Viêm đường mật cấp tái diễn / Ung thư đường mật (Cholangiocarcinoma - CCA) ở bệnh nhân PSC.",
+                        "dischargeCriteria": "Kiểm soát được đợt viêm tự miễn; Đạt đáp ứng sinh hóa tối ưu (IgG, ALT, ALP giảm tốt); Dung nạp tốt thuốc ức chế miễn dịch / UDCA; Không có tác dụng phụ nặng do Corticosteroid.",
+                        "drugs": [
+                            [
+                                "Prednisolone / Prednisone",
+                                "Khởi đầu 30 - 40 mg PO q24h (cho AIH), giảm dần liều mỗi 1-2 tuần xuống liều duy trì 5 - 10 mg/ngày",
+                                "Liều tấn công ức chế miễn dịch đầu tay cho Viêm gan tự miễn (AIH) giúp cắt đứt đợt viêm hoại tử tế bào gan cấp tính."
+                            ],
+                            [
+                                "Budesonide",
+                                "9 mg PO q24h (uống buổi sáng)",
+                                "Corticosteroid chuyển hóa bước đầu qua gan cao, dùng thay thế Prednisolone cho AIH xơ gan còn bù chưa có tăng áp cửa nặng / chưa có bàng hệ cửa-chủ."
+                            ],
+                            [
+                                "Azathioprine (AZA)",
+                                "Khởi đầu 50 mg PO q24h, tăng dần lên 1 - 1.5 mg/kg/ngày",
+                                "Thuốc ức chế miễn dịch phối hợp bắt buộc với Prednisolone để duy trì lui bệnh AIH dài hạn và giảm liều Steroid."
+                            ],
+                            [
+                                "Ursodeoxycholic Acid (UDCA)",
+                                "13 - 15 mg/kg/ngày PO chia 2-3 lần (uống trong bữa ăn)",
+                                "Thuốc điều trị cốt lõi đầu tay bắt buộc cho Xơ hóa đường mật nguyên phát (PBC) và Viêm đường mật xơ hóa nguyên phát (PSC)."
+                            ],
+                            [
+                                "Obeticholic Acid (OCA) / Elafibranor",
+                                "OCA 5 - 10 mg PO q24h hoặc Elafibranor 80 mg PO q24h",
+                                "Thuốc đồng vận FXR / PPAR thế hệ mới điều trị PBC hàng thứ hai khi bệnh nhân không đáp ứng đầy đủ hoặc không dung nạp với UDCA sau 12 tháng."
+                            ],
+                            [
+                                "Mycophenolate Mofetil (MMF)",
+                                "500 - 1000 mg PO q12h",
+                                "Thuốc ức chế miễn dịch thay thế hàng thứ hai cho Azathioprine trong AIH nếu bệnh nhân không đáp ứng hoặc tác dụng phụ độc tủy xương."
+                            ],
+                            [
+                                "Cholestyramine",
+                                "4 g PO x 1 - 4 lần/ngày (uống cách xa các thuốc khác ít nhất 2-4 giờ)",
+                                "Thuốc gắn axit mật điều trị triệu chứng ngứa dữ dội do ứ mật ở bệnh nhân PBC và PSC."
+                            ]
+                        ],
+                        "timelinePhases": [
+                            {
+                                "id": "eai_phase_1",
+                                "dayRange": "N1 - N90",
+                                "phaseName": "Giai đoạn Tấn công Ức chế Miễn dịch (AIH) / Khởi đầu UDCA (PBC/PSC) &amp; Kiểm soát Đợt Viêm Cấp",
+                                "clinicalGoal": "Tấn công lui bệnh AIH bằng Prednisolone + Azathioprine, khởi đầu UDCA liều chuẩn cho PBC/PSC, kiểm soát triệu chứng ngứa và bảo vệ xương.",
+                                "problems": [
+                                    {
+                                        "id": "eai_prob_aih_induction",
+                                        "problemName": "Tấn công ức chế miễn dịch lui bệnh Viêm gan tự miễn (AIH)",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Liệu pháp phối hợp Prednisolone + Azathioprine",
+                                                "content": "Bắt đầu Prednisolone 30mg/ngày + Azathioprine 50mg/ngày. Giảm liều Prednisolone mỗi tuần 5mg xuống liều duy trì 10mg/ngày ở tuần thứ 4. Nếu dùng Budesonide: Dùng 9mg/ngày duy trì.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "ALT, AST, Bilirubin, IgG máu, Công thức máu (Bạch cầu, Tiểu cầu)",
+                                                "frequency": "Mỗi 2 tuần trong tháng đầu, sau đó mỗi tháng",
+                                                "target": "ALT/AST giảm &gt; 50% ở tuần 4, IgG giảm về bình thường, Không suy tủy do AZA"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "eai_prob_pbc_psc_udca",
+                                        "problemName": "Điều trị đặc hiệu Ứ mật đường mật (PBC / PSC) bằng UDCA",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Khởi đầu UDCA liều chuẩn",
+                                                "content": "Cho Ursodeoxycholic Acid (UDCA) 13-15 mg/kg/ngày chia 2-3 lần. Điều trị liên tục suốt đời. Đánh giá đáp ứng sinh hóa sau 6-12 tháng theo Tiêu chuẩn Paris II (ALP ≤ 1.5 lần ULN, Bilirubin bình thường).",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "ALP, GGT, Bilirubin toàn phần, ALT, AST",
+                                                "frequency": "Mỗi 1 - 3 tháng",
+                                                "target": "ALP và GGT giảm dốc đứng về &lt; 1.5 lần ULN"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "eai_prob_pruritus_cholestasis",
+                                        "problemName": "Kiểm soát triệu chứng Ngứa &amp; Bổ sung Vitamin tan trong dầu",
+                                        "problemType": "clinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Điều trị ngứa ứ mật &amp; Phòng loãng xương",
+                                                "content": "Cho Cholestyramine 4g x 2-4 lần/ngày (uống xa UDCA 2-4h). Bổ sung Vitamin A, D3 (1000-2000 IU/ngày), E, K và Calcium 1000mg/ngày phòng loãng xương do ứ mật mạn.",
+                                                "isHighlighted": false
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "Mức độ ngứa (VAS score), Nồng độ Vitamin D (25-OH Vitamin D), Mật độ xương DEXA scan",
+                                                "frequency": "Mỗi 3 - 6 tháng",
+                                                "target": "Giảm ngứa tốt, Vitamin D3 &gt; 30 ng/mL, DEXA T-score &gt; -2.5"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "eai_phase_2",
+                                "dayRange": "N91 - N365+",
+                                "phaseName": "Giai đoạn Duy trì Lui bệnh Lâu dài, Tầm soát Ung thư Đường mật / Gan &amp; Giám sát Tái Bù Trừ",
+                                "clinicalGoal": "Duy trì lui bệnh AIH bằng Azathioprine + Prednisolone liều thấp nhất (hoặc ngưng hẳn Steroid), chuyển thuốc hàng 2 (OCA/Elafibranor) nếu PBC không đáp ứng UDCA, tầm soát CCA cho PSC và HCC cho mọi xơ gan.",
+                                "problems": [
+                                    {
+                                        "id": "eai_prob_longterm_immunosuppression",
+                                        "problemName": "Duy trì ức chế miễn dịch &amp; Đánh giá đáp ứng PBC",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Duy trì ức chế miễn dịch AIH",
+                                                "content": "Duy trì Azathioprine 1-1.5 mg/kg/ngày + Prednisolone 5mg/ngày (hoặc ngưng hẳn Prednisolone nếu đạt lui bệnh hoàn toàn về mặt sinh hóa IgG và ALT bình thường ≥ 24 tháng).",
+                                                "isHighlighted": true
+                                            },
+                                            {
+                                                "category": "Chuyển thuốc hàng 2 cho PBC",
+                                                "content": "Nếu sau 12 tháng dùng UDCA mà ALP vẫn &gt; 1.67 lần ULN: Phối hợp thêm Obeticholic Acid (OCA) 5mg/ngày hoặc Elafibranor 80mg/ngày.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "IgG, ALT/AST, ALP, Bilirubin, FibroScan LSM",
+                                                "frequency": "Mỗi 3 - 6 tháng",
+                                                "target": "IgG và ALT bình thường hoàn toàn, ALP &lt; 1.5 lần ULN"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "eai_prob_psc_cca_surveillance",
+                                        "problemName": "Tầm soát Ung thư Đường mật (CCA) ở PSC &amp; Tầm soát HCC",
+                                        "problemType": "paraclinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Tầm soát Ung thư Đường mật (Cholangiocarcinoma - CCA) cho PSC",
+                                                "content": "Bệnh nhân PSC có nguy cơ rất cao bị Ung thư đường mật. Bắt buộc Chụp MRCP / MRI gan cản từ + Xét nghiệm CA 19-9 định kỳ mỗi 6-12 tháng.",
+                                                "isHighlighted": true
+                                            },
+                                            {
+                                                "category": "Tầm soát HCC &amp; Đánh giá Tái bù trừ",
+                                                "content": "Siêu âm bụng + AFP / PIVKA-II mỗi 6 tháng tầm soát HCC. Đánh giá tiêu chuẩn Recompensation nếu đạt lui bệnh miễn dịch bền vững.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "MRCP, CA 19-9, Siêu âm bụng, AFP, PIVKA-II, Thang điểm Child-Pugh",
+                                                "frequency": "Mỗi 6 - 12 tháng",
+                                                "target": "Không có hẹp đường mật nghi ngờ CCA, CA 19-9 &lt; 37 U/mL, Không có u gan mới"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "etio_vascular",
+                        "name": "Nhánh 4: Xơ gan do căn nguyên mạch máu (Hội chứng Budd-Chiari, Bệnh gan do tim, Bệnh tắc xoang tĩnh mạch gan SOS/VOD, Huyết khối tĩnh mạch cửa)",
+                        "badgeText": "Do Mạch máu",
+                        "color": "cyan",
+                        "criteria": "Xơ gan hình thành do tắc nghẽn hoặc rối loạn dòng chảy mạch máu gan: (1) Hội chứng Budd-Chiari (BCS): Tắc nghẽn dòng ra tĩnh mạch gan do huyết khối hoặc màng ngăn trên Siêu âm Doppler / CT / MRI / Chụp mạch; (2) Bệnh gan do tim (Congestive Hepatopathy / Cardiac Cirrhosis): Suy tim phải mạn tính, hẹp/hở van 3 lá nặng, viêm màng ngoài tim co thắt kèm tĩnh mạch cảnh nổi, gan to đau, TM gan giãn to trên siêu âm; (3) Bệnh tắc xoang tĩnh mạch gan (SOS / VOD): Tiền sử hóa trị / ghép tế bào gốc, vàng da, gan to, cổ trướng cấp; (4) Huyết khối tĩnh mạch cửa (PVT) mạn tính gây tăng áp cửa dốc đứng.",
+                        "triage": "Nhập viện Cấp cứu / Khoa Gan mật - Mạch máu / ICU nếu có tắc tĩnh mạch gan cấp tính, huyết khối lan rộng, suy gan cấp trên nền mạn (ACLF) hoặc cổ trướng tiến triển nhanh.",
+                        "targetVitals": "Dòng chảy tĩnh mạch gan/tĩnh mạch cửa tái thông tốt trên Doppler; Chức năng tim cải thiện (EF &gt; 45-50%, CVP 6-10 cmH2O); HATT ≥ 90-100 mmHg; Cổ trướng được kiểm soát; INR đạt mục tiêu điều trị kháng đông (2.0 - 3.0 nếu dùng Warfarin).",
+                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Tắc tĩnh mạch gan cấp tính tiến triển nặng (Budd-Chiari cấp gây hoại tử tế bào gan ồ ạt, Bilirubin tăng vọt, INR &gt; 2.0, Bệnh não gan) hoặc Huyết khối TM cửa lan rộng vào TM mạc treo tràng trên gây hoại tử ruột -&gt; Can thiệp can thiệp mạch khẩn cấp (Nong / Đặt Stent TM gan, Đặt TIPS cấp cứu, Tiêu sợi huyết catheter) hoặc Phẫu thuật / Ghép gan khẩn cấp.",
+                        "dischargeCriteria": "Mạch máu gan tái thông tốt trên siêu âm Doppler; Liệu pháp kháng đông đường uống ổn định, không có biến cố xuất huyết; Chức năng tim và cổ trướng được kiểm soát bù trừ; Dung nạp tốt phác đồ điều trị suy tim.",
+                        "drugs": [
+                            [
+                                "Enoxaparin (LMWH)",
+                                "1 mg/kg SC q12h (hoặc 1.5 mg/kg SC q24h)",
+                                "Thuốc kháng đông tiêm khởi đầu cho Hội chứng Budd-Chiari hoặc Huyết khối tĩnh mạch cửa cấp tính. Chỉnh liều khi eGFR &lt; 30 mL/phút."
+                            ],
+                            [
+                                "Rivaroxaban / Apixaban (DOACs)",
+                                "Rivaroxaban 15-20 mg PO q24h hoặc Apixaban 5 mg PO q12h",
+                                "Thuốc kháng đông đường uống thế hệ mới ưu tiên cho xơ gan do Budd-Chiari / Huyết khối TM cửa ở giai đoạn xơ gan còn bù (Child-Pugh A/B nhẹ)."
+                            ],
+                            [
+                                "Warfarin",
+                                "2 - 5 mg PO q24h (chỉnh liều theo mục tiêu INR 2.0 - 3.0)",
+                                "Thuốc kháng đông kháng vitamin K thay thế khi có chống chỉ định DOACs hoặc suy thận nặng."
+                            ],
+                            [
+                                "Alteplase (rTPA)",
+                                "0.5 - 1.0 mg/giờ truyền qua Catheter tại chỗ tĩnh mạch gan x 12 - 24 giờ",
+                                "Thuốc tiêu sợi huyết can thiệp tại chỗ cho tắc tĩnh mạch gan cấp tính / Budd-Chiari cấp trong vòng 14 ngày đầu."
+                            ],
+                            [
+                                "Defibrotide",
+                                "6.25 mg/kg IV q6h (truyen tĩnh mạch trong 2 giờ) x tối thiểu 21 ngày",
+                                "Thuốc điều trị đặc hiệu đầu tay cho Bệnh tắc xoang tĩnh mạch gan (SOS / VOD) sau ghép tế bào gốc."
+                            ],
+                            [
+                                "Sacubitril / Valsartan (ARNI) / Spironolactone / SGLT2i",
+                                "Liều cá thể hóa theo huyết áp và chức năng thận",
+                                "Phác đồ điều trị suy tim nền tối ưu cho bệnh nhân Bệnh gan do tim (Congestive Hepatopathy)."
+                            ],
+                            [
+                                "Carvedilol / Propranolol",
+                                "Carvedilol 6.25 - 12.5 mg/ngày PO hoặc Propranolol 40 - 160 mg/ngày PO",
+                                "Thuốc chẹn beta không chọn lọc dự phòng vỡ GEV và giảm áp lực tĩnh mạch cửa."
+                            ]
+                        ],
+                        "timelinePhases": [
+                            {
+                                "id": "eva_phase_1",
+                                "dayRange": "N1 - N30",
+                                "phaseName": "Giai đoạn Cấp cứu Tái thông Mạch máu, Chống đông &amp; Tối ưu Huyết động Tim mạch",
+                                "clinicalGoal": "Khởi đầu ngay liệu pháp kháng đông (LMWH/DOACs), can thiệp nong/stent hoặc TIPS nếu Budd-Chiari không đáp ứng thuốc, tối ưu phác đồ suy tim cho bệnh gan do tim và chọc tháo cổ trướng.",
+                                "problems": [
+                                    {
+                                        "id": "eva_prob_revascularization_anticoagulation",
+                                        "problemName": "Kháng đông &amp; Can thiệp Tái thông Mạch máu Gan (BCS / PVT)",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Liệu pháp Kháng đông Cấp tính",
+                                                "content": "Tiêm ngay Enoxaparin 1mg/kg SC q12h cho Budd-Chiari hoặc Huyết khối TM cửa mới xuất hiện. Sau 5-7 ngày chuyển sang DOACs (Rivaroxaban 20mg/ngày) hoặc Warfarin (duy trì INR 2.0-3.0).",
+                                                "isHighlighted": true
+                                            },
+                                            {
+                                                "category": "Can thiệp Mạch máu Tái thông (Angioplasty / Stenting / TIPS)",
+                                                "content": "Nếu Budd-Chiari không cải thiện lâm sàng sau khi dùng kháng đông: Tiến hành Chụp mạch nong tĩnh mạch gan / Đặt Stent tĩnh mạch gan hoặc Đặt TIPS (Transjugular Intrahepatic Portosystemic Shunt) để giải áp lực tĩnh mạch cửa.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "Siêu âm Doppler mạch máu gan, INR, Anti-Xa, CTM (Hb, PLT), Dấu hiệu xuất huyết",
+                                                "frequency": "Mỗi 3-7 ngày",
+                                                "target": "Tái thông dòng chảy tĩnh mạch gan/cửa, INR 2.0-3.0, Hb ổn định"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "eva_prob_congestive_hepatopathy",
+                                        "problemName": "Quản lý Bệnh gan do tim (Congestive Hepatopathy) &amp; Cổ trướng",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Tối ưu hóa điều trị Suy tim",
+                                                "content": "Phối hợp Chuyên khoa Tim mạch dùng Lợi tiểu quai (Furosemide) + Kháng Aldosterone (Spironolactone) giải ứ trệ tuần hoàn phải. Dùng ARNI / SGLT2i nếu suy tim HFrEF.",
+                                                "isHighlighted": true
+                                            },
+                                            {
+                                                "category": "Chọc tháo Cổ trướng + Albumin",
+                                                "content": "Chọc tháo dịch báng giải áp nếu cổ trướng căng to kèm truyền Human Albumin 20% (8g/L dịch tháo).",
+                                                "isHighlighted": false
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "CVP, NT-proBNP, Siêu âm tim, Cân nặng, Vòng bụng, Nước tiểu 24h",
+                                                "frequency": "Mỗi 1-3 ngày",
+                                                "target": "NT-proBNP giảm, CVP 6-10 cmH2O, Giảm cổ trướng"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "eva_phase_2",
+                                "dayRange": "N31 - N365+",
+                                "phaseName": "Giai đoạn Duy trì Kháng đông Lâu dài, Giám sát Thông Mạch &amp; Tầm soát Biến chứng",
+                                "clinicalGoal": "Duy trì kháng đông lâu dài / suốt đời cho Budd-Chiari, theo dõi độ thông suốt của Stent/TIPS bằng Doppler định kỳ, tầm soát HCC mỗi 6 tháng.",
+                                "problems": [
+                                    {
+                                        "id": "eva_prob_longterm_anticoagulation",
+                                        "problemName": "Duy trì Kháng đông &amp; Theo dõi can thiệp mạch",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Duy trì kháng đông kéo dài",
+                                                "content": "Duy trì DOACs hoặc Warfarin kéo dài (thường suốt đời cho Budd-Chiari do tăng đông nguyên phát).",
+                                                "isHighlighted": true
+                                            },
+                                            {
+                                                "category": "Giám sát độ thông của Stent / TIPS",
+                                                "content": "Siêu âm Doppler mạch máu gan định kỳ kiểm tra dòng chảy qua Stent/TIPS. Nếu có hẹp Stent: Tiến hành can thiệp bóng nong lại.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Siêu âm Doppler TM gan/TM cửa, INR / Anti-Xa, Chức năng gan (Child-Pugh)",
+                                                "frequency": "Mỗi 1 - 3 tháng trong năm đầu, sau đó mỗi 6 tháng",
+                                                "target": "Mạch máu thông suốt, Vmax qua TIPS 90-190 cm/s, Không tái phát huyết khối"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "eva_prob_hcc_and_recompensation_vascular",
+                                        "problemName": "Tầm soát Ung thư Gan (HCC) &amp; Giám sát Tái Bù Trừ",
+                                        "problemType": "paraclinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Tầm soát HCC",
+                                                "content": "Bắt buộc Siêu âm bụng + Xét nghiệm bộ ba chỉ dấu ung thư gan (AFP, AFP-L3, PIVKA-II) định kỳ mỗi 6 tháng.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Siêu âm bụng, AFP, PIVKA-II, Thang điểm Child-Pugh, MELD-Na",
+                                                "frequency": "Mỗi 6 tháng",
+                                                "target": "Không có u gan mới, Child-Pugh duy trì A"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "etio_cryptogenic",
+                        "name": "Nhánh 5: Xơ gan vô căn (Cryptogenic Cirrhosis)",
+                        "badgeText": "Vô căn (Cryptogenic)",
+                        "color": "slate",
+                        "criteria": "Xơ gan được xác định bằng hình ảnh học / sinh thiết gan / FibroScan F4 nhưng KHÔNG TÌM THẤY CĂN NGUYÊN sau khi đã thực hiện rà soát toàn diện: (1) Âm tính với các vi rút viêm gan (HBV, HCV, HDV, EBV, CMV); (2) Tiền sử không tiêu thụ rượu bia; (3) Loại trừ bệnh xơ gan mỡ chuyển hóa MASH (hoặc MASH giai đoạn muộn mất mỡ - Burned-out MASH); (4) Kháng thể tự miễn âm tính (ANA, SMA, LKM-1, AMA-M2); (5) Xét nghiệm chuyển hóa bình thường (Ferritin/TSAT, Ceruloplasmin, Alpha-1 Antitrypsin); (6) Mạch máu gan thông suốt trên Doppler.",
+                        "triage": "Ngoại trú chuyên khoa Gan mật đối với xơ gan còn bù; Nhập viện nội trú nếu có biến cố mất bù (Cổ trướng, Vỡ GEV, Bệnh não gan, HRS, ACLF).",
+                        "targetVitals": "Duy trì trạng thái còn bù Child-Pugh A (5-6 điểm); HATT 100-120 mmHg; Nhịp tim 55-60 lần/phút (nếu dùng NSBB); Không xuất hiện biến cố mất bù mới; Thể trạng và dinh dưỡng được tối ưu.",
+                        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Xuất hiện biến cố mất bù cấp tính (Xuất huyết do vỡ GEV, Cổ trướng nhiễm trùng SBP, Bệnh não gan Grade II-IV, Suy thận HRS-AKI) -&gt; Chuyển ngay sang Phác đồ Xử trí Xơ gan Mất bù tương ứng (Stage 3, 4, 5) / Đánh giá chỉ định Ghép gan.",
+                        "dischargeCriteria": "Chức năng gan ổn định (Child-Pugh A/B); Kiểm soát tốt tăng áp cửa và cổ trướng; Đã hoàn thành bộ xét nghiệm tầm soát loại trừ căn nguyên; Bệnh nhân hiểu rõ kế hoạch tái khám và tầm soát HCC định kỳ.",
+                        "drugs": [
+                            [
+                                "Carvedilol",
+                                "6.25 - 12.5 mg PO q24h",
+                                "Thuốc chẹn beta không chọn lọc ưu tiên dự phòng vỡ GEV và giảm áp lực tĩnh mạch cửa ở bệnh nhân xơ gan vô căn có CSPH."
+                            ],
+                            [
+                                "Propranolol",
+                                "40 - 160 mg/ngày PO chia 2 lần",
+                                "Thuốc chẹn beta không chọn lọc thay thế Carvedilol cho dự phòng vỡ GEV."
+                            ],
+                            [
+                                "Spironolactone",
+                                "100 - 200 mg PO q24h (buổi sáng)",
+                                "Thuốc lợi tiểu kháng aldosterone kiểm soát cổ trướng nhẹ - trung bình."
+                            ],
+                            [
+                                "Furosemide",
+                                "40 - 80 mg PO q24h",
+                                "Thuốc lợi tiểu quai phối hợp Spironolactone theo tỷ lệ chuẩn 100mg : 40mg."
+                            ],
+                            [
+                                "L-Ornithine L-Aspartate (LOLA)",
+                                "3 - 6 g/ngày PO",
+                                "Thuốc hỗ trợ giải độc amoniac và bảo vệ tế bào gan."
+                            ],
+                            [
+                                "BCAA (Axit amin chuỗi nhánh)",
+                                "12 - 14 g/ngày PO (uống trước khi đi ngủ)",
+                                "Bổ sung dinh dưỡng chống teo cơ (Sarcopenia) và cải thiện cân bằng nitơ."
+                            ],
+                            [
+                                "Vitamin D3 &amp; Calcium",
+                                "Vitamin D3 1000 - 2000 IU/ngày + Calcium 1000 mg/ngày PO",
+                                "Dự phòng và điều trị loãng xương ở bệnh nhân xơ gan mạn tính."
+                            ]
+                        ],
+                        "timelinePhases": [
+                            {
+                                "id": "ecr_phase_1",
+                                "dayRange": "N1 - N90",
+                                "phaseName": "Giai đoạn Rà soát Loại trừ Căn nguyên Triệt để, Đánh giá Tăng Áp Cửa &amp; Hỗ trợ Dinh dưỡng",
+                                "clinicalGoal": "Hoàn tất bảng kiểm loại trừ các căn nguyên hiếm gặp (Burned-out MASH, Tự miễn ẩn), kiểm soát tăng áp cửa bằng NSBB / EBL, tối ưu hóa dinh dưỡng chống teo cơ.",
+                                "problems": [
+                                    {
+                                        "id": "ecr_prob_etiology_workup",
+                                        "problemName": "Rà soát toàn diện các căn nguyên ẩn (Burned-out MASH / Tự miễn ẩn)",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Bảng kiểm Rà soát Căn nguyên sâu",
+                                                "content": "Xét nghiệm lại HBV DNA siêu nhạy, HCV RNA, Anti-HDV, Bảng kháng thể tự miễn mở rộng (SLA/LP, LC-1), Định lượng Alpha-1 Antitrypsin, Gen HFE (sắt) và Gen ATP7B (đồng). Rà soát lại chỉ số BMI và tiền sử đái tháo đường để xác định MASH ẩn.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Bộ markers vi rút, Tự miễn, Chuyển hóa, HbA1c, Lipid máu",
+                                                "frequency": "Thực hiện trong 30 ngày đầu",
+                                                "target": "Xác nhận chẩn đoán Xơ gan Vô căn chính xác"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "ecr_prob_portal_hypertension",
+                                        "problemName": "Quản lý Tăng áp lực Tĩnh mạch cửa &amp; Dự phòng vỡ GEV",
+                                        "problemType": "specific",
+                                        "treatments": [
+                                            {
+                                                "category": "Nội soi tầm soát &amp; Dùng NSBB",
+                                                "content": "Thực hiện Nội soi dạ dày - thực quản. Bắt đầu Carvedilol 6.25mg/ngày (hoặc Propranolol 40mg/ngày) nếu có GEV hoặc LSM ≥ 20 kPa. Dò liều đạt nhịp tim 55-60 bpm.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "Tần số tim, Huyết áp tư thế, Nội soi tiêu hóa",
+                                                "frequency": "Mỗi 1-2 tuần trong giai đoạn dò liều",
+                                                "target": "Nhịp tim 55-60 bpm, HATT ≥ 90 mmHg, Không vỡ GEV"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "ecr_prob_nutrition_sarcopenia",
+                                        "problemName": "Hỗ trợ Dinh dưỡng &amp; Chống teo cơ (Sarcopenia)",
+                                        "problemType": "clinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Can thiệp Dinh dưỡng Xơ gan",
+                                                "content": "Năng lượng 35-40 kcal/kg/ngày, Đạm 1.2-1.5 g/kg/ngày. Bắt buộc có Bữa ăn nhẹ muộn trước khi đi ngủ (Late-night snack). Bổ sung BCAA 12-14g/ngày và Vitamin D3 + Calcium.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "LS/CLS",
+                                                "metric": "Cân nặng, Khối lượng cơ (InBody / Lực nắm tay Handgrip), Albumin, Prealbumin",
+                                                "frequency": "Mỗi tháng",
+                                                "target": "Không sụt cân, Lực nắm tay cải thiện, Albumin &gt; 35 g/L"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ecr_phase_2",
+                                "dayRange": "N91 - N365+",
+                                "phaseName": "Giai đoạn Quản lý Mạn tính Lâu dài, Tầm soát HCC Định kỳ &amp; Đánh giá Ghép Gan",
+                                "clinicalGoal": "Duy trì trạng thái xơ gan còn bù, tầm soát ung thư gan (HCC) định kỳ mỗi 6 tháng, giám sát các dấu hiệu mất bù muộn và đăng ký hội chẩn Ghép gan khi điểm MELD-Na ≥ 15.",
+                                "problems": [
+                                    {
+                                        "id": "ecr_prob_hcc_surveillance_cryptogenic",
+                                        "problemName": "Tầm soát Ung thư Gan (HCC) Định kỳ",
+                                        "problemType": "paraclinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Tầm soát HCC bắt buộc",
+                                                "content": "Xơ gan vô căn có nguy cơ tiến triển HCC tương đương các căn nguyên khác. Bắt buộc Siêu âm bụng + Bộ ba chỉ dấu ung thư gan (AFP, AFP-L3, PIVKA-II) định kỳ mỗi 6 tháng.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Siêu âm bụng, AFP, PIVKA-II, AFP-L3",
+                                                "frequency": "Mỗi 6 tháng",
+                                                "target": "Không có u gan mới. Nếu có nốt nghi ngờ ≥ 10mm -&gt; Chụp CT Dynamic / MRI gan ngay"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "ecr_prob_decompensation_and_transplant",
+                                        "problemName": "Giám sát Mất bù &amp; Đánh giá Ghép Gan (Liver Transplantation)",
+                                        "problemType": "clinical",
+                                        "treatments": [
+                                            {
+                                                "category": "Đánh giá Chỉ định Ghép Gan",
+                                                "content": "Theo dõi sát thang điểm MELD-Na và Child-Pugh. Nếu tiến triển sang Child-Pugh C hoặc MELD-Na ≥ 15: Tiến hành lập hồ sơ đánh giá ghép gan tại trung tâm chuyên khoa.",
+                                                "isHighlighted": true
+                                            }
+                                        ],
+                                        "monitoring": [
+                                            {
+                                                "type": "CLS",
+                                                "metric": "Thang điểm MELD-Na, Child-Pugh, Creatinine, Bilirubin, INR, Sodium",
+                                                "frequency": "Mỗi 3 - 6 tháng",
+                                                "target": "Duy trì Child-Pugh A/B, MELD-Na &lt; 15"
                                             }
                                         ]
                                     }
