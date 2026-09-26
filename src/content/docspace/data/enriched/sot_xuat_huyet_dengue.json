@@ -94,154 +94,582 @@
   "stagingType": "severity",
   "hasSeverityGrading": true,
   "branching": {
+    "mode": "multi",
+    "selectionFlow": "independent",
     "axisName": "Phân loại theo Mức độ Lâm sàng Quyết định 2760/QĐ-BYT 2023",
-    "axisType": "severity",
-    "description": "Phân tầng người bệnh sốt xuất huyết Dengue theo mức độ nặng từ nhẹ (điều trị ngoại trú), có dấu hiệu cảnh báo (nhập viện nội trú), đến nặng/sốc (hồi sức cấp cứu) nhằm xác định đúng tuyến tiếp nhận và phác đồ dịch truyền thích hợp.",
-    "branches": [
+    "axes": [
       {
-        "id": "branch_1",
-        "name": "Nhánh 1: SXH Dengue không có dấu hiệu cảnh báo (A97.0)",
-        "badgeText": "Ngoại trú",
-        "color": "emerald",
-        "criteria": "Sống/đi từ vùng dịch + Sốt ≤ 7 ngày + Có ≥ 2 triệu chứng lâm sàng (nôn, phát ban, đau cơ/khớp, nhức hố mắt, xuất huyết da/Lacet+), KHÔNG có bất kỳ dấu hiệu cảnh báo nào.",
-        "triage": "Điều trị ngoại trú tại Y tế cơ sở / Trạm Y tế / Phòng khám ngoại trú (Xem xét chỉ định nhập viện nếu: sống một mình, nhà xa cơ sở y tế, gia đình không thể theo dõi sát, trẻ nhũ nhi, béo phì, phụ nữ mang thai, người lớn tuổi ≥ 60 tuổi, hoặc có bệnh mạn tính kèm theo).",
-        "targetVitals": "Sinh hiệu ổn định, thân nhiệt < 38.0°C, SpO₂ ≥ 96%, bài niệu ≥ 1.0 mL/kg/h, Hct bình thường.",
-        "escalationCriteria": "Xuất hiện bất kỳ dấu hiệu cảnh báo nào (lừ đừ, vật vã, đau bụng vùng gan liên tục, nôn ói nhiều, xuất huyết niêm mạc, gan to > 2cm, tiểu ít, Hct tăng dốc kèm tiểu cầu giảm nhanh) ➔ Khám lại ngay để chuyển viện / nhập viện nâng bậc lên Nhánh 2.",
-        "dischargeCriteria": "Hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, tỉnh táo, ăn uống tốt, Hct ổn định, tiểu cầu xu hướng hồi phục > 50 G/L.",
-        "drugs": [
-          [
-            "Paracetamol đơn chất",
-            "10 - 15 mg/kg/lần uống, cách mỗi 4 - 6 giờ (tối đa 60 mg/kg/24h)",
-            "Chỉ dùng khi sốt ≥ 38.5°C. Tuyệt đối KHÔNG dùng Aspirin, Ibuprofen, Analgin vì gây xuất huyết và toan máu."
-          ],
-          [
-            "Dung dịch bù điện giải đường uống (Oresol / ORS)",
-            "Uống nhiều theo nhu cầu cơ bản (khuyến khích uống từ 1500 - 2500 mL/ngày tùy cân nặng)",
-            "Pha đúng tỷ lệ, uống rải rác trong ngày. Có thể bổ sung nước trái cây (dừa, cam, chanh), nước cháo loãng với muối. Tránh thực phẩm/nước uống có màu đỏ, nâu, đen."
-          ]
-        ],
-        "timelinePhases": [
+        "axisId": "axis_dengue_severity",
+        "axisName": "Phân loại theo mức độ 2760/QĐ-BYT 2023",
+        "axisLabelShort": "Mức độ lâm sàng",
+        "axisIcon": "Activity",
+        "axisType": "severity",
+        "axisOrder": 1,
+        "isRequired": true,
+        "branches": [
           {
-            "id": "b1_p1",
-            "dayRange": "N1 - N3",
-            "phaseName": "Giai đoạn Sốt / Cấp tính",
-            "clinicalGoal": "Kiểm soát thân nhiệt an toàn, bù đủ dịch đường uống, phòng ngừa mất nước và cô đặc máu.",
-            "problems": [
+            "id": "branch_1",
+            "name": "Nhánh 1: SXH Dengue không có dấu hiệu cảnh báo (A97.0)",
+            "badgeText": "Ngoại trú",
+            "color": "emerald",
+            "criteria": "Sống/đi từ vùng dịch + Sốt ≤ 7 ngày + Có ≥ 2 triệu chứng lâm sàng (nôn, phát ban, đau cơ/khớp, nhức hố mắt, xuất huyết da/Lacet+), KHÔNG có bất kỳ dấu hiệu cảnh báo nào.",
+            "triage": "Điều trị ngoại trú tại Y tế cơ sở / Trạm Y tế / Phòng khám ngoại trú (Xem xét chỉ định nhập viện nếu: sống một mình, nhà xa cơ sở y tế, gia đình không thể theo dõi sát, trẻ nhũ nhi, béo phì, phụ nữ mang thai, người lớn tuổi ≥ 60 tuổi, hoặc có bệnh mạn tính kèm theo).",
+            "targetVitals": "Sinh hiệu ổn định, thân nhiệt < 38.0°C, SpO₂ ≥ 96%, bài niệu ≥ 1.0 mL/kg/h, Hct bình thường.",
+            "escalationCriteria": "Xuất hiện bất kỳ dấu hiệu cảnh báo nào (lừ đừ, vật vã, đau bụng vùng gan liên tục, nôn ói nhiều, xuất huyết niêm mạc, gan to > 2cm, tiểu ít, Hct tăng dốc kèm tiểu cầu giảm nhanh) ➔ Khám lại ngay để chuyển viện / nhập viện nâng bậc lên Nhánh 2.",
+            "dischargeCriteria": "Hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, tỉnh táo, ăn uống tốt, Hct ổn định, tiểu cầu xu hướng hồi phục > 50 G/L.",
+            "drugs": [
+              [
+                "Paracetamol đơn chất",
+                "10 - 15 mg/kg/lần uống, cách mỗi 4 - 6 giờ (tối đa 60 mg/kg/24h)",
+                "Chỉ dùng khi sốt ≥ 38.5°C. Tuyệt đối KHÔNG dùng Aspirin, Ibuprofen, Analgin vì gây xuất huyết và toan máu."
+              ],
+              [
+                "Dung dịch bù điện giải đường uống (Oresol / ORS)",
+                "Uống nhiều theo nhu cầu cơ bản (khuyến khích uống từ 1500 - 2500 mL/ngày tùy cân nặng)",
+                "Pha đúng tỷ lệ, uống rải rác trong ngày. Có thể bổ sung nước trái cây (dừa, cam, chanh), nước cháo loãng với muối. Tránh thực phẩm/nước uống có màu đỏ, nâu, đen."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b1_prob_spec",
-                "problemName": "Điều trị đặc hiệu",
-                "problemType": "specific",
-                "isNoSpecificTreatment": true,
-                "treatments": [
+                "id": "b1_p1",
+                "dayRange": "N1 - N3",
+                "phaseName": "Giai đoạn Sốt / Cấp tính",
+                "clinicalGoal": "Kiểm soát thân nhiệt an toàn, bù đủ dịch đường uống, phòng ngừa mất nước và cô đặc máu.",
+                "problems": [
                   {
-                    "category": "ĐT Đặc hiệu",
-                    "content": "Chưa có thuốc điều trị đặc hiệu virus Dengue. Chủ yếu điều trị triệu chứng và bù dịch đường uống sớm.",
-                    "isHighlighted": false
+                    "id": "b1_prob_spec",
+                    "problemName": "Điều trị đặc hiệu",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": true,
+                    "treatments": [
+                      {
+                        "category": "ĐT Đặc hiệu",
+                        "content": "Chưa có thuốc điều trị đặc hiệu virus Dengue. Chủ yếu điều trị triệu chứng và bù dịch đường uống sớm.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": []
+                  },
+                  {
+                    "id": "b1_prob_symp",
+                    "problemName": "Kiểm soát sốt & Bù dịch đường uống",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Hạ sốt",
+                        "content": "Uống Paracetamol đơn chất 10-15 mg/kg/lần khi sốt ≥ 38.5°C, nới lỏng quần áo, lau mát bằng nước ấm.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Bù dịch uống",
+                        "content": "Khuyến khích uống nhiều nước Oresol, nước trái cây, nước cháo loãng với muối.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Thân nhiệt, Lượng nước uống và nước tiểu",
+                        "frequency": "Mỗi 4 - 6 giờ",
+                        "target": "Thân nhiệt < 38.0°C, bài niệu ≥ 1.0 mL/kg/h"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Công thức máu (Hct, Bạch cầu, Tiểu cầu), Test nhanh NS1 Ag",
+                        "frequency": "1 lần/ngày",
+                        "target": "Xác định căn nguyên DENV, Hct bình thường"
+                      }
+                    ]
                   }
-                ],
-                "monitoring": []
+                ]
               },
               {
-                "id": "b1_prob_symp",
-                "problemName": "Kiểm soát sốt & Bù dịch đường uống",
-                "problemType": "clinical",
-                "treatments": [
+                "id": "b1_p2",
+                "dayRange": "N4 - N7",
+                "phaseName": "Giai đoạn Nguy hiểm (Theo dõi ngoại trú sát)",
+                "clinicalGoal": "Phát hiện sớm nhất các dấu hiệu cảnh báo để cho nhập viện kịp thời, duy trì bù dịch đường uống.",
+                "problems": [
                   {
-                    "category": "Hạ sốt",
-                    "content": "Uống Paracetamol đơn chất 10-15 mg/kg/lần khi sốt ≥ 38.5°C, nới lỏng quần áo, lau mát bằng nước ấm.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Bù dịch uống",
-                    "content": "Khuyến khích uống nhiều nước Oresol, nước trái cây, nước cháo loãng với muối.",
-                    "isHighlighted": true
+                    "id": "b1_prob_warning_check",
+                    "problemName": "Tầm soát dấu hiệu cảnh báo & Theo dõi sát",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Theo dõi",
+                        "content": "Tái khám hàng ngày. Hướng dẫn người nhà nhận biết ngay các dấu hiệu cảnh báo (đau bụng vùng gan, nôn nhiều, lừ đừ, chảy máu niêm mạc, tiểu ít).",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Bù dịch",
+                        "content": "Tiếp tục uống nhiều nước Oresol nếu bệnh nhân còn uống tốt và không có dấu hiệu cảnh báo.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Dấu hiệu cảnh báo, Tri giác, Xuất huyết niêm mạc, Bài niệu",
+                        "frequency": "Tái khám mỗi ngày hoặc khám ngay khi có dấu hiệu nặng",
+                        "target": "Không xuất hiện dấu hiệu cảnh báo"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Công thức máu (Hct, Tiểu cầu)",
+                        "frequency": "1 lần/ngày",
+                        "target": "Hct không tăng dốc, tiểu cầu không giảm quá nhanh dưới 100 G/L"
+                      }
+                    ]
                   }
-                ],
-                "monitoring": [
+                ]
+              },
+              {
+                "id": "b1_p3",
+                "dayRange": "N8 - N10",
+                "phaseName": "Giai đoạn Hồi phục",
+                "clinicalGoal": "Phục hồi thể trạng, dinh dưỡng lỏng mềm nhẹ nhàng, ngừng các biện pháp theo dõi dồn dập.",
+                "problems": [
                   {
-                    "type": "LS",
-                    "metric": "Thân nhiệt, Lượng nước uống và nước tiểu",
-                    "frequency": "Mỗi 4 - 6 giờ",
-                    "target": "Thân nhiệt < 38.0°C, bài niệu ≥ 1.0 mL/kg/h"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Công thức máu (Hct, Bạch cầu, Tiểu cầu), Test nhanh NS1 Ag",
-                    "frequency": "1 lần/ngày",
-                    "target": "Xác định căn nguyên DENV, Hct bình thường"
+                    "id": "b1_prob_recovery",
+                    "problemName": "Phục hồi sức khỏe & Dinh dưỡng",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Dinh dưỡng",
+                        "content": "Cho ăn thức ăn lỏng, mềm, giàu dinh dưỡng, tăng cường bữa phụ.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Toàn trạng, Tri giác, Thân nhiệt, Bài niệu",
+                        "frequency": "Mỗi ngày",
+                        "target": "Hết sốt ≥ 48h, tỉnh táo, ăn uống bình thường"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Công thức máu (Hct, Tiểu cầu)",
+                        "frequency": "Kiểm tra trước khi kết thúc theo dõi",
+                        "target": "Hct trở về bình thường, tiểu cầu > 50 G/L và đang tăng"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "id": "b1_p2",
-            "dayRange": "N4 - N7",
-            "phaseName": "Giai đoạn Nguy hiểm (Theo dõi ngoại trú sát)",
-            "clinicalGoal": "Phát hiện sớm nhất các dấu hiệu cảnh báo để cho nhập viện kịp thời, duy trì bù dịch đường uống.",
-            "problems": [
+            "id": "branch_2",
+            "name": "Nhánh 2: SXH Dengue có dấu hiệu cảnh báo (A97.1)",
+            "badgeText": "Nội trú 100%",
+            "color": "amber",
+            "criteria": "Bệnh nhân SXH Dengue có ít nhất 1 trong các dấu hiệu cảnh báo: Vật vã/lừ đừ/li bì; Đau bụng nhiều và liên tục hoặc tăng cảm giác đau vùng gan; Nôn ói nhiều (≥3 lần/1h hoặc ≥4 lần/6h); Xuất huyết niêm mạc; Gan to > 2cm dưới bờ sườn; Tiểu ít; Hct tăng kèm tiểu cầu giảm nhanh; AST/ALT ≥ 400 U/L; Tràn dịch màng phổi, màng bụng trên siêu âm hoặc X-quang.",
+            "triage": "Nhập viện điều trị nội trú 100% tại Khoa Nội / Nhi / Truyền nhiễm bệnh viện Quận/Huyện/Tỉnh.",
+            "targetVitals": "HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, SpO₂ ≥ 95%, Nước tiểu ≥ 0.5 - 1.0 mL/kg/h, Hct giảm ổn định.",
+            "escalationCriteria": "BÁO ĐỘNG ĐỎ: Xuất hiện dấu hiệu sốc (mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg, tụt HA, chi lạnh ẩm), suy hô hấp nặng, xuất huyết nặng ➔ Báo động đỏ chuyển Khoa Hồi sức Cấp cứu (ICU) / Nhánh 3 ngay lập tức.",
+            "dischargeCriteria": "Hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, ngưng dịch truyền tĩnh mạch ≥ 24 giờ mà huyết động ổn định, ăn uống tốt, bài niệu tốt, Hct bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, men gan < 400 U/L.",
+            "drugs": [
+              [
+                "Ringer Lactate / Ringer Acetate / NaCl 0.9%",
+                "Truyền IV nấc thang: Trẻ em: 6-7 mL/kg/h x 1-2h ➔ 5 mL/kg/h x 1-2h ➔ 3 mL/kg/h x 2-4h. Người lớn: 6 mL/kg/h x 1-2h ➔ 3 mL/kg/h x 2-4h ➔ 1.5 mL/kg/h x 6-18h",
+                "Chỉ định khi nôn nhiều không uống được + Hct cao HOẶC nôn nhiều + có dấu mất nước; tay chân mát, mạch nhanh, HA bình thường. Theo dõi Hct và lâm sàng mỗi 2-4 giờ để giảm tốc độ truyền."
+              ],
+              [
+                "Paracetamol đơn chất",
+                "10 - 15 mg/kg/lần uống (nếu uống được), cách 4 - 6 giờ khi sốt ≥ 38.5°C",
+                "Tổng liều không quá 60 mg/kg/24h. Tuyệt đối không dùng NSAIDs."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b1_prob_warning_check",
-                "problemName": "Tầm soát dấu hiệu cảnh báo & Theo dõi sát",
-                "problemType": "clinical",
-                "treatments": [
+                "id": "b2_p1",
+                "dayRange": "N3 - N7",
+                "phaseName": "Giai đoạn Nguy hiểm (Điều trị & Bù dịch Nội trú)",
+                "clinicalGoal": "Phòng ngừa và xử trí thoát huyết tương, duy trì thể tích tuần hoàn hiệu quả, ngăn ngừa tiến triển sang sốc.",
+                "problems": [
                   {
-                    "category": "Theo dõi",
-                    "content": "Tái khám hàng ngày. Hướng dẫn người nhà nhận biết ngay các dấu hiệu cảnh báo (đau bụng vùng gan, nôn nhiều, lừ đừ, chảy máu niêm mạc, tiểu ít).",
-                    "isHighlighted": true
+                    "id": "b2_prob_fluid_resuscitation",
+                    "problemName": "Liệu pháp bù dịch tĩnh mạch nấc thang",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                      {
+                        "category": "Truyền dịch điện giải",
+                        "content": "Truyền Ringer Lactate hoặc NaCl 0.9% tốc độ 6 mL/kg/h trong 1 - 2 giờ. Nếu lâm sàng cải thiện và Hct giảm, giảm tốc độ xuống 3 mL/kg/h trong 2 - 4 giờ, sau đó 1.5 mL/kg/h trong 6 - 18 giờ.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Hạ sốt",
+                        "content": "Nếu còn sốt ≥ 38.5°C: Cho uống Paracetamol 10-15 mg/kg/lần, lau mát nước ấm.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Mạch, Huyết áp, Hiệu áp, Nhịp thở, Tri giác, Lượng nước tiểu, Dấu hiệu xuất huyết",
+                        "frequency": "Mỗi 1 - 2 giờ trong giai đoạn bù dịch cấp, sau đó mỗi 2 - 4 giờ",
+                        "target": "Mạch rõ, HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, bài niệu ≥ 0.5 - 1.0 mL/kg/h"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hematocrit (Hct), Tiểu cầu, Men gan (AST/ALT), Siêu âm ổ bụng/màng phổi",
+                        "frequency": "Hct mỗi 2 - 4 giờ trong thời gian truyền dịch; AST/ALT, Siêu âm theo chỉ định",
+                        "target": "Hct giảm dần về giá trị nền, không thoát dịch nặng"
+                      }
+                    ]
                   },
                   {
-                    "category": "Bù dịch",
-                    "content": "Tiếp tục uống nhiều nước Oresol nếu bệnh nhân còn uống tốt và không có dấu hiệu cảnh báo.",
-                    "isHighlighted": false
+                    "id": "b2_prob_escalation_monitoring",
+                    "problemName": "Giám sát nguy cơ Báo động đỏ (Sốc / Xuất huyết nặng)",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Cảnh báo leo thang",
+                        "content": "Nếu tay chân lạnh, mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg hoặc tụt HA: Chuyển chống sốc theo phác đồ SXH Dengue nặng (Nhánh 3) ngay.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Dấu hiệu sốc (chi lạnh, CRT > 2s, mạch nhẹ, HA kẹp/tụt)",
+                        "frequency": "Mỗi 30 - 60 phút",
+                        "target": "Phát hiện sốc lập tức trong giờ đầu"
+                      }
+                    ]
                   }
-                ],
-                "monitoring": [
+                ]
+              },
+              {
+                "id": "b2_p2",
+                "dayRange": "N7 - N10",
+                "phaseName": "Giai đoạn Hồi phục & Cai dịch truyền",
+                "clinicalGoal": "Ngừng dịch truyền tĩnh mạch an toàn, phòng ngừa quá tải dịch / phù phổi cấp, phục hồi dinh dưỡng đường uống.",
+                "problems": [
                   {
-                    "type": "LS",
-                    "metric": "Dấu hiệu cảnh báo, Tri giác, Xuất huyết niêm mạc, Bài niệu",
-                    "frequency": "Tái khám mỗi ngày hoặc khám ngay khi có dấu hiệu nặng",
-                    "target": "Không xuất hiện dấu hiệu cảnh báo"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Công thức máu (Hct, Tiểu cầu)",
-                    "frequency": "1 lần/ngày",
-                    "target": "Hct không tăng dốc, tiểu cầu không giảm quá nhanh dưới 100 G/L"
+                    "id": "b2_prob_weaning_fluid",
+                    "problemName": "Cai dịch truyền & Theo dõi tái hấp thu",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Ngưng dịch",
+                        "content": "Xem xét ngưng dịch truyền tĩnh mạch khi lâm sàng ổn định, hết sốt > 24-48h, Hct bình thường và bài niệu tốt (thường tổng thời gian truyền dịch không quá 24-48h).",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Chống quá tải dịch",
+                        "content": "Theo dõi sát dấu hiệu dư dịch / phù phổi (ho, khó thở, SpO₂ giảm, tĩnh mạch cổ nổi). Nếu phù phổi: ngưng dịch ngay, thở NCPAP/Oxy, dùng Furosemide nếu huyết động cho phép.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Dinh dưỡng",
+                        "content": "Cho ăn sớm đường miệng với thức ăn lỏng, mềm, giàu năng lượng.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Nhịp thở, SpO₂, Nghe phổi, Tình trạng phù, Lượng nước tiểu",
+                        "frequency": "Mỗi 4 - 6 giờ",
+                        "target": "Không có dấu hiệu quá tải dịch, SpO₂ ≥ 96%"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hct, Tiểu cầu, AST/ALT",
+                        "frequency": "1 lần/ngày",
+                        "target": "Hct bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, AST/ALT < 400 U/L"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "id": "b1_p3",
-            "dayRange": "N8 - N10",
-            "phaseName": "Giai đoạn Hồi phục",
-            "clinicalGoal": "Phục hồi thể trạng, dinh dưỡng lỏng mềm nhẹ nhàng, ngừng các biện pháp theo dõi dồn dập.",
-            "problems": [
+            "id": "branch_3",
+            "name": "Nhánh 3: Sốt xuất huyết Dengue nặng (A97.2)",
+            "badgeText": "Hồi sức ICU",
+            "color": "rose",
+            "criteria": "Sống/đi từ vùng có dịch + Sốt ≤ 7 ngày + Có ít nhất 1 trong các biểu hiện nặng sau: (1) Thoát huyết tương nặng dẫn tới Sốc SXH Dengue (DSS), Sốc SXH Dengue nặng (M = 0, HA = 0) hoặc Ứ dịch dẫn đến suy hô hấp; (2) Xuất huyết nặng (XHTH ồ ạt, nôn ra máu, tiêu phân đen, xuất huyết âm đạo nặng, xuất huyết nội tạng); (3) Suy các tạng nặng (Gan: AST hoặc ALT ≥ 1000 U/L; Thần kinh trung ương: SXHD thể não, rối loạn tri giác, co giật, hôn mê; Tim: Viêm cơ tim, suy tim; Thận: Suy thận cấp).",
+            "triage": "Nhập Khoa Hồi sức Cấp cứu (ICU) / Phòng Cấp cứu / Bệnh viện Tuyến Tỉnh, Tuyến Trung ương khẩn cấp.",
+            "targetVitals": "MAP ≥ 65 mmHg, HATT ≥ 90 mmHg (ở người lớn) hoặc bình thường theo tuổi (ở trẻ em), SpO₂ ≥ 95%, CRT < 2s, Bài niệu ≥ 0.5 - 1.0 mL/kg/h, Lactate máu < 2.0 mmol/L, ScvO₂ ≥ 70%.",
+            "escalationCriteria": "BÁO ĐỘNG ĐỎ ICU: Sốc kéo dài / Tái sốc ≥ 2 lần / Thất bại bù dịch điện giải và cao phân tử (> 100 mL/kg) kèm vận mạch; Xuất huyết tiêu hóa ồ ạt không cầm; Suy hô hấp nặng / ARDS thất bại với CPAP/thở máy; Suy gan cấp (bệnh não gan độ III-IV, INR ≥ 2.5); Suy thận cấp cần lọc máu liên tục ➔ Báo động đỏ toàn viện, hội chẩn chuyên gia tuyến trên khẩn cấp, xem xét truyền Albumin (1 g/kg), phối hợp vận mạch (Noradrenaline, Adrenaline, Dobutamine, Dopamine), lọc máu CVVHDF, thay huyết tương (TPE), ECMO.",
+            "dischargeCriteria": "Thoát sốc hoàn toàn, hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, ngưng dịch truyền tĩnh mạch và vận mạch ≥ 24 - 48 giờ mà huyết động hoàn toàn ổn định, không còn xuất huyết tiến triển, ăn uống tốt, bài niệu tốt, Hct trở về bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, men gan AST/ALT < 400 U/L.",
+            "drugs": [
+              [
+                "Ringer Lactate / Ringer Acetate / NaCl 0.9%",
+                "Trẻ em chống sốc: 20 mL/kg/h (hoặc 20 mL/kg/15 - 30 phút nếu tụt HA nặng). Sốc nặng (M=0, HA=0): Bơm trực tiếp IV 20 mL/kg/15 phút. Nấc thang giảm liều: 10 mL/kg/h x 1-2h ➔ 7.5 mL/kg/h x 1-2h ➔ 5 mL/kg/h x 3-4h ➔ 3 mL/kg/h x 4-6h. Người lớn chống sốc: 15 mL/kg/h (Sốc nặng: Bolus 15 mL/kg/15 phút). Nấc thang giảm liều: 10 mL/kg/h x 2h ➔ 6 mL/kg/h x 2h ➔ 3 mL/kg/h x 5-7h ➔ 1.5 mL/kg/h x 12h.",
+                "Dịch truyền tinh thể chọn lựa đầu tiên. Dùng Ringer Acetate hoặc NaCl 0.9% khi có tổn thương gan nặng / AST, ALT ≥ 1000 U/L. Trẻ béo phì / người lớn BMI ≥ 25 kg/m² bắt buộc dùng cân nặng hiệu chỉnh."
+              ],
+              [
+                "Dung dịch Cao phân tử (Dextran 40, Dextran 70, 6% HES 200, 6% HES 130, Gelatin)",
+                "Trẻ em: 10 - 20 mL/kg/h x 1 giờ (Sốc nặng: 15 - 20 mL/kg/h), giảm liều nấc thang 10 ➔ 7.5 ➔ 5 mL/kg/h. Người lớn: 10 - 15 mL/kg/h x 1 giờ (Sốc nặng: 15 mL/kg/h), lặp lại 10 mL/kg/h nếu chưa cải thiện.",
+                "Chỉ định khi sốc không cải thiện với dịch tinh thể + Hct còn cao/tăng (≥ 40%), hoặc khi tái sốc. Tác dụng phụ rối loạn đông máu, tổn thương gan/thận khi tổng liều > 60 mL/kg. Giảm tốc độ ngay khi lâm sàng cải thiện và Hct giảm."
+              ],
+              [
+                "Dung dịch Albumin 5% / 10%",
+                "1 g/kg (hoặc 5 - 20 mL/kg/h) truyền tĩnh mạch trong 4 - 6 giờ.",
+                "Chỉ định khi Albumin máu ≤ 2.5 g/dL kèm: Sốc kéo dài không ổn định ≥ 6 giờ, hoặc đã bù dịch 40 - 60 mL/kg, hoặc tái sốc ≥ 2 lần, hoặc tổng CPT ≥ 60 mL/kg đang chống sốc CPT > 5-10 mL/kg/h, hoặc suy gan nặng/ARDS/suy thận."
+              ],
+              [
+                "Hồng cầu lắng (PRBC) / Máu toàn phần",
+                "Hồng cầu lắng: 5 - 10 mL/kg truyền tĩnh mạch trong 1 - 2 giờ. Máu toàn phần (mới < 7 ngày): 10 - 20 mL/kg truyền IV.",
+                "Chỉ định khi Hct ≤ 35% (hoặc giảm nhanh > 20% so với lúc vào sốc) kèm sốc thất bại/đáp ứng kém với bù dịch ≥ 40 mL/kg, hoặc Hct ≤ 40% kèm đang xuất huyết tiêu hóa ồ ạt. Mục tiêu duy trì Hct ≥ 35%."
+              ],
+              [
+                "Huyết tương tươi đông lạnh (FFP)",
+                "10 - 20 mL/kg truyền tĩnh mạch trong 2 - 4 giờ.",
+                "Chỉ định khi có rối loạn đông máu nặng (PT > 2 lần bình thường hoặc INR > 1.5) kèm: đang xuất huyết nặng, hoặc có chỉ định thủ thuật xâm lấn (chọc màng phổi/màng bụng), hoặc truyền máu khối lượng lớn (≥ 1/2 thể tích máu)."
+              ],
+              [
+                "Kết tủa lạnh (Cryoprecipitate)",
+                "1 túi / 6 kg cân nặng (1 túi chứa khoảng 150 mg Fibrinogen).",
+                "Chỉ định khi đang xuất huyết nặng kèm nồng độ Fibrinogen máu < 1.0 g/L."
+              ],
+              [
+                "Khối tiểu cầu đậm đặc / Tiểu cầu chiết tách",
+                "1 đơn vị tiểu cầu đậm đặc / 5 kg HOẶC 1 đơn vị tiểu cầu chiết tách / 10 kg truyền tĩnh mạch trong 1 - 2 giờ.",
+                "Chỉ định khi: Tiểu cầu < 50 G/L kèm đang xuất huyết nặng hoặc có chỉ định can thiệp thủ thuật/phẫu thuật; HOẶC Tiểu cầu < 5 G/L (xem xét tùy trường hợp). Không truyền tiểu cầu dự phòng khi không có xuất huyết."
+              ],
+              [
+                "Thuốc vận mạch & Tăng co bóp cơ tim (Noradrenaline, Adrenaline, Dobutamine, Dopamine)",
+                "Noradrenaline: 0.05 - 1.0 µg/kg/phút IV. Adrenaline: 0.05 - 0.3 µg/kg/phút IV. Dobutamine: 3 - 10 µg/kg/phút IV. Dopamine: 5 - 10 µg/kg/phút IV.",
+                "Chỉ định khi CVP > 10 - 15 cmH2O hoặc đã bù đủ dịch mà huyết áp không lên, giảm sức co bóp cơ tim hoặc giảm kháng lực mạch máu. Dopamine/Noradrenaline chọn hàng đầu; Dobutamine chọn khi có suy tim/quá tải dịch."
+              ],
+              [
+                "N-Acetylcysteine (NAC) tĩnh mạch",
+                "Trẻ em: Tấn công 150 mg/kg TTM 1h ➔ Duy trì 50 mg/kg TTM 4h ➔ 100 mg/kg TTM 16h ➔ Duy trì 6.25 mg/kg/h x 48-72h. Người lớn: 100 mg/kg/24h pha Glucose 5% x 3 - 5 ngày.",
+                "Chỉ định khi SXH Dengue nặng có tổn thương gan nặng / Suy gan cấp (AST/ALT ≥ 1000 U/L) kèm bệnh lý não gan hoặc INR ≥ 1.5 hoặc MELD score ≥ 15."
+              ],
+              [
+                "Omeprazole / Pantoprazole / Esomeprazole IV & Vitamin K1 IV",
+                "Omeprazole / PPI: 1 mg/kg/ngày IV. Vitamin K1: 1 mg/kg/ngày IV chậm (tối đa 20 mg/ngày).",
+                "PPI chỉ định khi có xuất huyết tiêu hóa hoặc tiền sử viêm loét dạ dày. Vitamin K1 chỉ định khi có tổn thương gan nặng / suy gan cấp / rối loạn đông máu."
+              ],
+              [
+                "Natri Bicarbonate 4.2% & Dextrose 30% & Calcium Chloride 10% & Mannitol 20%",
+                "Bicarbonate 4.2%: 2 mL/kg IV chậm khi pH < 7.35 / HCO3 < 17 mmol/L. Dextrose 30%: 1-2 mL/kg IV khi đường huyết < 40 mg/dL. Calci clorua 10%: 0.1-0.2 mL/kg IV chậm khi Ca++ < 1.0 mmol/L. Mannitol 20%: 0.5 g/kg/lần TTM 30 phút x 8h/lần khi tăng áp lực nội sọ/co giật.",
+                "Y lệnh cấp cứu điều trị rối loạn toan kiềm, hạ đường huyết, hạ calci máu và chống phù não trong SXHD thể não / suy tạng nặng."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b1_prob_recovery",
-                "problemName": "Phục hồi sức khỏe & Dinh dưỡng",
-                "problemType": "clinical",
-                "treatments": [
+                "id": "b3_p1",
+                "dayRange": "N3 - N7",
+                "phaseName": "Giai đoạn Nguy hiểm - Hồi sức Sốc & Suy tạng nặng (ICU)",
+                "clinicalGoal": "Tái lập thể tích tuần hoàn hiệu quả, dập tắt sốc thoát huyết tương, cầm máu khẩn cấp, bảo vệ chức năng các tạng sống còn và hạn chế tử vong.",
+                "problems": [
                   {
-                    "category": "Dinh dưỡng",
-                    "content": "Cho ăn thức ăn lỏng, mềm, giàu dinh dưỡng, tăng cường bữa phụ.",
-                    "isHighlighted": false
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Toàn trạng, Tri giác, Thân nhiệt, Bài niệu",
-                    "frequency": "Mỗi ngày",
-                    "target": "Hết sốt ≥ 48h, tỉnh táo, ăn uống bình thường"
+                    "id": "b3_prob_fluid_resuscitation_ladder",
+                    "problemName": "Phác đồ chống sốc dịch truyền nấc thang (Điện giải & Cao phân tử)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                      {
+                        "category": "Truyền dịch giờ đầu",
+                        "content": "Trẻ em: Bù nhanh Ringer Lactate / NaCl 0.9% 20 mL/kg/h (nếu tụt HA nặng 20 mL/kg/30 phút; sốc M=0, HA=0 bơm IV 20 mL/kg/15 phút). Người lớn: RL / NaCl 0.9% 15 mL/kg/h (Sốc nặng Bolus 15 mL/kg/15 phút). Trẻ dư cân/béo phì dùng cân nặng hiệu chỉnh.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Nấc thang giảm liều",
+                        "content": "Nếu đáp ứng tốt: Giảm liều nấc thang từng bước (Trẻ em: 10 ➔ 7.5 ➔ 5 ➔ 3 mL/kg/h; Người lớn: 10 ➔ 6 ➔ 3 ➔ 1.5 mL/kg/h). Đánh giá lâm sàng và Hct mỗi 1 - 2 giờ.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Chuyển Cao phân tử",
+                        "content": "Nếu sốc không đáp ứng dịch điện giải và Hct cao (≥ 40%): Chuyển Cao phân tử (Dextran 40/70, HES 200/130) 10 - 20 mL/kg/h x 1h. Giảm liều ngay khi ra sốc và Hct giảm.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Truyền Albumin",
+                        "content": "Truyền Albumin 5% hoặc 10% liều 1 g/kg (5 - 20 mL/kg/h) khi Albumin máu ≤ 2.5 g/dL kèm tái sốc ≥ 2 lần, hoặc sốc kéo dài ≥ 6h, hoặc tổng CPT ≥ 60 mL/kg.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Mạch, Huyết áp, Hiệu áp, CRT, Tri giác, Bài niệu, SpO₂",
+                        "frequency": "Mỗi 15 - 30 phút trong sốc; mỗi 1 giờ khi ra sốc",
+                        "target": "Mạch rõ, HATT ≥ 90 mmHg (người lớn) hoặc theo tuổi, CRT < 2s, Bài niệu ≥ 0.5 - 1.0 mL/kg/h"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hematocrit (Hct) tại giường, Lactate máu, Khí máu động mạch, CVP, HAĐMXL",
+                        "frequency": "Hct mỗi 1 giờ trong 6 giờ đầu, sau đó mỗi 2 - 4 giờ; CVP/HAĐMXL theo dõi liên tục",
+                        "target": "Hct trở về bình thường, Lactate < 2.0 mmol/L, CVP 10 - 15 cmH2O, ScvO₂ ≥ 70%"
+                      }
+                    ]
                   },
                   {
-                    "type": "CLS",
-                    "metric": "Công thức máu (Hct, Tiểu cầu)",
-                    "frequency": "Kiểm tra trước khi kết thúc theo dõi",
-                    "target": "Hct trở về bình thường, tiểu cầu > 50 G/L và đang tăng"
+                    "id": "b3_prob_severe_bleeding",
+                    "problemName": "Xử trí Xuất huyết nặng & Truyền máu, chế phẩm máu",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Truyền máu",
+                        "content": "Truyền Hồng cầu lắng 5 - 10 mL/kg (hoặc Máu toàn phần 10 - 20 mL/kg) trong 1 - 2 giờ khi Hct ≤ 35% (hoặc giảm nhanh > 20%) kèm sốc thất bại bù dịch hoặc đang xuất huyết tiêu hóa ồ ạt.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Truyền chế phẩm máu",
+                        "content": "Truyền Huyết tương tươi đông lạnh 10 - 20 mL/kg khi PT/INR > 1.5 kèm XH nặng; Truyền Kết tủa lạnh 1 túi/6kg khi Fibrinogen < 1 g/L; Truyền Khối tiểu cầu 1 ĐV/5kg khi Tiểu cầu < 50 G/L kèm XH nặng.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Cầm máu & Dược lý",
+                        "content": "Nhịn ăn uống, cầm máu cơ học (băng ép, nhét bấc mũi, nội soi can thiệp tiêu hóa), Omeprazole 1 mg/kg IV, Vitamin K1 1 mg/kg IV chậm.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Vị trí xuất huyết, màu sắc chất nôn/phân/nước tiểu, dấu hiệu thiếu máu cấp",
+                        "frequency": "Mỗi 1 - 2 giờ",
+                        "target": "Không có xuất huyết tiến triển, niêm mạc hồng"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hct, Tiểu cầu, Đông máu toàn bộ (PT, INR, aPTT, Fibrinogen)",
+                        "frequency": "Mỗi 2 - 4 giờ",
+                        "target": "Hct ≥ 35%, Tiểu cầu > 50 G/L, INR < 1.5, Fibrinogen > 1.0 g/L"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "b3_prob_organ_failure",
+                    "problemName": "Điều trị Tổn thương tạng nặng (Gan, Thần kinh, Thận, Tim)",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Suy gan cấp",
+                        "content": "Truyền tĩnh mạch N-Acetylcysteine (NAC) 100-150 mg/kg/ngày, Lactulose/thụt tháo điều trị bệnh não gan. Tránh dùng Ringer Lactate và Paracetamol. Xem xét Lọc máu liên tục CVVHDF hoặc Thay huyết tương (TPE).",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "SXHD thể não",
+                        "content": "Nằm đầu cao 30°, thở oxy/đặt NKQ thở máy tăng thông khí, chống co giật bằng Diazepam 0.2 mg/kg IV. Chống phù não: Mannitol 20% 0.5 g/kg/lần TTM 30p x 8h/lần xen kẽ NaCl 3% 4 mL/kg.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Suy thận cấp & Suy tim",
+                        "content": "Cân bằng dịch xuất nhập. Chỉ định Lọc máu liên tục CVVHDF khi suy thận cấp kèm toan máu nặng, quá tải dịch hoặc suy đa tạng. Viêm cơ tim/suy tim: Truyền vận mạch Dobutamine (3-10 µg/kg/p) hoặc Noradrenaline/Adrenaline, xem xét ECMO.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Thang điểm Glasgow, Tri giác, Đồng tử, Cơn co giật, Nhịp thở, Ran phổi, Nhịp tim",
+                        "frequency": "Mỗi 1 giờ",
+                        "target": "Glasgow 15 điểm, không co giật, tim phổi ổn định"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Men gan (AST, ALT), Bilirubin, NH3, Creatinine, ECG, Troponin I, Siêu âm tim/bụng",
+                        "frequency": "Mỗi 4 - 6 giờ hoặc 1 lần/ngày tùy diễn tiến",
+                        "target": "AST/ALT xu hướng giảm, Creatinine ổn định, không có biến đổi ECG nặng"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "b3_prob_electrolyte_acidosis",
+                    "problemName": "Điều chỉnh Toan chuyển hóa, Rối loạn điện giải & Đường huyết",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Điều trị ABCS",
+                        "content": "Toan chuyển hóa (pH < 7.35, HCO3 < 17): Truyền Natri Bicarbonate 4.2% 2 mL/kg IV chậm. Hạ đường huyết (< 40 mg/dL): Dextrose 30% 1-2 mL/kg IV chậm. Hạ Calci (Ca++ < 1.0 mmol/L): Calci Clorua 10% 0.1-0.2 mL/kg IV chậm. Hạ Natri máu nặng (< 125 mEq/L): NaCl 3% 4 mL/kg TTM 30p.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Dấu hiệu vã mồ hôi, co giật, rối loạn nhịp tim, nhịp thở Kussmaul",
+                        "frequency": "Mỗi 1 - 2 giờ",
+                        "target": "Sinh hiệu ổn định, hết rối loạn nhịp"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Khí máu động mạch, Đường huyết mao mạch, Ion đồ (Na+, K+, Ca++ ion hóa)",
+                        "frequency": "Mỗi 2 - 4 giờ trong giai đoạn cấp",
+                        "target": "pH 7.35 - 7.45, Đường huyết 80 - 180 mg/dL, Ca++ ≥ 1.0 mmol/L, Na+ ≥ 135 mEq/L"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "b3_p2",
+                "dayRange": "N7 - N10",
+                "phaseName": "Giai đoạn Hồi phục & Cai dịch truyền / Cai vận mạch",
+                "clinicalGoal": "Tháo dỡ dịch truyền và vận mạch an toàn, phòng ngừa quá tải tuần hoàn / phù phổi cấp do tái hấp thu dịch, phục hồi dinh dưỡng.",
+                "problems": [
+                  {
+                    "id": "b3_prob_weaning_resuscitation",
+                    "problemName": "Cai dịch truyền tĩnh mạch, cai vận mạch & Chống quá tải dịch",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Cai dịch & Vận mạch",
+                        "content": "Ngưng dịch truyền tĩnh mạch khi bệnh nhân ra sốc hoàn toàn ≥ 24 giờ, hết sốt ≥ 48 giờ, bài niệu tốt và Hct ổn định (thường tổng thời gian truyền dịch chống sốc từ 24 - 48 giờ). Giảm dần liều vận mạch đến ngưng hoàn toàn.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Chống quá tải dịch",
+                        "content": "Theo dõi sát hiện tượng tái hấp thu huyết tương (Hct giảm nhưng huyết động ổn định). Nếu có quá tải dịch / Phù phổi cấp (ho, khó thở, SpO₂ < 92%, ran ẩm): Ngưng dịch ngay, thở NCPAP / thở máy PEEP, dùng Furosemide 0.5 - 1 mg/kg IV.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Nhịp thở, SpO₂, Nghe phổi, Tĩnh mạch cổ nổi, Huyết áp, Lượng nước tiểu",
+                        "frequency": "Mỗi 2 - 4 giờ",
+                        "target": "Không có phù phổi, SpO₂ ≥ 96%, Bài niệu tốt > 1 mL/kg/h"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hct, X-quang ngực thẳng, Siêu âm màng phổi/ổ bụng",
+                        "frequency": "1 lần/ngày hoặc khi có khó thở",
+                        "target": "Hct bình thường (do pha loãng máu lành tính), giảm dịch tràn các màng"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "b3_prob_recovery_nutrition",
+                    "problemName": "Phục hồi chức năng tạng & Dinh dưỡng lỏng nhẹ đường miệng",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Dinh dưỡng đường miệng",
+                        "content": "Cho ăn sớm qua đường miệng ngay khi ra sốc và tỉnh táo. Cho ăn thức ăn lỏng, mềm, giàu đạm và vitamin, chia nhỏ bữa.",
+                        "isHighlighted": false
+                      },
+                      {
+                        "category": "Hồi phục tạng",
+                        "content": "Tiếp tục theo dõi chức năng gan, thận, đông máu đến khi các chỉ số trở về giới hạn an toàn.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Toàn trạng, Cảm giác thèm ăn, Bài niệu, Tình trạng tiêu hóa",
+                        "frequency": "Mỗi ngày",
+                        "target": "Ăn uống tốt, tỉnh táo, sinh hiệu hoàn toàn bình thường"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Công thức máu (Hct, Tiểu cầu, Bạch cầu), AST, ALT, Creatinine",
+                        "frequency": "Kiểm tra trước khi xuất viện",
+                        "target": "Hct bình thường, Tiểu cầu > 50 G/L và đang tăng, AST/ALT < 400 U/L"
+                      }
+                    ]
                   }
                 ]
               }
@@ -250,415 +678,354 @@
         ]
       },
       {
-        "id": "branch_2",
-        "name": "Nhánh 2: SXH Dengue có dấu hiệu cảnh báo (A97.1)",
-        "badgeText": "Nội trú 100%",
-        "color": "amber",
-        "criteria": "Bệnh nhân SXH Dengue có ít nhất 1 trong các dấu hiệu cảnh báo: Vật vã/lừ đừ/li bì; Đau bụng nhiều và liên tục hoặc tăng cảm giác đau vùng gan; Nôn ói nhiều (≥3 lần/1h hoặc ≥4 lần/6h); Xuất huyết niêm mạc; Gan to > 2cm dưới bờ sườn; Tiểu ít; Hct tăng kèm tiểu cầu giảm nhanh; AST/ALT ≥ 400 U/L; Tràn dịch màng phổi, màng bụng trên siêu âm hoặc X-quang.",
-        "triage": "Nhập viện điều trị nội trú 100% tại Khoa Nội / Nhi / Truyền nhiễm bệnh viện Quận/Huyện/Tỉnh.",
-        "targetVitals": "HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, SpO₂ ≥ 95%, Nước tiểu ≥ 0.5 - 1.0 mL/kg/h, Hct giảm ổn định.",
-        "escalationCriteria": "BÁO ĐỘNG ĐỎ: Xuất hiện dấu hiệu sốc (mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg, tụt HA, chi lạnh ẩm), suy hô hấp nặng, xuất huyết nặng ➔ Báo động đỏ chuyển Khoa Hồi sức Cấp cứu (ICU) / Nhánh 3 ngay lập tức.",
-        "dischargeCriteria": "Hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, ngưng dịch truyền tĩnh mạch ≥ 24 giờ mà huyết động ổn định, ăn uống tốt, bài niệu tốt, Hct bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, men gan < 400 U/L.",
-        "drugs": [
-          [
-            "Ringer Lactate / Ringer Acetate / NaCl 0.9%",
-            "Truyền IV nấc thang: Trẻ em: 6-7 mL/kg/h x 1-2h ➔ 5 mL/kg/h x 1-2h ➔ 3 mL/kg/h x 2-4h. Người lớn: 6 mL/kg/h x 1-2h ➔ 3 mL/kg/h x 2-4h ➔ 1.5 mL/kg/h x 6-18h",
-            "Chỉ định khi nôn nhiều không uống được + Hct cao HOẶC nôn nhiều + có dấu mất nước; tay chân mát, mạch nhanh, HA bình thường. Theo dõi Hct và lâm sàng mỗi 2-4 giờ để giảm tốc độ truyền."
-          ],
-          [
-            "Paracetamol đơn chất",
-            "10 - 15 mg/kg/lần uống (nếu uống được), cách 4 - 6 giờ khi sốt ≥ 38.5°C",
-            "Tổng liều không quá 60 mg/kg/24h. Tuyệt đối không dùng NSAIDs."
-          ]
-        ],
-        "timelinePhases": [
+        "axisId": "axis_dengue_phase",
+        "axisName": "Phân loại theo Giai đoạn Tiến triển Lâm sàng Sốt xuất huyết Dengue (QĐ 2760/QĐ-BYT 2023)",
+        "axisLabelShort": "Giai đoạn lâm sàng",
+        "axisIcon": "Activity",
+        "axisType": "stage",
+        "axisOrder": 2,
+        "isRequired": true,
+        "description": "Bệnh Sốt xuất huyết Dengue có diễn tiến lâm sàng động qua 3 giai đoạn liên tiếp: Pha Sốt (N1-N3), Pha Nguy hiểm (N3-N7) và Pha Phục hồi (Sau N7). Nhận diện chính xác giai đoạn giúp quyết định thời điểm bù dịch tĩnh mạch hay ngưng dịch kịp thời, tránh tai biến tái sốc hoặc quá tải tuần hoàn.",
+        "branches": [
           {
-            "id": "b2_p1",
-            "dayRange": "N3 - N7",
-            "phaseName": "Giai đoạn Nguy hiểm (Điều trị & Bù dịch Nội trú)",
-            "clinicalGoal": "Phòng ngừa và xử trí thoát huyết tương, duy trì thể tích tuần hoàn hiệu quả, ngăn ngừa tiến triển sang sốc.",
-            "problems": [
+            "id": "branch_pha_sot",
+            "name": "Pha 1: Giai đoạn Sốt (Febrile Phase - Ngày 1 đến Ngày 3)",
+            "badgeText": "Ngoại trú / Theo dõi hằng ngày",
+            "color": "amber",
+            "criteria": "Sốt cao đột ngột liên tục 39–40°C kèm ≥ 2 dấu hiệu: Nhức đầu, nhức 2 hốc mắt, đau cơ khớp, da xung huyết, phát ban, buồn nôn, xuất huyết dưới da hoặc nghiệm pháp Lacet (+). CTM: Hct bình thường hoặc bắt đầu tăng nhẹ, WBC giảm, PLT bình thường hoặc giảm nhẹ. Dengue NS1 Ag (+).",
+            "triage": "Ngoại trú / Trạm Y tế / Phòng khám Nội - Nhi",
+            "targetVitals": "HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, Thân nhiệt hạ về < 38°C khi dùng hạ sốt, SpO₂ ≥ 96%, Bài niệu ≥ 1.0 mL/kg/h.",
+            "escalationCriteria": "Xuất hiện ≥ 1 DẤU HIỆU CẢNH BÁO (đau bụng HSP liên tục, nôn ói ≥ 3 lần/1h hoặc ≥ 4 lần/6h, lừ đừ/vật vã, xuất huyết niêm mạc, Hct tăng dốc kèm PLT < 100 G/L) hoặc cơ địa nguy cơ cao (mang thai, nhũ nhi, béo phì, bệnh nền mạn) -> Nhập viện / Chuyển Pha 2 ngay lập tức.",
+            "dischargeCriteria": "Hết sốt > 48h tự nhiên, không xuất hiện dấu hiệu cảnh báo, Hct ổn định, PLT dừng tụt và có khuynh hướng hồi phục.",
+            "drugs": [
+              [
+                "Paracetamol 500mg (Hoặc dạng gói 80mg/150mg/250mg)",
+                "10–15 mg/kg/lần PO (trẻ em) hoặc 1 viên 500mg PO (người lớn), q4–6h khi Sốt ≥ 38.5°C. Tối đa 60 mg/kg/ngày (trẻ em), tối đa 3g/ngày (người lớn)",
+                "Hạ sốt đơn chất an toàn. Tuyệt đối CHỐNG CHỈ ĐỊNH Aspirin, Ibuprofen, NSAIDs do nguy cơ xuất huyết tiêu hóa nặng và hội chứng Reye."
+              ],
+              [
+                "Dung dịch Oresol / Nước trái cây / Nước cháo muối",
+                "Uống tự do theo nhu cầu, nhấp từng ngụm nhỏ. Bù dịch đường uống 1500–2500 mL/ngày (người lớn) hoặc theo nhu cầu nhu cầu cơ bản + mất nước (trẻ em)",
+                "Khuyến khích bù dịch đường uống sớm. Tránh các loại nước có màu đen hoặc đỏ (cà phê, nước củ dền, nước xá xị) để không lầm lẫn với xuất huyết tiêu hóa."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b2_prob_fluid_resuscitation",
-                "problemName": "Liệu pháp bù dịch tĩnh mạch nấc thang",
-                "problemType": "specific",
-                "isNoSpecificTreatment": false,
-                "treatments": [
+                "id": "b1_p1",
+                "dayRange": "N1 - N3",
+                "phaseName": "Giai đoạn Khởi phát / Pha sốt cấp tính",
+                "clinicalGoal": "Kiểm soát thân nhiệt an toàn, bù dịch đường uống tích cực, tầm soát phát hiện sớm các dấu hiệu cảnh báo chuyển pha.",
+                "problems": [
                   {
-                    "category": "Truyền dịch điện giải",
-                    "content": "Truyền Ringer Lactate hoặc NaCl 0.9% tốc độ 6 mL/kg/h trong 1 - 2 giờ. Nếu lâm sàng cải thiện và Hct giảm, giảm tốc độ xuống 3 mL/kg/h trong 2 - 4 giờ, sau đó 1.5 mL/kg/h trong 6 - 18 giờ.",
-                    "isHighlighted": true
+                    "id": "b1_prob_spec",
+                    "problemName": "Điều trị đặc hiệu",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": true,
+                    "treatments": [
+                      {
+                        "category": "ĐT Đặc hiệu",
+                        "content": "Chưa có thuốc điều trị kháng virus Dengue đặc hiệu. Khuyên bệnh nhân nghỉ ngơi tại giường, tránh vận động thể lực mạnh.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": []
                   },
                   {
-                    "category": "Hạ sốt",
-                    "content": "Nếu còn sốt ≥ 38.5°C: Cho uống Paracetamol 10-15 mg/kg/lần, lau mát nước ấm.",
-                    "isHighlighted": false
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Mạch, Huyết áp, Hiệu áp, Nhịp thở, Tri giác, Lượng nước tiểu, Dấu hiệu xuất huyết",
-                    "frequency": "Mỗi 1 - 2 giờ trong giai đoạn bù dịch cấp, sau đó mỗi 2 - 4 giờ",
-                    "target": "Mạch rõ, HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, bài niệu ≥ 0.5 - 1.0 mL/kg/h"
+                    "id": "b1_prob_symp",
+                    "problemName": "Kiểm soát triệu chứng sốt & Bù dịch đường uống",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Hạ sốt",
+                        "content": "Paracetamol 10–15 mg/kg/lần PO khi Sốt ≥ 38.5°C, tối đa 4 lần/ngày. Lau mát bằng nước ấm vùng nách, bẹn nếu sốt cao khó hạ.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Bù dịch uống",
+                        "content": "Uống dung dịch Oresol pha đúng tỷ lệ, nước hoa quả (cam, chanh, dừa), nước cháo muối. Nhấp từng ngụm nhỏ liên tục trong ngày.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Thân nhiệt, Tri giác, Dấu hiệu xuất huyết, Số lần nôn",
+                        "frequency": "Mỗi 4–6 giờ",
+                        "target": "Thân nhiệt hạ < 38°C, tỉnh táo, không nôn ói nhiều"
+                      },
+                      {
+                        "type": "LS",
+                        "metric": "Lượng nước tiểu (Bài niệu)",
+                        "frequency": "Theo dõi mỗi lần đi tiểu trong ngày",
+                        "target": "Tiểu tự do, bài niệu ≥ 1.0 mL/kg/h (không tiểu quá 6h)"
+                      }
+                    ]
                   },
                   {
-                    "type": "CLS",
-                    "metric": "Hematocrit (Hct), Tiểu cầu, Men gan (AST/ALT), Siêu âm ổ bụng/màng phổi",
-                    "frequency": "Hct mỗi 2 - 4 giờ trong thời gian truyền dịch; AST/ALT, Siêu âm theo chỉ định",
-                    "target": "Hct giảm dần về giá trị nền, không thoát dịch nặng"
-                  }
-                ]
-              },
-              {
-                "id": "b2_prob_escalation_monitoring",
-                "problemName": "Giám sát nguy cơ Báo động đỏ (Sốc / Xuất huyết nặng)",
-                "problemType": "complication",
-                "treatments": [
-                  {
-                    "category": "Cảnh báo leo thang",
-                    "content": "Nếu tay chân lạnh, mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg hoặc tụt HA: Chuyển chống sốc theo phác đồ SXH Dengue nặng (Nhánh 3) ngay.",
-                    "isHighlighted": true
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Dấu hiệu sốc (chi lạnh, CRT > 2s, mạch nhẹ, HA kẹp/tụt)",
-                    "frequency": "Mỗi 30 - 60 phút",
-                    "target": "Phát hiện sốc lập tức trong giờ đầu"
+                    "id": "b1_prob_lab",
+                    "problemName": "Xét nghiệm chẩn đoán & Tầm soát biến đổi huyết học",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                      {
+                        "category": "Vi sinh / CTM",
+                        "content": "Làm test nhanh Dengue NS1 Ag (ngày 1–5). TPTTBM (Hct, PLT, WBC) hàng ngày từ ngày thứ 2 của bệnh.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "CLS",
+                        "metric": "Dengue NS1 Ag, Hct, PLT, WBC",
+                        "frequency": "1 lần/ngày",
+                        "target": "NS1 Ag (+), Hct duy trì mức nền (< 42%), PLT > 100 G/L"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "id": "b2_p2",
-            "dayRange": "N7 - N10",
-            "phaseName": "Giai đoạn Hồi phục & Cai dịch truyền",
-            "clinicalGoal": "Ngừng dịch truyền tĩnh mạch an toàn, phòng ngừa quá tải dịch / phù phổi cấp, phục hồi dinh dưỡng đường uống.",
-            "problems": [
+            "id": "branch_pha_nguy_hiem",
+            "name": "Pha 2: Giai đoạn Nguy hiểm (Critical Phase - Ngày 3 đến Ngày 7)",
+            "badgeText": "Nội trú 100% / Cấp cứu",
+            "color": "rose",
+            "criteria": "Thường xuất hiện khi hết sốt hoặc nhiệt độ giảm (37.5–38°C). Diễn tiến thoát huyết tương kéo dài 24–48 giờ gây tràn dịch màng phổi/màng bụng, phù túi mật. Kèm ≥ 1 DẤU HIỆU CẢNH BÁO (đau bụng HSP liên tục, nôn ói nhiều, lừ đừ/vật vã, xuất huyết niêm mạc) hoặc tiến triển Sốc SXHD (M nhanh nhỏ, HA kẹp ≤ 20 mmHg, tụt HA, CRT > 2s, chi lạnh). CLS: Hct tăng dốc đứng > 20% so với nền, PLT giảm sâu < 100 G/L (có thể < 30 G/L).",
+            "triage": "Khoa Bệnh Nhiệt đới / Khoa Nhi / Khoa Hồi sức Cấp cứu (ICU) Bệnh viện Tuyến Huyện/Tỉnh/TW",
+            "targetVitals": "HATT ≥ 90 mmHg (người lớn) hoặc theo tuổi (trẻ em), Hiệu áp ≥ 30 mmHg, Shock Index (M/HATT) < 0.7, CRT < 2s, Bài niệu ≥ 0.5–1.0 mL/kg/h, SpO₂ ≥ 95%.",
+            "escalationCriteria": "Thất bại bù dịch điện giải (Hct tiếp tục tăng, M nhanh, HA kẹp/tụt, bài niệu < 0.5 mL/kg/h) -> Chuyển dung dịch Cao phân tử (Dextran 40/70, HES 200). Hct tụt đột ngột kèm huyết động không ổn định -> Cảnh báo xuất huyết nội nặng -> Chỉ định truyền Hồng cầu lắng / Máu toàn phần STAT. Suy hô hấp / ARDS / Suy gan cấp (AST/ALT ≥ 1000 U/L) -> Hồi sức tích cực ICU / Đặt NKQ / Lọc máu CVVHDF.",
+            "dischargeCriteria": "Ra sốc hoàn toàn, huyết động ổn định > 24–48h không cần truyền dịch TTM, Hct ổn định, hết dấu hiệu cảnh báo, bài niệu tốt.",
+            "drugs": [
+              [
+                "Ringer Lactate / Ringer Acetate / NaCl 0.9%",
+                "SXHD Cảnh báo người lớn: 6 mL/kg/h TTM x 1–2h -> 3 mL/kg/h x 2–4h -> 1.5 mL/kg/h x 6–18h. Trẻ em: 6–7 mL/kg/h x 1–3h -> 5 mL/kg/h x 2–4h -> 3 mL/kg/h x 2–4h. Sốc SXHD: 15–20 mL/kg/h TTM trong 1h đầu",
+                "Chỉ định khi nôn nhiều, không uống được, Hct tăng cao cô đặc máu. Đánh giá lại lâm sàng & Hct q1–2h để tăng/giảm tốc độ dịch. Ưu tiên Ringer Acetate khi men gan AST/ALT > 1000 U/L."
+              ],
+              [
+                "Dung dịch Cao phân tử (Dextran 40 / Dextran 70 / HES 200 6%)",
+                "10–20 mL/kg/h TTM trong 1h khi Sốc SXHD không đáp ứng dịch điện giải hoặc Hct tăng cao dốc đứng",
+                "Chỉ định chống sốc tái lập thể tích lòng mạch. Theo dõi sát chức năng đông máu và thận. Tối đa tổng liều HES < 60 mL/kg."
+              ],
+              [
+                "Khối hồng cầu lắng (HCL) / Máu toàn phần",
+                "HCL 5–10 mL/kg TTM hoặc Máu toàn phần 10–20 mL/kg TTM truyền trong 1–2h",
+                "Chỉ định khi Sốc SXHD kèm xuất huyết nặng hoặc Hct giảm > 20% so với lúc vào sốc / Hct < 35% mà huyết động chưa ổn định."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b2_prob_weaning_fluid",
-                "problemName": "Cai dịch truyền & Theo dõi tái hấp thu",
-                "problemType": "clinical",
-                "treatments": [
+                "id": "b2_p1",
+                "dayRange": "N3 - N7",
+                "phaseName": "Giai đoạn Nguy hiểm / Escaping & Critical Phase",
+                "clinicalGoal": "Chống thoát huyết tương, duy trì thể tích tuần hoàn hiệu quả, phát hiện và xử trí sớm Sốc SXHD, xuất huyết nặng và suy tạng.",
+                "problems": [
                   {
-                    "category": "Ngưng dịch",
-                    "content": "Xem xét ngưng dịch truyền tĩnh mạch khi lâm sàng ổn định, hết sốt > 24-48h, Hct bình thường và bài niệu tốt (thường tổng thời gian truyền dịch không quá 24-48h).",
-                    "isHighlighted": true
+                    "id": "b2_prob_fluid",
+                    "problemName": "Liệu pháp bù dịch TTM nấc thang & Chống sốc",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Dịch truyền nấc thang",
+                        "content": "SXHD Cảnh báo: Bắt đầu Ringer Lactate 6 mL/kg/h TTM x 1–2h. Nếu lâm sàng cải thiện & Hct giảm, giảm còn 3 mL/kg/h x 2–4h, sau đó 1.5 mL/kg/h x 6–18h rồi ngưng.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Chống sốc",
+                        "content": "Sốc SXHD: Ringer Lactate 15–20 mL/kg/h TTM trong 1h đầu. Nếu không cải thiện & Hct cao -> Chuyển Cao phân tử 10–20 mL/kg/h TTM x 1h.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Mạch, HA, Hiệu áp, CRT, Thần kinh, Tình trạng đau bụng/nôn",
+                        "frequency": "Mỗi 1–2 giờ (khi sốc) hoặc mỗi 2–4 giờ (khi có cảnh báo)",
+                        "target": "Mạch rõ, HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, CRT < 2s, tỉnh táo"
+                      },
+                      {
+                        "type": "LS",
+                        "metric": "Lượng nước tiểu (Bài niệu giờ)",
+                        "frequency": "Mỗi 1–2 giờ",
+                        "target": "Bài niệu duy trì ≥ 0.5–1.0 mL/kg/h"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Hematocrit (Hct) tại giường",
+                        "frequency": "Mỗi 1–2 giờ (trong sốc) hoặc mỗi 2–4 giờ (dịch nấc thang)",
+                        "target": "Hct giảm dần về mức sinh lý (< 42%), không tụt đột ngột"
+                      }
+                    ]
                   },
                   {
-                    "category": "Chống quá tải dịch",
-                    "content": "Theo dõi sát dấu hiệu dư dịch / phù phổi (ho, khó thở, SpO₂ giảm, tĩnh mạch cổ nổi). Nếu phù phổi: ngưng dịch ngay, thở NCPAP/Oxy, dùng Furosemide nếu huyết động cho phép.",
-                    "isHighlighted": true
+                    "id": "b2_prob_bleed",
+                    "problemName": "Kiểm soát xuất huyết nặng & Rối loạn đông máu",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Máu & Chế phẩm máu",
+                        "content": "Truyền Khối hồng cầu lắng 5–10 mL/kg khi Hct < 35% kèm sốc/XHTH. Truyền Huyết tương đông lạnh (10–15 mL/kg) khi INR > 1.5 / aPTT gấp 2 lần. Truyền Tiểu cầu đậm đặc khi PLT < 50 G/L kèm xuất huyết nặng hoặc thủ thuật xâm lấn.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Cầm máu nội khoa",
+                        "content": "Băng ép nhét bấc mũi nếu chảy máu cam nặng. Dùng Esomeprazole/Pantoprazole 80mg IV bolus -> 8mg/h khi XHTH trên. Thắt tĩnh mạch thực quản / Nội soi cầm máu khi cần.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Dấu hiệu xuất huyết tiêu hóa (Nôn máu, phân đen), Chảy máu niêm mạc",
+                        "frequency": "Mỗi 1–2 giờ",
+                        "target": "Không xuất huyết tiến triển, phân vàng"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "PLT, Đông máu toàn bộ (PT, INR, aPTT, Fibrinogen), Hb",
+                        "frequency": "Mỗi 6–12 giờ",
+                        "target": "INR < 1.5, Fibrinogen > 1.5 g/L, Hb ≥ 10 g/dL"
+                      }
+                    ]
                   },
                   {
-                    "category": "Dinh dưỡng",
-                    "content": "Cho ăn sớm đường miệng với thức ăn lỏng, mềm, giàu năng lượng.",
-                    "isHighlighted": false
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Nhịp thở, SpO₂, Nghe phổi, Tình trạng phù, Lượng nước tiểu",
-                    "frequency": "Mỗi 4 - 6 giờ",
-                    "target": "Không có dấu hiệu quá tải dịch, SpO₂ ≥ 96%"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Hct, Tiểu cầu, AST/ALT",
-                    "frequency": "1 lần/ngày",
-                    "target": "Hct bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, AST/ALT < 400 U/L"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "branch_3",
-        "name": "Nhánh 3: Sốt xuất huyết Dengue nặng (A97.2)",
-        "badgeText": "Hồi sức ICU",
-        "color": "rose",
-        "criteria": "Sống/đi từ vùng có dịch + Sốt ≤ 7 ngày + Có ít nhất 1 trong các biểu hiện nặng sau: (1) Thoát huyết tương nặng dẫn tới Sốc SXH Dengue (DSS), Sốc SXH Dengue nặng (M = 0, HA = 0) hoặc Ứ dịch dẫn đến suy hô hấp; (2) Xuất huyết nặng (XHTH ồ ạt, nôn ra máu, tiêu phân đen, xuất huyết âm đạo nặng, xuất huyết nội tạng); (3) Suy các tạng nặng (Gan: AST hoặc ALT ≥ 1000 U/L; Thần kinh trung ương: SXHD thể não, rối loạn tri giác, co giật, hôn mê; Tim: Viêm cơ tim, suy tim; Thận: Suy thận cấp).",
-        "triage": "Nhập Khoa Hồi sức Cấp cứu (ICU) / Phòng Cấp cứu / Bệnh viện Tuyến Tỉnh, Tuyến Trung ương khẩn cấp.",
-        "targetVitals": "MAP ≥ 65 mmHg, HATT ≥ 90 mmHg (ở người lớn) hoặc bình thường theo tuổi (ở trẻ em), SpO₂ ≥ 95%, CRT < 2s, Bài niệu ≥ 0.5 - 1.0 mL/kg/h, Lactate máu < 2.0 mmol/L, ScvO₂ ≥ 70%.",
-        "escalationCriteria": "BÁO ĐỘNG ĐỎ ICU: Sốc kéo dài / Tái sốc ≥ 2 lần / Thất bại bù dịch điện giải và cao phân tử (> 100 mL/kg) kèm vận mạch; Xuất huyết tiêu hóa ồ ạt không cầm; Suy hô hấp nặng / ARDS thất bại với CPAP/thở máy; Suy gan cấp (bệnh não gan độ III-IV, INR ≥ 2.5); Suy thận cấp cần lọc máu liên tục ➔ Báo động đỏ toàn viện, hội chẩn chuyên gia tuyến trên khẩn cấp, xem xét truyền Albumin (1 g/kg), phối hợp vận mạch (Noradrenaline, Adrenaline, Dobutamine, Dopamine), lọc máu CVVHDF, thay huyết tương (TPE), ECMO.",
-        "dischargeCriteria": "Thoát sốc hoàn toàn, hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, ngưng dịch truyền tĩnh mạch và vận mạch ≥ 24 - 48 giờ mà huyết động hoàn toàn ổn định, không còn xuất huyết tiến triển, ăn uống tốt, bài niệu tốt, Hct trở về bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, men gan AST/ALT < 400 U/L.",
-        "drugs": [
-          [
-            "Ringer Lactate / Ringer Acetate / NaCl 0.9%",
-            "Trẻ em chống sốc: 20 mL/kg/h (hoặc 20 mL/kg/15 - 30 phút nếu tụt HA nặng). Sốc nặng (M=0, HA=0): Bơm trực tiếp IV 20 mL/kg/15 phút. Nấc thang giảm liều: 10 mL/kg/h x 1-2h ➔ 7.5 mL/kg/h x 1-2h ➔ 5 mL/kg/h x 3-4h ➔ 3 mL/kg/h x 4-6h. Người lớn chống sốc: 15 mL/kg/h (Sốc nặng: Bolus 15 mL/kg/15 phút). Nấc thang giảm liều: 10 mL/kg/h x 2h ➔ 6 mL/kg/h x 2h ➔ 3 mL/kg/h x 5-7h ➔ 1.5 mL/kg/h x 12h.",
-            "Dịch truyền tinh thể chọn lựa đầu tiên. Dùng Ringer Acetate hoặc NaCl 0.9% khi có tổn thương gan nặng / AST, ALT ≥ 1000 U/L. Trẻ béo phì / người lớn BMI ≥ 25 kg/m² bắt buộc dùng cân nặng hiệu chỉnh."
-          ],
-          [
-            "Dung dịch Cao phân tử (Dextran 40, Dextran 70, 6% HES 200, 6% HES 130, Gelatin)",
-            "Trẻ em: 10 - 20 mL/kg/h x 1 giờ (Sốc nặng: 15 - 20 mL/kg/h), giảm liều nấc thang 10 ➔ 7.5 ➔ 5 mL/kg/h. Người lớn: 10 - 15 mL/kg/h x 1 giờ (Sốc nặng: 15 mL/kg/h), lặp lại 10 mL/kg/h nếu chưa cải thiện.",
-            "Chỉ định khi sốc không cải thiện với dịch tinh thể + Hct còn cao/tăng (≥ 40%), hoặc khi tái sốc. Tác dụng phụ rối loạn đông máu, tổn thương gan/thận khi tổng liều > 60 mL/kg. Giảm tốc độ ngay khi lâm sàng cải thiện và Hct giảm."
-          ],
-          [
-            "Dung dịch Albumin 5% / 10%",
-            "1 g/kg (hoặc 5 - 20 mL/kg/h) truyền tĩnh mạch trong 4 - 6 giờ.",
-            "Chỉ định khi Albumin máu ≤ 2.5 g/dL kèm: Sốc kéo dài không ổn định ≥ 6 giờ, hoặc đã bù dịch 40 - 60 mL/kg, hoặc tái sốc ≥ 2 lần, hoặc tổng CPT ≥ 60 mL/kg đang chống sốc CPT > 5-10 mL/kg/h, hoặc suy gan nặng/ARDS/suy thận."
-          ],
-          [
-            "Hồng cầu lắng (PRBC) / Máu toàn phần",
-            "Hồng cầu lắng: 5 - 10 mL/kg truyền tĩnh mạch trong 1 - 2 giờ. Máu toàn phần (mới < 7 ngày): 10 - 20 mL/kg truyền IV.",
-            "Chỉ định khi Hct ≤ 35% (hoặc giảm nhanh > 20% so với lúc vào sốc) kèm sốc thất bại/đáp ứng kém với bù dịch ≥ 40 mL/kg, hoặc Hct ≤ 40% kèm đang xuất huyết tiêu hóa ồ ạt. Mục tiêu duy trì Hct ≥ 35%."
-          ],
-          [
-            "Huyết tương tươi đông lạnh (FFP)",
-            "10 - 20 mL/kg truyền tĩnh mạch trong 2 - 4 giờ.",
-            "Chỉ định khi có rối loạn đông máu nặng (PT > 2 lần bình thường hoặc INR > 1.5) kèm: đang xuất huyết nặng, hoặc có chỉ định thủ thuật xâm lấn (chọc màng phổi/màng bụng), hoặc truyền máu khối lượng lớn (≥ 1/2 thể tích máu)."
-          ],
-          [
-            "Kết tủa lạnh (Cryoprecipitate)",
-            "1 túi / 6 kg cân nặng (1 túi chứa khoảng 150 mg Fibrinogen).",
-            "Chỉ định khi đang xuất huyết nặng kèm nồng độ Fibrinogen máu < 1.0 g/L."
-          ],
-          [
-            "Khối tiểu cầu đậm đặc / Tiểu cầu chiết tách",
-            "1 đơn vị tiểu cầu đậm đặc / 5 kg HOẶC 1 đơn vị tiểu cầu chiết tách / 10 kg truyền tĩnh mạch trong 1 - 2 giờ.",
-            "Chỉ định khi: Tiểu cầu < 50 G/L kèm đang xuất huyết nặng hoặc có chỉ định can thiệp thủ thuật/phẫu thuật; HOẶC Tiểu cầu < 5 G/L (xem xét tùy trường hợp). Không truyền tiểu cầu dự phòng khi không có xuất huyết."
-          ],
-          [
-            "Thuốc vận mạch & Tăng co bóp cơ tim (Noradrenaline, Adrenaline, Dobutamine, Dopamine)",
-            "Noradrenaline: 0.05 - 1.0 µg/kg/phút IV. Adrenaline: 0.05 - 0.3 µg/kg/phút IV. Dobutamine: 3 - 10 µg/kg/phút IV. Dopamine: 5 - 10 µg/kg/phút IV.",
-            "Chỉ định khi CVP > 10 - 15 cmH2O hoặc đã bù đủ dịch mà huyết áp không lên, giảm sức co bóp cơ tim hoặc giảm kháng lực mạch máu. Dopamine/Noradrenaline chọn hàng đầu; Dobutamine chọn khi có suy tim/quá tải dịch."
-          ],
-          [
-            "N-Acetylcysteine (NAC) tĩnh mạch",
-            "Trẻ em: Tấn công 150 mg/kg TTM 1h ➔ Duy trì 50 mg/kg TTM 4h ➔ 100 mg/kg TTM 16h ➔ Duy trì 6.25 mg/kg/h x 48-72h. Người lớn: 100 mg/kg/24h pha Glucose 5% x 3 - 5 ngày.",
-            "Chỉ định khi SXH Dengue nặng có tổn thương gan nặng / Suy gan cấp (AST/ALT ≥ 1000 U/L) kèm bệnh lý não gan hoặc INR ≥ 1.5 hoặc MELD score ≥ 15."
-          ],
-          [
-            "Omeprazole / Pantoprazole / Esomeprazole IV & Vitamin K1 IV",
-            "Omeprazole / PPI: 1 mg/kg/ngày IV. Vitamin K1: 1 mg/kg/ngày IV chậm (tối đa 20 mg/ngày).",
-            "PPI chỉ định khi có xuất huyết tiêu hóa hoặc tiền sử viêm loét dạ dày. Vitamin K1 chỉ định khi có tổn thương gan nặng / suy gan cấp / rối loạn đông máu."
-          ],
-          [
-            "Natri Bicarbonate 4.2% & Dextrose 30% & Calcium Chloride 10% & Mannitol 20%",
-            "Bicarbonate 4.2%: 2 mL/kg IV chậm khi pH < 7.35 / HCO3 < 17 mmol/L. Dextrose 30%: 1-2 mL/kg IV khi đường huyết < 40 mg/dL. Calci clorua 10%: 0.1-0.2 mL/kg IV chậm khi Ca++ < 1.0 mmol/L. Mannitol 20%: 0.5 g/kg/lần TTM 30 phút x 8h/lần khi tăng áp lực nội sọ/co giật.",
-            "Y lệnh cấp cứu điều trị rối loạn toan kiềm, hạ đường huyết, hạ calci máu và chống phù não trong SXHD thể não / suy tạng nặng."
-          ]
-        ],
-        "timelinePhases": [
-          {
-            "id": "b3_p1",
-            "dayRange": "N3 - N7",
-            "phaseName": "Giai đoạn Nguy hiểm - Hồi sức Sốc & Suy tạng nặng (ICU)",
-            "clinicalGoal": "Tái lập thể tích tuần hoàn hiệu quả, dập tắt sốc thoát huyết tương, cầm máu khẩn cấp, bảo vệ chức năng các tạng sống còn và hạn chế tử vong.",
-            "problems": [
-              {
-                "id": "b3_prob_fluid_resuscitation_ladder",
-                "problemName": "Phác đồ chống sốc dịch truyền nấc thang (Điện giải & Cao phân tử)",
-                "problemType": "specific",
-                "isNoSpecificTreatment": false,
-                "treatments": [
-                  {
-                    "category": "Truyền dịch giờ đầu",
-                    "content": "Trẻ em: Bù nhanh Ringer Lactate / NaCl 0.9% 20 mL/kg/h (nếu tụt HA nặng 20 mL/kg/30 phút; sốc M=0, HA=0 bơm IV 20 mL/kg/15 phút). Người lớn: RL / NaCl 0.9% 15 mL/kg/h (Sốc nặng Bolus 15 mL/kg/15 phút). Trẻ dư cân/béo phì dùng cân nặng hiệu chỉnh.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Nấc thang giảm liều",
-                    "content": "Nếu đáp ứng tốt: Giảm liều nấc thang từng bước (Trẻ em: 10 ➔ 7.5 ➔ 5 ➔ 3 mL/kg/h; Người lớn: 10 ➔ 6 ➔ 3 ➔ 1.5 mL/kg/h). Đánh giá lâm sàng và Hct mỗi 1 - 2 giờ.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Chuyển Cao phân tử",
-                    "content": "Nếu sốc không đáp ứng dịch điện giải và Hct cao (≥ 40%): Chuyển Cao phân tử (Dextran 40/70, HES 200/130) 10 - 20 mL/kg/h x 1h. Giảm liều ngay khi ra sốc và Hct giảm.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Truyền Albumin",
-                    "content": "Truyền Albumin 5% hoặc 10% liều 1 g/kg (5 - 20 mL/kg/h) khi Albumin máu ≤ 2.5 g/dL kèm tái sốc ≥ 2 lần, hoặc sốc kéo dài ≥ 6h, hoặc tổng CPT ≥ 60 mL/kg.",
-                    "isHighlighted": true
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Mạch, Huyết áp, Hiệu áp, CRT, Tri giác, Bài niệu, SpO₂",
-                    "frequency": "Mỗi 15 - 30 phút trong sốc; mỗi 1 giờ khi ra sốc",
-                    "target": "Mạch rõ, HATT ≥ 90 mmHg (người lớn) hoặc theo tuổi, CRT < 2s, Bài niệu ≥ 0.5 - 1.0 mL/kg/h"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Hematocrit (Hct) tại giường, Lactate máu, Khí máu động mạch, CVP, HAĐMXL",
-                    "frequency": "Hct mỗi 1 giờ trong 6 giờ đầu, sau đó mỗi 2 - 4 giờ; CVP/HAĐMXL theo dõi liên tục",
-                    "target": "Hct trở về bình thường, Lactate < 2.0 mmol/L, CVP 10 - 15 cmH2O, ScvO₂ ≥ 70%"
-                  }
-                ]
-              },
-              {
-                "id": "b3_prob_severe_bleeding",
-                "problemName": "Xử trí Xuất huyết nặng & Truyền máu, chế phẩm máu",
-                "problemType": "complication",
-                "treatments": [
-                  {
-                    "category": "Truyền máu",
-                    "content": "Truyền Hồng cầu lắng 5 - 10 mL/kg (hoặc Máu toàn phần 10 - 20 mL/kg) trong 1 - 2 giờ khi Hct ≤ 35% (hoặc giảm nhanh > 20%) kèm sốc thất bại bù dịch hoặc đang xuất huyết tiêu hóa ồ ạt.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Truyền chế phẩm máu",
-                    "content": "Truyền Huyết tương tươi đông lạnh 10 - 20 mL/kg khi PT/INR > 1.5 kèm XH nặng; Truyền Kết tủa lạnh 1 túi/6kg khi Fibrinogen < 1 g/L; Truyền Khối tiểu cầu 1 ĐV/5kg khi Tiểu cầu < 50 G/L kèm XH nặng.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Cầm máu & Dược lý",
-                    "content": "Nhịn ăn uống, cầm máu cơ học (băng ép, nhét bấc mũi, nội soi can thiệp tiêu hóa), Omeprazole 1 mg/kg IV, Vitamin K1 1 mg/kg IV chậm.",
-                    "isHighlighted": false
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Vị trí xuất huyết, màu sắc chất nôn/phân/nước tiểu, dấu hiệu thiếu máu cấp",
-                    "frequency": "Mỗi 1 - 2 giờ",
-                    "target": "Không có xuất huyết tiến triển, niêm mạc hồng"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Hct, Tiểu cầu, Đông máu toàn bộ (PT, INR, aPTT, Fibrinogen)",
-                    "frequency": "Mỗi 2 - 4 giờ",
-                    "target": "Hct ≥ 35%, Tiểu cầu > 50 G/L, INR < 1.5, Fibrinogen > 1.0 g/L"
-                  }
-                ]
-              },
-              {
-                "id": "b3_prob_organ_failure",
-                "problemName": "Điều trị Tổn thương tạng nặng (Gan, Thần kinh, Thận, Tim)",
-                "problemType": "complication",
-                "treatments": [
-                  {
-                    "category": "Suy gan cấp",
-                    "content": "Truyền tĩnh mạch N-Acetylcysteine (NAC) 100-150 mg/kg/ngày, Lactulose/thụt tháo điều trị bệnh não gan. Tránh dùng Ringer Lactate và Paracetamol. Xem xét Lọc máu liên tục CVVHDF hoặc Thay huyết tương (TPE).",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "SXHD thể não",
-                    "content": "Nằm đầu cao 30°, thở oxy/đặt NKQ thở máy tăng thông khí, chống co giật bằng Diazepam 0.2 mg/kg IV. Chống phù não: Mannitol 20% 0.5 g/kg/lần TTM 30p x 8h/lần xen kẽ NaCl 3% 4 mL/kg.",
-                    "isHighlighted": true
-                  },
-                  {
-                    "category": "Suy thận cấp & Suy tim",
-                    "content": "Cân bằng dịch xuất nhập. Chỉ định Lọc máu liên tục CVVHDF khi suy thận cấp kèm toan máu nặng, quá tải dịch hoặc suy đa tạng. Viêm cơ tim/suy tim: Truyền vận mạch Dobutamine (3-10 µg/kg/p) hoặc Noradrenaline/Adrenaline, xem xét ECMO.",
-                    "isHighlighted": true
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Thang điểm Glasgow, Tri giác, Đồng tử, Cơn co giật, Nhịp thở, Ran phổi, Nhịp tim",
-                    "frequency": "Mỗi 1 giờ",
-                    "target": "Glasgow 15 điểm, không co giật, tim phổi ổn định"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Men gan (AST, ALT), Bilirubin, NH3, Creatinine, ECG, Troponin I, Siêu âm tim/bụng",
-                    "frequency": "Mỗi 4 - 6 giờ hoặc 1 lần/ngày tùy diễn tiến",
-                    "target": "AST/ALT xu hướng giảm, Creatinine ổn định, không có biến đổi ECG nặng"
-                  }
-                ]
-              },
-              {
-                "id": "b3_prob_electrolyte_acidosis",
-                "problemName": "Điều chỉnh Toan chuyển hóa, Rối loạn điện giải & Đường huyết",
-                "problemType": "clinical",
-                "treatments": [
-                  {
-                    "category": "Điều trị ABCS",
-                    "content": "Toan chuyển hóa (pH < 7.35, HCO3 < 17): Truyền Natri Bicarbonate 4.2% 2 mL/kg IV chậm. Hạ đường huyết (< 40 mg/dL): Dextrose 30% 1-2 mL/kg IV chậm. Hạ Calci (Ca++ < 1.0 mmol/L): Calci Clorua 10% 0.1-0.2 mL/kg IV chậm. Hạ Natri máu nặng (< 125 mEq/L): NaCl 3% 4 mL/kg TTM 30p.",
-                    "isHighlighted": true
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Dấu hiệu vã mồ hôi, co giật, rối loạn nhịp tim, nhịp thở Kussmaul",
-                    "frequency": "Mỗi 1 - 2 giờ",
-                    "target": "Sinh hiệu ổn định, hết rối loạn nhịp"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Khí máu động mạch, Đường huyết mao mạch, Ion đồ (Na+, K+, Ca++ ion hóa)",
-                    "frequency": "Mỗi 2 - 4 giờ trong giai đoạn cấp",
-                    "target": "pH 7.35 - 7.45, Đường huyết 80 - 180 mg/dL, Ca++ ≥ 1.0 mmol/L, Na+ ≥ 135 mEq/L"
+                    "id": "b2_prob_organ",
+                    "problemName": "Hỗ trợ hô hấp, bảo vệ tế bào gan & Xử trí suy tạng",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Hỗ trợ hô hấp",
+                        "content": "Thở Oxy gọng kính 1–6 L/phút khi SpO₂ < 95%. Thở NCPAP khi suy hô hấp do tràn dịch màng phổi/màng bụng lượng nhiều. Đặt nội khí quản thở máy nếu thất bại NCPAP / ARDS.",
+                        "isHighlighted": false
+                      },
+                      {
+                        "category": "Bảo vệ gan",
+                        "content": "Dùng N-Acetylcysteine TTM theo phác đồ suy gan cấp khi AST/ALT ≥ 1000 U/L hoặc INR ≥ 1.5 kèm bệnh não gan. Dùng Ringer Acetate thay cho Ringer Lactate.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "SpO₂, Nhịp thở, Kiểu thở, Vòng bụng, Tri giác (Điểm GCS)",
+                        "frequency": "Mỗi 1–2 giờ",
+                        "target": "SpO₂ 96–98%, nhịp thở đều, tỉnh táo"
+                      },
+                      {
+                        "type": "CLS",
+                        "metric": "Men gan (AST, ALT), Khí máu động mạch, Lactate máu, Điện giải đồ",
+                        "frequency": "Mỗi 6–12 giờ",
+                        "target": "Lactate < 2.0 mmol/L, pH 7.35–7.45, AST/ALT xu hướng giảm"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           },
           {
-            "id": "b3_p2",
-            "dayRange": "N7 - N10",
-            "phaseName": "Giai đoạn Hồi phục & Cai dịch truyền / Cai vận mạch",
-            "clinicalGoal": "Tháo dỡ dịch truyền và vận mạch an toàn, phòng ngừa quá tải tuần hoàn / phù phổi cấp do tái hấp thu dịch, phục hồi dinh dưỡng.",
-            "problems": [
+            "id": "branch_pha_phuc_hoi",
+            "name": "Pha 3: Giai đoạn Phục hồi (Recovery Phase - Sau Ngày 7)",
+            "badgeText": "Hồi phục / Xuất viện",
+            "color": "emerald",
+            "criteria": "Sau ngày thứ 7 của bệnh. Bệnh nhân hết sốt ≥ 48h tự nhiên, toàn trạng tốt lên, thèm ăn, bài niệu nhiều. Diễn diễn tái hấp thu dịch từ khoảng kẽ trở lại lòng mạch. Lâm sàng có thể có nhịp tim chậm xoang, ban hồi phục ('đảo trắng giữa biển đỏ'), ngứa da. CTM: Hct trở về bình thường hoặc giảm nhẹ do pha loãng, PLT hồi phục nhanh > 50 G/L và tiến về bình thường, WBC tăng trở lại.",
+            "triage": "Nội trú chuẩn bị xuất viện / Theo dõi Ngoại trú tái khám",
+            "targetVitals": "Mạch 60–80 lần/phút (rõ, đều, có thể chậm xoang sinh lý), HA bình thường, HATT 100–120 mmHg, Bài niệu > 1.5–2.0 mL/kg/h, SpO₂ 96–100% khí trời.",
+            "escalationCriteria": "Xuất hiện DẤU HIỆU QUÁ TẢI DỊCH / PHÙ PHỔI CẤP (ho, khó thở đột ngột, thở nhanh, rên ẩm đáy phổi, SpO₂ < 92%, TM cổ nổi) -> NGƯNG TOÀN BỘ DỊCH TRUYỀN TTM STAT, cho nằm đầu cao, thở Oxy/NCPAP, dùng Furosemide 0.5–1 mg/kg IV chậm nếu HA ổn định.",
+            "dischargeCriteria": "Hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, tỉnh táo, ăn uống tốt, sinh hiệu ổn định, bài niệu nhiều, Hct bình thường ổn định, PLT > 50.000/mm³ và đang xu hướng tăng tiến triển, không còn suy hô hấp.",
+            "drugs": [
+              [
+                "Furosemide 20mg (Ống tiêm tĩnh mạch)",
+                "0.5–1 mg/kg IV chậm (10–20mg) x 1 lần khi có chỉ định quá tải dịch",
+                "CHỈ DÙNG khi có biểu hiện quá tải dịch / Phù phổi cấp / Tràn dịch đa màng chèn ép sau khi đã thoát sốc và huyết động HOÀN TOÀN ỔN ĐỊNH. Cấm dùng khi bệnh nhân còn trong sốc."
+              ],
+              [
+                "Dung dịch Oresol / Dinh dưỡng đường uống",
+                "Ăn thức ăn lỏng, mềm, dễ tiêu, giàu vi chất. Uống nước theo nhu cầu tự nhiên",
+                "Chuyển hoàn toàn sang dinh dưỡng đường miệng khi bệnh nhân hồi phục tri giác và ngưng nôn ói."
+              ]
+            ],
+            "timelinePhases": [
               {
-                "id": "b3_prob_weaning_resuscitation",
-                "problemName": "Cai dịch truyền tĩnh mạch, cai vận mạch & Chống quá tải dịch",
-                "problemType": "clinical",
-                "treatments": [
+                "id": "b3_p1",
+                "dayRange": "Sau N7",
+                "phaseName": "Giai đoạn Tái hấp thu & Phục hồi hoàn toàn",
+                "clinicalGoal": "Ngưng truyền dịch tĩnh mạch an toàn, phòng ngừa tai biến quá tải tuần hoàn, phục hồi thể trạng và làm thủ tục xuất viện.",
+                "problems": [
                   {
-                    "category": "Cai dịch & Vận mạch",
-                    "content": "Ngưng dịch truyền tĩnh mạch khi bệnh nhân ra sốc hoàn toàn ≥ 24 giờ, hết sốt ≥ 48 giờ, bài niệu tốt và Hct ổn định (thường tổng thời gian truyền dịch chống sốc từ 24 - 48 giờ). Giảm dần liều vận mạch đến ngưng hoàn toàn.",
-                    "isHighlighted": true
+                    "id": "b3_prob_deescalate",
+                    "problemName": "Cắt dịch truyền TTM & Theo dõi tái hấp thu dịch",
+                    "problemType": "clinical",
+                    "treatments": [
+                      {
+                        "category": "Ngưng dịch TTM",
+                        "content": "Ngưng truyền dịch TTM hoàn toàn (nói chung không bù dịch quá 24–48h sau thoát sốc/thoát huyết tương). Lưu kim luồn tĩnh mạch trong 24h để dự phòng.",
+                        "isHighlighted": true
+                      },
+                      {
+                        "category": "Chăm sóc da & Dinh dưỡng",
+                        "content": "Cho ăn thức ăn lỏng dễ tiêu. Dùng lotion dưỡng ẩm nhẹ nếu ngứa nhiều do ban hồi phục. Không gãi gây nhiễm trùng da.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Thân nhiệt, Mạch, HA, Nhịp thở, Tình trạng ngứa/ban da",
+                        "frequency": "Mỗi 6–12 giờ",
+                        "target": "Hết sốt > 48h, Mạch rõ 60–80 l/p, HA ổn định, không khó thở"
+                      },
+                      {
+                        "type": "LS",
+                        "metric": "Lượng nước tiểu (Bài niệu)",
+                        "frequency": "Mỗi 6 giờ",
+                        "target": "Tiểu nhiều, bài niệu ≥ 1.5–2.0 mL/kg/h"
+                      }
+                    ]
                   },
                   {
-                    "category": "Chống quá tải dịch",
-                    "content": "Theo dõi sát hiện tượng tái hấp thu huyết tương (Hct giảm nhưng huyết động ổn định). Nếu có quá tải dịch / Phù phổi cấp (ho, khó thở, SpO₂ < 92%, ran ẩm): Ngưng dịch ngay, thở NCPAP / thở máy PEEP, dùng Furosemide 0.5 - 1 mg/kg IV.",
-                    "isHighlighted": true
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Nhịp thở, SpO₂, Nghe phổi, Tĩnh mạch cổ nổi, Huyết áp, Lượng nước tiểu",
-                    "frequency": "Mỗi 2 - 4 giờ",
-                    "target": "Không có phù phổi, SpO₂ ≥ 96%, Bài niệu tốt > 1 mL/kg/h"
+                    "id": "b3_prob_overload",
+                    "problemName": "Quản lý nguy cơ quá tải tuần hoàn & Phù phổi cấp",
+                    "problemType": "complication",
+                    "treatments": [
+                      {
+                        "category": "Xử trí quá tải dịch",
+                        "content": "Nếu có ho, khó thở, rên ẩm phổi, SpO₂ < 92%: Ngưng ngay dịch truyền, nằm đầu cao 45°, thở Oxy gọng kính/NCPAP. Tiêm Furosemide 0.5–1 mg/kg IV chậm nếu HA ổn định.",
+                        "isHighlighted": true
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "LS",
+                        "metric": "Tần số thở, SpO₂, Rên phổi, Tĩnh mạch cổ nổi",
+                        "frequency": "Mỗi 2–4 giờ",
+                        "target": "Không có rên ẩm phổi, SpO₂ 96–100% khí trời, thở êm"
+                      }
+                    ]
                   },
                   {
-                    "type": "CLS",
-                    "metric": "Hct, X-quang ngực thẳng, Siêu âm màng phổi/ổ bụng",
-                    "frequency": "1 lần/ngày hoặc khi có khó thở",
-                    "target": "Hct bình thường (do pha loãng máu lành tính), giảm dịch tràn các màng"
-                  }
-                ]
-              },
-              {
-                "id": "b3_prob_recovery_nutrition",
-                "problemName": "Phục hồi chức năng tạng & Dinh dưỡng lỏng nhẹ đường miệng",
-                "problemType": "clinical",
-                "treatments": [
-                  {
-                    "category": "Dinh dưỡng đường miệng",
-                    "content": "Cho ăn sớm qua đường miệng ngay khi ra sốc và tỉnh táo. Cho ăn thức ăn lỏng, mềm, giàu đạm và vitamin, chia nhỏ bữa.",
-                    "isHighlighted": false
-                  },
-                  {
-                    "category": "Hồi phục tạng",
-                    "content": "Tiếp tục theo dõi chức năng gan, thận, đông máu đến khi các chỉ số trở về giới hạn an toàn.",
-                    "isHighlighted": false
-                  }
-                ],
-                "monitoring": [
-                  {
-                    "type": "LS",
-                    "metric": "Toàn trạng, Cảm giác thèm ăn, Bài niệu, Tình trạng tiêu hóa",
-                    "frequency": "Mỗi ngày",
-                    "target": "Ăn uống tốt, tỉnh táo, sinh hiệu hoàn toàn bình thường"
-                  },
-                  {
-                    "type": "CLS",
-                    "metric": "Công thức máu (Hct, Tiểu cầu, Bạch cầu), AST, ALT, Creatinine",
-                    "frequency": "Kiểm tra trước khi xuất viện",
-                    "target": "Hct bình thường, Tiểu cầu > 50 G/L và đang tăng, AST/ALT < 400 U/L"
+                    "id": "b3_prob_discharge",
+                    "problemName": "Đánh giá tiêu chuẩn an toàn xuất viện & Dặn dò",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                      {
+                        "category": "Xét nghiệm xuất viện",
+                        "content": "Kiểm tra lại CTM (Hct, PLT) trước khi cho ra viện. Đảm bảo PLT > 50 G/L và Hct ổn định.",
+                        "isHighlighted": false
+                      },
+                      {
+                        "category": "Hướng dẫn xuất viện",
+                        "content": "Tái khám kiểm tra sau 3–5 ngày nếu cần. Dặn dò chế độ dinh dưỡng, nghỉ ngơi và các biện pháp diệt bọ gậy, phòng muỗi đốt tại gia đình.",
+                        "isHighlighted": false
+                      }
+                    ],
+                    "monitoring": [
+                      {
+                        "type": "CLS",
+                        "metric": "Hct, Số lượng Tiểu cầu (PLT), Bạch cầu (WBC)",
+                        "frequency": "1 lần trước xuất viện",
+                        "target": "Hct bình thường (Nam 43%, Nữ 38%), PLT > 50.000/mm³ và đang tăng"
+                      }
+                    ]
                   }
                 ]
               }

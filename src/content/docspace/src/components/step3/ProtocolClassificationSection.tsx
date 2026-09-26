@@ -338,7 +338,16 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
             <div className="min-w-0">
               <div className="text-[10px] text-slate-400 uppercase font-medium">Phân độ đang chọn</div>
               <div className="text-xs font-bold text-white truncate">
-                {severityGrades[selectedGradeIdx]?.grade || 'Chưa chọn'}
+                {isMultiAxis
+                  ? activeCombinedProtocol?.combinedName ||
+                    (() => {
+                      const firstAxis = axes[0];
+                      if (!firstAxis) return 'Đa trục lâm sàng';
+                      const bId = selectedAxes?.[firstAxis.axisId] || firstAxis.branches[0]?.id;
+                      const b = firstAxis.branches.find((item) => item.id === bId);
+                      return b?.badgeText || b?.name || 'Đa trục lâm sàng';
+                    })()
+                  : severityGrades[selectedGradeIdx]?.grade || 'Chưa chọn'}
               </div>
             </div>
           </div>

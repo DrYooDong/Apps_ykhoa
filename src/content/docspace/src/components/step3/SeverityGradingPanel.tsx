@@ -123,6 +123,8 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
                     ? 'grid-cols-1 sm:grid-cols-2'
                     : axis.branches.length === 3
                     ? 'grid-cols-1 sm:grid-cols-3'
+                    : axis.branches.length === 5
+                    ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5'
                     : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
                 } gap-2`}>
                   {axis.branches.map((b) => {
@@ -134,12 +136,18 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
                     if (c === 'emerald' || c === 'green') {
                       activeStyles = 'border-emerald-500 bg-emerald-50/90 text-emerald-950 ring-2 ring-emerald-500';
                       pillStyles = 'bg-emerald-100 text-emerald-800';
-                    } else if (c === 'amber' || c === 'orange') {
+                    } else if (c === 'amber' || c === 'yellow') {
                       activeStyles = 'border-amber-500 bg-amber-50/90 text-amber-950 ring-2 ring-amber-500';
                       pillStyles = 'bg-amber-100 text-amber-800';
+                    } else if (c === 'orange') {
+                      activeStyles = 'border-orange-500 bg-orange-50/90 text-orange-950 ring-2 ring-orange-500';
+                      pillStyles = 'bg-orange-100 text-orange-800';
                     } else if (c === 'rose' || c === 'red') {
                       activeStyles = 'border-rose-500 bg-rose-50/90 text-rose-950 ring-2 ring-rose-500';
                       pillStyles = 'bg-rose-100 text-rose-800';
+                    } else if (c === 'purple' || c === 'violet') {
+                      activeStyles = 'border-purple-600 bg-purple-50/90 text-purple-950 ring-2 ring-purple-600';
+                      pillStyles = 'bg-purple-100 text-purple-800';
                     } else if (c === 'blue' || c === 'sky') {
                       activeStyles = 'border-blue-500 bg-blue-50/90 text-blue-950 ring-2 ring-blue-500';
                       pillStyles = 'bg-blue-100 text-blue-800';
