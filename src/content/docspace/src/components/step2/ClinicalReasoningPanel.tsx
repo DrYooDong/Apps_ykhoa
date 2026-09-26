@@ -524,6 +524,122 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     };
   }, [vitals, labs, problems, leadDiagnosis, activeChain]);
 
+  // 4b. Hệ thống Phân loại 6 Trục & Định tuyến Phác đồ Tự động (Diagnostic Routing Engine)
+  const diagnosticRouting = useMemo(() => {
+    if (!leadDiagnosis) return null;
+
+    const branching = activeChain?.branching;
+    const branches = branching?.branches || [];
+    const severityGrades = activeChain?.severityGrading || [];
+
+    const sbp = parseFloat(vitals.vHATT || '');
+    const dbp = parseFloat(vitals.vHATTr || '');
+    const pulse = parseFloat(vitals.vMach || '');
+    const spo2 = parseFloat(vitals.vSpo2 || '');
+    const temp = parseFloat(vitals.vNhiet || '');
+    const plt = parseFloat(labs.lTC || '');
+    const hct = parseFloat(labs.lHct || '');
+    const ast = parseFloat(labs.lAST || '');
+    const alt = parseFloat(labs.lALT || '');
+
+    const selectedIds = new Set(selectedSymptoms.map((s) => s.id));
+
+    // Cờ lâm sàng
+    const hasShock =
+      (!isNaN(sbp) && sbp > 0 && sbp <= 90) ||
+      (!isNaN(sbp) && !isNaN(dbp) && sbp - dbp <= 20) ||
+      (!isNaN(pulse) && !isNaN(sbp) && sbp > 0 && pulse / sbp >= 1.0) ||
+      selectedIds.has('tc_soc_mach_nhanh_ha_kep_hoac_tut') ||
+      selectedIds.has('soc_mach_nhanh_ha_kep_hoac_tut');
+
+    const hasCriticalOrganFailure =
+      (!isNaN(spo2) && spo2 > 0 && spo2 < 92) ||
+      (!isNaN(plt) && plt > 0 && plt < 50) ||
+      (!isNaN(ast) && ast >= 1000) ||
+      (!isNaN(alt) && alt >= 1000) ||
+      selectedIds.has('suy_ho_hap_tran_dich_mang_phoi');
+
+    const hasWarningSigns =
+      (!isNaN(hct) && hct >= 44) ||
+      (!isNaN(plt) && plt > 0 && plt < 100) ||
+      (!isNaN(pulse) && pulse >= 100) ||
+      (!isNaN(temp) && temp >= 39.0) ||
+      (!isNaN(ast) && ast >= 400) ||
+      (!isNaN(alt) && alt >= 400) ||
+      selectedIds.has('tc_dau_hieu_canh_bao_dau_bung_gan_non_oi') ||
+      selectedIds.has('dau_hieu_canh_bao_dau_bung_gan_non_oi') ||
+      selectedIds.has('tc_co_dac_mau_hct_tang_tren_20_phan_tram') ||
+      selectedIds.has('tc_giam_tieu_cau_duoi_100_g_l') ||
+      selectedIds.has('gan_to_dau') ||
+      selectedIds.has('non_ra_mau_phan_den') ||
+      problems.some((p) => p.priorityLevel === 'acute');
+
+    let targetIndex = 0;
+    const matchedReasons: string[] = [];
+
+    if (hasShock || hasCriticalOrganFailure) {
+      targetIndex = branches.length > 2 ? 2 : (branches.length > 1 ? 1 : 0);
+      if (hasShock) matchedReasons.push('Rối loạn huyết động / Dấu hiệu sốc (HA tụt hoặc kẹp ≤ 20 mmHg)');
+      if (!isNaN(spo2) && spo2 < 92) matchedReasons.push(`Giảm oxy máu (SpO2 ${spo2}%)`);
+      if (!isNaN(plt) && plt < 50) matchedReasons.push(`Tiểu cầu giảm nặng < 50 G/L (${plt} G/L)`);
+      if (selectedIds.has('tc_soc_mach_nhanh_ha_kep_hoac_tut')) matchedReasons.push('Triệu chứng sốc thoát dịch');
+    } else if (hasWarningSigns) {
+      targetIndex = branches.length > 1 ? 1 : 0;
+      if (!isNaN(hct) && hct >= 44) matchedReasons.push(`Cô đặc máu (Hct ${hct}%)`);
+      if (!isNaN(plt) && plt < 100) matchedReasons.push(`Tiểu cầu giảm < 100 G/L (${plt} G/L)`);
+      if (selectedIds.has('tc_dau_hieu_canh_bao_dau_bung_gan_non_oi')) matchedReasons.push('Dấu hiệu cảnh báo lâm sàng (đau bụng vùng gan / nôn ói)');
+      if (!isNaN(ast) && ast >= 400) matchedReasons.push(`Tổn thương tế bào gan (AST ${ast} U/L)`);
+    } else {
+      targetIndex = 0;
+      matchedReasons.push('Sinh hiệu trong ngưỡng ổn định, không có dấu hiệu cảnh báo đe dọa sinh mạng');
+    }
+
+    const assignedBranch = branches[targetIndex] || null;
+    const assignedGrade = severityGrades[targetIndex] || null;
+
+    const branchName =
+      assignedBranch?.name ||
+      assignedGrade?.grade ||
+      (targetIndex === 2
+        ? 'Mức độ Nặng / ICU'
+        : targetIndex === 1
+        ? 'Mức độ Có cảnh báo / Nội trú'
+        : 'Mức độ Nhẹ / Ngoại trú');
+
+    const triageTarget =
+      assignedBranch?.triage ||
+      assignedGrade?.triage ||
+      (targetIndex === 2
+        ? 'Khoa Hồi sức Cấp cứu (ICU) / Tuyến cuối'
+        : targetIndex === 1
+        ? 'Khoa Nội / Truyền nhiễm Bệnh viện'
+        : 'Điều trị Ngoại trú / Trạm Y tế');
+
+    const badgeText =
+      assignedBranch?.badgeText ||
+      (targetIndex === 2 ? 'Hồi sức ICU' : targetIndex === 1 ? 'Nội trú 100%' : 'Ngoại trú');
+
+    const badgeColor: 'rose' | 'amber' | 'emerald' | 'blue' =
+      targetIndex === 2 ? 'rose' : targetIndex === 1 ? 'amber' : 'emerald';
+
+    return {
+      axisName: branching?.axisName || 'Phân loại theo Mức độ Lâm sàng & Phân tầng Nguy cơ',
+      axisType: branching?.axisType || 'severity',
+      axisDescription:
+        branching?.description ||
+        'Phân tầng người bệnh vào nhánh phác đồ phù hợp dựa trên sinh hiệu, cận lâm sàng và dấu hiệu cảnh báo.',
+      targetIndex,
+      branchName,
+      triageTarget,
+      badgeText,
+      badgeColor,
+      matchedReasons,
+      escalationCriteria: assignedBranch?.escalationCriteria || (assignedGrade as any)?.escalationCriteria,
+      dischargeCriteria: assignedBranch?.dischargeCriteria || (assignedGrade as any)?.dischargeCriteria,
+      branchesCount: branches.length || severityGrades.length || 3,
+    };
+  }, [leadDiagnosis, activeChain, vitals, labs, selectedSymptoms, problems]);
+
   // 5. Sinh Văn bản Biện luận Lâm sàng EMR hoàn chỉnh
   const generatedReasoningText = useMemo(() => {
     if (!leadDiagnosis) {
@@ -589,7 +705,15 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     }
 
     // D. Đánh giá toàn diện
-    lines.push(`D. ĐÁNH GIÁ TOÀN DIỆN BỆNH LÝ:`);
+    lines.push(`D. ĐÁNH GIÁ TOÀN DIỆN & PHÂN NHÁNH PHÁC ĐỒ (6 TRỤC LÂM SÀNG):`);
+    if (diagnosticRouting) {
+      lines.push(`- Trục phân loại: ${diagnosticRouting.axisName} (Mã: ${diagnosticRouting.axisType.toUpperCase()}).`);
+      lines.push(`- Nhánh chỉ định: ${diagnosticRouting.branchName} [Tuyến: ${diagnosticRouting.triageTarget}].`);
+      lines.push(`- Căn cứ xếp nhánh: ${diagnosticRouting.matchedReasons.join('; ')}.`);
+      if (diagnosticRouting.escalationCriteria) {
+        lines.push(`- Cảnh báo leo thang: ${diagnosticRouting.escalationCriteria}.`);
+      }
+    }
     lines.push(`1. Mức độ nặng: ${comprehensiveAssessment.severity}.`);
     lines.push(`2. Nguyên nhân / Căn nguyên: ${comprehensiveAssessment.etiology}.`);
     lines.push(`3. Biến chứng: ${comprehensiveAssessment.complicationStr}.`);
@@ -606,6 +730,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     confirmatoryTests,
     differentialDiagnoses,
     comprehensiveAssessment,
+    diagnosticRouting,
   ]);
 
   const handleCopyReasoning = () => {
@@ -984,6 +1109,17 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                           <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-900 border border-amber-300 font-mono-custom text-xs font-bold">
                             {diff.pct}% phù hợp
                           </span>
+                          {onGoToProtocol && (
+                            <button
+                              type="button"
+                              onClick={() => onGoToProtocol(diff.disease.id)}
+                              className="px-2 py-0.5 rounded text-[11px] font-semibold text-blue-700 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors flex items-center gap-1 cursor-pointer"
+                              title={`Chọn ${diff.disease.ten} làm chẩn đoán chính và chuyển sang lập phác đồ`}
+                            >
+                              <ArrowRight className="w-3 h-3 text-blue-600" />
+                              <span>Xem phác đồ</span>
+                            </button>
+                          )}
                           {onOpenVaultDrawer && (
                             <button
                               type="button"
@@ -1052,18 +1188,134 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
               </div>
             )}
 
-            {/* Section D: Đánh giá Toàn diện Bệnh lý (Mức độ — Căn nguyên — Biến chứng) */}
-            <div className="border border-slate-200 rounded-2xl bg-white p-4 sm:p-5 shadow-xs space-y-3.5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <span className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wide">
-                  <Activity className="w-4 h-4 text-indigo-600" />
-                  <span>D. Đánh giá Toàn diện Bệnh lý (Mức độ — Căn nguyên — Biến chứng)</span>
-                </span>
-                <span className="text-[11px] text-slate-500 font-medium">
-                  Chuẩn hóa phân tầng theo EBM & Phác đồ Bộ Y Tế
-                </span>
+            {/* Section D: Phân Loại 6 Trục Lâm Sàng & Định Tuyến Phác Đồ (Diagnostic Routing) */}
+            <div className="border border-indigo-200 rounded-2xl bg-white p-4 sm:p-5 shadow-xs space-y-4">
+              <div className="flex items-center justify-between gap-2 flex-wrap border-b border-indigo-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                    D
+                  </div>
+                  <div>
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wide">
+                      <span>D. Phân Loại 6 Trục Lâm Sàng & Định Tuyến Phác Đồ</span>
+                    </span>
+                    <p className="text-[11px] text-slate-500 font-medium">
+                      Tự động phân tầng người bệnh theo trục phân loại EBM để kích hoạt nhánh phác đồ phù hợp ở Bước 4
+                    </p>
+                  </div>
+                </div>
+                {diagnosticRouting && (
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-mono-custom font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Trục: {diagnosticRouting.axisType.toUpperCase()}
+                  </span>
+                )}
               </div>
 
+              {/* CARD ĐỊNH TUYẾN PHÁC ĐỒ NỔI BẬT */}
+              {diagnosticRouting && (
+                <div
+                  className={`p-4 rounded-xl border flex flex-col gap-3 transition-all ${
+                    diagnosticRouting.badgeColor === 'rose'
+                      ? 'bg-gradient-to-r from-rose-50/90 via-rose-50/40 to-white border-rose-300'
+                      : diagnosticRouting.badgeColor === 'amber'
+                      ? 'bg-gradient-to-r from-amber-50/90 via-amber-50/40 to-white border-amber-300'
+                      : 'bg-gradient-to-r from-emerald-50/90 via-emerald-50/40 to-white border-emerald-300'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-slate-500 font-medium">Trục phân loại:</span>
+                      <span className="text-xs font-bold text-slate-800">
+                        {diagnosticRouting.axisName}
+                      </span>
+                    </div>
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider ${
+                        diagnosticRouting.badgeColor === 'rose'
+                          ? 'bg-rose-600 text-white shadow-2xs'
+                          : diagnosticRouting.badgeColor === 'amber'
+                          ? 'bg-amber-600 text-white shadow-2xs'
+                          : 'bg-emerald-600 text-white shadow-2xs'
+                      }`}
+                    >
+                      {diagnosticRouting.badgeText}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1 border-t border-slate-200/60">
+                    <div>
+                      <div className="text-[11px] text-slate-500 uppercase font-semibold">Nhánh phác đồ chỉ định:</div>
+                      <div className="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
+                        <Sparkles
+                          className={`w-4 h-4 ${
+                            diagnosticRouting.badgeColor === 'rose'
+                              ? 'text-rose-600'
+                              : diagnosticRouting.badgeColor === 'amber'
+                              ? 'text-amber-600'
+                              : 'text-emerald-600'
+                          }`}
+                        />
+                        <span>{diagnosticRouting.branchName}</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-0.5">
+                        <span className="font-semibold text-slate-700">Tuyến tiếp nhận:</span>{' '}
+                        <span>{diagnosticRouting.triageTarget}</span>
+                      </div>
+                    </div>
+
+                    {onGoToProtocol && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          onGoToProtocol(leadDiagnosis.id, { gradeIdx: diagnosticRouting.targetIndex })
+                        }
+                        className={`px-4 py-2 rounded-xl text-xs font-bold text-white shadow-xs transition-all cursor-pointer flex items-center gap-1.5 self-start sm:self-center hover:translate-x-0.5 ${
+                          diagnosticRouting.badgeColor === 'rose'
+                            ? 'bg-rose-600 hover:bg-rose-500'
+                            : diagnosticRouting.badgeColor === 'amber'
+                            ? 'bg-amber-600 hover:bg-amber-500'
+                            : 'bg-emerald-600 hover:bg-emerald-500'
+                        }`}
+                        title="Chuyển thẳng sang Bước 4 và tự động chọn nhánh phác đồ này"
+                      >
+                        <span>Áp dụng nhánh này (Bước 4)</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Căn cứ phân loại tự động */}
+                  <div className="pt-2 border-t border-slate-200/50">
+                    <span className="text-[11px] font-bold text-slate-700 block mb-1.5 flex items-center gap-1">
+                      <Target className="w-3.5 h-3.5 text-indigo-600" />
+                      <span>Căn cứ lâm sàng & CLS thỏa mãn:</span>
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {diagnosticRouting.matchedReasons.map((reason, rIdx) => (
+                        <span
+                          key={rIdx}
+                          className="px-2 py-0.5 rounded-md bg-white/90 border border-slate-200 text-[11px] text-slate-800 font-medium shadow-2xs"
+                        >
+                          &bull; {reason}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tiêu chuẩn leo thang nếu có */}
+                  {diagnosticRouting.escalationCriteria && (
+                    <div className="p-2.5 rounded-lg bg-amber-100/70 border border-amber-300 text-amber-950 text-xs flex items-start gap-2">
+                      <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold text-amber-900 uppercase">Cảnh báo leo thang: </span>
+                        <span>{diagnosticRouting.escalationCriteria}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* 3 Cột đánh giá: Mức độ - Căn nguyên - Biến chứng */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
                 {/* 1. Mức độ nặng */}
                 <div
@@ -1078,7 +1330,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                   <div>
                     <span className="font-bold text-slate-700 block mb-1.5 text-[11px] uppercase tracking-wider flex items-center gap-1">
                       <Flame className="w-3.5 h-3.5 text-amber-600" />
-                      <span>1. Mức độ nặng:</span>
+                      <span>1. Mức độ nặng tổng thể:</span>
                     </span>
                     <p className="text-slate-800 leading-relaxed font-semibold">
                       {comprehensiveAssessment.severity}
@@ -1126,7 +1378,9 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                       Hoàn tất biện luận lâm sàng cho: <span className="text-blue-300 font-extrabold">{leadDiagnosis.ten}</span>
                     </div>
                     <div className="text-[11px] text-slate-300">
-                      Chuyển sang Bước 4 để xác lập phác đồ phân tầng, y lệnh thuốc & theo dõi điều trị chi tiết.
+                      {diagnosticRouting
+                        ? `Tự động định tuyến vào ${diagnosticRouting.branchName} · Chuyển Bước 4 để lập y lệnh.`
+                        : 'Chuyển sang Bước 4 để xác lập phác đồ phân tầng, y lệnh thuốc & theo dõi điều trị chi tiết.'}
                     </div>
                   </div>
                 </div>
@@ -1136,10 +1390,18 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
                     <button
                       id="btn-goto-protocol-integrated"
                       type="button"
-                      onClick={() => onGoToProtocol(leadDiagnosis.id)}
+                      onClick={() =>
+                        onGoToProtocol(leadDiagnosis.id, {
+                          gradeIdx: diagnosticRouting ? diagnosticRouting.targetIndex : 0,
+                        })
+                      }
                       className="flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs cursor-pointer transition-all hover:translate-x-0.5"
                     >
-                      <span>Tiến hành lập phác đồ điều trị (Bước 4)</span>
+                      <span>
+                        {diagnosticRouting
+                          ? `Lập phác đồ: ${diagnosticRouting.branchName.split(':')[0]} (Bước 4)`
+                          : 'Tiến hành lập phác đồ điều trị (Bước 4)'}
+                      </span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   )}

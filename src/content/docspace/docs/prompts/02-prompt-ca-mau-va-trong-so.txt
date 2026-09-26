@@ -1,0 +1,170 @@
+================================================================================
+CLINIPORTAL DOCSPACE — PROMPT 02: CA BỆNH MẪU & MA TRẬN TRỌNG SỐ CDSS
+(SAMPLE CLINICAL CASE & CDSS WEIGHT MATRIX GENERATOR — CHUẨN EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI]
+Prompt này dùng khi bạn muốn tạo:
+1. Ca bệnh lâm sàng mẫu (Sample Clinical Case) nạp vào Bước 1:
+   -> Giúp bác sĩ hoặc người dùng nhấp chuột 1-chạm là nạp ngay đầy đủ sinh hiệu, xét nghiệm, bệnh sử, triệu chứng để thực hành và mô phỏng.
+2. Ma trận trọng số suy luận CDSS (Clinical Decision Support Weights) cho Bước 3:
+   -> Quy định các triệu chứng nào là Đặc trưng (dt), Gợi ý (gy), Hỗ trợ (ht), Loại trừ (loaitru) cùng điểm trọng số tương ứng.
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+(Tùy chỉnh thông số trong ngoặc vuông bên dưới theo ca bệnh cần xây dựng):
+- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue)
+- [MÃ ICD-10]: (Ví dụ: A97 / A97.1)
+- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch)
+- [THỂ BỆNH MẪU]: (Ví dụ: SXHD có dấu hiệu cảnh báo ngày thứ 4, Hct 46%, TC 42 G/L)
+- [CƠ ĐỊA BỆNH NHÂN]: (Ví dụ: Nam 24 tuổi, sinh viên, sống tại khu trọ có ổ dịch lưu hành)
+- [SLUG FILE BỆNH LÝ]: (Ví dụ: sot_xuat_huyet_dengue)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
+
+--------------------------------------------------------------------------------
+[QUY TẮC BẮT BUỘC TUÂN THỦ]
+1. ĐỐI CHIẾU MÃ TRIỆU CHỨNG CHUẨN:
+   Các mảng "selected", "sel", "negated" và "dd" BẮT BUỘC sử dụng mã ID chuẩn hóa tiếng Việt không dấu (Ví dụ: "sot", "dau_dau", "dau_co", "buon_non_non", "co_dac_mau_hct", "giam_tieu_cau").
+2. PHÂN TẦNG VAI TRÒ CDSS CHÍNH XÁC:
+   - "dt" (Đặc trưng): Triệu chứng hoặc xét nghiệm then chốt, có tính khẳng định cao (Trọng số 4.0 - 5.0).
+   - "gy" (Gợi ý): Dấu hiệu lâm sàng thường gặp của hội chứng (Trọng số 2.5 - 3.5).
+   - "ht" (Hỗ trợ): Dấu hiệu bổ trợ, không đặc hiệu (Trọng số 1.0 - 2.0).
+   - "loaitru" (Loại trừ): Nếu xuất hiện dấu hiệu này thì làm giảm mạnh hoặc loại trừ chẩn đoán.
+3. ĐẦU RA:
+   Xuất ra 02 khối code JSON chuẩn xác.
+
+--------------------------------------------------------------------------------
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+--------------------------------------------------------------------------------
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế (Clinical Informatics & CDSS).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU] và Từ điển triệu chứng chuẩn DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md), hãy xây dựng 02 khối dữ liệu JSON chuẩn xác cho bệnh lý sau:
+
+Thông số đầu vào:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10: [MÃ ICD-10]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Thể bệnh mẫu: [THỂ BỆNH MẪU]
+- Cơ địa bệnh nhân: [CƠ ĐỊA BỆNH NHÂN]
+- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản:
+Xuất ra đúng 02 khối code JSON theo cấu trúc bên dưới (không có giải thích ngoài khối code):
+
+Khối 1: Ca lâm sàng mẫu Bước 1 (nạp vào sample-clinical-cases.json) với đầy đủ sinh hiệu (vitals), xét nghiệm (labs), triệu chứng chọn trước (selected/sel/negated đối soát từ từ điển), bối cảnh dịch tễ (epiContext), và bệnh sử chi tiết (form.text: cn, tt, tc, cls).
+Khối 2: Ma trận trọng số CDSS Bước 3 (nạp vào data/diseases/[chuyen-khoa].json) với mảng 'dd' phân tầng rõ: 'dt' (4.0-5.0), 'gy' (2.5-3.5), 'ht' (1.0-2.0), 'loaitru' (điểm âm).
+
+Mẫu cấu trúc JSON chuẩn:
+"
+
+--------------------------------------------------------------------------------
+[CẤU TRÚC CODE XUẤT BẢN]
+
+### KHỐI 1: CA LÂM SÀNG MẪU BƯỚC 1 (Nạp vào: src/content/knowledge-vault/data/sample-clinical-cases.json)
+
+```json
+{
+  "id": "[slug_ca_benh: ví dụ sxh_dengue_canh_bao_n4]",
+  "ten": "[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]",
+  "diseaseId": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "icd10": "[MÃ ICD-10: ví dụ A97.1]",
+  "specialty": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "vitals": {
+    "vNhiet": "39.2",
+    "vMach": "108",
+    "vHATT": "95",
+    "vHATTr": "75",
+    "vTho": "22",
+    "vSpo2": "96"
+  },
+  "labs": {
+    "lBC": "3.2",
+    "lTC": "42",
+    "lHct": "46",
+    "lGlu": "5.4",
+    "lTrop": "8",
+    "lAST": "280",
+    "lALT": "195",
+    "lCre": "85"
+  },
+  "selected": [
+    "sot_cao_dot_ngot_duoi_7_ngay",
+    "dau_hieu_canh_bao_dau_bung_gan_non_oi",
+    "co_dac_mau_hct_tang_tren_20_phan_tram",
+    "giam_tieu_cau_duoi_100_g_l",
+    "xuat_huyet_da_niem"
+  ],
+  "sel": [
+    "sot_cao_dot_ngot_duoi_7_ngay",
+    "dau_hieu_canh_bao_dau_bung_gan_non_oi",
+    "co_dac_mau_hct_tang_tren_20_phan_tram",
+    "giam_tieu_cau_duoi_100_g_l",
+    "xuat_huyet_da_niem"
+  ],
+  "negated": [
+    "soc_mach_nhanh_ha_kep_hoac_tut",
+    "suy_ho_hap_tran_dich_mang_phoi"
+  ],
+  "epiContext": {
+    "endemicArea": "Vùng dịch tễ lưu hành bệnh theo mùa",
+    "outbreakAlert": "Đang có ổ dịch bùng phát tại địa phương",
+    "vectorExposure": "Khu vực có nhiều muỗi Aedes đốt / Nguồn lây rõ",
+    "seasonalContext": "Mùa mưa / Cao điểm mùa dịch"
+  },
+  "form": {
+    "gioiTinh": "nam",
+    "tuoi": "24",
+    "ngheNghiep": "Sinh viên / Nhân viên văn phòng",
+    "lyDo": "Sốt cao ngày thứ 4, đau bụng vùng gan và mệt lả",
+    "text": {
+      "cn": "Bệnh khởi phát cách nhập viện 4 ngày với sốt cao liên tục 39-40°C, đáp ứng kém thuốc hạ sốt, nhức hai hố mắt, đau cơ khớp dữ dội. Đến ngày thứ 4 sốt giảm nhưng thấy mệt nhiều, đau tức liên tục vùng hạ sườn phải, nôn ói 3 lần/ngày, chảy máu chân răng khi đánh răng.",
+      "tt": "Bệnh nhân tỉnh, lừ đừ, da niêm xung huyết, chi ấm, CRT = 2s. Không phù. Chấm xuất huyết rải rác cẳng tay 2 bên. Bụng mềm, ấn đau tức vùng gan, gan mấp mé 2cm dưới bờ sườn. Tim đều rõ, phổi thông khí tốt không rale.",
+      "tc": "Tiền sử khỏe mạnh, chưa từng mắc SXHD trước đây. Gia đình và dãy trọ có 2 người đang mắc SXHD.",
+      "cls": "CTM tại giường: Hct 46% (tăng > 20% so với nền), Tiểu cầu 42 G/L (giảm nhanh dốc đứng), Bạch cầu 3.2 G/L. NS1 Ag (+). Men gan AST 280 U/L, ALT 195 U/L. Siêu âm ổ bụng: Dịch màng bụng lượng ít, phù nề nhẹ thành túi mật."
+    }
+  }
+}
+```
+
+---
+
+### KHỐI 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS BƯỚC 3 (Nạp vào: src/content/knowledge-vault/data/diseases/[chuyen_khoa].json)
+
+```json
+{
+  "id": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "ten": "[TÊN BỆNH LÝ: ví dụ Sốt xuất huyết Dengue]",
+  "icd": "[MÃ ICD-10: ví dụ A97]",
+  "nhom": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "baoDong": true,
+  "ghiChuBaoDong": "Phác đồ điều trị chuyên sâu EBM & Phân nhánh đa tầng",
+  "tomTat": "Tóm tắt cơ chế chẩn đoán và phân tầng mức độ nặng theo Guideline.",
+  "danSo": {
+    "gioiTinh": "any",
+    "tuoiMin": 0,
+    "tuoiMax": 120
+  },
+  "dd": [
+    ["tc_sot_cao_dot_ngot_duoi_7_ngay", 4.5, "dt"],
+    ["tc_dau_hieu_canh_bao_dau_bung_gan_non_oi", 4.5, "dt"],
+    ["tc_co_dac_mau_hct_tang_tren_20_phan_tram", 4.5, "dt"],
+    ["tc_giam_tieu_cau_duoi_100_g_l", 4.0, "dt"],
+    ["tc_xet_nghiem_ns1_hoac_pcr_duong_tinh", 5.0, "dt"],
+    ["dau_dau", 2.5, "gy"],
+    ["dau_co", 2.5, "gy"],
+    ["buon_non_non", 2.0, "gy"],
+    ["tc_soc_mach_nhanh_ha_kep_hoac_tut", 5.0, "dt"]
+  ]
+}
+```
+*(Ghi chú: Toàn bộ phác đồ điều trị chuyên sâu, Bảng 4 cột và thuốc đã được quản lý riêng tại Mục 04 qua file `enriched/<slug>.json` (Prompt 01). Khối 2 này chỉ thuần túy phục vụ Động cơ suy luận chẩn đoán CDSS Bước 3).*
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN NẠP VÀO HỆ THỐNG]
+1. Khối 1: Dán vào danh sách trong src/content/knowledge-vault/data/sample-clinical-cases.json
+2. Khối 2: Dán vào mảng trong src/content/knowledge-vault/data/diseases/[chuyen-khoa].json
+3. Mở terminal và chạy lệnh:
+   node tools/scripts/bundle-clinical-rules.mjs
+   node tools/scripts/sync-clinical-db.mjs
+================================================================================

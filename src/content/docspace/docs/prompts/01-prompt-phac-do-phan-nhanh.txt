@@ -1,0 +1,330 @@
+================================================================================
+CLINIPORTAL DOCSPACE — PROMPT 01: MASTER PHÁC ĐỒ PHÂN NHÁNH LÂM SÀNG
+(DYNAMIC CLINICAL BRANCHING PROTOCOL EXTRACTOR — CHUẨN EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI]
+Đây là Prompt quan trọng nhất trong hệ thống DocSpace MedLens Pro.
+Nhiệm vụ của bạn: Đọc toàn bộ Hướng dẫn Chẩn đoán và Điều trị (Guideline của Bộ Y tế Việt Nam, WHO, NICE, KDIGO, GINA, GOLD, IDSA, v.v.) được cung cấp trong tài liệu, sau đó TRÍCH XUẤT và CẤU TRÚC HÓA thành 01 TỆP JSON DUY NHẤT theo chuẩn "Hệ thống Phác đồ Phân nhánh Đa dạng" (Dynamic Clinical Branching Protocol Engine v3.0).
+
+Tệp JSON này sẽ vận hành trực tiếp cả:
+- BƯỚC 3: Động cơ suy luận CDSS & Phân tầng mức độ nặng
+- BƯỚC 4: Phác đồ điều trị chi tiết, Bảng 4 Cột theo ngày, Cầu nối leo thang & An toàn kê đơn
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+(Tùy chỉnh các thông số trong ngoặc vuông bên dưới theo mặt bệnh cần soạn):
+- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue / Viêm phổi mắc phải cộng đồng / Hen phế quản)
+- [MÃ ICD-10 GỐC]: (Ví dụ: A97 / J18 / J45)
+- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch / Nội tiết / Nhi khoa)
+- [MỨC ĐỘ KHẨN]: emergency (Cấp cứu) | urgent (Khẩn cấp) | routine (Thông thường)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
+- [SLUG FILE]: (Ví dụ: sot_xuat_huyet_dengue / viem_phoi_cong_dong / hen_phe_quan)
+
+--------------------------------------------------------------------------------
+[BÍ KÍP THỰC CHIẾN: XỬ LÝ BỆNH LÝ ĐỒ SỘ / NHIỀU PHÂN ĐỘ (SXH DENGUE, NHIỄM TRÙNG HUYẾT...)]
+* LƯU Ý QUAN TRỌNG VỀ GIỚI HẠN CỦA NOTEBOOKLM / AI:
+  NotebookLM có thể đọc hiểu tài liệu hàng trăm trang, nhưng độ dài tối đa của 1 lượt trả lời
+  bị giới hạn ở khoảng 4.000 - 8.000 tokens (tương đương 400 - 600 dòng JSON).
+  Với những bệnh cực kỳ đồ sộ như Sốt xuất huyết Dengue (có 3 phân độ nặng, phác đồ dịch truyền
+  từng giờ, xử trí xuất huyết tiêu hóa, quá tải dịch...), file JSON thực tế có thể dài hơn 1.000 dòng.
+  NẾU ÉP NOTEBOOKLM SINH TẤT CẢ TRONG 1 LƯỢT, AI SẼ TỰ ĐỘNG TÓM TẮT BỎ BỚT CHI TIẾT HOẶC BỊ DỪNG NGANG!
+
+* 2 CHIẾN THUẬT LẤY ĐẦY ĐỦ 100% NỘI DUNG Y KHOA CHUYÊN SÂU:
+  👉 CHIẾN THUẬT 1 (KHUYÊN DÙNG NHẤT — CHUẨN 100%): SINH TỪNG NHÁNH (Branch-by-Branch)
+     - Lượt 1: Dán Prompt này và thêm câu lệnh:
+       "Hãy xuất khối JSON gồm phần thông tin chung, tiêu chuẩn chẩn đoán criteria[] và chi tiết của Nhánh 1 (nhẹ/cổ điển) & Nhánh 2 (có cảnh báo)."
+     - Lượt 2: Chat tiếp trong Notebook:
+       "Bây giờ hãy viết tiếp object JSON chi tiết cho Nhánh 3 (Sốc / Nặng / ICU) theo đúng cấu trúc branch, đầy đủ 100% y lệnh dịch truyền nấc thang và bảng 4 cột."
+     -> Sau đó chỉ việc dán object Nhánh 3 vào mảng `branches: [ ... ]` của file JSON!
+
+  👉 CHIẾN THUẬT 2: KỸ THUẬT GÕ "TIẾP TỤC" (KHI BỊ DỪNG NGANG)
+     - Nếu NotebookLM đang sinh dở dang mà bị dừng lại (chưa đóng ngoặc `}`), đừng bắt nó viết lại từ đầu!
+     - Chỉ cần gõ lệnh:
+       "tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước"
+     -> AI sẽ viết tiếp đoạn đuôi còn lại, bạn chỉ cần copy nối 2 đoạn lại thành file hoàn chỉnh.
+--------------------------------------------------------------------------------
+[QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
+
+1. NGUYÊN TẮC MỘT BỆNH GỐC (SINGLE MASTER ENTITY):
+   Toàn bộ các phân loại (nhẹ, trung bình, nặng, sốc, hoặc các thể lâm sàng) của bệnh này PHẢI nằm chung trong 01 file JSON duy nhất. Tuyệt đối không tách thành nhiều file lẻ.
+
+2. XÁC ĐỊNH ĐÚNG 01 TRỤC PHÂN NHÁNH LÂM SÀNG ("axisType"):
+   Phân tích Guideline để chọn đúng 1 trong 6 loại trục phân nhánh sau:
+   - "severity"       : Phân tầng theo mức độ nặng / đe dọa sinh mạng (Ví dụ: SXHD Nhẹ -> Cảnh báo -> Nặng; Viêm tụy cấp).
+   - "triage_score"   : Phân tuyến tiếp nhận Ngoại trú / Nội trú / ICU dựa theo thang điểm (Ví dụ: Viêm phổi CURB-65 / PSI; Thuyên tắc phổi PESI).
+   - "phenotype"      : Phân theo thể lâm sàng, hình thái hoặc căn nguyên (Ví dụ: Nhiễm trùng da Có mủ vs Không mủ; Viêm màng não Vi khuẩn vs Siêu vi).
+   - "treatment_step" : Phân theo bậc điều trị kiểm soát bệnh mạn tính (Ví dụ: Hen phế quản GINA Bậc 1-5; COPD GOLD A-B-E).
+   - "stage"          : Phân theo giai đoạn tiến triển suy chức năng tạng (Ví dụ: Xơ gan Child-Pugh A-B-C; Suy thận mạn CKD G1-G5).
+   - "comorbidity"    : Phân theo nhóm bệnh đồng mắc / cơ địa (Ví dụ: ĐTĐ type 2 có Suy tim / CKD / ASCVD).
+
+3. BẢNG 4 CỘT LỘ TRÌNH ĐIỀU TRỊ TỪNG NGÀY (TIMELINE PHASES):
+   Mỗi nhánh bắt buộc phải có lộ trình từng ngày ("timelinePhases"), mỗi phase gồm các vấn đề lâm sàng với 4 thành phần:
+   - Cột 1: Vấn đề lâm sàng (problemName, problemType: specific | clinical | paraclinical | complication)
+   - Cột 2: Y lệnh điều trị cụ thể (treatments: category, content, isHighlighted)
+   - Cột 3: Chỉ số theo dõi (monitoring: type: LS/CLS, metric, frequency, target)
+   - Cột 4: Mục tiêu lâm sàng giai đoạn (clinicalGoal)
+
+4. CẦU NỐI LEO THANG PHÁC ĐỒ (ESCALATION BRIDGE) & TIÊU CHUẨN XUẤT VIỆN:
+   Mỗi nhánh bắt buộc có:
+   - "escalationCriteria": Dấu hiệu cảnh báo nguy hiểm hoặc thất bại điều trị để bác sĩ chuyển lên nhánh nặng hơn ngay lập tức.
+   - "dischargeCriteria": Tiêu chuẩn an toàn để hạ bậc phác đồ hoặc xuất viện.
+
+5. NGUYÊN TẮC KẾ THỪA CHỐNG TRÙNG LẶP (INHERITANCE):
+   Các chống chỉ định dùng chung, lời dặn chung được ghi 1 lần ở cấp gốc ("protocol.supportiveCare", "clinicalCautions"). Từng nhánh chỉ ghi thuốc và y lệnh đặc thù của nhánh đó.
+
+6. ĐẦU RA DUY NHẤT:
+   Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
+
+--------------------------------------------------------------------------------
+[CẤU TRÚC JSON CHUẨN BẮT BUỘC XUẤT RA]
+
+```json
+{
+  "icdCode": "[MÃ ICD-10 GỐC]",
+  "icdPrefixes": ["[Mã ICD phụ 1]", "[Mã ICD phụ 2]"],
+  "diseaseName": "[TÊN BỆNH LÝ]",
+  "specialty": "[CHUYÊN KHOA]",
+  "severity": "[MỨC ĐỘ KHẨN]",
+  "summary": "Tóm tắt cơ chế sinh bệnh học, dịch tễ và diễn tiến lâm sàng cốt lõi theo Guideline.",
+  "goldStandard": "Tiêu chuẩn vàng xác nhận chẩn đoán theo Guideline.",
+
+  "criteriaRule": {
+    "mandatoryIds": ["tc_bat_buoc_1"],
+    "minMajorRequired": 2,
+    "minMinorRequired": 1,
+    "ruleDescription": "Mô tả quy tắc chẩn đoán xác định bệnh theo tiêu chuẩn chính, phụ và cận lâm sàng."
+  },
+  "criteria": [
+    {
+      "id": "tc_bat_buoc_1",
+      "type": "mandatory",
+      "label": "[Lâm sàng]: Tên triệu chứng hoặc dấu hiệu bắt buộc",
+      "description": "Chi tiết triệu chứng lâm sàng định lượng.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng_tương_ứng"],
+      "cdssRole": "dt",
+      "weight": 4.5
+    },
+    {
+      "id": "tc_chinh_1",
+      "type": "major",
+      "label": "[Lâm sàng / Cận lâm sàng]: Tên tiêu chuẩn chính",
+      "description": "Mô tả lâm sàng hoặc ngưỡng xét nghiệm định lượng.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng"],
+      "cdssRole": "dt",
+      "weight": 4.0
+    }
+  ],
+
+  "stagingType": "severity",
+  "hasSeverityGrading": true,
+
+  "branching": {
+    "axisName": "Tên trục phân nhánh (Ví dụ: Phân loại theo Mức độ Lâm sàng QĐ 2760/QĐ-BYT)",
+    "axisType": "severity | triage_score | phenotype | treatment_step | stage | comorbidity | custom",
+    "description": "Giải thích nguyên lý phân nhánh để bác sĩ chọn đúng phác đồ phù hợp với người bệnh.",
+    "branches": [
+      {
+        "id": "branch_1",
+        "name": "Mức độ 1: Thể nhẹ (Điều trị Ngoại trú)",
+        "badgeText": "Ngoại trú",
+        "color": "emerald",
+        "criteria": "Tiêu chuẩn lâm sàng & CLS để xác định người bệnh thuộc nhánh này.",
+        "triage": "Ngoại trú / Trạm Y tế / Phòng khám ngoại trú",
+        "targetVitals": "Sinh hiệu mục tiêu bình thường theo tuổi, SpO2 >= 96%, bài niệu >= 1.0 mL/kg/h",
+        "escalationCriteria": "Dấu hiệu cảnh báo nguy hiểm hoặc diễn tiến xấu cần chuyển viện / nâng bậc lên Nhánh 2 ngay lập tức.",
+        "dischargeCriteria": "Tiêu chuẩn an toàn để kết thúc theo dõi ngoại trú hoặc cho ra viện.",
+        "drugs": [
+          [
+            "Tên thuốc / Dịch truyền",
+            "Liều lượng, đường dùng, tần suất",
+            "Ghi chú, điều kiện dùng & chống chỉ định"
+          ]
+        ],
+        "timelinePhases": [
+          {
+            "id": "b1_p1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Cấp tính / Khởi đầu",
+            "clinicalGoal": "Mục tiêu điều trị cốt lõi của giai đoạn này",
+            "problems": [
+              {
+                "id": "b1_prob_spec",
+                "problemName": "Điều trị đặc hiệu",
+                "problemType": "specific",
+                "isNoSpecificTreatment": true,
+                "treatments": [
+                  {
+                    "category": "ĐT Đặc hiệu",
+                    "content": "Y lệnh điều trị đặc hiệu",
+                    "isHighlighted": true
+                  }
+                ],
+                "monitoring": []
+              },
+              {
+                "id": "b1_prob_symp",
+                "problemName": "Kiểm soát triệu chứng & bù dịch",
+                "problemType": "clinical",
+                "treatments": [
+                  {
+                    "category": "Hạ sốt / Bù dịch",
+                    "content": "Y lệnh chi tiết",
+                    "isHighlighted": true
+                  }
+                ],
+                "monitoring": [
+                  {
+                    "type": "LS",
+                    "metric": "Thân nhiệt, Lượng nước tiểu",
+                    "frequency": "Mỗi 4 giờ",
+                    "target": "Hạ sốt an toàn, bài niệu >= 1.0 mL/kg/h"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "branch_2",
+        "name": "Mức độ 2: Có dấu hiệu cảnh báo (Nội trú 100%)",
+        "badgeText": "Nội trú 100%",
+        "color": "amber",
+        "criteria": "Có ít nhất 1 dấu hiệu cảnh báo nguy hiểm hoặc cơ địa nguy cơ cao.",
+        "triage": "Khoa Nội / Nhi / Truyền nhiễm Bệnh viện Quận / Huyện / Tỉnh",
+        "targetVitals": "HATT >= 90 mmHg, Hiệu áp >= 30 mmHg, SpO2 >= 95%, Nước tiểu >= 0.5 - 1.0 mL/kg/h",
+        "escalationCriteria": "BÁO ĐỘNG ĐỎ đe dọa tính mạng (tụt HA, sốc, xuất huyết nặng) cần chuyển ICU / Nhánh 3 ngay lập tức.",
+        "dischargeCriteria": "Hết sốt >= 48h, ngưng thuốc tĩnh mạch >= 24h mà huyết động ổn định, CLS hồi phục an toàn.",
+        "drugs": [
+          [
+            "Dung dịch truyền tĩnh mạch nấc thang / Kháng sinh",
+            "Liều lượng bậc thang, tốc độ truyền",
+            "Chỉ định và điều kiện giảm tốc độ"
+          ]
+        ],
+        "timelinePhases": [
+          // Lộ trình từng ngày của Nhánh 2
+        ]
+      },
+      {
+        "id": "branch_3",
+        "name": "Mức độ 3: Nặng / Nguy kịch / Hồi sức ICU",
+        "badgeText": "Hồi sức ICU",
+        "color": "rose",
+        "criteria": "Rối loạn huyết động (sốc, HA kẹp <= 20 mmHg), suy hô hấp nặng hoặc suy tạng.",
+        "triage": "Khoa Hồi sức Cấp cứu (ICU) / Bệnh viện Tuyến cuối",
+        "targetVitals": "MAP >= 65 mmHg, HATT >= 90 mmHg, SpO2 >= 95%, Lactate < 2 mmol/L",
+        "escalationCriteria": "Xử trí sốc kéo dài / thất bại bù dịch / chuyển dịch cao phân tử hoặc vận mạch khẩn cấp.",
+        "dischargeCriteria": "Thoát sốc hoàn toàn, cai dịch truyền và vận mạch > 24h, các tạng hồi phục an toàn.",
+        "drugs": [
+          [
+            "Dịch truyền chống sốc giờ vàng / Vận mạch",
+            "Liều khẩn cấp giờ đầu",
+            "Đánh giá lại mỗi 1 giờ"
+          ]
+        ],
+        "timelinePhases": [
+          // Lộ trình từng ngày của Nhánh 3
+        ]
+      }
+    ]
+  },
+
+  "severityGrading": [
+    // Sao chép các nhánh tương ứng vào đây để tương thích ngược 100% với hệ thống cũ
+  ],
+
+  "protocol": {
+    "title": "Phác đồ chẩn đoán và điều trị [TÊN BỆNH LÝ] theo [HƯỚNG DẪN THAM CHIẾU]",
+    "guideline": "[HƯỚNG DẪN THAM CHIẾU]",
+    "targetGoals": [
+      "Mục tiêu điều trị 1",
+      "Mục tiêu điều trị 2",
+      "Mục tiêu điều trị 3"
+    ],
+    "initialManagement": [
+      "Xử trí ban đầu 1",
+      "Xử trí ban đầu 2"
+    ],
+    "firstLineDrugs": [
+      {
+        "drugName": "Tên thuốc",
+        "class": "Nhóm dược lý",
+        "route": "PO | IV | SC | Inhalation",
+        "dosage": "Liều dùng",
+        "frequency": "Tần suất",
+        "instructions": "Hướng dẫn sử dụng",
+        "isFirstLine": true
+      }
+    ],
+    "secondLineDrugs": [],
+    "supportiveCare": [
+      "Chế độ nghỉ ngơi, dinh dưỡng, điều dưỡng chăm sóc chung"
+    ]
+  },
+
+  "complications": [
+    {
+      "id": "comp_1",
+      "name": "Tên biến chứng nguy hiểm",
+      "timeframe": "acute_24h | subacute_7d | chronic",
+      "warningSigns": "Dấu hiệu cảnh báo sớm",
+      "preventiveAction": "Hành động phòng ngừa và xử trí khẩn cấp",
+      "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ KHI XẢY RA BIẾN CHỨNG"
+    }
+  ],
+  "monitoringLabs": [
+    "Xét nghiệm 1: Tần suất và mục tiêu",
+    "Xét nghiệm 2: Tần suất và mục tiêu"
+  ],
+
+  "clinicalCautions": {
+    "specificTreatmentIndications": "Nguyên tắc điều trị đặc hiệu",
+    "criticalWarnings": [
+      "Cảnh báo lâm sàng sống còn 1",
+      "Cảnh báo lâm sàng sống còn 2"
+    ],
+    "contraindications": [
+      "Chống chỉ định tuyệt đối 1",
+      "Chống chỉ định tuyệt đối 2"
+    ],
+    "dischargeCriteria": [
+      "Tiêu chuẩn ra viện chung 1",
+      "Tiêu chuẩn ra viện chung 2"
+    ]
+  },
+
+  "vaultPathways": [
+    {
+      "khoCode": "CD",
+      "khoName": "Kho Tiêu Chuẩn CĐ",
+      "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định [TÊN BỆNH LÝ]",
+      "searchKeyword": "chẩn đoán [SLUG FILE]"
+    },
+    {
+      "khoCode": "PDDT",
+      "khoName": "Kho Phác Đồ Điều Trị",
+      "articleTitle": "Phác đồ điều trị phân bậc [TÊN BỆNH LÝ]",
+      "searchKeyword": "phác đồ điều trị [SLUG FILE]"
+    },
+    {
+      "khoCode": "BC",
+      "khoName": "Kho Biến Chứng",
+      "articleTitle": "Nhận diện và xử trí cấp cứu biến chứng [TÊN BỆNH LÝ]",
+      "searchKeyword": "biến chứng [SLUG FILE]"
+    }
+  ]
+}
+```
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN LƯU VÀ ĐỒNG BỘ SAU KHI XUẤT RA]
+1. Copy khối mã JSON vừa sinh ra.
+2. Lưu vào tệp: src/content/docspace/data/enriched/[SLUG FILE].json
+3. Mở terminal tại thư mục gốc của CliniPortal và chạy lệnh:
+   node tools/scripts/sync-clinical-db.mjs
+4. Hệ thống sẽ tự động đăng ký và nạp bệnh lý vào DocSpace trong 0.5s!
+================================================================================

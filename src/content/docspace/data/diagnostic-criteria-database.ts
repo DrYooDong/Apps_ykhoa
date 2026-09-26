@@ -68,6 +68,9 @@ export interface GradedProtocol {
   secondLineDrugs?: DrugChainOption[];
   monitoring?: string[];
   cautions?: string[];
+  timelinePhases?: any[];
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
 }
 
 export interface SeverityGradingItem {
@@ -79,6 +82,35 @@ export interface SeverityGradingItem {
   targetVitals?: string;
   badgeText?: string;
   protocol?: GradedProtocol;
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
+}
+
+export interface ClinicalBranch {
+  id: string;
+  name: string;
+  axisType?: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
+  badgeText?: string;
+  color?: string;
+  criteria: string;
+  triage?: string;
+  targetVitals?: string;
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
+  drugs?: [string, string, string][];
+  firstLineDrugs?: DrugChainOption[];
+  secondLineDrugs?: DrugChainOption[];
+  monitoring?: string[];
+  cautions?: string[];
+  timelinePhases?: any[];
+  patientCounseling?: string;
+}
+
+export interface ClinicalBranchingSystem {
+  axisName: string;
+  axisType: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
+  description?: string;
+  branches: ClinicalBranch[];
 }
 
 export interface DiseaseReactionChainDefinition {
@@ -105,6 +137,9 @@ export interface DiseaseReactionChainDefinition {
   nonStagedExplanation?: string;
   severityGrading?: SeverityGradingItem[];
 
+  // 🌿 HỆ THỐNG PHÂN NHÁNH PHÁC ĐỒ ĐA DẠNG (Dynamic Clinical Branching)
+  branching?: ClinicalBranchingSystem;
+
   // Phác đồ điều trị phân bậc
   protocol: {
     title: string;
@@ -122,6 +157,10 @@ export interface DiseaseReactionChainDefinition {
 
   // Liên kết 16 Kho Tri thức
   vaultPathways: VaultPathwayLink[];
+
+  // Lộ trình & Phác đồ theo phân độ (Nested Protocols)
+  timelinePhases?: any[];
+  protocols?: any[];
 }
 
 import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db';

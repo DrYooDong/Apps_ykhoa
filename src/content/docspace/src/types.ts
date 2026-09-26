@@ -26,12 +26,88 @@ export interface DanSo {
   tuoiMax?: number | null;
 }
 
+export type BranchAxisType =
+  | 'severity'       // Theo mức độ nặng (Nhẹ, Vừa, Nặng, Nguy kịch)
+  | 'phenotype'      // Theo thể lâm sàng / căn nguyên / vi sinh (Có mủ vs Không mủ, Vi khuẩn vs Siêu vi)
+  | 'stage'          // Theo giai đoạn bệnh (Child-Pugh A/B/C, CKD G1-G5, NYHA I-IV)
+  | 'triage_score'   // Theo thang điểm nguy cơ / phân tuyến (CURB-65, PSI, NEWS2, PEWS)
+  | 'treatment_step' // Theo bậc điều trị (GINA Step 1-5, GOLD A-B-E)
+  | 'comorbidity'    // Theo nhóm bệnh đồng mắc / nguy cơ (Kèm ASCVD/CKD/HF vs Không có)
+  | 'custom';        // Tự do định nghĩa theo tính chất bệnh
+
+export interface ClinicalBranch {
+  id: string;                         // Mã nhánh duy nhất (VD: 'mild', 'canh_bao', 'curb65_high', 'purulent')
+  name: string;                       // Tên nhánh hiển thị (VD: 'Mức độ 1: SXHD nhẹ', 'CURB-65 ≥ 3 (Nhập ICU)')
+  axisType?: BranchAxisType;          // Trục phân nhánh
+  badgeText?: string;                 // Nhãn ngắn (VD: 'Ngoại trú', 'ICU', 'Bậc 3', 'Có mủ')
+  color?: 'emerald' | 'amber' | 'rose' | 'red' | 'blue' | 'indigo' | 'purple' | 'slate' | string;
+  criteria: string;                   // Tiêu chuẩn lâm sàng & CLS để xếp vào nhánh này
+  triage?: string;                    // Tuyến tiếp nhận / Khoa điều trị
+  targetVitals?: string;              // Sinh hiệu / Mục tiêu điều trị của nhánh
+  escalationCriteria?: string;        // Tiêu chuẩn chuyển nhánh / leo thang phác đồ
+  dischargeCriteria?: string;         // Tiêu chuẩn hạ bậc / xuất viện
+  drugs?: [string, string, string][]; // Danh mục thuốc đặc thù của nhánh
+  firstLineDrugs?: Array<{
+    drugName: string;
+    class: string;
+    route: string;
+    dosage: string;
+    frequency: string;
+    instructions: string;
+    isFirstLine: boolean;
+  }>;
+  secondLineDrugs?: Array<{
+    drugName: string;
+    class: string;
+    route: string;
+    dosage: string;
+    frequency: string;
+    instructions: string;
+    isFirstLine: boolean;
+  }>;
+  monitoring?: string[];              // Theo dõi đặc thù của nhánh
+  cautions?: string[];                // Lưu ý đặc thù của nhánh
+  timelinePhases?: any[];             // Bảng 4 cột lộ trình điều trị từng ngày của nhánh
+  patientCounseling?: string;         // Tư vấn bệnh nhân theo nhánh
+}
+
+export interface ClinicalBranchingSystem {
+  axisName: string;                   // Tên trục phân loại (VD: 'Phân loại theo Mức độ lâm sàng', 'Phân loại theo Thể nhiễm trùng', 'Phân loại theo Thang điểm CURB-65')
+  axisType: BranchAxisType;           // Loại trục phân loại
+  description?: string;               // Giải thích nguyên lý phân nhánh của bệnh này
+  branches: ClinicalBranch[];         // Danh sách các nhánh của phác đồ
+}
+
+export interface ProtocolBySeverity {
+  severityRef: 'mild' | 'moderate' | 'severe' | 'critical' | 'phenotype' | string;
+  tabLabel: string;
+  badgeColor?: 'success' | 'warning' | 'danger' | 'critical' | 'info' | string;
+  icdSuffix?: string;
+  triage: string;
+  targetVitals: string;
+  escalationCriteria?: string;   // Tiêu chuẩn leo thang lên phân độ kế tiếp
+  dischargeCriteria?: string;    // Tiêu chuẩn hạ bậc hoặc xuất viện
+  drugs?: [string, string, string][];
+  firstLineDrugs?: Array<{
+    drugName: string;
+    class: string;
+    route: string;
+    dosage: string;
+    frequency: string;
+    instructions: string;
+    isFirstLine: boolean;
+  }>;
+  timelinePhases?: any[];
+  patientCounseling?: string;
+}
+
 export interface PhacDo {
   tuyen: string[];
   thuoc: [string, string, string][]; // [Tên thuốc, Liều / đường dùng, Ghi chú]
   theoDoi: string[];
   luuY: string[];
   nguon: string[];
+  protocols?: ProtocolBySeverity[];
 }
 
 export interface Benh {

@@ -63,16 +63,16 @@ Hệ thống CliniPortal DocSpace vận hành theo chu trình lâm sàng khép k
 
 ---
 
-## 📋 2. Bản Đồ Bộ Prompt (`src/content/docspace/docs/prompts/`)
+## 📋 2. Bản Đồ Bộ Prompt Tinh Gọn (`src/content/docspace/docs/prompts/`)
+
+Từ phiên bản v3.0, toàn bộ hệ thống prompt được tinh gọn thành **Bộ 3 Prompt Thực Chiến Cốt Lõi** (các prompt cũ được bảo lưu tại `src/content/docspace/docs/prompts/archive/`):
 
 | STT | File Prompt | Định Dạng Dữ Liệu | Đích Nạp Trong Dự Án | Kết Nối Chu Trình Lâm Sàng |
 | :---: | :--- | :--- | :--- | :--- |
-| **00** | `00-master-prompt-nap-chu-trinh-lam-sang.txt` | **Master 4 Khối** | Toàn bộ 4 đích bên dưới | Chạy 1-Shot sinh toàn bộ dữ liệu 4 Bước |
-| **05** | `05-prompt-cdss-json-generator.txt` | **Enriched CDSS JSON** | `src/content/docspace/data/enriched/<slug>.json` | Bước 3 (`criteria`, `severityGrading`) & Bước 4 (Bảng 3 Cột & Phác đồ 9 mục) |
-| **06** | `06-prompt-sample-case-generator.txt` | **1. Ca mẫu JSON**<br>**2. Trọng số CDSS** | 1. `sample-clinical-cases.json`<br>2. `clinical-rules-kb.json` & modular files | Bước 1 (Ca mẫu), Bước 2 (DTH Triangle), Bước 3 (% Suy luận & NEWS2/PEWS) |
-| **07** | `07-prompt-soap-case-ingest.txt` | **SOAP Markdown** | `knowledge-vault/ba/soap-<slug>-01.md` | Bước 4 (Mục 9 Ca thực chiến) & Sổ tay SOAP |
-| **08** | `08-prompt-db-batch-enricher.txt` | **DB Batch Enricher** | `src/content/docspace/data/kho-chan-doan-db.ts` | Nâng cấp hàng loạt CSDL Kho Chẩn Đoán |
-| **01-04**| `01-04-prompt-*.txt` | **Markdown Chuyên Sâu** | `knowledge-vault/` (CD, PDDT, DTH, BC) | Thư viện đối soát EBM & Pathways Bước 4 |
+| **01** | `01-prompt-phac-do-phan-nhanh.txt` | **Master Dynamic Branching JSON** | `src/content/docspace/data/enriched/<slug>.json` | Bước 3 (`criteria`, `severityGrading`, `triage_score`) & Bước 4 (Bảng 4 Cột, 6 Đầu mục & An toàn kê đơn) |
+| **02** | `02-prompt-ca-mau-va-trong-so.txt` | **1. Ca mẫu JSON**<br>**2. Trọng số CDSS** | 1. `sample-clinical-cases.json`<br>2. `data/symptoms/` & `data/diseases/` | Bước 1 (Ca mẫu sinh hiệu/triệu chứng), Bước 2 (DTH), Bước 3 (% Suy luận lâm sàng) |
+| **03** | `03-prompt-ho-so-ca-benh-soap.txt` | **SOAP Markdown Frontmatter** | Nạp 1-chạm trên Web (hoặc lưu `knowledge-vault/ba/`) | Bước 4 (Hội chẩn AI & Ca thực chiến) & Sổ tay kinh nghiệm SOAP |
+| **Lưu trữ** | `archive/` | Toàn bộ prompt cũ (00-09) | `src/content/docspace/docs/prompts/archive/` | Dùng để tra cứu lịch sử phát triển khi cần |
 
 ---
 

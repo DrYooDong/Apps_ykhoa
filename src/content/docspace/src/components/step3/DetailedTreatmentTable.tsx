@@ -218,6 +218,53 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
               <b className="text-slate-800">Tiêu chuẩn phân độ:</b> {activeSeverityGrade.criteria}
             </p>
           )}
+
+          {/* ⚡ ESCALATION BRIDGE & DISCHARGE CRITERIA WIDGET */}
+          {(() => {
+            const escalation = activeSeverityGrade?.escalationCriteria || (activeSeverityGrade?.protocol as any)?.escalationCriteria;
+            const discharge = activeSeverityGrade?.dischargeCriteria || (activeSeverityGrade?.protocol as any)?.dischargeCriteria;
+            const hasNextGrade = severityGrades && selectedGradeIdx < severityGrades.length - 1;
+            const nextGrade = hasNextGrade ? severityGrades[selectedGradeIdx + 1] : null;
+
+            if (!escalation && !discharge) return null;
+
+            return (
+              <div className="flex flex-col gap-2 pt-1">
+                {escalation && (
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-lg bg-amber-50/90 border border-amber-200 text-amber-950 text-xs">
+                    <div className="flex items-start gap-2 flex-1">
+                      <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                      <div>
+                        <b className="font-bold text-amber-900 uppercase tracking-wide">Tiêu chuẩn leo thang phác đồ: </b>
+                        <span className="leading-relaxed">{escalation}</span>
+                      </div>
+                    </div>
+                    {hasNextGrade && nextGrade && (
+                      <button
+                        type="button"
+                        onClick={() => onSelectGradeIdx?.(selectedGradeIdx + 1)}
+                        className="self-end sm:self-center shrink-0 px-2.5 py-1.5 rounded-md bg-amber-600 hover:bg-amber-700 text-white font-semibold text-[11px] shadow-2xs transition-colors flex items-center gap-1 cursor-pointer"
+                        title={`Chuyển sang ${nextGrade.grade}`}
+                      >
+                        <span>Leo thang phác đồ</span>
+                        <span>▶</span>
+                      </button>
+                    )}
+                  </div>
+                )}
+
+                {discharge && (
+                  <div className="flex items-start gap-2 p-2.5 rounded-lg bg-emerald-50/90 border border-emerald-200 text-emerald-950 text-xs">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <div>
+                      <b className="font-bold text-emerald-900 uppercase tracking-wide">Tiêu chuẩn hạ bậc / Xuất viện: </b>
+                      <span className="leading-relaxed">{discharge}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       )}
 

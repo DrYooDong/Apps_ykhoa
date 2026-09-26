@@ -887,8 +887,14 @@
 | `.agents/skills/docspace-step4-protocol-squad/SKILL.md` | Đội ngũ AI chuyên trách Bước 4: Phác đồ toàn diện, Bảng 4 Cột, 6 Đầu mục & DDI | Agent Squad Skill |
 | `.agents/skills/docspace-treatment-protocol-ui-squad/SKILL.md` | Đội ngũ AI chuyên trách thiết kế giao diện, Bảng 4 cột và công thái học phác đồ | Agent Squad Skill |
 | `.agents/skills/docspace-treatment-data-engineering-squad/SKILL.md` | Đội ngũ AI chuyên trách cấu trúc dữ liệu y khoa, mapping timeline và an toàn kê đơn | Agent Squad Skill |
-| `.agents/docs/DOCSPACE_TREATMENT_PROTOCOL_KANBAN.md` | Bảng điều phối Kanban liên ngành cho Treatment Protocol UI & Data Squad | Project Kanban |
-| `.agents/docs/DOCSPACE_4STEPS_AGENT_KANBAN.md` | Bảng điều phối Master Kanban cho 4 Đội ngũ Chu trình Lâm sàng DocSpace (Bước 1 - Bước 4) | Project Master Kanban |
+| `src/content/docspace/docs/CLINICAL_BRANCHING_PROTOCOL_GUIDELINES.md` | Cẩm nang quy chuẩn biên soạn phác đồ phân nhánh lâm sàng đa dạng (v3.0) cho 100+ bệnh lý | Documentation & SOP |
+| `src/content/docspace/docs/prompts/README.md` | Tài liệu điều phối Bộ 3 Prompt Thực Chiến Tinh Gọn (Lean 3-Prompt Suite) cho 100+ bệnh lý | Prompt Engineering |
+| `src/content/docspace/docs/prompts/01-prompt-phac-do-phan-nhanh.txt` | Lean Prompt 01: Master trích xuất Phác đồ Phân nhánh Lâm sàng & Tiêu chuẩn CĐ (JSON) | Prompt Engineering |
+| `src/content/docspace/docs/prompts/02-prompt-ca-mau-va-trong-so.txt` | Lean Prompt 02: Trích xuất Ca lâm sàng Mẫu Bước 1 & Ma trận Trọng số CDSS Bước 3 (JSON) | Prompt Engineering |
+| `src/content/docspace/docs/prompts/03-prompt-ho-so-ca-benh-soap.txt` | Lean Prompt 03: Trích xuất Hồ sơ Ca bệnh Thực chiến SOAP & Hạt ngọc lâm sàng (Markdown) | Prompt Engineering |
+| `src/content/docspace/docs/prompts/archive/` | Thư mục lưu trữ lịch sử các prompt cũ (Prompt 00-09) đảm bảo an toàn truy nguyên | Prompt Archives |
+| `tools/templates/protocol-branching-template.json` | Tệp template JSON chuẩn hóa Dynamic Clinical Branching Protocol | Templates |
+| `tools/templates/README_HUONG_DAN_SOAN_PHAC_DO.md` | Sổ tay tóm tắt nhanh 3 bước soạn phác đồ phân nhánh cho bác sĩ & AI | Documentation & Cheat Sheet |
 
 ---
 

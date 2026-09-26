@@ -1,0 +1,89 @@
+{
+  "$schema": "CliniPortal Dynamic Clinical Branching Protocol Template v3.0",
+  "diseaseName": "Tên Bệnh Lý Gốc (VD: Sốt xuất huyết Dengue, Viêm phổi cộng đồng, Hen phế quản)",
+  "icdCode": "Mã ICD-10 Gốc (VD: A97, J18, J45)",
+  "icdPrefixes": ["Mã ICD phụ 1", "Mã ICD phụ 2"],
+  "specialty": "Chuyên khoa (Truyền nhiễm / Hô hấp / Tim mạch / Nội tiết / v.v.)",
+  "summary": "Tóm tắt bệnh học lâm sàng, nguyên tắc tiếp cận và điều trị cốt lõi.",
+
+  "branching": {
+    "axisName": "Tên Trục Phân Nhánh Lâm Sàng (VD: 'Phân loại theo Mức độ lâm sàng QĐ 2760', 'Phân loại theo Thang điểm CURB-65', 'Phân loại theo Bậc điều trị GINA')",
+    "axisType": "severity | phenotype | triage_score | treatment_step | stage | comorbidity | custom",
+    "description": "Giải thích nguyên lý và tiêu chuẩn phân nhánh lâm sàng để bác sĩ lựa chọn nhánh điều trị phù hợp.",
+    
+    "branches": [
+      {
+        "id": "branch_1",
+        "name": "Tên Nhánh 1 (VD: 'Mức độ 1: Thể Nhẹ / Ngoại trú', 'CURB-65 0-1 (Ngoại trú)', 'Bậc 1-2 (Cắt cơn khi cần)')",
+        "badgeText": "Ngoại trú",
+        "color": "emerald",
+        "criteria": "Tiêu chuẩn lâm sàng & cận lâm sàng để xác định người bệnh thuộc nhánh này.",
+        "triage": "Ngoại trú / Trạm Y tế / Phòng khám ban đầu",
+        "targetVitals": "Sinh hiệu mục tiêu bình thường theo tuổi, SpO2 >= 96%",
+        "escalationCriteria": "Dấu hiệu cảnh báo hoặc thất bại điều trị cần LEO THANG sang Nhánh 2.",
+        "dischargeCriteria": "Tiêu chuẩn an toàn để kết thúc theo dõi / xuất viện.",
+        "drugs": [
+          ["Tên thuốc 1", "Liều lượng, đường dùng, tần suất", "Ghi chú & Chống chỉ định"]
+        ],
+        "timelinePhases": [
+          {
+            "id": "b1_phase_1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Khởi phát / Tấn công",
+            "clinicalGoal": "Mục tiêu điều trị của nhánh trong giai đoạn 1",
+            "problems": [
+              {
+                "id": "p1_prob_1",
+                "problemName": "Vấn đề lâm sàng chính",
+                "problemType": "clinical",
+                "treatments": [
+                  {
+                    "category": "Điều trị",
+                    "content": "Y lệnh chi tiết",
+                    "isHighlighted": true
+                  }
+                ],
+                "monitoring": [
+                  {
+                    "type": "LS",
+                    "metric": "Chỉ số theo dõi",
+                    "frequency": "Tần suất",
+                    "target": "Mục tiêu"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "branch_2",
+        "name": "Tên Nhánh 2 (VD: 'Mức độ 2: Có dấu hiệu cảnh báo', 'CURB-65 = 2 (Nội trú)', 'Bậc 3 (ICS liều thấp + LABA)')",
+        "badgeText": "Nội trú 100%",
+        "color": "amber",
+        "criteria": "Tiêu chuẩn lâm sàng & cận lâm sàng để xếp vào nhánh trung bình / nội trú.",
+        "triage": "Khoa Nội / Nhi / Truyền nhiễm Bệnh viện Quận / Huyện / Tỉnh",
+        "targetVitals": "HATT >= 90 mmHg, SpO2 >= 95%, Nước tiểu >= 0.5 - 1.0 mL/kg/h",
+        "escalationCriteria": "BÁO ĐỘNG ĐỎ đe dọa sinh mạng cần LEO THANG KHẨN CẤP lên Nhánh 3 (ICU / Can thiệp chuyên sâu).",
+        "dischargeCriteria": "Tiêu chuẩn ổn định để hạ bậc phác đồ hoặc cai dịch truyền.",
+        "drugs": [
+          ["Tên thuốc 2", "Liều bậc thang", "Theo dõi sát đáp ứng"]
+        ]
+      },
+      {
+        "id": "branch_3",
+        "name": "Tên Nhánh 3 (VD: 'Mức độ 3: Nặng / Sốc / ICU', 'CURB-65 >= 3 (Nhập ICU)', 'Bậc 4-5 (ICS liều cao + Sinh học)')",
+        "badgeText": "Hồi sức ICU",
+        "color": "rose",
+        "criteria": "Rối loạn huyết động (sốc, tụt HA), suy hô hấp nặng hoặc suy đa tạng.",
+        "triage": "Khoa Hồi sức Cấp cứu (ICU) / Tuyến cuối",
+        "targetVitals": "Tưới máu mô hiệu quả, MAP >= 65 mmHg, Lactate < 2 mmol/L",
+        "escalationCriteria": "Xử trí thất bại phác đồ đầu tay / Sốc kháng trị.",
+        "dischargeCriteria": "Thoát sốc hoàn toàn, huyết động tự duy trì ổn định > 24h, các tạng hồi phục.",
+        "drugs": [
+          ["Thuốc hồi sức / Kháng sinh phổ rộng / Vận mạch", "Liều giờ vàng", "Chỉ định khẩn cấp"]
+        ]
+      }
+    ]
+  }
+}

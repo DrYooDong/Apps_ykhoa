@@ -60,12 +60,11 @@ description: Đội ngũ AI chuyên trách tiếp nhận y văn, khai thác Goog
 #### 2. 🤖 CI-AGENT-01: NotebookLM Prompt Engineer (Kỹ sư Prompt Lâm sàng)
 * **Kích hoạt khi**: Cần trích xuất dữ liệu từ NotebookLM.
 * **Trách nhiệm**:
-  - Lựa chọn đúng Prompt Master tương ứng với mục tiêu:
-    - `00-master-prompt-nap-chu-trinh-lam-sang.txt`: Nạp toàn diện cả chu trình 4 bước.
-    - `05-prompt-cdss-json-generator.txt`: Sinh file JSON ma trận trọng số suy luận CDSS.
-    - `06-prompt-sample-case-generator.txt`: Sinh ca bệnh mẫu định lượng chi tiết.
-    - `07-prompt-soap-case-ingest.txt`: Sinh hồ sơ ca bệnh thực chiến SOAP chuẩn Markdown Frontmatter.
-    - `08-prompt-db-batch-enricher.txt`: Nạp làm giàu dữ liệu hàng loạt.
+  - Lựa chọn đúng Lean Prompt tương ứng với mục tiêu:
+    - `01-prompt-phac-do-phan-nhanh.txt`: Sinh Master JSON Phác đồ phân nhánh lâm sàng đa trục (Bước 3 & 4).
+    - `02-prompt-ca-mau-va-trong-so.txt`: Sinh Ca mẫu định lượng Bước 1 & Ma trận trọng số CDSS Bước 3.
+    - `03-prompt-ho-so-ca-benh-soap.txt`: Sinh Hồ sơ ca bệnh thực chiến SOAP nạp 1-chạm vào Bước 4 & Sổ tay.
+    - *(Các prompt cũ 00-09 được lưu trữ tại `prompts/archive/` để tra cứu lịch sử).*
   - Tinh chỉnh System Instruction để NotebookLM không tóm tắt cụt lủn, giữ nguyên các mốc thời gian và giá trị xét nghiệm định lượng.
 
 #### 3. ⚙️ CI-AGENT-02: CLI Automation & Parser Engineer (Kỹ sư Tự động hóa & Script)

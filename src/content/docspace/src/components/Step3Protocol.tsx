@@ -128,56 +128,88 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const [selectedGradeIdx, setSelectedGradeIdx] = useState<number>(0);
   const [activeComplicationIndices, setActiveComplicationIndices] = useState<Set<number>>(new Set());
 
-  // Lọc chỉ giữ lại các phác đồ điều trị cốt lõi được gắn cờ (baoDong === true)
+  // Bảng mapping từ ID phân độ con sang bệnh mẹ và phân độ mặc định
+  const SUB_DISEASE_TO_PARENT_MAP: Record<string, { parentId: string; gradeIdx: number }> = useMemo(() => ({
+    'sot_xuat_huyet_dengue_co_dau_hieu_canh_bao': { parentId: 'sot_xuat_huyet_dengue', gradeIdx: 1 },
+    'sot_xuat_huyet_dengue_the_soc': { parentId: 'sot_xuat_huyet_dengue', gradeIdx: 2 },
+    'A97.1': { parentId: 'sot_xuat_huyet_dengue', gradeIdx: 1 },
+    'A97.2': { parentId: 'sot_xuat_huyet_dengue', gradeIdx: 2 },
+  }), []);
+
+  // Lọc và chuẩn hóa danh sách bệnh lý cốt lõi (Gom cụm phân độ con vào 1 Disease Card mẹ)
   const allAvailableDiseases = useMemo(() => {
-    const list: Benh[] = Array.isArray(kb?.benh)
+    let list: Benh[] = Array.isArray(kb?.benh)
       ? kb.benh.filter((b) => Boolean(b && b.baoDong))
       : [];
 
-    const findExistingIdx = (key: string, chain: any) => {
-      return list.findIndex((b) => {
-        if (!b) return false;
-        if (b.id === key) return true;
-        if (
-          (key === 'aclf' && (b.id === 'suy_gan_cap_tren_nen_man_aclf' || b.id === 'suy-gan-cap-tren-nen-man-aclf')) ||
-          (b.id === 'aclf' && (key === 'suy_gan_cap_tren_nen_man_aclf' || key === 'suy-gan-cap-tren-nen-man-aclf'))
-        ) {
+    const isMatchingOrSubVariant = (b: Benh, key: string, chain: any): boolean => {
+      if (!b) return false;
+      if (b.id === key) return true;
+      if (
+        (key === 'aclf' && (b.id === 'suy_gan_cap_tren_nen_man_aclf' || b.id === 'suy-gan-cap-tren-nen-man-aclf')) ||
+        (b.id === 'aclf' && (key === 'suy_gan_cap_tren_nen_man_aclf' || key === 'suy-gan-cap-tren-nen-man-aclf'))
+      ) {
+        return true;
+      }
+      if (
+        key === 'sot_xuat_huyet_dengue' &&
+        (b.id === 'sot_xuat_huyet_dengue_co_dau_hieu_canh_bao' ||
+         b.id === 'sot_xuat_huyet_dengue_the_soc' ||
+         b.id.toLowerCase().includes('dengue'))
+      ) {
+        return true;
+      }
+      // So khớp tiền tố ICD hoặc danh sách mã phân độ con (icdPrefixes)
+      if (chain.icdPrefixes && Array.isArray(chain.icdPrefixes)) {
+        if (chain.icdPrefixes.some((p: string) => p.toUpperCase() === (b.icd || '').trim().toUpperCase())) {
           return true;
         }
-        // So khớp ICD và tương đồng tên bệnh để chống duplicate hoàn toàn
-        if (b.icd && chain.icdCode && b.icd.trim().toUpperCase() === chain.icdCode.trim().toUpperCase()) {
+      }
+      if (b.icd && chain.icdCode) {
+        const bIcd = b.icd.trim().toUpperCase();
+        const cIcd = chain.icdCode.trim().toUpperCase();
+        if (bIcd === cIcd || bIcd.startsWith(cIcd + '.')) {
           const n1 = (b.ten || '').toLowerCase().replace(/[^a-z0-9]/g, '');
           const n2 = (chain.diseaseName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
           if (n1.includes(n2) || n2.includes(n1)) return true;
         }
-        return false;
-      });
+      }
+      return false;
     };
 
     Object.entries(ENRICHED_DISEASES).forEach(([key, chain]) => {
       if (!chain || !chain.diseaseName) return;
-      const existingIdx = findExistingIdx(key, chain);
+
+      // Tìm tất cả các biến thể/phân độ con của bệnh này trong danh sách hiện tại
+      const matchingIndices: number[] = [];
+      list.forEach((b, idx) => {
+        if (isMatchingOrSubVariant(b, key, chain)) {
+          matchingIndices.push(idx);
+        }
+      });
+
+      const firstIdx = matchingIndices.length > 0 ? matchingIndices[0] : -1;
 
       const enrichedBenh: Benh = {
         id: key,
         ten: chain.diseaseName,
-        icd: chain.icdCode || (existingIdx !== -1 ? list[existingIdx].icd : ''),
-        nhom: chain.specialty || (existingIdx !== -1 ? list[existingIdx].nhom : 'Nội khoa'),
+        icd: chain.icdCode || (firstIdx !== -1 ? list[firstIdx].icd : ''),
+        nhom: chain.specialty || (firstIdx !== -1 ? list[firstIdx].nhom : 'Nội khoa'),
         baoDong: true,
-        ghiChuBaoDong: 'Phác đồ điều trị chuyên sâu EBM',
-        tomTat: chain.summary || (existingIdx !== -1 ? list[existingIdx].tomTat : ''),
+        ghiChuBaoDong: 'Phác đồ điều trị chuyên sâu EBM (Tích hợp đa phân độ)',
+        tomTat: chain.summary || (firstIdx !== -1 ? list[firstIdx].tomTat : ''),
         danSo: { gioiTinh: 'any' },
-        dd: existingIdx !== -1 ? list[existingIdx].dd : [],
+        dd: firstIdx !== -1 ? list[firstIdx].dd : [],
         phacDo: {
-          tuyen: chain.protocol?.initialManagement || (existingIdx !== -1 ? list[existingIdx].phacDo?.tuyen || [] : []),
+          tuyen: chain.protocol?.initialManagement || (firstIdx !== -1 ? list[firstIdx].phacDo?.tuyen || [] : []),
           thuoc: chain.protocol?.firstLineDrugs
             ? chain.protocol.firstLineDrugs.map((d) => [
                 d.drugName,
                 `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
                 d.instructions || d.class || 'Khuyến cáo bậc 1',
               ])
-            : existingIdx !== -1 ? list[existingIdx].phacDo?.thuoc || [] : [],
-          theoDoi: chain.monitoringLabs || (existingIdx !== -1 ? list[existingIdx].phacDo?.theoDoi || [] : []),
+            : firstIdx !== -1 ? list[firstIdx].phacDo?.thuoc || [] : [],
+          theoDoi: chain.monitoringLabs || (firstIdx !== -1 ? list[firstIdx].phacDo?.theoDoi || [] : []),
           luuY: [
             'Theo dõi sát phản ứng thuốc & nguy cơ tương tác',
             ...(chain.protocol?.supportiveCare || []),
@@ -186,9 +218,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         },
       };
 
-      if (existingIdx !== -1) {
-        // Cập nhật/ghi đè bản ghi cũ bằng bản ghi enriched chuẩn hoá để tránh trùng lặp
-        list[existingIdx] = enrichedBenh;
+      if (matchingIndices.length > 0) {
+        // Thay thế phần tử đầu tiên bằng bệnh mẹ enriched
+        list[firstIdx] = enrichedBenh;
+        // Loại bỏ triệt để các phần tử phân độ con trùng lặp khác
+        const duplicateIndices = new Set(matchingIndices.slice(1));
+        list = list.filter((_, idx) => !duplicateIndices.has(idx));
       } else {
         list.push(enrichedBenh);
       }
@@ -200,20 +235,24 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   }, [kb.benh]);
 
   const currentDisease = useMemo(() => {
-    if (!selectedDiseaseId) return allAvailableDiseases[0] || null;
+    let effectiveId = selectedDiseaseId;
+    if (effectiveId && SUB_DISEASE_TO_PARENT_MAP[effectiveId]) {
+      effectiveId = SUB_DISEASE_TO_PARENT_MAP[effectiveId].parentId;
+    }
+    if (!effectiveId) return allAvailableDiseases[0] || null;
     return (
-      allAvailableDiseases.find((b) => b.id === selectedDiseaseId) ||
-      (selectedDiseaseId === 'suy_gan_cap_tren_nen_man_aclf'
+      allAvailableDiseases.find((b) => b.id === effectiveId) ||
+      (effectiveId === 'suy_gan_cap_tren_nen_man_aclf'
         ? allAvailableDiseases.find((b) => b.id === 'aclf')
         : null) ||
-      (selectedDiseaseId === 'aclf'
+      (effectiveId === 'aclf'
         ? allAvailableDiseases.find((b) => b.id === 'suy_gan_cap_tren_nen_man_aclf')
         : null) ||
-      allAvailableDiseases.find((b) => b.icd === selectedDiseaseId) ||
+      allAvailableDiseases.find((b) => b.icd === effectiveId) ||
       allAvailableDiseases[0] ||
       null
     );
-  }, [allAvailableDiseases, selectedDiseaseId]);
+  }, [allAvailableDiseases, selectedDiseaseId, SUB_DISEASE_TO_PARENT_MAP]);
 
   // Active Reaction Chain
   const activeChain = useMemo(() => {
@@ -288,11 +327,43 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
   }, [initialComplicationId, activeChain]);
 
-  // Available Severity Grades
+  // Available Severity Grades / Dynamic Clinical Branches
   const severityGrades: SeverityGradingItem[] = useMemo(() => {
     if (activeChain?.hasSeverityGrading === false || activeChain?.stagingType === 'none') {
       return [];
     }
+    // 1. Ưu tiên cao nhất: Hệ thống 6 Trục Phân Nhánh Lâm Sàng v3.0 (branching.branches)
+    if (activeChain?.branching?.branches && activeChain.branching.branches.length > 0) {
+      return activeChain.branching.branches.map((b) => ({
+        grade: b.name,
+        severity: (b.color === 'rose' || b.color === 'red'
+          ? 'critical'
+          : b.color === 'amber'
+          ? 'moderate'
+          : b.color === 'emerald'
+          ? 'mild'
+          : 'moderate') as any,
+        criteria: b.criteria,
+        triage: b.triage || 'Theo dõi lâm sàng',
+        primaryAction: b.targetVitals || '',
+        targetVitals: b.targetVitals || '',
+        escalationCriteria: b.escalationCriteria,
+        dischargeCriteria: b.dischargeCriteria,
+        protocol: {
+          title: b.name,
+          tuyen: b.triage ? [b.triage] : [],
+          drugs: b.drugs,
+          firstLineDrugs: b.firstLineDrugs,
+          timelinePhases: b.timelinePhases,
+          monitoring: b.monitoring,
+          cautions: b.cautions,
+          escalationCriteria: b.escalationCriteria,
+          dischargeCriteria: b.dischargeCriteria,
+          patientCounseling: b.patientCounseling,
+        },
+      }));
+    }
+    // 2. Tiếp theo: Lấy từ severityGrading cấu hình sẵn
     if (activeChain?.severityGrading && activeChain.severityGrading.length > 0) {
       return activeChain.severityGrading;
     }
@@ -370,10 +441,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   useEffect(() => {
     if (initialGradeIdx !== undefined && initialGradeIdx !== null) {
       setSelectedGradeIdx(initialGradeIdx);
+    } else if (selectedDiseaseId && SUB_DISEASE_TO_PARENT_MAP[selectedDiseaseId]) {
+      setSelectedGradeIdx(SUB_DISEASE_TO_PARENT_MAP[selectedDiseaseId].gradeIdx);
     } else {
       setSelectedGradeIdx(autoSuggestedGradeIndex);
     }
-  }, [initialGradeIdx, currentDisease?.id, autoSuggestedGradeIndex]);
+  }, [initialGradeIdx, currentDisease?.id, selectedDiseaseId, autoSuggestedGradeIndex, SUB_DISEASE_TO_PARENT_MAP]);
 
   const activeSeverityGrade = useMemo(() => {
     return severityGrades[selectedGradeIdx] || severityGrades[0];

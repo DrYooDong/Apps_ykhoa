@@ -39,14 +39,14 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h4 className="font-display font-bold text-sm sm:text-base text-indigo-950">
-                Đánh Giá Phân Độ LS &amp; Sàng Lọc Biến Chứng
+                {activeChain?.branching?.axisName || 'Đánh Giá Phân Độ LS & Sàng Lọc Biến Chứng'}
               </h4>
               <span className="px-2 py-0.5 rounded text-[10.5px] font-mono bg-indigo-100 text-indigo-700 font-semibold border border-indigo-200">
-                Quy trình EBM
+                {activeChain?.branching?.axisType ? `Nhánh: ${activeChain.branching.axisType.toUpperCase()}` : 'Quy trình EBM'}
               </span>
             </div>
             <p className="text-[11px] text-slate-500">
-              Tiêu chuẩn CĐ xác nhận BN mắc bệnh; Phân độ &amp; Biến chứng quyết định chính xác phác đồ, tốc độ dịch và tuyến ĐT.
+              {activeChain?.branching?.description || 'Tiêu chuẩn phân nhánh quyết định chính xác phác đồ, lựa chọn thuốc, tốc độ dịch và tuyến điều trị.'}
             </p>
           </div>
         </div>
@@ -60,7 +60,7 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
         )}
       </div>
 
-      {/* Phần 1: Các nút chọn Phân độ / Thể bệnh (Severity Staging & Phenotypes Grid) */}
+      {/* Phần 1: Các nút chọn Phân độ / Thể bệnh / Phân nhánh (Severity Staging & Phenotypes Grid) */}
       {severityGrades.length === 0 ? (
         <div className="p-3.5 bg-indigo-50/70 border border-indigo-200 rounded-lg flex items-center justify-between gap-3 text-xs text-indigo-950">
           <div className="flex items-center gap-2">
@@ -77,15 +77,17 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
               <Activity className="w-3.5 h-3.5 text-indigo-600" />
               <span>
                 1. Chọn {
-                  activeChain?.stagingType === 'phenotype' ||
-                  severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
+                  activeChain?.branching?.axisName
+                    ? `nhánh [${activeChain.branching.axisName}]`
+                    : activeChain?.stagingType === 'phenotype' ||
+                      severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
                     ? 'thể lâm sàng / dạng bệnh'
                     : 'phân độ LS'
                 } hiện tại của người bệnh:
               </span>
             </span>
             <span className="text-[11px] text-slate-400">
-              (Nhấp vào phân độ tương ứng để xem tiêu chuẩn và phác đồ)
+              (Nhấp vào nhánh tương ứng để xem tiêu chuẩn và phác đồ chuyên biệt)
             </span>
           </div>
 

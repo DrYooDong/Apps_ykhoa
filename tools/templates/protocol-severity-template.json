@@ -1,0 +1,79 @@
+{
+  "$schema": "CliniPortal Nested Protocol By Severity Template v2.0",
+  "diseaseName": "Tên Bệnh Lý Chuẩn Hóa",
+  "icdCode": "Mã ICD-10 Chính (Ví dụ: A97, J18, I21)",
+  "icdPrefixes": ["Mã ICD phụ 1", "Mã ICD phụ 2"],
+  "specialty": "Chuyên khoa (Truyền nhiễm / Hô hấp / Tim mạch / v.v.)",
+  
+  "protocols": [
+    {
+      "severityRef": "mild",
+      "tabLabel": "Mức độ 1 — Thể Nhẹ / Ngoại trú",
+      "badgeColor": "success",
+      "icdSuffix": ".0",
+      "triage": "Ngoại trú / Trạm Y tế / Phòng khám",
+      "targetVitals": "Sinh hiệu mục tiêu bình thường theo tuổi",
+      "escalationCriteria": "Tiêu chuẩn lâm sàng & cận lâm sàng cảnh báo cần leo thang lên Mức độ 2",
+      "dischargeCriteria": "Tiêu chuẩn kết thúc theo dõi ngoại trú",
+      "drugs": [
+        ["Tên thuốc 1", "Liều lượng, đường dùng, tần suất", "Ghi chú & chống chỉ định"]
+      ],
+      "timelinePhases": [
+        {
+          "id": "p1_mild_acute",
+          "dayRange": "N1 - N3",
+          "phaseName": "Giai đoạn Khởi phát / Cấp tính",
+          "clinicalGoal": "Mục tiêu điều trị giai đoạn 1",
+          "problems": [
+            {
+              "id": "prob_1",
+              "problemName": "Vấn đề lâm sàng chính",
+              "problemType": "clinical",
+              "treatments": [
+                {
+                  "category": "Điều trị",
+                  "content": "Nội dung y lệnh cụ thể",
+                  "isHighlighted": true
+                }
+              ],
+              "monitoring": [
+                {
+                  "type": "LS",
+                  "metric": "Chỉ số theo dõi",
+                  "frequency": "Tần suất đo",
+                  "target": "Mục tiêu cần đạt"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "severityRef": "moderate",
+      "tabLabel": "Mức độ 2 — Trung bình / Có cảnh báo / Nội trú",
+      "badgeColor": "warning",
+      "icdSuffix": ".1",
+      "triage": "Nội trú / Khoa chuyên môn Bệnh viện",
+      "targetVitals": "HATT, SpO2, Nước tiểu mục tiêu",
+      "escalationCriteria": "Dấu hiệu đe dọa sinh mạng cần báo động đỏ leo thang lên Mức độ 3 (ICU)",
+      "dischargeCriteria": "Tiêu chuẩn ngừng thuốc tĩnh mạch / hạ bậc về ngoại trú",
+      "drugs": [
+        ["Tên thuốc / Dịch truyền", "Liều nấc thang", "Điều kiện chỉnh liều"]
+      ]
+    },
+    {
+      "severityRef": "critical",
+      "tabLabel": "Mức độ 3 — Nặng / Nguy kịch / Hồi sức (ICU)",
+      "badgeColor": "critical",
+      "icdSuffix": ".2",
+      "triage": "Khoa Hồi sức Cấp cứu (ICU)",
+      "targetVitals": "Huyết động, Tưới máu mô, Lactate, Bài niệu qua sonde",
+      "escalationCriteria": "Xử trí sốc kháng trị / Thất bại can thiệp đầu tay",
+      "dischargeCriteria": "Tiêu chuẩn thoát sốc hoàn toàn / Cai máy / Cai vận mạch",
+      "drugs": [
+        ["Thuốc cấp cứu / Vận mạch", "Liều khởi đầu và chuẩn độ", "Chỉ định khẩn cấp"]
+      ]
+    }
+  ]
+}
