@@ -258,12 +258,16 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   'viem_gan_c': ENRICHED_DISEASES['vgsv_C'],
   'sot-xoan-khuan-leptospira': ENRICHED_DISEASES['leptospira'],
   'sot_xoan_khuan_leptospira': ENRICHED_DISEASES['leptospira'],
+  'xo_gan': ENRICHED_DISEASES['xo_gan'],
   'xo-gan': ENRICHED_DISEASES['xo_gan'],
   'xo_gan_con_bu': ENRICHED_DISEASES['xo_gan'],
   'xo-gan-con-bu': ENRICHED_DISEASES['xo_gan'],
   'xo_gan_mat_bu': ENRICHED_DISEASES['xo_gan'],
   'xo-gan-mat-bu': ENRICHED_DISEASES['xo_gan'],
   'cACLD': ENRICHED_DISEASES['xo_gan'],
+  'viem_gan_sieu_vi_b': ENRICHED_DISEASES['viem_gan_sieu_vi_b'],
+  'viem-gan-sieu-vi-b': ENRICHED_DISEASES['viem_gan_sieu_vi_b'],
+  'viem_gan_b_cap': ENRICHED_DISEASES['viem_gan_sieu_vi_b'],
   'dot_bung_phat_vgsv_B': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
   'dot_bung_phat_viem_gan_b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
   'dot-bung-phat-viem-gan-b': ENRICHED_DISEASES['dot_bung_phat_vgsv_B'],
@@ -393,66 +397,10 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // 3. XƠ GAN & TĂNG ÁP LỰC TĨNH MẠCH CỬA (CIRRHOSIS) - K70-K74
+  // 3. XƠ GAN & TĂNG ÁP LỰC TĨNH MẠCH CỬA (CIRRHOSIS) - K70-K74 (Enriched CDSS xo_gan.json)
   // ─────────────────────────────────────────────────────────────────────────────
-  'xo_gan': {
-    icdCode: 'K74.6',
-    icdPrefixes: ['K70.3', 'K71.7', 'K74', 'K74.0', 'K74.6'],
-    diseaseName: 'Xơ Gan (Mất bù / Còn bù) & Tăng Áp Cửa',
-    specialty: 'Tiêu Hóa - Gan Mật',
-    severity: 'urgent',
-    summary: 'Giai đoạn cuối của các bệnh gan mạn tính đặc trưng bởi sự xơ hóa mô và hình thành nốt tái tạo. Phân loại mức độ bằng thang điểm Child-Pugh (A/B/C) và MELD.',
-    goldStandard: 'Sinh thiết gan (mô bệnh học) hoặc Hình ảnh siêu âm/CT/FibroScan gan thô nốt xơ + Hội chứng suy TB gan và Tăng áp cửa',
-    criteriaRule: {
-      mandatoryIds: ['cirr_imaging_or_biopsy'],
-      minMajorRequired: 2,
-      minMinorRequired: 1,
-      ruleDescription: 'Bắt buộc có hình ảnh biến đổi cấu trúc nhu mô gan trên siêu âm/CT/Elastography + Ít nhất 2 biểu hiện của Hội chứng Suy tế bào gan và Hội chứng Tăng áp lực TMC'
-    },
-    criteria: [
-      { id: 'cirr_imaging_or_biopsy', type: 'mandatory', label: 'Hình ảnh gan thô nốt, bờ không đều, lách to, TMC giãn > 13mm trên Siêu âm/CT/MRI hoặc Độ cứng gan FibroScan > 12.5 kPa', sourceGuideline: 'AASLD / EASL 2021' },
-      { id: 'cirr_ascites', type: 'major', label: 'Cổ trướng (Báng bụng) trên lâm sàng hoặc phát hiện qua siêu âm', sourceGuideline: 'EASL' },
-      { id: 'cirr_varices', type: 'major', label: 'Giãn tĩnh mạch thực quản / phình vị trên nội soi tiêu hóa', sourceGuideline: 'Baveno VII' },
-      { id: 'cirr_hepatic_failure', type: 'major', label: 'Hội chứng suy tế bào gan: Vàng da (Bilirubin > 35 μmol/L), Sao mạch, Lòng bàn tay son, Albumin máu < 35 g/L', sourceGuideline: 'Child-Pugh' },
-      { id: 'cirr_coag', type: 'lab', label: 'Rối loạn đông máu: Tỷ lệ Prothrombin (PT) giảm, INR kéo dài > 1.3', labThreshold: 'INR > 1.3' },
-      { id: 'cirr_enceph', type: 'minor', label: 'Hôn mê gan (Bệnh não gan): Rối loạn giấc ngủ, run vỗ cánh (Asterixis), lú lẫn', sourceGuideline: 'West-Haven' },
-      { id: 'cirr_thrombocytopenia', type: 'lab', label: 'Giảm tiểu cầu do cường lách (Tiểu cầu < 100.000/μL)', labThreshold: 'PLT < 100 G/L' }
-    ],
-    protocol: {
-      title: 'Phác đồ Quản lý Xơ gan & Biến chứng Tăng áp cửa (EASL 2021 / AASLD / Bộ Y Tế)',
-      guideline: 'EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis',
-      targetGoals: ['Kiểm soát cổ trướng, hạn chế tái lập dịch', 'Dự phòng tiên phát & thứ phát vỡ giãn TMTQ', 'Ngăn ngừa biến chứng Bệnh não gan và Hội chứng Gan-Thận (HRS)'],
-      initialManagement: [
-        'Tính điểm Child-Pugh (A: 5-6đ, B: 7-9đ, C: 10-15đ) và điểm MELD',
-        'Chế độ ăn giảm muối (< 2g Natri/ngày = < 5g muối ăn)',
-        'Nội soi thực quản dạ dày tầm soát giãn TMTQ (Phân độ Baveno)'
-      ],
-      firstLineDrugs: [
-        { drugName: 'Spironolactone', class: 'Lợi tiểu kháng Aldosterone', route: 'Uống', dosage: '100mg x 1 lần/ngày (sáng), tăng dần tối đa 400mg/ngày', frequency: '1 lần/ngày', instructions: 'Phối hợp Furosemide theo tỷ lệ vàng 100mg Spiro : 40mg Furo để giữ Kali máu ổn định', isFirstLine: true },
-        { drugName: 'Furosemide', class: 'Lợi tiểu quai', route: 'Uống', dosage: '40mg x 1 lần/ngày (sáng), tăng dần tối đa 160mg/ngày', frequency: '1 lần/ngày', instructions: 'Dừng ngay nếu Natri máu < 125 mmol/L hoặc Creatinine tăng cao', isFirstLine: true },
-        { drugName: 'Propranolol / Carvedilol', class: 'Chẹn beta không chọn lọc (NSBB)', route: 'Uống', dosage: 'Carvedilol 6.25mg - 12.5mg/ngày hoặc Propranolol 20mg - 40mg x 2 lần/ngày', frequency: 'Mỗi 12-24 giờ', instructions: 'Mục tiêu giảm nhịp tim nghỉ ngơi xuống 55-60 l/p để hạ áp lực tĩnh mạch cửa', isFirstLine: true },
-        { drugName: 'Lactulose', class: 'Nhuận tràng thẩm thấu / Giảm NH3', route: 'Uống', dosage: '15ml - 30ml x 2-3 lần/ngày', frequency: 'Mỗi 8-12 giờ', instructions: 'Chỉnh liều để bệnh nhân đi ngoài phân mềm 2-3 lần/ngày, phòng ngừa bệnh não gan', isFirstLine: true }
-      ],
-      secondLineDrugs: [
-        { drugName: 'Rifaximin', class: 'Kháng sinh đường ruột không hấp thu', route: 'Uống', dosage: '550mg x 2 lần/ngày', frequency: 'Mỗi 12 giờ', instructions: 'Phối hợp với Lactulose để dự phòng tái phát Bệnh não gan', isFirstLine: false }
-      ],
-      supportiveCare: ['Bổ sung đạm 1.2 - 1.5 g/kg/ngày (không kiêng đạm quá mức)', 'Truyền Albumin người 20% khi chọc tháo báng > 5L (8g Albumin / 1L dịch tháo)']
-    },
-    complications: [
-      { name: 'Xuất huyết tiêu hóa do vỡ giãn TMTQ', timeframe: 'acute_24h', warningSigns: 'Nôn ra máu tươi ồ ạt, đi cầu phân đen, sốc mất máu', preventiveAction: 'Nội soi thắt vòng cao su cấp cứu + Thuốc co mạch tạng (Octreotide/Terlipressin) + Kháng sinh Ceftriaxone', onCallAlertText: 'Báo động vỡ giãn TMTQ: Truyền Terlipressin/Octreotide + Hội chẩn nội soi cấp' },
-      { name: 'Viêm phúc mạc tự phát do vi khuẩn (SBP)', timeframe: 'acute_24h', warningSigns: 'Đau bụng âm ỉ, sốt, báng bụng căng nhanh, dịch báng có PMN > 250/mm3', preventiveAction: 'Chọc dò dịch báng xét nghiệm ngay + Dùng Cefotaxime/Ceftriaxone 2g/ngày', onCallAlertText: 'Nghi ngờ SBP: Chọc dịch màng bụng làm tế bào + Cấy chai cấy máu' },
-      { name: 'Hội chứng Gan-Thận (Hepatorenal Syndrome - HRS)', timeframe: 'subacute_7d', warningSigns: 'Creatinine máu tăng > 0.3 mg/dL trong 48h dù đã ngưng lợi tiểu và bù Albumin', preventiveAction: 'Dùng Terlipressin phối hợp Albumin truyền tĩnh mạch', onCallAlertText: 'Creatinine tăng trên nền xơ gan báng bụng: Cân nhắc HRS' }
-    ],
-    monitoringLabs: ['Điện giải đồ (Na, K) và Creatinine mỗi 3-5 ngày khi chỉnh lợi tiểu', 'Bilirubin, Albumin, Prothrombin định kỳ để tính điểm MELD/Child-Pugh', 'Alpha-fetoprotein (AFP) + Siêu âm bụng mỗi 6 tháng tầm soát HCC'],
-    vaultPathways: [
-      { khoCode: 'TC', khoName: 'Kho Lâm Sàng', articleTitle: 'Tiếp cận Cổ trướng & Vàng da', searchKeyword: 'xơ gan báng bụng' },
-      { khoCode: 'CD', khoName: 'Kho Tiêu Chuẩn CĐ', articleTitle: 'Tiêu chuẩn chẩn đoán Xơ gan & Thang điểm Child-Pugh', searchKeyword: 'child pugh meld' },
-      { khoCode: 'CLS', khoName: 'Kho Cận Lâm Sàng', articleTitle: 'Phân tích dịch báng (SAAG) & FibroScan gan', searchKeyword: 'saag dịch báng' },
-      { khoCode: 'PDDT', khoName: 'Kho Phác Đồ', articleTitle: 'Phác đồ Điều trị Xơ gan cổ trướng EASL', searchKeyword: 'phác đồ xơ gan' },
-      { khoCode: 'DUOC', khoName: 'Kho Dược', articleTitle: 'Tra cứu Spironolactone, Octreotide và Terlipressin', searchKeyword: 'spironolactone lactulose' },
-      { khoCode: 'BC', khoName: 'Kho Biến Chứng', articleTitle: 'Xử trí Xuất huyết tiêu hóa vỡ giãn TMTQ & SBP', searchKeyword: 'vỡ giãn tmtq sbp' }
-    ]
-  },
+  'xo_gan': ENRICHED_DISEASES['xo_gan'],
+
 
   // ─────────────────────────────────────────────────────────────────────────────
   // 4. BỆNH THẬN MẠN & TỔN THƯƠNG THẬN CẤP (CKD / AKI) - N17-N18

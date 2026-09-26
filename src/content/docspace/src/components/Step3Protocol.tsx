@@ -1202,11 +1202,11 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </div>
             }
             title="1. Phân loại (cá thể hoá)"
-            subtitle={`${isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ'} • 1b. Phân độ biến chứng • 1c. Các đối tượng đặc biệt`}
+            subtitle={`${activeChain?.branching?.axisLabelShort ? `1a. ${activeChain.branching.axisLabelShort}` : (isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ')} • 1b. Phân độ biến chứng • 1c. Các đối tượng đặc biệt`}
             badgeText={
               severityGrades.length === 0
                 ? 'Tiếp cận toàn diện'
-                : `${severityGrades.length} ${isPhenotypeStaging ? 'thể bệnh' : 'phân độ'}`
+                : `${severityGrades.length} ${activeChain?.branching?.axisType === 'stage' ? 'giai đoạn' : (isPhenotypeStaging ? 'thể bệnh' : 'phân độ')}`
             }
             badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
           >

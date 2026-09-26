@@ -201,12 +201,15 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
     }
 
     // Chế độ Single Axis (tương thích ngược 100%)
+    const singleAxisShort = activeChain?.branching?.axisLabelShort || (isPhenotypeStaging ? 'Thể lâm sàng' : 'Phân độ');
+    const singleAxisFull = activeChain?.branching?.axisLabelShort || (isPhenotypeStaging ? 'Thể lâm sàng' : 'Phân độ nặng nhẹ');
+
     return [
       {
         id: '1a',
         tabCode: '1a',
-        label: isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ',
-        shortLabel: isPhenotypeStaging ? 'Thể lâm sàng' : 'Phân độ',
+        label: `1a. ${singleAxisFull}`,
+        shortLabel: singleAxisShort,
         colorType: 'indigo',
         count: severityGrades.length,
         type: 'axis',
