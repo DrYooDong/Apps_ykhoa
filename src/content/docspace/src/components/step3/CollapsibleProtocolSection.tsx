@@ -15,6 +15,7 @@ interface CollapsibleProtocolSectionProps {
 }
 
 export const CollapsibleProtocolSection: React.FC<CollapsibleProtocolSectionProps> = ({
+  id,
   isOpen,
   onToggle,
   icon,
@@ -26,7 +27,7 @@ export const CollapsibleProtocolSection: React.FC<CollapsibleProtocolSectionProp
   children,
 }) => {
   return (
-    <div className={`transition-all ${containerClassName}`}>
+    <div id={`protocol-section-${id}`} className={`transition-all scroll-mt-24 ${containerClassName}`}>
       <div
         onClick={onToggle}
         className="flex items-center justify-between gap-3 cursor-pointer select-none py-1 group"

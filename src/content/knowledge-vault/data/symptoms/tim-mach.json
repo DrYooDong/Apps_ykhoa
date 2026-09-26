@@ -1,1 +1,97 @@
-[]
+[
+  {
+    "id": "mach_nhanh",
+    "ten": "Mạch nhanh (> 100 lần/phút)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "mạch nhanh",
+      "nhịp tim nhanh",
+      "tachycardia",
+      "mạch > 100"
+    ],
+    "aliases": [
+      "nhịp tim nhanh",
+      "mạch quay nhanh",
+      "tim đập nhanh"
+    ],
+    "map": {
+      "fld": "vMach",
+      "op": ">",
+      "val": 100
+    }
+  },
+  {
+    "id": "ha_huyet_ap",
+    "ten": "Huyết áp tụt (< 90 mmHg)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "huyết áp tụt",
+      "hạ huyết áp",
+      "hypotension",
+      "ha thap"
+    ],
+    "aliases": [
+      "tụt huyết áp",
+      "hatt < 90",
+      "huyết áp thấp"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<",
+      "val": 90
+    }
+  },
+  {
+    "id": "chi_lanh_crt_keo_dai",
+    "ten": "Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch (CRT) kéo dài > 2 giây",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "chi lạnh",
+      "crt kéo dài",
+      "đầu chi lạnh ẩm",
+      "capillary refill"
+    ],
+    "aliases": [
+      "tay chân lạnh",
+      "chi mát ẩm",
+      "crt > 2s",
+      "tưới máu ngoại biên kém"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+    "ten": "Sốc SXH Dengue: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốc",
+      "sốc sxh",
+      "huyết áp kẹp",
+      "mạch nhanh nhỏ",
+      "dengue shock syndrome"
+    ],
+    "aliases": [
+      "sốc giảm thể tích",
+      "hiệu áp kẹp",
+      "dss",
+      "sốc thoát huyết tương"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 90
+    }
+  }
+]

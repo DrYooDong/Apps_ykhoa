@@ -47,6 +47,7 @@ import { PatientCounselingPanel } from './PatientCounselingPanel.tsx';
 import { HealthcareWorkerKnowledgeSection } from './step3/HealthcareWorkerKnowledgeSection.tsx';
 import { SoapCasesSection } from './step3/SoapCasesSection.tsx';
 import { CustomOrder } from './step3/ProtocolOrderSheet.tsx';
+import { ProtocolTableOfContents } from './step3/ProtocolTableOfContents.tsx';
 
 interface Step3Props {
   kb: KnowledgeBase;
@@ -98,8 +99,61 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     soap: false,          // 6. Các ca bệnh liên quan
   });
 
-  const toggleSection = (key: string) => {
-    setExpandedSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  const toggleSection = (key: string, forceOpen?: boolean) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [key]: forceOpen !== undefined ? forceOpen : !prev[key],
+    }));
+  };
+
+  // Trạng thái theo dõi vị trí cuộn cho TOC & Scrollspy
+  const [activeSection, setActiveSection] = useState<string>('classification');
+  const [targetClassificationTab, setTargetClassificationTab] = useState<'1a' | '1b' | '1c'>('1a');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ['classification', 'protocol', 'cautions', 'counseling', 'knowledge', 'soap'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const el = document.getElementById(`protocol-section-${id}`);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleJumpToSection = (sectionId: string, subId?: string) => {
+    // 1. Luôn mở section tương ứng
+    setExpandedSections((prev) => ({ ...prev, [sectionId]: true }));
+
+    // 2. Chuyển tab con của mục 1 nếu được yêu cầu
+    if (subId === 'sub-1a') setTargetClassificationTab('1a');
+    if (subId === 'sub-1b') setTargetClassificationTab('1b');
+    if (subId === 'sub-1c') setTargetClassificationTab('1c');
+
+    // 3. Cuộn mượt đến phần tử đích
+    setTimeout(() => {
+      let targetEl: HTMLElement | null = null;
+      if (subId && subId !== 'sub-1a' && subId !== 'sub-1b' && subId !== 'sub-1c') {
+        targetEl = document.getElementById(subId);
+      }
+      if (!targetEl) {
+        targetEl = document.getElementById(`protocol-section-${sectionId}`);
+      }
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 60);
   };
 
   const handleExpandAll = () => {
@@ -834,7 +888,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
       {/* Khối trình bày phác đồ chính */}
       {currentDisease && (
-        <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col gap-5">
+        <div className="flex flex-col lg:flex-row gap-5 items-start relative w-full">
+          {/* Cột chính: Bố cục 6 đầu mục lâm sàng */}
+          <div className="flex-1 min-w-0 bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col gap-5 w-full">
           {/* 2. Thanh hiển thị tên bệnh tinh gọn */}
           <ProtocolDiseaseHeader
             diseaseName={currentDisease.ten}
@@ -917,6 +973,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               isRenalAdjustmentApplied={isRenalAdjustmentApplied}
               onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
               onOpenVaultDrawer={onOpenVaultDrawer}
+              targetTab={targetClassificationTab}
             />
           </CollapsibleProtocolSection>
 
@@ -1135,6 +1192,27 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </button>
             </div>
           </div>
+          </div>
+
+          {/* Cột bên: Thanh Mục Lục (TOC) Sticky & Mobile FAB */}
+          <ProtocolTableOfContents
+            activeSection={activeSection}
+            expandedSections={expandedSections}
+            onToggleSection={toggleSection}
+            onJumpTo={handleJumpToSection}
+            severityGradesCount={severityGrades.length}
+            isPhenotypeStaging={isPhenotypeStaging}
+            activeSeverityGradeName={activeSeverityGrade?.grade}
+            activeComplicationsCount={activeComplicationIndices.size}
+            totalOrders={totalAllOrders}
+            checkedOrdersCount={currentCheckedCount}
+            progressPercent={progressPercent}
+            cautionsCount={phacDo.luuY.length}
+            guidelinesCount={matchedGuidelines.length}
+            soapCasesCount={similarSoapCases.length}
+            onExpandAll={handleExpandAll}
+            onCollapseAll={handleCollapseAll}
+          />
         </div>
       )}
     </div>

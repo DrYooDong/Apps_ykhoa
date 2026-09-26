@@ -47,6 +47,7 @@ interface ProtocolClassificationSectionProps {
   isRenalAdjustmentApplied?: boolean;
   onToggleRenalAdjustment?: (applied: boolean) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  targetTab?: '1a' | '1b' | '1c';
 }
 
 export const ProtocolClassificationSection: React.FC<ProtocolClassificationSectionProps> = ({
@@ -71,9 +72,16 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   isRenalAdjustmentApplied = false,
   onToggleRenalAdjustment,
   onOpenVaultDrawer,
+  targetTab,
 }) => {
   // Tab state for 1a, 1b, 1c
   const [activeTab, setActiveTab] = useState<'1a' | '1b' | '1c'>('1a');
+
+  React.useEffect(() => {
+    if (targetTab) {
+      setActiveTab(targetTab);
+    }
+  }, [targetTab]);
 
   // Tính toán hồ sơ kiểu hình cá thể hoá nội bộ nếu chưa truyền từ ngoài
   const phenotype = useMemo(() => {

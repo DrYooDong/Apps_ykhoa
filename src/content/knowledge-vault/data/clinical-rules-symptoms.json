@@ -1,1 +1,643 @@
-[]
+[
+  {
+    "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
+    "ten": "Sốt cao đột ngột liên tục ≤ 7 ngày",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốt cao",
+      "sốt đột ngột",
+      "sốt liên tục",
+      "sốt dengue",
+      "sot duoi 7 ngay"
+    ],
+    "aliases": [
+      "sốt cao liên tục",
+      "sốt cấp tính",
+      "sốt khó hạ",
+      "sốt bùng phát"
+    ],
+    "map": {
+      "fld": "vNhiet",
+      "op": ">=",
+      "val": 38.5
+    }
+  },
+  {
+    "id": "dau_co",
+    "ten": "Đau mỏi cơ, nhức khớp và mình mẩy",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "đau cơ",
+      "đau khớp",
+      "nhức mỏi",
+      "myalgia",
+      "arthralgia"
+    ],
+    "aliases": [
+      "đau mình mẩy",
+      "nhức mỏi toàn thân",
+      "đau nhức xương khớp",
+      "đau nhức cơ bắp"
+    ],
+    "map": null
+  },
+  {
+    "id": "nhuc_hai_ho_mat",
+    "ten": "Nhức hai hốc mắt (Retro-orbital pain)",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "nhức hốc mắt",
+      "đau sau hốc mắt",
+      "nhức mắt",
+      "retro-orbital"
+    ],
+    "aliases": [
+      "đau hố mắt",
+      "nhức hai bên hốc mắt",
+      "đau hốc mắt"
+    ],
+    "map": null
+  },
+  {
+    "id": "met_moi",
+    "ten": "Mệt mỏi toàn thân, mệt lả, chán ăn, suy kiệt",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "mệt mỏi",
+      "chán ăn",
+      "kiệt sức",
+      "mệt lả",
+      "fatigue"
+    ],
+    "aliases": [
+      "uể oải toàn thân",
+      "suy nhược",
+      "ăn uống kém",
+      "mệt mỏi nhiều"
+    ],
+    "map": null
+  },
+  {
+    "id": "mach_nhanh",
+    "ten": "Mạch nhanh (> 100 lần/phút)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "mạch nhanh",
+      "nhịp tim nhanh",
+      "tachycardia",
+      "mạch > 100"
+    ],
+    "aliases": [
+      "nhịp tim nhanh",
+      "mạch quay nhanh",
+      "tim đập nhanh"
+    ],
+    "map": {
+      "fld": "vMach",
+      "op": ">",
+      "val": 100
+    }
+  },
+  {
+    "id": "ha_huyet_ap",
+    "ten": "Huyết áp tụt (< 90 mmHg)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "huyết áp tụt",
+      "hạ huyết áp",
+      "hypotension",
+      "ha thap"
+    ],
+    "aliases": [
+      "tụt huyết áp",
+      "hatt < 90",
+      "huyết áp thấp"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<",
+      "val": 90
+    }
+  },
+  {
+    "id": "chi_lanh_crt_keo_dai",
+    "ten": "Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch (CRT) kéo dài > 2 giây",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "chi lạnh",
+      "crt kéo dài",
+      "đầu chi lạnh ẩm",
+      "capillary refill"
+    ],
+    "aliases": [
+      "tay chân lạnh",
+      "chi mát ẩm",
+      "crt > 2s",
+      "tưới máu ngoại biên kém"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+    "ten": "Sốc SXH Dengue: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốc",
+      "sốc sxh",
+      "huyết áp kẹp",
+      "mạch nhanh nhỏ",
+      "dengue shock syndrome"
+    ],
+    "aliases": [
+      "sốc giảm thể tích",
+      "hiệu áp kẹp",
+      "dss",
+      "sốc thoát huyết tương"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 90
+    }
+  },
+  {
+    "id": "kho_tho",
+    "ten": "Khó thở, suy hô hấp do tràn dịch đa màng hoặc phù phổi",
+    "nhom": "Hô hấp",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "khó thở",
+      "dyspnea",
+      "thở gắng sức",
+      "suy hô hấp"
+    ],
+    "aliases": [
+      "thở mệt",
+      "khó thở do tràn dịch",
+      "thở nông nhanh"
+    ],
+    "map": null
+  },
+  {
+    "id": "tho_nhanh",
+    "ten": "Thở nhanh (> 20 lần/phút)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "thở nhanh",
+      "tachypnea",
+      "tần số thở tăng",
+      "thở > 20 l/p"
+    ],
+    "aliases": [
+      "nhịp thở nhanh",
+      "tăng nhịp thở"
+    ],
+    "map": {
+      "fld": "vTho",
+      "op": ">",
+      "val": 20
+    }
+  },
+  {
+    "id": "spo2_giam",
+    "ten": "SpO₂ giảm (< 94%)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "spo2 giảm",
+      "giảm oxy máu",
+      "hypoxemia",
+      "spo2 < 94%"
+    ],
+    "aliases": [
+      "tụt spo2",
+      "giảm độ bão hòa oxy"
+    ],
+    "map": {
+      "fld": "vSpo2",
+      "op": "<",
+      "val": 94
+    }
+  },
+  {
+    "id": "buon_non_non",
+    "ten": "Buồn nôn / Nôn ói",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "buồn nôn",
+      "nôn ói",
+      "nausea",
+      "vomiting",
+      "nôn nhiều"
+    ],
+    "aliases": [
+      "mắc ói",
+      "nôn khan",
+      "nôn mửa"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+    "ten": "Đau bụng vùng gan, nôn ói liên tục (Dấu hiệu cảnh báo)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "đau bụng gan",
+      "đau hạ sườn phải",
+      "nôn ói nhiều",
+      "dấu hiệu cảnh báo",
+      "nôn ói liên tục"
+    ],
+    "aliases": [
+      "đau HSP liên tục",
+      "nôn ói >= 3 lần/1h",
+      "nôn ói >= 4 lần/6h",
+      "đau bụng nhiều"
+    ],
+    "map": null
+  },
+  {
+    "id": "gan_to_dau",
+    "ten": "Gan to > 2cm dưới bờ sườn kèm ấn đau tức",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "gan to",
+      "bờ sườn",
+      "gan mấp mé",
+      "ấn đau vùng gan",
+      "hepatomegaly"
+    ],
+    "aliases": [
+      "gan to quá bờ sườn",
+      "gan lớn đau",
+      "gan to dưới bờ sườn",
+      "gan to > 2cm"
+    ],
+    "map": null
+  },
+  {
+    "id": "non_ra_mau_phan_den",
+    "ten": "Xuất huyết tiêu hóa: Nôn ra máu / Đi cầu phân đen",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "nôn ra máu",
+      "tiêu phân đen",
+      "hematemesis",
+      "melena",
+      "xuất huyết tiêu hóa"
+    ],
+    "aliases": [
+      "ó ra máu",
+      "đi tiêu phân đen hắc ín",
+      "ỉa phân đen",
+      "xuất huyết đường tiêu hóa"
+    ],
+    "map": null
+  },
+  {
+    "id": "dau_dau",
+    "ten": "Đau đầu dữ dội",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "đau đầu",
+      "nhức đầu",
+      "headache",
+      "đau nhức đầu"
+    ],
+    "aliases": [
+      "nhức trán thái dương",
+      "nhức đầu nhiều"
+    ],
+    "map": null
+  },
+  {
+    "id": "lu_du_vat_va_li_bi",
+    "ten": "Vật vã, lừ đừ, li bì (Dấu hiệu cảnh báo thần kinh)",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "lừ đừ",
+      "vật vã",
+      "li bì",
+      "thay đổi tri giác",
+      "bứt rứt"
+    ],
+    "aliases": [
+      "tri giác lừ đừ",
+      "vật vã bứt rứt",
+      "li bì khó thức tỉnh",
+      "lethargy",
+      "restlessness"
+    ],
+    "map": null
+  },
+  {
+    "id": "sxhd_the_nao_roi_loan_tri_giac",
+    "ten": "Sốt xuất huyết Dengue thể não: Rối loạn tri giác, co giật, hôn mê",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sxh thể não",
+      "rối loạn tri giác",
+      "co giật",
+      "hôn mê",
+      "dấu thần kinh khu trú"
+    ],
+    "aliases": [
+      "viêm não do dengue",
+      "bệnh não dengue",
+      "co giật bùng phát"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+    "ten": "Xuất huyết dưới da, niêm mạc, Nghiệm pháp dây thắt (Lacet) (+)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "xuất huyết dưới da",
+      "chấm xuất huyết",
+      "lacet dương tính",
+      "chảy máu chân răng",
+      "chảy máu cam"
+    ],
+    "aliases": [
+      "chấm xuất huyết rải rác",
+      "mảng bầm tím",
+      "chảy máu niêm mạc",
+      "petechiae",
+      "dây thắt dương tính"
+    ],
+    "map": null
+  },
+  {
+    "id": "phat_ban_xung_huyet",
+    "ten": "Phát ban xung huyết da, ban dát sẩn hoặc ban hồi phục (Skin islands)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "phát ban",
+      "da xung huyết",
+      "ban hồi phục",
+      "skin islands",
+      "đảo trắng biển đỏ"
+    ],
+    "aliases": [
+      "ban dát sẩn",
+      "xung huyết da",
+      "ban hồi phục ngứa"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+    "ten": "Cô đặc máu (Hematocrit tăng ≥ 20% so với giá trị nền hoặc Hct > 45%)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "cô đặc máu",
+      "hct tăng",
+      "hematocrit tăng",
+      "hct tang cao",
+      "thoát huyết tương"
+    ],
+    "aliases": [
+      "hct tăng dốc đứng",
+      "hct > 45%",
+      "máu cô đặc",
+      "hemoconcentration"
+    ],
+    "map": {
+      "fld": "lHct",
+      "op": ">=",
+      "val": 42
+    }
+  },
+  {
+    "id": "tc_giam_tieu_cau_duoi_100_g_l",
+    "ten": "Tiểu cầu giảm sâu dốc đứng < 100 G/L",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "tiểu cầu giảm",
+      "giảm tiểu cầu",
+      "plt tụt",
+      "plt < 100",
+      "thrombocytopenia"
+    ],
+    "aliases": [
+      "tiểu cầu tụt dốc",
+      "tiểu cầu < 100",
+      "tiểu cầu giảm dốc đứng",
+      "thrombocytopenia"
+    ],
+    "map": {
+      "fld": "lTC",
+      "op": "<=",
+      "val": 100
+    }
+  },
+  {
+    "id": "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
+    "ten": "Xét nghiệm Dengue NS1 Ag (+) hoặc RT-PCR (+)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "ns1",
+      "pcr dengue",
+      "kháng nguyên ns1",
+      "ns1 duong tinh"
+    ],
+    "aliases": [
+      "ns1 ag (+)",
+      "dengue rna (+)",
+      "xét nghiệm ns1",
+      "test nhanh ns1 (+)"
+    ],
+    "map": null
+  },
+  {
+    "id": "tran_dich_mang_phoi_mang_bung",
+    "ten": "Tràn dịch màng phổi, tràn dịch màng bụng, phù nề thành túi mật trên siêu âm/X-quang",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls",
+      "tt"
+    ],
+    "tuKhoa": [
+      "tràn dịch màng phổi",
+      "tràn dịch màng bụng",
+      "cổ trướng",
+      "thoát huyết tương",
+      "phù nề thành túi mật"
+    ],
+    "aliases": [
+      "dịch màng phổi",
+      "dịch tự do ổ bụng",
+      "dày thành túi mật",
+      "pleural effusion",
+      "ascites"
+    ],
+    "map": null
+  },
+  {
+    "id": "men_gan_tang",
+    "ten": "Men gan AST/ALT tăng cao (≥ 2 lần giới hạn bình thường)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "men gan tăng",
+      "ast tăng",
+      "alt tăng",
+      "tổn thương gan",
+      "transaminase"
+    ],
+    "aliases": [
+      "men gan cao",
+      "ast/alt tăng",
+      "tăng transaminase",
+      "tổn thương tế bào gan"
+    ],
+    "map": {
+      "fld": "lAST",
+      "op": ">=",
+      "val": 80
+    }
+  },
+  {
+    "id": "men_gan_ast_alt_tang_tren_1000",
+    "ten": "Tổn thương gan nặng / Suy gan cấp (AST hoặc ALT ≥ 1000 U/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "ast >= 1000",
+      "alt >= 1000",
+      "suy gan cấp",
+      "tổn thương gan nặng"
+    ],
+    "aliases": [
+      "men gan >= 1000",
+      "suy gan cấp do dengue",
+      "hoại tử tế bào gan nặng"
+    ],
+    "map": {
+      "fld": "lAST",
+      "op": ">=",
+      "val": 1000
+    }
+  },
+  {
+    "id": "tieu_it",
+    "ten": "Tiểu ít (Lượng nước tiểu < 0.5 mL/kg/giờ trong 6 giờ)",
+    "nhom": "Tiết niệu",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "tiểu ít",
+      "vô niệu",
+      "thiểu niệu",
+      "bài niệu giảm",
+      "oliguria"
+    ],
+    "aliases": [
+      "không tiểu trên 6 giờ",
+      "lượng nước tiểu giảm",
+      "giảm bài niệu"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_can_song_o_dich_luu_hanh",
+    "ten": "Sống trong hoặc có lui tới vùng ổ dịch sốt xuất huyết lưu hành",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc",
+      "dth"
+    ],
+    "tuKhoa": [
+      "vùng dịch",
+      "ổ dịch",
+      "dịch tễ địa phương",
+      "muỗi vằn đốt"
+    ],
+    "aliases": [
+      "yếu tố dịch tễ",
+      "vùng dịch lưu hành",
+      "người xung quanh mắc sxh"
+    ],
+    "map": null
+  }
+]

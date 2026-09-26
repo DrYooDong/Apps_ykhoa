@@ -173,51 +173,61 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col gap-4">
-      {/* 1. THANH CHỌN PHÂN TẦNG / MỨC ĐỘ NẶNG (SEVERITY LEVEL PILLS) */}
+      {/* 1. THANH NGỮ CẢNH PHÂN ĐỘ & ĐIỀU PHỐI BẬC ĐIỀU TRỊ (ACTIVE STAGING CONTEXT & ESCALATION) */}
       {severityGrades && severityGrades.length > 0 && (
-        <div className="p-3 sm:p-4 bg-gradient-to-r from-slate-50 via-blue-50/20 to-slate-50 border-b border-slate-200 flex flex-col gap-2.5">
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wide">
-              <Layers className="w-3.5 h-3.5 text-blue-600" />
-              <span>Phân tầng &amp; Mức độ lâm sàng:</span>
-            </span>
-            {activeSeverityGrade?.triage && (
-              <span className="text-[11px] font-medium text-slate-600 bg-white px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">
-                <b>Tuyến tiếp nhận:</b> {activeSeverityGrade.triage}
+        <div className="p-3 sm:p-3.5 bg-gradient-to-r from-slate-50 via-blue-50/30 to-indigo-50/20 border-b border-slate-200 flex flex-col gap-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                <Layers className="w-3.5 h-3.5 text-blue-600" />
+                <span>Phân độ áp dụng:</span>
               </span>
+              <span className={`px-2.5 py-1 rounded-lg text-xs font-bold border shadow-2xs flex items-center gap-1.5 ${getSeverityBadgeColor(
+                activeSeverityGrade?.severity || 'moderate',
+                true
+              )}`}>
+                <span>{activeSeverityGrade?.grade || 'Mặc định'}</span>
+              </span>
+              {activeSeverityGrade?.triage && (
+                <span className="text-[11px] font-medium text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
+                  <b>Tuyến:</b> {activeSeverityGrade.triage}
+                </span>
+              )}
+              {activeSeverityGrade?.targetVitals && (
+                <span className="text-[11px] font-mono-custom text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 shadow-2xs hidden md:inline">
+                  <b>Đích SH:</b> {activeSeverityGrade.targetVitals}
+                </span>
+              )}
+            </div>
+
+            {/* Bộ chuyển nhanh phân độ tinh gọn (Quick Switcher) */}
+            {severityGrades.length > 1 && (
+              <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200 shadow-2xs text-xs self-start sm:self-auto">
+                <span className="text-[10.5px] font-semibold text-slate-400 px-1 hidden md:inline">
+                  Đổi nhanh:
+                </span>
+                {severityGrades.map((g, idx) => {
+                  const isSelected = selectedGradeIdx === idx;
+                  const shortLabel = g.grade.split(':')[0].trim();
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => onSelectGradeIdx?.(idx)}
+                      className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-all cursor-pointer ${
+                        isSelected
+                          ? 'bg-blue-600 text-white shadow-2xs'
+                          : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
+                      }`}
+                      title={`Chuyển sang: ${g.grade} (Chi tiết tiêu chuẩn tại Mục 1a)`}
+                    >
+                      {shortLabel}
+                    </button>
+                  );
+                })}
+              </div>
             )}
           </div>
-
-          {/* Các nút bấm phân tầng */}
-          <div className="flex items-center gap-2 flex-wrap">
-            {severityGrades.map((g, idx) => {
-              const isSelected = selectedGradeIdx === idx;
-              const sev = g.severity || 'moderate';
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => onSelectGradeIdx?.(idx)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer flex items-center gap-1.5 ${getSeverityBadgeColor(
-                    sev,
-                    isSelected
-                  )}`}
-                  title={g.criteria || g.grade}
-                >
-                  <span className="font-bold">{g.grade.split(':')[0]}</span>
-                  <span className="opacity-90 font-normal hidden sm:inline">
-                    &bull; {g.grade.split(':')[1] || g.grade}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {activeSeverityGrade?.criteria && (
-            <p className="text-[11.5px] text-slate-600 bg-white/80 p-2 rounded-md border border-slate-200/80 leading-relaxed">
-              <b className="text-slate-800">Tiêu chuẩn phân độ:</b> {activeSeverityGrade.criteria}
-            </p>
-          )}
 
           {/* ⚡ ESCALATION BRIDGE & DISCHARGE CRITERIA WIDGET */}
           {(() => {
@@ -229,7 +239,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
             if (!escalation && !discharge) return null;
 
             return (
-              <div className="flex flex-col gap-2 pt-1">
+              <div className="flex flex-col gap-2 pt-0.5">
                 {escalation && (
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-lg bg-amber-50/90 border border-amber-200 text-amber-950 text-xs">
                     <div className="flex items-start gap-2 flex-1">
@@ -847,10 +857,10 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                 </div>
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-amber-950">
-                    Bảng Theo Dõi &amp; Xử Trí Biến Chứng Chung (Xuyên Suốt Các Giai Đoạn)
+                    Bảng Dự Phòng &amp; Xử Trí Biến Chứng Toàn Thân (Safety Net &bull; Xuyên Suốt Quá Trình Điều Trị)
                   </h4>
                   <p className="text-[11px] text-amber-800">
-                    Lời nhắc bác sĩ phòng ngừa và xử trí khẩn cấp các biến chứng toàn thân, biến chứng can thiệp hoặc bội nhiễm
+                    Lời nhắc bác sĩ phòng ngừa và xử trí các biến chứng phát sinh do can thiệp, quá tải dịch hoặc bội nhiễm (khác với biến chứng cấp ban đầu tại Mục 1b)
                   </p>
                 </div>
               </div>

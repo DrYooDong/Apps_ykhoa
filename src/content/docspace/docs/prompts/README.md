@@ -45,10 +45,11 @@ Từ phiên bản 3.0, toàn bộ quy trình biên soạn bệnh lý được ch
 | **01** | [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) | **Master Phác đồ Phân nhánh Lâm sàng & Tiêu chuẩn CĐ**<br>• Cấu hình 6 trục phân nhánh lâm sàng (`severity`, `phenotype`, `triage_score`, `treatment_step`, `stage`, `comorbidity`)<br>• Phác đồ điều trị chi tiết theo từng nhánh (Bảng 4 cột, 6 đầu mục)<br>• Cảnh báo ranh giới, Chống chỉ định, Tương tác thuốc | **JSON** | Lưu vào:<br>`src/content/docspace/data/enriched/<slug>.json`<br><br>*Tự động đồng bộ bằng lệnh:*<br>`node tools/scripts/sync-clinical-db.mjs` |
 | **02** | [`02-prompt-ca-mau-va-trong-so.txt`](02-prompt-ca-mau-va-trong-so.txt) | **Ca Mẫu Bước 1 & Ma Trận Trọng Số CDSS Bước 3**<br>• Ca bệnh mẫu đầy đủ sinh hiệu, triệu chứng chọn trước<br>• Ma trận suy luận lâm sàng (`dt`: đặc hiệu, `gy`: gợi ý, `ht`: hỗ trợ, `loaitru`: loại trừ)<br>• Khai báo triệu chứng mới vào từ điển | **JSON** | 1. Ca mẫu: nối vào `sample-clinical-cases.json`<br>2. Trọng số: nối vào `data/diseases/<khoa>.json`<br><br>*Tự động bundle bằng lệnh:*<br>`node tools/scripts/bundle-clinical-rules.mjs` |
 | **03** | [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) | **Hồ Sơ Ca Bệnh Thực Chiến SOAP & Hạt Ngọc Lâm Sàng**<br>• Ca bệnh chuẩn cấu trúc S-O-A-P<br>• 4 Hạt ngọc lâm sàng (Pearls & Pitfalls)<br>• Bảng Đặt vấn đề 3 tầng (theo trường phái PGS.TS Hoàng Văn Sĩ)<br>• Phục vụ Hội chẩn AI tại giường | **Markdown** | **Cách 1 (Nhanh nhất):**<br>Mở Web DocSpace ➔ Bấm nút **"Nạp ca từ NotebookLM"** trên Header ➔ Dán Markdown vào.<br><br>**Cách 2 (Lưu vĩnh viễn):**<br>Lưu file `knowledge-vault/ba/soap-<slug>-01.md`<br>Chạy `node tools/scripts/ingest-notebooklm-case.mjs` |
+| **04 (Phụ)** | [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) | **Trích Xuất Từ Điển Triệu Chứng Cụ Thể Của Bệnh**<br>• Trích xuất 100% triệu chứng cơ năng, thực thể, cận lâm sàng, cảnh báo<br>• Phân loại chuẩn xác vào 12 tệp hệ cơ quan (`symptoms/*.json`)<br>• Cấu hình quy tắc tự suy định lượng `map` từ sinh hiệu/xét nghiệm | **JSON** | Lưu tạm ra file JSON ➔ Tự động nạp bằng:<br>`node tools/scripts/ingest-disease-symptoms.mjs <file.json>`<br><br>*Tự động phân loại, lọc trùng & đồng bộ Master Dictionary.* |
 
 ---
 
-## 🧭 3. HƯỚNG DẪN 3 BƯỚC BIÊN SOẠN BỆNH LÝ MỚI (CHO 100+ BỆNH LÝ)
+## 🧭 3. HƯỚNG DẪN BIÊN SOẠN BỆNH LÝ MỚI (CHO 100+ BỆNH LÝ)
 
 Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất huyết Dengue, Suy tim cấp, Đợt cấp COPD, Viêm ruột thừa, Nhồi máu cơ tim, Sốc phản vệ...):
 
@@ -56,7 +57,13 @@ Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất
 1. Tải lên NotebookLM các tài liệu chuẩn (Hướng dẫn Bộ Y Tế, Phác đồ Bệnh viện Bạch Mai / Chợ Rẫy, Guidelines quốc tế).
 2. Tải thêm file `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` (nếu cần đối soát ID triệu chứng có sẵn).
 
-### 🔹 Bước 2: Chạy Tuần Tự 3 Prompt
+### 🔹 Bước 2 (Tùy chọn): Chạy Prompt Phụ 04 — Nạp Từ Điển Triệu Chứng Đặc Thù
+*Nếu bệnh lý này có các dấu hiệu lâm sàng, nghiệm pháp hoặc chỉ số cận lâm sàng đặc thù chưa có trong hệ thống:*
+- Dán [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) vào NotebookLM.
+- Lưu kết quả JSON ra file tạm (ví dụ `tools/scratch/symptoms_moi.json`).
+- Chạy lệnh 1-chạm: `node tools/scripts/ingest-disease-symptoms.mjs tools/scratch/symptoms_moi.json`.
+
+### 🔹 Bước 3: Chạy Tuần Tự Bộ 3 Prompt Cốt Lõi
 1. **Chạy Prompt 01**:
    - Mở [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt).
    - Điền 4 dòng thông số ở đầu (Tên bệnh, Chuyên khoa, ICD-10, Trục phân nhánh).
@@ -68,7 +75,7 @@ Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất
    - Mở [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt).
    - Dán vào NotebookLM ➔ Nhận về bài viết Markdown SOAP ➔ Mở DocSpace nhấn nút **"Nạp ca từ NotebookLM"** để nạp 1-chạm!
 
-### 🔹 Bước 3: Đồng Bộ & Kiểm Tra CSDL
+### 🔹 Bước 4: Đồng Bộ & Kiểm Tra CSDL
 Chạy lệnh kiểm định tự động từ terminal để xác nhận tính toàn vẹn 100%:
 ```powershell
 node tools/scripts/sync-clinical-db.mjs
