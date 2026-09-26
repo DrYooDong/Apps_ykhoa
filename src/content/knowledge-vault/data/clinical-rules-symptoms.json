@@ -80,15 +80,136 @@
       "chán ăn",
       "kiệt sức",
       "mệt lả",
-      "fatigue"
+      "fatigue",
+      "uể oải",
+      "suy nhược",
+      "sụt cân"
     ],
     "aliases": [
       "uể oải toàn thân",
       "suy nhược",
       "ăn uống kém",
-      "mệt mỏi nhiều"
+      "mệt mỏi nhiều",
+      "mệt lả",
+      "suy kiệt toàn thân",
+      "ăn uống không ngon miệng",
+      "suy kiệt"
     ],
     "map": null
+  },
+  {
+    "id": "sot_nhe_giai_doan_khoi_phat",
+    "ten": "Sốt nhẹ giai đoạn tiền vàng da (37.5°C - 38.5°C)",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốt nhẹ",
+      "sốt tiền vàng da",
+      "sốt viêm gan",
+      "sot nhe",
+      "fever"
+    ],
+    "aliases": [
+      "sốt hâm hấp",
+      "sốt nhẹ trước vàng da",
+      "sốt khởi phát viêm gan"
+    ],
+    "map": {
+      "fld": "vNhiet",
+      "op": ">=",
+      "val": 37.5
+    }
+  },
+  {
+    "id": "chan_an_sut_can",
+    "ten": "Chán ăn, sợ mỡ, chán ngấy thức ăn và sụt cân",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "chán ăn",
+      "sợ mỡ",
+      "sụt cân",
+      "chán ngấy thức ăn",
+      "anorexia"
+    ],
+    "aliases": [
+      "chán đồ dầu mỡ",
+      "sụt cân không rõ nguyên nhân",
+      "gầy sút"
+    ],
+    "map": null
+  },
+  {
+    "id": "dau_khop_ngoai_bien",
+    "ten": "Đau mỏi các khớp ngoài biên (Hội chứng giống bệnh huyết thanh)",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "đau khớp",
+      "nhức khớp",
+      "arthralgia",
+      "đau khớp ngoài biên",
+      "viêm đa khớp"
+    ],
+    "aliases": [
+      "đau nhức các khớp",
+      "mỏi khớp tiền triệu",
+      "đau khớp do HBV"
+    ],
+    "map": null
+  },
+  {
+    "id": "sut_can_teo_co_sarcopenia",
+    "ten": "Sụt cân nhanh, teo cơ, suy dinh dưỡng đạm - năng lượng (Sarcopenia)",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sụt cân",
+      "teo cơ",
+      "sarcopenia",
+      "suy dinh dưỡng",
+      "mất khối cơ"
+    ],
+    "aliases": [
+      "teo cơ mu tay",
+      "teo cơ thái dương",
+      "suy kiệt cơ thể"
+    ],
+    "map": null
+  },
+  {
+    "id": "sot_nhe_ve_chieu",
+    "ten": "Sốt nhẹ về chiều, sốt không rõ nguyên nhân ở bệnh nhân xơ gan",
+    "nhom": "Toàn thân",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốt nhẹ",
+      "sốt về chiều",
+      "sốt xơ gan",
+      "low grade fever"
+    ],
+    "aliases": [
+      "ngấy sốt",
+      "sốt hâm hấp"
+    ],
+    "map": {
+      "fld": "vNhiet",
+      "op": ">=",
+      "val": 37.8
+    }
   },
   {
     "id": "mach_nhanh",
@@ -101,12 +222,15 @@
       "mạch nhanh",
       "nhịp tim nhanh",
       "tachycardia",
-      "mạch > 100"
+      "mạch > 100",
+      "hyperdynamic"
     ],
     "aliases": [
       "nhịp tim nhanh",
       "mạch quay nhanh",
-      "tim đập nhanh"
+      "tim đập nhanh",
+      "mạch > 100",
+      "nhịp tim nhanh xơ gan"
     ],
     "map": {
       "fld": "vMach",
@@ -130,7 +254,8 @@
     "aliases": [
       "tụt huyết áp",
       "hatt < 90",
-      "huyết áp thấp"
+      "huyết áp thấp",
+      "tụt huyết áp xơ gan"
     ],
     "map": {
       "fld": "vHATT",
@@ -186,6 +311,48 @@
     }
   },
   {
+    "id": "viem_da_mach_do_hbv",
+    "ten": "Viêm đa mạch nút do HBV (Polyarteritis nodosa - Đau chi, tăng huyết áp, tổn thương mạch)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt",
+      "cn"
+    ],
+    "tuKhoa": [
+      "viêm đa mạch",
+      "polyarteritis nodosa",
+      "viêm mạch do hbv",
+      "tăng huyết áp",
+      "đau chi"
+    ],
+    "aliases": [
+      "biểu hiện ngoài gan viêm mạch",
+      "bệnh lý đa mạch nút",
+      "viêm mạch máu hbv"
+    ],
+    "map": null
+  },
+  {
+    "id": "hoi_chung_gan_phoi_hps",
+    "ten": "Khó thở khi ngồi dậy (Platypnea), giảm SpO2 khi đứng (Orthodeoxia) do Hội chứng gan phổi (HPS)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "hps",
+      "hội chứng gan phổi",
+      "platypnea",
+      "orthodeoxia"
+    ],
+    "aliases": [
+      "giãn mạch phế nang",
+      "khó thở tư thế ngồi"
+    ],
+    "map": null
+  },
+  {
     "id": "kho_tho",
     "ten": "Khó thở, suy hô hấp do tràn dịch đa màng hoặc phù phổi",
     "nhom": "Hô hấp",
@@ -197,12 +364,15 @@
       "khó thở",
       "dyspnea",
       "thở gắng sức",
-      "suy hô hấp"
+      "suy hô hấp",
+      "tràn dịch màng phổi xơ gan",
+      "hepatic hydrothorax"
     ],
     "aliases": [
       "thở mệt",
       "khó thở do tràn dịch",
-      "thở nông nhanh"
+      "thở nông nhanh",
+      "khó thở do báng bụng căng"
     ],
     "map": null
   },
@@ -217,11 +387,13 @@
       "thở nhanh",
       "tachypnea",
       "tần số thở tăng",
-      "thở > 20 l/p"
+      "thở > 20 l/p",
+      "nhịp thở tăng"
     ],
     "aliases": [
       "nhịp thở nhanh",
-      "tăng nhịp thở"
+      "tăng nhịp thở",
+      "thở nông nhanh"
     ],
     "map": {
       "fld": "vTho",
@@ -244,7 +416,8 @@
     ],
     "aliases": [
       "tụt spo2",
-      "giảm độ bão hòa oxy"
+      "giảm độ bão hòa oxy",
+      "thiếu oxy máu"
     ],
     "map": {
       "fld": "vSpo2",
@@ -264,12 +437,17 @@
       "nôn ói",
       "nausea",
       "vomiting",
-      "nôn nhiều"
+      "nôn nhiều",
+      "đầy bụng",
+      "khó tiêu",
+      "chướng hơi"
     ],
     "aliases": [
       "mắc ói",
       "nôn khan",
-      "nôn mửa"
+      "nôn mửa",
+      "sợ thức ăn",
+      "ăn không tiêu"
     ],
     "map": null
   },
@@ -314,7 +492,9 @@
       "gan to quá bờ sườn",
       "gan lớn đau",
       "gan to dưới bờ sườn",
-      "gan to > 2cm"
+      "gan to > 2cm",
+      "gan lớn ấn đau",
+      "gan to nhẹ"
     ],
     "map": null
   },
@@ -331,13 +511,212 @@
       "tiêu phân đen",
       "hematemesis",
       "melena",
-      "xuất huyết tiêu hóa"
+      "xuất huyết tiêu hóa",
+      "vỡ giãn tĩnh mạch thực quản",
+      "vỡ tĩnh mạch thực quản"
     ],
     "aliases": [
       "ó ra máu",
       "đi tiêu phân đen hắc ín",
       "ỉa phân đen",
-      "xuất huyết đường tiêu hóa"
+      "xuất huyết đường tiêu hóa",
+      "ó ra máu đốm đen",
+      "xuất huyết tiêu hóa trên",
+      "tiêu phân đen hắc ín",
+      "xuất huyết tiêu hóa do tăng áp cửa"
+    ],
+    "map": null
+  },
+  {
+    "id": "dau_tuc_ha_suon_phai",
+    "ten": "Đau tức nhẹ hoặc căng tức vùng hạ sườn phải (vùng gan)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "đau hạ sườn phải",
+      "đau vùng gan",
+      "tức hạ sườn",
+      "dau ha suon phai",
+      "đau hsp"
+    ],
+    "aliases": [
+      "đau tức vùng gan",
+      "căng tức hạ sườn phải",
+      "đau nhói vùng gan",
+      "đau nhẹ vùng gan",
+      "nặng tức hạ sườn phải"
+    ],
+    "map": null
+  },
+  {
+    "id": "vang_da_vang_mat",
+    "ten": "Vàng da, vàng mắt, củng mạc mắt vàng và nước tiểu sậm màu",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "vàng da",
+      "vàng mắt",
+      "nước tiểu sậm màu",
+      "jaundice",
+      "icterus",
+      "tieu vang đậm"
+    ],
+    "aliases": [
+      "nước tiểu sậm màu như chè đặc",
+      "vàng củng mạc mắt",
+      "vàng da niêm mạc"
+    ],
+    "map": null
+  },
+  {
+    "id": "phan_bac_mau",
+    "ten": "Phân nhạt màu hoặc phân bạc màu (Dấu hiệu tắc mật/ứ mật)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "phân bạc màu",
+      "phân nhạt màu",
+      "acholic stool",
+      "ứ mật",
+      "phan bac mau"
+    ],
+    "aliases": [
+      "phân xám cò",
+      "phân mất màu mật",
+      "phân nhạt"
+    ],
+    "map": null
+  },
+  {
+    "id": "lach_to",
+    "ten": "Lách to (Dấu hiệu tăng áp lực tĩnh mạch cửa trong xơ gan)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "lách to",
+      "splenomegaly",
+      "tăng áp tĩnh mạch cửa",
+      "lách lớn",
+      "tăng áp cửa"
+    ],
+    "aliases": [
+      "lách to quá bờ sườn",
+      "cường lách",
+      "lách độ I-IV"
+    ],
+    "map": null
+  },
+  {
+    "id": "co_truong_dich_do_o_bung",
+    "ten": "Cổ trướng / Bụng trướng nước (Biến cố mất bù của xơ gan)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "tt",
+      "cls"
+    ],
+    "tuKhoa": [
+      "cổ trướng",
+      "ascites",
+      "trướng bụng",
+      "dịch tự do ổ bụng",
+      "xơ gan mất bù"
+    ],
+    "aliases": [
+      "bụng báng",
+      "dịch ổ bụng",
+      "bụng trướng dịch"
+    ],
+    "map": null
+  },
+  {
+    "id": "co_truong_bang_bung",
+    "ten": "Cổ trướng (Báng bụng), bụng chướng to, gõ đục vùng thấp",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "cổ trướng",
+      "báng bụng",
+      "ascites",
+      "bụng to",
+      "chướng bụng"
+    ],
+    "aliases": [
+      "dịch tự do ổ bụng",
+      "bụng chướng nước",
+      "gõ đục di động"
+    ],
+    "map": null
+  },
+  {
+    "id": "tuan_hoan_bang_he_cua_chu",
+    "ten": "Tuần hoàn bàng hệ cửa - chủ (Tĩnh mạch nổi rõ vùng bụng / Caput Medusae)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "tuần hoàn bàng hệ",
+      "bàng hệ cửa chủ",
+      "caput medusae",
+      "tĩnh mạch bụng nổi"
+    ],
+    "aliases": [
+      "dấu bàng hệ cửa chủ",
+      "tĩnh mạch ngoằn ngoèo trên thành bụng"
+    ],
+    "map": null
+  },
+  {
+    "id": "gan_nho_bo_sac_nhu_mo_tho",
+    "ten": "Gan teo nhỏ, bờ sắc, bề mặt gồ ghề nốt tái tạo, mật độ chắc cứng",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "gan teo",
+      "gan nhỏ",
+      "gan chắc",
+      "bờ sắc",
+      "mật độ cứng"
+    ],
+    "aliases": [
+      "gan xơ chắc",
+      "gan lổn nhổn"
+    ],
+    "map": null
+  },
+  {
+    "id": "viem_phuc_mac_nhiem_khuan_nguyen_phat",
+    "ten": "Đau bụng lan tỏa, đề kháng nhẹ, sốt do Viêm phúc mạc nhiễm khuẩn nguyên phát (SBP)",
+    "nhom": "Tiêu hóa",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "sbp",
+      "viêm phúc mạc nhiễm khuẩn nguyên phát",
+      "nhiễm trùng dịch báng",
+      "đau bụng sốt"
+    ],
+    "aliases": [
+      "nhiễm trùng dịch cổ trướng",
+      "sbp xơ gan"
     ],
     "map": null
   },
@@ -373,14 +752,23 @@
       "vật vã",
       "li bì",
       "thay đổi tri giác",
-      "bứt rứt"
+      "bứt rứt",
+      "mất định hướng",
+      "bệnh não gan độ 2",
+      "bệnh não gan độ 3"
     ],
     "aliases": [
       "tri giác lừ đừ",
       "vật vã bứt rứt",
       "li bì khó thức tỉnh",
       "lethargy",
-      "restlessness"
+      "restlessness",
+      "ngủ gật ban ngày",
+      "ngủ đảo lộn đêm ngày",
+      "chậm chạp trí tuệ",
+      "thay đổi tri giác",
+      "lú lẫn xơ gan",
+      "nói nhảm"
     ],
     "map": null
   },
@@ -407,6 +795,86 @@
     "map": null
   },
   {
+    "id": "benh_nao_gan_roi_loan_tri_giac",
+    "ten": "Bệnh não gan (Rối loạn giấc ngủ, lú lẫn, bứt rứt, run vẫy Flapping tremor, hôn mê gan)",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "bệnh não gan",
+      "hôn mê gan",
+      "hepatic encephalopathy",
+      "flapping tremor",
+      "lú lẫn"
+    ],
+    "aliases": [
+      "rối loạn tri giác do suy gan",
+      "run vẫy rụt rê",
+      "bệnh não gan độ 1-4"
+    ],
+    "map": null
+  },
+  {
+    "id": "dau_hieu_vo_canh_asterixis",
+    "ten": "Dấu vỗ cánh (Asterixis / Flapping tremor) khi duỗi thẳng cổ tay",
+    "nhom": "Thần kinh",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "asterixis",
+      "dấu vỗ cánh",
+      "flapping tremor",
+      "run vỗ cánh"
+    ],
+    "aliases": [
+      "run bàn tay vỗ cánh",
+      "dấu hiệu bệnh não gan"
+    ],
+    "map": null
+  },
+  {
+    "id": "roi_loan_giac_ngu_dao_nguoc_nhip_sinh_hoc",
+    "ten": "Rối loạn giấc ngủ, ngủ ngày thức đêm, giảm tập trung (Bệnh não gan Grade I)",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "rối loạn giấc ngủ",
+      "ngủ ngày thức đêm",
+      "mất ngủ",
+      "bệnh não gan độ 1"
+    ],
+    "aliases": [
+      "đảo ngược nhịp sinh học",
+      "giảm chú ý"
+    ],
+    "map": null
+  },
+  {
+    "id": "hon_me_gan_hepatic_coma",
+    "ten": "Hôn mê gan, mất tri giác, mất phản xạ (Bệnh não gan Grade IV)",
+    "nhom": "Thần kinh",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "hôn mê gan",
+      "bệnh não gan độ 4",
+      "hepatic coma",
+      "mất tri giác"
+    ],
+    "aliases": [
+      "hôn mê do amoniac",
+      "hôn mê xơ gan"
+    ],
+    "map": null
+  },
+  {
     "id": "tc_xuat_huyet_da_niem_lacet_duong_tinh",
     "ten": "Xuất huyết dưới da, niêm mạc, Nghiệm pháp dây thắt (Lacet) (+)",
     "nhom": "Da niêm",
@@ -418,14 +886,19 @@
       "chấm xuất huyết",
       "lacet dương tính",
       "chảy máu chân răng",
-      "chảy máu cam"
+      "chảy máu cam",
+      "mảng bầm tím",
+      "petechiae"
     ],
     "aliases": [
       "chấm xuất huyết rải rác",
       "mảng bầm tím",
       "chảy máu niêm mạc",
       "petechiae",
-      "dây thắt dương tính"
+      "dây thắt dương tính",
+      "chấm xuất huyết da",
+      "chảy máu niêm mạc mũi miệng",
+      "mảng xuất huyết"
     ],
     "map": null
   },
@@ -447,6 +920,183 @@
       "ban dát sẩn",
       "xung huyết da",
       "ban hồi phục ngứa"
+    ],
+    "map": null
+  },
+  {
+    "id": "sa_mach_long_ban_tay_son",
+    "ten": "Sao mạch (Spider nevi) và Ban đỏ lòng bàn tay (Palmar erythema)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sao mạch",
+      "lòng bàn tay son",
+      "spider nevi",
+      "palmar erythema",
+      "nốt nốt nốt huyết"
+    ],
+    "aliases": [
+      "dấu nốt nhện trên da",
+      "lòng bàn tay đỏ son",
+      "sao mạch vùng ngực cổ"
+    ],
+    "map": null
+  },
+  {
+    "id": "ngua_da_do_u_mat",
+    "ten": "Ngứa da dai dẳng do ứ mật / tăng Muối mật",
+    "nhom": "Da niêm",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "ngứa da",
+      "ngứa do ứ mật",
+      "pruritus",
+      "ngứa toàn thân",
+      "vết gãi"
+    ],
+    "aliases": [
+      "ngứa gãi cuồng nhiệt",
+      "ngứa da kèm vàng da",
+      "ngứa do ứ mật"
+    ],
+    "map": null
+  },
+  {
+    "id": "phu_hai_chan",
+    "ten": "Phù mềm hai chân (Do giảm Albumin máu và giữ muối nước)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "phù chân",
+      "phù mềm",
+      "edema",
+      "phù hai mắt cá",
+      "giảm albumin"
+    ],
+    "aliases": [
+      "phù chi dưới",
+      "phù mềm ấn lõm",
+      "phù hai cẳng chân"
+    ],
+    "map": null
+  },
+  {
+    "id": "sao_mach_spider_nevi",
+    "ten": "Sao mạch (Spider nevi / Spider angioma) ở vùng cổ, ngực, lưng",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sao mạch",
+      "spider nevi",
+      "spider angioma",
+      "nốt nếp nhện"
+    ],
+    "aliases": [
+      "u mạch nhện",
+      "dấu sao mạch"
+    ],
+    "map": null
+  },
+  {
+    "id": "ban_do_long_tay_palmar_erythema",
+    "ten": "Ban đỏ lòng bàn tay (Palmar erythema / Lòng bàn tay xơ gan)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "ban đỏ lòng bàn tay",
+      "palmar erythema",
+      "lòng bàn tay đỏ"
+    ],
+    "aliases": [
+      "lòng bàn tay xơ gan",
+      "đỏ mô mô ngón tay"
+    ],
+    "map": null
+  },
+  {
+    "id": "ni_em_mac_vang_vang_da",
+    "ten": "Vàng mắt, vàng da (Jaundice / Icterus) do tăng Bilirubin",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "vàng da",
+      "vàng mắt",
+      "jaundice",
+      "icterus",
+      "niêm mạc vàng"
+    ],
+    "aliases": [
+      "da niêm mắt vàng",
+      "hoàng đản"
+    ],
+    "map": null
+  },
+  {
+    "id": "xuat_huyet_da_niem",
+    "ten": "Chấm xuất huyết, mảng bầm tím dưới da, chảy máu chân răng, chảy máu cam",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt",
+      "cn"
+    ],
+    "tuKhoa": [
+      "xuất huyết dưới da",
+      "mảng bầm tím",
+      "chảy máu chân răng",
+      "chảy máu cam"
+    ],
+    "aliases": [
+      "xuất huyết niêm mạc",
+      "chảy máu rỉ rả"
+    ],
+    "map": null
+  },
+  {
+    "id": "mong_tay_terry_terry_nails",
+    "ten": "Móng tay Terry (Terry's nails - móng đục trắng, mất lunula)",
+    "nhom": "Da niêm",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "móng tay terry",
+      "terry nails",
+      "móng trắng"
+    ],
+    "aliases": [
+      "dấu móng tay terry",
+      "móng tay xơ gan"
+    ],
+    "map": null
+  },
+  {
+    "id": "ngua_da_mangan",
+    "ten": "Ngứa da dai dẳng do ứ mật / tăng muối mật trong máu",
+    "nhom": "Da niêm",
+    "loai": [
+      "cn"
+    ],
+    "tuKhoa": [
+      "ngứa da",
+      "pruritus",
+      "ngứa do ứ mật",
+      "ngứa xơ gan"
+    ],
+    "aliases": [
+      "ngứa toàn thân",
+      "gãi trầy da"
     ],
     "map": null
   },
@@ -488,13 +1138,15 @@
       "giảm tiểu cầu",
       "plt tụt",
       "plt < 100",
-      "thrombocytopenia"
+      "thrombocytopenia",
+      "cường lách"
     ],
     "aliases": [
       "tiểu cầu tụt dốc",
       "tiểu cầu < 100",
       "tiểu cầu giảm dốc đứng",
-      "thrombocytopenia"
+      "thrombocytopenia",
+      "tiểu cầu < 100 G/L"
     ],
     "map": {
       "fld": "lTC",
@@ -565,7 +1217,10 @@
       "men gan cao",
       "ast/alt tăng",
       "tăng transaminase",
-      "tổn thương tế bào gan"
+      "tổn thương tế bào gan",
+      "alt > 30 U/L ở nam",
+      "alt > 19 U/L ở nữ",
+      "men gan tăng cấp tính"
     ],
     "map": {
       "fld": "lAST",
@@ -584,18 +1239,451 @@
       "ast ≥ 1000",
       "alt ≥ 1000",
       "suy gan cấp",
-      "tổn thương gan nặng"
+      "tổn thương gan nặng",
+      "alt >= 1000",
+      "ast >= 1000",
+      "men gan vọt cao",
+      "hoại tử gan nặng"
     ],
     "aliases": [
       "men gan ≥ 1000",
       "suy gan cấp do dengue",
-      "hoại tử tế bào gan nặng"
+      "hoại tử tế bào gan nặng",
+      "men gan tăng dốc đứng",
+      "men gan > 1000 U/L",
+      "transaminase tăng cực cao"
     ],
     "map": {
       "fld": "lAST",
       "op": "≥",
       "val": 1000
     }
+  },
+  {
+    "id": "tc_hbsag_duong_tinh",
+    "ten": "Kháng nguyên bề mặt HBV (HBsAg) dương tính",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbsag",
+      "hbsag dương tính",
+      "kháng nguyên bề mặt",
+      "hbsag (+)"
+    ],
+    "aliases": [
+      "hbsag reactive",
+      "xét nghiệm hbsag dương tính",
+      "nhiễm vi rút viêm gan b"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_anti_hbc_igm_duong_tinh",
+    "ten": "Kháng thể lõi Anti-HBc IgM dương tính (Dấu ấn chẩn đoán nhiễm HBV cấp)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "anti hbc igm",
+      "anti-hbc igm dương tính",
+      "kháng thể igm lõi",
+      "igm anti-hbc"
+    ],
+    "aliases": [
+      "anti-hbc igm (+)",
+      "anti-hbc igm reactive",
+      "xét nghiệm igm lõi hbv"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_hbv_dna_tren_nguong_phat_hien",
+    "ten": "Tải lượng HBV DNA cao (> 2000 IU/mL hoặc trên ngưỡng phát hiện)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbv dna",
+      "tải lượng hbv dna",
+      "định lượng hbv dna",
+      "hbv dna cao"
+    ],
+    "aliases": [
+      "hbv dna > 2000 iu/ml",
+      "hbv dna > 10^4 copies/ml",
+      "định lượng vi rút b"
+    ],
+    "map": null
+  },
+  {
+    "id": "tang_bilirubin_mau",
+    "ten": "Bilirubin toàn phần tăng cao (> 3 mg/dL hay > 51 µmol/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "bilirubin tăng",
+      "bilirubin toàn phần",
+      "bilirubin trực tiếp",
+      "hyperbilirubinemia",
+      "tăng bilirubin",
+      "vàng da"
+    ],
+    "aliases": [
+      "bilirubin > 3 mg/dl",
+      "bilirubin > 51 umol/l",
+      "tăng bilirubin huyết thanh",
+      "bilirubin > 35 umol/l",
+      "bilirubin máu cao"
+    ],
+    "map": null
+  },
+  {
+    "id": "inr_keo_dai_tren_1_5",
+    "ten": "Rối loạn đông máu (Tỷ số chuẩn hóa quốc tế INR > 1.5 hoặc Tỷ lệ PT < 60%)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "inr kéo dài",
+      "inr > 1.5",
+      "rối loạn đông máu",
+      "pt giảm",
+      "prothrombin time"
+    ],
+    "aliases": [
+      "tỷ lệ prothrombin giảm",
+      "inr > 1.5 trong suy gan",
+      "kéo dài pt"
+    ],
+    "map": null
+  },
+  {
+    "id": "do_dan_hoi_gan_fibroscan_f2_f4",
+    "ten": "Xơ hóa gan đáng kể đến xơ gan trên FibroScan (≥ F2 > 7.0 kPa, F4 > 12.5 kPa)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fibroscan",
+      "đo độ đàn hồi gan",
+      "xơ hóa gan",
+      "f2",
+      "f4",
+      "lsm > 7 kpa"
+    ],
+    "aliases": [
+      "độ cứng mô gan tăng",
+      "fibroscan > 7 kpa",
+      "fibroscan > 12.5 kpa"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_apri_tang",
+    "ten": "Chỉ số xơ hóa gan APRI tăng (APRI > 0.5 đánh giá xơ hóa, APRI > 1.0 nghi xơ gan)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "apri",
+      "chỉ số apri",
+      "apri > 0.5",
+      "apri > 1.0",
+      "xơ hóa apri"
+    ],
+    "aliases": [
+      "apri index",
+      "tỷ số ast trên tiểu cầu",
+      "apri > 0.5"
+    ],
+    "map": null
+  },
+  {
+    "id": "xet_nghiem_hbeag_duong_tinh",
+    "ten": "Kháng nguyên HBeAg dương tính (Chỉ dấu vi rút nhân lên mạnh)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbeag",
+      "hbeag dương tính",
+      "hbeag (+)",
+      "kháng nguyên e hbv"
+    ],
+    "aliases": [
+      "hbeag reactive",
+      "xét nghiệm hbeag dương tính",
+      "hbv sao chép mạnh"
+    ],
+    "map": null
+  },
+  {
+    "id": "dinh_luong_afp_pivka_ii_tang",
+    "ten": "Chỉ dấu ung thư gan AFP hoặc PIVKA-II / AFP-L3 tăng bất thường",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "afp tăng",
+      "pivka-ii",
+      "afp-l3",
+      "chỉ dấu ung thư gan",
+      "tầm soát hcc"
+    ],
+    "aliases": [
+      "alpha fetoprotein cao",
+      "afp > 20 ng/ml",
+      "pivka ii tăng"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_do_dan_hoi_gan_fibroscan",
+    "ten": "Đo độ đàn hồi gan FibroScan LSM ≥ 12.5 kPa (Chẩn đoán xơ gan F4 / cACLD)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fibroscan",
+      "lsm",
+      "độ đàn hồi gan",
+      "xơ gan f4",
+      "cacld"
+    ],
+    "aliases": [
+      "fibroscan >= 12.5 kpa",
+      "độ cứng gan tăng",
+      "lsm >= 15 kpa"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_apri_tren_1",
+    "ten": "Chỉ số xơ hóa gan APRI (AST / Platelet Ratio Index) > 1.0",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "apri",
+      "chỉ số apri",
+      "apri > 1",
+      "ast/plt"
+    ],
+    "aliases": [
+      "apri f4",
+      "tỷ số ast trên tiểu cầu > 1.0"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_fib4_tren_3_25",
+    "ten": "Chỉ số xơ hóa gan FIB-4 > 3.25",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fib-4",
+      "fib4",
+      "fib-4 > 3.25",
+      "chỉ số fib4"
+    ],
+    "aliases": [
+      "fib4 điểm cao",
+      "fib4 f4"
+    ],
+    "map": null
+  },
+  {
+    "id": "giam_albumin_mau",
+    "ten": "Albumin huyết thanh giảm (< 35 g/L hoặc < 28 g/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "albumin giảm",
+      "hạ albumin",
+      "hypoalbuminemia",
+      "albumin < 35"
+    ],
+    "aliases": [
+      "albumin máu tụt",
+      "giảm suy tổng hợp đạm"
+    ],
+    "map": null
+  },
+  {
+    "id": "ti_le_prothrombin_giam_inr_tang",
+    "ten": "Tỷ lệ Prothrombin giảm (< 64%) hoặc Tỷ số chuẩn hóa quốc tế INR tăng (> 1.7 - 2.3)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "inr tăng",
+      "prothrombin giảm",
+      "pt giảm",
+      "inr > 1.7",
+      "rối loạn đông máu"
+    ],
+    "aliases": [
+      "pt/inr kéo dài",
+      "giảm chức năng đông máu gan"
+    ],
+    "map": null
+  },
+  {
+    "id": "men_gan_ast_alt_tang",
+    "ten": "Men gan AST/ALT tăng cao nhẹ hoặc vừa (Tỷ lệ AST/ALT > 2 gợi ý do rượu)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "men gan tăng",
+      "ast tăng",
+      "alt tăng",
+      "ast/alt > 2"
+    ],
+    "aliases": [
+      "tăng transaminase",
+      "tổn thương tế bào gan"
+    ],
+    "map": {
+      "fld": "lAST",
+      "op": ">=",
+      "val": 80
+    }
+  },
+  {
+    "id": "tc_noi_soi_gian_ttmq",
+    "ten": "Nội soi dạ dày - thực quản: Giãn tĩnh mạch thực quản (GEV độ I, II, III) hoặc dạ dày (GV)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "nội soi gev",
+      "giãn tĩnh mạch thực quản",
+      "gev độ 2",
+      "gev độ 3",
+      "dấu son"
+    ],
+    "aliases": [
+      "varices thực quản",
+      "nội soi tĩnh mạch cửa giãn"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_hinh_anh_hoc_tang_ap_cua",
+    "ten": "Siêu âm / CT / MRI bụng: Nhu mô gan thô, bờ không đều, TM cửa giãn > 13mm, lách to, dịch báng",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "siêu âm xơ gan",
+      "nhu mô gan thô",
+      "tĩnh mạch cửa giãn",
+      "lách to siêu âm",
+      "ct bụng xơ gan"
+    ],
+    "aliases": [
+      "hình ảnh xơ gan",
+      "tĩnh mạch cửa > 13mm"
+    ],
+    "map": null
+  },
+  {
+    "id": "saag_tren_1_1",
+    "ten": "Tỷ số Độ chênh Albumin Huyết thanh - Dịch báng (SAAG) ≥ 1.1 g/dL",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "saag",
+      "saag >= 1.1",
+      "độ chênh albumin",
+      "cổ trướng tăng áp cửa"
+    ],
+    "aliases": [
+      "saag cao",
+      "saag tăng áp cửa"
+    ],
+    "map": null
+  },
+  {
+    "id": "neutrophil_dich_bang_tren_250",
+    "ten": "Số lượng Bạch cầu đa nhân trung tính (Neutrophil) dịch cổ trướng ≥ 250/mm³",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "neutrophil dịch báng",
+      "bạch cầu dịch báng",
+      "neutrophil >= 250",
+      "chẩn đoán sbp"
+    ],
+    "aliases": [
+      "bạch cầu đa nhân dịch cổ trướng tăng"
+    ],
+    "map": null
+  },
+  {
+    "id": "creatinine_mau_tang_aki",
+    "ten": "Creatinine máu tăng ≥ 0.3 mg/dL hoặc ≥ 50% so với nền (Tổn thương thận cấp HRS-AKI)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "creatinine tăng",
+      "suy thận cấp",
+      "aki xơ gan",
+      "hrs-aki",
+      "hội chứng gan thận"
+    ],
+    "aliases": [
+      "creatinine máu cao",
+      "suy chức năng thận"
+    ],
+    "map": null
+  },
+  {
+    "id": "ha_natri_mau",
+    "ten": "Nồng độ Natri máu giảm (< 130 - 125 mEq/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hạ natri máu",
+      "natri giảm",
+      "hyponatremia",
+      "na < 130"
+    ],
+    "aliases": [
+      "natri máu tụt",
+      "hạ natri do pha loãng"
+    ],
+    "map": null
   },
   {
     "id": "tieu_it",
@@ -610,12 +1698,204 @@
       "vô niệu",
       "thiểu niệu",
       "bài niệu giảm",
-      "oliguria"
+      "oliguria",
+      "hội chứng gan thận",
+      "giảm nước tiểu"
     ],
     "aliases": [
       "không tiểu trên 6 giờ",
       "lượng nước tiểu giảm",
-      "giảm bài niệu"
+      "giảm bài niệu",
+      "bài niệu giảm",
+      "giảm lượng nước tiểu",
+      "suy thận tiến triển",
+      "tiểu < 500ml/ngày"
+    ],
+    "map": null
+  },
+  {
+    "id": "viem_cau_than_do_hbv",
+    "ten": "Viêm cầu thận do phức hợp miễn dịch HBV (Tiểu đạm, tiểu máu, phù)",
+    "nhom": "Tiết niệu",
+    "loai": [
+      "cn",
+      "tt",
+      "cls"
+    ],
+    "tuKhoa": [
+      "viêm cầu thận",
+      "tiểu đạm",
+      "tiểu máu",
+      "hội chứng thận hư",
+      "hbv glomerulonephritis"
+    ],
+    "aliases": [
+      "protein niệu do hbv",
+      "tổn thương thận do hbv",
+      "viêm cầu thận màng"
+    ],
+    "map": null
+  },
+  {
+    "id": "phu_hai_chan",
+    "ten": "Phù mềm hai chân, phù ấn lõm vùng cẳng chân và mu bàn chân",
+    "nhom": "Tiết niệu",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "phù chân",
+      "phù mềm",
+      "phù hai chi dưới",
+      "pedal edema"
+    ],
+    "aliases": [
+      "phù ấn lõm",
+      "phù mắt cá chân"
+    ],
+    "map": null
+  },
+  {
+    "id": "vu_to_nam_gioi_gynecomastia",
+    "ten": "Tuyến vú to ở nam giới (Gynecomastia) do tăng Oestrogen tuần hoàn",
+    "nhom": "Nội tiết",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "vú to nam giới",
+      "gynecomastia",
+      "tuyến vú lớn"
+    ],
+    "aliases": [
+      "vú to ở nam",
+      "dấu hiệu tăng oestrogen"
+    ],
+    "map": null
+  },
+  {
+    "id": "teo_tinh_hoan_giam_dieu_hoa_sinh_duc",
+    "ten": "Teo tinh hoàn, rụng lông nách/mu, giảm ham muốn tình dục do rối loạn nội tiết",
+    "nhom": "Nội tiết",
+    "loai": [
+      "tt",
+      "cn"
+    ],
+    "tuKhoa": [
+      "teo tinh hoàn",
+      "rụng lông",
+      "giảm sinh lý",
+      "testicular atrophy"
+    ],
+    "aliases": [
+      "giảm ham muốn",
+      "rối loạn nội tiết xơ gan"
+    ],
+    "map": null
+  },
+  {
+    "id": "giam_tieu_cau_do_trach_gan",
+    "ten": "Giảm tiểu cầu máu ngoại vi (Do cường lách / giảm Thrombopoietin ở xơ gan)",
+    "nhom": "Huyết học",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "tiểu cầu giảm",
+      "giảm tiểu cầu",
+      "plt tụt",
+      "thrombocytopenia",
+      "cường lách"
+    ],
+    "aliases": [
+      "tiểu cầu < 100 G/L",
+      "giảm tiểu cầu xơ gan",
+      "plt giảm trong xơ gan"
+    ],
+    "map": {
+      "fld": "lTC",
+      "op": "<=",
+      "val": 100
+    }
+  },
+  {
+    "id": "cryoglobulin_mau",
+    "ten": "Cryoglobulinemia (Globulin lạnh bất thường trong máu gây viêm mạch)",
+    "nhom": "Huyết học",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "cryoglobulin",
+      "cryoglobulinemia",
+      "globulin lạnh",
+      "kết tủa lạnh"
+    ],
+    "aliases": [
+      "cryoglobulin máu dương tính",
+      "bệnh globulin bất thường"
+    ],
+    "map": null
+  },
+  {
+    "id": "hoi_chung_thieu_mau",
+    "ten": "Hội chứng thiếu máu: Da niêm nhợt, hoa mắt, chóng mặt do xuất huyết hoặc suy tủy",
+    "nhom": "Huyết học",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "thiếu máu",
+      "da niêm nhợt",
+      "anemia",
+      "giảm hemoglobin"
+    ],
+    "aliases": [
+      "da xanh niêm nhợt",
+      "hb giảm"
+    ],
+    "map": null
+  },
+  {
+    "id": "roi_loan_dong_mau_giam_tieu_cau",
+    "ten": "Hội chứng xuất huyết do suy giảm tổng hợp yếu tố đông máu và giảm tiểu cầu cường lách",
+    "nhom": "Huyết học",
+    "loai": [
+      "cls",
+      "tt"
+    ],
+    "tuKhoa": [
+      "rối loạn đông máu",
+      "xuất huyết",
+      "giảm yếu tố đông máu",
+      "cường lách"
+    ],
+    "aliases": [
+      "kéo dài thời gian đông máu",
+      "dễ chảy máu"
+    ],
+    "map": null
+  },
+  {
+    "id": "phu_nu_mang_thai_nhiem_hbv",
+    "ten": "Phụ nữ mang thai nhiễm HBV có nguy cơ lây truyền mẹ con cao (HBV DNA ≥ 200.000 IU/mL)",
+    "nhom": "Sản phụ khoa",
+    "loai": [
+      "tc",
+      "cls"
+    ],
+    "tuKhoa": [
+      "mang thai hbv",
+      "lây truyền mẹ con",
+      "thai phụ hbsag dương",
+      "mtct hbv",
+      "hbv dna > 200000"
+    ],
+    "aliases": [
+      "phụ nữ có thai nhiễm vi rút b",
+      "thai kỳ tải lượng vi rút cao",
+      "dự phòng tdf thai kỳ"
     ],
     "map": null
   },
@@ -637,6 +1917,150 @@
       "yếu tố dịch tễ",
       "vùng dịch lưu hành",
       "người xung quanh mắc sxh"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_phoi_nhiem_hbv",
+    "ten": "Tiền sử nguy cơ tiếp xúc/phơi nhiễm HBV trong 4 - 24 tuần trước khởi phát",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc",
+      "dth"
+    ],
+    "tuKhoa": [
+      "phơi nhiễm hbv",
+      "tiền sử tiêm chích",
+      "truyền máu",
+      "xăm trổ",
+      "quan hệ không an toàn"
+    ],
+    "aliases": [
+      "yếu tố dịch tễ hbv",
+      "nguy cơ lây nhiễm hbv",
+      "thủ thuật y tế không tiệt trùng"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_gia_dinh_xue_gan_hcc",
+    "ten": "Tiền sử gia đình có người thế hệ thứ nhất mắc xơ gan hoặc ung thư gan (HCC)",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "tiền sử gia đình hcc",
+      "gia đình xơ gan",
+      "tiền sử ung thư gan",
+      "nguy cơ hcc"
+    ],
+    "aliases": [
+      "người thân bị ung thư gan",
+      "bố mẹ anh chị em bị hcc",
+      "tiền sử xơ gan gia đình"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_su_dung_thuoc_uc_che_mien_dich",
+    "ten": "Tiền sử điều trị hóa trị ung thư, thuốc ức chế miễn dịch, Anti-CD20 hoặc Corticoid kéo dài",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "ức chế miễn dịch",
+      "hóa trị liệu",
+      "anti-cd20",
+      "rituximab",
+      "corticoid kéo dài",
+      "tái hoạt hbv"
+    ],
+    "aliases": [
+      "đang dùng thuốc ucmd",
+      "chuẩn bị hóa trị ung thư",
+      "ghép tạng"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_viem_gan_virus_b_c",
+    "ten": "Tiền sử nhiễm vi rút viêm gan B mạn tính (HBsAg+) hoặc viêm gan C mạn tính (Anti-HCV+)",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "viêm gan b",
+      "viêm gan c",
+      "hbv",
+      "hcv",
+      "hbsag dương tính"
+    ],
+    "aliases": [
+      "nhiễm hbv mạn",
+      "nhiễm hcv mạn",
+      "tiền sử viêm gan siêu vi"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_nghiem_ruou_bia",
+    "ten": "Tiền sử lạm dụng rượu bia kéo dài (> 40-60g cồn/ngày trong > 5 năm)",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "uống rượu",
+      "nghiện rượu",
+      "ald",
+      "tiêu thụ cồn",
+      "alcohol use"
+    ],
+    "aliases": [
+      "tiền sử uống rượu nhiều",
+      "xơ gan do rượu"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_gan_nhiem_mo_mash_masld",
+    "ten": "Tiền sử Bệnh gan nhiễm mỡ chuyển hóa (MASLD / MASH), Đái tháo đường type 2, Béo phì",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "mash",
+      "masld",
+      "gan nhiễm mỡ",
+      "đái tháo đường",
+      "béo phì"
+    ],
+    "aliases": [
+      "gan nhiễm mỡ thoái hóa xơ",
+      "hội chứng chuyển hóa"
+    ],
+    "map": null
+  },
+  {
+    "id": "tien_su_xuat_huyet_tieu_hoa_co_truong",
+    "ten": "Tiền sử đã từng xuất huyết tiêu hóa do vỡ GEV hoặc từng xuất hiện Cổ trướng / SBP / Bệnh não gan",
+    "nhom": "Tiền căn",
+    "loai": [
+      "tc"
+    ],
+    "tuKhoa": [
+      "tiền sử vỡ gev",
+      "tiền sử cổ trướng",
+      "tiền sử sbp",
+      "tiền sử bệnh não gan"
+    ],
+    "aliases": [
+      "đã từng xuất huyết tiêu hóa",
+      "đã từng mất bù"
     ],
     "map": null
   }

@@ -37,13 +37,15 @@
       "giảm tiểu cầu",
       "plt tụt",
       "plt < 100",
-      "thrombocytopenia"
+      "thrombocytopenia",
+      "cường lách"
     ],
     "aliases": [
       "tiểu cầu tụt dốc",
       "tiểu cầu < 100",
       "tiểu cầu giảm dốc đứng",
-      "thrombocytopenia"
+      "thrombocytopenia",
+      "tiểu cầu < 100 G/L"
     ],
     "map": {
       "fld": "lTC",
@@ -114,7 +116,10 @@
       "men gan cao",
       "ast/alt tăng",
       "tăng transaminase",
-      "tổn thương tế bào gan"
+      "tổn thương tế bào gan",
+      "alt > 30 U/L ở nam",
+      "alt > 19 U/L ở nữ",
+      "men gan tăng cấp tính"
     ],
     "map": {
       "fld": "lAST",
@@ -133,17 +138,450 @@
       "ast ≥ 1000",
       "alt ≥ 1000",
       "suy gan cấp",
-      "tổn thương gan nặng"
+      "tổn thương gan nặng",
+      "alt >= 1000",
+      "ast >= 1000",
+      "men gan vọt cao",
+      "hoại tử gan nặng"
     ],
     "aliases": [
       "men gan ≥ 1000",
       "suy gan cấp do dengue",
-      "hoại tử tế bào gan nặng"
+      "hoại tử tế bào gan nặng",
+      "men gan tăng dốc đứng",
+      "men gan > 1000 U/L",
+      "transaminase tăng cực cao"
     ],
     "map": {
       "fld": "lAST",
       "op": "≥",
       "val": 1000
     }
+  },
+  {
+    "id": "tc_hbsag_duong_tinh",
+    "ten": "Kháng nguyên bề mặt HBV (HBsAg) dương tính",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbsag",
+      "hbsag dương tính",
+      "kháng nguyên bề mặt",
+      "hbsag (+)"
+    ],
+    "aliases": [
+      "hbsag reactive",
+      "xét nghiệm hbsag dương tính",
+      "nhiễm vi rút viêm gan b"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_anti_hbc_igm_duong_tinh",
+    "ten": "Kháng thể lõi Anti-HBc IgM dương tính (Dấu ấn chẩn đoán nhiễm HBV cấp)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "anti hbc igm",
+      "anti-hbc igm dương tính",
+      "kháng thể igm lõi",
+      "igm anti-hbc"
+    ],
+    "aliases": [
+      "anti-hbc igm (+)",
+      "anti-hbc igm reactive",
+      "xét nghiệm igm lõi hbv"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_hbv_dna_tren_nguong_phat_hien",
+    "ten": "Tải lượng HBV DNA cao (> 2000 IU/mL hoặc trên ngưỡng phát hiện)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbv dna",
+      "tải lượng hbv dna",
+      "định lượng hbv dna",
+      "hbv dna cao"
+    ],
+    "aliases": [
+      "hbv dna > 2000 iu/ml",
+      "hbv dna > 10^4 copies/ml",
+      "định lượng vi rút b"
+    ],
+    "map": null
+  },
+  {
+    "id": "tang_bilirubin_mau",
+    "ten": "Bilirubin toàn phần tăng cao (> 3 mg/dL hay > 51 µmol/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "bilirubin tăng",
+      "bilirubin toàn phần",
+      "bilirubin trực tiếp",
+      "hyperbilirubinemia",
+      "tăng bilirubin",
+      "vàng da"
+    ],
+    "aliases": [
+      "bilirubin > 3 mg/dl",
+      "bilirubin > 51 umol/l",
+      "tăng bilirubin huyết thanh",
+      "bilirubin > 35 umol/l",
+      "bilirubin máu cao"
+    ],
+    "map": null
+  },
+  {
+    "id": "inr_keo_dai_tren_1_5",
+    "ten": "Rối loạn đông máu (Tỷ số chuẩn hóa quốc tế INR > 1.5 hoặc Tỷ lệ PT < 60%)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "inr kéo dài",
+      "inr > 1.5",
+      "rối loạn đông máu",
+      "pt giảm",
+      "prothrombin time"
+    ],
+    "aliases": [
+      "tỷ lệ prothrombin giảm",
+      "inr > 1.5 trong suy gan",
+      "kéo dài pt"
+    ],
+    "map": null
+  },
+  {
+    "id": "do_dan_hoi_gan_fibroscan_f2_f4",
+    "ten": "Xơ hóa gan đáng kể đến xơ gan trên FibroScan (≥ F2 > 7.0 kPa, F4 > 12.5 kPa)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fibroscan",
+      "đo độ đàn hồi gan",
+      "xơ hóa gan",
+      "f2",
+      "f4",
+      "lsm > 7 kpa"
+    ],
+    "aliases": [
+      "độ cứng mô gan tăng",
+      "fibroscan > 7 kpa",
+      "fibroscan > 12.5 kpa"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_apri_tang",
+    "ten": "Chỉ số xơ hóa gan APRI tăng (APRI > 0.5 đánh giá xơ hóa, APRI > 1.0 nghi xơ gan)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "apri",
+      "chỉ số apri",
+      "apri > 0.5",
+      "apri > 1.0",
+      "xơ hóa apri"
+    ],
+    "aliases": [
+      "apri index",
+      "tỷ số ast trên tiểu cầu",
+      "apri > 0.5"
+    ],
+    "map": null
+  },
+  {
+    "id": "xet_nghiem_hbeag_duong_tinh",
+    "ten": "Kháng nguyên HBeAg dương tính (Chỉ dấu vi rút nhân lên mạnh)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hbeag",
+      "hbeag dương tính",
+      "hbeag (+)",
+      "kháng nguyên e hbv"
+    ],
+    "aliases": [
+      "hbeag reactive",
+      "xét nghiệm hbeag dương tính",
+      "hbv sao chép mạnh"
+    ],
+    "map": null
+  },
+  {
+    "id": "dinh_luong_afp_pivka_ii_tang",
+    "ten": "Chỉ dấu ung thư gan AFP hoặc PIVKA-II / AFP-L3 tăng bất thường",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "afp tăng",
+      "pivka-ii",
+      "afp-l3",
+      "chỉ dấu ung thư gan",
+      "tầm soát hcc"
+    ],
+    "aliases": [
+      "alpha fetoprotein cao",
+      "afp > 20 ng/ml",
+      "pivka ii tăng"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_do_dan_hoi_gan_fibroscan",
+    "ten": "Đo độ đàn hồi gan FibroScan LSM ≥ 12.5 kPa (Chẩn đoán xơ gan F4 / cACLD)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fibroscan",
+      "lsm",
+      "độ đàn hồi gan",
+      "xơ gan f4",
+      "cacld"
+    ],
+    "aliases": [
+      "fibroscan >= 12.5 kpa",
+      "độ cứng gan tăng",
+      "lsm >= 15 kpa"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_apri_tren_1",
+    "ten": "Chỉ số xơ hóa gan APRI (AST / Platelet Ratio Index) > 1.0",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "apri",
+      "chỉ số apri",
+      "apri > 1",
+      "ast/plt"
+    ],
+    "aliases": [
+      "apri f4",
+      "tỷ số ast trên tiểu cầu > 1.0"
+    ],
+    "map": null
+  },
+  {
+    "id": "chi_so_fib4_tren_3_25",
+    "ten": "Chỉ số xơ hóa gan FIB-4 > 3.25",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "fib-4",
+      "fib4",
+      "fib-4 > 3.25",
+      "chỉ số fib4"
+    ],
+    "aliases": [
+      "fib4 điểm cao",
+      "fib4 f4"
+    ],
+    "map": null
+  },
+  {
+    "id": "giam_albumin_mau",
+    "ten": "Albumin huyết thanh giảm (< 35 g/L hoặc < 28 g/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "albumin giảm",
+      "hạ albumin",
+      "hypoalbuminemia",
+      "albumin < 35"
+    ],
+    "aliases": [
+      "albumin máu tụt",
+      "giảm suy tổng hợp đạm"
+    ],
+    "map": null
+  },
+  {
+    "id": "ti_le_prothrombin_giam_inr_tang",
+    "ten": "Tỷ lệ Prothrombin giảm (< 64%) hoặc Tỷ số chuẩn hóa quốc tế INR tăng (> 1.7 - 2.3)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "inr tăng",
+      "prothrombin giảm",
+      "pt giảm",
+      "inr > 1.7",
+      "rối loạn đông máu"
+    ],
+    "aliases": [
+      "pt/inr kéo dài",
+      "giảm chức năng đông máu gan"
+    ],
+    "map": null
+  },
+  {
+    "id": "men_gan_ast_alt_tang",
+    "ten": "Men gan AST/ALT tăng cao nhẹ hoặc vừa (Tỷ lệ AST/ALT > 2 gợi ý do rượu)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "men gan tăng",
+      "ast tăng",
+      "alt tăng",
+      "ast/alt > 2"
+    ],
+    "aliases": [
+      "tăng transaminase",
+      "tổn thương tế bào gan"
+    ],
+    "map": {
+      "fld": "lAST",
+      "op": ">=",
+      "val": 80
+    }
+  },
+  {
+    "id": "tc_noi_soi_gian_ttmq",
+    "ten": "Nội soi dạ dày - thực quản: Giãn tĩnh mạch thực quản (GEV độ I, II, III) hoặc dạ dày (GV)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "nội soi gev",
+      "giãn tĩnh mạch thực quản",
+      "gev độ 2",
+      "gev độ 3",
+      "dấu son"
+    ],
+    "aliases": [
+      "varices thực quản",
+      "nội soi tĩnh mạch cửa giãn"
+    ],
+    "map": null
+  },
+  {
+    "id": "tc_hinh_anh_hoc_tang_ap_cua",
+    "ten": "Siêu âm / CT / MRI bụng: Nhu mô gan thô, bờ không đều, TM cửa giãn > 13mm, lách to, dịch báng",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "siêu âm xơ gan",
+      "nhu mô gan thô",
+      "tĩnh mạch cửa giãn",
+      "lách to siêu âm",
+      "ct bụng xơ gan"
+    ],
+    "aliases": [
+      "hình ảnh xơ gan",
+      "tĩnh mạch cửa > 13mm"
+    ],
+    "map": null
+  },
+  {
+    "id": "saag_tren_1_1",
+    "ten": "Tỷ số Độ chênh Albumin Huyết thanh - Dịch báng (SAAG) ≥ 1.1 g/dL",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "saag",
+      "saag >= 1.1",
+      "độ chênh albumin",
+      "cổ trướng tăng áp cửa"
+    ],
+    "aliases": [
+      "saag cao",
+      "saag tăng áp cửa"
+    ],
+    "map": null
+  },
+  {
+    "id": "neutrophil_dich_bang_tren_250",
+    "ten": "Số lượng Bạch cầu đa nhân trung tính (Neutrophil) dịch cổ trướng ≥ 250/mm³",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "neutrophil dịch báng",
+      "bạch cầu dịch báng",
+      "neutrophil >= 250",
+      "chẩn đoán sbp"
+    ],
+    "aliases": [
+      "bạch cầu đa nhân dịch cổ trướng tăng"
+    ],
+    "map": null
+  },
+  {
+    "id": "creatinine_mau_tang_aki",
+    "ten": "Creatinine máu tăng ≥ 0.3 mg/dL hoặc ≥ 50% so với nền (Tổn thương thận cấp HRS-AKI)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "creatinine tăng",
+      "suy thận cấp",
+      "aki xơ gan",
+      "hrs-aki",
+      "hội chứng gan thận"
+    ],
+    "aliases": [
+      "creatinine máu cao",
+      "suy chức năng thận"
+    ],
+    "map": null
+  },
+  {
+    "id": "ha_natri_mau",
+    "ten": "Nồng độ Natri máu giảm (< 130 - 125 mEq/L)",
+    "nhom": "Cận lâm sàng",
+    "loai": [
+      "cls"
+    ],
+    "tuKhoa": [
+      "hạ natri máu",
+      "natri giảm",
+      "hyponatremia",
+      "na < 130"
+    ],
+    "aliases": [
+      "natri máu tụt",
+      "hạ natri do pha loãng"
+    ],
+    "map": null
   }
 ]

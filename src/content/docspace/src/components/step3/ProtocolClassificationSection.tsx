@@ -53,6 +53,8 @@ interface ProtocolClassificationSectionProps {
   onToggleRenalAdjustment?: (applied: boolean) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   targetTab?: string;
+  activeTab?: string;
+  onTabChange?: (tabId: string) => void;
   selectedAxes?: Record<string, string>;
   onSelectAxisBranch?: (axisId: string, branchId: string) => void;
   activeCombinedProtocol?: CombinedProtocol | null;
@@ -81,6 +83,8 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   onToggleRenalAdjustment,
   onOpenVaultDrawer,
   targetTab,
+  activeTab: propActiveTab,
+  onTabChange,
   selectedAxes,
   onSelectAxisBranch,
   activeCombinedProtocol,
@@ -94,7 +98,12 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   const axes: BranchAxis[] = (activeChain?.branching?.axes as BranchAxis[]) || [];
 
   // Tab state dạng string linh hoạt hỗ trợ cả multi-axis và single-axis
-  const [activeTab, setActiveTab] = useState<string>('1a');
+  const [activeTab, setActiveTab] = useState<string>(propActiveTab || '1a');
+
+  const handleTabSelect = (tabId: string) => {
+    setActiveTab(tabId);
+    onTabChange?.(tabId);
+  };
 
   // Tính toán hồ sơ kiểu hình cá thể hoá nội bộ nếu chưa truyền từ ngoài
   const phenotype = useMemo(() => {
@@ -244,20 +253,30 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
     hasRenalRisk,
   ]);
 
-  // Đồng bộ activeTab khi targetTab thay đổi hoặc khi chuyển bệnh lý
+  // Đồng bộ activeTab khi targetTab thay đổi, khi propActiveTab thay đổi hoặc khi chuyển bệnh lý
   useEffect(() => {
+    if (propActiveTab && tabs.some((t) => t.id === propActiveTab || t.tabCode === propActiveTab)) {
+      const match = tabs.find((t) => t.id === propActiveTab || t.tabCode === propActiveTab);
+      if (match && match.id !== activeTab) {
+        setActiveTab(match.id);
+        return;
+      }
+    }
     if (targetTab) {
       const match = tabs.find((t) => t.id === targetTab || t.tabCode === targetTab);
       if (match) {
         setActiveTab(match.id);
+        onTabChange?.(match.id);
         return;
       }
     }
     // Nếu activeTab hiện tại không thuộc danh sách tabs
     if (!tabs.some((t) => t.id === activeTab)) {
-      setActiveTab(tabs[0]?.id || '1a');
+      const firstTabId = tabs[0]?.id || '1a';
+      setActiveTab(firstTabId);
+      onTabChange?.(firstTabId);
     }
-  }, [targetTab, tabs]);
+  }, [propActiveTab, targetTab, tabs]);
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
@@ -410,7 +429,7 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                 key={tab.id}
                 type="button"
                 id={`sub-${tab.tabCode}`}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabSelect(tab.id)}
                 className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
                   isActive ? activeClass : 'text-slate-600 hover:text-slate-900'
                 }`}
@@ -457,7 +476,7 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                   activeCombinedProtocol={activeCombinedProtocol}
                   allAxes={axes}
                   selectedAxes={selectedAxes}
-                  onSelectNextTab={nextTab ? () => setActiveTab(nextTab.id) : undefined}
+                  onSelectNextTab={nextTab ? () => handleTabSelect(nextTab.id) : undefined}
                   nextTabLabel={nextTab ? nextTab.label : undefined}
                 />
               </div>

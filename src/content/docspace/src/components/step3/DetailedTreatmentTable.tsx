@@ -7,12 +7,16 @@ import {
   Check,
   ClipboardCheck,
   ClipboardCopy,
+  Compass,
+  Dna,
+  Gauge,
   Layers,
   Pill,
   Plus,
   RotateCcw,
   ShieldAlert,
   ShieldCheck,
+  Syringe,
   Trash2,
 } from 'lucide-react';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
@@ -22,7 +26,7 @@ import {
   adaptPhaseToProblemRows,
   getGeneralComplications,
 } from '../../lib/dailyTreatmentTimeline.ts';
-import { CombinedProtocol, PhacDo } from '../../types.ts';
+import { BranchAxis, CombinedProtocol, PhacDo } from '../../types.ts';
 import { CustomOrder } from './ProtocolOrderSheet.tsx';
 import { SafePrescribingDdiPanel } from '../SafePrescribingDdiPanel.tsx';
 
@@ -65,6 +69,11 @@ interface DetailedTreatmentTableProps {
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'vancomycin' | 'hub') => void;
   activeCombinedProtocol?: CombinedProtocol | null;
+  isMultiAxis?: boolean;
+  axes?: BranchAxis[];
+  activeAxisId?: string;
+  onSelectAxis?: (axisId: string) => void;
+  currentAxisLabel?: string;
 }
 
 export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
@@ -100,11 +109,26 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   onOpenVaultDrawer,
   onOpenCdssModal,
   activeCombinedProtocol,
+  isMultiAxis = false,
+  axes,
+  activeAxisId,
+  onSelectAxis,
+  currentAxisLabel,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newDrug, setNewDrug] = useState('');
   const [newDosage, setNewDosage] = useState('');
   const [newNote, setNewNote] = useState('');
+
+  const getAxisIcon = (iconName?: string, axisType?: string) => {
+    const iconKey = (iconName || '').toLowerCase();
+    if (iconKey === 'gauge' || axisType === 'severity' || axisType === 'triage_score') return <Gauge className="w-3.5 h-3.5" />;
+    if (iconKey === 'dna' || axisType === 'phenotype') return <Dna className="w-3.5 h-3.5" />;
+    if (iconKey === 'syringe' || axisType === 'treatment_step') return <Syringe className="w-3.5 h-3.5" />;
+    if (iconKey === 'compass' || axisType === 'stage') return <Compass className="w-3.5 h-3.5" />;
+    if (iconKey === 'shieldalert' || axisType === 'comorbidity') return <ShieldAlert className="w-3.5 h-3.5" />;
+    return <Layers className="w-3.5 h-3.5" />;
+  };
 
   const generalComplications = getGeneralComplications(diseaseId, diseaseName);
 
@@ -189,11 +213,56 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
               </span>
             </div>
           )}
+
+          {/* BỘ CHUYỂN TRỤC ĐIỀU TRỊ (MULTI-AXIS SELECTOR TẠI MỤC 2) */}
+          {isMultiAxis && axes && axes.length > 1 && (
+            <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-white/95 rounded-lg border border-slate-200 shadow-2xs">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide flex items-center gap-1">
+                  <Compass className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Trục điều trị:</span>
+                </span>
+                <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-md border border-slate-200">
+                  {axes.map((ax) => {
+                    const isActive = ax.axisId === activeAxisId;
+                    const shortName = ax.axisLabelShort || ax.axisName.replace(/^Phân loại theo\s+/i, '').replace(/^Phân tầng\s+/i, '').trim();
+                    return (
+                      <button
+                        key={ax.axisId}
+                        type="button"
+                        onClick={() => onSelectAxis?.(ax.axisId)}
+                        className={`px-2.5 py-1 rounded text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                          isActive
+                            ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                            : 'text-slate-600 hover:text-blue-700 hover:bg-white'
+                        }`}
+                        title={`Xem chi tiết phác đồ theo: ${ax.axisName}`}
+                      >
+                        {getAxisIcon(ax.axisIcon, ax.axisType)}
+                        <span>{shortName}</span>
+                        <span
+                          className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
+                            isActive ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-700'
+                          }`}
+                        >
+                          {ax.branches?.length}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <span className="text-[11px] text-slate-500 italic hidden lg:inline">
+                * Tự động đồng bộ theo trục bạn đang xem ở Mục 1
+              </span>
+            </div>
+          )}
+
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
                 <Layers className="w-3.5 h-3.5 text-blue-600" />
-                <span>Phân độ áp dụng:</span>
+                <span>{currentAxisLabel ? `Phân nhánh áp dụng (${currentAxisLabel}):` : 'Phân độ áp dụng:'}</span>
               </span>
               <span className={`px-2.5 py-1 rounded-lg text-xs font-bold border shadow-2xs flex items-center gap-1.5 ${getSeverityBadgeColor(
                 activeSeverityGrade?.severity || 'moderate',
@@ -232,7 +301,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                           ? 'bg-blue-600 text-white shadow-2xs'
                           : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
                       }`}
-                      title={`Chuyển sang: ${g.grade} (Chi tiết tiêu chuẩn tại Mục 1a)`}
+                      title={`Chuyển sang: ${g.grade}`}
                     >
                       {shortLabel}
                     </button>

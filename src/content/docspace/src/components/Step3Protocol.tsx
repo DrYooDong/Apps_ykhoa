@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import {
   Benh,
+  BranchAxis,
   ClinicalFormState,
   CombinedProtocol,
   KnowledgeBase,
@@ -227,6 +228,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   // Trạng thái lựa chọn nhánh Đa trục (Multi-Axis Branching v4.0)
   const [selectedAxes, setSelectedAxes] = useState<Record<string, string>>({});
+  const [activeAxisId, setActiveAxisId] = useState<string>('');
 
   // Bảng mapping từ ID phân độ con sang bệnh mẹ và phân độ mặc định
   const SUB_DISEASE_TO_PARENT_MAP: Record<string, { parentId: string; gradeIdx: number }> = useMemo(() => ({
@@ -427,18 +429,32 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
   }, [initialComplicationId, activeChain]);
 
+  const isMultiAxis = Boolean(
+    activeChain?.branching?.mode === 'multi' &&
+    activeChain?.branching?.axes &&
+    activeChain.branching.axes.length > 0
+  );
+  const multiAxes = useMemo<BranchAxis[]>(() => {
+    return (activeChain?.branching?.axes as BranchAxis[]) || [];
+  }, [activeChain]);
+
   // Khởi tạo mặc định các trục khi bệnh lý có chế độ Multi-Axis
   useEffect(() => {
-    if (activeChain?.branching?.mode === 'multi' && activeChain?.branching?.axes) {
+    if (isMultiAxis && multiAxes.length > 0) {
       const initialAxes: Record<string, string> = {};
-      activeChain.branching.axes.forEach((axis) => {
+      multiAxes.forEach((axis) => {
         initialAxes[axis.axisId] = axis.branches[0]?.id || '';
       });
       setSelectedAxes(initialAxes);
+      setActiveAxisId((prev) => {
+        if (prev && multiAxes.some((a) => a.axisId === prev)) return prev;
+        return multiAxes[0].axisId;
+      });
     } else {
       setSelectedAxes({});
+      setActiveAxisId('');
     }
-  }, [activeChain?.diseaseName, activeChain?.icdCode]);
+  }, [activeChain?.diseaseName, activeChain?.icdCode, isMultiAxis, multiAxes]);
 
   const handleSelectAxisBranch = (axisId: string, branchId: string) => {
     setSelectedAxes((prev) => ({
@@ -447,9 +463,48 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }));
   };
 
+  const handleClassificationTabChange = (tabId: string) => {
+    const matchedAxis = multiAxes.find((ax) => ax.axisId === tabId);
+    if (matchedAxis) {
+      setActiveAxisId(matchedAxis.axisId);
+    }
+  };
+
+  const handleSelectAxisAtProtocol = (axisId: string) => {
+    setActiveAxisId(axisId);
+    setTargetClassificationTab(axisId);
+  };
+
+  // Trục phân loại lâm sàng đang được chọn/xem tích cực
+  const currentActiveAxis = useMemo<BranchAxis | null>(() => {
+    if (!isMultiAxis || multiAxes.length === 0) return null;
+    return multiAxes.find((a) => a.axisId === activeAxisId) || multiAxes[0] || null;
+  }, [isMultiAxis, multiAxes, activeAxisId]);
+
+  // Nhánh đang được chọn của trục active hiện tại
+  const currentAxisSelectedBranchId = useMemo(() => {
+    if (!currentActiveAxis) return '';
+    return selectedAxes[currentActiveAxis.axisId] || currentActiveAxis.branches[0]?.id || '';
+  }, [currentActiveAxis, selectedAxes]);
+
+  const currentAxisSelectedBranch = useMemo(() => {
+    if (!currentActiveAxis) return null;
+    return (
+      currentActiveAxis.branches.find((b) => b.id === currentAxisSelectedBranchId) ||
+      currentActiveAxis.branches[0] ||
+      null
+    );
+  }, [currentActiveAxis, currentAxisSelectedBranchId]);
+
+  const currentAxisSelectedBranchIdx = useMemo(() => {
+    if (!currentActiveAxis) return 0;
+    const idx = currentActiveAxis.branches.findIndex((b) => b.id === currentAxisSelectedBranchId);
+    return idx >= 0 ? idx : 0;
+  }, [currentActiveAxis, currentAxisSelectedBranchId]);
+
   // Tìm kiếm phác đồ phối hợp (Combined Protocol) khớp với các lựa chọn trục hiện tại
   const activeCombinedProtocol = useMemo<CombinedProtocol | null>(() => {
-    if (activeChain?.branching?.mode !== 'multi' || !activeChain?.branching?.combinedProtocols) {
+    if (!isMultiAxis || !activeChain?.branching?.combinedProtocols) {
       return null;
     }
     return (
@@ -457,20 +512,20 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         return Object.entries(cp.axisSelections).every(([aId, bId]) => selectedAxes[aId] === bId);
       }) || null
     );
-  }, [activeChain, selectedAxes]);
+  }, [isMultiAxis, activeChain, selectedAxes]);
 
   // Danh sách các đối tượng nhánh đang được chọn trên từng trục
   const activeSelectedBranches = useMemo(() => {
-    if (activeChain?.branching?.mode !== 'multi' || !activeChain?.branching?.axes) {
+    if (!isMultiAxis || multiAxes.length === 0) {
       return [];
     }
-    return activeChain.branching.axes
+    return multiAxes
       .map((axis) => {
         const bId = selectedAxes[axis.axisId] || axis.branches[0]?.id;
         return axis.branches.find((b) => b.id === bId) || axis.branches[0];
       })
       .filter(Boolean);
-  }, [activeChain, selectedAxes]);
+  }, [isMultiAxis, multiAxes, selectedAxes]);
 
   // Available Severity Grades / Dynamic Clinical Branches
   const severityGrades: SeverityGradingItem[] = useMemo(() => {
@@ -478,12 +533,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       return [];
     }
     // 0. HỆ THỐNG ĐA TRỤC PHÂN NHÁNH (MULTI-AXIS BRANCHING v4.0):
-    // Ánh xạ các nhánh của trục giai đoạn/mức độ (stage hoặc severity) làm danh sách đại diện
-    if (activeChain?.branching?.mode === 'multi' && activeChain.branching.axes && activeChain.branching.axes.length > 0) {
-      const mainAxis =
-        activeChain.branching.axes.find((a) => a.axisType === 'stage' || a.axisType === 'severity') ||
-        activeChain.branching.axes[0];
-      return mainAxis.branches.map((b) => ({
+    // Ánh xạ các nhánh của trục đang active (currentActiveAxis) làm danh sách phân nhánh đại diện cho Mục 2
+    if (isMultiAxis && currentActiveAxis && currentActiveAxis.branches.length > 0) {
+      return currentActiveAxis.branches.map((b) => ({
         grade: b.name,
         severity: (b.color === 'rose' || b.color === 'red'
           ? 'critical'
@@ -680,14 +732,24 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
   }, [initialGradeIdx, currentDisease?.id, selectedDiseaseId, autoSuggestedGradeIndex, SUB_DISEASE_TO_PARENT_MAP]);
 
+  const effectiveSelectedGradeIdx = isMultiAxis ? currentAxisSelectedBranchIdx : selectedGradeIdx;
+
+  const handleSelectGradeIndex = (idx: number) => {
+    if (isMultiAxis && currentActiveAxis && currentActiveAxis.branches[idx]) {
+      handleSelectAxisBranch(currentActiveAxis.axisId, currentActiveAxis.branches[idx].id);
+    } else {
+      setSelectedGradeIdx(idx);
+    }
+  };
+
   const activeSeverityGrade = useMemo(() => {
-    return severityGrades[selectedGradeIdx] || severityGrades[0];
-  }, [severityGrades, selectedGradeIdx]);
+    return severityGrades[effectiveSelectedGradeIdx] || severityGrades[0];
+  }, [severityGrades, effectiveSelectedGradeIdx]);
 
   // Phác đồ điều trị phân độ (Hỗ trợ cả Single-Axis và Multi-Axis)
   const phacDo = useMemo(() => {
     // 0. Nếu là Multi-Axis có CombinedProtocol hoặc các nhánh đang chọn
-    if (activeChain?.branching?.mode === 'multi') {
+    if (isMultiAxis) {
       if (activeCombinedProtocol) {
         const tuyen = activeCombinedProtocol.triage
           ? [activeCombinedProtocol.triage]
@@ -742,6 +804,33 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           nguon,
         };
       }
+
+      // Nếu không có CombinedProtocol, lấy phác đồ trực tiếp của nhánh đang chọn thuộc trục active
+      if (currentAxisSelectedBranch) {
+        const b = currentAxisSelectedBranch;
+        const tuyen = b.triage ? [b.triage] : currentDisease?.phacDo?.tuyen || [];
+        let thuoc: Array<[string, string, string]> = [];
+        if (b.drugs && b.drugs.length > 0) {
+          thuoc = b.drugs;
+        } else if (b.firstLineDrugs && b.firstLineDrugs.length > 0) {
+          thuoc = b.firstLineDrugs.map((d) => [
+            d.drugName,
+            `${d.dosage}${d.route ? ' (' + d.route + ')' : ''}`,
+            d.instructions || d.class || 'Khuyến cáo phân nhánh',
+          ]);
+        } else {
+          thuoc = currentDisease?.phacDo?.thuoc || [];
+        }
+        const theoDoi = b.monitoring || currentDisease?.phacDo?.theoDoi || [];
+        const luuY = b.cautions || currentDisease?.phacDo?.luuY || [];
+        const nguon = [
+          b.name ||
+            activeChain?.protocol?.guideline ||
+            currentDisease?.phacDo?.nguon?.[0] ||
+            'Hướng dẫn chẩn đoán và điều trị Bộ Y tế',
+        ];
+        return { tuyen, thuoc, theoDoi, luuY, nguon };
+      }
     }
 
     if (activeSeverityGrade?.protocol) {
@@ -787,13 +876,13 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         nguon: ['Hướng dẫn chẩn đoán và điều trị Bộ Y tế Việt Nam'],
       }
     );
-  }, [activeSeverityGrade, activeChain, currentDisease, activeCombinedProtocol, activeSelectedBranches]);
+  }, [activeSeverityGrade, activeChain, currentDisease, activeCombinedProtocol, isMultiAxis, currentAxisSelectedBranch, activeSelectedBranches]);
 
   // Timeline phases - Cơ chế phân giải đa tầng: Phân độ riêng -> Protocol của Chain -> Root Chain -> phacDo -> Thư viện timeline
   const timelinePhases = useMemo(() => {
     if (!currentDisease) return [];
     // 0. Nếu là Multi-Axis và có CombinedProtocol có timelinePhases
-    if (activeChain?.branching?.mode === 'multi') {
+    if (isMultiAxis) {
       if (
         activeCombinedProtocol?.timelinePhases &&
         Array.isArray(activeCombinedProtocol.timelinePhases) &&
@@ -801,7 +890,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       ) {
         return activeCombinedProtocol.timelinePhases;
       }
-      // Hoặc tìm timelinePhases từ nhánh giai đoạn/mức độ đang chọn
+      // ƯU TIÊN HÀNG ĐẦU: Nhánh đang chọn của trục đang active (ví dụ trục Căn nguyên -> lấy timeline virus/rượu)!
+      if (
+        currentAxisSelectedBranch?.timelinePhases &&
+        Array.isArray(currentAxisSelectedBranch.timelinePhases) &&
+        currentAxisSelectedBranch.timelinePhases.length > 0
+      ) {
+        return currentAxisSelectedBranch.timelinePhases;
+      }
+      // Ưu tiên 2: Tìm timelinePhases từ bất kỳ nhánh đang chọn nào khác
       for (const branch of activeSelectedBranches) {
         if (branch.timelinePhases && Array.isArray(branch.timelinePhases) && branch.timelinePhases.length > 0) {
           return branch.timelinePhases;
@@ -1218,8 +1315,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           >
             <ProtocolClassificationSection
               severityGrades={severityGrades}
-              selectedGradeIdx={selectedGradeIdx}
-              onSelectGradeIdx={setSelectedGradeIdx}
+              selectedGradeIdx={effectiveSelectedGradeIdx}
+              onSelectGradeIdx={handleSelectGradeIndex}
               autoSuggestedGradeIndex={autoSuggestedGradeIndex}
               activeChain={activeChain}
               diseaseId={currentDisease.id}
@@ -1239,6 +1336,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
               onOpenVaultDrawer={onOpenVaultDrawer}
               targetTab={targetClassificationTab}
+              activeTab={activeAxisId}
+              onTabChange={handleClassificationTabChange}
               selectedAxes={selectedAxes}
               onSelectAxisBranch={handleSelectAxisBranch}
               activeCombinedProtocol={activeCombinedProtocol}
@@ -1266,10 +1365,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             <DetailedTreatmentTable
               diseaseId={currentDisease.id}
               diseaseName={currentDisease.ten}
-              selectedGradeIdx={selectedGradeIdx}
-              onSelectGradeIdx={setSelectedGradeIdx}
+              selectedGradeIdx={effectiveSelectedGradeIdx}
+              onSelectGradeIdx={handleSelectGradeIndex}
               severityGrades={severityGrades}
               activeSeverityGrade={activeSeverityGrade}
+              isMultiAxis={isMultiAxis}
+              axes={multiAxes}
+              activeAxisId={currentActiveAxis?.axisId}
+              onSelectAxis={handleSelectAxisAtProtocol}
+              currentAxisLabel={currentActiveAxis?.axisLabelShort || currentActiveAxis?.axisName?.replace(/^Phân loại theo\s+/i, '').replace(/^Phân tầng\s+/i, '').trim()}
               phacDo={phacDo}
               timelinePhases={timelinePhases}
               customOrders={customOrders}
