@@ -32,6 +32,7 @@ interface HealthcareWorkerKnowledgeSectionProps {
   matchedGuidelines: Array<{ study: any; matchReason: string }>;
   onApplyGuidelineDrugs?: (study: any) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  targetTab?: '5a' | '5b' | '5c';
 }
 
 export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledgeSectionProps> = ({
@@ -41,9 +42,16 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
   matchedGuidelines,
   onApplyGuidelineDrugs,
   onOpenVaultDrawer,
+  targetTab,
 }) => {
   const [activeTab, setActiveTab] = useState<'5a' | '5b' | '5c'>('5a');
   const [appliedStudies, setAppliedStudies] = useState<Set<string>>(new Set());
+
+  React.useEffect(() => {
+    if (targetTab) {
+      setActiveTab(targetTab);
+    }
+  }, [targetTab]);
 
   const handleApply = (study: any) => {
     onApplyGuidelineDrugs?.(study);
@@ -53,7 +61,7 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
       {/* Tab switcher: 5a, 5b, 5c */}
-      <div className="p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+      <div id="knowledge-tab-switcher" className="scroll-mt-24 p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-slate-600 font-medium">
           Hệ thống hóa toàn diện: <b>5a. Cơ sở</b> &bull; <b>5b. Lâm sàng</b> &bull; <b>5c. Hướng dẫn thực hành EBM Guidelines</b>
         </p>
@@ -61,8 +69,9 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
         <div className="flex items-center gap-1 bg-slate-200/70 p-1 rounded-lg border border-slate-200 text-xs">
           <button
             type="button"
+            id="sub-basic"
             onClick={() => setActiveTab('5a')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
               activeTab === '5a'
                 ? 'bg-white text-indigo-700 shadow-2xs border border-indigo-100'
                 : 'text-slate-600 hover:text-slate-900'
@@ -85,8 +94,9 @@ export const HealthcareWorkerKnowledgeSection: React.FC<HealthcareWorkerKnowledg
 
           <button
             type="button"
+            id="sub-guidelines"
             onClick={() => setActiveTab('5c')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
               activeTab === '5c'
                 ? 'bg-white text-purple-700 shadow-2xs border border-purple-100'
                 : 'text-slate-600 hover:text-slate-900'

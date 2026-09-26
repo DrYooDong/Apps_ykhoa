@@ -106,9 +106,10 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       badge: `${cautionsCount} lưu ý & CCĐ`,
       badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
       subItems: [
-        { id: 'sub-cautions', label: '[1] Cảnh báo quan trọng' },
-        { id: 'sub-contraindications', label: '[2] Chống chỉ định' },
-        { id: 'sub-discharge', label: '[3] Tiêu chuẩn xuất viện' },
+        { id: 'sub-indications', label: '[1] Chỉ định can thiệp & Y lệnh' },
+        { id: 'sub-cautions', label: '[2] Cảnh báo quan trọng' },
+        { id: 'sub-contraindications', label: '[3] Chống chỉ định' },
+        { id: 'sub-discharge', label: '[4] Tiêu chuẩn xuất viện' },
       ],
     },
     {

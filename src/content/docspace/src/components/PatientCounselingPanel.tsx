@@ -40,7 +40,7 @@ export const PatientCounselingPanel: React.FC<PatientCounselingProps> = ({
   // Nếu không có bài viết trong Kho TV -> Hiển thị thông báo "Đang cập nhật" tinh gọn, trung thực
   if (!matchedTvArticle) {
     return (
-      <div className="bg-slate-50/70 border border-dashed border-slate-200 rounded-xl p-6 flex flex-col items-center justify-center text-center">
+      <div id="sub-patient-education" className="scroll-mt-24 bg-slate-50/70 border border-dashed border-slate-200 rounded-xl p-6 flex flex-col items-center justify-center text-center">
         <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mb-2.5 text-slate-400">
           <Heart className="w-5 h-5" />
         </div>
@@ -71,7 +71,7 @@ export const PatientCounselingPanel: React.FC<PatientCounselingProps> = ({
 
   // Nếu có bài viết đối ứng trong Kho TV
   return (
-    <div className="bg-white border border-teal-200 rounded-xl p-4 shadow-2xs flex flex-col gap-3">
+    <div id="sub-patient-education" className="scroll-mt-24 bg-white border border-teal-200 rounded-xl p-4 shadow-2xs flex flex-col gap-3">
       <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-teal-100">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-md bg-teal-600 text-white flex items-center justify-center shadow-xs shrink-0">

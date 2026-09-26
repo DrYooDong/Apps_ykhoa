@@ -292,7 +292,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
       )}
 
       {/* 2. THANH TIẾN ĐỘ & TÁC VỤ Y LỆNH */}
-      <div className="px-3 sm:px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+      <div id="sub-orders" className="scroll-mt-24 px-3 sm:px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         {/* Thanh Quick-jump Timeline Anchor */}
         <div className="flex items-center gap-1.5 flex-wrap overflow-x-auto no-scrollbar">
           <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 flex items-center gap-1">
@@ -311,7 +311,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
           ))}
           {generalComplications.length > 0 && (
             <a
-              href="#cross-phase-complications-table"
+              href="#sub-safety-net"
               className="px-2 py-1 rounded text-[11px] font-semibold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors shadow-2xs flex items-center gap-1 shrink-0"
             >
               <span>🚨 Biến chứng chung</span>
@@ -449,7 +449,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
       )}
 
       {/* DDI Safe Prescribing Panel */}
-      <div className="px-3 sm:px-4">
+      <div id="sub-ddi" className="scroll-mt-24 px-3 sm:px-4">
         <SafePrescribingDdiPanel
           prescribedDrugNames={allPrescribedDrugNames || []}
           prescribedDrugs={allPrescribedDrugNames || []}
@@ -526,7 +526,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
       )}
 
       {/* 3. CÁC GIAI ĐOẠN ĐIỀU TRỊ CUỘN LIÊN TỤC (CONTINUOUS SCROLLING BLOCKS) */}
-      <div className="px-2 sm:px-4 flex flex-col gap-6">
+      <div id="sub-timeline" className="scroll-mt-24 px-2 sm:px-4 flex flex-col gap-6">
         {timelinePhases.map((phase, pIdx) => {
           // Lấy danh sách vấn đề của giai đoạn này
           const baseProblems = adaptPhaseToProblemRows(phase, diseaseId, diseaseName);
@@ -860,8 +860,8 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
         {/* 4. BẢNG QUẢN LÝ BIẾN CHỨNG CHUNG (CROSS-PHASE COMPLICATIONS) */}
         {generalComplications.length > 0 && (
           <div
-            id="cross-phase-complications-table"
-            className="border-2 border-amber-300/80 rounded-xl overflow-hidden shadow-xs bg-white scroll-mt-6 mb-2"
+            id="sub-safety-net"
+            className="border-2 border-amber-300/80 rounded-xl overflow-hidden shadow-xs bg-white scroll-mt-24 mb-2"
           >
             <div className="p-3 sm:p-3.5 bg-gradient-to-r from-amber-100 via-amber-50 to-orange-50 border-b border-amber-200 flex items-center justify-between gap-2 flex-wrap">
               <div className="flex items-center gap-2">

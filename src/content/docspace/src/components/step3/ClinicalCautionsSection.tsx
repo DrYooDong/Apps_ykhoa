@@ -247,7 +247,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
 
         {/* [1] CHỈ ĐỊNH ĐIỀU TRỊ & TIÊU CHUẨN CAN THIỆP LÂM SÀNG (Nếu có) */}
         {hasIndications && (
-          <div className="bg-gradient-to-br from-blue-50/80 via-sky-50/50 to-indigo-50/60 border border-blue-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+          <div id="sub-indications" className="scroll-mt-24 bg-gradient-to-br from-blue-50/80 via-sky-50/50 to-indigo-50/60 border border-blue-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
             <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-blue-200/80">
               <div className="flex items-center gap-2">
                 <div className="w-6 h-6 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-2xs">
@@ -326,7 +326,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
         )}
 
         {/* [2] Lưu ý, cảnh báo quan trọng */}
-        <div className="bg-amber-50/60 border border-amber-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+        <div id="sub-cautions" className="scroll-mt-24 bg-amber-50/60 border border-amber-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-amber-200/80">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-amber-600 text-white flex items-center justify-center shadow-2xs">
@@ -355,7 +355,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
         </div>
 
         {/* [3] Chống chỉ định (CCĐ) */}
-        <div className="bg-rose-50/60 border border-rose-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+        <div id="sub-contraindications" className="scroll-mt-24 bg-rose-50/60 border border-rose-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-rose-200/80">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-rose-600 text-white flex items-center justify-center shadow-2xs">
@@ -384,7 +384,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
         </div>
 
         {/* [4] Tiêu chuẩn xuất viện hoặc chuyển tuyến */}
-        <div className="bg-emerald-50/60 border border-emerald-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+        <div id="sub-discharge" className="scroll-mt-24 bg-emerald-50/60 border border-emerald-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-emerald-200/80">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-emerald-600 text-white flex items-center justify-center shadow-2xs">

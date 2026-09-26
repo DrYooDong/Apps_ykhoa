@@ -110,18 +110,19 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   // Trạng thái theo dõi vị trí cuộn cho TOC & Scrollspy
   const [activeSection, setActiveSection] = useState<string>('classification');
   const [targetClassificationTab, setTargetClassificationTab] = useState<'1a' | '1b' | '1c'>('1a');
+  const [targetKnowledgeTab, setTargetKnowledgeTab] = useState<'5a' | '5b' | '5c'>('5a');
 
   useEffect(() => {
     const handleScroll = () => {
       const sectionIds = ['classification', 'protocol', 'cautions', 'counseling', 'knowledge', 'soap'];
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = 140; // Điểm kiểm tra dưới thanh sticky header
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i];
         const el = document.getElementById(`protocol-section-${id}`);
         if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= scrollPosition) {
             setActiveSection(id);
             break;
           }
@@ -134,7 +135,10 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   }, []);
 
   const handleJumpToSection = (sectionId: string, subId?: string) => {
-    // 1. Luôn mở section tương ứng
+    // 1. Kiểm tra xem section mục tiêu có đang bị thu gọn không
+    const wasClosed = expandedSections[sectionId] === false;
+
+    // Luôn mở section tương ứng
     setExpandedSections((prev) => ({ ...prev, [sectionId]: true }));
 
     // 2. Chuyển tab con của mục 1 nếu được yêu cầu
@@ -142,19 +146,57 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     if (subId === 'sub-1b') setTargetClassificationTab('1b');
     if (subId === 'sub-1c') setTargetClassificationTab('1c');
 
-    // 3. Cuộn mượt đến phần tử đích
-    setTimeout(() => {
+    // 3. Chuyển tab con của mục 5 nếu được yêu cầu
+    if (subId === 'sub-basic') setTargetKnowledgeTab('5a');
+    if (subId === 'sub-guidelines') setTargetKnowledgeTab('5c');
+
+    // 4. Hàm thực hiện cuộn chính xác với offset bù trừ thanh sticky header
+    const performScroll = (isRetry = false) => {
       let targetEl: HTMLElement | null = null;
-      if (subId && subId !== 'sub-1a' && subId !== 'sub-1b' && subId !== 'sub-1c') {
+      if (subId) {
         targetEl = document.getElementById(subId);
       }
       if (!targetEl) {
         targetEl = document.getElementById(`protocol-section-${sectionId}`);
       }
+
       if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const STICKY_HEADER_OFFSET = 80; // Bù trừ sticky header (~56px) + đệm thở 24px
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - STICKY_HEADER_OFFSET;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+
+        // Hiệu ứng highlight trực quan khi nhảy tới đích
+        if (!isRetry) {
+          targetEl.style.transition = 'outline 0.3s ease, outline-offset 0.3s ease';
+          targetEl.style.outline = '2px solid #2563eb';
+          targetEl.style.outlineOffset = '4px';
+          setTimeout(() => {
+            if (targetEl) {
+              targetEl.style.outline = 'none';
+            }
+          }, 1800);
+        }
+
+        // Nếu section vừa được mở ra từ trạng thái đóng, layout DOM cần thời gian reflow
+        // Tự động kiểm tra và vi chỉnh lần 2 sau 220ms để vị trí đáp hoàn toàn chính xác
+        if (wasClosed && !isRetry) {
+          setTimeout(() => {
+            performScroll(true);
+          }, 220);
+        }
       }
-    }, 60);
+    };
+
+    // Nếu section đang đóng, chờ React mount DOM rồi mới tính toán tọa độ cuộn
+    const delay = wasClosed ? 100 : 40;
+    setTimeout(() => {
+      performScroll(false);
+    }, delay);
   };
 
   const handleExpandAll = () => {
@@ -1304,6 +1346,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               matchedGuidelines={matchedGuidelines}
               onApplyGuidelineDrugs={handleApplyGuidelineDrugs}
               onOpenVaultDrawer={onOpenVaultDrawer}
+              targetTab={targetKnowledgeTab}
             />
           </CollapsibleProtocolSection>
 

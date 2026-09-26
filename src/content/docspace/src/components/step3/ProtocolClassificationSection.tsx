@@ -227,7 +227,7 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
       </div>
 
       {/* Tab switcher: 1a, 1b, 1c */}
-      <div className="p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+      <div id="classification-tab-switcher" className="scroll-mt-24 p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-slate-600 font-medium">
           Đánh giá phân tầng mức độ nặng, tầm soát biến chứng cấp tính và hiệu chỉnh theo đối tượng đặc biệt
         </p>
@@ -235,8 +235,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
         <div className="flex items-center gap-1 bg-slate-200/70 p-1 rounded-lg border border-slate-200 text-xs">
           <button
             type="button"
+            id="sub-1a"
             onClick={() => setActiveTab('1a')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
               activeTab === '1a'
                 ? 'bg-white text-indigo-700 shadow-2xs border border-indigo-100'
                 : 'text-slate-600 hover:text-slate-900'
@@ -252,8 +253,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
 
           <button
             type="button"
+            id="sub-1b"
             onClick={() => setActiveTab('1b')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
               activeTab === '1b'
                 ? 'bg-white text-rose-700 shadow-2xs border border-rose-100'
                 : 'text-slate-600 hover:text-slate-900'
@@ -269,8 +271,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
 
           <button
             type="button"
+            id="sub-1c"
             onClick={() => setActiveTab('1c')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
               activeTab === '1c'
                 ? 'bg-white text-teal-700 shadow-2xs border border-teal-100'
                 : 'text-slate-600 hover:text-slate-900'

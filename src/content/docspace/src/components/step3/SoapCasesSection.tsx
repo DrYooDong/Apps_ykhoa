@@ -21,7 +21,7 @@ export const SoapCasesSection: React.FC<SoapCasesSectionProps> = ({
   onOpenPromptBuilder,
 }) => {
   return (
-    <div className="space-y-3">
+    <div id="sub-soap-cases" className="scroll-mt-24 space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-100 pb-3 mb-1">
         <div>
           <p className="text-[11px] text-slate-500">
