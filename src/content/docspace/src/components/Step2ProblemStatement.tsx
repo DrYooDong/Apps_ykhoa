@@ -725,7 +725,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
         <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Compass className="w-4 h-4 text-indigo-600" />
+            <Compass className="w-4 h-4 text-blue-600" />
             <h2 className="text-sm font-bold text-slate-800">
               II. Đặt Vấn Đề (Problem List) & Tam Giác Chẩn Đoán
             </h2>

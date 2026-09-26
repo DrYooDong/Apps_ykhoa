@@ -10,11 +10,11 @@
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
     --primary-bg: #eff6ff;
-    --red: #ef4444;
+    --red: #dc2626;
     --red-bg: #fef2f2;
-    --amber: #f59e0b;
+    --amber: #d97706;
     --amber-bg: #fffbeb;
-    --green: #10b981;
+    --green: #059669;
     --green-bg: #ecfdf5;
     --dark: #0f172a;
     --dark-card: #1e293b;
@@ -111,3 +111,43 @@
 .animate-fade-in {
   animation: fadeIn 0.2s ease-out forwards;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HOSPITAL PRINT STYLESHEET (@media print)
+   ══════════════════════════════════════════════════════════════════════════ */
+@media print {
+  /* Ẩn các thanh điều hướng, modal backdrop & toolbar khi in */
+  nav,
+  header,
+  footer,
+  .no-print,
+  #bottom-nav-bar,
+  #mobile-bottom-bar,
+  #step-nav-container,
+  .no-print-area {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 11pt !important;
+  }
+
+  #clinical-report-paper {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
+

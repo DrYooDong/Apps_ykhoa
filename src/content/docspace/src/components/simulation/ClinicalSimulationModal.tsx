@@ -110,7 +110,7 @@ export const ClinicalSimulationModal: React.FC<ClinicalSimulationModalProps> = (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto animate-fadeIn">
       <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-5xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
         {/* Modal Top Header */}
-        <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 p-4 sm:p-5 text-white flex items-center justify-between gap-4 shrink-0">
+        <div className="bg-gradient-to-r from-slate-900 to-blue-950 p-4 sm:p-5 text-white flex items-center justify-between gap-4 shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-300 shadow-inner">
               <Award className="w-5 h-5 text-blue-300" />
@@ -171,10 +171,10 @@ export const ClinicalSimulationModal: React.FC<ClinicalSimulationModalProps> = (
             <button
               type="button"
               onClick={handleRandomizeBranch}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-semibold transition-all cursor-pointer shadow-2xs"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold transition-all cursor-pointer shadow-2xs"
               title="Xáo trộn sang nhánh tình huống ngẫu nhiên khác"
             >
-              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               <span>🎲 Đổi Nhánh Ngẫu Nhiên</span>
             </button>
           </div>

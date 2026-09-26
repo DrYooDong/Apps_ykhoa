@@ -309,12 +309,12 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
         </div>
 
         <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs flex items-center gap-3.5">
-          <div className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-base shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base shrink-0">
             <Eye className="w-4 h-4" />
           </div>
           <div>
             <div className="text-[11.5px] font-medium text-slate-500">Pipeline nạp ca</div>
-            <div className="text-xs font-bold text-indigo-700 font-mono-custom tracking-tight">
+            <div className="text-xs font-bold text-blue-700 font-mono-custom tracking-tight">
               NotebookLM Ready
             </div>
           </div>

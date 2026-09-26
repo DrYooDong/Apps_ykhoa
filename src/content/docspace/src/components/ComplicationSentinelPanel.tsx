@@ -162,7 +162,7 @@ export const ComplicationSentinelPanel: React.FC<ComplicationSentinelProps> = ({
             <div className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-2xs">
               <div className="p-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <span className="font-bold text-xs text-slate-800 flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-indigo-600" />
+                  <Shield className="w-3.5 h-3.5 text-blue-600" />
                   <span>Ma trận biến chứng & Kế hoạch dự phòng ({profile.complications.length} biến chứng chính):</span>
                 </span>
                 <span className="text-[10.5px] text-slate-500 font-mono-custom">

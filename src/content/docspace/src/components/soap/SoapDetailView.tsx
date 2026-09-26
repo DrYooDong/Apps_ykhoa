@@ -207,7 +207,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
               onClick={() => setViewMode('focus-o')}
               className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                 viewMode === 'focus-o'
-                  ? 'bg-white text-indigo-700 shadow-xs'
+                  ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -341,8 +341,8 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
         {/* CỘT O: OBJECTIVE                          */}
         {/* ========================================== */}
         {(viewMode === 'board' || viewMode === 'focus-o') && (
-          <div className="bg-white border border-indigo-200/90 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-indigo-300 transition-colors">
-            <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
+          <div className="bg-white border border-slate-300 rounded-2xl shadow-xs flex flex-col overflow-hidden hover:border-slate-400 transition-colors">
+            <div className="bg-slate-800 text-white p-3.5 px-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center font-display font-black text-sm text-white shadow-inner">
                   O
@@ -351,12 +351,12 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                   <h3 className="font-display font-bold text-xs uppercase tracking-wider">
                     OBJECTIVE
                   </h3>
-                  <p className="text-[10.5px] text-indigo-100">
+                  <p className="text-[10.5px] text-slate-300">
                     Khách quan · Khám &amp; Cận lâm sàng
                   </p>
                 </div>
               </div>
-              <span className="px-2 py-0.5 rounded-full bg-indigo-800/60 text-indigo-100 text-[10px] font-mono-custom font-semibold border border-indigo-400/30">
+              <span className="px-2 py-0.5 rounded-full bg-slate-900 text-slate-200 text-[10px] font-mono-custom font-semibold border border-slate-700">
                 Đo lường
               </span>
             </div>
@@ -365,7 +365,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
               {/* 1. Sinh hiệu */}
               <div>
                 <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
-                  <Activity className="w-3.5 h-3.5 text-indigo-600" />
+                  <Activity className="w-3.5 h-3.5 text-slate-700" />
                   1. Dấu hiệu sinh tồn (Vitals):
                 </span>
                 <div className="grid grid-cols-3 gap-1.5 font-mono-custom text-center">
@@ -399,7 +399,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
               {/* 2. Khám thực thể */}
               <div>
                 <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
-                  <Stethoscope className="w-3.5 h-3.5 text-indigo-600" />
+                  <Stethoscope className="w-3.5 h-3.5 text-slate-700" />
                   2. Khám thực thể định hướng:
                 </span>
                 <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80">
@@ -410,7 +410,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
               {/* 3. Cận lâm sàng */}
               <div>
                 <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
-                  <FileCheck className="w-3.5 h-3.5 text-indigo-600" />
+                  <FileCheck className="w-3.5 h-3.5 text-slate-700" />
                   3. Cận lâm sàng &amp; Xét nghiệm định lượng:
                 </span>
                 <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 font-mono-custom text-[11px]">
@@ -420,9 +420,9 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
 
               {/* 4. Bẫy cận lâm sàng */}
               <div className="mt-auto pt-2">
-                <div className="p-3.5 bg-rose-50/80 border-l-4 border-l-rose-500 border border-rose-200/80 rounded-r-xl text-rose-950 shadow-2xs">
-                  <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-rose-900 mb-1.5">
-                    <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                <div className="p-3.5 bg-red-50/80 border-l-4 border-l-red-500 border border-red-200/80 rounded-r-xl text-red-950 shadow-2xs">
+                  <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-red-900 mb-1.5">
+                    <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
                     <span>BẪY CẬN LÂM SÀNG (OBJECTIVE PITFALL)</span>
                   </div>
                   <p className="text-xs text-rose-900/90 leading-relaxed italic">
@@ -805,8 +805,8 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             {/* Khuyến cáo & EBM */}
             {crossRefs.guidelines.length > 0 && (
               <div className="bg-slate-50/70 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-2">
-                <div className="text-xs font-bold text-indigo-900 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-indigo-600" />
+                <div className="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-blue-600" />
                   <span>Hướng Dẫn & EBM (EBM)</span>
                 </div>
                 <div className="space-y-1.5">
@@ -815,12 +815,12 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                       key={art.id}
                       type="button"
                       onClick={() => onOpenVaultDrawer?.(art.title, art.title, art.khoCode)}
-                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-indigo-300 hover:bg-indigo-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
+                      className="w-full text-left p-2 rounded-lg bg-white border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/40 text-xs flex items-center justify-between group transition-colors cursor-pointer"
                     >
-                      <span className="font-medium text-slate-800 group-hover:text-indigo-700 line-clamp-1">
+                      <span className="font-medium text-slate-800 group-hover:text-blue-700 line-clamp-1">
                         {art.title}
                       </span>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-600 shrink-0 ml-1" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 shrink-0 ml-1" />
                     </button>
                   ))}
                 </div>

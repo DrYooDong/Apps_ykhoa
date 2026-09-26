@@ -1294,7 +1294,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             isOpen={expandedSections.classification}
             onToggle={() => toggleSection('classification')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0">
+              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
                 <Layers className="w-4 h-4" />
               </div>
             }
@@ -1311,7 +1311,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 ? 'Tiếp cận toàn diện'
                 : `${severityGrades.length} ${activeChain?.branching?.axisType === 'stage' ? 'giai đoạn' : (isPhenotypeStaging ? 'thể bệnh' : 'phân độ')}`
             }
-            badgeColor="bg-indigo-100 text-indigo-800 border-indigo-200"
+            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
           >
             <ProtocolClassificationSection
               severityGrades={severityGrades}
@@ -1360,7 +1360,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             title="2. Phác đồ điều trị chi tiết"
             subtitle="1. Vấn đề &bull; 2. Phác đồ &amp; y lệnh &bull; 3. Theo dõi (Lâm sàng &amp; Cận lâm sàng)"
             badgeText={`${currentCheckedCount}/${totalAllOrders} y lệnh (${progressPercent}%)`}
-            badgeColor="bg-blue-100 text-blue-800 border-blue-200"
+            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
           >
             <DetailedTreatmentTable
               diseaseId={currentDisease.id}
@@ -1419,7 +1419,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             title="3. Lưu ý lâm sàng"
             subtitle="[1] Chỉ định can thiệp &amp; Y lệnh &bull; [2] Cảnh báo quan trọng &bull; [3] Chống chỉ định &bull; [4] Tiêu chuẩn xuất viện"
             badgeText={`${phacDo.luuY.length} lưu ý & CCĐ`}
-            badgeColor="bg-amber-100 text-amber-800 border-amber-200"
+            badgeColor="bg-amber-50 text-amber-800 border-amber-200"
             containerClassName="bg-amber-50/20 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
           >
             <ClinicalCautionsSection
@@ -1461,15 +1461,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             isOpen={expandedSections.counseling}
             onToggle={() => toggleSection('counseling')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-teal-600 text-white flex items-center justify-center shadow-xs shrink-0">
+              <div className="w-7 h-7 rounded-md bg-slate-700 text-white flex items-center justify-center shadow-xs shrink-0">
                 <Heart className="w-4 h-4" />
               </div>
             }
             title="4. Vấn đề người bệnh quan tâm"
             subtitle="Tư vấn & giải thích bệnh cho người bệnh (Kho TV)"
             badgeText="Kho TV"
-            badgeColor="bg-teal-100 text-teal-800 border-teal-200"
-            containerClassName="bg-teal-50/20 border border-teal-200/80 rounded-xl p-4 shadow-2xs"
+            badgeColor="bg-slate-100 text-slate-700 border-slate-200"
+            containerClassName="bg-slate-50/60 border border-slate-200 rounded-xl p-4 shadow-2xs"
           >
             <PatientCounselingPanel
               diseaseName={currentDisease.ten}
@@ -1491,15 +1491,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             isOpen={expandedSections.knowledge}
             onToggle={() => toggleSection('knowledge')}
             icon={
-              <div className="w-7 h-7 rounded-md bg-purple-600 text-white flex items-center justify-center shadow-xs shrink-0">
+              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
                 <GraduationCap className="w-4 h-4" />
               </div>
             }
             title="5. Kiến thức cho nhân viên y tế"
             subtitle="5a. Cơ sở (GPSL / SLB) &bull; 5b. Lâm sàng (DTH / CĐ / BC / Dược) &bull; 5c. Guidelines - EBM"
             badgeText={`${matchedGuidelines.length} khuyến cáo EBM`}
-            badgeColor="bg-purple-100 text-purple-800 border-purple-200"
-            containerClassName="bg-purple-50/20 border border-purple-200/80 rounded-xl p-4 shadow-2xs"
+            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
+            containerClassName="bg-blue-50/20 border border-blue-200/80 rounded-xl p-4 shadow-2xs"
           >
             <HealthcareWorkerKnowledgeSection
               diseaseName={currentDisease.ten}
@@ -1528,8 +1528,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             title="6. Các ca bệnh liên quan (SOAP)"
             subtitle="Tham khảo ca bệnh thực tế tương tự, bẫy chẩn đoán và tạo prompt hội chẩn NotebookLM"
             badgeText={`${similarSoapCases.length} ca bệnh`}
-            badgeColor="bg-emerald-100 text-emerald-800 border-emerald-200"
-            containerClassName="bg-white border border-emerald-200/80 rounded-xl p-4 shadow-2xs"
+            badgeColor="bg-emerald-50 text-emerald-800 border-emerald-200"
+            containerClassName="bg-emerald-50/20 border border-emerald-200/80 rounded-xl p-4 shadow-2xs"
           >
             <SoapCasesSection
               diseaseName={currentDisease.ten}

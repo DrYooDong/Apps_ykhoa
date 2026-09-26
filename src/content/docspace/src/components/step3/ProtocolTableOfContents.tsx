@@ -68,10 +68,10 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       number: '1',
       title: 'Phân loại (cá thể hoá)',
       icon: Layers,
-      colorClass: 'text-indigo-600',
-      activeBorderClass: 'border-indigo-500 bg-indigo-50/60',
+      colorClass: 'text-blue-600',
+      activeBorderClass: 'border-blue-500 bg-blue-50/60',
       badge: severityGradesCount > 0 ? `${severityGradesCount} ${isPhenotypeStaging ? 'thể' : 'độ'}` : 'Toàn diện',
-      badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
+      badgeColor: 'bg-blue-50 text-blue-800 border-blue-200',
       subItems:
         classificationSubItems && classificationSubItems.length > 0
           ? classificationSubItems
@@ -93,7 +93,7 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       colorClass: 'text-blue-600',
       activeBorderClass: 'border-blue-500 bg-blue-50/60',
       badge: `${checkedOrdersCount}/${totalOrders} (${progressPercent}%)`,
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+      badgeColor: 'bg-blue-50 text-blue-800 border-blue-200',
       subItems: [
         { id: 'sub-orders', label: 'Bảng kiểm y lệnh & EMR' },
         { id: 'sub-ddi', label: 'An toàn DDI & Chức năng thận' },
@@ -109,7 +109,7 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       colorClass: 'text-amber-600',
       activeBorderClass: 'border-amber-500 bg-amber-50/60',
       badge: `${cautionsCount} lưu ý & CCĐ`,
-      badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+      badgeColor: 'bg-amber-50 text-amber-800 border-amber-200',
       subItems: [
         { id: 'sub-indications', label: '[1] Chỉ định can thiệp & Y lệnh' },
         { id: 'sub-cautions', label: '[2] Cảnh báo quan trọng' },
@@ -122,10 +122,10 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       number: '4',
       title: 'Vấn đề người bệnh quan tâm',
       icon: Heart,
-      colorClass: 'text-teal-600',
-      activeBorderClass: 'border-teal-500 bg-teal-50/60',
+      colorClass: 'text-slate-700',
+      activeBorderClass: 'border-slate-400 bg-slate-100/70',
       badge: 'Kho TV',
-      badgeColor: 'bg-teal-100 text-teal-800 border-teal-200',
+      badgeColor: 'bg-slate-100 text-slate-700 border-slate-200',
       subItems: [
         { id: 'sub-patient-education', label: 'Tư vấn & Giáo dục người bệnh' },
       ],
@@ -135,10 +135,10 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       number: '5',
       title: 'Kiến thức nhân viên y tế',
       icon: GraduationCap,
-      colorClass: 'text-purple-600',
-      activeBorderClass: 'border-purple-500 bg-purple-50/60',
+      colorClass: 'text-blue-600',
+      activeBorderClass: 'border-blue-500 bg-blue-50/60',
       badge: `${guidelinesCount} EBM`,
-      badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
+      badgeColor: 'bg-blue-50 text-blue-800 border-blue-200',
       subItems: [
         { id: 'sub-basic', label: '5a-5b. Cơ sở & Dược lâm sàng' },
         { id: 'sub-guidelines', label: '5c. Khuyến cáo EBM Guidelines' },
@@ -152,7 +152,7 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       colorClass: 'text-emerald-600',
       activeBorderClass: 'border-emerald-500 bg-emerald-50/60',
       badge: `${soapCasesCount} ca`,
-      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200',
       subItems: [
         { id: 'sub-soap-cases', label: 'Bệnh án SOAP & Bẫy chẩn đoán' },
       ],

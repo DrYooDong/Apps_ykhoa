@@ -156,8 +156,8 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   }}
                   className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'GUIDELINE'
-                      ? 'bg-rose-600 text-white shadow-xs ring-2 ring-rose-400/40'
-                      : 'bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100'
+                      ? 'bg-amber-600 text-white shadow-xs ring-2 ring-amber-400/40'
+                      : 'bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100'
                   }`}
                   title={`Kho Guidelines EBM (${GUIDELINE_STUDIES.length})`}
                   aria-label="Kho Guidelines"
@@ -173,8 +173,8 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   }}
                   className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'CC'
-                      ? 'bg-amber-600 text-white shadow-xs ring-2 ring-amber-400/40'
-                      : 'bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100'
+                      ? 'bg-blue-600 text-white shadow-xs ring-2 ring-blue-400/40'
+                      : 'bg-blue-50 text-blue-800 border border-blue-200 hover:bg-blue-100'
                   }`}
                   title={`Kho Công cụ & Thang điểm (${khoSummaries.find((k) => k.code === 'CC')?.articleCount || 19})`}
                   aria-label="Kho Công cụ"
@@ -190,8 +190,8 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   }}
                   className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'ICD10'
-                      ? 'bg-sky-600 text-white shadow-xs ring-2 ring-sky-400/40'
-                      : 'bg-sky-50 text-sky-800 border border-sky-200 hover:bg-sky-100'
+                      ? 'bg-slate-700 text-white shadow-xs ring-2 ring-slate-400/40'
+                      : 'bg-slate-100 text-slate-800 border border-slate-200 hover:bg-slate-200'
                   }`}
                   title={`Kho ICD-10 & BHYT (${khoSummaries.find((k) => k.code === 'ICD10')?.articleCount || 11})`}
                   aria-label="Kho ICD-10"
@@ -207,8 +207,8 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   }}
                   className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'CDSS'
-                      ? 'bg-purple-600 text-white shadow-xs ring-2 ring-purple-400/40'
-                      : 'bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100'
+                      ? 'bg-emerald-600 text-white shadow-xs ring-2 ring-emerald-400/40'
+                      : 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
                   }`}
                   title={`Kho CDSS Hỗ trợ ra quyết định (${khoSummaries.find((k) => k.code === 'CDSS')?.articleCount || 4})`}
                   aria-label="Kho CDSS"
@@ -242,8 +242,8 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                 }}
                 className={`px-2.5 py-1 rounded-md font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   activeKho === 'GUIDELINE'
-                    ? 'bg-rose-600 text-white shadow-xs'
-                    : 'bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100'
+                    ? 'bg-amber-600 text-white shadow-xs'
+                    : 'bg-amber-50 border border-amber-200 text-amber-800 hover:bg-amber-100'
                 }`}
               >
                 Khuyến cáo EBM ({GUIDELINE_STUDIES.length})
@@ -580,7 +580,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   </div>
                 )}
 
-                {/* Khi mở Kho CDSS: Hiển thị 4 trạm công cụ CDSS lâm sàng tương tác độc lập */}
+                {/* Khi mở Kho CDSS: Hiển thị 9 trạm công cụ CDSS lâm sàng tương tác độc lập */}
                 {activeKho === 'CDSS' && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
                     <div
@@ -592,7 +592,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('dengue'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50/50 hover:from-blue-100/70 hover:to-indigo-100/70 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-blue-50 to-slate-50 hover:from-blue-100/70 hover:to-slate-100 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
@@ -609,7 +609,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-blue-950 group-hover:text-blue-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         1. CDSS Dịch Truyền SXHD Dengue
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -626,10 +626,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('ecg'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-rose-50 to-orange-50/50 hover:from-rose-100/70 hover:to-orange-100/70 border border-rose-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-red-50 to-amber-50/40 hover:from-red-100/70 hover:to-amber-100/60 border border-red-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-rose-700 bg-rose-100 border border-rose-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-red-700 bg-red-100 border border-red-300">
                           12-Lead Canvas
                         </span>
                         <a
@@ -637,13 +637,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-rose-500 hover:text-rose-700 rounded hover:bg-rose-100/80 transition-colors"
+                          className="p-1 text-red-500 hover:text-red-700 rounded hover:bg-red-100/80 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-rose-950 group-hover:text-rose-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-red-700 transition-colors">
                         2. CDSS Phân Tích ECG 12 Đạo Trình
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -660,10 +660,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('abg'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-cyan-50 to-sky-50/50 hover:from-cyan-100/70 hover:to-sky-100/70 border border-cyan-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-blue-50 to-slate-50 hover:from-blue-100/70 hover:to-slate-100 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-cyan-700 bg-cyan-100 border border-cyan-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
                           6-Step Analysis
                         </span>
                         <a
@@ -671,13 +671,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-cyan-500 hover:text-cyan-700 rounded hover:bg-cyan-100/80 transition-colors"
+                          className="p-1 text-blue-500 hover:text-blue-700 rounded hover:bg-blue-100/80 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-cyan-950 group-hover:text-cyan-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         3. CDSS Khí Máu Động Mạch (ABG Pro)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -694,10 +694,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('xray'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-purple-50 to-indigo-50/50 hover:from-purple-100/70 hover:to-indigo-100/70 border border-purple-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-slate-100 to-slate-50 hover:from-slate-200/70 hover:to-slate-100 border border-slate-300 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-purple-700 bg-purple-100 border border-purple-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-slate-800 bg-slate-200 border border-slate-300">
                           PACS Workstation
                         </span>
                         <a
@@ -705,13 +705,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-purple-500 hover:text-purple-700 rounded hover:bg-purple-100/80 transition-colors"
+                          className="p-1 text-slate-600 hover:text-slate-900 rounded hover:bg-slate-200 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-purple-950 group-hover:text-purple-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         4. CDSS Phân Tích X-Quang (RadAI)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -728,7 +728,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('hepa'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-emerald-50 to-teal-50/50 hover:from-emerald-100/70 hover:to-teal-100/70 border border-emerald-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-emerald-50 to-slate-50 hover:from-emerald-100/70 hover:to-slate-100 border border-emerald-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300">
@@ -745,7 +745,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-emerald-950 group-hover:text-emerald-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                         5. CDSS Sinh Hóa Gan (HepaCDSS)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -762,7 +762,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('neuro'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-amber-50 to-orange-50/50 hover:from-amber-100/70 hover:to-orange-100/70 border border-amber-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-amber-50 to-slate-50 hover:from-amber-100/70 hover:to-slate-100 border border-amber-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-amber-700 bg-amber-100 border border-amber-300">
@@ -779,7 +779,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-amber-950 group-hover:text-amber-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
                         6. CDSS Khám Thần Kinh (NeuroExam)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -796,10 +796,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('microbio'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50/50 hover:from-teal-100/70 hover:to-emerald-100/70 border border-teal-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-emerald-50 to-slate-50 hover:from-emerald-100/70 hover:to-slate-100 border border-emerald-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-teal-700 bg-teal-100 border border-teal-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300">
                           Mahon 6th &amp; CLSI
                         </span>
                         <a
@@ -807,13 +807,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-teal-500 hover:text-teal-700 rounded hover:bg-teal-100/80 transition-colors"
+                          className="p-1 text-emerald-500 hover:text-emerald-700 rounded hover:bg-emerald-100/80 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-teal-950 group-hover:text-teal-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                         7. CDSS Vi Sinh &amp; Định Danh (Mahon)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -830,10 +830,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('antibiotic'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-sky-50 to-blue-50/50 hover:from-sky-100/70 hover:to-blue-100/70 border border-sky-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-blue-50 to-slate-50 hover:from-blue-100/70 hover:to-slate-100 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-sky-700 bg-sky-100 border border-sky-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
                           WHO AWaRe &amp; Sanford
                         </span>
                         <a
@@ -841,13 +841,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-sky-500 hover:text-sky-700 rounded hover:bg-sky-100/80 transition-colors"
+                          className="p-1 text-blue-500 hover:text-blue-700 rounded hover:bg-blue-100/80 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-sky-950 group-hover:text-sky-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         8. CDSS Liều Kháng Sinh &amp; Suy Thận
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -864,10 +864,10 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           window.open(getCdssAppUrl('vancomycin'), '_blank');
                         }
                       }}
-                      className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50/50 hover:from-teal-100/70 hover:to-emerald-100/70 border border-teal-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                      className="p-3 bg-gradient-to-br from-blue-50 to-emerald-50/30 hover:from-blue-100/70 hover:to-emerald-100/60 border border-blue-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
                     >
                       <div className="flex items-start justify-between gap-1 mb-1">
-                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-teal-700 bg-teal-100 border border-teal-300">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-blue-700 bg-blue-100 border border-blue-300">
                           ASHP 2020 &amp; TDM
                         </span>
                         <a
@@ -875,13 +875,13 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                           target="_blank"
                           rel="noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 text-teal-500 hover:text-teal-700 rounded hover:bg-teal-100/80 transition-colors"
+                          className="p-1 text-blue-500 hover:text-blue-700 rounded hover:bg-blue-100/80 transition-colors"
                           title="Mở tab riêng"
                         >
                           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                         </a>
                       </div>
-                      <h4 className="text-xs font-bold text-teal-950 group-hover:text-teal-700 transition-colors">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                         9. CDSS Quản Lý Liều Vancomycin (ASHP 2020)
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -941,7 +941,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="p-3.5 bg-white border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0">
+          <div className="p-3.5 pb-[max(0.875rem,env(safe-area-inset-bottom))] bg-white border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 shrink-0">
             <span className="flex items-center gap-1 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               Vault & EBM Guidelines Live Sync
@@ -955,7 +955,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                 }
                 target="_blank"
                 rel="noreferrer"
-                className="font-semibold text-rose-600 hover:text-rose-800 flex items-center gap-1"
+                className="font-semibold text-amber-600 hover:text-amber-800 flex items-center gap-1"
               >
                 <span>Kho Guidelines</span>
                 <ExternalLink className="w-3 h-3" />

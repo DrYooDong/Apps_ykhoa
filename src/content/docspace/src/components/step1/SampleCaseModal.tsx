@@ -83,8 +83,8 @@ const getCaseSeverityMeta = (c: SampleCase): SeverityMeta => {
     return {
       label: 'Mạn tính tiến triển',
       type: 'info',
-      badgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-800',
-      dotColor: 'bg-indigo-500',
+      badgeClass: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-800',
+      dotColor: 'bg-blue-500',
     };
   }
   return {
@@ -263,7 +263,7 @@ export const SampleCaseModal: React.FC<SampleCaseModalProps> = ({
                 { id: 'emergency', label: 'Cấp cứu / Nguy kịch', dot: 'bg-rose-500' },
                 { id: 'warning', label: 'Cảnh báo', dot: 'bg-amber-500' },
                 { id: 'typical', label: 'Thông thường', dot: 'bg-emerald-500' },
-                { id: 'chronic', label: 'Mạn tính', dot: 'bg-indigo-500' },
+                { id: 'chronic', label: 'Mạn tính', dot: 'bg-blue-500' },
               ].map((sev) => {
                 const isSelected = selectedSeverity === sev.id;
                 return (

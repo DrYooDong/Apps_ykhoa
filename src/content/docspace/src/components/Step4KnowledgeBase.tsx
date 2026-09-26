@@ -215,8 +215,8 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
             onClick={() => setActiveTab('vault')}
             className={`px-3 py-1 font-semibold rounded transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'vault'
-                ? 'bg-indigo-600 text-white shadow-2xs'
-                : 'text-indigo-700 bg-indigo-50/70 hover:bg-indigo-100/90 border border-indigo-200'
+                ? 'bg-blue-600 text-white shadow-2xs'
+                : 'text-blue-700 bg-blue-50/70 hover:bg-blue-100/90 border border-blue-200'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -274,7 +274,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
               <select
                 value={selectedVaultKho}
                 onChange={(e) => setSelectedVaultKho(e.target.value)}
-                className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-indigo-500 text-slate-800 font-medium max-w-[170px]"
+                className="border border-slate-200 rounded-md p-1.5 text-xs bg-slate-50 focus:outline-none focus:border-blue-500 text-slate-800 font-medium max-w-[170px]"
               >
                 <option value="ALL">Tất cả 18 Kho</option>
                 {khoSummaries.map((k) => (
@@ -519,7 +519,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                         <button
                           type="button"
                           onClick={() => onOpenVaultDrawer?.(b.pddtArticle!.title, 'PDDT')}
-                          className="text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1 cursor-pointer"
+                          className="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1 cursor-pointer"
                           title="Mở toàn văn phác đồ từ Kho Phác Đồ 2.4"
                         >
                           <span>Phác đồ EBM</span>
@@ -675,11 +675,11 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
       {activeTab === 'vault' && (
         <div className="flex flex-col gap-4">
           {/* Vault Banner & Quick Navigation */}
-          <div className="bg-gradient-to-r from-indigo-900 via-slate-900 to-blue-950 text-white rounded-lg p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-gradient-to-r from-slate-900 to-blue-950 text-white rounded-lg p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-xs uppercase font-mono tracking-widest text-indigo-300 font-bold">
+                <span className="text-xs uppercase font-mono tracking-widest text-blue-300 font-bold">
                   HỆ SINH THÁI TRI THỨC Y KHOA ĐA PHÂN HỆ
                 </span>
               </div>
@@ -696,7 +696,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                 href="../knowledge-vault/index.html"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-xs font-semibold shadow-xs transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-xs font-semibold shadow-xs transition-colors"
               >
                 <span>Mở Knowledge Vault Hub</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -809,7 +809,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
               onClick={() => setSelectedVaultKho('ALL')}
               className={`px-3 py-1.5 rounded-md font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedVaultKho === 'ALL'
-                  ? 'bg-indigo-600 text-white shadow-xs'
+                  ? 'bg-blue-600 text-white shadow-xs'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
               }`}
             >
@@ -821,7 +821,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                 onClick={() => setSelectedVaultKho(k.code)}
                 className={`px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-all cursor-pointer ${
                   selectedVaultKho === k.code
-                    ? 'bg-indigo-600 text-white shadow-xs'
+                    ? 'bg-blue-600 text-white shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
                 }`}
               >
@@ -837,7 +837,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
               return (
                 <div
                   key={art.id}
-                  className="bg-white border border-slate-200 hover:border-indigo-300 rounded-lg p-4 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between group"
+                  className="bg-white border border-slate-200 hover:border-blue-300 rounded-lg p-4 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
@@ -853,7 +853,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                       </span>
                     </div>
 
-                    <h4 className="font-display font-bold text-sm text-slate-800 group-hover:text-indigo-600 transition-colors line-clamp-2 leading-snug">
+                    <h4 className="font-display font-bold text-sm text-slate-800 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
                       {art.title}
                     </h4>
 
@@ -876,7 +876,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                       <button
                         type="button"
                         onClick={() => onOpenVaultDrawer?.(art.title, art.khoCode)}
-                        className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                        className="text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
                       >
                         Xem nhanh Drawer
                       </button>

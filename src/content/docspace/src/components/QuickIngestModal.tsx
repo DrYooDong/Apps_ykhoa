@@ -352,10 +352,10 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
               {/* SOAP 4 Quadrant Preview */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* S */}
-                <div className="bg-sky-50/40 border border-sky-200/80 rounded-xl p-3.5 space-y-2">
+                <div className="bg-blue-50/50 border border-blue-200 rounded-xl p-3.5 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-sky-900 flex items-center gap-1.5">
-                      <span className="w-4 h-4 rounded-full bg-sky-600 text-white text-[10px] flex items-center justify-center font-bold">S</span>
+                    <span className="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+                      <span className="w-4 h-4 rounded-full bg-blue-600 text-white text-[10px] flex items-center justify-center font-bold">S</span>
                       <span>Chủ quan (Subjective)</span>
                     </span>
                   </div>
@@ -372,10 +372,10 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                 </div>
 
                 {/* O */}
-                <div className="bg-purple-50/40 border border-purple-200/80 rounded-xl p-3.5 space-y-2">
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-purple-900 flex items-center gap-1.5">
-                      <span className="w-4 h-4 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center font-bold">O</span>
+                    <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                      <span className="w-4 h-4 rounded-full bg-slate-700 text-white text-[10px] flex items-center justify-center font-bold">O</span>
                       <span>Khách quan (Objective)</span>
                     </span>
                   </div>
@@ -383,7 +383,7 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                   <div className="flex flex-wrap gap-1.5">
                     {Object.entries(editedSoap.o.vitals).map(([k, v]) => (
                       v ? (
-                        <span key={k} className="px-2 py-0.5 rounded-md bg-white border border-purple-200 text-[11px] font-mono text-purple-800">
+                        <span key={k} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[11px] font-mono text-slate-700">
                           {k.toUpperCase()}: {v}
                         </span>
                       ) : null

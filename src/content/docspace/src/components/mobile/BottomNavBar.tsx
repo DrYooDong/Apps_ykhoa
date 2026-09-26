@@ -67,13 +67,13 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           onClick={() => onChangeMode('kb')}
           className={`flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer touch-manipulation relative min-h-[44px] ${
             activeMode === 'kb'
-              ? 'text-indigo-600 font-bold'
+              ? 'text-blue-600 font-bold'
               : 'text-slate-500 hover:text-slate-800 font-medium'
           }`}
           aria-current={activeMode === 'kb' ? 'page' : undefined}
         >
           {activeMode === 'kb' && (
-            <span className="absolute top-1 w-8 h-1 bg-indigo-600 rounded-full animate-fade-in" />
+            <span className="absolute top-1 w-8 h-1 bg-blue-600 rounded-full animate-fade-in" />
           )}
           <BookOpen className={`w-5 h-5 transition-transform ${activeMode === 'kb' ? 'scale-110' : ''}`} />
           <span className="text-[10px] tracking-tight truncate max-w-[80px]">Kho Vault</span>

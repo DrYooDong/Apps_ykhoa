@@ -287,7 +287,7 @@ export const ClinicalCopilotSidebar: React.FC<ClinicalCopilotSidebarProps> = ({
         {vitalsPills.length > 0 && (
           <div className="pt-2 border-t border-slate-100">
             <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-              <Activity className="w-3 h-3 text-indigo-600" />
+              <Activity className="w-3 h-3 text-blue-600" />
               <span>Sinh hiệu hiện thời:</span>
             </span>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 text-center font-mono-custom">

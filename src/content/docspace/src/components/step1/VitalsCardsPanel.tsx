@@ -156,7 +156,7 @@ export const VitalsCardsPanel: React.FC<VitalsCardsPanelProps> = ({
         <div className="bg-white p-2 border border-slate-200 rounded-md">
           <div className="flex items-center justify-between mb-1">
             <label className="font-sans font-semibold text-slate-700 flex items-center gap-1 text-[11px]">
-              <Activity className="w-3 h-3 text-indigo-500" />
+              <Activity className="w-3 h-3 text-blue-600" />
               SpO₂
             </label>
             <span className="text-[9.5px] text-slate-400 font-sans">≥ 95%</span>

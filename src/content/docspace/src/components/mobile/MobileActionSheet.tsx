@@ -24,22 +24,22 @@ export const MobileActionSheet: React.FC<MobileActionSheetProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end md:hidden animate-fade-in">
+    <div className="fixed inset-0 z-50 flex flex-col justify-end md:justify-center md:items-center animate-fade-in">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Sheet Content */}
-      <div className="relative bg-white rounded-t-2xl shadow-2xl border-t border-slate-200 p-4 max-h-[85vh] overflow-y-auto animate-slide-up z-10 select-none pb-safe">
-        {/* Drag Handle Indicator */}
-        <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-3" />
+      <div className="relative bg-white rounded-t-2xl md:rounded-2xl shadow-2xl border border-slate-200 p-4 sm:p-5 max-h-[85vh] w-full md:max-w-md overflow-y-auto animate-slide-up z-10 select-none pb-safe">
+        {/* Drag Handle Indicator (Mobile) */}
+        <div className="w-12 h-1 bg-slate-300 rounded-full mx-auto mb-3 md:hidden" />
 
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div>
-            <h3 className="text-sm font-bold text-slate-800">DocSpace MedLens Menu</h3>
+            <h3 className="text-sm font-bold text-slate-900">Menu Tiện Ích DocSpace</h3>
             <p className="text-[11px] text-slate-500">
               {kb.benh.length} Bệnh · {kb.trieuChung.length} Triệu chứng · {GUIDELINE_STUDIES.length} Guidelines
             </p>

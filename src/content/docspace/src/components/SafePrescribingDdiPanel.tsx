@@ -137,7 +137,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
     switch (sev) {
       case 'contraindicated':
         return (
-          <span className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-rose-100 text-rose-800 border border-rose-300 flex items-center gap-1">
+          <span className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-red-100 text-red-800 border border-red-300 flex items-center gap-1">
             <AlertOctagon className="w-3 h-3" />
             CHỐNG CHỈ ĐỊNH (ĐỎ)
           </span>
@@ -165,7 +165,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-slate-50 border border-blue-200 rounded-lg p-3.5 sm:p-4 shadow-xs flex flex-col gap-3">
+    <div className="bg-gradient-to-r from-blue-50/70 to-slate-50 border border-blue-200 rounded-lg p-3.5 sm:p-4 shadow-xs flex flex-col gap-3">
       {/* Header bar */}
       <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-blue-100">
         <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
             <h4 className="font-display font-bold text-xs sm:text-sm text-blue-950 flex items-center gap-2 flex-wrap">
               <span>Động Cơ Rà Soát Tương Tác Thuốc & An Toàn Kê Đơn (Kho DUOC)</span>
               {ddiResult.hasContraindications && (
-                <span className="px-2 py-0.5 text-[10.5px] font-bold bg-rose-600 text-white rounded-full animate-pulse">
+                <span className="px-2 py-0.5 text-[10.5px] font-bold bg-red-600 text-white rounded-full animate-pulse">
                   ⚠ CÓ CHỐNG CHỈ ĐỊNH
                 </span>
               )}
@@ -216,7 +216,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
                 onOpenVaultDrawer?.(undefined, 'kháng sinh', 'CDSS');
               }
             }}
-            className="flex items-center gap-1 px-2.5 py-1 bg-sky-600 hover:bg-sky-700 text-white border border-sky-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
+            className="flex items-center gap-1 px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white border border-blue-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
             title="Mở CDSS Quản Lý Liều Kháng Sinh & Suy Thận (WHO AWaRe & Sanford)"
           >
             <Pill className="w-3 h-3" />
@@ -233,7 +233,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
                 onOpenVaultDrawer?.(undefined, 'vancomycin', 'CDSS');
               }
             }}
-            className="flex items-center gap-1 px-2.5 py-1 bg-teal-600 hover:bg-teal-700 text-white border border-teal-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
+            className="flex items-center gap-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white border border-emerald-600 text-xs font-semibold rounded shadow-2xs transition-colors cursor-pointer"
             title="Mở CDSS Quản Lý Liều & Dược Động Học Vancomycin (ASHP 2020 & TDM AUC/MIC)"
           >
             <Zap className="w-3 h-3 text-amber-300" />
@@ -306,7 +306,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
                       </span>
                       <span className={`px-1.5 py-0.5 text-[10px] font-bold rounded ${
                         ra.status === 'contraindicated'
-                          ? 'bg-rose-100 text-rose-800'
+                          ? 'bg-red-100 text-red-800'
                           : 'bg-amber-100 text-amber-900'
                       }`}>
                         {ra.status === 'contraindicated' ? 'CHỐNG CHỈ ĐỊNH' : 'GIẢM LIỀU'}
@@ -326,7 +326,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
             <div className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-2xs">
               <div className="p-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <span className="font-bold text-xs text-slate-800 flex items-center gap-1.5">
-                  <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                  <ShieldAlert className="w-3.5 h-3.5 text-red-600" />
                   <span>Phát hiện {ddiResult.conflicts.length} tương tác thuốc tiềm tàng giữa các y lệnh:</span>
                 </span>
                 <span className="text-[10.5px] text-slate-500">Dược thư Quốc gia & FDA DDI Engine</span>

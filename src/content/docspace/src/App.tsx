@@ -452,6 +452,15 @@ export function MainApp() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const patientSummary = useMemo(() => {
+    if (!form.tuoi && !form.lyDo) return null;
+    const parts: string[] = [];
+    if (form.gioiTinh) parts.push(form.gioiTinh === 'nam' ? 'Nam' : 'Nữ');
+    if (form.tuoi) parts.push(`${form.tuoi} tuổi`);
+    if (form.lyDo) parts.push(form.lyDo);
+    return parts.join(' · ');
+  }, [form.gioiTinh, form.tuoi, form.lyDo]);
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans antialiased">
       {/* App Header */}
@@ -462,6 +471,7 @@ export function MainApp() {
         onOpenVault={(khoCode, query) => handleOpenVaultDrawer(undefined, query, khoCode)}
         onOpenAbout={() => setIsAboutOpen(true)}
         onOpenSimulation={() => setIsSimulationOpen(true)}
+        patientSummary={patientSummary}
       />
 
       {/* 3-Step Clinical Navigation (chỉ hiện khi đang ở Chu trình lâm sàng) */}

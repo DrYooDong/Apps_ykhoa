@@ -75,10 +75,9 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
             </h3>
             <p>
               Hệ thống được phát triển với ngăn xếp công nghệ:
-              <br />• <b>Frontend:</b> React 18, TypeScript, Tailwind CSS
-              <br />• <b>Backend:</b> Node.js & Express API
-              <br />• <b>Cơ sở dữ liệu:</b> Google Cloud SQL (PostgreSQL) với Drizzle ORM
-              <br />• <b>Bảo mật xác thực:</b> JSON Web Token (JWT) & Google OAuth
+              <br />• <b>Frontend:</b> React 19, TypeScript, Tailwind CSS v4, Zero-Latency Client Architecture
+              <br />• <b>Dữ liệu lâm sàng:</b> Chu trình EBM 4 bước, Knowledge Vault & Guidelines Bộ Y tế
+              <br />• <b>Bảo mật & Lưu trữ:</b> Chạy offline file:///, Local Storage & PostgreSQL chuẩn EMR
             </p>
           </div>
 
