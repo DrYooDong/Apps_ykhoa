@@ -5,13 +5,32 @@ import {
   ArrowUpRight,
   Building2,
   CheckCircle2,
+  CheckSquare,
+  Droplet,
+  FileCheck2,
   HelpCircle,
   ShieldAlert,
+  ShieldCheck,
   ShieldX,
+  Stethoscope,
+  Syringe,
 } from 'lucide-react';
 import { DailyTimelinePhase } from '../../lib/dailyTreatmentTimeline.ts';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
-import { PatientPhenotype } from '../../types.ts';
+import {
+  ClinicalIndicationGroup,
+  ClinicalIndicationItem,
+  PatientPhenotype,
+} from '../../types.ts';
+
+export interface StructuredCautions {
+  cautions?: string[];
+  contraindications?: string[];
+  dischargeCriteria?: string[];
+  clinicalIndications?: Array<ClinicalIndicationGroup | ClinicalIndicationItem | string>;
+  treatmentIndications?: Array<ClinicalIndicationGroup | ClinicalIndicationItem | string>;
+  indications?: Array<ClinicalIndicationGroup | ClinicalIndicationItem | string>;
+}
 
 interface ClinicalCautionsSectionProps {
   cautionItems: string[];
@@ -19,11 +38,7 @@ interface ClinicalCautionsSectionProps {
   activeSeverityGrade?: SeverityGradingItem;
   specificTreatmentNotice?: string;
   patientPhenotype?: PatientPhenotype;
-  structuredCautions?: {
-    cautions?: string[];
-    contraindications?: string[];
-    dischargeCriteria?: string[];
-  };
+  structuredCautions?: StructuredCautions;
 }
 
 export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = ({
@@ -34,10 +49,11 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
   patientPhenotype,
   structuredCautions,
 }) => {
-  // Phân loại tự động 3 nhóm:
-  // [1] Lưu ý & Cảnh báo quan trọng
-  // [2] Chống chỉ định (CCĐ)
-  // [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến
+  // Phân loại:
+  // [1] Chỉ định Điều trị & Tiêu chuẩn Can thiệp (Truyền máu, Dịch cao phân tử, Thở máy...)
+  // [2] Lưu ý & Cảnh báo quan trọng
+  // [3] Chống chỉ định (CCĐ)
+  // [4] Tiêu chuẩn xuất viện hoặc chuyển tuyến
 
   const contraindications: string[] = [];
   const criticalAlerts: string[] = [];
@@ -83,6 +99,74 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
       }
     });
   }
+
+  // 0c. Xử lý Chỉ định Điều trị & Can thiệp Lâm sàng (Clinical Indications)
+  const rawIndications =
+    structuredCautions?.clinicalIndications ||
+    structuredCautions?.treatmentIndications ||
+    structuredCautions?.indications ||
+    [];
+
+  const indicationGroups: Array<{
+    category: string;
+    badgeText?: string;
+    color?: string;
+    items: Array<{
+      indicationName: string;
+      criteria: string;
+      orderTarget?: string;
+      note?: string;
+    }>;
+  }> = [];
+
+  if (Array.isArray(rawIndications)) {
+    rawIndications.forEach((entry: any) => {
+      if (typeof entry === 'string') {
+        indicationGroups.push({
+          category: 'Chỉ định chung',
+          badgeText: 'BYT / EBM',
+          items: [{ indicationName: entry, criteria: entry }],
+        });
+      } else if (entry && Array.isArray(entry.items)) {
+        // Cấu trúc nhóm (Group format)
+        const items = entry.items.map((it: any) => {
+          if (typeof it === 'string') {
+            return { indicationName: it, criteria: it };
+          }
+          return {
+            indicationName: it.indicationName || it.name || it.title || 'Chỉ định lâm sàng',
+            criteria: it.criteria || it.description || '',
+            orderTarget: it.orderTarget || it.target || '',
+            note: it.note || '',
+          };
+        });
+        indicationGroups.push({
+          category: entry.category || 'Chỉ định Can thiệp',
+          badgeText: entry.badgeText || 'Quy chuẩn BYT',
+          color: entry.color || 'blue',
+          items,
+        });
+      } else if (entry && (entry.indicationName || entry.criteria || entry.name)) {
+        // Cấu trúc đơn lẻ (Flat item format)
+        indicationGroups.push({
+          category: entry.category || 'Chỉ định Can thiệp',
+          badgeText: entry.badgeText || 'Bắt buộc',
+          color: entry.color || 'blue',
+          items: [
+            {
+              indicationName: entry.indicationName || entry.name || 'Chỉ định can thiệp',
+              criteria: entry.criteria || entry.description || '',
+              orderTarget: entry.orderTarget || entry.target || '',
+              note: entry.note || '',
+            },
+          ],
+        });
+      }
+    });
+  }
+
+  const hasIndications = indicationGroups.length > 0;
+  const totalIndicationsCount = indicationGroups.reduce((acc, g) => acc + g.items.length, 0);
 
   // 1. Phân loại từ cautionItems (phacDo.luuY)
   cautionItems.forEach((item) => {
@@ -161,7 +245,87 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
           </div>
         )}
 
-        {/* [1] Lưu ý, cảnh báo quan trọng */}
+        {/* [1] CHỈ ĐỊNH ĐIỀU TRỊ & TIÊU CHUẨN CAN THIỆP LÂM SÀNG (Nếu có) */}
+        {hasIndications && (
+          <div className="bg-gradient-to-br from-blue-50/80 via-sky-50/50 to-indigo-50/60 border border-blue-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
+            <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-blue-200/80">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-2xs">
+                  <CheckSquare className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <h5 className="font-bold text-xs sm:text-sm text-blue-950 flex items-center gap-1.5">
+                    [1] Tiêu chuẩn &amp; Chỉ định Can thiệp Lâm sàng (Clinical Indications)
+                  </h5>
+                  <p className="text-[10.5px] text-blue-800/80 font-medium">
+                    Đối chiếu điều kiện ra y lệnh (Truyền máu, Chế phẩm, Dịch cao phân tử, Thở máy, Thủ thuật...)
+                  </p>
+                </div>
+              </div>
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-200/80 text-blue-900 border border-blue-300">
+                {totalIndicationsCount} chỉ định bắt buộc
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              {indicationGroups.map((group, gIdx) => (
+                <div
+                  key={gIdx}
+                  className="bg-white/95 border border-blue-200/80 rounded-lg p-3 shadow-2xs"
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2 pb-1.5 border-b border-blue-100">
+                    <span className="font-bold text-xs text-blue-950 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                      {group.category}
+                    </span>
+                    {group.badgeText && (
+                      <span className="px-1.5 py-0.5 rounded text-[9.5px] font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                        {group.badgeText}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    {group.items.map((item, iIdx) => (
+                      <div
+                        key={iIdx}
+                        className="p-2.5 rounded-lg bg-blue-50/40 border border-blue-100 flex flex-col justify-between gap-1.5 text-xs hover:border-blue-300 transition-colors"
+                      >
+                        <div>
+                          <div className="flex items-center gap-1.5 font-bold text-slate-900 mb-1">
+                            <span className="text-blue-600 font-bold shrink-0">🎯</span>
+                            <span className="text-[12px]">{item.indicationName}</span>
+                          </div>
+                          <div className="text-[11.5px] text-slate-800 leading-relaxed font-medium pl-3 border-l-2 border-blue-400 my-1">
+                            <strong className="text-blue-950">Tiêu chuẩn: </strong>
+                            {item.criteria}
+                          </div>
+                        </div>
+
+                        {item.orderTarget && (
+                          <div className="pt-1.5 mt-0.5 border-t border-blue-100/80 flex items-start gap-1 text-[10.5px] text-slate-600">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <div>
+                              <span className="font-semibold text-emerald-800">Đích can thiệp: </span>
+                              <span className="font-medium text-slate-700">{item.orderTarget}</span>
+                            </div>
+                          </div>
+                        )}
+                        {item.note && (
+                          <div className="text-[10px] text-amber-800 font-medium italic">
+                            💡 {item.note}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* [2] Lưu ý, cảnh báo quan trọng */}
         <div className="bg-amber-50/60 border border-amber-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-amber-200/80">
             <div className="flex items-center gap-2">
@@ -169,7 +333,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
                 <AlertOctagon className="w-3.5 h-3.5" />
               </div>
               <h5 className="font-bold text-xs sm:text-sm text-amber-950">
-                [1] Lưu ý &amp; Cảnh báo quan trọng (Critical Safety Warnings)
+                {hasIndications ? '[2]' : '[1]'} Lưu ý &amp; Cảnh báo quan trọng (Critical Safety Warnings)
               </h5>
             </div>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-200/80 text-amber-900 border border-amber-300">
@@ -190,7 +354,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
           </div>
         </div>
 
-        {/* [2] Chống chỉ định (CCĐ) */}
+        {/* [3] Chống chỉ định (CCĐ) */}
         <div className="bg-rose-50/60 border border-rose-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-rose-200/80">
             <div className="flex items-center gap-2">
@@ -198,7 +362,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
                 <ShieldX className="w-3.5 h-3.5" />
               </div>
               <h5 className="font-bold text-xs sm:text-sm text-rose-950">
-                [2] Chống chỉ định &amp; Thuốc cấm dùng (Contraindications)
+                {hasIndications ? '[3]' : '[2]'} Chống chỉ định &amp; Thuốc cấm dùng (Contraindications)
               </h5>
             </div>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-200/80 text-rose-900 border border-rose-300">
@@ -219,7 +383,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
           </div>
         </div>
 
-        {/* [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến */}
+        {/* [4] Tiêu chuẩn xuất viện hoặc chuyển tuyến */}
         <div className="bg-emerald-50/60 border border-emerald-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-emerald-200/80">
             <div className="flex items-center gap-2">
@@ -227,7 +391,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
                 <Building2 className="w-3.5 h-3.5" />
               </div>
               <h5 className="font-bold text-xs sm:text-sm text-emerald-950">
-                [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến (Discharge &amp; Triage Criteria)
+                {hasIndications ? '[4]' : '[3]'} Tiêu chuẩn xuất viện hoặc chuyển tuyến (Discharge &amp; Triage Criteria)
               </h5>
             </div>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-200/80 text-emerald-900 border border-emerald-300">

@@ -137,9 +137,36 @@ Nhờ kiến trúc Dynamic Branching đã module hóa các nhánh thành từng 
 
 ---
 
-## 📦 7. LƯU TRỮ VẾT (ARCHIVE)
+## 🔤 8. QUY CHUẨN VIẾT TẮT Y KHOA, KÝ TỰ SI & KHỬ TIỀN TỐ THỪA (COMPACT MEDICAL STANDARDS)
+
+Để bảo đảm giao diện DocSpace luôn sắc nét, tinh gọn, không bị vỡ layout trên thiết bị di động và tối ưu hóa số lượng token của LLM, toàn bộ các Prompt và CSDL bắt buộc tuân thủ:
+
+### 1. Viết tắt Y khoa Chuẩn mực (Strict Medical Abbreviations):
+| Phân Nhóm | Từ Viết Tắt Chuẩn | Ý Nghĩa Lâm Sàng & Quy Cách |
+| :--- | :--- | :--- |
+| **Sinh hiệu & Khám** | `HA`, `HATT`, `HATTr`, `M`, `NT`, `SpO₂`, `CRT`, `GCS`, `BMI` | Chữ `SpO₂` bắt buộc viết hoa `O` và chỉ số dưới `₂`; `CRT` (đổ đầy mao mạch), `GCS` (Glasgow). |
+| **Huyết học & Đông máu** | `Hct`, `PLT`, `WBC`, `RBC`, `Hb`, `INR`, `aPTT`, `PT`, `Fibrinogen` | `Hct` (chữ H hoa, ct thường); `PLT` (Tiểu cầu); `WBC` (Bạch cầu). |
+| **Hóa sinh & Tạng** | `AST`, `ALT`, `GGT`, `eGFR`, `Cr` / `Creatinine`, `CRP`, `PCT`, `KMĐM` | `eGFR` (chữ e thường, GFR hoa); `KMĐM` (Khí máu động mạch). |
+| **CĐHA & Thăm dò** | `XQ`, `SA`, `CT`, `MRI`, `ECG` | `XQ` (X-quang ngực thẳng); `SA` (Siêu âm); `ECG` (Điện tâm đồ). |
+| **Vi sinh & Miễn dịch** | `NS1 Ag`, `RT-PCR`, `IgM`, `IgG` | Test nhanh ghi `NS1 Ag (+)`, `Dengue RNA (+)`. |
+| **Bệnh học & Phân hệ** | `SXH` / `SXHD`, `DTH`, `TCCN`, `TCTT`, `CLS`, `DHST`, `TC`, `LDVV`, `ICU` | Tuyệt đối không viết tắt lóng kiểu chat (`ns1 pos`, `ha tut`). |
+| **Đường dùng & Tần suất** | `IV`, `PO`, `SC`, `IM`, `TTM`, `Bolus`, `q1h`, `q2h`, `q4h`, `q6h`, `q8h`, `q12h`, `STAT` | `STAT` (Y lệnh khẩn cấp); `TTM` (Truyền tĩnh mạch); `q4h` (mỗi 4 giờ). |
+
+### 2. Ký tự Toán học & Đơn vị SI Chuẩn (Typography & SI Units):
+- **Toán tử so sánh**: Dùng `≥` (thay vì `>=`), `≤` (thay vì `<=`), `±` (thay vì `+/-`), `×` (dấu nhân thay vì `*` hoặc `x`).
+- **Khử 100% rò rỉ HTML entities**: Viết trực tiếp `>`, `<`, `"`, `&` trong file JSON/Markdown, tuyệt đối không để lọt `&gt;`, `&lt;`, `&quot;`, `&amp;`.
+- **Đơn vị SI y khoa**: Dùng `°C`, `µmol/L`, `µg`, `mL/kg/h`, `G/L` (thay vì `/mm³` hay `ngàn/mm3`), `mmol/L`, `mEq/L`, `UI`.
+
+### 3. Tinh gọn Nhãn & Văn phong Y lệnh Thực chiến:
+- **Lược bỏ tiền tố thừa**: Không đưa các cụm như `[Lâm sàng]: ...`, `[Cận lâm sàng]: ...`, `"Dấu hiệu cảnh báo: ..."`, `"Xét nghiệm: ..."` vào nhãn nút bấm hoặc tên tiêu chuẩn (`criteria.label`). Nhãn phải ngắn gọn, trực diện, nhấn mạnh ngưỡng định lượng (Ví dụ: `Cô đặc máu (Hct tăng ≥ 20% hoặc Hct > 45%)`, `Tiểu cầu giảm dốc đứng (< 100 G/L)`).
+- **Văn phong y lệnh thực chiến**: Ngắn gọn, dứt khoát, súc tích (kiểu y lệnh quân đội/bệnh viện), tránh văn xuôi dài dòng rườm rà.
+
+---
+
+## 📦 9. LƯU TRỮ VẾT (ARCHIVE)
 
 Các prompt phiên bản cũ (Prompt 00 đến 09 cũ) đã được di chuyển an toàn vào thư mục lưu trữ:
 - 📁 **Đường dẫn**: `src/content/docspace/docs/prompts/archive/`
 - Bạn luôn có thể tra cứu lại các prompt cũ tại thư mục này khi cần tham khảo lịch sử phát triển.
+
 

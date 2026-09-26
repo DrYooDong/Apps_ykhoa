@@ -20,7 +20,7 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
-import { ClinicalFormState, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
+import { ClinicalFormState, CombinedProtocol, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
 import { SeverityGradingPanel } from './SeverityGradingPanel.tsx';
 import { ComplicationsTriageSection } from './ComplicationsTriageSection.tsx';
 import { calculateEgfrCkdEpi, resolvePatientPhenotype } from '../../lib/patientPhenotypeEngine.ts';
@@ -48,6 +48,9 @@ interface ProtocolClassificationSectionProps {
   onToggleRenalAdjustment?: (applied: boolean) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   targetTab?: '1a' | '1b' | '1c';
+  selectedAxes?: Record<string, string>;
+  onSelectAxisBranch?: (axisId: string, branchId: string) => void;
+  activeCombinedProtocol?: CombinedProtocol | null;
 }
 
 export const ProtocolClassificationSection: React.FC<ProtocolClassificationSectionProps> = ({
@@ -73,6 +76,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   onToggleRenalAdjustment,
   onOpenVaultDrawer,
   targetTab,
+  selectedAxes,
+  onSelectAxisBranch,
+  activeCombinedProtocol,
 }) => {
   // Tab state for 1a, 1b, 1c
   const [activeTab, setActiveTab] = useState<'1a' | '1b' | '1c'>('1a');
@@ -289,6 +295,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
               onSelectGradeIdx={onSelectGradeIdx}
               autoSuggestedGradeIndex={autoSuggestedGradeIndex}
               activeChain={activeChain}
+              selectedAxes={selectedAxes}
+              onSelectAxisBranch={onSelectAxisBranch}
+              activeCombinedProtocol={activeCombinedProtocol}
             />
           </div>
         )}

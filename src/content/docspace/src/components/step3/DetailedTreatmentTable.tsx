@@ -22,7 +22,7 @@ import {
   adaptPhaseToProblemRows,
   getGeneralComplications,
 } from '../../lib/dailyTreatmentTimeline.ts';
-import { PhacDo } from '../../types.ts';
+import { CombinedProtocol, PhacDo } from '../../types.ts';
 import { CustomOrder } from './ProtocolOrderSheet.tsx';
 import { SafePrescribingDdiPanel } from '../SafePrescribingDdiPanel.tsx';
 
@@ -64,6 +64,7 @@ interface DetailedTreatmentTableProps {
   renalStage?: string;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   onOpenCdssModal?: (tool: 'dengue' | 'ecg' | 'abg' | 'xray' | 'hepa' | 'neuro' | 'microbio' | 'antibiotic' | 'vancomycin' | 'hub') => void;
+  activeCombinedProtocol?: CombinedProtocol | null;
 }
 
 export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
@@ -98,6 +99,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   renalStage,
   onOpenVaultDrawer,
   onOpenCdssModal,
+  activeCombinedProtocol,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newDrug, setNewDrug] = useState('');
@@ -176,6 +178,17 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
       {/* 1. THANH NGỮ CẢNH PHÂN ĐỘ & ĐIỀU PHỐI BẬC ĐIỀU TRỊ (ACTIVE STAGING CONTEXT & ESCALATION) */}
       {severityGrades && severityGrades.length > 0 && (
         <div className="p-3 sm:p-3.5 bg-gradient-to-r from-slate-50 via-blue-50/30 to-indigo-50/20 border-b border-slate-200 flex flex-col gap-2.5">
+          {activeCombinedProtocol && (
+            <div className="flex items-center justify-between gap-2 p-2 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-950 font-semibold shadow-2xs">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-pulse shrink-0" />
+                <span><b>Tổ hợp phác đồ đang áp dụng:</b> {activeCombinedProtocol.combinedName}</span>
+              </div>
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-indigo-100 text-indigo-700 font-bold shrink-0">
+                MULTI-AXIS ACTIVE
+              </span>
+            </div>
+          )}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">

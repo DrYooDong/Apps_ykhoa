@@ -49,14 +49,27 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
 1. NGUYÊN TẮC MỘT BỆNH GỐC (SINGLE MASTER ENTITY):
    Toàn bộ các phân loại (nhẹ, trung bình, nặng, sốc, hoặc các thể lâm sàng) của bệnh này PHẢI nằm chung trong 01 file JSON duy nhất. Tuyệt đối không tách thành nhiều file lẻ.
 
-2. XÁC ĐỊNH ĐÚNG 01 TRỤC PHÂN NHÁNH LÂM SÀNG ("axisType"):
-   Phân tích Guideline để chọn đúng 1 trong 6 loại trục phân nhánh sau:
-   - "severity"       : Phân tầng theo mức độ nặng / đe dọa sinh mạng (Ví dụ: SXHD Nhẹ -> Cảnh báo -> Nặng; Viêm tụy cấp).
-   - "triage_score"   : Phân tuyến tiếp nhận Ngoại trú / Nội trú / ICU dựa theo thang điểm (Ví dụ: Viêm phổi CURB-65 / PSI; Thuyên tắc phổi PESI).
-   - "phenotype"      : Phân theo thể lâm sàng, hình thái hoặc căn nguyên (Ví dụ: Nhiễm trùng da Có mủ vs Không mủ; Viêm màng não Vi khuẩn vs Siêu vi).
-   - "treatment_step" : Phân theo bậc điều trị kiểm soát bệnh mạn tính (Ví dụ: Hen phế quản GINA Bậc 1-5; COPD GOLD A-B-E).
-   - "stage"          : Phân theo giai đoạn tiến triển suy chức năng tạng (Ví dụ: Xơ gan Child-Pugh A-B-C; Suy thận mạn CKD G1-G5).
-   - "comorbidity"    : Phân theo nhóm bệnh đồng mắc / cơ địa (Ví dụ: ĐTĐ type 2 có Suy tim / CKD / ASCVD).
+2. XÁC ĐỊNH CHẾ ĐỘ PHÂN NHÁNH LÂM SÀNG ("mode" & "axisType" / "axes"):
+   Hệ thống hỗ trợ 2 chế độ phân nhánh (Dynamic Clinical Branching v4.0):
+   
+   👉 CHẾ ĐỘ 1: mode = "single" (1 Trục đơn — Ví dụ: SXH Dengue, Viêm phổi CAP)
+      Dành cho bệnh chỉ có 1 chiều phân loại duy nhất (thường là mức độ nặng hoặc thang điểm).
+      Chọn đúng 1 trong 6 loại trục:
+      - "severity"       : Phân tầng mức độ nặng / đe dọa sinh mạng (SXHD Nhẹ -> Cảnh báo -> Nặng; Viêm tụy cấp).
+      - "triage_score"   : Phân tuyến dựa theo thang điểm (Viêm phổi CURB-65 / PSI; Thuyên tắc phổi PESI).
+      - "phenotype"      : Phân theo thể lâm sàng / hình thái / căn nguyên (Da Có mủ vs Không mủ; VMN VK vs Siêu vi).
+      - "treatment_step" : Phân theo bậc điều trị (Hen GINA Bậc 1-5; COPD GOLD A-B-E).
+      - "stage"          : Phân theo giai đoạn tiến triển (Xơ gan Child-Pugh A-B-C; CKD G1-G5).
+      - "comorbidity"    : Phân theo nhóm cơ địa / bệnh đồng mắc (ĐTĐ có Suy tim / CKD / ASCVD).
+      Cấu trúc: Dùng `axisName`, `axisType`, `branches: [ ... ]`.
+
+   👉 CHẾ ĐỘ 2: mode = "multi" (Đa trục tổ hợp — Ví dụ: Xơ gan, COPD, Suy tim, ĐTĐ)
+      Dành cho bệnh lý phức tạp cần phân loại theo ≥ 2 chiều đồng thời.
+      Ví dụ thực chiến:
+      + XƠ GAN: Trục 1 (Nguyên nhân: Do rượu / Do HBV / Do HCV / Do NAFLD...) × Trục 2 (Mức độ chức năng: Child-Pugh A / B / C).
+      + COPD: Trục 1 (Phân nhóm GOLD A/B/E) × Trục 2 (Giai đoạn: Ổn định vs Đợt cấp).
+      + SUY TIM: Trục 1 (Phân suất tống máu: HFrEF / HFmrEF / HFpEF) × Trục 2 (Phân độ cơ năng: NYHA I-IV).
+      Cấu trúc: Dùng `axes: [ { axisId, axisName, axisType, branches: [...] }, ... ]` và danh mục phác đồ phối hợp `combinedProtocols: [ { axisSelections: { axis_1: branch_a, axis_2: branch_b }, ... } ]`.
 
 3. BẢNG 4 CỘT LỘ TRÌNH ĐIỀU TRỊ TỪNG NGÀY (TIMELINE PHASES):
    Mỗi nhánh bắt buộc phải có lộ trình từng ngày ("timelinePhases"), mỗi phase gồm các vấn đề lâm sàng với 4 thành phần:
@@ -73,7 +86,20 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
 5. NGUYÊN TẮC KẾ THỪA CHỐNG TRÙNG LẶP (INHERITANCE):
    Các chống chỉ định dùng chung, lời dặn chung được ghi 1 lần ở cấp gốc ("protocol.supportiveCare", "clinicalCautions"). Từng nhánh chỉ ghi thuốc và y lệnh đặc thù của nhánh đó.
 
-6. ĐẦU RA DUY NHẤT:
+6. QUY CHUẨN VIẾT TẮT, KÝ TỰ Y KHOA VÀ TINH GỌN VĂN BẢN (COMPACT CLINICAL CONTENT):
+   - Viết tắt y khoa chuẩn mực:
+     + Sinh hiệu & Khám: HA, HATT, HATTr, M, NT, SpO₂ (chữ O hoa, số 2 nhỏ), CRT, GCS, BMI.
+     + Cận lâm sàng: Hct (chữ H hoa, ct thường), PLT, WBC, RBC, Hb, AST, ALT, eGFR (chữ e thường), Cr / Creatinine, CRP, PCT, KMĐM, XQ, SA, CT, MRI, ECG, INR, aPTT, PT, Fibrinogen, RT-PCR, NS1 Ag.
+     + Đường dùng & Y lệnh: IV, PO, SC, IM, TTM, Bolus, q1h, q2h, q4h, q6h, q8h, q12h, STAT.
+   - Ký tự toán học & Đơn vị SI chuẩn:
+     + Dùng toán tử chuẩn: ≥ (thay vì >=), ≤ (thay vì <=), ± (thay vì +/-), × (dấu nhân thay vì * hoặc x).
+     + Viết ký tự > và < trực tiếp, TUYỆT ĐỐI KHÔNG để rò rỉ mã hóa HTML (&gt;, &lt;, &quot;, &amp;).
+     + Đơn vị đo chuẩn y khoa: °C (thay vì oC), µmol/L, µg, mL/kg/h, G/L (thay vì /mm3), mmol/L, mEq/L, UI.
+   - Tinh gọn nhãn và văn phong y lệnh thực chiến:
+     + Lược bỏ hoàn toàn tiền tố thừa thãi trong nhãn tiêu chuẩn ("criteria.label"): KHÔNG dùng tiền tố "[Lâm sàng]: ...", "[Cận lâm sàng]: ...", "Dấu hiệu cảnh báo: ...". Nhãn phải ngắn gọn, trực diện, nhấn mạnh ngưỡng số hoặc dấu hiệu thực tế.
+     + Văn phong y lệnh thực chiến: Rõ ràng, dứt khoát, súc tích (kiểu bệnh án thực hành & y lệnh điều trị), không viết văn xuôi dài dòng rườm rà nhằm tối ưu hóa tokens của LLM và hiển thị sắc nét trên giao diện mobile/desktop của DocSpace.
+
+7. ĐẦU RA DUY NHẤT:
    Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
 
 --------------------------------------------------------------------------------
@@ -99,7 +125,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
     {
       "id": "tc_bat_buoc_1",
       "type": "mandatory",
-      "label": "[Lâm sàng]: Tên triệu chứng hoặc dấu hiệu bắt buộc",
+      "label": "Tên triệu chứng hoặc dấu hiệu bắt buộc (Bỏ tiền tố thừa)",
       "description": "Chi tiết triệu chứng lâm sàng định lượng.",
       "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
       "symptomIds": ["id_triệu_chứng_tương_ứng"],
@@ -109,7 +135,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
     {
       "id": "tc_chinh_1",
       "type": "major",
-      "label": "[Lâm sàng / Cận lâm sàng]: Tên tiêu chuẩn chính",
+      "label": "Tên tiêu chuẩn chính (Ngưỡng định lượng hoặc dấu chứng)",
       "description": "Mô tả lâm sàng hoặc ngưỡng xét nghiệm định lượng.",
       "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
       "symptomIds": ["id_triệu_chứng"],
@@ -121,7 +147,10 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
   "stagingType": "severity",
   "hasSeverityGrading": true,
 
+  // 🌿 CẤU TRÚC PHÂN NHÁNH PHÁC ĐỒ: CHỌN 1 TRONG 2 CÁCH DƯỚI ĐÂY:
+  // ── CÁCH 1: mode = "single" (Dành cho bệnh 1 trục phân loại như SXH Dengue, Viêm phổi) ──
   "branching": {
+    "mode": "single",
     "axisName": "Tên trục phân nhánh (Ví dụ: Phân loại theo Mức độ Lâm sàng QĐ 2760/QĐ-BYT)",
     "axisType": "severity | triage_score | phenotype | treatment_step | stage | comorbidity | custom",
     "description": "Giải thích nguyên lý phân nhánh để bác sĩ chọn đúng phác đồ phù hợp với người bệnh.",
@@ -133,7 +162,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
         "color": "emerald",
         "criteria": "Tiêu chuẩn lâm sàng & CLS để xác định người bệnh thuộc nhánh này.",
         "triage": "Ngoại trú / Trạm Y tế / Phòng khám ngoại trú",
-        "targetVitals": "Sinh hiệu mục tiêu bình thường theo tuổi, SpO2 >= 96%, bài niệu >= 1.0 mL/kg/h",
+        "targetVitals": "Sinh hiệu mục tiêu bình thường theo tuổi, SpO₂ ≥ 96%, bài niệu ≥ 1.0 mL/kg/h",
         "escalationCriteria": "Dấu hiệu cảnh báo nguy hiểm hoặc diễn tiến xấu cần chuyển viện / nâng bậc lên Nhánh 2 ngay lập tức.",
         "dischargeCriteria": "Tiêu chuẩn an toàn để kết thúc theo dõi ngoại trú hoặc cho ra viện.",
         "drugs": [
@@ -180,7 +209,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
                     "type": "LS",
                     "metric": "Thân nhiệt, Lượng nước tiểu",
                     "frequency": "Mỗi 4 giờ",
-                    "target": "Hạ sốt an toàn, bài niệu >= 1.0 mL/kg/h"
+                    "target": "Hạ sốt an toàn, bài niệu ≥ 1.0 mL/kg/h"
                   }
                 ]
               }
@@ -195,9 +224,9 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
         "color": "amber",
         "criteria": "Có ít nhất 1 dấu hiệu cảnh báo nguy hiểm hoặc cơ địa nguy cơ cao.",
         "triage": "Khoa Nội / Nhi / Truyền nhiễm Bệnh viện Quận / Huyện / Tỉnh",
-        "targetVitals": "HATT >= 90 mmHg, Hiệu áp >= 30 mmHg, SpO2 >= 95%, Nước tiểu >= 0.5 - 1.0 mL/kg/h",
+        "targetVitals": "HATT ≥ 90 mmHg, Hiệu áp ≥ 30 mmHg, SpO₂ ≥ 95%, Nước tiểu ≥ 0.5 - 1.0 mL/kg/h",
         "escalationCriteria": "BÁO ĐỘNG ĐỎ đe dọa tính mạng (tụt HA, sốc, xuất huyết nặng) cần chuyển ICU / Nhánh 3 ngay lập tức.",
-        "dischargeCriteria": "Hết sốt >= 48h, ngưng thuốc tĩnh mạch >= 24h mà huyết động ổn định, CLS hồi phục an toàn.",
+        "dischargeCriteria": "Hết sốt ≥ 48h, ngưng thuốc tĩnh mạch ≥ 24h mà huyết động ổn định, CLS hồi phục an toàn.",
         "drugs": [
           [
             "Dung dịch truyền tĩnh mạch nấc thang / Kháng sinh",
@@ -214,9 +243,9 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
         "name": "Mức độ 3: Nặng / Nguy kịch / Hồi sức ICU",
         "badgeText": "Hồi sức ICU",
         "color": "rose",
-        "criteria": "Rối loạn huyết động (sốc, HA kẹp <= 20 mmHg), suy hô hấp nặng hoặc suy tạng.",
+        "criteria": "Rối loạn huyết động (sốc, HA kẹp ≤ 20 mmHg), suy hô hấp nặng hoặc suy tạng.",
         "triage": "Khoa Hồi sức Cấp cứu (ICU) / Bệnh viện Tuyến cuối",
-        "targetVitals": "MAP >= 65 mmHg, HATT >= 90 mmHg, SpO2 >= 95%, Lactate < 2 mmol/L",
+        "targetVitals": "MAP ≥ 65 mmHg, HATT ≥ 90 mmHg, SpO₂ ≥ 95%, Lactate < 2 mmol/L",
         "escalationCriteria": "Xử trí sốc kéo dài / thất bại bù dịch / chuyển dịch cao phân tử hoặc vận mạch khẩn cấp.",
         "dischargeCriteria": "Thoát sốc hoàn toàn, cai dịch truyền và vận mạch > 24h, các tạng hồi phục an toàn.",
         "drugs": [
@@ -232,6 +261,101 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
       }
     ]
   },
+
+  // ── CÁCH 2: mode = "multi" (Dành cho bệnh đa trục như Xơ gan, COPD, Suy tim) ──
+  // (Nếu dùng CÁCH 2 thì thay thế toàn bộ object "branching" ở trên bằng cấu trúc sau):
+  /*
+  "branching": {
+    "mode": "multi",
+    "selectionFlow": "sequential", // sequential | independent | matrix
+    "axes": [
+      {
+        "axisId": "axis_etiology",
+        "axisName": "Phân loại theo Căn nguyên / Nguyên nhân",
+        "axisType": "phenotype",
+        "axisOrder": 1,
+        "isRequired": true,
+        "description": "Xác định căn nguyên để điều trị đặc hiệu (virus, rượu, tự miễn, chuyển hóa...)",
+        "branches": [
+          {
+            "id": "etio_alcohol",
+            "name": "Xơ gan do Rượu (ALD)",
+            "badgeText": "Do Rượu",
+            "color": "amber",
+            "criteria": "Tiêu thụ rượu lượng nhiều kéo dài, AST/ALT > 2",
+            "drugs": [ ... ],
+            "timelinePhases": [ ... ]
+          },
+          {
+            "id": "etio_hbv",
+            "name": "Xơ gan do Viêm gan B (HBV)",
+            "badgeText": "Do HBV",
+            "color": "blue",
+            "criteria": "HBsAg (+) > 6 tháng, định lượng HBV DNA",
+            "drugs": [ ... ],
+            "timelinePhases": [ ... ]
+          }
+        ]
+      },
+      {
+        "axisId": "axis_stage",
+        "axisName": "Phân tầng Chức năng Gan theo Child-Pugh",
+        "axisType": "stage",
+        "axisOrder": 2,
+        "isRequired": true,
+        "description": "Đánh giá mức độ suy tế bào gan và tăng áp lực tĩnh mạch cửa",
+        "branches": [
+          {
+            "id": "cp_a",
+            "name": "Child-Pugh A (5-6 điểm) — Còn bù",
+            "badgeText": "Child A",
+            "color": "emerald",
+            "criteria": "Child-Pugh 5-6 điểm, không báng, không não gan",
+            "triage": "Ngoại trú định kỳ mỗi 3-6 tháng",
+            "timelinePhases": [ ... ]
+          },
+          {
+            "id": "cp_b",
+            "name": "Child-Pugh B (7-9 điểm) — Mất bù vừa",
+            "badgeText": "Child B",
+            "color": "amber",
+            "criteria": "Child-Pugh 7-9 điểm, báng bụng đáp ứng lợi tiểu",
+            "triage": "Nội trú / Khoa Tiêu hóa Gan mật",
+            "timelinePhases": [ ... ]
+          },
+          {
+            "id": "cp_c",
+            "name": "Child-Pugh C (≥ 10 điểm) — Mất bù nặng / Nguy kịch",
+            "badgeText": "Child C",
+            "color": "rose",
+            "criteria": "Child-Pugh ≥ 10 điểm, não gan, báng kháng trị, nguy cơ ACLF",
+            "triage": "Nội trú chuyên sâu / ICU / Xem xét Ghép gan",
+            "timelinePhases": [ ... ]
+          }
+        ]
+      }
+    ],
+    "combinedProtocols": [
+      {
+        "id": "comb_alcohol_cp_b",
+        "axisSelections": {
+          "axis_etiology": "etio_alcohol",
+          "axis_stage": "cp_b"
+        },
+        "combinedName": "Phác đồ Phối hợp: Xơ Gan Do Rượu — Child-Pugh B",
+        "additionalTreatments": [
+          "Cai rượu tuyệt đối + Bổ sung Thiamine 100mg/ngày",
+          "Spironolactone 100mg + Furosemide 40mg chỉnh liều theo cân nặng",
+          "Tầm soát XHTH vỡ giãn tĩnh mạch thực quản bằng nội soi"
+        ],
+        "keyWarnings": [
+          "Cấm hoàn toàn thuốc độc gan (Paracetamol > 2g/ngày, NSAIDs, Aminoglycoside)",
+          "Theo dõi sát dấu hiệu Viêm phúc mạc nhiễm khuẩn nguyên phát (SBP)"
+        ]
+      }
+    ]
+  },
+  */
 
   "severityGrading": [
     // Sao chép các nhánh tương ứng vào đây để tương thích ngược 100% với hệ thống cũ
@@ -283,6 +407,21 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
 
   "clinicalCautions": {
     "specificTreatmentIndications": "Nguyên tắc điều trị đặc hiệu",
+    "clinicalIndications": [
+      {
+        "category": "Tên nhóm chỉ định (Ví dụ: Chỉ định Truyền Máu & Chế phẩm / Chỉ định Dịch truyền Cao phân tử / Chỉ định Thở máy / Can thiệp)",
+        "badgeText": "Huyết học / Hồi sức / Cấp cứu / Can thiệp",
+        "color": "rose | indigo | cyan | amber | blue",
+        "items": [
+          {
+            "indicationName": "Tên can thiệp / Y lệnh (Ví dụ: Truyền Khối hồng cầu / Truyền Khối tiểu cầu / Đặt TIPS)",
+            "criteria": "Tiêu chuẩn lâm sàng / Ngưỡng chỉ số CLS bắt buộc phải thỏa mãn để ra y lệnh",
+            "orderTarget": "Mục tiêu lâm sàng cần đạt được sau khi thực hiện can thiệp",
+            "note": "Lưu ý an toàn hoặc điều kiện loại trừ kèm theo"
+          }
+        ]
+      }
+    ],
     "criticalWarnings": [
       "Cảnh báo lâm sàng sống còn 1",
       "Cảnh báo lâm sàng sống còn 2"

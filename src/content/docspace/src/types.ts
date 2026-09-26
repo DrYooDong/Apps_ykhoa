@@ -71,11 +71,84 @@ export interface ClinicalBranch {
   patientCounseling?: string;         // Tư vấn bệnh nhân theo nhánh
 }
 
+export type BranchingMode = 'single' | 'multi';
+export type BranchingSelectionFlow = 'sequential' | 'independent' | 'matrix';
+
+export interface BranchAxis {
+  axisId: string;                     // ID trục phân nhánh, vd: 'axis_etiology', 'axis_severity'
+  axisName: string;                   // Tên trục phân loại, vd: 'Phân loại theo Nguyên nhân'
+  axisType: BranchAxisType;           // 'severity' | 'phenotype' | 'stage' ...
+  axisOrder?: number;                 // Thứ tự ưu tiên / bước chọn (1, 2, 3...)
+  isRequired?: boolean;               // Bắt buộc chọn hay tùy chọn
+  description?: string;               // Giải thích nguyên lý trục
+  branches: ClinicalBranch[];         // Các nhánh thuộc trục này
+}
+
+export interface CombinedProtocol {
+  id: string;                         // ID tổ hợp, vd: 'cp_etio_alcohol_severity_cp_b'
+  axisSelections: Record<string, string>; // { [axisId]: branchId }
+  combinedName?: string;              // Tên phác đồ tổ hợp
+  badgeText?: string;
+  color?: string;
+  criteriaSummary?: string;
+  triage?: string;
+  targetVitals?: string;
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
+  drugs?: [string, string, string][];
+  firstLineDrugs?: Array<{
+    drugName: string;
+    class: string;
+    route: string;
+    dosage: string;
+    frequency: string;
+    instructions: string;
+    isFirstLine: boolean;
+  }>;
+  secondLineDrugs?: Array<{
+    drugName: string;
+    class: string;
+    route: string;
+    dosage: string;
+    frequency: string;
+    instructions: string;
+    isFirstLine: boolean;
+  }>;
+  additionalTreatments?: string[];
+  keyWarnings?: string[];
+  monitoring?: string[];
+  cautions?: string[];
+  timelinePhases?: any[];
+  patientCounseling?: string;
+}
+
+export interface ClinicalIndicationItem {
+  indicationName: string;
+  criteria: string;
+  orderTarget?: string;
+  note?: string;
+}
+
+export interface ClinicalIndicationGroup {
+  category: string;
+  badgeText?: string;
+  color?: 'rose' | 'amber' | 'blue' | 'indigo' | 'cyan' | 'purple' | 'emerald' | string;
+  items: Array<ClinicalIndicationItem | string>;
+}
+
 export interface ClinicalBranchingSystem {
-  axisName: string;                   // Tên trục phân loại (VD: 'Phân loại theo Mức độ lâm sàng', 'Phân loại theo Thể nhiễm trùng', 'Phân loại theo Thang điểm CURB-65')
-  axisType: BranchAxisType;           // Loại trục phân loại
+  mode?: BranchingMode;               // 'single' (mặc định cho 1 trục) | 'multi' (cho Đa trục như Xơ gan, COPD, Suy tim)
+  selectionFlow?: BranchingSelectionFlow; // 'sequential' | 'independent' | 'matrix'
+  
+  // Dành cho chế độ Single Axis (hoặc fallback tương thích ngược):
+  axisName?: string;                   // Tên trục phân loại
+  axisType?: BranchAxisType;           // Loại trục phân loại
   description?: string;               // Giải thích nguyên lý phân nhánh của bệnh này
-  branches: ClinicalBranch[];         // Danh sách các nhánh của phác đồ
+  branches?: ClinicalBranch[];         // Danh sách các nhánh của phác đồ
+  
+  // Dành cho chế độ Multi-Axis Branching v4.0:
+  axes?: BranchAxis[];                // Danh sách các trục phân loại độc lập
+  combinedProtocols?: CombinedProtocol[]; // Danh mục phác đồ điều trị tổ hợp khi chọn các trục
 }
 
 export interface ProtocolBySeverity {

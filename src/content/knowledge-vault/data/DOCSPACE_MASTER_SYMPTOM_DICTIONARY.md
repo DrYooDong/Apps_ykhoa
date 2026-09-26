@@ -35,7 +35,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
-| 1 | `tc_sot_cao_dot_ngot_duoi_7_ngay` | Sốt cao đột ngột liên tục ≤ 7 ngày | CN, TT | sốt cao, sốt đột ngột, sốt liên tục, sốt dengue, sot duoi 7 ngay, sốt cao liên tục, sốt cấp tính, sốt khó hạ | `vNhiet >= 38.5` |
+| 1 | `tc_sot_cao_dot_ngot_duoi_7_ngay` | Sốt cao đột ngột liên tục ≤ 7 ngày | CN, TT | sốt cao, sốt đột ngột, sốt liên tục, sốt dengue, sot duoi 7 ngay, sốt cao liên tục, sốt cấp tính, sốt khó hạ | `vNhiet ≥ 38.5` |
 | 2 | `dau_co` | Đau mỏi cơ, nhức khớp và mình mẩy | CN | đau cơ, đau khớp, nhức mỏi, myalgia, arthralgia, đau mình mẩy, nhức mỏi toàn thân, đau nhức xương khớp | — |
 | 3 | `nhuc_hai_ho_mat` | Nhức hai hốc mắt (Retro-orbital pain) | CN | nhức hốc mắt, đau sau hốc mắt, nhức mắt, retro-orbital, đau hố mắt, nhức hai bên hốc mắt, đau hốc mắt | — |
 | 4 | `met_moi` | Mệt mỏi toàn thân, mệt lả, chán ăn, suy kiệt | CN | mệt mỏi, chán ăn, kiệt sức, mệt lả, fatigue, uể oải toàn thân, suy nhược, ăn uống kém | — |
@@ -47,7 +47,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 1 | `mach_nhanh` | Mạch nhanh (> 100 lần/phút) | TT | mạch nhanh, nhịp tim nhanh, tachycardia, mạch > 100, nhịp tim nhanh, mạch quay nhanh, tim đập nhanh | `vMach > 100` |
 | 2 | `ha_huyet_ap` | Huyết áp tụt (< 90 mmHg) | TT | huyết áp tụt, hạ huyết áp, hypotension, ha thap, tụt huyết áp, hatt < 90, huyết áp thấp | `vHATT < 90` |
 | 3 | `chi_lanh_crt_keo_dai` | Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch (CRT) kéo dài > 2 giây | TT | chi lạnh, crt kéo dài, đầu chi lạnh ẩm, capillary refill, tay chân lạnh, chi mát ẩm, crt > 2s, tưới máu ngoại biên kém | — |
-| 4 | `tc_soc_mach_nhanh_ha_kep_hoac_tut` | Sốc SXH Dengue: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp | TT | sốc, sốc sxh, huyết áp kẹp, mạch nhanh nhỏ, dengue shock syndrome, sốc giảm thể tích, hiệu áp kẹp, dss | `vHATT <= 90` |
+| 4 | `tc_soc_mach_nhanh_ha_kep_hoac_tut` | Sốc SXH Dengue: Mạch nhanh nhỏ, HA kẹp (≤ 20 mmHg) hoặc Tụt huyết áp | TT | sốc, sốc sxh, huyết áp kẹp, mạch nhanh nhỏ, dengue shock syndrome, sốc giảm thể tích, hiệu áp kẹp, dss | `vHATT ≤ 90` |
 
 ### 3. Hệ Hô hấp & Lồng ngực (`ho-hap.json` — 3 mục)
 
@@ -62,7 +62,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
 | 1 | `buon_non_non` | Buồn nôn / Nôn ói | CN | buồn nôn, nôn ói, nausea, vomiting, nôn nhiều, mắc ói, nôn khan, nôn mửa | — |
-| 2 | `tc_dau_hieu_canh_bao_dau_bung_gan_non_oi` | Đau bụng vùng gan, nôn ói liên tục (Dấu hiệu cảnh báo) | CN, TT | đau bụng gan, đau hạ sườn phải, nôn ói nhiều, dấu hiệu cảnh báo, nôn ói liên tục, đau HSP liên tục, nôn ói >= 3 lần/1h, nôn ói >= 4 lần/6h | — |
+| 2 | `tc_dau_hieu_canh_bao_dau_bung_gan_non_oi` | Đau bụng vùng gan, nôn ói liên tục (Dấu hiệu cảnh báo) | CN, TT | đau bụng gan, đau hạ sườn phải, nôn ói nhiều, dấu hiệu cảnh báo, nôn ói liên tục, đau HSP liên tục, nôn ói ≥ 3 lần/1h, nôn ói ≥ 4 lần/6h | — |
 | 3 | `gan_to_dau` | Gan to > 2cm dưới bờ sườn kèm ấn đau tức | TT | gan to, bờ sườn, gan mấp mé, ấn đau vùng gan, hepatomegaly, gan to quá bờ sườn, gan lớn đau, gan to dưới bờ sườn | — |
 | 4 | `non_ra_mau_phan_den` | Xuất huyết tiêu hóa: Nôn ra máu / Đi cầu phân đen | CN, TT | nôn ra máu, tiêu phân đen, hematemesis, melena, xuất huyết tiêu hóa, ó ra máu, đi tiêu phân đen hắc ín, ỉa phân đen | — |
 
@@ -85,12 +85,12 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
-| 1 | `tc_co_dac_mau_hct_tang_tren_20_phan_tram` | Cô đặc máu (Hematocrit tăng ≥ 20% so với giá trị nền hoặc Hct > 45%) | CLS | cô đặc máu, hct tăng, hematocrit tăng, hct tang cao, thoát huyết tương, hct tăng dốc đứng, hct > 45%, máu cô đặc | `lHct >= 42` |
-| 2 | `tc_giam_tieu_cau_duoi_100_g_l` | Tiểu cầu giảm sâu dốc đứng < 100 G/L | CLS | tiểu cầu giảm, giảm tiểu cầu, plt tụt, plt < 100, thrombocytopenia, tiểu cầu tụt dốc, tiểu cầu < 100, tiểu cầu giảm dốc đứng | `lTC <= 100` |
+| 1 | `tc_co_dac_mau_hct_tang_tren_20_phan_tram` | Cô đặc máu (Hematocrit tăng ≥ 20% so với giá trị nền hoặc Hct > 45%) | CLS | cô đặc máu, hct tăng, hematocrit tăng, hct tang cao, thoát huyết tương, hct tăng dốc đứng, hct > 45%, máu cô đặc | `lHct ≥ 42` |
+| 2 | `tc_giam_tieu_cau_duoi_100_g_l` | Tiểu cầu giảm sâu dốc đứng < 100 G/L | CLS | tiểu cầu giảm, giảm tiểu cầu, plt tụt, plt < 100, thrombocytopenia, tiểu cầu tụt dốc, tiểu cầu < 100, tiểu cầu giảm dốc đứng | `lTC ≤ 100` |
 | 3 | `tc_xet_nghiem_ns1_hoac_pcr_duong_tinh` | Xét nghiệm Dengue NS1 Ag (+) hoặc RT-PCR (+) | CLS | ns1, pcr dengue, kháng nguyên ns1, ns1 duong tinh, ns1 ag (+), dengue rna (+), xét nghiệm ns1, test nhanh ns1 (+) | — |
 | 4 | `tran_dich_mang_phoi_mang_bung` | Tràn dịch màng phổi, tràn dịch màng bụng, phù nề thành túi mật trên siêu âm/X-quang | CLS, TT | tràn dịch màng phổi, tràn dịch màng bụng, cổ trướng, thoát huyết tương, phù nề thành túi mật, dịch màng phổi, dịch tự do ổ bụng, dày thành túi mật | — |
-| 5 | `men_gan_tang` | Men gan AST/ALT tăng cao (≥ 2 lần giới hạn bình thường) | CLS | men gan tăng, ast tăng, alt tăng, tổn thương gan, transaminase, men gan cao, ast/alt tăng, tăng transaminase | `lAST >= 80` |
-| 6 | `men_gan_ast_alt_tang_tren_1000` | Tổn thương gan nặng / Suy gan cấp (AST hoặc ALT ≥ 1000 U/L) | CLS | ast >= 1000, alt >= 1000, suy gan cấp, tổn thương gan nặng, men gan >= 1000, suy gan cấp do dengue, hoại tử tế bào gan nặng | `lAST >= 1000` |
+| 5 | `men_gan_tang` | Men gan AST/ALT tăng cao (≥ 2 lần giới hạn bình thường) | CLS | men gan tăng, ast tăng, alt tăng, tổn thương gan, transaminase, men gan cao, ast/alt tăng, tăng transaminase | `lAST ≥ 80` |
+| 6 | `men_gan_ast_alt_tang_tren_1000` | Tổn thương gan nặng / Suy gan cấp (AST hoặc ALT ≥ 1000 U/L) | CLS | ast ≥ 1000, alt ≥ 1000, suy gan cấp, tổn thương gan nặng, men gan ≥ 1000, suy gan cấp do dengue, hoại tử tế bào gan nặng | `lAST ≥ 1000` |
 
 ### 8. Hệ Tiết niệu & Chức năng thận (`tiet-nieu.json` — 1 mục)
 

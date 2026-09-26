@@ -14,6 +14,7 @@ import {
 import {
   Benh,
   ClinicalFormState,
+  CombinedProtocol,
   KnowledgeBase,
   LabsState,
   VitalsState,
@@ -181,6 +182,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   // Severity Grade & Active Complication State
   const [selectedGradeIdx, setSelectedGradeIdx] = useState<number>(0);
   const [activeComplicationIndices, setActiveComplicationIndices] = useState<Set<number>>(new Set());
+
+  // Trạng thái lựa chọn nhánh Đa trục (Multi-Axis Branching v4.0)
+  const [selectedAxes, setSelectedAxes] = useState<Record<string, string>>({});
 
   // Bảng mapping từ ID phân độ con sang bệnh mẹ và phân độ mặc định
   const SUB_DISEASE_TO_PARENT_MAP: Record<string, { parentId: string; gradeIdx: number }> = useMemo(() => ({
@@ -381,10 +385,90 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
   }, [initialComplicationId, activeChain]);
 
+  // Khởi tạo mặc định các trục khi bệnh lý có chế độ Multi-Axis
+  useEffect(() => {
+    if (activeChain?.branching?.mode === 'multi' && activeChain?.branching?.axes) {
+      const initialAxes: Record<string, string> = {};
+      activeChain.branching.axes.forEach((axis) => {
+        initialAxes[axis.axisId] = axis.branches[0]?.id || '';
+      });
+      setSelectedAxes(initialAxes);
+    } else {
+      setSelectedAxes({});
+    }
+  }, [activeChain?.diseaseName, activeChain?.icdCode]);
+
+  const handleSelectAxisBranch = (axisId: string, branchId: string) => {
+    setSelectedAxes((prev) => ({
+      ...prev,
+      [axisId]: branchId,
+    }));
+  };
+
+  // Tìm kiếm phác đồ phối hợp (Combined Protocol) khớp với các lựa chọn trục hiện tại
+  const activeCombinedProtocol = useMemo<CombinedProtocol | null>(() => {
+    if (activeChain?.branching?.mode !== 'multi' || !activeChain?.branching?.combinedProtocols) {
+      return null;
+    }
+    return (
+      activeChain.branching.combinedProtocols.find((cp) => {
+        return Object.entries(cp.axisSelections).every(([aId, bId]) => selectedAxes[aId] === bId);
+      }) || null
+    );
+  }, [activeChain, selectedAxes]);
+
+  // Danh sách các đối tượng nhánh đang được chọn trên từng trục
+  const activeSelectedBranches = useMemo(() => {
+    if (activeChain?.branching?.mode !== 'multi' || !activeChain?.branching?.axes) {
+      return [];
+    }
+    return activeChain.branching.axes
+      .map((axis) => {
+        const bId = selectedAxes[axis.axisId] || axis.branches[0]?.id;
+        return axis.branches.find((b) => b.id === bId) || axis.branches[0];
+      })
+      .filter(Boolean);
+  }, [activeChain, selectedAxes]);
+
   // Available Severity Grades / Dynamic Clinical Branches
   const severityGrades: SeverityGradingItem[] = useMemo(() => {
     if (activeChain?.hasSeverityGrading === false || activeChain?.stagingType === 'none') {
       return [];
+    }
+    // 0. HỆ THỐNG ĐA TRỤC PHÂN NHÁNH (MULTI-AXIS BRANCHING v4.0):
+    // Ánh xạ các nhánh của trục giai đoạn/mức độ (stage hoặc severity) làm danh sách đại diện
+    if (activeChain?.branching?.mode === 'multi' && activeChain.branching.axes && activeChain.branching.axes.length > 0) {
+      const mainAxis =
+        activeChain.branching.axes.find((a) => a.axisType === 'stage' || a.axisType === 'severity') ||
+        activeChain.branching.axes[0];
+      return mainAxis.branches.map((b) => ({
+        grade: b.name,
+        severity: (b.color === 'rose' || b.color === 'red'
+          ? 'critical'
+          : b.color === 'amber'
+          ? 'moderate'
+          : b.color === 'emerald'
+          ? 'mild'
+          : 'moderate') as any,
+        criteria: b.criteria,
+        triage: b.triage || 'Theo dõi lâm sàng',
+        primaryAction: b.targetVitals || '',
+        targetVitals: b.targetVitals || '',
+        escalationCriteria: b.escalationCriteria,
+        dischargeCriteria: b.dischargeCriteria,
+        protocol: {
+          title: b.name,
+          tuyen: b.triage ? [b.triage] : [],
+          drugs: b.drugs,
+          firstLineDrugs: b.firstLineDrugs,
+          timelinePhases: b.timelinePhases,
+          monitoring: b.monitoring,
+          cautions: b.cautions,
+          escalationCriteria: b.escalationCriteria,
+          dischargeCriteria: b.dischargeCriteria,
+          patientCounseling: b.patientCounseling,
+        },
+      }));
     }
     // 1. Ưu tiên cao nhất: Hệ thống 6 Trục Phân Nhánh Lâm Sàng v3.0 (branching.branches)
     if (activeChain?.branching?.branches && activeChain.branching.branches.length > 0) {
@@ -506,8 +590,66 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     return severityGrades[selectedGradeIdx] || severityGrades[0];
   }, [severityGrades, selectedGradeIdx]);
 
-  // Phác đồ điều trị phân độ
+  // Phác đồ điều trị phân độ (Hỗ trợ cả Single-Axis và Multi-Axis)
   const phacDo = useMemo(() => {
+    // 0. Nếu là Multi-Axis có CombinedProtocol hoặc các nhánh đang chọn
+    if (activeChain?.branching?.mode === 'multi') {
+      if (activeCombinedProtocol) {
+        const tuyen = activeCombinedProtocol.triage
+          ? [activeCombinedProtocol.triage]
+          : activeSeverityGrade?.protocol?.tuyen || currentDisease?.phacDo?.tuyen || [];
+
+        // Thuốc: lấy từ combinedProtocol hoặc gộp từ các nhánh đang chọn
+        let thuoc: Array<[string, string, string]> = [];
+        if (activeCombinedProtocol.drugs && activeCombinedProtocol.drugs.length > 0) {
+          thuoc = activeCombinedProtocol.drugs;
+        } else {
+          // Gộp thuốc từ tất cả nhánh đang chọn
+          const drugSet = new Set<string>();
+          activeSelectedBranches.forEach((branch) => {
+            if (branch.drugs) {
+              branch.drugs.forEach((d) => {
+                const key = `${d[0]}|${d[1]}`;
+                if (!drugSet.has(key)) {
+                  drugSet.add(key);
+                  thuoc.push(d);
+                }
+              });
+            }
+          });
+          if (thuoc.length === 0 && currentDisease?.phacDo?.thuoc) {
+            thuoc = currentDisease.phacDo.thuoc;
+          }
+        }
+
+        const theoDoi = [
+          ...(activeCombinedProtocol.monitoring || []),
+          ...activeSelectedBranches.flatMap((b) => b.monitoring || []),
+        ];
+
+        const luuY = [
+          ...(activeCombinedProtocol.keyWarnings || []),
+          ...(activeCombinedProtocol.cautions || []),
+          ...activeSelectedBranches.flatMap((b) => b.cautions || []),
+        ];
+
+        const nguon = [
+          activeCombinedProtocol.combinedName ||
+            activeChain?.protocol?.guideline ||
+            currentDisease?.phacDo?.nguon?.[0] ||
+            'Hướng dẫn chẩn đoán và điều trị Bộ Y tế',
+        ];
+
+        return {
+          tuyen,
+          thuoc: thuoc.length > 0 ? thuoc : currentDisease?.phacDo?.thuoc || [],
+          theoDoi: theoDoi.length > 0 ? theoDoi : currentDisease?.phacDo?.theoDoi || [],
+          luuY: luuY.length > 0 ? luuY : currentDisease?.phacDo?.luuY || [],
+          nguon,
+        };
+      }
+    }
+
     if (activeSeverityGrade?.protocol) {
       const sp = activeSeverityGrade.protocol;
       const tuyen = sp.tuyen || sp.initialManagement || currentDisease?.phacDo?.tuyen || [];
@@ -551,11 +693,27 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         nguon: ['Hướng dẫn chẩn đoán và điều trị Bộ Y tế Việt Nam'],
       }
     );
-  }, [activeSeverityGrade, activeChain, currentDisease]);
+  }, [activeSeverityGrade, activeChain, currentDisease, activeCombinedProtocol, activeSelectedBranches]);
 
   // Timeline phases - Cơ chế phân giải đa tầng: Phân độ riêng -> Protocol của Chain -> Root Chain -> phacDo -> Thư viện timeline
   const timelinePhases = useMemo(() => {
     if (!currentDisease) return [];
+    // 0. Nếu là Multi-Axis và có CombinedProtocol có timelinePhases
+    if (activeChain?.branching?.mode === 'multi') {
+      if (
+        activeCombinedProtocol?.timelinePhases &&
+        Array.isArray(activeCombinedProtocol.timelinePhases) &&
+        activeCombinedProtocol.timelinePhases.length > 0
+      ) {
+        return activeCombinedProtocol.timelinePhases;
+      }
+      // Hoặc tìm timelinePhases từ nhánh giai đoạn/mức độ đang chọn
+      for (const branch of activeSelectedBranches) {
+        if (branch.timelinePhases && Array.isArray(branch.timelinePhases) && branch.timelinePhases.length > 0) {
+          return branch.timelinePhases;
+        }
+      }
+    }
     // 1. Phân độ cụ thể đang chọn có timelinePhases riêng
     if (
       activeSeverityGrade?.protocol?.timelinePhases &&
@@ -595,7 +753,14 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       activeSeverityGrade,
       phacDo
     );
-  }, [currentDisease, activeSeverityGrade, phacDo, activeChain]);
+  }, [
+    currentDisease,
+    activeSeverityGrade,
+    phacDo,
+    activeChain,
+    activeCombinedProtocol,
+    activeSelectedBranches,
+  ]);
 
   const allPrescribedDrugNames = useMemo(() => {
     const list: string[] = [];
@@ -974,6 +1139,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
               onOpenVaultDrawer={onOpenVaultDrawer}
               targetTab={targetClassificationTab}
+              selectedAxes={selectedAxes}
+              onSelectAxisBranch={handleSelectAxisBranch}
+              activeCombinedProtocol={activeCombinedProtocol}
             />
           </CollapsibleProtocolSection>
 
@@ -1027,6 +1195,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               renalStage={patientPhenotype.ckdStage}
               onOpenVaultDrawer={onOpenVaultDrawer}
               onOpenCdssModal={onOpenCdssModal}
+              activeCombinedProtocol={activeCombinedProtocol}
             />
           </CollapsibleProtocolSection>
 
@@ -1044,7 +1213,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               </div>
             }
             title="3. Lưu ý lâm sàng"
-            subtitle="[1] Lưu ý, cảnh báo quan trọng &bull; [2] Chống chỉ định &bull; [3] Tiêu chuẩn xuất viện hoặc chuyển tuyến"
+            subtitle="[1] Chỉ định can thiệp &amp; Y lệnh &bull; [2] Cảnh báo quan trọng &bull; [3] Chống chỉ định &bull; [4] Tiêu chuẩn xuất viện"
             badgeText={`${phacDo.luuY.length} lưu ý & CCĐ`}
             badgeColor="bg-amber-100 text-amber-800 border-amber-200"
             containerClassName="bg-amber-50/20 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
@@ -1064,15 +1233,16 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               })()}
               structuredCautions={(() => {
                 const raw =
-                  (activeChain as any)?.protocol?.cautionsAndDischarge ||
-                  (activeChain as any)?.cautionsAndDischarge ||
                   (activeChain as any)?.clinicalCautions ||
-                  (activeChain as any)?.protocol?.clinicalCautions;
+                  (activeChain as any)?.protocol?.clinicalCautions ||
+                  (activeChain as any)?.protocol?.cautionsAndDischarge ||
+                  (activeChain as any)?.cautionsAndDischarge;
                 if (!raw) return undefined;
                 return {
-                  cautions: raw.cautions || raw.warnings || [],
+                  cautions: raw.criticalWarnings || raw.cautions || raw.warnings || [],
                   contraindications: raw.contraindications || [],
                   dischargeCriteria: raw.dischargeCriteria || [],
+                  clinicalIndications: raw.clinicalIndications || raw.treatmentIndications || raw.indications || [],
                 };
               })()}
             />

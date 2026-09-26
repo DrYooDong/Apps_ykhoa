@@ -12,6 +12,7 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
+import { CombinedProtocol } from '../../types.ts';
 
 interface SeverityGradingPanelProps {
   severityGrades: SeverityGradingItem[];
@@ -19,6 +20,9 @@ interface SeverityGradingPanelProps {
   onSelectGradeIdx: (idx: number) => void;
   autoSuggestedGradeIndex?: number;
   activeChain?: DiseaseReactionChainDefinition;
+  selectedAxes?: Record<string, string>;
+  onSelectAxisBranch?: (axisId: string, branchId: string) => void;
+  activeCombinedProtocol?: CombinedProtocol | null;
 }
 
 export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
@@ -27,7 +31,15 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
   onSelectGradeIdx,
   autoSuggestedGradeIndex = 0,
   activeChain,
+  selectedAxes = {},
+  onSelectAxisBranch,
+  activeCombinedProtocol,
 }) => {
+  const isMultiAxis = Boolean(
+    activeChain?.branching?.mode === 'multi' &&
+    activeChain?.branching?.axes &&
+    activeChain.branching.axes.length > 0
+  );
   return (
     <div className="bg-gradient-to-br from-indigo-50/90 via-blue-50/40 to-slate-50 border-2 border-indigo-200/90 rounded-xl p-4 sm:p-5 shadow-xs flex flex-col gap-4">
       {/* Header */}
@@ -61,7 +73,180 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
       </div>
 
       {/* Phần 1: Các nút chọn Phân độ / Thể bệnh / Phân nhánh (Severity Staging & Phenotypes Grid) */}
-      {severityGrades.length === 0 ? (
+      {isMultiAxis ? (
+        /* ========================================================================= */
+        /* 🌿 MULTI-AXIS CLINICAL BRANCHING ENGINE v4.0 (ĐA TRỤC PHÂN NHÁNH)         */
+        /* ========================================================================= */
+        <div className="flex flex-col gap-4">
+          <div className="p-3 bg-indigo-900/10 border border-indigo-200/80 rounded-lg flex items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <Compass className="w-4 h-4 text-indigo-700 shrink-0" />
+              <span className="text-indigo-950 font-semibold">
+                <b>Phân nhánh đa trục phối hợp:</b> Chọn lần lượt từng trục lâm sàng bên dưới để hệ thống định hình phác đồ điều trị tổ hợp tối ưu.
+              </span>
+            </div>
+            <span className="px-2 py-0.5 rounded text-[10.5px] font-mono bg-indigo-100 text-indigo-700 font-bold shrink-0">
+              {activeChain?.branching?.axes?.length || 2} TRỤC ĐỘC LẬP
+            </span>
+          </div>
+
+          {/* Danh sách các trục */}
+          {activeChain?.branching?.axes?.map((axis, axisIdx) => {
+            const currentSelectedBranchId = selectedAxes[axis.axisId] || axis.branches[0]?.id;
+            return (
+              <div key={axis.axisId} className="bg-white/80 border border-indigo-100 rounded-lg p-3.5 flex flex-col gap-2.5 shadow-2xs">
+                {/* Header trục */}
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-indigo-600 text-white text-[11px] font-bold flex items-center justify-center">
+                      {axis.axisOrder || axisIdx + 1}
+                    </span>
+                    <span className="font-bold text-xs sm:text-sm text-slate-900">
+                      {axis.axisName}
+                    </span>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono bg-slate-100 text-slate-600 border border-slate-200">
+                      {axis.axisType.toUpperCase()}
+                    </span>
+                  </div>
+                  {axis.description && (
+                    <span className="text-[11px] text-slate-500 italic">
+                      {axis.description}
+                    </span>
+                  )}
+                </div>
+
+                {/* Grid các branches của trục này */}
+                <div className={`grid ${
+                  axis.branches.length === 1
+                    ? 'grid-cols-1'
+                    : axis.branches.length === 2
+                    ? 'grid-cols-1 sm:grid-cols-2'
+                    : axis.branches.length === 3
+                    ? 'grid-cols-1 sm:grid-cols-3'
+                    : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                } gap-2`}>
+                  {axis.branches.map((b) => {
+                    const isSelected = currentSelectedBranchId === b.id;
+                    const c = (b.color || '').toLowerCase();
+                    let activeStyles = 'border-indigo-500 bg-indigo-50/90 text-indigo-950 ring-2 ring-indigo-500';
+                    let pillStyles = 'bg-indigo-100 text-indigo-700';
+
+                    if (c === 'emerald' || c === 'green') {
+                      activeStyles = 'border-emerald-500 bg-emerald-50/90 text-emerald-950 ring-2 ring-emerald-500';
+                      pillStyles = 'bg-emerald-100 text-emerald-800';
+                    } else if (c === 'amber' || c === 'orange') {
+                      activeStyles = 'border-amber-500 bg-amber-50/90 text-amber-950 ring-2 ring-amber-500';
+                      pillStyles = 'bg-amber-100 text-amber-800';
+                    } else if (c === 'rose' || c === 'red') {
+                      activeStyles = 'border-rose-500 bg-rose-50/90 text-rose-950 ring-2 ring-rose-500';
+                      pillStyles = 'bg-rose-100 text-rose-800';
+                    } else if (c === 'blue' || c === 'sky') {
+                      activeStyles = 'border-blue-500 bg-blue-50/90 text-blue-950 ring-2 ring-blue-500';
+                      pillStyles = 'bg-blue-100 text-blue-800';
+                    }
+
+                    return (
+                      <button
+                        key={b.id}
+                        type="button"
+                        onClick={() => onSelectAxisBranch && onSelectAxisBranch(axis.axisId, b.id)}
+                        className={`p-2.5 rounded-lg border text-left flex flex-col justify-between gap-1.5 transition-all cursor-pointer ${
+                          isSelected
+                            ? `${activeStyles} shadow-xs font-semibold scale-[1.01]`
+                            : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-1.5">
+                          <span className="text-xs leading-snug">{b.name}</span>
+                          {b.badgeText && (
+                            <span className={`px-1.5 py-0.2 rounded text-[10px] shrink-0 font-medium ${pillStyles}`}>
+                              {b.badgeText}
+                            </span>
+                          )}
+                        </div>
+                        {b.criteria && (
+                          <p className="text-[10.5px] text-slate-500 line-clamp-2 leading-relaxed">
+                            {b.criteria}
+                          </p>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Banner Tổ Hợp Phác Đồ Đang Chọn (Active Combined Protocol Banner) */}
+          <div className="bg-white border-2 border-indigo-300 rounded-xl p-4 shadow-xs flex flex-col gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-indigo-100 pb-2.5">
+              <div className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-indigo-600 shrink-0" />
+                <span className="font-bold text-sm text-indigo-950">
+                  {activeCombinedProtocol?.combinedName || 'Phác đồ Tổ Hợp Lâm Sàng Đang Áp Dụng'}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {activeChain?.branching?.axes?.map((axis) => {
+                  const bId = selectedAxes[axis.axisId] || axis.branches[0]?.id;
+                  const b = axis.branches.find((item) => item.id === bId);
+                  return (
+                    <span key={axis.axisId} className="px-2 py-0.5 rounded text-[11px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                      {b?.badgeText || b?.name}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Cảnh báo đặc thù tổ hợp nếu có */}
+            {activeCombinedProtocol?.keyWarnings && activeCombinedProtocol.keyWarnings.length > 0 && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex flex-col gap-1.5 text-xs text-red-900">
+                <div className="flex items-center gap-1.5 font-bold text-red-950">
+                  <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
+                  <span>CẢNH BÁO SỐNG CÒN RIÊNG CHO TỔ HỢP NÀY:</span>
+                </div>
+                <ul className="list-disc list-inside space-y-0.5 text-[11.5px]">
+                  {activeCombinedProtocol.keyWarnings.map((w, wIdx) => (
+                    <li key={wIdx} className="leading-relaxed font-medium">{w}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Y lệnh bổ sung đặc thù tổ hợp nếu có */}
+            {activeCombinedProtocol?.additionalTreatments && activeCombinedProtocol.additionalTreatments.length > 0 && (
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 flex flex-col gap-1.5 text-xs text-amber-900">
+                <div className="flex items-center gap-1.5 font-bold text-amber-950">
+                  <Zap className="w-3.5 h-3.5 text-amber-600" />
+                  <span>Y LỆNH & ĐIỀU TRỊ BỔ SUNG ĐẶC THÙ TỔ HỢP:</span>
+                </div>
+                <ul className="list-disc list-inside space-y-0.5 text-[11.5px]">
+                  {activeCombinedProtocol.additionalTreatments.map((t, tIdx) => (
+                    <li key={tIdx} className="leading-relaxed font-semibold">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Tuyến & Mục tiêu tổ hợp */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+                <span className="font-bold text-slate-700 block mb-1">Tuyến tiếp nhận:</span>
+                <span className="text-slate-900 font-semibold">
+                  {activeCombinedProtocol?.triage || severityGrades[selectedGradeIdx]?.triage || 'Nội trú Chuyên khoa Gan mật'}
+                </span>
+              </div>
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+                <span className="font-bold text-slate-700 block mb-1">Mục tiêu lâm sàng:</span>
+                <span className="text-slate-900 font-semibold">
+                  {activeCombinedProtocol?.targetVitals || severityGrades[selectedGradeIdx]?.targetVitals || 'Duy trì chức năng tạng và phòng ngừa biến cố mất bù.'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : severityGrades.length === 0 ? (
         <div className="p-3.5 bg-indigo-50/70 border border-indigo-200 rounded-lg flex items-center justify-between gap-3 text-xs text-indigo-950">
           <div className="flex items-center gap-2">
             <Activity className="w-4 h-4 text-indigo-600 shrink-0" />

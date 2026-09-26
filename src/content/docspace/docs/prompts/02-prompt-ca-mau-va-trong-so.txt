@@ -29,9 +29,14 @@ Prompt này dùng khi bạn muốn tạo:
    - "dt" (Đặc trưng): Triệu chứng hoặc xét nghiệm then chốt, có tính khẳng định cao (Trọng số 4.0 - 5.0).
    - "gy" (Gợi ý): Dấu hiệu lâm sàng thường gặp của hội chứng (Trọng số 2.5 - 3.5).
    - "ht" (Hỗ trợ): Dấu hiệu bổ trợ, không đặc hiệu (Trọng số 1.0 - 2.0).
-   - "loaitru" (Loại trừ): Nếu xuất hiện dấu hiệu này thì làm giảm mạnh hoặc loại trừ chẩn đoán.
-3. ĐẦU RA:
-   Xuất ra 02 khối code JSON chuẩn xác.
+   - "loaitru" (Loại trừ): Nếu xuất hiện dấu hiệu này thì làm giảm mạnh hoặc loại trừ chẩn đoán (Trọng số âm).
+3. QUY CHUẨN VIẾT TẮT, KÝ TỰ Y KHOA & KHỬ HTML ENTITIES (BẮT BUỘC):
+   - 100% từ viết tắt y khoa chuẩn: HA, HATT, HATTr, M, NT, SpO₂, CRT, GCS, Hct, PLT, WBC, AST, ALT, eGFR, CTM, KMĐM, XQ, SA, CT, MRI, ECG.
+   - Toán tử & Đơn vị SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L.
+   - Tuyệt đối không để rò rỉ mã HTML: Viết thẳng <, >, " thay vì &lt;, &gt;, &quot;, &amp;.
+   - Lược bỏ tiền tố thừa trong mô tả ca bệnh và nhãn triệu chứng.
+4. ĐẦU RA:
+   Xuất ra đúng 02 khối code JSON chuẩn xác.
 
 --------------------------------------------------------------------------------
 📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:

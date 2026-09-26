@@ -106,11 +106,69 @@ export interface ClinicalBranch {
   patientCounseling?: string;
 }
 
-export interface ClinicalBranchingSystem {
+export interface BranchAxis {
+  axisId: string;
   axisName: string;
   axisType: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
+  axisOrder?: number;
+  isRequired?: boolean;
   description?: string;
   branches: ClinicalBranch[];
+}
+
+export interface CombinedProtocol {
+  id: string;
+  axisSelections: Record<string, string>;
+  combinedName?: string;
+  badgeText?: string;
+  color?: string;
+  criteriaSummary?: string;
+  triage?: string;
+  targetVitals?: string;
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
+  drugs?: [string, string, string][];
+  firstLineDrugs?: DrugChainOption[];
+  secondLineDrugs?: DrugChainOption[];
+  additionalTreatments?: string[];
+  keyWarnings?: string[];
+  monitoring?: string[];
+  cautions?: string[];
+  timelinePhases?: any[];
+}
+
+export interface ClinicalIndicationItem {
+  indicationName: string;
+  criteria: string;
+  orderTarget?: string;
+  note?: string;
+}
+
+export interface ClinicalIndicationGroup {
+  category: string;
+  badgeText?: string;
+  color?: string;
+  items: Array<ClinicalIndicationItem | string>;
+}
+
+export interface ClinicalCautionsDefinition {
+  specificTreatmentIndications?: string;
+  criticalWarnings?: string[];
+  contraindications?: string[];
+  dischargeCriteria?: string[];
+  clinicalIndications?: Array<ClinicalIndicationGroup | ClinicalIndicationItem | string>;
+  treatmentIndications?: Array<ClinicalIndicationGroup | ClinicalIndicationItem | string>;
+}
+
+export interface ClinicalBranchingSystem {
+  mode?: 'single' | 'multi';
+  selectionFlow?: 'sequential' | 'independent' | 'matrix';
+  axisName?: string;
+  axisType?: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
+  description?: string;
+  branches?: ClinicalBranch[];
+  axes?: BranchAxis[];
+  combinedProtocols?: CombinedProtocol[];
 }
 
 export interface DiseaseReactionChainDefinition {
@@ -157,6 +215,9 @@ export interface DiseaseReactionChainDefinition {
 
   // Liên kết 16 Kho Tri thức
   vaultPathways: VaultPathwayLink[];
+
+  // Lưu ý lâm sàng, Cảnh báo, Chống chỉ định & Chỉ định can thiệp
+  clinicalCautions?: ClinicalCautionsDefinition;
 
   // Lộ trình & Phác đồ theo phân độ (Nested Protocols)
   timelinePhases?: any[];
