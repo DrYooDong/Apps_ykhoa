@@ -396,10 +396,9 @@ export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefin
     ]
   },
 
+  // 3. XƠ GAN & TĂNG ÁP LỰC TĨNH MẠCH CỬA (CIRRHOSIS) - K70-K74 (Đã ánh xạ qua Enriched CDSS ở trên)
   // ─────────────────────────────────────────────────────────────────────────────
-  // 3. XƠ GAN & TĂNG ÁP LỰC TĨNH MẠCH CỬA (CIRRHOSIS) - K70-K74 (Enriched CDSS xo_gan.json)
-  // ─────────────────────────────────────────────────────────────────────────────
-  'xo_gan': ENRICHED_DISEASES['xo_gan'],
+
 
 
   // ─────────────────────────────────────────────────────────────────────────────
