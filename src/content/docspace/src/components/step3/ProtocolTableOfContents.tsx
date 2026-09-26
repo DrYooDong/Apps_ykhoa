@@ -32,6 +32,7 @@ export interface ProtocolTableOfContentsProps {
   cautionsCount: number;
   guidelinesCount: number;
   soapCasesCount: number;
+  classificationSubItems?: Array<{ id: string; label: string; alertCount?: number }>;
   onExpandAll: () => void;
   onCollapseAll: () => void;
 }
@@ -51,6 +52,7 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
   cautionsCount,
   guidelinesCount,
   soapCasesCount,
+  classificationSubItems,
   onExpandAll,
   onCollapseAll,
 }) => {
@@ -70,15 +72,18 @@ export const ProtocolTableOfContents: React.FC<ProtocolTableOfContentsProps> = (
       activeBorderClass: 'border-indigo-500 bg-indigo-50/60',
       badge: severityGradesCount > 0 ? `${severityGradesCount} ${isPhenotypeStaging ? 'thể' : 'độ'}` : 'Toàn diện',
       badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      subItems: [
-        { id: 'sub-1a', label: isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ' },
-        {
-          id: 'sub-1b',
-          label: '1b. Tầm soát biến chứng',
-          alertCount: activeComplicationsCount > 0 ? activeComplicationsCount : undefined,
-        },
-        { id: 'sub-1c', label: '1c. Cơ địa & Chỉnh liều eGFR' },
-      ],
+      subItems:
+        classificationSubItems && classificationSubItems.length > 0
+          ? classificationSubItems
+          : [
+              { id: 'sub-1a', label: isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ' },
+              {
+                id: 'sub-1b',
+                label: '1b. Tầm soát biến chứng',
+                alertCount: activeComplicationsCount > 0 ? activeComplicationsCount : undefined,
+              },
+              { id: 'sub-1c', label: '1c. Cơ địa & Chỉnh liều eGFR' },
+            ],
     },
     {
       id: 'protocol',

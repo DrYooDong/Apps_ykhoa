@@ -77,6 +77,8 @@ export type BranchingSelectionFlow = 'sequential' | 'independent' | 'matrix';
 export interface BranchAxis {
   axisId: string;                     // ID trục phân nhánh, vd: 'axis_etiology', 'axis_severity'
   axisName: string;                   // Tên trục phân loại, vd: 'Phân loại theo Nguyên nhân'
+  axisLabelShort?: string;            // Nhãn tab ngắn, vd: 'Nguyên nhân', 'Mức độ', 'Can thiệp'
+  axisIcon?: string;                  // Tên Lucide icon (e.g. 'Gauge', 'Dna', 'Syringe', 'Layers')
   axisType: BranchAxisType;           // 'severity' | 'phenotype' | 'stage' ...
   axisOrder?: number;                 // Thứ tự ưu tiên / bước chọn (1, 2, 3...)
   isRequired?: boolean;               // Bắt buộc chọn hay tùy chọn
@@ -142,6 +144,8 @@ export interface ClinicalBranchingSystem {
   
   // Dành cho chế độ Single Axis (hoặc fallback tương thích ngược):
   axisName?: string;                   // Tên trục phân loại
+  axisLabelShort?: string;            // Nhãn tab ngắn cho single axis
+  axisIcon?: string;                  // Icon cho single axis
   axisType?: BranchAxisType;           // Loại trục phân loại
   description?: string;               // Giải thích nguyên lý phân nhánh của bệnh này
   branches?: ClinicalBranch[];         // Danh sách các nhánh của phác đồ

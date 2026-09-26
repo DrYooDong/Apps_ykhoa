@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Activity,
   AlertOctagon,
@@ -6,11 +6,15 @@ import {
   Baby,
   CheckCircle2,
   ChevronRight,
+  Compass,
+  Dna,
   Droplets,
+  Gauge,
   Heart,
   Layers,
   ShieldAlert,
   Sparkles,
+  Syringe,
   UserCheck,
   Users,
   Zap,
@@ -20,8 +24,9 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
-import { ClinicalFormState, CombinedProtocol, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
+import { BranchAxis, ClinicalFormState, CombinedProtocol, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
 import { SeverityGradingPanel } from './SeverityGradingPanel.tsx';
+import { SingleAxisBranchPanel } from './SingleAxisBranchPanel.tsx';
 import { ComplicationsTriageSection } from './ComplicationsTriageSection.tsx';
 import { calculateEgfrCkdEpi, resolvePatientPhenotype } from '../../lib/patientPhenotypeEngine.ts';
 
@@ -47,7 +52,7 @@ interface ProtocolClassificationSectionProps {
   isRenalAdjustmentApplied?: boolean;
   onToggleRenalAdjustment?: (applied: boolean) => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
-  targetTab?: '1a' | '1b' | '1c';
+  targetTab?: string;
   selectedAxes?: Record<string, string>;
   onSelectAxisBranch?: (axisId: string, branchId: string) => void;
   activeCombinedProtocol?: CombinedProtocol | null;
@@ -80,14 +85,16 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   onSelectAxisBranch,
   activeCombinedProtocol,
 }) => {
-  // Tab state for 1a, 1b, 1c
-  const [activeTab, setActiveTab] = useState<'1a' | '1b' | '1c'>('1a');
+  // Trạng thái Multi-Axis của bệnh lý
+  const isMultiAxis = Boolean(
+    activeChain?.branching?.mode === 'multi' &&
+    activeChain?.branching?.axes &&
+    activeChain.branching.axes.length > 0
+  );
+  const axes: BranchAxis[] = (activeChain?.branching?.axes as BranchAxis[]) || [];
 
-  React.useEffect(() => {
-    if (targetTab) {
-      setActiveTab(targetTab);
-    }
-  }, [targetTab]);
+  // Tab state dạng string linh hoạt hỗ trợ cả multi-axis và single-axis
+  const [activeTab, setActiveTab] = useState<string>('1a');
 
   // Tính toán hồ sơ kiểu hình cá thể hoá nội bộ nếu chưa truyền từ ngoài
   const phenotype = useMemo(() => {
@@ -120,6 +127,134 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
       severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
     );
   }, [activeChain?.stagingType, severityGrades]);
+
+  interface ClassificationTabConfig {
+    id: string;
+    tabCode: string;
+    label: string;
+    shortLabel: string;
+    icon?: string;
+    colorType: 'indigo' | 'blue' | 'emerald' | 'amber' | 'rose' | 'teal';
+    count?: number;
+    hasAlert?: boolean;
+    type: 'axis' | 'complications' | 'special';
+    axisIndex?: number;
+    axis?: BranchAxis;
+  }
+
+  // Danh sách các tab phân loại lâm sàng: tự động chuyển thành đa tab (Mức độ, Nguyên nhân, Can thiệp...) nếu bệnh là Multi-Axis
+  const tabs: ClassificationTabConfig[] = useMemo(() => {
+    if (isMultiAxis && axes.length > 0) {
+      const list: ClassificationTabConfig[] = [];
+      const colorPalette: ('indigo' | 'blue' | 'emerald' | 'amber')[] = ['indigo', 'blue', 'emerald', 'amber'];
+
+      axes.forEach((axis, idx) => {
+        const letter = String.fromCharCode(97 + idx); // a, b, c, d...
+        const tabCode = `1${letter}`;
+        const short =
+          axis.axisLabelShort ||
+          axis.axisName
+            .replace(/^Phân loại theo\s+/i, '')
+            .replace(/^Phân tầng\s+/i, '')
+            .trim();
+        list.push({
+          id: axis.axisId,
+          tabCode,
+          label: `${tabCode}. ${short}`,
+          shortLabel: short,
+          icon: axis.axisIcon,
+          colorType: colorPalette[idx % colorPalette.length],
+          count: axis.branches?.length,
+          type: 'axis',
+          axisIndex: idx,
+          axis,
+        });
+      });
+
+      // Tab Biến chứng
+      const compLetter = String.fromCharCode(97 + axes.length);
+      const compCode = `1${compLetter}`;
+      list.push({
+        id: 'complications',
+        tabCode: compCode,
+        label: `${compCode}. Phân độ biến chứng`,
+        shortLabel: 'Biến chứng',
+        colorType: 'rose',
+        count: activeComplications.length,
+        type: 'complications',
+      });
+
+      // Tab Đối tượng đặc biệt
+      const specLetter = String.fromCharCode(97 + axes.length + 1);
+      const specCode = `1${specLetter}`;
+      list.push({
+        id: 'special-pop',
+        tabCode: specCode,
+        label: `${specCode}. Đối tượng đặc biệt`,
+        shortLabel: 'Đối tượng đặc biệt',
+        colorType: 'teal',
+        hasAlert: Boolean(isElderly || isPediatric || hasRenalRisk),
+        type: 'special',
+      });
+
+      return list;
+    }
+
+    // Chế độ Single Axis (tương thích ngược 100%)
+    return [
+      {
+        id: '1a',
+        tabCode: '1a',
+        label: isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ',
+        shortLabel: isPhenotypeStaging ? 'Thể lâm sàng' : 'Phân độ',
+        colorType: 'indigo',
+        count: severityGrades.length,
+        type: 'axis',
+      },
+      {
+        id: '1b',
+        tabCode: '1b',
+        label: '1b. Phân độ biến chứng',
+        shortLabel: 'Biến chứng',
+        colorType: 'rose',
+        count: activeComplications.length,
+        type: 'complications',
+      },
+      {
+        id: '1c',
+        tabCode: '1c',
+        label: '1c. Đối tượng đặc biệt',
+        shortLabel: 'Đối tượng đặc biệt',
+        colorType: 'teal',
+        hasAlert: Boolean(isElderly || isPediatric || hasRenalRisk),
+        type: 'special',
+      },
+    ];
+  }, [
+    isMultiAxis,
+    axes,
+    isPhenotypeStaging,
+    severityGrades.length,
+    activeComplications.length,
+    isElderly,
+    isPediatric,
+    hasRenalRisk,
+  ]);
+
+  // Đồng bộ activeTab khi targetTab thay đổi hoặc khi chuyển bệnh lý
+  useEffect(() => {
+    if (targetTab) {
+      const match = tabs.find((t) => t.id === targetTab || t.tabCode === targetTab);
+      if (match) {
+        setActiveTab(match.id);
+        return;
+      }
+    }
+    // Nếu activeTab hiện tại không thuộc danh sách tabs
+    if (!tabs.some((t) => t.id === activeTab)) {
+      setActiveTab(tabs[0]?.id || '1a');
+    }
+  }, [targetTab, tabs]);
 
   return (
     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs flex flex-col">
@@ -226,105 +361,140 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
         </div>
       </div>
 
-      {/* Tab switcher: 1a, 1b, 1c */}
+      {/* Tab switcher: dynamic multi-axis tabs or 1a, 1b, 1c */}
       <div id="classification-tab-switcher" className="scroll-mt-24 p-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         <p className="text-xs text-slate-600 font-medium">
-          Đánh giá phân tầng mức độ nặng, tầm soát biến chứng cấp tính và hiệu chỉnh theo đối tượng đặc biệt
+          {isMultiAxis
+            ? 'Đánh giá đa trục lâm sàng phối hợp, tầm soát biến chứng cấp tính và hiệu chỉnh theo đối tượng đặc biệt'
+            : 'Đánh giá phân tầng mức độ nặng, tầm soát biến chứng cấp tính và hiệu chỉnh theo đối tượng đặc biệt'}
         </p>
 
-        <div className="flex items-center gap-1 bg-slate-200/70 p-1 rounded-lg border border-slate-200 text-xs">
-          <button
-            type="button"
-            id="sub-1a"
-            onClick={() => setActiveTab('1a')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
-              activeTab === '1a'
-                ? 'bg-white text-indigo-700 shadow-2xs border border-indigo-100'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <span>{isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ'}</span>
-            {severityGrades.length > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-indigo-50 text-indigo-700 border border-indigo-200">
-                {severityGrades.length}
-              </span>
-            )}
-          </button>
+        <div className="flex items-center gap-1 bg-slate-200/70 p-1 rounded-lg border border-slate-200 text-xs flex-wrap">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
 
-          <button
-            type="button"
-            id="sub-1b"
-            onClick={() => setActiveTab('1b')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
-              activeTab === '1b'
-                ? 'bg-white text-rose-700 shadow-2xs border border-rose-100'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <span>1b. Phân độ biến chứng</span>
-            {activeComplications.length > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-rose-50 text-rose-700 border border-rose-200">
-                {activeComplications.length}
-              </span>
-            )}
-          </button>
+            let activeClass = 'bg-white text-indigo-700 shadow-2xs border border-indigo-100';
+            let pillClass = 'bg-indigo-50 text-indigo-700 border-indigo-200';
 
-          <button
-            type="button"
-            id="sub-1c"
-            onClick={() => setActiveTab('1c')}
-            className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
-              activeTab === '1c'
-                ? 'bg-white text-teal-700 shadow-2xs border border-teal-100'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <span>1c. Đối tượng đặc biệt</span>
-            {(isElderly || isPediatric || hasRenalRisk) && (
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" title="Có cảnh báo cơ địa" />
-            )}
-          </button>
+            if (tab.colorType === 'blue') {
+              activeClass = 'bg-white text-blue-700 shadow-2xs border border-blue-100';
+              pillClass = 'bg-blue-50 text-blue-700 border-blue-200';
+            } else if (tab.colorType === 'emerald') {
+              activeClass = 'bg-white text-emerald-700 shadow-2xs border border-emerald-100';
+              pillClass = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+            } else if (tab.colorType === 'amber') {
+              activeClass = 'bg-white text-amber-800 shadow-2xs border border-amber-100';
+              pillClass = 'bg-amber-50 text-amber-800 border-amber-200';
+            } else if (tab.colorType === 'rose') {
+              activeClass = 'bg-white text-rose-700 shadow-2xs border border-rose-100';
+              pillClass = 'bg-rose-50 text-rose-700 border-rose-200';
+            } else if (tab.colorType === 'teal') {
+              activeClass = 'bg-white text-teal-700 shadow-2xs border border-teal-100';
+              pillClass = 'bg-teal-50 text-teal-700 border-teal-200';
+            }
+
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                id={`sub-${tab.tabCode}`}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer flex items-center gap-1.5 scroll-mt-24 ${
+                  isActive ? activeClass : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <span>{tab.label}</span>
+                {tab.count !== undefined && tab.count > 0 && (
+                  <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono border ${pillClass}`}>
+                    {tab.count}
+                  </span>
+                )}
+                {tab.hasAlert && (
+                  <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" title="Có cảnh báo cơ địa" />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* Tab Content */}
       <div className="p-4 sm:p-5">
-        {/* 1a. Phân độ nặng nhẹ */}
-        {activeTab === '1a' && (
-          <div className="space-y-4">
-            <SeverityGradingPanel
-              severityGrades={severityGrades}
-              selectedGradeIdx={selectedGradeIdx}
-              onSelectGradeIdx={onSelectGradeIdx}
-              autoSuggestedGradeIndex={autoSuggestedGradeIndex}
-              activeChain={activeChain}
-              selectedAxes={selectedAxes}
-              onSelectAxisBranch={onSelectAxisBranch}
-              activeCombinedProtocol={activeCombinedProtocol}
-            />
-          </div>
-        )}
+        {/* Render theo từng tab đã chọn */}
+        {(() => {
+          const currentTabConfig = tabs.find((t) => t.id === activeTab) || tabs[0];
+          if (!currentTabConfig) return null;
 
-        {/* 1b. Phân độ biến chứng */}
-        {activeTab === '1b' && (
-          <div className="space-y-4">
-            <ComplicationsTriageSection
-              diseaseId={diseaseId}
-              diseaseName={diseaseName}
-              activeComplications={activeComplications}
-              activeComplicationIndices={activeComplicationIndices}
-              onToggleComplication={onToggleComplication}
-              onAddComplicationOrder={onAddComplicationOrder}
-              onAddPreventionOrder={onAddPreventionOrder}
-              vitals={vitals}
-              labs={labs}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-            />
-          </div>
-        )}
+          // 1. Phân loại theo trục trong chế độ Multi-Axis
+          if (isMultiAxis && currentTabConfig.type === 'axis' && currentTabConfig.axis) {
+            const axisIdx = currentTabConfig.axisIndex ?? 0;
+            const nextTab = tabs[axisIdx + 1];
 
-        {/* 1c. Các đối tượng đặc biệt */}
-        {activeTab === '1c' && (
+            return (
+              <div className="space-y-4">
+                <SingleAxisBranchPanel
+                  axis={currentTabConfig.axis}
+                  axisIndex={axisIdx}
+                  totalAxes={axes.length}
+                  selectedBranchId={selectedAxes?.[currentTabConfig.axis.axisId] || currentTabConfig.axis.branches[0]?.id || ''}
+                  onSelectBranch={(axisId, branchId) => {
+                    if (onSelectAxisBranch) {
+                      onSelectAxisBranch(axisId, branchId);
+                    }
+                  }}
+                  activeCombinedProtocol={activeCombinedProtocol}
+                  allAxes={axes}
+                  selectedAxes={selectedAxes}
+                  onSelectNextTab={nextTab ? () => setActiveTab(nextTab.id) : undefined}
+                  nextTabLabel={nextTab ? nextTab.label : undefined}
+                />
+              </div>
+            );
+          }
+
+          // 2. Phân độ / Thể lâm sàng trong chế độ Single-Axis (1a)
+          if (!isMultiAxis && currentTabConfig.type === 'axis') {
+            return (
+              <div className="space-y-4">
+                <SeverityGradingPanel
+                  severityGrades={severityGrades}
+                  selectedGradeIdx={selectedGradeIdx}
+                  onSelectGradeIdx={onSelectGradeIdx}
+                  autoSuggestedGradeIndex={autoSuggestedGradeIndex}
+                  activeChain={activeChain}
+                  selectedAxes={selectedAxes}
+                  onSelectAxisBranch={onSelectAxisBranch}
+                  activeCombinedProtocol={activeCombinedProtocol}
+                />
+              </div>
+            );
+          }
+
+          // 3. Tab Biến chứng (Complications)
+          if (currentTabConfig.type === 'complications') {
+            return (
+              <div className="space-y-4">
+                <ComplicationsTriageSection
+                  diseaseId={diseaseId}
+                  diseaseName={diseaseName}
+                  activeComplications={activeComplications}
+                  activeComplicationIndices={activeComplicationIndices}
+                  onToggleComplication={onToggleComplication}
+                  onAddComplicationOrder={onAddComplicationOrder}
+                  onAddPreventionOrder={onAddPreventionOrder}
+                  vitals={vitals}
+                  labs={labs}
+                  onOpenVaultDrawer={onOpenVaultDrawer}
+                />
+              </div>
+            );
+          }
+
+          return null;
+        })()}
+
+        {/* 4. Tab Các đối tượng đặc biệt (Special populations) */}
+        {(activeTab === 'special-pop' || activeTab === '1c') && (
           <div className="space-y-4">
             <div className="p-3 bg-teal-50/70 border border-teal-200 rounded-lg flex items-center justify-between gap-3 text-xs text-teal-950">
               <div className="flex items-center gap-2">

@@ -109,7 +109,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
 
   // Trạng thái theo dõi vị trí cuộn cho TOC & Scrollspy
   const [activeSection, setActiveSection] = useState<string>('classification');
-  const [targetClassificationTab, setTargetClassificationTab] = useState<'1a' | '1b' | '1c'>('1a');
+  const [targetClassificationTab, setTargetClassificationTab] = useState<string>('1a');
   const [targetKnowledgeTab, setTargetKnowledgeTab] = useState<'5a' | '5b' | '5c'>('5a');
 
   useEffect(() => {
@@ -141,10 +141,10 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     // Luôn mở section tương ứng
     setExpandedSections((prev) => ({ ...prev, [sectionId]: true }));
 
-    // 2. Chuyển tab con của mục 1 nếu được yêu cầu
-    if (subId === 'sub-1a') setTargetClassificationTab('1a');
-    if (subId === 'sub-1b') setTargetClassificationTab('1b');
-    if (subId === 'sub-1c') setTargetClassificationTab('1c');
+    // 2. Chuyển tab con của mục 1 nếu được yêu cầu (Hỗ trợ sub-1a, sub-1b, sub-1c, sub-1d, v.v...)
+    if (subId?.startsWith('sub-1') || subId?.startsWith('sub-axis-')) {
+      setTargetClassificationTab(subId.replace(/^sub-/, ''));
+    }
 
     // 3. Chuyển tab con của mục 5 nếu được yêu cầu
     if (subId === 'sub-basic') setTargetKnowledgeTab('5a');
@@ -585,6 +585,58 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       severityGrades.some((g) => g.grade.toLowerCase().includes('thể ') || g.severity === 'phenotype')
     );
   }, [activeChain?.stagingType, severityGrades]);
+
+  // Danh sách các mục con của Mục 1 (Phân loại) cho thanh TOC (Hỗ trợ đa trục động hoặc 1a/1b/1c)
+  const classificationSubItems = useMemo(() => {
+    if (activeChain?.branching?.mode === 'multi' && activeChain.branching.axes && activeChain.branching.axes.length > 0) {
+      const axes = activeChain.branching.axes;
+      const list: Array<{ id: string; label: string; alertCount?: number }> = [];
+
+      axes.forEach((axis, idx) => {
+        const letter = String.fromCharCode(97 + idx); // a, b, c...
+        const tabCode = `1${letter}`;
+        const short =
+          axis.axisLabelShort ||
+          axis.axisName
+            .replace(/^Phân loại theo\s+/i, '')
+            .replace(/^Phân tầng\s+/i, '')
+            .trim();
+        list.push({
+          id: `sub-${tabCode}`,
+          label: `${tabCode}. ${short}`,
+        });
+      });
+
+      // Tab Biến chứng
+      const compLetter = String.fromCharCode(97 + axes.length);
+      const compCode = `1${compLetter}`;
+      list.push({
+        id: `sub-${compCode}`,
+        label: `${compCode}. Tầm soát biến chứng`,
+        alertCount: activeComplicationIndices.size > 0 ? activeComplicationIndices.size : undefined,
+      });
+
+      // Tab Đối tượng đặc biệt
+      const specLetter = String.fromCharCode(97 + axes.length + 1);
+      const specCode = `1${specLetter}`;
+      list.push({
+        id: `sub-${specCode}`,
+        label: `${specCode}. Cơ địa & Chỉnh liều eGFR`,
+      });
+
+      return list;
+    }
+
+    return [
+      { id: 'sub-1a', label: isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ' },
+      {
+        id: 'sub-1b',
+        label: '1b. Tầm soát biến chứng',
+        alertCount: activeComplicationIndices.size > 0 ? activeComplicationIndices.size : undefined,
+      },
+      { id: 'sub-1c', label: '1c. Cơ địa & Chỉnh liều eGFR' },
+    ];
+  }, [activeChain, isPhenotypeStaging, activeComplicationIndices.size]);
 
   // Auto-suggest grade index based on vitals/labs
   const autoSuggestedGradeIndex = useMemo(() => {
@@ -1423,6 +1475,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             cautionsCount={phacDo.luuY.length}
             guidelinesCount={matchedGuidelines.length}
             soapCasesCount={similarSoapCases.length}
+            classificationSubItems={classificationSubItems}
             onExpandAll={handleExpandAll}
             onCollapseAll={handleCollapseAll}
           />

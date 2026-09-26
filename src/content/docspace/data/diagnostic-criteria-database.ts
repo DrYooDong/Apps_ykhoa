@@ -109,6 +109,8 @@ export interface ClinicalBranch {
 export interface BranchAxis {
   axisId: string;
   axisName: string;
+  axisLabelShort?: string;
+  axisIcon?: string;
   axisType: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
   axisOrder?: number;
   isRequired?: boolean;
@@ -164,6 +166,8 @@ export interface ClinicalBranchingSystem {
   mode?: 'single' | 'multi';
   selectionFlow?: 'sequential' | 'independent' | 'matrix';
   axisName?: string;
+  axisLabelShort?: string;
+  axisIcon?: string;
   axisType?: 'severity' | 'phenotype' | 'stage' | 'triage_score' | 'treatment_step' | 'comorbidity' | 'custom' | string;
   description?: string;
   branches?: ClinicalBranch[];
