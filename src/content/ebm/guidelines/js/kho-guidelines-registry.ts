@@ -13,6 +13,34 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+      "id": "2015-easl-viem-gan-tu-mien",
+      "title": "EASL 2015: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Viêm Gan Tự Miễn (AIH)",
+      "titleEn": "EASL Clinical Practice Guidelines: Autoimmune hepatitis",
+      "drug": "Prednisolone, Prednisone, Budesonide, Azathioprine, Mycophenolate Mofetil, Tacrolimus, Cyclosporine A, UDCA, Calcium, Vitamin D",
+      "sourceType": "intl-guideline",
+      "specialty": "gi",
+      "design": "guideline",
+      "intervention": "Sinh thiết gan bắt buộc xác định hoại tử giao diện và tương bào; Áp dụng thang điểm Giản đơn IAIHG 2008 (≥ 6 Probable, ≥ 7 Definite); Phác đồ tấn công hàng 1 Prednisolone 0.5–1 mg/kg/ngày phối hợp Azathioprine 1–2 mg/kg/ngày sau 2 tuần; Budesonide 9 mg/ngày phối hợp Azathioprine cho ca chưa xơ gan có nguy cơ tác dụng phụ steroid cao (chống chỉ định ở xơ gan); Mục tiêu lui bệnh sinh hóa hoàn toàn (ALT và IgG bình thường); Điều trị tối thiểu 3 năm và ≥ 24 tháng sau lui bệnh; Sinh thiết kiểm chứng trước khi ngừng thuốc; Điều trị duy trì suốt đời khi tái phát; MMF 1.5–2 g/ngày hàng hai cho ca không dung nạp Azathioprine; Quy tắc 7 ngày kích hoạt ghép gan khẩn cấp cho suy gan cấp.",
+      "primaryEndpoint": "Hướng dẫn thực hành lâm sàng toàn diện của EASL 2015 về chẩn đoán, phân loại 3 thể bệnh, tự kháng thể IFL, thang điểm IAIHG, phác đồ ức chế miễn dịch và quản lý tái phát suốt đời trong viêm gan tự miễn.",
+      "keyResults": "Sinh thiết gan là điều kiện tiên quyết | IAIHG 2008 ≥ 7 điểm chẩn đoán AIH chắc chắn | Budesonide đạt lui bệnh không tác dụng phụ 47% vs 18.4% Prednisolone ở ca chưa xơ gan | Thời gian điều trị tối thiểu ≥ 3 năm | Tái phát 50–90% cần duy trì suốt đời | Chống chỉ định MMF trong thai kỳ, duy trì Azathioprine an toàn.",
+      "impact": "practice-changing",
+      "year": 2015,
+      "organization": "EASL",
+      "journal": "Journal of Hepatology (J Hepatol. 2015;63(4):971-1004, doi:10.1016/j.jhep.2015.06.023)",
+      "phase": "Clinical Practice Guidelines / EBM",
+      "population": "Bệnh nhân nghi ngờ hoặc xác định mắc viêm gan tự miễn (người lớn, trẻ em, người cao tuổi, phụ nữ có thai và hội chứng chồng lấp).",
+      "summary": "Hướng dẫn thực hành lâm sàng cốt lõi của EASL 2015 về Viêm gan tự miễn: Cơ chế miễn dịch HLA-DR3/DR4, 3 thể bệnh AIH, dấu ấn tự kháng thể IFL/ELISA, sinh thiết gan bắt buộc, thang điểm IAIHG 2008, phác đồ Prednisolone / Budesonide + Azathioprine và xử trí tái phát suốt đời.",
+      "detailedConclusion": "Hướng dẫn thực hành lâm sàng cốt lõi của EASL 2015 về Viêm gan tự miễn: Cơ chế miễn dịch HLA-DR3/DR4, 3 thể bệnh AIH, dấu ấn tự kháng thể IFL/ELISA, sinh thiết gan bắt buộc, thang điểm IAIHG 2008, phác đồ Prednisolone / Budesonide + Azathioprine và xử trí tái phát suốt đời.",
+      "file": "2015-easl-viem-gan-tu-mien.mdx",
+      "conditionKey": "autoimmune-hepatitis",
+      "icd10": [
+          "K75.4",
+          "K73.2"
+      ],
+      "asianData": true,
+      "bookmarked": false
+  },
+  {
       "id": "2022-aasld-benh-wilson",
       "title": "AASLD 2022: Hướng Dẫn Thực Hành Lâm Sàng Đa Chuyên Khoa Chẩn Đoán & Quản Lý Bệnh Wilson",
       "titleEn": "A multidisciplinary approach to the diagnosis and management of Wilson disease: 2022 Practice Guidance from the AASLD",

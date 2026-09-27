@@ -1,0 +1,632 @@
+{
+    "icdCode": "B18.2",
+    "icdPrefixes": [
+        "B17.1",
+        "B18.2"
+    ],
+    "diseaseName": "Viêm gan vi rút C",
+    "specialty": "Truyền nhiễm",
+    "severity": "routine",
+    "summary": "Viêm gan vi rút C là bệnh truyền nhiễm do vi rút viêm gan C (HCV - cấu trúc sợi đơn RNA thuộc họ Flaviviridae, gồm 6 kiểu gen) gây ra, lây truyền chủ yếu qua đường máu, ngoài ra còn lây qua đường tình dục và từ mẹ sang con [4]. Tại Việt Nam, kiểu gen 1 và 6 phổ biến nhất [4]. Phần lớn người nhiễm không có triệu chứng lâm sàng rầm rộ cho đến khi tiến triển thành xơ gan hoặc ung thư biểu mô tế bào gan (HCC) [5]. Mục tiêu điều trị cốt lõi là loại trừ vi rút ra khỏi cơ thể, đạt đáp ứng vi rút bền vững ở tuần thứ 12 sau khi kết thúc điều trị (SVR12) bằng các phác đồ kháng vi rút trực tiếp (DAA) [6].",
+    "goldStandard": "Kháng thể Anti-HCV dương tính kết hợp với xét nghiệm khẳng định hiện nhiễm vi rút: Tải lượng HCV RNA dương tính (hoặc trên ngưỡng phát hiện) hoặc xét nghiệm kháng nguyên lõi HCV core-Ag (HCVcAg) dương tính [7, 8].",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tc_anti_hcv_duong_tinh"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 0,
+        "ruleDescription": "Chẩn đoán xác định hiện nhiễm Viêm gan vi rút C khi người bệnh có xét nghiệm Anti-HCV dương tính (hoặc nghi ngờ ở người suy giảm miễn dịch nặng) VÀ có kết quả xét nghiệm khẳng định vi rút dương tính (HCV RNA hoặc HCV core-Ag) [8, 9]."
+    },
+    "criteria": [
+        {
+            "id": "tc_anti_hcv_duong_tinh",
+            "type": "mandatory",
+            "label": "Kháng thể Anti-HCV dương tính trong máu",
+            "description": "Anti-HCV xuất hiện trong máu sau 8–12 tuần kể từ khi phơi nhiễm và tồn tại suốt đời. Kết quả dương tính cho biết người bệnh đã từng hoặc đang nhiễm HCV [9].",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT ngày 25/09/2024",
+            "symptomIds": [
+                "tien_su_viem_gan_virus_b_c"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_hcv_rna_duong_tinh",
+            "type": "major",
+            "label": "Tải lượng HCV RNA trên ngưỡng phát hiện (hoặc HCV RNA định tính dương tính)",
+            "description": "Xét nghiệm NAT khuếch đại chuỗi polymerase khẳng định vi rút HCV đang nhân lên trực tiếp trong máu [7, 8].",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT ngày 25/09/2024",
+            "symptomIds": [
+                "men_gan_tang"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_hcvcag_duong_tinh",
+            "type": "major",
+            "label": "Kháng nguyên lõi HCV core-Ag (HCVcAg) dương tính",
+            "description": "Xuất hiện sau 2 tuần phơi nhiễm. Được sử dụng làm tiêu chuẩn xác định hiện nhiễm HCV khi không thực hiện được xét nghiệm HCV RNA [7].",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT ngày 25/09/2024",
+            "symptomIds": [],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_chuyen_dao_huyet_thanh_anti_hcv",
+            "type": "minor",
+            "label": "Chuyển đảo huyết thanh Anti-HCV hoặc phơi nhiễm trong vòng 6 tháng",
+            "description": "Ghi nhận chuyển đảo từ Anti-HCV âm tính sang dương tính trong vòng 6 tháng HOẶC Anti-HCV (-) nhưng HCV RNA / HCVcAg (+) sau 2 tuần phơi nhiễm [2].",
+            "sourceGuideline": "Quyết định 2855/QĐ-BYT ngày 25/09/2024",
+            "symptomIds": [
+                "tien_su_phoi_nhiem_hbv"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.0
+        }
+    ],
+    "stagingType": "phenotype",
+    "hasSeverityGrading": true,
+    "branching": {
+        "mode": "single",
+        "axisName": "Phân loại theo Giai đoạn Bệnh &amp; Tình trạng Hoạt động Vi rút C (QĐ 2855/QĐ-BYT)",
+        "axisType": "phenotype",
+        "description": "Phân nhánh phác đồ dựa vào thời gian nhiễm (&lt; 6 tháng vs &gt; 6 tháng), tình trạng xơ hóa gan (không xơ gan, xơ gan còn bù, xơ gan mất bù) và đáp ứng vi rút [2, 3, 10].",
+        "branches": [
+            {
+                "id": "branch_acute_hcv",
+                "name": "Nhánh 1: Viêm gan C cấp (Acute Hepatitis C)",
+                "badgeText": "Cấp tính (&lt; 6 tháng)",
+                "color": "amber",
+                "criteria": "Thời gian nhiễm HCV &lt; 6 tháng. Có tiền sử phơi nhiễm với nguồn bệnh. Có chuyển đảo huyết thanh từ Anti-HCV (-) sang (+) HOẶC Anti-HCV (-) nhưng HCV RNA / HCVcAg (+) sau 2 tuần phơi nhiễm. AST, ALT thường tăng cao [2].",
+                "triage": "Ngoại trú theo dõi định kỳ / Nội trú Khoa Truyền nhiễm nếu lâm sàng nặng, vàng da đậm hoặc có nguy cơ suy gan cấp [2, 11].",
+                "targetVitals": "Sinh hiệu ổn định, ALT/AST giảm an toàn về mức bình thường, Bilirubin toàn phần &lt; 1.5 mg/dL [2].",
+                "escalationCriteria": "ALT/AST tăng vọt ≥ 10 lần kèm Bilirubin toàn phần &gt; 3 mg/dL, INR &gt; 1.5, rối loạn tri giác (bệnh não gan) -&gt; Chuyển ICU / Hồi sức Bệnh nhiệt đới ngay lập tức [12].",
+                "dischargeCriteria": "Lâm sàng hết triệu chứng, men gan ALT/AST hồi phục, xét nghiệm HCV RNA âm tính (tự khỏi chiếm khoảng 25%) hoặc hoàn thành đủ phác đồ DAA 8 tuần an toàn [11].",
+                "drugs": [
+                    [
+                        "Sofosbuvir / Velpatasvir (SOF/VEL)",
+                        "400/100 mg × 1 lần/ngày (PO) trong 8 tuần",
+                        "Điều trị DAA 8 tuần khi có chỉ định điều trị đặc hiệu cho tất cả kiểu gen [11]."
+                    ],
+                    [
+                        "Glecaprevir / Pibrentasvir (G/P)",
+                        "300/120 mg (3 viên 100/40mg) × 1 lần/ngày (PO) trong 8 tuần",
+                        "Phác đồ DAA 8 tuần thay thế áp dụng cho tất cả kiểu gen [11]."
+                    ],
+                    [
+                        "Điều trị hỗ trợ",
+                        "Nghỉ ngơi, dinh dưỡng, điều trị triệu chứng",
+                        "Tuyệt đối tránh rượu bia, ngưng các thuốc có nguy cơ gây độc cho gan [11, 13]."
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b1_p1",
+                        "dayRange": "Tuần 1 - Tuần 4",
+                        "phaseName": "Giai đoạn Khởi phát &amp; Đánh giá Tự thanh thải",
+                        "clinicalGoal": "Kiểm soát triệu chứng cấp, nghỉ ngơi, theo dõi khả năng tự thanh thải vi rút (khoảng 25% bệnh nhân tự khỏi trong 6 tháng) [11].",
+                        "problems": [
+                            {
+                                "id": "b1_p1_prob_supp",
+                                "problemName": "Nâng đỡ chức năng gan &amp; Điều trị triệu chứng",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Điều trị hỗ trợ",
+                                        "content": "Nghỉ ngơi tại giường giai đoạn cấp, chế độ ăn giàu dinh dưỡng, hạn chế chất béo, kiêng tuyệt đối rượu bia [11, 13].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mệt mỏi, chán ăn, vàng da, củng mạc mắt vàng",
+                                        "frequency": "Mỗi tuần",
+                                        "target": "Giảm triệu chứng lâm sàng, không có dấu hiệu suy gan [5]."
+                                    },
+                                    {
+                                        "type": "CLS",
+                                        "metric": "AST, ALT, Bilirubin toàn phần, INR",
+                                        "frequency": "Mỗi 2 tuần",
+                                        "target": "Men gan giảm dần, INR &lt; 1.2 [2, 14]."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "b1_p2",
+                        "dayRange": "Tuần 4 - Tuần 12",
+                        "phaseName": "Giai đoạn Can thiệp DAA (Nếu chỉ định)",
+                        "clinicalGoal": "Khởi đầu điều trị DAA 8 tuần nếu vi rút không tự thanh thải hoặc cần điều trị sớm để ngăn lây nhiễm / diễn tiến mạn tính [11].",
+                        "problems": [
+                            {
+                                "id": "b1_p2_prob_daa",
+                                "problemName": "Kháng vi rút trực tiếp DAA",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "ĐT Đặc hiệu DAA",
+                                        "content": "SOF/VEL 400/100mg × 1 lần/ngày PO HOẶC G/P 300/120mg × 1 lần/ngày PO liên tục trong 8 tuần [11].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Tải lượng HCV RNA, AST/ALT, Creatinine máu",
+                                        "frequency": "Tuần 4 điều trị và tuần 12 sau ngưng thuốc",
+                                        "target": "HCV RNA dưới ngưỡng phát hiện, đạt SVR12 [6, 15]."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_chronic_hcv",
+                "name": "Nhánh 2: Viêm gan C mạn (Chronic Hepatitis C)",
+                "badgeText": "Mạn tính (&gt; 6 tháng)",
+                "color": "blue",
+                "criteria": "Thời gian nhiễm HCV &gt; 6 tháng. Anti-HCV dương tính VÀ có bằng chứng nhân lên của vi rút: Tải lượng HCV RNA dương tính (hoặc trên ngưỡng phát hiện) HOẶC HCV core-Ag (HCVcAg) dương tính [3, 8].",
+                "triage": "Ngoại trú quản lý &amp; Kê đơn DAA / Nội trú Khoa Tiêu hóa - Gan mật / Truyền nhiễm nếu có xơ gan mất bù (Child-Pugh B, C) hoặc biến chứng [8, 16].",
+                "targetVitals": "Sinh hiệu ổn định, đạt đáp ứng vi rút bền vững SVR12 (HCV RNA dưới ngưỡng phát hiện ở tuần 12 sau khi hoàn thành điều trị DAA) [6].",
+                "escalationCriteria": "Thất bại điều trị DAA (HCV RNA vẫn dương tính sau điều trị), xuất hiện biến chứng xơ gan mất bù (báng bụng, vỡ GEV, SBP, bệnh não gan), hoặc nghi ngờ HCC (AFP &gt; 20 ng/mL, khối u gan trên siêu âm/CT) -&gt; Chuyển tuyến chuyên khoa Gan mật hội chẩn [12, 17, 18].",
+                "dischargeCriteria": "Hoàn thành đủ liệu trình DAA (8-12-24 tuần), đạt SVR12, men gan bình thường, không có biến chứng xơ gan mất bù [6, 12].",
+                "drugs": [
+                    [
+                        "Sofosbuvir / Velpatasvir (SOF/VEL)",
+                        "400/100 mg × 1 lần/ngày (PO) × 12 tuần",
+                        "Phác đồ ưu tiên pan-genotypic cho người lớn &amp; trẻ ≥3 tuổi (không xơ gan hoặc xơ gan còn bù Child A) [10, 19]."
+                    ],
+                    [
+                        "Sofosbuvir / Daclatasvir (SOF/DAC)",
+                        "400/60 mg × 1 lần/ngày (PO) × 12 tuần",
+                        "Phác đồ pan-genotypic thay thế cho không xơ gan; 24 tuần cho xơ gan còn bù [10, 19]."
+                    ],
+                    [
+                        "Glecaprevir / Pibrentasvir (G/P)",
+                        "300/120 mg (3 viên 100/40mg) × 1 lần/ngày (PO) × 8 tuần",
+                        "Phác đồ 8 tuần pan-genotypic cho không xơ gan và xơ gan còn bù [10, 19]."
+                    ],
+                    [
+                        "Sofosbuvir / Ledipasvir (SOF/LED)",
+                        "400/90 mg × 1 lần/ngày (PO) × 12 tuần",
+                        "Chỉ định điều trị riêng cho HCV kiểu gen 1, 4, 5, 6 [19, 20]."
+                    ],
+                    [
+                        "SOF/VEL + Ribavirin (RBV) (Xơ gan mất bù)",
+                        "SOF/VEL 400/100mg + RBV (1000mg &lt;75kg, 1200mg ≥75kg) × 12 tuần",
+                        "Dành cho xơ gan mất bù Child-Pugh B, C. Nếu chống chỉ định RBV -&gt; Dùng SOF/VEL 24 tuần không RBV [13, 21]."
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b2_p1",
+                        "dayRange": "Tuần 1 - Tuần 4",
+                        "phaseName": "Khởi đầu DAA &amp; Đánh giá Xơ hóa Gan",
+                        "clinicalGoal": "Đánh giá tình trạng xơ hóa gan (FibroScan, APRI, FIB-4, Child-Pugh), sàng lọc HBsAg/HIV, đánh giá tương tác thuốc và khởi đầu phác đồ DAA phù hợp [10, 13-15].",
+                        "problems": [
+                            {
+                                "id": "b2_p1_prob_eval",
+                                "problemName": "Đánh giá giai đoạn bệnh &amp; Tương tác thuốc",
+                                "problemType": "paraclinical",
+                                "treatments": [
+                                    {
+                                        "category": "Đánh giá ban đầu",
+                                        "content": "Thực hiện FibroScan hoặc chỉ số APRI/FIB-4. Xét nghiệm CTM, AST/ALT, Bilirubin, Creatinine, INR, HBsAg, Anti-HIV, AFP, Siêu âm bụng [14, 15]. Kiểm tra tương tác thuốc DAA trên hep-druginteractions.org [13, 22].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Công thức máu, AST/ALT, Creatinine, Bilirubin toàn phần",
+                                        "frequency": "Trước điều trị và Tuần 4",
+                                        "target": "Kiểm tra an toàn thận/máu, men gan không tăng bất thường [15]."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "b2_p1_prob_daa_start",
+                                "problemName": "Khởi đầu điều trị DAA",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "Kháng vi rút DAA",
+                                        "content": "Kê đơn DAA uống hàng ngày đúng giờ (SOF/VEL 12t, SOF/DAC 12t, hoặc G/P 8t tùy tình trạng xơ gan) [10, 19].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mức độ tuân thủ uống thuốc hàng ngày",
+                                        "frequency": "Tái khám mỗi tháng",
+                                        "target": "Tuân thủ uống thuốc &gt; 95% [13]."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "b2_p2",
+                        "dayRange": "Tuần 4 - Tuần 12 (hoặc T24)",
+                        "phaseName": "Theo dõi Tuân thủ &amp; Tác dụng phụ DAA",
+                        "clinicalGoal": "Duy trì tuân thủ điều trị tuyệt đối, phát hiện sớm tác dụng phụ (đặc biệt khi có RBV) và xử trí khi quên thuốc [12, 13].",
+                        "problems": [
+                            {
+                                "id": "b2_p2_prob_mon",
+                                "problemName": "Theo dõi an toàn &amp; Xử trí quên thuốc",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Xử trí quên thuốc",
+                                        "content": "Nếu quên ≤ 7 ngày: uống lại DAA ngay và hoàn thành liệu trình ban đầu. Nếu bỏ ≥ 8 ngày trong 28 ngày đầu: thử lại HCV RNA và hội chẩn chuyên khoa [12, 13].",
+                                        "isHighlighted": false
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Men gan ALT (ngừng DAA nếu ALT tăng ≥ 10 lần ở T4), Hemoglobin (nếu dùng RBV)",
+                                        "frequency": "Tuần 4 điều trị",
+                                        "target": "ALT không vọt cao, Hb ≥ 10 g/dL [12, 13]."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "b2_p3",
+                        "dayRange": "Tuần 12 sau khi hoàn thành DAA",
+                        "phaseName": "Đánh giá Khỏi bệnh (SVR12) &amp; Theo dõi Sau điều trị",
+                        "clinicalGoal": "Xác định khỏi bệnh bằng xét nghiệm tải lượng HCV RNA ở tuần thứ 12 sau khi ngưng DAA (SVR12). Tầm soát HCC định kỳ cho bệnh nhân có xơ hóa gan ≥ F3 [6, 12].",
+                        "problems": [
+                            {
+                                "id": "b2_p3_prob_svr",
+                                "problemName": "Xác định Đáp ứng vi rút bền vững (SVR12)",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "Xét nghiệm SVR12",
+                                        "content": "Thực hiện xét nghiệm tải lượng HCV RNA ở tuần 12 (hoặc từ tuần 12 - 24) sau khi kết thúc DAA. Nếu HCV RNA dưới ngưỡng phát hiện -&gt; Xác nhận ĐIỀU TRỊ KHỎI BỆNH [6, 12].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Tải lượng HCV RNA (hoặc HCV core-Ag nếu không có PCR)",
+                                        "frequency": "Tuần 12 sau ngưng DAA",
+                                        "target": "HCV RNA dưới ngưỡng phát hiện [6, 15]."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "b2_p3_prob_hcc_screen",
+                                "problemName": "Theo dõi dài hạn &amp; Tầm soát HCC",
+                                "problemType": "complication",
+                                "treatments": [
+                                    {
+                                        "category": "Tầm soát Ung thư gan",
+                                        "content": "Bệnh nhân có xơ hóa gan ≥ F3 hoặc xơ gan: Siêu âm ổ bụng và xét nghiệm AFP / AFP-L3 / PIVKA-II định kỳ mỗi 6 tháng để phát hiện sớm HCC [10, 12].",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Siêu âm bụng, AFP, PIVKA-II",
+                                        "frequency": "Mỗi 6 tháng",
+                                        "target": "Không có khối u gan bất thường [12]."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_resolved_hcv",
+                "name": "Nhánh 3: Đã khỏi bệnh / Đã thanh thải vi rút (Resolved HCV)",
+                "badgeText": "Đã thanh thải vi rút (SVR12 / Khỏi tự nhiên)",
+                "color": "emerald",
+                "criteria": "Kháng thể Anti-HCV dương tính VÀ Xét nghiệm tải lượng HCV RNA dưới ngưỡng phát hiện (hoặc HCV RNA âm tính / Kháng nguyên lõi HCV core-Ag âm tính). Bao gồm trường hợp tự thanh thải vi rút sau nhiễm HCV cấp (~25%) hoặc người bệnh đã điều trị DAA thành công đạt đáp ứng vi rút bền vững (SVR12/SVR24).",
+                "triage": "Ngoại trú. Bệnh nhân F0-F2 không có bệnh gan kèm theo: Tư vấn dự phòng tái nhiễm &amp; ngưng theo dõi chuyên khoa gan; Bệnh nhân xơ hóa gan tiến triển (≥ F3) hoặc Xơ gan (F4): Lập hồ sơ quản lý ngoại trú định kỳ tầm soát ung thư gan (HCC) và biến chứng xơ gan.",
+                "targetVitals": "Sinh hiệu ổn định, xét nghiệm HCV RNA tiếp tục duy trì âm tính/dưới ngưỡng phát hiện, men gan AST/ALT trong giới hạn bình thường, không phát hiện tổn thương khối mới ở gan trên siêu âm.",
+                "escalationCriteria": "Xuất hiện lại nồng độ men gan AST/ALT tăng cao kèm HCV RNA dương tính (Tái phát/Tái nhiễm HCV mới), HOẶC phát hiện tổn thương khối nghi ngờ HCC trên siêu âm/CT/MRI, HOẶC tiến triển xơ gan mất bù (báng bụng, vỡ giãn TTMQ) -&gt; Chuyển tuyến chuyên khoa Gan mật hội chẩn can thiệp ngay.",
+                "dischargeCriteria": "Xác nhận đạt SVR12 (hoặc SVR24), đã lập kế hoạch tầm soát HCC định kỳ mỗi 6 tháng (đối với bệnh nhân ≥ F3/F4) hoặc tư vấn hoàn thành lộ trình theo dõi (đối với bệnh nhân F0-F2).",
+                "drugs": [
+                    [
+                        "Không chỉ định thuốc DAA",
+                        "Không có chỉ định / Tuyệt đối không dùng",
+                        "Vi rút HCV đã bị thanh thải hoàn toàn khỏi cơ thể. Tuyệt đối không sử dụng các thuốc kháng vi rút trực tiếp (DAA) khi HCV RNA dưới ngưỡng phát hiện."
+                    ],
+                    [
+                        "Thuốc điều trị đồng nhiễm HBV (nếu HBsAg dương tính)",
+                        "Tenofovir (TDF 300mg hoặc TAF 25mg) HOẶC Entecavir (ETV 0.5mg) × 1 lần/ngày (PO)",
+                        "Áp dụng cho người bệnh có đồng nhiễm HBV (HBsAg dương tính) cần điều trị viêm gan B mạn tính theo Quyết định 1740/QĐ-BYT."
+                    ],
+                    [
+                        "Dự phòng &amp; Nâng đỡ chức năng gan",
+                        "Chế độ sinh hoạt lành mạnh, kiêng rượu bia tuyệt đối",
+                        "Hạn chế các thuốc có nguy cơ gây độc cho gan (tránh Paracetamol liều cao &gt; 2g/ngày, ngưng các loại thuốc nam/bắc không rõ nguồn gốc)."
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b3_p1",
+                        "dayRange": "Tháng 1 - Tháng 3 (Sau khi xác nhận SVR12 / Khỏi bệnh)",
+                        "phaseName": "Giai đoạn Đánh giá Xơ hóa Gan &amp; Lập Lộ trình Tầm soát",
+                        "clinicalGoal": "Phân loại chính xác mức độ xơ hóa gan nền (F0-F2 vs ≥ F3/F4) sau khi vi rút đã thanh thải để quyết định phương án kết thúc theo dõi hay chuyển sang quy trình tầm soát ung thư gan (HCC) lâu dài.",
+                        "problems": [
+                            {
+                                "id": "b3_p1_prob_stratify",
+                                "problemName": "Đánh giá giai đoạn xơ hóa gan &amp; Phân luồng quản lý",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Phân luồng theo dõi",
+                                        "content": "Thực hiện đo độ đàn hồi gan FibroScan hoặc chỉ số APRI/FIB-4 tại thời điểm SVR12. Bệnh nhân F0-F2: Tư vấn dự phòng tái nhiễm và kết thúc theo dõi gan. Bệnh nhân ≥ F3 hoặc xơ gan (F4): Lập sổ quản lý ngoại trú tầm soát HCC.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Đánh giá các yếu tố nguy cơ tái nhiễm tiếp diễn (PWID, MSM, lọc máu chu kỳ)",
+                                        "frequency": "Tại thời điểm phân loại",
+                                        "target": "Xác định chính xác nhóm nguy cơ cao tái nhiễm HCV."
+                                    },
+                                    {
+                                        "type": "CLS",
+                                        "metric": "FibroScan (LSM), APRI, FIB-4, AST/ALT, Creatinine",
+                                        "frequency": "Tại thời điểm đánh giá SVR12",
+                                        "target": "Xác định đúng phân độ xơ hóa gan nền (F0-F2 hay ≥ F3)."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "b3_p2",
+                        "dayRange": "Định kỳ mỗi 6 tháng (Quản lý Ngoại trú Dài hạn)",
+                        "phaseName": "Giai đoạn Tầm soát Ung thư Gan (HCC) &amp; Giám sát Tái nhiễm",
+                        "clinicalGoal": "Phát hiện sớm ung thư biểu mô tế bào gan (HCC) ở bệnh nhân có xơ hóa tiến triển/xơ gan (≥ F3), kiểm soát các biến chứng xơ gan và phát hiện kịp thời tình trạng tái nhiễm HCV.",
+                        "problems": [
+                            {
+                                "id": "b3_p2_prob_hcc_screen",
+                                "problemName": "Tầm soát Ung thư biểu mô tế bào gan (HCC) cho nhóm xơ hóa gan ≥ F3",
+                                "problemType": "complication",
+                                "treatments": [
+                                    {
+                                        "category": "Tầm soát HCC định kỳ",
+                                        "content": "Thực hiện Siêu âm ổ bụng định kỳ phối hợp xét nghiệm các chỉ dấu ung thư gan (AFP và/hoặc AFP-L3 và/hoặc PIVKA-II) mỗi 6 tháng/lần cho tất cả bệnh nhân có xơ hóa gan ≥ F3 hoặc xơ gan.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Xử trí khi nghi ngờ u gan",
+                                        "content": "Nếu siêu âm phát hiện khối/nốt bất thường ở gan hoặc chỉ dấu ung thư gan tăng bất thường -&gt; Chuyển chụp CT-scan đa dãy hoặc MRI ổ bụng có tiêm thuốc cản quang/đối quang từ để chẩn đoán xác định HCC.",
+                                        "isHighlighted": false
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "Siêu âm bụng, AFP, PIVKA-II, AFP-L3",
+                                        "frequency": "Mỗi 6 tháng",
+                                        "target": "Không có tổn thương khối mới ở gan, nồng độ AFP &lt; 20 ng/mL."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "b3_p2_prob_reinfection_monitor",
+                                "problemName": "Giám sát Tái nhiễm HCV &amp; Biến chứng Xơ gan",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "Giám sát Tái nhiễm",
+                                        "content": "Tư vấn can thiệp giảm hại (bao cao su, bơm kim tiêm sạch, điều trị MMT). Nếu bệnh nhân xuất hiện tăng men gan ALT/AST trở lại hoặc có hành vi phơi nhiễm mới -&gt; Làm ngay xét nghiệm định lượng HCV RNA để phát hiện tái nhiễm.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Tầm soát Giãn TTMQ",
+                                        "content": "Đối với bệnh nhân xơ gan (F4): Thực hiện nội soi dạ dày - thực quản định kỳ 1 - 2 năm/lần để phát hiện và can thiệp thắt tĩnh mạch thực quản (GEV) phòng ngừa xuất huyết tiêu hóa.",
+                                        "isHighlighted": false
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "CLS",
+                                        "metric": "AST, ALT, Tải lượng HCV RNA (khi nghi ngờ), Nội soi GEV (nếu xơ gan)",
+                                        "frequency": "Mỗi 6 - 12 tháng",
+                                        "target": "ALT/AST trong giới hạn bình thường, HCV RNA dưới ngưỡng phát hiện, không có xuất huyết tiêu hóa."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "severityGrading": [
+        {
+            "id": "branch_acute_hcv",
+            "name": "Viêm gan C cấp (Acute Hepatitis C)",
+            "badgeText": "Cấp tính (&lt; 6 tháng)",
+            "color": "amber",
+            "criteria": "Nhiễm HCV &lt; 6 tháng, chuyển đảo Anti-HCV hoặc Anti-HCV (-) nhưng HCV RNA/cAg (+).",
+            "triage": "Ngoại trú / Nội trú Truyền nhiễm"
+        },
+        {
+            "id": "branch_chronic_hcv",
+            "name": "Viêm gan C mạn (Chronic Hepatitis C)",
+            "badgeText": "Mạn tính (&gt; 6 tháng)",
+            "color": "blue",
+            "criteria": "Nhiễm HCV &gt; 6 tháng, Anti-HCV (+) VÀ HCV RNA / HCVcAg (+).",
+            "triage": "Ngoại trú DAA / Nội trú Gan mật nếu xơ gan mất bù"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ chẩn đoán và điều trị Viêm gan vi rút C theo Quyết định 2855/QĐ-BYT",
+        "guideline": "Quyết định 2855/QĐ-BYT ngày 25/09/2024 của Bộ Y tế Việt Nam",
+        "targetGoals": [
+            "Loại trừ HCV ra khỏi cơ thể người bệnh, đạt đáp ứng vi rút bền vững SVR12 (HCV RNA dưới ngưỡng phát hiện ở tuần 12 sau điều trị) [6].",
+            "Phòng ngừa các biến chứng về gan (viêm gan tiến triển, xơ hóa gan, xơ gan, ung thư biểu mô tế bào gan HCC) và tử vong [23].",
+            "Dự phòng lây nhiễm HCV trong cộng đồng và lây truyền từ mẹ sang con [23, 24]."
+        ],
+        "initialManagement": [
+            "Sàng lọc ban đầu bằng xét nghiệm huyết thanh Anti-HCV cho đối tượng nguy cơ hoặc nghi ngờ [5, 9].",
+            "Khẳng định hiện nhiễm bằng tải lượng HCV RNA (hoặc HCV core-Ag) nếu Anti-HCV dương tính [7, 8].",
+            "Đánh giá mức độ xơ hóa gan không xâm lấn (FibroScan, APRI, FIB-4) và phân độ Child-Pugh trước khi khởi đầu DAA [14, 25].",
+            "Sàng lọc đồng nhiễm HBsAg, Anti-HIV và kiểm tra tương tác thuốc trước khi kê đơn DAA [13, 15]."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Sofosbuvir / Velpatasvir (SOF/VEL 400/100mg)",
+                "class": "Ức chế Polymerase NS5B + Ức chế NS5A (Pan-genotypic)",
+                "route": "PO",
+                "dosage": "1 viên (400/100mg) × 1 lần/ngày",
+                "frequency": "q24h",
+                "instructions": "Uống cùng hoặc xa bữa ăn. Liệu trình 12 tuần cho không xơ gan hoặc xơ gan còn bù Child A. Phối hợp Ribavirin 12 tuần cho xơ gan mất bù Child B, C [10, 19, 20].",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Sofosbuvir / Daclatasvir (SOF/DAC 400/60mg)",
+                "class": "Ức chế Polymerase NS5B + Ức chế NS5A (Pan-genotypic)",
+                "route": "PO",
+                "dosage": "SOF 400mg + DAC 60mg (hoặc viên FDC 400/60mg) × 1 lần/ngày",
+                "frequency": "q24h",
+                "instructions": "Liệu trình 12 tuần cho không xơ gan; 24 tuần cho xơ gan còn bù [10, 19].",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Glecaprevir / Pibrentasvir (G/P 100/40mg)",
+                "class": "Ức chế Protease NS3/4A + Ức chế NS5A (Pan-genotypic)",
+                "route": "PO",
+                "dosage": "3 viên (tổng liều 300/120mg) × 1 lần/ngày",
+                "frequency": "q24h",
+                "instructions": "Uống cùng thức ăn. Liệu trình 8 tuần cho không xơ gan và xơ gan còn bù. CHỐNG CHỈ ĐỊNH cho xơ gan mất bù Child B, C [10, 19].",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Sofosbuvir / Ledipasvir (SOF/LED 400/90mg)",
+                "class": "Ức chế Polymerase NS5B + Ức chế NS5A (Kiểu gen 1, 4, 5, 6)",
+                "route": "PO",
+                "dosage": "1 viên (400/90mg) × 1 lần/ngày",
+                "frequency": "q24h",
+                "instructions": "Dành riêng cho HCV kiểu gen 1, 4, 5, 6. Liệu trình 12 tuần [19, 20].",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Sofosbuvir / Velpatasvir / Voxilaprevir (SOF/VEL/VOX 400/100/100mg)",
+                "class": "NS5B + NS5A + NS3/4A Inhibitors",
+                "route": "PO",
+                "dosage": "1 viên × 1 lần/ngày × 12 tuần",
+                "frequency": "q24h",
+                "instructions": "Phác đồ cứu vãn 12 tuần cho người bệnh thất bại điều trị DAA trước đó [17, 18].",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Tư vấn kiêng tuyệt đối rượu bia và chất có cồn [13].",
+            "Dinh dưỡng hợp lý, tránh các thuốc có nguy cơ gây độc cho gan (Paracetamol &gt; 2g/ngày, thuốc đông y không rõ nguồn gốc) [13].",
+            "Tư vấn dự phòng tái nhiễm HCV cho nhóm nguy cơ cao (PWID, MSM) và dự phòng lây truyền qua đường máu, tình dục, mẹ con [18, 24]."
+        ]
+    },
+    "complications": [
+        {
+            "id": "comp_hcc",
+            "name": "Ung thư biểu mô tế bào gan (HCC)",
+            "timeframe": "chronic",
+            "warningSigns": "Đau tức hạ sườn phải, sụt cân nhanh, gầy sút, sờ thấy khối hạ sườn phải, AFP tăng &gt; 20 ng/mL [2, 12].",
+            "preventiveAction": "Tầm soát định kỳ bằng siêu âm bụng + AFP / PIVKA-II mỗi 6 tháng ở người có xơ hóa gan ≥ F3 hoặc xơ gan. Nếu có nghi ngờ -&gt; Chụp CT / MRI bụng có tiêm thuốc cản quang [12].",
+            "onCallAlertText": "BÁO ĐỘNG NGHI NGỜ HCC: SIÊU ÂM CÓ KHỐI MỜ GAN HOẶC AFP &gt; 20 NG/ML -&gt; CHUYỂN CHỤP CT/MRI BỤNG ĐÁNH GIÁ LIÊN KHOA GAN MẬT"
+        },
+        {
+            "id": "comp_decompensated_cirrhosis",
+            "name": "Xơ gan mất bù (Cổ trướng, Vỡ GEV, Bệnh não gan)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Bụng chướng to, vàng da đậm, nôn ra máu / tiêu phân đen, lú lẫn, run vẫy bàn tay [2, 5, 12].",
+            "preventiveAction": "Nội soi tiêu hóa tầm soát giãn tĩnh mạch thực quản, dùng lợi tiểu (Spironolactone + Furosemide), điều trị DAA phác đồ xơ gan mất bù (SOF/VEL + RBV), chống chỉ định DAA chứa NS3/4A [10, 12, 13].",
+            "onCallAlertText": "CẤP CỨU XƠ GAN MẤT BÙ / XUẤT HUYẾT TIÊU HÓA: CẦN NHẬP VIỆN NỘI TRÚ NGHIÊM NGẶT, KHÔNG DÙNG DAA CÓ NHÓM ỨC CHẾ PROTEASE"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu, Hct, Tiểu cầu: Trước điều trị, Tuần 4 (nếu có RBV), Tuần 12 sau DAA [15].",
+        "AST, ALT, Bilirubin toàn phần: Trước điều trị, Tuần 4, Tuần 12 sau DAA [15].",
+        "Creatinine máu / eGFR: Trước điều trị, Tuần 4 (nếu có nghi ngờ bệnh thận) [15].",
+        "Tải lượng HCV RNA: Trước điều trị và Tuần 12 sau khi hoàn thành DAA (đánh giá SVR12) [15].",
+        "Siêu âm ổ bụng &amp; AFP / PIVKA-II: Tầm soát HCC mỗi 6 tháng cho bệnh nhân xơ hóa gan ≥ F3 [12, 15]."
+    ],
+    "clinicalCautions": {
+        "specificTreatmentIndications": "Người bệnh được chẩn đoán Viêm gan vi rút C mạn cần được điều trị DAA sớm, đặc biệt ưu tiên người có xơ hóa gan ≥ F2, biểu hiện ngoài gan, đồng nhiễm HIV/HCV, đồng nhiễm HBV/HCV, nghiện chích ma túy, phụ nữ độ tuổi sinh đẻ [23].",
+        "clinicalIndications": [
+            {
+                "category": "Chỉ định phác đồ DAA theo Mức độ Xơ hóa Gan",
+                "badgeText": "Phân độ xơ gan",
+                "color": "blue",
+                "items": [
+                    {
+                        "indicationName": "Không xơ gan &amp; Xơ gan còn bù (Child-Pugh A)",
+                        "criteria": "FibroScan &lt; 12.5 kPa hoặc APRI ≤ 1.0; Child-Pugh 5–6 điểm [10, 25].",
+                        "orderTarget": "Điều trị SOF/VEL 12t, SOF/DAC 12t, hoặc G/P 8t [10, 19].",
+                        "note": "Phác đồ 8 tuần G/P rất hiệu quả và rút ngắn thời gian điều trị [10]."
+                    },
+                    {
+                        "indicationName": "Xơ gan mất bù (Child-Pugh B, C)",
+                        "criteria": "Có cổ trướng, vỡ GEV, bệnh não gan; Child-Pugh ≥ 7 điểm [13, 25].",
+                        "orderTarget": "Điều trị SOF/VEL + Ribavirin 12t (hoặc SOF/VEL 24t không RBV) tại bệnh viện tuyến tỉnh/trung ương [13, 16].",
+                        "note": "Tuyệt đối CHỐNG CHỈ ĐỊNH các DAA chứa NS3/4A (Glecaprevir, Grazoprevir, Voxilaprevir) [10, 16]."
+                    }
+                ]
+            }
+        ],
+        "criticalWarnings": [
+            "CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI dùng DAA nhóm ức chế protease NS3/4A (Glecaprevir, Grazoprevir, Voxilaprevir) cho người xơ gan mất bù (Child-Pugh B, C) do nguy cơ gây độc tính nghiêm trọng trên gan [10, 16].",
+            "SÀNG LỌC HBsAg TRƯỚC ĐIỀU TRỊ DAA: Người bệnh đồng nhiễm HBV/HCV có nguy cơ bùng phát / tái hoạt vi rút HBV khi HCV bị thanh thải. Nếu HBsAg (+), cần hội chẩn điều trị thuốc NAs phòng ngừa tái hoạt HBV [13, 26].",
+            "CẢNH BÁO TƯƠNG TÁC THUỐC NGUY HIỂM: Chống chỉ định dùng Amiodarone đồng thời với phác đồ chứa Sofosbuvir do nguy cơ gây chậm nhịp tim nặng, đe dọa tính mạng [22]. Không dùng đồng thời DAA với Rifampicin hoặc thuốc chống co giật (phenobarbital, phenytoin, carbamazepin) [22]."
+        ],
+        "contraindications": [
+            "Chống chỉ định DAA chứa NS3/4A cho người xơ gan mất bù (Child-Pugh B, C) [10, 16].",
+            "Chống chỉ định Ribavirin ở phụ nữ mang thai hoặc bạn tình nam của phụ nữ mang thai (do nguy cơ gây dị tật thai nhi) [13, 21].",
+            "Chống chỉ định Sofosbuvir phối hợp với Amiodarone [22]."
+        ],
+        "dischargeCriteria": [
+            "Hoàn thành đủ liệu trình DAA (8 hoặc 12 tuần) an toàn.",
+            "HCV RNA dưới ngưỡng phát hiện ở tuần 12 sau khi hoàn thành DAA (SVR12) [6].",
+            "Men gan AST, ALT trở về giới hạn bình thường hoặc ổn định.",
+            "Không có triệu chứng xơ gan mất bù hoặc tác dụng phụ nặng cần can thiệp y tế [12, 13]."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm gan vi rút C theo QĐ 2855/QĐ-BYT",
+            "searchKeyword": "chẩn đoán viem_gan_virus_c"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị DAA phân nhánh Viêm gan vi rút C",
+            "searchKeyword": "phác đồ điều trị viem_gan_virus_c"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và quản lý xơ gan mất bù, HCC ở bệnh nhân Viêm gan vi rút C",
+            "searchKeyword": "biến chứng viem_gan_virus_c"
+        }
+    ]
+}
