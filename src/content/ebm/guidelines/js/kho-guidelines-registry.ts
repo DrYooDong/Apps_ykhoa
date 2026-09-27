@@ -13,6 +13,70 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+      "id": "2022-aasld-benh-wilson",
+      "title": "AASLD 2022: Hướng Dẫn Thực Hành Lâm Sàng Đa Chuyên Khoa Chẩn Đoán & Quản Lý Bệnh Wilson",
+      "titleEn": "A multidisciplinary approach to the diagnosis and management of Wilson disease: 2022 Practice Guidance from the AASLD",
+      "drug": "D-Penicillamine, Trientine, Zinc acetate, Zinc sulfate, Tetrathiomolybdate, Pyridoxine",
+      "sourceType": "intl-guideline",
+      "specialty": "gi",
+      "design": "guideline",
+      "intervention": "Chẩn đoán đa tầng theo thang điểm Leipzig ≥ 4; Tiêu chuẩn Korman phát hiện Wilsonian ALF; Phác đồ thải đồng bằng D-penicillamine/Trientine và Muối Kẽm suốt đời; Phối hợp Chelator + Kẽm cách nhau 4-5 giờ cho xơ gan mất bù; Ghép gan khẩn cấp cho suy gan cấp hoặc NWI ≥ 11; Tầm soát di truyền gen ATP7B cho 100% người thân thế hệ thứ nhất.",
+      "primaryEndpoint": "AASLD 2022: Hướng Dẫn Thực Hành Lâm Sàng Đa Chuyên Khoa Chẩn Đoán & Quản Lý Bệnh Wilson",
+      "keyResults": "Hướng dẫn thực hành lâm sàng đa chuyên khoa của AASLD 2022 về bệnh Wilson: Cơ chế gen ATP7B, tiêu chuẩn chẩn đoán thang điểm Leipzig ≥ 4, tiêu chuẩn suy gan cấp Korman, thang điểm tiên lượng NWI ≥ 11, phác đồ thải đồng suốt đời và chỉ định ghép gan.",
+      "impact": "practice-changing",
+      "year": 2022,
+      "organization": "AASLD",
+      "journal": "AASLD Practice Guidelines 2022",
+      "phase": "Clinical Practice Guidelines / EBM",
+      "population": "Bệnh nhân trong nhóm chỉ định lâm sàng.",
+      "summary": "Hướng dẫn thực hành lâm sàng đa chuyên khoa của AASLD 2022 về bệnh Wilson: Cơ chế gen ATP7B, tiêu chuẩn chẩn đoán thang điểm Leipzig ≥ 4, tiêu chuẩn suy gan cấp Korman, thang điểm tiên lượng NWI ≥ 11, phác đồ thải đồng suốt đời và chỉ định ghép gan.",
+      "detailedConclusion": "Hướng dẫn thực hành lâm sàng đa chuyên khoa của AASLD 2022 về bệnh Wilson: Cơ chế gen ATP7B, tiêu chuẩn chẩn đoán thang điểm Leipzig ≥ 4, tiêu chuẩn suy gan cấp Korman, thang điểm tiên lượng NWI ≥ 11, phác đồ thải đồng suốt đời và chỉ định ghép gan.",
+      "file": "2022-aasld-benh-wilson.mdx",
+      "conditionKey": "wilson",
+      "icd10": [
+          "E83.0",
+          "E83.01"
+      ],
+      "asianData": true,
+      "bookmarked": false
+  },
+  {
+    "id": "2019-easl-dili",
+    "title": "EASL 2019: Hướng Dẫn Thực Hành Lâm Sàng Về Tổn Thương Gan Do Thuốc (DILI)",
+    "titleEn": "EASL Clinical Practice Guidelines: Drug-induced liver injury",
+    "drug": "Acetaminophen, Amoxicillin-clavulanate, Isoniazid, N-acetylcysteine (NAC), L-Carnitine, Cholestyramine, Corticosteroids, Mycophenolate Mofetil, Valproic acid, Allopurinol, Nitrofurantoin, Minocycline",
+    "sourceType": "intl-guideline",
+    "specialty": "gi",
+    "design": "guideline",
+    "intervention": "Phân loại DILI theo cơ chế Trực tiếp (Intrinsic) vs Bất thường (Idiosyncratic); Ứng dụng chỉ số R phân định Thể Tế bào gan (R ≥ 5), Thể Ứ mật (R ≤ 2) và Thể Hỗn hợp (2 < R < 5); Áp dụng quy tắc Hy's Law cảnh báo nguy cơ tử vong 10%; Định lượng mối quan hệ nhân quả bằng thang điểm CIOMS/RUCAM (-9 đến +14 điểm); Quản lý viêm gan miễn dịch do ICIs ung thư theo CTCAE Grade 1-4; Ngừng thuốc nghi ngờ tức thì, can thiệp NAC sớm cho suy gan cấp hôn mê độ I-II, L-carnitine cho ngộ độc Valproate, Cholestyramine cắt chu trình gan ruột Leflunomide; Giám sát an toàn thuốc lao và chống chỉ định tự ý rechallenge.",
+    "primaryEndpoint": "Bộ khuyến cáo thực hành lâm sàng toàn diện của EASL về chẩn đoán, phân loại hình thái, phân tầng nguy cơ, đánh giá quy nguyên và xử trí điều trị tổn thương gan do thuốc và thảo dược/TPCN.",
+    "keyResults": "Chỉ số R định hướng chính xác 3 thể tổn thương | Tiêu chuẩn Hy's Law dự báo nguy cơ tử vong/ghép gan 10% | NAC truyền tĩnh mạch tăng sống không ghép từ 27% lên 58% trong suy gan cấp độ I-II | L-carnitine là antidote đặc hiệu cho Valproate | Loại trừ Pyrazinamide giúp rechallenge thuốc lao an toàn | Tự ý rechallenge gây tử vong/ghép gan 13%.",
+    "impact": "practice-changing",
+    "year": 2019,
+    "organization": "EASL",
+    "journal": "Journal of Hepatology (J Hepatol. 2019;70(6):1222-1261, doi:10.1016/j.jhep.2019.02.014)",
+    "phase": "Clinical Practice Guidelines / EBM",
+    "population": "Bệnh nhân nghi ngờ hoặc xác định mắc tổn thương gan do thuốc kê đơn, thuốc OTC, hóa trị/liệu pháp miễn dịch ung thư, thảo dược và thực phẩm chức năng.",
+    "summary": "Hướng dẫn thực hành lâm sàng cốt lõi của EASL 2019 về DILI: Chuẩn hóa phân loại cơ chế, tính toán chỉ số R, tiên lượng theo quy tắc Hy's Law, ứng dụng thang điểm RUCAM, xử trí viêm gan do ICIs và phác đồ antidote NAC / L-Carnitine.",
+    "detailedConclusion": "DILI là chẩn đoán loại trừ nghiêm ngặt. Bắt buộc tính chỉ số R lúc phát hiện: R ≥ 5 (thể tế bào gan), R ≤ 2 (thể ứ mật). Quy tắc Hy's Law (ALT ≥ 3x, Bilirubin > 2x không ứ mật) dự báo tử vong 10%. Can thiệp đầu tay là ngừng ngay mọi thuốc nghi ngờ. Dùng NAC sớm cho suy gan cấp Idiosyncratic DILI (hôn mê I-II); dùng L-carnitine cho Valproate; dùng Cholestyramine cho Leflunomide. Corticoid chỉ định chọn lọc cho irDILI do ICIs và DRESS. Chống chỉ định tuyệt đối tự ý rechallenge.",
+    "file": "2019-easl-dili.mdx",
+    "conditionKey": "dili",
+    "icd10": [
+      "K71",
+      "K71.0",
+      "K71.1",
+      "K71.2",
+      "K71.6",
+      "K72.0"
+    ],
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Phân loại hình thái DILI": "HBAR: Thể Tế bào gan (R ≥ 5): 55% | Thể Ứ mật (R ≤ 2): 25% | Thể Hỗn hợp (2 < R < 5): 20%",
+      "Tỷ lệ sống không ghép trong ALF": "HBAR: Dùng NAC sớm (Độ I-II): 58% | Giả dược / Chăm sóc chuẩn: 27%"
+    }
+  },
+  {
     "id": "2014-idsa-ssti",
     "title": "IDSA 2014: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Nhiễm Trùng Da & Mô Mềm (SSTI)",
     "titleEn": "Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update by the IDSA",

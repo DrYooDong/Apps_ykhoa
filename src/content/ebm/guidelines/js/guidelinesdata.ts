@@ -92,6 +92,8 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'uti': { id: 'uti', name: 'Nhiễm khuẩn tiết niệu (UTI)', icd10: ["N39.0","N10","N30"], color: '#1d4ed8', bg: '#eff6ff' },
   'cirrhosis': { id: 'cirrhosis', name: 'Xơ gan, Tăng áp cửa & Bệnh gan rượu', icd10: ["K74","K70","K70.3","I85"], color: '#991b1b', bg: '#fef2f2' },
   'masld-mash': { id: 'masld-mash', name: 'Gan nhiễm mỡ (MASLD/MASH)', icd10: ["K76.0","K75.8"], color: '#65a30d', bg: '#f7fee7' },
+  'dili': { id: 'dili', name: 'Tổn thương gan do thuốc (DILI)', icd10: ["K71","K71.0","K71.1","K71.2","K71.6","K72.0"], color: '#dc2626', bg: '#fef2f2' },
+  'wilson': { id: 'wilson', name: 'Bệnh Wilson (Thoái hóa gan nhân bèo)', icd10: ["E83.0","E83.01"], color: '#b45309', bg: '#fef3c7' },
   'gerd-peptic': { id: 'gerd-peptic', name: 'Trào ngược GERD & Loét DDTT', icd10: ["K21","K25","K26","K27"], color: '#c2410c', bg: '#fff7ed' },
   'biliary-tract': { id: 'biliary-tract', name: 'Bệnh đường mật & Viêm tụy cấp (TG18/IAP)', icd10: ["K81","K81.0","K80","K83.0","K85"], color: '#059669', bg: '#ecfdf5' },
   'ibd': { id: 'ibd', name: 'Viêm ruột (IBD) & Ruột kích thích (IBS)', icd10: ["K50","K51","K58"], color: '#7e22ce', bg: '#faf5ff' },

@@ -272,26 +272,76 @@ sections:
 
 ---
 
-## ⚡ Quy Trình 5 Bước Thực Hiện Nhanh & Chính Xác
+## ⚡ Quy Trình 5 Bước Tối Ưu Nhanh & Không Lỗi (v2.0 Pipeline)
 
-1. **Khảo sát Nguồn & Phát hiện Ảnh / Lưu đồ**:
-   - Xác định toàn bộ các file `.md` nguồn được giao.
-   - Tìm kiếm các ảnh `![[Pasted image ...]]` trong nguồn, đặc biệt là ảnh liên quan đến lưu đồ, thuật toán, phân loại.
-   - **Lưu ý quy tắc Lưu đồ**: Nếu nguồn có ảnh lưu đồ kèm đoạn text tóm tắt ý, đoạn text đó chỉ là fallback; ưu tiên tái hiện thành code visual/SVG theo thiết kế của ảnh.
-2. **Chạy Script Trích Xuất & Tiền Xử Lý**:
-   ```bash
-   node .agents/skills/guideline-summary-module/scripts/synthesize_guideline_mdx.js --slug=<slug> --files="<path1>,<path2>,..."
-   ```
-3. **Biên Tập & Nâng Cấp Giao Diện Dashboard**:
-   - Soạn thảo nội dung MDX với đầy đủ các section, stat-cards, pillars, quickmenu, updates-grid, infoboxes, regimen-tables, fig-cards và citation-box.
-   - Nếu có ảnh lưu đồ: Dựng code lưu đồ trực quan (Inline SVG Editorial Flowchart hoặc UI visual diagram component) tương xứng với thiết kế trong ảnh, nhúng ảnh trong `.fig-card` và không để khối text/ASCII sơ sài.
-4. **Ghi File An Toàn & Kiểm Tra Tag Integrity**:
-   - Ghi file vào `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`.
-   - Chạy lệnh kiểm tra:
-     ```bash
-     node tools/scratch/check_tags.js src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
-     ```
-5. **Đăng Ký Kho Lưu Trữ Tĩnh (`kho-guidelines-registry.ts`)**:
-   - Thêm 1 đối tượng `Study` mới vào mảng `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` với đầy đủ các trường: `id`, `title`, `titleEn`, `sourceType`, `specialty`, `design`, `impact`, `year`, `organization`, `file: '<slug>.mdx'`, `conditionKey`, `icd10`.
-   - Dữ liệu này tự động được nạp vào `SAMPLE_STUDIES` và hiển thị trên toàn bộ bảng tra cứu, bộ lọc chuyên khoa, CDSS và trang Hub EBM mà không phụ thuộc vào Supabase.
+> **Mục tiêu**: Nhanh hơn ×3, Loại bỏ 100% lỗi cú pháp và tự động hóa toàn diện từ tiền xử lý đến đăng ký và kiểm định chất lượng.
+
+```
+┌───────────────────────────────────────────────────────────────────────────┐
+│                      PIPELINE TỔNG HỢP GUIDELINE v2.0                     │
+│                                                                           │
+│ [1] Khảo sát Nguồn ──> [2] Trích Xuất Ảnh ──> [3] Load Template & Biên Tập│
+│                        (synthesize script)     (template-guideline / rct) │
+│                                                                 │         │
+│                                                                 ▼         │
+│                        [5] 8-Point QA Gate ◄── [4] Đăng Ký Registry Tự Động│
+│                            (qa_guideline.js)        (register_guideline.js)│
+└───────────────────────────────────────────────────────────────────────────┘
+```
+
+### 1. Khảo sát Nguồn & Chọn Template Phù Hợp:
+- Xác định toàn bộ các file `.md` nguồn được giao (`_P1.md`, `_P2.md`...).
+- Chọn mẫu template dựng sẵn tương ứng trong thư mục `templates/`:
+  - **Hướng dẫn / Phác đồ điều trị / Khuyến cáo**: Dùng `templates/template-guideline.mdx`
+  - **Thử nghiệm lâm sàng trọng điểm (RCT Landmark)**: Dùng `templates/template-rct.mdx`
+- Tìm kiếm các ảnh `![[Pasted image ...]]` trong nguồn, đặc biệt là ảnh liên quan đến lưu đồ, thuật toán, phân loại.
+- **Quy tắc Lưu đồ**: Nếu nguồn có ảnh lưu đồ kèm đoạn text tóm tắt ý, ưu tiên tái hiện thành code visual/SVG theo thiết kế của ảnh.
+
+### 2. Chạy Script Trích Xuất Ảnh & Tiền Xử Lý:
+```bash
+node .agents/skills/guideline-summary-module/scripts/synthesize_guideline_mdx.js --slug=<slug> --files="<path1>,<path2>,..."
+```
+- Script tự động tìm ảnh trong `knowledge-vault/`, copy sang `kho-guidelines/images/<slug>-figX.png`, và làm sạch ban đầu ký tự math `$`.
+
+### 3. Biên Tập Nội Dung Dựa Trên Template (Tiết Kiệm 70% Thời Gian):
+- Sao chép cấu trúc từ `templates/template-guideline.mdx` hoặc `templates/template-rct.mdx`.
+- Điền dữ liệu thực tế vào các placeholder `[BRACKET]`.
+- Giữ nguyên cấu trúc thẻ chuẩn HTML, Design Tokens `var(--color-...)`, thẻ thống kê `.stats-strip`, `.pillars`, `.quickmenu`, và bảng `.regimen-table`.
+- Ghi file vào `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`.
+
+### 4. Đăng Ký Tự Động Vào Kho Registry:
+- Sử dụng script tự động hóa để cập nhật `kho-guidelines-registry.ts` và kiểm tra đối chiếu `guidelinesdata.ts`:
+```bash
+node .agents/skills/guideline-summary-module/scripts/register_guideline.js \
+  --slug="<slug>" \
+  --title="[Tên Tiếng Việt Chuẩn]" \
+  --titleEn="[Tên Tiếng Anh]" \
+  --org="[Tổ Chức]" \
+  --year=[Năm] \
+  --specialty="[Mã chuyên khoa: gi / cardio / infect / endo / ...]" \
+  --sourceType="intl-guideline" \
+  --design="guideline" \
+  --impact="practice-changing" \
+  --conditionKey="[key bệnh lý]" \
+  --icd10="[Mã ICD-10, ví dụ: K71,K71.0]" \
+  --summary="[Tóm tắt súc tích 2-3 câu]" \
+  --intervention="[Can thiệp cốt lõi]"
+```
+
+### 5. Chạy Cổng Kiểm Định Chất Lượng 8 Điểm (8-Point QA Gate):
+- Chạy lệnh kiểm tra tổng thể toàn bộ bài viết trước khi bàn giao:
+```bash
+node .agents/skills/guideline-summary-module/scripts/qa_guideline.js --slug=<slug>
+```
+- **Bộ 8 Tiêu chí Đánh giá Tự động**:
+  1. `[1/8]` File tồn tại và đúng kích thước.
+  2. `[2/8]` Frontmatter YAML đầy đủ 11 trường chuẩn.
+  3. `[3/8]` 100% Sạch ký tự math LaTeX `$`.
+  4. `[4/8]` Cấu trúc thẻ HTML cân bằng tuyệt đối (không sót thẻ mở/đóng).
+  5. `[5/8]` Toàn bộ liên kết hình ảnh `./images/...` tồn tại thực tế.
+  6. `[6/8]` Không có lỗi trùng lặp HTML entities (`&amp;amp;`).
+  7. `[7/8]` Đã đăng ký hợp lệ trong `kho-guidelines-registry.ts`.
+  8. `[8/8]` `conditionKey` tương thích với `guidelinesdata.ts`.
+- **Yêu cầu nghiệm thu**: Đạt tối thiểu **7.5/8 điểm** mới được coi là hoàn tất.
+
 
