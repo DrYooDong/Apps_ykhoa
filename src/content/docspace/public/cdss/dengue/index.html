@@ -61,9 +61,32 @@
 
   <script type="module">
     import { DengueCDSSController } from './dengue-bundle.js';
+    if (!window.__dengue_initialized) {
+      window.__dengue_initialized = true;
+      new DengueCDSSController('dengue-cdss-container');
+    }
+  </script>
 
-    // Initialize Controller
-    new DengueCDSSController('dengue-cdss-container');
+  <!-- Offline file:/// Fallback Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const container = document.getElementById('dengue-cdss-container');
+        if (container && container.children.length === 0 && !window.__dengue_initialized) {
+          console.info('ES Module blocked under file:///, activating standalone IIFE bundle...');
+          const s = document.createElement('script');
+          s.src = './dengue-bundle.iife.js?v=' + Date.now();
+          s.onload = () => {
+            const Controller = window.DengueCDSSController || (window.DengueBundle && window.DengueBundle.DengueCDSSController);
+            if (Controller && !window.__dengue_initialized) {
+              window.__dengue_initialized = true;
+              new Controller('dengue-cdss-container');
+            }
+          };
+          document.body.appendChild(s);
+        }
+      }, 200);
+    });
   </script>
 </body>
 </html>
