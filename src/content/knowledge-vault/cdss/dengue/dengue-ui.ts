@@ -9,7 +9,9 @@ import {
   Gender,
   DengueSeverity,
   PregnancyTrimester,
-  ClinicalResponseStatus
+  ClinicalResponseStatus,
+  BloodProductItem,
+  NACDosingPhase
 } from '../cdss-types';
 
 import { generateDengueCDSSPlan } from './dengue-engine';
@@ -761,7 +763,7 @@ export class DengueCDSSController {
 
         ${b.warnings.length > 0 ? `
           <ul class="cdss-branch-warnings">
-            ${b.warnings.map(w => `<li><i class="fa-solid fa-arrow-right"></i> ${w}</li>`).join('')}
+            ${b.warnings.map((w: string) => `<li><i class="fa-solid fa-arrow-right"></i> ${w}</li>`).join('')}
           </ul>
         ` : ''}
 
@@ -891,7 +893,7 @@ export class DengueCDSSController {
       </div>
 
       <div class="cdss-blood-grid">
-        ${plan.bloodProducts.map(p => `
+        ${plan.bloodProducts.map((p: BloodProductItem) => `
           <div class="cdss-blood-card ${p.thresholdMet ? 'cdss-blood-card--active' : ''}">
             <div class="cdss-blood-card-header">
               <div class="cdss-blood-card-title">
@@ -1028,7 +1030,7 @@ export class DengueCDSSController {
                 </tr>
               </thead>
               <tbody>
-                ${nac.phases.map(p => `
+                ${nac.phases.map((p: NACDosingPhase) => `
                   <tr>
                     <td><strong>${p.phaseName}</strong></td>
                     <td>${p.doseMgKg} mg/kg</td>
@@ -1045,7 +1047,7 @@ export class DengueCDSSController {
 
         ${nac.precautions.length > 0 ? `
           <ul class="cdss-complication-precautions">
-            ${nac.precautions.map(pr => `<li><i class="fa-solid fa-triangle-exclamation text-warning"></i> ${pr}</li>`).join('')}
+            ${nac.precautions.map((pr: string) => `<li><i class="fa-solid fa-triangle-exclamation text-warning"></i> ${pr}</li>`).join('')}
           </ul>
         ` : ''}
       </div>
