@@ -4,13 +4,54 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '../..');
 const distDir = path.join(rootDir, 'dist');
 
+const IGNORE_PATTERNS = new Set(['node_modules', '.git', '.obsidian', '.DS_Store', 'Thumbs.db']);
+
+function safeCopyRecursive(src, dest) {
+  if (!fs.existsSync(src)) return;
+  const basename = path.basename(src);
+  if (IGNORE_PATTERNS.has(basename)) return;
+  const stats = fs.statSync(src);
+  if (stats.isDirectory()) {
+    if (!fs.existsSync(dest)) {
+      fs.mkdirSync(dest, { recursive: true });
+    }
+    fs.readdirSync(src).forEach(child => {
+      safeCopyRecursive(path.join(src, child), path.join(dest, child));
+    });
+  } else {
+    // Incremental copy: skip if destination file exists and has identical size
+    if (fs.existsSync(dest)) {
+      try {
+        const destStats = fs.statSync(dest);
+        if (destStats.size === stats.size && destStats.mtimeMs >= stats.mtimeMs) {
+          return;
+        }
+      } catch (e) {}
+    }
+    const parent = path.dirname(dest);
+    if (!fs.existsSync(parent)) {
+      fs.mkdirSync(parent, { recursive: true });
+    }
+    try {
+      fs.copyFileSync(src, dest);
+    } catch (err) {
+      try {
+        fs.unlinkSync(dest);
+        fs.copyFileSync(src, dest);
+      } catch (e) {
+        console.warn(`[Copy-Warning] Could not copy ${src} to ${dest}:`, e.message);
+      }
+    }
+  }
+}
+
 // 1. Copy Assets & Knowledge Vault
 const directFolders = ['assets', 'knowledge-vault'];
 directFolders.forEach(folder => {
   const srcPath = path.join(rootDir, folder);
   const destPath = path.join(distDir, folder);
   if (fs.existsSync(srcPath)) {
-    fs.cpSync(srcPath, destPath, { recursive: true, force: true });
+    safeCopyRecursive(srcPath, destPath);
     console.log(`[Post-Build] Copied ${folder} -> dist/${folder}`);
   }
 });
@@ -20,23 +61,23 @@ directFolders.forEach(folder => {
 const srcAssetsImages = path.join(rootDir, 'assets', 'images');
 const destDistImages = path.join(distDir, 'images');
 if (fs.existsSync(srcAssetsImages)) {
-  fs.cpSync(srcAssetsImages, destDistImages, { recursive: true, force: true });
+  safeCopyRecursive(srcAssetsImages, destDistImages);
   console.log('[Post-Build] Copied assets/images -> dist/images (Compatibility)');
 }
 
 // src/styles -> dist/css & dist/src/styles
 const srcStylesPath = path.join(rootDir, 'src', 'styles');
 if (fs.existsSync(srcStylesPath)) {
-  fs.cpSync(srcStylesPath, path.join(distDir, 'css'), { recursive: true, force: true });
-  fs.cpSync(srcStylesPath, path.join(distDir, 'src', 'styles'), { recursive: true, force: true });
+  safeCopyRecursive(srcStylesPath, path.join(distDir, 'css'));
+  safeCopyRecursive(srcStylesPath, path.join(distDir, 'src', 'styles'));
   console.log('[Post-Build] Copied src/styles -> dist/css & dist/src/styles');
 }
 
 // src/data -> dist/data & dist/src/data
 const srcDataPath = path.join(rootDir, 'src', 'data');
 if (fs.existsSync(srcDataPath)) {
-  fs.cpSync(srcDataPath, path.join(distDir, 'data'), { recursive: true, force: true });
-  fs.cpSync(srcDataPath, path.join(distDir, 'src', 'data'), { recursive: true, force: true });
+  safeCopyRecursive(srcDataPath, path.join(distDir, 'data'));
+  safeCopyRecursive(srcDataPath, path.join(distDir, 'src', 'data'));
   console.log('[Post-Build] Copied src/data -> dist/data & dist/src/data');
 }
 
@@ -44,7 +85,7 @@ if (fs.existsSync(srcDataPath)) {
 const srcTemplates = path.join(rootDir, 'tools', 'templates');
 const destTemplates = path.join(distDir, 'templates');
 if (fs.existsSync(srcTemplates)) {
-  fs.cpSync(srcTemplates, destTemplates, { recursive: true, force: true });
+  safeCopyRecursive(srcTemplates, destTemplates);
   console.log('[Post-Build] Copied tools/templates -> dist/templates');
 }
 
@@ -52,7 +93,7 @@ if (fs.existsSync(srcTemplates)) {
 const srcContentPath = path.join(rootDir, 'src', 'content');
 const destSrcContentPath = path.join(distDir, 'src', 'content');
 if (fs.existsSync(srcContentPath)) {
-  fs.cpSync(srcContentPath, destSrcContentPath, { recursive: true, force: true });
+  safeCopyRecursive(srcContentPath, destSrcContentPath);
   console.log('[Post-Build] Copied src/content -> dist/src/content');
 }
 
@@ -60,15 +101,15 @@ if (fs.existsSync(srcContentPath)) {
 const srcDocSpaceDist = path.join(rootDir, 'src', 'content', 'docspace', 'dist');
 const destDocSpaceDist = path.join(distDir, 'src', 'content', 'docspace');
 if (fs.existsSync(srcDocSpaceDist)) {
-  fs.cpSync(srcDocSpaceDist, destDocSpaceDist, { recursive: true, force: true });
+  safeCopyRecursive(srcDocSpaceDist, destDocSpaceDist);
   console.log('[Post-Build] Overlaid built DocSpace dist -> dist/src/content/docspace');
 }
 
 // 5. Copy src/components/ -> dist/src/components & dist/components
 const srcComponentsPath = path.join(rootDir, 'src', 'components');
 if (fs.existsSync(srcComponentsPath)) {
-  fs.cpSync(srcComponentsPath, path.join(distDir, 'components'), { recursive: true, force: true });
-  fs.cpSync(srcComponentsPath, path.join(distDir, 'src', 'components'), { recursive: true, force: true });
+  safeCopyRecursive(srcComponentsPath, path.join(distDir, 'components'));
+  safeCopyRecursive(srcComponentsPath, path.join(distDir, 'src', 'components'));
   console.log('[Post-Build] Copied src/components -> dist/components & dist/src/components');
 }
 

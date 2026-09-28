@@ -115,11 +115,13 @@ function runAudit() {
     path.join(ROOT_DIR, 'index.html')
   ].filter(f => fs.existsSync(f) && !ASSET_EXTENSIONS.has(path.extname(f).toLowerCase()));
 
-  // 3. Quét từng code file bằng regex siêu tốc
-  const assetRegex = /[\w.-]+\.(?:png|jpg|jpeg|svg|webp|gif|ico|mp3|mp4)/gi;
+  // 3. Quét từng code file bằng regex siêu tốc (tránh catastrophic backtracking)
+  const assetRegex = /[a-zA-Z0-9_-]+\.(?:png|jpg|jpeg|svg|webp|gif|ico|mp3|mp4)/gi;
   let processedFiles = 0;
   for (const codeFile of codeFiles) {
     try {
+      const stats = fs.statSync(codeFile);
+      if (stats.size > 1024 * 1024) continue; // Skip huge generated bundles/indexes > 1MB
       const content = fs.readFileSync(codeFile, 'utf-8');
       const matches = content.match(assetRegex);
       if (matches) {

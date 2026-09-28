@@ -85,12 +85,13 @@ export const CANONICAL_CDSS_URLS: Record<string, string> = {
   'cdss-antibiotic': './src/content/docspace/public/cdss/antibiotic/index.html',
   'cdss-vancomycin': './src/content/docspace/public/cdss/vancomycin/index.html',
   'cdss-sepsis': './src/content/docspace/public/cdss/sepsis/index.html',
+  'cdss-inpatient': './src/content/docspace/public/cdss/inpatient/index.html',
   'cdss-hub': './src/content/docspace/public/cdss/index.html'
 };
 
 export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
   { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: "./src/content/docspace/public/cdss/dengue/index.html", icon: "💧", count: 35 },
-  { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", category: "Tim Mạch • 21 Ca & Caliper", url: "./src/content/docspace/public/cdss/ecg/index.html", icon: "📈", count: 32 },
+  { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", category: "Tim Mạch • 21 Ca & Caliper", url: "./src/content/docspace/public/cdss/ecg/index.html", icon: "📈", count: 32 },
   { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: "./src/content/docspace/public/cdss/abg/index.html", icon: "🫁", count: 28 },
   { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: "./src/content/docspace/public/cdss/xray/index.html", icon: "🩻", count: 25 },
   { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: "./src/content/docspace/public/cdss/hepa/index.html", icon: "🧪", count: 22 },
@@ -99,7 +100,8 @@ export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
   { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: "./src/content/docspace/public/cdss/antibiotic/index.html", icon: "💊", count: 16 },
   { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "./src/content/docspace/public/cdss/vancomycin/index.html", icon: "💉", count: 14 },
   { id: "cdss-sepsis", title: "Phân Tầng Nguy Cơ Sepsis", category: "Hồi Sức • NICE & SSC 2024", url: "./src/content/docspace/public/cdss/sepsis/index.html", icon: "☣️", count: 13 },
-  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối CDSS", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
+  { id: "cdss-inpatient", title: "Khám Bệnh Nội Trú (Bates)", category: "Nội Khoa • Bates & Macleod", url: "./src/content/docspace/public/cdss/inpatient/index.html", icon: "🩺", count: 15 },
+  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối 11 Module", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
 ];
 
 let currentPearlIdx = 0;
@@ -149,7 +151,7 @@ export function initClinicalPearl(): void {
 // ── 4. SMART APP LAUNCHER CONTROLLER ──
 export function getAppUsageData(): LauncherAppItem[] {
   try {
-    const raw = localStorage.getItem('cliniportal_cdss_usage_v2') || localStorage.getItem('cliniportal_app_usage');
+    const raw = localStorage.getItem('cliniportal_cdss_usage_v3') || localStorage.getItem('cliniportal_cdss_usage_v2') || localStorage.getItem('cliniportal_app_usage');
     if (!raw) {
       saveAppUsageData(DEFAULT_LAUNCHER_APPS);
       return DEFAULT_LAUNCHER_APPS;
@@ -180,6 +182,19 @@ export function getAppUsageData(): LauncherAppItem[] {
       }
     });
 
+    // Cập nhật lại title/category/icon chuẩn nếu có bản cập nhật mới
+    DEFAULT_LAUNCHER_APPS.forEach(defApp => {
+      const found = parsed.find(p => p.id === defApp.id);
+      if (found) {
+        if (found.title !== defApp.title || found.category !== defApp.category || found.icon !== defApp.icon) {
+          found.title = defApp.title;
+          found.category = defApp.category;
+          found.icon = defApp.icon;
+          needsUpdate = true;
+        }
+      }
+    });
+
     if (needsUpdate) {
       saveAppUsageData(parsed);
     }
@@ -191,6 +206,7 @@ export function getAppUsageData(): LauncherAppItem[] {
 
 export function saveAppUsageData(data: LauncherAppItem[]): void {
   try {
+    localStorage.setItem('cliniportal_cdss_usage_v3', JSON.stringify(data));
     localStorage.setItem('cliniportal_cdss_usage_v2', JSON.stringify(data));
     localStorage.setItem('cliniportal_app_usage', JSON.stringify(data));
   } catch (e) {}
@@ -313,9 +329,10 @@ export function getRecentlyUsed(): RecentChipItem[] {
     }
     return [
       { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: "./src/content/docspace/public/cdss/dengue/index.html" },
-      { id: "cdss-ecg", title: "Phân Tích ECG 12 Cần", icon: "📈", url: "./src/content/docspace/public/cdss/ecg/index.html" },
+      { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", icon: "📈", url: "./src/content/docspace/public/cdss/ecg/index.html" },
       { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: "./src/content/docspace/public/cdss/abg/index.html" },
       { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: "./src/content/docspace/public/cdss/xray/index.html" },
+      { id: "cdss-inpatient", title: "Khám Bệnh Bates", icon: "🩺", url: "./src/content/docspace/public/cdss/inpatient/index.html" },
       { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: "./src/content/docspace/public/cdss/antibiotic/index.html" }
     ];
   } catch (e) {

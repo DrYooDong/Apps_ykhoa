@@ -1577,44 +1577,198 @@
 }
 
 /* ============================================================
-   PRINT STYLES
+   PRINT STYLES (Chỉ in nội dung cần thiết & Bảng điều phối cọc dịch)
    ============================================================ */
+.cdss-print-sheet {
+  display: none;
+}
+
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
   body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Times New Roman', 'DejaVu Serif', serif !important;
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ẩn hoàn toàn toàn bộ giao diện web tương tác */
+  .cdss-portal-navbar,
+  .dengue-cdss-app,
+  .cdss-top-bar,
+  .cdss-cases-bar,
+  .cdss-main-grid,
+  .cdss-mobile-sticky-bar,
+  .cdss-drawer-overlay,
+  .cdss-mobile-drawer,
+  .cdss-toast,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Hiển thị DUY NHẤT phiếu y lệnh lâm sàng chuẩn */
+  .cdss-print-sheet {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     background: #ffffff !important;
     color: #000000 !important;
   }
 
-  .cdss-portal-navbar,
-  .cdss-toolbar-actions,
-  .cdss-cases-bar,
-  .cdss-mobile-sticky-bar,
-  .cdss-toast,
-  .cdss-accordion-chevron {
-    display: none !important;
+  .cdss-print-page {
+    width: 100% !important;
   }
 
-  .cdss-accordion-content {
-    display: block !important;
+  .cdss-print-meta-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    font-size: 8.5pt !important;
+    border-bottom: 1.5px solid #000 !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
   }
 
-  .cdss-table-scroll {
-    display: block !important;
+  .cdss-print-left-org {
+    text-align: left !important;
   }
 
-  .cdss-fluid-cards-stack {
-    display: none !important;
+  .cdss-print-right-org {
+    text-align: right !important;
   }
 
-  .cdss-main-grid {
-    grid-template-columns: 1fr !important;
+  .cdss-print-title-area {
+    text-align: center !important;
+    margin: 6px 0 8px 0 !important;
   }
 
-  .cdss-card,
-  .cdss-table-card,
-  .cdss-accordion {
-    box-shadow: none !important;
-    border: 1px solid #ccc !important;
-    break-inside: avoid;
+  .cdss-print-main-title {
+    font-size: 13.5pt !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+    color: #000 !important;
+  }
+
+  .cdss-print-sub-title {
+    font-size: 8.5pt !important;
+    font-style: italic !important;
+    margin-top: 2px !important;
+    color: #222 !important;
+  }
+
+  .cdss-print-patient-box {
+    border: 1px solid #000 !important;
+    padding: 6px 8px !important;
+    margin-bottom: 8px !important;
+    font-size: 9.5pt !important;
+    background: #fafafa !important;
+    line-height: 1.35 !important;
+  }
+
+  .cdss-print-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .cdss-print-weight-highlight {
+    background: #f0fdf4 !important;
+    border: 1px solid #4ade80 !important;
+    padding: 1px 6px !important;
+    border-radius: 3px !important;
+  }
+
+  /* BẢNG TRUYỀN DỊCH 4 CỘT CHUẨN IN */
+  .cdss-print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 6px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-table th,
+  .cdss-print-table td {
+    border: 1px solid #000 !important;
+    padding: 4px 6px !important;
+    font-size: 9pt !important;
+    vertical-align: top !important;
+    color: #000 !important;
+  }
+
+  .cdss-print-table th {
+    background: #e5e7eb !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    font-size: 8.5pt !important;
+  }
+
+  .cdss-print-summary-strip {
+    display: flex !important;
+    justify-content: space-between !important;
+    background: #f3f4f6 !important;
+    border: 1px solid #6b7280 !important;
+    padding: 4px 8px !important;
+    font-size: 8.8pt !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .cdss-print-vaso-box {
+    border: 1px dashed #374151 !important;
+    padding: 5px 8px !important;
+    margin-bottom: 6px !important;
+    font-size: 8.5pt !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-vaso-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-top: 3px !important;
+  }
+
+  .cdss-print-vaso-col {
+    line-height: 1.3 !important;
+  }
+
+  .cdss-print-safety-notes {
+    font-size: 8pt !important;
+    line-height: 1.3 !important;
+    color: #1f2937 !important;
+    margin-bottom: 8px !important;
+    border-left: 2.5px solid #000 !important;
+    padding-left: 6px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-signatures {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cdss-print-sign-col {
+    width: 45% !important;
   }
 }

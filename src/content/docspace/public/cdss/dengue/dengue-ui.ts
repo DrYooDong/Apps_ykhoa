@@ -124,6 +124,9 @@ export class DengueCDSSController {
     const curTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
     this.container.innerHTML = `
+      <!-- DEDICATED MEDICAL PRINT SHEET (Chỉ hiển thị khi in phiếu y lệnh) -->
+      <div id="cdss-print-sheet" class="cdss-print-sheet"></div>
+
       <div class="dengue-cdss-app">
         <!-- TOP CLINICAL TOOLBAR (Header) -->
         <header class="cdss-top-bar">
@@ -605,6 +608,7 @@ export class DengueCDSSController {
     this.renderVasopressors(plan);
     this.renderNursingList(plan);
     this.updateMobileStickyBar(plan);
+    this.renderPrintSheet(plan);
 
     // Auto-open Vasopressor Accordion if in Shock
     const vasoSec = document.getElementById('accordion-vaso');
@@ -1056,6 +1060,167 @@ export class DengueCDSSController {
     if (elVolume) {
       elVolume.textContent = `Tổng: ${plan.totalVolumeMl.toLocaleString('vi-VN')} ml (${plan.totalDurationHours}h)`;
     }
+  }
+
+  private renderPrintSheet(plan: DengueCDSSPlan): void {
+    const el = document.getElementById('cdss-print-sheet');
+    if (!el) return;
+
+    const { patient, weightResult, fluidRows, totalVolumeMl, totalDurationHours, vasopressorDopamin: d, vasopressorNoradrenalin: n } = plan;
+
+    const now = new Date();
+    const dateFormatted = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth() + 1).toString().padStart(2, '0')}/${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+    const severityText = patient.severity === 'warning_signs'
+      ? 'Có Dấu Hiệu Cảnh Báo (DHCB)'
+      : patient.severity === 'shock'
+        ? 'Sốc Sốt Xuất Huyết Dengue (Còn Bù)'
+        : 'Sốc Sốt Xuất Huyết Dengue Nguy Kịch (Mạch 0, HA 0)';
+
+    const genderText = patient.gender === 'male' ? 'Nam' : 'Nữ';
+    const mlPerKg = Math.round(totalVolumeMl / weightResult.adjustedWeightKg);
+    const bottles500 = Math.ceil(totalVolumeMl / 500);
+
+    el.innerHTML = `
+      <div class="cdss-print-page">
+        <!-- HEADER CƠ QUAN & TIÊU ĐỀ PHIẾU IN -->
+        <div class="cdss-print-meta-top">
+          <div class="cdss-print-left-org">
+            <div style="font-weight:bold; text-transform:uppercase;">KHOA CẤP CỨU / TRUYỀN NHIỄM</div>
+            <div>BỆNH ÁN SỐ: ................................</div>
+            <div>PHÒNG / GIƯỜNG: ........................</div>
+          </div>
+          <div class="cdss-print-right-org">
+            <div style="font-weight:bold;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+            <div style="font-style:italic;">Độc lập - Tự do - Hạnh phúc</div>
+            <div style="font-size:0.85em; margin-top:2px;">Thời điểm lập phiếu: ${dateFormatted}</div>
+          </div>
+        </div>
+
+        <div class="cdss-print-title-area">
+          <h1 class="cdss-print-main-title">PHIẾU Y LỆNH & THEO DÕI TRUYỀN DỊCH SXHD DENGUE</h1>
+          <div class="cdss-print-sub-title">(Theo Hướng dẫn Chẩn đoán & Điều trị Sốt Xuất Huyết Dengue — Quyết định 2760/QĐ-BYT 2023)</div>
+        </div>
+
+        <!-- THÔNG TIN BỆNH NHÂN & ĐÁNH GIÁ CÂN NẶNG CDC 2014 -->
+        <div class="cdss-print-patient-box">
+          <div class="cdss-print-row">
+            <span>Họ và tên người bệnh: <strong>...........................................................................</strong></span>
+            <span>Tuổi: <strong>${patient.ageYears} tuổi</strong></span>
+            <span>Giới tính: <strong>${genderText}</strong></span>
+          </div>
+
+          <div class="cdss-print-row" style="margin-top: 5px;">
+            <span>Cân thực tế: <strong>${weightResult.actualWeightKg} kg</strong></span>
+            <span>Chuẩn CDC 2014: <strong>${weightResult.standardWeightKg} kg</strong></span>
+            <span class="cdss-print-weight-highlight">
+              CÂN TÍNH DỊCH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
+              ${weightResult.isObese ? '<em>(HIỆU CHỈNH TRẺ BÉO PHÌ &gt; 120% CHUẨN)</em>' : ''}
+            </span>
+          </div>
+
+          <div class="cdss-print-row" style="margin-top: 5px;">
+            <span>Chẩn đoán / Phân độ: <strong style="text-transform:uppercase;">${severityText}</strong></span>
+            <span>Giờ bắt đầu truyền: <strong>${patient.startTime || '08:00'}</strong></span>
+          </div>
+        </div>
+
+        <!-- BẢNG ĐIỀU PHỐI CỌC DỊCH 4 CỘT CHUẨN HÓA (TRỌNG TÂM PHIẾU IN) -->
+        <table class="cdss-print-table">
+          <thead>
+            <tr>
+              <th style="width: 17%;">MỐC GIỜ & THỜI LƯỢNG</th>
+              <th style="width: 25%;">TỐC ĐỘ & LƯỢNG DỊCH CẦN</th>
+              <th style="width: 24%;">ĐIỀU PHỐI TẠI CỌC</th>
+              <th style="width: 22%;">GIÁM SÁT & ĐO LẠI HCT</th>
+              <th style="width: 12%;">ĐD THỰC HIỆN</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${fluidRows.map(r => `
+              <tr>
+                <td style="text-align: center;">
+                  <div style="font-weight: bold; font-size: 1.05em;">Cữ ${r.stepIndex} (${r.durationHours}h)</div>
+                  <div style="font-weight: 600; margin: 2px 0;">${r.timeWindow}</div>
+                  <div style="font-size: 0.82em; color: #444;">${r.stageName}</div>
+                </td>
+                <td>
+                  <div>Tốc độ: <strong style="font-size: 1.15em;">${r.rateMlKgH} ml/kg/h</strong></div>
+                  <div>Số giọt: <strong>${r.dropsPerMin} giọt/phút</strong> <small>(dây 20 giọt/ml)</small></div>
+                  <div>Lượng dịch cần: <strong>${r.totalMl.toLocaleString('vi-VN')} ml</strong></div>
+                </td>
+                <td>
+                  <div>Dịch có sẵn từ cữ trước: <strong>${r.existingFluidMl} ml</strong></div>
+                  <div style="font-weight: bold; margin: 2px 0;">
+                    ${r.bottlesToHang > 0 ? `Treo thêm: +${r.bottlesToHang} chai 500ml` : 'Không cần treo thêm chai'}
+                  </div>
+                  <div>Tổng có tại cọc: <strong>${r.totalAtPoleMl.toLocaleString('vi-VN')} ml</strong></div>
+                </td>
+                <td>
+                  ${r.hctCheckRequired ? `
+                    <div style="font-weight: bold; color: #b91c1c; margin-bottom: 2px;">
+                      [!] BẮT BUỘC ĐO LẠI HCT
+                    </div>
+                  ` : ''}
+                  <div style="font-size: 0.82em; line-height: 1.3;">${r.monitoringNotes}</div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;">
+                  <div style="font-size: 0.78em; color: #555;">Bắt đầu: ....h....</div>
+                  <div style="font-size: 0.78em; margin-top: 14px;">Ký: ..............</div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+
+        <!-- TỔNG KẾT DỊCH TRUYỀN DỰ KIẾN -->
+        <div class="cdss-print-summary-strip">
+          <span>Tổng lượng dịch bù: <strong>${totalVolumeMl.toLocaleString('vi-VN')} ml</strong> (~ <strong>${mlPerKg} ml/kg</strong>)</span>
+          <span>Thời gian dự kiến: <strong>${totalDurationHours} giờ</strong> (${fluidRows.length} cữ)</span>
+          <span>Ước tính số chai 500ml: <strong>${bottles500} chai</strong> (Ringer Lactate / NaCl 0.9%)</span>
+        </div>
+
+        <!-- PHÁC ĐỒ VẬN MẠCH BƠM TIÊM ĐIỆN 50ML -->
+        <div class="cdss-print-vaso-box">
+          <div style="font-weight: bold; text-transform: uppercase; font-size: 0.88em; margin-bottom: 3px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
+            PHÁC ĐỒ THUỐC VẬN MẠCH BƠM TIÊM ĐIỆN 50ML (ÁP DỤNG KHI TÁI SỐC HOẶC SỐC TRƠ DỊCH TRUYỀN)
+          </div>
+          <div class="cdss-print-vaso-grid">
+            <div class="cdss-print-vaso-col">
+              <strong>1. Dopamin (Đầu tay trẻ em):</strong> ${d.totalMg} mg (3 × ${d.patientWeightKg}kg) pha vừa đủ 50ml Glucose 5%. 
+              <em>Quy đổi: 1 ml/h = 1 µg/kg/phút</em>. Liều khuyến cáo: ${d.standardDoseRange} (Tốc độ bơm: <strong>${d.recommendedPumpRateMlH}</strong>).
+            </div>
+            <div class="cdss-print-vaso-col">
+              <strong>2. Noradrenalin (Sốc giãn mạch / người lớn):</strong> ${n.totalMg} mg (0.3 × ${n.patientWeightKg}kg) pha vừa đủ 50ml Glucose 5%. 
+              <em>Quy đổi: 1 ml/h = 0.1 µg/kg/phút</em>. Liều khuyến cáo: ${n.standardDoseRange} (Tốc độ bơm: <strong>${n.recommendedPumpRateMlH}</strong>).
+            </div>
+          </div>
+        </div>
+
+        <!-- NGUYÊN TẮC ĐIỀU DƯỠNG AN TOÀN KHI TRUYỀN DỊCH -->
+        <div class="cdss-print-safety-notes">
+          <strong>Lưu ý điều dưỡng an toàn:</strong>
+          (1) Luôn đo lại Hct tại giường trước khi quyết định giảm bậc dịch theo y lệnh.
+          (2) Đích nước tiểu tối thiểu: &ge; 0.5 - 1 ml/kg/giờ.
+          (3) Báo bác sĩ ngay nếu có dấu hiệu quá tải tuần hoàn (phù mi mắt, thở nhanh co kéo, ran ẩm đáy phổi, gan to nhanh).
+          (4) Ngưng truyền dịch khi mạch, huyết áp ổn định, thoát sốc sau 24-48 giờ giai đoạn hồi phục.
+        </div>
+
+        <!-- CHỮ KÝ XÁC NHẬN Y LỆNH -->
+        <div class="cdss-print-signatures">
+          <div class="cdss-print-sign-col">
+            <div style="font-weight: bold;">ĐIỀU DƯỠNG THEO DÕI & THỰC HIỆN</div>
+            <div style="font-style: italic; font-size: 0.85em;">(Ký và ghi rõ họ tên)</div>
+            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+          </div>
+          <div class="cdss-print-sign-col">
+            <div style="font-weight: bold;">BÁC SĨ CHỈ ĐỊNH Y LỆNH</div>
+            <div style="font-style: italic; font-size: 0.85em;">(Ký và ghi rõ họ tên)</div>
+            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   private copyHandoverReport(): void {
