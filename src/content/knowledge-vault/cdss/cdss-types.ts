@@ -79,6 +79,7 @@ export interface WeightCalculationResult {
   standardWeightKg: number;
   isObese: boolean;
   isPregnantAdjusted?: boolean;
+  pregnancyTrimester?: PregnancyTrimester;
   ratioToStandard: number; // e.g. 1.25 for 125%
   adjustedWeightKg: number;
   formulaNote: string;
