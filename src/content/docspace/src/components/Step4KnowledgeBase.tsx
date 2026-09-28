@@ -895,6 +895,8 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                               onOpenCdssModal('sepsis');
                             } else if (t.includes('khám') || t.includes('nội trú') || t.includes('bates') || id.includes('inpatient')) {
                               onOpenCdssModal('inpatient');
+                            } else if (t.includes('insulin') || t.includes('đường huyết') || t.includes('diacare') || id.includes('diacare')) {
+                              onOpenCdssModal('diacare');
                             } else if (t.includes('dengue')) {
                               onOpenCdssModal('dengue');
                             } else if (t.includes('khí máu') || id.includes('abg')) {

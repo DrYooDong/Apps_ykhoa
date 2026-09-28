@@ -203,6 +203,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'Bates & Macleod + 7 Thuộc Tính',
     isStandalone: true,
     standaloneUrl: 'inpatient/index.html'
+  },
+  {
+    id: 'cdss-diacare-insulin',
+    slug: 'diacare',
+    title: 'Quản Lý Insulin & Đường Huyết Nội Viện (DiaCare CDSS)',
+    titleEn: 'DiaCare Inpatient Glycemic & Insulin Management CDSS',
+    shortDesc: 'Hệ thống hỗ trợ ra quyết định lâm sàng quản lý đái tháo đường nội viện, tự động tính toán liều insulin phác đồ Basal-Bolus, hiệu chỉnh suy thận/suy gan/béo phì, phác đồ trượt SSI, xử trí cấp cứu DKA/HHS và tình huống lâm sàng đặc thù (chu phẫu, corticoid, lọc máu, nuôi ăn sonde) theo ADA 2026 và JBDS-IP.',
+    category: 'endocrinology',
+    categoryName: 'Nội tiết & Chuyển hóa',
+    version: '2.0.0 (ADA 2026 & JBDS-IP)',
+    updatedAt: '2026-09-28',
+    author: 'CliniPortal CDSS Squad & ADA 2026 / JBDS-IP',
+    guidelineSource: 'ADA Standards of Care 2026 (Hospital Care) & JBDS-IP Inpatient Glycemic Guidelines',
+    icd10: ['E10', 'E11', 'E14', 'E87.2', 'R73.9'],
+    icon: 'fa-solid fa-syringe',
+    badge: 'ADA 2026 + JBDS-IP + Basal-Bolus',
+    isStandalone: true,
+    standaloneUrl: 'diacare/index.html'
   }
 ];
 

@@ -86,6 +86,7 @@ export const CANONICAL_CDSS_URLS: Record<string, string> = {
   'cdss-vancomycin': './src/content/docspace/public/cdss/vancomycin/index.html',
   'cdss-sepsis': './src/content/docspace/public/cdss/sepsis/index.html',
   'cdss-inpatient': './src/content/docspace/public/cdss/inpatient/index.html',
+  'cdss-diacare': './src/content/docspace/public/cdss/diacare/index.html',
   'cdss-hub': './src/content/docspace/public/cdss/index.html'
 };
 
@@ -101,7 +102,8 @@ export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
   { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "./src/content/docspace/public/cdss/vancomycin/index.html", icon: "💉", count: 14 },
   { id: "cdss-sepsis", title: "Phân Tầng Nguy Cơ Sepsis", category: "Hồi Sức • NICE & SSC 2024", url: "./src/content/docspace/public/cdss/sepsis/index.html", icon: "☣️", count: 13 },
   { id: "cdss-inpatient", title: "Khám Bệnh Nội Trú (Bates)", category: "Nội Khoa • Bates & Macleod", url: "./src/content/docspace/public/cdss/inpatient/index.html", icon: "🩺", count: 15 },
-  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối 11 Module", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
+  { id: "cdss-diacare", title: "Quản Lý Insulin Nội Viện", category: "Nội Tiết • ADA 2026 & JBDS", url: "./src/content/docspace/public/cdss/diacare/index.html", icon: "💉", count: 17 },
+  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối 12 Module", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
 ];
 
 let currentPearlIdx = 0;

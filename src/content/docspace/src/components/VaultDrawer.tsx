@@ -1259,6 +1259,41 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                         Cẩm nang khám lâm sàng hệ thống Bates &amp; Macleod, tiếp cận hội chứng nội trú, hỏi bệnh sử 7 thuộc tính và tra cứu nhanh ⌘K.
                       </p>
                     </div>
+
+                    {/* 12. CDSS DiaCare Inpatient Glycemic Management */}
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('diacare');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('diacare'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-emerald-50 to-teal-50/30 hover:from-emerald-100/70 hover:to-teal-100/60 border border-emerald-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300">
+                          ADA 2026 &amp; JBDS
+                        </span>
+                        <a
+                          href={getCdssAppUrl('diacare')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-emerald-500 hover:text-emerald-700 rounded hover:bg-emerald-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                        12. Quản Lý Insulin &amp; Đường Huyết Nội Viện (DiaCare)
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Tự động tính liều insulin Basal-Bolus, hiệu chỉnh suy gan/thận/béo phì, phác đồ trượt SSI và xử trí DKA/HHS theo ADA 2026.
+                      </p>
+                    </div>
                   </div>
                 )}
 

@@ -14,7 +14,8 @@ export type CDSSCategory =
   | 'pharmacology'    // Dược lý lâm sàng
   | 'gastroenterology'// Tiêu hóa & Gan mật
   | 'neurology'       // Thần kinh & Đột quỵ
-  | 'internal';       // Nội khoa tổng quát & Khám lâm sàng
+  | 'internal'        // Nội khoa tổng quát & Khám lâm sàng
+  | 'endocrinology';  // Nội tiết & Chuyển hóa (Insulin, Đái tháo đường)
 
 export interface CDSSModuleMeta {
   id: string;

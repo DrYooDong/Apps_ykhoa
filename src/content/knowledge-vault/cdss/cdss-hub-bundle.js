@@ -198,6 +198,24 @@
       badge: "Bates & Macleod + 7 Thu\u1ED9c T\xEDnh",
       isStandalone: true,
       standaloneUrl: "inpatient/index.html"
+    },
+    {
+      id: "cdss-diacare-insulin",
+      slug: "diacare",
+      title: "Qu\u1EA3n L\xFD Insulin & \u0110\u01B0\u1EDDng Huy\u1EBFt N\u1ED9i Vi\u1EC7n (DiaCare CDSS)",
+      titleEn: "DiaCare Inpatient Glycemic & Insulin Management CDSS",
+      shortDesc: "H\u1EC7 th\u1ED1ng h\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng qu\u1EA3n l\xFD \u0111\xE1i th\xE1o \u0111\u01B0\u1EDDng n\u1ED9i vi\u1EC7n, t\u1EF1 \u0111\u1ED9ng t\xEDnh to\xE1n li\u1EC1u insulin ph\xE1c \u0111\u1ED3 Basal-Bolus, hi\u1EC7u ch\u1EC9nh suy th\u1EADn/suy gan/b\xE9o ph\xEC, ph\xE1c \u0111\u1ED3 tr\u01B0\u1EE3t SSI, x\u1EED tr\xED c\u1EA5p c\u1EE9u DKA/HHS v\xE0 t\xECnh hu\u1ED1ng l\xE2m s\xE0ng \u0111\u1EB7c th\xF9 (chu ph\u1EABu, corticoid, l\u1ECDc m\xE1u, nu\xF4i \u0103n sonde) theo ADA 2026 v\xE0 JBDS-IP.",
+      category: "endocrinology",
+      categoryName: "N\u1ED9i ti\u1EBFt & Chuy\u1EC3n h\xF3a",
+      version: "2.0.0 (ADA 2026 & JBDS-IP)",
+      updatedAt: "2026-09-28",
+      author: "CliniPortal CDSS Squad & ADA 2026 / JBDS-IP",
+      guidelineSource: "ADA Standards of Care 2026 (Hospital Care) & JBDS-IP Inpatient Glycemic Guidelines",
+      icd10: ["E10", "E11", "E14", "E87.2", "R73.9"],
+      icon: "fa-solid fa-syringe",
+      badge: "ADA 2026 + JBDS-IP + Basal-Bolus",
+      isStandalone: true,
+      standaloneUrl: "diacare/index.html"
     }
   ];
   function getCDSSModuleById(id) {
@@ -831,10 +849,79 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
   }
 
   // src/content/docspace/public/cdss/dengue/dengue-ui.ts
+  var CLINICAL_SAMPLE_CASES = [
+    {
+      id: "child-obese",
+      icon: "fa-solid fa-child",
+      label: "B\xE9 8T B\xE9o Ph\xEC (38kg)",
+      tag: "CDC 2014",
+      input: {
+        ageYears: 8,
+        gender: "male",
+        actualWeightKg: 38,
+        severity: "warning_signs"
+      },
+      clinicalHighlight: "Tr\u1EBB b\xE9o ph\xEC > 120% chu\u1EA9n: T\u1EF1 \u0111\u1ED9ng d\xF9ng chu\u1EA9n CDC 2014 (26kg) tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p."
+    },
+    {
+      id: "child-shock",
+      icon: "fa-solid fa-heart-pulse",
+      label: "B\xE9 G\xE1i 5T S\u1ED1c (16kg)",
+      tag: "S\u1ED1c C\xF2n B\xF9",
+      input: {
+        ageYears: 5,
+        gender: "female",
+        actualWeightKg: 16,
+        severity: "shock"
+      },
+      clinicalHighlight: "Tr\u1EBB nh\u1ECF s\u1ED1c c\xF2n b\xF9: Ch\u1ED1ng s\u1ED1c 15 ml/kg/h c\u1EEF 1, theo d\xF5i s\xE1t sinh hi\u1EC7u v\xE0 Hct."
+    },
+    {
+      id: "teen-female",
+      icon: "fa-solid fa-person",
+      label: "Thi\u1EBFu N\u1EEF 14T (49kg)",
+      tag: "D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o",
+      input: {
+        ageYears: 14,
+        gender: "female",
+        actualWeightKg: 49,
+        severity: "warning_signs"
+      },
+      clinicalHighlight: "Thi\u1EBFu ni\xEAn n\u1EEF (13-15 tu\u1ED5i): B\xF9 d\u1ECBch b\u1EADc ri\xEAng, chu\u1EA9n b\u1ECB 6 ml/kg/h trong 2h."
+    },
+    {
+      id: "adult-male",
+      icon: "fa-solid fa-user-doctor",
+      label: "Nam 28T S\u1ED1c (55kg)",
+      tag: "Ng\u01B0\u1EDDi L\u1EDBn S\u1ED1c",
+      input: {
+        ageYears: 28,
+        gender: "male",
+        actualWeightKg: 55,
+        severity: "shock"
+      },
+      clinicalHighlight: "Ng\u01B0\u1EDDi l\u1EDBn th\u1EC3 tr\u1EA1ng chu\u1EA9n s\u1ED1c c\xF2n b\xF9: B\xF9 d\u1ECBch 15 ml/kg/h r\u1ED3i gi\u1EA3m b\u1EADc 10 ml/kg/h."
+    },
+    {
+      id: "adult-severe-shock",
+      icon: "fa-solid fa-bolt",
+      label: "N\u1EEF 35T S\u1ED1c N\u1EB7ng (62kg)",
+      tag: "M\u1EA1ch 0 - HA 0",
+      isDanger: true,
+      input: {
+        ageYears: 35,
+        gender: "female",
+        actualWeightKg: 62,
+        severity: "severe_shock"
+      },
+      clinicalHighlight: "S\u1ED1c nguy k\u1ECBch kh\u1EA9n c\u1EA5p: B\u01A1m d\u1ECBch 20 ml/kg/h si\xEAu t\u1ED1c + chu\u1EA9n b\u1ECB Noradrenalin b\u01A1m ti\xEAm \u0111i\u1EC7n."
+    }
+  ];
   var DengueCDSSController = class {
     constructor(containerId) {
       this.currentPlan = null;
       this.customDurations = {};
+      this.activeCaseId = "child-obese";
       const el = document.getElementById(containerId);
       if (!el) {
         throw new Error(`Container #${containerId} not found`);
@@ -851,83 +938,117 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
       const now = /* @__PURE__ */ new Date();
       const curTime = `${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
       this.container.innerHTML = `
+      <!-- DEDICATED MEDICAL PRINT SHEET (Ch\u1EC9 hi\u1EC3n th\u1ECB khi in phi\u1EBFu y l\u1EC7nh) -->
+      <div id="cdss-print-sheet" class="cdss-print-sheet"></div>
+
       <div class="dengue-cdss-app">
-        <!-- Header Banner -->
-        <header class="cdss-header-card">
-          <div class="cdss-header-meta">
-            <div class="cdss-badge-wrap">
-              <span class="cdss-badge cdss-badge--danger"><i class="fa-solid fa-triangle-exclamation"></i> C\u1EA5p C\u1EE9u Truy\u1EC1n Nhi\u1EC5m</span>
-              <span class="cdss-badge cdss-badge--info">Q\u0110 2760/Q\u0110-BYT 2023</span>
-              <span class="cdss-badge cdss-badge--primary">CDC 2014 Standard</span>
+        <!-- TOP CLINICAL TOOLBAR (Header) -->
+        <header class="cdss-top-bar">
+          <div class="cdss-bar-branding">
+            <div class="cdss-icon-badge">
+              <i class="fa-solid fa-droplet"></i>
             </div>
-            <h1 class="cdss-title">
-              <i class="fa-solid fa-droplet cdss-icon-pulse"></i> 
-              CDSS T\xEDnh To\xE1n D\u1ECBch Truy\u1EC1n & Ch\u1ED1ng S\u1ED1c SXHD Dengue
-            </h1>
-            <p class="cdss-subtitle">
-              H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Quy\u1EBFt \u0111\u1ECBnh L\xE2m s\xE0ng: T\u1EF1 \u0111\u1ED9ng chu\u1EA9n h\xF3a c\xE2n n\u1EB7ng CDC 2014, \u0111i\u1EC1u ph\u1ED1i c\u1ECDc d\u1ECBch 4 c\u1ED9t \u0111\u1ED9ng h\u1ECDc v\xE0 t\xEDnh li\u1EC1u v\u1EADn m\u1EA1ch b\u01A1m ti\xEAm \u0111i\u1EC7n 50ml.
-            </p>
+            <div class="cdss-brand-titles">
+              <h1 class="cdss-brand-title">
+                CDSS T\xEDnh D\u1ECBch Truy\u1EC1n & Ch\u1ED1ng S\u1ED1c SXHD Dengue
+                <span class="cdss-brand-badge">Q\u0110 2760/BYT 2023</span>
+              </h1>
+              <div class="cdss-brand-subtitle">
+                <span><i class="fa-solid fa-scale-balanced"></i> Chu\u1EA9n CDC 2014</span>
+                <span><i class="fa-solid fa-table-columns"></i> C\u1ECDc d\u1ECBch 4 c\u1ED9t</span>
+                <span><i class="fa-solid fa-syringe"></i> V\u1EADn m\u1EA1ch B\u01A1m ti\xEAm 50ml</span>
+              </div>
+            </div>
           </div>
-          <div class="cdss-header-actions">
-            <button id="btn-copy-soap" class="cdss-btn cdss-btn--primary">
-              <i class="fa-solid fa-notes-medical"></i> Ch\xE9p V\xE0o B\u1EC7nh \xC1n
+
+          <div class="cdss-toolbar-actions">
+            <button id="btn-copy-soap" class="cdss-action-btn cdss-action-btn--primary" title="Sao ch\xE9p K\u1EBF ho\u1EA1ch SOAP v\xE0o B\u1EC7nh \xE1n / DocSpace">
+              <i class="fa-solid fa-notes-medical"></i> <span>B\u1EC7nh \xC1n SOAP</span>
             </button>
-            <button id="btn-copy-handover" class="cdss-btn cdss-btn--secondary">
-              <i class="fa-solid fa-clipboard-check"></i> Ch\xE9p B\xE0n Giao Ca
+            <button id="btn-copy-handover" class="cdss-action-btn" title="Sao ch\xE9p b\xE1o c\xE1o giao ban c\u1ECDc d\u1ECBch">
+              <i class="fa-solid fa-clipboard-check"></i> <span>B\xE0n Giao Ca</span>
             </button>
-            <button id="btn-print" class="cdss-btn cdss-btn--ghost">
-              <i class="fa-solid fa-print"></i> In Phi\u1EBFu
+            <button id="btn-print" class="cdss-action-btn cdss-action-btn--icon-only" title="In phi\u1EBFu y l\u1EC7nh c\u1ECDc d\u1ECBch">
+              <i class="fa-solid fa-print"></i>
+            </button>
+            <button id="btn-reset-durations" class="cdss-action-btn cdss-action-btn--icon-only" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF">
+              <i class="fa-solid fa-clock-rotate-left"></i>
             </button>
           </div>
         </header>
 
-        <!-- Main Grid Layout -->
-        <div class="cdss-main-grid">
-          <!-- Left Column: Patient Parameters Form -->
-          <aside class="cdss-sidebar-col">
-            <div class="cdss-panel cdss-form-panel">
-              <h2 class="cdss-panel-title">
-                <i class="fa-solid fa-user-injured"></i> Th\xF4ng Tin & Ph\xE2n T\u1EA7ng
-              </h2>
+        <!-- 5 CLINICAL SAMPLE CASES QUICK-SELECT BAR -->
+        <div class="cdss-cases-bar">
+          <div class="cdss-cases-label">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 5 Ca M\u1EABu:
+          </div>
+          <div class="cdss-cases-list" id="cdss-cases-list">
+            ${CLINICAL_SAMPLE_CASES.map((c) => `
+              <button type="button" 
+                class="cdss-case-pill ${c.isDanger ? "cdss-case-pill--danger" : ""} ${c.id === this.activeCaseId ? "active" : ""}" 
+                data-case-id="${c.id}"
+                title="${c.clinicalHighlight}">
+                <i class="${c.icon} cdss-case-pill-icon"></i>
+                <span>${c.label}</span>
+                <span class="cdss-case-pill-tag">${c.tag}</span>
+              </button>
+            `).join("")}
+          </div>
+        </div>
 
-              <form id="dengue-input-form" class="cdss-form">
+        <!-- MAIN GRID LAYOUT -->
+        <div class="cdss-main-grid">
+          <!-- LEFT COLUMN: PATIENT FORM & WEIGHT ANALYZER -->
+          <aside class="cdss-left-col">
+            <!-- Patient Input Parameters Card -->
+            <div class="cdss-card">
+              <div class="cdss-card-header">
+                <h2 class="cdss-card-title">
+                  <i class="fa-solid fa-user-injured"></i> Th\xF4ng Tin & Ph\xE2n T\u1EA7ng
+                </h2>
+                <span id="case-status-indicator" class="cdss-brand-badge" style="display:none;"></span>
+              </div>
+
+              <form id="dengue-input-form">
                 <!-- Tu\u1ED5i & Gi\u1EDBi t\xEDnh -->
                 <div class="cdss-form-row">
-                  <div class="cdss-form-group cdss-col-6">
-                    <label for="input-age">Tu\u1ED5i (N\u0103m)</label>
-                    <input type="number" id="input-age" min="1" max="100" value="8" step="1" required class="cdss-input" />
-                  </div>
-                  <div class="cdss-form-group cdss-col-6">
-                    <label>Gi\u1EDBi T\xEDnh</label>
-                    <div class="cdss-radio-group">
-                      <label class="cdss-radio-label">
-                        <input type="radio" name="gender" value="male" checked /> Nam
-                      </label>
-                      <label class="cdss-radio-label">
-                        <input type="radio" name="gender" value="female" /> N\u1EEF
-                      </label>
+                  <div class="cdss-form-group">
+                    <label class="cdss-form-label" for="input-age">Tu\u1ED5i (N\u0103m)</label>
+                    <div class="cdss-input-group">
+                      <input type="number" id="input-age" min="1" max="100" value="8" step="1" required class="cdss-input" />
+                      <span class="cdss-input-suffix">tu\u1ED5i</span>
                     </div>
+                  </div>
+
+                  <div class="cdss-form-group">
+                    <label class="cdss-form-label">Gi\u1EDBi T\xEDnh</label>
+                    <div class="cdss-segmented" id="gender-segmented">
+                      <button type="button" class="cdss-segmented-btn active" data-gender="male">
+                        <i class="fa-solid fa-mars"></i> Nam
+                      </button>
+                      <button type="button" class="cdss-segmented-btn" data-gender="female">
+                        <i class="fa-solid fa-venus"></i> N\u1EEF
+                      </button>
+                    </div>
+                    <input type="hidden" id="input-gender" value="male" />
                   </div>
                 </div>
 
                 <!-- C\xE2n n\u1EB7ng th\u1EF1c t\u1EBF -->
                 <div class="cdss-form-group">
-                  <label for="input-weight">
-                    C\xE2n N\u1EB7ng Th\u1EF1c T\u1EBF (kg)
-                    <span class="cdss-tooltip" title="C\xE2n n\u1EB7ng khi ti\u1EBFp nh\u1EADn ph\xF2ng c\u1EA5p c\u1EE9u">
-                      <i class="fa-solid fa-circle-question"></i>
-                    </span>
+                  <label class="cdss-form-label" for="input-weight">
+                    <span>C\xE2n N\u1EB7ng Th\u1EF1c T\u1EBF</span>
+                    <small style="color:var(--cdss-text-muted);">C\xE2n \u0111o t\u1EA1i c\u1EA5p c\u1EE9u</small>
                   </label>
-                  <div class="cdss-input-addon-wrap">
-                    <input type="number" id="input-weight" min="5" max="150" value="38" step="0.5" required class="cdss-input" />
-                    <span class="cdss-input-addon">kg</span>
+                  <div class="cdss-input-group">
+                    <input type="number" id="input-weight" min="5" max="160" value="38" step="0.5" required class="cdss-input" />
+                    <span class="cdss-input-suffix">kg</span>
                   </div>
-                  <span class="cdss-input-hint">VD: B\xE9 8 tu\u1ED5i, n\u1EB7ng 38kg (Th\u1EEBa c\xE2n > 120% chu\u1EA9n)</span>
                 </div>
 
                 <!-- Ph\xE2n \u0111\u1ED9 l\xE2m s\xE0ng -->
                 <div class="cdss-form-group">
-                  <label for="input-severity">Ph\xE2n \u0110\u1ED9 L\xE2m S\xE0ng SXHD</label>
+                  <label class="cdss-form-label" for="input-severity">Ph\xE2n \u0110\u1ED9 L\xE2m S\xE0ng SXHD</label>
                   <select id="input-severity" class="cdss-select">
                     <option value="warning_signs" selected>1. C\xF3 D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o (DHCB)</option>
                     <option value="shock">2. S\u1ED1c SXHD (C\xF2n B\xF9)</option>
@@ -937,62 +1058,69 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
 
                 <!-- Gi\u1EDD b\u1EAFt \u0111\u1EA7u truy\u1EC1n -->
                 <div class="cdss-form-group">
-                  <label for="input-starttime">M\u1ED1c Gi\u1EDD B\u1EAFt \u0110\u1EA7u Truy\u1EC1n</label>
+                  <label class="cdss-form-label" for="input-starttime">M\u1ED1c Gi\u1EDD B\u1EAFt \u0110\u1EA7u Truy\u1EC1n</label>
                   <input type="time" id="input-starttime" value="${curTime}" class="cdss-input" />
-                </div>
-
-                <div class="cdss-form-actions">
-                  <button type="button" id="btn-quick-child" class="cdss-chip-btn">
-                    <i class="fa-solid fa-child"></i> Tr\u1EBB 8T B\xE9o Ph\xEC (38kg)
-                  </button>
-                  <button type="button" id="btn-quick-adult" class="cdss-chip-btn">
-                    <i class="fa-solid fa-user"></i> Ng\u01B0\u1EDDi L\u1EDBn S\u1ED1c (55kg)
-                  </button>
-                  <button type="button" id="btn-quick-severe" class="cdss-chip-btn cdss-chip-btn--danger">
-                    <i class="fa-solid fa-bolt"></i> S\u1ED1c N\u1EB7ng (M\u1EA1ch 0 HA 0)
-                  </button>
                 </div>
               </form>
             </div>
 
-            <!-- Box Th\xF4ng Tin C\xE2n N\u1EB7ng CDC -->
-            <div id="weight-analysis-box" class="cdss-panel cdss-weight-panel">
-              <!-- Rendered via updateWeightAnalysis -->
+            <!-- CDC 2014 Weight Analysis Card -->
+            <div id="weight-analysis-box">
+              <!-- Dynamically populated via renderWeightAnalysis -->
             </div>
           </aside>
 
-          <!-- Right Column: CDSS Results, 4-Column Table, Vasopressors -->
-          <main class="cdss-content-col">
-            <!-- Alert Banner Container -->
-            <div id="cdss-alerts-wrap" class="cdss-alerts-wrap"></div>
+          <!-- RIGHT COLUMN: CDSS OUTPUT, SCHEDULE & PROTOCOLS -->
+          <main class="cdss-right-col">
+            <!-- Dynamic Alert Banners -->
+            <div id="cdss-alerts-wrap" class="cdss-alerts-container"></div>
 
-            <!-- Summary Stat Cards -->
-            <div id="cdss-stats-wrap" class="cdss-stats-grid"></div>
+            <!-- Summary KPI Bento Grid -->
+            <div id="cdss-stats-wrap" class="cdss-kpi-grid"></div>
 
-            <!-- B\u1EA2NG C\u1ECCC D\u1ECACH 4 C\u1ED8T -->
-            <section class="cdss-panel cdss-schedule-panel">
-              <div class="cdss-panel-header-row">
-                <div>
-                  <h2 class="cdss-panel-title">
+            <!-- VISUAL FLUID TIMELINE -->
+            <div class="cdss-timeline-card">
+              <div class="cdss-timeline-header">
+                <span class="cdss-timeline-title">
+                  <i class="fa-solid fa-chart-gantt"></i> Ti\u1EBFn Tr\xECnh B\u1EADc D\u1ECBch Truy\u1EC1n Theo Gi\u1EDD
+                </span>
+                <span id="timeline-duration-badge" class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary);">
+                  <!-- Hours -->
+                </span>
+              </div>
+              <div class="cdss-timeline-track" id="cdss-timeline-track">
+                <!-- Dynamic timeline segments -->
+              </div>
+              <div class="cdss-timeline-ticks" id="cdss-timeline-ticks">
+                <!-- Dynamic timeline ticks -->
+              </div>
+            </div>
+
+            <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 4 C\u1ED8T -->
+            <section class="cdss-table-card">
+              <div class="cdss-table-header-wrap">
+                <div class="cdss-table-title-area">
+                  <h2 class="cdss-table-title">
                     <i class="fa-solid fa-table-list"></i> B\u1EA3ng \u0110i\u1EC1u Ph\u1ED1i C\u1ECDc D\u1ECBch 4 C\u1ED9t Chu\u1EA9n H\xF3a
                   </h2>
-                  <p class="cdss-panel-desc">
-                    T\u1EF1 \u0111\u1ED9ng t\xEDnh to\xE1n l\u01B0\u1EE3ng d\u1ECBch g\u1ED9p, s\u1ED1 gi\u1ECDt/ph\xFAt, d\u1ECBch d\u01B0 chuy\u1EC3n c\u1EEF v\xE0 s\u1ED1 chai 500ml treo th\xEAm t\u1EA1i c\u1ECDc.
+                  <p class="cdss-table-desc">
+                    T\u1EF1 \u0111\u1ED9ng g\u1ED9p th\u1EC3 t\xEDch, t\xEDnh gi\u1ECDt/ph\xFAt (d\xE2y 20g/ml), chuy\u1EC3n d\u1ECBch d\u01B0 v\xE0 t\xEDnh s\u1ED1 chai 500ml treo th\xEAm t\u1EA1i c\u1ECDc.
                   </p>
                 </div>
-                <button id="btn-reset-durations" class="cdss-btn cdss-btn--sm cdss-btn--ghost" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF">
-                  <i class="fa-solid fa-clock-rotate-left"></i> \u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n
+                <button id="btn-reset-durations-sub" class="cdss-action-btn" title="Kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng chu\u1EA9n B\u1ED9 Y T\u1EBF">
+                  <i class="fa-solid fa-clock-rotate-left"></i> <span>\u0110\u1EB7t L\u1EA1i Gi\u1EDD Chu\u1EA9n</span>
                 </button>
               </div>
 
-              <div class="cdss-table-responsive">
-                <table id="cdss-fluid-table" class="cdss-table">
+              <!-- Desktop / Tablet Table -->
+              <div class="cdss-table-scroll">
+                <table class="cdss-table">
                   <thead>
                     <tr>
                       <th style="width: 22%;">C\u1ED9t 1: M\u1ED1c Gi\u1EDD & Th\u1EDDi L\u01B0\u1EE3ng</th>
                       <th style="width: 28%;">C\u1ED9t 2: T\u1ED1c \u0110\u1ED9 & L\u01B0\u1EE3ng D\u1ECBch C\u1EA7n</th>
                       <th style="width: 26%;">C\u1ED9t 3: D\u1ECBch C\xF3 S\u1EB5n / Treo Th\xEAm</th>
-                      <th style="width: 24%;">C\u1ED9t 4: T\u1ED5ng D\u1ECBch T\u1EA1i C\u1ECDc & Gi\xE1m S\xE1t</th>
+                      <th style="width: 24%;">C\u1ED9t 4: T\u1ED5ng C\u1ECDc & Gi\xE1m S\xE1t</th>
                     </tr>
                   </thead>
                   <tbody id="cdss-fluid-tbody">
@@ -1000,116 +1128,240 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
                   </tbody>
                 </table>
               </div>
+
+              <!-- Mobile Responsive Fluid Cards Stack -->
+              <div class="cdss-fluid-cards-stack" id="cdss-fluid-cards-stack">
+                <!-- Dynamic Mobile Cards -->
+              </div>
             </section>
 
-            <!-- KH\u1ED0I V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML -->
-            <section class="cdss-panel cdss-vasopressor-panel">
-              <div class="cdss-panel-header-row">
-                <div>
-                  <h2 class="cdss-panel-title">
-                    <i class="fa-solid fa-syringe"></i> Ph\xE1c \u0110\u1ED3 Thu\u1ED1c V\u1EADn M\u1EA1ch B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml
-                  </h2>
-                  <p class="cdss-panel-desc">
-                    \xC1p d\u1EE5ng khi t\xE1i s\u1ED1c ho\u1EB7c s\u1ED1c tr\u01A1 d\u1ECBch truy\u1EC1n (\u0111\xE3 b\xF9 \u0111\u1EE7 th\u1EC3 t\xEDch n\u1ED9i m\u1EA1ch ho\u1EB7c CVP > 10 cmH\u2082O).
-                  </p>
+            <!-- ACCORDION: THU\u1ED0C V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML -->
+            <section class="cdss-accordion" id="accordion-vaso">
+              <button type="button" class="cdss-accordion-trigger" id="trigger-vaso">
+                <div class="cdss-accordion-title-wrap">
+                  <i class="fa-solid fa-syringe cdss-accordion-icon"></i>
+                  <div>
+                    <h3 class="cdss-accordion-title">Ph\xE1c \u0110\u1ED3 Thu\u1ED1c V\u1EADn M\u1EA1ch B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml</h3>
+                    <div class="cdss-accordion-subtitle">C\xF4ng th\u1EE9c pha Dopamin & Noradrenalin chu\u1EA9n h\xF3a theo kg (T\u1ED1c \u0111\u1ED9 1 ml/h = 1 ho\u1EB7c 0.1 \xB5g/kg/ph\xFAt)</div>
+                  </div>
+                </div>
+                <div class="cdss-accordion-right">
+                  <span id="vaso-alert-badge" class="cdss-brand-badge" style="display:none;"></span>
+                  <i class="fa-solid fa-chevron-down cdss-accordion-chevron"></i>
+                </div>
+              </button>
+              <div class="cdss-accordion-content">
+                <div class="cdss-vaso-grid" id="cdss-vaso-grid">
+                  <!-- Dopamin & Noradrenalin Cards -->
                 </div>
               </div>
-
-              <div class="cdss-vasopressor-grid" id="cdss-vaso-grid">
-                <!-- Dopamin & Noradrenalin Cards -->
-              </div>
             </section>
 
-            <!-- H\u01AF\u1EDANG D\u1EAAN \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N (HKKK) -->
-            <section class="cdss-panel cdss-nursing-panel">
-              <h2 class="cdss-panel-title">
-                <i class="fa-solid fa-user-nurse"></i> Quy Tr\xECnh \u0110i\u1EC1u D\u01B0\u1EE1ng An To\xE0n & Theo D\xF5i Gi\u1EDD
-              </h2>
-              <ul class="cdss-nursing-list" id="cdss-nursing-list">
-                <!-- Nursing items -->
-              </ul>
+            <!-- ACCORDION: \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N & THEO D\xD5I GI\u1EDC -->
+            <section class="cdss-accordion" id="accordion-nursing">
+              <button type="button" class="cdss-accordion-trigger" id="trigger-nursing">
+                <div class="cdss-accordion-title-wrap">
+                  <i class="fa-solid fa-user-nurse cdss-accordion-icon" style="color:var(--cdss-success);"></i>
+                  <div>
+                    <h3 class="cdss-accordion-title">Quy Tr\xECnh \u0110i\u1EC1u D\u01B0\u1EE1ng An To\xE0n & Theo D\xF5i Gi\u1EDD</h3>
+                    <div class="cdss-accordion-subtitle">Ki\u1EC3m so\xE1t d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i, \u0111\xEDch n\u01B0\u1EDBc ti\u1EC3u, th\u1EDDi \u0111i\u1EC3m \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng</div>
+                  </div>
+                </div>
+                <div class="cdss-accordion-right">
+                  <i class="fa-solid fa-chevron-down cdss-accordion-chevron"></i>
+                </div>
+              </button>
+              <div class="cdss-accordion-content">
+                <ul class="cdss-nursing-list" id="cdss-nursing-list">
+                  <!-- Dynamic Nursing Items -->
+                </ul>
+              </div>
             </section>
           </main>
         </div>
 
-        <!-- Toast Notification -->
-        <div id="cdss-toast" class="cdss-toast" style="display:none;"></div>
+        <!-- STICKY MOBILE BOTTOM BAR -->
+        <div class="cdss-mobile-sticky-bar">
+          <div class="cdss-mobile-bar-inner">
+            <div class="cdss-mbar-summary">
+              <div class="cdss-mbar-main">
+                <span id="mbar-weight">26 kg</span>
+                <span class="cdss-brand-badge" id="mbar-severity-badge">DHCB</span>
+              </div>
+              <div class="cdss-mbar-sub" id="mbar-volume-sub">T\u1ED5ng: 2.340 ml / 24h</div>
+            </div>
+            <div class="cdss-mbar-actions">
+              <button type="button" id="btn-open-drawer" class="cdss-action-btn cdss-action-btn--primary">
+                <i class="fa-solid fa-sliders"></i> Ch\u1EC9nh Ca
+              </button>
+              <button type="button" id="btn-mbar-soap" class="cdss-action-btn cdss-action-btn--icon-only" title="Ch\xE9p B\u1EC7nh \xC1n">
+                <i class="fa-solid fa-notes-medical"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE DRAWER OVERLAY & PANEL -->
+        <div class="cdss-drawer-overlay" id="cdss-drawer-overlay"></div>
+        <div class="cdss-mobile-drawer" id="cdss-mobile-drawer">
+          <div class="cdss-drawer-handle"></div>
+          <div class="cdss-drawer-header">
+            <h3 class="cdss-drawer-title">
+              <i class="fa-solid fa-sliders"></i> Ch\u1EC9nh Th\xF4ng S\u1ED1 Ca B\u1EC7nh
+            </h3>
+            <button type="button" class="cdss-action-btn cdss-action-btn--icon-only" id="btn-close-drawer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div id="drawer-form-container">
+            <!-- Mirrored controls for phone -->
+          </div>
+        </div>
+
+        <!-- TOAST NOTIFICATION -->
+        <div id="cdss-toast" class="cdss-toast">
+          <i class="fa-solid fa-circle-check"></i>
+          <span id="cdss-toast-text">Th\xF4ng b\xE1o</span>
+        </div>
       </div>
     `;
     }
     attachEventListeners() {
       const form = document.getElementById("dengue-input-form");
       if (form) {
-        form.addEventListener("input", () => this.recalculate());
-        form.addEventListener("change", () => this.recalculate());
-      }
-      const btnChild = document.getElementById("btn-quick-child");
-      if (btnChild) {
-        btnChild.addEventListener("click", () => {
-          this.setInputValue("input-age", "8");
-          this.setGender("male");
-          this.setInputValue("input-weight", "38");
-          this.setInputValue("input-severity", "warning_signs");
-          this.customDurations = {};
+        form.addEventListener("input", () => {
+          this.clearActivePreset();
+          this.recalculate();
+        });
+        form.addEventListener("change", () => {
+          this.clearActivePreset();
           this.recalculate();
         });
       }
-      const btnAdult = document.getElementById("btn-quick-adult");
-      if (btnAdult) {
-        btnAdult.addEventListener("click", () => {
-          this.setInputValue("input-age", "28");
-          this.setGender("male");
-          this.setInputValue("input-weight", "55");
-          this.setInputValue("input-severity", "shock");
-          this.customDurations = {};
+      const genderBtns = document.querySelectorAll("#gender-segmented .cdss-segmented-btn");
+      genderBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const target = e.currentTarget;
+          const gender = target.getAttribute("data-gender");
+          genderBtns.forEach((b) => b.classList.remove("active"));
+          target.classList.add("active");
+          const inputGender = document.getElementById("input-gender");
+          if (inputGender) inputGender.value = gender;
+          this.clearActivePreset();
           this.recalculate();
         });
-      }
-      const btnSevere = document.getElementById("btn-quick-severe");
-      if (btnSevere) {
-        btnSevere.addEventListener("click", () => {
-          this.setInputValue("input-age", "11");
-          this.setGender("female");
-          this.setInputValue("input-weight", "35");
-          this.setInputValue("input-severity", "severe_shock");
-          this.customDurations = {};
-          this.recalculate();
+      });
+      const casePills = document.querySelectorAll(".cdss-case-pill");
+      casePills.forEach((pill) => {
+        pill.addEventListener("click", (e) => {
+          const target = e.currentTarget;
+          const caseId = target.getAttribute("data-case-id");
+          if (caseId) {
+            this.applySampleCase(caseId);
+          }
         });
-      }
-      const btnResetDur = document.getElementById("btn-reset-durations");
-      if (btnResetDur) {
-        btnResetDur.addEventListener("click", () => {
-          this.customDurations = {};
-          this.recalculate();
-          this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng c\u1EEF chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
-        });
-      }
-      const btnCopyHandover = document.getElementById("btn-copy-handover");
-      if (btnCopyHandover) {
-        btnCopyHandover.addEventListener("click", () => this.copyHandoverReport());
-      }
-      const btnCopySoap = document.getElementById("btn-copy-soap");
-      if (btnCopySoap) {
-        btnCopySoap.addEventListener("click", () => this.copySoapPlan());
-      }
+      });
+      this.setupAccordion("accordion-vaso", "trigger-vaso");
+      this.setupAccordion("accordion-nursing", "trigger-nursing");
+      const btnReset1 = document.getElementById("btn-reset-durations");
+      const btnReset2 = document.getElementById("btn-reset-durations-sub");
+      const handleReset = () => {
+        this.customDurations = {};
+        this.recalculate();
+        this.showToast("\u0110\xE3 kh\xF4i ph\u1EE5c th\u1EDDi l\u01B0\u1EE3ng c\u1EEF chu\u1EA9n theo B\u1ED9 Y T\u1EBF!");
+      };
+      if (btnReset1) btnReset1.addEventListener("click", handleReset);
+      if (btnReset2) btnReset2.addEventListener("click", handleReset);
+      const btnSoap = document.getElementById("btn-copy-soap");
+      const btnMbarSoap = document.getElementById("btn-mbar-soap");
+      if (btnSoap) btnSoap.addEventListener("click", () => this.copySoapPlan());
+      if (btnMbarSoap) btnMbarSoap.addEventListener("click", () => this.copySoapPlan());
+      const btnHandover = document.getElementById("btn-copy-handover");
+      if (btnHandover) btnHandover.addEventListener("click", () => this.copyHandoverReport());
       const btnPrint = document.getElementById("btn-print");
-      if (btnPrint) {
-        btnPrint.addEventListener("click", () => window.print());
+      if (btnPrint) btnPrint.addEventListener("click", () => window.print());
+      const btnOpenDrawer = document.getElementById("btn-open-drawer");
+      const btnCloseDrawer = document.getElementById("btn-close-drawer");
+      const drawerOverlay = document.getElementById("cdss-drawer-overlay");
+      const drawer = document.getElementById("cdss-mobile-drawer");
+      const openDrawer = () => {
+        if (drawer && drawerOverlay) {
+          drawer.classList.add("active");
+          drawerOverlay.classList.add("active");
+        }
+      };
+      const closeDrawer = () => {
+        if (drawer && drawerOverlay) {
+          drawer.classList.remove("active");
+          drawerOverlay.classList.remove("active");
+        }
+      };
+      if (btnOpenDrawer) btnOpenDrawer.addEventListener("click", openDrawer);
+      if (btnCloseDrawer) btnCloseDrawer.addEventListener("click", closeDrawer);
+      if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+    }
+    setupAccordion(sectionId, triggerId) {
+      const sec = document.getElementById(sectionId);
+      const trig = document.getElementById(triggerId);
+      if (sec && trig) {
+        trig.addEventListener("click", () => {
+          sec.classList.toggle("open");
+        });
       }
+    }
+    clearActivePreset() {
+      this.activeCaseId = "";
+      const pills = document.querySelectorAll(".cdss-case-pill");
+      pills.forEach((p) => p.classList.remove("active"));
+      const ind = document.getElementById("case-status-indicator");
+      if (ind) ind.style.display = "none";
+    }
+    applySampleCase(caseId) {
+      const sample = CLINICAL_SAMPLE_CASES.find((c) => c.id === caseId);
+      if (!sample) return;
+      this.activeCaseId = caseId;
+      this.customDurations = {};
+      const pills = document.querySelectorAll(".cdss-case-pill");
+      pills.forEach((p) => {
+        if (p.getAttribute("data-case-id") === caseId) {
+          p.classList.add("active");
+        } else {
+          p.classList.remove("active");
+        }
+      });
+      this.setInputValue("input-age", sample.input.ageYears.toString());
+      this.setInputValue("input-weight", sample.input.actualWeightKg.toString());
+      this.setInputValue("input-severity", sample.input.severity);
+      this.setGender(sample.input.gender);
+      const ind = document.getElementById("case-status-indicator");
+      if (ind) {
+        ind.textContent = sample.label;
+        ind.style.display = "inline-block";
+      }
+      this.recalculate();
+      this.showToast(`\u0110\xE3 \xE1p d\u1EE5ng: ${sample.label}`);
     }
     setInputValue(id, val) {
       const el = document.getElementById(id);
       if (el) el.value = val;
     }
     setGender(val) {
-      const radio = document.querySelector(`input[name="gender"][value="${val}"]`);
-      if (radio) radio.checked = true;
+      const hidden = document.getElementById("input-gender");
+      if (hidden) hidden.value = val;
+      const btns = document.querySelectorAll("#gender-segmented .cdss-segmented-btn");
+      btns.forEach((btn) => {
+        if (btn.getAttribute("data-gender") === val) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
     }
     getFormData() {
-      const age = parseFloat(document.getElementById("input-age").value) || 8;
-      const gender = document.querySelector('input[name="gender"]:checked')?.value || "male";
-      const weight = parseFloat(document.getElementById("input-weight").value) || 30;
-      const severity = document.getElementById("input-severity").value || "warning_signs";
+      const age = parseFloat(document.getElementById("input-age")?.value) || 8;
+      const gender = document.getElementById("input-gender")?.value || "male";
+      const weight = parseFloat(document.getElementById("input-weight")?.value) || 30;
+      const severity = document.getElementById("input-severity")?.value || "warning_signs";
       const startTime = document.getElementById("input-starttime")?.value || "08:00";
       return {
         ageYears: age,
@@ -1128,43 +1380,63 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
       this.renderWeightAnalysis(plan);
       this.renderAlerts(plan);
       this.renderStats(plan);
-      this.renderFluidTable(plan);
+      this.renderTimeline(plan);
+      this.renderFluidSchedule(plan);
       this.renderVasopressors(plan);
       this.renderNursingList(plan);
+      this.updateMobileStickyBar(plan);
+      this.renderPrintSheet(plan);
+      const vasoSec = document.getElementById("accordion-vaso");
+      const vasoBadge = document.getElementById("vaso-alert-badge");
+      if (vasoSec) {
+        if (plan.patient.severity === "shock" || plan.patient.severity === "severe_shock") {
+          vasoSec.classList.add("open");
+          if (vasoBadge) {
+            vasoBadge.textContent = "Kh\u1EDFi \u0111\u1ED9ng khi s\u1ED1c tr\u01A1 d\u1ECBch";
+            vasoBadge.style.display = "inline-block";
+          }
+        } else {
+          if (vasoBadge) vasoBadge.style.display = "none";
+        }
+      }
     }
     renderWeightAnalysis(plan) {
       const box = document.getElementById("weight-analysis-box");
       if (!box) return;
-      const { weightResult, ageGroup, patient } = plan;
+      const { weightResult, ageGroup } = plan;
       const isObese = weightResult.isObese;
+      const ageGroupLabel = ageGroup === "child" ? "Tr\u1EBB em (< 13 tu\u1ED5i)" : ageGroup === "adolescent" ? "Thi\u1EBFu ni\xEAn (13-15T)" : "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)";
       box.innerHTML = `
-      <div class="cdss-weight-header">
-        <span class="cdss-weight-badge ${isObese ? "cdss-badge--danger" : "cdss-badge--success"}">
-          ${isObese ? '<i class="fa-solid fa-triangle-exclamation"></i> Th\u1EEBa C\xE2n / B\xE9o Ph\xEC' : '<i class="fa-solid fa-circle-check"></i> C\xE2n N\u1EB7ng H\u1EE3p L\xFD'}
-        </span>
-        <span class="cdss-age-tag">
-          ${ageGroup === "child" ? "Tr\u1EBB em (< 13 tu\u1ED5i)" : ageGroup === "adolescent" ? "Thi\u1EBFu ni\xEAn (13-15T)" : "Ng\u01B0\u1EDDi l\u1EDBn (\u2265 16T)"}
-        </span>
-      </div>
+      <div class="cdss-card cdss-weight-box">
+        <div class="cdss-weight-tags-row">
+          <span class="cdss-weight-status-badge ${isObese ? "cdss-weight-status-badge--obese" : "cdss-weight-status-badge--normal"}">
+            <i class="fa-solid ${isObese ? "fa-triangle-exclamation" : "fa-circle-check"}"></i>
+            ${isObese ? "Th\u1EEBa C\xE2n / B\xE9o Ph\xEC (> 120% Chu\u1EA9n)" : "Th\u1EC3 Tr\u1EA1ng H\u1EE3p L\xFD"}
+          </span>
+          <span style="font-size:0.72rem; font-weight:600; color:var(--cdss-text-muted);">
+            ${ageGroupLabel}
+          </span>
+        </div>
 
-      <div class="cdss-weight-comparison">
-        <div class="cdss-weight-stat">
-          <span class="cdss-stat-label">C\xE2n N\u1EB7ng Th\u1EF1c T\u1EBF</span>
-          <span class="cdss-stat-val ${isObese ? "text-danger" : ""}">${weightResult.actualWeightKg} kg</span>
+        <div class="cdss-weight-grid">
+          <div class="cdss-wcell">
+            <span class="cdss-wcell-label">Th\u1EF1c T\u1EBF</span>
+            <span class="cdss-wcell-val ${isObese ? "text-danger" : ""}">${weightResult.actualWeightKg} <small>kg</small></span>
+          </div>
+          <div class="cdss-wcell">
+            <span class="cdss-wcell-label">CDC 2014</span>
+            <span class="cdss-wcell-val" style="color:var(--cdss-text-muted);">${weightResult.standardWeightKg} <small>kg</small></span>
+          </div>
+          <div class="cdss-wcell cdss-wcell--highlight">
+            <span class="cdss-wcell-label">C\xE2n T\xEDnh D\u1ECBch</span>
+            <span class="cdss-wcell-val">${weightResult.adjustedWeightKg} <small>kg</small></span>
+          </div>
         </div>
-        <div class="cdss-weight-stat">
-          <span class="cdss-stat-label">Chu\u1EA9n CDC 2014</span>
-          <span class="cdss-stat-val text-muted">${weightResult.standardWeightKg} kg</span>
-        </div>
-        <div class="cdss-weight-stat cdss-weight-stat--primary">
-          <span class="cdss-stat-label">C\xC2N T\xCDNH D\u1ECACH (CDSS)</span>
-          <span class="cdss-stat-val text-primary font-bold">${weightResult.adjustedWeightKg} kg</span>
-        </div>
-      </div>
 
-      <div class="cdss-weight-note">
-        <i class="fa-solid fa-circle-info"></i>
-        <span>${weightResult.formulaNote}</span>
+        <div class="cdss-weight-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>${weightResult.formulaNote}</div>
+        </div>
       </div>
     `;
     }
@@ -1176,13 +1448,11 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
         return;
       }
       wrap.innerHTML = plan.alerts.map((a) => `
-      <div class="cdss-alert cdss-alert--${a.level}">
-        <div class="cdss-alert-icon">
-          <i class="fa-solid ${a.level === "danger" ? "fa-skull-crossbones" : a.level === "warning" ? "fa-triangle-exclamation" : "fa-circle-info"}"></i>
-        </div>
-        <div class="cdss-alert-content">
-          <div class="cdss-alert-title">${a.title}</div>
-          <div class="cdss-alert-msg">${a.message}</div>
+      <div class="cdss-alert-box cdss-alert-box--${a.level}">
+        <i class="fa-solid ${a.level === "danger" ? "fa-triangle-exclamation" : a.level === "warning" ? "fa-circle-exclamation" : "fa-circle-info"}"></i>
+        <div class="cdss-alert-body">
+          <strong>${a.title}</strong>
+          <div>${a.message}</div>
         </div>
       </div>
     `).join("");
@@ -1191,44 +1461,74 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
       const wrap = document.getElementById("cdss-stats-wrap");
       if (!wrap) return;
       const mlPerKg = Math.round(plan.totalVolumeMl / plan.weightResult.adjustedWeightKg);
+      const bottles500 = Math.ceil(plan.totalVolumeMl / 500);
       wrap.innerHTML = `
-      <div class="cdss-stat-card">
-        <div class="cdss-stat-card-icon cdss-stat-card-icon--blue">
+      <div class="cdss-kpi-card">
+        <div class="cdss-kpi-icon cdss-kpi-icon--blue">
           <i class="fa-solid fa-fill-drip"></i>
         </div>
-        <div class="cdss-stat-card-data">
-          <span class="cdss-card-label">T\u1ED5ng Th\u1EC3 T\xEDch D\u1ECBch G\u1ED9p</span>
-          <span class="cdss-card-val">${plan.totalVolumeMl.toLocaleString("vi-VN")} <small>ml</small></span>
-          <span class="cdss-card-sub">~ ${mlPerKg} ml/kg</span>
+        <div class="cdss-kpi-content">
+          <span class="cdss-kpi-label">T\u1ED5ng Th\u1EC3 T\xEDch D\u1ECBch G\u1ED9p</span>
+          <span class="cdss-kpi-value">${plan.totalVolumeMl.toLocaleString("vi-VN")} <small>ml</small></span>
+          <span class="cdss-kpi-sub">~ ${mlPerKg} ml/kg c\xE2n t\xEDnh d\u1ECBch</span>
         </div>
       </div>
 
-      <div class="cdss-stat-card">
-        <div class="cdss-stat-card-icon cdss-stat-card-icon--purple">
+      <div class="cdss-kpi-card">
+        <div class="cdss-kpi-icon cdss-kpi-icon--purple">
           <i class="fa-solid fa-hourglass-half"></i>
         </div>
-        <div class="cdss-stat-card-data">
-          <span class="cdss-card-label">T\u1ED5ng Th\u1EDDi L\u01B0\u1EE3ng D\u1EF1 Ki\u1EBFn</span>
-          <span class="cdss-card-val">${plan.totalDurationHours} <small>gi\u1EDD</small></span>
-          <span class="cdss-card-sub">${plan.fluidRows.length} b\u1EADc t\u1ED1c \u0111\u1ED9 gi\u1EA3m d\u1EA7n</span>
+        <div class="cdss-kpi-content">
+          <span class="cdss-kpi-label">T\u1ED5ng Th\u1EDDi L\u01B0\u1EE3ng D\u1EF1 Ki\u1EBFn</span>
+          <span class="cdss-kpi-value">${plan.totalDurationHours} <small>gi\u1EDD</small></span>
+          <span class="cdss-kpi-sub">${plan.fluidRows.length} b\u1EADc t\u1ED1c \u0111\u1ED9 gi\u1EA3m d\u1EA7n</span>
         </div>
       </div>
 
-      <div class="cdss-stat-card">
-        <div class="cdss-stat-card-icon cdss-stat-card-icon--teal">
+      <div class="cdss-kpi-card">
+        <div class="cdss-kpi-icon cdss-kpi-icon--teal">
           <i class="fa-solid fa-bottle-water"></i>
         </div>
-        <div class="cdss-stat-card-data">
-          <span class="cdss-card-label">\u01AF\u1EDBc T\xEDnh S\u1ED1 Chai 500ml</span>
-          <span class="cdss-card-val">${Math.ceil(plan.totalVolumeMl / 500)} <small>chai</small></span>
-          <span class="cdss-card-sub">Ringer Lactate / NaCl 0.9%</span>
+        <div class="cdss-kpi-content">
+          <span class="cdss-kpi-label">\u01AF\u1EDBc T\xEDnh S\u1ED1 Chai 500ml</span>
+          <span class="cdss-kpi-value">${bottles500} <small>chai</small></span>
+          <span class="cdss-kpi-sub">Ringer Lactate / NaCl 0.9%</span>
         </div>
       </div>
     `;
     }
-    renderFluidTable(plan) {
+    renderTimeline(plan) {
+      const track = document.getElementById("cdss-timeline-track");
+      const ticks = document.getElementById("cdss-timeline-ticks");
+      const durationBadge = document.getElementById("timeline-duration-badge");
+      if (!track || !ticks) return;
+      if (durationBadge) {
+        durationBadge.textContent = `${plan.totalDurationHours} Gi\u1EDD Truy\u1EC1n`;
+      }
+      const totalHours = plan.totalDurationHours || 1;
+      const colors = ["cdss-seg-1", "cdss-seg-2", "cdss-seg-3", "cdss-seg-4", "cdss-seg-5"];
+      track.innerHTML = plan.fluidRows.map((r, idx) => {
+        const pct = Math.max(12, Math.round(r.durationHours / totalHours * 100));
+        const colClass = colors[idx % colors.length];
+        return `
+        <div class="cdss-timeline-segment ${colClass}" style="flex: ${r.durationHours};" title="C\u1EEF ${r.stepIndex}: ${r.rateMlKgH} ml/kg/h (${r.durationHours}h) - C\u1EA7n ${r.totalMl} ml">
+          <span>${r.rateMlKgH} ml/kg/h</span>
+          <small>C\u1EEF ${r.stepIndex} (${r.durationHours}h)</small>
+        </div>
+      `;
+      }).join("");
+      const startH = plan.fluidRows[0]?.timeWindow.split(" - ")[0] || "08:00";
+      const endH = plan.fluidRows[plan.fluidRows.length - 1]?.timeWindow.split(" - ")[1]?.split(" ")[0] || "24h";
+      ticks.innerHTML = `
+      <span><i class="fa-regular fa-clock"></i> Kh\u1EDFi \u0111\u1EA7u: <strong>${startH}</strong></span>
+      <span>${plan.fluidRows.length} giai \u0111o\u1EA1n b\xF9 d\u1ECBch li\xEAn t\u1EE5c</span>
+      <span>K\u1EBFt th\xFAc: <strong>${endH}</strong></span>
+    `;
+    }
+    renderFluidSchedule(plan) {
       const tbody = document.getElementById("cdss-fluid-tbody");
-      if (!tbody) return;
+      const mobileStack = document.getElementById("cdss-fluid-cards-stack");
+      if (!tbody || !mobileStack) return;
       const ageGroup = plan.ageGroup;
       const tpls = DENGUE_FLUID_TEMPLATES[plan.patient.severity][ageGroup];
       tbody.innerHTML = plan.fluidRows.map((r, idx) => {
@@ -1238,79 +1538,143 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
         <option value="${dur}" ${dur === r.durationHours ? "selected" : ""}>${dur} gi\u1EDD</option>
       `).join("");
         return `
-        <tr class="cdss-row-${idx % 2 === 0 ? "even" : "odd"}">
+        <tr>
           <!-- C\u1ED8T 1: M\u1ED0C GI\u1EDC & TH\u1EDCI L\u01AF\u1EE2NG -->
-          <td class="cdss-col-time">
+          <td>
             <div class="cdss-step-badge">C\u1EEF ${r.stepIndex}</div>
             <div class="cdss-time-window">${r.timeWindow}</div>
-            <div class="cdss-duration-select-wrap">
+            <div class="cdss-duration-picker">
               <label><i class="fa-regular fa-clock"></i> Th\u1EDDi l\u01B0\u1EE3ng:</label>
               <select class="cdss-duration-select" data-row-idx="${idx}">
                 ${optionsHtml}
               </select>
             </div>
-            <div class="cdss-stage-label">${r.stageName}</div>
+            <div class="cdss-stage-title">${r.stageName}</div>
           </td>
 
           <!-- C\u1ED8T 2: T\u1ED0C \u0110\u1ED8 & L\u01AF\u1EE2NG D\u1ECACH -->
-          <td class="cdss-col-rate">
-            <div class="cdss-rate-main">
-              <span class="cdss-rate-val">${r.rateMlKgH}</span>
+          <td>
+            <div class="cdss-rate-display">
+              <span class="cdss-rate-number">${r.rateMlKgH}</span>
               <span class="cdss-rate-unit">ml/kg/gi\u1EDD</span>
             </div>
-            <div class="cdss-rate-drops">
-              <i class="fa-solid fa-water"></i> <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
-              <small style="color:var(--vault-muted);">(D\xE2y 20 gi\u1ECDt/ml)</small>
+            <div class="cdss-drops-box">
+              <i class="fa-solid fa-water" style="color:var(--cdss-info);"></i> 
+              <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
+              <small style="color:var(--cdss-text-muted);">(D\xE2y 20 g/ml)</small>
             </div>
-            <div class="cdss-rate-calc">
+            <div class="cdss-volume-calc">
               Th\u1EC3 t\xEDch c\u1EA7n: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong>
-              <div class="cdss-formula-tiny">(${r.rateMlKgH} \xD7 ${plan.weightResult.adjustedWeightKg}kg \xD7 ${r.durationHours}h)</div>
+              <div style="font-size:0.7rem; color:var(--cdss-text-muted);">
+                (${r.rateMlKgH} \xD7 ${plan.weightResult.adjustedWeightKg}kg \xD7 ${r.durationHours}h)
+              </div>
             </div>
           </td>
 
           <!-- C\u1ED8T 3: D\u1ECACH C\xD3 S\u1EB4N / TREO TH\xCAM -->
-          <td class="cdss-col-bottles">
-            <div class="cdss-bottle-flow">
-              <div class="cdss-bottle-stat">
-                <span class="cdss-label-sm">D\u1ECBch s\u1EB5n t\u1EEB c\u1EEF tr\u01B0\u1EDBc:</span>
-                <span class="cdss-val-sm">${r.existingFluidMl} ml</span>
-              </div>
-              <div class="cdss-bottle-action">
-                <span class="cdss-hang-badge ${r.bottlesToHang > 0 ? "cdss-hang-badge--active" : ""}">
-                  <i class="fa-solid fa-plus"></i> Treo th\xEAm: <strong>${r.bottlesToHang}</strong> chai 500ml
-                </span>
-              </div>
+          <td>
+            <div class="cdss-carry-over">
+              D\u1ECBch s\u1EB5n t\u1EEB c\u1EEF tr\u01B0\u1EDBc: <strong>${r.existingFluidMl} ml</strong>
+            </div>
+            <div>
+              <span class="cdss-hang-badge ${r.bottlesToHang > 0 ? "cdss-hang-badge--active" : ""}">
+                <i class="fa-solid fa-plus"></i> Treo th\xEAm: <strong>${r.bottlesToHang}</strong> chai 500ml
+              </span>
             </div>
           </td>
 
-          <!-- C\u1ED8T 4: T\u1ED4NG D\u1ECACH T\u1EA0I C\u1ECCC & GI\xC1M S\xC1T -->
-          <td class="cdss-col-pole">
-            <div class="cdss-pole-total">
-              <span class="cdss-label-sm">T\u1ED5ng c\xF3 tr\xEAn c\u1ECDc:</span>
-              <span class="cdss-pole-val">${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</span>
+          <!-- C\u1ED8T 4: T\u1ED4NG C\u1ECCC & GI\xC1M S\xC1T -->
+          <td>
+            <div class="cdss-pole-metric">
+              T\u1ED5ng c\xF3 tr\xEAn c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong>
             </div>
             ${r.hctCheckRequired ? `
-              <div class="cdss-hct-alert">
+              <div class="cdss-hct-pill">
                 <i class="fa-solid fa-vial"></i> <strong>\u0110o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng</strong>
               </div>
             ` : ""}
-            <div class="cdss-monitoring-tip">
+            <div class="cdss-monitor-tip">
               ${r.monitoringNotes}
             </div>
           </td>
         </tr>
       `;
       }).join("");
-      const selects = tbody.querySelectorAll(".cdss-duration-select");
-      selects.forEach((sel) => {
-        sel.addEventListener("change", (e) => {
-          const target = e.target;
-          const rowIdx = parseInt(target.getAttribute("data-row-idx") || "0", 10);
-          const newDur = parseFloat(target.value);
-          this.customDurations[rowIdx] = newDur;
-          this.recalculate();
+      mobileStack.innerHTML = plan.fluidRows.map((r, idx) => {
+        const tpl = tpls[idx];
+        const durationOptions = tpl?.durationOptions || [r.durationHours];
+        const optionsHtml = durationOptions.map((dur) => `
+        <option value="${dur}" ${dur === r.durationHours ? "selected" : ""}>${dur}h</option>
+      `).join("");
+        return `
+        <div class="cdss-fluid-mobile-card">
+          <div class="cdss-fcard-top">
+            <div class="cdss-fcard-badge-wrap">
+              <span class="cdss-step-badge">C\u1EEF ${r.stepIndex}</span>
+              <span class="cdss-fcard-time">${r.timeWindow}</span>
+            </div>
+            <div class="cdss-duration-picker">
+              <select class="cdss-duration-select" data-row-idx="${idx}">
+                ${optionsHtml}
+              </select>
+            </div>
+          </div>
+
+          <div style="font-size:0.78rem; font-weight:600; color:var(--cdss-text-muted);">
+            ${r.stageName}
+          </div>
+
+          <div class="cdss-fcard-metrics-grid">
+            <div class="cdss-fcard-metric">
+              <div class="cdss-fcard-metric-label">T\u1ED1c \u0110\u1ED9 B\xF9</div>
+              <div class="cdss-fcard-metric-val" style="color:var(--cdss-primary);">
+                ${r.rateMlKgH} <small>ml/kg/h</small>
+              </div>
+              <div style="font-size:0.75rem; color:var(--cdss-text-muted); margin-top:2px;">
+                ~ <strong>${r.dropsPerMin}</strong> gi\u1ECDt/ph\xFAt
+              </div>
+            </div>
+
+            <div class="cdss-fcard-metric">
+              <div class="cdss-fcard-metric-label">L\u01B0\u1EE3ng D\u1ECBch C\u1EA7n</div>
+              <div class="cdss-fcard-metric-val">
+                ${r.totalMl.toLocaleString("vi-VN")} <small>ml</small>
+              </div>
+              <div style="font-size:0.75rem; color:var(--cdss-text-muted); margin-top:2px;">
+                Treo th\xEAm: <strong>${r.bottlesToHang}</strong> chai 500ml
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; border-top:1px solid var(--cdss-border-subtle); padding-top:0.5rem;">
+            <span>T\u1ED5ng c\xF3 tr\xEAn c\u1ECDc: <strong>${r.totalAtPoleMl} ml</strong></span>
+            ${r.hctCheckRequired ? `
+              <span class="cdss-hct-pill" style="margin:0;">
+                <i class="fa-solid fa-vial"></i> \u0110o l\u1EA1i Hct
+              </span>
+            ` : ""}
+          </div>
+
+          <div class="cdss-monitor-tip" style="font-size:0.74rem;">
+            ${r.monitoringNotes}
+          </div>
+        </div>
+      `;
+      }).join("");
+      const attachSelects = (container) => {
+        const selects = container.querySelectorAll(".cdss-duration-select");
+        selects.forEach((sel) => {
+          sel.addEventListener("change", (e) => {
+            const target = e.target;
+            const rowIdx = parseInt(target.getAttribute("data-row-idx") || "0", 10);
+            const newDur = parseFloat(target.value);
+            this.customDurations[rowIdx] = newDur;
+            this.recalculate();
+          });
         });
-      });
+      };
+      attachSelects(tbody);
+      attachSelects(mobileStack);
     }
     renderVasopressors(plan) {
       const grid = document.getElementById("cdss-vaso-grid");
@@ -1320,73 +1684,87 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
       <!-- Card Dopamin -->
       <div class="cdss-vaso-card">
         <div class="cdss-vaso-card-header">
-          <div class="cdss-vaso-title">
-            <span class="cdss-drug-tag cdss-drug-tag--primary">Dopamin</span>
-            <span class="cdss-drug-indication">L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay \u1EDF tr\u1EBB em</span>
+          <div>
+            <div class="cdss-drug-name cdss-drug-name--primary">Dopamin</div>
+            <div class="cdss-drug-indication">L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay \u1EDF tr\u1EBB em</div>
           </div>
-          <span class="cdss-badge cdss-badge--info">B\u01A1m Ti\xEAm \u0110i\u1EC7n 50ml</span>
+          <span class="cdss-brand-badge" style="background:var(--cdss-primary-light); color:var(--cdss-primary); border-color:var(--cdss-primary);">
+            B\u01A1m Ti\xEAm 50ml
+          </span>
         </div>
-        <div class="cdss-vaso-body">
-          <div class="cdss-vaso-recipe">
-            <div class="cdss-recipe-row">
-              <span class="cdss-recipe-key">C\xF4ng th\u1EE9c pha:</span>
-              <span class="cdss-recipe-val"><strong>${d.totalMg} mg</strong> Dopamin (3 \xD7 ${d.patientWeightKg} kg)</span>
-            </div>
-            <div class="cdss-recipe-row">
-              <span class="cdss-recipe-key">Dung m\xF4i pha:</span>
-              <span class="cdss-recipe-val">Glucose 5% v\u1EEBa \u0111\u1EE7 <strong>50 ml</strong></span>
-            </div>
-            <div class="cdss-recipe-row cdss-recipe-highlight">
-              <span class="cdss-recipe-key">T\u01B0\u01A1ng \u0111\u01B0\u01A1ng li\u1EC1u:</span>
-              <span class="cdss-recipe-val"><strong>T\u1ED1c \u0111\u1ED9 1 ml/gi\u1EDD = 1 \xB5g/kg/ph\xFAt</strong></span>
-            </div>
+
+        <div class="cdss-recipe-box">
+          <div class="cdss-recipe-row">
+            <span class="cdss-recipe-key">C\xF4ng th\u1EE9c pha:</span>
+            <span><strong>${d.totalMg} mg</strong> Dopamin (3 \xD7 ${d.patientWeightKg} kg)</span>
           </div>
-          <div class="cdss-vaso-dosing">
-            <div class="cdss-dosing-range">
-              Li\u1EC1u khuy\u1EBFn c\xE1o: <strong>${d.standardDoseRange}</strong>
-            </div>
-            <div class="cdss-pump-rate">
-              T\u1ED1c \u0111\u1ED9 b\u01A1m ti\xEAm: <strong class="text-primary">${d.recommendedPumpRateMlH}</strong>
-            </div>
+          <div class="cdss-recipe-row">
+            <span class="cdss-recipe-key">Dung m\xF4i pha:</span>
+            <span>Glucose 5% v\u1EEBa \u0111\u1EE7 <strong>50 ml</strong></span>
           </div>
-          <p class="cdss-vaso-notes"><i class="fa-solid fa-circle-exclamation"></i> ${d.precautions}</p>
+          <div class="cdss-recipe-row cdss-recipe-highlight text-primary">
+            <span>T\u01B0\u01A1ng \u0111\u01B0\u01A1ng li\u1EC1u:</span>
+            <span>T\u1ED1c \u0111\u1ED9 1 ml/gi\u1EDD = 1 \xB5g/kg/ph\xFAt</span>
+          </div>
         </div>
+
+        <div class="cdss-dosing-strip">
+          <div>
+            <div style="font-size:0.7rem; color:var(--cdss-text-muted); text-transform:uppercase;">Li\u1EC1u Khuy\u1EBFn C\xE1o</div>
+            <strong>${d.standardDoseRange}</strong>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.7rem; color:var(--cdss-text-muted); text-transform:uppercase;">T\u1ED1c \u0110\u1ED9 B\u01A1m Ti\xEAm</div>
+            <strong style="color:var(--cdss-primary); font-size:1.05rem;">${d.recommendedPumpRateMlH}</strong>
+          </div>
+        </div>
+
+        <p class="cdss-vaso-warning">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>${d.precautions}</span>
+        </p>
       </div>
 
       <!-- Card Noradrenalin -->
       <div class="cdss-vaso-card">
         <div class="cdss-vaso-card-header">
-          <div class="cdss-vaso-title">
-            <span class="cdss-drug-tag cdss-drug-tag--danger">Noradrenalin</span>
-            <span class="cdss-drug-indication">S\u1ED1c gi\xE3n m\u1EA1ch / T\u1EE5t HA t\xE2m tr\u01B0\u01A1ng</span>
+          <div>
+            <div class="cdss-drug-name cdss-drug-name--danger">Noradrenalin</div>
+            <div class="cdss-drug-indication">S\u1ED1c gi\xE3n m\u1EA1ch / T\u1EE5t HA t\xE2m tr\u01B0\u01A1ng / Ng\u01B0\u1EDDi l\u1EDBn</div>
           </div>
-          <span class="cdss-badge cdss-badge--danger">High Alert</span>
+          <span class="cdss-brand-badge">High Alert</span>
         </div>
-        <div class="cdss-vaso-body">
-          <div class="cdss-vaso-recipe">
-            <div class="cdss-recipe-row">
-              <span class="cdss-recipe-key">C\xF4ng th\u1EE9c pha:</span>
-              <span class="cdss-recipe-val"><strong>${n.totalMg} mg</strong> Noradrenalin (0.3 \xD7 ${n.patientWeightKg} kg)</span>
-            </div>
-            <div class="cdss-recipe-row">
-              <span class="cdss-recipe-key">Dung m\xF4i pha:</span>
-              <span class="cdss-recipe-val">Glucose 5% v\u1EEBa \u0111\u1EE7 <strong>50 ml</strong></span>
-            </div>
-            <div class="cdss-recipe-row cdss-recipe-highlight">
-              <span class="cdss-recipe-key">T\u01B0\u01A1ng \u0111\u01B0\u01A1ng li\u1EC1u:</span>
-              <span class="cdss-recipe-val"><strong>T\u1ED1c \u0111\u1ED9 1 ml/gi\u1EDD = 0.1 \xB5g/kg/ph\xFAt</strong></span>
-            </div>
+
+        <div class="cdss-recipe-box">
+          <div class="cdss-recipe-row">
+            <span class="cdss-recipe-key">C\xF4ng th\u1EE9c pha:</span>
+            <span><strong>${n.totalMg} mg</strong> Noradrenalin (0.3 \xD7 ${n.patientWeightKg} kg)</span>
           </div>
-          <div class="cdss-vaso-dosing">
-            <div class="cdss-dosing-range">
-              Li\u1EC1u kh\u1EDFi \u0111\u1EA7u: <strong>${n.standardDoseRange}</strong>
-            </div>
-            <div class="cdss-pump-rate">
-              T\u1ED1c \u0111\u1ED9 b\u01A1m ti\xEAm: <strong class="text-danger">${n.recommendedPumpRateMlH}</strong>
-            </div>
+          <div class="cdss-recipe-row">
+            <span class="cdss-recipe-key">Dung m\xF4i pha:</span>
+            <span>Glucose 5% v\u1EEBa \u0111\u1EE7 <strong>50 ml</strong></span>
           </div>
-          <p class="cdss-vaso-notes"><i class="fa-solid fa-triangle-exclamation"></i> ${n.precautions}</p>
+          <div class="cdss-recipe-row cdss-recipe-highlight text-danger">
+            <span>T\u01B0\u01A1ng \u0111\u01B0\u01A1ng li\u1EC1u:</span>
+            <span>T\u1ED1c \u0111\u1ED9 1 ml/gi\u1EDD = 0.1 \xB5g/kg/ph\xFAt</span>
+          </div>
         </div>
+
+        <div class="cdss-dosing-strip">
+          <div>
+            <div style="font-size:0.7rem; color:var(--cdss-text-muted); text-transform:uppercase;">Li\u1EC1u Kh\u1EDFi \u0110\u1EA7u</div>
+            <strong>${n.standardDoseRange}</strong>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.7rem; color:var(--cdss-text-muted); text-transform:uppercase;">T\u1ED1c \u0110\u1ED9 B\u01A1m Ti\xEAm</div>
+            <strong style="color:var(--cdss-danger); font-size:1.05rem;">${n.recommendedPumpRateMlH}</strong>
+          </div>
+        </div>
+
+        <p class="cdss-vaso-warning">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>${n.precautions}</span>
+        </p>
       </div>
     `;
     }
@@ -1395,10 +1773,180 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
       if (!list) return;
       list.innerHTML = plan.nursingInstructions.map((item) => `
       <li class="cdss-nursing-item">
-        <i class="fa-solid fa-check cdss-check-icon"></i>
+        <i class="fa-solid fa-circle-check"></i>
         <span>${item}</span>
       </li>
     `).join("");
+    }
+    updateMobileStickyBar(plan) {
+      const elWeight = document.getElementById("mbar-weight");
+      const elSeverity = document.getElementById("mbar-severity-badge");
+      const elVolume = document.getElementById("mbar-volume-sub");
+      if (elWeight) {
+        elWeight.textContent = `${plan.weightResult.adjustedWeightKg} kg`;
+      }
+      if (elSeverity) {
+        const sevMap = {
+          warning_signs: "D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o",
+          shock: "S\u1ED1c SXHD",
+          severe_shock: "S\u1ED1c Nguy K\u1ECBch"
+        };
+        elSeverity.textContent = sevMap[plan.patient.severity];
+      }
+      if (elVolume) {
+        elVolume.textContent = `T\u1ED5ng: ${plan.totalVolumeMl.toLocaleString("vi-VN")} ml (${plan.totalDurationHours}h)`;
+      }
+    }
+    renderPrintSheet(plan) {
+      const el = document.getElementById("cdss-print-sheet");
+      if (!el) return;
+      const { patient, weightResult, fluidRows, totalVolumeMl, totalDurationHours, vasopressorDopamin: d, vasopressorNoradrenalin: n } = plan;
+      const now = /* @__PURE__ */ new Date();
+      const dateFormatted = `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1).toString().padStart(2, "0")}/${now.getFullYear()} ${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
+      const severityText = patient.severity === "warning_signs" ? "C\xF3 D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o (DHCB)" : patient.severity === "shock" ? "S\u1ED1c S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue (C\xF2n B\xF9)" : "S\u1ED1c S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue Nguy K\u1ECBch (M\u1EA1ch 0, HA 0)";
+      const genderText = patient.gender === "male" ? "Nam" : "N\u1EEF";
+      const mlPerKg = Math.round(totalVolumeMl / weightResult.adjustedWeightKg);
+      const bottles500 = Math.ceil(totalVolumeMl / 500);
+      el.innerHTML = `
+      <div class="cdss-print-page">
+        <!-- HEADER C\u01A0 QUAN & TI\xCAU \u0110\u1EC0 PHI\u1EBEU IN -->
+        <div class="cdss-print-meta-top">
+          <div class="cdss-print-left-org">
+            <div style="font-weight:bold; text-transform:uppercase;">KHOA C\u1EA4P C\u1EE8U / TRUY\u1EC0N NHI\u1EC4M</div>
+            <div>B\u1EC6NH \xC1N S\u1ED0: ................................</div>
+            <div>PH\xD2NG / GI\u01AF\u1EDCNG: ........................</div>
+          </div>
+          <div class="cdss-print-right-org">
+            <div style="font-weight:bold;">C\u1ED8NG H\xD2A X\xC3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM</div>
+            <div style="font-style:italic;">\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\xFAc</div>
+            <div style="font-size:0.85em; margin-top:2px;">Th\u1EDDi \u0111i\u1EC3m l\u1EADp phi\u1EBFu: ${dateFormatted}</div>
+          </div>
+        </div>
+
+        <div class="cdss-print-title-area">
+          <h1 class="cdss-print-main-title">PHI\u1EBEU Y L\u1EC6NH & THEO D\xD5I TRUY\u1EC0N D\u1ECACH SXHD DENGUE</h1>
+          <div class="cdss-print-sub-title">(Theo H\u01B0\u1EDBng d\u1EABn Ch\u1EA9n \u0111o\xE1n & \u0110i\u1EC1u tr\u1ECB S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT 2023)</div>
+        </div>
+
+        <!-- TH\xD4NG TIN B\u1EC6NH NH\xC2N & \u0110\xC1NH GI\xC1 C\xC2N N\u1EB6NG CDC 2014 -->
+        <div class="cdss-print-patient-box">
+          <div class="cdss-print-row">
+            <span>H\u1ECD v\xE0 t\xEAn ng\u01B0\u1EDDi b\u1EC7nh: <strong>...........................................................................</strong></span>
+            <span>Tu\u1ED5i: <strong>${patient.ageYears} tu\u1ED5i</strong></span>
+            <span>Gi\u1EDBi t\xEDnh: <strong>${genderText}</strong></span>
+          </div>
+
+          <div class="cdss-print-row" style="margin-top: 5px;">
+            <span>C\xE2n th\u1EF1c t\u1EBF: <strong>${weightResult.actualWeightKg} kg</strong></span>
+            <span>Chu\u1EA9n CDC 2014: <strong>${weightResult.standardWeightKg} kg</strong></span>
+            <span class="cdss-print-weight-highlight">
+              C\xC2N T\xCDNH D\u1ECACH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
+              ${weightResult.isObese ? "<em>(HI\u1EC6U CH\u1EC8NH TR\u1EBA B\xC9O PH\xCC &gt; 120% CHU\u1EA8N)</em>" : ""}
+            </span>
+          </div>
+
+          <div class="cdss-print-row" style="margin-top: 5px;">
+            <span>Ch\u1EA9n \u0111o\xE1n / Ph\xE2n \u0111\u1ED9: <strong style="text-transform:uppercase;">${severityText}</strong></span>
+            <span>Gi\u1EDD b\u1EAFt \u0111\u1EA7u truy\u1EC1n: <strong>${patient.startTime || "08:00"}</strong></span>
+          </div>
+        </div>
+
+        <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 4 C\u1ED8T CHU\u1EA8N H\xD3A (TR\u1ECCNG T\xC2M PHI\u1EBEU IN) -->
+        <table class="cdss-print-table">
+          <thead>
+            <tr>
+              <th style="width: 17%;">M\u1ED0C GI\u1EDC & TH\u1EDCI L\u01AF\u1EE2NG</th>
+              <th style="width: 25%;">T\u1ED0C \u0110\u1ED8 & L\u01AF\u1EE2NG D\u1ECACH C\u1EA6N</th>
+              <th style="width: 24%;">\u0110I\u1EC0U PH\u1ED0I T\u1EA0I C\u1ECCC</th>
+              <th style="width: 22%;">GI\xC1M S\xC1T & \u0110O L\u1EA0I HCT</th>
+              <th style="width: 12%;">\u0110D TH\u1EF0C HI\u1EC6N</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${fluidRows.map((r) => `
+              <tr>
+                <td style="text-align: center;">
+                  <div style="font-weight: bold; font-size: 1.05em;">C\u1EEF ${r.stepIndex} (${r.durationHours}h)</div>
+                  <div style="font-weight: 600; margin: 2px 0;">${r.timeWindow}</div>
+                  <div style="font-size: 0.82em; color: #444;">${r.stageName}</div>
+                </td>
+                <td>
+                  <div>T\u1ED1c \u0111\u1ED9: <strong style="font-size: 1.15em;">${r.rateMlKgH} ml/kg/h</strong></div>
+                  <div>S\u1ED1 gi\u1ECDt: <strong>${r.dropsPerMin} gi\u1ECDt/ph\xFAt</strong> <small>(d\xE2y 20 gi\u1ECDt/ml)</small></div>
+                  <div>L\u01B0\u1EE3ng d\u1ECBch c\u1EA7n: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong></div>
+                </td>
+                <td>
+                  <div>D\u1ECBch c\xF3 s\u1EB5n t\u1EEB c\u1EEF tr\u01B0\u1EDBc: <strong>${r.existingFluidMl} ml</strong></div>
+                  <div style="font-weight: bold; margin: 2px 0;">
+                    ${r.bottlesToHang > 0 ? `Treo th\xEAm: +${r.bottlesToHang} chai 500ml` : "Kh\xF4ng c\u1EA7n treo th\xEAm chai"}
+                  </div>
+                  <div>T\u1ED5ng c\xF3 t\u1EA1i c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong></div>
+                </td>
+                <td>
+                  ${r.hctCheckRequired ? `
+                    <div style="font-weight: bold; color: #b91c1c; margin-bottom: 2px;">
+                      [!] B\u1EAET BU\u1ED8C \u0110O L\u1EA0I HCT
+                    </div>
+                  ` : ""}
+                  <div style="font-size: 0.82em; line-height: 1.3;">${r.monitoringNotes}</div>
+                </td>
+                <td style="text-align: center; vertical-align: middle;">
+                  <div style="font-size: 0.78em; color: #555;">B\u1EAFt \u0111\u1EA7u: ....h....</div>
+                  <div style="font-size: 0.78em; margin-top: 14px;">K\xFD: ..............</div>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+
+        <!-- T\u1ED4NG K\u1EBET D\u1ECACH TRUY\u1EC0N D\u1EF0 KI\u1EBEN -->
+        <div class="cdss-print-summary-strip">
+          <span>T\u1ED5ng l\u01B0\u1EE3ng d\u1ECBch b\xF9: <strong>${totalVolumeMl.toLocaleString("vi-VN")} ml</strong> (~ <strong>${mlPerKg} ml/kg</strong>)</span>
+          <span>Th\u1EDDi gian d\u1EF1 ki\u1EBFn: <strong>${totalDurationHours} gi\u1EDD</strong> (${fluidRows.length} c\u1EEF)</span>
+          <span>\u01AF\u1EDBc t\xEDnh s\u1ED1 chai 500ml: <strong>${bottles500} chai</strong> (Ringer Lactate / NaCl 0.9%)</span>
+        </div>
+
+        <!-- PH\xC1C \u0110\u1ED2 V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML -->
+        <div class="cdss-print-vaso-box">
+          <div style="font-weight: bold; text-transform: uppercase; font-size: 0.88em; margin-bottom: 3px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
+            PH\xC1C \u0110\u1ED2 THU\u1ED0C V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML (\xC1P D\u1EE4NG KHI T\xC1I S\u1ED0C HO\u1EB6C S\u1ED0C TR\u01A0 D\u1ECACH TRUY\u1EC0N)
+          </div>
+          <div class="cdss-print-vaso-grid">
+            <div class="cdss-print-vaso-col">
+              <strong>1. Dopamin (\u0110\u1EA7u tay tr\u1EBB em):</strong> ${d.totalMg} mg (3 \xD7 ${d.patientWeightKg}kg) pha v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. 
+              <em>Quy \u0111\u1ED5i: 1 ml/h = 1 \xB5g/kg/ph\xFAt</em>. Li\u1EC1u khuy\u1EBFn c\xE1o: ${d.standardDoseRange} (T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${d.recommendedPumpRateMlH}</strong>).
+            </div>
+            <div class="cdss-print-vaso-col">
+              <strong>2. Noradrenalin (S\u1ED1c gi\xE3n m\u1EA1ch / ng\u01B0\u1EDDi l\u1EDBn):</strong> ${n.totalMg} mg (0.3 \xD7 ${n.patientWeightKg}kg) pha v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. 
+              <em>Quy \u0111\u1ED5i: 1 ml/h = 0.1 \xB5g/kg/ph\xFAt</em>. Li\u1EC1u khuy\u1EBFn c\xE1o: ${n.standardDoseRange} (T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${n.recommendedPumpRateMlH}</strong>).
+            </div>
+          </div>
+        </div>
+
+        <!-- NGUY\xCAN T\u1EAEC \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N KHI TRUY\u1EC0N D\u1ECACH -->
+        <div class="cdss-print-safety-notes">
+          <strong>L\u01B0u \xFD \u0111i\u1EC1u d\u01B0\u1EE1ng an to\xE0n:</strong>
+          (1) Lu\xF4n \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m b\u1EADc d\u1ECBch theo y l\u1EC7nh.
+          (2) \u0110\xEDch n\u01B0\u1EDBc ti\u1EC3u t\u1ED1i thi\u1EC3u: &ge; 0.5 - 1 ml/kg/gi\u1EDD.
+          (3) B\xE1o b\xE1c s\u0129 ngay n\u1EBFu c\xF3 d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n (ph\xF9 mi m\u1EAFt, th\u1EDF nhanh co k\xE9o, ran \u1EA9m \u0111\xE1y ph\u1ED5i, gan to nhanh).
+          (4) Ng\u01B0ng truy\u1EC1n d\u1ECBch khi m\u1EA1ch, huy\u1EBFt \xE1p \u1ED5n \u0111\u1ECBnh, tho\xE1t s\u1ED1c sau 24-48 gi\u1EDD giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c.
+        </div>
+
+        <!-- CH\u1EEE K\xDD X\xC1C NH\u1EACN Y L\u1EC6NH -->
+        <div class="cdss-print-signatures">
+          <div class="cdss-print-sign-col">
+            <div style="font-weight: bold;">\u0110I\u1EC0U D\u01AF\u1EE0NG THEO D\xD5I & TH\u1EF0C HI\u1EC6N</div>
+            <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
+            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+          </div>
+          <div class="cdss-print-sign-col">
+            <div style="font-weight: bold;">B\xC1C S\u0128 CH\u1EC8 \u0110\u1ECANH Y L\u1EC6NH</div>
+            <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
+            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+          </div>
+        </div>
+      </div>
+    `;
     }
     copyHandoverReport() {
       if (!this.currentPlan) return;
@@ -1425,16 +1973,18 @@ LI\u1EC0U V\u1EACN M\u1EA0CH (KHI S\u1ED0C TR\u01A0 / CVP > 10 cmH2O):`,
     }
     showToast(msg) {
       const toast = document.getElementById("cdss-toast");
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.style.display = "block";
-      toast.classList.add("fade-in");
+      const toastText = document.getElementById("cdss-toast-text");
+      if (!toast || !toastText) return;
+      toastText.textContent = msg;
+      toast.classList.add("visible");
       setTimeout(() => {
-        toast.style.display = "none";
-        toast.classList.remove("fade-in");
+        toast.classList.remove("visible");
       }, 3200);
     }
   };
+  if (typeof window !== "undefined") {
+    window.DengueCDSSController = DengueCDSSController;
+  }
 
   // src/content/docspace/public/cdss/xray/xray-canvas-renderer.ts
   var XRayCanvasRenderer = class {

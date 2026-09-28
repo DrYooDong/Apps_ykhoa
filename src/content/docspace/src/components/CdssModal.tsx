@@ -139,6 +139,15 @@ const CDSS_TABS: ToolTabMeta[] = [
     desc: 'Cẩm nang khám lâm sàng hệ thống Bates & Macleod, tiếp cận hội chứng nội trú, hỏi bệnh sử 7 thuộc tính và tra cứu nhanh ⌘K.',
   },
   {
+    id: 'diacare',
+    title: 'Quản Lý Insulin Nội Viện (DiaCare)',
+    badge: 'ADA 2026 & JBDS',
+    icon: <Syringe className="w-4 h-4 text-emerald-600" />,
+    colorClass: 'text-emerald-700 border-emerald-200 bg-emerald-50',
+    activeBgClass: 'bg-emerald-600 text-white shadow-2xs',
+    desc: 'Hệ thống CDSS quản lý điều trị đái tháo đường nội viện, tính toán liều insulin tự động (Basal-Bolus, NPH, SSI) và cảnh báo phác đồ theo ADA 2026 và JBDS-IP.',
+  },
+  {
     id: 'hub',
     title: 'Danh Mục CDSS',
     badge: 'Tổng quan Hub',

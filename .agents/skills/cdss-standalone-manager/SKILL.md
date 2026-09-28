@@ -30,6 +30,7 @@ Mỗi module CDSS độc lập có thể được xây dựng bằng Vanilla Typ
 | `cdss-vancomycin-pk` | `vancomycin/` | Dược lý & Kháng sinh | React 19 + Tailwind v4 + IIFE Fallback | `vancomycin/index.html` |
 | `cdss-sepsis-risk` | `sepsis/` | Hồi sức Cấp cứu | React 19 + Tailwind v4 + IIFE Fallback | `sepsis/index.html` |
 | `cdss-inpatient-exam` | `inpatient/` | Nội khoa & Lâm sàng | React 19 + Tailwind v4 (Bates & Macleod) | `inpatient/index.html` |
+| `cdss-diacare-insulin` | `diacare/` | Nội tiết & Chuyển hóa | React 19 + Tailwind v4 + IIFE Fallback | `diacare/index.html` |
 
 ---
 
