@@ -99,7 +99,16 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
      + Lược bỏ hoàn toàn tiền tố thừa thãi trong nhãn tiêu chuẩn ("criteria.label"): KHÔNG dùng tiền tố "[Lâm sàng]: ...", "[Cận lâm sàng]: ...", "Dấu hiệu cảnh báo: ...". Nhãn phải ngắn gọn, trực diện, nhấn mạnh ngưỡng số hoặc dấu hiệu thực tế.
      + Văn phong y lệnh thực chiến: Rõ ràng, dứt khoát, súc tích (kiểu bệnh án thực hành & y lệnh điều trị), không viết văn xuôi dài dòng rườm rà nhằm tối ưu hóa tokens của LLM và hiển thị sắc nét trên giao diện mobile/desktop của DocSpace.
 
-7. ĐẦU RA DUY NHẤT:
+7. XÁC ĐỊNH HỘI CHỨNG LÂM SÀNG CỐT LÕI ("syndromes"):
+   Đọc tài liệu và xác định từ 1 đến 4 Hội chứng Lâm sàng kinh điển/đặc trưng mà bệnh lý này biểu hiện (hoặc biến chứng gây ra).
+   - Khai báo mảng "syndromes": ["hc_..."] ở cấp gốc JSON (ngang hàng với "specialty" và "severity").
+   - Các ID hội chứng chuẩn có sẵn trong Kho Hội Chứng DocSpace:
+     + Tiêu hóa - Gan mật: "hc_suy_te_bao_gan" (STBG), "hc_tang_ap_cua" (Tăng áp cửa), "hc_vang_da" (Vàng da), "hc_xuat_huyet_tieu_hoa" (XHTH)
+     + Truyền nhiễm: "hc_canh_bao_dengue" (DWS), "hc_nhiem_trung" (Nhiễm trùng toàn thân), "hc_soc_nhiem_trung" (Sốc nhiễm khuẩn)
+     + Hô hấp / Tim mạch / Thận: "hc_suy_ho_hap", "hc_dong_dac_phoi", "hc_suy_tim", "hc_than_hu", "hc_viem_than_cap"...
+   - Nếu bệnh có hội chứng đặc thù khác chưa có trong danh sách, đặt ID theo cú pháp chuẩn: "hc_<ten_khong_dau>" (ví dụ: "hc_dong_dac_phoi", "hc_suy_tim_sung_huyet").
+
+8. ĐẦU RA DUY NHẤT:
    Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
 
 --------------------------------------------------------------------------------
@@ -111,6 +120,10 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
   "icdPrefixes": ["[Mã ICD phụ 1]", "[Mã ICD phụ 2]"],
   "diseaseName": "[TÊN BỆNH LÝ]",
   "specialty": "[CHUYÊN KHOA]",
+  "syndromes": [
+    "hc_suy_te_bao_gan",
+    "hc_tang_ap_cua"
+  ],
   "severity": "[MỨC ĐỘ KHẨN]",
   "summary": "Tóm tắt cơ chế sinh bệnh học, dịch tễ và diễn tiến lâm sàng cốt lõi theo Guideline.",
   "goldStandard": "Tiêu chuẩn vàng xác nhận chẩn đoán theo Guideline.",

@@ -5,6 +5,8 @@ import {
   Bug,
   Compass,
   FileText,
+  Layers,
+  Sparkles,
   Stethoscope,
 } from 'lucide-react';
 import {
@@ -22,6 +24,7 @@ import { DiagnosticTrianglePanel } from './step2/DiagnosticTrianglePanel.tsx';
 import { ProblemListSection } from './step2/ProblemListSection.tsx';
 import { toAbbreviatedMedicalText } from '../lib/medicalAbbreviations.ts';
 import { normalizeText } from '../lib/normalizeUtils.ts';
+import { evaluateSyndromeMatches, getSyndromeById } from '../../data/syndromes/index.ts';
 
 interface Step2ProblemStatementProps {
   form: ClinicalFormState;
@@ -546,6 +549,40 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     });
   };
 
+  // Danh sách hội chứng đối sánh real-time từ Kho Hội Chứng DocSpace
+  const detectedSyndromes = useMemo(() => {
+    return evaluateSyndromeMatches(Array.from(selectedIds));
+  }, [selectedIds]);
+
+  const handleAddSyndromeToProblems = (syndromeId: string) => {
+    const synDef = getSyndromeById(syndromeId);
+    if (!synDef) return;
+    const match = detectedSyndromes.find((m) => m.syndromeId === syndromeId);
+    const probId = `prob_syn_${syndromeId}`;
+    if (problems.some((p) => p.id === probId)) return;
+
+    const evidenceLabels = match
+      ? match.matchedSymptoms.map((ms) => {
+          const foundTc = kb.trieuChung.find((t) => t.id === ms.id);
+          return foundTc ? foundTc.ten : ms.id;
+        })
+      : [];
+
+    const isEmergency = syndromeId.includes('soc') || syndromeId.includes('suy_ho_hap');
+
+    const newProblem: ProblemStatementEntry = {
+      id: probId,
+      label: `${synDef.ten}${synDef.tenVietTat ? ` (${synDef.tenVietTat})` : ''}`,
+      type: 'hoi-chung',
+      priorityLevel: isEmergency ? 'life-threatening' : 'acute',
+      isPrimary: problems.length === 0,
+      evidence: evidenceLabels,
+      notes: synDef.coChe ? `Cơ chế: ${synDef.coChe.slice(0, 180)}...` : undefined,
+    };
+
+    onUpdateProblems([...problems, newProblem]);
+  };
+
   // Tự động suy luận danh sách vấn đề ban đầu theo chuẩn 3 Tầng Ưu Tiên
   useEffect(() => {
     if (problems.length === 0) {
@@ -615,10 +652,33 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       }
 
       // Tầng 2: Cấp tính
+      // 1. Tự động đối sánh và nạp các Hội chứng lâm sàng ĐẠT TIÊU CHUẨN từ Kho Hội chứng DocSpace
+      const initialSyndromeMatches = evaluateSyndromeMatches(Array.from(selectedIds));
+      initialSyndromeMatches.forEach((m) => {
+        if (m.isMet) {
+          const synDef = getSyndromeById(m.syndromeId);
+          const evidenceLabels = m.matchedSymptoms.map((ms) => {
+            const foundTc = kb.trieuChung.find((t) => t.id === ms.id);
+            return foundTc ? foundTc.ten : ms.id;
+          });
+
+          const isEmergency = m.syndromeId.includes('soc') || m.syndromeId.includes('suy_ho_hap');
+          suggested.push({
+            id: `prob_syn_${m.syndromeId}`,
+            label: synDef ? `${synDef.ten}${synDef.tenVietTat ? ` (${synDef.tenVietTat})` : ''}` : m.ten,
+            type: 'hoi-chung',
+            priorityLevel: isEmergency ? 'life-threatening' : 'acute',
+            isPrimary: suggested.length === 0,
+            evidence: evidenceLabels,
+            notes: synDef?.coChe ? `Cơ chế: ${synDef.coChe.slice(0, 180)}...` : undefined,
+          });
+        }
+      });
+
       const hasMeningeal =
         selectedIds.has('cung_gay') ||
         (selectedIds.has('dau_dau') && selectedIds.has('non_oi') && (temp >= 38 || selectedIds.has('sot')));
-      if (hasMeningeal) {
+      if (hasMeningeal && !suggested.some((p) => p.label.toLowerCase().includes('màng não'))) {
         suggested.push({
           id: 'prob_meningitis',
           label: 'Hội chứng màng não cấp tính',
@@ -630,7 +690,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       }
 
       const hasFever = selectedIds.has('sot') || selectedIds.has('sot_cao_27') || temp >= 38;
-      if (hasFever && !hasMeningeal) {
+      if (hasFever && !hasMeningeal && !suggested.some((p) => p.label.toLowerCase().includes('nhiễm trùng'))) {
         suggested.push({
           id: 'prob_inf',
           label: 'Hội chứng nhiễm trùng cấp tính',
@@ -646,7 +706,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       const hasBleeding =
         selectedIds.has('ban_xuat_huyet') || selectedIds.has('xuat_huyet_ad') || selectedIds.has('tieu_mau');
       const hasThrombocytopenia = (!isNaN(plt) && plt < 100) || selectedIds.has('tieu_cau_giam');
-      if (hasBleeding || hasThrombocytopenia) {
+      if ((hasBleeding || hasThrombocytopenia) && !suggested.some((p) => p.label.toLowerCase().includes('xuất huyết'))) {
         suggested.push({
           id: 'prob_hemo',
           label: 'Hội chứng xuất huyết / Giảm tiểu cầu cấp',
@@ -661,7 +721,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       }
 
       const hasChestPain = selectedIds.has('dau_nguc') || selectedIds.has('dau_nguc_lan');
-      if (hasChestPain) {
+      if (hasChestPain && !suggested.some((p) => p.label.toLowerCase().includes('mạch vành') || p.label.toLowerCase().includes('ngực'))) {
         suggested.push({
           id: 'prob_cardiac',
           label: 'Cơn đau ngực cấp nghi ngờ mạch vành',
@@ -762,6 +822,64 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         </div>
 
         <div className="p-4 sm:p-5">
+          {/* SYNDROME DETECTION BAR TỪ KHO HỘI CHỨNG LÂM SÀNG DOCSPACE */}
+          {detectedSyndromes.length > 0 && (
+            <div className="p-3 bg-gradient-to-r from-blue-50/70 via-indigo-50/60 to-purple-50/60 border border-indigo-200/80 rounded-xl mb-4 text-xs shadow-2xs">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-1.5 font-bold text-indigo-950">
+                  <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
+                  <span>Hội chứng Lâm sàng Gợi ý từ Triệu chứng (Kho Hội Chứng DocSpace):</span>
+                </div>
+                <span className="text-[11px] text-indigo-700 font-medium">
+                  {detectedSyndromes.filter((s) => s.isMet).length} đạt ngưỡng / {detectedSyndromes.length} liên quan
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {detectedSyndromes.map((m) => {
+                  const isAdded = problems.some(
+                    (p) =>
+                      p.id === `prob_syn_${m.syndromeId}` ||
+                      p.label.toLowerCase().includes(m.ten.toLowerCase())
+                  );
+                  return (
+                    <div
+                      key={m.syndromeId}
+                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs transition-all ${
+                        m.isMet
+                          ? 'bg-emerald-50 text-emerald-900 border-emerald-300 font-semibold'
+                          : 'bg-white text-slate-700 border-slate-200'
+                      }`}
+                    >
+                      <span className={m.isMet ? 'text-emerald-600 font-bold' : 'text-slate-400'}>
+                        {m.isMet ? '✓' : '•'}
+                      </span>
+                      <span>{m.ten}</span>
+                      <span
+                        className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                          m.isMet ? 'bg-emerald-200/80 text-emerald-800' : 'bg-slate-100 text-slate-600'
+                        }`}
+                      >
+                        {m.ratioText}
+                      </span>
+                      {!isAdded ? (
+                        <button
+                          type="button"
+                          onClick={() => handleAddSyndromeToProblems(m.syndromeId)}
+                          className="ml-1 px-1.5 py-0.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-[10px] font-bold cursor-pointer transition-colors shadow-2xs"
+                          title="Thêm hội chứng này vào danh sách Đặt vấn đề"
+                        >
+                          + Thêm
+                        </button>
+                      ) : (
+                        <span className="text-[10px] text-emerald-600 font-bold ml-1">Đã có</span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {infectiousMode ? (
             <div className="space-y-4">
               {/* Banner chế độ truyền nhiễm */}

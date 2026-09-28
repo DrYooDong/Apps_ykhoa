@@ -1,0 +1,123 @@
+================================================================================
+CLINIPORTAL DOCSPACE — PROMPT 05: TRÍCH XUẤT HỘI CHỨNG LÂM SÀNG MASTER
+(CLINICAL SYNDROME KNOWLEDGE VAULT EXTRACTOR — CHUẨN EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI]
+Prompt này dùng để TRÍCH XUẤT một hoặc nhiều HỘI CHỨNG LÂM SÀNG từ tài liệu y khoa 
+(Giáo trình Triệu chứng học, Bệnh học Nội/Ngoại/Nhi/Nhiễm, Guidelines Bộ Y tế / Quốc tế).
+
+Dữ liệu JSON sinh ra từ prompt này sẽ được lưu trực tiếp vào Kho Hội Chứng DocSpace:
+`src/content/docspace/data/syndromes/<chuyen_khoa>/<id_hoi_chung>.json`
+và tự động đăng ký vào hệ thống qua lệnh:
+`node tools/scripts/build-syndrome-registry.mjs`
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+- [TÊN HỘI CHỨNG]: (Ví dụ: Hội chứng Thận hư / Hội chứng Đông đặc phổi / Hội chứng Suy tim sung huyết)
+- [CHUYÊN KHOA]: (Ví dụ: Thận - Tiết niệu / Hô hấp / Tim mạch / Tiêu hóa - Gan mật / Truyền nhiễm)
+- [HƯỚNG DẪN / TÀI LIỆU NGUỒN]: (Ví dụ: Bài giảng Triệu chứng học Nội khoa ĐHYD TP.HCM / KDIGO 2024 / ESC 2023)
+
+--------------------------------------------------------------------------------
+[QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
+
+1. ĐỊNH NGHĨA HỘI CHỨNG CHUẨN:
+   - Một hội chứng lâm sàng BẮT BUỘC phải tập hợp từ ít nhất 02 triệu chứng thành phần trở lên.
+   - Có cơ chế bệnh sinh (Pathophysiology) giải thích rõ mối liên hệ nhân - quả giữa các triệu chứng.
+
+2. QUY ƯỚC ĐẶT ID:
+   - ID hội chứng bắt đầu bằng tiền tố `hc_` viết thường không dấu:
+     Ví dụ: `hc_than_hu`, `hc_dong_dac_phoi`, `hc_suy_tim_trai`, `hc_ure_huyet_cao`.
+
+3. LIÊN KẾT BỆNH LÝ 2 CHIỀU ("benhLienQuan"):
+   - Liệt kê các bệnh lý trong DocSpace có biểu hiện hội chứng này.
+   - Xác định vai trò:
+     + "dac_trung": Là tiêu chuẩn bắt buộc/kinh điển của bệnh (VD: Xơ gan -> HC suy tế bào gan).
+     + "thuong_gap": Biểu hiện phổ biến trong bệnh.
+     + "co_the_gap": Thể lâm sàng hoặc giai đoạn bệnh.
+     + "bien_chung": Biến cố nặng/cấp cứu do bệnh gây ra (VD: Vỡ GEV -> HC xuất huyết tiêu hóa).
+
+4. QUY CHUẨN VIẾT TẮT & ZERO HTML ENTITIES:
+   - Viết tắt chuẩn: LDVV, TCCN, TCTT, DHST, CLS, HA, HATT, HATTr, M, NT, SpO₂, Hct, PLT, WBC, AST, ALT, eGFR, INR.
+   - Tuyệt đối không để rò rỉ mã hóa HTML (&gt;, &lt;, &quot;, &amp;). Viết trực tiếp >, <, ".
+   - Ký tự toán học chuẩn: ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
+
+5. ĐẦU RA DUY NHẤT:
+   Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
+
+--------------------------------------------------------------------------------
+[CẤU TRÚC JSON CHUẨN BẮT BUỘC XUẤT RA]
+
+```json
+{
+  "id": "hc_[ten_hoi_chung_khong_dau]",
+  "ten": "Hội chứng [Tên đầy đủ tiếng Việt]",
+  "tenVietTat": "[Tên viết tắt y khoa, ví dụ: HCTH / HCNT / STBG / CSPH]",
+  "chuyenKhoa": "[CHUYÊN KHOA]",
+  "nhomHoiChung": "[Nhóm cơ chế: Suy chức năng tạng | Rối loạn huyết động | Nhiễm trùng | Cấp cứu mất máu...]",
+  "icdRelated": [
+    "[Mã ICD-10 liên quan 1]",
+    "[Mã ICD-10 liên quan 2]"
+  ],
+  "moTa": "Mô tả súc tích định nghĩa hội chứng, các biểu hiện then chốt và ý nghĩa lâm sàng.",
+  "coChe": "Giải thích chi tiết cơ chế bệnh sinh (Pathophysiology): Quá trình tổn thương phân tử, mô học hoặc huyết động dẫn đến sự xuất hiện của các triệu chứng cơ năng, thực thể và cận lâm sàng.",
+  "nguong": {
+    "loai": "at_least_n",
+    "n": 2
+  },
+  "trieuChung": [
+    "id_trieu_chung_1",
+    "id_trieu_chung_2",
+    "id_trieu_chung_3",
+    "id_trieu_chung_4"
+  ],
+  "trieuChungBatBuoc": [
+    "id_trieu_chung_co_do_bat_buoc_phai_co"
+  ],
+  "goldStandardRelated": true,
+  "benhLienQuan": [
+    {
+      "benhSlug": "slug_benh_trong_docspace",
+      "benhTen": "Tên bệnh lý đầy đủ",
+      "loaiLienKet": "dac_trung | thuong_gap | co_the_gap | bien_chung",
+      "moTaLienKet": "Mô tả bối cảnh lâm sàng của hội chứng trong bệnh lý này.",
+      "buocLienKet": [1, 2, 3, 4]
+    }
+  ],
+  "chanDoanPhanBiet": [
+    {
+      "id": "hc_can_phan_biet_1",
+      "ten": "Tên hội chứng / bệnh cần phân biệt",
+      "diemPhanBiet": "Dấu hiệu lâm sàng hoặc xét nghiệm cận lâm sàng cốt lõi để phân định."
+    }
+  ],
+  "diemClinicalPearl": [
+    "Hạt ngọc lâm sàng 1: Dấu hiệu kinh điển, kinh nghiệm khám bedside quý giá.",
+    "Hạt ngọc lâm sàng 2: Cạm bẫy lâm sàng / cận lâm sàng dễ bỏ sót."
+  ],
+  "thangDiemLienQuan": [
+    {
+      "ten": "Tên thang điểm / Tiêu chuẩn lượng giá",
+      "mucDich": "Mục đích sử dụng trên lâm sàng."
+    }
+  ],
+  "nguonThamKhao": [
+    "[HƯỚNG DẪN / TÀI LIỆU NGUỒN]"
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "capNhat": "2026-09-28",
+    "author": "CliniPortal Medical Knowledge Squad"
+  }
+}
+```
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN LƯU VÀ ĐỒNG BỘ SAU KHI XUẤT RA]
+1. Copy khối mã JSON vừa sinh ra.
+2. Lưu vào tệp: `src/content/docspace/data/syndromes/<chuyen_khoa>/<id_hoi_chung>.json`
+   (Ví dụ: `src/content/docspace/data/syndromes/ho_hap/hc_dong_dac_phoi.json`).
+3. Mở terminal và chạy lệnh:
+   `node tools/scripts/build-syndrome-registry.mjs`
+4. Hệ thống sẽ tự động đăng ký và nạp Hội chứng vào DocSpace trong 0.5s!
+================================================================================

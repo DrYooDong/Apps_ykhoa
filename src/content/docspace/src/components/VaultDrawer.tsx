@@ -29,8 +29,9 @@ import {
   searchGuidelines,
   SOURCE_TYPE_LABELS,
 } from '../lib/guidelineBridge.ts';
-import { GuidelineStudy } from '../types.ts';
+import { GuidelineStudy, SyndromeDefinition } from '../types.ts';
 import { CdssToolSlug } from './CdssModal.tsx';
+import { ALL_SYNDROMES } from '../../data/syndromes/index.ts';
 
 interface VaultDrawerProps {
   isOpen: boolean;
@@ -53,6 +54,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
   const [activeKho, setActiveKho] = useState(initialKho);
   const [selectedArticle, setSelectedArticle] = useState<VaultArticle | null>(null);
   const [selectedGuideline, setSelectedGuideline] = useState<GuidelineStudy | null>(null);
+  const [selectedSyndrome, setSelectedSyndrome] = useState<SyndromeDefinition | null>(null);
 
   React.useEffect(() => {
     if (isOpen) {
@@ -60,6 +62,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
       setActiveKho(initialKho || 'ALL');
       setSelectedArticle(null);
       setSelectedGuideline(null);
+      setSelectedSyndrome(null);
     }
   }, [isOpen, initialQuery, initialKho, initialDiseaseName]);
 
@@ -71,6 +74,21 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
 
   const guidelineResults = useMemo(() => {
     return searchGuidelines(searchTerm, 'ALL', 40);
+  }, [searchTerm]);
+
+  const syndromeResults = useMemo(() => {
+    if (!searchTerm.trim()) return ALL_SYNDROMES;
+    const term = searchTerm.toLowerCase().trim();
+    return ALL_SYNDROMES.filter(
+      (s) =>
+        s.ten.toLowerCase().includes(term) ||
+        s.tenVietTat?.toLowerCase().includes(term) ||
+        s.chuyenKhoa?.toLowerCase().includes(term) ||
+        s.moTa.toLowerCase().includes(term) ||
+        s.benhLienQuan?.some(
+          (b) => b.benhTen.toLowerCase().includes(term) || b.benhSlug.toLowerCase().includes(term)
+        )
+    );
   }, [searchTerm]);
 
   if (!isOpen) return null;
@@ -204,6 +222,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setActiveKho('CDSS');
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
+                    setSelectedSyndrome(null);
                   }}
                   className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
                     activeKho === 'CDSS'
@@ -214,6 +233,24 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   aria-label="Kho CDSS"
                 >
                   <span>⚡</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setActiveKho('SYNDROME');
+                    setSelectedArticle(null);
+                    setSelectedGuideline(null);
+                    setSelectedSyndrome(null);
+                  }}
+                  className={`w-7 h-7 flex items-center justify-center rounded-md font-bold transition-all cursor-pointer text-xs shadow-2xs ${
+                    activeKho === 'SYNDROME'
+                      ? 'bg-purple-600 text-white shadow-xs ring-2 ring-purple-400/40'
+                      : 'bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100'
+                  }`}
+                  title={`Kho Hội chứng Lâm sàng (${ALL_SYNDROMES.length} hội chứng)`}
+                  aria-label="Kho Hội chứng"
+                >
+                  <span>🧠</span>
                 </button>
               </div>
             </div>
@@ -248,6 +285,21 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
               >
                 Khuyến cáo EBM ({GUIDELINE_STUDIES.length})
               </button>
+              <button
+                onClick={() => {
+                  setActiveKho('SYNDROME');
+                  setSelectedArticle(null);
+                  setSelectedGuideline(null);
+                  setSelectedSyndrome(null);
+                }}
+                className={`px-2.5 py-1 rounded-md font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  activeKho === 'SYNDROME'
+                    ? 'bg-purple-600 text-white shadow-xs'
+                    : 'bg-purple-50 border border-purple-200 text-purple-800 hover:bg-purple-100'
+                }`}
+              >
+                🧠 Hội chứng ({ALL_SYNDROMES.length})
+              </button>
               {khoSummaries.map((k) => (
                 <button
                   key={k.code}
@@ -255,6 +307,7 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                     setActiveKho(k.code);
                     setSelectedArticle(null);
                     setSelectedGuideline(null);
+                    setSelectedSyndrome(null);
                   }}
                   className={`px-2.5 py-1 rounded-md font-medium whitespace-nowrap transition-all cursor-pointer ${
                     activeKho === k.code
@@ -270,7 +323,164 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
 
           {/* Body Content */}
           <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
-            {selectedGuideline ? (
+            {selectedSyndrome ? (
+              /* Syndrome Detail View */
+              <div className="flex flex-col gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs animate-fadeIn">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <button
+                    onClick={() => setSelectedSyndrome(null)}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-purple-600 hover:text-purple-800 transition-colors cursor-pointer"
+                  >
+                    ← Quay lại danh sách Hội chứng ({syndromeResults.length} hội chứng)
+                  </button>
+                  <span className="text-xs text-slate-400 font-mono">
+                    ID: {selectedSyndrome.id}
+                  </span>
+                </div>
+
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 rounded text-[11px] font-bold text-white bg-purple-600">
+                      HỘI CHỨNG LÂM SÀNG
+                    </span>
+                    {selectedSyndrome.tenVietTat && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-purple-100 text-purple-800 border border-purple-200">
+                        {selectedSyndrome.tenVietTat}
+                      </span>
+                    )}
+                    {selectedSyndrome.chuyenKhoa && (
+                      <span className="px-2 py-0.5 bg-blue-50 border border-blue-200 text-blue-800 rounded text-[11px] font-semibold">
+                        {selectedSyndrome.chuyenKhoa}
+                      </span>
+                    )}
+                    {selectedSyndrome.icdRelated && selectedSyndrome.icdRelated.length > 0 && (
+                      <div className="flex items-center gap-1">
+                        <span className="text-[11px] text-slate-400 font-mono">ICD-10:</span>
+                        {selectedSyndrome.icdRelated.slice(0, 4).map((code) => (
+                          <span
+                            key={code}
+                            className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-700 text-[10.5px] font-mono font-semibold"
+                          >
+                            {code}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-slate-800 leading-snug">
+                    {selectedSyndrome.ten}
+                  </h3>
+                </div>
+
+                {/* Mô tả */}
+                <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs leading-relaxed text-slate-700">
+                  <strong className="text-slate-800 block mb-1">Mô tả khái quát:</strong>
+                  {selectedSyndrome.moTa}
+                </div>
+
+                {/* Cơ chế sinh lý bệnh */}
+                {selectedSyndrome.coChe && (
+                  <div className="p-3.5 bg-purple-50/60 rounded-lg border border-purple-200 text-xs leading-relaxed text-purple-950">
+                    <strong className="text-purple-900 block mb-1">🧠 Cơ chế bệnh sinh (Pathophysiology):</strong>
+                    {selectedSyndrome.coChe}
+                  </div>
+                )}
+
+                {/* Tiêu chí triệu chứng & Ngưỡng đạt */}
+                <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <strong className="text-slate-800">
+                      Triệu chứng thành phần ({selectedSyndrome.trieuChung.length} dấu hiệu):
+                    </strong>
+                    <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-bold border border-emerald-200">
+                      Ngưỡng xác lập: ≥ {selectedSyndrome.nguong.n} triệu chứng
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedSyndrome.trieuChung.map((symId) => (
+                      <span
+                        key={symId}
+                        className="px-2 py-1 rounded bg-white border border-slate-200 text-slate-700 text-[11px]"
+                      >
+                        • {symId}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bệnh lý liên quan trong DocSpace */}
+                {selectedSyndrome.benhLienQuan && selectedSyndrome.benhLienQuan.length > 0 && (
+                  <div className="p-3.5 bg-blue-50/50 rounded-lg border border-blue-200 text-xs">
+                    <strong className="text-blue-900 block mb-2">
+                      🔗 Bệnh lý liên quan trong DocSpace ({selectedSyndrome.benhLienQuan.length} bệnh):
+                    </strong>
+                    <div className="flex flex-col gap-2">
+                      {selectedSyndrome.benhLienQuan.map((b) => (
+                        <div
+                          key={b.benhSlug}
+                          className="p-2.5 bg-white border border-blue-100 rounded-md flex flex-col gap-1"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-blue-950">{b.benhTen}</span>
+                            <span
+                              className={`px-1.5 py-0.2 rounded text-[10px] font-bold uppercase ${
+                                b.loaiLienKet === 'dac_trung'
+                                  ? 'bg-blue-100 text-blue-800'
+                                  : b.loaiLienKet === 'bien_chung'
+                                  ? 'bg-red-100 text-red-800'
+                                  : 'bg-slate-100 text-slate-700'
+                              }`}
+                            >
+                              {b.loaiLienKet === 'dac_trung'
+                                ? 'Đặc trưng'
+                                : b.loaiLienKet === 'bien_chung'
+                                ? 'Biến chứng'
+                                : 'Thường gặp'}
+                            </span>
+                          </div>
+                          {b.moTaLienKet && (
+                            <p className="text-slate-600 text-[11px] leading-relaxed">
+                              {b.moTaLienKet}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Hạt ngọc lâm sàng */}
+                {selectedSyndrome.diemClinicalPearl && selectedSyndrome.diemClinicalPearl.length > 0 && (
+                  <div className="p-3.5 bg-amber-50/70 rounded-lg border border-amber-200 text-xs leading-relaxed text-amber-950">
+                    <strong className="text-amber-900 block mb-1.5">💎 Hạt ngọc lâm sàng (Clinical Pearls):</strong>
+                    <ul className="list-disc list-inside space-y-1">
+                      {selectedSyndrome.diemClinicalPearl.map((pearl, i) => (
+                        <li key={i}>{pearl}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Chẩn đoán phân biệt */}
+                {selectedSyndrome.chanDoanPhanBiet && selectedSyndrome.chanDoanPhanBiet.length > 0 && (
+                  <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700">
+                    <strong className="text-slate-800 block mb-1.5">⚖️ Chẩn đoán phân biệt then chốt:</strong>
+                    <div className="space-y-1.5">
+                      {selectedSyndrome.chanDoanPhanBiet.map((diff, i) => {
+                        if (typeof diff === 'string') return <div key={i}>• {diff}</div>;
+                        return (
+                          <div key={i} className="p-2 bg-white border border-slate-100 rounded">
+                            <span className="font-bold text-slate-800">{diff.ten}:</span>{' '}
+                            <span className="text-slate-600">{diff.diemPhanBiet}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : selectedGuideline ? (
               /* Guideline Detail Preview View */
               <div className="flex flex-col gap-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs animate-fadeIn">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -455,6 +665,74 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                   </a>
                 </div>
               </div>
+            ) : activeKho === 'SYNDROME' ? (
+              /* Syndromes List */
+              <div className="flex flex-col gap-2.5">
+                <div className="flex items-center justify-between text-xs text-slate-500 px-1">
+                  <span>
+                    Hiển thị <b>{syndromeResults.length}</b> / {ALL_SYNDROMES.length} hội chứng lâm sàng
+                  </span>
+                  <span className="font-semibold text-purple-600">
+                    Kho: Hội Chứng Lâm Sàng
+                  </span>
+                </div>
+
+                {syndromeResults.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-16 text-center text-slate-400">
+                    <BookOpen className="w-10 h-10 stroke-1 mb-2 text-slate-300" />
+                    <p className="text-sm font-semibold text-slate-600">
+                      Không tìm thấy Hội chứng phù hợp với từ khóa "{searchTerm}"
+                    </p>
+                    <button
+                      onClick={() => setSearchTerm('')}
+                      className="mt-3 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-md transition-colors"
+                    >
+                      Xem toàn bộ {ALL_SYNDROMES.length} Hội chứng
+                    </button>
+                  </div>
+                ) : (
+                  syndromeResults.map((hc) => (
+                    <div
+                      key={hc.id}
+                      onClick={() => setSelectedSyndrome(hc)}
+                      className="p-3.5 bg-white hover:bg-purple-50/40 border border-slate-200 hover:border-purple-300 rounded-lg transition-all cursor-pointer group shadow-2xs"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                            <span className="px-1.5 py-0.2 rounded text-[10px] font-bold text-white bg-purple-600">
+                              {hc.chuyenKhoa || 'Chung'}
+                            </span>
+                            {hc.tenVietTat && (
+                              <span className="px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 border border-purple-200 text-[10px] font-bold">
+                                {hc.tenVietTat}
+                              </span>
+                            )}
+                            <span className="px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-semibold">
+                              Ngưỡng: ≥ {hc.nguong.n}/{hc.trieuChung.length} TC
+                            </span>
+                            {hc.benhLienQuan && (
+                              <span className="px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 border border-blue-200 text-[10px] font-semibold">
+                                {hc.benhLienQuan.length} bệnh liên quan
+                              </span>
+                            )}
+                          </div>
+
+                          <h4 className="text-sm font-bold text-slate-800 group-hover:text-purple-700 transition-colors">
+                            {hc.ten}
+                          </h4>
+
+                          <p className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                            {hc.coChe || hc.moTa}
+                          </p>
+                        </div>
+
+                        <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-purple-600 group-hover:translate-x-0.5 transition-all shrink-0 mt-2" />
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
             ) : activeKho === 'GUIDELINE' ? (
               /* Guidelines List */
               <div className="flex flex-col gap-2.5">
@@ -576,6 +854,29 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                       className="px-2.5 py-1 text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white rounded transition-colors whitespace-nowrap cursor-pointer"
                     >
                       Xem Guidelines &rarr;
+                    </button>
+                  </div>
+                )}
+
+                {/* Hội chứng lâm sàng khớp nhanh nếu đang tìm kiếm ở Tất cả kho */}
+                {activeKho === 'ALL' && searchTerm.trim().length >= 2 && syndromeResults.length > 0 && (
+                  <div className="p-3 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg flex items-center justify-between gap-2 shadow-2xs">
+                    <div className="flex items-center gap-2">
+                      <span className="text-base">🧠</span>
+                      <div>
+                        <div className="text-xs font-bold text-purple-950">
+                          Tìm thấy {syndromeResults.length} Hội chứng lâm sàng khớp với "{searchTerm}"
+                        </div>
+                        <div className="text-[11px] text-purple-800 line-clamp-1">
+                          {syndromeResults[0].ten} ({syndromeResults[0].chuyenKhoa || 'Chung'})
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setActiveKho('SYNDROME')}
+                      className="px-2.5 py-1 text-xs font-bold bg-purple-600 hover:bg-purple-700 text-white rounded transition-colors whitespace-nowrap cursor-pointer shadow-2xs"
+                    >
+                      Xem Hội chứng &rarr;
                     </button>
                   </div>
                 )}

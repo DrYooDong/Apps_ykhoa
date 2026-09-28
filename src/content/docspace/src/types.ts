@@ -263,18 +263,47 @@ export interface MissingEvidence {
 // 🧠 HỘI CHỨNG LÂM SÀNG (CLINICAL SYNDROME ENGINE)
 // Định nghĩa: Hội chứng lâm sàng là tập hợp ít nhất 02 triệu chứng
 // ==============================================================================
+export interface SyndromeDiseaseLink {
+  benhSlug: string;              // Mã slug bệnh lý (VD: 'xo_gan', 'viem_gan_sieu_vi_b')
+  benhTen: string;               // Tên hiển thị của bệnh
+  loaiLienKet: 'dac_trung' | 'thuong_gap' | 'co_the_gap' | 'bien_chung'; // Vai trò của HC trong bệnh
+  moTaLienKet?: string;          // Mô tả bối cảnh lâm sàng (VD: 'Biểu hiện kinh điển của xơ gan mất bù')
+  buocLienKet?: number[];        // Các bước trong DocSpace [1, 2, 3, 4]
+}
+
+export interface SyndromeDifferentialItem {
+  id: string;                    // ID hội chứng hoặc bệnh cần phân biệt
+  ten: string;                   // Tên hội chứng / bệnh
+  diemPhanBiet: string;          // Dấu hiệu cốt lõi để phân biệt trên lâm sàng
+}
+
 export interface SyndromeDefinition {
-  id: string;                    // VD: "hc_warning_signs_dengue"
-  ten: string;                   // VD: "Hội chứng Dấu hiệu Cảnh báo SXHD"
-  chuyenKhoa?: string;           // VD: "Truyền nhiễm"
-  moTa: string;                  // Mô tả lâm sàng
+  id: string;                    // VD: "hc_suy_te_bao_gan", "hc_tang_ap_cua"
+  ten: string;                   // VD: "Hội chứng Suy tế bào gan"
+  tenVietTat?: string;           // VD: "STBG"
+  chuyenKhoa?: string;           // VD: "Tiêu hóa - Gan mật", "Truyền nhiễm", "Tim mạch"
+  nhomHoiChung?: string;         // VD: "Suy chức năng tạng", "Rối loạn huyết động", "Nhiễm trùng"
+  icdRelated?: string[];         // Mã ICD-10 liên quan [K74.6, K70.3...]
+  moTa: string;                  // Mô tả khái quát hội chứng
+  coChe?: string;                // Cơ chế bệnh sinh (Pathophysiology)
   nguong: {
     loai: 'at_least_n' | 'all' | 'percentage';
     n: number;                   // Tối thiểu n triệu chứng để coi là ĐẠT
     phanTram?: number;
   };
   trieuChung: string[];          // Danh sách IDs triệu chứng thành phần (tối thiểu >= 2 triệu chứng)
+  trieuChungBatBuoc?: string[];  // Triệu chứng cờ đỏ/bắt buộc phải có để xác lập HC
   goldStandardRelated?: boolean;
+  benhLienQuan?: SyndromeDiseaseLink[]; // Liên kết 2 chiều với các bệnh lý trong DocSpace
+  chanDoanPhanBiet?: Array<SyndromeDifferentialItem | string>; // Chẩn đoán phân biệt
+  diemClinicalPearl?: string[];  // Các hạt ngọc lâm sàng / pearls
+  thangDiemLienQuan?: Array<{ ten: string; mucDich?: string; url?: string }>;
+  nguonThamKhao?: string[];      // Hướng dẫn chẩn đoán, y văn chuẩn
+  metadata?: {
+    version?: string;
+    capNhat?: string;
+    author?: string;
+  };
 }
 
 export interface SyndromeMatchResult {
