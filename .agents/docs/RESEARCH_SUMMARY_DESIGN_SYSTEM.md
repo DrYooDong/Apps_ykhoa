@@ -119,39 +119,57 @@ Hiển thị ngay đầu bài viết để tạo ấn tượng thị giác mạn
 </div>
 ```
 
-### 3.3. Bảng Điểm Kết Thúc Thử Nghiệm (`.trial-endpoints-table`)
+### 3.3. Quy Chuẩn Thiết Kế Bảng Y Khoa Chuẩn Xuất Bản (`.table-card`)
+
+Mọi bảng biểu trong bài tóm tắt nghiên cứu / Guideline bắt buộc tuân theo kiến trúc Card bao đóng (`.table-card`):
+- **CẤM đặt tiêu đề bên trong `.table-wrapper`**: Đặt `<h3>` hoặc tiêu đề bên trong container cuộn sẽ bị trôi ngang trên mobile. Tiêu đề phải nằm cố định trong `.table-header`.
+- **5 Lớp Bảng Chuyên Biệt**:
+  1. `.trial-endpoints-table`: Bảng kết cục thử nghiệm lâm sàng, HR, CI, p-value.
+  2. `.regimen-table`: Phác đồ thuốc, y lệnh dược lý, liều dùng (cột 1 in đậm tên thuốc).
+  3. `.diagnostic-table`: Tiêu chuẩn chẩn đoán (IAIHG, Korman, Banff, ACR/EULAR).
+  4. `.score-table`: Thang điểm lượng giá nguy cơ (Leipzig, NWI, MELD, Child-Pugh, RUCAM). Điểm số dùng `.score-badge.score-pos` (+), `.score-badge.score-neg` (-), `.score-badge.score-neu` (0). Hàng tổng kết dùng `<tr class="total-row">`.
+  5. `.comparison-table`: Bảng đối sánh triệu chứng theo cơ quan, danh mục thuốc/thảo dược, xét nghiệm.
+
 ```html
-<div class="table-wrap">
-  <table class="data-table trial-endpoints-table">
-    <thead>
-      <tr>
-        <th>Điểm Kết Thúc</th>
-        <th>Nhóm Can Thiệp</th>
-        <th>Nhóm Đối Chứng</th>
-        <th>HR (95% CI)</th>
-        <th>Giá Trị p</th>
-        <th>Ưu Thế</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="endpoint-primary">
-        <td><strong>3-Point MACE</strong></td>
-        <td>490/4687 (10.5%)</td>
-        <td>282/2333 (12.1%)</td>
-        <td>0.86 (0.74–0.99)</td>
-        <td><span class="p-val sig">p = 0.04</span></td>
-        <td><span class="favors-exp">Giảm 14%</span></td>
-      </tr>
-      <tr class="endpoint-secondary">
-        <td><strong>Tử vong do Tim mạch</strong></td>
-        <td>172/4687 (3.7%)</td>
-        <td>137/2333 (5.9%)</td>
-        <td>0.62 (0.49–0.77)</td>
-        <td><span class="p-val sig">p &lt; 0.001</span></td>
-        <td><span class="favors-exp">Giảm 38%</span></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title">
+      <i class="fa-solid fa-chart-line"></i> Bảng 1. Kết Cục Thống Kê Chính &amp; Phụ của Thử Nghiệm Lâm Sàng
+    </div>
+    <span class="table-badge"><i class="fa-solid fa-square-poll-vertical"></i> Endpoints EBM</span>
+  </div>
+  <div class="table-wrapper">
+    <table class="trial-endpoints-table">
+      <thead>
+        <tr>
+          <th>Điểm Kết Thúc</th>
+          <th>Nhóm Can Thiệp</th>
+          <th>Nhóm Đối Chứng</th>
+          <th>HR (95% CI)</th>
+          <th>Giá Trị p</th>
+          <th>Ưu Thế</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="endpoint-primary">
+          <td class="source-cell"><strong>3-Point MACE</strong></td>
+          <td>490/4687 (10.5%)</td>
+          <td>282/2333 (12.1%)</td>
+          <td>0.86 (0.74–0.99)</td>
+          <td><span class="p-val sig">p = 0.04</span></td>
+          <td><span class="favors-exp">Giảm 14%</span></td>
+        </tr>
+        <tr class="endpoint-secondary">
+          <td class="source-cell"><strong>Tử vong do Tim mạch</strong></td>
+          <td>172/4687 (3.7%)</td>
+          <td>137/2333 (5.9%)</td>
+          <td>0.62 (0.49–0.77)</td>
+          <td><span class="p-val sig">p &lt; 0.001</span></td>
+          <td><span class="favors-exp">Giảm 38%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 ```
 

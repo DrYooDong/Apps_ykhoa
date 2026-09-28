@@ -329,10 +329,11 @@ export type CdssToolSlug =
   | 'antibiotic'
   | 'vancomycin'
   | 'sepsis'
+  | 'inpatient'
   | 'hub';
 
 /**
- * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray, Hepa, Neuro, Microbio, Antibiotic, Vancomycin, Sepsis hoặc CDSS Hub)
+ * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray, Hepa, Neuro, Microbio, Antibiotic, Vancomycin, Sepsis, Inpatient hoặc CDSS Hub)
  * Đường dẫn tĩnh nội bộ trong public/cdss/ của DocSpace giúp hoạt động 100% trên cả dev server và production
  */
 export function getCdssAppUrl(moduleSlug: CdssToolSlug = 'hub'): string {
@@ -365,6 +366,9 @@ export function getCdssAppUrl(moduleSlug: CdssToolSlug = 'hub'): string {
   }
   if (moduleSlug === 'sepsis') {
     return `./cdss/sepsis/index.html`;
+  }
+  if (moduleSlug === 'inpatient') {
+    return `./cdss/inpatient/index.html`;
   }
   return `./cdss/index.html`;
 }

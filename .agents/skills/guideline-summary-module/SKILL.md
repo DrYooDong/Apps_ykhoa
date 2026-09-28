@@ -227,24 +227,32 @@ sections:
         </div>
       </div>
 
-      <!-- Table Wrapper -->
-      <div class="table-wrapper">
-        <table class="regimen-table">
-          <thead>
-            <tr>
-              <th style="width:20%">Phác đồ / Thuốc</th>
-              <th style="width:40%">Chỉ định & Liều lượng</th>
-              <th style="width:40%">Lưu ý lâm sàng</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="source-cell"><span class="rx-tag preferred">Ưu tiên</span> [Tên thuốc]</td>
-              <td>[Liều dùng, đường dùng, thời gian]</td>
-              <td>[Chỉnh liều, tác dụng phụ]</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Table Card Standard Component -->
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-pills"></i> Bảng 1. Phác Đồ Điều Trị Dược Lý Khuyến Cáo
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-prescription-bottle-medical"></i> Phác đồ điều trị</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width:20%">Phác đồ / Thuốc</th>
+                <th style="width:40%">Chỉ định &amp; Liều lượng</th>
+                <th style="width:40%">Lưu ý lâm sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><span class="rx-tag preferred">Ưu tiên</span> [Tên thuốc]</td>
+                <td>[Liều dùng, đường dùng, thời gian]</td>
+                <td>[Chỉnh liều, tác dụng phụ]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
@@ -306,7 +314,27 @@ node .agents/skills/guideline-summary-module/scripts/synthesize_guideline_mdx.js
 ### 3. Biên Tập Nội Dung Dựa Trên Template (Tiết Kiệm 70% Thời Gian):
 - Sao chép cấu trúc từ `templates/template-guideline.mdx` hoặc `templates/template-rct.mdx`.
 - Điền dữ liệu thực tế vào các placeholder `[BRACKET]`.
-- Giữ nguyên cấu trúc thẻ chuẩn HTML, Design Tokens `var(--color-...)`, thẻ thống kê `.stats-strip`, `.pillars`, `.quickmenu`, và bảng `.regimen-table`.
+- Giữ nguyên cấu trúc thẻ chuẩn HTML, Design Tokens `var(--color-...)`, thẻ thống kê `.stats-strip`, `.pillars`, và `.quickmenu`.
+- **QUY CHUẨN THIẾT KẾ BẢNG Y KHOA (TABLE DESIGN STANDARD) — BẮT BUỘC 100%**:
+  1. **Cấu trúc bao đóng**: Mọi bảng bắt buộc bọc trong `.table-card` với `.table-header` và `.table-wrapper`:
+     ```html
+     <div class="table-card">
+       <div class="table-header">
+         <div class="table-title"><i class="fa-solid fa-..."></i> Bảng X. [Tiêu Đề]</div>
+         <span class="table-badge"><i class="fa-solid fa-..."></i> [Nhãn]</span>
+       </div>
+       <div class="table-wrapper">
+         <table class="[LỚP-CHUYÊN-BIỆT]">...</table>
+       </div>
+     </div>
+     ```
+  2. **CẤM đặt tiêu đề bên trong `.table-wrapper`**: Tuyệt đối không đặt `<h3>` hoặc `.table-title` vào trong `.table-wrapper` vì sẽ bị trượt ngang khi cuộn trên thiết bị di động.
+  3. **CẤM dùng `.regimen-table` bừa bãi**: Phải chọn đúng lớp bảng phù hợp theo bản chất dữ liệu:
+     - `.regimen-table`: Phác đồ thuốc, y lệnh, phân liều (cột 1 in đậm tên thuốc).
+     - `.diagnostic-table`: Tiêu chuẩn chẩn đoán (IAIHG, Korman, Banff, ACR...).
+     - `.score-table`: Thang điểm lượng giá, nguy cơ (Leipzig, NWI, Child-Pugh, MELD, RUCAM). Điểm số dùng `.score-badge.score-pos` (+), `.score-badge.score-neg` (-), `.score-badge.score-neu` (0). Hàng tổng kết dùng `<tr class="total-row">`.
+     - `.comparison-table`: Bảng đối sánh triệu chứng cơ quan, danh mục thuốc/thảo dược, xét nghiệm.
+     - `.trial-endpoints-table`: Biến cố kết cục RCT, nguy cơ tương đối (HR/RR), p-value.
 - Ghi file vào `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`.
 
 ### 4. Đăng Ký Tự Động Vào Kho Registry:

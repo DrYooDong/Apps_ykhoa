@@ -13,7 +13,8 @@ export type CDSSCategory =
   | 'nephrology'      // Thận - Tiết niệu
   | 'pharmacology'    // Dược lý lâm sàng
   | 'gastroenterology'// Tiêu hóa & Gan mật
-  | 'neurology';      // Thần kinh
+  | 'neurology'       // Thần kinh & Đột quỵ
+  | 'internal';       // Nội khoa tổng quát & Khám lâm sàng
 
 export interface CDSSModuleMeta {
   id: string;
@@ -41,8 +42,6 @@ export interface CDSSModuleMeta {
 export type DengueAgeGroup = 'adult' | 'adolescent' | 'child'; // >=16 | 13-15 | <13
 export type DengueSeverity = 'warning_signs' | 'shock' | 'severe_shock';
 export type Gender = 'male' | 'female';
-export type PregnancyTrimester = 1 | 2 | 3;
-export type ClinicalResponseStatus = 'improved' | 'worsened' | 'refractory';
 
 export interface DenguePatientInput {
   ageYears: number;
@@ -51,21 +50,8 @@ export interface DenguePatientInput {
   heightCm?: number;
   severity: DengueSeverity;
   initialHctPercent?: number;
-  currentHctPercent?: number;
   baselineHctPercent?: number;
   startTime?: string; // HH:mm format, e.g. "08:00"
-  // Đối tượng đặc biệt
-  isPregnant?: boolean;
-  pregnancyTrimester?: PregnancyTrimester;
-  hasThalassemia?: boolean;
-  ageMonths?: number; // Nhũ nhi < 12 tháng
-  // Cận lâm sàng & đáp ứng
-  liverEnzymesAST_ALT?: number; // Men gan U/L (đánh giá tổn thương gan cấp)
-  plateletsCount?: number; // /mm3
-  inrValue?: number;
-  fibrinogenGL?: number; // g/L
-  massiveBleeding?: boolean;
-  clinicalResponse?: ClinicalResponseStatus;
   hasComorbidities?: {
     heartFailure?: boolean;
     chronicKidneyDisease?: boolean;
@@ -83,8 +69,6 @@ export interface WeightCalculationResult {
   adjustedWeightKg: number;
   formulaNote: string;
   warningText?: string;
-  isPregnantAdjusted?: boolean;
-  pregnancyTrimester?: PregnancyTrimester;
 }
 
 export interface FluidScheduleRow {
@@ -104,7 +88,7 @@ export interface FluidScheduleRow {
 }
 
 export interface VasopressorDoseInfo {
-  drugName: 'Dopamin' | 'Noradrenalin' | 'Dobutamin' | 'Adrenalin';
+  drugName: 'Dopamin' | 'Noradrenalin';
   patientWeightKg: number;
   calculationFormula: string;
   totalMg: number;
@@ -115,53 +99,6 @@ export interface VasopressorDoseInfo {
   recommendedPumpRateMlH: string; // e.g. "5 - 10 ml/h"
   clinicalIndications: string;
   precautions: string;
-}
-
-export interface BloodProductItem {
-  id: string;
-  productName: string;
-  indication: string;
-  doseFormula: string;
-  calculatedDose: string;
-  thresholdMet: boolean;
-  targetClinical: string;
-  precautions: string;
-}
-
-export interface NACDosingPhase {
-  phase: number;
-  phaseName: string;
-  doseMgKg: number;
-  infusionTimeHours: number;
-  diluent: string;
-  totalMg: number;
-  pumpRateMlH: string;
-}
-
-export interface NACProtocolResult {
-  indicated: boolean;
-  severityLevel: 'normal' | 'mild_moderate' | 'severe_hepatitis' | 'acute_liver_failure';
-  astAltVal?: number;
-  summary: string;
-  phases: NACDosingPhase[];
-  precautions: string[];
-}
-
-export interface BranchDecisionResult {
-  branchType: 'standard' | 'cpt' | 'blood' | 'switch_crystalloid' | 'refractory_shock';
-  title: string;
-  recommendedFluid: string;
-  rateMlKgH: number;
-  durationHours: number;
-  reasoning: string;
-  warnings: string[];
-}
-
-export interface ABCSChecklist {
-  acidosis: { title: string; criteria: string; action: string };
-  bleeding: { title: string; criteria: string; action: string };
-  calcium: { title: string; criteria: string; action: string };
-  sugar: { title: string; criteria: string; action: string };
 }
 
 export interface CDSSAlertItem {
@@ -181,13 +118,6 @@ export interface DengueCDSSPlan {
   totalDurationHours: number;
   vasopressorDopamin: VasopressorDoseInfo;
   vasopressorNoradrenalin: VasopressorDoseInfo;
-  vasopressorDobutamin: VasopressorDoseInfo;
-  vasopressorAdrenalin: VasopressorDoseInfo;
-  bloodProducts: BloodProductItem[];
-  nacProtocol: NACProtocolResult;
-  branchDecision: BranchDecisionResult;
-  abcsChecklist: ABCSChecklist;
-  specialPatientNotes: string[];
   alerts: CDSSAlertItem[];
   nursingInstructions: string[];
   soapExportText: string;

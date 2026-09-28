@@ -180,6 +180,24 @@
       badge: "NICE 2024 + Phoenix 2024 + Sepsis-3",
       isStandalone: true,
       standaloneUrl: "sepsis/index.html"
+    },
+    {
+      id: "cdss-inpatient-exam",
+      slug: "inpatient",
+      title: "Ti\u1EBFp C\u1EADn L\xE2m S\xE0ng & Kh\xE1m B\u1EC7nh N\u1ED9i Tr\xFA (Bates & Macleod)",
+      titleEn: "Inpatient Clinical Examination & Diagnostic Approach CDSS",
+      shortDesc: "C\u1EA9m nang kh\xE1m l\xE2m s\xE0ng c\xF3 h\u1EC7 th\u1ED1ng, ti\u1EBFp c\u1EADn c\xE1c h\u1ED9i ch\u1EE9ng v\xE0 tri\u1EC7u ch\u1EE9ng b\u1EC7nh n\u1ED9i tr\xFA kinh \u0111i\u1EC3n, b\u1ED9 c\xF4ng c\u1EE5 h\u1ECFi b\u1EC7nh s\u1EED 7 thu\u1ED9c t\xEDnh, tra c\u1EE9u nhanh v\xE0 ghi ch\xFA m\u1EE5c ti\xEAu l\xE2m s\xE0ng.",
+      category: "internal",
+      categoryName: "N\u1ED9i khoa & L\xE2m s\xE0ng",
+      version: "1.0.0 (Bates & Macleod)",
+      updatedAt: "2026-09-28",
+      author: "CliniPortal CDSS Squad & Bates / Macleod",
+      guidelineSource: "Bates\u2019 Pocket Guide to Physical Examination & Macleod's Clinical Examination",
+      icd10: ["R00-R99", "Z00.0"],
+      icon: "fa-solid fa-stethoscope",
+      badge: "Bates & Macleod + 7 Thu\u1ED9c T\xEDnh",
+      isStandalone: true,
+      standaloneUrl: "inpatient/index.html"
     }
   ];
   function getCDSSModuleById(id) {

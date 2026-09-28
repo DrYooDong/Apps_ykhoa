@@ -28,6 +28,8 @@ Mỗi module CDSS độc lập có thể được xây dựng bằng Vanilla Typ
 | `cdss-microbiology-mahon` | `microbio/` | Truyền nhiễm & Vi sinh | React 19 + IIFE Fallback | `microbio/index.html` |
 | `cdss-antibiotic-dosing` | `antibiotic/` | Dược lý & Kháng sinh | React 19 + Tailwind v4 + IIFE Fallback | `antibiotic/index.html` |
 | `cdss-vancomycin-pk` | `vancomycin/` | Dược lý & Kháng sinh | React 19 + Tailwind v4 + IIFE Fallback | `vancomycin/index.html` |
+| `cdss-sepsis-risk` | `sepsis/` | Hồi sức Cấp cứu | React 19 + Tailwind v4 + IIFE Fallback | `sepsis/index.html` |
+| `cdss-inpatient-exam` | `inpatient/` | Nội khoa & Lâm sàng | React 19 + Tailwind v4 (Bates & Macleod) | `inpatient/index.html` |
 
 ---
 

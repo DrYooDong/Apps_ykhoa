@@ -177,28 +177,52 @@ sections:
         </div>
       </div>
 
-      <div class="table-wrapper">
-        <table class="regimen-table">
-          <thead>
-            <tr>
-              <th style="width:25%">Chỉ số / Thang điểm</th>
-              <th style="width:35%">Công thức & Ngưỡng giá trị</th>
-              <th style="width:40%">Ý nghĩa phân loại & Xử trí</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="source-cell"><span class="rx-tag preferred">[Chỉ số chính 1]</span></td>
-              <td><code>[Ngưỡng A]</code> vs <code>[Ngưỡng B]</code></td>
-              <td>[Định hướng phân loại thể bệnh và hướng tiếp cận tiếp theo]</td>
-            </tr>
-            <tr>
-              <td class="source-cell"><span class="rx-tag warning">[Quy tắc cảnh báo]</span></td>
-              <td>[Tổ hợp cận lâm sàng báo động]</td>
-              <td><strong>Cảnh báo nguy cơ cao:</strong> [Tỷ lệ tử vong hoặc chỉ định hội chẩn khẩn cấp]</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-calculator"></i> Bảng 1. Tiêu Chuẩn Chẩn Đoán &amp; Thang Điểm Lượng Giá Nguy Cơ
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-square-check"></i> Tiêu chuẩn chẩn đoán</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width:25%">Chỉ số / Tiêu chí</th>
+                <th style="width:50%">Biểu hiện lâm sàng &amp; Kết quả cận lâm sàng</th>
+                <th style="width:25%">Điểm số / Phân loại</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>[Tiêu chí chính 1]</strong></td>
+                <td>
+                  • [Biểu hiện dương tính điển hình]<br />
+                  • [Biểu hiện nhẹ hoặc âm tính]
+                </td>
+                <td>
+                  <span class="score-badge score-pos">+2</span><br />
+                  <span class="score-badge score-neu">0</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>[Tiêu chí chính 2]</strong></td>
+                <td>
+                  • [Xét nghiệm tăng cao &gt; ngưỡng X]<br />
+                  • [Xét nghiệm tăng nhẹ vùng xám]
+                </td>
+                <td>
+                  <span class="score-badge score-pos">+2</span><br />
+                  <span class="score-badge score-pos">+1</span>
+                </td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="2"><strong>KẾT LUẬN TỔNG ĐIỂM ĐÁNH GIÁ</strong></td>
+                <td><strong>≥ [Mốc X]: Chẩn đoán xác định</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
@@ -206,7 +230,7 @@ sections:
 
   <!-- ==================== SECTION 3 ==================== -->
   <div class="sec-card" id="sec-3">
-    <div class="sec-hdr"><span class="sec-hdr-icon">💊</span> <h2 class="sec-title">3. Chiến Lược Xử Trí & Phác Đồ Dược Lý Cụ Thể</h2></div>
+    <div class="sec-hdr"><span class="sec-hdr-icon">💊</span> <h2 class="sec-title">3. Chiến Lược Xử Trí &amp; Phác Đồ Dược Lý Cụ Thể</h2></div>
     <div class="sec-body">
 
       <div class="infobox danger">
@@ -216,47 +240,55 @@ sections:
         </div>
       </div>
 
-      <div class="table-wrapper">
-        <table class="regimen-table">
-          <thead>
-            <tr>
-              <th style="width:22%">Biện pháp / Dược chất</th>
-              <th style="width:40%">Chỉ định & Phác đồ liều lượng chi tiết</th>
-              <th style="width:38%">Bằng chứng EBM & Lưu ý thực hành</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="source-cell">
-                <span class="rx-tag preferred">Đầu tay</span>
-                <strong>[Tên thuốc / Can thiệp A]</strong>
-              </td>
-              <td>
-                <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
-                  <li><strong>Tải liều:</strong> [Liều nạp ban đầu]</li>
-                  <li><strong>Duy trì:</strong> [Liều duy trì, đường dùng, thời gian]</li>
-                </ul>
-              </td>
-              <td>
-                <span class="cor-badge cor-1">COR I</span> <span class="loe-badge loe-a">LOE A</span>
-                <p style="margin-top: 0.35rem; font-size: 0.85rem; color: var(--color-text-muted);">[Bằng chứng lâm sàng chứng minh hiệu quả; tỷ lệ cải thiện sống còn].</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="source-cell">
-                <span class="rx-tag alternative">Bổ trợ / Chọn lọc</span>
-                <strong>[Tên thuốc / Can thiệp B]</strong>
-              </td>
-              <td>
-                <p style="margin: 0; font-size: 0.88rem;">[Liều dùng và điều kiện kích hoạt chỉ định đặc hiệu].</p>
-              </td>
-              <td>
-                <span class="cor-badge cor-2a">COR IIa</span> <span class="loe-badge loe-b">LOE B</span>
-                <p style="margin-top: 0.35rem; font-size: 0.85rem; color: var(--color-text-muted);">[Lưu ý chống chỉ định hoặc đối tượng hưởng lợi nhất].</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-pills"></i> Bảng 2. Phác Đồ Điều Trị Dược Lý Khuyến Cáo
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-prescription-bottle-medical"></i> Phác đồ điều trị</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width:22%">Biện pháp / Dược chất</th>
+                <th style="width:40%">Chỉ định &amp; Phác đồ liều lượng chi tiết</th>
+                <th style="width:38%">Bằng chứng EBM &amp; Lưu ý thực hành</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">Đầu tay</span>
+                  <strong>[Tên thuốc / Can thiệp A]</strong>
+                </td>
+                <td>
+                  <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                    <li><strong>Tải liều:</strong> [Liều nạp ban đầu]</li>
+                    <li><strong>Duy trì:</strong> [Liều duy trì, đường dùng, thời gian]</li>
+                  </ul>
+                </td>
+                <td>
+                  <span class="cor-badge cor-1">COR I</span> <span class="loe-badge loe-a">LOE A</span>
+                  <p style="margin-top: 0.35rem; font-size: 0.85rem; color: var(--color-text-muted);">[Bằng chứng lâm sàng chứng minh hiệu quả; tỷ lệ cải thiện sống còn].</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">Bổ trợ / Chọn lọc</span>
+                  <strong>[Tên thuốc / Can thiệp B]</strong>
+                </td>
+                <td>
+                  <p style="margin: 0; font-size: 0.88rem;">[Liều dùng và điều kiện kích hoạt chỉ định đặc hiệu].</p>
+                </td>
+                <td>
+                  <span class="cor-badge cor-2a">COR IIa</span> <span class="loe-badge loe-b">LOE B</span>
+                  <p style="margin-top: 0.35rem; font-size: 0.85rem; color: var(--color-text-muted);">[Lưu ý chống chỉ định hoặc đối tượng hưởng lợi nhất].</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>

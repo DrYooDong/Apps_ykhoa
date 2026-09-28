@@ -13,7 +13,8 @@ export type CDSSCategory =
   | 'nephrology'      // Thận - Tiết niệu
   | 'pharmacology'    // Dược lý lâm sàng
   | 'gastroenterology'// Tiêu hóa & Gan mật
-  | 'neurology';      // Thần kinh & Đột quỵ
+  | 'neurology'       // Thần kinh & Đột quỵ
+  | 'internal';       // Nội khoa tổng quát & Khám lâm sàng
 
 export interface CDSSModuleMeta {
   id: string;

@@ -888,6 +888,76 @@ export const VaultDrawer: React.FC<VaultDrawerProps> = ({
                         Tính liều nạp, liều duy trì, chỉnh liều béo phì (Zhang 2024), lọc máu IHD, nồng độ đáy Trough &amp; TDM AUC24/MIC.
                       </p>
                     </div>
+
+                    {/* 10. CDSS Sepsis */}
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('sepsis');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('sepsis'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-red-50 to-amber-50/30 hover:from-red-100/70 hover:to-amber-100/60 border border-red-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-red-700 bg-red-100 border border-red-300">
+                          NICE 2024 &amp; Sepsis-3
+                        </span>
+                        <a
+                          href={getCdssAppUrl('sepsis')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-red-500 hover:text-red-700 rounded hover:bg-red-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-red-700 transition-colors">
+                        10. Phân Tầng Nguy Cơ Sepsis &amp; Sốc Nhiễm Khuẩn
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Sàng lọc đa phương thức NICE 2024, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 (Nhi khoa) và tỷ số NLR.
+                      </p>
+                    </div>
+
+                    {/* 11. CDSS Inpatient Exam & Approach */}
+                    <div
+                      onClick={() => {
+                        if (onOpenCdssModal) {
+                          onOpenCdssModal('inpatient');
+                          onClose();
+                        } else {
+                          window.open(getCdssAppUrl('inpatient'), '_blank');
+                        }
+                      }}
+                      className="p-3 bg-gradient-to-br from-teal-50 to-emerald-50/30 hover:from-teal-100/70 hover:to-emerald-100/60 border border-teal-200 rounded-lg transition-all flex flex-col justify-between group shadow-2xs text-left cursor-pointer"
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <span className="px-1.5 py-0.5 rounded text-[10px] font-bold text-teal-700 bg-teal-100 border border-teal-300">
+                          Bates &amp; Macleod
+                        </span>
+                        <a
+                          href={getCdssAppUrl('inpatient')}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-1 text-teal-500 hover:text-teal-700 rounded hover:bg-teal-100/80 transition-colors"
+                          title="Mở tab riêng"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                      </div>
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                        11. Khám Lâm Sàng &amp; Tiếp Cận Bệnh Nội Trú
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                        Cẩm nang khám lâm sàng hệ thống Bates &amp; Macleod, tiếp cận hội chứng nội trú, hỏi bệnh sử 7 thuộc tính và tra cứu nhanh ⌘K.
+                      </p>
+                    </div>
                   </div>
                 )}
 

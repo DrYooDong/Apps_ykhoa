@@ -8,8 +8,10 @@ import {
   Award,
   Menu,
   User,
+  Zap,
 } from 'lucide-react';
 import { KnowledgeBase } from '../types.ts';
+import { CdssToolSlug } from '../lib/vaultBridge.ts';
 import { MobileActionSheet } from './mobile/MobileActionSheet.tsx';
 
 export type MainViewMode = 'clinical' | 'soap' | 'kb';
@@ -21,6 +23,7 @@ interface HeaderProps {
   onOpenVault: (khoCode?: string, query?: string) => void;
   onOpenAbout: () => void;
   onOpenSimulation?: () => void;
+  onOpenCdssModal?: (tool: CdssToolSlug) => void;
   patientSummary?: string | null;
 }
 
@@ -31,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenVault,
   onOpenAbout,
   onOpenSimulation,
+  onOpenCdssModal,
   patientSummary,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,8 +116,23 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Right Actions: OSCE Simulation + Home + Unified Menu Button */}
+        {/* Right Actions: CDSS Button + OSCE Simulation + Home + Unified Menu Button */}
         <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Quick CDSS Studio Button (Desktop) */}
+          {onOpenCdssModal && (
+            <button
+              type="button"
+              id="btn-nav-cdss"
+              onClick={() => onOpenCdssModal('hub')}
+              className="hidden md:flex items-center gap-1 px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-md text-xs font-semibold transition-all cursor-pointer shadow-2xs"
+              title="Mở Trung Tâm Hỗ Trợ Quyết Định Lâm Sàng CDSS (11 Modules)"
+              aria-label="Kho CDSS"
+            >
+              <Zap className="w-3.5 h-3.5 text-blue-600 fill-blue-600/30" />
+              <span>CDSS (11)</span>
+            </button>
+          )}
+
           {/* OSCE Simulation Button (Desktop) */}
           {onOpenSimulation && (
             <button
@@ -160,6 +179,7 @@ export const Header: React.FC<HeaderProps> = ({
         onOpenVault={onOpenVault}
         onOpenAbout={onOpenAbout}
         onOpenSimulation={onOpenSimulation}
+        onOpenCdssModal={onOpenCdssModal}
       />
     </>
   );

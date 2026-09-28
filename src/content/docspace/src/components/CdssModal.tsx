@@ -12,6 +12,7 @@ import {
   Minimize2,
   Pill,
   Scan,
+  Stethoscope,
   Syringe,
   Wind,
   X,
@@ -127,6 +128,15 @@ const CDSS_TABS: ToolTabMeta[] = [
     colorClass: 'text-red-700 border-red-200 bg-red-50',
     activeBgClass: 'bg-red-600 text-white shadow-2xs',
     desc: 'Nhận diện & phân tầng nguy cơ nhiễm trùng, Sepsis-3 (SOFA/qSOFA), Phoenix 2024 Nhi khoa và sốc nhiễm khuẩn.',
+  },
+  {
+    id: 'inpatient',
+    title: 'Khám Lâm Sàng & Nội Trú (Bates & Macleod)',
+    badge: 'Bates & Macleod',
+    icon: <Stethoscope className="w-4 h-4 text-teal-600" />,
+    colorClass: 'text-teal-700 border-teal-200 bg-teal-50',
+    activeBgClass: 'bg-teal-600 text-white shadow-2xs',
+    desc: 'Cẩm nang khám lâm sàng hệ thống Bates & Macleod, tiếp cận hội chứng nội trú, hỏi bệnh sử 7 thuộc tính và tra cứu nhanh ⌘K.',
   },
   {
     id: 'hub',

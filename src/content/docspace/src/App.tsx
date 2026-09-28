@@ -191,7 +191,7 @@ export function MainApp() {
         setClinicalStep('t4');
       } else if (intent.action === 'open-cdss-studio') {
         const studio = (intent.payload?.studio || 'hub').toLowerCase();
-        const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'hub'];
+        const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'sepsis', 'inpatient', 'hub'];
         if (validTools.includes(studio as CdssToolSlug)) {
           handleOpenCdss(studio as CdssToolSlug);
         } else {
@@ -236,7 +236,7 @@ export function MainApp() {
       setClinicalStep('t4');
     } else if (fallback.studio) {
       const studio = fallback.studio.toLowerCase();
-      const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'hub'];
+      const validTools: CdssToolSlug[] = ['dengue', 'ecg', 'abg', 'xray', 'hepa', 'neuro', 'microbio', 'antibiotic', 'vancomycin', 'sepsis', 'inpatient', 'hub'];
       if (validTools.includes(studio as CdssToolSlug)) {
         handleOpenCdss(studio as CdssToolSlug);
       } else {
@@ -471,6 +471,7 @@ export function MainApp() {
         onOpenVault={(khoCode, query) => handleOpenVaultDrawer(undefined, query, khoCode)}
         onOpenAbout={() => setIsAboutOpen(true)}
         onOpenSimulation={() => setIsSimulationOpen(true)}
+        onOpenCdssModal={handleOpenCdss}
         patientSummary={patientSummary}
       />
 

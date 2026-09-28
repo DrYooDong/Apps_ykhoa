@@ -891,6 +891,10 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                               onOpenCdssModal('vancomycin');
                             } else if (t.includes('kháng sinh') || id.includes('antibiotic')) {
                               onOpenCdssModal('antibiotic');
+                            } else if (t.includes('sepsis') || t.includes('nhiễm trùng') || id.includes('sepsis')) {
+                              onOpenCdssModal('sepsis');
+                            } else if (t.includes('khám') || t.includes('nội trú') || t.includes('bates') || id.includes('inpatient')) {
+                              onOpenCdssModal('inpatient');
                             } else if (t.includes('dengue')) {
                               onOpenCdssModal('dengue');
                             } else if (t.includes('khí máu') || id.includes('abg')) {

@@ -185,6 +185,24 @@ export const CDSS_MODULES: CDSSModuleMeta[] = [
     badge: 'NICE 2024 + Phoenix 2024 + Sepsis-3',
     isStandalone: true,
     standaloneUrl: 'sepsis/index.html'
+  },
+  {
+    id: 'cdss-inpatient-exam',
+    slug: 'inpatient',
+    title: 'Tiếp Cận Lâm Sàng & Khám Bệnh Nội Trú (Bates & Macleod)',
+    titleEn: 'Inpatient Clinical Examination & Diagnostic Approach CDSS',
+    shortDesc: 'Cẩm nang khám lâm sàng có hệ thống, tiếp cận các hội chứng và triệu chứng bệnh nội trú kinh điển, bộ công cụ hỏi bệnh sử 7 thuộc tính, tra cứu nhanh và ghi chú mục tiêu lâm sàng.',
+    category: 'internal',
+    categoryName: 'Nội khoa & Lâm sàng',
+    version: '1.0.0 (Bates & Macleod)',
+    updatedAt: '2026-09-28',
+    author: 'CliniPortal CDSS Squad & Bates / Macleod',
+    guidelineSource: "Bates’ Pocket Guide to Physical Examination & Macleod's Clinical Examination",
+    icd10: ['R00-R99', 'Z00.0'],
+    icon: 'fa-solid fa-stethoscope',
+    badge: 'Bates & Macleod + 7 Thuộc Tính',
+    isStandalone: true,
+    standaloneUrl: 'inpatient/index.html'
   }
 ];
 

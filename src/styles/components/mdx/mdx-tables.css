@@ -4,7 +4,119 @@
    2x2 Diagnostic Tables & Evidence Pyramids
    ============================================================ */
 
-/* --- 1. MASTER RESPONSIVE TABLE WRAPPER --- */
+/* --- 1. MASTER RESPONSIVE TABLE WRAPPER & TABLE-CARD --- */
+.table-card {
+  position: relative;
+  width: 100%;
+  margin: var(--space-5, 1.25rem) 0;
+  border-radius: var(--radius-md, 14px);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  box-shadow: var(--shadow-sm, 0 1px 4px rgba(0,0,0,0.04));
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table-card:hover {
+  border-color: var(--color-primary-border, rgba(2, 132, 199, 0.3));
+  box-shadow: var(--shadow-md, 0 4px 14px rgba(0,0,0,0.06));
+}
+
+[data-theme="dark"] .table-card {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .table-card:hover {
+  border-color: var(--color-primary-border, rgba(56, 189, 248, 0.4));
+}
+
+.table-card .table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.85rem 1.15rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-bottom: 1.5px solid var(--color-border, #cbd5e1);
+}
+
+[data-theme="dark"] .table-card .table-header {
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom-color: var(--color-border, #334155);
+}
+
+.table-card .table-title,
+.table-header .table-title,
+.table-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+[data-theme="dark"] .table-title {
+  color: #38bdf8;
+}
+
+.table-card .table-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .table-card .table-badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+/* Reset .table-wrapper when placed inside .table-card */
+.table-card .table-wrapper,
+.table-card .mdx-table-wrapper,
+.table-card .table-container,
+.table-card .table-responsive {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.table-card .table-footer-note {
+  padding: 0.65rem 1.15rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted, #64748b);
+  background: var(--color-surface-2, #f8fafc);
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .table-card .table-footer-note {
+  background: rgba(15, 23, 42, 0.7);
+  border-top-color: var(--color-border, #334155);
+  color: var(--color-text-muted, #94a3b8);
+}
+
+/* Fallback if .table-title is placed directly inside .table-wrapper */
+.table-wrapper > .table-title {
+  padding: 0.75rem 1rem 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface-2, #f8fafc);
+  margin-bottom: 0 !important;
+}
+[data-theme="dark"] .table-wrapper > .table-title {
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom-color: var(--color-border, #334155);
+}
+
 .table-wrapper,
 .mdx-table-wrapper,
 .table-container,
@@ -65,6 +177,11 @@ table,
 .med-table,
 .data-table,
 .regimen-table,
+.diagnostic-table,
+.score-table,
+.comparison-table,
+.pain-points-table,
+.trial-endpoints-table,
 .study-table,
 .mdx-table,
 .matrix-table {
@@ -200,6 +317,215 @@ table tbody tr:hover td,
 [data-theme="dark"] .study-table tbody tr:hover td,
 [data-theme="dark"] .mdx-table tbody tr:hover td {
   background: rgba(51, 65, 85, 0.55);
+}
+
+/* --- 2.5 SPECIALIZED EBM & CLINICAL TABLE TYPES --- */
+
+/* 1. Diagnostic & Scoring Tables (.diagnostic-table, .score-table) */
+.diagnostic-table tbody tr td:first-child,
+.score-table tbody tr td:first-child {
+  font-weight: inherit; /* Prevent broken bolding on row 2 when row 1 uses rowspan */
+}
+
+.diagnostic-table tbody tr td.criteria-title,
+.score-table tbody tr td.criteria-title,
+.diagnostic-table tbody tr td.source-cell,
+.score-table tbody tr td.source-cell {
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .diagnostic-table tbody tr td.criteria-title,
+[data-theme="dark"] .score-table tbody tr td.criteria-title,
+[data-theme="dark"] .diagnostic-table tbody tr td.source-cell,
+[data-theme="dark"] .score-table tbody tr td.source-cell {
+  color: var(--color-text, #f8fafc);
+}
+
+/* Score badge */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
+}
+.score-badge.score-pos {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.score-badge.score-neg {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.score-badge.score-neu {
+  background: rgba(100, 116, 139, 0.12);
+  color: #64748b;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+.score-badge.score-blue {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+}
+
+[data-theme="dark"] .score-badge.score-pos {
+  background: rgba(16, 185, 129, 0.22);
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+[data-theme="dark"] .score-badge.score-neg {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+[data-theme="dark"] .score-badge.score-blue {
+  background: rgba(56, 189, 248, 0.22);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* Total row for scoring tables */
+tr.total-row td,
+tr.summary-row td {
+  background: rgba(2, 132, 199, 0.08) !important;
+  font-weight: 700;
+  border-top: 2px solid var(--color-primary, #0284c7) !important;
+  border-bottom: none;
+}
+[data-theme="dark"] tr.total-row td,
+[data-theme="dark"] tr.summary-row td {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-top-color: #38bdf8 !important;
+}
+
+/* 2. Trial Endpoints & Statistical Tables (.trial-endpoints-table, .data-table) */
+.trial-endpoints-table tr.endpoint-primary td {
+  background: rgba(2, 132, 199, 0.05);
+}
+[data-theme="dark"] .trial-endpoints-table tr.endpoint-primary td {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.trial-endpoints-table .p-val,
+.data-table .p-val,
+.rpval {
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+.p-val.sig,
+.rpval.sig {
+  color: #059669;
+}
+[data-theme="dark"] .p-val.sig,
+[data-theme="dark"] .rpval.sig {
+  color: #34d399;
+}
+.p-val.ns,
+.rpval.ns {
+  color: #64748b;
+}
+
+.favors-exp {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+[data-theme="dark"] .favors-exp {
+  background: rgba(16, 185, 129, 0.22);
+  color: #6ee7b7;
+}
+
+.favors-ctrl {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+[data-theme="dark"] .favors-ctrl {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+}
+
+/* 3. Comparison & Clinical Matrix Tables (.comparison-table, .matrix-table, .pain-points-table) */
+.comparison-table tbody tr td:first-child,
+.matrix-table tbody tr td:first-child,
+.pain-points-table tbody tr td:first-child {
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+[data-theme="dark"] .comparison-table tbody tr td:first-child,
+[data-theme="dark"] .matrix-table tbody tr td:first-child,
+[data-theme="dark"] .pain-points-table tbody tr td:first-child {
+  color: var(--color-text, #f8fafc);
+}
+
+/* 4. Regimen Table Tags */
+.rx-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+.rx-tag.preferred {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--color-primary, #0284c7);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+.rx-tag.alternative {
+  background: rgba(139, 92, 246, 0.12);
+  color: #7c3aed;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+.rx-tag.warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+.rx-tag.danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+[data-theme="dark"] .rx-tag.preferred {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+[data-theme="dark"] .rx-tag.alternative {
+  background: rgba(167, 139, 250, 0.2);
+  color: #c4b5fd;
+  border-color: rgba(167, 139, 250, 0.35);
+}
+[data-theme="dark"] .rx-tag.warning {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fde047;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+[data-theme="dark"] .rx-tag.danger {
+  background: rgba(248, 113, 113, 0.2);
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.35);
 }
 
 /* --- 3. CLINICAL RISK & SEMANTIC CELL CLASSIFICATIONS --- */
