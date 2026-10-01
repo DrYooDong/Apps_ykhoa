@@ -42,6 +42,7 @@ export const SOURCE_TYPES: Record<string, SourceTypeMeta> = {
   'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#475569', bg: 'rgba(71, 85, 105, 0.08)' },
   'intl-guideline': { name: 'Guideline Quốc tế', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
   'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#059669', bg: 'rgba(5, 150, 105, 0.1)' },
+  'vn-doh': { name: 'Sở Y tế Việt Nam', color: '#059669', bg: 'rgba(5, 150, 105, 0.08)' },
   'vn-association': { name: 'Hội chuyên khoa VN', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' }
 };
 

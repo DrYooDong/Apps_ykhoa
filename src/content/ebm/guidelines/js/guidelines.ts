@@ -243,6 +243,68 @@ function escapeHtml(str?: string): string {
     .replace(/"/g, '&quot;');
 }
 
+export function initSyncStatusIndicator(): void {
+  const badge = document.getElementById('sync-status-indicator') || document.querySelector('.storage-status-badge');
+  if (!badge) return;
+
+  const updateBadgeUI = (info: any) => {
+    if (!info) return;
+    const dot = (badge.querySelector('.sync-status-dot') || badge.querySelector('span:first-child')) as HTMLElement | null;
+    const label = (badge.querySelector('.sync-status-text') || badge.querySelector('span:last-child')) as HTMLElement | null;
+
+    if (dot) {
+      if (info.status === 'synced') {
+        dot.style.background = '#10b981';
+      } else if (info.status === 'saving') {
+        dot.style.background = '#0284c7';
+      } else if (info.status === 'error') {
+        dot.style.background = '#ef4444';
+      }
+    }
+
+    if (label) {
+      if (info.status === 'synced') {
+        const customTxt = info.customCount > 0 ? ` +${info.customCount}` : '';
+        label.textContent = `Đồng bộ: Delta${customTxt}`;
+      } else if (info.status === 'saving') {
+        label.textContent = `Đang đồng bộ...`;
+      } else if (info.status === 'error') {
+        label.textContent = `Lỗi đồng bộ`;
+      }
+    }
+
+    const timeStr = new Date(info.timestamp || Date.now()).toLocaleTimeString('vi-VN');
+    badge.setAttribute('title', `Trạng thái: ${String(info.status || '').toUpperCase()} (${timeStr})\n` +
+      `• Bài tự tạo/tùy chỉnh: ${info.customCount || 0}\n` +
+      `• Đã lưu đánh dấu: ${info.bookmarkedCount || 0}\n` +
+      `• Cơ chế: Delta Sync (Tiết kiệm >99% bộ nhớ localStorage)\n` +
+      `Nhấp để xem chi tiết & kiểm tra sao lưu.`);
+  };
+
+  window.addEventListener('cliniportal:sync-status', (e: any) => {
+    updateBadgeUI(e.detail);
+  });
+
+  if ((window as any).__cliniportalSyncStatus) {
+    updateBadgeUI((window as any).__cliniportalSyncStatus);
+  }
+
+  badge.addEventListener('click', () => {
+    if (typeof window.openSyncManagementModal === 'function') {
+      window.openSyncManagementModal();
+    } else {
+      const status = (window as any).__cliniportalSyncStatus;
+      if (window.showMedicalToast) {
+        window.showMedicalToast({
+          type: 'info',
+          title: 'Trạng thái đồng bộ Delta',
+          message: `Đang chạy Delta Sync: ${status?.customCount || 0} bài custom, ${status?.bookmarkedCount || 0} bài lưu. Tiết kiệm >99% dung lượng trình duyệt!`
+        });
+      }
+    }
+  });
+}
+
 if (typeof window !== 'undefined') {
   window.addEventListener('resize', () => {
     const newMobile = window.innerWidth <= 768;
@@ -254,6 +316,7 @@ if (typeof window !== 'undefined') {
 
   const initApp = async () => {
     initSidebarState();
+    initSyncStatusIndicator();
 
     if (window.loadStudies) {
       window.loadStudies();

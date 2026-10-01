@@ -395,8 +395,9 @@ export function handleFormSubmit(event?: Event): void {
     parts: partsList.length > 0 ? partsList : undefined,
     icd10: icdList,
     asianData: getCheckboxFromIds('study-asian-data', 'form-asianData'),
-    bookmarked: false,
-    createdAt: new Date().toISOString()
+    bookmarked: editingStudyId ? Boolean((window.studies || []).find(s => s.id === editingStudyId)?.bookmarked) : false,
+    isCustom: true,
+    createdAt: editingStudyId ? ((window.studies || []).find(s => s.id === editingStudyId)?.createdAt || new Date().toISOString()) : new Date().toISOString()
   };
 
   if (!editingStudyId && window.detectStudyDuplicate) {
@@ -423,9 +424,16 @@ export function handleFormSubmit(event?: Event): void {
   if (editingStudyId) {
     const idx = (window.studies || []).findIndex(s => s.id === editingStudyId);
     if (idx !== -1) {
-      window.studies[idx] = { ...window.studies[idx], ...studyData };
+      window.studies[idx] = {
+        ...window.studies[idx],
+        ...studyData,
+        isCustom: true,
+        _userModified: true
+      };
     }
   } else {
+    studyData.isCustom = true;
+    (studyData as any)._userCreated = true;
     window.studies.unshift(studyData);
   }
 
@@ -479,11 +487,50 @@ export function processJSONImport(rawText?: string): void {
     return;
   }
 
-  const checkedBatch: BatchDuplicateItem[] = window.batchCheckDuplicates ? window.batchCheckDuplicates(rawArray, window.studies) : rawArray.map(item => ({
-    item: window.processStudyFields ? window.processStudyFields(item) : item,
-    dupResult: { isDuplicate: false, score: 0, matchedStudy: null, reasons: [], matchLevel: 'none' },
-    action: 'new'
-  }));
+  // UPGRADE-03: Tự động sao lưu snapshot trước khi nạp dữ liệu ngoại lai
+  if (window.backupCustomStudies) {
+    window.backupCustomStudies();
+  }
+
+  // BUG-07: Schema Validation & Sanitization toàn diện
+  const validArray: any[] = [];
+  const invalidItems: { index: number; errors: string[] }[] = [];
+
+  rawArray.forEach((item, idx) => {
+    const valResult = window.validateStudySchema
+      ? window.validateStudySchema(item)
+      : { valid: Boolean(item && item.title), errors: ['Thiếu tiêu đề tài liệu'], sanitized: item };
+
+    if (valResult.valid && valResult.sanitized) {
+      validArray.push(valResult.sanitized);
+    } else {
+      invalidItems.push({ index: idx + 1, errors: valResult.errors });
+    }
+  });
+
+  if (validArray.length === 0) {
+    const errDetails = invalidItems.map(i => `• Bản ghi #${i.index}: ${i.errors.join('; ')}`).slice(0, 4).join('\n');
+    alert(`❌ Toàn bộ ${rawArray.length} bản ghi trong tệp đều không hợp lệ:\n\n${errDetails}\n\nVui lòng kiểm tra lại cấu trúc dữ liệu!`);
+    return;
+  }
+
+  if (invalidItems.length > 0) {
+    if (window.showMedicalToast) {
+      window.showMedicalToast({
+        type: 'warning',
+        title: 'Bỏ qua bản ghi lỗi',
+        message: `Đã loại bỏ ${invalidItems.length} bản ghi lỗi cấu trúc, tiếp tục xử lý ${validArray.length} bản ghi hợp lệ.`
+      });
+    }
+  }
+
+  const checkedBatch: BatchDuplicateItem[] = window.batchCheckDuplicates
+    ? window.batchCheckDuplicates(validArray, window.studies)
+    : validArray.map(item => ({
+        item: window.processStudyFields ? window.processStudyFields(item) : item,
+        dupResult: { isDuplicate: false, score: 0, matchedStudy: null, reasons: [], matchLevel: 'none' },
+        action: 'new'
+      }));
 
   const duplicates = checkedBatch.filter(b => b.dupResult && b.dupResult.isDuplicate);
 
@@ -492,6 +539,8 @@ export function processJSONImport(rawText?: string): void {
     checkedBatch.forEach(b => {
       const study = b.item;
       if (study && study.title) {
+        study.isCustom = true;
+        (study as any)._userCreated = true;
         if (!study.createdAt && !(study as any).created_at) {
           study.createdAt = new Date().toISOString();
         }
@@ -726,7 +775,9 @@ export function executeDuplicateImport(): void {
       const updated = {
         ...matched,
         ...newItem,
-        id: matched.id
+        id: matched.id,
+        isCustom: true,
+        _userModified: true
       };
       if (idx !== -1) {
         window.studies[idx] = updated;
@@ -739,6 +790,8 @@ export function executeDuplicateImport(): void {
       const newStudy = {
         ...newItem,
         id: (matched && matched.id === newItem.id) ? (window.generateId ? window.generateId() : 'study_' + Date.now() + Math.random().toString(36).substr(2, 5)) : (newItem.id || (window.generateId ? window.generateId() : 'study_' + Date.now())),
+        isCustom: true,
+        _userCreated: true,
         createdAt: newItem.createdAt || (newItem as any).created_at || new Date().toISOString()
       };
       window.studies.unshift(newStudy);
@@ -767,7 +820,16 @@ export function executeDuplicateImport(): void {
 // SMART SCAN & CLEANUP DUPLICATES (LỌC TRÙNG KHO NGHIÊN CỨU)
 // ════════════════════════════════════════════════════════════════
 
-export function scanExistingDuplicates(): ExistingDuplicateConflict[] {
+// Ngưỡng độ nhạy mặc định: 55 (moderate+), user có thể kéo xuống 38 để xem cả near-similar
+let currentScanThreshold = 55;
+
+export function rescanWithThreshold(threshold: number): void {
+  currentScanThreshold = Math.max(38, Math.min(100, Math.round(threshold)));
+  existingDupConflicts = scanExistingDuplicates(currentScanThreshold);
+  renderDuplicateScanItems();
+}
+
+export function scanExistingDuplicates(threshold = 55): ExistingDuplicateConflict[] {
   const list = window.studies || [];
   const conflicts: ExistingDuplicateConflict[] = [];
   const seenPairKeys = new Set<string>();
@@ -791,8 +853,8 @@ export function scanExistingDuplicates(): ExistingDuplicateConflict[] {
       const coreB = window.extractCoreKey ? window.extractCoreKey(studyB.title) : '';
       const sameCore = !!(coreA && coreB && coreA === coreB);
 
-      // 3. Phép kiểm đối sánh đa yếu tố CDSS
-      let dupResult = window.detectStudyDuplicate ? window.detectStudyDuplicate(studyA, [studyB]) : null;
+      // 3. Phép kiểm đối sánh đa yếu tố CDSS (v2 với additive scoring, minScore theo threshold)
+      let dupResult = window.detectStudyDuplicate ? window.detectStudyDuplicate(studyA, [studyB], threshold) : null;
 
       let isDup = false;
       let score = 0;
@@ -857,7 +919,7 @@ export function scanExistingDuplicates(): ExistingDuplicateConflict[] {
           score: Math.min(100, score),
           matchLevel: level,
           reasons: reasons.length > 0 ? reasons : ['Trùng lặp dữ liệu nghiên cứu'],
-          action: 'merge'
+          action: level === 'near-similar' ? 'keep_both' : 'merge' // near-similar mặc định là "Giữ cả hai" để an toàn
         });
       }
     }
@@ -876,7 +938,47 @@ export function openDuplicateScanModal(): void {
     modalTitle.innerHTML = '🛡️ Lọc Trùng Nghiên Cứu — Quét Kho Dữ Liệu';
   }
 
-  existingDupConflicts = scanExistingDuplicates();
+  // Render thanh điều chỉnh độ nhạy phát hiện
+  const headerEl = document.getElementById('dup-modal-header-extra') || (() => {
+    const header = modal.querySelector('.modal-header');
+    if (!header) return null;
+    let extra = document.getElementById('dup-modal-header-extra');
+    if (!extra) {
+      extra = document.createElement('div');
+      extra.id = 'dup-modal-header-extra';
+      extra.style.cssText = 'padding: 10px 20px 8px; background: var(--surface-2, #f8fafc); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;';
+      header.after(extra);
+    }
+    return extra;
+  })();
+
+  if (headerEl) {
+    headerEl.innerHTML = `
+      <div style="display:flex; align-items:center; gap:10px; flex:1; flex-wrap:wrap;">
+        <label style="font-size:0.78rem; font-weight:700; color:var(--text); white-space:nowrap;">
+          🎚️ Độ nhạy phát hiện:
+        </label>
+        <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:200px;">
+          <span style="font-size:0.72rem; color:var(--text-muted); white-space:nowrap;">Chặt chẽ</span>
+          <input type="range" id="dup-scan-threshold-slider" min="38" max="90" step="1"
+            value="${currentScanThreshold}"
+            style="flex:1; accent-color: var(--color-primary, #0284c7); cursor:pointer;"
+            oninput="document.getElementById('dup-scan-threshold-label').textContent = this.value + '%'; rescanWithThreshold(parseInt(this.value))"
+          />
+          <span style="font-size:0.72rem; color:var(--text-muted); white-space:nowrap;">Mở rộng</span>
+          <span id="dup-scan-threshold-label" style="font-size:0.8rem; font-weight:800; color:var(--color-primary,#0284c7); min-width:36px; text-align:center;">${currentScanThreshold}%</span>
+        </div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+          <span style="font-size:0.7rem; font-weight:600; padding:2px 7px; border-radius:10px; background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">🔴 Chính xác 100%</span>
+          <span style="font-size:0.7rem; font-weight:600; padding:2px 7px; border-radius:10px; background:#fff7ed; color:#ea580c; border:1px solid #fed7aa;">🟠 Cao ≥75%</span>
+          <span style="font-size:0.7rem; font-weight:600; padding:2px 7px; border-radius:10px; background:#fefce8; color:#ca8a04; border:1px solid #fef08a;">🟡 Vừa ≥55%</span>
+          <span style="font-size:0.7rem; font-weight:600; padding:2px 7px; border-radius:10px; background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe;">🔵 Sát giống ≥38%</span>
+        </div>
+      </div>
+    `;
+  }
+
+  existingDupConflicts = scanExistingDuplicates(currentScanThreshold);
   modal.classList.add('active');
   renderDuplicateScanItems();
 }
@@ -957,42 +1059,60 @@ export function renderDuplicateScanItems(): void {
 
     let badgeClass = 'dup-badge-new';
     let badgeLabel = '✨ Trùng nguy cơ vừa';
+    let cardBorderColor = 'var(--accent, #ea580c)';
+    let actionDefault = conflict.action || 'merge';
+
     if (conflict.matchLevel === 'exact') {
       badgeClass = 'dup-badge-exact';
       badgeLabel = '🔴 Trùng khớp 100%';
+      cardBorderColor = '#dc2626';
     } else if (conflict.matchLevel === 'high') {
       badgeClass = 'dup-badge-high';
       badgeLabel = `🟠 Trùng nguy cơ cao (${conflict.score}%)`;
-    } else {
+      cardBorderColor = '#ea580c';
+    } else if (conflict.matchLevel === 'moderate') {
       badgeClass = 'dup-badge-moderate';
       badgeLabel = `🟡 Trùng nguy cơ vừa (${conflict.score}%)`;
+      cardBorderColor = '#ca8a04';
+    } else if ((conflict.matchLevel as any) === 'near-similar') {
+      badgeClass = 'dup-badge-near';
+      badgeLabel = `🔵 Sát giống — kiểm tra kỹ (${conflict.score}%)`;
+      cardBorderColor = '#2563eb';
+      actionDefault = 'keep_both'; // near-similar mặc định an toàn
     }
 
     html += `
-      <div class="dup-item-card" style="border-left: 4px solid var(--accent, #ea580c);">
+      <div class="dup-item-card" style="border-left: 4px solid ${cardBorderColor};">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <span style="font-weight: 800; font-size: 0.82rem; color: var(--text-muted);">#${idx + 1}</span>
             <span class="dup-badge ${badgeClass}">${badgeLabel}</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Lý do: ${escapeHtml(conflict.reasons.join(' • '))}</span>
           </div>
+          <details style="width:100%; margin-top:4px;">
+            <summary style="font-size:0.73rem; color:var(--text-muted); cursor:pointer; font-weight:600; list-style:none; display:flex; align-items:center; gap:4px;">
+              <span>▶ Lý do phát hiện (${conflict.reasons.length} tín hiệu)</span>
+            </summary>
+            <div style="margin-top:6px; padding:8px 10px; background:var(--surface-2,#f8fafc); border-radius:8px; border:1px solid var(--border-light);">
+              ${conflict.reasons.map(r => `<div style="font-size:0.72rem; color:var(--text); padding:2px 0; line-height:1.4;">• ${escapeHtml(r)}</div>`).join('')}
+            </div>
+          </details>
 
-          <div class="dup-action-selector">
-            <span style="font-size: 0.75rem; color: var(--text-muted);">Hành động:</span>
+          <div class="dup-action-selector" style="width:100%;">
+            <span style="font-size:0.75rem; color:var(--text-muted);">Hành động:</span>
             <label>
-              <input type="radio" name="scan_dup_action_${idx}" value="merge" ${conflict.action === 'merge' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'merge')">
+              <input type="radio" name="scan_dup_action_${idx}" value="merge" ${(actionDefault === 'merge') ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'merge')">
               <span>🔄 Hợp nhất vào Bài 1</span>
             </label>
             <label>
-              <input type="radio" name="scan_dup_action_${idx}" value="delete_b" ${conflict.action === 'delete_b' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_b')">
+              <input type="radio" name="scan_dup_action_${idx}" value="delete_b" ${(actionDefault === 'delete_b') ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_b')">
               <span>🗑️ Xóa Bài 2</span>
             </label>
             <label>
-              <input type="radio" name="scan_dup_action_${idx}" value="delete_a" ${conflict.action === 'delete_a' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_a')">
+              <input type="radio" name="scan_dup_action_${idx}" value="delete_a" ${(actionDefault === 'delete_a') ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'delete_a')">
               <span>🗑️ Xóa Bài 1</span>
             </label>
             <label>
-              <input type="radio" name="scan_dup_action_${idx}" value="keep_both" ${conflict.action === 'keep_both' ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'keep_both')">
+              <input type="radio" name="scan_dup_action_${idx}" value="keep_both" ${(actionDefault === 'keep_both') ? 'checked' : ''} onchange="setPerScanItemDupAction(${idx}, 'keep_both')">
               <span>⏭️ Giữ cả hai</span>
             </label>
           </div>
@@ -1008,7 +1128,8 @@ export function renderDuplicateScanItems(): void {
               <span>📅 Năm: <strong>${sA.year || 'N/A'}</strong></span>
               <span>🏛️ Nguồn: <strong>${escapeHtml(sA.organization || sA.journal || 'N/A')}</strong></span>
               <span>💊 Thuốc: <strong>${escapeHtml(sA.drug || sA.intervention || 'N/A')}</strong></span>
-              <span>📝 Tóm tắt MDX: <strong>${sA.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
+              <span>🎯 Endpoint: <strong>${escapeHtml((sA as any).primaryEndpoint || 'N/A')}</strong></span>
+              <span>📝 File MDX: <strong>${sA.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
               <span>🔑 ID: <code style="font-size: 0.7rem;">${sA.id}</code></span>
             </div>
           </div>
@@ -1022,7 +1143,8 @@ export function renderDuplicateScanItems(): void {
               <span>📅 Năm: <strong>${sB.year || 'N/A'}</strong></span>
               <span>🏛️ Nguồn: <strong>${escapeHtml(sB.organization || sB.journal || 'N/A')}</strong></span>
               <span>💊 Thuốc: <strong>${escapeHtml(sB.drug || sB.intervention || 'N/A')}</strong></span>
-              <span>📝 Tóm tắt MDX: <strong>${sB.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
+              <span>🎯 Endpoint: <strong>${escapeHtml((sB as any).primaryEndpoint || 'N/A')}</strong></span>
+              <span>📝 File MDX: <strong>${sB.file ? `<span style="color:#16a34a; font-weight:700;">Có file</span>` : '<span style="color:var(--text-muted);">Không</span>'}</strong></span>
               <span>🔑 ID: <code style="font-size: 0.7rem;">${sB.id}</code></span>
             </div>
           </div>
@@ -1428,6 +1550,7 @@ if (typeof window !== 'undefined') {
   window.setPerScanItemDupAction = setPerScanItemDupAction;
   window.executeDuplicateResolutionAction = executeDuplicateResolutionAction;
   window.filterTableByDuplicateIds = filterTableByDuplicateIds;
+  window.rescanWithThreshold = rescanWithThreshold;
   window.openConditionSettingsModal = openConditionSettingsModal;
   window.closeConditionSettingsModal = closeConditionSettingsModal;
   window.renderConditionManagementTable = renderConditionManagementTable;
@@ -1506,4 +1629,154 @@ export function handleConditionSelectChange(condKey: string): void {
       icdInput.value = icdStr;
     }
   }
+}
+
+export function updateSyncModalStats(): void {
+  const stats = (typeof window.getSyncStats === 'function')
+    ? window.getSyncStats()
+    : { staticCount: (window.SAMPLE_STUDIES || []).length, customCount: 0, deletedCount: 0, totalCount: (window.studies || []).length, bookmarkedCount: 0 };
+
+  const elStatic = document.getElementById('sync-stat-static');
+  const elCustom = document.getElementById('sync-stat-custom');
+  const elDeleted = document.getElementById('sync-stat-deleted');
+  const elTotal = document.getElementById('sync-stat-total');
+
+  if (elStatic) elStatic.textContent = String(stats.staticCount);
+  if (elCustom) elCustom.textContent = String(stats.customCount);
+  if (elDeleted) elDeleted.textContent = String(stats.deletedCount);
+  if (elTotal) elTotal.textContent = String(stats.totalCount);
+}
+
+export function closeSyncManagementModal(): void {
+  const modal = document.getElementById('sync-management-modal');
+  if (modal) modal.classList.remove('active');
+}
+
+export function openSyncManagementModal(): void {
+  let modal = document.getElementById('sync-management-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'sync-management-modal';
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal" style="max-width: 640px; width: 92%;">
+        <div class="modal-header">
+          <h3 style="display:flex; align-items:center; gap:8px; margin:0;">
+            <i class="fa-solid fa-arrows-rotate" style="color:var(--color-primary, #0284c7);"></i>
+            Đồng Bộ &amp; Quản Lý Bộ Nhớ Guidelines
+          </h3>
+          <button class="modal-close" onclick="closeSyncManagementModal()">&times;</button>
+        </div>
+        <div class="modal-body" style="padding: 1.25rem;">
+          <!-- Status Grid -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.25rem;">
+            <div style="background:var(--color-surface-2, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b);">Kho gốc GitHub</div>
+              <div style="font-size:1.35rem; font-weight:800; color:var(--color-primary, #0284c7);" id="sync-stat-static">--</div>
+            </div>
+            <div style="background:var(--color-surface-2, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b);">Bài tự tạo (Custom)</div>
+              <div style="font-size:1.35rem; font-weight:800; color:#10b981;" id="sync-stat-custom">--</div>
+            </div>
+            <div style="background:var(--color-surface-2, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b);">Đã ẩn/xóa cục bộ</div>
+              <div style="font-size:1.35rem; font-weight:800; color:#ef4444;" id="sync-stat-deleted">--</div>
+            </div>
+            <div style="background:var(--color-surface-2, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:10px; text-align:center;">
+              <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b);">Tổng đang nạp</div>
+              <div style="font-size:1.35rem; font-weight:800; color:var(--color-text, #0f172a);" id="sync-stat-total">--</div>
+            </div>
+          </div>
+
+          <!-- Explanation Alert -->
+          <div style="background:rgba(2, 132, 199, 0.08); border:1px solid rgba(2, 132, 199, 0.25); border-radius:10px; padding:12px; font-size:0.84rem; line-height:1.55; margin-bottom:1.25rem; color:var(--color-text, #1e293b);">
+            <div style="font-weight:700; display:flex; align-items:center; gap:6px; margin-bottom:4px; color:var(--color-primary, #0284c7);">
+              <i class="fa-solid fa-circle-question"></i> Vì sao số bài trên Web và Di động có thể khác nhau?
+            </div>
+            1. <strong>Bộ nhớ đệm (Cache):</strong> Trình duyệt di động lưu file rất lâu. Bấm nút dưới để xóa sạch Service Worker Cache và nhận bản mới nhất từ GitHub.<br>
+            2. <strong>Dữ liệu riêng (localStorage):</strong> Bài tự thêm hoặc bấm nút Xóa chỉ lưu trên máy này, máy khác sẽ không có nếu chưa đồng bộ file.
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button class="btn btn-primary" id="btn-force-github-refresh" style="width:100%; justify-content:center; padding:10px 14px; font-size:0.9rem; font-weight:700; display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-cloud-arrow-down"></i>
+              <span>Làm Mới &amp; Xóa Sạch Cache Từ GitHub Ngay (1-Chạm)</span>
+            </button>
+            <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b); text-align:center; margin-top:-4px;">
+              Khuyên dùng khi số lượng bài trên di động ít hơn máy tính. Giữ nguyên bookmark của bạn.
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:8px;">
+              <button class="btn btn-outline" id="btn-hard-reset-storage" style="flex:1; justify-content:center; font-size:0.82rem; padding:8px 10px; border-color:var(--color-danger, #ef4444); color:var(--color-danger, #ef4444);">
+                <i class="fa-solid fa-rotate-left"></i> Khôi phục kho gốc 100%
+              </button>
+              <button class="btn btn-outline" id="btn-reset-filters-modal" style="flex:1; justify-content:center; font-size:0.82rem; padding:8px 10px;">
+                <i class="fa-solid fa-filter-circle-xmark"></i> Đặt lại bộ lọc
+              </button>
+            </div>
+            <div style="font-size:0.75rem; color:var(--color-text-muted, #64748b); text-align:center; margin-top:-4px;">
+              "Khôi phục kho gốc 100%" sẽ hủy các bài bạn từng bấm ẩn/xóa cục bộ trên thiết bị này.
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeSyncManagementModal();
+    });
+
+    const refreshBtn = modal.querySelector('#btn-force-github-refresh') as HTMLButtonElement | null;
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        refreshBtn.disabled = true;
+        refreshBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang dọn cache & tải lại...';
+        if (typeof window.forceRefreshFromGitHub === 'function') {
+          window.forceRefreshFromGitHub({ resetLocalDelta: false });
+        }
+      });
+    }
+
+    const hardResetBtn = modal.querySelector('#btn-hard-reset-storage') as HTMLButtonElement | null;
+    if (hardResetBtn) {
+      hardResetBtn.addEventListener('click', () => {
+        if (confirm('Bạn có chắc chắn muốn khôi phục kho gốc? Thao tác này sẽ xóa danh sách các bài bạn từng bấm ẩn/xóa trên thiết bị này để hiện đủ 100% tài liệu từ GitHub.')) {
+          if (typeof window.resetAllLocalOverrides === 'function') {
+            window.resetAllLocalOverrides();
+            updateSyncModalStats();
+          }
+        }
+      });
+    }
+
+    const resetFiltersBtn = modal.querySelector('#btn-reset-filters-modal') as HTMLButtonElement | null;
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', () => {
+        if (typeof window.resetFilters === 'function') {
+          window.resetFilters();
+        }
+        if (typeof (window as any).switchTab === 'function') {
+          (window as any).switchTab('list');
+        }
+        closeSyncManagementModal();
+        if (typeof window.showMedicalToast === 'function') {
+          window.showMedicalToast({
+            type: 'info',
+            title: 'Đã đặt lại bộ lọc',
+            message: 'Đã xóa mọi điều kiện lọc và trở về danh sách đầy đủ.'
+          });
+        }
+      });
+    }
+  }
+
+  updateSyncModalStats();
+  modal.classList.add('active');
+}
+
+if (typeof window !== 'undefined') {
+  window.openSyncManagementModal = openSyncManagementModal;
+  window.closeSyncManagementModal = closeSyncManagementModal;
 }

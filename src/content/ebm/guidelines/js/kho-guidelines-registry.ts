@@ -17,7 +17,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "title": "Bộ Y Tế 2020: Hướng Dẫn Bệnh Lao (Phần 1: Chẩn Đoán, Kỹ Thuật Vi Sinh & Phân Loại Lâm Sàng)",
       "titleEn": "Vietnam MOH 2020: Guidelines on Tuberculosis (Part 1: Diagnosis, Microbiology & Clinical Classification)",
       "drug": "Xpert MTB/RIF, Xpert Ultra, ZN Staining, LED Fluorescent, MGIT, Löwenstein-Jensen, LPA Hain test",
-      "sourceType": "vn-guideline",
+      "sourceType": "vn-moh",
       "specialty": "infect",
       "design": "guideline",
       "intervention": "Xét nghiệm 2 mẫu đờm tìm AFB tại chỗ cách nhau ≥ 2 giờ cho 100% người nghi lao; Chỉ định Xpert MTB/RIF cho 8 nhóm đối tượng nguy cơ cao kháng thuốc và toàn bộ ca AFB(+); Áp dụng quy trình chẩn đoán Lao phổi AFB(-) với thử kháng sinh phổ rộng (trừ Quinolone); Sàng lọc 4 triệu chứng (ho, sốt, sút cân, mồ hôi đêm) phân luồng Lao/HIV; Phân định 6 chiều phân loại bệnh lao quốc gia.",
@@ -49,7 +49,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "title": "Bộ Y Tế 2020: Hướng Dẫn Bệnh Lao (Phần 2: Phác Đồ Điều Trị, Quản Lý Kháng Thuốc, Xử Trí ADR & Viêm Gan Do Thuốc Chuyên Sâu)",
       "titleEn": "Vietnam MOH 2020: Guidelines on Tuberculosis Treatment, Drug-Resistant TB, ADR Management & In-depth DILI Update",
       "drug": "Isoniazid, Rifampicin, Pyrazinamide, Ethambutol, Streptomycin, Levofloxacin, Bedaquiline, Linezolid, Clofazimine, Cycloserine, Amikacin, Prothionamide",
-      "sourceType": "vn-guideline",
+      "sourceType": "vn-moh",
       "specialty": "infect",
       "design": "guideline",
       "intervention": "Thực hiện 4 nguyên tắc điều trị (phối hợp, đúng liều theo cân nặng, uống 1 lần lúc đói, đủ thời gian); Phác đồ hàng 1 A1 (2RHZE/4RHE), A2 (2RHZE/4RH), B1 (2RHZE/10RHE), B2 (2RHZE/10RH); Phác đồ kháng đơn H (6 R(H)ZELfx); Phác đồ MDR chuẩn ngắn hạn 9–11 tháng (Phác đồ C) và bán chuẩn dài hạn 18–20 tháng (Phác đồ D); Phân loại thuốc hàng 2 theo WHO 2019 (Nhóm A-B-C); Ngừng thuốc độc gan khi AST/ALT > 5x ULN; Cập nhật cơ chế NAT2/CYP2E1, bảng phân độ ULN Tostmann & Saukkonen, ngưỡng thay huyết tương (Men gan > 10x ULN + Bili > 250 µmol/L); Điều trị Lao tiềm ẩn (9H người lớn / 6H trẻ em); Quy chuẩn kiểm soát lây nhiễm buồng khám 12 ACH.",
@@ -168,40 +168,6 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "subgroups": {
       "Phân loại hình thái DILI": "HBAR: Thể Tế bào gan (R ≥ 5): 55% | Thể Ứ mật (R ≤ 2): 25% | Thể Hỗn hợp (2 < R < 5): 20%",
       "Tỷ lệ sống không ghép trong ALF": "HBAR: Dùng NAC sớm (Độ I-II): 58% | Giả dược / Chăm sóc chuẩn: 27%"
-    }
-  },
-  {
-    "id": "2014-idsa-ssti",
-    "title": "IDSA 2014: Hướng Dẫn Thực Hành Lâm Sàng Chẩn Đoán & Quản Lý Nhiễm Trùng Da & Mô Mềm (SSTI)",
-    "titleEn": "Practice Guidelines for the Diagnosis and Management of Skin and Soft Tissue Infections: 2014 Update by the IDSA",
-    "drug": "Vancomycin, Daptomycin, Linezolid, Cefazolin, Cephalexin, Nafcillin, Oxacillin, Dicloxacillin, Penicillin VK, Clindamycin, TMP-SMX, Doxycycline, Piperacillin-Tazobactam, Mupirocin, Prednisone",
-    "sourceType": "intl-guideline",
-    "specialty": "infect",
-    "design": "guideline",
-    "intervention": "Phân đôi tiếp cận Có mủ (Purulent do Tụ cầu) vs Không mủ (Non-purulent do Liên cầu) theo 3 mức độ nhẹ/vừa/nặng của hội chứng SIRS; Rạch và dẫn lưu (I&D) cơ học đơn thuần cho áp xe nhẹ; Phối hợp Penicillin + Clindamycin kháng độc tố (hiệu ứng Eagle) trong viêm cân mạc hoại tử; Chỉ định kháng sinh chọn lọc cho nhiễm trùng vết mổ (SSIs); Liệu pháp Prednisone 40mg/7d bổ trợ cho viêm mô tế bào ở người không ĐTĐ; Dự phòng vết cắn bằng Amoxicillin-Clavulanate.",
-    "primaryEndpoint": "Khung khuyến cáo chẩn đoán và quản lý nhiễm trùng da và mô mềm (SSTI), nhiễm trùng vết mổ, viêm cân mạc hoại tử, viêm cơ mủ, vết cắn động vật/người và SSTI ở bệnh nhân sốt giảm bạch cầu.",
-    "keyResults": "Áp xe nhẹ chỉ cần I&D cơ học không cần kháng sinh | Clindamycin dập tắt bão ngoại độc tố trong hoại tử liên cầu A | Giảm nằm viện khi dùng Prednisone bổ trợ trong viêm mô tế bào | Cắt chỉ dẫn lưu là bắt buộc trong vết mổ nhiễm trùng.",
-    "impact": "practice-changing",
-    "year": 2014,
-    "organization": "IDSA",
-    "journal": "Clinical Infectious Diseases (CID 2014; 59(2):147–159, doi:10.1093/cid/ciu444)",
-    "phase": "Practice Guidelines / EBM",
-    "population": "Trẻ em và người lớn mắc nhiễm trùng da và mô mềm từ thể nông đến hoại tử mô sâu đe dọa tính mạng hoặc suy giảm miễn dịch.",
-    "summary": "Hướng dẫn thực hành kinh điển của IDSA 2014 định hình tiếp cận SSTI toàn cầu: Phân đôi Có mủ (Tụ cầu) vs Không mủ (Liên cầu), xác lập vai trò sống còn của I&D cơ học và phối hợp Clindamycin kháng độc tố (hiệu ứng Eagle), hạn chế lạm dụng kháng sinh bao phủ MRSA.",
-    "detailedConclusion": "Áp xe nhẹ chỉ cần I&D đơn thuần. Viêm mô tế bào không mủ ưu tiên Penicillin VK/Cephalexin/Cefazolin, không cần bao phủ MRSA thường quy. Viêm cân mạc hoại tử do Liên cầu A bắt buộc mổ cấp cứu cắt lọc + phối hợp Penicillin và Clindamycin. Nhiễm trùng vết mổ chỉ dùng kháng sinh khi hồng ban > 5cm hoặc có SIRS. Vết cắn động vật ưu tiên Amoxicillin-Clavulanate 875/125mg BID.",
-    "file": "2014-idsa-ssti.mdx",
-    "conditionKey": "ssti",
-    "icd10": [
-      "L03",
-      "L02",
-      "L01",
-      "M72.6",
-      "T81.4"
-    ],
-    "asianData": true,
-    "bookmarked": false,
-    "subgroups": {
-      "Phân tầng SSTI IDSA": "HBAR: Áp xe nhẹ (I&D đơn thuần): 100% | Viêm mô tế bào không mủ (Kháng sinh kháng liên cầu): 90% | Viêm cân hoại tử (Mổ cấp cứu + Clindamycin): 100%"
     }
   },
   {
@@ -3409,7 +3375,11 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "detailedConclusion": "Bác sĩ lâm sàng áp dụng phân đôi có mủ (I&D làm gốc) vs không mủ (kháng sinh diệt liên cầu). Khi nghi ngờ hoại tử, phẫu thuật khẩn cấp kết hợp Penicillin + Clindamycin. Kiểm tra tiêu chuẩn toàn thân trước khi kê kháng sinh cho nhiễm trùng vết mổ.",
     "drug": "Mupirocin, Retapamulin, Dicloxacillin, Cephalexin, Erythromycin, Clindamycin, Amoxicillin-clavulanate, Nafcillin, Oxacillin, Cefazolin, Doxycycline, Minocycline, Trimethoprim-sulfamethoxazole (TMP-SMX), Vancomycin, Linezolid, Daptomycin, Ceftaroline, Penicillin G, Piperacillin-tazobactam, Imipenem, Meropenem, Prednisone",
     "population": "Trẻ em, người trưởng thành và bệnh nhân suy giảm miễn dịch (bệnh ung thư đang hóa trị, giảm bạch cầu hạt, suy giảm miễn dịch tế bào) bị nhiễm trùng da và mô mềm cấp tính hoặc tái phát.",
-    "asianData": false
+    "asianData": true,
+    "bookmarked": false,
+    "subgroups": {
+      "Phân tầng SSTI IDSA": "HBAR: Áp xe nhẹ (I&D đơn thuần): 100% | Viêm mô tế bào không mủ (Kháng sinh kháng liên cầu): 90% | Viêm cân hoại tử (Mổ cấp cứu + Clindamycin): 100%"
+    }
   },
   {
     "id": "2011-aasld-acute-liver-failure",

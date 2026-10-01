@@ -73,7 +73,7 @@ export interface DuplicateCheckResult {
   score: number;
   matchedStudy: Study | null;
   reasons: string[];
-  matchLevel: 'none' | 'moderate' | 'high' | 'exact';
+  matchLevel: 'none' | 'near-similar' | 'moderate' | 'high' | 'exact';
 }
 
 export interface BatchDuplicateItem {
@@ -88,7 +88,7 @@ export interface ExistingDuplicateConflict {
   studyA: Study;
   studyB: Study;
   score: number;
-  matchLevel: 'exact' | 'high' | 'moderate';
+  matchLevel: 'exact' | 'high' | 'moderate' | 'near-similar';
   reasons: string[];
   action: 'merge' | 'delete_b' | 'delete_a' | 'keep_both';
 }
@@ -355,8 +355,10 @@ declare global {
     dbDeleteStudy?: (id: string) => void | Promise<void | boolean>;
     loadStudies?: () => void;
     saveStudies?: () => void;
-    detectStudyDuplicate?: (study: any, list: any[]) => DuplicateCheckResult;
+    detectStudyDuplicate?: (study: any, list: any[], minScore?: number) => DuplicateCheckResult;
     batchCheckDuplicates?: (raw: any[], existing: any[]) => BatchDuplicateItem[];
+    getBigramSet?: (str?: string) => Set<string>;
+    rescanWithThreshold?: (threshold: number) => void;
     normalizeMedicalTitle?: (str?: string) => string;
     normalizeOrgName?: (str?: string) => string;
     getDeletedStudyIds?: () => string[];
@@ -364,9 +366,19 @@ declare global {
     removeDeletedStudyId?: (id: string) => void;
     isStudyDeleted?: (study: Study, deletedList?: string[]) => boolean;
     extractCoreKey?: (title?: string) => string;
+    isPartVariation?: (idA?: string, idB?: string, titleA?: string, titleB?: string) => boolean;
     processStudyFields?: (raw: any) => Study;
     processAndDeduplicateStudies?: (list: any[]) => Study[];
     generateId?: () => string;
+    dispatchSyncStatus?: (info: any) => void;
+    backupCustomStudies?: () => boolean;
+    restoreCustomStudiesBackup?: () => boolean;
+    getSyncStats?: () => { staticCount: number; customCount: number; deletedCount: number; totalCount: number; bookmarkedCount: number };
+    forceRefreshFromGitHub?: (options?: { resetLocalDelta?: boolean }) => Promise<void>;
+    resetAllLocalOverrides?: () => void;
+    openSyncManagementModal?: () => void;
+    closeSyncManagementModal?: () => void;
+    __cliniportalSyncStatus?: any;
     updateChartPreview?: () => void;
     updateSubgroupPreview?: () => void;
     initJournalQualityBadge?: () => void;

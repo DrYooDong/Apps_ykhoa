@@ -117,7 +117,28 @@ Vẽ trực tiếp mã SVG inline (không thư viện Chart.js hay D3):
 ## 📋 5. Quy Trình Thêm Nghiên Cứu / Guideline Mới
 
 Khi có khuyến cáo hoặc nghiên cứu mới cần bổ sung:
-1. **Bước 1**: Mở tệp `src/content/ebm/guidelines/guidelinesdata.ts`.
-2. **Bước 2**: Thêm một bản ghi mới vào mảng `SAMPLE_STUDIES` tuân thủ đầy đủ schema `Study`.
-3. **Bước 3** (Nếu có bài viết HTML chuyên sâu): Tạo tệp tóm tắt `.html` trong `src/content/ebm/guidelines/kho-guidelines/<slug>.html`.
+1. **Bước 1**: Mở tệp `src/content/ebm/guidelines/js/kho-guidelines-registry.ts`.
+2. **Bước 2**: Thêm một bản ghi mới vào mảng `KHO_GUIDELINES_STATIC` tuân thủ đầy đủ schema `Study`.
+3. **Bước 3** (Nếu có bài viết MDX chuyên sâu): Tạo tệp tóm tắt `.mdx` trong `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`.
 4. **Bước 4**: Kiểm tra hiển thị trên bảng, kiểm tra Forest Plot SVG và chạy thử bộ lọc.
+
+---
+
+## 🔄 6. Cơ Chế Đồng Bộ Dữ Liệu Delta Sync & Khử Trùng Lặp An Toàn (Cập nhật 2026)
+
+### 6.1. Delta Sync Architecture
+- **Vấn đề cũ**: `localStorage` lưu đè toàn bộ 115 bài static (~390KB) vào `cliniportal_custom_studies`, gây nghẽn bộ nhớ 5MB và khiến các bản cập nhật code mới trong registry bị che khuất.
+- **Giải pháp Delta Sync mới**:
+  1. `cliniportal_bookmarked_ids`: Mảng các ID bài báo được đánh dấu sao (chỉ vài chục byte).
+  2. `cliniportal_custom_studies`: CHỈ lưu các bài do người dùng tự tạo/nhập ngoại lai (`!validSlugs.has(id)` hoặc `isCustom: true`) hoặc các bài static đã được người dùng chỉnh sửa (`_userModified: true`).
+  3. Khi khởi động (`loadStudies`), hệ thống tự động hòa trộn kho static mới nhất từ mã nguồn với các thay đổi delta của người dùng, tiết kiệm >99% bộ nhớ và đảm bảo luôn nhận được các bản vá mới nhất.
+
+### 6.2. Safe Deduplication & Part Variation Guard
+- **Phân tách bộ phận đa phần**: Hàm `isPartVariation(idA, idB, titleA, titleB)` nhận diện các tài liệu phân kỳ (ví dụ Phần 1 / Phần 2, `-p1` / `-p2`) và bảo toàn trọn vẹn, không bao giờ nuốt nhầm tài liệu.
+- **Khử trùng lặp đa tầng**: Không phụ thuộc vào chuỗi viết tắt đơn độc trong ngoặc đơn (`extractCoreKey`). Phép kiểm đòi hỏi thỏa mãn đồng thời chuyên khoa / bệnh lý, độ tương đồng Jaccard và khoảng cách năm xuất bản $\le 2$ năm.
+
+### 6.3. Kiểm Định Schema & Sao Lưu Tự Động (Snapshot & Restore)
+- **Schema Validator**: `validateStudySchema(raw)` kiểm tra bắt buộc `title` ($\ge 3$ ký tự), `year` (1900–2100) và sanitize các trường dữ liệu trước khi nạp vào store.
+- **Snapshot Backup**: Tự động chụp snapshot `cliniportal_backup_snapshot` trước khi import tệp JSON. Cung cấp nút sao lưu thủ công và khôi phục 1-chạm trong menu Cài đặt & Tiện ích.
+- **Live Sync Badge**: Hiển thị trạng thái đồng bộ trực quan thời gian thực trên topbar (Xanh: Đã đồng bộ Delta, Dương xoay: Đang lưu, Đỏ: Lỗi bộ nhớ).
+

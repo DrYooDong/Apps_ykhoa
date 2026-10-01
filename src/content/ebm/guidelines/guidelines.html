@@ -93,6 +93,14 @@
             <span><i class="fa-solid fa-gear" style="color:var(--accent);"></i> Cài đặt & Tiện ích</span>
           </div>
           <div class="settings-menu-group">
+            <button class="settings-menu-item" onclick="openSyncManagementModal(); closeSettingsMenu();" role="menuitem" style="background: rgba(2, 132, 199, 0.06); border-radius: 8px; margin-bottom: 4px;">
+              <div class="settings-item-icon icon-blue"><i class="fa-solid fa-arrows-rotate"></i></div>
+              <div class="settings-item-content">
+                <div class="settings-item-title" style="color: var(--color-primary); font-weight: 700;">Đồng Bộ &amp; Làm Mới Từ GitHub</div>
+                <div class="settings-item-desc">Khắc phục lệch số bài giữa Web &amp; Di động, dọn sạch cache</div>
+              </div>
+            </button>
+
             <button class="settings-menu-item" onclick="openConditionSettingsModal(); closeSettingsMenu();" role="menuitem">
               <div class="settings-item-icon icon-teal"><i class="fa-solid fa-stethoscope"></i></div>
               <div class="settings-item-content">
@@ -143,14 +151,30 @@
                 <div class="settings-item-desc">Tải dữ liệu chuyên khoa về máy dùng ngoại tuyến</div>
               </div>
             </button>
+
+            <button class="settings-menu-item" onclick="if(window.backupCustomStudies && window.backupCustomStudies()){if(window.showMedicalToast)window.showMedicalToast({type:'success',title:'Sao lưu hoàn tất',message:'Đã tạo bản sao lưu snapshot thành công!'});} closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-teal"><i class="fa-solid fa-box-archive"></i></div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Sao Lưu Dữ Liệu (Snapshot)</div>
+                <div class="settings-item-desc">Lưu bản sao an toàn các bài tự thêm & bookmark</div>
+              </div>
+            </button>
+
+            <button class="settings-menu-item" onclick="if(confirm('Khôi phục lại dữ liệu từ bản sao lưu gần nhất?')){if(window.restoreCustomStudiesBackup)window.restoreCustomStudiesBackup();} closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-amber"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Khôi Phục Bản Sao Lưu</div>
+                <div class="settings-item-desc">Phục hồi lại dữ liệu trước khi có thao tác lỗi</div>
+              </div>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Storage Status Indicator -->
-      <div class="storage-status-badge" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); font-size: 0.72rem; font-weight: 700; color: var(--text-muted);" title="Dữ liệu lưu trữ cục bộ trên thư mục dự án & trình duyệt">
-        <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-        <span>Kho lưu trữ: Local</span>
+      <!-- Live Sync Status Indicator (UPGRADE-02) -->
+      <div class="storage-status-badge" id="sync-status-indicator" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); font-size: 0.72rem; font-weight: 700; color: var(--text-muted); cursor: pointer;" title="Dữ liệu lưu trữ Delta cục bộ trên trình duyệt">
+        <span class="sync-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+        <span class="sync-status-text">Đồng bộ: Delta</span>
       </div>
       <span class="topnav-pill">EBM & Guidelines</span>
     </div>
@@ -1404,12 +1428,15 @@
         <div class="mobile-filter-grid-pills" id="mob-period-pills"></div>
       </div>
     </div>
-    <div class="mobile-filter-footer">
+    <div class="mobile-filter-footer" style="flex-wrap: wrap; gap: 8px;">
       <button class="btn btn-outline" onclick="resetFilters(); toggleMobileFilterSheet(false);" style="flex:1; min-height:44px;">
         <i class="fa-solid fa-rotate-left"></i> Đặt lại
       </button>
       <button class="btn btn-primary" onclick="toggleMobileFilterSheet(false);" style="flex:2; min-height:44px; font-weight:700;">
         <i class="fa-solid fa-check"></i> Áp dụng (<span id="mob-sheet-display-count">0</span>)
+      </button>
+      <button class="btn btn-outline" onclick="toggleMobileFilterSheet(false); openSyncManagementModal();" style="width:100%; min-height:38px; font-size:0.8rem; font-weight:600; color:var(--color-primary); border-color:rgba(2,132,199,0.3); background:rgba(2,132,199,0.04); display:flex; align-items:center; justify-content:center; gap:6px;">
+        <i class="fa-solid fa-arrows-rotate"></i> Đồng bộ / Làm mới dữ liệu từ GitHub
       </button>
     </div>
   </div>

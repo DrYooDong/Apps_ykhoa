@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cliniportal-v2.2';
+const CACHE_NAME = 'cliniportal-v2.3';
 
 // Essential App Shell resources to precache
 const PRECACHE_ASSETS = [
@@ -67,6 +67,20 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Strategy 0: Force-refresh requested via _sync or nocache -> Network-First & Update Cache
+  if (url.searchParams.has('_sync') || url.searchParams.has('nocache')) {
+    event.respondWith(
+      fetch(req).then((networkResp) => {
+        if (networkResp && networkResp.status === 200) {
+          const respClone = networkResp.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, respClone));
+        }
+        return networkResp;
+      }).catch(() => caches.match(req))
+    );
+    return;
+  }
+
   // Strategy 1: External CDN (Google Fonts, FontAwesome) -> Cache-First
   if (url.origin.includes('fonts.googleapis.com') || 
       url.origin.includes('fonts.gstatic.com') || 
@@ -124,8 +138,26 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Message Event - Handle Offline Sync commands from client
+// Message Event - Handle Offline Sync & Cache Reset commands from client
 self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'SKIP_WAITING') {
+    self.skipWaiting();
+    return;
+  }
+
+  if (event.data && event.data.action === 'CLEAR_CACHE') {
+    event.waitUntil(
+      caches.keys().then((keys) => {
+        return Promise.all(keys.map(k => caches.delete(k)));
+      }).then(() => {
+        if (event.ports && event.ports[0]) {
+          event.ports[0].postMessage({ status: 'success', action: 'CLEAR_CACHE' });
+        }
+      })
+    );
+    return;
+  }
+
   if (event.data && event.data.action === 'CACHE_URLS') {
     const urlsToCache = event.data.urls || [];
     event.waitUntil(
