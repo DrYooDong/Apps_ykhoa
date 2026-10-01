@@ -35,7 +35,8 @@ export const SPECIALTIES: Record<string, SpecialtyMeta> = {
   icu: { name: 'Hồi sức tích cực', color: '#059669', bg: 'rgba(5, 150, 105, 0.08)' },
   derma: { name: 'Da liễu', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
   ent: { name: 'Tai Mũi Họng', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
-  nutri: { name: 'Dinh dưỡng', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' }
+  nutri: { name: 'Dinh dưỡng', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  allergy: { name: 'Dị ứng - Miễn dịch', color: '#e11d48', bg: 'rgba(225, 29, 72, 0.08)' }
 };
 
 export const SOURCE_TYPES: Record<string, SourceTypeMeta> = {
@@ -126,7 +127,8 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'lupus-sle': { id: 'lupus-sle', name: 'Lupus ban đỏ hệ thống (SLE)', icd10: ["M32","M32.1","N08.5"], color: '#be185d', bg: '#fce7f3' },
   'solid-cancers': { id: 'solid-cancers', name: 'Ung thư tạng (Phổi/Gan/Vú/ĐTT/CTC)', icd10: ["C34","C22","C50","C18","C53","D59.5"], color: '#be123c', bg: '#fff1f2' },
   'hemangioma': { id: 'hemangioma', name: 'U máu & Dị dạng mạch (ISSVA)', icd10: ["D18","D18.0","Q28"], color: '#db2777', bg: '#fdf2f8' },
-  'uterine-fibroids': { id: 'uterine-fibroids', name: 'U xơ tử cung & Sản Phụ khoa', icd10: ["D25","D25.9","N80","N92.0","O14","O72"], color: '#e11d48', bg: '#fff1f2' }
+  'uterine-fibroids': { id: 'uterine-fibroids', name: 'U xơ tử cung & Sản Phụ khoa', icd10: ["D25","D25.9","N80","N92.0","O14","O72"], color: '#e11d48', bg: '#fff1f2' },
+  'anaphylaxis': { id: 'anaphylaxis', name: 'Phản vệ & Dị ứng nọc (Anaphylaxis/HVA)', icd10: ["T78","T78.0","T78.2","T78.4","X23"], color: '#e11d48', bg: '#fff1f2' }
 };
 
 export const JOURNAL_METRICS_DATABASE: Record<string, JournalMetricsItem> = {
@@ -174,6 +176,7 @@ export const JOURNAL_METRICS_DATABASE: Record<string, JournalMetricsItem> = {
   'J Clin Oncol': { name: 'Journal of Clinical Oncology (JCO/ASCO)', journal: 'J Clin Oncol', aliases: ['jco'], if: 45.3, quartile: 'Q1', sjr: 9.15, snip: 4.10, hIndex: 560, category: 'Oncology', publisher: 'ASCO', issn: '0732-183X' },
   'Pediatrics': { name: 'Pediatrics (AAP)', journal: 'Pediatrics', aliases: ['pediatrics aap'], if: 8.0, quartile: 'Q1', sjr: 2.10, snip: 1.70, hIndex: 310, category: 'Pediatrics', publisher: 'American Academy of Pediatrics', issn: '0031-4005' },
   'Lancet Child Adolesc Health': { name: 'The Lancet Child & Adolescent Health', journal: 'Lancet Child Adolesc Health', aliases: ['lancet child'], if: 36.4, quartile: 'Q1', sjr: 6.20, snip: 2.90, hIndex: 85, category: 'Pediatrics', publisher: 'Elsevier', issn: '2352-4642' },
+  'Allergy': { name: 'Allergy (European Journal of Allergy and Clinical Immunology - EAACI)', journal: 'Allergy', aliases: ['allergy', 'allergy journal', 'eaaci allergy'], if: 12.4, quartile: 'Q1', sjr: 3.45, snip: 2.30, hIndex: 215, category: 'Allergy & Immunology', publisher: 'Wiley-Blackwell', issn: '0105-4538' },
 
   'Bộ Y tế Việt Nam': { name: 'Khuyến cáo Cấp Quốc gia — Bộ Y tế Việt Nam', journal: 'Bộ Y tế Việt Nam', aliases: ['byt', 'bo y te', 'qđ-byt', 'quuyết định bộ y tế'], if: null, quartile: 'MOH', sjr: null, snip: null, hIndex: null, category: 'Hướng Dẫn Quốc Gia', publisher: 'Bộ Y tế Việt Nam', issn: 'N/A' }
 };

@@ -13,6 +13,36 @@ import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
   {
+      "id": "2017-eaaci-di-ung-noc-con-trung",
+      "title": "EAACI 2017: Hướng Dẫn Liệu Pháp Miễn Dịch Nọc Côn Trùng (Venom Immunotherapy - VIT) Trong Phòng Ngừa Phản Vệ & Dị Ứng Toàn Thân",
+      "titleEn": "EAACI Guidelines on Allergen Immunotherapy: Hymenoptera Venom Allergy",
+      "drug": "Venom Immunotherapy (Apis mellifera, Vespula, Polistes), Adrenaline Autoinjector (AAI), H1-antihistamines, Omalizumab",
+      "sourceType": "intl-guideline",
+      "specialty": "allergy",
+      "design": "guideline",
+      "intervention": "Liệu pháp miễn dịch nọc côn trùng (VIT) tiêm dưới da liều duy trì 100 µg (hoặc 200 µg), phác đồ tăng liều truyền thống/clustered/rush/ultra-rush, dự phòng kháng H1 trước tiêm, điều trị 3–5 năm hoặc trọn đời.",
+      "primaryEndpoint": "Ngăn ngừa phản ứng dị ứng toàn thân đe dọa tính mạng (phản vệ) sau khi bị côn trùng đốt tái diễn và cải thiện chất lượng cuộc sống (HRQoL).",
+      "keyResults": "VIT bảo vệ 77%–84% (ong mật), 91%–96% (ong vò vẽ), 97%–98% (kiến) | Test thách thức côn trùng sống là tiêu chuẩn vàng sinh học | Trẻ em chỉ 5% tái phát sau 20 năm | Bệnh tim mạch, chẹn beta, ACEI không phải chống chỉ định tuyệt đối | Dự phòng kháng H1 giảm rõ rệt LLR và SSR.",
+      "impact": "practice-changing",
+      "year": 2017,
+      "organization": "EAACI",
+      "journal": "Allergy. 2017;72(7):1026-1039. doi:10.1111/all.13262",
+      "phase": "Clinical Practice Guidelines / EBM",
+      "population": "Người lớn và trẻ em có tiền sử phản ứng dị ứng toàn thân hoặc phản ứng tại chỗ lan rộng sau khi bị côn trùng đốt (ong mật, ong vò vẽ, ong bắp cày, kiến).",
+      "summary": "Hướng dẫn toàn diện của Viện Dị ứng và Miễn dịch học Lâm sàng Châu Âu (EAACI 2017) về liệu pháp miễn dịch nọc côn trùng (VIT): Tiêu chuẩn chỉ định, chống chỉ định, liều duy trì 100 µg, phác đồ tăng liều, xử trí tác dụng phụ, vai trò kháng thể trung hòa sIgG4, dị nguyên Api m 10, test thách thức bằng côn trùng sống và hướng dẫn an toàn cho người nuôi ong.",
+      "detailedConclusion": "VIT là phương pháp điều trị căn nguyên duy nhất có khả năng bảo vệ bệnh nhân dị ứng nọc côn trùng khỏi các phản ứng sốc bảo vệ đe dọa tính mạng. Việc chỉ mang bút tiêm AAI đơn thuần gây suy giảm chất lượng cuộc sống và tăng lo âu, trong khi VIT giúp > 90% bệnh nhân giải tỏa nỗi sợ và tái hòa nhập cuộc sống an toàn.",
+      "file": "2017-eaaci-di-ung-noc-con-trung.mdx",
+      "conditionKey": "anaphylaxis",
+      "icd10": [
+          "T78.2",
+          "T78.0",
+          "T78.4",
+          "X23"
+      ],
+      "asianData": true,
+      "bookmarked": false
+  },
+  {
       "id": "2020-byt-lao-p1",
       "title": "Bộ Y Tế 2020: Hướng Dẫn Bệnh Lao (Phần 1: Chẩn Đoán, Kỹ Thuật Vi Sinh & Phân Loại Lâm Sàng)",
       "titleEn": "Vietnam MOH 2020: Guidelines on Tuberculosis (Part 1: Diagnosis, Microbiology & Clinical Classification)",
