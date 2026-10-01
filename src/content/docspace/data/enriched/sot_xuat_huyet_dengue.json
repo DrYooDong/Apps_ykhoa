@@ -402,6 +402,198 @@
             "targetVitals": "MAP ≥ 65 mmHg, HATT ≥ 90 mmHg (ở người lớn) hoặc bình thường theo tuổi (ở trẻ em), SpO₂ ≥ 95%, CRT < 2s, Bài niệu ≥ 0.5 - 1.0 mL/kg/h, Lactate máu < 2.0 mmol/L, ScvO₂ ≥ 70%.",
             "escalationCriteria": "BÁO ĐỘNG ĐỎ ICU: Sốc kéo dài / Tái sốc ≥ 2 lần / Thất bại bù dịch điện giải và cao phân tử (> 100 mL/kg) kèm vận mạch; Xuất huyết tiêu hóa ồ ạt không cầm; Suy hô hấp nặng / ARDS thất bại với CPAP/thở máy; Suy gan cấp (bệnh não gan độ III-IV, INR ≥ 2.5); Suy thận cấp cần lọc máu liên tục ➔ Báo động đỏ toàn viện, hội chẩn chuyên gia tuyến trên khẩn cấp, xem xét truyền Albumin (1 g/kg), phối hợp vận mạch (Noradrenaline, Adrenaline, Dobutamine, Dopamine), lọc máu CVVHDF, thay huyết tương (TPE), ECMO.",
             "dischargeCriteria": "Thoát sốc hoàn toàn, hết sốt ≥ 48 giờ không dùng thuốc hạ sốt, ngưng dịch truyền tĩnh mạch và vận mạch ≥ 24 - 48 giờ mà huyết động hoàn toàn ổn định, không còn xuất huyết tiến triển, ăn uống tốt, bài niệu tốt, Hct trở về bình thường, tiểu cầu > 50 G/L và xu hướng hồi phục, men gan AST/ALT < 400 U/L.",
+            "hasSubBranches": true,
+            "subBranchMode": "multi-select",
+            "subBranchLabel": "Phân loại biểu hiện lâm sàng SXHD nặng (Bộ Y tế QĐ 2760/QĐ-BYT & WHO 2009)",
+            "subBranches": [
+              {
+                "id": "sb_3a_shock",
+                "groupId": "3A",
+                "groupName": "Thoát huyết tương nặng",
+                "name": "Sốc SXHD (DSS) / Tái sốc",
+                "badgeText": "Cấp cứu tuần hoàn",
+                "icon": "Zap",
+                "color": "rose",
+                "urgency": "immediate",
+                "criteria": "Mạch nhanh nhỏ hoặc không bắt được, HATT tụt hoặc kẹp (hiệu áp ≤ 20 mmHg), chi lạnh ẩm, CRT > 2 giây, Hct tăng dốc. Tái sốc khi xuất hiện lại triệu chứng sốc sau giai đoạn ổn định tạm thời.",
+                "triage": "Khoa Hồi sức Cấp cứu (ICU) / Phòng Cấp cứu chống sốc",
+                "targetVitals": "MAP ≥ 65 mmHg (người lớn) / chuẩn tuổi (trẻ em), CRT < 2s, SpO₂ ≥ 95%, Bài niệu ≥ 0.5 - 1.0 mL/kg/h, Lactate máu < 2.0 mmol/L.",
+                "escalationCriteria": "Sốc kéo dài ≥ 6 giờ, tái sốc ≥ 2 lần, thất bại bù dịch tinh thể & cao phân tử > 60-100 mL/kg ➔ Cân nhắc truyền Albumin 5-10% (1 g/kg), phối hợp vận mạch Noradrenaline/Adrenaline, đo CVP / PICCO theo dõi huyết động xâm lấn.",
+                "dischargeCriteria": "Thoát sốc hoàn toàn, huyết động ổn định > 24 giờ sau khi ngưng dịch truyền và vận mạch.",
+                "keyActions": [
+                  "Thiết lập ngay 2 đường truyền tĩnh mạch lớn ngoại vi hoặc Catheter tĩnh mạch trung tâm",
+                  "Truyền dịch tinh thể (Ringer Lactate / Acetate / NaCl 0.9%) nấc thang 15 - 20 mL/kg/h theo phác đồ",
+                  "Chuyển ngay sang dịch Cao phân tử (Dextran 40 / HES 200 / HES 130) nếu Hct cao và dịch tinh thể không đáp ứng",
+                  "Đo Hct, Mạch, Huyết áp, Lượng nước tiểu mỗi 15 - 30 phút trong pha chống sốc cấp"
+                ],
+                "drugs": [
+                  ["Ringer Lactate / Ringer Acetate / NaCl 0.9%", "Trẻ em: 20 mL/kg/h (hoặc bolus 15 phút nếu M=0, HA=0); Người lớn: 15 mL/kg/h. Giảm liều nấc thang.", "Dịch tinh thể ưu tiên hàng đầu."],
+                  ["Dung dịch Cao phân tử (Dextran 40, HES 130/200)", "10 - 20 mL/kg/h truyền trong 1 giờ. Giảm tốc độ khi ra sốc.", "Chỉ định khi thất bại dịch tinh thể hoặc tái sốc kèm Hct tăng cao."],
+                  ["Albumin 5% / 10%", "1 g/kg (5 - 20 mL/kg/h) truyền tĩnh mạch trong 4 - 6 giờ.", "Chỉ định khi Albumin máu ≤ 2.5 g/dL kèm tái sốc hoặc sốc kéo dài."]
+                ]
+              },
+              {
+                "id": "sb_3a_resp",
+                "groupId": "3A",
+                "groupName": "Thoát huyết tương nặng",
+                "name": "Suy hô hấp do tràn dịch đa màng",
+                "badgeText": "Cấp cứu hô hấp",
+                "icon": "Wind",
+                "color": "orange",
+                "urgency": "urgent",
+                "criteria": "Khó thở nhiều, thở nhanh co kéo cơ hô hấp phụ, SpO₂ < 92% khí phòng, tràn dịch màng phổi/màng bụng lượng lớn trên siêu âm/X-quang gây hạn chế hô hấp.",
+                "triage": "Khoa Hồi sức Tích cực (ICU)",
+                "targetVitals": "SpO₂ ≥ 95%, nhịp thở ổn định theo tuổi, không co kéo, khí máu động mạch PaO₂/FiO₂ > 300.",
+                "escalationCriteria": "Thở NCPAP thất bại, kiệt sức cơ hô hấp, toan hô hấp nặng ➔ Đặt nội khí quản thở máy bảo vệ phổi (Low Vt 6 mL/kg, PEEP tối ưu).",
+                "dischargeCriteria": "Ngưng hỗ trợ oxy ≥ 24 giờ, SpO₂ tự thở ≥ 96%, dịch màng phổi/màng bụng thoái lui tốt.",
+                "keyActions": [
+                  "Thở oxy qua cannula 3-5 L/p hoặc NCPAP sớm với áp lực PEEP 4 - 6 cmH₂O",
+                  "Kiểm soát thể tích dịch truyền nghiêm ngặt, cân bằng dịch vào - ra mỗi 2 - 4 giờ",
+                  "Chỉ định chọc hút dịch màng phổi / màng bụng giải áp cấp cứu khi có chèn ép suy hô hấp cấp đe dọa tử vong",
+                  "Theo dõi sát dấu hiệu phù phổi cấp khi bước sang giai đoạn tái hấp thu"
+                ],
+                "drugs": [
+                  ["Thở oxy hỗ trợ (NCPAP / HFNC)", "NCPAP PEEP 4 - 6 cmH₂O, FiO₂ điều chỉnh duy trì SpO₂ ≥ 95%.", "Ưu tiên NCPAP sớm để mở phế nang bị xẹp do tràn dịch màng phổi."],
+                  ["Furosemide IV", "0.5 - 1.0 mg/kg tiêm tĩnh mạch khi huyết động ổn định và có dấu hiệu quá tải dịch / phù phổi.", "Chỉ dùng khi huyết động ra sốc ổn định, tuyệt đối không dùng trong pha đang sốc giảm thể tích."]
+                ]
+              },
+              {
+                "id": "sb_3b_bleeding",
+                "groupId": "3B",
+                "groupName": "Xuất huyết nặng",
+                "name": "Xuất huyết nặng (XHTH ồ ạt, nôn máu, tiêu phân đen, xuất huyết nội tạng)",
+                "badgeText": "Cầm máu & Truyền máu",
+                "icon": "Droplets",
+                "color": "red",
+                "urgency": "immediate",
+                "criteria": "Nôn ra máu tươi/máu cục, tiêu phân đen ồ ạt, chảy máu mũi/chân răng nặng không cầm, xuất huyết âm đạo ồ ạt, xuất huyết trong ổ bụng, Hct giảm nhanh > 20% kèm huyết động tụt.",
+                "triage": "ICU - Phối hợp kíp Nội soi Tiêu hóa can thiệp cấp cứu",
+                "targetVitals": "Huyết động ổn định, Hct duy trì ≥ 35%, Fibrinogen ≥ 1.5 g/L, Tiểu cầu > 50 G/L, INR ≤ 1.5.",
+                "escalationCriteria": "Xuất huyết tiếp diễn không kiểm soát mặc dù đã truyền máu và chế phẩm máu khối lượng lớn ➔ Can thiệp nút mạch can thiệp DSA hoặc nội soi cấp cứu cầm máu.",
+                "dischargeCriteria": "Hết xuất huyết ≥ 48 giờ, phân vàng, Hct ổn định không cần truyền thêm máu, tiểu cầu > 50 G/L.",
+                "keyActions": [
+                  "Truyền Hồng cầu lắng (5 - 10 mL/kg) mục tiêu duy trì Hct ≥ 35%",
+                  "Truyền Huyết tương tươi đông lạnh (10 - 20 mL/kg) nếu có rối loạn đông máu (INR > 1.5)",
+                  "Truyền Kết tủa lạnh nếu Fibrinogen < 1.0 g/L; Truyền Khối tiểu cầu nếu PLT < 50 G/L kèm đang chảy máu",
+                  "Omeprazole / Pantoprazole 80 mg IV bolus sau đó truyền tĩnh mạch liên tục 8 mg/h",
+                  "Đặt sonde dạ dày rửa nước muối sinh lý lạnh theo dõi tốc độ chảy máu"
+                ],
+                "drugs": [
+                  ["Hồng cầu lắng (PRBC)", "5 - 10 mL/kg truyền tĩnh mạch khẩn cấp.", "Chỉ định khi Hct ≤ 35% kèm sốc đáp ứng kém dịch truyền hoặc đang xuất huyết tiêu hóa ồ ạt."],
+                  ["Huyết tương tươi đông lạnh (FFP)", "10 - 20 mL/kg truyền tĩnh mạch trong 2 - 4 giờ.", "Chỉ định khi INR > 1.5 kèm xuất huyết nặng."],
+                  ["Khối tiểu cầu đậm đặc", "1 đơn vị / 5 kg cân nặng truyền tĩnh mạch.", "Chỉ định khi PLT < 50 G/L kèm đang xuất huyết nặng hoặc chuẩn bị làm thủ thuật xâm lấn."],
+                  ["Omeprazole / Esomeprazole IV", "80 mg tiêm tĩnh mạch bolus, sau đó truyền 8 mg/h trong 72 giờ.", "Giảm tiết acid dạ dày, hỗ trợ hình thành và ổn định cục máu đông."]
+                ]
+              },
+              {
+                "id": "sb_3c_liver",
+                "groupId": "3C",
+                "groupName": "Suy tạng nặng",
+                "name": "Tổn thương gan nặng / Suy gan cấp",
+                "badgeText": "Bảo vệ gan & Não gan",
+                "icon": "Activity",
+                "color": "amber",
+                "urgency": "urgent",
+                "criteria": "Men gan AST hoặc ALT ≥ 1000 U/L; hoặc có bệnh não gan (li bì, ngủ gà, lú lẫn, hôn mê) kèm rối loạn đông máu nặng (INR ≥ 1.5, PT kéo dài).",
+                "triage": "ICU Truyền nhiễm / Tiêu hóa Gan mật",
+                "targetVitals": "Tri giác tỉnh táo (GCS 15), NH₃ máu ổn định, INR < 1.5, Đường huyết 80 - 150 mg/dL.",
+                "escalationCriteria": "Hôn mê gan độ III-IV, toan chuyển hóa lactic nặng kháng trị, hạ đường huyết liên tục ➔ Xem xét Thay huyết tương (TPE), Lọc máu liên tục CVVHDF.",
+                "dischargeCriteria": "Men gan AST/ALT giảm < 400 U/L, tri giác hoàn toàn tỉnh táo, đông máu hồi phục.",
+                "keyActions": [
+                  "Dùng Ringer Acetate hoặc NaCl 0.9%, TUYỆT ĐỐI TRÁNH Ringer Lactate vì gan suy không chuyển hóa được lactate",
+                  "N-Acetylcysteine (NAC) tĩnh mạch phác đồ suy gan cấp",
+                  "Thụt tháo hoặc uống Lactulose để đào thải và giảm hấp thu amoniac (NH₃)",
+                  "Duy trì đường huyết liên tục bằng Dextrose 10-20%, tiêm Vitamin K1 10 mg IV dự phòng",
+                  "Tránh tuyệt đối các thuốc an thần chuyển hóa qua gan gây ức chế thần kinh trung ương"
+                ],
+                "drugs": [
+                  ["N-Acetylcysteine (NAC) IV", "Tấn công 150 mg/kg TTM 1h ➔ 50 mg/kg TTM 4h ➔ 100 mg/kg TTM 16h ➔ Duy trì 6.25 mg/kg/h x 48 - 72h.", "Chỉ định khi AST/ALT ≥ 1000 U/L hoặc có biểu hiện suy gan cấp."],
+                  ["Ringer Acetate / NaCl 0.9%", "Bù dịch theo nhu cầu và huyết động.", "Thay thế hoàn toàn Ringer Lactate khi có tổn thương gan nặng."],
+                  ["Lactulose đường uống / thụt tháo", "15 - 30 mL uống x 3 lần/ngày hoặc thụt tháo giữ 200 mL pha loãng.", "Mục tiêu đi tiêu phân mềm 2 - 3 lần/ngày để giảm hấp thu NH₃."],
+                  ["Vitamin K1 tiêm tĩnh mạch", "10 mg tiêm tĩnh mạch chậm x 1 - 3 ngày.", "Hỗ trợ tổng hợp các yếu tố đông máu phụ thuộc vitamin K."]
+                ]
+              },
+              {
+                "id": "sb_3c_kidney",
+                "groupId": "3C",
+                "groupName": "Suy tạng nặng",
+                "name": "Tổn thương / Suy thận cấp",
+                "badgeText": "Thận học & Lọc máu",
+                "icon": "Filter",
+                "color": "violet",
+                "urgency": "urgent",
+                "criteria": "Creatinine huyết thanh tăng gấp ≥ 2-3 lần mức nền hoặc ≥ 353 µmol/L; Thiểu niệu (< 0.5 mL/kg/h > 6 giờ) hoặc vô niệu dù đã bù đủ thể tích tuần hoàn; Toan chuyển hóa hoặc tăng kali máu nặng.",
+                "triage": "ICU - Hội chẩn Khoa Thận Lọc Máu",
+                "targetVitals": "Creatinine giảm dần, Kali máu < 5.0 mmol/L, HCO₃⁻ > 18 mmol/L, Bài niệu ≥ 0.5 mL/kg/h.",
+                "escalationCriteria": "Thiểu niệu/vô niệu kéo dài kèm quá tải dịch nặng, Kali máu > 6.5 mmol/L hoặc toan máu pH < 7.15 kháng nội khoa ➔ Chỉ định Lọc máu liên tục (CRRT / CVVHDF) khẩn cấp.",
+                "dischargeCriteria": "Chức năng thận trở về bình thường hoặc mức nền, bài niệu tự nhiên tốt không cần lợi tiểu.",
+                "keyActions": [
+                  "Đánh giá chính xác tình trạng thể tích nội mạch (tránh thiếu dịch trước thận và tránh quá tải dịch)",
+                  "Điều chỉnh liều tất cả các thuốc điều trị theo mức lọc cầu thận eGFR",
+                  "Ngừng ngay tất cả các thuốc độc cho thận (NSAIDs, Aminoglycoside, thuốc cản quang)",
+                  "Chuẩn bị đặt Catheter lọc máu và tiến hành CRRT/CVVHDF khi có chỉ định"
+                ],
+                "drugs": [
+                  ["Natri Bicarbonate 4.2% / 8.4%", "Tiêm tĩnh mạch bù toan khi pH < 7.20 hoặc HCO₃⁻ < 15 mmol/L.", "Điều chỉnh toan chuyển hóa nặng trong suy thận cấp."],
+                  ["Calci Clorua 10% & Insulin + Glucose", "Calci clorua 0.5 - 1.0 g IV chậm trong 5 phút; Insulin tác dụng nhanh 10 UI + Glucose 20% 100 mL TTM 30 phút.", "Cấp cứu tăng kali máu nặng đe dọa ngừng tim."],
+                  ["Dung dịch Lọc máu liên tục (CRRT Solution)", "Tốc độ thay thế 20 - 35 mL/kg/h qua màng lọc hemofilter.", "Chỉ định lọc máu liên tục CVVHDF khi có quá tải dịch / toan / ure máu cao."]
+                ]
+              },
+              {
+                "id": "sb_3c_cardiac",
+                "groupId": "3C",
+                "groupName": "Suy tạng nặng",
+                "name": "Viêm cơ tim, Suy tim",
+                "badgeText": "Tim mạch & Vận mạch",
+                "icon": "Heart",
+                "color": "pink",
+                "urgency": "urgent",
+                "criteria": "Đau tức ngực, khó thở, nhịp tim nhanh không tương xứng với thân nhiệt hoặc nhịp chậm bất thường, tụt HA, gallop T3, tăng Troponin và NT-proBNP, giảm phân suất tống máu thất trái (EF < 45%).",
+                "triage": "ICU Tim mạch / Cấp cứu Hồi sức tích cực",
+                "targetVitals": "Phân suất tống máu EF cải thiện, MAP 65 - 75 mmHg, Troponin xu hướng thoái lui, không loạn nhịp đe dọa tính mạng.",
+                "escalationCriteria": "Sốc tim kháng trị, EF < 25%, toan lactic tiến triển dù đã tối ưu thuốc trợ tim ➔ Chỉ định bóng đối xung động mạch chủ (IABP) hoặc ECMO VA.",
+                "dischargeCriteria": "Huyết động ổn định không cần thuốc tăng co bóp cơ tim, EF phục hồi > 50%, men tim bình thường.",
+                "keyActions": [
+                  "Hạn chế tối đa truyền dịch tốc độ nhanh không cần thiết (nguy cơ cao kích hoạt phù phổi cấp do suy tim)",
+                  "Khởi đầu sớm thuốc tăng co bóp cơ tim: Dobutamine 3 - 10 µg/kg/phút",
+                  "Theo dõi siêu âm tim tại giường (POCUS) đánh giá cung lượng tim VTI và đường kính tĩnh mạch chủ dưới IVC",
+                  "Theo dõi điện tim liên tục trên Monitor để phát hiện sớm các rối loạn nhịp tim nguy hiểm"
+                ],
+                "drugs": [
+                  ["Dobutamine IV", "3 - 10 µg/kg/phút truyền tĩnh mạch liên tục qua bơm tiêm điện.", "Lựa chọn hàng đầu để tăng sức co bóp cơ tim trong viêm cơ tim do Dengue."],
+                  ["Noradrenaline IV", "0.05 - 1.0 µg/kg/phút truyền tĩnh mạch liên tục.", "Phối hợp nâng kháng lực mạch ngoại biên khi có tụt huyết áp nặng kèm theo."],
+                  ["Milrinone IV", "0.25 - 0.75 µg/kg/phút truyền tĩnh mạch liên tục.", "Tăng co bóp cơ tim và giãn mạch phổi khi có tăng áp lực động mạch phổi / suy tim phải."]
+                ]
+              },
+              {
+                "id": "sb_3c_cns",
+                "groupId": "3C",
+                "groupName": "Suy tạng nặng",
+                "name": "SXHD thể não (Rối loạn tri giác, Co giật, Hôn mê)",
+                "badgeText": "Thần kinh & Phù não",
+                "icon": "Brain",
+                "color": "indigo",
+                "urgency": "immediate",
+                "criteria": "Rối loạn tri giác (bứt rứt, li bì, lơ mơ, hôn mê, GCS < 13), co giật khu trú hoặc toàn thể, dấu hiệu tăng áp lực nội sọ (tam chứng Cushing: HA tăng, nhịp tim chậm, thở không đều), đồng tử không đều.",
+                "triage": "ICU Thần kinh / Cấp cứu Hồi sức",
+                "targetVitals": "Tri giác phục hồi (GCS ≥ 14), hết co giật hoàn toàn, áp lực nội sọ < 20 mmHg, PaCO₂ duy trì 35 - 40 mmHg.",
+                "escalationCriteria": "Hôn mê sâu GCS ≤ 8, tụt kẹt não, co giật trạng thái ➔ Đặt nội khí quản thở máy bảo vệ đường thở, tăng thông khí nhẹ, Manitol 20% hoặc NaCl 3%, an thần liên tục.",
+                "dischargeCriteria": "Tri giác tỉnh táo hoàn toàn, không di chứng thần kinh khu trú, điện não đồ ổn định.",
+                "keyActions": [
+                  "Đặt bệnh nhân nằm đầu cao 30 độ, giữ trục cổ thẳng để tối ưu hóa lưu dẫn tĩnh mạch cảnh",
+                  "Chống phù não khẩn cấp: Mannitol 20% liều 0.5 g/kg truyền tĩnh mạch trong 30 phút hoặc NaCl 3% (3 mL/kg)",
+                  "Cắt cơn co giật bằng Diazepam 0.2 mg/kg IV chậm hoặc Midazolam",
+                  "Kiểm tra đường huyết mao mạch ngay tại giường để loại trừ hôn mê hạ đường huyết",
+                  "Chụp CT/MRI sọ não khi huyết động cho phép để loại trừ xuất huyết não hoặc phù não lan tỏa"
+                ],
+                "drugs": [
+                  ["Mannitol 20%", "0.5 g/kg truyền tĩnh mạch trong 30 phút, nhắc lại mỗi 6 - 8 giờ nếu cần.", "Chống phù não và hạ áp lực nội sọ cấp."],
+                  ["Dung dịch Muối ưu trương NaCl 3%", "3 mL/kg truyền tĩnh mạch trong 15 - 30 phút.", "Lựa chọn thay thế hoặc phối hợp khi có tụt HA hoặc tăng áp lực nội sọ đe dọa tụt kẹt não."],
+                  ["Diazepam / Midazolam IV", "Diazepam 0.2 mg/kg IV chậm (tối đa 10 mg); Midazolam 0.1 - 0.2 mg/kg IV.", "Cắt cơn co giật khẩn cấp."],
+                  ["Dextrose 30%", "1 - 2 mL/kg tiêm tĩnh mạch trực tiếp.", "Xử trí ngay lập tức khi đường huyết mao mạch < 40 mg/dL."]
+                ]
+              }
+            ],
             "drugs": [
               [
                 "Ringer Lactate / Ringer Acetate / NaCl 0.9%",

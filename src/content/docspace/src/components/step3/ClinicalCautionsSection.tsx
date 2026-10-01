@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AlertOctagon,
   AlertTriangle,
   ArrowUpRight,
+  Ban,
   Building2,
+  Check,
   CheckCircle2,
   CheckSquare,
   Droplet,
@@ -12,8 +14,10 @@ import {
   ShieldAlert,
   ShieldCheck,
   ShieldX,
+  Sparkles,
   Stethoscope,
   Syringe,
+  Zap,
 } from 'lucide-react';
 import { DailyTimelinePhase } from '../../lib/dailyTreatmentTimeline.ts';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
@@ -49,6 +53,21 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
   patientPhenotype,
   structuredCautions,
 }) => {
+  // State quản lý checklist tiêu chuẩn ra viện
+  const [checkedDischargeIndices, setCheckedDischargeIndices] = useState<Set<number>>(new Set());
+
+  const toggleDischargeCheck = (idx: number) => {
+    setCheckedDischargeIndices((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) {
+        next.delete(idx);
+      } else {
+        next.add(idx);
+      }
+      return next;
+    });
+  };
+
   // Phân loại:
   // [1] Chỉ định Điều trị & Tiêu chuẩn Can thiệp (Truyền máu, Dịch cao phân tử, Thở máy...)
   // [2] Lưu ý & Cảnh báo quan trọng
@@ -355,8 +374,8 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
         </div>
 
         {/* [3] Chống chỉ định (CCĐ) */}
-        <div id="sub-contraindications" className="scroll-mt-24 bg-rose-50/60 border border-rose-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
-          <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-rose-200/80">
+        <div id="sub-contraindications" className="scroll-mt-24 bg-rose-50/70 border-2 border-rose-300 dark:border-rose-900 rounded-xl p-3.5 sm:p-4 shadow-2xs flex flex-col gap-3">
+          <div className="flex items-center justify-between gap-2 border-b border-rose-200 dark:border-rose-900/80 pb-2">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-rose-600 text-white flex items-center justify-center shadow-2xs">
                 <ShieldX className="w-3.5 h-3.5" />
@@ -365,8 +384,34 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
                 {hasIndications ? '[3]' : '[2]'} Chống chỉ định &amp; Thuốc cấm dùng (Contraindications)
               </h5>
             </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-200/80 text-rose-900 border border-rose-300">
+            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-200 text-rose-900 border border-rose-300">
               {contraindications.length} điều cấm
+            </span>
+          </div>
+
+          {/* Quick-Ref Pill Chips cho các thuốc cấm phổ biến */}
+          <div className="flex items-center gap-1.5 flex-wrap p-2 bg-white/80 rounded-lg border border-rose-200 text-[11px]">
+            <span className="font-bold text-rose-900 flex items-center gap-1 shrink-0">
+              <Ban className="w-3 h-3 text-rose-600" />
+              <span>Thuốc cấm tuyệt đối:</span>
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 border border-rose-300">
+              🚫 Aspirin
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 border border-rose-300">
+              🚫 Ibuprofen
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 border border-rose-300">
+              🚫 Toàn bộ nhóm NSAIDs
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 border border-rose-300">
+              🚫 Analgin
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-semibold bg-rose-100/70 text-rose-800 border border-rose-200">
+              🚫 Tiêm bắp (Nguy cơ tụ máu lớn)
+            </span>
+            <span className="px-2 py-0.5 rounded-full font-semibold bg-rose-100/70 text-rose-800 border border-rose-200">
+              🚫 Kháng sinh khi chưa có bằng chứng bội nhiễm
             </span>
           </div>
 
@@ -374,7 +419,7 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
             {contraindications.map((item, idx) => (
               <div
                 key={idx}
-                className="p-2.5 rounded-lg bg-white border border-rose-200/80 shadow-2xs flex items-start gap-2.5 text-xs text-rose-950"
+                className="p-2.5 rounded-lg bg-white border border-rose-200/90 shadow-2xs flex items-start gap-2.5 text-xs text-rose-950"
               >
                 <span className="text-rose-600 font-bold shrink-0 mt-0.5">🚫</span>
                 <span className="leading-relaxed font-medium">{item}</span>
@@ -383,52 +428,120 @@ export const ClinicalCautionsSection: React.FC<ClinicalCautionsSectionProps> = (
           </div>
         </div>
 
-        {/* [4] Tiêu chuẩn xuất viện hoặc chuyển tuyến */}
-        <div id="sub-discharge" className="scroll-mt-24 bg-emerald-50/60 border border-emerald-200/90 rounded-xl p-3.5 sm:p-4 shadow-2xs">
-          <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-emerald-200/80">
+        {/* [4] Tiêu chuẩn xuất viện hoặc chuyển tuyến - Interactive Checklist */}
+        <div id="sub-discharge" className="scroll-mt-24 bg-emerald-50/70 border-2 border-emerald-300 rounded-xl p-3.5 sm:p-4 shadow-2xs flex flex-col gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-md bg-emerald-600 text-white flex items-center justify-center shadow-2xs">
                 <Building2 className="w-3.5 h-3.5" />
               </div>
-              <h5 className="font-bold text-xs sm:text-sm text-emerald-950">
-                {hasIndications ? '[4]' : '[3]'} Tiêu chuẩn xuất viện hoặc chuyển tuyến (Discharge &amp; Triage Criteria)
-              </h5>
+              <div>
+                <h5 className="font-bold text-xs sm:text-sm text-emerald-950">
+                  {hasIndications ? '[4]' : '[3]'} Tiêu chuẩn xuất viện &amp; Chuyển tuyến an toàn (Interactive Checklist)
+                </h5>
+                <p className="text-[11px] text-emerald-800 mt-0.5">
+                  Tích chọn các tiêu chí đã đạt để đối chiếu điều kiện cho bệnh nhân ra viện hoặc hạ bậc điều trị:
+                </p>
+              </div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-200/80 text-emerald-900 border border-emerald-300">
-              Quy chuẩn BYT / EBM
-            </span>
+
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-white border border-emerald-300 text-emerald-900 shadow-2xs">
+                Đạt: {checkedDischargeIndices.size} / {dischargeCriteria.length} tiêu chuẩn
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  if (checkedDischargeIndices.size === dischargeCriteria.length) {
+                    setCheckedDischargeIndices(new Set());
+                  } else {
+                    setCheckedDischargeIndices(new Set(dischargeCriteria.map((_, i) => i)));
+                  }
+                }}
+                className="px-2 py-1 text-[11px] font-semibold text-emerald-800 bg-white hover:bg-emerald-100 rounded border border-emerald-300 transition-colors cursor-pointer shadow-2xs"
+              >
+                {checkedDischargeIndices.size === dischargeCriteria.length ? 'Bỏ chọn hết' : 'Đánh dấu đạt tất cả'}
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {dischargeCriteria.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-3 bg-white rounded-lg border border-emerald-200 shadow-2xs flex flex-col justify-between gap-2 text-xs"
-              >
-                <div>
-                  {item.dayRange && (
-                    <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <span className="px-2 py-0.2 rounded text-[10.5px] font-bold font-mono-custom bg-emerald-100 text-emerald-900 border border-emerald-200">
-                        {item.dayRange}
-                      </span>
-                      {item.phaseName && (
-                        <span className="text-[10px] font-semibold text-slate-500 truncate">
-                          {item.phaseName.replace(/Giai đoạn\s*/i, '')}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                  <p className="text-[11.5px] text-slate-800 leading-relaxed font-medium">
-                    {item.text}
-                  </p>
-                </div>
+          {/* Banner chúc mừng nếu đạt đủ điều kiện ra viện */}
+          {dischargeCriteria.length > 0 && checkedDischargeIndices.size === dischargeCriteria.length && (
+            <div className="p-2.5 bg-emerald-600 text-white rounded-lg flex items-center gap-2 text-xs font-bold animate-fadeIn shadow-xs">
+              <Sparkles className="w-4 h-4 shrink-0 text-amber-300" />
+              <span>
+                BỆNH NHÂN ĐÃ ĐẠT TOÀN BỘ {dischargeCriteria.length} TIÊU CHUẨN XUẤT VIỆN AN TOÀN THEO QUY CHUẨN BỘ Y TẾ!
+              </span>
+            </div>
+          )}
 
-                <div className="pt-1.5 border-t border-slate-100 flex items-center gap-1.5 text-[10.5px] text-emerald-700 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Đích an toàn cho phép ra viện / chuyển tầng</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {dischargeCriteria.map((item, idx) => {
+              const isChecked = checkedDischargeIndices.has(idx);
+
+              return (
+                <div
+                  key={idx}
+                  onClick={() => toggleDischargeCheck(idx)}
+                  className={`p-3 rounded-xl border-2 transition-all duration-150 flex flex-col justify-between gap-2.5 cursor-pointer ${
+                    isChecked
+                      ? 'bg-emerald-50/90 border-emerald-500 shadow-xs ring-1 ring-emerald-400'
+                      : 'bg-white border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/30'
+                  }`}
+                >
+                  <div className="flex items-start gap-2.5">
+                    {/* Checkbox vuông */}
+                    <div className="shrink-0 pt-0.5">
+                      <div
+                        className={`w-5 h-5 rounded-md flex items-center justify-center transition-all ${
+                          isChecked
+                            ? 'bg-emerald-600 text-white shadow-2xs'
+                            : 'border-2 border-slate-300 bg-white'
+                        }`}
+                      >
+                        {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      {item.dayRange && (
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="px-2 py-0.2 rounded text-[10px] font-bold font-mono-custom bg-emerald-100 text-emerald-900 border border-emerald-200">
+                            {item.dayRange}
+                          </span>
+                          {item.phaseName && (
+                            <span className="text-[10px] font-semibold text-slate-500 truncate">
+                              {item.phaseName.replace(/Giai đoạn\s*/i, '')}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      <p
+                        className={`text-[11.5px] leading-relaxed transition-colors ${
+                          isChecked
+                            ? 'text-emerald-950 font-bold'
+                            : 'text-slate-800 font-medium'
+                        }`}
+                      >
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-1.5 border-t border-slate-100 flex items-center justify-between text-[10.5px]">
+                    <span
+                      className={`font-semibold flex items-center gap-1 ${
+                        isChecked ? 'text-emerald-700' : 'text-slate-400'
+                      }`}
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>{isChecked ? 'Đã nghiệm thu đạt' : 'Chưa nghiệm thu'}</span>
+                    </span>
+                    <span className="text-[10px] text-slate-400 font-mono">#{idx + 1}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

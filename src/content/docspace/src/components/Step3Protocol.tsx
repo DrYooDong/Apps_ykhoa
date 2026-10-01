@@ -746,6 +746,45 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     return severityGrades[effectiveSelectedGradeIdx] || severityGrades[0];
   }, [severityGrades, effectiveSelectedGradeIdx]);
 
+  // Danh sách các Sub-branches của phân độ/nhánh đang chọn (VD: SXH nặng A97.2 -> 7 thể nhỏ)
+  const currentSubBranches = useMemo(() => {
+    // 1. Kiểm tra nhánh của activeChain.branching.branches
+    const branchFromChain = activeChain?.branching?.branches?.[effectiveSelectedGradeIdx];
+    if (branchFromChain?.hasSubBranches && branchFromChain.subBranches) {
+      return branchFromChain.subBranches;
+    }
+    // 2. Kiểm tra activeSeverityGrade
+    if ((activeSeverityGrade as any)?.subBranches) {
+      return (activeSeverityGrade as any).subBranches;
+    }
+    return [];
+  }, [activeChain, effectiveSelectedGradeIdx, activeSeverityGrade]);
+
+  // State các subBranch đang chọn (hỗ trợ multi-select)
+  const [selectedSubBranchIds, setSelectedSubBranchIds] = useState<string[]>([]);
+
+  // Tự động khởi tạo selectedSubBranchIds khi chuyển sang nhánh có subBranches
+  useEffect(() => {
+    if (currentSubBranches && currentSubBranches.length > 0) {
+      const primary = currentSubBranches.find((s) => s.isPrimary) || currentSubBranches[0];
+      if (primary && (!selectedSubBranchIds.length || !currentSubBranches.some((s) => selectedSubBranchIds.includes(s.id)))) {
+        setSelectedSubBranchIds([primary.id]);
+      }
+    } else {
+      setSelectedSubBranchIds([]);
+    }
+  }, [currentSubBranches]);
+
+  const handleToggleSubBranch = (subBranchId: string) => {
+    setSelectedSubBranchIds((prev) => {
+      if (prev.includes(subBranchId)) {
+        return prev.filter((id) => id !== subBranchId);
+      } else {
+        return [...prev, subBranchId];
+      }
+    });
+  };
+
   // Phác đồ điều trị phân độ (Hỗ trợ cả Single-Axis và Multi-Axis)
   const phacDo = useMemo(() => {
     // 0. Nếu là Multi-Axis có CombinedProtocol hoặc các nhánh đang chọn
@@ -1341,6 +1380,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               selectedAxes={selectedAxes}
               onSelectAxisBranch={handleSelectAxisBranch}
               activeCombinedProtocol={activeCombinedProtocol}
+              subBranches={currentSubBranches}
+              selectedSubBranchIds={selectedSubBranchIds}
+              onToggleSubBranch={handleToggleSubBranch}
             />
           </CollapsibleProtocolSection>
 
@@ -1400,6 +1442,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
               onOpenVaultDrawer={onOpenVaultDrawer}
               onOpenCdssModal={onOpenCdssModal}
               activeCombinedProtocol={activeCombinedProtocol}
+              subBranches={currentSubBranches}
+              selectedSubBranchIds={selectedSubBranchIds}
+              onToggleSubBranch={handleToggleSubBranch}
             />
           </CollapsibleProtocolSection>
 

@@ -24,7 +24,7 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
-import { BranchAxis, ClinicalFormState, CombinedProtocol, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
+import { BranchAxis, ClinicalFormState, ClinicalSubBranch, CombinedProtocol, LabsState, PatientPhenotype, VitalsState } from '../../types.ts';
 import { SeverityGradingPanel } from './SeverityGradingPanel.tsx';
 import { SingleAxisBranchPanel } from './SingleAxisBranchPanel.tsx';
 import { ComplicationsTriageSection } from './ComplicationsTriageSection.tsx';
@@ -58,6 +58,9 @@ interface ProtocolClassificationSectionProps {
   selectedAxes?: Record<string, string>;
   onSelectAxisBranch?: (axisId: string, branchId: string) => void;
   activeCombinedProtocol?: CombinedProtocol | null;
+  subBranches?: ClinicalSubBranch[];
+  selectedSubBranchIds?: string[];
+  onToggleSubBranch?: (subBranchId: string) => void;
 }
 
 export const ProtocolClassificationSection: React.FC<ProtocolClassificationSectionProps> = ({
@@ -88,6 +91,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
   selectedAxes,
   onSelectAxisBranch,
   activeCombinedProtocol,
+  subBranches = [],
+  selectedSubBranchIds = [],
+  onToggleSubBranch,
 }) => {
   // Trạng thái Multi-Axis của bệnh lý
   const isMultiAxis = Boolean(
@@ -496,6 +502,9 @@ export const ProtocolClassificationSection: React.FC<ProtocolClassificationSecti
                   selectedAxes={selectedAxes}
                   onSelectAxisBranch={onSelectAxisBranch}
                   activeCombinedProtocol={activeCombinedProtocol}
+                  subBranches={subBranches}
+                  selectedSubBranchIds={selectedSubBranchIds}
+                  onToggleSubBranch={onToggleSubBranch}
                 />
               </div>
             );

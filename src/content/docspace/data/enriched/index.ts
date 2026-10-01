@@ -16,6 +16,7 @@ import viem_gan_sieu_vi_b from './viem_gan_sieu_vi_b.json';
 import viem_gan_sieu_vi_c from './viem_gan_sieu_vi_c.json';
 import viem_gan_cap_do_thuoc_khang_lao from './viem_gan_cap_do_thuoc_khang_lao.json';
 import thuy_dau from './thuy_dau.json';
+import phan_ve from './phan_ve.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
@@ -24,6 +25,7 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'viem_gan_sieu_vi_c': viem_gan_sieu_vi_c as unknown as DiseaseReactionChainDefinition,
   'viem_gan_cap_do_thuoc_khang_lao': viem_gan_cap_do_thuoc_khang_lao as unknown as DiseaseReactionChainDefinition,
   'thuy_dau': thuy_dau as unknown as DiseaseReactionChainDefinition,
+  'phan_ve': phan_ve as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);

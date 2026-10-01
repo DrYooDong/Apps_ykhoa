@@ -86,6 +86,27 @@ export interface SeverityGradingItem {
   dischargeCriteria?: string;
 }
 
+export interface ClinicalSubBranch {
+  id: string;
+  groupId?: string;
+  groupName?: string;
+  name: string;
+  badgeText?: string;
+  icon?: string;
+  color?: string;
+  urgency?: 'immediate' | 'urgent' | 'priority' | string;
+  criteria?: string;
+  triage?: string;
+  targetVitals?: string;
+  escalationCriteria?: string;
+  dischargeCriteria?: string;
+  keyActions?: string[];
+  drugs?: [string, string, string][];
+  timelinePhases?: any[];
+  monitoring?: string[];
+  cautions?: string[];
+}
+
 export interface ClinicalBranch {
   id: string;
   name: string;
@@ -104,6 +125,10 @@ export interface ClinicalBranch {
   cautions?: string[];
   timelinePhases?: any[];
   patientCounseling?: string;
+  hasSubBranches?: boolean;
+  subBranchMode?: 'single-select' | 'multi-select';
+  subBranchLabel?: string;
+  subBranches?: ClinicalSubBranch[];
 }
 
 export interface BranchAxis {

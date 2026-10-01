@@ -12,7 +12,8 @@ import {
   DiseaseReactionChainDefinition,
   SeverityGradingItem,
 } from '../../../data/diagnostic-criteria-database.ts';
-import { CombinedProtocol } from '../../types.ts';
+import { CombinedProtocol, ClinicalSubBranch } from '../../types.ts';
+import { SevereSubBranchSelector } from './SevereSubBranchSelector.tsx';
 
 interface SeverityGradingPanelProps {
   severityGrades: SeverityGradingItem[];
@@ -23,6 +24,9 @@ interface SeverityGradingPanelProps {
   selectedAxes?: Record<string, string>;
   onSelectAxisBranch?: (axisId: string, branchId: string) => void;
   activeCombinedProtocol?: CombinedProtocol | null;
+  subBranches?: ClinicalSubBranch[];
+  selectedSubBranchIds?: string[];
+  onToggleSubBranch?: (subBranchId: string) => void;
 }
 
 export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
@@ -34,6 +38,9 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
   selectedAxes = {},
   onSelectAxisBranch,
   activeCombinedProtocol,
+  subBranches = [],
+  selectedSubBranchIds = [],
+  onToggleSubBranch,
 }) => {
   const isMultiAxis = Boolean(
     activeChain?.branching?.mode === 'multi' &&
@@ -425,6 +432,31 @@ export const SeverityGradingPanel: React.FC<SeverityGradingPanelProps> = ({
                   <b>Tiêu chuẩn lâm sàng & CLS xác định phân độ:</b> {severityGrades[selectedGradeIdx].criteria}
                 </div>
               </details>
+
+              {/* Phân nhánh thể bệnh nặng chuyên sâu (Sub-branches - VD SXH Nặng: Sốc, Suy hô hấp đa màng, XHTH, Suy gan, Suy thận...) */}
+              {subBranches && subBranches.length > 0 && (
+                <div className="pt-2 border-t border-indigo-100">
+                  <SevereSubBranchSelector
+                    subBranches={subBranches}
+                    selectedSubBranchIds={selectedSubBranchIds}
+                    onToggleSubBranch={onToggleSubBranch || (() => {})}
+                    onSelectAllSubBranches={() => {
+                      subBranches.forEach((sb) => {
+                        if (!selectedSubBranchIds.includes(sb.id) && onToggleSubBranch) {
+                          onToggleSubBranch(sb.id);
+                        }
+                      });
+                    }}
+                    onClearSubBranches={() => {
+                      selectedSubBranchIds.forEach((id) => {
+                        if (onToggleSubBranch) onToggleSubBranch(id);
+                      });
+                    }}
+                    subBranchLabel="Lựa chọn các biểu hiện / thể lâm sàng nặng phối hợp"
+                    subBranchMode="multi-select"
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>

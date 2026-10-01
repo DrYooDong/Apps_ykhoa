@@ -1,0 +1,410 @@
+{
+    "icdCode": "T78.2",
+    "icdPrefixes": [
+        "T78.0",
+        "T78.1",
+        "T88.6"
+    ],
+    "diseaseName": "Phản vệ",
+    "specialty": "Cấp cứu / Hồi sức chống độc / Dị ứng - Miễn dịch lâm sàng",
+    "syndromes": [
+        "hc_phan_ve",
+        "hc_soc",
+        "hc_suy_ho_hap"
+    ],
+    "severity": "emergency",
+    "summary": "Phản vệ là một phản ứng dị ứng cấp tính, có thể xuất hiện ngay lập tức từ vài giây, vài phút đến vài giờ sau khi cơ thể tiếp xúc với dị nguyên, gây ra các bệnh cảnh lâm sàng đa dạng và có thể nghiêm trọng dẫn đến tử vong nhanh chóng. Sốc phản vệ là mức độ nặng nhất của phản vệ do đột ngột giãn toàn bộ hệ thống mạch và co thắt phế quản.",
+    "goldStandard": "Chẩn đoán lâm sàng cấp tính dựa trên sự xuất hiện đột ngột các triệu chứng ở da/niêm mạc kết hợp với biểu hiện hô hấp, tụt huyết áp hoặc triệu chứng tiêu hóa sau khi tiếp xúc yếu tố nghi ngờ theo Thông tư 51/2017/TT-BYT.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tc_goi_y_phan_ve"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 0,
+        "ruleDescription": "Thỏa mãn 1 trong 3 bệnh cảnh lâm sàng phản vệ theo Phụ lục I Thông tư 51/2017/TT-BYT của Bộ Y tế."
+    },
+    "criteria": [
+        {
+            "id": "tc_goi_y_phan_ve",
+            "type": "mandatory",
+            "label": "Dấu hiệu gợi ý nghĩ đến phản vệ",
+            "description": "Xuất hiện đột ngột ≥ 1 triệu chứng sau tiếp xúc dị nguyên: Mày đay/phù mạch nhanh; Khó thở/tức ngực/thở rít; Đau bụng hoặc nôn; Tụt HA hoặc ngất; Rối loạn ý thức.",
+            "sourceGuideline": "Thông tư 51/2017/TT-BYT",
+            "symptomIds": [
+                "phat_ban_xung_huyet",
+                "kho_tho",
+                "buon_non_non",
+                "ha_huyet_ap",
+                "lu_du_vat_va_li_bi"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_benh_canh_1",
+            "type": "major",
+            "label": "Bệnh cảnh lâm sàng 1 (Da/niêm mạc + Hô hấp hoặc Tụt HA)",
+            "description": "Xuất hiện trong vài giây đến vài giờ các triệu chứng ở da, niêm mạc (mày đay, phù mạch, ngứa...) VÀ có ít nhất 1 trong 2 triệu chứng: (1) Biểu hiện hô hấp (khó thở, thở rít, ran rít); (2) Tụt HA hay hậu quả tụt HA (rối loạn ý thức, đại tiện/tiểu tiện không tự chủ...).",
+            "sourceGuideline": "Thông tư 51/2017/TT-BYT",
+            "symptomIds": [
+                "phat_ban_xung_huyet",
+                "kho_tho",
+                "ha_huyet_ap"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_benh_canh_2",
+            "type": "major",
+            "label": "Bệnh cảnh lâm sàng 2 (Xuất hiện ≥ 2/4 nhóm triệu chứng sau tiếp xúc yếu tố nghi ngờ)",
+            "description": "Ít nhất 2 trong 4 biểu hiện xuất hiện trong vài giây đến vài giờ sau khi người bệnh tiếp xúc với yếu tố nghi ngờ: (1) Da, niêm mạc; (2) Hô hấp; (3) Tụt HA hoặc hậu quả tụt HA; (4) Tiêu hóa (nôn, đau bụng quặn).",
+            "sourceGuideline": "Thông tư 51/2017/TT-BYT",
+            "symptomIds": [
+                "phat_ban_xung_huyet",
+                "kho_tho",
+                "ha_huyet_ap",
+                "buon_non_non"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_benh_canh_3",
+            "type": "major",
+            "label": "Bệnh cảnh lâm sàng 3 (Tụt HA sau tiếp xúc dị nguyên đã biết từng dị ứng)",
+            "description": "Tụt HA xuất hiện vài giây đến vài giờ sau khi tiếp xúc với yếu tố nghi ngờ mà người bệnh đã từng bị dị ứng: Trẻ em giảm ≥ 30% HATT hoặc tụt HATT so với tuổi; Người lớn HATT < 90 mmHg hoặc giảm > 30% giá trị HATT nền.",
+            "sourceGuideline": "Thông tư 51/2017/TT-BYT",
+            "symptomIds": [
+                "ha_huyet_ap"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        }
+    ],
+    "stagingType": "severity",
+    "hasSeverityGrading": true,
+    "branching": {
+        "mode": "single",
+        "axisName": "Phân độ mức độ nặng Phản vệ (Thông tư 51/2017/TT-BYT)",
+        "axisType": "severity",
+        "description": "Phản vệ phân thành 4 mức độ (Độ I - IV). Lưu ý mức độ phản vệ có thể chuyển độ và nặng lên rất nhanh.",
+        "branches": [
+            {
+                "id": "branch_1",
+                "name": "Độ I: Mức độ Nhẹ (Chỉ có triệu chứng Da & Niêm mạc)",
+                "badgeText": "Độ I - Nhẹ",
+                "color": "emerald",
+                "criteria": "Chỉ có các triệu chứng da, tổ chức dưới da và niêm mạc như mày đay, ngứa, phù mạch.",
+                "triage": "Ngoại trú / Cơ sở y tế ban đầu / Theo dõi sát ≥ 24 giờ",
+                "targetVitals": "HATT ≥ 90 mmHg, SpO₂ ≥ 96%, nhịp thở 16 - 20 lần/phút, tri giác tỉnh táo.",
+                "escalationCriteria": "Xuất hiện thêm biểu hiện hô hấp (thở rít, khó thở), tiêu hóa (nôn, đau bụng) hoặc mạch nhanh/HA biến động -> Nâng bậc khẩn cấp sang Độ II.",
+                "dischargeCriteria": "Mày đay, phù mạch lặn hoàn toàn, không xuất hiện triệu chứng mới sau 24 giờ theo dõi liên tục.",
+                "drugs": [
+                    [
+                        "Methylprednisolon",
+                        "1 - 2 mg/kg/ngày (uống hoặc tiêm)",
+                        "Dùng ngay khi chẩn đoán Độ I để giảm phản ứng viêm dị ứng"
+                    ],
+                    [
+                        "Diphenhydramin / Loratadin / Cetirizin",
+                        "Diphenhydramin 1 mg/kg (uống hoặc tiêm) / Cetirizin 10mg/ngày PO",
+                        "Kháng H1 giúp kiểm soát ngứa, mày đay, phù mạch"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b1_p1",
+                        "dayRange": "24 giờ đầu",
+                        "phaseName": "Giai đoạn Xử trí & Theo dõi Phản vệ Độ I",
+                        "clinicalGoal": "Khống chế triệu chứng da niêm và phát hiện sớm dấu hiệu chuyển độ",
+                        "problems": [
+                            {
+                                "id": "b1_prob_symp",
+                                "problemName": "Kiểm soát dị ứng da niêm mạc",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Kháng H1 & Corticoid",
+                                        "content": "Uống/tiêm Diphenhydramin 1 mg/kg + Methylprednisolon 1-2 mg/kg",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Sinh hiệu (M, HA, NT, SpO₂), kiểu thở, diện tiến ban da",
+                                        "frequency": "Mỗi 1 - 2 giờ",
+                                        "target": "Sinh hiệu ổn định, mày đay khu trú và thoái triển"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_2",
+                "name": "Độ II: Mức độ Nặng (Có từ 2 biểu hiện ở nhiều cơ quan)",
+                "badgeText": "Độ II - Nặng",
+                "color": "amber",
+                "criteria": "Có từ 2 biểu hiện ở nhiều cơ quan xuất hiện nhanh: Mày đay, phù mạch xuất hiện nhanh; Khó thở nhanh nông, tức ngực, khàn tiếng, chảy nước mũi; Đau bụng quặn, nôn, ỉa chảy; HA chưa tụt hoặc tăng, nhịp tim nhanh hoặc loạn nhịp.",
+                "triage": "Phòng cấp cứu / Tiếp cận tiêm bắp Adrenalin ngay tại chỗ",
+                "targetVitals": "HATT ≥ 90 mmHg (trẻ em ≥ 70 mmHg), SpO₂ ≥ 95%, hết khó thở, hết nôn mửa.",
+                "escalationCriteria": "Xuất hiện thở rít thanh quản, tím tái, rối loạn ý thức, sốc tụt HA -> BÁO ĐỘNG ĐỎ nâng ngay lên Độ III.",
+                "dischargeCriteria": "Thoát nguy cơ phản vệ pha 2, sinh hiệu ổn định, ngưng thuốc tĩnh mạch ≥ 24 giờ.",
+                "drugs": [
+                    [
+                        "Adrenalin 1mg/1ml (1:1.000)",
+                        "Tiêm bắp sâu mặt trước ngoài đùi: Người lớn 0,5 - 1 ml (1/2 - 1 ống); Trẻ em 0,01 mg/kg (<10kg: 0,2ml; ~10kg: 0,25ml; ~20kg: 0,3ml; >30kg: 0,5ml). Nhắc lại mỗi 3 - 5 phút nếu chưa đỡ.",
+                        "Thuốc THIẾT YẾU quan trọng hàng đầu cứu sống bệnh nhân, tiêm bắp NGAY LẬP TỨC"
+                    ],
+                    [
+                        "Dung dịch NaCl 0,9%",
+                        "Truyền tĩnh mạch: Người lớn 1 - 2 lít truyền nhanh; Trẻ em 10 - 20 ml/kg trong 10 - 20 phút.",
+                        "Khôi phục thể tích lòng mạch do hiện tượng tăng tính thấm mao mạch"
+                    ],
+                    [
+                        "Methylprednisolon / Hydrocortison",
+                        "Methylprednisolon 1 - 2 mg/kg IV / Hydrocortison 200mg IV (Trẻ em tối đa 100mg)",
+                        "Dự phòng phản vệ pha 2 (biphasic anaphylaxis)"
+                    ],
+                    [
+                        "Diphenhydramin (Dimedrol)",
+                        "Người lớn 25 - 50 mg IV/IM; Trẻ em 10 - 25 mg IV/IM (1 mg/kg)",
+                        "Kháng histamine H1 đường tiêm cấp cứu"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b2_p1",
+                        "dayRange": "Giờ 1 - Giờ 24",
+                        "phaseName": "Giai đoạn Cấp cứu Ban đầu & Theo dõi Phản vệ 2 pha",
+                        "clinicalGoal": "Cấp cứu phục hồi tuần hoàn/hô hấp và dự phòng đợt tái phát pha 2",
+                        "problems": [
+                            {
+                                "id": "b2_prob_emerg",
+                                "problemName": "Xử trí cấp cứu phản vệ Độ II",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "Adrenalin & Hồi sức A-B-C",
+                                        "content": "Tiêm bắp Adrenalin 1mg/1ml ngay lập tức. Đặt nằm đầu thấp, thở oxy qua mask 6 - 10 L/phút.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Dịch truyền & Thuốc phối hợp",
+                                        "content": "Thiết lập đường truyền IV NaCl 0.9% + Tiêm Diphenhydramin 1mg/kg + Methylprednisolon 1-2mg/kg IV",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mạch, HA, Nhịp thở, SpO₂, Tri giác",
+                                        "frequency": "Mỗi 3 - 5 phút/lần cho đến khi ổn định, sau đó mỗi 1 - 2 giờ trong 24 giờ tiếp theo",
+                                        "target": "HATT ≥ 90 mmHg, SpO₂ ≥ 95%, nhịp tim 60-100 lần/phút"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_3",
+                "name": "Độ III & IV: Mức độ Nguy kịch & Ngừng tuần hoàn",
+                "badgeText": "Hồi sức ICU / Báo động đỏ",
+                "color": "rose",
+                "criteria": "Độ III (Nguy kịch): Biểu hiện ở nhiều cơ quan nặng hơn (thở rít/phù thanh quản, khò khè, tím tái, rối loạn ý thức, sốc mạch nhanh nhỏ, tụt HA). Độ IV: Ngừng hô hấp, ngừng tuần hoàn.",
+                "triage": "Khoa Hồi sức Cấp cứu (ICU) / Báo động đỏ toàn viện",
+                "targetVitals": "MAP ≥ 65 mmHg, HATT ≥ 90 mmHg (trẻ em ≥ 70 mmHg), SpO₂ ≥ 95%, Lactate < 2 mmol/L.",
+                "escalationCriteria": "Sốc kháng Adrenalin tiêm bắp -> Chuyển Adrenalin TTM liên tục. Nếu vẫn không lên HA phối hợp Noradrenalin / Vasopressin / Glucagon / Nhũ dịch Lipid 20% (nếu do ngộ độc thuốc tê).",
+                "dischargeCriteria": "Thoát sốc hoàn toàn, cai Adrenalin TTM > 24h, ý thức tỉnh táo, các tạng hồi phục an toàn.",
+                "drugs": [
+                    [
+                        "Adrenalin truyền tĩnh mạch liên tục",
+                        "Khởi đầu 0,1 µg/kg/phút TTM bằng máy truyền dịch, chỉnh liều theo M và HA",
+                        "Chỉ định khi tiêm bắp Adrenalin 3 lần không đáp ứng hoặc bệnh nhân sốc nặng nguy kịch"
+                    ],
+                    [
+                        "Dung dịch NaCl 0,9% / Ringer Lactate",
+                        "Người lớn 1 - 2 lít truyền nhanh IV; Trẻ em 10 - 20 ml/kg trong 10 - 20 phút",
+                        "Hồi sức thể tích chống sốc phân bố/giảm thể tích"
+                    ],
+                    [
+                        "Salbutamol (Ventolin)",
+                        "Khí dung Salbutamol 5mg (1 ống) qua oxy 6-8 L/phút",
+                        "Chỉ định khi có co thắt phế quản / khò khè",
+                        "Giãn phế quản cấp cứu"
+                    ],
+                    [
+                        "Glucagon",
+                        "Người lớn 1 - 5 mg IV trong 5 phút, sau đó duy trì 5 - 15 µg/phút; Trẻ em 20 - 30 µg/kg",
+                        "Chỉ định cho bệnh nhân phản vệ đang dùng thuốc chẹn thụ thể Beta"
+                    ],
+                    [
+                        "Nhũ dịch Lipid 20% (Intralipid)",
+                        "Bolus IV 1,5 ml/kg trong 1 phút, sau đó truyền TTM 0,25 ml/kg/phút",
+                        "Chỉ định khi nghi ngờ phản vệ / ngộ độc do thuốc tê cục bộ (Lidocaine, Bupivacaine)"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b3_p1",
+                        "dayRange": "Giờ 0 - Giờ 6 (Giờ vàng)",
+                        "phaseName": "Giai đoạn Hồi sức Chống sốc & Đảm bảo Hô hấp",
+                        "clinicalGoal": "Phục hồi huyết động, giải quyết suy hô hấp và kiểm soát ngừng tuần hoàn",
+                        "problems": [
+                            {
+                                "id": "b3_prob_shock",
+                                "problemName": "Sốc phản vệ / Thở rít / Ngừng tuần hoàn",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": false,
+                                "treatments": [
+                                    {
+                                        "category": "Adrenalin TTM & Hồi sức ABCDE / CPR",
+                                        "content": "Truyền tĩnh mạch Adrenalin 0,1 µg/kg/phút. Bù nhanh NaCl 0.9% 1-2 Lít. Đặt NKQ / Bóp bóng oxy 100%. Nếu Độ IV tiến hành CPR / ACLS ngay lập tức.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mạch, HA, SpO₂, Monitor ECG liên tục",
+                                        "frequency": "Liên tục trên máy theo dõi",
+                                        "target": "HATT ≥ 90 mmHg, MAP ≥ 65 mmHg, SpO₂ ≥ 95%"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "severityGrading": [],
+    "protocol": {
+        "title": "Phác đồ chẩn đoán và xử trí phản vệ theo Thông tư 51/2017/TT-BYT của Bộ Y tế",
+        "guideline": "Thông tư số 51/2017/TT-BYT ban hành ngày 29/12/2017 của Bộ trưởng Bộ Y tế",
+        "targetGoals": [
+            "Nhận biết và chẩn đoán sớm phản vệ ngay tại chỗ",
+            "Tiêm bắp ngay Adrenalin cho người bệnh phản vệ từ Độ II trở lên",
+            "Duy trì ổn định HATT ≥ 90 mmHg (trẻ em ≥ 70 mmHg) và SpO₂ ≥ 95%",
+            "Theo dõi liên tục ít nhất 24 giờ để đề phòng phản vệ 2 pha"
+        ],
+        "initialManagement": [
+            "Ngừng ngay tiếp xúc với thuốc hoặc dị nguyên nghi ngờ",
+            "Gọi hỗ trợ khẩn cấp, đặt người bệnh nằm đầu thấp (nếu nôn/hôn mê nằm nghiêng an toàn; thai phụ nằm nghiêng trái)",
+            "Tiêm bắp ngay Adrenalin 1mg/1ml khi có chẩn đoán phản vệ từ Độ II trở lên",
+            "Đánh giá và kiểm soát đường thở, hô hấp, tuần hoàn (ABCDE)"
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Adrenalin (Epinephrine) 1mg/1ml",
+                "class": "Thuốc cường sympathomimetic (Thuốc thiết yếu hàng đầu)",
+                "route": "IM (Tiêm bắp sâu mặt trước ngoài đùi)",
+                "dosage": "Người lớn: 0,5 - 1 ml (1/2 - 1 ống); Trẻ em: 0,01 mg/kg (<10kg: 0,2ml; ~10kg: 0,25ml; ~20kg: 0,3ml; >30kg: 0,5ml)",
+                "frequency": "Tiêm lặp lại mỗi 3 - 5 phút/lần nếu triệu chứng chưa cải thiện",
+                "instructions": "Bác sĩ, điều dưỡng, KTV, hộ sinh ĐƯỢC PHÉP TIÊM BẮP ADRENALIN NGAY khi phát hiện phản vệ Độ II trở lên.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Diphenhydramin (Dimedrol) 10mg/ml",
+                "class": "Thuốc kháng H1 thế hệ 1",
+                "route": "IM / IV",
+                "dosage": "Người lớn: 25 - 50 mg; Trẻ em: 10 - 25 mg (1 mg/kg)",
+                "frequency": "Mỗi 6 - 8 giờ",
+                "instructions": "Dùng phối hợp sau Adrenalin để giảm biểu hiện da niêm và ngứa",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Methylprednisolon 40mg",
+                "class": "Corticosteroid",
+                "route": "IV / IM",
+                "dosage": "1 - 2 mg/kg (Người lớn 40 - 80 mg, Trẻ em tối đa 50 mg)",
+                "frequency": "Tiêm IV chậm",
+                "instructions": "Dùng phòng ngừa phản vệ pha 2 (biphasic anaphylaxis)",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Đặt người bệnh nằm nghỉ tại chỗ, nằm đầu thấp nâng cao chân (trừ khi khó thở/suy hô hấp nằm đầu cao/ngồi; thai phụ nằm nghiêng trái)",
+            "Thở oxy qua mũi / mask 6 - 10 L/phút",
+            "Theo dõi liên tục sinh hiệu (Mạch, HA, Nhịp thở, SpO₂, Tri giác) mỗi 3-5 phút trong giai đoạn cấp và mỗi 1-2 giờ trong 24 giờ tiếp theo",
+            "Cấp Thẻ theo dõi dị ứng và hướng dẫn tái khám chuyên khoa Dị ứng - Miễn dịch lâm sàng sau 4 - 6 tuần"
+        ]
+    },
+    "complications": [
+        {
+            "id": "comp_1",
+            "name": "Sốc phản vệ kháng Adrenalin / Phản vệ pha 2 (Biphasic Anaphylaxis)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Huyết áp không lên sau 3 lần tiêm bắp Adrenalin, hoặc triệu chứng tái phát sau 1 - 72 giờ (thường 1 - 8 giờ) dù đã ổn định ban đầu.",
+            "preventiveAction": "Chuyển Adrenalin truyền tĩnh mạch liên tục (0,1 µg/kg/phút), bù đủ dịch NaCl 0.9%, dùng Corticoid IV và theo dõi sát tại bệnh viện tối thiểu 24 giờ.",
+            "onCallAlertText": "BÁO ĐỘNG ĐỎ: Bắt đầu truyền tĩnh mạch Adrenalin liên tục bằng máy truyền dịch, lập 2 đường truyền IV lớn, hội chẩn ICU khẩn cấp."
+        }
+    ],
+    "monitoringLabs": [
+        "Khí máu động mạch (KMĐM), Lactate máu: Đánh giá toan chuyển hóa và tưới máu mô",
+        "Tryptase máu, Histamine máu: Rút máu trong 1-2 giờ đầu sau khởi phát để xác nhận chẩn đoán (đặc biệt trong phẫu thuật/gây mê)",
+        "Tổng phân tích tế bào máu, Điện giải đồ, Chức năng gan thận (Urea, Creatinine, AST, ALT)"
+    ],
+    "clinicalCautions": {
+        "specificTreatmentIndications": "Adrenalin là thuốc điều trị quan trọng nhất, cứu sống người bệnh. Phải tiêm bắp ngay khi chẩn đoán phản vệ từ Độ II trở lên, tuyệt đối không trì hoãn.",
+        "clinicalIndications": [
+            {
+                "category": "Chỉ định Adrenalin đường truyền tĩnh mạch liên tục",
+                "badgeText": "Hồi sức Cấp cứu",
+                "color": "rose",
+                "items": [
+                    {
+                        "indicationName": "Adrenalin TTM liên tục",
+                        "criteria": "Đã tiêm bắp Adrenalin 3 lần không đáp ứng hoặc bệnh nhân tụt HA nặng, sốc kéo dài / nguy kịch",
+                        "orderTarget": "Duy trì HATT ≥ 90 mmHg ở người lớn (≥ 70 mmHg ở trẻ em)",
+                        "note": "Khởi đầu 0,1 µg/kg/phút, chỉnh liều theo M và HA. Khuyến khích sử dụng máy truyền dịch."
+                    }
+                ]
+            }
+        ],
+        "criticalWarnings": [
+            "TẤT CẢ nhân viên y tế (bác sĩ, điều dưỡng, KTV, hộ sinh) ĐƯỢC PHÉP TIÊM BẮP ADRENALIN NGAY khi phát hiện phản vệ từ Độ II trở lên.",
+            "KHÔNG trì hoãn tiêm Adrenalin để chờ đợi hội chẩn hay vì e ngại tăng huyết áp ở bệnh nhân có bệnh tim mạch.",
+            "Tất cả bệnh nhân phản vệ PHẢI ĐƯỢC THEO DÕI TẠI CƠ SỞ Y TẾ ÍT NHẤT 24 GIỜ sau khi huyết áp đã ổn định để phòng ngừa phản vệ pha 2.",
+            "Trẻ em KHÔNG áp dụng tiêm tĩnh mạch chậm Adrenalin (chỉ tiêm bắp hoặc truyền tĩnh mạch liên tục)."
+        ],
+        "contraindications": [
+            "Không có chống chỉ định tuyệt đối nào đối với Adrenalin trong cấp cứu phản vệ đe dọa tính mạng.",
+            "Không thử phản ứng (test) cho tất cả các loại thuốc trừ khi có chỉ định của bác sĩ.",
+            "Không kê đơn hoặc sử dụng lại thuốc/dị nguyên đã biết rõ gây phản vệ cho người bệnh."
+        ],
+        "dischargeCriteria": [
+            "Huyết áp và các dấu hiệu sinh tồn ổn định hoàn toàn liên tục ≥ 24 giờ sau khi ngưng Adrenalin.",
+            "Không còn các biểu hiện hô hấp (khó thở, thở rít), tiêu hóa hay da niêm.",
+            "Đã được khai thác tiền sử dị ứng, cấp Thẻ theo dõi dị ứng thuốc và hẹn tái khám chuyên khoa Dị ứng - Miễn dịch lâm sàng sau 4 - 6 tuần."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán phản vệ theo Thông tư 51/2017/TT-BYT",
+            "searchKeyword": "chẩn đoán phan_ve"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ xử trí cấp cứu phản vệ Bộ Y tế mới nhất",
+            "searchKeyword": "phác đồ điều trị phan_ve"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí sốc phản vệ kháng Adrenalin và phản vệ pha 2",
+            "searchKeyword": "biến chứng phan_ve"
+        }
+    ]
+}

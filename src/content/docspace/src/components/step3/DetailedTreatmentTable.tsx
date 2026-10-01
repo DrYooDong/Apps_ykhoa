@@ -3,21 +3,34 @@ import {
   Activity,
   AlertCircle,
   AlertTriangle,
+  Brain,
   Calendar,
   Check,
+  ChevronDown,
+  ChevronUp,
   ClipboardCheck,
   ClipboardCopy,
+  Clock,
   Compass,
   Dna,
+  Droplets,
+  Eye,
+  EyeOff,
+  Filter,
   Gauge,
+  Heart,
   Layers,
   Pill,
   Plus,
   RotateCcw,
   ShieldAlert,
   ShieldCheck,
+  Sparkles,
+  Stethoscope,
   Syringe,
   Trash2,
+  Wind,
+  Zap,
 } from 'lucide-react';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
 import {
@@ -26,9 +39,11 @@ import {
   adaptPhaseToProblemRows,
   getGeneralComplications,
 } from '../../lib/dailyTreatmentTimeline.ts';
-import { BranchAxis, CombinedProtocol, PhacDo } from '../../types.ts';
+import { BranchAxis, ClinicalSubBranch, CombinedProtocol, PhacDo } from '../../types.ts';
 import { CustomOrder } from './ProtocolOrderSheet.tsx';
 import { SafePrescribingDdiPanel } from '../SafePrescribingDdiPanel.tsx';
+import { SevereSubBranchSelector } from './SevereSubBranchSelector.tsx';
+import { PhaseProgressMiniNav } from './PhaseProgressMiniNav.tsx';
 
 interface DetailedTreatmentTableProps {
   diseaseId: string;
@@ -74,6 +89,9 @@ interface DetailedTreatmentTableProps {
   activeAxisId?: string;
   onSelectAxis?: (axisId: string) => void;
   currentAxisLabel?: string;
+  subBranches?: ClinicalSubBranch[];
+  selectedSubBranchIds?: string[];
+  onToggleSubBranch?: (subBranchId: string) => void;
 }
 
 export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
@@ -114,11 +132,39 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   activeAxisId,
   onSelectAxis,
   currentAxisLabel,
+  subBranches = [],
+  selectedSubBranchIds = [],
+  onToggleSubBranch,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newDrug, setNewDrug] = useState('');
   const [newDosage, setNewDosage] = useState('');
   const [newNote, setNewNote] = useState('');
+  
+  // State quản lý thu gọn / mở rộng từng Giai đoạn điều trị (Phase Collapse/Expand)
+  const [collapsedPhases, setCollapsedPhases] = useState<Record<string, boolean>>({});
+  
+  // State lọc xem theo Sub-branch cụ thể hoặc tất cả
+  const [activeSubBranchTab, setActiveSubBranchTab] = useState<string>('all');
+
+  const togglePhaseCollapse = (phaseId: string) => {
+    setCollapsedPhases((prev) => ({
+      ...prev,
+      [phaseId]: !prev[phaseId],
+    }));
+  };
+
+  const handleCollapseAllPhases = () => {
+    const next: Record<string, boolean> = {};
+    timelinePhases.forEach((p, idx) => {
+      next[p.id || String(idx)] = true;
+    });
+    setCollapsedPhases(next);
+  };
+
+  const handleExpandAllPhases = () => {
+    setCollapsedPhases({});
+  };
 
   const getAxisIcon = (iconName?: string, axisType?: string) => {
     const iconKey = (iconName || '').toLowerCase();
@@ -360,6 +406,16 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
         </div>
       )}
 
+      {/* 1.5. THANH ĐIỀU HƯỚNG TIẾN ĐỘ MINI NAV (STICKY SCAN-FIRST UI) */}
+      <PhaseProgressMiniNav
+        timelinePhases={timelinePhases}
+        currentCheckedCount={currentCheckedCount}
+        totalAllOrders={totalAllOrders}
+        progressPercent={progressPercent}
+        onCopyOrderSheet={onCopyOrderSheet}
+        copySuccess={copySuccess}
+      />
+
       {/* 2. THANH TIẾN ĐỘ & TÁC VỤ Y LỆNH */}
       <div id="sub-orders" className="scroll-mt-24 px-3 sm:px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
         {/* Thanh Quick-jump Timeline Anchor */}
@@ -386,6 +442,28 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
               <span>🚨 Biến chứng chung</span>
             </a>
           )}
+
+          {/* Nút Scan-First: Mở tất cả / Thu gọn tất cả các giai đoạn */}
+          <div className="flex items-center gap-1 shrink-0 ml-1">
+            <button
+              type="button"
+              onClick={handleExpandAllPhases}
+              className="px-2 py-1 rounded text-[11px] font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition-colors flex items-center gap-1 shadow-2xs cursor-pointer"
+              title="Mở toàn bộ các giai đoạn"
+            >
+              <Eye className="w-3 h-3 text-blue-600" />
+              <span className="hidden sm:inline">Mở hết</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleCollapseAllPhases}
+              className="px-2 py-1 rounded text-[11px] font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition-colors flex items-center gap-1 shadow-2xs cursor-pointer"
+              title="Thu gọn tất cả để chống ngộp chữ và dễ quét thông tin"
+            >
+              <EyeOff className="w-3 h-3 text-slate-500" />
+              <span className="hidden sm:inline">Thu gọn</span>
+            </button>
+          </div>
         </div>
 
         {/* Thanh tiến độ và các nút tác vụ */}
@@ -594,56 +672,216 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
         </div>
       )}
 
+      {/* 2b. Severe Sub-Branch Selector Widget (Nếu bệnh có các nhánh nặng chuyên sâu) */}
+      {subBranches && subBranches.length > 0 && (
+        <div className="mx-2 sm:mx-4">
+          <SevereSubBranchSelector
+            subBranches={subBranches}
+            selectedSubBranchIds={selectedSubBranchIds}
+            onToggleSubBranch={onToggleSubBranch || (() => {})}
+            onSelectAllSubBranches={() => {
+              subBranches.forEach((sb) => {
+                if (!selectedSubBranchIds.includes(sb.id) && onToggleSubBranch) {
+                  onToggleSubBranch(sb.id);
+                }
+              });
+            }}
+            onClearSubBranches={() => {
+              selectedSubBranchIds.forEach((id) => {
+                if (onToggleSubBranch) onToggleSubBranch(id);
+              });
+            }}
+            subBranchLabel="Phân loại & Lựa chọn các thể lâm sàng nặng (Sốc, Xuất huyết, Suy tạng)"
+            subBranchMode="multi-select"
+          />
+        </div>
+      )}
+
+      {/* Sub-branches Filter & Specific Orders Strip (Khi có phân loại nặng chuyên sâu) */}
+      {subBranches && subBranches.length > 0 && selectedSubBranchIds && selectedSubBranchIds.length > 0 && (
+        <div className="mx-2 sm:mx-4 p-3.5 bg-gradient-to-r from-rose-50/90 via-red-50/50 to-slate-50 border-2 border-rose-300 rounded-xl shadow-2xs flex flex-col gap-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-rose-200/80 pb-2">
+            <div className="flex items-center gap-2">
+              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" />
+              <span className="font-bold text-xs sm:text-sm text-rose-950">
+                Phân nhánh thể bệnh nặng đang kích hoạt ({selectedSubBranchIds.length} thể):
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <button
+                type="button"
+                onClick={() => setActiveSubBranchTab('all')}
+                className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+                  activeSubBranchTab === 'all'
+                    ? 'bg-rose-600 text-white shadow-2xs'
+                    : 'bg-white text-rose-800 border border-rose-200 hover:bg-rose-100'
+                }`}
+              >
+                Tất cả các thể
+              </button>
+              {subBranches
+                .filter((sb) => selectedSubBranchIds.includes(sb.id))
+                .map((sb) => (
+                  <button
+                    key={sb.id}
+                    type="button"
+                    onClick={() => setActiveSubBranchTab(sb.id)}
+                    className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
+                      activeSubBranchTab === sb.id
+                        ? 'bg-rose-600 text-white shadow-2xs'
+                        : 'bg-white text-rose-800 border border-rose-200 hover:bg-rose-100'
+                    }`}
+                  >
+                    <span>{sb.badgeText || sb.name.split('/')[0].trim()}</span>
+                  </button>
+                ))}
+            </div>
+          </div>
+
+          {/* Hiển thị chi tiết thuốc & can thiệp riêng của từng thể nặng khi click chọn */}
+          {activeSubBranchTab !== 'all' && (() => {
+            const activeSb = subBranches.find((s) => s.id === activeSubBranchTab);
+            if (!activeSb) return null;
+            return (
+              <div className="bg-white p-3 rounded-lg border border-rose-200 flex flex-col gap-2 text-xs">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="font-bold text-rose-900 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-rose-600" />
+                    <span>Y lệnh can thiệp đặc thù cho thể: {activeSb.name}</span>
+                  </div>
+                  {activeSb.targetVitals && (
+                    <span className="text-[11px] font-mono-custom text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      🎯 Đích: {activeSb.targetVitals}
+                    </span>
+                  )}
+                </div>
+
+                {activeSb.keyActions && (
+                  <div className="text-[11px] text-slate-700 bg-rose-50/50 p-2 rounded border border-rose-100 space-y-1">
+                    <span className="font-bold text-rose-800 block">Hành động khẩn cấp cần thực hiện:</span>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      {activeSb.keyActions.map((ka, idx) => (
+                        <li key={idx}>{ka}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {activeSb.drugs && activeSb.drugs.length > 0 && (
+                  <div className="pt-1.5 border-t border-slate-100">
+                    <span className="font-bold text-slate-800 text-[11px] block mb-1">
+                      💊 Thuốc / Dịch truyền ưu tiên:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {activeSb.drugs.map(([dName, dDose, dNote], idx) => (
+                        <div key={idx} className="p-2 rounded bg-slate-50 border border-slate-200">
+                          <div className="font-bold text-indigo-900">{dName}</div>
+                          <div className="text-emerald-700 font-mono-custom text-[10.5px] font-semibold">{dDose}</div>
+                          {dNote && <div className="text-slate-500 text-[10.5px] mt-0.5">{dNote}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       {/* 3. CÁC GIAI ĐOẠN ĐIỀU TRỊ CUỘN LIÊN TỤC (CONTINUOUS SCROLLING BLOCKS) */}
       <div id="sub-timeline" className="scroll-mt-24 px-2 sm:px-4 flex flex-col gap-6">
         {timelinePhases.map((phase, pIdx) => {
+          const phaseKey = phase.id || String(pIdx);
+          const isPhaseCollapsed = Boolean(collapsedPhases[phaseKey]);
+
           // Lấy danh sách vấn đề của giai đoạn này
           const baseProblems = adaptPhaseToProblemRows(phase, diseaseId, diseaseName);
           const phaseComplications = phase.phaseComplications || [];
           const allProblems = [...baseProblems, ...phaseComplications];
 
+          // Đếm tổng số y lệnh trong giai đoạn
+          let phaseOrdersCount = 0;
+          allProblems.forEach((pr) => {
+            if (!pr.isNoSpecificTreatment && pr.treatments) {
+              phaseOrdersCount += pr.treatments.length;
+            }
+          });
+
           return (
             <div
-              key={phase.id || pIdx}
-              id={`phase-section-${phase.id || pIdx}`}
-              className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs bg-white scroll-mt-6"
+              key={phaseKey}
+              id={`phase-section-${phaseKey}`}
+              className={`border-2 rounded-xl overflow-hidden shadow-2xs bg-white scroll-mt-6 transition-all duration-200 ${
+                isPhaseCollapsed ? 'border-slate-200 hover:border-slate-300' : 'border-blue-200/90 shadow-xs'
+              }`}
             >
-              {/* Header Giai đoạn & Mục tiêu lâm sàng */}
-              <div className="p-3 sm:p-3.5 bg-slate-100/90 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                <div className="flex items-center gap-2 flex-wrap">
+              {/* Header Giai đoạn (Phase Divider Card) - Click để thu gọn / mở rộng */}
+              <div
+                onClick={() => togglePhaseCollapse(phaseKey)}
+                className={`p-3 sm:p-3.5 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 cursor-pointer transition-colors select-none ${
+                  isPhaseCollapsed
+                    ? 'bg-slate-50 hover:bg-slate-100/90 border-slate-200'
+                    : 'bg-gradient-to-r from-blue-50/90 via-indigo-50/40 to-slate-50 border-blue-200'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 flex-wrap">
                   <span className="px-2.5 py-0.5 rounded text-xs font-bold font-mono-custom bg-blue-600 text-white shadow-2xs">
                     {phase.dayRange}
                   </span>
                   <h4 className="font-bold text-xs sm:text-sm text-slate-900">
                     {phase.phaseName}
                   </h4>
+                  <span className="px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-slate-200/80 text-slate-700">
+                    {phaseOrdersCount} y lệnh
+                  </span>
                 </div>
 
-                {/* Mục tiêu lâm sàng cốt lõi */}
-                {phase.clinicalGoal && (
-                  <div className="text-[11.5px] text-blue-950 bg-blue-50/90 px-3 py-1.5 rounded-lg border border-blue-200/80 leading-relaxed max-w-2xl">
-                    <span className="font-bold text-blue-900 mr-1">🎯 Mục tiêu:</span>
-                    <span>{phase.clinicalGoal}</span>
-                  </div>
-                )}
+                <div className="flex items-center gap-2">
+                  {/* Mục tiêu lâm sàng cốt lõi */}
+                  {phase.clinicalGoal && (
+                    <div className="text-[11.5px] text-blue-950 bg-blue-50/90 px-3 py-1 rounded-lg border border-blue-200/80 leading-relaxed max-w-xl hidden md:block truncate">
+                      <span className="font-bold text-blue-900 mr-1">🎯 Mục tiêu:</span>
+                      <span>{phase.clinicalGoal}</span>
+                    </div>
+                  )}
+
+                  {/* Nút thu gọn / mở rộng */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      togglePhaseCollapse(phaseKey);
+                    }}
+                    className="p-1 rounded-md hover:bg-white text-slate-500 hover:text-blue-700 transition-colors shrink-0 ml-auto sm:ml-0 cursor-pointer"
+                    title={isPhaseCollapsed ? 'Mở rộng chi tiết giai đoạn' : 'Thu gọn giai đoạn'}
+                  >
+                    {isPhaseCollapsed ? (
+                      <ChevronDown className="w-4 h-4 text-slate-600" />
+                    ) : (
+                      <ChevronUp className="w-4 h-4 text-blue-600" />
+                    )}
+                  </button>
+                </div>
               </div>
 
-              {/* Bảng 3 cột tối giản */}
-              <div className="overflow-x-auto no-scrollbar">
-                <table className="w-full text-left border-collapse text-xs min-w-[720px]">
-                  <thead>
-                    <tr className="bg-slate-50 text-slate-700 border-b border-slate-200 font-bold uppercase tracking-wider text-[11px]">
-                      <th className="p-3 w-[26%] min-w-[200px] border-r border-slate-200">
-                        1. Vấn đề
-                      </th>
-                      <th className="p-3 w-[46%] min-w-[340px] border-r border-slate-200">
-                        2. Phác đồ &amp; y lệnh
-                      </th>
-                      <th className="p-3 w-[28%] min-w-[220px]">
-                        3. Theo dõi
-                      </th>
-                    </tr>
-                  </thead>
+              {/* Bảng 3 cột tối giản (chỉ render khi không bị thu gọn) */}
+              {!isPhaseCollapsed && (
+                <div className="overflow-x-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse text-xs min-w-[720px]">
+                    <thead>
+                      <tr className="bg-slate-50 text-slate-700 border-b border-slate-200 font-bold uppercase tracking-wider text-[11px]">
+                        <th className="p-3 w-[26%] min-w-[200px] border-r border-slate-200">
+                          1. Vấn đề
+                        </th>
+                        <th className="p-3 w-[46%] min-w-[340px] border-r border-slate-200">
+                          2. Phác đồ &amp; y lệnh
+                        </th>
+                        <th className="p-3 w-[28%] min-w-[220px]">
+                          3. Theo dõi
+                        </th>
+                      </tr>
+                    </thead>
 
                   <tbody className="divide-y divide-slate-200">
                     {allProblems.map((prob, probIdx) => {
@@ -652,12 +890,14 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                       return (
                         <tr
                           key={prob.id || probIdx}
-                          className={`hover:bg-slate-50/60 transition-colors align-top ${
+                          className={`hover:bg-slate-50/70 transition-colors align-top ${
                             prob.problemType === 'complication'
-                              ? 'bg-rose-50/15'
+                              ? 'border-l-4 border-l-rose-500 bg-rose-50/10'
                               : prob.problemType === 'specific'
-                              ? 'bg-indigo-50/15'
-                              : ''
+                              ? 'border-l-4 border-l-indigo-600 bg-indigo-50/10'
+                              : prob.problemType === 'paraclinical'
+                              ? 'border-l-4 border-l-purple-500 bg-purple-50/10'
+                              : 'border-l-4 border-l-sky-500 bg-sky-50/10'
                           }`}
                         >
                           {/* CỘT 1: 1. VẤN ĐỀ */}
@@ -851,9 +1091,9 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                             </div>
                           </td>
 
-                          {/* CỘT 3: 3. THEO DÕI */}
+                          {/* CỘT 3: 3. THEO DÕI DẠNG CHIPS TRỰC QUAN (SCAN-FIRST) */}
                           <td className="p-3">
-                            {/* Nếu chưa có điều trị đặc hiệu: BỎ TRỐNG THEO ĐÚNG YÊU CẦU */}
+                            {/* Nếu chưa có điều trị đặc hiệu */}
                             {isNoSpecific ? (
                               <div className="text-center text-slate-300 text-xs py-2">—</div>
                             ) : (
@@ -863,48 +1103,44 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                                   return (
                                     <div
                                       key={mIdx}
-                                      className={`p-2 rounded border text-[11px] leading-snug ${
+                                      className={`p-2 rounded-lg border text-[11px] leading-snug flex flex-col gap-1 shadow-2xs transition-all ${
                                         isCLS
-                                          ? 'bg-purple-50/50 border-purple-100 text-slate-800'
-                                          : 'bg-blue-50/50 border-blue-100 text-slate-800'
+                                          ? 'bg-purple-50/70 border-purple-200 text-purple-950'
+                                          : 'bg-sky-50/70 border-sky-200 text-sky-950'
                                       }`}
                                     >
-                                      <div className="flex items-center justify-between gap-1 font-semibold">
-                                        <span className="flex items-center gap-1">
+                                      {/* Hàng 1: Loại + Chỉ số + Tần suất */}
+                                      <div className="flex items-center justify-between gap-1 font-bold">
+                                        <div className="flex items-center gap-1.5 min-w-0">
                                           <span
-                                            className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                                              isCLS ? 'bg-purple-600' : 'bg-blue-600'
+                                            className={`px-1.5 py-0.2 rounded text-[9.5px] uppercase font-mono font-bold shrink-0 ${
+                                              isCLS
+                                                ? 'bg-purple-600 text-white'
+                                                : 'bg-sky-600 text-white'
                                             }`}
-                                          />
-                                          <span
-                                            title={
-                                              m.metric.includes('PLT')
-                                                ? 'PLT: Platelets (Số lượng tiểu cầu)'
-                                                : m.metric.includes('Hct')
-                                                ? 'Hct: Hematocrit (Dung tích hồng cầu cô đặc máu)'
-                                                : m.metric.includes('WBC')
-                                                ? 'WBC: White Blood Cells (Số lượng bạch cầu)'
-                                                : m.metric.includes('DHCB')
-                                                ? 'DHCB: 7 Dấu hiệu cảnh báo theo Bộ Y tế'
-                                                : m.metric
-                                            }
                                           >
+                                            {isCLS ? 'CLS' : 'LS'}
+                                          </span>
+                                          <span className="truncate" title={m.metric}>
                                             {m.metric}
                                           </span>
-                                        </span>
-                                        <span
-                                          className={`px-1.5 py-0.2 rounded text-[10px] font-mono-custom ${
-                                            isCLS
-                                              ? 'bg-purple-100 text-purple-800'
-                                              : 'bg-blue-100 text-blue-800'
-                                          }`}
-                                        >
-                                          {m.frequency}
+                                        </div>
+
+                                        <span className="px-1.5 py-0.2 rounded text-[10px] font-mono-custom bg-white border border-slate-200 text-slate-700 shrink-0 flex items-center gap-0.5">
+                                          <Clock className="w-2.5 h-2.5 text-slate-400" />
+                                          <span>{m.frequency}</span>
                                         </span>
                                       </div>
+
+                                      {/* Hàng 2: Mục tiêu / Đích kiểm soát */}
                                       {m.target && (
-                                        <div className="text-[10.5px] text-slate-600 italic mt-0.5">
-                                          Đích: {m.target}
+                                        <div className="flex items-center gap-1 text-[10.5px] pt-1 border-t border-slate-100">
+                                          <span className="font-semibold text-emerald-800 bg-emerald-100/80 px-1 py-0.2 rounded text-[9.5px]">
+                                            ĐÍCH:
+                                          </span>
+                                          <span className="text-slate-700 italic">
+                                            {m.target}
+                                          </span>
                                         </div>
                                       )}
                                     </div>
@@ -922,6 +1158,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                   </tbody>
                 </table>
               </div>
+              )}
             </div>
           );
         })}

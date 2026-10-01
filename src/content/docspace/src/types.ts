@@ -35,6 +35,27 @@ export type BranchAxisType =
   | 'comorbidity'    // Theo nhóm bệnh đồng mắc / nguy cơ (Kèm ASCVD/CKD/HF vs Không có)
   | 'custom';        // Tự do định nghĩa theo tính chất bệnh
 
+export interface ClinicalSubBranch {
+  id: string;                         // Mã nhánh con duy nhất (VD: 'sb_shock', 'sb_bleeding', 'sb_liver')
+  groupId?: string;                   // Mã nhóm (VD: '3A', '3B', '3C')
+  groupName?: string;                 // Tên nhóm (VD: 'Thoát huyết tương nặng', 'Xuất huyết nặng', 'Suy tạng')
+  name: string;                       // Tên hiển thị (VD: 'Sốc SXHD (DSS) / Tái sốc')
+  badgeText?: string;                 // Nhãn ngắn (VD: 'Cấp cứu', 'Khẩn cấp', 'ICU')
+  icon?: string;                      // Tên Lucide icon (e.g. 'Zap', 'Wind', 'Droplets', 'Activity', 'Filter', 'Heart', 'Brain')
+  color?: 'emerald' | 'amber' | 'rose' | 'red' | 'blue' | 'indigo' | 'purple' | 'orange' | 'violet' | 'pink' | string;
+  urgency?: 'immediate' | 'urgent' | 'priority' | string;
+  criteria?: string;                  // Tiêu chuẩn xếp loại / nhận diện
+  triage?: string;                    // Tuyến / khoa điều trị
+  targetVitals?: string;              // Sinh hiệu mục tiêu
+  escalationCriteria?: string;        // Báo động đỏ / Tiêu chuẩn leo thang
+  dischargeCriteria?: string;         // Tiêu chuẩn ổn định / ra viện
+  keyActions?: string[];              // Các hành động then chốt cần thực hiện ngay
+  drugs?: [string, string, string][]; // Danh mục thuốc đặc hiệu cho nhánh con này
+  timelinePhases?: any[];             // Lộ trình điều trị chi tiết theo ngày/pha của nhánh con
+  monitoring?: string[];              // Theo dõi đặc thù
+  cautions?: string[];                // Lưu ý lâm sàng đặc thù
+}
+
 export interface ClinicalBranch {
   id: string;                         // Mã nhánh duy nhất (VD: 'mild', 'canh_bao', 'curb65_high', 'purulent')
   name: string;                       // Tên nhánh hiển thị (VD: 'Mức độ 1: SXHD nhẹ', 'CURB-65 ≥ 3 (Nhập ICU)')
@@ -69,6 +90,10 @@ export interface ClinicalBranch {
   cautions?: string[];                // Lưu ý đặc thù của nhánh
   timelinePhases?: any[];             // Bảng 4 cột lộ trình điều trị từng ngày của nhánh
   patientCounseling?: string;         // Tư vấn bệnh nhân theo nhánh
+  hasSubBranches?: boolean;           // Bật chế độ phân nhánh con chuyên sâu (VD: SXHD nặng chia các thể suy tạng/xuất huyết)
+  subBranchMode?: 'single-select' | 'multi-select'; // Kiểu chọn nhánh con: đơn chọn hay đa chọn (BN có nhiều thể cùng lúc)
+  subBranchLabel?: string;            // Tiêu đề nhãn hiển thị cho nhánh con
+  subBranches?: ClinicalSubBranch[];  // Danh sách các nhánh con
 }
 
 export type BranchingMode = 'single' | 'multi';
