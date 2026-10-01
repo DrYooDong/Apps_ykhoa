@@ -52,6 +52,9 @@ export interface Study {
   publisher?: string;
   oldRegimen?: string;
   newRegimen?: string;
+  isCustom?: boolean;
+  _userModified?: boolean;
+  _userCreated?: boolean;
 }
 
 export interface JournalLookupResult {
@@ -373,6 +376,7 @@ declare global {
     dispatchSyncStatus?: (info: any) => void;
     backupCustomStudies?: () => boolean;
     restoreCustomStudiesBackup?: () => boolean;
+    validateStudySchema?: (raw: any) => { valid: boolean; errors: string[]; sanitized: Study | null };
     getSyncStats?: () => { staticCount: number; customCount: number; deletedCount: number; totalCount: number; bookmarkedCount: number };
     forceRefreshFromGitHub?: (options?: { resetLocalDelta?: boolean }) => Promise<void>;
     resetAllLocalOverrides?: () => void;

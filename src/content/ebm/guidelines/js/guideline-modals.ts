@@ -858,7 +858,7 @@ export function scanExistingDuplicates(threshold = 55): ExistingDuplicateConflic
 
       let isDup = false;
       let score = 0;
-      let level: 'exact' | 'high' | 'moderate' = 'moderate';
+      let level: 'exact' | 'high' | 'moderate' | 'near-similar' = 'moderate';
       let reasons: string[] = [];
 
       if (sameFile) {
@@ -878,8 +878,9 @@ export function scanExistingDuplicates(threshold = 55): ExistingDuplicateConflic
       if (dupResult && dupResult.isDuplicate) {
         isDup = true;
         score = Math.max(score, dupResult.score);
-        if (dupResult.matchLevel === 'exact') level = 'exact';
-        else if (dupResult.matchLevel === 'high' && level !== 'exact') level = 'high';
+        if (level !== 'exact' && dupResult.matchLevel && dupResult.matchLevel !== 'none') {
+          level = dupResult.matchLevel;
+        }
         if (dupResult.reasons && dupResult.reasons.length > 0) {
           dupResult.reasons.forEach(r => {
             if (!reasons.includes(r)) reasons.push(r);
