@@ -101,9 +101,80 @@ export const PatientInfoPanel: React.FC<PatientInfoPanelProps> = ({
             type="text"
             value={form.lyDo}
             onChange={(e) => setForm((prev) => ({ ...prev, lyDo: e.target.value }))}
-            placeholder="VD: Đau ngực trái dữ dội, Đau bụng HCP..."
+            placeholder="VD: Sốt cao ngày 4, đau cơ khớp, xuất huyết..."
             className="w-full border border-slate-200 rounded-md p-1.5 bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-xs text-slate-800 font-medium transition-colors"
           />
+        </div>
+      </div>
+
+      {/* Dòng 2: Ngày bệnh & Thể trạng tính liều phác đồ (Cân nặng, Chiều cao, BMI) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs mt-3 pt-3 border-t border-slate-100">
+        {/* Ngày bệnh */}
+        <div>
+          <div className="flex items-center justify-between mb-1">
+            <label className="font-semibold text-slate-700">Ngày thứ của bệnh</label>
+            <span className="text-[10px] text-blue-600 font-bold uppercase">Động học bệnh</span>
+          </div>
+          <input
+            id="input-disease-day"
+            type="number"
+            min={1}
+            max={30}
+            value={form.ngayBenh || ''}
+            onChange={(e) => setForm((prev) => ({ ...prev, ngayBenh: e.target.value }))}
+            placeholder="VD: 4 (Giai đoạn nguy hiểm)"
+            className="w-full border border-slate-200 rounded-md p-1.5 bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-xs text-slate-800 font-semibold transition-colors"
+          />
+        </div>
+
+        {/* Cân nặng */}
+        <div>
+          <label className="block font-semibold text-slate-700 mb-1">Cân nặng (kg)</label>
+          <input
+            id="input-weight"
+            type="number"
+            step="0.5"
+            min={1}
+            max={250}
+            value={form.canNang || ''}
+            onChange={(e) => setForm((prev) => ({ ...prev, canNang: e.target.value }))}
+            placeholder="VD: 68"
+            className="w-full border border-slate-200 rounded-md p-1.5 bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-xs text-slate-800 font-semibold transition-colors"
+          />
+        </div>
+
+        {/* Chiều cao */}
+        <div>
+          <label className="block font-semibold text-slate-700 mb-1">Chiều cao (cm)</label>
+          <input
+            id="input-height"
+            type="number"
+            min={30}
+            max={220}
+            value={form.chieuCao || ''}
+            onChange={(e) => setForm((prev) => ({ ...prev, chieuCao: e.target.value }))}
+            placeholder="VD: 168"
+            className="w-full border border-slate-200 rounded-md p-1.5 bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-xs text-slate-800 font-semibold transition-colors"
+          />
+        </div>
+
+        {/* BMI & Thể trạng tự động */}
+        <div>
+          <label className="block font-semibold text-slate-700 mb-1">Thể trạng &amp; BMI tự động</label>
+          <div className="p-1.5 rounded-md border border-slate-200 bg-slate-100 text-xs text-slate-700 flex items-center justify-between font-mono-custom">
+            <span>
+              {(() => {
+                const w = parseFloat(form.canNang || '0');
+                const h = parseFloat(form.chieuCao || '0');
+                if (w > 0 && h > 0) {
+                  const bmi = Math.round((w / ((h / 100) * (h / 100))) * 10) / 10;
+                  const cat = bmi >= 25 ? 'Béo phì (Cần AdjBW)' : bmi >= 23 ? 'Thừa cân' : bmi < 18.5 ? 'Gầy' : 'Bình thường';
+                  return `BMI: ${bmi} (${cat})`;
+                }
+                return 'Chưa tính BMI';
+              })()}
+            </span>
+          </div>
         </div>
       </div>
     </div>

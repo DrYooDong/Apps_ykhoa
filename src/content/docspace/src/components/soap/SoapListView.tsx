@@ -12,6 +12,7 @@ import { SoapClinicalExperience } from '../../types.ts';
 import {
   EXPERIENCE_LEVEL_LABELS,
   SOAP_SPECIALTIES,
+  getExperienceLevelConfig,
 } from '../../data/soapSeedData.ts';
 
 interface SoapListViewProps {
@@ -202,7 +203,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 max-h-[360px] overflow-y-auto pr-1">
             {cases.map((c) => {
               const isSelected = c.id === selectedCaseId;
-              const lvl = EXPERIENCE_LEVEL_LABELS[c.experienceLevel] || EXPERIENCE_LEVEL_LABELS.essential;
+              const lvl = getExperienceLevelConfig(c.experienceLevel);
 
               return (
                 <div

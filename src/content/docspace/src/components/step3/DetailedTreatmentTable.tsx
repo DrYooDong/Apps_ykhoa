@@ -23,6 +23,7 @@ import {
   Pill,
   Plus,
   RotateCcw,
+  Search,
   ShieldAlert,
   ShieldCheck,
   Sparkles,
@@ -30,6 +31,7 @@ import {
   Syringe,
   Trash2,
   Wind,
+  X,
   Zap,
 } from 'lucide-react';
 import { SeverityGradingItem } from '../../../data/diagnostic-criteria-database.ts';
@@ -141,6 +143,10 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   const [newDosage, setNewDosage] = useState('');
   const [newNote, setNewNote] = useState('');
   
+  // State tìm kiếm và lọc phân loại vấn đề điều trị (Scan-first & Clean Filtering)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [problemTypeFilter, setProblemTypeFilter] = useState<'all' | 'specific' | 'clinical' | 'paraclinical' | 'complication'>('all');
+
   // State quản lý thu gọn / mở rộng từng Giai đoạn điều trị (Phase Collapse/Expand)
   const [collapsedPhases, setCollapsedPhases] = useState<Record<string, boolean>>({});
   
@@ -260,55 +266,12 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
             </div>
           )}
 
-          {/* BỘ CHUYỂN TRỤC ĐIỀU TRỊ (MULTI-AXIS SELECTOR TẠI MỤC 2) */}
-          {isMultiAxis && axes && axes.length > 1 && (
-            <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-white/95 rounded-lg border border-slate-200 shadow-2xs">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide flex items-center gap-1">
-                  <Compass className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Trục điều trị:</span>
-                </span>
-                <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-md border border-slate-200">
-                  {axes.map((ax) => {
-                    const isActive = ax.axisId === activeAxisId;
-                    const shortName = ax.axisLabelShort || ax.axisName.replace(/^Phân loại theo\s+/i, '').replace(/^Phân tầng\s+/i, '').trim();
-                    return (
-                      <button
-                        key={ax.axisId}
-                        type="button"
-                        onClick={() => onSelectAxis?.(ax.axisId)}
-                        className={`px-2.5 py-1 rounded text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
-                          isActive
-                            ? 'bg-blue-600 text-white shadow-2xs font-bold'
-                            : 'text-slate-600 hover:text-blue-700 hover:bg-white'
-                        }`}
-                        title={`Xem chi tiết phác đồ theo: ${ax.axisName}`}
-                      >
-                        {getAxisIcon(ax.axisIcon, ax.axisType)}
-                        <span>{shortName}</span>
-                        <span
-                          className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
-                            isActive ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-700'
-                          }`}
-                        >
-                          {ax.branches?.length}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              <span className="text-[11px] text-slate-500 italic hidden lg:inline">
-                * Tự động đồng bộ theo trục bạn đang xem ở Mục 1
-              </span>
-            </div>
-          )}
-
+          {/* THANH TỔNG HỢP PHÂN LOẠI ĐÃ CHỌN (ĐỒNG BỘ TỪ MỤC 1 - KHÔNG TRÙNG NÚT BẤM) */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
                 <Layers className="w-3.5 h-3.5 text-blue-600" />
-                <span>{currentAxisLabel ? `Phân nhánh áp dụng (${currentAxisLabel}):` : 'Phân độ áp dụng:'}</span>
+                <span>{currentAxisLabel ? `Phân nhánh đang áp dụng (${currentAxisLabel}):` : 'Phân độ đang áp dụng:'}</span>
               </span>
               <span className={`px-2.5 py-1 rounded-lg text-xs font-bold border shadow-2xs flex items-center gap-1.5 ${getSeverityBadgeColor(
                 activeSeverityGrade?.severity || 'moderate',
@@ -317,8 +280,8 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                 <span>{activeSeverityGrade?.grade || 'Mặc định'}</span>
               </span>
               {activeSeverityGrade?.triage && (
-                <span className="text-[11px] font-medium text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
-                  <b>Tuyến:</b> {activeSeverityGrade.triage}
+                <span className="text-[11px] font-medium text-slate-700 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
+                  <b>Tuyến điều trị:</b> {activeSeverityGrade.triage}
                 </span>
               )}
               {activeSeverityGrade?.targetVitals && (
@@ -328,78 +291,28 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
               )}
             </div>
 
-            {/* Bộ chuyển nhanh phân độ tinh gọn (Quick Switcher) */}
-            {severityGrades.length > 1 && (
-              <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200 shadow-2xs text-xs self-start sm:self-auto">
-                <span className="text-[10.5px] font-semibold text-slate-400 px-1 hidden md:inline">
-                  Đổi nhanh:
-                </span>
-                {severityGrades.map((g, idx) => {
-                  const isSelected = selectedGradeIdx === idx;
-                  const shortLabel = g.grade.split(':')[0].trim();
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => onSelectGradeIdx?.(idx)}
-                      className={`px-2 py-0.5 rounded text-[11px] font-semibold transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-blue-600 text-white shadow-2xs'
-                          : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
-                      }`}
-                      title={`Chuyển sang: ${g.grade}`}
-                    >
-                      {shortLabel}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+            <a
+              href="#sec-classification"
+              className="text-blue-600 hover:text-blue-800 font-semibold text-[11px] flex items-center gap-1 transition-colors self-start sm:self-auto"
+              title="Nhấn để xem hoặc thay đổi phân độ tại Mục 1"
+            >
+              <span>Tùy chỉnh phân nhánh tại Mục 1</span>
+              <span>&uarr;</span>
+            </a>
           </div>
 
-          {/* ⚡ ESCALATION BRIDGE & DISCHARGE CRITERIA WIDGET */}
+          {/* ⚡ ESCALATION ALERT NẾU CÓ */}
           {(() => {
             const escalation = activeSeverityGrade?.escalationCriteria || (activeSeverityGrade?.protocol as any)?.escalationCriteria;
-            const discharge = activeSeverityGrade?.dischargeCriteria || (activeSeverityGrade?.protocol as any)?.dischargeCriteria;
-            const hasNextGrade = severityGrades && selectedGradeIdx < severityGrades.length - 1;
-            const nextGrade = hasNextGrade ? severityGrades[selectedGradeIdx + 1] : null;
-
-            if (!escalation && !discharge) return null;
+            if (!escalation) return null;
 
             return (
-              <div className="flex flex-col gap-2 pt-0.5">
-                {escalation && (
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-lg bg-amber-50/90 border border-amber-200 text-amber-950 text-xs">
-                    <div className="flex items-start gap-2 flex-1">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                      <div>
-                        <b className="font-bold text-amber-900 uppercase tracking-wide">Tiêu chuẩn leo thang phác đồ: </b>
-                        <span className="leading-relaxed">{escalation}</span>
-                      </div>
-                    </div>
-                    {hasNextGrade && nextGrade && (
-                      <button
-                        type="button"
-                        onClick={() => onSelectGradeIdx?.(selectedGradeIdx + 1)}
-                        className="self-end sm:self-center shrink-0 px-2.5 py-1.5 rounded-md bg-amber-600 hover:bg-amber-700 text-white font-semibold text-[11px] shadow-2xs transition-colors flex items-center gap-1 cursor-pointer"
-                        title={`Chuyển sang ${nextGrade.grade}`}
-                      >
-                        <span>Leo thang phác đồ</span>
-                        <span>▶</span>
-                      </button>
-                    )}
-                  </div>
-                )}
-
-                {discharge && (
-                  <div className="flex items-start gap-2 p-2.5 rounded-lg bg-emerald-50/90 border border-emerald-200 text-emerald-950 text-xs">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <div>
-                      <b className="font-bold text-emerald-900 uppercase tracking-wide">Tiêu chuẩn hạ bậc / Xuất viện: </b>
-                      <span className="leading-relaxed">{discharge}</span>
-                    </div>
-                  </div>
-                )}
+              <div className="flex items-start gap-2 p-2.5 rounded-lg bg-amber-50/90 border border-amber-200 text-amber-950 text-xs">
+                <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <b className="font-bold text-amber-900 uppercase tracking-wide">Tiêu chuẩn leo thang phác đồ: </b>
+                  <span className="leading-relaxed">{escalation}</span>
+                </div>
               </div>
             );
           })()}
@@ -789,6 +702,88 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
         </div>
       )}
 
+      {/* 2c. BỘ LỌC TÌM KIẾM Y LỆNH & PHÂN LOẠI VẤN ĐỀ (CLINICAL SEARCH & CATEGORY FILTER) */}
+      <div className="mx-2 sm:mx-4 p-2.5 sm:p-3 bg-slate-50/90 border border-slate-200 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-2.5 shadow-2xs">
+        <div className="relative flex-1 min-w-[220px]">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Tìm nhanh thuốc, liều, chỉ định, thông số theo dõi..."
+            className="w-full pl-8 pr-7 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 shadow-2xs"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer p-0.5"
+              title="Xóa tìm kiếm"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
+          <button
+            type="button"
+            onClick={() => setProblemTypeFilter('all')}
+            className={`px-2.5 py-1 rounded-md text-xs font-semibold cursor-pointer transition-all ${
+              problemTypeFilter === 'all'
+                ? 'bg-blue-600 text-white shadow-2xs font-bold'
+                : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs'
+            }`}
+          >
+            Tất cả vấn đề
+          </button>
+          <button
+            type="button"
+            onClick={() => setProblemTypeFilter('specific')}
+            className={`px-2 py-1 rounded-md text-xs font-semibold cursor-pointer transition-all flex items-center gap-1 ${
+              problemTypeFilter === 'specific'
+                ? 'bg-indigo-600 text-white shadow-2xs font-bold'
+                : 'bg-white hover:bg-slate-100 text-indigo-700 border border-indigo-200 shadow-2xs'
+            }`}
+          >
+            <span>🎯 Đặc hiệu</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setProblemTypeFilter('clinical')}
+            className={`px-2 py-1 rounded-md text-xs font-semibold cursor-pointer transition-all flex items-center gap-1 ${
+              problemTypeFilter === 'clinical'
+                ? 'bg-sky-600 text-white shadow-2xs font-bold'
+                : 'bg-white hover:bg-slate-100 text-sky-700 border border-sky-200 shadow-2xs'
+            }`}
+          >
+            <span>🩺 Lâm sàng</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setProblemTypeFilter('paraclinical')}
+            className={`px-2 py-1 rounded-md text-xs font-semibold cursor-pointer transition-all flex items-center gap-1 ${
+              problemTypeFilter === 'paraclinical'
+                ? 'bg-purple-600 text-white shadow-2xs font-bold'
+                : 'bg-white hover:bg-slate-100 text-purple-700 border border-purple-200 shadow-2xs'
+            }`}
+          >
+            <span>🧪 Cận lâm sàng</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setProblemTypeFilter('complication')}
+            className={`px-2 py-1 rounded-md text-xs font-semibold cursor-pointer transition-all flex items-center gap-1 ${
+              problemTypeFilter === 'complication'
+                ? 'bg-rose-600 text-white shadow-2xs font-bold'
+                : 'bg-white hover:bg-slate-100 text-rose-700 border border-rose-200 shadow-2xs'
+            }`}
+          >
+            <span>⚠️ Biến chứng</span>
+          </button>
+        </div>
+      </div>
+
       {/* 3. CÁC GIAI ĐOẠN ĐIỀU TRỊ CUỘN LIÊN TỤC (CONTINUOUS SCROLLING BLOCKS) */}
       <div id="sub-timeline" className="scroll-mt-24 px-2 sm:px-4 flex flex-col gap-6">
         {timelinePhases.map((phase, pIdx) => {
@@ -799,6 +794,32 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
           const baseProblems = adaptPhaseToProblemRows(phase, diseaseId, diseaseName);
           const phaseComplications = phase.phaseComplications || [];
           const allProblems = [...baseProblems, ...phaseComplications];
+
+          // Lọc danh sách vấn đề theo tìm kiếm và nhóm
+          const filteredProblems = allProblems.filter((pr) => {
+            if (problemTypeFilter !== 'all') {
+              if (pr.problemType !== problemTypeFilter) return false;
+            }
+            if (searchQuery.trim()) {
+              const q = searchQuery.toLowerCase().trim();
+              const matchName = (pr.problemName || '').toLowerCase().includes(q);
+              const matchNote = (pr.indicationNote || '').toLowerCase().includes(q);
+              const matchTreatments = (pr.treatments || []).some(
+                (t) =>
+                  (t.content || '').toLowerCase().includes(q) ||
+                  (t.category || '').toLowerCase().includes(q) ||
+                  (t.timing || '').toLowerCase().includes(q)
+              );
+              const matchMonitoring = (pr.monitoring || []).some(
+                (m) =>
+                  (m.metric || '').toLowerCase().includes(q) ||
+                  (m.target || '').toLowerCase().includes(q) ||
+                  (m.frequency || '').toLowerCase().includes(q)
+              );
+              return matchName || matchNote || matchTreatments || matchMonitoring;
+            }
+            return true;
+          });
 
           // Đếm tổng số y lệnh trong giai đoạn
           let phaseOrdersCount = 0;
@@ -884,7 +905,28 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                     </thead>
 
                   <tbody className="divide-y divide-slate-200">
-                    {allProblems.map((prob, probIdx) => {
+                    {filteredProblems.length === 0 ? (
+                      <tr>
+                        <td colSpan={3} className="p-6 text-center text-slate-500 bg-slate-50/50">
+                          <div className="flex flex-col items-center justify-center gap-1.5 text-xs">
+                            <span className="font-semibold text-slate-700">
+                              Không có vấn đề điều trị nào khớp với bộ lọc &quot;{searchQuery || problemTypeFilter}&quot; trong giai đoạn này.
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setSearchQuery('');
+                                setProblemTypeFilter('all');
+                              }}
+                              className="text-blue-600 hover:underline font-semibold cursor-pointer"
+                            >
+                              Xóa bộ lọc để hiển thị toàn bộ
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredProblems.map((prob, probIdx) => {
                       const isNoSpecific = prob.isNoSpecificTreatment === true;
 
                       return (
@@ -1154,7 +1196,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
                           </td>
                         </tr>
                       );
-                    })}
+                    }))}
                   </tbody>
                 </table>
               </div>

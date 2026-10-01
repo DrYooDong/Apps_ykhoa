@@ -20,7 +20,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
-import { EXPERIENCE_LEVEL_LABELS } from '../../data/soapSeedData.ts';
+import { EXPERIENCE_LEVEL_LABELS, getExperienceLevelConfig } from '../../data/soapSeedData.ts';
 import { getRelatedVaultArticlesForSoap } from '../../lib/crossReferenceEngine.ts';
 
 interface SoapDetailViewProps {
@@ -38,6 +38,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   onOpenVaultDrawer,
   className = '',
 }) => {
+  const levelBadge = getExperienceLevelConfig(currentCase?.experienceLevel);
   const crossRefs = useMemo(
     () => getRelatedVaultArticlesForSoap(currentCase),
     [currentCase]
@@ -52,15 +53,15 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           <div className="flex items-center gap-2 flex-wrap">
             <span
               className={`px-2.5 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider ${
-                EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].bg
-              } ${EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].text} border ${
-                EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].border
+                levelBadge.bg
+              } ${levelBadge.text} border ${
+                levelBadge.border
               }`}
             >
-              {EXPERIENCE_LEVEL_LABELS[currentCase.experienceLevel].label}
+              {levelBadge.label}
             </span>
             <span className="px-2.5 py-0.5 bg-slate-100 text-slate-800 font-mono-custom text-xs font-bold rounded-md border border-slate-200">
-              ICD-10: {currentCase.a.icd10}
+              ICD-10: {currentCase?.a?.icd10 || 'N/A'}
             </span>
             <span className="px-2.5 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md border border-blue-200/70">
               {currentCase.specialty}
@@ -371,27 +372,27 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                 <div className="grid grid-cols-3 gap-1.5 font-mono-custom text-center">
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">Nhiệt độ</span>
-                    <b className="text-xs text-slate-900">{currentCase.o.vitals.temp || '—'}°C</b>
+                    <b className="text-xs text-slate-900">{currentCase.o?.vitals?.temp || '—'}°C</b>
                   </div>
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">Mạch</span>
-                    <b className="text-xs text-slate-900">{currentCase.o.vitals.pulse || '—'} l/p</b>
+                    <b className="text-xs text-slate-900">{currentCase.o?.vitals?.pulse || '—'} l/p</b>
                   </div>
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">Huyết áp</span>
-                    <b className="text-xs text-rose-700">{currentCase.o.vitals.bp || '—'}</b>
+                    <b className="text-xs text-rose-700">{currentCase.o?.vitals?.bp || '—'}</b>
                   </div>
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">Nhịp thở</span>
-                    <b className="text-xs text-slate-900">{currentCase.o.vitals.resp || '—'} l/p</b>
+                    <b className="text-xs text-slate-900">{currentCase.o?.vitals?.resp || '—'} l/p</b>
                   </div>
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">SpO₂</span>
-                    <b className="text-xs text-emerald-700">{currentCase.o.vitals.spo2 || '—'}%</b>
+                    <b className="text-xs text-emerald-700">{currentCase.o?.vitals?.spo2 || '—'}%</b>
                   </div>
                   <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2">
                     <span className="block text-[9.5px] text-slate-500 font-sans">BMI</span>
-                    <b className="text-xs text-slate-900">{currentCase.o.vitals.bmi || '—'}</b>
+                    <b className="text-xs text-slate-900">{currentCase.o?.vitals?.bmi || '—'}</b>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Activity,
+  AlertTriangle,
   Building2,
   Compass,
   Layers,

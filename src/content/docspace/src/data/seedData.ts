@@ -1,7 +1,7 @@
 import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
-import symptomsRaw from '@vault/data/clinical-rules-symptoms.json';
-import diseasesRaw from '@vault/data/diseases/index.ts';
-import casesRaw from '@vault/data/sample-clinical-cases.json';
+import symptomsRaw from './clinical-rules-symptoms.json';
+import { CORE_DISEASES } from './diseases.ts';
+import casesRaw from './sample-clinical-cases.json';
 
 export const ROLE_LABELS: Record<RoleType, { label: string; badgeClass: string }> = {
   dt: { label: 'đặc trưng', badgeClass: 'text-blue-700 border border-blue-200 bg-blue-50' },
@@ -53,7 +53,7 @@ export const DEFAULT_KNOWLEDGE_BASE: KnowledgeBase = {
     ...tc,
     tuKhoa: Array.isArray(tc.tuKhoa) ? tc.tuKhoa : []
   })),
-  benh: diseasesRaw as unknown as Benh[],
+  benh: CORE_DISEASES,
 };
 
 export interface SampleCase {

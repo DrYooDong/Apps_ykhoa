@@ -1577,6 +1577,534 @@
 }
 
 /* ============================================================
+   NON-RESPONSE & REFRACTORY SHOCK SUITE STYLES (QĐ 2760/BYT)
+   ============================================================ */
+.cdss-refractory-card {
+  background: var(--cdss-surface);
+  border: 1.5px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  box-shadow: var(--cdss-shadow-sm);
+  margin-top: 1.25rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.cdss-refractory-card.active-danger {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2), var(--cdss-shadow-md);
+}
+
+.cdss-refractory-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.06) 50%, rgba(2, 132, 199, 0.05) 100%);
+  border-bottom: 1px solid var(--cdss-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cdss-refractory-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.cdss-refractory-title i {
+  color: var(--cdss-danger);
+}
+
+.cdss-refractory-nav {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  background: var(--cdss-surface-alt);
+  border-bottom: 1px solid var(--cdss-border);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.cdss-ref-tab-btn {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cdss-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.cdss-ref-tab-btn:hover {
+  background: var(--cdss-surface);
+  color: var(--cdss-primary);
+  border-color: var(--cdss-border);
+}
+
+.cdss-ref-tab-btn.active {
+  background: var(--cdss-surface);
+  color: var(--cdss-danger);
+  border-color: var(--cdss-danger);
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-refractory-body {
+  padding: 1.25rem;
+}
+
+.cdss-callout-decision {
+  border-radius: var(--cdss-radius-sm);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  border-left: 4px solid var(--cdss-danger);
+  background: rgba(239, 68, 68, 0.05);
+  border-top: 1px solid rgba(239, 68, 68, 0.15);
+  border-right: 1px solid rgba(239, 68, 68, 0.15);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.cdss-callout-decision.callout-warning {
+  border-left-color: var(--cdss-warning);
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.cdss-callout-decision.callout-info {
+  border-left-color: var(--cdss-primary);
+  background: rgba(2, 132, 199, 0.05);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+.cdss-decision-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-decision-reasoning {
+  font-size: 0.82rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
+}
+
+.cdss-decision-action {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-danger);
+  background: var(--cdss-surface);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cdss-tab-pane {
+  display: none;
+  animation: cdssFadeIn 0.2s ease-in-out;
+}
+
+.cdss-tab-pane.active {
+  display: block;
+}
+
+@keyframes cdssFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Blood products & Medication Dosing Table */
+.cdss-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 0.75rem 0;
+  background: var(--cdss-surface);
+  border-radius: var(--cdss-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--cdss-border);
+}
+
+.cdss-ref-table th {
+  background: var(--cdss-surface-alt);
+  padding: 0.6rem 0.85rem;
+  font-weight: 700;
+  color: var(--cdss-text);
+  text-align: left;
+  border-bottom: 1px solid var(--cdss-border);
+}
+
+.cdss-ref-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+  vertical-align: top;
+  line-height: 1.4;
+}
+
+.cdss-ref-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cdss-dose-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-weight: 800;
+  font-family: var(--cdss-font-mono);
+  border-radius: 6px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--cdss-primary);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.cdss-dose-badge--danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--cdss-danger);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* Albumin Calculation Box */
+.cdss-albumin-calc-card {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: var(--cdss-radius-sm);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ABCS Bento Cards */
+.cdss-abcs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.cdss-abcs-card {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.85rem 1rem;
+  border-top: 3px solid var(--cdss-primary);
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-abcs-card--acidosis { border-top-color: #ef4444; }
+.cdss-abcs-card--bleeding { border-top-color: #dc2626; }
+.cdss-abcs-card--calcium  { border-top-color: #f59e0b; }
+.cdss-abcs-card--sugar    { border-top-color: #10b981; }
+
+.cdss-abcs-card-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cdss-abcs-criteria {
+  font-size: 0.75rem;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.cdss-abcs-action {
+  font-size: 0.8rem;
+  color: var(--cdss-text);
+  font-weight: 600;
+  background: var(--cdss-surface-alt);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border-subtle);
+  line-height: 1.35;
+}
+
+/* 4 Vasopressors Grid */
+.cdss-vaso-quad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.85rem;
+}
+
+/* ============================================================
+   MODERN WORKSPACE MODE SWITCHER & DIRECTIVE SUITE
+   ============================================================ */
+.cdss-mode-switcher-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.4rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--cdss-shadow-xs);
+  flex-wrap: wrap;
+}
+
+.cdss-mode-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.cdss-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--cdss-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cdss-text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.cdss-mode-btn:hover {
+  background: var(--cdss-surface-alt);
+  color: var(--cdss-text);
+}
+
+.cdss-mode-btn.active {
+  background: var(--cdss-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+.cdss-mode-btn.active.mode-danger {
+  background: var(--cdss-danger);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.cdss-mode-hint {
+  font-size: 0.76rem;
+  color: var(--cdss-text-muted);
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Clinical Directive Box */
+.cdss-directive-card {
+  background: var(--cdss-surface);
+  border: 1.5px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--cdss-shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.cdss-directive-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--cdss-primary);
+}
+
+.cdss-directive-card.directive--danger {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.03) 0%, var(--cdss-surface) 100%);
+}
+.cdss-directive-card.directive--danger::before {
+  background: var(--cdss-danger);
+}
+
+.cdss-directive-card.directive--warning {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.03) 0%, var(--cdss-surface) 100%);
+}
+.cdss-directive-card.directive--warning::before {
+  background: var(--cdss-warning);
+}
+
+.cdss-directive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-directive-title {
+  font-family: var(--cdss-font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cdss-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.cdss-directive-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--cdss-radius-full);
+}
+
+.cdss-directive-action-banner {
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-directive-action-banner.action--danger {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: var(--cdss-danger);
+}
+
+.cdss-directive-action-banner.action--warning {
+  background: rgba(245, 158, 11, 0.06);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: var(--cdss-warning);
+}
+
+.cdss-directive-action-banner.action--primary {
+  background: rgba(2, 132, 199, 0.06);
+  border-color: rgba(2, 132, 199, 0.25);
+  color: var(--cdss-primary);
+}
+
+.cdss-directive-reasoning {
+  font-size: 0.82rem;
+  color: var(--cdss-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+.cdss-scenario-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--cdss-border);
+}
+
+.cdss-scenario-btn {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid var(--cdss-border);
+  background: var(--cdss-surface);
+  color: var(--cdss-text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cdss-scenario-btn:hover {
+  background: var(--cdss-surface-alt);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+}
+
+.cdss-scenario-btn.active {
+  background: var(--cdss-primary-light);
+  border-color: var(--cdss-primary);
+  color: var(--cdss-primary);
+  font-weight: 800;
+}
+
+/* Ca Lâm Sàng Group Header */
+.cdss-cases-bar {
+  background: var(--cdss-surface);
+  border: 1px solid var(--cdss-border);
+  border-radius: var(--cdss-radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: var(--cdss-shadow-xs);
+}
+
+.cdss-cases-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.cdss-cases-group-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cdss-text-muted);
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Patient Station Section Separator */
+.cdss-station-section {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--cdss-border-subtle);
+}
+
+.cdss-station-section:last-child {
+  border-bottom: none;
+}
+
+.cdss-station-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cdss-text-muted);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ============================================================
    PRINT STYLES (Chỉ in nội dung cần thiết & Bảng điều phối cọc dịch)
    ============================================================ */
 .cdss-print-sheet {

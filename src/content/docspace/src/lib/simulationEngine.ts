@@ -22,7 +22,7 @@ export function validateClinicalSanity(branch: SimulationBranch): { valid: boole
 
   // [BỘ CHẶN 2 - HUYẾT ĐỘNG SỐC]
   const hatt = parseFloat(branch.vitalsVariant.vitals.vHATT || '120');
-  const hattr = parseFloat(branch.vitalsVariant.vHATTr || '80');
+  const hattr = parseFloat(branch.vitalsVariant.vitals.vHATTr || '80');
   if (branch.vitalsVariant.hemodynamicState === 'compensated_shock') {
     if (hatt > 0 && hattr > 0 && hatt - hattr > 20 && hatt > 90) {
       errors.push('Vi phạm Sanity Gate 2: Sốc còn bù bắt buộc hiệu áp HATT - HATTr <= 20 mmHg hoặc HATT <= 90 mmHg.');

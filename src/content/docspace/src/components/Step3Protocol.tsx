@@ -2,13 +2,19 @@ import React, { useEffect, useMemo, useState } from 'react';
 import {
   AlertTriangle,
   ArrowLeft,
+  Check,
   ChevronDown,
   ChevronUp,
   ClipboardCheck,
+  Copy,
+  Droplets,
   GraduationCap,
   Heart,
   Layers,
   Printer,
+  Scale,
+  ScrollText,
+  ShieldCheck,
   Sparkles,
 } from 'lucide-react';
 import {
@@ -20,6 +26,12 @@ import {
   LabsState,
   VitalsState,
 } from '../types.ts';
+import {
+  calculateAdjBW,
+  calculateIBW,
+  extractAnthropometry,
+  extractDiseaseDay,
+} from '../lib/diagnosticSynthesis.ts';
 import {
   DIAGNOSTIC_CHAIN_DATABASE,
   SeverityGradingItem,
@@ -91,6 +103,15 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   const [copySuccess, setCopySuccess] = useState(false);
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('all');
 
+  // Chế độ không gian làm việc (Executive Clinical Workstation Mode)
+  // 'protocol' (Mặc định): Tập trung Phác đồ & Y lệnh điều trị, chống ngợp thông tin
+  // 'classification': Phân loại & Cá thể hóa
+  // 'cautions': Lưu ý & Dược an toàn
+  // 'knowledge': Tri thức EBM & Ca bệnh SOAP
+  // 'all': Toàn bộ 6 phân mục (Cuộn liên tục)
+  const [workspaceMode, setWorkspaceMode] = useState<'protocol' | 'classification' | 'cautions' | 'knowledge' | 'all'>('protocol');
+  const [knowledgeSubTab, setKnowledgeSubTab] = useState<'guidelines' | 'soap' | 'counseling'>('guidelines');
+
   // 6 Collapsible sections state: Headings 1 & 2 open by default, 3-6 collapsed
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     classification: true, // 1. Phân loại (cá thể hoá)
@@ -100,6 +121,66 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     knowledge: false,     // 5. Kiến thức cho nhân viên y tế
     soap: false,          // 6. Các ca bệnh liên quan
   });
+
+  const [showFluidCalculator, setShowFluidCalculator] = useState(false);
+  const [copiedFluidOrders, setCopiedFluidOrders] = useState(false);
+
+  // Tính toán nhân trắc học & liều dịch truyền cá thể hóa
+  const patientAnthro = useMemo(() => {
+    if (!form && !vitals) return null;
+    const safeForm: ClinicalFormState = form || {
+      gioiTinh: 'nam',
+      tuoi: '',
+      ngheNghiep: '',
+      lyDo: '',
+      text: { cn: '', tt: '', tc: '', cls: '' },
+    };
+    const safeVitals: VitalsState = vitals || {
+      vNhiet: '',
+      vMach: '',
+      vHATT: '',
+      vHATTr: '',
+      vTho: '',
+      vSpo2: '',
+    };
+    const { weightKg, heightCm, bmi } = extractAnthropometry(safeForm, safeVitals);
+    const ibw = calculateIBW(heightCm, safeForm.gioiTinh);
+    const adjBw = calculateAdjBW(weightKg, ibw);
+    const diseaseDay = extractDiseaseDay(safeForm);
+    const isObese = bmi >= 25;
+    const isOverweight = bmi >= 23 && bmi < 25;
+    const prescribedWeight = isObese || isOverweight ? adjBw : weightKg;
+
+    const step6Ml = Math.round(prescribedWeight * 6);
+    const step6Drops = Math.round((step6Ml * 20) / 60);
+
+    const step5Ml = Math.round(prescribedWeight * 5);
+    const step5Drops = Math.round((step5Ml * 20) / 60);
+
+    const step3Ml = Math.round(prescribedWeight * 3);
+    const step3Drops = Math.round((step3Ml * 20) / 60);
+
+    const step15Ml = Math.round(prescribedWeight * 1.5);
+    const step15Drops = Math.round((step15Ml * 20) / 60);
+
+    return {
+      weightKg,
+      heightCm,
+      bmi,
+      ibw,
+      adjBw,
+      prescribedWeight,
+      diseaseDay,
+      isObese,
+      isOverweight,
+      rates: {
+        step6: { ml: step6Ml, drops: step6Drops },
+        step5: { ml: step5Ml, drops: step5Drops },
+        step3: { ml: step3Ml, drops: step3Drops },
+        step15: { ml: step15Ml, drops: step15Drops },
+      },
+    };
+  }, [form, vitals]);
 
   const toggleSection = (key: string, forceOpen?: boolean) => {
     setExpandedSections((prev) => ({
@@ -136,6 +217,19 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   }, []);
 
   const handleJumpToSection = (sectionId: string, subId?: string) => {
+    // 0. Tự động đồng bộ Tab không gian làm việc nếu không ở chế độ cuộn toàn bộ
+    if (workspaceMode !== 'all') {
+      if (sectionId === 'protocol') setWorkspaceMode('protocol');
+      else if (sectionId === 'classification') setWorkspaceMode('classification');
+      else if (sectionId === 'cautions') setWorkspaceMode('cautions');
+      else if (sectionId === 'knowledge' || sectionId === 'counseling' || sectionId === 'soap') {
+        setWorkspaceMode('knowledge');
+        if (sectionId === 'counseling') setKnowledgeSubTab('counseling');
+        else if (sectionId === 'soap') setKnowledgeSubTab('soap');
+        else setKnowledgeSubTab('guidelines');
+      }
+    }
+
     // 1. Kiểm tra xem section mục tiêu có đang bị thu gọn không
     const wasClosed = expandedSections[sectionId] === false;
 
@@ -903,7 +997,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         thuoc: [
           ['Natri Clorid 0,9%', '500 ml TTM 30 giọt/phút', 'duy trì đường truyền'],
           ['Paracetamol', '1 g TTM khi sốt >= 38.5°C hoặc đau nhiều', 'cách mỗi 6h'],
-        ],
+        ] as [string, string, string][],
         theoDoi: [
           'Theo dõi tri giác, dấu hiệu sinh tồn (Mạch, HA, SpO2, Nhịp thở) mỗi 15-30 phút',
           'Lượng nước tiểu 24 giờ, mục tiêu >= 0.5 ml/kg/h',
@@ -1268,6 +1362,151 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     });
   }, [allAvailableDiseases, selectedSpecialty]);
 
+  const classificationSectionNode = (
+    <ProtocolClassificationSection
+      severityGrades={severityGrades}
+      selectedGradeIdx={effectiveSelectedGradeIdx}
+      onSelectGradeIdx={handleSelectGradeIndex}
+      autoSuggestedGradeIndex={autoSuggestedGradeIndex}
+      activeChain={activeChain}
+      diseaseId={currentDisease?.id || ''}
+      diseaseName={currentDisease?.ten || ''}
+      activeComplications={activeComplications}
+      activeComplicationIndices={activeComplicationIndices}
+      onToggleComplication={handleToggleComplication}
+      onAddComplicationOrder={handleAddComplicationOrder}
+      onAddPreventionOrder={handleAddPreventionOrder}
+      vitals={vitals}
+      labs={labs}
+      patientAge={form?.tuoi}
+      patientGender={form?.gioiTinh}
+      form={form}
+      patientPhenotype={patientPhenotype}
+      isRenalAdjustmentApplied={isRenalAdjustmentApplied}
+      onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+      targetTab={targetClassificationTab}
+      activeTab={activeAxisId}
+      onTabChange={handleClassificationTabChange}
+      selectedAxes={selectedAxes}
+      onSelectAxisBranch={handleSelectAxisBranch}
+      activeCombinedProtocol={activeCombinedProtocol}
+      subBranches={currentSubBranches}
+      selectedSubBranchIds={selectedSubBranchIds}
+      onToggleSubBranch={handleToggleSubBranch}
+    />
+  );
+
+  const detailedTreatmentTableNode = currentDisease ? (
+    <DetailedTreatmentTable
+      diseaseId={currentDisease.id}
+      diseaseName={currentDisease.ten}
+      selectedGradeIdx={effectiveSelectedGradeIdx}
+      onSelectGradeIdx={handleSelectGradeIndex}
+      severityGrades={severityGrades}
+      activeSeverityGrade={activeSeverityGrade}
+      isMultiAxis={isMultiAxis}
+      axes={multiAxes}
+      activeAxisId={currentActiveAxis?.axisId}
+      onSelectAxis={handleSelectAxisAtProtocol}
+      currentAxisLabel={currentActiveAxis?.axisLabelShort || currentActiveAxis?.axisName?.replace(/^Phân loại theo\s+/i, '').replace(/^Phân tầng\s+/i, '').trim()}
+      phacDo={phacDo}
+      timelinePhases={timelinePhases}
+      customOrders={customOrders}
+      checkedOrders={checkedOrders}
+      onToggleOrder={toggleOrder}
+      onToggleCustomOrder={toggleCustomOrder}
+      onAddCustomOrder={addCustomOrder}
+      onRemoveCustomOrder={removeCustomOrder}
+      onCompleteAll={handleCompleteAll}
+      onResetOrders={handleResetOrders}
+      onCopyOrderSheet={handleCopyOrderSheet}
+      copySuccess={copySuccess}
+      currentCheckedCount={currentCheckedCount}
+      totalAllOrders={totalAllOrders}
+      progressPercent={progressPercent}
+      allPrescribedDrugNames={allPrescribedDrugNames}
+      patientAge={form?.tuoi}
+      patientGender={form?.gioiTinh}
+      patientCreatinine={labs?.lCre}
+      appliedComplications={appliedComplications}
+      isRenalAdjustmentApplied={isRenalAdjustmentApplied}
+      renalEgfr={patientPhenotype.eGfr}
+      renalStage={patientPhenotype.ckdStage}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+      onOpenCdssModal={onOpenCdssModal}
+      activeCombinedProtocol={activeCombinedProtocol}
+      subBranches={currentSubBranches}
+      selectedSubBranchIds={selectedSubBranchIds}
+      onToggleSubBranch={handleToggleSubBranch}
+    />
+  ) : null;
+
+  const cautionsSectionNode = (
+    <ClinicalCautionsSection
+      cautionItems={phacDo.luuY}
+      timelinePhases={timelinePhases}
+      activeSeverityGrade={activeSeverityGrade}
+      patientPhenotype={patientPhenotype}
+      specificTreatmentNotice={(() => {
+        const normName = (currentDisease?.ten || '').toLowerCase();
+        const idLower = (currentDisease?.id || '').toLowerCase();
+        if (idLower.includes('dengue') || normName.includes('dengue') || normName.includes('sốt xuất huyết')) {
+          return 'Bệnh Sốt xuất huyết Dengue hiện CHƯA CÓ THUỐC ĐIỀU TRỊ ĐẶC HIỆU (chống virus). Tuyệt đối không dùng Corticoid, Kháng sinh hoặc thuốc kháng virus bừa bãi khi chưa có bằng chứng đồng nhiễm khuẩn. Bù dịch nấc thang đúng phác đồ và phát hiện sớm dấu hiệu cảnh báo là biện pháp cứu mạng chính yếu.';
+        }
+        return undefined;
+      })()}
+      structuredCautions={(() => {
+        const raw =
+          (activeChain as any)?.clinicalCautions ||
+          (activeChain as any)?.protocol?.clinicalCautions ||
+          (activeChain as any)?.protocol?.cautionsAndDischarge ||
+          (activeChain as any)?.cautionsAndDischarge;
+        if (!raw) return undefined;
+        return {
+          cautions: raw.criticalWarnings || raw.cautions || raw.warnings || [],
+          contraindications: raw.contraindications || [],
+          dischargeCriteria: raw.dischargeCriteria || [],
+          clinicalIndications: raw.clinicalIndications || raw.treatmentIndications || raw.indications || [],
+        };
+      })()}
+    />
+  );
+
+  const counselingNode = currentDisease ? (
+    <PatientCounselingPanel
+      diseaseName={currentDisease.ten}
+      icd10={currentDisease.icd}
+      patientAge={form?.tuoi}
+      patientGender={form?.gioiTinh}
+      prescribedDrugs={allPrescribedDrugNames}
+      patientPhenotype={patientPhenotype}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+    />
+  ) : null;
+
+  const knowledgeNode = currentDisease ? (
+    <HealthcareWorkerKnowledgeSection
+      diseaseName={currentDisease.ten}
+      diseaseIcd={currentDisease.icd}
+      pathway={pathway}
+      matchedGuidelines={matchedGuidelines}
+      onApplyGuidelineDrugs={handleApplyGuidelineDrugs}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+      targetTab={targetKnowledgeTab}
+    />
+  ) : null;
+
+  const soapNode = currentDisease ? (
+    <SoapCasesSection
+      diseaseName={currentDisease.ten}
+      similarSoapCases={similarSoapCases}
+      onNavigateToSoapCase={onNavigateToSoapCase}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+      onOpenPromptBuilder={onOpenPromptBuilder}
+    />
+  ) : null;
+
   return (
     <div className="flex flex-col gap-4">
       {/* 1. Thanh điều hướng trên cùng tinh gọn */}
@@ -1284,306 +1523,544 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       {/* Khối trình bày phác đồ chính */}
       {currentDisease && (
         <div className="flex flex-col lg:flex-row gap-5 items-start relative w-full">
-          {/* Cột chính: Bố cục 6 đầu mục lâm sàng */}
-          <div className="flex-1 min-w-0 bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col gap-5 w-full">
-          {/* 2. Thanh hiển thị tên bệnh tinh gọn */}
-          <ProtocolDiseaseHeader
-            diseaseName={currentDisease.ten}
-            diseaseIcd={currentDisease.icd}
-            specialtyGroup={currentDisease.nhom}
-            sources={phacDo.nguon}
-          />
-
-          {/* Master Collapsible Controls Toolbar */}
-          <div className="flex items-center justify-between gap-3 p-2 bg-slate-50/90 rounded-lg border border-slate-200 text-xs">
-            <span className="font-semibold text-slate-700 flex items-center gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-blue-600" />
-              <span>Bố cục 6 đầu mục lâm sàng chuẩn hoá</span>
-            </span>
-
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handleExpandAll}
-                className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
-                title="Bung toàn bộ 6 phần nội dung"
-              >
-                <ChevronDown className="w-3 h-3 text-blue-600" />
-                <span>Bung tất cả</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleCollapseAll}
-                className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
-                title="Thu gọn các phần để màn hình gọn gàng"
-              >
-                <ChevronUp className="w-3 h-3 text-slate-500" />
-                <span>Thu gọn</span>
-              </button>
-            </div>
-          </div>
-
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 1: PHÂN LOẠI (CÁ THỂ HOÁ)                                         */}
-          {/* 1a. Phân độ nặng nhẹ | 1b. Phân độ biến chứng | 1c. Đối tượng đặc biệt    */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="classification"
-            isOpen={expandedSections.classification}
-            onToggle={() => toggleSection('classification')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Layers className="w-4 h-4" />
-              </div>
-            }
-            title="1. Phân loại (cá thể hoá)"
-            subtitle={
-              activeChain?.branching?.mode === 'multi' && activeChain.branching.axes
-                ? `${activeChain.branching.axes.map((a, i) => `1${String.fromCharCode(97 + i)}. ${a.axisLabelShort || a.axisName}`).join(' • ')} • Biến chứng • Đối tượng đặc biệt`
-                : `${activeChain?.branching?.axisLabelShort ? `1a. ${activeChain.branching.axisLabelShort}` : (isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ')} • 1b. Phân độ biến chứng • 1c. Các đối tượng đặc biệt`
-            }
-            badgeText={
-              activeChain?.branching?.mode === 'multi' && activeChain.branching.axes
-                ? `${activeChain.branching.axes.length} trục phân loại`
-                : severityGrades.length === 0
-                ? 'Tiếp cận toàn diện'
-                : `${severityGrades.length} ${activeChain?.branching?.axisType === 'stage' ? 'giai đoạn' : (isPhenotypeStaging ? 'thể bệnh' : 'phân độ')}`
-            }
-            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
-          >
-            <ProtocolClassificationSection
-              severityGrades={severityGrades}
-              selectedGradeIdx={effectiveSelectedGradeIdx}
-              onSelectGradeIdx={handleSelectGradeIndex}
-              autoSuggestedGradeIndex={autoSuggestedGradeIndex}
-              activeChain={activeChain}
-              diseaseId={currentDisease.id}
-              diseaseName={currentDisease.ten}
-              activeComplications={activeComplications}
-              activeComplicationIndices={activeComplicationIndices}
-              onToggleComplication={handleToggleComplication}
-              onAddComplicationOrder={handleAddComplicationOrder}
-              onAddPreventionOrder={handleAddPreventionOrder}
-              vitals={vitals}
-              labs={labs}
-              patientAge={form?.tuoi}
-              patientGender={form?.gioiTinh}
-              form={form}
-              patientPhenotype={patientPhenotype}
-              isRenalAdjustmentApplied={isRenalAdjustmentApplied}
-              onToggleRenalAdjustment={setIsRenalAdjustmentApplied}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-              targetTab={targetClassificationTab}
-              activeTab={activeAxisId}
-              onTabChange={handleClassificationTabChange}
-              selectedAxes={selectedAxes}
-              onSelectAxisBranch={handleSelectAxisBranch}
-              activeCombinedProtocol={activeCombinedProtocol}
-              subBranches={currentSubBranches}
-              selectedSubBranchIds={selectedSubBranchIds}
-              onToggleSubBranch={handleToggleSubBranch}
-            />
-          </CollapsibleProtocolSection>
-
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT (ĐỊNH HƯỚNG VẤN ĐỀ - 3 CỘT)          */}
-          {/* 1. Vấn đề | 2. Phác đồ & Y lệnh | 3. Theo dõi                              */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="protocol"
-            isOpen={expandedSections.protocol}
-            onToggle={() => toggleSection('protocol')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <ClipboardCheck className="w-4 h-4" />
-              </div>
-            }
-            title="2. Phác đồ điều trị chi tiết"
-            subtitle="1. Vấn đề &bull; 2. Phác đồ &amp; y lệnh &bull; 3. Theo dõi (Lâm sàng &amp; Cận lâm sàng)"
-            badgeText={`${currentCheckedCount}/${totalAllOrders} y lệnh (${progressPercent}%)`}
-            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
-          >
-            <DetailedTreatmentTable
-              diseaseId={currentDisease.id}
-              diseaseName={currentDisease.ten}
-              selectedGradeIdx={effectiveSelectedGradeIdx}
-              onSelectGradeIdx={handleSelectGradeIndex}
-              severityGrades={severityGrades}
-              activeSeverityGrade={activeSeverityGrade}
-              isMultiAxis={isMultiAxis}
-              axes={multiAxes}
-              activeAxisId={currentActiveAxis?.axisId}
-              onSelectAxis={handleSelectAxisAtProtocol}
-              currentAxisLabel={currentActiveAxis?.axisLabelShort || currentActiveAxis?.axisName?.replace(/^Phân loại theo\s+/i, '').replace(/^Phân tầng\s+/i, '').trim()}
-              phacDo={phacDo}
-              timelinePhases={timelinePhases}
-              customOrders={customOrders}
-              checkedOrders={checkedOrders}
-              onToggleOrder={toggleOrder}
-              onToggleCustomOrder={toggleCustomOrder}
-              onAddCustomOrder={addCustomOrder}
-              onRemoveCustomOrder={removeCustomOrder}
-              onCompleteAll={handleCompleteAll}
-              onResetOrders={handleResetOrders}
-              onCopyOrderSheet={handleCopyOrderSheet}
-              copySuccess={copySuccess}
-              currentCheckedCount={currentCheckedCount}
-              totalAllOrders={totalAllOrders}
-              progressPercent={progressPercent}
-              allPrescribedDrugNames={allPrescribedDrugNames}
-              patientAge={form?.tuoi}
-              patientGender={form?.gioiTinh}
-              patientCreatinine={labs?.lCre}
-              appliedComplications={appliedComplications}
-              isRenalAdjustmentApplied={isRenalAdjustmentApplied}
-              renalEgfr={patientPhenotype.eGfr}
-              renalStage={patientPhenotype.ckdStage}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-              onOpenCdssModal={onOpenCdssModal}
-              activeCombinedProtocol={activeCombinedProtocol}
-              subBranches={currentSubBranches}
-              selectedSubBranchIds={selectedSubBranchIds}
-              onToggleSubBranch={handleToggleSubBranch}
-            />
-          </CollapsibleProtocolSection>
-
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 3: LƯU Ý LÂM SÀNG                                                 */}
-          {/* [1] Cảnh báo quan trọng | [2] Chống chỉ định | [3] Tiêu chuẩn xuất viện  */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="cautions"
-            isOpen={expandedSections.cautions}
-            onToggle={() => toggleSection('cautions')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <AlertTriangle className="w-4 h-4" />
-              </div>
-            }
-            title="3. Lưu ý lâm sàng"
-            subtitle="[1] Chỉ định can thiệp &amp; Y lệnh &bull; [2] Cảnh báo quan trọng &bull; [3] Chống chỉ định &bull; [4] Tiêu chuẩn xuất viện"
-            badgeText={`${phacDo.luuY.length} lưu ý & CCĐ`}
-            badgeColor="bg-amber-50 text-amber-800 border-amber-200"
-            containerClassName="bg-amber-50/20 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
-          >
-            <ClinicalCautionsSection
-              cautionItems={phacDo.luuY}
-              timelinePhases={timelinePhases}
-              activeSeverityGrade={activeSeverityGrade}
-              patientPhenotype={patientPhenotype}
-              specificTreatmentNotice={(() => {
-                const normName = (currentDisease?.ten || '').toLowerCase();
-                const idLower = (currentDisease?.id || '').toLowerCase();
-                if (idLower.includes('dengue') || normName.includes('dengue') || normName.includes('sốt xuất huyết')) {
-                  return 'Bệnh Sốt xuất huyết Dengue hiện CHƯA CÓ THUỐC ĐIỀU TRỊ ĐẶC HIỆU (chống virus). Tuyệt đối không dùng Corticoid, Kháng sinh hoặc thuốc kháng virus bừa bãi khi chưa có bằng chứng đồng nhiễm khuẩn. Bù dịch nấc thang đúng phác đồ và phát hiện sớm dấu hiệu cảnh báo là biện pháp cứu mạng chính yếu.';
-                }
-                return undefined;
-              })()}
-              structuredCautions={(() => {
-                const raw =
-                  (activeChain as any)?.clinicalCautions ||
-                  (activeChain as any)?.protocol?.clinicalCautions ||
-                  (activeChain as any)?.protocol?.cautionsAndDischarge ||
-                  (activeChain as any)?.cautionsAndDischarge;
-                if (!raw) return undefined;
-                return {
-                  cautions: raw.criticalWarnings || raw.cautions || raw.warnings || [],
-                  contraindications: raw.contraindications || [],
-                  dischargeCriteria: raw.dischargeCriteria || [],
-                  clinicalIndications: raw.clinicalIndications || raw.treatmentIndications || raw.indications || [],
-                };
-              })()}
-            />
-          </CollapsibleProtocolSection>
-
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 4: VẤN ĐỀ NGƯỜI BỆNH QUAN TÂM                                     */}
-          {/* Tư vấn & giải thích bệnh cho người bệnh (Kho TV)                          */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="counseling"
-            isOpen={expandedSections.counseling}
-            onToggle={() => toggleSection('counseling')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-slate-700 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Heart className="w-4 h-4" />
-              </div>
-            }
-            title="4. Vấn đề người bệnh quan tâm"
-            subtitle="Tư vấn & giải thích bệnh cho người bệnh (Kho TV)"
-            badgeText="Kho TV"
-            badgeColor="bg-slate-100 text-slate-700 border-slate-200"
-            containerClassName="bg-slate-50/60 border border-slate-200 rounded-xl p-4 shadow-2xs"
-          >
-            <PatientCounselingPanel
-              diseaseName={currentDisease.ten}
-              icd10={currentDisease.icd}
-              patientAge={form?.tuoi}
-              patientGender={form?.gioiTinh}
-              prescribedDrugs={allPrescribedDrugNames}
-              patientPhenotype={patientPhenotype}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-            />
-          </CollapsibleProtocolSection>
-
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 5: KIẾN THỨC CHO NHÂN VIÊN Y TẾ                                   */}
-          {/* 5a. Cơ sở (GPSL/SLB) | 5b. Lâm sàng (DTH/CD/BC/Dược) | 5c. Guidelines     */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="knowledge"
-            isOpen={expandedSections.knowledge}
-            onToggle={() => toggleSection('knowledge')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <GraduationCap className="w-4 h-4" />
-              </div>
-            }
-            title="5. Kiến thức cho nhân viên y tế"
-            subtitle="5a. Cơ sở (GPSL / SLB) &bull; 5b. Lâm sàng (DTH / CĐ / BC / Dược) &bull; 5c. Guidelines - EBM"
-            badgeText={`${matchedGuidelines.length} khuyến cáo EBM`}
-            badgeColor="bg-blue-50 text-blue-800 border-blue-200"
-            containerClassName="bg-blue-50/20 border border-blue-200/80 rounded-xl p-4 shadow-2xs"
-          >
-            <HealthcareWorkerKnowledgeSection
+          {/* Cột chính: Bố cục không gian làm việc lâm sàng */}
+          <div className="flex-1 min-w-0 bg-white border border-slate-200 rounded-xl p-4 sm:p-6 shadow-xs flex flex-col gap-4 w-full">
+            {/* 2. Thanh hiển thị tên bệnh tinh gọn */}
+            <ProtocolDiseaseHeader
               diseaseName={currentDisease.ten}
               diseaseIcd={currentDisease.icd}
-              pathway={pathway}
-              matchedGuidelines={matchedGuidelines}
-              onApplyGuidelineDrugs={handleApplyGuidelineDrugs}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-              targetTab={targetKnowledgeTab}
+              specialtyGroup={currentDisease.nhom}
+              sources={phacDo.nguon}
+              activeSeverityGradeName={activeSeverityGrade?.grade}
+              patientEgfr={patientPhenotype.eGfr}
+              patientCkdStage={patientPhenotype.ckdStage}
+              onOpenCdssModal={onOpenCdssModal}
+              viewMode={workspaceMode === 'all' ? 'continuous' : 'tabbed'}
+              onToggleViewMode={(mode) => setWorkspaceMode(mode === 'continuous' ? 'all' : 'protocol')}
             />
-          </CollapsibleProtocolSection>
 
-          {/* ========================================================================= */}
-          {/* ĐẦU MỤC 6: CÁC CA BỆNH LIÊN QUAN (SOAP)                                   */}
-          {/* Ca bệnh thực tế, bẫy chẩn đoán, hội chẩn NotebookLM                       */}
-          {/* ========================================================================= */}
-          <CollapsibleProtocolSection
-            id="soap"
-            isOpen={expandedSections.soap}
-            onToggle={() => toggleSection('soap')}
-            icon={
-              <div className="w-7 h-7 rounded-md bg-emerald-600 text-white flex items-center justify-center shadow-xs shrink-0">
-                <Sparkles className="w-4 h-4" />
+            {/* THẺ TỔNG HỢP CHẨN ĐOÁN & PHÂN ĐỘ TỪ BƯỚC 3 (EXECUTIVE CDSS DIAGNOSTIC SUMMARY BANNER) */}
+            <div className="p-3.5 bg-gradient-to-r from-blue-50/80 via-indigo-50/50 to-slate-50 border border-blue-200/90 rounded-xl flex flex-col gap-2.5 shadow-2xs">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                    <Sparkles className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="text-xs font-bold text-blue-950 uppercase tracking-wide">
+                    Chẩn Đoán Đầy Đủ &amp; Phác Đồ Tương Ứng (Đã đồng bộ từ Bước 3)
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {patientAnthro?.diseaseDay && (
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
+                      Ngày thứ {patientAnthro.diseaseDay}
+                    </span>
+                  )}
+                  {patientAnthro?.isObese && (
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300 flex items-center gap-1">
+                      <Scale className="w-3 h-3" />
+                      AdjBW: {patientAnthro.prescribedWeight} kg (Béo phì)
+                    </span>
+                  )}
+                  {/* Nút bật Máy tính bù dịch nếu là Dengue */}
+                  {(currentDisease.id.includes('dengue') || currentDisease.id === 'sot_xuat_huyet') && (
+                    <button
+                      type="button"
+                      onClick={() => setShowFluidCalculator((prev) => !prev)}
+                      className="px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-2xs cursor-pointer transition-all flex items-center gap-1"
+                    >
+                      <Droplets className="w-3.5 h-3.5" />
+                      <span>{showFluidCalculator ? 'Thu gọn tính dịch' : 'Mở bảng tính dịch nhanh'}</span>
+                    </button>
+                  )}
+                </div>
               </div>
-            }
-            title="6. Các ca bệnh liên quan (SOAP)"
-            subtitle="Tham khảo ca bệnh thực tế tương tự, bẫy chẩn đoán và tạo prompt hội chẩn NotebookLM"
-            badgeText={`${similarSoapCases.length} ca bệnh`}
-            badgeColor="bg-emerald-50 text-emerald-800 border-emerald-200"
-            containerClassName="bg-emerald-50/20 border border-emerald-200/80 rounded-xl p-4 shadow-2xs"
-          >
-            <SoapCasesSection
-              diseaseName={currentDisease.ten}
-              similarSoapCases={similarSoapCases}
-              onNavigateToSoapCase={onNavigateToSoapCase}
-              onOpenVaultDrawer={onOpenVaultDrawer}
-              onOpenPromptBuilder={onOpenPromptBuilder}
-            />
-          </CollapsibleProtocolSection>
+
+              {/* Dòng tóm tắt chẩn đoán */}
+              <div className="text-xs text-slate-700 leading-relaxed font-medium">
+                <span className="font-bold text-slate-900">Chẩn đoán:</span>{' '}
+                <span>{currentDisease.ten} &bull; {activeSeverityGrade?.grade || 'Mức độ lâm sàng'}</span>
+                {patientAnthro && (
+                  <span className="text-slate-500">
+                    {' '}&bull; Cân nặng thực tế: {patientAnthro.weightKg} kg (BMI {patientAnthro.bmi}) &bull; Cân nặng tính dịch: <b className="text-blue-900">{patientAnthro.prescribedWeight} kg</b>
+                  </span>
+                )}
+              </div>
+
+              {/* Bảng tính dịch thông minh mở rộng nếu bật */}
+              {showFluidCalculator && patientAnthro && (
+                <div className="mt-1 p-3 bg-white border border-blue-200 rounded-lg space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-blue-950 flex items-center gap-1.5">
+                      <Droplets className="w-4 h-4 text-blue-600" />
+                      Lưu lượng truyền dịch Ringer Lactate tính theo cân nặng {patientAnthro.prescribedWeight} kg:
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const orderStr = `Ringer Lactate: Bậc 1 (6 ml/kg/h) = ${patientAnthro.rates.step6.ml} ml/h (${patientAnthro.rates.step6.drops} giọt/phút) trong 1-2h -> Bậc 2 (5 ml/kg/h) = ${patientAnthro.rates.step5.ml} ml/h (${patientAnthro.rates.step5.drops} giọt/phút) trong 2-4h -> Bậc 3 (3 ml/kg/h) = ${patientAnthro.rates.step3.ml} ml/h (${patientAnthro.rates.step3.drops} giọt/phút) trong 2-4h -> Bậc 4 (1.5 ml/kg/h) = ${patientAnthro.rates.step15.ml} ml/h (${patientAnthro.rates.step15.drops} giọt/phút).`;
+                        navigator.clipboard.writeText(orderStr);
+                        setCopiedFluidOrders(true);
+                        setTimeout(() => setCopiedFluidOrders(false), 2000);
+                      }}
+                      className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 cursor-pointer"
+                    >
+                      {copiedFluidOrders ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedFluidOrders ? 'Đã sao chép y lệnh' : 'Sao chép y lệnh dịch'}</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    <div className="p-2 bg-blue-50/60 rounded border border-blue-200 text-center">
+                      <span className="text-[10px] text-slate-500 uppercase block">Bậc 1 (6 ml/kg/h)</span>
+                      <span className="font-extrabold text-blue-950 text-sm font-mono">{patientAnthro.rates.step6.ml} ml/h</span>
+                      <span className="text-[11px] text-blue-700 block font-semibold">({patientAnthro.rates.step6.drops} giọt/phút)</span>
+                    </div>
+
+                    <div className="p-2 bg-blue-50/60 rounded border border-blue-200 text-center">
+                      <span className="text-[10px] text-slate-500 uppercase block">Bậc 2 (5 ml/kg/h)</span>
+                      <span className="font-extrabold text-blue-950 text-sm font-mono">{patientAnthro.rates.step5.ml} ml/h</span>
+                      <span className="text-[11px] text-blue-700 block font-semibold">({patientAnthro.rates.step5.drops} giọt/phút)</span>
+                    </div>
+
+                    <div className="p-2 bg-blue-50/60 rounded border border-blue-200 text-center">
+                      <span className="text-[10px] text-slate-500 uppercase block">Bậc 3 (3 ml/kg/h)</span>
+                      <span className="font-extrabold text-blue-950 text-sm font-mono">{patientAnthro.rates.step3.ml} ml/h</span>
+                      <span className="text-[11px] text-blue-700 block font-semibold">({patientAnthro.rates.step3.drops} giọt/phút)</span>
+                    </div>
+
+                    <div className="p-2 bg-blue-50/60 rounded border border-blue-200 text-center">
+                      <span className="text-[10px] text-slate-500 uppercase block">Bậc 4 (1.5 ml/kg/h)</span>
+                      <span className="font-extrabold text-blue-950 text-sm font-mono">{patientAnthro.rates.step15.ml} ml/h</span>
+                      <span className="text-[11px] text-blue-700 block font-semibold">({patientAnthro.rates.step15.drops} giọt/phút)</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* BỘ CHUYỂN ĐỔI CHẾ ĐỘ LÀM VIỆC (EXECUTIVE WORKSPACE MODE SWITCHER) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 p-2 bg-slate-100/90 rounded-xl border border-slate-200/90 shadow-2xs">
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                {/* Tab 1: Phác đồ & Y lệnh */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('protocol')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'protocol'
+                      ? 'bg-blue-600 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                >
+                  <ClipboardCheck className="w-3.5 h-3.5" />
+                  <span>Phác đồ &amp; Y lệnh</span>
+                  <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${workspaceMode === 'protocol' ? 'bg-blue-700 text-white font-bold' : 'bg-slate-200 text-slate-700'}`}>
+                    {currentCheckedCount}/{totalAllOrders}
+                  </span>
+                </button>
+
+                {/* Tab 2: Phân loại & Cá thể hóa */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('classification')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'classification'
+                      ? 'bg-blue-600 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>Phân loại &amp; Cá thể hóa</span>
+                  {severityGrades.length > 0 && (
+                    <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${workspaceMode === 'classification' ? 'bg-blue-700 text-white font-bold' : 'bg-slate-200 text-slate-700'}`}>
+                      {severityGrades.length} {isPhenotypeStaging ? 'thể' : 'độ'}
+                    </span>
+                  )}
+                </button>
+
+                {/* Tab 3: Lưu ý & Dược an toàn */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('cautions')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'cautions'
+                      ? 'bg-amber-600 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                >
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                  <span>Lưu ý &amp; Dược an toàn</span>
+                  <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${workspaceMode === 'cautions' ? 'bg-amber-700 text-white font-bold' : 'bg-slate-200 text-slate-700'}`}>
+                    {phacDo.luuY.length}
+                  </span>
+                </button>
+
+                {/* Tab 4: Tri thức EBM & Ca bệnh */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('knowledge')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'knowledge'
+                      ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                >
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>Tri thức EBM &amp; Ca bệnh</span>
+                  <span className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${workspaceMode === 'knowledge' ? 'bg-indigo-700 text-white font-bold' : 'bg-slate-200 text-slate-700'}`}>
+                    {matchedGuidelines.length + similarSoapCases.length}
+                  </span>
+                </button>
+
+                {/* Tab 5: Xem toàn bộ */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('all')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'all'
+                      ? 'bg-slate-800 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                  title="Hiển thị cuộn toàn bộ 6 phần lâm sàng trên một trang"
+                >
+                  <ScrollText className="w-3.5 h-3.5" />
+                  <span>Xem toàn bộ</span>
+                </button>
+              </div>
+
+              {/* Status Indicator */}
+              <div className="flex items-center gap-2 self-end sm:self-auto text-xs text-slate-600">
+                <span className="font-semibold text-slate-800 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs">
+                  {workspaceMode === 'protocol' && 'Phác đồ & Y lệnh lâm sàng'}
+                  {workspaceMode === 'classification' && 'Phân loại & Cá thể hóa'}
+                  {workspaceMode === 'cautions' && 'Lưu ý & Dược an toàn'}
+                  {workspaceMode === 'knowledge' && 'Tri thức EBM, SOAP & Tư vấn'}
+                  {workspaceMode === 'all' && 'Bố cục 6 mục cuộn liên tục'}
+                </span>
+              </div>
+            </div>
+
+            {/* ========================================================================= */}
+            {/* NỘI DUNG TƯƠNG ỨNG VỚI WORKSPACE MODE                                     */}
+            {/* ========================================================================= */}
+
+            {/* CHẾ ĐỘ 1: PHÁC ĐỒ & Y LỆNH CHI TIẾT (DEFAULT WORKSTATION) */}
+            {workspaceMode === 'protocol' && (
+              <div className="flex flex-col gap-4">
+                {detailedTreatmentTableNode}
+
+                {/* Bottom Quick-Access Action Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('classification')}
+                    className="flex items-center gap-2.5 p-2.5 bg-white hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-lg text-left transition-colors cursor-pointer shadow-2xs"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                      <Layers className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800 block">Xem Phân loại cá thể hóa</span>
+                      <span className="text-[11px] text-slate-500">Phân độ, biến chứng, chỉnh liều eGFR</span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('cautions')}
+                    className="flex items-center gap-2.5 p-2.5 bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-300 rounded-lg text-left transition-colors cursor-pointer shadow-2xs"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                      <AlertTriangle className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800 block">Xem Lưu ý &amp; Dược an toàn</span>
+                      <span className="text-[11px] text-slate-500">Cảnh báo, chống chỉ định, xuất viện</span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('knowledge')}
+                    className="flex items-center gap-2.5 p-2.5 bg-white hover:bg-indigo-50 border border-slate-200 hover:border-indigo-300 rounded-lg text-left transition-colors cursor-pointer shadow-2xs"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+                      <GraduationCap className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800 block">Xem Tri thức EBM &amp; SOAP</span>
+                      <span className="text-[11px] text-slate-500">Guidelines, ca lâm sàng, tư vấn</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* CHẾ ĐỘ 2: PHÂN LOẠI & CÁ THỂ HÓA */}
+            {workspaceMode === 'classification' && (
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between gap-2 p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-950 font-medium">
+                  <div className="flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span><b>Phân loại cá thể hóa:</b> Lựa chọn phân độ, tầm soát biến chứng cấp và hiệu chỉnh theo chức năng thận eGFR.</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('protocol')}
+                    className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs cursor-pointer shadow-2xs shrink-0"
+                  >
+                    Áp dụng vào Phác đồ &rarr;
+                  </button>
+                </div>
+                {classificationSectionNode}
+                <div className="flex justify-end pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('protocol')}
+                    className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs cursor-pointer shadow-xs"
+                  >
+                    <span>Chuyển sang Phác đồ điều trị chi tiết</span>
+                    <span>&rarr;</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* CHẾ ĐỘ 3: LƯU Ý LÂM SÀNG & DƯỢC AN TOÀN */}
+            {workspaceMode === 'cautions' && (
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between gap-2 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-950 font-medium">
+                  <div className="flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                    <span><b>Lưu ý lâm sàng &amp; Dược an toàn:</b> Chỉ định can thiệp, Cảnh báo quan trọng, Chống chỉ định và Tiêu chuẩn xuất viện.</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('protocol')}
+                    className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg text-xs cursor-pointer shadow-2xs shrink-0"
+                  >
+                    Quay lại Phác đồ &rarr;
+                  </button>
+                </div>
+                {cautionsSectionNode}
+              </div>
+            )}
+
+            {/* CHẾ ĐỘ 4: TRI THỨC EBM & CA BỆNH SOAP */}
+            {workspaceMode === 'knowledge' && (
+              <div className="flex flex-col gap-4">
+                {/* Sub-tab Switcher */}
+                <div className="flex items-center justify-between gap-2 p-1.5 bg-slate-100 rounded-xl border border-slate-200 text-xs overflow-x-auto no-scrollbar">
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setKnowledgeSubTab('guidelines')}
+                      className={`px-3 py-1.5 rounded-lg font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                        knowledgeSubTab === 'guidelines'
+                          ? 'bg-indigo-600 text-white shadow-2xs font-bold'
+                          : 'text-slate-700 hover:text-slate-900 hover:bg-white'
+                      }`}
+                    >
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      <span>Khuyến cáo Guidelines EBM ({matchedGuidelines.length})</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setKnowledgeSubTab('soap')}
+                      className={`px-3 py-1.5 rounded-lg font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                        knowledgeSubTab === 'soap'
+                          ? 'bg-emerald-600 text-white shadow-2xs font-bold'
+                          : 'text-slate-700 hover:text-slate-900 hover:bg-white'
+                      }`}
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>Ca bệnh thực tế SOAP ({similarSoapCases.length})</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setKnowledgeSubTab('counseling')}
+                      className={`px-3 py-1.5 rounded-lg font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                        knowledgeSubTab === 'counseling'
+                          ? 'bg-slate-700 text-white shadow-2xs font-bold'
+                          : 'text-slate-700 hover:text-slate-900 hover:bg-white'
+                      }`}
+                    >
+                      <Heart className="w-3.5 h-3.5" />
+                      <span>Tư vấn người bệnh (Kho TV)</span>
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('protocol')}
+                    className="text-xs text-blue-600 hover:underline font-semibold pr-2 cursor-pointer hidden sm:inline"
+                  >
+                    &larr; Về Phác đồ điều trị
+                  </button>
+                </div>
+
+                {knowledgeSubTab === 'guidelines' && knowledgeNode}
+                {knowledgeSubTab === 'soap' && soapNode}
+                {knowledgeSubTab === 'counseling' && counselingNode}
+              </div>
+            )}
+
+            {/* CHẾ ĐỘ 5: XEM TOÀN BỘ (CUỘN LIÊN TỤC 6 MỤC) */}
+            {workspaceMode === 'all' && (
+              <div className="flex flex-col gap-5">
+                {/* Master Collapsible Controls Toolbar */}
+                <div className="flex items-center justify-between gap-3 p-2 bg-slate-50/90 rounded-lg border border-slate-200 text-xs">
+                  <span className="font-semibold text-slate-700 flex items-center gap-1.5">
+                    <Layers className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Bố cục 6 đầu mục lâm sàng chuẩn hoá</span>
+                  </span>
+
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={handleExpandAll}
+                      className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
+                      title="Bung toàn bộ 6 phần nội dung"
+                    >
+                      <ChevronDown className="w-3 h-3 text-blue-600" />
+                      <span>Bung tất cả</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleCollapseAll}
+                      className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded text-xs font-semibold cursor-pointer transition-colors shadow-2xs"
+                      title="Thu gọn các phần để màn hình gọn gàng"
+                    >
+                      <ChevronUp className="w-3 h-3 text-slate-500" />
+                      <span>Thu gọn</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* ĐẦU MỤC 1: PHÂN LOẠI (CÁ THỂ HOÁ) */}
+                <CollapsibleProtocolSection
+                  id="classification"
+                  isOpen={expandedSections.classification}
+                  onToggle={() => toggleSection('classification')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <Layers className="w-4 h-4" />
+                    </div>
+                  }
+                  title="1. Phân loại (cá thể hoá)"
+                  subtitle={
+                    activeChain?.branching?.mode === 'multi' && activeChain.branching.axes
+                      ? `${activeChain.branching.axes.map((a, i) => `1${String.fromCharCode(97 + i)}. ${a.axisLabelShort || a.axisName}`).join(' • ')} • Biến chứng • Đối tượng đặc biệt`
+                      : `${activeChain?.branching?.axisLabelShort ? `1a. ${activeChain.branching.axisLabelShort}` : (isPhenotypeStaging ? '1a. Thể lâm sàng' : '1a. Phân độ nặng nhẹ')} • 1b. Phân độ biến chứng • 1c. Các đối tượng đặc biệt`
+                  }
+                  badgeText={
+                    activeChain?.branching?.mode === 'multi' && activeChain.branching.axes
+                      ? `${activeChain.branching.axes.length} trục phân loại`
+                      : severityGrades.length === 0
+                      ? 'Tiếp cận toàn diện'
+                      : `${severityGrades.length} ${activeChain?.branching?.axisType === 'stage' ? 'giai đoạn' : (isPhenotypeStaging ? 'thể bệnh' : 'phân độ')}`
+                  }
+                  badgeColor="bg-blue-50 text-blue-800 border-blue-200"
+                >
+                  {classificationSectionNode}
+                </CollapsibleProtocolSection>
+
+                {/* ĐẦU MỤC 2: PHÁC ĐỒ ĐIỀU TRỊ CHI TIẾT */}
+                <CollapsibleProtocolSection
+                  id="protocol"
+                  isOpen={expandedSections.protocol}
+                  onToggle={() => toggleSection('protocol')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <ClipboardCheck className="w-4 h-4" />
+                    </div>
+                  }
+                  title="2. Phác đồ điều trị chi tiết"
+                  subtitle="1. Vấn đề &bull; 2. Phác đồ &amp; y lệnh &bull; 3. Theo dõi (Lâm sàng &amp; Cận lâm sàng)"
+                  badgeText={`${currentCheckedCount}/${totalAllOrders} y lệnh (${progressPercent}%)`}
+                  badgeColor="bg-blue-50 text-blue-800 border-blue-200"
+                >
+                  {detailedTreatmentTableNode}
+                </CollapsibleProtocolSection>
+
+                {/* ĐẦU MỤC 3: LƯU Ý LÂM SÀNG */}
+                <CollapsibleProtocolSection
+                  id="cautions"
+                  isOpen={expandedSections.cautions}
+                  onToggle={() => toggleSection('cautions')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <AlertTriangle className="w-4 h-4" />
+                    </div>
+                  }
+                  title="3. Lưu ý lâm sàng"
+                  subtitle="[1] Chỉ định can thiệp &amp; Y lệnh &bull; [2] Cảnh báo quan trọng &bull; [3] Chống chỉ định &bull; [4] Tiêu chuẩn xuất viện"
+                  badgeText={`${phacDo.luuY.length} lưu ý & CCĐ`}
+                  badgeColor="bg-amber-50 text-amber-800 border-amber-200"
+                  containerClassName="bg-amber-50/20 border border-amber-200/80 rounded-xl p-4 shadow-2xs"
+                >
+                  {cautionsSectionNode}
+                </CollapsibleProtocolSection>
+
+                {/* ĐẦU MỤC 4: VẤN ĐỀ NGƯỜI BỆNH QUAN TÂM */}
+                <CollapsibleProtocolSection
+                  id="counseling"
+                  isOpen={expandedSections.counseling}
+                  onToggle={() => toggleSection('counseling')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-slate-700 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <Heart className="w-4 h-4" />
+                    </div>
+                  }
+                  title="4. Vấn đề người bệnh quan tâm"
+                  subtitle="Tư vấn & giải thích bệnh cho người bệnh (Kho TV)"
+                  badgeText="Kho TV"
+                  badgeColor="bg-slate-100 text-slate-700 border-slate-200"
+                  containerClassName="bg-slate-50/60 border border-slate-200 rounded-xl p-4 shadow-2xs"
+                >
+                  {counselingNode}
+                </CollapsibleProtocolSection>
+
+                {/* ĐẦU MỤC 5: KIẾN THỨC CHO NHÂN VIÊN Y TẾ */}
+                <CollapsibleProtocolSection
+                  id="knowledge"
+                  isOpen={expandedSections.knowledge}
+                  onToggle={() => toggleSection('knowledge')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-blue-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <GraduationCap className="w-4 h-4" />
+                    </div>
+                  }
+                  title="5. Kiến thức cho nhân viên y tế"
+                  subtitle="5a. Cơ sở (GPSL / SLB) &bull; 5b. Lâm sàng (DTH / CĐ / BC / Dược) &bull; 5c. Guidelines - EBM"
+                  badgeText={`${matchedGuidelines.length} khuyến cáo EBM`}
+                  badgeColor="bg-blue-50 text-blue-800 border-blue-200"
+                  containerClassName="bg-blue-50/20 border border-blue-200/80 rounded-xl p-4 shadow-2xs"
+                >
+                  {knowledgeNode}
+                </CollapsibleProtocolSection>
+
+                {/* ĐẦU MỤC 6: CÁC CA BỆNH LIÊN QUAN (SOAP) */}
+                <CollapsibleProtocolSection
+                  id="soap"
+                  isOpen={expandedSections.soap}
+                  onToggle={() => toggleSection('soap')}
+                  icon={
+                    <div className="w-7 h-7 rounded-md bg-emerald-600 text-white flex items-center justify-center shadow-xs shrink-0">
+                      <Sparkles className="w-4 h-4" />
+                    </div>
+                  }
+                  title="6. Các ca bệnh liên quan (SOAP)"
+                  subtitle="Tham khảo ca bệnh thực tế tương tự, bẫy chẩn đoán và tạo prompt hội chẩn NotebookLM"
+                  badgeText={`${similarSoapCases.length} ca bệnh`}
+                  badgeColor="bg-emerald-50 text-emerald-800 border-emerald-200"
+                  containerClassName="bg-emerald-50/20 border border-emerald-200/80 rounded-xl p-4 shadow-2xs"
+                >
+                  {soapNode}
+                </CollapsibleProtocolSection>
+              </div>
+            )}
 
           {/* Bottom Action Controls */}
           <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200">

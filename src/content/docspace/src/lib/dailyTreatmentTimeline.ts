@@ -10,6 +10,9 @@ export interface TreatmentItem {
   category: string;
   content: string;
   isHighlighted?: boolean;
+  title?: string;
+  timing?: string;
+  detail?: string;
 }
 
 export interface MonitoringItem {

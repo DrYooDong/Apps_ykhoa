@@ -76,7 +76,7 @@ export const SampleCaseBar: React.FC<SampleCaseBarProps> = ({
       c.ten.toLowerCase().includes(q) ||
       (c.nhomBenh && c.nhomBenh.toLowerCase().includes(q)) ||
       (c.form.lyDo && c.form.lyDo.toLowerCase().includes(q)) ||
-      (c.form.chanDoan && c.form.chanDoan.toLowerCase().includes(q))
+      ((c.form as any).chanDoan && String((c.form as any).chanDoan).toLowerCase().includes(q))
     );
   });
 

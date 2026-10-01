@@ -140,20 +140,20 @@ export const StepNav: React.FC<StepNavProps> = ({
                 type="button"
                 onClick={() => onSelectStep(step.id)}
                 aria-current={isActive ? 'step' : undefined}
-                className={`group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-left whitespace-nowrap cursor-pointer flex-1 min-w-[120px] sm:min-w-0 max-w-[320px] min-h-[40px] ${
+                className={`group relative flex items-center gap-2 sm:gap-2.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl transition-all text-left whitespace-nowrap cursor-pointer flex-1 min-w-[120px] sm:min-w-0 max-w-[320px] min-h-[44px] ${
                   isActive
-                    ? 'bg-blue-50 border border-blue-200 shadow-2xs text-blue-900 ring-1 ring-blue-500/20'
-                    : 'hover:bg-slate-100/80 border border-slate-200/80 text-slate-600 bg-white'
+                    ? 'bg-blue-50/95 border-2 border-blue-600 shadow-sm text-blue-950 ring-2 ring-blue-500/20'
+                    : 'hover:bg-slate-100/90 border border-slate-200/90 text-slate-600 bg-white/90 hover:border-slate-300 shadow-2xs'
                 }`}
               >
                 {/* Step Circle */}
                 <div
-                  className={`w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-full flex items-center justify-center font-bold text-xs transition-all shrink-0 ${
+                  className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-bold text-xs transition-all shrink-0 ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-xs ring-2 ring-blue-400/30'
+                      ? 'bg-blue-600 text-white shadow-xs ring-2 ring-blue-400/40'
                       : isDone
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-300'
-                      : 'border border-slate-300 text-slate-500 bg-slate-50 group-hover:border-slate-400'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 font-semibold'
+                      : 'border border-slate-300 text-slate-500 bg-slate-50 group-hover:border-slate-400 font-medium'
                   }`}
                 >
                   {isDone && !isActive ? (
@@ -168,18 +168,22 @@ export const StepNav: React.FC<StepNavProps> = ({
                   <div className="flex items-center gap-1.5">
                     <span
                       className={`font-semibold text-xs sm:text-sm truncate ${
-                        isActive ? 'text-blue-950 font-bold' : 'text-slate-700'
+                        isActive ? 'text-blue-950 font-bold tracking-tight' : 'text-slate-700'
                       }`}
                     >
                       {step.title}
                     </span>
                     {isDone && (
-                      <span className="hidden xl:inline text-[10px] text-emerald-600 font-bold">
+                      <span className="hidden xl:inline text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200">
                         ✓
                       </span>
                     )}
                   </div>
-                  <span className="text-[11px] text-slate-500 truncate hidden md:block">
+                  <span
+                    className={`text-[11px] truncate hidden md:block ${
+                      isActive ? 'text-blue-700/90 font-medium' : 'text-slate-500'
+                    }`}
+                  >
                     {step.subtitle}
                   </span>
                 </div>

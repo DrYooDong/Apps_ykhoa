@@ -616,7 +616,60 @@ export function analyzeClinicalCase(
       }
     }
 
-    let pct = Math.round(Math.min(99, ((100 * score) / max) * factor));
+    // ==========================================
+    // CƠ CHẾ ĐÁNH GIÁ CHẨN ĐOÁN EBM ĐA TẦNG & TỶ LỆ TRÙNG KHỚP
+    // Khắc phục triệt để lỗi "3 chẩn đoán cùng 99%"
+    // ==========================================
+    const dtCriteria = b.dd.filter(([_, __, role]) => role === 'dt');
+    const gyCriteria = b.dd.filter(([_, __, role]) => role === 'gy');
+    const htCriteria = b.dd.filter(([_, __, role]) => role === 'ht');
+
+    const dtMatched = matched.filter((m) => m.role === 'dt');
+    const gyMatched = matched.filter((m) => m.role === 'gy');
+    const htMatched = matched.filter((m) => m.role === 'ht');
+
+    // 1. Base match ratio từ tổng trọng số
+    const rawRatio = max > 0 ? score / max : 0;
+
+    // 2. Hệ số độ dày bằng chứng (Evidence Density factor):
+    // Ca chỉ có 1-2 triệu chứng với tổng điểm < 6 không thể đạt độ tin cậy > 70%
+    const evidenceVolumeFactor = Math.min(1.0, 0.42 + (score / 14) * 0.58);
+
+    // 3. Phạt/Thưởng theo tính đặc hiệu (Specificity Modifier):
+    let specificityModifier = 1.0;
+    if (dtCriteria.length > 0) {
+      if (dtMatched.length > 0) {
+        // Có tiêu chuẩn vàng / tiêu chuẩn định bệnh
+        specificityModifier = 1.05 + 0.04 * Math.min(3, dtMatched.length);
+      } else {
+        // Có tiêu chuẩn định bệnh trong sách nhưng ca bệnh CHƯA CÓ tiêu chuẩn này:
+        // Phạt để không đẩy nhầm bệnh không có triệu chứng định bệnh lên top đầu
+        specificityModifier = 0.65;
+        notes.push('Chưa ghi nhận tiêu chuẩn định bệnh chuyên biệt (cần bổ sung CLS)');
+      }
+    } else if (gyMatched.length === 0 && htMatched.length > 0) {
+      // Chỉ có triệu chứng hỗ trợ/toàn thân chung chung (sốt, mệt mỏi...):
+      // Giảm mạnh vì triệu chứng này có mặt ở hàng chục bệnh cảnh khác nhau
+      specificityModifier = 0.52;
+      notes.push('Dữ kiện chỉ gồm triệu chứng toàn thân không đặc hiệu');
+    }
+
+    // 4. Tính % trùng khớp có kiểm soát trần trắc nghiệm lâm sàng
+    let calculatedPct = rawRatio * 100 * evidenceVolumeFactor * factor * specificityModifier;
+
+    // Giới hạn trần theo y học thực chứng (EBM Ceiling):
+    // Không bao giờ hiển thị 98-99% khi chỉ mới ở bước thăm khám lâm sàng ban đầu
+    const ceiling =
+      (dtMatched.length >= 2 || (dtMatched.length >= 1 && gyMatched.length >= 2))
+        ? 88
+        : dtMatched.length === 1
+        ? 78
+        : gyMatched.length >= 2
+        ? 68
+        : 52;
+
+    let pct = Math.round(Math.min(ceiling, Math.max(10, calculatedPct)));
+
     if (matched.length === 0) {
       pct = 0;
     }
@@ -643,7 +696,42 @@ export function analyzeClinicalCase(
     });
   }
 
-  return results
+  const rawResults = results
     .filter((r) => r.matched.length > 0)
-    .sort((a, b) => b.pct - a.pct || b.matched.length - a.matched.length);
+    .sort((a, b) => b.pct - a.pct || b.score - a.score || b.matched.length - a.matched.length);
+
+  // ==========================================
+  // THUẬT TOÁN PHÂN TÁCH BẬC THANG CHẨN ĐOÁN PHÂN BIỆT (EBM DIFFERENTIAL LADDER)
+  // Giải quyết triệt để phản ánh: không để 3 chẩn đoán có tỷ lệ trùng khớp quá cao (99%) hoặc sát nhau
+  // Tạo lập khoảng cách phân biệt lâm sàng rõ rệt giữa Sơ bộ (#1), Phân biệt 1 (#2) và Phân biệt 2 (#3)
+  // ==========================================
+  if (rawResults.length > 1) {
+    const lead = rawResults[0];
+    // Đảm bảo chẩn đoán sơ bộ dẫn đầu hợp lý trong khoảng 72% - 88%
+    if (lead.pct > 88) lead.pct = 88;
+
+    for (let i = 1; i < rawResults.length; i++) {
+      const candidate = rawResults[i];
+
+      // Ngưỡng trần tối đa cho từng bậc phân tầng:
+      // Chẩn đoán #2 (i=1): tối đa 62% hoặc cách chẩn đoán #1 ít nhất 20%
+      // Chẩn đoán #3 (i=2): tối đa 44% hoặc cách chẩn đoán #2 ít nhất 15%
+      // Chẩn đoán #4+ (i>=3): tối đa 30%
+      const maxAllowed =
+        i === 1
+          ? Math.min(62, Math.max(20, lead.pct - 22))
+          : i === 2
+          ? Math.min(44, Math.max(15, rawResults[1].pct - 16))
+          : Math.min(28, Math.max(10, rawResults[i - 1].pct - 10));
+
+      candidate.pct = Math.min(candidate.pct, maxAllowed);
+
+      // Đảm bảo thứ bậc giảm dần nghiêm ngặt, không trùng điểm
+      if (candidate.pct >= rawResults[i - 1].pct) {
+        candidate.pct = Math.max(10, rawResults[i - 1].pct - (7 + i * 2));
+      }
+    }
+  }
+
+  return rawResults;
 }

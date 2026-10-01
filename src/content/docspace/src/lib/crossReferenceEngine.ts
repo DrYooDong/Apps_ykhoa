@@ -18,6 +18,8 @@ export interface SoapCrossReferences {
   totalCount: number;
 }
 
+export type SoapCaseReference = SoapClinicalExperience;
+
 /**
  * Trích xuất tiền tố mã ICD-10 (ví dụ: 'J44.1' -> 'J44')
  */

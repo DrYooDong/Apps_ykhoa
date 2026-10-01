@@ -4,6 +4,7 @@ import {
   Database,
   FileCheck,
   Trash2,
+  X,
   Zap,
 } from 'lucide-react';
 import {
@@ -415,11 +416,10 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
           {/* Quick NLP Paste & Transcription Hub */}
           {(activeSection === 'all' || activeSection === 'hc') && (
             <TextFreeEntryPanel
-              form={form}
-              setForm={setForm}
               kb={kb}
+              setForm={setForm}
               setSelected={setSelected}
-              summaryText={summaryText}
+              setNegated={setNegated}
             />
           )}
 

@@ -20,6 +20,8 @@ export interface TrieuChung {
   map: ThresholdMap | null;
 }
 
+export type { SampleCase } from './data/seedData.ts';
+
 export interface DanSo {
   gioiTinh: 'any' | 'nam' | 'nu';
   tuoiMin?: number | null;
@@ -241,6 +243,9 @@ export interface ClinicalFormState {
   ngheNghiep: string;
   lyDo: string;
   ngayVaoVien?: string;
+  ngayBenh?: string;
+  canNang?: string;
+  chieuCao?: string;
   text: {
     cn: string;
     tt: string;
@@ -257,6 +262,8 @@ export interface VitalsState {
   vTho: string;
   vSpo2: string;
   vBMI?: string;
+  vGCS?: string;
+  vCRT?: string;
 }
 
 export interface LabsState {
@@ -269,6 +276,19 @@ export interface LabsState {
   lAST?: string;
   lALT?: string;
   lCRP?: string;
+  lLactate?: string;
+  lBiliTP?: string;
+  lINR?: string;
+  lAlb?: string;
+  lNa?: string;
+  lK?: string;
+  lCl?: string;
+  lHctNen?: string;
+  lNS1?: string;
+  lIgM?: string;
+  lIgG?: string;
+  lSieuAm?: string;
+  lXQuang?: string;
 }
 
 export interface MatchedEvidence {
@@ -381,6 +401,7 @@ export interface ProblemStatementEntry {
   type: 'trieu-chung' | 'hoi-chung' | 'dich-te' | 'bat-thuong-cls' | 'benh-man-tinh';
   priorityLevel?: 'life-threatening' | 'acute' | 'chronic'; // 3 tầng ưu tiên chuẩn y khoa
   isPrimary: boolean;        // Vấn đề CHÍNH được chọn để làm trục biện luận chẩn đoán
+  resolved?: boolean;
   evidence: string[];        // Dữ kiện chứng minh (cơ năng, thực thể, CLS)
   diagnosticPlan?: string;   // Chiến lược chẩn đoán: Đề nghị CLS nào cho vấn đề này?
   therapeuticPlan?: string;  // Chiến lược điều trị: Can thiệp cấp cứu / Y lệnh ban đầu?
@@ -459,7 +480,7 @@ export interface SoapClinicalExperience {
   id: string;
   title: string; // Tiêu đề ca kinh nghiệm (VD: Cơn đau thắt ngực không ổn định ở BN ĐTĐ cao tuổi)
   specialty: string; // Chuyên khoa (Tim mạch, Hô hấp, Tiêu hóa, Cấp cứu, Thần kinh...)
-  experienceLevel: 'essential' | 'pitfall' | 'rare' | 'advanced'; // Ca kinh điển | Bẫy lâm sàng | Tình huống hiếm | Chuyên sâu
+  experienceLevel: 'essential' | 'pitfall' | 'rare' | 'advanced' | 'thuc-chien' | string; // Ca kinh điển | Bẫy lâm sàng | Tình huống hiếm | Chuyên sâu | Thực chiến
   tags: string[]; // Từ khóa tìm kiếm
   demographicContext: string; // Bối cảnh cơ địa lâm sàng (VD: Nam 68 tuổi, thể trạng béo phì, tiền căn ĐTĐ)
   createdAt: string;

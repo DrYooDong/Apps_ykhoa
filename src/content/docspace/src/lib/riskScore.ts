@@ -6,6 +6,8 @@ export interface ScoreItem {
   points: number;
   reason: string;
   category: 'vital' | 'lab' | 'clinical';
+  param?: string;
+  note?: string;
 }
 
 export type UrgencyLevelCode = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
@@ -21,12 +23,17 @@ export interface ClinicalRiskScore {
   urgencyText: string;
   monitoringFrequency: string;
   clinicalAction: string;
+  label?: string;
+  description?: string;
+  clinicalResponse?: string;
+  recommendation?: string;
   color: {
     bg: string;
     border: string;
     text: string;
     badgeBg: string;
     badgeText: string;
+    badge?: string;
     hex: string;
     gradient: string;
   };
@@ -437,8 +444,19 @@ export function calculateClinicalRiskScore(
     urgencyText,
     monitoringFrequency,
     clinicalAction,
-    color,
-    breakdown,
+    label: levelName,
+    description: urgencyText,
+    clinicalResponse: clinicalAction,
+    recommendation: clinicalAction,
+    color: {
+      ...color,
+      badge: color.badgeBg,
+    },
+    breakdown: breakdown.map(item => ({
+      ...item,
+      param: item.parameter,
+      note: item.reason,
+    })),
   };
 }
 

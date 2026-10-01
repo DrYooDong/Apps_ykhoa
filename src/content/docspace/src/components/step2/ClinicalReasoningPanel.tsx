@@ -42,6 +42,7 @@ import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,
 } from '../../../data/diagnostic-criteria-database.ts';
+import { evaluateClinicalClassification } from '../../lib/clinicalClassification.ts';
 
 interface ClinicalReasoningPanelProps {
   topResult: AnalysisResult | null;
@@ -123,7 +124,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     const minor: string[] = [];
 
     topResult.matched.forEach((m) => {
-      if (m.tc.vaiTro === 'bb' || m.tc.loai.includes('tt') || m.weight >= 3) {
+      if (m.role === 'dt' || m.tc.loai.includes('tt') || m.w >= 3) {
         main.push(m.tc.ten);
       } else {
         minor.push(m.tc.ten);
@@ -383,7 +384,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
       // Làm sạch và chuẩn hóa danh sách triệu chứng phủ định và còn thiếu
       const cleanNegated = negatedSymptoms
-        .filter((n) => diffDisease.trieuChung?.some((tcId) => tcId === n.id))
+        .filter((n) => diffDisease.dd?.some(([tcId]) => tcId === n.id))
         .map((n) => n.ten.trim().replace(/^[\s\.\,\-]+|[\s\.\,\-]+$/g, ''))
         .filter((name) => name.length >= 2);
 
@@ -466,23 +467,51 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
     });
   }, [results, negatedSymptoms]);
 
-  // 4. Đánh giá Toàn diện (Mức độ, Căn nguyên, Biến chứng)
+  // 4. Đánh giá Toàn diện (Mức độ, Căn nguyên, Biến chứng) dựa trên Engine Phân loại Lâm sàng Chuẩn
+  const classification = useMemo(() => {
+    if (!leadDiagnosis) {
+      return {
+        diseaseId: '',
+        gradeIndex: 0,
+        gradeName: 'Chưa xác định',
+        severityLevel: 'moderate' as const,
+        triageText: 'Theo dõi lâm sàng',
+        rationale: [],
+        warningSignsPresent: [],
+        shockOrOrganFailurePresent: [],
+        recommendedAction: 'Theo dõi sinh hiệu và cận lâm sàng.',
+      };
+    }
+    return evaluateClinicalClassification(
+      leadDiagnosis.id,
+      vitals,
+      labs,
+      selectedSymptoms,
+      activeChain
+    );
+  }, [leadDiagnosis, vitals, labs, selectedSymptoms, activeChain]);
+
   const comprehensiveAssessment = useMemo(() => {
-    let severity = 'Mức độ trung bình, cần theo dõi sát tại khoa điều trị';
-    let severityLevel: 'critical' | 'severe' | 'moderate' = 'moderate';
     const sbp = parseFloat(vitals.vHATT);
     const dbp = parseFloat(vitals.vHATTr);
     const pulse = parseFloat(vitals.vMach);
     const spo2 = parseFloat(vitals.vSpo2);
-    const hasShock = (!isNaN(sbp) && sbp <= 90) || (!isNaN(sbp) && !isNaN(dbp) && sbp - dbp <= 20);
-    const hasHypoxia = !isNaN(spo2) && spo2 < 94;
+    const hasShock = (!isNaN(sbp) && sbp <= 90 && sbp > 0) || (!isNaN(sbp) && !isNaN(dbp) && sbp - dbp <= 20);
+    const hasHypoxia = !isNaN(spo2) && spo2 < 92;
 
-    if (hasShock || hasHypoxia || (leadDiagnosis && leadDiagnosis.baoDong)) {
-      severity = 'Mức độ NẶNG / CẤP CỨU NGUY KỊCH (có dấu hiệu rối loạn huyết động hoặc suy hô hấp, chỉ định theo dõi sát tại Phòng Cấp cứu / Hồi sức ICU)';
+    let severity = 'Mức độ nhẹ đến trung bình, đủ điều kiện quản lý và theo dõi ngoại trú có hướng dẫn.';
+    let severityLevel: 'critical' | 'severe' | 'moderate' = 'moderate';
+
+    if (classification.severityLevel === 'critical' || hasShock || hasHypoxia || classification.shockOrOrganFailurePresent.length > 0) {
+      severity = `Mức độ NẶNG / NGUY KỊCH (${classification.triageText}). Chỉ định theo dõi sát dấu hiệu sinh tồn và hồi sức tại Phòng Cấp cứu / Khoa Hồi sức Tích cực (ICU).`;
       severityLevel = 'critical';
-    } else if (problems.some((p) => p.priorityLevel === 'acute')) {
-      severity = 'Mức độ CẤP TÍNH có dấu hiệu cảnh báo, cần nhập viện theo dõi sát các chỉ số sinh hiệu và động học xét nghiệm';
+    } else if (classification.severityLevel === 'severe' || classification.warningSignsPresent.length > 0) {
+      const signs = classification.warningSignsPresent.length > 0 ? ` (${classification.warningSignsPresent.slice(0, 2).join(', ')})` : '';
+      severity = `Mức độ CẤP TÍNH có dấu hiệu cảnh báo${signs}. Chỉ định nhập viện điều trị nội trú, theo dõi sát động học xét nghiệm và phòng ngừa chuyển độ nặng.`;
       severityLevel = 'severe';
+    } else {
+      severity = `${classification.gradeName} — ${classification.triageText}. Tình trạng huyết động và hô hấp hiện tại ổn định, chưa ghi nhận dấu hiệu đe dọa sinh mạng.`;
+      severityLevel = 'moderate';
     }
 
     // Căn nguyên bệnh sinh
@@ -495,6 +524,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       else if (name.includes('mạch vành') || name.includes('nhồi máu')) etiology = 'Xơ vữa động mạch vành tiến triển, nứt vỡ mảng xơ vữa dẫn đến hình thành huyết khối cấp gây tắc nghẽn lòng mạch';
       else if (name.includes('não mô cầu')) etiology = 'Nhiễm vi khuẩn Neisseria meningitidis lây truyền qua đường giọt bắn hầu họng';
       else if (name.includes('leptospira')) etiology = 'Nhiễm xoắn khuẩn Leptospira interrogans phơi nhiễm qua vết trầy xước tiếp xúc nước ngập lụt';
+      else if (name.includes('phổi')) etiology = 'Nhiễm khuẩn đường hô hấp dưới cấp tính do phế cầu (Streptococcus pneumoniae) hoặc vi khuẩn không điển hình';
     }
 
     // Biến chứng nguy cơ
@@ -522,84 +552,37 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       etiology,
       complicationStr,
     };
-  }, [vitals, labs, problems, leadDiagnosis, activeChain]);
+  }, [vitals, labs, leadDiagnosis, activeChain, classification]);
 
   // 4b. Hệ thống Phân loại 6 Trục & Định tuyến Phác đồ Tự động (Diagnostic Routing Engine)
   const diagnosticRouting = useMemo(() => {
     if (!leadDiagnosis) return null;
 
     const branching = activeChain?.branching;
-    const branches = branching?.branches || [];
-    const severityGrades = activeChain?.severityGrading || [];
+    // Hỗ trợ cả single branch và multi-axis branch
+    const branches =
+      branching?.mode === 'multi' && branching?.axes?.[0]?.branches?.length
+        ? branching.axes[0].branches
+        : branching?.branches || [];
+    const severityGrades =
+      activeChain?.severityGrading && activeChain.severityGrading.length > 0
+        ? activeChain.severityGrading
+        : (branches as any);
 
-    const sbp = parseFloat(vitals.vHATT || '');
-    const dbp = parseFloat(vitals.vHATTr || '');
-    const pulse = parseFloat(vitals.vMach || '');
-    const spo2 = parseFloat(vitals.vSpo2 || '');
-    const temp = parseFloat(vitals.vNhiet || '');
-    const plt = parseFloat(labs.lTC || '');
-    const hct = parseFloat(labs.lHct || '');
-    const ast = parseFloat(labs.lAST || '');
-    const alt = parseFloat(labs.lALT || '');
-
-    const selectedIds = new Set(selectedSymptoms.map((s) => s.id));
-
-    // Cờ lâm sàng
-    const hasShock =
-      (!isNaN(sbp) && sbp > 0 && sbp <= 90) ||
-      (!isNaN(sbp) && !isNaN(dbp) && sbp - dbp <= 20) ||
-      (!isNaN(pulse) && !isNaN(sbp) && sbp > 0 && pulse / sbp >= 1.0) ||
-      selectedIds.has('tc_soc_mach_nhanh_ha_kep_hoac_tut') ||
-      selectedIds.has('soc_mach_nhanh_ha_kep_hoac_tut');
-
-    const hasCriticalOrganFailure =
-      (!isNaN(spo2) && spo2 > 0 && spo2 < 92) ||
-      (!isNaN(plt) && plt > 0 && plt < 50) ||
-      (!isNaN(ast) && ast >= 1000) ||
-      (!isNaN(alt) && alt >= 1000) ||
-      selectedIds.has('suy_ho_hap_tran_dich_mang_phoi');
-
-    const hasWarningSigns =
-      (!isNaN(hct) && hct >= 44) ||
-      (!isNaN(plt) && plt > 0 && plt < 100) ||
-      (!isNaN(pulse) && pulse >= 100) ||
-      (!isNaN(temp) && temp >= 39.0) ||
-      (!isNaN(ast) && ast >= 400) ||
-      (!isNaN(alt) && alt >= 400) ||
-      selectedIds.has('tc_dau_hieu_canh_bao_dau_bung_gan_non_oi') ||
-      selectedIds.has('dau_hieu_canh_bao_dau_bung_gan_non_oi') ||
-      selectedIds.has('tc_co_dac_mau_hct_tang_tren_20_phan_tram') ||
-      selectedIds.has('tc_giam_tieu_cau_duoi_100_g_l') ||
-      selectedIds.has('gan_to_dau') ||
-      selectedIds.has('non_ra_mau_phan_den') ||
-      problems.some((p) => p.priorityLevel === 'acute');
-
-    let targetIndex = 0;
-    const matchedReasons: string[] = [];
-
-    if (hasShock || hasCriticalOrganFailure) {
-      targetIndex = branches.length > 2 ? 2 : (branches.length > 1 ? 1 : 0);
-      if (hasShock) matchedReasons.push('Rối loạn huyết động / Dấu hiệu sốc (HA tụt hoặc kẹp ≤ 20 mmHg)');
-      if (!isNaN(spo2) && spo2 < 92) matchedReasons.push(`Giảm oxy máu (SpO2 ${spo2}%)`);
-      if (!isNaN(plt) && plt < 50) matchedReasons.push(`Tiểu cầu giảm nặng < 50 G/L (${plt} G/L)`);
-      if (selectedIds.has('tc_soc_mach_nhanh_ha_kep_hoac_tut')) matchedReasons.push('Triệu chứng sốc thoát dịch');
-    } else if (hasWarningSigns) {
-      targetIndex = branches.length > 1 ? 1 : 0;
-      if (!isNaN(hct) && hct >= 44) matchedReasons.push(`Cô đặc máu (Hct ${hct}%)`);
-      if (!isNaN(plt) && plt < 100) matchedReasons.push(`Tiểu cầu giảm < 100 G/L (${plt} G/L)`);
-      if (selectedIds.has('tc_dau_hieu_canh_bao_dau_bung_gan_non_oi')) matchedReasons.push('Dấu hiệu cảnh báo lâm sàng (đau bụng vùng gan / nôn ói)');
-      if (!isNaN(ast) && ast >= 400) matchedReasons.push(`Tổn thương tế bào gan (AST ${ast} U/L)`);
-    } else {
-      targetIndex = 0;
-      matchedReasons.push('Sinh hiệu trong ngưỡng ổn định, không có dấu hiệu cảnh báo đe dọa sinh mạng');
-    }
+    const maxAvailableIdx = Math.max(0, (branches.length > 0 ? branches.length : severityGrades.length) - 1);
+    const targetIndex = Math.min(classification.gradeIndex, maxAvailableIdx);
+    const matchedReasons = classification.rationale.length > 0
+      ? classification.rationale
+      : ['Phù hợp với triệu chứng lâm sàng và cận lâm sàng hiện tại'];
 
     const assignedBranch = branches[targetIndex] || null;
     const assignedGrade = severityGrades[targetIndex] || null;
 
     const branchName =
       assignedBranch?.name ||
-      assignedGrade?.grade ||
+      (assignedGrade as any)?.grade ||
+      (assignedGrade as any)?.name ||
+      classification.gradeName ||
       (targetIndex === 2
         ? 'Mức độ Nặng / ICU'
         : targetIndex === 1
@@ -608,7 +591,8 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     const triageTarget =
       assignedBranch?.triage ||
-      assignedGrade?.triage ||
+      (assignedGrade as any)?.triage ||
+      classification.triageText ||
       (targetIndex === 2
         ? 'Khoa Hồi sức Cấp cứu (ICU) / Tuyến cuối'
         : targetIndex === 1
@@ -617,10 +601,18 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
 
     const badgeText =
       assignedBranch?.badgeText ||
-      (targetIndex === 2 ? 'Hồi sức ICU' : targetIndex === 1 ? 'Nội trú 100%' : 'Ngoại trú');
+      (classification.severityLevel === 'critical'
+        ? 'Hồi sức ICU'
+        : classification.severityLevel === 'severe'
+        ? 'Nội trú 100%'
+        : 'Ngoại trú');
 
     const badgeColor: 'rose' | 'amber' | 'emerald' | 'blue' =
-      targetIndex === 2 ? 'rose' : targetIndex === 1 ? 'amber' : 'emerald';
+      classification.severityLevel === 'critical'
+        ? 'rose'
+        : classification.severityLevel === 'severe'
+        ? 'amber'
+        : 'emerald';
 
     return {
       axisName: branching?.axisName || 'Phân loại theo Mức độ Lâm sàng & Phân tầng Nguy cơ',
@@ -638,7 +630,7 @@ export const ClinicalReasoningPanel: React.FC<ClinicalReasoningPanelProps> = ({
       dischargeCriteria: assignedBranch?.dischargeCriteria || (assignedGrade as any)?.dischargeCriteria,
       branchesCount: branches.length || severityGrades.length || 3,
     };
-  }, [leadDiagnosis, activeChain, vitals, labs, selectedSymptoms, problems]);
+  }, [leadDiagnosis, activeChain, classification]);
 
   // 5. Sinh Văn bản Biện luận Lâm sàng EMR hoàn chỉnh
   const generatedReasoningText = useMemo(() => {

@@ -19,9 +19,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@vault/*": [
-        "../knowledge-vault/*"
       ]
     },
     "allowImportingTsExtensions": true,
@@ -29,11 +26,12 @@
   },
   "include": [
     "src/**/*",
-    "public/**/*",
-    "../knowledge-vault/data/*.json"
+    "data/**/*"
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "public",
+    "data/_backup_*"
   ]
 }

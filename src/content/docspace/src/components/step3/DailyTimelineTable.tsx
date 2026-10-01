@@ -100,7 +100,7 @@ export const DailyTimelineTable: React.FC<DailyTimelineTableProps> = ({ timeline
                       >
                         <div className="flex items-center justify-between gap-1 mb-1">
                           <span className="font-bold text-slate-900 text-xs">
-                            {tr.title}
+                            {tr.title || tr.category}
                           </span>
                           {tr.timing && (
                             <span className="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[10px] font-mono-custom">
@@ -108,7 +108,7 @@ export const DailyTimelineTable: React.FC<DailyTimelineTableProps> = ({ timeline
                             </span>
                           )}
                         </div>
-                        <p className="text-[11.5px] text-slate-700">{tr.detail}</p>
+                        <p className="text-[11.5px] text-slate-700">{tr.detail || tr.content}</p>
                       </div>
                     ))}
                   </div>

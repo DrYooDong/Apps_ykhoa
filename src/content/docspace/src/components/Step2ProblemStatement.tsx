@@ -737,8 +737,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         suggested.push({
           id: 'prob_htn',
           label: 'Tăng huyết áp (Tiền căn bệnh nền)',
-          type: 'benh-ly',
+          type: 'benh-man-tinh',
           priorityLevel: 'chronic',
+          isPrimary: false,
           evidence: ['Tiền căn tăng huyết áp mạn tính'],
         });
       }
@@ -746,8 +747,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
         suggested.push({
           id: 'prob_dm',
           label: 'Đái tháo đường (Tiền căn bệnh nền)',
-          type: 'benh-ly',
+          type: 'benh-man-tinh',
           priorityLevel: 'chronic',
+          isPrimary: false,
           evidence: ['Tiền căn đái tháo đường'],
         });
       }
@@ -906,6 +908,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                     problems={problems}
                     onUpdateProblems={onUpdateProblems}
                     onOpenVaultDrawer={onOpenVaultDrawer}
+                    vitals={vitals}
+                    labs={labs}
+                    selectedSymptoms={selectedSymptoms}
                   />
                 </div>
                 <div className="lg:col-span-5">
@@ -913,6 +918,8 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                     epiContext={epiContext}
                     onUpdateEpiContext={onUpdateEpiContext}
                     selectedSymptoms={selectedSymptoms}
+                    vitals={vitals}
+                    labs={labs}
                     onOpenVaultDrawer={onOpenVaultDrawer}
                   />
                 </div>
@@ -943,6 +950,9 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
                 problems={problems}
                 onUpdateProblems={onUpdateProblems}
                 onOpenVaultDrawer={onOpenVaultDrawer}
+                vitals={vitals}
+                labs={labs}
+                selectedSymptoms={selectedSymptoms}
               />
             </div>
           )}

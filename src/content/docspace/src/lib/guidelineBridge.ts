@@ -3,7 +3,7 @@
  * Kết nối động với 156+ Bằng chứng Y học Chứng cứ & Guidelines lâm sàng từ src/content/ebm/guidelines
  */
 
-import guidelinesRaw from '../../../ebm/guidelines/data/guidelines-db.json';
+import guidelinesRaw from '../data/guidelines-db.json';
 import { Benh, GuidelineRecommendationItem, GuidelineStudy } from '../types.ts';
 import { normalizeText, parseIcdList } from './normalizeUtils.ts';
 

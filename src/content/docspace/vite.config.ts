@@ -24,16 +24,13 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@vault': path.resolve(__dirname, '../knowledge-vault'),
       },
     },
     server: {
-      port: 5173,
-      host: true,
-      hmr: true,
-      fs: {
-        allow: ['..', '../..'],
-      },
+      port: 3000,
+      host: '0.0.0.0',
+      hmr: process.env.DISABLE_HMR !== 'true',
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
 });

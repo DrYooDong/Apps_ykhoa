@@ -254,34 +254,34 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
                 </div>
               </div>
             )}
-            {enrichedChain?.diagnosticCriteria ? (
+            {(enrichedChain?.criteria?.length || (enrichedChain as any)?.diagnosticCriteria) ? (
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-xs text-slate-800">
-                      Bộ tiêu chuẩn: {enrichedChain.diagnosticCriteria.sourceTitle || 'Bộ Y Tế / Quốc tế'}
+                      Bộ tiêu chuẩn: {(enrichedChain as any)?.diagnosticCriteria?.sourceTitle || enrichedChain?.protocol?.guideline || 'Bộ Y Tế / Quốc tế'}
                     </span>
-                    {enrichedChain.diagnosticCriteria.authority && (
+                    {((enrichedChain as any)?.diagnosticCriteria?.authority || enrichedChain?.specialty) && (
                       <span className="px-2 py-0.2 rounded text-[10.5px] bg-blue-50 text-blue-700 font-bold border border-blue-200">
-                        {enrichedChain.diagnosticCriteria.authority}
+                        {(enrichedChain as any)?.diagnosticCriteria?.authority || enrichedChain?.specialty}
                       </span>
                     )}
                   </div>
-                  {enrichedChain.diagnosticCriteria.goldStandard && (
+                  {(enrichedChain?.goldStandard || (enrichedChain as any)?.diagnosticCriteria?.goldStandard) && (
                     <span className="text-[11px] text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 font-medium">
-                      🏆 Tiêu chuẩn vàng: {enrichedChain.diagnosticCriteria.goldStandard}
+                      🏆 Tiêu chuẩn vàng: {enrichedChain?.goldStandard || (enrichedChain as any)?.diagnosticCriteria?.goldStandard}
                     </span>
                   )}
                 </div>
 
-                {enrichedChain.diagnosticCriteria.ruleDescription && (
+                {(enrichedChain?.criteriaRule?.ruleDescription || (enrichedChain as any)?.diagnosticCriteria?.ruleDescription) && (
                   <div className="p-3 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-950 leading-relaxed">
-                    <b>Thuật toán chẩn đoán cốt lõi:</b> {enrichedChain.diagnosticCriteria.ruleDescription}
+                    <b>Thuật toán chẩn đoán cốt lõi:</b> {enrichedChain?.criteriaRule?.ruleDescription || (enrichedChain as any)?.diagnosticCriteria?.ruleDescription}
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                  {enrichedChain.diagnosticCriteria.criteria.map((c, idx) => (
+                  {(enrichedChain?.criteria || (enrichedChain as any)?.diagnosticCriteria?.criteria || []).map((c: any, idx: number) => (
                     <div key={idx} className="p-2.5 rounded-lg border border-slate-200 bg-slate-50/50 text-xs flex flex-col gap-1">
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-slate-800">{c.label}</span>
@@ -289,7 +289,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
                           {c.type}
                         </span>
                       </div>
-                      <p className="text-[11px] text-slate-600 leading-normal">{c.description}</p>
+                      <p className="text-[11px] text-slate-600 leading-normal">{c.description || c.labThreshold || c.label}</p>
                     </div>
                   ))}
                 </div>
@@ -324,7 +324,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
                   >
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-900">{grade.levelName}</span>
+                        <span className="font-bold text-slate-900">{grade.grade || (grade as any).levelName}</span>
                         <span className="text-[10px] font-mono-custom text-slate-400">Độ {idx + 1}</span>
                       </div>
                       <p className="text-[11px] text-slate-600 leading-relaxed">{grade.criteria}</p>
@@ -431,7 +431,7 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
                 {enrichedChain.complications.map((comp, idx) => (
                   <div key={idx} className="p-3 rounded-lg border border-red-200 bg-red-50/20 text-xs flex flex-col justify-between gap-2">
                     <div>
-                      <b className="text-red-950 block">{comp.complicationName}</b>
+                      <b className="text-red-950 block">{comp.name || (comp as any).complicationName}</b>
                       <span className="text-[11px] text-slate-600 block mt-0.5">{comp.warningSigns}</span>
                     </div>
                     <button

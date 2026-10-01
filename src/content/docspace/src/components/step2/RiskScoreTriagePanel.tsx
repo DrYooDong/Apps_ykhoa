@@ -67,8 +67,8 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
   }, [providedPewsScore, vitals, labs, form, topMatchedIds]);
 
   const esiScore: EsiScoreResult = useMemo(() => {
-    return providedEsiScore || calculateEsiTriage(vitals, labs, form, topMatchedIds);
-  }, [providedEsiScore, vitals, labs, form, topMatchedIds]);
+    return providedEsiScore || calculateEsiTriage(vitals, labs, results, form, topMatchedIds);
+  }, [providedEsiScore, vitals, labs, results, form, topMatchedIds]);
 
   const [activeScoreSystem, setActiveScoreSystem] = useState<'news2' | 'esi' | 'pews'>(
     isPediatric ? 'pews' : 'news2'
@@ -170,8 +170,8 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
             {/* Left Info & Recommendations */}
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className={`px-2.5 py-0.5 rounded text-xs font-bold border ${esiScore.color.badge}`}>
-                  Mức {esiScore.level}: {esiScore.label}
+                <span className={`px-2.5 py-0.5 rounded text-xs font-bold border ${esiScore.color.badgeBg} ${esiScore.color.badgeText} ${esiScore.color.border}`}>
+                  Mức {esiScore.level}: {esiScore.levelName || esiScore.badgeLabel}
                 </span>
                 <span className="text-xs text-slate-500 font-mono-custom">
                   Thuật toán Phân loại Cấp cứu ESI v4
@@ -179,7 +179,7 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
               </div>
 
               <h3 className="font-display font-bold text-base text-slate-900 leading-snug">
-                {esiScore.description}
+                {esiScore.triageCategory || esiScore.levelName}
               </h3>
 
               {/* Quick Stat Blocks: Time to MD, Target Area, Resource estimation */}
@@ -202,14 +202,14 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
                   <span className="block text-[10px] text-slate-400 font-semibold uppercase">Dự kiến nguồn lực:</span>
                   <span className="font-bold text-slate-800 flex items-center gap-1 mt-0.5">
                     <Building2 className="w-3 h-3 text-purple-600" />
-                    {esiScore.estimatedResources}
+                    {esiScore.predictedResources?.details || `${esiScore.predictedResources?.count || 0} nguồn lực`}
                   </span>
                 </div>
               </div>
 
               {/* Clinical Action Recommendation */}
               <p className="text-xs text-slate-700 bg-slate-50/80 border border-slate-200/60 rounded-lg p-2.5 leading-relaxed">
-                <b>Khuyến cáo hành động ESI:</b> {esiScore.recommendation}
+                <b>Khuyến cáo hành động ESI:</b> {esiScore.clinicalAction}
               </p>
             </div>
 
@@ -224,8 +224,8 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
                 </span>
                 <span className="text-xs text-slate-400">/ 5</span>
               </div>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded ${esiScore.color.badge}`}>
-                {esiScore.label}
+              <span className={`text-xs font-bold px-2 py-0.5 rounded ${esiScore.color.badgeBg} ${esiScore.color.badgeText}`}>
+                {esiScore.levelName || esiScore.badgeLabel}
               </span>
 
               {/* 5-tier ESI Spectrum Gauge */}
@@ -311,8 +311,8 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className={`px-2.5 py-0.5 rounded text-xs font-bold border ${pewsScore.color.badge}`}>
-                  PEWS {pewsScore.score} điểm · {pewsScore.label}
+                <span className={`px-2.5 py-0.5 rounded text-xs font-bold border ${pewsScore.color.badgeBg} ${pewsScore.color.badgeText} ${pewsScore.color.border}`}>
+                  PEWS {pewsScore.totalScore} điểm · {pewsScore.levelName || pewsScore.badgeLabel}
                 </span>
                 <span className="text-xs text-slate-500 font-mono-custom">
                   Chuẩn Cảnh Báo Sớm Nhi Khoa Quốc Tế
@@ -320,7 +320,7 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
               </div>
 
               <h3 className="font-display font-bold text-base text-slate-900 leading-snug">
-                {pewsScore.description}
+                {pewsScore.urgencyText || pewsScore.levelName}
               </h3>
 
               {/* Quick Monitoring & Escalation Protocols */}
@@ -336,7 +336,7 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
                   <span className="block text-[10px] text-slate-400 font-semibold uppercase">Cấp báo động lâm sàng:</span>
                   <span className="font-bold text-slate-800 flex items-center gap-1 mt-0.5">
                     <ShieldAlert className="w-3 h-3 text-amber-600" />
-                    {pewsScore.escalationLevel}
+                    {pewsScore.escalationProtocol}
                   </span>
                 </div>
               </div>
@@ -354,12 +354,12 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
               </span>
               <div className="flex items-baseline gap-1 my-1">
                 <span className="text-4xl font-extrabold font-mono-custom tracking-tight" style={{ color: pewsScore.color.hex }}>
-                  {pewsScore.score}
+                  {pewsScore.totalScore}
                 </span>
                 <span className="text-xs text-slate-400">/ 9+</span>
               </div>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded ${pewsScore.color.badge}`}>
-                {pewsScore.label}
+              <span className={`text-xs font-bold px-2 py-0.5 rounded ${pewsScore.color.badgeBg} ${pewsScore.color.badgeText}`}>
+                {pewsScore.levelName || pewsScore.badgeLabel}
               </span>
 
               {/* 4-tier PEWS Urgency Meter */}
@@ -367,7 +367,7 @@ export const RiskScoreTriagePanel: React.FC<RiskScoreTriagePanelProps> = ({
                 <div className="grid grid-cols-4 gap-1 h-2">
                   {['Thấp (0-2)', 'Trung bình (3-4)', 'Cao (5-6)', 'Nguy kịch (≥7)'].map((tierLabel, idx) => {
                     const currentIdx =
-                      pewsScore.score >= 7 ? 3 : pewsScore.score >= 5 ? 2 : pewsScore.score >= 3 ? 1 : 0;
+                      pewsScore.totalScore >= 7 ? 3 : pewsScore.totalScore >= 5 ? 2 : pewsScore.totalScore >= 3 ? 1 : 0;
                     return (
                       <div
                         key={idx}
