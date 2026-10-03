@@ -54,8 +54,9 @@ Mỗi triệu chứng trích xuất PHẢI được gán đúng vào 1 trong 12 
    - "cls": Cận lâm sàng (chỉ số xét nghiệm, hình ảnh học)
    - "tc": Tiền căn / bệnh nền
    - "dth": Bối cảnh dịch tễ học
-4. TỪ KHÓA & BIẾN THỂ ("tuKhoa", "aliases"):
+4. TỪ KHÓA & BIẾN THỂ ("tuKhoa", "aliases") & NGUYÊN TẮC CHỐNG XUNG ĐỘT (ALIAS COLLISION GATE):
    - Cung cấp từ 3 - 6 từ khóa và các cách gọi lâm sàng tương đương để hỗ trợ bác sĩ tìm kiếm nhanh trên Web và thuật toán NLP phân tích bệnh án.
+   - NGUYÊN TẮC ĐỘC QUYỀN TỪ KHÓA: Từ khóa phải mang tính đặc thù cho triệu chứng đó. Tuyệt đối KHÔNG gán từ khóa trùng lặp với triệu chứng độc lập khác đã có (Ví dụ: "chán ăn", "sụt cân" chỉ thuộc về triệu chứng `chan_an_sut_can`, không đưa vào `met_moi`; "đau khớp" chỉ thuộc về `dau_khop_ngoai_bien`, không đưa vào `dau_co`).
 5. TỰ SUY ĐỊNH LƯỢNG ("map"):
    - Nếu triệu chứng tương ứng với một chỉ số sinh hiệu hoặc xét nghiệm có giá trị số cụ thể:
      "map": { "fld": "[MÃ_TRƯỜNG]", "op": "[>= | > | <= | < | ==]", "val": [GIÁ_TRỊ_SỐ] }

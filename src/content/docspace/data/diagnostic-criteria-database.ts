@@ -253,8 +253,8 @@ export interface DiseaseReactionChainDefinition {
   protocols?: any[];
 }
 
-import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db';
-import { ENRICHED_DISEASES } from './enriched';
+import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db.ts';
+import { ENRICHED_DISEASES } from './enriched/index.ts';
 
 export const DIAGNOSTIC_CHAIN_DATABASE: Record<string, DiseaseReactionChainDefinition> = {
   // ── Toàn bộ 164 bệnh lý đồng bộ tự động từ Kho Chẩn Đoán (2.3) ─────────────

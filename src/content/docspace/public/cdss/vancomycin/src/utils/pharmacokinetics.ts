@@ -304,9 +304,10 @@ export function calculateInitialDosing(
     cautions.push('Nên làm TDM sớm trong 24 giờ đầu để chỉnh liều kịp thời.');
 
     if (methodPreference === 'continuous') {
-      // Continuous infusion in CRRT: 15-20 mg/kg LD, then ~20-30 mg/kg/day
+      // Continuous infusion in CRRT: 15-20 mg/kg LD, then 10-15 mg/kg/day (ASHP 2020 Rec 16)
+      // Với độ thanh thải của CRRT (thường 1.5 - 2.5 L/h), liều 14 mg/kg/ngày đạt nồng độ ổn định Css 20-25 mg/L (tương ứng AUC 480-600)
       const civLd = Math.round(tbw * 20);
-      const civRate = Math.round((tbw * 25) / 24);
+      const civRate = Math.round((tbw * 14) / 24);
       return {
         loadingDoseMg: civLd,
         loadingDoseMgPerKg: 20,
@@ -319,7 +320,7 @@ export function calculateInitialDosing(
         maintenanceInfusionMinutes: 1440,
         continuousRateMgPerHour: civRate,
         recommendationSource: 'ASHP / IDSA 2020 - CRRT Continuous Infusion',
-        dosingRationale: `Truyền liên tục: Liều nạp 20 mg/kg, duy trì tốc độ ~${civRate} mg/h để đạt nồng độ mục tiêu Css 20 - 25 mg/L.`,
+        dosingRationale: `Truyền liên tục: Liều nạp 20 mg/kg, duy trì tốc độ ~${civRate} mg/h (14 mg/kg/ngày) để đạt nồng độ mục tiêu Css 20 - 25 mg/L (AUC 480 - 600 mg·h/L).`,
         safetyCautions: cautions
       };
     }

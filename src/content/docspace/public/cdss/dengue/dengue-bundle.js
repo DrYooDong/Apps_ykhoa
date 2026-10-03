@@ -624,7 +624,7 @@ function classifyAgeGroup(ageYears) {
   if (ageYears >= 13) return "adolescent";
   return "child";
 }
-function calculateWeightAdjustment(ageYears, gender, actualWeightKg) {
+function calculateWeightAdjustment(ageYears, gender, actualWeightKg, heightCm) {
   const stdWeight = getCDCStandardWeight(ageYears, gender);
   const ratio = actualWeightKg / stdWeight;
   const isObese = ratio > 1.2;
@@ -637,9 +637,15 @@ function calculateWeightAdjustment(ageYears, gender, actualWeightKg) {
       formulaNote = `\xC1p d\u1EE5ng C\xE2n n\u1EB7ng chu\u1EA9n CDC 2014 (${stdWeight} kg) thay cho c\xE2n n\u1EB7ng th\u1EF1c (${actualWeightKg} kg) do v\u01B0\u1EE3t ng\u01B0\u1EE1ng 120% (${Math.round(ratio * 100)}% chu\u1EA9n tu\u1ED5i).`;
       warningText = `C\u1EA3nh b\xE1o: Tr\u1EBB th\u1EEBa c\xE2n / b\xE9o ph\xEC (${Math.round(ratio * 100)}% so v\u1EDBi chu\u1EA9n tu\u1ED5i). B\u1EAFt bu\u1ED9c d\xF9ng c\xE2n n\u1EB7ng chu\u1EA9n ${stdWeight} kg \u0111\u1EC3 t\xEDnh d\u1ECBch nh\u1EB1m tr\xE1nh ph\xF9 ph\u1ED5i c\u1EA5p v\xE0 qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n.`;
     } else {
-      adjustedWeightKg = Math.min(actualWeightKg, 65);
-      formulaNote = `Ng\u01B0\u1EDDi l\u1EDBn b\xE9o ph\xEC: C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch hi\u1EC7u ch\u1EC9nh t\u1ED1i \u0111a ${adjustedWeightKg} kg`;
-      warningText = `Ng\u01B0\u1EDDi l\u1EDBn th\u1EC3 tr\u1ECDng l\u1EDBn (${actualWeightKg} kg): C\u1EA7n gi\xE1m s\xE1t ch\u1EB7t ch\u1EBD \xE1p l\u1EF1c t\u0129nh m\u1EA1ch v\xE0 ran \u0111\xE1y ph\u1ED5i khi b\xF9 d\u1ECBch.`;
+      let ibw = stdWeight;
+      if (heightCm && heightCm > 100) {
+        ibw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        ibw = Math.max(35, Math.round(ibw * 10) / 10);
+      }
+      const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
+      adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+      formulaNote = `Ng\u01B0\u1EDDi l\u1EDBn b\xE9o ph\xEC: C\xE2n n\u1EB7ng t\xEDnh d\u1ECBch hi\u1EC7u ch\u1EC9nh AdjBW = ${adjustedWeightKg} kg (IBW: ${ibw} kg, TBW: ${actualWeightKg} kg)`;
+      warningText = `Ng\u01B0\u1EDDi l\u1EDBn th\u1EC3 tr\u1ECDng l\u1EDBn (${actualWeightKg} kg): D\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh AdjBW ${adjustedWeightKg} kg \u0111\u1EC3 t\xEDnh d\u1ECBch. C\u1EA7n gi\xE1m s\xE1t ch\u1EB7t ch\u1EBD CVP, SpO2 v\xE0 ran \u0111\xE1y ph\u1ED5i khi b\xF9 d\u1ECBch.`;
     }
   }
   return {
@@ -819,9 +825,9 @@ function calculateBloodProducts(patient, effectiveWeightKg) {
       indication: "Ti\u1EC3u c\u1EA7u < 50.000/mm\xB3 k\xE8m xu\u1EA5t huy\u1EBFt n\u1EB7ng ho\u1EB7c chu\u1EA9n b\u1ECB ch\u1ECDc m\xE0ng ph\u1ED5i/b\u1EE5ng; ho\u1EB7c Ti\u1EC3u c\u1EA7u < 5.000/mm\xB3 d\xF9 ch\u01B0a ch\u1EA3y m\xE1u.",
       doseFormula: "1 \u0111\u01A1n v\u1ECB \u0111\u1EADm \u0111\u1EB7c / 5 kg ho\u1EB7c 1 \u0111\u01A1n v\u1ECB g\u1EA1n t\xE1ch (chi\u1EBFt t\xE1ch) / 10 kg",
       calculatedDose: `${pltPacks} \u0111\u01A1n v\u1ECB \u0111\u1EADm \u0111\u1EB7c (ho\u1EB7c ${pltApheresis} kh\u1ED1i ti\u1EC3u c\u1EA7u chi\u1EBFt t\xE1ch)`,
-      thresholdMet: !!(patient.plateletsCount && (patient.plateletsCount < 5e4 || patient.plateletsCount < 5e3)),
+      thresholdMet: !!(patient.plateletsCount && (patient.plateletsCount < 5e3 || patient.massiveBleeding && patient.plateletsCount < 5e4)),
       targetClinical: "M\u1EE5c ti\xEAu TC > 50.000/mm\xB3 khi \u0111ang xu\u1EA5t huy\u1EBFt n\u1EB7ng; TC > 30.000/mm\xB3 khi l\xE0m th\u1EE7 thu\u1EADt.",
-      precautions: "Kh\xF4ng d\xF9ng m\xE0ng l\u1ECDc b\u1EA1ch c\u1EA7u chu\u1EA9n cho ti\u1EC3u c\u1EA7u; truy\u1EC1n qua d\xE2y truy\u1EC1n ti\u1EC3u c\u1EA7u chuy\xEAn d\u1EE5ng."
+      precautions: "Kh\xF4ng truy\u1EC1n ti\u1EC3u c\u1EA7u d\u1EF1 ph\xF2ng khi ch\u01B0a c\xF3 xu\u1EA5t huy\u1EBFt n\u1EB7ng (tr\u1EEB khi TC < 5.000/mm\xB3). Kh\xF4ng d\xF9ng m\xE0ng l\u1ECDc b\u1EA1ch c\u1EA7u chu\u1EA9n cho ti\u1EC3u c\u1EA7u."
     },
     {
       id: "ppi_omeprazole",
@@ -848,8 +854,8 @@ function calculateBloodProducts(patient, effectiveWeightKg) {
 }
 function calculateAlbuminDose(effectiveWeightKg, currentAlbuminGDl = 2, targetAlbuminGDl = 3.5) {
   const diff = Math.max(0, targetAlbuminGDl - currentAlbuminGDl);
-  const albuminGrams = Math.round(diff * 0.8 * effectiveWeightKg * 10) / 10;
-  const vials20Percent50ml = Math.max(1, Math.ceil(albuminGrams / 10));
+  const albuminGrams = diff > 0 ? Math.round(diff * 0.8 * effectiveWeightKg * 10) / 10 : 0;
+  const vials20Percent50ml = diff > 0 ? Math.max(1, Math.ceil(albuminGrams / 10)) : 0;
   const minRateMlH = Math.round(5 * effectiveWeightKg);
   const maxRateMlH = Math.round(20 * effectiveWeightKg);
   return {
@@ -925,7 +931,7 @@ function calculateNACProtocol(patient, effectiveWeightKg) {
 function calculateABCSChecklist(patient, effectiveWeightKg) {
   const bicarbMl = Math.round(2 * effectiveWeightKg);
   const hclDose = `${Math.round(5 * effectiveWeightKg)} - ${Math.round(10 * effectiveWeightKg)} ml`;
-  const calciumMl = Math.min(5, Math.max(2, Math.round(0.15 * effectiveWeightKg * 10) / 10));
+  const calciumMl = Math.min(10, Math.max(0.5, Math.round(0.15 * effectiveWeightKg * 10) / 10));
   const dextroseMl = Math.round(1.5 * effectiveWeightKg);
   return {
     acidosis: {
@@ -1018,7 +1024,7 @@ function calculateBranchDecision(patient, effectiveWeightKg) {
 }
 function generateDengueCDSSPlan(patient, customDurations) {
   const ageGroup = classifyAgeGroup(patient.ageYears);
-  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg);
+  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
   const effectiveWeight = weightResult.adjustedWeightKg;
   const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(
     patient,

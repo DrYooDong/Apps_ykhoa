@@ -1,0 +1,545 @@
+{
+    "icdCode": "B20",
+    "icdPrefixes": [
+        "B20",
+        "B20.0",
+        "B20.1",
+        "B20.2",
+        "B20.7",
+        "B20.8",
+        "B24"
+    ],
+    "diseaseName": "Nhiễm trùng cơ hội trong bệnh cảnh HIV/AIDS (Opportunistic Infections in HIV/AIDS & Advanced HIV Disease - AHD)",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Nhiễm trùng cơ hội (NTCH) là nguyên nhân tử vong hàng đầu ở người nhiễm HIV tiến triển (CD4 < 200 cells/mm³ hoặc Giai đoạn lâm sàng 3, 4 theo WHO). Các tác nhân NTCH phổ biến và nguy hiểm nhất tại Việt Nam bao gồm Vi khuẩn Lao (M. tuberculosis - 46.7%), Nấm Talaromyces marneffei (29.2%), Viêm phổi do Pneumocystis jirovecii (PCP - 20.5%), Cytomegalovirus (CMV - 10.3%), Viêm màng não do Cryptococcus neoformans (2.6%), Toxoplasma não (5.6%) và Phức hợp Mycobacterium avium (MAC - 1.0%). Việc áp dụng Gói can thiệp Bệnh HIV tiến triển (AHD Package) gồm Sàng lọc nhanh (LF-LAM, CrAg), Điều trị dự phòng (Co-trimoxazole, 3HP/6H, Fluconazole) và Khởi động ARV đúng thời điểm là chiến lược sống còn để giảm tỷ lệ tử vong.",
+    "goldStandard": "Chẩn đoán xác định căn nguyên NTCH bằng xét nghiệm vi sinh/sinh học phân tử đích danh: Xpert MTB/RIF hoặc LF-LAM nước tiểu đối với Lao; Kháng nguyên Cryptococcus (CrAg LFA) máu/dịch não tủy đối với Nấm Cryptococcus; Nhuộm soi/cấy/PCR dịch rửa phế quản hoặc đờm đối với PCP; Soi tươi/cấy máu, da, tủy xương tìm Talaromyces marneffei; PCR/Kháng nguyên Histoplasma urine; PCR CMV/Toxoplasma.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "ahd_cd4_under_200_or_stage_3_4"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán NTCH trên người nhiễm HIV khi có bằng chứng Suy giảm miễn dịch nặng (CD4 < 200 cells/mm³ hoặc Lâm sàng WHO 3/4) KÈM THEO ít nhất 01 bằng chứng vi sinh/cận lâm sàng khẳng định căn nguyên NTCH VÀ biểu hiện lâm sàng tương ứng."
+    },
+    "criteria": [
+        {
+            "id": "ahd_cd4_under_200_or_stage_3_4",
+            "type": "mandatory",
+            "label": "[Bắt buộc]: Bệnh HIV tiến triển (Advanced HIV Disease - AHD) hoặc Suy giảm miễn dịch nặng",
+            "description": "[Lâm sàng & CLS]: Số lượng tế bào T-CD4 < 200 cells/mm³ (hoặc T-CD4 % < 15% ở trẻ < 5 tuổi) HOẶC bệnh nhân ở Giai đoạn lâm sàng 3 hoặc 4 theo phân loại WHO.",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & WHO AHD Guidelines 2025"
+        },
+        {
+            "id": "oi_tb_evidence",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 1]: Đồng nhiễm Lao (Lao phổi hoặc Lao ngoài phổi)",
+            "description": "[Lâm sàng & CLS]: Ho kéo dài, sốt, sụt cân, vã mồ hôi đêm. LF-LAM nước tiểu (+), Xpert MTB/RIF (+), AFB đờm (+), hoặc hình ảnh tổn thương thâm nhiễm/hang/hạch màng phổi trên X-quang/CT ngực.",
+            "sourceGuideline": "Quyết định 4067/QĐ-BYT & Quyết định 5968/QĐ-BYT"
+        },
+        {
+            "id": "oi_talaromycosis_evidence",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 2]: Nhiễm nấm Talaromyces marneffei lan tỏa",
+            "description": "[Lâm sàng & CLS]: Sốt kéo dài, sẩn hoại tử rốn trung tâm ở da mặt/thân mình, gan lách to, thiếu máu nặng, hạch to. Soi tươi/cấy máu, da, hạch, tủy xương phát hiện nấm T. marneffei phân nhánh hình xúc xích.",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021 & Nghiên cứu NHTĐ 2022"
+        },
+        {
+            "id": "oi_pcp_evidence",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 3]: Viêm phổi do Pneumocystis jirovecii (PCP)",
+            "description": "[Lâm sàng & CLS]: Ho khô, khó thở tiến triển dồn dập, SpO2 giảm sâu khi gắng sức. X-quang phổi thâm nhiễm kẽ đối xứng 2 bên hình cánh bướm. Nhuộm Giemsa/bạc hoặc PCR dịch rửa phế quản (+).",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021"
+        },
+        {
+            "id": "oi_cryptococcus_crag",
+            "type": "lab",
+            "label": "[Cận lâm sàng Gold Standard]: Kháng nguyên Cryptococcus (CrAg) máu hoặc DNT (+)",
+            "description": "[Cận lâm sàng]: Xét nghiệm CrAg LFA máu (+) ở bệnh nhân CD4 < 200 cells/mm³. Nếu có triệu chứng thần kinh, chọc DNT thấy CrAg DNT (+), nhuộm mực tàu (+) hoặc cấy ra Cryptococcus neoformans.",
+            "labThreshold": "CrAg LFA Máu / DNT (+); Áp lực mở DNT > 200 mmH2O",
+            "sourceGuideline": "WHO Cryptococcal Guidelines 2022 & BYT 2021"
+        },
+        {
+            "id": "oi_chest_imaging_patterns",
+            "type": "imaging",
+            "label": "[Hình ảnh học]: X-quang / CT ngực phân biệt các NTCH hô hấp",
+            "description": "[Chẩn đoán hình ảnh]: Thâm nhiễm đỉnh phổi/hang/dạng nốt (Lao); Thâm nhiễm kẽ lan tỏa đối xứng từ rốn phổi (PCP); Tổn thương thâm nhiễm kẽ/đông đặc (Talaromycosis/Vi khuẩn).",
+            "labThreshold": "Thâm nhiễm kẽ lan tỏa 2 bên hoặc tổn thương hang/hạch trung thất",
+            "sourceGuideline": "Quyết định 5968/QĐ-BYT 2021"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1: AHD Nhẹ / CD4 200–350 cells/mm³ (NTCH niêm mạc nhẹ)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Nấm Candida miệng, Zoster da 1 khoanh tủy, loét miệng tái phát, sụt cân < 10%. [Cận lâm sàng]: CD4 200–350 cells/mm³. [Tiêu chuẩn an toàn]: Không khó thở, không tổn thương thần kinh trung ương, sinh hiệu hoàn toàn ổn định.",
+            "triage": "Phòng khám OPC Ngoại trú / Trung tâm Y tế",
+            "primaryAction": "Khởi động ARV ngay (phác đồ TLD); Bắt đầu dự phòng Co-trimoxazole (CTX 960mg/ngày); Sàng lọc Lao (4 triệu chứng) & điều trị Lao tiềm ẩn (3HP).",
+            "targetVitals": "Sinh hiệu ổn định, CD4 nâng > 350 cells/mm³ sau 6 tháng, HIV RNA < 50 copies/mL"
+        },
+        {
+            "grade": "Mức độ 2: AHD Tiến triển / CD4 100–199 cells/mm³ (NTCH tạng đơn thuần)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Sốt kéo dài > 2 tuần, ho khan khó thở nhẹ, nuốt đau do Candida thực quản, Lao phổi chưa biến chứng. [Cận lâm sàng]: CD4 100–199 cells/mm³, CrAg máu (-), Xpert/LF-LAM (+/-).",
+            "triage": "Khoa Nội - Truyền nhiễm Bệnh viện Tuyến Huyện / Tỉnh (Nội trú ngắn hạn)",
+            "primaryAction": "Điều trị NTCH cấp tính (CTX liều cao cho PCP, RHZE cho Lao, Fluconazole cho Candida thực quản); Duy trì CTX dự phòng; Bắt đầu ARV sau 2 tuần điều trị NTCH.",
+            "targetVitals": "Cắt sốt, hết khó thở, SpO2 > 95% khí trời, bài niệu > 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3: AHD Nặng / Cấp cứu - CD4 < 100 cells/mm³ (NTCH Thần kinh TƯ / Lan tỏa đe dọa tính mạng)",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Viêm màng não Cryptococcus, Lao màng não, Nấm Talaromycosis lan tỏa hoại tử da/tạng, PCP nặng suy hô hấp SpO2 < 90%, Toxoplasma não, CMV võng mạc/tạng. [Cận lâm sàng]: CD4 < 100 cells/mm³ (hoặc < 50 cells/mm³), CrAg máu (+), CrAg DNT (+), LF-LAM (+).",
+            "triage": "Hồi sức Cấp cứu (ICU) / Khoa Cấp cứu Truyền nhiễm Tuyến Tỉnh - Trung ương",
+            "primaryAction": "Nạp Gói AHD khẩn cấp: Chọc DNT xả áp lực nội sọ; Thở oxy/NCPAP; Kháng nấm tấn công (Liposomal Amphotericin B + Flucytosine) cho Cryptococcus/Talaromyces; CTX liều cao + Prednisolone cho PCP nặng. TRÌ HOÃN ARV 4–6 tuần nếu có Viêm màng não Cryptococcus / Lao màng não để ngừa IRIS tử vong.",
+            "targetVitals": "Khống chế áp lực DNT < 200 mmH2O, SpO2 ≥ 95%, hết co giật, nâng CD4 > 100 cells/mm³"
+        }
+    ],
+    "protocol": {
+        "title": "Hướng dẫn Khám, Chẩn đoán và Xử trí Nhiễm trùng cơ hội ở người nhiễm HIV tiến triển (AHD Package - Quyết định 5968/QĐ-BYT & WHO Guidelines 2025)",
+        "guideline": "Quyết định 5968/QĐ-BYT ngày 31/12/2021 Bộ Y tế Việt Nam & WHO Guidelines on Advanced HIV Disease 2025",
+        "targetGoals": [
+            "Khống chế và điều trị triệt để các nhiễm trùng cơ hội đe dọa tính mạng (Lao, Cryptococcus, PCP, Talaromycosis).",
+            "Dự phòng hiệu quả các NTCH tái phát hoặc mới mắc bằng Gói can thiệp Bệnh HIV tiến triển (Co-trimoxazole, Fluconazole, 3HP/6H).",
+            "Khởi động ARV đúng thời điểm vàng (sớm trong 2 tuần cho NTCH thông thường; trì hoãn 4-6 tuần cho Viêm màng não) nhằm phục hồi miễn dịch và phòng ngừa Hội chứng IRIS tử vong."
+        ],
+        "initialManagement": [
+            "Sàng lọc hệ thống gói AHD tại chỗ: Xét nghiệm CrAg máu (CD4 < 200), LF-LAM nước tiểu, GeneXpert đờm/dịch, soi cấy nấm máu/da.",
+            "Phân tầng cấp cứu: Đánh giá sinh hiệu nguy hiểm (Mạch > 120, Thở > 30, SpO2 < 90%, rối loạn tri giác, đau đầu dữ dội) -> Nhập viện Hồi sức / Cấp cứu.",
+            "Xử trí cấp cứu ban đầu: Thở oxy hỗ trợ, chọc dò DNT đo áp lực mở nếu nghi Cryptococcus/Lao màng não, lập đường truyền tĩnh mạch lớn."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Co-trimoxazole (Trimethoprim 160mg / Sulfamethoxazole 800mg - CTX DS)",
+                "class": "Kháng sinh/Kháng nguyên sinh vật dự phòng & điều trị PCP/Toxoplasma",
+                "route": "PO / IV",
+                "dosage": "Điều trị PCP: TMP 15-20 mg/kg/ngày chia 3 lần/ngày x 21 ngày; Dự phòng NTCH: 1 viên DS (960mg)/ngày",
+                "frequency": "3 lần/ngày (điều trị PCP) hoặc 1 lần/ngày (dự phòng)",
+                "instructions": "Thêm Prednisolone 40mg x 2 lần/ngày x 5 ngày (sau đó giảm liều) nếu PaO2 < 70 mmHg hoặc SpO2 < 90% trong PCP nặng.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Liposomal Amphotericin B + Flucytosine",
+                "class": "Thuốc kháng nấm tấn công đường tĩnh mạch & uống (Cryptococcus / Talaromycosis / Histoplasma)",
+                "route": "IV / PO",
+                "dosage": "Cryptococcus: Liposomal Amphotericin B 10mg/kg liều duy nhất N1 + Flucytosine 100mg/kg/ngày chia 4 lần x 14 ngày + Fluconazole 1200mg/ngày x 14 ngày (hoặc L-AmB 3-4 mg/kg/ngày x 7 ngày); Talaromycosis: L-AmB 3-5 mg/kg/ngày x 2 tuần",
+                "frequency": "Hằng ngày x 14 ngày",
+                "instructions": "Cần bù dịch Ringer Lactate 500-1000 mL + KCl 20mEq trước truyền L-AmB để ngừa độc thận và hạ kali máu.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Phác đồ Chống Lao phối hợp (2RHZE / 4RH)",
+                "class": "Phác đồ hóa trị Lao phối hợp 4 thuốc theo Bộ Y Tế",
+                "route": "PO",
+                "dosage": "Rifampicin + Isoniazid + Pyrazinamide + Ethambutol theo cân nặng x 2 tháng tấn công, sau đó RH x 4 tháng củng cố",
+                "frequency": "1 lần/ngày vào buổi sáng lúc đói",
+                "instructions": "BẮT BUỘC tăng liều Dolutegravir (DTG) từ 50mg 1 lần/ngày lên 50mg x 2 lần/ngày (cách 12 giờ) khi dùng chung với Rifampicin.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Fluconazole",
+                "class": "Thuốc kháng nấm đường uống/truyền củng cố & dự phòng",
+                "route": "PO / IV",
+                "dosage": "Tấn công/Củng cố Cryptococcus: 800-1200 mg/ngày x 8 tuần; Dự phòng tiền tàng (CrAg máu +): 800 mg/ngày x 2 tuần, sau đó 400 mg/ngày x 8 tuần, duy trì 200 mg/ngày",
+                "frequency": "1 lần/ngày",
+                "instructions": "Theo dõi men gan AST/ALT và khoảng QTc trên điện tâm đồ.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Itraconazole",
+                "class": "Thuốc kháng nấm Triazole thay thế/củng cố cho Talaromycosis & Histoplasmosis",
+                "route": "PO",
+                "dosage": "200mg x 2 lần/ngày x 10 tuần (sau đợt tấn công Amphotericin B) hoặc duy trì 200mg/ngày x 12 tháng",
+                "frequency": "2 lần/ngày",
+                "instructions": "Uống cùng bữa ăn hoặc đồ uống có acid để tăng cường hấp thu."
+            }
+        ],
+        "supportiveCare": [
+            "Chọc dò dịch não tủy xả áp lực lặp lại (mỗi 24-48h) nếu áp lực mở DNT > 250 mmH2O ở bệnh nhân Viêm màng não Cryptococcus.",
+            "Dinh dưỡng cao năng lượng, truyền khối hồng cầu lắng nếu Hb < 7-8 g/dL.",
+            "Tư vấn tuân thủ điều trị, hướng dẫn dấu hiệu báo động IRIS khi bắt đầu uống ARV."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Lao màng não / Lao lan tỏa nặng",
+            "timeframe": "acute_24h",
+            "warningSigns": "Sốt, đau đầu, cổ cứng, rối loạn tri giác, tổn thương dây thần kinh sọ, Xpert DNT (+)",
+            "preventiveAction": "Điều trị Lao phác đồ RHZE + Dexamethasone 0.4mg/kg/ngày; Trì hoãn ARV 4-8 tuần.",
+            "onCallAlertText": "Y LỆNH CẤP CỨU LAO MÀNG NÃO: Khám dấu màng não, chọc DNT làm Xpert MTB khẩn! Cho phác đồ chống Lao + Dexamethasone IV!"
+        },
+        {
+            "name": "Tăng áp lực nội sọ do Viêm màng não Cryptococcus",
+            "timeframe": "acute_24h",
+            "warningSigns": "Đau đầu dữ dội, nôn vọt, nhìn đôi, phù gai thị, áp lực mở DNT > 250 mmH2O",
+            "preventiveAction": "Chọc dò DNT xả 10-20 mL dịch đến khi áp lực < 200 mmH2O; Tuyệt đối CẤM dùng Mannitol/Corticoid.",
+            "onCallAlertText": "Y LỆNH BÁO ĐỘNG ĐỎ CRYPTOCOCCUS: Chọc DNT xả áp lực khẩn! Xả Liposomal Amphotericin B + Flucytosine! Cấm dùng Corticoid!"
+        },
+        {
+            "name": "Suy hô hấp cấp do Viêm phổi PCP nặng",
+            "timeframe": "acute_24h",
+            "warningSigns": "Khó thở dồn dập, thở nhanh > 30 l/p, SpO2 < 85%, thâm nhiễm kẽ lan tỏa 2 bên hình cánh bướm",
+            "preventiveAction": "Thở oxy mask túi/NCPAP/NIV; Co-trimoxazole IV/PO liều cao + Prednisolone 40mg x 2 lần/ngày.",
+            "onCallAlertText": "Y LỆNH CẤP CỨU PCP NẶNG: Thở oxy mask túi/CPAP + Uống/Truyền Co-trimoxazole liều cao + Prednisolone 40mg IV ngay!"
+        },
+        {
+            "name": "Hội chứng Viêm phục hồi miễn dịch (IRIS)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt cao bùng phát trở lại, hạch lao vỡ mủ, tổn thương NTCH cũ xấu đi dồn dập sau 2-12 tuần uống ARV",
+            "preventiveAction": "TIẾP TỤC ARV; Điều trị tích cực NTCH căn nguyên; Cho Prednisolone 0.5-1.0 mg/kg/ngày x 1-2 tuần.",
+            "onCallAlertText": "Y LỆNH BÁO ĐỘNG IRIS: Bệnh nhân mới uống ARV sốt/sưng hạch dồn dập -> Duy trì ARV, cho Prednisolone 0.5mg/kg/ngày!"
+        }
+    ],
+    "monitoringLabs": [
+        "Xét nghiệm CD4: Lúc chẩn đoán AHD, sau 6 tháng điều trị ARV/NTCH.",
+        "Tải lượng vi rút HIV RNA: Sau 6 tháng khởi động ARV (Mục tiêu < 50 copies/mL).",
+        "Điện giải đồ (K+, Mg2+) & Creatinine máu: Mỗi 2 ngày trong đợt truyền Amphotericin B (nguy cơ hạ Kali và suy thận).",
+        "Công thức máu (Hb, WBC, PLT): Mỗi tuần trong đợt dùng Flucytosine hoặc AZT (nguy cơ ức chế tủy xương).",
+        "Men gan (AST, ALT, Bilirubin): Kiểm tra trước điều trị và mỗi 2-4 tuần khi dùng thuốc chống Lao (RHZE) hoặc chống Nấm."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Thai phụ nhiễm HIV có Nhiễm trùng cơ hội",
+            "adjustments": "Sử dụng phác đồ ARV TLD ngay; Điều trị NTCH bằng thuốc an toàn cho thai (Tránh Fluconazole liều cao trong 3 tháng đầu trừ khi đe dọa tính mạng; Dùng Liposomal Amphotericin B cho nấm lan tỏa).",
+            "cautions": "Sàng lọc Lao tích cực; Chống chỉ định dùng EFV/NVP nếu có dị ứng/độc gan."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 50 mL/min)",
+            "adjustments": "Hiệu chỉnh liều Co-trimoxazole, Flucytosine, Fluconazole và Lamivudine (3TC) theo eGFR; Ưu tiên dùng Liposomal Amphotericin B thay cho Amphotericin B deoxycholate.",
+            "cautions": "Theo dõi sát Creatinine máu q48h."
+        },
+        {
+            "population": "Bệnh nhân đồng nhiễm Lao + HIV + Talaromycosis / Cryptococcus",
+            "adjustments": "Ưu tiên điều trị tấn công NTCH đe dọa tính mạng nhất trước; Dùng Rifampicin trị Lao cần TĂNG LIỀU Dolutegravir lên 50mg x 2 lần/ngày.",
+            "cautions": "Cảnh giác tương tác thuốc dày đặc và độc tính chồng lấp trên gan."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N14",
+            "phaseName": "Giai đoạn Hồi sức Cấp cứu & Khống chế NTCH Tấn công",
+            "clinicalGoal": "Chẩn đoán xác định căn nguyên NTCH bằng Gói AHD, hồi sức chức năng sống, khởi động kháng sinh/kháng nấm/kháng Lao liều tấn công.",
+            "problems": [
+                {
+                    "id": "p1_oi_treatment",
+                    "problemName": "Điều trị tấn công NTCH đe dọa tính mạng (Lao, Cryptococcus, PCP, Talaromyces)",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc đặc hiệu NTCH",
+                            "content": "Lao: 2RHZE; PCP: Co-trimoxazole liều cao (TMP 15-20mg/kg/ngày) + Prednisolone 40mg x 2; Cryptococcus: Liposomal Amphotericin B + Flucytosine; Talaromyces: Liposomal Amphotericin B 3-5mg/kg/ngày x 2 tuần.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Cấp cứu tăng áp lực DNT",
+                            "content": "Chọc dò DNT xả dịch mỗi 24-48h nếu áp lực mở > 250 mmH2O ở bệnh nhân Cryptococcus.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mạch, HA, Nhịp thở, SpO2, Tri giác, Đau đầu",
+                            "frequency": "q2-4h",
+                            "target": "SpO2 >= 95%, hết nôn/đau đầu"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "K+, Mg2+, Creatinine, CTM",
+                            "frequency": "q48h",
+                            "target": "K+ > 3.5 mmol/L, Creatinine ổn định"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_hypersensitivity",
+                    "problemName": "Dị ứng / Độc tính thuốc điều trị NTCH (CTX, Amphotericin B)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí độc tính",
+                            "content": "Truyền dịch bù điện giải nếu hạ K+; chuyển đổi thuốc nếu có Stevens-Johnson."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Da, niêm mạc, nhiệt độ",
+                            "frequency": "q24h",
+                            "target": "Không có ban dị ứng nặng"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc đặc hiệu NTCH",
+                    "content": "Phác đồ chống Lao 2RHZE / CTX liều cao PCP / Amphotericin B kháng nấm.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Mạch, HA, Nhịp thở, SpO2, Tri giác",
+                    "frequency": "q4h",
+                    "target": "Cắt sốt, SpO2 > 95%"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[BẮT BUỘC chọc DNT đo áp lực mở nếu nghi ngờ Cryptococcus]",
+                    "[TRÌ HOÃN ARV 4–6 tuần nếu có Viêm màng não Cryptococcus / Lao màng não]"
+                ],
+                "triageOrDischargeCriteria": "Nhập viện Hồi sức / Cấp cứu 100%."
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N15 - N60",
+            "phaseName": "Giai đoạn Khởi động ARV & Phòng ngừa IRIS",
+            "clinicalGoal": "Đánh giá mức độ ổn định NTCH, bắt đầu điều trị ARV phác đồ TLD đúng thời điểm vàng, theo dõi chặt chẽ dấu hiệu Hội chứng IRIS.",
+            "problems": [
+                {
+                    "id": "p2_art_initiation",
+                    "problemName": "Khởi động ARV phác đồ Bậc 1 TLD",
+                    "problemType": "specific",
+                    "isNoSpecificTreatment": false,
+                    "treatments": [
+                        {
+                            "category": "Thuốc ARV",
+                            "content": "TLD (TDF 300mg + 3TC 300mg + DTG 50mg) 1 viên/ngày. Lưu ý: Tăng liều DTG lên 50mg x 2 lần/ngày nếu đang dùng Rifampicin trị Lao.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Sốt bùng phát, hạch sưng đau vỡ mủ, tổn thương da mới",
+                            "frequency": "q24-48h",
+                            "target": "Phát hiện sớm IRIS"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_consolidation_oi",
+                    "problemName": "Chuyển giai đoạn Củng cố NTCH & Dự phòng CTX/3HP",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Kháng nấm củng cố",
+                            "content": "Cryptococcus/Talaromyces: Chuyển Fluconazole 800mg/ngày hoặc Itraconazole 200mg x 2/ngày."
+                        },
+                        {
+                            "category": "Dự phòng CTX",
+                            "content": "Co-trimoxazole 960mg/ngày liên tục."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Dung nạp thuốc & Tuân thủ",
+                            "frequency": "Tái khám mỗi 2 tuần",
+                            "target": "Dung nạp thuốc tốt"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_iris",
+                    "problemName": "Hội chứng Viêm phục hồi miễn dịch (IRIS)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí IRIS",
+                            "content": "Tiếp tục ARV; Cho Prednisolone 0.5-1.0 mg/kg/ngày x 1-2 tuần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Triệu chứng viêm lâm sàng",
+                            "frequency": "q24h",
+                            "target": "Giảm phản ứng viêm"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD 1 viên/ngày (Tăng DTG 50mg x 2 nếu dùng Rifampicin).",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sốt, Hạch sưng, Đau đầu",
+                    "frequency": "Tái khám mỗi tháng",
+                    "target": "Không có biểu hiện IRIS nặng"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không ngắt ARV khi có IRIS nhẹ - trung bình]",
+                    "[Kiểm tra men gan khi dùng đồng thời ARV + Thuốc Lao]"
+                ],
+                "triageOrDischargeCriteria": "Quản lý nội trú chuyển sang ngoại trú khi NTCH đã củng cố ổn định."
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N61 - Lâu dài",
+            "phaseName": "Giai đoạn Duy trì & Phục hồi Miễn dịch",
+            "clinicalGoal": "Duy trì ARV liên tục, ức chế HIV RNA < 50 copies/mL, duy trì thuốc dự phòng NTCH đến khi CD4 > 200–350 cells/mm³.",
+            "problems": [
+                {
+                    "id": "p3_maintenance",
+                    "problemName": "Duy trì ARV TLD & Ngừng thuốc dự phòng NTCH khi đủ tiêu chuẩn",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Duy trì ARV",
+                            "content": "TLD 1 viên/ngày suốt đời.",
+                            "isHighlighted": true
+                        },
+                        {
+                            "category": "Ngừng dự phòng",
+                            "content": "Ngừng CTX khi CD4 > 350 cells/mm³ và HIV RNA < 50 copies/mL; Ngừng Fluconazole duy trì sau 1 năm và CD4 > 200 cells/mm³.",
+                            "isHighlighted": false
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tải lượng HIV RNA & CD4",
+                            "frequency": "Tháng thứ 6 và mỗi 12 tháng",
+                            "target": "HIV RNA < 50 copies/mL, CD4 > 350 cells/mm³"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_relapse",
+                    "problemName": "Tái phát NTCH do bỏ trị / Thất bại điều trị ARV",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Tư vấn tuân thủ & Tái điều trị",
+                            "content": "Tư vấn EAC, làm lại Tải lượng HIV, xét nghiệm gen kháng thuốc nếu cần."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Tải lượng vi rút HIV RNA",
+                            "frequency": "Mỗi 3 tháng khi nghi thất bại",
+                            "target": "HIV RNA < 50 copies/mL"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Thuốc ARV",
+                    "content": "TLD 1 viên/ngày duy trì suốt đời.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Tải lượng HIV RNA 12 tháng/lần",
+                    "frequency": "12 tháng/lần",
+                    "target": "HIV RNA < 50 copies/mL (K=K)"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không tự ý dừng thuốc dự phòng khi CD4 chưa đạt ngưỡng an toàn]"
+                ],
+                "triageOrDischargeCriteria": "Quản lý ngoại trú dài hạn tại tuyến cơ sở."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_tb_iris",
+            "complicationName": "Hội chứng Viêm phục hồi miễn dịch do Lao (TB-IRIS)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Sốt cao bùng phát, hạch hông/cổ vỡ mủ hoại tử, tổn thương phổi thâm nhiễm xấu đi sau 2-8 tuần uống ARV]",
+            "actionProtocol": "[Tiếp tục ARV; Điều trị Lao theo phác đồ; Dùng Prednisolone 0.5-1.0 mg/kg/ngày x 2-4 tuần giảm dần]",
+            "monitoringMetrics": "[X-quang ngực, CRP, CTM, Lâm sàng q3-7d]"
+        },
+        {
+            "id": "comp_amphotericin_nephrotoxicity",
+            "complicationName": "Độc tính thận & Hạ Kali máu do Amphotericin B",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Creatinine máu tăng > 50% so với nền, K+ máu < 3.0 mmol/L, yếu cơ, loạn nhịp tim]",
+            "actionProtocol": "[Bù Ringer Lactate 1000 mL + KCl 20-40 mEq/ngày; Chuyển sang Liposomal Amphotericin B nếu Creatinine tăng cao]",
+            "monitoringMetrics": "[Creatinine, Điện giải đồ K+, Mg2+ q2d]"
+        },
+        {
+            "id": "comp_multiorgan_failure_talaromycosis",
+            "complicationName": "Suy đa tạng do Nấm Talaromyces marneffei lan tỏa",
+            "problemType": "critical",
+            "warningLevel": "critical",
+            "manifestation": "[Sẩn hoại tử da lan toàn thân, suy gan, suy thận, đông máu rải rác trong lòng mạch DIC, shock]",
+            "actionProtocol": "[Hồi sức tích cực ICU; Truyền Liposomal Amphotericin B 5mg/kg/ngày; Bù dịch, lọc máu nếu suy thận cấp]",
+            "monitoringMetrics": "[Khí máu, Lactate, Bilirubin, INR, Platelet, Creatinine q12h]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo 1: BẮT BUỘC sàng lọc Lao và Viêm màng não Cryptococcus trước khi cho uống ARV ở tất cả bệnh nhân AHD (CD4 < 200 cells/mm³)]",
+            "[Cảnh báo 2: TRÌ HOÃN ARV 4–6 tuần ở bệnh nhân Viêm màng não do Cryptococcus và 4–8 tuần ở bệnh nhân Lao màng não để tránh Hội chứng IRIS thần kinh trung ương gây tử vong]",
+            "[Cảnh báo 3: Tăng liều Dolutegravir (DTG) từ 50mg 1 lần/ngày lên 50mg 2 lần/ngày khi dùng đồng thời với Rifampicin trị Lao]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định khởi động ARV ngay lập tức ở bệnh nhân có triệu chứng nghi ngờ Viêm màng não chưa được loại trừ]",
+            "[Chống chỉ định dùng Mannitol hoặc Corticoid để giảm áp lực nội sọ trong Viêm màng não Cryptococcus (chỉ dùng phương pháp chọc dò DNT xả áp lực)]",
+            "[Chống chỉ định ngưng Co-trimoxazole dự phòng khi CD4 chưa phục hồi > 350 cells/mm³]"
+        ],
+        "dischargeCriteria": [
+            "[Các nhiễm trùng cơ hội cấp tính đe dọa tính mạng đã được khống chế ổn định, chuyển sang giai đoạn củng cố/duy trì]",
+            "[Dung nạp tốt với phác đồ ARV TLD, không có phản ứng quá mẫn hay tác dụng phụ nặng]",
+            "[Bệnh nhân và người nhà hiểu rõ lịch uống thuốc ARV, thuốc NTCH và dấu hiệu báo động IRIS cần tái khám ngay]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Tiêu chuẩn chẩn đoán Bệnh HIV tiến triển (AHD) và các Nhiễm trùng cơ hội",
+            "searchKeyword": "chan doan hiv tien trien ahd cd4 < 200 nhiem trung co hoi"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị NTCH (Lao, Cryptococcus, PCP, Talaromycosis) và Thời điểm khởi động ARV TLD",
+            "searchKeyword": "phac do dieu tri nhiem trung co hoi hiv tld byt 2021"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học NTCH tại Việt Nam và Ma trận phân tầng nguy cơ theo lượng tế bào CD4",
+            "searchKeyword": "dich te nhiem trung co hoi hiv viet nam cd4 < 50"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và Xử trí Cấp cứu Hội chứng IRIS, Tăng áp lực nội sọ Cryptococcus & PCP nặng",
+            "searchKeyword": "hoi chung iris cryptococcus pcp suy ho hap cap"
+        }
+    ]
+}

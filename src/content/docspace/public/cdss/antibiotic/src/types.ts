@@ -26,6 +26,7 @@ export interface CalculatedRenalMetrics {
   scrUmol: number;
   scrMgdl: number;
   crcl: number;
+  egfrCkdEpi: number;
   ibw: number | null;
   adjBw: number | null;
   bmi: number | null;

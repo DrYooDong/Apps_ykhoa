@@ -1,0 +1,397 @@
+{
+    "icdCode": "K72.1",
+    "icdPrefixes": [
+        "K72.1",
+        "K70.4",
+        "K71.7",
+        "K72.9"
+    ],
+    "diseaseName": "Suy gan cấp trên nền mạn (Acute-on-Chronic Liver Failure - ACLF)",
+    "specialty": "Hồi sức - Cấp cứu",
+    "severity": "emergency",
+    "summary": "Suy gan cấp trên nền mạn (ACLF) là hội chứng lâm sàng cấp tính phức tạp, xuất hiện trên bệnh nhân có bệnh gan mạn tính tiến triển hoặc xơ gan (còn bù hoặc mất bù). Bệnh đặc trưng bởi sự xuất hiện đợt mất bù cấp tính kèm suy đa tạng (tổn thương tạng tại gan và ngoài gan) và phản ứng viêm hệ thống bùng phát mạnh mẽ, dẫn đến nguy cơ tử vong ngắn hạn rất cao trong vòng 28 đến 90 ngày (lên tới 50% - 80%). Tại Châu Á và Việt Nam, đợt bùng phát vi rút viêm gan B (HBV reactivation) là yếu tố khởi phát hàng đầu, bên cạnh các nhiễm trùng vi khuẩn (SBP, nhiễm trùng huyết) và rượu.",
+    "goldStandard": "Tiêu chuẩn chẩn đoán xác định suy tạng cấp trên nền bệnh gan mạn tính dựa trên thang điểm phân độ suy tạng CLIF-Consortium Organ Failure score (CLIF-OF) / CLIF-SOFA của EASL-CLIF Consortium (hoặc thang điểm AARC của APASL) kết hợp xác định yếu tố khởi phát cấp tính.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tieu_chuan_nen_benh_gan_man",
+            "tieu_chuan_dot_mat_bu_cap"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định ACLF bắt buộc có BỆNH GAN MẠN TÍNH / XƠ GAN NỀN VÀ ĐỢT MẤT BÙ CẤP TÍNH VÀ ÍT NHẤT 01 SUY TẠNG THEO PHÂN ĐỘ CLIF-OF (Suy thận Creatinine ≥ 2.0 mg/dL hoặc suy 01 tạng ngoài thận kèm suy thận nhẹ Creatinine 1.5–1.9 mg/dL / Bệnh não gan độ I-II)."
+    },
+    "criteria": [
+        {
+            "id": "tieu_chuan_nen_benh_gan_man",
+            "type": "mandatory",
+            "label": "Tiêu chuẩn nền: Tiền sử hoặc bằng chứng Bệnh gan mạn tính tiến triển / Xơ gan",
+            "description": "Bệnh nhân có tiền sử hoặc chẩn đoán xác định bệnh gan mạn tính tiến triển (cACLD) hoặc xơ gan còn bù/mất bù do HBV, HCV, rượu, MASLD/MASH, tự miễn.",
+            "sourceGuideline": "Quyết định Bộ Y Tế 2026 & EASL-CLIF CPG 2018"
+        },
+        {
+            "id": "tieu_chuan_dot_mat_bu_cap",
+            "type": "mandatory",
+            "label": "Tiêu chuẩn đợt cấp: Biểu hiện Đợt mất bù cấp tính (Acute Decompensation - AD)",
+            "description": "Xuất hiện cấp tính hoặc diễn tiến xấu đi nhanh chóng trong vòng 28 ngày của một hoặc nhiều biến cố: Cổ chướng cấp/tiến triển, Bệnh não gan, Xuất huyết tiêu hóa do tăng áp lực tĩnh mạch cửa, Vàng da tiến triển.",
+            "sourceGuideline": "EASL Clinical Practice Guidelines 2018 & Japan CPG 2021"
+        },
+        {
+            "id": "suy_than_cap_clif_of",
+            "type": "major",
+            "label": "Suy tạng 1: Suy thận cấp (Kidney Failure) theo CLIF-OF",
+            "description": "Nồng độ Creatinine huyết thanh tăng cao đạt ngưỡng suy tạng hoặc cần can thiệp lọc máu thay thế thận (RRT).",
+            "labThreshold": "Creatinine huyết thanh ≥ 2.0 mg/dL (176 µmol/L) hoặc chỉ định RRT",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "suy_gan_clif_of",
+            "type": "major",
+            "label": "Suy tạng 2: Suy chức năng gan (Liver Failure) theo CLIF-OF",
+            "description": "Tình trạng ứ mật và suy giảm chức năng tổng hợp của tế bào gan nặng nề làm Bilirubin toàn phần tăng dốc đứng.",
+            "labThreshold": "Bilirubin toàn phần huyết thanh ≥ 12.0 mg/dL (205 µmol/L)",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "suy_nao_clif_of",
+            "type": "major",
+            "label": "Suy tạng 3: Bệnh não gan nặng / Suy thần kinh trung ương (Cerebral Failure)",
+            "description": "Hôn mê gan, rối loạn ý thức nghiêm trọng, mất phản xạ bảo vệ đường thở.",
+            "labThreshold": "Bệnh não gan Độ III hoặc Độ IV theo phân loại West Haven",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "suy_dong_mau_clif_of",
+            "type": "major",
+            "label": "Suy tạng 4: Rối loạn đông máu nặng (Coagulation Failure)",
+            "description": "Suy giảm trầm trọng các yếu tố đông máu do gan tổng hợp hoặc giảm tiểu cầu nặng.",
+            "labThreshold": "INR ≥ 2.5 hoặc Số lượng tiểu cầu ≤ 20 G/L (20,000/mm³)",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "suy_tuan_hoan_clif_of",
+            "type": "major",
+            "label": "Suy tạng 5: Suy tuần hoàn / Sốc (Circulatory Failure)",
+            "description": "Tụt huyết áp nặng do giãn mạch hệ thống, tụt sức cản ngoại biên, đòi hỏi sử dụng thuốc vận mạch.",
+            "labThreshold": "Huyết áp trung bình MAP < 70 mmHg hoặc phải dùng thuốc vận mạch (Norepinephrine, Terlipressin, Dopamine)",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "suy_ho_hap_clif_of",
+            "type": "major",
+            "label": "Suy tạng 6: Suy hô hấp (Respiratory Failure) theo CLIF-OF",
+            "description": "Tổn thương màng trao đổi khí, tràn dịch đa màng, hội chứng gan phổi hoặc hội chứng ARDS.",
+            "labThreshold": "Tỷ lệ PaO2/FiO2 ≤ 200 hoặc SpO2/FiO2 ≤ 214",
+            "sourceGuideline": "CLIF-Organ Failure Score (EASL-CLIF 2018)"
+        },
+        {
+            "id": "yeu_to_khoi_phat_hbv",
+            "type": "lab",
+            "label": "Căn nguyên khởi phát: Tái hoạt / Bùng phát Viêm gan vi rút B (HBV Reactivation)",
+            "description": "Đợt bùng phát vi rút HBV cấp tính làm tăng đột ngột tải lượng vi rút và tổn thương hoại tử tế bào gan ồ ạt.",
+            "labThreshold": "HBV DNA tăng cao, HBeAg(+), ALT > 3 ULN kèm Bilirubin > 3 mg/dL hoặc INR > 1.5",
+            "sourceGuideline": "Quyết định 2026 Bộ Y Tế Việt Nam"
+        },
+        {
+            "id": "nhiem_trung_khoi_phat",
+            "type": "lab",
+            "label": "Căn nguyên khởi phát: Nhiễm trùng vi khuẩn / Viêm màng bụng tự phát (SBP)",
+            "description": "Nhiễm trùng vi khuẩn hệ thống hoặc tại chỗ kích hoạt bão cytokine và phản ứng viêm toàn thân.",
+            "labThreshold": "Bạch cầu đa nhân trung tính (PMN) dịch cổ trướng ≥ 250/mm³ hoặc Bạch cầu máu > 12 G/L",
+            "sourceGuideline": "EASL Clinical Practice Guidelines 2018"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "ACLF Mức độ 1a (ACLF Grade 1a) - Suy 01 tạng thận đơn thuần",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Đợt mất bù cấp kèm suy thận đơn thuần. [Cận lâm sàng]: Creatinine máu ≥ 2.0 mg/dL (176 µmol/L), không có bệnh não gan nặng (HE < III). [Tiêu chuẩn an toàn]: Mạch, HA chưa cần vận mạch, PaO2/FiO2 > 300.",
+            "triage": "Nhập viện Khoa Hồi sức tích cực (ICU) / Khoa Cấp cứu",
+            "primaryAction": "Điều trị ngay yếu tố khởi phát (xả Tenofovir/Entecavir nếu do HBV), bù Albumin 20% liều 1.5 g/kg N1 và 1.0 g/kg N3, ngưng toàn bộ lợi tiểu.",
+            "targetVitals": "Creatinine giảm < 1.5 mg/dL, Bài niệu ≥ 0.5 mL/kg/h, HATT ≥ 90 mmHg"
+        },
+        {
+            "grade": "ACLF Mức độ 1b (ACLF Grade 1b) - Suy 01 tạng ngoài thận kèm suy thận nhẹ / Bệnh não gan nhẹ",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Suy 01 tạng ngoài thận (Gan, Đông máu, Tuần hoàn, Hô hấp) KÈM suy thận nhẹ (Creatinine 1.5 - 1.9 mg/dL) VÀ/HOẶC Bệnh não gan độ I-II. [Cận lâm sàng]: Bilirubin ≥ 12 mg/dL hoặc INR ≥ 2.5 hoặc MAP < 70 mmHg.",
+            "triage": "Nhập viện Hồi sức tích cực (ICU) 100%",
+            "primaryAction": "Hồi sức đa tạng: Đặt nội khí quản bảo vệ đường thở nếu tri giác giảm tiến triển, bù Albumin + Terlipressin nếu có AKI-HRS, kháng sinh phổ rộng.",
+            "targetVitals": "SpO2 ≥ 95%, MAP ≥ 65-70 mmHg, INR < 2.0, Creatinine < 1.5 mg/dL"
+        },
+        {
+            "grade": "ACLF Mức độ 2 (ACLF Grade 2) - Suy 02 tạng phối hợp",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Suy 02 tạng phối hợp theo thang điểm CLIF-OF (ví dụ: Suy gan + Suy thận; Suy thận + Suy tuần hoàn). Tỷ lệ tử vong 28 ngày khoảng 32%.",
+            "triage": "Hồi sức cấp cứu ICU Trung tâm / Bệnh viện tuyến Chuyên sâu - Đánh giá ghép gan khẩn",
+            "primaryAction": "Hồi sức tuần hoàn & hô hấp tích cực (Norepinephrine / Terlipressin, Lọc máu liên tục CRRT nếu suy thận nặng / toan máu), NAs liều cao, trao đổi huyết tương TPE-HV nếu chuẩn bị ghép gan.",
+            "targetVitals": "MAP ≥ 65 mmHg, Lactate máu < 2.0 mmol/L, PaO2/FiO2 > 200"
+        },
+        {
+            "grade": "ACLF Mức độ 3 (ACLF Grade 3) - Suy từ 03 tạng trở lên",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Suy ≥ 03 tạng phối hợp (ví dụ: Suy gan + Suy thận + Suy tuần hoàn + Suy hô hấp). Tỷ lệ tử vong 28 ngày rất cao (78% - 90%).",
+            "triage": "Khoa Hồi sức tích cực Chống độc (ICU) / Hội chẩn khẩn Trung tâm Ghép gan",
+            "primaryAction": "Hồi sức đa tạng tối khẩn: Thông khí nhân tạo PEEP, vận mạch phối hợp (Norepinephrine + Terlipressin), CRRT, Fast-track đánh giá ghép gan cấp cứu. Nếu suy ≥ 4 tạng hoặc CLIF-C ACLF > 64 sau 3-7 ngày hồi sức không có khả năng ghép gan -> xem xét ngừng can thiệp vô ích (futility).",
+            "targetVitals": "Duy trì sinh hiệu tối thiểu: MAP ≥ 65 mmHg, SpO2 ≥ 92%, pH > 7.20"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ hồi sức đa tạng và điều trị nguyên nhân Suy gan cấp trên nền mạn (ACLF)",
+        "guideline": "Quyết định Bộ Y Tế 2026 (Hướng dẫn chẩn đoán, điều trị viêm gan B) & EASL Clinical Practice Guidelines on Decompensated Cirrhosis/ACLF 2018",
+        "targetGoals": [
+            "Hồi sức phục hồi chức năng các tạng suy: Duy trì Huyết áp trung bình MAP ≥ 65–70 mmHg, bài niệu ≥ 0.5 mL/kg/h, SpO2 ≥ 95%.",
+            "Đảo ngược yếu tố khởi phát: Ức chế vi rút HBV nhanh chóng (HBV DNA dưới ngưỡng), dập tắt đợt nhiễm trùng cấp (SBP, vi trùng huyết).",
+            "Giảm tỷ lệ tử vong 28 ngày và 90 ngày, tạo cầu nối an toàn tới ghép gan (Bridging to Liver Transplantation)."
+        ],
+        "initialManagement": [
+            "Phân tầng tiếp nhận khẩn cấp: 100% bệnh nhân ACLF phải nhập viện theo dõi tại Khoa Hồi sức tích cực (ICU) hoặc Đơn vị Đệm Hồi sức.",
+            "Bảo vệ đường thở và hô hấp: Đặt nội khí quản chủ động cho bệnh nhân Bệnh não gan độ III-IV để phòng ngừa sặc và phù脑.",
+            "Lập đường truyền tĩnh mạch trung tâm (CVC) và catheter động mạch xâm nhập để theo dõi MAP liên tục; đặt xông tiểu theo dõi bài niệu từng giờ.",
+            "Ngừng ngay lập tức các thuốc gây độc cho thận/gan: Thuốc lợi tiểu (Furosemide, Spironolactone), NSAIDs, thuốc ức chế men chuyển/ARB, aminoglycoside."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Tenofovir disoproxil fumarate (TDF) / Tenofovir alafenamide (TAF)",
+                "dose": "TDF 300 mg/ngày PO hoặc TAF 25 mg/ngày PO (hiệu chỉnh liều TDF theo eGFR nếu suy thận nặng, TAF không cần chỉnh liều khi eGFR ≥ 15 mL/phút).",
+                "indication": "Chỉ định ngay lập tức cho 100% bệnh nhân ACLF do đợt bùng phát / tái hoạt vi rút viêm gan B (HBV reactivation).",
+                "contraindications": "Chống chỉ định TDF khi eGFR < 15 mL/min không chạy thận (dùng TAF/ETV thay thế)."
+            },
+            {
+                "drugName": "Entecavir (ETV)",
+                "dose": "0.5 - 1.0 mg/ngày PO (dùng liều 1.0 mg/ngày cho bệnh nhân mất bù nặng hoặc từng dùng Lamivudine; hiệu chỉnh liều theo eGFR).",
+                "indication": "Lựa chọn thay thế hàng đầu cho TDF ở bệnh nhân suy thận hoặc loãng xương.",
+                "contraindications": "Nhiễm toan lactic nặng."
+            },
+            {
+                "drugName": "Albumin người (Human Albumin 20%)",
+                "dose": "Liều 1.5 g/kg IV ngày 1, sau đó 1.0 g/kg IV ngày 3 khi có SBP/AKI; hoặc 20-40 g/ngày để duy trì Albumin máu > 30 g/L.",
+                "indication": "Mở rộng thể tích lòng mạch, chống suy tuần hoàn, điều trị AKI-HRS và SBP.",
+                "contraindications": "Phù phổi cấp quá tải thể tích."
+            },
+            {
+                "drugName": "Terlipressin",
+                "dose": "1 - 2 mg IV mỗi 4 - 6 giờ (tiêm tĩnh mạch chậm) hoặc truyền liên tục 2-12 mg/24h; phối hợp Albumin 20-40 g/ngày.",
+                "indication": "Co mạch tạng điều trị Hội chứng gan thận AKI-HRS và suy tuần hoàn trong ACLF.",
+                "contraindications": "Bệnh tim cục bộ nặng, bệnh mạch máu ngoại biên."
+            },
+            {
+                "drugName": "Norepinephrine",
+                "dose": "Truyền TM liên tục liều 0.05 - 0.5 mcg/kg/phút, chỉnh liều đạt MAP ≥ 65-70 mmHg.",
+                "indication": "Thuốc vận mạch hàng đầu điều trị sốc giãn mạch / suy tuần hoàn khi Terlipressin không sẵn có.",
+                "contraindications": "Rối loạn nhịp tim nhanh chưa kiểm soát."
+            }
+        ]
+    },
+    "complications": [
+        {
+            "name": "Hội chứng gan thận cấp (AKI-HRS / HRS-1)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Creatinine máu tăng dốc đứng ≥ 0.3 mg/dL trong 48h, Oliguria < 0.5 mL/kg/h, Na+ niệu < 10 mmol/L.",
+            "preventiveAction": "Ngừng lợi tiểu, ngưng NSAIDs, bù Albumin 1g/kg/ngày x 2 ngày, dùng Terlipressin 1-2 mg q6h + Albumin.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: AKI-HRS: Ngưng ngay lợi tiểu! Thử lại Creatinine khẩn, xả Albumin 20% 1 g/kg + Terlipressin 1 mg IV chậm ngay!"
+        },
+        {
+            "name": "Bệnh não gan nặng & Phù脑 (Severe Hepatic Encephalopathy & Cerebral Edema)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Bệnh nhân hôn mê độ III-IV (West Haven), rối loạn tri giác cấp, tăng trương lực cơ, phản xạ đồng tử chậm.",
+            "preventiveAction": "Đặt nội khí quản thở máy bảo vệ đường thở, thụt tháo Lactulose 30-50 mL q2h, Rifaximin 550 mg x 2 lần/ngày, truyền L-ornithine L-aspartate.",
+            "onCallAlertText": "Y LỆNH TRỰC: BỆNH NÃO GAN ĐỘ III-IV: Đặt NKT thở máy chống sặc khẩn! Bơm Lactulose qua sonde dạ dày 30 mL + Thụt tháo Lactulose!"
+        },
+        {
+            "name": "Nhiễm trùng bùng phát & Sốc nhiễm trùng (Severe Sepsis & Septic Shock)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Sốt cao hoặc hạ thân nhiệt (< 36°C), Bạch cầu tăng > 12 G/L hoặc giảm < 4 G/L, SBP (PMN dịch màng bụng ≥ 250/mm³), HA tụt.",
+            "preventiveAction": "Cấy máu, cấy dịch cổ trướng khẩn; tiêm Ceftriaxone 2g/ngày IV hoặc Carbapenem (Meropenem 1g q8h) phối hợp Albumin.",
+            "onCallAlertText": "Y LỆNH TRỰC: SỐC NHIỄM TRÙNG / SBP: Chọc dò dịch cổ trướng thử PMN + cấy máu ngay! Tiêm Meropenem 1g IV + Albumin 1.5 g/kg khẩn!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (Hct, Bạch cầu, Tiểu cầu) theo dõi mỗi 12-24h (mỗi 6h nếu có xuất huyết hoặc sốc).",
+        "Sinh hóa máu: Bilirubin toàn phần/trực tiếp, Creatinine, Ure, Điện giải đồ (Na+, K+, Cl-), Albumin, AST/ALT mỗi 12-24h.",
+        "Đông máu toàn bộ: PT/INR, aPTT, Fibrinogen mỗi 24h để đánh giá suy tạng.",
+        "Khí máu động mạch (ABG) & Lactate máu theo dõi chuyển hóa và PaO2/FiO2 mỗi 12-24h.",
+        "Xét nghiệm vi sinh căn nguyên: Tải lượng HBV DNA, HBeAg, Anti-HCV, cấy máu, cấy nước tiểu, chọc dò cấy dịch cổ trướng (PMN) ngay khi nhập viện."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Bệnh nhân ACLF do đợt bùng phát Viêm gan B mạn (HBV Reactivation ACLF)",
+            "adjustments": "Bắt đầu ngay thuốc kháng vi rút NAs hàng rào kháng cao: Tenofovir (TDF 300 mg hoặc TAF 25 mg) hoặc Entecavir (ETV 1 mg).",
+            "cautions": "Không trì hoãn chờ kết quả HBV DNA; điều trị kéo dài liên tục."
+        },
+        {
+            "population": "Bệnh nhân suy thận kèm theo (AKI Stage 2-3 / CKD)",
+            "adjustments": "Chuyển từ TDF sang TAF 25 mg/ngày hoặc Entecavir (hiệu chỉnh liều ETV theo eGFR). Tránh tuyệt đối các thuốc độc thận.",
+            "cautions": "Nguy cơ quá tải dịch và nhiễm toan lactic khi dùng ETV liều cao trên suy thận nặng."
+        },
+        {
+            "population": "Bệnh nhân ACLF Mức độ 3 có chỉ định Ghép gan (ACLF-3 LT Candidates)",
+            "adjustments": "Khẩn trương đánh giá Fast-track ghép gan cấp cứu. Xem xét điều trị hỗ trợ gan bằng Trao đổi huyết tương thể tích lớn (TPE-HV 1-1.5 thể tích huyết tương x 3 ngày) làm cầu nối ghép gan.",
+            "cautions": "Tầm soát nhiễm trùng nghiêm trọng toàn thân liên tục trước ghép."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "N1 - N3",
+            "phaseName": "Giai đoạn Hồi sức Cấp cứu & Định danh Yếu tố Khởi phát (Acute Resuscitation & Trigger Identification)",
+            "clinicalGoal": "Ổn định sinh hiệu tối thiểu, hồi sức chức năng tạng, dùng ngay thuốc đặc hiệu nguyên nhân (NAs cho HBV), kiểm soát nhiễm trùng.",
+            "treatments": [
+                {
+                    "category": "Hồi sức tuần hoàn & Bù thể tích",
+                    "content": "Truyền Albumin 20% liều 1.5 g/kg N1 kèm Terlipressin 1-2 mg IV q6h (hoặc Norepinephrine) duy trì MAP ≥ 65-70 mmHg.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Thuốc kháng vi rút đặc hiệu",
+                    "content": "Tenofovir (TDF 300 mg / TAF 25 mg) hoặc Entecavir 1 mg/ngày khởi đầu ngay trong 24h đầu nếu do HBV.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Kháng sinh kinh nghiệm",
+                    "content": "Ceftriaxone 2g IV/ngày hoặc Meropenem 1g IV q8h nếu nghi ngờ Sốc nhiễm trùng / SBP."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Mạch, HA, MAP, SpO2, Tri giác (West Haven)",
+                    "frequency": "q1-2h",
+                    "target": "MAP ≥ 65 mmHg, SpO2 ≥ 95%, Tỉnh táo"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "Creatinine, Bilirubin, INR, Lactate, CTM",
+                    "frequency": "q12-24h",
+                    "target": "Creatinine < 1.5 mg/dL, Lactate < 2.0 mmol/L"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "Cấm dùng thuốc lợi tiểu, NSAIDs, thuốc độc thận",
+                    "Cảnh báo nguy cơ sặc phổi ở HE độ III-IV"
+                ],
+                "triageOrDischargeCriteria": "Bắt buộc theo dõi 100% tại ICU"
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "N4 - N7",
+            "phaseName": "Giai đoạn Điều trị Ổn định Tạng & Đánh giá Tiên lượng / Ghép gan (Organ Stabilization & LT Evaluation)",
+            "clinicalGoal": "Đánh giá động học phục hồi các tạng theo CLIF-C ACLF score, phòng ngừa biến chứng thứ phát, hội chẩn ghép gan.",
+            "treatments": [
+                {
+                    "category": "Bảo tồn chức năng tạng",
+                    "content": "Duy trì Albumin 20-40 g/ngày, Terlipressin giảm liều dần khi sCr cải thiện; Rifaximin 550 mg x 2 + Lactulose ngừa Bệnh não gan.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Lọc máu & Hỗ trợ gan",
+                    "content": "CRRT nếu suy thận nặng / toan máu; TPE-HV nếu chuẩn bị ghép gan."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Bài niệu 24h, Tình trạng cổ trướng & Phù",
+                    "frequency": "q4-6h",
+                    "target": "Nước tiểu ≥ 0.5 - 1.0 mL/kg/h"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "Điểm CLIF-C ACLF score & CLIF-OF",
+                    "frequency": "q24-48h",
+                    "target": "Thang điểm CLIF-C ACLF giảm xu hướng cải thiện"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "Đánh giá vô ích (Futility) nếu suy ≥ 4 tạng hoặc CLIF-C ACLF > 64 sau N3-N7",
+                    "Tầm soát nấm / vi khuẩn đa kháng MDRO"
+                ],
+                "triageOrDischargeCriteria": "Tiếp tục hồi sức tích cực ICU"
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "N8 - N28",
+            "phaseName": "Giai đoạn Phục hồi & Quản lý Dài hạn / Chăm sóc Giảm nhẹ (Recovery & Long-term Care / Palliative Care)",
+            "clinicalGoal": "Chuyển từ ICU về khoa Nội Gan mật nếu các tạng phục hồi; duy trì NAs liên tục; hoặc tiến hành ghép gan / chăm sóc giảm nhẹ.",
+            "treatments": [
+                {
+                    "category": "Điều trị duy trì",
+                    "content": "Tiếp tục NAs (TDF/TAF/ETV) kéo dài suốt đời; dinh dưỡng đường ruột tích cực (35-40 kcal/kg/ngày, protein 1.2-1.5 g/kg/ngày).",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Dự phòng thứ phát",
+                    "content": "Norfloxacin 400 mg/ngày hoặc Rifaximin 550 mg x 2 lần/ngày dự phòng SBP / HE tái phát."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Mức độ tự chủ sinh hoạt & Tri giác",
+                    "frequency": "q24h",
+                    "target": "Hết bệnh não gan, ăn uống tốt"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "HBV DNA, Men gan, Chức năng thận",
+                    "frequency": "Mỗi 1-2 tuần",
+                    "target": "HBV DNA giảm dốc đứng, sCr bình thường"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "Không bao giờ tự ý ngưng thuốc kháng vi rút NAs",
+                    "Tái khám định kỳ theo dõi ung thư gan HCC mỗi 3-6 tháng"
+                ],
+                "triageOrDischargeCriteria": "Xuất viện khi sinh hiệu ổn định, sCr < 1.5 mg/dL, hết bệnh não gan, HBV DNA giảm dốc đứng."
+            }
+        }
+    ],
+    "clinicalCautions": {
+        "importantWarnings": [
+            "[Cảnh báo 1: ACLF là hội chứng cấp cứu có tỷ lệ tử vong 28 ngày rất cao (30% - 80%), cần phát hiện sớm suy tạng bằng thang điểm CLIF-OF ngay khi bệnh nhân xơ gan vào đợt mất bù cấp.]",
+            "[Cảnh báo 2: Tái hoạt vi rút viêm gan B (HBV reactivation) là nguyên nhân hàng đầu gây ACLF ở Việt Nam và Châu Á. Bắt đầu ngay Tenofovir/Entecavir không trì hoãn chờ xét nghiệm.]",
+            "[Cảnh báo 3: Suy thận cấp (AKI) trong ACLF diễn tiến rất nhanh. Bù Albumin sớm và dùng Terlipressin ngay khi chẩn đoán AKI-HRS.]"
+        ],
+        "contraindications": [
+            "[Chống chỉ định tuyệt đối thuốc lợi tiểu (Spironolactone, Furosemide) khi đang có ACLF / AKI.]",
+            "[Chống chỉ định các thuốc giảm đau NSAIDs, Aspirin, Aminoglycoside, thuốc cản quang đường tĩnh mạch do nguy cơ gây độc thận dốc đứng.]",
+            "[Chống chỉ định chọc tháo dịch màng bụng thể tích lớn (LVP) mà không bù Albumin kèm theo.]",
+            "[Chống chỉ định ngưng đột ngột thuốc kháng vi rút NAs ở bệnh nhân viêm gan B.]"
+        ],
+        "dischargeCriteria": [
+            "[Phục hồi hoàn toàn chức năng các tạng suy: Creatinine máu < 1.5 mg/dL, Bilirubin xu hướng giảm dốc đứng, INR < 1.7, Huyết áp ổn định không cần vận mạch.]",
+            "[Hết bệnh não gan (Grade 0 West Haven), tỉnh táo, tự ăn uống đường miệng tốt.]",
+            "[Kiểm soát hoàn toàn yếu tố khởi phát: Tải lượng HBV DNA giảm mạnh / dưới ngưỡng, hết nhiễm trùng.]",
+            "[Người bệnh và gia đình được tư vấn tuân thủ điều trị thuốc kháng vi rút NAs liên tục suốt đời.]"
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Suy gan cấp trên nền mạn (ACLF) & Thang điểm CLIF-OF",
+            "searchKeyword": "chẩn đoán ACLF CLIF-OF"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ hồi sức đa tạng, dùng Albumin, Terlipressin & Thuốc kháng vi rút NAs trong ACLF",
+            "searchKeyword": "phác đồ điều trị ACLF Tenofovir Albumin"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học ACLF, đợt bùng phát Viêm gan B & Yếu tố khởi phát nhiễm trùng tại Việt Nam",
+            "searchKeyword": "dịch tễ ACLF viêm gan B SBP"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện & xử trí cấp cứu Hội chứng gan thận AKI-HRS, Bệnh não gan & Sốc nhiễm trùng trong ACLF",
+            "searchKeyword": "biến chứng ACLF AKI HRS bệnh não gan"
+        }
+    ]
+}

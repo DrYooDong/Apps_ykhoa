@@ -80,7 +80,7 @@ export const RenalSummaryCard: React.FC<RenalSummaryCardProps> = ({
               {isEn ? renal.categoryLabelEn : renal.categoryLabelVi}
             </div>
             <div className="text-xs text-white/90 font-medium">
-              Scr: <span className="font-mono font-bold">{renal.scrUmol}</span> µmol/L (<span className="font-mono font-bold">{renal.scrMgdl}</span> mg/dL)
+              Scr: <span className="font-mono font-bold">{renal.scrUmol}</span> µmol/L (<span className="font-mono font-bold">{renal.scrMgdl}</span> mg/dL) &bull; eGFR: <span className="font-mono font-bold">{renal.egfrCkdEpi}</span> mL/min/1.73m²
             </div>
           </div>
 

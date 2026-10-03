@@ -41,7 +41,8 @@ export function classifyAgeGroup(ageYears: number): DengueAgeGroup {
 export function calculateWeightAdjustment(
   ageYears: number,
   gender: Gender,
-  actualWeightKg: number
+  actualWeightKg: number,
+  heightCm?: number
 ): WeightCalculationResult {
   const stdWeight = getCDCStandardWeight(ageYears, gender);
   const ratio = actualWeightKg / stdWeight;
@@ -58,10 +59,16 @@ export function calculateWeightAdjustment(
       formulaNote = `Áp dụng Cân nặng chuẩn CDC 2014 (${stdWeight} kg) thay cho cân nặng thực (${actualWeightKg} kg) do vượt ngưỡng 120% (${Math.round(ratio * 100)}% chuẩn tuổi).`;
       warningText = `Cảnh báo: Trẻ thừa cân / béo phì (${Math.round(ratio * 100)}% so với chuẩn tuổi). Bắt buộc dùng cân nặng chuẩn ${stdWeight} kg để tính dịch nhằm tránh phù phổi cấp và quá tải tuần hoàn.`;
     } else {
-      // Người lớn: giới hạn cân nặng tính dịch tối đa tránh quá tải
-      adjustedWeightKg = Math.min(actualWeightKg, 65);
-      formulaNote = `Người lớn béo phì: Cân nặng tính dịch hiệu chỉnh tối đa ${adjustedWeightKg} kg`;
-      warningText = `Người lớn thể trọng lớn (${actualWeightKg} kg): Cần giám sát chặt chẽ áp lực tĩnh mạch và ran đáy phổi khi bù dịch.`;
+      // Người lớn béo phì: Tính theo Cân nặng hiệu chỉnh AdjBW = IBW + 0.4 * (TBW - IBW) theo Phụ lục 9 QĐ 2760/BYT
+      let ibw = stdWeight;
+      if (heightCm && heightCm > 100) {
+        ibw = gender === 'male' ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        ibw = Math.max(35, Math.round(ibw * 10) / 10);
+      }
+      const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
+      adjustedWeightKg = Math.max(ibw, Math.min(actualWeightKg, adjBw));
+      formulaNote = `Người lớn béo phì: Cân nặng tính dịch hiệu chỉnh AdjBW = ${adjustedWeightKg} kg (IBW: ${ibw} kg, TBW: ${actualWeightKg} kg)`;
+      warningText = `Người lớn thể trọng lớn (${actualWeightKg} kg): Dùng cân nặng hiệu chỉnh AdjBW ${adjustedWeightKg} kg để tính dịch. Cần giám sát chặt chẽ CVP, SpO2 và ran đáy phổi khi bù dịch.`;
     }
   }
 
@@ -301,9 +308,9 @@ export function calculateBloodProducts(
       indication: 'Tiểu cầu < 50.000/mm³ kèm xuất huyết nặng hoặc chuẩn bị chọc màng phổi/bụng; hoặc Tiểu cầu < 5.000/mm³ dù chưa chảy máu.',
       doseFormula: '1 đơn vị đậm đặc / 5 kg hoặc 1 đơn vị gạn tách (chiết tách) / 10 kg',
       calculatedDose: `${pltPacks} đơn vị đậm đặc (hoặc ${pltApheresis} khối tiểu cầu chiết tách)`,
-      thresholdMet: !!(patient.plateletsCount && (patient.plateletsCount < 50000 || patient.plateletsCount < 5000)),
+      thresholdMet: !!(patient.plateletsCount && (patient.plateletsCount < 5000 || (patient.massiveBleeding && patient.plateletsCount < 50000))),
       targetClinical: 'Mục tiêu TC > 50.000/mm³ khi đang xuất huyết nặng; TC > 30.000/mm³ khi làm thủ thuật.',
-      precautions: 'Không dùng màng lọc bạch cầu chuẩn cho tiểu cầu; truyền qua dây truyền tiểu cầu chuyên dụng.'
+      precautions: 'Không truyền tiểu cầu dự phòng khi chưa có xuất huyết nặng (trừ khi TC < 5.000/mm³). Không dùng màng lọc bạch cầu chuẩn cho tiểu cầu.'
     },
     {
       id: 'ppi_omeprazole',
@@ -347,9 +354,9 @@ export function calculateAlbuminDose(
 } {
   const diff = Math.max(0, targetAlbuminGDl - currentAlbuminGDl);
   // Liều Albumin (g) = [nồng độ cần đạt (g/dl) - nồng độ hiện tại (g/dl)] x (0.8 x Cân nặng kg)
-  const albuminGrams = Math.round(diff * 0.8 * effectiveWeightKg * 10) / 10;
+  const albuminGrams = diff > 0 ? Math.round(diff * 0.8 * effectiveWeightKg * 10) / 10 : 0;
   // Mỗi lọ Albumin 20% 50ml chứa 10g Albumin
-  const vials20Percent50ml = Math.max(1, Math.ceil(albuminGrams / 10));
+  const vials20Percent50ml = diff > 0 ? Math.max(1, Math.ceil(albuminGrams / 10)) : 0;
 
   const minRateMlH = Math.round(5 * effectiveWeightKg);
   const maxRateMlH = Math.round(20 * effectiveWeightKg);
@@ -447,7 +454,7 @@ export function calculateABCSChecklist(
 ): ABCSChecklist {
   const bicarbMl = Math.round(2 * effectiveWeightKg);
   const hclDose = `${Math.round(5 * effectiveWeightKg)} - ${Math.round(10 * effectiveWeightKg)} ml`;
-  const calciumMl = Math.min(5, Math.max(2, Math.round(0.15 * effectiveWeightKg * 10) / 10));
+  const calciumMl = Math.min(10, Math.max(0.5, Math.round(0.15 * effectiveWeightKg * 10) / 10));
   const dextroseMl = Math.round(1.5 * effectiveWeightKg);
 
   return {
@@ -568,7 +575,7 @@ export function generateDengueCDSSPlan(
   customDurations?: Record<number, number>
 ): DengueCDSSPlan {
   const ageGroup = classifyAgeGroup(patient.ageYears);
-  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg);
+  const weightResult = calculateWeightAdjustment(patient.ageYears, patient.gender, patient.actualWeightKg, patient.heightCm);
   const effectiveWeight = weightResult.adjustedWeightKg;
 
   const { rows, totalVolumeMl, totalDurationHours } = calculateFluidSchedule(

@@ -85,6 +85,27 @@ export function getDailyTreatmentTimeline(
   const idLower = (diseaseId || '').toLowerCase();
   const nameLower = (diseaseName || '').toLowerCase();
 
+  // Kiểm tra phác đồ tùy chỉnh của bác sĩ trong LocalStorage
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem('docspace_custom_protocols_v1') : null;
+    if (raw) {
+      const customList = JSON.parse(raw);
+      if (Array.isArray(customList)) {
+        const found = customList.find(
+          (p: any) =>
+            p?.diseaseId?.toLowerCase() === idLower ||
+            p?.id?.toLowerCase() === idLower ||
+            (p?.diseaseName && p.diseaseName.toLowerCase() === nameLower)
+        );
+        if (found?.timelinePhases && Array.isArray(found.timelinePhases) && found.timelinePhases.length > 0) {
+          return found.timelinePhases;
+        }
+      }
+    }
+  } catch {
+    // Fallback to built-in clinical engines
+  }
+
   // 1. SỐT XUẤT HUYẾT DENGUE (SXHD)
   if (idLower.includes('dengue') || nameLower.includes('dengue') || nameLower.includes('sốt xuất huyết')) {
     return [

@@ -58,11 +58,28 @@ export function calculateRenalMetrics(
 
   // Cockcroft-Gault formula
   // CrCl (mL/min) = [ (140 - age) * Weight ] / [ 0.814 * Scr (umol/L) ] * (0.85 if female)
-  let crcl = ((140 - age) * usedWeight) / (0.814 * scrUmol);
+  // Trong thực hành dược lâm sàng: Với người cao tuổi (> 65 tuổi) suy kiệt teo cơ có SCr quá thấp (< 60 µmol/L hoặc < 0.7 mg/dL),
+  // nếu dùng SCr thực sẽ ước tính CrCl cao giả tạo dẫn đến ngộ độc kháng sinh (Cefepime, Colistin, Aminoglycoside).
+  // Khuyến cáo Sanford / KDIGO: Làm tròn SCr tối thiểu 60-70 µmol/L (0.7-0.8 mg/dL) để bảo vệ thận.
+  let effectiveScrUmol = scrUmol;
+  if (age >= 65 && scrUmol < 60) {
+    effectiveScrUmol = 60;
+  }
+  let crcl = ((140 - age) * usedWeight) / (0.814 * effectiveScrUmol);
   if (gender === 'f') {
     crcl *= 0.85;
   }
   crcl = Math.max(1, Math.round(crcl * 10) / 10);
+
+  // CKD-EPI 2021 formula (Refit without race)
+  const kappa = gender === 'f' ? 0.7 : 0.9;
+  const alpha = gender === 'f' ? -0.241 : -0.302;
+  const genderMult = gender === 'f' ? 1.012 : 1.0;
+  const scrOverKappa = scrMgdl / kappa;
+  const minPart = Math.min(scrOverKappa, 1) ** alpha;
+  const maxPart = Math.max(scrOverKappa, 1) ** -1.2;
+  const agePart = 0.9938 ** age;
+  const egfrCkdEpi = Math.max(1, Math.round(142 * minPart * maxPart * agePart * genderMult * 10) / 10);
 
   const isArc = crcl > 130;
 
@@ -100,6 +117,7 @@ export function calculateRenalMetrics(
     scrUmol,
     scrMgdl,
     crcl,
+    egfrCkdEpi,
     ibw,
     adjBw,
     bmi,

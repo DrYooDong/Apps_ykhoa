@@ -173,23 +173,23 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
         </div>
       </div>
 
-      {/* 2. THANH TAB ĐIỀU HƯỚNG QUY TRÌNH (WORKFLOW STEPPER) */}
-      <div className="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-2.5 flex items-center justify-between gap-2 overflow-x-auto">
-        <div className="flex items-center gap-1.5 sm:gap-2">
+      {/* 2. THANH TAB ĐIỀU HƯỚNG QUY TRÌNH (WORKFLOW STEPPER) & NÚT HÀNH ĐỘNG NHANH */}
+      <div className="bg-slate-50 border-b border-slate-200 px-3 sm:px-6 py-2 sm:py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none w-full sm:w-auto">
           {/* Tab 1 */}
           <button
             type="button"
             onClick={() => setActiveTab('synthesis')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0 ${
               activeTab === 'synthesis'
                 ? 'bg-white text-blue-900 border border-blue-200 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <Microscope className="w-4 h-4 text-blue-600" />
-            <span>1. Ma Trận Dữ Kiện LS & CLS</span>
+            <Microscope className="w-4 h-4 text-blue-600 shrink-0" />
+            <span>1. Ma Trận Dữ Kiện LS &amp; CLS</span>
             {synthesis.severityAndPhase.warningSignsPresent.length > 0 && (
-              <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
             )}
           </button>
 
@@ -197,14 +197,14 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
           <button
             type="button"
             onClick={() => setActiveTab('diagnosis')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0 ${
               activeTab === 'diagnosis'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <Stethoscope className="w-4 h-4" />
-            <span>2. Bộ Chẩn Đoán Đầy Đủ (5 Thành Tố)</span>
+            <Stethoscope className="w-4 h-4 shrink-0" />
+            <span>2. Bộ Chẩn Đoán (5 Thành Tố)</span>
             <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-mono-custom">
               {synthesis.definitive.confidencePct}%
             </span>
@@ -214,21 +214,21 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
           <button
             type="button"
             onClick={() => setActiveTab('protocol')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0 ${
               activeTab === 'protocol'
                 ? 'bg-white text-emerald-900 border border-emerald-300 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <Droplet className="w-4 h-4 text-emerald-600" />
-            <span>3. Phác Đồ Tương Ứng & Bù Dịch</span>
+            <Droplet className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>3. Phác Đồ Tương Ứng &amp; Bù Dịch</span>
             <span className="px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase">
               {synthesis.correspondingProtocol.triageLevel.toUpperCase()}
             </span>
           </button>
         </div>
 
-        {/* Nút hành động nhanh sang Bước 4 */}
+        {/* Nút hành động nhanh sang Bước 4 - Tối ưu di động & Web, không bị che khuất */}
         {onGoToProtocol && (
           <button
             type="button"
@@ -237,11 +237,12 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
                 gradeIdx: synthesis.correspondingProtocol.targetBranchIndex,
               })
             }
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs cursor-pointer transition-all hover:translate-x-0.5"
+            className="flex items-center justify-center gap-2 px-3.5 py-2 sm:py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white text-xs font-bold shadow-xs cursor-pointer transition-all hover:translate-x-0.5 w-full sm:w-auto shrink-0 touch-manipulation"
             title="Áp dụng toàn bộ chẩn đoán và chuyển sang Bước 4 (Phác đồ điều trị)"
           >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-200 shrink-0 hidden sm:inline" />
             <span>Áp dụng vào Phác đồ (Bước 4)</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
           </button>
         )}
       </div>

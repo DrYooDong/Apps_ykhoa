@@ -115,9 +115,10 @@ export function analyzeABG(input: ABGInput): ABGAnalysisResult {
       if (correctedAnionGap > 16) isAnionGapHigh = true;
     }
 
-    // Delta Ratio: (AG - 12) / (24 - HCO3)
+    // Delta Ratio: (effectiveAG - 12) / (24 - HCO3)
+    const effectiveAG = correctedAnionGap !== undefined ? correctedAnionGap : (anionGap || 12);
     if (isAnionGapHigh && hco3 < 24) {
-      const deltaAG = (anionGap || 12) - 12;
+      const deltaAG = effectiveAG - 12;
       const deltaHCO3 = 24 - hco3;
       if (deltaHCO3 > 0) {
         deltaRatio = Math.round((deltaAG / deltaHCO3) * 100) / 100;
@@ -334,47 +335,53 @@ export function analyzeABG(input: ABGInput): ABGAnalysisResult {
   } else {
     // Normal pH (7.35 - 7.45)
     if (isPaCO2Low && isHCO3Low) {
-      // Fully compensated or mixed opposing
-      compensation = 'fully_compensated';
-      if (pH < 7.40) {
-        // Leaning towards acidosis -> Primary Metabolic Acidosis with complete respiratory compensation
-        primaryDisorder = 'Toan chuyển hóa bù trừ hoàn toàn (hoặc Kiềm hô hấp mạn tính)';
-        acidBaseCategory = 'metabolic_acidosis';
-        acidBaseTitle = 'Toan chuyển hóa Bù trừ hoàn toàn (Fully Compensated Metabolic Acidosis)';
-        acidBaseDesc = 'Bệnh nhân có toan chuyển hóa nguyên phát nhưng phổi đã bù trừ tối đa đưa pH về dải an toàn (7.35 - 7.40). Quy tắc: Không bao giờ bù trừ quá mức (Overcompensation does not occur).';
+      if (isAnionGapHigh) {
+        // High Anion Gap Metabolic Acidosis + Respiratory Alkalosis (e.g. Salicylate overdose, Sepsis)
+        isMixed = true;
+        acidBaseCategory = 'mixed_acid_base';
+        compensation = 'mixed';
+        primaryDisorder = 'Toan chuyển hóa tăng Anion Gap PHỐI HỢP Kiềm hô hấp (Mixed HAGMA & Respiratory Alkalosis)';
+        acidBaseTitle = 'Rối loạn Toan - Kiềm Hỗn Hợp Đối Kháng (Điển hình ngộ độc Aspirin/Sốc nhiễm khuẩn)';
+        acidBaseDesc = 'Bệnh nhân có hai rối loạn nguyên phát đối kháng: Kiềm hô hấp (do tăng thông khí) và Toan chuyển hóa tăng khoảng trống Anion (HAGMA). Hai quá trình triệt tiêu lẫn nhau khiến pH nằm trong dải bình thường (7.35 - 7.45), nhưng là dấu hiệu bệnh lý nguy kịch cần cấp cứu ngay!';
       } else {
-        // Leaning towards alkalosis -> Primary Respiratory Alkalosis with complete metabolic compensation
-        primaryDisorder = 'Kiềm hô hấp bù trừ hoàn toàn';
-        acidBaseCategory = 'respiratory_alkalosis';
-        acidBaseTitle = 'Kiềm hô hấp mạn tính Bù trừ hoàn toàn (Fully Compensated Chronic Respiratory Alkalosis)';
-        acidBaseDesc = 'Tăng thông khí kéo dài (ví dụ: ở vùng núi cao, thai kỳ) được thận bù trừ thải bớt HCO3- giúp pH bình thường (7.40 - 7.45).';
+        // Fully compensated or mixed opposing
+        compensation = 'fully_compensated';
+        if (pH < 7.40) {
+          // Leaning towards acidosis -> Primary Metabolic Acidosis with complete respiratory compensation
+          primaryDisorder = 'Toan chuyển hóa bù trừ hoàn toàn (hoặc Kiềm hô hấp mạn tính)';
+          acidBaseCategory = 'metabolic_acidosis';
+          acidBaseTitle = 'Toan chuyển hóa Bù trừ hoàn toàn (Fully Compensated Metabolic Acidosis)';
+          acidBaseDesc = 'Bệnh nhân có toan chuyển hóa nguyên phát nhưng phổi đã bù trừ tối đa đưa pH về dải an toàn (7.35 - 7.40). Quy tắc: Không bao giờ bù trừ quá mức (Overcompensation does not occur).';
+        } else {
+          // Leaning towards alkalosis -> Primary Respiratory Alkalosis with complete metabolic compensation
+          primaryDisorder = 'Kiềm hô hấp bù trừ hoàn toàn';
+          acidBaseCategory = 'respiratory_alkalosis';
+          acidBaseTitle = 'Kiềm hô hấp mạn tính Bù trừ hoàn toàn (Fully Compensated Chronic Respiratory Alkalosis)';
+          acidBaseDesc = 'Tăng thông khí kéo dài (ví dụ: ở vùng núi cao, thai kỳ) được thận bù trừ thải bớt HCO3- giúp pH bình thường (7.40 - 7.45).';
+        }
       }
     } else if (isPaCO2High && isHCO3High) {
-      compensation = 'fully_compensated';
-      if (pH < 7.40) {
-        // Primary respiratory acidosis compensated
-        primaryDisorder = 'Toan hô hấp mạn tính bù trừ hoàn toàn';
-        acidBaseCategory = 'respiratory_acidosis';
-        acidBaseTitle = 'Toan hô hấp mạn tính Bù trừ hoàn toàn (Fully Compensated Chronic Respiratory Acidosis)';
-        acidBaseDesc = 'Bệnh phổi mạn tính (COPD, Pickwickian) gây ứ CO2; thận đã giữ đủ bicarbonate để đưa pH về khoảng 7.35 - 7.40.';
-      } else {
-        // Primary metabolic alkalosis compensated
-        primaryDisorder = 'Kiềm chuyển hóa bù trừ hoàn toàn';
-        acidBaseCategory = 'metabolic_alkalosis';
-        acidBaseTitle = 'Kiềm chuyển hóa Bù trừ hoàn toàn (Fully Compensated Metabolic Alkalosis)';
-        acidBaseDesc = 'Kiềm chuyển hóa nguyên phát được phổi bù trừ bằng giảm thông khí giữ CO2, đưa pH về 7.40 - 7.45.';
-      }
-    } else if ((isPaCO2High && isHCO3Low) || (isPaCO2Low && isHCO3High)) {
-      // Normal pH with opposite major disturbances -> Classic Mixed Acid-Base disorder! (e.g. Salicylate overdose)
-      isMixed = true;
-      acidBaseCategory = 'mixed_acid_base';
-      compensation = 'mixed';
-      if (isPaCO2Low && isHCO3Low) {
-        acidBaseTitle = 'Rối loạn Toan - Kiềm Hỗn Hợp Đối Kháng (Mixed Acid-Base Disorder)';
-        acidBaseDesc = 'Điển hình là ngộ độc Aspirin (Salicylate): Vừa kích thích trung tâm hô hấp gây kiềm hô hấp, vừa là acid hữu cơ gây toan chuyển hóa tăng Anion Gap.';
-      } else {
+      // High PaCO2 + High HCO3 with normal pH: Chronic compensated respiratory acidosis OR mixed with metabolic alkalosis
+      if (pco2MmHg > 60 && hco3 > 35) {
+        isMixed = true;
+        acidBaseCategory = 'mixed_acid_base';
+        compensation = 'mixed';
+        primaryDisorder = 'Toan hô hấp mạn tính PHỐI HỢP Kiềm chuyển hóa (Mixed Chronic Respiratory Acidosis & Metabolic Alkalosis)';
         acidBaseTitle = 'Rối loạn hỗn hợp: Toan hô hấp mạn phối hợp Kiềm chuyển hóa';
-        acidBaseDesc = 'Điển hình ở bệnh nhân COPD ứ CO2 mạn tính được điều trị thuốc lợi tiểu quai làm hạ Kali và tăng kiềm chuyển hóa.';
+        acidBaseDesc = 'Điển hình ở bệnh nhân COPD ứ CO2 mạn tính được điều trị thuốc lợi tiểu quai làm hạ Kali và tăng kiềm chuyển hóa nặng.';
+      } else {
+        compensation = 'fully_compensated';
+        if (pH < 7.40) {
+          primaryDisorder = 'Toan hô hấp mạn tính bù trừ hoàn toàn';
+          acidBaseCategory = 'respiratory_acidosis';
+          acidBaseTitle = 'Toan hô hấp mạn tính Bù trừ hoàn toàn (Fully Compensated Chronic Respiratory Acidosis)';
+          acidBaseDesc = 'Bệnh phổi mạn tính (COPD, Pickwickian) gây ứ CO2; thận đã giữ đủ bicarbonate để đưa pH về khoảng 7.35 - 7.40.';
+        } else {
+          primaryDisorder = 'Kiềm chuyển hóa bù trừ hoàn toàn';
+          acidBaseCategory = 'metabolic_alkalosis';
+          acidBaseTitle = 'Kiềm chuyển hóa Bù trừ hoàn toàn (Fully Compensated Metabolic Alkalosis)';
+          acidBaseDesc = 'Kiềm chuyển hóa nguyên phát được phổi bù trừ bằng giảm thông khí giữ CO2, đưa pH về 7.40 - 7.45.';
+        }
       }
     } else {
       acidBaseCategory = 'normal';

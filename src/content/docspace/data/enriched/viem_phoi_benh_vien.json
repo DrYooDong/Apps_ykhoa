@@ -1,0 +1,659 @@
+{
+    "icdCode": "J18.9",
+    "icdPrefixes": [
+        "J18.9",
+        "J15.0",
+        "J15.1",
+        "J15.5",
+        "J95.8"
+    ],
+    "diseaseName": "Viêm phổi bệnh viện & Viêm phổi liên quan đến thở máy (HAP / VAP)",
+    "specialty": "Hô hấp - Hồi sức cấp cứu",
+    "severity": "emergency",
+    "summary": "Viêm phổi bệnh viện (HAP) xuất hiện sau khi nhập viện ≥ 48 giờ và Viêm phổi liên quan đến thở máy (VAP) xuất hiện sau đặt ống nội khí quản ≥ 48 giờ. Đây là nhiễm khuẩn bệnh viện hàng đầu tại ICU với tỷ lệ tử vong cao từ 33 - 50%, chủ yếu do các chủng vi khuẩn Gram âm đa kháng (Acinetobacter baumannii, Pseudomonas aeruginosa, Klebsiella pneumoniae ESBL/CRE) và tụ cầu vàng kháng methicillin (MRSA). Chiến lược điều trị đòi hỏi khởi đầu kháng sinh kinh nghiệm phổ rộng liều tối ưu theo dược động học/dược lực học (PK/PD) trong 1 giờ đầu, phối hợp kháng sinh diệt khuẩn và điều chỉnh xuống thang sớm theo kết quả kháng sinh đồ.",
+    "goldStandard": "Tổn thương mới hoặc tiến triển trên X-quang/CT ngực sau ≥ 48 giờ nhập viện/đặt NKQ KÈM THEO kết quả nuôi cấy vi sinh định lượng/bán định lượng bệnh phẩm đường hô hấp dưới (dịch rửa phế quản phế nang BAL ≥ 10^4 CFU/mL, chải phế quản có bảo vệ PSB ≥ 10^3 CFU/mL, hoặc dịch hút nội khí quản ETA ≥ 10^5 CFU/mL) và cấy máu xác định căn nguyên vi khuẩn.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "hap_time_onset_48h",
+            "hap_radiology_new_infiltrate"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định HAP/VAP khi bệnh nhân nằm viện hoặc đặt NKQ ≥ 48 giờ KÈM tổn thương thâm nhiễm mới/tiến triển trên hình ảnh học phổi VÀ đáp ứng ít nhất 2/4 tiêu chuẩn lâm sàng/CLS chính (sốt/hạ thân nhiệt, đờm mủ, tăng/giảm bạch cầu, giảm PaO2) VÀ có bằng chứng vi sinh dương tính."
+    },
+    "criteria": [
+        {
+            "id": "hap_time_onset_48h",
+            "type": "mandatory",
+            "label": "Mốc thời gian khởi phát bệnh ≥ 48 giờ sau nhập viện hoặc thở máy",
+            "description": "Nhiễm khuẩn hô hấp dưới mới xuất hiện sau khi nhập viện ≥ 48 giờ (đối với HAP) hoặc sau khi đặt ống nội khí quản/thở máy xâm lấn ≥ 48 giờ (đối với VAP), không trong thời gian ủ bệnh lúc vào viện.",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023 - Hội Hô hấp VN & Hội Hồi sức Cấp cứu VN"
+        },
+        {
+            "id": "hap_radiology_new_infiltrate",
+            "type": "mandatory",
+            "label": "Tổn thương thâm nhiễm mới hoặc tiến triển trên X-quang / CT ngực",
+            "description": "Hình ảnh X-quang ngực tại giường hoặc CT ngực ghi nhận tổn thương mờ phế nang mới, thâm nhiễm tiến triển lan rộng, hình ảnh phế quản hơi hoặc tổn thương đông đặc/tạo áp xe.",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023 - Hội Hô hấp VN"
+        },
+        {
+            "id": "hap_fever_thermal_instability",
+            "type": "major",
+            "label": "Sốt cao ác tính (> 38.5°C) hoặc Hạ thân nhiệt (< 35.0°C)",
+            "description": "Rối loạn thân nhiệt do phản ứng viêm hệ thống cấp tính, sốt cao liên tục hoặc tụt thân nhiệt ở bệnh nhân nhiễm trùng nặng/sốc nhiễm khuẩn.",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023"
+        },
+        {
+            "id": "hap_purulent_sputum",
+            "type": "major",
+            "label": "Đờm mủ hoặc tăng tiết dịch phế quản dạng mủ qua nội khí quản",
+            "description": "Xuất hiện đờm mủ mới hoặc thay đổi tính chất đờm từ trong sang đục/vàng/xanh, tăng số lượng dịch hút đường hô hấp dưới qua ống NKQ.",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023"
+        },
+        {
+            "id": "hap_leukocytosis_leukopenia",
+            "type": "lab",
+            "label": "Tăng bạch cầu máu (≥ 10.000/µL) hoặc Giảm bạch cầu (< 4.000/µL)",
+            "description": "Công thức máu ghi nhận bạch cầu dòng đa nhân trung tính tăng cao ưu thế (Neutrophil > 80% hoặc dạng gậy > 10%), hoặc giảm bạch cầu máu do nhiễm trùng độc bộc phát.",
+            "labThreshold": "WBC > 10.000 /µL hoặc WBC < 4.000 /µL",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023"
+        },
+        {
+            "id": "hap_hypoxemia_pao2_fio2",
+            "type": "lab",
+            "label": "Giảm oxy máu (PaO2/FiO2 ≤ 300 mmHg hoặc SpO2 < 90% khí trời)",
+            "description": "Suy giảm chức năng trao đổi khí phế nang - mao mạch, chỉ số PaO2/FiO2 giảm tiến triển, cần tăng hỗ trợ FiO2 hoặc PEEP để duy trì SpO2.",
+            "labThreshold": "PaO2/FiO2 ≤ 300 mmHg (hoặc PaO2/FiO2 ≤ 200 mmHg ở ca nặng)",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023 & IDSA/ATS Guidelines"
+        },
+        {
+            "id": "hap_procalcitonin_elevated",
+            "type": "lab",
+            "label": "Định lượng Procalcitonin (PCT) máu tăng cao",
+            "description": "PCT máu tăng thể hiện phản ứng nhiễm khuẩn vi khuẩn cấp tính. Dùng để theo dõi đáp ứng điều trị và làm căn cứ hướng dẫn xuống thang / ngừng kháng sinh an toàn.",
+            "labThreshold": "PCT > 0.5 ng/mL (ngưỡng cắt ngừng KS: PCT < 0.25 - 0.5 ng/mL hoặc giảm ≥ 80%)",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023"
+        },
+        {
+            "id": "hap_microbiology_culture_gold",
+            "type": "lab",
+            "label": "Nuôi cấy vi sinh bệnh phẩm hô hấp dưới & Cấy máu xác định căn nguyên",
+            "description": "Phân lập vi khuẩn gây bệnh từ dịch hút nội khí quản (ETA), dịch rửa phế quản phế nang (BAL) hoặc cấy máu đồng thời 2 vị trí trước khi dùng kháng sinh.",
+            "labThreshold": "ETA ≥ 10^5 CFU/mL hoặc BAL ≥ 10^4 CFU/mL hoặc PSB ≥ 10^3 CFU/mL",
+            "sourceGuideline": "Khuyến cáo Chẩn đoán và Điều trị VPBV/VPLQTM 2023"
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Viêm phổi bệnh viện không thở máy (nvHAP) thể nhẹ / trung bình",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Bệnh nhân khởi phát viêm phổi sau 48h nhập viện, tự thở khí trời hoặc thở oxy gọng kính SpO2 ≥ 92%, không có sốc nhiễm khuẩn, huyết động ổn định (HATT ≥ 90 mmHg). [Cận lâm sàng]: PaO2/FiO2 > 250 mmHg, bạch cầu 10.000 - 15.000 /µL, chưa có tổn thương tạng thứ phát. [Tiêu chuẩn an toàn]: Không có yếu tố nguy cơ nhiễm vi khuẩn đa kháng (MDR) và chưa từng dùng kháng sinh tĩnh mạch trong 90 ngày.",
+            "triage": "Nội trú 100% tại Khoa Hô hấp / Khoa Nội tổng hợp",
+            "primaryAction": "Khởi đầu đơn trị liệu kháng sinh tĩnh mạch phổ rộng có hoạt tính trên P. aeruginosa và Gram âm (Piperacillin/tazobactam 4.5g IV q6h hoặc Cefepime 2g IV q8h hoặc Meropenem 1g IV q8h). Lấy mẫu đờm cấy vi sinh trước liều kháng sinh đầu tiên.",
+            "targetVitals": "HATT ≥ 90 mmHg, SpO2 ≥ 92-95%, nhịp thở < 24 lần/phút, nước tiểu ≥ 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 2 — Viêm phổi bệnh viện nặng (vHAP) hoặc Viêm phổi liên quan thở máy (VAP)",
+            "severity": "severe",
+            "criteria": "[Lâm sàng]: Viêm phổi xuất hiện sau 48h thở máy hoặc nvHAP diễn tiến nặng cần đặt NKQ; suy hô hấp nặng cần FiO2 > 35% để duy trì SpO2 > 90%. [Cận lâm sàng]: PaO2/FiO2 ≤ 200 mmHg, tổn thương X-quang tiến triển đa thùy hoặc tạo áp xe, bạch cầu > 15.000 hoặc < 4.000 /µL. [Dấu hiệu nguy cơ MDR]: Có ít nhất 1 yếu tố nguy cơ MDR (dùng KS tĩnh mạch trong 90 ngày, nằm viện > 5 ngày, sốc nhiễm khuẩn, ARDS trước VAP, lọc máu cấp).",
+            "triage": "Nhập khoa Hồi sức tích cực (ICU) / Đơn vị Hồi sức Hô hấp",
+            "primaryAction": "Phối hợp 2 kháng sinh chống Pseudomonas/Gram âm thuộc 2 nhóm khác nhau (Beta-lactam phổ rộng + Quinolone/Aminoglycoside/Colistin) KÈM 1 thuốc chống MRSA (Vancomycin hoặc Linezolid) nếu tỷ lệ MRSA tại khoa > 10% hoặc có nguy cơ MDR.",
+            "targetVitals": "PaO2/FiO2 > 200, SpO2 ≥ 92-95%, HATT ≥ 90 mmHg, MAP ≥ 65 mmHg, bài niệu ≥ 0.5 mL/kg/h"
+        },
+        {
+            "grade": "Mức độ 3 — HAP / VAP biến chứng Sốc nhiễm khuẩn & Suy đa tạng (MODS)",
+            "severity": "critical",
+            "criteria": "[Lâm sàng]: VAP/HAP kèm sốc nhiễm khuẩn (cần thuốc vận mạch Noradrenaline để duy trì MAP ≥ 65 mmHg và Lactate máu > 2 mmol/L dù đã bù đủ dịch). Chi lạnh, CRT > 3s, thiểu niệu/vô niệu (< 20 mL/h), rối loạn tri giác. [Cận lâm sàng]: PaO2/FiO2 < 150 mmHg (ARDS nặng), Tăng Lactate máu dốc đứng, suy thận cấp (Creatinine tăng gấp 2-3 lần), rối loạn đông máu (PLT < 50 G/L, INR > 1.5).",
+            "triage": "Hồi sức tích cực cấp cứu (ICU) / Phòng cách ly hồi sức vi khuẩn đa kháng",
+            "primaryAction": "Hồi sức sốc nhiễm khuẩn trong giờ đầu (xả dịch tinh thể 30 mL/kg, Noradrenaline nâng MAP ≥ 65 mmHg) KÈM Phác đồ kháng sinh phối hợp 3 thuốc (Meropenem 2g q8h truyền 3h + Colistin liều nạp 9 MUI + Linezolid 600mg q12h hoặc Vancomycin TDM). Cân nhắc Colistin khí dung phối hợp.",
+            "targetVitals": "MAP ≥ 65 mmHg, CVP 8-12 mmHg, ScvO2 ≥ 70%, Lactate < 2 mmol/L, Bài niệu ≥ 0.5-1.0 mL/kg/h"
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Điều trị Viêm phổi bệnh viện & Viêm phổi thở máy theo Khuyến cáo Bộ Y tế & Hội Hô hấp VN 2023",
+        "guideline": "Khuyến cáo Chẩn đoán và Điều trị Viêm phổi bệnh viện và Viêm phổi liên quan đến thở máy năm 2023 (Hội Hô hấp Việt Nam & Hội Hồi sức Cấp cứu và Chống độc Việt Nam)",
+        "targetGoals": [
+            "Kiểm soát nhiễm trùng cấp tính, xuống thang kháng sinh theo kháng sinh đồ sau 48-72 giờ.",
+            "Duy trì ổn định hô hấp (PaO2/FiO2 > 200, SpO2 92-95%) và tưới máu mô (MAP ≥ 65 mmHg, Lactate < 2 mmol/L).",
+            "Tối ưu hóa liều kháng sinh theo dược lực học PK/PD (truyền kéo dài Beta-lactam, TDM Vancomycin/Aminoglycoside).",
+            "Rút ngắn thời gian thở máy, thời gian nằm ICU và ngưng kháng sinh an toàn sau 7 ngày dựa trên chỉ số Procalcitonin."
+        ],
+        "initialManagement": [
+            "Khởi động liệu pháp kháng sinh tĩnh mạch ban đầu càng sớm càng tốt (BẮT BUỘC trong vòng 1 giờ đầu nếu có sốc nhiễm khuẩn).",
+            "Lấy bệnh phẩm hô hấp dưới (dịch hút NKQ, BAL) nhuộm Gram và nuôi cấy vi sinh KÈM cấy máu 2 vị trí trước khi truyền liều kháng sinh đầu tiên.",
+            "Thiết lập hỗ trợ hô hấp tối ưu: Cài đặt thông khí bảo vệ phổi (Vt 6 mL/kg PBW, Pplat < 30 cmH2O, PEEP tối ưu) đối với VAP.",
+            "Hồi sức huyết động: Bù dịch tinh thể Ringer Lactate 30 mL/kg trong 3h đầu nếu có tụt HA, dùng Noradrenaline sớm giữ MAP ≥ 65 mmHg."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Piperacillin / Tazobactam",
+                "class": "Penicillin phổ rộng phối hợp chất ức chế Beta-lactamase (Kháng Pseudomonas)",
+                "route": "IV / TTM",
+                "dosage": "4.5 g mỗi 6 giờ truyền tĩnh mạch trong 3 giờ (hoặc liều bolus ban đầu 4.5g truyền trong 30 phút, sau đó truyền liên tục 20 g/24h)",
+                "frequency": "Mỗi 6 giờ (truyền kéo dài 3h) hoặc truyền liên tục 24h",
+                "instructions": "Kháng sinh đầu tay cho HAP không nguy cơ MDR hoặc làm nòng cốt trong phác đồ phối hợp chống P. aeruginosa.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Cefepime (hoặc Ceftazidime)",
+                "class": "Cephalosporin thế hệ 4 (hoặc thế hệ 3) chống Pseudomonas",
+                "route": "IV / TTM",
+                "dosage": "Cefepime 2.0 g mỗi 8 giờ truyền tĩnh mạch trong 3 giờ (hoặc Ceftazidime 2.0 g mỗi 8 giờ; hoặc truyền liên tục 6g/24h sau liều nạp 15 mg/kg)",
+                "frequency": "Mỗi 8 giờ (truyền kéo dài 3h)",
+                "instructions": "Thay thế Piperacillin/tazobactam khi nghi ngờ hoặc khẳng định trực khuẩn Gram âm nhạy cảm.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Meropenem (hoặc Imipenem/cilastatin)",
+                "class": "Carbapenem nhóm 2 phổ rộng chống Pseudomonas & Gram âm sinh ESBL",
+                "route": "IV / TTM",
+                "dosage": "Meropenem 1.0g - 2.0g mỗi 8 giờ truyền tĩnh mạch kéo dài trong 3 giờ (hoặc Imipenem 0.5g - 1.0g mỗi 6 giờ truyền trong 3 giờ)",
+                "frequency": "Mỗi 8 giờ (Meropenem) hoặc mỗi 6 giờ (Imipenem)",
+                "instructions": "Ưu tiên cho HAP nặng/VAP, nghi ngờ vi khuẩn sinh ESBL hoặc ca sốc nhiễm khuẩn tại ICU.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Amikacin (hoặc Levofloxacin / Ciprofloxacin)",
+                "class": "Aminoglycoside (hoặc Fluoroquinolone) chống trực khuẩn Gram âm",
+                "route": "IV / TTM",
+                "dosage": "Amikacin 15-20 mg/kg IV q24h (hoặc 25-30 mg/kg nếu nghi K. pneumoniae kháng carbapenem); Levofloxacin 750mg IV q24h; Ciprofloxacin 400mg IV q8h",
+                "frequency": "Mỗi 24 giờ (Amikacin/Levofloxacin) hoặc mỗi 8 giờ (Ciprofloxacin)",
+                "instructions": "Thuốc phối hợp thứ 2 bắt buộc trong phác đồ kinh nghiệm điều trị HAP nặng/VAP có nguy cơ nhiễm P. aeruginosa/Gram âm đa kháng.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Vancomycin (hoặc Linezolid / Teicoplanin)",
+                "class": "Glycopeptide (hoặc Oxazolidinone) bao phủ tụ cầu vàng kháng methicillin (MRSA)",
+                "route": "IV / TTM",
+                "dosage": "Vancomycin 15-20 mg/kg q8-12h (liều nạp 25-30 mg/kg ở ca nặng; TDM đạt AUC/MIC 400-600); Linezolid 600mg IV q12h; Teicoplanin liều nạp 6 mg/kg q12h x 3 liều, duy trì 6 mg/kg/ngày",
+                "frequency": "Mỗi 8-12 giờ (Vancomycin/Linezolid)",
+                "instructions": "Bổ sung ngay khi cơ sở có tỷ lệ MRSA > 10% hoặc bệnh nhân có yếu tố nguy cơ nhiễm MRSA. Khuyên dùng Linezolid nếu MIC Vancomycin ≥ 1.5 µg/mL.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Colistin (Colistimethate Sodium - CMS)",
+                "class": "Polymyxin điều trị trực khuẩn Gram âm đa kháng diện rộng (A. baumannii, P. aeruginosa, CRE)",
+                "route": "IV TTM KÈM Khí dung phế quản",
+                "dosage": "Liều nạp IV: 9 MUI (300 mg CBA). Liều duy trì IV: 9 MUI/ngày chia 2-3 lần (mỗi 8-12h), hiệu chỉnh chặt chẽ theo eGFR. Khí dung phối hợp: 1-2 MUI pha 6 mL NaCl 0.9% q8h qua máy khí dung màng rung.",
+                "frequency": "Mỗi 8-12 giờ tĩnh mạch + Mỗi 8 giờ khí dung phế quản",
+                "instructions": "Chỉ định bắt buộc khi nghi ngờ hoặc xác định Acinetobacter baumannii hoặc Pseudomonas aeruginosa kháng Carbapenem (XDR/PDR). Tuyệt đối KHÔNG đơn trị liệu.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Ampicillin / Sulbactam (Liều cao Sulbactam)",
+                "class": "Aminopenicillin + Chất ức chế Beta-lactamase (Hoạt tính đặc hiệu trên Acinetobacter baumannii)",
+                "route": "IV / TTM",
+                "dosage": "Liều cao 6 - 9 g/ngày tính theo Sulbactam (tương ứng 3g Sulbactam mỗi 8 giờ truyền tĩnh mạch kéo dài 4 giờ, hoặc 1g Sulbactam mỗi 4 giờ truyền trong 30 phút)",
+                "frequency": "Mỗi 8 giờ (truyền kéo dài 4h) hoặc mỗi 4 giờ",
+                "instructions": "Phối hợp cốt lõi cùng Colistin trong điều trị viêm phổi do Acinetobacter baumannii kháng Carbapenem, không phụ thuộc vào kết quả nhạy cảm in vitro của Sulbactam.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Ceftazidime / Avibactam (hoặc Ceftolozane / Tazobactam)",
+                "class": "Beta-lactam phối hợp chất ức chế Beta-lactamase thế hệ mới",
+                "route": "IV / TTM",
+                "dosage": "Ceftazidime/avibactam 2.5g mỗi 8 giờ truyền tĩnh mạch trong 3 giờ; Ceftolozane/tazobactam 3.0g mỗi 8 giờ truyền trong 3 giờ",
+                "frequency": "Mỗi 8 giờ (truyền kéo dài 3h)",
+                "instructions": "Đặc trị vi khuẩn đường ruột kháng carbapenem sinh men KPC/OXA-48 (Ceftazidime/avibactam) hoặc P. aeruginosa kháng thuốc khó điều trị DTR (Ceftolozane/tazobactam).",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Chăm sóc hô hấp & Gói dự phòng VAP (VAP Bundle): Nằm đầu cao 30-45°, hút đờm kín, duy trì áp lực bóng chèn Cuff 20-30 cmH2O, vệ sinh răng miệng bằng Chlorhexidine 0.12% mỗi 6-8h, xả nước ngưng tụ trên dây thở.",
+            "Thông khí nhân tạo bảo vệ phổi: Thở máy chiến lược ARDSNet (Vt 6 mL/kg cân nặng lý tưởng IBW, Pplat ≤ 30 cmH2O, PEEP điều chỉnh theo bảng PEEP/FiO2).",
+            "Tối ưu hóa huyết động & Giám sát độc tính: Theo dõi TDM nồng độ đáy Vancomycin (đích 15-20 µg/mL) và chức năng thận mỗi ngày khi dùng Colistin/Aminoglycoside.",
+            "Dinh dưỡng nội viện sớm qua sonde dạ dày trong 24-48h đầu (25-30 kcal/kg/ngày, protein 1.5-2.0 g/kg/ngày), dự phòng loét do stress bằng PPI/H2RA và dự phòng huyết khối tĩnh mạch sâu (VTE) bằng LMWH."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Sốc nhiễm khuẩn bệnh viện & Suy đa tạng (Septic Shock & MODS)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Tụt huyết áp nặng (HATT < 90 mmHg hoặc MAP < 65 mmHg) kháng bù dịch, mạch nhanh nhỏ khó bắt, Lactate máu > 2.0 mmol/L, da nổi bông, oliguria < 0.5 mL/kg/h.",
+            "preventiveAction": "Hồi sức dịch tinh thể Ringer Lactate 30 mL/kg trong 3 giờ đầu, dùng Noradrenaline giữ MAP ≥ 65 mmHg, cấy máu và dùng kháng sinh phổ rộng đúng liều PK/PD trong 1 giờ đầu.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: SỐC NHIỄM KHUẨN VAP/HAP: Thở oxy/Cài đặt PEEP, xả Ringer Lactate 30 mL/kg khẩn, thiết lập Noradrenaline tĩnh mạch qua bơm tiêm điện, đo ngay Lactate máu & Khí máu động mạch!"
+        },
+        {
+            "name": "Hội chứng suy hô hấp cấp tiến triển (ARDS do VAP/HAP)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Khó thở dâng cao, chống máy, PaO2/FiO2 giảm dốc đứng (< 200 mmHg đối với ARDS vừa, < 100 mmHg đối với ARDS nặng), X-quang ngực thâm nhiễm phế nang lan tỏa 2 bên phổi.",
+            "preventiveAction": "Chuyển chế độ thở máy bảo vệ phổi (Vt 4-6 mL/kg IBW, Pplat < 30 cmH2O, PEEP cao), dùng thuốc thả lỏng cơ nếu chống máy nặng, cân nhắc nằm sấp (Prone positioning) 16h/ngày.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG: ARDS TIẾN TRIỂN: Giảm Vt xuống 6 mL/kg IBW, tăng PEEP, kiểm tra Pplat < 30 cmH2O, làm Khí máu động mạch gấp!"
+        },
+        {
+            "name": "Nhiễm vi khuẩn toàn kháng / Đa kháng diện rộng (XDR / PDR A. baumannii, P. aeruginosa)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt dai dẳng không hạ sau 48-72h điều trị kháng sinh ban đầu, đờm mủ xanh/vàng đục số lượng lớn, PCT không giảm hoặc tăng lại, kết quả cấy đờm/dịch phế quản trả về vi khuẩn chỉ còn nhạy Colistin.",
+            "preventiveAction": "Chuyển ngay sang phác đồ phối hợp chứa Colistin IV liều nạp 9 MUI + Colistin khí dung 1-2 MUI q8h KÈM Meropenem liều cao 2g q8h truyền 3h + Ampicillin/sulbactam liều cao. Áp dụng cách ly kiểm soát nhiễm khuẩn nghiêm ngặt.",
+            "onCallAlertText": "Y LỆNH TRỰC: VI KHUẨN TOÀN KHÁNG XDR/PDR: Đổi phác đồ Colistin IV (liều nạp 9 MUI) + Colistin khí dung 2 MUI + Meropenem 2g truyền 3h khẩn! Cách ly phòng riêng!"
+        },
+        {
+            "name": "Viêm mủ màng phổi & Áp xe phổi bệnh viện (Pleural Empyema & Lung Abscess)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt dao động hình tháp, đau ngực màng phổi, nghe phổi rầm rộ ran ẩm/giảm rì rào phế nang 1 bên, Siêu âm/CT ngực có dịch màng phổi vách hóa hoặc hang áp xe có mức khí - dịch.",
+            "preventiveAction": "Chọc dò dẫn lưu tối thiểu khoang màng phổi (Pigtail catheter), cấy dịch mủ làm kháng sinh đồ, duy trì kháng sinh ngấm tốt vào mủ (Vancomycin/Linezolid + Carbapenem), hội chẩn Ngoại Lồng ngực nếu vách hóa nặng.",
+            "onCallAlertText": "Y LỆNH TRỰC: MỦ MÀNG PHỔI / ÁP XE: Cho Siêu âm màng phổi tại giường, chuẩn bị bộ đặt dẫn lưu ngực Pigtail, cấy mủ tìm vi khuẩn & vi trùng kỵ khí!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (WBC, Neutrophil%), Tiểu cầu (PLT) theo dõi mỗi 24-48 giờ.",
+        "Định lượng Procalcitonin (PCT) máu vào Ngày 1, Ngày 3 và Ngày 5-7 để đánh giá đáp ứng và ngưng kháng sinh.",
+        "Khí máu động mạch (PaO2, PaCO2, pH, HCO3-, PaO2/FiO2) và Lactate máu mỗi 6-12h trong giai đoạn cấp/sốc.",
+        "Chức năng thận (Creatinine, Ure, eGFR) và Điện giải đồ mỗi ngày để hiệu chỉnh liều Colistin/Vancomycin/Aminoglycoside.",
+        "TDM giám sát nồng độ thuốc trong máu: Nồng độ đáy Vancomycin (đích 15-20 µg/mL hoặc AUC/MIC 400-600) trước liều thứ 4.",
+        "Nuôi cấy vi sinh bệnh phẩm hô hấp dưới (ETA/BAL) và Cấy máu lặp lại sau 48-72h nếu bệnh nhân không cải thiện lâm sàng.",
+        "Chụp X-quang ngực tại giường mỗi 24-48h hoặc Siêu âm phổi tại giường (LUS) đánh giá tiến triển thâm nhiễm phế nang."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Bệnh nhân thở máy xâm lấn / ARDS nặng tại ICU",
+            "adjustments": "Ưu tiên dùng kháng sinh Beta-lactam chống Pseudomonas bằng phương pháp truyền kéo dài (3 giờ) hoặc truyền liên tục 24 giờ sau liều nạp để tăng khả năng thâm nhập dịch lót biểu mô phế nang (ELF). Kết hợp kháng sinh đường khí dung (Colistin / Tobramycin) đối với vi khuẩn đa kháng.",
+            "cautions": "Nguy cơ cao mắc Acinetobacter baumannii và P. aeruginosa đa kháng; kiểm tra áp lực bóng chèn Cuff liên tục phòng sặc dịch."
+        },
+        {
+            "population": "Bệnh nhân suy thận (eGFR < 60 mL/min) hoặc đang lọc máu liên tục (CRRT / IHD)",
+            "adjustments": "BẮT BUỘC dùng liều nạp đầy đủ (Full Loading Dose) ở liều đầu tiên (Colistin 9 MUI, Vancomycin 25-30 mg/kg, Teicoplanin 800mg), sau đó mới hiệu chỉnh liều duy trì theo eGFR hoặc phương thức lọc máu CRRT (CVVH/CVVHDF). TDM Vancomycin liên tục.",
+            "cautions": "Colistin và Aminoglycoside có độc tính trên thận rất cao; theo dõi sát bài niệu và Creatinine huyết thanh mỗi ngày."
+        },
+        {
+            "population": "Người cao tuổi (≥ 65 tuổi) có nhiều bệnh nền mạn tính (COPD, Đái tháo đường, Suy tim)",
+            "adjustments": "Lựa chọn phác đồ ít độc tính trên thận (ưu tiên Linezolid thay cho Vancomycin nếu MIC Vancomycin cao hoặc có suy thận kèm theo). Giám sát sát tương tác thuốc và hội chứng Serotonin khi dùng Linezolid.",
+            "cautions": "Triệu chứng lâm sàng thường kín đáo (không sốt cao mà lú lẫn, mệt lả), dễ bỏ sót chẩn đoán VAP/HAP."
+        },
+        {
+            "population": "Bệnh nhân suy gan / Men gan tăng cao (AST/ALT > 5 lần thượng vị)",
+            "adjustments": "Hầu hết các kháng sinh Beta-lactam, Colistin, Vancomycin đào thải qua thận nên không cần giảm liều do suy gan. Thận trọng với Tigecycline (cần giảm liều duy trì 50%) và các thuốc chuyển hóa mạnh qua gan.",
+            "cautions": "Theo dõi chức năng đông máu (PT/INR) và đường huyết mao mạch sát sao."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1_initial_empiric",
+            "dayRange": "N1 - N2",
+            "phaseName": "Giai đoạn Khởi phát & Hồi sức Kháng sinh Kinh nghiệm Ban đầu (Giờ vàng N1-N2)",
+            "clinicalGoal": "Khởi đầu kháng sinh phổ rộng liều tối ưu PK/PD trong 1h đầu, lấy bệnh phẩm vi sinh, ổn định hô hấp và huyết động.",
+            "problems": [
+                {
+                    "id": "p1_empiric_abx",
+                    "problemName": "Nhiễm khuẩn bệnh viện cấp tính đe dọa tính mạng do vi khuẩn đa kháng (MDR/XDR)",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh kinh nghiệm ban đầu",
+                            "content": "Phác đồ phối hợp 2-3 thuốc: Piperacillin/tazobactam 4.5g IV q6h (truyền 3h) HOẶC Meropenem 1-2g IV q8h (truyền 3h) KÈM Amikacin 15-20 mg/kg IV q24h (hoặc Colistin liều nạp 9 MUI IV nếu nguy cơ cao A. baumannii) KÈM Vancomycin 15-20 mg/kg q8-12h (hoặc Linezolid 600mg IV q12h).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Mạch, Huyết áp, SpO2, Nhịp thở, Nhiệt độ",
+                            "frequency": "q1-2h (khi sốc q15-30p)",
+                            "target": "MAP ≥ 65 mmHg, SpO2 ≥ 92-95%"
+                        },
+                        {
+                            "type": "CLS",
+                            "metric": "Lấy đờm/dịch NKQ cấy vi sinh & Cấy máu 2 vị trí",
+                            "frequency": "1 lần trước liều KS đầu",
+                            "target": "Xác định căn nguyên vi khuẩn"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_respiratory_failure",
+                    "problemName": "Suy hô hấp cấp & Rối loạn thông khí phế nang",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Hỗ trợ hô hấp",
+                            "content": "Cài đặt thở máy xâm lấn chiến lược bảo vệ phổi: Vt 6 mL/kg IBW, Pplat ≤ 30 cmH2O, PEEP 8-12 cmH2O, FiO2 điều chỉnh giữ SpO2 92-95%."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Khí máu động mạch (PaO2/FiO2)",
+                            "frequency": "q6-12h",
+                            "target": "PaO2/FiO2 > 200 mmHg, pH 7.35-7.45"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_septic_shock",
+                    "problemName": "Tụt huyết áp & Sốc nhiễm khuẩn bệnh viện",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức huyết động",
+                            "content": "Bù dịch tinh thể Ringer Lactate 30 mL/kg; Khởi đầu Noradrenaline IV qua bơm tiêm điện liều 0.05 - 1.0 mcg/kg/phút giữ MAP ≥ 65 mmHg.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp động mạch xâm lấn (MAP) & Bài niệu qua sonde Foley",
+                            "frequency": "q15-30 phút",
+                            "target": "MAP ≥ 65 mmHg, Nước tiểu ≥ 0.5 mL/kg/h"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh tĩnh mạch",
+                    "content": "Meropenem 1-2g q8h (truyền 3h) + Amikacin 15-20 mg/kg/ngày + Vancomycin 15-20 mg/kg q8-12h (hoặc Linezolid 600mg q12h).",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Hồi sức hô hấp - tuần hoàn",
+                    "content": "Thở máy Vt 6 mL/kg IBW, PEEP 8-12; Noradrenaline duy trì MAP ≥ 65 mmHg."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu & Bài niệu",
+                    "frequency": "q1-2h",
+                    "target": "Huyết động ổn định"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "Khí máu & Lactate máu",
+                    "frequency": "q6-12h",
+                    "target": "Lactate < 2.0 mmol/L"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[BẮT BUỘC lấy bệnh phẩm vi sinh trước liều kháng sinh đầu tiên]",
+                    "[Không dùng Aminoglycoside hoặc Colistin đơn độc]",
+                    "[Truyền kéo dài Beta-lactam trong 3 giờ để tối ưu PK/PD]"
+                ],
+                "triageOrDischargeCriteria": "[Nằm điều trị nội trú 100% tại ICU/Hồi sức Hô hấp]"
+            }
+        },
+        {
+            "id": "phase_2_reevaluation_deescalation",
+            "dayRange": "N3 - N5",
+            "phaseName": "Giai đoạn Đánh giá Đáp ứng Lâm sàng & Xuống thang theo Kết quả Vi sinh (N3-N5)",
+            "clinicalGoal": "Đánh giá đáp ứng lâm sàng sau 48-72h, phân tích kết quả cấy đờm/kháng sinh đồ để điều chỉnh xuống thang kháng sinh trúng đích.",
+            "problems": [
+                {
+                    "id": "p2_deescalation",
+                    "problemName": "Điều chỉnh kháng sinh theo kết quả Kháng sinh đồ (Targeted Therapy)",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh trúng đích / Xuống thang",
+                            "content": "Nhiễm A. baumannii (XDR): Colistin IV (9 MUI/ngày) + Meropenem 2g q8h truyền 3h + Ampicillin/sulbactam 3g q8h. Nhiễm P. aeruginosa nhạy cảm: Chuyển sang đơn trị Ceftazidime 2g q8h hoặc Cefepime 2g q8h. Ngừng Vancomycin nếu cấy không có MRSA.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Kết quả nuôi cấy & Kháng sinh đồ định lượng (MIC)",
+                            "frequency": "N3 (khi có kết quả)",
+                            "target": "Xuống thang kháng sinh phổ hẹp hơn"
+                        }
+                    ]
+                },
+                {
+                    "id": "p2_clinical_response",
+                    "problemName": "Đánh giá tiến triển nhiễm trùng & Đáp ứng viêm hệ thống",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Duy trì phác đồ & Chăm sóc hô hấp",
+                            "content": "Hút đờm qua NKQ, cai thở máy từng bước (SBT - Spontaneous Breathing Trial) nếu PaO2/FiO2 > 200 và hết sốt."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Định lượng Procalcitonin (PCT) máu & CTM",
+                            "frequency": "Ngày thứ 3 và Ngày thứ 5",
+                            "target": "PCT giảm ≥ 80% so với đỉnh"
+                        },
+                        {
+                            "type": "LS",
+                            "metric": "Tính chất đờm, Thân nhiệt, Nhịp thở",
+                            "frequency": "q4-6h",
+                            "target": "Hết sốt, đờm giảm mủ và giảm số lượng"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_treatment_failure",
+                    "problemName": "Thất bại điều trị ban đầu (Sốt dai dẳng, thâm nhiễm phổi tiến triển)",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí thất bại điều trị",
+                            "content": "Đánh giá lại vi khuẩn kháng thuốc (CRE, XDR Acinetobacter), cấy lại đờm/máu, chụp CT ngực tìm biến chứng áp xe/mủ màng phổi, đổi phác đồ sang Colistin + Meropenem + Sulbactam hoặc Ceftazidime/avibactam.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "CT ngực & Cấy vi sinh lặp lại",
+                            "frequency": "Khẩn khi thất bại ĐT",
+                            "target": "Xác định nguyên nhân thất bại"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kháng sinh trúng đích",
+                    "content": "Điều chỉnh theo kháng sinh đồ; cắt bỏ bớt thuốc không cần thiết (xuống thang).",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Cai thở máy",
+                    "content": "Thực hiện nghiệm pháp tự thở SBT khi tiêu chuẩn cai máy đạt."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "CLS",
+                    "metric": "Procalcitonin (PCT) Ngày 3 & 5",
+                    "frequency": "q48h",
+                    "target": "PCT giảm dốc"
+                },
+                {
+                    "type": "LS",
+                    "metric": "Nhiệt độ & Áp lực PEEP/FiO2",
+                    "frequency": "q4h",
+                    "target": "Giảm dần FiO2 < 40%"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Nếu lâm sàng cải thiện tốt, BẮT BUỘC xuống thang kháng sinh theo kháng sinh đồ]",
+                    "[Không thay đổi kháng sinh nếu lâm sàng tốt dù KSĐ báo kháng in vitro]",
+                    "[Giám sát độc tính trên thận của Colistin/Vancomycin]"
+                ],
+                "triageOrDischargeCriteria": "[Đánh giá khả năng rút ống NKQ chuyển khoa Nội/Hô hấp]"
+            }
+        },
+        {
+            "id": "phase_3_completion_cessation",
+            "dayRange": "N6 - N7+",
+            "phaseName": "Giai đoạn Hoàn thành Liệu trình & Cân nhắc Ngừng Kháng sinh (N6 - N7+)",
+            "clinicalGoal": "Hoàn thành đủ 7 ngày kháng sinh, đánh giá tiêu chuẩn ngừng thuốc dựa trên Procalcitonin (< 0.25 ng/mL) và rút ống NKQ an toàn.",
+            "problems": [
+                {
+                    "id": "p3_discontinuation",
+                    "problemName": "Quyết định ngừng liệu pháp kháng sinh an toàn",
+                    "problemType": "specific",
+                    "treatments": [
+                        {
+                            "category": "Ngừng kháng sinh",
+                            "content": "BẮT BUỘC ngừng kháng sinh sau 7 ngày điều trị đối với các trường hợp HAP/VAP đáp ứng lâm sàng tốt và Procalcitonin < 0.25 - 0.5 ng/mL (hoặc giảm ≥ 80%). Kéo dài 10-14 ngày chỉ khi do P. aeruginosa, A. baumannii XDR, S. aureus có nhiễm khuẩn huyết hoặc áp xe hóa.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Định lượng Procalcitonin Ngày 7",
+                            "frequency": "N7",
+                            "target": "PCT < 0.25 ng/mL"
+                        }
+                    ]
+                },
+                {
+                    "id": "p3_extubation_rehab",
+                    "problemName": "Rút ống nội khí quản & Phục hồi chức năng hô hấp",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Rút NKQ & Vật lý trị liệu",
+                            "content": "Rút ống NKQ khi đạt tiêu chuẩn; vỗ rung lồng ngực, tập hít sâu, chuyển sang thở oxy gọng kính hoặc HFNC."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Nhịp thở, SpO2 khí trời, Khả năng ho khạc",
+                            "frequency": "q4h",
+                            "target": "SpO2 ≥ 95% khí trời, ho khạc đờm tốt"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p3_comp_superinfection",
+                    "problemName": "Bội nhiễm nấm bệnh viện (Candida spp.) hoặc Bội nhiễm vi khuẩn mới",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Xử trí bội nhiễm",
+                            "content": "Soi cấy nấm đờm/máu; dùng Fluconazole hoặc Anidulafungin nếu có nhiễm nấm xâm lấn thực sự."
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Soi tươi tìm nấm & Cấy máu",
+                            "frequency": "Khi sốt lại",
+                            "target": "Phát hiện sớm bội nhiễm nấm"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Ngừng kháng sinh",
+                    "content": "Ngừng kháng sinh đủ 7 ngày nếu PCT < 0.25 ng/mL và hết sốt > 48h.",
+                    "isHighlighted": true
+                },
+                {
+                    "category": "Chăm sóc sau rút NKQ",
+                    "content": "Thở oxy gọng kính 2-4 L/p, tập vận động tại giường."
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Sinh hiệu & Mức độ tự thở",
+                    "frequency": "q6h",
+                    "target": "Ổn định không cần thở máy"
+                },
+                {
+                    "type": "CLS",
+                    "metric": "X-quang ngực kiểm tra trước xuất ICU",
+                    "frequency": "1 lần N7",
+                    "target": "Tổn thương phổi thoái triển tốt"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Tuyệt đối không lạm dụng kéo dài kháng sinh trên 7 ngày nếu lâm sàng đã ổn định]",
+                    "[Cảnh báo tái nhiễm trùng do đặt lại ống NKQ]"
+                ],
+                "triageOrDischargeCriteria": "[Đủ tiêu chuẩn chuyển khỏi ICU về Khoa Nội/Hô hấp hoặc xuất viện]"
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_septic_shock_mods",
+            "complicationName": "Sốc nhiễm khuẩn bệnh viện & Hội chứng suy đa tạng (MODS)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Tụt huyết áp kéo dài HATT < 90 mmHg hoặc MAP < 65 mmHg cần vận mạch Noradrenaline, Lactate máu > 2.0 mmol/L, thiểu niệu, rối loạn tri giác, suy hô hấp nặng]",
+            "actionProtocol": "[Hồi sức dịch tinh thể 30 mL/kg, Noradrenaline nâng MAP ≥ 65 mmHg, dùng kháng sinh phổ rộng đúng liều PK/PD trong 1 giờ đầu, lọc máu liên tục CRRT nếu suy đa tạng/toan chuyển hóa nặng]",
+            "monitoringMetrics": "[Huyết áp động mạch xâm lấn MAP liên tục, Lactate máu q4-6h, CVP, Bài niệu q1h]"
+        },
+        {
+            "name": "Hội chứng suy hô hấp cấp tiến triển nặng (Severe ARDS)",
+            "complicationName": "Hội chứng suy hô hấp cấp tiến triển nặng (Severe ARDS do VAP)",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "[Thở nhanh nông co kéo, PaO2/FiO2 < 150 mmHg dưới PEEP ≥ 5 cmH2O, thâm nhiễm phế nang lan tỏa 2 bên phổi trên X-quang/CT]",
+            "actionProtocol": "[Thông khí bảo vệ phổi Vt 4-6 mL/kg IBW, Pplat ≤ 30 cmH2O, PEEP cao, dùng thuốc giãn cơ Cisatracurium trong 48h đầu, nằm sấp Prone Position 16h/ngày, xem xét ECMO nếu PaO2/FiO2 < 80 mmHg]",
+            "monitoringMetrics": "[Khí máu động mạch q4-6h, Pplat, Driving Pressure (Pplat - PEEP) ≤ 14 cmH2O]"
+        },
+        {
+            "id": "comp_pan_drug_resistant",
+            "complicationName": "Nhiễm vi khuẩn toàn kháng (PDR) / Kháng Carbapenem (CRE / XDR A. baumannii)",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "[Sốt cao đáp ứng kém với kháng sinh ban đầu, cấy đờm/dịch NKQ ra A. baumannii hoặc P. aeruginosa hoặc K. pneumoniae đề kháng toàn bộ Beta-lactam và Carbapenem]",
+            "actionProtocol": "[Phối hợp Colistin IV (liều nạp 9 MUI + duy trì 9 MUI/ngày) + Colistin khí dung 2 MUI q8h + Meropenem liều cao 2g q8h truyền 3h + Sulbactam liều cao 9g/ngày; Áp dụng phòng ngừa tiếp xúc cách ly tuyệt đối]",
+            "monitoringMetrics": "[Cấy vi sinh kiểm tra lặp lại sau 72h, Creatinine máu & eGFR mỗi ngày, nồng độ PCT]"
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[CẢNH BÁO 1: Phải dùng kháng sinh tĩnh mạch ban đầu CÀNG SỚM CÀNG TỐT, bắt buộc trong 1 GIỜ ĐẦU tiên nếu có sốc nhiễm khuẩn hoặc VAP nặng]",
+            "[CẢNH BÁO 2: Tuyệt đối KHÔNG dùng Aminoglycoside hoặc Colistin đơn độc để điều trị HAP/VAP do nguy cơ thất bại điều trị và tử vong cao]",
+            "[CẢNH BÁO 3: Tối ưu hóa liều Beta-lactam bằng cách truyền kéo dài trong 3 giờ hoặc truyền liên tục 24 giờ để đạt đích dược động học %T > MIC]",
+            "[CẢNH BÁO 4: Giám sát nồng độ thuốc trong máu (TDM) bắt buộc đối với Vancomycin (đích AUC/MIC 400-600) và Aminoglycoside để tránh độc tính trên thận]",
+            "[CẢNH BÁO 5: Xem xét ngừng kháng sinh sau 7 ngày điều trị nếu Procalcitonin < 0.25 - 0.5 ng/mL và bệnh nhân hết sốt, cải thiện lâm sàng tốt]"
+        ],
+        "contraindications": [
+            "[CHỐNG CHỈ ĐỊNH 1: Chống chỉ định dùng Daptomycin để điều trị viêm phổi (do Daptomycin bị bất hoạt bởi chất Surfactant phế nang)]",
+            "[CHỐNG CHỈ ĐỊNH 2: Chống chỉ định dùng Tigecycline đơn trị liệu trong VAP/HAP do làm tăng tỷ lệ tử vong trong các thử nghiệm lâm sàng]",
+            "[CHỐNG CHỈ ĐỊNH 3: Chống chỉ định trộn lẫn dung dịch chứa Calci (Ringer Lactate) với Ceftriaxone trong cùng đường truyền tĩnh mạch]"
+        ],
+        "triageOrDischargeCriteria": "[TIÊU CHUẨN XUẤT ICU & RA VIỆN: (1) Hết sốt liên tục > 48 giờ và sinh hiệu ổn định (HATT ≥ 90 mmHg, nhịp thở < 24/p, SpO2 ≥ 95% khí trời); (2) Đã rút ống NKQ thành công, ho khạc đờm tốt; (3) Bạch cầu máu về bình thường và Procalcitonin < 0.25 ng/mL; (4) Tổn thương X-quang phổi thoái triển và bệnh nhân ăn uống được bằng đường miệng]."
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Viêm phổi bệnh viện & Viêm phổi thở máy (HAP/VAP)",
+            "searchKeyword": "chẩn đoán viêm phổi bệnh viện VAP HAP"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tối ưu liều PK/PD trong HAP/VAP do vi khuẩn đa kháng",
+            "searchKeyword": "phác đồ điều trị viêm phổi bệnh viện HAP VAP colistin meropenem"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học vi khuẩn đa kháng và yếu tố nguy cơ nhiễm A. baumannii, P. aeruginosa, MRSA tại ICU",
+            "searchKeyword": "dịch tễ vi khuẩn đa kháng HAP VAP ICU"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu Sốc nhiễm khuẩn, ARDS và suy đa tạng do VAP/HAP",
+            "searchKeyword": "biến chứng sốc nhiễm khuẩn ARDS viêm phổi bệnh viện"
+        }
+    ]
+}

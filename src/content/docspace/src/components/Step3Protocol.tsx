@@ -16,6 +16,7 @@ import {
   ScrollText,
   ShieldCheck,
   Sparkles,
+  Edit3,
 } from 'lucide-react';
 import {
   Benh,
@@ -50,7 +51,8 @@ import { getSimilarSoapCases } from '../lib/crossReferenceEngine.ts';
 import { getDailyTreatmentTimeline } from '../lib/dailyTreatmentTimeline.ts';
 import { resolvePatientPhenotype } from '../lib/patientPhenotypeEngine.ts';
 
-// 6 Subcomponents in step3/
+// Subcomponents in step3/
+import { ProtocolWorkstationHeader } from './step3/ProtocolWorkstationHeader.tsx';
 import { ProtocolTopNav } from './step3/ProtocolTopNav.tsx';
 import { ProtocolDiseaseHeader } from './step3/ProtocolDiseaseHeader.tsx';
 import { CollapsibleProtocolSection } from './step3/CollapsibleProtocolSection.tsx';
@@ -62,6 +64,12 @@ import { HealthcareWorkerKnowledgeSection } from './step3/HealthcareWorkerKnowle
 import { SoapCasesSection } from './step3/SoapCasesSection.tsx';
 import { CustomOrder } from './step3/ProtocolOrderSheet.tsx';
 import { ProtocolTableOfContents } from './step3/ProtocolTableOfContents.tsx';
+import { ProtocolManagementSection } from './step3/ProtocolManagementSection.tsx';
+import { ProtocolEditorModal } from './step3/ProtocolEditorModal.tsx';
+import {
+  getAllRegisteredProtocols,
+  getRegisteredProtocolById,
+} from '../lib/protocolRegistry.ts';
 
 interface Step3Props {
   kb: KnowledgeBase;
@@ -107,10 +115,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
   // 'protocol' (Mặc định): Tập trung Phác đồ & Y lệnh điều trị, chống ngợp thông tin
   // 'classification': Phân loại & Cá thể hóa
   // 'cautions': Lưu ý & Dược an toàn
+  // 'manager': Quản lý & Biên tập phác đồ
   // 'knowledge': Tri thức EBM & Ca bệnh SOAP
   // 'all': Toàn bộ 6 phân mục (Cuộn liên tục)
-  const [workspaceMode, setWorkspaceMode] = useState<'protocol' | 'classification' | 'cautions' | 'knowledge' | 'all'>('protocol');
+  const [workspaceMode, setWorkspaceMode] = useState<'protocol' | 'classification' | 'cautions' | 'manager' | 'knowledge' | 'all'>('protocol');
   const [knowledgeSubTab, setKnowledgeSubTab] = useState<'guidelines' | 'soap' | 'counseling'>('guidelines');
+  const [isEditorModalOpen, setIsEditorModalOpen] = useState(false);
 
   // 6 Collapsible sections state: Headings 1 & 2 open by default, 3-6 collapsed
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -425,6 +435,52 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       }
     });
 
+    // Tích hợp danh mục phác đồ tiêu chuẩn và tùy chỉnh từ Protocol Registry (Sepsis, Asthma, COPD, Custom Protocols)
+    try {
+      const registeredList = getAllRegisteredProtocols();
+      registeredList.forEach((rp) => {
+        const existingIdx = list.findIndex((b) => b.id === rp.diseaseId || b.id === rp.id);
+        const rpBenh: Benh = {
+          id: rp.diseaseId || rp.id,
+          ten: rp.diseaseName,
+          icd: rp.icd10,
+          nhom: rp.specialty,
+          baoDong: true,
+          ghiChuBaoDong: `${rp.organization} (${rp.versionYear}) - ${rp.isCustom ? 'Tùy biến bởi Bác sĩ' : 'Chuẩn EBM'}`,
+          tomTat: rp.description,
+          danSo: { gioiTinh: 'any' },
+          dd: [],
+          phacDo: {
+            tuyen: [
+              rp.triageLevel === 'icu'
+                ? 'Tuyến 4 (ICU/Hồi sức tích cực)'
+                : rp.triageLevel === 'inpatient'
+                ? 'Tuyến 3 (Nội trú chuyên khoa)'
+                : 'Tuyến 1-2 (Ngoại trú)',
+            ],
+            thuoc: rp.timelinePhases.flatMap((p) =>
+              (p.treatments || []).map((t) => [t.category || 'Thuốc', t.content, t.timing || 'Y lệnh chuẩn'] as [string, string, string])
+            ),
+            theoDoi: rp.timelinePhases.flatMap((p) =>
+              (p.monitoring || []).map((m) => `${m.type}: ${m.metric} (${m.frequency})`)
+            ),
+            luuY: rp.cautions || [],
+            nguon: [`Hướng dẫn ${rp.organization} (${rp.versionYear})`],
+          },
+        };
+
+        if (existingIdx >= 0) {
+          if (rp.isCustom) {
+            list[existingIdx] = rpBenh;
+          }
+        } else {
+          list.push(rpBenh);
+        }
+      });
+    } catch {
+      // Fallback
+    }
+
     return list
       .filter((b) => Boolean(b && b.baoDong))
       .sort((a, b) => (a.ten || '').localeCompare(b.ten || '', 'vi'));
@@ -695,6 +751,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     }
     if (activeChain?.severityGrading && activeChain.severityGrading.length === 0) {
       return [];
+    }
+
+    // 3. Kiểm tra phác đồ đã đăng ký trong Protocol Registry (Standard & Custom)
+    const registered = getRegisteredProtocolById(currentDisease?.id || '');
+    if (registered?.severityGrades && registered.severityGrades.length > 0) {
+      return registered.severityGrades;
     }
     return [
       {
@@ -1070,7 +1132,12 @@ export const Step3Protocol: React.FC<Step3Props> = ({
     ) {
       return (phacDo as any).timelinePhases;
     }
-    // 5. Thư viện timeline tự động
+    // 5. Kiểm tra Protocol Registry (Standard & Custom)
+    const registered = getRegisteredProtocolById(currentDisease.id);
+    if (registered?.timelinePhases && registered.timelinePhases.length > 0) {
+      return registered.timelinePhases;
+    }
+    // 6. Thư viện timeline tự động
     return getDailyTreatmentTimeline(
       currentDisease.id,
       currentDisease.ten,
@@ -1518,6 +1585,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
         selectedDiseaseId={currentDisease?.id || ''}
         onSelectDisease={onSelectDisease}
         filteredDiseases={filteredDiseases}
+        onOpenEditorModal={() => setIsEditorModalOpen(true)}
+        onPrintReport={onPrintReport}
+        onOpenManagerTab={() => setWorkspaceMode('manager')}
       />
 
       {/* Khối trình bày phác đồ chính */}
@@ -1696,7 +1766,22 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                   </span>
                 </button>
 
-                {/* Tab 4: Tri thức EBM & Ca bệnh */}
+                {/* Tab 4: Quản lý & Biên tập phác đồ */}
+                <button
+                  type="button"
+                  onClick={() => setWorkspaceMode('manager')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all shrink-0 ${
+                    workspaceMode === 'manager'
+                      ? 'bg-purple-600 text-white shadow-xs font-bold'
+                      : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
+                  }`}
+                  title="Quản lý danh mục phác đồ, biên tập hoặc nạp phác đồ mới từ JSON"
+                >
+                  <Edit3 className="w-3.5 h-3.5" />
+                  <span>Quản lý &amp; Biên tập</span>
+                </button>
+
+                {/* Tab 5: Tri thức EBM & Ca bệnh */}
                 <button
                   type="button"
                   onClick={() => setWorkspaceMode('knowledge')}
@@ -1713,7 +1798,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                   </span>
                 </button>
 
-                {/* Tab 5: Xem toàn bộ */}
+                {/* Tab 6: Xem toàn bộ */}
                 <button
                   type="button"
                   onClick={() => setWorkspaceMode('all')}
@@ -1722,7 +1807,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                       ? 'bg-slate-800 text-white shadow-xs font-bold'
                       : 'text-slate-700 hover:text-slate-900 hover:bg-white/80'
                   }`}
-                  title="Hiển thị cuộn toàn bộ 6 phần lâm sàng trên một trang"
+                  title="Hiển thị cuộn toàn bộ các phần lâm sàng trên một trang"
                 >
                   <ScrollText className="w-3.5 h-3.5" />
                   <span>Xem toàn bộ</span>
@@ -1735,8 +1820,9 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                   {workspaceMode === 'protocol' && 'Phác đồ & Y lệnh lâm sàng'}
                   {workspaceMode === 'classification' && 'Phân loại & Cá thể hóa'}
                   {workspaceMode === 'cautions' && 'Lưu ý & Dược an toàn'}
+                  {workspaceMode === 'manager' && 'Quản lý & Biên tập phác đồ'}
                   {workspaceMode === 'knowledge' && 'Tri thức EBM, SOAP & Tư vấn'}
-                  {workspaceMode === 'all' && 'Bố cục 6 mục cuộn liên tục'}
+                  {workspaceMode === 'all' && 'Bố cục toàn bộ cuộn liên tục'}
                 </span>
               </div>
             </div>
@@ -1751,7 +1837,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                 {detailedTreatmentTableNode}
 
                 {/* Bottom Quick-Access Action Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs">
                   <button
                     type="button"
                     onClick={() => setWorkspaceMode('classification')}
@@ -1762,7 +1848,7 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                     </div>
                     <div>
                       <span className="font-bold text-slate-800 block">Xem Phân loại cá thể hóa</span>
-                      <span className="text-[11px] text-slate-500">Phân độ, biến chứng, chỉnh liều eGFR</span>
+                      <span className="text-[11px] text-slate-500">Phân độ, biến chứng, eGFR</span>
                     </div>
                   </button>
 
@@ -1775,8 +1861,22 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                       <AlertTriangle className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="font-bold text-slate-800 block">Xem Lưu ý &amp; Dược an toàn</span>
-                      <span className="text-[11px] text-slate-500">Cảnh báo, chống chỉ định, xuất viện</span>
+                      <span className="font-bold text-slate-800 block">Xem Lưu ý &amp; An toàn</span>
+                      <span className="text-[11px] text-slate-500">Cảnh báo, chống chỉ định</span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setWorkspaceMode('manager')}
+                    className="flex items-center gap-2.5 p-2.5 bg-white hover:bg-purple-50 border border-slate-200 hover:border-purple-300 rounded-lg text-left transition-colors cursor-pointer shadow-2xs"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+                      <Edit3 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-slate-800 block">Quản lý &amp; Biên tập</span>
+                      <span className="text-[11px] text-slate-500">Sửa liều, xuất/nhập JSON</span>
                     </div>
                   </button>
 
@@ -1789,8 +1889,8 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                       <GraduationCap className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="font-bold text-slate-800 block">Xem Tri thức EBM &amp; SOAP</span>
-                      <span className="text-[11px] text-slate-500">Guidelines, ca lâm sàng, tư vấn</span>
+                      <span className="font-bold text-slate-800 block">Tri thức EBM &amp; SOAP</span>
+                      <span className="text-[11px] text-slate-500">Guidelines, ca lâm sàng</span>
                     </div>
                   </button>
                 </div>
@@ -1844,6 +1944,21 @@ export const Step3Protocol: React.FC<Step3Props> = ({
                   </button>
                 </div>
                 {cautionsSectionNode}
+              </div>
+            )}
+
+            {/* CHẾ ĐỘ 4: QUẢN LÝ & BIÊN TẬP PHÁC ĐỒ */}
+            {workspaceMode === 'manager' && (
+              <div className="flex flex-col gap-4">
+                <ProtocolManagementSection
+                  currentDiseaseId={currentDisease.id}
+                  currentDiseaseName={currentDisease.ten}
+                  currentDiseaseIcd={currentDisease.icd}
+                  currentTimelinePhases={timelinePhases}
+                  onOpenEditorModal={() => setIsEditorModalOpen(true)}
+                  onSelectDisease={onSelectDisease}
+                  availableDiseases={allAvailableDiseases}
+                />
               </div>
             )}
 
@@ -2113,6 +2228,20 @@ export const Step3Protocol: React.FC<Step3Props> = ({
           />
         </div>
       )}
+
+      {/* 5. Modal Biên tập & Quản lý Phác đồ */}
+      <ProtocolEditorModal
+        isOpen={isEditorModalOpen}
+        onClose={() => setIsEditorModalOpen(false)}
+        currentDiseaseId={currentDisease?.id || ''}
+        currentDiseaseName={currentDisease?.ten || ''}
+        currentDiseaseIcd={currentDisease?.icd || ''}
+        currentTimelinePhases={timelinePhases}
+        currentCautions={phacDo.luuY}
+        onProtocolSaved={() => {
+          setIsEditorModalOpen(false);
+        }}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-// src/content/knowledge-vault/cdss/xray/xray-cases.ts
+// public/cdss/xray/xray-cases.ts
 var DEFAULT_CASES = [
   {
     id: "case-copd-001",
@@ -585,32 +585,27 @@ var DEFAULT_KNOWLEDGE = [
   }
 ];
 
-// src/content/knowledge-vault/cdss/xray/xray-canvas-renderer.ts
+// public/cdss/xray/xray-canvas-renderer.ts
 var XRayCanvasRenderer = class {
-  canvas;
-  ctx;
-  offscreenCanvas;
-  offscreenCtx;
-  W = 600;
-  H = 750;
-  examType = "chest_pa";
-  findings = [];
-  activeFindingId = null;
-  hoveredFindingId = null;
-  state = {
-    zoom: 1,
-    panX: 0,
-    panY: 0,
-    brightness: 0,
-    contrast: 0,
-    inverted: false,
-    showOverlay: true
-  };
-  isDragging = false;
-  startDragX = 0;
-  startDragY = 0;
-  onSelectFindingCallback;
   constructor(canvas) {
+    this.W = 600;
+    this.H = 750;
+    this.examType = "chest_pa";
+    this.findings = [];
+    this.activeFindingId = null;
+    this.hoveredFindingId = null;
+    this.state = {
+      zoom: 1,
+      panX: 0,
+      panY: 0,
+      brightness: 0,
+      contrast: 0,
+      inverted: false,
+      showOverlay: true
+    };
+    this.isDragging = false;
+    this.startDragX = 0;
+    this.startDragY = 0;
     this.canvas = canvas;
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Could not get 2D context");
@@ -1088,16 +1083,14 @@ var XRayCanvasRenderer = class {
   }
 };
 
-// src/content/knowledge-vault/cdss/xray/xray-ui.ts
+// public/cdss/xray/xray-ui.ts
 var XRayCDSSController = class {
-  container;
-  cases = DEFAULT_CASES;
-  currentCase;
-  currentTab = "pacs";
-  renderer = null;
-  activeFindingId = null;
-  knowledgeFilter = "";
   constructor(containerId) {
+    this.cases = DEFAULT_CASES;
+    this.currentTab = "pacs";
+    this.renderer = null;
+    this.activeFindingId = null;
+    this.knowledgeFilter = "";
     const el = document.getElementById(containerId);
     if (!el) throw new Error(`Container #${containerId} not found`);
     this.container = el;

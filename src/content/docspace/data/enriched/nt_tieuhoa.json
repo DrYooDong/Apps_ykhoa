@@ -1,0 +1,528 @@
+{
+    "icdCode": "A09",
+    "icdPrefixes": [
+        "A08",
+        "A09",
+        "A04",
+        "K52",
+        "A02",
+        "A03",
+        "A05"
+    ],
+    "diseaseName": "Nhiễm trùng tiêu hóa (Infectious Gastroenteritis / Acute Infectious Diarrhea)",
+    "specialty": "Tiêu hóa - Bệnh Truyền nhiễm",
+    "severity": "standard",
+    "summary": "Nhiễm trùng tiêu hóa (viêm dạ dày ruột nhiễm trùng) là tình trạng nhiễm trùng cấp tính đường tiêu hóa do các tác nhân vi khuẩn (Salmonella, Shigella, Campylobacter, E. coli, Vibrio cholerae, C. difficile), vi rút (Rotavirus, Norovirus) hoặc ký sinh trùng gây ra. Biểu hiện lâm sàng đặc trưng bao gồm tiêu chảy cấp (phân lỏng hoặc phân nước bất thường ≥ 3 lần/24h), đau quặn bụng, nôn ói, sốt và phân có thể có nhầy máu. Diễn tiến nguy hiểm nhất là tình trạng mất nước cấp, rối loạn điện giải, toan chuyển hóa và sốc giảm thể tích hoặc sốc nhiễm trùng. Can thiệp cốt lõi bao gồm bồi hoàn nước điện giải khẩn cấp bằng Oresol áp lực thẩm thấu giảm (ORS) hoặc dịch truyền tĩnh mạch, bổ sung kẽm/probiotic hỗ trợ, và chỉ định kháng sinh hợp lý khi có bằng chứng vi khuẩn xâm lấn hoặc độc tố.",
+    "goldStandard": "Xét nghiệm vi sinh lâm sàng: Cấy phân định danh vi khuẩn gây bệnh (Salmonella, Shigella, Campylobacter, E. coli, Vibrio cholerae), thử nghiệm khuếch đại axit nucleic (NAAT/PCR) đa mồi hoặc xét nghiệm miễn dịch phát hiện độc tố C. difficile (GDH, Toxin A/B) và vi rút, hoặc soi phân tươi tìm trứng và ký sinh trùng (E. histolytica, Giardia lamblia).",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "ntth_diarrhea_acute_loose"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán xác định khi có tiêu chuẩn bắt buộc (Tiêu chảy phân lỏng/nước bất thường ≥ 3 lần/24h) VÀ ít nhất 2 tiêu chuẩn lâm sàng/dịch tễ chính (đau bụng quặn, nôn ói, sốt, phân máu/nhầy, tiền sử phơi nhiễm/vùng dịch) VÀ ít nhất 1 tiêu chuẩn cận lâm sàng/vi sinh."
+    },
+    "criteria": [
+        {
+            "id": "ntth_diarrhea_acute_loose",
+            "type": "mandatory",
+            "label": "[Tiêu chuẩn bắt buộc]: Tiêu chảy cấp phân lỏng hoặc phân nước bất thường ≥ 3 lần/24h.",
+            "description": "Đi ngoài phân lỏng hoặc phân toàn nước bất thường so với thói quen hàng ngày, kéo dài dưới 14 ngày.",
+            "sourceGuideline": "Quyết định 3612/QĐ-BYT 2025; IDSA Guidelines 2017; WGO Guidelines 2012."
+        },
+        {
+            "id": "ntth_fever_cramps_vomiting",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 1]: Hội chứng viêm dạ dày ruột cấp (Sốt, đau quặn bụng, nôn ói).",
+            "description": "Sốt cấp tính, đau quặn quanh rốn hoặc hạ vị, buồn nôn và nôn ói dồn dập.",
+            "sourceGuideline": "IDSA Guidelines 2017; WGO Guidelines 2012."
+        },
+        {
+            "id": "ntth_dysentery_bloody_stool",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 2]: Hội chứng lỵ / Phân có nhầy máu hoặc mót rặn.",
+            "description": "Phân có máu tươi, cặn máu hoặc nhầy mủ, kèm mót rặn dữ dội và đau rát hậu môn (gợi ý vi khuẩn xâm lấn như Shigella, Campylobacter, EIEC, EHEC, E. histolytica).",
+            "sourceGuideline": "Quyết định 3612/QĐ-BYT 2025; IDSA Guidelines 2017."
+        },
+        {
+            "id": "ntth_epi_exposure_history",
+            "type": "major",
+            "label": "[Tiêu chuẩn chính 3]: Yếu tố dịch tễ phơi nhiễm / Dùng kháng sinh gần đây.",
+            "description": "Tiền sử đi du lịch, ăn thực phẩm tái/sống, hải sản, nguồn nước ô nhiễm, tiếp xúc người bị tiêu chảy, hoặc tiền sử dùng kháng sinh phổ rộng trong vòng 30 ngày (nghi ngờ C. difficile).",
+            "sourceGuideline": "Quyết định 3612/QĐ-BYT 2025; IDSA Guidelines 2017; WGO Guidelines 2012."
+        },
+        {
+            "id": "ntth_lab_cbc_electrolytes",
+            "type": "lab",
+            "label": "[Cận lâm sàng 1]: Công thức máu & Điện giải đồ bất thường.",
+            "description": "Bạch cầu máu tăng cao (WBC > 10 G/L) ưu thế đa nhân trung tính hoặc tăng cô đặc máu (Hematocrit tăng) kèm rối loạn điện giải (hạ Kali máu, hạ Natri máu).",
+            "labThreshold": "WBC > 10.0 G/L, Hct > 45%, K+ < 3.5 mmol/L, Na+ < 135 mmol/L.",
+            "sourceGuideline": "IDSA Guidelines 2017; WGO Guidelines 2012."
+        },
+        {
+            "id": "ntth_lab_stool_microbiology",
+            "type": "lab",
+            "label": "[Cận lâm sàng vi sinh]: Cấy phân hoặc NAAT (PCR) xác định tác nhân.",
+            "description": "Cấy phân mọc vi khuẩn gây bệnh (Salmonella spp., Shigella spp., Campylobacter spp., Vibrio cholerae) hoặc NAAT/PCR phân dương tính với gen độc tố Shiga / vi rút / vi khuẩn.",
+            "labThreshold": "Kết quả cấy phân mọc khuẩn hoặc NAAT dương tính.",
+            "sourceGuideline": "Quyết định 3612/QĐ-BYT 2025; IDSA Guidelines 2017."
+        },
+        {
+            "id": "ntth_lab_cdiff_toxin",
+            "type": "lab",
+            "label": "[Cận lâm sàng C. difficile]: Thử nghiệm độc tố C. difficile trong phân lỏng.",
+            "description": "Xét nghiệm EIA phát hiện độc tố A/B hoặc GDH, hoặc NAAT/PCR phát hiện gen tcdB của Clostridioides difficile từ mẫu phân lỏng bất thường.",
+            "labThreshold": "EIA Toxin A/B (+) hoặc NAAT C. difficile (+) từ phân lỏng.",
+            "sourceGuideline": "Quyết định 3612/QĐ-BYT 2025; IDSA/SHEA Guidelines."
+        }
+    ],
+    "severityGrading": [
+        {
+            "grade": "Mức độ 1 — Thể nhẹ / Không mất nước (Ngoại trú)",
+            "severity": "mild",
+            "criteria": "[Lâm sàng]: Tiêu chảy < 5 lần/24h, tỉnh táo, tự uống nước tốt, nếp véo da mất nhanh, mắt không trũng, sinh hiệu ổn định. [Cận lâm sàng]: Hematocrit và điện giải đồ trong giới hạn bình thường. [Tiêu chuẩn an toàn]: Không sốt cao, không phân máu, không có bệnh nền nguy cơ, đủ điều kiện chăm sóc tại nhà.",
+            "triage": "Ngoại trú / Trạm y tế / Phòng khám ban đầu.",
+            "primaryAction": "Bù nước và điện giải đường uống bằng Oresol (ORS) pha đúng tỷ lệ, uống 100-200 mL sau mỗi lần tiêu chảy; bổ sung Kẽm cho trẻ em; dinh dưỡng sớm và hướng dẫn cờ đỏ tái khám.",
+            "targetVitals": "Mạch, HA bình thường theo tuổi, SpO2 ≥ 96%, bài niệu ≥ 1.0 mL/kg/h."
+        },
+        {
+            "grade": "Mức độ 2 — Thể trung bình / Có mất nước (Ngoại trú theo dõi / Nội trú)",
+            "severity": "moderate",
+            "criteria": "[Lâm sàng]: Tiêu chảy 5-10 lần/24h, vật vã, bứt rứt hoặc lừ đừ, khát nước khát uống háo hức, mắt trũng, nếp véo da mất chậm (< 2s). [Cận lâm sàng]: Cô đặc máu nhẹ (Hct tăng nhẹ), rối loạn điện giải nhẹ, bạch cầu máu có thể tăng.",
+            "triage": "Phòng theo dõi ngoại trú / Khoa Nội - Nhiễm Bệnh viện Quận - Huyện.",
+            "primaryAction": "Cho uống ORS 50-100 mL/kg trong 3-4 giờ đầu; nếu nôn ói liên tục không uống được thì đặt sonde dạ dày hoặc truyền tĩnh mạch NaCl 0.9% / Ringer Lactate; chỉ định cấy phân khi có sốt hoặc phân máu.",
+            "targetVitals": "Mạch rõ, HATT ≥ 90 mmHg, hết khát háo hức, bài niệu ≥ 0.5-1.0 mL/kg/h."
+        },
+        {
+            "grade": "Mức độ 3 — Thể nặng / Mất nước nặng / Sốc / Dọa suy tạng (Cấp cứu - ICU)",
+            "severity": "emergency",
+            "criteria": "[Lâm sàng]: Mất nước nặng (li bì, hôn mê, không uống được, nếp véo da mất rất chậm > 2s, mạch nhanh nhỏ/khó bắt, HATT tụt < 90 mmHg, CRT > 2s) hoặc có biến chứng sốc nhiễm trùng, tiêu chảy máu nặng, suy thận cấp. [Cận lâm sàng]: Hct tăng cao cô đặc máu, toan chuyển hóa, creatinine tăng cao.",
+            "triage": "Khoa Cấp cứu / Hồi sức tích cực (ICU) Bệnh viện Đa khoa Tỉnh/Trung ương.",
+            "primaryAction": "Hồi sức cấp cứu truyền tĩnh mạch Ringer Lactate / NaCl 0.9% 100 mL/kg thần tốc (30 mL/kg trong 30 phút đầu, 70 mL/kg trong 2.5 giờ tiếp theo); thở oxy; làm xét nghiệm vi sinh khẩn và điều trị kháng sinh tĩnh mạch đặc hiệu.",
+            "targetVitals": "HATT ≥ 90 mmHg, MAP ≥ 65 mmHg, SpO2 ≥ 95%, Lactate máu < 2.0 mmol/L, bài niệu ≥ 0.5 mL/kg/h."
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ điều trị Nhiễm trùng tiêu hóa & Viêm dạ dày ruột cấp (Hướng dẫn Bộ Y Tế, WHO, IDSA 2017 & WGO 2012/2023)",
+        "guideline": "Quyết định 3612/QĐ-BYT 2025; IDSA Clinical Practice Guidelines 2017; WGO Guidelines 2012",
+        "targetGoals": [
+            "Bồi hoàn thể tích tuần hoàn và điện giải khẩn cấp, ngăn ngừa/sửa chữa tình trạng mất nước.",
+            "Rút ngắn thời gian tiêu chảy và giảm triệu chứng bằng liệu pháp hỗ trợ an toàn (kẽm ở trẻ em, men vi sinh probiotic, diosmectite).",
+            "Chỉ định kháng sinh hợp lý đúng tác nhân vi khuẩn xâm lấn/nặng, hạn chế tối đa đề kháng kháng sinh."
+        ],
+        "initialManagement": [
+            "Đánh giá mức độ mất nước (Không mất nước, Mất nước trung bình, Mất nước nặng) và tình trạng sinh hiệu.",
+            "Khẩn trương bù nước và điện giải đường uống (ORS áp lực thẩm thấu giảm) hoặc truyền dịch tĩnh mạch (Ringer Lactate / NaCl 0.9%) khi mất nước nặng/nôn ói nhiều.",
+            "Chỉ định xét nghiệm phân (cấy phân, NAAT, soi ký sinh trùng, độc tố C. difficile) khi có chỉ định cờ đỏ (tiêu chảy máu, sốt cao, nhiễm trùng bệnh viện, suy giảm miễn dịch)."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Dung dịch Bù nước đường uống Oresol áp lực thẩm thấu giảm (Reduced Osmolarity ORS)",
+                "class": "Dung dịch điện giải bồi hoàn thể tích đường uống",
+                "route": "PO / Sonde dạ dày",
+                "dosage": "Mất nước nhẹ-trung bình: 50–100 mL/kg trong 3–4 giờ. Duy trì: 100–200 mL sau mỗi lần tiêu phân lỏng.",
+                "frequency": "Uống liên tục từng ngụm nhỏ sau mỗi lần tiêu chảy hoặc nôn",
+                "instructions": "Pha đúng tỷ lệ (1 gói/1000 mL hoặc theo nhãn sản phẩm). Tuyệt đối không pha đậm đặc hoặc pha nước trái cây hyperosmolar.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Kẽm Sulfate / Kẽm Gluconate (Zinc Supplementation)",
+                "class": "Vi chất dinh dưỡng phục hồi niêm mạc ruột (Dành cho trẻ em)",
+                "route": "PO",
+                "dosage": "Trẻ < 6 tháng: 10 mg/ngày x 10–14 ngày. Trẻ ≥ 6 tháng - 5 tuổi: 20 mg/ngày x 10–14 ngày.",
+                "frequency": "Uống 1 lần/ngày vào buổi sáng",
+                "instructions": "Bắt đầu ngay khi khởi phát tiêu chảy để giảm độ nặng và nguy cơ tái phát.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Azithromycin (Khi có chỉ định kháng sinh tiêu chảy nhiễm khuẩn / Lỵ / Tiêu chảy du lịch)",
+                "class": "Kháng sinh Macrolide",
+                "route": "PO / IV",
+                "dosage": "Người lớn: 500 mg PO q24h x 3 ngày (hoặc liều duy nhất 1000 mg cho tiêu chảy du lịch). Trẻ em: 10 mg/kg/ngày x 3 ngày.",
+                "frequency": "Mỗi 24 giờ",
+                "instructions": "Ưu tiên đầu tay cho hội chứng lỵ (Shigella, Campylobacter), tiêu chảy phân máu, hoặc tiêu chảy du lịch trung bình-nặng.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Fidaxomicin / Vancomycin đường uống (Chỉ định cho Nhiễm trùng Clostridioides difficile - CDI)",
+                "class": "Kháng sinh trị C. difficile ruột",
+                "route": "PO",
+                "dosage": "Fidaxomicin 200 mg PO BID x 10 ngày HOẶC Vancomycin PO 125 mg QID x 10 ngày.",
+                "frequency": "Fidaxomicin: 2 lần/ngày; Vancomycin: 4 lần/ngày",
+                "instructions": "Chỉ định khi test độc tố C. difficile (+) ở bệnh nhân tiêu chảy sau dùng kháng sinh.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Ciprofloxacin / Levofloxacin (Dành cho tiêu chảy vi khuẩn người lớn không kháng quinolone)",
+                "class": "Kháng sinh Fluoroquinolone",
+                "route": "PO / IV",
+                "dosage": "Ciprofloxacin 500 mg PO BID x 3-5 ngày.",
+                "frequency": "Mỗi 12 giờ",
+                "instructions": "Chỉ dùng cho người lớn khi xác định vi khuẩn nhạy cảm; cẩn trọng tỷ lệ đề kháng cao ở Campylobacter và Salmonella.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Metronidazole (Điều trị Giardia lamblia hoặc Entamoeba histolytica)",
+                "class": "Thuốc kháng Ký sinh trùng / Đơn bào",
+                "route": "PO",
+                "dosage": "Người lớn: 250–500 mg PO TID x 5–7 ngày (Giardia) hoặc 750 mg TID x 7–10 ngày (Amebiasis).",
+                "frequency": "Mỗi 8 giờ",
+                "instructions": "Chỉ định khi soi/NAAT phân phát hiện Giardia lamblia hoặc Entamoeba histolytica.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Men vi sinh Probiotics (L. rhamnosus GG / Saccharomyces boulardii)",
+                "class": "Chế phẩm vi sinh đường ruột",
+                "route": "PO",
+                "dosage": "1-2 gói/ngày (tương đương 10^8–10^10 CFU/ngày) x 5–7 ngày.",
+                "frequency": "1-2 lần/ngày",
+                "instructions": "Hỗ trợ rút ngắn thời gian tiêu chảy ở người miễn dịch bình thường. Không dùng cho người suy giảm miễn dịch nặng.",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Dinh dưỡng sớm: Tiếp tục cho con bú sữa mẹ liên tục ở trẻ nhũ nhi; trẻ lớn và người lớn ăn chế độ ăn bình thường theo tuổi ngay sau khi bù đủ nước.",
+            "Chia nhỏ bữa ăn (5-6 bữa/ngày), thức ăn mềm lỏng giàu năng lượng (cháo, súp, thịt lợn/gà nành, chuối, táo).",
+            "Tránh thức ăn nhiều đường đơn, nước trái cây đóng hộp, nước có ga do tính chất hyperosmolar làm tăng tiêu chảy."
+        ]
+    },
+    "complications": [
+        {
+            "name": "Sốc giảm thể tích do mất nước nặng (Hypovolemic Shock)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Mạch nhanh nhỏ khó bắt, HA tụt (< 90/60 mmHg), CRT > 2s, chi lạnh, li bì hôn mê, không đi tiểu.",
+            "preventiveAction": "Xả dịch truyền tĩnh mạch cấp cứu Ringer Lactate / NaCl 0.9% 30 mL/kg trong 30 phút đầu.",
+            "onCallAlertText": "Y LỆNH CẤP CỨU SỐC MẤT NƯỚC: Thở oxy, lập 2 đường truyền lớn, xả Ringer Lactate 30 mL/kg/30 phút khẩn!"
+        },
+        {
+            "name": "Rối loạn điện giải & Toan chuyển hóa (Electrolyte Imbalance & Metabolic Acidosis)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Thở nhanh sâu (thở Kussmaul), chướng bụng, trướng hơi, loạn nhịp tim do hạ Kali máu, co giật do hạ/tăng Natri máu.",
+            "preventiveAction": "Thử ngay điện giải đồ và khí máu; bù Natri Bicarbonate và bổ sung Kali đường truyền tĩnh mạch khi bài niệu tốt.",
+            "onCallAlertText": "Y LỆNH TRỰC: RỐI LOẠN ĐIỆN GIẢI/TOAN MÁU: Đo khí máu & điện giải đồ STAT, bù Kali/Bicarbonate theo công thức!"
+        },
+        {
+            "name": "Viêm đại tràng giả mạc & Phình đại tràng độc do Clostridioides difficile (Pseudomembranous Colitis)",
+            "timeframe": "subacute_7d",
+            "warningSigns": "Sốt cao, đau bụng dữ dội, chướng bụng, tiêu chảy dai dẳng sau dùng kháng sinh, bạch cầu máu tăng rất cao (WBC > 15 G/L).",
+            "preventiveAction": "Ngưng ngay kháng sinh gây bệnh; thử độc tố C. difficile; khởi đầu Fidaxomicin 200mg BID hoặc Vancomycin PO 125mg QID.",
+            "onCallAlertText": "Y LỆNH TRỰC C. DIFFICILE: Ngưng kháng sinh cũ, gửi phân làm test Toxin A/B, cho Vancomycin PO 125mg q6h!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (CBC): Đánh giá bạch cầu (WBC), Hematocrit (Hct) theo dõi cô đặc máu.",
+        "Điện giải đồ (Na+, K+, Cl-), Creatinine & Urea máu: Giám sát chức năng thận và thăng bằng kiềm toan.",
+        "Xét nghiệm vi sinh phân: Cấy phân, NAAT/PCR đa mồi, soi ký sinh trùng, độc tố C. difficile (EIA/NAAT).",
+        "Theo dõi bài niệu (thể tích nước tiểu mL/kg/h) và tần suất tiêu chảy/nôn ói mỗi 2-4 giờ."
+    ],
+    "specialPopulations": [
+        {
+            "population": "Trẻ em / Nhũ nhi (< 5 tuổi)",
+            "adjustments": "Khẩn trương bù nước bằng ORS áp lực thẩm thấu giảm; bổ sung Kẽm 10-20 mg/ngày x 10-14 ngày; tiếp tục cho con bú sữa mẹ hoàn toàn.",
+            "cautions": "TUYỆT ĐỐI CẤM dùng Loperamide hoặc thuốc chống co thắt/cầm tiêu chảy ở trẻ em < 2 tuổi do nguy cơ liệt ruột và ngộ độc."
+        },
+        {
+            "population": "Phụ nữ mang thai",
+            "adjustments": "Ưu tiên bù nước đường uống ORS; khi cần dùng kháng sinh, ưu tiên nhóm Beta-lactam (Penicillin, Cephalosporin) hoặc Azithromycin.",
+            "cautions": "Chống chỉ định Fluoroquinolones và Tetracyclines trong thai kỳ."
+        },
+        {
+            "population": "Người cao tuổi (≥ 65 tuổi) & Bệnh nền mạn tính",
+            "adjustments": "Đánh giá sát nguy cơ suy thận cấp trước thận; điều chỉnh liều thuốc theo eGFR; cảnh giác nhiễm C. difficile nếu có tiền sử dùng kháng sinh gần đây.",
+            "cautions": "Dễ tụt huyết áp kín đáo và dễ nguy cơ quá tải tuần hoàn khi truyền dịch quá mức."
+        },
+        {
+            "population": "Bệnh nhân Suy giảm miễn dịch (HIV/AIDS, Ghép tạng, Đang dùng Corticoid/Hóa trị)",
+            "adjustments": "Chỉ định xét nghiệm phân rộng rãi (NAAT đa mồi, soi Cryptosporidium, Isospora, CMV); chỉ định kháng sinh kinh nghiệm sớm.",
+            "cautions": "Nguy cơ nhiễm trùng dai dẳng, biến chứng vi khuẩn xâm lấn và tử vong cao."
+        }
+    ],
+    "timelinePhases": [
+        {
+            "id": "phase_1",
+            "dayRange": "0 - 24 giờ",
+            "phaseName": "Giai đoạn 1: Cấp cứu & Bồi hoàn thể tích tuần hoàn",
+            "clinicalGoal": "Chống sốc, bồi hoàn thể tích nước và điện giải thiếu hụt bằng ORS/dịch truyền, đánh giá chỉ định cờ đỏ xét nghiệm.",
+            "problems": [
+                {
+                    "id": "p1_dehydration",
+                    "problemName": "Mất nước & Rối loạn điện giải cấp",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Bù dịch",
+                            "content": "Bù ORS 50-100 mL/kg trong 3-4 giờ (mất nước trung bình) hoặc xả Ringer Lactate 100 mL/kg IV (mất nước nặng).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Sinh hiệu, CRT, nếp véo da, lượng nước tiểu",
+                            "frequency": "q1-2h",
+                            "target": "Mạch rõ, HATT ≥ 90, bài niệu ≥ 0.5-1.0 mL/kg/h"
+                        }
+                    ]
+                },
+                {
+                    "id": "p1_red_flags",
+                    "problemName": "Phát hiện Dấu hiệu cảnh báo đỏ (Phân máu, sốt cao, đau bụng dữ dội)",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Xét nghiệm vi sinh",
+                            "content": "Chỉ định cấy phân, NAAT/PCR vi khuẩn/vi rút, soi ký sinh trùng, độc tố C. difficile.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Công thức máu, CTM, Điện giải đồ, Cấy phân",
+                            "frequency": "Cấp cứu STAT",
+                            "target": "Xác định căn nguyên và tình trạng nhiễm trùng"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p1_comp_shock",
+                    "problemName": "Sốc giảm thể tích do mất nước nặng",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Hồi sức sốc",
+                            "content": "Truyền tĩnh mạch thần tốc Ringer Lactate 30 mL/kg trong 30 phút đầu.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Huyết áp, Mạch, SpO2",
+                            "frequency": "q15-30 phút",
+                            "target": "HATT ≥ 90 mmHg, MAP ≥ 65 mmHg"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Bù dịch ORS",
+                    "content": "Cho uống ORS áp lực thẩm thấu giảm rải rác từng ngụm nhỏ.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Dấu hiệu sinh tồn & Bài niệu",
+                    "frequency": "q2-4h",
+                    "target": "Sinh hiệu ổn định"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không dùng loperamide khi phân có máu hoặc sốt cao]",
+                    "[Tuyệt đối không pha ORS sai tỷ lệ]"
+                ],
+                "triageOrDischargeCriteria": "Nhập viện khi mất nước nặng, không uống được hoặc phân có máu."
+            }
+        },
+        {
+            "id": "phase_2",
+            "dayRange": "Ngày 2 - Ngày 5",
+            "phaseName": "Giai đoạn 2: Kiểm soát triệu chứng & Điều trị căn nguyên",
+            "clinicalGoal": "Duy trì bồi hoàn dịch, điều trị kháng sinh/kháng ký sinh trùng đặc hiệu khi có kết quả vi sinh, dinh dưỡng phục hồi niêm mạc.",
+            "problems": [
+                {
+                    "id": "p2_etiology",
+                    "problemName": "Nhiễm trùng vi khuẩn xâm lấn / C. difficile / Ký sinh trùng",
+                    "problemType": "paraclinical",
+                    "treatments": [
+                        {
+                            "category": "Kháng sinh đặc hiệu",
+                            "content": "Azithromycin 500mg/ngày x 3 ngày (Lỵ/Campylobacter) hoặc Fidaxomicin/Vancomycin PO (C. difficile) hoặc Metronidazole (Giardia).",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Tần suất phân, màu sắc phân, nhiệt độ",
+                            "frequency": "q6-12h",
+                            "target": "Giảm số lần tiêu chảy, hết sốt, phân bớt lỏng"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [
+                {
+                    "id": "p2_comp_cdiff",
+                    "problemName": "Tiêu chảy do Clostridioides difficile bùng phát",
+                    "problemType": "complication",
+                    "treatments": [
+                        {
+                            "category": "Thuốc đặc trị C. difficile",
+                            "content": "Fidaxomicin 200mg BID x 10 ngày hoặc Vancomycin PO 125mg QID x 10 ngày.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "CLS",
+                            "metric": "Test Toxin A/B C. difficile, WBC máu",
+                            "frequency": "q24-48h",
+                            "target": "Âm tính hoá độc tố, WBC giảm"
+                        }
+                    ]
+                }
+            ],
+            "treatments": [
+                {
+                    "category": "Kẽm & Dinh dưỡng",
+                    "content": "Uống Kẽm 10-20 mg/ngày; ăn chế độ ăn giàu dinh dưỡng theo tuổi.",
+                    "isHighlighted": true
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Tình trạng dinh dưỡng & phân",
+                    "frequency": "q12h",
+                    "target": "Phân sệt lại, trẻ ăn uống tốt"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Không ngưng ăn uống]",
+                    "[Cảnh giác C. difficile nếu tiêu chảy tăng lên]"
+                ],
+                "triageOrDischargeCriteria": "Theo dõi nội trú cho đến khi phân sệt và không còn mất nước."
+            }
+        },
+        {
+            "id": "phase_3",
+            "dayRange": "Ngày 6 - Ngày 14",
+            "phaseName": "Giai đoạn 3: Phục hồi niêm mạc & Tái hòa nhập",
+            "clinicalGoal": "Hoàn thành liệu trình điều trị, phục hồi vi sinh đường ruột, tăng cường dinh dưỡng bù đắp.",
+            "problems": [
+                {
+                    "id": "p3_recovery",
+                    "problemName": "Phục hồi chức năng hấp thu niêm mạc ruột",
+                    "problemType": "clinical",
+                    "treatments": [
+                        {
+                            "category": "Dinh dưỡng bù đắp",
+                            "content": "Cho ăn thêm 1 bữa phụ/ngày trong 2 tuần sau khi khỏi bệnh để bắt kịp tăng trưởng.",
+                            "isHighlighted": true
+                        }
+                    ],
+                    "monitoring": [
+                        {
+                            "type": "LS",
+                            "metric": "Cân nặng, thói quen đi tiêu",
+                            "frequency": "Theo dõi hàng tuần",
+                            "target": "Tăng cân lại, phân khuôn bình thường"
+                        }
+                    ]
+                }
+            ],
+            "phaseComplications": [],
+            "treatments": [
+                {
+                    "category": "Probiotics bổ trợ",
+                    "content": "Có thể dùng men vi sinh L. rhamnosus GG / S. boulardii để cân bằng hệ vi sinh.",
+                    "isHighlighted": false
+                }
+            ],
+            "monitoring": [
+                {
+                    "type": "LS",
+                    "metric": "Thói quen đại tiện",
+                    "frequency": "q24h",
+                    "target": "Đại tiện bình thường"
+                }
+            ],
+            "cautionsAndDischarge": {
+                "cautions": [
+                    "[Thực hiện vệ sinh tay và an toàn thực phẩm để tránh tái nhiễm]"
+                ],
+                "triageOrDischargeCriteria": "Đủ tiêu chuẩn xuất viện khi tỉnh táo, bài niệu tốt, phân sệt/khuôn."
+            }
+        }
+    ],
+    "generalComplications": [
+        {
+            "id": "comp_severe_dehydration",
+            "complicationName": "Sốc giảm thể tích do Mất nước nặng",
+            "problemType": "clinical",
+            "warningLevel": "critical",
+            "manifestation": "Mạch nhanh nhỏ, HATT < 90 mmHg, CRT > 2s, li bì hôn mê, không đi tiểu.",
+            "actionProtocol": "Bồi hoàn thể tích khẩn cấp bằng dịch truyền tĩnh mạch Ringer Lactate / NaCl 0.9% 100 mL/kg.",
+            "monitoringMetrics": "Mạch, HA, MAP, SpO2, bài niệu mL/kg/h mỗi 15-30 phút."
+        },
+        {
+            "id": "comp_acidosis_hypokalemia",
+            "complicationName": "Toan chuyển hóa & Hạ Kali máu nặng",
+            "problemType": "paraclinical",
+            "warningLevel": "high",
+            "manifestation": "Thở Kussmaul nhanh sâu, chướng bụng liệt ruột, yếu cơ, K+ < 3.0 mmol/L, HCO3- < 15 mmol/L.",
+            "actionProtocol": "Khí máu động mạch, bù Natri Bicarbonate 4.2% và bổ sung KCl tĩnh mạch chậm.",
+            "monitoringMetrics": "Khí máu động mạch, Điện giải đồ K+ Na+ mỗi 2-4 giờ."
+        },
+        {
+            "id": "comp_cdiff_pseudomembranous",
+            "complicationName": "Viêm đại tràng giả mạc do Clostridioides difficile",
+            "problemType": "clinical",
+            "warningLevel": "high",
+            "manifestation": "Sốt cao, đau bụng dữ dội, tiêu chảy dai dẳng sau kháng sinh, độc tố C. difficile (+).",
+            "actionProtocol": "Ngưng ngay kháng sinh cũ; cho Fidaxomicin 200mg BID x 10 ngày hoặc Vancomycin PO 125mg QID.",
+            "monitoringMetrics": "Bạch cầu máu WBC, số lần tiêu chảy, độc tố C. difficile trong phân."
+        }
+    ],
+    "clinicalCautions": {
+        "warnings": [
+            "[Cảnh báo cờ đỏ 1: Tiêu chảy phân có máu hoặc mót rặn là dấu hiệu vi khuẩn xâm lấn (Shigella, Campylobacter, STEC, Ameba) — không tự ý dùng loperamide].",
+            "[Cảnh báo cờ đỏ 2: Mất nước nặng (li bì, mắt trũng, không uống được, tụt HA) cần nhập viện truyền dịch tĩnh mạch cấp cứu ngay].",
+            "[Cảnh báo cờ đỏ 3: Tiêu chảy ở bệnh nhân dùng kháng sinh phổ rộng gần đây phải nghĩ đến nhiễm Clostridioides difficile]."
+        ],
+        "contraindications": [
+            "[TÂM ĐIỂM CHỐNG CHỈ ĐỊNH: Tuyệt đối CẤM dùng Loperamide hoặc các thuốc cầm tiêu chảy / giảm nhu động ruột cho trẻ em < 2 tuổi, bệnh nhân tiêu chảy phân máu hoặc nghi ngờ STEC/lỵ do nguy cơ HUS và phình đại tràng độc].",
+            "[CHỐNG CHỈ ĐỊNH ORS SAI TỶ LỆ: Không pha ORS quá đặc hoặc quá loãng; không pha với nước trái cây, cồn, sữa hay nước ngọt có ga].",
+            "[CHỐNG CHỈ ĐỊNH KHÁNG SINH THƯỜNG QUY: Không dùng kháng sinh thường quy cho tiêu chảy nước cấp tính nhẹ-trung bình không phân máu vì hầu hết do vi rút hoặc tự khỏi]."
+        ],
+        "dischargeOrTransferCriteria": [
+            "Đủ 4 tiêu chuẩn xuất viện / theo dõi ngoại trú an toàn: (1) Tỉnh táo, uống được ORS tốt; (2) Không còn dấu hiệu mất nước; (3) Sinh hiệu ổn định, bài niệu ≥ 0.5-1.0 mL/kg/h; (4) Tần suất tiêu chảy giảm, phân sệt lại."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định Nhiễm trùng tiêu hóa",
+            "searchKeyword": "chẩn đoán nhiễm trùng tiêu hóa viêm dạ dày ruột"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị, dược thư & tư vấn người bệnh Nhiễm trùng tiêu hóa",
+            "searchKeyword": "phác đồ điều trị nhiễm trùng tiêu hóa tiêu chảy cấp"
+        },
+        {
+            "khoCode": "DTH",
+            "khoName": "Kho Dịch Tễ & Nguy Cơ",
+            "articleTitle": "Dịch tễ học lâm sàng, tác nhân vi sinh & yếu tố nguy cơ Nhiễm trùng tiêu hóa",
+            "searchKeyword": "dịch tễ học nhiễm trùng tiêu hóa tác nhân vi khuẩn vi rút"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu các biến chứng đe dọa sinh mạng Nhiễm trùng tiêu hóa",
+            "searchKeyword": "biến chứng mất nước sốc nhiễm trùng C difficile"
+        }
+    ]
+}
