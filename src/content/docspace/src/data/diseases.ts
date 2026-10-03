@@ -11,8 +11,8 @@ export const CORE_DISEASES: Benh[] = [
     "icd": "K72.1",
     "nhom": "Toàn thân",
     "baoDong": true,
-    "ghiChuBaoDong": "Suy gan cấp trên nền mạn (ACLF) là hội chứng lâm sàng cấp tính phức tạp, xuất hiện trên bệnh nhân có bệnh gan mạn tính tiến triển hoặc xơ gan (còn bù hoặc mất b...",
-    "tomTat": "Suy gan cấp trên nền mạn (ACLF) là hội chứng lâm sàng cấp tính phức tạp, xuất hiện trên bệnh nhân có bệnh gan mạn tính tiến triển hoặc xơ gan (còn bù hoặc mất bù). Bệnh đặc trưng bởi sự xuất hiện đợt mất bù cấp tính kèm suy đa tạng (tổn thương tạng tại gan và ngoài gan) và phản ứng viêm hệ thống bùng phát mạnh mẽ, dẫn đến nguy cơ tử vong ngắn hạn rất cao trong vòng 28 đến 90 ngày (lên tới 50% - 80%). Tại Châu Á và Việt Nam, đợt bùng phát vi rút viêm gan B (HBV reactivation) là yếu tố khởi phát hàng đầu, bên cạnh các nhiễm trùng vi khuẩn (SBP, nhiễm trùng huyết) và rượu.",
+    "ghiChuBaoDong": "Đợt mất bù cấp tính trên nền bệnh gan mạn hoặc xơ gan, đặc trưng bởi suy đa tạng và phản ứng viêm hệ thống bùng phát, nguy cơ tử vong ngắn hạn rất cao (28–90 ng...",
+    "tomTat": "Đợt mất bù cấp tính trên nền bệnh gan mạn hoặc xơ gan, đặc trưng bởi suy đa tạng và phản ứng viêm hệ thống bùng phát, nguy cơ tử vong ngắn hạn rất cao (28–90 ngày). Căn nguyên khởi phát hàng đầu là bùng phát viêm gan B hoặc nhiễm trùng.",
     "danSo": {
       "gioiTinh": "any",
       "tuoiMin": null,
@@ -21,53 +21,53 @@ export const CORE_DISEASES: Benh[] = [
     "dd": [
       [
         "tieu_chuan_nen_benh_gan_man",
-        4.5,
+        5,
         "dt"
       ],
       [
         "tieu_chuan_dot_mat_bu_cap",
-        4.5,
+        5,
         "dt"
       ],
       [
         "suy_than_cap_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "suy_gan_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "suy_nao_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "suy_dong_mau_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "suy_tuan_hoan_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "suy_ho_hap_clif_of",
-        3.5,
+        4,
         "dt"
       ],
       [
         "yeu_to_khoi_phat_hbv",
-        2,
-        "ht"
+        2.5,
+        "gy"
       ],
       [
         "nhiem_trung_khoi_phat",
-        2,
-        "ht"
+        2.5,
+        "gy"
       ]
     ],
     "phacDo": {
@@ -106,8 +106,8 @@ export const CORE_DISEASES: Benh[] = [
     "icd": "B98.0",
     "nhom": "Tiêu hóa",
     "baoDong": false,
-    "ghiChuBaoDong": "Helicobacter pylori là vi khuẩn Gram âm vi hiếu khí, cư trú tại lớp nhầy niêm mạc dạ dày và là căn nguyên hàng đầu gây viêm dạ dày mạn, loét dạ dày - tá tràng, ...",
-    "tomTat": "Helicobacter pylori là vi khuẩn Gram âm vi hiếu khí, cư trú tại lớp nhầy niêm mạc dạ dày và là căn nguyên hàng đầu gây viêm dạ dày mạn, loét dạ dày - tá tràng, MALT lymphoma và ung thư biểu mô dạ dày. Tại Việt Nam, tỷ lệ nhiễm trong cộng đồng dao động từ 30% đến 70%, đồng thời tình trạng đề kháng kháng sinh gia tăng nghiêm trọng (kháng Clarithromycin 81.3%, Levofloxacin 53.6%), đòi hỏi chiến lược chẩn đoán chính xác và phác đồ tiệt trừ cá thể hóa 14 ngày.",
+    "ghiChuBaoDong": "Nhiễm khuẩn niêm mạc dạ dày mạn tính do H. pylori, là căn nguyên hàng đầu gây viêm loét dạ dày - tá tràng, ung thư biểu mô tuyến dạ dày và u lympho MALT. Chẩn đ...",
+    "tomTat": "Nhiễm khuẩn niêm mạc dạ dày mạn tính do H. pylori, là căn nguyên hàng đầu gây viêm loét dạ dày - tá tràng, ung thư biểu mô tuyến dạ dày và u lympho MALT. Chẩn đoán xác định dựa trên xét nghiệm hơi thở, kháng nguyên phân hoặc mô bệnh học/CLO test qua nội soi.",
     "danSo": {
       "gioiTinh": "any",
       "tuoiMin": null,
@@ -116,13 +116,13 @@ export const CORE_DISEASES: Benh[] = [
     "dd": [
       [
         "hp_mand_lab_confirmation",
-        4.5,
+        5,
         "dt"
       ],
       [
         "hp_major_epigastric_pain",
-        3.5,
-        "dt"
+        2.5,
+        "gy"
       ],
       [
         "hp_major_endoscopic_lesion",
@@ -131,22 +131,22 @@ export const CORE_DISEASES: Benh[] = [
       ],
       [
         "hp_lab_ubt",
-        2,
-        "ht"
+        4.5,
+        "dt"
       ],
       [
         "hp_lab_stool_ag",
-        2,
-        "ht"
+        4,
+        "dt"
       ],
       [
         "hp_lab_clo_test",
-        2,
-        "ht"
+        4,
+        "dt"
       ],
       [
         "hp_lab_pcr_ngs",
-        2,
+        3,
         "ht"
       ]
     ],
@@ -1891,78 +1891,13 @@ export const CORE_DISEASES: Benh[] = [
     }
   },
   {
-    "id": "phan_ve",
-    "ten": "Phản vệ",
-    "icd": "T78.2",
-    "nhom": "Da niêm",
-    "baoDong": true,
-    "ghiChuBaoDong": "Phản vệ là một phản ứng dị ứng cấp tính, có thể xuất hiện ngay lập tức từ vài giây, vài phút đến vài giờ sau khi cơ thể tiếp xúc với dị nguyên, gây ra các bệnh ...",
-    "tomTat": "Phản vệ là một phản ứng dị ứng cấp tính, có thể xuất hiện ngay lập tức từ vài giây, vài phút đến vài giờ sau khi cơ thể tiếp xúc với dị nguyên, gây ra các bệnh cảnh lâm sàng đa dạng và có thể nghiêm trọng dẫn đến tử vong nhanh chóng. Sốc phản vệ là mức độ nặng nhất của phản vệ do đột ngột giãn toàn bộ hệ thống mạch và co thắt phế quản.",
-    "danSo": {
-      "gioiTinh": "any",
-      "tuoiMin": null,
-      "tuoiMax": null
-    },
-    "dd": [
-      [
-        "tc_goi_y_phan_ve",
-        5,
-        "dt"
-      ],
-      [
-        "tc_benh_canh_1",
-        5,
-        "dt"
-      ],
-      [
-        "tc_benh_canh_2",
-        4.5,
-        "dt"
-      ],
-      [
-        "tc_benh_canh_3",
-        5,
-        "dt"
-      ]
-    ],
-    "phacDo": {
-      "tuyen": [
-        "Tuyến y tế ban đầu (Trạm y tế / Phòng khám)",
-        "Bệnh viện Quận/Huyện (Hạng 2-3)",
-        "Bệnh viện Tỉnh / Trung ương (Hạng 1-ĐB)"
-      ],
-      "thuoc": [
-        [
-          "Adrenaline (Epinephrine) 1mg/1ml",
-          "Tiêm bắp mặt trước ngoài đùi ngay lập tức: Người lớn 1/2 ống (0.5ml), trẻ em 1/5 - 1/3 ống",
-          "Thuốc cấp cứu hàng đầu, tiêm bắp STAT không chần chừ"
-        ],
-        [
-          "Methylprednisolone",
-          "1-2 mg/kg IV hoặc Diphenhydramine 25-50mg IV",
-          "Dự phòng phản vệ pha 2 muộn (sau khi đã tiêm Adrenaline)"
-        ]
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu mỗi 2-4h",
-        "Theo dõi tri giác và lượng nước tiểu"
-      ],
-      "luuY": [
-        "Tuân thủ nghiêm ngặt phác đồ Bộ Y Tế, theo dõi sát sinh hiệu và báo động đỏ."
-      ],
-      "nguon": [
-        "Bộ Y Tế Việt Nam"
-      ]
-    }
-  },
-  {
-    "id": "viem_gan_cap_do_thuoc_khang_lao",
-    "ten": "Viêm gan cấp do thuốc kháng lao",
-    "icd": "K71.6",
+    "id": "xo_gan",
+    "ten": "Xơ gan & Tăng áp lực tĩnh mạch cửa",
+    "icd": "K74.6",
     "nhom": "Tiêu hóa",
-    "baoDong": true,
-    "ghiChuBaoDong": "Viêm gan cấp do thuốc kháng lao (Anti-TB Drug-Induced Liver Injury - ATLI/DILI) là biến cố bất lợi nghiêm trọng hàng đầu do các thuốc lao hàng 1 (đặc biệt là Is...",
-    "tomTat": "Viêm gan cấp do thuốc kháng lao (Anti-TB Drug-Induced Liver Injury - ATLI/DILI) là biến cố bất lợi nghiêm trọng hàng đầu do các thuốc lao hàng 1 (đặc biệt là Isoniazid, Rifampicin, Pyrazinamide) gây ra. Cơ chế tổn thương do hoại tử tế bào gan trực tiếp hoặc do phản ứng chuyển hóa qua trung gian miễn dịch. Bệnh diễn tiến đa dạng từ tăng men gan thoáng qua không triệu chứng đến viêm gan cấp, vàng da ứ mật và suy gan cấp nguy hiểm tính mạng.",
+    "baoDong": false,
+    "ghiChuBaoDong": "Xơ gan là giai đoạn tiến triển muộn của xơ hóa gan lan rộng dẫn đến đảo lộn cấu trúc nhu mô gan và hình thành các nốt tái tạo. Xơ gan còn bù (Compensated Advanc...",
+    "tomTat": "Xơ gan là giai đoạn tiến triển muộn của xơ hóa gan lan rộng dẫn đến đảo lộn cấu trúc nhu mô gan và hình thành các nốt tái tạo. Xơ gan còn bù (Compensated Advanced Chronic Liver Disease - cACLD) theo đồng thuận Baveno VI/VII là giai đoạn người bệnh chưa xuất hiện các biến chứng mất bù lâm sàng (cổ trướng, xuất huyết do vỡ giãn tĩnh mạch thực quản, bệnh não gan, vàng da). Việc phân tầng tiến triển lâm sàng ở xơ gan còn bù dựa trên sự có mặt của Tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH) và Giãn tĩnh mạch thực quản (GEV): Giai đoạn 1 (Không GEV, không cổ trướng) và Giai đoạn 2 (Có GEV, không cổ trướng, chưa từng xuất huyết).",
     "danSo": {
       "gioiTinh": "any",
       "tuoiMin": null,
@@ -1970,34 +1905,29 @@ export const CORE_DISEASES: Benh[] = [
     },
     "dd": [
       [
-        "tc_phoi_nhiem_thuoc_lao",
+        "tc_xac_nhan_xo_gan_f4",
         5,
         "dt"
       ],
       [
-        "tc_tang_men_gan_truc_tiep",
-        5,
-        "dt"
-      ],
-      [
-        "tc_tang_bilirubin_mau",
-        4.5,
-        "dt"
-      ],
-      [
-        "tc_trieu_chung_nhiem_doc_gan",
+        "tc_chi_so_sinh_hoa_khong_xam_lan",
         4,
         "dt"
       ],
       [
-        "tc_roi_loan_dong_mau_suy_gan",
-        4.5,
+        "tc_hinh_anh_hoc_tang_ap_cua",
+        4,
         "dt"
       ],
       [
-        "tc_loai_tru_viem_gan_khac",
+        "tc_noi_soi_tam_soat_gev",
+        4,
+        "dt"
+      ],
+      [
+        "tc_chuc_nang_gan_child_pugh_a",
         3,
-        "loaitru"
+        "dt"
       ]
     ],
     "phacDo": {
@@ -2008,14 +1938,24 @@ export const CORE_DISEASES: Benh[] = [
       ],
       "thuoc": [
         [
-          "Điều trị căn nguyên đặc hiệu",
-          "Theo kháng sinh đồ hoặc phác đồ hướng dẫn chuyên khoa",
-          "Bậc 1"
+          "Spironolactone",
+          "100 mg/ngày uống buổi sáng, phối hợp Furosemide",
+          "Kháng Aldosterone điều trị cổ trướng"
         ],
         [
-          "Điều trị hỗ trợ & triệu chứng",
-          "Bù nước điện giải, hạ sốt giảm đau, cân bằng toan kiềm",
-          "Bậc 2"
+          "Furosemide",
+          "40 mg/ngày uống (duy trì tỷ lệ Spironolactone : Furosemide = 100 : 40)",
+          "Lợi tiểu quai phối hợp"
+        ],
+        [
+          "Octreotide / Terlipressin",
+          "Octreotide bolus 50 µg rồi truyền 50 µg/h",
+          "Giảm áp lực tĩnh mạch cửa khi xuất huyết tiêu hóa do vỡ giãn TMTQ"
+        ],
+        [
+          "Ceftriaxone",
+          "1g/ngày IV trong 5-7 ngày",
+          "Dự phòng nhiễm trùng dịch báng (SBP) ở bệnh nhân XHTH"
         ]
       ],
       "theoDoi": [
@@ -2166,13 +2106,13 @@ export const CORE_DISEASES: Benh[] = [
     }
   },
   {
-    "id": "xo_gan",
-    "ten": "Xơ gan & Tăng áp lực tĩnh mạch cửa",
-    "icd": "K74.6",
+    "id": "viem_gan_cap_do_thuoc_khang_lao",
+    "ten": "Viêm gan cấp do thuốc kháng lao",
+    "icd": "K71.6",
     "nhom": "Tiêu hóa",
-    "baoDong": false,
-    "ghiChuBaoDong": "Xơ gan là giai đoạn tiến triển muộn của xơ hóa gan lan rộng dẫn đến đảo lộn cấu trúc nhu mô gan và hình thành các nốt tái tạo. Xơ gan còn bù (Compensated Advanc...",
-    "tomTat": "Xơ gan là giai đoạn tiến triển muộn của xơ hóa gan lan rộng dẫn đến đảo lộn cấu trúc nhu mô gan và hình thành các nốt tái tạo. Xơ gan còn bù (Compensated Advanced Chronic Liver Disease - cACLD) theo đồng thuận Baveno VI/VII là giai đoạn người bệnh chưa xuất hiện các biến chứng mất bù lâm sàng (cổ trướng, xuất huyết do vỡ giãn tĩnh mạch thực quản, bệnh não gan, vàng da). Việc phân tầng tiến triển lâm sàng ở xơ gan còn bù dựa trên sự có mặt của Tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH) và Giãn tĩnh mạch thực quản (GEV): Giai đoạn 1 (Không GEV, không cổ trướng) và Giai đoạn 2 (Có GEV, không cổ trướng, chưa từng xuất huyết).",
+    "baoDong": true,
+    "ghiChuBaoDong": "Viêm gan cấp do thuốc kháng lao (Anti-TB Drug-Induced Liver Injury - ATLI/DILI) là biến cố bất lợi nghiêm trọng hàng đầu do các thuốc lao hàng 1 (đặc biệt là Is...",
+    "tomTat": "Viêm gan cấp do thuốc kháng lao (Anti-TB Drug-Induced Liver Injury - ATLI/DILI) là biến cố bất lợi nghiêm trọng hàng đầu do các thuốc lao hàng 1 (đặc biệt là Isoniazid, Rifampicin, Pyrazinamide) gây ra. Cơ chế tổn thương do hoại tử tế bào gan trực tiếp hoặc do phản ứng chuyển hóa qua trung gian miễn dịch. Bệnh diễn tiến đa dạng từ tăng men gan thoáng qua không triệu chứng đến viêm gan cấp, vàng da ứ mật và suy gan cấp nguy hiểm tính mạng.",
     "danSo": {
       "gioiTinh": "any",
       "tuoiMin": null,
@@ -2180,28 +2120,98 @@ export const CORE_DISEASES: Benh[] = [
     },
     "dd": [
       [
-        "tc_xac_nhan_xo_gan_f4",
+        "tc_phoi_nhiem_thuoc_lao",
         5,
         "dt"
       ],
       [
-        "tc_chi_so_sinh_hoa_khong_xam_lan",
+        "tc_tang_men_gan_truc_tiep",
+        5,
+        "dt"
+      ],
+      [
+        "tc_tang_bilirubin_mau",
+        4.5,
+        "dt"
+      ],
+      [
+        "tc_trieu_chung_nhiem_doc_gan",
         4,
         "dt"
       ],
       [
-        "tc_hinh_anh_hoc_tang_ap_cua",
-        4,
+        "tc_roi_loan_dong_mau_suy_gan",
+        4.5,
         "dt"
       ],
       [
-        "tc_noi_soi_tam_soat_gev",
-        4,
-        "dt"
-      ],
-      [
-        "tc_chuc_nang_gan_child_pugh_a",
+        "tc_loai_tru_viem_gan_khac",
         3,
+        "loaitru"
+      ]
+    ],
+    "phacDo": {
+      "tuyen": [
+        "Tuyến y tế ban đầu (Trạm y tế / Phòng khám)",
+        "Bệnh viện Quận/Huyện (Hạng 2-3)",
+        "Bệnh viện Tỉnh / Trung ương (Hạng 1-ĐB)"
+      ],
+      "thuoc": [
+        [
+          "Điều trị căn nguyên đặc hiệu",
+          "Theo kháng sinh đồ hoặc phác đồ hướng dẫn chuyên khoa",
+          "Bậc 1"
+        ],
+        [
+          "Điều trị hỗ trợ & triệu chứng",
+          "Bù nước điện giải, hạ sốt giảm đau, cân bằng toan kiềm",
+          "Bậc 2"
+        ]
+      ],
+      "theoDoi": [
+        "Theo dõi sát sinh hiệu mỗi 2-4h",
+        "Theo dõi tri giác và lượng nước tiểu"
+      ],
+      "luuY": [
+        "Tuân thủ nghiêm ngặt phác đồ Bộ Y Tế, theo dõi sát sinh hiệu và báo động đỏ."
+      ],
+      "nguon": [
+        "Bộ Y Tế Việt Nam"
+      ]
+    }
+  },
+  {
+    "id": "phan_ve",
+    "ten": "Phản vệ",
+    "icd": "T78.2",
+    "nhom": "Da niêm",
+    "baoDong": true,
+    "ghiChuBaoDong": "Phản vệ là một phản ứng dị ứng cấp tính, có thể xuất hiện ngay lập tức từ vài giây, vài phút đến vài giờ sau khi cơ thể tiếp xúc với dị nguyên, gây ra các bệnh ...",
+    "tomTat": "Phản vệ là một phản ứng dị ứng cấp tính, có thể xuất hiện ngay lập tức từ vài giây, vài phút đến vài giờ sau khi cơ thể tiếp xúc với dị nguyên, gây ra các bệnh cảnh lâm sàng đa dạng và có thể nghiêm trọng dẫn đến tử vong nhanh chóng. Sốc phản vệ là mức độ nặng nhất của phản vệ do đột ngột giãn toàn bộ hệ thống mạch và co thắt phế quản.",
+    "danSo": {
+      "gioiTinh": "any",
+      "tuoiMin": null,
+      "tuoiMax": null
+    },
+    "dd": [
+      [
+        "tc_goi_y_phan_ve",
+        5,
+        "dt"
+      ],
+      [
+        "tc_benh_canh_1",
+        5,
+        "dt"
+      ],
+      [
+        "tc_benh_canh_2",
+        4.5,
+        "dt"
+      ],
+      [
+        "tc_benh_canh_3",
+        5,
         "dt"
       ]
     ],
@@ -2213,24 +2223,79 @@ export const CORE_DISEASES: Benh[] = [
       ],
       "thuoc": [
         [
-          "Spironolactone",
-          "100 mg/ngày uống buổi sáng, phối hợp Furosemide",
-          "Kháng Aldosterone điều trị cổ trướng"
+          "Adrenaline (Epinephrine) 1mg/1ml",
+          "Tiêm bắp mặt trước ngoài đùi ngay lập tức: Người lớn 1/2 ống (0.5ml), trẻ em 1/5 - 1/3 ống",
+          "Thuốc cấp cứu hàng đầu, tiêm bắp STAT không chần chừ"
         ],
         [
-          "Furosemide",
-          "40 mg/ngày uống (duy trì tỷ lệ Spironolactone : Furosemide = 100 : 40)",
-          "Lợi tiểu quai phối hợp"
+          "Methylprednisolone",
+          "1-2 mg/kg IV hoặc Diphenhydramine 25-50mg IV",
+          "Dự phòng phản vệ pha 2 muộn (sau khi đã tiêm Adrenaline)"
+        ]
+      ],
+      "theoDoi": [
+        "Theo dõi sát sinh hiệu mỗi 2-4h",
+        "Theo dõi tri giác và lượng nước tiểu"
+      ],
+      "luuY": [
+        "Tuân thủ nghiêm ngặt phác đồ Bộ Y Tế, theo dõi sát sinh hiệu và báo động đỏ."
+      ],
+      "nguon": [
+        "Bộ Y Tế Việt Nam"
+      ]
+    }
+  },
+  {
+    "id": "tang_huyet_ap",
+    "ten": "Tăng huyết áp",
+    "icd": "I10",
+    "nhom": "Tim mạch",
+    "baoDong": false,
+    "ghiChuBaoDong": "Tăng huyết áp xác định khi huyết áp phòng khám ≥ 140/90 mmHg (qua ≥ 2 lần khám) hoặc huyết áp ngoài phòng khám (HATN ≥ 135/85 mmHg, HALĐ 24h ≥ 130/80 mmHg). Là ...",
+    "tomTat": "Tăng huyết áp xác định khi huyết áp phòng khám ≥ 140/90 mmHg (qua ≥ 2 lần khám) hoặc huyết áp ngoài phòng khám (HATN ≥ 135/85 mmHg, HALĐ 24h ≥ 130/80 mmHg). Là yếu tố nguy cơ hàng đầu gây đột quỵ, nhồi máu cơ tim và bệnh thận mạn.",
+    "danSo": {
+      "gioiTinh": "any",
+      "tuoiMin": null,
+      "tuoiMax": null
+    },
+    "dd": [
+      [
+        "tc_do_huyet_ap_phong_kham",
+        5,
+        "dt"
+      ],
+      [
+        "tc_do_huyet_ap_tai_nha",
+        4.5,
+        "dt"
+      ],
+      [
+        "tc_do_huyet_ap_luu_dong",
+        4.5,
+        "dt"
+      ],
+      [
+        "tc_ton_thuong_co_quan_dich_hmod",
+        3.5,
+        "dt"
+      ]
+    ],
+    "phacDo": {
+      "tuyen": [
+        "Tuyến y tế ban đầu (Trạm y tế / Phòng khám)",
+        "Bệnh viện Quận/Huyện (Hạng 2-3)",
+        "Bệnh viện Tỉnh / Trung ương (Hạng 1-ĐB)"
+      ],
+      "thuoc": [
+        [
+          "Điều trị căn nguyên đặc hiệu",
+          "Theo kháng sinh đồ hoặc phác đồ hướng dẫn chuyên khoa",
+          "Bậc 1"
         ],
         [
-          "Octreotide / Terlipressin",
-          "Octreotide bolus 50 µg rồi truyền 50 µg/h",
-          "Giảm áp lực tĩnh mạch cửa khi xuất huyết tiêu hóa do vỡ giãn TMTQ"
-        ],
-        [
-          "Ceftriaxone",
-          "1g/ngày IV trong 5-7 ngày",
-          "Dự phòng nhiễm trùng dịch báng (SBP) ở bệnh nhân XHTH"
+          "Điều trị hỗ trợ & triệu chứng",
+          "Bù nước điện giải, hạ sốt giảm đau, cân bằng toan kiềm",
+          "Bậc 2"
         ]
       ],
       "theoDoi": [
@@ -2308,16 +2373,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2383,16 +2439,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2453,16 +2500,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2518,16 +2556,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2583,76 +2612,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
-    }
-  },
-  {
-    "id": "tang_huyet_ap",
-    "ten": "Tăng Huyết Áp Vô Căn / Cơn THA Cấp Cứu",
-    "icd": "I10",
-    "nhom": "Tim mạch",
-    "baoDong": true,
-    "ghiChuBaoDong": "Bệnh cảnh cấp cứu cần theo dõi sát tại chuyên khoa Tim Mạch.",
-    "tomTat": "Tăng Huyết Áp Vô Căn / Cơn THA Cấp Cứu — Mã ICD-10: I10. Chuyên khoa Tim Mạch.",
-    "danSo": {
-      "gioiTinh": "any",
-      "tuoiMin": null,
-      "tuoiMax": null
-    },
-    "dd": [
-      [
-        "htn_clinic_bp",
-        3.5,
-        "dt"
-      ],
-      [
-        "htn_abpm",
-        3.5,
-        "dt"
-      ],
-      [
-        "htn_emergency_tod",
-        3.5,
-        "dt"
-      ],
-      [
-        "htn_lvh",
-        3.5,
-        "dt"
-      ]
-    ],
-    "phacDo": {
-      "tuyen": [
-        "Tuyến cơ sở",
-        "Bệnh viện Quận/Huyện",
-        "Bệnh viện Chuyên khoa"
-      ],
-      "thuoc": [
-        [
-          "Phác đồ chuẩn Bộ Y Tế",
-          "Theo hướng dẫn chuyên khoa",
-          "Bậc 1"
-        ]
-      ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2718,16 +2678,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2788,16 +2739,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2853,16 +2795,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2918,16 +2851,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -2983,16 +2907,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3048,16 +2963,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3113,16 +3019,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3178,16 +3075,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3243,16 +3131,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3308,16 +3187,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3373,16 +3243,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3438,16 +3299,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3503,16 +3355,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3568,16 +3411,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3633,16 +3467,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3698,16 +3523,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3763,16 +3579,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3828,16 +3635,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3893,16 +3691,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -3958,16 +3747,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   },
   {
@@ -4023,16 +3803,7 @@ export const CORE_DISEASES: Benh[] = [
           "Bậc 1"
         ]
       ],
-      "luuY": [
-        ""
-      ],
-      "theoDoi": [
-        "Theo dõi sát sinh hiệu, tri giác và lượng nước tiểu",
-        "Đánh giá đáp ứng lâm sàng sau 24-48 giờ"
-      ],
-      "nguon": [
-        "Hướng dẫn Chẩn đoán & Điều trị - Bộ Y Tế Việt Nam"
-      ]
+      "luuY": "Theo dõi sinh hiệu, tri giác, nước tiểu và can thiệp kịp thời."
     }
   }
 ];

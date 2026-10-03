@@ -1,5 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DOCSPACE_DIR = path.resolve(__dirname, '..');
 
 // 1. Helper mapping of specialty / term to GROUP_NAMES
 function mapToNhom(text) {
@@ -63,28 +68,63 @@ const THRESHOLD_MAPS = {
 };
 
 // 1. Read all enriched diseases
-const dir1 = './data/enriched';
-const dir2 = './data/_backup_enriched_2026-09-24/enriched';
+const dir1 = path.join(DOCSPACE_DIR, 'data/enriched');
+const dir2 = path.join(DOCSPACE_DIR, 'data/_backup_enriched_2026-09-24/enriched');
 const fileMap = {};
-for (const f of fs.readdirSync(dir2)) if (f.endsWith('.json')) fileMap[f] = path.join(dir2, f);
-for (const f of fs.readdirSync(dir1)) if (f.endsWith('.json')) fileMap[f] = path.join(dir1, f);
+if (fs.existsSync(dir2)) {
+  for (const f of fs.readdirSync(dir2)) if (f.endsWith('.json')) fileMap[f] = path.join(dir2, f);
+}
+if (fs.existsSync(dir1)) {
+  for (const f of fs.readdirSync(dir1)) if (f.endsWith('.json')) fileMap[f] = path.join(dir1, f);
+}
 
 const symptomsMap = new Map(); // id -> TrieuChung
 const diseasesList = []; // Benh[]
 
+function cleanCriteriaLabel(label) {
+  if (!label) return '';
+  return label
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/^-\s*/, '')
+    .replace(/^Biểu hiện lâm sàng:\s*/i, '')
+    .replace(/^Tiêu chuẩn nền:\s*/i, '')
+    .replace(/^Tiêu chuẩn đợt cấp:\s*/i, '')
+    .replace(/^Tiêu chuẩn bắt buộc:\s*/i, '')
+    .replace(/^Suy tạng \d+:\s*/i, '')
+    .replace(/^Căn nguyên khởi phát:\s*/i, '')
+    .replace(/^Bằng chứng vi sinh \/\s*/i, '')
+    .replace(/\s+theo CLIF-OF/gi, '')
+    .trim();
+}
+
+function cleanSummary(text) {
+  if (!text) return '';
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .trim();
+}
+
 function addOrUpdateSymptom(id, label, nhomHint, loaiHint, tuKhoaExtra = []) {
   if (!id) return;
   const cleanId = id.trim();
+  const cleanedLabel = cleanCriteriaLabel(label || cleanId);
   if (symptomsMap.has(cleanId)) {
     const existing = symptomsMap.get(cleanId);
-    if (!existing.ten && label) existing.ten = label;
+    if (!existing.ten && cleanedLabel) existing.ten = cleanedLabel;
     return;
   }
 
-  const cleanLabel = (label || cleanId)
-    .replace(/^-\s*/, '')
-    .replace(/^Biểu hiện lâm sàng:\s*/i, '')
-    .trim();
+  const cleanLabel = cleanedLabel;
 
   const nhom = mapToNhom(nhomHint || cleanLabel);
   
@@ -253,8 +293,8 @@ for (const [fname, fpath] of Object.entries(fileMap)) {
     icd: d.icdCode || 'R69',
     nhom: nhomBenh,
     baoDong: d.severity === 'emergency' || d.severity === 'critical' || d.severity === 'urgent',
-    ghiChuBaoDong: d.summary ? d.summary.slice(0, 160) + '...' : 'Cần theo dõi sát sinh hiệu và báo động đỏ lâm sàng.',
-    tomTat: d.summary || `${d.diseaseName} thuộc chuyên khoa ${d.specialty}.`,
+    ghiChuBaoDong: d.summary ? cleanSummary(d.summary).slice(0, 160) + '...' : 'Cần theo dõi sát sinh hiệu và báo động đỏ lâm sàng.',
+    tomTat: cleanSummary(d.summary) || `${d.diseaseName} thuộc chuyên khoa ${d.specialty}.`,
     danSo: {
       gioiTinh: 'any',
       tuoiMin: null,
@@ -272,7 +312,7 @@ for (const [fname, fpath] of Object.entries(fileMap)) {
 }
 
 // 2. Also parse direct diseases in diagnostic-criteria-database.ts if not yet added
-const diagContent = fs.readFileSync('./data/diagnostic-criteria-database.ts', 'utf8');
+const diagContent = fs.readFileSync(path.join(DOCSPACE_DIR, 'data/diagnostic-criteria-database.ts'), 'utf8');
 const directDiseaseRegex = /'([a-z0-9_]+)':\s*\{[\s\S]*?icdCode:\s*'([^']+)'[\s\S]*?diseaseName:\s*'([^']+)'[\s\S]*?specialty:\s*'([^']+)'/g;
 let match;
 while ((match = directDiseaseRegex.exec(diagContent)) !== null) {
@@ -318,7 +358,7 @@ while ((match = directDiseaseRegex.exec(diagContent)) !== null) {
 
 // 3. Write symptoms JSON
 const symptomsArray = Array.from(symptomsMap.values());
-fs.writeFileSync('./src/data/clinical-rules-symptoms.json', JSON.stringify(symptomsArray, null, 2), 'utf8');
+fs.writeFileSync(path.join(DOCSPACE_DIR, 'src/data/clinical-rules-symptoms.json'), JSON.stringify(symptomsArray, null, 2), 'utf8');
 console.log(`Generated clinical-rules-symptoms.json with ${symptomsArray.length} symptoms.`);
 
 // 4. Write diseases TS
@@ -330,7 +370,7 @@ import { Benh } from '../types.ts';
 
 export const CORE_DISEASES: Benh[] = ${JSON.stringify(diseasesList, null, 2)};
 `;
-fs.writeFileSync('./src/data/diseases.ts', diseasesTsContent, 'utf8');
+fs.writeFileSync(path.join(DOCSPACE_DIR, 'src/data/diseases.ts'), diseasesTsContent, 'utf8');
 console.log(`Generated diseases.ts with ${diseasesList.length} core diseases.`);
 
 // 5. Build rich Sample Cases
@@ -760,5 +800,5 @@ const SAMPLE_CASES = [
   }
 ];
 
-fs.writeFileSync('./src/data/sample-clinical-cases.json', JSON.stringify(SAMPLE_CASES, null, 2), 'utf8');
+fs.writeFileSync(path.join(DOCSPACE_DIR, 'src/data/sample-clinical-cases.json'), JSON.stringify(SAMPLE_CASES, null, 2), 'utf8');
 console.log(`Generated sample-clinical-cases.json with ${SAMPLE_CASES.length} high-fidelity cases.`);

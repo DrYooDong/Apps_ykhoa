@@ -39,6 +39,7 @@ import vmn_sv from './vmn_sv.json';
 import vmn_vk from './vmn_vk.json';
 import xo_gan_con_bu from './xo_gan_con_bu.json';
 import xo_gan_mat_bu from './xo_gan_mat_bu.json';
+import tang_huyet_ap from './tang_huyet_ap.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
@@ -70,6 +71,7 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'vmn_vk': vmn_vk as unknown as DiseaseReactionChainDefinition,
   'xo_gan_con_bu': xo_gan_con_bu as unknown as DiseaseReactionChainDefinition,
   'xo_gan_mat_bu': xo_gan_mat_bu as unknown as DiseaseReactionChainDefinition,
+  'tang_huyet_ap': tang_huyet_ap as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);
