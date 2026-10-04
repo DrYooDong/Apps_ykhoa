@@ -434,9 +434,16 @@ export interface SoapProblemItem {
 export interface SoapSubjective {
   chiefComplaint: string; // Lý do tiếp nhận / Than phiền chính
   historyOfPresentIllness: string; // Bệnh sử & đặc điểm PQRST
-  pastMedicalHistory: string; // Tiền căn bệnh lý & Dược sử liên quan
+  pastMedicalHistory: string; // Tiền căn bản thân & Dược sử liên quan
+  familyHistory?: string; // Tiền căn gia đình (ung thư, di truyền, tim mạch...)
+  epidemiology?: string; // Bối cảnh dịch tễ & yếu tố phơi nhiễm
   symptomsList: string[]; // Triệu chứng cơ năng ghi nhận
   historyPearls: string; // Kinh nghiệm hỏi bệnh & Câu hỏi vàng không được bỏ sót
+}
+
+export interface SoapLabGroup {
+  groupName: string; // Tên nhóm (VD: Huyết học, Sinh hóa gan, Dấu ấn HBV, Chức năng thận...)
+  content: string; // Chi tiết xét nghiệm trong nhóm
 }
 
 export interface SoapObjective {
@@ -449,7 +456,9 @@ export interface SoapObjective {
     bmi?: string;
   };
   physicalExam: string; // Khám thực thể trọng tâm
-  labsAndImaging: string; // Cận lâm sàng & Xét nghiệm định lượng (CLS, ECG, XQ, CT...)
+  labsAndImaging: string; // Cận lâm sàng & Xét nghiệm định lượng (toàn văn Markdown)
+  labGroups?: SoapLabGroup[]; // Các nhóm cận lâm sàng phân loại có cấu trúc
+  imagingFindings?: string; // Chẩn đoán hình ảnh & Thăm dò chức năng (Siêu âm, X-quang, FibroScan, CT...)
   objectivePitfalls: string; // Dấu hiệu dễ bỏ sót & Bẫy cận lâm sàng
 }
 
@@ -459,6 +468,8 @@ export interface SoapAssessment {
   icd10: string; // Mã ICD-10 chuẩn hóa
   differentials: string[]; // Chẩn đoán phân biệt cần loại trừ
   riskStratification: string; // Phân tầng nguy cơ & Thang điểm lượng giá
+  clinicalReasoning?: string; // Biện luận lâm sàng chi tiết theo Guidelines / Quyết định Bộ Y tế
+  treatmentCriteriaMet?: string[]; // Các tiêu chuẩn khởi trị / Tiêu chuẩn vàng thỏa mãn
   diagnosticPearls: string; // Đúc kết biện luận chẩn đoán & Bài học cảnh giác
 }
 
@@ -473,6 +484,9 @@ export interface SoapPlan {
   immediateActions: string; // Xử trí cấp cứu & Ban đầu
   medications: SoapPlanMedication[]; // Y lệnh thuốc chi tiết
   monitoringAndTargets: string; // Chỉ tiêu theo dõi & Mục tiêu lâm sàng
+  treatmentRoadmap?: string; // Lộ trình điều trị & Giám sát dài hạn (Treatment Roadmap theo tuần/tháng)
+  lifestyleAndCounseling?: string; // Chế độ sinh hoạt, dinh dưỡng, tư vấn sống khỏe & phòng ngừa gia đình
+  discontinuationCriteria?: string; // Tiêu chuẩn cân nhắc ngưng thuốc / hạ bậc điều trị
   consultationOrReferral: string; // Tiêu chuẩn hội chẩn / chuyển viện / xuất viện
   takeawayLessons: string; // Bài học kinh nghiệm & Lời khuyên điều trị cốt lõi
 }
@@ -493,6 +507,7 @@ export interface SoapClinicalExperience {
   clinicalContext?: string; // Bối cảnh khoa phòng (ICU, Cấp cứu, Phòng khám, Nội trú...)
   difficultyRating?: 1 | 2 | 3 | 4 | 5; // Độ khó ca bệnh (1: Đơn giản -> 5: Cực phức tạp)
   outcomeNotes?: string; // Kết cục ca bệnh & Di chứng nếu có
+  rawMarkdown?: string; // Markdown toàn văn gốc lưu trữ trọn vẹn
   s: SoapSubjective;
   o: SoapObjective;
   a: SoapAssessment;

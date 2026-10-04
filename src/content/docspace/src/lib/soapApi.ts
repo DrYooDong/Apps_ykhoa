@@ -154,6 +154,8 @@ export function mapVaultArticleToSoapExperience(art: VaultArticle): SoapClinical
     chiefComplaint: art.snippet || 'Chưa ghi nhận lý do nhập viện',
     historyOfPresentIllness: art.historyOfPresentIllness || art.snippet || '',
     pastMedicalHistory: art.pastMedicalHistory || 'Chưa ghi nhận tiền căn đặc biệt',
+    familyHistory: (art as any).familyHistory || undefined,
+    epidemiology: (art as any).epidemiology || undefined,
     symptomsList: art.keywords || [],
     historyPearls: art.historyPearls || '',
   };
@@ -162,6 +164,8 @@ export function mapVaultArticleToSoapExperience(art: VaultArticle): SoapClinical
     vitals: art.vitals || {},
     physicalExam: art.physicalExam || 'Khám thực thể chưa ghi nhận bất thường',
     labsAndImaging: art.labsAndImaging || 'Chưa có kết quả cận lâm sàng',
+    labGroups: (art as any).labGroups || undefined,
+    imagingFindings: (art as any).imagingFindings || undefined,
     objectivePitfalls: art.objectivePitfalls || '',
   };
 
@@ -169,6 +173,9 @@ export function mapVaultArticleToSoapExperience(art: VaultArticle): SoapClinical
     immediateActions: art.immediateActions || 'Nghỉ ngơi, theo dõi sinh hiệu',
     medications: art.medications || [],
     monitoringAndTargets: art.monitoringAndTargets || 'Theo dõi sinh hiệu định kỳ',
+    treatmentRoadmap: (art as any).treatmentRoadmap || undefined,
+    lifestyleAndCounseling: (art as any).lifestyleAndCounseling || undefined,
+    discontinuationCriteria: (art as any).discontinuationCriteria || undefined,
     consultationOrReferral: art.consultationOrReferral || '',
     takeawayLessons: art.takeawayLessons || '',
   };
@@ -178,6 +185,7 @@ export function mapVaultArticleToSoapExperience(art: VaultArticle): SoapClinical
     icd10: Array.isArray(art.icd10) ? art.icd10.join(' · ') : (art.icd10 || ''),
     differentials: art.differentials || [],
     riskStratification: art.riskStratification || 'Đang cập nhật',
+    clinicalReasoning: (art as any).clinicalReasoning || undefined,
     diagnosticPearls: art.diagnosticPearls || '',
   };
 
@@ -207,6 +215,7 @@ export function mapVaultArticleToSoapExperience(art: VaultArticle): SoapClinical
     clinicalContext: art.clinicalContext || 'Khoa Lâm sàng',
     difficultyRating: (art.difficultyRating as any) || 3,
     outcomeNotes: art.outcomeNotes || '',
+    rawMarkdown: parsedContent.rawMarkdown || (art as any).rawMarkdown || undefined,
     s,
     o,
     a,

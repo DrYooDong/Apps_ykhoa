@@ -199,16 +199,288 @@ function parseFrontmatter(rawText, filePath = '') {
 }
 
 /**
- * Trích xuất cấu trúc SOAP từ nội dung Markdown
+ * Trích xuất một khối văn bản đa dòng theo nhãn (Heading hoặc Bullet)
+ */
+function extractBlockFuzzy(sectionText, labelPatterns) {
+  for (const label of labelPatterns) {
+    const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const rHeading = new RegExp(
+      `(?:^|\\n)#{2,3}\\s*(?:[^\\n]*?)?${escaped}[^\\n]*\\n([\\s\\S]*?)(?=(?:^|\\n)#{2,3}\\s(?!#)|\\n\\s*---\\s*\\n|$)`,
+      'i'
+    );
+    const mH = sectionText.match(rHeading);
+    if (mH && mH[1].trim()) return mH[1].trim();
+
+    const rBullet = new RegExp(
+      `(?:^|\\n)[-*]\\s*\\*\\*[^\\n*]*?${escaped}[^*:\\n]*\\*\\*\\s*[:=]?\\s*\\n?([\\s\\S]*?)(?=(?:^|\\n)[-*]\\s*\\*\\*|\\n#{2,3}\\s|\\n\\s*---\\s*\\n|$)`,
+      'i'
+    );
+    const mB = sectionText.match(rBullet);
+    if (mB && mB[1].trim()) return mB[1].trim();
+  }
+  return null;
+}
+
+/**
+ * Trích xuất trường đơn theo nhãn
+ */
+function extractFieldFuzzy(sectionText, labelPatterns) {
+  for (const label of labelPatterns) {
+    const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const r1 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*\\*\\*${escaped}\\*\\*\\s*[:=]\\s*([^\\n]+)`, 'i');
+    const m1 = sectionText.match(r1);
+    if (m1 && m1[1].trim()) return m1[1].trim();
+
+    const r2 = new RegExp(`(?:^|\\n)\\s*\\*\\*${escaped}\\s*[:=]\\*\\*\\s*([^\\n]+)`, 'i');
+    const m2 = sectionText.match(r2);
+    if (m2 && m2[1].trim()) return m2[1].trim();
+
+    const r3 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*${escaped}\\s*[:=]\\s*([^\\n]+)`, 'i');
+    const m3 = sectionText.match(r3);
+    if (m3 && m3[1].trim()) return m3[1].trim();
+  }
+  return null;
+}
+
+/**
+ * Trích xuất danh sách dòng (bullet items)
+ */
+function extractListFuzzy(sectionText, labelPatterns) {
+  const block = extractBlockFuzzy(sectionText, labelPatterns);
+  if (!block) return [];
+
+  return block
+    .split(/\r?\n/)
+    .map((l) => l.trim().replace(/^[-*•]\s*/, '').replace(/^\d+[.)]\s*/, ''))
+    .filter((l) => l.length > 0 && !l.startsWith('#'));
+}
+
+/**
+ * Trích xuất sinh hiệu với regex linh hoạt
+ */
+function extractVitals(text) {
+  const vitals = {};
+  const bpMatch = text.match(/(?:huyết áp|ha|bp|blood pressure)\s*[:=]?\s*(\*?\*?\d{2,3}\s*\/\s*\d{2,3}(?:\s*mmHg)?\*?\*?)/i);
+  if (bpMatch) vitals.bp = bpMatch[1].replace(/\*/g, '').trim();
+
+  const pulseMatch = text.match(/(?:mạch|pulse|nhịp tim|hr|heart rate)\s*[:=]?\s*(\*?\*?\d{2,3}(?:\s*(?:l\/p|bpm|lần\/phút))?\*?\*?)/i);
+  if (pulseMatch) vitals.pulse = pulseMatch[1].replace(/\*/g, '').trim();
+
+  const tempMatch = text.match(/(?:nhiệt độ|thân nhiệt|temp|temperature)\s*[:=]?\s*(\*?\*?\d{2}(?:\.\d)?(?:\s*°?[Cc])?\*?\*?)/i);
+  if (tempMatch) vitals.temp = tempMatch[1].replace(/\*/g, '').trim();
+
+  const respMatch = text.match(/(?:nhịp thở|resp|respiratory rate|rr)\s*[:=]?\s*(\*?\*?\d{1,2}(?:\s*(?:l\/p|lần\/phút|bpm))?\*?\*?)/i);
+  if (respMatch) vitals.resp = respMatch[1].replace(/\*/g, '').trim();
+
+  const spo2Match = text.match(/(?:spo2|sp02)\s*[:=]?\s*(\*?\*?\d{2,3}(?:\s*%)?\*?\*?)/i);
+  if (spo2Match) vitals.spo2 = spo2Match[1].replace(/\*/g, '').trim();
+
+  const bmiMatch = text.match(/(?:bmi)\s*[:=]?\s*(\*?\*?\d{1,2}(?:\.\d)?(?:\s*kg\/m²)?\*?\*?)/i);
+  if (bmiMatch) vitals.bmi = bmiMatch[1].replace(/\*/g, '').trim();
+
+  return vitals;
+}
+
+/**
+ * Trích xuất Bảng Đặt Vấn Đề (Problem List · 3 Tầng Ưu Tiên) từ Markdown Table
+ */
+function extractProblemListFromTable(text) {
+  const problems = [];
+  const lines = text.split(/\r?\n/);
+  let tableStarted = false;
+  let order = 1;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|') || !trimmed.endsWith('|')) {
+      if (tableStarted && trimmed === '') break;
+      continue;
+    }
+    if (trimmed.includes('---')) {
+      tableStarted = true;
+      continue;
+    }
+    if (!tableStarted) {
+      if (
+        trimmed.toLowerCase().includes('mức độ') ||
+        trimmed.toLowerCase().includes('ưu tiên') ||
+        trimmed.toLowerCase().includes('vấn đề')
+      ) {
+        continue;
+      }
+    }
+
+    const cols = trimmed
+      .split('|')
+      .map((c) => c.trim())
+      .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+
+    if (cols.length >= 2) {
+      const priorityRaw = cols[0].toLowerCase();
+      let priority = 'acute';
+      if (
+        priorityRaw.includes('tầng 1') ||
+        priorityRaw.includes('đe dọa') ||
+        priorityRaw.includes('threat') ||
+        priorityRaw.includes('🔴') ||
+        priorityRaw.includes('khẩn')
+      ) {
+        priority = 'life-threatening';
+      } else if (
+        priorityRaw.includes('tầng 3') ||
+        priorityRaw.includes('mạn') ||
+        priorityRaw.includes('chronic') ||
+        priorityRaw.includes('tiền căn') ||
+        priorityRaw.includes('🔵')
+      ) {
+        priority = 'chronic';
+      } else if (
+        priorityRaw.includes('tầng 2') ||
+        priorityRaw.includes('cấp') ||
+        priorityRaw.includes('acute') ||
+        priorityRaw.includes('🟡')
+      ) {
+        priority = 'acute';
+      }
+
+      const problemName = cols[1].replace(/[*_`]/g, '').trim();
+      const diagnosticOrientation = cols[2] ? cols[2].replace(/[*_`]/g, '').trim() : undefined;
+      const immediateManagement = cols[3] ? cols[3].replace(/[*_`]/g, '').trim() : undefined;
+
+      if (problemName) {
+        problems.push({
+          order: order++,
+          priority,
+          problemName,
+          diagnosticOrientation:
+            diagnosticOrientation && diagnosticOrientation !== '—' && diagnosticOrientation !== '-'
+              ? diagnosticOrientation
+              : undefined,
+          immediateManagement:
+            immediateManagement && immediateManagement !== '—' && immediateManagement !== '-'
+              ? immediateManagement
+              : undefined,
+        });
+      }
+    }
+  }
+  return problems;
+}
+
+/**
+ * Trích xuất các nhóm cận lâm sàng phân mục từ O (#### 1. Huyết học..., #### 2. Vi sinh...)
+ */
+function extractLabGroups(oText) {
+  const groups = [];
+  const regex = /(?:^|\n)#{3,4}\s*(?:\d+[.)]\s*)?([^\n]+)\n([\s\S]*?)(?=(?:^|\n)#{3,4}\s|$)/g;
+  let m;
+  while ((m = regex.exec(oText)) !== null) {
+    const title = m[1].trim();
+    if (/^(Dấu hiệu sinh tồn|Sinh hiệu|Triệu chứng thực thể|Khám thực thể|Khám)/i.test(title)) continue;
+    const content = m[2].trim();
+    if (content) {
+      groups.push({
+        groupName: title.replace(/^[*_`#]+|[*_`#]+$/g, '').trim(),
+        content,
+      });
+    }
+  }
+  return groups;
+}
+
+/**
+ * Trích xuất danh sách thuốc chuyên sâu từ khối Y lệnh thuốc
+ */
+function extractMedications(pText) {
+  const blockRegex = /(?:^|\n)#{2,4}\s*(?:[^\n]*?)?(?:Y lệnh thuốc|Danh mục thuốc|Thuốc điều trị|Medications)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s|\n\s*---\s*\n|$)/i;
+  const blockMatch = pText.match(blockRegex);
+  const targetText = blockMatch ? blockMatch[1].trim() : pText;
+
+  const meds = [];
+  const itemRegex = /(?:^|\n)\s*(?:[-*]|\d+[.)])\s*\*\*([^*\n]+)\*\*\s*[:=]\s*([^\n]+)/g;
+  let m;
+  while ((m = itemRegex.exec(targetText)) !== null) {
+    const drugName = m[1].replace(/[*_`]/g, '').trim();
+    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Chế độ|Lộ trình|Giai đoạn|Tần suất|Mục tiêu)/i.test(drugName)) {
+      continue;
+    }
+
+    let rawRest = m[2].trim();
+    let note = '';
+    const noteMatch = rawRest.match(/[—–-]\s*\*([^*]+)\*/);
+    if (noteMatch) {
+      note = noteMatch[1].trim();
+      rawRest = rawRest.replace(noteMatch[0], '').trim();
+    }
+
+    let route = 'PO';
+    if (/\((PO|IV|SC|IM|Uống|Truyền tĩnh mạch|Tiêm bắp|Tiêm dưới da)[^)]*\)/i.test(rawRest)) {
+      const rMatch = rawRest.match(/\((PO|IV|SC|IM|Uống|Truyền tĩnh mạch|Tiêm bắp|Tiêm dưới da)[^)]*\)/i);
+      if (rMatch) {
+        route = rMatch[1].trim();
+        rawRest = rawRest.replace(rMatch[0], '').trim();
+      }
+    } else if (/truyền tĩnh mạch/i.test(rawRest)) {
+      route = 'IV';
+    } else if (/tiêm bắp/i.test(rawRest)) {
+      route = 'IM';
+    } else if (/uống/i.test(rawRest)) {
+      route = 'PO';
+    }
+
+    const dose = rawRest
+      .replace(/[*_`]/g, '')
+      .replace(/^[—–-]\s*/, '')
+      .replace(/[.—–-\s]+$/, '')
+      .trim();
+
+    meds.push({
+      drug: drugName,
+      dose: dose || 'Theo y lệnh',
+      route,
+      note,
+    });
+  }
+
+  if (meds.length > 0) return meds;
+
+  // Fallback Markdown Table format
+  const lines = targetText.split(/\r?\n/);
+  let isTable = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      if (trimmed.includes('---')) {
+        isTable = true;
+        continue;
+      }
+      if (isTable) {
+        const cols = trimmed
+          .split('|')
+          .map((c) => c.trim())
+          .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+        if (cols.length >= 2) {
+          meds.push({
+            drug: cols[0].replace(/[*_`]/g, '').trim(),
+            dose: cols[1].replace(/[*_`]/g, '').trim() || '',
+            route: cols[2]?.replace(/[*_`]/g, '').trim() || 'PO',
+            note: cols[3]?.replace(/[*_`]/g, '').trim() || '',
+          });
+        }
+      }
+    } else {
+      isTable = false;
+    }
+  }
+
+  return meds;
+}
+
+/**
+ * Trích xuất cấu trúc SOAP toàn diện từ nội dung Markdown
  */
 function extractSoapBody(bodyText) {
   const patterns = [
-    {
-      s: /(?:^|\n)#{2,4}\s*(?:1[.)]\s*)?(?:📝\s*)?(?:S\b|Chủ quan|Subjective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)|$)/i,
-      o: /(?:^|\n)#{2,4}\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)|$)/i,
-      a: /(?:^|\n)#{2,4}\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)|$)/i,
-      p: /(?:^|\n)#{2,4}\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)[^\n]*\n([\s\S]*?)$/i,
-    },
     {
       s: /(?:^|\n)##\s*1\.\s*📝?\s*S[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*2\.|$)/i,
       o: /(?:^|\n)##\s*2\.\s*🔬?\s*O[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*3\.|$)/i,
@@ -216,10 +488,10 @@ function extractSoapBody(bodyText) {
       p: /(?:^|\n)##\s*4\.\s*📋?\s*P[^\n]*\n([\s\S]*?)$/i,
     },
     {
-      s: /(?:^|\n)##\s*(?:1[.)]\s*)?(?:S\b|Chủ quan|Subjective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:2[.)]\s*)?(?:O\b|Khách quan|Objective)|$)/i,
-      o: /(?:^|\n)##\s*(?:2[.)]\s*)?(?:O\b|Khách quan|Objective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:3[.)]\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)|$)/i,
-      a: /(?:^|\n)##\s*(?:3[.)]\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:4[.)]\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)|$)/i,
-      p: /(?:^|\n)##\s*(?:4[.)]\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)[^\n]*\n([\s\S]*?)$/i,
+      s: /(?:^|\n)##\s*(?:1[.)]\s*)?(?:📝\s*)?(?:S\b|Chủ quan|Subjective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)|$)/i,
+      o: /(?:^|\n)##\s*(?:2[.)]\s*)?(?:🔬\s*)?(?:O\b|Khách quan|Objective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)|$)/i,
+      a: /(?:^|\n)##\s*(?:3[.)]\s*)?(?:🧠\s*)?(?:A\b|Đánh giá|Biện luận|Assessment)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)|$)/i,
+      p: /(?:^|\n)##\s*(?:4[.)]\s*)?(?:📋\s*)?(?:P\b|Kế hoạch|Xử trí|Plan)[^\n]*\n([\s\S]*?)$/i,
     },
     {
       s: /(?:^|\n)###\s*(?:1[.)]\s*)?(?:S\b|Chủ quan|Subjective)[^\n]*\n([\s\S]*?)(?=(?:^|\n)###\s*(?:2[.)]\s*)?(?:O\b|Khách quan|Objective)|$)/i,
@@ -259,40 +531,226 @@ function extractSoapBody(bodyText) {
   }
 
   // Parse S
-  const chiefComplaint = extractField(sText, 'Lý do nhập viện / Than phiền chính') || extractField(sText, 'Lý do nhập viện') || 'Chưa ghi nhận';
-  const historyOfPresentIllness = extractField(sText, 'Bệnh sử chi tiết') || extractField(sText, 'Bệnh sử') || '';
-  const pastMedicalHistory = extractField(sText, 'Tiền căn') || extractField(sText, 'Tiền sử') || 'Chưa ghi nhận tiền căn đặc biệt';
+  const chiefComplaint =
+    extractFieldFuzzy(sText, [
+      'Lý do nhập viện / Than phiền chính',
+      'Lý do nhập viện',
+      'Than phiền chính',
+      'Lý do khám',
+      'LDVV',
+      'Chief Complaint',
+      'CC',
+    ]) || 'Chưa ghi nhận';
 
-  // Parse Vitals in O
-  const vitals = {
-    bp: extractVitalsField(oText, 'Huyết áp') || extractVitalsField(oText, 'HA'),
-    pulse: extractVitalsField(oText, 'Mạch') || extractVitalsField(oText, 'Nhịp tim'),
-    temp: extractVitalsField(oText, 'Thân nhiệt') || extractVitalsField(oText, 'Nhiệt độ'),
-    resp: extractVitalsField(oText, 'Nhịp thở'),
-    spo2: extractVitalsField(oText, 'SpO₂') || extractVitalsField(oText, 'SpO2'),
-    bmi: extractVitalsField(oText, 'BMI'),
-  };
+  const historyOfPresentIllness =
+    extractBlockFuzzy(sText, [
+      'TCCN & Bệnh sử chi tiết',
+      'Bệnh sử chi tiết',
+      'Diễn tiến bệnh sử',
+      'Bệnh sử',
+      'History of Present Illness',
+      'HPI',
+    ]) ||
+    extractFieldFuzzy(sText, [
+      'TCCN & Bệnh sử chi tiết',
+      'Bệnh sử chi tiết',
+      'Diễn tiến bệnh sử',
+      'Bệnh sử',
+    ]) ||
+    '';
 
-  const physicalExam = extractField(oText, 'Khám thực thể trọng tâm') || extractField(oText, 'Khám thực thể') || extractField(oText, 'Khám lâm sàng') || '';
-  const labsAndImaging = extractField(oText, 'Cận lâm sàng & Hình ảnh học') || extractField(oText, 'Cận lâm sàng') || extractField(oText, 'Xét nghiệm') || '';
+  const pastMedicalHistory =
+    extractBlockFuzzy(sText, ['Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
+    extractFieldFuzzy(sText, ['Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
+    'Chưa ghi nhận tiền căn đặc biệt';
+
+  const familyHistory =
+    extractBlockFuzzy(sText, ['Tiền căn gia đình', 'Tiền sử gia đình', 'Gia đình', 'Family History']) ||
+    extractFieldFuzzy(sText, ['Tiền căn gia đình', 'Tiền sử gia đình', 'Gia đình', 'Family History']) ||
+    undefined;
+
+  const epidemiology =
+    extractBlockFuzzy(sText, ['Bối cảnh dịch tễ', 'Yếu tố dịch tễ', 'Dịch tễ', 'Epidemiology']) ||
+    extractFieldFuzzy(sText, ['Bối cảnh dịch tễ', 'Yếu tố dịch tễ', 'Dịch tễ', 'Epidemiology']) ||
+    undefined;
+
+  // Parse O
+  const vitals = extractVitals(oText);
+
+  const physicalExam =
+    extractBlockFuzzy(oText, [
+      'Triệu chứng thực thể khám được',
+      'Khám thực thể trọng tâm',
+      'Khám thực thể',
+      'Khám lâm sàng',
+      'Physical Exam',
+      'PE',
+    ]) ||
+    extractFieldFuzzy(oText, [
+      'Triệu chứng thực thể khám được',
+      'Khám thực thể trọng tâm',
+      'Khám thực thể',
+      'Khám lâm sàng',
+    ]) ||
+    '';
+
+  const labsAndImaging =
+    extractBlockFuzzy(oText, [
+      'Cận lâm sàng tại thời điểm vào viện',
+      'Cận lâm sàng & Hình ảnh học',
+      'Cận lâm sàng',
+      'Xét nghiệm & Cận lâm sàng',
+      'Xét nghiệm',
+      'Hình ảnh học',
+      'Labs and Imaging',
+      'Labs',
+    ]) ||
+    extractFieldFuzzy(oText, [
+      'Cận lâm sàng tại thời điểm vào viện',
+      'Cận lâm sàng & Hình ảnh học',
+      'Cận lâm sàng',
+      'Xét nghiệm & Cận lâm sàng',
+      'Xét nghiệm',
+      'Hình ảnh học',
+      'Labs',
+    ]) ||
+    '';
+
+  const labGroups = extractLabGroups(oText);
+
+  const imagingFindings =
+    extractBlockFuzzy(oText, [
+      'Chẩn đoán hình ảnh & Đo độ đàn hồi',
+      'Chẩn đoán hình ảnh',
+      'Hình ảnh học',
+      'Siêu âm',
+      'Imaging',
+    ]) || undefined;
 
   // Parse A
-  const primaryDiagnosis = extractField(aText, 'Chẩn đoán xác định') || extractField(aText, 'Chẩn đoán sơ bộ') || '';
-  const icd10 = (extractField(aText, 'Mã ICD-10') || extractField(aText, 'Mã ICD') || '')?.replace(/[`]/g, '');
-  const differentials = extractListItems(aText, 'Chẩn đoán phân biệt cần loại trừ');
-  const riskStratification = extractField(aText, 'Phân tầng nguy cơ & Thang điểm lượng giá') || extractField(aText, 'Phân tầng nguy cơ') || extractField(aText, 'Thang điểm') || '';
+  let problemList = extractProblemListFromTable(aText);
+  if (problemList.length === 0) {
+    const problemSectionText = extractBlockFuzzy(aText, [
+      'Bảng Đặt Vấn Đề',
+      'Đặt Vấn Đề',
+      'Problem List',
+      'Danh sách vấn đề',
+    ]) || '';
+    if (problemSectionText) {
+      problemList = extractProblemListFromTable(problemSectionText);
+    }
+  }
+
+  const primaryDiagnosis =
+    extractFieldFuzzy(aText, ['Chẩn đoán xác định', 'Chẩn đoán sơ bộ', 'Chẩn đoán chính', 'Primary Diagnosis']) || '';
+  const icd10 = (extractFieldFuzzy(aText, ['Mã ICD-10', 'Mã ICD', 'ICD-10', 'ICD10']) || '')?.replace(/[`]/g, '');
+  const differentials = extractListFuzzy(aText, [
+    'Chẩn đoán phân biệt cần loại trừ',
+    'Chẩn đoán phân biệt',
+    'Phân biệt',
+    'Differentials',
+    'DDx',
+  ]);
+  const riskStratification =
+    extractBlockFuzzy(aText, [
+      'Phân tầng nguy cơ & Thang điểm lượng giá',
+      'Phân tầng nguy cơ',
+      'Thang điểm lượng giá',
+      'Thang điểm',
+      'Risk Stratification',
+    ]) ||
+    extractFieldFuzzy(aText, [
+      'Phân tầng nguy cơ & Thang điểm lượng giá',
+      'Phân tầng nguy cơ',
+      'Thang điểm lượng giá',
+      'Thang điểm',
+      'Risk Stratification',
+    ]) ||
+    '';
+
+  const clinicalReasoning =
+    extractBlockFuzzy(aText, [
+      'Biện luận lâm sàng chi tiết',
+      'Biện luận lâm sàng theo từng vấn đề',
+      'Biện luận lâm sàng',
+      'Biện luận chẩn đoán',
+      'Clinical Reasoning',
+    ]) || undefined;
 
   // Parse P
-  const immediateActions = extractField(pText, 'Xử trí cấp cứu & Ban đầu') || extractField(pText, 'Xử trí tức thì') || extractField(pText, 'Xử trí ban đầu') || '';
+  const immediateActions =
+    extractBlockFuzzy(pText, ['Xử trí ban đầu & Tư vấn hỗ trợ', 'Xử trí cấp cứu & Ban đầu', 'Xử trí cấp cứu', 'Xử trí ban đầu', 'Immediate Actions']) ||
+    extractFieldFuzzy(pText, ['Xử trí ban đầu & Tư vấn hỗ trợ', 'Xử trí cấp cứu & Ban đầu', 'Xử trí cấp cứu', 'Xử trí ban đầu', 'Immediate Actions']) ||
+    '';
+
   const medications = extractMedications(pText);
-  const monitoringAndTargets = extractField(pText, 'Chỉ tiêu theo dõi & Mục tiêu lâm sàng') || extractField(pText, 'Kế hoạch theo dõi & Mục tiêu') || extractField(pText, 'Theo dõi & Mục tiêu') || '';
-  const consultationOrReferral = extractField(pText, 'Tiêu chuẩn hội chẩn / Chuyển viện / Can thiệp') || extractField(pText, 'Hội chẩn / Chuyển viện') || '';
+
+  const monitoringAndTargets =
+    extractBlockFuzzy(pText, [
+      'Chỉ tiêu theo dõi & Mục tiêu lâm sàng',
+      'Kế hoạch theo dõi & Mục tiêu',
+      'Theo dõi & Mục tiêu',
+      'Monitoring and Targets',
+    ]) ||
+    extractFieldFuzzy(pText, [
+      'Chỉ tiêu theo dõi & Mục tiêu lâm sàng',
+      'Kế hoạch theo dõi & Mục tiêu',
+      'Theo dõi & Mục tiêu',
+      'Monitoring and Targets',
+    ]) ||
+    '';
+
+  const treatmentRoadmap =
+    extractBlockFuzzy(pText, [
+      'LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT DÀI HẠN',
+      'LỘ TRÌNH ĐIỀU TRỊ',
+      'Lộ trình điều trị',
+      'Treatment Roadmap',
+      'Roadmap',
+    ]) || undefined;
+
+  const lifestyleAndCounseling =
+    extractBlockFuzzy(pText, [
+      'Chế độ sinh hoạt & Tư vấn sống khỏe',
+      'Chế độ sinh hoạt',
+      'Tư vấn sống khỏe',
+      'Lối sống & Dinh dưỡng',
+      'Lifestyle',
+    ]) || undefined;
+
+  const discontinuationCriteria =
+    extractBlockFuzzy(pText, [
+      'Tiêu chuẩn cân nhắc Ngưng thuốc',
+      'Tiêu chuẩn ngưng thuốc',
+      'Ngưng thuốc NAs',
+      'Ngưng điều trị',
+      'Discontinuation Criteria',
+    ]) || undefined;
+
+  const consultationOrReferral =
+    extractBlockFuzzy(pText, [
+      'Tiêu chuẩn hội chẩn / Chuyển viện / Can thiệp',
+      'Hội chẩn / Chuyển viện',
+      'Hội chẩn',
+      'Chuyển viện',
+      'Consultation / Referral',
+    ]) ||
+    extractFieldFuzzy(pText, [
+      'Tiêu chuẩn hội chẩn / Chuyển viện / Can thiệp',
+      'Hội chẩn / Chuyển viện',
+      'Hội chẩn',
+      'Chuyển viện',
+      'Consultation / Referral',
+    ]) ||
+    '';
 
   return {
     s: {
       chiefComplaint,
       historyOfPresentIllness,
       pastMedicalHistory,
+      familyHistory,
+      epidemiology,
       symptomsList: [],
       historyPearls: '',
     },
@@ -300,89 +758,30 @@ function extractSoapBody(bodyText) {
       vitals,
       physicalExam,
       labsAndImaging,
+      labGroups: labGroups.length > 0 ? labGroups : undefined,
+      imagingFindings,
       objectivePitfalls: '',
     },
     a: {
+      problemList: problemList.length > 0 ? problemList : undefined,
       primaryDiagnosis,
       icd10,
       differentials,
       riskStratification,
+      clinicalReasoning,
       diagnosticPearls: '',
     },
     p: {
       immediateActions,
       medications,
       monitoringAndTargets,
+      treatmentRoadmap,
+      lifestyleAndCounseling,
+      discontinuationCriteria,
       consultationOrReferral,
       takeawayLessons: '',
     },
   };
-}
-
-function extractField(sectionText, fieldLabel) {
-  const escaped = fieldLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*${escaped}\\*\\*\\s*:\\s*([^\\n]+)`, 'i');
-  const m = sectionText.match(regex);
-  return m ? m[1].trim() : null;
-}
-
-function extractVitalsField(text, name) {
-  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*?${escaped}\\*\\*?\\s*:\\s*\\*?\\*?\\s*([0-9]+(?:\\.[0-9]+)?(?:\\/[0-9]+)?)`, 'i');
-  const m = text.match(regex);
-  if (m) return m[1].trim();
-  const fallbackRegex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*?${escaped}\\*\\*?\\s*:\\s*([^\\n,]+)`, 'i');
-  const fm = text.match(fallbackRegex);
-  return fm ? fm[1].trim().replace(/[^\d./]/g, '').replace(/\/+$/, '') : undefined;
-}
-
-function extractListItems(sectionText, headerLabel) {
-  const escaped = headerLabel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(?:^|\\n)\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*${escaped}\\*\\*\\s*:?\\s*\\n([\\s\\S]*?)(?=\\n\\s*(?:[-*]|\\d+\\.)\\s*\\*\\*|$)`, 'i');
-  const m = sectionText.match(regex);
-  if (!m) return [];
-  return m[1]
-    .split(/\r?\n/)
-    .map((l) => l.trim().replace(/^(?:[-*]|\d+\.)\s*/, ''))
-    .filter(Boolean);
-}
-
-function extractMedications(pText) {
-  const meds = [];
-  const regex1 = /(?:[-*]|\d+\.)\s*\*\*([^*\n]+)\*\*\s*:\s*([^(\n]+)\(([^)\n]+)\)(?:\s*[—–-]\s*\*([^*\n]+)\*)?/g;
-  let m;
-  while ((m = regex1.exec(pText)) !== null) {
-    const drugName = m[1].trim();
-    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Y lệnh|Quản lý|Dự phòng|Mục tiêu)/i.test(drugName)) continue;
-    meds.push({
-      drug: drugName,
-      dose: m[2].trim(),
-      route: m[3].trim(),
-      note: m[4] ? m[4].trim() : '',
-    });
-  }
-
-  if (meds.length === 0) {
-    // Thử trích xuất định dạng danh sách lồng: 1. **Dexamethasone 10 mg**:\n * *Liều dùng*: ...
-    const blocks = pText.split(/(?:^|\n)\s*(?:\d+\.|\*|-)\s*\*\*/);
-    for (const block of blocks.slice(1)) {
-      const endNameIdx = block.indexOf('**');
-      if (endNameIdx <= 0) continue;
-      const drugName = block.slice(0, endNameIdx).trim();
-      if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Y lệnh|Quản lý|Dự phòng|Mục tiêu)/i.test(drugName)) continue;
-      const doseMatch = block.match(/\*(?:Liều dùng|Tốc độ|Chỉ định)\*:\s*([^\n]+)/i);
-      const routeMatch = block.match(/\*Cách dùng\*:\s*([^\n]+)/i);
-      const purposeMatch = block.match(/\*Mục đích\*:\s*([^\n]+)/i);
-      meds.push({
-        drug: drugName,
-        dose: doseMatch ? doseMatch[1].trim() : '',
-        route: routeMatch ? routeMatch[1].trim() : '',
-        note: purposeMatch ? purposeMatch[1].trim() : '',
-      });
-    }
-  }
-
-  return meds;
 }
 
 /**

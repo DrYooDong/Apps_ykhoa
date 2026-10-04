@@ -369,6 +369,18 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                       {editedSoap.s.historyOfPresentIllness || 'Chưa ghi nhận'}
                     </p>
                   </div>
+                  {editedSoap.s.epidemiology && (
+                    <div className="pt-1 border-t border-blue-100">
+                      <span className="text-[11px] text-blue-800 font-semibold">Dịch tễ học:</span>
+                      <p className="text-xs text-slate-700 max-h-16 overflow-y-auto">{editedSoap.s.epidemiology}</p>
+                    </div>
+                  )}
+                  {editedSoap.s.familyHistory && (
+                    <div className="pt-1 border-t border-blue-100">
+                      <span className="text-[11px] text-blue-800 font-semibold">Tiền căn gia đình:</span>
+                      <p className="text-xs text-slate-700 max-h-16 overflow-y-auto">{editedSoap.s.familyHistory}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* O */}
@@ -401,6 +413,20 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                       {editedSoap.o.labsAndImaging || 'Chưa ghi nhận'}
                     </p>
                   </div>
+                  {editedSoap.o.labGroups && editedSoap.o.labGroups.length > 0 && (
+                    <div className="pt-1 border-t border-slate-200">
+                      <span className="text-[11px] text-slate-700 font-semibold">
+                        Cận lâm sàng có cấu trúc ({editedSoap.o.labGroups.length} nhóm):
+                      </span>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {editedSoap.o.labGroups.map((lg, idx) => (
+                          <span key={idx} className="px-2 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-medium text-slate-700">
+                            {lg.groupName} ({lg.tests.length})
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* A */}
@@ -415,16 +441,41 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                     <span className="text-[11px] text-slate-500 font-medium">Chẩn đoán xác định:</span>
                     <p className="text-xs font-bold text-slate-900">{editedSoap.a.primaryDiagnosis}</p>
                   </div>
-                  <div>
-                    <span className="text-[11px] text-slate-500 font-medium">Chẩn đoán phân biệt:</span>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {editedSoap.a.differentials.map((d, i) => (
-                        <span key={i} className="px-2 py-0.5 rounded-md bg-white border border-amber-200 text-[11px] text-amber-900">
-                          {d}
-                        </span>
-                      ))}
+                  {editedSoap.a.differentials.length > 0 && (
+                    <div>
+                      <span className="text-[11px] text-slate-500 font-medium">Chẩn đoán phân biệt:</span>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {editedSoap.a.differentials.map((d, i) => (
+                          <span key={i} className="px-2 py-0.5 rounded-md bg-white border border-amber-200 text-[11px] text-amber-900">
+                            {d}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  {editedSoap.a.problemList && editedSoap.a.problemList.length > 0 && (
+                    <div className="pt-1 border-t border-amber-200/80">
+                      <span className="text-[11px] text-amber-900 font-semibold">
+                        Danh sách vấn đề 3 tầng ({editedSoap.a.problemList.length} vấn đề):
+                      </span>
+                      <div className="space-y-1 mt-1 max-h-24 overflow-y-auto">
+                        {editedSoap.a.problemList.map((p, idx) => (
+                          <div key={idx} className="text-[11px] bg-white border border-amber-200 rounded p-1.5 flex items-center justify-between">
+                            <span className="font-semibold text-slate-800">{p.problem}</span>
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-medium">{p.tier}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {editedSoap.a.clinicalReasoning && (
+                    <div className="pt-1 border-t border-amber-200/80">
+                      <span className="text-[11px] text-amber-900 font-semibold">Biện luận lâm sàng:</span>
+                      <p className="text-xs text-slate-700 max-h-20 overflow-y-auto whitespace-pre-line mt-0.5">
+                        {editedSoap.a.clinicalReasoning}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* P */}
@@ -437,7 +488,7 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-500 font-medium">Xử trí tức thì:</span>
-                    <p className="text-xs text-slate-700">{editedSoap.p.immediateActions}</p>
+                    <p className="text-xs text-slate-700">{editedSoap.p.immediateActions || 'Theo dõi lâm sàng'}</p>
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-500 font-medium">Thuốc ({editedSoap.p.medications.length} loại):</span>
@@ -450,6 +501,30 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                       ))}
                     </div>
                   </div>
+                  {editedSoap.p.treatmentRoadmap && (
+                    <div className="pt-1 border-t border-emerald-200/80">
+                      <span className="text-[11px] text-emerald-900 font-semibold">Lộ trình điều trị:</span>
+                      <p className="text-xs text-slate-700 max-h-20 overflow-y-auto whitespace-pre-line mt-0.5">
+                        {editedSoap.p.treatmentRoadmap}
+                      </p>
+                    </div>
+                  )}
+                  {editedSoap.p.lifestyleAndCounseling && (
+                    <div className="pt-1 border-t border-emerald-200/80">
+                      <span className="text-[11px] text-emerald-900 font-semibold">Lối sống & Tư vấn:</span>
+                      <p className="text-xs text-slate-700 max-h-16 overflow-y-auto whitespace-pre-line mt-0.5">
+                        {editedSoap.p.lifestyleAndCounseling}
+                      </p>
+                    </div>
+                  )}
+                  {editedSoap.p.discontinuationCriteria && (
+                    <div className="pt-1 border-t border-emerald-200/80">
+                      <span className="text-[11px] text-emerald-900 font-semibold">Tiêu chuẩn ngưng/chuyển tuyến:</span>
+                      <p className="text-xs text-slate-700 max-h-16 overflow-y-auto whitespace-pre-line mt-0.5">
+                        {editedSoap.p.discontinuationCriteria}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

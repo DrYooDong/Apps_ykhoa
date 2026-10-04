@@ -1,18 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   Activity,
   AlertTriangle,
   Award,
   BookOpen,
+  Calendar,
   ChevronRight,
   Compass,
   Edit3,
   FileCheck,
+  FileText,
   Flame,
   HeartPulse,
   Layers,
   Lightbulb,
+  ListFilter,
   Pill,
+  Scale,
   ShieldCheck,
   Sparkles,
   Star,
@@ -22,6 +26,12 @@ import {
 import { SoapClinicalExperience } from '../../types.ts';
 import { EXPERIENCE_LEVEL_LABELS, getExperienceLevelConfig } from '../../data/soapSeedData.ts';
 import { getRelatedVaultArticlesForSoap } from '../../lib/crossReferenceEngine.ts';
+import { SoapProblemsView } from './SoapProblemsView.tsx';
+import { SoapRoadmapView } from './SoapRoadmapView.tsx';
+import { SoapReasoningView } from './SoapReasoningView.tsx';
+import { SoapMarkdownView } from './SoapMarkdownView.tsx';
+
+export type SoapDetailTab = 'matrix' | 'problems' | 'roadmap' | 'reasoning' | 'markdown';
 
 interface SoapDetailViewProps {
   currentCase: SoapClinicalExperience;
@@ -38,6 +48,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   onOpenVaultDrawer,
   className = '',
 }) => {
+  const [activeTab, setActiveTab] = useState<SoapDetailTab>('matrix');
   const levelBadge = getExperienceLevelConfig(currentCase?.experienceLevel);
   const crossRefs = useMemo(
     () => getRelatedVaultArticlesForSoap(currentCase),
@@ -136,51 +147,152 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
         </div>
 
         {/* Quick Jump & Tool Shortcuts */}
-        <div className="flex flex-col items-end gap-2.5 shrink-0">
-          <div className="flex items-center gap-1.5 flex-wrap justify-end">
-            <button
-              type="button"
-              onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title)}
-              className="px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-              title="Tra cứu bài viết liên quan trong Knowledge Vault"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>Tra cứu Vault EBM</span>
-            </button>
+        <div className="flex items-center gap-1.5 flex-wrap justify-end shrink-0">
+          <button
+            type="button"
+            onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title)}
+            className="px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
+            title="Tra cứu bài viết liên quan trong Knowledge Vault"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <span>Tra cứu Vault EBM</span>
+          </button>
 
-            <button
-              type="button"
-              onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
-              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              title="Kho Công cụ & Thang điểm lâm sàng (19)"
-              aria-label="Kho Công cụ"
-            >
-              <span>🧮</span>
-            </button>
+          <button
+            type="button"
+            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CC')}
+            className="w-8 h-8 flex items-center justify-center text-xs font-medium text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+            title="Kho Công cụ & Thang điểm lâm sàng (19)"
+            aria-label="Kho Công cụ"
+          >
+            <span>🧮</span>
+          </button>
 
-            <button
-              type="button"
-              onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
-              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              title="Kho Cẩm nang ICD-10 & Bẫy lỗi BHYT (11)"
-              aria-label="Kho ICD-10"
-            >
-              <span>🏷️</span>
-            </button>
+          <button
+            type="button"
+            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'ICD10')}
+            className="w-8 h-8 flex items-center justify-center text-xs font-medium text-sky-900 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+            title="Kho Cẩm nang ICD-10 & Bẫy lỗi BHYT (11)"
+            aria-label="Kho ICD-10"
+          >
+            <span>🏷️</span>
+          </button>
 
-            <button
-              type="button"
-              onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
-              className="w-8 h-8 flex items-center justify-center text-xs font-medium text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              title="Kho Hệ thống hỗ trợ ra quyết định lâm sàng CDSS (3)"
-              aria-label="Kho CDSS"
-            >
-              <span>⚡</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => onOpenVaultDrawer?.(undefined, undefined, 'CDSS')}
+            className="w-8 h-8 flex items-center justify-center text-xs font-medium text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+            title="Kho Hệ thống hỗ trợ ra quyết định lâm sàng CDSS (3)"
+            aria-label="Kho CDSS"
+          >
+            <span>⚡</span>
+          </button>
+        </div>
+      </div>
 
-          {/* View Mode Switcher */}
-          <div className="flex items-center gap-1 border border-slate-200/90 rounded-xl p-1 bg-slate-100/80 text-xs no-print shadow-2xs">
+      {/* 5-Tab Deep-Dive Navigation Bar */}
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 no-print">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button
+            type="button"
+            onClick={() => setActiveTab('matrix')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'matrix'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Layers className="w-4 h-4" />
+            <span>Tổng Quan 4 Cột (SOAP)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('problems')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'problems'
+                ? 'bg-amber-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <ListFilter className="w-4 h-4" />
+            <span>Đặt Vấn Đề 3 Tầng</span>
+            {currentCase?.a?.problemList && currentCase.a.problemList.length > 0 && (
+              <span
+                className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                  activeTab === 'problems'
+                    ? 'bg-amber-500 text-white'
+                    : 'bg-amber-100 text-amber-900'
+                }`}
+              >
+                {currentCase.a.problemList.length}
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('roadmap')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'roadmap'
+                ? 'bg-teal-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>Lộ Trình &amp; Giám Sát</span>
+            {currentCase?.p?.treatmentRoadmap && (
+              <span
+                className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                  activeTab === 'roadmap'
+                    ? 'bg-teal-500 text-white'
+                    : 'bg-teal-100 text-teal-900'
+                }`}
+              >
+                Lộ trình
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('reasoning')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'reasoning'
+                ? 'bg-purple-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Scale className="w-4 h-4" />
+            <span>Biện Luận Lâm Sàng (EBM)</span>
+            <span
+              className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                activeTab === 'reasoning'
+                  ? 'bg-purple-500 text-white'
+                  : 'bg-purple-100 text-purple-900'
+              }`}
+            >
+              BYT
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('markdown')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'markdown'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            <span>Toàn Văn Markdown (.md)</span>
+          </button>
+        </div>
+
+        {/* When activeTab === 'matrix', show the column filter sub-switcher */}
+        {activeTab === 'matrix' && (
+          <div className="flex items-center gap-1 border border-slate-200 rounded-xl p-1 bg-slate-50 text-xs shrink-0 self-end md:self-auto">
             <button
               type="button"
               onClick={() => setViewMode('board')}
@@ -190,12 +302,12 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Bảng 4 Cột (SOAP)
+              Tất cả 4 Cột
             </button>
             <button
               type="button"
               onClick={() => setViewMode('focus-s')}
-              className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                 viewMode === 'focus-s'
                   ? 'bg-white text-sky-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -206,7 +318,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('focus-o')}
-              className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                 viewMode === 'focus-o'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -217,7 +329,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('focus-a')}
-              className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                 viewMode === 'focus-a'
                   ? 'bg-white text-amber-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -228,7 +340,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('focus-p')}
-              className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
                 viewMode === 'focus-p'
                   ? 'bg-white text-teal-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -237,15 +349,17 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
               Cột P
             </button>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* 4-COLUMN SOAP MATRIX BOARD */}
-      <div
-        className={`grid gap-4 ${
-          viewMode === 'board' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4' : 'grid-cols-1'
-        }`}
-      >
+      {/* TAB 1: 4-COLUMN SOAP MATRIX BOARD */}
+      {activeTab === 'matrix' && (
+        <>
+          <div
+            className={`grid gap-4 ${
+              viewMode === 'board' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4' : 'grid-cols-1'
+            }`}
+          >
         {/* ========================================== */}
         {/* CỘT S: SUBJECTIVE                          */}
         {/* ========================================== */}
@@ -303,6 +417,32 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                   {currentCase.s.pastMedicalHistory}
                 </p>
               </div>
+
+              {/* 3b. Tiền căn gia đình */}
+              {currentCase.s.familyHistory && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+                    Tiền căn gia đình:
+                  </span>
+                  <p className="text-slate-700 leading-relaxed bg-sky-50/60 p-3 rounded-xl border border-sky-200/70 text-xs">
+                    {currentCase.s.familyHistory}
+                  </p>
+                </div>
+              )}
+
+              {/* 3c. Bối cảnh dịch tễ */}
+              {currentCase.s.epidemiology && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+                    Bối cảnh dịch tễ học:
+                  </span>
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-xs">
+                    {currentCase.s.epidemiology}
+                  </p>
+                </div>
+              )}
 
               {/* 4. Triệu chứng cơ năng */}
               <div>
@@ -414,10 +554,39 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                   <FileCheck className="w-3.5 h-3.5 text-slate-700" />
                   3. Cận lâm sàng &amp; Xét nghiệm định lượng:
                 </span>
-                <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 font-mono-custom text-[11px]">
-                  {currentCase.o.labsAndImaging}
-                </p>
+                {currentCase.o.labGroups && currentCase.o.labGroups.length > 0 ? (
+                  <div className="space-y-2">
+                    {currentCase.o.labGroups.map((g, idx) => (
+                      <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 text-[11px]">
+                        <div className="font-bold text-slate-800 text-[11px] mb-1 flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                          <span>{g.groupName}</span>
+                        </div>
+                        <p className="text-slate-700 whitespace-pre-wrap leading-relaxed font-mono-custom text-[10.5px]">
+                          {g.content}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 font-mono-custom text-[11px] whitespace-pre-wrap">
+                    {currentCase.o.labsAndImaging}
+                  </p>
+                )}
               </div>
+
+              {/* Chẩn đoán hình ảnh bổ sung */}
+              {currentCase.o.imagingFindings && !currentCase.o.labGroups?.some(g => g.groupName.includes('hình ảnh')) && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <FileCheck className="w-3.5 h-3.5 text-slate-700" />
+                    Chẩn đoán hình ảnh &amp; Thăm dò chức năng:
+                  </span>
+                  <div className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 font-mono-custom text-[11px] whitespace-pre-wrap">
+                    {currentCase.o.imagingFindings}
+                  </div>
+                </div>
+              )}
 
               {/* 4. Bẫy cận lâm sàng */}
               <div className="mt-auto pt-2">
@@ -598,6 +767,19 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                 </p>
               </div>
 
+              {/* Biện luận lâm sàng chi tiết */}
+              {currentCase.a.clinicalReasoning && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Biện luận lâm sàng chi tiết (Clinical Reasoning):
+                  </span>
+                  <div className="text-slate-700 leading-relaxed bg-amber-50/50 p-3 rounded-xl border border-amber-200/80 text-xs whitespace-pre-wrap max-h-80 overflow-y-auto">
+                    {currentCase.a.clinicalReasoning}
+                  </div>
+                </div>
+              )}
+
               {/* 4. Đúc kết biện luận chẩn đoán */}
               <div className="mt-auto pt-2">
                 <div className="p-3.5 bg-amber-50/80 border-l-4 border-l-amber-500 border border-amber-200/80 rounded-r-xl text-amber-950 shadow-2xs">
@@ -687,6 +869,45 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
                   {currentCase.p.monitoringAndTargets}
                 </p>
               </div>
+
+              {/* Lộ trình điều trị & Giám sát dài hạn */}
+              {currentCase.p.treatmentRoadmap && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                    🗓️ Lộ trình điều trị &amp; Giám sát (Treatment Roadmap):
+                  </span>
+                  <div className="text-slate-800 leading-relaxed bg-teal-50/50 p-3 rounded-xl border border-teal-200/80 text-[11px] whitespace-pre-wrap font-mono-custom max-h-72 overflow-y-auto">
+                    {currentCase.p.treatmentRoadmap}
+                  </div>
+                </div>
+              )}
+
+              {/* Chế độ sinh hoạt & Tư vấn sống khỏe */}
+              {currentCase.p.lifestyleAndCounseling && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                    Chế độ sinh hoạt &amp; Tư vấn sống khỏe:
+                  </span>
+                  <div className="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-xs whitespace-pre-wrap">
+                    {currentCase.p.lifestyleAndCounseling}
+                  </div>
+                </div>
+              )}
+
+              {/* Tiêu chuẩn ngưng thuốc */}
+              {currentCase.p.discontinuationCriteria && (
+                <div>
+                  <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                    Tiêu chuẩn cân nhắc ngưng thuốc:
+                  </span>
+                  <div className="text-slate-700 leading-relaxed bg-amber-50/60 p-3 rounded-xl border border-amber-200/80 text-xs whitespace-pre-wrap">
+                    {currentCase.p.discontinuationCriteria}
+                  </div>
+                </div>
+              )}
 
               {/* 4. Bài học kinh nghiệm */}
               <div className="mt-auto pt-2">
@@ -880,6 +1101,38 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           </div>
         </div>
       )}
-    </div>
-  );
+    </>
+  )}
+
+  {/* TAB 2: ĐẶT VẤN ĐỀ 3 TẦNG */}
+  {activeTab === 'problems' && (
+    <SoapProblemsView
+      currentCase={currentCase}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+    />
+  )}
+
+  {/* TAB 3: LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT */}
+  {activeTab === 'roadmap' && (
+    <SoapRoadmapView
+      currentCase={currentCase}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+    />
+  )}
+
+  {/* TAB 4: BIỆN LUẬN LÂM SÀNG & EBM */}
+  {activeTab === 'reasoning' && (
+    <SoapReasoningView
+      currentCase={currentCase}
+      onOpenVaultDrawer={onOpenVaultDrawer}
+    />
+  )}
+
+  {/* TAB 5: TOÀN VĂN MARKDOWN (.MD) */}
+  {activeTab === 'markdown' && (
+    <SoapMarkdownView currentCase={currentCase} />
+  )}
+</div>
+);
 };
+
