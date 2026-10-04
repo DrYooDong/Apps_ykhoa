@@ -35,6 +35,28 @@
 
 ---
 
+- [x] **[CD-TASK-016] Nâng cấp Toán suy luận Lâm sàng từ Bước 2 sang Bước 3 (Syndrome Explainability Synergy Engine)**:
+  - Nâng cấp hàm `analyzeClinicalCase` nhận toàn bộ mảng `problems: ProblemStatementEntry[]` từ Bước 2.
+  - Tích hợp động cơ đối soát `SYNDROME_MAP` và `benhLienQuan`, tính hệ số hiệp đồng (Synergy Boost) khi bệnh lý giải thích được nhiều hội chứng của bệnh nhân.
+  - Tự động sinh câu biện luận lâm sàng khoa học: giải thích rõ số lượng và tên các vấn đề được giải quyết.
+
+- [x] **[CD-TASK-015] Liên kết & Mở rộng Kho Hội chứng `data/syndromes/` (12 Hội chứng Cốt lõi & Cụm Tương đương Triệu chứng)**:
+  - Bổ sung 5 hội chứng kinh điển: `hc_sxhd_classic` (SXHD cổ điển), `hc_soc_sxhd` (Sốc Dengue), `hc_xuat_huyet_giam_tieu_cau` (Xuất huyết giảm tiểu cầu), `hc_suy_ho_hap` (Suy hô hấp cấp), `hc_kich_thich_mang_nao` (Kích thích màng não).
+  - Cập nhật `hc_canh_bao_dengue.json` và `hc_nhiem_trung.json` với danh mục triệu chứng đầy đủ, bao quát 100% các biến thể ID lâm sàng.
+  - Thiết lập ma trận cụm tương đương triệu chứng `SYMPTOM_EQUIVALENCE_CLUSTERS` trong `data/syndromes/index.ts`.
+  - Tích hợp `symptomNameMap` để hiển thị 100% tên tiếng Việt có dấu chuẩn y khoa cho các triệu chứng thành phần của hội chứng.
+
+- [x] **[CD-TASK-014] Khử trùng lặp Nội dung Sốt / DHST & Phân định Ranh giới TCCN vs TCTT tại Bước 2**:
+  - Tự động phát hiện triệu chứng sốt chi tiết (`tc_sot_cao_dot_ngot_duoi_7_ngay`) để loại bỏ `sot` chung chung tại TCCN.
+  - Loại bỏ triệu chứng nhiệt độ/sinh hiệu khỏi danh sách TCTT khi khung DHST đã hiển thị bất thường (T°C, M, HA, NT, SpO₂).
+  - Khử trùng lặp triệt để: không để một triệu chứng đồng thời xuất hiện ở cả TCCN và TCTT.
+  - Chuẩn hóa ca mẫu `case_dengue_warning` trong `sample-clinical-cases.json` và `generate-data.mjs`.
+
+- [x] **[CD-TASK-013] Rà soát & Chuẩn hóa Triệt để 30 Triệu chứng Không Dấu trong Kho `clinical-rules-symptoms.json`**:
+  - Chuẩn hóa 30 triệu chứng không dấu (`buon_non_non`, `dau_co`, `nhuc_hai_ho_mat`, `dau_dau`, `tc_xuat_huyet_da_niem_lacet_duong_tinh`, `gan_to_dau`...) sang danh pháp tiếng Việt y khoa chuẩn mực ĐHYD TP.HCM.
+  - Cập nhật hàm `addOrUpdateSymptom` và `STANDARD_NAME_MAP` trong `scripts/generate-data.mjs` để phòng ngừa tái phát sinh triệu chứng không dấu.
+  - Bổ sung triệu chứng `dau_bung_vung_gan` vào `clinical-rules-symptoms.json` đạt Zero-Orphan Symptoms.
+
 - [x] **[CD-TASK-012] Phát triển & Nghiệm thu Medical Abbreviation & Content Trimming Engine v1.0 (Viết tắt & Lọc nội dung thừa)**:
   - Biên soạn từ điển viết tắt chuẩn y tế `src/content/docspace/src/data/medical-abbreviation-map.json` (5 nhóm: diseases, labs, clinicalTerms, drugs, specialties).
   - Xây dựng Runtime Abbreviation Engine `src/content/docspace/src/lib/abbreviation.ts` với O(1) Fast Lookup và hỗ trợ WCAG AA Accessibility (`getAbbrExpansion`).

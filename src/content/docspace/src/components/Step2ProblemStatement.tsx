@@ -229,10 +229,28 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
     // 2. TCCN bất thường (Chỉ lấy các triệu chứng cơ năng bất thường dạng gạch đầu dòng)
     const cnList: string[] = [];
-    const cnSymptoms = selectedSymptoms.filter((s) => s.loai.includes('cn'));
+    const detailedFeverIds = new Set([
+      'tc_sot_cao_dot_ngot_duoi_7_ngay',
+      'sot_cao_ret_run',
+      'sot_nhe_giai_doan_khoi_phat',
+      'sot_nhe_ve_chieu',
+      'sot_cao',
+    ]);
+    const hasDetailedFever = selectedSymptoms.some((s) => detailedFeverIds.has(s.id));
+
+    // Lọc TCCN: nếu đã có sốt chi tiết thì bỏ 'sot' chung chung; loại bỏ các triệu chứng thuần thể chất
+    const cnSymptoms = selectedSymptoms.filter((s) => {
+      if (!s.loai.includes('cn')) return false;
+      if (hasDetailedFever && s.id === 'sot') return false; // Khử trùng sốt
+      return true;
+    });
+
     if (cnSymptoms.length > 0) {
       cnSymptoms.forEach((s) => {
-        cnList.push(toAbbreviatedMedicalText(s.ten));
+        const text = toAbbreviatedMedicalText(s.ten);
+        if (!cnList.includes(text)) {
+          cnList.push(text);
+        }
       });
     } else if (form.text.cn.trim()) {
       const extracted = cleanNarrativeSentences(form.text.cn);
@@ -244,10 +262,12 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     // 3. TCTT & DHST bất thường
     const vitalAnomalies: string[] = [];
     const tempNum = parseFloat(vitals.vNhiet);
-    if (!isNaN(tempNum) && (tempNum >= 38.0 || tempNum <= 36.0)) {
+    const hasTempAnomaly = !isNaN(tempNum) && (tempNum >= 38.0 || tempNum <= 36.0);
+    if (hasTempAnomaly) {
       vitalAnomalies.push(`T°C: ${vitals.vNhiet}°C${tempNum >= 39 ? ' (Sốt cao)' : ''}`);
     }
     const pulseNum = parseFloat(vitals.vMach);
+    const hasPulseAnomaly = !isNaN(pulseNum) && (pulseNum > 100 || pulseNum < 60);
     if (!isNaN(pulseNum) && pulseNum > 100) {
       vitalAnomalies.push(`M nhanh: ${vitals.vMach} l/p`);
     } else if (!isNaN(pulseNum) && pulseNum < 60 && pulseNum > 0) {
@@ -255,11 +275,13 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     }
     const sbp = parseFloat(vitals.vHATT);
     const dbp = parseFloat(vitals.vHATTr);
+    let hasBpAnomaly = false;
     if (!isNaN(sbp) && !isNaN(dbp)) {
       const pulsePressure = sbp - dbp;
       const isNarrow = pulsePressure <= 20 && pulsePressure > 0;
       const isHypotension = sbp < 90;
       const isHypertension = sbp >= 140 || dbp >= 90;
+      hasBpAnomaly = isNarrow || isHypotension || isHypertension;
       if (isHypotension && isNarrow) {
         vitalAnomalies.push(`HA tụt kẹp: ${vitals.vHATT}/${vitals.vHATTr} mmHg (Hiệu áp ${pulsePressure} mmHg)`);
       } else if (isNarrow) {
@@ -271,21 +293,56 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
       }
     }
     const respNum = parseFloat(vitals.vTho);
+    const hasRespAnomaly = !isNaN(respNum) && (respNum > 20 || respNum < 12);
     if (!isNaN(respNum) && respNum > 20) {
       vitalAnomalies.push(`NT nhanh: ${vitals.vTho} l/p`);
     } else if (!isNaN(respNum) && respNum < 12 && respNum > 0) {
       vitalAnomalies.push(`NT chậm: ${vitals.vTho} l/p`);
     }
     const spo2Num = parseFloat(vitals.vSpo2);
-    if (!isNaN(spo2Num) && spo2Num < 95 && spo2Num > 0) {
+    const hasSpo2Anomaly = !isNaN(spo2Num) && spo2Num < 95 && spo2Num > 0;
+    if (hasSpo2Anomaly) {
       vitalAnomalies.push(`SpO₂ giảm: ${vitals.vSpo2}% (khí phòng)`);
     }
 
+    // Bộ lọc TCTT: Loại bỏ triệu chứng trùng với DHST đã hiển thị ở khung đỏ hoặc đã có ở TCCN
     const examList: string[] = [];
-    const ttSymptoms = selectedSymptoms.filter((s) => s.loai.includes('tt'));
+    const ttSymptoms = selectedSymptoms.filter((s) => {
+      if (!s.loai.includes('tt')) return false;
+      // Khử trùng nhiệt độ: Nếu DHST đã có sốt/hạ nhiệt hoặc TCCN đã có sốt -> không in lại ở TCTT
+      if ((hasTempAnomaly || cnList.some((c) => c.toLowerCase().includes('sốt'))) && (s.id === 'sot' || s.id === 'ha_than_nhiet' || s.id === 'sot_cao')) {
+        return false;
+      }
+      // Khử trùng mạch
+      if (hasPulseAnomaly && (s.id === 'mach_nhanh' || s.id === 'mach_rat_nhanh' || s.id === 'mach_cham')) {
+        return false;
+      }
+      // Khử trùng huyết áp
+      if (hasBpAnomaly && (s.id === 'tang_huyet_ap' || s.id === 'ha_huyet_ap' || s.id === 'tut_huyet_ap' || s.id === 'huyet_ap_kep' || s.id === 'con_tang_huyet_ap_cap_cuu')) {
+        return false;
+      }
+      // Khử trùng nhịp thở
+      if (hasRespAnomaly && (s.id === 'tho_nhanh' || s.id === 'tho_nhanh_nang' || s.id === 'tho_cham')) {
+        return false;
+      }
+      // Khử trùng SpO2
+      if (hasSpo2Anomaly && (s.id === 'giam_spo2' || s.id === 'suy_ho_hap_spo2_thap')) {
+        return false;
+      }
+      // Không lặp lại triệu chứng nếu đã xuất hiện trong TCCN (tránh trùng do gán cả cn lẫn tt)
+      const text = toAbbreviatedMedicalText(s.ten);
+      if (cnList.includes(text)) {
+        return false;
+      }
+      return true;
+    });
+
     if (ttSymptoms.length > 0) {
       ttSymptoms.forEach((s) => {
-        examList.push(toAbbreviatedMedicalText(s.ten));
+        const text = toAbbreviatedMedicalText(s.ten);
+        if (!examList.includes(text)) {
+          examList.push(text);
+        }
       });
     } else if (form.text.tt.trim()) {
       const extracted = cleanNarrativeSentences(form.text.tt);
@@ -549,10 +606,21 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     });
   };
 
+  // Bản đồ tên tiếng Việt của triệu chứng từ KB
+  const symptomNameMap = useMemo(() => {
+    const map: Record<string, string> = {};
+    if (kb?.trieuChung) {
+      kb.trieuChung.forEach((tc) => {
+        map[tc.id] = tc.ten;
+      });
+    }
+    return map;
+  }, [kb?.trieuChung]);
+
   // Danh sách hội chứng đối sánh real-time từ Kho Hội Chứng DocSpace
   const detectedSyndromes = useMemo(() => {
-    return evaluateSyndromeMatches(Array.from(selectedIds));
-  }, [selectedIds]);
+    return evaluateSyndromeMatches(Array.from(selectedIds), symptomNameMap);
+  }, [selectedIds, symptomNameMap]);
 
   const handleAddSyndromeToProblems = (syndromeId: string) => {
     const synDef = getSyndromeById(syndromeId);
@@ -653,7 +721,7 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
       // Tầng 2: Cấp tính
       // 1. Tự động đối sánh và nạp các Hội chứng lâm sàng ĐẠT TIÊU CHUẨN từ Kho Hội chứng DocSpace
-      const initialSyndromeMatches = evaluateSyndromeMatches(Array.from(selectedIds));
+      const initialSyndromeMatches = evaluateSyndromeMatches(Array.from(selectedIds), symptomNameMap);
       initialSyndromeMatches.forEach((m) => {
         if (m.isMet) {
           const synDef = getSyndromeById(m.syndromeId);

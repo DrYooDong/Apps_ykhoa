@@ -19,6 +19,7 @@ import {
   findSyndromeByCriterionId,
   SYNDROME_REGISTRY,
 } from './syndromeRegistry.ts';
+import { SYNDROME_MAP, getSyndromesByDisease } from '../../data/syndromes/index.ts';
 export { normalizeText };
 
 export function evaluateThreshold(
@@ -182,7 +183,8 @@ export function analyzeClinicalCase(
   derived: Set<string>,
   negated: Set<string>,
   epiContext?: EpidemiologyContext,
-  primaryProblem?: ProblemStatementEntry
+  primaryProblem?: ProblemStatementEntry,
+  problems?: ProblemStatementEntry[]
 ): AnalysisResult[] {
   const vocabMap: Record<string, TrieuChung> = Object.fromEntries(
     kb.trieuChung.map((tc) => [tc.id, tc])
@@ -604,16 +606,69 @@ export function analyzeClinicalCase(
     }
 
     // ==========================================
-    // ƯU TIÊN VẤN ĐỀ CHÍNH (PRIMARY PROBLEM)
+    // LIÊN KẾT HỘI CHỨNG & VẤN ĐỀ LÂM SÀNG BƯỚC 2 (SYNDROME SYNERGY ENGINE)
     // ==========================================
-    if (primaryProblem && primaryProblem.label) {
-      const normProb = normalizeText(primaryProblem.label);
-      const normBenh = normalizeText(b.ten);
-      const normTomTat = normalizeText(b.tomTat);
-      if (normTomTat.includes(normProb) || normBenh.includes(normProb)) {
-        factor *= 1.1;
-        notes.push(`Phù hợp trực tiếp với Vấn đề chính: "${primaryProblem.label}"`);
+    const activeProblems = problems && problems.length > 0 ? problems : primaryProblem ? [primaryProblem] : [];
+    const explainedProblems: string[] = [];
+    let explainsPrimaryProblem = false;
+
+    for (const prob of activeProblems) {
+      let isExplained = false;
+
+      // 1. Kiểm tra liên kết từ Kho Hội chứng DocSpace
+      if (prob.id.startsWith('prob_syn_')) {
+        const synId = prob.id.replace('prob_syn_', '');
+        const synDef = SYNDROME_MAP.get(synId);
+        if (synDef && synDef.benhLienQuan) {
+          const hasDirectLink = synDef.benhLienQuan.some((link) => {
+            const slug = link.benhSlug.toLowerCase();
+            const bId = b.id.toLowerCase();
+            return bId === slug || bId.includes(slug) || slug.includes(bId);
+          });
+          if (hasDirectLink) {
+            isExplained = true;
+          }
+        }
       }
+
+      // 2. Kiểm tra nếu triệu chứng của hội chứng nằm trong tiêu chí bệnh b
+      if (!isExplained && prob.evidence && prob.evidence.length > 0) {
+        const probEvNorm = prob.evidence.map((e) => normalizeText(e));
+        const bMatchedNorm = matched.map((m) => normalizeText(m.tc.ten));
+        const overlapCount = probEvNorm.filter((pe) =>
+          bMatchedNorm.some((bm) => bm.includes(pe) || pe.includes(bm))
+        ).length;
+        if (overlapCount >= Math.min(2, Math.max(1, prob.evidence.length))) {
+          isExplained = true;
+        }
+      }
+
+      // 3. So khớp theo tên / mô tả bệnh lý
+      if (!isExplained && prob.label) {
+        const normProb = normalizeText(prob.label);
+        const normBenh = normalizeText(b.ten);
+        const normTomTat = normalizeText(b.tomTat);
+        if (normTomTat.includes(normProb) || normBenh.includes(normProb)) {
+          isExplained = true;
+        }
+      }
+
+      if (isExplained) {
+        explainedProblems.push(prob.label);
+        if (prob.isPrimary) {
+          explainsPrimaryProblem = true;
+        }
+      }
+    }
+
+    if (explainedProblems.length > 0) {
+      // Hệ số hiệp đồng hội chứng: bệnh giải thích được càng nhiều vấn đề thì trọng số càng cao
+      const synergyRatio = explainedProblems.length / Math.max(1, activeProblems.length);
+      const synergyBoost = 1.0 + Math.min(0.28, synergyRatio * 0.18 + (explainsPrimaryProblem ? 0.08 : 0.03));
+      factor *= synergyBoost;
+      notes.push(
+        `Biện luận Bước 2: Bệnh cảnh giải thích được ${explainedProblems.length}/${activeProblems.length} vấn đề lâm sàng (${explainedProblems.slice(0, 2).join('; ')}${explainedProblems.length > 2 ? '...' : ''})`
+      );
     }
 
     // ==========================================

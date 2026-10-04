@@ -1,6 +1,6 @@
 ---
 title: "Viêm gan vi rút C cấp tính"
-caseId: "soap-viem_gan_vi_rut_c_cap-01"
+caseId: "soap-viem_gan_vi_rut_c-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

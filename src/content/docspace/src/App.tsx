@@ -257,7 +257,7 @@ export function MainApp() {
   const derivedLabsList = derivedInfo.labsList;
   const primaryProblem = useMemo(() => problems.find((p) => p.isPrimary), [problems]);
 
-  // Real-time Deduction Engine kết hợp Tam Giác Dịch Tễ & Vấn Đề Chính
+  // Real-time Deduction Engine kết hợp Tam Giác Dịch Tễ & Vấn Đề Chính / Hội Chứng Bước 2
   const results = useMemo(() => {
     return analyzeClinicalCase(
       kb,
@@ -266,9 +266,10 @@ export function MainApp() {
       derived,
       negated,
       epiContext,
-      primaryProblem
+      primaryProblem,
+      problems
     );
-  }, [kb, form, selected, derived, negated, epiContext, primaryProblem]);
+  }, [kb, form, selected, derived, negated, epiContext, primaryProblem, problems]);
 
   // Summary Text Generator
   const summaryText = useMemo(() => {

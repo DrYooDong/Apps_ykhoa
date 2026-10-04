@@ -83,18 +83,19 @@ export function parseYamlFrontmatter(rawText: string): { frontmatter: Record<str
  */
 function extractFieldFuzzy(sectionText: string, labelPatterns: string[]): string | null {
   for (const label of labelPatterns) {
-    // 1. - **Label**: Value
-    const r1 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*\\*\\*${label}\\*\\*\\s*[:=]\\s*([^\\n]+)`, 'i');
+    const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // 1. - **...escaped...**: Value (cho phép trong **...** có thêm chữ phụ như LDVV (Lý do vào viện...))
+    const r1 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*\\*\\*[^\\n*]*?${escaped}[^\\n*]*?\\*\\*\\s*[:=]?\\s*([^\\n]+)`, 'i');
     const m1 = sectionText.match(r1);
     if (m1 && m1[1].trim()) return m1[1].trim();
 
-    // 2. **Label:** Value
-    const r2 = new RegExp(`(?:^|\\n)\\s*\\*\\*${label}\\s*[:=]\\*\\*\\s*([^\\n]+)`, 'i');
+    // 2. **...escaped... :=** Value
+    const r2 = new RegExp(`(?:^|\\n)\\s*\\*\\*[^\\n*]*?${escaped}[^\\n*]*?\\s*[:=]\\*\\*\\s*([^\\n]+)`, 'i');
     const m2 = sectionText.match(r2);
     if (m2 && m2[1].trim()) return m2[1].trim();
 
     // 3. - Label: Value
-    const r3 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*${label}\\s*[:=]\\s*([^\\n]+)`, 'i');
+    const r3 = new RegExp(`(?:^|\\n)\\s*[-*]?\\s*(?:${escaped})[^:\\n]*\\s*[:=]\\s*([^\\n]+)`, 'i');
     const m3 = sectionText.match(r3);
     if (m3 && m3[1].trim()) return m3[1].trim();
   }
@@ -147,30 +148,25 @@ function extractListFuzzy(sectionText: string, labelPatterns: string[]): string[
  */
 function extractVitals(text: string): Record<string, string> {
   const vitals: Record<string, string> = {};
+  const clean = text.replace(/[*_`]/g, '');
 
-  // Huyết áp
-  const bpMatch = text.match(/(?:huyết áp|ha|bp|blood pressure)\s*[:=]?\s*(\*?\*?\d{2,3}\s*\/\s*\d{2,3}(?:\s*mmHg)?\*?\*?)/i);
-  if (bpMatch) vitals.bp = bpMatch[1].replace(/\*/g, '').trim();
+  const bpMatch = clean.match(/(?:huyết áp|ha|bp|blood pressure)\s*[:=]?\s*(\d{2,3}\s*\/\s*\d{2,3}(?:\s*mmHg)?)/i);
+  if (bpMatch) vitals.bp = bpMatch[1].trim();
 
-  // Mạch
-  const pulseMatch = text.match(/(?:mạch|pulse|nhịp tim|hr|heart rate)\s*[:=]?\s*(\*?\*?\d{2,3}(?:\s*(?:l\/p|bpm|lần\/phút))?\*?\*?)/i);
-  if (pulseMatch) vitals.pulse = pulseMatch[1].replace(/\*/g, '').trim();
+  const pulseMatch = clean.match(/(?:mạch|pulse|nhịp tim|hr|heart rate)\s*[:=]?\s*(\d{2,3}(?:\s*(?:l\/p|bpm|lần\/phút))?)/i);
+  if (pulseMatch) vitals.pulse = pulseMatch[1].trim();
 
-  // Thân nhiệt
-  const tempMatch = text.match(/(?:nhiệt độ|thân nhiệt|temp|temperature)\s*[:=]?\s*(\*?\*?\d{2}(?:\.\d)?(?:\s*°?[Cc])?\*?\*?)/i);
-  if (tempMatch) vitals.temp = tempMatch[1].replace(/\*/g, '').trim();
+  const tempMatch = clean.match(/(?:nhiệt độ|thân nhiệt|temp|temperature)\s*[:=]?\s*(\d{2}(?:\.\d)?(?:\s*°?[Cc])?)/i);
+  if (tempMatch) vitals.temp = tempMatch[1].trim();
 
-  // Nhịp thở
-  const respMatch = text.match(/(?:nhịp thở|resp|respiratory rate|rr)\s*[:=]?\s*(\*?\*?\d{1,2}(?:\s*(?:l\/p|lần\/phút|bpm))?\*?\*?)/i);
-  if (respMatch) vitals.resp = respMatch[1].replace(/\*/g, '').trim();
+  const respMatch = clean.match(/(?:nhịp thở|resp|respiratory rate|rr)\s*[:=]?\s*(\d{1,2}(?:\s*(?:l\/p|lần\/phút|bpm))?)/i);
+  if (respMatch) vitals.resp = respMatch[1].trim();
 
-  // SpO2
-  const spo2Match = text.match(/(?:spo2|sp02)\s*[:=]?\s*(\*?\*?\d{2,3}(?:\s*%)?\*?\*?)/i);
-  if (spo2Match) vitals.spo2 = spo2Match[1].replace(/\*/g, '').trim();
+  const spo2Match = clean.match(/(?:spo2|sp02)\s*[:=]?\s*(\d{2,3}(?:\s*%)?)/i);
+  if (spo2Match) vitals.spo2 = spo2Match[1].trim();
 
-  // BMI
-  const bmiMatch = text.match(/(?:bmi)\s*[:=]?\s*(\*?\*?\d{1,2}(?:\.\d)?(?:\s*kg\/m²)?\*?\*?)/i);
-  if (bmiMatch) vitals.bmi = bmiMatch[1].replace(/\*/g, '').trim();
+  const bmiMatch = clean.match(/(?:bmi)\s*[:=]?\s*(\d{1,2}(?:\.\d)?(?:\s*kg\/m²)?)/i);
+  if (bmiMatch) vitals.bmi = bmiMatch[1].trim();
 
   return vitals;
 }
@@ -458,7 +454,11 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
   const chiefComplaint =
     extractFieldFuzzy(sections.s, [
       'Lý do nhập viện / Than phiền chính',
+      'Lý do vào viện / Than phiền chính',
+      'L lý do vào viện / Than phiền chính',
+      'L lý do vào viện',
       'Lý do nhập viện',
+      'Lý do vào viện',
       'Than phiền chính',
       'Lý do khám',
       'LDVV',
@@ -485,12 +485,28 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
     ]) ||
     '';
 
+  // Trích xuất các phân mục con trong Tiền căn & Dịch tễ (nếu có dấu *...*)
+  let subPMH: string | undefined;
+  let subFamily: string | undefined;
+  let subEpi: string | undefined;
+
+  const mSubPMH = sections.s.match(/(?:^|\n)\s*[-*]\s*\*+Tiền căn bản thân\*+[:=]?\s*([^\n]+(?:(?:\n(?!\s*[-*]\s*\*+)[^\n]+)*))/i);
+  if (mSubPMH) subPMH = mSubPMH[1].trim();
+
+  const mSubFamily = sections.s.match(/(?:^|\n)\s*[-*]\s*\*+Tiền căn gia đình\*+[:=]?\s*([^\n]+(?:(?:\n(?!\s*[-*]\s*\*+)[^\n]+)*))/i);
+  if (mSubFamily) subFamily = mSubFamily[1].trim();
+
+  const mSubEpi = sections.s.match(/(?:^|\n)\s*[-*]\s*\*+Bối cảnh dịch tễ(?: học)?\*+[:=]?\s*([^\n]+(?:(?:\n(?!\s*[-*]\s*\*+)[^\n]+)*))/i);
+  if (mSubEpi) subEpi = mSubEpi[1].trim();
+
   const pastMedicalHistory =
-    extractBlockFuzzy(sections.s, ['Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
-    extractFieldFuzzy(sections.s, ['Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
+    subPMH ||
+    extractBlockFuzzy(sections.s, ['Tiền căn bản thân', 'Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
+    extractFieldFuzzy(sections.s, ['Tiền căn bản thân', 'Tiền căn & Bối cảnh dịch tễ', 'Tiền căn', 'Tiền sử', 'Dược sử', 'Past Medical History', 'PMH']) ||
     'Chưa ghi nhận tiền căn đặc biệt';
 
   const familyHistory =
+    subFamily ||
     extractBlockFuzzy(sections.s, [
       'Tiền căn gia đình',
       'Tiền sử gia đình',
@@ -505,20 +521,30 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
     ]) ||
     undefined;
 
-  const epidemiology =
+  let epidemiology =
+    subEpi ||
     extractBlockFuzzy(sections.s, [
-      'Bối cảnh dịch tễ',
+      'Bối cảnh dịch tễ học',
       'Yếu tố dịch tễ',
+      'Bối cảnh dịch tễ',
+      'Dịch tễ học',
       'Dịch tễ',
       'Epidemiology',
     ]) ||
     extractFieldFuzzy(sections.s, [
-      'Bối cảnh dịch tễ',
+      'Bối cảnh dịch tễ học',
       'Yếu tố dịch tễ',
+      'Bối cảnh dịch tễ',
+      'Dịch tễ học',
       'Dịch tễ',
       'Epidemiology',
     ]) ||
     undefined;
+
+  // Tránh trùng lặp nếu epidemiology bị bắt nhầm thành toàn bộ khối Tiền căn & Bối cảnh dịch tễ
+  if (epidemiology && (epidemiology === pastMedicalHistory || epidemiology.includes('Tiền căn bản thân'))) {
+    epidemiology = undefined;
+  }
 
   const historyPearls =
     frontmatter.historyPearls ||
@@ -533,24 +559,30 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
 
   // 2. Phân tích O (Objective)
   const vitals = extractVitals(sections.o);
-  const physicalExam =
+  let physicalExam =
     extractBlockFuzzy(sections.o, [
       'Triệu chứng thực thể khám được',
+      'Khám thực thể định hướng',
       'Khám thực thể trọng tâm',
       'Khám thực thể',
       'Khám lâm sàng',
+      'TCTT',
       'Physical Exam',
       'PE',
     ]) ||
     extractFieldFuzzy(sections.o, [
       'Triệu chứng thực thể khám được',
+      'Khám thực thể định hướng',
       'Khám thực thể trọng tâm',
       'Khám thực thể',
       'Khám lâm sàng',
+      'TCTT',
       'Physical Exam',
       'PE',
     ]) ||
     '';
+
+  physicalExam = physicalExam.replace(/""/g, '"').trim();
 
   const labsAndImaging =
     extractBlockFuzzy(sections.o, [
@@ -692,7 +724,13 @@ export function parseNotebookLmSoapMarkdown(rawText: string): IngestResult {
 
   const treatmentRoadmap =
     extractBlockFuzzy(sections.p, [
+      'Nhật ký Hồi sức Bù dịch Nấc thang',
+      'Nhật ký Hồi sức Bù dịch',
+      'Hồi sức Bù dịch Nấc thang',
+      'Diễn tiến Ra sốc trong 6 Giờ Đầu',
+      'Diễn tiến Ra sốc',
       'LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT DÀI HẠN',
+      'LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT',
       'LỘ TRÌNH ĐIỀU TRỊ',
       'Lộ trình điều trị',
       'Treatment Roadmap',

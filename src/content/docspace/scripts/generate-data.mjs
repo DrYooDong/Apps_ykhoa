@@ -72,16 +72,52 @@ for (const f of fs.readdirSync(dir1)) if (f.endsWith('.json')) fileMap[f] = path
 const symptomsMap = new Map(); // id -> TrieuChung
 const diseasesList = []; // Benh[]
 
+const STANDARD_NAME_MAP = {
+  'buon_non_non': { ten: 'Buồn nôn / Nôn ói', nhom: 'Tiêu hóa' },
+  'dau_co': { ten: 'Đau mỏi cơ toàn thân', nhom: 'Toàn thân' },
+  'nhuc_hai_ho_mat': { ten: 'Đau nhức 2 hốc mắt', nhom: 'Toàn thân' },
+  'dau_dau': { ten: 'Đau đầu dữ dội', nhom: 'Thần kinh' },
+  'tc_xuat_huyet_da_niem_lacet_duong_tinh': { ten: 'Xuất huyết da niêm / Dấu dây thắt (Lacet) (+)', nhom: 'Huyết học' },
+  'tc_xet_nghiem_ns1_hoac_pcr_duong_tinh': { ten: 'Kháng nguyên NS1 hoặc RT-PCR Dengue (+)', nhom: 'Cận lâm sàng' },
+  'tc_dau_hieu_canh_bao_dau_bung_gan_non_oi': { ten: 'Đau bụng vùng gan / Nôn ói nhiều (Dấu hiệu cảnh báo)', nhom: 'Tiêu hóa' },
+  'gan_to_dau': { ten: 'Gan to > 2cm dưới bờ sườn, ấn đau', nhom: 'Tiêu hóa' },
+  'non_ra_mau_phan_den': { ten: 'Xuất huyết tiêu hóa: Nôn ra máu / Đi cầu phân đen', nhom: 'Tiêu hóa' },
+  'tc_co_dac_mau_hct_tang_tren_20_phan_tram': { ten: 'Cô đặc máu: Hct tăng ≥ 20% so với giá trị ban đầu', nhom: 'Cận lâm sàng' },
+  'tc_giam_tieu_cau_duoi_100_g_l': { ten: 'Tiểu cầu giảm nhanh < 100 G/L', nhom: 'Cận lâm sàng' },
+  'tran_dich_mang_phoi_mang_bung': { ten: 'Tràn dịch màng phổi / Màng bụng (Thoát huyết tương)', nhom: 'Hô hấp' },
+  'men_gan_tang': { ten: 'Men gan tăng (AST / ALT tăng)', nhom: 'Cận lâm sàng' },
+  'tien_can_song_o_dich_luu_hanh': { ten: 'Sống trong hoặc đi đến vùng dịch tễ lưu hành', nhom: 'Dịch tễ' },
+  'phat_ban_xung_huyet': { ten: 'Phát ban xung huyết da / Dấu phục hồi đảo trắng', nhom: 'Da niêm' },
+  'lu_du_vat_va_li_bi': { ten: 'Lừ đừ, vật vã, li bì', nhom: 'Thần kinh' },
+  'tien_su_su_dung_thuoc_khang_lao': { ten: 'Tiền sử đang sử dụng thuốc kháng lao (R, H, Z, E)', nhom: 'Tiền căn' },
+  'men_gan_ast_alt_tang_tren_1000': { ten: 'Men gan AST/ALT tăng rất cao (> 1.000 U/L)', nhom: 'Cận lâm sàng' },
+  'tang_bilirubin_mau': { ten: 'Tăng Bilirubin toàn phần máu (Vàng mắt, vàng da)', nhom: 'Cận lâm sàng' },
+  'dau_tuc_ha_suon_phai': { ten: 'Đau tức vùng hạ sườn phải', nhom: 'Tiêu hóa' },
+  'met_moi': { ten: 'Mệt mỏi toàn thân, suy nhược', nhom: 'Toàn thân' },
+  'chan_an_sut_can': { ten: 'Chán ăn, sợ mỡ, sụt cân', nhom: 'Tiêu hóa' },
+  'ti_le_prothrombin_giam_inr_tang': { ten: 'Tỷ lệ Prothrombin giảm (PT < 50% hoặc INR ≥ 1.5)', nhom: 'Cận lâm sàng' },
+  'giam_albumin_mau': { ten: 'Giảm Albumin huyết thanh (< 35 g/L)', nhom: 'Cận lâm sàng' },
+  'tien_su_phoi_nhiem_hbv': { ten: 'Tiền sử phơi nhiễm HBV / Tiêm truyền không an toàn', nhom: 'Tiền căn' },
+  'tien_su_viem_gan_virus_b_c': { ten: 'Tiền sử mắc Viêm gan vi rút B hoặc C mạn tính', nhom: 'Tiền căn' },
+  'tc_do_dan_hoi_gan_fibroscan': { ten: 'Đo độ đàn hồi gan FibroScan (Đánh giá xơ hóa F0-F4)', nhom: 'Cận lâm sàng' },
+  'tc_chi_so_apri_fib4': { ten: 'Chỉ số sinh hóa APRI hoặc FIB-4 đánh giá xơ gan', nhom: 'Cận lâm sàng' },
+  'tc_noi_soi_gian_ttmq': { ten: 'Nội soi thực quản - dạ dày: Giãn tĩnh mạch thực quản (EV)', nhom: 'Cận lâm sàng' },
+  'tc_thang_diem_child_pugh_a': { ten: 'Thang điểm Child-Pugh phân độ chức năng gan (A / B / C)', nhom: 'Cận lâm sàng' }
+};
+
 function addOrUpdateSymptom(id, label, nhomHint, loaiHint, tuKhoaExtra = []) {
   if (!id) return;
   const cleanId = id.trim();
+  const stdInfo = STANDARD_NAME_MAP[cleanId];
   if (symptomsMap.has(cleanId)) {
     const existing = symptomsMap.get(cleanId);
-    if (!existing.ten && label) existing.ten = label;
+    if ((!existing.ten || existing.ten === cleanId.replace(/_/g, ' ')) && (stdInfo?.ten || label)) {
+      existing.ten = stdInfo?.ten || label;
+    }
     return;
   }
 
-  const cleanLabel = (label || cleanId)
+  const cleanLabel = (stdInfo?.ten || label || cleanId)
     .replace(/^-\s*/, '')
     .replace(/^Biểu hiện lâm sàng:\s*/i, '')
     .trim();
@@ -192,7 +228,8 @@ for (const [fname, fpath] of Object.entries(fileMap)) {
       // If criterion has sub-symptoms
       if (c.symptomIds && Array.isArray(c.symptomIds)) {
         for (const symId of c.symptomIds) {
-          addOrUpdateSymptom(symId, symId.replace(/_/g, ' '), d.specialty, 'cn');
+          const stdName = STANDARD_NAME_MAP[symId]?.ten || symId.replace(/_/g, ' ');
+          addOrUpdateSymptom(symId, stdName, d.specialty, 'cn');
         }
       }
     }
@@ -343,7 +380,7 @@ const SAMPLE_CASES = [
     nhomBenh: 'Truyền nhiễm',
     benhId: 'sot_xuat_huyet_dengue',
     tags: ['Dengue', 'Cảnh báo', 'Cô đặc máu', 'Hạ tiểu cầu'],
-    sel: ['tc_sot_cao_dot_ngot_duoi_7_ngay', 'sot', 'dau_co', 'nhuc_hai_ho_mat', 'dau_dau', 'buon_non_non', 'dau_bung_vung_gan', 'co_dac_mau_hct', 'tieu_cau_giam_nang', 'cham_xuat_huyet_duoi_da'],
+    sel: ['tc_sot_cao_dot_ngot_duoi_7_ngay', 'dau_co', 'nhuc_hai_ho_mat', 'dau_dau', 'buon_non_non', 'dau_bung_vung_gan', 'co_dac_mau_hct', 'tieu_cau_giam_nang', 'cham_xuat_huyet_duoi_da'],
     vitals: {
       vNhiet: '38.2',
       vMach: '102',
@@ -359,7 +396,7 @@ const SAMPLE_CASES = [
       lGlu: '5.8',
       lTrop: '8'
     },
-    selected: ['tc_sot_cao_dot_ngot_duoi_7_ngay', 'sot', 'dau_co', 'nhuc_hai_ho_mat', 'dau_dau', 'buon_non_non', 'dau_bung_vung_gan', 'co_dac_mau_hct', 'tieu_cau_giam_nang', 'cham_xuat_huyet_duoi_da'],
+    selected: ['tc_sot_cao_dot_ngot_duoi_7_ngay', 'dau_co', 'nhuc_hai_ho_mat', 'dau_dau', 'buon_non_non', 'dau_bung_vung_gan', 'co_dac_mau_hct', 'tieu_cau_giam_nang', 'cham_xuat_huyet_duoi_da'],
     negated: ['co_cung_gay_dau_mang_nao', 'ran_no_o_phoi'],
     epiContext: {
       endemicArea: 'Khu vực lưu hành dịch sốt xuất huyết Dengue',
