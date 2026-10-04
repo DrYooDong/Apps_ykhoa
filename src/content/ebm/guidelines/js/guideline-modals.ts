@@ -12,6 +12,14 @@ let pendingImportBatch: BatchDuplicateItem[] = [];
 let existingDupConflicts: ExistingDuplicateConflict[] = [];
 let duplicateModalMode: 'import' | 'scan' = 'import';
 
+function notifyToast(message: string, type: 'success' | 'warning' | 'error' | 'info' = 'info', title?: string): void {
+  if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+    (window as any).showMedicalToast({ type, message, title });
+  } else {
+    console.warn(`[${type.toUpperCase()}] ${title ? title + ': ' : ''}${message}`);
+  }
+}
+
 function getValueFromIds(...ids: string[]): string {
   for (const id of ids) {
     const el = document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null;
@@ -325,7 +333,7 @@ export function handleFormSubmit(event?: Event): void {
 
   const title = getValueFromIds('study-title', 'form-title');
   if (!title) {
-    alert('⚠️ Vui lòng nhập Tiêu đề Hướng dẫn / Nghiên cứu!');
+    notifyToast('Vui lòng nhập Tiêu đề Hướng dẫn / Nghiên cứu!', 'warning');
     return;
   }
 
@@ -443,7 +451,7 @@ export function handleFormSubmit(event?: Event): void {
   closeAddModal();
   if (window.renderTable) window.renderTable();
   if (window.renderUpdates) window.renderUpdates();
-  alert(editingStudyId ? '💾 Đã cập nhật thành công!' : '🎉 Đã thêm nghiên cứu mới thành công!');
+  notifyToast(editingStudyId ? 'Đã cập nhật tài liệu thành công!' : 'Đã thêm nghiên cứu mới thành công!', 'success');
 }
 
 export const saveStudyForm = handleFormSubmit;
@@ -468,7 +476,7 @@ function cleanJSONString(str?: string): string {
 export function processJSONImport(rawText?: string): void {
   const cleaned = cleanJSONString(rawText);
   if (!cleaned) {
-    alert('⚠️ Vui lòng dán chuỗi dữ liệu JSON hoặc chọn file JSON!');
+    notifyToast('Vui lòng dán chuỗi dữ liệu JSON hoặc chọn file JSON!', 'warning');
     return;
   }
 
@@ -476,14 +484,14 @@ export function processJSONImport(rawText?: string): void {
   try {
     parsed = JSON.parse(cleaned);
   } catch (err) {
-    alert('❌ Chuỗi JSON không hợp lệ. Vui lòng kiểm tra định dạng cú pháp dữ liệu!');
+    notifyToast('Chuỗi JSON không hợp lệ. Vui lòng kiểm tra định dạng cú pháp dữ liệu!', 'error');
     console.error(err);
     return;
   }
 
   const rawArray = Array.isArray(parsed) ? parsed : [parsed];
   if (rawArray.length === 0) {
-    alert('⚠️ Dữ liệu JSON không chứa bản ghi nghiên cứu nào!');
+    notifyToast('Dữ liệu JSON không chứa bản ghi nghiên cứu nào!', 'warning');
     return;
   }
 
@@ -510,7 +518,7 @@ export function processJSONImport(rawText?: string): void {
 
   if (validArray.length === 0) {
     const errDetails = invalidItems.map(i => `• Bản ghi #${i.index}: ${i.errors.join('; ')}`).slice(0, 4).join('\n');
-    alert(`❌ Toàn bộ ${rawArray.length} bản ghi trong tệp đều không hợp lệ:\n\n${errDetails}\n\nVui lòng kiểm tra lại cấu trúc dữ liệu!`);
+    notifyToast(`Toàn bộ ${rawArray.length} bản ghi không hợp lệ:\n${errDetails}`, 'error', 'Lỗi dữ liệu');
     return;
   }
 
@@ -554,7 +562,7 @@ export function processJSONImport(rawText?: string): void {
     closeImportModal();
     if (window.renderTable) window.renderTable();
     if (window.renderUpdates) window.renderUpdates();
-    alert(`📥 Phép kiểm hoàn tất: Đã nạp thành công ${count} nghiên cứu mới! (Không phát hiện trùng lặp)`);
+    notifyToast(`Đã nạp thành công ${count} nghiên cứu mới! (Không phát hiện trùng lặp)`, 'success', 'Nạp dữ liệu');
   } else {
     pendingImportBatch = checkedBatch.map(b => ({
       ...b,
@@ -812,7 +820,7 @@ export function executeDuplicateImport(): void {
       message: `Đã nạp xong: Thêm mới ${addedCount} bài, Cập nhật ${overwrittenCount} bài, Bỏ qua ${skippedCount} bài trùng.`
     });
   } else {
-    alert(`🎉 Phép kiểm hoàn tất & đã thực thi nạp dữ liệu!\n• Thêm mới thành công: ${addedCount} bài\n• Ghi đè / Cập nhật: ${overwrittenCount} bài\n• Bỏ qua bài trùng: ${skippedCount} bài.`);
+    notifyToast(`Đã nạp xong: Thêm mới ${addedCount} bài, Cập nhật ${overwrittenCount} bài, Bỏ qua ${skippedCount} bài trùng.`, 'success');
   }
 }
 
@@ -1241,7 +1249,7 @@ export function executeDuplicateScanCleanup(): void {
       message: `🎉 Đã xử lý ${existingDupConflicts.length} cặp trùng lặp (Hợp nhất: ${mergedCount}, Loại bỏ: ${idsToRemove.size} bản ghi thừa)!`
     });
   } else {
-    alert(`🎉 Lọc trùng hoàn tất!\n• Hợp nhất: ${mergedCount} bài\n• Loại bỏ: ${idsToRemove.size} bản ghi thừa.`);
+    notifyToast(`Lọc trùng hoàn tất: Hợp nhất ${mergedCount} bài, Loại bỏ ${idsToRemove.size} bản ghi thừa.`, 'success');
   }
 }
 
@@ -1298,25 +1306,343 @@ export function renderConditionManagementTable(): void {
   const tbody = document.getElementById('cond-mgmt-tbody');
   if (!tbody || !window.CLINICAL_CONDITIONS) return;
 
-  let html = '';
-  Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
-    const icdList = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : (cond.icd10 || '');
-    html += `
-      <tr style="border-bottom: 1px solid var(--border-light);">
-        <td style="padding: 10px; font-weight: 700; color: ${cond.color || 'var(--text)'};">
-          <span style="display:inline-block; width: 10px; height: 10px; border-radius: 50%; background: ${cond.color || '#0284c7'}; margin-right: 6px;"></span>
-          ${escapeHtml(cond.name)}
+  const searchInput = (document.getElementById('cond-search-input') as HTMLInputElement | null)?.value.trim() || '';
+  const specFilter = (document.getElementById('cond-filter-specialty') as HTMLSelectElement | null)?.value || '';
+  const sortBy = (document.getElementById('cond-sort-by') as HTMLSelectElement | null)?.value || 'name_asc';
+
+  const cleanSearch = (typeof (window as any).stripVietnameseDiacritics === 'function'
+    ? (window as any).stripVietnameseDiacritics(searchInput)
+    : searchInput.toLowerCase()
+  ).trim();
+
+  const allStudies = window.studies || window.SAMPLE_STUDIES || [];
+  const specMap = window.CONDITION_SPECIALTY_MAP || {};
+
+  // Calculate studies per condition key
+  const studyCounts: Record<string, number> = {};
+  allStudies.forEach(s => {
+    if (s.conditionKey) {
+      studyCounts[s.conditionKey] = (studyCounts[s.conditionKey] || 0) + 1;
+    }
+  });
+
+  let entries = Object.entries(window.CLINICAL_CONDITIONS);
+
+  // Update KPI counters
+  const totalDiseasesEl = document.getElementById('cond-stat-total-diseases');
+  const totalIcdEl = document.getElementById('cond-stat-total-icd');
+  const totalMappedEl = document.getElementById('cond-stat-total-mapped');
+
+  if (totalDiseasesEl) totalDiseasesEl.textContent = String(entries.length);
+  if (totalIcdEl) {
+    const uniqueIcds = new Set<string>();
+    entries.forEach(([_, c]) => {
+      if (Array.isArray(c.icd10)) {
+        c.icd10.forEach(code => uniqueIcds.add(code.trim().toUpperCase()));
+      }
+    });
+    totalIcdEl.textContent = String(uniqueIcds.size);
+  }
+  if (totalMappedEl) {
+    const mappedStudiesCount = allStudies.filter(s => s.conditionKey || (s.icd10 && (s.icd10 as any).length > 0)).length;
+    totalMappedEl.textContent = `${mappedStudiesCount} / ${allStudies.length}`;
+  }
+
+  // Filter by search query
+  if (cleanSearch) {
+    entries = entries.filter(([key, cond]) => {
+      const normName = (typeof (window as any).stripVietnameseDiacritics === 'function'
+        ? (window as any).stripVietnameseDiacritics(cond.name)
+        : cond.name.toLowerCase()
+      );
+      const icdStr = (Array.isArray(cond.icd10) ? cond.icd10.join(' ') : String(cond.icd10 || '')).toLowerCase();
+      const keyStr = key.toLowerCase();
+      return normName.includes(cleanSearch) || icdStr.includes(cleanSearch) || keyStr.includes(cleanSearch);
+    });
+  }
+
+  // Filter by specialty
+  if (specFilter) {
+    entries = entries.filter(([key, cond]) => {
+      if (cond.specialty === specFilter) return true;
+      const mapped = specMap[key];
+      if (Array.isArray(mapped) && mapped.includes(specFilter)) return true;
+      return false;
+    });
+  }
+
+  // Sort entries
+  entries.sort((a, b) => {
+    const keyA = a[0];
+    const keyB = b[0];
+    const condA = a[1];
+    const condB = b[1];
+
+    if (sortBy === 'name_asc') {
+      return condA.name.localeCompare(condB.name, 'vi');
+    } else if (sortBy === 'name_desc') {
+      return condB.name.localeCompare(condA.name, 'vi');
+    } else if (sortBy === 'studies_desc') {
+      const cA = studyCounts[keyA] || 0;
+      const cB = studyCounts[keyB] || 0;
+      return cB - cA || condA.name.localeCompare(condB.name, 'vi');
+    } else if (sortBy === 'icd_count') {
+      const lenA = Array.isArray(condA.icd10) ? condA.icd10.length : 0;
+      const lenB = Array.isArray(condB.icd10) ? condB.icd10.length : 0;
+      return lenB - lenA;
+    } else if (sortBy === 'specialty') {
+      const specA = condA.specialty || '';
+      const specB = condB.specialty || '';
+      return specA.localeCompare(specB) || condA.name.localeCompare(condB.name, 'vi');
+    }
+    return 0;
+  });
+
+  if (entries.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+          <div style="font-weight: 700; font-size: 0.95rem;">Không tìm thấy bệnh phù hợp</div>
+          <div style="font-size: 0.8rem; margin-top: 4px;">Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc chuyên khoa.</div>
         </td>
-        <td style="padding: 10px; font-family: monospace; font-weight: 700;">${escapeHtml(icdList)}</td>
-        <td style="padding: 10px; text-align: center;">
-          <button class="btn btn-small" onclick="openConditionEditModal('${key}')" title="Sửa">✏️</button>
-          <button class="btn btn-small" onclick="deleteConditionItem('${key}')" title="Xóa" style="color:#dc2626;">🗑️</button>
+      </tr>
+    `;
+    return;
+  }
+
+  let html = '';
+  entries.forEach(([key, cond]) => {
+    const count = studyCounts[key] || 0;
+    const icds = Array.isArray(cond.icd10) ? cond.icd10 : (cond.icd10 ? [cond.icd10] : []);
+
+    // Specialty badge
+    const specKey = cond.specialty || (specMap[key] && specMap[key][0]) || '';
+    const specObj = window.SPECIALTIES && specKey ? window.SPECIALTIES[specKey] : null;
+    const specName = specObj ? specObj.name : (specKey ? specKey.toUpperCase() : 'Chung');
+    const specBg = specObj ? specObj.bg : 'var(--surface-2)';
+    const specColor = specObj ? specObj.color : 'var(--text-muted)';
+
+    // ICD pills
+    const icdPills = icds.map(code => `
+      <span class="icd10-code-pill" onclick="quickLookupICD10Code('${escapeHtml(code)}')" title="Bấm để lọc danh mục theo mã ${escapeHtml(code)}" style="display:inline-block; margin: 2px; padding: 2px 6px; font-size: 0.72rem; font-family: monospace; font-weight: 700; border-radius: 4px; background: rgba(2, 132, 199, 0.08); color: var(--accent); border: 1px solid rgba(2, 132, 199, 0.2); cursor: pointer; transition: all 0.15s ease;">
+        ${escapeHtml(code)}
+      </span>
+    `).join('');
+
+    html += `
+      <tr style="border-bottom: 1px solid var(--border-light); transition: background 0.15s ease;" onmouseover="this.style.background='var(--surface-2)'" onmouseout="this.style.background='transparent'">
+        <td style="padding: 10px 12px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: ${cond.color || '#0284c7'}; flex-shrink: 0; box-shadow: 0 0 6px ${cond.color || '#0284c7'}40;"></span>
+            <div>
+              <div style="font-weight: 700; color: var(--text); font-size: 0.85rem;">${escapeHtml(cond.name)}</div>
+              <div style="font-size: 0.7rem; color: var(--text-muted); font-family: monospace;">key: ${escapeHtml(key)}</div>
+            </div>
+          </div>
+        </td>
+        <td style="padding: 10px 8px;">
+          <span style="display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; background: ${specBg}; color: ${specColor};">
+            ${escapeHtml(specName)}
+          </span>
+        </td>
+        <td style="padding: 10px 8px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 3px; max-width: 380px;">
+            ${icdPills || '<span style="color:var(--text-muted); font-size:0.75rem;">Chưa gắn mã</span>'}
+          </div>
+        </td>
+        <td style="padding: 10px 8px; text-align: center;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <span class="left-nav-link-badge" style="font-size: 0.72rem; font-weight: 800; ${count > 0 ? 'background: rgba(2, 132, 199, 0.12); color: var(--accent);' : 'opacity: 0.6;'}">
+              ${count} bài
+            </span>
+            ${count > 0 ? `
+              <button class="btn btn-outline" onclick="filterMainTableByCondition('${escapeHtml(key)}')" title="Xem danh sách bài viết này trên bảng dữ liệu" style="font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; font-weight: 700;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem
+              </button>
+            ` : ''}
+          </div>
+        </td>
+        <td style="padding: 10px 8px; text-align: center;">
+          <div style="display: flex; justify-content: center; gap: 4px;">
+            <button class="btn btn-small" onclick="openConditionEditModal('${escapeHtml(key)}')" title="Chỉnh sửa bệnh & mã ICD-10" style="padding: 4px 8px;">✏️</button>
+            <button class="btn btn-small" onclick="deleteConditionItem('${escapeHtml(key)}')" title="Xóa bệnh khỏi danh mục" style="padding: 4px 8px; color: #dc2626;">🗑️</button>
+          </div>
         </td>
       </tr>
     `;
   });
 
   tbody.innerHTML = html;
+}
+
+export function autoDeduplicateAndMergeConditions(): void {
+  if (!window.CLINICAL_CONDITIONS) return;
+
+  let cleanedIcdCount = 0;
+  let mergedCount = 0;
+  const conditions = window.CLINICAL_CONDITIONS;
+
+  // 1. Clean and deduplicate ICD-10 codes for every condition
+  Object.keys(conditions).forEach(key => {
+    const cond = conditions[key];
+    if (cond && cond.icd10) {
+      const rawList: string[] = [];
+      if (Array.isArray(cond.icd10)) {
+        cond.icd10.forEach(c => {
+          if (typeof c === 'string') {
+            c.split(/[\s,;]+/).forEach(p => {
+              const clean = p.replace(/[\[\]"']/g, '').trim().toUpperCase();
+              if (clean) rawList.push(clean);
+            });
+          }
+        });
+      } else if (typeof cond.icd10 === 'string') {
+        (cond.icd10 as string).split(/[\s,;]+/).forEach(p => {
+          const clean = p.replace(/[\[\]"']/g, '').trim().toUpperCase();
+          if (clean) rawList.push(clean);
+        });
+      }
+
+      // Deduplicate and sort
+      const uniqueSorted = Array.from(new Set(rawList)).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+      if (uniqueSorted.length !== (Array.isArray(cond.icd10) ? cond.icd10.length : 1)) {
+        cleanedIcdCount++;
+      }
+      cond.icd10 = uniqueSorted;
+    }
+  });
+
+  // 2. Known alias mappings to merge into canonical keys if duplicate keys exist in storage
+  const aliasMerges: Record<string, string> = {
+    'acute-heart-failure': 'heart-failure',
+    'atrial-fibrillation': 'af',
+    'ascites': 'cirrhosis',
+    'liver-cirrhosis': 'cirrhosis',
+    'dengue': 'hemorrhagic-fever',
+    'dengue-fever': 'hemorrhagic-fever',
+    'influenza': 'flu',
+    'sepsis': 'icu',
+    'septic-shock': 'icu',
+    'icu-antimicrobials': 'icu',
+    'tuberculosis': 'tb',
+    'myocardial-infarction': 'cad',
+    'ckm-syndrome': 'cardiorenal-syndrome',
+    'intra-abdominal-abscess': 'iai',
+    'ibs': 'ibd',
+    'diabetic-neuropathy': 'diabetes-t2d'
+  };
+
+  Object.entries(aliasMerges).forEach(([aliasKey, targetKey]) => {
+    if (conditions[aliasKey] && conditions[targetKey] && aliasKey !== targetKey) {
+      // Merge ICD-10s into target
+      const targetIcds = new Set(conditions[targetKey].icd10 || []);
+      (conditions[aliasKey].icd10 || []).forEach(c => targetIcds.add(c));
+      conditions[targetKey].icd10 = Array.from(targetIcds).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+
+      // Repoint studies having aliasKey to targetKey
+      if (window.studies) {
+        window.studies.forEach(s => {
+          if (s.conditionKey === aliasKey) {
+            s.conditionKey = targetKey;
+          }
+        });
+      }
+
+      delete conditions[aliasKey];
+      mergedCount++;
+    }
+  });
+
+  try {
+    localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(conditions));
+  } catch (e) {}
+
+  renderConditionManagementTable();
+  if (window.renderFilterPills) window.renderFilterPills();
+  if (window.renderTable) window.renderTable();
+
+  notifyToast(
+    `Đã chuẩn hóa, sắp xếp và gộp trùng lặp thành công! (${mergedCount} danh mục hợp nhất, chuẩn hóa mã ICD-10 toàn hệ thống)`,
+    'success',
+    'Hoàn tất Sắp xếp & Gộp'
+  );
+}
+
+export function filterMainTableByCondition(condKey: string): void {
+  if (!condKey || !window.CLINICAL_CONDITIONS) return;
+  const cond = window.CLINICAL_CONDITIONS[condKey];
+  if (!cond) return;
+
+  if (!window.filters) return;
+  window.filters.condition = condKey;
+  window.filters.specialty = null;
+
+  closeConditionSettingsModal();
+
+  if (window.renderFilterPills) window.renderFilterPills();
+  if (window.renderTable) window.renderTable();
+
+  const tableEl = document.getElementById('guidelines-table') || document.getElementById('studies-tbody');
+  if (tableEl) {
+    tableEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  notifyToast(`Đang lọc bảng theo bệnh: ${cond.name}`, 'info', 'Đã Áp Dụng Bộ Lọc');
+}
+
+export function exportConditionRegistryJSON(): void {
+  if (!window.CLINICAL_CONDITIONS) return;
+  const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(window.CLINICAL_CONDITIONS, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute('href', dataStr);
+  downloadAnchor.setAttribute('download', `cliniportal_icd10_registry_${new Date().toISOString().slice(0, 10)}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+
+  notifyToast('Đã xuất danh mục bệnh & mã ICD-10 ra file JSON!', 'success');
+}
+
+export function triggerImportConditionJSON(): void {
+  const fileInput = document.getElementById('cond-import-file') as HTMLInputElement | null;
+  if (fileInput) fileInput.click();
+}
+
+export function importConditionRegistryJSON(event: Event): void {
+  const target = event.target as HTMLInputElement;
+  const file = target && target.files ? target.files[0] : null;
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e: ProgressEvent<FileReader>) => {
+    try {
+      const parsed = JSON.parse(e.target?.result as string);
+      if (typeof parsed === 'object' && parsed !== null) {
+        window.CLINICAL_CONDITIONS = Object.assign(window.CLINICAL_CONDITIONS || {}, parsed);
+        localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));
+        renderConditionManagementTable();
+        if (window.renderFilterPills) window.renderFilterPills();
+        notifyToast(`Đã nhập thành công ${Object.keys(parsed).length} danh mục bệnh từ JSON!`, 'success');
+      } else {
+        throw new Error('Định dạng JSON không hợp lệ');
+      }
+    } catch (err: any) {
+      notifyToast('Lỗi khi đọc file JSON: ' + (err.message || 'File không hợp lệ'), 'error');
+    }
+  };
+  reader.readAsText(file);
+  target.value = '';
+}
+
+export function quickLookupICD10Code(code: string): void {
+  const cleanCode = code.trim().toUpperCase();
+  const searchInput = document.getElementById('cond-search-input') as HTMLInputElement | null;
+  if (searchInput) {
+    searchInput.value = cleanCode;
+    renderConditionManagementTable();
+    searchInput.focus();
+  }
 }
 
 export function openConditionEditModal(key?: string): void {
@@ -1372,7 +1698,7 @@ export function handleSaveConditionForm(event?: Event): void {
   const specialty = (document.getElementById('cond-form-specialty') as HTMLSelectElement | null)?.value || undefined;
 
   if (!name || !icdRaw) {
-    alert('⚠️ Vui lòng nhập Tên bệnh và ít nhất 1 mã ICD-10!');
+    notifyToast('Vui lòng nhập Tên bệnh và ít nhất 1 mã ICD-10!', 'warning');
     return;
   }
 
@@ -1401,7 +1727,7 @@ export function handleSaveConditionForm(event?: Event): void {
   closeConditionEditModal();
   renderConditionManagementTable();
   if (window.renderFilterPills) window.renderFilterPills();
-  alert('💾 Đã lưu cấu hình danh mục bệnh thành công!');
+  notifyToast('Đã lưu cấu hình danh mục bệnh thành công!', 'success');
 }
 
 export function deleteConditionItem(key: string): void {
@@ -1423,7 +1749,7 @@ export function resetConditionRegistryDefault(): void {
       localStorage.removeItem('cliniportal_custom_conditions');
       renderConditionManagementTable();
       if (window.renderFilterPills) window.renderFilterPills();
-      alert('🔄 Đã khôi phục danh mục ICD-10 mặc định!');
+      notifyToast('Đã khôi phục danh mục ICD-10 mặc định!', 'info');
     }
   }
 }
@@ -1560,6 +1886,12 @@ if (typeof window !== 'undefined') {
   window.handleSaveConditionForm = handleSaveConditionForm;
   window.deleteConditionItem = deleteConditionItem;
   window.resetConditionRegistryDefault = resetConditionRegistryDefault;
+  window.autoDeduplicateAndMergeConditions = autoDeduplicateAndMergeConditions;
+  window.filterMainTableByCondition = filterMainTableByCondition;
+  window.exportConditionRegistryJSON = exportConditionRegistryJSON;
+  window.triggerImportConditionJSON = triggerImportConditionJSON;
+  window.importConditionRegistryJSON = importConditionRegistryJSON;
+  window.quickLookupICD10Code = quickLookupICD10Code;
   window.updateChartPreview = updateChartPreview;
   window.updateSubgroupPreview = updateSubgroupPreview;
   window.updateConditionDropdownOptions = updateConditionDropdownOptions;

@@ -220,7 +220,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "summary": "Hướng dẫn Hợp nhất Module 4 (Điều trị và Chăm sóc) cập nhật 2025 của WHO đánh dấu bước chuyển mình mang tính lịch sử: xóa bỏ hoàn toàn các phác đồ tiêm độc tính gây điếc và suy thận, xác lập kỷ nguyên phác đồ toàn đường uống rút ngắn 6 tháng (BPaLM, BPaL, BDLLfxC) và 9 tháng (9BLMZ, 9BLLfxCZ). Hướng dẫn cũng chuẩn hóa phác đồ rút ngắn 4 tháng cho lao nhạy thuốc, cho phép đồng điều trị song song DAA viêm gan C trên bệnh nhân MDR-TB và mở rộng y tế số VST tại tuyến y tế cơ sở.",
     "detailedConclusion": "Phác đồ 6 tháng toàn uống BPaLM (Bedaquiline, Pretomanid, Linezolid 600mg, Moxifloxacin) là lựa chọn ưu tiên hàng đầu cho MDR/RR-TB nhạy FQ; rút FQ dùng BPaL khi kháng FQ. Phụ nữ mang thai và trẻ em dùng phác đồ an toàn BDLLfxC. Ba phác đồ 9 tháng chứa Bedaquiline (9BLMZ, 9BLLfxCZ, 9BDLLfxZ) đạt tỷ lệ thành công 85.2-89.0%, chi phí từ $297; cấm dùng phác đồ 9 tháng không chứa Bedaquiline. Khuyến cáo đồng điều trị DAA viêm gan C song song với thuốc lao MDR-TB. Cấm dùng Kanamycin và Capreomycin trong phác đồ kéo dài.",
     "file": "2025-who-dieu-tri-lao.mdx",
-    "conditionKey": "tuberculosis",
+    "conditionKey": "tb",
     "icd10": [
       "A15",
       "A16",
@@ -258,7 +258,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "summary": "Hướng dẫn vận hành Module 3 (Chẩn đoán) cập nhật 2025 của WHO thiết lập chuẩn mực toàn cầu mới về chẩn đoán bệnh lao: chấm dứt kỷ nguyên phụ thuộc soi đờm kính hiển vi, chuyển giao toàn diện sang xét nghiệm phân tử nhanh (mWRD: Xpert Ultra, Truenat, BD MAX, cobas, FluoroType, RealTime), tích hợp LF-LAM cho người nhiễm HIV và mẫu phân cho trẻ em. Hướng dẫn đưa targeted NGS (tNGS) vào thực hành lâm sàng thường quy để định danh kháng thuốc hàng 2 ngay trên mẫu đờm, cập nhật điểm cắt nồng độ tới hạn thuốc (CC/CB) và tối ưu hóa 4 thuật toán lâm sàng kết nối phác đồ rút ngắn 6 tháng (BPaLM/BPaL) cùng mạng lưới phân tầng 3 cấp.",
     "detailedConclusion": "Chấm dứt hoàn toàn vai trò của soi đờm kính hiển vi làm xét nghiệm ban đầu; 100% người nghi mắc lao phải được làm mWRD. Mọi ca lao vi khuẩn học xác định phải làm xét nghiệm kháng RIF; mọi ca RR-TB phải được xét nghiệm ngay kháng FQ để phân tầng điều trị BPaLM (nhạy FQ) hay BPaL (kháng FQ). Targeted NGS cho phép phát hiện kháng đồng thời 10 thuốc trong 5 giờ đến 48 giờ. Tuyệt đối không dùng TST/IGRA để chẩn đoán lao bệnh hoạt động tại các nước thu nhập thấp và trung bình.",
     "file": "2025-who-chan-doan-lao.mdx",
-    "conditionKey": "tuberculosis",
+    "conditionKey": "tb",
     "icd10": [
       "A15",
       "A16",
@@ -296,7 +296,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "summary": "Tổng quan EBM 2026 trên tạp chí Diagnostics cung cấp hướng dẫn thực hành toàn diện về quản lý bệnh lao trong thai kỳ. Nhấn mạnh việc tầm soát 4 triệu chứng tại mỗi lần khám thai, không trì hoãn điều trị lao hoạt động bằng phác đồ chuẩn 6 tháng 2HRZE/4HR có bổ sung Pyridoxine (B6), áp dụng phác đồ toàn đường uống cho MDR-TB và kiểm soát chặt chẽ lao bẩm sinh theo tiêu chuẩn Cantwell.",
     "detailedConclusion": "Không bao giờ trì hoãn điều trị lao hoạt động trong thai kỳ vì nguy cơ tử vong mẹ và chu sinh vượt trội hoàn toàn so với độc tính thuốc. Phác đồ chuẩn 6 tháng 2HRZE/4HR an toàn và đạt tỷ lệ khỏi bệnh 88%, bắt buộc bổ sung Pyridoxine 25-50 mg/ngày phòng độc thần kinh và Vitamin K gần ngày sinh phòng băng huyết. Đối với MDR-TB, ưu tiên phác đồ hoàn toàn đường uống nhóm A (Levofloxacin/Moxifloxacin, Bedaquiline, Linezolid) kéo dài 18-24 tháng; chống chỉ định tuyệt đối Aminoglycosides (Amikacin/Streptomycin - gây điếc thai nhi) và Ethionamide (dị tật bẩm sinh). Trẻ sơ sinh sinh từ mẹ mắc lao hoạt động cần được đánh giá tiêu chuẩn Cantwell; nếu khỏe mạnh, uống dự phòng INH + Rifampicin trong 3 tháng trước khi làm TST tiêm BCG; chống chỉ định BCG cho thai phụ và trẻ nghi ngờ nhiễm HIV. Cho con bú an toàn khi mẹ dùng thuốc hàng 1 và đã điều trị đủ 2 tuần.",
     "file": "2026-diagnostics-lao-thai-ky.mdx",
-    "conditionKey": "tuberculosis",
+    "conditionKey": "tb",
     "icd10": [
       "A15",
       "A16",
@@ -387,7 +387,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "AHA / ACC / ADA / ASN",
     "journal": "Circulation / JACC",
     "file": "2026-aha-acc-ckm-syndrome.mdx",
-    "conditionKey": "ckm-syndrome",
+    "conditionKey": "cardiorenal-syndrome",
     "icd10": [
       "E88.81",
       "I50.9",
@@ -761,7 +761,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Critical Care Clinics",
     "journal": "Crit Care Clin",
     "file": "2026-icu-khang-sinh-cho-bn-nang.mdx",
-    "conditionKey": "icu-antimicrobials",
+    "conditionKey": "icu",
     "icd10": [
       "Z29.2",
       "A49.9"
@@ -791,7 +791,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "ESC / ACC / AHA / WHF",
     "journal": "Eur Heart J",
     "file": "2026-esc-udmi-nmct.mdx",
-    "conditionKey": "myocardial-infarction",
+    "conditionKey": "cad",
     "icd10": [
       "I21",
       "I21.0",
@@ -884,7 +884,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "European Society of Cardiology (ESC)",
     "journal": "Eur Heart J",
     "file": "2026-esc-heart-failure-p2.mdx",
-    "conditionKey": "acute-heart-failure",
+    "conditionKey": "heart-failure",
     "icd10": [
       "I50.1",
       "I50.9"
@@ -1062,7 +1062,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Journal of Critical Care (JCRC) / SSC",
     "journal": "J Crit Care",
     "file": "2026-jcrc-cai-thuoc-van-mach.mdx",
-    "conditionKey": "sepsis",
+    "conditionKey": "icu",
     "icd10": [
       "R57.2",
       "A41.9",
@@ -1145,7 +1145,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Korean Association for the Study of the Liver (KASL)",
     "journal": "Clin Mol Hepatol",
     "file": "2026-kasl-co-truong-xo-gan.mdx",
-    "conditionKey": "ascites",
+    "conditionKey": "cirrhosis",
     "icd10": [
       "K74.6",
       "R18.8",
@@ -1579,7 +1579,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Bộ Y Tế Việt Nam",
     "journal": "Bộ Y Tế (QĐ 3510/QĐ-BYT)",
     "file": "2025-byt-benh-than-kinh-dai-thao-duong.mdx",
-    "conditionKey": "diabetic-neuropathy",
+    "conditionKey": "diabetes-t2d",
     "icd10": [
       "E11.4",
       "G63.2"
@@ -1609,7 +1609,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Bộ Y Tế Việt Nam",
     "journal": "Bộ Y Tế (QĐ 1840/QĐ-BYT)",
     "file": "2025-byt-cummua.mdx",
-    "conditionKey": "influenza",
+    "conditionKey": "flu",
     "icd10": [
       "J10",
       "J11"
@@ -1825,7 +1825,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Tổ chức Y tế Thế giới (WHO)",
     "journal": "WHO Guidelines Approved by the Guidelines Review Committee",
     "file": "2025-who-arboviral-diseases.mdx",
-    "conditionKey": "dengue-fever",
+    "conditionKey": "hemorrhagic-fever",
     "icd10": [
       "A90",
       "A91",
@@ -2149,7 +2149,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "European Society of Cardiology (ESC)",
     "journal": "Eur Heart J",
     "file": "2024-esc-atrial-fibrillation.mdx",
-    "conditionKey": "atrial-fibrillation",
+    "conditionKey": "af",
     "icd10": [
       "I48.0",
       "I48.1",
@@ -2212,7 +2212,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Infectious Diseases Society of America (IDSA)",
     "journal": "Clinical Infectious Diseases (CID)",
     "file": "2024-idsa-chan-doan-hinh-anh-ap-xe-o-bung.mdx",
-    "conditionKey": "intra-abdominal-abscess",
+    "conditionKey": "iai",
     "icd10": [
       "K65",
       "K65.0",
@@ -2455,7 +2455,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Bộ Y tế Việt Nam",
     "journal": "Bộ Y tế Việt Nam",
     "file": "2023-byt-sot-xuat-huyet-dengue.mdx",
-    "conditionKey": "dengue",
+    "conditionKey": "hemorrhagic-fever",
     "icd10": [
       "A90",
       "A91"
@@ -2621,7 +2621,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "World Gastroenterology Organisation (WGO)",
     "journal": "WGO Guidelines",
     "file": "2023-wgo-probiotics-prebiotics.mdx",
-    "conditionKey": "ibs",
+    "conditionKey": "ibd",
     "icd10": [
       "K58",
       "K52.9",
@@ -2993,7 +2993,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "Surviving Sepsis Campaign (SSC)",
     "journal": "Crit Care Med",
     "file": "2021-ssc-soc-nhiem-khuan-sepsis3.mdx",
-    "conditionKey": "septic-shock",
+    "conditionKey": "icu",
     "icd10": [
       "R65.21",
       "A41.9"
@@ -3081,7 +3081,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "JSGE / JSH (Nhật Bản)",
     "journal": "J Gastroenterol",
     "file": "2020-jsge-jsh-xo-gan.mdx",
-    "conditionKey": "liver-cirrhosis",
+    "conditionKey": "cirrhosis",
     "icd10": [
       "K74.6",
       "K72.1",
@@ -3292,7 +3292,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "organization": "SCCM / ESICM",
     "journal": "JAMA",
     "file": "2016-jama-sepsis-3-consensus.mdx",
-    "conditionKey": "sepsis",
+    "conditionKey": "icu",
     "icd10": [
       "A41.9",
       "R65.20",

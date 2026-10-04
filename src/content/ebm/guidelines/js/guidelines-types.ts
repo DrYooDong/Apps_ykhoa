@@ -244,6 +244,7 @@ declare global {
     renderTable?: () => void;
     renderFilterPills?: () => void;
     toggleMobileFilterSheet?: (show?: boolean) => void;
+    stripVietnameseDiacritics?: (str?: string) => string;
 
     openEditModal?: (id: string) => void;
     openAddModal?: () => void;
@@ -276,6 +277,12 @@ declare global {
     handleSaveConditionForm?: (event?: Event) => void;
     deleteConditionItem?: (key: string) => void;
     resetConditionRegistryDefault?: () => void;
+    autoDeduplicateAndMergeConditions?: () => void;
+    filterMainTableByCondition?: (key: string) => void;
+    exportConditionRegistryJSON?: () => void;
+    importConditionRegistryJSON?: (event: Event) => void;
+    triggerImportConditionJSON?: () => void;
+    quickLookupICD10Code?: (code: string) => void;
     updateConditionDropdownOptions?: (preferredConditionKey?: string) => void;
     handleSpecialtySelectChange?: () => void;
     handleConditionSelectChange?: (condKey: string) => void;

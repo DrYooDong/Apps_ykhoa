@@ -636,7 +636,13 @@ export function initStudyAnalyzerController(): void {
       const text = (document.getElementById('txtEbmReportMarkdown') as HTMLTextAreaElement)?.value || '';
       if (text) {
         navigator.clipboard.writeText(text).then(() => {
-          alert('✅ Đã sao chép Báo cáo phê bình nghiên cứu EBM vào Clipboard thành công!');
+          if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+            (window as any).showMedicalToast({
+              type: 'success',
+              title: 'Báo cáo EBM',
+              message: 'Đã sao chép Báo cáo phê bình nghiên cứu EBM vào Clipboard thành công!'
+            });
+          }
         });
       }
     });

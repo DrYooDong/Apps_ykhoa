@@ -76,15 +76,13 @@ export function resolveStudyFile(filePath?: string): string {
   const cleanSlug = normalized.replace(/\.(?:html|mdx)$/i, '');
   
   if (typeof window !== 'undefined' && window.location) {
-    // Khi đang trong môi trường SPA router (hash router hoặc pathname không kết thúc bằng guidelines.html)
-    if (window.location.hash.startsWith('#/') || !window.location.pathname.endsWith('guidelines.html')) {
-      return `#/ebm/kho-guidelines/${cleanSlug}`;
+    if (window.location.pathname.includes('guidelines.html')) {
+      return `#/reader/${cleanSlug}`;
     }
-    // Khi mở trực tiếp file guidelines.html độc lập trên trình duyệt/file://
-    return `../../../../index.html#/ebm/kho-guidelines/${cleanSlug}`;
+    return `index.html#/reader/${cleanSlug}`;
   }
   
-  return `#/ebm/kho-guidelines/${cleanSlug}`;
+  return `#/reader/${cleanSlug}`;
 }
 
 export function getIcd10Name(code?: string): string {

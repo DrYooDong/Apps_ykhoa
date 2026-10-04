@@ -284,10 +284,15 @@ export function copyEbmClinicalNote(idx: number): void {
   }
 
   navigator.clipboard.writeText(text).then(() => {
-    alert('📋 Đã sao chép Ghi chú Căn cứ EBM vào bộ nhớ tạm! Bạn có thể dán (Ctrl+V) thẳng vào Hồ sơ bệnh án.');
+    if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+      (window as any).showMedicalToast({
+        type: 'success',
+        title: 'Sao chép thành công',
+        message: 'Đã sao chép Ghi chú Căn cứ EBM vào bộ nhớ tạm! Bạn có thể dán (Ctrl+V) thẳng vào Hồ sơ bệnh án.'
+      });
+    }
   }).catch(err => {
     console.error('Clipboard copy failed:', err);
-    alert('⚠️ Trích xuất text:\n\n' + text);
   });
 }
 
@@ -306,7 +311,13 @@ export function copyAllEbmClinicalNotes(): void {
   });
 
   navigator.clipboard.writeText(fullText).then(() => {
-    alert('📋 Đã sao chép TOP Căn cứ EBM vào Clipboard để dán vào Bệnh án!');
+    if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+      (window as any).showMedicalToast({
+        type: 'success',
+        title: 'Sao chép thành công',
+        message: 'Đã sao chép TOP Căn cứ EBM vào Clipboard để dán vào Bệnh án!'
+      });
+    }
   });
 }
 

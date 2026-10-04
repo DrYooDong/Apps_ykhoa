@@ -3,8 +3,8 @@
  * Path: src/content/ebm/guidelines/journal-quality-view.ts
  */
 
-import { JOURNAL_METRICS_DATABASE } from '../../data';
-import { getJournalMetrics } from '../../renderer';
+import { JOURNAL_METRICS_DATABASE } from './shared/data';
+import { getJournalMetrics } from './shared/renderer';
 
 export function renderJournalQualityView(): string {
   return `

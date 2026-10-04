@@ -9,10 +9,10 @@
  * - Standardized EBM SOAP Note clipboard exporter & clean medical PDF printing
  */
 
-import { CliniPortalThemeManager } from '../../../../main';
-import { cliniMdxEngine } from '../../../../core/mdx-engine';
-import { hydrateFlowchartViewers } from '../../../../components/flowchart/renderFlowchartViewer';
-import { sendClinicalIntent } from '../../../../core/clinical-intent';
+import { CliniPortalThemeManager } from './core/theme-manager';
+import { cliniMdxEngine } from './core/mdx-engine';
+import { hydrateFlowchartViewers } from './core/flowchart-viewer';
+import { sendClinicalIntent } from './core/clinical-intent';
 
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug & base name cleanly
@@ -727,7 +727,9 @@ ${points.join('\n')}
       }, 2500);
     }
   }).catch(() => {
-    alert('Đã tạo bản ghi EBM Note!');
+    if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+      (window as any).showMedicalToast({ type: 'info', message: 'Đã tạo bản ghi EBM Note!' });
+    }
   });
 }
 
@@ -1598,7 +1600,7 @@ function hydrateDengueCDSS(mountEl: HTMLElement): void {
           btnCopy.style.borderColor = 'var(--color-border, #cbd5e1)';
         }, 2500);
       }).catch(err => {
-        alert('Không thể sao chép tự động: ' + err);
+        console.warn('Không thể sao chép tự động:', err);
       });
     });
   }

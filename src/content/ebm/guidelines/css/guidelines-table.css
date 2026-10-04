@@ -287,29 +287,36 @@
 .table-action-dock {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 3px;
+  padding: 2px 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md, 8px);
+  white-space: nowrap;
 }
 
 .table-action-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-light);
+  width: 27px;
+  height: 27px;
+  border-radius: 5px;
+  border: 1px solid transparent;
   background: var(--surface);
   color: var(--text-muted);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: all var(--tr-fast);
+  font-size: 0.75rem;
+  transition: all 0.15s ease;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .table-action-btn:hover {
-  background: var(--accent-light);
-  color: var(--accent);
-  border-color: var(--accent);
   transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 /* ── EXPANDED ROW DETAIL (Multi-Tab Dashboard Inside Row) ── */
@@ -391,7 +398,90 @@
   color: var(--text);
 }
 
-/* ── RESPONSIVE & MOBILE CLINICAL CARD DECK ── */
+/* ── TABLET MEDICAL TABLE OPTIMIZATIONS (769px - 1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-lg, 14px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .study-table {
+    min-width: 960px;
+    font-size: 0.8rem;
+  }
+
+  .study-table th, .study-table td {
+    padding: 0.75rem 0.65rem;
+  }
+
+  /* Sticky First Two Columns for seamless horizontal scrolling on tablets */
+  .study-table th.col-checkbox,
+  .study-table td.col-select {
+    position: sticky;
+    left: 0;
+    z-index: 16;
+    background: var(--surface);
+  }
+
+  .study-table thead th.col-checkbox {
+    z-index: 18;
+    background: rgba(248, 250, 252, 0.96);
+  }
+  [data-theme="dark"] .study-table thead th.col-checkbox {
+    background: rgba(27, 40, 66, 0.98);
+  }
+
+  .study-table th.col-title,
+  .study-table td.col-title {
+    position: sticky;
+    left: 42px;
+    z-index: 15;
+    background: var(--surface);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+    min-width: 240px;
+    max-width: 320px;
+  }
+
+  .study-table thead th.col-title {
+    z-index: 17;
+    background: rgba(248, 250, 252, 0.96);
+  }
+  [data-theme="dark"] .study-table thead th.col-title {
+    background: rgba(27, 40, 66, 0.98);
+  }
+
+  /* Synchronize sticky column backgrounds on hover & selection for tablets */
+  .study-table tbody tr.study-row:hover td.col-select,
+  .study-table tbody tr.study-row:hover td.col-title,
+  .study-table tbody tr.main-row:hover td.col-select,
+  .study-table tbody tr.main-row:hover td.col-title {
+    background: var(--accent-light) !important;
+  }
+
+  .study-table tbody tr.study-row.selected td.col-select,
+  .study-table tbody tr.study-row.selected td.col-title {
+    background: rgba(2, 132, 199, 0.09) !important;
+  }
+  [data-theme="dark"] .study-table tbody tr.study-row.selected td.col-select,
+  [data-theme="dark"] .study-table tbody tr.study-row.selected td.col-title {
+    background: rgba(2, 132, 199, 0.22) !important;
+  }
+
+  .table-action-dock {
+    gap: 3px;
+    padding: 2px 4px;
+  }
+
+  .table-action-btn {
+    width: 29px;
+    height: 29px;
+    font-size: 0.78rem;
+  }
+}
+
+/* ── RESPONSIVE & MOBILE CLINICAL CARD DECK (<= 768px) ── */
 @media (max-width: 768px) {
   .table-container {
     background: transparent !important;
@@ -427,7 +517,7 @@
     border: 1.5px solid var(--border-light) !important;
     border-radius: var(--radius-lg, 16px) !important;
     padding: 1rem !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
     position: relative !important;
     gap: 0.65rem !important;
     width: 100% !important;
@@ -456,6 +546,8 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 
   .study-row .col-select input[type="checkbox"] {
@@ -471,27 +563,33 @@
     padding: 0 !important;
     border: none !important;
     width: 100% !important;
-    padding-right: 32px !important; /* Tránh đè lên checkbox */
+    padding-right: 38px !important; /* Tránh đè lên checkbox */
   }
 
   .study-title-text {
-    font-size: 0.96rem !important;
+    font-size: 0.98rem !important;
     font-weight: 700 !important;
-    line-height: 1.4 !important;
+    line-height: 1.45 !important;
     color: var(--text) !important;
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.45rem !important;
   }
 
   .study-meta-sub {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 5px !important;
+    gap: 6px !important;
     align-items: center !important;
   }
 
+  .badge-summary-inline {
+    min-height: 32px !important;
+    padding: 4px 10px !important;
+    font-size: 0.76rem !important;
+  }
+
   .bookmark-btn {
-    min-width: 44px !important;
-    min-height: 44px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
     font-size: 1.25rem !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -507,7 +605,7 @@
   /* Khung Kết Quả Chính & Biểu Đồ Mini Forest Plot SVG */
   .study-row .col-results {
     display: block !important;
-    padding: 0.65rem 0.75rem !important;
+    padding: 0.75rem 0.85rem !important;
     background: var(--surface-2, #f8fafc) !important;
     border-radius: var(--radius-md, 10px) !important;
     border: 1px solid var(--border-light) !important;
@@ -525,7 +623,7 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
     color: var(--accent);
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
 
   .mini-chart-box {
@@ -564,32 +662,49 @@
   .study-row .col-actions {
     display: flex !important;
     width: 100% !important;
-    padding: 0.5rem 0 0 0 !important;
-    margin-top: 0.25rem !important;
+    padding: 0.65rem 0 0 0 !important;
+    margin-top: 0.35rem !important;
     border-top: 1px solid var(--border-light) !important;
     border-bottom: none !important;
   }
 
-  .study-row .col-actions > div {
+  .study-row .col-actions > div,
+  .study-row .col-actions .table-action-dock {
     display: flex !important;
     width: 100% !important;
     gap: 8px !important;
     justify-content: flex-start !important;
     flex-wrap: wrap !important;
     align-items: center !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
 
-  .study-row .col-actions .btn {
-    min-height: 44px !important;
-    min-width: 44px !important;
+  .study-row .col-actions .table-action-btn {
+    min-height: 40px !important;
+    min-width: 40px !important;
+    width: auto !important;
+    height: 40px !important;
     padding: 0.45rem 0.85rem !important;
-    font-size: 0.84rem !important;
+    font-size: 0.88rem !important;
     font-weight: 600 !important;
     border-radius: var(--radius-md, 10px) !important;
+    border: 1px solid var(--border-light) !important;
+    background: var(--surface) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 6px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .study-row .col-actions .table-action-primary,
+  .study-row .col-actions .table-action-summary {
+    background: rgba(2, 132, 199, 0.1) !important;
+    border-color: rgba(2, 132, 199, 0.3) !important;
+    color: var(--accent) !important;
+    font-weight: 700 !important;
   }
 
   /* Thẻ mở rộng chi tiết (Accordion) dạng Single Column Card */
@@ -613,7 +728,10 @@
   .expanded-detail-row .btn {
     min-height: 44px !important;
     width: 100% !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-md, 10px) !important;
     justify-content: center !important;
   }
 }

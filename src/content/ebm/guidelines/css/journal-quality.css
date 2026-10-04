@@ -248,11 +248,75 @@
 
 .btn-openalex-lookup:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* ── 6. PRESET COMPARE BUTTONS ── */
+.preset-compare-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-md, 10px);
+  border: 1px solid var(--border-light);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--tr-fast);
+}
+
+.preset-compare-btn:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.preset-compare-btn.active,
+.preset-compare-btn:first-child {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--accent, #7c3aed);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-lg, 12px);
+  }
+  .jq-table {
+    min-width: 760px;
+    font-size: 0.84rem;
+  }
+  .jq-table th:first-child,
+  .jq-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background: var(--surface, #ffffff);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+  }
+  .jq-table thead th:first-child {
+    z-index: 6;
+    background: var(--surface-2, #f8fafc);
+  }
+  [data-theme="dark"] .jq-table th:first-child,
+  [data-theme="dark"] .jq-table td:first-child {
+    background: #1e293b;
+  }
+  [data-theme="dark"] .jq-table thead th:first-child {
+    background: #0f172a;
+  }
+}
+
 @media (max-width: 768px) {
   .jq-metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem 0.4rem; }
   .jq-metric-item:nth-child(3) { border-right: none; }
   .jq-metric-item { min-height: 48px; }
-  .jq-card { padding: 1rem; }
+  .jq-card { padding: 1rem; border-radius: 14px; }
+  .jq-card-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .jq-table th, .jq-table td { padding: 0.65rem 0.75rem; }
 }
 

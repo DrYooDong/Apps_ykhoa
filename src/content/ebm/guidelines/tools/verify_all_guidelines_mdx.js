@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'd:/Apps/Apps_ykhoa/src/content/ebm/guidelines/kho-guidelines';
+const dir = path.resolve(__dirname, '../kho-guidelines');
 const files = fs.readdirSync(dir).filter(f => f.endsWith('.mdx'));
 
 console.log(`🧪 Bắt đầu kiểm định QA toàn bộ ${files.length} tệp MDX trong Kho Guidelines EBM...`);

@@ -1,0 +1,31 @@
+{
+  "name": "ebm-guidelines-hub",
+  "version": "1.0.0",
+  "description": "EBM Guidelines Hub — Phân hệ Tra cứu, Phân tích & Đối chiếu Y học chứng cứ Độc lập",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "verify:mdx": "node tools/verify_all_guidelines_mdx.js",
+    "audit:tables": "node tools/audit_tables.js"
+  },
+  "keywords": [
+    "ebm",
+    "clinical-guidelines",
+    "evidence-based-medicine",
+    "medical",
+    "offline-first",
+    "forest-plot",
+    "cdss",
+    "typescript"
+  ],
+  "author": "CliniPortal Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0"
+  }
+}

@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EBM Guidelines Hub — Hệ thống Tra cứu, Đối chiếu Y học chứng cứ & Thẩm định Hướng dẫn Điều trị Độc lập">
+  <title>EBM Guidelines Hub — Trung Tâm Y Học Chứng Cứ</title>
+  <meta property="og:title" content="EBM Guidelines Hub — Trung Tâm Y Học Chứng Cứ">
+  <meta property="og:description" content="EBM Guidelines Hub — Hệ thống Tra cứu, Đối chiếu Y học chứng cứ & Thẩm định Hướng dẫn Điều trị Độc lập">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EBM Guidelines Hub — Trung Tâm Y Học Chứng Cứ">
+  <meta name="twitter:description" content="EBM Guidelines Hub — Hệ thống Tra cứu, Đối chiếu Y học chứng cứ & Thẩm định Hướng dẫn Điều trị Độc lập">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="guidelines.css">
+  <link rel="stylesheet" href="css/journal-quality.css">
+  <link rel="stylesheet" href="css/non-intrusive-ui.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg, #f8fafc);
+      color: var(--text, #0f172a);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TOPNAV CONTRACT (3 ZONES) */
+    .portal-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light, #e2e8f0);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.75rem;
+    }
+    [data-theme="dark"] .portal-nav {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .portal-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .portal-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .portal-title-block h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text, #0f172a);
+    }
+    .portal-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .portal-nav-link {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted, #64748b);
+      transition: color 0.15s ease;
+      white-space: nowrap;
+    }
+    .portal-nav-link:hover, .portal-nav-link.active {
+      color: var(--accent, #0284c7);
+    }
+    .portal-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .theme-toggle-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      border: 1px solid var(--border-light, #e2e8f0);
+      background: var(--surface, #fff);
+      color: var(--text, #0f172a);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      background: var(--surface-2, #f1f5f9);
+      border-color: var(--accent, #0284c7);
+    }
+    [data-theme="dark"] .theme-toggle-btn {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+
+    /* HERO SECTION */
+    .portal-hero {
+      position: relative;
+      background: linear-gradient(135deg, #091322 0%, #034b75 60%, #0284c7 100%);
+      color: #ffffff;
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .portal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .portal-hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.85rem;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+    .portal-hero-sub {
+      font-size: 1.02rem;
+      opacity: 0.94;
+      max-width: 820px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+
+    /* LIVE HERO SEARCH */
+    .hero-search-wrapper {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      position: relative;
+      z-index: 20;
+    }
+    .hero-search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 14px;
+      padding: 0.4rem 0.6rem 0.4rem 1.2rem;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+    .hero-search-box:focus-within {
+      background: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 12px 40px rgba(2, 132, 199, 0.4);
+    }
+    .hero-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 0.96rem;
+      color: #0f172a;
+      font-family: inherit;
+      padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+    }
+    .hero-search-btn {
+      background: #0284c7;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+    }
+    .hero-search-btn:hover {
+      background: #0369a1;
+    }
+
+    /* SEARCH AUTOCOMPLETE DROPDOWN */
+    .search-results-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--surface, #ffffff);
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-light, #e2e8f0);
+      max-height: 380px;
+      overflow-y: auto;
+      text-align: left;
+      color: var(--text, #0f172a);
+      display: none;
+    }
+    [data-theme="dark"] .search-results-dropdown {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .search-res-item {
+      padding: 0.85rem 1.15rem;
+      border-bottom: 1px solid var(--border-light, #f1f5f9);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .search-res-item:hover {
+      background: var(--surface-2, #f8fafc);
+    }
+    [data-theme="dark"] .search-res-item {
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+    [data-theme="dark"] .search-res-item:hover {
+      background: #0f172a;
+    }
+    .search-res-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text, #0f172a);
+      margin-bottom: 0.2rem;
+    }
+    .search-res-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted, #64748b);
+      display: flex;
+      gap: 8px;
+    }
+
+    /* STATS KPI STRIP */
+    .portal-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .portal-kpi-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      padding: 1.15rem 1rem;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .portal-kpi-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.16);
+    }
+    .portal-kpi-num {
+      font-family: 'Space Grotesk', monospace;
+      font-variant-numeric: tabular-nums;
+      font-size: 1.9rem;
+      font-weight: 800;
+      display: block;
+      color: #38bdf8;
+    }
+    .portal-kpi-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    /* MAIN CONTAINER */
+    .portal-main {
+      flex: 1;
+      max-width: 1320px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .portal-section-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .portal-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text, #0f172a);
+      margin-bottom: 0.4rem;
+    }
+    .portal-section-sub {
+      color: var(--text-muted, #64748b);
+      font-size: 0.95rem;
+    }
+
+    /* BENTO HUB GRID (ZERO-PILL DISCIPLINE) */
+    .bento-portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .bento-card {
+      background: var(--surface, #ffffff);
+      border: 1px solid var(--border-light, #e2e8f0);
+      border-radius: 18px;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] .bento-card {
+      background: #111a2e;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .bento-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent, #0284c7);
+      box-shadow: 0 14px 32px rgba(2, 132, 199, 0.12);
+    }
+    .bento-card-kicker {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kicker-core { color: #0284c7; }
+    .kicker-analyzer { color: #7c3aed; }
+    .kicker-radar { color: #059669; }
+    .kicker-reader { color: #e11d48; }
+
+    .bento-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .icon-core { background: #e0f2fe; color: #0284c7; }
+    .icon-analyzer { background: #ede9fe; color: #7c3aed; }
+    .icon-radar { background: #d1fae5; color: #059669; }
+    .icon-reader { background: #ffe4e6; color: #e11d48; }
+
+    [data-theme="dark"] .icon-core { background: rgba(2, 132, 199, 0.2); }
+    [data-theme="dark"] .icon-analyzer { background: rgba(124, 58, 237, 0.2); }
+    [data-theme="dark"] .icon-radar { background: rgba(5, 150, 105, 0.2); }
+    [data-theme="dark"] .icon-reader { background: rgba(225, 29, 72, 0.2); }
+
+    .bento-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+      color: var(--text, #0f172a);
+    }
+    .bento-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted, #64748b);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Unboxed Text Metadata with Typographic Separators */
+    .bento-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted, #64748b);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .bento-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-top: auto;
+      transition: gap 0.2s ease;
+    }
+    .bento-card:hover .bento-card-btn {
+      gap: 12px;
+    }
+
+    /* FULLSCREEN MDX READER OVERLAY */
+    #reader-overlay-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: var(--bg, #f8fafc);
+      overflow-y: auto;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+    #reader-overlay-view.active {
+      display: block;
+    }
+    .reader-top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 520;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light, #e2e8f0);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    [data-theme="dark"] .reader-top-bar {
+      background: rgba(15, 23, 42, 0.96);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .reader-workspace {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 1.5rem 6rem;
+    }
+    @media (max-width: 1024px) {
+      .reader-workspace {
+        grid-template-columns: 1fr;
+      }
+      .reader-toc-sidebar {
+        display: none;
+      }
+    }
+
+    /* TOC SIDEBAR */
+    .reader-toc-sidebar {
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding: 1.25rem;
+      background: var(--surface, #ffffff);
+      border: 1px solid var(--border-light, #e2e8f0);
+      border-radius: 14px;
+      font-size: 0.85rem;
+    }
+    [data-theme="dark"] .reader-toc-sidebar {
+      background: #111a2e;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .toc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+    .toc-link {
+      display: block;
+      color: var(--text-muted, #64748b);
+      text-decoration: none;
+      padding: 0.35rem 0.5rem;
+      border-radius: 6px;
+      margin-bottom: 2px;
+      transition: all 0.15s ease;
+      line-height: 1.4;
+    }
+    .toc-link:hover {
+      color: var(--accent, #0284c7);
+      background: var(--surface-2, #f1f5f9);
+    }
+    .toc-link.level-2 { padding-left: 0.75rem; }
+    .toc-link.level-3 { padding-left: 1.25rem; font-size: 0.8rem; }
+
+    /* ARTICLE BODY */
+    .reader-article-body {
+      background: var(--surface, #ffffff);
+      border: 1px solid var(--border-light, #e2e8f0);
+      border-radius: 16px;
+      padding: 3rem 3.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    [data-theme="dark"] .reader-article-body {
+      background: #111a2e;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 768px) {
+      .reader-article-body {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    /* TOAST */
+    .portal-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      background: #0f172a;
+      color: #fff;
+      padding: 0.85rem 1.35rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    /* FOOTER */
+    .portal-footer {
+      border-top: 1px solid var(--border-light, #e2e8f0);
+      background: var(--surface, #ffffff);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted, #64748b);
+    }
+    [data-theme="dark"] .portal-footer {
+      background: #0f172a;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ── TABLET & MOBILE RESPONSIVE SUITE ── */
+    .mobile-menu-btn {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      border: 1px solid var(--border-light, #e2e8f0);
+      background: var(--surface, #fff);
+      color: var(--text, #0f172a);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+    [data-theme="dark"] .mobile-menu-btn {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+
+    /* Mobile Slide-out Drawer */
+    .portal-mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 290px;
+      max-width: 85vw;
+      background: var(--surface, #ffffff);
+      z-index: 1000;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      transform: translateX(-100%);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1rem;
+    }
+    [data-theme="dark"] .portal-mobile-drawer {
+      background: #0f172a;
+    }
+    .portal-mobile-drawer.active {
+      transform: translateX(0);
+    }
+    .portal-drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 999;
+    }
+    .portal-drawer-backdrop.active {
+      display: block;
+    }
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-light, #e2e8f0);
+      margin-bottom: 1rem;
+    }
+    .mobile-drawer-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text, #0f172a);
+    }
+    .mobile-drawer-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: none;
+      background: var(--surface-2, #f1f5f9);
+      color: var(--text-muted, #64748b);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .mobile-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      color: var(--text, #0f172a);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .drawer-link:hover, .drawer-link.active {
+      background: rgba(2, 132, 199, 0.1);
+      color: #0284c7;
+    }
+    .drawer-link i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    /* Mobile Bottom Navigation Bar */
+    .mobile-bottom-nav {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(58px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: var(--surface, #ffffff);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border-light, #e2e8f0);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+        z-index: 850;
+        align-items: center;
+        justify-content: space-around;
+      }
+      [data-theme="dark"] .mobile-bottom-nav {
+        background: rgba(15, 23, 42, 0.95);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        flex: 1;
+        height: 100%;
+        color: var(--text-muted, #64748b);
+        text-decoration: none;
+        font-size: 0.68rem;
+        font-weight: 700;
+        transition: color 0.15s ease;
+      }
+      .mobile-nav-item.active {
+        color: #0284c7;
+      }
+      .mob-nav-icon {
+        font-size: 1.15rem;
+      }
+      body {
+        padding-bottom: calc(65px + env(safe-area-inset-bottom, 0px)) !important;
+      }
+    }
+
+    /* Tablet (768px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .portal-bento-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+      }
+      .portal-nav-links {
+        gap: 1.15rem !important;
+      }
+      .portal-nav-link {
+        font-size: 0.82rem !important;
+      }
+      .portal-hero {
+        padding: 3rem 1.5rem !important;
+      }
+    }
+
+    /* Mobile (<= 768px) */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .portal-nav-links {
+        display: none !important;
+      }
+      .portal-nav {
+        padding: 0 1rem !important;
+        height: 56px !important;
+      }
+      .portal-hero {
+        padding: 2.25rem 1rem 3rem !important;
+      }
+      .portal-hero-title {
+        font-size: 1.85rem !important;
+      }
+      .portal-hero-sub {
+        font-size: 0.92rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .hero-search-wrapper {
+        margin-bottom: 1.5rem !important;
+      }
+      .hero-search-box {
+        padding: 0.35rem 0.5rem 0.35rem 0.9rem !important;
+      }
+      .hero-search-btn span {
+        display: none;
+      }
+      .hero-search-btn {
+        padding: 0.6rem 0.85rem !important;
+      }
+      .portal-bento-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+      .bento-card {
+        padding: 1.35rem 1.2rem !important;
+      }
+      .reader-workspace {
+        flex-direction: column !important;
+      }
+      .reader-toc-sidebar {
+        width: 100% !important;
+        max-height: 200px !important;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP PORTAL NAVIGATION (CONTRACT COMPLIANT) -->
+  <header class="portal-nav">
+    <button class="mobile-menu-btn" id="portal-mobile-menu-btn" onclick="togglePortalMobileMenu(true)" aria-label="Mở menu điều hướng">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <a href="./index.html" class="portal-brand">
+      <div class="portal-logo-icon">
+        <i class="fa-solid fa-notes-medical"></i>
+      </div>
+      <div class="portal-title-block">
+        <h1>EBM Guidelines Hub</h1>
+      </div>
+    </a>
+
+    <nav class="portal-nav-links">
+      <a href="./index.html" class="portal-nav-link active">Trang Chủ</a>
+      <a href="./guidelines.html" class="portal-nav-link">Kho Guidelines</a>
+      <a href="./journal-quality-analyzer.html" class="portal-nav-link">Thẩm Định Tạp Chí</a>
+      <a href="./guideline-radar/radar.html" class="portal-nav-link">Guideline Radar</a>
+      <a href="./index.html#/reader/2026-ada-diabetes" class="portal-nav-link">Trình Đọc MDX</a>
+    </nav>
+
+    <div class="portal-nav-actions">
+      <a href="./guidelines.html" class="btn" style="padding:0.4rem 0.85rem; font-size:0.82rem; font-weight:700; border-radius:8px; background:var(--surface); border:1px solid var(--border-light); text-decoration:none; color:var(--text);">
+        <i class="fa-solid fa-keyboard" style="color:var(--accent);"></i> Ctrl + K
+      </a>
+      <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối" aria-label="Toggle Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-out Navigation Drawer -->
+  <div class="portal-mobile-drawer" id="portal-mobile-drawer">
+    <div class="mobile-drawer-header">
+      <span class="mobile-drawer-title">Điều Hướng CliniPortal</span>
+      <button class="mobile-drawer-close" onclick="togglePortalMobileMenu(false)" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="./index.html" class="drawer-link active"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <a href="./guidelines.html" class="drawer-link"><i class="fa-solid fa-book-medical"></i> Kho Guidelines &amp; Nghiên Cứu</a>
+      <a href="./journal-quality-analyzer.html" class="drawer-link"><i class="fa-solid fa-award"></i> Thẩm Định Tạp Chí &amp; Trust Score</a>
+      <a href="./guideline-radar/radar.html" class="drawer-link"><i class="fa-solid fa-compass"></i> Guideline Radar</a>
+      <a href="./index.html#/reader/2026-ada-diabetes" class="drawer-link"><i class="fa-solid fa-file-lines"></i> Trình Đọc Toàn Văn MDX</a>
+    </div>
+  </div>
+  <div class="portal-drawer-backdrop" id="portal-drawer-backdrop" onclick="togglePortalMobileMenu(false)"></div>
+
+  <!-- HERO SECTION -->
+  <section class="portal-hero">
+    <div style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:700; background:rgba(255,255,255,0.12); padding:0.35rem 0.9rem; border-radius:999px; margin-bottom:1.25rem; border:1px solid rgba(255,255,255,0.2);">
+      <i class="fa-solid fa-shield-halved"></i> 100% Offline-First · EBM 2026 Standards · Phân Tích Độc Lập
+    </div>
+
+    <h2 class="portal-hero-title">Trung Tâm Y Học Chứng Cứ &amp; Guidelines</h2>
+    <p class="portal-hero-sub">
+      Nền tảng tra cứu, giải phẫu phương pháp luận thử nghiệm lâm sàng, phân tích kết cục gộp (Forest Plot) và đối chiếu hướng dẫn điều trị chuẩn Bộ Y tế &amp; Quốc tế.
+    </p>
+
+    <!-- LIVE HERO SEARCH -->
+    <div class="hero-search-wrapper">
+      <div class="hero-search-box">
+        <i class="fa-solid fa-magnifying-glass" style="color:#0284c7; font-size:1.15rem;"></i>
+        <input type="text" id="hero-global-search" class="hero-search-input" placeholder="Tìm hướng dẫn điều trị, bệnh học, hoạt chất, tạp chí y khoa (vd: ADA, Suy tim, COPD, NEJM)..." autocomplete="off">
+        <button class="hero-search-btn" onclick="executeHeroSearch()">
+          <span>Tra Cứu</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+      <div id="hero-search-results" class="search-results-dropdown"></div>
+    </div>
+
+    <!-- STATS KPI STRIP -->
+    <div class="portal-kpi-grid">
+      <div class="portal-kpi-card">
+        <span class="portal-kpi-num" id="stat-total-guidelines">161+</span>
+        <span class="portal-kpi-label">Thử Nghiệm &amp; Guidelines</span>
+      </div>
+      <div class="portal-kpi-card">
+        <span class="portal-kpi-num" id="stat-total-mdx">108+</span>
+        <span class="portal-kpi-label">Bài Phân Tích Toàn Văn MDX</span>
+      </div>
+      <div class="portal-kpi-card">
+        <span class="portal-kpi-num">17</span>
+        <span class="portal-kpi-label">Chuyên Khoa Lâm Sàng</span>
+      </div>
+      <div class="portal-kpi-card">
+        <span class="portal-kpi-num">100%</span>
+        <span class="portal-kpi-label">Offline-First &amp; file:///</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN HUB PORTAL -->
+  <main class="portal-main">
+    <div class="portal-section-header">
+      <h3 class="portal-section-title">Các Phân Hệ Chuyên Nghiệp</h3>
+      <p class="portal-section-sub">Truy cập nhanh vào các công cụ lâm sàng, thẩm định tạp chí và theo dõi cập nhật</p>
+    </div>
+
+    <div class="bento-portal-grid">
+      <!-- CARD 1: GUIDELINES MASTER HUB -->
+      <a href="./guidelines.html" class="bento-card">
+        <div>
+          <span class="bento-card-kicker kicker-core">
+            <i class="fa-solid fa-database"></i> Core Clinical Database
+          </span>
+          <div class="bento-card-icon icon-core">
+            <i class="fa-solid fa-book-medical"></i>
+          </div>
+          <h4 class="bento-card-title">Kho Guidelines &amp; Nghiên Cứu EBM</h4>
+          <p class="bento-card-desc">
+            Kho dữ liệu hơn 161+ tài liệu chuẩn hóa: Bộ lọc đa chiều theo chuyên khoa, Forest Plot SVG trực quan, CDSS Dosing Matcher theo eGFR, và Ma trận đối sánh 3D.
+          </p>
+          <div class="bento-meta-strip">
+            <span>161+ Guidelines</span>
+            <span aria-hidden="true">·</span>
+            <span>Forest Plot SVG</span>
+            <span aria-hidden="true">·</span>
+            <span>CDSS Matcher</span>
+            <span aria-hidden="true">·</span>
+            <span>3D Matrix</span>
+          </div>
+        </div>
+        <div class="bento-card-btn" style="color: #0284c7;">
+          Mở Kho Guidelines <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </a>
+
+      <!-- CARD 2: JOURNAL QUALITY ANALYZER -->
+      <a href="./journal-quality-analyzer.html" class="bento-card">
+        <div>
+          <span class="bento-card-kicker kicker-analyzer">
+            <i class="fa-solid fa-globe"></i> Live OpenAlex API
+          </span>
+          <div class="bento-card-icon icon-analyzer">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h4 class="bento-card-title">Thẩm Định &amp; Đánh Giá Tạp Chí</h4>
+          <p class="bento-card-desc">
+            Tra cứu độ uy tín tạp chí quốc tế, tính điểm Journal Trust Score (0-100), tích hợp OpenAlex REST API, H-Index, Scimago Quartile và nhận diện tạp chí biến tướng.
+          </p>
+          <div class="bento-meta-strip">
+            <span>OpenAlex API</span>
+            <span aria-hidden="true">·</span>
+            <span>Trust Score 0-100</span>
+            <span aria-hidden="true">·</span>
+            <span>Quartile Q1-Q4</span>
+            <span aria-hidden="true">·</span>
+            <span>Beall's Audit</span>
+          </div>
+        </div>
+        <div class="bento-card-btn" style="color: #7c3aed;">
+          Mở Bộ Thẩm Định <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </a>
+
+      <!-- CARD 3: GUIDELINE RADAR -->
+      <a href="./guideline-radar/radar.html" class="bento-card">
+        <div>
+          <span class="bento-card-kicker kicker-radar">
+            <i class="fa-solid fa-code-compare"></i> Practice-Changing Updates
+          </span>
+          <div class="bento-card-icon icon-radar">
+            <i class="fa-solid fa-satellite-dish"></i>
+          </div>
+          <h4 class="bento-card-title">Guideline Radar (Diff Viewer)</h4>
+          <p class="bento-card-desc">
+            Trạm theo dõi và đối chiếu trực quan những thay đổi thực hành lâm sàng giữa các ấn bản phác đồ cũ và mới nhất (ESC, ADA, GOLD, ESO, Bộ Y Tế Việt Nam).
+          </p>
+          <div class="bento-meta-strip">
+            <span>Diff So Sánh</span>
+            <span aria-hidden="true">·</span>
+            <span>Timeline Cập Nhật</span>
+            <span aria-hidden="true">·</span>
+            <span>Ma Trận Quốc Tế vs BYT</span>
+          </div>
+        </div>
+        <div class="bento-card-btn" style="color: #059669;">
+          Mở Guideline Radar <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </a>
+
+      <!-- CARD 4: MDX FULL-TEXT LIBRARY -->
+      <div class="bento-card" style="cursor: pointer;" onclick="openLatestMdx()">
+        <div>
+          <span class="bento-card-kicker kicker-reader">
+            <i class="fa-solid fa-book-open"></i> 108+ Full-Text Papers
+          </span>
+          <div class="bento-card-icon icon-reader">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <h4 class="bento-card-title">Trình Đọc Toàn Văn MDX Guidelines</h4>
+          <p class="bento-card-desc">
+            Trình hiển thị toàn văn chuyên sâu các hướng dẫn Bộ Y tế, ESC, AHA, ADA, GINA, GOLD, KDIGO chuẩn MDX Native với Mục lục (TOC) điều hướng thông minh.
+          </p>
+          <div class="bento-meta-strip">
+            <span>MDX Native</span>
+            <span aria-hidden="true">·</span>
+            <span>Mục Lục Tương Tác</span>
+            <span aria-hidden="true">·</span>
+            <span>In Ấn / PDF</span>
+            <span aria-hidden="true">·</span>
+            <span>Xuất SOAP Note</span>
+          </div>
+        </div>
+        <div class="bento-card-btn" style="color: #e11d48;">
+          Đọc Bài Hướng Dẫn Mới Nhất <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FULLSCREEN MDX READER OVERLAY -->
+  <div id="reader-overlay-view">
+    <div class="reader-top-bar">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <button class="btn" onclick="closeReader()" style="padding:0.45rem 0.9rem; font-weight:700; font-size:0.85rem; border-radius:8px; background:var(--surface); border:1px solid var(--border-light); cursor:pointer;">
+          <i class="fa-solid fa-arrow-left"></i> Quay lại Hub
+        </button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <select id="reader-guideline-select" style="padding:0.4rem 0.8rem; border-radius:8px; border:1px solid var(--border-light); font-size:0.84rem; max-width:320px; font-weight:600; background:var(--surface); color:var(--text);" onchange="switchMdxGuideline(this.value)">
+            <!-- Populated dynamically with all 108+ guidelines -->
+          </select>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <button class="btn" onclick="adjustReaderFontSize(-1)" title="Giảm cỡ chữ" style="padding:0.4rem 0.7rem; border-radius:8px; border:1px solid var(--border-light); background:var(--surface); font-weight:700; font-size:0.85rem; cursor:pointer;">
+          A-
+        </button>
+        <button class="btn" onclick="adjustReaderFontSize(1)" title="Tăng cỡ chữ" style="padding:0.4rem 0.7rem; border-radius:8px; border:1px solid var(--border-light); background:var(--surface); font-weight:700; font-size:0.85rem; cursor:pointer;">
+          A+
+        </button>
+        <button class="btn" onclick="copyCurrentMdxSoapNote()" title="Sao chép tóm tắt SOAP Note" style="padding:0.4rem 0.85rem; border-radius:8px; border:1px solid var(--border-light); background:var(--surface); font-weight:700; font-size:0.84rem; cursor:pointer; color:var(--color-primary,#0284c7);">
+          <i class="fa-solid fa-copy"></i> SOAP Note
+        </button>
+        <button class="btn" onclick="window.print()" title="In ấn tài liệu" style="padding:0.4rem 0.85rem; border-radius:8px; border:1px solid var(--border-light); background:var(--surface); font-weight:700; font-size:0.84rem; cursor:pointer;">
+          <i class="fa-solid fa-print"></i> In / PDF
+        </button>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="reader-workspace">
+      <!-- DYNAMIC TABLE OF CONTENTS SIDEBAR -->
+      <aside class="reader-toc-sidebar" id="reader-toc-sidebar">
+        <div class="toc-title"><i class="fa-solid fa-list-ul" style="color:var(--accent,#0284c7);"></i> Mục Lục Tài Liệu</div>
+        <div id="reader-toc-links"></div>
+      </aside>
+
+      <!-- MAIN ARTICLE BODY -->
+      <article class="reader-article-body" id="reader-modal-content">
+        <div style="text-align:center; padding:3rem 0; color:var(--text-muted,#64748b);">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; margin-bottom:1rem; color:var(--accent);"></i>
+          <p>Đang tải bài viết MDX...</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="portal-toast" class="portal-toast" style="display: none;">
+    <i class="fa-solid fa-circle-check" style="color: #38bdf8; font-size: 1.15rem;"></i>
+    <span id="portal-toast-msg">Đã sao chép vào bộ nhớ tạm!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="portal-footer">
+    <p>EBM Guidelines Hub © 2026 · Hệ thống Y học chứng cứ Độc lập · Chuẩn mực Thử nghiệm Lâm sàng &amp; Khuyến cáo Điều trị</p>
+  </footer>
+
+  <!-- 📱 MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Điều hướng nhanh di động">
+    <a href="./index.html" class="mobile-nav-item active">
+      <span class="mob-nav-icon"><i class="fa-solid fa-house"></i></span>
+      <span class="mob-nav-label">Trang Chủ</span>
+    </a>
+    <a href="./guidelines.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-book-medical"></i></span>
+      <span class="mob-nav-label">Kho Bài</span>
+    </a>
+    <a href="./journal-quality-analyzer.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-award"></i></span>
+      <span class="mob-nav-label">Tạp Chí</span>
+    </a>
+    <a href="./guideline-radar/radar.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-compass"></i></span>
+      <span class="mob-nav-label">Radar</span>
+    </a>
+    <a href="./index.html#/reader/2026-ada-diabetes" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-file-lines"></i></span>
+      <span class="mob-nav-label">Đọc MDX</span>
+    </a>
+  </nav>
+
+  <!-- SCRIPTS -->
+  <script>
+    function togglePortalMobileMenu(show) {
+      const drawer = document.getElementById('portal-mobile-drawer');
+      const backdrop = document.getElementById('portal-drawer-backdrop');
+      if (!drawer || !backdrop) return;
+      const isOpen = show !== undefined ? show : !drawer.classList.contains('active');
+      drawer.classList.toggle('active', isOpen);
+      backdrop.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/core/cliniportal-sync.js"></script>
+  <script type="module">
+    import { CliniPortalThemeManager } from './js/core/theme-manager.ts';
+    import { cliniMdxEngine } from './js/core/mdx-engine.ts';
+    import { KHO_GUIDELINES_STATIC } from './js/kho-guidelines-registry.ts';
+
+    let currentParsedMdx = null;
+    let currentFontSize = 16;
+
+    // Theme toggling
+    window.toggleTheme = function() {
+      const next = CliniPortalThemeManager.toggleTheme();
+      updateThemeIcon(next);
+    };
+
+    function updateThemeIcon(theme) {
+      document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+        btn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun" style="color:#fcd34d;"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+    }
+    updateThemeIcon(CliniPortalThemeManager.getTheme());
+
+    // Reader logic
+    window.openLatestMdx = function() {
+      window.location.hash = '#/reader/2026-ada-diabetes';
+    };
+
+    window.closeReader = function() {
+      const overlay = document.getElementById('reader-overlay-view');
+      if (overlay) overlay.classList.remove('active');
+      window.location.hash = '';
+    };
+
+    window.switchMdxGuideline = function(slug) {
+      if (slug) {
+        window.location.hash = `#/reader/${slug}`;
+      }
+    };
+
+    window.adjustReaderFontSize = function(delta) {
+      currentFontSize = Math.max(13, Math.min(24, currentFontSize + delta));
+      const content = document.getElementById('reader-modal-content');
+      if (content) content.style.fontSize = `${currentFontSize}px`;
+    };
+
+    window.copyCurrentMdxSoapNote = function() {
+      if (!currentParsedMdx) return;
+      const soap = `[SOAP CLINICAL NOTE — EBM GUIDELINE]
+TITLE: ${currentParsedMdx.title || 'Guideline'}
+ORGANIZATION: ${currentParsedMdx.frontmatter?.organization || 'EBM Hub'} (${currentParsedMdx.frontmatter?.year || '2026'})
+COR / LOE: Class ${currentParsedMdx.frontmatter?.cor || 'I'}, LOE ${currentParsedMdx.frontmatter?.loe || 'A'}
+
+SUBJECTIVE & CLINICAL BACKGROUND:
+${currentParsedMdx.description || ''}
+
+ASSESSMENT & KEY RECOMMENDATIONS:
+${Array.isArray(currentParsedMdx.frontmatter?.keyRecommendations) 
+  ? currentParsedMdx.frontmatter.keyRecommendations.map(r => '• ' + r).join('\n') 
+  : 'Tham khảo toàn văn phác đồ điều trị'}
+
+PLAN:
+Áp dụng theo phác đồ chuẩn hóa EBM Guidelines Hub 2026.`;
+
+      navigator.clipboard.writeText(soap).then(() => {
+        showPortalToast('Đã sao chép tóm tắt SOAP Note vào Bộ nhớ tạm!');
+      });
+    };
+
+    function showPortalToast(msg) {
+      const toast = document.getElementById('portal-toast');
+      const text = document.getElementById('portal-toast-msg');
+      if (toast && text) {
+        text.textContent = msg;
+        toast.style.display = 'flex';
+        setTimeout(() => { toast.style.display = 'none'; }, 2600);
+      }
+    }
+
+    // Populate Guideline Select Dropdown
+    function populateGuidelineDropdown(selectedSlug) {
+      const select = document.getElementById('reader-guideline-select');
+      if (!select) return;
+
+      select.innerHTML = KHO_GUIDELINES_STATIC.map(g => {
+        const slug = g.file.replace('.mdx', '');
+        return `<option value="${slug}" ${slug === selectedSlug ? 'selected' : ''}>${g.organization} (${g.year}): ${g.title.slice(0, 50)}...</option>`;
+      }).join('');
+    }
+
+    async function handleHashRoute() {
+      const hash = window.location.hash;
+      const overlay = document.getElementById('reader-overlay-view');
+      const content = document.getElementById('reader-modal-content');
+      const tocContainer = document.getElementById('reader-toc-links');
+
+      if (hash.startsWith('#/reader/')) {
+        const slug = hash.replace('#/reader/', '').trim();
+        if (overlay) overlay.classList.add('active');
+        populateGuidelineDropdown(slug);
+
+        try {
+          const resp = await fetch(`kho-guidelines/${slug}.mdx`);
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const text = await resp.text();
+          const parsed = cliniMdxEngine.parse(text);
+          currentParsedMdx = parsed;
+
+          // Render TOC
+          if (tocContainer) {
+            if (parsed.toc && parsed.toc.length > 0) {
+              tocContainer.innerHTML = parsed.toc.map(item => `
+                <a href="#${item.id}" class="toc-link level-${item.level}" onclick="smoothScrollTo('${item.id}', event)">
+                  ${item.text}
+                </a>
+              `).join('');
+            } else {
+              tocContainer.innerHTML = '<span style="color:var(--text-muted); font-size:0.8rem;">Toàn văn liên tục</span>';
+            }
+          }
+
+          if (content) {
+            const org = parsed.frontmatter?.organization || 'Hiệp hội';
+            const year = parsed.frontmatter?.year || '2026';
+            const cor = parsed.frontmatter?.cor || 'I';
+            const loe = parsed.frontmatter?.loe || 'A';
+
+            content.innerHTML = `
+              <div style="border-bottom: 1px solid var(--border-light,#e2e8f0); padding-bottom:1.5rem; margin-bottom:2rem;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:0.75rem; flex-wrap:wrap;">
+                  <span style="font-weight:800; font-size:0.78rem; text-transform:uppercase; color:#0284c7; background:#e0f2fe; padding:0.25rem 0.75rem; border-radius:6px;">${org} · ${year}</span>
+                  <span style="font-weight:800; font-size:0.78rem; color:#059669; background:#d1fae5; padding:0.25rem 0.75rem; border-radius:6px;">Class ${cor} · LOE ${loe}</span>
+                  <span style="font-size:0.8rem; color:var(--text-muted,#64748b); font-weight:600;">Cập nhật chuẩn EBM</span>
+                </div>
+                <h1 style="font-family:'Space Grotesk',sans-serif; font-size:2.2rem; font-weight:800; margin-bottom:0.75rem; color:var(--text,#0f172a); line-height:1.25;">${parsed.title || slug}</h1>
+                ${parsed.description ? `<p style="font-size:1.05rem; color:var(--text-muted,#64748b); line-height:1.65; margin:0;">${parsed.description}</p>` : ''}
+              </div>
+              <div class="guideline-mdx-body">${parsed.html}</div>
+            `;
+          }
+        } catch (e) {
+          if (content) {
+            content.innerHTML = `
+              <div style="text-align:center; padding:3rem 0; color:#ef4444;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size:2.5rem; margin-bottom:1rem;"></i>
+                <h3 style="margin-bottom:0.5rem;">Không tìm thấy tệp MDX: ${slug}.mdx</h3>
+                <p style="color:var(--text-muted,#64748b);">Vui lòng kiểm tra lại đường dẫn trong kho guidelines.</p>
+              </div>
+            `;
+          }
+        }
+      } else {
+        if (overlay) overlay.classList.remove('active');
+      }
+    }
+
+    window.smoothScrollTo = function(elementId, event) {
+      if (event) event.preventDefault();
+      const target = document.getElementById(elementId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    // Global Live Search on Hero
+    const heroInput = document.getElementById('hero-global-search');
+    const heroResults = document.getElementById('hero-search-results');
+
+    function stripVietnamese(str) {
+      if (!str) return '';
+      return String(str).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, m => m === 'đ' ? 'd' : 'D').toLowerCase();
+    }
+
+    if (heroInput && heroResults) {
+      heroInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          window.executeHeroSearch();
+        }
+      });
+
+      heroInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        if (query.length < 2) {
+          heroResults.style.display = 'none';
+          return;
+        }
+
+        const queryNorm = stripVietnamese(query);
+
+        const matches = KHO_GUIDELINES_STATIC.filter(g => {
+          const raw = `${g.title} ${g.organization} ${g.specialty} ${g.drug || ''} ${g.summary || ''}`.toLowerCase();
+          const norm = stripVietnamese(raw);
+          return raw.includes(query) || norm.includes(queryNorm);
+        }).slice(0, 8);
+
+        if (matches.length === 0) {
+          heroResults.innerHTML = `
+            <div style="padding:1.25rem; text-align:center; color:var(--text-muted); font-size:0.88rem;">
+              Không tìm thấy kết quả phù hợp. <a href="./guidelines.html" style="color:var(--accent); font-weight:700;">Xem toàn bộ Kho Guidelines</a>
+            </div>
+          `;
+          heroResults.style.display = 'block';
+          return;
+        }
+
+        heroResults.innerHTML = matches.map(m => {
+          const slug = m.file.replace('.mdx', '');
+          return `
+            <div class="search-res-item" onclick="openGuidelineFromSearch('${slug}')">
+              <div>
+                <div class="search-res-title">${m.title}</div>
+                <div class="search-res-meta">
+                  <span><i class="fa-solid fa-building-columns"></i> ${m.organization} (${m.year})</span>
+                  <span>·</span>
+                  <span><i class="fa-solid fa-stethoscope"></i> ${m.specialty}</span>
+                  ${m.impact === 'practice-changing' ? '<span>· <strong style=\"color:#dc2626;\">Practice-Changing</strong></span>' : ''}
+                </div>
+              </div>
+              <button class="btn btn-primary" style="padding:0.35rem 0.75rem; font-size:0.78rem; font-weight:700; border-radius:6px; cursor:pointer;">
+                Đọc MDX
+              </button>
+            </div>
+          `;
+        }).join('');
+
+        heroResults.style.display = 'block';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!heroInput.contains(e.target) && !heroResults.contains(e.target)) {
+          heroResults.style.display = 'none';
+        }
+      });
+    }
+
+    window.openGuidelineFromSearch = function(slug) {
+      if (heroResults) heroResults.style.display = 'none';
+      if (heroInput) heroInput.value = '';
+      window.location.hash = `#/reader/${slug}`;
+    };
+
+    window.executeHeroSearch = function() {
+      const q = heroInput?.value.trim();
+      if (q) {
+        window.location.href = `./guidelines.html?search=${encodeURIComponent(q)}`;
+      } else {
+        window.location.href = `./guidelines.html`;
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashRoute);
+    window.addEventListener('DOMContentLoaded', handleHashRoute);
+  </script>
+</body>
+</html>

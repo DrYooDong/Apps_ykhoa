@@ -118,7 +118,13 @@ class GuidelineResearchToolsService {
     const text = document.getElementById('pico-query-output')?.textContent || '';
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
-        alert('✅ Đã sao chép chuỗi truy vấn PubMed MeSH vào Clipboard!');
+        if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+          (window as any).showMedicalToast({
+            type: 'success',
+            title: 'PubMed Query',
+            message: 'Đã sao chép chuỗi truy vấn PubMed MeSH vào Clipboard!'
+          });
+        }
       });
     }
   }
@@ -333,7 +339,13 @@ class GuidelineResearchToolsService {
     const text = document.getElementById('citation-text-output')?.textContent || '';
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
-        alert('✅ Đã sao chép trích dẫn học thuật vào Clipboard!');
+        if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+          (window as any).showMedicalToast({
+            type: 'success',
+            title: 'Trích dẫn y khoa',
+            message: 'Đã sao chép trích dẫn học thuật vào Clipboard!'
+          });
+        }
       });
     }
   }

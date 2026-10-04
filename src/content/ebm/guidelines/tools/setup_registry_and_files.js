@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = path.resolve('d:/Apps/Apps_ykhoa/src/content/ebm/guidelines/kho-guidelines');
+const dir = path.resolve(__dirname, '../kho-guidelines');
 const oldIapPath = path.join(dir, 'International_Association_of_Pancreatology_Revised_Guidelines_on_Acute_Pancreatitis_2025.mdx');
 const newIapPath = path.join(dir, '2025-iap-acute-pancreatitis.mdx');
 const bavenoStubPath = path.join(dir, '2021-bavenovii-taltmc.mdx');
@@ -25,7 +25,7 @@ if (fs.existsSync(bavenoStubPath)) {
 }
 
 // 3. Update kho-guidelines-registry.ts
-const regPath = path.resolve('d:/Apps/Apps_ykhoa/src/content/ebm/guidelines/js/kho-guidelines-registry.ts');
+const regPath = path.resolve(__dirname, '../js/kho-guidelines-registry.ts');
 let regContent = fs.readFileSync(regPath, 'utf8');
 
 // Update Baveno VII file mapping

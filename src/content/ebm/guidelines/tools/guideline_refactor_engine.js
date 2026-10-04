@@ -15,7 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const KHO_DIR = path.resolve('d:/Apps/Apps_ykhoa/src/content/ebm/guidelines/kho-guidelines');
+const KHO_DIR = path.resolve(__dirname, '../kho-guidelines');
 
 // Metadata mapping for COR, LOE, Organization, Year defaults if missing or incomplete
 const METADATA_ENRICHMENT = {

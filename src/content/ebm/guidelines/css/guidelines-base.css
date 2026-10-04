@@ -753,6 +753,60 @@ body.guidelines-active .main-wrapper {
   border-color: transparent;
 }
 
+/* ── SPECIAL STYLING FOR KHO BỆNH (ICD-10) BUTTON ── */
+#sidebar-btn-conditions,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3) {
+  position: relative;
+  transition: all var(--tr-fast);
+}
+
+#sidebar-btn-conditions .left-nav-icon,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3) .left-nav-icon {
+  color: var(--accent);
+  transition: transform var(--tr-fast);
+}
+
+#sidebar-btn-conditions:hover,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3):hover {
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--text);
+  transform: translateX(3px);
+}
+
+#sidebar-btn-conditions:hover .left-nav-icon,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3):hover .left-nav-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+#sidebar-btn-conditions .left-nav-link-badge,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3) .left-nav-link-badge {
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--accent);
+  font-weight: 800;
+  border-color: rgba(2, 132, 199, 0.25);
+  transition: all var(--tr-fast);
+}
+
+#sidebar-btn-conditions:hover .left-nav-link-badge,
+div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3):hover .left-nav-link-badge {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+}
+
+[data-theme="dark"] #sidebar-btn-conditions:hover,
+[data-theme="dark"] div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3):hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+[data-theme="dark"] #sidebar-btn-conditions .left-nav-link-badge,
+[data-theme="dark"] div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3) .left-nav-link-badge {
+  background: rgba(56, 189, 248, 0.18);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
 /* ── COLLAPSED SIDEBAR ── */
 .left-nav.collapsed {
   width: var(--sidebar-collapsed-w);

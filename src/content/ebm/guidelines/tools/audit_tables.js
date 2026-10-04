@@ -6,6 +6,7 @@ const bDir = path.resolve(__dirname, '../../../basic-medical');
 
 function getMdxFiles(dir) {
   let results = [];
+  if (!fs.existsSync(dir)) return results;
   const list = fs.readdirSync(dir);
   list.forEach(file => {
     const full = path.join(dir, file);

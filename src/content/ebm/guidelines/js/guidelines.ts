@@ -363,6 +363,14 @@ if (typeof window !== 'undefined') {
     });
 
     document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
       if (e.key === 'Escape') {
         if (typeof (window as any).toggleMobileFilterSheet === 'function') (window as any).toggleMobileFilterSheet(false);
         if (window.closeAddModal) window.closeAddModal();

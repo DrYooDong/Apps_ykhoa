@@ -16,7 +16,13 @@ export function addToCompare(studyId: string): void {
     window.selectedIds.add(studyId);
   }
   updateFloatingCompareBar();
-  alert(`⚖️ Đã thêm bài vào Danh sách Đối Sánh! (Hiện có ${compareStudyIds.size} bài)`);
+  if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+    (window as any).showMedicalToast({
+      type: 'info',
+      title: 'Đối sánh lâm sàng',
+      message: `Đã thêm bài vào Danh sách Đối Sánh! (Hiện có ${compareStudyIds.size} bài)`
+    });
+  }
 }
 
 export function removeFromCompare(studyId: string): void {
@@ -70,7 +76,13 @@ export function openMultiCompareModal(): void {
   if (!modal) return;
 
   if (compareStudyIds.size === 0) {
-    alert('⚠️ Vui lòng tích chọn ít nhất 1-4 bài nghiên cứu trong danh sách hoặc bấm "Thêm vào So sánh" để mở Ma trận đối sánh!');
+    if (typeof window !== 'undefined' && typeof (window as any).showMedicalToast === 'function') {
+      (window as any).showMedicalToast({
+        type: 'warning',
+        title: 'Chưa chọn bài',
+        message: 'Vui lòng tích chọn ít nhất 1-4 bài nghiên cứu trong danh sách để mở Ma trận đối sánh!'
+      });
+    }
     return;
   }
 

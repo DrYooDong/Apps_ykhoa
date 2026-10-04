@@ -1,74 +1,170 @@
-# 📖 Hướng Dẫn Sử Dụng & Tài Liệu Phân Hệ Guidelines & EBM
+# 📚 EBM Guidelines Hub — Standalone Project
 
-> **EBM Guidelines Hub**: Phân hệ tra cứu, phân tích, đối chiếu hướng dẫn điều trị chuẩn mực (trong nước & quốc tế) và các thử nghiệm lâm sàng dựa trên nguyên tắc **Y học chứng cứ (Evidence-Based Medicine)**.
-> **Kiến trúc**: TypeScript Modular + Vanilla CSS3 + Vector SVG Charts, 100% Offline-First.
-
----
-
-## ✨ 1. Giới Thiệu Phân Hệ
-
-Phân hệ hỗ trợ Bác sĩ lâm sàng, Bác sĩ nội trú và Sinh viên y khoa:
-- **Tổng hợp đa nguồn**: Hơn 60+ hướng dẫn điều trị chuẩn mực từ Bộ Y tế Việt Nam, Hội Tim mạch học Việt Nam (VNHA), Hội Hồi sức Cấp cứu (VNACCS) và các hiệp hội quốc tế hàng đầu (ESC, AHA/ACC, ADA, GINA, GOLD, KDIGO, SSC, IDSA).
-- **Phân tích Y học chứng cứ (EBM)**: Trích xuất và cấu trúc hóa các tiêu chí can thiệp, tiêu chí đánh giá gộp chính (Primary Endpoint) và các chỉ số thống kê hiệu quả ($HR, RR, OR, ARR, NNT$).
-- **Đối chiếu Đa chiều (Multi-Compare Matrix)**: Chọn đồng thời nhiều nghiên cứu để so sánh song song các tiêu chí can thiệp, đối tượng, hiệu quả và độ an toàn.
-- **Hỗ trợ Quyết định Lâm sàng (CDSS Dosing Matcher)**: Phân tích ca bệnh cụ thể (tuổi, giới, eGFR, tiền sử bệnh) để tự động đối chiếu khuyến cáo liều dùng và chống chỉ định.
-- **Thẩm định Chất lượng Y văn (Journal Quality Analyzer)**: Tích hợp OpenAlex API và thuật toán Journal Trust Score (0-100) để đánh giá độ tin cậy của tạp chí công bố, kèm bộ lọc cảnh báo tạp chí săn mồi (Beall's List).
+> **Dự án Độc Lập**: Trung Tâm Tra Cứu, Đối Chiếu Y Học Chứng Cứ, Phân Tích Thử Nghiệm Lâm Sàng & Thẩm Định Hướng Dẫn Điều Trị Y Khoa.  
+> **Kiến trúc**: TypeScript Modular + Vanilla CSS3 + Vector SVG Engine, 100% Offline-First.
 
 ---
 
-## 📊 2. Cấu Trúc Bảng Dữ Liệu Nghiên Cứu (Data Schema)
+## 🏛️ 1. Giới Thiệu Dự Án
 
-Mỗi bản ghi trong `SAMPLE_STUDIES` (`guidelinesdata.ts`) có cấu trúc chuẩn hóa:
+**EBM Guidelines Hub** là một phân hệ web y khoa chuyên sâu được đóng gói thành một dự án độc lập hoàn chỉnh, cho phép phát triển, nâng cấp, kiểm thử và triển khai riêng biệt mà không phụ thuộc vào hệ sinh thái cha.
 
-| Trường dữ liệu | Kiểu | Mô tả chi tiết | Ví dụ |
-| :--- | :--- | :--- | :--- |
-| `id` | `string` | Định danh duy nhất (slug gạch nối) | `"study_empa_reg"` |
-| `title` | `string` | Tên chính thức của thử nghiệm / Guideline | `"EMPA-REG OUTCOME"` |
-| `drug` | `string` | Hoạt chất chính hoặc can thiệp điều trị | `"Empagliflozin 10mg/25mg QD"` |
-| `sourceType` | `enum` | Phân loại nguồn (`intl-study`, `intl-guideline`, `vn-moh`, `vn-association`) | `"intl-study"` |
-| `specialty` | `enum` | Chuyên khoa y học (`cardio`, `pulmo`, `gi`, `endo`, `icu`, `renal`...) | `"cardio"` |
-| `design` | `enum` | Thiết kế nghiên cứu (`rct`, `meta`, `cohort`, `guideline`, `review`) | `"rct"` |
-| `intervention` | `string` | Tóm tắt nhóm can thiệp vs đối chứng | `"Empagliflozin vs Placebo + Chuẩn điều trị"` |
-| `primaryEndpoint`| `string` | Kết cục gộp chính đo lường hiệu quả | `"3-point MACE (CV Death, Nonfatal MI, Nonfatal Stroke)"` |
-| `keyResults` | `string/object` | Tỷ số chênh lệch, khoảng tin cậy 95% CI và p-value | `"HR 0.86 (95% CI 0.74-0.99, p=0.04)"` |
-| `impact` | `enum` | Mức độ thay đổi thực hành (`practice-changing`, `informative`, `early-signal`) | `"practice-changing"` |
-| `sampleSize` | `number` | Tổng số lượng bệnh nhân tham gia thử nghiệm | `7020` |
-| `population` | `string` | Đặc điểm và tiêu chuẩn lựa chọn bệnh nhân | `"Bệnh nhân ĐTĐ típ 2 có tiền sử bệnh tim mạch xơ vữa"` |
-| `summary` | `string` | Kết luận cốt lõi ngắn gọn | `"Giảm 14% 3-point MACE, giảm 38% tử vong tim mạch"` |
-| `fdaStatus` | `string` | Phê duyệt pháp lý hoặc phân độ khuyến cáo | `"FDA Approved 2016 / Class I Level A"` |
-| `sourceUrl` | `string` | Đường dẫn trực tiếp tới PubMed / DOI | `"https://doi.org/10.1056/NEJMoa1504720"` |
-| `file` | `string` | Đường dẫn tương đối tới tệp HTML chi tiết | `"kho-guidelines/2015-nejm-empa-reg.html"` |
-| `asianData` | `boolean` | Có phân tích riêng trên nhóm bệnh nhân Châu Á | `true` |
-| `subgroups` | `object` | Dữ liệu phân tích dưới nhóm (Subgroup Analysis) | `{"Châu Á": "HR 0.60 (95% CI 0.43-0.82)"}` |
+### ✨ Các Phân Hệ & Tính Năng Trọng Tâm:
+1. **Kho Guidelines & Nghiên Cứu Lâm Sàng (`guidelines.html`)**:
+   - Quản lý **161+ Thử nghiệm lâm sàng trọng điểm (Landmark Trials)** và Hướng dẫn điều trị chuẩn từ Bộ Y tế Việt Nam, Hội Tim mạch VN, ESC, AHA/ACC, ADA, GINA, GOLD, KDIGO, SSC, IDSA.
+   - **Đối chiếu Đa chiều (Multi-Compare 3D Matrix)**: Chọn đồng thời nhiều nghiên cứu để so sánh song song các tiêu chí can thiệp, đối tượng, hiệu quả và độ an toàn.
+   - **Hỗ trợ Quyết định Lâm sàng (CDSS Dosing Matcher)**: Phân tích ca bệnh cụ thể (tuổi, giới, eGFR, tiền sử bệnh) để tự động đối chiếu liều khuyến cáo và chống chỉ định.
+   - **Đồ họa SVG Tương Tác**: Vẽ biểu đồ **Forest Plot SVG** và **Bubble Evidence Map** trực tiếp trên trình duyệt, không dùng thư viện ngoài.
+   - **Command Palette (`Ctrl + K`)**: Tra cứu phím tắt siêu tốc cho bác sĩ lâm sàng.
+2. **Bộ Thẩm Định Tạp Chí & Y Văn (`journal-quality-analyzer.html`)**:
+   - Tra cứu trực tiếp cơ sở dữ liệu **OpenAlex REST API** với chỉ số trích dẫn, H-Index, Scimago Quartile (Q1 - Q4).
+   - Thuật toán **Journal Trust Score (0-100)** lượng giá độ uy tín tạp chí.
+   - Bộ lọc phát hiện **Tạp chí săn mồi / Biến tướng (Predatory Journals)** dựa trên danh sách Beall's List.
+3. **Guideline Radar (`guideline-radar/radar.html`)**:
+   - Trạm theo dõi và đối chiếu trực quan những thay đổi thực hành lâm sàng (**Practice-Changing Updates**) giữa các ấn bản khuyến cáo cũ và mới.
+4. **Trình Đọc Toàn Văn MDX Guidelines (`index.html#/reader/<slug>`)**:
+   - Kho **117+ bài viết tóm tắt chi tiết** chuẩn Astro MDX Native, tích hợp Mục lục thông minh (TOC), tự động scale cỡ chữ, Dark Mode, in ấn PDF và xuất SOAP Note.
 
 ---
 
-## 🛠️ 3. Các Tính Năng Giao Diện Nâng Cao
+## 📂 2. Cấu Trúc Thư Mục Dự Án
 
-### 3.1. Bento Grid & Visual Analytics Hub
-- **Thống kê tổng quan**: Số lượng nghiên cứu, tỷ lệ RCTs chất lượng cao, phân bố theo chuyên khoa.
-- **Biểu đồ Vector SVG**: Vẽ trực tiếp trên trình duyệt không dùng thư viện ngoài:
-  - **Forest Plot SVG**: Biểu diễn trực quan điểm ước lượng (Point Estimate) và thanh khoảng tin cậy $95\%\text{ CI}$, tự động đổi màu (🟢 Xanh lá: có lợi, 🔴 Đỏ: nguy cơ, ⚪ Xám: không có ý nghĩa thống kê).
-  - **Bubble Evidence Map**: Sơ đồ bong bóng phân bố bằng chứng theo cỡ mẫu và mức độ tác động.
-
-### 3.2. Bộ Lọc Đa Chiều Thời Gian Thực (Multi-Filter & Command Palette)
-- **Tìm kiếm toàn văn**: Tìm nhanh theo tiêu đề, tên thuốc, tác giả, kết cục, từ khóa lâm sàng.
-- **Bộ lọc chuyên khoa & nguồn**: Lọc nhanh theo chuyên khoa, loại thiết kế (RCT, Guideline), nguồn Bộ Y Tế / Quốc tế.
-- **Command Palette (`Ctrl + K`)**: Mở thanh tra cứu phím tắt toàn năng để tìm nhanh bài tóm tắt và snippet liều dùng.
-
-### 3.3. Đối Chiếu Nghiên Cứu Đa Chiều (Multi-Compare Matrix)
-1. Tích chọn các checkbox ở đầu dòng danh sách nghiên cứu cần so sánh.
-2. Thanh công cụ nổi (**Floating Compare Bar**) xuất hiện ở dưới đáy màn hình.
-3. Bấm **"So Sánh Nghiên Cứu"** để mở bảng đối sánh ma trận 3D trực quan.
-
-### 3.4. Thẩm Định Y Văn & Phân Tích Tạp Chí (Journal Quality Suite)
-- Bấm vào huy hiệu Journal Badge của bất kỳ nghiên cứu nào để mở **Journal Quality Analyzer**.
-- Xem trực tiếp điểm uy tín **Journal Trust Score**, chỉ số H-index, Scimago Quartile (Q1 - Q4), và cảnh báo rủi ro gian lận học thuật.
+```text
+archive/ebm-guidelines/
+├── index.html                           # Cổng thông tin Master Portal & Trình đọc MDX SPA
+├── guidelines.html                      # Giao diện chính Kho Guidelines & Nghiên cứu EBM
+├── journal-quality-analyzer.html        # Giao diện Thẩm định Tạp chí & Trust Score
+├── guidelines.css                       # Master CSS entry point
+├── package.json                         # Khai báo cấu hình dự án độc lập (Vite + TypeScript)
+├── tsconfig.json                        # Cấu hình TypeScript độc lập
+├── vite.config.ts                       # Cấu hình bundling đa trang (Multi-page app)
+├── README.md                            # Tài liệu hướng dẫn này
+│
+├── js/                                  # Mã nguồn TypeScript & Controllers
+│   ├── index.ts                         # Master exports
+│   ├── guidelines.ts                    # Controller khởi động DOM & sự kiện
+│   ├── guidelinesdata.ts                # Dữ liệu chuyên khoa, tạp chí, điều kiện lâm sàng
+│   ├── kho-guidelines-registry.ts       # 161+ Metadata Guidelines tĩnh chuẩn hóa
+│   ├── guidelines-types.ts              # Định nghĩa Interface & TypeScript Types
+│   ├── guideline-table.ts               # Render bảng, thẻ compact & bộ lọc
+│   ├── guideline-sync.ts                # Bộ nhớ LocalStorage & Khử trùng lặp
+│   ├── guideline-visualizations.ts      # Biểu đồ Bento Grid, Evidence Map SVG
+│   ├── guideline-charts-engine.ts       # Máy sinh biểu đồ Forest Plot SVG
+│   ├── guideline-cdss.ts                # CDSS Dosing Matcher theo chức năng thận
+│   ├── guideline-compare-matrix.ts      # Ma trận so sánh 3D đa nghiên cứu
+│   ├── guideline-cmd-palette.ts         # Command Palette (Ctrl+K)
+│   ├── guideline-modals.ts              # Hộp thoại Thêm/Sửa & Quản lý ICD-10
+│   ├── openalex-service.ts              # Dịch vụ tra cứu OpenAlex API
+│   ├── journal-trust-scorer.ts          # Bộ tính điểm Journal Trust Score
+│   ├── journal-quality-analyzer.ts      # Controller phân tích chất lượng tạp chí
+│   ├── ebm-format-loader.ts             # Bộ nạp đa định dạng MD, JSON, CSV
+│   │
+│   ├── core/                            # Thư viện lõi nội bộ (Standalone Cores)
+│   │   ├── cliniportal-sync.js          # Bộ phát sự kiện đồng bộ cục bộ
+│   │   ├── theme-manager.ts             # Quản lý Dark / Light Mode
+│   │   ├── clinical-intent.ts           # Event Bus lâm sàng
+│   │   ├── mdx-engine.ts                # Parser chuyển đổi MDX sang HTML chuẩn hóa
+│   │   └── flowchart-viewer.ts          # Hydration hỗ trợ sơ đồ trực quan
+│   │
+│   └── shared/                          # Dữ liệu & Types dùng chung
+│       ├── types.ts                     # EBM Guideline Types
+│       ├── renderer.ts                  # Badge Renderers & Metric Helpers
+│       └── data.ts                      # Cơ sở dữ liệu tạp chí & chuyên khoa
+│
+├── css/                                 # Hệ thống Modular CSS Vanilla
+│   ├── guidelines-base.css              # Design Tokens, Dark Mode, Shell Layout
+│   ├── guidelines-components.css        # Search Bar, Pills, Badges, Dropdowns
+│   ├── guidelines-table.css             # Bảng dữ liệu, Cards, Forest Plot SVG
+│   ├── guidelines-modals.css            # Hộp thoại CDSS, Ma trận So sánh 3D
+│   ├── guidelines-analytics.css         # Phân tích NNT & Thống kê
+│   ├── guidelines-dashboard.css         # Bento Grid Styles
+│   ├── guidelines-timeline.css          # Dòng thời gian nghiên cứu
+│   ├── journal-quality.css              # Giao diện Thẩm định tạp chí
+│   ├── ebm-design-tokens.css            # Biến màu Design Tokens y tế
+│   └── non-intrusive-ui.css             # Giao diện y tế công thái học
+│
+├── data/                                # Cơ sở dữ liệu JSON & TypeScript
+│   ├── guidelines-db.json               # CSDL JSON dự phòng
+│   ├── conditions-db.json               # CSDL bệnh lý & mã ICD-10
+│   ├── predatory-blacklist.ts           # Danh sách đen Beall's List tạp chí rủi ro
+│   └── icd10-data.js                    # Từ điển mã bệnh ICD-10
+│
+├── kho-guidelines/                      # 117+ Bài viết Tóm tắt Hướng dẫn Điều trị (.mdx)
+│   ├── 2026-ada-diabetes.mdx
+│   ├── 2026-esc-heart-failure-p1.mdx
+│   ├── 2026-ssc-sepsis.mdx
+│   ├── 2024-byt-sot-xuat-huyet-dengue.mdx
+│   ├── ... (117+ tệp mdx khác)
+│   └── images/                          # Hình ảnh y khoa, sơ đồ cơ chế đính kèm
+│
+├── guideline-radar/                     # Phân hệ Guideline Radar Diff Viewer
+│   ├── radar.html                       # Giao diện Radar
+│   ├── radar.css                        # CSS Radar
+│   └── radar.ts                         # Controller phân tích diff
+│
+└── tools/                               # 12 Công cụ kiểm định & QA tự động
+    ├── verify_all_guidelines_mdx.js     # Kiểm tra toàn vẹn 117+ file MDX
+    ├── deep_check_guidelines_mdx.js     # Audit chi tiết cấu trúc MDX
+    ├── audit_tables.js                  # Audit cú pháp bảng Markdown
+    └── standardize_guidelines_mdx.js    # Chuẩn hóa định dạng
+```
 
 ---
 
-## 💾 4. Kiến Trúc Kho Lưu Trữ Cục Bộ (Static Registry & LocalStorage)
+## 🚀 3. Hướng Dẫn Cài Đặt & Phát Triển
 
-- **Kho Lưu Trữ Tĩnh Cố Định (Project Registry)**: Dữ liệu chuẩn toàn bộ Guidelines và Nghiên cứu EBM được quản lý tập trung tại `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` (`KHO_GUIDELINES_STATIC`). Hệ thống tự động nạp vào `SAMPLE_STUDIES` khi khởi chạy, không phụ thuộc vào bất kỳ dịch vụ Cloud DB bên ngoài nào.
-- **Tùy biến Cục bộ (LocalStorage)**: Người dùng có thể bookmark, thêm bài mới hoặc nhập khẩu file JSON. Các dữ liệu tùy biến được lưu an toàn tại `localStorage` nội bộ của trình duyệt (`cliniportal_custom_studies`), đồng thời có cơ chế chống trùng lặp và loại trừ bài đã xóa (`cliniportal_deleted_study_ids`).
-- **Hoạt động Ngoại tuyến 100% (Offline-First)**: Đảm bảo khả năng chạy độc lập hoàn toàn trên máy tính bệnh viện, mạng nội bộ hoặc giao thức `file:///` mà không lo mất kết nối mạng.
+### Bước 1: Mở thư mục dự án
+```bash
+cd "archive/ebm-guidelines"
+```
+
+### Bước 2: Cài đặt dependencies (Vite + TypeScript)
+```bash
+npm install
+```
+
+### Bước 3: Chạy môi trường phát triển (Dev Server)
+```bash
+npm run dev
+```
+Trình duyệt sẽ tự động mở tại địa chỉ: `http://localhost:5173/`
+
+### Bước 4: Kiểm tra tính toàn vẹn dữ liệu
+```bash
+npm run verify:mdx
+```
+
+### Bước 5: Đóng gói bản phát hành (Production Build)
+```bash
+npm run build
+```
+Bản dựng tĩnh sẵn sàng triển khai sẽ được tạo tại thư mục `dist/`.
+
+---
+
+## 🏥 4. Triển Khai Ngoại Tuyến (100% Offline-First)
+
+Dự án được thiết kế theo nguyên lý **Zero-Dependency Runtime**:
+- **Không cần Node.js lúc chạy**: Bạn có thể copy toàn bộ thư mục này vào USB hoặc máy tính bệnh viện.
+- **Mở trực tiếp qua trình duyệt**: Nhấp đúp vào `index.html` hoặc `guidelines.html` là ứng dụng sẽ chạy ngay lập tức với đầy đủ tính năng tra cứu, so sánh ma trận 3D, CDSS Matcher và xem biểu đồ Forest Plot.
+
+---
+
+## 📝 5. Quy Trình Nạp Thêm Guideline Mới
+
+1. **Thêm Metadata**: Mở `js/kho-guidelines-registry.ts` và thêm bản ghi mới vào mảng `KHO_GUIDELINES_STATIC`.
+2. **Tạo Bài Viết Chi Tiết**: Tạo tệp `<slug>.mdx` trong thư mục `kho-guidelines/` theo cấu trúc chuẩn:
+   - Frontmatter YAML (title, organization, year, specialty, impact...)
+   - Tóm tắt PICO (Population, Intervention, Comparator, Outcomes)
+   - Bảng khuyến cáo then chốt & Phân độ bằng chứng (GRADE)
+   - Lưu đồ tiếp cận lâm sàng
+3. **Chạy Kiểm Định**:
+   ```bash
+   node tools/verify_all_guidelines_mdx.js
+   ```
+
+---
+
+## 📄 6. Giấy Phép & Bản Quyền
+
+Dự án thuộc sở hữu của hệ sinh thái **CliniPortal**. Bản đóng gói độc lập dùng cho mục đích nghiên cứu, học tập và hỗ trợ thực hành y khoa dựa trên bằng chứng (EBM).

@@ -12,11 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="../css/ebm-design-tokens.css">
+  <link rel="stylesheet" href="css/ebm-design-tokens.css">
   <link rel="stylesheet" href="guidelines.css">
   <link rel="stylesheet" href="css/journal-quality.css">
-  <link rel="stylesheet" href="../../../../css/components/header.css">
-  <script type="module" src="../../../../components/header.ts" defer></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,19 +64,195 @@
     .guide-card-predatory h4 { color: #dc2626 !important; }
     [data-theme="dark"] .guide-card-predatory { background: linear-gradient(135deg, rgba(127,29,29,0.3) 0%, rgba(159,18,57,0.2) 100%) !important; border-color: rgba(239,68,68,0.4) !important; }
     [data-theme="dark"] .guide-card-predatory h4 { color: #fca5a5 !important; }
+
+    /* Mobile & Tablet Suite */
+    .mobile-menu-btn {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      border: 1px solid var(--border-light, #e2e8f0);
+      background: var(--surface, #fff);
+      color: var(--text, #0f172a);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    [data-theme="dark"] .mobile-menu-btn {
+      background: #1e293b;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+    }
+    .portal-mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 290px;
+      max-width: 85vw;
+      background: var(--surface, #ffffff);
+      z-index: 1000;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      transform: translateX(-100%);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1rem;
+    }
+    [data-theme="dark"] .portal-mobile-drawer { background: #0f172a; }
+    .portal-mobile-drawer.active { transform: translateX(0); }
+    .portal-drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+    }
+    .portal-drawer-backdrop.active { display: block; }
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-light, #e2e8f0);
+      margin-bottom: 1rem;
+    }
+    .mobile-drawer-title { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.05rem; }
+    .mobile-drawer-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: none;
+      background: var(--surface-2, #f1f5f9);
+      color: var(--text-muted, #64748b);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-drawer-links { display: flex; flex-direction: column; gap: 0.4rem; }
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      color: var(--text, #0f172a);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .drawer-link:hover, .drawer-link.active {
+      background: rgba(124, 58, 237, 0.1);
+      color: #7c3aed;
+    }
+    .drawer-link i { font-size: 1.1rem; width: 22px; text-align: center; }
+
+    .mobile-bottom-nav { display: none; }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: inline-flex; }
+      .portal-nav-links-desktop { display: none !important; }
+      .openalex-badge { display: none !important; }
+      .portal-nav { padding: 0 1rem !important; height: 56px !important; }
+      .hero { padding: 2.25rem 1rem 3rem !important; }
+      .hero-title { font-size: 1.75rem !important; }
+      .hero-sub { font-size: 0.88rem !important; margin-bottom: 1.25rem !important; }
+      .search-input-main { padding: 0.75rem 1rem 0.75rem 2.8rem !important; font-size: 0.88rem !important; }
+      .main-container { padding: 1.25rem 1rem calc(75px + env(safe-area-inset-bottom, 0px)) !important; gap: 1.5rem !important; }
+      .sec-card { padding: 1.25rem 1rem !important; border-radius: 14px !important; }
+      .compare-grid { grid-template-columns: 1fr !important; }
+      .guide-grid { grid-template-columns: 1fr !important; }
+      .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(58px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: var(--surface, #ffffff);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border-light, #e2e8f0);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+        z-index: 850;
+        align-items: center;
+        justify-content: space-around;
+      }
+      [data-theme="dark"] .mobile-bottom-nav {
+        background: rgba(15, 23, 42, 0.95);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        flex: 1;
+        height: 100%;
+        color: var(--text-muted, #64748b);
+        text-decoration: none;
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+      .mobile-nav-item.active { color: #7c3aed; }
+      .mob-nav-icon { font-size: 1.15rem; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .compare-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .guide-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .main-container { padding: 2rem 1.25rem 4rem !important; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- TOP NAV -->
-  <nav class="topnav">
-    <a href="guidelines.html" class="topnav-back">
-      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+  <!-- TOP PORTAL NAVIGATION -->
+  <header class="portal-nav" style="position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--border-light,#e2e8f0); height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 1.75rem;">
+    <button class="mobile-menu-btn" onclick="toggleAnalyzerMobileMenu(true)" aria-label="Mở menu điều hướng">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; font-weight:800; font-family:'Space Grotesk',sans-serif; font-size:1.1rem;">
+      <div style="width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1rem;">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <span>EBM Guidelines Hub</span>
     </a>
-    <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
-      <span class="openalex-badge"><i class="fa-solid fa-globe"></i> OpenAlex REST API Powered</span>
+
+    <nav class="portal-nav-links-desktop" style="display:flex; align-items:center; gap:1.5rem; list-style:none; margin:0; padding:0;">
+      <a href="index.html" style="text-decoration:none; font-size:0.88rem; font-weight:600; color:var(--text-muted,#64748b);">Trang Chủ</a>
+      <a href="guidelines.html" style="text-decoration:none; font-size:0.88rem; font-weight:600; color:var(--text-muted,#64748b);">Kho Guidelines</a>
+      <a href="journal-quality-analyzer.html" style="text-decoration:none; font-size:0.88rem; font-weight:700; color:var(--accent,#7c3aed);">Thẩm Định Tạp Chí</a>
+      <a href="guideline-radar/radar.html" style="text-decoration:none; font-size:0.88rem; font-weight:600; color:var(--text-muted,#64748b);">Guideline Radar</a>
+      <a href="index.html#/reader/2026-ada-diabetes" style="text-decoration:none; font-size:0.88rem; font-weight:600; color:var(--text-muted,#64748b);">Trình Đọc MDX</a>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span class="openalex-badge"><i class="fa-solid fa-globe"></i> OpenAlex API</span>
+      <button class="theme-toggle-btn" onclick="toggleAnalyzerTheme()" title="Đổi chế độ Sáng / Tối" style="width:36px; height:36px; border-radius:9px; border:1px solid var(--border-light); background:var(--surface); cursor:pointer;">
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </div>
-  </nav>
+  </header>
+
+  <!-- Mobile Slide-out Navigation Drawer -->
+  <div class="portal-mobile-drawer" id="analyzer-mobile-drawer">
+    <div class="mobile-drawer-header">
+      <span class="mobile-drawer-title">Điều Hướng CliniPortal</span>
+      <button class="mobile-drawer-close" onclick="toggleAnalyzerMobileMenu(false)" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="./index.html" class="drawer-link"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <a href="./guidelines.html" class="drawer-link"><i class="fa-solid fa-book-medical"></i> Kho Guidelines &amp; Nghiên Cứu</a>
+      <a href="./journal-quality-analyzer.html" class="drawer-link active"><i class="fa-solid fa-award"></i> Thẩm Định Tạp Chí &amp; Trust Score</a>
+      <a href="./guideline-radar/radar.html" class="drawer-link"><i class="fa-solid fa-compass"></i> Guideline Radar</a>
+      <a href="./index.html#/reader/2026-ada-diabetes" class="drawer-link"><i class="fa-solid fa-file-lines"></i> Trình Đọc Toàn Văn MDX</a>
+    </div>
+  </div>
+  <div class="portal-drawer-backdrop" id="analyzer-drawer-backdrop" onclick="toggleAnalyzerMobileMenu(false)"></div>
 
   <!-- HERO -->
   <header class="hero">
@@ -107,10 +281,12 @@
       <h2 class="sec-title"><i class="fa-solid fa-scale-balanced"></i> So Sánh Tạp Chí Y Khoa (Side-by-Side)</h2>
       <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:1rem;">Chọn hoặc tìm các tạp chí để so sánh trực quan các chỉ số chất lượng:</p>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1rem;">
-        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--blue-bg); color:var(--accent); border:1px solid var(--blue-light);" onclick="loadPresetCompare(['NEJM', 'Lancet', 'JAMA'])">🏆 NEJM vs Lancet vs JAMA</button>
-        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--surface-2); border:1px solid var(--border-light);" onclick="loadPresetCompare(['Circulation', 'Eur Heart J', 'J Am Coll Cardiol'])">🫀 Circulation vs EHJ vs JACC</button>
-        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--surface-2); border:1px solid var(--border-light);" onclick="loadPresetCompare(['Lancet Respir Med', 'Am J Respir Crit Care Med', 'Chest'])">🫁 Lancet Respir vs AJRCCM vs CHEST</button>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1rem;">
+        <button class="preset-compare-btn" onclick="loadPresetCompare(['NEJM', 'Lancet', 'JAMA'])">🏆 Big 4: NEJM vs Lancet vs JAMA</button>
+        <button class="preset-compare-btn" onclick="loadPresetCompare(['Circulation', 'Eur Heart J', 'J Am Coll Cardiol'])">🫀 Tim Mạch: Circulation vs EHJ vs JACC</button>
+        <button class="preset-compare-btn" onclick="loadPresetCompare(['Lancet Respir Med', 'Am J Respir Crit Care Med', 'Chest'])">🫁 Hô Hấp: Lancet Respir vs AJRCCM vs CHEST</button>
+        <button class="preset-compare-btn" onclick="loadPresetCompare(['Lancet Infect Dis', 'Clin Infect Dis', 'Gastroenterology'])">🦠 Nhiễm &amp; Tiêu Hóa: CID vs Lancet Infect vs Gastro</button>
+        <button class="preset-compare-btn" onclick="loadPresetCompare(['Diabetes Care', 'J Clin Oncol', 'Blood'])">🩸 Nội Tiết &amp; Ung Thư: Diabetes vs JCO vs Blood</button>
       </div>
 
       <div id="compare-grid-container" class="compare-grid"></div>
@@ -120,8 +296,8 @@
     <section class="sec-card">
       <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
         <h2 class="sec-title" style="margin-bottom:0;"><i class="fa-solid fa-database"></i> Cơ Sở Dữ Liệu Tạp Chí Y Khoa Chuyên Khoa</h2>
-        <div style="display:flex; gap:8px;">
-          <select id="category-filter" style="padding:0.4rem 0.75rem; border-radius:8px; border:1px solid var(--border-light); font-size:0.8rem;" onchange="filterJournalTable()">
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <select id="category-filter" style="padding:0.4rem 0.75rem; border-radius:8px; border:1px solid var(--border-light); font-size:0.8rem; background:var(--surface); color:var(--text);" onchange="filterJournalTable()">
             <option value="ALL">Tất cả Chuyên khoa</option>
             <option value="General Medicine">Nội khoa Tổng quát</option>
             <option value="Cardiology">Tim mạch</option>
@@ -145,6 +321,7 @@
               <th>SJR Index</th>
               <th>Trust Score</th>
               <th>Nhà xuất bản</th>
+              <th style="text-align:right;">Thao tác</th>
             </tr>
           </thead>
           <tbody id="journal-table-body"></tbody>
@@ -181,11 +358,64 @@
 
   </main>
 
-  <script src="../../../../js/core/cliniportal-sync.js"></script>
-  <script type="module" src="guidelinesdata.ts"></script>
+  <!-- 📱 MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Điều hướng nhanh di động">
+    <a href="./index.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-house"></i></span>
+      <span class="mob-nav-label">Trang Chủ</span>
+    </a>
+    <a href="./guidelines.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-book-medical"></i></span>
+      <span class="mob-nav-label">Kho Bài</span>
+    </a>
+    <a href="./journal-quality-analyzer.html" class="mobile-nav-item active">
+      <span class="mob-nav-icon"><i class="fa-solid fa-award"></i></span>
+      <span class="mob-nav-label">Tạp Chí</span>
+    </a>
+    <a href="./guideline-radar/radar.html" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-compass"></i></span>
+      <span class="mob-nav-label">Radar</span>
+    </a>
+    <a href="./index.html#/reader/2026-ada-diabetes" class="mobile-nav-item">
+      <span class="mob-nav-icon"><i class="fa-solid fa-file-lines"></i></span>
+      <span class="mob-nav-label">Đọc MDX</span>
+    </a>
+  </nav>
+
+  <script>
+    function toggleAnalyzerMobileMenu(show) {
+      const drawer = document.getElementById('analyzer-mobile-drawer');
+      const backdrop = document.getElementById('analyzer-drawer-backdrop');
+      if (!drawer || !backdrop) return;
+      const isOpen = show !== undefined ? show : !drawer.classList.contains('active');
+      drawer.classList.toggle('active', isOpen);
+      backdrop.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    window.toggleAnalyzerMobileMenu = toggleAnalyzerMobileMenu;
+  </script>
+  <script src="js/core/cliniportal-sync.js"></script>
+  <script type="module" src="js/guidelinesdata.ts"></script>
   <script type="module" src="data/predatory-blacklist.ts"></script>
   <script type="module" src="js/openalex-service.ts"></script>
   <script type="module" src="js/journal-trust-scorer.ts"></script>
   <script type="module" src="js/journal-quality-analyzer.ts"></script>
+  <script>
+    function toggleAnalyzerTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('cliniportal_theme', next);
+      const btn = document.querySelector('.theme-toggle-btn');
+      if (btn) btn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun" style="color:#fcd34d;"></i>' : '<i class="fa-solid fa-moon"></i>';
+    }
+    const savedTheme = localStorage.getItem('cliniportal_theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const btn = document.querySelector('.theme-toggle-btn');
+      if (btn) btn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun" style="color:#fcd34d;"></i>' : '<i class="fa-solid fa-moon"></i>';
+    }
+    window.toggleAnalyzerTheme = toggleAnalyzerTheme;
+  </script>
 </body>
 </html>

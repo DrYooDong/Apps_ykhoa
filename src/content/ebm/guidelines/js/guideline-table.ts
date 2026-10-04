@@ -8,235 +8,76 @@ import { Study } from './guidelines-types';
 import './guidelines-types';
 
 export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
-  "heart-failure": [
-    "cardio"
-  ],
-  "hypertension": [
-    "cardio",
-    "obgyn"
-  ],
-  "af": [
-    "cardio"
-  ],
-  "cad": [
-    "cardio"
-  ],
-  "valvular-heart": [
-    "cardio"
-  ],
-  "cardiogenic-shock": [
-    "cardio",
-    "icu"
-  ],
-  "syncope": [
-    "cardio",
-    "neuro"
-  ],
-  "vte-pe": [
-    "cardio",
-    "hema",
-    "icu",
-    "onco"
-  ],
-  "copd": [
-    "pulmo"
-  ],
-  "asthma": [
-    "pulmo",
-    "pedia"
-  ],
-  "pneumonia": [
-    "pulmo",
-    "icu",
-    "infect"
-  ],
-  "interstitial-lung": [
-    "pulmo"
-  ],
-  "tb": [
-    "pulmo",
-    "infect",
-    "obgyn"
-  ],
-  "ards": [
-    "icu",
-    "pulmo"
-  ],
-  "icu": [
-    "icu",
-    "infect"
-  ],
-  "aki": [
-    "renal",
-    "icu"
-  ],
-  "diabetes-t2d": [
-    "endo",
-    "cardio",
-    "renal"
-  ],
-  "diabetes-t1d": [
-    "endo",
-    "pedia"
-  ],
-  "thyroid": [
-    "endo"
-  ],
-  "dyslipidemia": [
-    "endo",
-    "cardio"
-  ],
-  "obesity": [
-    "endo",
-    "cardio",
-    "nutri"
-  ],
-  "clinical-nutrition": [
-    "nutri",
-    "icu",
-    "endo"
-  ],
-  "ckd": [
-    "renal",
-    "endo",
-    "cardio"
-  ],
-  "nephrotic": [
-    "renal"
-  ],
-  "bph-luts": [
-    "renal"
-  ],
-  "uti": [
-    "renal",
-    "infect"
-  ],
-  "cirrhosis": [
-    "gi"
-  ],
-  "masld-mash": [
-    "gi",
-    "endo"
-  ],
-  "gerd-peptic": [
-    "gi"
-  ],
-  "biliary-tract": [
-    "gi"
-  ],
-  "ibd": [
-    "gi"
-  ],
-  "ugib": [
-    "gi",
-    "icu"
-  ],
-  "hepatitis-b": [
-    "infect",
-    "gi"
-  ],
-  "hepatitis-c": [
-    "infect",
-    "gi"
-  ],
-  "flu": [
-    "infect",
-    "pulmo"
-  ],
-  "covid19": [
-    "infect",
-    "pulmo",
-    "icu"
-  ],
-  "hemorrhagic-fever": [
-    "infect"
-  ],
-  "measles": [
-    "infect",
-    "pedia"
-  ],
-  "hfmd": [
-    "infect",
-    "pedia"
-  ],
-  "mpox": [
-    "infect"
-  ],
-  "invasive-fungal": [
-    "infect",
-    "pulmo",
-    "icu"
-  ],
-  "malaria": [
-    "infect"
-  ],
-  "meningitis": [
-    "infect",
-    "neuro",
-    "pedia"
-  ],
-  "diphtheria": [
-    "infect",
-    "pedia"
-  ],
-  "hiv-aids": [
-    "infect"
-  ],
-  "antibiotics": [
-    "infect",
-    "icu",
-    "pulmo"
-  ],
-  "microbiology": [
-    "infect",
-    "icu"
-  ],
-  "ams-resistance": [
-    "infect",
-    "icu"
-  ],
-  "stroke": [
-    "neuro",
-    "cardio"
-  ],
-  "epilepsy": [
-    "neuro",
-    "pedia"
-  ],
-  "headache-migraine": [
-    "neuro"
-  ],
-  "neuro-emergencies": [
-    "neuro",
-    "icu"
-  ],
-  "gout": [
-    "rheum",
-    "endo"
-  ],
-  "ra": [
-    "rheum"
-  ],
-  "osteoporosis": [
-    "rheum",
-    "endo"
-  ],
-  "lupus-sle": [
-    "rheum",
-    "renal"
-  ],
-  "solid-cancers": [
-    "onco",
-    "gi",
-    "obgyn"
-  ],
-  "hemangioma": [
-    "onco",
-    "pedia"
-  ],
-  "uterine-fibroids": [
-    "obgyn"
-  ]
+  'heart-failure': ["cardio"],
+  'hypertension': ["cardio", "obgyn"],
+  'af': ["cardio"],
+  'cad': ["cardio"],
+  'valvular-heart': ["cardio"],
+  'cardiogenic-shock': ["cardio", "icu"],
+  'syncope': ["cardio", "neuro"],
+  'vte-pe': ["cardio", "hema", "icu", "onco"],
+  'cardiorenal-syndrome': ["cardio", "renal", "endo"],
+  'copd': ["pulmo"],
+  'asthma': ["pulmo", "pedia"],
+  'pneumonia': ["pulmo", "icu", "infect"],
+  'interstitial-lung': ["pulmo"],
+  'tb': ["pulmo", "infect", "obgyn"],
+  'ards': ["icu", "pulmo"],
+  'cirrhosis': ["gi"],
+  'masld-mash': ["gi", "endo"],
+  'dili': ["gi", "infect"],
+  'autoimmune-hepatitis': ["gi"],
+  'wilson': ["gi", "pedia", "neuro"],
+  'cystic-hepatic-lesions': ["gi", "infect"],
+  'gerd-peptic': ["gi"],
+  'biliary-tract': ["gi", "icu"],
+  'ibd': ["gi"],
+  'ugib': ["gi", "icu"],
+  'gut-health': ["gi"],
+  'hepatitis-b': ["infect", "gi"],
+  'hepatitis-c': ["infect", "gi"],
+  'flu': ["infect", "pulmo"],
+  'covid19': ["infect", "pulmo", "icu"],
+  'hemorrhagic-fever': ["infect", "pedia"],
+  'measles': ["infect", "pedia"],
+  'hfmd': ["infect", "pedia"],
+  'mpox': ["infect", "derma"],
+  'hantavirus': ["infect", "renal", "icu"],
+  'invasive-fungal': ["infect", "pulmo", "icu"],
+  'malaria': ["infect", "icu"],
+  'meningitis': ["infect", "neuro", "pedia"],
+  'brain-abscess': ["infect", "neuro"],
+  'diphtheria': ["infect", "pedia"],
+  'hiv-aids': ["infect"],
+  'infectious-diarrhea': ["infect", "pedia", "gi"],
+  'ams-resistance': ["infect", "icu", "pulmo"],
+  'uti': ["renal", "infect"],
+  'ssti': ["infect", "derma"],
+  'iai': ["infect", "gi", "icu"],
+  'icu': ["icu", "infect"],
+  'emergency-admission': ["icu"],
+  'aki': ["renal", "icu"],
+  'diabetes-t2d': ["endo", "cardio", "renal"],
+  'diabetes-t1d': ["endo", "pedia"],
+  'thyroid': ["endo"],
+  'dyslipidemia': ["endo", "cardio"],
+  'obesity': ["endo", "cardio", "nutri"],
+  'clinical-nutrition': ["nutri", "icu", "endo"],
+  'ckd': ["renal", "endo", "cardio"],
+  'nephrotic': ["renal", "pedia"],
+  'bph-luts': ["renal"],
+  'stroke': ["neuro", "cardio"],
+  'epilepsy': ["neuro", "pedia"],
+  'headache-migraine': ["neuro"],
+  'neuro-emergencies': ["neuro", "icu"],
+  'gout': ["rheum", "endo"],
+  'ra': ["rheum"],
+  'osteoporosis': ["rheum", "endo"],
+  'lupus-sle': ["rheum", "renal"],
+  'solid-cancers': ["onco", "gi", "obgyn", "pulmo"],
+  'hemangioma': ["onco", "pedia"],
+  'uterine-fibroids': ["obgyn"],
+  'anaphylaxis': ["derma", "icu", "pedia"]
 };
 
 export function renderFilterPills(): void {
@@ -725,40 +566,49 @@ export function renderSummaryButton(study: Study, variant = 'badge'): string {
   const isMulti = parts.length > 1;
 
   if (!isMulti) {
-    const fileUrl = window.resolveStudyFile ? window.resolveStudyFile((parts[0] as any).file) : (parts[0] as any).file;
+    const rawFile = (parts[0] as any).file || '';
+    const cleanSlug = String(rawFile).replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '').replace(/\.(?:html|mdx)$/i, '');
+    const fileUrl = window.resolveStudyFile ? window.resolveStudyFile(rawFile) : rawFile;
+    const clickHandler = `onclick="event.stopPropagation(); if(typeof window.openGuidelineReader === 'function'){ window.openGuidelineReader('${cleanSlug}'); return false; }"`;
     if (variant === 'btn-primary' || variant === 'btn-primary-compare') {
-      return `<a href="${fileUrl}" class="btn btn-small btn-primary" onclick="event.stopPropagation()">📝 Tóm tắt</a>`;
+      return `<a href="${fileUrl}" class="btn btn-compact btn-primary" ${clickHandler} title="Mở bài đọc tóm tắt chi tiết"><i class="fa-solid fa-book-open"></i><span>Tóm tắt</span></a>`;
     } else if (variant === 'btn') {
-      return `<a href="${fileUrl}" class="btn btn-small" onclick="event.stopPropagation()">📝 Tóm tắt</a>`;
+      return `<a href="${fileUrl}" class="btn btn-compact" ${clickHandler} title="Mở bài đọc tóm tắt chi tiết"><i class="fa-solid fa-book-open"></i><span>Tóm tắt</span></a>`;
     } else if (variant === 'badge-mobile') {
-      return `<a href="${fileUrl}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết" style="margin-left: auto; font-size:0.7rem; padding: 2px 6px;">📝 Tóm tắt</a>`;
+      return `<a href="${fileUrl}" class="badge-summary-inline" ${clickHandler} title="Mở bài đọc tóm tắt chi tiết" style="margin-left: auto; font-size:0.7rem; padding: 2px 7px;"><i class="fa-solid fa-book-open"></i><span>Tóm tắt</span></a>`;
     } else {
-      return `<a href="${fileUrl}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>`;
+      return `<a href="${fileUrl}" class="badge-summary-inline" ${clickHandler} title="Mở bài đọc tóm tắt chi tiết"><i class="fa-solid fa-book-open"></i><span>Tóm tắt</span></a>`;
     }
   }
 
   const menuId = 'summary-parts-menu-' + study.id + '-' + variant + '-' + Math.floor(Math.random() * 10000);
-  const itemsHtml = parts.map((p: any, idx: number) => `
-    <a href="${window.resolveStudyFile ? window.resolveStudyFile(p.file) : p.file}" class="summary-parts-item" onclick="event.stopPropagation()">
-      <i class="fa-solid fa-file-lines" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i>
-      <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
-    </a>
-  `).join('');
+  const itemsHtml = parts.map((p: any, idx: number) => {
+    const rawPFile = p.file || '';
+    const pSlug = String(rawPFile).replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '').replace(/\.(?:html|mdx)$/i, '');
+    const pUrl = window.resolveStudyFile ? window.resolveStudyFile(rawPFile) : rawPFile;
+    const pClick = `onclick="event.stopPropagation(); if(typeof window.openGuidelineReader === 'function'){ window.openGuidelineReader('${pSlug}'); return false; }"`;
+    return `
+      <a href="${pUrl}" class="summary-parts-item" ${pClick}>
+        <i class="fa-solid fa-file-lines" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i>
+        <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
+      </a>
+    `;
+  }).join('');
 
   let btnClass = 'badge-summary-inline';
   let btnStyle = '';
   if (variant === 'btn-primary' || variant === 'btn-primary-compare') {
-    btnClass = 'btn btn-small btn-primary';
+    btnClass = 'btn btn-compact btn-primary';
   } else if (variant === 'btn') {
-    btnClass = 'btn btn-small';
+    btnClass = 'btn btn-compact';
   } else if (variant === 'badge-mobile') {
-    btnStyle = 'margin-left: auto; font-size:0.7rem; padding: 2px 6px;';
+    btnStyle = 'margin-left: auto; font-size:0.7rem; padding: 2px 7px;';
   }
 
   return `
-    <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
-      <button type="button" class="${btnClass}" style="${btnStyle}" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Xem ${parts.length} phần tóm tắt">
-        📝 Tóm tắt (${parts.length} Phần) <span style="font-size:9px; margin-left:3px;">▼</span>
+    <div class="summary-parts-dropdown" style="position:relative; display:inline-flex;">
+      <button type="button" class="${btnClass} badge-summary-multi" style="${btnStyle}" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Xem ${parts.length} phần tóm tắt">
+        <i class="fa-solid fa-book-open"></i><span>Tóm tắt</span> <span class="summary-parts-count">${parts.length}P</span> <i class="fa-solid fa-chevron-down" style="font-size:7px; opacity:0.8;"></i>
       </button>
       <div id="${menuId}" class="summary-parts-menu" onclick="event.stopPropagation()">
         <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); padding: 4px 8px 6px; border-bottom: 1px solid var(--border-light); margin-bottom: 4px;">
@@ -785,19 +635,28 @@ export function renderSummaryActionButton(study: Study): string {
   }
   if (parts.length === 0) return '';
   if (parts.length === 1) {
-    const fileUrl = window.resolveStudyFile ? window.resolveStudyFile((parts[0] as any).file) : (parts[0] as any).file;
-    return `<a href="${fileUrl}" class="table-action-btn table-action-primary" title="Đọc bài tóm tắt" onclick="event.stopPropagation()"><i class="fa-solid fa-book-open"></i></a>`;
+    const rawFile = (parts[0] as any).file || '';
+    const cleanSlug = String(rawFile).replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '').replace(/\.(?:html|mdx)$/i, '');
+    const fileUrl = window.resolveStudyFile ? window.resolveStudyFile(rawFile) : rawFile;
+    const clickHandler = `onclick="event.stopPropagation(); if(typeof window.openGuidelineReader === 'function'){ window.openGuidelineReader('${cleanSlug}'); return false; }"`;
+    return `<a href="${fileUrl}" class="table-action-btn table-action-primary table-action-summary" title="Đọc bài tóm tắt chi tiết" ${clickHandler}><i class="fa-solid fa-book-open"></i></a>`;
   }
   const menuId = 'summary-parts-act-' + study.id + '-' + Math.floor(Math.random() * 10000);
-  const itemsHtml = parts.map((p: any, idx: number) => `
-    <a href="${window.resolveStudyFile ? window.resolveStudyFile(p.file) : p.file}" class="summary-parts-item" onclick="event.stopPropagation()">
-      <i class="fa-solid fa-file-lines" style="color: var(--accent); margin-right: 6px;"></i>
-      <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
-    </a>
-  `).join('');
+  const itemsHtml = parts.map((p: any, idx: number) => {
+    const rawPFile = p.file || '';
+    const pSlug = String(rawPFile).replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '').replace(/\.(?:html|mdx)$/i, '');
+    const pUrl = window.resolveStudyFile ? window.resolveStudyFile(rawPFile) : rawPFile;
+    const pClick = `onclick="event.stopPropagation(); if(typeof window.openGuidelineReader === 'function'){ window.openGuidelineReader('${pSlug}'); return false; }"`;
+    return `
+      <a href="${pUrl}" class="summary-parts-item" ${pClick}>
+        <i class="fa-solid fa-file-lines" style="color: var(--accent); margin-right: 6px;"></i>
+        <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
+      </a>
+    `;
+  }).join('');
   return `
-    <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
-      <button type="button" class="table-action-btn table-action-primary" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Đọc bài tóm tắt (${parts.length} phần)"><i class="fa-solid fa-book-open"></i></button>
+    <div class="summary-parts-dropdown" style="position:relative; display:inline-flex;">
+      <button type="button" class="table-action-btn table-action-primary table-action-summary" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Đọc bài tóm tắt (${parts.length} phần)"><i class="fa-solid fa-book-open"></i></button>
       <div id="${menuId}" class="summary-parts-menu" style="right:0; left:auto;" onclick="event.stopPropagation()">
         <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); padding: 4px 8px 6px; border-bottom: 1px solid var(--border-light); margin-bottom: 4px;">
           Danh sách bài tóm tắt (${parts.length} phần):
@@ -854,6 +713,15 @@ function escapeHtml(str?: string): string {
     .replace(/"/g, '&quot;');
 }
 
+export function stripVietnameseDiacritics(str?: string): string {
+  if (!str) return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, (m) => (m === 'đ' ? 'd' : 'D'))
+    .toLowerCase();
+}
+
 export function getFilteredStudies(): Study[] {
   let list = window.studies || [];
 
@@ -884,10 +752,14 @@ export function getFilteredStudies(): Study[] {
         const partsStr = Array.isArray(study.parts) ? study.parts.map((p: any) => (p.title || p.label || '')).join(' ').toLowerCase() : '';
 
         const fullSearchable = `${title} ${drug} ${summary} ${detailedConclusion} ${keyResults} ${population} ${intervention} ${org} ${author} ${year} ${primaryEndpoint} ${icdStr} ${specName} ${condName} ${partsStr}`;
+        const fullSearchableNorm = stripVietnameseDiacritics(fullSearchable);
 
-        // Support multiple search words: all words must be found
+        // Support multiple search words: all words must be found (matching with or without Vietnamese diacritics)
         const queryTerms = rawQuery.split(/\s+/).filter(t => t.length > 0);
-        const matchesAll = queryTerms.every(term => fullSearchable.includes(term));
+        const matchesAll = queryTerms.every(term => {
+          const termNorm = stripVietnameseDiacritics(term);
+          return fullSearchable.includes(term) || fullSearchableNorm.includes(termNorm);
+        });
         if (!matchesAll) {
           return false;
         }
@@ -983,7 +855,10 @@ export function getFilteredStudies(): Study[] {
       if (Array.isArray(study.icd10)) {
         study.icd10.forEach((item: any) => {
           if (typeof item === 'string') {
-            studyIcds.push(item.replace(/[\[\]"']/g, '').trim().toUpperCase());
+            const clean = item.replace(/[\[\]"']/g, '').split(/[,;\s]+/);
+            studyIcds.push(...clean.map(x => x.trim().toUpperCase()).filter(Boolean));
+          } else if (item) {
+            studyIcds.push(String(item).trim().toUpperCase());
           }
         });
       } else if (typeof study.icd10 === 'string' && (study.icd10 as string).trim()) {
@@ -1090,6 +965,8 @@ export function renderTable(): void {
   if (totalCountSidebar) totalCountSidebar.textContent = String((window.studies || []).length);
   if (savedCountSidebar) savedCountSidebar.textContent = String((window.studies || []).filter(s => s.bookmarked).length);
   if (summaryCountSidebar) summaryCountSidebar.textContent = String((window.studies || []).filter(s => (s.parts && (s.parts as any).length > 0) || s.file).length);
+  const condCountSidebar = document.getElementById('conditions-count-sidebar');
+  if (condCountSidebar && window.CLINICAL_CONDITIONS) condCountSidebar.textContent = String(Object.keys(window.CLINICAL_CONDITIONS).length);
   if (displayCount) displayCount.textContent = String(filtered.length);
 
   const heroTotal = document.getElementById('hero-total-count') || document.getElementById('stat-total-guidelines');
@@ -1220,17 +1097,17 @@ export function renderTable(): void {
         <td class="col-title">
           <div style="display:flex; align-items:flex-start; gap:8px;">
             <button class="bookmark-btn ${study.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${study.id}', event)" title="${study.bookmarked ? 'Bỏ lưu' : 'Lưu trữ'}">
-              ${study.bookmarked ? '★' : '☆'}
+              <i class="${study.bookmarked ? 'fa-solid' : 'fa-regular'} fa-star"></i>
             </button>
-            <div>
+            <div style="flex:1; min-width:0;">
               <div class="study-title-text" onclick="toggleExpandRow('${study.id}')">${escapeHtml(study.title)}</div>
               <div class="study-meta-sub">
                 <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color}; border: 1px solid ${specObj.color}30;">${escapeHtml(specObj.name)}</span>
                 ${spec2Obj ? `<span class="spec-tag" style="background:${spec2Obj.bg}; color:${spec2Obj.color}; border: 1px solid ${spec2Obj.color}30;">${escapeHtml(spec2Obj.name)}</span>` : ''}
-                ${study.drug ? `<span class="drug-tag">💊 ${escapeHtml(study.drug)}</span>` : ''}
-                ${study.year ? `<span class="year-tag">📅 ${study.year}</span>` : ''}
+                ${study.drug ? `<span class="drug-tag"><i class="fa-solid fa-capsules" style="font-size:0.62rem;"></i> ${escapeHtml(study.drug)}</span>` : ''}
+                ${study.year ? `<span class="year-tag"><i class="fa-regular fa-calendar" style="font-size:0.62rem;"></i> ${study.year}</span>` : ''}
                 ${renderJournalMetricsBadge(study)}
-                ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="badge-source-link" onclick="event.stopPropagation()" title="Mở tài liệu gốc (PubMed / BYT)"><i class="fa-solid fa-arrow-up-right-from-square"></i> Nguồn gốc</a>` : ''}
+                ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="badge-source-link" onclick="event.stopPropagation()" title="Mở tài liệu gốc (PubMed / BYT)"><i class="fa-solid fa-arrow-up-right-from-square"></i><span>Nguồn</span></a>` : ''}
                 ${renderSummaryButton(study, 'badge')}
               </div>
             </div>
@@ -1259,13 +1136,13 @@ export function renderTable(): void {
         <td class="col-population" style="display:${showCol('population')};">${escapeHtml(study.population || 'N/A')}</td>
         <td class="col-icd10" style="display:${showCol('icd10')};">${escapeHtml(Array.isArray(study.icd10) ? study.icd10.join(', ') : (study.icd10 || 'N/A'))}</td>
         <td class="col-actions" onclick="event.stopPropagation()">
-          <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
-            <button class="table-action-btn ${study.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${study.id}')" title="${study.bookmarked ? 'Bỏ lưu' : 'Lưu trữ'}"><i class="${study.bookmarked ? 'fa-solid' : 'fa-regular'} fa-star"></i></button>
-            <button class="table-action-btn" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh"><i class="fa-solid fa-scale-balanced"></i></button>
-            <button class="table-action-btn" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học"><i class="fa-solid fa-microscope"></i></button>
+          <div class="table-action-dock" role="group" aria-label="Hành động nghiên cứu">
+            <button class="table-action-btn table-action-star ${study.bookmarked ? 'active' : ''}" onclick="toggleBookmark('${study.id}')" title="${study.bookmarked ? 'Bỏ lưu nghiên cứu' : 'Lưu trữ nghiên cứu'}"><i class="${study.bookmarked ? 'fa-solid' : 'fa-regular'} fa-star"></i></button>
+            <button class="table-action-btn table-action-compare" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh"><i class="fa-solid fa-scale-balanced"></i></button>
+            <button class="table-action-btn table-action-toolkit" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học (PICO / RoB / BibTeX)"><i class="fa-solid fa-microscope"></i></button>
             ${renderSummaryActionButton(study)}
-            ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="table-action-btn" title="Mở tài liệu gốc / văn bản BYT" onclick="event.stopPropagation()"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
-            <button class="table-action-btn" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa"><i class="fa-solid fa-pen-to-square"></i></button>
+            ${study.sourceUrl ? `<a href="${escapeHtml(study.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="table-action-btn table-action-source" title="Mở tài liệu gốc / văn bản BYT" onclick="event.stopPropagation()"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+            <button class="table-action-btn table-action-edit" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa thông tin"><i class="fa-solid fa-pen-to-square"></i></button>
             <button class="table-action-btn table-action-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </td>
@@ -1370,7 +1247,9 @@ export function deleteStudy(id: string): void {
 
 export function deleteSelectedStudies(): void {
   if (!window.selectedIds || window.selectedIds.size === 0) {
-    alert('⚠️ Vui lòng tích chọn ít nhất 1 nghiên cứu trong danh sách để xóa!');
+    if (window.showMedicalToast) {
+      window.showMedicalToast({ type: 'warning', message: 'Vui lòng tích chọn ít nhất 1 nghiên cứu trong danh sách để xóa!' });
+    }
     return;
   }
   const count = window.selectedIds.size;
@@ -1415,4 +1294,5 @@ if (typeof window !== 'undefined') {
   window.deleteStudy = deleteStudy;
   window.deleteSelectedStudies = deleteSelectedStudies;
   window.toggleMobileFilterSheet = toggleMobileFilterSheet;
+  window.stripVietnameseDiacritics = stripVietnameseDiacritics;
 }
