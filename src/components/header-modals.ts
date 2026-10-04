@@ -80,10 +80,9 @@ function setupCheatsheetsModal(): void {
     // Filter by tab
     if (currentFilter !== 'all') {
       items = items.filter(item => {
-        if (currentFilter === 'emergency') return item.badge === 'EMERGENCY' || item.badge === 'ACLS';
-        if (currentFilter === 'cardiac') return item.category === 'Tim mạch' || item.badge === 'ACUTE CARDIAC';
-        if (currentFilter === 'formula') return item.category === 'Thận - Điện giải' || item.badge === 'FORMULA';
-        if (currentFilter === 'score') return item.badge === 'SCORE';
+        if (currentFilter === 'protocol') return item.category === 'Phác đồ nhanh';
+        if (currentFilter === 'tool') return item.category === 'Công cụ';
+        if (currentFilter === 'score') return item.category === 'Thang điểm';
         return true;
       });
     }
@@ -97,7 +96,9 @@ function setupCheatsheetsModal(): void {
         const inSummary = item.summary.toLowerCase().includes(q);
         const inTags = item.tags.some(t => t.toLowerCase().includes(q));
         const inDetails = item.details && item.details.firstLine.toLowerCase().includes(q);
-        return inTitle || inCategory || inSummary || inTags || inDetails;
+        const inDosing = item.details?.dosing?.some(d => d.toLowerCase().includes(q));
+        const inSecondary = item.details?.secondary?.some(s => s.toLowerCase().includes(q));
+        return inTitle || inCategory || inSummary || inTags || inDetails || inDosing || inSecondary;
       });
     }
 
@@ -115,7 +116,7 @@ function setupCheatsheetsModal(): void {
         <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--color-text-muted, #64748b);">
           <i class="fa-solid fa-folder-open" style="font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.5;"></i>
           <p style="font-weight: 700; margin: 0; font-size: 1.05rem; color: var(--color-text, #0f172a);">Không tìm thấy phác đồ / công thức phù hợp</p>
-          <small style="opacity: 0.75;">Thử tìm kiếm với từ khóa khác như "Adrenaline", "Glasgow", "Sodium", "Sepsis"...</small>
+          <small style="opacity: 0.75;">Thử tìm kiếm với từ khóa khác như "Phản vệ", "STEMI", "BMI", "CrCl", "eGFR", "SOFA", "CURB65"...</small>
         </div>
       `;
       return;
@@ -124,7 +125,25 @@ function setupCheatsheetsModal(): void {
     grid.innerHTML = items.map(item => {
       const isPinned = pinnedIds.includes(item.id);
       const dosingHtml = item.details.dosing.map(d => `<li>${d}</li>`).join('');
+      const secondaryHtml = (item.details.secondary && item.details.secondary.length > 0)
+        ? `
+          <div class="cheatsheet-secondary-box">
+            <span class="cheatsheet-secondary-title"><i class="fa-solid fa-circle-exclamation" style="color: var(--color-primary);"></i> Lưu ý &amp; Hướng dẫn lâm sàng:</span>
+            <ul class="cheatsheet-secondary-list">
+              ${item.details.secondary.map(s => `<li>${s}</li>`).join('')}
+            </ul>
+          </div>
+        `
+        : '';
       const tagsHtml = item.tags.map(t => `<span class="cheatsheet-tag">#${t}</span>`).join('');
+      const actionLinkHtml = item.actionUrl
+        ? `
+          <a href="${item.actionUrl}" class="cheatsheet-action-link" title="Mở trang công cụ / phác đồ chi tiết">
+            <span>${item.actionText || 'Mở chi tiết'}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i>
+          </a>
+        `
+        : '';
 
       return `
         <div class="cheatsheet-card" data-id="${item.id}">
@@ -153,10 +172,20 @@ function setupCheatsheetsModal(): void {
             <ul class="cheatsheet-dosing-list">
               ${dosingHtml}
             </ul>
+            ${secondaryHtml}
           </div>
 
-          <div class="cheatsheet-tags">
-            ${tagsHtml}
+          <div class="cheatsheet-card-footer">
+            <div class="cheatsheet-tags">
+              ${tagsHtml}
+            </div>
+            <div class="cheatsheet-card-actions">
+              ${actionLinkHtml}
+              <button type="button" class="cheatsheet-copy-btn" data-copy-id="${item.id}" title="Sao chép nội dung">
+                <i class="fa-regular fa-copy"></i>
+                <span>Chép</span>
+              </button>
+            </div>
           </div>
         </div>
       `;
@@ -177,6 +206,43 @@ function setupCheatsheetsModal(): void {
 
         localStorage.setItem('cliniportal_pinned_cheatsheets', JSON.stringify(pinnedIds));
         renderCheatsheets();
+      });
+    });
+
+    // Attach Action link click to close modal
+    grid.querySelectorAll('.cheatsheet-action-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeCheatsheetModal();
+      });
+    });
+
+    // Attach Copy click listeners
+    grid.querySelectorAll('.cheatsheet-copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const cardId = btn.getAttribute('data-copy-id');
+        const item = data.find(d => d.id === cardId);
+        if (!item) return;
+
+        const copyText = [
+          `[${item.title}]`,
+          item.summary,
+          `---`,
+          item.details.firstLine,
+          ...item.details.dosing.map(d => `• ${d}`),
+          ...(item.details.secondary ? ['Lưu ý:', ...item.details.secondary.map(s => `- ${s}`)] : []),
+          `---`,
+          `Nguồn: CliniPortal MedLens - Tra Cứu Nhanh Y Khoa`
+        ].join('\n');
+
+        navigator.clipboard.writeText(copyText).then(() => {
+          btn.classList.add('copied');
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Đã chép</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>Chép</span>';
+          }, 1800);
+        });
       });
     });
   }

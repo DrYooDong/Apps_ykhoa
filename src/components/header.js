@@ -100,14 +100,10 @@ function renderHeaderHtml(projectRoot = './') {
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Doctor User Profile Chip (DocSpace Style) -->
-        <a href="${root}index.html#/docspace" class="doctor-profile-badge" id="doctorProfileBadge" title="Thông tin Bác sĩ Lâm sàng & Phiên làm việc">
-          <div class="doctor-avatar">Đ</div>
-          <div class="doctor-meta">
-            <span class="doctor-name">BS.CKII Nguyễn Văn ...</span>
-            <span class="doctor-sub">Tim mạch & Cấp cứu</span>
-          </div>
-        </a>
+        <!-- Nút Icon Khóa Giao Diện Lâm Sàng -->
+        <button type="button" class="header-settings-btn header-lock-btn" id="headerLockBtn" title="Khóa giao diện lâm sàng (Mã PIN 6 số)" aria-label="Khóa giao diện lâm sàng">
+          <i class="fa-solid fa-lock"></i>
+        </button>
       </div>
     </header>
 

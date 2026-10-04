@@ -1572,6 +1572,37 @@
     border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
+.badge-primary {
+    background: rgba(2, 132, 199, 0.15);
+    color: #0284c7;
+    border: 1px solid rgba(2, 132, 199, 0.3);
+}
+
+[data-theme="dark"] .badge-primary {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+.badge-purple {
+    background: rgba(139, 92, 246, 0.15);
+    color: #7c3aed;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+[data-theme="dark"] .badge-purple {
+    color: #a78bfa;
+}
+
+.badge-rose {
+    background: rgba(236, 72, 153, 0.15);
+    color: #db2777;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+[data-theme="dark"] .badge-rose {
+    color: #f472b6;
+}
+
 .cheatsheet-summary {
     font-size: 0.85rem;
     color: var(--color-text-muted);
@@ -1609,11 +1640,104 @@
     color: var(--color-text);
 }
 
+.cheatsheet-secondary-box {
+    margin-top: 0.35rem;
+    padding-top: 0.55rem;
+    border-top: 1px dashed var(--color-divider);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.cheatsheet-secondary-title {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.cheatsheet-secondary-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: var(--color-text-muted);
+    font-size: 0.76rem;
+}
+
+.cheatsheet-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--color-divider);
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.cheatsheet-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+}
+
+.cheatsheet-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.22);
+    transition: all 0.2s ease;
+}
+
+.cheatsheet-action-link:hover {
+    background: rgba(2, 132, 199, 0.18);
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+.cheatsheet-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.55rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cheatsheet-copy-btn:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: var(--color-surface);
+}
+
+.cheatsheet-copy-btn.copied {
+    color: #10b981 !important;
+    border-color: #10b981 !important;
+    background: rgba(16, 185, 129, 0.12) !important;
+}
+
 .cheatsheet-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
-    margin-top: auto;
 }
 
 .cheatsheet-tag {

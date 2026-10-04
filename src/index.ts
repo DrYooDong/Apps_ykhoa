@@ -42,6 +42,8 @@ import * as components from './components';
 import { clinicalNonIntrusiveUX } from './components/non-intrusive-ux';
 import { clinicalProvenance } from './content/ebm/provenance';
 import { initHeaderModals } from './components/header-modals';
+import { initScreenLocker } from './components/screen-locker';
+import './styles/components/screen-locker.css';
 import { initDocSpaceRoutes } from './content/docspace/index';
 
 export interface CliniPortalCore {
@@ -799,6 +801,7 @@ function initCliniPortal(): void {
   syncBottomNavActiveState();
   syncHeaderProjectActiveState();
   initHeaderModals();
+  initScreenLocker();
 
   window.addEventListener('hashchange', () => {
     syncSidebarActiveState();
