@@ -1,7 +1,7 @@
 # 📘 CLINIPORTAL — DANH MỤC TỪ VỰNG LÂM SÀNG CHUẨN (MASTER SYMPTOM DICTIONARY)
 
-> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-10-04 | **Tổng số triệu chứng chuẩn**: 98
-> **Vị trí lưu trữ**: `src/content/knowledge-vault/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`
+> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-10-03 | **Tổng số triệu chứng chuẩn**: 98
+> **Vị trí lưu trữ**: `src/content/docspace/src/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` (Bản sao tại `src/content/docspace/docs/`)
 > **Mục đích**: Bản đồ từ vựng tham chiếu chuẩn mực (Anchor Vocabulary). Dùng để nạp trực tiếp vào **Google NotebookLM** cùng với tài liệu Guideline để AI đối chiếu, tái sử dụng mã ID sẵn có và tuyệt đối tránh tạo triệu chứng trùng lặp.
 
 ---

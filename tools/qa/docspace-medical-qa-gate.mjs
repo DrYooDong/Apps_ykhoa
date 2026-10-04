@@ -18,7 +18,9 @@ const symPath = path.join(rootDir, 'src/content/knowledge-vault/data/clinical-ru
 const disDir = path.join(rootDir, 'src/content/knowledge-vault/data/diseases');
 const casesPath = path.join(rootDir, 'src/content/knowledge-vault/data/sample-clinical-cases.json');
 const enrichedDir = path.join(rootDir, 'src/content/docspace/data/enriched');
-const baDir = path.join(rootDir, 'src/content/knowledge-vault/ba');
+const baDir = fs.existsSync(path.join(rootDir, 'src/content/docspace/data/ba'))
+  ? path.join(rootDir, 'src/content/docspace/data/ba')
+  : path.join(rootDir, 'src/content/knowledge-vault/ba');
 
 console.log('╔══════════════════════════════════════════════════════════════════════╗');
 console.log('║       🩺 CLINI-DOCSPACE MEDICAL KNOWLEDGE STANDARDIZATION GATE       ║');
@@ -186,7 +188,7 @@ baFiles.forEach(f => {
 });
 
 report(5, 'Clinical SOAP 4-Quadrant Architecture', soapErrors === 0, [
-  `Đã thẩm định ${baFiles.length} hồ sơ bệnh án lâm sàng thực chiến tại knowledge-vault/ba/`,
+  `Đã thẩm định ${baFiles.length} hồ sơ bệnh án lâm sàng thực chiến tại ${path.relative(rootDir, baDir).replace(/\\/g, '/')}`,
   `Kiểm định 4 góc nhìn chuẩn mực: Subjective (S) - Objective (O) - Assessment (A) - Plan (P)`,
   `Hồ sơ khuyết thiếu phần: ${soapErrors}`
 ]);

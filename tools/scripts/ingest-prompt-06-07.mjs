@@ -31,11 +31,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '../..');
 
+const DOCSPACE_DATA_DIR = path.join(ROOT_DIR, 'src/content/docspace/src/data');
+const DOCSPACE_SAMPLE_CASES_PATH = path.join(DOCSPACE_DATA_DIR, 'sample-clinical-cases.json');
+const DOCSPACE_BA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/ba');
+
 const VAULT_DATA_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/data');
 const DISEASES_DIR = path.join(VAULT_DATA_DIR, 'diseases');
 const SYMPTOMS_PATH = path.join(VAULT_DATA_DIR, 'clinical-rules-symptoms.json');
 const SAMPLE_CASES_PATH = path.join(VAULT_DATA_DIR, 'sample-clinical-cases.json');
-const BA_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/ba');
+const BA_DIR = DOCSPACE_BA_DIR;
 
 const SPECIALTY_FILE_MAP = {
   'truyền nhiễm': 'truyen-nhiem.json',
@@ -472,18 +476,32 @@ function runIngestion(inputFile) {
   // BƯỚC 4: NẠP CA LÂM SÀNG MẪU (sample-clinical-cases.json)
   // ─────────────────────────────────────────────────────────────
   console.log('\n📋 [4/7] Đang cập nhật ca lâm sàng mẫu (sample-clinical-cases.json)...');
-  if (sampleCaseJson && fs.existsSync(SAMPLE_CASES_PATH)) {
-    let sampleCases = JSON.parse(fs.readFileSync(SAMPLE_CASES_PATH, 'utf8'));
-    const existingIdx = sampleCases.findIndex(c => c.ten === sampleCaseJson.ten);
-
-    if (existingIdx >= 0) {
-      sampleCases[existingIdx] = sampleCaseJson;
-      console.log(`   ✅ Đã cập nhật ca mẫu: "${sampleCaseJson.ten}"`);
-    } else {
-      sampleCases.push(sampleCaseJson);
-      console.log(`   ✅ Đã thêm mới ca mẫu: "${sampleCaseJson.ten}"`);
+  if (sampleCaseJson) {
+    // 4.1 Cập nhật DocSpace (ưu tiên số 1)
+    if (fs.existsSync(DOCSPACE_SAMPLE_CASES_PATH)) {
+      let dsCases = JSON.parse(fs.readFileSync(DOCSPACE_SAMPLE_CASES_PATH, 'utf8'));
+      const idx = dsCases.findIndex(c => c.ten === sampleCaseJson.ten);
+      if (idx >= 0) {
+        dsCases[idx] = sampleCaseJson;
+      } else {
+        dsCases.push(sampleCaseJson);
+      }
+      fs.writeFileSync(DOCSPACE_SAMPLE_CASES_PATH, JSON.stringify(dsCases, null, 2) + '\n', 'utf8');
+      console.log(`   ✅ Đã cập nhật ca mẫu trong DocSpace: "${sampleCaseJson.ten}"`);
     }
-    fs.writeFileSync(SAMPLE_CASES_PATH, JSON.stringify(sampleCases, null, 2) + '\n', 'utf8');
+
+    // 4.2 Đồng bộ Vault nếu có
+    if (fs.existsSync(SAMPLE_CASES_PATH)) {
+      let sampleCases = JSON.parse(fs.readFileSync(SAMPLE_CASES_PATH, 'utf8'));
+      const existingIdx = sampleCases.findIndex(c => c.ten === sampleCaseJson.ten);
+      if (existingIdx >= 0) {
+        sampleCases[existingIdx] = sampleCaseJson;
+      } else {
+        sampleCases.push(sampleCaseJson);
+      }
+      fs.writeFileSync(SAMPLE_CASES_PATH, JSON.stringify(sampleCases, null, 2) + '\n', 'utf8');
+      console.log(`   ✅ Đã đồng bộ ca mẫu sang Knowledge Vault: "${sampleCaseJson.ten}"`);
+    }
   }
 
   // ─────────────────────────────────────────────────────────────

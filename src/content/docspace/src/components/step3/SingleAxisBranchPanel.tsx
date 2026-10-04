@@ -24,6 +24,7 @@ import {
   ClinicalBranch,
   CombinedProtocol,
 } from '../../types.ts';
+import { trimBranchName } from '../../lib/content-trimmer.ts';
 
 interface SingleAxisBranchPanelProps {
   axis: BranchAxis;
@@ -158,8 +159,17 @@ const parseBranchDetails = (name: string, badgeText?: string, idx?: number) => {
     const rawPrefix = colonMatch[1].trim();
     const content = colonMatch[2].trim();
     const dashParts = content.split(/\s*[—–-]\s*/);
-    const mainTitle = dashParts[0].trim();
+    let mainTitle = dashParts[0].trim();
     const subTitle = dashParts.slice(1).join(' — ').trim();
+
+    // Rút gọn các từ khóa rườm rà trong tên nhánh chính
+    mainTitle = mainTitle
+      .replace(/Sốt xuất huyết Dengue\s*/gi, '')
+      .replace(/SXH Dengue\s*/gi, '')
+      .replace(/không có dấu hiệu cảnh báo/gi, 'Không DHCB')
+      .replace(/có dấu hiệu cảnh báo/gi, 'Có DHCB')
+      .replace(/dấu hiệu cảnh báo/gi, 'DHCB')
+      .trim();
 
     const shortPrefix = rawPrefix
       .replace(/Giai đoạn\s*/i, 'GĐ ')
@@ -184,10 +194,11 @@ const parseBranchDetails = (name: string, badgeText?: string, idx?: number) => {
     };
   }
 
+  const trimmed = trimBranchName(name);
   return {
     prefix: `Nhánh ${(idx ?? 0) + 1}`,
     shortPrefix: `#${(idx ?? 0) + 1}`,
-    mainTitle: name,
+    mainTitle: trimmed,
     subTitle: '',
     cleanBadge: badgeText || '',
   };
@@ -318,6 +329,7 @@ export const SingleAxisBranchPanel: React.FC<SingleAxisBranchPanelProps> = ({
                 key={b.id}
                 type="button"
                 onClick={() => onSelectBranch(axis.axisId, b.id)}
+                title={b.name}
                 className={`group relative p-3 rounded-xl border text-left flex flex-col justify-between gap-2.5 transition-all duration-150 cursor-pointer h-full ${
                   isSelected
                     ? `${colorTokens.activeBorder} ${colorTokens.activeBg} ${colorTokens.textActive} ${colorTokens.activeRing} shadow-xs scale-[1.01]`

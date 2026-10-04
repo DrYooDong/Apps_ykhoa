@@ -19,15 +19,17 @@ const ROOT = fs.existsSync(path.join(process.cwd(), 'src/content/knowledge-vault
   ? process.cwd()
   : (fs.existsSync('d:/Apps/Apps_ykhoa/src/content/knowledge-vault') ? 'd:/Apps/Apps_ykhoa' : process.cwd());
 
+const DOCSPACE_ROOT = path.join(ROOT, 'src/content/docspace');
+const DOCSPACE_DATA_DIR = path.join(DOCSPACE_ROOT, 'src/data');
+const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
+const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
+const DOCSPACE_BA_DIR = path.join(DOCSPACE_ROOT, 'data/ba');
+
 const VAULT_ROOT = path.join(ROOT, 'src/content/knowledge-vault');
 const VAULT_DATA_DIR = path.join(VAULT_ROOT, 'data');
 const VAULT_CATALOG_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog.json');
 const VAULT_THUCHANH_PATH = path.join(VAULT_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 const VAULT_BA_DIR = path.join(VAULT_ROOT, 'ba');
-
-const DOCSPACE_DATA_DIR = path.join(ROOT, 'src/content/docspace/src/data');
-const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
-const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 
 /**
  * Hàm khử HTML entities thường gặp từ output thô của AI/NotebookLM
@@ -453,11 +455,11 @@ function processMarkdownFile(filePath) {
     context: JSON.stringify(parsedSoap),
   };
 
-  // Lưu file .md vào thư mục Knowledge Vault ba/
-  if (!fs.existsSync(VAULT_BA_DIR)) {
-    fs.mkdirSync(VAULT_BA_DIR, { recursive: true });
+  // Lưu file .md trực tiếp vào thư mục DocSpace ba/
+  if (!fs.existsSync(DOCSPACE_BA_DIR)) {
+    fs.mkdirSync(DOCSPACE_BA_DIR, { recursive: true });
   }
-  const destMdPath = path.join(VAULT_BA_DIR, `${caseId}.md`);
+  const destMdPath = path.join(DOCSPACE_BA_DIR, `${caseId}.md`);
   let contentToSave = content;
   if (synthesized) {
     const yml = [
@@ -480,7 +482,13 @@ function processMarkdownFile(filePath) {
     console.log(`   ✨ [Auto-Frontmatter] Đã tự động tổng hợp Frontmatter chuẩn cho ${caseId}.md`);
   }
   fs.writeFileSync(destMdPath, contentToSave, 'utf-8');
-  console.log(`   ➔ Đã lưu file Markdown vào: ${destMdPath}`);
+  console.log(`   ➔ Đã lưu file Markdown vào DocSpace: ${destMdPath}`);
+
+  // Đồng bộ thêm vào Knowledge Vault nếu có thư mục
+  if (fs.existsSync(VAULT_BA_DIR)) {
+    const vaultDestPath = path.join(VAULT_BA_DIR, `${caseId}.md`);
+    fs.writeFileSync(vaultDestPath, contentToSave, 'utf-8');
+  }
 
   return article;
 }
@@ -530,15 +538,19 @@ Ví dụ:
     process.exit(0);
   }
 
-  console.log(`🔍 Tìm thấy ${filesToProcess.length} ca lâm sàng cần nạp vào Knowledge Vault...`);
+  console.log(`🔍 Tìm thấy ${filesToProcess.length} ca lâm sàng cần nạp vào DocSpace / Knowledge Vault...`);
 
-  // Đọc catalog hiện tại
-  if (!fs.existsSync(VAULT_CATALOG_PATH)) {
-    console.error(`❌ Không tìm thấy catalog: ${VAULT_CATALOG_PATH}`);
+  // Đọc catalog hiện tại (ưu tiên DocSpace catalog)
+  const primaryCatalogPath = fs.existsSync(DOCSPACE_CATALOG_PATH)
+    ? DOCSPACE_CATALOG_PATH
+    : VAULT_CATALOG_PATH;
+
+  if (!fs.existsSync(primaryCatalogPath)) {
+    console.error(`❌ Không tìm thấy catalog: ${primaryCatalogPath}`);
     process.exit(1);
   }
 
-  const catalogRaw = fs.readFileSync(VAULT_CATALOG_PATH, 'utf-8');
+  const catalogRaw = fs.readFileSync(primaryCatalogPath, 'utf-8');
   const catalog = JSON.parse(catalogRaw);
   let newCount = 0;
   let updateCount = 0;
@@ -562,17 +574,19 @@ Ví dụ:
   // Lọc riêng các bài viết Thực hành (BA)
   const thucHanhArticles = catalog.filter((a) => a.khoCode === 'BA' || a.khoGroup === 'Thực hành');
 
-  // Ghi lại catalog Knowledge Vault (cả phân nhóm Thực hành và Master)
-  fs.writeFileSync(VAULT_THUCHANH_PATH, JSON.stringify(thucHanhArticles, null, 2), 'utf-8');
-  fs.writeFileSync(VAULT_CATALOG_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`\n💾 Đã lưu catalog Knowledge Vault (${thucHanhArticles.length} ca BA): ${VAULT_THUCHANH_PATH}`);
-  console.log(`💾 Đã cập nhật master catalog Knowledge Vault: ${VAULT_CATALOG_PATH}`);
-
-  // Đồng bộ sang DocSpace catalog nếu có
+  // Ghi lại catalog DocSpace chính
   if (fs.existsSync(DOCSPACE_DATA_DIR)) {
     fs.writeFileSync(DOCSPACE_THUCHANH_PATH, JSON.stringify(thucHanhArticles, null, 2), 'utf-8');
     fs.writeFileSync(DOCSPACE_CATALOG_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
-    console.log(`🔄 Đã đồng bộ sang DocSpace: ${DOCSPACE_THUCHANH_PATH}`);
+    console.log(`\n💾 Đã lưu catalog DocSpace (${thucHanhArticles.length} ca BA): ${DOCSPACE_THUCHANH_PATH}`);
+    console.log(`💾 Đã cập nhật master catalog DocSpace: ${DOCSPACE_CATALOG_PATH}`);
+  }
+
+  // Đồng bộ thêm vào Knowledge Vault nếu có
+  if (fs.existsSync(VAULT_DATA_DIR)) {
+    fs.writeFileSync(VAULT_THUCHANH_PATH, JSON.stringify(thucHanhArticles, null, 2), 'utf-8');
+    fs.writeFileSync(VAULT_CATALOG_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
+    console.log(`🔄 Đã đồng bộ sang Knowledge Vault: ${VAULT_CATALOG_PATH}`);
   }
 
   console.log(`

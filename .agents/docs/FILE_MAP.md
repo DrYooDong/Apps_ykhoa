@@ -893,6 +893,11 @@
 | `src/content/docspace/docs/prompts/02-prompt-ca-mau-va-trong-so.txt` | Lean Prompt 02: Trích xuất Ca lâm sàng Mẫu Bước 1 & Ma trận Trọng số CDSS Bước 3 (JSON) | Prompt Engineering |
 | `src/content/docspace/docs/prompts/03-prompt-ho-so-ca-benh-soap.txt` | Lean Prompt 03: Trích xuất Hồ sơ Ca bệnh Thực chiến SOAP & Hạt ngọc lâm sàng (Markdown) | Prompt Engineering |
 | `src/content/docspace/docs/prompts/archive/` | Thư mục lưu trữ lịch sử các prompt cũ (Prompt 00-09) đảm bảo an toàn truy nguyên | Prompt Archives |
+| `src/content/docspace/src/data/medical-abbreviation-map.json` | Từ điển viết tắt Y khoa chuẩn hóa 5 nhóm (bệnh, cận lâm sàng, thuật ngữ, thuốc, chuyên khoa) | Medical Data & Dictionary |
+| `src/content/docspace/src/lib/abbreviation.ts` | Runtime Abbreviation Engine rút gọn UI O(1) và hỗ trợ tra cứu ngữ nghĩa WCAG AA | Core Clinical Lib |
+| `src/content/docspace/src/lib/content-trimmer.ts` | Runtime Content Trimmer Engine lọc bỏ mẫu text thừa (ngoặc cha-con, tên nhánh, metrics) | Core Clinical Lib |
+| `tools/scripts/content-trim.mjs` | CLI kiểm định trước kết quả rút gọn & viết tắt y khoa (--dry-run, --report, --apply) | Tooling & QA |
+| `tools/scripts/dedup-engine.mjs` | CLI động cơ lọc trùng tự động 4 phạm vi (Tiêu chuẩn CĐ, Phác đồ & Thuốc, SOAP, Ca mẫu) | Tooling & QA |
 | `tools/templates/protocol-branching-template.json` | Tệp template JSON chuẩn hóa Dynamic Clinical Branching Protocol | Templates |
 | `tools/templates/README_HUONG_DAN_SOAN_PHAC_DO.md` | Sổ tay tóm tắt nhanh 3 bước soạn phác đồ phân nhánh cho bác sĩ & AI | Documentation & Cheat Sheet |
 

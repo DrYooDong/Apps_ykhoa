@@ -8,10 +8,10 @@
 
 **DocSpace MedLens Pro** được tái cấu trúc hoàn toàn trên nền tảng **React 19 + TypeScript + Vite + TailwindCSS v4**, vận hành theo triết lý **100% Client-Side, Zero-Latency & Không phụ thuộc cơ sở dữ liệu ngoài (No Supabase, No LocalStorage)**:
 
-- **Knowledge Vault (`src/content/knowledge-vault`) là Nguồn sự thật duy nhất (Single Source of Truth)**:
-  - Toàn bộ 2.400+ bài viết EBM từ 18 phân kho chuyên khoa.
-  - Bộ quy tắc suy luận diễn dịch (Deduction Engine) và từ vựng triệu chứng: `knowledge-vault/data/clinical-rules-kb.json`.
-  - Sổ tay kinh nghiệm lâm sàng SOAP thực chiến: `knowledge-vault/ba/` và index trong `vault-catalog.json` (`khoCode: "BA"`).
+- **Hệ Thống Dữ Liệu Nội Bộ Độc Lập (Self-Contained Data Architecture)**:
+  - Nguồn dữ liệu lâm sàng cốt lõi đặt tại: `src/content/docspace/src/data/` (chứa `diseases.ts`, `clinical-rules-symptoms.json`, `sample-clinical-cases.json`, các cơ sở dữ liệu mở rộng).
+  - Kho ca bệnh thực chiến SOAP Markdown độc lập: `src/content/docspace/data/ba/` và index trong catalog `src/content/docspace/src/data/vault-catalog.json`.
+  - Bộ 14 module CDSS độc lập chuyên khoa: `src/content/docspace/public/cdss/` (Dengue, ECG, ABG, X-Ray, Hepa, Sepsis, Diacare, Antibiotic, Vancomycin...).
 - **Phân tách giao diện rành mạch**:
   1. **🩺 Chu Trình Lâm Sàng (4 Bước Cốt Lõi Chuẩn Hóa)**:
      - **Bước 1 — Nạp dữ kiện (Data Ingestion)**: Nhập hành chính, lý do vào viện, khung Dịch tễ học (Tam giác DTH, Vector, Vùng dịch), sinh hiệu định lượng, cận lâm sàng (CBC, Hct, Men gan, Troponin...) và chọn lọc triệu chứng dương tính / phủ định loại trừ.
@@ -105,12 +105,12 @@ npm run build
 
 1. **Chuẩn bị nguồn tài liệu**: Tải văn bản Guideline Bộ Y Tế, ESC, AHA hoặc ca bệnh ẩn danh lên [Google NotebookLM](https://notebooklm.google.com/).
 2. **Dùng Prompt Master**: Mở `docs/prompt-notebooklm-soap.txt`, dán vào NotebookLM để sinh ca bệnh theo format Markdown Frontmatter chuẩn.
-3. **Lưu file Markdown**: Lưu file vào `src/content/knowledge-vault/ba/<caseId>.md`.
+3. **Lưu file Markdown**: Lưu file vào `src/content/docspace/data/ba/<caseId>.md`.
 4. **Chạy script nạp tự động**:
    ```powershell
-   node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/<caseId>.md
+   node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/<caseId>.md
    ```
-   Script sẽ tự động cập nhật `vault-catalog.json` của Knowledge Vault và đồng bộ sang DocSpace.
+   Script sẽ tự động cập nhật catalog nội bộ `src/content/docspace/src/data/vault-catalog.json`.
    Xem chi tiết tại: [`docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md`](file:///d:/Apps/Apps_ykhoa/src/content/docspace/docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md).
 
 ---

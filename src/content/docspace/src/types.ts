@@ -217,6 +217,7 @@ export interface PhacDo {
 export interface Benh {
   id: string;
   ten: string;
+  tenNgan?: string;
   icd: string;
   nhom: string;
   baoDong: boolean;

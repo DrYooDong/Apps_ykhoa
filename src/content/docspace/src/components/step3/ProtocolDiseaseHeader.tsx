@@ -2,6 +2,7 @@ import React from 'react';
 import { BookOpen, Droplet, Activity, FlaskConical, HeartPulse, Wind, Pill, LayoutGrid, ScrollText } from 'lucide-react';
 import { GROUP_COLORS, GROUP_NAMES } from '../../data/seedData.ts';
 import { CdssToolSlug } from '../../lib/vaultBridge.ts';
+import { abbrevDisease } from '../../lib/abbreviation.ts';
 
 interface ProtocolDiseaseHeaderProps {
   diseaseName: string;
@@ -84,9 +85,17 @@ export const ProtocolDiseaseHeader: React.FC<ProtocolDiseaseHeaderProps> = ({
       {/* Hàng 1: Tên bệnh, Mã ICD, Chuyên khoa & Nút CDSS Chuyên Biệt */}
       <div className="flex flex-wrap items-center justify-between gap-2.5">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+          <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight" title={diseaseName}>
             {diseaseName}
           </h3>
+          {abbrevDisease(diseaseName, 25) !== diseaseName && (
+            <span
+              className="px-2 py-0.5 text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 rounded font-mono"
+              title={`Tên viết tắt: ${abbrevDisease(diseaseName, 25)}`}
+            >
+              {abbrevDisease(diseaseName, 25)}
+            </span>
+          )}
           <span className="px-2 py-0.5 text-xs font-mono-custom bg-slate-800 text-white rounded font-semibold tracking-wide">
             {diseaseIcd}
           </span>

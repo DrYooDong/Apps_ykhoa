@@ -8,6 +8,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "aclf",
     "ten": "Suy gan cấp trên nền mạn (Acute-on-Chronic Liver Failure - ACLF)",
+    "tenNgan": "ACLF",
     "icd": "K72.1",
     "nhom": "Toàn thân",
     "baoDong": true,
@@ -103,6 +104,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "h_pylori",
     "ten": "Nhiễm Helicobacter pylori (H. pylori Infection)",
+    "tenNgan": "Nhiễm H. pylori",
     "icd": "B98.0",
     "nhom": "Tiêu hóa",
     "baoDong": false,
@@ -183,6 +185,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "hach_to_nguoilon_hivaids",
     "ten": "Hạch to ở người lớn trong bệnh cảnh HIV/AIDS (Lymphadenopathy in HIV/AIDS & Persistent Generalized Lymphadenopathy - PGL)",
+    "tenNgan": "Hạch to HIV/AIDS",
     "icd": "R59.9",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -253,6 +256,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "hiv",
     "ten": "Nhiễm HIV/AIDS (Human Immunodeficiency Virus / Acquired Immunodeficiency Syndrome)",
+    "tenNgan": "HIV/AIDS",
     "icd": "B20",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -323,6 +327,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "leptospira",
     "ten": "Nhiễm Leptospira (Leptospirosis / Bệnh Weil / Sốt xoắn trùng)",
+    "tenNgan": "Leptospira",
     "icd": "A27",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -413,6 +418,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nt_cohoi",
     "ten": "Nhiễm trùng cơ hội trong bệnh cảnh HIV/AIDS (Opportunistic Infections in HIV/AIDS & Advanced HIV Disease - AHD)",
+    "tenNgan": "NT cơ hội / HIV",
     "icd": "B20",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -488,6 +494,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nt_tieu_duoi",
     "ten": "Nhiễm trùng đường tiết niệu dưới / Viêm bàng quang cấp (Lower Urinary Tract Infection / Localized UTI / Acute Cystitis)",
+    "tenNgan": "NTT dưới / Bàng quang",
     "icd": "N30.0",
     "nhom": "Tiết niệu",
     "baoDong": false,
@@ -563,6 +570,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nt_tieu_tren",
     "ten": "Nhiễm trùng đường tiết niệu trên / Viêm thận bể thận cấp (Upper Urinary Tract Infection / Acute Pyelonephritis / Systemic UTI)",
+    "tenNgan": "NTT trên / Bể thận",
     "icd": "N10",
     "nhom": "Tiết niệu",
     "baoDong": false,
@@ -643,6 +651,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nt_tieuhoa",
     "ten": "Nhiễm trùng tiêu hóa (Infectious Gastroenteritis / Acute Infectious Diarrhea)",
+    "tenNgan": "NT tiêu hóa",
     "icd": "A09",
     "nhom": "Tiêu hóa",
     "baoDong": false,
@@ -723,6 +732,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "sot_keodai_nguoilon_hivaids",
     "ten": "Sốt kéo dài ở người lớn trong bệnh cảnh HIV/AIDS (Fever of Unknown Origin in HIV/AIDS Patients)",
+    "tenNgan": "Sốt kéo dài / HIV",
     "icd": "R50.9",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -798,6 +808,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "sot_ret",
     "ten": "Sốt rét (Malaria)",
+    "tenNgan": "Sốt rét",
     "icd": "B54",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -878,6 +889,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "sot_xuat_huyet_dengue",
     "ten": "Sốt xuất huyết Dengue",
+    "tenNgan": "SXH Dengue",
     "icd": "A97",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -953,6 +965,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "thuy_dau",
     "ten": "Bệnh Thủy đậu (Varicella / Chickenpox)",
+    "tenNgan": "Thủy đậu",
     "icd": "B01",
     "nhom": "Truyền nhiễm",
     "baoDong": false,
@@ -1018,6 +1031,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "tieu_chay_man_nguoilon_hivaids",
     "ten": "Tiêu chảy mạn tính ở người lớn trong bệnh cảnh HIV/AIDS (Chronic Diarrhea in HIV/AIDS Patients)",
+    "tenNgan": "Tiêu chảy mạn / HIV",
     "icd": "A09.9",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -1093,6 +1107,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "vgsv_B",
     "ten": "Viêm gan vi rút B (Chronic / Acute Viral Hepatitis B)",
+    "tenNgan": "Viêm gan B",
     "icd": "B18.1",
     "nhom": "Truyền nhiễm",
     "baoDong": false,
@@ -1173,6 +1188,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "vgsv_C",
     "ten": "Viêm gan vi rút C (Chronic / Acute Viral Hepatitis C)",
+    "tenNgan": "Viêm gan C",
     "icd": "B18.2",
     "nhom": "Truyền nhiễm",
     "baoDong": false,
@@ -1243,6 +1259,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_phoi_benh_vien",
     "ten": "Viêm phổi bệnh viện & Viêm phổi liên quan đến thở máy (HAP / VAP)",
+    "tenNgan": "VPBV / VAP",
     "icd": "J18.9",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -1333,6 +1350,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_phoi_cong_dong",
     "ten": "Viêm phổi mắc phải cộng đồng ở người lớn (Community-Acquired Pneumonia - CAP)",
+    "tenNgan": "VPCD / CAP",
     "icd": "J18",
     "nhom": "Hô hấp",
     "baoDong": false,
@@ -1413,6 +1431,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_phoi_do_virus",
     "ten": "Viêm phổi do virus (Viral Pneumonia / Severe Viral Pneumonia - SVP)",
+    "tenNgan": "VP do virus",
     "icd": "J12.9",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -1498,6 +1517,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "vmn_nam",
     "ten": "Viêm màng não do nấm (Fungal Meningitis / Cryptococcal Meningitis)",
+    "tenNgan": "VMN nấm",
     "icd": "G02.1",
     "nhom": "Thần kinh",
     "baoDong": false,
@@ -1573,6 +1593,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "vmn_sv",
     "ten": "Viêm màng não do vi rút (Viral Meningitis / Aseptic Meningitis)",
+    "tenNgan": "VMN virus",
     "icd": "A87",
     "nhom": "Thần kinh",
     "baoDong": false,
@@ -1648,6 +1669,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "vmn_vk",
     "ten": "Viêm màng não do vi khuẩn (Acute Bacterial Meningitis - ABM)",
+    "tenNgan": "VMN vi khuẩn",
     "icd": "G00",
     "nhom": "Thần kinh",
     "baoDong": true,
@@ -1723,6 +1745,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "xo_gan_con_bu",
     "ten": "Xơ gan còn bù (Compensated Cirrhosis)",
+    "tenNgan": "Xơ gan còn bù",
     "icd": "K74.6",
     "nhom": "Tiêu hóa",
     "baoDong": false,
@@ -1808,6 +1831,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "xo_gan_mat_bu",
     "ten": "Xơ gan mất bù (Decompensated Cirrhosis)",
+    "tenNgan": "Xơ gan mất bù",
     "icd": "K74.6",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -1893,6 +1917,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "phan_ve",
     "ten": "Phản vệ",
+    "tenNgan": "Phản vệ",
     "icd": "T78.2",
     "nhom": "Da niêm",
     "baoDong": true,
@@ -1958,6 +1983,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_gan_cap_do_thuoc_khang_lao",
     "ten": "Viêm gan cấp do thuốc kháng lao",
+    "tenNgan": "Viêm gan do thuốc lao",
     "icd": "K71.6",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -2033,6 +2059,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_gan_sieu_vi_b",
     "ten": "Viêm gan vi rút B cấp",
+    "tenNgan": "VGB cấp",
     "icd": "B16",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -2103,6 +2130,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_gan_sieu_vi_c",
     "ten": "Viêm gan vi rút C",
+    "tenNgan": "VGC",
     "icd": "B18.2",
     "nhom": "Truyền nhiễm",
     "baoDong": false,
@@ -2168,6 +2196,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "xo_gan",
     "ten": "Xơ gan & Tăng áp lực tĩnh mạch cửa",
+    "tenNgan": "Xơ gan / Tăng áp cửa",
     "icd": "K74.6",
     "nhom": "Tiêu hóa",
     "baoDong": false,
@@ -2248,6 +2277,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_phoi",
     "ten": "Viêm Phổi Mắc Phải Cộng Đồng (CAP)",
+    "tenNgan": "VPCD / CAP",
     "icd": "J18.9",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -2323,6 +2353,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "thuyen_tac_phoi",
     "ten": "Thuyên Tắc Động Mạch Phổi Cấp (PE)",
+    "tenNgan": "Thuyên tắc phổi",
     "icd": "I26.9",
     "nhom": "Tim mạch",
     "baoDong": true,
@@ -2398,6 +2429,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "suy_than",
     "ten": "Tổn Thương Thận Cấp (AKI) / Bệnh Thận Mạn (CKD)",
+    "tenNgan": "AKI / CKD",
     "icd": "N18.9",
     "nhom": "Tiết niệu",
     "baoDong": true,
@@ -2468,6 +2500,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_tuy_cap",
     "ten": "Viêm Tụy Cấp (Acute Pancreatitis)",
+    "tenNgan": "Viêm tụy cấp",
     "icd": "K85.9",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -2533,6 +2566,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "dai_thao_duong",
     "ten": "Đái Tháo Đường Típ 2 / Típ 1 & Biến Chứng Cấp",
+    "tenNgan": "Đái tháo đường",
     "icd": "E11.9",
     "nhom": "Nội tiết",
     "baoDong": true,
@@ -2598,6 +2632,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "tang_huyet_ap",
     "ten": "Tăng Huyết Áp Vô Căn / Cơn THA Cấp Cứu",
+    "tenNgan": "Tăng huyết áp",
     "icd": "I10",
     "nhom": "Tim mạch",
     "baoDong": true,
@@ -2658,6 +2693,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "suy_tim",
     "ten": "Suy Tim Cấp / Mạn Tính (HFrEF / HFpEF)",
+    "tenNgan": "Suy tim",
     "icd": "I50.9",
     "nhom": "Tim mạch",
     "baoDong": true,
@@ -2733,6 +2769,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "dot_quy_nao",
     "ten": "Đột Quỵ Não Cấp (Nhồi Máu Não / Xuất Huyết Não)",
+    "tenNgan": "Đột quỵ não",
     "icd": "I63.9",
     "nhom": "Thần kinh",
     "baoDong": true,
@@ -2803,6 +2840,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "hoi_chung_vanh_cap",
     "ten": "Hội chứng vành cấp / Nhồi máu cơ tim (ACS/STEMI/NSTEMI)",
+    "tenNgan": "HCVC / NMCT",
     "icd": "I21.9",
     "nhom": "Tim mạch",
     "baoDong": true,
@@ -2868,6 +2906,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "copd",
     "ten": "Bệnh phổi tắc nghẽn mạn tính (COPD - Đợt cấp & Mạn)",
+    "tenNgan": "COPD",
     "icd": "J44.9",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -2933,6 +2972,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "hen_phe_quan",
     "ten": "Hen phế quản (Asthma - Cơn cấp & Kiểm soát GINA)",
+    "tenNgan": "Hen phế quản",
     "icd": "J45.9",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -2998,6 +3038,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "soc_nhiem_khuan",
     "ten": "Sốc nhiễm khuẩn & Nhiễm khuẩn huyết (Sepsis-3)",
+    "tenNgan": "Sốc nhiễm khuẩn",
     "icd": "A41.9",
     "nhom": "Truyền nhiễm",
     "baoDong": true,
@@ -3063,6 +3104,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "xuat_huyet_tieu_hoa_tren",
     "ten": "Xuất huyết tiêu hóa trên (UGIB - Loét & Vỡ Giãn TMTQ)",
+    "tenNgan": "XHTH trên",
     "icd": "K92.2",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -3128,6 +3170,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nhiem_toan_ceton_dka",
     "ten": "Nhiễm toan Ceton do ĐTĐ (DKA) & Tăng ALTT (HHS)",
+    "tenNgan": "DKA / HHS",
     "icd": "E10.1",
     "nhom": "Nội tiết",
     "baoDong": true,
@@ -3193,6 +3236,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "con_bao_giap",
     "ten": "Cơn bão giáp & Nhiễm độc giáp cấp (Thyroid Storm)",
+    "tenNgan": "Bão giáp",
     "icd": "E05.9",
     "nhom": "Nội tiết",
     "baoDong": true,
@@ -3258,6 +3302,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "suy_thuong_than_cap",
     "ten": "Suy thượng thận cấp (Adrenal Crisis / Acute Adrenal Insufficiency)",
+    "tenNgan": "Suy thượng thận cấp",
     "icd": "E27.2",
     "nhom": "Nội tiết",
     "baoDong": true,
@@ -3323,6 +3368,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_ruot_thua_cap",
     "ten": "Viêm ruột thừa cấp (Acute Appendicitis)",
+    "tenNgan": "Viêm ruột thừa",
     "icd": "K35.8",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -3388,6 +3434,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_tui_mat_cap",
     "ten": "Sỏi mật & Viêm túi mật cấp (Acute Cholecystitis)",
+    "tenNgan": "Viêm túi mật cấp",
     "icd": "K80.0",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -3453,6 +3500,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "nhiem_trung_tiet_nieu",
     "ten": "Nhiễm trùng đường tiết niệu & Viêm đài bể thận (UTI / Pyelonephritis)",
+    "tenNgan": "NT tiết niệu / Bể thận",
     "icd": "N39.0",
     "nhom": "Tiết niệu",
     "baoDong": true,
@@ -3518,6 +3566,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "rung_nhi",
     "ten": "Rung nhĩ & Loạn nhịp nhanh (Atrial Fibrillation - AFib)",
+    "tenNgan": "Rung nhĩ",
     "icd": "I48.9",
     "nhom": "Tim mạch",
     "baoDong": true,
@@ -3583,6 +3632,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "ha_natri_mau",
     "ten": "Hạ Natri máu & Rối loạn điện giải (Hyponatremia / SIADH)",
+    "tenNgan": "Hạ Natri máu",
     "icd": "E87.1",
     "nhom": "Tiết niệu",
     "baoDong": true,
@@ -3648,6 +3698,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "viem_loet_da_day_hp",
     "ten": "Viêm loét dạ dày tá tràng & Nhiễm H. Pylori (PUD)",
+    "tenNgan": "Loét DD-TT / HP",
     "icd": "K25.9",
     "nhom": "Tiêu hóa",
     "baoDong": true,
@@ -3713,6 +3764,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "soc_phan_ve",
     "ten": "Sốc phản vệ & Phản ứng phản vệ (Anaphylaxis)",
+    "tenNgan": "Sốc phản vệ",
     "icd": "T78.2",
     "nhom": "Da niêm",
     "baoDong": true,
@@ -3778,6 +3830,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "tran_dich_tran_khi_mang_phoi",
     "ten": "Tràn dịch & Tràn khí màng phổi cấp (Effusion / Pneumothorax)",
+    "tenNgan": "TD / TK màng phổi",
     "icd": "J90",
     "nhom": "Hô hấp",
     "baoDong": true,
@@ -3843,6 +3896,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "soi_than_con_dau_quan_than",
     "ten": "Sỏi thận & Cơn đau quặn thận (Renal Colic / Urolithiasis)",
+    "tenNgan": "Sỏi thận / Đau quặn",
     "icd": "N20.0",
     "nhom": "Tiết niệu",
     "baoDong": true,
@@ -3908,6 +3962,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "hoi_chung_than_hu",
     "ten": "Hội chứng thận hư nguyên phát / thứ phát (Nephrotic Syndrome)",
+    "tenNgan": "Hội chứng thận hư",
     "icd": "N04.9",
     "nhom": "Tiết niệu",
     "baoDong": true,
@@ -3973,6 +4028,7 @@ export const CORE_DISEASES: Benh[] = [
   {
     "id": "ha_duong_huyet_cap",
     "ten": "Hạ đường huyết cấp & Hôn mê hạ đường huyết (Hypoglycemia)",
+    "tenNgan": "Hạ đường huyết",
     "icd": "E16.2",
     "nhom": "Nội tiết",
     "baoDong": true,

@@ -5,6 +5,7 @@ import { GROUP_COLORS } from '../../data/seedData.ts';
 import { normalizeText } from '../../lib/clinicalEngine.ts';
 import { CLINICAL_SYNDROME_PRESETS } from './ClinicalSelectorControl.tsx';
 import { expandSearchTerms } from '../../lib/medicalAbbreviations.ts';
+import { compactText } from '../../lib/content-trimmer.ts';
 
 interface SymptomCategorySectionProps {
   category: 'cn' | 'tt' | 'tc' | 'cls';
@@ -109,14 +110,14 @@ export const SymptomCategorySection: React.FC<SymptomCategorySectionProps> = ({
           type="button"
           id={`chip-${tc.id}`}
           onClick={(e) => onChipClick(tc.id, e)}
-          title={`Từ khóa: ${tc.tuKhoa.join(', ') || '—'}\nClick để chọn Dương tính (+)`}
+          title={`[${tc.ten}]\nTừ khóa: ${tc.tuKhoa.join(', ') || '—'}\nClick để chọn Dương tính (+)`}
           className="px-2 py-1 flex items-center gap-1.5 text-left cursor-pointer select-none"
         >
           <span
             className="w-1.5 h-1.5 rounded-full shrink-0"
             style={{ backgroundColor: isSelected ? '#ffffff' : groupColor }}
           />
-          <span className="truncate max-w-[210px]">{tc.ten}</span>
+          <span className="truncate max-w-[210px]">{compactText(tc.ten, 'symptomChip', 32)}</span>
           {tc.map && !isSelected && (
             <span
               className="text-[9.5px] px-1 rounded font-mono-custom bg-slate-100 text-slate-600 border border-slate-200"

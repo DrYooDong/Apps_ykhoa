@@ -57,9 +57,9 @@ Mở thư mục `src/content/docspace/docs/prompts/` và chọn file prompt tư�
 1. Sao chép toàn bộ khối kết quả từ NotebookLM.
 2. Tạo một tệp Markdown mới tại thư mục:
    ```text
-   src/content/knowledge-vault/ba/<slug-ca-benh>.md
+   src/content/docspace/data/ba/<slug-ca-benh>.md
    ```
-   *(Ví dụ: `src/content/knowledge-vault/ba/ca-sxh-dengue-soc-ngay-5.md`)*.
+   *(Ví dụ: `src/content/docspace/data/ba/ca-sxh-dengue-soc-ngay-5.md`)*.
 3. Dán nội dung vào và lưu lại (Ctrl + S).
 
 ---
@@ -68,14 +68,14 @@ Mở thư mục `src/content/docspace/docs/prompts/` và chọn file prompt tư�
 Mở terminal PowerShell tại thư mục gốc dự án (`d:\Apps\Apps_ykhoa`) và chạy lệnh:
 
 ```powershell
-node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/<slug-ca-benh>.md
+node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/<slug-ca-benh>.md
 ```
 
 **Script sẽ tự động thực hiện các thao tác sau**:
 1. Phân tích cú pháp YAML Frontmatter (`id`, `title`, `khoCode: "BA"`, `icd10`, `chuyenKhoa`, `doKho`, `bacSi`).
 2. Trích xuất tóm tắt triệu chứng và chẩn đoán.
-3. Thêm bản ghi ca mới vào `src/content/knowledge-vault/data/vault-catalog.json`.
-4. Đồng bộ dữ liệu sang `src/content/docspace/data/vault-catalog-thuc-hanh.json`.
+3. Thêm bản ghi ca mới vào `src/content/docspace/src/data/vault-catalog.json`.
+4. Đồng bộ dữ liệu sang `src/content/docspace/src/data/vault-catalog-thuc-hanh.json`.
 5. Đưa ra thông báo hoàn tất: `[SUCCESS] Ca lâm sàng đã được nạp vào Catalog!`.
 
 ---

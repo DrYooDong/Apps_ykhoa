@@ -10,8 +10,8 @@
 | Hạng mục rà soát | Tổng số mục | Đã chuẩn hóa | Đang xử lý | Cần rà soát (Backlog) | Tỷ lệ hoàn tất |
 |:---|:---:|:---:|:---:|:---:|:---:|
 | **1. Khử lỗi HTML Entities (`&gt;`, `&lt;`)** | 35 mục | 35 | 0 | 0 | 🟢 100% (Zero HTML Entities) |
-| **2. Chuẩn hóa Viết tắt Y khoa** | 288 triệu chứng | 288 | 0 | 0 | 🟢 100% (Đạt chuẩn Y khoa) |
-| **3. Lọc trùng & Hợp nhất Biến thể Triệu chứng** | 17 cụm trùng | 17 | 0 | 0 | 🟢 100% (Không còn trùng lặp) |
+| **2. Chuẩn hóa Viết tắt Y khoa & Lọc thừa** | 56 bệnh + 5 categories | 100% | 0 | 0 | 🟢 100% (Engine & Map hoàn tất) |
+| **3. Lọc trùng & Hợp nhất Biến thể Triệu chứng** | 17 cụm trùng + 4 scopes | 100% | 0 | 0 | 🟢 100% (Dedup Engine v2.0) |
 | **4. Phân định Ranh giới LS — TC — DTH** | 12 ca mẫu | 12 | 0 | 0 | 🟢 100% |
 | **5. Zero-Orphan Symptoms Verification** | 39 bệnh + 12 ca | 100% | 0 | 0 | 🟢 100% (0 triệu chứng mồ côi) |
 
@@ -35,7 +35,18 @@
 
 ---
 
-### ✅ 4. DONE (Đã Hoàn Thành)
+- [x] **[CD-TASK-012] Phát triển & Nghiệm thu Medical Abbreviation & Content Trimming Engine v1.0 (Viết tắt & Lọc nội dung thừa)**:
+  - Biên soạn từ điển viết tắt chuẩn y tế `src/content/docspace/src/data/medical-abbreviation-map.json` (5 nhóm: diseases, labs, clinicalTerms, drugs, specialties).
+  - Xây dựng Runtime Abbreviation Engine `src/content/docspace/src/lib/abbreviation.ts` với O(1) Fast Lookup và hỗ trợ WCAG AA Accessibility (`getAbbrExpansion`).
+  - Cập nhật type `Benh` với trường `tenNgan?: string` trong `src/content/docspace/src/types.ts` và chuẩn hóa tên ngắn cho 56 bệnh trong `src/content/docspace/src/data/diseases.ts`.
+  - Xây dựng Runtime Content Trimmer `src/content/docspace/src/lib/content-trimmer.ts` với 5 pattern rules (cha-con trong ngoặc, tên nhánh chuẩn hóa, rút gọn metric list, v.v.).
+  - Xây dựng CLI `tools/scripts/content-trim.mjs` hỗ trợ `--dry-run`, `--report`, `--apply` và xuất báo cáo HTML kiểm định tại `tools/scratch/content-trim-report.html`.
+  - Tích hợp toàn diện vào 6 React Components: `SymptomCategorySection.tsx` (Chip triệu chứng), `MonitoringCautionsSection.tsx` (Chỉ số theo dõi), `SingleAxisBranchPanel.tsx` (Thẻ phân nhánh phác đồ), `DifferentialDiagnosisTable.tsx` (CĐPB & Ma trận đối đầu), `LeadDiagnosisCard.tsx` (CĐSB #1), và `ProtocolDiseaseHeader.tsx` (Workstation Header). BẢO TOÀN NGUYÊN TẮC: Tooltip và ARIA accessibility luôn giữ nguyên vẹn 100% full text.
+- [x] **[CD-TASK-011] Phát triển & Nghiệm thu Deduplication Engine v2.0 (Lọc trùng tự động 4 phạm vi)**:
+  - Xây dựng CLI `tools/scripts/dedup-engine.mjs` và bộ thư viện 4 scope `tools/scripts/dedup/`.
+  - Hỗ trợ kiểm tra & auto-fix 4 phạm vi: Tiêu chuẩn chẩn đoán, Phác đồ & Thuốc, Bệnh án SOAP & Catalog, Ca mẫu lâm sàng.
+  - Tự động sinh báo cáo HTML trực quan chuẩn Dark Mode CliniPortal tại `tools/scratch/dedup-report.html`.
+  - Khử trùng lặp thực tế: Làm sạch entry mồ côi Dengue SOAP trong `vault-catalog-thuc-hanh.json`, đưa tỷ lệ Exact Critical về 0.
 - [x] **[CD-TASK-000] Thành lập Đội ngũ DocSpace Clinical Data Verification Squad**:
   - Ban hành Skill hướng dẫn `docspace-clinical-data-qa-squad/SKILL.md`.
   - Thiết lập bảng điều phối Kanban `DOCSPACE_CLINICAL_DATA_QA_KANBAN.md`.

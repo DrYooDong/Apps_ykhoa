@@ -11,6 +11,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { AnalysisResult, KnowledgeBase } from '../../types.ts';
+import { compactText } from '../../lib/content-trimmer.ts';
 
 interface DifferentialDiagnosisTableProps {
   results: AnalysisResult[];
@@ -49,6 +50,7 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
         const q = searchDiff.toLowerCase();
         return (
           d.b.ten.toLowerCase().includes(q) ||
+          (Boolean(d.b.tenNgan) && d.b.tenNgan!.toLowerCase().includes(q)) ||
           d.b.icd.toLowerCase().includes(q) ||
           d.b.nhom.toLowerCase().includes(q)
         );
@@ -175,7 +177,9 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
               >
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="font-bold text-xs text-slate-900 line-clamp-1">{res.b.ten}</span>
+                    <span className="font-bold text-xs text-slate-900 line-clamp-1" title={res.b.ten}>
+                      {res.b.tenNgan || res.b.ten}
+                    </span>
                     <span className="font-mono-custom text-xs font-bold text-blue-700 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-2xs shrink-0">
                       {res.pct}%
                     </span>
@@ -261,9 +265,14 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="flex flex-col gap-1 max-w-xl">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-display font-bold text-sm text-slate-900">
+                      <span className="font-display font-bold text-sm text-slate-900" title={diff.b.ten}>
                         {diff.b.ten}
                       </span>
+                      {diff.b.tenNgan && diff.b.tenNgan !== diff.b.ten && (
+                        <span className="px-1.5 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-md">
+                          {diff.b.tenNgan}
+                        </span>
+                      )}
                       {diff.b.baoDong && (
                         <span className="px-2 py-0.5 text-[10px] font-bold bg-red-50 text-red-700 border border-red-200 rounded-md flex items-center gap-1">
                           <ShieldAlert className="w-3 h-3 text-red-600" />
@@ -279,7 +288,7 @@ export const DifferentialDiagnosisTable: React.FC<DifferentialDiagnosisTableProp
                       Phù hợp {diff.matched.length}/{diff.b.dd.length} dữ kiện:{' '}
                       {diff.matched
                         .slice(0, 3)
-                        .map((m) => m.tc.ten)
+                        .map((m) => compactText(m.tc.ten, 'symptomChip', 24))
                         .join(', ')}
                       {diff.matched.length > 3 ? '...' : ''}
                     </div>

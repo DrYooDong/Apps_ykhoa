@@ -11,7 +11,6 @@
 import type { DiseaseReactionChainDefinition } from '../diagnostic-criteria-database';
 
 import sot_xuat_huyet_dengue from './sot_xuat_huyet_dengue.json';
-import xo_gan from './xo_gan.json';
 import viem_gan_sieu_vi_b from './viem_gan_sieu_vi_b.json';
 import viem_gan_sieu_vi_c from './viem_gan_sieu_vi_c.json';
 import viem_gan_cap_do_thuoc_khang_lao from './viem_gan_cap_do_thuoc_khang_lao.json';
@@ -29,8 +28,6 @@ import nt_tieu_tren from './nt_tieu_tren.json';
 import sot_keodai_nguoilon_hivaids from './sot_keodai_nguoilon_hivaids.json';
 import sot_ret from './sot_ret.json';
 import tieu_chay_man_nguoilon_hivaids from './tieu_chay_man_nguoilon_hivaids.json';
-import vgsv_B from './vgsv_B.json';
-import vgsv_C from './vgsv_C.json';
 import viem_phoi_benh_vien from './viem_phoi_benh_vien.json';
 import viem_phoi_cong_dong from './viem_phoi_cong_dong.json';
 import viem_phoi_do_virus from './viem_phoi_do_virus.json';
@@ -40,10 +37,10 @@ import vmn_vk from './vmn_vk.json';
 import xo_gan_con_bu from './xo_gan_con_bu.json';
 import xo_gan_mat_bu from './xo_gan_mat_bu.json';
 import tang_huyet_ap from './tang_huyet_ap.json';
+import tay_chan_mieng from './tay_chan_mieng.json';
 
 export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> = {
   'sot_xuat_huyet_dengue': sot_xuat_huyet_dengue as unknown as DiseaseReactionChainDefinition,
-  'xo_gan': xo_gan as unknown as DiseaseReactionChainDefinition,
   'viem_gan_sieu_vi_b': viem_gan_sieu_vi_b as unknown as DiseaseReactionChainDefinition,
   'viem_gan_sieu_vi_c': viem_gan_sieu_vi_c as unknown as DiseaseReactionChainDefinition,
   'viem_gan_cap_do_thuoc_khang_lao': viem_gan_cap_do_thuoc_khang_lao as unknown as DiseaseReactionChainDefinition,
@@ -61,8 +58,6 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'sot_keodai_nguoilon_hivaids': sot_keodai_nguoilon_hivaids as unknown as DiseaseReactionChainDefinition,
   'sot_ret': sot_ret as unknown as DiseaseReactionChainDefinition,
   'tieu_chay_man_nguoilon_hivaids': tieu_chay_man_nguoilon_hivaids as unknown as DiseaseReactionChainDefinition,
-  'vgsv_B': vgsv_B as unknown as DiseaseReactionChainDefinition,
-  'vgsv_C': vgsv_C as unknown as DiseaseReactionChainDefinition,
   'viem_phoi_benh_vien': viem_phoi_benh_vien as unknown as DiseaseReactionChainDefinition,
   'viem_phoi_cong_dong': viem_phoi_cong_dong as unknown as DiseaseReactionChainDefinition,
   'viem_phoi_do_virus': viem_phoi_do_virus as unknown as DiseaseReactionChainDefinition,
@@ -72,6 +67,7 @@ export const ENRICHED_DISEASES: Record<string, DiseaseReactionChainDefinition> =
   'xo_gan_con_bu': xo_gan_con_bu as unknown as DiseaseReactionChainDefinition,
   'xo_gan_mat_bu': xo_gan_mat_bu as unknown as DiseaseReactionChainDefinition,
   'tang_huyet_ap': tang_huyet_ap as unknown as DiseaseReactionChainDefinition,
+  'tay_chan_mieng': tay_chan_mieng as unknown as DiseaseReactionChainDefinition,
 };
 
 export const ENRICHED_DISEASE_KEYS = Object.keys(ENRICHED_DISEASES);

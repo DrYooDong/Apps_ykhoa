@@ -6,6 +6,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { DailyTimelinePhase } from '../../lib/dailyTreatmentTimeline.ts';
+import { compactText } from '../../lib/content-trimmer.ts';
 
 interface MonitoringCautionsSectionProps {
   diseaseId: string;
@@ -55,8 +56,11 @@ export const MonitoringCautionsSection: React.FC<MonitoringCautionsSectionProps>
                     onChange={() => {}}
                     className="mt-0.5 rounded text-blue-600 cursor-pointer"
                   />
-                  <span className={isChecked ? 'line-through text-slate-400' : ''}>
-                    {item}
+                  <span
+                    className={isChecked ? 'line-through text-slate-400' : 'font-medium'}
+                    title={item}
+                  >
+                    {compactText(item, 'monitoringMetric')}
                   </span>
                 </div>
               );

@@ -74,6 +74,11 @@ export const LeadDiagnosisCard: React.FC<LeadDiagnosisCardProps> = ({
             <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-500/30 text-blue-200 border border-blue-400/40">
               CĐSB #1
             </span>
+            {disease.tenNgan && disease.tenNgan !== disease.ten && (
+              <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-white/20 text-white border border-white/30 backdrop-blur-xs">
+                {disease.tenNgan}
+              </span>
+            )}
             <span className="text-xs font-mono-custom text-blue-300">
               ICD-10: <b>{disease.icd}</b>
             </span>

@@ -32,7 +32,7 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '../..');
 
 const ENRICHED_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/enriched');
-const BA_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/ba');
+const BA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/ba');
 
 /**
  * Khử HTML entities thường gặp từ output LLM/NotebookLM
