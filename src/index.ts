@@ -42,7 +42,7 @@ import * as components from './components';
 import { clinicalNonIntrusiveUX } from './components/non-intrusive-ux';
 import { clinicalProvenance } from './content/ebm/provenance';
 import { initHeaderModals } from './components/header-modals';
-import { initScreenLocker } from './components/screen-locker';
+import { initScreenLocker } from './components/screen-locker.ts';
 import './styles/components/screen-locker.css';
 import { initDocSpaceRoutes } from './content/docspace/index';
 

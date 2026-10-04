@@ -607,3 +607,12 @@
     isLocked: function () { return isLocked; }
   };
 })();
+
+// ES Module Bundler compatibility exports
+export const cliniScreenLocker = typeof window !== 'undefined' ? window.CliniScreenLocker : null;
+export function initScreenLocker() {
+  if (typeof window !== 'undefined' && window.CliniScreenLocker) {
+    // Locker is already bound & initialized
+  }
+}
+
