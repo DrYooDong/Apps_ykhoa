@@ -15,6 +15,7 @@ import {
   Target,
 } from 'lucide-react';
 import { SoapClinicalExperience, SoapProblemItem } from '../../types.ts';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapProblemsViewProps {
   currentCase: SoapClinicalExperience;
@@ -226,7 +227,7 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
               Chẩn đoán xác định chính thức:
             </div>
             <div className="text-sm font-bold text-slate-900 leading-snug">
-              {currentCase.a.primaryDiagnosis}
+              {formatClinicalInline(currentCase.a.primaryDiagnosis)}
             </div>
           </div>
 
@@ -246,7 +247,9 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
                     <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
-                    <span className="font-medium text-slate-900">{diff}</span>
+                    <span className="font-medium text-slate-900 leading-relaxed">
+                      {formatClinicalInline(diff)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -272,8 +275,11 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
           </div>
 
           {currentCase.a.riskStratification ? (
-            <div className="bg-amber-50/50 border border-amber-200/80 rounded-xl p-3.5 text-xs text-slate-800 leading-relaxed whitespace-pre-line">
-              {currentCase.a.riskStratification}
+            <div className="bg-amber-50/50 border border-amber-200/80 rounded-xl p-3.5 shadow-2xs">
+              <FormattedClinicalText
+                text={currentCase.a.riskStratification}
+                bulletColor="amber"
+              />
             </div>
           ) : (
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-600 italic">
@@ -288,9 +294,10 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
                 <span>🧠</span>
                 <span>Hạt Ngọc Chẩn Đoán &amp; Bẫy Cần Tránh:</span>
               </span>
-              <p className="text-xs text-slate-700 leading-relaxed">
-                {currentCase.a.diagnosticPearls}
-              </p>
+              <FormattedClinicalText
+                text={currentCase.a.diagnosticPearls}
+                bulletColor="blue"
+              />
             </div>
           )}
         </div>

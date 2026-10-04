@@ -11,7 +11,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { SoapAssessment } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapAssessmentColumnProps {
   a: SoapAssessment;
@@ -181,7 +181,7 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                 <span>Vấn đề lâm sàng chủ đạo của ca bệnh:</span>
               </div>
               <div className="font-bold text-slate-900 pl-3 border-l-2 border-amber-400">
-                • {a.primaryDiagnosis}
+                • {formatClinicalInline(a.primaryDiagnosis)}
               </div>
             </div>
           )}
@@ -198,7 +198,7 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
               {a.differentials.map((diff, idx) => (
                 <div key={idx} className="flex items-start gap-2 text-slate-700 text-[11.5px] leading-relaxed">
                   <span className="text-amber-600 font-black text-xs shrink-0 mt-0.5">≠</span>
-                  <span>{diff}</span>
+                  <span>{formatClinicalInline(diff)}</span>
                 </div>
               ))}
             </div>
@@ -243,9 +243,9 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                 <Zap className="w-4 h-4 text-amber-600 shrink-0" />
                 <span>ĐÚC KẾT BIỆN LUẬN CHẨN ĐOÁN (DIAGNOSTIC PEARL)</span>
               </div>
-              <p className="text-xs text-amber-950/90 leading-relaxed italic">
-                {a.diagnosticPearls}
-              </p>
+              <div className="text-xs text-amber-950/90 leading-relaxed italic">
+                {formatClinicalInline(a.diagnosticPearls)}
+              </div>
             </div>
           </div>
         ) : null}

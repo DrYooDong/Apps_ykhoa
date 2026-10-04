@@ -13,7 +13,8 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { SoapPlan } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
+import { TreatmentRoadmapTimeline } from './TreatmentRoadmapTimeline.tsx';
 
 interface SoapPlanColumnProps {
   p: SoapPlan;
@@ -137,9 +138,10 @@ export const SoapPlanColumn: React.FC<SoapPlanColumnProps> = ({
         </div>
 
         {/* 4. LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT DÀI HẠN (TREATMENT ROADMAP) */}
+        {/* 4. LỘ TRÌNH ĐIỀU TRỊ & GIÁM SÁT (ROADMAP TIMELINE) */}
         {p.treatmentRoadmap && (
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center justify-between mb-2">
               <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-teal-600" />
                 <span>4. Lộ trình điều trị &amp; Giám sát (Roadmap):</span>
@@ -149,9 +151,10 @@ export const SoapPlanColumn: React.FC<SoapPlanColumnProps> = ({
               </span>
             </div>
 
-            <div className="bg-teal-50/40 p-3.5 rounded-xl border border-teal-200 max-h-72 overflow-y-auto shadow-2xs">
-              <FormattedClinicalText text={p.treatmentRoadmap} />
-            </div>
+            <TreatmentRoadmapTimeline
+              roadmapText={p.treatmentRoadmap}
+              className="w-full"
+            />
           </div>
         )}
 
@@ -210,9 +213,9 @@ export const SoapPlanColumn: React.FC<SoapPlanColumnProps> = ({
                 <Award className="w-4 h-4 text-teal-600 shrink-0" />
                 <span>BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ (TAKEAWAY)</span>
               </div>
-              <p className="text-xs text-teal-950/90 leading-relaxed italic">
-                {p.takeawayLessons}
-              </p>
+              <div className="text-xs text-teal-950/90 leading-relaxed italic">
+                {formatClinicalInline(p.takeawayLessons)}
+              </div>
             </div>
           </div>
         )}

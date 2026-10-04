@@ -249,13 +249,15 @@ export const SymptomCategorySection: React.FC<SymptomCategorySectionProps> = ({
       {/* Symptom Chips */}
       {renderChipsContent()}
 
-      {/* Free Text Area */}
+      {/* Free Text Area - Bung rộng thoáng đãng, tối ưu cho Tiền căn và ghi chú tự do */}
       <textarea
         value={textValue}
         onChange={(e) => onTextChange(e.target.value)}
-        rows={2}
+        rows={category === 'tc' ? 4 : 3}
         placeholder={placeholder}
-        className="w-full mt-2.5 border border-slate-200 rounded-md p-2 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:border-blue-500 text-slate-800"
+        className={`w-full mt-2.5 border border-slate-200 rounded-lg p-2.5 text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-slate-800 transition-all leading-relaxed ${
+          category === 'tc' ? 'min-h-[96px]' : 'min-h-[64px]'
+        }`}
       />
     </div>
   );

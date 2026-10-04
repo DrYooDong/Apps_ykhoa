@@ -125,51 +125,80 @@ export const SoapSubjectiveColumn: React.FC<SoapSubjectiveColumnProps> = ({
           )}
         </div>
 
-        {/* 3. BỘ 3 TIỀN CĂN & BỐI CẢNH DỊCH TỄ HỌC (3-PANEL BENTO) */}
-        <div className="flex flex-col gap-2">
-          <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-sky-600"></span>
-            <span>3. Tiền căn &amp; Bối cảnh dịch tễ:</span>
-          </span>
+        {/* 3. BỘ 3 TIỀN CĂN & BỐI CẢNH DỊCH TỄ HỌC (BUNG RỘNG TOÀN DIỆN - KHÔNG ĐÓNG KHUÔN NHỎ) */}
+        <div className="flex flex-col gap-2 w-full">
+          <div className="flex items-center justify-between">
+            <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-sky-600"></span>
+              <span>3. Tiền căn &amp; Bối cảnh dịch tễ:</span>
+            </span>
+            <span className="text-[10px] text-slate-500 font-medium bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
+              PMH &amp; Dịch tễ
+            </span>
+          </div>
 
-          <div className={`grid gap-2 ${isFocused ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'}`}>
-            {/* 3a. Tiền căn bản thân */}
-            <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl p-3 flex flex-col gap-1.5 shadow-2xs">
+          <div className="w-full bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs space-y-3.5">
+            {/* 3a. Tiền căn bản thân & Dược sử */}
+            <div className="space-y-1.5">
               <div className="flex items-center gap-1.5 text-slate-900 font-bold text-[11px]">
-                <User className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                <span>Tiền căn bản thân &amp; Dược sử (PMH)</span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10.5px] font-bold bg-sky-100 text-sky-900 border border-sky-200">
+                  <User className="w-3 h-3 text-sky-700" />
+                  <span>Bản thân &amp; Dược sử</span>
+                </span>
+                <span className="text-[10.5px] text-slate-500 font-normal">
+                  (Bệnh nền, thuốc mạn tính, dị ứng)
+                </span>
               </div>
-              <FormattedClinicalText
-                text={s.pastMedicalHistory}
-                className="text-[11.5px] text-slate-700 leading-relaxed"
-              />
+              <div className="pl-1 pt-0.5">
+                <FormattedClinicalText
+                  text={s.pastMedicalHistory || 'Chưa ghi nhận tiền căn đặc biệt'}
+                  className="text-[12px] text-slate-800 leading-relaxed"
+                  bulletColor="blue"
+                />
+              </div>
             </div>
 
             {/* 3b. Tiền căn gia đình */}
             {s.familyHistory && (
-              <div className="bg-sky-50/40 border border-sky-200/70 rounded-xl p-3 flex flex-col gap-1.5 shadow-2xs">
-                <div className="flex items-center gap-1.5 text-sky-950 font-bold text-[11px]">
-                  <Users className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                  <span>Tiền căn gia đình &amp; Di truyền</span>
+              <div className="pt-3 border-t border-slate-100 space-y-1.5">
+                <div className="flex items-center gap-1.5 text-slate-900 font-bold text-[11px]">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10.5px] font-bold bg-indigo-100 text-indigo-900 border border-indigo-200">
+                    <Users className="w-3 h-3 text-indigo-700" />
+                    <span>Gia đình &amp; Di truyền</span>
+                  </span>
+                  <span className="text-[10.5px] text-slate-500 font-normal">
+                    (Ung thư, tim mạch, bệnh lý huyết thống)
+                  </span>
                 </div>
-                <FormattedClinicalText
-                  text={s.familyHistory}
-                  className="text-[11.5px] text-slate-700 leading-relaxed"
-                />
+                <div className="pl-1 pt-0.5">
+                  <FormattedClinicalText
+                    text={s.familyHistory}
+                    className="text-[12px] text-slate-800 leading-relaxed"
+                    bulletColor="amber"
+                  />
+                </div>
               </div>
             )}
 
-            {/* 3c. Bối cảnh dịch tễ */}
+            {/* 3c. Bối cảnh dịch tễ & Phơi nhiễm */}
             {s.epidemiology && (
-              <div className="bg-cyan-50/40 border border-cyan-200/70 rounded-xl p-3 flex flex-col gap-1.5 shadow-2xs">
-                <div className="flex items-center gap-1.5 text-cyan-950 font-bold text-[11px]">
-                  <MapPin className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
-                  <span>Bối cảnh dịch tễ &amp; Phơi nhiễm</span>
+              <div className="pt-3 border-t border-slate-100 space-y-1.5">
+                <div className="flex items-center gap-1.5 text-slate-900 font-bold text-[11px]">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10.5px] font-bold bg-cyan-100 text-cyan-950 border border-cyan-200">
+                    <MapPin className="w-3 h-3 text-cyan-700" />
+                    <span>Bối cảnh dịch tễ &amp; Phơi nhiễm</span>
+                  </span>
+                  <span className="text-[10.5px] text-slate-500 font-normal">
+                    (Ổ dịch, vector, đường lây, vùng lưu hành)
+                  </span>
                 </div>
-                <FormattedClinicalText
-                  text={s.epidemiology}
-                  className="text-[11.5px] text-slate-700 leading-relaxed"
-                />
+                <div className="pl-1 pt-0.5">
+                  <FormattedClinicalText
+                    text={s.epidemiology}
+                    className="text-[12px] text-slate-800 leading-relaxed"
+                    bulletColor="emerald"
+                  />
+                </div>
               </div>
             )}
           </div>

@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
 import { generateSoapMarkdown } from '../../lib/clientSideIngest.ts';
+import { formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapMarkdownViewProps {
   currentCase: SoapClinicalExperience;
@@ -36,48 +37,7 @@ interface SoapMarkdownViewProps {
  * Helper format inline markdown text (bold, italic, code, math)
  */
 function renderInlineMarkdown(text: string): React.ReactNode {
-  // Clean escaped math delimiters: \( ... \) -> ...
-  const cleaned = text
-    .replace(/\\\\\(/g, '(')
-    .replace(/\\\\\)/g, ')')
-    .replace(/\\\(/g, '')
-    .replace(/\\\)/g, '')
-    .replace(/\\text\{([^}]+)\}/g, '$1')
-    .replace(/\\le/g, '≤')
-    .replace(/\\ge/g, '≥')
-    .replace(/\\times/g, '×')
-    .replace(/\\sim/g, '~')
-    .replace(/\\rightarrow/g, '➔')
-    .replace(/""/g, '"')
-    .replace(/&quot;/g, '"');
-
-  // Split by bold (**...**) and italic (*...*)
-  const tokens = cleaned.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
-
-  return tokens.map((tok, idx) => {
-    if (tok.startsWith('**') && tok.endsWith('**')) {
-      return (
-        <strong key={idx} className="font-bold text-slate-900">
-          {tok.slice(2, -2)}
-        </strong>
-      );
-    }
-    if (tok.startsWith('*') && tok.endsWith('*')) {
-      return (
-        <em key={idx} className="italic text-slate-700 font-medium">
-          {tok.slice(1, -1)}
-        </em>
-      );
-    }
-    if (tok.startsWith('`') && tok.endsWith('`')) {
-      return (
-        <code key={idx} className="px-1.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 font-mono-custom text-[11px] text-slate-800">
-          {tok.slice(1, -1)}
-        </code>
-      );
-    }
-    return tok;
-  });
+  return formatClinicalInline(text);
 }
 
 /**

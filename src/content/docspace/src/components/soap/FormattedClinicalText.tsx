@@ -7,11 +7,88 @@ interface FormattedClinicalTextProps {
 }
 
 /**
+ * Khử triệt để các ký tự đặc biệt từ NotebookLM/LaTeX/Markdown:
+ * - Dấu ngoặc LaTeX: \( ... \) hoặc escaped \\( ... \\)
+ * - Lệnh LaTeX: \rightarrow, \ge, \le, \text{...}, \mathbf{...}, \times, \sim, \pm, \frac{a}{b}
+ * - Lỗi trích xuất text: text{...}, "" hoặc mã HTML entity &quot;, &lt;, &gt;
+ */
+export function sanitizeClinicalTypography(input?: string): string {
+  if (!input) return '';
+  return input
+    // 1. Khử lỗi HTML entity và dấu ngoặc kép thừa
+    .replace(/""/g, '"')
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    // 2. Ký hiệu mũi tên và so sánh y khoa
+    .replace(/\\+\(\s*\\+rightarrow\s*\\+\)/g, '➔')
+    .replace(/\\+rightarrow/g, '➔')
+    .replace(/\\+\(\s*\\+ge(q)?\s*\\+\)/g, '≥')
+    .replace(/\\+ge(q)?/g, '≥')
+    .replace(/\\+\(\s*\\+le(q)?\s*\\+\)/g, '≤')
+    .replace(/\\+le(q)?/g, '≤')
+    .replace(/\\+\(\s*\\+times\s*\\+\)/g, '×')
+    .replace(/\\+times/g, '×')
+    .replace(/\\+sim/g, '~')
+    .replace(/\\+pm/g, '±')
+    .replace(/\\+approx/g, '≈')
+    // 3. Khử text{...} và \text{...}
+    .replace(/\\?text\{\s*([^}]+)\s*\}/g, '$1')
+    .replace(/\\?mathbf\{\s*([^}]+)\s*\}/g, '$1')
+    // 4. Khử phân số \frac{a}{b}
+    .replace(/\\?frac\{\s*([^}]+)\s*\}\{\s*([^}]+)\s*\}/g, '$1/$2')
+    // 5. Khử độ C và micro
+    .replace(/\^\\circ\s*(?:text\{)?C\}?/g, '°C')
+    .replace(/\^\\circ/g, '°')
+    .replace(/\\+mu\s*([a-zA-Z]+)?/g, 'µ$1')
+    // 6. Khử các dấu ngoặc LaTeX math còn sót \( hoặc \) (cả escaped và unescaped)
+    .replace(/\\+\(/g, '')
+    .replace(/\\+\)/g, '')
+    .trim();
+}
+
+/**
+ * Format inline bold **text**, italic *text*, code `text`
+ */
+export function formatClinicalInline(str: string): React.ReactNode {
+  const sanitized = sanitizeClinicalTypography(str);
+  // Tách theo **bold**, *italic*, `code`
+  const parts = sanitized.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
+
+  return parts.map((part, idx) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      return (
+        <b key={idx} className="font-bold text-slate-900">
+          {part.slice(2, -2)}
+        </b>
+      );
+    }
+    if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+      return (
+        <em key={idx} className="italic text-slate-800 font-medium">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+    if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
+      return (
+        <code key={idx} className="px-1.5 py-0.5 rounded bg-slate-100 font-mono-custom text-[11px] text-slate-800 border border-slate-200">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
+/**
  * Trình bày văn bản lâm sàng chuyên nghiệp:
  * - Tách dòng và ngắt đoạn rõ ràng, chống "dính chữ"
  * - Nhận diện bullet points (- item, • item, * item, 1. item)
  * - Định dạng nhãn đậm **Nhãn:** nổi bật, dễ quét mắt
- * - Khử triệt để lỗi "" hoặc mã HTML entity
+ * - Khử triệt để lỗi LaTeX \( \), \rightarrow, \ge, \text{}
  */
 export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
   text,
@@ -22,15 +99,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
     return <span className="text-slate-400 italic">Chưa ghi nhận</span>;
   }
 
-  // Khử các lỗi ký tự thường gặp như "" hoặc \r\n thừa
-  const cleanText = text
-    .replace(/""/g, '"')
-    .replace(/&quot;/g, '"')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .trim();
-
+  const cleanText = sanitizeClinicalTypography(text);
   const lines = cleanText.split(/\r?\n/);
 
   const getBulletClass = () => {
@@ -48,35 +117,17 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
     }
   };
 
-  // Helper format inline bold **text** and italic *text*
-  const formatInline = (str: string) => {
-    // Tách theo **bold**
-    const parts = str.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
-    return parts.map((part, idx) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return (
-          <b key={idx} className="font-bold text-slate-900">
-            {part.slice(2, -2)}
-          </b>
-        );
-      }
-      if (part.startsWith('*') && part.endsWith('*')) {
-        return (
-          <em key={idx} className="italic text-slate-800 font-medium">
-            {part.slice(1, -1)}
-          </em>
-        );
-      }
-      return part;
-    });
-  };
-
   return (
     <div className={`space-y-1.5 leading-relaxed text-xs text-slate-700 ${className}`}>
       {lines.map((line, idx) => {
         const trimmed = line.trim();
         if (!trimmed) {
           return <div key={idx} className="h-1" />;
+        }
+
+        // Bỏ các divider thô '---'
+        if (trimmed === '---' || trimmed === '***') {
+          return <hr key={idx} className="border-slate-200 my-1.5" />;
         }
 
         // Kiểm tra heading cấp nhỏ: #### hoặc ###
@@ -88,7 +139,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
               className="font-bold text-[11px] text-slate-900 uppercase tracking-wider pt-1.5 pb-0.5 border-b border-slate-100 flex items-center gap-1.5"
             >
               <span className={`w-1.5 h-1.5 rounded-full ${getBulletClass()}`} />
-              <span>{formatInline(headingText)}</span>
+              <span>{formatClinicalInline(headingText)}</span>
             </div>
           );
         }
@@ -113,7 +164,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
                 }`}
               />
               <div className="flex-1 leading-relaxed">
-                {formatInline(content)}
+                {formatClinicalInline(content)}
               </div>
             </div>
           );
@@ -130,7 +181,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
                 {num}
               </span>
               <div className="flex-1 leading-relaxed">
-                {formatInline(content)}
+                {formatClinicalInline(content)}
               </div>
             </div>
           );
@@ -139,7 +190,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
         // Đoạn văn bình thường
         return (
           <p key={idx} className="leading-relaxed">
-            {formatInline(trimmed)}
+            {formatClinicalInline(trimmed)}
           </p>
         );
       })}
