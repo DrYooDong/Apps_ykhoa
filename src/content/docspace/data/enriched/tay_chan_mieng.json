@@ -1,0 +1,654 @@
+{
+    "icdCode": "B08.4",
+    "icdPrefixes": [
+        "B08.4",
+        "A08"
+    ],
+    "diseaseName": "Bệnh Tay Chân Miệng (Hand, Foot and Mouth Disease - HFMD)",
+    "specialty": "Nhi khoa / Truyền nhiễm",
+    "syndromes": [
+        "hc_nhiem_trung",
+        "hc_viem_nao_bo_nao",
+        "hc_suy_ho_hap",
+        "hc_soc_nhiem_trung"
+    ],
+    "severity": "urgent",
+    "summary": "Bệnh Tay Chân Miệng (HFMD) là bệnh truyền nhiễm cấp tính do vi rút đường ruột gây ra, phổ biến nhất là Coxsackievirus A16 và Enterovirus 71 (EV71). EV71 có đặc tính hướng thần kinh, dễ gây biến chứng nặng như viêm não - màng não, viêm cơ tim, phù phổi cấp và sốc tim dẫn đến tử vong nhanh chóng nếu không phát hiện và điều trị kịp thời theo phân độ Bộ Y tế.",
+    "goldStandard": "Chẩn đoán lâm sàng dựa vào sang thương da niêm đặc trưng (loét miệng, phỏng nước lòng bàn tay, bàn chân, mông, gối). Chẩn đoán căn nguyên bằng RT-PCR hoặc phân lập vi rút EV71 / Coxsackievirus A16 từ phết họng, dịch phỏng nước hoặc phân.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tc_loet_mieng_phong_nuoc_tay_chan"
+        ],
+        "minMajorRequired": 1,
+        "minMinorRequired": 0,
+        "ruleDescription": "Chẩn đoán xác định ca bệnh lâm sàng khi có tổn thương niêm mạc miệng (loét miệng) và/hoặc phỏng nước ở các vị trí đặc trưng (lòng bàn tay, lòng bàn chân, mông, gối) ở trẻ nhỏ."
+    },
+    "criteria": [
+        {
+            "id": "tc_loet_mieng_phong_nuoc_tay_chan",
+            "type": "mandatory",
+            "label": "Loét miệng và/hoặc phỏng nước lòng bàn tay, bàn chân, mông, gối",
+            "description": "Tổn thương niêm mạc miệng (vết loét đỏ 2-3 mm ở vòm miệng, niêm mạc má, lợi, lưỡi gây đau, chảy nước bọt, biếng ăn) và phỏng nước ở lòng bàn tay, lòng bàn chân, mông, gối (kích thước 2-10 mm, hình bầu dục, ấn không đau).",
+            "sourceGuideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "phat_ban_xung_huyet",
+                "buon_non_non"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_sot_cap_tinh",
+            "type": "major",
+            "label": "Sốt cấp tính (nhẹ đến sốt cao ≥ 39°C)",
+            "description": "Sốt từ nhẹ đến sốt cao. Sốt cao liên tục ≥ 39°C không hạ với thuốc hạ sốt thông thường là dấu hiệu cảnh báo bệnh tiến triển nặng (Độ 2b trở lên).",
+            "sourceGuideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_sot_cao_dot_ngot_duoi_7_ngay"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.0
+        },
+        {
+            "id": "tc_giat_minh_tiem_tang",
+            "type": "major",
+            "label": "Dấu hiệu giật mình giật cơ (Myoclonic jerks)",
+            "description": "Giật mình nảy người xuất hiện khi trẻ bắt đầu đi vào giấc ngủ hoặc khi nằm yên. Giật mình < 2 lần/30 phút (Độ 2a); Giật mình ≥ 2 lần/30 phút hoặc ghi nhận lúc khám (Độ 2b). Dấu hiệu sớm của tổn thương thân não.",
+            "sourceGuideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "lu_du_vat_va_li_bi"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_trieu_chung_than_kinh_co_vung",
+            "type": "major",
+            "label": "Thất điều, rung giật nhãn cầu, yếu chi, tăng trương lực cơ",
+            "description": "Biểu hiện tổn thương hệ thần kinh trung ương: đi loạng xạ, thất điều, rung giật nhãn cầu, lác mắt, yếu chi/liệt mềm cấp, yếu cơ, tăng trương lực cơ.",
+            "sourceGuideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "lu_du_vat_va_li_bi",
+                "sxhd_the_nao_roi_loan_tri_giac"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_roi_loan_thuc_vat_tim_mach",
+            "type": "major",
+            "label": "Mạch nhanh, vã mồ hôi, tăng HA, chi lạnh, CRT kéo dài",
+            "description": "Mạch nhanh > 130-150 lần/phút (khi nằm yên, không sốt) ở Độ 2b, > 170 lần/phút hoặc mạch chậm ở Độ 3. Vã mồ hôi toàn thân/khu trú, vọt HA, chi lạnh, CRT > 2s.",
+            "sourceGuideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "mach_nhanh",
+                "chi_lanh_crt_keo_dai"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        }
+    ],
+    "stagingType": "severity",
+    "hasSeverityGrading": true,
+    "branching": {
+        "mode": "single",
+        "axisName": "Phân độ Lâm sàng Tay Chân Miệng (Quyết định Bộ Y tế)",
+        "axisType": "severity",
+        "description": "Hệ thống phân độ 4 mức độ (Độ 1, Độ 2a, Độ 2b Nhóm 1 & 2, Độ 3, Độ 4) quyết định tuyến điều trị, chỉ định nhập viện, dùng Gamaglobulin (IVIG), Milrinone, Dobutamine và thở máy.",
+        "branches": [
+            {
+                "id": "branch_do_1",
+                "name": "Mức độ 1: Thể nhẹ (Chỉ tổn thương da/niêm mạc)",
+                "badgeText": "Ngoại trú",
+                "color": "emerald",
+                "criteria": "Chỉ có tổn thương da và/hoặc niêm mạc miệng (loét miệng, phỏng nước tay/chân/mông/gối). Không có sốt cao ≥ 39°C kéo dài, không giật mình, không dấu thần kinh.",
+                "triage": "Điều trị ngoại trú tại nhà / Trạm Y tế / Phòng khám ngoại trú",
+                "targetVitals": "M, NT, SpO₂ bình thường theo tuổi; SpO₂ ≥ 96%; T < 38.5°C; bài niệu tốt",
+                "escalationCriteria": "Sốt cao ≥ 39°C không hạ, sốt > 2 ngày, giật mình, lừ đừ, quấy khóc không yên, nôn nhiều -> Chuyển viện nâng bậc lên Độ 2a ngay lập tức.",
+                "dischargeCriteria": "Hết loét miệng, phỏng nước khô bớt, ăn uống tốt, hết sốt ≥ 48h, không xuất hiện triệu chứng thần kinh.",
+                "drugs": [
+                    [
+                        "Paracetamol",
+                        "10-15 mg/kg/lần PO/PR, q4h-q6h (tối đa 60 mg/kg/ngày)",
+                        "Hạ sốt khi T ≥ 38.5°C. Cấm dùng Aspirin"
+                    ],
+                    [
+                        "Sữa, Nước Oresol / Dịch PO",
+                        "Uống nhiều nước, dung dịch Oresol, sữa nguội",
+                        "Dinh dưỡng mềm, nguội, chia nhỏ bữa, tránh đồ chua cay"
+                    ],
+                    [
+                        "Antacid / Gel niêm mạc miệng",
+                        "Thoa niêm mạc miệng trước ăn 15 phút",
+                        "Giảm đau rát loét miệng giúp trẻ ăn uống"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b1_p1",
+                        "dayRange": "N1 - N7",
+                        "phaseName": "Theo dõi Ngoại trú & Xử trí Triệu chứng",
+                        "clinicalGoal": "Kiểm soát sốt, giảm đau loét miệng, đảm bảo dinh dưỡng và phát hiện sớm dấu hiệu chuyển độ",
+                        "problems": [
+                            {
+                                "id": "b1_prob_spec",
+                                "problemName": "Điều trị đặc hiệu",
+                                "problemType": "specific",
+                                "isNoSpecificTreatment": true,
+                                "treatments": [
+                                    {
+                                        "category": "Kháng vi rút",
+                                        "content": "Chưa có thuốc điều trị đặc hiệu. Chủ yếu điều trị hỗ trợ và theo dõi sát.",
+                                        "isHighlighted": false
+                                    }
+                                ],
+                                "monitoring": []
+                            },
+                            {
+                                "id": "b1_prob_symp",
+                                "problemName": "Hạ sốt, giảm đau & Dinh dưỡng",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Hạ sốt",
+                                        "content": "Paracetamol 10-15 mg/kg/lần PO nếu T ≥ 38.5°C. Lau mát bằng nước ấm.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Dinh dưỡng",
+                                        "content": "Sữa nguội, cháo loãng nguội, uống Oresol bù nước. Tránh thức ăn mặn, chua, nóng.",
+                                        "isHighlighted": false
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Thân nhiệt, Giật mình, Tri giác, Nôn ói",
+                                        "frequency": "Tái khám mỗi 1-2 ngày hoặc khám lại ngay khi có dấu hiệu cảnh báo",
+                                        "target": "T < 38.5°C, không giật mình, tươi tắn, ăn uống được"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_do_2a",
+                "name": "Mức độ 2a: Có nguy cơ biến chứng (Sốt cao / Giật mình nhẹ)",
+                "badgeText": "Nội trú 100%",
+                "color": "blue",
+                "criteria": "Có 1 trong các dấu hiệu: Giật mình < 2 lần/30 phút và không ghi nhận lúc khám; Sốt > 2 ngày hoặc sốt ≥ 39°C không hạ; Lừ đừ, khó ngủ, quấy khóc không yên; Nôn ói nhiều.",
+                "triage": "Nhập viện Nội trú Khoa Nhi / Truyền nhiễm Bệnh viện Quận / Huyện / Tỉnh",
+                "targetVitals": "M < 130 l/p (khi không sốt), SpO₂ ≥ 95%, T < 38.5°C, CRT < 2s",
+                "escalationCriteria": "Giật mình ≥ 2 lần/30 phút, giật mình ghi nhận lúc khám, M > 130-150 l/p, sốt cao ≥ 39.5°C -> Khẩn cấp chuyển Nhánh Độ 2b.",
+                "dischargeCriteria": "Hết sốt ≥ 48h, không giật mình > 48h, ăn uống được, sinh hiệu ổn định.",
+                "drugs": [
+                    [
+                        "Paracetamol",
+                        "10-15 mg/kg/lần PO/PR, q4h-q6h",
+                        "Hạ sốt tích cực khi T ≥ 38.5°C"
+                    ],
+                    [
+                        "Ibuprofen",
+                        "10 mg/kg/lần PO, q6h-q8h (dùng xen kẽ nếu Paracetamol không hạ)",
+                        "Chỉ dùng khi Paracetamol không hạ sốt và không có xuất huyết"
+                    ],
+                    [
+                        "Phenobarbital",
+                        "5-7 mg/kg/ngày PO chia 2 lần",
+                        "An thần, chống co giật và bảo vệ thần kinh khi trẻ có giật mình nhẹ/quấy khóc"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b2a_p1",
+                        "dayRange": "N1 - N3",
+                        "phaseName": "Theo dõi Tích cực & Phòng ngừa Tiến triển",
+                        "clinicalGoal": "Khống chế sốt cao, giảm kích thích thần kinh, phát hiện sớm chuyển sang Độ 2b",
+                        "problems": [
+                            {
+                                "id": "b2a_prob_clin",
+                                "problemName": "Hạ sốt & An thần bảo vệ thần kinh",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Hạ sốt",
+                                        "content": "Paracetamol 10-15 mg/kg/lần. Xen kẽ Ibuprofen 10 mg/kg nếu sốt cao ≥ 39.5°C dai dẳng.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "An thần",
+                                        "content": "Phenobarbital 5-7 mg/kg/ngày PO nếu có giật mình hoặc quấy khóc trằn trọc.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mạch, Tần số thở, Thân nhiệt, Tần suất giật mình",
+                                        "frequency": "Mỗi 3-4 giờ",
+                                        "target": "M < 130 l/p, hết giật mình, hạ sốt"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_do_2b",
+                "name": "Mức độ 2b: Cảnh báo nguy cơ biến chứng Nặng (Nhóm 1 & Nhóm 2)",
+                "badgeText": "Nội trú / Theo dõi sát",
+                "color": "amber",
+                "criteria": "Nhóm 1: Giật mình ≥ 2 lần/30 phút HOẶC Giật mình ghi nhận lúc khám HOẶC Bệnh sử giật mình kèm Ngủ gà / Mạch nhanh > 130 l/p. Nhóm 2: Sốt cao ≥ 39.5°C không hạ HOẶC Mạch nhanh > 150 l/p HOẶC Thất điều, rung giật nhãn cầu, yếu chi, vã mồ hôi.",
+                "triage": "Nội trú Phòng Cấp cứu / Hồi sức Nhi Bệnh viện Tỉnh / Trung ương",
+                "targetVitals": "M < 140 l/p, SpO₂ ≥ 95%, NT bình thường, huyết động ổn định",
+                "escalationCriteria": "Mạch nhanh > 170 l/p (hoặc mạch chậm), vã mồ hôi chi lạnh, HATT tăng, thở nhanh bất thường -> Chuyển khẩn ICU sang Độ 3.",
+                "dischargeCriteria": "Hết giật mình, hết sốt > 72h, hết dấu hiệu thần kinh khu trú, M và NT bình thường.",
+                "drugs": [
+                    [
+                        "Phenobarbital",
+                        "10-20 mg/kg IV chậm trong 15-30 phút (liều tấn công), sau đó duy trì 5 mg/kg/ngày PO",
+                        "An thần chống co giật tích cực. Theo dõi sát nhịp thở"
+                    ],
+                    [
+                        "Immunoglobulin (IVIG)",
+                        "1 g/kg/ngày TTM trong 6-8 giờ × 1-2 ngày (chỉ định bắt buộc Độ 2b Nhóm 2, cân nhắc Nhóm 1)",
+                        "Giảm phản ứng viêm hệ thống và trung hòa vi rút. Dùng sớm trong 24h đầu từ khi có chỉ định"
+                    ],
+                    [
+                        "Paracetamol / Ibuprofen",
+                        "10-15 mg/kg/lần PO/PR",
+                        "Hạ sốt tích cực"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b2b_p1",
+                        "dayRange": "24h - 48h",
+                        "phaseName": "Điều trị Tích cực & Khống chế Giật mình / Thần kinh",
+                        "clinicalGoal": "Ngăn chặn tổn thương thần kinh tiến triển sang suy hô hấp - tuần hoàn",
+                        "problems": [
+                            {
+                                "id": "b2b_prob_ivig",
+                                "problemName": "Liệu pháp Miễn dịch IVIG & An thần",
+                                "problemType": "specific",
+                                "treatments": [
+                                    {
+                                        "category": "IVIG",
+                                        "content": "Truyền IVIG 1 g/kg/ngày TTM trong 6-8 giờ đối với Độ 2b Nhóm 2 (hoặc Nhóm 1 tiến triển).",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "An thần",
+                                        "content": "Phenobarbital 10-20 mg/kg IV chậm, sau đó 5 mg/kg/ngày.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mạch, HA, NT, SpO₂, Giật mình, Tri giác",
+                                        "frequency": "Mỗi 1-2 giờ",
+                                        "target": "M < 130 l/p, giảm giật mình < 1 lần/giờ, SpO₂ ≥ 96%"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_do_3",
+                "name": "Mức độ 3: Biến chứng Thần kinh - Tim mạch - Hô hấp Nặng",
+                "badgeText": "Hồi sức ICU",
+                "color": "rose",
+                "criteria": "Có dấu hiệu suy hô hấp / tuần hoàn nặng: Mạch nhanh > 170 l/p (hoặc mạch chậm); Vã mồ hôi, chi lạnh; HATT tăng (trẻ < 12 tháng ≥ 100 mmHg, 12-24 tháng ≥ 110 mmHg, > 24 tháng ≥ 115 mmHg); Thở nhanh, rút lõm ngực, thở ngắt quãng; Tăng trương lực cơ, GCS < 10.",
+                "triage": "Khoa Hồi sức Cấp cứu Nhi (ICU) Bệnh viện Chuyên khoa / Tuyến Trung ương",
+                "targetVitals": "M 100-140 l/p, MAP 55-70 mmHg, SpO₂ ≥ 95% (với oxy/thở máy), NT ổn định",
+                "escalationCriteria": "Sốc (M = 0, HA = 0 hoặc M nhanh nhỏ, HA kẹp/tụt), Phù phổi cấp (sùi bọt hồng), SpO₂ < 92% -> Chuyển ngay Độ 4.",
+                "dischargeCriteria": "Cai thở máy, cai vận mạch > 48h, huyết động ổn định, M < 130 l/p, tri giác tỉnh táo.",
+                "drugs": [
+                    [
+                        "Milrinone",
+                        "0.375 - 0.75 µg/kg/phút TTM liên tục",
+                        "Thuốc vận mạch ưu tiên hàng đầu: Tăng sức co bóp cơ tim và giãn mạch hệ thống"
+                    ],
+                    [
+                        "Dobutamine",
+                        "5 - 15 µg/kg/phút TTM liên tục",
+                        "Phối hợp với Milrinone nếu huyết áp tụt hoặc co bóp cơ tim kém"
+                    ],
+                    [
+                        "Immunoglobulin (IVIG)",
+                        "1 g/kg/ngày TTM trong 6-8 giờ × 2 ngày (Tổng liều 2 g/kg)",
+                        "Liệu pháp miễn dịch bắt buộc"
+                    ],
+                    [
+                        "Phenobarbital",
+                        "10 - 20 mg/kg IV chậm",
+                        "Khống chế co giật và an thần trung ương"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b3_p1",
+                        "dayRange": "Giờ 1 - Giờ 48",
+                        "phaseName": "Hồi sức Thần kinh & Tim mạch Cấp bách (Giờ Vàng)",
+                        "clinicalGoal": "Ổn định huyết động, giảm tải thất trái, kiểm soát cơn bão Catecholamine và bảo vệ não",
+                        "problems": [
+                            {
+                                "id": "b3_prob_icu",
+                                "problemName": "Hỗ trợ Hô hấp & Vận mạch Giãn mạch",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Thở máy / CPAP",
+                                        "content": "Thở oxy qua cannula 1-3 L/p hoặc thở CPAP / Thở máy PEEP cao nếu có suy hô hấp, SpO₂ < 92%.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Vận mạch",
+                                        "content": "Milrinone 0.375 - 0.75 µg/kg/phút TTM liên tục. Khống chế HATT và nhịp tim.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "IVIG",
+                                        "content": "IVIG 1 g/kg/ngày × 2 ngày liên tiếp.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Mạch, HA liên tục, SpO₂, Khí máu động mạch, Nước tiểu",
+                                        "frequency": "Liên tục / Mỗi 15-30 phút",
+                                        "target": "M 100-140 l/p, HATT trong giới hạn theo tuổi, bài niệu ≥ 1 mL/kg/h"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "branch_do_4",
+                "name": "Mức độ 4: Sốc / Phù phổi cấp / Nguy kịch (Đe dọa tử vong)",
+                "badgeText": "Cấp cứu Sốc / ICU",
+                "color": "rose",
+                "criteria": "Sốc (M = 0, HA = 0 hoặc M nhanh nhỏ, HA kẹp ≤ 20 mmHg, HA tụt); Phù phổi cấp (sùi bọt hồng, trào bọt hồng qua NKQ, rên ẩm dâng ngập 2 phổi); Tím tái, SpO₂ < 90%; Ngưng thở, thở ngáp.",
+                "triage": "Khoa Hồi sức Cấp cứu (ICU) - Phòng Báo động đỏ Bệnh viện Tuyến cuối",
+                "targetVitals": "MAP ≥ 50-65 mmHg theo tuổi, SpO₂ 94-98% (thở máy), PaO₂/FiO₂ > 200, bài niệu ≥ 1 mL/kg/h",
+                "escalationCriteria": "Sốc thất bại với dịch truyền và vận mạch kép, phù phổi cấp diễn tiến nặng -> Cân nhắc lọc máu liên tục (CRRT) hoặc ECMO.",
+                "dischargeCriteria": "Thoát sốc hoàn toàn, ngừng vận mạch > 24h, cai thở máy, phổi trong, tạng hồi phục.",
+                "drugs": [
+                    [
+                        "Dobutamine",
+                        "5 - 20 µg/kg/phút TTM liên tục",
+                        "Tăng sức co bóp cơ tim cấp cứu trong sốc tim"
+                    ],
+                    [
+                        "Adrenaline (Epinephrine)",
+                        "0.05 - 0.5 µg/kg/phút TTM liên tục",
+                        "Vận mạch nâng HA khi sốc nặng tụt HA kháng trị"
+                    ],
+                    [
+                        "Milrinone",
+                        "0.375 - 0.75 µg/kg/phút TTM liên tục",
+                        "Duy trì khi HA ổn định để giảm sức cản ngoại biên"
+                    ],
+                    [
+                        "Dịch truyền (Nacl 0.9% / Ringer Lactate)",
+                        "10 - 20 mL/kg TTM trong 15-30 phút",
+                        "Chống sốc cẩn trọng (tránh quá tải dịch gây phù phổi)"
+                    ],
+                    [
+                        "Immunoglobulin (IVIG)",
+                        "1 g/kg/ngày TTM × 2 ngày",
+                        "Liệu pháp miễn dịch liều cao"
+                    ]
+                ],
+                "timelinePhases": [
+                    {
+                        "id": "b4_p1",
+                        "dayRange": "Giờ 1 - Giờ 24",
+                        "phaseName": "Chống Sốc, Cấp cứu Phù Phổi Cấp & Thở Máy Xâm Nhập",
+                        "clinicalGoal": "Tái lập tuần hoàn, kiểm soát phù phổi cấp, duy trì trao đổi khí và chống suy đa tạng",
+                        "problems": [
+                            {
+                                "id": "b4_prob_shock",
+                                "problemName": "Hồi sức Sốc Tim & Phù Phổi Cấp",
+                                "problemType": "clinical",
+                                "treatments": [
+                                    {
+                                        "category": "Đặt NKQ & Thở máy",
+                                        "content": "Đặt nội khí quản khẩn cấp, thở máy xâm nhập mode PCV/AC, PEEP cao (8-12 cmH₂O) khống chế phù phổi cấp.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Chống sốc & Vận mạch",
+                                        "content": "Dobutamine 5-15 µg/kg/phút + Adrenaline 0.05-0.2 µg/kg/phút. Bù dịch cẩn trọng 5-10 mL/kg.",
+                                        "isHighlighted": true
+                                    },
+                                    {
+                                        "category": "Can thiệp cao cấp",
+                                        "content": "Lọc máu liên tục (CRRT) loại bỏ Cơn bão Cytokine hoặc ECMO nếu suy tuần hoàn/hô hấp kháng trị.",
+                                        "isHighlighted": true
+                                    }
+                                ],
+                                "monitoring": [
+                                    {
+                                        "type": "LS",
+                                        "metric": "Huyết động xâm nhập, KMĐM, SpO₂, Bọt hồng NKQ, Bài niệu",
+                                        "frequency": "Liên tục",
+                                        "target": "MAP đạt ngưỡng theo tuổi, SpO₂ 94-98%, Lactate máu < 2 mmol/L"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "severityGrading": [
+        {
+            "id": "branch_do_1",
+            "name": "Mức độ 1: Thể nhẹ (Chỉ tổn thương da/niêm mạc)",
+            "badgeText": "Ngoại trú",
+            "color": "emerald",
+            "criteria": "Chỉ tổn thương da và/hoặc niêm mạc miệng, không sốt cao, không giật mình."
+        },
+        {
+            "id": "branch_do_2a",
+            "name": "Mức độ 2a: Có nguy cơ biến chứng",
+            "badgeText": "Nội trú 100%",
+            "color": "blue",
+            "criteria": "Giật mình < 2 lần/30 phút, hoặc sốt > 2 ngày / sốt ≥ 39°C, lừ đừ, quấy khóc."
+        },
+        {
+            "id": "branch_do_2b",
+            "name": "Mức độ 2b: Cảnh báo nguy cơ biến chứng Nặng",
+            "badgeText": "Nội trú / Theo dõi sát",
+            "color": "amber",
+            "criteria": "Giật mình ≥ 2 lần/30 phút hoặc giật mình lúc khám; Sốt ≥ 39.5°C; M > 130-150 l/p; thất điều, yếu chi."
+        },
+        {
+            "id": "branch_do_3",
+            "name": "Mức độ 3: Biến chứng Thần kinh - Tim mạch - Hô hấp Nặng",
+            "badgeText": "Hồi sức ICU",
+            "color": "rose",
+            "criteria": "M > 170 l/p, vã mồ hôi chi lạnh, HATT tăng, thở nhanh bất thường, gcs < 10."
+        },
+        {
+            "id": "branch_do_4",
+            "name": "Mức độ 4: Sốc / Phù phổi cấp / Nguy kịch",
+            "badgeText": "Cấp cứu Sốc / ICU",
+            "color": "rose",
+            "criteria": "Sốc, phù phổi cấp, tím tái SpO₂ < 90%, ngưng thở."
+        }
+    ],
+    "protocol": {
+        "title": "Phác đồ Chẩn đoán và Điều trị Bệnh Tay Chân Miệng theo Hướng dẫn Bộ Y tế",
+        "guideline": "Hướng dẫn Chẩn đoán và Điều trị Bệnh Tay Chân Miệng - Bộ Y tế Việt Nam",
+        "targetGoals": [
+            "Phát hiện sớm các dấu hiệu cảnh báo chuyển độ nguy hiểm (giật mình, sốt cao không hạ, mạch nhanh).",
+            "Chỉ định sớm Immunoglobulin (IVIG) và Phenobarbital để ngăn chặn biến chứng thần kinh - tim mạch.",
+            "Hồi sức tích cực chống sốc tim, phù phổi cấp bằng thở máy PEEP cao, Milrinone, Dobutamine và ECMO/CRRT khi cần."
+        ],
+        "initialManagement": [
+            "Đánh giá sinh hiệu khẩn cấp: Mạch, Huyết áp, Nhịp thở, SpO₂, Tri giác, CRT.",
+            "Phân độ lâm sàng chính xác (Độ 1, 2a, 2b, 3, 4) để quyết định tuyến điều trị.",
+            "Thiết lập đường truyền tĩnh mạch chắc chắn đối với trẻ từ Độ 2b trở lên."
+        ],
+        "firstLineDrugs": [
+            {
+                "drugName": "Paracetamol",
+                "class": "Thuốc hạ sốt, giảm đau",
+                "route": "PO | PR",
+                "dosage": "10 - 15 mg/kg/lần",
+                "frequency": "Mỗi 4 - 6 giờ khi sốt ≥ 38.5°C (tối đa 60 mg/kg/ngày)",
+                "instructions": "Hạ sốt tích cực, kết hợp lau mát bằng nước ấm.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Phenobarbital",
+                "class": "Thuốc an thần, chống co giật",
+                "route": "PO | IV",
+                "dosage": "5 - 7 mg/kg/ngày PO (Độ 2a) hoặc 10 - 20 mg/kg IV (Độ 2b, 3)",
+                "frequency": "q12h hoặc STAT cấp cứu",
+                "instructions": "Dùng sớm khi trẻ có giật mình hoặc quấy khóc trằn trọc.",
+                "isFirstLine": true
+            },
+            {
+                "drugName": "Immunoglobulin (IVIG)",
+                "class": "Chế phẩm miễn dịch đường tĩnh mạch",
+                "route": "TTM",
+                "dosage": "1 g/kg/ngày × 1 - 2 ngày",
+                "frequency": "Truyền tĩnh mạch chậm trong 6 - 8 giờ",
+                "instructions": "Chỉ định cho Độ 2b Nhóm 2, Độ 3, Độ 4 và Độ 2b Nhóm 1 tiến triển.",
+                "isFirstLine": true
+            }
+        ],
+        "secondLineDrugs": [
+            {
+                "drugName": "Milrinone",
+                "class": "Thuốc tăng co bóp cơ tim & Giãn mạch",
+                "route": "TTM",
+                "dosage": "0.375 - 0.75 µg/kg/phút",
+                "frequency": "Duy trì liên tục qua bơm tiêm điện",
+                "instructions": "Chỉ định cho Độ 3 và Độ 4 để giảm sức cản ngoại biên và trợ tim.",
+                "isFirstLine": false
+            },
+            {
+                "drugName": "Dobutamine",
+                "class": "Thuốc trợ tim, vận mạch",
+                "route": "TTM",
+                "dosage": "5 - 15 µg/kg/phút",
+                "frequency": "Duy trì liên tục",
+                "instructions": "Chỉ định trong Sốc tim Độ 4 hoặc Độ 3 có suy giảm co bóp cơ tim.",
+                "isFirstLine": false
+            }
+        ],
+        "supportiveCare": [
+            "Cách ly trẻ tại nhà hoặc tại phòng cách ly bệnh viện để tránh lây nhiễm.",
+            "Vệ sinh am phụ, răng miệng bằng nước muối sinh lý 0.9%.",
+            "Dinh dưỡng đầy đủ: Sữa nguội, cháo loãng nguội, uống nhiều nước Oresol.",
+            "Rửa tay bằng xà phòng trước và sau khi chăm sóc trẻ."
+        ]
+    },
+    "complications": [
+        {
+            "id": "comp_1",
+            "name": "Biến chứng Thần kinh (Viêm não, viêm thân não, viêm màng não, liệt mềm cấp)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Giật mình liên tục ≥ 2 lần/30 phút, đi loạng xạ, thất điều, rung giật nhãn cầu, lừ đừ, co giật, hôn mê.",
+            "preventiveAction": "Dùng Phenobarbital an thần sớm, chỉ định IVIG 1 g/kg/ngày cấp cứu, theo dõi sát sinh hiệu.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: An thần Phenobarbital IV + Chỉ định IVIG khẩn + Chuyển ICU Nhi!"
+        },
+        {
+            "id": "comp_2",
+            "name": "Biến chứng Tim mạch - Hô hấp (Viêm cơ tim, Sốc tim, Cơn bão Catecholamine, Phù phổi cấp)",
+            "timeframe": "acute_24h",
+            "warningSigns": "Mạch nhanh > 170 l/p, vã mồ hôi chi lạnh, HATT vọt cao, thở ngắt quãng, trào bọt hồng qua miệng/NKQ.",
+            "preventiveAction": "Đặt NKQ thở máy PEEP cao khẩn cấp, TTM Milrinone / Dobutamine, cân nhắc lọc máu liên tục (CRRT) / ECMO.",
+            "onCallAlertText": "Y LỆNH TRỰC BÁO ĐỘNG ĐỎ: Đặt NKQ thở máy PEEP 8-10 + Truyền Milrinone qua bơm tiêm điện + Mời hội chẩn ECMO/CRRT!"
+        }
+    ],
+    "monitoringLabs": [
+        "Công thức máu (WBC, Neutrophil, Hct, PLT): Theo dõi mỗi 12-24h (WBC > 16.000/mm³ gợi ý nguy cơ nặng).",
+        "Khí máu động mạch (KMĐM): Thực hiện từ Độ 2b Nhóm 2 trở lên để đánh giá toan chuyển hóa, PaO₂/FiO₂.",
+        "Đường huyết mao mạch: Theo dõi mỗi 6-12h (Đường huyết > 160 mg/dL hoặc 8.9 mmol/L là dấu hiệu cảnh báo nặng).",
+        "Troponin I / T, NT-proBNP, CK-MB: Đánh giá tổn thương cơ tim khi có M > 150-170 l/p.",
+        "X-quang ngực thẳng: Tầm soát Phù phổi cấp (hình ảnh mờ lan tỏa 2 phế trường).",
+        "RT-PCR vi rút EV71 / Coxsackievirus: Phết họng, dịch phỏng nước, phân để xác định căn nguyên."
+    ],
+    "clinicalCautions": {
+        "specificTreatmentIndications": "Hiện chưa có thuốc điều trị đặc hiệu vi rút EV71. Nguyên tắc cốt lõi là phân độ chính xác, an thần khống chế kích thích thần kinh, dùng IVIG sớm khi có chỉ định và hồi sức tim mạch - hô hấp tích cực.",
+        "clinicalIndications": [
+            {
+                "category": "Chỉ định Liệu pháp Miễn dịch IVIG (Gamaglobulin)",
+                "badgeText": "Miễn dịch / Hồi sức",
+                "color": "indigo",
+                "items": [
+                    {
+                        "indicationName": "Truyền IVIG 1 g/kg/ngày TTM trong 6 - 8 giờ",
+                        "criteria": "Trẻ chẩn đoán Tay Chân Miệng Độ 2b Nhóm 2, Độ 3, Độ 4 HOẶC Độ 2b Nhóm 1 có sốt cao không hạ hoặc tiến triển.",
+                        "orderTarget": "Trung hòa vi rút, giảm bão Cytokine, ngăn chặn tiến triển sang Sốc tim và Phù phổi cấp.",
+                        "note": "Nếu sau 24h triệu chứng chưa cải thiện, cân nhắc liều IVIG thứ 2 (1 g/kg)."
+                    }
+                ]
+            },
+            {
+                "category": "Chỉ định Thở máy & Vận mạch Giãn mạch",
+                "badgeText": "Hồi sức ICU",
+                "color": "rose",
+                "items": [
+                    {
+                        "indicationName": "Thở máy xâm nhập & Truyền Milrinone liên tục",
+                        "criteria": "Trẻ Độ 3 hoặc Độ 4 có suy hô hấp, SpO₂ < 92%, mạch nhanh > 170 l/p, HATT tăng cao hoặc sốc tim.",
+                        "orderTarget": "Duy trì PaO₂/FiO₂ > 200, MAP đạt ngưỡng theo tuổi, khống chế phù phổi cấp.",
+                        "note": "Cài đặt PEEP cao (8-12 cmH₂O) trong phù phổi cấp. Chỉnh liều Milrinone theo huyết áp."
+                    }
+                ]
+            }
+        ],
+        "criticalWarnings": [
+            "TUYỆT ĐỐI KHÔNG BÙ DỊCH QUÁ TẢI: Trong Tay Chân Miệng Độ 3-4, suy tuần hoàn chủ yếu do sốc tim và cơn bão Catecholamine. Bù dịch nhanh lượng lớn có thể thúc đẩy Phù phổi cấp tử vong!",
+            "CẤM DÙNG ASPIRIN VÀ CORTICOSTEROID THƯỜNG QUY: Corticoid không làm giảm tử vong mà làm tăng nguy cơ nhân lên của vi rút EV71.",
+            "THEO DÕI SÁT MẠCH KHI NẰM YÊN VÀ KHÔNG SỐT: Mạch nhanh > 130-150 l/p là dấu hiệu nhạy nhất báo hiệu biến chứng thần kinh/tim mạch sắp xảy ra."
+        ],
+        "contraindications": [
+            "Chống chỉ định bù dịch nhanh trong Độ 3 (khi chưa có sốc) - nguy cơ phù phổi cấp.",
+            "Chống chỉ định dùng Aspirin hạ sốt ở trẻ em (nguy cơ Hội chứng Reye).",
+            "Chống chỉ định dùng Corticoid toàn thân thường quy."
+        ],
+        "dischargeCriteria": [
+            "Trẻ hết sốt tự nhiên ≥ 48 giờ liên tục mà không cần thuốc hạ sốt.",
+            "Không còn triệu chứng giật mình, không có dấu hiệu thần kinh hay tim mạch bất thường.",
+            "Các tổn thương loét miệng, phỏng nước đã khô và se lại.",
+            "Trẻ ăn uống, bú tốt, tươi tắn, hoạt động bình thường."
+        ]
+    },
+    "vaultPathways": [
+        {
+            "khoCode": "CD",
+            "khoName": "Kho Tiêu Chuẩn CĐ",
+            "articleTitle": "Bộ tiêu chuẩn chẩn đoán xác định và Phân độ Bệnh Tay Chân Miệng theo Bộ Y tế",
+            "searchKeyword": "chẩn đoán tay chân miệng"
+        },
+        {
+            "khoCode": "PDDT",
+            "khoName": "Kho Phác Đồ Điều Trị",
+            "articleTitle": "Phác đồ điều trị phân tầng Bệnh Tay Chân Miệng (Độ 1 đến Độ 4) & Hồi sức ICU",
+            "searchKeyword": "phác đồ điều trị tay chân miệng"
+        },
+        {
+            "khoCode": "BC",
+            "khoName": "Kho Biến Chứng",
+            "articleTitle": "Nhận diện và xử trí cấp cứu biến chứng Viêm não, Sốc tim, Phù phổi cấp do EV71",
+            "searchKeyword": "biến chứng tay chân miệng"
+        }
+    ]
+}
