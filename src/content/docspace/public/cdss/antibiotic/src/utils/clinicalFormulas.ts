@@ -33,7 +33,12 @@ export function calculateRenalMetrics(
 
   if (height && height > 0) {
     const baseIbw = gender === 'm' ? 50 : 45.5;
-    ibw = Math.round((baseIbw + 0.9 * (height - 152)) * 10) / 10;
+    if (height >= 152.4) {
+      ibw = Math.round((baseIbw + 0.9 * (height - 152.4)) * 10) / 10;
+    } else {
+      // Chiều cao < 152.4 cm: tính theo BMI chuẩn 22 kg/m² để tránh công thức Robinson/Devine bị thấp bất thường
+      ibw = Math.round(22 * Math.pow(height / 100, 2) * 10) / 10;
+    }
     if (ibw < 10) ibw = 10;
     adjBw = Math.round((ibw + 0.4 * (tbw - ibw)) * 10) / 10;
     bmi = Math.round((tbw / Math.pow(height / 100, 2)) * 10) / 10;
@@ -61,25 +66,35 @@ export function calculateRenalMetrics(
   // Trong thực hành dược lâm sàng: Với người cao tuổi (> 65 tuổi) suy kiệt teo cơ có SCr quá thấp (< 60 µmol/L hoặc < 0.7 mg/dL),
   // nếu dùng SCr thực sẽ ước tính CrCl cao giả tạo dẫn đến ngộ độc kháng sinh (Cefepime, Colistin, Aminoglycoside).
   // Khuyến cáo Sanford / KDIGO: Làm tròn SCr tối thiểu 60-70 µmol/L (0.7-0.8 mg/dL) để bảo vệ thận.
-  let effectiveScrUmol = scrUmol;
-  if (age >= 65 && scrUmol < 60) {
-    effectiveScrUmol = 60;
-  }
-  let crcl = ((140 - age) * usedWeight) / (0.814 * effectiveScrUmol);
-  if (gender === 'f') {
-    crcl *= 0.85;
+  let crcl = 0;
+  if (age < 18 && height && height > 0) {
+    // Bedside Schwartz formula (2009) cho bệnh nhi < 18 tuổi: eGFR = 0.413 * chiều cao (cm) / SCr (mg/dL)
+    crcl = (0.413 * height) / Math.max(0.1, scrMgdl);
+  } else {
+    let effectiveScrUmol = scrUmol;
+    if (age >= 65 && scrUmol < 60) {
+      effectiveScrUmol = 60;
+    }
+    const safeAge = Math.min(120, Math.max(18, age));
+    crcl = ((140 - safeAge) * usedWeight) / (0.814 * effectiveScrUmol);
+    if (gender === 'f') {
+      crcl *= 0.85;
+    }
   }
   crcl = Math.max(1, Math.round(crcl * 10) / 10);
 
-  // CKD-EPI 2021 formula (Refit without race)
-  const kappa = gender === 'f' ? 0.7 : 0.9;
-  const alpha = gender === 'f' ? -0.241 : -0.302;
-  const genderMult = gender === 'f' ? 1.012 : 1.0;
-  const scrOverKappa = scrMgdl / kappa;
-  const minPart = Math.min(scrOverKappa, 1) ** alpha;
-  const maxPart = Math.max(scrOverKappa, 1) ** -1.2;
-  const agePart = 0.9938 ** age;
-  const egfrCkdEpi = Math.max(1, Math.round(142 * minPart * maxPart * agePart * genderMult * 10) / 10);
+  // CKD-EPI 2021 formula (Refit without race - Người lớn ≥ 18 tuổi)
+  let egfrCkdEpi = crcl;
+  if (age >= 18) {
+    const kappa = gender === 'f' ? 0.7 : 0.9;
+    const alpha = gender === 'f' ? -0.241 : -0.302;
+    const genderMult = gender === 'f' ? 1.012 : 1.0;
+    const scrOverKappa = scrMgdl / kappa;
+    const minPart = Math.min(scrOverKappa, 1) ** alpha;
+    const maxPart = Math.max(scrOverKappa, 1) ** -1.2;
+    const agePart = 0.9938 ** age;
+    egfrCkdEpi = Math.max(1, Math.round(142 * minPart * maxPart * agePart * genderMult * 10) / 10);
+  }
 
   const isArc = crcl > 130;
 

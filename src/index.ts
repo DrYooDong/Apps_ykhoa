@@ -6,6 +6,7 @@
 import './styles/main.css';
 import './styles/components/bottom-nav.css';
 import './styles/components/non-intrusive-ui.css';
+import './styles/components/clinical-cheatsheets.css';
 import './content/docspace/styles/docspace.css';
 import './content/knowledge-vault/css/vault-hub.css';
 import { 

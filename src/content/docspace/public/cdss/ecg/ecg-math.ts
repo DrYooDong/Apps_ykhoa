@@ -594,11 +594,16 @@ export function validateUserManualAnnotations(
   let totalScore = 0;
   let passed = 0;
 
+  const cycleMs = heartRate > 0 ? (60000 / heartRate) : 800;
+
   for (const ann of annotations) {
     const landmark = expectedLandmarks[ann.waveType];
     if (!landmark) continue;
 
-    const diff = Math.abs(ann.timeMs - landmark.expectedMs);
+    // Tính chu kỳ nhịp gần nhất để hỗ trợ chấm điểm trên mọi nhịp tim trong toàn dải ECG
+    const beatIndex = Math.max(0, Math.round((ann.timeMs - landmark.expectedMs) / cycleMs));
+    const targetExpectedMs = landmark.expectedMs + beatIndex * cycleMs;
+    const diff = Math.abs(ann.timeMs - targetExpectedMs);
     let status: "EXACT" | "CLOSE" | "MISPLACED" = "MISPLACED";
     let score = 30;
     let message = "";
@@ -608,16 +613,16 @@ export function validateUserManualAnnotations(
       status = "EXACT";
       score = 100;
       passed++;
-      message = `Chính xác tuyệt đối! Vị trí tại ${ann.timeMs}ms trùng khớp hoàn hảo với ${landmark.description} (lệch ${diff}ms).`;
+      message = `Chính xác tuyệt đối! Vị trí tại ${ann.timeMs}ms trùng khớp hoàn hảo với ${landmark.description} (nhịp ${beatIndex + 1}, lệch ${diff}ms).`;
     } else if (diff <= landmark.toleranceMs * 2.2) {
       status = "CLOSE";
       score = 75;
       passed++;
-      message = `Khá chuẩn xác! Vị trí tại ${ann.timeMs}ms lệch ${diff}ms so với đỉnh lý thuyết (${Math.round(landmark.expectedMs)}ms).`;
+      message = `Khá chuẩn xác! Vị trí tại ${ann.timeMs}ms lệch ${diff}ms so với đỉnh lý thuyết (${Math.round(targetExpectedMs)}ms, nhịp ${beatIndex + 1}).`;
     } else {
       status = "MISPLACED";
       score = Math.max(10, 50 - Math.round(diff * 0.2));
-      message = `Chưa chính xác: Vị trí được chấm tại ${ann.timeMs}ms lệch tới ${diff}ms so với vị trí chuẩn (${Math.round(landmark.expectedMs)}ms). Có thể bạn đang nhầm sang sóng kế tiếp.`;
+      message = `Chưa chính xác: Vị trí được chấm tại ${ann.timeMs}ms lệch tới ${diff}ms so với vị trí chuẩn (${Math.round(targetExpectedMs)}ms, nhịp ${beatIndex + 1}).`;
     }
 
     // Morphology remarks based on BS Nguyễn Tôn Kinh Thi

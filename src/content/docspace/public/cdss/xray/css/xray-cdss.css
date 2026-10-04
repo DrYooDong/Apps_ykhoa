@@ -334,6 +334,56 @@ body {
   color: #ffffff;
 }
 
+/* Window Presets Bar */
+.xray-pacs-presets-bar {
+  background: #090e1a;
+  border-bottom: 1px solid #1e293b;
+  padding: 0.45rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.xray-presets-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  font-family: var(--xray-font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-right: 0.25rem;
+}
+
+.xray-preset-btn {
+  background: #151e2e;
+  border: 1px solid #2d3b52;
+  color: #cbd5e1;
+  padding: 0.28rem 0.65rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.xray-preset-btn:hover {
+  background: #1e293b;
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.xray-preset-btn.active {
+  background: #0284c7;
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.45);
+}
+
 /* Slider Controls Bar */
 .xray-pacs-sliders {
   background: #0b1120;

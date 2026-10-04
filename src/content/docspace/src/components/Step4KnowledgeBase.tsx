@@ -44,17 +44,6 @@ interface Step4Props {
   onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
 
-function decodeHtmlEntities(str: string): string {
-  if (!str) return '';
-  return str
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, ' ');
-}
-
 export const Step4KnowledgeBase: React.FC<Step4Props> = ({
   kb,
   onExportKB,
@@ -403,16 +392,14 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                     </div>
 
                     {/* Summary Description */}
-                    <p className="text-xs text-slate-600 mb-2.5 leading-relaxed">
-                      {decodeHtmlEntities(b.tomTat)}
-                    </p>
+                    <p className="text-xs text-slate-600 mb-2.5 leading-relaxed">{b.tomTat}</p>
 
-                    {/* Demographic Specs Box (Chỉ hiển thị khi có tiêu chí dân số đặc thù) */}
-                    {b.danSo && (b.danSo.gioiTinh !== 'Nam / Nữ' || b.danSo.tuoiMin != null || b.danSo.tuoiMax != null) && (
-                      <div className="mb-2.5 text-[11px] text-blue-800 bg-blue-50/60 p-1.5 px-2 rounded border border-blue-100 font-mono-custom flex flex-wrap gap-2">
-                        {b.danSo.gioiTinh !== 'Nam / Nữ' && <span>Giới tính: <b>{b.danSo.gioiTinh}</b></span>}
-                        {(b.danSo.tuoiMin != null || b.danSo.tuoiMax != null) && (
-                          <span>Độ tuổi: <b>{b.danSo.tuoiMin ?? 0}–{b.danSo.tuoiMax ?? '+'}</b> tuổi</span>
+                    {/* Demographic Specs Box (Blue Tint) */}
+                    {b.danSo && (
+                      <div className="mb-2.5 text-[11px] text-blue-800 bg-blue-50/60 p-2 rounded border border-blue-100 font-mono-custom flex flex-wrap gap-2">
+                        <span>Giới: {b.danSo.gioiTinh}</span>
+                        {b.danSo.tuoiMin != null && (
+                          <span>Tuổi: {b.danSo.tuoiMin}–{b.danSo.tuoiMax ?? '+'}</span>
                         )}
                       </div>
                     )}
@@ -437,9 +424,7 @@ export const Step4KnowledgeBase: React.FC<Step4Props> = ({
                                   : 'bg-slate-50 border border-slate-200'
                               }`}
                             >
-                              <span className="text-slate-800 font-medium">
-                                {decodeHtmlEntities(tc.ten)}
-                              </span>
+                              <span className="text-slate-800 font-medium">{tc.ten}</span>
                               {tc.isSyndrome && (
                                 <span
                                   className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-amber-100/80 text-amber-900 border border-amber-300 flex items-center gap-1"

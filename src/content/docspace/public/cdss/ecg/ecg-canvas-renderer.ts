@@ -251,8 +251,12 @@ export class EcgCanvasRenderer {
   private placeAnnotation(x: number, y: number, wave: WaveType): void {
     const lead = this.options.selectedLead || 'II';
     const pxPerMm = this.PIXELS_PER_MM;
-    const timeMs = Math.round(((x % 300) / pxPerMm / this.options.paperSpeed) * 1000);
-    const voltageMv = Number(((y / pxPerMm) / (10 * this.options.voltageGain)).toFixed(2));
+    const offsetStartX = 12 + (5 * pxPerMm);
+    const diffXPx = Math.max(0, x - offsetStartX);
+    const timeMs = Math.round((diffXPx / pxPerMm / this.options.paperSpeed) * 1000);
+    const originY = this.logicalHeight * 0.5;
+    const diffYPx = originY - y;
+    const voltageMv = Number(((diffYPx / pxPerMm) / (10 * this.options.voltageGain)).toFixed(2));
 
     const ann: ManualAnnotation = {
       id: 'ann_' + Date.now(),

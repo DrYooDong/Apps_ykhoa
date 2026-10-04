@@ -57,6 +57,13 @@ export const calculateTotalOsmolality = (sodiumMmol: number, glucoseMmol: number
   return Number((2 * sodiumMmol + glucoseMmol + ureaMmol).toFixed(1));
 };
 
+// Corrected Sodium (Katz formula: Na + 0.016 * (Glucose_mgdL - 100))
+export const calculateCorrectedSodium = (sodiumMmol: number, glucoseMmol: number): number => {
+  const glucoseMgDl = glucoseMmol * 18.018;
+  if (glucoseMgDl <= 100) return sodiumMmol;
+  return Number((sodiumMmol + 0.016 * (glucoseMgDl - 100)).toFixed(1));
+};
+
 // Calculate Anion Gap: (Na + K) - (Cl + HCO3)
 export const calculateAnionGap = (na: number, k: number, cl: number, hco3: number): number => {
   return Number(((na + k) - (cl + hco3)).toFixed(1));
@@ -484,13 +491,26 @@ export const evaluateClinicalAlerts = (patient: PatientData): ClinicalAlert[] =>
   const effectiveOsm = (patient.sodium && currentGlucoseMmol) ? calculateEffectiveOsmolality(patient.sodium, currentGlucoseMmol) : null;
   const isSevereOsm = effectiveOsm ? effectiveOsm >= 320 : currentGlucoseMmol >= 30;
 
-  if (currentGlucoseMmol >= 30 && (!patient.bloodKetones || patient.bloodKetones < 3.0) && (!patient.venousPh || patient.venousPh >= 7.3)) {
+  // Check Mixed DKA - HHS
+  const isMixedDkaHhs = (isHighKetones && isAcidosis) && (isSevereOsm || (effectiveOsm !== null && effectiveOsm >= 320));
+
+  if (isMixedDkaHhs) {
+    alerts.push({
+      id: 'mixed-dka-hhs',
+      category: 'DKA_HHS',
+      level: 'CRITICAL',
+      title: 'BÁO ĐỘNG ĐỎ: HỘI CHỨNG HỖN HỢP TOAN CETON & TĂNG ÁP LỰC THẨM THẤU (DKA - HHS MIXED)',
+      message: `Bệnh nhân đồng thời có Toan Ceton (pH < 7.3 / HCO3 < 15, Ceton máu > 3.0 mmol/L) VÀ Tăng Áp Lực Thẩm Thấu (ALTT hiệu dụng ≥ 320 mOsm/kg, ĐH ≥ 30 mmol/L). Đây là thể cấp cứu có tỷ lệ tử vong cao nhất trong các biến chứng cấp tính của ĐTĐ.`,
+      actionGuideline: '1) Hồi sức thể tích tuần hoàn tích cực như HHS (bù NaCl 0.9% 1000ml/giờ đầu) nhưng phải thận trọng cân bằng điện giải. 2) Bắt đầu truyền insulin tĩnh mạch FRIII 0.1 ĐV/kg/h để ức chế sinh ceton (như DKA). 3) Giữ tốc độ hạ ALTT không quá 3-8 mOsm/kg/h. 4) Bắt buộc theo dõi điện giải đồ, ALTT và ceton máu mỗi 1-2 giờ tại ICU.',
+      citation: 'ADA 2026 Standards of Care & JBDS-IP Emergency Guidelines',
+    });
+  } else if (isSevereOsm && (!patient.bloodKetones || patient.bloodKetones < 3.0) && (!patient.venousPh || patient.venousPh >= 7.3)) {
     alerts.push({
       id: 'hhs-detected',
       category: 'DKA_HHS',
       level: 'CRITICAL',
       title: 'CẤP CỨU: TĂNG ÁP LỰC THẨM THẤU DO ĐTĐ (HHS - Hyperosmolar Hyperglycaemic State)',
-      message: `Đường huyết cực cao (≥ 30 mmol/L / ≥ 600 mg/dL), áp lực thẩm thấu ước tính ${effectiveOsm ? effectiveOsm + ' mOsm/kg' : 'cao'}, không có toan ceton nặng. Thiếu hụt dịch ước tính 100 - 220 ml/kg (10 - 22 Lít).`,
+      message: `Đường huyết cực cao (≥ 30 mmol/L / ≥ 600 mg/dL) hoặc ALTT hiệu dụng ≥ 320 mOsm/kg (ước tính ${effectiveOsm ? effectiveOsm + ' mOsm/kg' : 'cao'}), không có toan ceton nặng. Thiếu hụt dịch ước tính 100 - 220 ml/kg (10 - 22 Lít).`,
       actionGuideline: '1) BÙ DỊCH LÀ TRỌNG TÂM: NaCl 0.9% 1000ml trong giờ đầu, mục tiêu cân bằng dịch dương 2-3L trong 6h đầu. 2) KHÔNG DÙNG INSULIN NGAY TRỪ KHI ĐÃ BÙ DỊCH ĐẦY ĐỦ VÀ ĐƯỜNG HUYẾT NGỪNG GIẢM (dùng insulin quá sớm gây sụp đổ thể tích tuần hoàn). 3) Khi dùng insulin, liều khởi đầu thấp 0.05 ĐV/kg/h. 4) Tốc độ hạ ALTT không quá 3-8 mOsm/kg/h và hạ ĐH không quá 5 mmol/L/h để tránh phù não / hủy myelin cầu não (CPM). 5) Bắt buộc dùng LMWH dự phòng huyết khối tắc mạch.',
       citation: 'JBDS-IP 06 (Feb 2022) HHS Management Guidelines',
     });

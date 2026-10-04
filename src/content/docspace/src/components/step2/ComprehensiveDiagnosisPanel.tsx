@@ -11,6 +11,8 @@ import {
   ChevronRight,
   ClipboardCheck,
   Copy,
+  Droplet,
+  Droplets,
   Edit3,
   ExternalLink,
   Flame,
@@ -19,6 +21,7 @@ import {
   Info,
   Layers,
   Microscope,
+  Pill,
   Printer,
   RotateCcw,
   Scale,
@@ -29,6 +32,7 @@ import {
   Stethoscope,
   Target,
   Thermometer,
+  Timer,
   Zap,
 } from 'lucide-react';
 import {
@@ -76,7 +80,7 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
   onOpenVaultDrawer,
   onPrintReport,
 }) => {
-  const [activeTab, setActiveTab] = useState<'synthesis' | 'diagnosis'>('diagnosis');
+  const [activeTab, setActiveTab] = useState<'synthesis' | 'diagnosis' | 'protocol'>('diagnosis');
   const [copiedDiag, setCopiedDiag] = useState(false);
   const [copiedEmr, setCopiedEmr] = useState(false);
   const [isEditingCustomText, setIsEditingCustomText] = useState(false);
@@ -128,11 +132,11 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
                 Quy Trình Phân Tích Đa Trục CDSS
               </span>
               <span className="text-xs text-slate-300">
-                Lâm sàng · Cận lâm sàng động học · Tiêu chuẩn ĐHYD
+                Lâm sàng · Cận lâm sàng động học · Phác đồ cá thể hóa
               </span>
             </div>
             <h2 className="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5">
-              Phân Tích Dữ Kiện Toàn Diện &amp; Bộ Chẩn Đoán Xác Định (5 Thành Tố)
+              Phân Tích Thông Tin Toàn Diện & Bộ Chẩn Đoán Phác Đồ Tương Ứng
             </h2>
           </div>
         </div>
@@ -205,6 +209,23 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
               {synthesis.definitive.confidencePct}%
             </span>
           </button>
+
+          {/* Tab 3 */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('protocol')}
+            className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shrink-0 ${
+              activeTab === 'protocol'
+                ? 'bg-white text-emerald-900 border border-emerald-300 shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+            }`}
+          >
+            <Droplet className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>3. Phác Đồ Tương Ứng &amp; Bù Dịch</span>
+            <span className="px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase">
+              {synthesis.correspondingProtocol.triageLevel.toUpperCase()}
+            </span>
+          </button>
         </div>
 
         {/* Nút hành động nhanh sang Bước 4 - Tối ưu di động & Web, không bị che khuất */}
@@ -220,7 +241,7 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
             title="Áp dụng toàn bộ chẩn đoán và chuyển sang Bước 4 (Phác đồ điều trị)"
           >
             <Sparkles className="w-3.5 h-3.5 text-emerald-200 shrink-0 hidden sm:inline" />
-            <span>Chuyển sang Bước 4 (Phác đồ)</span>
+            <span>Áp dụng vào Phác đồ (Bước 4)</span>
             <ArrowRight className="w-3.5 h-3.5 shrink-0" />
           </button>
         )}
@@ -654,22 +675,29 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
                 ))}
               </div>
             </div>
+          </div>
+        )}
 
-            {/* ĐỊNH HƯỚNG PHÂN TẦNG XỬ TRÍ TIẾP NHẬN & CHUYỂN TIẾP SANG BƯỚC 4 */}
-            <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-blue-50 border border-emerald-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4">
+        {/* ========================================================================= */}
+        {/* TAB 3: PHÁC ĐỒ ĐIỀU TRỊ TƯƠNG ỨNG CÁ THỂ HÓA                              */}
+        {/* ========================================================================= */}
+        {activeTab === 'protocol' && (
+          <div className="space-y-6">
+            {/* 3A. Banner Tuyến Tiếp Nhận & Phân Tầng Phác Đồ */}
+            <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50/50 to-white border border-emerald-300 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-[11px] text-emerald-800 font-bold uppercase tracking-wider block">
-                    Định Hướng Phân Tầng Xử Trí Tiếp Nhận:
+                    Phân Tầng Xử Trí Tương Ứng:
                   </span>
-                  <h4 className="text-sm font-bold text-emerald-950">
+                  <h3 className="text-base font-extrabold text-emerald-950">
                     {synthesis.correspondingProtocol.triageTarget}
-                  </h4>
+                  </h3>
                   <span className="text-xs text-slate-600">
-                    Bộ chẩn đoán xác định đã được thiết lập đầy đủ. Tiến hành chuyển sang <b>Bước 4 (Phác đồ ĐT)</b> để áp dụng y lệnh thuốc, bù dịch và theo dõi.
+                    Áp dụng nhánh: <b className="text-emerald-900">{synthesis.correspondingProtocol.targetBranchName}</b>
                   </span>
                 </div>
               </div>
@@ -678,17 +706,184 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
                 <button
                   type="button"
                   onClick={() =>
-                    onGoToProtocol(synthesis.definitive.diseaseIcd ? topResult?.b.id || 'sot_xuat_huyet' : 'sot_xuat_huyet', {
+                    onGoToProtocol(topResult?.b.id || 'sot_xuat_huyet', {
                       gradeIdx: synthesis.correspondingProtocol.targetBranchIndex,
                     })
                   }
-                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer transition-all flex items-center gap-1.5 self-start sm:self-center shrink-0"
-                  title="Chuyển sang Bước 4 (Phác đồ điều trị)"
+                  className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-xs cursor-pointer transition-all flex items-center gap-1.5 self-start md:self-center"
                 >
-                  <span>Mở Phác Đồ Điều Trị (Bước 4)</span>
+                  <span>Mở Bảng Y Lệnh Chi Tiết (Bước 4)</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               )}
+            </div>
+
+            {/* 3B. BẢNG TÍNH LƯU LƯỢNG TRUYỀN DỊCH CÁ THỂ HÓA (FLUID RESUSCITATION CALCULATOR) */}
+            {fluidPlan ? (
+              <div className="p-4 sm:p-5 bg-white border border-blue-200 rounded-xl shadow-xs space-y-4">
+                <div className="flex items-center justify-between gap-3 flex-wrap border-b border-slate-100 pb-3">
+                  <div className="flex items-center gap-2">
+                    <Droplets className="w-5 h-5 text-blue-600" />
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900">
+                        Phác đồ Truyền Dịch Cá Thể Hóa theo Cân Nặng ({fluidPlan.prescribedWeightKg} kg)
+                      </h4>
+                      <span className="text-xs text-slate-500 font-medium">
+                        Dung dịch khuyến cáo: <b className="text-blue-900">{fluidPlan.recommendedSolution}</b>
+                      </span>
+                    </div>
+                  </div>
+
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-900 border border-blue-200 font-mono-custom">
+                    Tổng ước tính: ~{fluidPlan.totalEstimated24hVolumeMl} ml/24h
+                  </span>
+                </div>
+
+                {/* Bảng bậc thang truyền dịch chi tiết */}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs border border-slate-200 rounded-lg overflow-hidden">
+                    <thead className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
+                      <tr>
+                        <th className="p-2.5 text-left">Giai đoạn bậc thang</th>
+                        <th className="p-2.5 text-center">Lưu lượng (ml/kg/h)</th>
+                        <th className="p-2.5 text-center bg-blue-50 text-blue-950">Lưu lượng giờ (ml/h)</th>
+                        <th className="p-2.5 text-center bg-blue-100/60 text-blue-950 font-extrabold">Số giọt/phút</th>
+                        <th className="p-2.5 text-left">Thời gian</th>
+                        <th className="p-2.5 text-left">Ghi chú & Đánh giá lại</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {fluidPlan.steps.map((step, sIdx) => (
+                        <tr key={sIdx} className="hover:bg-slate-50/70">
+                          <td className="p-2.5 font-bold text-slate-900">{step.label}</td>
+                          <td className="p-2.5 text-center font-mono-custom font-semibold text-slate-700">
+                            {step.rateMlKgH} ml/kg/h
+                          </td>
+                          <td className="p-2.5 text-center font-mono-custom font-bold text-blue-900 bg-blue-50/40">
+                            {step.rateMlPerHour} ml/h
+                          </td>
+                          <td className="p-2.5 text-center font-mono-custom font-extrabold text-blue-950 bg-blue-100/30">
+                            {step.dropsPerMin} giọt/phút
+                          </td>
+                          <td className="p-2.5 text-slate-600 font-medium">{step.durationHours}</td>
+                          <td className="p-2.5 text-slate-500 text-[11px] leading-tight">{step.note}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Cảnh báo an toàn và Tiêu chuẩn ngưng dịch */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-2">
+                  <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-lg space-y-1">
+                    <span className="font-bold text-amber-900 flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                      Lưu ý an toàn dịch truyền:
+                    </span>
+                    <ul className="list-disc pl-4 text-amber-950 text-[11px] space-y-0.5">
+                      {fluidPlan.safetyCautions.map((c, i) => (
+                        <li key={i}>{c}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-3 bg-emerald-50/80 border border-emerald-200 rounded-lg space-y-1">
+                    <span className="font-bold text-emerald-900 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      Tiêu chuẩn ngưng truyền dịch (Tránh phù phổi):
+                    </span>
+                    <ul className="list-disc pl-4 text-emerald-950 text-[11px] space-y-0.5">
+                      {fluidPlan.cessationCriteria.map((c, i) => (
+                        <li key={i}>{c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-blue-900">
+                <span className="font-bold block mb-1">Chỉ định bù dịch đường uống:</span>
+                Tình trạng hiện tại chưa có chỉ định truyền dịch tĩnh mạch. Bù dịch đường uống bằng dung dịch Oresol, nước dừa xiêm, nước hoa quả 1.5 - 2 lít/ngày. Hẹn tái khám kiểm tra Hct mỗi 24 giờ.
+              </div>
+            )}
+
+            {/* 3C. DANH MỤC Y LỆNH THUỐC TƯƠNG ỨNG BAN ĐẦU */}
+            <div className="space-y-3">
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
+                <Pill className="w-4 h-4 text-indigo-600" />
+                <span>Danh mục Y lệnh Điều trị Tương ứng Ban đầu:</span>
+              </span>
+
+              <div className="space-y-2">
+                {synthesis.correspondingProtocol.initialMedicationOrders.map((ord, oIdx) => (
+                  <div
+                    key={oIdx}
+                    className={`p-3 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
+                      ord.isContraindicationAlert
+                        ? 'bg-rose-50/90 border-rose-300 text-rose-950'
+                        : 'bg-white border-slate-200 text-slate-900 shadow-2xs'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <span
+                          className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                            ord.isContraindicationAlert
+                              ? 'bg-rose-600 text-white'
+                              : 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+                          }`}
+                        >
+                          {ord.category}
+                        </span>
+                        <span className="font-bold text-slate-900 text-sm">{ord.name}</span>
+                      </div>
+                      <div className="text-slate-600 font-medium">
+                        <span>Liều: <b className="text-slate-900">{ord.dosage}</b></span> &bull;{' '}
+                        <span>Đường dùng: <b>{ord.route}</b></span> &bull;{' '}
+                        <span>Tần suất: <b>{ord.frequency}</b></span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-1">{ord.clinicalInstruction}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3D. Kế Hoạch Theo Dõi Cận Lâm Sàng & Tiêu Chuẩn Xuất Viện */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                <span className="font-bold text-slate-900 uppercase flex items-center gap-1.5">
+                  <Timer className="w-4 h-4 text-blue-600" />
+                  Kế hoạch kiểm tra cận lâm sàng & sinh hiệu:
+                </span>
+                <div className="space-y-2 text-[11px]">
+                  {synthesis.correspondingProtocol.dynamicMonitoring.map((mon, mIdx) => (
+                    <div key={mIdx} className="p-2 bg-white rounded border border-slate-200">
+                      <div className="font-bold text-slate-900 flex justify-between">
+                        <span>{mon.parameter}</span>
+                        <span className="text-blue-700">{mon.frequency}</span>
+                      </div>
+                      <div className="text-slate-500 mt-0.5">Mục tiêu: {mon.targetGoal}</div>
+                      <div className="text-rose-700 font-semibold mt-0.5">Ngưỡng báo động: {mon.alertThreshold}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                <span className="font-bold text-slate-900 uppercase flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  Tiêu chuẩn xuất viện an toàn (Safe Discharge Checklist):
+                </span>
+                <div className="space-y-1.5 text-[11px]">
+                  {synthesis.correspondingProtocol.safeDischargeCriteria.map((crit, cIdx) => (
+                    <div key={cIdx} className="p-2 bg-white rounded border border-slate-200 flex items-start gap-1.5">
+                      <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span className="text-slate-700">{crit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -702,10 +897,10 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
           </div>
           <div>
             <div className="text-xs font-bold text-white">
-              Quy trình chẩn đoán hoàn tất &bull; Đã xác lập đầy đủ 5 thành tố
+              Quy trình phân tích hoàn tất &bull; Đã xác lập phác đồ tương ứng
             </div>
             <div className="text-[11px] text-slate-300">
-              Chuyển sang Bước 4 để điều chỉnh và duyệt y lệnh thuốc, bù dịch và lộ trình theo dõi.
+              Chuyển sang Bước 4 để điều chỉnh và duyệt y lệnh thuốc, dịch truyền và lộ trình theo dõi.
             </div>
           </div>
         </div>
@@ -721,7 +916,7 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
               }
               className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-xs cursor-pointer transition-all hover:translate-x-0.5"
             >
-              <span>Thiết Lập Phác Đồ (Bước 4)</span>
+              <span>Xem Phác Đồ Chi Tiết (Bước 4)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           )}

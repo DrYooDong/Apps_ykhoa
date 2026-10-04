@@ -10,7 +10,7 @@ export default {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'esbuild',
+    minify: true,
     chunkSizeWarningLimit: 2000,
     rollupOptions: {
       input: {

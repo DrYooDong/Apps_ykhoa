@@ -54,8 +54,9 @@ export const ENRICHED_DISEASE_KEYS: string[] = [];
       const data = JSON.parse(content);
 
       // Validate cấu trúc cơ bản
-      if (!data.icdCode || !data.diseaseName || !data.criteria || !data.protocol) {
-        console.warn(`⚠️ Bỏ qua [${file}]: Thiếu các trường bắt buộc (icdCode, diseaseName, criteria, protocol).`);
+      const hasProtocol = data.protocol || data.treatmentPhases || data.timelinePhases;
+      if (!data.icdCode || !data.diseaseName || !data.criteria || !hasProtocol) {
+        console.warn(`⚠️ Bỏ qua [${file}]: Thiếu các trường bắt buộc (icdCode, diseaseName, criteria, protocol/phases).`);
         continue;
       }
 

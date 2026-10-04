@@ -62,7 +62,12 @@ export function calculateWeightAdjustment(
       // Người lớn béo phì: Tính theo Cân nặng hiệu chỉnh AdjBW = IBW + 0.4 * (TBW - IBW) theo Phụ lục 9 QĐ 2760/BYT
       let ibw = stdWeight;
       if (heightCm && heightCm > 100) {
-        ibw = gender === 'male' ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        if (heightCm >= 152.4) {
+          ibw = gender === 'male' ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        } else {
+          // Khi chiều cao < 152.4 cm, dùng BMI chuẩn 22 kg/m² để tránh công thức Robinson/Devine bị thấp bất thường
+          ibw = 22 * Math.pow(heightCm / 100, 2);
+        }
         ibw = Math.max(35, Math.round(ibw * 10) / 10);
       }
       const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
@@ -123,8 +128,13 @@ export function calculateFluidSchedule(
     totalVolumeMl += neededMl;
     totalDurationHours += duration;
 
-    // Số giọt mỗi phút: (Tốc độ ml/h * 20 giọt/ml) / 60 phút = Tốc độ / 3
-    const dropsPerMin = Math.round((rate * effectiveWeightKg) / 3);
+    // Số giọt mỗi phút:
+    // Trẻ em / dây đếm giọt nhi khoa: 60 giọt/ml (microdrip) => Số giọt/phút = Tốc độ ml/giờ
+    // Người lớn / dây truyền tiêu chuẩn: 20 giọt/ml (macrodrip) => Số giọt/phút = (Tốc độ ml/h * 20) / 60 = Tốc độ / 3
+    const isPediatric = ageGroup === 'child';
+    const dropsPerMin = isPediatric
+      ? Math.round(rate * effectiveWeightKg)
+      : Math.round((rate * effectiveWeightKg) / 3);
 
     // Tính mốc thời gian
     const endClock = addHoursToTime(currentClock, duration);
@@ -597,9 +607,11 @@ export function generateDengueCDSSPlan(
     alerts.push({
       id: 'alert_obese',
       level: 'danger',
-      title: 'CẢNH BÁO QUÁ TẢI DỊCH Ở TRẺ THỪA CÂN / BÉO PHÌ',
-      message: weightResult.warningText || 'Bệnh nhân thừa cân. Bắt buộc dùng cân nặng hiệu chỉnh CDC 2014.',
-      ruleCode: 'CDC_2014_OBESE_RULE'
+      title: patient.ageYears >= 16
+        ? 'CẢNH BÁO QUÁ TẢI DỊCH Ở NGƯỜI LỚN THỪA CÂN / BÉO PHÌ'
+        : 'CẢNH BÁO QUÁ TẢI DỊCH Ở TRẺ THỪA CÂN / BÉO PHÌ',
+      message: weightResult.warningText || (patient.ageYears >= 16 ? 'Bệnh nhân thừa cân. Dùng cân nặng hiệu chỉnh AdjBW.' : 'Bệnh nhân thừa cân. Bắt buộc dùng cân nặng hiệu chỉnh CDC 2014.'),
+      ruleCode: patient.ageYears >= 16 ? 'ADULT_OBESE_RULE' : 'CDC_2014_OBESE_RULE'
     });
   }
 

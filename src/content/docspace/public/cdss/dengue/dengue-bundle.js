@@ -639,7 +639,11 @@ function calculateWeightAdjustment(ageYears, gender, actualWeightKg, heightCm) {
     } else {
       let ibw = stdWeight;
       if (heightCm && heightCm > 100) {
-        ibw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        if (heightCm >= 152.4) {
+          ibw = gender === "male" ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+        } else {
+          ibw = 22 * Math.pow(heightCm / 100, 2);
+        }
         ibw = Math.max(35, Math.round(ibw * 10) / 10);
       }
       const adjBw = Math.round((ibw + 0.4 * (actualWeightKg - ibw)) * 10) / 10;
@@ -680,7 +684,8 @@ function calculateFluidSchedule(patient, effectiveWeightKg, customDurations) {
     const neededMl = Math.round(rate * effectiveWeightKg * duration);
     totalVolumeMl += neededMl;
     totalDurationHours += duration;
-    const dropsPerMin = Math.round(rate * effectiveWeightKg / 3);
+    const isPediatric = ageGroup === "child";
+    const dropsPerMin = isPediatric ? Math.round(rate * effectiveWeightKg) : Math.round(rate * effectiveWeightKg / 3);
     const endClock = addHoursToTime(currentClock, duration);
     const timeWindow = `${currentClock} - ${endClock} (${duration}h)`;
     const existingFluidMl = carryingFluidMl;
@@ -1041,9 +1046,9 @@ function generateDengueCDSSPlan(patient, customDurations) {
     alerts.push({
       id: "alert_obese",
       level: "danger",
-      title: "C\u1EA2NH B\xC1O QU\xC1 T\u1EA2I D\u1ECACH \u1EDE TR\u1EBA TH\u1EEAA C\xC2N / B\xC9O PH\xCC",
-      message: weightResult.warningText || "B\u1EC7nh nh\xE2n th\u1EEBa c\xE2n. B\u1EAFt bu\u1ED9c d\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh CDC 2014.",
-      ruleCode: "CDC_2014_OBESE_RULE"
+      title: patient.ageYears >= 16 ? "C\u1EA2NH B\xC1O QU\xC1 T\u1EA2I D\u1ECACH \u1EDE NG\u01AF\u1EDCI L\u1EDAN TH\u1EEAA C\xC2N / B\xC9O PH\xCC" : "C\u1EA2NH B\xC1O QU\xC1 T\u1EA2I D\u1ECACH \u1EDE TR\u1EBA TH\u1EEAA C\xC2N / B\xC9O PH\xCC",
+      message: weightResult.warningText || (patient.ageYears >= 16 ? "B\u1EC7nh nh\xE2n th\u1EEBa c\xE2n. D\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh AdjBW." : "B\u1EC7nh nh\xE2n th\u1EEBa c\xE2n. B\u1EAFt bu\u1ED9c d\xF9ng c\xE2n n\u1EB7ng hi\u1EC7u ch\u1EC9nh CDC 2014."),
+      ruleCode: patient.ageYears >= 16 ? "ADULT_OBESE_RULE" : "CDC_2014_OBESE_RULE"
     });
   }
   if (patient.severity === "severe_shock") {

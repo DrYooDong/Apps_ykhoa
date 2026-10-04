@@ -149,7 +149,7 @@ export const Step2Analysis: React.FC<Step2Props> = ({
                     }`}
                   >
                     <ClipboardCheck className="w-3.5 h-3.5" />
-                    <span>Bộ Chẩn Đoán Xác Định (5 Thành Tố)</span>
+                    <span>Bộ Chẩn Đoán & Phác Đồ Tương Ứng</span>
                   </button>
 
                   <button

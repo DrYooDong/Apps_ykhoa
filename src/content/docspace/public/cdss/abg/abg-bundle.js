@@ -68,7 +68,7 @@ function analyzeABG(input) {
     } else {
       isAnionGapHigh = anionGap > 16;
     }
-    if (albumin !== void 0 && albumin < 40) {
+    if (albumin !== void 0) {
       const albGdl = albumin > 10 ? albumin / 10 : albumin;
       correctedAnionGap = (anionGap || 0) + 2.5 * (4 - albGdl);
       if (correctedAnionGap > 16) isAnionGapHigh = true;
@@ -300,6 +300,34 @@ function analyzeABG(input) {
           acidBaseTitle = "Ki\u1EC1m chuy\u1EC3n h\xF3a B\xF9 tr\u1EEB ho\xE0n to\xE0n (Fully Compensated Metabolic Alkalosis)";
           acidBaseDesc = "Ki\u1EC1m chuy\u1EC3n h\xF3a nguy\xEAn ph\xE1t \u0111\u01B0\u1EE3c ph\u1ED5i b\xF9 tr\u1EEB b\u1EB1ng gi\u1EA3m th\xF4ng kh\xED gi\u1EEF CO2, \u0111\u01B0a pH v\u1EC1 7.40 - 7.45.";
         }
+      }
+    } else if (isPaCO2High || isPaCO2Low || isHCO3High || isHCO3Low || isAnionGapHigh) {
+      if (isAnionGapHigh) {
+        acidBaseCategory = "metabolic_acidosis";
+        compensation = "fully_compensated";
+        primaryDisorder = "Toan chuy\u1EC3n h\xF3a t\u0103ng Anion Gap k\xEDn \u0111\xE1o (B\xF9 tr\u1EEB ho\xE0n to\xE0n)";
+        acidBaseTitle = "Toan chuy\u1EC3n h\xF3a t\u0103ng Anion Gap v\u1EDBi pH b\xECnh th\u01B0\u1EDDng";
+        acidBaseDesc = "pH c\xF2n n\u1EB1m trong gi\u1EDBi h\u1EA1n b\xECnh th\u01B0\u1EDDng nh\u01B0ng Anion Gap t\u0103ng cao, c\u1EA3nh b\xE1o t\xEDch t\u1EE5 acid chuy\u1EC3n h\xF3a s\u1EDBm (lactic, ceton, \u0111\u1ED9c ch\u1EA5t).";
+      } else if (isPaCO2High) {
+        acidBaseCategory = "respiratory_acidosis";
+        primaryDisorder = "\u1EE8 CO2 nh\u1EB9 / giai \u0111o\u1EA1n s\u1EDBm (pH b\xECnh th\u01B0\u1EDDng)";
+        acidBaseTitle = "T\u0103ng PaCO2 nh\u1EB9 v\u1EDBi pH b\u1EA3o t\u1ED3n";
+        acidBaseDesc = "PaCO2 t\u0103ng nh\u1EB9 nh\u01B0ng pH \u0111\u01B0\u1EE3c duy tr\xEC trong d\u1EA3i sinh l\xFD b\xECnh th\u01B0\u1EDDng.";
+      } else if (isPaCO2Low) {
+        acidBaseCategory = "respiratory_alkalosis";
+        primaryDisorder = "T\u0103ng th\xF4ng kh\xED nh\u1EB9 (pH b\xECnh th\u01B0\u1EDDng)";
+        acidBaseTitle = "Gi\u1EA3m PaCO2 nh\u1EB9 v\u1EDBi pH b\u1EA3o t\u1ED3n";
+        acidBaseDesc = "B\u1EC7nh nh\xE2n t\u0103ng th\xF4ng kh\xED nh\u1EB9 l\xE0m gi\u1EA3m PaCO2 nh\u01B0ng pH m\xE1u ch\u01B0a v\u01B0\u1EE3t ng\u01B0\u1EE1ng ki\u1EC1m h\xF3a.";
+      } else if (isHCO3Low) {
+        acidBaseCategory = "metabolic_acidosis";
+        primaryDisorder = "Toan chuy\u1EC3n h\xF3a nh\u1EB9 / \u0111ang h\u1ED3i ph\u1EE5c";
+        acidBaseTitle = "Gi\u1EA3m HCO3- nh\u1EB9 v\u1EDBi pH b\u1EA3o t\u1ED3n";
+        acidBaseDesc = "N\u1ED3ng \u0111\u1ED9 Bicarbonate gi\u1EA3m nh\u1EB9 nh\u01B0ng pH m\xE1u v\u1EABn n\u1EB1m trong d\u1EA3i sinh l\xFD.";
+      } else {
+        acidBaseCategory = "metabolic_alkalosis";
+        primaryDisorder = "Ki\u1EC1m chuy\u1EC3n h\xF3a nh\u1EB9";
+        acidBaseTitle = "T\u0103ng HCO3- nh\u1EB9 v\u1EDBi pH b\u1EA3o t\u1ED3n";
+        acidBaseDesc = "N\u1ED3ng \u0111\u1ED9 Bicarbonate t\u0103ng nh\u1EB9 nh\u01B0ng pH m\xE1u v\u1EABn \u0111\u01B0\u1EE3c ki\u1EC3m so\xE1t.";
       }
     } else {
       acidBaseCategory = "normal";

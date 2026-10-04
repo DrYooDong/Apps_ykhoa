@@ -108,7 +108,7 @@ export function analyzeABG(input: ABGInput): ABGAnalysisResult {
       isAnionGapHigh = anionGap > 16;
     }
 
-    if (albumin !== undefined && albumin < 40) {
+    if (albumin !== undefined) {
       // Corrected AG = AG + 2.5 * (4.0 - albumin(g/dL)) -> if g/L: 0.25 * (40 - alb)
       const albGdl = albumin > 10 ? albumin / 10 : albumin;
       correctedAnionGap = (anionGap || 0) + 2.5 * (4.0 - albGdl);
@@ -382,6 +382,35 @@ export function analyzeABG(input: ABGInput): ABGAnalysisResult {
           acidBaseTitle = 'Kiềm chuyển hóa Bù trừ hoàn toàn (Fully Compensated Metabolic Alkalosis)';
           acidBaseDesc = 'Kiềm chuyển hóa nguyên phát được phổi bù trừ bằng giảm thông khí giữ CO2, đưa pH về 7.40 - 7.45.';
         }
+      }
+    } else if (isPaCO2High || isPaCO2Low || isHCO3High || isHCO3Low || isAnionGapHigh) {
+      // Normal pH with isolated borderline or single-axis abnormality
+      if (isAnionGapHigh) {
+        acidBaseCategory = 'metabolic_acidosis';
+        compensation = 'fully_compensated';
+        primaryDisorder = 'Toan chuyển hóa tăng Anion Gap kín đáo (Bù trừ hoàn toàn)';
+        acidBaseTitle = 'Toan chuyển hóa tăng Anion Gap với pH bình thường';
+        acidBaseDesc = 'pH còn nằm trong giới hạn bình thường nhưng Anion Gap tăng cao, cảnh báo tích tụ acid chuyển hóa sớm (lactic, ceton, độc chất).';
+      } else if (isPaCO2High) {
+        acidBaseCategory = 'respiratory_acidosis';
+        primaryDisorder = 'Ứ CO2 nhẹ / giai đoạn sớm (pH bình thường)';
+        acidBaseTitle = 'Tăng PaCO2 nhẹ với pH bảo tồn';
+        acidBaseDesc = 'PaCO2 tăng nhẹ nhưng pH được duy trì trong dải sinh lý bình thường.';
+      } else if (isPaCO2Low) {
+        acidBaseCategory = 'respiratory_alkalosis';
+        primaryDisorder = 'Tăng thông khí nhẹ (pH bình thường)';
+        acidBaseTitle = 'Giảm PaCO2 nhẹ với pH bảo tồn';
+        acidBaseDesc = 'Bệnh nhân tăng thông khí nhẹ làm giảm PaCO2 nhưng pH máu chưa vượt ngưỡng kiềm hóa.';
+      } else if (isHCO3Low) {
+        acidBaseCategory = 'metabolic_acidosis';
+        primaryDisorder = 'Toan chuyển hóa nhẹ / đang hồi phục';
+        acidBaseTitle = 'Giảm HCO3- nhẹ với pH bảo tồn';
+        acidBaseDesc = 'Nồng độ Bicarbonate giảm nhẹ nhưng pH máu vẫn nằm trong dải sinh lý.';
+      } else {
+        acidBaseCategory = 'metabolic_alkalosis';
+        primaryDisorder = 'Kiềm chuyển hóa nhẹ';
+        acidBaseTitle = 'Tăng HCO3- nhẹ với pH bảo tồn';
+        acidBaseDesc = 'Nồng độ Bicarbonate tăng nhẹ nhưng pH máu vẫn được kiểm soát.';
       }
     } else {
       acidBaseCategory = 'normal';

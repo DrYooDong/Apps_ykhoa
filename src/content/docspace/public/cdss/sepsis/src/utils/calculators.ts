@@ -180,7 +180,7 @@ export function calculateNEWS2(patient: PatientData): {
   // 7. Mức độ tri giác (Consciousness - Alert, Voice, Pain, Unresponsive)
   let cScore = 0;
   let cDesc = 'Tỉnh táo hoàn toàn (Alert)';
-  if (patient.avpu !== 'A' || patient.newAlteredMentalState || patient.gcs < 15) {
+  if (patient.avpu !== 'A' || patient.newAlteredMentalState || (patient.gcs !== undefined && patient.gcs < 15)) {
     cScore = 3;
     cDesc = `Rối loạn tri giác mới (AVPU: ${patient.avpu}, GCS: ${patient.gcs}/15)`;
   }
@@ -480,15 +480,19 @@ export function calculateSOFA(patient: PatientData): {
   let cvDesc = '';
   const map = calculateMAP(patient.sbp, patient.dbp);
   const vaso = patient.vasoactiveUsed;
-  const hasHighVaso = vaso.norepinephrine || vaso.epinephrine || (vaso.dopamine && patient.vasoactiveMedCount >= 2);
+  const hasHighVaso = (vaso.norepinephrine && patient.vasoactiveMedCount >= 2) || (vaso.epinephrine && patient.vasoactiveMedCount >= 2) || (vaso.dopamine && patient.vasoactiveMedCount >= 2);
+  const hasModVaso = vaso.norepinephrine || vaso.epinephrine;
 
   if (hasHighVaso) {
-    cvScore = 4; // Liều vận mạch cao/kết hợp
-    cvDesc = 'Đang dùng Norepinephrine/Epinephrine liều duy trì hoặc đa vận mạch';
+    cvScore = 4; // Liều vận mạch cao/kết hợp đa vận mạch
+    cvDesc = 'Đang dùng phối hợp đa vận mạch hoặc liều cao (Norepinephrine / Epinephrine / Dopamine > 15 µg/kg/phút)';
+  } else if (hasModVaso) {
+    cvScore = 3;
+    cvDesc = 'Đang dùng Norepinephrine hoặc Epinephrine liều chuẩn (SOFA 3 điểm)';
   } else if (vaso.dopamine || vaso.dobutamine || patient.vasoactiveMedCount === 1) {
     cvScore = 2;
-    cvDesc = 'Đang dùng Dopamine hoặc Dobutamine liều hỗ trợ';
-  } else if (map < 70) {
+    cvDesc = 'Đang dùng Dopamine (≤ 5 µg/kg/phút) hoặc Dobutamine (bất kỳ liều nào)';
+  } else if (map < 70 && map > 0) {
     cvScore = 1;
     cvDesc = `Huyết áp trung bình MAP ${map} mmHg (< 70 mmHg)`;
   } else {

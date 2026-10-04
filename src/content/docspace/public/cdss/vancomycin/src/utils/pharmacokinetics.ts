@@ -7,12 +7,14 @@ export function calculateBodyMetrics(heightCm: number, weightKg: number, gender:
   const heightM = heightCm / 100;
   const bmi = heightM > 0 ? Number((weightKg / (heightM * heightM)).toFixed(1)) : 0;
   
-  // Devine formula for IBW
+  // Devine formula for IBW (BMI 22 standard for height < 152.4 cm)
   let ibw = 0;
-  if (gender === 'male') {
-    ibw = 50 + 0.91 * (heightCm - 152.4);
+  if (heightCm >= 152.4) {
+    ibw = gender === 'male' ? 50 + 0.91 * (heightCm - 152.4) : 45.5 + 0.91 * (heightCm - 152.4);
+  } else if (heightCm > 0) {
+    ibw = 22 * Math.pow(heightCm / 100, 2);
   } else {
-    ibw = 45.5 + 0.91 * (heightCm - 152.4);
+    ibw = weightKg;
   }
   ibw = Math.max(10, Number(ibw.toFixed(1)));
   

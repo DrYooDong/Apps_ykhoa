@@ -2055,10 +2055,13 @@ function validateUserManualAnnotations(annotations, waveData, lead, heartRate, c
   const validatedItems = [];
   let totalScore = 0;
   let passed = 0;
+  const cycleMs = heartRate > 0 ? 6e4 / heartRate : 800;
   for (const ann of annotations) {
     const landmark = expectedLandmarks[ann.waveType];
     if (!landmark) continue;
-    const diff = Math.abs(ann.timeMs - landmark.expectedMs);
+    const beatIndex = Math.max(0, Math.round((ann.timeMs - landmark.expectedMs) / cycleMs));
+    const targetExpectedMs = landmark.expectedMs + beatIndex * cycleMs;
+    const diff = Math.abs(ann.timeMs - targetExpectedMs);
     let status = "MISPLACED";
     let score = 30;
     let message = "";
@@ -2067,16 +2070,16 @@ function validateUserManualAnnotations(annotations, waveData, lead, heartRate, c
       status = "EXACT";
       score = 100;
       passed++;
-      message = `Ch\xEDnh x\xE1c tuy\u1EC7t \u0111\u1ED1i! V\u1ECB tr\xED t\u1EA1i ${ann.timeMs}ms tr\xF9ng kh\u1EDBp ho\xE0n h\u1EA3o v\u1EDBi ${landmark.description} (l\u1EC7ch ${diff}ms).`;
+      message = `Ch\xEDnh x\xE1c tuy\u1EC7t \u0111\u1ED1i! V\u1ECB tr\xED t\u1EA1i ${ann.timeMs}ms tr\xF9ng kh\u1EDBp ho\xE0n h\u1EA3o v\u1EDBi ${landmark.description} (nh\u1ECBp ${beatIndex + 1}, l\u1EC7ch ${diff}ms).`;
     } else if (diff <= landmark.toleranceMs * 2.2) {
       status = "CLOSE";
       score = 75;
       passed++;
-      message = `Kh\xE1 chu\u1EA9n x\xE1c! V\u1ECB tr\xED t\u1EA1i ${ann.timeMs}ms l\u1EC7ch ${diff}ms so v\u1EDBi \u0111\u1EC9nh l\xFD thuy\u1EBFt (${Math.round(landmark.expectedMs)}ms).`;
+      message = `Kh\xE1 chu\u1EA9n x\xE1c! V\u1ECB tr\xED t\u1EA1i ${ann.timeMs}ms l\u1EC7ch ${diff}ms so v\u1EDBi \u0111\u1EC9nh l\xFD thuy\u1EBFt (${Math.round(targetExpectedMs)}ms, nh\u1ECBp ${beatIndex + 1}).`;
     } else {
       status = "MISPLACED";
       score = Math.max(10, 50 - Math.round(diff * 0.2));
-      message = `Ch\u01B0a ch\xEDnh x\xE1c: V\u1ECB tr\xED \u0111\u01B0\u1EE3c ch\u1EA5m t\u1EA1i ${ann.timeMs}ms l\u1EC7ch t\u1EDBi ${diff}ms so v\u1EDBi v\u1ECB tr\xED chu\u1EA9n (${Math.round(landmark.expectedMs)}ms). C\xF3 th\u1EC3 b\u1EA1n \u0111ang nh\u1EA7m sang s\xF3ng k\u1EBF ti\u1EBFp.`;
+      message = `Ch\u01B0a ch\xEDnh x\xE1c: V\u1ECB tr\xED \u0111\u01B0\u1EE3c ch\u1EA5m t\u1EA1i ${ann.timeMs}ms l\u1EC7ch t\u1EDBi ${diff}ms so v\u1EDBi v\u1ECB tr\xED chu\u1EA9n (${Math.round(targetExpectedMs)}ms, nh\u1ECBp ${beatIndex + 1}).`;
     }
     if (ann.waveType === "R") {
       morphologyEvaluation = `\u0110\u1EA1o tr\xECnh ${lead}: S\xF3ng R cao ${waveData.rWave.amp.toFixed(2)}mV. Tr\u1EE5c kh\u1EED c\u1EF1c b\xECnh th\u01B0\u1EDDng h\u01B0\u1EDBng t\u1EEB \u0111\xE1y \u0111\u1EBFn m\u1ECFm.`;
@@ -2309,8 +2312,12 @@ var EcgCanvasRenderer = class {
   placeAnnotation(x, y, wave) {
     const lead = this.options.selectedLead || "II";
     const pxPerMm = this.PIXELS_PER_MM;
-    const timeMs = Math.round(x % 300 / pxPerMm / this.options.paperSpeed * 1e3);
-    const voltageMv = Number((y / pxPerMm / (10 * this.options.voltageGain)).toFixed(2));
+    const offsetStartX = 12 + 5 * pxPerMm;
+    const diffXPx = Math.max(0, x - offsetStartX);
+    const timeMs = Math.round(diffXPx / pxPerMm / this.options.paperSpeed * 1e3);
+    const originY = this.logicalHeight * 0.5;
+    const diffYPx = originY - y;
+    const voltageMv = Number((diffYPx / pxPerMm / (10 * this.options.voltageGain)).toFixed(2));
     const ann = {
       id: "ann_" + Date.now(),
       lead,
