@@ -105,6 +105,14 @@ if (fs.existsSync(srcDocSpaceDist)) {
   console.log('[Post-Build] Overlaid built DocSpace dist -> dist/src/content/docspace');
 }
 
+// 4c. Copy kho-guidelines trực tiếp -> dist/kho-guidelines (cho đường dẫn tương đối ngắn trên GitHub Pages)
+const srcKhoGuidelines = path.join(rootDir, 'src', 'content', 'ebm', 'guidelines', 'kho-guidelines');
+const destKhoGuidelines = path.join(distDir, 'kho-guidelines');
+if (fs.existsSync(srcKhoGuidelines)) {
+  safeCopyRecursive(srcKhoGuidelines, destKhoGuidelines);
+  console.log('[Post-Build] Copied src/content/ebm/guidelines/kho-guidelines -> dist/kho-guidelines');
+}
+
 // 5. Copy src/components/ -> dist/src/components & dist/components
 const srcComponentsPath = path.join(rootDir, 'src', 'components');
 if (fs.existsSync(srcComponentsPath)) {

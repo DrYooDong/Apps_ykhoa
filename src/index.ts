@@ -190,7 +190,12 @@ function mountToApp(html: string): void {
       document.body.classList.remove('dsp-active');
     }
 
-    if (cleanHash.startsWith('/ebm/guidelines') || cleanHash.startsWith('/ebm/kho-guidelines') || cleanHash.startsWith('ebm/guidelines') || cleanHash.startsWith('ebm/kho-guidelines')) {
+    if (
+      cleanHash.startsWith('/ebm/guidelines') || cleanHash.startsWith('ebm/guidelines') ||
+      cleanHash.startsWith('/ebm/kho-guidelines') || cleanHash.startsWith('ebm/kho-guidelines') ||
+      cleanHash.startsWith('/reader') || cleanHash.startsWith('reader') ||
+      cleanHash.startsWith('/kho-guidelines') || cleanHash.startsWith('kho-guidelines')
+    ) {
       document.body.classList.add('guidelines-active');
     } else {
       document.body.classList.remove('guidelines-active');
@@ -309,6 +314,19 @@ function initializeRoutes(): void {
     mountToApp(renderGuidelineReader(slug));
   });
   router.register('/ebm/guidelines/reader/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderGuidelineReader(slug));
+  });
+  // Các Route Alias điều hướng tiện lợi cho Reader View
+  router.register('/reader/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderGuidelineReader(slug));
+  });
+  router.register('/ebm/reader/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderGuidelineReader(slug));
+  });
+  router.register('/kho-guidelines/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
     const slug = params.slug || '';
     mountToApp(renderGuidelineReader(slug));
   });

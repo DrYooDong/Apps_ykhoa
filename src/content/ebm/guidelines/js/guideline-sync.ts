@@ -85,6 +85,14 @@ export function resolveStudyFile(filePath?: string): string {
   return `#/reader/${cleanSlug}`;
 }
 
+if (typeof window !== 'undefined') {
+  (window as any).openGuidelineReader = (slug: string) => {
+    if (!slug) return;
+    const clean = slug.replace(/^(?:kho-guidelines|Kho Guidelines)\//i, '').replace(/\.(?:html|mdx)$/i, '');
+    window.location.hash = `#/reader/${clean}`;
+  };
+}
+
 export function getIcd10Name(code?: string): string {
   if (!code) return '';
   const cleanCode = code.trim().toUpperCase();
