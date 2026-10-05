@@ -20,6 +20,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
+import { FormattedClinicalText } from './FormattedClinicalText.tsx';
 
 interface SoapRoadmapViewProps {
   currentCase: SoapClinicalExperience;
@@ -39,19 +40,47 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
   const roadmapRaw = currentCase?.p?.treatmentRoadmap || '';
   const medications = currentCase?.p?.medications || [];
 
-  // Tách các giai đoạn từ treatmentRoadmap dựa trên #### 1. Giai đoạn 1...
+  // Tách các giai đoạn từ treatmentRoadmap dựa trên #### 1. Giai đoạn 1... hoặc - **Giai đoạn 1...**:
   const stages: ParsedStage[] = useMemo(() => {
     if (!roadmapRaw) return [];
 
+    const lines = roadmapRaw.split(/\r?\n/);
     const result: ParsedStage[] = [];
-    const stageRegex = /(?:^|\n)#{3,4}\s*(?:\d+[.)]\s*)?(Giai đoạn\s*\d+[^:\n]*:[^\n]*|Lộ trình[^\n]*)\n([\s\S]*?)(?=(?:^|\n)#{3,4}\s*(?:\d+[.)]\s*)?Giai đoạn|$)/gi;
-    let m;
-    let idx = 1;
-    while ((m = stageRegex.exec(roadmapRaw)) !== null) {
+    let current: { title: string; bodyLines: string[] } | null = null;
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      // Check if line is a stage header:
+      // 1) #### 1. Giai đoạn 1: ...
+      // 2) - **Giai đoạn 1: ...**:
+      // 3) **Giai đoạn 1: ...**
+      // 4) 1. **Giai đoạn 1: ...**
+      const headerMatch = trimmed.match(
+        /^(?:#{2,4}\s*(?:\d+[.)]\s*)?|[-*•]\s*\*\*|\*\*|\d+[.)]\s*\*\*)(Giai đoạn\s*\d+[\s\S]*?)(?:\*\*)?:?\s*$/i
+      );
+
+      if (headerMatch) {
+        if (current) {
+          result.push({
+            stageNumber: result.length + 1,
+            stageTitle: current.title,
+            stageBody: current.bodyLines.join('\n').trim(),
+          });
+        }
+        current = {
+          title: headerMatch[1].replace(/^[*_`#\s]+|[*_`#:\s]+$/g, '').trim(),
+          bodyLines: [],
+        };
+      } else if (current) {
+        current.bodyLines.push(line);
+      }
+    }
+
+    if (current) {
       result.push({
-        stageNumber: idx++,
-        stageTitle: m[1].replace(/^[*_`#]+|[*_`#]+$/g, '').trim(),
-        stageBody: m[2].trim(),
+        stageNumber: result.length + 1,
+        stageTitle: current.title,
+        stageBody: current.bodyLines.join('\n').trim(),
       });
     }
 
@@ -139,8 +168,8 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
                       {stg.stageTitle}
                     </h4>
                   </div>
-                  <div className="text-xs text-slate-700 leading-relaxed whitespace-pre-line space-y-1">
-                    {stg.stageBody}
+                  <div className="text-xs text-slate-700 leading-relaxed space-y-1">
+                    <FormattedClinicalText text={stg.stageBody} bulletColor="emerald" />
                   </div>
                 </div>
 
@@ -162,8 +191,8 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
             <Milestone className="w-4 h-4 text-teal-600" />
             <span>Nội Dung Lộ Trình Điều Trị &amp; Giám Sát</span>
           </div>
-          <div className="text-xs text-slate-800 leading-relaxed whitespace-pre-line p-2">
-            {roadmapRaw}
+          <div className="text-xs text-slate-800 leading-relaxed p-2">
+            <FormattedClinicalText text={roadmapRaw} bulletColor="emerald" />
           </div>
         </div>
       ) : null}
@@ -238,8 +267,8 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
           </div>
 
           {currentCase.p.discontinuationCriteria ? (
-            <div className="p-3.5 bg-red-50/50 border border-red-200/80 rounded-xl text-xs text-red-950 leading-relaxed whitespace-pre-line">
-              {currentCase.p.discontinuationCriteria}
+            <div className="p-3.5 bg-red-50/50 border border-red-200/80 rounded-xl text-xs text-red-950 leading-relaxed">
+              <FormattedClinicalText text={currentCase.p.discontinuationCriteria} bulletColor="red" />
             </div>
           ) : (
             <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 italic">
@@ -248,12 +277,12 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
           )}
 
           {currentCase.p.consultationOrReferral && (
-            <div className="p-3 bg-amber-50/60 border border-amber-200 rounded-xl text-xs text-amber-950 space-y-1">
+            <div className="p-3 bg-amber-50/60 border border-amber-200 rounded-xl text-xs text-amber-950 space-y-1.5">
               <span className="font-bold flex items-center gap-1.5">
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                 <span>Chỉ Định Hội Chẩn / Chuyển Tuyến:</span>
               </span>
-              <p>{currentCase.p.consultationOrReferral}</p>
+              <FormattedClinicalText text={currentCase.p.consultationOrReferral} bulletColor="amber" />
             </div>
           )}
         </div>
@@ -268,8 +297,8 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
           </div>
 
           {currentCase.p.lifestyleAndCounseling ? (
-            <div className="p-3.5 bg-emerald-50/50 border border-emerald-200/80 rounded-xl text-xs text-emerald-950 leading-relaxed whitespace-pre-line">
-              {currentCase.p.lifestyleAndCounseling}
+            <div className="p-3.5 bg-emerald-50/50 border border-emerald-200/80 rounded-xl text-xs text-emerald-950 leading-relaxed">
+              <FormattedClinicalText text={currentCase.p.lifestyleAndCounseling} bulletColor="emerald" />
             </div>
           ) : (
             <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 italic">
@@ -279,12 +308,12 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
 
           {/* Takeaway Lessons Callout */}
           {currentCase.p.takeawayLessons && (
-            <div className="p-3 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-blue-950 space-y-1">
+            <div className="p-3 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-blue-950 space-y-1.5">
               <span className="font-bold flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <Sparkles className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                 <span>Bài Học Thực Chiến Đúc Kết:</span>
               </span>
-              <p className="leading-relaxed">{currentCase.p.takeawayLessons}</p>
+              <FormattedClinicalText text={currentCase.p.takeawayLessons} bulletColor="blue" />
             </div>
           )}
         </div>

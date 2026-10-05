@@ -15,14 +15,20 @@ interface FormattedClinicalTextProps {
 export function sanitizeClinicalTypography(input?: string): string {
   if (!input) return '';
   return input
-    // 1. Khử lỗi HTML entity và dấu ngoặc kép thừa
+    // 0. Khử divider thô ở đầu/cuối chuỗi
+    .replace(/^\s*[-*]{3,}\s*\r?\n?/, '')
+    .replace(/\r?\n?\s*[-*]{3,}\s*$/, '')
+    // 1. Tách dòng cho các bullet dính liền sau dấu câu hoặc dấu hai chấm
+    .replace(/([.!?;])\s+-\s+\*\*/g, '$1\n- **')
+    .replace(/:\s+-\s+/g, ':\n  - ')
+    // 2. Khử lỗi HTML entity và dấu ngoặc kép thừa
     .replace(/""/g, '"')
     .replace(/&quot;/g, '"')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&amp;/g, '&')
     .replace(/&nbsp;/g, ' ')
-    // 2. Ký hiệu mũi tên và so sánh y khoa
+    // 3. Ký hiệu mũi tên và so sánh y khoa
     .replace(/\\+\(\s*\\+rightarrow\s*\\+\)/g, '➔')
     .replace(/\\+rightarrow/g, '➔')
     .replace(/\\+\(\s*\\+ge(q)?\s*\\+\)/g, '≥')
@@ -34,16 +40,16 @@ export function sanitizeClinicalTypography(input?: string): string {
     .replace(/\\+sim/g, '~')
     .replace(/\\+pm/g, '±')
     .replace(/\\+approx/g, '≈')
-    // 3. Khử text{...} và \text{...}
+    // 4. Khử text{...} và \text{...}
     .replace(/\\?text\{\s*([^}]+)\s*\}/g, '$1')
     .replace(/\\?mathbf\{\s*([^}]+)\s*\}/g, '$1')
-    // 4. Khử phân số \frac{a}{b}
+    // 5. Khử phân số \frac{a}{b}
     .replace(/\\?frac\{\s*([^}]+)\s*\}\{\s*([^}]+)\s*\}/g, '$1/$2')
-    // 5. Khử độ C và micro
+    // 6. Khử độ C và micro
     .replace(/\^\\circ\s*(?:text\{)?C\}?/g, '°C')
     .replace(/\^\\circ/g, '°')
     .replace(/\\+mu\s*([a-zA-Z]+)?/g, 'µ$1')
-    // 6. Khử các dấu ngoặc LaTeX math còn sót \( hoặc \) (cả escaped và unescaped)
+    // 7. Khử các dấu ngoặc LaTeX math còn sót \( hoặc \) (cả escaped và unescaped)
     .replace(/\\+\(/g, '')
     .replace(/\\+\)/g, '')
     .trim();

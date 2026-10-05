@@ -16,6 +16,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
+import { FormattedClinicalText } from './FormattedClinicalText.tsx';
 
 interface SoapReasoningViewProps {
   currentCase: SoapClinicalExperience;
@@ -88,8 +89,8 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
         </div>
 
         {clinicalReasoning ? (
-          <div className="text-xs text-slate-800 leading-relaxed whitespace-pre-line space-y-3 font-sans">
-            {clinicalReasoning}
+          <div className="text-xs text-slate-800 leading-relaxed space-y-3 font-sans">
+            <FormattedClinicalText text={clinicalReasoning} bulletColor="blue" />
           </div>
         ) : (
           <div className="p-8 text-center text-xs text-slate-500">
@@ -115,14 +116,17 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
                 </span>
                 <div>
                   <h5 className="text-xs font-bold text-sky-950 uppercase tracking-wider">
-                    Khai Thác Bệnh Sử (History Pearls)
+                     Khai Thác Bệnh Sử (History Pearls)
                   </h5>
                   <p className="text-[10px] text-sky-600">Điểm then chốt trong hỏi bệnh</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-700 leading-relaxed">
-                {historyPearls || 'Khai thác chính xác thời gian khởi phát và các triệu chứng báo hiệu.'}
-              </p>
+              <div className="text-xs text-slate-700 leading-relaxed">
+                <FormattedClinicalText
+                  text={historyPearls || 'Khai thác chính xác thời gian khởi phát và các triệu chứng báo hiệu.'}
+                  bulletColor="blue"
+                />
+              </div>
             </div>
             <div className="mt-3 pt-2 border-t border-slate-100 text-[10.5px] font-semibold text-sky-700">
               Giai đoạn S (Subjective)
@@ -143,9 +147,12 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
                   <p className="text-[10px] text-amber-600">Sai lầm thường gặp khi diễn giải CLS</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-700 leading-relaxed">
-                {objectivePitfalls || 'Tránh bỏ sót giai đoạn cửa sổ hoặc các thay đổi sinh hiệu kín đáo.'}
-              </p>
+              <div className="text-xs text-slate-700 leading-relaxed">
+                <FormattedClinicalText
+                  text={objectivePitfalls || 'Tránh bỏ sót giai đoạn cửa sổ hoặc các thay đổi sinh hiệu kín đáo.'}
+                  bulletColor="amber"
+                />
+              </div>
             </div>
             <div className="mt-3 pt-2 border-t border-slate-100 text-[10.5px] font-semibold text-amber-700">
               Giai đoạn O (Objective)
@@ -166,9 +173,12 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
                   <p className="text-[10px] text-purple-600">Biện giải logic xác định bệnh</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-700 leading-relaxed">
-                {diagnosticPearls || 'Tổng hợp hội chứng và đối chiếu tiêu chuẩn vàng để xác định bệnh.'}
-              </p>
+              <div className="text-xs text-slate-700 leading-relaxed">
+                <FormattedClinicalText
+                  text={diagnosticPearls || 'Tổng hợp hội chứng và đối chiếu tiêu chuẩn vàng để xác định bệnh.'}
+                  bulletColor="slate"
+                />
+              </div>
             </div>
             <div className="mt-3 pt-2 border-t border-slate-100 text-[10.5px] font-semibold text-purple-700">
               Giai đoạn A (Assessment)
@@ -189,9 +199,12 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
                   <p className="text-[10px] text-emerald-600">Đúc kết giá trị chuyển giao thực tiễn</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-700 leading-relaxed">
-                {takeawayLessons || 'Theo dõi tuân thủ phác đồ và đánh giá đáp ứng lâu dài của người bệnh.'}
-              </p>
+              <div className="text-xs text-slate-700 leading-relaxed">
+                <FormattedClinicalText
+                  text={takeawayLessons || 'Theo dõi tuân thủ phác đồ và đánh giá đáp ứng lâu dài của người bệnh.'}
+                  bulletColor="emerald"
+                />
+              </div>
             </div>
             <div className="mt-3 pt-2 border-t border-slate-100 text-[10.5px] font-semibold text-emerald-700">
               Giai đoạn P (Plan)

@@ -283,7 +283,7 @@ function extractLabGroups(oText: string): Array<{ groupName: string; content: st
  */
 function extractMedicationsFuzzy(pText: string): SoapPlanMedication[] {
   // 1. Khoanh vùng khối Y lệnh thuốc để tránh bắt nhầm các gạch đầu dòng từ Roadmap/Theo dõi
-  const blockRegex = /(?:^|\n)#{2,4}\s*(?:[^\n]*?)?(?:Y lệnh thuốc|Danh mục thuốc|Thuốc điều trị|Medications)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s|\n\s*---\s*\n|$)/i;
+  const blockRegex = /(?:^|\r?\n)#{2,4}\s*(?:[^\r\n]*?)?(?:Y lệnh thuốc|Danh mục thuốc|Thuốc điều trị|Medications)[^\r\n]*\r?\n([\s\S]*?)(?=(?:^|\r?\n)#{2,4}\s|\r?\n\s*---\s*\r?\n|$)/i;
   const blockMatch = pText.match(blockRegex);
   const targetText = blockMatch ? blockMatch[1].trim() : pText;
 
@@ -291,13 +291,14 @@ function extractMedicationsFuzzy(pText: string): SoapPlanMedication[] {
 
   // 2. Pattern: 1. **Tên thuốc**: Liều dùng (Đường dùng) — *Ghi chú*
   // hoặc: - **Tên thuốc**: Liều dùng...
-  const itemRegex = /(?:^|\n)\s*(?:[-*]|\d+[.)])\s*\*\*([^*\n]+)\*\*\s*[:=]\s*([^\n]+)/g;
+  const itemRegex = /(?:^|\r?\n)[ \t]*(?:[-*]|\d+[.)])[ \t]*(.*?)[ \t]*[:=][ \t]*([^\r\n]+)/g;
   let m: RegExpExecArray | null;
   while ((m = itemRegex.exec(targetText)) !== null) {
     const drugName = m[1].replace(/[*_`]/g, '').trim();
-    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Chế độ|Lộ trình|Giai đoạn|Tần suất|Mục tiêu)/i.test(drugName)) {
+    if (/^(Xử trí|Theo dõi|Tiêu chuẩn|Hội chẩn|Lưu ý|Chỉ tiêu|Chế độ|Lộ trình|Giai đoạn|Tần suất|Mục tiêu|Thuốc bổ trợ|Nhóm thuốc|Phác đồ|Thành phần)/i.test(drugName)) {
       continue;
     }
+    if (!drugName || drugName.length < 2) continue;
 
     let rawRest = m[2].trim();
     let note = '';

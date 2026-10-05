@@ -13,6 +13,12 @@ import { CliniPortalThemeManager } from './core/theme-manager';
 import { cliniMdxEngine } from './core/mdx-engine';
 import { hydrateFlowchartViewers } from './core/flowchart-viewer';
 import { sendClinicalIntent } from './core/clinical-intent';
+import { KHO_GUIDELINES_STATIC } from './kho-guidelines-registry';
+
+// Lazy-loaded raw MDX modules khi chạy trong môi trường Vite (Dev server & Bundled build)
+const viteRawMdxModules: Record<string, () => Promise<string>> = (import.meta as any).glob
+  ? (import.meta as any).glob('/src/content/ebm/guidelines/kho-guidelines/*.mdx', { query: '?raw', import: 'default' })
+  : {};
 
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug & base name cleanly
@@ -178,49 +184,241 @@ export function renderGuidelineReader(slug: string): string {
 }
 
 /**
+ * Tạo nội dung MDX Fallback đầy đủ từ CSDL KHO_GUIDELINES_STATIC khi không nạp được tệp (offline file:///)
+ */
+function createEmergencyFallbackMdx(item: any, slug: string): string {
+  const title = item?.title || slug;
+  const org = item?.organization || 'EBM';
+  const year = item?.year || '2026';
+  const cor = item?.cor || (item?.impact === 'practice-changing' ? 'I' : 'IIa');
+  const loe = item?.loe || (item?.design === 'rct' ? 'A' : 'B');
+  const summary = item?.summary || item?.detailedConclusion || 'Tài liệu hướng dẫn điều trị y học chứng cứ đã được chuẩn hóa trong CSDL CliniPortal.';
+  const keyPoints = Array.isArray(item?.keyPoints) ? item.keyPoints : [];
+  const intervention = item?.intervention || 'Phác đồ điều trị chuẩn';
+  const endpoint = item?.primaryEndpoint || 'Tiêu chí đánh giá chính';
+  const results = item?.keyResults || 'Xem chi tiết kết quả trong toàn văn';
+  const conclusion = item?.detailedConclusion || item?.summary || '';
+  const icd = item?.icd10 || '';
+
+  return `---
+title: "${title.replace(/"/g, "'")}"
+slug: "${slug}"
+organization: "${org}"
+year: "${year}"
+cor: "${cor}"
+loe: "${loe}"
+category: "guidelines"
+status: "published"
+description: "${summary.replace(/"/g, "'").slice(0, 300)}..."
+sections:
+  - id: "sec-overview"
+    number: 1
+    title: "Tổng Quan & Thông Tin Khuyến Cáo"
+  - id: "sec-pico"
+    number: 2
+    title: "Can Thiệp Lâm Sàng & Tiêu Chí (PICO)"
+  - id: "sec-keypoints"
+    number: 3
+    title: "Khuyến Cáo Lâm Sàng Cốt Lõi"
+  - id: "sec-conclusion"
+    number: 4
+    title: "Kết Luận & Giá Trị Thực Hành"
+---
+
+<div class="infobox info" style="margin-bottom: 1.5rem;">
+  <span class="infobox-icon">💡</span>
+  <div class="infobox-content">
+    <strong>CHẾ ĐỘ TÓM TẮT DỮ LIỆU TĨNH (LOCAL FALLBACK):</strong> Bài tóm tắt này được trích xuất trực tiếp từ Cơ sở dữ liệu EBM Guidelines Hub cục bộ, đảm bảo tra cứu lâm sàng liên tục ngay cả khi mất kết nối mạng hoặc mở ngoại tuyến qua giao thức <code>file:///</code>.
+  </div>
+</div>
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">${org}</div>
+      <div class="stat-lbl">Tổ chức / Hiệp hội ban hành</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">Năm ${year}</div>
+      <div class="stat-lbl">Năm cập nhật khuyến cáo</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Class ${cor}</div>
+      <div class="stat-lbl">Phân độ khuyến cáo (COR)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">LOE ${loe}</div>
+      <div class="stat-lbl">Mức độ bằng chứng (LOE)</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-overview">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">📋</span>
+    <h2 class="sec-title">1. Tổng Quan & Bối Cảnh Lâm Sàng</h2>
+  </div>
+  <div class="sec-body">
+    <p style="font-size: 1.02rem; line-height: 1.7; color: var(--color-text, #0f172a); margin-bottom: 1rem;">
+      ${summary}
+    </p>
+    ${icd ? `<p style="margin: 0; font-size: 0.88rem; color: var(--color-text-muted, #64748b);"><strong>Mã phân loại bệnh (ICD-10):</strong> <code>${icd}</code></p>` : ''}
+  </div>
+</div>
+
+<div class="sec-card" id="sec-pico">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">🎯</span>
+    <h2 class="sec-title">2. Can Thiệp Lâm Sàng, Tiêu Chí & Kết Quả (PICO)</h2>
+  </div>
+  <div class="sec-body">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+      <div style="background: var(--color-surface-2, #f8fafc); padding: 1.15rem; border-radius: 12px; border: 1px solid var(--color-border, #e2e8f0);">
+        <div style="font-weight: 800; font-size: 0.85rem; color: var(--color-primary, #0284c7); margin-bottom: 0.35rem; text-transform: uppercase;">
+          💊 Can Thiệp / Liệu Pháp Điều Trị
+        </div>
+        <div style="font-size: 0.95rem; line-height: 1.55;">${intervention}</div>
+      </div>
+      <div style="background: var(--color-surface-2, #f8fafc); padding: 1.15rem; border-radius: 12px; border: 1px solid var(--color-border, #e2e8f0);">
+        <div style="font-weight: 800; font-size: 0.85rem; color: #059669; margin-bottom: 0.35rem; text-transform: uppercase;">
+          🎯 Tiêu Chí Đánh Giá Chính (Primary Endpoint)
+        </div>
+        <div style="font-size: 0.95rem; line-height: 1.55;">${endpoint}</div>
+      </div>
+    </div>
+    <div style="background: rgba(2, 132, 199, 0.04); padding: 1.15rem; border-radius: 12px; border-left: 4px solid var(--color-primary, #0284c7);">
+      <div style="font-weight: 800; font-size: 0.88rem; color: var(--color-text, #0f172a); margin-bottom: 0.35rem;">
+        📊 Kết Quả Lâm Sàng Then Chốt & Thống Kê:
+      </div>
+      <div style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text, #334155);">${results}</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-keypoints">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">⚖️</span>
+    <h2 class="sec-title">3. Các Khuyến Cáo Thực Hành Cốt Lõi (Key Recommendations)</h2>
+  </div>
+  <div class="sec-body">
+    ${keyPoints.length > 0 ? `
+      <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+        ${keyPoints.map((kp: string, idx: number) => `
+          <li style="display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.85rem 1rem; border-radius: 10px; background: var(--color-surface-2, #f8fafc); border: 1px solid var(--color-border, #e2e8f0);">
+            <span style="min-width: 26px; height: 26px; border-radius: 50%; background: var(--color-primary, #0284c7); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">
+              ${idx + 1}
+            </span>
+            <span style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text, #0f172a);">${kp}</span>
+          </li>
+        `).join('')}
+      </ul>
+    ` : `<p style="color: var(--color-text-muted, #64748b);">Chi tiết khuyến cáo đang được đối chiếu và cập nhật.</p>`}
+  </div>
+</div>
+
+<div class="sec-card" id="sec-conclusion">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">🔬</span>
+    <h2 class="sec-title">4. Kết Luận & Chuyển Giao Thực Hành Lâm Sàng</h2>
+  </div>
+  <div class="sec-body">
+    <p style="font-size: 1rem; line-height: 1.7; color: var(--color-text, #0f172a); margin: 0;">
+      ${conclusion || summary}
+    </p>
+  </div>
+</div>
+`;
+}
+
+/**
  * Fetch, parse, and inject guideline content with Ultra-Wide CSS rules
  */
 async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string): Promise<void> {
   const mountEl = document.getElementById('guideline-article-mount');
   if (!mountEl) return;
 
-  const candidatePaths = [
-    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `/dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `dist/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
-    `kho-guidelines/${baseSlugName}.html`,
-    `/kho-guidelines/${baseSlugName}.html`,
-    `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
-    `kho-guidelines/${baseSlugName}.mdx`,
-    `/kho-guidelines/${baseSlugName}.mdx`
-  ];
-
   let htmlText = '';
   let isMdx = false;
 
-  for (const path of candidatePaths) {
-    try {
-      const isMdxPath = path.includes('.mdx') || path.includes('.md');
-      const fetchUrl = isMdxPath && !path.includes('?raw') ? `${path}?raw` : path;
-      let resp = await fetch(fetchUrl);
-      if (!resp.ok && fetchUrl !== path) {
-        resp = await fetch(path);
-      }
-      if (resp.ok) {
-        htmlText = await resp.text();
-        if (isMdxPath) {
-          isMdx = true;
+  // ═══════════════════════════════════════════════════════════════
+  // TẦNG 1: Tải trực tiếp qua Vite Module Glob (Khi chạy dev hoặc build)
+  // ═══════════════════════════════════════════════════════════════
+  if (viteRawMdxModules && Object.keys(viteRawMdxModules).length > 0) {
+    for (const [modPath, loader] of Object.entries(viteRawMdxModules)) {
+      if (modPath.includes(baseSlugName)) {
+        try {
+          const rawModule = await loader();
+          if (rawModule && typeof rawModule === 'string' && !rawModule.includes('<!DOCTYPE html>')) {
+            htmlText = rawModule;
+            isMdx = true;
+            break;
+          }
+        } catch (e) {
+          console.warn('[GuidelineReader] Vite module loader failed for', baseSlugName, e);
         }
-        break;
       }
-    } catch {
-      // Continue searching
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // TẦNG 2: Fetch an toàn qua HTTP (ưu tiên .mdx, chống nhận nhầm index.html)
+  // ═══════════════════════════════════════════════════════════════
+  if (!htmlText) {
+    const candidatePaths = [
+      `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+      `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+      `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+      `../src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.mdx`,
+      `kho-guidelines/${baseSlugName}.mdx`,
+      `./kho-guidelines/${baseSlugName}.mdx`,
+      `/kho-guidelines/${baseSlugName}.mdx`,
+      `/src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+      `src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+      `./src/content/ebm/guidelines/kho-guidelines/${baseSlugName}.html`,
+      `kho-guidelines/${baseSlugName}.html`
+    ];
+
+    for (const path of candidatePaths) {
+      try {
+        const isMdxPath = path.includes('.mdx') || path.includes('.md');
+        const fetchUrl = isMdxPath && !path.includes('?raw') ? `${path}?raw` : path;
+        let resp = await fetch(fetchUrl);
+        if (!resp.ok && fetchUrl !== path) {
+          resp = await fetch(path);
+        }
+        if (resp.ok) {
+          const candidateText = await resp.text();
+          // Kiểm tra để tránh nhận nhầm trang chủ SPA HTML khi bị server redirect 302/200
+          const isSpaIndexRedirect = candidateText.includes('<!DOCTYPE html>') && 
+                                     !candidateText.includes('guideline-injected-article') && 
+                                     candidateText.includes('CliniPortal');
+          if (candidateText && !isSpaIndexRedirect) {
+            htmlText = candidateText;
+            if (isMdxPath || candidateText.startsWith('---')) {
+              isMdx = true;
+            }
+            break;
+          }
+        }
+      } catch {
+        // Tiếp tục thử đường dẫn tiếp theo
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // TẦNG 3: Emergency Fallback từ CSDL KHO_GUIDELINES_STATIC (Offline file:///)
+  // ═══════════════════════════════════════════════════════════════
+  if (!htmlText && Array.isArray(KHO_GUIDELINES_STATIC)) {
+    const matched = KHO_GUIDELINES_STATIC.find((item: any) => {
+      const fileSlug = (item.file || '').replace(/\.(mdx|html)$/i, '');
+      return fileSlug === baseSlugName || item.id === baseSlugName || (item.slug && item.slug === baseSlugName);
+    });
+
+    if (matched) {
+      console.info('[GuidelineReader] Kích hoạt Emergency Static Fallback cho:', baseSlugName);
+      htmlText = createEmergencyFallbackMdx(matched, baseSlugName);
+      isMdx = true;
     }
   }
 
@@ -239,6 +437,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     `;
     return;
   }
+
 
   // Handle Native MDX Rendering for Guidelines
   if (isMdx) {

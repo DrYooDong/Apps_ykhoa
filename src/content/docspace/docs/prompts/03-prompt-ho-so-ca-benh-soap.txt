@@ -1,61 +1,66 @@
 # ==============================================================================
-# CLINIPORTAL DOCSPACE — LEAN PROMPT 03: HỒ SƠ CA BỆNH THỰC CHIẾN SOAP
-# (TINH GỌN CHO 100+ BỆNH LÝ — NẠP 1-CHẠM VÀO SỔ TAY KINH NGHIỆM & HỘI CHẨN AI)
+# CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 03: HỒ SƠ CA BỆNH THỰC CHIẾN SOAP
+# (CHUẨN HÓA Y HỌC CHỨNG CỨ EBM 2026 — NẠP 1-CHẠM VÀO SỔ TAY KINH NGHIỆM & HỘI CHẨN AI)
 # ==============================================================================
 # MỤC TIÊU:
-# Dán prompt này vào NotebookLM để sinh 01 Ca Lâm Sàng Thực Tế theo chuẩn S-O-A-P
-# quốc tế với đầy đủ 4 Hạt ngọc lâm sàng (Pearls & Pitfalls) và Bảng đặt vấn đề 3 tầng.
+# Dán prompt này vào Google NotebookLM để sinh 01 Ca Lâm Sàng Thực Tế theo chuẩn S-O-A-P
+# quốc tế với đầy đủ 4 Hạt ngọc lâm sàng (Pearls & Pitfalls), Bảng đặt vấn đề 3 tầng
+# (trường phái PGS.TS Hoàng Văn Sĩ), Y lệnh thuốc định lượng và Lộ trình điều trị 3 giai đoạn.
 #
-# CÁCH NẠP VÀO DOCSPACE:
-#   Cách 1: Nạp 1-Chạm trên Giao diện Web (Khuyên dùng):
-#           - Mở DocSpace trên trình duyệt
-#           - Nhấn nút "Nạp ca từ NotebookLM" trên Header
-#           - Dán toàn bộ nội dung Markdown sinh ra vào khung nạp -> Hệ thống tự động phân tích!
+# QUY TRÌNH NẠP VÀO DOCSPACE:
+#   Cách 1: Nạp 1-Chạm trên Giao diện Web (Nhanh nhất & Trực quan nhất):
+#           - Mở Web DocSpace trên trình duyệt
+#           - Bấm nút "Nạp ca từ NotebookLM" trên Header (hoặc trong Sổ tay Kinh nghiệm SOAP)
+#           - Dán toàn bộ nội dung Markdown sinh ra vào khung nạp -> Hệ thống tự động bóc tách!
 #
-#   Cách 2: Lưu trữ vĩnh viễn vào DocSpace:
+#   Cách 2: Lưu trữ vĩnh viễn vào Hệ sinh thái:
 #           - Lưu nội dung thành file: `src/content/docspace/data/ba/soap-<slug>-01.md`
-#           - Chạy lệnh: `node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/`
+#           - Chạy lệnh CLI: `node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/`
+#           - Lệnh trên sẽ tự động đồng bộ sang cả Knowledge Vault (`src/content/knowledge-vault/ba/`)
+#             và cập nhật Catalog thực hành (`vault-catalog-thuc-hanh.json`).
 # ==============================================================================
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📌 THÔNG SỐ ĐẦU VÀO (TÙY CHỈNH THEO MẶT BỆNH CẦN SOẠN):
-(Ví dụ bên dưới điền sẵn cho Sốt Xuất Huyết Dengue — Hãy đổi thành bệnh lý của bạn)
+(Điền thông tin ca bệnh bạn muốn sinh bên dưới — Có thể thay thế ví dụ mẫu)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - [TÊN BỆNH LÝ]: Sốt xuất huyết Dengue
 - [CHUYÊN KHOA]: Truyền nhiễm
-- [MÃ ICD-10]: A97
-- [PHÂN LOẠI CA]: essential (chọn: 'essential' [kinh điển] | 'pitfall' [bẫy lâm sàng] | 'rare' [thể hiếm] | 'advanced' [chuyên sâu])
+- [MÃ ICD-10]: A97.1
+- [PHÂN LOẠI CA]: essential (chọn: 'essential' [kinh điển/điển hình] | 'pitfall' [bẫy lâm sàng/dễ nhầm] | 'rare' [thể hiếm] | 'advanced' [ca nặng/phức tạp/đa bệnh])
 - [ĐỘ KHÓ]: 3 (từ 1 đến 5 sao)
-- [BỐI CẢNH BỆNH NHÂN]: Nam 24 tuổi, sinh viên, sống tại khu trọ có dịch lưu hành
-- [KHOA PHÒNG]: Khoa Cấp cứu / Khoa Bệnh Nhiệt đới
-- [TRỌNG TÂM BIỆN LUẬN]: Nhận diện dấu hiệu cảnh báo vào ngày thứ 4 (hạ sốt nhưng mệt lả, Hct tăng cao, tiểu cầu tụt) và phác đồ truyền dịch Ringer Lactate bậc thang.
-- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT 2023 của Bộ Y Tế Việt Nam & WHO Dengue Guidelines 2024–2025
+- [BỐI CẢNH BỆNH NHÂN]: Nam 24 tuổi, sinh viên, sống tại khu trọ đang có dịch lưu hành
+- [KHOA PHÒNG TIẾP NHẬN]: Khoa Cấp cứu / Khoa Bệnh Nhiệt đới
+- [TRỌNG TÂM BIỆN LUẬN]: Nhận diện dấu hiệu cảnh báo vào ngày thứ 4 (hạ sốt nhưng mệt lả, đau bụng vùng gan, Hct tăng cao, tiểu cầu tụt nhanh) và phác đồ hồi sức dịch Ringer Lactate nấc thang.
+- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT (2023) của Bộ Y Tế Việt Nam & WHO Dengue Guidelines 2024–2025
 - [SLUG FILE]: sot_xuat_huyet_dengue
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+(Sao chép từ dòng dưới đây và dán trực tiếp vào khung chat NotebookLM)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 "Bạn là Bác sĩ Giảng viên Lâm sàng kỳ cựu và Chuyên gia Y học Chứng cứ (EBM).
 
-Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Điển Hình theo cấu trúc SOAP chuẩn quốc tế và định dạng Markdown Frontmatter dưới đây.
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Thực Tế Điển Hình theo cấu trúc SOAP chuẩn quốc tế và định dạng Markdown Frontmatter YAML dưới đây.
 
-Yêu cầu lâm sàng & Quy chuẩn biên soạn:
+Yêu cầu lâm sàng & Quy chuẩn biên soạn (BẮT BUỘC):
 - Mặt bệnh cần xây dựng: [TÊN BỆNH LÝ]
 - Chuyên khoa: [CHUYÊN KHOA]
 - Phân loại ca: [PHÂN LOẠI CA]
 - Độ khó ca bệnh: [ĐỘ KHÓ] / 5
 - Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
-- Khoa phòng tiếp nhận: [KHOA PHÒNG]
+- Khoa phòng tiếp nhận: [KHOA PHÒNG TIẾP NHẬN]
 - Trọng tâm biện luận: [TRỌNG TÂM BIỆN LUẬN]
 - Tài liệu nguồn ưu tiên trích dẫn: [HƯỚNG DẪN THAM CHIẾU]
-- Quy chuẩn viết tắt y khoa & Typography (BẮT BUỘC):
-  + 100% từ viết tắt chuẩn: LDVV, TCCN, TCTT, DHST, CLS, HA, HATT, HATTr, M, NT, SpO₂, CRT, Hct, PLT, WBC, AST, ALT, eGFR, CTM, KMĐM, XQ, SA, CT, MRI, ECG.
-  + Toán tử & Ký tự SI: Dùng ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
-  + Zero HTML Entities: Tuyệt đối không dùng &lt;, &gt;, &quot;, &amp;. Viết trực tiếp <, >, ".
-  + BẮT BUỘC NGẮT DÒNG & GẠCH ĐẦU DÒNG THOÁNG ĐÃNG: Tuyệt đối KHÔNG viết thành một khối văn xuôi dài dính chữ ("dính chữ" gây ngộp). Mỗi triệu chứng, mỗi cơ quan khám, mỗi bước xử trí phải nằm trên một dòng riêng biệt với dấu gạch đầu dòng `- ` hoặc bullet `• `.
-  + Văn phong lâm sàng súc tích: Lập luận ngắn gọn, chặt chẽ, dứt khoát theo phong cách Hội đồng Khoa học.
 
-Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter YAML bên dưới để DocSpace tự động nhận diện và nạp vào CSDL):
+Quy chuẩn viết tắt, đơn vị SI & Typography (TUÂN THỦ 100%):
+1. Từ viết tắt y khoa chuẩn: LDVV, TCCN, TCTT, DHST, CLS, HA, HATT, HATTr, M, NT, SpO₂, CRT, Hct, PLT, WBC, AST, ALT, eGFR, CTM, KMĐM, XQ, SA, CT, MRI, ECG.
+2. Toán tử & Ký tự SI: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L.
+3. Zero HTML Entities: Tuyệt đối KHÔNG dùng &lt;, &gt;, &quot;, &amp;. Viết trực tiếp ký tự <, >, ".
+4. Bố cục thoáng đãng - KHÔNG dính chữ: Tuyệt đối không viết thành đoạn văn xuôi dài dính chữ. Mỗi triệu chứng, mỗi cơ quan thăm khám, mỗi chỉ số xét nghiệm, mỗi y lệnh thuốc phải nằm trên một dòng riêng biệt có gạch đầu dòng `- ` hoặc bullet `• `.
+5. Văn phong lâm sàng súc tích: Lập luận ngắn gọn, chặt chẽ, số liệu định lượng chính xác, không dùng từ mơ hồ.
+
+Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter YAML bên dưới để DocSpace tự động phân tích và nạp vào CSDL):
 
 ---
 title: "Ca lâm sàng [TÊN BỆNH LÝ] ở bệnh nhân [BỐI CẢNH BỆNH NHÂN]"
@@ -71,124 +76,173 @@ tags:
   - "[TÊN BỆNH LÝ]"
   - "SOAP"
 demographicContext: "[BỐI CẢNH BỆNH NHÂN]"
-historyPearls: "⚡ BÀI HỌC KHAI THÁC BỆNH SỬ: [1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm thời điểm nguy kịch của bệnh]"
-objectivePitfalls: "⚠️ BẪY CẬN LÂM SÀNG & KHÁM: [Dấu hiệu cơ thể hoặc cạm bẫy đọc cận lâm sàng rất dễ bị bỏ sót: ví dụ Lacet âm tính giả khi sốc, hoặc Hct tụt do xuất huyết nội ẩn]"
-diagnosticPearls: "🧠 ĐÚC KẾT BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, cơ chế phân định giữa bệnh này với các chẩn đoán cạnh tranh]"
-takeawayLessons: "🎯 BÀI HỌC KINH NGHIỆM ĐIỀU TRỊ: [Khuyến cáo điều trị, phác đồ dịch truyền theo bậc thang, tuyệt đối chống chỉ định thuốc nguy hiểm]"
+historyPearls: "⚡ BỆNH SỬ: [1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm thời điểm nguy kịch của bệnh]"
+objectivePitfalls: "⚠️ CẬN LÂM SÀNG & KHÁM: [Dấu hiệu cơ thể hoặc cạm bẫy đọc cận lâm sàng rất dễ bị bỏ sót: ví dụ Lacet âm tính giả khi sốc, hoặc Hct tụt do xuất huyết nội ẩn]"
+diagnosticPearls: "🧠 BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, cơ chế phân định giữa bệnh này với các chẩn đoán cạnh tranh]"
+takeawayLessons: "🎯 ĐIỀU TRỊ: [Khuyến cáo điều trị then chốt, phác đồ dùng thuốc/dịch truyền theo bậc thang, tuyệt đối chống chỉ định thuốc nguy hiểm]"
 sourceReference: "[HƯỚNG DẪN THAM CHIẾU]"
-clinicalContext: "[KHOA PHÒNG]"
-updated: "2026-09-26"
+clinicalContext: "[KHOA PHÒNG TIẾP NHẬN]"
+updated: "2026-10-05"
 ---
 
 # 🩺 Ca Lâm Sàng: [TÊN BỆNH LÝ]
 
-> **Bối cảnh**: [BỐI CẢNH BỆNH NHÂN] nhập viện [KHOA PHÒNG] vì [Lý do vào viện chính].
+> **Bối cảnh**: [BỐI CẢNH BỆNH NHÂN] nhập viện [KHOA PHÒNG TIẾP NHẬN] vì [Lý do vào viện chính].
 
-## 1. 📝 S — CHỦ QUAN / SUBJECTIVE (LDVV · TCCN · TC)
-- **LDVV (Lý do vào viện / Than phiền chính)**: [Mô tả ngắn gọn 1-2 triệu chứng chính khiến người bệnh phải đi khám]
-- **TCCN & Bệnh sử chi tiết (PQRST)**:
-  - Khởi phát: [Thời điểm bắt đầu, hoàn cảnh xuất hiện]
-  - Diễn tiến theo ngày:
-    - Ngày 1 - 2: [Triệu chứng xuất hiện, sốt bao nhiêu độ, đáp ứng thuốc hạ sốt]
-    - Ngày 3 - 4: [Diễn tiến nặng lên hay xuất hiện triệu chứng cảnh báo: đau bụng, nôn ói, mệt lả...]
-    - Thời điểm vào viện: [Tình trạng lúc nhập viện cấp cứu]
-  - Thuốc đã dùng ở nhà: [Liều lượng, đáp ứng]
+---
+
+## 1. 📝 S — CHỦ QUAN (LDVV · TCCN · TC)
+
+- **Lý do vào viện / Than phiền chính**:
+  - [Mô tả ngắn gọn 1-2 triệu chứng chính khiến người bệnh phải đi khám]
+
+- **TCCN & Bệnh sử chi tiết**:
+  - **Khởi phát**: [Thời điểm bắt đầu, hoàn cảnh xuất hiện, tính chất đột ngột hay từ từ]
+  - **Diễn tiến theo ngày**:
+    - *Ngày 1 - 2*: [Triệu chứng xuất hiện ban đầu, sốt bao nhiêu độ, đáp ứng thuốc hạ sốt ra sao]
+    - *Ngày 3 - 4*: [Diễn tiến nặng lên hay xuất hiện triệu chứng cảnh báo: đau bụng, nôn ói, mệt lả, li bì...]
+    - *Thời điểm vào viện*: [Tình trạng cụ thể lúc quyết định đưa vào cấp cứu/khám bệnh]
+  - **Thuốc đã dùng ở nhà**: [Tên thuốc, liều lượng, thời gian dùng và đáp ứng lâm sàng]
+
 - **TC (Tiền căn & Bối cảnh dịch tễ)**:
-  - *Tiền căn bản thân*: [Bệnh mạn tính, tiền sử dị ứng thuốc, tiền sử bệnh tương tự trước đây]
-  - *Tiền căn gia đình*: [Bệnh lý di truyền, người thân mắc bệnh gan/ung thư/tim mạch...]
-  - *Bối cảnh dịch tễ*: [Nơi cư trú, ổ dịch lưu hành, tiếp xúc nguồn lây trong 14 ngày qua...]
+  - *Tiền căn bản thân*: [Bệnh nền mạn tính, tiền sử dị ứng thuốc, tiền sử bệnh tương tự hoặc phẫu thuật]
+  - *Tiền căn gia đình*: [Bệnh lý di truyền, người thân mắc bệnh gan/ung thư/tim mạch/chuyển hóa]
+  - *Bối cảnh dịch tễ*: [Nơi cư trú, ổ dịch lưu hành, tiền sử tiếp xúc nguồn lây trong 14-21 ngày qua]
 
-## 2. 🔬 O — KHÁCH QUAN / OBJECTIVE (DHST · TCTT · CLS)
-### DHST (Dấu hiệu sinh tồn / Sinh hiệu):
-- Huyết áp: [VD: 95/75 mmHg - ghi rõ nếu hiệu áp kẹp <= 20 mmHg]
-- Mạch: [VD: 108 l/p]
+---
+
+## 2. 🔬 O — KHÁCH QUAN (DHST · TCTT · CLS)
+
+### Dấu hiệu sinh tồn / Sinh hiệu:
+- Huyết áp: [VD: 95/75 mmHg - ghi rõ nếu hiệu áp kẹp ≤ 20 mmHg]
+- Mạch: [VD: 108 lần/phút]
 - Thân nhiệt: [VD: 39.2 °C hoặc hạ nhiệt độ đột ngột]
-- Nhịp thở: [VD: 22 l/p]
-- SpO₂: [VD: 96%]
-- BMI: [VD: 21.5 kg/m²]
+- Nhịp thở: [VD: 22 lần/phút]
+- SpO₂: [VD: 96% (khí trời)]
+- BMI: [VD: 21.5 kg/m² (Chiều cao: 168 cm, Cân nặng: 60.5 kg)]
 
-### TCTT (Triệu chứng thực thể khám được):
-- **Tổng trạng & Tri giác**: [Tỉnh táo / Bứt rứt / Li bì / Glasgow 15 điểm, thể trạng trung bình...]
-- **Da niêm & Chi mạch**: [Tưới máu chi, CRT < 2s hay > 2s, da niêm hồng/nhợt/vàng, chấm xuất huyết dưới da...]
+### Triệu chứng thực thể khám được:
+- **Toàn thân / Tổng trạng**:
+  - [Tỉnh táo / Bứt rứt / Li bì / Glasgow 15 điểm, thể trạng trung bình...]
+  - [Tưới máu chi, CRT < 2s hay ≥ 2s, da niêm hồng/nhợt/vàng, dấu véo da...]
+  - [Dấu hiệu xuất huyết niêm mạc, chấm xuất huyết dưới da, dấu lacet (+/-)...]
 - **Khám chuyên khoa & Cơ quan**:
-  - Hô hấp: [Rì rào phế nang, ran ẩm/ngáy, tiếng cọ màng phổi...]
-  - Tim mạch: [Nhịp tim đều, T1 T2 rõ, âm thổi bệnh lý...]
-  - Tiêu hóa & Bụng: [Bụng mềm/chướng, điểm đau khu trú, gan to dưới bờ sườn bao nhiêu cm, dấu hiệu sóng vỗ...]
-  - Thần kinh: [Dấu màng não cổ gượng (-), dấu thần kinh định vị, run vẩy Asterixis...]
+  - Hô hấp: [Rì rào phế nang, ran ẩm/ran ngáy, hội chứng 3 giảm ở đáy phổi nếu có tràn dịch màng phổi...]
+  - Tim mạch: [Nhịp tim đều/loạn nhịp, tiếng T1 T2 rõ, âm thổi bệnh lý...]
+  - Tiêu hóa & Bụng: [Bụng mềm/chướng, điểm đau khu trú, gan to dưới bờ sườn bao nhiêu cm, phản ứng thành bụng, dấu sóng vỗ...]
+  - Thần kinh: [Cổ mềm/gượng, dấu màng não (-), dấu thần kinh định vị, run vẩy Asterixis...]
+  - Các cơ quan khác: [Hạch ngoại vi, phù 2 chi dưới...]
 
-### CLS (Cận lâm sàng tại thời điểm vào viện):
-- **Huyết học & Sinh hóa máu**:
-  - CTM: [WBC, Neu %, Hct %, PLT G/L]
-  - Sinh hóa gan/thận: [AST, ALT, Bilirubin toàn phần/trực tiếp, Albumin, Creatinine, eGFR, Glucose]
-  - Đông máu: [PT, INR, aPTT, Fibrinogen]
-- **Xét nghiệm vi sinh / Dấu ấn sinh học**:
-  - [NS1Ag / Kháng thể IgM/IgG / HBsAg / Anti-HCV / Tải lượng virus HBV-DNA/HCV-RNA / Dấu ấn sinh học AFP, Procalcitonin, CRP nếu có]
-- **Chẩn đoán hình ảnh & Thăm dò chức năng**:
-  - Siêu âm: [Kết quả siêu âm ổ bụng/màng phổi chi tiết]
-  - X-quang: [Kết quả X-quang ngực thẳng]
-  - Đo độ đàn hồi mô gan (FibroScan) / CT / ECG: [Kết quả cụ thể]
+### Cận lâm sàng tại thời điểm vào viện:
 
-## 3. 🧠 A — ĐÁNH GIÁ / ASSESSMENT
-- **Chẩn đoán sơ bộ / Xác định**: [Tên chẩn đoán đầy đủ theo phân loại hướng dẫn Bộ Y Tế kèm ngày bệnh / giai đoạn / phân độ]
+#### 1. Chẩn đoán hình ảnh & Thăm dò chức năng
+- **Siêu âm ổ bụng / Màng phổi**: [Kết quả siêu âm chi tiết: dịch ổ bụng, dịch màng phổi, độ dày thành túi mật, kích thước gan...]
+- **X-quang ngực thẳng**: [Hình ảnh thâm nhiễm, chỉ số tim/ngực, tràn dịch góc sườn hoành...]
+- **ECG (Điện tâm đồ)**: [Nhịp xoang, tần số, biến đổi đoạn ST-T nếu có...]
+
+#### 2. Xét nghiệm Vi sinh / Dấu ấn sinh học
+- [NS1Ag / Kháng thể IgM-IgG Dengue / HBsAg / Anti-HCV / GeneXpert MTB / Procalcitonin / CRP / Dấu ấn sinh học AFP...]
+
+#### 3. Công thức máu toàn phần (CTM)
+- WBC: [VD: 3.4 G/L (Neu: 54%, Lym: 38%)]
+- RBC: [VD: 4.8 T/L, Hb: 14.2 g/dL]
+- Hct: [VD: 46.5% - so sánh với Hct nền]
+- PLT: [VD: 42 G/L (Giảm nặng)]
+
+#### 4. Sinh hóa máu & Chức năng cơ quan
+- **AST / ALT**: [VD: 145 / 98 U/L]
+- **Bilirubin toàn phần / trực tiếp**: [VD: 14.2 / 4.1 µmol/L]
+- **Albumin / Protein toàn phần**: [VD: 32 / 58 g/L]
+- **Urea / Creatinine / eGFR**: [VD: 5.2 mmol/L / 78 µmol/L / eGFR: 95 mL/min/1.73m²]
+- **Điện giải đồ (Na⁺/K⁺/Cl⁻)**: [VD: 134 / 3.8 / 100 mmol/L]
+- **Glucose máu**: [VD: 5.6 mmol/L]
+
+#### 5. Đông máu & Khí máu (nếu có)
+- **PT / INR / aPTT / Fibrinogen**: [Kết quả đông máu toàn bộ]
+
+---
+
+## 3. 🧠 A — ĐÁNH GIÁ (Chẩn đoán & Biện luận)
+
+- **Chẩn đoán xác định**: [Tên chẩn đoán đầy đủ theo phân loại hướng dẫn Bộ Y Tế kèm ngày bệnh / giai đoạn / phân độ mức độ nặng]
 - **Mã ICD-10**: `[MÃ ICD-10]`
 - **Chẩn đoán phân biệt cần loại trừ**:
-  - [Chẩn đoán phân biệt 1]: [Điểm phân biệt và xét nghiệm loại trừ]
-  - [Chẩn đoán phân biệt 2]: [Điểm phân biệt và xét nghiệm loại trừ]
-  - [Chẩn đoán phân biệt 3]: [Điểm phân biệt và xét nghiệm loại trừ]
+  - *[Chẩn đoán phân biệt 1]*: [Điểm phân biệt lâm sàng và xét nghiệm giúp loại trừ]
+  - *[Chẩn đoán phân biệt 2]*: [Điểm phân biệt lâm sàng và xét nghiệm giúp loại trừ]
+  - *[Chẩn đoán phân biệt 3]*: [Điểm phân biệt lâm sàng và xét nghiệm giúp loại trừ]
+
+---
 
 ### Bảng Đặt Vấn Đề 3 Tầng Lâm Sàng:
-Phân định bắt buộc theo 3 tầng ưu tiên chuẩn mực y khoa (Tầng 1 -> Tầng 2 -> Tầng 3).
-*QUY TẮC CỐT LÕI: Ở Tầng 2 (Cấp tính), BẮT BUỘC gom các triệu chứng rời rạc thành HỘI CHỨNG LÂM SÀNG CHUẨN (Ví dụ: Thay vì ghi riêng rẽ "vàng da, sao mạch, phù chân", hãy gom thành "Hội chứng Suy tế bào gan"; thay vì ghi "khó thở, rale ẩm, sốt", hãy gom thành "Hội chứng Đông đặc phổi" và "Hội chứng Suy hô hấp").
+Phân định bắt buộc theo 3 tầng ưu tiên chuẩn mực y khoa (Tầng 1 -> Tầng 2 -> Tầng 3) theo trường phái PGS.TS Hoàng Văn Sĩ.
+*QUY TẮC CỐT LÕI: Ở Tầng 2 (Cấp tính), BẮT BUỘC gom các triệu chứng rời rạc thành HỘI CHỨNG LÂM SÀNG CHUẨN (Ví dụ: "Hội chứng Thoát huyết tương & Cô đặc máu", "Hội chứng Suy tế bào gan", "Hội chứng Suy hô hấp cấp", "Hội chứng Tăng áp lực tĩnh mạch cửa").*
 
-| Mức độ ưu tiên | Vấn đề lâm sàng (Ưu tiên gom thành HỘI CHỨNG) | Chiến lược chẩn đoán (CLS đề nghị) | Hướng xử trí ban đầu & Cấp cứu |
-|:---|:---|:---|:---|
-| 🔴 **Tầng 1: Đe dọa tính mạng** | [VD: Hội chứng Sốc thoát huyết tương / Tụt huyết áp tụt kẹp (HA 95/75, MAP kẹp 20)] | Hct STAT, Khí máu động mạch, Lactate máu | Thiết lập 2 đường truyền lớn, hồi sức Ringer Lactate 15-20 mL/kg/h |
-| 🟡 **Tầng 2: Cấp tính** | [VD: Hội chứng xuất huyết & Giảm tiểu cầu nặng (PLT 42 G/L, Lacet (+)) HOẶC Hội chứng Suy tế bào gan / Hội chứng Tăng áp cửa] | Kháng nguyên NS1, CTM lặp lại q12h, Đông máu toàn bộ, Siêu âm bụng | Tuyệt đối tránh tiêm bắp, chống chỉ định NSAID/Aspirin, theo dõi xuất huyết nội |
-| 🔵 **Tầng 3: Mạn tính / Tiền căn** | [VD: Tiền căn Tăng huyết áp đang điều trị / Bệnh thận mạn / ĐTĐ] | Creatinine, eGFR, Glucose mao mạch, Điện giải đồ | Tạm hoãn hạ áp khi đang sốc, hiệu chỉnh liều thuốc theo eGFR |
+| Mức độ ưu tiên | Vấn đề lâm sàng (HỘI CHỨNG / TÌNH TRẠNG) | Chiến lược chẩn đoán (CLS bổ sung) | Hướng xử trí ban đầu & Điều trị |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Tầng 1: Đe dọa tính mạng** | [VD: Hội chứng Thoát huyết tương nặng / Dọa sốc tụt huyết áp (HA 95/75, MAP kẹp 20, CRT > 2s)] | Hct STAT, Khí máu động mạch, Lactate máu | Thiết lập 2 đường truyền lớn, hồi sức Ringer Lactate 10-15 mL/kg/h |
+| 🟡 **Tầng 2: Cấp tính** | [VD: Hội chứng Giảm tiểu cầu cấp & Xuất huyết niêm mạc (PLT 42 G/L) HOẶC Hội chứng Tổn thương tế bào gan cấp] | CTM kiểm tra q6-12h, Đông máu toàn bộ, Siêu âm bụng đánh giá dịch | Tuyệt đối tránh tiêm bắp, chống chỉ định NSAID/Aspirin, theo dõi xuất huyết nội ẩn |
+| 🔵 **Tầng 3: Mạn tính / Dự phòng** | [VD: Tiền căn Tăng huyết áp đang điều trị / Bệnh thận mạn / Quản lý dịch tễ cộng đồng] | Creatinine, eGFR, Glucose, Điện giải đồ | Tạm hoãn thuốc hạ áp khi đang thoát dịch, hiệu chỉnh liều thuốc theo eGFR |
+
+---
 
 - **Phân tầng nguy cơ & Thang điểm lượng giá**:
-  - Thang điểm cấp cứu: [NEWS2 / PEWS / ESI v4...]
-  - Chỉ số sốc: [Shock Index = Mạch / HATT = ...]
-  - Phân tầng mức độ: [Nhẹ / Có dấu hiệu cảnh báo / Nặng...]
-- **Biện luận lâm sàng theo từng vấn đề**:
-  - Về Chẩn đoán xác định: [Lập luận dựa trên Tam giác Dịch tễ học, Triệu chứng lâm sàng then chốt và Kết quả xét nghiệm vàng]
-  - Về Phân loại & Mức độ nặng: [Căn cứ phân tầng nguy cơ]
-  - Về Chẩn đoán phân biệt: [Lý do loại trừ các giả thuyết cạnh tranh]
+  - *Thang điểm cấp cứu*: [NEWS2 / PEWS / ESI v4...]
+  - *Chỉ số sốc (Shock Index)*: [Shock Index = Mạch / HATT = ...]
+  - *Phân tầng mức độ*: [Nhẹ / Có dấu hiệu cảnh báo / Nặng...]
+
+- **Biện luận lâm sàng chi tiết**:
+  - **Về Chẩn đoán xác định**: [Lập luận dựa trên Tam giác Dịch tễ học, Triệu chứng lâm sàng then chốt và Kết quả xét nghiệm vàng theo đúng [HƯỚNG DẪN THAM CHIẾU]]
+  - **Về Phân loại & Mức độ nặng**: [Căn cứ phân tầng nguy cơ và tiêu chuẩn phân độ]
+  - **Về Chẩn đoán phân biệt**: [Lý do và bằng chứng loại trừ các giả thuyết cạnh tranh]
+
+---
 
 ## 4. 📋 P — KẾ HOẠCH / PLAN
+
 - **Xử trí cấp cứu & Ban đầu**:
-  - Tư thế bệnh nhân và hỗ trợ hô hấp: [Tư thế nằm, chỉ định oxy nếu có]
-  - Thiết lập đường truyền & Hồi sức ban đầu: [Loại dịch, tốc độ truyền]
-  - Biện pháp can thiệp không dùng thuốc: [Nghỉ ngơi tại giường, chườm ấm...]
+  - Tư thế bệnh nhân và hỗ trợ hô hấp: [Tư thế nằm đầu bằng/cao, thở oxy qua canun nếu SpO₂ < 95%]
+  - Thiết lập đường truyền & Hồi sức ban đầu: [Loại dịch, kích cỡ kim luồn, tốc độ truyền khởi đầu]
+  - Biện pháp không dùng thuốc: [Nghỉ ngơi tại giường, chườm ấm hạ sốt, bù dịch đường uống bằng Oresol]
+
+---
 
 ### Y lệnh thuốc điều trị chi tiết:
-- **[Tên thuốc 1]**: [Liều lượng mg/kg hoặc mg/ngày] ([Đường dùng PO/IV]) — *[Số lần/ngày, thời điểm uống, ghi chú]*
-- **[Tên thuốc / Dịch truyền 2]**: [Tốc độ / Liều lượng] ([Đường dùng IV]) — *[Ghi chú nấc giảm liều]*
-- **[Tên thuốc bổ trợ 3]**: [Liều lượng] ([Đường dùng]) — *[Ghi chú]*
+(Ghi rõ tên thuốc, liều lượng mg/kg hoặc mg/ngày, đường dùng, tần suất, thời điểm dùng và lưu ý chỉnh liều theo eGFR):
+- **[Tên thuốc hạ sốt / Bổ trợ 1]**: [VD: Paracetamol 500 mg] ([Đường uống PO]) — *[01 viên khi sốt ≥ 38.5 °C, cách mỗi 4-6 giờ, tối đa 60 mg/kg/ngày, tuyệt đối không dùng Ibuprofen/Aspirin]*
+- **[Tên dịch truyền 2]**: [VD: Dung dịch Ringer Lactate 500 mL] ([Đường truyền IV]) — *[Truyền tốc độ 6 mL/kg/giờ trong 2 giờ đầu, đánh giá lại Hct và sinh hiệu trước khi giảm nấc xuống 3 mL/kg/h]*
+- **[Tên thuốc 3]**: [VD: Oresol (ORS) gói pha 1 lít nước] ([Đường uống PO]) — *[Uống rải rác trong ngày theo nhu cầu, khoảng 1500 - 2000 mL/ngày]*
+
+---
 
 ### Chỉ tiêu theo dõi & Mục tiêu lâm sàng:
-- Tần suất theo dõi sinh hiệu: [VD: Mỗi 1 giờ / 2 giờ / 4 giờ một lần]
-- Xét nghiệm kiểm tra định kỳ: [VD: Hct mỗi 2 giờ trong sốc, CTM mỗi 12-24 giờ]
-- Mục tiêu điều trị cần đạt: [VD: Nước tiểu ≥ 0.5-1.0 mL/kg/h, HATT ≥ 90 mmHg, hiệu áp ≥ 30 mmHg, Hct giảm về ngưỡng an toàn]
+- **Tần suất theo dõi sinh hiệu**: [VD: Đo Huyết áp, Mạch, CRT, Nhịp thở mỗi 1 - 2 giờ trong giai đoạn nguy hiểm]
+- **Lịch xét nghiệm kiểm tra định kỳ**: [VD: Kiểm tra Hct mỗi 2 - 4 giờ khi đang bù dịch; xét nghiệm CTM, AST/ALT mỗi 24 giờ]
+- **Mục tiêu lâm sàng cần đạt**:
+  - HATT ≥ 90 mmHg, hiệu áp ≥ 30 mmHg, mạch < 100 lần/phút, CRT < 2s.
+  - Lượng nước tiểu duy trì ≥ 0.5 - 1.0 mL/kg/giờ.
+  - Hct giảm dần và ổn định về ngưỡng an toàn.
+
+---
 
 ### 🗓️ Lộ trình điều trị & Giám sát (Treatment Roadmap):
-- **Giai đoạn 1: Cấp cứu / Đánh giá ban đầu (Giờ 1 - 24 hoặc Tuần 1 - 4)**:
-  - [Mục tiêu và y lệnh xử trí cụ thể]
-- **Giai đoạn 2: Ổn định / Tối ưu hóa điều trị (Ngày 2 - 5 hoặc Tuần 12)**:
-  - [Đánh giá đáp ứng, điều chỉnh liều thuốc, chỉ định xét nghiệm kiểm tra]
-- **Giai đoạn 3: Duy trì & Giám sát dài hạn (Tuần 24 - 48 hoặc Tái khám định kỳ)**:
-  - [Phác đồ duy trì, tầm soát biến chứng lâu dài]
+- **Giai đoạn 1: Cấp cứu / Đánh giá ban đầu (Giờ 1 - 24)**:
+  - Bù dịch nấc thang kiểm soát thoát huyết tương, theo dõi sát sinh hiệu và Hct để phát hiện sớm sốc.
+- **Giai đoạn 2: Ổn định / Tối ưu hóa điều trị (Ngày 2 - 5)**:
+  - Giảm dần tốc độ dịch truyền, chuyển sang bù dịch đường uống khi bệnh nhân tỉnh táo, ăn uống được.
+- **Giai đoạn 3: Hồi phục & Đánh giá xuất viện (Ngày 6 - 8)**:
+  - Hết sốt > 48 giờ không dùng hạ sốt, tiểu cầu tăng trở lại > 50 G/L, tiểu nhiều, thèm ăn trở lại, ngưng truyền dịch để tránh quá tải thể tích.
+
+---
 
 ### Chế độ sinh hoạt & Tư vấn sống khỏe:
-- Chế độ dinh dưỡng: [Ăn uống lỏng, dễ tiêu, kiêng rượu bia, giảm muối...]
-- Hoạt động thể lực & Nghỉ ngơi: [Nghỉ ngơi tĩnh, tránh vận động gắng sức]
-- Giáo dục tuân thủ điều trị: [Tầm quan trọng của việc uống thuốc đều đặn đúng giờ, không tự ý ngưng thuốc]
+- **Dinh dưỡng & Bù dịch**: [Uống nhiều nước oresol, nước trái cây, ăn lỏng dễ tiêu, chia nhỏ bữa]
+- **Vận động & Nghỉ ngơi**: [Nghỉ ngơi hoàn toàn tại giường trong giai đoạn nguy hiểm, tránh vận động mạnh]
+- **Cảnh báo tái khám khẩn cấp**: [Dặn dò người bệnh và thân nhân các dấu hiệu nguy hiểm cần gọi nhân viên y tế ngay: mệt lả, nôn nhiều, đau bụng tăng, tay chân lạnh ẩm, chảy máu mũi/chân răng, tiểu ít]
 
-### Tiêu chuẩn cân nhắc ngưng thuốc:
-- [Điều kiện lâm sàng và cận lâm sàng cụ thể trước khi quyết định ngưng hoặc giảm liều thuốc]
+---
 
 ### Tiêu chuẩn hội chẩn, chuyển khoa hoặc xuất viện:
-- Tiêu chuẩn chuyển ICU / Hội chẩn cấp cao: [Dấu hiệu sốc tái diễn, xuất huyết nặng, toan chuyển hóa, suy đa cơ quan...]
-- Tiêu chuẩn ngưng dịch truyền: [Hết sốt > 48 giờ, tỉnh táo, ăn uống được, tiểu nhiều, Hct ổn định...]
-- Tiêu chuẩn cho xuất viện an toàn: [Các tiêu chí hồi phục hoàn toàn]
+- **Tiêu chuẩn chuyển ICU / Hội chẩn cấp cao**: [Sốc tái diễn, tụt huyết áp kéo dài dù đã bù dịch chuẩn, toan chuyển hóa nặng, suy đa cơ quan, xuất huyết nội tạng nặng]
+- **Tiêu chuẩn ngưng truyền dịch**: [Hết sốt > 48 giờ, huyết động ổn định, tiểu tốt, Hct ổn định, không còn dấu hiệu cảnh báo]
+- **Tiêu chuẩn cho xuất viện an toàn**: [Hết sốt ít nhất 2 ngày không dùng thuốc hạ sốt, tỉnh táo, ăn uống ngon miệng, mạch và huyết áp bình thường, lượng nước tiểu bình thường, số lượng tiểu cầu phục hồi > 50 G/L và không có biến chứng]
 "

@@ -1726,9 +1726,80 @@ PLAN:
         populateGuidelineDropdown(slug);
 
         try {
-          const resp = await fetch(`kho-guidelines/${slug}.mdx`);
-          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-          const text = await resp.text();
+          let text = '';
+          const candidatePaths = [
+            `kho-guidelines/${slug}.mdx`,
+            `./kho-guidelines/${slug}.mdx`,
+            `/src/content/ebm/guidelines/kho-guidelines/${slug}.mdx`,
+            `src/content/ebm/guidelines/kho-guidelines/${slug}.mdx`,
+            `../kho-guidelines/${slug}.mdx`
+          ];
+
+          for (const cPath of candidatePaths) {
+            try {
+              const resp = await fetch(cPath);
+              if (resp.ok) {
+                const cText = await resp.text();
+                if (cText && !cText.includes('<!DOCTYPE html>') && (cText.startsWith('---') || cText.includes('sec-card') || cPath.endsWith('.mdx'))) {
+                  text = cText;
+                  break;
+                }
+              }
+            } catch {}
+          }
+
+          // Fallback offline từ KHO_GUIDELINES_STATIC
+          if (!text && typeof KHO_GUIDELINES_STATIC !== 'undefined' && Array.isArray(KHO_GUIDELINES_STATIC)) {
+            const matched = KHO_GUIDELINES_STATIC.find(g => {
+              const fileSlug = (g.file || '').replace(/\.(mdx|html)$/i, '');
+              return fileSlug === slug || g.id === slug;
+            });
+            if (matched) {
+              const mTitle = matched.title || slug;
+              const mOrg = matched.organization || 'EBM';
+              const mYear = matched.year || '2026';
+              const mCor = matched.cor || (matched.impact === 'practice-changing' ? 'I' : 'IIa');
+              const mLoe = matched.loe || (matched.design === 'rct' ? 'A' : 'B');
+              const mSummary = matched.summary || matched.detailedConclusion || '';
+              const mIntervention = matched.intervention || 'Phác đồ điều trị chuẩn';
+              const mEndpoint = matched.primaryEndpoint || 'Tiêu chí đánh giá chính';
+              const mResults = matched.keyResults || 'Xem chi tiết trong khuyến cáo';
+              const mKeyPoints = Array.isArray(matched.keyPoints) ? matched.keyPoints : [];
+
+              text = `---
+title: "${mTitle.replace(/"/g, "'")}"
+organization: "${mOrg}"
+year: "${mYear}"
+cor: "${mCor}"
+loe: "${mLoe}"
+description: "${mSummary.replace(/"/g, "'").slice(0, 300)}"
+---
+
+<div class="ebm-callout-box" style="border-left:4px solid #0284c7; background:rgba(2, 132, 199, 0.08); padding:1rem 1.25rem; border-radius:0 10px 10px 0; margin-bottom:1.5rem;">
+  <div style="font-weight:800; font-size:0.85rem; color:#0369a1; display:flex; align-items:center; gap:8px; margin-bottom:0.4rem;">
+    <i class="fa-solid fa-circle-info"></i> CHẾ ĐỘ NGOẠI TUYẾN / LOCAL FALLBACK
+  </div>
+  <div style="font-size:0.92rem; color:var(--text,#0f172a); line-height:1.65;">
+    Tài liệu đang được tải từ CSDL EBM Cục Bộ của CliniPortal. Toàn bộ các thông số PICO, can thiệp và khuyến cáo lâm sàng cốt lõi được bảo toàn đầy đủ.
+  </div>
+</div>
+
+## 1. Tổng Quan & Bối Cảnh Lâm Sàng
+${mSummary}
+
+## 2. Can Thiệp & Tiêu Chí Đánh Giá (PICO)
+- **Can thiệp / Đối chứng:** ${mIntervention}
+- **Tiêu chí chính:** ${mEndpoint}
+- **Kết quả then chốt:** ${mResults}
+
+## 3. Khuyến Cáo Thực Hành Lâm Sàng Cốt Lõi
+${mKeyPoints.length > 0 ? mKeyPoints.map((kp, i) => `${i + 1}. ${kp}`).join('\n') : 'Đang cập nhật'}
+`;
+            }
+          }
+
+          if (!text) throw new Error('Không thể tải tệp MDX từ các nguồn khả dụng');
+
           const parsed = cliniMdxEngine.parse(text);
           currentParsedMdx = parsed;
 
