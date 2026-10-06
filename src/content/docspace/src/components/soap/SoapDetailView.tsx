@@ -83,8 +83,8 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   return (
     <div id="soap-detail-view" className={`flex flex-col gap-3.5 sm:gap-4 ${className}`}>
       {/* Case Header Card */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-xs flex flex-wrap items-start justify-between gap-3 sm:gap-4">
-        <div className="flex flex-col gap-2 max-w-4xl flex-1">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-xs flex flex-col md:flex-row items-start justify-between gap-3.5 sm:gap-4">
+        <div className="flex flex-col gap-2 w-full md:max-w-4xl md:flex-1 min-w-0">
           {/* Primary Category Row */}
           <div className="flex items-center gap-2 flex-wrap">
             <span
@@ -124,7 +124,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
             )}
           </div>
 
-          <h2 className="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
+          <h2 className="font-display text-lg sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug break-words">
             {currentCase.title}
           </h2>
 
@@ -172,11 +172,11 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
         </div>
 
         {/* Quick Jump & Tool Shortcuts */}
-        <div className="flex items-center gap-1.5 flex-wrap justify-end shrink-0">
+        <div className="flex items-center gap-1.5 flex-wrap justify-start md:justify-end w-full md:w-auto pt-2.5 md:pt-0 border-t md:border-t-0 border-slate-100 shrink-0">
           <button
             type="button"
             onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title)}
-            className="px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
+            className="flex-1 sm:flex-initial px-3 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
             title="Tra cứu bài viết liên quan trong Knowledge Vault"
           >
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
@@ -216,8 +216,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
       </div>
 
       {/* 6-Tab Deep-Dive Navigation Bar */}
-      {/* 6-Tab Deep-Dive Navigation Bar (Sticky with Compact Mobile Labels) */}
-      <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-1.5 sm:p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 sticky top-12 sm:top-2 z-10 no-print">
+      <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-1.5 sm:p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 relative md:sticky md:top-2 z-10 no-print">
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 touch-pan-x no-scrollbar scroll-smooth">
           <button
             type="button"

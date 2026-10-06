@@ -230,7 +230,7 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
   };
 
   return (
-    <div id="soap-experience-board" className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6 animate-fadeIn">
+    <div id="soap-experience-board" className="max-w-7xl mx-auto px-1 sm:px-6 py-2 sm:py-6 flex flex-col gap-4 sm:gap-6 animate-fadeIn">
       {/* 1. Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-emerald-900 via-slate-900 to-blue-950 text-white p-4 sm:p-6 rounded-2xl shadow-sm">
         <div className="space-y-1.5 max-w-2xl">
@@ -367,7 +367,7 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
       </div>
 
       {/* 3. Mobile View Switcher Segmented Control (Only on Mobile/Tablet screens < lg) */}
-      <div className="flex lg:hidden items-center justify-between bg-white border border-slate-200/90 rounded-2xl p-1.5 shadow-xs sticky top-2 z-20">
+      <div className="flex lg:hidden items-center justify-between bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-1.5 shadow-sm sticky top-1 z-20 w-full">
         <button
           type="button"
           onClick={() => setMobileTab('list')}
@@ -434,11 +434,11 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
                 <span>Danh sách</span>
               </button>
 
-              <div className="flex items-center gap-1.5 text-[11.5px] font-mono-custom text-slate-300 truncate">
-                <span className="font-bold text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[11.5px] font-mono-custom text-slate-300 min-w-0 flex-1">
+                <span className="font-bold text-emerald-400 shrink-0">
                   {currentCaseIndex >= 0 ? `${currentCaseIndex + 1}/${filteredCases.length}` : ''}
                 </span>
-                <span className="truncate max-w-[130px] sm:max-w-[220px] font-sans font-medium text-white">
+                <span className="truncate font-sans font-medium text-white">
                   {currentCase.title}
                 </span>
               </div>
