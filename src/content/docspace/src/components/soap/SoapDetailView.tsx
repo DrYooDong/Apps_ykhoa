@@ -35,8 +35,9 @@ import { SoapSubjectiveColumn } from './SoapSubjectiveColumn.tsx';
 import { SoapObjectiveColumn } from './SoapObjectiveColumn.tsx';
 import { SoapAssessmentColumn } from './SoapAssessmentColumn.tsx';
 import { SoapPlanColumn } from './SoapPlanColumn.tsx';
+import { CaseAnatomyView } from './CaseAnatomyView.tsx';
 
-export type SoapDetailTab = 'matrix' | 'problems' | 'roadmap' | 'reasoning' | 'markdown';
+export type SoapDetailTab = 'anatomy' | 'matrix' | 'problems' | 'roadmap' | 'reasoning' | 'markdown';
 
 interface SoapDetailViewProps {
   currentCase: SoapClinicalExperience;
@@ -195,9 +196,27 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
         </div>
       </div>
 
-      {/* 5-Tab Deep-Dive Navigation Bar */}
+      {/* 6-Tab Deep-Dive Navigation Bar */}
       <div className="bg-white border border-slate-200/90 rounded-2xl p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 no-print">
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button
+            type="button"
+            onClick={() => setActiveTab('anatomy')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+              activeTab === 'anatomy'
+                ? 'bg-indigo-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-indigo-200" />
+            <span>⭐ Giải Phẫu Ca (Bento)</span>
+            <span className={`px-1.5 py-0.2 rounded-full text-[9.5px] font-bold ${
+              activeTab === 'anatomy' ? 'bg-indigo-500 text-white' : 'bg-indigo-100 text-indigo-900'
+            } font-mono-custom`}>
+              6 Trụ Cột
+            </span>
+          </button>
+
           <button
             type="button"
             onClick={() => setActiveTab('matrix')}
@@ -356,6 +375,15 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* TAB 0: GIẢI PHẪU CA BỆNH BENTO PEARLS */}
+      {activeTab === 'anatomy' && (
+        <CaseAnatomyView
+          currentCase={currentCase}
+          onNavigateTab={(tab) => setActiveTab(tab)}
+          onOpenVaultDrawer={onOpenVaultDrawer}
+        />
+      )}
 
       {/* TAB 1: 4-COLUMN SOAP MATRIX BOARD */}
       {activeTab === 'matrix' && (

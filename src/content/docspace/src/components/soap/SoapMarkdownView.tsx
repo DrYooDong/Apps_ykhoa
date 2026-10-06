@@ -208,18 +208,38 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
         } else {
           inCodeBlock = false;
           const codeContent = codeBuffer.join('\n');
+          const langDisplay = codeLanguage ? codeLanguage.toUpperCase() : 'TIMELINE';
           blocks.push(
             <div
               key={`code-${blocks.length}`}
-              className="my-4 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xs"
+              className="my-5 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xs group"
             >
-              {codeLanguage && (
-                <div className="bg-slate-800/80 px-3.5 py-1.5 text-[10.5px] font-mono-custom text-slate-300 border-b border-slate-700 flex items-center justify-between">
-                  <span>{codeLanguage.toUpperCase()} TIMELINE</span>
-                  <span className="text-slate-400 text-[10px]">Lộ trình nấc thang</span>
+              <div className="bg-slate-800/90 px-3.5 py-2 text-[11px] font-mono-custom text-slate-300 border-b border-slate-700/80 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-1 font-bold text-slate-200 tracking-wider">
+                    {langDisplay.includes('JSON') ? 'CSDL CẤU TRÚC JSON' : `${langDisplay} CLINICAL ROADMAP`}
+                  </span>
                 </div>
-              )}
-              <pre className="p-4 text-xs font-mono text-teal-300 overflow-x-auto leading-relaxed whitespace-pre">
+                <div className="flex items-center gap-2">
+                  <span className="text-slate-400 text-[10.5px]">Lộ trình nấc thang</span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      navigator.clipboard.writeText(codeContent);
+                      const target = e.currentTarget;
+                      target.innerText = '✓ Đã chép';
+                      setTimeout(() => { target.innerText = 'Sao chép'; }, 1800);
+                    }}
+                    className="px-2 py-0.5 rounded text-[10px] bg-slate-700/80 hover:bg-slate-700 text-slate-200 font-sans font-medium transition-colors cursor-pointer"
+                  >
+                    Sao chép
+                  </button>
+                </div>
+              </div>
+              <pre className="p-4 text-xs font-mono text-teal-300 overflow-x-auto leading-relaxed whitespace-pre font-medium selection:bg-teal-900 selection:text-white">
                 {codeContent}
               </pre>
             </div>
@@ -250,7 +270,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
       if (trimmed.startsWith('# ') && !trimmed.startsWith('## ')) {
         const titleText = trimmed.replace(/^#\s*/, '');
         blocks.push(
-          <div key={`h1-${blocks.length}`} className="my-5 pb-3 border-b-2 border-slate-200">
+          <div key={`h1-${blocks.length}`} id="soap-sec-header" className="my-5 pb-3 border-b-2 border-slate-200">
             <h1 className="font-display text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
               {renderInlineMarkdown(titleText)}
             </h1>
@@ -264,25 +284,31 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
         const headingText = trimmed.replace(/^##\s*/, '');
         let bgGradient = 'from-slate-700 to-slate-900';
         let sectionBadge = 'SECTION';
+        let sectionId = `soap-sec-${blocks.length}`;
 
         if (/S\b|Chủ quan|Subjective/i.test(headingText)) {
           bgGradient = 'from-sky-600 via-sky-700 to-cyan-700';
           sectionBadge = 'S — CHỦ QUAN';
+          sectionId = 'soap-sec-s';
         } else if (/O\b|Khách quan|Objective/i.test(headingText)) {
           bgGradient = 'from-slate-700 via-slate-800 to-zinc-800';
           sectionBadge = 'O — KHÁCH QUAN';
+          sectionId = 'soap-sec-o';
         } else if (/A\b|Đánh giá|Biện luận|Assessment/i.test(headingText)) {
           bgGradient = 'from-amber-600 via-amber-700 to-orange-700';
           sectionBadge = 'A — ĐÁNH GIÁ';
+          sectionId = 'soap-sec-a';
         } else if (/P\b|Kế hoạch|Xử trí|Plan/i.test(headingText)) {
           bgGradient = 'from-teal-600 via-teal-700 to-emerald-700';
           sectionBadge = 'P — KẾ HOẠCH';
+          sectionId = 'soap-sec-p';
         }
 
         blocks.push(
           <div
             key={`h2-${blocks.length}`}
-            className={`my-6 rounded-xl bg-gradient-to-r ${bgGradient} text-white p-3.5 px-4 shadow-2xs flex items-center justify-between flex-wrap gap-2`}
+            id={sectionId}
+            className={`my-6 scroll-mt-20 rounded-xl bg-gradient-to-r ${bgGradient} text-white p-3.5 px-4 shadow-2xs flex items-center justify-between flex-wrap gap-2`}
           >
             <h2 className="font-display text-sm font-bold tracking-wide uppercase flex items-center gap-2">
               {renderInlineMarkdown(headingText)}
@@ -298,41 +324,139 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
       // Heading 3: ### Sub-sections
       if (trimmed.startsWith('### ')) {
         const h3Text = trimmed.replace(/^###\s*/, '');
+        const isProblemTable = h3Text.includes('Vấn Đề') || h3Text.includes('3 Tầng');
+        const isPrescription = h3Text.includes('Y lệnh') || h3Text.includes('Thuốc');
+        const isRoadmap = h3Text.includes('Lộ trình');
+
         blocks.push(
-          <div key={`h3-${blocks.length}`} className="mt-5 mb-2 pt-2 border-t border-slate-100 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-slate-500 shrink-0" />
-            <h3 className="font-display text-xs font-bold text-slate-900 uppercase tracking-wider">
-              {renderInlineMarkdown(h3Text)}
-            </h3>
+          <div
+            key={`h3-${blocks.length}`}
+            id={isProblemTable ? 'soap-sec-problems' : isPrescription ? 'soap-sec-rx' : isRoadmap ? 'soap-sec-roadmap' : undefined}
+            className="mt-6 mb-2.5 pt-2 border-t border-slate-100 scroll-mt-20 flex items-center justify-between flex-wrap gap-2"
+          >
+            <div className="flex items-center gap-2">
+              <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${isProblemTable ? 'bg-amber-500' : isPrescription ? 'bg-emerald-500' : 'bg-slate-500'}`} />
+              <h3 className="font-display text-xs font-bold text-slate-900 uppercase tracking-wider">
+                {renderInlineMarkdown(h3Text)}
+              </h3>
+            </div>
+            {isProblemTable && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                ⭐ Hoàng Văn Sĩ Model
+              </span>
+            )}
+            {isPrescription && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                💊 Phác đồ chuẩn BYT
+              </span>
+            )}
           </div>
         );
         continue;
       }
 
-      // Heading 4: #### Sub-sub-sections
+      // Heading 4: #### Sub-sub-sections (Nâng cấp Pill Badge)
       if (trimmed.startsWith('#### ')) {
         const h4Text = trimmed.replace(/^####\s*/, '');
         blocks.push(
-          <h4
+          <div
             key={`h4-${blocks.length}`}
-            className="font-bold text-[11.5px] text-slate-800 mt-3 mb-1.5 flex items-center gap-1.5"
+            className="mt-4 mb-2 flex items-center gap-2"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 shrink-0" />
-            <span>{renderInlineMarkdown(h4Text)}</span>
-          </h4>
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/90 font-mono-custom tracking-wider uppercase">
+              MỤC CON
+            </span>
+            <h4 className="font-bold text-[12px] text-slate-800">
+              {renderInlineMarkdown(h4Text)}
+            </h4>
+          </div>
         );
         continue;
       }
 
-      // Blockquote: > Context
+      // Blockquote & Advanced Callout Alerts: > [!NOTE], [!WARNING], [!IMPORTANT], [!CAUTION], [!TIP]
       if (trimmed.startsWith('> ')) {
-        const quoteText = trimmed.replace(/^>\s*/, '');
+        const rawQuote = trimmed.replace(/^>\s*/, '');
+
+        // 1. Phân loại Callout
+        const calloutMatch = rawQuote.match(/^\[!(NOTE|WARNING|IMPORTANT|CAUTION|TIP)\]\s*(.*)$/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toUpperCase();
+          const calloutBody = calloutMatch[2];
+
+          let calloutTheme = {
+            border: 'border-l-sky-500 border-sky-200',
+            bg: 'bg-sky-50/80 text-sky-950',
+            badgeBg: 'bg-sky-100 text-sky-800 border-sky-200',
+            title: 'LƯU Ý LÂM SÀNG (NOTE)',
+            icon: '💡',
+          };
+
+          if (type === 'WARNING') {
+            calloutTheme = {
+              border: 'border-l-amber-500 border-amber-200',
+              bg: 'bg-amber-50/80 text-amber-950',
+              badgeBg: 'bg-amber-100 text-amber-800 border-amber-200',
+              title: 'CẢNH BÁO BẪY LÂM SÀNG (WARNING)',
+              icon: '⚠️',
+            };
+          } else if (type === 'IMPORTANT') {
+            calloutTheme = {
+              border: 'border-l-rose-500 border-rose-200',
+              bg: 'bg-rose-50/80 text-rose-950',
+              badgeBg: 'bg-rose-100 text-rose-800 border-rose-200',
+              title: 'QUAN TRỌNG ĐẶC BIỆT (IMPORTANT)',
+              icon: '🔴',
+            };
+          } else if (type === 'CAUTION') {
+            calloutTheme = {
+              border: 'border-l-orange-500 border-orange-200',
+              bg: 'bg-orange-50/80 text-orange-950',
+              badgeBg: 'bg-orange-100 text-orange-800 border-orange-200',
+              title: 'CHÚ Ý AN TOÀN KÊ ĐƠN (CAUTION)',
+              icon: '🚨',
+            };
+          } else if (type === 'TIP') {
+            calloutTheme = {
+              border: 'border-l-emerald-500 border-emerald-200',
+              bg: 'bg-emerald-50/80 text-emerald-950',
+              badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+              title: 'HẠT NGỌC KINH NGHIỆM (CLINICAL PEARL)',
+              icon: '💎',
+            };
+          }
+
+          blocks.push(
+            <div
+              key={`callout-${blocks.length}`}
+              className={`my-3.5 p-3.5 rounded-xl border-l-4 ${calloutTheme.border} ${calloutTheme.bg} border shadow-2xs space-y-1.5`}
+            >
+              <div className="flex items-center gap-1.5 font-bold text-[11px]">
+                <span>{calloutTheme.icon}</span>
+                <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-mono-custom tracking-wider ${calloutTheme.badgeBg} border`}>
+                  {calloutTheme.title}
+                </span>
+              </div>
+              <div className="text-xs leading-relaxed pl-1">
+                {renderInlineMarkdown(calloutBody)}
+              </div>
+            </div>
+          );
+          continue;
+        }
+
+        // 2. Bối cảnh ca bệnh / Blockquote thường
+        const isContext = rawQuote.includes('Bối cảnh') || rawQuote.includes('BỆNH CẢNH');
         blocks.push(
           <div
             key={`quote-${blocks.length}`}
-            className="my-3.5 p-3.5 rounded-xl bg-blue-50/70 border-l-4 border-l-blue-600 border border-blue-200/70 text-xs text-blue-950 leading-relaxed shadow-2xs"
+            className={`my-3.5 p-3.5 rounded-xl border-l-4 ${
+              isContext
+                ? 'bg-blue-50/80 border-l-blue-600 border border-blue-200/80 text-blue-950'
+                : 'bg-slate-50 border-l-slate-400 border border-slate-200/80 text-slate-800'
+            } text-xs leading-relaxed shadow-2xs`}
           >
-            {renderInlineMarkdown(quoteText)}
+            {renderInlineMarkdown(rawQuote)}
           </div>
         );
         continue;
@@ -501,6 +625,87 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
           </div>
         ) : (
           <div className="p-6 sm:p-10 max-w-4xl mx-auto space-y-2 text-slate-800 text-xs leading-relaxed font-sans">
+            {/* Quick Navigation Jump Bar */}
+            <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl p-3 mb-6 no-print">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5 font-mono-custom">
+                  <span>🧭</span>
+                  <span>MỤC LỤC ĐIỀU HƯỚNG NHANH (QUICK JUMP)</span>
+                </span>
+                <span className="text-[10.5px] text-slate-400">Nhấp để cuộn tới</span>
+              </div>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('soap-sec-s')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 text-slate-700 hover:text-sky-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                  <span>1. S (Chủ quan)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('soap-sec-o')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100/50 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                  <span>2. O (Khách quan)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('soap-sec-a')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-amber-300 hover:bg-amber-50/50 text-slate-700 hover:text-amber-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>3. A (Đánh giá)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50/50 text-slate-700 hover:text-teal-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                  <span>4. P (Kế hoạch)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('soap-sec-problems');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    else document.getElementById('soap-sec-a')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-amber-50/70 border border-amber-200 hover:bg-amber-100 text-amber-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span>⭐</span>
+                  <span>Bảng 3 Tầng</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('soap-sec-rx');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    else document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-emerald-50/70 border border-emerald-200 hover:bg-emerald-100 text-emerald-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span>💊</span>
+                  <span>Y lệnh thuốc</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('soap-sec-roadmap');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    else document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-teal-50/70 border border-teal-200 hover:bg-teal-100 text-teal-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                >
+                  <span>📅</span>
+                  <span>Lộ trình điều trị</span>
+                </button>
+              </div>
+            </div>
+
             {parsedBlocks}
           </div>
         )}

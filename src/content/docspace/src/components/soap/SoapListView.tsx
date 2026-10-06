@@ -189,8 +189,17 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
         </div>
       </div>
 
-      {/* Row 3: Horizontal Carousel / Card List of Filtered Cases */}
+      {/* Row 3: Horizontal Carousel / Bento Card Grid of Filtered Cases */}
       <div className="pt-2">
+        <div className="flex items-center justify-between mb-2 px-1 text-[11px] text-slate-500">
+          <span className="font-semibold text-slate-700">
+            Danh mục ca lâm sàng ({cases.length} ca)
+          </span>
+          <span className="text-[10px] text-slate-400">
+            Nhấp ca để mở nghiên cứu chuyên sâu 6 trụ cột
+          </span>
+        </div>
+
         {cases.length === 0 ? (
           <div className="text-center py-10 px-4 bg-slate-50/70 border border-dashed border-slate-200 rounded-xl">
             <BookOpen className="w-8 h-8 text-slate-300 mx-auto mb-2" />
@@ -200,7 +209,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5 max-h-[360px] overflow-y-auto pr-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 max-h-[380px] overflow-y-auto pr-1 scrollbar-thin">
             {cases.map((c) => {
               const isSelected = c.id === selectedCaseId;
               const lvl = getExperienceLevelConfig(c.experienceLevel);
@@ -209,30 +218,35 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                 <div
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
-                  className={`p-3 rounded-xl border transition-all cursor-pointer relative group flex flex-col justify-between ${
+                  className={`p-3.5 rounded-xl border transition-all cursor-pointer relative group flex flex-col justify-between ${
                     isSelected
-                      ? 'bg-blue-50/80 border-blue-300 shadow-xs ring-1 ring-blue-400/40'
-                      : 'bg-white hover:bg-slate-50/90 border-slate-200'
+                      ? 'bg-gradient-to-br from-blue-50/90 to-sky-50/60 border-blue-400/90 shadow-xs ring-1 ring-blue-500/30 border-l-4 border-l-blue-600'
+                      : 'bg-white hover:bg-slate-50/90 border-slate-200 hover:border-slate-300 border-l-4 border-l-slate-300 hover:border-l-blue-400'
                   }`}
                 >
                   <div>
-                    {/* Header line: Specialty & Level Badge */}
-                    <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                    {/* Header line: Specialty, Level & Difficulty */}
+                    <div className="flex items-center justify-between gap-1.5 mb-2">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[10px] font-bold text-slate-600 uppercase tracking-wider bg-slate-100 px-1.5 py-0.5 rounded">
+                        <span className="text-[10px] font-bold text-blue-900 bg-blue-50 border border-blue-200/70 px-2 py-0.5 rounded font-mono-custom">
                           {c.specialty}
                         </span>
                         <span
-                          className={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${lvl.bg} ${lvl.text} ${lvl.border}`}
+                          className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${lvl.bg} ${lvl.text} ${lvl.border}`}
                         >
                           {lvl.label}
                         </span>
+                        {c.difficultyRating && (
+                          <span className="text-[9.5px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/80">
+                            {'★'.repeat(c.difficultyRating)}
+                          </span>
+                        )}
                       </div>
 
                       <button
                         type="button"
                         onClick={(e) => onToggleFavorite(c.id, e)}
-                        className="text-slate-300 hover:text-amber-500 transition-colors p-0.5"
+                        className="text-slate-300 hover:text-amber-500 transition-colors p-1"
                         title={c.isFavorite ? 'Bỏ yêu thích' : 'Đánh dấu yêu thích'}
                       >
                         <Star
@@ -246,24 +260,45 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                     {/* Case Title */}
                     <h4
                       className={`text-xs font-bold leading-snug line-clamp-2 ${
-                        isSelected ? 'text-blue-950' : 'text-slate-800'
+                        isSelected ? 'text-blue-950 font-display' : 'text-slate-800'
                       }`}
                     >
                       {c.title}
                     </h4>
 
                     {/* Brief context */}
-                    <p className="text-[11px] text-slate-500 line-clamp-1 mt-1">
+                    <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-medium">
                       {c.demographicContext || c.s.chiefComplaint}
                     </p>
+
+                    {/* Tags Pills */}
+                    {c.tags && c.tags.length > 0 && (
+                      <div className="flex items-center gap-1 mt-2 flex-wrap">
+                        {c.tags.slice(0, 2).map((t, idx) => (
+                          <span
+                            key={idx}
+                            className="px-1.5 py-0.2 rounded text-[9.5px] bg-slate-100 text-slate-600 border border-slate-200/60"
+                          >
+                            #{t}
+                          </span>
+                        ))}
+                        {c.tags.length > 2 && (
+                          <span className="text-[9.5px] text-slate-400 font-mono-custom">
+                            +{c.tags.length - 2}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   {/* Footer info: ICD-10 and Author */}
-                  <div className="flex items-center justify-between gap-2 mt-2.5 pt-2 border-t border-slate-100 text-[10px] text-slate-400">
-                    <span className="font-mono-custom text-blue-700 font-semibold truncate max-w-[150px]">
-                      {c.a.icd10 || 'ICD-10'}
+                  <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-100 text-[10.5px]">
+                    <span className="font-mono-custom text-blue-700 font-bold truncate max-w-[150px] bg-blue-50/60 px-1.5 py-0.2 rounded border border-blue-100">
+                      ICD: {c.a.icd10 || 'N/A'}
                     </span>
-                    <span className="truncate">{c.authorDoctor || 'Knowledge Vault'}</span>
+                    <span className="truncate text-slate-400 text-[10px]">
+                      {c.authorDoctor || 'Knowledge Vault'}
+                    </span>
                   </div>
                 </div>
               );

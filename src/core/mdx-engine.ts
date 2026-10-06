@@ -98,6 +98,11 @@ export class CliniMdxEngine {
       return stashBlock(`<style>${styleContent}</style>`);
     });
 
+    // 2.6. Bảo vệ các khối <svg>...</svg> khỏi bị markdown parser và formatInline phá hoại
+    preprocessedBody = preprocessedBody.replace(/<svg\b[\s\S]*?<\/svg>/gi, (svgMatch) => {
+      return stashBlock(svgMatch);
+    });
+
     // 3. Chuyển đổi Custom MDX Components với Frontmatter Context và lưu vào stash
     let transformedBody = this.transformCustomComponents(preprocessedBody, frontmatter, stashBlock);
 

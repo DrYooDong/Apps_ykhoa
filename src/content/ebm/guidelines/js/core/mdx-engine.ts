@@ -57,6 +57,29 @@ export class CliniMdxEngine {
       </figure>`;
     });
 
+    // 2.5. Stash System: Bảo vệ các khối HTML nhạy cảm (SVG, Scripts, Styles, Tables) khỏi bị parser markdown chia dòng chèn <br/> và <p>
+    const stash = new Map<string, string>();
+    let blockCounter = 0;
+
+    const stashBlock = (htmlContent: string): string => {
+      const placeholder = `__CLINI_MDX_STASH_${blockCounter++}__`;
+      stash.set(placeholder, htmlContent.trim());
+      return `\n\n${placeholder}\n\n`;
+    };
+
+    // Stash scripts & styles
+    content = content.replace(/<script(?:\s+[^>]*)?>([\s\S]*?)<\/script>/gi, (match) => {
+      return stashBlock(match);
+    });
+    content = content.replace(/<style(?:\s+[^>]*)?>([\s\S]*?)<\/style>/gi, (match) => {
+      return stashBlock(match);
+    });
+
+    // BẢO VỆ TUYỆT ĐỐI TOÀN BỘ CÁC KHỐI SVG KHÔNG BỊ PHÁ HỎNG BỞI <br/> HAY <p>
+    content = content.replace(/<svg\b[\s\S]*?<\/svg>/gi, (svgMatch) => {
+      return stashBlock(svgMatch);
+    });
+
     // 3. Process Custom MDX Components / Callouts
     content = content.replace(/<([A-Z][a-zA-Z0-9]*)\s+([^>]*?)\/>/g, (_m, tagName, attrs) => {
       return `<div class="mdx-component mdx-${tagName.toLowerCase()}" ${attrs}></div>`;
@@ -75,13 +98,15 @@ export class CliniMdxEngine {
       return `<h${level} id="${id}" class="heading-level-${level}">${text}</h${level}>`;
     });
 
-    // 5. Special Callouts: > [!NOTE], > [!WARNING], > [!TIP], > [!IMPORTANT]
-    content = content.replace(/^\>\s*\[\!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*\r?\n([\s\S]*?)(?=\n\n|\n[^\>]|$)/gm, (_m, type, body) => {
+    // 5. Special Callouts: > [!NOTE], > [!WARNING], > [!TIP], > [!IMPORTANT], > [!PEARL], > [!KEY]
+    content = content.replace(/^\>\s*\[\!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|PEARL|KEY)\]\s*\r?\n([\s\S]*?)(?=\n\n|\n[^\>]|$)/gm, (_m, type, body) => {
       const cleanBody = body.replace(/^\>\s?/gm, '').trim();
       const badgeColors: Record<string, { bg: string; border: string; color: string; icon: string }> = {
         NOTE: { bg: 'rgba(2, 132, 199, 0.08)', border: '#0284c7', color: '#0369a1', icon: 'fa-circle-info' },
         TIP: { bg: 'rgba(16, 185, 129, 0.08)', border: '#10b981', color: '#047857', icon: 'fa-lightbulb' },
+        PEARL: { bg: 'rgba(16, 185, 129, 0.08)', border: '#10b981', color: '#047857', icon: 'fa-gem' },
         IMPORTANT: { bg: 'rgba(124, 58, 237, 0.08)', border: '#7c3aed', color: '#6d28d9', icon: 'fa-triangle-exclamation' },
+        KEY: { bg: 'rgba(2, 132, 199, 0.08)', border: '#0284c7', color: '#0369a1', icon: 'fa-key' },
         WARNING: { bg: 'rgba(245, 158, 11, 0.1)', border: '#f59e0b', color: '#b45309', icon: 'fa-triangle-exclamation' },
         CAUTION: { bg: 'rgba(239, 68, 68, 0.08)', border: '#ef4444', color: '#b91c1c', icon: 'fa-circle-xmark' },
       };
@@ -104,7 +129,7 @@ export class CliniMdxEngine {
     content = content.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
     content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="ebm-link">$1 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7em;"></i></a>');
 
-    // 8. Markdown Tables
+    // 8. Markdown Tables (Được stash để bảo toàn dòng)
     content = content.replace(/((?:^\|.*?\|\r?\n)+)/gm, (tableMatch) => {
       const lines = tableMatch.trim().split('\n').filter(l => l.trim().startsWith('|'));
       if (lines.length < 2) return tableMatch;
@@ -137,7 +162,7 @@ export class CliniMdxEngine {
       }
 
       tableHtml += '</table></div>';
-      return tableHtml;
+      return stashBlock(tableHtml);
     });
 
     // 9. Ordered & Unordered Lists
@@ -147,17 +172,29 @@ export class CliniMdxEngine {
     content = content.replace(/^-\s+(.*$)/gm, '<li class="ebm-list-item">$1</li>');
     content = content.replace(/((?:<li class="ebm-list-item">.*<\/li>\r?\n?)+)/g, '<ul class="ebm-list" style="margin:1rem 0 1rem 1.5rem; line-height:1.7;">$1</ul>');
 
-    // 10. Line breaks to paragraphs
+    // 10. Line breaks to paragraphs (Chỉ đóng gói các đoạn văn bản thuần, KHÔNG đóng gói khối HTML hoặc placeholder)
     const paragraphs = content.split(/\r?\n\r?\n/).map(block => {
       const trimmed = block.trim();
       if (!trimmed) return '';
-      if (/^<(h[1-6]|div|ul|ol|table|blockquote|pre|figure)/i.test(trimmed)) {
+      // Giữ nguyên các placeholder token
+      if (trimmed.startsWith('__CLINI_MDX_STASH_') && trimmed.endsWith('__')) {
+        return trimmed;
+      }
+      // Giữ nguyên các thẻ HTML khối và comment
+      if (/^<(h[1-6]|div|ul|ol|table|blockquote|pre|figure|svg|section|nav|details|summary|aside|header|footer|article|p|!--)/i.test(trimmed)) {
         return trimmed;
       }
       return `<p class="ebm-paragraph" style="line-height:1.7; margin-bottom:1.15rem;">${trimmed.replace(/\r?\n/g, '<br/>')}</p>`;
     });
 
-    const html = paragraphs.filter(Boolean).join('\n');
+    let html = paragraphs.filter(Boolean).join('\n');
+
+    // 11. Hoàn nguyên toàn bộ các khối stashed (loại bỏ trường hợp bị bao bọc nhầm trong <p>)
+    stash.forEach((savedHtml, placeholder) => {
+      const pWrappedRegex = new RegExp(`<p[^>]*>\\s*${placeholder}\\s*<\\/p>`, 'g');
+      html = html.replace(pWrappedRegex, savedHtml);
+      html = html.replaceAll(placeholder, savedHtml);
+    });
 
     return {
       frontmatter,

@@ -18,7 +18,8 @@ diagnosticPearls: "🧠 Giai đoạn nguy hiểm (ngày 3–7) thường trùng 
 takeawayLessons: "🎯 Bù dịch tĩnh mạch Ringer Lactate bậc thang (6 mL/kg/h ➔ 3 mL/kg/h ➔ 1.5 mL/kg/h) đúng chỉ định khi bệnh nhân nôn nhiều, không uống được và Hct cao; tuyệt đối chống chỉ định NSAIDs/Aspirin và tránh truyền dịch quá dồn dập khi chưa vào sốc."
 sourceReference: "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam & WHO Dengue Guidelines"
 clinicalContext: "Khoa Cấp cứu / Khoa Bệnh Nhiệt đới"
-updated: "2026-09-26"
+outcomeNotes: "Xuất viện sau 4 ngày điều trị nội trú, Hct về 39%, Tiểu cầu hồi phục 135 G/L, hết đau bụng và ăn uống tốt"
+updated: "2026-10-06"
 ---
 
 # 🩺 Ca Lâm Sàng: Sốt xuất huyết Dengue có dấu hiệu cảnh báo (Ngày 5)
@@ -79,6 +80,18 @@ updated: "2026-09-26"
   - *Viêm túi mật cấp / Viêm gan cấp*: Có đau hạ sườn phải, gan to, túi mật dày trên siêu âm; tuy nhiên thành túi mật dày trong SXHD là do phù nề thoát huyết tương, men gan tăng vừa phải (< 400 U/L), không tắc mật (Bilirubin bình thường), kèm giảm tiểu cầu sâu và tràn dịch đa màng.
   - *Nhiễm vi rút khác (Zika, Chikungunya)*: Có thể gây sốt và đau cơ, nhưng không có tình trạng thoát huyết tương cô đặc máu (Hct tăng > 20%) và các dấu hiệu cảnh báo rầm rộ như SXHD.
 
+---
+
+### Bảng Đặt Vấn Đề 3 Tầng Lâm Sàng:
+
+| Mức độ ưu tiên | Vấn đề lâm sàng (HỘI CHỨNG / TÌNH TRẠNG) | Chiến lược chẩn đoán (CLS bổ sung) | Hướng xử trí ban đầu & Điều trị |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Tầng 1: Đe dọa tính mạng** | **Hội chứng Thoát huyết tương & Cô đặc máu** (Hct 48%, SI 0.89, tràn dịch màng phổi/bụng, nguy cơ sốc SXHD) | Hct tại giường q2-4h, Tiểu cầu, Nhóm máu, Siêu âm màng phổi | Thiết lập kim luồn 20G, truyền dịch Ringer Lactate 6 mL/kg/h x 1-2h, theo dõi sát sinh hiệu và nước tiểu |
+| 🟡 **Tầng 2: Cấp tính** | 1. **Dấu hiệu cảnh báo tiêu hóa** (Đau tức hạ sườn phải, nôn ói 4 lần/6h)<br>2. **Hội chứng Xuất huyết giảm tiểu cầu** (PLT 35 G/L, chấm xuất huyết, chảy máu chân răng) | AST, ALT, Creatinine, Siêu âm bụng đánh giá bề dày thành túi mật | Chống nôn, bù dịch tĩnh mạch bù trừ nôn, tuyệt đối KHÔNG tiêm bắp, không dùng NSAIDs/Aspirin |
+| 🔵 **Tầng 3: Mạn tính / Dự phòng** | **Dự phòng quá tải thể tích giai đoạn tái hấp thu** (Ngày 6–7) và lây truyền véc-tơ gia đình | Theo dõi lâm sàng nhịp tim chậm, khó thở, ran ẩm phổi khi hồi phục | Giảm bậc và ngưng dịch truyền đúng thời điểm khi hết giai đoạn nguy hiểm, nằm màn tránh muỗi đốt |
+
+---
+
 - **Phân tầng nguy cơ & Thang điểm lượng giá**:
   - Thang điểm NEWS2: 3 điểm (Mạch 98, Lừ đừ) ➔ Nguy cơ trung bình, cần theo dõi sát tại khoa nội trú.
   - Shock Index (SI) = Mạch / HATT = 98 / 110 = **0.89** (Ngưỡng bình thường < 0.7; SI ~ 0.9 cảnh báo tình trạng giảm thể tích tuần hoàn tiềm ẩn, nguy cơ chuyển sốc nếu không bù dịch kịp thời).
@@ -109,16 +122,44 @@ updated: "2026-09-26"
 - **Paracetamol 500mg**: 1 viên (Uống) — *Chỉ dùng khi sốt ≥ 38.5°C hoặc đau đầu nhiều, cách mỗi 4–6 giờ (tối đa 3g/ngày). Tuyệt đối KHÔNG dùng Aspirin, Ibuprofen hay NSAIDs do nguy cơ gây xuất huyết dạ dày nặng*.
 - **Oresol / Nước trái cây (sau khi giảm nôn)**: Khuyến khích bệnh nhân uống nhấp từng ngụm nhỏ theo nhu cầu.
 
+---
+
+### Lộ trình điều trị 3 giai đoạn:
+
+```
+[Giai đoạn 1: Giờ 1–4]           [Giai đoạn 2: Giờ 5–24]          [Giai đoạn 3: Sau 24–48h]
+• Ringer Lactate 6 mL/kg/h        • Giảm tốc độ: 3 -> 1.5 mL/kg/h  • Ngừng hoàn toàn dịch truyền
+• Kiểm tra Hct q2h                • Bắt đầu uống Oresol nhấp nhỏ   • Tái hấp thu dịch (theo dõi phù phổi)
+• Theo dõi Mạch, HA, Nước tiểu    • Hct ổn định < 42%              • Tiểu cầu bắt đầu hồi phục > 50 G/L
+```
+
+- **Giai đoạn 1: Cấp cứu chống cô đặc máu & Ngăn ngừa sốc (Giờ 1 – Giờ 4)**:
+  - Bù dịch Ringer Lactate 6 mL/kg/h x 1–2 giờ đầu.
+  - Đánh giá lại Hct tại giường mỗi 2 giờ. Nếu Hct giảm và sinh hiệu ổn định, giảm tốc độ.
+- **Giai đoạn 2: Hạ bậc dịch truyền & Ổn định huyết động (Giờ 5 – Giờ 24)**:
+  - Giảm tốc độ truyền xuống 3 mL/kg/h trong 2–4 giờ, tiếp đó 1.5 mL/kg/h trong 6–12 giờ.
+  - Khuyến khích uống oresol khi bệnh nhân bớt nôn ói.
+- **Giai đoạn 3: Hồi phục & Tái hấp thu dịch (Sau 24 – 48 giờ)**:
+  - Cắt dịch truyền hoàn toàn khi qua khỏi giai đoạn nguy hiểm (hết 48 giờ kể từ lúc hạ sốt).
+  - Tránh truyền dịch kéo dài vì nguy cơ phù phổi cấp do tái hấp thu.
+
+---
+
 ### Chỉ tiêu theo dõi & Mục tiêu lâm sàng:
 - **Tần suất theo dõi**:
   - Mạch, Huyết áp, Nhịp thở, SpO₂, CRT: 1–2 giờ/lần trong giai đoạn truyền dịch đầu; sau đó 2–4 giờ/lần khi ổn định.
   - Hct tại giường: kiểm tra mỗi 2–4 giờ để điều chỉnh tốc độ dịch truyền.
   - Theo dõi sát lượng nước tiểu (mục tiêu duy trì ≥ 0.5 – 1.0 mL/kg/h).
-  - Phát hiện sớm các dấu hiệu cảnh báo chuyển Sốc SXHD: mạch nhanh, HA kẹp (hiệu áp ≤ 20 mmHg), chi lạnh ẩm, CRT > 2s, hoặc xuất huyết tiêu hóa tiến triển (nôn ra máu, tiêu phân đen).
-- **Mục tiêu điều trị**:
-  - Bệnh nhân tỉnh táo, chi ấm, CRT < 2s.
-  - Huyết áp ổn định, hiệu áp duy trì ≥ 30 mmHg.
-  - Hct giảm dần về mức sinh lý (< 42%), tiểu cầu ngừng tụt và có khuynh hướng hồi phục.
-  - Lượng nước tiểu duy trì ≥ 0.5 – 1.0 mL/kg/h.
+- **Tiêu chuẩn xuất viện**:
+  - Hết sốt ít nhất 2 ngày không dùng thuốc hạ sốt.
+  - Tỉnh táo, ăn uống ngon miệng, huyết động hoàn toàn ổn định.
+  - Tiểu cầu > 50 G/L và có xu hướng tăng liên tục.
+  - Không có khó thở hoặc dấu hiệu tràn dịch màng phổi/bụng tiến triển.
+
+- **Lời dặn bệnh nhân & Quản lý ngoại trú**:
+  - Tránh vận động thể lực nặng, không chơi thể thao đối kháng trong vòng 1–2 tuần để phòng xuất huyết nội tạng.
+  - Tái khám ngay nếu xuất hiện nôn ói trở lại, đau bụng dữ dội, đi ngoài phân đen hoặc mệt lả.
+  - Nằm màn, diệt lăng quăng và phòng muỗi đốt tại nơi cư trú.
 
 ---
+

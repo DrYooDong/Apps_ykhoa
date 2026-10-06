@@ -5642,37 +5642,102 @@ table td.heatmap-cell:hover {
   color: var(--color-text-muted, #475569);
 }
 
-/* ── 3. Editorial SVG Flowchart Card ── */
-.flowchart-editorial-card {
+/* ── 3. Editorial SVG Flowchart Card & Flow Diagrams ── */
+.flowchart-editorial-card,
+.flowchart-card,
+.treatment-chart {
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #cbd5e1);
   border-radius: 16px;
   overflow: hidden;
-  margin: 1.5rem 0;
+  margin: 1.75rem 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.flowchart-editorial-hdr {
+.flowchart-editorial-card:hover,
+.flowchart-card:hover,
+.treatment-chart:hover {
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.08);
+}
+
+.flowchart-editorial-hdr,
+.flowchart-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 1.35rem;
+  padding: 0.95rem 1.35rem;
   background: var(--color-surface-2, #f8fafc);
   border-bottom: 1px solid var(--color-border, #cbd5e1);
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.flowchart-editorial-title {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+.flowchart-editorial-title,
+.flowchart-card-title {
+  font-family: var(--font-display, 'Space Grotesk', 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
-  font-size: 0.94rem;
+  font-size: 0.96rem;
   color: var(--color-text, #0f172a);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+.flowchart-badge-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, 'Space Grotesk', 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 0.96rem;
+  color: var(--color-text, #0f172a);
+}
+
+.flowchart-badge-icon,
+.flowchart-title-icon,
+.flowchart-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary, #0284c7);
+  font-size: 1.1rem;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.flowchart-badge-text {
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+.flowchart-version-tag,
+.flowchart-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
+  color: var(--color-primary, #0284c7);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.flowchart-card-subtitle {
+  font-size: 0.84rem;
+  color: var(--color-text-muted, #64748b);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.flowchart-card-body,
 .flowchart-editorial-canvas {
   padding: 1.25rem;
   background: var(--color-surface, #ffffff);
@@ -5680,7 +5745,49 @@ table td.heatmap-cell:hover {
   -webkit-overflow-scrolling: touch;
 }
 
-.flowchart-legend-row {
+.flowchart-svg-scroll,
+.flowchart-svg-wrapper,
+.flowchart-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--color-surface, #ffffff);
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flowchart-svg-scroll .med-svg,
+.flowchart-svg-wrapper .med-svg,
+.flowchart-svg-container .med-svg,
+.flowchart-editorial-canvas .med-svg,
+.flowchart-card-body .med-svg {
+  min-width: 680px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .flowchart-svg-scroll .med-svg,
+  .flowchart-svg-wrapper .med-svg,
+  .flowchart-svg-container .med-svg,
+  .flowchart-editorial-canvas .med-svg,
+  .flowchart-card-body .med-svg {
+    min-width: 800px;
+  }
+}
+
+.flowchart-card-footer {
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-top: 1px solid var(--color-border, #cbd5e1);
+}
+
+.flowchart-legend-row,
+.flowchart-editorial-legend {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5689,22 +5796,71 @@ table td.heatmap-cell:hover {
   background: var(--color-surface-2, #f8fafc);
   border-top: 1px solid var(--color-border, #cbd5e1);
   flex-wrap: wrap;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--color-text-muted, #64748b);
   font-weight: 600;
+  line-height: 1.5;
 }
 
-.flowchart-legend-item {
+.flowchart-legend-item,
+.legend-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.legend-dot {
+.legend-dot,
+.legend-swatch {
   width: 10px;
   height: 10px;
   border-radius: 3px;
   flex-shrink: 0;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.flow-badge-red {
+  background: var(--color-danger-hl, rgba(239, 68, 68, 0.12));
+  color: var(--color-danger, #ef4444);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Dark Mode Overrides for Flowcharts */
+[data-theme="dark"] .flowchart-editorial-card,
+[data-theme="dark"] .flowchart-card,
+[data-theme="dark"] .treatment-chart {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .flowchart-editorial-hdr,
+[data-theme="dark"] .flowchart-card-header,
+[data-theme="dark"] .flowchart-card-footer,
+[data-theme="dark"] .flowchart-legend-row,
+[data-theme="dark"] .flowchart-editorial-legend {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .flowchart-editorial-title,
+[data-theme="dark"] .flowchart-card-title,
+[data-theme="dark"] .flowchart-badge-title,
+[data-theme="dark"] .flowchart-badge-text {
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .flowchart-card-subtitle,
+[data-theme="dark"] .flowchart-legend-row,
+[data-theme="dark"] .flowchart-editorial-legend {
+  color: var(--color-text-muted, #94a3b8);
+}
+
+[data-theme="dark"] .flowchart-card-body,
+[data-theme="dark"] .flowchart-editorial-canvas,
+[data-theme="dark"] .flowchart-svg-scroll,
+[data-theme="dark"] .flowchart-svg-wrapper,
+[data-theme="dark"] .flowchart-svg-container {
+  background: var(--color-surface, #1e293b);
 }
 
 /* ── 4. Backward Compatibility Enhancement for .flowchart-box & .flow-arrow ── */

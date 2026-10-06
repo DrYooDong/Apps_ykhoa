@@ -18,8 +18,9 @@ objectivePitfalls: "⚠️ CẬN LÂM SÀNG & KHÁM: Cạm bẫy bỏ sót tổn
 diagnosticPearls: "🧠 BIỆN LUẬN: Kết hợp triệu chứng lâm sàng ho kéo dài với bằng chứng vi khuẩn học trực tiếp (AFB đờm dương tính), khẳng định loài vi khuẩn lao và độc tính/nhạy cảm thuốc bằng GeneXpert MTB/RIF (MTB dương tính, không kháng Rifampicin), phân biệt với viêm phổi vi khuẩn thông thường và NTM."
 takeawayLessons: "🎯 ĐIỀU TRỊ: Khởi đầu ngay phác đồ chuẩn A1 (2HRZE/4RHE) cho lao mới nhạy cảm thuốc ở người lớn, đảm bảo nguyên tắc DOTS (uống thuốc đúng, đủ, đều, có kiểm soát), theo dõi chức năng gan/thận và xét nghiệm AFB đờm kiểm tra ở cuối tháng 2, 5, 6."
 sourceReference: "Quyết định 162/QĐ-BYT (2024) Hướng dẫn Chẩn đoán, Điều trị và Dự phòng bệnh Lao"
-clinicalContext: "Phòng khám Hô hấp / Khoa Lao - Bệnh phổi"
-updated: "2026-10-05"
+clinicalContext: "Phòng khám Hô hấp / Khoa Lao - Bệnh phổi / Quản lý Ngoại trú DOTS"
+outcomeNotes: "AFB đờm âm tính hóa ở cuối tháng thứ 2, dung nạp tốt phác đồ A1 không có độc gan nặng, hoàn thành đủ 6 tháng điều trị đạt tiêu chuẩn Khỏi bệnh (Cured), tổn thương thâm nhiễm xơ hóa ổn định trên X-quang ngực"
+updated: "2026-10-06"
 ---
 
 # 🩺 Ca Lâm Sàng: Lao Phổi AFB (+) Mới Chẩn Đoán
@@ -125,12 +126,11 @@ updated: "2026-10-05"
 
 ### Bảng Đặt Vấn Đề 3 Tầng Lâm Sàng:
 
-| Mức độ ưu tiên | Vấn đề lâm sàng (HỘI CHỨNG / TÌNH TRẠNG) | Dữ chứng lâm sàng & Xét nghiệm định lượng |
-| :--- | :--- | :--- |
-| **TẦNG 1: CẤP CỨU & NGUY KỊCH** | **1. Nguy cơ lây nhiễm vi khuẩn lao lượng lớn trong cộng đồng & gia đình** | - Khạc đờm mang vi khuẩn AFB (2+)<br>- Tổn thương nhu mô phổi có tạo hang nhỏ thùy trên phổi phải |
-| **TẦNG 2: CẤP TÍNH & HỘI CHỨNG** | **2. Hội chứng Thâm nhiễm & Tạo hang nhu mô phổi (Bằng chứng vi sinh (+))** | - Ho khạc đờm kéo dài > 3 tuần<br>- Rale nổ/ẩm cố định hạ đòn phải<br>- X-quang: Thâm nhiễm nốt & hang 1.5 cm thùy trên phải<br>- Soi đờm: AFB (2+) x 2 mẫu<br>- GeneXpert: MTB (+) / Rifampicin (-) |
-| | **3. Hội chứng Nhiễm độc lao mạn tính** | - Sốt nhẹ ngấy ngấy về chiều (37.8 °C)<br>- Vã mồ hôi trộm về đêm, uể uải, chán ăn<br>- Sụt 2 kg/tháng (3.3% trọng lượng cơ thể), VS tăng (35 mm/h) |
-| **TẦNG 3: MẠN TÍNH & NỀN** | **4. Yếu tố dịch tễ & Cơ địa nhạy cảm** | - Tiếp xúc đồng nghiệp cùng cơ quan có tiền sử điều trị lao<br>- Chức năng gan, thận, đường huyết bình thường<br>- Tình trạng HIV âm tính |
+| Mức độ ưu tiên | Vấn đề lâm sàng (HỘI CHỨNG / TÌNH TRẠNG) | Chiến lược chẩn đoán (CLS bổ sung) | Hướng xử trí ban đầu & Điều trị |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Tầng 1: Đe dọa tính mạng / Khẩn cấp** | **1. Nguy cơ lây nhiễm vi khuẩn lao lượng lớn trong cộng đồng & gia đình** | - Khạc đờm AFB (2+)<br>- Tổn thương thâm nhiễm tạo hang thùy trên phổi phải | Hướng dẫn đeo khẩu trang N95/y tế, cách ly buồng riêng thông thoáng, tầm soát người tiếp xúc |
+| 🟡 **Tầng 2: Cấp tính** | **2. Hội chứng Thâm nhiễm & Tạo hang nhu mô phổi (AFB (+))**<br>**3. Hội chứng Nhiễm độc lao mạn tính** | Soi đờm AFB 2 mẫu, GeneXpert MTB/RIF, Công thức máu, Tốc độ lắng máu (VS 35 mm/h) | Khởi trị phác đồ chuẩn A1 (2HRZE / 4RHE) ngay sau khi có kết quả GeneXpert không kháng Rifampicin |
+| 🔵 **Tầng 3: Mạn tính / Nền** | **4. Yếu tố phơi nhiễm văn phòng & Cơ địa nhạy cảm tác dụng phụ thuốc** | Kiểm tra chức năng gan (AST, ALT, Bilirubin), Creatinine, Acid uric, Thị lực màu (trước dùng EMB) | Bổ sung Pyridoxine (Vitamin B6) 25mg/ngày, giáo dục nhận biết dấu hiệu viêm gan do thuốc (DILI) |
 
 ---
 
@@ -160,9 +160,28 @@ updated: "2026-10-05"
    - `Viên phối hợp cố định liều FDC (RHZE 150/75/400/275 mg)`: **Uống 04 viên / ngày** (1 lần duy nhất vào buổi sáng lúc bụng đói, trước bữa ăn 30 - 60 phút).
    - `Pyridoxine (Vitamin B6) 25 mg`: **Uống 01 viên / ngày** (Uống cùng thuốc lao để phòng ngừa tác dụng phụ viêm thần kinh ngoại biên do Isoniazid).
 
-2. **Giai đoạn Duy duy trì (4 tháng tiếp theo — 120 liều hàng ngày)**:
+2. **Giai đoạn Duy trì (4 tháng tiếp theo — 120 liều hàng ngày)**:
    - `Viên phối hợp cố định liều FDC (RHE 150/75/275 mg)`: **Uống 04 viên / ngày** (1 lần duy nhất vào buổi sáng lúc bụng đói).
    - `Pyridoxine (Vitamin B6) 25 mg`: **Uống 01 viên / ngày**.
+
+---
+
+### Lộ trình điều trị 3 giai đoạn:
+
+```
+[Giai đoạn 1: Tấn công (Tháng 1-2)] ──► [Giai đoạn 2: Duy trì (Tháng 3-6)] ──► [Giai đoạn 3: Tiêu chuẩn Khỏi bệnh]
+• 4 viên RHZE (FDC) + Vit B6 25mg       • 4 viên RHE (FDC) + Vit B6 25mg        • AFB đờm cuối tháng thứ 6 (-)
+• Uống 1 lần duy nhất bụng đói          • Kiểm tra thị lực màu (EMB)            • X-quang ngực: xơ sẹo ổn định
+• Soi đờm AFB cuối tháng 2              • Soi đờm AFB cuối tháng 5              • Xác nhận KHỎI BỆNH (Cured)
+```
+
+- **Giai đoạn 1: Tấn công diệt khuẩn nhanh (Tháng thứ 1 – Tháng thứ 2)**:
+  - Mục tiêu: Tiêu diệt nhanh chóng quần thể vi khuẩn lao nhân lên tích cực, làm giảm nhanh khả năng lây lan trong cộng đồng và ngăn ngừa đột biến kháng thuốc.
+  - Đánh giá chuyển giai đoạn: Xét nghiệm AFB đờm ở cuối tháng thứ 2. Nếu AFB âm tính -> chuyển sang duy trì; nếu còn dương tính -> tiếp tục phác đồ duy trì và xét nghiệm lại ở cuối tháng thứ 3.
+- **Giai đoạn 2: Duy trì & Tiệt căn vi khuẩn thể ngủ (Tháng thứ 3 – Tháng thứ 6)**:
+  - Mục tiêu: Tiêu diệt triệt để các vi khuẩn lao còn sót lại nằm sâu trong đại thực bào và bã đậu để tránh tái phát.
+- **Giai đoạn 3: Đánh giá kết cục điều trị & Hoàn thành (Cuối tháng thứ 6)**:
+  - Xét nghiệm AFB đờm cuối tháng thứ 6 âm tính và có ít nhất 1 lần xét nghiệm âm tính trước đó (cuối tháng 2 hoặc 5) -> **Công nhận Khỏi bệnh (Cured)**.
 
 ---
 

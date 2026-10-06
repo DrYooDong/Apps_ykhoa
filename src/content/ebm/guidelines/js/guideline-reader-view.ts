@@ -531,6 +531,9 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     // Normalize Images & Fallback Cascade
     normalizeArticleImages(mountEl);
 
+    // Hydrate Flowchart Viewers & Diagram Containers
+    hydrateFlowchartViewers(mountEl);
+
     // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors & ScrollSpy
     hydrateMdxInteractiveTools(mountEl);
     return;
