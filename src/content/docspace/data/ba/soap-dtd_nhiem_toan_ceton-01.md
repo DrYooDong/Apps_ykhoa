@@ -1,6 +1,6 @@
 ---
 title: "Nhiễm toan ceton do đái tháo đường (DKA) khởi phát lần đầu"
-caseId: "soap-dkd-01"
+caseId: "soap-dtd_nhiem_toan_ceton-01"
 specialty: "Nội tiết & Chuyển hóa"
 experienceLevel: "essential"
 difficultyRating: 4
