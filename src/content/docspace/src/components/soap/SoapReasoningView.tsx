@@ -34,18 +34,18 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
   const takeawayLessons = currentCase?.takeawayLessons || currentCase?.p?.takeawayLessons || '';
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4 sm:gap-5">
       {/* 1. Guideline & Evidence-Based Header Banner */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-xs">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-xs shrink-0">
               <Scale className="w-4 h-4" />
             </div>
-            <h3 className="font-display text-lg font-bold text-slate-900 tracking-tight">
+            <h3 className="font-display text-base sm:text-lg font-bold text-slate-900 tracking-tight">
               Biện Luận Lâm Sàng &amp; Y Học Chứng Cứ (EBM)
             </h3>
-            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-900 border border-blue-200">
+            <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-blue-100 text-blue-900 border border-blue-200">
               Evidence Based Medicine
             </span>
           </div>
@@ -56,9 +56,9 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
         </div>
 
         {/* Guideline reference badge & Vault shortcut */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap w-full md:w-auto justify-end">
           {currentCase.sourceReference && (
-            <div className="px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-xs font-semibold text-blue-900">
+            <div className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-xs font-semibold text-blue-900 line-clamp-1">
               <span>Nguồn: </span>
               <span className="underline decoration-blue-300">{currentCase.sourceReference}</span>
             </div>
@@ -66,7 +66,7 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
           <button
             type="button"
             onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title, 'GL')}
-            className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            className="w-full sm:w-auto px-3.5 py-2 min-h-[38px] rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs touch-manipulation"
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span>Tra cứu Hướng dẫn (GL)</span>
@@ -75,15 +75,15 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
       </div>
 
       {/* 2. Primary Clinical Reasoning Text Card */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 md:p-6 shadow-xs space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 sm:pb-3 flex-wrap gap-2">
           <div className="flex items-center gap-2">
             <Lightbulb className="w-4 h-4 text-amber-500" />
             <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
               Biện Luận Lâm Sàng Chi Tiết Theo Tiêu Chuẩn Bộ Y Tế
             </h4>
           </div>
-          <span className="text-[11px] font-mono-custom text-slate-500">
+          <span className="text-[10.5px] sm:text-[11px] font-mono-custom text-slate-500">
             {clinicalReasoning.length > 0 ? `${clinicalReasoning.length} ký tự biện giải` : 'Chưa có văn bản'}
           </span>
         </div>
@@ -93,22 +93,22 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
             <FormattedClinicalText text={clinicalReasoning} bulletColor="blue" />
           </div>
         ) : (
-          <div className="p-8 text-center text-xs text-slate-500">
+          <div className="p-6 sm:p-8 text-center text-xs text-slate-500">
             Ca bệnh này chưa cập nhật phân tích biện luận lâm sàng chuyên sâu.
           </div>
         )}
       </div>
 
       {/* 3. The Bento Grid: 4 Clinical Pearls & Pitfalls */}
-      <div className="space-y-2">
+      <div className="space-y-2.5 sm:space-y-3">
         <div className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-amber-500" />
           <span>Bộ Tứ Hạt Ngọc Lâm Sàng &amp; Bẫy Cần Tránh (Pearls &amp; Pitfalls)</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           {/* 1. History Pearls */}
-          <div className="bg-white border border-sky-200/90 rounded-2xl p-4 shadow-xs flex flex-col justify-between hover:border-sky-300 transition-colors">
+          <div className="bg-white border border-sky-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col justify-between hover:border-sky-300 transition-colors">
             <div className="space-y-2">
               <div className="flex items-center gap-2 border-b border-sky-100 pb-2">
                 <span className="w-7 h-7 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-sm">
@@ -134,7 +134,7 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
           </div>
 
           {/* 2. Objective Pitfalls */}
-          <div className="bg-white border border-amber-200/90 rounded-2xl p-4 shadow-xs flex flex-col justify-between hover:border-amber-300 transition-colors">
+          <div className="bg-white border border-amber-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col justify-between hover:border-amber-300 transition-colors">
             <div className="space-y-2">
               <div className="flex items-center gap-2 border-b border-amber-100 pb-2">
                 <span className="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">
@@ -160,7 +160,7 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
           </div>
 
           {/* 3. Diagnostic Pearls */}
-          <div className="bg-white border border-purple-200/90 rounded-2xl p-4 shadow-xs flex flex-col justify-between hover:border-purple-300 transition-colors">
+          <div className="bg-white border border-purple-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col justify-between hover:border-purple-300 transition-colors">
             <div className="space-y-2">
               <div className="flex items-center gap-2 border-b border-purple-100 pb-2">
                 <span className="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
@@ -186,7 +186,7 @@ export const SoapReasoningView: React.FC<SoapReasoningViewProps> = ({
           </div>
 
           {/* 4. Takeaway Lessons */}
-          <div className="bg-white border border-emerald-200/90 rounded-2xl p-4 shadow-xs flex flex-col justify-between hover:border-emerald-300 transition-colors">
+          <div className="bg-white border border-emerald-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xs flex flex-col justify-between hover:border-emerald-300 transition-colors">
             <div className="space-y-2">
               <div className="flex items-center gap-2 border-b border-emerald-100 pb-2">
                 <span className="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">

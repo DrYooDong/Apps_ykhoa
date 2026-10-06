@@ -545,100 +545,102 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap w-full md:w-auto justify-between sm:justify-end">
           {/* Format Toggle */}
-          <div className="flex items-center border border-slate-200 rounded-xl p-1 bg-slate-50 text-xs">
+          <div className="flex items-center border border-slate-200 rounded-xl p-0.5 sm:p-1 bg-slate-50 text-xs w-full sm:w-auto justify-stretch">
             <button
               type="button"
               onClick={() => setViewFormat('formatted')}
-              className={`px-3 py-1 rounded-lg font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none px-2.5 sm:px-3 py-1.5 sm:py-1 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[34px] sm:min-h-0 touch-manipulation ${
                 viewFormat === 'formatted'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Eye className="w-3.5 h-3.5" />
-              <span>📖 Trình bày Xuất bản</span>
+              <Eye className="w-3.5 h-3.5 shrink-0" />
+              <span>Xuất bản</span>
             </button>
             <button
               type="button"
               onClick={() => setViewFormat('raw')}
-              className={`px-3 py-1 rounded-lg font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`flex-1 sm:flex-none px-2.5 sm:px-3 py-1.5 sm:py-1 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer min-h-[34px] sm:min-h-0 touch-manipulation ${
                 viewFormat === 'raw'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Code2 className="w-3.5 h-3.5" />
-              <span>💻 Mã nguồn Markdown</span>
+              <Code2 className="w-3.5 h-3.5 shrink-0" />
+              <span>Mã nguồn .md</span>
             </button>
           </div>
 
-          {/* Copy Button */}
-          <button
-            type="button"
-            onClick={handleCopy}
-            className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="text-emerald-700">Đã sao chép!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5" />
-                <span>Sao chép</span>
-              </>
-            )}
-          </button>
+          <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-end">
+            {/* Copy Button */}
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="flex-1 sm:flex-none px-3 py-1.5 min-h-[36px] sm:min-h-[34px] rounded-xl bg-white border border-slate-200 hover:bg-slate-50 active:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs touch-manipulation"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-emerald-700 font-bold">Đã chép!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>Sao chép</span>
+                </>
+              )}
+            </button>
 
-          {/* Download Button */}
-          <button
-            type="button"
-            onClick={handleDownload}
-            className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>Tải .md</span>
-          </button>
+            {/* Download Button */}
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="flex-1 sm:flex-none px-3 py-1.5 min-h-[36px] sm:min-h-[34px] rounded-xl bg-white border border-slate-200 hover:bg-slate-50 active:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs touch-manipulation"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Tải .md</span>
+            </button>
 
-          {/* Print Button */}
-          <button
-            type="button"
-            onClick={handlePrint}
-            className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
-          >
-            <Printer className="w-3.5 h-3.5" />
-            <span>In bài viết</span>
-          </button>
+            {/* Print Button (chỉ hiện trên sm trở lên) */}
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="hidden sm:flex px-3.5 py-1.5 min-h-[34px] rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>In bài</span>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* 2. Reader Body Container */}
       <div className="bg-white border border-slate-200/90 rounded-2xl shadow-xs overflow-hidden">
         {viewFormat === 'raw' ? (
-          <div className="p-4 bg-slate-950 text-slate-100 overflow-x-auto">
-            <pre className="font-mono text-xs leading-relaxed whitespace-pre-wrap break-words">
+          <div className="p-3 sm:p-4 bg-slate-950 text-slate-100 overflow-x-auto touch-pan-x">
+            <pre className="font-mono text-[11px] sm:text-xs leading-relaxed whitespace-pre-wrap break-words">
               {markdownText}
             </pre>
           </div>
         ) : (
-          <div className="p-6 sm:p-10 max-w-4xl mx-auto space-y-2 text-slate-800 text-xs leading-relaxed font-sans">
-            {/* Quick Navigation Jump Bar */}
-            <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl p-3 mb-6 no-print">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5 font-mono-custom">
+          <div className="p-3.5 sm:p-6 md:p-10 max-w-4xl mx-auto space-y-2 text-slate-800 text-xs leading-relaxed font-sans">
+            {/* Quick Navigation Jump Bar (Horizontal Smooth Swipe on Mobile) */}
+            <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl p-2.5 sm:p-3 mb-4 sm:mb-6 no-print">
+              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5 font-mono-custom">
                   <span>🧭</span>
-                  <span>MỤC LỤC ĐIỀU HƯỚNG NHANH (QUICK JUMP)</span>
+                  <span>MỤC LỤC ĐIỀU HƯỚNG NHANH</span>
                 </span>
-                <span className="text-[10.5px] text-slate-400">Nhấp để cuộn tới</span>
+                <span className="text-[10px] sm:text-[10.5px] text-slate-400">Vuốt ngang để xem thêm ➔</span>
               </div>
-              <div className="flex items-center gap-1.5 flex-wrap">
+              <div className="flex items-center gap-1.5 overflow-x-auto touch-pan-x no-scrollbar pb-1 scroll-smooth">
                 <button
                   type="button"
                   onClick={() => document.getElementById('soap-sec-s')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 text-slate-700 hover:text-sky-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 active:bg-sky-100 text-slate-700 hover:text-sky-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
                   <span>1. S (Chủ quan)</span>
@@ -646,7 +648,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                 <button
                   type="button"
                   onClick={() => document.getElementById('soap-sec-o')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100/50 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-slate-400 hover:bg-slate-100/50 active:bg-slate-100 text-slate-700 hover:text-slate-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
                   <span>2. O (Khách quan)</span>
@@ -654,7 +656,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                 <button
                   type="button"
                   onClick={() => document.getElementById('soap-sec-a')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-amber-300 hover:bg-amber-50/50 text-slate-700 hover:text-amber-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-amber-300 hover:bg-amber-50/50 active:bg-amber-100 text-slate-700 hover:text-amber-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                   <span>3. A (Đánh giá)</span>
@@ -662,7 +664,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                 <button
                   type="button"
                   onClick={() => document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50/50 text-slate-700 hover:text-teal-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50/50 active:bg-teal-100 text-slate-700 hover:text-teal-800 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
                   <span>4. P (Kế hoạch)</span>
@@ -674,7 +676,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                     else document.getElementById('soap-sec-a')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-amber-50/70 border border-amber-200 hover:bg-amber-100 text-amber-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-amber-50/70 border border-amber-200 hover:bg-amber-100 active:bg-amber-200 text-amber-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span>⭐</span>
                   <span>Bảng 3 Tầng</span>
@@ -686,7 +688,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                     else document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-emerald-50/70 border border-emerald-200 hover:bg-emerald-100 text-emerald-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-emerald-50/70 border border-emerald-200 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span>💊</span>
                   <span>Y lệnh thuốc</span>
@@ -698,7 +700,7 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                     else document.getElementById('soap-sec-p')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-teal-50/70 border border-teal-200 hover:bg-teal-100 text-teal-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1"
+                  className="px-2.5 py-1.5 min-h-[34px] rounded-lg text-[11px] font-semibold bg-teal-50/70 border border-teal-200 hover:bg-teal-100 active:bg-teal-200 text-teal-900 transition-colors cursor-pointer shadow-2xs flex items-center gap-1 shrink-0 active:scale-95 touch-manipulation"
                 >
                   <span>📅</span>
                   <span>Lộ trình điều trị</span>

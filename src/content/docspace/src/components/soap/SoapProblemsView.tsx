@@ -138,19 +138,59 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
       {/* 2. Primary 4-Column Problem List Table */}
       {problems.length > 0 ? (
         <div className="bg-white border border-slate-200/90 rounded-2xl shadow-xs overflow-hidden">
-          <div className="p-4 px-5 bg-slate-50/80 border-b border-slate-200/80 flex items-center justify-between">
+          <div className="p-3.5 sm:p-4 px-4 sm:px-5 bg-slate-50/80 border-b border-slate-200/80 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Layers className="w-4 h-4 text-slate-600" />
               <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                Bảng Phân Tích Vấn Đề Chi Tiết ({problems.length} Vấn Đề)
+                Bảng Phân Tích Vấn Đề ({problems.length} Vấn Đề)
               </span>
             </div>
-            <span className="text-[11px] text-slate-500">
-              Đối chiếu chẩn đoán &amp; can thiệp theo thời gian thực
+            <span className="text-[10.5px] sm:text-[11px] text-slate-500">
+              Phân tầng ưu tiên
             </span>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* Mobile Problem Cards View (< md) */}
+          <div className="md:hidden p-3 flex flex-col gap-3">
+            {problems.map((prob, idx) => (
+              <div
+                key={idx}
+                className={`p-3.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs flex flex-col gap-2.5 ${getPriorityBorder(prob.priority)}`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  {getPriorityBadge(prob.priority)}
+                  <span className="text-[10.5px] font-mono-custom font-bold text-slate-400">
+                    Vấn đề #{idx + 1}
+                  </span>
+                </div>
+
+                <h4 className="text-xs font-bold text-slate-900 leading-snug">
+                  {prob.problemName}
+                </h4>
+
+                {prob.diagnosticOrientation && (
+                  <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-2.5 text-xs text-blue-950">
+                    <div className="text-[10px] font-bold text-blue-800 uppercase tracking-wider mb-1 flex items-center gap-1">
+                      <span>🔬 Định hướng Chẩn đoán &amp; CLS:</span>
+                    </div>
+                    <p className="leading-relaxed font-medium">{prob.diagnosticOrientation}</p>
+                  </div>
+                )}
+
+                {prob.immediateManagement && (
+                  <div className="bg-emerald-50/70 border border-emerald-100 rounded-xl p-2.5 text-xs text-emerald-950">
+                    <div className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-1 flex items-center gap-1">
+                      <span>💊 Hướng xử trí ban đầu &amp; Cấp cứu:</span>
+                    </div>
+                    <p className="leading-relaxed font-medium">{prob.immediateManagement}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Table View (>= md) */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="bg-slate-100/70 border-b border-slate-200 text-slate-700 font-semibold">

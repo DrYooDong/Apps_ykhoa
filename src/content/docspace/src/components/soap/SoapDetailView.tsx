@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Activity,
   AlertTriangle,
+  ArrowUp,
   Award,
   BookOpen,
   Calendar,
@@ -55,6 +56,24 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   className = '',
 }) => {
   const [activeTab, setActiveTab] = useState<SoapDetailTab>('matrix');
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 320) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const levelBadge = getExperienceLevelConfig(currentCase?.experienceLevel);
   const crossRefs = useMemo(
     () => getRelatedVaultArticlesForSoap(currentCase),
@@ -62,9 +81,9 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   );
 
   return (
-    <div id="soap-detail-view" className={`flex flex-col gap-4 ${className}`}>
+    <div id="soap-detail-view" className={`flex flex-col gap-3.5 sm:gap-4 ${className}`}>
       {/* Case Header Card */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs flex flex-wrap items-start justify-between gap-4">
+      <div className="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-xs flex flex-wrap items-start justify-between gap-3 sm:gap-4">
         <div className="flex flex-col gap-2 max-w-4xl flex-1">
           {/* Primary Category Row */}
           <div className="flex items-center gap-2 flex-wrap">
@@ -197,53 +216,57 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
       </div>
 
       {/* 6-Tab Deep-Dive Navigation Bar */}
-      <div className="bg-white border border-slate-200/90 rounded-2xl p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 no-print">
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+      {/* 6-Tab Deep-Dive Navigation Bar (Sticky with Compact Mobile Labels) */}
+      <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-2xl p-1.5 sm:p-2 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2.5 sticky top-12 sm:top-2 z-10 no-print">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 touch-pan-x no-scrollbar scroll-smooth">
           <button
             type="button"
             onClick={() => setActiveTab('anatomy')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'anatomy'
                 ? 'bg-indigo-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <Sparkles className="w-4 h-4 text-indigo-200" />
-            <span>⭐ Giải Phẫu Ca (Bento)</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[9.5px] font-bold ${
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-200" />
+            <span className="sm:hidden">Bento</span>
+            <span className="hidden sm:inline">⭐ Giải Phẫu Ca (Bento)</span>
+            <span className={`px-1.5 py-0.2 rounded-full text-[9px] sm:text-[9.5px] font-bold ${
               activeTab === 'anatomy' ? 'bg-indigo-500 text-white' : 'bg-indigo-100 text-indigo-900'
             } font-mono-custom`}>
-              6 Trụ Cột
+              6 Trụ
             </span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('matrix')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'matrix'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <Layers className="w-4 h-4" />
-            <span>Tổng Quan 4 Cột (SOAP)</span>
+            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="sm:hidden">4 Cột</span>
+            <span className="hidden sm:inline">Tổng Quan 4 Cột (SOAP)</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('problems')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'problems'
                 ? 'bg-amber-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <ListFilter className="w-4 h-4" />
-            <span>Đặt Vấn Đề 3 Tầng</span>
+            <ListFilter className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="sm:hidden">3 Tầng</span>
+            <span className="hidden sm:inline">Đặt Vấn Đề 3 Tầng</span>
             {currentCase?.a?.problemList && currentCase.a.problemList.length > 0 && (
               <span
-                className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                className={`px-1.5 py-0.2 rounded-full text-[9.5px] font-bold ${
                   activeTab === 'problems'
                     ? 'bg-amber-500 text-white'
                     : 'bg-amber-100 text-amber-900'
@@ -257,120 +280,108 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('roadmap')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'roadmap'
                 ? 'bg-teal-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <Calendar className="w-4 h-4" />
-            <span>Lộ Trình &amp; Giám Sát</span>
-            {currentCase?.p?.treatmentRoadmap && (
-              <span
-                className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                  activeTab === 'roadmap'
-                    ? 'bg-teal-500 text-white'
-                    : 'bg-teal-100 text-teal-900'
-                }`}
-              >
-                Lộ trình
-              </span>
-            )}
+            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="sm:hidden">Lộ Trình</span>
+            <span className="hidden sm:inline">Lộ Trình &amp; Giám Sát</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('reasoning')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'reasoning'
                 ? 'bg-purple-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <Scale className="w-4 h-4" />
-            <span>Biện Luận Lâm Sàng (EBM)</span>
-            <span
-              className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                activeTab === 'reasoning'
-                  ? 'bg-purple-500 text-white'
-                  : 'bg-purple-100 text-purple-900'
-              }`}
-            >
-              BYT
-            </span>
+            <Scale className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="sm:hidden">Biện Luận</span>
+            <span className="hidden sm:inline">Biện Luận Lâm Sàng</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('markdown')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 shrink-0 transition-all cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 min-h-[38px] rounded-xl text-xs font-bold flex items-center gap-1.5 sm:gap-2 shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'markdown'
                 ? 'bg-slate-900 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
-            <FileText className="w-4 h-4" />
-            <span>Toàn Văn Markdown (.md)</span>
+            <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="sm:hidden">Markdown</span>
+            <span className="hidden sm:inline">Toàn Văn (.md)</span>
           </button>
         </div>
 
-        {/* When activeTab === 'matrix', show the column filter sub-switcher */}
+        {/* When activeTab === 'matrix', show the column filter sub-switcher (5-col grid on mobile) */}
         {activeTab === 'matrix' && (
-          <div className="flex items-center gap-1 border border-slate-200 rounded-xl p-1 bg-slate-50 text-xs shrink-0 self-end md:self-auto">
+          <div className="grid grid-cols-5 gap-1 border border-slate-200 rounded-xl p-1 bg-slate-50 text-xs w-full md:w-auto shrink-0">
             <button
               type="button"
               onClick={() => setViewMode('board')}
-              className={`px-2.5 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg font-semibold text-center transition-all cursor-pointer ${
                 viewMode === 'board'
                   ? 'bg-white text-blue-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Tất cả 4 Cột
+              <span className="sm:hidden">Tất cả</span>
+              <span className="hidden sm:inline">Tất cả 4 Cột</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('focus-s')}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg font-semibold text-center transition-all cursor-pointer ${
                 viewMode === 'focus-s'
                   ? 'bg-white text-sky-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Cột S
+              <span className="sm:hidden">S</span>
+              <span className="hidden sm:inline">Cột S</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('focus-o')}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg font-semibold text-center transition-all cursor-pointer ${
                 viewMode === 'focus-o'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Cột O
+              <span className="sm:hidden">O</span>
+              <span className="hidden sm:inline">Cột O</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('focus-a')}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg font-semibold text-center transition-all cursor-pointer ${
                 viewMode === 'focus-a'
                   ? 'bg-white text-amber-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Cột A
+              <span className="sm:hidden">A</span>
+              <span className="hidden sm:inline">Cột A</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('focus-p')}
-              className={`px-2 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg font-semibold text-center transition-all cursor-pointer ${
                 viewMode === 'focus-p'
                   ? 'bg-white text-teal-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Cột P
+              <span className="sm:hidden">P</span>
+              <span className="hidden sm:inline">Cột P</span>
             </button>
           </div>
         )}
@@ -640,6 +651,20 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   {/* TAB 5: TOÀN VĂN MARKDOWN (.MD) */}
   {activeTab === 'markdown' && (
     <SoapMarkdownView currentCase={currentCase} />
+  )}
+
+  {/* Floating Back To Top Button for Mobile / Long Reads */}
+  {showScrollTop && (
+    <button
+      type="button"
+      onClick={scrollToTop}
+      className="fixed bottom-5 right-4 z-40 sm:bottom-6 sm:right-6 p-2.5 sm:p-3 rounded-full bg-slate-900/90 hover:bg-slate-900 text-white shadow-lg backdrop-blur-md border border-slate-700/60 transition-all active:scale-90 cursor-pointer flex items-center gap-1.5 touch-manipulation"
+      aria-label="Cuộn lên đầu trang"
+      title="Cuộn lên đầu trang"
+    >
+      <ArrowUp className="w-4 h-4 text-white" />
+      <span className="text-[11px] font-bold hidden sm:inline pr-1">Lên đầu</span>
+    </button>
   )}
 </div>
 );

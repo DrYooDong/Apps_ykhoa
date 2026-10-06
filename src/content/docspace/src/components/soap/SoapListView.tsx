@@ -56,22 +56,22 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
       className={`bg-white border border-slate-200/90 rounded-2xl p-4 shadow-xs flex flex-col gap-3 ${className}`}
     >
       {/* Row 1: Specialty Filters & Search */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
-        <div className="flex items-center gap-2 flex-1 min-w-[280px]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+        <div className="flex items-center gap-2 flex-1 min-w-0">
           <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5 shrink-0">
             <Filter className="w-3.5 h-3.5 text-blue-600" />
-            <span>Chuyên khoa:</span>
+            <span className="hidden sm:inline">Chuyên khoa:</span>
           </span>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto py-0.5 no-scrollbar flex-1">
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar flex-1 touch-pan-x scroll-smooth">
             {SOAP_SPECIALTIES.map((spec) => (
               <button
                 key={spec}
                 type="button"
                 onClick={() => setSelectedSpecialty(spec)}
-                className={`px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 min-h-[36px] sm:min-h-0 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center shrink-0 active:scale-95 ${
                   selectedSpecialty === spec
-                    ? 'bg-blue-600 text-white font-semibold shadow-2xs'
+                    ? 'bg-blue-600 text-white font-semibold shadow-xs'
                     : 'bg-slate-100 hover:bg-slate-200/80 text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -81,22 +81,24 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
           {/* Search Input */}
-          <div className="relative w-56 sm:w-72">
-            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
+          <div className="relative w-full sm:w-72">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3 sm:top-2.5" />
             <input
               type="text"
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
               placeholder="Tìm ca lâm sàng, ICD-10, thuốc..."
-              className="w-full pl-8 pr-7 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:bg-white focus:border-blue-500 text-slate-800 placeholder:text-slate-400 transition-colors"
+              className="w-full pl-9 pr-8 py-2 sm:py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-blue-500 text-slate-800 placeholder:text-slate-400 transition-colors shadow-2xs"
             />
             {searchKeyword && (
               <button
                 type="button"
                 onClick={() => setSearchKeyword('')}
-                className="absolute right-2 top-2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                className="absolute right-2.5 top-2.5 sm:top-2 text-slate-400 hover:text-slate-600 p-1 cursor-pointer"
+                title="Xóa tìm kiếm"
+                aria-label="Xóa tìm kiếm"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -209,7 +211,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 max-h-[380px] overflow-y-auto pr-1 scrollbar-thin">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 max-h-[62vh] sm:max-h-[420px] overflow-y-auto pr-1 scrollbar-thin">
             {cases.map((c) => {
               const isSelected = c.id === selectedCaseId;
               const lvl = getExperienceLevelConfig(c.experienceLevel);
@@ -218,9 +220,9 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                 <div
                   key={c.id}
                   onClick={() => onSelectCase(c.id)}
-                  className={`p-3.5 rounded-xl border transition-all cursor-pointer relative group flex flex-col justify-between ${
+                  className={`p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer relative group flex flex-col justify-between active:scale-[0.98] touch-manipulation ${
                     isSelected
-                      ? 'bg-gradient-to-br from-blue-50/90 to-sky-50/60 border-blue-400/90 shadow-xs ring-1 ring-blue-500/30 border-l-4 border-l-blue-600'
+                      ? 'bg-gradient-to-br from-blue-50/95 to-sky-50/70 border-blue-400/90 shadow-xs ring-1 ring-blue-500/30 border-l-4 border-l-blue-600'
                       : 'bg-white hover:bg-slate-50/90 border-slate-200 hover:border-slate-300 border-l-4 border-l-slate-300 hover:border-l-blue-400'
                   }`}
                 >
@@ -246,11 +248,12 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => onToggleFavorite(c.id, e)}
-                        className="text-slate-300 hover:text-amber-500 transition-colors p-1"
+                        className="text-slate-300 hover:text-amber-500 p-1.5 transition-colors cursor-pointer"
                         title={c.isFavorite ? 'Bỏ yêu thích' : 'Đánh dấu yêu thích'}
+                        aria-label="Đánh dấu yêu thích"
                       >
                         <Star
-                          className={`w-3.5 h-3.5 ${
+                          className={`w-4 h-4 ${
                             c.isFavorite ? 'fill-amber-400 text-amber-500' : ''
                           }`}
                         />
@@ -259,7 +262,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
 
                     {/* Case Title */}
                     <h4
-                      className={`text-xs font-bold leading-snug line-clamp-2 ${
+                      className={`text-xs sm:text-sm font-bold leading-snug line-clamp-2 ${
                         isSelected ? 'text-blue-950 font-display' : 'text-slate-800'
                       }`}
                     >
@@ -277,7 +280,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                         {c.tags.slice(0, 2).map((t, idx) => (
                           <span
                             key={idx}
-                            className="px-1.5 py-0.2 rounded text-[9.5px] bg-slate-100 text-slate-600 border border-slate-200/60"
+                            className="px-1.5 py-0.5 rounded text-[9.5px] bg-slate-100 text-slate-600 border border-slate-200/60"
                           >
                             #{t}
                           </span>
@@ -291,13 +294,16 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                     )}
                   </div>
 
-                  {/* Footer info: ICD-10 and Author */}
+                  {/* Footer info: ICD-10 and Mobile action cue */}
                   <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-100 text-[10.5px]">
-                    <span className="font-mono-custom text-blue-700 font-bold truncate max-w-[150px] bg-blue-50/60 px-1.5 py-0.2 rounded border border-blue-100">
+                    <span className="font-mono-custom text-blue-700 font-bold truncate max-w-[140px] bg-blue-50/70 px-1.5 py-0.5 rounded border border-blue-100">
                       ICD: {c.a.icd10 || 'N/A'}
                     </span>
-                    <span className="truncate text-slate-400 text-[10px]">
-                      {c.authorDoctor || 'Knowledge Vault'}
+                    <span className={`text-[10.5px] font-semibold flex items-center gap-0.5 ${
+                      isSelected ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-600'
+                    }`}>
+                      <span>{isSelected ? 'Đang xem' : 'Mở ca'}</span>
+                      <span className="text-xs">➔</span>
                     </span>
                   </div>
                 </div>
