@@ -25,7 +25,9 @@
     "lint:content": "node tools/scripts/medical-linter.mjs",
     "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
     "sync:cdss": "node tools/scripts/sync-clinical-db.mjs",
-    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode"
+    "sync:soap": "node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba",
+    "validate:soap": "node tools/scripts/validate-soap-catalog.mjs",
+    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode && npm run validate:soap"
   },
   "keywords": [
     "medical",

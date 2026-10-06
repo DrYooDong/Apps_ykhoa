@@ -15,5 +15,6 @@ Thư mục này lưu trữ bộ nhớ dự án, bài học kinh nghiệm (Lesson
 - [2026-09-knowledge-vault-md-to-mdx-image-pipeline.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-knowledge-vault-md-to-mdx-image-pipeline.md): Quy trình bắt buộc trích xuất, sao chép và nhúng 100% hình ảnh từ file nguồn .md sang .mdx.
 - [2026-09-infobox-vertical-stack-and-qa-squad.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-infobox-vertical-stack-and-qa-squad.md): Khắc phục lỗi xếp chồng dọc .infobox và thiết lập hệ thống CliniPortal QA Agent Squad.
 - [2026-09-epidemiology-mdx-and-orthogonal-svg-mastery.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-epidemiology-mdx-and-orthogonal-svg-mastery.md): Nâng cấp phân hệ Dịch tễ học Y khoa, triệt tiêu code block thô và chuẩn hóa lưu đồ trực giao SVG Editorial.
+- [2026-10-soap-squad-lessons.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-10-soap-squad-lessons.md): Khắc phục sự cố đồng bộ danh mục ca bệnh (Catalog Drift) và tối ưu hóa giao diện di động (Mobile Viewport) phân hệ Sổ tay SOAP.
 
 

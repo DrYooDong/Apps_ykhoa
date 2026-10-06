@@ -40,9 +40,7 @@
 
 ### 📥 1. BACKLOG (Hàng đợi Nhiệm vụ)
 
-| ID | Module / File | Nhiệm vụ / Mục tiêu | Phân vai phụ trách | Độ ưu tiên |
-|---|---|---|---|---|
-| `TASK-DS-05` | `components/soap/` | Tinh chỉnh giao diện ma trận 4 cột S - O - A - P trong `SoapDetailView.tsx` cho màn hình Mobile và Tablet | DS-AGENT-01, DS-AGENT-03 | 🟢 Medium |
+*(Chưa có task nào trong trạng thái này - Sẵn sàng tiếp nhận chỉ định)*
 
 ---
 
@@ -68,6 +66,7 @@
 
 | ID | Module | Mô tả kết quả | Người hoàn thành | Ngày |
 |---|---|---|---|---|
+| `TASK-DS-05` | `components/soap/` | Tinh chỉnh giao diện ma trận 4 cột S - O - A - P trong `SoapDetailView.tsx` và `SoapExperienceBoard.tsx` cho Mobile (≤ 390px): chuyển Header sang `flex-col`, thêm `break-words`, `min-w-0`, dải toolbar full-width, tối ưu thanh 6-tab và vitals bar. | DS-AGENT-01, DS-AGENT-03 | 2026-10-07 |
 | `TASK-DS-08` | `components/soap/TreatmentRoadmapTimeline.tsx` | Thiết kế giao diện Timeline / Stepper chuyên biệt cho Mục 4 "Lộ trình điều trị & Giám sát (Roadmap)": Horizontal Interactive Stepper Bar (trạm mốc nấc thang, nhãn vận tốc/liều dịch) và Vertical Clinical Timeline Cards (thẻ Tình trạng, Y lệnh, CLS, Đúc kết ra sốc). Tích hợp vào `SoapPlanColumn.tsx`. | DS-AGENT-01, DS-AGENT-02 | 2026-10-04 |
 | `TASK-DS-07` | `components/soap/FormattedClinicalText.tsx` | Khử triệt để 100% lỗi ký tự đặc biệt LaTeX/NotebookLM (`\(\rightarrow\)`, `\ge`, `\le`, `\times`, `text{}`, `\mathbf`, `\frac`, unparsed `**bold**`). Áp dụng hàm `formatClinicalInline` cho `SoapProblemsView`, `SoapAssessmentColumn`, `SoapPlanColumn`, `SoapMarkdownView`. | DS-AGENT-02, DS-AGENT-04 | 2026-10-04 |
 | `TASK-DS-06` | `components/soap/SoapSubjectiveColumn.tsx` & `SymptomCategorySection.tsx` | Khắc phục lỗi Tiền căn bị đóng khuôn nhỏ chật chội: tái cấu trúc thành Full Width Expanded Container liền mạch (Bản thân & Dược sử, Gia đình & Di truyền, Dịch tễ học & Phơi nhiễm) và mở rộng textarea Bước 1 (`min-h-[96px]`, `rows={4}`). | DS-AGENT-01, DS-AGENT-03 | 2026-10-04 |

@@ -840,7 +840,13 @@ function processMarkdownFile(filePath) {
     return null;
   }
 
-  const caseId = frontmatter.caseId || `soap-${path.basename(filePath, '.md')}`;
+  const fileBase = path.basename(filePath, '.md');
+  const defaultCaseId = fileBase.startsWith('soap-') ? fileBase : `soap-${fileBase}`;
+  const caseId = frontmatter.caseId || defaultCaseId;
+
+  if (!frontmatter.caseId) {
+    console.warn(`⚠️  [WARN] ${path.basename(filePath)} thiếu trường caseId trong frontmatter! Tự động gán ID: ${caseId}`);
+  }
   const parsedSoap = extractSoapBody(body);
 
   // Gán các pearls từ frontmatter vào parsedSoap
@@ -926,6 +932,18 @@ function processMarkdownFile(filePath) {
   fs.writeFileSync(destMdPath, contentToSave, 'utf-8');
   console.log(`   ➔ Đã lưu file Markdown vào DocSpace: ${destMdPath}`);
 
+  // Nếu file nguồn nằm trong DOCSPACE_BA_DIR nhưng tên file khác với caseId.md, dọn file cũ để tránh duplicate
+  const resolvedInput = path.resolve(filePath);
+  const resolvedDest = path.resolve(destMdPath);
+  if (resolvedInput !== resolvedDest && path.dirname(resolvedInput) === path.resolve(DOCSPACE_BA_DIR)) {
+    try {
+      fs.unlinkSync(resolvedInput);
+      console.log(`   🧹 [Dọn dẹp] Đã xóa file trùng lặp tên cũ: ${path.basename(resolvedInput)} (đã đổi sang ${path.basename(destMdPath)})`);
+    } catch (e) {
+      console.warn(`   ⚠️ Không thể xóa file cũ: ${e.message}`);
+    }
+  }
+
   // Đồng bộ thêm vào Knowledge Vault nếu có thư mục
   if (fs.existsSync(VAULT_BA_DIR)) {
     const vaultDestPath = path.join(VAULT_BA_DIR, `${caseId}.md`);
@@ -1010,6 +1028,32 @@ Ví dụ:
       catalog.push(article);
       newCount++;
       console.log(`   ➔ [THÊM MỚI] Đã nạp thành công ca lâm sàng ID: ${article.id}`);
+    }
+  }
+
+  // Nếu nạp toàn bộ thư mục, dọn dẹp các entry BA mồ côi (không còn file .md tương ứng)
+  if (stat.isDirectory()) {
+    const remainingMdFiles = fs.readdirSync(DOCSPACE_BA_DIR).filter((f) => f.endsWith('.md'));
+    const validBaseNames = new Set(remainingMdFiles.map((f) => f.replace(/\.md$/, '')));
+
+    let prunedCount = 0;
+    for (let i = catalog.length - 1; i >= 0; i--) {
+      const a = catalog[i];
+      if (a.khoCode === 'BA') {
+        const hasMatchingFile =
+          validBaseNames.has(a.id) ||
+          (a.caseId && validBaseNames.has(a.caseId)) ||
+          remainingMdFiles.includes(a.fullFileName) ||
+          (a.relPath && remainingMdFiles.includes(path.basename(a.relPath)));
+        if (!hasMatchingFile) {
+          console.log(`   🧹 [Prune Orphan] Đã loại bỏ entry mồ côi khỏi catalog: ${a.id} (${a.title})`);
+          catalog.splice(i, 1);
+          prunedCount++;
+        }
+      }
+    }
+    if (prunedCount > 0) {
+      console.log(`   ✨ Đã dọn dẹp ${prunedCount} entry mồ côi không có file .md tương ứng.`);
     }
   }
 
