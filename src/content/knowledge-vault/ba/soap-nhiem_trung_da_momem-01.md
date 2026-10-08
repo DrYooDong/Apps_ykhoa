@@ -1,7 +1,7 @@
 ---
 title: "Nhiễm trùng da mô mềm có mủ"
-caseId: "soap-ntdmv-01"
-specialty: "Ngoại khoa"
+caseId: "soap-nhiem_trung_da_momem-01"
+specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3
 authorDoctor: "BS. YooDong"

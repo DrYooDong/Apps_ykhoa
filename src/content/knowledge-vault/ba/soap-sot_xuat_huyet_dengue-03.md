@@ -1,10 +1,10 @@
 ---
-title: "Sốt xuất huyết Dengue nặng, thể tổn thương gan cấp nặng ở bệnh nhân Nam 32 tuổi"
+title: "Sốt xuất huyết Dengue nặng, thể tổn thương gan cấp nặng"
 caseId: "soap-sot_xuat_huyet_dengue-03"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 5
-authorDoctor: "BS. YooDong"
+authorDoctor: "BS YooDong"
 icd10:
   - "A97.2"
 tags:

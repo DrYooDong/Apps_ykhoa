@@ -1,6 +1,6 @@
 ---
 title: "Viêm gan vi rút B mạn tính có chỉ định điều trị NAs"
-caseId: "soap-viem_gan_vi_rut_b-01"
+caseId: "soap-viem_gan_vi_rut_b_man-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

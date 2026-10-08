@@ -1,10 +1,10 @@
 ---
-title: "Ca lâm sàng Tay chân miệng độ IIA ở trẻ 24 tháng tuổi"
+title: "Tay chân miệng độ IIA ở trẻ 24 tháng tuổi"
 caseId: "soap-tay_chan_mieng_do_2a-01"
-specialty: "Nhi khoa"
+specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3
-authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
+authorDoctor: "BS YooDong"
 icd10:
 - "B08.4"
 tags:

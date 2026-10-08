@@ -1,10 +1,10 @@
 ---
-title: "Ca lâm sàng Sốt nhiễm trùng đường tiết niệu trên có biến chứng Urosepsis và Ứ mủ thận ở bệnh nhân đái tháo đường tuýp 2"
+title: "Viêm thận bể thận cấp có biến chứng Urosepsis và Ứ mủ thận"
 caseId: "soap-viem_than_be_than_cap_bien_chung_urosepsis-01"
-specialty: "Thận - Tiết niệu"
+specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
-difficultyRating: 4
-authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
+difficultyRating: 5
+authorDoctor: "BS YooDong"
 icd10:
   - "N10"
   - "N13.6"

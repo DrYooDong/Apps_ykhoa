@@ -1,6 +1,6 @@
 ---
 title: "Phản vệ độ II do dị ứng cua biển"
-caseId: "soap-phan-ve-do-ii-dua-01"
+caseId: "soap-phan_ve_do_ii-01"
 specialty: "Cấp cứu"
 experienceLevel: "essential"
 difficultyRating: 3

@@ -1,6 +1,6 @@
 ---
 title: "Thủy đậu có biến chứng Viêm phổi thủy đậu ở người lớn"
-caseId: "soap-thuy_dau_bien_chung_viem_phoi-01"
+caseId: "soap-thuy_dau_bien_chung-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 3

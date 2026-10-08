@@ -1,5 +1,5 @@
 ---
-title: "Ca lâm sàng Lao phổi AFB (+) tình cờ phát hiện ở bệnh nhân khám vì ho kéo dài"
+title: "Lao phổi AFB (+) tình cờ phát hiện"
 caseId: "soap-lao_phoi_afb_duong-01"
 specialty: "Hô hấp"
 experienceLevel: "essential"
