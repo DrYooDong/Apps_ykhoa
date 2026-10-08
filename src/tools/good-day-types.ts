@@ -1,14 +1,15 @@
 /**
- * CliniPortal 2.0 — Good Day Calculator Types
+ * CliniPortal 2.0 — Good Day Calculator Types (Chuyên ngành Nội khoa)
  * Path: src/tools/good-day-types.ts
  */
 
 export type DoctorSpecialty =
-  | 'surgery'           // Ngoại khoa & Phẫu thuật / Can thiệp
-  | 'icu_er'            // Hồi sức & Cấp cứu (ICU / CCU / ER)
-  | 'internal'          // Nội khoa Điều trị & Ca khó
-  | 'psych_onco_peds'   // Tâm thần, Ung bướu, Nhi & CS Giảm nhẹ
-  | 'tcm_rehab';        // Y học cổ truyền & Phục hồi chức năng
+  | 'internal_general'      // Nội Tổng Quát & Ca Bệnh Phức Tạp / Đa Bệnh Lý
+  | 'internal_cardio'       // Nội Tim Mạch & Huyết Động Học
+  | 'internal_resp_icu'     // Nội Hô Hấp & Hồi Sức Tích Cực Nội Khoa
+  | 'internal_gi_hepa'      // Nội Tiêu Hóa & Gan Mật
+  | 'internal_endo_nephro'  // Nội Tiết, Chuyển Hóa & Thận Học
+  | 'internal_neuro_id';    // Nội Thần Kinh & Bệnh Truyền Nhiễm
 
 export interface SpecialtyMeta {
   id: DoctorSpecialty;
@@ -105,10 +106,10 @@ export interface ClinicalAdviceItem {
 }
 
 export interface ClinicalAdvice {
-  surgery: ClinicalAdviceItem;
-  consultation: ClinicalAdviceItem;
-  communication: ClinicalAdviceItem;
-  research: ClinicalAdviceItem;
+  diagnosis: ClinicalAdviceItem;        // Chẩn đoán & Biện luận Ca khó Nội khoa
+  pharmacotherapy: ClinicalAdviceItem;  // Dược trị liệu & Tối ưu hóa Y lệnh thuốc
+  communication: ClinicalAdviceItem;    // Giao tiếp Bệnh mạn & Giải thích Tiên lượng
+  evidence: ClinicalAdviceItem;         // Tra cứu EBM & Sinh hoạt Khoa phòng
 }
 
 export interface DiaChiRelationResult {
@@ -136,13 +137,13 @@ export interface NapAmDetail {
   meaning: string;
 }
 
-// ─── ĐÁNH GIÁ VỤ VIỆC Y KHOA CHUYÊN BIỆT (CHƯƠNG II: 83 VỤ) ───────────
+// ─── ĐÁNH GIÁ VỤ VIỆC Y KHOA NỘI KHOA CHUYÊN BIỆT (CHƯƠNG II: 83 VỤ) ───────────
 export type MedicalTaskType =
-  | 'cau_thay'    // VỤ 81: Cầu Thầy Trị Bệnh & Phẫu Thuật
-  | 'hot_thuoc'   // VỤ 82: Hốt Thuốc / Bào Chế / Ra Y Lệnh Đầu Tay
-  | 'uong_thuoc'  // VỤ 83: Uống Thuốc / Khởi Đầu Liệu Trình / Hóa Trị
-  | 'khai_truong' // VỤ 37: Khai Trương Phòng Khám / Tiếp Nhận Thiết Bị Mới
-  | 'giao_dich';  // VỤ 39: Ký Kết Hợp Đồng Y Tế / Thầu Thuốc
+  | 'kham_chandoan'        // VỤ 81: Khám & Biện Luận Ca Khó Nội Khoa
+  | 'khoi_phacdo'          // VỤ 82: Khởi Đầu Phác Đồ Điều Trị / Dược Trị Liệu Bậc Cao
+  | 'chinh_lieu_xuatvien'  // VỤ 83: Hiệu Chỉnh Liều, Rà Soát Tương Tác & Xuất Viện An Toàn
+  | 'khai_truong_kthuat'   // VỤ 37: Khai Trương Phòng Khám Nội Khoa / Triển Khai Thăm Dò Chức Năng
+  | 'hoi_chan_ebm';        // VỤ 39: Hội Chẩn Ca Bệnh Liên Chuyên Khoa & Nghiên Cứu EBM
 
 export interface MedicalTaskConfig {
   id: MedicalTaskType;
@@ -150,7 +151,7 @@ export interface MedicalTaskConfig {
   title: string;
   shortTitle: string;
   description: string;
-  specialDays?: string[];     // 3 Ngày Tối Thượng (ví dụ: Kỷ Dậu, Bính Thìn, Nhâm Thìn trong Vụ 81)
+  specialDays?: string[];     // Ngày Tối Thượng y học cổ truyền
   baseDays: string[];        // Các ngày tốt căn bản của vụ
   hapTruc: string[];
   kyTruc?: string[];
@@ -232,7 +233,7 @@ export interface DayScoreEvaluation {
   advice: ClinicalAdvice;
   hoangDaoHours: string[];
   gioTimeline: GioDetailItem[];
-  // Bổ sung chuyên sâu theo sách:
+  // Bổ sung chuyên sâu:
   napAmDay: NapAmDetail;
   napAmDoc: NapAmDetail;
   napAmRelation: { score: number; text: string; relationType: 'sinh_nhap' | 'dong_hanh' | 'sinh_xuat' | 'khac_xuat' | 'khac_nhap' };
@@ -260,7 +261,7 @@ export interface WeekDaySummary {
 
 export interface BestClinicalDayResult {
   rank: number;
-  purpose: 'surgery' | 'clinic' | 'ebm' | 'consultation' | 'med_cau_thay' | 'med_hot_thuoc' | 'med_uong_thuoc';
+  purpose: 'diagnosis' | 'pharmacotherapy' | 'discharge' | 'ebm' | 'clinic';
   purposeName: string;
   evalData: DayScoreEvaluation;
   matchReasons: string[];

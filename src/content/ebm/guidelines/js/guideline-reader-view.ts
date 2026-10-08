@@ -29,6 +29,15 @@ export function renderGuidelineReader(slug: string): string {
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
   const savedFontSize = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_font_size') || '16') : '16';
 
+  // Lookup initial title from static registry if available
+  const initialItem = Array.isArray(KHO_GUIDELINES_STATIC)
+    ? KHO_GUIDELINES_STATIC.find((item: any) => {
+        const fileSlug = (item.file || '').replace(/^.*\//, '').replace(/\.(html|mdx)$/i, '');
+        return fileSlug === baseSlugName || item.id === baseSlugName || (item.slug && item.slug === baseSlugName);
+      })
+    : null;
+  const initialTitle = initialItem?.title || baseSlugName;
+
   // Trigger async fetch after container mounts to DOM
   setTimeout(() => {
     fetchAndHydrateGuideline(cleanSlug, baseSlugName);
@@ -50,7 +59,7 @@ export function renderGuidelineReader(slug: string): string {
             Kho Guidelines
           </a>
           <span>/</span>
-          <span style="color: var(--color-text, #0f172a); font-weight: 800;" id="reader-breadcrumb-title">${baseSlugName}</span>
+          <span style="color: var(--color-text, #0f172a); font-weight: 800;" id="reader-breadcrumb-title">${initialTitle}</span>
         </div>
 
         <!-- Pro Reader Settings Dropdown (Dark Mode, Font size, Width, Fullscreen, EBM Note, Print) -->
@@ -442,7 +451,13 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   // Handle Native MDX Rendering for Guidelines
   if (isMdx) {
     const parsed = cliniMdxEngine.parse(htmlText);
-    const cleanTitle = parsed.title;
+    const matchedStatic = Array.isArray(KHO_GUIDELINES_STATIC)
+      ? KHO_GUIDELINES_STATIC.find((item: any) => {
+          const fileSlug = (item.file || '').replace(/^.*\//, '').replace(/\.(mdx|html)$/i, '');
+          return fileSlug === baseSlugName || item.id === baseSlugName || (item.slug && item.slug === baseSlugName);
+        })
+      : null;
+    const cleanTitle = parsed.title || matchedStatic?.title || baseSlugName;
     const crumbEl = document.getElementById('reader-breadcrumb-title');
     if (crumbEl) crumbEl.textContent = cleanTitle;
     document.title = `${cleanTitle} – CliniPortal`;
@@ -510,7 +525,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
           </div>
           
           <h1 style="font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif); font-size: clamp(1.8rem, 3.5vw, 2.35rem); font-weight: 800; color: #ffffff; margin: 0.5rem 0 0.85rem 0; line-height: 1.25; letter-spacing: -0.02em; position: relative; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-            ${parsed.title}
+            ${cleanTitle}
           </h1>
           
           <p style="margin: 0; font-size: 1.02rem; color: rgba(255, 255, 255, 0.9); line-height: 1.7; max-width: 980px; position: relative; z-index: 2; font-weight: 400;">

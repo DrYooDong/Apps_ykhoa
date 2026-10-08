@@ -55,13 +55,18 @@ export class EBMFormatLoader {
     const meta: Record<string, string> = {};
     let content = mdText;
 
-    if (mdText.startsWith('---')) {
-      const parts = mdText.split(/^---$/m);
-      if (parts.length >= 3) {
-        const yamlBlock = parts[1].trim();
-        content = parts.slice(2).join('---').trim();
+    const clean = mdText.replace(/^\uFEFF/, '');
+    if (clean.startsWith('---')) {
+      const match = clean.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+      if (match) {
+        const yamlBlock = match[1];
+        content = match[2];
 
-        yamlBlock.split('\n').forEach(line => {
+        yamlBlock.split(/\r?\n/).forEach(line => {
+          if (!line.trim() || line.trim().startsWith('#')) return;
+          // Only top-level unindented keys
+          if (line.startsWith(' ') || line.startsWith('\t') || line.trim().startsWith('-')) return;
+
           const colonIdx = line.indexOf(':');
           if (colonIdx !== -1) {
             const key = line.slice(0, colonIdx).trim();

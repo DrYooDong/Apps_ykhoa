@@ -91,7 +91,7 @@ updated: "2026-10-06"
 - **Bilirubin trực tiếp (Bili TT)**: 198.9 µmol/L (chiếm 51.5% Bilirubin toàn phần).
 - **AST (SGOT)**: 279.4 U/L (tăng ~8 x ULN).
 - **ALT (SGPT)**: 375.4 U/L (tăng ~10 x ULN).
-- **Albumin máu**: 23.95 g/L (giảm nặng) \\(\rightarrow\\) *Theo dõi diễn tiến qua các mốc điều trị*: 23.95 g/L \\(\rightarrow\\) 25.54 g/L \\(\rightarrow\\) 28.80 g/L.
+- **Albumin máu**: 23.95 g/L (giảm nặng) => *Theo dõi diễn tiến qua các mốc điều trị*: 23.95 g/L => 25.54 g/L => 28.80 g/L.
 - **ALP (Phosphatase kiềm)**: 200 U/L (tăng nhẹ < 2 x ULN).
 - **GGT**: 400 U/L (tăng ~8 x ULN).
 - **Ure máu**: 4.22 mmol/L (trong giới hạn bình thường).
@@ -103,7 +103,7 @@ updated: "2026-10-06"
 
 #### 3. Xét nghiệm Huyết học & Đông máu
 - **PLT (Tiểu cầu)**: 167 K/µL (trong giới hạn bình thường).
-- **PT% (Tỷ lệ Prothrombin)**: 48% (giảm nặng < 50% \\(\rightarrow\\) suy chức năng tổng hợp yếu tố đông máu của tế bào gan).
+- **PT% (Tỷ lệ Prothrombin)**: 48% (giảm nặng < 50% => suy chức năng tổng hợp yếu tố đông máu của tế bào gan).
 - **ProTP**: 51.79%.
 
 #### 4. Xét nghiệm Vi rút & Miễn dịch
@@ -164,27 +164,19 @@ updated: "2026-10-06"
    - `Levofloxacin (Lfx) 500mg`: Uống 1 viên/ngày (hoặc 750mg/ngày, uống sáng).
 
 2. **Hồi sức chức năng gan & Bù đạm tổng hợp**:
-   - `Dung dịch Albumin 20% 50mL`: Truyền tĩnh mạch chậm (30–40 giọt/phút) 1 chai/ngày x 3–5 ngày (giúp nâng Albumin từ 23.95 g/L \\(\rightarrow\\) 25.54 g/L \\(\rightarrow\\) 28.80 g/L).
+   - `Dung dịch Albumin 20% 50mL`: Truyền tĩnh mạch chậm (30–40 giọt/phút) 1 chai/ngày x 3–5 ngày (giúp nâng Albumin từ 23.95 g/L => 25.54 g/L => 28.80 g/L).
    - `Vitamin K1 10mg`: 1 ống tiêm tĩnh mạch chậm/ngày x 3 ngày (hỗ trợ phục hồi các yếu tố đông máu, nâng PT%).
    - `L-Ornithine L-Aspartate 5g`: 1–2 ống pha trong 250mL Glucose 5% truyền tĩnh mạch chậm 30 giọt/phút (dự phòng và xử trí tăng NH₃ máu).
    - `Silymarin / Phospholipid thiết yếu / Glutathione`: Dùng hỗ trợ bảo vệ màng tế bào gan.
 
 3. **Điều chỉnh hạ Kali máu**:
-   - `Potassium chloride (KCl) 10% 10mL`: Pha 2 ống vào 500mL NaCl 0.9% truyền tĩnh mạch qua bơm điện (tốc độ \\(\le\\) 20 mmol/h).
+   - `Potassium chloride (KCl) 10% 10mL`: Pha 2 ống vào 500mL NaCl 0.9% truyền tĩnh mạch qua bơm điện (tốc độ <= 20 mmol/h).
    - `Kaleorid (KCl) 600mg`: Uống 1 viên x 2 lần/ngày sau ăn.
-   - Mục tiêu: Nâng và duy trì K⁺ máu \\(\ge\\) 3.5 mmol/L.
+   - Mục tiêu: Nâng và duy trì K⁺ máu >= 3.5 mmol/L.
 
 ---
 
 ### Lộ trình điều trị 3 giai đoạn:
-
-```
-[Giai đoạn 1: Ngày 1–7]          [Giai đoạn 2: Ngày 8–21]           [Giai đoạn 3: Sau tuần 3–4]
-• Ngừng hoàn toàn RHZ            • Kiểm tra men gan & Bilirubin      • Duy trì phác đồ 9RHE
-• Dùng phác đồ tạm thời (SE+Lfx)  • Khi Bilirubin < 2x ULN:           • Theo dõi định kỳ hàng tháng
-• Bù Albumin + Vitamin K1 + KCl    - Thử lại RMP -> INH              • Chống chỉ định tái dùng PZA
-• Kiểm tra CLS q48–72h             - Bỏ hẳn PZA vĩnh viễn
-```
 
 - **Giai đoạn 1: Cấp tính / Hồi sức gan & Bù điện giải (Ngày 1 – Ngày 7)**:
   - Ngừng RHZ, duy trì phác đồ SE + Levofloxacin.

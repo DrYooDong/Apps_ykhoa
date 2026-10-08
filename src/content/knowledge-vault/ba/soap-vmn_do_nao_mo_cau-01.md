@@ -1,6 +1,6 @@
 ---
-title: "Ca lâm sàng Viêm màng nào do não mô cầu ở bệnh nhân nam 19 tuổi"
-caseId: "soap-viem_mang_nao_do_nao_mo_cau-01"
+title: "Viêm màng não do não mô cầu"
+caseId: "soap-vmn_do_nao_mo_cau-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

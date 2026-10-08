@@ -17,33 +17,10 @@ export class CliniMdxEngine {
       return { frontmatter: {}, title: '', description: '', html: '', toc: [] };
     }
 
-    let content = rawMdx;
-    const frontmatter: Record<string, any> = {};
-    const toc: Array<{ id: string; text: string; level: number }> = [];
-
     // 1. Extract YAML Frontmatter
-    if (content.startsWith('---')) {
-      const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
-      if (match) {
-        const yamlStr = match[1];
-        content = content.slice(match[0].length);
-
-        yamlStr.split('\n').forEach(line => {
-          const colonIdx = line.indexOf(':');
-          if (colonIdx !== -1) {
-            const key = line.slice(0, colonIdx).trim();
-            let val = line.slice(colonIdx + 1).trim();
-            if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-              val = val.slice(1, -1);
-            }
-            if (val === 'true') frontmatter[key] = true;
-            else if (val === 'false') frontmatter[key] = false;
-            else if (!isNaN(Number(val)) && val !== '') frontmatter[key] = Number(val);
-            else frontmatter[key] = val;
-          }
-        });
-      }
-    }
+    const { frontmatter, body } = this.extractFrontmatter(rawMdx);
+    let content = body;
+    const toc: Array<{ id: string; text: string; level: number }> = [];
 
     const title = frontmatter.title || '';
     const description = frontmatter.description || '';
@@ -203,6 +180,119 @@ export class CliniMdxEngine {
       html,
       toc
     };
+  }
+
+  /**
+   * Tách Frontmatter và Body với hỗ trợ mảng lồng nhau, danh sách đối tượng (sections) & key-values
+   */
+  private extractFrontmatter(raw: string): { frontmatter: Record<string, any>; body: string } {
+    const clean = raw.replace(/^\uFEFF/, '');
+    const match = clean.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) {
+      return { frontmatter: {}, body: clean };
+    }
+
+    const yamlBlock = match[1];
+    const body = match[2];
+
+    const frontmatter: Record<string, any> = {};
+    const lines = yamlBlock.split(/\r?\n/);
+
+    let currentKey = '';
+    let currentMode: 'simple' | 'list_strings' | 'list_objects' | 'nested_object' = 'simple';
+    let currentObj: Record<string, any> | null = null;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (!line.trim() || line.trim().startsWith('#')) continue;
+
+      const indent = line.search(/\S/);
+
+      // Check item in list with "- "
+      const dashMatch = line.match(/^(\s*)-\s+(.*)$/);
+      if (dashMatch) {
+        const itemContent = dashMatch[2].trim();
+
+        // Check if this is an object start "- key: val"
+        const objKvMatch = itemContent.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (objKvMatch) {
+          currentMode = 'list_objects';
+          currentObj = {};
+          let val = objKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          if (val === 'true') currentObj[objKvMatch[1]] = true;
+          else if (val === 'false') currentObj[objKvMatch[1]] = false;
+          else if (!isNaN(Number(val)) && val !== '') currentObj[objKvMatch[1]] = Number(val);
+          else currentObj[objKvMatch[1]] = val;
+
+          if (!Array.isArray(frontmatter[currentKey])) {
+            frontmatter[currentKey] = [];
+          }
+          frontmatter[currentKey].push(currentObj);
+        } else {
+          // Simple string item
+          currentMode = 'list_strings';
+          const cleanVal = itemContent.replace(/^["']|["']$/g, '');
+          if (!Array.isArray(frontmatter[currentKey])) {
+            frontmatter[currentKey] = [];
+          }
+          frontmatter[currentKey].push(cleanVal);
+        }
+        continue;
+      }
+
+      // Check sub-property of object in list (e.g. "    title: ...", "    number: ...", "    icon: ...")
+      if (indent >= 2 && currentMode === 'list_objects' && currentObj) {
+        const subKvMatch = line.trim().match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (subKvMatch) {
+          const subKey = subKvMatch[1];
+          let subVal = subKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          if (subVal === 'true') currentObj[subKey] = true;
+          else if (subVal === 'false') currentObj[subKey] = false;
+          else if (!isNaN(Number(subVal)) && subVal !== '') currentObj[subKey] = Number(subVal);
+          else currentObj[subKey] = subVal;
+          continue;
+        }
+      }
+
+      // Check sub-property of a nested object map (e.g. metrics: \n    r0: "1.33")
+      if (indent > 0 && currentMode === 'nested_object' && frontmatter[currentKey] && typeof frontmatter[currentKey] === 'object' && !Array.isArray(frontmatter[currentKey])) {
+        const nestedKvMatch = line.trim().match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+        if (nestedKvMatch) {
+          const nKey = nestedKvMatch[1];
+          let nVal = nestedKvMatch[2].trim().replace(/^["']|["']$/g, '');
+          if (nVal === 'true') frontmatter[currentKey][nKey] = true;
+          else if (nVal === 'false') frontmatter[currentKey][nKey] = false;
+          else if (!isNaN(Number(nVal)) && nVal !== '') frontmatter[currentKey][nKey] = Number(nVal);
+          else frontmatter[currentKey][nKey] = nVal;
+          continue;
+        }
+      }
+
+      // Top-level key-value
+      const kvMatch = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+      if (kvMatch) {
+        const key = kvMatch[1];
+        let val = kvMatch[2].trim();
+
+        if (val === '') {
+          currentKey = key;
+          currentMode = (key === 'metrics' || key === 'author' || key === 'metadata') ? 'nested_object' : 'list_strings';
+          frontmatter[key] = currentMode === 'nested_object' ? {} : [];
+          currentObj = null;
+        } else {
+          val = val.replace(/^["']|["']$/g, '');
+          currentKey = key;
+          currentMode = 'simple';
+          currentObj = null;
+          if (val === 'true') frontmatter[key] = true;
+          else if (val === 'false') frontmatter[key] = false;
+          else if (!isNaN(Number(val)) && val !== '') frontmatter[key] = Number(val);
+          else frontmatter[key] = val;
+        }
+      }
+    }
+
+    return { frontmatter, body };
   }
 }
 
