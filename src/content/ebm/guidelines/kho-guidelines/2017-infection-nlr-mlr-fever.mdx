@@ -146,26 +146,7 @@ sections:
   </div>
 </div>
 
-<div class="quickmenu" id="quickmenu">
-  <div class="quickmenu-inner">
-    <a href="#sec-tongquan" class="quickmenu-item active">1. Tổng Quan &amp; PICO</a>
-    <a href="#sec-sinhly-benhsinh" class="quickmenu-item">2. Cơ Sở Sinh Lý</a>
-    <a href="#sec-diem-nghen" class="quickmenu-item">3. Điểm Nghẽn Lâm Sàng</a>
-    <a href="#sec-thietke-mau" class="quickmenu-item">4. Thiết Kế Mẫu</a>
-    <a href="#sec-so-sanh-nlr-mlr" class="quickmenu-item">5. So Sánh Bệnh Lý (Table 1)</a>
-    <a href="#sec-tuong-quan-fig1" class="quickmenu-item">6. Tương Quan (Figure 1)</a>
-    <a href="#sec-thoi-gian-sot" class="quickmenu-item">7. Thời Gian Sốt (Table 2)</a>
-    <a href="#sec-septicemia-table3" class="quickmenu-item">8. Nhiễm Trùng Huyết (Table 3)</a>
-    <a href="#sec-hoi-quy-nlr" class="quickmenu-item">9. Hồi Quy NLR (Table 4)</a>
-    <a href="#sec-hoi-quy-mlr" class="quickmenu-item">10. Hồi Quy MLR (Table 5)</a>
-    <a href="#sec-xac-suat-fig23" class="quickmenu-item">11. Xác Suất (Figures 2 &amp; 3)</a>
-    <a href="#sec-roc-fig4" class="quickmenu-item">12. Đường Cong ROC (Figure 4)</a>
-    <a href="#sec-doi-chieu-gurol" class="quickmenu-item">13. Đối Chiếu Y Văn</a>
-    <a href="#sec-luodo-thuat-toan" class="quickmenu-item">14. Thuật Toán Xử Trí</a>
-    <a href="#sec-rob-appraisal" class="quickmenu-item">15. Thẩm Định Sai Lệch</a>
-    <a href="#sec-phan-quyet-pearls" class="quickmenu-item">16. Phán Quyết &amp; Y Văn</a>
-  </div>
-</div>
+
 
 <div class="page-content">
 
@@ -950,58 +931,136 @@ sections:
   <div class="sec-card" id="sec-luodo-thuat-toan">
     <div class="sec-hdr">
       <span class="sec-hdr-icon">🧭</span>
-      <h2 class="sec-title">14. Lưu Đồ Cây Quyết Định Xử Trí Kháng Sinh Ban Đầu</h2>
+      <h2 class="sec-title">14. Lưu Đồ Cây Quyết Định Xử Trí Kháng Sinh Ban Đầu (Flowchart 1)</h2>
     </div>
     <div class="sec-body">
       
-      <p>Dựa trên tổng hợp kết quả của nghiên cứu Nilssen et al. 2017 và hệ thống ngưỡng cắt của Gürol et al., lưu đồ thuật toán phân luồng xử trí bệnh nhân sốt nhập viện được thiết lập như sau:</p>
+      <div class="infobox info">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Cây quyết định phân luồng xử trí bệnh nhân sốt nhập viện (Nilssen et al. 2017 &amp; Gürol et al. 2015):</strong>
+          Mô hình hóa quy trình tiếp cận bệnh nhân người lớn sốt chưa rõ nguyên nhân lúc nhập viện, kết hợp nhịp nhàng giữa tỷ số bạch cầu tức thì từ CBC và thời gian khởi phát sốt để ra quyết định kháng sinh an toàn, chính xác.
+        </div>
+      </div>
 
-      <div class="code-block" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.25rem; font-family: var(--dsp-font-mono); font-size: 0.85rem; line-height: 1.5; overflow-x: auto;">
-        <pre><code>                    ┌────────────────────────────────────────────────────────┐
-                    │ BỆNH NHÂN NHẬP VIỆN DO SỐT CHƯA RÕ NGUYÊN NHÂN        │
-                    │ (Fever of Unknown Cause at Hospital Admittance)        │
-                    └───────────────────────────┬────────────────────────────┘
-                                                │
-                                                ▼
-                    ┌────────────────────────────────────────────────────────┐
-                    │ THU THẬP CÔNG THỨC MÁU KHẨN (CBC) &amp; ĐÁNH GIÁ THỜI GIAN │
-                    │ ├── Trích xuất tự động: NLR &amp; MLR                      │
-                    │ └── Hỏi bệnh sử: Thời gian sốt &lt; 7 ngày hay ≥ 7 ngày   │
-                    └───────────────────────────┬────────────────────────────┘
-                                                │
-                 ┌──────────────────────────────┼──────────────────────────────┐
-                 ▼                              ▼                              ▼
-  ┌──────────────────────────────┐ ┌──────────────────────────────┐ ┌──────────────────────────────┐
-  │      NLR &lt; 3.0 / MLR &lt; 0.35  │ │ NLR 3.0–9.0 / MLR 0.35–0.70  │ │     NLR &gt; 9.0 / MLR &gt; 0.70   │
-  └──────────────┬───────────────┘ └──────────────┬───────────────┘ └──────────────┬───────────────┘
-                 │                                │                                │
-                 ▼                                ▼                                ▼
-  ┌──────────────────────────────┐ ┌──────────────────────────────┐ ┌──────────────────────────────┐
-  │ ĐỊNH HƯỚNG NHIỄM VI RÚT CAO  │ │ VÙNG TRANH CHẤP / BÁN CẤP    │ │ ĐỊNH HƯỚNG NHIỄM VI KHUẨN RÕ │
-  │ (Đặc biệt khi NLR &lt; 1.0)     │ │ ├── Nếu Sốt &lt; 7 ngày:        │ │ (Xác suất vi khuẩn &gt; 60–85%) │
-  │                              │ │     Nghiêng về nhiễm khuẩn   │ │                              │
-  │ • TRÁNH DÙNG KHÁNG SINH      │ │ ├── Nếu Sốt 7–21 ngày:       │ │ • Cần tìm ổ nhiễm khuẩn      │
-  │   KHÔNG CẦN THIẾT            │ │     NLR giảm tự nhiên        │ │ • Xét nghiệm vi sinh đích    │
-  │ • Làm PCR / Test nhanh vi rút│ │ └── Tìm nguyên nhân phi      │ │ • Khởi động kháng sinh phù   │
-  │ • Theo dõi sát lâm sàng      │ │     nhiễm trùng (Tự miễn/K)  │ │   hợp nguồn nghi ngờ         │
-  └──────────────────────────────┘ └──────────────────────────────┘ └──────────────┬───────────────┘
-                                                                                   │
-                                                                                   ▼
-                                                               ┌──────────────────────────────────────┐
-                                                               │ Ở BỆNH NHÂN SỐT &lt; 7 NGÀY CÓ:         │
-                                                               │ ├── NLR &gt; 13.0 – 15.0+               │
-                                                               │ └── Lymphocytes &lt; 0.8 × 10⁹/L        │
-                                                               └───────────────────┬──────────────────┘
-                                                                                   │
-                                                                                   ▼
-                                                               ┌──────────────────────────────────────┐
-                                                               │ 🚨 BÁO ĐỘNG ĐỎ NHIỄM TRÙNG HUYẾT!   │
-                                                               │ (Dù WBC &amp; CRP có thể bình thường!)   │
-                                                               │ ├── Cấy máu khẩn tối thiểu 2 vị trí  │
-                                                               │ ├── Đo Lactate máu &amp; Sinh hiệu       │
-                                                               │ └── Khởi động KHÁNG SINH PHỔ RỘNG    │
-                                                               │     ngay trong 1 giờ đầu (Hour-1)    │
-                                                               └──────────────────────────────────────┘</code></pre>
+      <!-- HIGH-FIDELITY VISUAL CLINICAL FLOWCHART (CHUẨN EDITORIAL FLOWCHART) -->
+      <div style="margin-top: 1.5rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem;">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.75rem;">
+          <div style="font-weight: 700; font-size: 1.05rem; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-diagram-project"></i> Flowchart 1. Initial Antimicrobial Decision-Making Algorithm in Fever of Unknown Cause
+          </div>
+          <span style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.1); color: #059669; padding: 3px 10px; border-radius: 12px; font-weight: 600;">
+            Chuẩn Editorial Flowchart
+          </span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          
+          <!-- BƯỚC 1: TIẾP NHẬN BAN ĐẦU -->
+          <div style="border: 2px solid #6366f1; background: rgba(99, 102, 241, 0.04); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #e0e7ff; color: #4338ca; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">
+                <i class="fa-solid fa-hospital-user"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #4338ca; font-size: 0.95rem; text-transform: uppercase;">
+                  Bước 1: Tiếp Nhận Bệnh Nhân Nhập Viện Do Sốt Chưa Rõ Nguyên Nhân
+                </div>
+                <div style="font-size: 0.88rem; margin-top: 0.35rem; line-height: 1.6; color: var(--color-text);">
+                  Bệnh nhân người lớn (≥ 18 tuổi) sốt cấp hoặc bán cấp chưa xác định được ổ nhiễm hoặc căn nguyên mầm bệnh lúc nhập viện.<br />
+                  <strong>Hành động tức thì:</strong> Chỉ định <strong>Công thức máu toàn phần khẩn (CBC)</strong>, trích xuất tự động tỷ số <strong>NLR</strong> và <strong>MLR</strong>. Đồng thời khai thác chính xác <strong>Thời gian khởi phát sốt (&lt; 7 ngày hay ≥ 7 ngày)</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; color: var(--color-primary); font-size: 1.2rem;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 2: PHÂN LUỒNG 3 NHÁNH QUYẾT ĐỊNH -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+            
+            <!-- NHÁNH 1: VI RÚT -->
+            <div style="border: 2px solid #0284c7; background: rgba(2, 132, 199, 0.05); border-radius: 8px; padding: 1.15rem; display: flex; flex-direction: column;">
+              <div style="font-weight: 700; color: #0284c7; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-virus"></i> NHÁNH 1: NLR &lt; 3.0 / MLR &lt; 0.35
+              </div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: #0369a1; margin-top: 0.25rem;">
+                ĐẶC BIỆT KHI NLR &lt; 1.0 (Xác suất Vi rút &gt; 75%)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.6rem; line-height: 1.6; color: var(--color-text); flex: 1;">
+                • <strong>Định hướng nhiễm vi rút cao:</strong> Dengue, Cúm mùa, EBV, CMV, v.v.<br />
+                • <strong>Hành động:</strong> Tự tin trì hoãn dùng kháng sinh không cần thiết.<br />
+                • <strong>Chỉ định:</strong> Xét nghiệm PCR / Test nhanh huyết thanh vi rút; theo dõi sát diễn tiến lâm sàng và công thức máu mỗi 24–48h.
+              </div>
+            </div>
+
+            <!-- NHÁNH 2: VÙNG TRANH CHẤP -->
+            <div style="border: 2px solid #f59e0b; background: rgba(245, 158, 11, 0.05); border-radius: 8px; padding: 1.15rem; display: flex; flex-direction: column;">
+              <div style="font-weight: 700; color: #d97706; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-triangle-exclamation"></i> NHÁNH 2: NLR 3.0–9.0 / MLR 0.35–0.70
+              </div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: #b45309; margin-top: 0.25rem;">
+                VÙNG TRANH CHẤP / BÁN CẤP (Xám lâm sàng)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.6rem; line-height: 1.6; color: var(--color-text); flex: 1;">
+                • <strong>Nếu Sốt &lt; 7 ngày:</strong> Nghiêng về nhiễm vi khuẩn cục bộ hoặc giai đoạn sớm; tích cực tìm kiếm ổ nhiễm trùng (phổi, tiểu, mô mềm).<br />
+                • <strong>Nếu Sốt 7–21 ngày:</strong> NLR suy giảm sinh lý tự nhiên; cần loại trừ nguyên nhân không nhiễm trùng (bệnh tự miễn, ung thư huyết học, thuốc).
+              </div>
+            </div>
+
+            <!-- NHÁNH 3: NHIỄM VI KHUẨN RÕ -->
+            <div style="border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.05); border-radius: 8px; padding: 1.15rem; display: flex; flex-direction: column;">
+              <div style="font-weight: 700; color: #dc2626; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+                <i class="fa-solid fa-bacteria"></i> NHÁNH 3: NLR &gt; 9.0 / MLR &gt; 0.70
+              </div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: #b91c1c; margin-top: 0.25rem;">
+                ĐỊNH HƯỚNG NHIỄM KHUẨN RÕ (Xác suất 60% – 85%)
+              </div>
+              <div style="font-size: 0.85rem; margin-top: 0.6rem; line-height: 1.6; color: var(--color-text); flex: 1;">
+                • <strong>Đáp ứng viêm hệ thống bùng phát:</strong> Khả năng nhiễm vi khuẩn áp đảo (khi NLR = 33, xác suất đạt 85%).<br />
+                • <strong>Hành động:</strong> Chỉ định khẩn xét nghiệm vi sinh đích (cấy đờm, cấy nước tiểu, chẩn đoán hình ảnh).<br />
+                • Khởi động kháng sinh kinh nghiệm thích hợp theo nguồn nghi ngờ.
+              </div>
+            </div>
+
+          </div>
+
+          <div style="text-align: center; color: #dc2626; font-size: 1.2rem;"><i class="fa-solid fa-arrow-down"></i></div>
+
+          <!-- BƯỚC 3: CỜ ĐỎ BÁO ĐỘNG NHIỄM TRÙNG HUYẾT -->
+          <div style="border: 2px solid #dc2626; background: rgba(220, 38, 38, 0.08); border-radius: 8px; padding: 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #fee2e2; color: #b91c1c; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #b91c1c; font-size: 0.95rem; text-transform: uppercase;">
+                  🚨 CỜ ĐỎ KHẨN CẤP: BÁO ĐỘNG NHIỄM TRÙNG HUYẾT (SEPTICEMIA ALERT)
+                </div>
+                <div style="font-size: 0.88rem; margin-top: 0.35rem; line-height: 1.6; color: var(--color-text);">
+                  Ở bệnh nhân sốt <strong>&lt; 7 ngày</strong> có <strong>NLR &gt; 13.0 – 15.69+</strong> và <strong>Lymphocytes giảm sâu &lt; 0.8 × 10⁹/L</strong>: <em>Cảnh báo nguy cơ nhiễm trùng huyết cực cao ngay cả khi tổng bạch cầu (WBC) và CRP hoàn toàn bình thường!</em>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.6rem; margin-top: 0.75rem; font-size: 0.86rem; color: var(--color-text);">
+                  <div style="background: var(--color-surface); padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                    • <strong>Cấy máu khẩn:</strong> Lấy tối thiểu 2 vị trí trước khi truyền kháng sinh.
+                  </div>
+                  <div style="background: var(--color-surface); padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                    • <strong>Sinh hiệu &amp; Lactate:</strong> Đo lactate máu và theo dõi sát huyết áp/SpO2.
+                  </div>
+                  <div style="background: var(--color-surface); padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                    • <strong>Hour-1 Bundle:</strong> Khởi động kháng sinh phổ rộng tĩnh mạch ngay trong 1 giờ đầu.
+                  </div>
+                  <div style="background: var(--color-surface); padding: 0.6rem 0.85rem; border-radius: 6px; border: 1px solid var(--color-border);">
+                    • <strong>Hồi sức dịch:</strong> Bù dịch tinh thể 30 mL/kg nếu có tụt huyết áp hoặc lactate ≥ 4.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
     </div>

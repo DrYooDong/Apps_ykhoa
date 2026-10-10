@@ -172,23 +172,16 @@
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch;
   padding: 2px 2px 4px 2px;
 }
 
 .quickmenu-inner::-webkit-scrollbar {
-  height: 4px;
-}
-
-.quickmenu-inner::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.quickmenu-inner::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.25);
-  border-radius: 999px;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .quickmenu-item {
@@ -550,9 +543,10 @@
 }
 
 /* PICO Item & Tags (Native Specification Support) */
+.pico-bento-grid .pico-item,
 .pico-item {
   position: relative;
-  background: var(--color-surface, #ffffff);
+  background: var(--color-surface, #ffffff) !important;
   border: 1px solid var(--color-border, #cbd5e1);
   border-radius: 14px;
   padding: 1.25rem 1.35rem;
@@ -563,21 +557,22 @@
   flex-direction: column;
 }
 
+.pico-bento-grid .pico-item:hover,
 .pico-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
-.pico-item.pico-p { border-left: 4.5px solid #6366f1; }
-.pico-item.pico-i { border-left: 4.5px solid #0284c7; }
-.pico-item.pico-c { border-left: 4.5px solid #d97706; }
-.pico-item.pico-o { border-left: 4.5px solid #059669; }
+.pico-item.pico-p { border-left: 5px solid #6366f1 !important; }
+.pico-item.pico-i { border-left: 5px solid #0284c7 !important; }
+.pico-item.pico-c { border-left: 5px solid #d97706 !important; }
+.pico-item.pico-o { border-left: 5px solid #059669 !important; }
 
 .pico-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 8px;
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
   font-size: 0.85rem;
@@ -587,64 +582,69 @@
   align-self: flex-start;
 }
 
-.pico-p .pico-tag {
-  background: rgba(99, 102, 241, 0.12);
-  color: #4f46e5;
-  border: 1px solid rgba(99, 102, 241, 0.25);
+.pico-item.pico-p .pico-tag {
+  background: rgba(99, 102, 241, 0.12) !important;
+  color: #4f46e5 !important;
+  border: 1px solid rgba(99, 102, 241, 0.28) !important;
 }
 
-.pico-i .pico-tag {
-  background: rgba(2, 132, 199, 0.12);
-  color: #0284c7;
-  border: 1px solid rgba(2, 132, 199, 0.25);
+.pico-item.pico-i .pico-tag {
+  background: rgba(2, 132, 199, 0.12) !important;
+  color: #0284c7 !important;
+  border: 1px solid rgba(2, 132, 199, 0.28) !important;
 }
 
-.pico-c .pico-tag {
-  background: rgba(217, 119, 6, 0.12);
-  color: #d97706;
-  border: 1px solid rgba(217, 119, 6, 0.25);
+.pico-item.pico-c .pico-tag {
+  background: rgba(217, 119, 6, 0.12) !important;
+  color: #b45309 !important;
+  border: 1px solid rgba(217, 119, 6, 0.28) !important;
 }
 
-.pico-o .pico-tag {
-  background: rgba(5, 150, 105, 0.12);
-  color: #059669;
-  border: 1px solid rgba(5, 150, 105, 0.25);
+.pico-item.pico-o .pico-tag {
+  background: rgba(5, 150, 105, 0.12) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(5, 150, 105, 0.28) !important;
 }
 
 .pico-text {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1.65;
-  color: var(--color-text-muted, #475569);
+  color: var(--color-text, #0f172a) !important;
   flex-grow: 1;
 }
 
+[data-theme="dark"] .pico-bento-grid .pico-item,
 [data-theme="dark"] .pico-item {
-  background: var(--color-surface, #1e293b);
-  border-color: var(--color-border, #334155);
+  background: var(--color-surface, #1e293b) !important;
+  border-color: var(--color-border, #334155) !important;
 }
 
-[data-theme="dark"] .pico-p .pico-tag {
-  background: rgba(99, 102, 241, 0.22);
-  color: #a5b4fc;
-  border-color: rgba(99, 102, 241, 0.4);
+[data-theme="dark"] .pico-item.pico-p .pico-tag {
+  background: rgba(99, 102, 241, 0.22) !important;
+  color: #a5b4fc !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
 }
 
-[data-theme="dark"] .pico-i .pico-tag {
-  background: rgba(2, 132, 199, 0.22);
-  color: #38bdf8;
-  border-color: rgba(2, 132, 199, 0.4);
+[data-theme="dark"] .pico-item.pico-i .pico-tag {
+  background: rgba(2, 132, 199, 0.22) !important;
+  color: #38bdf8 !important;
+  border-color: rgba(2, 132, 199, 0.45) !important;
 }
 
-[data-theme="dark"] .pico-c .pico-tag {
-  background: rgba(217, 119, 6, 0.22);
-  color: #fbbf24;
-  border-color: rgba(217, 119, 6, 0.4);
+[data-theme="dark"] .pico-item.pico-c .pico-tag {
+  background: rgba(217, 119, 6, 0.22) !important;
+  color: #fbbf24 !important;
+  border-color: rgba(217, 119, 6, 0.45) !important;
 }
 
-[data-theme="dark"] .pico-o .pico-tag {
-  background: rgba(5, 150, 105, 0.22);
-  color: #34d399;
-  border-color: rgba(5, 150, 105, 0.4);
+[data-theme="dark"] .pico-item.pico-o .pico-tag {
+  background: rgba(5, 150, 105, 0.22) !important;
+  color: #34d399 !important;
+  border-color: rgba(5, 150, 105, 0.45) !important;
+}
+
+[data-theme="dark"] .pico-text {
+  color: #f1f5f9 !important;
 }
 
 [data-theme="dark"] .pico-text {

@@ -3376,7 +3376,7 @@ tr.summary-row td {
    ============================================================ */
 .guideline-sticky-toc {
   position: sticky !important;
-  top: 76px !important;
+  top: 64px !important;
   z-index: 150 !important;
   background: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border, #e2e8f0);
@@ -3403,28 +3403,23 @@ tr.summary-row td {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border, #cbd5e1) transparent;
-  padding: 0 0.4rem;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  padding: 0.35rem 0.5rem;
   max-width: 100%;
   margin: 0 auto;
 }
 
 .guideline-sticky-toc-inner::-webkit-scrollbar {
-  height: 4px;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-.guideline-sticky-toc-inner::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.guideline-sticky-toc-inner::-webkit-scrollbar-thumb {
-  background: var(--color-border, #cbd5e1);
-  border-radius: 4px;
-}
-
-[data-theme="dark"] .guideline-sticky-toc-inner::-webkit-scrollbar-thumb {
-  background: var(--color-border, #475569);
+/* Ẩn quickmenu trùng lặp trong nội dung MDX khi đã có guideline-sticky-toc */
+.guideline-article-container .quickmenu,
+.mdx-rendered-article .quickmenu {
+  display: none !important;
 }
 
 .toc-tab {
