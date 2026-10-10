@@ -32,17 +32,10 @@
     mod
   ));
 
-  // <define:process.env>
-  var init_define_process_env = __esm({
-    "<define:process.env>"() {
-    }
-  });
-
-  // node_modules/react/cjs/react.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/cjs/react.production.js
   var require_react_production = __commonJS({
-    "node_modules/react/cjs/react.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/cjs/react.production.js"(exports) {
       "use strict";
-      init_define_process_env();
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_PORTAL_TYPE = Symbol.for("react.portal");
       var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -491,11 +484,10 @@
     }
   });
 
-  // node_modules/react/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/index.js
   var require_react = __commonJS({
-    "node_modules/react/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/index.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       if (true) {
         module.exports = require_react_production();
       } else {
@@ -504,11 +496,10 @@
     }
   });
 
-  // node_modules/scheduler/cjs/scheduler.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/scheduler/cjs/scheduler.production.js
   var require_scheduler_production = __commonJS({
-    "node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
       "use strict";
-      init_define_process_env();
       function push(heap, node2) {
         var index2 = heap.length;
         heap.push(node2);
@@ -778,11 +769,10 @@
     }
   });
 
-  // node_modules/scheduler/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/scheduler/index.js
   var require_scheduler = __commonJS({
-    "node_modules/scheduler/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/scheduler/index.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       if (true) {
         module.exports = require_scheduler_production();
       } else {
@@ -791,12 +781,11 @@
     }
   });
 
-  // node_modules/react-dom/cjs/react-dom.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/cjs/react-dom.production.js
   var require_react_dom_production = __commonJS({
-    "node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
-      init_define_process_env();
-      var React12 = require_react();
+      var React16 = require_react();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
         if (1 < arguments.length) {
@@ -838,7 +827,7 @@
           implementation
         };
       }
-      var ReactSharedInternals = React12.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React16.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       function getCrossOriginStringAs(as, input) {
         if ("font" === as) return "";
         if ("string" === typeof input)
@@ -949,11 +938,10 @@
     }
   });
 
-  // node_modules/react-dom/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/index.js
   var require_react_dom = __commonJS({
-    "node_modules/react-dom/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/index.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
           return;
@@ -976,13 +964,12 @@
     }
   });
 
-  // node_modules/react-dom/cjs/react-dom-client.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/cjs/react-dom-client.production.js
   var require_react_dom_client_production = __commonJS({
-    "node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
-      init_define_process_env();
       var Scheduler = require_scheduler();
-      var React12 = require_react();
+      var React16 = require_react();
       var ReactDOM = require_react_dom();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
@@ -1275,7 +1262,7 @@
         return null;
       }
       var isArrayImpl = Array.isArray;
-      var ReactSharedInternals = React12.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React16.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var sharedNotPendingObject = {
         pending: false,
@@ -1357,7 +1344,7 @@
         return "\n" + prefix + name + suffix;
       }
       var reentry = false;
-      function describeNativeComponentFrame(fn, construct2) {
+      function describeNativeComponentFrame(fn, construct3) {
         if (!fn || reentry) return "";
         reentry = true;
         var previousPrepareStackTrace = Error.prepareStackTrace;
@@ -1366,7 +1353,7 @@
           var RunInRootFrame = {
             DetermineComponentFrameRoot: function() {
               try {
-                if (construct2) {
+                if (construct3) {
                   var Fake = function() {
                     throw Error();
                   };
@@ -14424,7 +14411,7 @@
           0 === i3 && attemptExplicitHydrationTarget(target);
         }
       };
-      var isomorphicReactPackageVersion$jscomp$inline_2043 = React12.version;
+      var isomorphicReactPackageVersion$jscomp$inline_2043 = React16.version;
       if ("19.3.0" !== isomorphicReactPackageVersion$jscomp$inline_2043)
         throw Error(
           formatProdErrorMessage(
@@ -14523,11 +14510,10 @@
     }
   });
 
-  // node_modules/react-dom/client.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/client.js
   var require_client = __commonJS({
-    "node_modules/react-dom/client.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react-dom/client.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
           return;
@@ -14550,11 +14536,10 @@
     }
   });
 
-  // node_modules/react/cjs/react-jsx-runtime.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/cjs/react-jsx-runtime.production.js
   var require_react_jsx_runtime_production = __commonJS({
-    "node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
       "use strict";
-      init_define_process_env();
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
       function jsxProd(type, config, maybeKey) {
@@ -14581,11 +14566,10 @@
     }
   });
 
-  // node_modules/react/jsx-runtime.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/jsx-runtime.js
   var require_jsx_runtime = __commonJS({
-    "node_modules/react/jsx-runtime.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/react/jsx-runtime.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       if (true) {
         module.exports = require_react_jsx_runtime_production();
       } else {
@@ -14594,7 +14578,7 @@
     }
   });
 
-  // node_modules/@babel/runtime/helpers/esm/typeof.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/typeof.js
   function _typeof(o3) {
     "@babel/helpers - typeof";
     return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o4) {
@@ -14604,15 +14588,13 @@
     }, _typeof(o3);
   }
   var init_typeof = __esm({
-    "node_modules/@babel/runtime/helpers/esm/typeof.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/typeof.js"() {
     }
   });
 
-  // node_modules/html2canvas/dist/html2canvas.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/html2canvas/dist/html2canvas.js
   var require_html2canvas = __commonJS({
-    "node_modules/html2canvas/dist/html2canvas.js"(exports, module) {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/html2canvas/dist/html2canvas.js"(exports, module) {
       (function(global2, factory) {
         typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, global2.html2canvas = factory());
       })(exports, (function() {
@@ -22395,11 +22377,14 @@
     }
   });
 
-  // node_modules/dompurify/dist/purify.es.mjs
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/dompurify/dist/purify.es.mjs
   var purify_es_exports = {};
   __export(purify_es_exports, {
-    default: () => purify
+    default: () => purify_default
   });
+  function _OverloadYield(e2, d2) {
+    this.v = e2, this.k = d2;
+  }
   function _arrayLikeToArray2(r2, a3) {
     (null == a3 || a3 > r2.length) && (a3 = r2.length);
     for (var e2 = 0, n2 = Array(a3); e2 < a3; e2++) n2[e2] = r2[e2];
@@ -22413,8 +22398,10 @@
     if (null != t3) {
       var e2, n2, i3, u3, a3 = [], f3 = true, o3 = false;
       try {
-        if (i3 = (t3 = t3.call(r2)).next, 0 === l3) ;
-        else for (; !(f3 = (e2 = i3.call(t3)).done) && (a3.push(e2.value), a3.length !== l3); f3 = true) ;
+        if (i3 = (t3 = t3.call(r2)).next, 0 === l3) {
+          if (Object(t3) !== t3) return;
+          f3 = false;
+        } else for (; !(f3 = (e2 = i3.call(t3)).done) && (a3.push(e2.value), a3.length !== l3); f3 = true) ;
       } catch (r3) {
         o3 = true, n2 = r3;
       } finally {
@@ -22440,42 +22427,68 @@
       return "Object" === t3 && r2.constructor && (t3 = r2.constructor.name), "Map" === t3 || "Set" === t3 ? Array.from(r2) : "Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3) ? _arrayLikeToArray2(r2, a3) : void 0;
     }
   }
+  function AsyncGenerator(e2) {
+    var t3, n2;
+    function resume(t4, n3) {
+      try {
+        var r2 = e2[t4](n3), o3 = r2.value, u3 = o3 instanceof _OverloadYield;
+        Promise.resolve(u3 ? o3.v : o3).then(function(n4) {
+          if (u3) {
+            var i3 = "return" === t4 && o3.k ? t4 : "next";
+            if (!o3.k || n4.done) return resume(i3, n4);
+            n4 = e2[i3](n4).value;
+          }
+          settle(!!r2.done, n4);
+        }, function(e3) {
+          resume("throw", e3);
+        });
+      } catch (e3) {
+        settle(2, e3);
+      }
+    }
+    function settle(e3, r2) {
+      2 === e3 ? t3.reject(r2) : t3.resolve({
+        value: r2,
+        done: e3
+      }), (t3 = t3.next) ? resume(t3.key, t3.arg) : n2 = null;
+    }
+    this._invoke = function(e3, r2) {
+      return new Promise(function(o3, u3) {
+        var i3 = {
+          key: e3,
+          arg: r2,
+          resolve: o3,
+          reject: u3,
+          next: null
+        };
+        n2 ? n2 = n2.next = i3 : (t3 = n2 = i3, resume(e3, r2));
+      });
+    }, "function" != typeof e2.return && (this.return = void 0);
+  }
   function unapply(func) {
     return function(thisArg) {
-      if (thisArg instanceof RegExp) {
-        thisArg.lastIndex = 0;
-      }
-      for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-        args[_key3 - 1] = arguments[_key3];
-      }
+      if (thisArg instanceof RegExp) thisArg.lastIndex = 0;
+      for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) args[_key3 - 1] = arguments[_key3];
       return apply(func, thisArg, args);
     };
   }
   function unconstruct(Func) {
     return function() {
-      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-        args[_key4] = arguments[_key4];
-      }
+      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) args[_key4] = arguments[_key4];
       return construct(Func, args);
     };
   }
   function addToSet(set, array) {
     let transformCaseFunc = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : stringToLowerCase;
-    if (setPrototypeOf) {
-      setPrototypeOf(set, null);
-    }
-    if (!arrayIsArray(array)) {
-      return set;
-    }
+    if (setPrototypeOf) setPrototypeOf(set, null);
+    if (!arrayIsArray(array)) return set;
     let l3 = array.length;
     while (l3--) {
       let element = array[l3];
       if (typeof element === "string") {
         const lcElement = transformCaseFunc(element);
         if (lcElement !== element) {
-          if (!isFrozen(array)) {
-            array[l3] = lcElement;
-          }
+          if (!isFrozen(array)) array[l3] = lcElement;
           element = lcElement;
         }
       }
@@ -22484,12 +22497,7 @@
     return set;
   }
   function cleanArray(array) {
-    for (let index2 = 0; index2 < array.length; index2++) {
-      const isPropertyExist = objectHasOwnProperty(array, index2);
-      if (!isPropertyExist) {
-        array[index2] = null;
-      }
-    }
+    for (let index2 = 0; index2 < array.length; index2++) if (!objectHasOwnProperty(array, index2)) array[index2] = null;
     return array;
   }
   function clone(object) {
@@ -22498,44 +22506,31 @@
       var _ref3 = _slicedToArray2(_ref2, 2);
       const property = _ref3[0];
       const value = _ref3[1];
-      const isPropertyExist = objectHasOwnProperty(object, property);
-      if (isPropertyExist) {
-        if (arrayIsArray(value)) {
-          newObject[property] = cleanArray(value);
-        } else if (value && typeof value === "object" && value.constructor === Object) {
-          newObject[property] = clone(value);
-        } else {
-          newObject[property] = value;
-        }
+      if (objectHasOwnProperty(object, property)) {
+        if (arrayIsArray(value)) newObject[property] = cleanArray(value);
+        else if (value && typeof value === "object" && value.constructor === Object) newObject[property] = clone(value);
+        else newObject[property] = value;
       }
     }
     return newObject;
   }
   function stringifyValue(value) {
     switch (typeof value) {
-      case "string": {
+      case "string":
         return value;
-      }
-      case "number": {
+      case "number":
         return numberToString(value);
-      }
-      case "boolean": {
+      case "boolean":
         return booleanToString(value);
-      }
-      case "bigint": {
+      case "bigint":
         return bigintToString ? bigintToString(value) : "0";
-      }
-      case "symbol": {
+      case "symbol":
         return symbolToString ? symbolToString(value) : "Symbol()";
-      }
-      case "undefined": {
+      case "undefined":
         return objectToString(value);
-      }
       case "function":
       case "object": {
-        if (value === null) {
-          return objectToString(value);
-        }
+        if (value === null) return objectToString(value);
         const valueAsRecord = value;
         const valueToString = lookupGetter(valueAsRecord, "toString");
         if (typeof valueToString === "function") {
@@ -22544,21 +22539,16 @@
         }
         return objectToString(value);
       }
-      default: {
+      default:
         return objectToString(value);
-      }
     }
   }
   function lookupGetter(object, prop) {
     while (object !== null) {
       const desc = getOwnPropertyDescriptor(object, prop);
       if (desc) {
-        if (desc.get) {
-          return unapply(desc.get);
-        }
-        if (typeof desc.value === "function") {
-          return unapply(desc.value);
-        }
+        if (desc.get) return unapply(desc.get);
+        if (typeof desc.value === "function") return unapply(desc.value);
       }
       object = getPrototypeOf(object);
     }
@@ -22578,7 +22568,7 @@
   function createDOMPurify() {
     let window2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : getGlobal();
     const DOMPurify = (root) => createDOMPurify(root);
-    DOMPurify.version = "3.4.15";
+    DOMPurify.version = "3.4.16";
     DOMPurify.removed = [];
     if (!window2 || !window2.document || window2.document.nodeType !== NODE_TYPE.document || !window2.Element) {
       DOMPurify.isSupported = false;
@@ -22588,8 +22578,8 @@
     const originalDocument = document2;
     const currentScript = originalDocument.currentScript;
     window2.DocumentFragment;
-    const HTMLTemplateElement = window2.HTMLTemplateElement, Node2 = window2.Node, Element2 = window2.Element, NodeFilter = window2.NodeFilter, _window$NamedNodeMap = window2.NamedNodeMap;
-    _window$NamedNodeMap === void 0 ? window2.NamedNodeMap || window2.MozNamedAttrMap : _window$NamedNodeMap;
+    const HTMLTemplateElement = window2.HTMLTemplateElement, Node2 = window2.Node, Element2 = window2.Element, NodeFilter = window2.NodeFilter;
+    window2.NamedNodeMap === void 0 && (window2.NamedNodeMap || window2.MozNamedAttrMap);
     window2.HTMLFormElement;
     const DOMParser2 = window2.DOMParser, trustedTypes = window2.trustedTypes;
     const ElementPrototype = Element2.prototype;
@@ -22612,9 +22602,7 @@
     };
     if (typeof HTMLTemplateElement === "function") {
       const template = document2.createElement("template");
-      if (template.content && template.content.ownerDocument) {
-        document2 = template.content.ownerDocument;
-      }
+      if (template.content && template.content.ownerDocument) document2 = template.content.ownerDocument;
     }
     let trustedTypesPolicy;
     let emptyHTML = "";
@@ -22622,9 +22610,7 @@
     let defaultTrustedTypesPolicyResolved = false;
     let IN_TRUSTED_TYPES_POLICY = 0;
     const _assertNotInTrustedTypesPolicy = function _assertNotInTrustedTypesPolicy2() {
-      if (IN_TRUSTED_TYPES_POLICY > 0) {
-        throw typeErrorCreate('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
-      }
+      if (IN_TRUSTED_TYPES_POLICY > 0) throw typeErrorCreate('A configured TRUSTED_TYPES_POLICY callback (createHTML or createScriptURL) must not call DOMPurify.sanitize, as that causes infinite recursion. Do not pass a policy whose callbacks wrap DOMPurify as TRUSTED_TYPES_POLICY; see the "DOMPurify and Trusted Types" section of the README.');
     };
     const _createTrustedHTML = function _createTrustedHTML2(html2) {
       _assertNotInTrustedTypesPolicy();
@@ -22658,9 +22644,20 @@
     const MUSTACHE_EXPR$1 = MUSTACHE_EXPR, ERB_EXPR$1 = ERB_EXPR, TMPLIT_EXPR$1 = TMPLIT_EXPR, DATA_ATTR$1 = DATA_ATTR, ARIA_ATTR$1 = ARIA_ATTR, IS_SCRIPT_OR_DATA$1 = IS_SCRIPT_OR_DATA, ATTR_WHITESPACE$1 = ATTR_WHITESPACE, CUSTOM_ELEMENT$1 = CUSTOM_ELEMENT;
     let IS_ALLOWED_URI$1 = IS_ALLOWED_URI;
     let ALLOWED_TAGS = null;
-    const DEFAULT_ALLOWED_TAGS = addToSet({}, [...html$1, ...svg$1, ...svgFilters, ...mathMl$1, ...text]);
+    const DEFAULT_ALLOWED_TAGS = addToSet({}, [
+      ...html$1,
+      ...svg$1,
+      ...svgFilters,
+      ...mathMl$1,
+      ...text
+    ]);
     let ALLOWED_ATTR = null;
-    const DEFAULT_ALLOWED_ATTR = addToSet({}, [...html, ...svg, ...mathMl, ...xml]);
+    const DEFAULT_ALLOWED_ATTR = addToSet({}, [
+      ...html,
+      ...svg,
+      ...mathMl,
+      ...xml
+    ]);
     let CUSTOM_ELEMENT_HANDLING = Object.seal(create(null, {
       tagNameCheck: {
         writable: true,
@@ -22737,15 +22734,6 @@
       "noscript",
       "plaintext",
       "script",
-      // <selectedcontent> mirrors the selected <option>'s subtree, cloned by
-      // the UA (customizable <select>) — including any on* handlers — and the
-      // engine re-mirrors synchronously whenever a removal changes which
-      // option/selectedcontent is current, even inside DOMPurify's inert
-      // DOMParser document. Hoisting its children on removal re-inserts a fresh
-      // mirror target ahead of the walk, which the engine refills, looping
-      // forever (DoS) and amplifying output. Dropping its content on removal
-      // (rather than hoisting) breaks that cascade; the content is a duplicate
-      // of the option, which is sanitized on its own. See campaign-3 F1/F6.
       "selectedcontent",
       "style",
       "svg",
@@ -22756,21 +22744,59 @@
       "xmp"
     ]);
     let DATA_URI_TAGS = null;
-    const DEFAULT_DATA_URI_TAGS = addToSet({}, ["audio", "video", "img", "source", "image", "track"]);
+    const DEFAULT_DATA_URI_TAGS = addToSet({}, [
+      "audio",
+      "video",
+      "img",
+      "source",
+      "image",
+      "track"
+    ]);
     let URI_SAFE_ATTRIBUTES = null;
-    const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]);
+    const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, [
+      "alt",
+      "class",
+      "for",
+      "id",
+      "label",
+      "name",
+      "pattern",
+      "placeholder",
+      "role",
+      "summary",
+      "title",
+      "value",
+      "style",
+      "xmlns"
+    ]);
     const MATHML_NAMESPACE = "http://www.w3.org/1998/Math/MathML";
     const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
     const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
     let NAMESPACE = HTML_NAMESPACE;
     let IS_EMPTY_INPUT = false;
     let ALLOWED_NAMESPACES = null;
-    const DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [MATHML_NAMESPACE, SVG_NAMESPACE, HTML_NAMESPACE], stringToString);
-    const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze(["mi", "mo", "mn", "ms", "mtext"]);
+    const DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [
+      MATHML_NAMESPACE,
+      SVG_NAMESPACE,
+      HTML_NAMESPACE
+    ], stringToString);
+    const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze([
+      "mi",
+      "mo",
+      "mn",
+      "ms",
+      "mtext"
+    ]);
     let MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
     const DEFAULT_HTML_INTEGRATION_POINTS = freeze(["annotation-xml"]);
     let HTML_INTEGRATION_POINTS = addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS);
-    const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, ["title", "style", "font", "a", "script"]);
+    const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
+      "title",
+      "style",
+      "font",
+      "a",
+      "script"
+    ]);
     let PARSER_MEDIA_TYPE = null;
     const SUPPORTED_PARSER_MEDIA_TYPES = ["application/xhtml+xml", "text/html"];
     const DEFAULT_PARSER_MEDIA_TYPE = "text/html";
@@ -22782,25 +22808,14 @@
     };
     const _parseConfig = function _parseConfig2() {
       let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-      if (CONFIG && CONFIG === cfg) {
-        return;
-      }
-      if (!cfg || typeof cfg !== "object") {
-        cfg = {};
-      }
+      if (CONFIG && CONFIG === cfg) return;
+      if (!cfg || typeof cfg !== "object") cfg = {};
       cfg = clone(cfg);
-      PARSER_MEDIA_TYPE = // eslint-disable-next-line unicorn/prefer-includes
-      SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
+      PARSER_MEDIA_TYPE = SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
       transformCaseFunc = PARSER_MEDIA_TYPE === "application/xhtml+xml" ? stringToString : stringToLowerCase;
-      ALLOWED_TAGS = _resolveSetOption(cfg, "ALLOWED_TAGS", DEFAULT_ALLOWED_TAGS, {
-        transform: transformCaseFunc
-      });
-      ALLOWED_ATTR = _resolveSetOption(cfg, "ALLOWED_ATTR", DEFAULT_ALLOWED_ATTR, {
-        transform: transformCaseFunc
-      });
-      ALLOWED_NAMESPACES = _resolveSetOption(cfg, "ALLOWED_NAMESPACES", DEFAULT_ALLOWED_NAMESPACES, {
-        transform: stringToString
-      });
+      ALLOWED_TAGS = _resolveSetOption(cfg, "ALLOWED_TAGS", DEFAULT_ALLOWED_TAGS, { transform: transformCaseFunc });
+      ALLOWED_ATTR = _resolveSetOption(cfg, "ALLOWED_ATTR", DEFAULT_ALLOWED_ATTR, { transform: transformCaseFunc });
+      ALLOWED_NAMESPACES = _resolveSetOption(cfg, "ALLOWED_NAMESPACES", DEFAULT_ALLOWED_NAMESPACES, { transform: stringToString });
       URI_SAFE_ATTRIBUTES = _resolveSetOption(cfg, "ADD_URI_SAFE_ATTR", DEFAULT_URI_SAFE_ATTRIBUTES, {
         transform: transformCaseFunc,
         base: DEFAULT_URI_SAFE_ATTRIBUTES
@@ -22809,15 +22824,9 @@
         transform: transformCaseFunc,
         base: DEFAULT_DATA_URI_TAGS
       });
-      FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, {
-        transform: transformCaseFunc
-      });
-      FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), {
-        transform: transformCaseFunc
-      });
-      FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), {
-        transform: transformCaseFunc
-      });
+      FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, { transform: transformCaseFunc });
+      FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), { transform: transformCaseFunc });
+      FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), { transform: transformCaseFunc });
       USE_PROFILES = objectHasOwnProperty(cfg, "USE_PROFILES") ? cfg.USE_PROFILES && typeof cfg.USE_PROFILES === "object" ? clone(cfg.USE_PROFILES) : cfg.USE_PROFILES : false;
       ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
       ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
@@ -22836,36 +22845,16 @@
       IN_PLACE = cfg.IN_PLACE || false;
       IS_ALLOWED_URI$1 = isRegex(cfg.ALLOWED_URI_REGEXP) ? cfg.ALLOWED_URI_REGEXP : IS_ALLOWED_URI;
       NAMESPACE = typeof cfg.NAMESPACE === "string" ? cfg.NAMESPACE : HTML_NAMESPACE;
-      MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(
-        cfg,
-        "MATHML_TEXT_INTEGRATION_POINTS",
-        () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS)
-        // Default built-in map
-      );
-      HTML_INTEGRATION_POINTS = _resolveObjectOption(
-        cfg,
-        "HTML_INTEGRATION_POINTS",
-        () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS)
-        // Default built-in map
-      );
+      MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS));
+      HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS));
       const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", () => create(null));
       CUSTOM_ELEMENT_HANDLING = create(null);
-      if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) {
-        CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
-      }
-      if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) {
-        CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
-      }
-      if (objectHasOwnProperty(customElementHandling, "allowCustomizedBuiltInElements") && typeof customElementHandling.allowCustomizedBuiltInElements === "boolean") {
-        CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = customElementHandling.allowCustomizedBuiltInElements;
-      }
+      if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
+      if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
+      if (objectHasOwnProperty(customElementHandling, "allowCustomizedBuiltInElements") && typeof customElementHandling.allowCustomizedBuiltInElements === "boolean") CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = customElementHandling.allowCustomizedBuiltInElements;
       seal(CUSTOM_ELEMENT_HANDLING);
-      if (SAFE_FOR_TEMPLATES) {
-        ALLOW_DATA_ATTR = false;
-      }
-      if (RETURN_DOM_FRAGMENT) {
-        RETURN_DOM = true;
-      }
+      if (SAFE_FOR_TEMPLATES) ALLOW_DATA_ATTR = false;
+      if (RETURN_DOM_FRAGMENT) RETURN_DOM = true;
       if (USE_PROFILES) {
         ALLOWED_TAGS = addToSet({}, text);
         ALLOWED_ATTR = create(null);
@@ -22892,48 +22881,36 @@
       EXTRA_ELEMENT_HANDLING.tagCheck = null;
       EXTRA_ELEMENT_HANDLING.attributeCheck = null;
       if (objectHasOwnProperty(cfg, "ADD_TAGS")) {
-        if (typeof cfg.ADD_TAGS === "function") {
-          EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
-        } else if (arrayIsArray(cfg.ADD_TAGS)) {
-          if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) {
-            ALLOWED_TAGS = clone(ALLOWED_TAGS);
-          }
+        if (typeof cfg.ADD_TAGS === "function") EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
+        else if (arrayIsArray(cfg.ADD_TAGS)) {
+          if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = clone(ALLOWED_TAGS);
           addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
         }
       }
       if (objectHasOwnProperty(cfg, "ADD_ATTR")) {
-        if (typeof cfg.ADD_ATTR === "function") {
-          EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
-        } else if (arrayIsArray(cfg.ADD_ATTR)) {
-          if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) {
-            ALLOWED_ATTR = clone(ALLOWED_ATTR);
-          }
+        if (typeof cfg.ADD_ATTR === "function") EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
+        else if (arrayIsArray(cfg.ADD_ATTR)) {
+          if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = clone(ALLOWED_ATTR);
           addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
         }
       }
       if (objectHasOwnProperty(cfg, "ADD_FORBID_CONTENTS") && arrayIsArray(cfg.ADD_FORBID_CONTENTS)) {
-        if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
-          FORBID_CONTENTS = clone(FORBID_CONTENTS);
-        }
+        if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = clone(FORBID_CONTENTS);
         addToSet(FORBID_CONTENTS, cfg.ADD_FORBID_CONTENTS, transformCaseFunc);
       }
-      if (KEEP_CONTENT) {
-        ALLOWED_TAGS["#text"] = true;
-      }
-      if (WHOLE_DOCUMENT) {
-        addToSet(ALLOWED_TAGS, ["html", "head", "body"]);
-      }
+      if (KEEP_CONTENT) ALLOWED_TAGS["#text"] = true;
+      if (WHOLE_DOCUMENT) addToSet(ALLOWED_TAGS, [
+        "html",
+        "head",
+        "body"
+      ]);
       if (ALLOWED_TAGS.table) {
         addToSet(ALLOWED_TAGS, ["tbody"]);
         delete FORBID_TAGS.tbody;
       }
       if (cfg.TRUSTED_TYPES_POLICY) {
-        if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== "function") {
-          throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
-        }
-        if (typeof cfg.TRUSTED_TYPES_POLICY.createScriptURL !== "function") {
-          throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
-        }
+        if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== "function") throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
+        if (typeof cfg.TRUSTED_TYPES_POLICY.createScriptURL !== "function") throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
         const previousTrustedTypesPolicy = trustedTypesPolicy;
         trustedTypesPolicy = cfg.TRUSTED_TYPES_POLICY;
         try {
@@ -22946,85 +22923,55 @@
         trustedTypesPolicy = void 0;
         emptyHTML = "";
       } else {
-        if (trustedTypesPolicy === void 0) {
-          trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
-        }
-        if (trustedTypesPolicy && typeof emptyHTML === "string") {
-          emptyHTML = _createTrustedHTML("");
-        }
+        if (trustedTypesPolicy === void 0) trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
+        if (trustedTypesPolicy && typeof emptyHTML === "string") emptyHTML = _createTrustedHTML("");
       }
-      if (freeze) {
-        freeze(cfg);
-      }
+      if (freeze) freeze(cfg);
       CONFIG = cfg;
     };
-    const ALL_SVG_TAGS = addToSet({}, [...svg$1, ...svgFilters, ...svgDisallowed]);
+    const ALL_SVG_TAGS = addToSet({}, [
+      ...svg$1,
+      ...svgFilters,
+      ...svgDisallowed
+    ]);
     const ALL_MATHML_TAGS = addToSet({}, [...mathMl$1, ...mathMlDisallowed]);
     const _checkSvgNamespace = function _checkSvgNamespace2(tagName, parent, parentTagName) {
-      if (parent.namespaceURI === HTML_NAMESPACE) {
-        return tagName === "svg";
-      }
-      if (parent.namespaceURI === MATHML_NAMESPACE) {
-        return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
-      }
+      if (parent.namespaceURI === HTML_NAMESPACE) return tagName === "svg";
+      if (parent.namespaceURI === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
       return Boolean(ALL_SVG_TAGS[tagName]);
     };
     const _checkMathMlNamespace = function _checkMathMlNamespace2(tagName, parent, parentTagName) {
-      if (parent.namespaceURI === HTML_NAMESPACE) {
-        return tagName === "math";
-      }
-      if (parent.namespaceURI === SVG_NAMESPACE) {
-        return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
-      }
+      if (parent.namespaceURI === HTML_NAMESPACE) return tagName === "math";
+      if (parent.namespaceURI === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
       return Boolean(ALL_MATHML_TAGS[tagName]);
     };
     const _checkHtmlNamespace = function _checkHtmlNamespace2(tagName, parent, parentTagName) {
-      if (parent.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) {
-        return false;
-      }
-      if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) {
-        return false;
-      }
+      if (parent.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
+      if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
       return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
     };
     const _checkValidNamespace = function _checkValidNamespace2(element) {
       let parent = getParentNode(element);
-      if (!parent || !parent.tagName) {
-        parent = {
-          namespaceURI: NAMESPACE,
-          tagName: "template"
-        };
-      }
+      if (!parent || !parent.tagName) parent = {
+        namespaceURI: NAMESPACE,
+        tagName: "template"
+      };
       const tagName = stringToLowerCase(element.tagName);
       const parentTagName = stringToLowerCase(parent.tagName);
-      if (!ALLOWED_NAMESPACES[element.namespaceURI]) {
-        return false;
-      }
-      if (element.namespaceURI === SVG_NAMESPACE) {
-        return _checkSvgNamespace(tagName, parent, parentTagName);
-      }
-      if (element.namespaceURI === MATHML_NAMESPACE) {
-        return _checkMathMlNamespace(tagName, parent, parentTagName);
-      }
-      if (element.namespaceURI === HTML_NAMESPACE) {
-        return _checkHtmlNamespace(tagName, parent, parentTagName);
-      }
-      if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[element.namespaceURI]) {
-        return true;
-      }
+      if (!ALLOWED_NAMESPACES[element.namespaceURI]) return false;
+      if (element.namespaceURI === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent, parentTagName);
+      if (element.namespaceURI === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent, parentTagName);
+      if (element.namespaceURI === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent, parentTagName);
+      if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[element.namespaceURI]) return true;
       return false;
     };
     const _forceRemove = function _forceRemove2(node2) {
-      arrayPush(DOMPurify.removed, {
-        element: node2
-      });
+      arrayPush(DOMPurify.removed, { element: node2 });
       try {
         getParentNode(node2).removeChild(node2);
       } catch (_3) {
         remove(node2);
-        if (!getParentNode(node2)) {
-          throw typeErrorCreate("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
-        }
+        if (!getParentNode(node2)) throw typeErrorCreate("a node selected for removal could not be detached from its tree and cannot be safely returned; refusing to sanitize in place");
       }
     };
     const _stripAttributeNode = function _stripAttributeNode2(element, attribute, name) {
@@ -23053,34 +23000,25 @@
         });
       }
       const attributes = getAttributes(root);
-      if (attributes) {
-        for (let i3 = attributes.length - 1; i3 >= 0; --i3) {
-          const attribute = attributes[i3];
-          const name = attribute && attribute.name;
-          if (typeof name === "string") {
-            _stripAttributeNode(root, attribute, name);
-          }
-        }
+      if (attributes) for (let i3 = attributes.length - 1; i3 >= 0; --i3) {
+        const attribute = attributes[i3];
+        const name = attribute && attribute.name;
+        if (typeof name === "string") _stripAttributeNode(root, attribute, name);
       }
     };
     const _removeAttribute = function _removeAttribute2(name, element, attr) {
-      if (!attr) {
-        try {
-          attr = element.getAttributeNode(name);
-        } catch (_3) {
-          attr = null;
-        }
+      if (!attr) try {
+        attr = element.getAttributeNode(name);
+      } catch (_3) {
+        attr = null;
       }
       arrayPush(DOMPurify.removed, {
         attribute: attr || null,
         from: element
       });
       try {
-        if (attr) {
-          removeAttributeNode(element, attr);
-        } else {
-          element.removeAttribute(name);
-        }
+        if (attr) removeAttributeNode(element, attr);
+        else element.removeAttribute(name);
       } catch (_3) {
         try {
           element.removeAttribute(name);
@@ -23088,30 +23026,23 @@
         }
       }
       if (name === "is") {
-        if (RETURN_DOM || RETURN_DOM_FRAGMENT) {
-          try {
-            _forceRemove(element);
-          } catch (_3) {
-          }
-        } else {
-          try {
-            element.setAttribute(name, "");
-          } catch (_3) {
-          }
+        if (RETURN_DOM || RETURN_DOM_FRAGMENT) try {
+          _forceRemove(element);
+        } catch (_3) {
+        }
+        else try {
+          element.setAttribute(name, "");
+        } catch (_3) {
         }
       }
     };
     const _stripDisallowedAttributes = function _stripDisallowedAttributes2(element) {
       const attributes = getAttributes(element);
-      if (!attributes) {
-        return;
-      }
+      if (!attributes) return;
       for (let i3 = attributes.length - 1; i3 >= 0; --i3) {
         const attribute = attributes[i3];
         const name = attribute && attribute.name;
-        if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) {
-          continue;
-        }
+        if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) continue;
         _stripAttributeNode(element, attribute, name);
       }
     };
@@ -23119,31 +23050,18 @@
       const stack = [root];
       while (stack.length > 0) {
         const node2 = stack.pop();
-        const nodeType = _readNodeType(node2);
-        if (nodeType === NODE_TYPE.element) {
-          _stripDisallowedAttributes(node2);
-        }
+        if (_readNodeType(node2) === NODE_TYPE.element) _stripDisallowedAttributes(node2);
         const childNodes = getChildNodes(node2);
-        if (childNodes) {
-          for (let i3 = childNodes.length - 1; i3 >= 0; --i3) {
-            stack.push(childNodes[i3]);
-          }
-        }
+        if (childNodes) for (let i3 = childNodes.length - 1; i3 >= 0; --i3) stack.push(childNodes[i3]);
       }
     };
     const _isPatchLinkageAttribute = function _isPatchLinkageAttribute2(lcName, lcTag) {
-      if (!SAFE_FOR_XML) {
-        return false;
-      }
-      if (lcName === "patchsrc") {
-        return true;
-      }
+      if (!SAFE_FOR_XML) return false;
+      if (lcName === "patchsrc") return true;
       return lcName === "for" && lcTag !== "label" && lcTag !== "output";
     };
     const _neutralizePatchLinkage = function _neutralizePatchLinkage2(root) {
-      if (!SAFE_FOR_XML) {
-        return;
-      }
+      if (!SAFE_FOR_XML) return;
       const stack = [root];
       while (stack.length > 0) {
         const node2 = stack.pop();
@@ -23159,41 +23077,28 @@
           const element = node2;
           const lcTag = transformCaseFunc(_readNodeName(node2));
           try {
-            if (element.hasAttribute && element.hasAttribute("patchsrc")) {
-              element.removeAttribute("patchsrc");
-            }
-            if (element.hasAttribute && element.hasAttribute("for") && _isPatchLinkageAttribute("for", lcTag)) {
-              element.removeAttribute("for");
-            }
+            if (element.hasAttribute && element.hasAttribute("patchsrc")) element.removeAttribute("patchsrc");
+            if (element.hasAttribute && element.hasAttribute("for") && _isPatchLinkageAttribute("for", lcTag)) element.removeAttribute("for");
           } catch (_3) {
           }
         }
         const childNodes = getChildNodes(node2);
-        if (childNodes) {
-          for (let i3 = childNodes.length - 1; i3 >= 0; --i3) {
-            stack.push(childNodes[i3]);
-          }
-        }
+        if (childNodes) for (let i3 = childNodes.length - 1; i3 >= 0; --i3) stack.push(childNodes[i3]);
       }
     };
     const _initDocument = function _initDocument2(dirty) {
       let doc = null;
       let leadingWhitespace = null;
-      if (FORCE_BODY) {
-        dirty = "<remove></remove>" + dirty;
-      } else {
+      if (FORCE_BODY) dirty = "<remove></remove>" + dirty;
+      else {
         const matches = stringMatch(dirty, /^[\r\n\t ]+/);
         leadingWhitespace = matches && matches[0];
       }
-      if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE === HTML_NAMESPACE) {
-        dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + "</body></html>";
-      }
+      if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE === HTML_NAMESPACE) dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + "</body></html>";
       const dirtyPayload = trustedTypesPolicy ? _createTrustedHTML(dirty) : dirty;
-      if (NAMESPACE === HTML_NAMESPACE) {
-        try {
-          doc = new DOMParser2().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
-        } catch (_3) {
-        }
+      if (NAMESPACE === HTML_NAMESPACE) try {
+        doc = new DOMParser2().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
+      } catch (_3) {
       }
       if (!doc || !doc.documentElement) {
         doc = implementation.createDocument(NAMESPACE, "template", null);
@@ -23203,23 +23108,13 @@
         }
       }
       const body = doc.body || doc.documentElement;
-      if (dirty && leadingWhitespace) {
-        body.insertBefore(document2.createTextNode(leadingWhitespace), body.childNodes[0] || null);
-      }
-      if (NAMESPACE === HTML_NAMESPACE) {
-        return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? "html" : "body")[0];
-      }
+      if (dirty && leadingWhitespace) body.insertBefore(document2.createTextNode(leadingWhitespace), body.childNodes[0] || null);
+      if (NAMESPACE === HTML_NAMESPACE) return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? "html" : "body")[0];
       return WHOLE_DOCUMENT ? doc.documentElement : body;
     };
     const _createNodeIterator = function _createNodeIterator2(root) {
       const doc = getOwnerDocument ? getOwnerDocument(root) : root.ownerDocument;
-      return createNodeIterator.call(
-        doc || root,
-        root,
-        // eslint-disable-next-line no-bitwise
-        NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION,
-        null
-      );
+      return createNodeIterator.call(doc || root, root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
     };
     const _stripTemplateExpressions = function _stripTemplateExpressions2(value) {
       value = stringReplace(value, MUSTACHE_EXPR$1, " ");
@@ -23231,73 +23126,25 @@
       var _node$querySelectorAl;
       node2.normalize();
       const doc = getOwnerDocument ? getOwnerDocument(node2) : node2.ownerDocument;
-      const walker = createNodeIterator.call(
-        doc || node2,
-        node2,
-        // eslint-disable-next-line no-bitwise
-        NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION,
-        null
-      );
+      const walker = createNodeIterator.call(doc || node2, node2, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION, null);
       let currentNode = walker.nextNode();
       while (currentNode) {
         currentNode.data = _stripTemplateExpressions(currentNode.data);
         currentNode = walker.nextNode();
       }
       const templates = (_node$querySelectorAl = node2.querySelectorAll) === null || _node$querySelectorAl === void 0 ? void 0 : _node$querySelectorAl.call(node2, "template");
-      if (templates) {
-        arrayForEach(templates, (tmpl) => {
-          if (_isDocumentFragment(tmpl.content)) {
-            _scrubTemplateExpressions2(tmpl.content);
-          }
-        });
-      }
+      if (templates) arrayForEach(templates, (tmpl) => {
+        if (_isDocumentFragment(tmpl.content)) _scrubTemplateExpressions2(tmpl.content);
+      });
     };
     const _isClobbered = function _isClobbered2(element) {
       const realTagName = getNodeName ? getNodeName(element) : null;
-      if (typeof realTagName !== "string") {
-        return false;
-      }
-      if (transformCaseFunc(realTagName) !== "form") {
-        return false;
-      }
-      return typeof element.nodeName !== "string" || typeof element.textContent !== "string" || typeof element.removeChild !== "function" || // Realm-safe NamedNodeMap detection: equality against the cached
-      // prototype getter. Clobbered .attributes (e.g. <input name="attributes">)
-      // makes the direct read diverge from the cached read; a clean form
-      // (same-realm OR foreign-realm) has both reads pointing at the same
-      // canonical NamedNodeMap.
-      element.attributes !== getAttributes(element) || typeof element.removeAttribute !== "function" || // A form descendant named "removeAttributeNode" or "getAttributeNode"
-      // shadows these Attr-node methods via [LegacyOverrideBuiltIns].
-      // _removeAttribute() / _stripAttributeNode() reach for
-      // element.removeAttributeNode(attr) first; when it is shadowed the call
-      // throws and the name-based fallback element.removeAttribute(name)
-      // ASCII-lowercases its lookup key in an HTML document, silently missing
-      // a case-preserved event-handler attribute (e.g. an ONANIMATIONSTART
-      // that reached the sanitizer through an XML/XHTML parse). Flag the form
-      // so it is removed wholesale, exactly as for the other shadowed methods.
-      typeof element.removeAttributeNode !== "function" || typeof element.getAttributeNode !== "function" || typeof element.setAttribute !== "function" || typeof element.namespaceURI !== "string" || typeof element.insertBefore !== "function" || typeof element.hasChildNodes !== "function" || // NodeType clobbering probe. Cached Node.prototype.nodeType getter
-      // returns the integer 1 for any Element regardless of realm; direct
-      // read on a clobbered form (e.g. <input name="nodeType">) returns
-      // the named child element. Cheap addition — nodeType is read from
-      // an internal slot, no serialization cost — and removes a residual
-      // clobbering surface used by several mXSS / PI / comment branches
-      // in _sanitizeElements that compare currentNode.nodeType directly.
-      element.nodeType !== getNodeType(element) || // HTMLFormElement has [LegacyOverrideBuiltIns]: a descendant named
-      // "childNodes" shadows the prototype getter. Direct reads of
-      // form.childNodes from a clobbered form return the named child
-      // instead of the real NodeList, so any walk that reads it directly
-      // skips the form's real children. Compare the direct read to the
-      // cached Node.prototype getter — when the form's named-property
-      // getter intercepts the read, the two values differ and we flag
-      // the form. This catches every clobbering child type (input,
-      // select, etc.) regardless of whether the named child happens to
-      // carry a numeric .length, which a typeof-based probe would miss
-      // (e.g. HTMLSelectElement.length is a defined unsigned-long).
-      element.childNodes !== getChildNodes(element);
+      if (typeof realTagName !== "string") return false;
+      if (transformCaseFunc(realTagName) !== "form") return false;
+      return typeof element.nodeName !== "string" || typeof element.textContent !== "string" || typeof element.removeChild !== "function" || element.attributes !== getAttributes(element) || typeof element.removeAttribute !== "function" || typeof element.removeAttributeNode !== "function" || typeof element.getAttributeNode !== "function" || typeof element.setAttribute !== "function" || typeof element.namespaceURI !== "string" || typeof element.insertBefore !== "function" || typeof element.hasChildNodes !== "function" || element.nodeType !== getNodeType(element) || element.childNodes !== getChildNodes(element);
     };
     const _isDocumentFragment = function _isDocumentFragment2(value) {
-      if (!getNodeType || typeof value !== "object" || value === null) {
-        return false;
-      }
+      if (!getNodeType || typeof value !== "object" || value === null) return false;
       try {
         return getNodeType(value) === NODE_TYPE.documentFragment;
       } catch (_3) {
@@ -23305,9 +23152,7 @@
       }
     };
     const _isNode = function _isNode2(value) {
-      if (!getNodeType || typeof value !== "object" || value === null) {
-        return false;
-      }
+      if (!getNodeType || typeof value !== "object" || value === null) return false;
       try {
         return typeof getNodeType(value) === "number";
       } catch (_3) {
@@ -23315,44 +23160,28 @@
       }
     };
     function _executeHooks(hooks2, currentNode, data) {
-      if (hooks2.length === 0) {
-        return;
-      }
+      if (hooks2.length === 0) return;
       arrayForEach(hooks2, (hook) => {
         hook.call(DOMPurify, currentNode, data, CONFIG);
       });
     }
     const _isUnsafeNode = function _isUnsafeNode2(currentNode, tagName) {
-      if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) {
-        return true;
-      }
-      if (SAFE_FOR_XML && currentNode.namespaceURI === HTML_NAMESPACE && LITERAL_TEXT_ELEMENTS[tagName] && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(LITERAL_TEXT_CLOSE[tagName], currentNode.textContent))) {
-        return true;
-      }
-      if (currentNode.nodeType === NODE_TYPE.processingInstruction) {
-        return true;
-      }
-      if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) {
-        return true;
-      }
+      if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
+      if (SAFE_FOR_XML && currentNode.namespaceURI === HTML_NAMESPACE && LITERAL_TEXT_ELEMENTS[tagName] && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(LITERAL_TEXT_CLOSE[tagName], currentNode.textContent))) return true;
+      if (currentNode.nodeType === NODE_TYPE.processingInstruction) return true;
+      if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
       return false;
     };
     const _matchesNameCheck = function _matchesNameCheck2(check, name) {
-      if (check instanceof RegExp) {
-        return regExpTest(check, name);
-      }
+      if (check instanceof RegExp) return regExpTest(check, name);
       if (check instanceof Function) {
-        for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-          args[_key - 2] = arguments[_key];
-        }
+        for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) args[_key - 2] = arguments[_key];
         return Boolean(check(name, ...args));
       }
       return false;
     };
     const _sanitizeDisallowedNode = function _sanitizeDisallowedNode2(currentNode, tagName, root) {
-      if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) {
-        return false;
-      }
+      if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) return false;
       if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
         const parentNode = getParentNode(currentNode);
         const childNodes = getChildNodes(currentNode);
@@ -23368,25 +23197,17 @@
       return true;
     };
     const _forkSharedAllowlist = function _forkSharedAllowlist2(hookList, set, defaultSet, setConfigSet) {
-      if (hookList.length === 0) {
-        return set;
-      }
+      if (hookList.length === 0) return set;
       return set === defaultSet || set === setConfigSet ? clone(set) : set;
     };
     const _handleHookDetachedNode = function _handleHookDetachedNode2(currentNode, root) {
-      if (currentNode === root || getParentNode(currentNode) !== null) {
-        return false;
-      }
-      if (IN_PLACE) {
-        _neutralizeSubtree(currentNode);
-      }
+      if (currentNode === root || getParentNode(currentNode) !== null) return false;
+      if (IN_PLACE) _neutralizeSubtree(currentNode);
       return true;
     };
     const _sanitizeElements = function _sanitizeElements2(currentNode, root) {
       _executeHooks(hooks.beforeSanitizeElements, currentNode, null);
-      if (_handleHookDetachedNode(currentNode, root)) {
-        return true;
-      }
+      if (_handleHookDetachedNode(currentNode, root)) return true;
       if (_isClobbered(currentNode)) {
         _forceRemove(currentNode);
         return true;
@@ -23397,9 +23218,7 @@
         tagName,
         allowedTags: ALLOWED_TAGS
       });
-      if (_handleHookDetachedNode(currentNode, root)) {
-        return true;
-      }
+      if (_handleHookDetachedNode(currentNode, root)) return true;
       if (_isUnsafeNode(currentNode, tagName)) {
         _forceRemove(currentNode);
         return true;
@@ -23408,11 +23227,11 @@
         const removed = _sanitizeDisallowedNode(currentNode, tagName, root);
         if (removed === false) {
           _executeHooks(hooks.afterSanitizeElements, currentNode, null);
+          if (_handleHookDetachedNode(currentNode, root)) return true;
         }
         return removed;
       }
-      const nt2 = _readNodeType(currentNode);
-      if (nt2 === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
+      if (_readNodeType(currentNode) === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
         _forceRemove(currentNode);
         return true;
       }
@@ -23423,81 +23242,53 @@
       if (SAFE_FOR_TEMPLATES && currentNode.nodeType === NODE_TYPE.text) {
         const content = _stripTemplateExpressions(currentNode.textContent);
         if (currentNode.textContent !== content) {
-          arrayPush(DOMPurify.removed, {
-            element: currentNode.cloneNode()
-          });
+          arrayPush(DOMPurify.removed, { element: currentNode.cloneNode() });
           currentNode.textContent = content;
         }
       }
       _executeHooks(hooks.afterSanitizeElements, currentNode, null);
-      return false;
+      return _handleHookDetachedNode(currentNode, root);
     };
     const _isValidAttribute = function _isValidAttribute2(lcTag, lcName, value) {
-      if (FORBID_ATTR[lcName]) {
-        return false;
-      }
-      if (_isPatchLinkageAttribute(lcName, lcTag)) {
-        return false;
-      }
-      if (SANITIZE_DOM && (lcName === "id" || lcName === "name") && (value in document2 || value in formElement)) {
-        return false;
-      }
+      if (FORBID_ATTR[lcName]) return false;
+      if (_isPatchLinkageAttribute(lcName, lcTag)) return false;
+      if (SANITIZE_DOM && (lcName === "id" || lcName === "name") && (value in document2 || value in formElement)) return false;
       const nameIsPermitted = ALLOWED_ATTR[lcName] || EXTRA_ELEMENT_HANDLING.attributeCheck instanceof Function && EXTRA_ELEMENT_HANDLING.attributeCheck(lcName, lcTag);
-      if (ALLOW_DATA_ATTR && regExpTest(DATA_ATTR$1, lcName)) {
-        return true;
-      }
-      if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) {
-        return true;
-      }
-      if (!nameIsPermitted) {
-        return (
-          // Condition a) covers a basically valid custom element tag name whose
-          // tag passes the configured tagNameCheck and whose attribute name
-          // passes the configured attributeNameCheck ...
-          _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || // Condition b) covers an `is` attribute whose value passes the
-          // configured tagNameCheck while customized built-in elements are
-          // allowed.
-          lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value)
-        );
-      }
-      if (URI_SAFE_ATTRIBUTES[lcName]) {
-        return true;
-      }
-      if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) {
-        return true;
-      }
-      if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value, "data:") === 0 && DATA_URI_TAGS[lcTag]) {
-        return true;
-      }
-      if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) {
-        return true;
-      }
+      if (ALLOW_DATA_ATTR && regExpTest(DATA_ATTR$1, lcName)) return true;
+      if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) return true;
+      if (!nameIsPermitted) return _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value);
+      if (URI_SAFE_ATTRIBUTES[lcName]) return true;
+      if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) return true;
+      if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value, "data:") === 0 && DATA_URI_TAGS[lcTag]) return true;
+      if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) return true;
       return !value;
     };
-    const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, ["annotation-xml", "color-profile", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "missing-glyph"]);
+    const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, [
+      "annotation-xml",
+      "color-profile",
+      "font-face",
+      "font-face-format",
+      "font-face-name",
+      "font-face-src",
+      "font-face-uri",
+      "missing-glyph"
+    ]);
     const _isBasicCustomElement = function _isBasicCustomElement2(tagName) {
       return !RESERVED_CUSTOM_ELEMENT_NAMES[stringToLowerCase(tagName)] && regExpTest(CUSTOM_ELEMENT$1, tagName);
     };
     const _applyTrustedTypesToAttribute = function _applyTrustedTypesToAttribute2(lcTag, lcName, namespaceURI, value) {
-      if (trustedTypesPolicy && typeof trustedTypes === "object" && typeof trustedTypes.getAttributeType === "function" && !namespaceURI) {
-        switch (trustedTypes.getAttributeType(lcTag, lcName)) {
-          case "TrustedHTML": {
-            return _createTrustedHTML(value);
-          }
-          case "TrustedScriptURL": {
-            return _createTrustedScriptURL(value);
-          }
-        }
+      if (trustedTypesPolicy && typeof trustedTypes === "object" && typeof trustedTypes.getAttributeType === "function" && !namespaceURI) switch (trustedTypes.getAttributeType(lcTag, lcName)) {
+        case "TrustedHTML":
+          return _createTrustedHTML(value);
+        case "TrustedScriptURL":
+          return _createTrustedScriptURL(value);
       }
       return value;
     };
     const _setAttributeValue = function _setAttributeValue2(currentNode, name, namespaceURI, value) {
       try {
-        if (namespaceURI) {
-          currentNode.setAttributeNS(namespaceURI, name, value);
-        } else {
-          currentNode.setAttribute(name, value);
-        }
+        if (namespaceURI) currentNode.setAttributeNS(namespaceURI, name, value);
+        else currentNode.setAttribute(name, value);
         if (_isClobbered(currentNode)) {
           _forceRemove(currentNode);
           return false;
@@ -23508,12 +23299,11 @@
         return false;
       }
     };
-    const _sanitizeAttributes = function _sanitizeAttributes2(currentNode) {
+    const _sanitizeAttributes = function _sanitizeAttributes2(currentNode, root) {
       _executeHooks(hooks.beforeSanitizeAttributes, currentNode, null);
+      if (_handleHookDetachedNode(currentNode, root)) return;
       const attributes = currentNode.attributes;
-      if (!attributes || _isClobbered(currentNode)) {
-        return;
-      }
+      if (!attributes || _isClobbered(currentNode)) return;
       ALLOWED_ATTR = _forkSharedAllowlist(hooks.uponSanitizeAttribute, ALLOWED_ATTR, DEFAULT_ALLOWED_ATTR, SET_CONFIG_ALLOWED_ATTR);
       const hookEvent = {
         attrName: "",
@@ -23550,9 +23340,7 @@
           _removeAttribute(name, currentNode, attr);
           continue;
         }
-        if (hookEvent.forceKeepAttr) {
-          continue;
-        }
+        if (hookEvent.forceKeepAttr) continue;
         if (!hookEvent.keepAttr) {
           _removeAttribute(name, currentNode, attr);
           continue;
@@ -23561,22 +23349,18 @@
           _removeAttribute(name, currentNode, attr);
           continue;
         }
-        if (SAFE_FOR_TEMPLATES) {
-          value = _stripTemplateExpressions(value);
-        }
+        if (SAFE_FOR_TEMPLATES) value = _stripTemplateExpressions(value);
         if (!_isValidAttribute(lcTag, lcName, value)) {
           _removeAttribute(name, currentNode, attr);
           continue;
         }
         value = _applyTrustedTypesToAttribute(lcTag, lcName, namespaceURI, value);
         if (value !== initValue) {
-          const cleanWrite = _setAttributeValue(currentNode, name, namespaceURI, value);
-          if (cleanWrite && recreatedNamedProp) {
-            arrayPop(DOMPurify.removed);
-          }
+          if (_setAttributeValue(currentNode, name, namespaceURI, value) && recreatedNamedProp) arrayPop(DOMPurify.removed);
         }
       }
       _executeHooks(hooks.afterSanitizeAttributes, currentNode, null);
+      _handleHookDetachedNode(currentNode, root);
     };
     const _sanitizeShadowDOM2 = function _sanitizeShadowDOM(fragment) {
       let shadowNode = null;
@@ -23585,10 +23369,8 @@
       while (shadowNode = shadowIterator.nextNode()) {
         _executeHooks(hooks.uponSanitizeShadowNode, shadowNode, null);
         _sanitizeElements(shadowNode, fragment);
-        _sanitizeAttributes(shadowNode);
-        if (_isDocumentFragment(shadowNode.content)) {
-          _sanitizeShadowDOM2(shadowNode.content);
-        }
+        _sanitizeAttributes(shadowNode, fragment);
+        if (_isDocumentFragment(shadowNode.content)) _sanitizeShadowDOM2(shadowNode.content);
         if (_readNodeType(shadowNode) === NODE_TYPE.element) {
           const innerSr = getShadowRoot(shadowNode);
           if (_isDocumentFragment(innerSr)) {
@@ -23611,40 +23393,31 @@
           continue;
         }
         const node2 = item.node;
-        const nodeType = _readNodeType(node2);
-        const isElement = nodeType === NODE_TYPE.element;
+        const isElement = _readNodeType(node2) === NODE_TYPE.element;
         const childNodes = getChildNodes(node2);
-        if (childNodes) {
-          for (let i3 = childNodes.length - 1; i3 >= 0; --i3) {
-            stack.push({
-              node: childNodes[i3],
-              shadow: null
-            });
-          }
-        }
+        if (childNodes) for (let i3 = childNodes.length - 1; i3 >= 0; --i3) stack.push({
+          node: childNodes[i3],
+          shadow: null
+        });
         if (isElement) {
           const rootName = getNodeName ? getNodeName(node2) : null;
           if (typeof rootName === "string" && transformCaseFunc(rootName) === "template") {
             const content = node2.content;
-            if (_isDocumentFragment(content)) {
-              stack.push({
-                node: content,
-                shadow: null
-              });
-            }
+            if (_isDocumentFragment(content)) stack.push({
+              node: content,
+              shadow: null
+            });
           }
         }
         if (isElement) {
           const sr = getShadowRoot(node2);
-          if (_isDocumentFragment(sr)) {
-            stack.push({
-              node: null,
-              shadow: sr
-            }, {
-              node: sr,
-              shadow: null
-            });
-          }
+          if (_isDocumentFragment(sr)) stack.push({
+            node: null,
+            shadow: sr
+          }, {
+            node: sr,
+            shadow: null
+          });
         }
       }
     };
@@ -23655,30 +23428,18 @@
       let currentNode = null;
       let returnNode = null;
       IS_EMPTY_INPUT = !dirty;
-      if (IS_EMPTY_INPUT) {
-        dirty = "<!-->";
-      }
+      if (IS_EMPTY_INPUT) dirty = "<!-->";
       if (typeof dirty !== "string" && !_isNode(dirty)) {
         dirty = stringifyValue(dirty);
-        if (typeof dirty !== "string") {
-          throw typeErrorCreate("dirty is not a string, aborting");
-        }
+        if (typeof dirty !== "string") throw typeErrorCreate("dirty is not a string, aborting");
       }
-      if (!DOMPurify.isSupported) {
-        return dirty;
-      }
+      if (!DOMPurify.isSupported) return dirty;
       if (SET_CONFIG) {
         ALLOWED_TAGS = SET_CONFIG_ALLOWED_TAGS;
         ALLOWED_ATTR = SET_CONFIG_ALLOWED_ATTR;
-      } else {
-        _parseConfig(cfg);
-      }
-      if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) {
-        ALLOWED_TAGS = clone(ALLOWED_TAGS);
-      }
-      if (hooks.uponSanitizeAttribute.length > 0) {
-        ALLOWED_ATTR = clone(ALLOWED_ATTR);
-      }
+      } else _parseConfig(cfg);
+      if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) ALLOWED_TAGS = clone(ALLOWED_TAGS);
+      if (hooks.uponSanitizeAttribute.length > 0) ALLOWED_ATTR = clone(ALLOWED_ATTR);
       DOMPurify.removed = [];
       const inPlace = IN_PLACE && typeof dirty !== "string" && _isNode(dirty);
       if (inPlace) {
@@ -23704,83 +23465,57 @@
       } else if (_isNode(dirty)) {
         body = _initDocument("<!---->");
         importedNode = body.ownerDocument.importNode(dirty, true);
-        if (importedNode.nodeType === NODE_TYPE.element && importedNode.nodeName === "BODY") {
-          body = importedNode;
-        } else if (importedNode.nodeName === "HTML") {
-          body = importedNode;
-        } else {
-          body.appendChild(importedNode);
-        }
+        if (importedNode.nodeType === NODE_TYPE.element && importedNode.nodeName === "BODY") body = importedNode;
+        else if (importedNode.nodeName === "HTML") body = importedNode;
+        else body.appendChild(importedNode);
         _sanitizeAttachedShadowRoots(body);
       } else {
-        if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && // eslint-disable-next-line unicorn/prefer-includes
-        dirty.indexOf("<") === -1) {
-          return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
-        }
+        if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
         body = _initDocument(dirty);
-        if (!body) {
-          return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
-        }
+        if (!body) return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
       }
-      if (body && FORCE_BODY) {
-        _forceRemove(body.firstChild);
-      }
+      if (body && FORCE_BODY) _forceRemove(body.firstChild);
       const walkRoot = inPlace ? dirty : body;
       try {
         const nodeIterator = _createNodeIterator(walkRoot);
         while (currentNode = nodeIterator.nextNode()) {
           _sanitizeElements(currentNode, walkRoot);
-          _sanitizeAttributes(currentNode);
-          if (_isDocumentFragment(currentNode.content)) {
-            _sanitizeShadowDOM2(currentNode.content);
-          }
+          _sanitizeAttributes(currentNode, walkRoot);
+          if (_isDocumentFragment(currentNode.content)) _sanitizeShadowDOM2(currentNode.content);
         }
       } catch (error) {
         if (inPlace) {
           _neutralizeRoot(dirty);
           arrayForEach(DOMPurify.removed, (entry) => {
-            if (entry.element) {
-              _neutralizeSubtree(entry.element);
-            }
+            if (entry.element) _neutralizeSubtree(entry.element);
           });
         }
         throw error;
       }
       if (inPlace) {
+        let rootWasRemoved = false;
         arrayForEach(DOMPurify.removed, (entry) => {
           if (entry.element) {
+            if (entry.element === dirty) rootWasRemoved = true;
             _neutralizeSubtree(entry.element);
           }
         });
-        if (SAFE_FOR_TEMPLATES) {
-          _scrubTemplateExpressions2(dirty);
-        }
+        if (rootWasRemoved) throw typeErrorCreate("a node selected for removal could not be safely returned; refusing to sanitize in place");
+        if (SAFE_FOR_TEMPLATES) _scrubTemplateExpressions2(dirty);
         return dirty;
       }
       if (RETURN_DOM) {
-        if (SAFE_FOR_TEMPLATES) {
-          _scrubTemplateExpressions2(body);
-        }
+        if (SAFE_FOR_TEMPLATES) _scrubTemplateExpressions2(body);
         if (RETURN_DOM_FRAGMENT) {
           returnNode = createDocumentFragment.call(body.ownerDocument);
-          while (body.firstChild) {
-            returnNode.appendChild(body.firstChild);
-          }
-        } else {
-          returnNode = body;
-        }
-        if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) {
-          returnNode = importNode.call(originalDocument, returnNode, true);
-        }
+          while (body.firstChild) returnNode.appendChild(body.firstChild);
+        } else returnNode = body;
+        if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) returnNode = importNode.call(originalDocument, returnNode, true);
         return returnNode;
       }
       let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
-      if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) {
-        serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
-      }
-      if (SAFE_FOR_TEMPLATES) {
-        serializedHTML = _stripTemplateExpressions(serializedHTML);
-      }
+      if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
+      if (SAFE_FOR_TEMPLATES) serializedHTML = _stripTemplateExpressions(serializedHTML);
       return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(serializedHTML) : serializedHTML;
     };
     DOMPurify.setConfig = function() {
@@ -23799,26 +23534,18 @@
       emptyHTML = "";
     };
     DOMPurify.isValidAttribute = function(tag, attr, value) {
-      if (!CONFIG) {
-        _parseConfig({});
-      }
+      if (!CONFIG) _parseConfig({});
       const lcTag = transformCaseFunc(tag);
       const lcName = transformCaseFunc(attr);
       return _isValidAttribute(lcTag, lcName, value);
     };
     DOMPurify.addHook = function(entryPoint, hookFunction) {
-      if (typeof hookFunction !== "function") {
-        return;
-      }
-      if (!objectHasOwnProperty(hooks, entryPoint)) {
-        return;
-      }
+      if (typeof hookFunction !== "function") return;
+      if (!objectHasOwnProperty(hooks, entryPoint)) return;
       arrayPush(hooks[entryPoint], hookFunction);
     };
     DOMPurify.removeHook = function(entryPoint, hookFunction) {
-      if (!objectHasOwnProperty(hooks, entryPoint)) {
-        return void 0;
-      }
+      if (!objectHasOwnProperty(hooks, entryPoint)) return;
       if (hookFunction !== void 0) {
         const index2 = arrayLastIndexOf(hooks[entryPoint], hookFunction);
         return index2 === -1 ? void 0 : arraySplice(hooks[entryPoint], index2, 1)[0];
@@ -23826,9 +23553,7 @@
       return arrayPop(hooks[entryPoint]);
     };
     DOMPurify.removeHooks = function(entryPoint) {
-      if (!objectHasOwnProperty(hooks, entryPoint)) {
-        return;
-      }
+      if (!objectHasOwnProperty(hooks, entryPoint)) return;
       hooks[entryPoint] = [];
     };
     DOMPurify.removeAllHooks = function() {
@@ -23836,10 +23561,18 @@
     };
     return DOMPurify;
   }
-  var entries, setPrototypeOf, isFrozen, getPrototypeOf, getOwnPropertyDescriptor, freeze, seal, create, _ref, apply, construct, arrayForEach, arrayLastIndexOf, arrayPop, arrayPush, arraySplice, arrayIsArray, stringToLowerCase, stringToString, stringMatch, stringReplace, stringIndexOf, stringTrim, numberToString, booleanToString, bigintToString, symbolToString, objectHasOwnProperty, objectToString, regExpTest, typeErrorCreate, html$1, svg$1, svgFilters, svgDisallowed, mathMl$1, mathMlDisallowed, text, html, svg, mathMl, xml, MUSTACHE_EXPR, ERB_EXPR, TMPLIT_EXPR, DATA_ATTR, ARIA_ATTR, IS_ALLOWED_URI, IS_SCRIPT_OR_DATA, ATTR_WHITESPACE, DOCTYPE_NAME, CUSTOM_ELEMENT, ELEMENT_MARKUP_PROBE, COMMENT_MARKUP_PROBE, FALLBACK_TAG_CLOSE, SELF_CLOSING_TAG, NODE_TYPE, LITERAL_TEXT_ELEMENT_NAMES, LITERAL_TEXT_ELEMENTS, LITERAL_TEXT_CLOSE, getGlobal, _createTrustedTypesPolicy, _createHooksMap, _resolveSetOption, _resolveObjectOption, purify;
+  var entries, setPrototypeOf, isFrozen, getPrototypeOf, getOwnPropertyDescriptor, freeze, seal, create, _ref, apply, construct, arrayForEach, arrayLastIndexOf, arrayPop, arrayPush, arraySplice, arrayIsArray, stringToLowerCase, stringToString, stringMatch, stringReplace, stringIndexOf, stringTrim, numberToString, booleanToString, bigintToString, symbolToString, objectHasOwnProperty, objectToString, regExpTest, typeErrorCreate, html$1, svg$1, svgFilters, svgDisallowed, mathMl$1, mathMlDisallowed, text, html, svg, mathMl, xml, MUSTACHE_EXPR, ERB_EXPR, TMPLIT_EXPR, DATA_ATTR, ARIA_ATTR, IS_ALLOWED_URI, IS_SCRIPT_OR_DATA, ATTR_WHITESPACE, DOCTYPE_NAME, CUSTOM_ELEMENT, ELEMENT_MARKUP_PROBE, COMMENT_MARKUP_PROBE, FALLBACK_TAG_CLOSE, SELF_CLOSING_TAG, NODE_TYPE, LITERAL_TEXT_ELEMENT_NAMES, LITERAL_TEXT_ELEMENTS, LITERAL_TEXT_CLOSE, getGlobal, _createTrustedTypesPolicy, _createHooksMap, _resolveSetOption, _resolveObjectOption, purify_default;
   var init_purify_es = __esm({
-    "node_modules/dompurify/dist/purify.es.mjs"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/dompurify/dist/purify.es.mjs"() {
+      AsyncGenerator.prototype["function" == typeof Symbol && Symbol.asyncIterator || "@@asyncIterator"] = function() {
+        return this;
+      }, AsyncGenerator.prototype.next = function(e2) {
+        return this._invoke("next", e2);
+      }, AsyncGenerator.prototype.throw = function(e2) {
+        return this._invoke("throw", e2);
+      }, AsyncGenerator.prototype.return = function(e2) {
+        return this._invoke("return", e2);
+      };
       entries = Object.entries;
       setPrototypeOf = Object.setPrototypeOf;
       isFrozen = Object.isFrozen;
@@ -23851,36 +23584,26 @@
       _ref = typeof Reflect !== "undefined" && Reflect;
       apply = _ref.apply;
       construct = _ref.construct;
-      if (!freeze) {
-        freeze = function freeze2(x2) {
-          return x2;
-        };
-      }
-      if (!seal) {
-        seal = function seal2(x2) {
-          return x2;
-        };
-      }
-      if (!apply) {
-        apply = function apply2(func, thisArg) {
-          for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-            args[_key - 2] = arguments[_key];
-          }
-          return func.apply(thisArg, args);
-        };
-      }
-      if (!construct) {
-        construct = function construct2(Func) {
-          for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-            args[_key2 - 1] = arguments[_key2];
-          }
-          return new Func(...args);
-        };
-      }
+      if (!freeze) freeze = function freeze2(x2) {
+        return x2;
+      };
+      if (!seal) seal = function seal2(x2) {
+        return x2;
+      };
+      if (!apply) apply = function apply2(func, thisArg) {
+        for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) args[_key - 2] = arguments[_key];
+        return func.apply(thisArg, args);
+      };
+      if (!construct) construct = function construct2(Func) {
+        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) args[_key2 - 1] = arguments[_key2];
+        return new Func(...args);
+      };
       arrayForEach = unapply(Array.prototype.forEach);
+      Array.prototype.indexOf;
       arrayLastIndexOf = unapply(Array.prototype.lastIndexOf);
       arrayPop = unapply(Array.prototype.pop);
       arrayPush = unapply(Array.prototype.push);
+      Array.prototype.slice;
       arraySplice = unapply(Array.prototype.splice);
       arrayIsArray = Array.isArray;
       stringToLowerCase = unapply(String.prototype.toLowerCase);
@@ -23897,31 +23620,662 @@
       objectToString = unapply(Object.prototype.toString);
       regExpTest = unapply(RegExp.prototype.test);
       typeErrorCreate = unconstruct(TypeError);
-      html$1 = freeze(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "search", "section", "select", "shadow", "slot", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]);
-      svg$1 = freeze(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "enterkeyhint", "exportparts", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "inputmode", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "part", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]);
-      svgFilters = freeze(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]);
-      svgDisallowed = freeze(["animate", "color-profile", "cursor", "discard", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]);
-      mathMl$1 = freeze(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "mprescripts"]);
-      mathMlDisallowed = freeze(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]);
+      html$1 = freeze([
+        "a",
+        "abbr",
+        "acronym",
+        "address",
+        "area",
+        "article",
+        "aside",
+        "audio",
+        "b",
+        "bdi",
+        "bdo",
+        "big",
+        "blink",
+        "blockquote",
+        "body",
+        "br",
+        "button",
+        "canvas",
+        "caption",
+        "center",
+        "cite",
+        "code",
+        "col",
+        "colgroup",
+        "content",
+        "data",
+        "datalist",
+        "dd",
+        "decorator",
+        "del",
+        "details",
+        "dfn",
+        "dialog",
+        "dir",
+        "div",
+        "dl",
+        "dt",
+        "element",
+        "em",
+        "fieldset",
+        "figcaption",
+        "figure",
+        "font",
+        "footer",
+        "form",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "head",
+        "header",
+        "hgroup",
+        "hr",
+        "html",
+        "i",
+        "img",
+        "input",
+        "ins",
+        "kbd",
+        "label",
+        "legend",
+        "li",
+        "main",
+        "map",
+        "mark",
+        "marquee",
+        "menu",
+        "menuitem",
+        "meter",
+        "nav",
+        "nobr",
+        "ol",
+        "optgroup",
+        "option",
+        "output",
+        "p",
+        "picture",
+        "pre",
+        "progress",
+        "q",
+        "rp",
+        "rt",
+        "ruby",
+        "s",
+        "samp",
+        "search",
+        "section",
+        "select",
+        "shadow",
+        "slot",
+        "small",
+        "source",
+        "spacer",
+        "span",
+        "strike",
+        "strong",
+        "style",
+        "sub",
+        "summary",
+        "sup",
+        "table",
+        "tbody",
+        "td",
+        "template",
+        "textarea",
+        "tfoot",
+        "th",
+        "thead",
+        "time",
+        "tr",
+        "track",
+        "tt",
+        "u",
+        "ul",
+        "var",
+        "video",
+        "wbr"
+      ]);
+      svg$1 = freeze([
+        "svg",
+        "a",
+        "altglyph",
+        "altglyphdef",
+        "altglyphitem",
+        "animatecolor",
+        "animatemotion",
+        "animatetransform",
+        "circle",
+        "clippath",
+        "defs",
+        "desc",
+        "ellipse",
+        "enterkeyhint",
+        "exportparts",
+        "filter",
+        "font",
+        "g",
+        "glyph",
+        "glyphref",
+        "hkern",
+        "image",
+        "inputmode",
+        "line",
+        "lineargradient",
+        "marker",
+        "mask",
+        "metadata",
+        "mpath",
+        "part",
+        "path",
+        "pattern",
+        "polygon",
+        "polyline",
+        "radialgradient",
+        "rect",
+        "stop",
+        "style",
+        "switch",
+        "symbol",
+        "text",
+        "textpath",
+        "title",
+        "tref",
+        "tspan",
+        "view",
+        "vkern"
+      ]);
+      svgFilters = freeze([
+        "feBlend",
+        "feColorMatrix",
+        "feComponentTransfer",
+        "feComposite",
+        "feConvolveMatrix",
+        "feDiffuseLighting",
+        "feDisplacementMap",
+        "feDistantLight",
+        "feDropShadow",
+        "feFlood",
+        "feFuncA",
+        "feFuncB",
+        "feFuncG",
+        "feFuncR",
+        "feGaussianBlur",
+        "feImage",
+        "feMerge",
+        "feMergeNode",
+        "feMorphology",
+        "feOffset",
+        "fePointLight",
+        "feSpecularLighting",
+        "feSpotLight",
+        "feTile",
+        "feTurbulence"
+      ]);
+      svgDisallowed = freeze([
+        "animate",
+        "color-profile",
+        "cursor",
+        "discard",
+        "font-face",
+        "font-face-format",
+        "font-face-name",
+        "font-face-src",
+        "font-face-uri",
+        "foreignobject",
+        "hatch",
+        "hatchpath",
+        "mesh",
+        "meshgradient",
+        "meshpatch",
+        "meshrow",
+        "missing-glyph",
+        "script",
+        "set",
+        "solidcolor",
+        "unknown",
+        "use"
+      ]);
+      mathMl$1 = freeze([
+        "math",
+        "menclose",
+        "merror",
+        "mfenced",
+        "mfrac",
+        "mglyph",
+        "mi",
+        "mlabeledtr",
+        "mmultiscripts",
+        "mn",
+        "mo",
+        "mover",
+        "mpadded",
+        "mphantom",
+        "mroot",
+        "mrow",
+        "ms",
+        "mspace",
+        "msqrt",
+        "mstyle",
+        "msub",
+        "msup",
+        "msubsup",
+        "mtable",
+        "mtd",
+        "mtext",
+        "mtr",
+        "munder",
+        "munderover",
+        "mprescripts"
+      ]);
+      mathMlDisallowed = freeze([
+        "maction",
+        "maligngroup",
+        "malignmark",
+        "mlongdiv",
+        "mscarries",
+        "mscarry",
+        "msgroup",
+        "mstack",
+        "msline",
+        "msrow",
+        "semantics",
+        "annotation",
+        "annotation-xml",
+        "mprescripts",
+        "none"
+      ]);
       text = freeze(["#text"]);
-      html = freeze(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "command", "commandfor", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "exportparts", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inert", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "part", "pattern", "placeholder", "playsinline", "popover", "popovertarget", "popovertargetaction", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "slot", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "wrap", "xmlns"]);
-      svg = freeze(["accent-height", "accumulate", "additive", "alignment-baseline", "amplitude", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dominant-baseline", "dur", "edgemode", "elevation", "end", "exponent", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "intercept", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "mask-type", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "pointer-events", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "slope", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "tablevalues", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-orientation", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "vector-effect", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]);
-      mathMl = freeze(["accent", "accentunder", "align", "bevelled", "close", "columnalign", "columnlines", "columnspacing", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lquote", "lspace", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]);
-      xml = freeze(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]);
+      html = freeze([
+        "accept",
+        "action",
+        "align",
+        "alt",
+        "autocapitalize",
+        "autocomplete",
+        "autopictureinpicture",
+        "autoplay",
+        "background",
+        "bgcolor",
+        "border",
+        "capture",
+        "cellpadding",
+        "cellspacing",
+        "checked",
+        "cite",
+        "class",
+        "clear",
+        "color",
+        "cols",
+        "colspan",
+        "command",
+        "commandfor",
+        "controls",
+        "controlslist",
+        "coords",
+        "crossorigin",
+        "datetime",
+        "decoding",
+        "default",
+        "dir",
+        "disabled",
+        "disablepictureinpicture",
+        "disableremoteplayback",
+        "download",
+        "draggable",
+        "enctype",
+        "enterkeyhint",
+        "exportparts",
+        "face",
+        "for",
+        "headers",
+        "height",
+        "hidden",
+        "high",
+        "href",
+        "hreflang",
+        "id",
+        "inert",
+        "inputmode",
+        "integrity",
+        "ismap",
+        "kind",
+        "label",
+        "lang",
+        "list",
+        "loading",
+        "loop",
+        "low",
+        "max",
+        "maxlength",
+        "media",
+        "method",
+        "min",
+        "minlength",
+        "multiple",
+        "muted",
+        "name",
+        "nonce",
+        "noshade",
+        "novalidate",
+        "nowrap",
+        "open",
+        "optimum",
+        "part",
+        "pattern",
+        "placeholder",
+        "playsinline",
+        "popover",
+        "popovertarget",
+        "popovertargetaction",
+        "poster",
+        "preload",
+        "pubdate",
+        "radiogroup",
+        "readonly",
+        "rel",
+        "required",
+        "rev",
+        "reversed",
+        "role",
+        "rows",
+        "rowspan",
+        "spellcheck",
+        "scope",
+        "selected",
+        "shape",
+        "size",
+        "sizes",
+        "slot",
+        "span",
+        "srclang",
+        "start",
+        "src",
+        "srcset",
+        "step",
+        "style",
+        "summary",
+        "tabindex",
+        "title",
+        "translate",
+        "type",
+        "usemap",
+        "valign",
+        "value",
+        "width",
+        "wrap",
+        "xmlns"
+      ]);
+      svg = freeze([
+        "accent-height",
+        "accumulate",
+        "additive",
+        "alignment-baseline",
+        "amplitude",
+        "ascent",
+        "attributename",
+        "attributetype",
+        "azimuth",
+        "basefrequency",
+        "baseline-shift",
+        "begin",
+        "bias",
+        "by",
+        "class",
+        "clip",
+        "clippathunits",
+        "clip-path",
+        "clip-rule",
+        "color",
+        "color-interpolation",
+        "color-interpolation-filters",
+        "color-profile",
+        "color-rendering",
+        "cx",
+        "cy",
+        "d",
+        "dx",
+        "dy",
+        "diffuseconstant",
+        "direction",
+        "display",
+        "divisor",
+        "dominant-baseline",
+        "dur",
+        "edgemode",
+        "elevation",
+        "end",
+        "exponent",
+        "fill",
+        "fill-opacity",
+        "fill-rule",
+        "filter",
+        "filterunits",
+        "flood-color",
+        "flood-opacity",
+        "font-family",
+        "font-size",
+        "font-size-adjust",
+        "font-stretch",
+        "font-style",
+        "font-variant",
+        "font-weight",
+        "fx",
+        "fy",
+        "g1",
+        "g2",
+        "glyph-name",
+        "glyphref",
+        "gradientunits",
+        "gradienttransform",
+        "height",
+        "href",
+        "id",
+        "image-rendering",
+        "in",
+        "in2",
+        "intercept",
+        "k",
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "kerning",
+        "keypoints",
+        "keysplines",
+        "keytimes",
+        "lang",
+        "lengthadjust",
+        "letter-spacing",
+        "kernelmatrix",
+        "kernelunitlength",
+        "lighting-color",
+        "local",
+        "marker-end",
+        "marker-mid",
+        "marker-start",
+        "markerheight",
+        "markerunits",
+        "markerwidth",
+        "maskcontentunits",
+        "maskunits",
+        "max",
+        "mask",
+        "mask-type",
+        "media",
+        "method",
+        "mode",
+        "min",
+        "name",
+        "numoctaves",
+        "offset",
+        "operator",
+        "opacity",
+        "order",
+        "orient",
+        "orientation",
+        "origin",
+        "overflow",
+        "paint-order",
+        "path",
+        "pathlength",
+        "patterncontentunits",
+        "patterntransform",
+        "patternunits",
+        "pointer-events",
+        "points",
+        "preservealpha",
+        "preserveaspectratio",
+        "primitiveunits",
+        "r",
+        "rx",
+        "ry",
+        "radius",
+        "refx",
+        "refy",
+        "repeatcount",
+        "repeatdur",
+        "restart",
+        "result",
+        "rotate",
+        "scale",
+        "seed",
+        "shape-rendering",
+        "slope",
+        "specularconstant",
+        "specularexponent",
+        "spreadmethod",
+        "startoffset",
+        "stddeviation",
+        "stitchtiles",
+        "stop-color",
+        "stop-opacity",
+        "stroke-dasharray",
+        "stroke-dashoffset",
+        "stroke-linecap",
+        "stroke-linejoin",
+        "stroke-miterlimit",
+        "stroke-opacity",
+        "stroke",
+        "stroke-width",
+        "style",
+        "surfacescale",
+        "systemlanguage",
+        "tabindex",
+        "tablevalues",
+        "targetx",
+        "targety",
+        "transform",
+        "transform-origin",
+        "text-anchor",
+        "text-decoration",
+        "text-orientation",
+        "text-rendering",
+        "textlength",
+        "type",
+        "u1",
+        "u2",
+        "unicode",
+        "values",
+        "vector-effect",
+        "viewbox",
+        "visibility",
+        "version",
+        "vert-adv-y",
+        "vert-origin-x",
+        "vert-origin-y",
+        "width",
+        "word-spacing",
+        "wrap",
+        "writing-mode",
+        "xchannelselector",
+        "ychannelselector",
+        "x",
+        "x1",
+        "x2",
+        "xmlns",
+        "y",
+        "y1",
+        "y2",
+        "z",
+        "zoomandpan"
+      ]);
+      mathMl = freeze([
+        "accent",
+        "accentunder",
+        "align",
+        "bevelled",
+        "close",
+        "columnalign",
+        "columnlines",
+        "columnspacing",
+        "columnspan",
+        "denomalign",
+        "depth",
+        "dir",
+        "display",
+        "displaystyle",
+        "encoding",
+        "fence",
+        "frame",
+        "height",
+        "href",
+        "id",
+        "largeop",
+        "length",
+        "linethickness",
+        "lquote",
+        "lspace",
+        "mathbackground",
+        "mathcolor",
+        "mathsize",
+        "mathvariant",
+        "maxsize",
+        "minsize",
+        "movablelimits",
+        "notation",
+        "numalign",
+        "open",
+        "rowalign",
+        "rowlines",
+        "rowspacing",
+        "rowspan",
+        "rspace",
+        "rquote",
+        "scriptlevel",
+        "scriptminsize",
+        "scriptsizemultiplier",
+        "selection",
+        "separator",
+        "separators",
+        "stretchy",
+        "subscriptshift",
+        "supscriptshift",
+        "symmetric",
+        "voffset",
+        "width",
+        "xmlns"
+      ]);
+      xml = freeze([
+        "xlink:href",
+        "xml:id",
+        "xlink:title",
+        "xml:space",
+        "xmlns:xlink"
+      ]);
       MUSTACHE_EXPR = seal(/{{[\w\W]*|^[\w\W]*}}/g);
       ERB_EXPR = seal(/<%[\w\W]*|^[\w\W]*%>/g);
       TMPLIT_EXPR = seal(/\${[\w\W]*/g);
       DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]+$/);
       ARIA_ATTR = seal(/^aria-[\-\w]+$/);
-      IS_ALLOWED_URI = seal(
-        /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
-        // eslint-disable-line no-useless-escape
-      );
+      IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
       IS_SCRIPT_OR_DATA = seal(/^(?:\w+script|data):/i);
-      ATTR_WHITESPACE = seal(
-        /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g
-        // eslint-disable-line no-control-regex
-      );
+      ATTR_WHITESPACE = seal(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
       DOCTYPE_NAME = seal(/^html$/i);
       CUSTOM_ELEMENT = seal(/^[a-z][.\w]*(-[.\w]+)+$/i);
       ELEMENT_MARKUP_PROBE = seal(/<[/\w!]/g);
@@ -23934,18 +24288,24 @@
         text: 3,
         cdataSection: 4,
         entityReference: 5,
-        // Deprecated
         entityNode: 6,
-        // Deprecated
         processingInstruction: 7,
         comment: 8,
         document: 9,
         documentType: 10,
         documentFragment: 11,
         notation: 12
-        // Deprecated
       };
-      LITERAL_TEXT_ELEMENT_NAMES = ["style", "script", "xmp", "iframe", "noembed", "noframes", "plaintext", "noscript"];
+      LITERAL_TEXT_ELEMENT_NAMES = [
+        "style",
+        "script",
+        "xmp",
+        "iframe",
+        "noembed",
+        "noframes",
+        "plaintext",
+        "noscript"
+      ];
       LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, LITERAL_TEXT_ELEMENT_NAMES));
       LITERAL_TEXT_CLOSE = (function() {
         const map = {};
@@ -23958,14 +24318,10 @@
         return typeof window === "undefined" ? null : window;
       };
       _createTrustedTypesPolicy = function _createTrustedTypesPolicy2(trustedTypes, purifyHostElement) {
-        if (typeof trustedTypes !== "object" || typeof trustedTypes.createPolicy !== "function") {
-          return null;
-        }
+        if (typeof trustedTypes !== "object" || typeof trustedTypes.createPolicy !== "function") return null;
         let suffix = null;
         const ATTR_NAME = "data-tt-policy-suffix";
-        if (purifyHostElement && purifyHostElement.hasAttribute(ATTR_NAME)) {
-          suffix = purifyHostElement.getAttribute(ATTR_NAME);
-        }
+        if (purifyHostElement && purifyHostElement.hasAttribute(ATTR_NAME)) suffix = purifyHostElement.getAttribute(ATTR_NAME);
         const policyName = "dompurify" + (suffix ? "#" + suffix : "");
         try {
           return trustedTypes.createPolicy(policyName, {
@@ -24001,32 +24357,30 @@
         const value = objectHasOwnProperty(cfg, key) ? cfg[key] : void 0;
         return value && typeof value === "object" ? clone(value) : makeFallback();
       };
-      purify = createDOMPurify();
+      purify_default = createDOMPurify();
     }
   });
 
-  // node_modules/core-js/internals/global-this.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/global-this.js
   var require_global_this = __commonJS({
-    "node_modules/core-js/internals/global-this.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/global-this.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var check = function(it2) {
         return it2 && it2.Math === Math && it2;
       };
       module.exports = // eslint-disable-next-line es/no-global-this -- safe
       check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
-      check(typeof self == "object" && self) || check(typeof global == "object" && global) || check(typeof exports == "object" && exports) || // eslint-disable-next-line no-new-func -- fallback
+      check(typeof self == "object" && self) || check(typeof window == "object" && window) || check(typeof exports == "object" && exports) || // eslint-disable-next-line no-new-func -- fallback
       /* @__PURE__ */ (function() {
         return this;
       })() || Function("return this")();
     }
   });
 
-  // node_modules/core-js/internals/fails.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/fails.js
   var require_fails = __commonJS({
-    "node_modules/core-js/internals/fails.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/fails.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(exec) {
         try {
           return !!exec();
@@ -24037,11 +24391,10 @@
     }
   });
 
-  // node_modules/core-js/internals/descriptors.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/descriptors.js
   var require_descriptors = __commonJS({
-    "node_modules/core-js/internals/descriptors.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/descriptors.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       module.exports = !fails(function() {
         return Object.defineProperty({}, 1, { get: function() {
@@ -24051,11 +24404,10 @@
     }
   });
 
-  // node_modules/core-js/internals/function-bind-native.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-bind-native.js
   var require_function_bind_native = __commonJS({
-    "node_modules/core-js/internals/function-bind-native.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-bind-native.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       module.exports = !fails(function() {
         var test = function() {
@@ -24065,11 +24417,10 @@
     }
   });
 
-  // node_modules/core-js/internals/function-call.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-call.js
   var require_function_call = __commonJS({
-    "node_modules/core-js/internals/function-call.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-call.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NATIVE_BIND = require_function_bind_native();
       var call = Function.prototype.call;
       module.exports = NATIVE_BIND ? call.bind(call) : function() {
@@ -24078,11 +24429,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-property-is-enumerable.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-property-is-enumerable.js
   var require_object_property_is_enumerable = __commonJS({
-    "node_modules/core-js/internals/object-property-is-enumerable.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-property-is-enumerable.js"(exports) {
       "use strict";
-      init_define_process_env();
       var $propertyIsEnumerable = {}.propertyIsEnumerable;
       var getOwnPropertyDescriptor2 = Object.getOwnPropertyDescriptor;
       var NASHORN_BUG = getOwnPropertyDescriptor2 && !$propertyIsEnumerable.call({ 1: 2 }, 1);
@@ -24093,11 +24443,10 @@
     }
   });
 
-  // node_modules/core-js/internals/create-property-descriptor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-property-descriptor.js
   var require_create_property_descriptor = __commonJS({
-    "node_modules/core-js/internals/create-property-descriptor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-property-descriptor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(bitmap, value) {
         return {
           enumerable: !(bitmap & 1),
@@ -24109,11 +24458,10 @@
     }
   });
 
-  // node_modules/core-js/internals/function-uncurry-this.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this.js
   var require_function_uncurry_this = __commonJS({
-    "node_modules/core-js/internals/function-uncurry-this.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NATIVE_BIND = require_function_bind_native();
       var FunctionPrototype = Function.prototype;
       var call = FunctionPrototype.call;
@@ -24126,11 +24474,10 @@
     }
   });
 
-  // node_modules/core-js/internals/classof-raw.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/classof-raw.js
   var require_classof_raw = __commonJS({
-    "node_modules/core-js/internals/classof-raw.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/classof-raw.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var toString2 = uncurryThis({}.toString);
       var stringSlice = uncurryThis("".slice);
@@ -24140,11 +24487,10 @@
     }
   });
 
-  // node_modules/core-js/internals/indexed-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/indexed-object.js
   var require_indexed_object = __commonJS({
-    "node_modules/core-js/internals/indexed-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/indexed-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var fails = require_fails();
       var classof = require_classof_raw();
@@ -24158,22 +24504,20 @@
     }
   });
 
-  // node_modules/core-js/internals/is-null-or-undefined.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-null-or-undefined.js
   var require_is_null_or_undefined = __commonJS({
-    "node_modules/core-js/internals/is-null-or-undefined.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-null-or-undefined.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(it2) {
         return it2 === null || it2 === void 0;
       };
     }
   });
 
-  // node_modules/core-js/internals/require-object-coercible.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/require-object-coercible.js
   var require_require_object_coercible = __commonJS({
-    "node_modules/core-js/internals/require-object-coercible.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/require-object-coercible.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isNullOrUndefined = require_is_null_or_undefined();
       var $TypeError = TypeError;
       module.exports = function(it2) {
@@ -24183,11 +24527,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-indexed-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-indexed-object.js
   var require_to_indexed_object = __commonJS({
-    "node_modules/core-js/internals/to-indexed-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-indexed-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var IndexedObject = require_indexed_object();
       var requireObjectCoercible = require_require_object_coercible();
       module.exports = function(it2) {
@@ -24196,11 +24539,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-callable.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-callable.js
   var require_is_callable = __commonJS({
-    "node_modules/core-js/internals/is-callable.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-callable.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var documentAll = typeof document == "object" && document.all;
       module.exports = typeof documentAll == "undefined" && documentAll !== void 0 ? function(argument) {
         return typeof argument == "function" || argument === documentAll;
@@ -24210,11 +24552,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-object.js
   var require_is_object = __commonJS({
-    "node_modules/core-js/internals/is-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isCallable = require_is_callable();
       module.exports = function(it2) {
         return typeof it2 == "object" ? it2 !== null : isCallable(it2);
@@ -24222,11 +24563,10 @@
     }
   });
 
-  // node_modules/core-js/internals/get-built-in.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-built-in.js
   var require_get_built_in = __commonJS({
-    "node_modules/core-js/internals/get-built-in.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-built-in.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var isCallable = require_is_callable();
       var aFunction = function(argument) {
@@ -24238,21 +24578,19 @@
     }
   });
 
-  // node_modules/core-js/internals/object-is-prototype-of.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-is-prototype-of.js
   var require_object_is_prototype_of = __commonJS({
-    "node_modules/core-js/internals/object-is-prototype-of.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-is-prototype-of.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       module.exports = uncurryThis({}.isPrototypeOf);
     }
   });
 
-  // node_modules/core-js/internals/environment-user-agent.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-user-agent.js
   var require_environment_user_agent = __commonJS({
-    "node_modules/core-js/internals/environment-user-agent.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-user-agent.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var navigator2 = globalThis2.navigator;
       var userAgent = navigator2 && navigator2.userAgent;
@@ -24260,11 +24598,10 @@
     }
   });
 
-  // node_modules/core-js/internals/environment-v8-version.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-v8-version.js
   var require_environment_v8_version = __commonJS({
-    "node_modules/core-js/internals/environment-v8-version.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-v8-version.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var userAgent = require_environment_user_agent();
       var process2 = globalThis2.process;
@@ -24288,11 +24625,10 @@
     }
   });
 
-  // node_modules/core-js/internals/symbol-constructor-detection.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/symbol-constructor-detection.js
   var require_symbol_constructor_detection = __commonJS({
-    "node_modules/core-js/internals/symbol-constructor-detection.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/symbol-constructor-detection.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var V8_VERSION = require_environment_v8_version();
       var fails = require_fails();
       var globalThis2 = require_global_this();
@@ -24305,21 +24641,19 @@
     }
   });
 
-  // node_modules/core-js/internals/use-symbol-as-uid.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/use-symbol-as-uid.js
   var require_use_symbol_as_uid = __commonJS({
-    "node_modules/core-js/internals/use-symbol-as-uid.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/use-symbol-as-uid.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NATIVE_SYMBOL = require_symbol_constructor_detection();
       module.exports = NATIVE_SYMBOL && !Symbol.sham && typeof Symbol.iterator == "symbol";
     }
   });
 
-  // node_modules/core-js/internals/is-symbol.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-symbol.js
   var require_is_symbol = __commonJS({
-    "node_modules/core-js/internals/is-symbol.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-symbol.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var getBuiltIn = require_get_built_in();
       var isCallable = require_is_callable();
       var isPrototypeOf = require_object_is_prototype_of();
@@ -24334,11 +24668,10 @@
     }
   });
 
-  // node_modules/core-js/internals/try-to-string.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/try-to-string.js
   var require_try_to_string = __commonJS({
-    "node_modules/core-js/internals/try-to-string.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/try-to-string.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var $String = String;
       module.exports = function(argument) {
         try {
@@ -24350,11 +24683,10 @@
     }
   });
 
-  // node_modules/core-js/internals/a-callable.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-callable.js
   var require_a_callable = __commonJS({
-    "node_modules/core-js/internals/a-callable.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-callable.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isCallable = require_is_callable();
       var tryToString = require_try_to_string();
       var $TypeError = TypeError;
@@ -24365,11 +24697,10 @@
     }
   });
 
-  // node_modules/core-js/internals/get-method.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-method.js
   var require_get_method = __commonJS({
-    "node_modules/core-js/internals/get-method.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-method.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var aCallable = require_a_callable();
       var isNullOrUndefined = require_is_null_or_undefined();
       module.exports = function(V2, P2) {
@@ -24379,11 +24710,10 @@
     }
   });
 
-  // node_modules/core-js/internals/ordinary-to-primitive.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/ordinary-to-primitive.js
   var require_ordinary_to_primitive = __commonJS({
-    "node_modules/core-js/internals/ordinary-to-primitive.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/ordinary-to-primitive.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var isCallable = require_is_callable();
       var isObject = require_is_object();
@@ -24398,20 +24728,18 @@
     }
   });
 
-  // node_modules/core-js/internals/is-pure.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-pure.js
   var require_is_pure = __commonJS({
-    "node_modules/core-js/internals/is-pure.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-pure.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = false;
     }
   });
 
-  // node_modules/core-js/internals/define-global-property.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-global-property.js
   var require_define_global_property = __commonJS({
-    "node_modules/core-js/internals/define-global-property.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-global-property.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var defineProperty = Object.defineProperty;
       module.exports = function(key, value) {
@@ -24425,11 +24753,10 @@
     }
   });
 
-  // node_modules/core-js/internals/shared-store.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared-store.js
   var require_shared_store = __commonJS({
-    "node_modules/core-js/internals/shared-store.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared-store.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var IS_PURE = require_is_pure();
       var globalThis2 = require_global_this();
       var defineGlobalProperty = require_define_global_property();
@@ -24445,11 +24772,10 @@
     }
   });
 
-  // node_modules/core-js/internals/shared.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared.js
   var require_shared = __commonJS({
-    "node_modules/core-js/internals/shared.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var store = require_shared_store();
       var create2 = Object.create || Object;
       module.exports = function(key, value) {
@@ -24458,11 +24784,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-object.js
   var require_to_object = __commonJS({
-    "node_modules/core-js/internals/to-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var requireObjectCoercible = require_require_object_coercible();
       var $Object = Object;
       module.exports = function(argument) {
@@ -24471,11 +24796,10 @@
     }
   });
 
-  // node_modules/core-js/internals/has-own-property.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/has-own-property.js
   var require_has_own_property = __commonJS({
-    "node_modules/core-js/internals/has-own-property.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/has-own-property.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var toObject = require_to_object();
       var hasOwnProperty = uncurryThis({}.hasOwnProperty);
@@ -24485,11 +24809,10 @@
     }
   });
 
-  // node_modules/core-js/internals/uid.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/uid.js
   var require_uid = __commonJS({
-    "node_modules/core-js/internals/uid.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/uid.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var id = 0;
       var postfix = Math.random();
@@ -24500,11 +24823,10 @@
     }
   });
 
-  // node_modules/core-js/internals/well-known-symbol.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/well-known-symbol.js
   var require_well_known_symbol = __commonJS({
-    "node_modules/core-js/internals/well-known-symbol.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/well-known-symbol.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var shared = require_shared();
       var hasOwn = require_has_own_property();
@@ -24523,11 +24845,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-primitive.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-primitive.js
   var require_to_primitive = __commonJS({
-    "node_modules/core-js/internals/to-primitive.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-primitive.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var isObject = require_is_object();
       var isSymbol = require_is_symbol();
@@ -24552,11 +24873,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-property-key.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-property-key.js
   var require_to_property_key = __commonJS({
-    "node_modules/core-js/internals/to-property-key.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-property-key.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toPrimitive2 = require_to_primitive();
       var isSymbol = require_is_symbol();
       module.exports = function(argument) {
@@ -24566,11 +24886,10 @@
     }
   });
 
-  // node_modules/core-js/internals/document-create-element.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/document-create-element.js
   var require_document_create_element = __commonJS({
-    "node_modules/core-js/internals/document-create-element.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/document-create-element.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var isObject = require_is_object();
       var document2 = globalThis2.document;
@@ -24581,11 +24900,10 @@
     }
   });
 
-  // node_modules/core-js/internals/ie8-dom-define.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/ie8-dom-define.js
   var require_ie8_dom_define = __commonJS({
-    "node_modules/core-js/internals/ie8-dom-define.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/ie8-dom-define.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var fails = require_fails();
       var createElement3 = require_document_create_element();
@@ -24599,11 +24917,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-get-own-property-descriptor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-descriptor.js
   var require_object_get_own_property_descriptor = __commonJS({
-    "node_modules/core-js/internals/object-get-own-property-descriptor.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-descriptor.js"(exports) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var call = require_function_call();
       var propertyIsEnumerableModule = require_object_property_is_enumerable();
@@ -24625,11 +24942,10 @@
     }
   });
 
-  // node_modules/core-js/internals/v8-prototype-define-bug.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/v8-prototype-define-bug.js
   var require_v8_prototype_define_bug = __commonJS({
-    "node_modules/core-js/internals/v8-prototype-define-bug.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/v8-prototype-define-bug.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var fails = require_fails();
       module.exports = DESCRIPTORS && fails(function() {
@@ -24642,11 +24958,10 @@
     }
   });
 
-  // node_modules/core-js/internals/an-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/an-object.js
   var require_an_object = __commonJS({
-    "node_modules/core-js/internals/an-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/an-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isObject = require_is_object();
       var $String = String;
       var $TypeError = TypeError;
@@ -24657,11 +24972,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-define-property.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-define-property.js
   var require_object_define_property = __commonJS({
-    "node_modules/core-js/internals/object-define-property.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-define-property.js"(exports) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var IE8_DOM_DEFINE = require_ie8_dom_define();
       var V8_PROTOTYPE_DEFINE_BUG = require_v8_prototype_define_bug();
@@ -24704,11 +25018,10 @@
     }
   });
 
-  // node_modules/core-js/internals/create-non-enumerable-property.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-non-enumerable-property.js
   var require_create_non_enumerable_property = __commonJS({
-    "node_modules/core-js/internals/create-non-enumerable-property.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-non-enumerable-property.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var definePropertyModule = require_object_define_property();
       var createPropertyDescriptor = require_create_property_descriptor();
@@ -24721,11 +25034,10 @@
     }
   });
 
-  // node_modules/core-js/internals/function-name.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-name.js
   var require_function_name = __commonJS({
-    "node_modules/core-js/internals/function-name.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-name.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var hasOwn = require_has_own_property();
       var FunctionPrototype = Function.prototype;
@@ -24742,11 +25054,10 @@
     }
   });
 
-  // node_modules/core-js/internals/inspect-source.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/inspect-source.js
   var require_inspect_source = __commonJS({
-    "node_modules/core-js/internals/inspect-source.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/inspect-source.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var isCallable = require_is_callable();
       var store = require_shared_store();
@@ -24760,11 +25071,10 @@
     }
   });
 
-  // node_modules/core-js/internals/weak-map-basic-detection.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/weak-map-basic-detection.js
   var require_weak_map_basic_detection = __commonJS({
-    "node_modules/core-js/internals/weak-map-basic-detection.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/weak-map-basic-detection.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var isCallable = require_is_callable();
       var WeakMap2 = globalThis2.WeakMap;
@@ -24772,11 +25082,10 @@
     }
   });
 
-  // node_modules/core-js/internals/shared-key.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared-key.js
   var require_shared_key = __commonJS({
-    "node_modules/core-js/internals/shared-key.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/shared-key.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var shared = require_shared();
       var uid = require_uid();
       var keys = shared("keys");
@@ -24786,20 +25095,18 @@
     }
   });
 
-  // node_modules/core-js/internals/hidden-keys.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/hidden-keys.js
   var require_hidden_keys = __commonJS({
-    "node_modules/core-js/internals/hidden-keys.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/hidden-keys.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = {};
     }
   });
 
-  // node_modules/core-js/internals/internal-state.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/internal-state.js
   var require_internal_state = __commonJS({
-    "node_modules/core-js/internals/internal-state.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/internal-state.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NATIVE_WEAK_MAP = require_weak_map_basic_detection();
       var globalThis2 = require_global_this();
       var isObject = require_is_object();
@@ -24871,11 +25178,10 @@
     }
   });
 
-  // node_modules/core-js/internals/make-built-in.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/make-built-in.js
   var require_make_built_in = __commonJS({
-    "node_modules/core-js/internals/make-built-in.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/make-built-in.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var fails = require_fails();
       var isCallable = require_is_callable();
@@ -24927,11 +25233,10 @@
     }
   });
 
-  // node_modules/core-js/internals/define-built-in.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-built-in.js
   var require_define_built_in = __commonJS({
-    "node_modules/core-js/internals/define-built-in.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-built-in.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isCallable = require_is_callable();
       var definePropertyModule = require_object_define_property();
       var makeBuiltIn = require_make_built_in();
@@ -24963,11 +25268,10 @@
     }
   });
 
-  // node_modules/core-js/internals/math-trunc.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/math-trunc.js
   var require_math_trunc = __commonJS({
-    "node_modules/core-js/internals/math-trunc.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/math-trunc.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var ceil = Math.ceil;
       var floor = Math.floor;
       module.exports = Math.trunc || function trunc(x2) {
@@ -24977,11 +25281,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-integer-or-infinity.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-integer-or-infinity.js
   var require_to_integer_or_infinity = __commonJS({
-    "node_modules/core-js/internals/to-integer-or-infinity.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-integer-or-infinity.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var trunc = require_math_trunc();
       module.exports = function(argument) {
         var number = +argument;
@@ -24990,11 +25293,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-absolute-index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-absolute-index.js
   var require_to_absolute_index = __commonJS({
-    "node_modules/core-js/internals/to-absolute-index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-absolute-index.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var max = Math.max;
       var min = Math.min;
@@ -25005,11 +25307,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-length.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-length.js
   var require_to_length = __commonJS({
-    "node_modules/core-js/internals/to-length.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-length.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var min = Math.min;
       module.exports = function(argument) {
@@ -25019,11 +25320,10 @@
     }
   });
 
-  // node_modules/core-js/internals/length-of-array-like.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/length-of-array-like.js
   var require_length_of_array_like = __commonJS({
-    "node_modules/core-js/internals/length-of-array-like.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/length-of-array-like.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toLength = require_to_length();
       module.exports = function(obj) {
         return toLength(obj.length);
@@ -25031,11 +25331,10 @@
     }
   });
 
-  // node_modules/core-js/internals/array-includes.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-includes.js
   var require_array_includes = __commonJS({
-    "node_modules/core-js/internals/array-includes.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-includes.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toIndexedObject = require_to_indexed_object();
       var toAbsoluteIndex = require_to_absolute_index();
       var lengthOfArrayLike = require_length_of_array_like();
@@ -25067,11 +25366,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-keys-internal.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-keys-internal.js
   var require_object_keys_internal = __commonJS({
-    "node_modules/core-js/internals/object-keys-internal.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-keys-internal.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var hasOwn = require_has_own_property();
       var toIndexedObject = require_to_indexed_object();
@@ -25092,11 +25390,10 @@
     }
   });
 
-  // node_modules/core-js/internals/enum-bug-keys.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/enum-bug-keys.js
   var require_enum_bug_keys = __commonJS({
-    "node_modules/core-js/internals/enum-bug-keys.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/enum-bug-keys.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = [
         "constructor",
         "hasOwnProperty",
@@ -25109,11 +25406,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-get-own-property-names.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-names.js
   var require_object_get_own_property_names = __commonJS({
-    "node_modules/core-js/internals/object-get-own-property-names.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-names.js"(exports) {
       "use strict";
-      init_define_process_env();
       var internalObjectKeys = require_object_keys_internal();
       var enumBugKeys = require_enum_bug_keys();
       var hiddenKeys = enumBugKeys.concat("length", "prototype");
@@ -25123,20 +25419,18 @@
     }
   });
 
-  // node_modules/core-js/internals/object-get-own-property-symbols.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-symbols.js
   var require_object_get_own_property_symbols = __commonJS({
-    "node_modules/core-js/internals/object-get-own-property-symbols.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-own-property-symbols.js"(exports) {
       "use strict";
-      init_define_process_env();
       exports.f = Object.getOwnPropertySymbols;
     }
   });
 
-  // node_modules/core-js/internals/own-keys.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/own-keys.js
   var require_own_keys = __commonJS({
-    "node_modules/core-js/internals/own-keys.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/own-keys.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var getBuiltIn = require_get_built_in();
       var uncurryThis = require_function_uncurry_this();
       var getOwnPropertyNamesModule = require_object_get_own_property_names();
@@ -25151,11 +25445,10 @@
     }
   });
 
-  // node_modules/core-js/internals/copy-constructor-properties.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/copy-constructor-properties.js
   var require_copy_constructor_properties = __commonJS({
-    "node_modules/core-js/internals/copy-constructor-properties.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/copy-constructor-properties.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var hasOwn = require_has_own_property();
       var ownKeys2 = require_own_keys();
       var getOwnPropertyDescriptorModule = require_object_get_own_property_descriptor();
@@ -25174,11 +25467,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-forced.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-forced.js
   var require_is_forced = __commonJS({
-    "node_modules/core-js/internals/is-forced.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-forced.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       var isCallable = require_is_callable();
       var replacement = /#|\.prototype\./;
@@ -25196,11 +25488,10 @@
     }
   });
 
-  // node_modules/core-js/internals/export.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/export.js
   var require_export = __commonJS({
-    "node_modules/core-js/internals/export.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/export.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var getOwnPropertyDescriptor2 = require_object_get_own_property_descriptor().f;
       var createNonEnumerableProperty = require_create_non_enumerable_property();
@@ -25240,11 +25531,10 @@
     }
   });
 
-  // node_modules/core-js/internals/environment.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment.js
   var require_environment = __commonJS({
-    "node_modules/core-js/internals/environment.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var userAgent = require_environment_user_agent();
       var classof = require_classof_raw();
@@ -25265,31 +25555,28 @@
     }
   });
 
-  // node_modules/core-js/internals/environment-is-node.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-node.js
   var require_environment_is_node = __commonJS({
-    "node_modules/core-js/internals/environment-is-node.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-node.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var ENVIRONMENT = require_environment();
       module.exports = ENVIRONMENT === "NODE";
     }
   });
 
-  // node_modules/core-js/internals/path.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/path.js
   var require_path = __commonJS({
-    "node_modules/core-js/internals/path.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/path.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       module.exports = globalThis2;
     }
   });
 
-  // node_modules/core-js/internals/function-uncurry-this-accessor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this-accessor.js
   var require_function_uncurry_this_accessor = __commonJS({
-    "node_modules/core-js/internals/function-uncurry-this-accessor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this-accessor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var aCallable = require_a_callable();
       module.exports = function(object, key, method) {
@@ -25301,11 +25588,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-possible-prototype.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-possible-prototype.js
   var require_is_possible_prototype = __commonJS({
-    "node_modules/core-js/internals/is-possible-prototype.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-possible-prototype.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isObject = require_is_object();
       module.exports = function(argument) {
         return isObject(argument) || argument === null;
@@ -25313,11 +25599,10 @@
     }
   });
 
-  // node_modules/core-js/internals/a-possible-prototype.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-possible-prototype.js
   var require_a_possible_prototype = __commonJS({
-    "node_modules/core-js/internals/a-possible-prototype.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-possible-prototype.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isPossiblePrototype = require_is_possible_prototype();
       var $String = String;
       var $TypeError = TypeError;
@@ -25328,11 +25613,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-set-prototype-of.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-set-prototype-of.js
   var require_object_set_prototype_of = __commonJS({
-    "node_modules/core-js/internals/object-set-prototype-of.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-set-prototype-of.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThisAccessor = require_function_uncurry_this_accessor();
       var isObject = require_is_object();
       var requireObjectCoercible = require_require_object_coercible();
@@ -25359,11 +25643,10 @@
     }
   });
 
-  // node_modules/core-js/internals/set-to-string-tag.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/set-to-string-tag.js
   var require_set_to_string_tag = __commonJS({
-    "node_modules/core-js/internals/set-to-string-tag.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/set-to-string-tag.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var defineProperty = require_object_define_property().f;
       var hasOwn = require_has_own_property();
       var wellKnownSymbol = require_well_known_symbol();
@@ -25377,11 +25660,10 @@
     }
   });
 
-  // node_modules/core-js/internals/define-built-in-accessor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-built-in-accessor.js
   var require_define_built_in_accessor = __commonJS({
-    "node_modules/core-js/internals/define-built-in-accessor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/define-built-in-accessor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var makeBuiltIn = require_make_built_in();
       var defineProperty = require_object_define_property();
       module.exports = function(target, name, descriptor) {
@@ -25392,11 +25674,10 @@
     }
   });
 
-  // node_modules/core-js/internals/set-species.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/set-species.js
   var require_set_species = __commonJS({
-    "node_modules/core-js/internals/set-species.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/set-species.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var getBuiltIn = require_get_built_in();
       var defineBuiltInAccessor = require_define_built_in_accessor();
       var wellKnownSymbol = require_well_known_symbol();
@@ -25416,11 +25697,10 @@
     }
   });
 
-  // node_modules/core-js/internals/an-instance.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/an-instance.js
   var require_an_instance = __commonJS({
-    "node_modules/core-js/internals/an-instance.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/an-instance.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isPrototypeOf = require_object_is_prototype_of();
       var $TypeError = TypeError;
       module.exports = function(it2, Prototype) {
@@ -25430,11 +25710,10 @@
     }
   });
 
-  // node_modules/core-js/internals/to-string-tag-support.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-string-tag-support.js
   var require_to_string_tag_support = __commonJS({
-    "node_modules/core-js/internals/to-string-tag-support.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-string-tag-support.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var wellKnownSymbol = require_well_known_symbol();
       var TO_STRING_TAG = wellKnownSymbol("toStringTag");
       var test = {};
@@ -25443,11 +25722,10 @@
     }
   });
 
-  // node_modules/core-js/internals/classof.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/classof.js
   var require_classof = __commonJS({
-    "node_modules/core-js/internals/classof.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/classof.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var TO_STRING_TAG_SUPPORT = require_to_string_tag_support();
       var isCallable = require_is_callable();
       var classofRaw = require_classof_raw();
@@ -25470,11 +25748,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-constructor.js
   var require_is_constructor = __commonJS({
-    "node_modules/core-js/internals/is-constructor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-constructor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var fails = require_fails();
       var isCallable = require_is_callable();
@@ -25483,14 +25760,14 @@
       var inspectSource = require_inspect_source();
       var noop2 = function() {
       };
-      var construct2 = getBuiltIn("Reflect", "construct");
+      var construct3 = getBuiltIn("Reflect", "construct");
       var constructorRegExp = /^\s*(?:class|function)\b/;
       var exec = uncurryThis(constructorRegExp.exec);
       var INCORRECT_TO_STRING = !constructorRegExp.test(noop2);
       var isConstructorModern = function isConstructor(argument) {
         if (!isCallable(argument)) return false;
         try {
-          construct2(noop2, [], argument);
+          construct3(noop2, [], argument);
           return true;
         } catch (error) {
           return false;
@@ -25511,7 +25788,7 @@
         }
       };
       isConstructorLegacy.sham = true;
-      module.exports = !construct2 || fails(function() {
+      module.exports = !construct3 || fails(function() {
         var called;
         return isConstructorModern(isConstructorModern.call) || !isConstructorModern(Object) || !isConstructorModern(function() {
           called = true;
@@ -25520,11 +25797,10 @@
     }
   });
 
-  // node_modules/core-js/internals/a-constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-constructor.js
   var require_a_constructor = __commonJS({
-    "node_modules/core-js/internals/a-constructor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/a-constructor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isConstructor = require_is_constructor();
       var tryToString = require_try_to_string();
       var $TypeError = TypeError;
@@ -25535,11 +25811,10 @@
     }
   });
 
-  // node_modules/core-js/internals/species-constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/species-constructor.js
   var require_species_constructor = __commonJS({
-    "node_modules/core-js/internals/species-constructor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/species-constructor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var anObject = require_an_object();
       var aConstructor = require_a_constructor();
       var isNullOrUndefined = require_is_null_or_undefined();
@@ -25553,26 +25828,24 @@
     }
   });
 
-  // node_modules/core-js/internals/function-apply.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-apply.js
   var require_function_apply = __commonJS({
-    "node_modules/core-js/internals/function-apply.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-apply.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NATIVE_BIND = require_function_bind_native();
       var FunctionPrototype = Function.prototype;
-      var apply2 = FunctionPrototype.apply;
+      var apply3 = FunctionPrototype.apply;
       var call = FunctionPrototype.call;
-      module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply2) : function() {
-        return call.apply(apply2, arguments);
+      module.exports = typeof Reflect == "object" && Reflect.apply || (NATIVE_BIND ? call.bind(apply3) : function() {
+        return call.apply(apply3, arguments);
       });
     }
   });
 
-  // node_modules/core-js/internals/function-uncurry-this-clause.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this-clause.js
   var require_function_uncurry_this_clause = __commonJS({
-    "node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var classofRaw = require_classof_raw();
       var uncurryThis = require_function_uncurry_this();
       module.exports = function(fn) {
@@ -25581,11 +25854,10 @@
     }
   });
 
-  // node_modules/core-js/internals/function-bind-context.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-bind-context.js
   var require_function_bind_context = __commonJS({
-    "node_modules/core-js/internals/function-bind-context.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/function-bind-context.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this_clause();
       var aCallable = require_a_callable();
       var NATIVE_BIND = require_function_bind_native();
@@ -25599,31 +25871,28 @@
     }
   });
 
-  // node_modules/core-js/internals/html.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/html.js
   var require_html = __commonJS({
-    "node_modules/core-js/internals/html.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/html.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var getBuiltIn = require_get_built_in();
       module.exports = getBuiltIn("document", "documentElement");
     }
   });
 
-  // node_modules/core-js/internals/array-slice.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-slice.js
   var require_array_slice = __commonJS({
-    "node_modules/core-js/internals/array-slice.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-slice.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       module.exports = uncurryThis([].slice);
     }
   });
 
-  // node_modules/core-js/internals/validate-arguments-length.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/validate-arguments-length.js
   var require_validate_arguments_length = __commonJS({
-    "node_modules/core-js/internals/validate-arguments-length.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/validate-arguments-length.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var $TypeError = TypeError;
       module.exports = function(passed, required) {
         if (passed < required) throw new $TypeError("Not enough arguments");
@@ -25632,23 +25901,21 @@
     }
   });
 
-  // node_modules/core-js/internals/environment-is-ios.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-ios.js
   var require_environment_is_ios = __commonJS({
-    "node_modules/core-js/internals/environment-is-ios.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-ios.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var userAgent = require_environment_user_agent();
       module.exports = /ipad|iphone|ipod/i.test(userAgent) && /applewebkit/i.test(userAgent);
     }
   });
 
-  // node_modules/core-js/internals/task.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/task.js
   var require_task = __commonJS({
-    "node_modules/core-js/internals/task.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/task.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
-      var apply2 = require_function_apply();
+      var apply3 = require_function_apply();
       var bind = require_function_bind_context();
       var isCallable = require_is_callable();
       var hasOwn = require_has_own_property();
@@ -25700,7 +25967,7 @@
           var fn = isCallable(handler) ? handler : Function2(handler);
           var args = arraySlice(arguments, 1);
           queue[++counter] = function() {
-            apply2(fn, void 0, args);
+            apply3(fn, void 0, args);
           };
           defer(counter);
           return counter;
@@ -25744,11 +26011,10 @@
     }
   });
 
-  // node_modules/core-js/internals/safe-get-built-in.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/safe-get-built-in.js
   var require_safe_get_built_in = __commonJS({
-    "node_modules/core-js/internals/safe-get-built-in.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/safe-get-built-in.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var DESCRIPTORS = require_descriptors();
       var getOwnPropertyDescriptor2 = Object.getOwnPropertyDescriptor;
@@ -25760,11 +26026,10 @@
     }
   });
 
-  // node_modules/core-js/internals/queue.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/queue.js
   var require_queue = __commonJS({
-    "node_modules/core-js/internals/queue.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/queue.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var Queue = function() {
         this.head = null;
         this.tail = null;
@@ -25790,31 +26055,28 @@
     }
   });
 
-  // node_modules/core-js/internals/environment-is-ios-pebble.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-ios-pebble.js
   var require_environment_is_ios_pebble = __commonJS({
-    "node_modules/core-js/internals/environment-is-ios-pebble.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-ios-pebble.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var userAgent = require_environment_user_agent();
       module.exports = /ipad|iphone|ipod/i.test(userAgent) && typeof Pebble != "undefined";
     }
   });
 
-  // node_modules/core-js/internals/environment-is-webos-webkit.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-webos-webkit.js
   var require_environment_is_webos_webkit = __commonJS({
-    "node_modules/core-js/internals/environment-is-webos-webkit.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/environment-is-webos-webkit.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var userAgent = require_environment_user_agent();
       module.exports = /web0s(?!.*chrome)/i.test(userAgent);
     }
   });
 
-  // node_modules/core-js/internals/microtask.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/microtask.js
   var require_microtask = __commonJS({
-    "node_modules/core-js/internals/microtask.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/microtask.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var safeGetBuiltIn = require_safe_get_built_in();
       var bind = require_function_bind_context();
@@ -25882,11 +26144,10 @@
     }
   });
 
-  // node_modules/core-js/internals/host-report-errors.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/host-report-errors.js
   var require_host_report_errors = __commonJS({
-    "node_modules/core-js/internals/host-report-errors.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/host-report-errors.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(a3, b2) {
         try {
           arguments.length === 1 ? console.error(a3) : console.error(a3, b2);
@@ -25896,11 +26157,10 @@
     }
   });
 
-  // node_modules/core-js/internals/perform.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/perform.js
   var require_perform = __commonJS({
-    "node_modules/core-js/internals/perform.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/perform.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(exec) {
         try {
           return { error: false, value: exec() };
@@ -25911,21 +26171,19 @@
     }
   });
 
-  // node_modules/core-js/internals/promise-native-constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-native-constructor.js
   var require_promise_native_constructor = __commonJS({
-    "node_modules/core-js/internals/promise-native-constructor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-native-constructor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       module.exports = globalThis2.Promise;
     }
   });
 
-  // node_modules/core-js/internals/promise-constructor-detection.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-constructor-detection.js
   var require_promise_constructor_detection = __commonJS({
-    "node_modules/core-js/internals/promise-constructor-detection.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-constructor-detection.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var NativePromiseConstructor = require_promise_native_constructor();
       var isCallable = require_is_callable();
@@ -25969,11 +26227,10 @@
     }
   });
 
-  // node_modules/core-js/internals/new-promise-capability.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/new-promise-capability.js
   var require_new_promise_capability = __commonJS({
-    "node_modules/core-js/internals/new-promise-capability.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/new-promise-capability.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var aCallable = require_a_callable();
       var $TypeError = TypeError;
       var PromiseCapability = function(C2) {
@@ -25992,11 +26249,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.constructor.js
   var require_es_promise_constructor = __commonJS({
-    "node_modules/core-js/modules/es.promise.constructor.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.constructor.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var IS_PURE = require_is_pure();
       var IS_NODE = require_environment_is_node();
@@ -26257,20 +26513,18 @@
     }
   });
 
-  // node_modules/core-js/internals/iterators.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterators.js
   var require_iterators = __commonJS({
-    "node_modules/core-js/internals/iterators.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterators.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = Object.create ? /* @__PURE__ */ Object.create(null) : {};
     }
   });
 
-  // node_modules/core-js/internals/is-array-iterator-method.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-array-iterator-method.js
   var require_is_array_iterator_method = __commonJS({
-    "node_modules/core-js/internals/is-array-iterator-method.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-array-iterator-method.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var wellKnownSymbol = require_well_known_symbol();
       var Iterators = require_iterators();
       var ITERATOR = wellKnownSymbol("iterator");
@@ -26281,11 +26535,10 @@
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-method-internal.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-iterator-method-internal.js
   var require_get_iterator_method_internal = __commonJS({
-    "node_modules/core-js/internals/get-iterator-method-internal.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-iterator-method-internal.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var classof = require_classof_raw();
       var isNullOrUndefined = require_is_null_or_undefined();
       var getMethod = require_get_method();
@@ -26298,11 +26551,10 @@
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-internal.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-iterator-internal.js
   var require_get_iterator_internal = __commonJS({
-    "node_modules/core-js/internals/get-iterator-internal.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-iterator-internal.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var isCallable = require_is_callable();
       var anObject = require_an_object();
@@ -26317,11 +26569,10 @@
     }
   });
 
-  // node_modules/core-js/internals/iterator-close.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-close.js
   var require_iterator_close = __commonJS({
-    "node_modules/core-js/internals/iterator-close.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-close.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var anObject = require_an_object();
       var getMethod = require_get_method();
@@ -26347,11 +26598,10 @@
     }
   });
 
-  // node_modules/core-js/internals/iterate.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterate.js
   var require_iterate = __commonJS({
-    "node_modules/core-js/internals/iterate.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterate.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var bind = require_function_bind_context();
       var call = require_function_call();
       var anObject = require_an_object();
@@ -26421,11 +26671,10 @@
     }
   });
 
-  // node_modules/core-js/internals/check-correctness-of-iteration.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/check-correctness-of-iteration.js
   var require_check_correctness_of_iteration = __commonJS({
-    "node_modules/core-js/internals/check-correctness-of-iteration.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/check-correctness-of-iteration.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var wellKnownSymbol = require_well_known_symbol();
       var ITERATOR = wellKnownSymbol("iterator");
       var SAFE_CLOSING = false;
@@ -26473,11 +26722,10 @@
     }
   });
 
-  // node_modules/core-js/internals/promise-statics-incorrect-iteration.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-statics-incorrect-iteration.js
   var require_promise_statics_incorrect_iteration = __commonJS({
-    "node_modules/core-js/internals/promise-statics-incorrect-iteration.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-statics-incorrect-iteration.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var NativePromiseConstructor = require_promise_native_constructor();
       var checkCorrectnessOfIteration = require_check_correctness_of_iteration();
       var FORCED_PROMISE_CONSTRUCTOR = require_promise_constructor_detection().CONSTRUCTOR;
@@ -26488,11 +26736,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.all.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.all.js
   var require_es_promise_all = __commonJS({
-    "node_modules/core-js/modules/es.promise.all.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.all.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var call = require_function_call();
       var aCallable = require_a_callable();
@@ -26531,11 +26778,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.catch.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.catch.js
   var require_es_promise_catch = __commonJS({
-    "node_modules/core-js/modules/es.promise.catch.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.catch.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var IS_PURE = require_is_pure();
       var FORCED_PROMISE_CONSTRUCTOR = require_promise_constructor_detection().CONSTRUCTOR;
@@ -26559,11 +26805,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.race.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.race.js
   var require_es_promise_race = __commonJS({
-    "node_modules/core-js/modules/es.promise.race.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.race.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var call = require_function_call();
       var aCallable = require_a_callable();
@@ -26589,11 +26834,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.reject.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.reject.js
   var require_es_promise_reject = __commonJS({
-    "node_modules/core-js/modules/es.promise.reject.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.reject.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var newPromiseCapabilityModule = require_new_promise_capability();
       var FORCED_PROMISE_CONSTRUCTOR = require_promise_constructor_detection().CONSTRUCTOR;
@@ -26608,11 +26852,10 @@
     }
   });
 
-  // node_modules/core-js/internals/promise-resolve.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-resolve.js
   var require_promise_resolve = __commonJS({
-    "node_modules/core-js/internals/promise-resolve.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/promise-resolve.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var anObject = require_an_object();
       var isObject = require_is_object();
       var newPromiseCapability = require_new_promise_capability();
@@ -26627,11 +26870,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.resolve.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.resolve.js
   var require_es_promise_resolve = __commonJS({
-    "node_modules/core-js/modules/es.promise.resolve.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.resolve.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var getBuiltIn = require_get_built_in();
       var IS_PURE = require_is_pure();
@@ -26648,11 +26890,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.promise.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.js
   var require_es_promise = __commonJS({
-    "node_modules/core-js/modules/es.promise.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.promise.js"() {
       "use strict";
-      init_define_process_env();
       require_es_promise_constructor();
       require_es_promise_all();
       require_es_promise_catch();
@@ -26662,7 +26903,7 @@
     }
   });
 
-  // node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
   function asyncGeneratorStep(n2, t3, e2, r2, o3, a3, c4) {
     try {
       var i3 = n2[a3](c4), u3 = i3.value;
@@ -26687,16 +26928,14 @@
     };
   }
   var init_asyncToGenerator = __esm({
-    "node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js"() {
     }
   });
 
-  // node_modules/core-js/internals/to-string.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-string.js
   var require_to_string = __commonJS({
-    "node_modules/core-js/internals/to-string.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/to-string.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var classof = require_classof();
       var $String = String;
       module.exports = function(argument) {
@@ -26706,11 +26945,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-flags.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-flags.js
   var require_regexp_flags = __commonJS({
-    "node_modules/core-js/internals/regexp-flags.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-flags.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var anObject = require_an_object();
       module.exports = function() {
         var that = anObject(this);
@@ -26728,11 +26966,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-sticky-helpers.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-sticky-helpers.js
   var require_regexp_sticky_helpers = __commonJS({
-    "node_modules/core-js/internals/regexp-sticky-helpers.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-sticky-helpers.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       var globalThis2 = require_global_this();
       var $RegExp = globalThis2.RegExp;
@@ -26757,11 +26994,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-keys.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-keys.js
   var require_object_keys = __commonJS({
-    "node_modules/core-js/internals/object-keys.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-keys.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var internalObjectKeys = require_object_keys_internal();
       var enumBugKeys = require_enum_bug_keys();
       module.exports = Object.keys || function keys(O3) {
@@ -26770,11 +27006,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-define-properties.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-define-properties.js
   var require_object_define_properties = __commonJS({
-    "node_modules/core-js/internals/object-define-properties.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-define-properties.js"(exports) {
       "use strict";
-      init_define_process_env();
       var DESCRIPTORS = require_descriptors();
       var V8_PROTOTYPE_DEFINE_BUG = require_v8_prototype_define_bug();
       var definePropertyModule = require_object_define_property();
@@ -26794,11 +27029,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-create.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-create.js
   var require_object_create = __commonJS({
-    "node_modules/core-js/internals/object-create.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-create.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var anObject = require_an_object();
       var definePropertiesModule = require_object_define_properties();
       var enumBugKeys = require_enum_bug_keys();
@@ -26861,11 +27095,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-unsupported-dot-all.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-unsupported-dot-all.js
   var require_regexp_unsupported_dot_all = __commonJS({
-    "node_modules/core-js/internals/regexp-unsupported-dot-all.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-unsupported-dot-all.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       var globalThis2 = require_global_this();
       var $RegExp = globalThis2.RegExp;
@@ -26876,11 +27109,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-unsupported-ncg.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-unsupported-ncg.js
   var require_regexp_unsupported_ncg = __commonJS({
-    "node_modules/core-js/internals/regexp-unsupported-ncg.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-unsupported-ncg.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       var globalThis2 = require_global_this();
       var $RegExp = globalThis2.RegExp;
@@ -26891,11 +27123,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-exec.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-exec.js
   var require_regexp_exec = __commonJS({
-    "node_modules/core-js/internals/regexp-exec.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-exec.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var uncurryThis = require_function_uncurry_this();
       var toString2 = require_to_string();
@@ -26994,11 +27225,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.regexp.exec.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.regexp.exec.js
   var require_es_regexp_exec = __commonJS({
-    "node_modules/core-js/modules/es.regexp.exec.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.regexp.exec.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var exec = require_regexp_exec();
       $2({ target: "RegExp", proto: true, forced: /./.exec !== exec }, {
@@ -27007,11 +27237,10 @@
     }
   });
 
-  // node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js
   var require_fix_regexp_well_known_symbol_logic = __commonJS({
-    "node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       require_es_regexp_exec();
       var call = require_function_call();
       var defineBuiltIn = require_define_built_in();
@@ -27068,11 +27297,10 @@
     }
   });
 
-  // node_modules/core-js/internals/string-multibyte.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-multibyte.js
   var require_string_multibyte = __commonJS({
-    "node_modules/core-js/internals/string-multibyte.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-multibyte.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var toIntegerOrInfinity = require_to_integer_or_infinity();
       var toString2 = require_to_string();
@@ -27102,11 +27330,10 @@
     }
   });
 
-  // node_modules/core-js/internals/advance-string-index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/advance-string-index.js
   var require_advance_string_index = __commonJS({
-    "node_modules/core-js/internals/advance-string-index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/advance-string-index.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var charAt = require_string_multibyte().charAt;
       module.exports = function(S2, index2, unicode) {
         return index2 + (unicode ? charAt(S2, index2).length || 1 : 1);
@@ -27114,11 +27341,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-flags-detection.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-flags-detection.js
   var require_regexp_flags_detection = __commonJS({
-    "node_modules/core-js/internals/regexp-flags-detection.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-flags-detection.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var fails = require_fails();
       var RegExp2 = globalThis2.RegExp;
@@ -27154,11 +27380,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-get-flags.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-get-flags.js
   var require_regexp_get_flags = __commonJS({
-    "node_modules/core-js/internals/regexp-get-flags.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-get-flags.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var hasOwn = require_has_own_property();
       var isPrototypeOf = require_object_is_prototype_of();
@@ -27173,11 +27398,10 @@
     }
   });
 
-  // node_modules/core-js/internals/regexp-exec-abstract.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-exec-abstract.js
   var require_regexp_exec_abstract = __commonJS({
-    "node_modules/core-js/internals/regexp-exec-abstract.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/regexp-exec-abstract.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var anObject = require_an_object();
       var isCallable = require_is_callable();
@@ -27197,11 +27421,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.match.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.match.js
   var require_es_string_match = __commonJS({
-    "node_modules/core-js/modules/es.string.match.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.match.js"() {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var uncurryThis = require_function_uncurry_this();
       var fixRegExpWellKnownSymbolLogic = require_fix_regexp_well_known_symbol_logic();
@@ -27253,11 +27476,10 @@
     }
   });
 
-  // node_modules/core-js/internals/get-substitution.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-substitution.js
   var require_get_substitution = __commonJS({
-    "node_modules/core-js/internals/get-substitution.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/get-substitution.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var toObject = require_to_object();
       var floor = Math.floor;
@@ -27305,12 +27527,11 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.replace.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.replace.js
   var require_es_string_replace = __commonJS({
-    "node_modules/core-js/modules/es.string.replace.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.replace.js"() {
       "use strict";
-      init_define_process_env();
-      var apply2 = require_function_apply();
+      var apply3 = require_function_apply();
       var call = require_function_call();
       var uncurryThis = require_function_uncurry_this();
       var fixRegExpWellKnownSymbolLogic = require_fix_regexp_well_known_symbol_logic();
@@ -27407,7 +27628,7 @@
               if (functionalReplace) {
                 var replacerArgs = concat([matched], captures, position, S2);
                 if (namedCaptures !== void 0) push(replacerArgs, namedCaptures);
-                replacement = toString2(apply2(replaceValue, void 0, replacerArgs));
+                replacement = toString2(apply3(replaceValue, void 0, replacerArgs));
               } else {
                 replacement = getSubstitution(matched, S2, position, captures, namedCaptures, replaceValue);
               }
@@ -27423,11 +27644,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-regexp.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-regexp.js
   var require_is_regexp = __commonJS({
-    "node_modules/core-js/internals/is-regexp.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-regexp.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isObject = require_is_object();
       var classof = require_classof_raw();
       var wellKnownSymbol = require_well_known_symbol();
@@ -27439,11 +27659,10 @@
     }
   });
 
-  // node_modules/core-js/internals/not-a-regexp.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/not-a-regexp.js
   var require_not_a_regexp = __commonJS({
-    "node_modules/core-js/internals/not-a-regexp.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/not-a-regexp.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var isRegExp = require_is_regexp();
       var $TypeError = TypeError;
       module.exports = function(it2) {
@@ -27455,11 +27674,10 @@
     }
   });
 
-  // node_modules/core-js/internals/correct-is-regexp-logic.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/correct-is-regexp-logic.js
   var require_correct_is_regexp_logic = __commonJS({
-    "node_modules/core-js/internals/correct-is-regexp-logic.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/correct-is-regexp-logic.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var wellKnownSymbol = require_well_known_symbol();
       var MATCH2 = wellKnownSymbol("match");
       module.exports = function(METHOD_NAME) {
@@ -27478,11 +27696,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.starts-with.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.starts-with.js
   var require_es_string_starts_with = __commonJS({
-    "node_modules/core-js/modules/es.string.starts-with.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.starts-with.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this_clause();
       var getOwnPropertyDescriptor2 = require_object_get_own_property_descriptor().f;
@@ -27511,11 +27728,10 @@
     }
   });
 
-  // node_modules/core-js/internals/add-to-unscopables.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/add-to-unscopables.js
   var require_add_to_unscopables = __commonJS({
-    "node_modules/core-js/internals/add-to-unscopables.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/add-to-unscopables.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var wellKnownSymbol = require_well_known_symbol();
       var create2 = require_object_create();
       var defineProperty = require_object_define_property().f;
@@ -27533,11 +27749,10 @@
     }
   });
 
-  // node_modules/core-js/internals/correct-prototype-getter.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/correct-prototype-getter.js
   var require_correct_prototype_getter = __commonJS({
-    "node_modules/core-js/internals/correct-prototype-getter.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/correct-prototype-getter.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       module.exports = !fails(function() {
         function F2() {
@@ -27548,11 +27763,10 @@
     }
   });
 
-  // node_modules/core-js/internals/object-get-prototype-of.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-prototype-of.js
   var require_object_get_prototype_of = __commonJS({
-    "node_modules/core-js/internals/object-get-prototype-of.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/object-get-prototype-of.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var hasOwn = require_has_own_property();
       var isCallable = require_is_callable();
       var toObject = require_to_object();
@@ -27573,11 +27787,10 @@
     }
   });
 
-  // node_modules/core-js/internals/iterators-core.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterators-core.js
   var require_iterators_core = __commonJS({
-    "node_modules/core-js/internals/iterators-core.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterators-core.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       var isCallable = require_is_callable();
       var isObject = require_is_object();
@@ -27617,11 +27830,10 @@
     }
   });
 
-  // node_modules/core-js/internals/iterator-create-constructor.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-create-constructor.js
   var require_iterator_create_constructor = __commonJS({
-    "node_modules/core-js/internals/iterator-create-constructor.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-create-constructor.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var IteratorPrototype = require_iterators_core().IteratorPrototype;
       var create2 = require_object_create();
       var createPropertyDescriptor = require_create_property_descriptor();
@@ -27640,11 +27852,10 @@
     }
   });
 
-  // node_modules/core-js/internals/iterator-define.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-define.js
   var require_iterator_define = __commonJS({
-    "node_modules/core-js/internals/iterator-define.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/iterator-define.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var call = require_function_call();
       var IS_PURE = require_is_pure();
@@ -27746,22 +27957,20 @@
     }
   });
 
-  // node_modules/core-js/internals/create-iter-result-object.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-iter-result-object.js
   var require_create_iter_result_object = __commonJS({
-    "node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = function(value, done) {
         return { value, done };
       };
     }
   });
 
-  // node_modules/core-js/modules/es.array.iterator.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.iterator.js
   var require_es_array_iterator = __commonJS({
-    "node_modules/core-js/modules/es.array.iterator.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.iterator.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var toIndexedObject = require_to_indexed_object();
       var addToUnscopables = require_add_to_unscopables();
       var Iterators = require_iterators();
@@ -27811,11 +28020,10 @@
     }
   });
 
-  // node_modules/core-js/internals/dom-iterables.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/dom-iterables.js
   var require_dom_iterables = __commonJS({
-    "node_modules/core-js/internals/dom-iterables.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/dom-iterables.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = {
         CSSRuleList: 0,
         CSSStyleDeclaration: 0,
@@ -27852,11 +28060,10 @@
     }
   });
 
-  // node_modules/core-js/internals/dom-token-list-prototype.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/dom-token-list-prototype.js
   var require_dom_token_list_prototype = __commonJS({
-    "node_modules/core-js/internals/dom-token-list-prototype.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/dom-token-list-prototype.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var documentCreateElement = require_document_create_element();
       var classList = documentCreateElement("span").classList;
       var DOMTokenListPrototype = classList && classList.constructor && classList.constructor.prototype;
@@ -27864,11 +28071,10 @@
     }
   });
 
-  // node_modules/core-js/modules/web.dom-collections.iterator.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/web.dom-collections.iterator.js
   var require_web_dom_collections_iterator = __commonJS({
-    "node_modules/core-js/modules/web.dom-collections.iterator.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/web.dom-collections.iterator.js"() {
       "use strict";
-      init_define_process_env();
       var globalThis2 = require_global_this();
       var DOMIterables = require_dom_iterables();
       var DOMTokenListPrototype = require_dom_token_list_prototype();
@@ -27903,38 +28109,36 @@
     }
   });
 
-  // node_modules/@babel/runtime/helpers/esm/toPrimitive.js
-  function toPrimitive(t3, r2) {
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/toPrimitive.js
+  function toPrimitive(t3, e2) {
     if ("object" != _typeof(t3) || !t3) return t3;
-    var e2 = t3[Symbol.toPrimitive];
-    if (void 0 !== e2) {
-      var i3 = e2.call(t3, r2 || "default");
+    var r2;
+    if ("undefined" != typeof Symbol && void 0 !== (r2 = t3[Symbol.toPrimitive])) {
+      var i3 = r2.call(t3, e2 || "default");
       if ("object" != _typeof(i3)) return i3;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
-    return ("string" === r2 ? String : Number)(t3);
+    return ("string" === e2 ? String : Number)(t3);
   }
   var init_toPrimitive = __esm({
-    "node_modules/@babel/runtime/helpers/esm/toPrimitive.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/toPrimitive.js"() {
       init_typeof();
     }
   });
 
-  // node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
   function toPropertyKey(t3) {
     var i3 = toPrimitive(t3, "string");
     return "symbol" == _typeof(i3) ? i3 : i3 + "";
   }
   var init_toPropertyKey = __esm({
-    "node_modules/@babel/runtime/helpers/esm/toPropertyKey.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/toPropertyKey.js"() {
       init_typeof();
       init_toPrimitive();
     }
   });
 
-  // node_modules/@babel/runtime/helpers/esm/defineProperty.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/defineProperty.js
   function _defineProperty(e2, r2, t3) {
     return (r2 = toPropertyKey(r2)) in e2 ? Object.defineProperty(e2, r2, {
       value: t3,
@@ -27944,17 +28148,15 @@
     }) : e2[r2] = t3, e2;
   }
   var init_defineProperty = __esm({
-    "node_modules/@babel/runtime/helpers/esm/defineProperty.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/defineProperty.js"() {
       init_toPropertyKey();
     }
   });
 
-  // node_modules/core-js/internals/array-reduce.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-reduce.js
   var require_array_reduce = __commonJS({
-    "node_modules/core-js/internals/array-reduce.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-reduce.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var aCallable = require_a_callable();
       var toObject = require_to_object();
       var IndexedObject = require_indexed_object();
@@ -27998,11 +28200,10 @@
     }
   });
 
-  // node_modules/core-js/internals/array-method-is-strict.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-method-is-strict.js
   var require_array_method_is_strict = __commonJS({
-    "node_modules/core-js/internals/array-method-is-strict.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/array-method-is-strict.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var fails = require_fails();
       module.exports = function(METHOD_NAME, argument) {
         var method = [][METHOD_NAME];
@@ -28015,11 +28216,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.array.reduce.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.reduce.js
   var require_es_array_reduce = __commonJS({
-    "node_modules/core-js/modules/es.array.reduce.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.reduce.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var $reduce = require_array_reduce().left;
       var arrayMethodIsStrict = require_array_method_is_strict();
@@ -28036,11 +28236,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.ends-with.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.ends-with.js
   var require_es_string_ends_with = __commonJS({
-    "node_modules/core-js/modules/es.string.ends-with.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.ends-with.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this_clause();
       var getOwnPropertyDescriptor2 = require_object_get_own_property_descriptor().f;
@@ -28071,11 +28270,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.split.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.split.js
   var require_es_string_split = __commonJS({
-    "node_modules/core-js/modules/es.string.split.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.split.js"() {
       "use strict";
-      init_define_process_env();
       var call = require_function_call();
       var uncurryThis = require_function_uncurry_this();
       var fixRegExpWellKnownSymbolLogic = require_fix_regexp_well_known_symbol_logic();
@@ -28170,10 +28368,9 @@
     }
   });
 
-  // node_modules/performance-now/lib/performance-now.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/performance-now/lib/performance-now.js
   var require_performance_now = __commonJS({
-    "node_modules/performance-now/lib/performance-now.js"(exports, module) {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/performance-now/lib/performance-now.js"(exports, module) {
       (function() {
         var getNanoSeconds, hrtime, loadTime, moduleLoadTime, nodeLoadTime, upTime;
         if (typeof performance !== "undefined" && performance !== null && performance.now) {
@@ -28208,12 +28405,11 @@
     }
   });
 
-  // node_modules/raf/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/raf/index.js
   var require_raf = __commonJS({
-    "node_modules/raf/index.js"(exports, module) {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/raf/index.js"(exports, module) {
       var now = require_performance_now();
-      var root = typeof window === "undefined" ? global : window;
+      var root = typeof window === "undefined" ? window : window;
       var vendors = ["moz", "webkit"];
       var suffix = "AnimationFrame";
       var raf = root["request" + suffix];
@@ -28280,20 +28476,18 @@
     }
   });
 
-  // node_modules/core-js/internals/whitespaces.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/whitespaces.js
   var require_whitespaces = __commonJS({
-    "node_modules/core-js/internals/whitespaces.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/whitespaces.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       module.exports = "	\n\v\f\r \xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF";
     }
   });
 
-  // node_modules/core-js/internals/string-trim.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-trim.js
   var require_string_trim = __commonJS({
-    "node_modules/core-js/internals/string-trim.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-trim.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var uncurryThis = require_function_uncurry_this();
       var requireObjectCoercible = require_require_object_coercible();
       var toString2 = require_to_string();
@@ -28323,11 +28517,10 @@
     }
   });
 
-  // node_modules/core-js/internals/string-trim-forced.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-trim-forced.js
   var require_string_trim_forced = __commonJS({
-    "node_modules/core-js/internals/string-trim-forced.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/string-trim-forced.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var PROPER_FUNCTION_NAME = require_function_name().PROPER;
       var fails = require_fails();
       var whitespaces = require_whitespaces();
@@ -28340,11 +28533,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.trim.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.trim.js
   var require_es_string_trim = __commonJS({
-    "node_modules/core-js/modules/es.string.trim.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.trim.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var $trim = require_string_trim().trim;
       var forcedStringTrimMethod = require_string_trim_forced();
@@ -28356,10 +28548,9 @@
     }
   });
 
-  // node_modules/rgbcolor/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/rgbcolor/index.js
   var require_rgbcolor = __commonJS({
-    "node_modules/rgbcolor/index.js"(exports, module) {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/rgbcolor/index.js"(exports, module) {
       module.exports = function(color_string) {
         this.ok = false;
         this.alpha = 1;
@@ -28631,11 +28822,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.array.index-of.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.index-of.js
   var require_es_array_index_of = __commonJS({
-    "node_modules/core-js/modules/es.array.index-of.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.index-of.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this_clause();
       var $indexOf = require_array_includes().indexOf;
@@ -28652,11 +28842,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.string.includes.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.includes.js
   var require_es_string_includes = __commonJS({
-    "node_modules/core-js/modules/es.string.includes.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.string.includes.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this();
       var notARegExp = require_not_a_regexp();
@@ -28676,11 +28865,10 @@
     }
   });
 
-  // node_modules/core-js/internals/is-array.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-array.js
   var require_is_array = __commonJS({
-    "node_modules/core-js/internals/is-array.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/internals/is-array.js"(exports, module) {
       "use strict";
-      init_define_process_env();
       var classof = require_classof_raw();
       module.exports = Array.isArray || function isArray(argument) {
         return classof(argument) === "Array";
@@ -28688,11 +28876,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.array.reverse.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.reverse.js
   var require_es_array_reverse = __commonJS({
-    "node_modules/core-js/modules/es.array.reverse.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.array.reverse.js"() {
       "use strict";
-      init_define_process_env();
       var $2 = require_export();
       var uncurryThis = require_function_uncurry_this();
       var isArray = require_is_array();
@@ -28707,7 +28894,7 @@
     }
   });
 
-  // node_modules/svg-pathdata/lib/SVGPathData.module.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/svg-pathdata/lib/SVGPathData.module.js
   function r(r2, e2) {
     if ("function" != typeof e2 && null !== e2) throw new TypeError("Class extends value " + String(e2) + " is not a constructor or null");
     function i3() {
@@ -28785,8 +28972,7 @@
   }
   var t, n, u, h, O, l, T, v, f, _, N;
   var init_SVGPathData_module = __esm({
-    "node_modules/svg-pathdata/lib/SVGPathData.module.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/svg-pathdata/lib/SVGPathData.module.js"() {
       t = function(r2, e2) {
         return (t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(t3, r3) {
           t3.__proto__ = r3;
@@ -29091,11 +29277,10 @@
     }
   });
 
-  // node_modules/core-js/modules/es.regexp.to-string.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.regexp.to-string.js
   var require_es_regexp_to_string = __commonJS({
-    "node_modules/core-js/modules/es.regexp.to-string.js"() {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/core-js/modules/es.regexp.to-string.js"() {
       "use strict";
-      init_define_process_env();
       var PROPER_FUNCTION_NAME = require_function_name().PROPER;
       var defineBuiltIn = require_define_built_in();
       var anObject = require_an_object();
@@ -29120,7 +29305,7 @@
     }
   });
 
-  // node_modules/stackblur-canvas/dist/stackblur-es.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/stackblur-canvas/dist/stackblur-es.js
   function _typeof2(obj) {
     "@babel/helpers - typeof";
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -29326,8 +29511,7 @@
   }
   var mulTable, shgTable, BlurStack;
   var init_stackblur_es = __esm({
-    "node_modules/stackblur-canvas/dist/stackblur-es.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/stackblur-canvas/dist/stackblur-es.js"() {
       mulTable = [512, 512, 456, 512, 328, 456, 335, 512, 405, 328, 271, 456, 388, 335, 292, 512, 454, 405, 364, 328, 298, 271, 496, 456, 420, 388, 360, 335, 312, 292, 273, 512, 482, 454, 428, 405, 383, 364, 345, 328, 312, 298, 284, 271, 259, 496, 475, 456, 437, 420, 404, 388, 374, 360, 347, 335, 323, 312, 302, 292, 282, 273, 265, 512, 497, 482, 468, 454, 441, 428, 417, 405, 394, 383, 373, 364, 354, 345, 337, 328, 320, 312, 305, 298, 291, 284, 278, 271, 265, 259, 507, 496, 485, 475, 465, 456, 446, 437, 428, 420, 412, 404, 396, 388, 381, 374, 367, 360, 354, 347, 341, 335, 329, 323, 318, 312, 307, 302, 297, 292, 287, 282, 278, 273, 269, 265, 261, 512, 505, 497, 489, 482, 475, 468, 461, 454, 447, 441, 435, 428, 422, 417, 411, 405, 399, 394, 389, 383, 378, 373, 368, 364, 359, 354, 350, 345, 341, 337, 332, 328, 324, 320, 316, 312, 309, 305, 301, 298, 294, 291, 287, 284, 281, 278, 274, 271, 268, 265, 262, 259, 257, 507, 501, 496, 491, 485, 480, 475, 470, 465, 460, 456, 451, 446, 442, 437, 433, 428, 424, 420, 416, 412, 408, 404, 400, 396, 392, 388, 385, 381, 377, 374, 370, 367, 363, 360, 357, 354, 350, 347, 344, 341, 338, 335, 332, 329, 326, 323, 320, 318, 315, 312, 310, 307, 304, 302, 299, 297, 294, 292, 289, 287, 285, 282, 280, 278, 275, 273, 271, 269, 267, 265, 263, 261, 259];
       shgTable = [9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24];
       BlurStack = /**
@@ -29344,7 +29528,7 @@
     }
   });
 
-  // node_modules/canvg/lib/index.es.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/canvg/lib/index.es.js
   var index_es_exports = {};
   __export(index_es_exports, {
     AElement: () => AElement,
@@ -29753,8 +29937,7 @@
   }
   var import_es_promise, import_es_string_match, import_es_string_replace, import_es_string_starts_with, import_es_array_iterator, import_web_dom_collections_iterator, import_es_array_reduce, import_es_string_ends_with, import_es_string_split, import_raf, import_es_string_trim, import_rgbcolor, import_es_array_index_of, import_es_string_includes, import_es_array_reverse, import_es_regexp_to_string, index, allUppercase, attributeRegex, idRegex, classRegex, pseudoElementRegex, pseudoClassWithBracketsRegex, pseudoClassRegex, elementRegex, PSEUDO_ZERO, Property, ViewPort, Point, Mouse, defaultWindow, defaultFetch$1, Screen, defaultFetch, DefaultDOMParser, Parser, Translate, Rotate, Scale, Matrix, Skew, SkewX, SkewY, Transform, Element, UnknownElement, Font, BoundingBox, PathParser, RenderedElement, PathElement, GlyphElement, TextElement, TSpanElement, TextNode, SVGElement, RectElement, CircleElement, EllipseElement, LineElement, PolylineElement, PolygonElement, PatternElement, MarkerElement, DefsElement, GElement, GradientElement, LinearGradientElement, RadialGradientElement, StopElement, AnimateElement, AnimateColorElement, AnimateTransformElement, FontElement, FontFaceElement, MissingGlyphElement, TRefElement, AElement, TextPathElement, dataUriRegex, ImageElement, SymbolElement, SVGFontLoader, StyleElement, UseElement, FeColorMatrixElement, MaskElement, noop, ClipPathElement, FilterElement, FeDropShadowElement, FeMorphologyElement, FeCompositeElement, FeGaussianBlurElement, TitleElement, DescElement, elements, Document, Canvg;
   var init_index_es = __esm({
-    "node_modules/canvg/lib/index.es.js"() {
-      init_define_process_env();
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/canvg/lib/index.es.js"() {
       import_es_promise = __toESM(require_es_promise(), 1);
       init_asyncToGenerator();
       import_es_string_match = __toESM(require_es_string_match(), 1);
@@ -34695,28 +34878,20 @@
     }
   });
 
-  // src/main.tsx
-  init_define_process_env();
-  var import_react14 = __toESM(require_react(), 1);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/main.tsx
+  var import_react18 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
-  // src/App.tsx
-  init_define_process_env();
-  var import_react13 = __toESM(require_react(), 1);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/App.tsx
+  var import_react17 = __toESM(require_react(), 1);
 
-  // src/components/Header.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/Header.tsx
   var import_react3 = __toESM(require_react(), 1);
 
-  // node_modules/lucide-react/dist/esm/lucide-react.js
-  init_define_process_env();
-
-  // node_modules/lucide-react/dist/esm/createLucideIcon.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
 
-  // node_modules/lucide-react/dist/esm/shared/src/utils.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/shared/src/utils.js
   var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
   var toCamelCase = (string) => string.replace(
     /^([A-Z])|[\s-_]+(\w)/g,
@@ -34737,12 +34912,10 @@
     }
   };
 
-  // node_modules/lucide-react/dist/esm/Icon.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/Icon.js
   var import_react = __toESM(require_react());
 
-  // node_modules/lucide-react/dist/esm/defaultAttributes.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/defaultAttributes.js
   var defaultAttributes = {
     xmlns: "http://www.w3.org/2000/svg",
     width: 24,
@@ -34755,7 +34928,7 @@
     strokeLinejoin: "round"
   };
 
-  // node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/Icon.js
   var Icon = (0, import_react.forwardRef)(
     ({
       color = "currentColor",
@@ -34786,7 +34959,7 @@
     )
   );
 
-  // node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var createLucideIcon = (iconName, iconNode) => {
     const Component = (0, import_react2.forwardRef)(
       ({ className, ...props }, ref) => (0, import_react2.createElement)(Icon, {
@@ -34804,8 +34977,7 @@
     return Component;
   };
 
-  // node_modules/lucide-react/dist/esm/icons/activity.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/activity.js
   var __iconNode = [
     [
       "path",
@@ -34817,17 +34989,22 @@
   ];
   var Activity = createLucideIcon("activity", __iconNode);
 
-  // node_modules/lucide-react/dist/esm/icons/arrow-right.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/arrow-left.js
   var __iconNode2 = [
+    ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
+    ["path", { d: "M19 12H5", key: "x3x0zl" }]
+  ];
+  var ArrowLeft = createLucideIcon("arrow-left", __iconNode2);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/arrow-right.js
+  var __iconNode3 = [
     ["path", { d: "M5 12h14", key: "1ays0h" }],
     ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
   ];
-  var ArrowRight = createLucideIcon("arrow-right", __iconNode2);
+  var ArrowRight = createLucideIcon("arrow-right", __iconNode3);
 
-  // node_modules/lucide-react/dist/esm/icons/award.js
-  init_define_process_env();
-  var __iconNode3 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/award.js
+  var __iconNode4 = [
     [
       "path",
       {
@@ -34837,11 +35014,25 @@
     ],
     ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
   ];
-  var Award = createLucideIcon("award", __iconNode3);
+  var Award = createLucideIcon("award", __iconNode4);
 
-  // node_modules/lucide-react/dist/esm/icons/book-marked.js
-  init_define_process_env();
-  var __iconNode4 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/baby.js
+  var __iconNode5 = [
+    ["path", { d: "M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5", key: "1u7htd" }],
+    ["path", { d: "M15 12h.01", key: "1k8ypt" }],
+    [
+      "path",
+      {
+        d: "M19.38 6.813A9 9 0 0 1 20.8 10.2a2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1",
+        key: "11xh7x"
+      }
+    ],
+    ["path", { d: "M9 12h.01", key: "157uk2" }]
+  ];
+  var Baby = createLucideIcon("baby", __iconNode5);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/book-marked.js
+  var __iconNode6 = [
     ["path", { d: "M10 2v8l3-3 3 3V2", key: "sqw3rj" }],
     [
       "path",
@@ -34851,11 +35042,10 @@
       }
     ]
   ];
-  var BookMarked = createLucideIcon("book-marked", __iconNode4);
+  var BookMarked = createLucideIcon("book-marked", __iconNode6);
 
-  // node_modules/lucide-react/dist/esm/icons/book-open.js
-  init_define_process_env();
-  var __iconNode5 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/book-open.js
+  var __iconNode7 = [
     ["path", { d: "M12 7v14", key: "1akyts" }],
     [
       "path",
@@ -34865,72 +35055,114 @@
       }
     ]
   ];
-  var BookOpen = createLucideIcon("book-open", __iconNode5);
+  var BookOpen = createLucideIcon("book-open", __iconNode7);
 
-  // node_modules/lucide-react/dist/esm/icons/check.js
-  init_define_process_env();
-  var __iconNode6 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-  var Check = createLucideIcon("check", __iconNode6);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/brain.js
+  var __iconNode8 = [
+    ["path", { d: "M12 18V5", key: "adv99a" }],
+    ["path", { d: "M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4", key: "1e3is1" }],
+    ["path", { d: "M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5", key: "1gqd8o" }],
+    ["path", { d: "M17.997 5.125a4 4 0 0 1 2.526 5.77", key: "iwvgf7" }],
+    ["path", { d: "M18 18a4 4 0 0 0 2-7.464", key: "efp6ie" }],
+    ["path", { d: "M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517", key: "1gq6am" }],
+    ["path", { d: "M6 18a4 4 0 0 1-2-7.464", key: "k1g0md" }],
+    ["path", { d: "M6.003 5.125a4 4 0 0 0-2.526 5.77", key: "q97ue3" }]
+  ];
+  var Brain = createLucideIcon("brain", __iconNode8);
 
-  // node_modules/lucide-react/dist/esm/icons/chevron-down.js
-  init_define_process_env();
-  var __iconNode7 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-  var ChevronDown = createLucideIcon("chevron-down", __iconNode7);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/bug.js
+  var __iconNode9 = [
+    ["path", { d: "M12 20v-9", key: "1qisl0" }],
+    ["path", { d: "M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4z", key: "uouzyp" }],
+    ["path", { d: "M14.12 3.88 16 2", key: "qol33r" }],
+    ["path", { d: "M21 21a4 4 0 0 0-3.81-4", key: "1b0z45" }],
+    ["path", { d: "M21 5a4 4 0 0 1-3.55 3.97", key: "5cxbf6" }],
+    ["path", { d: "M22 13h-4", key: "1jl80f" }],
+    ["path", { d: "M3 21a4 4 0 0 1 3.81-4", key: "1fjd4g" }],
+    ["path", { d: "M3 5a4 4 0 0 0 3.55 3.97", key: "1d7oge" }],
+    ["path", { d: "M6 13H2", key: "82j7cp" }],
+    ["path", { d: "m8 2 1.88 1.88", key: "fmnt4t" }],
+    ["path", { d: "M9 7.13V6a3 3 0 1 1 6 0v1.13", key: "1vgav8" }]
+  ];
+  var Bug = createLucideIcon("bug", __iconNode9);
 
-  // node_modules/lucide-react/dist/esm/icons/chevron-right.js
-  init_define_process_env();
-  var __iconNode8 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-  var ChevronRight = createLucideIcon("chevron-right", __iconNode8);
-
-  // node_modules/lucide-react/dist/esm/icons/chevron-up.js
-  init_define_process_env();
-  var __iconNode9 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-  var ChevronUp = createLucideIcon("chevron-up", __iconNode9);
-
-  // node_modules/lucide-react/dist/esm/icons/circle-check-big.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/calculator.js
   var __iconNode10 = [
+    ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", key: "1nb95v" }],
+    ["line", { x1: "8", x2: "16", y1: "6", y2: "6", key: "x4nwl0" }],
+    ["line", { x1: "16", x2: "16", y1: "14", y2: "18", key: "wjye3r" }],
+    ["path", { d: "M16 10h.01", key: "1m94wz" }],
+    ["path", { d: "M12 10h.01", key: "1nrarc" }],
+    ["path", { d: "M8 10h.01", key: "19clt8" }],
+    ["path", { d: "M12 14h.01", key: "1etili" }],
+    ["path", { d: "M8 14h.01", key: "6423bh" }],
+    ["path", { d: "M12 18h.01", key: "mhygvu" }],
+    ["path", { d: "M8 18h.01", key: "lrp35t" }]
+  ];
+  var Calculator = createLucideIcon("calculator", __iconNode10);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/check.js
+  var __iconNode11 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+  var Check = createLucideIcon("check", __iconNode11);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/chevron-down.js
+  var __iconNode12 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+  var ChevronDown = createLucideIcon("chevron-down", __iconNode12);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/chevron-right.js
+  var __iconNode13 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+  var ChevronRight = createLucideIcon("chevron-right", __iconNode13);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/chevron-up.js
+  var __iconNode14 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+  var ChevronUp = createLucideIcon("chevron-up", __iconNode14);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/circle-alert.js
+  var __iconNode15 = [
+    ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+    ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+    ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+  ];
+  var CircleAlert = createLucideIcon("circle-alert", __iconNode15);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/circle-check-big.js
+  var __iconNode16 = [
     ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
     ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
   ];
-  var CircleCheckBig = createLucideIcon("circle-check-big", __iconNode10);
+  var CircleCheckBig = createLucideIcon("circle-check-big", __iconNode16);
 
-  // node_modules/lucide-react/dist/esm/icons/circle-check.js
-  init_define_process_env();
-  var __iconNode11 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/circle-check.js
+  var __iconNode17 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ];
-  var CircleCheck = createLucideIcon("circle-check", __iconNode11);
+  var CircleCheck = createLucideIcon("circle-check", __iconNode17);
 
-  // node_modules/lucide-react/dist/esm/icons/clock.js
-  init_define_process_env();
-  var __iconNode12 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/clock.js
+  var __iconNode18 = [
     ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
   ];
-  var Clock = createLucideIcon("clock", __iconNode12);
+  var Clock = createLucideIcon("clock", __iconNode18);
 
-  // node_modules/lucide-react/dist/esm/icons/copy.js
-  init_define_process_env();
-  var __iconNode13 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/copy.js
+  var __iconNode19 = [
     ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
     ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
   ];
-  var Copy = createLucideIcon("copy", __iconNode13);
+  var Copy = createLucideIcon("copy", __iconNode19);
 
-  // node_modules/lucide-react/dist/esm/icons/download.js
-  init_define_process_env();
-  var __iconNode14 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/download.js
+  var __iconNode20 = [
     ["path", { d: "M12 15V3", key: "m9g1x1" }],
     ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
     ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
   ];
-  var Download = createLucideIcon("download", __iconNode14);
+  var Download = createLucideIcon("download", __iconNode20);
 
-  // node_modules/lucide-react/dist/esm/icons/droplet.js
-  init_define_process_env();
-  var __iconNode15 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/droplet.js
+  var __iconNode21 = [
     [
       "path",
       {
@@ -34939,11 +35171,10 @@
       }
     ]
   ];
-  var Droplet = createLucideIcon("droplet", __iconNode15);
+  var Droplet = createLucideIcon("droplet", __iconNode21);
 
-  // node_modules/lucide-react/dist/esm/icons/droplets.js
-  init_define_process_env();
-  var __iconNode16 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/droplets.js
+  var __iconNode22 = [
     [
       "path",
       {
@@ -34959,41 +35190,37 @@
       }
     ]
   ];
-  var Droplets = createLucideIcon("droplets", __iconNode16);
+  var Droplets = createLucideIcon("droplets", __iconNode22);
 
-  // node_modules/lucide-react/dist/esm/icons/external-link.js
-  init_define_process_env();
-  var __iconNode17 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/external-link.js
+  var __iconNode23 = [
     ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
     ["path", { d: "M10 14 21 3", key: "gplh6r" }],
     ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
   ];
-  var ExternalLink = createLucideIcon("external-link", __iconNode17);
+  var ExternalLink = createLucideIcon("external-link", __iconNode23);
 
-  // node_modules/lucide-react/dist/esm/icons/file-down.js
-  init_define_process_env();
-  var __iconNode18 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/file-down.js
+  var __iconNode24 = [
     ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
     ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
     ["path", { d: "M12 18v-6", key: "17g6i2" }],
     ["path", { d: "m9 15 3 3 3-3", key: "1npd3o" }]
   ];
-  var FileDown = createLucideIcon("file-down", __iconNode18);
+  var FileDown = createLucideIcon("file-down", __iconNode24);
 
-  // node_modules/lucide-react/dist/esm/icons/file-text.js
-  init_define_process_env();
-  var __iconNode19 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/file-text.js
+  var __iconNode25 = [
     ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
     ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
     ["path", { d: "M10 9H8", key: "b1mrlr" }],
     ["path", { d: "M16 13H8", key: "t4e002" }],
     ["path", { d: "M16 17H8", key: "z1uh3a" }]
   ];
-  var FileText = createLucideIcon("file-text", __iconNode19);
+  var FileText = createLucideIcon("file-text", __iconNode25);
 
-  // node_modules/lucide-react/dist/esm/icons/flame.js
-  init_define_process_env();
-  var __iconNode20 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/flame.js
+  var __iconNode26 = [
     [
       "path",
       {
@@ -35002,86 +35229,100 @@
       }
     ]
   ];
-  var Flame = createLucideIcon("flame", __iconNode20);
+  var Flame = createLucideIcon("flame", __iconNode26);
 
-  // node_modules/lucide-react/dist/esm/icons/gauge.js
-  init_define_process_env();
-  var __iconNode21 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/gauge.js
+  var __iconNode27 = [
     ["path", { d: "m12 14 4-4", key: "9kzdfg" }],
     ["path", { d: "M3.34 19a10 10 0 1 1 17.32 0", key: "19p75a" }]
   ];
-  var Gauge = createLucideIcon("gauge", __iconNode21);
+  var Gauge = createLucideIcon("gauge", __iconNode27);
 
-  // node_modules/lucide-react/dist/esm/icons/info.js
-  init_define_process_env();
-  var __iconNode22 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/heart-handshake.js
+  var __iconNode28 = [
+    [
+      "path",
+      {
+        d: "M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762",
+        key: "17lmqv"
+      }
+    ]
+  ];
+  var HeartHandshake = createLucideIcon("heart-handshake", __iconNode28);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/info.js
+  var __iconNode29 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "M12 16v-4", key: "1dtifu" }],
     ["path", { d: "M12 8h.01", key: "e9boi3" }]
   ];
-  var Info = createLucideIcon("info", __iconNode22);
+  var Info = createLucideIcon("info", __iconNode29);
 
-  // node_modules/lucide-react/dist/esm/icons/layout-grid.js
-  init_define_process_env();
-  var __iconNode23 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/layout-grid.js
+  var __iconNode30 = [
     ["rect", { width: "7", height: "7", x: "3", y: "3", rx: "1", key: "1g98yp" }],
     ["rect", { width: "7", height: "7", x: "14", y: "3", rx: "1", key: "6d4xhi" }],
     ["rect", { width: "7", height: "7", x: "14", y: "14", rx: "1", key: "nxv5o0" }],
     ["rect", { width: "7", height: "7", x: "3", y: "14", rx: "1", key: "1bb6yr" }]
   ];
-  var LayoutGrid = createLucideIcon("layout-grid", __iconNode23);
+  var LayoutGrid = createLucideIcon("layout-grid", __iconNode30);
 
-  // node_modules/lucide-react/dist/esm/icons/maximize-2.js
-  init_define_process_env();
-  var __iconNode24 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/maximize-2.js
+  var __iconNode31 = [
     ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
     ["path", { d: "m21 3-7 7", key: "1l2asr" }],
     ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
     ["path", { d: "M9 21H3v-6", key: "wtvkvv" }]
   ];
-  var Maximize2 = createLucideIcon("maximize-2", __iconNode24);
+  var Maximize2 = createLucideIcon("maximize-2", __iconNode31);
 
-  // node_modules/lucide-react/dist/esm/icons/menu.js
-  init_define_process_env();
-  var __iconNode25 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/menu.js
+  var __iconNode32 = [
     ["path", { d: "M4 5h16", key: "1tepv9" }],
     ["path", { d: "M4 12h16", key: "1lakjw" }],
     ["path", { d: "M4 19h16", key: "1djgab" }]
   ];
-  var Menu = createLucideIcon("menu", __iconNode25);
+  var Menu = createLucideIcon("menu", __iconNode32);
 
-  // node_modules/lucide-react/dist/esm/icons/minimize-2.js
-  init_define_process_env();
-  var __iconNode26 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/microscope.js
+  var __iconNode33 = [
+    ["path", { d: "M6 18h8", key: "1borvv" }],
+    ["path", { d: "M3 22h18", key: "8prr45" }],
+    ["path", { d: "M14 22a7 7 0 1 0 0-14h-1", key: "1jwaiy" }],
+    ["path", { d: "M9 14h2", key: "197e7h" }],
+    ["path", { d: "M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z", key: "1bmzmy" }],
+    ["path", { d: "M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3", key: "1drr47" }]
+  ];
+  var Microscope = createLucideIcon("microscope", __iconNode33);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/minimize-2.js
+  var __iconNode34 = [
     ["path", { d: "m14 10 7-7", key: "oa77jy" }],
     ["path", { d: "M20 10h-6V4", key: "mjg0md" }],
     ["path", { d: "m3 21 7-7", key: "tjx5ai" }],
     ["path", { d: "M4 14h6v6", key: "rmj7iw" }]
   ];
-  var Minimize2 = createLucideIcon("minimize-2", __iconNode26);
+  var Minimize2 = createLucideIcon("minimize-2", __iconNode34);
 
-  // node_modules/lucide-react/dist/esm/icons/pill.js
-  init_define_process_env();
-  var __iconNode27 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/pill.js
+  var __iconNode35 = [
     [
       "path",
       { d: "m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z", key: "wa1lgi" }
     ],
     ["path", { d: "m8.5 8.5 7 7", key: "rvfmvr" }]
   ];
-  var Pill = createLucideIcon("pill", __iconNode27);
+  var Pill = createLucideIcon("pill", __iconNode35);
 
-  // node_modules/lucide-react/dist/esm/icons/plus.js
-  init_define_process_env();
-  var __iconNode28 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/plus.js
+  var __iconNode36 = [
     ["path", { d: "M5 12h14", key: "1ays0h" }],
     ["path", { d: "M12 5v14", key: "s699le" }]
   ];
-  var Plus = createLucideIcon("plus", __iconNode28);
+  var Plus = createLucideIcon("plus", __iconNode36);
 
-  // node_modules/lucide-react/dist/esm/icons/printer.js
-  init_define_process_env();
-  var __iconNode29 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/printer.js
+  var __iconNode37 = [
     [
       "path",
       {
@@ -35092,19 +35333,17 @@
     ["path", { d: "M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6", key: "1itne7" }],
     ["rect", { x: "6", y: "14", width: "12", height: "8", rx: "1", key: "1ue0tg" }]
   ];
-  var Printer = createLucideIcon("printer", __iconNode29);
+  var Printer = createLucideIcon("printer", __iconNode37);
 
-  // node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
-  init_define_process_env();
-  var __iconNode30 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
+  var __iconNode38 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
   ];
-  var RotateCcw = createLucideIcon("rotate-ccw", __iconNode30);
+  var RotateCcw = createLucideIcon("rotate-ccw", __iconNode38);
 
-  // node_modules/lucide-react/dist/esm/icons/ruler.js
-  init_define_process_env();
-  var __iconNode31 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/ruler.js
+  var __iconNode39 = [
     [
       "path",
       {
@@ -35117,19 +35356,27 @@
     ["path", { d: "m8.5 6.5 2-2", key: "vc6u1g" }],
     ["path", { d: "m17.5 15.5 2-2", key: "wo5hmg" }]
   ];
-  var Ruler = createLucideIcon("ruler", __iconNode31);
+  var Ruler = createLucideIcon("ruler", __iconNode39);
 
-  // node_modules/lucide-react/dist/esm/icons/search.js
-  init_define_process_env();
-  var __iconNode32 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/scissors.js
+  var __iconNode40 = [
+    ["circle", { cx: "6", cy: "6", r: "3", key: "1lh9wr" }],
+    ["path", { d: "M8.12 8.12 12 12", key: "1alkpv" }],
+    ["path", { d: "M20 4 8.12 15.88", key: "xgtan2" }],
+    ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
+    ["path", { d: "M14.8 14.8 20 20", key: "ptml3r" }]
+  ];
+  var Scissors = createLucideIcon("scissors", __iconNode40);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/search.js
+  var __iconNode41 = [
     ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
     ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
   ];
-  var Search = createLucideIcon("search", __iconNode32);
+  var Search = createLucideIcon("search", __iconNode41);
 
-  // node_modules/lucide-react/dist/esm/icons/shield-alert.js
-  init_define_process_env();
-  var __iconNode33 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/shield-alert.js
+  var __iconNode42 = [
     [
       "path",
       {
@@ -35140,11 +35387,10 @@
     ["path", { d: "M12 8v4", key: "1got3b" }],
     ["path", { d: "M12 16h.01", key: "1drbdi" }]
   ];
-  var ShieldAlert = createLucideIcon("shield-alert", __iconNode33);
+  var ShieldAlert = createLucideIcon("shield-alert", __iconNode42);
 
-  // node_modules/lucide-react/dist/esm/icons/shield-check.js
-  init_define_process_env();
-  var __iconNode34 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/shield-check.js
+  var __iconNode43 = [
     [
       "path",
       {
@@ -35154,11 +35400,10 @@
     ],
     ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ];
-  var ShieldCheck = createLucideIcon("shield-check", __iconNode34);
+  var ShieldCheck = createLucideIcon("shield-check", __iconNode43);
 
-  // node_modules/lucide-react/dist/esm/icons/sparkles.js
-  init_define_process_env();
-  var __iconNode35 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/sparkles.js
+  var __iconNode44 = [
     [
       "path",
       {
@@ -35170,32 +35415,29 @@
     ["path", { d: "M22 4h-4", key: "gwowj6" }],
     ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
   ];
-  var Sparkles = createLucideIcon("sparkles", __iconNode35);
+  var Sparkles = createLucideIcon("sparkles", __iconNode44);
 
-  // node_modules/lucide-react/dist/esm/icons/stethoscope.js
-  init_define_process_env();
-  var __iconNode36 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/stethoscope.js
+  var __iconNode45 = [
     ["path", { d: "M11 2v2", key: "1539x4" }],
     ["path", { d: "M5 2v2", key: "1yf1q8" }],
     ["path", { d: "M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1", key: "rb5t3r" }],
     ["path", { d: "M8 15a6 6 0 0 0 12 0v-3", key: "x18d4x" }],
     ["circle", { cx: "20", cy: "10", r: "2", key: "ts1r5v" }]
   ];
-  var Stethoscope = createLucideIcon("stethoscope", __iconNode36);
+  var Stethoscope = createLucideIcon("stethoscope", __iconNode45);
 
-  // node_modules/lucide-react/dist/esm/icons/table.js
-  init_define_process_env();
-  var __iconNode37 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/table.js
+  var __iconNode46 = [
     ["path", { d: "M12 3v18", key: "108xh3" }],
     ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
     ["path", { d: "M3 9h18", key: "1pudct" }],
     ["path", { d: "M3 15h18", key: "5xshup" }]
   ];
-  var Table = createLucideIcon("table", __iconNode37);
+  var Table = createLucideIcon("table", __iconNode46);
 
-  // node_modules/lucide-react/dist/esm/icons/triangle-alert.js
-  init_define_process_env();
-  var __iconNode38 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+  var __iconNode47 = [
     [
       "path",
       {
@@ -35206,19 +35448,17 @@
     ["path", { d: "M12 9v4", key: "juzpu7" }],
     ["path", { d: "M12 17h.01", key: "p32p05" }]
   ];
-  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode38);
+  var TriangleAlert = createLucideIcon("triangle-alert", __iconNode47);
 
-  // node_modules/lucide-react/dist/esm/icons/user.js
-  init_define_process_env();
-  var __iconNode39 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/user.js
+  var __iconNode48 = [
     ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
     ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
   ];
-  var User = createLucideIcon("user", __iconNode39);
+  var User = createLucideIcon("user", __iconNode48);
 
-  // node_modules/lucide-react/dist/esm/icons/weight.js
-  init_define_process_env();
-  var __iconNode40 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/weight.js
+  var __iconNode49 = [
     ["circle", { cx: "12", cy: "5", r: "3", key: "rqqgnr" }],
     [
       "path",
@@ -35228,17 +35468,24 @@
       }
     ]
   ];
-  var Weight = createLucideIcon("weight", __iconNode40);
+  var Weight = createLucideIcon("weight", __iconNode49);
 
-  // node_modules/lucide-react/dist/esm/icons/x.js
-  init_define_process_env();
-  var __iconNode41 = [
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/workflow.js
+  var __iconNode50 = [
+    ["rect", { width: "8", height: "8", x: "3", y: "3", rx: "2", key: "by2w9f" }],
+    ["path", { d: "M7 11v4a2 2 0 0 0 2 2h4", key: "xkn7yn" }],
+    ["rect", { width: "8", height: "8", x: "13", y: "13", rx: "2", key: "1cgmvn" }]
+  ];
+  var Workflow = createLucideIcon("workflow", __iconNode50);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/lucide-react/dist/esm/icons/x.js
+  var __iconNode51 = [
     ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
     ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
   ];
-  var X = createLucideIcon("x", __iconNode41);
+  var X = createLucideIcon("x", __iconNode51);
 
-  // src/components/Header.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/Header.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var Header = ({
     language,
@@ -35258,12 +35505,13 @@
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
             /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex items-center space-x-2", children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "font-extrabold text-lg sm:text-xl tracking-tight text-slate-900", children: [
-                "CDSS ",
-                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "text-blue-600", children: "Kh\xE1ng Sinh" })
+                "InfectoDose ",
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "text-blue-600", children: "CDSS" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800", children: "v2.5 Pro" })
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800", children: "v3.0 Pro" }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "hidden xl:inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200", children: "NHSN \u2022 BVBND 2026" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "text-xs text-slate-500 hidden sm:block", children: isEn ? "Clinical Antimicrobial Dosing & Renal Decision Support System" : "H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Ra quy\u1EBFt \u0111\u1ECBnh Li\u1EC1u Kh\xE1ng sinh & Hi\u1EC7u ch\u1EC9nh Th\u1EADn" })
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { className: "text-xs text-slate-500 hidden sm:block", children: isEn ? "Clinical Infection Assessment, MDR Stratification & Precision Antibiotic Dosing" : "\u0110\xE1nh Gi\xE1 Nhi\u1EC5m Tr\xF9ng, Vi Khu\u1EA9n \u0110a Kh\xE1ng & Li\u1EC1u Kh\xE1ng Sinh C\xE1 Th\u1EC3 H\xF3a" })
           ] })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "hidden lg:flex items-center space-x-2", children: [
@@ -35426,8 +35674,7 @@
     ] });
   };
 
-  // src/components/PatientSidebar.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/PatientSidebar.tsx
   var import_react4 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
   var PatientSidebar = ({
@@ -35946,8 +36193,7 @@
     ] });
   };
 
-  // src/components/AntibioticSearch.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/AntibioticSearch.tsx
   var import_react5 = __toESM(require_react(), 1);
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   var FREQUENT_SUGGESTIONS = [
@@ -36181,8 +36427,7 @@
     ] });
   };
 
-  // src/components/DosingRecommendationCard.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/DosingRecommendationCard.tsx
   var import_react6 = __toESM(require_react(), 1);
   var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
   var DosingRecommendationCard = ({
@@ -36399,8 +36644,7 @@
     ] });
   };
 
-  // src/components/RenalAdjustmentTable.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/RenalAdjustmentTable.tsx
   var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
   var RenalAdjustmentTable = ({
     drugDetails,
@@ -36523,8 +36767,7 @@
     ] });
   };
 
-  // src/components/DialysisPanel.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/DialysisPanel.tsx
   var import_react7 = __toESM(require_react(), 1);
   var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
   function parseRrtData(html2, currentDialysis) {
@@ -36706,12 +36949,10 @@
     ] });
   };
 
-  // src/components/DrugInteractionChecker.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/DrugInteractionChecker.tsx
   var import_react8 = __toESM(require_react(), 1);
 
-  // src/data/drugInteractions.ts
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/data/drugInteractions.ts
   var DRUG_INTERACTIONS = [
     // 1. Carbapenems + Valproic Acid
     {
@@ -36970,7 +37211,7 @@
     }
   ];
 
-  // src/components/DrugInteractionChecker.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/DrugInteractionChecker.tsx
   var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
   var DrugInteractionChecker = ({
     antibioticId,
@@ -37146,8 +37387,7 @@
     ] });
   };
 
-  // src/components/ClinicalNotesTiers.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/ClinicalNotesTiers.tsx
   var import_react9 = __toESM(require_react(), 1);
   var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
   function extractTiersFromHtml(html2) {
@@ -37305,8 +37545,7 @@
     ] });
   };
 
-  // src/components/ReferencesList.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/ReferencesList.tsx
   var import_react10 = __toESM(require_react(), 1);
   var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
   function parseReferencesHtml(html2) {
@@ -37446,12 +37685,10 @@
     ] });
   };
 
-  // src/components/AmrModal.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/AmrModal.tsx
   var import_react11 = __toESM(require_react(), 1);
 
-  // src/data/antibiotics.ts
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/data/antibiotics.ts
   var ANTIBIOTICS = [
     {
       "id": "meropenem",
@@ -40613,7 +40850,7 @@
     ]
   };
 
-  // src/components/AmrModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/AmrModal.tsx
   var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
   var AmrModal = ({
     isOpen,
@@ -40735,12 +40972,10 @@
     ] }) });
   };
 
-  // src/components/OriginalPreviewModal.tsx
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/OriginalPreviewModal.tsx
   var import_react12 = __toESM(require_react(), 1);
 
-  // src/data/rawPreviewData.ts
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/data/rawPreviewData.ts
   var _pd = (s3) => {
     try {
       return decodeURIComponent(escape(atob(s3)));
@@ -40763,7 +40998,7 @@
     return parts.map((x2) => typeof x2 === "number" ? PREVIEW_DICT[x2] : _pd(x2)).join("");
   }
 
-  // src/components/OriginalPreviewModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/OriginalPreviewModal.tsx
   var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
   var OriginalPreviewModal = ({
     isOpen,
@@ -40837,18 +41072,10 @@
     ] }) });
   };
 
-  // src/components/PdfConsultationModal.tsx
-  init_define_process_env();
-
-  // src/utils/pdfGenerator.ts
-  init_define_process_env();
-
-  // node_modules/jspdf/dist/jspdf.es.min.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/jspdf/dist/jspdf.es.min.js
   init_typeof();
 
-  // node_modules/fflate/esm/browser.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fflate/esm/browser.js
   var u8 = Uint8Array;
   var u16 = Uint16Array;
   var i32 = Int32Array;
@@ -41383,17 +41610,12 @@
   } catch (e2) {
   }
 
-  // node_modules/@babel/runtime/helpers/esm/slicedToArray.js
-  init_define_process_env();
-
-  // node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
   function _arrayWithHoles(r2) {
     if (Array.isArray(r2)) return r2;
   }
 
-  // node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
   function _iterableToArrayLimit(r2, l3) {
     var t3 = null == r2 ? null : "undefined" != typeof Symbol && r2[Symbol.iterator] || r2["@@iterator"];
     if (null != t3) {
@@ -41416,18 +41638,14 @@
     }
   }
 
-  // node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-  init_define_process_env();
-
-  // node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
   function _arrayLikeToArray(r2, a3) {
     (null == a3 || a3 > r2.length) && (a3 = r2.length);
     for (var e2 = 0, n2 = Array(a3); e2 < a3; e2++) n2[e2] = r2[e2];
     return n2;
   }
 
-  // node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
   function _unsupportedIterableToArray(r2, a3) {
     if (r2) {
       if ("string" == typeof r2) return _arrayLikeToArray(r2, a3);
@@ -41436,28 +41654,17 @@
     }
   }
 
-  // node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  // node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/@babel/runtime/helpers/esm/slicedToArray.js
   function _slicedToArray(r2, e2) {
     return _arrayWithHoles(r2) || _iterableToArrayLimit(r2, e2) || _unsupportedIterableToArray(r2, e2) || _nonIterableRest();
   }
 
-  // node_modules/fast-png/lib-esm/index.js
-  init_define_process_env();
-
-  // node_modules/fast-png/lib-esm/PngDecoder.js
-  init_define_process_env();
-
-  // node_modules/iobuffer/lib-esm/IOBuffer.js
-  init_define_process_env();
-
-  // node_modules/iobuffer/lib-esm/text.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/iobuffer/lib-esm/text.js
   function decode(bytes, encoding = "utf8") {
     const decoder = new TextDecoder(encoding);
     return decoder.decode(bytes);
@@ -41467,7 +41674,7 @@
     return encoder.encode(str);
   }
 
-  // node_modules/iobuffer/lib-esm/IOBuffer.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/iobuffer/lib-esm/IOBuffer.js
   var defaultByteLength = 1024 * 8;
   var hostBigEndian = (() => {
     const array = new Uint8Array(4);
@@ -42078,8 +42285,7 @@
     }
   };
 
-  // node_modules/pako/dist/pako.esm.mjs
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/pako/dist/pako.esm.mjs
   var Z_FIXED$1 = 4;
   var Z_BINARY = 0;
   var Z_TEXT = 1;
@@ -46290,8 +46496,7 @@
   var Inflate_1 = Inflate;
   var inflate_1 = inflate;
 
-  // node_modules/fast-png/lib-esm/helpers/crc.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/crc.js
   var crcTable2 = [];
   for (let n2 = 0; n2 < 256; n2++) {
     let c4 = n2;
@@ -46323,14 +46528,7 @@
     }
   }
 
-  // node_modules/fast-png/lib-esm/helpers/decodeInterlaceAdam7.js
-  init_define_process_env();
-
-  // node_modules/fast-png/lib-esm/helpers/applyUnfilter.js
-  init_define_process_env();
-
-  // node_modules/fast-png/lib-esm/helpers/unfilter.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/unfilter.js
   function unfilterNone(currentLine, newLine, bytesPerLine) {
     for (let i3 = 0; i3 < bytesPerLine; i3++) {
       newLine[i3] = currentLine[i3];
@@ -46406,7 +46604,7 @@
       return c4;
   }
 
-  // node_modules/fast-png/lib-esm/helpers/applyUnfilter.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/applyUnfilter.js
   function applyUnfilter(filterType, currentLine, newLine, prevLine, passLineBytes, bytesPerPixel) {
     switch (filterType) {
       case 0:
@@ -46429,7 +46627,7 @@
     }
   }
 
-  // node_modules/fast-png/lib-esm/helpers/decodeInterlaceAdam7.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/decodeInterlaceAdam7.js
   var uint16 = new Uint16Array([255]);
   var uint8 = new Uint8Array(uint16.buffer);
   var osIsLittleEndian = uint8[0] === 255;
@@ -46496,8 +46694,7 @@
     return (val & 255) << 8 | val >> 8 & 255;
   }
 
-  // node_modules/fast-png/lib-esm/helpers/decodeInterlaceNull.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/decodeInterlaceNull.js
   var uint162 = new Uint16Array([255]);
   var uint82 = new Uint8Array(uint162.buffer);
   var osIsLittleEndian2 = uint82[0] === 255;
@@ -46552,8 +46749,7 @@
     return (val & 255) << 8 | val >> 8 & 255;
   }
 
-  // node_modules/fast-png/lib-esm/helpers/signature.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/signature.js
   var pngSignature = Uint8Array.of(137, 80, 78, 71, 13, 10, 26, 10);
   function checkSignature(buffer) {
     if (!hasPngSignature(buffer.readBytes(pngSignature.length))) {
@@ -46572,8 +46768,7 @@
     return true;
   }
 
-  // node_modules/fast-png/lib-esm/helpers/text.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/helpers/text.js
   var textChunkName = "tEXt";
   var NULL = 0;
   var latin1Decoder = new TextDecoder("latin1");
@@ -46608,8 +46803,7 @@
     return latin1Decoder.decode(buffer.readBytes(length));
   }
 
-  // node_modules/fast-png/lib-esm/internalTypes.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/internalTypes.js
   var ColorType = {
     UNKNOWN: -1,
     GREYSCALE: 0,
@@ -46641,7 +46835,7 @@
     OVER: 1
   };
 
-  // node_modules/fast-png/lib-esm/PngDecoder.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/PngDecoder.js
   var PngDecoder = class extends IOBuffer {
     _checkCrc;
     _inflator;
@@ -47113,29 +47307,22 @@
     return value;
   }
 
-  // node_modules/fast-png/lib-esm/PngEncoder.js
-  init_define_process_env();
-
-  // node_modules/fast-png/lib-esm/types.js
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/types.js
   var ResolutionUnitSpecifier;
   (function(ResolutionUnitSpecifier2) {
     ResolutionUnitSpecifier2[ResolutionUnitSpecifier2["UNKNOWN"] = 0] = "UNKNOWN";
     ResolutionUnitSpecifier2[ResolutionUnitSpecifier2["METRE"] = 1] = "METRE";
   })(ResolutionUnitSpecifier || (ResolutionUnitSpecifier = {}));
 
-  // node_modules/fast-png/lib-esm/convertIndexedToRgb.js
-  init_define_process_env();
-
-  // node_modules/fast-png/lib-esm/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/fast-png/lib-esm/index.js
   function decodePng(data, options) {
     const decoder = new PngDecoder(data, options);
     return decoder.decode();
   }
 
-  // node_modules/jspdf/dist/jspdf.es.min.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/node_modules/jspdf/dist/jspdf.es.min.js
   var i2 = /* @__PURE__ */ (function() {
-    return "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this;
+    return "undefined" != typeof window ? window : "undefined" != typeof window ? window : "undefined" != typeof self ? self : this;
   })();
   function a2() {
     i2.console && "function" == typeof i2.console.log && i2.console.log.apply(i2.console, arguments);
@@ -54371,7 +54558,7 @@
     }, e2;
   })();
 
-  // src/utils/pdfGenerator.ts
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/utils/pdfGenerator.ts
   function generatePdfConsultationReport(data) {
     const isEn = data.language === "en";
     const doc = new E({
@@ -54540,7 +54727,7 @@
     window.print();
   }
 
-  // src/components/PdfConsultationModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/PdfConsultationModal.tsx
   var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
   var PdfConsultationModal = ({
     isOpen,
@@ -54779,8 +54966,3643 @@
     ] }) });
   };
 
-  // src/utils/clinicalFormulas.ts
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/SelectionWizard.tsx
+  var import_react16 = __toESM(require_react(), 1);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/riskFactors.ts
+  var GENERAL_MDR_RISK_FACTORS = [
+    {
+      id: "hospital_90d",
+      labelVi: "\u0110i\u1EC1u tr\u1ECB \u2265 5 ng\xE0y t\u1EA1i c\u01A1 s\u1EDF y t\u1EBF trong v\xF2ng 90 ng\xE0y HO\u1EB6C n\u1EB1m ICU > 2 ng\xE0y",
+      labelEn: "Hospitalized \u2265 5 days within 90 days OR ICU admission > 2 days",
+      category: "general",
+      noteVi: "Y\u1EBFu t\u1ED1 d\u1ECBch t\u1EC5 ph\u01A1i nhi\u1EC5m vi khu\u1EA9n n\u1ED9i vi\u1EC7n quan tr\u1ECDng.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "invasive_device",
+      labelVi: "\u0110ang \u0111\u1EB7t d\u1EE5ng c\u1EE5 x\xE2m l\u1EA5n l\u01B0u > 7 ng\xE0y HO\u1EB6C v\u1EEBa l\xE0m th\u1EE7 thu\u1EADt / ph\u1EABu thu\u1EADt",
+      labelEn: "Invasive device in place > 7 days OR recent invasive procedure/surgery",
+      category: "general",
+      noteVi: "Bao g\u1ED3m catheter t\u0129nh m\u1EA1ch trung t\xE2m, th\xF4ng ti\u1EC3u l\u01B0u, n\u1ED9i kh\xED qu\u1EA3n.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "iv_abx_30d",
+      labelVi: "C\xF3 d\xF9ng kh\xE1ng sinh \u0111\u01B0\u1EDDng t\u0129nh m\u1EA1ch trong v\xF2ng 30 ng\xE0y qua",
+      labelEn: "Received intravenous antibiotics within past 30 days",
+      category: "general",
+      noteVi: "\xC1p l\u1EF1c ch\u1ECDn l\u1ECDc vi khu\u1EA9n kh\xE1ng thu\u1ED1c t\u1EA1i ch\u1ED7.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "steroid_prolonged",
+      labelVi: "S\u1EED d\u1EE5ng corticosteroid k\xE9o d\xE0i",
+      labelEn: "Prolonged corticosteroid use",
+      category: "general",
+      noteVi: "Prednisone \u2265 0.2 mg/kg/ng\xE0y > 3 th\xE1ng ho\u1EB7c 1 mg/kg/ng\xE0y trong 1 tu\u1EA7n trong v\xF2ng 3 th\xE1ng tr\u01B0\u1EDBc nh\u1EADp vi\u1EC7n.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "chronic_disease",
+      labelVi: "C\xF3 b\u1EC7nh l\xFD m\u1EA1n t\xEDnh n\u1EB7ng k\xE8m theo",
+      labelEn: "Underlying chronic comorbid conditions",
+      category: "general",
+      noteVi: "\u0110\xE1i th\xE1o \u0111\u01B0\u1EDDng, suy gan, x\u01A1 gan, ch\u1EA1y th\u1EADn nh\xE2n t\u1EA1o m\u1EA1n t\xEDnh, b\u1EC7nh c\u1EA5u tr\xFAc ph\u1ED5i (gi\xE3n PQ/COPD), x\u01A1 nang, suy gi\u1EA3m mi\u1EC5n d\u1ECBch n\u1EB7ng.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "transplant_chemo",
+      labelVi: "Gh\xE9p t\u1EE7y x\u01B0\u01A1ng, gh\xE9p t\u1EA1ng, gi\u1EA3m b\u1EA1ch c\u1EA7u h\u1EA1t do h\xF3a tr\u1ECB",
+      labelEn: "Bone marrow/solid organ transplant, neutropenia due to chemotherapy",
+      category: "general",
+      noteVi: "C\u01A1 \u0111\u1ECBa suy gi\u1EA3m mi\u1EC5n d\u1ECBch d\xF2ng t\u1EBF b\xE0o v\xE0 b\u1EA1ch c\u1EA7u nghi\xEAm tr\u1ECDng.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "age_over_60",
+      labelVi: "Tu\u1ED5i > 60",
+      labelEn: "Age > 60 years",
+      category: "general",
+      noteVi: "Y\u1EBFu t\u1ED1 \u0111\u1ED9c l\u1EADp l\xE0m t\u0103ng nguy c\u01A1 nhi\u1EC5m ch\u1EE7ng vi khu\u1EA9n kh\xE1ng thu\u1ED1c.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    },
+    {
+      id: "mdr_contact",
+      labelVi: "Ti\u1EBFp x\xFAc g\u1EA7n v\u1EDBi ng\u01B0\u1EDDi nhi\u1EC5m vi khu\u1EA9n \u0111a kh\xE1ng (MDR)",
+      labelEn: "Close contact with person known to be colonized/infected with MDR",
+      category: "general",
+      noteVi: "L\xE2y truy\u1EC1n ch\xE9o vi khu\u1EA9n \u0111\u1EC1 kh\xE1ng trong gia \u0111\xECnh ho\u1EB7c c\u01A1 s\u1EDF ch\u0103m s\xF3c.",
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    }
+  ];
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/empiricRegimens.ts
+  var EMPIRIC_REGIMENS = [
+    // ==========================================
+    // 1. ADULT - RESPIRATORY (VIÊM PHỔI NGƯỜI LỚN) (P.8-9)
+    // ==========================================
+    {
+      id: "adult_resp_group1",
+      site: "respiratory",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Vi\xEAm ph\u1ED5i - Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng)",
+      titleEn: "Adult Pneumonia - Group 1 (Low MDR Risk)",
+      drugs: [
+        {
+          drugId: "amox_clav",
+          nameVi: "Amoxicillin/Clavulanate",
+          nameEn: "Amoxicillin/Clavulanate",
+          standardDoseVi: "1g IV q8h ho\u1EB7c 875/125mg PO q12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "1 - 2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "azithromycin",
+          nameVi: "Azithromycin (ph\u1ED1i h\u1EE3p ph\u1EE7 VK kh\xF4ng \u0111i\u1EC3n h\xECnh)",
+          nameEn: "Azithromycin (combo atypical)",
+          standardDoseVi: "500mg IV/PO ng\xE0y 1, sau \u0111\xF3 250mg m\u1ED7i 24 gi\u1EDD (ho\u1EB7c 500mg q24h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin (\u0111\u01A1n tr\u1ECB thay th\u1EBF)",
+          nameEn: "Levofloxacin monotherapy",
+          standardDoseVi: "750mg IV/PO m\u1ED7i 24 gi\u1EDD (ho\u1EB7c 500mg q12h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "moxifloxacin",
+          nameVi: "Moxifloxacin (\u0111\u01A1n tr\u1ECB thay th\u1EBF)",
+          nameEn: "Moxifloxacin monotherapy",
+          standardDoseVi: "400mg IV/PO m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "Ph\u1ED1i h\u1EE3p Ceftriaxone ho\u1EB7c Amox-clav + Azithromycin khi nghi ng\u1EDD vi khu\u1EA9n kh\xF4ng \u0111i\u1EC3n h\xECnh.",
+        "Ho\u1EB7c d\xF9ng \u0111\u01A1n tr\u1ECB li\u1EC7u FQ h\xF4 h\u1EA5p (Levofloxacin / Moxifloxacin).",
+        "C\xE2n nh\u1EAFc ph\u1ED1i h\u1EE3p Oseltamivir khi nghi ng\u1EDD c\xFAm \u0111\u1ED3ng nhi\u1EC5m trong m\xF9a d\u1ECBch."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 8 }
+    },
+    {
+      id: "adult_resp_group2_mrsa",
+      site: "respiratory",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "mrsa",
+      titleVi: "Vi\xEAm ph\u1ED5i - Nh\xF3m 2 + Nguy c\u01A1 MRSA",
+      titleEn: "Adult Pneumonia - Group 2 + MRSA Risk",
+      drugs: [
+        {
+          drugId: "vancomycin",
+          nameVi: "Vancomycin",
+          nameEn: "Vancomycin",
+          standardDoseVi: "Li\u1EC1u n\u1EA1p 25 - 30 mg/kg, sau \u0111\xF3 15 - 20 mg/kg q8-12h (theo d\xF5i TDM)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "teicoplanin",
+          nameVi: "Teicoplanin",
+          nameEn: "Teicoplanin",
+          standardDoseVi: "Li\u1EC1u n\u1EA1p 6 mg/kg (ho\u1EB7c 800mg) q12h x 3 li\u1EC1u, sau \u0111\xF3 6 mg/kg/ng\xE0y",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "linezolid",
+          nameVi: "Linezolid",
+          nameEn: "Linezolid",
+          standardDoseVi: "600mg IV/PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p thu\u1ED1c ch\u1ED1ng MRSA v\u1EDBi kh\xE1ng sinh ph\u1ED5 Gram (-) n\u1EBFu b\u1EC7nh nh\xE2n c\xF3 nguy c\u01A1 ph\u1ED1i h\u1EE3p c\u1EA3 2 nh\xF3m vi khu\u1EA9n."
+      ],
+      cautionVi: [
+        "Daptomycin KH\xD4NG \u0111\u01B0\u1EE3c s\u1EED d\u1EE5ng trong vi\xEAm ph\u1ED5i v\xEC b\u1ECB surfactant ph\u1EBF nang b\u1EA5t ho\u1EA1t!"
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 9 }
+    },
+    {
+      id: "adult_resp_group2_esbl",
+      site: "respiratory",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "esbl",
+      titleVi: "Vi\xEAm ph\u1ED5i - Nh\xF3m 2 + Nguy c\u01A1 Enterobacterales sinh ESBL",
+      titleEn: "Adult Pneumonia - Group 2 + ESBL Risk",
+      drugs: [
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "4.5g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ertapenem",
+          nameVi: "Ertapenem",
+          nameEn: "Ertapenem",
+          standardDoseVi: "1g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "imipenem",
+          nameVi: "Imipenem/Cilastatin",
+          nameEn: "Imipenem/Cilastatin",
+          standardDoseVi: "500mg IV q6h ho\u1EB7c 1g IV q8h truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem",
+          nameEn: "Meropenem",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 9 }
+    },
+    {
+      id: "adult_resp_group2_pseudo_acineto",
+      site: "respiratory",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "pseudo_acineto",
+      titleVi: "Vi\xEAm ph\u1ED5i - Nh\xF3m 2 + Nguy c\u01A1 Pseudomonas / Acinetobacter \u0111a kh\xE1ng",
+      titleEn: "Adult Pneumonia - Group 2 + Pseudomonas/Acinetobacter Risk",
+      drugs: [
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "4.5g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "cefo_sulbactam_11",
+          nameVi: "Cefoperazone/Sulbactam li\u1EC1u cao",
+          nameEn: "Cefoperazone/Sulbactam high-dose",
+          standardDoseVi: "2g - 4g IV m\u1ED7i 8 - 12 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftazidim",
+          nameVi: "Ceftazidime",
+          nameEn: "Ceftazidime",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "cefepim",
+          nameVi: "Cefepime",
+          nameEn: "Cefepime",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem li\u1EC1u cao",
+          nameEn: "Meropenem high-dose",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i \u2265 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Amikacin (combo)",
+          standardDoseVi: "15 - 20 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "colistin",
+          nameVi: "Colistin (khi nghi ng\u1EDD vi khu\u1EA9n si\xEAu kh\xE1ng)",
+          nameEn: "Colistin (CMS)",
+          standardDoseVi: "N\u1EA1p 300mg CBA (9M UI), duy tr\xEC 150-180mg CBA q12h",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "Ph\u1ED1i h\u1EE3p 1 Beta-lactam ch\u1ED1ng tr\u1EF1c khu\u1EA9n m\u1EE7 xanh (Pip-taz / Cefepime / Meropenem) + 1 Aminoglycoside (Amikacin / Tobramycin).",
+        "N\u1EBFu c\xF3 nguy c\u01A1 c\u1EA3 ESBL v\xE0 Acineto/Pseudo, lu\xF4n \u01B0u ti\xEAn nh\xF3m kh\xE1ng sinh di\u1EC7t Acineto/Pseudo.",
+        "C\xE2n nh\u1EAFc ph\u1ED1i h\u1EE3p th\xEAm Colistin n\u1EBFu t\u1EF7 l\u1EC7 vi khu\u1EA9n kh\xE1ng Carbapenem t\u1EA1i khoa ph\xF2ng cao."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 9 }
+    },
+    // ==========================================
+    // 2. ADULT - SEPSIS / NHIỄM KHUẨN HUYẾT (P.12-13)
+    // ==========================================
+    {
+      id: "adult_sepsis_resp_group1",
+      site: "sepsis",
+      sepsisSource: "respiratory",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt t\u1EEB \u1ED5 H\xF4 h\u1EA5p - Nh\xF3m 1",
+      titleEn: "Adult Sepsis from Respiratory - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone \xB1 Azithromycin",
+          nameEn: "Ceftriaxone \xB1 Azithromycin",
+          standardDoseVi: "2g IV m\u1ED7i 24 gi\u1EDD + Azithromycin 500mg IV/PO q24h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin",
+          nameEn: "Levofloxacin",
+          standardDoseVi: "750mg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 13 }
+    },
+    {
+      id: "adult_sepsis_gi_group1",
+      site: "sepsis",
+      sepsisSource: "gastrointestinal",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt t\u1EEB \u1ED5 Ti\xEAu h\xF3a - Nh\xF3m 1",
+      titleEn: "Adult Sepsis from GI - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Levofloxacin",
+          standardDoseVi: "500mg - 750mg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin / Gentamicin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Amikacin / Gentamicin",
+          standardDoseVi: "Amikacin 15-20 mg/kg q24h",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 13 }
+    },
+    {
+      id: "adult_sepsis_skin_group1",
+      site: "sepsis",
+      sepsisSource: "skin_soft_tissue",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt t\u1EEB \u1ED5 Da & m\xF4 m\u1EC1m - Nh\xF3m 1",
+      titleEn: "Adult Sepsis from Skin/Soft Tissue - Group 1",
+      drugs: [
+        {
+          nameVi: "Oxacillin",
+          nameEn: "Oxacillin",
+          standardDoseVi: "2g IV m\u1ED7i 4 gi\u1EDD",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin / Moxifloxacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Levofloxacin / Moxifloxacin",
+          standardDoseVi: "Levofloxacin 750mg q24h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "clindamycin",
+          nameVi: "Clindamycin \xB1 Metronidazole (khi nghi ng\u1EDD k\u1EF5 kh\xED)",
+          nameEn: "Clindamycin \xB1 Metronidazole",
+          standardDoseVi: "Clindamycin 600-900mg IV q8h",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 13 }
+    },
+    {
+      id: "adult_sepsis_urinary_group1",
+      site: "sepsis",
+      sepsisSource: "urinary",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt t\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u - Nh\xF3m 1",
+      titleEn: "Adult Sepsis from Urinary - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Amikacin",
+          standardDoseVi: "15 - 20 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin",
+          nameEn: "Levofloxacin",
+          standardDoseVi: "750mg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 13 }
+    },
+    {
+      id: "adult_sepsis_group2_all_sources",
+      site: "sepsis",
+      population: "adult",
+      riskGroup: "group_2",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt - Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng)",
+      titleEn: "Adult Sepsis - Group 2 (High MDR Risk)",
+      drugs: [
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem li\u1EC1u cao (ph\u1EE7 ESBL / Tr\u1EF1c khu\u1EA9n Gram -)",
+          nameEn: "Meropenem high-dose",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 - 4 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "imipenem",
+          nameVi: "Imipenem/Cilastatin",
+          nameEn: "Imipenem/Cilastatin",
+          standardDoseVi: "1g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "4.5g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "vancomycin",
+          nameVi: "Vancomycin (khi c\xF3 nguy c\u01A1 MRSA)",
+          nameEn: "Vancomycin (if MRSA risk)",
+          standardDoseVi: "N\u1EA1p 25 - 30 mg/kg, sau \u0111\xF3 15 - 20 mg/kg q8-12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "teicoplanin",
+          nameVi: "Teicoplanin (thay th\u1EBF Vancomycin)",
+          nameEn: "Teicoplanin",
+          standardDoseVi: "N\u1EA1p 6 mg/kg q12h x 3 li\u1EC1u, sau \u0111\xF3 6 mg/kg/ng\xE0y",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin (ph\u1ED1i h\u1EE3p ch\u1ED1ng s\u1ED1c / gi\u1EA3m BC h\u1EA1t)",
+          nameEn: "Amikacin (combo)",
+          standardDoseVi: "15 - 20 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "colistin",
+          nameVi: "Colistin (khi nghi ng\u1EDD Acineto/Pseudo si\xEAu kh\xE1ng)",
+          nameEn: "Colistin (CMS)",
+          standardDoseVi: "N\u1EA1p 300mg CBA, duy tr\xEC 150-180mg CBA q12h",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt n\u1EB7ng / S\u1ED1c nhi\u1EC5m khu\u1EA9n: KS b\u1EAFt bu\u1ED9c truy\u1EC1n trong GI\u1EDC \u0110\u1EA6U TI\xCAN.",
+        "Ph\u1ED1i h\u1EE3p ph\u1EE7 \u0111\u1ED3ng th\u1EDDi vi khu\u1EA9n Gram (+) v\xE0 Gram (-) n\u1EBFu c\xF3 nguy c\u01A1 c\u1EA3 hai (v\xED d\u1EE5 Meropenem + Vancomycin).",
+        "N\u1EBFu c\xF3 nguy c\u01A1 Acinetobacter/Pseudomonas, \u01B0u ti\xEAn Meropenem li\u1EC1u cao/Cefo-sulbactam + Amikacin \xB1 Colistin."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 13 }
+    },
+    // ==========================================
+    // 3. ADULT - SKIN & SOFT TISSUE (DA & MÔ MỀM) (P.9-10)
+    // ==========================================
+    {
+      id: "adult_ssti_group1",
+      site: "skin_soft_tissue",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Da v\xE0 M\xF4 m\u1EC1m - Nh\xF3m 1",
+      titleEn: "Adult Skin/Soft Tissue - Group 1",
+      drugs: [
+        {
+          drugId: "cefazolin",
+          nameVi: "Cefazolin (Cephalosporin th\u1EBF h\u1EC7 1)",
+          nameEn: "Cefazolin",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 8 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          nameVi: "Oxacillin",
+          nameEn: "Oxacillin",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 4 - 6 gi\u1EDD",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "clindamycin",
+          nameVi: "Clindamycin",
+          nameEn: "Clindamycin",
+          standardDoseVi: "600mg IV m\u1ED7i 8 gi\u1EDD ho\u1EB7c 300-450mg PO q8h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "tmp_smx",
+          nameVi: "Co-trimoxazole (TMP-SMX)",
+          nameEn: "Co-trimoxazole",
+          standardDoseVi: "2 vi\xEAn 480mg PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "T\xF9y t\xEDnh ch\u1EA5t sang th\u01B0\u01A1ng v\xE0 ngu\u1ED3n l\xE2y, c\xF3 th\u1EC3 ph\u1ED1i h\u1EE3p th\xEAm: (1) Metronidazol (nghi ng\u1EDD vi khu\u1EA9n k\u1EF5 kh\xED), (2) Doxycyclin (nhi\u1EC5m tr\xF9ng ti\u1EBFp x\xFAc n\u01B0\u1EDBc b\u1EA9n/Vibrio/rickettsia), (3) Levofloxacin (nghi ng\u1EDD vi khu\u1EA9n Gram \xE2m)."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 10 }
+    },
+    {
+      id: "adult_ssti_group2_mrsa",
+      site: "skin_soft_tissue",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "mrsa",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Da v\xE0 M\xF4 m\u1EC1m - Nh\xF3m 2 + Nguy c\u01A1 MRSA",
+      titleEn: "Adult SSTI - Group 2 + MRSA Risk",
+      drugs: [
+        {
+          drugId: "vancomycin",
+          nameVi: "Vancomycin",
+          nameEn: "Vancomycin",
+          standardDoseVi: "N\u1EA1p 25 - 30 mg/kg, sau \u0111\xF3 15 - 20 mg/kg q8-12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "daptomycin",
+          nameVi: "Daptomycin (r\u1EA5t hi\u1EC7u qu\u1EA3 trong SSTI)",
+          nameEn: "Daptomycin",
+          standardDoseVi: "6 - 8 mg/kg IV m\u1ED7i 24 gi\u1EDD (c\xF3 th\u1EC3 \u0111\u1EBFn 10 mg/kg n\u1EBFu n\u1EB7ng)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "teicoplanin",
+          nameVi: "Teicoplanin",
+          nameEn: "Teicoplanin",
+          standardDoseVi: "6 mg/kg q12h x 3 li\u1EC1u, sau \u0111\xF3 6 mg/kg/ng\xE0y",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "linezolid",
+          nameVi: "Linezolid",
+          nameEn: "Linezolid",
+          standardDoseVi: "600mg IV/PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "tmp_smx",
+          nameVi: "Co-trimoxazole (TMP-SMX u\u1ED1ng khi nh\u1EB9/xu\u1ED1ng thang)",
+          nameEn: "Co-trimoxazole",
+          standardDoseVi: "2 - 3 vi\xEAn 480mg PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 10 }
+    },
+    {
+      id: "adult_ssti_group2_pseudo",
+      site: "skin_soft_tissue",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "pseudo_acineto",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Da v\xE0 M\xF4 m\u1EC1m - Nh\xF3m 2 + Nguy c\u01A1 Pseudomonas",
+      titleEn: "Adult SSTI - Group 2 + Pseudomonas Risk",
+      drugs: [
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "4.5g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftazidim",
+          nameVi: "Ceftazidime",
+          nameEn: "Ceftazidime",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ciprofloxacin",
+          nameVi: "Ciprofloxacin",
+          nameEn: "Ciprofloxacin",
+          standardDoseVi: "400mg IV q8-12h ho\u1EB7c 750mg PO q12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin",
+          nameEn: "Levofloxacin",
+          standardDoseVi: "750mg IV/PO m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "tobramycin",
+          nameVi: "Tobramycin / Amikacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Tobramycin / Amikacin",
+          standardDoseVi: "Tobramycin 5-7 mg/kg q24h; Amikacin 15-20 mg/kg q24h",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 10 }
+    },
+    // ==========================================
+    // 4. ADULT - URINARY TRACT / TIẾT NIỆU (P.10-11)
+    // ==========================================
+    {
+      id: "adult_uti_group1",
+      site: "urinary",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Ti\u1EBFt ni\u1EC7u - Nh\xF3m 1 (\xCDt nguy c\u01A1 VK\u0110K)",
+      titleEn: "Adult UTI - Group 1 (Low MDR Risk)",
+      drugs: [
+        {
+          drugId: "fosfomycin",
+          nameVi: "Fosfomycin u\u1ED1ng (ch\u1EC9 cho vi\xEAm b\xE0ng quang c\u1EA5p E. coli)",
+          nameEn: "Fosfomycin PO",
+          standardDoseVi: "G\xF3i 3g pha n\u01B0\u1EDBc u\u1ED1ng 1 li\u1EC1u duy nh\u1EA5t",
+          hasDosingCalculator: true
+        },
+        {
+          nameVi: "Nitrofurantoin (vi\xEAm b\xE0ng quang c\u1EA5p)",
+          nameEn: "Nitrofurantoin",
+          standardDoseVi: "100mg PO m\u1ED7i 12 gi\u1EDD x 5 ng\xE0y",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "amox_clav",
+          nameVi: "Amoxicillin/Clavulanate",
+          nameEn: "Amoxicillin/Clavulanate",
+          standardDoseVi: "1g IV q8h ho\u1EB7c 875/125mg PO q12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone (vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn / s\u1ED1t)",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "1g - 2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin (vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn c\u1EA5p c\xF3 nhi\u1EC5m \u0111\u1ED9c)",
+          nameEn: "Amikacin",
+          standardDoseVi: "15 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      cautionVi: [
+        "Kh\xF4ng d\xF9ng Fosfomycin u\u1ED1ng ho\u1EB7c Nitrofurantoin cho Vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn ho\u1EB7c Nhi\u1EC5m khu\u1EA9n huy\u1EBFt do kh\xF4ng \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 trong nhu m\xF4 th\u1EADn v\xE0 m\xE1u!"
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 11 }
+    },
+    {
+      id: "adult_uti_group2_esbl",
+      site: "urinary",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "esbl",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Ti\u1EBFt ni\u1EC7u - Nh\xF3m 2 + Nguy c\u01A1 ESBL",
+      titleEn: "Adult UTI - Group 2 + ESBL Risk",
+      drugs: [
+        {
+          drugId: "ertapenem",
+          nameVi: "Ertapenem (l\u1EF1a ch\u1ECDn \u01B0u ti\xEAn)",
+          nameEn: "Ertapenem",
+          standardDoseVi: "1g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem (khi b\u1EC7nh n\u1EB7ng / s\u1ED1c)",
+          nameEn: "Meropenem",
+          standardDoseVi: "1g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin",
+          nameEn: "Amikacin",
+          standardDoseVi: "15 - 20 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "fosfomycin",
+          nameVi: "Fosfomycin IV (n\u1EBFu c\xF3)",
+          nameEn: "Fosfomycin IV",
+          standardDoseVi: "4g - 8g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 11 }
+    },
+    {
+      id: "adult_uti_group2_enterococcus",
+      site: "urinary",
+      population: "adult",
+      riskGroup: "group_2",
+      specificRisk: "enterococcus",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n Ti\u1EBFt ni\u1EC7u - Nh\xF3m 2 + Nguy c\u01A1 Enterococcus",
+      titleEn: "Adult UTI - Group 2 + Enterococcus Risk",
+      drugs: [
+        {
+          drugId: "amox_clav",
+          nameVi: "Amoxicillin/Clavulanate / Ampicillin",
+          nameEn: "Amox/Clav or Ampicillin",
+          standardDoseVi: "Ampicillin 2g IV q4-6h n\u1EBFu c\xF2n nh\u1EA1y",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "vancomycin",
+          nameVi: "Vancomycin (khi kh\xE1ng Ampicillin)",
+          nameEn: "Vancomycin",
+          standardDoseVi: "15 - 20 mg/kg IV q8-12h",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "teicoplanin",
+          nameVi: "Teicoplanin",
+          nameEn: "Teicoplanin",
+          standardDoseVi: "6 mg/kg q12h x 3 li\u1EC1u, sau \u0111\xF3 6 mg/kg/ng\xE0y",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "linezolid",
+          nameVi: "Linezolid (khi nghi ng\u1EDD VRE - \u0111\u1EC1 kh\xE1ng Vancomycin)",
+          nameEn: "Linezolid (if VRE)",
+          standardDoseVi: "600mg IV/PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 11 }
+    },
+    // ==========================================
+    // 5. ADULT - ASCITIC FLUID / PERITONEAL / DỊCH BÁNG (P.11-12)
+    // ==========================================
+    {
+      id: "adult_peritoneal_group1",
+      site: "peritoneal",
+      population: "adult",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n D\u1ECBch b\xE1ng (SBP) - Nh\xF3m 1",
+      titleEn: "Adult SBP / Ascitic Infection - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone (l\u1EF1a ch\u1ECDn h\xE0ng \u0111\u1EA7u)",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "2g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "cefotaxim",
+          nameVi: "Cefotaxime",
+          nameEn: "Cefotaxime",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 12 }
+    },
+    {
+      id: "adult_peritoneal_group2",
+      site: "peritoneal",
+      population: "adult",
+      riskGroup: "group_2",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n D\u1ECBch b\xE1ng (SBP) - Nh\xF3m 2 (Nguy c\u01A1 VK\u0110K / \u0110\xE3 d\xF9ng KS ph\xF2ng ng\u1EEBa)",
+      titleEn: "Adult SBP - Group 2 (High MDR Risk)",
+      drugs: [
+        {
+          drugId: "ertapenem",
+          nameVi: "Ertapenem",
+          nameEn: "Ertapenem",
+          standardDoseVi: "1g IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "4.5g IV m\u1ED7i 6 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem (khi suy gan c\u1EA5p tr\xEAn m\u1EA1n CLIF-SOFA \u2265 12 ho\u1EB7c s\u1ED1c)",
+          nameEn: "Meropenem",
+          standardDoseVi: "1g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 12 }
+    },
+    // ==========================================
+    // 6. PEDIATRIC - TRẺ EM (P.4-8)
+    // ==========================================
+    {
+      id: "peds_resp_group1",
+      site: "respiratory",
+      population: "pediatric",
+      riskGroup: "group_1",
+      titleVi: "Vi\xEAm ph\u1ED5i Tr\u1EBB em - Nh\xF3m 1 (\xCDt nguy c\u01A1 VK\u0110K)",
+      titleEn: "Pediatric Pneumonia - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "50 - 100 mg/kg/ng\xE0y IV chia 1 - 2 l\u1EA7n (t\u1ED1i \u0111a 2g/ng\xE0y)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "cefotaxim",
+          nameVi: "Cefotaxime",
+          nameEn: "Cefotaxime",
+          standardDoseVi: "100 - 150 mg/kg/ng\xE0y IV chia 3 - 4 l\u1EA7n",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amox_clav",
+          nameVi: "Amoxicillin/Clavulanate",
+          nameEn: "Amoxicillin/Clavulanate",
+          standardDoseVi: "80 - 90 mg/kg/ng\xE0y (t\xEDnh theo amox) PO chia 2 l\u1EA7n",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 4 }
+    },
+    {
+      id: "peds_sepsis_group1",
+      site: "sepsis",
+      population: "pediatric",
+      riskGroup: "group_1",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt Tr\u1EBB em - Nh\xF3m 1",
+      titleEn: "Pediatric Sepsis - Group 1",
+      drugs: [
+        {
+          drugId: "ceftriaxon",
+          nameVi: "Ceftriaxone",
+          nameEn: "Ceftriaxone",
+          standardDoseVi: "100 mg/kg/ng\xE0y IV 1 l\u1EA7n (t\u1ED1i \u0111a 2g)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin / Gentamicin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Amikacin / Gentamicin",
+          standardDoseVi: "Amikacin 15-20 mg/kg/ng\xE0y IV; Gentamicin 5-7.5 mg/kg/ng\xE0y",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRulesVi: [
+        "Tr\u1EBB \u2264 3 th\xE1ng: ph\u1ED1i h\u1EE3p th\xEAm Ampicillin (150-200 mg/kg/ng\xE0y) \u0111\u1EC3 ph\xF2ng Listeria monocytogenes.",
+        "Nghi ng\u1EDD vi\xEAm m\xE0ng n\xE3o m\u1EE7 ho\u1EB7c ph\u1EBF c\u1EA7u/t\u1EE5 c\u1EA7u: ph\u1ED1i h\u1EE3p th\xEAm Vancomycin (60 mg/kg/ng\xE0y chia 4 l\u1EA7n).",
+        "Ch\u01B0a lo\u1EA1i tr\u1EEB vi khu\u1EA9n k\u1EF5 kh\xED ho\u1EB7c s\u1ED1c \u0111\u1ED9c t\u1ED1 do Streptococcus: ph\u1ED1i h\u1EE3p Clindamycin (30-40 mg/kg/ng\xE0y chia 3-4 l\u1EA7n)."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 6 }
+    },
+    {
+      id: "peds_sepsis_group2",
+      site: "sepsis",
+      population: "pediatric",
+      riskGroup: "group_2",
+      titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt Tr\u1EBB em - Nh\xF3m 2 (Nguy c\u01A1 cao VK\u0110K)",
+      titleEn: "Pediatric Sepsis - Group 2 (High MDR Risk)",
+      drugs: [
+        {
+          drugId: "meropenem",
+          nameVi: "Meropenem",
+          nameEn: "Meropenem",
+          standardDoseVi: "60 - 120 mg/kg/ng\xE0y IV chia 3 l\u1EA7n (20-40 mg/kg q8h, t\u1ED1i \u0111a 2g q8h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "imipenem",
+          nameVi: "Imipenem/Cilastatin",
+          nameEn: "Imipenem/Cilastatin",
+          standardDoseVi: "60 - 100 mg/kg/ng\xE0y IV chia 4 l\u1EA7n (15-25 mg/kg q6h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "piperacillin_tazo",
+          nameVi: "Piperacillin/Tazobactam",
+          nameEn: "Piperacillin/Tazobactam",
+          standardDoseVi: "300 mg/kg/ng\xE0y IV chia 3 - 4 l\u1EA7n (100 mg/kg q8h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "vancomycin",
+          nameVi: "Vancomycin (khi c\xF3 nguy c\u01A1 MRSA / ph\u1EBF c\u1EA7u kh\xE1ng)",
+          nameEn: "Vancomycin",
+          standardDoseVi: "60 mg/kg/ng\xE0y chia 4 l\u1EA7n (15 mg/kg q6h)",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin (ph\u1ED1i h\u1EE3p)",
+          nameEn: "Amikacin",
+          standardDoseVi: "15 - 20 mg/kg/ng\xE0y IV chia 1 l\u1EA7n",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "colistin",
+          nameVi: "Colistin (khi nghi ng\u1EDD vi khu\u1EA9n si\xEAu kh\xE1ng)",
+          nameEn: "Colistin",
+          standardDoseVi: "75.000 - 150.000 UI/kg/ng\xE0y chia 3 l\u1EA7n",
+          hasDosingCalculator: true
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 6 }
+    }
+  ];
+  function findEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks = []) {
+    return EMPIRIC_REGIMENS.filter((reg) => {
+      if (reg.population !== population) return false;
+      if (reg.site !== site) return false;
+      if (reg.riskGroup !== riskGroup) return false;
+      if (site === "sepsis" && sepsisSource && reg.sepsisSource && reg.sepsisSource !== sepsisSource) {
+        return false;
+      }
+      if (riskGroup === "group_2") {
+        if (reg.specificRisk && !specificRisks.includes(reg.specificRisk)) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/stopAndSwitch.ts
+  var EVIDENCE_BASED_DURATIONS = [
+    {
+      conditionVi: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng (CAP)",
+      conditionEn: "Community-Acquired Pneumonia (CAP)",
+      minDays: 3,
+      maxDays: 5,
+      trialName: "PTC trial; BTS Guidelines",
+      noteVi: "Ng\u01B0ng sau 3 - 5 ng\xE0y n\u1EBFu \u0111\u1EA1t ti\xEAu ch\xED \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 h\u1EBFt s\u1ED1t \u2265 48 gi\u1EDD.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Vi\xEAm ph\u1ED5i th\u1EDF m\xE1y (VAP)",
+      conditionEn: "Ventilator-Associated Pneumonia (VAP)",
+      minDays: 7,
+      maxDays: 8,
+      trialName: "PRORATA; REGARD-VAP trials",
+      noteVi: "Li\u1EC7u tr\xECnh 7 ng\xE0y t\u01B0\u01A1ng \u0111\u01B0\u01A1ng hi\u1EC7u qu\u1EA3 v\xE0 gi\u1EA3m ch\u1ECDn l\u1ECDc ch\u1EE7ng kh\xE1ng thu\u1ED1c so v\u1EDBi 14 ng\xE0y.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Nhi\u1EC5m tr\xF9ng \u1ED5 b\u1EE5ng / \xC1p xe",
+      conditionEn: "Complicated Intra-abdominal Infection",
+      minDays: 4,
+      maxDays: 5,
+      trialName: "STOP-IT trial (NEJM 2015)",
+      noteVi: "4 ng\xE0y sau khi \u0111\xE3 ki\u1EC3m so\xE1t ngu\u1ED3n l\xE2y (d\u1EABn l\u01B0u \u1ED5 \xE1p xe ho\u1EB7c ph\u1EABu thu\u1EADt tri\u1EC7t \u0111\u1EC3).",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt do vi khu\u1EA9n Gram \xE2m",
+      conditionEn: "Gram-Negative Bacteremia",
+      minDays: 7,
+      maxDays: 7,
+      trialName: "Yahav 2019; Lee 2023 trials",
+      noteVi: "7 ng\xE0y an to\xE0n tr\xEAn b\u1EC7nh nh\xE2n \u0111\xE3 \u1ED5n \u0111\u1ECBnh huy\u1EBFt \u0111\u1ED9ng v\xE0 h\u1EBFt s\u1ED1t \u2265 48 gi\u1EDD.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Nhi\u1EC5m khu\u1EA9n \u0111\u01B0\u1EDDng ti\u1EBFt ni\u1EC7u c\xF3 s\u1ED1t / Vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn",
+      conditionEn: "Complicated UTI / Pyelonephritis",
+      minDays: 7,
+      maxDays: 7,
+      trialName: "IDSA Guidelines",
+      noteVi: "7 ng\xE0y n\u1EBFu d\xF9ng FQ ho\u1EB7c beta-lactam \u0111\u01B0\u1EDDng ti\xEAm v\xE0 b\u1EC7nh nh\xE2n \u0111\xE1p \u1EE9ng l\xE2m s\xE0ng t\u1ED1t.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt do T\u1EE5 c\u1EA7u v\xE0ng (S. aureus bacteremia)",
+      conditionEn: "Staphylococcus aureus Bacteremia (SAB)",
+      minDays: 14,
+      maxDays: 28,
+      trialName: "IDSA SAB Guidelines",
+      noteVi: "T\u1ED1i thi\u1EC3u 14 ng\xE0y cho ca kh\xF4ng bi\u1EBFn ch\u1EE9ng; 4-6 tu\u1EA7n n\u1EBFu c\xF3 bi\u1EBFn ch\u1EE9ng/vi\xEAm n\u1ED9i t\xE2m m\u1EA1c.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Vi\xEAm n\u1ED9i t\xE2m m\u1EA1c nhi\u1EC5m khu\u1EA9n (IE)",
+      conditionEn: "Infective Endocarditis",
+      minDays: 28,
+      maxDays: 56,
+      trialName: "AHA/ESC Endocarditis Guidelines",
+      noteVi: "4 - 8 tu\u1EA7n t\xF9y van t\u1EF1 nhi\xEAn hay van nh\xE2n t\u1EA1o v\xE0 ch\u1EE7ng vi khu\u1EA9n ph\xE2n l\u1EADp.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    },
+    {
+      conditionVi: "Vi\xEAm ph\u1ED5i do tr\u1EF1c khu\u1EA9n Gram \xE2m kh\xF4ng l\xEAn men (NFNG - P. aeruginosa, A. baumannii)",
+      conditionEn: "Pneumonia due to Non-fermenting Gram-negative (NFNG)",
+      minDays: 10,
+      maxDays: 14,
+      trialName: "BVBND Protocol",
+      noteVi: "10 - 14 ng\xE0y do nguy c\u01A1 t\xE1i ph\xE1t cao.",
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    }
+  ];
+  var STOP_ANTIBIOTIC_CHECKLIST = {
+    clinicalCriteria: [
+      {
+        id: "crit_afebrile",
+        textVi: "Th\xE2n nhi\u1EC7t \u2264 37.3\xB0C trong li\xEAn t\u1EE5c \u2265 24 - 48 gi\u1EDD (kh\xF4ng d\xF9ng h\u1EA1 s\u1ED1t)",
+        isMandatory: true
+      },
+      {
+        id: "crit_hemodynamic",
+        textVi: "Huy\u1EBFt \u0111\u1ED9ng \u1ED5n \u0111\u1ECBnh, kh\xF4ng d\xF9ng thu\u1ED1c v\u1EADn m\u1EA1ch (Noradrenalin, Adrenalin...)",
+        isMandatory: true
+      },
+      {
+        id: "crit_oxygenation",
+        textVi: "FiO\u2082 \u2264 40% HO\u1EB6C SpO\u2082 \u0111\u1EA1t m\u1EE5c ti\xEAu l\xE2m s\xE0ng khi th\u1EDF kh\xED tr\u1EDDi",
+        isMandatory: true
+      },
+      {
+        id: "crit_local_signs",
+        textVi: "C\xE1c tri\u1EC7u ch\u1EE9ng t\u1EA1i ch\u1ED7 (\u0111au, s\u01B0ng, \u0111\u1ECF, ch\u1EA3y m\u1EE7) gi\u1EA3m r\xF5 r\u1EC7t",
+        isMandatory: true
+      },
+      {
+        id: "crit_oral_intake",
+        textVi: "\u0102n u\u1ED1ng \u0111\u01B0\u1EE3c qua \u0111\u01B0\u1EDDng ti\xEAu h\xF3a, kh\xF4ng bu\u1ED3n n\xF4n/n\xF4n",
+        isMandatory: true
+      }
+    ],
+    labCriteria: [
+      {
+        id: "crit_pct",
+        textVi: "Procalcitonin (PCT) < 0.5 ng/mL HO\u1EB6C gi\u1EA3m \u2265 80% so v\u1EDBi gi\xE1 tr\u1ECB \u0111\u1EC9nh"
+      },
+      {
+        id: "crit_wbc",
+        textVi: "S\u1ED1 l\u01B0\u1EE3ng b\u1EA1ch c\u1EA7u (WBC) v\u1EC1 ng\u01B0\u1EE1ng b\xECnh th\u01B0\u1EDDng (4.000 - 10.000/mm\xB3)"
+      },
+      {
+        id: "crit_crp",
+        textVi: "CRP gi\u1EA3m > 50% so v\u1EDBi \u0111\u1EC9nh HO\u1EB6C < 35 mg/L"
+      }
+    ],
+    additionalFavorable: [
+      { id: "crit_lactate", textVi: "Lactate m\xE1u b\xECnh th\u01B0\u1EDDng (< 2.0 mmol/L)" },
+      { id: "crit_neg_blood_culture", textVi: "C\u1EA5y m\xE1u ki\u1EC3m tra \xE2m t\xEDnh sau \u0111i\u1EC1u tr\u1ECB" }
+    ]
+  };
+  var IV_TO_PO_CONTRAINDICATIONS = [
+    "Vi\xEAm n\u1ED9i t\xE2m m\u1EA1c nhi\u1EC5m khu\u1EA9n",
+    "Vi\xEAm m\xE0ng n\xE3o m\u1EE7 / Nhi\u1EC5m tr\xF9ng h\u1EC7 th\u1EA7n kinh trung \u01B0\u01A1ng",
+    "Vi\xEAm trung th\u1EA5t",
+    "Nhi\u1EC5m tr\xF9ng ho\u1EA1i t\u1EED m\xF4 m\u1EC1m (vi\xEAm c\xE2n m\u1EA1c ho\u1EA1i t\u1EED)",
+    "Vi\xEAm x\u01B0\u01A1ng t\u1EE7y c\u1EA5p / m\u1EA1n t\xEDnh",
+    "Nhi\u1EC5m tr\xF9ng kh\u1EDBp ch\u01B0a d\u1EABn l\u01B0u",
+    "\u1ED4 \xE1p xe s\xE2u ch\u01B0a \u0111\u01B0\u1EE3c d\u1EABn l\u01B0u tri\u1EC7t \u0111\u1EC3",
+    "Nhi\u1EC5m khu\u1EA9n li\xEAn quan \u0111\u1EBFn c\xE1c thi\u1EBFt b\u1ECB c\u1EA5y gh\xE9p nh\xE2n t\u1EA1o"
+  ];
+  var IV_TO_PO_DRUG_PAIRS = [
+    // Nhóm 1: F > 90%, tỷ lệ 1:1
+    {
+      ivName: "Levofloxacin IV",
+      poName: "Levofloxacin vi\xEAn",
+      poDoseVi: "500mg m\u1ED7i 12 gi\u1EDD HO\u1EB6C 750mg m\u1ED7i 24 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "> 99% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    {
+      ivName: "Moxifloxacin IV",
+      poName: "Moxifloxacin vi\xEAn",
+      poDoseVi: "400mg m\u1ED7i 24 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "> 90% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    {
+      ivName: "Linezolid IV",
+      poName: "Linezolid vi\xEAn",
+      poDoseVi: "600mg m\u1ED7i 12 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "100% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    {
+      ivName: "Fluconazole IV",
+      poName: "Fluconazole vi\xEAn/h\u1ED7n d\u1ECBch",
+      poDoseVi: "200 - 400mg m\u1ED7i 24 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "> 90% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    {
+      ivName: "Metronidazole IV",
+      poName: "Metronidazole vi\xEAn",
+      poDoseVi: "500mg m\u1ED7i 8 - 12 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "> 99% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    {
+      ivName: "Co-trimoxazole (TMP-SMX) IV",
+      poName: "Co-trimoxazole vi\xEAn",
+      poDoseVi: "2 vi\xEAn 480mg (ho\u1EB7c 1 vi\xEAn Forte 960mg) m\u1ED7i 12 gi\u1EDD",
+      group: 1,
+      bioavailabilityVi: "> 90% (t\u1EF7 l\u1EC7 li\u1EC1u IV:PO = 1:1)"
+    },
+    // Nhóm 2: F 70-80%, bù bằng tăng liều PO
+    {
+      ivName: "Ciprofloxacin 400mg IV q12h",
+      poName: "Ciprofloxacin vi\xEAn",
+      poDoseVi: "500mg - 750mg m\u1ED7i 12 gi\u1EDD",
+      group: 2,
+      bioavailabilityVi: "70 - 80% (b\xF9 tr\u1EEB b\u1EB1ng t\u0103ng li\u1EC1u vi\xEAn PO)"
+    },
+    {
+      ivName: "Voriconazole 200mg IV q12h",
+      poName: "Voriconazole vi\xEAn",
+      poDoseVi: "200mg m\u1ED7i 12 gi\u1EDD",
+      group: 2,
+      bioavailabilityVi: "80%"
+    },
+    // Nhóm 3: F > 90% nhưng liều PO tối đa thấp hơn
+    {
+      ivName: "Clindamycin 600mg IV q8h",
+      poName: "Clindamycin vi\xEAn",
+      poDoseVi: "300mg - 450mg m\u1ED7i 6 - 8 gi\u1EDD",
+      group: 3,
+      bioavailabilityVi: "> 90% (li\u1EC1u PO th\u1EA5p h\u01A1n do dung n\u1EA1p ti\xEAu h\xF3a)"
+    },
+    {
+      ivName: "Ampicillin/Sulbactam ho\u1EB7c Amoxicillin IV",
+      poName: "Amoxicillin/Clavulanate ho\u1EB7c Amoxicillin vi\xEAn",
+      poDoseVi: "Amox/Clav 875/125mg ho\u1EB7c 1000mg m\u1ED7i 12 gi\u1EDD",
+      group: 3,
+      bioavailabilityVi: "75 - 90%"
+    },
+    // Nhóm 4: F thấp hơn và liều PO thấp hơn
+    {
+      ivName: "Cefuroxime 750mg - 1.5g IV q8h",
+      poName: "Cefuroxime axetil vi\xEAn",
+      poDoseVi: "500mg m\u1ED7i 12 gi\u1EDD",
+      group: 4,
+      bioavailabilityVi: "50 - 60%"
+    }
+  ];
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/mdrPathways.ts
+  var MDR_PATHWAYS = {
+    cre: {
+      category: "cre",
+      titleVi: "Tr\u1EF1c khu\u1EA9n Gram \xE2m \u0111\u01B0\u1EDDng ru\u1ED9t \u0111\u1EC1 kh\xE1ng Carbapenem (CRE)",
+      titleEn: "Carbapenem-Resistant Enterobacterales (CRE)",
+      definitionVi: "Enterobacterales (E. coli, K. pneumoniae, Enterobacter...) \u0111\u1EC1 kh\xE1ng \xEDt nh\u1EA5t 1 lo\u1EA1i Carbapenem (Ertapenem, Meropenem, Imipenem) ho\u1EB7c mang gen sinh enzyme Carbapenemase.",
+      firstLineDrugs: [
+        {
+          drugId: "ceftazidim_avibactam",
+          nameVi: "Ceftazidime/Avibactam (CAZ-AVI)",
+          nameEn: "Ceftazidime/Avibactam",
+          standardDoseVi: "2.5g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true,
+          infusionNoteVi: "Pha v\u1EDBi NaCl 0.9%, truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD \u0111\u1EC3 t\u1ED1i \u01B0u h\xF3a T>MIC."
+        },
+        {
+          nameVi: "Meropenem/Vaborbactam",
+          nameEn: "Meropenem/Vaborbactam",
+          standardDoseVi: "4g (2g/2g) IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false,
+          infusionNoteVi: "R\u1EA5t hi\u1EC7u qu\u1EA3 cho ch\u1EE7ng sinh men KPC (kh\xF4ng t\xE1c d\u1EE5ng tr\xEAn OXA-48 ho\u1EB7c MBL)."
+        },
+        {
+          nameVi: "Cefiderocol",
+          nameEn: "Cefiderocol",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false,
+          infusionNoteVi: "Kh\xE1ng sinh Siderophore hi\u1EC7u qu\u1EA3 tr\xEAn c\u1EA3 KPC, OXA-48 v\xE0 MBL (NDM)."
+        }
+      ],
+      combinationRegimens: [
+        [
+          {
+            drugId: "ceftazidim_avibactam",
+            nameVi: "Ceftazidime/Avibactam (2.5g q8h)",
+            nameEn: "Ceftazidime/Avibactam",
+            hasDosingCalculator: true
+          },
+          {
+            drugId: "aztreonam",
+            nameVi: "Aztreonam (2g q8h)",
+            nameEn: "Aztreonam",
+            hasDosingCalculator: true,
+            infusionNoteVi: "B\u1EAET BU\u1ED8C TRUY\u1EC0N \u0110\u1ED2NG TH\u1EDCI QUA Y-SITE: M\u1ED7i thu\u1ED1c ho\xE0n nguy\xEAn ri\xEAng, truy\u1EC1n \u0111\u1ED3ng th\u1EDDi k\xE9o d\xE0i 3 gi\u1EDD. Ch\u1EC9 \u0111\u1ECBnh t\u1ED1i th\u01B0\u1EE3ng cho ch\u1EE7ng sinh men Metallo-beta-lactamase (MBL/NDM)."
+          }
+        ]
+      ],
+      alternativeDrugs: [
+        {
+          drugId: "tigecyclin",
+          nameVi: "Tigecycline li\u1EC1u cao",
+          nameEn: "High-dose Tigecycline",
+          standardDoseVi: "Li\u1EC1u n\u1EA1p 200mg, sau \u0111\xF3 duy tr\xEC 100mg IV m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true,
+          infusionNoteVi: "Ch\u1EC9 \u0111\u1ECBnh cho nhi\u1EC5m tr\xF9ng \u1ED5 b\u1EE5ng/da m\xF4 m\u1EC1m (KH\xD4NG d\xF9ng cho nhi\u1EC5m tr\xF9ng huy\u1EBFt \u0111\u01A1n \u0111\u1ED9c ho\u1EB7c nhi\u1EC5m tr\xF9ng ti\u1EC3u do n\u1ED3ng \u0111\u1ED9 th\u1EA5p)."
+        },
+        {
+          drugId: "colistin",
+          nameVi: "Colistin (CMS)",
+          nameEn: "Colistin (CMS)",
+          standardDoseVi: "Li\u1EC1u n\u1EA1p 300mg CBA (9M UI), duy tr\xEC 150-180mg CBA q12h",
+          hasDosingCalculator: true,
+          infusionNoteVi: "L\u1EF1a ch\u1ECDn cu\u1ED1i c\xF9ng do nguy c\u01A1 \u0111\u1ED9c t\xEDnh cao tr\xEAn th\u1EADn."
+        }
+      ],
+      clinicalNotesVi: [
+        "Nhi\u1EC5m tr\xF9ng ti\u1EC3u d\u01B0\u1EDBi kh\xF4ng ph\u1EE9c t\u1EA1p: \u01B0u ti\xEAn Nitrofurantoin, Fosfomycin u\u1ED1ng, TMP-SMX ho\u1EB7c Aminoglycoside tr\u01B0\u1EDBc khi d\xF9ng thu\u1ED1c d\u1EF1 tr\u1EEF.",
+        "N\u1EBFu ch\u1EC9 kh\xE1ng Ertapenem m\xE0 c\xF2n nh\u1EA1y Meropenem/Imipenem: d\xF9ng Meropenem li\u1EC1u cao (2g q8h) ho\u1EB7c Imipenem (1g q8h) truy\u1EC1n k\xE9o d\xE0i \u2265 3 - 4 gi\u1EDD.",
+        "Ph\xE2n t\u1EA7ng theo ki\u1EC3u gen kh\xE1ng thu\u1ED1c:",
+        "  \u2022 KPC: CAZ-AVI, Meropenem-vaborbactam, Imipenem-relebactam, Cefiderocol, Tigecycline.",
+        "  \u2022 OXA-48: CAZ-AVI, Cefiderocol, Tigecycline (MEM-VAB & IMP-REL KH\xD4NG c\xF3 t\xE1c d\u1EE5ng).",
+        "  \u2022 MBL (NDM, VIM, IMP): CAZ-AVI + Aztreonam truy\u1EC1n qua Y-site HO\u1EB6C Cefiderocol."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 14 }
+    },
+    dtr_pseudo: {
+      category: "dtr_pseudo",
+      titleVi: "Pseudomonas aeruginosa kh\xE1ng thu\u1ED1c kh\xF3 tr\u1ECB (DTR - P. aeruginosa)",
+      titleEn: "Difficult-to-Treat Resistant Pseudomonas aeruginosa (DTR-PA)",
+      definitionVi: "P. aeruginosa kh\xF4ng nh\u1EA1y c\u1EA3m v\u1EDBi t\u1EA5t c\u1EA3 c\xE1c kh\xE1ng sinh: Piperacillin-tazobactam, Ceftazidime, Cefepime, Aztreonam, Meropenem, Imipenem-cilastatin, Ciprofloxacin v\xE0 Levofloxacin (theo IDSA 2024).",
+      firstLineDrugs: [
+        {
+          drugId: "ceftolozan_tazo",
+          nameVi: "Ceftolozane/Tazobactam (TOL-TAZ) - \u01AFu ti\xEAn h\xE0ng \u0111\u1EA7u",
+          nameEn: "Ceftolozane/Tazobactam",
+          standardDoseVi: "1.5g - 3g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i",
+          hasDosingCalculator: true
+        },
+        {
+          drugId: "ceftazidim_avibactam",
+          nameVi: "Ceftazidime/Avibactam (CAZ-AVI)",
+          nameEn: "Ceftazidime/Avibactam",
+          standardDoseVi: "2.5g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n k\xE9o d\xE0i 3 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRegimens: [
+        [
+          {
+            drugId: "ceftolozan_tazo",
+            nameVi: "Ceftolozane/Tazobactam ho\u1EB7c CAZ-AVI",
+            nameEn: "Ceftolozane/Tazobactam or CAZ-AVI",
+            hasDosingCalculator: true
+          },
+          {
+            drugId: "tobramycin",
+            nameVi: "Tobramycin ho\u1EB7c Amikacin",
+            nameEn: "Tobramycin or Amikacin",
+            hasDosingCalculator: true,
+            infusionNoteVi: "Ch\u1EC9 ph\u1ED1i h\u1EE3p th\xEAm Aminoglycoside khi c\xF3 Nhi\u1EC5m khu\u1EA9n huy\u1EBFt n\u1EB7ng / S\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c Gi\u1EA3m b\u1EA1ch c\u1EA7u h\u1EA1t."
+          }
+        ]
+      ],
+      alternativeDrugs: [
+        {
+          nameVi: "Cefiderocol",
+          nameEn: "Cefiderocol",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false
+        },
+        {
+          nameVi: "Imipenem/Cilastatin/Relebactam",
+          nameEn: "Imipenem/Cilastatin/Relebactam",
+          standardDoseVi: "1.25g IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n 30 ph\xFAt",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "colistin",
+          nameVi: "Colistin / Polymyxin B",
+          nameEn: "Colistin / Polymyxin B",
+          standardDoseVi: "L\u1EF1a ch\u1ECDn c\u1EE9u c\xE1nh cu\u1ED1i c\xF9ng n\u1EBFu \u0111\u1EC1 kh\xE1ng c\xE1c nh\xF3m tr\xEAn",
+          hasDosingCalculator: true
+        }
+      ],
+      clinicalNotesVi: [
+        "\u01AFu ti\xEAn d\xF9ng \u0111\u01A1n tr\u1ECB li\u1EC7u (Ceftolozane-tazobactam ho\u1EB7c CAZ-AVI). Vi\u1EC7c ph\u1ED1i h\u1EE3p th\u01B0\u1EDDng quy kh\xF4ng c\xF2n \u0111\u01B0\u1EE3c khuy\u1EBFn c\xE1o do l\xE0m t\u0103ng ph\u1EA3n \u1EE9ng c\xF3 h\u1EA1i.",
+        "N\u1EBFu \u0111\xE3 d\xF9ng 1 trong 2 lo\u1EA1i (Ceftolozane-tazo ho\u1EB7c CAZ-AVI) m\xE0 kh\xF4ng \u0111\xE1p \u1EE9ng th\xEC kh\xF4ng n\xEAn chuy\u1EC3n sang lo\u1EA1i c\xF2n l\u1EA1i.",
+        "Kh\xE1ng sinh \u0111\u01B0\u1EDDng kh\xED dung trong nhi\u1EC5m khu\u1EA9n h\xF4 h\u1EA5p do DTR-P. aeruginosa kh\xF4ng \u0111\u01B0\u1EE3c khuy\u1EBFn c\xE1o th\u01B0\u1EDDng quy do c\xF2n thi\u1EBFu d\u1EEF li\u1EC7u l\xE2m s\xE0ng."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 16 }
+    },
+    crab: {
+      category: "crab",
+      titleVi: "Acinetobacter baumannii \u0111a kh\xE1ng (CRAB)",
+      titleEn: "Carbapenem-Resistant Acinetobacter baumannii (CRAB)",
+      definitionVi: "A. baumannii kh\xF4ng nh\u1EA1y c\u1EA3m v\u1EDBi \xEDt nh\u1EA5t 1 kh\xE1ng sinh trong m\u1ED9t nh\xF3m v\xE0 tr\xEAn 3 nh\xF3m kh\xE1ng sinh kh\xE1c nhau (Beta-lactam/BLI, Carbapenem, FQ, Aminoglycoside, TMP-SMX).",
+      firstLineDrugs: [
+        {
+          nameVi: "Sulbactam/Durlobactam (SUL-DUR) - \u01AFu ti\xEAn m\u1EDBi nh\u1EA5t",
+          nameEn: "Sulbactam/Durlobactam",
+          standardDoseVi: "2g (1g sulbactam/1g durlobactam) IV m\u1ED7i 6 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false,
+          infusionNoteVi: "K\u1EBFt h\u1EE3p c\xF9ng Meropenem ho\u1EB7c Imipenem."
+        },
+        {
+          drugId: "ampicillin_sulbactam",
+          nameVi: "Ampicillin/Sulbactam li\u1EC1u cao",
+          nameEn: "High-dose Ampicillin/Sulbactam",
+          standardDoseVi: "27g/ng\xE0y (Ampicillin 18g + Sulbactam 9g) chia truy\u1EC1n t\u0129nh m\u1EA1ch",
+          hasDosingCalculator: true,
+          infusionNoteVi: "Sulbactam c\xF3 ho\u1EA1t t\xEDnh di\u1EC7t A. baumannii qua g\u1EAFn PBP1 v\xE0 PBP3."
+        }
+      ],
+      combinationRegimens: [
+        [
+          {
+            nameVi: "Sulbactam/Durlobactam (2g q6h)",
+            nameEn: "Sulbactam/Durlobactam",
+            hasDosingCalculator: false
+          },
+          {
+            drugId: "meropenem",
+            nameVi: "Meropenem (1g q8h)",
+            nameEn: "Meropenem",
+            hasDosingCalculator: true
+          }
+        ],
+        [
+          {
+            drugId: "ampicillin_sulbactam",
+            nameVi: "Ampicillin/Sulbactam li\u1EC1u cao (27g/ng\xE0y)",
+            nameEn: "High-dose Amp/Sulbactam",
+            hasDosingCalculator: true
+          },
+          {
+            nameVi: "Polymyxin B (ho\u1EB7c Colistin)",
+            nameEn: "Polymyxin B or Colistin",
+            standardDoseVi: "Polymyxin B li\u1EC1u n\u1EA1p 2 - 2.5 mg/kg, sau \u0111\xF3 1.25 - 1.5 mg/kg q12h",
+            hasDosingCalculator: false
+          },
+          {
+            nameVi: "Minocycline (ho\u1EB7c Tigecycline)",
+            nameEn: "Minocycline or Tigecycline",
+            standardDoseVi: "Minocycline 200mg IV/PO q12h; Tigecycline n\u1EA1p 200mg, duy tr\xEC 100mg q12h",
+            hasDosingCalculator: false
+          }
+        ]
+      ],
+      alternativeDrugs: [
+        {
+          nameVi: "Cefiderocol",
+          nameEn: "Cefiderocol",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "amikacin",
+          nameVi: "Amikacin",
+          nameEn: "Amikacin",
+          standardDoseVi: "15 - 20 mg/kg IV m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      contraindicationsVi: [
+        "C\u1EA2NH B\xC1O QUAN TR\u1ECCNG: Colistin ph\u1ED1i h\u1EE3p Meropenem li\u1EC1u cao truy\u1EC1n k\xE9o d\xE0i > 3 gi\u1EDD KH\xD4NG C\xD3 HI\u1EC6U QU\u1EA2 tr\xEAn CRAB (\u0111\xE3 c\xF3 b\u1EB1ng ch\u1EE9ng nghi\xEAn c\u1EE9u l\xE2m s\xE0ng BVBND).",
+        "N\u1EBFu nhi\u1EC5m khu\u1EA9n ti\u1EBFt ni\u1EC7u: kh\xF4ng d\xF9ng Polymyxin B, Minocycline v\xE0 Tigecycline \u0111\u01A1n tr\u1ECB li\u1EC7u do kh\xF4ng \u0111\u1EA1t n\u1ED3ng \u0111\u1ED9 trong n\u01B0\u1EDBc ti\u1EC3u."
+      ],
+      clinicalNotesVi: [
+        "Nhi\u1EC5m tr\xF9ng nh\u1EB9: c\xF3 th\u1EC3 \u0111\u01A1n tr\u1ECB c\xE1c thu\u1ED1c c\xF2n nh\u1EA1y c\u1EA3m, \u01B0u ti\xEAn Ampicillin-sulbactam ho\u1EB7c Cefoperazone-sulbactam li\u1EC1u cao.",
+        "Nhi\u1EC5m tr\xF9ng trung b\xECnh - n\u1EB7ng: b\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p 2 - 3 kh\xE1ng sinh.",
+        "Vi\xEAm ph\u1ED5i n\u1EB7ng: c\xE2n nh\u1EAFc ph\u1ED1i h\u1EE3p Colistin kh\xED dung (75-150mg CBA q12h), l\u01B0u \xFD nguy c\u01A1 co th\u1EAFt ph\u1EBF qu\u1EA3n."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 18 }
+    },
+    s_maltophilia: {
+      category: "s_maltophilia",
+      titleVi: "Stenotrophomonas maltophilia",
+      titleEn: "Stenotrophomonas maltophilia Infection",
+      definitionVi: "Tr\u1EF1c khu\u1EA9n Gram \xE2m kh\xF4ng l\xEAn men \u0111\u01B0\u1EDDng, c\xF3 \u0111\u1EC1 kh\xE1ng t\u1EF1 nhi\xEAn v\u1EDBi h\u1EA7u h\u1EBFt c\xE1c Beta-lactam (do men L1 metallo-beta-lactamase v\xE0 L2 cephalosporinase) v\xE0 Carbapenem.",
+      firstLineDrugs: [
+        {
+          drugId: "tmp_smx",
+          nameVi: "Co-trimoxazole (TMP-SMX) - Thu\u1ED1c \u0111\u1EA7u tay s\u1ED1 1",
+          nameEn: "Co-trimoxazole (TMP-SMX)",
+          standardDoseVi: "15 mg/kg/ng\xE0y (t\xEDnh theo TMP) chia 3 - 4 l\u1EA7n IV ho\u1EB7c PO",
+          hasDosingCalculator: true
+        },
+        {
+          nameVi: "Minocycline",
+          nameEn: "Minocycline",
+          standardDoseVi: "200 mg IV ho\u1EB7c PO m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: false
+        },
+        {
+          drugId: "levofloxacin",
+          nameVi: "Levofloxacin",
+          nameEn: "Levofloxacin",
+          standardDoseVi: "750 mg IV ho\u1EB7c PO m\u1ED7i 24 gi\u1EDD",
+          hasDosingCalculator: true
+        }
+      ],
+      combinationRegimens: [
+        [
+          {
+            drugId: "tmp_smx",
+            nameVi: "Co-trimoxazole (TMP-SMX)",
+            nameEn: "Co-trimoxazole",
+            hasDosingCalculator: true
+          },
+          {
+            nameVi: "Minocycline ho\u1EB7c Levofloxacin ho\u1EB7c Cefiderocol",
+            nameEn: "Minocycline or Levofloxacin or Cefiderocol",
+            hasDosingCalculator: false
+          }
+        ],
+        [
+          {
+            drugId: "ceftazidim_avibactam",
+            nameVi: "Ceftazidime/Avibactam",
+            nameEn: "Ceftazidime/Avibactam",
+            hasDosingCalculator: true
+          },
+          {
+            drugId: "aztreonam",
+            nameVi: "Aztreonam",
+            nameEn: "Aztreonam",
+            hasDosingCalculator: true,
+            infusionNoteVi: "Ph\u1ED1i h\u1EE3p c\u1EE9u c\xE1nh khi \u0111\u1EC1 kh\xE1ng to\xE0n b\u1ED9 c\xE1c thu\u1ED1c tr\xEAn."
+          }
+        ]
+      ],
+      alternativeDrugs: [
+        {
+          drugId: "tigecyclin",
+          nameVi: "Tigecycline",
+          nameEn: "Tigecycline",
+          standardDoseVi: "N\u1EA1p 200mg, sau \u0111\xF3 100mg IV m\u1ED7i 12 gi\u1EDD",
+          hasDosingCalculator: true
+        },
+        {
+          nameVi: "Cefiderocol",
+          nameEn: "Cefiderocol",
+          standardDoseVi: "2g IV m\u1ED7i 8 gi\u1EDD truy\u1EC1n 3 gi\u1EDD",
+          hasDosingCalculator: false
+        }
+      ],
+      contraindicationsVi: [
+        "CH\u1ED0NG CH\u1EC8 \u0110\u1ECANH: Tuy\u1EC7t \u0111\u1ED1i KH\xD4NG d\xF9ng Ceftazidime \u0111\u01A1n \u0111\u1ED9c \u0111\u1EC3 \u0111i\u1EC1u tr\u1ECB S. maltophilia v\xEC vi khu\u1EA9n c\xF3 c\u01A1 ch\u1EBF \u0111\u1EC1 kh\xE1ng t\u1EF1 nhi\xEAn sinh enzym L1 v\xE0 L2 ph\xE2n h\u1EE7y ceftazidime."
+      ],
+      clinicalNotesVi: [
+        "Nhi\u1EC5m tr\xF9ng nh\u1EB9 tr\xEAn ng\u01B0\u1EDDi mi\u1EC5n d\u1ECBch b\xECnh th\u01B0\u1EDDng: ch\u1ECDn \u0111\u01A1n tr\u1ECB li\u1EC7u TMP-SMX ho\u1EB7c Minocycline ho\u1EB7c Levofloxacin.",
+        "Nhi\u1EC5m tr\xF9ng trung b\xECnh - n\u1EB7ng ho\u1EB7c suy gi\u1EA3m mi\u1EC5n d\u1ECBch: b\u1EAFt bu\u1ED9c \u0111a tr\u1ECB li\u1EC7u ph\u1ED1i h\u1EE3p 2 thu\u1ED1c."
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 21 }
+    }
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/antibiogram.ts
+  var BVBND_ANTIBIOGRAMS = [
+    {
+      site: "urinary",
+      population: "adult",
+      period: "01/2024 - 12/2024",
+      sampleTotal: 355,
+      organisms: [
+        {
+          organismName: "Escherichia coli",
+          sampleCount: 164,
+          pctOfIsolates: 46.2,
+          sensitivities: [
+            { antibioticName: "Meropenem", sensitivityPct: 98.9 },
+            { antibioticName: "Imipenem", sensitivityPct: 98.3 },
+            { antibioticName: "Ertapenem", sensitivityPct: 97.3 },
+            { antibioticName: "Amikacin", sensitivityPct: 95.1 },
+            { antibioticName: "Nitrofurantoin", sensitivityPct: 92.8 },
+            { antibioticName: "Fosfomycin", sensitivityPct: 91.7 },
+            { antibioticName: "Piperacillin/tazobactam", sensitivityPct: 87.5 },
+            { antibioticName: "Gentamicin", sensitivityPct: 65.8 },
+            { antibioticName: "Cefepime", sensitivityPct: 63.9 },
+            { antibioticName: "Amoxicillin/clavulanic acid", sensitivityPct: 46.6 },
+            { antibioticName: "Ceftriaxone", sensitivityPct: 35.8 },
+            { antibioticName: "TMP-SMX (Co-trimoxazole)", sensitivityPct: 35.4 },
+            { antibioticName: "Cefotaxime", sensitivityPct: 33.6 },
+            { antibioticName: "Levofloxacin", sensitivityPct: 23.1 }
+          ],
+          notableResistance: "T\u1EF7 l\u1EC7 sinh ESBL cao (> 64%). Levofloxacin nh\u1EA1y r\u1EA5t th\u1EA5p (23.1%)."
+        },
+        {
+          organismName: "Klebsiella pneumoniae",
+          sampleCount: 33,
+          pctOfIsolates: 9.3,
+          sensitivities: [
+            { antibioticName: "Fosfomycin", sensitivityPct: 100 },
+            { antibioticName: "Colistin", sensitivityPct: 92 },
+            { antibioticName: "Gentamicin", sensitivityPct: 69.2 },
+            { antibioticName: "Amikacin", sensitivityPct: 66.7 },
+            { antibioticName: "Ertapenem", sensitivityPct: 40 },
+            { antibioticName: "Meropenem", sensitivityPct: 38.5 },
+            { antibioticName: "Cefepime", sensitivityPct: 35.7 },
+            { antibioticName: "Imipenem", sensitivityPct: 33.3 },
+            { antibioticName: "Amoxicillin/clavulanic acid", sensitivityPct: 27.3 },
+            { antibioticName: "Ceftriaxone", sensitivityPct: 27.3 },
+            { antibioticName: "Piperacillin/tazobactam", sensitivityPct: 23.1 },
+            { antibioticName: "Levofloxacin", sensitivityPct: 16.7 }
+          ],
+          notableResistance: "T\u1EF7 l\u1EC7 \u0111\u1EC1 kh\xE1ng Carbapenem r\u1EA5t cao (CRE > 60%). C\u1EA7n c\u1EA3nh gi\xE1c ki\u1EC3u gen KPC/NDM."
+        },
+        {
+          organismName: "Enterococcus spp.",
+          sampleCount: 43,
+          pctOfIsolates: 12.1,
+          sensitivities: [
+            { antibioticName: "Linezolid", sensitivityPct: 88.5 },
+            { antibioticName: "Vancomycin", sensitivityPct: 76.7 },
+            { antibioticName: "Teicoplanin", sensitivityPct: 67.9 },
+            { antibioticName: "Nitrofurantoin", sensitivityPct: 46.7 },
+            { antibioticName: "Ampicillin", sensitivityPct: 37.9 },
+            { antibioticName: "Ciprofloxacin", sensitivityPct: 30 }
+          ],
+          notableResistance: "T\u1EF7 l\u1EC7 kh\xE1ng Vancomycin (VRE) l\xEAn t\u1EDBi 23.3%. Linezolid l\xE0 thu\u1ED1c l\u1EF1a ch\u1ECDn c\xF2n nh\u1EA1y cao."
+        },
+        {
+          organismName: "Candida spp.",
+          sampleCount: 22,
+          pctOfIsolates: 6.2,
+          sensitivities: [
+            { antibioticName: "Echinocandins (Caspofungin/Micafungin)", sensitivityPct: 100 },
+            { antibioticName: "Voriconazole", sensitivityPct: 50 },
+            { antibioticName: "Fluconazole", sensitivityPct: 40 }
+          ],
+          notableResistance: "T\u1EF7 l\u1EC7 kh\xE1ng Fluconazole t\u1EDBi 60%. \u01AFu ti\xEAn Echinocandin n\u1EBFu nhi\u1EC5m n\u1EA5m x\xE2m l\u1EA5n."
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 10 }
+    },
+    {
+      site: "respiratory",
+      population: "adult",
+      period: "01/2024 - 12/2024",
+      sampleTotal: 412,
+      organisms: [
+        {
+          organismName: "Acinetobacter baumannii",
+          sampleCount: 145,
+          pctOfIsolates: 35.2,
+          sensitivities: [
+            { antibioticName: "Colistin", sensitivityPct: 89.5 },
+            { antibioticName: "Tigecycline", sensitivityPct: 62 },
+            { antibioticName: "Amikacin", sensitivityPct: 22.4 },
+            { antibioticName: "Meropenem", sensitivityPct: 11.2 },
+            { antibioticName: "Imipenem", sensitivityPct: 9.8 }
+          ],
+          notableResistance: "CRAB chi\u1EBFm \u0111a s\u1ED1 (> 88%). \u0110\u1EC1 kh\xE1ng g\u1EA7n nh\u01B0 ho\xE0n to\xE0n v\u1EDBi Carbapenem kinh \u0111i\u1EC3n."
+        },
+        {
+          organismName: "Pseudomonas aeruginosa",
+          sampleCount: 98,
+          pctOfIsolates: 23.8,
+          sensitivities: [
+            { antibioticName: "Colistin", sensitivityPct: 94 },
+            { antibioticName: "Amikacin", sensitivityPct: 71.4 },
+            { antibioticName: "Ceftazidime", sensitivityPct: 52.3 },
+            { antibioticName: "Piperacillin/tazobactam", sensitivityPct: 48.7 },
+            { antibioticName: "Meropenem", sensitivityPct: 44.1 },
+            { antibioticName: "Ciprofloxacin", sensitivityPct: 38.6 }
+          ],
+          notableResistance: "Nhi\u1EC1u ch\u1EE7ng DTR (kh\xE1ng thu\u1ED1c kh\xF3 tr\u1ECB). C\u1EA7n x\xE9t nghi\u1EC7m Ceftolozane-tazobactam."
+        },
+        {
+          organismName: "Klebsiella pneumoniae",
+          sampleCount: 86,
+          pctOfIsolates: 20.9,
+          sensitivities: [
+            { antibioticName: "Colistin", sensitivityPct: 91 },
+            { antibioticName: "Amikacin", sensitivityPct: 63.5 },
+            { antibioticName: "Meropenem", sensitivityPct: 41.2 },
+            { antibioticName: "Ceftazidime", sensitivityPct: 24.1 }
+          ],
+          notableResistance: "T\u1EF7 l\u1EC7 CRE cao tr\xEAn b\u1EC7nh nh\xE2n vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n v\xE0 th\u1EDF m\xE1y ICU."
+        }
+      ],
+      source: { doc: "BVBND_HDSDKS", page: 8 }
+    }
+  ];
+  function getAntibiogramForSite(site, population) {
+    return BVBND_ANTIBIOGRAMS.find((ab) => ab.site === site && ab.population === population);
+  }
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/engine.ts
+  function classifyRisk(selectedGeneralRiskIds, severity, specificRisks = []) {
+    const generalRiskCount = selectedGeneralRiskIds.length;
+    const isHighSeverity = severity.isHighSeverity;
+    let group;
+    const rationalesVi = [];
+    const rationalesEn = [];
+    if (generalRiskCount === 0) {
+      group = "group_1";
+      rationalesVi.push("B\u1EC7nh nh\xE2n KH\xD4NG c\xF3 y\u1EBFu t\u1ED1 nguy c\u01A1 chung nhi\u1EC5m vi khu\u1EA9n \u0111a kh\xE1ng (0/8 y\u1EBFu t\u1ED1).");
+      rationalesEn.push("No general risk factors for multidrug-resistant pathogens (0/8 factors).");
+    } else if (generalRiskCount === 1) {
+      if (isHighSeverity) {
+        group = "group_2";
+        rationalesVi.push(
+          `B\u1EC7nh nh\xE2n c\xF3 1 y\u1EBFu t\u1ED1 nguy c\u01A1 chung nhi\u1EC5m VK\u0110K K\xC8M THEO m\u1EE9c \u0111\u1ED9 b\u1EC7nh n\u1EB7ng (${severity.scoreType.toUpperCase()} = ${severity.scoreValue} \u0111\u1EA1t ng\u01B0\u1EE1ng n\u1EB7ng).`
+        );
+        rationalesEn.push(
+          `Patient has 1 general MDR risk factor combined with high illness severity (${severity.scoreType.toUpperCase()} = ${severity.scoreValue}).`
+        );
+      } else {
+        group = "group_1";
+        rationalesVi.push(
+          `B\u1EC7nh nh\xE2n c\xF3 1 y\u1EBFu t\u1ED1 nguy c\u01A1 chung nh\u01B0ng m\u1EE9c \u0111\u1ED9 b\u1EC7nh nh\u1EB9 - trung b\xECnh (${severity.scoreType.toUpperCase()} = ${severity.scoreValue} d\u01B0\u1EDBi ng\u01B0\u1EE1ng n\u1EB7ng).`
+        );
+        rationalesEn.push(
+          `Patient has 1 general MDR risk factor but low-moderate severity (${severity.scoreType.toUpperCase()} = ${severity.scoreValue}).`
+        );
+      }
+    } else {
+      group = "group_2";
+      rationalesVi.push(
+        `B\u1EC7nh nh\xE2n c\xF3 t\u1EEB 2 y\u1EBFu t\u1ED1 nguy c\u01A1 chung nhi\u1EC5m VK\u0110K tr\u1EDF l\xEAn (${generalRiskCount}/8 y\u1EBFu t\u1ED1) \u2192 T\u1EF1 \u0111\u1ED9ng x\u1EBFp Nh\xF3m 2.`
+      );
+      rationalesEn.push(
+        `Patient has \u2265 2 general MDR risk factors (${generalRiskCount}/8) \u2192 Classified as Group 2.`
+      );
+    }
+    const activeGeneralFactors = GENERAL_MDR_RISK_FACTORS.filter((f3) => selectedGeneralRiskIds.includes(f3.id)).map((f3) => f3.labelVi);
+    if (group === "group_2") {
+      rationalesVi.push("KHUY\u1EBEN C\xC1O: B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng ph\xE1c \u0111\u1ED3 kh\xE1ng sinh ph\u1ED5 r\u1ED9ng bao ph\u1EE7 vi khu\u1EA9n \u0111a kh\xE1ng.");
+      rationalesEn.push("RECOMMENDATION: Broad-spectrum empiric regimen targeting MDR pathogens is required.");
+      if (specificRisks.length > 0) {
+        const riskTags = [];
+        if (specificRisks.includes("mrsa")) riskTags.push("T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)");
+        if (specificRisks.includes("esbl")) riskTags.push("Enterobacterales sinh ESBL");
+        if (specificRisks.includes("pseudo_acineto")) riskTags.push("Pseudomonas / Acinetobacter \u0111a kh\xE1ng");
+        if (specificRisks.includes("enterococcus")) riskTags.push("Enterococcus");
+        rationalesVi.push(`X\xE1c \u0111\u1ECBnh nguy c\u01A1 ri\xEAng cho t\xE1c nh\xE2n: ${riskTags.join("; ")}.`);
+      }
+    } else {
+      rationalesVi.push("KHUY\u1EBEN C\xC1O: Ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh theo ph\xE1c \u0111\u1ED3 kinh nghi\u1EC7m th\xF4ng th\u01B0\u1EDDng (Nh\xF3m 1). Tr\xE1nh l\u1EA1m d\u1EE5ng Carbapenem/Vancomycin.");
+      rationalesEn.push("RECOMMENDATION: Standard Group 1 empiric antibiotic regimen. Avoid unnecessary Carbapenem/Vancomycin.");
+    }
+    return {
+      group,
+      groupLabelVi: group === "group_1" ? "Nh\xF3m 1: \xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng" : "Nh\xF3m 2: Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng",
+      groupLabelEn: group === "group_1" ? "Group 1: Low MDR Risk" : "Group 2: High MDR Risk",
+      generalRiskCount,
+      isHighSeverity,
+      severityScoreType: severity.scoreType,
+      severityScoreValue: severity.scoreValue,
+      activeGeneralFactors,
+      activeSpecificRisks: specificRisks,
+      rationalesVi,
+      rationalesEn,
+      source: { doc: "BVBND_PhanNhom", page: 2 }
+    };
+  }
+  function classifyRiskGroup(selectedGeneralRiskIds, severity, population, specificRisks = []) {
+    const isHighSeverity = severity.scoreType === "psofa" ? severity.scoreValue >= 8 : severity.scoreType === "clif_sofa" ? severity.scoreValue >= 12 : severity.scoreValue >= 2;
+    return classifyRisk(
+      selectedGeneralRiskIds,
+      {
+        scoreType: severity.scoreType,
+        scoreValue: severity.scoreValue,
+        isHighSeverity
+      },
+      specificRisks
+    );
+  }
+  function getEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks = []) {
+    return findEmpiricRegimens(site, population, riskGroup, sepsisSource, specificRisks);
+  }
+  function evaluate48hReassessment(clinicalStatus, cultureStatus, susceptibilityStatus) {
+    const recommendationsVi = [];
+    const recommendationsEn = [];
+    let actionType;
+    let actionTitleVi;
+    let actionTitleEn;
+    let stopChecklistEligible = false;
+    let ivToPoEligible = false;
+    if (clinicalStatus === "improved") {
+      if (cultureStatus === "negative") {
+        actionType = "de_escalate";
+        actionTitleVi = "L\xE2m s\xE0ng c\u1EA3i thi\u1EC7n + C\u1EA5y vi sinh \xC2m t\xEDnh";
+        actionTitleEn = "Clinical Improvement + Negative Culture";
+        recommendationsVi.push("\u0110\xE1nh gi\xE1 l\u1EA1i ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh ban \u0111\u1EA7u.");
+        recommendationsVi.push("Xem x\xE9t \u0111i\u1EC1u ki\u1EC7n \u0111\u1EC3: (1) Ng\u1EEBng kh\xE1ng sinh n\u1EBFu \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u, (2) Xu\u1ED1ng thang kh\xE1ng sinh ph\u1ED5 h\u1EB9p, (3) Chuy\u1EC3n t\u1EEB IV sang PO.");
+        recommendationsEn.push("Re-evaluate initial indication. Consider (1) Stopping if minimum duration met, (2) De-escalation, (3) IV-to-PO switch.");
+        stopChecklistEligible = true;
+        ivToPoEligible = true;
+      } else if (cultureStatus === "positive") {
+        if (susceptibilityStatus === "sensitive") {
+          actionType = "de_escalate";
+          actionTitleVi = "L\xE2m s\xE0ng c\u1EA3i thi\u1EC7n + Vi khu\u1EA9n Nh\u1EA1y c\u1EA3m v\u1EDBi KS \u0111ang d\xF9ng";
+          actionTitleEn = "Clinical Improvement + Organism Sensitive";
+          recommendationsVi.push("Ti\u1EBFp t\u1EE5c ho\u1EB7c xu\u1ED1ng thang kh\xE1ng sinh ph\u1ED5 h\u1EB9p nh\u1EA5t ph\xF9 h\u1EE3p v\u1EDBi k\u1EBFt qu\u1EA3 Kh\xE1ng sinh \u0111\u1ED3.");
+          recommendationsVi.push("Xem x\xE9t \u0111i\u1EC1u ki\u1EC7n chuy\u1EC3n t\u1EEB ti\xEAm sang u\u1ED1ng (IV to PO) v\xE0 ng\u01B0ng KS khi \u0111\u1EE7 ng\xE0y.");
+          recommendationsEn.push("De-escalate to narrower-spectrum agent based on AST. Assess IV-to-PO switch.");
+          stopChecklistEligible = true;
+          ivToPoEligible = true;
+        } else {
+          actionType = "consult";
+          actionTitleVi = "L\xE2m s\xE0ng c\u1EA3i thi\u1EC7n NH\u01AFNG Vi khu\u1EA9n Kh\xE1ng thu\u1ED1c tr\xEAn KS\u0110";
+          actionTitleEn = "Clinical Improvement BUT Resistant Organism on AST";
+          recommendationsVi.push("H\u1ED9i ch\u1EA9n D\u01B0\u1EE3c l\xE2m s\xE0ng / Vi sinh l\xE2m s\xE0ng.");
+          recommendationsVi.push("\u0110\xE1nh gi\xE1 xem vi khu\u1EA9n ph\xE2n l\u1EADp l\xE0 t\xE1c nh\xE2n g\xE2y b\u1EC7nh th\u1EF1c s\u1EF1 hay ch\u1EC9 l\xE0 vi khu\u1EA9n t\u1EA1p nhi\u1EC5m/\u0111\u1ECBnh c\u01B0.");
+          recommendationsVi.push("N\u1EBFu l\xE2m s\xE0ng \u0111\xE1p \u1EE9ng t\u1ED1t v\xE0 ngu\u1ED3n nhi\u1EC5m \u0111\xE3 gi\u1EA3i quy\u1EBFt, c\xF3 th\u1EC3 c\xE2n nh\u1EAFc ti\u1EBFp t\u1EE5c ho\u1EB7c \u0111\u1ED5i KS ph\u1ED5 h\u1EB9p tr\xFAng \u0111\xEDch.");
+          recommendationsEn.push("Consult ID/Microbiology. Assess if isolate represents true pathogen vs colonizer.");
+        }
+      } else {
+        actionType = "continue";
+        actionTitleVi = "L\xE2m s\xE0ng c\u1EA3i thi\u1EC7n + \u0110ang ch\u1EDD k\u1EBFt qu\u1EA3 c\u1EA5y vi sinh";
+        actionTitleEn = "Clinical Improvement + Culture Pending";
+        recommendationsVi.push("Ti\u1EBFp t\u1EE5c duy tr\xEC ph\xE1c \u0111\u1ED3 hi\u1EC7n t\u1EA1i cho \u0111\u1EBFn khi c\xF3 k\u1EBFt qu\u1EA3 \u0111\u1ECBnh danh v\xE0 kh\xE1ng sinh \u0111\u1ED3.");
+        recommendationsVi.push("Theo d\xF5i s\xE1t sinh hi\u1EC7u v\xE0 c\xF4ng th\u1EE9c m\xE1u/CRP.");
+        recommendationsEn.push("Maintain current regimen until culture and AST results return.");
+      }
+    } else {
+      actionType = "switch_by_ast";
+      actionTitleVi = "L\xE2m s\xE0ng KH\xD4NG c\u1EA3i thi\u1EC7n ho\u1EB7c Di\u1EC5n ti\u1EBFn x\u1EA5u \u0111i";
+      actionTitleEn = "Clinical Failure or Deterioration";
+      recommendationsVi.push("B\u1EAET BU\u1ED8C H\u1ED8I CH\u1EA8N CHUY\xCAN KHOA H\u1ED2I S\u1EE8C / TRUY\u1EC0N NHI\u1EC4M / D\u01AF\u1EE2C L\xC2M S\xC0NG.");
+      recommendationsVi.push("T\u1EA7m so\xE1t l\u1EA1i to\xE0n di\u1EC7n \u1ED5 nhi\u1EC5m tr\xF9ng (ch\u1EE5p CT scan, si\xEAu \xE2m t\xECm \u1ED5 \xE1p xe ch\u01B0a d\u1EABn l\u01B0u, r\xFAt b\u1ECF catheter nghi ng\u1EDD).");
+      if (cultureStatus === "positive") {
+        recommendationsVi.push("Thay \u0111\u1ED5i kh\xE1ng sinh ngay l\u1EADp t\u1EE9c theo k\u1EBFt qu\u1EA3 Kh\xE1ng sinh \u0111\u1ED3 (KS\u0110).");
+        recommendationsEn.push("Change antibiotics immediately guided by AST.");
+      } else {
+        recommendationsVi.push("C\u1EA5y l\u1EA1i m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m m\u1EDBi tr\u01B0\u1EDBc khi \u0111\u1ED5i kh\xE1ng sinh.");
+        recommendationsVi.push("N\xE2ng b\u1EADc kh\xE1ng sinh ph\u1ED5 r\u1ED9ng h\u01A1n, bao ph\u1EE7 vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-Pseudomonas, Acinetobacter) ho\u1EB7c ph\u1ED1i h\u1EE3p thu\u1ED1c ch\u1ED1ng n\u1EA5m.");
+        recommendationsEn.push("Re-culture and escalate to broader regimen targeting MDR or fungal pathogens.");
+      }
+    }
+    return {
+      actionType,
+      actionTitleVi,
+      actionTitleEn,
+      recommendationsVi,
+      recommendationsEn,
+      stopChecklistEligible,
+      ivToPoEligible,
+      source: { doc: "BVBND_LuuDo", page: 2 }
+    };
+  }
+  function evaluateStopCriteria(checkedClinicalIds, checkedLabIds, currentDaysOnAbx, site) {
+    const benchmark = EVIDENCE_BASED_DURATIONS.find((b2) => {
+      if (site === "respiratory") return b2.conditionVi.includes("Vi\xEAm ph\u1ED5i");
+      if (site === "peritoneal") return b2.conditionVi.includes("\u1ED5 b\u1EE5ng");
+      if (site === "urinary") return b2.conditionVi.includes("ti\u1EBFt ni\u1EC7u");
+      if (site === "sepsis") return b2.conditionVi.includes("huy\u1EBFt");
+      return false;
+    }) || EVIDENCE_BASED_DURATIONS[0];
+    const minDurationMet = currentDaysOnAbx >= benchmark.minDays;
+    const clinicalCriteriaMet = checkedClinicalIds.length === STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.length;
+    const labCriteriaMet = checkedLabIds.length >= 1;
+    const canStop = minDurationMet && clinicalCriteriaMet && labCriteriaMet;
+    return {
+      canStop,
+      minDurationMet,
+      clinicalCriteriaMet,
+      clinicalCriteriaCount: checkedClinicalIds.length,
+      labCriteriaMet,
+      labCriteriaCount: checkedLabIds.length,
+      minDays: benchmark.minDays,
+      benchmarkNoteVi: benchmark.noteVi,
+      trialName: benchmark.trialName,
+      source: { doc: "BVBND_LuuDo", page: 3 }
+    };
+  }
+  function getMdrPathway(category) {
+    return MDR_PATHWAYS[category];
+  }
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepIndication.tsx
+  var import_react13 = __toESM(require_react(), 1);
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/SourceBadge.tsx
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
+  var SourceBadge = ({ source, className = "" }) => {
+    let docName = "BVBND 2026";
+    let badgeColor = "bg-blue-50 text-blue-700 border-blue-200";
+    if (source.doc === "BVBND_PhanNhom") {
+      docName = "L\u01B0u \u0111\u1ED3 VK\u0110K - BVBND";
+      badgeColor = "bg-amber-50 text-amber-700 border-amber-200";
+    } else if (source.doc === "BVBND_LuuDo") {
+      docName = "L\u01B0u \u0111\u1ED3 SDKS - BVBND";
+      badgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+    } else if (source.doc === "BVBND_HDSDKS") {
+      docName = "HDSDKS - BVBND 2026";
+      badgeColor = "bg-indigo-50 text-indigo-700 border-indigo-200";
+    } else if (source.doc === "BYT_5631") {
+      docName = "Q\u0110 5631/Q\u0110-BYT 2020";
+      badgeColor = "bg-purple-50 text-purple-700 border-purple-200";
+    }
+    const pageStr = Array.isArray(source.page) ? source.page.join(", ") : source.page;
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
+      "span",
+      {
+        className: `inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${badgeColor} ${className}`,
+        title: `Ngu\u1ED3n y v\u0103n ch\xEDnh th\u1EE9c: ${docName}, Trang ${pageStr}${source.note ? ` (${source.note})` : ""}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(BookOpen, { className: "w-3 h-3 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { children: [
+            docName,
+            " \u2022 Tr.",
+            pageStr
+          ] })
+        ]
+      }
+    );
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/selection/data/nhsnCriteria.ts
+  var NHSN_CRITERIA_SECTIONS = [
+    {
+      id: "nhsn_pneumonia_adult",
+      titleVi: "Vi\xEAm ph\u1ED5i l\xE2m s\xE0ng (Ng\u01B0\u1EDDi l\u1EDBn & Ng\u01B0\u1EDDi cao tu\u1ED5i > 70 tu\u1ED5i)",
+      site: "respiratory",
+      population: "adult",
+      requiredCriteriaCount: 3,
+      criteria: [
+        {
+          id: "pneu_fever_wbc",
+          textVi: "S\u1ED1t (> 38.0\xB0C) HO\u1EB6C H\u1EA1 th\xE2n nhi\u1EC7t (< 36.0\xB0C) HO\u1EB6C B\u1EA1ch c\u1EA7u t\u0103ng (> 12.000/mm\xB3) / B\u1EA1ch c\u1EA7u gi\u1EA3m (\u2264 4.000/mm\xB3)",
+          isClinical: true
+        },
+        {
+          id: "pneu_elderly_altered_mental",
+          textVi: "B\u1EC7nh nh\xE2n > 70 tu\u1ED5i: R\u1ED1i lo\u1EA1n tri gi\xE1c m\u1EDBi xu\u1EA5t hi\u1EC7n m\xE0 kh\xF4ng do nguy\xEAn nh\xE2n th\u1EA7n kinh kh\xE1c",
+          isClinical: true
+        },
+        {
+          id: "pneu_sputum_purulent",
+          textVi: "M\u1EDBi kh\u1EDFi ph\xE1t c\xF3 \u0111\xE0m m\u1EE7, ho\u1EB7c thay \u0111\u1ED5i t\xEDnh ch\u1EA5t \u0111\xE0m, ho\u1EB7c t\u0103ng ti\u1EBFt d\u1ECBch h\xF4 h\u1EA5p, t\u0103ng nhu c\u1EA7u h\xFAt \u0111\xE0m",
+          isClinical: true
+        },
+        {
+          id: "pneu_cough_dyspnea",
+          textVi: "M\u1EDBi kh\u1EDFi ph\xE1t ho\u1EB7c l\xE0m n\u1EB7ng th\xEAm tri\u1EC7u ch\u1EE9ng ho, kh\xF3 th\u1EDF ho\u1EB7c th\u1EDF nhanh",
+          isClinical: true
+        },
+        {
+          id: "pneu_rales",
+          textVi: "Kh\xE1m ph\u1ED5i nghe ran n\u1ED5 ho\u1EB7c ran \u1EA9m khu tr\xFA m\u1EDBi xu\u1EA5t hi\u1EC7n",
+          isClinical: true
+        },
+        {
+          id: "pneu_hypoxia",
+          textVi: "Gi\u1EA3m trao \u0111\u1ED5i kh\xED: SpO\u2082 gi\u1EA3m, PaO\u2082/FiO\u2082 < 240, t\u0103ng nhu c\u1EA7u oxy ho\u1EB7c th\xF4ng kh\xED nh\xE2n t\u1EA1o",
+          isClinical: true
+        },
+        {
+          id: "pneu_xray",
+          textVi: "B\u1EB1ng ch\u1EE9ng h\xECnh \u1EA3nh h\u1ECDc: X-quang ph\u1ED5i c\xF3 th\xE2m nhi\u1EC5m m\u1EDBi, t\u1ED5n th\u01B0\u01A1ng \u0111\xF4ng \u0111\u1EB7c ho\u1EB7c m\u1EE9c n\u01B0\u1EDBc h\u01A1i",
+          isImaging: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 5 }
+    },
+    {
+      id: "nhsn_vap_vae",
+      titleVi: "Bi\u1EBFn c\u1ED1 li\xEAn quan th\u1EDF m\xE1y & Vi\xEAm ph\u1ED5i th\u1EDF m\xE1y (VAE / VAP)",
+      site: "respiratory",
+      population: "adult",
+      requiredCriteriaCount: 3,
+      criteria: [
+        {
+          id: "vae_vac",
+          textVi: "VAC (Ventilator-Associated Condition): C\xF3 giai \u0111o\u1EA1n th\u1EDF m\xE1y \u1ED5n \u0111\u1ECBnh \u2265 2 ng\xE0y, sau \u0111\xF3 t\u0103ng FiO\u2082 \u2265 0.20 HO\u1EB6C t\u0103ng PEEP \u2265 3 cmH\u2082O k\xE9o d\xE0i \u2265 2 ng\xE0y",
+          isClinical: true
+        },
+        {
+          id: "vae_ivac",
+          textVi: "IVAC: Th\u1ECFa VAC + Th\xE2n nhi\u1EC7t > 38\xB0C ho\u1EB7c < 36\xB0C HO\u1EB6C B\u1EA1ch c\u1EA7u \u2265 12.000 ho\u1EB7c \u2264 4.000 + B\u1EAFt \u0111\u1EA7u kh\xE1ng sinh m\u1EDBi d\xF9ng \u2265 4 ng\xE0y",
+          isClinical: true
+        },
+        {
+          id: "vae_pvap_micro",
+          textVi: "PVAP (Vi sinh): Th\u1ECFa IVAC + C\u1EA5y vi sinh \u0111\u1ECBnh l\u01B0\u1EE3ng: D\u1ECBch h\xFAt NKQ \u2265 10\u2075 CFU/mL HO\u1EB6C BAL \u2265 10\u2074 CFU/mL HO\u1EB6C D\u1ECBch ch\u1EA3i c\xF3 b\u1EA3o v\u1EC7 (PSB) \u2265 10\xB3 CFU/mL",
+          isMicrobiology: true
+        },
+        {
+          id: "vae_pvap_purulence",
+          textVi: "PVAP (T\u1EBF b\xE0o h\u1ECDc): \u0110\xE0m m\u1EE7 c\xF3 \u2265 25 b\u1EA1ch c\u1EA7u \u0111a nh\xE2n v\xE0 \u2264 10 t\u1EBF b\xE0o bi\u1EC3u m\xF4 tr\xEAn vi tr\u01B0\u1EDDng ph\xF3ng \u0111\u1EA1i th\u1EA5p (lpf x100)",
+          isMicrobiology: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 8 }
+    },
+    {
+      id: "nhsn_ssti",
+      titleVi: "Nhi\u1EC5m tr\xF9ng Da & M\xF4 m\u1EC1m (SSTI & Lo\xE9t t\xEC \u0111\xE8)",
+      site: "skin_soft_tissue",
+      population: "adult",
+      requiredCriteriaCount: 2,
+      criteria: [
+        {
+          id: "ssti_purulence",
+          textVi: "Sang th\u01B0\u01A1ng da c\xF3 m\u1EE7, ch\u1EA3y m\u1EE7, m\u1EE5n m\u1EE7 ho\u1EB7c nh\u1ECDt",
+          isClinical: true
+        },
+        {
+          id: "ssti_cardinal_signs",
+          textVi: "C\xF3 \xEDt nh\u1EA5t 2 trong 4 d\u1EA5u hi\u1EC7u t\u1EA1i ch\u1ED7: S\u01B0ng n\u1EC1, N\xF3ng, \u0110\u1ECF da, \u0110au ho\u1EB7c c\u0103ng t\u1EE9c t\u1EA1i ch\u1ED7",
+          isClinical: true
+        },
+        {
+          id: "ssti_microbiology",
+          textVi: "Vi sinh v\u1EADt ph\xE2n l\u1EADp t\u1EEB ch\u1ECDc h\xFAt ho\u1EB7c d\u1EABn l\u01B0u d\u1ECBch \u1ED5 m\u1EE7 / sinh thi\u1EBFt r\xECa sang th\u01B0\u01A1ng",
+          isMicrobiology: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 10 }
+    },
+    {
+      id: "nhsn_uti",
+      titleVi: "Nhi\u1EC5m tr\xF9ng \u0111\u01B0\u1EDDng Ti\u1EBFt ni\u1EC7u (UTI & CAUTI)",
+      site: "urinary",
+      population: "adult",
+      requiredCriteriaCount: 2,
+      criteria: [
+        {
+          id: "uti_fever",
+          textVi: "S\u1ED1t (> 38.0\xB0C) ho\u1EB7c c\u1EA3m gi\xE1c \u1EDBn l\u1EA1nh",
+          isClinical: true
+        },
+        {
+          id: "uti_dysuria_frequency",
+          textVi: "Ti\u1EC3u bu\u1ED1t, ti\u1EC3u r\u1EAFt, ti\u1EC3u g\u1EA5p, ti\u1EC3u nhi\u1EC1u l\u1EA7n ho\u1EB7c \u0111au h\u1EA1 v\u1ECB / \u0111au g\xF3c s\u01B0\u1EDDn l\u01B0ng",
+          isClinical: true
+        },
+        {
+          id: "uti_pyuria",
+          textVi: "T\u1ED5ng ph\xE2n t\xEDch n\u01B0\u1EDBc ti\u1EC3u: B\u1EA1ch c\u1EA7u n\u01B0\u1EDBc ti\u1EC3u (+), Nitrate (+), ho\u1EB7c soi c\u1EB7n l\u1EAFng \u2265 10 BC/vi tr\u01B0\u1EDDng",
+          isLab: true
+        },
+        {
+          id: "uti_culture",
+          textVi: "C\u1EA5y n\u01B0\u1EDBc ti\u1EC3u d\u01B0\u01A1ng t\xEDnh \u2265 10\u2075 CFU/mL (ho\u1EB7c \u2265 10\xB3 CFU/mL n\u1EBFu c\xF3 sonde ti\u1EC3u / nam gi\u1EDBi)",
+          isMicrobiology: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 11 }
+    },
+    {
+      id: "nhsn_sbp_peritoneal",
+      titleVi: "Vi\xEAm ph\xFAc m\u1EA1c nguy\xEAn ph\xE1t do vi khu\u1EA9n (SBP / Nhi\u1EC5m khu\u1EA9n d\u1ECBch b\xE1ng)",
+      site: "peritoneal",
+      population: "adult",
+      requiredCriteriaCount: 2,
+      criteria: [
+        {
+          id: "sbp_fever_pain",
+          textVi: "S\u1ED1t (> 38.0\xB0C) HO\u1EB6C \u0110au b\u1EE5ng \xE2m \u1EC9/khu tr\xFA HO\u1EB6C B\u1EE5ng ch\u01B0\u1EDBng t\u0103ng nhanh",
+          isClinical: true
+        },
+        {
+          id: "sbp_encephalopathy",
+          textVi: "H\xF4n m\xEA gan / B\u1EC7nh n\xE3o gan xu\u1EA5t hi\u1EC7n m\u1EDBi ho\u1EB7c di\u1EC5n ti\u1EBFn x\u1EA5u \u0111i kh\xF4ng r\xF5 nguy\xEAn nh\xE2n",
+          isClinical: true
+        },
+        {
+          id: "sbp_pmn_count",
+          textVi: "Ch\u1ECDc d\xF2 d\u1ECBch b\xE1ng: B\u1EA1ch c\u1EA7u \u0111a nh\xE2n (PMN) trong d\u1ECBch b\xE1ng \u2265 250 t\u1EBF b\xE0o/mm\xB3 (ho\u1EB7c \u2265 0.25 x 10\u2079/L)",
+          isLab: true
+        },
+        {
+          id: "sbp_culture",
+          textVi: "C\u1EA5y d\u1ECBch b\xE1ng v\xE0o chai c\u1EA5y m\xE1u d\u01B0\u01A1ng t\xEDnh v\u1EDBi vi khu\u1EA9n",
+          isMicrobiology: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 12 }
+    },
+    {
+      id: "nhsn_cns_meningitis",
+      titleVi: "Nhi\u1EC5m tr\xF9ng H\u1EC7 Th\u1EA7n kinh Trung \u01B0\u01A1ng (Vi\xEAm m\xE0ng n\xE3o m\u1EE7 / \xC1p xe n\xE3o)",
+      site: "cns",
+      population: "adult",
+      requiredCriteriaCount: 2,
+      criteria: [
+        {
+          id: "cns_meningeal_signs",
+          textVi: "Tam ch\u1EE9ng m\xE0ng n\xE3o: S\u1ED1t (> 38\xB0C) + \u0110au \u0111\u1EA7u d\u1EEF d\u1ED9i + D\u1EA5u m\xE0ng n\xE3o (C\u1ED5 g\u01B0\u1EE3ng, Kernig (+), Brudzinski (+))",
+          isClinical: true
+        },
+        {
+          id: "cns_altered_consciousness",
+          textVi: "R\u1ED1i lo\u1EA1n tri gi\xE1c (l\u01A1 m\u01A1, m\xEA), co gi\u1EADt ho\u1EB7c d\u1EA5u th\u1EA7n kinh khu tr\xFA",
+          isClinical: true
+        },
+        {
+          id: "cns_csf_abnormal",
+          textVi: "D\u1ECBch n\xE3o t\u1EE7y (DNT): \u0110\u1EE5c ho\u1EB7c \xE1p l\u1EF1c t\u0103ng, t\u0103ng b\u1EA1ch c\u1EA7u \u0111a nh\xE2n, protein t\u0103ng, \u0111\u01B0\u1EDDng DNT/m\xE1u < 0.4",
+          isLab: true
+        },
+        {
+          id: "cns_gram_pcr_culture",
+          textVi: "Nhu\u1ED9m Gram DNT th\u1EA5y vi khu\u1EA9n HO\u1EB6C c\u1EA5y DNT / c\u1EA5y m\xE1u d\u01B0\u01A1ng t\xEDnh HO\u1EB6C PCR DNT d\u01B0\u01A1ng t\xEDnh",
+          isMicrobiology: true
+        }
+      ],
+      source: { doc: "BVBND_LuuDo", page: 22 }
+    }
+  ];
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepIndication.tsx
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
+  var StepIndication = ({
+    indicationConfirmed,
+    onConfirmIndication,
+    checkedNhsnIds,
+    onToggleNhsnId,
+    onNextStep
+  }) => {
+    const [selectedSyndrome, setSelectedSyndrome] = (0, import_react13.useState)("nhsn_pneumonia_adult");
+    const [showTwelveRules, setShowTwelveRules] = (0, import_react13.useState)(false);
+    const activeSection = NHSN_CRITERIA_SECTIONS.find((s3) => s3.id === selectedSyndrome) || NHSN_CRITERIA_SECTIONS[0];
+    const metCount = activeSection.criteria.filter((c4) => checkedNhsnIds.includes(c4.id)).length;
+    const isCriteriaMet = metCount >= activeSection.requiredCriteriaCount;
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 mb-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center", children: "1" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "X\xE1c \u0111\u1ECBnh Ch\u1EC9 \u0111\u1ECBnh Kh\xE1ng sinh & B\u1EA3ng ki\u1EC3m NHSN-CDC" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: [3, 4] } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-xs text-slate-600 leading-relaxed", children: "Nguy\xEAn t\u1EAFc 1: C\u1EA7n x\xE1c \u0111\u1ECBnh r\xF5 c\xF3 ph\u1EA3i b\u1EC7nh l\xFD nhi\u1EC5m khu\u1EA9n c\u1EA7n ch\u1EC9 \u0111\u1ECBnh kh\xE1ng sinh hay kh\xF4ng tr\u01B0\u1EDBc khi k\xEA \u0111\u01A1n. S\u1EED d\u1EE5ng b\u1EA3ng ki\u1EC3m ch\u1EA9n \u0111o\xE1n chu\u1EA9n NHSN-CDC 2019 \u0111\u1EC3 tr\xE1nh l\u1EA1m d\u1EE5ng kh\xE1ng sinh cho c\xE1c tr\u01B0\u1EDDng h\u1EE3p kh\xF4ng nhi\u1EC5m khu\u1EA9n ho\u1EB7c nhi\u1EC5m virus." })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "bg-blue-50/70 border border-blue-200 rounded-2xl p-4", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Info, { className: "w-5 h-5 text-blue-600 shrink-0 mt-0.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-xs font-bold text-blue-900 uppercase tracking-wide", children: "\u0110\xE1nh gi\xE1 Ch\u1EC9 \u0111\u1ECBnh L\xE2m s\xE0ng Hi\u1EC7n t\u1EA1i" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-xs text-blue-800 mt-1", children: "B\u1EC7nh nh\xE2n c\xF3 tri\u1EC7u ch\u1EE9ng g\u1EE3i \xFD nhi\u1EC5m khu\u1EA9n c\u1EA5p t\xEDnh, s\u1ED1c nhi\u1EC5m khu\u1EA9n ho\u1EB7c d\u1EA5u hi\u1EC7u nhi\u1EC5m tr\xF9ng c\u01A1 quan r\xF5 r\xE0ng kh\xF4ng?" }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center space-x-3 mt-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+              "button",
+              {
+                onClick: () => onConfirmIndication(true),
+                className: `px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all cursor-pointer ${indicationConfirmed ? "bg-blue-600 text-white shadow-xs" : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-400" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "X\xE1c nh\u1EADn C\xF3 ch\u1EC9 \u0111\u1ECBnh Kh\xE1ng sinh" })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+              "button",
+              {
+                onClick: () => onConfirmIndication(false),
+                className: `px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${!indicationConfirmed ? "bg-amber-600 text-white shadow-xs" : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50"}`,
+                children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Ch\u01B0a r\xF5 / Nghi ng\u1EDD nhi\u1EC5m virus (C\u1EA7n theo d\xF5i th\xEAm)" })
+              }
+            )
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center justify-between border-b border-slate-100 pb-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "text-sm font-bold text-slate-900", children: "B\u1EA3ng ki\u1EC3m Ch\u1EA9n \u0111o\xE1n Nhi\u1EC5m tr\xF9ng theo H\u1ED9i ch\u1EE9ng (NHSN-CDC 2019)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-xs text-slate-500", children: "Ch\u1ECDn h\u1ED9i ch\u1EE9ng t\u01B0\u01A1ng \u1EE9ng \u0111\u1EC3 ki\u1EC3m tra t\xEDnh th\u1ECFa ti\xEAu chu\u1EA9n ch\u1EA9n \u0111o\xE1n" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SourceBadge, { source: activeSection.source })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "flex flex-wrap gap-1.5", children: NHSN_CRITERIA_SECTIONS.map((sec) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          "button",
+          {
+            onClick: () => setSelectedSyndrome(sec.id),
+            className: `px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedSyndrome === sec.id ? "bg-blue-600 text-white shadow-xs" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`,
+            children: sec.titleVi.split("(")[0].trim()
+          },
+          sec.id
+        )) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "border border-slate-200 rounded-xl p-4 bg-slate-50/40 space-y-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center justify-between text-xs font-bold text-slate-700 pb-2 border-b border-slate-200", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: activeSection.titleVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { className: `px-2 py-0.5 rounded-full text-[11px] ${isCriteriaMet ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-700"}`, children: [
+              "Th\u1ECFa: ",
+              metCount,
+              "/",
+              activeSection.requiredCriteriaCount,
+              " ti\xEAu chu\u1EA9n t\u1ED1i thi\u1EC3u"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "space-y-2 pt-1", children: activeSection.criteria.map((crit) => {
+            const isChecked = checkedNhsnIds.includes(crit.id);
+            return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+              "label",
+              {
+                className: `flex items-start space-x-2.5 p-2 rounded-lg cursor-pointer transition-colors ${isChecked ? "bg-blue-50/80 border border-blue-200" : "hover:bg-slate-100/70"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: isChecked,
+                      onChange: () => onToggleNhsnId(crit.id),
+                      className: "mt-0.5 rounded text-blue-600 focus:ring-blue-500 h-4 w-4 shrink-0"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: `text-xs leading-relaxed ${isChecked ? "font-bold text-blue-950" : "text-slate-700"}`, children: crit.textVi })
+                ]
+              },
+              crit.id
+            );
+          }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+          "button",
+          {
+            onClick: () => setShowTwelveRules(!showTwelveRules),
+            className: "w-full flex items-center justify-between text-left cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ShieldAlert, { className: "w-4 h-4 text-amber-600" }),
+                /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "text-xs font-bold text-slate-800 uppercase tracking-wide", children: "12 Nguy\xEAn t\u1EAFc V\xE0ng S\u1EED d\u1EE5ng Kh\xE1ng sinh (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi)" })
+              ] }),
+              showTwelveRules ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronUp, { className: "w-4 h-4 text-slate-400" }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ChevronDown, { className: "w-4 h-4 text-slate-400" })
+            ]
+          }
+        ),
+        showTwelveRules && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-4 pt-3 border-t border-slate-100 grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start space-x-2 p-2 rounded-lg bg-slate-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Clock, { className: "w-4 h-4 text-blue-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("strong", { children: "Gi\u1EDD \u0111\u1EA7u ti\xEAn:" }),
+              " S\u1ED1c NK & NK n\u1EB7ng ph\u1EA3i truy\u1EC1n KS ngay trong 1 gi\u1EDD \u0111\u1EA7u."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start space-x-2 p-2 rounded-lg bg-slate-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Microscope, { className: "w-4 h-4 text-purple-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("strong", { children: "C\u1EA5y b\u1EC7nh ph\u1EA9m:" }),
+              " Lu\xF4n l\u1EA5y m\u1EABu vi sinh tr\u01B0\u1EDBc khi truy\u1EC1n li\u1EC1u KS \u0111\u1EA7u ti\xEAn."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start space-x-2 p-2 rounded-lg bg-slate-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Scissors, { className: "w-4 h-4 text-rose-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("strong", { children: "Ki\u1EC3m so\xE1t \u1ED5 nhi\u1EC5m:" }),
+              " D\u1EABn l\u01B0u \u1ED5 \xE1p xe, r\xFAt catheter l\u01B0u song h\xE0nh c\xF9ng KS."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex items-start space-x-2 p-2 rounded-lg bg-slate-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(CircleAlert, { className: "w-4 h-4 text-amber-600 shrink-0 mt-0.5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("strong", { children: "Tr\xE1nh tr\xF9ng l\u1EB7p ph\u1ED5 k\u1EF5 kh\xED:" }),
+              " Carbapenem/BL-BLI \u0111\xE3 ph\u1EE7 k\u1EF5 kh\xED, kh\xF4ng ph\u1ED1i h\u1EE3p Metronidazole."
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "flex justify-end pt-2", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+        "button",
+        {
+          onClick: onNextStep,
+          disabled: !indicationConfirmed,
+          className: `py-3 px-6 rounded-xl font-bold text-xs flex items-center space-x-2 transition-all cursor-pointer ${indicationConfirmed ? "bg-blue-600 hover:bg-blue-700 text-white shadow-sm" : "bg-slate-200 text-slate-400 cursor-not-allowed"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Ch\u1ECDn \u0110\u1ED1i t\u01B0\u1EE3ng & \u1ED4 nhi\u1EC5m tr\xF9ng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ArrowRight, { className: "w-4 h-4" })
+          ]
+        }
+      ) })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepSite.tsx
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime(), 1);
+  var StepSite = ({
+    population,
+    onSelectPopulation,
+    site,
+    onSelectSite,
+    sepsisSource,
+    onSelectSepsisSource,
+    onNextStep,
+    onPrevStep
+  }) => {
+    const sitesList = [
+      {
+        id: "respiratory",
+        titleVi: "H\xF4 h\u1EA5p (Vi\xEAm ph\u1ED5i)",
+        descVi: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng (CAP), Vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n (HAP), Vi\xEAm ph\u1ED5i th\u1EDF m\xE1y (VAP)",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Stethoscope, { className: "w-5 h-5 text-blue-600" }),
+        color: "hover:border-blue-300"
+      },
+      {
+        id: "sepsis",
+        titleVi: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt (Sepsis)",
+        descVi: "Sepsis, S\u1ED1c nhi\u1EC5m khu\u1EA9n, nhi\u1EC5m khu\u1EA9n huy\u1EBFt ch\u01B0a r\xF5 ho\u1EB7c \u0111\xE3 r\xF5 ng\xF5 v\xE0o",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Droplet, { className: "w-5 h-5 text-rose-600" }),
+        color: "hover:border-rose-300"
+      },
+      {
+        id: "skin_soft_tissue",
+        titleVi: "Da & M\xF4 m\u1EC1m (SSTI)",
+        descVi: "Vi\xEAm m\xF4 t\u1EBF b\xE0o, lo\xE9t t\xEC \u0111\xE8 nhi\u1EC5m tr\xF9ng, nh\u1ECDt, \xE1p xe m\xF4 d\u01B0\u1EDBi da",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Flame, { className: "w-5 h-5 text-amber-600" }),
+        color: "hover:border-amber-300"
+      },
+      {
+        id: "urinary",
+        titleVi: "\u0110\u01B0\u1EDDng Ti\u1EBFt ni\u1EC7u (UTI)",
+        descVi: "Vi\xEAm b\xE0ng quang, vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn, nhi\u1EC5m tr\xF9ng ti\u1EC3u c\xF3 sonde (CAUTI)",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(HeartHandshake, { className: "w-5 h-5 text-indigo-600" }),
+        color: "hover:border-indigo-300"
+      },
+      {
+        id: "peritoneal",
+        titleVi: "D\u1ECBch b\xE1ng / M\xE0ng b\u1EE5ng (SBP)",
+        descVi: "Vi\xEAm ph\xFAc m\u1EA1c nguy\xEAn ph\xE1t do vi khu\u1EA9n (SBP) \u1EDF b\u1EC7nh nh\xE2n x\u01A1 gan",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Droplet, { className: "w-5 h-5 text-emerald-600" }),
+        color: "hover:border-emerald-300"
+      },
+      {
+        id: "cns",
+        titleVi: "Th\u1EA7n kinh Trung \u01B0\u01A1ng",
+        descVi: "Vi\xEAm m\xE0ng n\xE3o m\u1EE7, vi\xEAm n\xE3o th\u1EA5t, \xE1p xe n\xE3o",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Brain, { className: "w-5 h-5 text-purple-600" }),
+        color: "hover:border-purple-300"
+      }
+    ];
+    const sepsisSourcesList = [
+      { id: "respiratory", titleVi: "Ng\xF5 v\xE0o t\u1EEB H\xF4 h\u1EA5p / Vi\xEAm ph\u1ED5i" },
+      { id: "gastrointestinal", titleVi: "Ng\xF5 v\xE0o t\u1EEB \u0110\u01B0\u1EDDng Ti\xEAu h\xF3a / \u1ED4 b\u1EE5ng" },
+      { id: "skin_soft_tissue", titleVi: "Ng\xF5 v\xE0o t\u1EEB Da v\xE0 M\xF4 m\u1EC1m" },
+      { id: "peritoneal", titleVi: "Ng\xF5 v\xE0o t\u1EEB D\u1ECBch b\xE1ng (SBP)" },
+      { id: "urinary", titleVi: "Ng\xF5 v\xE0o t\u1EEB \u0110\u01B0\u1EDDng Ti\u1EBFt ni\u1EC7u" }
+    ];
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 mb-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center", children: "2" }),
+            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "\u0110\u1ED1i t\u01B0\u1EE3ng & V\u1ECB tr\xED \u1ED4 Nhi\u1EC5m tr\xF9ng Ti\xEAu \u0111i\u1EC3m" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS", page: [4, 8] } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-xs text-slate-600 leading-relaxed", children: "Ph\xE1c \u0111\u1ED3 \u0111i\u1EC1u tr\u1ECB kh\xE1ng sinh \u0111\u01B0\u1EE3c x\xE2y d\u1EF1ng tr\xEAn c\u01A1 s\u1EDF m\u1EE9c \u0111\u1ED9 nh\u1EA1y c\u1EA3m c\u1EE7a c\xE1c ch\u1EE7ng vi khu\u1EA9n g\xE2y b\u1EC7nh th\u01B0\u1EDDng g\u1EB7p nh\u1EA5t theo t\u1EEBng c\u01A1 quan nhi\u1EC5m tr\xF9ng (BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi)." })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "1. Nh\xF3m \u0110\u1ED1i t\u01B0\u1EE3ng B\u1EC7nh nh\xE2n" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+            "button",
+            {
+              onClick: () => onSelectPopulation("adult"),
+              className: `p-3.5 rounded-xl border text-left flex items-center space-x-3 transition-all cursor-pointer ${population === "adult" ? "bg-blue-50/80 border-blue-500 ring-2 ring-blue-500/20 shadow-xs" : "border-slate-200 hover:border-slate-300 hover:bg-slate-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(User, { className: "w-5 h-5" }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-sm font-bold text-slate-900", children: "Ng\u01B0\u1EDDi l\u1EDBn & Cao tu\u1ED5i" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-xs text-slate-500", children: "\xC1p d\u1EE5ng thang \u0111i\u1EC3m SOFA / CLIF-SOFA" })
+                ] })
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+            "button",
+            {
+              onClick: () => onSelectPopulation("pediatric"),
+              className: `p-3.5 rounded-xl border text-left flex items-center space-x-3 transition-all cursor-pointer ${population === "pediatric" ? "bg-purple-50/80 border-purple-500 ring-2 ring-purple-500/20 shadow-xs" : "border-slate-200 hover:border-slate-300 hover:bg-slate-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Baby, { className: "w-5 h-5" }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-sm font-bold text-slate-900", children: "B\u1EC7nh nhi / Tr\u1EBB em" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-xs text-slate-500", children: "\xC1p d\u1EE5ng pSOFA & Phoenix Sepsis 2024" })
+                ] })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-4 shadow-xs space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-500", children: "2. V\u1ECB tr\xED \u1ED4 Nhi\u1EC5m tr\xF9ng Ban \u0111\u1EA7u" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: sitesList.map((s3) => {
+          const isSelected = site === s3.id;
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+            "button",
+            {
+              onClick: () => onSelectSite(s3.id),
+              className: `p-3.5 rounded-xl border text-left flex items-start space-x-3 transition-all cursor-pointer ${isSelected ? "bg-blue-50/90 border-blue-600 ring-2 ring-blue-500/20 shadow-xs" : `border-slate-200 ${s3.color} hover:bg-slate-50`}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs", children: s3.icon }),
+                /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-xs font-bold text-slate-900", children: s3.titleVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "text-[11px] text-slate-500 leading-relaxed mt-0.5", children: s3.descVi })
+                ] })
+              ]
+            },
+            s3.id
+          );
+        }) })
+      ] }),
+      site === "sepsis" && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "bg-rose-50/60 border border-rose-200 rounded-2xl p-4 space-y-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Droplet, { className: "w-4 h-4 text-rose-600 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h4", { className: "text-xs font-bold text-rose-900 uppercase", children: "X\xE1c \u0111\u1ECBnh Ng\xF5 v\xE0o c\u1EE7a Nhi\u1EC5m khu\u1EA9n huy\u1EBFt (BVBND Trang 13)" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-xs text-rose-800", children: "Kh\xE1ng sinh ban \u0111\u1EA7u trong nhi\u1EC5m khu\u1EA9n huy\u1EBFt c\u1EA7n \u01B0u ti\xEAn theo ng\xF5 v\xE0o nghi ng\u1EDD cao nh\u1EA5t:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1", children: sepsisSourcesList.map((src) => {
+          const isSrcSelected = sepsisSource === src.id;
+          return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            "button",
+            {
+              onClick: () => onSelectSepsisSource(src.id),
+              className: `p-2.5 rounded-lg border text-left text-xs font-bold transition-all cursor-pointer ${isSrcSelected ? "bg-rose-600 text-white border-rose-600 shadow-2xs" : "bg-white text-slate-700 border-slate-200 hover:bg-rose-50/70"}`,
+              children: src.titleVi
+            },
+            src.id
+          );
+        }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex justify-between pt-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+          "button",
+          {
+            onClick: onPrevStep,
+            className: "py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs flex items-center space-x-1.5 hover:bg-slate-50 transition-all cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ArrowLeft, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Quay l\u1EA1i" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+          "button",
+          {
+            onClick: onNextStep,
+            className: "py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-2 shadow-sm transition-all cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Ph\xE2n nh\xF3m Nguy c\u01A1 VK\u0110K" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ArrowRight, { className: "w-4 h-4" })
+            ]
+          }
+        )
+      ] })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepRisk.tsx
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime(), 1);
+  var StepRisk = ({
+    population,
+    site,
+    checkedGeneralRiskIds,
+    onToggleGeneralRisk,
+    sofaScore,
+    onSofaChange,
+    psofaScore,
+    onPsofaChange,
+    clifSofaScore,
+    onClifSofaChange,
+    isChronicLiverDisease,
+    onToggleChronicLiver,
+    checkedSpecificRisks,
+    onToggleSpecificRisk,
+    riskResult,
+    onNextStep,
+    onPrevStep
+  }) => {
+    const isGroup2 = riskResult.group === "group_2";
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-2 mb-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center", children: "3" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "text-base font-extrabold text-slate-900", children: "Ph\xE2n nh\xF3m Nguy c\u01A1 Nhi\u1EC5m Vi khu\u1EA9n \u0110a kh\xE1ng (VK\u0110K)" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(SourceBadge, { source: { doc: "BVBND_PhanNhom", page: [2, 3] } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("p", { className: "text-xs text-slate-600 leading-relaxed", children: [
+          "\u0110\u1ED9ng c\u01A1 suy lu\u1EADn l\xE2m s\xE0ng k\u1EBFt h\u1EE3p ",
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "8 Y\u1EBFu t\u1ED1 nguy c\u01A1 chung" }),
+          " v\xE0 ",
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("strong", { children: "Thang \u0111i\u1EC3m \u0111\u1ED9 n\u1EB7ng" }),
+          " (SOFA / pSOFA / CLIF-SOFA) \u0111\u1EC3 ph\xE2n t\u1EA7ng ch\xEDnh x\xE1c v\xE0o Nh\xF3m 1 (\xCDt nguy c\u01A1) ho\u1EB7c Nh\xF3m 2 (Nguy c\u01A1 cao) theo l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi (C\u1EADp nh\u1EADt 2026)."
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between border-b border-slate-100 pb-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center space-x-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "A. \u0110\xE1nh gi\xE1 Y\u1EBFu t\u1ED1 Nguy c\u01A1 CHUNG nhi\u1EC5m VK\u0110K (0 - 8 Y\u1EBFu t\u1ED1)" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: "text-xs font-bold text-blue-600", children: [
+            "\u0110\xE3 ch\u1ECDn: ",
+            checkedGeneralRiskIds.length,
+            "/8"
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-1", children: GENERAL_MDR_RISK_FACTORS.map((factor) => {
+          const isChecked = checkedGeneralRiskIds.includes(factor.id);
+          return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+            "label",
+            {
+              className: `flex items-start space-x-2.5 p-3 rounded-xl border cursor-pointer transition-all ${isChecked ? "bg-blue-50/90 border-blue-500 shadow-2xs" : "border-slate-200 hover:border-slate-300 hover:bg-slate-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                  "input",
+                  {
+                    type: "checkbox",
+                    checked: isChecked,
+                    onChange: () => onToggleGeneralRisk(factor.id),
+                    className: "mt-0.5 rounded text-blue-600 focus:ring-blue-500 h-4 w-4 shrink-0"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `text-xs ${isChecked ? "font-bold text-blue-950" : "text-slate-800"}`, children: factor.labelVi }),
+                  factor.noteVi && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 leading-snug", children: factor.noteVi })
+                ] })
+              ]
+            },
+            factor.id
+          );
+        }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "border-b border-slate-100 pb-2.5 flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-700", children: "B. \u0110\xE1nh gi\xE1 M\u1EE9c \u0111\u1ED9 N\u1EB7ng theo Thang \u0111i\u1EC3m L\xE2m s\xE0ng" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[11px] text-slate-400", children: "Ng\u01B0\u1EE1ng n\u1EB7ng: SOFA \u2265 2 \u2022 pSOFA \u2265 8 \u2022 CLIF-SOFA \u2265 12" })
+        ] }),
+        population === "adult" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "flex items-center space-x-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: isChronicLiverDisease,
+                onChange: (e2) => onToggleChronicLiver(e2.target.checked),
+                className: "rounded text-blue-600 focus:ring-blue-500 h-4 w-4"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "B\u1EC7nh nh\xE2n c\xF3 B\u1EC7nh Gan m\u1EA1n t\xEDnh / X\u01A1 gan (\xC1p d\u1EE5ng thang \u0111i\u1EC3m CLIF-SOFA)" })
+          ] }),
+          !isChronicLiverDisease ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: "text-xs font-bold text-slate-800", children: "\u0110i\u1EC3m SOFA (Sequential Organ Failure Assessment)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `text-xs font-black px-2 py-0.5 rounded-full ${sofaScore >= 2 ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: sofaScore >= 2 ? "\u0110\u1ED9 n\u1EB7ng cao (\u2265 2)" : "\u0110\u1ED9 n\u1EB7ng th\u1EA5p (< 2)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                "input",
+                {
+                  type: "range",
+                  min: "0",
+                  max: "24",
+                  value: sofaScore,
+                  onChange: (e2) => onSofaChange(parseInt(e2.target.value)),
+                  className: "flex-1 accent-blue-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                "input",
+                {
+                  type: "number",
+                  min: "0",
+                  max: "24",
+                  value: sofaScore,
+                  onChange: (e2) => onSofaChange(parseInt(e2.target.value) || 0),
+                  className: "w-16 px-2 py-1 text-center font-black text-sm border border-slate-300 rounded-lg bg-white"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500", children: "G\u1EE3i \xFD: T\u1EE5t HA d\xF9ng v\u1EADn m\u1EA1ch (+2-4), PaO2/FiO2 \u2264 300 (+2), Ti\u1EC3u c\u1EA7u \u2264 100k (+2), Bilirubin \u2265 33 umol/L (+2), Creatinine \u2265 170 umol/L (+2), GCS \u2264 12 (+2)." })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: "text-xs font-bold text-amber-950", children: "\u0110i\u1EC3m CLIF-SOFA (Chronic Liver Failure SOFA cho b\u1EC7nh nh\xE2n x\u01A1 gan)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `text-xs font-black px-2 py-0.5 rounded-full ${clifSofaScore >= 12 ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: clifSofaScore >= 12 ? "\u0110\u1ED9 n\u1EB7ng cao (\u2265 12)" : "\u0110\u1ED9 n\u1EB7ng th\u1EA5p (< 12)" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                "input",
+                {
+                  type: "range",
+                  min: "0",
+                  max: "24",
+                  value: clifSofaScore,
+                  onChange: (e2) => onClifSofaChange(parseInt(e2.target.value)),
+                  className: "flex-1 accent-amber-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                "input",
+                {
+                  type: "number",
+                  min: "0",
+                  max: "24",
+                  value: clifSofaScore,
+                  onChange: (e2) => onClifSofaChange(parseInt(e2.target.value) || 0),
+                  className: "w-16 px-2 py-1 text-center font-black text-sm border border-amber-300 rounded-lg bg-white"
+                }
+              )
+            ] })
+          ] })
+        ] }),
+        population === "pediatric" && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "p-4 rounded-xl border border-purple-200 bg-purple-50/40 space-y-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: "text-xs font-bold text-purple-950", children: "\u0110i\u1EC3m pSOFA (Pediatric SOFA Score) / Ti\xEAu chu\u1EA9n Phoenix Sepsis 2024" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `text-xs font-black px-2 py-0.5 rounded-full ${psofaScore >= 8 ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"}`, children: psofaScore >= 8 ? "\u0110\u1ED9 n\u1EB7ng cao (\u2265 8)" : "\u0110\u1ED9 n\u1EB7ng th\u1EA5p (< 8)" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "range",
+                min: "0",
+                max: "24",
+                value: psofaScore,
+                onChange: (e2) => onPsofaChange(parseInt(e2.target.value)),
+                className: "flex-1 accent-purple-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "number",
+                min: "0",
+                max: "24",
+                value: psofaScore,
+                onChange: (e2) => onPsofaChange(parseInt(e2.target.value) || 0),
+                className: "w-16 px-2 py-1 text-center font-black text-sm border border-purple-300 rounded-lg bg-white"
+              }
+            )
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: `rounded-2xl border p-5 shadow-sm space-y-3 transition-all ${isGroup2 ? "bg-rose-50/80 border-rose-300 text-rose-950" : "bg-emerald-50/80 border-emerald-300 text-emerald-950"}`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-3", children: [
+          isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldAlert, { className: "w-8 h-8 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ShieldCheck, { className: "w-8 h-8 text-emerald-600 shrink-0" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-base font-black", children: riskResult.groupLabelVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "text-xs opacity-90 mt-0.5", children: [
+              "C\u01A1 s\u1EDF ph\xE2n t\u1EA7ng: ",
+              checkedGeneralRiskIds.length,
+              " y\u1EBFu t\u1ED1 nguy c\u01A1 chung \u2022 ",
+              riskResult.severityScoreType.toUpperCase(),
+              " = ",
+              riskResult.severityScoreValue
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "p-3 rounded-xl bg-white/80 border border-black/5 text-xs space-y-1", children: riskResult.rationalesVi.map((rat, idx) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "font-bold", children: "\u2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: rat })
+        ] }, idx)) })
+      ] }),
+      isGroup2 && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bg-white rounded-2xl border border-rose-200 p-5 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-between border-b border-rose-100 pb-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center space-x-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Bug, { className: "w-4 h-4 text-rose-600" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h3", { className: "text-xs font-bold uppercase tracking-wider text-rose-900", children: "C. X\xE1c \u0111\u1ECBnh Nguy c\u01A1 T\xE1c nh\xE2n Vi khu\u1EA9n \u0110a kh\xE1ng C\u1EE5 th\u1EC3" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "text-[11px] text-slate-500", children: "Ch\u1ECDn c\xE1c t\xE1c nh\xE2n nghi ng\u1EDD \u0111\u1EC3 m\u1EDF r\u1ED9ng kh\xE1ng sinh bao ph\u1EE7" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: `p-3.5 rounded-xl border cursor-pointer transition-all ${checkedSpecificRisks.includes("mrsa") ? "bg-rose-50 border-rose-500 shadow-2xs" : "border-slate-200 hover:bg-slate-50"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: checkedSpecificRisks.includes("mrsa"),
+                onChange: () => onToggleSpecificRisk("mrsa"),
+                className: "mt-0.5 rounded text-rose-600 focus:ring-rose-500 h-4 w-4"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs font-bold text-slate-900", children: "Nguy c\u01A1 T\u1EE5 c\u1EA7u v\xE0ng kh\xE1ng Methicillin (MRSA)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5 leading-relaxed", children: "C\xF3 d\xF9ng FQ \u0111\u01A1n tr\u1ECB trong 90 ng\xE0y, HIV CD4 < 50, \u0111\u1EB7t CVC/sonde ti\u1EC3u, ti\xEAm ch\xEDch ma t\xFAy, ti\u1EC1n c\u0103n MRSA." })
+            ] })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: `p-3.5 rounded-xl border cursor-pointer transition-all ${checkedSpecificRisks.includes("esbl") ? "bg-amber-50 border-amber-500 shadow-2xs" : "border-slate-200 hover:bg-slate-50"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: checkedSpecificRisks.includes("esbl"),
+                onChange: () => onToggleSpecificRisk("esbl"),
+                className: "mt-0.5 rounded text-amber-600 focus:ring-amber-500 h-4 w-4"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs font-bold text-slate-900", children: "Nguy c\u01A1 Enterobacterales sinh ESBL" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5 leading-relaxed", children: "D\xF9ng corticoid k\xE9o d\xE0i, sonde d\u1EA1 d\xE0y/ti\u1EC3u l\u01B0u, n\u1EB1m vi\u1EC7n d\xE0i h\u1EA1n, l\u1ECDc m\xE1u HD, ti\u1EC1n c\u0103n nhi\u1EC5m ESBL." })
+            ] })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: `p-3.5 rounded-xl border cursor-pointer transition-all ${checkedSpecificRisks.includes("pseudo_acineto") ? "bg-purple-50 border-purple-500 shadow-2xs" : "border-slate-200 hover:bg-slate-50"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: checkedSpecificRisks.includes("pseudo_acineto"),
+                onChange: () => onToggleSpecificRisk("pseudo_acineto"),
+                className: "mt-0.5 rounded text-purple-600 focus:ring-purple-500 h-4 w-4"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs font-bold text-slate-900", children: "Nguy c\u01A1 Pseudomonas / Acinetobacter \u0111a kh\xE1ng" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5 leading-relaxed", children: "N\u1EB1m ICU > 5 ng\xE0y, th\u1EDF m\xE1y/n\u1ED9i kh\xED qu\u1EA3n, li\u1EC7t gi\u01B0\u1EDDng, \u0111\xE3 d\xF9ng CG ph\u1ED5 r\u1ED9ng/Carbapenem/AG/FQ \u2265 7 ng\xE0y." })
+            ] })
+          ] }) }),
+          site === "urinary" && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: `p-3.5 rounded-xl border cursor-pointer transition-all ${checkedSpecificRisks.includes("enterococcus") ? "bg-indigo-50 border-indigo-500 shadow-2xs" : "border-slate-200 hover:bg-slate-50"}`, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-start space-x-2.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                checked: checkedSpecificRisks.includes("enterococcus"),
+                onChange: () => onToggleSpecificRisk("enterococcus"),
+                className: "mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 h-4 w-4"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "text-xs font-bold text-slate-900", children: "Nguy c\u01A1 Enterococcus spp. (VRE)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-[11px] text-slate-500 mt-0.5 leading-relaxed", children: "\u0110\u1EB7t sonde ti\u1EC3u l\u01B0u k\xE9o d\xE0i, ti\u1EC1n s\u1EED ph\u01A1i nhi\u1EC5m Vancomycin ho\u1EB7c Cephalosporin th\u1EBF h\u1EC7 3." })
+            ] })
+          ] }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex justify-between pt-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          "button",
+          {
+            onClick: onPrevStep,
+            className: "py-2.5 px-4 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs flex items-center space-x-1.5 hover:bg-slate-50 transition-all cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowLeft, { className: "w-4 h-4" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Quay l\u1EA1i" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+          "button",
+          {
+            onClick: onNextStep,
+            className: "py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-2 shadow-sm transition-all cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { children: "Ti\u1EBFp t\u1EE5c: Xem Ph\xE1c \u0111\u1ED3 Kh\xE1ng sinh Kh\u1EDFi \u0111\u1EA7u" }),
+              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ArrowRight, { className: "w-4 h-4" })
+            ]
+          }
+        )
+      ] })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepEmpiric.tsx
+  var import_react14 = __toESM(require_react(), 1);
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime(), 1);
+  var StepEmpiric = ({
+    site,
+    population,
+    riskGroup,
+    sepsisSource,
+    specificRisks,
+    onSelectDrugForDosing,
+    onNextStep,
+    onPrevStep
+  }) => {
+    const [activeTab, setActiveTab] = (0, import_react14.useState)("regimens");
+    const regimens = getEmpiricRegimens(
+      site,
+      population,
+      riskGroup,
+      sepsisSource,
+      specificRisks
+    );
+    const antibiogramData = getAntibiogramForSite(site, population);
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300", children: "B\u01B0\u1EDBc 4" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h2", { className: "text-xl font-bold text-slate-900 dark:text-slate-100", children: "Ph\xE1c \u0111\u1ED3 Kh\xE1ng sinh Kh\u1EDFi \u0111\u1EA7u & D\u1EEF li\u1EC7u Vi sinh" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-1", children: [
+            "L\u1EF1a ch\u1ECDn ph\xE1c \u0111\u1ED3 kinh nghi\u1EC7m t\u1ED1i \u01B0u theo ph\xE2n t\u1EA7ng nguy c\u01A1 (",
+            riskGroup === "group_1" ? "Nh\xF3m 1 - Nguy c\u01A1 th\u1EA5p" : "Nh\xF3m 2 - Nguy c\u01A1 cao VK\u0110K",
+            ") v\xE0 tham kh\u1EA3o \u0111\u1ED9 nh\u1EA1y c\u1EA3m t\u1EA1i ch\u1ED7 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi."
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setActiveTab("regimens"),
+              className: `px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${activeTab === "regimens" ? "bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+              children: [
+                "\u{1F4CB} Ph\xE1c \u0111\u1ED3 Khuy\u1EBFn c\xE1o (",
+                regimens.length,
+                ")"
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setActiveTab("antibiogram"),
+              className: `px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${activeTab === "antibiogram" ? "bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm" : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+              children: "\u{1F9EB} Vi sinh & KS\u0110 t\u1EA1i ch\u1ED7"
+            }
+          )
+        ] })
+      ] }),
+      activeTab === "regimens" && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: `p-4 rounded-xl border text-sm ${riskGroup === "group_2" ? "bg-amber-50/80 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800/50 text-amber-900 dark:text-amber-200" : "bg-emerald-50/80 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-200"}`, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start gap-2.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-lg", children: riskGroup === "group_2" ? "\u26A0\uFE0F" : "\u2705" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("strong", { className: "font-semibold", children: riskGroup === "group_2" ? "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 2 (Nguy c\u01A1 cao vi khu\u1EA9n \u0111a kh\xE1ng ho\u1EB7c b\u1EC7nh c\u1EA3nh n\u1EB7ng):" : "B\u1EC7nh nh\xE2n thu\u1ED9c Nh\xF3m 1 (\xCDt nguy c\u01A1 vi khu\u1EA9n \u0111a kh\xE1ng):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs mt-1 leading-relaxed opacity-90", children: riskGroup === "group_2" ? "B\u1EAFt bu\u1ED9c s\u1EED d\u1EE5ng kh\xE1ng sinh ph\u1ED5 r\u1ED9ng theo l\u01B0u \u0111\u1ED3 BVBND (BL-BLI li\u1EC1u cao ho\u1EB7c Carbapenem), c\xF3 th\u1EC3 c\u1EA7n ph\u1ED1i h\u1EE3p bao ph\u1EE7 MRSA n\u1EBFu c\xF3 ch\u1EC9 \u0111\u1ECBnh. Lu\xF4n l\u1EA5y c\u1EA5y m\xE1u v\xE0 b\u1EC7nh ph\u1EA9m tr\u01B0\u1EDBc li\u1EC1u \u0111\u1EA7u ti\xEAn." : "\u01AFu ti\xEAn kh\xE1ng sinh ph\u1ED5 h\u1EB9p ho\u1EB7c ph\u1ED5 trung b\xECnh ph\xF9 h\u1EE3p. H\u1EA1n ch\u1EBF l\u1EA1m d\u1EE5ng nh\xF3m Carbapenem, Colistin hay Vancomycin khi ch\u01B0a c\xF3 b\u1EB1ng ch\u1EE9ng vi sinh." })
+          ] })
+        ] }) }),
+        regimens.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "p-8 text-center bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-500 dark:text-slate-400 text-sm", children: "Kh\xF4ng t\xECm th\u1EA5y ph\xE1c \u0111\u1ED3 \u0111\u1EB7c hi\u1EC7u cho t\u1ED5 h\u1EE3p ti\xEAu ch\xED hi\u1EC7n t\u1EA1i. Vui l\xF2ng ki\u1EC3m tra l\u1EA1i b\u1ED1i c\u1EA3nh l\xE2m s\xE0ng ho\u1EB7c h\u1ED9i ch\u1EA9n chuy\xEAn khoa Truy\u1EC1n nhi\u1EC5m / D\u01B0\u1EE3c l\xE2m s\xE0ng." }) }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 gap-5", children: regimens.map((regimen) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+          "div",
+          {
+            className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-blue-300 dark:hover:border-blue-700 transition-all",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100 dark:border-slate-800", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "text-base font-bold text-slate-900 dark:text-slate-100", children: regimen.titleVi }),
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400 italic", children: regimen.titleEn })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: regimen.source })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "space-y-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400", children: "Thu\u1ED1c l\u1EF1a ch\u1ECDn & Li\u1EC1u khuy\u1EBFn c\xE1o:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: regimen.drugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                  "div",
+                  {
+                    className: "p-3.5 rounded-lg border border-slate-100 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-800/40 flex flex-col justify-between",
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-start justify-between gap-2", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-bold text-sm text-blue-900 dark:text-blue-300", children: drug.drugName }),
+                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300", children: drug.route })
+                        ] }),
+                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1.5 text-xs text-slate-700 dark:text-slate-300", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "font-semibold text-slate-900 dark:text-slate-100", children: "Li\u1EC1u chu\u1EA9n:" }),
+                          " ",
+                          drug.dosageVi
+                        ] }),
+                        drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-1 text-[11px] text-amber-700 dark:text-amber-400 flex items-center gap-1 font-medium", children: [
+                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "\u23F1\uFE0F" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: drug.infusionNoteVi })
+                        ] })
+                      ] }),
+                      drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 pt-2.5 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "text-[11px] text-slate-500 dark:text-slate-400", children: "C\xF3 s\u1EB5n c\xF4ng c\u1EE5 t\xEDnh li\u1EC1u" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                          "button",
+                          {
+                            type: "button",
+                            onClick: () => onSelectDrugForDosing(drug.drugId),
+                            className: "px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all flex items-center gap-1",
+                            children: [
+                              "T\xEDnh li\u1EC1u chi ti\u1EBFt",
+                              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "\u2192" })
+                            ]
+                          }
+                        )
+                      ] })
+                    ]
+                  },
+                  dIdx
+                )) })
+              ] }),
+              regimen.combinationRulesVi && regimen.combinationRulesVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-blue-900 dark:text-blue-300 mb-1 flex items-center gap-1.5", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "\u{1F4A1}" }),
+                  " Quy t\u1EAFc ph\u1ED1i h\u1EE3p l\xE2m s\xE0ng:"
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1", children: regimen.combinationRulesVi.map((rule, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { children: rule }, rIdx)) })
+              ] }),
+              regimen.cautionVi && regimen.cautionVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-3 p-3 rounded-lg bg-rose-50/50 dark:bg-rose-950/20 border border-rose-100 dark:border-rose-900/40", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h4", { className: "text-xs font-bold text-rose-900 dark:text-rose-300 mb-1 flex items-center gap-1.5", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { children: "\u26A0\uFE0F" }),
+                  " Ch\xFA \xFD an to\xE0n & Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh ph\u1ED1i h\u1EE3p:"
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-800 dark:text-rose-300 space-y-1", children: regimen.cautionVi.map((c4, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("li", { children: c4 }, cIdx)) })
+              ] })
+            ]
+          },
+          regimen.id
+        )) })
+      ] }),
+      activeTab === "antibiogram" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "space-y-5", children: antibiogramData ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("h3", { className: "text-base font-bold text-slate-900 dark:text-slate-100", children: [
+              "D\u1EEF li\u1EC7u Vi sinh & Kh\xE1ng sinh \u0111\u1ED3 t\u1EA1i ch\u1ED7 (Nhi\u1EC5m tr\xF9ng ",
+              site === "respiratory" ? "H\xF4 h\u1EA5p" : site === "peritoneal" ? "\u1ED4 b\u1EE5ng" : site === "urinary" ? "Ti\u1EBFt ni\u1EC7u" : "To\xE0n th\xE2n",
+              ")"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("p", { className: "text-xs text-slate-500 dark:text-slate-400", children: [
+              "Th\u1EDDi gian kh\u1EA3o s\xE1t: ",
+              antibiogramData.period,
+              " | T\u1ED5ng s\u1ED1 m\u1EABu ph\xE2n l\u1EADp: ",
+              antibiogramData.sampleTotal,
+              " ch\u1EE7ng"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(SourceBadge, { source: antibiogramData.source })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("table", { className: "w-full text-xs text-left border-collapse", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 font-semibold", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "T\xE1c nh\xE2n g\xE2y b\u1EC7nh" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3 text-center", children: "T\u1EF7 l\u1EC7 ph\xE2n l\u1EADp" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1ED9 nh\u1EA1y c\u1EA3m v\u1EDBi kh\xE1ng sinh th\u01B0\u1EDDng d\xF9ng" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("th", { className: "py-2.5 px-3", children: "\u0110\u1EB7c \u0111i\u1EC3m kh\xE1ng thu\u1ED1c" })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("tbody", { className: "divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300", children: antibiogramData.organisms.map((org, oIdx) => /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("tr", { className: "hover:bg-slate-50/50 dark:hover:bg-slate-800/40", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("td", { className: "py-3 px-3 font-semibold text-slate-900 dark:text-slate-100", children: [
+              org.organismName,
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "text-[11px] text-slate-500 font-normal", children: [
+                "(n = ",
+                org.sampleCount,
+                ")"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("td", { className: "py-3 px-3 text-center font-bold text-blue-600 dark:text-blue-400", children: [
+              org.pctOfIsolates,
+              "%"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-3 px-3", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-wrap gap-1.5", children: org.sensitivities.map((s3, sIdx) => {
+              const isHigh = s3.sensitivityPct >= 70;
+              const isLow = s3.sensitivityPct < 40;
+              return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+                "span",
+                {
+                  className: `px-2 py-0.5 rounded text-[11px] font-medium border ${isHigh ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800" : isLow ? "bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800" : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800"}`,
+                  title: `${s3.antibioticName}: ${s3.sensitivityPct}% nh\u1EA1y`,
+                  children: [
+                    s3.antibioticName,
+                    ": ",
+                    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("strong", { className: "font-bold", children: [
+                      s3.sensitivityPct,
+                      "%"
+                    ] })
+                  ]
+                },
+                sIdx
+              );
+            }) }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("td", { className: "py-3 px-3 text-rose-600 dark:text-rose-400 font-medium", children: org.notableResistance || "\u2014" })
+          ] }, oIdx)) })
+        ] }) })
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "p-8 text-center bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-slate-500 dark:text-slate-400 text-sm", children: "Ch\u01B0a c\xF3 d\u1EEF li\u1EC7u Antibiogram ri\xEAng cho v\u1ECB tr\xED nhi\u1EC5m tr\xF9ng n\xE0y. Vui l\xF2ng tham kh\u1EA3o b\xE1o c\xE1o vi sinh chung c\u1EE7a B\u1EC7nh vi\u1EC7n B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi n\u0103m 2024." }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: onPrevStep,
+            className: "px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition-all",
+            children: "\u2190 Quay l\u1EA1i B\u01B0\u1EDBc 3 (Y\u1EBFu t\u1ED1 nguy c\u01A1)"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: onNextStep,
+            className: "px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-all flex items-center gap-2",
+            children: "Ti\u1EBFp t\u1EE5c: B\u01B0\u1EDBc 5 (\u0110\xE1nh gi\xE1 l\u1EA1i 48-72h) \u2192"
+          }
+        )
+      ] })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/StepReassess.tsx
+  var import_react15 = __toESM(require_react(), 1);
+  var import_jsx_runtime18 = __toESM(require_jsx_runtime(), 1);
+  var StepReassess = ({
+    site,
+    onSelectDrugForDosing,
+    onPrevStep
+  }) => {
+    const [subTab, setSubTab] = (0, import_react15.useState)("decision_tree");
+    const [clinicalStatus, setClinicalStatus] = (0, import_react15.useState)("improved");
+    const [cultureStatus, setCultureStatus] = (0, import_react15.useState)("pending");
+    const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react15.useState)("sensitive");
+    const [selectedMdr, setSelectedMdr] = (0, import_react15.useState)("cre");
+    const [creEnzyme, setCreEnzyme] = (0, import_react15.useState)("mbl");
+    const [currentDays, setCurrentDays] = (0, import_react15.useState)(5);
+    const [checkedClinical, setCheckedClinical] = (0, import_react15.useState)([
+      "crit_afebrile",
+      "crit_hemodynamic",
+      "crit_oxygenation",
+      "crit_local_signs",
+      "crit_oral_intake"
+    ]);
+    const [checkedLab, setCheckedLab] = (0, import_react15.useState)(["crit_pct"]);
+    const reassessResult = evaluate48hReassessment(
+      clinicalStatus,
+      cultureStatus,
+      susceptibilityStatus
+    );
+    const stopResult = evaluateStopCriteria(
+      checkedClinical,
+      checkedLab,
+      currentDays,
+      site
+    );
+    const mdrData = getMdrPathway(selectedMdr);
+    const toggleClinicalCheck = (id) => {
+      setCheckedClinical(
+        (prev) => prev.includes(id) ? prev.filter((x2) => x2 !== id) : [...prev, id]
+      );
+    };
+    const toggleLabCheck = (id) => {
+      setCheckedLab(
+        (prev) => prev.includes(id) ? prev.filter((x2) => x2 !== id) : [...prev, id]
+      );
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300", children: "B\u01B0\u1EDBc 5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h2", { className: "text-xl font-bold text-slate-900 dark:text-slate-100", children: "\u0110\xE1nh gi\xE1 l\u1EA1i 48-72h & Xu\u1ED1ng thang / Tr\xFAng \u0111\xEDch / Ng\u01B0ng KS" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400 mt-1", children: "L\u01B0u \u0111\u1ED3 \u0111\xE1nh gi\xE1 l\u1EA1i hi\u1EC7u qu\u1EA3 sau 48-72 gi\u1EDD, \u0111i\u1EC1u tr\u1ECB tr\xFAng \u0111\xEDch vi khu\u1EA9n \u0111a kh\xE1ng (CRE, DTR-PA, CRAB), b\u1EA3ng ki\u1EC3m ng\u01B0ng kh\xE1ng sinh v\xE0 chuy\u1EC3n \u0111\u1ED5i IV-to-PO." })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setSubTab("decision_tree"),
+            className: `px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${subTab === "decision_tree" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u23F1\uFE0F" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "1. \u0110\xE1nh gi\xE1 l\u1EA1i 48-72h (L\u01B0u \u0111\u1ED3 BVBND)" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setSubTab("mdr_pathways"),
+            className: `px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${subTab === "mdr_pathways" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u{1F3AF}" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "2. Ph\xE1c \u0111\u1ED3 Tr\xFAng \u0111\xEDch VK\u0110K (CRE / CRAB / DTR-PA)" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setSubTab("stop_criteria"),
+            className: `px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${subTab === "stop_criteria" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u{1F6D1}" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "3. B\u1EA3ng ki\u1EC3m Ng\u01B0ng Kh\xE1ng Sinh" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setSubTab("iv_to_po"),
+            className: `px-3 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${subTab === "iv_to_po" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u{1F48A}" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "4. Chuy\u1EC3n t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO)" })
+            ]
+          }
+        )
+      ] }),
+      subTab === "decision_tree" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-6", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-sm font-bold text-slate-900 dark:text-slate-100", children: "Nh\u1EADp t\xECnh tr\u1EA1ng ng\u01B0\u1EDDi b\u1EC7nh t\u1EA1i th\u1EDDi \u0111i\u1EC3m 48 - 72 gi\u1EDD:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 2 } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2", children: "1. \u0110\xE1p \u1EE9ng l\xE2m s\xE0ng:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+              { id: "improved", label: "C\u1EA3i thi\u1EC7n (H\u1EBFt s\u1ED1t, sinh hi\u1EC7u \u1ED5n)", color: "text-emerald-600 dark:text-emerald-400" },
+              { id: "not_improved", label: "Kh\xF4ng c\u1EA3i thi\u1EC7n", color: "text-amber-600 dark:text-amber-400" },
+              { id: "worsened", label: "X\u1EA5u \u0111i (S\u1ED1c, suy t\u1EA1ng t\u0103ng)", color: "text-rose-600 dark:text-rose-400" }
+            ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                "input",
+                {
+                  type: "radio",
+                  name: "clinicalStatus",
+                  checked: clinicalStatus === opt.id,
+                  onChange: () => setClinicalStatus(opt.id),
+                  className: "text-blue-600 focus:ring-blue-500"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: `font-medium ${opt.color}`, children: opt.label })
+            ] }, opt.id)) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2", children: "2. K\u1EBFt qu\u1EA3 c\u1EA5y vi sinh:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+              { id: "pending", label: "\u0110ang ch\u1EDD k\u1EBFt qu\u1EA3" },
+              { id: "negative", label: "\xC2m t\xEDnh (Kh\xF4ng m\u1ECDc vi khu\u1EA9n)" },
+              { id: "positive", label: "D\u01B0\u01A1ng t\xEDnh (Ph\xE2n l\u1EADp \u0111\u01B0\u1EE3c vi khu\u1EA9n)" }
+            ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                "input",
+                {
+                  type: "radio",
+                  name: "cultureStatus",
+                  checked: cultureStatus === opt.id,
+                  onChange: () => setCultureStatus(opt.id),
+                  className: "text-blue-600 focus:ring-blue-500"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-700 dark:text-slate-300", children: opt.label })
+            ] }, opt.id)) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: `p-3.5 rounded-lg border transition-all ${cultureStatus !== "positive" ? "opacity-40 pointer-events-none border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900" : "border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40"}`, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { className: "block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2", children: "3. \u0110\u1ED9 nh\u1EA1y KS tr\xEAn KS\u0110:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: [
+              { id: "sensitive", label: "Nh\u1EA1y c\u1EA3m (S)" },
+              { id: "resistant", label: "\u0110\u1EC1 kh\xE1ng (R)" },
+              { id: "intermediate", label: "Trung gian (I)" }
+            ].map((opt) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("label", { className: "flex items-center gap-2 cursor-pointer text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                "input",
+                {
+                  type: "radio",
+                  name: "susceptibilityStatus",
+                  disabled: cultureStatus !== "positive",
+                  checked: susceptibilityStatus === opt.id,
+                  onChange: () => setSusceptibilityStatus(opt.id),
+                  className: "text-blue-600 focus:ring-blue-500"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-700 dark:text-slate-300", children: opt.label })
+            ] }, opt.id)) })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: `p-4 rounded-xl border mt-4 ${reassessResult.actionType === "de_escalate" ? "bg-emerald-50/90 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200" : reassessResult.actionType === "switch_by_ast" ? "bg-rose-50/90 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800 text-rose-950 dark:text-rose-200" : reassessResult.actionType === "consult" ? "bg-amber-50/90 dark:bg-amber-950/20 border-amber-300 dark:border-amber-800 text-amber-950 dark:text-amber-200" : "bg-blue-50/90 dark:bg-blue-950/20 border-blue-300 dark:border-blue-800 text-blue-950 dark:text-blue-200"}`, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-start gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-2xl", children: reassessResult.actionType === "de_escalate" ? "\u{1F7E2}" : reassessResult.actionType === "switch_by_ast" ? "\u{1F534}" : reassessResult.actionType === "consult" ? "\u{1F7E1}" : "\u{1F535}" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "font-bold text-sm", children: reassessResult.actionTitleVi }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("ul", { className: "list-disc list-inside text-xs space-y-1", children: reassessResult.recommendationsVi.map((rec, rIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("li", { className: "leading-relaxed", children: rec }, rIdx)) }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "pt-2 flex flex-wrap gap-2", children: [
+              reassessResult.stopChecklistEligible && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setSubTab("stop_criteria"),
+                  className: "px-2.5 py-1 text-xs font-semibold rounded bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all",
+                  children: "Ki\u1EC3m tra B\u1EA3ng ki\u1EC3m ng\u01B0ng KS ngay \u2192"
+                }
+              ),
+              reassessResult.ivToPoEligible && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setSubTab("iv_to_po"),
+                  className: "px-2.5 py-1 text-xs font-semibold rounded bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all",
+                  children: "Xem x\xE9t Chuy\u1EC3n \u0111\u1ED5i IV sang PO \u2192"
+                }
+              )
+            ] })
+          ] })
+        ] }) })
+      ] }) }),
+      subTab === "mdr_pathways" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5", children: [
+          { id: "cre", label: "CRE (Enterobacterales kh\xE1ng Carbapenem)" },
+          { id: "dtr_pseudo", label: "DTR-Pseudomonas aeruginosa" },
+          { id: "crab", label: "CRAB (A. baumannii kh\xE1ng Carbapenem)" },
+          { id: "s_maltophilia", label: "Stenotrophomonas maltophilia" }
+        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setSelectedMdr(item.id),
+            className: `p-3 rounded-lg text-left text-xs font-bold border transition-all ${selectedMdr === item.id ? "border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 ring-2 ring-blue-500/20" : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-slate-300"}`,
+            children: item.label
+          },
+          item.id
+        )) }),
+        mdrData && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-bold text-slate-900 dark:text-slate-100", children: mdrData.titleVi }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400", children: mdrData.definitionVi })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_HDSDKS_2026", page: 15 } })
+          ] }),
+          selectedMdr === "cre" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "text-xs font-bold text-slate-700 dark:text-slate-300", children: "Ph\xE2n lo\u1EA1i theo ki\u1EC3u men Carbapenemase (k\u1EBFt qu\u1EA3 PCR/test nhanh mCIM/Carba NP):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap gap-2", children: [
+              { id: "mbl", label: "Metallo-beta-lactamase (MBL: NDM, VIM, IMP)" },
+              { id: "kpc", label: "Serine Carbapenemase nh\xF3m A (KPC)" },
+              { id: "oxa48", label: "OXA-48-like (Serine Carbapenemase nh\xF3m D)" }
+            ].map((enz) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+              "button",
+              {
+                type: "button",
+                onClick: () => setCreEnzyme(enz.id),
+                className: `px-2.5 py-1 text-xs font-medium rounded-md border transition-all ${creEnzyme === enz.id ? "bg-blue-600 text-white border-blue-600" : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700"}`,
+                children: enz.label
+              },
+              enz.id
+            )) }),
+            creEnzyme === "mbl" && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-2.5 rounded bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/50 text-xs text-amber-900 dark:text-amber-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "\u26A0\uFE0F MBL (NDM):" }),
+              " Men Metallo-beta-lactamase kh\xE1ng l\u1EA1i CAZ-AVI \u0111\u01A1n \u0111\u1ED9c. B\u1EAFt bu\u1ED9c ph\u1ED1i h\u1EE3p ",
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "Ceftazidime/Avibactam + Aztreonam" }),
+              " truy\u1EC1n \u0111\u1ED3ng th\u1EDDi qua ",
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { children: "Y-site" }),
+              "."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400", children: "Kh\xE1ng sinh \u0110\u1EA7u tay Khuy\u1EBFn c\xE1o:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: mdrData.firstLineDrugs.map((drug, dIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+              "div",
+              {
+                className: "p-3.5 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 flex flex-col justify-between",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "font-bold text-sm text-blue-900 dark:text-blue-300", children: drug.nameVi }),
+                    /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "text-xs text-slate-700 dark:text-slate-300 mt-1", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-semibold", children: "Li\u1EC1u:" }),
+                      " ",
+                      drug.standardDoseVi
+                    ] }),
+                    drug.infusionNoteVi && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "mt-1 text-[11px] text-amber-700 dark:text-amber-400", children: [
+                      "\u23F1\uFE0F ",
+                      drug.infusionNoteVi
+                    ] })
+                  ] }),
+                  drug.hasDosingCalculator && drug.drugId && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "mt-3 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                    "button",
+                    {
+                      type: "button",
+                      onClick: () => onSelectDrugForDosing(drug.drugId),
+                      className: "px-2.5 py-1 text-xs font-semibold rounded bg-blue-600 hover:bg-blue-700 text-white transition-all",
+                      children: "T\xEDnh li\u1EC1u \u2192"
+                    }
+                  ) })
+                ]
+              },
+              dIdx
+            )) })
+          ] }),
+          mdrData.combinationRegimens && mdrData.combinationRegimens.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400", children: "Ph\xE1c \u0111\u1ED3 Ph\u1ED1i h\u1EE3p B\u1EAFt bu\u1ED9c:" }),
+            mdrData.combinationRegimens.map((combo, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+              "div",
+              {
+                className: "p-3 rounded-lg bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40 space-y-2",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex flex-wrap items-center gap-2", children: combo.map((item, iIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_react15.default.Fragment, { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-bold text-xs text-indigo-950 dark:text-indigo-200 bg-white dark:bg-slate-900 px-2 py-1 rounded border border-indigo-200 dark:border-indigo-800", children: item.nameVi }),
+                    iIdx < combo.length - 1 && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "font-black text-xs text-indigo-500", children: "+" })
+                  ] }, iIdx)) }),
+                  combo.some((c4) => c4.infusionNoteVi) && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-indigo-900 dark:text-indigo-300", children: combo.find((c4) => c4.infusionNoteVi)?.infusionNoteVi })
+                ]
+              },
+              cIdx
+            ))
+          ] }),
+          mdrData.contraindicatedOrIneffectiveVi && mdrData.contraindicatedOrIneffectiveVi.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3 rounded-lg bg-rose-50/80 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/50 space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("h4", { className: "text-xs font-bold text-rose-900 dark:text-rose-300 flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u26D4" }),
+              " Ph\xE1c \u0111\u1ED3 KH\xD4NG khuy\u1EBFn c\xE1o / Kh\xF4ng hi\u1EC7u qu\u1EA3:"
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("ul", { className: "list-disc list-inside text-xs text-rose-800 dark:text-rose-300 space-y-0.5", children: mdrData.contraindicatedOrIneffectiveVi.map((warn, wIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("li", { children: warn }, wIdx)) })
+          ] })
+        ] })
+      ] }),
+      subTab === "stop_criteria" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-5", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-bold text-slate-900 dark:text-slate-100", children: "B\u1EA3ng ki\u1EC3m \u0110\u1EE7 \u0111i\u1EC1u ki\u1EC7n Ng\u01B0ng Kh\xE1ng Sinh (Stopping Checklist)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400", children: "D\u1EF1a tr\xEAn l\u01B0u \u0111\u1ED3 BV B\u1EC7nh Nhi\u1EC7t \u0110\u1EDBi & c\xE1c th\u1EED nghi\u1EC7m l\xE2m s\xE0ng ng\u1EABu nhi\xEAn c\xF3 \u0111\u1ED1i ch\u1EE9ng (RCTs)." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BVBND_LuuDo", page: 3 } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs font-bold text-slate-800 dark:text-slate-200", children: "S\u1ED1 ng\xE0y b\u1EC7nh nh\xE2n \u0111\xE3 d\xF9ng kh\xE1ng sinh hi\u1EC7n t\u1EA1i:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("p", { className: "text-[11px] text-slate-500 dark:text-slate-400", children: [
+              "Th\u1EDDi gian t\u1ED1i thi\u1EC3u chu\u1EA9n cho \u1ED5 nhi\u1EC5m n\xE0y: ",
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("strong", { className: "text-blue-600 dark:text-blue-400", children: [
+                stopResult.minDays,
+                " ng\xE0y"
+              ] }),
+              " (",
+              stopResult.trialName,
+              ")"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+              "input",
+              {
+                type: "number",
+                min: "1",
+                max: "42",
+                value: currentDays,
+                onChange: (e2) => setCurrentDays(Math.max(1, parseInt(e2.target.value) || 1)),
+                className: "w-20 px-3 py-1.5 text-center text-sm font-bold rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-xs font-semibold text-slate-600 dark:text-slate-400", children: "ng\xE0y" })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300", children: "Ti\xEAu chu\u1EA9n L\xE2m s\xE0ng (B\u1EAFt bu\u1ED9c \u0111\u1EA1t c\u1EA3 5/5):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("span", { className: `text-xs font-bold px-2 py-0.5 rounded ${stopResult.clinicalCriteriaMet ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300" : "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"}`, children: [
+              "\u0110\u1EA1t ",
+              stopResult.clinicalCriteriaCount,
+              " / 5 ti\xEAu ch\xED"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.clinicalCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+            "label",
+            {
+              className: "flex items-start gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 cursor-pointer hover:bg-slate-100/50 dark:hover:bg-slate-800/60 transition-all text-xs",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                  "input",
+                  {
+                    type: "checkbox",
+                    checked: checkedClinical.includes(item.id),
+                    onChange: () => toggleClinicalCheck(item.id),
+                    className: "mt-0.5 rounded text-blue-600 focus:ring-blue-500"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-800 dark:text-slate-200 leading-relaxed font-medium", children: item.textVi })
+              ]
+            },
+            item.id
+          )) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300", children: "Ti\xEAu chu\u1EA9n C\u1EADn L\xE2m s\xE0ng (C\u1EA7n \u0111\u1EA1t \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("span", { className: `text-xs font-bold px-2 py-0.5 rounded ${stopResult.labCriteriaMet ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300" : "bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300"}`, children: [
+              "\u0110\u1EA1t ",
+              stopResult.labCriteriaCount,
+              " ch\u1EC9 s\u1ED1"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-2", children: STOP_ANTIBIOTIC_CHECKLIST.labCriteria.map((item) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+            "label",
+            {
+              className: "flex items-start gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 cursor-pointer hover:bg-slate-100/50 dark:hover:bg-slate-800/60 transition-all text-xs",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+                  "input",
+                  {
+                    type: "checkbox",
+                    checked: checkedLab.includes(item.id),
+                    onChange: () => toggleLabCheck(item.id),
+                    className: "mt-0.5 rounded text-blue-600 focus:ring-blue-500"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-slate-800 dark:text-slate-200 leading-relaxed font-medium", children: item.textVi })
+              ]
+            },
+            item.id
+          )) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: `p-4 rounded-xl border text-sm ${stopResult.canStop ? "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200" : "bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200"}`, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-start gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: "text-2xl", children: stopResult.canStop ? "\u{1F389}" : "\u23F3" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("strong", { className: "font-bold", children: stopResult.canStop ? "\u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N XEM X\xC9T NG\u01AFNG KH\xC1NG SINH AN TO\xC0N" : "CH\u01AFA \u0110\u1EE6 \u0110I\u1EC0U KI\u1EC6N \u0110\u1EC2 NG\u01AFNG KH\xC1NG SINH" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs mt-1 leading-relaxed opacity-90", children: stopResult.canStop ? `B\u1EC7nh nh\xE2n \u0111\xE3 \u0111\u1EA1t \u0111\u1EE7 s\u1ED1 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y), th\u1ECFa m\xE3n 5/5 ti\xEAu chu\u1EA9n \u1ED5n \u0111\u1ECBnh l\xE2m s\xE0ng v\xE0 \xEDt nh\u1EA5t 1 ch\u1EC9 s\u1ED1 ch\u1EC9 \u0111i\u1EC3m c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i. Khuy\u1EBFn c\xE1o ng\u01B0ng kh\xE1ng sinh \u0111\u1EC3 gi\u1EA3m thi\u1EC3u \u0111\u1ED9c t\xEDnh v\xE0 nguy c\u01A1 ch\u1ECDn l\u1ECDc ch\u1EE7ng \u0111\u1EC1 kh\xE1ng.` : `Hi\u1EC7n t\u1EA1i ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 c\xE1c ti\xEAu ch\xED ng\u01B0ng thu\u1ED1c. L\xFD do: ${!stopResult.minDurationMet ? `Ch\u01B0a \u0111\u1EE7 ng\xE0y t\u1ED1i thi\u1EC3u (${currentDays}/${stopResult.minDays} ng\xE0y); ` : ""}${!stopResult.clinicalCriteriaMet ? `Ch\u01B0a \u0111\u1EA1t \u0111\u1EE7 5/5 ti\xEAu chu\u1EA9n l\xE2m s\xE0ng (${stopResult.clinicalCriteriaCount}/5); ` : ""}${!stopResult.labCriteriaMet ? "Ch\u01B0a c\xF3 ch\u1EC9 s\u1ED1 c\u1EADn l\xE2m s\xE0ng thu\u1EADn l\u1EE3i." : ""}` })
+          ] })
+        ] }) })
+      ] }) }),
+      subTab === "iv_to_po" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "space-y-5", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-800", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { className: "text-base font-bold text-slate-900 dark:text-slate-100", children: "Quy tr\xECnh Chuy\u1EC3n \u0111\u1ED5i Kh\xE1ng sinh t\u1EEB Ti\xEAm sang U\u1ED1ng (IV to PO Switch)" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xs text-slate-500 dark:text-slate-400", children: "Theo Quy\u1EBFt \u0111\u1ECBnh s\u1ED1 5631/Q\u0110-BYT n\u0103m 2020 c\u1EE7a B\u1ED9 Y t\u1EBF." })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SourceBadge, { source: { doc: "BYT_5631_2020", page: 85 } })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "p-3.5 rounded-lg bg-rose-50/80 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/50 space-y-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("h4", { className: "text-xs font-bold text-rose-900 dark:text-rose-300 flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u26D4" }),
+            " Ch\u1ED1ng ch\u1EC9 \u0111\u1ECBnh chuy\u1EC3n \u0111\u1ED5i \u0111\u01B0\u1EDDng u\u1ED1ng (B\u1EAFt bu\u1ED9c d\xF9ng to\xE0n b\u1ED9 li\u1EC7u tr\xECnh qua \u0111\u01B0\u1EDDng ti\xEAm t\u0129nh m\u1EA1ch):"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-rose-800 dark:text-rose-300", children: IV_TO_PO_CONTRAINDICATIONS.map((c4, cIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: "\u2022" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { children: c4 })
+          ] }, cIdx)) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "space-y-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h4", { className: "text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300", children: "Danh m\u1EE5c Kh\xE1ng sinh Chuy\u1EC3n \u0111\u1ED5i Th\u01B0\u1EDDng d\xF9ng (Nh\xF3m 1 - Sinh kh\u1EA3 d\u1EE5ng cao > 90%):" }),
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("table", { className: "w-full text-xs text-left border-collapse", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("tr", { className: "border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 font-semibold", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Thu\u1ED1c ti\xEAm (IV)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Chuy\u1EC3n sang thu\u1ED1c u\u1ED1ng (PO)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Li\u1EC1u u\u1ED1ng khuy\u1EBFn c\xE1o" }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { className: "py-2.5 px-3", children: "Sinh kh\u1EA3 d\u1EE5ng (F)" })
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("tbody", { className: "divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300", children: IV_TO_PO_DRUG_PAIRS.filter((p3) => p3.group === 1).map((pair, pIdx) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("tr", { className: "hover:bg-slate-50/50 dark:hover:bg-slate-800/40", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 font-bold text-slate-900 dark:text-slate-100", children: pair.ivName }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 font-semibold text-blue-600 dark:text-blue-400", children: pair.poName }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3", children: pair.poDoseVi }),
+              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { className: "py-2.5 px-3 text-emerald-600 dark:text-emerald-400 font-medium", children: pair.bioavailabilityVi })
+            ] }, pIdx)) })
+          ] }) })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+        "button",
+        {
+          type: "button",
+          onClick: onPrevStep,
+          className: "px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition-all",
+          children: "\u2190 Quay l\u1EA1i B\u01B0\u1EDBc 4 (Ph\xE1c \u0111\u1ED3 kh\u1EDFi \u0111\u1EA7u)"
+        }
+      ) })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/DecisionSummaryCard.tsx
+  var import_jsx_runtime19 = __toESM(require_jsx_runtime(), 1);
+  var DecisionSummaryCard = ({
+    state,
+    riskResult,
+    onNavigateStep,
+    onSwitchToDosing
+  }) => {
+    const isGroup2 = riskResult.group === "group_2";
+    const siteLabels = {
+      respiratory: "H\xF4 h\u1EA5p (Vi\xEAm ph\u1ED5i)",
+      sepsis: "Nhi\u1EC5m khu\u1EA9n huy\u1EBFt",
+      skin_soft_tissue: "Da & M\xF4 m\u1EC1m",
+      urinary: "Ti\u1EBFt ni\u1EC7u",
+      peritoneal: "D\u1ECBch b\xE1ng (SBP)",
+      gastrointestinal: "Ti\xEAu h\xF3a",
+      cns: "Th\u1EA7n kinh trung \u01B0\u01A1ng"
+    };
+    const sepsisSourceLabels = {
+      respiratory: "T\u1EEB \u1ED5 H\xF4 h\u1EA5p",
+      gastrointestinal: "T\u1EEB \u1ED5 Ti\xEAu h\xF3a",
+      skin_soft_tissue: "T\u1EEB \u1ED5 Da m\xF4 m\u1EC1m",
+      peritoneal: "T\u1EEB \u1ED5 D\u1ECBch b\xE1ng",
+      urinary: "T\u1EEB \u1ED5 Ti\u1EBFt ni\u1EC7u"
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sticky top-16 space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center justify-between border-b border-slate-100 pb-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("h3", { className: "text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Activity, { className: "w-3.5 h-3.5 text-blue-600" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "T\xF3m t\u1EAFt Quy\u1EBFt \u0111\u1ECBnh CDSS" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "text-[11px] font-semibold text-slate-400", children: [
+          "B\u01B0\u1EDBc ",
+          state.currentStep,
+          "/5"
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        "div",
+        {
+          onClick: () => onNavigateStep(1),
+          className: "p-2.5 rounded-xl border border-slate-100 hover:border-blue-200 bg-slate-50/50 cursor-pointer transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] font-semibold text-slate-400 uppercase", children: "Ch\u1EC9 \u0111\u1ECBnh Kh\xE1ng sinh" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex items-center space-x-1.5 mt-0.5", children: state.indicationConfirmed ? /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_jsx_runtime19.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(CircleCheck, { className: "w-4 h-4 text-emerald-600 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-bold text-slate-800", children: "\u0110\u1EE7 ti\xEAu chu\u1EA9n nhi\u1EC5m tr\xF9ng" })
+            ] }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_jsx_runtime19.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(TriangleAlert, { className: "w-4 h-4 text-amber-500 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-xs font-bold text-slate-600", children: "\u0110ang ki\u1EC3m tra b\u1EA3ng ki\u1EC3m" })
+            ] }) })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        "div",
+        {
+          onClick: () => onNavigateStep(2),
+          className: "p-2.5 rounded-xl border border-slate-100 hover:border-blue-200 bg-slate-50/50 cursor-pointer transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] font-semibold text-slate-400 uppercase", children: "\u0110\u1ED1i t\u01B0\u1EE3ng & \u1ED4 nhi\u1EC5m" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-1.5 mt-0.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(User, { className: "w-4 h-4 text-blue-600 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("span", { className: "text-xs font-bold text-slate-800", children: [
+                state.population === "adult" ? "Ng\u01B0\u1EDDi l\u1EDBn" : "Tr\u1EBB em",
+                " \u2022 ",
+                siteLabels[state.site] || state.site
+              ] })
+            ] }),
+            state.site === "sepsis" && state.sepsisSource && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[11px] text-slate-500 mt-0.5 ml-5", children: sepsisSourceLabels[state.sepsisSource] || state.sepsisSource })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+        "div",
+        {
+          onClick: () => onNavigateStep(3),
+          className: `p-3 rounded-xl border cursor-pointer transition-colors ${isGroup2 ? "bg-rose-50/70 border-rose-200 text-rose-900" : "bg-emerald-50/70 border-emerald-200 text-emerald-900"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-[10px] font-black uppercase tracking-wide opacity-80", children: "Ph\xE2n nh\xF3m Nguy c\u01A1 VK\u0110K" }),
+            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center space-x-2 mt-1", children: [
+              isGroup2 ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldAlert, { className: "w-5 h-5 text-rose-600 shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ShieldCheck, { className: "w-5 h-5 text-emerald-600 shrink-0" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "text-xs font-black", children: isGroup2 ? "Nh\xF3m 2: Nguy c\u01A1 cao VK\u0110K" : "Nh\xF3m 1: \xCDt nguy c\u01A1 VK\u0110K" }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "text-[10px] opacity-80", children: [
+                  riskResult.generalRiskCount,
+                  "/8 y\u1EBFu t\u1ED1 chung \u2022 ",
+                  riskResult.severityScoreType.toUpperCase(),
+                  " = ",
+                  riskResult.severityScoreValue
+                ] })
+              ] })
+            ] }),
+            isGroup2 && state.checkedSpecificRisks.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex flex-wrap gap-1 mt-2 pt-2 border-t border-rose-200/60", children: state.checkedSpecificRisks.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: "text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-200/80 text-rose-800", children: r2 === "mrsa" ? "MRSA" : r2 === "esbl" ? "ESBL" : r2 === "pseudo_acineto" ? "Pseudo/Acineto" : "Enterococcus" }, r2)) })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "pt-2 border-t border-slate-100", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+          "button",
+          {
+            onClick: () => onSwitchToDosing(state.selectedDrugForDosing),
+            className: "w-full py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm flex items-center justify-center space-x-2 transition-all cursor-pointer",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Pill, { className: "w-3.5 h-3.5" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { children: "Chuy\u1EC3n sang T\xEDnh li\u1EC1u & CrCl" }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ArrowRight, { className: "w-3.5 h-3.5" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[10px] text-slate-400 text-center mt-1.5", children: "T\u1EF1 \u0111\u1ED9ng \u0111\u1ED3ng b\u1ED9 \u0111\u1ED1i t\u01B0\u1EE3ng & kh\xE1ng sinh \u0111\xE3 ch\u1ECDn" })
+      ] })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/components/selection/SelectionWizard.tsx
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
+  var SelectionWizard = ({
+    onSelectDrugForDosing
+  }) => {
+    const [currentStep, setCurrentStep] = (0, import_react16.useState)(1);
+    const [indicationConfirmed, setIndicationConfirmed] = (0, import_react16.useState)(true);
+    const [checkedNhsnIds, setCheckedNhsnIds] = (0, import_react16.useState)([
+      "pneu_fever",
+      "pneu_wbc",
+      "pneu_new_infiltrate",
+      "pneu_purulent_sputum"
+    ]);
+    const [population, setPopulation] = (0, import_react16.useState)("adult");
+    const [site, setSite] = (0, import_react16.useState)("respiratory");
+    const [sepsisSource, setSepsisSource] = (0, import_react16.useState)(void 0);
+    const [checkedGeneralRiskIds, setCheckedGeneralRiskIds] = (0, import_react16.useState)([]);
+    const [sofaScore, setSofaScore] = (0, import_react16.useState)(0);
+    const [psofaScore, setPsofaScore] = (0, import_react16.useState)(0);
+    const [clifSofaScore, setClifSofaScore] = (0, import_react16.useState)(0);
+    const [isChronicLiverDisease, setIsChronicLiverDisease] = (0, import_react16.useState)(false);
+    const [checkedSpecificRisks, setCheckedSpecificRisks] = (0, import_react16.useState)([]);
+    const [clinicalResponse, setClinicalResponse] = (0, import_react16.useState)("improved");
+    const [cultureStatus, setCultureStatus] = (0, import_react16.useState)("pending");
+    const [susceptibilityStatus, setSusceptibilityStatus] = (0, import_react16.useState)("sensitive");
+    const [daysOnAntibiotic, setDaysOnAntibiotic] = (0, import_react16.useState)(3);
+    const handleToggleNhsnId = (id) => {
+      setCheckedNhsnIds(
+        (prev) => prev.includes(id) ? prev.filter((x2) => x2 !== id) : [...prev, id]
+      );
+    };
+    const handleToggleGeneralRisk = (id) => {
+      setCheckedGeneralRiskIds(
+        (prev) => prev.includes(id) ? prev.filter((x2) => x2 !== id) : [...prev, id]
+      );
+    };
+    const handleToggleSpecificRisk = (risk) => {
+      setCheckedSpecificRisks(
+        (prev) => prev.includes(risk) ? prev.filter((x2) => x2 !== risk) : [...prev, risk]
+      );
+    };
+    const activeSeverity = {
+      scoreType: population === "pediatric" ? "psofa" : isChronicLiverDisease ? "clif_sofa" : "sofa",
+      scoreValue: population === "pediatric" ? psofaScore : isChronicLiverDisease ? clifSofaScore : sofaScore
+    };
+    const riskResult = classifyRiskGroup(
+      checkedGeneralRiskIds,
+      activeSeverity,
+      population,
+      checkedSpecificRisks
+    );
+    const wizardState = {
+      currentStep,
+      indicationConfirmed,
+      nhsnCheckedIds: checkedNhsnIds,
+      population,
+      site,
+      sepsisSource,
+      checkedGeneralRiskIds,
+      sofaScore,
+      psofaScore,
+      clifSofaScore,
+      isChronicLiverDisease,
+      checkedSpecificRisks,
+      clinicalResponse,
+      cultureStatus,
+      susceptibilityStatus,
+      checkedStopCriteriaIds: [],
+      checkedIvToPoCriteriaIds: [],
+      daysOnAntibiotic
+    };
+    const stepsList = [
+      { num: 1, title: "Ch\u1EC9 \u0111\u1ECBnh & NHSN", subtitle: "B\u1EAFt \u0111\u1EA7u" },
+      { num: 2, title: "V\u1ECB tr\xED & D\xE2n s\u1ED1", subtitle: "\u1ED4 nhi\u1EC5m" },
+      { num: 3, title: "Ph\xE2n t\u1EA7ng Nguy c\u01A1", subtitle: "Nh\xF3m 1 / 2" },
+      { num: 4, title: "Ph\xE1c \u0111\u1ED3 Kh\u1EDFi \u0111\u1EA7u", subtitle: "Antibiogram" },
+      { num: 5, title: "\u0110\xE1nh gi\xE1 48-72h", subtitle: "Xu\u1ED1ng thang & Ng\u01B0ng" }
+    ];
+    return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 shadow-xs", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "grid grid-cols-5 gap-2", children: stepsList.map((step) => {
+        const isActive = currentStep === step.num;
+        const isPassed = currentStep > step.num;
+        return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
+          "button",
+          {
+            type: "button",
+            onClick: () => setCurrentStep(step.num),
+            className: `text-left p-2.5 rounded-xl border transition-all flex flex-col justify-between ${isActive ? "border-blue-500 bg-blue-50/60 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 ring-2 ring-blue-500/20" : isPassed ? "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:border-slate-300" : "border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-800/20 text-slate-400 dark:text-slate-600"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex items-center justify-between w-full mb-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+                  "span",
+                  {
+                    className: `w-5 h-5 rounded-full text-[11px] font-black flex items-center justify-center ${isActive ? "bg-blue-600 text-white" : isPassed ? "bg-emerald-500 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400"}`,
+                    children: isPassed ? "\u2713" : step.num
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "text-[10px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 hidden sm:inline", children: step.subtitle })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "text-xs font-bold truncate", children: step.title })
+            ]
+          },
+          step.num
+        );
+      }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "lg:col-span-2", children: [
+          currentStep === 1 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            StepIndication,
+            {
+              indicationConfirmed,
+              onConfirmIndication: setIndicationConfirmed,
+              checkedNhsnIds,
+              onToggleNhsnId: handleToggleNhsnId,
+              onNextStep: () => setCurrentStep(2)
+            }
+          ),
+          currentStep === 2 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            StepSite,
+            {
+              population,
+              onSelectPopulation: setPopulation,
+              site,
+              onSelectSite: setSite,
+              sepsisSource,
+              onSelectSepsisSource: setSepsisSource,
+              onNextStep: () => setCurrentStep(3),
+              onPrevStep: () => setCurrentStep(1)
+            }
+          ),
+          currentStep === 3 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            StepRisk,
+            {
+              population,
+              site,
+              checkedGeneralRiskIds,
+              onToggleGeneralRisk: handleToggleGeneralRisk,
+              sofaScore,
+              onSofaChange: setSofaScore,
+              psofaScore,
+              onPsofaChange: setPsofaScore,
+              clifSofaScore,
+              onClifSofaChange: setClifSofaScore,
+              isChronicLiverDisease,
+              onToggleChronicLiver: setIsChronicLiverDisease,
+              checkedSpecificRisks,
+              onToggleSpecificRisk: handleToggleSpecificRisk,
+              riskResult,
+              onNextStep: () => setCurrentStep(4),
+              onPrevStep: () => setCurrentStep(2)
+            }
+          ),
+          currentStep === 4 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            StepEmpiric,
+            {
+              site,
+              population,
+              riskGroup: riskResult.group,
+              sepsisSource,
+              specificRisks: checkedSpecificRisks,
+              onSelectDrugForDosing: (drugId) => onSelectDrugForDosing(drugId),
+              onNextStep: () => setCurrentStep(5),
+              onPrevStep: () => setCurrentStep(3)
+            }
+          ),
+          currentStep === 5 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+            StepReassess,
+            {
+              site,
+              onSelectDrugForDosing: (drugId) => onSelectDrugForDosing(drugId),
+              onPrevStep: () => setCurrentStep(4)
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "lg:col-span-1", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          DecisionSummaryCard,
+          {
+            state: wizardState,
+            riskResult,
+            onNavigateStep: (s3) => setCurrentStep(s3),
+            onSwitchToDosing: (drugId) => onSelectDrugForDosing(drugId)
+          }
+        ) })
+      ] })
+    ] });
+  };
+
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/utils/clinicalFormulas.ts
   var UMOL_TO_MGDL = 88.4;
   function convertScrToUmol(val, unit) {
     if (unit === "mgdl") {
@@ -54806,7 +58628,11 @@
     let bmi = null;
     if (height && height > 0) {
       const baseIbw = gender === "m" ? 50 : 45.5;
-      ibw = Math.round((baseIbw + 0.9 * (height - 152)) * 10) / 10;
+      if (height >= 152.4) {
+        ibw = Math.round((baseIbw + 0.9 * (height - 152.4)) * 10) / 10;
+      } else {
+        ibw = Math.round(22 * Math.pow(height / 100, 2) * 10) / 10;
+      }
       if (ibw < 10) ibw = 10;
       adjBw = Math.round((ibw + 0.4 * (tbw - ibw)) * 10) / 10;
       bmi = Math.round(tbw / Math.pow(height / 100, 2) * 10) / 10;
@@ -54825,11 +58651,32 @@
         usedWeightType = drugWeightRule?.crcl === "IBW" ? "IBW (C\xE2n n\u1EB7ng l\xFD t\u01B0\u1EDFng)" : "TBW (C\xE2n n\u1EB7ng th\u1EF1c)";
       }
     }
-    let crcl = (140 - age) * usedWeight / (0.814 * scrUmol);
-    if (gender === "f") {
-      crcl *= 0.85;
+    let crcl = 0;
+    if (age < 18 && height && height > 0) {
+      crcl = 0.413 * height / Math.max(0.1, scrMgdl);
+    } else {
+      let effectiveScrUmol = scrUmol;
+      if (age >= 65 && scrUmol < 60) {
+        effectiveScrUmol = 60;
+      }
+      const safeAge = Math.min(120, Math.max(18, age));
+      crcl = (140 - safeAge) * usedWeight / (0.814 * effectiveScrUmol);
+      if (gender === "f") {
+        crcl *= 0.85;
+      }
     }
     crcl = Math.max(1, Math.round(crcl * 10) / 10);
+    let egfrCkdEpi = crcl;
+    if (age >= 18) {
+      const kappa = gender === "f" ? 0.7 : 0.9;
+      const alpha = gender === "f" ? -0.241 : -0.302;
+      const genderMult = gender === "f" ? 1.012 : 1;
+      const scrOverKappa = scrMgdl / kappa;
+      const minPart = Math.min(scrOverKappa, 1) ** alpha;
+      const maxPart = Math.max(scrOverKappa, 1) ** -1.2;
+      const agePart = 0.9938 ** age;
+      egfrCkdEpi = Math.max(1, Math.round(142 * minPart * maxPart * agePart * genderMult * 10) / 10);
+    }
     const isArc = crcl > 130;
     let renalCategory = "normal";
     let categoryLabelVi = "B\xECnh th\u01B0\u1EDDng (CrCl \u2265 90 mL/ph\xFAt)";
@@ -54863,6 +58710,7 @@
       scrUmol,
       scrMgdl,
       crcl,
+      egfrCkdEpi,
       ibw,
       adjBw,
       bmi,
@@ -54875,8 +58723,7 @@
     };
   }
 
-  // src/utils/drugDataExtractor.ts
-  init_define_process_env();
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/utils/drugDataExtractor.ts
   function safeEvalJs(codeStr) {
     try {
       return new Function("return " + codeStr)();
@@ -55084,8 +58931,8 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
     };
   }
 
-  // src/App.tsx
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/App.tsx
+  var import_jsx_runtime21 = __toESM(require_jsx_runtime(), 1);
   var DEFAULT_PATIENT = {
     scr: 90,
     scrUnit: "umol",
@@ -55100,34 +58947,35 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
     diagnosis: "Vi\xEAm ph\u1ED5i b\u1EC7nh vi\u1EC7n (HAP/VAP) / Nhi\u1EC5m khu\u1EA9n huy\u1EBFt"
   };
   function App() {
-    const [language, setLanguage] = (0, import_react13.useState)("vi");
-    const [patient, setPatient] = (0, import_react13.useState)(DEFAULT_PATIENT);
-    const [selectedDrugId, setSelectedDrugId] = (0, import_react13.useState)("meropenem");
-    const [selectedScenario, setSelectedScenario] = (0, import_react13.useState)("standard");
-    const [activeTab, setActiveTab] = (0, import_react13.useState)("all");
-    const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react13.useState)(false);
-    const [isAmrOpen, setIsAmrOpen] = (0, import_react13.useState)(false);
-    const [isOriginalOpen, setIsOriginalOpen] = (0, import_react13.useState)(false);
-    const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react13.useState)(false);
-    const activeDrug = (0, import_react13.useMemo)(() => {
+    const [appMode, setAppMode] = (0, import_react17.useState)("selection");
+    const [language, setLanguage] = (0, import_react17.useState)("vi");
+    const [patient, setPatient] = (0, import_react17.useState)(DEFAULT_PATIENT);
+    const [selectedDrugId, setSelectedDrugId] = (0, import_react17.useState)("meropenem");
+    const [selectedScenario, setSelectedScenario] = (0, import_react17.useState)("standard");
+    const [activeTab, setActiveTab] = (0, import_react17.useState)("all");
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = (0, import_react17.useState)(false);
+    const [isAmrOpen, setIsAmrOpen] = (0, import_react17.useState)(false);
+    const [isOriginalOpen, setIsOriginalOpen] = (0, import_react17.useState)(false);
+    const [isPdfModalOpen, setIsPdfModalOpen] = (0, import_react17.useState)(false);
+    const activeDrug = (0, import_react17.useMemo)(() => {
       return ANTIBIOTICS.find((a3) => a3.id === selectedDrugId) || ANTIBIOTICS[0];
     }, [selectedDrugId]);
-    const drugDetails = (0, import_react13.useMemo)(() => {
+    const drugDetails = (0, import_react17.useMemo)(() => {
       return extractDrugData(selectedDrugId);
     }, [selectedDrugId]);
-    (0, import_react13.useEffect)(() => {
+    (0, import_react17.useEffect)(() => {
       const defScn = drugDetails.scenarios.find((s3) => s3.def) || drugDetails.scenarios[0];
       if (defScn) {
         setSelectedScenario(defScn.key);
       }
     }, [selectedDrugId, drugDetails]);
-    const renal = (0, import_react13.useMemo)(() => {
+    const renal = (0, import_react17.useMemo)(() => {
       return calculateRenalMetrics(patient, drugDetails.weightRule);
     }, [patient, drugDetails]);
-    const doseResult = (0, import_react13.useMemo)(() => {
+    const doseResult = (0, import_react17.useMemo)(() => {
       return calculateDose(drugDetails, renal, selectedScenario, patient);
     }, [drugDetails, renal, selectedScenario, patient]);
-    const drugInteractions = (0, import_react13.useMemo)(() => {
+    const drugInteractions = (0, import_react17.useMemo)(() => {
       return DRUG_INTERACTIONS.filter((di) => di.antibioticIds.includes(selectedDrugId));
     }, [selectedDrugId]);
     const handlePatientChange = (updated) => {
@@ -55148,6 +58996,16 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
         }
       }, 50);
     };
+    const handleSelectDrugFromSelection = (drugId) => {
+      if (drugId) {
+        const exists = ANTIBIOTICS.some((a3) => a3.id === drugId);
+        if (exists) {
+          setSelectedDrugId(drugId);
+        }
+      }
+      setAppMode("dosing");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
     const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -55164,8 +59022,8 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
       language
     };
     const isEn = language === "en";
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "min-h-screen bg-slate-50/60 flex flex-col selection:bg-blue-600 selection:text-white", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "min-h-screen bg-slate-50/60 flex flex-col selection:bg-blue-600 selection:text-white", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
         Header,
         {
           language,
@@ -55177,201 +59035,249 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
           selectedDrugName: activeDrug.name
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("main", { className: "flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "lg:flex lg:gap-6 items-start", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-          "aside",
-          {
-            "aria-label": "Patient and Renal Parameters",
-            className: `w-full shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-14 ${isSidebarCollapsed ? "lg:w-[260px] xl:w-[280px]" : "lg:w-[380px] xl:w-[410px]"}`,
-            children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-              PatientSidebar,
-              {
-                patient,
-                onChange: handlePatientChange,
-                renal,
-                dialysis: patient.dialysis,
-                language,
-                needsHeight: activeDrug.needsHeight,
-                isCollapsed: isSidebarCollapsed,
-                onToggleCollapse: () => setIsSidebarCollapsed(!isSidebarCollapsed)
-              }
-            )
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex-1 min-w-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            AntibioticSearch,
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("main", { className: "flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 mb-6 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            "button",
             {
-              antibiotics: ANTIBIOTICS,
-              selectedId: selectedDrugId,
-              onSelect: setSelectedDrugId,
-              language
+              type: "button",
+              onClick: () => setAppMode("selection"),
+              className: `p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${appMode === "selection" ? "bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs" : "border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `p-2 rounded-lg shrink-0 ${appMode === "selection" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-200 text-slate-600"}`, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Workflow, { className: "w-5 h-5" }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-blue-600", children: "Ph\xE2n h\u1EC7 1" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700", children: "M\u1EDBi \u2022 BVBND 2026" })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-sm font-bold text-slate-900 mt-0.5 truncate", children: "\u0110\xE1nh Gi\xE1 Nhi\u1EC5m Tr\xF9ng & Ph\xE1c \u0110\u1ED3 Ban \u0110\u1EA7u" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: "5 B\u01B0\u1EDBc: Ti\xEAu chu\u1EA9n NHSN \u2192 \u1ED4 nhi\u1EC5m \u2192 Nguy c\u01A1 VK\u0110K (SOFA) \u2192 Ph\xE1c \u0111\u1ED3 BVBND \u2192 Xu\u1ED1ng thang 48-72h" })
+                ] })
+              ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-2 mb-6 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "flex flex-wrap items-center justify-between gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setAppMode("dosing"),
+              className: `p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${appMode === "dosing" ? "bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs" : "border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `p-2 rounded-lg shrink-0 ${appMode === "dosing" ? "bg-blue-600 text-white shadow-xs" : "bg-slate-200 text-slate-600"}`, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Calculator, { className: "w-5 h-5" }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex items-center space-x-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "text-xs font-black uppercase tracking-wider text-slate-500", children: "Ph\xE2n h\u1EC7 2" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600", children: "43 Kh\xE1ng sinh" })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-sm font-bold text-slate-900 mt-0.5 truncate", children: "C\xE1 Th\u1EC3 H\xF3a T\xEDnh Li\u1EC1u & Hi\u1EC7u Ch\u1EC9nh Th\u1EADn" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "text-[11px] text-slate-500 truncate mt-0.5", children: "Cockcroft-Gault / CKD-EPI, L\u1ECDc m\xE1u HD/CRRT/CAPD, TDM & T\u01B0\u01A1ng t\xE1c thu\u1ED1c DDI" })
+                ] })
+              ]
+            }
+          )
+        ] }) }),
+        appMode === "selection" && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          SelectionWizard,
+          {
+            onSelectDrugForDosing: handleSelectDrugFromSelection
+          }
+        ),
+        appMode === "dosing" && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "lg:flex lg:gap-6 items-start", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+            "aside",
+            {
+              "aria-label": "Patient and Renal Parameters",
+              className: `w-full shrink-0 mb-6 lg:mb-0 transition-all duration-300 lg:sticky lg:top-14 ${isSidebarCollapsed ? "lg:w-[260px] xl:w-[280px]" : "lg:w-[380px] xl:w-[410px]"}`,
+              children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                PatientSidebar,
+                {
+                  patient,
+                  onChange: handlePatientChange,
+                  renal,
+                  dialysis: patient.dialysis,
+                  language,
+                  needsHeight: activeDrug.needsHeight,
+                  isCollapsed: isSidebarCollapsed,
+                  onToggleCollapse: () => setIsSidebarCollapsed(!isSidebarCollapsed)
+                }
+              )
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex-1 min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              AntibioticSearch,
               {
-                onClick: () => setActiveTab("all"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "all" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(LayoutGrid, { className: "w-3.5 h-3.5" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
-                ]
+                antibiotics: ANTIBIOTICS,
+                selectedId: selectedDrugId,
+                onSelect: setSelectedDrugId,
+                language
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "bg-white rounded-2xl border border-slate-200/80 shadow-xs p-2 mb-6 no-print", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex flex-wrap items-center justify-between gap-1.5", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-wrap items-center gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("all"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "all" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(LayoutGrid, { className: "w-3.5 h-3.5" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "All Sections" : "T\u1EA5t c\u1EA3" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("dosing"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "dosing" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Pill, { className: "w-3.5 h-3.5 text-blue-500" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("dialysis"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "dialysis" ? "bg-purple-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("ddi"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "ddi" ? "bg-rose-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
+                    drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("notes"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "notes" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD (Tier 1-3)" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+                "button",
+                {
+                  onClick: () => setActiveTab("refs"),
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "refs" ? "bg-slate-800 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
+                  ]
+                }
+              )
+            ] }) }) }),
+            (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "dosing-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              DosingRecommendationCard,
               {
-                onClick: () => setActiveTab("dosing"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "dosing" ? "bg-blue-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Pill, { className: "w-3.5 h-3.5 text-blue-500" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Dose & CrCl Table" : "Li\u1EC1u & B\u1EA3ng CrCl" })
-                ]
+                drugDetails,
+                doseResult,
+                renal,
+                selectedScenario,
+                onScenarioChange: setSelectedScenario,
+                language,
+                onExportPdf: () => setIsPdfModalOpen(true)
               }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+            ) }),
+            (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              RenalAdjustmentTable,
               {
-                onClick: () => setActiveTab("dialysis"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "dialysis" ? "bg-purple-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Droplets, { className: "w-3.5 h-3.5 text-purple-500" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Dialysis (HD/CRRT)" : "L\u1ECDc m\xE1u (HD/CRRT)" })
-                ]
+                drugDetails,
+                renal,
+                selectedScenario,
+                language
               }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+            ) }),
+            (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              DialysisPanel,
               {
-                onClick: () => setActiveTab("ddi"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "ddi" ? "bg-rose-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ShieldAlert, { className: "w-3.5 h-3.5 text-rose-500" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Interactions" : "T\u01B0\u01A1ng t\xE1c thu\u1ED1c" }),
-                  drugInteractions.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: `text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeTab === "ddi" ? "bg-white text-rose-600" : "bg-rose-100 text-rose-700"}`, children: drugInteractions.length })
-                ]
+                drugDetails,
+                dialysis: patient.dialysis,
+                language
               }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+            ) }),
+            (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              DrugInteractionChecker,
               {
-                onClick: () => setActiveTab("notes"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "notes" ? "bg-indigo-600 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FileText, { className: "w-3.5 h-3.5 text-indigo-500" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "Clinical Guidance (Tier 1-3)" : "L\u01B0u \xFD D\u01B0\u1EE3c l\xFD (Tier 1-3)" })
-                ]
+                antibioticId: selectedDrugId,
+                antibioticName: activeDrug.name,
+                language
               }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-              "button",
+            ) }),
+            (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              ClinicalNotesTiers,
               {
-                onClick: () => setActiveTab("refs"),
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition-all ${activeTab === "refs" ? "bg-slate-800 text-white shadow-xs" : "text-slate-600 hover:bg-slate-100"}`,
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(BookOpen, { className: "w-3.5 h-3.5 text-slate-500" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { children: isEn ? "References" : "T\xE0i li\u1EC7u tham kh\u1EA3o" })
-                ]
+                drugDetails,
+                language
               }
-            )
-          ] }) }) }),
-          (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "dosing-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            DosingRecommendationCard,
-            {
-              drugDetails,
-              doseResult,
-              renal,
-              selectedScenario,
-              onScenarioChange: setSelectedScenario,
-              language,
-              onExportPdf: () => setIsPdfModalOpen(true)
-            }
-          ) }),
-          (activeTab === "all" || activeTab === "dosing") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "renal-table-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            RenalAdjustmentTable,
-            {
-              drugDetails,
-              renal,
-              selectedScenario,
-              language
-            }
-          ) }),
-          (activeTab === "all" || activeTab === "dialysis") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "dialysis-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            DialysisPanel,
-            {
-              drugDetails,
-              dialysis: patient.dialysis,
-              language
-            }
-          ) }),
-          (activeTab === "all" || activeTab === "ddi") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "ddi-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            DrugInteractionChecker,
-            {
-              antibioticId: selectedDrugId,
-              antibioticName: activeDrug.name,
-              language
-            }
-          ) }),
-          (activeTab === "all" || activeTab === "notes") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "notes-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            ClinicalNotesTiers,
-            {
-              drugDetails,
-              language
-            }
-          ) }),
-          (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            ReferencesList,
-            {
-              drugDetails,
-              language
-            }
-          ) })
+            ) }),
+            (activeTab === "all" || activeTab === "refs") && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { id: "references-section", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+              ReferencesList,
+              {
+                drugDetails,
+                language
+              }
+            ) })
+          ] })
         ] })
-      ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "print-only p-8 text-black bg-white", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "border-b-2 border-black pb-4 mb-4 flex justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h1", { className: "text-xl font-bold uppercase", children: "B\u1EC6NH VI\u1EC6N - KHOA D\u01AF\u1EE2C L\xC2M S\xC0NG" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h2", { className: "text-sm font-semibold", children: "PHI\u1EBEU H\u1ED8I CH\u1EA8N & QU\u1EA2N L\xDD LI\u1EC0U KH\xC1NG SINH (CDSS)" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-right text-xs", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "text-right text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
               "Ng\xE0y: ",
               (/* @__PURE__ */ new Date()).toLocaleDateString("vi-VN")
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
               "M\xE3 HS: ",
               patient.patientId || "BN-10293"
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mb-4 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "B\u1EC7nh nh\xE2n:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mb-4 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "B\u1EC7nh nh\xE2n:" }),
             " ",
             patient.patientName || "Nguy\u1EC5n V\u0103n A",
             " | ",
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "Tu\u1ED5i/Gi\u1EDBi:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Tu\u1ED5i/Gi\u1EDBi:" }),
             " ",
             patient.age,
             "t / ",
             patient.gender === "m" ? "Nam" : "N\u1EEF",
             " | ",
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "C\xE2n n\u1EB7ng:" }),
             " ",
             patient.weight,
             " kg"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "Scr:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Scr:" }),
             " ",
             renal.scrUmol,
             " \xB5mol/L (",
             renal.scrMgdl,
             " mg/dL) | ",
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "CrCl:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "CrCl:" }),
             " ",
             renal.crcl,
             " mL/ph\xFAt (",
@@ -55379,51 +59285,51 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
             ")"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { className: "text-sm font-bold", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "border border-black p-3 mb-4 text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { className: "text-sm font-bold", children: [
             "Kh\xE1ng sinh ch\u1EC9 \u0111\u1ECBnh: ",
             activeDrug.name,
             " (",
             activeDrug.group,
             ")"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
             "Ph\xE1c \u0111\u1ED3 / K\u1ECBch b\u1EA3n: ",
             scenarioLabel
           ] }),
-          doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
+          doseResult.loadingDoseTextVi && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Li\u1EC1u n\u1EA1p:" }),
             " ",
             doseResult.loadingDoseTextVi
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "Li\u1EC1u duy tr\xEC:" }),
             " ",
             doseResult.maintenanceDoseTextVi
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "C\xE1ch d\xF9ng:" }),
             " ",
             doseResult.infusionInstructionsVi
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("p", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mb-4 text-xs", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("p", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("strong", { children: "C\u01A1 s\u1EDF hi\u1EC7u ch\u1EC9nh li\u1EC1u:" }),
           " ",
           doseResult.renalAdjustmentAdviceVi
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mt-12 grid grid-cols-2 text-center text-xs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "font-bold", children: "B\xC1C S\u0128 \u0110I\u1EC0U TR\u1ECA" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "font-bold", children: "D\u01AF\u1EE2C S\u0128 L\xC2M S\xC0NG" }),
+            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-[10px] italic", children: "(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)" })
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
         AmrModal,
         {
           isOpen: isAmrOpen,
@@ -55433,7 +59339,7 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
           language
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
         OriginalPreviewModal,
         {
           isOpen: isOriginalOpen,
@@ -55444,7 +59350,7 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
           language
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
         PdfConsultationModal,
         {
           isOpen: isPdfModalOpen,
@@ -55453,20 +59359,17 @@ Infusion Time: ${drug.order.time} min` : `Route: ${drug.route}`}`;
           language
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "font-semibold text-slate-700", children: isEn ? "Antimicrobial Dosing Clinical Decision Support System (CDSS)" : "H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Quy\u1EBFt \u0111\u1ECBnh L\xE2m s\xE0ng Qu\u1EA3n l\xFD Li\u1EC1u Kh\xE1ng sinh (CDSS)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { children: isEn ? "Based on Stanford SHC & UCSF IDMP adult inpatient protocols. Medical reference tool only; clinical judgment remains paramount." : "D\u1EF1a tr\xEAn ph\xE1c \u0111\u1ED3 Stanford Health Care & UCSF IDMP. C\xF4ng c\u1EE5 h\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng cho b\xE1c s\u0129 v\xE0 d\u01B0\u1EE3c s\u0129." })
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("footer", { className: "no-print bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "max-w-7xl mx-auto px-4 space-y-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "font-semibold text-slate-700", children: isEn ? "Antimicrobial Dosing Clinical Decision Support System (CDSS)" : "H\u1EC7 th\u1ED1ng H\u1ED7 tr\u1EE3 Quy\u1EBFt \u0111\u1ECBnh L\xE2m s\xE0ng Qu\u1EA3n l\xFD Li\u1EC1u Kh\xE1ng sinh (CDSS)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { children: isEn ? "Based on Stanford SHC & UCSF IDMP adult inpatient protocols. Medical reference tool only; clinical judgment remains paramount." : "D\u1EF1a tr\xEAn ph\xE1c \u0111\u1ED3 Stanford Health Care & UCSF IDMP. C\xF4ng c\u1EE5 h\u1ED7 tr\u1EE3 ra quy\u1EBFt \u0111\u1ECBnh l\xE2m s\xE0ng cho b\xE1c s\u0129 v\xE0 d\u01B0\u1EE3c s\u0129." })
       ] }) })
     ] });
   }
 
-  // src/index.css
-  init_define_process_env();
-
-  // src/main.tsx
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime(), 1);
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/687dbe9c-a1b0-401f-86d4-7d23dfbefed7/scratch/antibiotic_build/src/main.tsx
+  var import_jsx_runtime22 = __toESM(require_jsx_runtime(), 1);
   (0, import_client.createRoot)(document.getElementById("root")).render(
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_react14.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(App, {}) })
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_react18.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(App, {}) })
   );
 })();
 /**
@@ -55552,7 +59455,8 @@ html2canvas/dist/html2canvas.js:
       ***************************************************************************** *)
 
 dompurify/dist/purify.es.mjs:
-  (*! @license DOMPurify 3.4.15 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.15/LICENSE *)
+  (*! @license DOMPurify 3.4.16 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.16/LICENSE *)
+  (*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE *)
 
 svg-pathdata/lib/SVGPathData.module.js:
   (*! *****************************************************************************
@@ -55575,14 +59479,20 @@ lucide-react/dist/esm/defaultAttributes.js:
 lucide-react/dist/esm/Icon.js:
 lucide-react/dist/esm/createLucideIcon.js:
 lucide-react/dist/esm/icons/activity.js:
+lucide-react/dist/esm/icons/arrow-left.js:
 lucide-react/dist/esm/icons/arrow-right.js:
 lucide-react/dist/esm/icons/award.js:
+lucide-react/dist/esm/icons/baby.js:
 lucide-react/dist/esm/icons/book-marked.js:
 lucide-react/dist/esm/icons/book-open.js:
+lucide-react/dist/esm/icons/brain.js:
+lucide-react/dist/esm/icons/bug.js:
+lucide-react/dist/esm/icons/calculator.js:
 lucide-react/dist/esm/icons/check.js:
 lucide-react/dist/esm/icons/chevron-down.js:
 lucide-react/dist/esm/icons/chevron-right.js:
 lucide-react/dist/esm/icons/chevron-up.js:
+lucide-react/dist/esm/icons/circle-alert.js:
 lucide-react/dist/esm/icons/circle-check-big.js:
 lucide-react/dist/esm/icons/circle-check.js:
 lucide-react/dist/esm/icons/clock.js:
@@ -55595,16 +59505,19 @@ lucide-react/dist/esm/icons/file-down.js:
 lucide-react/dist/esm/icons/file-text.js:
 lucide-react/dist/esm/icons/flame.js:
 lucide-react/dist/esm/icons/gauge.js:
+lucide-react/dist/esm/icons/heart-handshake.js:
 lucide-react/dist/esm/icons/info.js:
 lucide-react/dist/esm/icons/layout-grid.js:
 lucide-react/dist/esm/icons/maximize-2.js:
 lucide-react/dist/esm/icons/menu.js:
+lucide-react/dist/esm/icons/microscope.js:
 lucide-react/dist/esm/icons/minimize-2.js:
 lucide-react/dist/esm/icons/pill.js:
 lucide-react/dist/esm/icons/plus.js:
 lucide-react/dist/esm/icons/printer.js:
 lucide-react/dist/esm/icons/rotate-ccw.js:
 lucide-react/dist/esm/icons/ruler.js:
+lucide-react/dist/esm/icons/scissors.js:
 lucide-react/dist/esm/icons/search.js:
 lucide-react/dist/esm/icons/shield-alert.js:
 lucide-react/dist/esm/icons/shield-check.js:
@@ -55614,6 +59527,7 @@ lucide-react/dist/esm/icons/table.js:
 lucide-react/dist/esm/icons/triangle-alert.js:
 lucide-react/dist/esm/icons/user.js:
 lucide-react/dist/esm/icons/weight.js:
+lucide-react/dist/esm/icons/workflow.js:
 lucide-react/dist/esm/icons/x.js:
 lucide-react/dist/esm/lucide-react.js:
   (**

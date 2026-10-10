@@ -25,9 +25,13 @@ import {
   BookOpen, 
   LayoutGrid,
   Bug,
-  ChevronDown
+  ChevronDown,
+  Workflow,
+  Calculator,
+  Sparkles
 } from 'lucide-react';
 
+import { SelectionWizard } from './components/selection/SelectionWizard';
 import { Language, PatientState } from './types';
 import { ANTIBIOTICS } from './data/antibiotics';
 import { DRUG_INTERACTIONS } from './data/drugInteractions';
@@ -50,8 +54,10 @@ const DEFAULT_PATIENT: PatientState = {
 };
 
 type ViewSectionTab = 'all' | 'dosing' | 'dialysis' | 'ddi' | 'notes' | 'refs';
+type AppMode = 'selection' | 'dosing';
 
 export default function App() {
+  const [appMode, setAppMode] = useState<AppMode>('selection');
   const [language, setLanguage] = useState<Language>('vi');
   const [patient, setPatient] = useState<PatientState>(DEFAULT_PATIENT);
   const [selectedDrugId, setSelectedDrugId] = useState<string>('meropenem');
@@ -116,6 +122,17 @@ export default function App() {
     }, 50);
   };
 
+  const handleSelectDrugFromSelection = (drugId?: string) => {
+    if (drugId) {
+      const exists = ANTIBIOTICS.some(a => a.id === drugId);
+      if (exists) {
+        setSelectedDrugId(drugId);
+      }
+    }
+    setAppMode('dosing');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -154,9 +171,74 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
-        
-        {/* Two-Column Responsive Workspace */}
-        <div className="lg:flex lg:gap-6 items-start">
+
+        {/* Master Module Mode Switcher */}
+        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-2 mb-6 no-print">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => setAppMode('selection')}
+              className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
+                appMode === 'selection'
+                  ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs'
+                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'selection' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+                <Workflow className="w-5 h-5" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-blue-600">Phân hệ 1</span>
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">Mới • BVBND 2026</span>
+                </div>
+                <div className="text-sm font-bold text-slate-900 mt-0.5 truncate">
+                  Đánh Giá Nhiễm Trùng & Phác Đồ Ban Đầu
+                </div>
+                <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                  5 Bước: Tiêu chuẩn NHSN → Ổ nhiễm → Nguy cơ VKĐK (SOFA) → Phác đồ BVBND → Xuống thang 48-72h
+                </div>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setAppMode('dosing')}
+              className={`p-3 rounded-xl border text-left transition-all flex items-start space-x-3 cursor-pointer ${
+                appMode === 'dosing'
+                  ? 'bg-blue-50/90 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 shadow-xs'
+                  : 'border-slate-100 hover:border-slate-200 bg-slate-50/40 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <div className={`p-2 rounded-lg shrink-0 ${appMode === 'dosing' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-200 text-slate-600'}`}>
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-500">Phân hệ 2</span>
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">43 Kháng sinh</span>
+                </div>
+                <div className="text-sm font-bold text-slate-900 mt-0.5 truncate">
+                  Cá Thể Hóa Tính Liều & Hiệu Chỉnh Thận
+                </div>
+                <div className="text-[11px] text-slate-500 truncate mt-0.5">
+                  Cockcroft-Gault / CKD-EPI, Lọc máu HD/CRRT/CAPD, TDM & Tương tác thuốc DDI
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* VIEW 1: SELECTION WIZARD (MỚI) */}
+        {appMode === 'selection' && (
+          <SelectionWizard
+            onSelectDrugForDosing={handleSelectDrugFromSelection}
+          />
+        )}
+
+        {/* VIEW 2: DOSING & RENAL ADJUSTMENT (HIỆN TẠI) */}
+        {appMode === 'dosing' && (
+          <div className="lg:flex lg:gap-6 items-start">
 
           {/* LEFT COLUMN: Collapsible Patient Information & Renal Status */}
           <aside 
@@ -345,6 +427,7 @@ export default function App() {
 
           </div>
         </div>
+        )}
 
       </main>
 

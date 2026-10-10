@@ -48,16 +48,19 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">
-                  CDSS <span className="text-blue-600">Kháng Sinh</span>
+                  InfectoDose <span className="text-blue-600">CDSS</span>
                 </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
-                  v2.5 Pro
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                  v3.0 Pro
+                </span>
+                <span className="hidden xl:inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  NHSN • BVBND 2026
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">
                 {isEn 
-                  ? 'Clinical Antimicrobial Dosing & Renal Decision Support System' 
-                  : 'Hệ thống Hỗ trợ Ra quyết định Liều Kháng sinh & Hiệu chỉnh Thận'}
+                  ? 'Clinical Infection Assessment, MDR Stratification & Precision Antibiotic Dosing' 
+                  : 'Đánh Giá Nhiễm Trùng, Vi Khuẩn Đa Kháng & Liều Kháng Sinh Cá Thể Hóa'}
               </p>
             </div>
           </div>
