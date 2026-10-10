@@ -79,7 +79,7 @@ export const PRESET_CASES: PresetCase[] = [
     title: 'Ca 0: Bình thường (Khám sức khỏe / Chưa có nhiễm khuẩn)',
     subtitle: 'Sinh hiệu bình thường, chỉ mới có Cận lâm sàng TPTTBM (CBC)',
     category: 'Mặc định - Bình thường',
-    clinicalScenario: 'Nam 35 tuổi kiểm tra sức khỏe tổng quát. Không sốt, không khó thở, không có dấu hiệu nhiễm trùng. Sinh hiệu hoàn toàn ổn định: HA 120/80 mmHg, Mạch 72 lần/phút, Thở 16 lần/phút, SpO2 99% khí trời. Cận lâm sàng chỉ mới có Tổng phân tích tế bào máu: WBC 6.8 G/L, NEU 4.2 G/L, LYM 2.1 G/L, PLT 250 G/L (NLR = 2.0 - Bình thường).',
+    clinicalScenario: 'Nam 35 tuổi kiểm tra sức khỏe tổng quát. Không sốt, không khó thở, không có dấu hiệu nhiễm trùng. Sinh hiệu hoàn toàn ổn định: HA 120/80 mmHg, Mạch 72 lần/phút, Thở 16 lần/phút, SpO2 99% khí trời. Cận lâm sàng chỉ mới có Tổng phân tích tế bào máu: WBC 6.8 G/L, NEU 4.2 G/L, LYM 2.1 G/L, PLT 250 G/L (NLR = 2.0 - Mức 1: Sinh lý / Bình thường).',
     patientData: NORMAL_PATIENT_CASE
   },
   {
@@ -87,7 +87,7 @@ export const PRESET_CASES: PresetCase[] = [
     title: 'Ca 1: Người lớn Sốc Nhiễm Khuẩn (Sepsis-3 & LP-NEWS)',
     subtitle: 'Viêm phổi cộng đồng biến chứng suy đa cơ quan, hạ huyết áp',
     category: 'Người lớn - Hồi sức cấp cứu',
-    clinicalScenario: 'Nam 66 tuổi, tiền sử ĐTĐ type 2 và tăng huyết áp, nhập viện vì sốt cao rét run, ho khạc đờm mủ, khó thở dữ dội, lú lẫn mới xuất hiện. Huyết áp tụt 82/50 mmHg, SpO2 89% dù thở oxy kính, Lactate 3.8 mmol/L, PCT 18 ng/mL, NLR 12.5.',
+    clinicalScenario: 'Nam 66 tuổi, tiền sử ĐTĐ type 2 và tăng huyết áp, nhập viện vì sốt cao rét run, ho khạc đờm mủ, khó thở dữ dội, lú lẫn mới xuất hiện. Huyết áp tụt 82/50 mmHg, SpO2 89% dù thở oxy kính, Lactate 3.8 mmol/L, PCT 18 ng/mL, NLR 12.5 (Mức 4: Báo động nguy kịch ≥ 10.0).',
     patientData: {
       id: 'case-1',
       patientName: 'Trần Văn H.',
@@ -454,7 +454,7 @@ export const PRESET_CASES: PresetCase[] = [
     title: 'Ca 6: Nhiễm Trùng Tiểu (Viêm Đài Bể Thận Cấp / Urosepsis)',
     subtitle: 'Nữ 54 tuổi, sốt rét run, đau hông lưng, tiểu buốt, tăng NLR & Lactate',
     category: 'Người lớn - Tiết niệu / Cấp cứu',
-    clinicalScenario: 'Nữ 54 tuổi, tiền sử đái tháo đường type 2 và sỏi thận, nhập viện vì sốt cao 39.2°C, rét run thành cơn, đau tức dữ dội vùng hông lưng bên phải kèm tiểu buốt rắt, nước tiểu đục. Khám: Rung thận (+) bên phải. Sinh hiệu: HA 105/65 mmHg, Mạch 108 l/p, Thở 23 l/p, SpO2 96% khí trời. Cận lâm sàng: WBC 17.8 G/L, NEU 15.2 G/L, LYM 1.2 G/L (NLR 12.7 - Nguy cơ cao), Tiểu cầu 190 G/L, Lactate 2.3 mmol/L, PCT 4.6 ng/mL, CRP 128 mg/L, Creatinine 135 µmol/L (tăng so với nền 75 µmol/L). qSOFA = 1/3 (bỏ sót), nhưng NEWS2 = 6, SIRS = 4/4 và NICE phân tầng nguy cơ cao do Lactate > 2.0.',
+    clinicalScenario: 'Nữ 54 tuổi, tiền sử đái tháo đường type 2 và sỏi thận, nhập viện vì sốt cao 39.2°C, rét run thành cơn, đau tức dữ dội vùng hông lưng bên phải kèm tiểu buốt rắt, nước tiểu đục. Khám: Rung thận (+) bên phải. Sinh hiệu: HA 105/65 mmHg, Mạch 108 l/p, Thở 23 l/p, SpO2 96% khí trời. Cận lâm sàng: WBC 17.8 G/L, NEU 15.2 G/L, LYM 1.2 G/L (NLR 12.7 - Mức 4: Báo động nguy kịch ≥ 10.0), Tiểu cầu 190 G/L, Lactate 2.3 mmol/L, PCT 4.6 ng/mL, CRP 128 mg/L, Creatinine 135 µmol/L (tăng so với nền 75 µmol/L). qSOFA = 1/3 (bỏ sót), nhưng NEWS2 = 6, SIRS = 4/4 và NICE phân tầng nguy cơ cao do Lactate > 2.0.',
     patientData: {
       id: 'case-6',
       patientName: 'Lê Thị M.',

@@ -156,26 +156,125 @@ export const ClinicalGuideModal: React.FC<ClinicalGuideModalProps> = ({ isOpen, 
 
           {activeSection === 'biomarkers' && (
             <div className="space-y-4">
-              <h4 className="font-bold text-slate-900 text-base">Dấu Ấn Sinh Học Tiên Lượng Sớm: LP-NEWS, Lactate & NLR</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="p-3 rounded-lg bg-cyan-50 border border-cyan-200">
-                  <span className="font-bold text-cyan-900 block text-xs">LP-NEWS (Das et al. 2024)</span>
-                  <p className="text-[11px] text-cyan-950 mt-1">
-                    Tích hợp Lactate và PCT vào NEWS đạt <strong>AUROC = 0.966</strong>. Ngưỡng cắt ≥ 11 điểm có độ nhạy 97%, đặc hiệu 88% dự báo tử vong 14 ngày.
-                  </p>
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-slate-900 text-base">
+                  Dấu Ấn Sinh Học Nhiễm Trùng: Động Học, Phân Tầng NLR &amp; Yếu Tố Nhiễu
+                </h4>
+                <span className="text-[10px] font-mono text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                  EBM 2023 - 2026
+                </span>
+              </div>
+
+              {/* 1. Bảng Tóm Tắt Động Học Cốt Lõi */}
+              <div className="rounded-lg border border-slate-200 overflow-hidden text-xs">
+                <div className="bg-slate-100 p-2 font-bold text-slate-800 flex items-center justify-between text-[11px]">
+                  <span>Động Học Biến Thiên (Póvoa 2023 ICM &amp; Zheng 2026):</span>
+                  <span className="font-normal text-slate-500 text-[10px]">Động học quan trọng hơn giá trị đơn lẻ</span>
                 </div>
-                <div className="p-3 rounded-lg bg-rose-50 border border-rose-200">
-                  <span className="font-bold text-rose-900 block text-xs">NLR (Demni et al. 2026)</span>
-                  <p className="text-[11px] text-rose-950 mt-1">
-                    Tỷ số Neutrophil / Lymphocyte <strong>≥ 6.0</strong> có độ nhạy 92% dự báo tử vong 72h và tiến triển sốc nhiễm khuẩn.
-                  </p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 bg-white">
+                  <div className="p-2.5 space-y-1">
+                    <span className="font-bold text-teal-900 block text-[11px]">Procalcitonin (PCT)</span>
+                    <div className="text-[10px] text-slate-600 leading-tight">
+                      • Onset: <strong>2 – 4 giờ</strong><br/>
+                      • Peak: <strong>~24 giờ</strong> (&gt;10.000×)<br/>
+                      • t½: <strong>22 – 35 giờ</strong><br/>
+                      • Ngưng KS: <strong>giảm ≥ 80–90%</strong> hoặc &lt; 0.5 ng/mL.
+                    </div>
+                  </div>
+                  <div className="p-2.5 space-y-1">
+                    <span className="font-bold text-indigo-900 block text-[11px]">C-Reactive Protein (CRP)</span>
+                    <div className="text-[10px] text-slate-600 leading-tight">
+                      • Onset: <strong>4 – 6 giờ</strong><br/>
+                      • Peak: <strong>36 – 50 giờ</strong> (sau 2 ngày)<br/>
+                      • t½: <strong>19 giờ</strong> (cố định)<br/>
+                      • Tỷ số D4/D0 &lt; 0.4: Đáp ứng nhanh.
+                    </div>
+                  </div>
+                  <div className="p-2.5 space-y-1">
+                    <span className="font-bold text-amber-900 block text-[11px]">Interleukin-6 (IL-6)</span>
+                    <div className="text-[10px] text-slate-600 leading-tight">
+                      • Onset: <strong>1 – 2 giờ</strong> (cực sớm)<br/>
+                      • Peak: <strong>2 – 4 giờ</strong><br/>
+                      • t½: <strong>&lt; 1 giờ</strong> (ngắn)<br/>
+                      • Cảnh báo bão cytokine tối cấp.
+                    </div>
+                  </div>
+                  <div className="p-2.5 space-y-1">
+                    <span className="font-bold text-rose-900 block text-[11px]">Lactate Máu</span>
+                    <div className="text-[10px] text-slate-600 leading-tight">
+                      • Tức thời khi có giảm tưới máu.<br/>
+                      • t½: <strong>20 – 60 phút</strong><br/>
+                      • Mục tiêu: <strong>Thanh thải ≥ 10–20%</strong> trong mỗi 2–6h đầu hồi sức.
+                    </div>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200">
-                  <span className="font-bold text-emerald-900 block text-xs">Thanh Thải Lactate 6h</span>
-                  <p className="text-[11px] text-emerald-950 mt-1">
-                    Meta-analysis 2026: Thanh thải ≥ 10% trong 6 giờ đầu liên quan giảm tỷ lệ tử vong đáng kể (OR = 0.52).
-                  </p>
+              </div>
+
+              {/* 2. Chuẩn Hóa 4 Ngưỡng Cắt NLR */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-800 text-xs">
+                    Tỷ số Neutrophil / Lymphocyte (NLR) — Phân Tầng 4 Mức:
+                  </span>
+                  <span className="text-[10px] text-teal-800 font-mono bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200">
+                    Demni 2026, Naess 2017 &amp; Gürol 2015
+                  </span>
                 </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                  <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+                    <div className="font-bold text-emerald-950">&lt; 3.0: Mức 1</div>
+                    <div className="text-[11px] font-semibold text-emerald-800">Bình Thường</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Sinh lý an toàn, không ưu thế viêm cấp.</div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-amber-50 border border-amber-200">
+                    <div className="font-bold text-amber-950">3.0 – 5.9: Mức 2</div>
+                    <div className="text-[11px] font-semibold text-amber-800">Cảnh Báo</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Stress nhẹ hoặc viêm khu trú tiềm ẩn.</div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-rose-50 border border-rose-200">
+                    <div className="font-bold text-rose-950">6.0 – 9.9: Mức 3</div>
+                    <div className="text-[11px] font-semibold text-rose-800">Nguy Cơ Cao</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Độ nhạy 92%, NPV 97% tử vong 72h / SOFA.</div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-rose-100 border border-rose-300">
+                    <div className="font-bold text-rose-950">≥ 10.0: Mức 4</div>
+                    <div className="text-[11px] font-semibold text-rose-900">Báo Động Nguy Kịch</div>
+                    <div className="text-[10px] text-rose-800 mt-0.5">Bão cytokine. <strong>Nếu ≥ 13–15</strong>: Septicemia &amp; Sốc!</div>
+                  </div>
+                </div>
+
+                {/* Ghi chú EBM Naess 2017 */}
+                <div className="p-2 bg-teal-50/80 rounded border border-teal-200 text-[11px] text-teal-900 leading-normal">
+                  <strong>🔬 EBM Naess et al. 2017 (Infection):</strong> Ở BN sốt &lt; 7 ngày, NLR phân biệt <strong>Nhiễm trùng huyết (Median 15.69)</strong> với nhiễm khuẩn khu trú (Median ~8.0, p=0.006) hiệu quả vượt trội so với WBC (p=0.559) và CRP (p=0.615). Thang Gürol 2015: 5-10 khu trú, 10-13 toàn thân, 13-15 nhiễm trùng huyết, ≥ 15 sốc nhiễm khuẩn.
+                </div>
+              </div>
+
+              {/* 3. Bảng Cảnh Báo Yếu Tố Nhiễu */}
+              <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-lg text-xs space-y-1.5">
+                <span className="font-bold text-amber-950 block text-[11px] uppercase tracking-wide">
+                  ⚠️ Bảng Cảnh Báo Yếu Tố Gây Nhiễu Kết Quả (Confounders):
+                </span>
+                <ul className="text-[11px] text-amber-900 space-y-1 list-disc pl-4 leading-relaxed">
+                  <li>
+                    <strong>Procalcitonin (PCT) tăng giả tạo:</strong> Đại phẫu thuật (nhất là chạy tim phổi CPB), bỏng nặng, chấn thương dập nát, suy thận ESRD, ung thư giáp thể tủy (MTC), sốc tim sau ép tim CPR. <em>Âm tính giả:</em> Nhiễm trùng khu trú sớm (áp xe bọc, viêm xương), dùng Corticoid, nhiễm trùng đợt 2 (Second Hit).
+                  </li>
+                  <li>
+                    <strong>CRP sai lệch:</strong> <em>Dương tính giả:</em> Bệnh tự miễn (Lupus, Viêm khớp dạng thấp), viêm tụy vô khuẩn, nhồi máu cơ tim, sau mổ ngày 2-3. <em>Âm tính giả:</em> Suy gan cấp / xơ gan mất bù nặng (gan là nơi DUY NHẤT tạo CRP). Không bị ảnh hưởng bởi suy thận.
+                  </li>
+                  <li>
+                    <strong>NLR sai lệch:</strong> <em>Tăng giả:</em> Đang dùng Corticosteroid (kích thích Neu, hủy diệt Lym), stress phẫu thuật/chấn thương, đột quỵ, nhồi máu cơ tim cấp. <em>Âm tính giả:</em> <strong>Sốt kéo dài &gt; 7 ngày</strong> (NLR giảm tự nhiên về 4–7 do thích nghi tủy - Naess 2017), suy tủy, hạ bạch cầu sau hóa trị, nhiễm HIV tiến triển.
+                  </li>
+                </ul>
+              </div>
+
+              {/* 4. LP-NEWS */}
+              <div className="p-2.5 bg-cyan-50 border border-cyan-200 rounded-lg text-xs">
+                <span className="font-bold text-cyan-950 block text-[11px]">
+                  Thang Điểm Phối Hợp LP-NEWS (Das et al. 2024 - AIIMS):
+                </span>
+                <p className="text-[11px] text-cyan-900 mt-0.5 leading-relaxed">
+                  Tích hợp đồng thời Lactate và PCT vào NEWS đạt <strong>AUROC = 0.966</strong> dự báo tử vong 14 ngày. Ngưỡng cắt ≥ 11 điểm có độ nhạy 97%, đặc hiệu 88%.
+                </p>
               </div>
             </div>
           )}

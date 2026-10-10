@@ -426,20 +426,41 @@ ${result.obstetricSofaScore !== undefined ? `- Obstetric SOFA: ${result.obstetri
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate-600 uppercase">Chỉ Số NLR (Neutrophil/Lympho)</span>
                 <span className={`text-[11px] font-bold px-2 py-0.5 rounded ${
-                  result.nlrRiskLevel === 'high' ? 'bg-rose-100 text-rose-800' : 'bg-slate-200 text-slate-700'
+                  result.nlrRiskLevel === 'critical'
+                    ? 'bg-rose-600 text-white animate-pulse'
+                    : result.nlrRiskLevel === 'high'
+                    ? 'bg-rose-100 text-rose-800 border border-rose-300'
+                    : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated'
+                    ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                    : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                 }`}>
-                  {result.nlrRiskLevel === 'high' ? 'NGUY CƠ CAO (≥ 6.0)' : 'BÌNH THƯỜNG'}
+                  {result.nlrRiskLevel === 'critical'
+                    ? 'MỨC 4: NGUY KỊCH (≥ 10.0)'
+                    : result.nlrRiskLevel === 'high'
+                    ? 'MỨC 3: NGUY CƠ CAO (6.0 - 9.9)'
+                    : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated'
+                    ? 'MỨC 2: CẢNH BÁO (3.0 - 5.9)'
+                    : 'MỨC 1: BÌNH THƯỜNG (< 3.0)'}
                 </span>
               </div>
               <div className="mt-2 text-2xl font-bold font-mono text-slate-900">
                 {result.calculatedNlr !== undefined ? result.calculatedNlr : 'N/A'}
               </div>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Nghiên cứu Demni et al. 2026: NLR ≥ 6.0 là yếu tố tiên lượng độc lập tử vong sớm trong 72 giờ (Độ nhạy 92%, Độ đặc hiệu 68%, NPV 97%) và nguy cơ tiến triển sốc.
+                {result.nlrRiskLevel === 'critical'
+                  ? (result.calculatedNlr !== undefined && result.calculatedNlr >= 15.0
+                      ? 'NLR ≥ 15.0 (Naess 2017 & Gürol 2015): Chỉ điểm mạnh vi khuẩn vào máu (Septicemia - Median 15.7) & Sốc, phân biệt vượt trội so với WBC và CRP (p=0.006). Cấy máu khẩn 2 vị trí & hội chẩn ICU.'
+                      : 'Bão cytokine dữ dội song hành cùng cạn kiệt lympho bào nghiêm trọng. Nguy cơ rất cao nhiễm trùng toàn thân và tiến triển Sốc nhiễm khuẩn kháng trị.')
+                  : result.nlrRiskLevel === 'high'
+                  ? 'Nghiên cứu Demni et al. 2026: NLR ≥ 6.0 là yếu tố tiên lượng độc lập tử vong sớm trong 72 giờ (Độ nhạy 92%, NPV 97%) và tiến triển suy cơ quan (ΔSOFA ≥ 2). Phù hợp dải nhiễm khuẩn khu trú/nặng.'
+                  : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated'
+                  ? 'Tăng nhẹ-vừa: Phản ứng stress sinh lý hoặc ổ nhiễm trùng khu trú tiềm ẩn (hoặc sốt > 7 ngày khi NLR thoái triển). Đánh giá kết hợp sinh hiệu và lâm sàng.'
+                  : 'NLR trong giới hạn sinh lý an toàn (< 3.0), không có ưu thế phản ứng viêm hệ thống cấp tính (Nếu sốt kéo dài nhưng NLR < 2.5: Cảnh giác virus).'}
               </p>
             </div>
-            <div className="mt-3 pt-2 border-t border-slate-200 text-[11px] text-slate-500">
-              Giá rẻ, trích xuất tức thì từ công thức máu
+            <div className="mt-3 pt-2 border-t border-slate-200 text-[11px] text-slate-500 flex items-center justify-between">
+              <span>Trích xuất tức thì từ CBC</span>
+              <span className="text-amber-700 font-medium">Lưu ý nhiễu: Corticoid, stress mổ</span>
             </div>
           </div>
 

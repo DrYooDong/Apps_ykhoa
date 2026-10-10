@@ -6,12 +6,41 @@
  * cho toàn bộ tài liệu lâm sàng trong thư mục kho-guidelines/
  * Dùng làm nguồn dữ liệu EBM cơ sở cho SOAP & Tra cứu EBM nhanh.
  *
- * Cập nhật đồng bộ: 2026-09-23 (108 tài liệu lâm sàng chuẩn hóa 1:1 với kho-guidelines/*.mdx)
+ * Cập nhật đồng bộ: 2026-10-10 (109 tài liệu lâm sàng chuẩn hóa 1:1 với kho-guidelines/*.mdx)
  */
 
 import { Study } from './guidelines-types';
 
 export const KHO_GUIDELINES_STATIC: Study[] = [
+  {
+      "id": "2017-infection-nlr-mlr-fever",
+      "title": "Infection 2017: Vai Trò Của Tỷ Lệ Neutrophil/Lympho (NLR) & Monocyte/Lympho (MLR) Trong Chẩn Đoán Phân Biệt Sốt Do Nhiễm Trùng & Không Nhiễm Trùng",
+      "titleEn": "Role of neutrophil to lymphocyte and monocyte to lymphocyte ratios in the diagnosis of bacterial infection in patients with fever",
+      "drug": "NLR (Neutrophil-to-Lymphocyte Ratio), MLR (Monocyte-to-Lymphocyte Ratio), Complete Blood Count",
+      "sourceType": "intl-study",
+      "specialty": "infect",
+      "design": "cohort",
+      "intervention": "Trích xuất và tính toán tỷ số NLR và MLR từ công thức máu cơ bản lúc nhập viện để phân biệt nhiễm vi khuẩn, nhiễm vi rút và bệnh phi nhiễm trùng ở bệnh nhân sốt.",
+      "primaryEndpoint": "Độ chính xác chẩn đoán nhiễm khuẩn (AUROC), phát hiện nhiễm trùng huyết (septicemia) và tương tác với thời gian sốt trước nhập viện (< 7 ngày).",
+      "keyResults": "NLR vi khuẩn median 7.94 vs không nhiễm trùng 3.78 vs vi rút 0.63 (p < 0.001) | Septicemia có NLR vọt lên 15.69 vs 8.42 ở sốt < 7 ngày (p = 0.006) trong khi WBC (p = 0.559) và CRP (p = 0.615) thất bại hoàn toàn | Giảm lympho bào máu cấp tính (median 0.7 vs 1.3 × 10⁹/L, p < 0.001) là cơ chế cốt lõi | AUC NLR = 0.708, MLR = 0.688.",
+      "impact": "practice-changing",
+      "year": 2017,
+      "organization": "Infection / Haukeland University Hospital",
+      "journal": "Infection. 2017;45(3):299-307. doi:10.1007/s15010-016-0972-1",
+      "phase": "Prospective Observational Cohort Study",
+      "population": "299 bệnh nhân người lớn nhập viện vì sốt chưa rõ nguyên nhân tại Bệnh viện Đại học Haukeland, Bergen, Na Uy.",
+      "summary": "Nghiên cứu của Nilssen và cộng sự (Infection 2017) chứng minh NLR và MLR từ công thức máu thông thường phân biệt hiệu quả nhiễm vi khuẩn với nhiễm vi rút và phi nhiễm trùng. Đặc biệt, NLR nhận diện nhạy bén bệnh nhân nhiễm trùng huyết (septicemia) ở giai đoạn sốt < 7 ngày khi cả tổng bạch cầu (WBC) và CRP đều hoàn toàn thất bại.",
+      "detailedConclusion": "Không bao giờ được phép chỉ nhìn vào WBC hay CRP đơn thuần khi tiếp cận bệnh nhân sốt cấp tính. Tỷ lệ NLR > 13–15 ở bệnh nhân sốt < 7 ngày là cờ đỏ báo động nhiễm trùng huyết cần cấy máu và dùng kháng sinh sớm; trong khi NLR < 1.0 và MLR < 0.20 gợi ý mạnh mẽ căn nguyên vi rút để tránh lạm dụng kháng sinh.",
+      "file": "2017-infection-nlr-mlr-fever.mdx",
+      "conditionKey": "sepsis",
+      "icd10": [
+          "R50.9",
+          "A41.9",
+          "B34.9"
+      ],
+      "asianData": false,
+      "bookmarked": false
+  },
   {
       "id": "2017-eaaci-di-ung-noc-con-trung",
       "title": "EAACI 2017: Hướng Dẫn Liệu Pháp Miễn Dịch Nọc Côn Trùng (Venom Immunotherapy - VIT) Trong Phòng Ngừa Phản Vệ & Dị Ứng Toàn Thân",
@@ -3439,5 +3468,40 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "population": "Bệnh nhân trưởng thành bị tổn thương gan cấp tính tiến triển thành suy gan cấp, đặc trưng bởi sự khởi phát của bệnh não gan và rối loạn đông máu (INR ≥ 1.5) trên nền gan lành không xơ hóa.",
     "asianData": true,
     "subgroups": "{\"Nguy cơ phù não (ICH) theo nồng độ Amoniac động mạch\":\"HBAR: Amoniac <75 uM (Hiếm gặp ICH): 1.0% | Amoniac >100 uM (Yếu tố nguy cơ độc lập): 100.0% | Amoniac >200 uM (Dự báo phù não tiến triển): 100.0%\",\"Các đích số liệu kiểm soát hồi sức tại ICU\":\"HBAR: Đích áp lực động mạch trung bình MAP (mmHg): 75.0% | Đích áp lực tưới máu não CPP (mmHg): 60.0% | Đích nồng độ Natri phòng phù não (mEq/L): 145.0%\",\"Hiệu quả tiên lượng tử vong không do Acetaminophen\":\"COL: Độ nhạy của Tiêu chuẩn King's College: 68.5% | Độ đặc hiệu của Tiêu chuẩn King's College: 87.0%\"}"
+  },
+  {
+    "id": "2021-diagnostics-cbc-sepsis",
+    "title": "Diagnostics 2021: Giá Trị Của Tổng Phân Tích Tế Bào Máu (CBC) & Dữ Liệu Quần Thể Tế Bào Nâng Cao (CPD) Trong Chẩn Đoán & Tiên Lượng Nhiễm Trùng Huyết",
+    "titleEn": "The Value of a Complete Blood Count (CBC) for Sepsis Diagnosis and Prognosis (Diagnostics 2021)",
+    "sourceType": "intl-study",
+    "specialty": "infect",
+    "specialty2": "icu",
+    "specialties": ["infect", "icu", "hema"],
+    "design": "review",
+    "impact": "practice-changing",
+    "year": 2021,
+    "organization": "Diagnostics / MDPI",
+    "journal": "Diagnostics. 2021;11(10):1881. doi:10.3390/diagnostics11101881",
+    "phase": "Systematic & Critical Appraisal Review",
+    "population": "Bệnh nhân người trưởng thành nghi ngờ hoặc xác định mắc Nhiễm trùng huyết (Sepsis) và Sốc nhiễm trùng (Septic Shock) tại khoa Cấp cứu (ED) và Hồi sức tích cực (ICU).",
+    "file": "2021-diagnostics-cbc-sepsis.mdx",
+    "conditionKey": "sepsis",
+    "icd10": [
+      "A41.9",
+      "R65.2",
+      "R65.21"
+    ],
+    "intervention": "Khai thác CBC và CPD làm hệ thống cảnh báo sớm tuyến một; sử dụng MDW (Early Sepsis Indicator, FDA approved) tại ED với NPV rất cao để loại trừ sepsis; kết hợp RDW > 15%, NLR (cut-off 4.36-23.8) và giảm lympho kéo dài (≤ 0.6 × 10³/µL ở Ngày 4) để tiên lượng tử vong 28 ngày; theo dõi động học tiểu cầu và chỉ số DNI sau 72h tại ICU.",
+    "primaryEndpoint": "Đánh giá toàn diện giá trị chẩn đoán sớm, phân tầng tiên lượng tử vong và theo dõi động học đáp ứng điều trị của các thông số CBC cơ bản và CPD nâng cao so với các dấu ấn sinh hóa cổ điển (CRP, PCT) và cấy máu.",
+    "keyResults": "MDW được FDA phê duyệt là Early Sepsis Indicator tại ED với NPV rất cao | Giảm lympho tuyệt đối ≤ 0.6 × 10³/µL ở Ngày 4 tiên lượng độc lập tử vong 28 ngày (Drewry et al.) | RDW > 15% là yếu tố dự báo độc lập tử vong ICU | NLR tương quan chặt với SOFA/APACHE II (meta-analysis 14 nghiên cứu, n = 11,564) | DNI tăng sau 72h cảnh báo thất bại kháng sinh.",
+    "summary": "Tổng quan y học chứng cứ trên tạp chí Diagnostics hệ thống hóa vai trò của CBC và CPD trong Sepsis: cơ chế bão cytokine 2 giai đoạn, giá trị của từng dòng bạch cầu/hồng cầu/tiểu cầu, các tỷ số phức hợp (NLR, PC/MPV), dấu ấn CPD thế hệ mới (MDW, MNV, MMV, DNI, IPF), ma trận đối chiếu với CRP/PCT/cấy máu và thuật toán cây quyết định lâm sàng tích hợp từ ED đến ICU.",
+    "detailedConclusion": "Công thức máu là công cụ cảnh báo sớm tuyến một nhanh nhất và kinh tế nhất trong sepsis. Tại ED, MDW cho phép loại trừ sepsis an toàn và NLR/RDW giúp phân tầng nguy cơ khẩn cấp để kích hoạt Sepsis Hour-1 Bundle trước khi có kết quả cấy máu. Tại ICU, động học phục hồi tiểu cầu, động học DNI sau 72 giờ và hiện tượng giảm lympho kéo dài ở Ngày 4 cung cấp thông tin tiên lượng sống còn then chốt.",
+    "drug": "Kháng sinh phổ rộng giờ đầu (Hour-1 Bundle), Dịch truyền tinh thể, Vận mạch (Norepinephrine), Khối hồng cầu lắng (khi Hb < 7.0 g/dL)",
+    "asianData": true,
+    "subgroups": {
+      "Hiệu năng chẩn đoán dấu ấn sinh học": "HBAR: MDW loại trừ sớm tại ED (NPV cao): 95.0% | NLR dự báo tử vong độc lập (Meta n=11,564): 90.0% | RDW > 15% tiên lượng tử vong ICU: 85.0% | Giảm lympho Ngày 4 tiên lượng tử vong 28 ngày: 88.0%",
+      "So sánh chi phí & thời gian trả kết quả": "HBAR: Thời gian trả kết quả CBC/CPD (Vài phút): 100.0% | Thời gian trả kết quả CRP/PCT (1-2 giờ): 50.0% | Thời gian trả kết quả Cấy máu (24-72 giờ): 15.0%",
+      "Động học điều trị tại ICU": "HBAR: DNI bình thường sau 6-10 ngày (Điều trị thành công): 92.0% | DNI tăng sau 72h (Thất bại điều trị): 85.0% | Phục hồi số lượng tiểu cầu (Tiên lượng sống còn): 88.0%"
+    }
   }
 ];

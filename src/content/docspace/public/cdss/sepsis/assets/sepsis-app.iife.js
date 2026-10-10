@@ -25,9 +25,9 @@
     mod
   ));
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/cjs/react.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react.production.js
   var require_react_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/cjs/react.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_PORTAL_TYPE = Symbol.for("react.portal");
@@ -477,9 +477,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/index.js
   var require_react = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_production();
@@ -489,9 +489,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/scheduler/cjs/scheduler.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js
   var require_scheduler_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
       "use strict";
       function push(heap, node) {
         var index = heap.length;
@@ -762,9 +762,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/scheduler/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/index.js
   var require_scheduler = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/scheduler/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_scheduler_production();
@@ -774,9 +774,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/cjs/react-dom.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js
   var require_react_dom_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
       var React6 = require_react();
       function formatProdErrorMessage(code) {
@@ -931,9 +931,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/index.js
   var require_react_dom = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/index.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -957,9 +957,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/cjs/react-dom-client.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js
   var require_react_dom_client_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
       var React6 = require_react();
@@ -14503,9 +14503,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/client.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/client.js
   var require_client = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react-dom/client.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/client.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -14529,9 +14529,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/cjs/react-jsx-runtime.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js
   var require_react_jsx_runtime_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -14559,9 +14559,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/jsx-runtime.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/jsx-runtime.js
   var require_jsx_runtime = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/react/jsx-runtime.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/jsx-runtime.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_jsx_runtime_production();
@@ -14571,14 +14571,14 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/main.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/main.tsx
   var import_react8 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/App.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/App.tsx
   var import_react7 = __toESM(require_react(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/utils/calculators.ts
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/utils/calculators.ts
   function calculateMAP(sbp, dbp) {
     if (!sbp || !dbp) return 0;
     return Math.round((sbp + 2 * dbp) / 3 * 10) / 10;
@@ -14728,7 +14728,7 @@
     breakdown.push({ name: "Nh\u1ECBp tim", score: hrScore, description: hrDesc, isRedFlag: hrScore === 3 });
     let cScore = 0;
     let cDesc = "T\u1EC9nh t\xE1o ho\xE0n to\xE0n (Alert)";
-    if (patient.avpu !== "A" || patient.newAlteredMentalState || patient.gcs < 15) {
+    if (patient.avpu !== "A" || patient.newAlteredMentalState || patient.gcs !== void 0 && patient.gcs < 15) {
       cScore = 3;
       cDesc = `R\u1ED1i lo\u1EA1n tri gi\xE1c m\u1EDBi (AVPU: ${patient.avpu}, GCS: ${patient.gcs}/15)`;
     }
@@ -14955,14 +14955,18 @@
     let cvDesc = "";
     const map = calculateMAP(patient.sbp, patient.dbp);
     const vaso = patient.vasoactiveUsed;
-    const hasHighVaso = vaso.norepinephrine || vaso.epinephrine || vaso.dopamine && patient.vasoactiveMedCount >= 2;
+    const hasHighVaso = vaso.norepinephrine && patient.vasoactiveMedCount >= 2 || vaso.epinephrine && patient.vasoactiveMedCount >= 2 || vaso.dopamine && patient.vasoactiveMedCount >= 2;
+    const hasModVaso = vaso.norepinephrine || vaso.epinephrine;
     if (hasHighVaso) {
       cvScore = 4;
-      cvDesc = "\u0110ang d\xF9ng Norepinephrine/Epinephrine li\u1EC1u duy tr\xEC ho\u1EB7c \u0111a v\u1EADn m\u1EA1ch";
+      cvDesc = "\u0110ang d\xF9ng ph\u1ED1i h\u1EE3p \u0111a v\u1EADn m\u1EA1ch ho\u1EB7c li\u1EC1u cao (Norepinephrine / Epinephrine / Dopamine > 15 \xB5g/kg/ph\xFAt)";
+    } else if (hasModVaso) {
+      cvScore = 3;
+      cvDesc = "\u0110ang d\xF9ng Norepinephrine ho\u1EB7c Epinephrine li\u1EC1u chu\u1EA9n (SOFA 3 \u0111i\u1EC3m)";
     } else if (vaso.dopamine || vaso.dobutamine || patient.vasoactiveMedCount === 1) {
       cvScore = 2;
-      cvDesc = "\u0110ang d\xF9ng Dopamine ho\u1EB7c Dobutamine li\u1EC1u h\u1ED7 tr\u1EE3";
-    } else if (map < 70) {
+      cvDesc = "\u0110ang d\xF9ng Dopamine (\u2264 5 \xB5g/kg/ph\xFAt) ho\u1EB7c Dobutamine (b\u1EA5t k\u1EF3 li\u1EC1u n\xE0o)";
+    } else if (map < 70 && map > 0) {
       cvScore = 1;
       cvDesc = `Huy\u1EBFt \xE1p trung b\xECnh MAP ${map} mmHg (< 70 mmHg)`;
     } else {
@@ -15288,23 +15292,39 @@
       };
     }
     const nlr = Math.round(neutrophils / lymphocytes * 10) / 10;
-    if (nlr >= 6) {
+    if (nlr >= 10) {
+      const isSepticemiaAlert = nlr >= 15;
+      const isSystemicInfection = nlr >= 13;
+      return {
+        nlr,
+        riskLevel: "critical",
+        tier: 4,
+        tierLabel: isSepticemiaAlert ? "M\u1EE9c 4: B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch (\u2265 15.0 - Nguy C\u01A1 Septicemia & S\u1ED1c)" : "M\u1EE9c 4: B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch (\u2265 10.0 - Nhi\u1EC5m Tr\xF9ng To\xE0n Th\xE2n)",
+        details: isSepticemiaAlert ? `NLR = ${nlr} (\u2265 15.0 - Ng\u01B0\u1EE1ng ch\u1EC9 \u0111i\u1EC3m Septicemia & S\u1ED1c nhi\u1EC5m khu\u1EA9n - Naess et al. 2017 & G\xFCrol et al. 2015): T\u1EF7 s\u1ED1 t\u0103ng v\u1ECDt b\xE1o hi\u1EC7u vi khu\u1EA9n x\xE2m nh\u1EADp v\xE0o tu\u1EA7n ho\xE0n (Median Septicemia = 15.7), b\xE3o cytokine d\u1EEF d\u1ED9i song h\xE0nh c\xF9ng c\u1EA1n ki\u1EC7t lympho b\xE0o. Nghi\xEAn c\u1EE9u Naess 2017 ch\u1EE9ng minh NLR ph\xE2n bi\u1EC7t Septicemia v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA v\u01B0\u1EE3t tr\u1ED9i h\u01A1n h\u1EB3n WBC (p=0.56) v\xE0 CRP (p=0.62). Kh\u1EA9n c\u1EA5p c\u1EA5y m\xE1u 2 v\u1ECB tr\xED & h\u1ED3i s\u1EE9c ICU.` : `NLR = ${nlr} (\u2265 10.0 - B\xE1o \u0111\u1ED9ng nguy k\u1ECBch): M\u1EA5t c\xE2n b\u1EB1ng mi\u1EC5n d\u1ECBch tr\u1EA7m tr\u1ECDng, b\xE3o cytokine d\u1EEF d\u1ED9i song h\xE0nh c\u1EA1n ki\u1EC7t lympho b\xE0o nghi\xEAm tr\u1ECDng (G\xFCrol 2015: 10-13 nhi\u1EC5m tr\xF9ng to\xE0n th\xE2n, \u2265 13-15 nhi\u1EC5m tr\xF9ng huy\u1EBFt). Nguy c\u01A1 r\u1EA5t cao ti\u1EBFn tri\u1EC3n S\u1ED1c nhi\u1EC5m khu\u1EA9n kh\xE1ng tr\u1ECB v\xE0 t\u1EED vong ng\u1EAFn h\u1EA1n. Kh\u1EA9n c\u1EA5p \u0111\xE1nh gi\xE1 t\u1EA1i gi\u01B0\u1EDDng & h\u1ED9i ch\u1EA9n ICU.`
+      };
+    } else if (nlr >= 6) {
       return {
         nlr,
         riskLevel: "high",
-        details: `NLR = ${nlr} (\u2265 6.0): Gi\xE1 tr\u1ECB ti\xEAn l\u01B0\u1EE3ng \u0111\u1ED9c l\u1EADp nguy c\u01A1 t\u1EED vong s\u1EDBm trong 72 gi\u1EDD (\u0110\u1ED9 nh\u1EA1y 92%, NPV 97%) v\xE0 nguy c\u01A1 cao ti\u1EBFn tri\u1EC3n S\u1ED1c nhi\u1EC5m khu\u1EA9n.`
+        tier: 3,
+        tierLabel: "M\u1EE9c 3: Nguy C\u01A1 Cao / Sepsis R\xF5 R\u1EC7t (6.0 - 9.9)",
+        details: `NLR = ${nlr} (6.0 - 9.9 - Nguy c\u01A1 cao): Nghi\xEAn c\u1EE9u Demni et al. 2026: NLR \u2265 6.0 l\xE0 y\u1EBFu t\u1ED1 ti\xEAn l\u01B0\u1EE3ng \u0111\u1ED9c l\u1EADp t\u1EED vong s\u1EDBm trong 72 gi\u1EDD (\u0110\u1ED9 nh\u1EA1y 92%, NPV 97%) v\xE0 ti\u1EBFn tri\u1EC3n suy c\u01A1 quan (\u0394SOFA \u2265 2). T\u01B0\u01A1ng \u1EE9ng d\u1EA3i nhi\u1EC5m khu\u1EA9n khu tr\xFA/n\u1EB7ng (Naess 2017: Median vi\xEAm ph\u1ED5i 7.9, vi\xEAm \u0111\xE0i b\u1EC3 th\u1EADn 8.2). K\xEDch ho\u1EA1t ngay quy tr\xECnh t\u1EA7m so\xE1t Sepsis.`
       };
     } else if (nlr >= 3) {
       return {
         nlr,
-        riskLevel: "elevated",
-        details: `NLR = ${nlr} (3.0 - 5.9): T\u0103ng ph\u1EA3n \u1EE9ng vi\xEAm h\u1EC7 th\u1ED1ng, theo d\xF5i s\xE1t di\u1EC5n ti\u1EBFn c\xF4ng th\u1EE9c m\xE1u.`
+        riskLevel: "mild",
+        tier: 2,
+        tierLabel: "M\u1EE9c 2: C\u1EA3nh B\xE1o / T\u0103ng Nh\u1EB9 - V\u1EEBa (3.0 - 5.9)",
+        details: `NLR = ${nlr} (3.0 - 5.9 - C\u1EA3nh b\xE1o): Ph\u1EA3n \u1EE9ng vi\xEAm khu tr\xFA, stress sinh l\xFD ho\u1EB7c nghi ng\u1EDD nhi\u1EC5m tr\xF9ng ti\u1EC1m \u1EA9n giai \u0111o\u1EA1n \u0111\u1EA7u (ho\u1EB7c s\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y khi NLR b\u1EAFt \u0111\u1EA7u tho\xE1i tri\u1EC3n). C\u1EA7n \u0111\xE1nh gi\xE1 k\u1EBFt h\u1EE3p sinh hi\u1EC7u (NEWS2), \u1ED5 nhi\u1EC5m tr\xF9ng nghi ng\u1EDD v\xE0 l\u1EB7p l\u1EA1i c\xF4ng th\u1EE9c m\xE1u.`
       };
     } else {
       return {
         nlr,
         riskLevel: "normal",
-        details: `NLR = ${nlr} (< 3.0): T\u1EF7 s\u1ED1 trong gi\u1EDBi h\u1EA1n an to\xE0n.`
+        tier: 1,
+        tierLabel: "M\u1EE9c 1: Sinh L\xFD / B\xECnh Th\u01B0\u1EDDng (< 3.0)",
+        details: `NLR = ${nlr} (< 3.0 - B\xECnh th\u01B0\u1EDDng): T\u1EF7 s\u1ED1 trong gi\u1EDBi h\u1EA1n an to\xE0n, kh\xF4ng c\xF3 b\u1EB1ng ch\u1EE9ng k\xEDch ho\u1EA1t ph\u1EA3n \u1EE9ng vi\xEAm h\u1EC7 th\u1ED1ng c\u1EA5p t\xEDnh (N\u1EBFu s\u1ED1t cao li\xEAn t\u1EE5c nh\u01B0ng NLR < 2.5: C\u1EA3nh gi\xE1c nhi\u1EC5m virus - Naess 2017).`
       };
     }
   }
@@ -15556,10 +15576,10 @@
     };
   }
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/shared/src/utils.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/shared/src/utils.js
   var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
   var toCamelCase = (string) => string.replace(
     /^([A-Z])|[\s-_]+(\w)/g,
@@ -15580,10 +15600,10 @@
     }
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
   var import_react = __toESM(require_react());
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/defaultAttributes.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/defaultAttributes.js
   var defaultAttributes = {
     xmlns: "http://www.w3.org/2000/svg",
     width: 24,
@@ -15596,7 +15616,7 @@
     strokeLinejoin: "round"
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
   var Icon = (0, import_react.forwardRef)(
     ({
       color = "currentColor",
@@ -15627,7 +15647,7 @@
     )
   );
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var createLucideIcon = (iconName, iconNode) => {
     const Component = (0, import_react2.forwardRef)(
       ({ className, ...props }, ref) => (0, import_react2.createElement)(Icon, {
@@ -15645,7 +15665,7 @@
     return Component;
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/activity.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/activity.js
   var __iconNode = [
     [
       "path",
@@ -15657,14 +15677,14 @@
   ];
   var Activity = createLucideIcon("activity", __iconNode);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/arrow-right.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/arrow-right.js
   var __iconNode2 = [
     ["path", { d: "M5 12h14", key: "1ays0h" }],
     ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
   ];
   var ArrowRight = createLucideIcon("arrow-right", __iconNode2);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/baby.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/baby.js
   var __iconNode3 = [
     ["path", { d: "M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5", key: "1u7htd" }],
     ["path", { d: "M15 12h.01", key: "1k8ypt" }],
@@ -15679,7 +15699,7 @@
   ];
   var Baby = createLucideIcon("baby", __iconNode3);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/book-open.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/book-open.js
   var __iconNode4 = [
     ["path", { d: "M12 7v14", key: "1akyts" }],
     [
@@ -15692,7 +15712,7 @@
   ];
   var BookOpen = createLucideIcon("book-open", __iconNode4);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/bookmark-plus.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/bookmark-plus.js
   var __iconNode5 = [
     ["path", { d: "m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z", key: "1fy3hk" }],
     ["line", { x1: "12", x2: "12", y1: "7", y2: "13", key: "1cppfj" }],
@@ -15700,7 +15720,7 @@
   ];
   var BookmarkPlus = createLucideIcon("bookmark-plus", __iconNode5);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/calendar.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/calendar.js
   var __iconNode6 = [
     ["path", { d: "M8 2v4", key: "1cmpym" }],
     ["path", { d: "M16 2v4", key: "4m81vk" }],
@@ -15709,54 +15729,54 @@
   ];
   var Calendar = createLucideIcon("calendar", __iconNode6);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/check.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/check.js
   var __iconNode7 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
   var Check = createLucideIcon("check", __iconNode7);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/chevron-down.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-down.js
   var __iconNode8 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
   var ChevronDown = createLucideIcon("chevron-down", __iconNode8);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/chevron-up.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-up.js
   var __iconNode9 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
   var ChevronUp = createLucideIcon("chevron-up", __iconNode9);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/chevrons-left.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-left.js
   var __iconNode10 = [
     ["path", { d: "m11 17-5-5 5-5", key: "13zhaf" }],
     ["path", { d: "m18 17-5-5 5-5", key: "h8a8et" }]
   ];
   var ChevronsLeft = createLucideIcon("chevrons-left", __iconNode10);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/chevrons-right.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-right.js
   var __iconNode11 = [
     ["path", { d: "m6 17 5-5-5-5", key: "xnjwq" }],
     ["path", { d: "m13 17 5-5-5-5", key: "17xmmf" }]
   ];
   var ChevronsRight = createLucideIcon("chevrons-right", __iconNode11);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/circle-check.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/circle-check.js
   var __iconNode12 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ];
   var CircleCheck = createLucideIcon("circle-check", __iconNode12);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/clock.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/clock.js
   var __iconNode13 = [
     ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
   ];
   var Clock = createLucideIcon("clock", __iconNode13);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/copy.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/copy.js
   var __iconNode14 = [
     ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
     ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
   ];
   var Copy = createLucideIcon("copy", __iconNode14);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/dna.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/dna.js
   var __iconNode15 = [
     ["path", { d: "m10 16 1.5 1.5", key: "11lckj" }],
     ["path", { d: "m14 8-1.5-1.5", key: "1ohn8i" }],
@@ -15772,7 +15792,7 @@
   ];
   var Dna = createLucideIcon("dna", __iconNode15);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/droplet.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/droplet.js
   var __iconNode16 = [
     [
       "path",
@@ -15784,7 +15804,7 @@
   ];
   var Droplet = createLucideIcon("droplet", __iconNode16);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/heart.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/heart.js
   var __iconNode17 = [
     [
       "path",
@@ -15796,7 +15816,7 @@
   ];
   var Heart = createLucideIcon("heart", __iconNode17);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/history.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/history.js
   var __iconNode18 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }],
@@ -15804,7 +15824,7 @@
   ];
   var History = createLucideIcon("history", __iconNode18);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/layers.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/layers.js
   var __iconNode19 = [
     [
       "path",
@@ -15830,7 +15850,7 @@
   ];
   var Layers = createLucideIcon("layers", __iconNode19);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
   var __iconNode20 = [
     ["path", { d: "M12 16h.01", key: "1drbdi" }],
     ["path", { d: "M12 8v4", key: "1got3b" }],
@@ -15844,7 +15864,7 @@
   ];
   var OctagonAlert = createLucideIcon("octagon-alert", __iconNode20);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/pill.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/pill.js
   var __iconNode21 = [
     [
       "path",
@@ -15854,14 +15874,14 @@
   ];
   var Pill = createLucideIcon("pill", __iconNode21);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
   var __iconNode22 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
   ];
   var RotateCcw = createLucideIcon("rotate-ccw", __iconNode22);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/sparkles.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/sparkles.js
   var __iconNode23 = [
     [
       "path",
@@ -15876,7 +15896,7 @@
   ];
   var Sparkles = createLucideIcon("sparkles", __iconNode23);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/stethoscope.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/stethoscope.js
   var __iconNode24 = [
     ["path", { d: "M11 2v2", key: "1539x4" }],
     ["path", { d: "M5 2v2", key: "1yf1q8" }],
@@ -15886,7 +15906,7 @@
   ];
   var Stethoscope = createLucideIcon("stethoscope", __iconNode24);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/test-tube.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/test-tube.js
   var __iconNode25 = [
     ["path", { d: "M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5V2", key: "125lnx" }],
     ["path", { d: "M8.5 2h7", key: "csnxdl" }],
@@ -15894,7 +15914,7 @@
   ];
   var TestTube = createLucideIcon("test-tube", __iconNode25);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/trash-2.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/trash-2.js
   var __iconNode26 = [
     ["path", { d: "M10 11v6", key: "nco0om" }],
     ["path", { d: "M14 11v6", key: "outv1u" }],
@@ -15904,7 +15924,7 @@
   ];
   var Trash2 = createLucideIcon("trash-2", __iconNode26);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
   var __iconNode27 = [
     [
       "path",
@@ -15918,14 +15938,14 @@
   ];
   var TriangleAlert = createLucideIcon("triangle-alert", __iconNode27);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/user.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/user.js
   var __iconNode28 = [
     ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
     ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
   ];
   var User = createLucideIcon("user", __iconNode28);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/users.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/users.js
   var __iconNode29 = [
     ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
     ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
@@ -15934,14 +15954,14 @@
   ];
   var Users = createLucideIcon("users", __iconNode29);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/node_modules/lucide-react/dist/esm/icons/x.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/x.js
   var __iconNode30 = [
     ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
     ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
   ];
   var X = createLucideIcon("x", __iconNode30);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/data/presetCases.ts
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/data/presetCases.ts
   var NORMAL_PATIENT_CASE = {
     id: "case-normal",
     patientName: "",
@@ -16011,7 +16031,7 @@
       title: "Ca 0: B\xECnh th\u01B0\u1EDDng (Kh\xE1m s\u1EE9c kh\u1ECFe / Ch\u01B0a c\xF3 nhi\u1EC5m khu\u1EA9n)",
       subtitle: "Sinh hi\u1EC7u b\xECnh th\u01B0\u1EDDng, ch\u1EC9 m\u1EDBi c\xF3 C\u1EADn l\xE2m s\xE0ng TPTTBM (CBC)",
       category: "M\u1EB7c \u0111\u1ECBnh - B\xECnh th\u01B0\u1EDDng",
-      clinicalScenario: "Nam 35 tu\u1ED5i ki\u1EC3m tra s\u1EE9c kh\u1ECFe t\u1ED5ng qu\xE1t. Kh\xF4ng s\u1ED1t, kh\xF4ng kh\xF3 th\u1EDF, kh\xF4ng c\xF3 d\u1EA5u hi\u1EC7u nhi\u1EC5m tr\xF9ng. Sinh hi\u1EC7u ho\xE0n to\xE0n \u1ED5n \u0111\u1ECBnh: HA 120/80 mmHg, M\u1EA1ch 72 l\u1EA7n/ph\xFAt, Th\u1EDF 16 l\u1EA7n/ph\xFAt, SpO2 99% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng ch\u1EC9 m\u1EDBi c\xF3 T\u1ED5ng ph\xE2n t\xEDch t\u1EBF b\xE0o m\xE1u: WBC 6.8 G/L, NEU 4.2 G/L, LYM 2.1 G/L, PLT 250 G/L (NLR = 2.0 - B\xECnh th\u01B0\u1EDDng).",
+      clinicalScenario: "Nam 35 tu\u1ED5i ki\u1EC3m tra s\u1EE9c kh\u1ECFe t\u1ED5ng qu\xE1t. Kh\xF4ng s\u1ED1t, kh\xF4ng kh\xF3 th\u1EDF, kh\xF4ng c\xF3 d\u1EA5u hi\u1EC7u nhi\u1EC5m tr\xF9ng. Sinh hi\u1EC7u ho\xE0n to\xE0n \u1ED5n \u0111\u1ECBnh: HA 120/80 mmHg, M\u1EA1ch 72 l\u1EA7n/ph\xFAt, Th\u1EDF 16 l\u1EA7n/ph\xFAt, SpO2 99% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng ch\u1EC9 m\u1EDBi c\xF3 T\u1ED5ng ph\xE2n t\xEDch t\u1EBF b\xE0o m\xE1u: WBC 6.8 G/L, NEU 4.2 G/L, LYM 2.1 G/L, PLT 250 G/L (NLR = 2.0 - M\u1EE9c 1: Sinh l\xFD / B\xECnh th\u01B0\u1EDDng).",
       patientData: NORMAL_PATIENT_CASE
     },
     {
@@ -16019,7 +16039,7 @@
       title: "Ca 1: Ng\u01B0\u1EDDi l\u1EDBn S\u1ED1c Nhi\u1EC5m Khu\u1EA9n (Sepsis-3 & LP-NEWS)",
       subtitle: "Vi\xEAm ph\u1ED5i c\u1ED9ng \u0111\u1ED3ng bi\u1EBFn ch\u1EE9ng suy \u0111a c\u01A1 quan, h\u1EA1 huy\u1EBFt \xE1p",
       category: "Ng\u01B0\u1EDDi l\u1EDBn - H\u1ED3i s\u1EE9c c\u1EA5p c\u1EE9u",
-      clinicalScenario: "Nam 66 tu\u1ED5i, ti\u1EC1n s\u1EED \u0110T\u0110 type 2 v\xE0 t\u0103ng huy\u1EBFt \xE1p, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao r\xE9t run, ho kh\u1EA1c \u0111\u1EDDm m\u1EE7, kh\xF3 th\u1EDF d\u1EEF d\u1ED9i, l\xFA l\u1EABn m\u1EDBi xu\u1EA5t hi\u1EC7n. Huy\u1EBFt \xE1p t\u1EE5t 82/50 mmHg, SpO2 89% d\xF9 th\u1EDF oxy k\xEDnh, Lactate 3.8 mmol/L, PCT 18 ng/mL, NLR 12.5.",
+      clinicalScenario: "Nam 66 tu\u1ED5i, ti\u1EC1n s\u1EED \u0110T\u0110 type 2 v\xE0 t\u0103ng huy\u1EBFt \xE1p, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao r\xE9t run, ho kh\u1EA1c \u0111\u1EDDm m\u1EE7, kh\xF3 th\u1EDF d\u1EEF d\u1ED9i, l\xFA l\u1EABn m\u1EDBi xu\u1EA5t hi\u1EC7n. Huy\u1EBFt \xE1p t\u1EE5t 82/50 mmHg, SpO2 89% d\xF9 th\u1EDF oxy k\xEDnh, Lactate 3.8 mmol/L, PCT 18 ng/mL, NLR 12.5 (M\u1EE9c 4: B\xE1o \u0111\u1ED9ng nguy k\u1ECBch \u2265 10.0).",
       patientData: {
         id: "case-1",
         patientName: "Tr\u1EA7n V\u0103n H.",
@@ -16386,7 +16406,7 @@
       title: "Ca 6: Nhi\u1EC5m Tr\xF9ng Ti\u1EC3u (Vi\xEAm \u0110\xE0i B\u1EC3 Th\u1EADn C\u1EA5p / Urosepsis)",
       subtitle: "N\u1EEF 54 tu\u1ED5i, s\u1ED1t r\xE9t run, \u0111au h\xF4ng l\u01B0ng, ti\u1EC3u bu\u1ED1t, t\u0103ng NLR & Lactate",
       category: "Ng\u01B0\u1EDDi l\u1EDBn - Ti\u1EBFt ni\u1EC7u / C\u1EA5p c\u1EE9u",
-      clinicalScenario: "N\u1EEF 54 tu\u1ED5i, ti\u1EC1n s\u1EED \u0111\xE1i th\xE1o \u0111\u01B0\u1EDDng type 2 v\xE0 s\u1ECFi th\u1EADn, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao 39.2\xB0C, r\xE9t run th\xE0nh c\u01A1n, \u0111au t\u1EE9c d\u1EEF d\u1ED9i v\xF9ng h\xF4ng l\u01B0ng b\xEAn ph\u1EA3i k\xE8m ti\u1EC3u bu\u1ED1t r\u1EAFt, n\u01B0\u1EDBc ti\u1EC3u \u0111\u1EE5c. Kh\xE1m: Rung th\u1EADn (+) b\xEAn ph\u1EA3i. Sinh hi\u1EC7u: HA 105/65 mmHg, M\u1EA1ch 108 l/p, Th\u1EDF 23 l/p, SpO2 96% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng: WBC 17.8 G/L, NEU 15.2 G/L, LYM 1.2 G/L (NLR 12.7 - Nguy c\u01A1 cao), Ti\u1EC3u c\u1EA7u 190 G/L, Lactate 2.3 mmol/L, PCT 4.6 ng/mL, CRP 128 mg/L, Creatinine 135 \xB5mol/L (t\u0103ng so v\u1EDBi n\u1EC1n 75 \xB5mol/L). qSOFA = 1/3 (b\u1ECF s\xF3t), nh\u01B0ng NEWS2 = 6, SIRS = 4/4 v\xE0 NICE ph\xE2n t\u1EA7ng nguy c\u01A1 cao do Lactate > 2.0.",
+      clinicalScenario: "N\u1EEF 54 tu\u1ED5i, ti\u1EC1n s\u1EED \u0111\xE1i th\xE1o \u0111\u01B0\u1EDDng type 2 v\xE0 s\u1ECFi th\u1EADn, nh\u1EADp vi\u1EC7n v\xEC s\u1ED1t cao 39.2\xB0C, r\xE9t run th\xE0nh c\u01A1n, \u0111au t\u1EE9c d\u1EEF d\u1ED9i v\xF9ng h\xF4ng l\u01B0ng b\xEAn ph\u1EA3i k\xE8m ti\u1EC3u bu\u1ED1t r\u1EAFt, n\u01B0\u1EDBc ti\u1EC3u \u0111\u1EE5c. Kh\xE1m: Rung th\u1EADn (+) b\xEAn ph\u1EA3i. Sinh hi\u1EC7u: HA 105/65 mmHg, M\u1EA1ch 108 l/p, Th\u1EDF 23 l/p, SpO2 96% kh\xED tr\u1EDDi. C\u1EADn l\xE2m s\xE0ng: WBC 17.8 G/L, NEU 15.2 G/L, LYM 1.2 G/L (NLR 12.7 - M\u1EE9c 4: B\xE1o \u0111\u1ED9ng nguy k\u1ECBch \u2265 10.0), Ti\u1EC3u c\u1EA7u 190 G/L, Lactate 2.3 mmol/L, PCT 4.6 ng/mL, CRP 128 mg/L, Creatinine 135 \xB5mol/L (t\u0103ng so v\u1EDBi n\u1EC1n 75 \xB5mol/L). qSOFA = 1/3 (b\u1ECF s\xF3t), nh\u01B0ng NEWS2 = 6, SIRS = 4/4 v\xE0 NICE ph\xE2n t\u1EA7ng nguy c\u01A1 cao do Lactate > 2.0.",
       patientData: {
         id: "case-6",
         patientName: "L\xEA Th\u1ECB M.",
@@ -16453,7 +16473,7 @@
     }
   ];
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/Header.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/Header.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var Header = ({
     onOpenPresets,
@@ -16537,10 +16557,10 @@
     ] }) }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/CompactPatientForm.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CompactPatientForm.tsx
   var import_react4 = __toESM(require_react(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/SmartNumberInput.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/SmartNumberInput.tsx
   var import_react3 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
   var SmartNumberInput = ({
@@ -16641,7 +16661,7 @@
     );
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/CompactPatientForm.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CompactPatientForm.tsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   var CompactPatientForm = ({
     data,
@@ -17477,7 +17497,7 @@
     ] });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/UnifiedDashboard.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/UnifiedDashboard.tsx
   var import_react5 = __toESM(require_react(), 1);
   var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
   var UnifiedDashboard = ({
@@ -17569,9 +17589,9 @@
               /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { className: result.calculatedMap < 65 ? "text-rose-700" : "text-slate-900", children: result.calculatedMap }),
               " mmHg"
             ] }),
-            result.calculatedNlr && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+            result.calculatedNlr !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
               "NLR: ",
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { className: result.nlrRiskLevel === "high" ? "text-rose-700" : "text-slate-900", children: result.calculatedNlr })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { className: result.nlrRiskLevel === "critical" ? "text-rose-700 font-extrabold animate-pulse" : result.nlrRiskLevel === "high" ? "text-rose-600 font-bold" : result.nlrRiskLevel === "mild" || result.nlrRiskLevel === "elevated" ? "text-amber-700" : "text-emerald-700", children: result.calculatedNlr })
             ] }),
             result.lactateClearancePercent !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
               "Thanh th\u1EA3i Lac: ",
@@ -17638,20 +17658,20 @@
         ] })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "bg-white rounded-xl border border-slate-200 p-3.5 shadow-2xs space-y-2.5", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex flex-wrap items-center justify-between gap-1.5", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: "text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TestTube, { className: "w-3.5 h-3.5 text-teal-600" }),
             "\u0110\xE1nh Gi\xE1 T\u1EF7 L\u1EC7 NLR (Neutrophil-to-Lymphocyte Ratio)"
           ] }),
-          result.calculatedNlr !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: `text-[11px] font-mono px-2 py-0.5 rounded font-bold ${result.nlrRiskLevel === "high" ? "bg-rose-100 text-rose-800" : result.nlrRiskLevel === "elevated" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800"}`, children: [
+          result.calculatedNlr !== void 0 ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { className: `text-[11px] font-mono px-2 py-0.5 rounded font-bold flex items-center gap-1 ${result.nlrRiskLevel === "critical" ? "bg-rose-600 text-white shadow-xs animate-pulse ring-1 ring-rose-700" : result.nlrRiskLevel === "high" ? "bg-rose-100 text-rose-800 border border-rose-300" : result.nlrRiskLevel === "mild" || result.nlrRiskLevel === "elevated" ? "bg-amber-100 text-amber-800 border border-amber-300" : "bg-emerald-100 text-emerald-800 border border-emerald-300"}`, children: [
             "NLR: ",
             result.calculatedNlr,
             " (",
-            result.nlrRiskLevel === "high" ? "NGUY C\u01A0 CAO" : result.nlrRiskLevel === "elevated" ? "T\u0102NG V\u1EEAA" : "B\xCCNH TH\u01AF\u1EDCNG",
+            result.nlrRiskLevel === "critical" ? "M\u1EE8C 4: B\xC1O \u0110\u1ED8NG NGUY K\u1ECACH (\u2265 10.0)" : result.nlrRiskLevel === "high" ? "M\u1EE8C 3: NGUY C\u01A0 CAO (6.0 - 9.9)" : result.nlrRiskLevel === "mild" || result.nlrRiskLevel === "elevated" ? "M\u1EE8C 2: C\u1EA2NH B\xC1O (3.0 - 5.9)" : "M\u1EE8C 1: B\xCCNH TH\u01AF\u1EDCNG (< 3.0)",
             ")"
           ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[11px] text-slate-400 font-mono", children: "Ch\u01B0a \u0111\u1EE7 d\u1EEF li\u1EC7u CLS" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-4 gap-2.5 text-xs", children: [
           /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2.5 bg-slate-50 rounded-lg border border-slate-200", children: [
             /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] uppercase font-bold text-slate-500 block mb-1", children: "C\xF4ng th\u1EE9c & Gi\xE1 tr\u1ECB \u0111\u1EA7u v\xE0o" }),
             /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-mono text-[11px] text-slate-800 space-y-0.5", children: [
@@ -17667,22 +17687,54 @@
                 "NLR = NEU / LYM = ",
                 result.calculatedNlr !== void 0 ? result.calculatedNlr : "---"
               ] })
-            ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "mt-2 text-[9px] text-slate-500 leading-tight", children: "T\u1EE9c th\xEC, tr\xEDch xu\u1EA5t t\u1EEB CBC, ph\u1EA3n \xE1nh c\xE2n b\u1EB1ng mi\u1EC5n d\u1ECBch b\u1EA9m sinh & thu nh\u1EADn." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2.5 bg-slate-50 rounded-lg border border-slate-200 md:col-span-2 space-y-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] uppercase font-bold text-slate-500 block", children: "\xDD ngh\u0129a l\xE2m s\xE0ng (Demni et al. 2026 & B\xE1ch ph\xE2n v\u1ECB)" }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-3 gap-1.5 text-[10px]", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-1.5 rounded border ${result.calculatedNlr !== void 0 && result.calculatedNlr < 3 ? "bg-emerald-100/70 border-emerald-400 text-emerald-950 font-bold ring-1 ring-emerald-400" : "bg-white border-slate-200 text-slate-600"}`, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "font-bold", children: "< 3.0: B\xECnh th\u01B0\u1EDDng" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9px] text-slate-500", children: "M\u1EE9c sinh l\xFD, kh\xF4ng c\xF3 \u01B0u th\u1EBF vi\xEAm c\u1EA5p" })
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "p-2.5 bg-slate-50 rounded-lg border border-slate-200 md:col-span-3 space-y-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[10px] uppercase font-bold text-slate-500 block", children: "Ph\xE2n t\u1EA7ng 4 ng\u01B0\u1EE1ng c\u1EAFt l\xE2m s\xE0ng (Zahorec 2021, Demni 2026, Naess 2017 & G\xFCrol 2015)" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[9px] text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200", children: "L\u01B0u \xFD nhi\u1EC5u: Corticoid, stress m\u1ED5/ch\u1EA5n th\u01B0\u01A1ng" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px]", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-2 rounded border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr < 3 ? "bg-emerald-100/80 border-emerald-500 text-emerald-950 font-bold ring-2 ring-emerald-400 shadow-2xs" : "bg-white border-slate-200 text-slate-600"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-bold flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "< 3.0" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[8px] px-1 py-0.2 rounded bg-emerald-200/60 text-emerald-800", children: "M\u1EE9c 1" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9.5px] font-semibold text-emerald-900 mt-0.5", children: "Sinh L\xFD / B\xECnh Th\u01B0\u1EDDng" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[8.5px] text-slate-500 mt-0.5 leading-tight", children: "Kh\xF4ng c\xF3 \u01B0u th\u1EBF ph\u1EA3n \u1EE9ng vi\xEAm h\u1EC7 th\u1ED1ng c\u1EA5p." })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-1.5 rounded border ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 3 && result.calculatedNlr < 6 ? "bg-amber-100/70 border-amber-400 text-amber-950 font-bold ring-1 ring-amber-400" : "bg-white border-slate-200 text-slate-600"}`, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "font-bold", children: "3.0 - 5.9: T\u0103ng nh\u1EB9/v\u1EEBa" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9px] text-slate-500", children: "Ph\u1EA3n \u1EE9ng stress/nhi\u1EC5m khu\u1EA9n ti\u1EC1m \u1EA9n" })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-2 rounded border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 3 && result.calculatedNlr < 6 ? "bg-amber-100/80 border-amber-500 text-amber-950 font-bold ring-2 ring-amber-400 shadow-2xs" : "bg-white border-slate-200 text-slate-600"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-bold flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "3.0 - 5.9" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[8px] px-1 py-0.2 rounded bg-amber-200/60 text-amber-800", children: "M\u1EE9c 2" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9.5px] font-semibold text-amber-900 mt-0.5", children: "C\u1EA3nh B\xE1o / T\u0103ng Nh\u1EB9 - V\u1EEBa" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[8.5px] text-slate-500 mt-0.5 leading-tight", children: "Stress sinh l\xFD ho\u1EB7c vi\xEAm nhi\u1EC5m khu tr\xFA ti\u1EC1m \u1EA9n." })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-1.5 rounded border ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 6 ? "bg-rose-100/70 border-rose-400 text-rose-950 font-bold ring-1 ring-rose-400" : "bg-white border-slate-200 text-slate-600"}`, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "font-bold", children: "\u2265 6.0: Nguy c\u01A1 cao" }),
-                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9px] text-slate-500", children: "\u0110\u1ED9 nh\u1EA1y 92%, NPV 97% ti\xEAn l\u01B0\u1EE3ng sepsis/t\u1EED vong 72h" })
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-2 rounded border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 6 && result.calculatedNlr < 10 ? "bg-rose-100/90 border-rose-500 text-rose-950 font-bold ring-2 ring-rose-400 shadow-2xs" : "bg-white border-slate-200 text-slate-600"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-bold flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "6.0 - 9.9" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-[8px] px-1 py-0.2 rounded bg-rose-200/60 text-rose-800", children: "M\u1EE9c 3" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[9.5px] font-semibold text-rose-900 mt-0.5", children: "Nguy C\u01A1 Cao / Sepsis R\xF5" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "text-[8.5px] text-slate-500 mt-0.5 leading-tight", children: "\u0110\u1ED9 nh\u1EA1y 92%, NPV 97% t\u1EED vong 72h; Naess: NK khu tr\xFA ~8.0." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: `p-2 rounded border transition-all ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "bg-rose-600 text-white font-bold ring-2 ring-rose-700 shadow-sm animate-pulse" : "bg-white border-slate-200 text-slate-600"}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "font-bold flex items-center justify-between", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "\u2265 10.0" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: `text-[8px] px-1 py-0.2 rounded ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"}`, children: "M\u1EE9c 4" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: `text-[9.5px] font-semibold mt-0.5 ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "text-white" : "text-slate-900"}`, children: result.calculatedNlr !== void 0 && result.calculatedNlr >= 15 ? "B\xE1o \u0110\u1ED9ng Septicemia & S\u1ED1c" : "B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch" }),
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: `text-[8.5px] mt-0.5 leading-tight ${result.calculatedNlr !== void 0 && result.calculatedNlr >= 10 ? "text-rose-100" : "text-slate-500"}`, children: result.calculatedNlr !== void 0 && result.calculatedNlr >= 15 ? "Ch\u1EC9 \u0111i\u1EC3m vi khu\u1EA9n v\xE0o m\xE1u (Naess: Median 15.7), b\xE3o cytokine, c\u1EA5y m\xE1u kh\u1EA9n!" : "B\xE3o Cytokine + c\u1EA1n ki\u1EC7t Lympho, nguy c\u01A1 NK to\xE0n th\xE2n/S\u1ED1c n\u1EB7ng." })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "text-[9px] text-slate-600 pt-1 border-t border-slate-200/80 leading-normal flex items-start gap-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "text-teal-700 font-bold shrink-0", children: "\u{1F52C} EBM Naess 2017 & G\xFCrol 2015:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("span", { children: [
+                "\u1EDE BN s\u1ED1t < 7 ng\xE0y, NLR ph\xE2n bi\u1EC7t ",
+                /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("strong", { children: "Nhi\u1EC5m tr\xF9ng huy\u1EBFt (Median 15.7)" }),
+                " v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA (Median ~8.0, p=0.006) v\u01B0\u1EE3t tr\u1ED9i h\u01A1n h\u1EB3n WBC (p=0.56) & CRP (p=0.62). L\u01B0u \xFD: S\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y NLR c\xF3 th\u1EC3 gi\u1EA3m gi\u1EA3 t\u1EA1o (Median 4.3)."
               ] })
             ] })
           ] })
@@ -17767,7 +17819,7 @@
     ] });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/ClinicalGuideModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/ClinicalGuideModal.tsx
   var import_react6 = __toESM(require_react(), 1);
   var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
   var ClinicalGuideModal = ({ isOpen, onClose }) => {
@@ -17889,27 +17941,156 @@
           ] })
         ] }),
         activeSection === "biomarkers" && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "D\u1EA5u \u1EA4n Sinh H\u1ECDc Ti\xEAn L\u01B0\u1EE3ng S\u1EDBm: LP-NEWS, Lactate & NLR" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 rounded-lg bg-cyan-50 border border-cyan-200", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-cyan-900 block text-xs", children: "LP-NEWS (Das et al. 2024)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-cyan-950 mt-1", children: [
-                "T\xEDch h\u1EE3p Lactate v\xE0 PCT v\xE0o NEWS \u0111\u1EA1t ",
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "AUROC = 0.966" }),
-                ". Ng\u01B0\u1EE1ng c\u1EAFt \u2265 11 \u0111i\u1EC3m c\xF3 \u0111\u1ED9 nh\u1EA1y 97%, \u0111\u1EB7c hi\u1EC7u 88% d\u1EF1 b\xE1o t\u1EED vong 14 ng\xE0y."
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h4", { className: "font-bold text-slate-900 text-base", children: "D\u1EA5u \u1EA4n Sinh H\u1ECDc Nhi\u1EC5m Tr\xF9ng: \u0110\u1ED9ng H\u1ECDc, Ph\xE2n T\u1EA7ng NLR & Y\u1EBFu T\u1ED1 Nhi\u1EC5u" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] font-mono text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200", children: "EBM 2023 - 2026" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "rounded-lg border border-slate-200 overflow-hidden text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "bg-slate-100 p-2 font-bold text-slate-800 flex items-center justify-between text-[11px]", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: "\u0110\u1ED9ng H\u1ECDc Bi\u1EBFn Thi\xEAn (P\xF3voa 2023 ICM & Zheng 2026):" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-normal text-slate-500 text-[10px]", children: "\u0110\u1ED9ng h\u1ECDc quan tr\u1ECDng h\u01A1n gi\xE1 tr\u1ECB \u0111\u01A1n l\u1EBB" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 bg-white", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-teal-900 block text-[11px]", children: "Procalcitonin (PCT)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                  "\u2022 Onset: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "2 \u2013 4 gi\u1EDD" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 Peak: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "~24 gi\u1EDD" }),
+                  " (>10.000\xD7)",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 t\xBD: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "22 \u2013 35 gi\u1EDD" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 Ng\u01B0ng KS: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "gi\u1EA3m \u2265 80\u201390%" }),
+                  " ho\u1EB7c < 0.5 ng/mL."
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-indigo-900 block text-[11px]", children: "C-Reactive Protein (CRP)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                  "\u2022 Onset: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "4 \u2013 6 gi\u1EDD" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 Peak: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "36 \u2013 50 gi\u1EDD" }),
+                  " (sau 2 ng\xE0y)",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 t\xBD: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "19 gi\u1EDD" }),
+                  " (c\u1ED1 \u0111\u1ECBnh)",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 T\u1EF7 s\u1ED1 D4/D0 < 0.4: \u0110\xE1p \u1EE9ng nhanh."
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-amber-900 block text-[11px]", children: "Interleukin-6 (IL-6)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                  "\u2022 Onset: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "1 \u2013 2 gi\u1EDD" }),
+                  " (c\u1EF1c s\u1EDBm)",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 Peak: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "2 \u2013 4 gi\u1EDD" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 t\xBD: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "< 1 gi\u1EDD" }),
+                  " (ng\u1EAFn)",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 C\u1EA3nh b\xE1o b\xE3o cytokine t\u1ED1i c\u1EA5p."
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-rose-900 block text-[11px]", children: "Lactate M\xE1u" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-[10px] text-slate-600 leading-tight", children: [
+                  "\u2022 T\u1EE9c th\u1EDDi khi c\xF3 gi\u1EA3m t\u01B0\u1EDBi m\xE1u.",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 t\xBD: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "20 \u2013 60 ph\xFAt" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("br", {}),
+                  "\u2022 M\u1EE5c ti\xEAu: ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Thanh th\u1EA3i \u2265 10\u201320%" }),
+                  " trong m\u1ED7i 2\u20136h \u0111\u1EA7u h\u1ED3i s\u1EE9c."
+                ] })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "space-y-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-slate-800 text-xs", children: "T\u1EF7 s\u1ED1 Neutrophil / Lymphocyte (NLR) \u2014 Ph\xE2n T\u1EA7ng 4 M\u1EE9c:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "text-[10px] text-teal-800 font-mono bg-teal-50 px-1.5 py-0.2 rounded border border-teal-200", children: "Demni 2026, Naess 2017 & G\xFCrol 2015" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2 rounded-lg bg-emerald-50 border border-emerald-200", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "font-bold text-emerald-950", children: "< 3.0: M\u1EE9c 1" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[11px] font-semibold text-emerald-800", children: "B\xECnh Th\u01B0\u1EDDng" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "Sinh l\xFD an to\xE0n, kh\xF4ng \u01B0u th\u1EBF vi\xEAm c\u1EA5p." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2 rounded-lg bg-amber-50 border border-amber-200", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "font-bold text-amber-950", children: "3.0 \u2013 5.9: M\u1EE9c 2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[11px] font-semibold text-amber-800", children: "C\u1EA3nh B\xE1o" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "Stress nh\u1EB9 ho\u1EB7c vi\xEAm khu tr\xFA ti\u1EC1m \u1EA9n." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2 rounded-lg bg-rose-50 border border-rose-200", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "font-bold text-rose-950", children: "6.0 \u2013 9.9: M\u1EE9c 3" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[11px] font-semibold text-rose-800", children: "Nguy C\u01A1 Cao" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[10px] text-slate-500 mt-0.5", children: "\u0110\u1ED9 nh\u1EA1y 92%, NPV 97% t\u1EED vong 72h / SOFA." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2 rounded-lg bg-rose-100 border border-rose-300", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "font-bold text-rose-950", children: "\u2265 10.0: M\u1EE9c 4" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "text-[11px] font-semibold text-rose-900", children: "B\xE1o \u0110\u1ED9ng Nguy K\u1ECBch" }),
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "text-[10px] text-rose-800 mt-0.5", children: [
+                  "B\xE3o cytokine. ",
+                  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "N\u1EBFu \u2265 13\u201315" }),
+                  ": Septicemia & S\u1ED1c!"
+                ] })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 rounded-lg bg-rose-50 border border-rose-200", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-rose-900 block text-xs", children: "NLR (Demni et al. 2026)" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-rose-950 mt-1", children: [
-                "T\u1EF7 s\u1ED1 Neutrophil / Lymphocyte ",
-                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "\u2265 6.0" }),
-                " c\xF3 \u0111\u1ED9 nh\u1EA1y 92% d\u1EF1 b\xE1o t\u1EED vong 72h v\xE0 ti\u1EBFn tri\u1EC3n s\u1ED1c nhi\u1EC5m khu\u1EA9n."
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2 bg-teal-50/80 rounded border border-teal-200 text-[11px] text-teal-900 leading-normal", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "\u{1F52C} EBM Naess et al. 2017 (Infection):" }),
+              " \u1EDE BN s\u1ED1t < 7 ng\xE0y, NLR ph\xE2n bi\u1EC7t ",
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Nhi\u1EC5m tr\xF9ng huy\u1EBFt (Median 15.69)" }),
+              " v\u1EDBi nhi\u1EC5m khu\u1EA9n khu tr\xFA (Median ~8.0, p=0.006) hi\u1EC7u qu\u1EA3 v\u01B0\u1EE3t tr\u1ED9i so v\u1EDBi WBC (p=0.559) v\xE0 CRP (p=0.615). Thang G\xFCrol 2015: 5-10 khu tr\xFA, 10-13 to\xE0n th\xE2n, 13-15 nhi\u1EC5m tr\xF9ng huy\u1EBFt, \u2265 15 s\u1ED1c nhi\u1EC5m khu\u1EA9n."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 bg-amber-50/80 border border-amber-200 rounded-lg text-xs space-y-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-amber-950 block text-[11px] uppercase tracking-wide", children: "\u26A0\uFE0F B\u1EA3ng C\u1EA3nh B\xE1o Y\u1EBFu T\u1ED1 G\xE2y Nhi\u1EC5u K\u1EBFt Qu\u1EA3 (Confounders):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("ul", { className: "text-[11px] text-amber-900 space-y-1 list-disc pl-4 leading-relaxed", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("li", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Procalcitonin (PCT) t\u0103ng gi\u1EA3 t\u1EA1o:" }),
+                " \u0110\u1EA1i ph\u1EABu thu\u1EADt (nh\u1EA5t l\xE0 ch\u1EA1y tim ph\u1ED5i CPB), b\u1ECFng n\u1EB7ng, ch\u1EA5n th\u01B0\u01A1ng d\u1EADp n\xE1t, suy th\u1EADn ESRD, ung th\u01B0 gi\xE1p th\u1EC3 t\u1EE7y (MTC), s\u1ED1c tim sau \xE9p tim CPR. ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+                " Nhi\u1EC5m tr\xF9ng khu tr\xFA s\u1EDBm (\xE1p xe b\u1ECDc, vi\xEAm x\u01B0\u01A1ng), d\xF9ng Corticoid, nhi\u1EC5m tr\xF9ng \u0111\u1EE3t 2 (Second Hit)."
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("li", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "CRP sai l\u1EC7ch:" }),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("em", { children: "D\u01B0\u01A1ng t\xEDnh gi\u1EA3:" }),
+                " B\u1EC7nh t\u1EF1 mi\u1EC5n (Lupus, Vi\xEAm kh\u1EDBp d\u1EA1ng th\u1EA5p), vi\xEAm t\u1EE5y v\xF4 khu\u1EA9n, nh\u1ED3i m\xE1u c\u01A1 tim, sau m\u1ED5 ng\xE0y 2-3. ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+                " Suy gan c\u1EA5p / x\u01A1 gan m\u1EA5t b\xF9 n\u1EB7ng (gan l\xE0 n\u01A1i DUY NH\u1EA4T t\u1EA1o CRP). Kh\xF4ng b\u1ECB \u1EA3nh h\u01B0\u1EDFng b\u1EDFi suy th\u1EADn."
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("li", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "NLR sai l\u1EC7ch:" }),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("em", { children: "T\u0103ng gi\u1EA3:" }),
+                " \u0110ang d\xF9ng Corticosteroid (k\xEDch th\xEDch Neu, h\u1EE7y di\u1EC7t Lym), stress ph\u1EABu thu\u1EADt/ch\u1EA5n th\u01B0\u01A1ng, \u0111\u1ED9t qu\u1EF5, nh\u1ED3i m\xE1u c\u01A1 tim c\u1EA5p. ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("em", { children: "\xC2m t\xEDnh gi\u1EA3:" }),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "S\u1ED1t k\xE9o d\xE0i > 7 ng\xE0y" }),
+                " (NLR gi\u1EA3m t\u1EF1 nhi\xEAn v\u1EC1 4\u20137 do th\xEDch nghi t\u1EE7y - Naess 2017), suy t\u1EE7y, h\u1EA1 b\u1EA1ch c\u1EA7u sau h\xF3a tr\u1ECB, nhi\u1EC5m HIV ti\u1EBFn tri\u1EC3n."
               ] })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-3 rounded-lg bg-emerald-50 border border-emerald-200", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-emerald-900 block text-xs", children: "Thanh Th\u1EA3i Lactate 6h" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "text-[11px] text-emerald-950 mt-1", children: "Meta-analysis 2026: Thanh th\u1EA3i \u2265 10% trong 6 gi\u1EDD \u0111\u1EA7u li\xEAn quan gi\u1EA3m t\u1EF7 l\u1EC7 t\u1EED vong \u0111\xE1ng k\u1EC3 (OR = 0.52)." })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "p-2.5 bg-cyan-50 border border-cyan-200 rounded-lg text-xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "font-bold text-cyan-950 block text-[11px]", children: "Thang \u0110i\u1EC3m Ph\u1ED1i H\u1EE3p LP-NEWS (Das et al. 2024 - AIIMS):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { className: "text-[11px] text-cyan-900 mt-0.5 leading-relaxed", children: [
+              "T\xEDch h\u1EE3p \u0111\u1ED3ng th\u1EDDi Lactate v\xE0 PCT v\xE0o NEWS \u0111\u1EA1t ",
+              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "AUROC = 0.966" }),
+              " d\u1EF1 b\xE1o t\u1EED vong 14 ng\xE0y. Ng\u01B0\u1EE1ng c\u1EAFt \u2265 11 \u0111i\u1EC3m c\xF3 \u0111\u1ED9 nh\u1EA1y 97%, \u0111\u1EB7c hi\u1EC7u 88%."
             ] })
           ] })
         ] }),
@@ -17960,7 +18141,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/CaseHistoryModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CaseHistoryModal.tsx
   var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
   var CaseHistoryModal = ({
     isOpen,
@@ -18091,7 +18272,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/components/PresetCasesModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/PresetCasesModal.tsx
   var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
   var PresetCasesModal = ({
     isOpen,
@@ -18145,7 +18326,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/App.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/App.tsx
   var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
   var DEFAULT_PATIENT = {
     ...NORMAL_PATIENT_CASE,
@@ -18322,7 +18503,7 @@
     ] });
   }
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/fcb19239-23d1-44a0-9ebf-19d73e53da75/scratch/sepsis/src/main.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/main.tsx
   var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
   (0, import_client.createRoot)(document.getElementById("root")).render(
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react8.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(App, {}) })

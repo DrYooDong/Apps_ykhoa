@@ -165,7 +165,7 @@ export interface CDSSAssessmentResult {
   // Biomarker Prognostics
   calculatedMap: number;
   calculatedNlr?: number;
-  nlrRiskLevel?: 'normal' | 'elevated' | 'high';
+  nlrRiskLevel?: 'normal' | 'mild' | 'high' | 'critical' | 'elevated';
   lactateClearancePercent?: number;
   lactateClearanceEvaluation?: 'adequate' | 'suboptimal' | 'poor' | 'na';
   pctEvaluation?: string;

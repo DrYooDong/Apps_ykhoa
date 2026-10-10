@@ -152,7 +152,7 @@ export const UnifiedDashboard: React.FC<UnifiedDashboardProps> = ({
 
           <div className="flex items-center gap-3 text-[11px] font-mono">
             <span>MAP: <strong className={result.calculatedMap < 65 ? 'text-rose-700' : 'text-slate-900'}>{result.calculatedMap}</strong> mmHg</span>
-            {result.calculatedNlr && <span>NLR: <strong className={result.nlrRiskLevel === 'high' ? 'text-rose-700' : 'text-slate-900'}>{result.calculatedNlr}</strong></span>}
+            {result.calculatedNlr !== undefined && <span>NLR: <strong className={result.nlrRiskLevel === 'critical' ? 'text-rose-700 font-extrabold animate-pulse' : result.nlrRiskLevel === 'high' ? 'text-rose-600 font-bold' : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated' ? 'text-amber-700' : 'text-emerald-700'}>{result.calculatedNlr}</strong></span>}
             {result.lactateClearancePercent !== undefined && <span>Thanh thải Lac: <strong className={result.lactateClearancePercent >= 10 ? 'text-emerald-700' : 'text-amber-700'}>{result.lactateClearancePercent}%</strong></span>}
           </div>
         </div>
@@ -273,27 +273,37 @@ export const UnifiedDashboard: React.FC<UnifiedDashboardProps> = ({
 
       {/* 2.1. Đánh Giá Tỷ Lệ NLR (Neutrophil-to-Lymphocyte Ratio) & CLS Huyết Học */}
       <div className="bg-white rounded-xl border border-slate-200 p-3.5 shadow-2xs space-y-2.5">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-1.5">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
             <TestTube className="w-3.5 h-3.5 text-teal-600" />
             Đánh Giá Tỷ Lệ NLR (Neutrophil-to-Lymphocyte Ratio)
           </span>
           {result.calculatedNlr !== undefined ? (
-            <span className={`text-[11px] font-mono px-2 py-0.5 rounded font-bold ${
-              result.nlrRiskLevel === 'high'
-                ? 'bg-rose-100 text-rose-800'
-                : result.nlrRiskLevel === 'elevated'
-                ? 'bg-amber-100 text-amber-800'
-                : 'bg-emerald-100 text-emerald-800'
+            <span className={`text-[11px] font-mono px-2 py-0.5 rounded font-bold flex items-center gap-1 ${
+              result.nlrRiskLevel === 'critical'
+                ? 'bg-rose-600 text-white shadow-xs animate-pulse ring-1 ring-rose-700'
+                : result.nlrRiskLevel === 'high'
+                ? 'bg-rose-100 text-rose-800 border border-rose-300'
+                : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated'
+                ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
             }`}>
-              NLR: {result.calculatedNlr} ({result.nlrRiskLevel === 'high' ? 'NGUY CƠ CAO' : result.nlrRiskLevel === 'elevated' ? 'TĂNG VỪA' : 'BÌNH THƯỜNG'})
+              NLR: {result.calculatedNlr} (
+              {result.nlrRiskLevel === 'critical'
+                ? 'MỨC 4: BÁO ĐỘNG NGUY KỊCH (≥ 10.0)'
+                : result.nlrRiskLevel === 'high'
+                ? 'MỨC 3: NGUY CƠ CAO (6.0 - 9.9)'
+                : result.nlrRiskLevel === 'mild' || result.nlrRiskLevel === 'elevated'
+                ? 'MỨC 2: CẢNH BÁO (3.0 - 5.9)'
+                : 'MỨC 1: BÌNH THƯỜNG (< 3.0)'}
+              )
             </span>
           ) : (
             <span className="text-[11px] text-slate-400 font-mono">Chưa đủ dữ liệu CLS</span>
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2.5 text-xs">
           <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
             <span className="text-[10px] uppercase font-bold text-slate-500 block mb-1">Công thức & Giá trị đầu vào</span>
             <div className="font-mono text-[11px] text-slate-800 space-y-0.5">
@@ -303,37 +313,86 @@ export const UnifiedDashboard: React.FC<UnifiedDashboardProps> = ({
                 NLR = NEU / LYM = {result.calculatedNlr !== undefined ? result.calculatedNlr : '---'}
               </div>
             </div>
+            <div className="mt-2 text-[9px] text-slate-500 leading-tight">
+              Tức thì, trích xuất từ CBC, phản ánh cân bằng miễn dịch bẩm sinh & thu nhận.
+            </div>
           </div>
 
-          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 md:col-span-2 space-y-1">
-            <span className="text-[10px] uppercase font-bold text-slate-500 block">Ý nghĩa lâm sàng (Demni et al. 2026 & Bách phân vị)</span>
-            <div className="grid grid-cols-3 gap-1.5 text-[10px]">
-              <div className={`p-1.5 rounded border ${
+          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 md:col-span-3 space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold text-slate-500 block">
+                Phân tầng 4 ngưỡng cắt lâm sàng (Zahorec 2021, Demni 2026, Naess 2017 &amp; Gürol 2015)
+              </span>
+              <span className="text-[9px] text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                Lưu ý nhiễu: Corticoid, stress mổ/chấn thương
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px]">
+              {/* Mức 1 */}
+              <div className={`p-2 rounded border transition-all ${
                 result.calculatedNlr !== undefined && result.calculatedNlr < 3.0
-                  ? 'bg-emerald-100/70 border-emerald-400 text-emerald-950 font-bold ring-1 ring-emerald-400'
+                  ? 'bg-emerald-100/80 border-emerald-500 text-emerald-950 font-bold ring-2 ring-emerald-400 shadow-2xs'
                   : 'bg-white border-slate-200 text-slate-600'
               }`}>
-                <div className="font-bold">&lt; 3.0: Bình thường</div>
-                <div className="text-[9px] text-slate-500">Mức sinh lý, không có ưu thế viêm cấp</div>
+                <div className="font-bold flex items-center justify-between">
+                  <span>&lt; 3.0</span>
+                  <span className="text-[8px] px-1 py-0.2 rounded bg-emerald-200/60 text-emerald-800">Mức 1</span>
+                </div>
+                <div className="text-[9.5px] font-semibold text-emerald-900 mt-0.5">Sinh Lý / Bình Thường</div>
+                <div className="text-[8.5px] text-slate-500 mt-0.5 leading-tight">Không có ưu thế phản ứng viêm hệ thống cấp.</div>
               </div>
 
-              <div className={`p-1.5 rounded border ${
+              {/* Mức 2 */}
+              <div className={`p-2 rounded border transition-all ${
                 result.calculatedNlr !== undefined && result.calculatedNlr >= 3.0 && result.calculatedNlr < 6.0
-                  ? 'bg-amber-100/70 border-amber-400 text-amber-950 font-bold ring-1 ring-amber-400'
+                  ? 'bg-amber-100/80 border-amber-500 text-amber-950 font-bold ring-2 ring-amber-400 shadow-2xs'
                   : 'bg-white border-slate-200 text-slate-600'
               }`}>
-                <div className="font-bold">3.0 - 5.9: Tăng nhẹ/vừa</div>
-                <div className="text-[9px] text-slate-500">Phản ứng stress/nhiễm khuẩn tiềm ẩn</div>
+                <div className="font-bold flex items-center justify-between">
+                  <span>3.0 - 5.9</span>
+                  <span className="text-[8px] px-1 py-0.2 rounded bg-amber-200/60 text-amber-800">Mức 2</span>
+                </div>
+                <div className="text-[9.5px] font-semibold text-amber-900 mt-0.5">Cảnh Báo / Tăng Nhẹ - Vừa</div>
+                <div className="text-[8.5px] text-slate-500 mt-0.5 leading-tight">Stress sinh lý hoặc viêm nhiễm khu trú tiềm ẩn.</div>
               </div>
 
-              <div className={`p-1.5 rounded border ${
-                result.calculatedNlr !== undefined && result.calculatedNlr >= 6.0
-                  ? 'bg-rose-100/70 border-rose-400 text-rose-950 font-bold ring-1 ring-rose-400'
+              {/* Mức 3 */}
+              <div className={`p-2 rounded border transition-all ${
+                result.calculatedNlr !== undefined && result.calculatedNlr >= 6.0 && result.calculatedNlr < 10.0
+                  ? 'bg-rose-100/90 border-rose-500 text-rose-950 font-bold ring-2 ring-rose-400 shadow-2xs'
                   : 'bg-white border-slate-200 text-slate-600'
               }`}>
-                <div className="font-bold">≥ 6.0: Nguy cơ cao</div>
-                <div className="text-[9px] text-slate-500">Độ nhạy 92%, NPV 97% tiên lượng sepsis/tử vong 72h</div>
+                <div className="font-bold flex items-center justify-between">
+                  <span>6.0 - 9.9</span>
+                  <span className="text-[8px] px-1 py-0.2 rounded bg-rose-200/60 text-rose-800">Mức 3</span>
+                </div>
+                <div className="text-[9.5px] font-semibold text-rose-900 mt-0.5">Nguy Cơ Cao / Sepsis Rõ</div>
+                <div className="text-[8.5px] text-slate-500 mt-0.5 leading-tight">Độ nhạy 92%, NPV 97% tử vong 72h; Naess: NK khu trú ~8.0.</div>
               </div>
+
+              {/* Mức 4 */}
+              <div className={`p-2 rounded border transition-all ${
+                result.calculatedNlr !== undefined && result.calculatedNlr >= 10.0
+                  ? 'bg-rose-600 text-white font-bold ring-2 ring-rose-700 shadow-sm animate-pulse'
+                  : 'bg-white border-slate-200 text-slate-600'
+              }`}>
+                <div className="font-bold flex items-center justify-between">
+                  <span>≥ 10.0</span>
+                  <span className={`text-[8px] px-1 py-0.2 rounded ${result.calculatedNlr !== undefined && result.calculatedNlr >= 10.0 ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>Mức 4</span>
+                </div>
+                <div className={`text-[9.5px] font-semibold mt-0.5 ${result.calculatedNlr !== undefined && result.calculatedNlr >= 10.0 ? 'text-white' : 'text-slate-900'}`}>
+                  {result.calculatedNlr !== undefined && result.calculatedNlr >= 15.0 ? 'Báo Động Septicemia & Sốc' : 'Báo Động Nguy Kịch'}
+                </div>
+                <div className={`text-[8.5px] mt-0.5 leading-tight ${result.calculatedNlr !== undefined && result.calculatedNlr >= 10.0 ? 'text-rose-100' : 'text-slate-500'}`}>
+                  {result.calculatedNlr !== undefined && result.calculatedNlr >= 15.0
+                    ? 'Chỉ điểm vi khuẩn vào máu (Naess: Median 15.7), bão cytokine, cấy máu khẩn!'
+                    : 'Bão Cytokine + cạn kiệt Lympho, nguy cơ NK toàn thân/Sốc nặng.'}
+                </div>
+              </div>
+            </div>
+            <div className="text-[9px] text-slate-600 pt-1 border-t border-slate-200/80 leading-normal flex items-start gap-1">
+              <span className="text-teal-700 font-bold shrink-0">🔬 EBM Naess 2017 &amp; Gürol 2015:</span>
+              <span>Ở BN sốt &lt; 7 ngày, NLR phân biệt <strong>Nhiễm trùng huyết (Median 15.7)</strong> với nhiễm khuẩn khu trú (Median ~8.0, p=0.006) vượt trội hơn hẳn WBC (p=0.56) &amp; CRP (p=0.62). Lưu ý: Sốt kéo dài &gt; 7 ngày NLR có thể giảm giả tạo (Median 4.3).</span>
             </div>
           </div>
         </div>

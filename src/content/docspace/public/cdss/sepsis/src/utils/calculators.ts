@@ -918,12 +918,17 @@ export function calculateLactateClearance(initial?: number, repeat6h?: number): 
 
 /**
  * Tính Tỷ số Neutrophil / Lymphocyte (NLR)
- * Nghiên cứu Demni et al. 2026:
- * Ngưỡng cắt NLR ≥ 6 có độ nhạy 92%, độ đặc hiệu 68%, NPV 97% dự báo tử vong 72h và sốc nhiễm khuẩn.
+ * Phân tầng 4 ngưỡng cắt lâm sàng chuẩn hóa theo Zahorec 2021, Demni et al. 2026 và Huang et al. Meta-analysis:
+ * - Mức 1 (< 3.0): Mức sinh lý / Bình thường (Normal / Baseline).
+ * - Mức 2 (3.0 - 5.9): Cảnh báo / Tăng nhẹ - vừa (Mild stress & inflammation).
+ * - Mức 3 (6.0 - 9.9): Nguy cơ cao / Sepsis rõ rệt (Độ nhạy 92%, NPV 97% dự báo tử vong 72h và suy tạng SOFA ≥ 2).
+ * - Mức 4 (≥ 10.0): Báo động đỏ / Sốc nhiễm khuẩn & Tử vong rất cao (Extreme cytokine storm & severe lymphopenia).
  */
 export function calculateNLR(neutrophils?: number, lymphocytes?: number): {
   nlr?: number;
-  riskLevel: 'normal' | 'elevated' | 'high';
+  riskLevel: 'normal' | 'mild' | 'high' | 'critical' | 'elevated';
+  tier?: 1 | 2 | 3 | 4;
+  tierLabel?: string;
   details: string;
 } {
   if (neutrophils === undefined || lymphocytes === undefined || lymphocytes === 0) {
@@ -935,23 +940,43 @@ export function calculateNLR(neutrophils?: number, lymphocytes?: number): {
 
   const nlr = Math.round((neutrophils / lymphocytes) * 10) / 10;
 
-  if (nlr >= 6.0) {
+  if (nlr >= 10.0) {
+    const isSepticemiaAlert = nlr >= 15.0;
+    const isSystemicInfection = nlr >= 13.0;
+    return {
+      nlr,
+      riskLevel: 'critical',
+      tier: 4,
+      tierLabel: isSepticemiaAlert
+        ? 'Mức 4: Báo Động Nguy Kịch (≥ 15.0 - Nguy Cơ Septicemia & Sốc)'
+        : 'Mức 4: Báo Động Nguy Kịch (≥ 10.0 - Nhiễm Trùng Toàn Thân)',
+      details: isSepticemiaAlert
+        ? `NLR = ${nlr} (≥ 15.0 - Ngưỡng chỉ điểm Septicemia & Sốc nhiễm khuẩn - Naess et al. 2017 & Gürol et al. 2015): Tỷ số tăng vọt báo hiệu vi khuẩn xâm nhập vào tuần hoàn (Median Septicemia = 15.7), bão cytokine dữ dội song hành cùng cạn kiệt lympho bào. Nghiên cứu Naess 2017 chứng minh NLR phân biệt Septicemia với nhiễm khuẩn khu trú vượt trội hơn hẳn WBC (p=0.56) và CRP (p=0.62). Khẩn cấp cấy máu 2 vị trí & hồi sức ICU.`
+        : `NLR = ${nlr} (≥ 10.0 - Báo động nguy kịch): Mất cân bằng miễn dịch trầm trọng, bão cytokine dữ dội song hành cạn kiệt lympho bào nghiêm trọng (Gürol 2015: 10-13 nhiễm trùng toàn thân, ≥ 13-15 nhiễm trùng huyết). Nguy cơ rất cao tiến triển Sốc nhiễm khuẩn kháng trị và tử vong ngắn hạn. Khẩn cấp đánh giá tại giường & hội chẩn ICU.`
+    };
+  } else if (nlr >= 6.0) {
     return {
       nlr,
       riskLevel: 'high',
-      details: `NLR = ${nlr} (≥ 6.0): Giá trị tiên lượng độc lập nguy cơ tử vong sớm trong 72 giờ (Độ nhạy 92%, NPV 97%) và nguy cơ cao tiến triển Sốc nhiễm khuẩn.`
+      tier: 3,
+      tierLabel: 'Mức 3: Nguy Cơ Cao / Sepsis Rõ Rệt (6.0 - 9.9)',
+      details: `NLR = ${nlr} (6.0 - 9.9 - Nguy cơ cao): Nghiên cứu Demni et al. 2026: NLR ≥ 6.0 là yếu tố tiên lượng độc lập tử vong sớm trong 72 giờ (Độ nhạy 92%, NPV 97%) và tiến triển suy cơ quan (ΔSOFA ≥ 2). Tương ứng dải nhiễm khuẩn khu trú/nặng (Naess 2017: Median viêm phổi 7.9, viêm đài bể thận 8.2). Kích hoạt ngay quy trình tầm soát Sepsis.`
     };
   } else if (nlr >= 3.0) {
     return {
       nlr,
-      riskLevel: 'elevated',
-      details: `NLR = ${nlr} (3.0 - 5.9): Tăng phản ứng viêm hệ thống, theo dõi sát diễn tiến công thức máu.`
+      riskLevel: 'mild',
+      tier: 2,
+      tierLabel: 'Mức 2: Cảnh Báo / Tăng Nhẹ - Vừa (3.0 - 5.9)',
+      details: `NLR = ${nlr} (3.0 - 5.9 - Cảnh báo): Phản ứng viêm khu trú, stress sinh lý hoặc nghi ngờ nhiễm trùng tiềm ẩn giai đoạn đầu (hoặc sốt kéo dài > 7 ngày khi NLR bắt đầu thoái triển). Cần đánh giá kết hợp sinh hiệu (NEWS2), ổ nhiễm trùng nghi ngờ và lặp lại công thức máu.`
     };
   } else {
     return {
       nlr,
       riskLevel: 'normal',
-      details: `NLR = ${nlr} (< 3.0): Tỷ số trong giới hạn an toàn.`
+      tier: 1,
+      tierLabel: 'Mức 1: Sinh Lý / Bình Thường (< 3.0)',
+      details: `NLR = ${nlr} (< 3.0 - Bình thường): Tỷ số trong giới hạn an toàn, không có bằng chứng kích hoạt phản ứng viêm hệ thống cấp tính (Nếu sốt cao liên tục nhưng NLR < 2.5: Cảnh giác nhiễm virus - Naess 2017).`
     };
   }
 }
