@@ -25,9 +25,9 @@
     mod
   ));
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/cjs/react.production.js
   var require_react_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/cjs/react.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_PORTAL_TYPE = Symbol.for("react.portal");
@@ -477,9 +477,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/index.js
   var require_react = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_production();
@@ -489,9 +489,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js
   var require_scheduler_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/scheduler/cjs/scheduler.production.js"(exports) {
       "use strict";
       function push(heap, node) {
         var index = heap.length;
@@ -762,9 +762,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/scheduler/index.js
   var require_scheduler = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/scheduler/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/scheduler/index.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_scheduler_production();
@@ -774,9 +774,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js
   var require_react_dom_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
       var React6 = require_react();
       function formatProdErrorMessage(code) {
@@ -931,9 +931,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/index.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/index.js
   var require_react_dom = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/index.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/index.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -957,9 +957,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js
   var require_react_dom_client_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
       var React6 = require_react();
@@ -14503,9 +14503,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/client.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/client.js
   var require_client = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react-dom/client.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react-dom/client.js"(exports, module) {
       "use strict";
       function checkDCE() {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
@@ -14529,9 +14529,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js
   var require_react_jsx_runtime_production = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/cjs/react-jsx-runtime.production.js"(exports) {
       "use strict";
       var REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
       var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -14559,9 +14559,9 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/jsx-runtime.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/jsx-runtime.js
   var require_jsx_runtime = __commonJS({
-    "C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/react/jsx-runtime.js"(exports, module) {
+    "C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/react/jsx-runtime.js"(exports, module) {
       "use strict";
       if (true) {
         module.exports = require_react_jsx_runtime_production();
@@ -14571,14 +14571,14 @@
     }
   });
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/main.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/main.tsx
   var import_react8 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/App.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/App.tsx
   var import_react7 = __toESM(require_react(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/utils/calculators.ts
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/utils/calculators.ts
   function calculateMAP(sbp, dbp) {
     if (!sbp || !dbp) return 0;
     return Math.round((sbp + 2 * dbp) / 3 * 10) / 10;
@@ -15576,10 +15576,10 @@
     };
   }
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/shared/src/utils.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/shared/src/utils.js
   var toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
   var toCamelCase = (string) => string.replace(
     /^([A-Z])|[\s-_]+(\w)/g,
@@ -15600,10 +15600,10 @@
     }
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
   var import_react = __toESM(require_react());
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/defaultAttributes.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/defaultAttributes.js
   var defaultAttributes = {
     xmlns: "http://www.w3.org/2000/svg",
     width: 24,
@@ -15616,7 +15616,7 @@
     strokeLinejoin: "round"
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/Icon.js
   var Icon = (0, import_react.forwardRef)(
     ({
       color = "currentColor",
@@ -15647,7 +15647,7 @@
     )
   );
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var createLucideIcon = (iconName, iconNode) => {
     const Component = (0, import_react2.forwardRef)(
       ({ className, ...props }, ref) => (0, import_react2.createElement)(Icon, {
@@ -15665,7 +15665,7 @@
     return Component;
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/activity.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/activity.js
   var __iconNode = [
     [
       "path",
@@ -15677,14 +15677,14 @@
   ];
   var Activity = createLucideIcon("activity", __iconNode);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/arrow-right.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/arrow-right.js
   var __iconNode2 = [
     ["path", { d: "M5 12h14", key: "1ays0h" }],
     ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
   ];
   var ArrowRight = createLucideIcon("arrow-right", __iconNode2);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/baby.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/baby.js
   var __iconNode3 = [
     ["path", { d: "M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5", key: "1u7htd" }],
     ["path", { d: "M15 12h.01", key: "1k8ypt" }],
@@ -15699,7 +15699,7 @@
   ];
   var Baby = createLucideIcon("baby", __iconNode3);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/book-open.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/book-open.js
   var __iconNode4 = [
     ["path", { d: "M12 7v14", key: "1akyts" }],
     [
@@ -15712,7 +15712,7 @@
   ];
   var BookOpen = createLucideIcon("book-open", __iconNode4);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/bookmark-plus.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/bookmark-plus.js
   var __iconNode5 = [
     ["path", { d: "m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z", key: "1fy3hk" }],
     ["line", { x1: "12", x2: "12", y1: "7", y2: "13", key: "1cppfj" }],
@@ -15720,7 +15720,7 @@
   ];
   var BookmarkPlus = createLucideIcon("bookmark-plus", __iconNode5);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/calendar.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/calendar.js
   var __iconNode6 = [
     ["path", { d: "M8 2v4", key: "1cmpym" }],
     ["path", { d: "M16 2v4", key: "4m81vk" }],
@@ -15729,54 +15729,54 @@
   ];
   var Calendar = createLucideIcon("calendar", __iconNode6);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/check.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/check.js
   var __iconNode7 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
   var Check = createLucideIcon("check", __iconNode7);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-down.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-down.js
   var __iconNode8 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
   var ChevronDown = createLucideIcon("chevron-down", __iconNode8);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-up.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevron-up.js
   var __iconNode9 = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
   var ChevronUp = createLucideIcon("chevron-up", __iconNode9);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-left.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-left.js
   var __iconNode10 = [
     ["path", { d: "m11 17-5-5 5-5", key: "13zhaf" }],
     ["path", { d: "m18 17-5-5 5-5", key: "h8a8et" }]
   ];
   var ChevronsLeft = createLucideIcon("chevrons-left", __iconNode10);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-right.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/chevrons-right.js
   var __iconNode11 = [
     ["path", { d: "m6 17 5-5-5-5", key: "xnjwq" }],
     ["path", { d: "m13 17 5-5-5-5", key: "17xmmf" }]
   ];
   var ChevronsRight = createLucideIcon("chevrons-right", __iconNode11);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/circle-check.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/circle-check.js
   var __iconNode12 = [
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
     ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
   ];
   var CircleCheck = createLucideIcon("circle-check", __iconNode12);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/clock.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/clock.js
   var __iconNode13 = [
     ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
     ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
   ];
   var Clock = createLucideIcon("clock", __iconNode13);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/copy.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/copy.js
   var __iconNode14 = [
     ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
     ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
   ];
   var Copy = createLucideIcon("copy", __iconNode14);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/dna.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/dna.js
   var __iconNode15 = [
     ["path", { d: "m10 16 1.5 1.5", key: "11lckj" }],
     ["path", { d: "m14 8-1.5-1.5", key: "1ohn8i" }],
@@ -15792,7 +15792,7 @@
   ];
   var Dna = createLucideIcon("dna", __iconNode15);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/droplet.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/droplet.js
   var __iconNode16 = [
     [
       "path",
@@ -15804,7 +15804,7 @@
   ];
   var Droplet = createLucideIcon("droplet", __iconNode16);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/heart.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/heart.js
   var __iconNode17 = [
     [
       "path",
@@ -15816,7 +15816,7 @@
   ];
   var Heart = createLucideIcon("heart", __iconNode17);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/history.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/history.js
   var __iconNode18 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }],
@@ -15824,7 +15824,7 @@
   ];
   var History = createLucideIcon("history", __iconNode18);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/layers.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/layers.js
   var __iconNode19 = [
     [
       "path",
@@ -15850,7 +15850,7 @@
   ];
   var Layers = createLucideIcon("layers", __iconNode19);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/octagon-alert.js
   var __iconNode20 = [
     ["path", { d: "M12 16h.01", key: "1drbdi" }],
     ["path", { d: "M12 8v4", key: "1got3b" }],
@@ -15864,7 +15864,7 @@
   ];
   var OctagonAlert = createLucideIcon("octagon-alert", __iconNode20);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/pill.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/pill.js
   var __iconNode21 = [
     [
       "path",
@@ -15874,14 +15874,14 @@
   ];
   var Pill = createLucideIcon("pill", __iconNode21);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/rotate-ccw.js
   var __iconNode22 = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8", key: "1357e3" }],
     ["path", { d: "M3 3v5h5", key: "1xhq8a" }]
   ];
   var RotateCcw = createLucideIcon("rotate-ccw", __iconNode22);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/sparkles.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/sparkles.js
   var __iconNode23 = [
     [
       "path",
@@ -15896,7 +15896,7 @@
   ];
   var Sparkles = createLucideIcon("sparkles", __iconNode23);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/stethoscope.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/stethoscope.js
   var __iconNode24 = [
     ["path", { d: "M11 2v2", key: "1539x4" }],
     ["path", { d: "M5 2v2", key: "1yf1q8" }],
@@ -15906,7 +15906,7 @@
   ];
   var Stethoscope = createLucideIcon("stethoscope", __iconNode24);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/test-tube.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/test-tube.js
   var __iconNode25 = [
     ["path", { d: "M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5c-1.4 0-2.5-1.1-2.5-2.5V2", key: "125lnx" }],
     ["path", { d: "M8.5 2h7", key: "csnxdl" }],
@@ -15914,7 +15914,7 @@
   ];
   var TestTube = createLucideIcon("test-tube", __iconNode25);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/trash-2.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/trash-2.js
   var __iconNode26 = [
     ["path", { d: "M10 11v6", key: "nco0om" }],
     ["path", { d: "M14 11v6", key: "outv1u" }],
@@ -15924,7 +15924,7 @@
   ];
   var Trash2 = createLucideIcon("trash-2", __iconNode26);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
   var __iconNode27 = [
     [
       "path",
@@ -15938,14 +15938,14 @@
   ];
   var TriangleAlert = createLucideIcon("triangle-alert", __iconNode27);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/user.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/user.js
   var __iconNode28 = [
     ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
     ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
   ];
   var User = createLucideIcon("user", __iconNode28);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/users.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/users.js
   var __iconNode29 = [
     ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
     ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
@@ -15954,14 +15954,14 @@
   ];
   var Users = createLucideIcon("users", __iconNode29);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/x.js
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/node_modules/lucide-react/dist/esm/icons/x.js
   var __iconNode30 = [
     ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
     ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
   ];
   var X = createLucideIcon("x", __iconNode30);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/data/presetCases.ts
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/data/presetCases.ts
   var NORMAL_PATIENT_CASE = {
     id: "case-normal",
     patientName: "",
@@ -16473,7 +16473,7 @@
     }
   ];
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/Header.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/Header.tsx
   var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
   var Header = ({
     onOpenPresets,
@@ -16557,10 +16557,10 @@
     ] }) }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CompactPatientForm.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/CompactPatientForm.tsx
   var import_react4 = __toESM(require_react(), 1);
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/SmartNumberInput.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/SmartNumberInput.tsx
   var import_react3 = __toESM(require_react(), 1);
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
   var SmartNumberInput = ({
@@ -16661,7 +16661,7 @@
     );
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CompactPatientForm.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/CompactPatientForm.tsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   var CompactPatientForm = ({
     data,
@@ -17497,7 +17497,7 @@
     ] });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/UnifiedDashboard.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/UnifiedDashboard.tsx
   var import_react5 = __toESM(require_react(), 1);
   var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
   var UnifiedDashboard = ({
@@ -17819,7 +17819,7 @@
     ] });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/ClinicalGuideModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/ClinicalGuideModal.tsx
   var import_react6 = __toESM(require_react(), 1);
   var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
   var ClinicalGuideModal = ({ isOpen, onClose }) => {
@@ -18141,7 +18141,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/CaseHistoryModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/CaseHistoryModal.tsx
   var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
   var CaseHistoryModal = ({
     isOpen,
@@ -18272,7 +18272,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/components/PresetCasesModal.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/components/PresetCasesModal.tsx
   var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
   var PresetCasesModal = ({
     isOpen,
@@ -18326,7 +18326,7 @@
     ] }) });
   };
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/App.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/App.tsx
   var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
   var DEFAULT_PATIENT = {
     ...NORMAL_PATIENT_CASE,
@@ -18503,7 +18503,7 @@
     ] });
   }
 
-  // C:/Users/nguye/.gemini/antigravity-ide/brain/139e351c-bae5-40e1-becf-a6bcac23ca6e/scratch/sepsis_build/src/main.tsx
+  // C:/Users/nguye/.gemini/antigravity-ide/brain/2d57ccc7-68ac-4ba0-bb8c-758c8a7b283c/scratch/sepsis_build/src/main.tsx
   var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
   (0, import_client.createRoot)(document.getElementById("root")).render(
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react8.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(App, {}) })

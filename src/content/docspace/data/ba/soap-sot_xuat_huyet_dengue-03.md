@@ -1,5 +1,5 @@
 ---
-title: "Sốt xuất huyết Dengue nặng, thể tổn thương gan cấp nặng"
+title: "Sốt xuất huyết Dengue nặng, Thể tổn thương gan cấp nặng"
 caseId: "soap-sot_xuat_huyet_dengue-03"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
@@ -114,21 +114,21 @@ updated: "2026-10-06"
 
 - **Thang điểm lượng giá & Phân tầng nguy cơ**:
   - **MELD Score** (Model for End-Stage Liver Disease): **22 điểm** (Bilirubin 5.4 mg/dL, INR 1.85, Creatinine 1.0 mg/dL) \\(\rightarrow\\) Tiên lượng tử vong cao, bắt buộc điều trị hồi sức gan chuyên sâu tại ICU.
-  - **Phân độ Tổn thương gan cấp (Quyết định 2760/QĐ-BYT)**: **Mức độ Nặng / Suy gan cấp** (Men gan AST/ALT \\(\ge 1000\text{ U/L}\\) kèm INR \\(\ge 1.5\\)).
+  - **Phân độ Tổn thương gan cấp (Quyết định 2760/QĐ-BYT)**: **Mức độ Nặng / Suy gan cấp** (Men gan AST/ALT >= 1000 U/L) kèm INR >= 1.5.
   - **NEWS2 Score**: **5 điểm** (Lừ đừ, Nhịp thở 22) \\(\rightarrow\\) Nguy cơ trung bình-cao.
 
 - **Biện luận lâm sàng chi tiết**:
   - **Về Chẩn đoán xác định**: Bệnh nhân nam 32 tuổi, ngụ vùng dịch tễ, nhập viện ngày thứ 6 của bệnh với đầy đủ tiêu chuẩn chẩn đoán SXHD nặng: Dengue NS1 Ag (+), IgM (+), hội chứng thoát huyết tương (Hct 46%, tràn dịch đa màng, dày thành túi mật 5.5 mm) và giảm tiểu cầu sâu (28 G/L).
-  - **Về Tổn thương gan nặng**: Theo Hướng dẫn Quyết định 2760/QĐ-BYT 2023 và WHO Guidelines, tổn thương gan nặng trong SXHD được định nghĩa khi men gan AST hoặc ALT \\(\ge 1000\text{ U/L}\\). Ở bệnh nhân này, AST vọt lên 3.450 U/L và ALT 1.820 U/L, đi kèm bằng chứng suy chức năng tổng hợp gan rõ rệt: INR 1.85, PT 42%, Bilirubin 92 µmol/L và lừ đừ (Bệnh não gan Độ I). Cơ chế tổn thương gan ở đây là tổ hợp giữa tác động cytopathic trực tiếp của vi rút Dengue lên tế bào gan/Kupffer, bão Cytokine viêm (TNF-α, IL-6, IL-10) và độc tính tích lũy do Paracetamol liều cao trên nền tế bào gan đang bị viêm cấp.
+  - **Về Tổn thương gan nặng**: Theo Hướng dẫn Quyết định 2760/QĐ-BYT 2023 và WHO Guidelines, tổn thương gan nặng trong SXHD được định nghĩa khi men gan AST hoặc ALT >= 1000 U/L. Ở bệnh nhân này, AST vọt lên 3.450 U/L và ALT 1.820 U/L, đi kèm bằng chứng suy chức năng tổng hợp gan rõ rệt: INR 1.85, PT 42%, Bilirubin 92 µmol/L và lừ đừ (Bệnh não gan Độ I). Cơ chế tổn thương gan ở đây là tổ hợp giữa tác động cytopathic trực tiếp của vi rút Dengue lên tế bào gan/Kupffer, bão Cytokine viêm (TNF-α, IL-6, IL-10) và độc tính tích lũy do Paracetamol liều cao trên nền tế bào gan đang bị viêm cấp.
   - **Về Đặc điểm Men gan Dengue**: Giá trị AST cao hơn ALT rõ rệt (3.450 vs 1.820 U/L) là đặc trưng sinh học điển hình của tổn thương gan do Dengue (khác với viêm gan siêu vi B/C cấp thường có ALT > AST). Đỉnh men gan trong SXHD thường rơi vào ngày thứ 6–9 của bệnh.
-  - **Về Lựa chọn Dịch truyền**: Bệnh nhân có cô đặc máu (Hct 46%) và nôn ói không uống được nên có chỉ định truyền dịch TTM. Tuy nhiên, do tổn thương gan nặng (men gan \\(> 1000\text{ U/L}\\)), gan suy không thể chuyển hóa Lactate thành Bicarbonate, việc dùng Ringer Lactate có nguy cơ gây toan Lactate máu nặng nề. Do đó, theo Hướng dẫn BYT 2023, dung dịch được chọn bắt buộc là **NaCl 0.9% hoặc Ringer Acetate**.
+  - **Về Lựa chọn Dịch truyền**: Bệnh nhân có cô đặc máu (Hct 46%) và nôn ói không uống được nên có chỉ định truyền dịch TTM. Tuy nhiên, do tổn thương gan nặng (men gan >= 1000 U/L), gan suy không thể chuyển hóa Lactate thành Bicarbonate, việc dùng Ringer Lactate có nguy cơ gây toan Lactate máu nặng nề. Do đó, theo Hướng dẫn BYT 2023, dung dịch được chọn bắt buộc là **NaCl 0.9% hoặc Ringer Acetate**.
 
 ---
 
 ## 4. 📋 P — KẾ HOẠCH / PLAN
 
 ### A. Xử trí Hồi sức & Chăm sóc Cấp cứu tại ICU:
-1. **Tư thế & Hô hấp**: Cho bệnh nhân nằm đầu cao 30° (giúp giảm áp lực nội sọ dự phòng phù não). Thở Oxy gọng kính **2–3 lít/phút** (Mục tiêu SpO₂ \\(\ge 96\%\\)).
+1. **Tư thế & Hô hấp**: Cho bệnh nhân nằm đầu cao 30° (giúp giảm áp lực nội sọ dự phòng phù não). Thở Oxy gọng kính **2–3 lít/phút** (Mục tiêu SpO₂ >= 96 %).
 2. **Thiết lập đường truyền**: Đặt 2 đường truyền tĩnh mạch ngoại biên kim luồn lớn (18G/20G). Hạn chế tối đa tiêm bắp hay chọc dò tĩnh mạch trung tâm sâu (TMC, TM dưới đòn) do nguy cơ tụ máu chèn ép nghiêm trọng khi PLT 28 G/L và INR 1.85.
 3. **Theo dõi bài niệu**: Đặt xông tiểu lưu ngắt quãng, theo dõi bài niệu mỗi 2 giờ.
 
@@ -156,7 +156,7 @@ updated: "2026-10-06"
    - **Esomeprazole 40mg**: 1 lọ Tiêm tĩnh mạch chậm x 1 lần/ngày (Dự phòng xuất huyết tiêu hóa do stress và suy gan).
 
 5. **Duy trì Đường huyết & Điện giải**:
-   - **Glucose 10%**: Truyền TTM duy trì tốc độ 40–60 mL/giờ nếu bệnh nhân nhịn ăn, giữ đường huyết mao mạch luôn \\(\ge 5.0–8.0\text{ mmol/L}\\) (tránh nguy cơ hạ đường huyết đe dọa tính mạng do cạn kiệt Glycogen gan).
+   - **Glucose 10%**: Truyền TTM duy trì tốc độ 40–60 mL/giờ nếu bệnh nhân nhịn ăn, giữ đường huyết mao mạch luôn >= 5.0–8.0 mmol/L (tránh nguy cơ hạ đường huyết đe dọa tính mạng do cạn kiệt Glycogen gan).
 
 ---
 
@@ -165,13 +165,13 @@ updated: "2026-10-06"
 - **Tần suất theo dõi tại ICU**:
   - Tri giác (Điểm GCS, dấu hiệu Bệnh não gan), Mạch, HA, Nhịp thở, SpO₂: **Mỗi 1–2 giờ/lần**.
   - Hct tại giường, Glucose máu mao mạch: **Mỗi 2–4 giờ/lần**.
-  - Bài niệu (Lượng nước tiểu giờ): Đo qua xông tiểu **mỗi 2 giờ** (Mục tiêu \\(\ge 0.5–1.0\text{ mL/kg/h}\\)).
+  - Bài niệu (Lượng nước tiểu giờ): Đo qua xông tiểu **mỗi 2 giờ** (Mục tiêu >= 0.5–1.0 mL/kg/h).
   - Men gan (AST, ALT), Bilirubin, INR, PT, NH₃, Lactate, Khí máu động mạch: Kiểm tra lại **mỗi 12–24 giờ**.
 - **Mục tiêu điều trị**:
   - Bệnh nhân tỉnh táo hoàn toàn, không tiến triển Bệnh não gan Độ II–IV.
-  - Huyết áp ổn định, Hct duy trì \\(\le 42\%\\).
-  - Tỷ số INR cải thiện dần về \\(< 1.5\\), Men gan AST/ALT có xu hướng giảm rõ rệt sau 48–72 giờ điều trị NAC.
-  - Đường huyết duy trì ổn định \\(5.5–8.5\text{ mmol/L}\\).
+  - Huyết áp ổn định, Hct duy trì <= 42 %.
+  - Tỷ số INR cải thiện dần về < 1.5, Men gan AST/ALT có xu hướng giảm rõ rệt sau 48–72 giờ điều trị NAC.
+  - Đường huyết duy trì ổn định 5.5–8.5 mmol/L.
 
 ---
 
@@ -179,12 +179,12 @@ updated: "2026-10-06"
 
 - Theo Phụ lục 26 - Quyết định 2760/QĐ-BYT, xem xét chỉ định **Thay thể tích huyết tương cao (High-Volume TPE)** và/hoặc **Lọc máu liên tục (CRRT)** khi:
   1. Thất bại điều trị nội khoa với N-Acetylcysteine sau **24–48 giờ** (tri giác không cải thiện, MELD score tiếp tục tăng hoặc INR không giảm).
-  2. Hoặc Suy gan cấp đi kèm \\(\ge 1\\) trong các yếu tố:
+  2. Hoặc Suy gan cấp đi kèm >= 1 trong các yếu tố:
      - Tình trạng Bệnh não gan tiến triển Độ III – IV.
-     - Bilirubin toàn phần \\(\ge 200\text{ µmol/L}\\) (~12 mg/dL).
-     - Tỷ số **INR \\(\ge 2.5\\)**.
-     - Nồng độ **NH₃ máu \\(\ge 150\text{ µmol/L}\\)**.
-     - Lactate máu \\(\ge 5.0\text{ mmol/L}\\) kèm sốc không đáp ứng nội khoa hoặc toan máu \\(pH < 7.35\\).
+     - Bilirubin toàn phần >= 200 µmol/L (~12 mg/dL).
+     - Tỷ số **INR >= 2.5**.
+     - Nồng độ **NH₃ máu >= 150 µmol/L**.
+     - Lactate máu >= 5.0 mmol/L kèm sốc không đáp ứng nội khoa hoặc toan máu pH < 7.35.
      - Có biến chứng Tổn thương thận cấp (AKI) hoặc quá tải dịch nặng/ARDS.
 
 ---
