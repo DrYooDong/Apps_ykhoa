@@ -97,6 +97,20 @@ d:\Apps_ykhoa\.agents/
 
 ---
 
+## ⚡ Các Lệnh Điều Khiển Nhanh (Slash Commands)
+
+| Lệnh | Mục đích | Cách kích hoạt |
+|---|---|---|
+| `/new-feature` | Phát triển tính năng mới: 5 bước chuẩn hóa, tự kiểm thử và cập nhật FILE_MAP | Nhập `/new-feature [mô tả]` |
+| `/fix-bug` | Sửa lỗi có phương pháp: chẩn đoán có bằng chứng, sửa tối thiểu, chống hồi quy | Nhập `/fix-bug [mô tả lỗi]` |
+| `/audit` | Quét toàn diện 6 tiêu chí vàng (HTML, CSS Tokens, Dark Mode, Responsive, Paths, a11y) | Nhập `/audit [phạm vi]` hoặc `node tools/dev.mjs check <file>` |
+| `/ship` | Chạy release checklist tự động trước khi đóng gói / commit mã nguồn | Nhập `/ship` |
+| `/retro` | Tự đánh giá sau task (Retro Card ≤15 dòng), cập nhật rule/skill/script | Nhập `/retro [tên task]` |
+| `/learn-from-session` | Tự động đúc kết kinh nghiệm sau phiên làm việc vào `.agents/learnings/` | Nhập `/learn-from-session` |
+| `/validate-system` | Chạy 3 cổng kiểm định tự động toàn diện (Typecheck, Medical Linter, Dead Assets) | Nhập `/validate-system` hoặc `npm run validate:all` |
+
+---
+
 ## 🛑 Quy tắc Bất di Bất dịch (KHÔNG ĐƯỢC VI PHẠM)
 
 1. **Không di chuyển file HTML/CSS/JS chức năng**: Các file sử dụng đường dẫn tương đối. Di chuyển sẽ làm hỏng toàn bộ liên kết.

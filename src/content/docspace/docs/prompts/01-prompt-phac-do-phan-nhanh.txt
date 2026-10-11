@@ -99,7 +99,18 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
      + Lược bỏ hoàn toàn tiền tố thừa thãi trong nhãn tiêu chuẩn ("criteria.label"): KHÔNG dùng tiền tố "[Lâm sàng]: ...", "[Cận lâm sàng]: ...", "Dấu hiệu cảnh báo: ...". Nhãn phải ngắn gọn, trực diện, nhấn mạnh ngưỡng số hoặc dấu hiệu thực tế.
      + Văn phong y lệnh thực chiến: Rõ ràng, dứt khoát, súc tích (kiểu bệnh án thực hành & y lệnh điều trị), không viết văn xuôi dài dòng rườm rà nhằm tối ưu hóa tokens của LLM và hiển thị sắc nét trên giao diện mobile/desktop của DocSpace.
 
-7. XÁC ĐỊNH HỘI CHỨNG LÂM SÀNG CỐT LÕI ("syndromes"):
+7. MỞ RỘNG TOÀN DIỆN CÁC PHƯƠNG ÁN KHÁNG SINH & THUỐC ĐIỀU TRỊ (EBM MULTI-OPTION REGIMENS):
+   - Tuyệt đối KHÔNG chỉ đưa ra 01 phương án thuốc hoặc 01 kháng sinh duy nhất một cách máy móc.
+   - Bắt buộc đọc kỹ tài liệu tham khảo (Guideline) và trích xuất đầy đủ:
+     + Lựa chọn ưu tiên hàng đầu (First-line): Thuốc, liều dùng, đường dùng, khoảng cách liều.
+     + Các lựa chọn thay thế (Alternative options): Khi dị ứng Penicillin/Beta-lactam, khi bệnh nhân có nguy cơ kháng thuốc (MRSA, Pseudomonas, ESBL...), hoặc theo phân tầng lâm sàng.
+     + Phác đồ phối hợp (Combination): Khi guideline chỉ định phối hợp thuốc.
+     + Tiêu chuẩn xuống thang (IV-to-PO switch): Điều kiện chuyển từ đường tiêm truyền sang đường uống khi lâm sàng cải thiện.
+     + Hiệu chỉnh liều theo chức năng thận (eGFR Adjustment): Nêu rõ liều khi suy thận.
+     + Bệnh do virus: Ghi rõ "Không chỉ định kháng sinh" và cảnh báo tránh lạm dụng.
+   - Áp dụng tương tự cho các nhóm thuốc khác (dịch truyền, thuốc vận mạch, thuốc ức chế acid, thuốc giãn phế quản, corticoid...).
+
+8. XÁC ĐỊNH HỘI CHỨNG LÂM SÀNG CỐT LÕI ("syndromes"):
    Đọc tài liệu và xác định từ 1 đến 4 Hội chứng Lâm sàng kinh điển/đặc trưng mà bệnh lý này biểu hiện (hoặc biến chứng gây ra).
    - Khai báo mảng "syndromes": ["hc_..."] ở cấp gốc JSON (ngang hàng với "specialty" và "severity").
    - Các ID hội chứng chuẩn có sẵn trong Kho Hội Chứng DocSpace:
@@ -108,7 +119,11 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
      + Hô hấp / Tim mạch / Thận: "hc_suy_ho_hap", "hc_dong_dac_phoi", "hc_suy_tim", "hc_than_hu", "hc_viem_than_cap"...
    - Nếu bệnh có hội chứng đặc thù khác chưa có trong danh sách, đặt ID theo cú pháp chuẩn: "hc_<ten_khong_dau>" (ví dụ: "hc_dong_dac_phoi", "hc_suy_tim_sung_huyet").
 
-8. ĐẦU RA DUY NHẤT:
+9. PHỐI HỢP VỚI PROMPT 02 & PROMPT 04:
+   - Khối tiêu chuẩn chẩn đoán ("criteriaRule", "criteria") có thể lấy trực tiếp từ kết quả của PROMPT 02 để nạp vào tệp JSON này.
+   - Toàn bộ từ điển triệu chứng chi tiết có thể được quản lý độc lập qua PROMPT 04.
+
+10. ĐẦU RA DUY NHẤT:
    Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
 
 --------------------------------------------------------------------------------
@@ -180,9 +195,19 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
         "dischargeCriteria": "Tiêu chuẩn an toàn để kết thúc theo dõi ngoại trú hoặc cho ra viện.",
         "drugs": [
           [
-            "Tên thuốc / Dịch truyền",
+            "Kháng sinh ưu tiên hàng đầu (First-line) / Hoặc Dịch truyền / Thuốc đặc hiệu",
+            "Liều dùng cụ thể (mg/kg hoặc g), đường dùng (PO/IV), khoảng cách liều (q8h/q12h/q24h)",
+            "Chỉ định chuẩn, thời điểm dùng, chỉnh liều theo eGFR, tiêu chuẩn ngưng thuốc"
+          ],
+          [
+            "Kháng sinh / Thuốc thay thế (Alternative option: khi dị ứng hoặc nguy cơ kháng thuốc)",
             "Liều lượng, đường dùng, tần suất",
-            "Ghi chú, điều kiện dùng & chống chỉ định"
+            "Chỉ định khi dị ứng thuốc hàng đầu hoặc không đáp ứng sau 48-72h"
+          ],
+          [
+            "Thuốc điều trị triệu chứng & Bổ trợ (Hạ sốt / Bù dịch / Giảm đau)",
+            "Liều dùng an toàn, tối đa trong 24h",
+            "Chống chỉ định tuyệt đối (VD: không dùng Aspirin/NSAID khi nghi ngờ sốt xuất huyết)"
           ]
         ],
         "timelinePhases": [
@@ -392,18 +417,28 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
     ],
     "firstLineDrugs": [
       {
-        "drugName": "Tên thuốc",
-        "class": "Nhóm dược lý",
+        "drugName": "Tên thuốc / Kháng sinh ưu tiên hàng đầu (First-line)",
+        "class": "Nhóm dược lý (VD: Cephalosporin thế hệ 3 / Penicillin / Carbapenem / Macrolide)",
         "route": "PO | IV | SC | Inhalation",
-        "dosage": "Liều dùng",
-        "frequency": "Tần suất",
-        "instructions": "Hướng dẫn sử dụng",
+        "dosage": "Liều dùng chuẩn (mg/kg hoặc g)",
+        "frequency": "Tần suất (q8h / q12h / q24h)",
+        "instructions": "Hướng dẫn sử dụng, tốc độ truyền, chỉnh liều theo eGFR",
         "isFirstLine": true
       }
     ],
-    "secondLineDrugs": [],
+    "secondLineDrugs": [
+      {
+        "drugName": "Tên thuốc / Kháng sinh thay thế (Alternative: khi dị ứng hoặc vi khuẩn kháng thuốc)",
+        "class": "Nhóm dược lý (VD: Fluoroquinolone hô hấp / Glycopeptide / Oxazolidinone)",
+        "route": "PO | IV",
+        "dosage": "Liều dùng",
+        "frequency": "Tần suất",
+        "instructions": "Chỉ định thay thế khi dị ứng nhóm thuốc hàng đầu hoặc nghi ngờ chủng kháng thuốc",
+        "isFirstLine": false
+      }
+    ],
     "supportiveCare": [
-      "Chế độ nghỉ ngơi, dinh dưỡng, điều dưỡng chăm sóc chung"
+      "Chế độ nghỉ ngơi, bù nước điện giải, dinh dưỡng, điều dưỡng chăm sóc chung"
     ]
   },
 

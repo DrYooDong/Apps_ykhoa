@@ -1133,17 +1133,19 @@ export const Step3Protocol: React.FC<Step3Props> = ({
       return (phacDo as any).timelinePhases;
     }
     // 5. Kiểm tra Protocol Registry (Standard & Custom)
-    const registered = getRegisteredProtocolById(currentDisease.id);
+    const registered = currentDisease ? getRegisteredProtocolById(currentDisease.id) : null;
     if (registered?.timelinePhases && registered.timelinePhases.length > 0) {
       return registered.timelinePhases;
     }
     // 6. Thư viện timeline tự động
-    return getDailyTreatmentTimeline(
-      currentDisease.id,
-      currentDisease.ten,
-      activeSeverityGrade,
-      phacDo
-    );
+    return currentDisease
+      ? getDailyTreatmentTimeline(
+          currentDisease.id,
+          currentDisease.ten,
+          activeSeverityGrade,
+          phacDo
+        )
+      : [];
   }, [
     currentDisease,
     activeSeverityGrade,
@@ -2226,6 +2228,29 @@ export const Step3Protocol: React.FC<Step3Props> = ({
             onExpandAll={handleExpandAll}
             onCollapseAll={handleCollapseAll}
           />
+        </div>
+      )}
+
+      {/* Thông báo trạng thái sạch khi chưa có bệnh lý / phác đồ */}
+      {!currentDisease && (
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 sm:p-12 text-center max-w-2xl mx-auto my-8 shadow-xs">
+          <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 mx-auto flex items-center justify-center mb-4 border border-blue-100 dark:border-blue-900">
+            <FileText className="w-7 h-7" />
+          </div>
+          <h3 className="font-display font-bold text-base sm:text-lg text-slate-800 dark:text-slate-100 mb-2">
+            Chưa có bệnh lý hoặc phác đồ trong hệ thống
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-6 leading-relaxed">
+            Phân hệ Lâm sàng đã được đặt lại trạng thái sạch (Clean Slate). Bạn có thể sử dụng bộ Master Prompts (01, 02, 04, 06) để bắt đầu biên soạn và nạp dữ liệu bệnh lý mới từ đầu.
+          </p>
+          <button
+            type="button"
+            onClick={onBackToAnalysis}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-sm cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Quay lại chẩn đoán</span>
+          </button>
         </div>
       )}
 

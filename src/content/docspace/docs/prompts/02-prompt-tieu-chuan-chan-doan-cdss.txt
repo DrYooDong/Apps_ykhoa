@@ -1,0 +1,282 @@
+================================================================================
+CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 02: TIÊU CHUẨN CHẨN ĐOÁN & MA TRẬN CDSS
+(DIAGNOSTIC CRITERIA, CDSS WEIGHT MATRIX & SAMPLE CLINICAL CASE EXTRACTOR — EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI]
+Prompt này được tách riêng để TRÍCH XUẤT ĐỘC LẬP & CHUYÊN SÂU:
+1. BỘ TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (Diagnostic Criteria & Rules):
+   - Tiêu chuẩn vàng (goldStandard)
+   - Quy tắc chẩn đoán (criteriaRule: tiêu chuẩn bắt buộc, số lượng tiêu chuẩn chính/phụ cần thỏa)
+   - Danh sách tiêu chuẩn định lượng chi tiết (criteria[]: ngưỡng CLS, hình ảnh học, vai trò CDSS)
+   -> Giúp nạp trực tiếp vào Bước 3 (Kho Chẩn Đoán & enriched/<slug>.json).
+
+2. MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Clinical Decision Support Weight Matrix):
+   - Mảng 'dd': Quy định các triệu chứng/xét nghiệm có vai trò Đặc trưng (dt: 4.0 - 5.0), 
+     Gợi ý (gy: 2.5 - 3.5), Hỗ trợ (ht: 1.0 - 2.0), hoặc Loại trừ (loaitru: điểm âm)
+   -> Vận hành động cơ suy luận chẩn đoán phân biệt thời gian thực tại Bước 3.
+
+3. CA LÂM SÀNG MẪU BƯỚC 1 (Sample Clinical Case):
+   - Ca bệnh mẫu với đầy đủ sinh hiệu (vitals), xét nghiệm (labs), triệu chứng đã chọn (selected/sel), 
+     loại trừ (negated), bối cảnh dịch tễ (epiContext), và bệnh sử chi tiết (form.text: cn, tt, tc, cls)
+   -> Giúp người dùng hoặc bác sĩ nhấp 1-chạm là nạp ngay ca bệnh để thực hành và kiểm thử CDSS.
+
+* LƯU Ý PHỐI HỢP VỚI PROMPT 04 & 05 (TRIỆU CHỨNG & HỘI CHỨNG):
+  - Nếu bệnh lý này có các triệu chứng mới, nghiệm pháp đặc thù hoặc hội chứng lâm sàng chưa có trong CSDL:
+    Hãy dùng PROMPT 04 (kết hợp PROMPT 05) để trích xuất từ điển triệu chứng và hội chứng trước!
+  - Prompt 02 này tập trung 100% vào TIÊU CHUẨN XÁC ĐỊNH BỆNH, SUY LUẬN CDSS và CA MẪU THỰC HÀNH.
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+(Tùy chỉnh thông số trong ngoặc vuông bên dưới theo bệnh lý cần xây dựng):
+- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue / Viêm phổi mắc phải cộng đồng / Sốt thương hàn)
+- [MÃ ICD-10 GỐC]: (Ví dụ: A97 / J18 / A01.0)
+- [MÃ ICD-10 PHỤ]: (Ví dụ: ["A97.0", "A97.1", "A97.2"] / ["J18.0", "J18.1"])
+- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch / Tiêu hóa / Nhi khoa)
+- [MỨC ĐỘ KHẨN]: emergency (Cấp cứu) | urgent (Khẩn cấp) | routine (Thông thường)
+- [THỂ BỆNH MẪU ĐIỂN HÌNH]: (Ví dụ: SXHD có dấu hiệu cảnh báo ngày thứ 4, Hct 46%, TC 42 G/L)
+- [CƠ ĐỊA BỆNH NHÂN]: (Ví dụ: Nam 24 tuổi, sinh viên, sống tại khu trọ đang có dịch lưu hành)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
+- [SLUG FILE BỆNH LÝ]: (Ví dụ: sot_xuat_huyet_dengue / viem_phoi_cong_dong / sot_thuong_han)
+
+--------------------------------------------------------------------------------
+[QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
+
+1. ĐỐI SOÁT VÀ ĐỒNG NHẤT MÃ ID TRIỆU CHỨNG:
+   - Các mảng "symptomIds", "selected", "sel", "negated" và "dd" BẮT BUỘC dùng mã ID tiếng Việt không dấu, snake_case (ví dụ: "sot_cao_dot_ngot_duoi_7_ngay", "dau_bung_vung_gan", "co_dac_mau_hct_tang_tren_20_phan_tram", "giam_tieu_cau_duoi_100_g_l").
+   - Đối chiếu với file `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` nếu có sẵn trong NotebookLM.
+
+2. PHÂN TẦNG VAI TRÒ CDSS CHÍNH XÁC (EBM WEIGHTING MATRIX):
+   - "dt" (Đặc trưng): Tiêu chuẩn vàng, xét nghiệm vi sinh khẳng định, dấu hiệu bệnh sinh đặc trưng (Trọng số 4.0 - 5.0).
+   - "gy" (Gợi ý): Triệu chứng lâm sàng then chốt, hội chứng thường gặp (Trọng số 2.5 - 3.5).
+   - "ht" (Hỗ trợ): Dấu hiệu bổ trợ, phản ứng viêm chung, cận lâm sàng sàng lọc (Trọng số 1.0 - 2.0).
+   - "loaitru" (Loại trừ): Nếu có dấu hiệu này thì làm giảm mạnh hoặc loại trừ chẩn đoán (Trọng số âm: -3.0 đến -5.0).
+
+3. CẤU TRÚC TIÊU CHUẨN CHẨN ĐOÁN (CRITERIA & RULES):
+   - "criteriaRule": Bắt buộc nêu rõ số lượng tiêu chuẩn chính (minMajorRequired), tiêu chuẩn phụ (minMinorRequired), và các ID bắt buộc (mandatoryIds).
+   - "criteria": Mỗi tiêu chuẩn phân loại đúng `type`: "mandatory" | "major" | "minor" | "lab" | "imaging".
+   - Lược bỏ tiền tố thừa: Nhãn (`label`) phải ngắn gọn, trực diện, thể hiện rõ ngưỡng định lượng (Ví dụ: "Cô đặc máu (Hct tăng ≥ 20% hoặc Hct > 45%)", "Tiểu cầu giảm dốc đứng (< 100 G/L)").
+
+4. QUY CHUẨN VIẾT TẮT, ĐƠN VỊ SI & ZERO HTML ENTITIES (BẮT BUỘC):
+   - Viết tắt y khoa chuẩn: HA, HATT, HATTr, M, NT, SpO₂, CRT, GCS, Hct, PLT, WBC, AST, ALT, eGFR, CTM, KMĐM, XQ, SA, CT, MRI, ECG.
+   - Toán tử & Đơn vị SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L.
+   - Zero HTML Entities: Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;. Viết trực tiếp ký tự <, >, ".
+
+5. ĐẦU RA DUY NHẤT:
+   Xuất ra đúng 03 khối code JSON chuẩn xác theo cấu trúc bên dưới, không có văn bản giải thích thừa bên ngoài khối code.
+
+--------------------------------------------------------------------------------
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+--------------------------------------------------------------------------------
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế (Clinical Informatics & CDSS).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 03 khối dữ liệu JSON chuẩn xác phục vụ Động cơ Chẩn đoán và Suy luận CDSS cho bệnh lý sau:
+
+Thông số đầu vào:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10: [MÃ ICD-10 GỐC]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Mức độ khẩn: [MỨC ĐỘ KHẨN]
+- Thể bệnh mẫu: [THỂ BỆNH MẪU ĐIỂN HÌNH]
+- Cơ địa bệnh nhân: [CƠ ĐỊA BỆNH NHÂN]
+- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản:
+Xuất ra đúng 03 khối code JSON theo cấu trúc bên dưới (không có giải thích ngoài khối code):
+- KHỐI 1: Bộ Tiêu chuẩn Chẩn đoán Xác định (Criteria & Rules) phục vụ Bước 3 Kho Chẩn Đoán.
+- KHỐI 2: Ma trận trọng số CDSS Bước 3 (mảng 'dd' phân tầng dt, gy, ht, loaitru).
+- KHỐI 3: Ca lâm sàng mẫu Bước 1 (nạp vào sample-clinical-cases.json) phản ánh đúng thể bệnh mẫu.
+
+Cấu trúc JSON chuẩn:
+"
+
+--------------------------------------------------------------------------------
+[CẤU TRÚC CODE XUẤT BẢN]
+
+### KHỐI 1: BỘ TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (CRITERIA & RULES)
+(Phục vụ nạp vào: src/content/docspace/data/enriched/[SLUG FILE].json hoặc Kho Chẩn Đoán)
+
+```json
+{
+  "icdCode": "[MÃ ICD-10 GỐC]",
+  "icdPrefixes": [
+    "[Mã ICD-10 phụ 1]",
+    "[Mã ICD-10 phụ 2]"
+  ],
+  "diseaseName": "[TÊN BỆNH LÝ]",
+  "specialty": "[CHUYÊN KHOA]",
+  "severity": "[MỨC ĐỘ KHẨN: emergency | urgent | routine]",
+  "summary": "Tóm tắt cơ chế sinh bệnh học, dịch tễ và diễn tiến lâm sàng cốt lõi theo [HƯỚNG DẪN THAM CHIẾU].",
+  "goldStandard": "Tiêu chuẩn vàng xác nhận chẩn đoán căn nguyên hoặc tiêu chuẩn xác chẩn theo [HƯỚNG DẪN THAM CHIẾU].",
+
+  "criteriaRule": {
+    "mandatoryIds": [
+      "tc_bat_buoc_1"
+    ],
+    "minMajorRequired": 2,
+    "minMinorRequired": 1,
+    "ruleDescription": "Mô tả quy tắc chẩn đoán xác định bệnh (VD: Bắt buộc có tiêu chuẩn bắt buộc + ít nhất 2 tiêu chuẩn chính + 1 cận lâm sàng khẳng định)."
+  },
+
+  "criteria": [
+    {
+      "id": "tc_bat_buoc_1",
+      "type": "mandatory",
+      "label": "Tên dấu hiệu bắt buộc (Bỏ tiền tố thừa, nêu rõ ngưỡng số)",
+      "description": "Mô tả chi tiết triệu chứng lâm sàng hoặc tổn thương bệnh học.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng_tương_ứng"],
+      "cdssRole": "dt",
+      "weight": 5.0
+    },
+    {
+      "id": "tc_chinh_1",
+      "type": "major",
+      "label": "Tên tiêu chuẩn chính (Ngưỡng định lượng hoặc dấu chứng kinh điển)",
+      "description": "Mô tả lâm sàng hoặc hội chứng đặc trưng.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng_1", "id_triệu_chứng_2"],
+      "cdssRole": "dt",
+      "weight": 4.5
+    },
+    {
+      "id": "tc_phu_1",
+      "type": "minor",
+      "label": "Tên tiêu chuẩn phụ (Triệu chứng gợi ý / định hướng)",
+      "description": "Triệu chứng cơ năng hoặc triệu chứng đi kèm.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng"],
+      "cdssRole": "gy",
+      "weight": 2.5
+    },
+    {
+      "id": "tc_cls_xet_nghiem",
+      "type": "lab",
+      "label": "Chỉ số xét nghiệm sinh hóa / huyết học bất thường",
+      "description": "Biến đổi cận lâm sàng định lượng.",
+      "labThreshold": "Ngưỡng định lượng cụ thể (VD: PLT < 100 G/L, Hct tăng ≥ 20%)",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng_cls"],
+      "cdssRole": "dt",
+      "weight": 4.5
+    },
+    {
+      "id": "tc_cls_hinh_anh",
+      "type": "imaging",
+      "label": "Tổn thương trên chẩn đoán hình ảnh (X-quang / Siêu âm / CT)",
+      "description": "Dấu hiệu hình ảnh học đặc trưng.",
+      "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
+      "symptomIds": ["id_triệu_chứng_hinh_anh"],
+      "cdssRole": "dt",
+      "weight": 4.0
+    }
+  ]
+}
+```
+
+---
+
+### KHỐI 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS BƯỚC 3
+(Phục vụ nạp vào: src/content/knowledge-vault/data/diseases/[chuyen_khoa].json)
+
+```json
+{
+  "id": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "ten": "[TÊN BỆNH LÝ: ví dụ Sốt xuất huyết Dengue]",
+  "icd": "[MÃ ICD-10 GỐC: ví dụ A97]",
+  "nhom": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "baoDong": true,
+  "ghiChuBaoDong": "Phân tầng nguy cơ EBM & Cảnh báo dấu hiệu nặng",
+  "tomTat": "Tóm tắt cơ chế chẩn đoán và phân tầng mức độ nặng theo [HƯỚNG DẪN THAM CHIẾU].",
+  "danSo": {
+    "gioiTinh": "any",
+    "tuoiMin": 0,
+    "tuoiMax": 120
+  },
+  "dd": [
+    ["id_trieu_chung_vang_hoac_bat_buoc", 5.0, "dt"],
+    ["id_trieu_chung_dac_trung_chinh", 4.5, "dt"],
+    ["id_dau_hieu_thuc_the_kinh_dien", 4.0, "dt"],
+    ["id_can_lam_sang_dinh_luong", 4.5, "dt"],
+    ["id_trieu_chung_goi_y_1", 3.0, "gy"],
+    ["id_trieu_chung_goi_y_2", 2.5, "gy"],
+    ["id_dau_hieu_ho_tro_chung", 1.5, "ht"],
+    ["id_trieu_chung_loai_tru_chan_doan", -5.0, "loaitru"]
+  ]
+}
+```
+
+---
+
+### KHỐI 3: CA LÂM SÀNG MẪU BƯỚC 1
+(Phục vụ nạp vào: src/content/knowledge-vault/data/sample-clinical-cases.json)
+
+```json
+{
+  "id": "[slug_ca_benh: ví dụ sxh_dengue_canh_bao_n4]",
+  "ten": "[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]",
+  "diseaseId": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "icd10": "[MÃ ICD-10: ví dụ A97.1]",
+  "specialty": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "vitals": {
+    "vNhiet": "39.2",
+    "vMach": "108",
+    "vHATT": "95",
+    "vHATTr": "75",
+    "vTho": "22",
+    "vSpo2": "96"
+  },
+  "labs": {
+    "lBC": "3.2",
+    "lTC": "42",
+    "lHct": "46",
+    "lGlu": "5.4",
+    "lTrop": "8",
+    "lAST": "280",
+    "lALT": "195",
+    "lCre": "85"
+  },
+  "selected": [
+    "id_trieu_chung_1",
+    "id_trieu_chung_2",
+    "id_trieu_chung_3"
+  ],
+  "sel": [
+    "id_trieu_chung_1",
+    "id_trieu_chung_2",
+    "id_trieu_chung_3"
+  ],
+  "negated": [
+    "id_trieu_chung_am_tinh_khong_co"
+  ],
+  "epiContext": {
+    "endemicArea": "Vùng dịch tễ lưu hành bệnh theo mùa",
+    "outbreakAlert": "Đang có ổ dịch bùng phát tại địa phương",
+    "vectorExposure": "Khu vực có nguồn lây hoặc véc-tơ truyền bệnh rõ",
+    "seasonalContext": "Cao điểm mùa dịch"
+  },
+  "form": {
+    "gioiTinh": "nam",
+    "tuoi": "24",
+    "ngheNghiep": "Sinh viên / Công nhân",
+    "lyDo": "[Lý do chính khiến người bệnh nhập viện]",
+    "text": {
+      "cn": "Mô tả triệu chứng cơ năng chi tiết theo diễn tiến từng ngày khởi phát bệnh...",
+      "tt": "Mô tả thăm khám thực thể toàn thân và các cơ quan...",
+      "tc": "Tiền căn bản thân, gia đình và bối cảnh dịch tễ phơi nhiễm...",
+      "cls": "Kết quả các xét nghiệm cận lâm sàng tại thời điểm tiếp nhận..."
+    }
+  }
+}
+```
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN NẠP VÀ ĐỒNG BỘ DỮ LIỆU]
+1. Khối 1: Tích hợp vào phần criteria của src/content/docspace/data/enriched/[SLUG FILE].json.
+2. Khối 2: Dán vào mảng benh trong src/content/knowledge-vault/data/diseases/[chuyen_khoa].json.
+3. Khối 3: Thêm vào mảng trong src/content/knowledge-vault/data/sample-clinical-cases.json.
+4. Mở terminal tại thư mục gốc và chạy lệnh đồng bộ:
+   node tools/scripts/bundle-clinical-rules.mjs
+   node tools/scripts/sync-clinical-db.mjs
+================================================================================

@@ -38,43 +38,43 @@ Từ phiên bản 3.0, toàn bộ quy trình biên soạn bệnh lý được ch
 
 ---
 
-## 📋 2. BẢNG TRA CỨU BỘ 3 PROMPT CỐT LÕI
+## 📋 2. BẢNG TRA CỨU BỘ PROMPT CỐT LÕI (PHIÊN BẢN CẬP NHẬT 2026)
 
 | STT | File Prompt | Mục Tiêu & Dữ Liệu Sinh Ra | Định Dạng | Nơi Lưu / Cách Nạp Vào Hệ Thống |
 | :---: | :--- | :--- | :---: | :--- |
-| **01** | [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) | **Master Phác đồ Phân nhánh Lâm sàng & Tiêu chuẩn CĐ**<br>• Cấu hình 6 trục phân nhánh lâm sàng (`severity`, `phenotype`, `triage_score`, `treatment_step`, `stage`, `comorbidity`)<br>• Phác đồ điều trị chi tiết theo từng nhánh (Bảng 4 cột, 6 đầu mục)<br>• Cảnh báo ranh giới, Chống chỉ định, Tương tác thuốc | **JSON** | Lưu vào:<br>`src/content/docspace/data/enriched/<slug>.json`<br><br>*Tự động đồng bộ bằng lệnh:*<br>`node tools/scripts/sync-clinical-db.mjs` |
-| **02** | [`02-prompt-ca-mau-va-trong-so.txt`](02-prompt-ca-mau-va-trong-so.txt) | **Ca Mẫu Bước 1 & Ma Trận Trọng Số CDSS Bước 3**<br>• Ca bệnh mẫu đầy đủ sinh hiệu, triệu chứng chọn trước<br>• Ma trận suy luận lâm sàng (`dt`: đặc hiệu, `gy`: gợi ý, `ht`: hỗ trợ, `loaitru`: loại trừ)<br>• Khai báo triệu chứng mới vào từ điển | **JSON** | 1. Ca mẫu: nạp vào `src/content/docspace/src/data/sample-clinical-cases.json`<br>2. Trọng số: nạp vào CSDL bệnh học CDSS<br><br>*Tự động nạp bằng lệnh:*<br>`node tools/scripts/ingest-prompt-06-07.mjs <file.md>` |
-| **03** | [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) | **Hồ Sơ Ca Bệnh Thực Chiến SOAP & Hạt Ngọc Lâm Sàng**<br>• Ca bệnh chuẩn cấu trúc S-O-A-P<br>• 4 Hạt ngọc lâm sàng (Pearls & Pitfalls)<br>• Bảng Đặt vấn đề 3 tầng (theo trường phái PGS.TS Hoàng Văn Sĩ)<br>• Phục vụ Hội chẩn AI tại giường | **Markdown** | **Cách 1 (Nhanh nhất):**<br>Mở Web DocSpace ➔ Bấm nút **"Nạp ca từ NotebookLM"** trên Header ➔ Dán Markdown vào.<br><br>**Cách 2 (Lưu vĩnh viễn):**<br>Lưu file `src/content/docspace/data/ba/soap-<slug>-01.md`<br>Chạy `node tools/scripts/ingest-notebooklm-case.mjs` |
-| **04 (Phụ)** | [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) | **Trích Xuất Từ Điển Triệu Chứng Cụ Thể Của Bệnh**<br>• Trích xuất 100% triệu chứng cơ năng, thực thể, cận lâm sàng, cảnh báo<br>• Phân loại chuẩn xác vào 12 tệp hệ cơ quan (`symptoms/*.json`)<br>• Cấu hình quy tắc tự suy định lượng `map` từ sinh hiệu/xét nghiệm | **JSON** | Lưu tạm ra file JSON ➔ Tự động nạp bằng:<br>`node tools/scripts/ingest-disease-symptoms.mjs <file.json>`<br><br>*Tự động phân loại, lọc trùng & đồng bộ Master Dictionary.* |
-| **05 (Kho Tri Thức)** | [`05-prompt-trich-xuat-hoi-chung.txt`](05-prompt-trich-xuat-hoi-chung.txt) | **Trích Xuất Hội Chứng Lâm Sàng Master (Syndrome Vault)**<br>• Gom cụm triệu chứng thành Hội chứng kinh điển (VD: HC Suy tế bào gan, HC Tăng áp cửa, HC Vàng da)<br>• Cơ chế bệnh sinh, Tiêu chuẩn xác định, Chẩn đoán phân biệt, Hạt ngọc lâm sàng<br>• Liên kết 2 chiều với các bệnh lý liên quan (`benhLienQuan`) | **JSON** | Lưu vào:<br>`src/content/docspace/data/syndromes/<chuyen_khoa>/<id>.json`<br><br>*Tự động cập nhật Registry:*<br>`node tools/scripts/build-syndrome-registry.mjs` |
+| **01** | [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) | **Master Phác Đồ Phân Nhánh Lâm Sàng & Đa Phương Án Điều Trị**<br>• Cấu hình 6 trục phân nhánh lâm sàng (`severity`, `phenotype`, `triage_score`, `treatment_step`, `stage`, `comorbidity`)<br>• Phác đồ chi tiết từng nhánh (Bảng 4 cột `timelinePhases`, 6 đầu mục)<br>• **Mở rộng toàn diện kháng sinh & thuốc**: Kháng sinh ưu tiên hàng 1, phương án thay thế (dị ứng/kháng thuốc), phối hợp, chỉnh liều eGFR, xuống thang IV-to-PO<br>• Cảnh báo ranh giới, Chống chỉ định, Tương tác thuốc DDI | **JSON** | Lưu vào:<br>`src/content/docspace/data/enriched/<slug>.json`<br><br>*Tự động đồng bộ bằng lệnh:*<br>`node tools/scripts/sync-clinical-db.mjs` |
+| **02** | [`02-prompt-tieu-chuan-chan-doan-cdss.txt`](02-prompt-tieu-chuan-chan-doan-cdss.txt)<br>*(kèm [`02-prompt-ca-mau-va-trong-so.txt`](02-prompt-ca-mau-va-trong-so.txt))* | **Bộ Tiêu Chuẩn Chẩn Đoán Xác Định, Ma Trận CDSS & Ca Mẫu**<br>• **Khối 1: Tiêu chuẩn Chẩn đoán**: Tiêu chuẩn vàng `goldStandard`, quy tắc chẩn đoán `criteriaRule` (bắt buộc, chính, phụ) và mảng `criteria[]` định lượng<br>• **Khối 2: Ma trận trọng số CDSS**: Phân tầng vai trò (`dt`: đặc hiệu, `gy`: gợi ý, `ht`: hỗ trợ, `loaitru`: loại trừ)<br>• **Khối 3: Ca lâm sàng mẫu Bước 1**: Đầy đủ sinh hiệu, xét nghiệm, triệu chứng chọn trước để thử nghiệm CDSS | **JSON** | 1. Tiêu chuẩn CĐ: Nạp vào `src/content/docspace/data/enriched/<slug>.json` hoặc Kho Chẩn Đoán<br>2. Trọng số: `src/content/knowledge-vault/data/diseases/<chuyen_khoa>.json`<br>3. Ca mẫu: `src/content/knowledge-vault/data/sample-clinical-cases.json` |
+| **03** | [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) | **Hồ Sơ Ca Bệnh Thực Chiến SOAP & Hạt Ngọc Lâm Sàng**<br>• Bác sĩ chủ biên: `authorDoctor: "BS. YooDong"`<br>• Tiêu đề (`title`): Ngắn gọn chuẩn xác tên bệnh lý (VD: "Sốt xuất huyết Dengue", "Sốt thương hàn")<br>• 4 Hạt ngọc lâm sàng (Pearls & Pitfalls), Bảng đặt vấn đề 3 tầng (PGS.TS Hoàng Văn Sĩ)<br>• **Mục 4 Plan mở rộng toàn diện kháng sinh & điều trị**: Phương án lựa chọn 1, phương án thay thế khi dị ứng/nguy cơ kháng thuốc, phối hợp, chỉnh liều eGFR, tiêu chuẩn xuống thang IV-to-PO | **Markdown** | **Cách 1 (Nhanh nhất):**<br>Mở Web DocSpace ➔ Bấm nút **"Nạp ca từ NotebookLM"** trên Header ➔ Dán Markdown vào.<br><br>**Cách 2 (Lưu vĩnh viễn):**<br>Lưu file `src/content/docspace/data/ba/soap-<slug>-01.md`<br>Chạy `node tools/scripts/ingest-notebooklm-case.mjs` |
+| **04** | [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) | **Bộ Trích Xuất Từ Điển Triệu Chứng 12 Hệ Cơ Quan & Hội Chứng Liên Quan**<br>• Trích xuất 100% triệu chứng cơ năng, thực thể, cận lâm sàng, tiền căn, dịch tễ<br>• Phân loại chuẩn xác vào 12 tệp hệ cơ quan (`symptoms/*.json`)<br>• Cấu hình quy tắc tự suy định lượng `map` từ sinh hiệu/xét nghiệm<br>• **Tích hợp Hội chứng lâm sàng (Prompt 05)**: Xuất kèm theo hội chứng lâm sàng đặc trưng (`syndromes`), không cần chạy prompt rời rạc! | **JSON** | Lưu tạm ra file JSON ➔ Tự động nạp bằng:<br>`node tools/scripts/ingest-disease-symptoms.mjs <file.json>`<br><br>*Tự động phân loại, lọc trùng & đồng bộ Master Dictionary.* |
+| **05** | [`05-prompt-trich-xuat-hoi-chung.txt`](05-prompt-trich-xuat-hoi-chung.txt) | **Trích Xuất Hội Chứng Lâm Sàng Độc Lập (Syndrome Vault)**<br>• Dùng khi cần biên soạn hội chứng kinh điển độc lập (VD: HC Thận hư, HC Suy tế bào gan...)<br>• Cơ chế bệnh sinh, Tiêu chuẩn xác định, Chẩn đoán phân biệt, Hạt ngọc lâm sàng | **JSON** | Lưu vào:<br>`src/content/docspace/data/syndromes/<chuyen_khoa>/<id>.json`<br><br>*Tự động cập nhật Registry:*<br>`node tools/scripts/build-syndrome-registry.mjs` |
 
 ---
 
-## 🧭 3. HƯỚNG DẪN BIÊN SOẠN BỆNH LÝ MỚI (CHO 100+ BỆNH LÝ)
+## 🧭 3. HƯỚNG DẪN BIÊN SOẠN BỆNH LÝ MỚI TINH GỌN
 
-Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất huyết Dengue, Suy tim cấp, Đợt cấp COPD, Viêm ruột thừa, Nhồi máu cơ tim, Sốc phản vệ...):
+Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất huyết Dengue, Sốt thương hàn, Suy tim cấp, Viêm phổi mắc phải cộng đồng...):
 
 ### 🔹 Bước 1: Mở NotebookLM & Chọn Tài Liệu Nguồn
 1. Tải lên NotebookLM các tài liệu chuẩn (Hướng dẫn Bộ Y Tế, Phác đồ Bệnh viện Bạch Mai / Chợ Rẫy, Guidelines quốc tế).
 2. Tải thêm file `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` (nếu cần đối soát ID triệu chứng có sẵn).
 
-### 🔹 Bước 2 (Tùy chọn): Chạy Prompt Phụ 04 — Nạp Từ Điển Triệu Chứng Đặc Thù
-*Nếu bệnh lý này có các dấu hiệu lâm sàng, nghiệm pháp hoặc chỉ số cận lâm sàng đặc thù chưa có trong hệ thống:*
+### 🔹 Bước 2 (Nếu bệnh có triệu chứng / hội chứng mới): Chạy Prompt 04
 - Dán [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) vào NotebookLM.
-- Lưu kết quả JSON ra file tạm (ví dụ `tools/scratch/symptoms_moi.json`).
-- Chạy lệnh 1-chạm: `node tools/scripts/ingest-disease-symptoms.mjs tools/scratch/symptoms_moi.json`.
+- Nhận về khối JSON gồm cả 12 hệ cơ quan và Hội chứng liên quan.
+- Chạy lệnh nạp 1-chạm: `node tools/scripts/ingest-disease-symptoms.mjs <file.json>`.
 
-### 🔹 Bước 3: Chạy Tuần Tự Bộ 3 Prompt Cốt Lõi
-1. **Chạy Prompt 01**:
-   - Mở [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt).
-   - Điền 4 dòng thông số ở đầu (Tên bệnh, Chuyên khoa, ICD-10, Trục phân nhánh).
-   - Dán vào NotebookLM ➔ Nhận về khối JSON ➔ Lưu thành `src/content/docspace/data/enriched/<slug>.json`.
-2. **Chạy Prompt 02**:
-   - Mở [`02-prompt-ca-mau-va-trong-so.txt`](02-prompt-ca-mau-va-trong-so.txt).
-   - Dán vào NotebookLM ➔ Nhận về 2 khối JSON (Ca mẫu & Trọng số) ➔ Cập nhật vào hệ thống.
-3. **Chạy Prompt 03**:
-   - Mở [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt).
-   - Dán vào NotebookLM ➔ Nhận về bài viết Markdown SOAP ➔ Mở DocSpace nhấn nút **"Nạp ca từ NotebookLM"** để nạp 1-chạm!
+### 🔹 Bước 3: Chạy Bộ 3 Prompt Cốt Lõi
+1. **Chạy Prompt 02 (Tiêu chuẩn chẩn đoán & Ma trận CDSS & Ca mẫu)**:
+   - Dán [`02-prompt-tieu-chuan-chan-doan-cdss.txt`](02-prompt-tieu-chuan-chan-doan-cdss.txt) vào NotebookLM.
+   - Nhận về Tiêu chuẩn vàng, Quy tắc chẩn đoán, Tiêu chuẩn định lượng, Ma trận trọng số CDSS `dd` và Ca mẫu.
+2. **Chạy Prompt 01 (Phác đồ phân nhánh & Điều trị đa phương án)**:
+   - Dán [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) vào NotebookLM.
+   - Nhận về Phác đồ phân nhánh 6 trục, Bảng 4 cột timeline, và danh mục thuốc (mở rộng đầy đủ kháng sinh lựa chọn 1, thay thế, phối hợp, chỉnh liều eGFR).
+   - Lưu vào `src/content/docspace/data/enriched/<slug>.json`.
+3. **Chạy Prompt 03 (Hồ sơ ca thực chiến SOAP)**:
+   - Dán [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) vào NotebookLM.
+   - Nhận về bài viết Markdown SOAP chuẩn (`authorDoctor: "BS. YooDong"`, title ngắn gọn, Plan mở rộng kháng sinh & điều trị).
+   - Mở DocSpace nhấn nút **"Nạp ca từ NotebookLM"** để nạp 1-chạm!
 
 ### 🔹 Bước 4: Đồng Bộ & Kiểm Tra CSDL
 Chạy lệnh kiểm định tự động từ terminal để xác nhận tính toàn vẹn 100%:

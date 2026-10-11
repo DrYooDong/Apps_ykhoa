@@ -63,26 +63,26 @@ Quy chuẩn viết tắt, đơn vị SI & Typography (TUÂN THỦ 100%):
 Định dạng xuất bản (BẮT BUỘC tuân thủ chính xác 100% cú pháp Markdown Frontmatter YAML bên dưới để DocSpace tự động phân tích và nạp vào CSDL):
 
 ---
-title: "Ca lâm sàng [TÊN BỆNH LÝ] ở bệnh nhân [BỐI CẢNH BỆNH NHÂN]"
+title: "[TÊN BỆNH LÝ CHUẨN XÁC, NGẮN GỌN (Ví dụ: Sốt xuất huyết Dengue, Sốt thương hàn, Viêm dạ dày ruột cấp)]"
 caseId: "soap-[SLUG FILE]-01"
 specialty: "[CHUYÊN KHOA]"
 experienceLevel: "[PHÂN LOẠI CA]"
 difficultyRating: [ĐỘ KHÓ]
-authorDoctor: "Hội đồng Khoa học CliniPortal DocSpace"
+authorDoctor: "BS. YooDong"
 icd10:
   - "[MÃ ICD-10]"
 tags:
   - "[CHUYÊN KHOA]"
   - "[TÊN BỆNH LÝ]"
   - "SOAP"
-demographicContext: "[BỐI CẢNH BỆNH NHÂN]"
+demographicContext: "[BỐI CẢNH BỆNH NHÂN (Ví dụ: Nam 24 tuổi, sinh viên, sống tại khu trọ đang có dịch lưu hành)]"
 historyPearls: "⚡ BỆNH SỬ: [1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm thời điểm nguy kịch của bệnh]"
 objectivePitfalls: "⚠️ CẬN LÂM SÀNG & KHÁM: [Dấu hiệu cơ thể hoặc cạm bẫy đọc cận lâm sàng rất dễ bị bỏ sót: ví dụ Lacet âm tính giả khi sốc, hoặc Hct tụt do xuất huyết nội ẩn]"
 diagnosticPearls: "🧠 BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, cơ chế phân định giữa bệnh này với các chẩn đoán cạnh tranh]"
 takeawayLessons: "🎯 ĐIỀU TRỊ: [Khuyến cáo điều trị then chốt, phác đồ dùng thuốc/dịch truyền theo bậc thang, tuyệt đối chống chỉ định thuốc nguy hiểm]"
 sourceReference: "[HƯỚNG DẪN THAM CHIẾU]"
 clinicalContext: "[KHOA PHÒNG TIẾP NHẬN]"
-updated: "2026-10-05"
+updated: "2026-10-11"
 ---
 
 # 🩺 Ca Lâm Sàng: [TÊN BỆNH LÝ]
@@ -206,11 +206,21 @@ Phân định bắt buộc theo 3 tầng ưu tiên chuẩn mực y khoa (Tầng 
 
 ---
 
-### Y lệnh thuốc điều trị chi tiết:
-(Ghi rõ tên thuốc, liều lượng mg/kg hoặc mg/ngày, đường dùng, tần suất, thời điểm dùng và lưu ý chỉnh liều theo eGFR):
-- **[Tên thuốc hạ sốt / Bổ trợ 1]**: [VD: Paracetamol 500 mg] ([Đường uống PO]) — *[01 viên khi sốt ≥ 38.5 °C, cách mỗi 4-6 giờ, tối đa 60 mg/kg/ngày, tuyệt đối không dùng Ibuprofen/Aspirin]*
-- **[Tên dịch truyền 2]**: [VD: Dung dịch Ringer Lactate 500 mL] ([Đường truyền IV]) — *[Truyền tốc độ 6 mL/kg/giờ trong 2 giờ đầu, đánh giá lại Hct và sinh hiệu trước khi giảm nấc xuống 3 mL/kg/h]*
-- **[Tên thuốc 3]**: [VD: Oresol (ORS) gói pha 1 lít nước] ([Đường uống PO]) — *[Uống rải rác trong ngày theo nhu cầu, khoảng 1500 - 2000 mL/ngày]*
+### Y lệnh thuốc điều trị chi tiết & Kháng sinh trị liệu:
+(BẮT BUỘC trích xuất toàn diện từ [HƯỚNG DẪN THAM CHIẾU] — Không chỉ đưa 01 phương án máy móc, mà phải mở rộng đầy đủ các lựa chọn theo phân tầng y khoa):
+
+- **[Kháng sinh trị liệu / Liệu pháp kháng vi sinh vật]**:
+  - *Nếu là bệnh siêu vi / không có chỉ định*: Ghi rõ `[Kháng sinh]`: **KHÔNG CHỈ ĐỊNH** — Nêu rõ lý do (bệnh lý do virus, không có bằng chứng bội nhiễm) và cảnh báo tuyệt đối không lạm dụng kháng sinh để phòng ngừa kháng thuốc.
+  - *Nếu có chỉ định kháng sinh (nhiễm khuẩn)*: Xuất đầy đủ các phương án trong phác đồ tham khảo:
+    + **Phương án ưu tiên hàng đầu (First-line)**: [Tên kháng sinh 1, ví dụ Ceftriaxone 2g / Cefepime 2g / Amoxicillin-Clavulanic 1g] ([Đường dùng IV/PO]) — *[Liều lượng cụ thể (mg/kg hoặc g), khoảng cách liều (q12h/q8h/q24h), tốc độ truyền]*.
+    + **Các phương án thay thế (Alternative Regimens)**: [Tên kháng sinh thay thế, ví dụ Levofloxacin 750mg / Azithromycin 500mg / Vancomycin] ([Đường dùng IV/PO]) — *[Chỉ định khi dị ứng Penicillin/Beta-lactam, hoặc khi nghi ngờ căn nguyên không điển hình / vi khuẩn kháng thuốc (MRSA, Pseudomonas, vi khuẩn sinh ESBL)]*.
+    + **Kháng sinh phối hợp (Combination Therapy)**: [Nếu guideline chỉ định phối hợp, ví dụ Beta-lactam + Macrolide hoặc Ceftriaxone + Metronidazole] — *[Mục đích phối hợp và liều cụ thể]*.
+    + **Hiệu chỉnh liều theo chức năng thận (eGFR)**: *[Ghi rõ quy tắc chỉnh liều nếu eGFR < 50 mL/min hoặc < 30 mL/min]*.
+    + **Thời gian điều trị & Tiêu chuẩn xuống thang (IV-to-PO switch)**: *[Tổng ngày dùng (ví dụ 5-7 ngày) và điều kiện chuyển sang kháng sinh đường uống khi hết sốt ≥ 48h, lâm sàng cải thiện]*.
+
+- **[Liệu pháp hồi sức / Bù dịch / Vận mạch]**: [Tên dịch truyền hoặc thuốc vận mạch] ([Đường IV]) — *[Tốc độ truyền nấc thang (mL/kg/h), đích áp lực động mạch trung bình MAP ≥ 65 mmHg, tiêu chuẩn giảm liều / ngưng dịch để phòng ngừa quá tải thể tích]*.
+- **[Thuốc điều trị triệu chứng & Bổ trợ]**: [Tên thuốc, ví dụ Paracetamol đơn chất, Oresol nhược trương, Thuốc chống nôn, Kẽm...] ([Đường PO/IV]) — *[Liều lượng, khoảng cách dùng, liều tối đa trong 24h, thuốc chống chỉ định tuyệt đối kèm theo]*.
+- **[Thuốc kiểm soát bệnh nền & Đồng mắc]**: [Các thuốc kiểm soát huyết áp, đái tháo đường, suy tim... nếu có, kèm hướng dẫn tạm hoãn hoặc hiệu chỉnh trong đợt cấp]*.
 
 ---
 
