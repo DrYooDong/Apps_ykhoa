@@ -13,6 +13,7 @@ import {
   EXPERIENCE_LEVEL_LABELS,
   SOAP_SPECIALTIES,
   getExperienceLevelConfig,
+  DiseaseGroupItem,
 } from '../../data/soapSeedData.ts';
 
 interface SoapListViewProps {
@@ -21,6 +22,10 @@ interface SoapListViewProps {
   onSelectCase: (id: string) => void;
   selectedSpecialty: string;
   setSelectedSpecialty: (spec: string) => void;
+  selectedDisease: string;
+  setSelectedDisease: (disease: string) => void;
+  availableDiseases: DiseaseGroupItem[];
+  totalSpecialtyCases: number;
   searchKeyword: string;
   setSearchKeyword: (kw: string) => void;
   selectedLevel: string;
@@ -39,6 +44,10 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
   onSelectCase,
   selectedSpecialty,
   setSelectedSpecialty,
+  selectedDisease,
+  setSelectedDisease,
+  availableDiseases,
+  totalSpecialtyCases,
   searchKeyword,
   setSearchKeyword,
   selectedLevel,
@@ -106,6 +115,63 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Row 1.5: Disease / Clinical Problem Filter Chips */}
+      {availableDiseases.length > 0 && (
+        <div className="flex items-center gap-2 pb-3 border-b border-slate-100 overflow-x-auto no-scrollbar touch-pan-x">
+          <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5 shrink-0">
+            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <span className="whitespace-nowrap">Bệnh / Vấn đề:</span>
+          </span>
+
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 flex-1 touch-pan-x scroll-smooth">
+            <button
+              type="button"
+              onClick={() => setSelectedDisease('all')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5 active:scale-95 ${
+                selectedDisease === 'all'
+                  ? 'bg-blue-600 text-white font-semibold shadow-xs'
+                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <span>Tất cả</span>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                  selectedDisease === 'all'
+                    ? 'bg-white/25 text-white'
+                    : 'bg-slate-200 text-slate-600'
+                }`}
+              >
+                {totalSpecialtyCases}
+              </span>
+            </button>
+
+            {availableDiseases.map((d) => (
+              <button
+                key={d.name}
+                type="button"
+                onClick={() => setSelectedDisease(d.name)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 flex items-center gap-1.5 active:scale-95 ${
+                  selectedDisease === d.name
+                    ? 'bg-blue-600 text-white font-semibold shadow-xs'
+                    : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700 hover:text-slate-900'
+                }`}
+              >
+                <span>{d.name}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                    selectedDisease === d.name
+                      ? 'bg-white/25 text-white'
+                      : 'bg-slate-200 text-slate-600'
+                  }`}
+                >
+                  {d.count}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Row 2: Secondary Filters & Sort Controls */}
       <div className="flex flex-wrap items-center justify-between gap-3 text-xs">

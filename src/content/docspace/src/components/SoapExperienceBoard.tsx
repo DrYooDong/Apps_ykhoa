@@ -21,6 +21,11 @@ import {
   getVaultSoapExperiences,
   getSoapSyncStats,
 } from '../lib/soapApi.ts';
+import {
+  matchesSoapSpecialty,
+  detectCaseDisease,
+  DiseaseGroupItem,
+} from '../data/soapSeedData.ts';
 import { exportSoapCaseToMarkdown } from '../lib/vaultBridge.ts';
 
 // Modular Sub-components
@@ -84,6 +89,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
 
   // Filters & Sorting State
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>('Tất cả chuyên khoa');
+  const [selectedDisease, setSelectedDisease] = useState<string>('all');
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<number>(0);
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'views' | 'favorite'>('newest');
@@ -97,12 +103,36 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
   const [mobileTab, setMobileTab] = useState<'list' | 'detail'>('list');
   const [showMobileStats, setShowMobileStats] = useState<boolean>(false);
 
+  // Khi đổi chuyên khoa -> tự động reset Bệnh / Vấn đề về 'all'
+  const handleSelectSpecialty = (spec: string) => {
+    setSelectedSpecialty(spec);
+    setSelectedDisease('all');
+  };
+
+  // Lọc danh sách ca thuộc chuyên khoa hiện tại để trích xuất danh sách Bệnh / Vấn đề
+  const specialtyCases = useMemo(() => {
+    return experiences.filter((c) => matchesSoapSpecialty(selectedSpecialty, c.specialty, c.tags));
+  }, [experiences, selectedSpecialty]);
+
+  // Danh sách các mặt bệnh / vấn đề lâm sàng kèm số lượng ca thực tế
+  const availableDiseases = useMemo<DiseaseGroupItem[]>(() => {
+    const map = new Map<string, number>();
+    specialtyCases.forEach((c) => {
+      const dName = detectCaseDisease(c);
+      map.set(dName, (map.get(dName) || 0) + 1);
+    });
+    return Array.from(map.entries())
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'vi'));
+  }, [specialtyCases]);
+
   // Filtered & Sorted Cases
   const filteredCases = useMemo(() => {
     const q = searchKeyword.trim().toLowerCase();
     let result = experiences.filter((c) => {
-      const matchSpecialty =
-        selectedSpecialty === 'Tất cả chuyên khoa' || c.specialty === selectedSpecialty;
+      const matchSpecialty = matchesSoapSpecialty(selectedSpecialty, c.specialty, c.tags);
+      const matchDisease =
+        selectedDisease === 'all' || detectCaseDisease(c) === selectedDisease;
       const matchLevel = selectedLevel === 'all' || c.experienceLevel === selectedLevel;
       const matchDiff =
         selectedDifficulty === 0 || (c.difficultyRating || 3) === selectedDifficulty;
@@ -115,7 +145,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
         c.s.chiefComplaint.toLowerCase().includes(q) ||
         (c.clinicalContext && c.clinicalContext.toLowerCase().includes(q));
 
-      return matchSpecialty && matchLevel && matchDiff && matchQuery;
+      return matchSpecialty && matchDisease && matchLevel && matchDiff && matchQuery;
     });
 
     // Sorting
@@ -131,7 +161,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
     }
 
     return result;
-  }, [experiences, selectedSpecialty, selectedLevel, selectedDifficulty, searchKeyword, sortBy, favorites]);
+  }, [experiences, selectedSpecialty, selectedDisease, selectedLevel, selectedDifficulty, searchKeyword, sortBy, favorites]);
 
   // Current selected case
   const currentCase = useMemo(() => {
@@ -407,7 +437,11 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
             selectedCaseId={selectedCaseId}
             onSelectCase={handleSelectCase}
             selectedSpecialty={selectedSpecialty}
-            setSelectedSpecialty={setSelectedSpecialty}
+            setSelectedSpecialty={handleSelectSpecialty}
+            selectedDisease={selectedDisease}
+            setSelectedDisease={setSelectedDisease}
+            availableDiseases={availableDiseases}
+            totalSpecialtyCases={specialtyCases.length}
             searchKeyword={searchKeyword}
             setSearchKeyword={setSearchKeyword}
             selectedLevel={selectedLevel}
