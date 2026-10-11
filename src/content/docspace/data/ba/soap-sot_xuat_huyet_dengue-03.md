@@ -1,5 +1,5 @@
 ---
-title: "Sốt xuất huyết Dengue nặng, Thể tổn thương gan cấp nặng"
+title: "Sốt xuất huyết Dengue nặng - Thể tổn thương gan cấp nặng"
 caseId: "soap-sot_xuat_huyet_dengue-03"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"

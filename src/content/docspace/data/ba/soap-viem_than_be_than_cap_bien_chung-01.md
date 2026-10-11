@@ -1,6 +1,6 @@
 ---
-title: "Viêm thận bể thận cấp có biến chứng Urosepsis và Ứ mủ thận"
-caseId: "soap-viem_than_be_than_cap_bien_chung_urosepsis-01"
+title: "Viêm thận bể thận cấp có biến chứng"
+caseId: "soap-viem_than_be_than_cap_bien_chung-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 5

@@ -1,5 +1,5 @@
 ---
-title: "Sốc nhiễm khuẩn (Septic Shock) từ tiêu điểm Viêm đài bể thận cấp trên nền Đái tháo đường"
+title: "Sốc nhiễm khuẩn từ đường tiết niệu"
 caseId: "soap-soc_nhiem_khuan-01"
 specialty: "Hồi sức tích cực"
 experienceLevel: "advanced"

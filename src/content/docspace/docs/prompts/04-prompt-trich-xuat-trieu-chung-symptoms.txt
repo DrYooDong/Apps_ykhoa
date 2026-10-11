@@ -1,21 +1,26 @@
 ================================================================================
-CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 04: TRÍCH XUẤT TỪ ĐIỂN TRIỆU CHỨNG & HỘI CHỨNG
-(DISEASE-SPECIFIC SYMPTOMS & CLINICAL SYNDROMES EXTRACTOR — EBM 2026)
+CLINIPORTAL DOCSPACE — PROMPT 04: TRÍCH XUẤT TỪ ĐIỂN TRIỆU CHỨNG NGUYÊN TỬ (12 HỆ CƠ QUAN)
+(ATOMIC CLINICAL SYMPTOMS & PARACLINICAL SIGNS EXTRACTOR — CHUẨN EBM 2026)
 ================================================================================
 
-[MỤC TIÊU CỐT LÕI — TÍCH HỢP 2 TRONG 1]
-Prompt này được tối ưu hóa để giải quyết trọn vẹn cả 2 nhiệm vụ trong 01 lượt chạy duy nhất từ NotebookLM:
-1. TRÍCH XUẤT TỪ ĐIỂN TRIỆU CHỨNG (Symptoms) của bệnh lý:
-   - Bóc tách 100% triệu chứng cơ năng (cn), thực thể (tt), cận lâm sàng (cls), tiền căn (tc) và dịch tễ (dth).
-   - Tự động phân loại vào 12 tệp hệ cơ quan chuẩn của CliniPortal (`symptomsByFile`).
-   - Cung cấp từ khóa (`tuKhoa`), biến thể lâm sàng (`aliases`), và quy tắc tự suy định lượng (`map`) 
-     từ Sinh hiệu và Cận lâm sàng cho động cơ CDSS Bước 3.
+[MỤC TIÊU CỐT LÕI]
+Prompt này CHUYÊN BIỆT HÓA 100% để trích xuất TOÀN BỘ các triệu chứng nguyên tử (Atomic Symptoms)
+của một bệnh lý từ Guidelines / Y văn y khoa (Bộ Y tế, WHO, KDIGO, GINA, Gold Standards) vào 
+Từ điển Triệu chứng 12 Hệ Cơ Quan của DocSpace:
+1. Bóc tách toàn diện 100% các triệu chứng:
+   - Triệu chứng cơ năng (cn): Cảm giác của người bệnh (đau đầu, buồn nôn, mệt mỏi, khó thở...)
+   - Triệu chứng thực thể (tt): Thăm khám lâm sàng (gan to, lách to, lacet (+), phù mềm, rale...)
+   - Dấu hiệu cảnh báo (warning signs) / Dấu hiệu báo động đỏ lâm sàng.
+   - Ngưỡng cận lâm sàng định lượng & định tính (cls): Xét nghiệm máu, vi sinh, CĐHA.
+   - Tiền căn bệnh nền (tc): Tiền sử bệnh lý, thuốc đã dùng, cơ địa đặc biệt.
+   - Yếu tố dịch tễ (dth): Vùng lưu hành, mùa dịch, tiếp xúc nguồn lây, vector truyền bệnh.
+   - Triệu chứng loại trừ then chốt (loaitru / negated): Các dấu hiệu âm tính có giá trị để phân định bệnh.
+2. Tự động phân bổ vào 12 tệp hệ cơ quan chuẩn của CliniPortal (`symptomsByFile`).
+3. Cung cấp từ khóa (`tuKhoa`), biến thể lâm sàng (`aliases`), và quy tắc tự suy định lượng (`map`) 
+   từ Sinh hiệu và Cận lâm sàng cho động cơ suy luận CDSS Bước 3.
 
-2. TRÍCH XUẤT HỘI CHỨNG LÂM SÀNG LIÊN QUAN (Clinical Syndromes — Tích hợp Prompt 05):
-   - Gom cụm các triệu chứng thành các Hội chứng kinh điển/đặc trưng của bệnh (Ví dụ: Hội chứng Thoát huyết tương, 
-     Hội chứng Suy tế bào gan, Hội chứng Suy hô hấp cấp, Hội chứng Đông đặc phổi...).
-   - Bao gồm cơ chế bệnh sinh (Pathophysiology), ngưỡng xác lập, và chẩn đoán phân biệt.
-   -> GIÚP BẠN KHÔNG CẦN CHẠY THÊM PROMPT LẺ TẺ MÀ VẪN CÓ ĐỦ TRIỆU CHỨNG LẪN HỘI CHỨNG!
+👉 Dữ liệu sau khi xuất ra sẽ được nạp tự động 1-chạm vào CSDL bằng công cụ:
+   node tools/scripts/ingest-disease-symptoms.mjs <duong-dan-file.json>
 
 --------------------------------------------------------------------------------
 [HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
@@ -39,28 +44,41 @@ Mỗi triệu chứng trích xuất PHẢI được gán đúng vào 1 trong 12 
 9. noi-tiet.json       -> Hệ Nội tiết & Chuyển hóa (Hạ/tăng đường huyết, khát nhiều, sụt cân, bướu giáp...)
 10. huyet-hoc.json     -> Huyết học & Đông máu (Hội chứng xuất huyết, thiếu máu, hạch to, INR kéo dài, D-dimer...)
 11. san-phu-khoa.json  -> Sản phụ khoa (Rong kinh, rong huyết, đau hạ vị lệch bên, mất kinh, thai kỳ...)
-12. tien-can.json      -> Tiền căn & Dịch tễ (Sống tại vùng ổ dịch, tiền sử hen/COPD/ĐTĐ, dị ứng thuốc...)
+12. tien-can.json      -> Tiền căn & Dịch tễ (Sống tại vùng ổ dịch, tiền sử hen/COPD/ĐTĐ, dị ứng thuốc, phơi nhiễm...)
 
 --------------------------------------------------------------------------------
 [QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
-1. MÃ ID CHUẨN:
+
+1. MÃ ID CHUẨN (SNAKE_CASE):
    - Viết thường, không dấu, dùng dấu gạch dưới `_` (snake_case).
    - Ví dụ: "dau_bung_vung_gan", "tc_co_dac_mau_hct_tang_tren_20_phan_tram", "gan_to_duoi_bo_suon".
-   - ID hội chứng bắt đầu bằng `hc_`: "hc_canh_bao_dengue", "hc_suy_te_bao_gan", "hc_dong_dac_phoi".
-2. TÊN HIỂN THỊ ("ten"):
+   - Tuyệt đối không dùng dấu cách, gạch ngang `-` hay ký tự đặc biệt.
+
+2. TÊN HIỂN THỊ ("ten") TRỰC DIỆN & Y HỌC:
    - Viết tiếng Việt chuẩn y khoa, có dấu, súc tích, chuyên nghiệp.
-   - Nếu là xét nghiệm/sinh hiệu có ngưỡng chẩn đoán, ghi rõ ngưỡng trong ngoặc.
-   - TUYỆT ĐỐI BỎ TIỀN TỐ THỪA: Không thêm các cụm như "Cận lâm sàng: ", "Dấu hiệu cảnh báo: ", "Xét nghiệm: ".
-3. TỰ SUY ĐỊNH LƯỢNG ("map"):
-   - Khai báo trường: "map": { "fld": "[MÃ_TRƯỜNG]", "op": "[>= | > | <= | <]", "val": [GIÁ_TRỊ_SỐ] }
-   - Sinh hiệu: "vNhiet", "vMach", "vHATT", "vHATTr", "vTho", "vSpo2".
-   - Xét nghiệm: "lBC", "lTC", "lHct", "lGlu", "lTrop", "lAST", "lALT", "lCre", "lCRP", "lLactate"...
-   - Nếu là triệu chứng định tính khám lâm sàng: "map": null.
-4. QUY CHUẨN VIẾT TẮT, TOÁN TỬ & ZERO HTML ENTITIES:
+   - Nếu là xét nghiệm/sinh hiệu có ngưỡng chẩn đoán, ghi rõ ngưỡng trong ngoặc:
+     Ví dụ: "Cô đặc máu (Hematocrit tăng ≥ 20% so với trị số ban đầu hoặc Hct > 45%)", "Tiểu cầu giảm sâu dốc đứng < 100 G/L".
+   - TUYỆT ĐỐI BỎ TIỀN TỐ THỪA: Không thêm các cụm như "Cận lâm sàng: ", "Dấu hiệu cảnh báo: ", "Xét nghiệm: ", "[Lâm sàng]: ".
+
+3. QUY TẮC TỰ SUY ĐỊNH LƯỢNG ("map"):
+   - Dùng để động cơ CDSS tự động kích hoạt triệu chứng khi bác sĩ nhập Sinh hiệu & Xét nghiệm tại Bước 1:
+     "map": { "fld": "[MÃ_TRƯỜNG]", "op": "[>= | > | <= | <]", "val": [GIÁ_TRỊ_SỐ] }
+   - Các mã trường sinh hiệu: "vNhiet", "vMach", "vHATT", "vHATTr", "vTho", "vSpo2".
+   - Các mã trường xét nghiệm: "lBC" (Bạch cầu G/L), "lTC" (Tiểu cầu G/L), "lHct" (Hematocrit %), 
+     "lGlu" (Đường huyết mmol/L), "lTrop" (Troponin ng/L), "lAST" (U/L), "lALT" (U/L), 
+     "lCre" (µmol/L), "lCRP" (mg/L), "lLactate" (mmol/L).
+   - Nếu là triệu chứng định tính thăm khám hoặc hỏi bệnh: "map": null.
+
+4. TỪ KHÓA & ALIASES LÂM SÀNG PHONG PHÚ:
+   - "tuKhoa": Các cụm từ tìm kiếm chính (không dấu, có dấu, thuật ngữ tiếng Anh/Latinh).
+   - "aliases": Các cách diễn đạt thực tế trong hồ sơ bệnh án hoặc từ ngữ người bệnh mô tả.
+
+5. QUY CHUẨN VIẾT TẮT, ĐƠN VỊ SI & ZERO HTML ENTITIES:
    - Viết tắt chuẩn: Hct, PLT, WBC, AST, ALT, SpO₂, CRT, GCS, eGFR, RT-PCR, NS1 Ag.
-   - Dùng toán tử chuẩn: ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
+   - Toán tử & đơn vị chuẩn: ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
    - Zero HTML Entities: Tuyệt đối không dùng &lt;, &gt;, &quot;, &amp;. Viết trực tiếp <, >, ".
-5. ĐẦU RA:
+
+6. ĐẦU RA DUY NHẤT:
    Xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
 
 --------------------------------------------------------------------------------
@@ -69,8 +87,7 @@ Mỗi triệu chứng trích xuất PHẢI được gán đúng vào 1 trong 12 
 "Bạn là Chuyên gia Tin học Y tế (Clinical Informatician) và Bác sĩ Trưởng khoa Lâm sàng.
 
 Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy trích xuất:
-1. TOÀN BỘ các triệu chứng cơ năng, thực thể, cận lâm sàng then chốt, dấu hiệu cảnh báo và tiền căn/dịch tễ liên quan đến bệnh lý, phân bổ vào 12 tệp hệ cơ quan của CliniPortal ('symptomsByFile').
-2. CÁC HỘI CHỨNG LÂM SÀNG ĐẶC TRƯNG mà bệnh lý này biểu hiện hoặc gây ra ('syndromes').
+TOÀN BỘ các triệu chứng cơ năng, thực thể, cận lâm sàng then chốt, dấu hiệu cảnh báo, tiền căn và dịch tễ liên quan đến bệnh lý [TÊN BỆNH LÝ], phân bổ vào 12 tệp hệ cơ quan của CliniPortal ('symptomsByFile').
 
 Thông số bệnh lý:
 - Tên bệnh: [TÊN BỆNH LÝ]
@@ -79,7 +96,7 @@ Thông số bệnh lý:
 - Slug: [SLUG BỆNH LÝ]
 - Tài liệu nguồn: [HƯỚNG DẪN THAM CHIẾU]
 
-Yêu cầu xuất bản:
+Yêu cầu cấu trúc xuất bản:
 Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài khối code) theo cấu trúc chuẩn bên dưới:
 "
 
@@ -91,10 +108,8 @@ Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài kh�
   "benhLy": "[TÊN BỆNH LÝ: ví dụ Sốt xuất huyết Dengue]",
   "slug": "[SLUG BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
   "icd10": "[MÃ ICD-10: ví dụ A97]",
+  "chuyenKhoa": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
 
-  // ============================================================================
-  // KHỐI 1: TỪ ĐIỂN TRIỆU CHỨNG PHÂN LOẠI 12 HỆ CƠ QUAN
-  // ============================================================================
   "symptomsByFile": {
     "toan-than.json": [
       {
@@ -103,19 +118,29 @@ Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài kh�
         "nhom": "Toàn thân",
         "loai": ["cn", "tt"],
         "tuKhoa": ["sốt cao", "sốt đột ngột", "sốt liên tục", "sốt dengue", "sot duoi 7 ngay"],
-        "aliases": ["sốt cao liên tục", "sốt cấp tính", "sốt khó hạ"],
+        "aliases": ["sốt cao liên tục", "sốt cấp tính", "sốt khó hạ", "sốt cao 39-40 độ"],
         "map": { "fld": "vNhiet", "op": ">=", "val": 38.5 }
       },
       {
         "id": "dau_co",
-        "ten": "Đau mỏi cơ, đau nhức khớp và mình mẩy",
+        "ten": "Nhức mỏi cơ, đau nhức khớp và mình mẩy",
         "nhom": "Toàn thân",
         "loai": ["cn"],
         "tuKhoa": ["đau cơ", "đau khớp", "nhức mỏi", "myalgia", "arthralgia"],
         "aliases": ["đau mình mẩy", "nhức mỏi toàn thân", "đau nhức xương khớp"],
         "map": null
+      },
+      {
+        "id": "nhuc_hai_ho_mat",
+        "ten": "Đau nhức hai hốc mắt (Retro-orbital pain)",
+        "nhom": "Toàn thân",
+        "loai": ["cn"],
+        "tuKhoa": ["đau hốc mắt", "nhức hốc mắt", "retro-orbital pain"],
+        "aliases": ["đau sau hốc mắt", "nhức mắt khi liếc"],
+        "map": null
       }
     ],
+
     "tieu-hoa.json": [
       {
         "id": "dau_hieu_canh_bao_dau_bung_gan_non_oi",
@@ -123,7 +148,7 @@ Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài kh�
         "nhom": "Tiêu hóa",
         "loai": ["cn", "tt"],
         "tuKhoa": ["đau bụng gan", "đau hạ sườn phải", "nôn ói nhiều", "dấu hiệu cảnh báo"],
-        "aliases": ["đau HSP liên tục", "nôn ói >= 3 lần/ngày", "nôn nhiều"],
+        "aliases": ["đau HSP liên tục", "nôn ói >= 3 lần/1h", "nôn ói >= 4 lần/6h", "nôn ói nhiều"],
         "map": null
       },
       {
@@ -131,121 +156,174 @@ Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài kh�
         "ten": "Gan to > 2cm dưới bờ sườn kèm ấn đau tức",
         "nhom": "Tiêu hóa",
         "loai": ["tt"],
-        "tuKhoa": ["gan to", "bờ sườn", "gan mấp mé", "ấn đau vùng gan"],
-        "aliases": ["gan to quá bờ sườn", "hepatomegaly"],
+        "tuKhoa": ["gan to", "bờ sườn", "gan mấp mé", "ấn đau vùng gan", "hepatomegaly"],
+        "aliases": ["gan to quá bờ sườn", "gan lớn đau", "gan to > 2cm"],
+        "map": null
+      },
+      {
+        "id": "non_ra_mau_phan_den",
+        "ten": "Xuất huyết tiêu hóa: Nôn ra máu / Đi cầu phân đen",
+        "nhom": "Tiêu hóa",
+        "loai": ["cn", "tt"],
+        "tuKhoa": ["nôn ra máu", "tiêu phân đen", "hematemesis", "melena", "xuất huyết tiêu hóa"],
+        "aliases": ["đi tiêu phân đen hắc ín", "ó ra máu đốm đen", "xuất huyết tiêu hóa trên"],
         "map": null
       }
     ],
+
     "can-lam-sang.json": [
       {
         "id": "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
-        "ten": "Cô đặc máu (Hct tăng ≥ 20% so với trị số ban đầu hoặc Hct > 45%)",
+        "ten": "Cô đặc máu (Hematocrit tăng ≥ 20% so với trị số ban đầu hoặc Hct > 45%)",
         "nhom": "Cận lâm sàng",
         "loai": ["cls"],
         "tuKhoa": ["cô đặc máu", "hct tăng", "hematocrit tăng", "thoát huyết tương"],
-        "aliases": ["hct tăng dốc đứng", "hct > 45%", "máu cô đặc"],
+        "aliases": ["hct tăng dốc đứng", "hct > 45%", "máu cô đặc", "hemoconcentration"],
         "map": { "fld": "lHct", "op": ">=", "val": 45 }
       },
       {
         "id": "tc_giam_tieu_cau_duoi_100_g_l",
-        "ten": "Tiểu cầu giảm nhanh dốc đứng < 100 G/L",
+        "ten": "Tiểu cầu giảm sâu dốc đứng < 100 G/L (< 100.000/mm³)",
         "nhom": "Cận lâm sàng",
         "loai": ["cls"],
-        "tuKhoa": ["tiểu cầu giảm", "giảm tiểu cầu", "plt tụt", "plt < 100"],
-        "aliases": ["tiểu cầu tụt dốc", "tiểu cầu < 100", "thrombocytopenia"],
+        "tuKhoa": ["tiểu cầu giảm", "giảm tiểu cầu", "plt tụt", "plt < 100", "thrombocytopenia"],
+        "aliases": ["tiểu cầu tụt dốc", "tiểu cầu < 100 G/L", "thrombocytopenia dốc đứng"],
         "map": { "fld": "lTC", "op": "<=", "val": 100 }
       },
       {
         "id": "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh",
-        "ten": "Xét nghiệm kháng nguyên NS1 hoặc RT-PCR Dengue dương tính",
+        "ten": "Kháng nguyên NS1 hoặc RT-PCR Dengue RNA dương tính",
         "nhom": "Cận lâm sàng",
         "loai": ["cls"],
-        "tuKhoa": ["ns1", "pcr dengue", "kháng nguyên ns1", "ns1 duong tinh"],
-        "aliases": ["ns1 ag (+)", "dengue rna (+)", "xét nghiệm ns1"],
+        "tuKhoa": ["ns1", "pcr dengue", "kháng nguyên ns1", "ns1 duong tinh", "rt-pcr"],
+        "aliases": ["ns1 ag (+)", "dengue rna (+)", "test nhanh ns1 (+)"],
         "map": null
+      },
+      {
+        "id": "men_gan_ast_alt_tang_tren_1000",
+        "ten": "Tổn thương gan nặng / Suy gan cấp (AST hoặc ALT ≥ 1000 U/L)",
+        "nhom": "Cận lâm sàng",
+        "loai": ["cls"],
+        "tuKhoa": ["ast >= 1000", "alt >= 1000", "suy gan cấp", "tổn thương gan nặng"],
+        "aliases": ["men gan >= 1000", "hoại tử tế bào gan nặng", "transaminase tăng cực cao"],
+        "map": { "fld": "lAST", "op": ">=", "val": 1000 }
+      },
+      {
+        "id": "tran_dich_mang_phoi_mang_bung",
+        "ten": "Tràn dịch màng phổi, tràn dịch màng bụng trên siêu âm/X-quang",
+        "nhom": "Cận lâm sàng",
+        "loai": ["cls", "tt"],
+        "tuKhoa": ["tràn dịch màng phổi", "tràn dịch màng bụng", "phù nề thành túi mật"],
+        "aliases": ["dịch màng phổi", "dày thành túi mật", "pleural effusion"],
+        "map": null
+      },
+      {
+        "id": "bach_cau_tang_uu_the_neu_o_nhiem_trung_mu",
+        "ten": "Bạch cầu máu tăng cao ưu thế đa nhân trung tính có ổ nhiễm khuẩn mủ (Triệu chứng loại trừ SXHD)",
+        "nhom": "Cận lâm sàng",
+        "loai": ["cls"],
+        "tuKhoa": ["bạch cầu tăng", "neu tăng cao", "nhiễm trùng mủ", "leukocytosis"],
+        "aliases": ["wbc tăng cao", "neu > 80% có mủ"],
+        "map": { "fld": "lBC", "op": ">=", "val": 15.0 }
       }
     ],
+
     "da-niem.json": [
       {
-        "id": "xuat_huyet_da_niem",
-        "ten": "Chấm xuất huyết dưới da, chảy máu chân răng hoặc chảy máu cam",
+        "id": "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+        "ten": "Xuất huyết dưới da, niêm mạc hoặc Nghiệm pháp dây thắt (Lacet) (+)",
         "nhom": "Da niêm",
-        "loai": ["tt", "cn"],
-        "tuKhoa": ["chấm xuất huyết", "chảy máu chân răng", "chảy máu cam", "xuat huyet"],
-        "aliases": ["chảy máu niêm mạc", "ban xuất huyết", "petechiae"],
+        "loai": ["tt"],
+        "tuKhoa": ["chấm xuất huyết", "lacet dương tính", "chảy máu chân răng", "chảy máu cam", "petechiae"],
+        "aliases": ["chấm xuất huyết rải rác", "mảng bầm tím", "chảy máu niêm mạc mũi miệng", "dây thắt dương tính"],
+        "map": null
+      },
+      {
+        "id": "phat_ban_xung_huyet",
+        "ten": "Phát ban xung huyết da, ban hồi phục (Skin islands in sea of red)",
+        "nhom": "Da niêm",
+        "loai": ["tt"],
+        "tuKhoa": ["phát ban", "da xung huyết", "ban hồi phục", "đảo trắng biển đỏ"],
+        "aliases": ["ban dát sẩn hồi phục", "xung huyết da", "ban ngứa hồi phục"],
         "map": null
       }
     ],
+
     "tim-mach.json": [
       {
-        "id": "soc_mach_nhanh_ha_kep_hoac_tut",
-        "ten": "Sốc giảm thể tích (Mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg hoặc tụt HA)",
+        "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+        "ten": "Sốc giảm thể tích (Mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg hoặc Tụt huyết áp)",
         "nhom": "Tim mạch",
         "loai": ["tt"],
-        "tuKhoa": ["sốc", "huyết áp kẹp", "tụt huyết áp", "mạch nhanh nhỏ", "ha kep"],
-        "aliases": ["sốc sốt xuất huyết", "suy tuần hoàn cấp", "ha kẹp <= 20"],
+        "tuKhoa": ["sốc", "huyết áp kẹp", "tụt huyết áp", "mạch nhanh nhỏ", "ha kep", "dss"],
+        "aliases": ["sốc sốt xuất huyết", "suy tuần hoàn cấp", "hiệu áp kẹp <= 20", "tụt huyết áp"],
         "map": { "fld": "vHATT", "op": "<=", "val": 90 }
+      },
+      {
+        "id": "chi_lanh_crt_keo_dai",
+        "ten": "Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch CRT ≥ 2s",
+        "nhom": "Tim mạch",
+        "loai": ["tt"],
+        "tuKhoa": ["chi lạnh", "crt kéo dài", "đầu chi lạnh ẩm", "tưới máu kém"],
+        "aliases": ["tay chân lạnh", "chi mát ẩm", "crt >= 2s"],
+        "map": null
       }
     ],
+
+    "than-kinh.json": [
+      {
+        "id": "dau_dau",
+        "ten": "Đau đầu dữ dội vùng trán và thái dương",
+        "nhom": "Thần kinh",
+        "loai": ["cn"],
+        "tuKhoa": ["đau đầu", "nhức đầu", "headache", "đau nhức đầu"],
+        "aliases": ["nhức đầu dữ dội", "đau trán thái dương"],
+        "map": null
+      },
+      {
+        "id": "lu_du_vat_va_li_bi",
+        "ten": "Vật vã, lừ đừ, li bì (Dấu hiệu cảnh báo thần kinh)",
+        "nhom": "Thần kinh",
+        "loai": ["cn", "tt"],
+        "tuKhoa": ["lừ đừ", "vật vã", "li bì", "thay đổi tri giác", "bứt rứt"],
+        "aliases": ["tri giác lừ đừ", "vật vã bứt rứt", "li bì khó thức tỉnh"],
+        "map": null
+      },
+      {
+        "id": "sxhd_the_nao_roi_loan_tri_giac",
+        "ten": "SXHD thể não: Rối loạn tri giác, co giật hoặc hôn mê",
+        "nhom": "Thần kinh",
+        "loai": ["cn", "tt"],
+        "tuKhoa": ["sxh thể não", "rối loạn tri giác", "co giật", "hôn mê"],
+        "aliases": ["viêm não do dengue", "bệnh não dengue", "hôn mê co giật"],
+        "map": null
+      }
+    ],
+
+    "tiet-nieu.json": [
+      {
+        "id": "tieu_it",
+        "ten": "Tiểu ít (< 0.5 mL/kg/h trong > 6 giờ liên tục)",
+        "nhom": "Tiết niệu",
+        "loai": ["cn", "tt"],
+        "tuKhoa": ["tiểu ít", "thiểu niệu", "oliguria", "giảm nước tiểu"],
+        "aliases": ["không tiểu trên 6 giờ", "lượng nước tiểu giảm", "thiểu niệu do thiếu dịch"],
+        "map": null
+      }
+    ],
+
     "tien-can.json": [
       {
         "id": "tien_can_song_o_dich_luu_hanh",
-        "ten": "Sống trong hoặc có lui tới vùng ổ dịch lưu hành",
+        "ten": "Sống trong hoặc có lui tới vùng ổ dịch sốt xuất huyết lưu hành trong vòng 14 ngày",
         "nhom": "Tiền căn",
         "loai": ["tc", "dth"],
-        "tuKhoa": ["vùng dịch", "ổ dịch", "dịch tễ địa phương", "nguồn lây"],
-        "aliases": ["yếu tố dịch tễ", "vùng dịch lưu hành"],
+        "tuKhoa": ["vùng dịch", "ổ dịch", "dịch tễ địa phương", "nguồn lây", "muỗi vằn đốt"],
+        "aliases": ["yếu tố dịch tễ sxh", "vùng dịch lưu hành", "người xung quanh mắc sxh"],
         "map": null
       }
     ]
-  },
-
-  // ============================================================================
-  // KHỐI 2: HỘI CHỨNG LÂM SÀNG ĐẶC TRƯNG (TÍCH HỢP PROMPT 05)
-  // ============================================================================
-  "syndromes": [
-    {
-      "id": "hc_canh_bao_dengue",
-      "ten": "Hội chứng Cảnh Báo Sốt Xuất Huyết Dengue",
-      "tenVietTat": "DWS",
-      "chuyenKhoa": "[CHUYÊN KHOA]",
-      "nhomHoiChung": "Rối loạn huyết động & Thoát huyết tương",
-      "moTa": "Tập hợp các dấu hiệu cảnh báo nguy cơ diễn tiến sốc thoát huyết tương hoặc suy tạng trong giai đoạn nguy hiểm của bệnh.",
-      "coChe": "Tình trạng tăng tính thấm thành mạch lan tỏa dưới tác động của các cytokin viêm (TNF-α, IL-6, NS1) dẫn đến thoát huyết tương ồ ạt vào khoang màng phổi/màng bụng, cô đặc máu kèm giảm tưới máu tạng.",
-      "nguong": {
-        "loai": "at_least_n",
-        "n": 1
-      },
-      "trieuChung": [
-        "dau_hieu_canh_bao_dau_bung_gan_non_oi",
-        "gan_to_duoi_bo_suon",
-        "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
-        "tc_giam_tieu_cau_duoi_100_g_l",
-        "xuat_huyet_da_niem"
-      ],
-      "trieuChungBatBuoc": [],
-      "benhLienQuan": [
-        {
-          "benhSlug": "[SLUG BỆNH LÝ]",
-          "benhTen": "[TÊN BỆNH LÝ]",
-          "loaiLienKet": "dac_trung",
-          "moTaLienKet": "Tiêu chuẩn chỉ định nhập viện điều trị nội trú 100% theo [HƯỚNG DẪN THAM CHIẾU].",
-          "buocLienKet": [1, 2, 3, 4]
-        }
-      ],
-      "chanDoanPhanBiet": [
-        {
-          "id": "hc_soc_nhiem_trung",
-          "ten": "Hội chứng Sốc nhiễm khuẩn",
-          "diemPhanBiet": "Sốt cao rét run, ổ nhiễm trùng khu trú rõ, bạch cầu tăng cao ưu thế Neu, không có cô đặc máu dốc đứng như SXHD."
-        }
-      ],
-      "diemClinicalPearl": [
-        "Hạt ngọc 1: Thời điểm nguy hiểm nhất thường rơi vào ngày 4 - 6 khi nhiệt độ bắt đầu hạ sốt.",
-        "Hạt ngọc 2: Đau bụng vùng gan liên tục và nôn ói nhiều là dấu hiệu cảnh báo lâm sàng sớm nhất báo trước sốc."
-      ]
-    }
-  ]
+  }
 }
 ```
 
@@ -256,9 +334,7 @@ Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài kh�
 1. Lưu kết quả JSON từ NotebookLM vào file tạm (ví dụ: tools/scratch/symptoms-benh-moi.json).
 2. Chạy lệnh tự động nạp triệu chứng:
    node tools/scripts/ingest-disease-symptoms.mjs tools/scratch/symptoms-benh-moi.json
-3. Nếu có khối syndromes, lưu vào file `src/content/docspace/data/syndromes/<chuyen_khoa>/<id>.json` 
-   và chạy lệnh tự động đăng ký:
-   node tools/scripts/build-syndrome-registry.mjs
-4. Chạy đồng bộ Master KB:
-   node tools/scripts/sync-clinical-db.mjs
+3. Hệ thống sẽ tự động:
+   - Hợp nhất và chống trùng lặp vào 12 tệp `src/content/docspace/data/symptoms/*.json`.
+   - Biên dịch tự động `clinical-rules-symptoms.json` (runtime) và `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` (NotebookLM).
 ================================================================================

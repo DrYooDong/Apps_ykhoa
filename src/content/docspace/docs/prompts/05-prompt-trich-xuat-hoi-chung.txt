@@ -3,20 +3,28 @@ CLINIPORTAL DOCSPACE — PROMPT 05: TRÍCH XUẤT HỘI CHỨNG LÂM SÀNG MASTE
 (CLINICAL SYNDROME KNOWLEDGE VAULT EXTRACTOR — CHUẨN EBM 2026)
 ================================================================================
 
-[MỤC TIÊU CỐT LÕI]
-Prompt này dùng để TRÍCH XUẤT một hoặc nhiều HỘI CHỨNG LÂM SÀNG từ tài liệu y khoa 
-(Giáo trình Triệu chứng học, Bệnh học Nội/Ngoại/Nhi/Nhiễm, Guidelines Bộ Y tế / Quốc tế).
+[MỤC TIÊU CỐT LÕI — CHUYÊN BIỆT HỘI CHỨNG LÂM SÀNG]
+Prompt này CHUYÊN BIỆT HÓA 100% để trích xuất các HỘI CHỨNG LÂM SÀNG (Clinical Syndromes) 
+từ Y văn, Giáo trình Bệnh học/Triệu chứng học, hoặc Guidelines điều trị vào 
+Kho Hội Chứng Lâm Sàng của DocSpace (`src/content/docspace/data/syndromes/`).
 
-Dữ liệu JSON sinh ra từ prompt này sẽ được lưu trực tiếp vào Kho Hội Chứng DocSpace:
-`src/content/docspace/data/syndromes/<chuyen_khoa>/<id_hoi_chung>.json`
-và tự động đăng ký vào hệ thống qua lệnh:
-`node tools/scripts/build-syndrome-registry.mjs`
+🎯 Hỗ trợ 2 CHẾ ĐỘ SỬ DỤNG LINH HOẠT:
+- CHẾ ĐỘ 1 (Hội chứng kinh điển độc lập): Trích xuất 01 hội chứng chuyên sâu kinh điển
+  (Ví dụ: Hội chứng Thận hư, Hội chứng Kích thích màng não, Hội chứng Suy hô hấp cấp ARDS, 
+  Hội chứng Suy tế bào gan, Hội chứng Đông đặc phổi...).
+- CHẾ ĐỘ 2 (Bộ hội chứng theo Bệnh lý): Trích xuất toàn bộ các hội chứng mà một bệnh lý cụ thể 
+  biểu hiện hoặc gây ra (Ví dụ: SXH Dengue -> HC Cảnh báo Dengue, HC Sốc Dengue, HC Xuất huyết giảm tiểu cầu...).
+
+👉 TÍCH HỢP ĐỒNG BỘ VỚI PROMPT 04 (ZERO-ORPHAN SYMPTOMS):
+Các triệu chứng thành phần trong trường "trieuChung": [ ... ] BẮT BUỘC phải tái sử dụng chính xác 
+các mã ID triệu chứng đã được trích xuất từ Prompt 04 hoặc có trong Từ điển Triệu chứng của DocSpace!
 
 --------------------------------------------------------------------------------
 [HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
-- [TÊN HỘI CHỨNG]: (Ví dụ: Hội chứng Thận hư / Hội chứng Đông đặc phổi / Hội chứng Suy tim sung huyết)
-- [CHUYÊN KHOA]: (Ví dụ: Thận - Tiết niệu / Hô hấp / Tim mạch / Tiêu hóa - Gan mật / Truyền nhiễm)
-- [HƯỚNG DẪN / TÀI LIỆU NGUỒN]: (Ví dụ: Bài giảng Triệu chứng học Nội khoa ĐHYD TP.HCM / KDIGO 2024 / ESC 2023)
+- [CHẾ ĐỘ SỬ DỤNG]: (Chế độ 1: Hội chứng kinh điển độc lập | Chế độ 2: Bộ hội chứng theo Bệnh lý)
+- [TÊN HỘI CHỨNG HOẶC TÊN BỆNH LÝ]: (Ví dụ: Hội chứng Thận hư HOẶC Sốt xuất huyết Dengue)
+- [CHUYÊN KHOA]: (Ví dụ: tieu_hoa_gan_mat | truyen_nhiem | ho_hap | tim_mach | than_kinh | huyet_hoc | tiet_nieu | noi_tiet)
+- [HƯỚNG DẪN / TÀI LIỆU NGUỒN]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 / KDIGO 2024 / Bài giảng ĐHYD)
 
 --------------------------------------------------------------------------------
 [QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
@@ -26,87 +34,131 @@ và tự động đăng ký vào hệ thống qua lệnh:
    - Có cơ chế bệnh sinh (Pathophysiology) giải thích rõ mối liên hệ nhân - quả giữa các triệu chứng.
 
 2. QUY ƯỚC ĐẶT ID:
-   - ID hội chứng bắt đầu bằng tiền tố `hc_` viết thường không dấu:
-     Ví dụ: `hc_than_hu`, `hc_dong_dac_phoi`, `hc_suy_tim_trai`, `hc_ure_huyet_cao`.
+   - ID hội chứng bắt đầu bằng tiền tố `hc_` viết thường không dấu (snake_case):
+     Ví dụ: `hc_than_hu`, `hc_canh_bao_dengue`, `hc_suy_te_bao_gan`, `hc_dong_dac_phoi`.
 
-3. LIÊN KẾT BỆNH LÝ 2 CHIỀU ("benhLienQuan"):
+3. MÃ HỆ CHUYÊN KHOA CHUẨN (KHỚP THƯ MỤC CSDL):
+   - Thư mục lưu trữ: `src/content/docspace/data/syndromes/<chuyen_khoa>/`
+   - Danh sách thư mục chuyên khoa hợp lệ:
+     + `truyen_nhiem`
+     + `tieu_hoa_gan_mat`
+     + `ho_hap`
+     + `tim_mach`
+     + `than_kinh`
+     + `huyet_hoc`
+     + `tiet_nieu`
+     + `noi_tiet`
+
+4. TÁI SỬ DỤNG MÃ TRIỆU CHỨNG ĐÃ TRÍCH XUẤT TỪ PROMPT 04 ("trieuChung"):
+   - Dùng đúng ID từ vựng lâm sàng (snake_case) đã tạo ở Prompt 04:
+     Ví dụ: "dau_bung_vung_gan", "tc_co_dac_mau_hct_tang_tren_20_phan_tram", "gan_to_duoi_bo_suon".
+   - Tuyệt đối không tự ý chế thêm ID mới lạ không có trong từ điển triệu chứng.
+
+5. LIÊN KẾT BỆNH LÝ 2 CHIỀU ("benhLienQuan"):
    - Liệt kê các bệnh lý trong DocSpace có biểu hiện hội chứng này.
-   - Xác định vai trò:
-     + "dac_trung": Là tiêu chuẩn bắt buộc/kinh điển của bệnh (VD: Xơ gan -> HC suy tế bào gan).
+   - Gán đúng vai trò:
+     + "dac_trung": Tiêu chuẩn chẩn đoán cốt lõi/kinh điển của bệnh.
      + "thuong_gap": Biểu hiện phổ biến trong bệnh.
      + "co_the_gap": Thể lâm sàng hoặc giai đoạn bệnh.
-     + "bien_chung": Biến cố nặng/cấp cứu do bệnh gây ra (VD: Vỡ GEV -> HC xuất huyết tiêu hóa).
+     + "bien_chung": Biến cố nặng/cấp cứu do bệnh gây ra.
 
-4. QUY CHUẨN VIẾT TẮT & ZERO HTML ENTITIES:
-   - Viết tắt chuẩn: LDVV, TCCN, TCTT, DHST, CLS, HA, HATT, HATTr, M, NT, SpO₂, Hct, PLT, WBC, AST, ALT, eGFR, INR.
+6. QUY CHUẨN VIẾT TẮT, TOÁN TỬ & ZERO HTML ENTITIES:
+   - Viết tắt chuẩn: HA, HATT, HATTr, M, NT, SpO₂, Hct, PLT, WBC, AST, ALT, eGFR, INR, DWS.
+   - Toán tử & đơn vị: ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
    - Tuyệt đối không để rò rỉ mã hóa HTML (&gt;, &lt;, &quot;, &amp;). Viết trực tiếp >, <, ".
-   - Ký tự toán học chuẩn: ≥, ≤, ±, ×, °C, µmol/L, µg, mL/kg/h, G/L.
 
-5. ĐẦU RA DUY NHẤT:
-   Chỉ xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
+7. ĐẦU RA:
+   - Nếu là Chế độ 1: Xuất ra DUY NHẤT 01 khối mã JSON cho Hội chứng đó.
+   - Nếu là Chế độ 2: Xuất ra MẢNG JSON gồm các object Hội chứng hoàn chỉnh của Bệnh lý.
+
+--------------------------------------------------------------------------------
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+--------------------------------------------------------------------------------
+"Bạn là Chuyên gia Tin học Y tế (Clinical Informatician) và Bác sĩ Trưởng khoa Lâm sàng.
+
+Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên (đặc biệt là [HƯỚNG DẪN / TÀI LIỆU NGUỒN]), hãy trích xuất:
+Các Hội chứng lâm sàng đặc trưng liên quan đến [TÊN HỘI CHỨNG HOẶC TÊN BỆNH LÝ].
+
+Thông số yêu cầu:
+- Tên mục tiêu: [TÊN HỘI CHỨNG HOẶC TÊN BỆNH LÝ]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Tài liệu nguồn: [HƯỚNG DẪN / TÀI LIỆU NGUỒN]
+
+Yêu cầu xuất bản:
+Xuất ra DUY NHẤT khối code JSON chuẩn mực tuân thủ đầy đủ cấu trúc SyndromeDefinition bên dưới:
+"
 
 --------------------------------------------------------------------------------
 [CẤU TRÚC JSON CHUẨN BẮT BUỘC XUẤT RA]
 
 ```json
 {
-  "id": "hc_[ten_hoi_chung_khong_dau]",
-  "ten": "Hội chứng [Tên đầy đủ tiếng Việt]",
-  "tenVietTat": "[Tên viết tắt y khoa, ví dụ: HCTH / HCNT / STBG / CSPH]",
-  "chuyenKhoa": "[CHUYÊN KHOA]",
-  "nhomHoiChung": "[Nhóm cơ chế: Suy chức năng tạng | Rối loạn huyết động | Nhiễm trùng | Cấp cứu mất máu...]",
+  "id": "hc_canh_bao_dengue",
+  "ten": "Hội chứng Dấu hiệu Cảnh báo Sốt Xuất Huyết Dengue",
+  "tenVietTat": "Dengue Warning Signs (DWS)",
+  "chuyenKhoa": "Truyền nhiễm",
+  "nhomHoiChung": "Cảnh báo thoát huyết tương & Tổn thương tạng",
   "icdRelated": [
-    "[Mã ICD-10 liên quan 1]",
-    "[Mã ICD-10 liên quan 2]"
+    "A97.1",
+    "A97.2",
+    "A97.9"
   ],
-  "moTa": "Mô tả súc tích định nghĩa hội chứng, các biểu hiện then chốt và ý nghĩa lâm sàng.",
-  "coChe": "Giải thích chi tiết cơ chế bệnh sinh (Pathophysiology): Quá trình tổn thương phân tử, mô học hoặc huyết động dẫn đến sự xuất hiện của các triệu chứng cơ năng, thực thể và cận lâm sàng.",
+  "moTa": "Tập hợp các dấu hiệu cảnh báo lâm sàng và cận lâm sàng theo hướng dẫn của Tổ chức Y tế Thế giới (WHO 2009/2024) và Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam, báo hiệu hiện tượng tăng tính thấm thành mạch thoát huyết tương tiến triển hoặc tổn thương tạng sắp dẫn đến sốc Dengue.",
+  "coChe": "Vào thời điểm chuyển từ giai đoạn sốt sang giai đoạn nguy hiểm (ngày thứ 3 đến ngày thứ 7 của bệnh), phản ứng viêm miễn dịch bão hòa và các cytokine (TNF-alpha, IL-6, IL-8, VEGF) cùng với protein NS1 của virus Dengue gây tổn thương lớp glycocalyx nội mô mạch máu. Hậu quả làm tăng tính thấm mao mạch chọn lọc tạm thời (kéo dài 24-48 giờ), làm thoát huyết tương vào khoang màng phổi, màng bụng, gây cô đặc máu dốc đứng (Hct tăng cao), tụt huyết áp và tưới máu mô kém.",
   "nguong": {
     "loai": "at_least_n",
-    "n": 2
+    "n": 1
   },
   "trieuChung": [
-    "id_trieu_chung_1",
-    "id_trieu_chung_2",
-    "id_trieu_chung_3",
-    "id_trieu_chung_4"
+    "dau_hieu_canh_bao_dau_bung_gan_non_oi",
+    "gan_to_duoi_bo_suon",
+    "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+    "tc_giam_tieu_cau_duoi_100_g_l",
+    "tc_xuat_huyet_da_niem_lacet_duong_tinh",
+    "tran_dich_mang_phoi_mang_bung",
+    "lu_du_vat_va_li_bi",
+    "tieu_it"
   ],
-  "trieuChungBatBuoc": [
-    "id_trieu_chung_co_do_bat_buoc_phai_co"
-  ],
+  "trieuChungBatBuoc": [],
   "goldStandardRelated": true,
   "benhLienQuan": [
     {
-      "benhSlug": "slug_benh_trong_docspace",
-      "benhTen": "Tên bệnh lý đầy đủ",
-      "loaiLienKet": "dac_trung | thuong_gap | co_the_gap | bien_chung",
-      "moTaLienKet": "Mô tả bối cảnh lâm sàng của hội chứng trong bệnh lý này.",
+      "benhSlug": "sot_xuat_huyet_dengue",
+      "benhTen": "Sốt xuất huyết Dengue",
+      "loaiLienKet": "dac_trung",
+      "moTaLienKet": "Chỉ định bắt buộc nhập viện điều trị nội trú 100% và bù dịch theo dõi sát sinh hiệu mỗi 2-4 giờ theo phân tầng Quyết định 2760/QĐ-BYT.",
       "buocLienKet": [1, 2, 3, 4]
     }
   ],
   "chanDoanPhanBiet": [
     {
-      "id": "hc_can_phan_biet_1",
-      "ten": "Tên hội chứng / bệnh cần phân biệt",
-      "diemPhanBiet": "Dấu hiệu lâm sàng hoặc xét nghiệm cận lâm sàng cốt lõi để phân định."
+      "id": "hc_soc_nhiem_trung",
+      "ten": "Hội chứng Sốc nhiễm trùng (Septic Shock)",
+      "diemPhanBiet": "SXHD có Hct tăng cao do thoát huyết tương đơn thuần, bạch cầu thường giảm; Sốc nhiễm khuẩn thường có ổ nhiễm khuẩn rõ, bạch cầu đa nhân tăng cao dốc đứng, Procalcitonin tăng vọt."
+    },
+    {
+      "id": "viem_ruot_thua_cap",
+      "ten": "Viêm ruột thừa cấp / Đau bụng ngoại khoa",
+      "diemPhanBiet": "Cần cảnh giác bẫy đau bụng hạ sườn phải/hố chậu phải trong SXHD do ứ dịch thành túi mật và hạch mạc treo phản ứng; cần làm công thức máu kiểm tra Hct và tiểu cầu trước khi quyết định phẫu thuật."
     }
   ],
   "diemClinicalPearl": [
-    "Hạt ngọc lâm sàng 1: Dấu hiệu kinh điển, kinh nghiệm khám bedside quý giá.",
-    "Hạt ngọc lâm sàng 2: Cạm bẫy lâm sàng / cận lâm sàng dễ bỏ sót."
+    "Dấu hiệu cảnh báo thường xuất hiện vào thời điểm bệnh nhân bắt đầu hạ sốt (ngày 3-6) — đây là giai đoạn nguy hiểm nhất chứ không phải bệnh nhân đã khỏi bệnh.",
+    "Hct tăng ≥ 20% so với giá trị ban đầu (hoặc Hct > 45% ở nam, > 42% ở nữ) đi kèm tiểu cầu giảm nhanh dưới 100 G/L là cặp đôi cận lâm sàng nhạy nhất báo hiệu sốc trong vòng 24 giờ tới."
   ],
   "thangDiemLienQuan": [
     {
-      "ten": "Tên thang điểm / Tiêu chuẩn lượng giá",
-      "mucDich": "Mục đích sử dụng trên lâm sàng."
+      "ten": "Tiêu chuẩn Phân độ SXHD theo Quyết định 2760/QĐ-BYT 2023",
+      "mucDich": "Phân tầng nguy cơ: SXHD -> SXHD có dấu hiệu cảnh báo -> SXHD nặng (Sốc Dengue, Xuất huyết nặng, Suy tạng nặng)."
     }
   ],
   "nguonThamKhao": [
-    "[HƯỚNG DẪN / TÀI LIỆU NGUỒN]"
+    "Quyết định 2760/QĐ-BYT ngày 04/07/2023 của Bộ Y tế Việt Nam về Hướng dẫn chẩn đoán và điều trị Sốt xuất huyết Dengue",
+    "WHO Dengue Guidelines for Diagnosis, Treatment, Prevention and Control (2009/2024)"
   ],
   "metadata": {
     "version": "1.0.0",
-    "capNhat": "2026-09-28",
+    "capNhat": "2026-10-11",
     "author": "CliniPortal Medical Knowledge Squad"
   }
 }
@@ -114,10 +166,12 @@ và tự động đăng ký vào hệ thống qua lệnh:
 
 --------------------------------------------------------------------------------
 [HƯỚNG DẪN LƯU VÀ ĐỒNG BỘ SAU KHI XUẤT RA]
+
 1. Copy khối mã JSON vừa sinh ra.
 2. Lưu vào tệp: `src/content/docspace/data/syndromes/<chuyen_khoa>/<id_hoi_chung>.json`
-   (Ví dụ: `src/content/docspace/data/syndromes/ho_hap/hc_dong_dac_phoi.json`).
-3. Mở terminal và chạy lệnh:
-   `node tools/scripts/build-syndrome-registry.mjs`
-4. Hệ thống sẽ tự động đăng ký và nạp Hội chứng vào DocSpace trong 0.5s!
+   (Ví dụ: `src/content/docspace/data/syndromes/truyen_nhiem/hc_canh_bao_dengue.json`
+    hoặc `src/content/docspace/data/syndromes/ho_hap/hc_dong_dac_phoi.json`).
+3. Mở terminal và chạy lệnh đăng ký tự động:
+   node tools/scripts/build-syndrome-registry.mjs
+4. Hệ thống sẽ tự động đăng ký và nạp Hội chứng vào DocSpace phục vụ đối soát tại Bước 2 và Bước 3!
 ================================================================================

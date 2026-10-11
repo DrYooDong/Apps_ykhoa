@@ -1,5 +1,5 @@
 ---
-title: "Sốt rét do Plasmodium falciparum có dấu hiệu cảnh báo ở người đi rừng trở về"
+title: "Sốt rét do Plasmodium falciparum"
 caseId: "soap-sot_ret-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"

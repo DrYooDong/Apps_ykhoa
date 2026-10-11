@@ -1,5 +1,5 @@
 ---
-title: "Viêm phổi mắc phải cộng đồng mức độ trung bình"
+title: "Viêm phổi mắc phải cộng đồng, mức độ trung bình"
 caseId: "soap-viem_phoi_cong_dong_tb-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"

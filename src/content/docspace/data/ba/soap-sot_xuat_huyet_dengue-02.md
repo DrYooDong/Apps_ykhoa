@@ -1,5 +1,5 @@
 ---
-title: "Sốt xuất huyết Dengue nặng, Thể sốc (DSS)"
+title: "Sốt xuất huyết Dengue nặng - Thể sốc (DSS)"
 caseId: "soap-sot_xuat_huyet_dengue-02"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
