@@ -26,7 +26,7 @@ Tài liệu Y văn / Guidelines (Bộ Y tế, WHO, KDIGO...)
    ├─► [Nếu có Triệu chứng / Hội chứng mới]
    │     └─► Chạy PROMPT 04 (hoặc 05) ──► Nạp từ điển triệu chứng & hội chứng
    │
-   ├─► Bước 1: Chạy PROMPT 02 ──────────► Tiêu chuẩn chẩn đoán & Ma trận CDSS
+   ├─► Bước 1: Chạy PROMPT 02a ──────────► Tiêu chuẩn chẩn đoán & Ma trận CDSS
    │
    ├─► Bước 2: Chạy PROMPT 02b ─────────► Ca lâm sàng mẫu Bước 1 (thử nghiệm CDSS)
    │
