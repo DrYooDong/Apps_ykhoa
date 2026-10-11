@@ -5,11 +5,11 @@
  * 
  * Tự động bóc tách, chuẩn hóa và nạp toàn bộ dữ liệu từ tệp đầu ra Prompt 06 & 07 (NotebookLM/LLM)
  * vào hệ sinh thái CliniPortal DocSpace:
- *   1. Ca lâm sàng mẫu -> src/content/knowledge-vault/data/sample-clinical-cases.json
- *   2. Triệu chứng mới -> src/content/knowledge-vault/data/clinical-rules-symptoms.json
- *   3. Thực thể bệnh & Trọng số CDSS -> src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json
+ *   1. Ca lâm sàng mẫu -> src/content/docspace/data/sample-clinical-cases.json
+ *   2. Triệu chứng mới -> src/content/docspace/data/clinical-rules-symptoms.json
+ *   3. Thực thể bệnh & Trọng số CDSS -> src/content/docspace/data/diseases/<chuyen-khoa>.json
  *   4. Đồng bộ Master KB -> bundle-clinical-rules.mjs
- *   5. Hồ sơ ca bệnh thực chiến SOAP Markdown -> src/content/knowledge-vault/ba/<caseId>.md
+ *   5. Hồ sơ ca bệnh thực chiến SOAP Markdown -> src/content/docspace/data/ba/<caseId>.md
  *   6. Đồng bộ Catalog thực hành -> ingest-notebooklm-case.mjs
  *   7. Kiểm tra & Báo cáo Audit 10 tiêu chí DocSpace
  * 
@@ -35,10 +35,10 @@ const DOCSPACE_DATA_DIR = path.join(ROOT_DIR, 'src/content/docspace/src/data');
 const DOCSPACE_SAMPLE_CASES_PATH = path.join(DOCSPACE_DATA_DIR, 'sample-clinical-cases.json');
 const DOCSPACE_BA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/ba');
 
-const VAULT_DATA_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/data');
-const DISEASES_DIR = path.join(VAULT_DATA_DIR, 'diseases');
-const SYMPTOMS_PATH = path.join(VAULT_DATA_DIR, 'clinical-rules-symptoms.json');
-const SAMPLE_CASES_PATH = path.join(VAULT_DATA_DIR, 'sample-clinical-cases.json');
+const DOCSPACE_MAIN_DATA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data');
+const DISEASES_DIR = path.join(DOCSPACE_MAIN_DATA_DIR, 'diseases');
+const SYMPTOMS_PATH = path.join(DOCSPACE_MAIN_DATA_DIR, 'clinical-rules-symptoms.json');
+const SAMPLE_CASES_PATH = path.join(DOCSPACE_MAIN_DATA_DIR, 'sample-clinical-cases.json');
 const BA_DIR = DOCSPACE_BA_DIR;
 
 const SPECIALTY_FILE_MAP = {

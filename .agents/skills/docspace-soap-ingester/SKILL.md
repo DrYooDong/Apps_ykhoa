@@ -8,7 +8,7 @@ description: >
 
 # DocSpace SOAP Ingester Skill (Prompt 07 Specialist)
 
-Tài liệu này định nghĩa cấu trúc chuẩn mực, cơ chế phân tích cú pháp và quy trình nạp tự động **Hồ sơ ca bệnh lâm sàng thực chiến SOAP Markdown** (Prompt 07) vào hệ thống **CliniPortal DocSpace** và **Kho Bệnh án Knowledge Vault** (`src/content/knowledge-vault/ba/`).
+Tài liệu này định nghĩa cấu trúc chuẩn mực, cơ chế phân tích cú pháp và quy trình nạp tự động **Hồ sơ ca bệnh lâm sàng thực chiến SOAP Markdown** (Prompt 07) vào hệ thống **CliniPortal DocSpace** (`src/content/docspace/data/ba/`).
 
 ---
 
@@ -26,7 +26,7 @@ Khác với ca mẫu ngắn ở Bước 1 (dùng để mô phỏng tính xác su
 
 ## 📝 2. Chuẩn Frontmatter YAML Cho File SOAP Markdown
 
-Mỗi ca bệnh lưu tại `src/content/knowledge-vault/ba/soap-<slug>-01.md` phải có phần Frontmatter chuẩn hóa:
+Mỗi ca bệnh lưu tại `src/content/docspace/data/ba/soap-<slug>-01.md` phải có phần Frontmatter chuẩn hóa:
 
 ```markdown
 ---
@@ -145,11 +145,11 @@ Script `tools/scripts/ingest-notebooklm-case.mjs` và engine `docspace-oneclick-
 Khi có nội dung ca bệnh SOAP Markdown mới (hoặc tệp xuất thô từ NotebookLM):
 1. **Cách 1 (Khuyến nghị - Nạp 1-Chạm kèm Kiểm định 2 Cổng)**:
    ```powershell
-   node tools/scripts/docspace-oneclick-ingester.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md
+   node tools/scripts/docspace-oneclick-ingester.mjs src/content/docspace/data/ba/soap-<slug>-01.md
    ```
 2. **Cách 2 (Nạp trực tiếp qua Ingest Tool)**:
    ```powershell
-   node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md
+   node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/soap-<slug>-01.md
    ```
 3. Script sẽ tự động:
    - Tự động khử HTML entities và tự tổng hợp Frontmatter nếu thiếu.

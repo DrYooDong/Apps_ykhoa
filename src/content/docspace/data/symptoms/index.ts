@@ -1,5 +1,5 @@
 /**
- * CliniPortal — Knowledge Vault Clinical Rules Symptoms Registry
+ * CliniPortal DocSpace — Clinical Rules Symptoms Registry
  * Tập hợp danh mục triệu chứng CDSS phân tách theo 12 hệ cơ quan / phân nhóm
  */
 

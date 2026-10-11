@@ -1,174 +1,104 @@
-# 🚀 BỘ 3 PROMPT THỰC CHIẾN TINH GỌN DOCSPACE (LEAN 3-PROMPT SUITE)
+# 🧭 HƯỚNG DẪN SỬ DỤNG BỘ PROMPT NẠP TRI THỨC DOCSPACE
 
-> **Hệ sinh thái**: CliniPortal DocSpace MedLens Pro  
-> **Phiên bản**: 3.0 (Dynamic Clinical Branching Protocol Engine)  
-> **Mục tiêu**: Tối giản hóa quy trình nạp tri thức từ NotebookLM/Y văn EBM cho **100+ Bệnh lý** mà không bị phân mảnh hay trùng lặp giao diện.
+> **Phân hệ**: CliniPortal DocSpace MedLens  
+> **Mục tiêu**: Trích xuất và chuẩn hóa tri thức y khoa từ tài liệu nguồn (Guidelines Bộ Y tế, WHO, KDIGO, GINA, Gold Standards) qua **Google NotebookLM / LLM** để nạp trực tiếp vào Chu trình Lâm sàng 4 Bước và Kho Dữ liệu.
 
 ---
 
-## 🌟 1. TỔNG QUAN HỆ THỐNG TINH GỌN (TỪ 11 PROMPTS ➔ 3 PROMPTS)
+## 📑 1. Danh Mục Các Prompt Chuyên Biệt
 
-Trước đây hệ thống có 11 prompt rời rạc (Prompt 00-08 và các file nháp) khiến người biên soạn phải copy-paste nhiều lần cho 1 mặt bệnh.  
-Từ phiên bản 3.0, toàn bộ quy trình biên soạn bệnh lý được chuẩn hóa thành **Bộ 3 Prompt Thực Chiến Cốt Lõi**:
+| STT | File Prompt | Vai Trò Lâm Sàng & Nội Dung Sinh Ra | Định Dạng | Nơi Lưu & Lệnh Nạp Tự Động |
+| :---: | :--- | :--- | :---: | :--- |
+| **01** | [`01-prompt-phac-do-phan-nhanh.txt`](./01-prompt-phac-do-phan-nhanh.txt) | **Phác đồ Phân nhánh Lâm sàng & Đa Phương án Điều trị**<br>• Phân nhánh 6 trục (`severity`, `phenotype`, `triage_score`, `treatment_step`, `stage`, `comorbidity`)<br>• Bảng 4 cột timeline theo ngày, 6 đầu mục y lệnh<br>• Kháng sinh bậc 1/thay thế/phối hợp, chỉnh liều eGFR, IV-to-PO, DDI | **JSON** | `src/content/docspace/data/enriched/<slug>.json`<br>*(Vận hành Bước 3 & Bước 4)* |
+| **02a** | [`02a-prompt-tieu-chuan-chan-doan-cdss.txt`](./02a-prompt-tieu-chuan-chan-doan-cdss.txt) | **Tiêu Chuẩn Chẩn Đoán Xác Định & Ma Trận Trọng Số CDSS**<br>• Tiêu chuẩn vàng (`goldStandard`), luật chẩn đoán (`criteriaRule`)<br>• Tiêu chuẩn định lượng (`criteria[]` theo ngưỡng xét nghiệm/CĐHA)<br>• Ma trận trọng số suy luận (`dt`, `gy`, `ht`, `loaitru`) | **JSON** | `src/content/docspace/data/enriched/<slug>.json` & `data/diseases/<khoa>.json`<br>*(Vận hành Bước 3)* |
+| **02b** | [`02b-prompt-ca-lam-sang-mau.txt`](./02b-prompt-ca-lam-sang-mau.txt) | **Ca Bệnh Lâm Sàng Mẫu Bước 1 (Sample Case Simulator)**<br>• Ca bệnh mô phỏng hoàn chỉnh cho thể bệnh điển hình<br>• Sinh hiệu (`vitals`), xét nghiệm ban đầu (`labs`), triệu chứng chọn sẵn (`selected/sel`) và loại trừ (`negated`), bệnh sử 4 phần (`form.text`) | **JSON** | Thêm vào `src/content/knowledge-vault/data/sample-clinical-cases.json`<br>*(Vận hành Bước 1)* |
+| **03** | [`03-prompt-ho-so-ca-benh-soap.txt`](./03-prompt-ho-so-ca-benh-soap.txt) | **Hồ Sơ Ca Bệnh Thực Chiến SOAP & Hạt Ngọc Lâm Sàng**<br>• Định dạng SOAP chuẩn EBM quốc tế (`authorDoctor: "BS. YooDong"`)<br>• Bảng Đặt vấn đề 3 tầng (trường phái PGS.TS Hoàng Văn Sĩ)<br>• 4 Hạt ngọc lâm sàng (Pearls & Pitfalls), Plan dùng thuốc chi tiết | **Markdown** | **Web**: Nút *"Nạp ca từ NotebookLM"* trên Header<br>**CLI**: `src/content/docspace/data/ba/soap-<slug>-01.md`<br>Chạy `node tools/scripts/ingest-notebooklm-case.mjs` |
+| **04** | [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](./04-prompt-trich-xuat-trieu-chung-symptoms.txt) | **Từ Điển Triệu Chứng 12 Hệ Cơ Quan & Hội Chứng Đi Kèm**<br>• Trích xuất triệu chứng (cn, tt, cls, tc, dth) kèm quy tắc ánh xạ `map`<br>• Phân bổ vào 12 file hệ cơ quan (`symptoms/*.json`)<br>• Xuất kèm hội chứng lâm sàng đặc trưng của bệnh | **JSON** | Lưu file tạm `.json` rồi nạp:<br>`node tools/scripts/ingest-disease-symptoms.mjs <file.json>` |
+| **05** | [`05-prompt-trich-xuat-hoi-chung.txt`](./05-prompt-trich-xuat-hoi-chung.txt) | **Kho Hội Chứng Lâm Sàng Độc Lập (Syndrome Vault)**<br>• Trích xuất hội chứng kinh điển độc lập (VD: HC Thận hư, HC Đông đặc...)<br>• Cơ chế bệnh sinh, tiêu chuẩn chẩn đoán, chẩn đoán phân biệt | **JSON** | `src/content/docspace/data/syndromes/<khoa>/<id>.json`<br>Đồng bộ: `node tools/scripts/build-syndrome-registry.mjs` |
+
+---
+
+## 🔄 2. Quy Trình Biên Soạn Bệnh Lý Thực Chiến
 
 ```text
-┌───────────────────────────────────────────────────────────────────────────────────────┐
-│                      TÀI LIỆU NGUỒN Y KHOA TRONG NOTEBOOKLM                           │
-│     (Hướng dẫn Bộ Y Tế, Phác đồ bệnh viện, Hướng dẫn WHO / CDC / IDSA / ACC / KDIGO)   │
-└──────────────────────────────────────────┬────────────────────────────────────────────┘
-                                           │
-         ┌─────────────────────────────────┼─────────────────────────────────┐
-         │                                 │                                 │
-         ▼                                 ▼                                 ▼
-┌─────────────────────────────┐ ┌─────────────────────────────┐ ┌─────────────────────────────┐
-│    LEAN PROMPT 01           │ │    LEAN PROMPT 02           │ │    LEAN PROMPT 03           │
-│  PHÁC ĐỒ PHÂN NHÁNH MASTER  │ │   CA MẪU & TRỌNG SỐ CDSS    │ │  HỒ SƠ CA THỰC CHIẾN SOAP   │
-│                             │ │                             │ │                             │
-│ • 6 Trục phân nhánh động    │ │ • Ca lâm sàng mẫu Bước 1    │ │ • S-O-A-P chuẩn quốc tế     │
-│ • Tiêu chuẩn chẩn đoán      │ │ • Ma trận trọng số CDSS     │ │ • 4 Hạt ngọc lâm sàng       │
-│ • Phác đồ chi tiết nhánh    │ │   (dt, gy, ht, loaitru)     │ │ • Bảng đặt vấn đề 3 tầng    │
-│ • Dược lý & An toàn kê đơn  │ │ • Cập nhật từ điển TC       │ │ • Kế hoạch theo dõi cụ thể  │
-│ ➔ Sinh: JSON Enriched       │ │ ➔ Sinh: JSON Ca & Trọng số  │ │ ➔ Sinh: Markdown Frontmatter│
-└──────────────┬──────────────┘ └──────────────┬──────────────┘ └──────────────┬──────────────┘
-               │                               │                               │
-               ▼                               ▼                               ▼
-       Nạp vào Bước 3 & 4             Nạp vào Bước 1 & 3             Nạp vào Bước 4 & Sổ tay
-   (enriched/<slug>.json)         (sample-cases & rules)            (Nạp 1-chạm trên Web)
+Tài liệu Y văn / Guidelines (Bộ Y tế, WHO, KDIGO...)
+   │
+   ├─► [Nếu có Triệu chứng / Hội chứng mới]
+   │     └─► Chạy PROMPT 04 (hoặc 05) ──► Nạp từ điển triệu chứng & hội chứng
+   │
+   ├─► Bước 1: Chạy PROMPT 02 ──────────► Tiêu chuẩn chẩn đoán & Ma trận CDSS
+   │
+   ├─► Bước 2: Chạy PROMPT 02b ─────────► Ca lâm sàng mẫu Bước 1 (thử nghiệm CDSS)
+   │
+   ├─► Bước 3: Chạy PROMPT 01 ──────────► Phác đồ phân nhánh 6 trục & Y lệnh thuốc
+   │
+   ├─► Bước 4: Chạy PROMPT 03 ──────────► Hồ sơ ca bệnh thực chiến SOAP
+   │
+   └─► Bước 5: Chạy Lệnh Đồng Bộ ───────► node tools/scripts/sync-clinical-db.mjs
 ```
 
----
+### Chi tiết các bước thực hiện:
 
-## 📋 2. BẢNG TRA CỨU BỘ PROMPT CỐT LÕI (PHIÊN BẢN CẬP NHẬT 2026)
-
-| STT | File Prompt | Mục Tiêu & Dữ Liệu Sinh Ra | Định Dạng | Nơi Lưu / Cách Nạp Vào Hệ Thống |
-| :---: | :--- | :--- | :---: | :--- |
-| **01** | [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) | **Master Phác Đồ Phân Nhánh Lâm Sàng & Đa Phương Án Điều Trị**<br>• Cấu hình 6 trục phân nhánh lâm sàng (`severity`, `phenotype`, `triage_score`, `treatment_step`, `stage`, `comorbidity`)<br>• Phác đồ chi tiết từng nhánh (Bảng 4 cột `timelinePhases`, 6 đầu mục)<br>• **Mở rộng toàn diện kháng sinh & thuốc**: Kháng sinh ưu tiên hàng 1, phương án thay thế (dị ứng/kháng thuốc), phối hợp, chỉnh liều eGFR, xuống thang IV-to-PO<br>• Cảnh báo ranh giới, Chống chỉ định, Tương tác thuốc DDI | **JSON** | Lưu vào:<br>`src/content/docspace/data/enriched/<slug>.json`<br><br>*Tự động đồng bộ bằng lệnh:*<br>`node tools/scripts/sync-clinical-db.mjs` |
-| **02** | [`02-prompt-tieu-chuan-chan-doan-cdss.txt`](02-prompt-tieu-chuan-chan-doan-cdss.txt)<br>*(kèm [`02-prompt-ca-mau-va-trong-so.txt`](02-prompt-ca-mau-va-trong-so.txt))* | **Bộ Tiêu Chuẩn Chẩn Đoán Xác Định, Ma Trận CDSS & Ca Mẫu**<br>• **Khối 1: Tiêu chuẩn Chẩn đoán**: Tiêu chuẩn vàng `goldStandard`, quy tắc chẩn đoán `criteriaRule` (bắt buộc, chính, phụ) và mảng `criteria[]` định lượng<br>• **Khối 2: Ma trận trọng số CDSS**: Phân tầng vai trò (`dt`: đặc hiệu, `gy`: gợi ý, `ht`: hỗ trợ, `loaitru`: loại trừ)<br>• **Khối 3: Ca lâm sàng mẫu Bước 1**: Đầy đủ sinh hiệu, xét nghiệm, triệu chứng chọn trước để thử nghiệm CDSS | **JSON** | 1. Tiêu chuẩn CĐ: Nạp vào `src/content/docspace/data/enriched/<slug>.json` hoặc Kho Chẩn Đoán<br>2. Trọng số: `src/content/knowledge-vault/data/diseases/<chuyen_khoa>.json`<br>3. Ca mẫu: `src/content/knowledge-vault/data/sample-clinical-cases.json` |
-| **03** | [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) | **Hồ Sơ Ca Bệnh Thực Chiến SOAP & Hạt Ngọc Lâm Sàng**<br>• Bác sĩ chủ biên: `authorDoctor: "BS. YooDong"`<br>• Tiêu đề (`title`): Ngắn gọn chuẩn xác tên bệnh lý (VD: "Sốt xuất huyết Dengue", "Sốt thương hàn")<br>• 4 Hạt ngọc lâm sàng (Pearls & Pitfalls), Bảng đặt vấn đề 3 tầng (PGS.TS Hoàng Văn Sĩ)<br>• **Mục 4 Plan mở rộng toàn diện kháng sinh & điều trị**: Phương án lựa chọn 1, phương án thay thế khi dị ứng/nguy cơ kháng thuốc, phối hợp, chỉnh liều eGFR, tiêu chuẩn xuống thang IV-to-PO | **Markdown** | **Cách 1 (Nhanh nhất):**<br>Mở Web DocSpace ➔ Bấm nút **"Nạp ca từ NotebookLM"** trên Header ➔ Dán Markdown vào.<br><br>**Cách 2 (Lưu vĩnh viễn):**<br>Lưu file `src/content/docspace/data/ba/soap-<slug>-01.md`<br>Chạy `node tools/scripts/ingest-notebooklm-case.mjs` |
-| **04** | [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) | **Bộ Trích Xuất Từ Điển Triệu Chứng 12 Hệ Cơ Quan & Hội Chứng Liên Quan**<br>• Trích xuất 100% triệu chứng cơ năng, thực thể, cận lâm sàng, tiền căn, dịch tễ<br>• Phân loại chuẩn xác vào 12 tệp hệ cơ quan (`symptoms/*.json`)<br>• Cấu hình quy tắc tự suy định lượng `map` từ sinh hiệu/xét nghiệm<br>• **Tích hợp Hội chứng lâm sàng (Prompt 05)**: Xuất kèm theo hội chứng lâm sàng đặc trưng (`syndromes`), không cần chạy prompt rời rạc! | **JSON** | Lưu tạm ra file JSON ➔ Tự động nạp bằng:<br>`node tools/scripts/ingest-disease-symptoms.mjs <file.json>`<br><br>*Tự động phân loại, lọc trùng & đồng bộ Master Dictionary.* |
-| **05** | [`05-prompt-trich-xuat-hoi-chung.txt`](05-prompt-trich-xuat-hoi-chung.txt) | **Trích Xuất Hội Chứng Lâm Sàng Độc Lập (Syndrome Vault)**<br>• Dùng khi cần biên soạn hội chứng kinh điển độc lập (VD: HC Thận hư, HC Suy tế bào gan...)<br>• Cơ chế bệnh sinh, Tiêu chuẩn xác định, Chẩn đoán phân biệt, Hạt ngọc lâm sàng | **JSON** | Lưu vào:<br>`src/content/docspace/data/syndromes/<chuyen_khoa>/<id>.json`<br><br>*Tự động cập nhật Registry:*<br>`node tools/scripts/build-syndrome-registry.mjs` |
-
----
-
-## 🧭 3. HƯỚNG DẪN BIÊN SOẠN BỆNH LÝ MỚI TINH GỌN
-
-Khi bạn muốn biên soạn bất kỳ bệnh lý nào (ví dụ: Sốt xuất huyết Dengue, Sốt thương hàn, Suy tim cấp, Viêm phổi mắc phải cộng đồng...):
-
-### 🔹 Bước 1: Mở NotebookLM & Chọn Tài Liệu Nguồn
-1. Tải lên NotebookLM các tài liệu chuẩn (Hướng dẫn Bộ Y Tế, Phác đồ Bệnh viện Bạch Mai / Chợ Rẫy, Guidelines quốc tế).
-2. Tải thêm file `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md` (nếu cần đối soát ID triệu chứng có sẵn).
-
-### 🔹 Bước 2 (Nếu bệnh có triệu chứng / hội chứng mới): Chạy Prompt 04
-- Dán [`04-prompt-trich-xuat-trieu-chung-symptoms.txt`](04-prompt-trich-xuat-trieu-chung-symptoms.txt) vào NotebookLM.
-- Nhận về khối JSON gồm cả 12 hệ cơ quan và Hội chứng liên quan.
-- Chạy lệnh nạp 1-chạm: `node tools/scripts/ingest-disease-symptoms.mjs <file.json>`.
-
-### 🔹 Bước 3: Chạy Bộ 3 Prompt Cốt Lõi
-1. **Chạy Prompt 02 (Tiêu chuẩn chẩn đoán & Ma trận CDSS & Ca mẫu)**:
-   - Dán [`02-prompt-tieu-chuan-chan-doan-cdss.txt`](02-prompt-tieu-chuan-chan-doan-cdss.txt) vào NotebookLM.
-   - Nhận về Tiêu chuẩn vàng, Quy tắc chẩn đoán, Tiêu chuẩn định lượng, Ma trận trọng số CDSS `dd` và Ca mẫu.
-2. **Chạy Prompt 01 (Phác đồ phân nhánh & Điều trị đa phương án)**:
-   - Dán [`01-prompt-phac-do-phan-nhanh.txt`](01-prompt-phac-do-phan-nhanh.txt) vào NotebookLM.
-   - Nhận về Phác đồ phân nhánh 6 trục, Bảng 4 cột timeline, và danh mục thuốc (mở rộng đầy đủ kháng sinh lựa chọn 1, thay thế, phối hợp, chỉnh liều eGFR).
-   - Lưu vào `src/content/docspace/data/enriched/<slug>.json`.
-3. **Chạy Prompt 03 (Hồ sơ ca thực chiến SOAP)**:
-   - Dán [`03-prompt-ho-so-ca-benh-soap.txt`](03-prompt-ho-so-ca-benh-soap.txt) vào NotebookLM.
-   - Nhận về bài viết Markdown SOAP chuẩn (`authorDoctor: "BS. YooDong"`, title ngắn gọn, Plan mở rộng kháng sinh & điều trị).
-   - Mở DocSpace nhấn nút **"Nạp ca từ NotebookLM"** để nạp 1-chạm!
-
-### 🔹 Bước 4: Đồng Bộ & Kiểm Tra CSDL
-Chạy lệnh kiểm định tự động từ terminal để xác nhận tính toàn vẹn 100%:
-```powershell
-node tools/scripts/sync-clinical-db.mjs
-```
+1. **Chuẩn bị nguồn (NotebookLM)**: Tải tài liệu hướng dẫn điều trị chính thức vào NotebookLM.
+2. **Rà soát triệu chứng (Prompt 04 / 05)**:
+   - Dán Prompt 04 vào NotebookLM để lấy từ điển triệu chứng và hội chứng liên quan.
+   - Chạy `node tools/scripts/ingest-disease-symptoms.mjs <file.json>` để tự động lọc trùng và phân loại vào 12 hệ cơ quan.
+3. **Tiêu chuẩn chẩn đoán & Ma trận CDSS (Prompt 02)**:
+   - Dán Prompt 02 để trích xuất Tiêu chuẩn vàng, quy tắc chẩn đoán định lượng và ma trận trọng số suy luận `dd` (`dt`, `gy`, `ht`, `loaitru`).
+4. **Ca lâm sàng mẫu Bước 1 (Prompt 02b)**:
+   - Dán Prompt 02b để sinh 01 ca bệnh mẫu hoàn chỉnh (sinh hiệu, xét nghiệm, triệu chứng chọn trước).
+   - Thêm vào file `sample-clinical-cases.json` để kiểm thử xem CDSS Bước 3 có gợi ý đúng bệnh hay không.
+5. **Xây dựng phác đồ điều trị (Prompt 01)**:
+   - Điền thông tin bệnh lý ở đầu Prompt 01.
+   - Nhận JSON phác đồ phân nhánh, lưu vào `src/content/docspace/data/enriched/<slug>.json` (ghép với khối tiêu chuẩn từ Prompt 02).
+6. **Tạo ca thực chiến SOAP (Prompt 03)**:
+   - Dán Prompt 03 để sinh hồ sơ ca SOAP dạng Markdown.
+   - Nạp trực tiếp qua nút **"Nạp ca từ NotebookLM"** trên giao diện Web, hoặc lưu vào `data/ba/` rồi chạy script nạp.
+7. **Kiểm định & Đồng bộ**:
+   ```bash
+   node tools/scripts/bundle-clinical-rules.mjs
+   node tools/scripts/sync-clinical-db.mjs
+   ```
 
 ---
 
-## 🔀 4. MA TRẬN 6 TRỤC PHÂN NHÁNH LÂM SÀNG (DYNAMIC BRANCHING)
+## ⚡ 3. Chiến Thuật Xử Lý Bệnh Lý Đồ Sộ (Tránh Cụt Dữ Liệu)
 
-Thay vì tạo nhiều tag rời rạc gây loãng dữ liệu, mỗi bệnh lý chỉ cần **1 file JSON duy nhất** và cấu hình các nhánh bên trong:
+> [!WARNING]
+> NotebookLM đọc được tài liệu dài hàng trăm trang nhưng **output giới hạn ~4.000 - 8.000 tokens** (400 - 600 dòng JSON). Với bệnh lớn (SXH Dengue, Sốc nhiễm khuẩn, Viêm tụy cấp nặng), file JSON hoàn chỉnh có thể vượt 1.000 dòng.
 
-| Trục Phân Nhánh | Mã Trục | Định Nghĩa Y Khoa | Ví Dụ Ứng Dụng |
-| :--- | :---: | :--- | :--- |
-| **Phân độ nặng** | `severity` | Mức độ nghiêm trọng của bệnh | • **SXH Dengue**: Cổ điển ➔ Có dấu hiệu cảnh báo ➔ Sốc SXH Dengue<br>• **Viêm tụy cấp**: Nhẹ ➔ Vừa ➔ Nặng (Atlanta 2012) |
-| **Thể lâm sàng** | `phenotype` | Các kiểu hình / Thể biểu hiện khác nhau | • **Viêm phổi**: Điển hình vs Không điển hình<br>• **Hội chứng mạch vành cấp**: STEMI vs NSTEMI vs Đau thắt ngực không ổn định |
-| **Điểm phân loại nguy cơ** | `triage_score` | Phân nhánh dựa theo thang điểm lâm sàng | • **Viêm phổi**: CURB-65 (0-1: Ngoại trú, 2: Nội trú, $\ge$3: ICU)<br>• **Thuyên tắc phổi**: Thang điểm Wells / Geneva / PESI |
-| **Bậc điều trị** | `treatment_step` | Bậc thang xử trí bậc cao dần | • **Hen phế quản**: GINA Step 1 ➔ Step 5<br>• **Đái tháo đường típ 2**: Đơn trị ➔ Phối hợp 2 thuốc ➔ Phối hợp 3 thuốc ➔ Insulin |
-| **Giai đoạn tiến triển** | `stage` | Các giai đoạn theo thời gian của bệnh | • **Sốt xuất huyết Dengue**: Ngày 1-3 (Sốt) ➔ Ngày 4-6 (Nguy hiểm) ➔ Ngày 7-10 (Hồi phục)<br>• **Bệnh thận mạn**: Giai đoạn 1 ➔ Giai đoạn 5 |
-| **Bệnh đồng mắc & Đối tượng đặc biệt** | `comorbidity` | Phác đồ cá thể hóa cho ca bệnh đặc thù | • Bệnh nhân có thai, Suy thận mạn (eGFR < 30), Suy gan nặng, Người cao tuổi đa bệnh lý |
+Áp dụng 2 chiến thuật sau để không bị mất dữ liệu:
+
+1. **Chiến thuật Sinh Từng Nhánh (Branch-by-Branch - Khuyên dùng)**:
+   - **Lượt 1**: Dán Prompt 01 và yêu cầu: *"Chỉ xuất phần Header chung, tiêu chuẩn criteria[] và Nhánh 1 (nhẹ) + Nhánh 2 (cảnh báo)"*.
+   - **Lượt 2**: Chat tiếp: *"Bây giờ hãy viết tiếp object JSON chi tiết cho Nhánh 3 (Nặng / Sốc / ICU) gồm bảng 4 cột và y lệnh dịch truyền"*.
+   - **Ghép nối**: Dán object Nhánh 3 vào mảng `branches: [ ... ]` của file JSON.
+2. **Lệnh "Tiếp Tục" khi dừng ngang**:
+   - Nếu AI ngắt giữa chừng (chưa đóng ngoặc `}`), nhắn ngay:
+     > *"Tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước."*
 
 ---
 
-## 🛠️ 5. CÁC CÔNG CỤ CLI HỖ TRỢ ĐỒNG BỘ DỮ LIỆU
+## 📐 4. Quy Chuẩn Dữ Liệu Bắt Buộc
 
-| Lệnh CLI | Chức Năng |
+- **Ký hiệu toán học & SI**: Dùng `≥`, `≤`, `±`, `×` (không dùng `>=`, `<=`, `+/-`). Đơn vị: `°C`, `µmol/L`, `mL/kg/h`, `G/L` (thay vì `/mm³`).
+- **Khử rò rỉ HTML Entities**: Viết trực tiếp `>`, `<`, `"`, `&` trong JSON/Markdown. Tuyệt đối không để sót `&gt;`, `&lt;`, `&quot;`, `&amp;`.
+- **Viết tắt y khoa chuẩn mực**:
+  - Sinh hiệu: `HA`, `HATT`, `HATTr`, `M`, `NT`, `SpO₂` (chữ O hoa, chỉ số dưới ₂), `CRT`, `GCS`.
+  - Huyết học: `Hct` (H hoa, ct thường), `PLT`, `WBC`, `RBC`, `Hb`, `INR`.
+  - Hóa sinh: `AST`, `ALT`, `eGFR` (e thường, GFR hoa), `Cr`, `CRP`, `PCT`.
+  - Cận lâm sàng: `XQ`, `SA`, `CT`, `MRI`, `ECG`, `KMĐM`.
+  - Đường dùng: `IV`, `PO`, `SC`, `IM`, `TTM`, `q6h`, `q8h`, `STAT`.
+- **Nhãn trực diện**: Lược bỏ tiền tố rườm rà như `[Lâm sàng]:`, `[Xét nghiệm]:`. Tên tiêu chuẩn phải đi thẳng vào ngưỡng định lượng (VD: `Hct tăng ≥ 20%`, `Tiểu cầu < 100 G/L`).
+
+---
+
+## 🛠️ 5. Bảng Tra Cứu Lệnh CLI Hỗ Trợ
+
+| Lệnh Thực Thi | Mục Đích |
 | :--- | :--- |
-| `node tools/scripts/sync-clinical-db.mjs` | **Audit & Đồng bộ tổng lực CSDL**: Kiểm tra toàn bộ file enriched, liên kết CDSS, cập nhật metadata và báo cáo lỗi nếu có. |
-| `node tools/scripts/bundle-clinical-rules.mjs` | Đóng gói từ điển triệu chứng và quy tắc suy luận CDSS thành bundle tĩnh chạy offline. |
-| `node tools/scripts/build-enriched-cdss.mjs` | Kiểm tra tính tương thích của các trường phác đồ, tương tác thuốc DDI và bảng 4 cột. |
-| `node tools/scripts/build-syndrome-registry.mjs` | **Tự động quét & biên dịch Kho Hội Chứng Lâm Sàng**: Đọc toàn bộ file JSON trong `data/syndromes/`, tự động sinh `index.ts` và danh mục tra cứu 2 chiều. |
-| `node tools/scripts/ingest-notebooklm-case.mjs <file>` | Phân tích cú pháp file Markdown SOAP và nạp vào Knowledge Vault. |
-
----
-
-## 💡 6. BÍ KÍP THỰC CHIẾN XỬ LÝ PHÁC ĐỒ ĐỒ SỘ (VÍ DỤ: SỐT XUẤT HUYẾT DENGUE)
-
-### ⚠️ Giới hạn kỹ thuật của NotebookLM / LLM:
-- **Đọc hiểu (Input)**: Rất lớn (hàng triệu tokens, đọc hết tài liệu hàng trăm trang của Bộ Y Tế).
-- **Xuất bản (Output giới hạn)**: Thường dừng ở mức **4.000 – 8.000 tokens** (khoảng 400 – 600 dòng JSON).
-- Với những bệnh lý có phác đồ đồ sộ như **Sốt xuất huyết Dengue**, **Viêm tụy cấp nặng**, **Nhiễm trùng huyết**: Toàn bộ file JSON hoàn chỉnh dài tới **hơn 1.400 dòng** (~80 KB). Nếu ép AI sinh trong 1 lượt trả lời, AI sẽ tự động **tóm tắt lướt qua** làm mất chi tiết y lệnh hoặc bị **ngắt cụt giữa chừng**!
-
-### 🎯 2 Chiến Thuật Giải Quyết Triệt Để:
-
-#### 👉 Chiến Thuật 1: Sinh Từng Nhánh (Branch-by-Branch Ingestion) — KHUYÊN DÙNG NHẤT
-Nhờ kiến trúc Dynamic Branching đã module hóa các nhánh thành từng object độc lập trong mảng `branches: [ ... ]`, bạn hãy chia làm 2 lượt:
-1. **Lượt 1 (Khung chung + Nhánh nhẹ)**:
-   - Dán Prompt 01 và thêm ghi chú:
-     > *"Hãy sinh phần Header chung, Tiêu chuẩn chẩn đoán criteria[] và chi tiết của Nhánh 1 (SXH Dengue cổ điển) & Nhánh 2 (SXH Dengue có cảnh báo)."*
-2. **Lượt 2 (Nhánh nặng / Cấp cứu / ICU)**:
-   - Chat tiếp ngay trong Notebook:
-     > *"Bây giờ hãy viết tiếp object JSON chi tiết cho Nhánh 3 (Sốc SXH Dengue & Sốc SXH Dengue nặng) bao gồm toàn bộ phác đồ dịch truyền nấc thang, bảng 4 cột và y lệnh cấp cứu."*
-3. **Ghép lại**:
-   - Copy object Nhánh 3 dán vào mảng `branches` của file JSON. Cực kỳ nhanh, giữ nguyên 100% y lệnh chi tiết từng mililit dịch!
-
-#### 👉 Chiến Thuật 2: Kỹ Thuật Lệnh "Tiếp Tục" (Khi bị dừng ngang)
-- Nếu đang chạy mà thấy AI dừng lại giữa chừng (chưa đóng ngoặc `}`):
-- Đừng yêu cầu nó viết lại từ đầu! Hãy gõ ngay vào khung chat:
-  > *"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước"*
-- AI sẽ viết tiếp phần còn lại $\rightarrow$ Bạn ghép 2 đoạn lại là hoàn chỉnh.
-
----
-
-## 🔤 8. QUY CHUẨN VIẾT TẮT Y KHOA, KÝ TỰ SI & KHỬ TIỀN TỐ THỪA (COMPACT MEDICAL STANDARDS)
-
-Để bảo đảm giao diện DocSpace luôn sắc nét, tinh gọn, không bị vỡ layout trên thiết bị di động và tối ưu hóa số lượng token của LLM, toàn bộ các Prompt và CSDL bắt buộc tuân thủ:
-
-### 1. Viết tắt Y khoa Chuẩn mực (Strict Medical Abbreviations):
-| Phân Nhóm | Từ Viết Tắt Chuẩn | Ý Nghĩa Lâm Sàng & Quy Cách |
-| :--- | :--- | :--- |
-| **Sinh hiệu & Khám** | `HA`, `HATT`, `HATTr`, `M`, `NT`, `SpO₂`, `CRT`, `GCS`, `BMI` | Chữ `SpO₂` bắt buộc viết hoa `O` và chỉ số dưới `₂`; `CRT` (đổ đầy mao mạch), `GCS` (Glasgow). |
-| **Huyết học & Đông máu** | `Hct`, `PLT`, `WBC`, `RBC`, `Hb`, `INR`, `aPTT`, `PT`, `Fibrinogen` | `Hct` (chữ H hoa, ct thường); `PLT` (Tiểu cầu); `WBC` (Bạch cầu). |
-| **Hóa sinh & Tạng** | `AST`, `ALT`, `GGT`, `eGFR`, `Cr` / `Creatinine`, `CRP`, `PCT`, `KMĐM` | `eGFR` (chữ e thường, GFR hoa); `KMĐM` (Khí máu động mạch). |
-| **CĐHA & Thăm dò** | `XQ`, `SA`, `CT`, `MRI`, `ECG` | `XQ` (X-quang ngực thẳng); `SA` (Siêu âm); `ECG` (Điện tâm đồ). |
-| **Vi sinh & Miễn dịch** | `NS1 Ag`, `RT-PCR`, `IgM`, `IgG` | Test nhanh ghi `NS1 Ag (+)`, `Dengue RNA (+)`. |
-| **Bệnh học & Phân hệ** | `SXH` / `SXHD`, `DTH`, `TCCN`, `TCTT`, `CLS`, `DHST`, `TC`, `LDVV`, `ICU` | Tuyệt đối không viết tắt lóng kiểu chat (`ns1 pos`, `ha tut`). |
-| **Đường dùng & Tần suất** | `IV`, `PO`, `SC`, `IM`, `TTM`, `Bolus`, `q1h`, `q2h`, `q4h`, `q6h`, `q8h`, `q12h`, `STAT` | `STAT` (Y lệnh khẩn cấp); `TTM` (Truyền tĩnh mạch); `q4h` (mỗi 4 giờ). |
-
-### 2. Ký tự Toán học & Đơn vị SI Chuẩn (Typography & SI Units):
-- **Toán tử so sánh**: Dùng `≥` (thay vì `>=`), `≤` (thay vì `<=`), `±` (thay vì `+/-`), `×` (dấu nhân thay vì `*` hoặc `x`).
-- **Khử 100% rò rỉ HTML entities**: Viết trực tiếp `>`, `<`, `"`, `&` trong file JSON/Markdown, tuyệt đối không để lọt `&gt;`, `&lt;`, `&quot;`, `&amp;`.
-- **Đơn vị SI y khoa**: Dùng `°C`, `µmol/L`, `µg`, `mL/kg/h`, `G/L` (thay vì `/mm³` hay `ngàn/mm3`), `mmol/L`, `mEq/L`, `UI`.
-
-### 3. Tinh gọn Nhãn & Văn phong Y lệnh Thực chiến:
-- **Lược bỏ tiền tố thừa**: Không đưa các cụm như `[Lâm sàng]: ...`, `[Cận lâm sàng]: ...`, `"Dấu hiệu cảnh báo: ..."`, `"Xét nghiệm: ..."` vào nhãn nút bấm hoặc tên tiêu chuẩn (`criteria.label`). Nhãn phải ngắn gọn, trực diện, nhấn mạnh ngưỡng định lượng (Ví dụ: `Cô đặc máu (Hct tăng ≥ 20% hoặc Hct > 45%)`, `Tiểu cầu giảm dốc đứng (< 100 G/L)`).
-- **Văn phong y lệnh thực chiến**: Ngắn gọn, dứt khoát, súc tích (kiểu y lệnh quân đội/bệnh viện), tránh văn xuôi dài dòng rườm rà.
-
----
-
-## 📦 9. LƯU TRỮ VẾT (ARCHIVE)
-
-Các prompt phiên bản cũ (Prompt 00 đến 09 cũ) đã được di chuyển an toàn vào thư mục lưu trữ:
-- 📁 **Đường dẫn**: `src/content/docspace/docs/prompts/archive/`
-- Bạn luôn có thể tra cứu lại các prompt cũ tại thư mục này khi cần tham khảo lịch sử phát triển.
-
-
+| `node tools/scripts/sync-clinical-db.mjs` | **Audit & đồng bộ toàn diện CSDL**: Rà soát file enriched, liên kết CDSS, cập nhật metadata |
+| `node tools/scripts/ingest-disease-symptoms.mjs <file.json>` | Nạp và tự động phân loại triệu chứng vào 12 hệ cơ quan, khử trùng lặp |
+| `node tools/scripts/build-syndrome-registry.mjs` | Quét thư mục `data/syndromes/`, tự động tạo registry và danh mục tra cứu 2 chiều |
+| `node tools/scripts/ingest-notebooklm-case.mjs [path]` | Phân tích cú pháp file Markdown SOAP và đồng bộ vào Knowledge Vault |
+| `node tools/scripts/bundle-clinical-rules.mjs` | Đóng gói từ điển triệu chứng & luật CDSS thành bundle tĩnh chạy offline |

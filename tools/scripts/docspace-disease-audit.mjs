@@ -134,7 +134,7 @@ function auditDisease(slug) {
   }
 
   // 5. Kiểm tra Tồn tại trong Clinical Rules Diseases (Kho Chuyên Khoa)
-  const disDir = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/diseases');
+  const disDir = path.join(ROOT_DIR, 'src/content/docspace/data/diseases');
   let disList = [];
   try {
     const files = fs.readdirSync(disDir).filter(f => f.endsWith('.json'));
@@ -168,7 +168,7 @@ function auditDisease(slug) {
   }
 
   // 6. Kiểm tra Toàn vẹn Triệu chứng (Zero Orphan Symptoms)
-  const symPath = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/clinical-rules-symptoms.json');
+  const symPath = path.join(ROOT_DIR, 'src/content/docspace/data/clinical-rules-symptoms.json');
   let symList = [];
   try {
     symList = JSON.parse(fs.readFileSync(symPath, 'utf8'));
@@ -188,7 +188,7 @@ function auditDisease(slug) {
   }
 
   // 7. Kiểm tra Ca Bệnh Mẫu (Sample Case) ở Bước 1
-  const casesPath = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/sample-clinical-cases.json');
+  const casesPath = path.join(ROOT_DIR, 'src/content/docspace/data/sample-clinical-cases.json');
   let sampleCases = [];
   try {
     sampleCases = JSON.parse(fs.readFileSync(casesPath, 'utf8'));

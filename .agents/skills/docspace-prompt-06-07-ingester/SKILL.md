@@ -21,20 +21,20 @@ Mỗi lượt tạo dữ liệu từ NotebookLM cho một mặt bệnh thường
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │ PROMPT 06                                                                              │
 │ ├── PHẦN 1: CA LÂM SÀNG MẪU THỰC TẾ (JSON)                                             │
-│ │   ➔ Nạp vào: src/content/knowledge-vault/data/sample-clinical-cases.json             │
+│ │   ➔ Nạp vào: src/content/docspace/data/sample-clinical-cases.json             │
 │ │   ➔ Phục vụ: Nút tải ca mẫu tại Bước 1 (Data Ingestion) của DocSpace                 │
 │ │   ➔ Cung cấp: epiContext (Bối cảnh dịch tễ), vitals (Sinh hiệu), form (Bệnh sử)     │
 │ │                                                                                      │
 │ └── PHẦN 2: MA TRẬN TRỌNG SỐ SUY LUẬN CDSS                                             │
 │     ├── 1. Bổ sung triệu chứng vào từ điển (JSON Array)                                │
-│     │   ➔ Nạp vào: src/content/knowledge-vault/data/clinical-rules-symptoms.json      │
+│     │   ➔ Nạp vào: src/content/docspace/data/clinical-rules-symptoms.json      │
 │     └── 2. Thực thể bệnh & Ma trận suy luận dd (JSON Object)                           │
-│         ➔ Nạp vào: src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json        │
+│         ➔ Nạp vào: src/content/docspace/data/diseases/<chuyen-khoa>.json        │
 │         ➔ Đồng bộ Master KB: node tools/scripts/bundle-clinical-rules.mjs              │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │ PROMPT 07                                                                              │
 │ └── HỒ SƠ CA BỆNH THỰC CHIẾN SOAP (YAML Frontmatter + Markdown Thân bài S-O-A-P)       │
-│     ➔ Lưu tệp: src/content/knowledge-vault/ba/<caseId>.md                              │
+│     ➔ Lưu tệp: src/content/docspace/data/ba/<caseId>.md                              │
 │     ➔ Đồng bộ Catalog: node tools/scripts/ingest-notebooklm-case.mjs <file.md>         │
 │     ➔ Phục vụ: Mục 9 Bước 4 Chu trình lâm sàng & Sổ tay Thực hành SOAP                 │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
@@ -82,7 +82,7 @@ Công cụ `tools/scripts/ingest-prompt-06-07.mjs` đã được trang bị cơ 
    - Phân tích trường `"nhom"` để ghi đúng tệp `diseases/<chuyen-khoa>.json`.
    - Tự động chạy `bundle-clinical-rules.mjs` để cập nhật `clinical-rules-kb.json`.
 4. **Lưu trữ SOAP Markdown & Đồng bộ Catalog Kép**:
-   - Lưu trữ tại `src/content/knowledge-vault/ba/<caseId>.md`.
+   - Lưu trữ tại `src/content/docspace/data/ba/<caseId>.md`.
    - Tự động chạy `ingest-notebooklm-case.mjs` để cập nhật cả 2 catalog (`vault-catalog-thuc-hanh.json` và `vault-catalog.json`).
 5. **Tự động biên dịch Enriched CDSS**:
    - Tự động chạy `build-enriched-cdss.mjs` để đăng ký các bệnh lý enriched mới vào `src/content/docspace/data/enriched/index.ts`.
@@ -103,10 +103,10 @@ Nếu gặp trường hợp đặc biệt cần can thiệp thủ công từng b
 
 | Bước | Hành động | Tệp đích | Lệnh đồng bộ |
 | :---: | :--- | :--- | :--- |
-| **1** | Bổ sung Triệu chứng | `src/content/knowledge-vault/data/clinical-rules-symptoms.json` | Tự động cập nhật |
-| **2** | Bổ sung Thực thể bệnh | `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json` | `node tools/scripts/bundle-clinical-rules.mjs` |
-| **3** | Bổ sung Ca mẫu | `src/content/knowledge-vault/data/sample-clinical-cases.json` | Tự động cập nhật |
-| **4** | Lưu SOAP Markdown | `src/content/knowledge-vault/ba/<caseId>.md` | `node tools/scripts/ingest-notebooklm-case.mjs <file.md>` |
+| **1** | Bổ sung Triệu chứng | `src/content/docspace/data/clinical-rules-symptoms.json` | Tự động cập nhật |
+| **2** | Bổ sung Thực thể bệnh | `src/content/docspace/data/diseases/<chuyen-khoa>.json` | `node tools/scripts/bundle-clinical-rules.mjs` |
+| **3** | Bổ sung Ca mẫu | `src/content/docspace/data/sample-clinical-cases.json` | Tự động cập nhật |
+| **4** | Lưu SOAP Markdown | `src/content/docspace/data/ba/<caseId>.md` | `node tools/scripts/ingest-notebooklm-case.mjs <file.md>` |
 | **5** | Biên dịch Enriched | `src/content/docspace/data/enriched/index.ts` | `node tools/scripts/build-enriched-cdss.mjs` |
 | **6** | Ánh xạ Alias | `src/content/docspace/data/diagnostic-criteria-database.ts` | Thêm `'<alias>': ENRICHED_DISEASES['<key>']` |
 | **7** | Hồ sơ Dịch tễ | `src/content/docspace/src/data/epidemiology-context-database.ts` | Khai báo object bối cảnh |

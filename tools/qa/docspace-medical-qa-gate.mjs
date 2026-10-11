@@ -13,14 +13,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '../..');
 
-const kbPath = path.join(rootDir, 'src/content/knowledge-vault/data/clinical-rules-kb.json');
-const symPath = path.join(rootDir, 'src/content/knowledge-vault/data/clinical-rules-symptoms.json');
-const disDir = path.join(rootDir, 'src/content/knowledge-vault/data/diseases');
-const casesPath = path.join(rootDir, 'src/content/knowledge-vault/data/sample-clinical-cases.json');
+const kbPath = path.join(rootDir, 'src/content/docspace/data/clinical-rules-kb.json');
+const symPath = path.join(rootDir, 'src/content/docspace/data/clinical-rules-symptoms.json');
+const disDir = path.join(rootDir, 'src/content/docspace/data/diseases');
+const casesPath = path.join(rootDir, 'src/content/docspace/data/sample-clinical-cases.json');
 const enrichedDir = path.join(rootDir, 'src/content/docspace/data/enriched');
-const baDir = fs.existsSync(path.join(rootDir, 'src/content/docspace/data/ba'))
-  ? path.join(rootDir, 'src/content/docspace/data/ba')
-  : path.join(rootDir, 'src/content/knowledge-vault/ba');
+const baDir = path.join(rootDir, 'src/content/docspace/data/ba');
 
 console.log('╔══════════════════════════════════════════════════════════════════════╗');
 console.log('║       🩺 CLINI-DOCSPACE MEDICAL KNOWLEDGE STANDARDIZATION GATE       ║');

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
+const DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
 const SYMPTOMS_DIR = path.join(DATA_DIR, 'symptoms');
 const INPUT_FILE = path.join(DATA_DIR, 'clinical-rules-symptoms.json');
 

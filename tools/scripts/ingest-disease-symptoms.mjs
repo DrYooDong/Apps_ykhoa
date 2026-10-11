@@ -19,7 +19,7 @@ import { bundleSymptoms } from './bundle-symptoms.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
+const DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
 const SYMPTOMS_DIR = path.join(DATA_DIR, 'symptoms');
 
 const VALID_FILES = new Set([

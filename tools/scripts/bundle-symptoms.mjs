@@ -15,9 +15,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
+const DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
+const RUNTIME_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/src/data');
 const SYMPTOMS_DIR = path.join(DATA_DIR, 'symptoms');
 const OUT_SYMPTOMS_PATH = path.join(DATA_DIR, 'clinical-rules-symptoms.json');
+const OUT_RUNTIME_SYMPTOMS_PATH = path.join(RUNTIME_DATA_DIR, 'clinical-rules-symptoms.json');
 const OUT_MD_DICT_PATH = path.join(DATA_DIR, 'DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md');
 
 const SYSTEM_NAMES = {
@@ -182,6 +184,9 @@ export function bundleSymptoms() {
 
   // 1. Ghi vào clinical-rules-symptoms.json (cho website runtime)
   fs.writeFileSync(OUT_SYMPTOMS_PATH, JSON.stringify(allSymptoms, null, 2) + '\n', 'utf8');
+  if (fs.existsSync(RUNTIME_DATA_DIR)) {
+    fs.writeFileSync(OUT_RUNTIME_SYMPTOMS_PATH, JSON.stringify(allSymptoms, null, 2) + '\n', 'utf8');
+  }
   console.log(`\n✅ [1/2] Đã đồng bộ Master Symptoms JSON: ${OUT_SYMPTOMS_PATH}`);
 
   // 2. Ghi vào DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md (cho NotebookLM)

@@ -22,9 +22,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '../../');
 
-const SYMPTOMS_PATH = path.join(rootDir, 'src/content/knowledge-vault/data/clinical-rules-symptoms.json');
-const KB_PATH = path.join(rootDir, 'src/content/knowledge-vault/data/clinical-rules-kb.json');
-const CASES_PATH = path.join(rootDir, 'src/content/knowledge-vault/data/sample-clinical-cases.json');
+const SYMPTOMS_PATH = path.join(rootDir, 'src/content/docspace/data/clinical-rules-symptoms.json');
+const KB_PATH = path.join(rootDir, 'src/content/docspace/data/clinical-rules-kb.json');
+const CASES_PATH = path.join(rootDir, 'src/content/docspace/data/sample-clinical-cases.json');
 
 const isFixMode = process.argv.includes('--fix');
 

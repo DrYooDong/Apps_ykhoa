@@ -1,5 +1,5 @@
 /**
- * CliniPortal — Knowledge Vault Clinical Rules Diseases Registry
+ * CliniPortal DocSpace — Clinical Rules Diseases Registry
  * Tập hợp bệnh lý cốt lõi CDSS phân tách theo 9 chuyên khoa
  */
 

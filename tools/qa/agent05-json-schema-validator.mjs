@@ -5,7 +5,7 @@
  * CliniPortal QA Agent Squad
  * 
  * Chức năng:
- *  1. Quét toàn bộ file JSON bệnh học trong src/content/knowledge-vault/data/diseases/.
+ *  1. Quét toàn bộ file JSON bệnh học trong src/content/docspace/data/diseases/.
  *  2. Phát hiện lỗi ký tự gạch dưới bị escape sai cú pháp ("\\_" thay vì "_").
  *  3. Xác thực cấu trúc mảng suy luận lâm sàng `dd`:
  *     - Mỗi phần tử phải là mảng đúng 3 giá trị: [symptom_id, weight, type].
@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '../..');
-const DISEASES_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/diseases');
+const DISEASES_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/diseases');
 const CATALOG_FILE = path.join(ROOT_DIR, 'src/content/knowledge-vault/data/vault-catalog.json');
 
 const isFixMode = process.argv.includes('--fix');

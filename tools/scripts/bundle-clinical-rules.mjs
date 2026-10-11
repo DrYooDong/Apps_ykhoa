@@ -1,6 +1,6 @@
 /**
  * CliniPortal — Bundle Specialty Clinical Rules Diseases
- * Đồng bộ dữ liệu các tệp chuyên khoa trong src/content/knowledge-vault/data/diseases/*.json
+ * Đồng bộ dữ liệu các tệp chuyên khoa trong src/content/docspace/data/diseases/*.json
  * vào Master Clinical Rules KB (clinical-rules-kb.json).
  * 
  * Chạy bằng: node tools/scripts/bundle-clinical-rules.mjs
@@ -13,9 +13,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
-const DISEASES_DIR = path.join(DATA_DIR, 'diseases');
-const OUT_KB_PATH = path.join(DATA_DIR, 'clinical-rules-kb.json');
+const DOCSPACE_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
+const DISEASES_DIR = path.join(DOCSPACE_DATA_DIR, 'diseases');
+const OUT_KB_PATH = path.join(DOCSPACE_DATA_DIR, 'clinical-rules-kb.json');
 
 function bundleDiseases() {
   console.log('🔄 Đang gom các tệp bệnh lý chuyên khoa từ:', DISEASES_DIR);

@@ -18,8 +18,8 @@ import { bundleSymptoms } from './bundle-symptoms.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '../..');
-const VAULT_DATA_DIR = path.join(ROOT_DIR, 'src/content/knowledge-vault/data');
-const SYMPTOMS_DIR = path.join(VAULT_DATA_DIR, 'symptoms');
+const DOCSPACE_DATA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data');
+const SYMPTOMS_DIR = path.join(DOCSPACE_DATA_DIR, 'symptoms');
 
 const SYSTEM_MAP = {
   'toàn thân': 'toan-than.json',

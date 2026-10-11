@@ -71,7 +71,7 @@ Từ phiên bản v3.0, toàn bộ hệ thống prompt được tinh gọn thàn
 | :---: | :--- | :--- | :--- | :--- |
 | **01** | `01-prompt-phac-do-phan-nhanh.txt` | **Master Dynamic Branching JSON** | `src/content/docspace/data/enriched/<slug>.json` | Bước 3 (`criteria`, `severityGrading`, `triage_score`) & Bước 4 (Bảng 4 Cột, 6 Đầu mục & An toàn kê đơn) |
 | **02** | `02-prompt-ca-mau-va-trong-so.txt` | **1. Ca mẫu JSON**<br>**2. Trọng số CDSS** | 1. `sample-clinical-cases.json`<br>2. `data/symptoms/` & `data/diseases/` | Bước 1 (Ca mẫu sinh hiệu/triệu chứng), Bước 2 (DTH), Bước 3 (% Suy luận lâm sàng) |
-| **03** | `03-prompt-ho-so-ca-benh-soap.txt` | **SOAP Markdown Frontmatter** | Nạp 1-chạm trên Web (hoặc lưu `knowledge-vault/ba/`) | Bước 4 (Hội chẩn AI & Ca thực chiến) & Sổ tay kinh nghiệm SOAP |
+| **03** | `03-prompt-ho-so-ca-benh-soap.txt` | **SOAP Markdown Frontmatter** | Nạp 1-chạm trên Web (hoặc lưu `docspace/data/ba/`) | Bước 4 (Hội chẩn AI & Ca thực chiến) & Sổ tay kinh nghiệm SOAP |
 | **Lưu trữ** | `archive/` | Toàn bộ prompt cũ (00-09) | `src/content/docspace/docs/prompts/archive/` | Dùng để tra cứu lịch sử phát triển khi cần |
 
 ---
@@ -132,12 +132,12 @@ Khi nhận dữ liệu sinh ra từ NotebookLM/LLM cho một mặt bệnh mới 
 > Hoặc thực hiện tuần tự thủ công theo các bước dưới đây:
 
 #### Cách làm thủ công:
-1. **Ca mẫu**: Mở `src/content/knowledge-vault/data/sample-clinical-cases.json`: Thêm đối tượng ca bệnh mẫu vào mảng.
-2. **Triệu chứng**: Mở `src/content/knowledge-vault/data/clinical-rules-symptoms.json`: Khai báo các triệu chứng mới (bao gồm cả triệu chứng trong `negated`).
-3. **Thực thể bệnh**: Mở `src/content/knowledge-vault/data/diseases/<chuyen-khoa>.json`: Khai báo thực thể bệnh và ma trận `dd`.
+1. **Ca mẫu**: Mở `src/content/docspace/data/sample-clinical-cases.json`: Thêm đối tượng ca bệnh mẫu vào mảng.
+2. **Triệu chứng**: Mở `src/content/docspace/data/clinical-rules-symptoms.json`: Khai báo các triệu chứng mới (bao gồm cả triệu chứng trong `negated`).
+3. **Thực thể bệnh**: Mở `src/content/docspace/data/diseases/<chuyen-khoa>.json`: Khai báo thực thể bệnh và ma trận `dd`.
 4. **Đồng bộ Master KB**: Chạy `node tools/scripts/bundle-clinical-rules.mjs`.
-5. **Hồ sơ SOAP**: Lưu file Markdown vào `src/content/knowledge-vault/ba/soap-<slug>-01.md`.
-6. **Đồng bộ Catalog**: Chạy `node tools/scripts/ingest-notebooklm-case.mjs src/content/knowledge-vault/ba/soap-<slug>-01.md`.
+5. **Hồ sơ SOAP**: Lưu file Markdown vào `src/content/docspace/data/ba/soap-<slug>-01.md`.
+6. **Đồng bộ Catalog**: Chạy `node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/soap-<slug>-01.md`.
 
 ### Bước 4: Khai Báo Aliasing & Dịch Tễ Học
 1. Khai báo ánh xạ trong `src/content/docspace/data/diagnostic-criteria-database.ts`.

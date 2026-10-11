@@ -1,0 +1,192 @@
+{
+    "icdCode": "A97",
+    "icdPrefixes": [
+        "A97.0",
+        "A97.1",
+        "A97.2"
+    ],
+    "diseaseName": "Sốt xuất huyết Dengue",
+    "specialty": "Truyền nhiễm",
+    "severity": "emergency",
+    "summary": "Sốt xuất huyết Dengue là bệnh truyền nhiễm cấp tính do vi rút Dengue gây nên (với 4 tuýp huyết thanh DEN-1, DEN-2, DEN-3, DEN-4) truyền từ người sang người qua muỗi Aedes aegypti. Bệnh diễn tiến qua 3 giai đoạn: sốt, nguy hiểm (thường ngày 3-7) và hồi phục. Đặc trưng lâm sàng gồm sốt cao đột ngột, xuất huyết, thoát huyết tương gây cô đặc máu, giảm tiểu cầu dốc đứng, nguy cơ dẫn đến sốc giảm thể tích, rối loạn đông máu và suy đa tạng theo Quyết định 2760/QĐ-BYT 2023.",
+    "goldStandard": "Xác chẩn vi rút học bằng xét nghiệm RT-PCR Dengue RNA (+), kháng nguyên NS1 Ag (+) trong 1-7 ngày đầu (ưu tiên 5 ngày đầu), hoặc xét nghiệm huyết thanh tìm IgM/IgG chuyển đảo (hoặc tăng động độ kháng thể gấp ≥ 4 lần giữa 2 mẫu huyết thanh) theo Quyết định 2760/QĐ-BYT 2023.",
+    "criteriaRule": {
+        "mandatoryIds": [
+            "tc_sot_cao_dot_ngot_duoi_7_ngay",
+            "tien_can_song_o_dich_luu_hanh"
+        ],
+        "minMajorRequired": 2,
+        "minMinorRequired": 1,
+        "ruleDescription": "Chẩn đoán ca nghi ngờ khi có Sốt cao đột ngột ≤ 7 ngày + Yếu tố dịch tễ + ít nhất 2 tiêu chuẩn lâm sàng/cận lâm sàng chính. Chẩn đoán xác định khi thỏa ca nghi ngờ kèm ít nhất 1 xét nghiệm vi sinh khẳng định căn nguyên (NS1 Ag dương tính, RT-PCR DENV RNA dương tính, hoặc chuyển đảo huyết thanh IgM/IgG)."
+    },
+    "criteria": [
+        {
+            "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
+            "type": "mandatory",
+            "label": "Sốt cao đột ngột, liên tục ≤ 7 ngày",
+            "description": "Sốt cao đột ngột 39-40°C, liên tục, khó hạ sốt bằng thuốc hạ sốt đơn thuần, kéo dài từ 2 đến 7 ngày.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_sot_cao_dot_ngot_duoi_7_ngay"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_yeu_to_dich_te",
+            "type": "mandatory",
+            "label": "Yếu tố dịch tễ sống hoặc đi đến vùng ổ dịch Dengue",
+            "description": "Bệnh nhân đang sống trong vùng dịch tễ lưu hành hoặc có tiền sử lui tới vùng đang có dịch sốt xuất huyết Dengue trong vòng 14 ngày trước khi phát bệnh.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tien_can_song_o_dich_luu_hanh"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_xuat_huyet_da_niem_lacet",
+            "type": "major",
+            "label": "Chấm xuất huyết dưới da hoặc Nghiệm pháp dây thắt (Lacet) (+)",
+            "description": "Chấm xuất huyết rải rác dưới da ở cẳng tay, cẳng chân, nếp gấp khuỷu; chảy máu chân răng, chảy máu cam hoặc Nghiệm pháp dây thắt dương tính (≥ 20 chấm xuất huyết/6.25 cm²).",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_xuat_huyet_da_niem_lacet_duong_tinh"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.0
+        },
+        {
+            "id": "tc_dau_co_khop_hoc_mat",
+            "type": "major",
+            "label": "Nhức hai hố mắt, đau cơ, đau khớp toàn thân",
+            "description": "Đau nhức sâu sau hai hố mắt, đau mỏi cơ bắp toàn thân, nhức các khớp xương và mình mẩy (sốt gãy xương).",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "nhuc_hai_ho_mat",
+                "dau_co"
+            ],
+            "cdssRole": "gy",
+            "weight": 3.0
+        },
+        {
+            "id": "tc_phat_ban_xung_huyet",
+            "type": "minor",
+            "label": "Phát ban xung huyết da hoặc ban hồi phục",
+            "description": "Da xung huyết đỏ, ban dát sẩn hoặc phát ban hồi phục xuất hiện các khoảng da lành kinh điển (Skin Islands in a Sea of Red).",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "phat_ban_xung_huyet"
+            ],
+            "cdssRole": "gy",
+            "weight": 2.5
+        },
+        {
+            "id": "tc_buon_non_non_oi",
+            "type": "minor",
+            "label": "Buồn nôn, nôn ói, chán ăn",
+            "description": "Cảm giác buồn nôn, nôn mửa nhẹ đến vừa, ăn uống kém, đầy bụng đắng miệng trong giai đoạn sốt.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "buon_non_non"
+            ],
+            "cdssRole": "ht",
+            "weight": 1.5
+        },
+        {
+            "id": "tc_dau_hieu_canh_bao_dws",
+            "type": "major",
+            "label": "Có ít nhất 01 dấu hiệu cảnh báo (Dengue Warning Signs)",
+            "description": "Vật vã, lừ đừ, li bì; Đau bụng nhiều và liên tục hoặc tăng cảm giác đau vùng gan; Nôn ói nhiều (≥ 3 lần/1h hoặc ≥ 4 lần/6h); Xuất huyết niêm mạc; Gan to &gt; 2cm dưới bờ sườn; Tiểu ít; Hct tăng kèm tiểu cầu giảm nhanh dốc đứng; Men gan AST/ALT ≥ 400 U/L; Tràn dịch màng phổi/màng bụng.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+                "lu_du_vat_va_li_bi",
+                "gan_to_dau",
+                "tieu_it",
+                "men_gan_tang",
+                "tran_dich_mang_phoi_mang_bung"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_soc_thoat_huyet_tuong_nang",
+            "type": "major",
+            "label": "Sốc sốt xuất huyết Dengue / Sốc Dengue nặng",
+            "description": "Rối loạn huyết động do thoát huyết tương nặng: Mạch nhanh nhỏ, HA kẹp (hiệu áp ≤ 20 mmHg) hoặc tụt HA; hoặc Sốc nặng (Mạch = 0, HA = 0), chi lạnh ẩm, CRT ≥ 2 giây.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+                "chi_lanh_crt_keo_dai"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_suy_tang_nang_sxhd",
+            "type": "major",
+            "label": "Tổn thương gan nặng (AST/ALT ≥ 1000 U/L) hoặc suy tạng nặng",
+            "description": "Biểu hiện suy tạng nặng bao gồm tổn thương gan nặng / suy gan cấp (AST hoặc ALT ≥ 1000 U/L), rối loạn ý thức / SXHD thể não, suy thận cấp, viêm cơ tim / suy tim.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "men_gan_ast_alt_tang_tren_1000",
+                "sxhd_the_nao_roi_loan_tri_giac",
+                "creatinine_mau_tang_aki"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_cls_ns1_ag_pcr",
+            "type": "lab",
+            "label": "Kháng nguyên NS1 Ag (+) hoặc RT-PCR Dengue RNA (+)",
+            "description": "Xét nghiệm nhanh hoặc ELISA tìm kháng nguyên vi rút NS1 Ag dương tính từ ngày 1 đến ngày 7 (ưu tiên 5 ngày đầu), hoặc RT-PCR Dengue RNA dương tính.",
+            "labThreshold": "NS1 Ag (+) hoặc RT-PCR DENV RNA (+)",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_xet_nghiem_ns1_hoac_pcr_duong_tinh"
+            ],
+            "cdssRole": "dt",
+            "weight": 5.0
+        },
+        {
+            "id": "tc_cls_co_dac_mau_hct",
+            "type": "lab",
+            "label": "Cô đặc máu (Hematocrit tăng ≥ 20% so với trị số ban đầu hoặc Hct &gt; 45%)",
+            "description": "Biến đổi Hematocrit thể hiện tình trạng cô đặc máu do thoát huyết tương: Hct hiện tại tăng ≥ 20% so với trị số nền ban đầu của người bệnh hoặc so với giá trị trung bình quần thể (Hct &gt; 45% ở người lớn).",
+            "labThreshold": "Hct tăng ≥ 20% so với nền hoặc Hct &gt; 45%",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_co_dac_mau_hct_tang_tren_20_phan_tram"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_cls_giam_tieu_cau_duoi_100",
+            "type": "lab",
+            "label": "Số lượng tiểu cầu giảm sâu dốc đứng &lt; 100 G/L (&lt; 100.000/mm³)",
+            "description": "Số lượng tiểu cầu trong xét nghiệm công thức máu giảm dốc đứng dưới 100 G/L, có thể giảm rất sâu &lt; 50 G/L hoặc &lt; 20 G/L trong giai đoạn nguy hiểm.",
+            "labThreshold": "PLT &lt; 100 G/L",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tc_giam_tieu_cau_duoi_100_g_l"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.5
+        },
+        {
+            "id": "tc_cls_sieu_am_tran_dich",
+            "type": "imaging",
+            "label": "Siêu âm / X-quang ghi nhận tràn dịch màng phổi, màng bụng, phù nề thành túi mật",
+            "description": "Hình ảnh học phát hiện bằng chứng thoát huyết tương: Tràn dịch màng phổi (thường bên phải), tràn dịch tự do ổ bụng, phù nề dày thành túi mật.",
+            "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam",
+            "symptomIds": [
+                "tran_dich_mang_phoi_mang_bung"
+            ],
+            "cdssRole": "dt",
+            "weight": 4.0
+        }
+    ]
+}

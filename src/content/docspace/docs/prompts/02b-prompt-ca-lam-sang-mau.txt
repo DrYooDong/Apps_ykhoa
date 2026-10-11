@@ -1,0 +1,142 @@
+================================================================================
+CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 02B: CA LÂM SÀNG MẪU BƯỚC 1
+(SAMPLE CLINICAL CASE EXTRACTOR & SIMULATOR — CHUẨN EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI]
+Prompt này được tách riêng độc lập để TRÍCH XUẤT HOẶC XÂY DỰNG CA BỆNH LÂM SÀNG MẪU:
+- Phục vụ trực tiếp BƯỚC 1: Tiếp nhận bệnh nhân, nạp nhanh ca mẫu thực hành và kiểm thử CDSS.
+- Bao gồm đầy đủ:
+  1. Sinh hiệu chuẩn hóa (vitals: nhiệt độ, mạch, huyết áp HATT/HATTr, nhịp thở, SpO₂).
+  2. Bảng xét nghiệm cận lâm sàng ban đầu (labs: CTM, Hct, PLT, men gan, chức năng thận...).
+  3. Mảng triệu chứng chọn trước (selected/sel) và loại trừ (negated) liên kết từ điển ID.
+  4. Bối cảnh dịch tễ học và nguy cơ (epiContext: vùng lưu hành, ổ dịch, mùa vụ).
+  5. Bệnh sử 4 phần chi tiết (form.text: cơ năng cn, thực thể tt, tiền căn tc, cận lâm sàng cls).
+
+* LIÊN KẾT VỚI PROMPT 02:
+  - Prompt 02: Trích xuất Tiêu chuẩn Chẩn đoán & Ma trận Trọng số CDSS cho bệnh lý.
+  - Prompt 02b (Prompt này): Sinh Ca bệnh cụ thể với dữ liệu bệnh nhân thực tế để thử nghiệm xem CDSS ở Bước 3 có suy luận chẩn đoán ra đúng bệnh đó hay không!
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+(Tùy chỉnh thông số trong ngoặc vuông bên dưới theo ca bệnh cần xây dựng):
+- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue / Viêm phổi mắc phải cộng đồng / Sốt thương hàn)
+- [MÃ ICD-10]: (Ví dụ: A97.1 / J18.9 / A01.0)
+- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch / Tiêu hóa / Nhi khoa)
+- [THỂ BỆNH CẦN MÔ PHỎNG]: (Ví dụ: SXHD có dấu hiệu cảnh báo ngày thứ 4, Hct tăng cao, tiểu cầu giảm / Viêm phổi mức độ trung bình CURB-65 = 2)
+- [BỐI CẢNH BỆNH NHÂN]: (Ví dụ: Nam 24 tuổi, sinh viên, sống tại vùng trọ đang có dịch SXH lưu hành)
+- [SLUG FILE BỆNH LÝ]: (Ví dụ: sot_xuat_huyet_dengue / viem_phoi_cong_dong / sot_thuong_han)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
+
+--------------------------------------------------------------------------------
+[QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
+
+1. ĐỒNG NHẤT MÃ ID TRIỆU CHỨNG:
+   - Các mảng "selected", "sel", "negated" BẮT BUỘC dùng mã ID tiếng Việt không dấu, snake_case (ví dụ: "sot_cao_dot_ngot_duoi_7_ngay", "dau_bung_vung_gan", "co_dac_mau_hct_tang_tren_20_phan_tram", "giam_tieu_cau_duoi_100_g_l").
+   - Đối chiếu với từ điển triệu chứng hoặc file `DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`.
+
+2. BẢO ĐẢM TÍNH LOGIC LÂM SÀNG CỦA BỆNH NHÂN:
+   - Sinh hiệu (vitals) và xét nghiệm (labs) phải ăn khớp logic với bệnh sử và triệu chứng đã chọn.
+   - Ví dụ: Nếu có dấu hiệu cảnh báo thoát huyết tương, Hct phải tăng cao (≥ 45%), tiểu cầu phải giảm (< 100 G/L), mạch có thể nhanh, HA kẹt hoặc hạ.
+
+3. QUY CHUẨN VIẾT TẮT, ĐƠN VỊ SI & ZERO HTML ENTITIES:
+   - Viết tắt y khoa chuẩn: HA, HATT, HATTr, M, NT, SpO₂, CRT, GCS, Hct, PLT, WBC, AST, ALT, eGFR.
+   - Đơn vị chuẩn: °C, mmHg, l/p, %, G/L, mmol/L, µmol/L.
+   - Zero HTML Entities: Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;. Viết trực tiếp ký tự <, >, ".
+
+4. ĐẦU RA DUY NHẤT:
+   Xuất ra đúng 01 khối code JSON hợp lệ duy nhất, không có văn bản giải thích thừa bên ngoài khối code.
+
+--------------------------------------------------------------------------------
+📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
+--------------------------------------------------------------------------------
+"Bạn là Bác sĩ Trưởng khoa Khám bệnh và Hồi sức Cấp cứu.
+
+Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Lâm Sàng Mẫu hoàn chỉnh phục vụ Bước 1 Tiếp nhận và Thử nghiệm Động cơ CDSS DocSpace cho bệnh lý sau:
+
+Thông số đầu vào:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10: [MÃ ICD-10]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Thể bệnh cần mô phỏng: [THỂ BỆNH CẦN MÔ PHỎNG]
+- Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
+- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản:
+Xuất ra đúng 01 khối code JSON chuẩn xác theo cấu trúc bên dưới (không có văn bản giải thích ngoài khối code):
+"
+
+--------------------------------------------------------------------------------
+[CẤU TRÚC JSON XUẤT BẢN]
+(Phục vụ nạp vào: src/content/knowledge-vault/data/sample-clinical-cases.json)
+
+```json
+{
+  "id": "[slug_ca_benh: ví dụ sxh_dengue_canh_bao_n4]",
+  "ten": "[Tên ca bệnh: ví dụ SXHD Cảnh Báo Ngày 4 (Hct 46%, TC 42 G/L)]",
+  "diseaseId": "[SLUG FILE BỆNH LÝ: ví dụ sot_xuat_huyet_dengue]",
+  "icd10": "[MÃ ICD-10: ví dụ A97.1]",
+  "specialty": "[CHUYÊN KHOA: ví dụ Truyền nhiễm]",
+  "vitals": {
+    "vNhiet": "39.2",
+    "vMach": "108",
+    "vHATT": "95",
+    "vHATTr": "75",
+    "vTho": "22",
+    "vSpo2": "96"
+  },
+  "labs": {
+    "lBC": "3.2",
+    "lTC": "42",
+    "lHct": "46",
+    "lGlu": "5.4",
+    "lTrop": "8",
+    "lAST": "280",
+    "lALT": "195",
+    "lCre": "85"
+  },
+  "selected": [
+    "id_trieu_chung_1",
+    "id_trieu_chung_2",
+    "id_trieu_chung_3"
+  ],
+  "sel": [
+    "id_trieu_chung_1",
+    "id_trieu_chung_2",
+    "id_trieu_chung_3"
+  ],
+  "negated": [
+    "id_trieu_chung_am_tinh_khong_co"
+  ],
+  "epiContext": {
+    "endemicArea": "Vùng dịch tễ lưu hành bệnh theo mùa",
+    "outbreakAlert": "Đang có ổ dịch bùng phát tại địa phương",
+    "vectorExposure": "Khu vực có nguồn lây hoặc véc-tơ truyền bệnh rõ",
+    "seasonalContext": "Cao điểm mùa dịch"
+  },
+  "form": {
+    "gioiTinh": "nam",
+    "tuoi": "24",
+    "ngheNghiep": "Sinh viên / Công nhân",
+    "lyDo": "[Lý do chính khiến người bệnh nhập viện]",
+    "text": {
+      "cn": "Mô tả triệu chứng cơ năng chi tiết theo diễn tiến từng ngày khởi phát bệnh...",
+      "tt": "Mô tả thăm khám thực thể toàn thân và các cơ quan...",
+      "tc": "Tiền căn bản thân, gia đình và bối cảnh dịch tễ phơi nhiễm...",
+      "cls": "Kết quả các xét nghiệm cận lâm sàng tại thời điểm tiếp nhận..."
+    }
+  }
+}
+```
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN NẠP VÀ ĐỒNG BỘ DỮ LIỆU]
+1. Sao chép khối JSON ca bệnh mẫu trên.
+2. Thêm vào mảng danh sách trong file:
+   `src/content/knowledge-vault/data/sample-clinical-cases.json`
+3. Chạy lệnh đồng bộ tự động:
+   `node tools/scripts/bundle-clinical-rules.mjs`
+   `node tools/scripts/sync-clinical-db.mjs`
+4. Mở giao diện DocSpace Bước 1 -> Danh sách ca mẫu sẽ tự động hiển thị ca bệnh vừa nạp!
+================================================================================
