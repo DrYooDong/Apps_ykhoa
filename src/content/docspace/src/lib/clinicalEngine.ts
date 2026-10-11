@@ -683,8 +683,25 @@ export function analyzeClinicalCase(
     const gyMatched = matched.filter((m) => m.role === 'gy');
     const htMatched = matched.filter((m) => m.role === 'ht');
 
-    // 1. Base match ratio từ tổng trọng số
-    const rawRatio = max > 0 ? score / max : 0;
+    // 1. Base match ratio từ tổng trọng số kết hợp Chuẩn hóa tiêu chuẩn đặc trưng (EBM Specificity Normalization)
+    // Khắc phục lỗi "Max Score Dilution":
+    // Một bệnh nhân không thể mang đủ triệu chứng của cả 3 thể bệnh cùng lúc (nhẹ + cảnh báo + sốc/suy tạng).
+    let normalizedRatio = max > 0 ? score / max : 0;
+
+    if (dtMatched.length >= 3) {
+      // Đạt từ 3 tiêu chuẩn đặc trưng trở lên (Vd: Sốt cấp tính + Hct tăng + Tiểu cầu giảm + Dấu hiệu cảnh báo):
+      // Đây là ca bệnh rất điển hình, chuẩn hóa tỷ lệ cơ sở lên vùng tin cậy cao 55% - 75%
+      const dtBonus = Math.min(0.20, (dtMatched.length - 2) * 0.06);
+      normalizedRatio = Math.max(normalizedRatio, 0.55 + dtBonus);
+    } else if (dtMatched.length === 2) {
+      // Đạt 2 tiêu chuẩn đặc trưng: Chuẩn hóa lên vùng gợi ý mạnh 42%
+      normalizedRatio = Math.max(normalizedRatio, 0.42);
+    } else if (dtMatched.length === 1 && gyMatched.length >= 2) {
+      // Đạt 1 tiêu chuẩn đặc trưng + 2 tiêu chuẩn gợi ý: Chuẩn hóa lên 35%
+      normalizedRatio = Math.max(normalizedRatio, 0.35);
+    }
+
+    const rawRatio = normalizedRatio;
 
     // 2. Hệ số độ dày bằng chứng (Evidence Density factor):
     // Ca chỉ có 1-2 triệu chứng với tổng điểm < 6 không thể đạt độ tin cậy > 70%

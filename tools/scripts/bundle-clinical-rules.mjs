@@ -112,6 +112,20 @@ function bundleDiseases() {
     }
   }
 
+  // 3. Đảm bảo diseases.ts trong Web App luôn kết nối với CSDL bệnh lý chuyên khoa
+  const TS_DISEASES_PATH = path.resolve(__dirname, '../../src/content/docspace/src/data/diseases.ts');
+  const tsContent = `/**
+ * CliniPortal MedLens — Core Disease Knowledge Base
+ * Tự động đồng bộ bởi bundle-clinical-rules.mjs
+ */
+import { Benh } from '../types.ts';
+import ALL_CLINICAL_RULES_DISEASES from '../../data/diseases/index.ts';
+
+export const CORE_DISEASES: Benh[] = ALL_CLINICAL_RULES_DISEASES as unknown as Benh[];
+`;
+  fs.writeFileSync(TS_DISEASES_PATH, tsContent, 'utf8');
+  console.log(`✅ Đã đồng bộ Web App diseases.ts: ${TS_DISEASES_PATH}`);
+
   console.log('🎉 Hoàn tất gom cụm bệnh lý theo chuyên khoa!\n');
 }
 
