@@ -1,1 +1,73 @@
-[]
+[
+  {
+    "id": "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+    "ten": "Sốc giảm thể tích (Mạch nhanh nhỏ, HA kẹp ≤ 20 mmHg hoặc Tụt huyết áp)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "sốc",
+      "huyết áp kẹp",
+      "tụt huyết áp",
+      "mạch nhanh nhỏ",
+      "ha kep",
+      "dss"
+    ],
+    "aliases": [
+      "sốc sốt xuất huyết",
+      "suy tuần hoàn cấp",
+      "hiệu áp kẹp <= 20",
+      "tụt huyết áp"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 90
+    }
+  },
+  {
+    "id": "chi_lanh_crt_keo_dai",
+    "ten": "Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch CRT ≥ 2s",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "chi lạnh",
+      "crt kéo dài",
+      "đầu chi lạnh ẩm",
+      "tưới máu kém"
+    ],
+    "aliases": [
+      "tay chân lạnh",
+      "chi mát ẩm",
+      "crt >= 2s"
+    ],
+    "map": null
+  },
+  {
+    "id": "viem_co_tim_suy_tim_dengue",
+    "ten": "Viêm cơ tim, suy tim do Dengue (Tim nhanh, men tim Troponin I tăng)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt",
+      "cls"
+    ],
+    "tuKhoa": [
+      "viêm cơ tim",
+      "suy tim",
+      "troponin tăng",
+      "myocarditis"
+    ],
+    "aliases": [
+      "tổn thương cơ tim do dengue",
+      "sốc tim do dengue"
+    ],
+    "map": {
+      "fld": "lTrop",
+      "op": ">=",
+      "val": 14
+    }
+  }
+]
