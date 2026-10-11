@@ -253,6 +253,35 @@
   border-radius: var(--cdss-radius-sm);
 }
 
+.cdss-print-vaso-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cdss-text);
+  padding: 0 0.65rem;
+  height: 38px;
+  border-radius: var(--cdss-radius-sm);
+  background: var(--cdss-surface-alt);
+  border: 1px solid var(--cdss-border);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.cdss-print-vaso-checkbox:hover {
+  border-color: var(--cdss-primary);
+  background: var(--cdss-surface);
+}
+
+.cdss-print-vaso-checkbox input {
+  accent-color: var(--cdss-primary);
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
 /* ============================================================
    PRESET CASES BAR (5 Clinical Scenarios)
    ============================================================ */
@@ -2144,6 +2173,11 @@
     display: none !important;
   }
 
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 6mm 10mm;
+  }
+
   /* Hiển thị DUY NHẤT phiếu y lệnh lâm sàng chuẩn */
   .cdss-print-sheet {
     display: block !important;
@@ -2156,17 +2190,18 @@
 
   .cdss-print-page {
     width: 100% !important;
+    page-break-inside: avoid !important;
   }
 
   .cdss-print-meta-top {
     display: flex !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
-    font-size: 8.5pt !important;
-    border-bottom: 1.5px solid #000 !important;
-    padding-bottom: 4px !important;
-    margin-bottom: 6px !important;
-    line-height: 1.3 !important;
+    font-size: 8pt !important;
+    border-bottom: 1.2px solid #000 !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 5px !important;
+    line-height: 1.25 !important;
   }
 
   .cdss-print-left-org {
@@ -2179,11 +2214,11 @@
 
   .cdss-print-title-area {
     text-align: center !important;
-    margin: 6px 0 8px 0 !important;
+    margin: 4px 0 6px 0 !important;
   }
 
   .cdss-print-main-title {
-    font-size: 13.5pt !important;
+    font-size: 13pt !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     margin: 0 !important;
@@ -2192,19 +2227,19 @@
   }
 
   .cdss-print-sub-title {
-    font-size: 8.5pt !important;
+    font-size: 8pt !important;
     font-style: italic !important;
     margin-top: 2px !important;
-    color: #222 !important;
+    color: #333 !important;
   }
 
   .cdss-print-patient-box {
     border: 1px solid #000 !important;
-    padding: 6px 8px !important;
-    margin-bottom: 8px !important;
-    font-size: 9.5pt !important;
+    padding: 4px 6px !important;
+    margin-bottom: 6px !important;
+    font-size: 8.8pt !important;
     background: #fafafa !important;
-    line-height: 1.35 !important;
+    line-height: 1.3 !important;
   }
 
   .cdss-print-row {
@@ -2216,26 +2251,28 @@
 
   .cdss-print-weight-highlight {
     background: #f0fdf4 !important;
-    border: 1px solid #4ade80 !important;
-    padding: 1px 6px !important;
+    border: 1px solid #16a34a !important;
+    padding: 1px 5px !important;
     border-radius: 3px !important;
+    font-size: 8.5pt !important;
   }
 
-  /* BẢNG TRUYỀN DỊCH 4 CỘT CHUẨN IN */
+  /* BẢNG TRUYỀN DỊCH CHUẨN IN */
   .cdss-print-table {
     width: 100% !important;
     border-collapse: collapse !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
     page-break-inside: avoid !important;
   }
 
   .cdss-print-table th,
   .cdss-print-table td {
     border: 1px solid #000 !important;
-    padding: 4px 6px !important;
-    font-size: 9pt !important;
+    padding: 3px 5px !important;
+    font-size: 8.5pt !important;
     vertical-align: top !important;
     color: #000 !important;
+    line-height: 1.25 !important;
   }
 
   .cdss-print-table th {
@@ -2243,25 +2280,25 @@
     font-weight: 800 !important;
     text-align: center !important;
     text-transform: uppercase !important;
-    font-size: 8.5pt !important;
+    font-size: 8pt !important;
   }
 
   .cdss-print-summary-strip {
     display: flex !important;
     justify-content: space-between !important;
     background: #f3f4f6 !important;
-    border: 1px solid #6b7280 !important;
-    padding: 4px 8px !important;
-    font-size: 8.8pt !important;
+    border: 1px solid #4b5563 !important;
+    padding: 3px 6px !important;
+    font-size: 8.5pt !important;
     font-weight: 600 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
   }
 
   .cdss-print-vaso-box {
     border: 1px dashed #374151 !important;
-    padding: 5px 8px !important;
-    margin-bottom: 6px !important;
-    font-size: 8.5pt !important;
+    padding: 4px 6px !important;
+    margin-bottom: 5px !important;
+    font-size: 8pt !important;
     background: #ffffff !important;
     page-break-inside: avoid !important;
   }
@@ -2269,21 +2306,21 @@
   .cdss-print-vaso-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-    margin-top: 3px !important;
+    gap: 6px !important;
+    margin-top: 2px !important;
   }
 
   .cdss-print-vaso-col {
-    line-height: 1.3 !important;
+    line-height: 1.25 !important;
   }
 
   .cdss-print-safety-notes {
-    font-size: 8pt !important;
-    line-height: 1.3 !important;
-    color: #1f2937 !important;
-    margin-bottom: 8px !important;
+    font-size: 7.8pt !important;
+    line-height: 1.25 !important;
+    color: #111827 !important;
+    margin-bottom: 6px !important;
     border-left: 2.5px solid #000 !important;
-    padding-left: 6px !important;
+    padding-left: 5px !important;
     page-break-inside: avoid !important;
   }
 
@@ -2292,7 +2329,8 @@
     justify-content: space-between !important;
     align-items: flex-start !important;
     text-align: center !important;
-    margin-top: 10px !important;
+    margin-top: 6px !important;
+    font-size: 8.5pt !important;
     page-break-inside: avoid !important;
   }
 

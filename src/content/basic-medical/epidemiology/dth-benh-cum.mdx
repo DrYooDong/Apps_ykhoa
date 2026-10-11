@@ -1,0 +1,358 @@
+---
+title: "Dịch Tễ Học Bệnh Cúm (Influenza / Orthomyxoviridae)"
+slug: "dth-benh-cum"
+code: "DTH-J09-J11"
+icd10: "ICD-10: J09 - J11"
+specialtyId: "epi-truyen-nhiem"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-10-11"
+description: "Dịch tễ học bệnh Cúm: Phân tích toàn diện tam giác dịch tễ học, cơ chế biến đổi kháng nguyên (Drift & Shift), động học lây truyền hô hấp, gánh nặng dịch tễ toàn cầu và nhiệt đới, các nhóm nguy cơ cao, cùng chiến lược giám sát và dự phòng vắc-xin/hóa dược chuẩn EBM 2026."
+tags:
+  - "cum-mua"
+  - "influenza"
+  - "cum-gia-cam"
+  - "y-te-cong-cong"
+clinicalPearls:
+  - "Cửa sổ vàng điều trị thuốc kháng vi rút (Oseltamivir/Baloxavir) đạt hiệu quả tối đa khi bắt đầu trong vòng 48 giờ đầu kể từ khi khởi phát triệu chứng."
+  - "Cảnh giác bẫy 'Diễn tiến 2 pha': Bệnh nhân giảm sốt sau 3 ngày nhưng sốt cao trở lại vào ngày 5–7 cùng ho đờm mủ báo hiệu bội nhiễm vi khuẩn thứ phát (đặc biệt tụ cầu vàng S. aureus/MRSA hoặc S. pneumoniae) với tỷ lệ tử vong rất cao."
+  - "Phân bố thụ thể Sialic Acid giải thích rào cản loài: Người mang thụ thể α-2,6 SA ở đường hô hấp trên, trong khi virus cúm gia cầm (H5N1, H7N9) gắn ưu thế vào α-2,3 SA ở phế nang sâu, gây tổn thương phổi cấp ARDS nặng nề nhưng khó lây lan từ người sang người."
+metrics:
+  r0: "1.28 (1.19 - 1.37) [Cúm mùa] | 1.46 (1.30 - 1.70) [Đại dịch H1N1pdm09]"
+  incubationPeriod: "1 - 4 ngày (Trung bình: 2 ngày / 48 giờ)"
+  modeOfTransmission: "Giọt bắn hô hấp, Hạt treo không khí (Aerosol), Tiếp xúc bề mặt (Fomites)"
+  caseFatalityRate: "Cúm mùa: < 0.1% | Cúm H5N1: ~48 - 53% | Cúm H7N9: ~39%"
+  whoClassification: "Virus Cúm Tuýp A, B, C, D (Hệ thống GISRS & PISA WHO)"
+  annualGlobalCases: "~1 tỷ ca mắc toàn cầu (3 - 5 triệu ca nặng; 290.000 - 650.000 tử vong hô hấp)"
+  vietnamEndemicStatus: "Bệnh lưu hành quanh năm tại Việt Nam, có các đỉnh phát sinh vào mùa mưa/mùa đông-xuân"
+  vaccineStatus: "Vắc-xin Cúm mùa tiêm lặp lại hàng năm (TIV/QIV/LAIV/ccIIV)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ Học"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Tác Nhân & Cơ Chế Bệnh Sinh Phân Tử"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Động Học Lan Truyền & Thang Bậc Can Thiệp"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-4"
+    number: 4
+    title: "Vật Chủ, Yếu Tố Ký Chủ & Quần Thể Nguy Cơ"
+    icon: "fa-users"
+  - id: "sec-5"
+    number: 5
+    title: "Gánh Nặng Dịch Tễ Toàn Cầu & Thực Trạng Việt Nam"
+    icon: "fa-earth-americas"
+  - id: "sec-6"
+    number: 6
+    title: "Y Tế Công Cộng, Giám Sát & Can Thiệp Dự Phòng"
+    icon: "fa-shield-virus"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo EBM & Hướng Dẫn Quốc Tế"
+    icon: "fa-book-medical"
+---
+
+# <i class="fa-solid fa-virus"></i> DỊCH TỄ HỌC BỆNH CÚM (INFLUENZA)
+
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge badge-purple" style="padding: 0.35rem 0.75rem; border-radius: 9999px; background: #f3e8ff; color: #6b21a8; font-weight: 600; font-size: 0.85rem;"><i class="fa-solid fa-microscope"></i> Truyền Nhiễm &amp; Vi Rút Hô Hấp</span>
+  <span class="badge badge-red" style="padding: 0.35rem 0.75rem; border-radius: 9999px; background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.85rem;"><i class="fa-solid fa-dna"></i> Biến Đổi Kháng Nguyên (Drift &amp; Shift)</span>
+  <span class="badge badge-blue" style="padding: 0.35rem 0.75rem; border-radius: 9999px; background: #dbeafe; color: #1e40af; font-weight: 600; font-size: 0.85rem;"><i class="fa-solid fa-wind"></i> Lây Truyền Giọt Bắn &amp; Khí Dung</span>
+  <span class="badge badge-green" style="padding: 0.35rem 0.75rem; border-radius: 9999px; background: #dcfce7; color: #166534; font-weight: 600; font-size: 0.85rem;"><i class="fa-solid fa-syringe"></i> Vắc-Xin Hàng Năm &amp; Thuốc NAI</span>
+</div>
+
+<EpiPillarsNav />
+
+<section class="stats-strip theme-epi" style="margin: 1.5rem 0; padding: 1.25rem; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+  <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+    <div class="stat-card" style="padding: 0.75rem; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+      <div class="stat-val indigo" style="font-size: 1.6rem; font-weight: 700; color: #4338ca;">1.28 &ndash; 1.46</div>
+      <div class="stat-lbl" style="font-size: 0.82rem; color: #64748b;">Hệ số lây truyền cơ bản ($R_e$)</div>
+    </div>
+    <div class="stat-card" style="padding: 0.75rem; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+      <div class="stat-val emerald" style="font-size: 1.6rem; font-weight: 700; color: #047857;">1 &ndash; 4 Ngày</div>
+      <div class="stat-lbl" style="font-size: 0.82rem; color: #64748b;">Thời gian ủ bệnh (Trung bình 48h)</div>
+    </div>
+    <div class="stat-card" style="padding: 0.75rem; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+      <div class="stat-val amber" style="font-size: 1.6rem; font-weight: 700; color: #b45309;">290k &ndash; 650k</div>
+      <div class="stat-lbl" style="font-size: 0.82rem; color: #64748b;">Ca tử vong hô hấp toàn cầu / năm</div>
+    </div>
+    <div class="stat-card" style="padding: 0.75rem; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+      <div class="stat-val rose" style="font-size: 1.6rem; font-weight: 700; color: #be123c;">~1 Tỷ Ca</div>
+      <div class="stat-lbl" style="font-size: 0.82rem; color: #64748b;">Tổng số ca mắc cúm mùa / năm</div>
+    </div>
+  </div>
+</section>
+
+---
+
+## 1. Tam Giác Dịch Tễ Học {#sec-1}
+
+Dịch tễ học bệnh Cúm được định hình bởi sự tương tác động lực phức tạp giữa vi rút họ Orthomyxoviridae, ký chủ người/động vật mang thụ thể axit sialic, và các yếu tố khí hậu &amp; xã hội.
+
+<EpiTriangle 
+  agent={{
+    title: "Tác Nhân (Agent)",
+    items: [
+      "Họ Orthomyxoviridae: Cúm A, B, C, D (chỉ A, B, C gây bệnh ở người)",
+      "Glycoprotein bề mặt: Hemagglutinin (H1-H18) & Neuraminidase (N1-N11)",
+      "Bộ gen RNA phân đoạn (8 đoạn ở Cúm A/B) tạo điều kiện tái tổ hợp (Shift)",
+      "Tính đột biến điểm liên tục (Drift) đòi hỏi cập nhật vắc-xin hàng năm"
+    ]
+  }}
+  host={{
+    title: "Vật Chủ (Host)",
+    items: [
+      "Người là ký chủ chính của Cúm A, B, C; Động vật hoang dã/gia cầm/heo là ổ chứa Cúm A",
+      "Phân bố thụ thể Sialic Acid: $\\alpha$-2,6 SA (đường hô hấp trên ở người) vs $\\alpha$-2,3 SA (chim/đường hô hấp dưới)",
+      "Nhóm nguy cơ cao: Trẻ &lt; 5 tuổi, người &ge; 65 tuổi, phụ nữ mang thai, bệnh mạn tính",
+      "Miễn dịch chủng đặc hiệu ngắn hạn; suy giảm theo thời gian (waning immunity)"
+    ]
+  }}
+  environment={{
+    title: "Môi Trường & Xã Hội (Environment)",
+    items: [
+      "Khí hậu Ôn đới: Phát triển đỉnh dịch rõ rệt vào mùa đông (nhiệt độ & độ ẩm thấp)",
+      "Khí hậu Nhiệt đới: Lưu hành quanh năm, nhiều đỉnh dịch gắn liền mùa mưa",
+      "Môi trường khép kín, sử dụng điều hòa nhiệt độ, mật độ dân cư cao",
+      "Giao thương gia cầm sống, chăn nuôi hỗn hợp (heo - chim - người) tạo bồn trộn di truyền"
+    ]
+  }}
+  vectorOrBridge="LÂY TRUYỀN GIỌT BẮN / KHÍ DUNG"
+  centerTitle="TIÊU ĐIỂM DỊCH CÚM"
+/>
+
+---
+
+## 2. Tác Nhân &amp; Cơ Chế Bệnh Sinh Phân Tử {#sec-2}
+
+### 2.1. Phân Loại Học Vi Rút Cúm
+Họ *Orthomyxoviridae* gồm 4 tuýp vi rút cúm:
+*   **Cúm A**: Chuỗi RNA đơn phân đoạn (8 đoạn mã hóa). Cấu trúc bề mặt gồm 18 loại Hemagglutinin (H1-H18) và 11 loại Neuraminidase (N1-N11). Cúm A lưu hành ở người (hiện tại là $A(H1N1)pdm09$ và $A(H3N2)$), đồng thời có ổ chứa tự nhiên phong phú ở chim hoang dã, gia cầm, heo, ngựa, bò. Đây là tuýp duy nhất có khả năng gây ra **Đại dịch toàn cầu**.
+*   **Cúm B**: Chuỗi RNA 8 đoạn, chỉ nhiễm ở người, không phân chia thành tuýp phụ (subtype) mà chia thành 2 dòng (lineage): **B/Victoria** và **B/Yamagata**. Cúm B gây dịch mùa vừa đến nặng, đặc biệt ở trẻ em.
+*   **Cúm C**: Chuỗi RNA 7 đoạn, gây nhiễm trùng đường hô hấp nhẹ hoặc lẻ tẻ, chủ yếu ở trẻ em, không gây dịch lớn và không thuộc phạm vi giám sát cúm mùa thông thường.
+*   **Cúm D**: Chủ yếu gây nhiễm trùng ở gia súc (bò), chưa ghi nhận gây bệnh ở người.
+
+### 2.2. Tiến Hóa Kháng Nguyên: Antigenic Drift vs. Antigenic Shift
+
+<div class="infobox reaction" style="margin: 1.5rem 0; padding: 1.25rem; background: #f3e8ff; border-left: 4px solid #7c3aed; border-radius: 8px;">
+  <i class="fa-solid fa-arrows-spin infobox-icon" style="color: #7c3aed; font-size: 1.5rem; float: left; margin-right: 1rem;"></i>
+  <div>
+    <strong style="color: #5b21b6; font-size: 1.05rem;">Cơ Chế Biến Đổi Kháng Nguyên Hàng Đầu Dịch Tễ Học Cúm:</strong><br />
+    • <strong>Lệch cấu trúc kháng nguyên (Antigenic Drift)</strong>: Do các đột biến điểm sai nghĩa tích lũy dần trong quá trình sao chép bộ gen RNA (thiếu cơ chế sửa lỗi của RNA Polymerase) ở các gen mã hóa Hemagglutinin và Neuraminidase. Quá trình này tạo ra các biến thể kháng nguyên mới giúp vi rút thoát khỏi miễn dịch sẵn có từ các đợt nhiễm hoặc tiêm vắc-xin trước đó, dẫn đến các đợt **dịch cúm mùa hàng năm (seasonal epidemics)**.<br />
+    • <strong>Thay đổi cấu trúc kháng nguyên (Antigenic Shift)</strong>: Hiện tượng tái tổ hợp (reassortment) các đoạn gen giữa hai hoặc nhiều chủng vi rút cúm A khác nhau (ví dụ: chủng cúm người phối hợp với chủng cúm gia cầm/heo) khi cùng nhiễm vào một tế bào vật chủ trung gian (thường là heo - "mixing vessel"). Hiện tượng này tạo ra một phân tuýp Hemagglutinin hoàn toàn mới đối với hệ miễn dịch quần thể người, là nguồn gốc phát sinh các **Đại dịch cúm (Pandemics)** tàn phá lịch sử.
+  </div>
+</div>
+
+### 2.3. Bảng So Sánh Các Đợt Đại Dịch Cúm Trong Lịch Sử
+
+<div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+  <table class="table-modern" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+    <thead>
+      <tr style="background: #0f172a; color: #ffffff;">
+        <th style="padding: 0.75rem; border: 1px solid #334155;">Năm Đại Dịch</th>
+        <th style="padding: 0.75rem; border: 1px solid #334155;">Tên Gọi Phổ Biến</th>
+        <th style="padding: 0.75rem; border: 1px solid #334155;">Tuýp Phụ (Subtype)</th>
+        <th style="padding: 0.75rem; border: 1px solid #334155;">Nguồn Gốc Gen / Vật Chủ</th>
+        <th style="padding: 0.75rem; border: 1px solid #334155;">Ước Tính Tử Vong Toàn Cầu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background: #ffffff;">
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;"><strong>1918 &ndash; 1919</strong></td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Cúm Tây Ban Nha (Spanish Flu)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">A(H1N1)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Gia cầm thích ứng sang người</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1; color: #dc2626; font-weight: 700;">20 &ndash; 50 triệu người</td>
+      </tr>
+      <tr style="background: #f8fafc;">
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;"><strong>1957 &ndash; 1958</strong></td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Cúm Châu Á (Asian Flu)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">A(H2N2)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Tái tổ hợp Cúm người &amp; Cúm gia cầm</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">1 &ndash; 4 triệu người</td>
+      </tr>
+      <tr style="background: #ffffff;">
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;"><strong>1968 &ndash; 1969</strong></td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Cúm Hồng Kông (Hong Kong Flu)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">A(H3N2)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Tái tổ hợp A(H2N2) người &amp; Cúm gia cầm H3</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">1 &ndash; 4 triệu người</td>
+      </tr>
+      <tr style="background: #f8fafc;">
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;"><strong>2009 &ndash; 2010</strong></td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Cúm Lợn (Swine Flu / H1N1pdm09)</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">A(H1N1)pdm09</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">Tái tổ hợp phức tạp Cúm heo, gia cầm &amp; người</td>
+        <td style="padding: 0.75rem; border: 1px solid #cbd5e1;">100.000 &ndash; 400.000 người</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### 2.4. Nguy Cơ Từ Các Chủng Cúm Động Vật Dịch Động Lực (Zoonotic Influenza)
+Các chủng cúm gia cầm động lực cao (HPAI) như **A(H5N1)**, **A(H5N6)**, **A(H7N9)** gây lo ngại hàng đầu cho an ninh y tế toàn cầu:
+*   **H5N1**: Lần đầu lây sang người năm 1997 tại Hồng Kông. Tích tụ tỷ lệ tử vong cực cao (~48 - 53% ở người). Năm 2022 - 2026, dòng **clade 2.3.4.4b** bùng phát toàn cầu ở động vật hoang dã, gia cầm và lây lan sang các động vật có vú (bò sữa tại Mỹ, hải cẩu, mèo, heo).
+*   **H7N9**: Bùng phát tại Trung Quốc từ năm 2013 qua tiếp xúc chợ gia cầm sống, gây viêm phổi nặng với tỷ lệ tử vong ~39%.
+*   *Mối đe dọa*: Hiện các chủng cúm zoonotic chưa đạt được khả năng lây truyền bền vững từ người sang người (sustained human-to-human transmission). Tuy nhiên, chỉ cần một vài đột biến ở gen Hemagglutinin để chuyển đổi ưu thế gắn thụ thể từ $\alpha$-2,3 SA sang $\alpha$-2,6 SA, đại dịch nguy hiểm mới có thể bùng phát.
+
+---
+
+## 3. Động Học Lan Truyền &amp; Thang Bậc Can Thiệp {#sec-3}
+
+Bệnh Cúm thuộc **Archetype B (Direct Infectious)**.
+
+### 3.1. Phương Thức Lan Truyền
+Vi rút cúm lây truyền giữa người với người qua 3 đường chính:
+1.  **Giọt bắn hô hấp (Respiratory Droplets)**: Cơ chế quan trọng nhất. Khi người bệnh ho, hắt hơi, nói chuyện, các giọt bắn lớn (&gt; 5 - 10 $\mu m$) chứa vi rút phát tán trong không khí và đọng lại trên niêm mạc mũi, miệng, mắt của người tiếp xúc trong khoảng cách &le; 1 - 2 mét.
+2.  **Hạt treo khí dung (Aerosols / Airborne)**: Các hạt dịch mịn (&le; 5 $\mu m$) tạo ra khi ho hoặc trong các thủ thuật y khoa tạo khí dung (đặt nội khí quản, hút đờm) có thể lơ lửng trong không khí lâu hơn và di chuyển xa hơn 2 mét.
+3.  **Tiếp xúc bề mặt (Fomites)**: Vi rút tồn tại trên tay hoặc các bề mặt vật dụng (tay nắm cửa, bàn ghế) nhiễm chất tiết hô hấp, sau đó tự đưa lên mắt, mũi, miệng.
+
+### 3.2. Động Học Vi Rút &amp; Thời Gian Ủ Bệnh
+*   **Thời gian ủ bệnh (Incubation Period)**: Rất ngắn, từ 1 đến 4 ngày, trung bình là 2 ngày (48 giờ).
+*   **Khoảng thời gian thế hệ (Serial Interval)**: Trung bình 2 đến 4 ngày, giải thích lý do dịch cúm lan truyền cực nhanh trong cộng đồng.
+*   **Thời gian đào thải vi rút (Viral Shedding)**: Người lớn bắt đầu đào thải vi rút 1 ngày trước khi khởi phát triệu chứng, đạt đỉnh trong 24 - 48 giờ đầu lâm sàng và giảm dần sau 5 - 7 ngày. Trẻ em và người suy giảm miễn dịch có thể đào thải vi rút kéo dài trên 2 tuần.
+
+### 3.3. Thang Bậc Tiến Triển Lâm Sàng &amp; Cột Mốc Can Thiệp (Care Cascade)
+
+```
+[Phơi Nhiễm Vi Rút Cúm]
+       │
+       ▼
+[Ủ Bệnh Âm Thầm: 1 - 4 Ngày (Trung bình 48h)]
+       │
+       ▼
+[Khởi Phát Đột Ngột (Ngày 1 - 3)] ──► [CỬA SỔ VÀNG THUỐC KHÁNG VI RÚT: < 48H]
+ Sốt cao, ớn lạnh, đau đầu, đau cơ nhức mỏi, ho khan, đau họng    │ (Oseltamivir / Baloxavir / Zanamivir)
+       │                                                         ▼
+       ├─────────────────────────────────────────► [Phục Hồi Hoàn Toàn (7 - 14 Ngày)]
+       │                                            (Hầu hết trường hợp cúm mùa nhẹ)
+       ▼
+[Giai Đoạn Biến Chứng (Ngày 4 - 8)]
+ ├─ Viêm phổi nguyên phát do vi rút Cúm (Thâm nhiễm kẽ, ARDS, Suy đa tạng)
+ ├─ Viêm phổi thứ phát do vi khuẩn (S. pneumoniae, S. aureus, H. influenzae)
+ └─ Bội nhiễm, Bùng phát đợt cấp bệnh nền (Suy tim, COPD, ĐTĐ)
+       │
+       ▼
+[Hồi Sức Cấp Cứu ICU / Tử Vong]
+```
+
+---
+
+## 4. Vật Chủ, Yếu Tố Ký Chủ &amp; Quần Thể Nguy Cơ {#sec-4}
+
+### 4.1. Nhóm Dân Cố Nguy Cơ Cao Biến Chứng Nặng (High-Risk Groups)
+Mặc dù mọi lứa tuổi đều có thể mắc cúm, các nhóm đối tượng sau đây có tỷ lệ nhập viện, diễn tiến viêm phổi, ARDS và tử vong vượt trội:
+1.  **Trẻ em &lt; 5 tuổi**: Đặc biệt trẻ &lt; 2 tuổi có nguy cơ nhập viện vì nhiễm trùng đường hô hấp dưới cấp tính cao nhất ở lứa tuổi nhi khoa.
+2.  **Người cao tuổi (&ge; 65 tuổi)**: Chiếm &gt; 70 - 85% tổng số ca tử vong do cúm mùa toàn cầu (đặc biệt nhóm &ge; 75 tuổi có tỷ lệ tử vong lên tới 51.3 - 99.4 / 100.000 dân).
+3.  **Phụ nữ mang thai hoặc trong vòng 2 tuần sau sinh**: Bị biến đổi sinh lý miễn dịch và hô hấp; nguy cơ sẩy thai, sinh non và tử vong cao gấp nhiều lần khi mắc cúm, đặc biệt trong 3 tháng giữa và cuối thai kỳ.
+4.  **Bệnh nhân mắc bệnh lý mạn tính**:
+    *   Bệnh tim mạch (suy tim, bệnh động mạch vành).
+    *   Bệnh hô hấp mạn tính (COPD, hen phế quản, xơ phổi).
+    *   Bệnh chuyển hóa (đái tháo đường các tuýp).
+    *   Suy thận mạn, suy gan mạn, bệnh lý huyết học.
+5.  **Người bị suy giảm miễn dịch**: Bệnh nhân HIV/AIDS, người ghép tạng, bệnh nhân ung thư đang dùng thuốc chế miễn dịch/hóa trị.
+6.  **Người béo phì nặng ($BMI \ge 40 kg/m^2$)**: Được xác định là yếu tố nguy cơ độc lập gây tử vong trong đại dịch H1N1pdm09 và cúm mùa.
+7.  **Trẻ em &le; 18 tuổi đang điều trị Aspirin dài hạn**: Nguy cơ phát triển **Hội chứng Reye** (bệnh não cấp tính và gan nhiễm mỡ hoại tử) khi nhiễm vi rút cúm.
+
+<div class="infobox pearl" style="margin: 1.5rem 0; padding: 1.25rem; background: #e0f2fe; border-left: 4px solid #0284c7; border-radius: 8px;">
+  <i class="fa-solid fa-gem infobox-icon" style="color: #0284c7; font-size: 1.5rem; float: left; margin-right: 1rem;"></i>
+  <div>
+    <strong style="color: #0369a1; font-size: 1.05rem;">Điểm Ngọc Lâm Sàng (Clinical Pearl) &ndash; Nhận Diện Sớm Biến Chứng Cúm:</strong><br />
+    • <strong>Bẫy "Diễn tiến 2 pha" (Bội nhiễm vi khuẩn thứ phát)</strong>: Bệnh nhân khởi phát cúm điển hình, sốt giảm dần sau 3 ngày, nhưng đến ngày 5 &ndash; 7 đột ngột <strong>sốt cao trở lại, ho khạc đờm mủ, khó thở tăng dốc</strong>. Đây là dấu hiệu kinh điển của viêm phổi bội nhiễm vi khuẩn (thường do <i>Staphylococcus aureus</i> kháng Methicillin - MRSA hoặc <i>Streptococcus pneumoniae</i>), có tỷ lệ tử vong rất cao.<br />
+    • <strong>Khác biệt Viêm phổi nguyên phát do vi rút Cúm</strong>: Ho nặng hơn, đờm lẫn máu, bão hòa oxy $SpO_2$ tụt nhanh, X-quang phổi cho thấy thâm nhiễm kẽ lan tỏa hai bên tiến triển sang ARDS mà không có khoảng lặng hết sốt.
+  </div>
+</div>
+
+---
+
+## 5. Gánh Nặng Dịch Tễ Toàn Cầu &amp; Thực Trạng Việt Nam {#sec-5}
+
+### 5.1. Gánh Nặng Dịch Tễ Toàn Cầu
+Theo số liệu mô hình hóa của Tổ chức Y tế Thế giới (WHO) và CDC Hoa Kỳ:
+*   **Số ca mắc**: Ước tính khoảng **1 tỷ ca mắc cúm** hàng năm trên toàn cầu.
+*   **Ca bệnh nặng**: Khoảng **3 đến 5 triệu ca** bệnh hô hấp nặng cần nhập viện.
+*   **Tử vong hô hấp**: Khoảng **290.000 đến 650.000 ca tử vong** do nguyên nhân hô hấp liên quan đến cúm mùa mỗi năm.
+*   **Gánh nặng nhi khoa**: Ở trẻ em &lt; 5 tuổi, cúm gây ra khoảng 109.5 triệu ca nhiễm, 870.000 ca nhập viện và tới 34.800 ca tử vong mỗi năm. Đáng chú ý, **99% số ca tử vong do cúm ở trẻ dưới 5 tuổi xảy ra tại các nước đang phát triển và thu nhập thấp - trung bình (LMICs)**.
+
+### 5.2. Sự Khác Biệt Dịch Tễ Giữa Vùng Ôn Đới &amp; Nhiệt Đới
+*   **Vùng Ôn Đới**: Cúm xuất hiện dưới dạng các đợt dịch bùng phát theo mùa rất rõ rệt vào mùa đông (tháng 11 đến tháng 3 ở Bắc bán cầu; tháng 5 đến tháng 9 ở Nam bán cầu). Mẫu hình này liên quan trực tiếp đến nhiệt độ và độ ẩm tuyệt đối thấp giúp vi rút tồn tại bền vững hơn trong khí dung.
+*   **Vùng Nhiệt Đới &amp; Bán Nhiệt Đới (bao gồm Việt Nam, Đông Nam Á)**: Cúm lưu hành **quanh năm (year-round circulation)** với phức bộ nhiều đỉnh dịch trong năm (thường trùng với mùa mưa hoặc khoảng thời gian thay đổi độ ẩm/sử dụng điều hòa nhiệt độ cao). Do đó, việc xác định "thời điểm vàng" để tiêm vắc-xin cúm ở các nước nhiệt đới phức tạp hơn nhiều so với vùng ôn đới.
+
+### 5.3. Thực Trạng Dịch Tễ Bệnh Cúm Tại Việt Nam
+*   Tại Việt Nam, cúm là một trong những bệnh truyền nhiễm đường hô hấp ghi nhận số ca mắc cao nhất hàng năm trong hệ thống giám sát trọng điểm.
+*   Chủng vi rút lưu hành phổ biến nhất bao gồm $A(H1N1)pdm09$, $A(H3N2)$ và Cúm B ($B/Victoria$).
+*   Bên cạnh cúm mùa, Việt Nam thuộc khu vực nóng về nguy cơ cúm gia cầm lây sang người. Từ năm 2003 đến 2026, Việt Nam đã ghi nhận 130 ca nhiễm cúm gia cầm $A(H5N1)$ ở người với 65 ca tử vong (CFR = 50%). Ngoài ra, các ca nhiễm $A(H9N2)$ cũng đã được phát hiện rải rác.
+
+---
+
+## 6. Y Tế Công Cộng, Giám Sát &amp; Can Thiệp Dự Phòng {#sec-6}
+
+### 6.1. Định Nghĩa Ca Bệnh Trong Giám Sát Y Tế Công Cộng (WHO Standards)
+Hệ thống Giám sát Cúm Toàn cầu (GISRS) áp dụng 2 định nghĩa ca bệnh chuẩn:
+*   **Hội chứng Giống Cúm (Influenza-Like Illness - ILI)**: Một trường hợp nhiễm trùng hô hấp cấp tính với **Sốt đột ngột &ge; $38^\circ C$** VÀ **Ho**, phát bệnh trong vòng **10 ngày** gần đây.
+*   **Nhiễm Trùng Hô Hấp Cấp Tính Nặng (Severe Acute Respiratory Infection - SARI)**: Một trường hợp thỏa mãn tiêu chuẩn ILI VÀ **Cần phải nhập viện điều trị**.
+
+### 6.2. Dự Phòng Cấp 1: Tiêm Chủng Vắc-Xin Cúm Mùa
+Tiêm vắc-xin cúm hàng năm là biện pháp hiệu quả nhất để phòng ngừa mắc bệnh và các biến chứng nặng.
+
+<div class="infobox info" style="margin: 1.5rem 0; padding: 1.25rem; background: #e6fffa; border-left: 4px solid #0d9488; border-radius: 8px;">
+  <i class="fa-solid fa-shield-virus infobox-icon" style="color: #0d9488; font-size: 1.5rem; float: left; margin-right: 1rem;"></i>
+  <div>
+    <strong style="color: #0f766e; font-size: 1.05rem;">Khuyến Cáo Tiêm Chủng Vắc-Xin Cúm Mùa Của WHO &amp; Bộ Y Tế:</strong><br />
+    • <strong>Thành phần vắc-xin</strong>: Được WHO cập nhật 2 lần/năm (tháng 2 cho Bắc bán cầu, tháng 9 cho Nam bán cầu) dựa trên kết quả phân tích chủng vi rút lưu hành của mạng lưới GISRS. Bao gồm vắc-xin Tam giá (TIV: 2 chủng A, 1 chủng B) hoặc Tứ giá (QIV: 2 chủng A, 2 chủng B).<br />
+    • <strong>Đối tượng ưu tiên hàng đầu</strong>:
+      1. Phụ nữ đang mang thai (ở bất kỳ giai đoạn nào của thai kỳ).
+      2. Trẻ em từ 6 tháng đến 5 tuổi.
+      3. Người cao tuổi (&ge; 65 tuổi).
+      4. Bệnh nhân mắc các bệnh mạn tính nội khoa.
+      5. Nhân viên y tế (nguy cơ phơi nhiễm cao và tránh lây cho bệnh nhân).
+  </div>
+</div>
+
+### 6.3. Dự Phòng Cấp 2 &amp; Điều Trị Hóa Dược Kháng Vi Rút
+
+#### 1. Các Nhóm Thuốc Kháng Vi Rút Hiện Hành
+*   **Thuốc ức chế Neuraminidase (NAIs)**: *Oseltamivir* (uống), *Zanamivir* (hít), *Peramivir* (tiêm tĩnh mạch), *Laninamivir* (hít). Ngăn chặn vi rút bứt khỏi tế bào chủ để lan truyền.
+*   **Thuốc ức chế Cap-Dependent Endonuclease**: *Baloxavir marboxil* (uống liều duy nhất), ức chế sự sao chép RNA vi rút, có hiệu quả trên cả cúm A và B kháng NAIs.
+*   **Thuốc Adamantanes (Amantadine, Rimantadine)**: Ức chế kênh ion M2. **Hiện không còn được khuyến cáo sử dụng** do &gt; 99% các chủng cúm A lưu hành đã kháng thuốc hoàn toàn.
+
+#### 2. Nguyên Tắc Sử Dụng Thuốc Kháng Vi Rút Trong Lâm Sàng &amp; Dịch Tễ
+*   **Thời điểm vàng**: Điều trị kháng vi rút đạt hiệu quả tối đa khi được bắt đầu trong vòng **48 giờ đầu** kể từ khi khởi phát triệu chứng.
+*   **Chỉ định bắt buộc**:
+    *   Tất cả bệnh nhân nghi ngờ hoặc xác định mắc cúm **cần nhập viện** hoặc **bệnh cảnh nặng/tiến triển**.
+    *   Bệnh nhân ngoại trú thuộc **Nhóm nguy cơ cao bị biến chứng**.
+*   **Dự phòng hóa dược sau phơi nhiễm (PEP)**: Chỉ định Oseltamivir hoặc Zanamivir cho những người thuộc nhóm nguy cơ cực cao có tiếp xúc gần với ca bệnh xác định trong vòng 48 giờ.
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM &amp; Hướng Dẫn Quốc Tế {#sec-7}
+
+<div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid #0284c7; border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: #475569;">
+  <strong style="color: #0f172a; font-size: 0.95rem;"><i class="fa-solid fa-book-medical"></i> Trích Dẫn Y Văn &amp; Tài Liệu Tham Khảo Chuẩn AMA:</strong>
+  <ol style="margin: 0.5rem 0 0 0; padding-left: 1.25rem;">
+    <li><strong>World Health Organization (WHO).</strong> Guidelines for the Clinical Management of Severe Illness from Influenza Virus Infections. Geneva: World Health Organization; 2021. (WHO Guidelines Approved by the Guidelines Review Committee).</li>
+    <li><strong>World Health Organization (WHO).</strong> Clinical Practice Guidelines for Influenza. Geneva: World Health Organization; 2024. License: CC BY-NC-SA 3.0 IGO.</li>
+    <li><strong>Iuliano AD, Roguski KM, Chang HH, et al.</strong> Estimates of global seasonal influenza-associated respiratory mortality: a modelling study. <em>The Lancet</em>. 2018;391(10127):1285-1300.</li>
+    <li><strong>Ng S, Gordon A.</strong> Influenza burden and transmission in the tropics. <em>Current Epidemiology Reports</em>. 2015;2(2):89-100.</li>
+    <li><strong>Uyeki TM, Bernstein HH, Bradley JS, et al.</strong> Clinical Practice Guidelines by the Infectious Diseases Society of America (IDSA): 2018 Update on Diagnosis, Treatment, Chemoprophylaxis, and Institutional Outbreak Management of Seasonal Influenza. <em>Clinical Infectious Diseases</em>. 2019;68(6):e1-e47.</li>
+    <li><strong>Grohskopf LA, Blanton LH, Ferdinands JM, et al.</strong> Prevention and Control of Seasonal Influenza with Vaccines: Recommendations of the Advisory Committee on Immunization Practices - United States, 2025-26 Influenza Season. <em>MMWR Recommendations and Reports</em>. 2025;74(32):500-507.</li>
+    <li><strong>Demicheli V, Jefferson T, Ferroni E, et al.</strong> Vaccines for preventing influenza in healthy adults. <em>Cochrane Database of Systematic Reviews</em>. 2018;(2):CD001269.</li>
+    <li><strong>Bộ Y Tế Việt Nam.</strong> Hướng dẫn chẩn đoán và điều trị bệnh Cúm mùa. Hà Nội: Bộ Y Tế; 2020-2024.</li>
+  </ol>
+</div>
+
+<div class="btn-row" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+  <a href="/dich-te-hoc" class="btn btn-primary" style="padding: 0.6rem 1.2rem; background: #0284c7; color: #ffffff; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại Mục Lục Dịch Tễ Học
+  </a>
+  <a href="#sec-1" class="btn" style="padding: 0.6rem 1.2rem; background: #f1f5f9; color: #334155; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+  </a>
+</div>

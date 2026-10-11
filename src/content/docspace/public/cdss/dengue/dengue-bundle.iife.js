@@ -17,13 +17,13 @@ var DengueBundle = (() => {
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // public/cdss/dengue/dengue-ui.ts
+  // src/content/docspace/public/cdss/dengue/dengue-ui.ts
   var dengue_ui_exports = {};
   __export(dengue_ui_exports, {
     DengueCDSSController: () => DengueCDSSController
   });
 
-  // public/cdss/dengue/dengue-data.ts
+  // src/content/docspace/public/cdss/dengue/dengue-data.ts
   var CDC_STANDARD_WEIGHT = {
     2: { male: 13, female: 12 },
     3: { male: 14, female: 14 },
@@ -643,7 +643,7 @@ var DengueBundle = (() => {
     cpt_escalation: DENGUE_REFRACTORY_SCENARIOS.hct_high_cpt
   };
 
-  // public/cdss/dengue/dengue-engine.ts
+  // src/content/docspace/public/cdss/dengue/dengue-engine.ts
   function classifyAgeGroup(ageYears) {
     if (ageYears >= 16) return "adult";
     if (ageYears >= 13) return "adolescent";
@@ -1176,7 +1176,7 @@ var DengueBundle = (() => {
     };
   }
 
-  // public/cdss/dengue/dengue-ui.ts
+  // src/content/docspace/public/cdss/dengue/dengue-ui.ts
   var CLINICAL_SAMPLE_CASES = [
     // 1. Nhóm Bù Dịch Ban Đầu & Phân Tầng Thể Trạng
     {
@@ -1230,6 +1230,23 @@ var DengueBundle = (() => {
         baselineHctPercent: 38
       },
       clinicalHighlight: "S\u1ED1c nguy k\u1ECBch kh\u1EA9n c\u1EA5p: B\u01A1m d\u1ECBch 20 ml/kg/h si\xEAu t\u1ED1c + chu\u1EA9n b\u1ECB Noradrenalin b\u01A1m ti\xEAm \u0111i\u1EC7n."
+    },
+    {
+      id: "adult-shock-compensated",
+      category: "initial",
+      icon: "fa-solid fa-person",
+      label: "Nam 30T S\u1ED1c C\xF2n B\xF9 (70kg)",
+      tag: "\u0110\xE1p \u1EE8ng T\u1ED1t",
+      input: {
+        ageYears: 30,
+        gender: "male",
+        actualWeightKg: 70,
+        severity: "shock",
+        clinicalResponse: "good",
+        currentHctPercent: 46,
+        baselineHctPercent: 38
+      },
+      clinicalHighlight: "Nam 30 tu\u1ED5i s\u1ED1c c\xF2n b\xF9 70kg: B\xF9 d\u1ECBch n\u1EA5c thang chu\u1EA9n 15 -> 10 -> 5 -> 3 -> 1.5 ml/kg/h, \u0111\xE1p \u1EE9ng t\u1ED1t, ra s\u1ED1c \u1ED5n \u0111\u1ECBnh kh\xF4ng c\u1EA7n v\u1EADn m\u1EA1ch."
     },
     // 2. Nhóm Sốc Trơ & Xử Trí Không Đáp Ứng
     {
@@ -1314,6 +1331,7 @@ var DengueBundle = (() => {
       this.activeCaseId = "child-obese";
       this.activeWorkspaceMode = "fluid_schedule";
       this.activeRefractorySubTab = "tab-cpt";
+      this.includeVasopressorInPrint = false;
       const el = document.getElementById(containerId);
       if (!el) {
         throw new Error(`Container #${containerId} not found`);
@@ -1361,6 +1379,10 @@ var DengueBundle = (() => {
             <button id="btn-copy-handover" class="cdss-action-btn" title="Sao ch\xE9p b\xE1o c\xE1o giao ban c\u1ECDc d\u1ECBch">
               <i class="fa-solid fa-clipboard-check"></i> <span>B\xE0n Giao Ca</span>
             </button>
+            <label class="cdss-print-vaso-checkbox" title="T\xF9y ch\u1ECDn in k\xE8m ph\xE1c \u0111\u1ED3 thu\u1ED1c v\u1EADn m\u1EA1ch b\u01A1m ti\xEAm \u0111i\u1EC7n (khi c\xF3 s\u1ED1c tr\u01A1)">
+              <input type="checkbox" id="chk-include-vaso" />
+              <span>In k\xE8m V\u1EADn m\u1EA1ch</span>
+            </label>
             <button id="btn-print" class="cdss-action-btn cdss-action-btn--icon-only" title="In phi\u1EBFu y l\u1EC7nh c\u1ECDc d\u1ECBch chu\u1EA9n A4">
               <i class="fa-solid fa-print"></i>
             </button>
@@ -1679,6 +1701,14 @@ var DengueBundle = (() => {
           if (val !== "good") {
             this.activeWorkspaceMode = "refractory_suite";
           }
+          const chkVaso2 = document.getElementById("chk-include-vaso");
+          if (val === "refractory_shock_cvp") {
+            this.includeVasopressorInPrint = true;
+            if (chkVaso2) chkVaso2.checked = true;
+          } else {
+            this.includeVasopressorInPrint = false;
+            if (chkVaso2) chkVaso2.checked = false;
+          }
           this.recalculate();
         });
       }
@@ -1745,6 +1775,13 @@ var DengueBundle = (() => {
       if (btnMbarSoap) btnMbarSoap.addEventListener("click", () => this.copySoapPlan());
       const btnHandover = document.getElementById("btn-copy-handover");
       if (btnHandover) btnHandover.addEventListener("click", () => this.copyHandoverReport());
+      const chkVaso = document.getElementById("chk-include-vaso");
+      if (chkVaso) {
+        chkVaso.addEventListener("change", () => {
+          this.includeVasopressorInPrint = chkVaso.checked;
+          if (this.currentPlan) this.renderPrintSheet(this.currentPlan);
+        });
+      }
       const btnPrint = document.getElementById("btn-print");
       if (btnPrint) btnPrint.addEventListener("click", () => window.print());
       const btnOpenDrawer = document.getElementById("btn-open-drawer");
@@ -1827,6 +1864,14 @@ var DengueBundle = (() => {
         }
       } else {
         this.activeWorkspaceMode = "fluid_schedule";
+      }
+      const chkVaso = document.getElementById("chk-include-vaso");
+      if (sample.input.clinicalResponse === "refractory_shock_cvp") {
+        this.includeVasopressorInPrint = true;
+        if (chkVaso) chkVaso.checked = true;
+      } else {
+        this.includeVasopressorInPrint = false;
+        if (chkVaso) chkVaso.checked = false;
       }
       const ind = document.getElementById("case-status-indicator");
       if (ind) {
@@ -2926,170 +2971,164 @@ var DengueBundle = (() => {
         totalDurationHours,
         vasopressorDopamin: d,
         vasopressorNoradrenalin: n,
-        vasopressorDobutamin: dob,
         branchDecision
       } = plan;
       const now = /* @__PURE__ */ new Date();
       const dateFormatted = `${now.getDate().toString().padStart(2, "0")}/${(now.getMonth() + 1).toString().padStart(2, "0")}/${now.getFullYear()} ${now.getHours().toString().padStart(2, "0")}:${now.getMinutes().toString().padStart(2, "0")}`;
-      const severityText = patient.severity === "warning_signs" ? "C\xF3 D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o (DHCB)" : patient.severity === "shock" ? "S\u1ED1c S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue (C\xF2n B\xF9)" : "S\u1ED1c S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue Nguy K\u1ECBch (M\u1EA1ch 0, HA 0)";
+      const severityText = patient.severity === "warning_signs" ? "C\xF3 D\u1EA5u Hi\u1EC7u C\u1EA3nh B\xE1o (DHCB)" : patient.severity === "shock" ? "S\u1ED1c SXHD (C\xF2n B\xF9)" : "S\u1ED1c SXHD Nguy K\u1ECBch (M\u1EA1ch 0, HA 0)";
       const genderText = patient.gender === "male" ? "Nam" : "N\u1EEF";
       const mlPerKg = Math.round(totalVolumeMl / weightResult.adjustedWeightKg);
       const bottles500 = Math.ceil(totalVolumeMl / 500);
+      const indicatedFluid = branchDecision.branchType === "cpt" ? "Cao Ph\xE2n T\u1EED: Dextran 40 ho\u1EB7c 6% HES 200" : branchDecision.branchType === "blood" ? "H\u1ED3ng C\u1EA7u L\u1EAFng (5-10 ml/kg) + Cao Ph\xE2n T\u1EED" : "Ringer Lactate ho\u1EB7c NaCl 0.9%";
+      const isVasopressorNeeded = this.includeVasopressorInPrint || patient.clinicalResponse === "refractory_shock_cvp" || branchDecision.branchType === "refractory_shock";
       el.innerHTML = `
       <div class="cdss-print-page">
         <!-- HEADER C\u01A0 QUAN & TI\xCAU \u0110\u1EC0 PHI\u1EBEU IN -->
         <div class="cdss-print-meta-top">
           <div class="cdss-print-left-org">
-            <div style="font-weight:bold; text-transform:uppercase;">KHOA C\u1EA4P C\u1EE8U / H\u1ED2I S\u1EE8C T\xCDCH C\u1EF0C</div>
-            <div>B\u1EC6NH \xC1N S\u1ED0: ................................</div>
-            <div>PH\xD2NG / GI\u01AF\u1EDCNG: ........................</div>
+            <div style="font-weight:700; text-transform:uppercase;">KHOA C\u1EA4P C\u1EE8U / H\u1ED2I S\u1EE8C</div>
+            <div>Ph\xF2ng/Gi\u01B0\u1EDDng: ................ | BA s\u1ED1: ................</div>
           </div>
           <div class="cdss-print-right-org">
-            <div style="font-weight:bold;">C\u1ED8NG H\xD2A X\xC3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM</div>
-            <div style="font-style:italic;">\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\xFAc</div>
-            <div style="font-size:0.85em; margin-top:2px;">Th\u1EDDi \u0111i\u1EC3m l\u1EADp phi\u1EBFu: ${dateFormatted}</div>
+            <div style="font-weight:600;">C\u1ED8NG H\xD2A X\xC3 H\u1ED8I CH\u1EE6 NGH\u0128A VI\u1EC6T NAM</div>
+            <div style="font-style:italic; font-size:0.85em;">\u0110\u1ED9c l\u1EADp - T\u1EF1 do - H\u1EA1nh ph\xFAc</div>
+            <div style="font-size:0.85em; margin-top:2px;">Th\u1EDDi \u0111i\u1EC3m l\u1EADp phi\u1EBFu: <strong>${dateFormatted}</strong></div>
           </div>
         </div>
 
         <div class="cdss-print-title-area">
-          <h1 class="cdss-print-main-title">PHI\u1EBEU Y L\u1EC6NH TRUY\u1EC0N D\u1ECACH &amp; CH\u1ED0NG S\u1ED0C SXHD DENGUE</h1>
-          <div class="cdss-print-sub-title">(Theo H\u01B0\u1EDBng d\u1EABn Ch\u1EA9n \u0111o\xE1n &amp; \u0110i\u1EC1u tr\u1ECB S\u1ED1t Xu\u1EA5t Huy\u1EBFt Dengue \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT 2023)</div>
+          <h1 class="cdss-print-main-title">PHI\u1EBEU THEO D\xD5I TRUY\u1EC0N D\u1ECACH SXHD DENGUE</h1>
+          <div class="cdss-print-sub-title">(Theo H\u01B0\u1EDBng d\u1EABn Ch\u1EA9n \u0111o\xE1n &amp; \u0110i\u1EC1u tr\u1ECB SXHD \u2014 Quy\u1EBFt \u0111\u1ECBnh 2760/Q\u0110-BYT 2023)</div>
         </div>
 
-        <!-- TH\xD4NG TIN B\u1EC6NH NH\xC2N & \u0110\xC1NH GI\xC1 C\xC2N N\u1EB6NG CDC 2014 -->
+        <!-- TH\xD4NG TIN B\u1EC6NH NH\xC2N TINH G\u1ECCN CHU\u1EA8N L\xC2M S\xC0NG -->
         <div class="cdss-print-patient-box">
           <div class="cdss-print-row">
             <span>H\u1ECD v\xE0 t\xEAn ng\u01B0\u1EDDi b\u1EC7nh: <strong>...........................................................................</strong></span>
             <span>Tu\u1ED5i: <strong>${patient.ageYears} tu\u1ED5i</strong></span>
             <span>Gi\u1EDBi t\xEDnh: <strong>${genderText}</strong></span>
-          </div>
-
-          <div class="cdss-print-row" style="margin-top: 5px;">
-            <span>C\xE2n th\u1EF1c t\u1EBF: <strong>${weightResult.actualWeightKg} kg</strong></span>
-            <span>Chu\u1EA9n CDC 2014: <strong>${weightResult.standardWeightKg} kg</strong></span>
             <span class="cdss-print-weight-highlight">
               C\xC2N T\xCDNH D\u1ECACH (CDSS): <strong>${weightResult.adjustedWeightKg} kg</strong>
-              ${weightResult.isObese ? "<em>(HI\u1EC6U CH\u1EC8NH TR\u1EBA B\xC9O PH\xCC &gt; 120% CHU\u1EA8N)</em>" : ""}
+              ${weightResult.isObese ? '<em style="font-size:0.8em; color:#b91c1c;">(B\xC9O PH\xCC - HI\u1EC6U CH\u1EC8NH CDC)</em>' : `<span style="font-size:0.82em; color:#555;">(Th\u1EF1c t\u1EBF: ${weightResult.actualWeightKg}kg)</span>`}
             </span>
           </div>
 
           <div class="cdss-print-row" style="margin-top: 5px;">
-            <span>Ch\u1EA9n \u0111o\xE1n / Ph\xE2n \u0111\u1ED9: <strong style="text-transform:uppercase;">${severityText}</strong></span>
-            <span>\u0110\xE1p \u1EE9ng l\xE2m s\xE0ng: <strong>${branchDecision.title}</strong></span>
+            <span>Ch\u1EA9n \u0111o\xE1n: <strong style="text-transform:uppercase;">${severityText}</strong></span>
+            <span>D\u1ECBch ch\u1EC9 \u0111\u1ECBnh: <strong style="color:#0369a1;">${indicatedFluid}</strong></span>
           </div>
+
+          ${branchDecision.branchType !== "standard" ? `
+            <div style="margin-top: 5px; padding: 3px 8px; border: 1px dashed #c2410c; background: #fff7ed; font-size: 8.5pt;">
+              <strong style="color:#c2410c;">[!] H\u01B0\u1EDBng x\u1EED tr\xED:</strong> ${branchDecision.recommendedFluid} (${branchDecision.title})
+            </div>
+          ` : ""}
         </div>
 
-        <!-- Y L\u1EC6NH X\u1EEC TR\xCD KH\xD4NG \u0110\xC1P \u1EE8NG N\u1EBEU C\xD3 -->
-        ${branchDecision.branchType !== "standard" ? `
-          <div style="border:1.5px solid #000; padding:6px 10px; margin-bottom:8px; background:#fff7ed;">
-            <div style="font-weight:bold; font-size:10pt; text-transform:uppercase; color:#b91c1c;">
-              [!] Y L\u1EC6NH X\u1EEC TR\xCD KHI KH\xD4NG \u0110\xC1P \u1EE8NG: ${branchDecision.title}
-            </div>
-            <div style="font-size:9pt; margin-top:2px;">
-              <strong>H\u01B0\u1EDBng x\u1EED tr\xED:</strong> ${branchDecision.recommendedFluid} | <strong>L\xFD do:</strong> ${branchDecision.reasoning}
-            </div>
-          </div>
-        ` : ""}
-
-        <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH 4 C\u1ED8T CHU\u1EA8N H\xD3A (TR\u1ECCNG T\xC2M PHI\u1EBEU IN) -->
+        <!-- B\u1EA2NG \u0110I\u1EC0U PH\u1ED0I C\u1ECCC D\u1ECACH CHU\u1EA8N \u0110I\u1EC0U D\u01AF\u1EE0NG (T\u1EACP TRUNG - R\xD5 R\xC0NG) -->
         <table class="cdss-print-table">
           <thead>
             <tr>
-              <th style="width: 17%;">M\u1ED0C GI\u1EDC & TH\u1EDCI L\u01AF\u1EE2NG</th>
-              <th style="width: 25%;">T\u1ED0C \u0110\u1ED8 & L\u01AF\u1EE2NG D\u1ECACH C\u1EA6N</th>
-              <th style="width: 24%;">\u0110I\u1EC0U PH\u1ED0I T\u1EA0I C\u1ECCC</th>
-              <th style="width: 22%;">GI\xC1M S\xC1T & \u0110O L\u1EA0I HCT</th>
-              <th style="width: 12%;">\u0110D TH\u1EF0C HI\u1EC6N</th>
+              <th style="width: 17%;">C\u1EEE TRUY\u1EC0N &amp; GI\u1EDC</th>
+              <th style="width: 25%;">T\u1ED0C \u0110\u1ED8 &amp; L\u01AF\u1EE2NG D\u1ECACH</th>
+              <th style="width: 24%;">CHU\u1EA8N B\u1ECA T\u1EA0I C\u1ECCC</th>
+              <th style="width: 22%;">THEO D\xD5I &amp; HCT</th>
+              <th style="width: 12%;">\u0110D K\xDD</th>
             </tr>
           </thead>
           <tbody>
-            ${fluidRows.map((r) => `
+            ${fluidRows.map((r) => {
+        const stageShort = r.stageName.replace(/^Cữ\s*\d+\s*:\s*/i, "").trim();
+        let monitorShort = r.monitoringNotes.replace(/Bù dịch tinh thể đẳng trương\.?\s*/gi, "").replace(/Bù dịch cao phân tử đẳng trương\.?\s*/gi, "").replace(/Đo Hct ngay kết thúc/gi, "\u0110o Hct sau").trim();
+        if (!monitorShort) {
+          monitorShort = "Theo d\xF5i M, HA, NT, l\u01B0\u1EE3ng n\u01B0\u1EDBc ti\u1EC3u";
+        }
+        return `
               <tr>
                 <td style="text-align: center;">
-                  <div style="font-weight: bold; font-size: 1.05em;">C\u1EEF ${r.stepIndex} (${r.durationHours}h)</div>
-                  <div style="font-weight: 600; margin: 2px 0;">${r.timeWindow}</div>
-                  <div style="font-size: 0.82em; color: #444;">${r.stageName}</div>
+                  <div style="font-weight: 800; font-size: 1.05em;">C\u1EEF ${r.stepIndex} <span style="font-size:0.85em; font-weight:600;">(${r.durationHours}h)</span></div>
+                  <div style="font-weight: 700; margin: 2px 0; font-size: 0.95em;">${r.timeWindow}</div>
+                  <div style="font-size: 0.8em; color: #444;">${stageShort}</div>
                 </td>
                 <td>
                   <div>T\u1ED1c \u0111\u1ED9: <strong style="font-size: 1.15em;">${r.rateMlKgH} ml/kg/h</strong></div>
-                  <div>S\u1ED1 gi\u1ECDt: <strong>${r.dropsPerMin} gi\u1ECDt/ph\xFAt</strong> <small>(d\xE2y 20 gi\u1ECDt/ml)</small></div>
-                  <div>L\u01B0\u1EE3ng d\u1ECBch c\u1EA7n: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong></div>
+                  <div style="font-size: 0.9em; margin-top: 1px;">S\u1ED1 gi\u1ECDt: <strong>${r.dropsPerMin} gi\u1ECDt/ph\xFAt</strong></div>
+                  <div style="font-size: 0.88em; margin-top: 1px;">L\u01B0\u1EE3ng d\u1ECBch: <strong>${r.totalMl.toLocaleString("vi-VN")} ml</strong></div>
                 </td>
                 <td>
-                  <div>D\u1ECBch c\xF3 s\u1EB5n t\u1EEB c\u1EEF tr\u01B0\u1EDBc: <strong>${r.existingFluidMl} ml</strong></div>
-                  <div style="font-weight: bold; margin: 2px 0;">
-                    ${r.bottlesToHang > 0 ? `Treo th\xEAm: +${r.bottlesToHang} chai 500ml` : "Kh\xF4ng c\u1EA7n treo th\xEAm chai"}
+                  <div style="font-weight: 700; font-size: 0.95em;">
+                    ${r.bottlesToHang > 0 ? `Treo th\xEAm: +${r.bottlesToHang} chai (500ml)` : "D\xF9ng d\u1ECBch s\u1EB5n c\xF3"}
                   </div>
-                  <div>T\u1ED5ng c\xF3 t\u1EA1i c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong></div>
+                  <div style="font-size: 0.85em; margin-top: 2px;">
+                    T\u1ED5ng t\u1EA1i c\u1ECDc: <strong>${r.totalAtPoleMl.toLocaleString("vi-VN")} ml</strong>
+                  </div>
+                  ${r.existingFluidMl > 0 ? `
+                    <div style="font-size: 0.76em; color: #555;">(D\u01B0 c\u1EEF tr\u01B0\u1EDBc: ${r.existingFluidMl} ml)</div>
+                  ` : ""}
                 </td>
                 <td>
                   ${r.hctCheckRequired ? `
-                    <div style="font-weight: bold; color: #b91c1c; margin-bottom: 2px;">
-                      [!] B\u1EAET BU\u1ED8C \u0110O L\u1EA0I HCT
+                    <div style="font-weight: 800; color: #b91c1c; font-size: 0.86em; margin-bottom: 2px;">
+                      [!] \u0110O L\u1EA0I HCT (${r.durationHours}h)
                     </div>
                   ` : ""}
-                  <div style="font-size: 0.82em; line-height: 1.3;">${r.monitoringNotes}</div>
+                  <div style="font-size: 0.82em; line-height: 1.3;">${monitorShort}</div>
                 </td>
                 <td style="text-align: center; vertical-align: middle;">
-                  <div style="font-size: 0.78em; color: #555;">B\u1EAFt \u0111\u1EA7u: ....h....</div>
-                  <div style="font-size: 0.78em; margin-top: 14px;">K\xFD: ..............</div>
+                  <div style="font-size: 0.78em; color: #555;">Gi\u1EDD: ...h...</div>
+                  <div style="font-size: 0.78em; margin-top: 14px;">K\xFD: .........</div>
                 </td>
               </tr>
-            `).join("")}
+            `;
+      }).join("")}
           </tbody>
         </table>
 
         <!-- T\u1ED4NG K\u1EBET D\u1ECACH TRUY\u1EC0N D\u1EF0 KI\u1EBEN -->
         <div class="cdss-print-summary-strip">
-          <span>T\u1ED5ng l\u01B0\u1EE3ng d\u1ECBch b\xF9: <strong>${totalVolumeMl.toLocaleString("vi-VN")} ml</strong> (~ <strong>${mlPerKg} ml/kg</strong>)</span>
+          <span>T\u1ED5ng d\u1ECBch b\xF9: <strong>${totalVolumeMl.toLocaleString("vi-VN")} ml</strong> (~<strong>${mlPerKg} ml/kg</strong>)</span>
           <span>Th\u1EDDi gian d\u1EF1 ki\u1EBFn: <strong>${totalDurationHours} gi\u1EDD</strong> (${fluidRows.length} c\u1EEF)</span>
-          <span>\u01AF\u1EDBc t\xEDnh s\u1ED1 chai 500ml: <strong>${bottles500} chai</strong> (Ringer Lactate / NaCl 0.9%)</span>
+          <span>\u01AF\u1EDBc t\xEDnh: <strong>${bottles500} chai 500ml</strong> (${branchDecision.branchType === "cpt" ? "Cao Ph\xE2n T\u1EED" : "Ringer Lactate / NaCl 0.9%"})</span>
         </div>
 
-        <!-- PH\xC1C \u0110\u1ED2 V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML -->
-        <div class="cdss-print-vaso-box">
-          <div style="font-weight: bold; text-transform: uppercase; font-size: 0.88em; margin-bottom: 3px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
-            PH\xC1C \u0110\u1ED2 THU\u1ED0C V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML (\xC1P D\u1EE4NG KHI T\xC1I S\u1ED0C HO\u1EB6C S\u1ED0C TR\u01A0 D\u1ECACH TRUY\u1EC0N)
-          </div>
-          <div class="cdss-print-vaso-grid">
-            <div class="cdss-print-vaso-col">
-              <strong>1. Dopamin (\u0110\u1EA7u tay tr\u1EBB em):</strong> ${d.totalMg} mg (3 \xD7 ${d.patientWeightKg}kg) pha v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. 
-              <em>Quy \u0111\u1ED5i: 1 ml/h = 1 \xB5g/kg/ph\xFAt</em>. Li\u1EC1u khuy\u1EBFn c\xE1o: ${d.standardDoseRange} (T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${d.recommendedPumpRateMlH}</strong>).
+        <!-- PH\xC1C \u0110\u1ED2 V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N (CH\u1EC8 HI\u1EC2N TH\u1ECA KHI C\xD3 CH\u1EC8 \u0110\u1ECANH HO\u1EB6C CH\u1ECCN IN K\xC8M) -->
+        ${isVasopressorNeeded ? `
+          <div class="cdss-print-vaso-box">
+            <div style="font-weight: bold; text-transform: uppercase; font-size: 0.85em; margin-bottom: 2px; border-bottom: 1px dotted #666; padding-bottom: 2px;">
+              PH\xC1C \u0110\u1ED2 THU\u1ED0C V\u1EACN M\u1EA0CH B\u01A0M TI\xCAM \u0110I\u1EC6N 50ML (\xC1P D\u1EE4NG KHI T\xC1I S\u1ED0C HO\u1EB6C S\u1ED0C TR\u01A0 D\u1ECACH TRUY\u1EC0N)
             </div>
-            <div class="cdss-print-vaso-col">
-              <strong>2. Noradrenalin (S\u1ED1c gi\xE3n m\u1EA1ch / ng\u01B0\u1EDDi l\u1EDBn):</strong> ${n.totalMg} mg (0.3 \xD7 ${n.patientWeightKg}kg) pha v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. 
-              <em>Quy \u0111\u1ED5i: 1 ml/h = 0.1 \xB5g/kg/ph\xFAt</em>. Li\u1EC1u khuy\u1EBFn c\xE1o: ${n.standardDoseRange} (T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${n.recommendedPumpRateMlH}</strong>).
-            </div>
-            <div class="cdss-print-vaso-col" style="margin-top:4px;">
-              <strong>3. Dobutamin (CVP > 15 / Suy tim):</strong> ${dob.totalMg} mg (3 \xD7 ${dob.patientWeightKg}kg) pha 50ml G5%. 
-              <em>Quy \u0111\u1ED5i: 1 ml/h = 1 \xB5g/kg/ph\xFAt</em>. T\u1ED1c \u0111\u1ED9: <strong>${dob.recommendedPumpRateMlH}</strong>.
-            </div>
-            <div class="cdss-print-vaso-col" style="margin-top:4px;">
-              <strong>4. G\xF3i ABCS C\u1EA5p C\u1EE9u:</strong> Natri Bicarbonate 4.2% ${Math.round(2 * weightResult.adjustedWeightKg)}ml TM; Calci clorua 10% 2-5ml TM; Dextrose 30% ${Math.round(1.5 * weightResult.adjustedWeightKg)}ml TM.
+            <div style="font-size: 8.5pt; line-height: 1.35; margin-top: 3px;">
+              ${plan.ageGroup === "child" ? `
+                <div><strong>\u2022 Dopamin (L\u1EF1a ch\u1ECDn \u0111\u1EA7u tay \u1EDF tr\u1EBB em):</strong> Pha <strong>${d.totalMg} mg</strong> (3 \xD7 ${d.patientWeightKg}kg) v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${d.recommendedPumpRateMlH}</strong> (Li\u1EC1u khuy\u1EBFn c\xE1o: ${d.standardDoseRange}; Quy \u0111\u1ED5i: 1 ml/h = 1 \xB5g/kg/ph\xFAt).</div>
+              ` : `
+                <div><strong>\u2022 Noradrenalin (S\u1ED1c gi\xE3n m\u1EA1ch / ng\u01B0\u1EDDi l\u1EDBn):</strong> Pha <strong>${n.totalMg} mg</strong> (0.3 \xD7 ${n.patientWeightKg}kg) v\u1EEBa \u0111\u1EE7 50ml Glucose 5%. T\u1ED1c \u0111\u1ED9 b\u01A1m: <strong>${n.recommendedPumpRateMlH}</strong> (Li\u1EC1u khuy\u1EBFn c\xE1o: ${n.standardDoseRange}; Quy \u0111\u1ED5i: 1 ml/h = 0.1 \xB5g/kg/ph\xFAt).</div>
+              `}
+              <div style="font-size: 8pt; color: #444; margin-top: 2px;">
+                <em>* Ch\u1EC9 d\xF9ng khi CVP &gt; 10 cmH2O ho\u1EB7c s\u1ED1c th\u1EA5t b\u1EA1i b\xF9 d\u1ECBch. Gi\xE1m s\xE1t HA m\u1ED7i 15-30 ph\xFAt.</em>
+              </div>
             </div>
           </div>
-        </div>
+        ` : ""}
 
-        <!-- NGUY\xCAN T\u1EAEC \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N KHI TRUY\u1EC0N D\u1ECACH -->
+        <!-- L\u01AFU \xDD \u0110I\u1EC0U D\u01AF\u1EE0NG AN TO\xC0N -->
         <div class="cdss-print-safety-notes">
           <strong>L\u01B0u \xFD \u0111i\u1EC1u d\u01B0\u1EE1ng an to\xE0n:</strong>
           (1) Lu\xF4n \u0111o l\u1EA1i Hct t\u1EA1i gi\u01B0\u1EDDng tr\u01B0\u1EDBc khi quy\u1EBFt \u0111\u1ECBnh gi\u1EA3m b\u1EADc d\u1ECBch theo y l\u1EC7nh.
-          (2) \u0110\xEDch n\u01B0\u1EDBc ti\u1EC3u t\u1ED1i thi\u1EC3u: &ge; 0.5 - 1 ml/kg/gi\u1EDD.
-          (3) B\xE1o b\xE1c s\u0129 ngay n\u1EBFu c\xF3 d\u1EA5u hi\u1EC7u qu\xE1 t\u1EA3i tu\u1EA7n ho\xE0n (ph\xF9 mi m\u1EAFt, th\u1EDF nhanh co k\xE9o, ran \u1EA9m \u0111\xE1y ph\u1ED5i, gan to nhanh).
-          (4) Ng\u01B0ng truy\u1EC1n d\u1ECBch khi m\u1EA1ch, huy\u1EBFt \xE1p \u1ED5n \u0111\u1ECBnh, tho\xE1t s\u1ED1c sau 24-48 gi\u1EDD giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c.
+          (2) \u0110\xEDch n\u01B0\u1EDBc ti\u1EC3u &ge; 0.5 - 1 ml/kg/gi\u1EDD. B\xE1o B\xE1c s\u0129 ngay n\u1EBFu c\xF3 d\u1EA5u hi\u1EC7u ph\xF9 mi m\u1EAFt, th\u1EDF nhanh kh\xF3 th\u1EDF, ran \u1EA9m \u0111\xE1y ph\u1ED5i ho\u1EB7c t\xE1i s\u1ED1c.
+          (3) Ng\u01B0ng truy\u1EC1n d\u1ECBch khi m\u1EA1ch, huy\u1EBFt \xE1p \u1ED5n \u0111\u1ECBnh, tho\xE1t s\u1ED1c sau 24-48 gi\u1EDD giai \u0111o\u1EA1n h\u1ED3i ph\u1EE5c.
         </div>
 
         <!-- CH\u1EEE K\xDD X\xC1C NH\u1EACN Y L\u1EC6NH -->
         <div class="cdss-print-signatures">
           <div class="cdss-print-sign-col">
-            <div style="font-weight: bold;">\u0110I\u1EC0U D\u01AF\u1EE0NG THEO D\xD5I & TH\u1EF0C HI\u1EC6N</div>
+            <div style="font-weight: bold;">\u0110I\u1EC0U D\u01AF\u1EE0NG THEO D\xD5I</div>
             <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
-            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
           </div>
           <div class="cdss-print-sign-col">
             <div style="font-weight: bold;">B\xC1C S\u0128 CH\u1EC8 \u0110\u1ECANH Y L\u1EC6NH</div>
             <div style="font-style: italic; font-size: 0.85em;">(K\xFD v\xE0 ghi r\xF5 h\u1ECD t\xEAn)</div>
-            <div style="margin-top: 45px; font-weight: bold;">............................................................</div>
+            <div style="margin-top: 36px; font-weight: bold;">............................................................</div>
           </div>
         </div>
       </div>

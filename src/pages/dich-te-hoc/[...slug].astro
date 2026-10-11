@@ -2,6 +2,8 @@
 import ArticleLayout from '../../components/layout/ArticleLayout.astro';
 import Alert from '../../components/ui/Alert.astro';
 import QuickNav from '../../components/ui/QuickNav.astro';
+import EpiTriangle from '../../components/medical/EpiTriangle.astro';
+import EpiVectorTable from '../../components/medical/EpiVectorTable.astro';
 
 export async function getStaticPaths() {
   const mdxModules = import.meta.glob('/src/content/basic-medical/epidemiology/**/*.mdx', { eager: true });
@@ -32,6 +34,8 @@ const { Content, frontmatter } = entry;
   <Content components={{
     EpiAlert: Alert,
     EpiPillarsNav: QuickNav,
+    EpiTriangle,
+    EpiVectorTable,
     Alert,
     QuickNav
   }} />
