@@ -121159,7 +121159,7 @@
     if (patient.concomitantNephrotoxins && patient.concomitantNephrotoxins.length > 0) {
       cautions.push(`\u0110ang ph\u1ED1i h\u1EE3p v\u1EDBi thu\u1ED1c g\xE2y \u0111\u1ED9c th\u1EADn: ${patient.concomitantNephrotoxins.join(", ")}. C\u1EA7n theo d\xF5i SCr s\xE1t (m\u1ED7i 24-48h).`);
     }
-    if (patient.concomitantNephrotoxins.includes("Piperacillin/Tazobactam")) {
+    if (patient.concomitantNephrotoxins?.includes("Piperacillin/Tazobactam")) {
       cautions.push("C\u1EA3nh b\xE1o nguy c\u01A1 t\u1ED5n th\u01B0\u01A1ng th\u1EADn c\u1EA5p (AKI) t\u0103ng khi ph\u1ED1i h\u1EE3p Vancomycin + Pip/Tazo (ASHP 2020).");
     }
     if (patientType === "neonatal") {
@@ -121718,7 +121718,7 @@
     } else {
       rec = `AUC24 hi\u1EC7n t\u1EA1i (${auc24} mg\xB7h/L) v\u01B0\u1EE3t ng\u01B0\u1EE1ng an to\xE0n (> 600). Nguy c\u01A1 t\u1ED5n th\u01B0\u01A1ng th\u1EADn c\u1EA5p AKI! \u0110\u1EC1 xu\u1EA5t GI\u1EA2M li\u1EC1u xu\u1ED1ng ${roundedSuggestedDose} mg m\u1ED7i ${tau} gi\u1EDD (D\u1EF1 \u0111o\xE1n AUC24 ~${predictedAuc24} mg\xB7h/L) ho\u1EB7c k\xE9o d\xE0i kho\u1EA3ng c\xE1ch li\u1EC1u.`;
     }
-    const estimatedCl = Number((dose / Math.max(1, aucInterval) * (24 / tau)).toFixed(2));
+    const estimatedCl = Number((dose / Math.max(1, aucInterval)).toFixed(2));
     const estimatedVd = Number((estimatedCl / kel).toFixed(1));
     return {
       auc24,

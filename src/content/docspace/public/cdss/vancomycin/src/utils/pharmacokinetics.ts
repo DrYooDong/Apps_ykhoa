@@ -422,7 +422,7 @@ export function calculateInitialDosing(
   if (patient.concomitantNephrotoxins && patient.concomitantNephrotoxins.length > 0) {
     cautions.push(`Đang phối hợp với thuốc gây độc thận: ${patient.concomitantNephrotoxins.join(', ')}. Cần theo dõi SCr sát (mỗi 24-48h).`);
   }
-  if (patient.concomitantNephrotoxins.includes('Piperacillin/Tazobactam')) {
+  if (patient.concomitantNephrotoxins?.includes('Piperacillin/Tazobactam')) {
     cautions.push('Cảnh báo nguy cơ tổn thương thận cấp (AKI) tăng khi phối hợp Vancomycin + Pip/Tazo (ASHP 2020).');
   }
 
@@ -1172,8 +1172,8 @@ export function evaluateTdm(
     rec = `AUC24 hiện tại (${auc24} mg·h/L) vượt ngưỡng an toàn (> 600). Nguy cơ tổn thương thận cấp AKI! Đề xuất GIẢM liều xuống ${roundedSuggestedDose} mg mỗi ${tau} giờ (Dự đoán AUC24 ~${predictedAuc24} mg·h/L) hoặc kéo dài khoảng cách liều.`;
   }
 
-  // Estimated clearance: CL = Dose_tau / AUC_tau
-  const estimatedCl = Number(((dose / Math.max(1, aucInterval)) * (24 / tau)).toFixed(2));
+  // Estimated clearance: CL = Dose_tau / AUC_tau = Daily_Dose / AUC_24
+  const estimatedCl = Number((dose / Math.max(1, aucInterval)).toFixed(2));
   const estimatedVd = Number((estimatedCl / kel).toFixed(1));
 
   return {
