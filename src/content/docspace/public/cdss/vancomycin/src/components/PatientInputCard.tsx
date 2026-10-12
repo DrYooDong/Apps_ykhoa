@@ -69,12 +69,8 @@ export const PatientInputCard: React.FC<PatientInputCardProps> = ({
             <User className="w-3.5 h-3.5" />
           </div>
           <div>
-            <h2 className="text-xs sm:text-sm font-bold text-slate-900 tracking-tight flex items-center gap-2">
-              <span>Thông tin Bệnh nhân & Thận</span>
-              <span className="inline-flex items-center gap-1 text-[10px] text-slate-400 font-normal">
-                <ShieldCheck className="w-3 h-3 text-emerald-500" />
-                Không lưu trữ dữ liệu BN
-              </span>
+            <h2 className="text-xs sm:text-sm font-bold text-slate-900 tracking-tight flex items-center gap-1.5">
+              <span>Bệnh nhân & Chức năng Thận</span>
             </h2>
           </div>
         </div>

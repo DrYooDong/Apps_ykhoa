@@ -46,6 +46,40 @@ export interface RenalCalculations {
   scrUmolL: number;
 }
 
+export interface ClinCalcDosingRegimen {
+  doseMg: number;
+  intervalHours: number; // 6, 8, 12, 18, 24, 36, 48
+  infusionMinutes: number;
+  infusionHours: number;
+  dailyDoseMg: number;
+  cPeak: number; // mg/L
+  cTrough: number; // mg/L
+  auc24: number; // mg*h/L
+  aucMicRatio: number;
+  isWithinGoal: boolean; // 400 - 600
+  isPreferred: boolean;
+  isHighTroughRisk: boolean; // >= 20 mg/L
+  notes?: string;
+}
+
+export interface PopulationPkParameters {
+  ke: number; // 1/h
+  halfLifeHours: number; // h
+  vdLiters: number; // L
+  vdPerKg: number; // L/kg
+  clLitersPerHour: number; // L/h
+  keModel: 'matzke' | 'bauer';
+  vdModel: 'default_0_7' | 'rushing_ambrose' | 'matzke_0_72';
+}
+
+export interface TimingValidationResult {
+  isValid: boolean;
+  warnings: string[];
+  errors: string[];
+  peakElapsedHours?: number;
+  intervalBetweenSamplesHours?: number;
+}
+
 export interface InitialDosingResult {
   loadingDoseMg: number;
   loadingDoseMgPerKg: number;
@@ -61,6 +95,11 @@ export interface InitialDosingResult {
   recommendationSource: string;
   dosingRationale: string;
   safetyCautions: string[];
+
+  // ClinCalc extension
+  dosingGrid?: ClinCalcDosingRegimen[];
+  preferredRegimen?: ClinCalcDosingRegimen;
+  populationPk?: PopulationPkParameters;
 }
 
 export interface TdmInput {
@@ -108,4 +147,5 @@ export interface TdmEvaluationResult {
   suggestedContinuousRateMgH?: number;
   predictedAuc24?: number;
   clinicalNote: string;
+  timingValidation?: TimingValidationResult;
 }

@@ -39,7 +39,7 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
   onApplyAdjustment
 }) => {
   const isContinuous = regimenMethod === 'continuous';
-  const [showChart, setShowChart] = useState(true);
+  const [showChart, setShowChart] = useState(false);
 
   // Active intermittent calculation method
   const intermittentMethod = tdmInput.intermittentMethod || 'bayesian_single';
@@ -164,124 +164,46 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
 
   return (
     <div id="tdm-calculator-card" className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5">
-      {/* Title & Presets */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-slate-100 gap-2">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
-            <Activity className="w-4 h-4" />
-          </div>
-          <div>
-            <h2 className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
-              Giám sát Nồng độ Thuốc TDM & Tính AUC24
-            </h2>
-            <p className="text-xs text-slate-500">
-              {isContinuous
-                ? 'Phương pháp truyền liên tục: AUC24 = Css × 24 (ASHP 2020)'
-                : intermittentMethod === 'bayesian_single'
-                ? 'Phần mềm Bayesian: Ước tính AUC24 từ 1 mẫu nồng độ trong 24–48h đầu (ASHP 2020)'
-                : 'Mô hình giải tích 2 điểm (Peak - Trough) theo Pai & Rodvold 2014'}
-            </p>
-          </div>
+      {/* Title & Method Switch */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-3 border-b border-slate-100 gap-2">
+        <div>
+          <h2 className="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-1.5">
+            <Activity className="w-4 h-4 text-indigo-700" />
+            Giám sát TDM & Chỉnh Liều theo AUC24
+          </h2>
+          <p className="text-xs text-slate-500">
+            Mục tiêu điều trị: AUC24 / MIC = 400 – 600 mg·h/L (ASHP 2020)
+          </p>
         </div>
 
-        {/* Quick presets */}
-        <div className="flex items-center gap-1 self-start sm:self-auto flex-wrap">
-          <span className="text-[11px] text-slate-400 mr-1 hidden sm:inline">Mẫu thử:</span>
-          <button
-            type="button"
-            onClick={() => loadPreset('optimal')}
-            className="px-2 py-1 text-[11px] font-medium bg-emerald-50 text-emerald-700 hover:bg-emerald-100 rounded-md border border-emerald-200 transition-colors"
-          >
-            Đạt đích
-          </button>
-          <button
-            type="button"
-            onClick={() => loadPreset('low')}
-            className="px-2 py-1 text-[11px] font-medium bg-amber-50 text-amber-700 hover:bg-amber-100 rounded-md border border-amber-200 transition-colors"
-          >
-            Dưới đích
-          </button>
-          <button
-            type="button"
-            onClick={() => loadPreset('high')}
-            className="px-2 py-1 text-[11px] font-medium bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-md border border-rose-200 transition-colors"
-          >
-            Nguy cơ AKI
-          </button>
-          {!isContinuous && intermittentMethod === 'bayesian_single' && (
-            <button
-              type="button"
-              onClick={() => loadPreset('random')}
-              className="px-2 py-1 text-[11px] font-medium bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-md border border-sky-200 transition-colors"
-            >
-              Mẫu bất kỳ (18h)
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Intermittent Dosing Method Switcher */}
-      {!isContinuous && (
-        <div className="mb-4 p-2 bg-slate-50 rounded-xl border border-slate-200">
-          <div className="flex items-center justify-between mb-1.5 px-1">
-            <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-              <Sliders className="w-3.5 h-3.5 text-teal-600" />
-              Phương pháp phân tích Dược động học (TDM):
-            </span>
-            <span className="text-[10px] font-semibold text-teal-700 bg-teal-100/70 px-2 py-0.5 rounded-full">
-              ASHP/IDSA 2020 Guidelines
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+        {/* Minimalist Method Toggle (when Intermittent) */}
+        {!isContinuous && (
+          <div className="flex bg-slate-100 p-0.5 rounded-lg text-xs font-medium self-start sm:self-auto">
             <button
               type="button"
               onClick={() => onChange({ intermittentMethod: 'bayesian_single' })}
-              className={`p-2 rounded-lg text-left transition-all border ${
+              className={`px-2.5 py-1 rounded-md transition-all ${
                 intermittentMethod === 'bayesian_single'
-                  ? 'bg-white border-teal-500 shadow-xs ring-1 ring-teal-500/20'
-                  : 'bg-transparent border-transparent hover:bg-slate-200/50 text-slate-600'
+                  ? 'bg-white text-slate-900 shadow-xs font-semibold'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-900 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-amber-500" />
-                  Phần mềm Bayesian (1 mẫu nồng độ)
-                </span>
-                <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
-                  Khuyến cáo ưu tiên
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Lấy 1 mẫu bất kỳ (hoặc đáy) trong 24–48h đầu; tự động ước tính AUC24 & chỉnh liều
-              </p>
+              Bayesian 1 mẫu (ASHP 2020)
             </button>
-
             <button
               type="button"
               onClick={() => onChange({ intermittentMethod: 'two_point' })}
-              className={`p-2 rounded-lg text-left transition-all border ${
+              className={`px-2.5 py-1 rounded-md transition-all ${
                 intermittentMethod === 'two_point'
-                  ? 'bg-white border-teal-500 shadow-xs ring-1 ring-teal-500/20'
-                  : 'bg-transparent border-transparent hover:bg-slate-200/50 text-slate-600'
+                  ? 'bg-white text-slate-900 shadow-xs font-semibold'
+                  : 'text-slate-500 hover:text-slate-800'
               }`}
             >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-900 flex items-center gap-1">
-                  <FlaskConical className="w-3 h-3 text-slate-500" />
-                  Dược động học 2 điểm (Peak - Trough)
-                </span>
-                <span className="text-[9px] font-medium px-1.5 py-0.2 rounded bg-slate-200 text-slate-700">
-                  Pai & Rodvold 2014
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-500 mt-0.5">
-                Cần 2 mẫu: Đỉnh (sau truyền 1-2h) và Đáy (trước liều kế ≤ 30 phút)
-              </p>
+              2 mẫu (Peak - Trough)
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Input Fields */}
       {isContinuous ? (
@@ -572,6 +494,22 @@ export const TdmCalculatorCard: React.FC<TdmCalculatorCardProps> = ({
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ClinCalc Timing Validation Warning Banner */}
+      {tdmResult.timingValidation && (tdmResult.timingValidation.warnings.length > 0 || tdmResult.timingValidation.errors.length > 0) && (
+        <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs space-y-1">
+          <div className="font-bold flex items-center gap-1.5 text-amber-950">
+            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+            Cảnh báo phân tích thời điểm lấy mẫu (ClinCalc & ASHP 2020 Timing Analysis):
+          </div>
+          {tdmResult.timingValidation.errors.map((err, i) => (
+            <div key={`err-${i}`} className="text-rose-700 font-semibold">• {err}</div>
+          ))}
+          {tdmResult.timingValidation.warnings.map((warn, i) => (
+            <div key={`warn-${i}`} className="text-amber-800">• {warn}</div>
+          ))}
         </div>
       )}
 

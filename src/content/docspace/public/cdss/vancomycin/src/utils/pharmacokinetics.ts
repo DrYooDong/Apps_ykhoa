@@ -1,4 +1,14 @@
-import { PatientProfile, RenalCalculations, InitialDosingResult, TdmInput, TdmEvaluationResult, InfusionMethod } from '../types';
+import { 
+  PatientProfile, 
+  RenalCalculations, 
+  InitialDosingResult, 
+  TdmInput, 
+  TdmEvaluationResult, 
+  InfusionMethod,
+  ClinCalcDosingRegimen,
+  PopulationPkParameters,
+  TimingValidationResult
+} from '../types';
 
 /**
  * Calculates Ideal Body Weight (IBW) and Adjusted Body Weight (ABW)
@@ -183,6 +193,214 @@ export function calculateSafeInfusionMinutes(doseMg: number): number {
   if (doseMg <= 2000) return 120;
   if (doseMg <= 2500) return 150;
   return 180;
+}
+
+/**
+ * Calculates Population Pharmacokinetic Parameters matching ClinCalc standards:
+ * - Elimination rate ke = 0.00083 * CrCl + 0.0044 (Matzke et al. 1984 & Bauer 2014)
+ * - Vd models: Default 0.7 L/kg, Matzke 0.72 L/kg, or Rushing-Ambrose (2001)
+ * - CL = ke * Vd
+ */
+export function calculatePopulationPk(
+  patient: PatientProfile,
+  renal: RenalCalculations,
+  vdModel: 'default_0_7' | 'rushing_ambrose' | 'matzke_0_72' = 'default_0_7',
+  keModel: 'matzke' | 'bauer' = 'matzke'
+): PopulationPkParameters {
+  const tbw = patient.weight;
+  const age = patient.age;
+  const crcl = Math.max(5, Math.min(180, renal.crcl));
+
+  // Matzke 1984 / Bauer equation: ke = 0.00083 * CrCl + 0.0044 (1/h)
+  const ke = Number((0.00083 * crcl + 0.0044).toFixed(4));
+  const halfLifeHours = Number((Math.log(2) / ke).toFixed(1));
+
+  let vdLiters = 0;
+  let vdPerKg = 0.7;
+
+  if (vdModel === 'rushing_ambrose') {
+    // Rushing-Ambrose (2001): Vd = 0.17 * Age + 0.22 * TBW + 15
+    vdLiters = 0.17 * age + 0.22 * tbw + 15;
+    vdPerKg = Number((vdLiters / tbw).toFixed(2));
+  } else if (vdModel === 'matzke_0_72') {
+    vdPerKg = 0.72;
+    const usedWt = renal.bmi >= 30 ? renal.abw : tbw;
+    vdLiters = vdPerKg * usedWt;
+  } else {
+    // Default 0.7 L/kg
+    vdPerKg = 0.7;
+    const usedWt = renal.bmi >= 30 ? renal.abw : tbw;
+    vdLiters = vdPerKg * usedWt;
+  }
+
+  vdLiters = Number(Math.max(15, vdLiters).toFixed(1));
+  const clLitersPerHour = Number((ke * vdLiters).toFixed(2));
+
+  return {
+    ke,
+    halfLifeHours,
+    vdLiters,
+    vdPerKg,
+    clLitersPerHour,
+    keModel,
+    vdModel
+  };
+}
+
+/**
+ * Generates ClinCalc-standard Dosing Regimen Grid (Matrix of candidate regimens)
+ * Computes Peak, Trough, AUC24, AUC/MIC, and highlights the "Preferred Regimen"
+ */
+export function generateClinCalcDosingGrid(
+  patient: PatientProfile,
+  renal: RenalCalculations,
+  popPk?: PopulationPkParameters
+): {
+  regimens: ClinCalcDosingRegimen[];
+  preferredRegimen?: ClinCalcDosingRegimen;
+  populationPk: PopulationPkParameters;
+} {
+  const pk = popPk || calculatePopulationPk(patient, renal);
+  const ke = pk.ke;
+  const cl = pk.clLitersPerHour;
+  const mic = patient.mic || 1.0;
+
+  // Candidate doses & intervals matching ClinCalc
+  const candidateDoses = [500, 750, 1000, 1250, 1500, 1750, 2000];
+  let candidateIntervals = [8, 12, 18, 24, 36, 48];
+  if (renal.crcl >= 90) {
+    candidateIntervals = [6, 8, 12, 18, 24];
+  } else if (renal.crcl < 30) {
+    candidateIntervals = [18, 24, 36, 48];
+  }
+
+  const regimens: ClinCalcDosingRegimen[] = [];
+
+  for (const dose of candidateDoses) {
+    for (const tau of candidateIntervals) {
+      const infusionMin = calculateSafeInfusionMinutes(dose);
+      const tinf = infusionMin / 60;
+      if (tinf >= tau) continue;
+
+      // Steady-state Peak:
+      const cPeak = Number(((dose / (tinf * cl)) * ((1 - Math.exp(-ke * tinf)) / (1 - Math.exp(-ke * tau)))).toFixed(1));
+      // Steady-state Trough:
+      const cTrough = Number((cPeak * Math.exp(-ke * (tau - tinf))).toFixed(1));
+      // AUC24:
+      const dailyDoseMg = Math.round(dose * (24 / tau));
+      const auc24 = Number((dailyDoseMg / cl).toFixed(1));
+      const aucMicRatio = Number((auc24 / mic).toFixed(1));
+
+      const isWithinGoal = auc24 >= 400 && auc24 <= 600;
+      const isHighTroughRisk = cTrough >= 20.0;
+
+      regimens.push({
+        doseMg: dose,
+        intervalHours: tau,
+        infusionMinutes: infusionMin,
+        infusionHours: tinf,
+        dailyDoseMg,
+        cPeak,
+        cTrough,
+        auc24,
+        aucMicRatio,
+        isWithinGoal,
+        isPreferred: false,
+        isHighTroughRisk
+      });
+    }
+  }
+
+  // Pick Preferred Regimen
+  const withinGoal = regimens.filter(r => r.isWithinGoal && !r.isHighTroughRisk);
+  let bestCandidate: ClinCalcDosingRegimen | undefined = undefined;
+  let bestScore = -Infinity;
+
+  const getIntervalPreference = (tau: number) => {
+    if (tau === 12) return 35;
+    if (tau === 24) return 30;
+    if (tau === 8) return 18;
+    if (tau === 48) return 15;
+    return 5;
+  };
+
+  for (const cand of withinGoal) {
+    const aucDistPenalty = Math.abs(cand.auc24 - 500); // 0 to 100
+    const troughScore = (cand.cTrough >= 10 && cand.cTrough <= 18) ? 25 : (cand.cTrough < 10 ? 5 : 12);
+    const intervalScore = getIntervalPreference(cand.intervalHours);
+
+    const totalScore = 100 - aucDistPenalty + troughScore + intervalScore;
+    if (totalScore > bestScore) {
+      bestScore = totalScore;
+      bestCandidate = cand;
+    }
+  }
+
+  if (!bestCandidate && regimens.length > 0) {
+    let minDiff = Infinity;
+    for (const r of regimens) {
+      const diff = Math.abs(r.auc24 - 500);
+      if (diff < minDiff) {
+        minDiff = diff;
+        bestCandidate = r;
+      }
+    }
+  }
+
+  if (bestCandidate) {
+    bestCandidate.isPreferred = true;
+  }
+
+  return {
+    regimens,
+    preferredRegimen: bestCandidate,
+    populationPk: pk
+  };
+}
+
+/**
+ * Validates TDM sample timing according to ClinCalc / ASHP guidelines:
+ * - Peak drawn >= 1 hr post-infusion
+ * - Delta time between Peak and Trough >= 3 hrs
+ * - Infusion duration < interval
+ */
+export function validateTdmSampleTiming(tdm: TdmInput): TimingValidationResult {
+  const warnings: string[] = [];
+  const errors: string[] = [];
+  let peakElapsedHours: number | undefined;
+  let intervalBetweenSamplesHours: number | undefined;
+
+  const tInf = tdm.infusionDurationHours || 1.5;
+  const tau = tdm.currentIntervalHours || 12;
+
+  if (tInf >= tau) {
+    errors.push(`Thời gian truyền (${tInf}h) không được vượt quá hoặc bằng khoảng cách liều (${tau}h).`);
+  }
+
+  if (tdm.intermittentMethod === 'two_point' || (tdm.peakConcentration && tdm.peakConcentration > 0)) {
+    const tPeakAfterEnd = tdm.peakTimeAfterEndHours ?? 1.0;
+    peakElapsedHours = tPeakAfterEnd;
+
+    if (tPeakAfterEnd < 1.0) {
+      warnings.push(`Mẫu Đỉnh (C_peak) lấy quá sớm (${tPeakAfterEnd}h sau truyền, chuẩn ClinCalc khuyến cáo ≥ 1.0h); chưa kết thúc pha phân bố mô, có thể làm tính sai lệch ke và AUC.`);
+    }
+
+    const tTroughBeforeNext = tdm.troughTimeBeforeNextHours ?? 0.5;
+    const deltaT = (tau - tTroughBeforeNext) - (tInf + tPeakAfterEnd);
+    intervalBetweenSamplesHours = Number(Math.max(0, deltaT).toFixed(1));
+
+    if (deltaT < 3.0) {
+      warnings.push(`Khoảng cách giữa mẫu Đỉnh và Đáy quá ngắn (${intervalBetweenSamplesHours}h, chuẩn ClinCalc khuyến cáo ≥ 3.0h hoặc 1 chu kỳ t½); độ dốc thải trừ khó xác định chính xác.`);
+    }
+  }
+
+  return {
+    isValid: errors.length === 0,
+    warnings,
+    errors,
+    peakElapsedHours,
+    intervalBetweenSamplesHours
+  };
 }
 
 /**
@@ -377,6 +595,9 @@ export function calculateInitialDosing(
   }
   let loadingDoseMg = Math.min(maxLd, Math.round((tbw * ldMgPerKg) / 250) * 250);
 
+  // Generate ClinCalc-standard Dosing Regimen Grid & Population PK
+  const clinCalcGrid = generateClinCalcDosingGrid(patient, renal);
+
   // B. Maintenance Dosing
   if (methodPreference === 'continuous') {
     // Continuous Infusion (ASHP 2020 Rec 7, 10 & Zhang 2024 Figs 2 & 4)
@@ -417,7 +638,10 @@ export function calculateInitialDosing(
       continuousRateMgPerHour: rateMgPerHour,
       recommendationSource: isOverweight ? 'Zhang et al. (Clin Pharmacokinet 2024) & ASHP 2020' : 'ASHP / IDSA 2020 Guidelines',
       dosingRationale: rationale,
-      safetyCautions: cautions
+      safetyCautions: cautions,
+      dosingGrid: clinCalcGrid.regimens,
+      preferredRegimen: clinCalcGrid.preferredRegimen,
+      populationPk: clinCalcGrid.populationPk
     };
   } else {
     // Intermittent Infusion (IIV)
@@ -434,16 +658,21 @@ export function calculateInitialDosing(
       recSource = 'Zhang et al. (Clin Pharmacokinet 2024)';
       rationale = `Theo bảng tối ưu hóa liều ngắt quãng Zhang 2024 cho bệnh nhân cân nặng ${tbw}kg (${isIcu ? 'ICU' : 'Khoa thường'}, CKD-EPI: ${renal.egfrCkdEpi} mL/phút/1.73m²).`;
       cautions.push('Zhang 2024 khuyến cáo Ngày 1 dùng 2 liều nạp cách nhau 12h, từ Ngày 2 chuyển sang liều duy trì.');
+    } else if (clinCalcGrid.preferredRegimen && crcl >= 40) {
+      // ClinCalc Preferred Regimen Standard (Matzke / Bauer PK)
+      singleDoseMg = clinCalcGrid.preferredRegimen.doseMg;
+      intervalHours = clinCalcGrid.preferredRegimen.intervalHours;
+      recSource = 'Mô hình Dược động học ClinCalc (Matzke / Bauer) & ASHP 2020';
+      rationale = `Theo mô hình PK Quần thể ClinCalc (ke = ${clinCalcGrid.populationPk.ke} h⁻¹, Vd = ${clinCalcGrid.populationPk.vdLiters} L, CL = ${clinCalcGrid.populationPk.clLitersPerHour} L/h): Khuyến cáo ${singleDoseMg} mg mỗi ${intervalHours}h (Dự đoán AUC24 = ${clinCalcGrid.preferredRegimen.auc24} mg·h/L, C_peak = ${clinCalcGrid.preferredRegimen.cPeak} mg/L, C_trough = ${clinCalcGrid.preferredRegimen.cTrough} mg/L).`;
     } else {
-      // Normal weight or adapted to BVĐK Cà Mau / ASHP 2020
+      // Severe renal impairment -> Bảng 2 BVĐK Cà Mau & Dược Thư QG 2015
       if (crcl >= 90) {
-        // Normal renal function: 15-20 mg/kg q8-12h
+        // Normal renal function fallback
         singleDoseMg = Math.min(2000, Math.round((tbw * 17.5) / 250) * 250);
-        intervalHours = isIcu || crcl > 120 ? 8 : 12; // Hyperfiltration or ICU often needs q8h
+        intervalHours = isIcu || crcl > 120 ? 8 : 12;
         recSource = 'ASHP / IDSA / SIDP 2020 Consensus';
         rationale = `Chức năng thận bình thường (CrCl ${crcl} mL/phút): 15 - 20 mg/kg mỗi ${intervalHours} giờ.`;
       } else {
-        // Renal impairment -> Bảng 2 BVĐK Cà Mau & Dược Thư QG 2015
         const caMauDose24h = getCaMauTableDose(crcl);
         recSource = 'Bảng 2 Hướng dẫn BVĐK Cà Mau & Dược Thư Quốc Gia';
         
@@ -484,7 +713,10 @@ export function calculateInitialDosing(
       maintenanceInfusionMinutes: calculateSafeInfusionMinutes(singleDoseMg),
       recommendationSource: recSource,
       dosingRationale: rationale,
-      safetyCautions: cautions
+      safetyCautions: cautions,
+      dosingGrid: clinCalcGrid.regimens,
+      preferredRegimen: clinCalcGrid.preferredRegimen,
+      populationPk: clinCalcGrid.populationPk
     };
   }
 }
@@ -842,6 +1074,7 @@ export function evaluateTdm(
       rec = `Giảm tốc độ truyền xuống ${suggestedRateMgH} mg/h (tổng ${suggestedRateMgH * 24} mg/24h) hoặc tạm ngưng truyền 2-4h nếu Css > 30 mg/L để tránh độc tính thận AKI.`;
     }
 
+    const timingValidation = validateTdmSampleTiming(tdm);
     return {
       auc24,
       auc24TargetMin: targetMin,
@@ -853,17 +1086,22 @@ export function evaluateTdm(
       adjustedDoseRecommendation: rec,
       suggestedContinuousRateMgH: suggestedRateMgH,
       predictedAuc24: predictedAuc,
-      clinicalNote: `Truyền tĩnh mạch liên tục: AUC24 được tính chính xác bằng công thức AUC24 = Css × 24. Mục tiêu Css lý tưởng: 20 – 25 mg/L.`
+      clinicalNote: `Truyền tĩnh mạch liên tục: AUC24 được tính chính xác bằng công thức AUC24 = Css × 24. Mục tiêu Css lý tưởng: 20 – 25 mg/L.`,
+      timingValidation
     };
   }
 
   // Case B: Intermittent Infusion
+  const timingValidation = validateTdmSampleTiming(tdm);
+
   // Check if Bayesian 1-sample or 2-point PK
   const isBayesian = tdm.intermittentMethod === 'bayesian_single' || 
     (!tdm.intermittentMethod && (!tdm.peakConcentration || tdm.peakConcentration <= 0));
 
   if (isBayesian) {
-    return estimateBayesianSingleSample(tdm, patient, renal);
+    const res = estimateBayesianSingleSample(tdm, patient, renal);
+    res.timingValidation = timingValidation;
+    return res;
   }
 
   // Case C: Intermittent Infusion (2-point PK Analytic)
@@ -878,7 +1116,9 @@ export function evaluateTdm(
   if (cPeak <= 0 || cTrough <= 0 || cPeak <= cTrough) {
     // If only trough is provided in 2-point mode, route to Bayesian!
     if (cTrough > 0) {
-      return estimateBayesianSingleSample(tdm, patient, renal);
+      const res = estimateBayesianSingleSample(tdm, patient, renal);
+      res.timingValidation = timingValidation;
+      return res;
     }
 
     return {
@@ -888,7 +1128,8 @@ export function evaluateTdm(
       targetAttainment: 'subtherapeutic',
       estimationMethod: 'two_point',
       adjustedDoseRecommendation: 'Vui lòng nhập nồng độ Đỉnh (C_peak) và Đáy (C_trough) để tính toán.',
-      clinicalNote: 'Cần ít nhất 2 nồng độ huyết thanh để tính toán dược động học 2 điểm.'
+      clinicalNote: 'Cần ít nhất 2 nồng độ huyết thanh để tính toán dược động học 2 điểm.',
+      timingValidation
     };
   }
 
@@ -951,6 +1192,7 @@ export function evaluateTdm(
     suggestedDoseMg: roundedSuggestedDose,
     suggestedIntervalHours: tau,
     predictedAuc24,
-    clinicalNote: `Dược động học 2 điểm (Pai & Rodvold 2014): k_el = ${kel} h⁻¹, t½ = ${halfLife} giờ, CL ước tính = ${estimatedCl} L/h. C_max dự tính: ${cMaxTrue} mg/L, C_min dự tính: ${cMinTrue} mg/L.`
+    clinicalNote: `Dược động học 2 điểm (Pai & Rodvold 2014): k_el = ${kel} h⁻¹, t½ = ${halfLife} giờ, CL ước tính = ${estimatedCl} L/h. C_max dự tính: ${cMaxTrue} mg/L, C_min dự tính: ${cMinTrue} mg/L.`,
+    timingValidation
   };
 }

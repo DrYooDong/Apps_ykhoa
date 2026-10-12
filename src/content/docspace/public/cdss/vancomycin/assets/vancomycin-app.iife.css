@@ -1,0 +1,23 @@
+/* ../../../../../../node_modules/tailwindcss/index.css */
+/* src/index.css */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  header,
+  nav,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+}

@@ -55,7 +55,8 @@ const DEFAULT_PATIENT: PatientProfile = {
 export default function App() {
   const [patient, setPatient] = useState<PatientProfile>(DEFAULT_PATIENT);
   const [methodPreference, setMethodPreference] = useState<InfusionMethod>('intermittent');
-  const [mobileTab, setMobileTab] = useState<'input' | 'dosing' | 'tdm' | 'safety'>('input');
+  const [clinicalTask, setClinicalTask] = useState<'initial_dosing' | 'tdm_adjustment'>('initial_dosing');
+  const [mobileTab, setMobileTab] = useState<'input' | 'dosing' | 'tdm' | 'safety'>('dosing');
   
   const [isGuidelinesOpen, setIsGuidelinesOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
@@ -285,8 +286,42 @@ export default function App() {
 
       {/* Main Content Layout */}
       <main className="max-w-7xl mx-auto w-full px-3 sm:px-6 py-4 flex-1">
+        {/* Core Task Segmented Switch (Initial Dosing vs TDM Adjustment) */}
+        <div className="flex bg-slate-200/80 p-1 rounded-xl max-w-lg mx-auto mb-4 font-semibold text-xs shadow-2xs">
+          <button
+            type="button"
+            onClick={() => {
+              setClinicalTask('initial_dosing');
+              setMobileTab('dosing');
+            }}
+            className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+              clinicalTask === 'initial_dosing' 
+                ? 'bg-white text-slate-900 shadow-xs font-bold' 
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Pill className="w-4 h-4 text-teal-700" />
+            <span>1. Tính Liều Khởi Đầu</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setClinicalTask('tdm_adjustment');
+              setMobileTab('tdm');
+            }}
+            className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all ${
+              clinicalTask === 'tdm_adjustment' 
+                ? 'bg-white text-slate-900 shadow-xs font-bold' 
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Activity className="w-4 h-4 text-indigo-700" />
+            <span>2. Chỉnh Liều TDM (AUC24)</span>
+          </button>
+        </div>
+
         {/* Mobile View Switcher (Visible only on small screens) */}
-        <div className="md:hidden grid grid-cols-4 gap-1 bg-slate-200/80 p-1 rounded-xl mb-4 text-xs font-semibold">
+        <div className="md:hidden grid grid-cols-3 gap-1 bg-slate-200/80 p-1 rounded-xl mb-4 text-xs font-semibold">
           <button
             type="button"
             onClick={() => setMobileTab('input')}
@@ -295,81 +330,66 @@ export default function App() {
             }`}
           >
             <User className="w-4 h-4" />
-            <span className="text-[10px] truncate">1. Bệnh nhân</span>
+            <span className="text-[10px] truncate">Bệnh nhân</span>
           </button>
           <button
             type="button"
-            onClick={() => setMobileTab('dosing')}
+            onClick={() => {
+              setMobileTab('dosing');
+              setClinicalTask('initial_dosing');
+            }}
             className={`py-2 px-1 rounded-lg flex flex-col items-center gap-1 transition-all ${
               mobileTab === 'dosing' ? 'bg-white text-teal-700 shadow-xs' : 'text-slate-600'
             }`}
           >
             <Pill className="w-4 h-4" />
-            <span className="text-[10px] truncate">2. Liều dùng</span>
+            <span className="text-[10px] truncate">Tính liều</span>
           </button>
           <button
             type="button"
-            onClick={() => setMobileTab('tdm')}
+            onClick={() => {
+              setMobileTab('tdm');
+              setClinicalTask('tdm_adjustment');
+            }}
             className={`py-2 px-1 rounded-lg flex flex-col items-center gap-1 transition-all ${
               mobileTab === 'tdm' ? 'bg-white text-teal-700 shadow-xs' : 'text-slate-600'
             }`}
           >
             <Activity className="w-4 h-4" />
-            <span className="text-[10px] truncate">3. TDM & AUC</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setMobileTab('safety')}
-            className={`py-2 px-1 rounded-lg flex flex-col items-center gap-1 transition-all ${
-              mobileTab === 'safety' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600'
-            }`}
-          >
-            <ShieldAlert className="w-4 h-4" />
-            <span className="text-[10px] truncate">4. Cảnh báo</span>
+            <span className="text-[10px] truncate">Chỉnh liều TDM</span>
           </button>
         </div>
 
-        {/* Responsive Desktop 2-Column Grid (~30% Input & Safety, ~70% Results & Calculations) */}
+        {/* Responsive Desktop 2-Column Grid (35% Input & Safety, 65% Focused Active Task) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-start">
-          {/* Left Column (Input, Safety Guardrails & Quick Clinical Ref) - approx 30-33% */}
+          {/* Left Column (Input & Compact Safety Guardrails) */}
           <div className={`lg:col-span-4 xl:col-span-4 space-y-3.5 lg:sticky lg:top-18 ${
-            mobileTab === 'input' || mobileTab === 'safety' ? 'block' : 'hidden md:block'
+            mobileTab === 'input' ? 'block' : 'hidden md:block'
           }`}>
-            {(mobileTab === 'input' || window.innerWidth >= 768) && (
-              <PatientInputCard
-                patient={patient}
-                renal={renal}
-                onChange={handlePatientChange}
-              />
-            )}
+            <PatientInputCard
+              patient={patient}
+              renal={renal}
+              onChange={handlePatientChange}
+            />
 
-            {(mobileTab === 'safety' || window.innerWidth >= 768) && (
-              <>
-                <SafetyAlertsCard
-                  patient={patient}
-                  renal={renal}
-                />
-                
-                {/* Clinical Quick Reference to utilize vertical space effectively */}
-                <ClinicalQuickReferenceCard />
-              </>
-            )}
+            <SafetyAlertsCard
+              patient={patient}
+              renal={renal}
+            />
           </div>
 
-          {/* Right Column (Prescription Dosing, TDM AUC24 & PK Curve Chart) - approx 67-70% */}
+          {/* Right Column (Focused Active Task Card) */}
           <div className={`lg:col-span-8 xl:col-span-8 space-y-4 ${
             mobileTab === 'dosing' || mobileTab === 'tdm' ? 'block' : 'hidden md:block'
           }`}>
-            {(mobileTab === 'dosing' || window.innerWidth >= 768) && (
+            {clinicalTask === 'initial_dosing' ? (
               <DosingRegimenCard
                 dosing={dosing}
                 selectedMethod={methodPreference}
                 onMethodChange={setMethodPreference}
                 weightKg={patient.weight}
               />
-            )}
-
-            {(mobileTab === 'tdm' || window.innerWidth >= 768) && (
+            ) : (
               <TdmCalculatorCard
                 tdmInput={activeTdmInput}
                 tdmResult={tdmResult}
