@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { SoapObjective } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapObjectiveColumnProps {
   o: SoapObjective;
