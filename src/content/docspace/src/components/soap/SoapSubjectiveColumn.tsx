@@ -11,7 +11,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { SoapSubjective } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapSubjectiveColumnProps {
   s: SoapSubjective;
@@ -82,7 +82,7 @@ export const SoapSubjectiveColumn: React.FC<SoapSubjectiveColumnProps> = ({
               <MessageSquareQuote className="w-10 h-10" />
             </div>
             <p className="font-semibold text-sky-950 leading-relaxed text-[12.5px] relative z-10">
-              "{s.chiefComplaint}"
+              "{formatClinicalInline(s.chiefComplaint)}"
             </p>
           </div>
         </div>
@@ -108,10 +108,10 @@ export const SoapSubjectiveColumn: React.FC<SoapSubjectiveColumnProps> = ({
                   <div className="w-3.5 h-3.5 rounded-full bg-sky-500 border-2 border-white shadow-xs shrink-0 mt-0.5" />
                   <div className="flex-1 bg-white p-2.5 rounded-lg border border-slate-200/80 shadow-2xs">
                     <div className="font-bold text-sky-900 text-[11px] mb-0.5">
-                      {step.label}
+                      {formatClinicalInline(step.label)}
                     </div>
                     <div className="text-slate-700 leading-relaxed text-[11.5px]">
-                      {step.text || step.label}
+                      {formatClinicalInline(step.text || step.label)}
                     </div>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export const SoapSubjectiveColumn: React.FC<SoapSubjectiveColumnProps> = ({
                   className="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-900 border border-sky-200 font-medium text-[11px] flex items-center gap-1 hover:bg-sky-100/70 transition-colors shadow-2xs"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
-                  <span>{sym}</span>
+                  <span>{formatClinicalInline(sym)}</span>
                 </span>
               ))}
             </div>
@@ -240,7 +240,7 @@ export const SoapSubjectiveColumn: React.FC<SoapSubjectiveColumnProps> = ({
                 <span>BÀI HỌC KHAI THÁC BỆNH SỬ (HISTORY PEARL)</span>
               </div>
               <p className="text-xs text-sky-950/90 leading-relaxed italic">
-                {s.historyPearls}
+                {formatClinicalInline(s.historyPearls)}
               </p>
             </div>
           </div>

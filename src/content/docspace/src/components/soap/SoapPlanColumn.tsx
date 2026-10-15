@@ -91,19 +91,19 @@ export const SoapPlanColumn: React.FC<SoapPlanColumnProps> = ({
                   className="p-3 bg-slate-50/90 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col gap-1 hover:border-teal-300 transition-colors"
                 >
                   <div className="flex items-center justify-between font-bold text-slate-900 text-[12px] flex-wrap gap-1">
-                    <span className="text-slate-900">{med.drug}</span>
+                    <span className="text-slate-900">{formatClinicalInline(med.drug)}</span>
                     <span className="font-mono-custom text-[11px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
-                      {med.dose}
+                      {formatClinicalInline(med.dose)}
                     </span>
                   </div>
 
                   <div className="text-[11px] text-slate-600 flex items-center justify-between mt-1 pt-1 border-t border-slate-200/50 flex-wrap gap-1">
                     <span>
-                      Đường dùng: <b className="text-slate-800">{med.route}</b>
+                      Đường dùng: <b className="text-slate-800">{formatClinicalInline(med.route)}</b>
                     </span>
                     {med.note && (
                       <span className="italic text-teal-900 font-medium bg-teal-50/50 px-1.5 py-0.2 rounded">
-                        {med.note}
+                        {formatClinicalInline(med.note)}
                       </span>
                     )}
                   </div>

@@ -98,29 +98,46 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
   // Phân tích bóc tách các hệ cơ quan trong khám thực thể
   const organSystems = useMemo(() => {
     if (!o.physicalExam) return [];
-    const text = o.physicalExam;
-    const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
-    const systems: { title: string; icon: string; content: string }[] = [];
+    const lines = o.physicalExam.split(/\r?\n/);
+    const systems: { title: string; icon: string; lines: string[] }[] = [];
+    let currentSys: { title: string; icon: string; lines: string[] } | null = null;
 
-    // Duyệt tìm các đoạn khám cơ quan
-    lines.forEach((line) => {
-      const match = line.match(/^[-*•]?\s*(\*\*|""|\[)?(Tổng trạng|Da niêm|Hô hấp|Tim mạch|Tiêu hóa|Bụng|Thần kinh|Khám chuyên khoa|Cơ quan[^:*]*)[^:]*[:"]*\s*(.*)$/i);
-      if (match) {
+    for (const rawLine of lines) {
+      const trimmed = rawLine.trim();
+      if (!trimmed) continue;
+
+      // Nhận diện tiêu đề cơ quan
+      const match = trimmed.match(
+        /^[-*•#\s]*(\*\*|""|\[)?(Toàn thân|Tổng trạng|Tri giác|Da niêm|Hô hấp|Tim mạch|Tiêu hóa|Bụng|Thần kinh|Màng não|Khám mắt|Chuyên khoa|Cơ quan[^:*]*)[^:*]*[:"*\s]*(.*)$/i
+      );
+
+      if (match && match[2]) {
+        if (currentSys) {
+          systems.push(currentSys);
+        }
         const title = match[2].trim();
         let icon = 'stethoscope';
-        if (/tổng trạng|tri giác|tinh thần/i.test(title)) icon = 'brain';
+        if (/tổng trạng|toàn thân|tri giác|tinh thần/i.test(title)) icon = 'brain';
         else if (/da niêm|chi mạch|tưới máu/i.test(title)) icon = 'heart';
         else if (/hô hấp|phổi/i.test(title)) icon = 'wind';
         else if (/tim/i.test(title)) icon = 'pulse';
         else if (/tiêu hóa|bụng|gan/i.test(title)) icon = 'activity';
+        else if (/mắt|nội nhãn/i.test(title)) icon = 'eye';
 
-        systems.push({
-          title: title,
+        const inlineRest = match[3]?.replace(/^[:\s*-]+/, '').trim();
+        currentSys = {
+          title,
           icon,
-          content: match[3]?.replace(/["*]/g, '').trim() || '',
-        });
+          lines: inlineRest ? [inlineRest] : [],
+        };
+      } else if (currentSys) {
+        currentSys.lines.push(trimmed.replace(/^[-*•]\s*/, ''));
       }
-    });
+    }
+
+    if (currentSys) {
+      systems.push(currentSys);
+    }
 
     return systems;
   }, [o.physicalExam]);
@@ -277,15 +294,24 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
               {organSystems.map((sys, idx) => (
                 <div
                   key={idx}
-                  className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col gap-1"
+                  className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col gap-1.5"
                 >
-                  <div className="flex items-center gap-1.5 font-bold text-slate-900 text-[11px]">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900 text-[11px] pb-1 border-b border-slate-200/60">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
                     <span>{sys.title}</span>
                   </div>
-                  <p className="text-slate-700 leading-relaxed text-[11.5px]">
-                    {sys.content}
-                  </p>
+                  {sys.lines.length > 0 ? (
+                    <div className="text-slate-700 leading-relaxed text-[11.5px] space-y-1">
+                      {sys.lines.map((l, lIdx) => (
+                        <div key={lIdx} className="flex items-start gap-1.5">
+                          <span className="text-slate-400 text-[10px] shrink-0 mt-0.5">•</span>
+                          <span className="flex-1">{formatClinicalInline(l)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="text-slate-400 italic text-[10.5px]">Ghi nhận bình thường</span>
+                  )}
                 </div>
               ))}
             </div>

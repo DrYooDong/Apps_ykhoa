@@ -16,7 +16,7 @@ import {
   Upload,
   X,
 } from 'lucide-react';
-import { SoapClinicalExperience } from '../types.ts';
+import type { SoapClinicalExperience } from '../types.ts';
 import {
   generateSoapMarkdown,
   IngestResult,
@@ -419,11 +419,14 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                         Cận lâm sàng có cấu trúc ({editedSoap.o.labGroups.length} nhóm):
                       </span>
                       <div className="flex flex-wrap gap-1 mt-1">
-                        {editedSoap.o.labGroups.map((lg, idx) => (
-                          <span key={idx} className="px-2 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-medium text-slate-700">
-                            {lg.groupName} ({lg.tests.length})
-                          </span>
-                        ))}
+                        {editedSoap.o.labGroups.map((lg, idx) => {
+                          const testCount = (lg as any).tests?.length ?? lg.content?.split('\n').filter((l: string) => l.trim().startsWith('-')).length || lg.content?.split('\n').filter(Boolean).length || 0;
+                          return (
+                            <span key={idx} className="px-2 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-medium text-slate-700">
+                              {lg.groupName} {testCount > 0 ? `(${testCount})` : ''}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -459,12 +462,23 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                         Danh sách vấn đề 3 tầng ({editedSoap.a.problemList.length} vấn đề):
                       </span>
                       <div className="space-y-1 mt-1 max-h-24 overflow-y-auto">
-                        {editedSoap.a.problemList.map((p, idx) => (
-                          <div key={idx} className="text-[11px] bg-white border border-amber-200 rounded p-1.5 flex items-center justify-between">
-                            <span className="font-semibold text-slate-800">{p.problem}</span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-medium">{p.tier}</span>
-                          </div>
-                        ))}
+                        {editedSoap.a.problemList.map((p, idx) => {
+                          const priorityBadge =
+                            p.priority === 'life-threatening'
+                              ? { label: 'Tầng 1 (Đe dọa)', bg: 'bg-red-100 text-red-800 border-red-200' }
+                              : p.priority === 'chronic'
+                              ? { label: 'Tầng 3 (Mạn tính)', bg: 'bg-blue-100 text-blue-800 border-blue-200' }
+                              : { label: 'Tầng 2 (Cấp tính)', bg: 'bg-amber-100 text-amber-800 border-amber-200' };
+
+                          return (
+                            <div key={idx} className="text-[11px] bg-white border border-amber-200 rounded p-1.5 flex items-center justify-between gap-2">
+                              <span className="font-semibold text-slate-800 truncate">{p.problemName || (p as any).problem}</span>
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded border font-medium shrink-0 ${priorityBadge.bg}`}>
+                                {priorityBadge.label}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}

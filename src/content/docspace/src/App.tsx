@@ -113,12 +113,27 @@ export function MainApp() {
   // Active Guideline integration banner state
   const [activeGuidelineBanner, setActiveGuidelineBanner] = useState<GuidelineStudy | null>(null);
 
-  // User Ingested SOAP Cases
-  const [userSoapCases, setUserSoapCases] = useState<SoapClinicalExperience[]>([]);
+  // User Ingested SOAP Cases (Persisted in localStorage)
+  const [userSoapCases, setUserSoapCases] = useState<SoapClinicalExperience[]>(() => {
+    try {
+      const saved = localStorage.getItem('cliniportal_user_soap_cases');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [selectedSoapCaseId, setSelectedSoapCaseId] = useState<string>('');
 
   const handleAddUserSoapCase = (newCase: SoapClinicalExperience) => {
-    setUserSoapCases((prev) => [newCase, ...prev]);
+    setUserSoapCases((prev) => {
+      const updated = [newCase, ...prev.filter((c) => c.id !== newCase.id)];
+      try {
+        localStorage.setItem('cliniportal_user_soap_cases', JSON.stringify(updated));
+      } catch (e) {
+        console.warn('Failed to persist user soap cases to localStorage:', e);
+      }
+      return updated;
+    });
     setSelectedSoapCaseId(newCase.id);
   };
 

@@ -56,7 +56,7 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
   // Combine user-added runtime cases with static Vault cases
   const experiences = useMemo(() => {
     const vaultCases = getVaultSoapExperiences();
-    const runtimeList = userCases.length > 0 ? userCases : internalUserCases;
+    const runtimeList = [...userCases, ...internalUserCases];
     const map = new Map<string, SoapClinicalExperience>();
     // Prepend runtime cases so they appear first
     runtimeList.forEach((c) => map.set(c.id, c));
@@ -84,7 +84,14 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
     } else {
       setInternalUserCases((prev) => [newSoap, ...prev]);
     }
+    // Tự động giải phóng toàn bộ bộ lọc để ca mới nạp hiển thị ngay lập tức
+    setSelectedSpecialty('Tất cả chuyên khoa');
+    setSelectedDisease('all');
+    setSelectedLevel('all');
+    setSelectedDifficulty(0);
+    setSearchKeyword('');
     setSelectedCaseId(newSoap.id);
+    setMobileTab('detail');
   };
 
   // Filters & Sorting State

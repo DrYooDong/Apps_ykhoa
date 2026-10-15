@@ -4,7 +4,7 @@
  * Hỗ trợ Cascade Matching 6 cấp độ cho các tiêu đề và định dạng khác nhau.
  */
 
-import { SoapClinicalExperience, SoapPlanMedication, SoapProblemItem } from '../types.ts';
+import type { SoapClinicalExperience, SoapPlanMedication, SoapProblemItem } from '../types.ts';
 
 export interface IngestValidation {
   score: number; // 0 - 100

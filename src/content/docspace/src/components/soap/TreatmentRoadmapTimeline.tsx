@@ -123,26 +123,33 @@ function parseMilestones(text: string): MilestoneSection[] {
   };
 
   const isMilestoneHeader = (line: string): { title: string; badge?: string } | null => {
-    const trimmed = line.trim().replace(/^[-*•#\s]+/, '');
+    // Làm sạch dòng: bỏ bullet, markdown bold **, header ##, và dấu hai chấm cuối dòng
+    const cleanLine = line
+      .trim()
+      .replace(/^[-*•#\s]+/, '')
+      .replace(/^\*\*|\*\*$/g, '')
+      .replace(/:\s*$/, '')
+      .trim();
 
     // Pattern 1: GIỜ 0 (...), GIỜ 1, GIỜ 2-3, GIỜ 6...
-    const hourMatch = trimmed.match(
-      /^(?:⏱️\s*)?(GIỜ\s*\d+(?:\s*[-–]\s*\d+)?(?:\s*\([^)]+\))?):?/i
+    const hourMatch = cleanLine.match(
+      /^(?:⏱️\s*)?(GIỜ\s*\d+(?:\s*[-–]\s*\d+)?(?:\s*[:—]\s*[^(\n]+)?(?:\([^)]+\))?)/i
     );
     if (hourMatch) {
+      const lower = hourMatch[1].toLowerCase();
       return {
         title: hourMatch[1],
-        badge: hourMatch[1].toLowerCase().includes('ra sốc')
+        badge: lower.includes('ra sốc')
           ? 'Ra sốc'
-          : hourMatch[1].toLowerCase().includes('tiếp nhận')
+          : lower.includes('tiếp nhận') || lower.includes('vào sốc')
           ? 'Cấp cứu'
           : 'Mốc giờ',
       };
     }
 
     // Pattern 2: Giai đoạn 1: ..., Giai đoạn 2:...
-    const phaseMatch = trimmed.match(
-      /^(?:🗓️\s*)?(Giai đoạn\s*\d+(?:\s*[-–]\s*\d+)?\s*[:—]\s*[^(\n]+(?:\([^)]+\))?)/i
+    const phaseMatch = cleanLine.match(
+      /^(?:🗓️\s*)?(Giai đoạn\s*\d+(?:\s*[-–]\s*\d+)?(?:\s*[:—]\s*[^(\n]+)?(?:\([^)]+\))?)/i
     );
     if (phaseMatch) {
       return {
@@ -151,8 +158,19 @@ function parseMilestones(text: string): MilestoneSection[] {
       };
     }
 
-    // Pattern 3: Tuần 4, Tuần 12, Tháng 6...
-    const weekMatch = trimmed.match(
+    // Pattern 3: Ngày 1 - 2, Ngày 1 - Ngày 5, Ngày 6 - 14...
+    const dayMatch = cleanLine.match(
+      /^(?:🗓️\s*)?(Ngày\s*\d+(?:\s*[-–]\s*(?:Ngày\s*)?\d+)?(?:\+)?(?:\s*[:—]\s*[^(\n]+)?(?:\([^)]+\))?)/i
+    );
+    if (dayMatch) {
+      return {
+        title: dayMatch[1],
+        badge: 'Theo dõi ngày',
+      };
+    }
+
+    // Pattern 4: Tuần 4, Tuần 12, Tháng 6...
+    const weekMatch = cleanLine.match(
       /^(?:⏱️\s*)?((?:Tuần|Tháng)\s*\d+(?:\s*[-–&]\s*\d+)?(?:\s*[:—]\s*[^(\n]+)?(?:\([^)]+\))?)/i
     );
     if (weekMatch) {
@@ -162,11 +180,28 @@ function parseMilestones(text: string): MilestoneSection[] {
       };
     }
 
-    // Pattern 4: Tiêu chuẩn cân nhắc ngưng thuốc
-    if (trimmed.toLowerCase().startsWith('tiêu chuẩn cân nhắc ngưng thuốc') || trimmed.toLowerCase().startsWith('tiêu chuẩn ngưng thuốc')) {
+    // Pattern 5: Mốc 1, Bước 1...
+    const stepMatch = cleanLine.match(
+      /^(?:🎯\s*)?((?:Bước|Mốc|Trạm)\s*\d+(?:\s*[:—]\s*[^(\n]+)?(?:\([^)]+\))?)/i
+    );
+    if (stepMatch) {
       return {
-        title: trimmed,
+        title: stepMatch[1],
+        badge: 'Bước xử trí',
+      };
+    }
+
+    // Pattern 6: Tiêu chuẩn ngưng thuốc / xuất viện
+    if (cleanLine.toLowerCase().includes('tiêu chuẩn cân nhắc ngưng thuốc') || cleanLine.toLowerCase().includes('tiêu chuẩn ngưng thuốc')) {
+      return {
+        title: cleanLine,
         badge: 'Ngưng thuốc',
+      };
+    }
+    if (cleanLine.toLowerCase().includes('tiêu chuẩn xuất viện') || cleanLine.toLowerCase().includes('tiêu chuẩn ra viện')) {
+      return {
+        title: cleanLine,
+        badge: 'Xuất viện',
       };
     }
 
@@ -185,8 +220,8 @@ function parseMilestones(text: string): MilestoneSection[] {
       current = {
         title: header.title,
         badge: header.badge,
-        isCompleted: lower.includes('ra sốc') || lower.includes('hoàn toàn') || lower.includes('svr12'),
-        isEmergency: lower.includes('giờ 0') || lower.includes('vào sốc') || lower.includes('tiếp nhận'),
+        isCompleted: lower.includes('ra sốc') || lower.includes('hoàn toàn') || lower.includes('xuất viện') || lower.includes('hồi phục'),
+        isEmergency: lower.includes('giờ 0') || lower.includes('vào sốc') || lower.includes('tiếp nhận') || lower.includes('cấp cứu') || lower.includes('giai đoạn 1'),
         statusLines: [],
         orderLines: [],
         labLines: [],
@@ -209,29 +244,51 @@ function parseMilestones(text: string): MilestoneSection[] {
       };
     }
 
-    // Phân loại dòng nội dung
-    const cleanContent = trimmed.replace(/^[-*•]\s*/, '');
+    // Phân loại dòng nội dung thông minh theo bản chất y khoa
+    const cleanContent = trimmed.replace(/^[-*•]\s*/, '').trim();
     const lowerContent = cleanContent.toLowerCase();
 
-    if (lowerContent.startsWith('tình trạng') || lowerContent.startsWith('sinh hiệu')) {
-      current.statusLines.push(cleanContent);
-    } else if (
+    // 1. Nhóm Y Lệnh & Xử Trí Điều Trị (Medication, Procedure, Ventilation)
+    if (
       lowerContent.startsWith('y lệnh') ||
       lowerContent.startsWith('điều trị') ||
-      lowerContent.startsWith('xử trí')
+      lowerContent.startsWith('xử trí') ||
+      /^(khí dung|dùng đủ liều|dùng liều|bắt đầu|tiêm|truyền|uống|thở oxy|đặt nội khí quản|thông khí|dẫn lưu|chọc dò|tiêm kháng sinh|phối hợp|ngưng|giảm dần tần suất|chuyển sang|tiếp tục|hoàn thành đủ)\b/i.test(lowerContent) ||
+      /(mg|mcg|ml|g|q6h|q8h|q12h|q24h|iv|ttm|khí dung|corticosteroid|kháng sinh|meropenem|ivermectin|saba|sama)/i.test(lowerContent) && !lowerContent.startsWith('theo dõi') && !lowerContent.startsWith('kiểm tra')
     ) {
       current.orderLines.push(cleanContent);
-    } else if (
+    }
+    // 2. Nhóm Xét Nghiệm & Giám Sát Cận Lâm Sàng
+    else if (
       lowerContent.startsWith('cls') ||
       lowerContent.startsWith('xét nghiệm') ||
       lowerContent.startsWith('định lượng') ||
-      lowerContent.startsWith('tái khám')
+      lowerContent.startsWith('theo dõi') ||
+      lowerContent.startsWith('kiểm tra') ||
+      lowerContent.startsWith('tái khám') ||
+      lowerContent.startsWith('đo lại') ||
+      /^(soi phân|soi đờm|chọc dò dnt|cấy máu|cấy dnt|siêu âm|x-quang|kmđm|ctm|crp|procalcitonin|sinh hiệu|spo2|vas|gcs|khí máu)\b/i.test(lowerContent)
     ) {
       current.labLines.push(cleanContent);
-    } else if (
+    }
+    // 3. Nhóm Tình Trạng Lâm Sàng & Diễn Tiến
+    else if (
+      lowerContent.startsWith('tình trạng') ||
+      lowerContent.startsWith('sinh hiệu') ||
+      lowerContent.startsWith('đánh giá đáp ứng') ||
+      lowerContent.startsWith('lâm sàng') ||
+      /^(bệnh nhân|người bệnh|hết sốt|giảm ho|đờm chuyển|khó thở giảm|tỉnh táo|mắt trái|ổ áp xe|ổn định)\b/i.test(lowerContent)
+    ) {
+      current.statusLines.push(cleanContent);
+    }
+    // 4. Nhóm Đích Đến & Tiêu Chuẩn Kết Thúc
+    else if (
       lowerContent.startsWith('điểm đúc kết') ||
       lowerContent.startsWith('kết luận') ||
-      lowerContent.startsWith('mục tiêu')
+      lowerContent.startsWith('mục tiêu') ||
+      lowerContent.startsWith('kết thúc') ||
+      lowerContent.startsWith('tiêu chuẩn') ||
+      /^(đạt mục tiêu|rút xông|xuất viện|hoàn thành đợt|hồi phục)\b/i.test(lowerContent)
     ) {
       current.takeawayLines.push(cleanContent);
     } else {

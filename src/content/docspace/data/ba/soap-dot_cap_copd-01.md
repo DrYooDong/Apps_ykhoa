@@ -136,7 +136,7 @@ updated: "2026-10-07"
 
 | Mức độ ưu tiên | Vấn đề lâm sàng (HỘI CHỨNG / TÌNH TRẠNG) | Chiến lược chẩn đoán (CLS bổ sung) | Hướng xử trí ban đầu & Điều trị |
 | :--- | :--- | :--- | :--- |
-| 🔴 **Tầng 1: Đe dọa tính mạng** | Hạ oxy máu động mạch cấp (\\(PaO_{2} = 58\\) mmHg, \\(SpO_{2} = 90\%\\)) & Tăng công thở | Theo dõi \\(SpO_{2}\\) liên tục, làm lại KMĐM sau 60 phút thở oxy | Liệu pháp Oxy có kiểm soát qua gọng kính 1.5 - 2 L/phút (mục tiêu \\(SpO_{2}\\) 88–92%) |
+| 🔴 **Tầng 1: Đe dọa tính mạng** | Hạ oxy máu động mạch cấp (\\(PaO2 = 58\\) mmHg, \\(SpO_{2} = 90%)) & Tăng công thở | Theo dõi SpO2 liên tục, làm lại KMĐM sau 60 phút thở oxy | Liệu pháp Oxy có kiểm soát qua gọng kính 1.5 - 2 L/phút (mục tiêu SpO2 88–92%) |
 | 🟡 **Tầng 2: Cấp tính** | Hội chứng Nhiễm trùng phế quản cấp & Thắt hẹp đường thở (Đợt cấp COPD mức độ trung bình) | CTM, CRP kiểm tra lại sau 48h, Cấy đờm làm kháng sinh đồ nếu chậm cải thiện | Khí dung SABA/SAMA, Corticosteroid toàn thân 5 ngày, Kháng sinh đường uống/tiêm |
 | 🔵 **Tầng 3: Mạn tính / Dự phòng** | BPTNMT nền GOLD 2 Nhóm B, Tiền căn hút thuốc lá 35 bao-năm, Tăng huyết áp | Đo lại CNHH sau khi đợt cấp ổn định hoàn toàn 4-6 tuần | Tối ưu hóa phác đồ duy trì LABA+LAMA, giáo dục kỹ thuật hít, tư vấn tiêm vắc-xin |
 
@@ -144,11 +144,11 @@ updated: "2026-10-07"
 
 - **Phân tầng nguy cơ & Thang điểm lượng giá**:
   - *Thang điểm NEWS2*: 5 điểm (Nguy cơ trung bình, cần theo dõi sinh hiệu q4h).
-  - *Phân độ nặng đợt cấp theo Rome (2022)*: **Mức độ Trung bình** do thỏa mãn 5/5 tiêu chuẩn (VAS khó thở 6/10 ≥ 5, Nhịp thở 26 ≥ 24, Nhịp tim 98 ≥ 95, \\(SaO_{2} = 90\% < 92\%\\), CRP \\(28 \ge 10\\) mg/L, \\(PaO_{2} = 58 \le 60\\) mmHg nhưng \\(pH = 7.38 > 7.35\\) - chưa có toan hóa máu).
+  - *Phân độ nặng đợt cấp theo Rome (2022)*: **Mức độ Trung bình** do thỏa mãn 5/5 tiêu chuẩn (VAS khó thở 6/10 ≥ 5, Nhịp thở 26 ≥ 24, Nhịp tim 98 ≥ 95, \\(SaO2 = 90\% < 92%), CRP \\(28 \ge 10\\) mg/L, \\(PaO2 = 58 \le 60\\) mmHg nhưng \\(pH = 7.38 > 7.35\\) - chưa có toan hóa máu).
   - *Phân loại Anthonisen*: **Nhóm I (Nặng/Đủ 3 triệu chứng chính)**: Tăng khó thở, tăng số lượng đờm, đờm chuyển thành đờm mủ -> **Có chỉ định bắt buộc dùng kháng sinh**.
 
 - **Biện luận lâm sàng chi tiết**:
-  - **Về Chẩn đoán đợt cấp & Độ nặng**: Bệnh nhân có tiền sử BPTNMT đã xác định, xuất hiện diễn biến xấu đi cấp tính trong 3 ngày qua với hội chứng tắc nghẽn đường thở gia tăng rõ rệt (ho, khạc đờm mủ, ran rít ran ngáy 2 phổi). Theo đề xuất Rome 2022, bệnh nhân thỏa mãn đầy đủ các tiêu chí mức độ trung bình với tình trạng hạ oxy máu nhẹ (\\(PaO_{2} = 58\\) mmHg) và tăng CRP (\\(28\\) mg/L), nhưng chưa có toan hóa máu (\\(pH = 7.38\\)), do đó có chỉ định nhập viện điều trị tại Khoa Nội Hô hấp.
+  - **Về Chẩn đoán đợt cấp & Độ nặng**: Bệnh nhân có tiền sử BPTNMT đã xác định, xuất hiện diễn biến xấu đi cấp tính trong 3 ngày qua với hội chứng tắc nghẽn đường thở gia tăng rõ rệt (ho, khạc đờm mủ, ran rít ran ngáy 2 phổi). Theo đề xuất Rome 2022, bệnh nhân thỏa mãn đầy đủ các tiêu chí mức độ trung bình với tình trạng hạ oxy máu nhẹ (\\(PaO2 = 58\\) mmHg) và tăng CRP (\\(28\\) mg/L), nhưng chưa có toan hóa máu (\\(pH = 7.38\\)), do đó có chỉ định nhập viện điều trị tại Khoa Nội Hô hấp.
   - **Về Chỉ định dùng Kháng sinh & Corticosteroid**: Bệnh nhân thuộc Anthonisen nhóm I (đờm mủ đục + tăng khó thở + tăng lượng đờm) gợi ý rõ nguyên nhân đợt cấp do nhiễm khuẩn phế quản. Bệnh nhân không có yếu tố nguy cơ nhiễm *Pseudomonas aeruginosa* (không nhập viện gần đây, FEV1 > 50%, không có giãn phế quản, không cấy ra *P. aeruginosa* trước đây) nên ưu tiên lựa chọn kháng sinh Cephalosporin thế hệ 3 hoặc Quinolone hô hấp. Chỉ định Corticosteroid toàn thân liều ngắn 5 ngày giúp cải thiện nhanh FEV1 và rút ngắn thời gian điều trị.
 
 ---
@@ -157,7 +157,7 @@ updated: "2026-10-07"
 
 - **Xử trí cấp cứu & Ban đầu**:
   - Tư thế bệnh nhân: Nằm đầu cao 30–45° hoặc ngồi thoải mái.
-  - Hỗ trợ hô hấp: Thở oxy qua canun mũi 1.5–2.0 L/phút, duy trì \\(SpO_{2}\\) mục tiêu 88–92%.
+  - Hỗ trợ hô hấp: Thở oxy qua canun mũi 1.5–2.0 L/phút, duy trì SpO2 mục tiêu 88–92%.
   - Khí dung cắt cơn cấp: Fenoterol/Ipratropium (\\(50/20\\) µg) x 1 nang khí dung hoặc Salbutamol/Ipratropium x 1 nang khí dung STAT.
   - Thiết lập đường truyền tĩnh mạch ngoại vi duy trì.
 
@@ -166,7 +166,7 @@ updated: "2026-10-07"
 ### Y lệnh thuốc điều trị chi tiết:
 
 1. **Thở oxy có kiểm soát qua gọng kính**:
-   - Tốc độ dòng: 1.5–2.0 L/phút, duy trì \\(SpO_{2}\\) mục tiêu 88–92%.
+   - Tốc độ dòng: 1.5–2.0 L/phút, duy trì SpO2 mục tiêu 88–92%.
 2. **Kháng sinh**:
    - Ceftriaxone 2.0g x 1 lọ, pha trong NaCl 0.9% 100 mL, truyền tĩnh mạch chậm trong 30 phút, q24h (hoặc Levofloxacin 500 mg x 1 viên uống q24h nếu người bệnh uống tốt) x 5–7 ngày.
 3. **Corticosteroid toàn thân**:
@@ -184,14 +184,14 @@ updated: "2026-10-07"
 
 - **Giai đoạn 1: Cấp tính / Nhập viện (Ngày 1 - 2)**:
   - Khí dung SABA/SAMA q6h, dùng đủ liều Corticosteroid và Kháng sinh.
-  - Theo dõi dấu hiệu sinh tồn, nhịp thở, mức độ khó thở VAS và \\(SpO_{2}\\) mỗi 4 giờ.
+  - Theo dõi dấu hiệu sinh tồn, nhịp thở, mức độ khó thở VAS và SpO2 mỗi 4 giờ.
   - Kiểm tra lại KMĐM sau 60 phút thở oxy để đảm bảo không tăng \\(PaCO_{2}\\) gánh nặng.
 - **Giai đoạn 2: Tối ưu hóa & Chuyển tiếp (Ngày 3 - 5)**:
   - Đánh giá đáp ứng: Giảm ho, đờm chuyển từ mủ sang trắng trong, khó thở giảm dần (VAS < 4).
   - Giảm dần tần suất khí dung, chuyển sang dùng bình xịt MDI/DPI duy trì LABA+LAMA.
   - Kết thúc đợt Corticosteroid toàn thân ở ngày thứ 5.
 - **Giai đoạn 3: Hồi phục & Đánh giá xuất viện (Ngày 6 - 7)**:
-  - Người bệnh lâm sàng ổn định > 24 giờ, không cần khí dung quá mỗi 6 giờ, \\(SpO_{2} \ge 90\%\\) khi thở khí trời.
+  - Người bệnh lâm sàng ổn định > 24 giờ, không cần khí dung quá mỗi 6 giờ, \\(SpO_{2} \ge 90%) khi thở khí trời.
   - Đánh giá lại kỹ thuật hít dụng cụ phân phối thuốc (MDI/DPI) trước khi ra viện.
 
 ---
@@ -210,7 +210,7 @@ updated: "2026-10-07"
   - Tình trạng toan hóa máu hô hấp mới xuất hiện hoặc nặng lên (\\(pH < 7.35\\) và \\(PaCO_{2} > 45\\) mmHg) hoặc hạ oxy máu nặng không đáp ứng thở oxy thường.
 - **Tiêu chuẩn cho xuất viện an toàn**:
   - Hết sốt > 48 giờ không dùng thuốc hạ sốt.
-  - Tần số thở < 24 lần/phút, nhịp tim < 90 lần/phút, \\(SpO_{2} \ge 90\%\\) thở khí trời.
+  - Tần số thở < 24 lần/phút, nhịp tim < 90 lần/phút, \\(SpO_{2} \ge 90%) thở khí trời.
   - Đờm giảm số lượng và chuyển sang màu trắng trong.
   - Đã được hướng dẫn và thực hành đúng kỹ thuật hít thuốc duy trì LABA+LAMA.
   - Hẹn tái khám đánh giá lại sau 1–4 tuần và đo lại chức năng hô hấp sau 4–6 tuần.

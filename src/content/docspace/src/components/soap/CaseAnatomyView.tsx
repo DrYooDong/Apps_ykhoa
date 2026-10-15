@@ -21,7 +21,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface CaseAnatomyViewProps {
   currentCase: SoapClinicalExperience;
@@ -174,10 +174,12 @@ export const CaseAnatomyView: React.FC<CaseAnatomyViewProps> = ({
               </div>
             </div>
             {currentCase.o?.vitals && (
-              <div className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-100 flex items-center justify-between">
+              <div className="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-100 flex items-center justify-between flex-wrap gap-1">
                 <span>Dấu hiệu sinh tồn:</span>
                 <span className="font-mono-custom font-semibold text-slate-800">
-                  HA: {currentCase.o.vitals.bloodPressure || 'N/A'} · Mạch: {currentCase.o.vitals.heartRate || 'N/A'}
+                  HA: {currentCase.o.vitals.bp || currentCase.o.vitals.bloodPressure || '—'} · Mạch: {currentCase.o.vitals.pulse || currentCase.o.vitals.heartRate || '—'}
+                  {currentCase.o.vitals.spo2 && ` · SpO₂: ${currentCase.o.vitals.spo2}`}
+                  {currentCase.o.vitals.temp && ` · ${currentCase.o.vitals.temp}`}
                 </span>
               </div>
             )}
@@ -215,7 +217,7 @@ export const CaseAnatomyView: React.FC<CaseAnatomyViewProps> = ({
               <div className="flex items-center gap-1.5 flex-wrap">
                 <span className="text-[10px] font-bold text-slate-500 uppercase">Ưu tiên hàng đầu:</span>
                 <span className="px-2 py-0.5 rounded text-[10.5px] font-semibold bg-rose-50 text-rose-800 border border-rose-200">
-                  {currentCase.a.problemList[0]?.label || 'Tầng 1 cấp cứu'}
+                  {formatClinicalInline(currentCase.a.problemList[0]?.problemName || currentCase.a.problemList[0]?.label || 'Tầng 1 cấp cứu')}
                 </span>
               </div>
             )}

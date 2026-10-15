@@ -20,7 +20,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
-import { FormattedClinicalText } from './FormattedClinicalText.tsx';
+import { FormattedClinicalText, formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapRoadmapViewProps {
   currentCase: SoapClinicalExperience;
@@ -50,13 +50,9 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
 
     for (const line of lines) {
       const trimmed = line.trim();
-      // Check if line is a stage header:
-      // 1) #### 1. Giai đoạn 1: ...
-      // 2) - **Giai đoạn 1: ...**:
-      // 3) **Giai đoạn 1: ...**
-      // 4) 1. **Giai đoạn 1: ...**
+      // Nhận diện header mốc thời gian: Giai đoạn, GIỜ, Ngày, Tuần, Tháng, Bước, Mốc
       const headerMatch = trimmed.match(
-        /^(?:#{2,4}\s*(?:\d+[.)]\s*)?|[-*•]\s*\*\*|\*\*|\d+[.)]\s*\*\*)(Giai đoạn\s*\d+[\s\S]*?)(?:\*\*)?:?\s*$/i
+        /^(?:#{2,4}\s*(?:\d+[.)]\s*)?|[-*•]\s*\*\*|\*\*|\d+[.)]\s*\*\*)(Giai đoạn\s*\d+|GIỜ\s*\d+|Ngày\s*\d+|Tuần\s*\d+|Tháng\s*\d+|Bước\s*\d+|Mốc\s*\d+[\s\S]*?)(?:\*\*)?:?\s*$/i
       );
 
       if (headerMatch) {
@@ -165,7 +161,7 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
                       {stg.stageNumber}
                     </span>
                     <h4 className="font-display text-xs font-bold text-teal-950 leading-snug line-clamp-2">
-                      {stg.stageTitle}
+                      {formatClinicalInline(stg.stageTitle)}
                     </h4>
                   </div>
                   <div className="text-xs text-slate-700 leading-relaxed space-y-1">
@@ -226,18 +222,18 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
                         {idx + 1}
                       </span>
                       <h5 className="font-display text-xs font-bold text-teal-950 leading-snug">
-                        {med.drug}
+                        {formatClinicalInline(med.drug)}
                       </h5>
                     </div>
                     <span className="px-2 py-0.5 rounded-md text-[10.5px] font-mono-custom font-bold bg-teal-100 text-teal-900 border border-teal-200 shrink-0">
-                      {med.route}
+                      {formatClinicalInline(med.route)}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between text-xs bg-white p-2 rounded-lg border border-slate-200/60">
                     <span className="text-slate-500 font-medium text-[11px]">Liều dùng:</span>
                     <span className="font-mono-custom font-bold text-slate-900">
-                      {med.dose}
+                      {formatClinicalInline(med.dose)}
                     </span>
                   </div>
 
@@ -246,7 +242,7 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
                       <span className="text-[10px] text-amber-800 font-bold uppercase tracking-wider block mb-0.5">
                         Lưu ý lâm sàng:
                       </span>
-                      {med.note}
+                      {formatClinicalInline(med.note)}
                     </div>
                   )}
                 </div>
@@ -272,18 +268,18 @@ export const SoapRoadmapView: React.FC<SoapRoadmapViewProps> = ({
                         {idx + 1}
                       </td>
                       <td className="py-3 px-4 font-bold text-teal-950">
-                        {med.drug}
+                        {formatClinicalInline(med.drug)}
                       </td>
                       <td className="py-3 px-4 font-medium text-slate-800 font-mono-custom">
-                        {med.dose}
+                        {formatClinicalInline(med.dose)}
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className="px-2 py-0.5 rounded-md text-[11px] font-mono-custom font-bold bg-slate-100 text-slate-800 border border-slate-200">
-                          {med.route}
+                          {formatClinicalInline(med.route)}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-slate-600 leading-relaxed">
-                        {med.note || 'Theo dõi dung nạp lâm sàng'}
+                        {formatClinicalInline(med.note || 'Theo dõi dung nạp lâm sàng')}
                       </td>
                     </tr>
                   ))}

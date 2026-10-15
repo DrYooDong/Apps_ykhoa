@@ -134,13 +134,13 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                           ? 'Tầng 3 · Mạn tính'
                           : 'Tầng 2 · Cấp tính'}
                       </span>
-                      <span className="font-bold text-slate-900 text-[12px]">{item.problemName}</span>
+                      <span className="font-bold text-slate-900 text-[12px]">{formatClinicalInline(item.problemName)}</span>
                     </div>
                   </div>
 
                   {item.evidenceSummary && (
                     <div className="text-[11px] text-slate-700 mb-1.5 leading-relaxed bg-white/70 p-1.5 rounded border border-slate-200/50">
-                      <b className="text-slate-900">Dữ kiện:</b> {item.evidenceSummary}
+                      <b className="text-slate-900">Dữ kiện:</b> {formatClinicalInline(item.evidenceSummary)}
                     </div>
                   )}
 
@@ -151,7 +151,7 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                           <b className="text-sky-800 flex items-center gap-1 mb-0.5">
                             <span>🔬</span> CLS đề nghị:
                           </b>
-                          <span className="text-slate-700 leading-normal">{item.diagnosticOrientation}</span>
+                          <span className="text-slate-700 leading-normal">{formatClinicalInline(item.diagnosticOrientation)}</span>
                         </div>
                       )}
                       {item.immediateManagement && (
@@ -159,7 +159,7 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                           <b className="text-emerald-800 flex items-center gap-1 mb-0.5">
                             <span>💊</span> Xử trí tức thì:
                           </b>
-                          <span className="text-slate-700 leading-normal">{item.immediateManagement}</span>
+                          <span className="text-slate-700 leading-normal">{formatClinicalInline(item.immediateManagement)}</span>
                         </div>
                       )}
                     </div>
@@ -168,7 +168,7 @@ export const SoapAssessmentColumn: React.FC<SoapAssessmentColumnProps> = ({
                   {item.conflictWarning && (
                     <div className="mt-1.5 text-[10.5px] text-rose-800 font-semibold bg-white p-1.5 rounded-lg border border-rose-200 flex items-center gap-1">
                       <AlertOctagon className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-                      <span>{item.conflictWarning}</span>
+                      <span>{formatClinicalInline(item.conflictWarning)}</span>
                     </div>
                   )}
                 </div>
