@@ -420,7 +420,7 @@ export const QuickIngestModal: React.FC<QuickIngestModalProps> = ({
                       </span>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {editedSoap.o.labGroups.map((lg, idx) => {
-                          const testCount = (lg as any).tests?.length ?? lg.content?.split('\n').filter((l: string) => l.trim().startsWith('-')).length || lg.content?.split('\n').filter(Boolean).length || 0;
+                          const testCount = (lg as any).tests?.length ?? (lg.content?.split('\n').filter((l: string) => l.trim().startsWith('-')).length || lg.content?.split('\n').filter(Boolean).length || 0);
                           return (
                             <span key={idx} className="px-2 py-0.5 bg-white border border-slate-300 rounded text-[10px] font-medium text-slate-700">
                               {lg.groupName} {testCount > 0 ? `(${testCount})` : ''}
