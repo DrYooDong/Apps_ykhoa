@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookOpen, Droplet, Activity, FlaskConical, HeartPulse, Wind, Pill, LayoutGrid, ScrollText } from 'lucide-react';
-import { GROUP_COLORS, GROUP_NAMES } from '../../data/seedData.ts';
+import { GROUP_COLORS, GROUP_NAMES } from '../../../data/seedData.ts';
 import { CdssToolSlug } from '../../lib/vaultBridge.ts';
 import { abbrevDisease } from '../../lib/abbreviation.ts';
 

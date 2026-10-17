@@ -165,16 +165,16 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
         </span>
       </div>
 
-      <div className={`p-4 flex-1 flex flex-col gap-4 text-xs text-slate-800 bg-white ${isFocused ? 'max-w-5xl mx-auto w-full' : ''}`}>
+      <div className={`p-4 flex-1 flex flex-col gap-4 text-sm sm:text-xs md:text-sm text-slate-800 soap-column-content bg-white ${isFocused ? 'max-w-5xl mx-auto w-full' : ''}`}>
         {/* 1. DẤU HIỆU SINH TỒN (SMART VITALS MONITOR) */}
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+            <span className="font-bold text-slate-800 uppercase tracking-wider text-xs sm:text-[11px] md:text-xs flex items-center gap-1.5">
               <Activity className="w-3.5 h-3.5 text-slate-700" />
               <span>1. Dấu hiệu sinh tồn (Vitals):</span>
             </span>
             {vitalsAnalysis.shockIndex !== null && (
-              <span className={`text-[10px] font-mono-custom font-bold px-2 py-0.5 rounded border ${
+              <span className={`text-xs sm:text-[10px] font-mono-custom font-bold px-2 py-0.5 rounded border ${
                 vitalsAnalysis.shockIndex >= 1.0
                   ? 'bg-rose-100 text-rose-800 border-rose-300 animate-pulse'
                   : 'bg-slate-100 text-slate-700 border-slate-200'
@@ -284,7 +284,7 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
 
         {/* 2. KHÁM THỰC THỂ THEO HỆ CƠ QUAN */}
         <div>
-          <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] block mb-1.5 flex items-center gap-1.5">
+          <span className="font-bold text-slate-800 uppercase tracking-wider text-xs sm:text-[11px] md:text-xs block mb-1.5 flex items-center gap-1.5">
             <Stethoscope className="w-3.5 h-3.5 text-slate-700" />
             <span>2. Khám thực thể định hướng:</span>
           </span>
@@ -294,23 +294,23 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
               {organSystems.map((sys, idx) => (
                 <div
                   key={idx}
-                  className="p-2.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col gap-1.5"
+                  className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-2xs flex flex-col gap-1.5"
                 >
-                  <div className="flex items-center gap-1.5 font-bold text-slate-900 text-[11px] pb-1 border-b border-slate-200/60">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900 text-xs sm:text-[11px] pb-1 border-b border-slate-200/60">
+                    <span className="w-2 h-2 rounded-full bg-slate-600" />
                     <span>{sys.title}</span>
                   </div>
                   {sys.lines.length > 0 ? (
-                    <div className="text-slate-700 leading-relaxed text-[11.5px] space-y-1">
+                    <div className="text-slate-800 leading-relaxed text-sm sm:text-xs space-y-1">
                       {sys.lines.map((l, lIdx) => (
                         <div key={lIdx} className="flex items-start gap-1.5">
-                          <span className="text-slate-400 text-[10px] shrink-0 mt-0.5">•</span>
+                          <span className="text-slate-400 text-xs shrink-0 mt-0.5">•</span>
                           <span className="flex-1">{formatClinicalInline(l)}</span>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <span className="text-slate-400 italic text-[10.5px]">Ghi nhận bình thường</span>
+                    <span className="text-slate-400 italic text-xs">Ghi nhận bình thường</span>
                   )}
                 </div>
               ))}
@@ -326,11 +326,11 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
         {/* 3. CẬN LÂM SÀNG & XÉT NGHIỆM ĐỊNH LƯỢNG */}
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+            <span className="font-bold text-slate-800 uppercase tracking-wider text-xs sm:text-[11px] md:text-xs flex items-center gap-1.5">
               <FileCheck className="w-3.5 h-3.5 text-slate-700" />
               <span>3. Cận lâm sàng &amp; Xét nghiệm định lượng:</span>
             </span>
-            <span className="text-[10px] text-slate-500 font-semibold">
+            <span className="text-xs sm:text-[10px] text-slate-500 font-semibold">
               Giá trị đo lường
             </span>
           </div>
@@ -340,15 +340,15 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
               {o.labGroups.map((g, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-3 text-[11px] shadow-2xs flex flex-col gap-1.5"
+                  className="bg-slate-50/90 border border-slate-200/90 rounded-xl p-3 text-sm sm:text-xs shadow-2xs flex flex-col gap-1.5"
                 >
-                  <div className="font-bold text-slate-900 text-[11.5px] flex items-center gap-1.5 pb-1 border-b border-slate-200/60">
+                  <div className="font-bold text-slate-900 text-xs sm:text-[11.5px] flex items-center gap-1.5 pb-1 border-b border-slate-200/60">
                     <span className="w-2 h-2 rounded-full bg-slate-700" />
                     <span>{g.groupName}</span>
                   </div>
                   <FormattedClinicalText
                     text={g.content}
-                    className="font-mono-custom text-[11px] text-slate-800 leading-relaxed"
+                    className="font-mono-custom text-sm sm:text-xs text-slate-800 leading-relaxed"
                   />
                 </div>
               ))}
@@ -356,20 +356,20 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
           ) : (
             <FormattedClinicalText
               text={o.labsAndImaging}
-              className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 font-mono-custom text-[11px]"
+              className="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 font-mono-custom text-sm sm:text-xs"
             />
           )}
 
           {/* Chẩn đoán hình ảnh bổ sung */}
           {o.imagingFindings && !o.labGroups?.some((g) => g.groupName.includes('hình ảnh')) && (
-            <div className="mt-2.5 bg-sky-50/40 border border-sky-200/80 rounded-xl p-3 text-[11px] shadow-2xs flex flex-col gap-1">
-              <div className="font-bold text-sky-950 text-[11.5px] flex items-center gap-1.5">
+            <div className="mt-2.5 bg-sky-50/40 border border-sky-200/80 rounded-xl p-3 text-sm sm:text-xs shadow-2xs flex flex-col gap-1">
+              <div className="font-bold text-sky-950 text-xs sm:text-[11.5px] flex items-center gap-1.5">
                 <FileCheck className="w-3.5 h-3.5 text-sky-600" />
                 <span>Chẩn đoán hình ảnh &amp; Thăm dò chức năng:</span>
               </div>
               <FormattedClinicalText
                 text={o.imagingFindings}
-                className="font-mono-custom text-[11px] text-slate-700 leading-relaxed"
+                className="font-mono-custom text-sm sm:text-xs text-slate-800 leading-relaxed"
               />
             </div>
           )}
@@ -378,12 +378,12 @@ export const SoapObjectiveColumn: React.FC<SoapObjectiveColumnProps> = ({
         {/* 4. BẪY CẬN LÂM SÀNG (OBJECTIVE PITFALL) */}
         {o.objectivePitfalls && (
           <div className="mt-auto pt-2">
-            <div className="p-3.5 bg-gradient-to-r from-red-50/90 to-rose-50/60 border-l-4 border-l-red-500 border border-red-200 rounded-r-xl text-red-950 shadow-2xs">
-              <div className="flex items-center gap-1.5 font-display font-bold text-[11px] text-red-900 mb-1.5">
+            <div className="p-4 bg-gradient-to-r from-red-50/90 to-rose-50/60 border-l-4 border-l-red-500 border border-red-200 rounded-r-xl text-red-950 shadow-2xs">
+              <div className="flex items-center gap-1.5 font-display font-bold text-xs sm:text-[11px] md:text-xs text-red-900 mb-1.5">
                 <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
                 <span>BẪY CẬN LÂM SÀNG &amp; KHÁM (OBJECTIVE PITFALL)</span>
               </div>
-              <p className="text-xs text-rose-950/90 leading-relaxed italic">
+              <p className="text-sm sm:text-xs md:text-sm text-rose-950/90 leading-relaxed italic">
                 {o.objectivePitfalls}
               </p>
             </div>

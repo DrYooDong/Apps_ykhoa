@@ -4,7 +4,7 @@
  * Không thay đổi dữ liệu gốc trong CSDL JSON/TS.
  */
 
-import abbrevData from '../data/medical-abbreviation-map.json';
+import abbrevData from '../../data/medical-abbreviation-map.json';
 
 export type AbbrevCategory = 'diseases' | 'labs' | 'clinicalTerms' | 'drugs' | 'specialties';
 export type AbbrevContext = AbbrevCategory | 'auto';

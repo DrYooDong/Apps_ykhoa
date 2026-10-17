@@ -20,7 +20,7 @@ export interface TrieuChung {
   map: ThresholdMap | null;
 }
 
-export type { SampleCase } from './data/seedData.ts';
+export type { SampleCase } from '../data/seedData.ts';
 
 export interface DanSo {
   gioiTinh: 'any' | 'nam' | 'nu';

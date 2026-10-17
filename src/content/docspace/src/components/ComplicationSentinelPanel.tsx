@@ -18,7 +18,7 @@ import {
   ComplicationEntry,
   detectComplicationRisks,
   getComplicationsForDisease,
-} from '../data/complications-database.ts';
+} from '../../data/complications-database.ts';
 import { LabsState, VitalsState } from '../types.ts';
 
 interface ComplicationSentinelProps {

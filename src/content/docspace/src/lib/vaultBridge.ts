@@ -3,10 +3,10 @@
  * Kết nối ứng dụng MedLens với 2.400+ bài viết Y học chứng cứ (EBM) từ Knowledge Vault
  */
 
-import catCoSo from '../data/vault-catalog-co-so.json';
-import catChuyenSau from '../data/vault-catalog-chuyen-sau.json';
-import catThucHanh from '../data/vault-catalog-thuc-hanh.json';
-import catHoTro from '../data/vault-catalog-ho-tro.json';
+import catCoSo from '../../data/vault-catalog-co-so.json';
+import catChuyenSau from '../../data/vault-catalog-chuyen-sau.json';
+import catThucHanh from '../../data/vault-catalog-thuc-hanh.json';
+import catHoTro from '../../data/vault-catalog-ho-tro.json';
 import {
   VaultArticle,
   VaultKhoSummary,

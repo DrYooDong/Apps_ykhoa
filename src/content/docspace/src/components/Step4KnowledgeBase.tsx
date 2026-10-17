@@ -19,7 +19,7 @@ import {
   Upload,
 } from 'lucide-react';
 import { KnowledgeBase, TrieuChung } from '../types.ts';
-import { GROUP_COLORS, GROUP_NAMES, ROLE_LABELS } from '../data/seedData.ts';
+import { GROUP_COLORS, GROUP_NAMES, ROLE_LABELS } from '../../data/seedData.ts';
 import { normalizeText } from '../lib/clinicalEngine.ts';
 import {
   getKhoSummaries,

@@ -14,7 +14,7 @@ import {
   SOAP_SPECIALTIES,
   getExperienceLevelConfig,
   DiseaseGroupItem,
-} from '../../data/soapSeedData.ts';
+} from '../../../data/soapSeedData.ts';
 
 interface SoapListViewProps {
   cases: SoapClinicalExperience[];
@@ -294,18 +294,18 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                 >
                   <div>
                     {/* Header line: Specialty, Level & Difficulty */}
-                    <div className="flex items-center justify-between gap-1.5 mb-2">
+                    <div className="flex items-center justify-between gap-1.5 mb-2.5">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[10px] font-bold text-blue-900 bg-blue-50 border border-blue-200/70 px-2 py-0.5 rounded font-mono-custom">
+                        <span className="text-xs sm:text-[10px] font-bold text-blue-900 bg-blue-50 border border-blue-200/70 px-2.5 py-1 rounded-md font-mono-custom">
                           {c.specialty}
                         </span>
                         <span
-                          className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${lvl.bg} ${lvl.text} ${lvl.border}`}
+                          className={`text-xs sm:text-[10px] font-semibold px-2 py-0.5 rounded border ${lvl.bg} ${lvl.text} ${lvl.border}`}
                         >
                           {lvl.label}
                         </span>
                         {c.difficultyRating && (
-                          <span className="text-[9.5px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200/80">
+                          <span className="text-xs sm:text-[9.5px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/80">
                             {'★'.repeat(c.difficultyRating)}
                           </span>
                         )}
@@ -314,7 +314,7 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                       <button
                         type="button"
                         onClick={(e) => onToggleFavorite(c.id, e)}
-                        className="text-slate-300 hover:text-amber-500 p-1.5 transition-colors cursor-pointer"
+                        className="text-slate-300 hover:text-amber-500 p-2 transition-colors cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center"
                         title={c.isFavorite ? 'Bỏ yêu thích' : 'Đánh dấu yêu thích'}
                         aria-label="Đánh dấu yêu thích"
                       >
@@ -328,32 +328,32 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
 
                     {/* Case Title */}
                     <h4
-                      className={`text-xs sm:text-sm font-bold leading-snug line-clamp-2 ${
-                        isSelected ? 'text-blue-950 font-display' : 'text-slate-800'
+                      className={`text-sm sm:text-base font-bold leading-snug line-clamp-2 ${
+                        isSelected ? 'text-blue-950 font-display' : 'text-slate-900'
                       }`}
                     >
                       {c.title}
                     </h4>
 
                     {/* Brief context */}
-                    <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-medium">
+                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 mt-1.5 font-normal leading-relaxed">
                       {c.demographicContext || c.s.chiefComplaint}
                     </p>
 
                     {/* Tags Pills */}
                     {c.tags && c.tags.length > 0 && (
-                      <div className="flex items-center gap-1 mt-2 flex-wrap">
-                        {c.tags.slice(0, 2).map((t, idx) => (
+                      <div className="flex items-center gap-1 mt-2.5 flex-wrap">
+                        {c.tags.slice(0, 3).map((t, idx) => (
                           <span
                             key={idx}
-                            className="px-1.5 py-0.5 rounded text-[9.5px] bg-slate-100 text-slate-600 border border-slate-200/60"
+                            className="px-2 py-0.5 rounded text-xs sm:text-[9.5px] bg-slate-100 text-slate-600 border border-slate-200/60"
                           >
                             #{t}
                           </span>
                         ))}
-                        {c.tags.length > 2 && (
-                          <span className="text-[9.5px] text-slate-400 font-mono-custom">
-                            +{c.tags.length - 2}
+                        {c.tags.length > 3 && (
+                          <span className="text-xs sm:text-[9.5px] text-slate-400 font-mono-custom">
+                            +{c.tags.length - 3}
                           </span>
                         )}
                       </div>
@@ -361,15 +361,15 @@ export const SoapListView: React.FC<SoapListViewProps> = ({
                   </div>
 
                   {/* Footer info: ICD-10 and Mobile action cue */}
-                  <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-100 text-[10.5px]">
-                    <span className="font-mono-custom text-blue-700 font-bold truncate max-w-[140px] bg-blue-50/70 px-1.5 py-0.5 rounded border border-blue-100">
+                  <div className="flex items-center justify-between gap-2 mt-3.5 pt-2.5 border-t border-slate-100 text-xs sm:text-[10.5px]">
+                    <span className="font-mono-custom text-blue-700 font-bold truncate max-w-[160px] bg-blue-50/70 px-2 py-0.5 rounded border border-blue-100 text-xs">
                       ICD: {c.a.icd10 || 'N/A'}
                     </span>
-                    <span className={`text-[10.5px] font-semibold flex items-center gap-0.5 ${
-                      isSelected ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-600'
+                    <span className={`text-xs sm:text-[10.5px] font-bold flex items-center gap-1 ${
+                      isSelected ? 'text-blue-700' : 'text-slate-500 group-hover:text-blue-600'
                     }`}>
                       <span>{isSelected ? 'Đang xem' : 'Mở ca'}</span>
-                      <span className="text-xs">➔</span>
+                      <span className="text-sm">➔</span>
                     </span>
                   </div>
                 </div>

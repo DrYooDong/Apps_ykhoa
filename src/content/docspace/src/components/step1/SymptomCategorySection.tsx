@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Check, Mic } from 'lucide-react';
 import { KnowledgeBase, TrieuChung } from '../../types.ts';
-import { GROUP_COLORS } from '../../data/seedData.ts';
+import { GROUP_COLORS } from '../../../data/seedData.ts';
 import { normalizeText } from '../../lib/clinicalEngine.ts';
 import { CLINICAL_SYNDROME_PRESETS } from './ClinicalSelectorControl.tsx';
 import { expandSearchTerms } from '../../lib/medicalAbbreviations.ts';

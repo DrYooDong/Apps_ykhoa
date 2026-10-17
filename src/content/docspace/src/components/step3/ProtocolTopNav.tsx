@@ -11,7 +11,7 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
-import { GROUP_NAMES } from '../../data/seedData.ts';
+import { GROUP_NAMES } from '../../../data/seedData.ts';
 
 interface ProtocolTopNavProps {
   onBackToAnalysis: () => void;

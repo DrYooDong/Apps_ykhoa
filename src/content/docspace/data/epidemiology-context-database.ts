@@ -4,7 +4,7 @@
  * Kết nối bối cảnh dịch tễ học với 30 Bệnh Lý Trọng Tâm
  */
 
-import { EpidemiologyContext } from '../types.ts';
+import { EpidemiologyContext } from '../src/types.ts';
 
 export interface DiseaseEpidemiologyProfile {
   diseaseId: string;

@@ -113,6 +113,57 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   MOBILE & TABLET CLINICAL READER TYPOGRAPHY (SOAP & EMR)
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  #soap-experience-board {
+    font-size: 0.9375rem; /* 15px default on mobile/tablet for effortless reading */
+  }
+
+  #soap-experience-board p,
+  #soap-experience-board .clinical-reading-text {
+    font-size: 0.9375rem !important; /* 15px */
+    line-height: 1.65 !important;
+  }
+
+  #soap-experience-board table {
+    font-size: 0.875rem !important; /* 14px */
+  }
+
+  #soap-experience-board table th,
+  #soap-experience-board table td {
+    padding: 0.625rem 0.75rem !important;
+  }
+
+  #soap-experience-board .soap-column-content {
+    font-size: 0.9375rem !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* Scalable Reader Modes for Night Shift & Bedside Rounds */
+[data-soap-font-scale="large"] #soap-experience-board p,
+[data-soap-font-scale="large"] #soap-experience-board .soap-reading-block {
+  font-size: 1.0625rem !important; /* 17px */
+  line-height: 1.7 !important;
+}
+
+[data-soap-font-scale="large"] #soap-experience-board table {
+  font-size: 0.9375rem !important; /* 15px */
+}
+
+[data-soap-font-scale="xlarge"] #soap-experience-board p,
+[data-soap-font-scale="xlarge"] #soap-experience-board .soap-reading-block {
+  font-size: 1.1875rem !important; /* 19px */
+  line-height: 1.75 !important;
+}
+
+[data-soap-font-scale="xlarge"] #soap-experience-board table {
+  font-size: 1.0625rem !important; /* 17px */
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
    HOSPITAL PRINT STYLESHEET (@media print)
    ══════════════════════════════════════════════════════════════════════════ */
 @media print {

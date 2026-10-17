@@ -20,7 +20,7 @@ const ROOT = fs.existsSync(path.join(process.cwd(), 'src/content/knowledge-vault
   : (fs.existsSync('d:/Apps/Apps_ykhoa/src/content/knowledge-vault') ? 'd:/Apps/Apps_ykhoa' : process.cwd());
 
 const DOCSPACE_ROOT = path.join(ROOT, 'src/content/docspace');
-const DOCSPACE_DATA_DIR = path.join(DOCSPACE_ROOT, 'src/data');
+const DOCSPACE_DATA_DIR = path.join(DOCSPACE_ROOT, 'data');
 const DOCSPACE_CATALOG_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');
 const DOCSPACE_THUCHANH_PATH = path.join(DOCSPACE_DATA_DIR, 'vault-catalog-thuc-hanh.json');
 const DOCSPACE_BA_DIR = path.join(DOCSPACE_ROOT, 'data/ba');

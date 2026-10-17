@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 
 const VAULT_CD_DIR = path.resolve(__dirname, '../../knowledge-vault/2.3. Kho chẩn đoán');
 const TARGET_TS_FILE = path.resolve(__dirname, '../../src/content/docspace/data/kho-chan-doan-db.ts');
-const CATALOG_JSON_FILE = path.resolve(__dirname, '../../src/content/docspace/src/data/vault-catalog-cd.json');
+const CATALOG_JSON_FILE = path.resolve(__dirname, '../../src/content/docspace/data/vault-catalog-cd.json');
 
 // Helper to convert Vietnamese string to clean snake_case slug
 function slugify(text) {

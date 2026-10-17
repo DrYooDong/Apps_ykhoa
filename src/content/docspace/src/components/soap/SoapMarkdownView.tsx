@@ -24,6 +24,7 @@ import {
   Stethoscope,
   Target,
   Zap,
+  Edit3,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
 import { generateSoapMarkdown } from '../../lib/clientSideIngest.ts';
@@ -31,6 +32,7 @@ import { formatClinicalInline } from './FormattedClinicalText.tsx';
 
 interface SoapMarkdownViewProps {
   currentCase: SoapClinicalExperience;
+  onEditCase?: () => void;
 }
 
 /**
@@ -43,7 +45,7 @@ function renderInlineMarkdown(text: string): React.ReactNode {
 /**
  * Editorial Clinical Markdown Reader Component
  */
-export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase }) => {
+export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase, onEditCase }) => {
   const [viewFormat, setViewFormat] = useState<'formatted' | 'raw'>('formatted');
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -603,6 +605,19 @@ export const SoapMarkdownView: React.FC<SoapMarkdownViewProps> = ({ currentCase 
               <Download className="w-3.5 h-3.5" />
               <span>Tải .md</span>
             </button>
+
+            {/* Edit Case Button */}
+            {onEditCase && (
+              <button
+                type="button"
+                onClick={onEditCase}
+                className="flex-1 sm:flex-none px-3.5 py-1.5 min-h-[36px] sm:min-h-[34px] rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs touch-manipulation"
+                title="Chỉnh sửa ca lâm sàng và cập nhật trực tiếp vào file .md"
+              >
+                <Edit3 className="w-3.5 h-3.5" />
+                <span>Sửa .md</span>
+              </button>
+            )}
 
             {/* Print Button (chỉ hiện trên sm trở lên) */}
             <button

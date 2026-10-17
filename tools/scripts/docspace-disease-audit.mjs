@@ -225,7 +225,7 @@ function auditDisease(slug) {
   }
 
   // 8. Kiểm tra Hồ Sơ Ca Bệnh Thực Chiến SOAP ở Bước 4 Mục 9
-  const soapCatalogPath = path.join(ROOT_DIR, 'src/content/docspace/src/data/vault-catalog-thuc-hanh.json');
+  const soapCatalogPath = path.join(ROOT_DIR, 'src/content/docspace/data/vault-catalog-thuc-hanh.json');
   let soapList = [];
   try {
     soapList = JSON.parse(fs.readFileSync(soapCatalogPath, 'utf8'));
@@ -262,7 +262,7 @@ function auditDisease(slug) {
   }
 
   // 9. Kiểm tra Bối cảnh Dịch tễ học (Epidemiology Context)
-  const epiPath = path.join(ROOT_DIR, 'src/content/docspace/src/data/epidemiology-context-database.ts');
+  const epiPath = path.join(ROOT_DIR, 'src/content/docspace/data/epidemiology-context-database.ts');
   const epiContent = fs.existsSync(epiPath) ? fs.readFileSync(epiPath, 'utf8') : '';
   const hasEpi = epiContent.includes(`${slug}:`) || epiContent.includes(`'${slug}':`) ||
                  epiContent.includes(`${enrichedKey}:`) || epiContent.includes(`'${enrichedKey}':`);

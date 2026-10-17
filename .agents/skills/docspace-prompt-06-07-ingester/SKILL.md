@@ -41,7 +41,7 @@ Mỗi lượt tạo dữ liệu từ NotebookLM cho một mặt bệnh thường
 │ TỰ ĐỘNG TÍCH HỢP HỆ THỐNG DOCSPACE (AUTOMATIC DEEP INTEGRATION)                        │
 │ ├── 1. Biên dịch CSDL Enriched CDSS: node tools/scripts/build-enriched-cdss.mjs        │
 │ ├── 2. Đăng ký Multi-Key Aliases: src/content/docspace/data/diagnostic-criteria-database│
-│ ├── 3. Cấu hình Hồ sơ Dịch tễ: src/content/docspace/src/data/epidemiology-context-db  │
+│ ├── 3. Cấu hình Hồ sơ Dịch tễ: src/content/docspace/data/epidemiology-context-db  │
 │ └── 4. Kích hoạt Tam giác DTH: src/content/docspace/src/lib/clinicalEngine.ts          │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -109,7 +109,7 @@ Nếu gặp trường hợp đặc biệt cần can thiệp thủ công từng b
 | **4** | Lưu SOAP Markdown | `src/content/docspace/data/ba/<caseId>.md` | `node tools/scripts/ingest-notebooklm-case.mjs <file.md>` |
 | **5** | Biên dịch Enriched | `src/content/docspace/data/enriched/index.ts` | `node tools/scripts/build-enriched-cdss.mjs` |
 | **6** | Ánh xạ Alias | `src/content/docspace/data/diagnostic-criteria-database.ts` | Thêm `'<alias>': ENRICHED_DISEASES['<key>']` |
-| **7** | Hồ sơ Dịch tễ | `src/content/docspace/src/data/epidemiology-context-database.ts` | Khai báo object bối cảnh |
+| **7** | Hồ sơ Dịch tễ | `src/content/docspace/data/epidemiology-context-database.ts` | Khai báo object bối cảnh |
 | **8** | Clinical Engine | `src/content/docspace/src/lib/clinicalEngine.ts` | Thêm ID vào `isInfDisease` |
 
 ---

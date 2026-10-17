@@ -9,8 +9,8 @@
 **DocSpace MedLens Pro** được tái cấu trúc hoàn toàn trên nền tảng **React 19 + TypeScript + Vite + TailwindCSS v4**, vận hành theo triết lý **100% Client-Side, Zero-Latency & Không phụ thuộc cơ sở dữ liệu ngoài (No Supabase, No LocalStorage)**:
 
 - **Hệ Thống Dữ Liệu Nội Bộ Độc Lập (Self-Contained Data Architecture)**:
-  - Nguồn dữ liệu lâm sàng cốt lõi đặt tại: `src/content/docspace/src/data/` (chứa `diseases.ts`, `clinical-rules-symptoms.json`, `sample-clinical-cases.json`, các cơ sở dữ liệu mở rộng).
-  - Kho ca bệnh thực chiến SOAP Markdown độc lập: `src/content/docspace/data/ba/` và index trong catalog `src/content/docspace/src/data/vault-catalog.json`.
+  - Nguồn dữ liệu lâm sàng cốt lõi đặt tại: `src/content/docspace/data/` (chứa `diseases.ts`, `clinical-rules-symptoms.json`, `sample-clinical-cases.json`, các cơ sở dữ liệu mở rộng).
+  - Kho ca bệnh thực chiến SOAP Markdown độc lập: `src/content/docspace/data/ba/` và index trong catalog `src/content/docspace/data/vault-catalog.json`.
   - Bộ 14 module CDSS độc lập chuyên khoa: `src/content/docspace/public/cdss/` (Dengue, ECG, ABG, X-Ray, Hepa, Sepsis, Diacare, Antibiotic, Vancomycin...).
 - **Phân tách giao diện rành mạch**:
   1. **🩺 Chu Trình Lâm Sàng (4 Bước Cốt Lõi Chuẩn Hóa)**:
@@ -44,6 +44,16 @@ src/content/docspace/
 │   ├── QUY_TRINH_SXH_DENGUE.md                   # Quy trình nạp kiến thức SXH Dengue mẫu
 │   ├── prompt-notebooklm-soap.txt                # Prompt Master soạn ca lâm sàng bằng NotebookLM
 │   └── QUY_TRINH_NAP_CA_NOTEBOOKLM.md            # Quy trình biên soạn & nạp ca qua NotebookLM
+├── data/                       # 🗄️ Kho dữ liệu cốt lõi thống nhất DocSpace
+│   ├── seedData.ts             # Bộ dữ liệu khởi tạo & Clinical Fields
+│   ├── clinical-rules-symptoms.json # Master triệu chứng CDSS
+│   ├── sample-clinical-cases.json   # Ca bệnh lâm sàng mẫu
+│   ├── diseases.ts             # Danh mục bệnh lý chuyên khoa
+│   ├── diseases/               # JSON quy tắc 9 chuyên khoa
+│   ├── enriched/               # CSDL bệnh học làm giàu đa tầng
+│   ├── syndromes/              # Các hội chứng lâm sàng
+│   ├── ba/                     # Kho bệnh án thực chiến SOAP Markdown
+│   └── vault-catalog*.json     # Danh mục phân kho Knowledge Vault
 ├── src/
 │   ├── main.tsx                # Mount React App
 │   ├── App.tsx                 # Ứng dụng chính điều phối 3 phân hệ & Modals
@@ -55,10 +65,6 @@ src/content/docspace/
 │   │   ├── soapApi.ts          # 📚 Vault SOAP Service (Chỉ đọc từ Knowledge Vault)
 │   │   ├── guidelineBridge.ts  # Cầu nối 78+ Guidelines & Landmark RCTs
 │   │   └── vaultBridge.ts      # 🌉 Cầu nối 2.400+ bài viết EBM Knowledge Vault
-│   ├── data/
-│   │   ├── seedData.ts         # Wrapper nạp quy tắc từ Knowledge Vault
-│   │   ├── vault-catalog-*.json # 4 phân nhóm danh mục Vault (Cơ sở, Chuyên sâu, Thực hành, Hỗ trợ)
-│   │   └── vault-catalog.json  # Master Catalog 868+ bài viết Knowledge Vault & ca SOAP (BA)
 │   └── components/
 │       ├── Header.tsx          # Topbar điều hướng chuyển đổi 3 phân hệ
 │       ├── StepNav.tsx         # Thanh điều hướng Chu trình lâm sàng 3 bước
@@ -110,7 +116,7 @@ npm run build
    ```powershell
    node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/<caseId>.md
    ```
-   Script sẽ tự động cập nhật catalog nội bộ `src/content/docspace/src/data/vault-catalog.json`.
+   Script sẽ tự động cập nhật catalog nội bộ `src/content/docspace/data/vault-catalog.json`.
    Xem chi tiết tại: [`docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md`](file:///d:/Apps/Apps_ykhoa/src/content/docspace/docs/QUY_TRINH_NAP_CA_NOTEBOOKLM.md).
 
 ---

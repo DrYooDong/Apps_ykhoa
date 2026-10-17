@@ -21,8 +21,8 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '../../');
 
 const ENRICHED_DIR = path.join(ROOT, 'src/content/docspace/data/enriched');
-const ABBREV_MAP_PATH = path.join(ROOT, 'src/content/docspace/src/data/medical-abbreviation-map.json');
-const DISEASES_TS_PATH = path.join(ROOT, 'src/content/docspace/src/data/diseases.ts');
+const ABBREV_MAP_PATH = path.join(ROOT, 'src/content/docspace/data/medical-abbreviation-map.json');
+const DISEASES_TS_PATH = path.join(ROOT, 'src/content/docspace/data/diseases.ts');
 
 const args = process.argv.slice(2);
 const isDryRun = args.includes('--dry-run') || args.length === 0;

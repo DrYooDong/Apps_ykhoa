@@ -108,7 +108,7 @@ Khi tích hợp bất kỳ mặt bệnh nào từ bộ prompt, AI Agent **TUYỆ
 
 ### 5. Kích Hoạt Tam Giác Dịch Tễ Học (Epidemiology Boost)
 - Tại `src/content/docspace/src/lib/clinicalEngine.ts`: Khai báo ID của bệnh vào khối `isInfDisease` và bổ sung logic nhận diện vector/ổ dịch/tiếp xúc để bệnh nhân được cộng điểm thưởng dịch tễ (1.2x – 1.25x) tương thích với bối cảnh Việt Nam.
-- Khai báo hồ sơ dịch tễ tương ứng tại `src/content/docspace/src/data/epidemiology-context-database.ts`.
+- Khai báo hồ sơ dịch tễ tương ứng tại `src/content/docspace/data/epidemiology-context-database.ts`.
 
 ---
 
@@ -141,7 +141,7 @@ Khi nhận dữ liệu sinh ra từ NotebookLM/LLM cho một mặt bệnh mới 
 
 ### Bước 4: Khai Báo Aliasing & Dịch Tễ Học
 1. Khai báo ánh xạ trong `src/content/docspace/data/diagnostic-criteria-database.ts`.
-2. Khai báo bối cảnh dịch tễ trong `src/content/docspace/src/data/epidemiology-context-database.ts`.
+2. Khai báo bối cảnh dịch tễ trong `src/content/docspace/data/epidemiology-context-database.ts`.
 3. Bổ sung ID vào bộ máy suy luận `src/content/docspace/src/lib/clinicalEngine.ts`.
 
 ---

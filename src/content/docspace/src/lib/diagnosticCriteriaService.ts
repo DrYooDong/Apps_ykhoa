@@ -6,7 +6,7 @@
 
 import { KnowledgeBase, RoleType } from '../types.ts';
 import { VAULT_CATALOG, VaultArticle } from './vaultBridge.ts';
-import { GROUP_COLORS, GROUP_NAMES } from '../data/seedData.ts';
+import { GROUP_COLORS, GROUP_NAMES } from '../../data/seedData.ts';
 import {
   DIAGNOSTIC_CHAIN_DATABASE,
   DiseaseReactionChainDefinition,

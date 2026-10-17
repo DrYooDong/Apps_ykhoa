@@ -17,8 +17,8 @@ description: >
 Phân hệ Sổ tay SOAP vận hành dựa trên cơ chế nạp dữ liệu phi tập trung:
 - **Dữ liệu nguồn**: Các hồ sơ bệnh án Markdown chuẩn S-O-A-P đặt tại `src/content/docspace/data/ba/*.md`.
 - **Cơ sở dữ liệu Danh mục (Catalogs)**:
-  - `src/content/docspace/src/data/vault-catalog-thuc-hanh.json`: Danh mục ca thực hành phục vụ lọc chuyên khoa, mức độ khó, tìm kiếm nhanh.
-  - `src/content/docspace/src/data/vault-catalog.json`: Master Catalog cho toàn bộ Knowledge Vault.
+  - `src/content/docspace/data/vault-catalog-thuc-hanh.json`: Danh mục ca thực hành phục vụ lọc chuyên khoa, mức độ khó, tìm kiếm nhanh.
+  - `src/content/docspace/data/vault-catalog.json`: Master Catalog cho toàn bộ Knowledge Vault.
 - **Giao diện người dùng (React 19 + Tailwind v4)**:
   - `SoapExperienceBoard.tsx`: Bảng điều khiển trung tâm, bộ lọc đa chiều (Chuyên khoa, Mức độ khó, Thẻ nhãn, Tìm kiếm).
   - `SoapDetailView.tsx`: Chế độ xem chi tiết ca bệnh (Tổng quan bệnh nhân, Sinh hiệu, 4 khối S-O-A-P, Đúc kết lâm sàng).
@@ -72,8 +72,8 @@ Phân hệ Sổ tay SOAP vận hành dựa trên cơ chế nạp dữ liệu phi
 - **Kích hoạt khi**: Danh sách ca bệnh hiển thị không đủ số lượng ca có trong thư mục `data/ba/`.
 - **Phạm vi file**:
   - `src/content/docspace/data/ba/*.md`
-  - `src/content/docspace/src/data/vault-catalog-thuc-hanh.json`
-  - `src/content/docspace/src/data/vault-catalog.json`
+  - `src/content/docspace/data/vault-catalog-thuc-hanh.json`
+  - `src/content/docspace/data/vault-catalog.json`
   - `tools/scripts/ingest-notebooklm-case.mjs`
   - `tools/scripts/validate-soap-catalog.mjs`
 - **Checklist thực thi**:

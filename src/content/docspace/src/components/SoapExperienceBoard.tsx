@@ -15,6 +15,8 @@ import {
   List,
   FileText,
   SlidersHorizontal,
+  Edit3,
+  Type,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../types.ts';
 import {
@@ -25,12 +27,13 @@ import {
   matchesSoapSpecialty,
   detectCaseDisease,
   DiseaseGroupItem,
-} from '../data/soapSeedData.ts';
+} from '../../data/soapSeedData.ts';
 import { exportSoapCaseToMarkdown } from '../lib/vaultBridge.ts';
 
 // Modular Sub-components
 import { SoapListView } from './soap/SoapListView.tsx';
 import { SoapDetailView } from './soap/SoapDetailView.tsx';
+import { SoapEditModal } from './soap/SoapEditModal.tsx';
 import { QuickIngestModal } from './QuickIngestModal.tsx';
 import { PromptBuilderModal } from './PromptBuilderModal.tsx';
 
@@ -52,6 +55,23 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
   const [internalUserCases, setInternalUserCases] = useState<SoapClinicalExperience[]>([]);
   const [isQuickIngestOpen, setIsQuickIngestOpen] = useState<boolean>(false);
   const [isPromptBuilderOpen, setIsPromptBuilderOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [fontScale, setFontScale] = useState<'normal' | 'large' | 'xlarge'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('docspace_soap_font_scale');
+      if (saved === 'normal' || saved === 'large' || saved === 'xlarge') return saved;
+    }
+    return 'large';
+  });
+
+  const handleSetFontScale = (scale: 'normal' | 'large' | 'xlarge') => {
+    setFontScale(scale);
+    try {
+      localStorage.setItem('docspace_soap_font_scale', scale);
+    } catch {
+      // ignore
+    }
+  };
 
   // Combine user-added runtime cases with static Vault cases
   const experiences = useMemo(() => {
@@ -92,6 +112,20 @@ export const SoapExperienceBoard: React.FC<SoapBoardProps> = ({
     setSearchKeyword('');
     setSelectedCaseId(newSoap.id);
     setMobileTab('detail');
+  };
+
+  const handleSaveEditedCase = (updatedCase: SoapClinicalExperience) => {
+    if (onAddUserCase) {
+      onAddUserCase(updatedCase);
+    }
+    setInternalUserCases((prev) => {
+      const exists = prev.some((c) => c.id === updatedCase.id);
+      if (exists) {
+        return prev.map((c) => (c.id === updatedCase.id ? updatedCase : c));
+      }
+      return [updatedCase, ...prev];
+    });
+    setSelectedCaseId(updatedCase.id);
   };
 
   // Filters & Sorting State
@@ -267,7 +301,11 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
   };
 
   return (
-    <div id="soap-experience-board" className="max-w-7xl mx-auto px-1 sm:px-6 py-2 sm:py-6 flex flex-col gap-4 sm:gap-6 animate-fadeIn">
+    <div
+      id="soap-experience-board"
+      data-soap-font-scale={fontScale}
+      className="max-w-7xl mx-auto px-1 sm:px-6 py-2 sm:py-6 flex flex-col gap-4 sm:gap-6 animate-fadeIn"
+    >
       {/* 1. Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-emerald-900 via-slate-900 to-blue-950 text-white p-4 sm:p-6 rounded-2xl shadow-sm">
         <div className="space-y-1.5 max-w-2xl">
@@ -296,6 +334,44 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
 
         {/* Action Toolbar */}
         <div className="flex items-center gap-1.5 self-stretch sm:self-auto justify-end flex-wrap">
+          {/* Reader Font Scale Selector on Header */}
+          <div className="flex items-center bg-white/10 border border-white/15 rounded-lg p-0.5 text-xs h-9">
+            <span className="px-1.5 text-slate-300 font-bold text-[10px] flex items-center gap-0.5" title="Cỡ chữ hiển thị lâm sàng">
+              <Type className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Cỡ:</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => handleSetFontScale('normal')}
+              className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                fontScale === 'normal' ? 'bg-white text-slate-900 shadow-2xs font-extrabold' : 'text-slate-300 hover:text-white'
+              }`}
+              title="Cỡ chữ chuẩn 100%"
+            >
+              A
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSetFontScale('large')}
+              className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                fontScale === 'large' ? 'bg-emerald-400 text-slate-950 shadow-2xs font-extrabold' : 'text-slate-300 hover:text-white'
+              }`}
+              title="Cỡ chữ lớn tối ưu Tablet / Mobile (115%)"
+            >
+              A+
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSetFontScale('xlarge')}
+              className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                fontScale === 'xlarge' ? 'bg-emerald-400 text-slate-950 shadow-2xs font-extrabold' : 'text-slate-300 hover:text-white'
+              }`}
+              title="Cỡ chữ rất lớn (130%)"
+            >
+              A++
+            </button>
+          </div>
+
           <button
             type="button"
             onClick={handleCopySoapSummary}
@@ -330,13 +406,27 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
             <BookOpen className="w-4 h-4 text-slate-300" />
           </button>
 
+          {/* Sửa ca bệnh hiện tại */}
+          {currentCase && (
+            <button
+              type="button"
+              onClick={() => setIsEditModalOpen(true)}
+              className="flex items-center gap-1.5 px-3 h-9 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-xs rounded-lg transition-colors cursor-pointer border border-blue-400/30 shadow-xs"
+              title="Chỉnh sửa ca lâm sàng và cập nhật trực tiếp vào file .md"
+            >
+              <Edit3 className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Sửa ca bệnh</span>
+              <span className="sm:hidden">Sửa</span>
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => setIsPromptBuilderOpen(true)}
-            className="flex items-center gap-1.5 px-3 h-9 bg-blue-600/80 hover:bg-blue-600 text-white font-semibold text-xs rounded-lg transition-colors cursor-pointer border border-blue-400/30 shadow-xs"
+            className="flex items-center gap-1.5 px-3 h-9 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg transition-colors cursor-pointer border border-slate-600/50 shadow-xs"
             title="Tạo prompt NotebookLM chuẩn hóa cho ca bệnh mới"
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>Tạo Prompt</span>
           </button>
 
@@ -513,6 +603,9 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
               viewMode={viewMode}
               setViewMode={setViewMode}
               onOpenVaultDrawer={onOpenVaultDrawer}
+              onEditCase={() => setIsEditModalOpen(true)}
+              fontScale={fontScale}
+              setFontScale={handleSetFontScale}
             />
           </div>
         )}
@@ -539,6 +632,16 @@ ${currentCase.p.takeawayLessons ? `* Bài học kinh nghiệm: ${currentCase.p.t
         }}
         initialDisease={currentCase?.a.primaryDiagnosis || currentCase?.title || ''}
       />
+
+      {/* 7. Deep-Dive Clinical Case Editor Modal */}
+      {currentCase && (
+        <SoapEditModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          initialCase={currentCase}
+          onSaveCase={handleSaveEditedCase}
+        />
+      )}
     </div>
   );
 };

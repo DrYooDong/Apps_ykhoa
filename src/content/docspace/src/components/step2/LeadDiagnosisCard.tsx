@@ -29,7 +29,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { AnalysisResult, KnowledgeBase } from '../../types.ts';
-import { ROLE_LABELS } from '../../data/seedData.ts';
+import { ROLE_LABELS } from '../../../data/seedData.ts';
 import {
   formatCriterionLabel,
   formatLabThreshold,

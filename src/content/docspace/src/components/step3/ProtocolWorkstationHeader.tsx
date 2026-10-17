@@ -26,7 +26,7 @@ import {
   Stethoscope,
   X,
 } from 'lucide-react';
-import { GROUP_COLORS, GROUP_NAMES } from '../../data/seedData.ts';
+import { GROUP_COLORS, GROUP_NAMES } from '../../../data/seedData.ts';
 import { CdssToolSlug } from '../../lib/vaultBridge.ts';
 
 interface ProtocolWorkstationHeaderProps {

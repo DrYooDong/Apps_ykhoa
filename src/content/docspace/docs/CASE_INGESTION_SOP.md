@@ -74,8 +74,8 @@ node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba/<slug
 **Script sẽ tự động thực hiện các thao tác sau**:
 1. Phân tích cú pháp YAML Frontmatter (`id`, `title`, `khoCode: "BA"`, `icd10`, `chuyenKhoa`, `doKho`, `bacSi`).
 2. Trích xuất tóm tắt triệu chứng và chẩn đoán.
-3. Thêm bản ghi ca mới vào `src/content/docspace/src/data/vault-catalog.json`.
-4. Đồng bộ dữ liệu sang `src/content/docspace/src/data/vault-catalog-thuc-hanh.json`.
+3. Thêm bản ghi ca mới vào `src/content/docspace/data/vault-catalog.json`.
+4. Đồng bộ dữ liệu sang `src/content/docspace/data/vault-catalog-thuc-hanh.json`.
 5. Đưa ra thông báo hoàn tất: `[SUCCESS] Ca lâm sàng đã được nạp vào Catalog!`.
 
 ---

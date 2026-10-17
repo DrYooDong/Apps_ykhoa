@@ -225,33 +225,33 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
           </div>
 
           {/* Mobile Problem Cards View (< md) */}
-          <div className="md:hidden p-3 flex flex-col gap-3">
+          <div className="md:hidden p-3 flex flex-col gap-3.5">
             {filteredProblems.map((prob, idx) => (
               <div
                 key={idx}
-                className={`p-3.5 rounded-xl border border-slate-200/90 bg-white shadow-2xs flex flex-col gap-2.5 ${getPriorityBorder(prob.priority)}`}
+                className={`p-4 rounded-2xl border border-slate-200/90 bg-white shadow-xs flex flex-col gap-3 ${getPriorityBorder(prob.priority)}`}
               >
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
                   {getPriorityBadge(prob.priority)}
-                  <span className="text-[10.5px] font-mono-custom font-bold text-slate-400">
+                  <span className="text-xs font-mono-custom font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
                     Vấn đề #{prob.order || idx + 1}
                   </span>
                 </div>
 
-                <h4 className="text-xs font-bold text-slate-900 leading-snug">
+                <h4 className="text-base font-bold text-slate-950 leading-snug">
                   {formatClinicalInline(prob.problemName)}
                 </h4>
 
                 {prob.evidenceSummary && (
-                  <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200/70 text-xs text-slate-700 leading-relaxed">
+                  <div className="bg-slate-50 p-3 rounded-xl border border-slate-200/70 text-sm text-slate-800 leading-relaxed">
                     <b className="text-slate-900">Dữ kiện lâm sàng / CLS: </b>
                     {formatClinicalInline(prob.evidenceSummary)}
                   </div>
                 )}
 
                 {prob.diagnosticOrientation && (
-                  <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-2.5 text-xs text-blue-950">
-                    <div className="text-[10px] font-bold text-blue-800 uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-3 text-sm text-blue-950">
+                    <div className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1 flex items-center gap-1">
                       <span>🔬 Định hướng Chẩn đoán &amp; CLS:</span>
                     </div>
                     <p className="leading-relaxed font-medium">{formatClinicalInline(prob.diagnosticOrientation)}</p>
@@ -259,8 +259,8 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
                 )}
 
                 {prob.immediateManagement && (
-                  <div className="bg-emerald-50/70 border border-emerald-100 rounded-xl p-2.5 text-xs text-emerald-950">
-                    <div className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <div className="bg-emerald-50/70 border border-emerald-100 rounded-xl p-3 text-sm text-emerald-950">
+                    <div className="text-xs font-bold text-emerald-900 uppercase tracking-wider mb-1 flex items-center gap-1">
                       <span>💊 Hướng xử trí ban đầu &amp; Cấp cứu:</span>
                     </div>
                     <p className="leading-relaxed font-medium">{formatClinicalInline(prob.immediateManagement)}</p>
@@ -268,8 +268,8 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
                 )}
 
                 {prob.conflictWarning && (
-                  <div className="bg-rose-50 border border-rose-200 rounded-xl p-2.5 text-xs text-rose-950 font-semibold flex items-center gap-1.5">
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                  <div className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-sm text-rose-950 font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
                     <span>{formatClinicalInline(prob.conflictWarning)}</span>
                   </div>
                 )}
@@ -279,13 +279,13 @@ export const SoapProblemsView: React.FC<SoapProblemsViewProps> = ({
 
           {/* Desktop Table View (>= md) */}
           <div className="hidden md:block overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs">
+            <table className="w-full text-left border-collapse text-sm sm:text-xs md:text-sm">
               <thead>
                 <tr className="bg-slate-100/70 border-b border-slate-200 text-slate-700 font-semibold">
-                  <th className="py-3 px-4 w-48 shrink-0">Mức Độ Ưu Tiên</th>
-                  <th className="py-3 px-4 min-w-[240px]">Vấn Đề Lâm Sàng (Hội Chứng)</th>
-                  <th className="py-3 px-4 min-w-[220px]">Chiến Lược Chẩn Đoán (CLS Đề Nghị)</th>
-                  <th className="py-3 px-4 min-w-[220px]">Hướng Xử Trí Ban Đầu &amp; Cấp Cứu</th>
+                  <th className="py-3.5 px-4 w-48 shrink-0">Mức Độ Ưu Tiên</th>
+                  <th className="py-3.5 px-4 min-w-[240px]">Vấn Đề Lâm Sàng (Hội Chứng)</th>
+                  <th className="py-3.5 px-4 min-w-[220px]">Chiến Lược Chẩn Đoán (CLS Đề Nghị)</th>
+                  <th className="py-3.5 px-4 min-w-[220px]">Hướng Xử Trí Ban Đầu &amp; Cấp Cứu</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">

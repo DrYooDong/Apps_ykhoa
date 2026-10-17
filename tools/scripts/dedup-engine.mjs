@@ -28,8 +28,8 @@ const ROOT_DIR = path.resolve(__dirname, '../../');
 // Định nghĩa các đường dẫn dữ liệu chuẩn DocSpace
 const ENRICHED_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/enriched');
 const BA_DIR = path.join(ROOT_DIR, 'src/content/docspace/data/ba');
-const CATALOG_PATH = path.join(ROOT_DIR, 'src/content/docspace/src/data/vault-catalog-thuc-hanh.json');
-const CASES_PATH = path.join(ROOT_DIR, 'src/content/docspace/src/data/sample-clinical-cases.json');
+const CATALOG_PATH = path.join(ROOT_DIR, 'src/content/docspace/data/vault-catalog-thuc-hanh.json');
+const CASES_PATH = path.join(ROOT_DIR, 'src/content/docspace/data/sample-clinical-cases.json');
 const SCRATCH_DIR = path.join(ROOT_DIR, 'tools/scratch');
 
 // Parse CLI arguments

@@ -1,4 +1,4 @@
-import { SoapClinicalExperience } from '../types.ts';
+import { SoapClinicalExperience } from '../src/types.ts';
 
 export const SOAP_SPECIALTIES = [
   'Tất cả chuyên khoa',

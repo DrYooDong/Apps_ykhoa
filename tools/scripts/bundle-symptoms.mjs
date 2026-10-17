@@ -16,10 +16,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
-const RUNTIME_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/src/data');
 const SYMPTOMS_DIR = path.join(DATA_DIR, 'symptoms');
 const OUT_SYMPTOMS_PATH = path.join(DATA_DIR, 'clinical-rules-symptoms.json');
-const OUT_RUNTIME_SYMPTOMS_PATH = path.join(RUNTIME_DATA_DIR, 'clinical-rules-symptoms.json');
 const OUT_MD_DICT_PATH = path.join(DATA_DIR, 'DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md');
 
 const SYSTEM_NAMES = {
@@ -51,7 +49,7 @@ function generateMarkdownDictionary(itemsByFile, totalCount) {
   let md = `# 📘 CLINIPORTAL — DANH MỤC TỪ VỰNG LÂM SÀNG CHUẨN (MASTER SYMPTOM DICTIONARY)
 
 > **Phiên bản**: v5.0 | **Ngày cập nhật**: ${nowStr} | **Tổng số triệu chứng chuẩn**: ${totalCount}
-> **Vị trí lưu trữ**: \`src/content/knowledge-vault/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md\`
+> **Vị trí lưu trữ**: \`src/content/docspace/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md\`
 > **Mục đích**: Bản đồ từ vựng tham chiếu chuẩn mực (Anchor Vocabulary). Dùng để nạp trực tiếp vào **Google NotebookLM** cùng với tài liệu Guideline để AI đối chiếu, tái sử dụng mã ID sẵn có và tuyệt đối tránh tạo triệu chứng trùng lặp.
 
 ---
@@ -184,9 +182,6 @@ export function bundleSymptoms() {
 
   // 1. Ghi vào clinical-rules-symptoms.json (cho website runtime)
   fs.writeFileSync(OUT_SYMPTOMS_PATH, JSON.stringify(allSymptoms, null, 2) + '\n', 'utf8');
-  if (fs.existsSync(RUNTIME_DATA_DIR)) {
-    fs.writeFileSync(OUT_RUNTIME_SYMPTOMS_PATH, JSON.stringify(allSymptoms, null, 2) + '\n', 'utf8');
-  }
   console.log(`\n✅ [1/2] Đã đồng bộ Master Symptoms JSON: ${OUT_SYMPTOMS_PATH}`);
 
   // 2. Ghi vào DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md (cho NotebookLM)

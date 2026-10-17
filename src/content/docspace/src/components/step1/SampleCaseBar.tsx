@@ -13,7 +13,7 @@ import {
   AlertTriangle,
   X,
 } from 'lucide-react';
-import { SAMPLE_CASES, SampleCase } from '../../data/seedData.ts';
+import { SAMPLE_CASES, SampleCase } from '../../../data/seedData.ts';
 import { SampleCaseModal } from './SampleCaseModal.tsx';
 
 interface SampleCaseBarProps {

@@ -1,4 +1,4 @@
-import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../types.ts';
+import { Benh, CategoryType, EpidemiologyContext, KnowledgeBase, RoleType, ThresholdMap, TrieuChung } from '../src/types.ts';
 import symptomsRaw from './clinical-rules-symptoms.json';
 import { CORE_DISEASES } from './diseases.ts';
 import casesRaw from './sample-clinical-cases.json';

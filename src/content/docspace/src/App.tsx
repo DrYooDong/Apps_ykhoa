@@ -14,7 +14,7 @@ import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
 import { ClinicalSimulationModal } from './components/simulation/ClinicalSimulationModal.tsx';
 import { BottomNavBar } from './components/mobile/BottomNavBar.tsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
-import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from './data/seedData.ts';
+import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from '../data/seedData.ts';
 import {
   ClinicalFormState,
   EpidemiologyContext,

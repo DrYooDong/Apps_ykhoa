@@ -16,8 +16,8 @@ const ROOT = fs.existsSync(path.join(process.cwd(), 'src/content/docspace'))
   : (fs.existsSync('d:/Apps/Apps_ykhoa/src/content/docspace') ? 'd:/Apps/Apps_ykhoa' : process.cwd());
 
 const DOCSPACE_BA_DIR = path.join(ROOT, 'src/content/docspace/data/ba');
-const THUCHANH_CATALOG_PATH = path.join(ROOT, 'src/content/docspace/src/data/vault-catalog-thuc-hanh.json');
-const MASTER_CATALOG_PATH = path.join(ROOT, 'src/content/docspace/src/data/vault-catalog.json');
+const THUCHANH_CATALOG_PATH = path.join(ROOT, 'src/content/docspace/data/vault-catalog-thuc-hanh.json');
+const MASTER_CATALOG_PATH = path.join(ROOT, 'src/content/docspace/data/vault-catalog.json');
 
 console.log('===================================================================');
 console.log('🩺 CLINIPORTAL DOCSPACE — SOAP CATALOG VALIDATOR');

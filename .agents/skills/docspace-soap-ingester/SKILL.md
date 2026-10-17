@@ -156,7 +156,7 @@ Khi có nội dung ca bệnh SOAP Markdown mới (hoặc tệp xuất thô từ 
    - Bóc tách toàn bộ 4 khối S-O-A-P và các bài học lâm sàng.
    - Bổ sung/Cập nhật mục vào `src/content/knowledge-vault/data/vault-catalog-thuc-hanh.json`.
    - Cập nhật master catalog `src/content/knowledge-vault/data/vault-catalog.json`.
-   - Đồng bộ tự động sang `src/content/docspace/src/data/` để giao diện web hiển thị ngay lập tức mà không cần reload server.
+   - Đồng bộ tự động sang `src/content/docspace/data/` để giao diện web hiển thị ngay lập tức mà không cần reload server.
    - Kích hoạt Medical QA Gate (6/6 Pillars) và Vault Readiness Check (15/15 Criteria).
 
 ---

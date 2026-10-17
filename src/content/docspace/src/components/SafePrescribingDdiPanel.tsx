@@ -20,7 +20,7 @@ import {
   DRUG_DATABASE,
   getRenalDoseAdjustment,
   InteractionSeverity,
-} from '../data/drug-interaction-database.ts';
+} from '../../data/drug-interaction-database.ts';
 import { CdssToolSlug } from '../lib/vaultBridge.ts';
 
 interface SafePrescribingProps {

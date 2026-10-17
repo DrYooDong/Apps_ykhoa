@@ -1,6 +1,6 @@
 import React from 'react';
 import { FileCheck, Layers, Search, Trash2, X } from 'lucide-react';
-import { GROUP_COLORS } from '../../data/seedData.ts';
+import { GROUP_COLORS } from '../../../data/seedData.ts';
 
 export interface SyndromePreset {
   id: string;

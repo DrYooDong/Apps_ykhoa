@@ -23,7 +23,7 @@ import {
   Tag,
   CheckCircle2,
 } from 'lucide-react';
-import { SampleCase } from '../../data/seedData.ts';
+import { SampleCase } from '../../../data/seedData.ts';
 
 interface SampleCaseModalProps {
   isOpen: boolean;

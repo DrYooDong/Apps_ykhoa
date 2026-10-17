@@ -9,7 +9,7 @@ const path = require('path');
 
 const VAULT_ROOT = path.resolve(__dirname, '../../knowledge-vault');
 const VAULT_DATA_DIR = path.resolve(__dirname, '../../src/content/knowledge-vault/data');
-const DOCSPACE_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/src/data');
+const DOCSPACE_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/data');
 
 const OUTPUT_FILE = path.join(VAULT_DATA_DIR, 'vault-catalog.json');
 const DOCSPACE_OUTPUT_FILE = path.join(DOCSPACE_DATA_DIR, 'vault-catalog.json');

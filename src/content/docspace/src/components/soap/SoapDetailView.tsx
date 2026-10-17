@@ -22,10 +22,11 @@ import {
   Sparkles,
   Star,
   Stethoscope,
+  Type,
   Zap,
 } from 'lucide-react';
 import { SoapClinicalExperience } from '../../types.ts';
-import { EXPERIENCE_LEVEL_LABELS, getExperienceLevelConfig } from '../../data/soapSeedData.ts';
+import { EXPERIENCE_LEVEL_LABELS, getExperienceLevelConfig } from '../../../data/soapSeedData.ts';
 import { getRelatedVaultArticlesForSoap } from '../../lib/crossReferenceEngine.ts';
 import { SoapProblemsView } from './SoapProblemsView.tsx';
 import { SoapRoadmapView } from './SoapRoadmapView.tsx';
@@ -45,6 +46,9 @@ interface SoapDetailViewProps {
   viewMode: 'board' | 'focus-s' | 'focus-o' | 'focus-a' | 'focus-p';
   setViewMode: (mode: 'board' | 'focus-s' | 'focus-o' | 'focus-a' | 'focus-p') => void;
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
+  onEditCase?: () => void;
+  fontScale?: 'normal' | 'large' | 'xlarge';
+  setFontScale?: (scale: 'normal' | 'large' | 'xlarge') => void;
   className?: string;
 }
 
@@ -53,6 +57,9 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
   viewMode,
   setViewMode,
   onOpenVaultDrawer,
+  onEditCase,
+  fontScale,
+  setFontScale,
   className = '',
 }) => {
   const [activeTab, setActiveTab] = useState<SoapDetailTab>('matrix');
@@ -173,6 +180,58 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
 
         {/* Quick Jump & Tool Shortcuts */}
         <div className="flex items-center gap-1.5 flex-wrap justify-start md:justify-end w-full md:w-auto pt-2.5 md:pt-0 border-t md:border-t-0 border-slate-100 shrink-0">
+          {/* Sửa ca bệnh button */}
+          {onEditCase && (
+            <button
+              type="button"
+              onClick={onEditCase}
+              className="flex-1 sm:flex-initial px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+              title="Chỉnh sửa ca lâm sàng và đồng bộ trực tiếp vào file .md"
+            >
+              <Edit3 className="w-3.5 h-3.5" />
+              <span>Sửa Ca Bệnh</span>
+            </button>
+          )}
+
+          {/* Reader Font Scale Selector */}
+          {setFontScale && (
+            <div className="flex items-center bg-slate-100 border border-slate-200 rounded-lg p-0.5 text-xs">
+              <span className="px-1.5 text-slate-500 font-bold text-[10.5px] flex items-center gap-0.5" title="Cỡ chữ hiển thị lâm sàng">
+                <Type className="w-3 h-3" />
+              </span>
+              <button
+                type="button"
+                onClick={() => setFontScale('normal')}
+                className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                  fontScale === 'normal' || !fontScale ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+                }`}
+                title="Cỡ chữ chuẩn (100%)"
+              >
+                A
+              </button>
+              <button
+                type="button"
+                onClick={() => setFontScale('large')}
+                className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                  fontScale === 'large' ? 'bg-white text-blue-700 shadow-2xs font-extrabold' : 'text-slate-500 hover:text-slate-800'
+                }`}
+                title="Cỡ chữ lớn tối ưu Tablet / Mobile (115%)"
+              >
+                A+
+              </button>
+              <button
+                type="button"
+                onClick={() => setFontScale('xlarge')}
+                className={`px-1.5 py-0.5 rounded text-[11px] font-bold transition-all cursor-pointer ${
+                  fontScale === 'xlarge' ? 'bg-white text-blue-700 shadow-2xs font-extrabold' : 'text-slate-500 hover:text-slate-800'
+                }`}
+                title="Cỡ chữ rất lớn (130%)"
+              >
+                A++
+              </button>
+            </div>
+          )}
+
           <button
             type="button"
             onClick={() => onOpenVaultDrawer?.(currentCase.title, currentCase.title)}
@@ -649,7 +708,7 @@ export const SoapDetailView: React.FC<SoapDetailViewProps> = ({
 
   {/* TAB 5: TOÀN VĂN MARKDOWN (.MD) */}
   {activeTab === 'markdown' && (
-    <SoapMarkdownView currentCase={currentCase} />
+    <SoapMarkdownView currentCase={currentCase} onEditCase={onEditCase} />
   )}
 
   {/* Floating Back To Top Button for Mobile / Long Reads */}

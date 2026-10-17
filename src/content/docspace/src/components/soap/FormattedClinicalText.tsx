@@ -208,35 +208,46 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
     const dataRows = rows.slice(rows[1].includes('---') ? 2 : 1);
 
     blocks.push(
-      <div key={`table-${blocks.length}`} className="my-2.5 overflow-x-auto rounded-xl border border-slate-200/90 shadow-2xs">
-        <table className="w-full text-left border-collapse text-xs">
-          <thead>
-            <tr className="bg-slate-100/90 border-b border-slate-200 text-slate-800 font-bold">
-              {headerCols.map((col, cIdx) => (
-                <th key={cIdx} className="py-2 px-3 text-[11px] uppercase tracking-wider">
-                  {formatClinicalInline(col)}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100 bg-white">
-            {dataRows.map((row, rIdx) => {
-              const cells = row
-                .split('|')
-                .slice(1, -1)
-                .map((c) => c.trim());
-              return (
-                <tr key={rIdx} className="hover:bg-slate-50/80 transition-colors">
-                  {cells.map((cell, cIdx) => (
-                    <td key={cIdx} className="py-2 px-3 align-top leading-relaxed text-slate-700">
-                      {formatClinicalInline(cell)}
-                    </td>
-                  ))}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div key={`table-${blocks.length}`} className="my-3 space-y-1">
+        <div className="flex sm:hidden items-center justify-between text-[11px] text-slate-500 font-medium px-1">
+          <span className="flex items-center gap-1 text-blue-700">
+            <span>↔</span>
+            <span>Bảng lâm sàng (Vuốt ngang xem đầy đủ)</span>
+          </span>
+          <span className="text-[10px] text-slate-400 font-mono-custom">
+            {dataRows.length} hàng · {headerCols.length} cột
+          </span>
+        </div>
+        <div className="overflow-x-auto rounded-xl border border-slate-200/90 shadow-2xs touch-pan-x bg-white">
+          <table className="w-full text-left border-collapse text-sm sm:text-xs md:text-sm min-w-[340px]">
+            <thead>
+              <tr className="bg-slate-100/90 border-b border-slate-200 text-slate-800 font-bold">
+                {headerCols.map((col, cIdx) => (
+                  <th key={cIdx} className="py-2.5 px-3.5 text-xs sm:text-[11px] md:text-xs uppercase tracking-wider whitespace-nowrap bg-slate-100/80">
+                    {formatClinicalInline(col)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white">
+              {dataRows.map((row, rIdx) => {
+                const cells = row
+                  .split('|')
+                  .slice(1, -1)
+                  .map((c) => c.trim());
+                return (
+                  <tr key={rIdx} className="hover:bg-slate-50/80 transition-colors odd:bg-white even:bg-slate-50/40">
+                    {cells.map((cell, cIdx) => (
+                      <td key={cIdx} className="py-2.5 px-3.5 align-top leading-relaxed text-slate-800">
+                        {formatClinicalInline(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   };
@@ -356,7 +367,7 @@ export const FormattedClinicalText: React.FC<FormattedClinicalTextProps> = ({
   flushTable();
 
   return (
-    <div className={`space-y-1.5 leading-relaxed text-xs text-slate-700 ${className}`}>
+    <div className={`space-y-2 leading-relaxed text-sm sm:text-xs md:text-sm text-slate-800 clinical-reading-text ${className}`}>
       {blocks}
     </div>
   );

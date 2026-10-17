@@ -10,7 +10,7 @@
  *
  * Options:
  *   --mode <criteria|scoring|labs|protocol|drugs|auto>   Chế độ trích xuất (Mặc định: auto dựa trên tên file)
- *   --output <path>                                     Tệp hoặc thư mục xuất kết quả (Mặc định: in ra stdout hoặc src/content/docspace/src/data/extracted/)
+ *   --output <path>                                     Tệp hoặc thư mục xuất kết quả (Mặc định: in ra stdout hoặc src/content/docspace/data/extracted/)
  *   --format <ts|json>                                  Định dạng đầu ra (Mặc định: ts)
  *   --batch                                             Quét hàng loạt toàn bộ thư mục
  *   --help                                              Hiển thị hướng dẫn

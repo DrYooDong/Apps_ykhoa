@@ -263,3 +263,177 @@ export function getSoapSyncStats() {
 export function soapExportAll(): string {
   return JSON.stringify(getVaultSoapExperiences(), null, 2);
 }
+
+/**
+ * Đọc nội dung Markdown nguyên gốc của ca lâm sàng từ server dev
+ */
+export async function fetchRawSoapMarkdown(
+  caseId: string
+): Promise<{ content: string; fileName: string } | null> {
+  try {
+    const res = await fetch(`/api/soap/raw?caseId=${encodeURIComponent(caseId)}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.success && data.content) {
+      return { content: data.content, fileName: data.fileName };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Commit trực tiếp file .md lên repo GitHub (Dành cho bản GitHub Pages hoặc khi có Token)
+ */
+export async function commitSoapToGithub(
+  fileName: string,
+  markdown: string,
+  token: string
+): Promise<{ success: boolean; message: string }> {
+  try {
+    const repoOwner = 'DrYooDong';
+    const repoName = 'Apps_ykhoa';
+    const filePath = `src/content/docspace/data/ba/${fileName}`;
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
+
+    // 1. Kiểm tra file hiện tại để lấy sha (nếu có)
+    let sha: string | undefined = undefined;
+    try {
+      const getRes = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+        },
+      });
+      if (getRes.ok) {
+        const fileInfo = await getRes.json();
+        sha = fileInfo.sha;
+      }
+    } catch {
+      // Có thể là file mới
+    }
+
+    // 2. Encode UTF-8 sang Base64 an toàn cho tiếng Việt có dấu
+    const utf8Bytes = new TextEncoder().encode(markdown);
+    let binary = '';
+    for (let i = 0; i < utf8Bytes.length; i++) {
+      binary += String.fromCharCode(utf8Bytes[i]);
+    }
+    const base64Content = btoa(binary);
+
+    // 3. Gửi PUT request để tạo hoặc cập nhật file
+    const putRes = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify({
+        message: `docs(soap): cập nhật ca lâm sàng ${fileName}`,
+        content: base64Content,
+        sha: sha || undefined,
+      }),
+    });
+
+    if (!putRes.ok) {
+      const errData = await putRes.json().catch(() => ({}));
+      throw new Error(errData.message || `Lỗi HTTP ${putRes.status}`);
+    }
+
+    return {
+      success: true,
+      message: `Đã commit thành công file ${fileName} lên GitHub repo ${repoOwner}/${repoName}!`,
+    };
+  } catch (err: any) {
+    return {
+      success: false,
+      message: `Không thể commit lên GitHub: ${err.message}`,
+    };
+  }
+}
+
+/**
+ * Lưu ca lâm sàng:
+ * 1. Thử gửi tới Vite dev server qua POST /api/soap/save (sửa file .md trên ổ cứng + catalog)
+ * 2. Nếu thất bại (môi trường static), thử commit qua GitHub Token nếu có
+ * 3. Nếu không có token, kích hoạt tải file .md về máy
+ */
+export async function saveSoapCaseToDisk(
+  soap: SoapClinicalExperience,
+  rawMarkdown?: string,
+  githubToken?: string
+): Promise<{
+  success: boolean;
+  source: 'local-api' | 'github-api' | 'download';
+  message: string;
+  fileName?: string;
+}> {
+  const fileName = soap.id.endsWith('.md')
+    ? soap.id
+    : `${soap.id.startsWith('soap-') ? soap.id : `soap-${soap.id}`}.md`;
+
+  const mdToSave = rawMarkdown || (soap as any).rawMarkdown || '';
+
+  // 1. Thử gọi Vite Dev Server Endpoint
+  try {
+    const res = await fetch('/api/soap/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        caseId: soap.id,
+        fileName,
+        markdown: mdToSave,
+        experience: soap,
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        success: true,
+        source: 'local-api',
+        message: `✅ Đã lưu trực tiếp vào file .md trong src/content/docspace/data/ba/${data.fileName || fileName} và cập nhật catalog!`,
+        fileName: data.fileName || fileName,
+      };
+    }
+  } catch {
+    // Dev server không khả dụng, tiếp tục chuyển sang bước 2
+  }
+
+  // 2. Thử commit lên GitHub nếu có Token
+  const token = githubToken || (typeof localStorage !== 'undefined' ? localStorage.getItem('cliniportal_github_token') : null);
+  if (token) {
+    const ghRes = await commitSoapToGithub(fileName, mdToSave, token);
+    if (ghRes.success) {
+      return {
+        success: true,
+        source: 'github-api',
+        message: `✅ ${ghRes.message}`,
+        fileName,
+      };
+    }
+  }
+
+  // 3. Fallback: Tự động tải file .md về máy để người dùng lưu thủ công
+  if (typeof document !== 'undefined') {
+    const blob = new Blob([mdToSave], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  return {
+    success: true,
+    source: 'download',
+    message: `Đã tạo file ${fileName} và tải về máy tính của bạn (đặt vào src/content/docspace/data/ba/ để đồng bộ).`,
+    fileName,
+  };
+}
+
