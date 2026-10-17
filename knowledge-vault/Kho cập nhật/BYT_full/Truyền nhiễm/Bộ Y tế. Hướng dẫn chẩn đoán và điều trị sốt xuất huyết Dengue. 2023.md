@@ -182,15 +182,12 @@ bệnh.
 ### 2.1. Lâm sàng
 a) Người bệnh có thể còn sốt hoặc đă giảm sốt.
 b) Có thể có các biểu hiện sau:
-- Đau bụng nhiều: đau bụng nhiều và liên tục hoặc tăng cảm giác đau nhất
-là ở vùng gan.
+- Đau bụng nhiều: đau bụng nhiều và liên tục hoặc tăng cảm giác đau nhất là ở vùng gan.
 - Vật v ã , lừ đừ, li bì.
 - Gan to > 2cm dưới bờ sườn, có thể đau.
 - Nôn ói.
-- Biểu hiện thoát huyết tương do tăng tính thấm thành mạch (thường kéo
-dài 24 - 48 giờ).
-+ Tràn dịch màng phổi, mô kẽ (có thể gây suy hô hấp), màng bụng, phù
-nề mi mắt.
+- Biểu hiện thoát huyết tương do tăng tính thấm thành mạch (thường kéo dài 24 - 48 giờ).
++ Tràn dịch màng phổi, mô kẽ (có thể gây suy hô hấp), màng bụng, phù nề mi mắt.
 + Nếu thoát huyết tương nhiều sẽ dẫn đến sốc với các biểu hiện vật vă, bứt
 rứt hoặc li bì, lạnh đầu chi, mạch nhanh nhỏ, huyết áp kẹt (hiệu số huyết áp tối
 đa và tối thiểu ≤ 20mmHg hoặc tụt huyết áp, không đo được huyết áp, mạch
@@ -492,7 +489,6 @@ nên đo CVP qua monitor để theo liên tục.
 * Chỉ định đo CVP
 + Quá tải, nghi ngờ quá tải.
 + Sốc kéo dài, sốc không đáp ứng với bù dịch ≥ 60ml/kg cân nặng.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
 + Tái sốc.
 + Sốc kèm bệnh lý tim, phổi, thận.
 + Sốc ở trẻ nhũ nhi, béo phì.
@@ -531,7 +527,7 @@ Phụ lục 10 : Điều kiện chuyển từ dung dịch CPT sang dung dịch �
 và ngược lại.
 + Nếu còn sốc, lặp lại truyền CPT 10 - 20ml/kg/giờ trong 1 giờ, đo HA động
 mạch xâm lấn, áp lực tĩnh mạch trung tâm và xử trí như sốc SXHD nặng .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Nếu không cải thiện lâm sàng, mạch nhanh, HA còn tụt hoặc kẹt,
 hematocrit còn tăng cao: lặp lại truyền CPT 10 - 20ml/kg/giờ trong 1 giờ, điều
 trị toan, xuất huyết, hạ đường huyết, hạ Calci huyết nếu có. Đo HA động
@@ -569,7 +565,7 @@ Phụ lục 11: Sơ đồ xử trí sốc SXHD ở trẻ thiếu niên 13 - 16 t
 - Lựa chọn ban đầu là Natri chlorua 0,9%, Ringer acetate.
 - Trường hợp sốc nặng: tốc độ dịch chống sốc ban đầu là 15 - 20ml/kg/15
 - 30 phút và theo dõi sát tình trạng quá tải, suy hô hấp.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Truyền máu sớm khi Hct dưới 30% sau khi bù dịch chống sốc .
 - Đo CVP, huyết áp xâm lấn, siêu âm bụng, tim, phổi, X - quang phổi, khí
 máu động mạch, ion đồ, men tim, chức năng gan, thận, chức năng đông máu,
@@ -607,7 +603,7 @@ với ban đầu thì giảm tốc độ truyền CPT 7,5ml/kg/giờ trong 1 - 2
 5ml/kg/giờ trong 1 - 2 giờ. Sau đó nếu ra sốc và Hct bình thường sẽ chuyển
 sang truyền dung dịch điện giải Ringer lactate hoặc NaCl 0,9% 5ml/kg/giờ
 trong 2 - 4 giờ , ti ếp đ ến l à 2 - 3ml/kg/giờ trong 24 - 36 giờ. Xem xét ngưng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 dịch sau 24 - 48 giờ nếu mạch, huyết áp, Hct bình thường hoặc nước tiểu ≥
 0,5ml/kg/giờ.
 b) Nếu mạch nhanh, huyết áp còn kẹt hoặc huyết áp hạ: t ruyền dung dịch
@@ -645,7 +641,7 @@ Liều A lbumin (g) = [nồng độ A l bumin cần đạt (g/dl) - nồng độ
 hiện tại (g/dl)] x thể tích huyết tương (0,8 x cân nặng (kg)).
 Chỉ nên truyền dung dịch A lbumin phối hợp với cao phân tử khi huyết
 động học không ổn định. Hạn chế phối hợp Albumin và cao phân tử trong
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 trường hợp suy gan, suy thận.
 Tốc độ truyền Albumin 5 - 20ml/kg/giờ tùy thuộc theo tình trạng huyết
 động học của bệnh nhân. Trường hợp truyền phối hợp Albumin với cao phân
@@ -683,7 +679,7 @@ không cải thiện thì xử trí theo (b.2).
 * Những lưu ý khi truyền dịch
 - Ngừng truyền dịch tĩnh mạch khi huyết áp và mạch trở về bình thường,
 tiểu nhiều. Nói c hung không cần thiết bù dịch sau khi hết sốc 24 giờ.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Cần chú ý đến sự tái hấp thu huyết tương từ ngoài lòng mạch trở lại lòng
 mạch (biểu hiện bằng huyết áp, mạch bình thường và hematocrit giảm), cần
 theo dõi triệu chứng phù phổi cấp nếu còn tiếp tục truyền dịch. Khi có hiện
@@ -721,7 +717,7 @@ phân biệt các nguyên nhân sau:
 - Khi điều trị sốc, cần phải chú ý đến điều chỉnh rối loạn điện giải và
 thăng bằng kiềm toan: hạ natri máu thường xảy ra ở hầu hết các trường hợp
 sốc nặng kéo dài và đôi khi có toan chuyển hoá. Do đó cần phải xác định mức
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 độ rối loạn điện giải và nếu có điều kiện thì đo các khí trong máu ở người
 bệnh sốc nặng và người bệnh sốc không đáp ứng nhanh chóng với điều trị.
 C.1.3. Điều trị xuất huyết nặng
@@ -761,7 +757,7 @@ d) Truyền tiểu cầu
 3
 + Tiểu cầu < 5.000/mm
 (xem xét tùy từng trường hợp).
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 3
+ 3
 + Tiểu cầu < 50.000/mm
 kèm đang xuất huyết nặng hoặc có chỉ định
 chọc màng phổi, màng bụng.
@@ -801,7 +797,7 @@ Hạn chế dùng dung dịch HES.
 - Điều trị tổn thương gan nặng, suy gan cấp. Điều trị tương tự tổn thương
 gan trung bình kèm
 - Hỗ trợ hô hấp khi cần.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Điều trị hạ đường huyết nếu có.
 - Hạn chế dịch 2/3 - 3/4 nhu cầu.
 - Điều trị rối loạn điện giải nếu có.
@@ -839,7 +835,7 @@ Creatinine (eCrCl) giảm ≥ 50%.
 dùng A lbumin.
 + Điều trị bảo tồn tổn thươ ng thận: hạn chế dịch nhập, tránh thuốc tổn
 thương thận.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 + Theo dõi cân nặng và cân bằng dịch xuất - nhập.
 + Xem xét chọc dẫn lưu ổ bụng khi có tăng áp lực ổ bụng nặng (áp lực
 bàng quang > 27 cmH 2 O).
@@ -877,7 +873,7 @@ cao, nhịp thở bất thường).
 phút, lặp lại mỗi 8 giờ.
 + Đặt nội khí quản thở máy: tăng thông khí giữ PaCO 2 30 - 35mmHg.
 + Thuốc hạ nhiệt đặt hậu m ôn paracetamol 10 - 15mg/kg/lần, ngày 4 lần
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 nếu có sốt.
 d) Viêm cơ tim, suy tim.
 - Đo CVP để đánh giá thể tích tuần hoàn.
@@ -915,7 +911,7 @@ chậm sau đó xem xét truyền furosemide liên tục.
 - Dobutamine 5 - 10μg/kg/phút.
 - Furosemide 0,5 - 1mg/kg tĩnh mạch chậm lặp lại sau 1 giờ khi cầ n và
 tình trạng huyết động cho phép.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 * Lưu ý:
 Khi có tràn dịch màng bụng, màng phổi gây khó thở, SpO 2 giảm xuống
 dưới 92%, nên cho người bệnh thở NCPAP trước. Nếu không cải thiện mới
@@ -953,7 +949,7 @@ sốc: chuyển sang truyền cao phân tử (CPT) 10 - 15ml/kg/giờ trong 1 gi
 trong 5 - 7 giờ, sau đó 1,5ml/kg/giờ trong 12 giờ. Đánh giá lâm sàng,
 h ematocrit sau mỗi lần chuyển tốc độ truyền. Xem xét ngưng dịch truyền sau
 24 - 48 giờ nếu lâm sàng ổn định.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 + Nếu không cải thiện lâm sàng: đánh giá lại h ematocrit như trên, chú ý liều
 CPT lặp lại lần 2 là 10ml/kg/giờ. Nếu vẫn không cải thiện lâm sàng: xử trí như
 sốc SXHD không đáp ứng dịch truyền. Xem Phụ lục 1 8 : Lưu đồ xử trí sốc
@@ -995,7 +991,7 @@ a) Nếu cải thiện lâm sàng ( mạch giảm, HA bình thường, hiệu á
 20mmHg ) thì chuyển sang truyền Ringer lactate hoặc NaCl 0,9%
 15ml/kg/giờ x 1 giờ ( x em Phụ lục 16 .2 )
 b) Nếu không cải thiện lâm sàng thì tiếp tục truyền cao phân tử
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 15ml/kg/giờ x 1 giờ ( x em nhánh (*) Phụ lục 16 .2 ) .
 C.2. 3 . Điều trị tái sốc
 - Sử dụng cao phân tử để chống sốc, liều từ 10 - 15ml/kg/giờ, sau đó: nếu
@@ -1033,7 +1029,7 @@ C.2. 5 .1 . Tổn thương gan nặng, suy gan cấp
 - Theo dõi hỗ trợ hô hấp sớm và chống phù não .
 - Tránh dùng các thuốc gây tổn thương gan.
 - Điều trị hạ đường huyết, rối loạn điện giải nếu có.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Điều chỉnh rối loạn đông máu theo chỉ định (xem Phụ lục 1 7 ).
 - Kháng sinh khi nghi ngờ nhiễm khuẩn.
 - Điều trị bệnh l ý n ã o gan :
@@ -1073,7 +1069,7 @@ trong các tiêu chuẩn sau:
 < 17) k è m
 một trong các yếu tố như Lactate động mạch ≥ 4 mmol/l, Lactate đ ộ ng m ạ ch
 tăng hơn so v ớ i tr ị s ố trư ớ c đ ó , huyết động không ổn định hoặc tổn thương
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 tạng khác (gan, thận, tim…)
 ▪ Bệnh nhân cần truyền dịch, máu và/hoặc chế phẩm máu nhưng có nguy
 cơ phù phổi cao (tr à n d ị ch đa m à ng lư ợ ng l ớ n, PaO 2 / FiO 2 ≤ 300 ho ặ c
@@ -1111,7 +1107,7 @@ C.2. 6 . Điều trị SXHD ở phụ nữ có thai (PNCT)
 - Thay đổi sinh lý 3 tháng cuối: mạch nhanh (tăng 10 - 15 lần/phút), HA
 thấp (HA tâm thu giảm 5 - 10 mmHg), tăng cân nhanh và Hct giảm .
 - Thường diễn biến nặng hơn, nhiều biến chứng, s i nh non, nhẹ cân, nhất là
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 xuất huyết khi sinh và sau sinh.
 - Biến chứng xuất huyết nặng thường gặp khi sinh hoặc phẫu thuật ở giai
 đoạn nguy hiểm từ ngày 3 đến ngày 6 do giảm tiểu cầu.
@@ -1148,7 +1144,7 @@ chống sốc (vớ i CN thực là CN tại thời điểm nhập viện ) .
 - Cần chẩn đoán phân biệt tình trạng giảm tiểu cầu với các bệnh
 lý khác liên quan đến sản khoa như hội chứng HELLP, bệnh gan thoái hóa mỡ cấp, nhiễm trùng …
 - Theo dõi sát tim thai .
-Xuất huyết nặng - Nhập viện cấp cứu tại b ện h vi ện S ản, Sản N hi hoặc b ệnh vi ện đa khoa . phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+Xuất huyết nặng - Nhập viện cấp cứu tại b ện h vi ện S ản, Sản N hi hoặc b ệnh vi ện đa khoa . 
 - Hội chẩn chuyên gia SXHD .
 - Truyền máu và chế phẩm máu tương tự phụ nữ không mang
 thai .
@@ -1191,7 +1187,7 @@ còn, không kèm các nguyên nh ân trên . Lưu ý , nếu trì hoãn chấm 
 4. Trẻ sinh từ mẹ bị SXHD
 - Trẻ sinh từ mẹ SXHD có thể mắc SXHD ngay do mẹ lây truyền trước
 hoặc khi sinh (tỉ lệ khoảng 6%). Trẻ cần được xét nghiệm công thức máu và
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 huyết thanh chẩn đoán.
 - Phần lớn SXHD ở trẻ sơ sinh là thể bệnh nhẹ, sốt thường xuất hiện sớm
 từ ngày 1 đến ngày 6 sau sinh), vì thế trẻ cần được theo dõi sát trong những
@@ -1231,7 +1227,7 @@ Phụ lục 20 : Cá c dấu hiệu cần theo dõi khi hồi sức sốc SXHD.
 - Mạch, huyết áp bình thường.
 - Không khó thở hoặc suy hô hấp do tràn dịch màng bụng hay màng phổi.
 - Không xuất huyết tiến triển.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - AST, ALT < 400 U/L.
 - Hct trở về bình thường và số lượng tiểu cầu khuynh hướng hồi phục >
 3
@@ -1256,7 +1252,7 @@ vệ sinh môi trường loại bỏ ổ chứa nước đọng.
 CÁC GIAI ĐOẠN LÂM SÀNG CỦA SỐT XUẤT HUYẾT DENGUE
 (Ban hành kèm theo Quyết định số /QĐ - BYT ngày tháng năm 20 23 của Bộ trưởng Bộ Y tế)
 1 2 3 4 5 6 7 8 9 10
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 
 ---
 
@@ -1283,7 +1279,7 @@ suy hô hấp. Triệu chứng
 - Xuất huyết da
 lần/1 giờ hoặc ≥ 4
 2. Xuất huyết nặng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 lâm sàng, hoặc dấu hiệu dây lần/6 giờ.
+ lâm sàng, hoặc dấu hiệu dây lần/6 giờ.
 3. Suy các tạng
 cận lâm thắt (+).
 - Xuất huyết niêm
@@ -1329,7 +1325,7 @@ ra máu, tiêu phân đen hoặc có máu, xuất huyết âm đạo hoặc ti�
 - Gan to > 2cm dư ớ i b ờ sư ờ n.
 - Ti ể u ít.
 - Hct tăng kèm ti ể u c ầ u gi ả m nhanh.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - AST/ALT ≥ 400U/L.
 - Tràn d ị ch màng ph ổ i, màng b ụ ng trên siêu âm ho ặ c X -
 quang.
@@ -1365,7 +1361,7 @@ Có ≥ 1 trong các dấu hiệu cần truyền dịch:
 Không Có Có Không Cải thi ệ n LS
 - Không uống được nước • Hct tăng cao
 - Nôn ói nhiều, đau bụng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Không
+ Không
 Uống nhiều nước , t heo dõi LS, dấu hiệu cảnh báo, lượng dịch nhập, nước tiểu và Hct mỗi 4 - 6 giờ. RL hoặc NaCL 0,9% RL hoặc NaCL 0,9% 20 ml/kg/giờ và xem 6 - 7 ml/kg/giờ x 1 - 3 giờ Không Cải thiện LS phác đồ sốc SXH 5 ml/kg/giờ x 2 - 4 giờ Dengue Có
 Tiếp tục u ống nhiều nước Theo dõi LS, Hct mỗi 2 - 4 giờ
 Đ iều trị toan , xuất M nhanh, HA tụt huyết, hạ đường huyết , hoặc kẹp, Hct tăng hạ Ca nếu có
@@ -1389,7 +1385,7 @@ C ó ≥ 1 t r o n g c á c d ấ u h i ệ u c ầ n t r u y ề n d ị c h : 
 C ả i t h i ệ n L S
 - K h ô n g u ố n g đ ư ợ c n ư ớ c • H c t t ă n g c a o
 - N ô n ó i n h i ề u , đ a u b ụ n g
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 U ố n g n h i ề u n ư ớ c , T h e o d õ i L S , d ấ u h i ệ u c ả n h b á o , l ư ợ n g d ị c h n h ậ p , n ư ớ c t i ể u v à H c t m ỗ i 4 - 6 g i ờ . R L h o ặ c N a C l 0 , 9 % R L h o ặ c N a C l 0 , 9 % 2 0 m l / k g / g i ờ v à x e m p h á c 6 - 7 m l / k g / g i ờ x 1 - 2 g i ờ K h ô n g C ả i t h i ệ n L S đ ồ s ố c S X H D 5 m l / k g / g i ờ x 1 - 2 g i ờ
+ U ố n g n h i ề u n ư ớ c , T h e o d õ i L S , d ấ u h i ệ u c ả n h b á o , l ư ợ n g d ị c h n h ậ p , n ư ớ c t i ể u v à H c t m ỗ i 4 - 6 g i ờ . R L h o ặ c N a C l 0 , 9 % R L h o ặ c N a C l 0 , 9 % 2 0 m l / k g / g i ờ v à x e m p h á c 6 - 7 m l / k g / g i ờ x 1 - 2 g i ờ K h ô n g C ả i t h i ệ n L S đ ồ s ố c S X H D 5 m l / k g / g i ờ x 1 - 2 g i ờ
 C ó
 T h e o d õ i L S , H c t T i ế p t ụ c u ố n g n h i ề u n ư ớ c m ỗ i 1 - 2 g i ờ
 Đ i ề u t r ị t o a n , x u ấ t M n h a n h , H A t ụ t h u y ế t , h ạ đ ư ờ n g h u y ế t , h o ặ c k ẹ t , H c t t ă n g h ạ c a l c i n ế u c ó
@@ -1408,7 +1404,7 @@ SỐT XUẤT HUYẾT DENGUE CÓ DẤU HIỆU CẢNH BÁO CÓ CH Ỉ ĐỊNH T RU
 2. N ôn ói nhiều, không uống được và có dấu mất nước
 RL hoặc NaCl 0,9% 6 ml/kg/giờ x 1 - 2 giờ
 Không
-Lâm sàng ổn định phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+Lâm sàng ổn định 
 Có
 RL hoặc NaCl 0,9% 3 ml/kg/giờ x 2 - 4 giờ
 Có biểu hiện sốc: Chống sốc theo
@@ -1435,7 +1431,7 @@ Suy hô hấp cấp thường gặp trong sốc nặng, sốc kéo dài.
 (4) Hội chứng suy hô hấp cấp tiến triển (ARDS) .
 (5) SXHD thể n ã o .
 2. Triệu chứng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Bệnh nhân có dấu hiệu thở nhanh, rút l õ m ngực, tím tái, SpO 2 < 92%.
+ Bệnh nhân có dấu hiệu thở nhanh, rút l õ m ngực, tím tái, SpO 2 < 92%.
 3. Điều trị
 - Thở oxy: tất cả các người bệnh có sốc cần thở oxy gọng kính.
 - Điều trị quá tải, phù phổi nếu có (xem phần điều trị dư dịch, phù phổi).
@@ -1478,7 +1474,7 @@ tăng dần).
 - PEEP
 : 6 - 8 cmH 2 O
 - IP
-: 10 - 20 cmH 2 O phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+: 10 - 20 cmH 2 O 
 (Điều chỉnh để đạt thể tích khí lưu thông: 6 - 8ml/kg) .
 * Khi có tăng áp lực ổ bụng nặng, có thể tăng PEEP ≤ áp lực ổ bụng
 (thường = 1/2 ALOB) .
@@ -1516,7 +1512,7 @@ kín (dùng túi dẫn lưu kín nước tiểu).
 - Rút kim luồn, ấn chặt 5 - 10 phút sau đó băng ép để dịch không rỉ qua
 vết thương.
 - Chọc hút màng phổi.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 + Chỉ định: tràn dịch màng phổi lượng nhiều có dấu hiệu chèn ép phổi
 (phế âm giảm hoặc mất hẳn, X - quang: mờ hơn 1/2 hoặc toàn bộ phế trường,
 siêu âm: lượng dịch màng phổi nhiều hoặc phổi bị co nhỏ lại) gây suy hô hấp.
@@ -1544,7 +1540,7 @@ Thở oxy
 - RL hoặc NaCL 0,9% 20 ml/kg/giờ x 1 giờ
 - RL hoặc NaCL 0,9% 20 ml/kg/30 phút trường hợp tụt HA nặng (HATT : trẻ < 10 tuổi < (70 + 2 tuổi ) mmHg , trẻ ≥ 10 tuổi < 90 mmHg )
 C ó Không Cải thiện LS + Hct
-Hct RL hoặc NaCL 0,9% phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Hct ≤ 35% hoặc giảm 10 ml/kg/giờ x 1 - 2 giờ > 20% so với ban đầu Hct cao hoặc ≥ 4 0 %
+Hct RL hoặc NaCL 0,9%  Hct ≤ 35% hoặc giảm 10 ml/kg/giờ x 1 - 2 giờ > 20% so với ban đầu Hct cao hoặc ≥ 4 0 %
 Hct
 Truyền HCL 5ml/kg CPT 10 - 20ml/kg/giờ x 1 giờ Hoặc máu toàn phần 10ml/kg trong 1 - 2 giờ và CPT 10 ml/kg/giờ x 1 giờ ± huyết tương tươi Cải thiện LS + Hct Hct
 Hct RL hoặc NaCL 0,9% Cải thiện LS + Hct 7,5 ml/kg/giờ x 1 - 2 giờ C ó Không Cải thiện LS + Hct Điều trị: Không Có Toan, xuất CPT 10 ml/kg/giờ x 1 giờ huyết tiêu CPT 7,5 ml/kg/giờ x 1 - 2 giờ 7,5 ml/kg/giờ x 1 - 2 giờ hóa, hạ 5 ml/kg/giờ x 1 - 2 giờ 5 ml/kg/giờ x 1 - 2giờ ĐH, hạ Ca nếu có Cải thiện LS + Hct Hct Hct M nhanh, HA tụt hoặc kẹp, Hct cao Không
@@ -1578,7 +1574,7 @@ Khuyến cáo áp dụng tính cân nặng bù dịch cho trẻ em dư cân, bé
 này chỉ ước tính cho những giờ đầu và nên đo áp lực tĩnh mạch trung tâm để
 theo dõi trong khi bù dịch.
 Tuổi (năm) Nam (kg) Nữ (kg)
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 2 13 12
 3 14 14
 4 16 16
@@ -1599,7 +1595,7 @@ phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
 
 2
 2. CÂN NẶNG CHỐNG SỐC SỐT XUẤT HUYẾT Ở NGƯỜI LỚN
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 
 ---
 
@@ -1615,7 +1611,7 @@ a) Lâm sàng
 - Huyết động học ổn định.
 + Tay chân ấm, thời gian đổ đầy mao mạch (CRT) bình thường < 2 giâ y.
 + Mạch, HA bình thường theo tuổi.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 + Huyết áp trung bình (MAP).
 - Trẻ ≤ 1 tuổi: ≥ 50mmHg
 - Trẻ ≤ 10 tuổi: ≥ 60mmHg
@@ -1647,7 +1643,7 @@ SỐC SỐT XUẤT HUYẾT DENGUE TRẺ 13-16 TUỔI Mạch nhanh , HA tụt ho�
 Thở oxy
 Béo phì, dư cân : dùng cân RL hoặc NaCl 0.9% nặng hiệu chỉnh theo BYT 20 ml/kg/ giờ x 1 giờ
 Cải thiện LS + Hct Có Không
-RL hoặc NaCl 0.9% phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Hct cao hoặc ≥ 40% DTHC ≤ 35% hoặc giảm Hct 10 ml/kg/ giờ x 1 giờ > 20% so với ban đầu
+RL hoặc NaCl 0.9%  Hct cao hoặc ≥ 40% DTHC ≤ 35% hoặc giảm Hct 10 ml/kg/ giờ x 1 giờ > 20% so với ban đầu
 Hct Truyền HCL 5ml/kg CPT 10-20 ml/kg/ giờ x 1 giờ Hoặc máu toàn phần 10 ml/kg trong 1-2 giờ CPT 10 ml/kg/ giờ x 1 giờ Không ± Huyết tương tươi Cải thiện LS + Hct Hct Hct
 RL hoặc NaCl 0.9% Cải thiện LS + Hct Cải thiện LS + Hct Điều trị : 7,5 ml/kg/ giờ x 1 giờ Toan, Không Có Không xuất Có huyết tiêu hoá, Cải thiện LS + Hct CPT CPT 7,5 ml/kg/ giờ x 1-2 giờ hạ ĐH , 10 ml/kg/ giờ x 1 giờ hạ Ca 5 ml/kg/ giờ x 1-2 giờ 7,5 ml/kg/ giờ x 1 giờ nếu có 5 ml/kg/ giờ x 1 giờ RL hoặc NaCl 0.9% M nhanh 5 ml/kg/ giờ x 1 giờ Có HA tụt hoặc kẹt Hct Hct Hct cao RL hoặc NaCl 0.9% 3 ml/kg/ giờ x 4-6 giờ
 RA SỐC
@@ -1673,7 +1669,7 @@ Sau 24 giờ
 SƠ ĐỒ TRUYỀN DỊCH TRONG SỐC SỐT XUẤT HUYẾT DENGUE
 NẶNG Ở TRẺ EM
 (Ban hành kèm theo Quyết định số / QĐ - BYT ngày tháng năm 2023 của Bộ trưởng Bộ Y tế)
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Albumin 5% hoặc 10% 5 - 20 ml/kg/giờ
 
 ---
@@ -1689,7 +1685,7 @@ giải theo phác đồ.
 - Sốc SXH Dengue thất bại với bù dịch điện giải giờ đầu.
 - Khó thở xuất hiện khi truyền dịch.
 - Hematocrit tăng quá cao ≥ 50% hoặc ≤ 35%.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Xuất huyết tiêu hóa: nôn ra máu, đi ngoài ra máu.
 - Có tổn thương gan (men gan ≥ 400U/l).
 - Rối loạn tri giác.
@@ -1720,7 +1716,7 @@ KÈM THEO GIẤY CHUYỂN TUYẾN
 GIẤY TÓM TẮT ĐIỀU TRỊ SỐT XUẤT HUYẾT DENGUE
 Họ tên bệnh nhân: ………………………………
 Lâm sàng Xét nghiệm Xử trí
-Hỗ Dịch Nhịp Nước Khác trợ truyền Ngày phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Mạch HA SpO 2 CVP Hct Lactate Máu, thở tiểu (ghi hô ( l oại, giờ (1/ph) (mmHg) (%) (cmH 2 O) (%) (mmol/L) thuốc (1/ph) (ml) r õ ) hấp tốc độ)
+Hỗ Dịch Nhịp Nước Khác trợ truyền Ngày  Mạch HA SpO 2 CVP Hct Lactate Máu, thở tiểu (ghi hô ( l oại, giờ (1/ph) (mmHg) (%) (cmH 2 O) (%) (mmol/L) thuốc (1/ph) (ml) r õ ) hấp tốc độ)
 - Giấy chuyển tuyến bệnh viện sử dụng mẫu theo quy định hiện hành .
 - Đánh dấu “  ” nếu không có thông tin .
 
@@ -1736,7 +1732,7 @@ thước đường kính tĩnh mạch chủ dưới theo nhịp thở hoặc đo
 - Nếu đ ã truyền dịch đầy đủ mà huyết áp vẫn chưa lên và áp lực tĩnh
 mạch trung tâm đ ã trên 10 cmH 2 O hoặc đường kính tĩnh mạch chủ dưới căng
 to suốt chu kỳ thở hoặc %PPV/SVV < 15% (khi đo cung lượng tim trên bệnh
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 nhân thở máy không có nhịp tự thở) thì truyền thuốc vận mạch.
 + Dopamin là thuốc vận mạch được chọn lựa đầu tiên trong điều trị sốc
 SXHD kéo dà i ở trẻ em. Liều Dopamin 5 - 10 μg /kg/phút.
@@ -1755,7 +1751,7 @@ NGƯỜI LỚN
 (Ban hành kèm theo Quyết định số /QĐ - BYT ngày tháng năm 2023 của Bộ trưởng Bộ Y tế)
 SỐC SXHD
 Cải thiện LS và Hct
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 HC lắng 5 - 10ml/kg hoặc máu toàn phần 10 - 20ml/kg trong 1 - 2 giờ Cải thiện LS và Hct Xem Phụ lục 17
 1. Hội chẩn chuyên gia
 SXHD Cải thiện LS và Hct
@@ -1773,7 +1769,7 @@ SƠ ĐỒ TRUYỀN DỊCH TRONG SỐC SỐT XUẤT HUYẾT DENGUE
 NẶNG Ở NGƯỜI LỚN
 (Ban hành kèm theo Quyết định số /QĐ - BYT ngày tháng năm 2023 của Bộ trưởng Bộ Y tế)
 SỐC SXHD nặng ( M = 0 và HA = 0 )
-Cải thiện LS và Hct phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+Cải thiện LS và Hct 
 Cải thiện LS và Hct
 XUẤT HUYẾ T
 1. HC lắng 5 - 10ml/kg hoặc
@@ -1806,7 +1802,7 @@ lắng).
 - Truyền hồng cầu lắng 5 - 10ml/kg hoặc máu toàn phần 10 - 20ml/kg
 trong vòng 1 - 2 giờ .
 - Điều chỉnh rối loạn đông máu (RLĐM).
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Xử trí cầm máu: băng ép tại chỗ, nhét bấc hoặc gạc mũi trước/sau, nội
 soi can thiệp cầm máu dạ dày, tá tràng...
 - Xem xét sử dụng thuốc ức chế bơm proton nếu người bệnh có biểu hiện
@@ -1846,7 +1842,7 @@ Chỉ định nội soi can thiệp khi c ó 1 trong c á c t ì nh hu ố ng s
 Xem xét nội soi
 - Cần truyền ≥ 4 đơn vị HC lắng nhưng Hct xu hướng giảm
 - Có tiền căn XHTH trên hoặc viêm loét dạ dày - tá tràng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Điều kiện thực hiện nội soi can thiệp
 - TC ≥ 5 0.000/mm 3 và INR < 1 .5
 - Nếu TC 20 . 000 - 50.000/mm 3 → truy ề n TC trư ớ c v à trong lúc n ộ i soi
@@ -1872,7 +1868,7 @@ LƯU ĐỒ XỬ TRÍ SỐC SXHD KHÔNG ĐÁP ỨNG DỊCH TRUYỀN
 SỐC SXHD KHÔNG ĐÁP ỨNG DỊCH TRUYỀN
 Hội chẩn chuyên gia SXHD
 Kiểm tra Hct, ECG, Troponin I, Điều trị ABCS ( nếu có ) siêu âm tim, KMĐM, lactate máu, đường máu và Canxi máu
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Đo HAĐMXL
 - Đo CVP hoặc sử dụng các phương pháp đánh giá huyết động học khác
 Test dịch: CPT 5ml/kg/30 phút
@@ -1904,7 +1900,7 @@ dưỡng.
 tiêu hóa), không ăn bằng miệng được (người bệnh biến chứng n ã o).
 - Cách ăn tùy thuộc diễn biến của bệnh.
 1.2. Chế độ ăn .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Năng lượng (E):
 E = Nhu cầu sinh l ý + (20% 60%) nhu cầu sinh l ý hoặc
 E = Nhu cầu sinh l ý x K (1,2 1,6) .
@@ -1942,7 +1938,7 @@ những gì trẻ không thích.
 2.2. Sốc sốt xuất huyết Dengue
 - Trong giai đoạn hồi sức sốc, chú ý theo dõi đường huyết. Điều trị
 Glucose ưu trương tĩnh mạch khi có hạ đường huyết.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Khi bệnh nhân ra sốc, cho ăn sớm qua đường miệng với thức ăn lỏng.
 Xem xét dinh dư ỡng tĩnh mạch một phần khi cung cấp không đủ năng lượng.
 1.3. Sốt xuất huyết Dengue có xuất huyết tiêu hóa : Nhịn ăn, nuôi bằng
@@ -1982,7 +1978,7 @@ nguy hiểm) .
 4. Thời gian đổ đầy mao mạch (CRT) .
 5. Độ ấm/lạnh của chi .
 6. Nhịp thở .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 7. Hct .
 + Nếu sau truyền dịch chống sốc mà lâm sàng cải thiện thì sau 2 giờ
 thử lại Hct, nếu không cải thiện thì thử lại ngay sau 1 giờ.
@@ -2003,7 +1999,7 @@ Nghi ngờ SXH Dengue Sốt cao liên tục ≤ 7 ngày và có hoặc không d�
 Không Có
 Kiểm tra Hct, tiểu cẩu
 RL hoặc NaCL 0,9% 20 ml/kg/giờ, trong 1 giờ (M nhanh, HA tụt hoặc kẹp) Không RL hoặc NaCL 0,9% 20 ml/kg/15 phút (M=0, HA=0)
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Chuyển đến HA đo được, Mạch rõ bệnh viện gần nhất
+ Chuyển đến HA đo được, Mạch rõ bệnh viện gần nhất
 Chuyển nhanh đến bệnh viện gần n hất
 (tiếp tục truyền dịch trong lúc chuyển)
 Không Có
@@ -2029,7 +2025,7 @@ Dengue gây ra qua trung gian truyền bệnh là muỗi vằn( Aedes aegypti ).
 - Virus gây bệnh SXHD có 4 tuýp DEN - 1, DEN - 2, DEN - 3 và DEN - 4 .
 - Bệnh SXHD gặp ở cả trẻ em và người lớn trong đó trẻ em gặp nhiều
 nhất.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - B ệnh xảy ra quanh năm nhưng thường bùng phát thành dịch lớn vào
 mùa mưa, nhất là vào các tháng 7, 8, 9, 10.
 - Bệnh SXHD diễn tiến theo 3 giai đoạn : (1) Giai đoạn sốt : thường trong
@@ -2099,7 +2095,7 @@ ALT ≥ 1000U/L
 phổi, màng bụng trên
 siêu âm hoặc X quang
 * Nôn ói nhiều : ≥ 3 lần/1 giờ hoặc ≥ 4 lần/6 giờ.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 ** Xuất huyết niêm mạc : chảy máu chân răng, mũi, ói máu, tiêu phân đen xuất
 huyết âm đạo hoặc tiểu máu.
 *** Sốc SXHD : Mạch nhanh, HA tụt hoặc kẹt ≤ 20 mmHg .
@@ -2151,7 +2147,7 @@ Khi có ≥ 1 trong các dấu hiệu sau
 9. Không uống được nước.
 10. Nôn ói nhiều.
 11. Đau bụng nhiều.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 12. Có dấu hiệu mất nước.
 13. Hct tăng cao
 *** Trẻ béo phì sử dụng cân nặng hiệu chỉnh để truyền dịch
@@ -2190,7 +2186,7 @@ Tuổi Nhịp tim (lần/phút) Huyết áp tâm thu (mm/Hg)
 ▪ Dấu hiệu xuất huyết: ban máu, bầm máu, n ôn ( ó i ) máu, tiêu máu ( đi
 ngo ài ra m áu ) .
 ▪ Triệu chứng RLTH: đau bụng, nôn ói .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 ▪ Triệu chứng RLTG: lừ đừ, bứt rứt .
 ▪ Số lượng dịch đã uống hoặc truyền .
 ▪ Bệnh nền kèm theo: béo phì, tim bẩm sinh, Thalassemie .
@@ -2230,7 +2226,7 @@ lượng, tính chất), tiêu ra máu (số lựợng, tính chất) .
 ▪ Tiêu hóa: đau bụng, nôn ói, tiêu chảy .
 3. Kế hoạch chăm sóc bệnh nhi sốt xuất huyết Dengue
 Cho người bệnh nghỉ ngơi tại giường
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 3.1. Nguy cơ giảm thể tích tuần hoàn do thiếu dịch hậu quả của tăng
 tính thấm thành mạch trong sốt xuất huyết Dengue
 - Mục tiêu cần đạt: c ung cấp đủ lượng dịch
@@ -2289,7 +2285,7 @@ các dấu hiệu sau :
 3 . Nôn ói nhiều.
 4 . Đau bụng nhiều .
 5 . Tay chân lạnh, ẩm .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 6 . Chảy máu mũi, miệng hoặc xuất huyết âm đạo .
 7 . Không tiểu trên 6 giờ .
 Lượng giá: Can thiệp điều dưỡng tốt khi người bệnh uống đủ lượng nước
@@ -2344,7 +2340,7 @@ nhi giảm sốt.
 hết sốt kèm dấu hiệu nặng: lừ
 đừ, đau bụng, tay chân lạnh
 Lượng giá: Can thiệp điều dưỡng tốt khi trẻ h ết sốt hoặc giữ thân nhiệt
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 trẻ 37,5 - 38 độ C .
 3.3. Dinh dưỡng thiếu so với nhu cầu do chán ăn hoặc nôn
 - Biểu hiện lâm sàng: lượng ăn hoặc uống thấp hơn nhu cầu dinh dưỡng
@@ -2398,7 +2394,7 @@ nuôi chi dưới.
 mạch 1 - 2 phút.
 Không lấy máu tĩnh mạch đùi
 2. Tránh tiêm bắp Tiêm bắp gây tụ máu, dễ nhiễm trùng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 3. Theo dõi bầm máu, chảy máu
 Để phát hiện và xử trí biến chứng chảy máu
 nơi tiêm
@@ -2443,7 +2439,7 @@ B à mẹ biết cách chăm sóc trẻ SXHD, các
 dấu hiệu nặng cần đưa bé tái khám ngay và
 viên y tế phát
 cách phòng ngừa
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 B à mẹ biết các dấu hiệu nặng cần đưa bé tái
 Nhận biết các dấu hiệu nặng
 4
@@ -2493,7 +2489,7 @@ uống nước có màu đỏ hoặc
 sốc.
 nâu
 Oresol được chọn do trong thành phần
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 ngoài nước còn chứa các điện gi ải rất cần
 trong bệnh sốt xuất huyết Dengue.
 Khi trẻ nôn khó phân biệt với ói /nôn máu
@@ -2553,7 +2549,7 @@ hoặc tiêu /đi ngoài ra máu
 - Hct tăng cao chứng tỏ có sự cô đặc máu
 xét nghiệm: tổng phân tích tế
 phản ánh tình trạng giảm thể tích tuần
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 bào máu, NS1 hoặc IgM, Hct
 hoàn.
 tại giường
@@ -2594,7 +2590,7 @@ tiêu /đi ngoài ra máu:
 - Không dấu hiệu thiếu máu
 - Huyết áp bình thường
 - Hct > 35%
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 4 Thực hiện y lệnh xét nghiệm Hct,
 - Tiểu cầu giảm
 tiểu cầu
@@ -2652,7 +2648,7 @@ Oresol , nước sôi để nguội,
 trong sốt xuất huyết Dengue để tránh nguy
 nước cam, chanh
 cơ vào sốc.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Thành phần của Oresol ngoài nước còn có
 chứa các điện giải rất cần trong sốt xuất
 huyết Dengue.
@@ -2709,7 +2705,7 @@ huyết áp tụt kẹp, CRT > 3 giây .
 - Mục tiêu cần đạt: p hục hồi thể tích tuần hoàn và cải thiện tưới máu mô
 ngoại biên
 - Chăm sóc điều dưỡng:
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Can thiệp điều dưỡng Giải thích
 1. Đo và theo dõi DHST, SpO 2 , tri
 Xác định bệnh nhi đang sốc và đánh giá
@@ -2774,7 +2770,7 @@ kiểm tra
 Giúp bác sĩ quyết định tốc độ dịch
 truyền và có chỉ định truyền máu kịp
 thời trong trường hợp người bệnh có
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 xuất huyết nặng.
 Lượng giá: c an thiệp điều dưỡng tốt khi s au 1 giờ tay chân ấm, thời
 gian đổ đầy mao mạch < 2 giây mạch cổ tay rõ. Mạch và huyết áp trở về trị số
@@ -2827,7 +2823,7 @@ Biểu hiện lâm sàng: n hịp thở nhanh hơn so với lứa tuổi, tím t
 dịch màng bụng), tĩnh mạch cổ nổi, ran phổi (phù phổi) .
 - Mục tiêu cần đạt: h ết khó thở, nhịp thở bình thường theo tuổi và SpO 2
 > 94%.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Chăm sóc điều dưỡng:
 Can thiệp điều dưỡng Giải thích
 1. Nằm đầu cao Tư thế này giúp người bệnh giảm khó
@@ -2895,7 +2891,7 @@ siêu âm ngực bụng
 Đánh giá hiệu quả sau điều trị và phát
 tái, SpO 2 , mỗi 15 - 30 phút/lần
 hiện biến chứng chảy máu nơi chọc
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 hút
 khi đang khó thở, sau đó 1 - 4
 giờ/lần khi người bệnh ổn định.
@@ -2937,7 +2933,7 @@ tiê m, ít biến chứng bầm máu chảy máu
 nghiệm khí máu động mạch
 nhiễm trùng nơi tiêm
 hoặc đo huyết áp xâm lấn với
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 điều dưỡng có kinh nghiệm
 4. Tiêm tĩnh mạch khuỷu tay dưới
 Tiêm tĩnh mạch khuỷu tay dưới hướng
@@ -2994,7 +2990,7 @@ Giảm nguy cơ nhiễm trùng nơi tiêm và
 thu ậ t đúng qui trình, b ả o đ ả m
 nhiễm trùng toàn thân
 vô trùng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 3. Truy ề n d ị ch đúng k ỹ thu ậ t,
 Giảm nguy cơ nhiễm trùng toàn thân
 b ả o đ ả m vô trùng và thay
@@ -3042,7 +3038,7 @@ trạng bệnh và phương pháp
 điều trị hàng ngày hoặc khi
 người bệnh có dấu hiệu trở
 nặng
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Lượng giá: Can thiệp điều dưỡng tốt khi thân nhân h iểu rõ về tình trạng
 bệnh của trẻ, an tâm điều trị .
 5.8. Thiếu kiến thức về chăm sóc, theo dõi, phòng ngừa trẻ bệnh sốt
@@ -3057,7 +3053,7 @@ LƯU ĐỒ CHĂM SÓC BỆNH NHI SỐT XUẤT HUYẾT DENGUE
 ĐÁNH GIÁ BỆNH NHÂN ( Bệnh sử, th ă m kh á m, dấu hiệu sinh tồn, CRT, tri giác, SpO2, xuất huyết, cân nặng)
 SXHD SỐC SXHD NẶNG SỐC SXHD SXH DENGUE* (Mạch = 0, HA =0) (Mạch nhanh nhẹ HA CÓ DH CẢNH BÁO** kẹp)
 Điều trị ngoại trú Nhập viện Cấp Cứu - Hồi Sức
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 CHĂM SÓC HƯỚNG DẪN CHĂM SÓC
+ CHĂM SÓC HƯỚNG DẪN CHĂM SÓC
 - Nằm đầu phẳng
 THÂN NHÂN Thựchiện YL
 - Thở Oxy, thở NCPAP
@@ -3111,7 +3107,7 @@ NGƯỜI LỚN
 ít diễn tiến đến biến chứng sốc hơn nhưng các biểu hiện xuất huyết thường
 nhiều hơn và đôi khi đe dọa tính mạng của người bệnh.
 - Hiện tượng phát ban hồi phục là triệu chứng thường gây lo lắng cho
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 người bệnh và đôi khi cho cả thầy thuốc, dẫn đến chỉ định truyền dịch không
 cầ n thiết và là nguyên nhân gây quá tải tuần hoàn.
 2. Theo dõi
@@ -3150,7 +3146,7 @@ có mức độ tăng nhanh hay chậm. Ngoài ra có thể chảy máu mũi, r�
 Nếu có các biểu hiện xuất huyết nội như trên thì người bệnh cần chuyển khoa
 Hồi sức cấp cứu.
 - Biểu hiện tiêu hóa: biểu hiện tiêu hóa hay gặp trong sốt xuất huyết
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Dengue người lớn như nôn, tiêu chảy, do vậy cần ghi chú số lần nôn, số lượn g
 và tính chất của dịch nôn, phân tiêu chảy.
 - Theo dõi tổng kê lượng nước xuất - nhập:
@@ -3190,7 +3186,7 @@ pháp vật lý như lau mát với khă n nước ấm. Nước ấm sẽ làm 
 cảm thấy dễ chịu và dễ bốc hơi. Khi bốc hơi, hơi nước sẽ nhanh chóng mang
 theo nhiệt độ của bề mặt da cơ thể giúp nhanh chóng hạ nhiệt.
 - Lau mát có kết quả khi nhiệt độ cơ thể giảm < 38°C thì có thể ngừng lau
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 mát. Lau mát liên tục cũng là cách phòng ngừa mê sảng, co giật.
 3.3. Chăm sóc về xuất huyết
 - Hạn chế tiêm, thủ thuật: d o dễ xuất huyết nên việc tiêm truyền và làm
@@ -3228,7 +3224,7 @@ a) Dấu hiệu sinh tồn
 Phải được theo dõi thật sát trong giai đoạn chống sốc để điều chỉnh dịch
 truyền thích hợp hoặc giúp phát hiện biến chứng xuất huyết nội, cụ thể:
 - Mạch, huyết áp, tần số và biên độ thở 15 - 30 phút/lần hoặc 1 giờ/lần .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Nhiệt độ: khi người bệnh vào sốc thì có thể không còn sốt, nhưng thân
 nhiệt vẫn cần được theo dõi. Nếu người bệnh sốt trở lại thì đó có thể là dấu
 hiệu của nhiễm trùng bệnh viện. Sau 24 giờ nếu dấu hiệu sinh tồn ổn định dần,
@@ -3266,7 +3262,7 @@ ngay nếu đường huyết giảm thấp.
 sĩ: tiểu cầu, chức năng gan, cấy máu, X - quang phổi.
 2.3. Chăm sóc
 - Khuyên người bệnh uống nhiều nư ớc
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Trấn an người bệnh
 - Bảo đảm người bệnh thở oxy liên tục, theo y lệnh của bác sĩ. Trong
 trường hợp người bệnh bứt rứt dễ làm tụt gọng mũi cần cho thở mask.
@@ -3294,7 +3290,7 @@ sức bền thành mạch, tourniquet test (tiếng Anh), signe du lacet (tiến
 - Mục đích:
 + Đánh giá tình trạng sức bền thành mạch máu
 + Phát hiện sớm rối loạn xuất huyết trong sốt xuất huyết Dengue.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Nguyên lý kĩ thuật:
 + Với thành mạch có sức bền bình thường thì áp suất máu trong lòng
 mạch máu nhỏ không thể gây xuất huyết.
@@ -3341,7 +3337,7 @@ nghiệm pháp.
 2
 - Nghiệm pháp âm tính: có dưới 20 chấm xuất huyết/6,25 cm
 .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 3.4. Chú ý
 - Không làm nghiệm pháp dây thắt khi:
 + Người bệnh đ ã có biểu hiện xuất huyết dưới da.
@@ -3379,7 +3375,7 @@ a) Phương tiện dụng cụ
 - Ống mao quản vô khuẩn đ ã tráng heparin hoặc các chất chống đông
 thích hợp.
 - Sáp hoặc đất sét để gắn kín miệng ống mao quản.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Kim chích máu đầu ngón tay (lancet).
 - Găng tay.
 - Bông vô trùng.
@@ -3417,7 +3413,7 @@ nhau quanh trục.
 - Đậy chặt khay quay ly tâm và nắp máy quay ly tâm.
 - Vặn điều chỉnh để máy quay ly tâm trong 5 phút.
 - Sau khi hết 5 phút, đợi ch o máy ngừng hẳn mới lấy ống máu ra ngoài
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 để đọc kết quả.
 3.4. Đọc kết quả
 - Sau khi quay máy ly tâm xong sẽ thấy ống máu được chia thành hai phần:
@@ -3455,8 +3451,8 @@ truyền tĩnh mạch chính xác, an toàn.
 + Cung cấp lượng dịch bổ sung khối lượng tuần hoàn bị thiếu hụt do
 thoát huyết tương ra ngoài lòng mạch.
 + Bổ sung một lượng điện giải và glucose nhất định.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
-2. Chỉ định và chống chỉ định
+
+1. Chỉ định và chống chỉ định
 2.1. Chỉ định
 - Sốt xuất huyết Dengue không sốc: người bệnh không uống được.
 - Sốc sốt xuất huyết Dengue .
@@ -3493,7 +3489,7 @@ bù dịch không bị gián đoạn do hỏng đường truyền.
 - Chuẩn bị chai dịch truyền:
 + Thực hiện 3 kiểm tra, 5 đối chiếu
 + Kiểm tra chai dịch: đúng nh ã n, còn hạn dùng, không đổi màu, không
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 cặn lắng, vỏ chai không nứt, nút chai không rỉ dị ch.
 + Mở nút chai, sát trùng nút chai .
 + Cắm dây truyền dịch vào và đuổi khí trong dây.
@@ -3531,7 +3527,7 @@ tiêm có chứa NaCl 0,9%.
 - Thu dọn dụng cụ, ghi hồ sơ bệnh án.
 3.4. Theo dõi
 a) Tại nơi tiêm: p hù, s ưng đỏ.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 b) Dây truyền dịch
 - Có bị gập, có bọt khí.
 - Có rỉ dịch chỗ nối.
@@ -3569,7 +3565,7 @@ máu không chảy ra và dịch không chảy hoặc chảy chậm.
 - Xử trí: n gừng truyền, lấy dấu hiệu sinh tồn, lau mát và báo bác sĩ .
 4.5. Phù phổi cấp
 - Triệu chứng: t hở nhanh, tím tái, phổi có ran ẩm, ho khạc bọt hồng.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Xử trí: n gưng truyền, cho người bệnh nằm đầu cao, lấy dấu hiệu sinh
 tồn, báo bác sĩ.
 IV. QUY TRÌNH THIẾT L ẬP TĨNH MẠCH TRUNG TÂM TỪ
@@ -3607,7 +3603,7 @@ Bước 2: Luồn dây dẫn 4F vào kim luồn 22G
 dây dẫn vào sâu tĩnh mạch nền khoảng 5 - 10cm.
 - Luồn dây dẫn (guidewire) dễ dàng nếu bị vướng thường là sai hoặc
 chạm vào thành tĩnh mạch kiểm tra lại và rút ra rồi nhẹ nhàng luồn lại, không
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 cố gắng đẩy mạnh sẽ xuyên thành tĩnh mạch.
 - Trong khi luồn dây dẫn (guidewire) nhờ điều dưỡng phụ quan sát theo dõi
 sóng điện tim trên monitor (nếu có). Nếu xuất hiện thay đổi sóng là đầu dây dẫn đ ã
@@ -3645,7 +3641,7 @@ tục nong vài lần .
 Bước 6: Luồn catheter tĩnh mạch của bộ Seldinger qua dây dẫn
 - Cho bệnh nhân nằm phẳng đầu nghiêng về phía bên tiêm khi luồn
 catheter để hạn chế catheter lên tĩnh mạch cổ.
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Bơm tráng ống catheter trước với Natriclorua 0,9% để làm trơn catheter
 sẽ dễ luồn catheter qua dây dẫn.
 - Luồn catheter tĩnh mạch của bộ Seldinger qua dây dẫn nhẹ nhàng và từ
@@ -3683,7 +3679,7 @@ vào kim luồn 18G .
 ✓ Cavafix 45: Bước 5 sẽ luồn catheter của Cavafix 45 vào kim luồn
 16G .
 Bước 10: Tháo bỏ trang phục phòng hộ cá nhân và rửa tay .
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 Bước 11: Ghi hồ sơ: Tên người t hực hiện, thời điểm, chiều dài, tai biến
 nếu có.
 
@@ -3699,7 +3695,7 @@ trò của điều dưỡng rất quan trọng. Nhiệm vụ của điều dư�
 mẹ bao gồm:
 - Giáo dục sức khỏe về sốt xuất huyết Dengue cho bà mẹ để bà mẹ hiểu
 và hợp tác phụ giúp theo dõi bệnh nhi, hạn chế các trường hợp bệnh nặng do
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 phát hiện chậm, nhờ đó hạn chế được tỷ lệ tử vong.
 - Giải thích, động viên, tạo niềm tin cho thân nhân người bệnh để an tâm
 điều trị.
@@ -3738,7 +3734,7 @@ những từ chuyên môn.
 - Cách đặt câu hỏi:
 + Câu hỏi đóng (có, không?) để diễn đạt thông tin đơn giản.
 + Câu hỏi mở (cái gì?, tại sao?, bao nhiêu?) để diễn đạt thông tin chi tiết
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 hơn.
 - Sử dụng phiếu tham vấn bà mẹ trong sốt xuất huyết Dengue.
 3. Nội dung tư vấn bà mẹ
@@ -3776,7 +3772,7 @@ muỗi vằn đốt trẻ thường vào ban ngày.
 - Muỗi vằn sống trong nhà, thường ở xó tối và chỗ treo quần áo, muỗi
 vằn đẻ trứng trong các dụng cụ chứa nước sạch, trong, nước mưa.
 3.4. Các biện pháp phòng ngừa mắc bệnh sốt xuất huyết Dengue
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43
+
 - Bảo vệ tránh không bị muỗi đốt: ngủ màn, không cho trẻ chơi ở những
 chỗ tối, đuổi muỗi (đốt nhang muỗi, xịt muỗi), mặc quần áo dài tay, d ùng kem
 thoa chống muỗi.
@@ -3794,7 +3790,7 @@ LƯU ĐỒ XỬ TRÍ SUY GAN CẤP Ở BỆNH NHÂN SỐT XUẤT HUYẾT
 DENGUE NẶNG
 (Ban hành kèm theo Quyết định số /QĐ - BYT ngày tháng năm 2023 của Bộ trưởng Bộ Y tế )
 Bệnh não gan độ I, II + INR ≥ 1,5 Hoặc MELD score ≥ 15
-phuongcd.kcb_Cao Duc Phuong_04/07/2023 10:15:43 Có Không
+ Có Không
 SUY GAN CẤP TỔN THƯƠNG GAN NẶNG
 Kèm một trong các yếu tố sau:
 - Bệnh não gan độ III, IV .
