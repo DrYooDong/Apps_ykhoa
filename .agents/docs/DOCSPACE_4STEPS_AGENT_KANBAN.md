@@ -73,3 +73,4 @@
 | `COMP-S4-02` | Bước 4 | Tinh gọn thanh điều hướng trên cùng & thanh hiển thị tên bệnh tinh gọn | 2026-09-19 | ✅ Đạt chuẩn tối giản |
 | `COMP-ARCH-01`| Toàn hệ | Thiết lập bản đồ Data Contracts 3 chiều kết nối Bước 1 ➔ Bước 2 ➔ Bước 3 ➔ Bước 4 | 2026-09-19 | ✅ Đã chuẩn hoá |
 | `COMP-SQ-01` | Toàn hệ | Khởi tạo trọn bộ 4 Skill SOP chuyên biệt cho 4 Đội ngũ AI Agent Squads | 2026-09-19 | ✅ Kích hoạt 4 Squads |
+| `COMP-ALIGN-01` | Toàn hệ | Đồng bộ hóa toàn diện Chu trình Lâm sàng 4 Bước: Tách bạch Step3Analysis & Step4Protocol, sửa lỗi Alphabetical Fallback, sửa điều hướng Guideline, chuẩn hóa Tam giác Dịch tễ | 2026-10-17 | ✅ Pass 100% |

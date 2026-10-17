@@ -5,7 +5,7 @@ description: Đội ngũ AI chuyên trách Động cơ Suy luận Lâm sàng CDS
 
 # ⚖️ DocSpace Step 3 — Diagnostic CDSS & Severity Staging Squad
 
-> **Đội ngũ Đa tác tử Chuyên biệt (Multi-Agent Squad)** phụ trách toàn diện **Bước 3: Phân tích CDSS & Biện luận Chẩn đoán Phân biệt** (`src/content/docspace/src/components/Step2Analysis.tsx`, `LeadDiagnosisCard.tsx`, `DifferentialTable.tsx`).
+> **Đội ngũ Đa tác tử Chuyên biệt (Multi-Agent Squad)** phụ trách toàn diện **Bước 3: Phân tích CDSS & Biện luận Chẩn đoán Phân biệt** (`src/content/docspace/src/components/Step3Analysis.tsx`, `LeadDiagnosisCard.tsx`, `DifferentialTable.tsx`).
 
 ---
 

@@ -1,0 +1,17 @@
+{
+  "docspace-cdss-sync": {
+    "enabled": true,
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python tools/ai_harness/hook_handler.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

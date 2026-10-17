@@ -57,6 +57,7 @@ export const DiagnosticTrianglePanel: React.FC<DiagnosticTrianglePanelProps> = (
     if (epiContext.contactHistory) list.push(`Tiếp xúc: ${epiContext.contactHistory}`);
     if (epiContext.travelHistory) list.push(`Di chuyển: ${epiContext.travelHistory}`);
     if (epiContext.seasonalContext) list.push(`Mùa: ${epiContext.seasonalContext}`);
+    if (epiContext.occupationalRisk) list.push(`Nghề nghiệp: ${epiContext.occupationalRisk}`);
     if (epiContext.waterFoodRisk) list.push(`Nguồn nước/thực phẩm: ${epiContext.waterFoodRisk}`);
     return list;
   }, [epiContext]);
@@ -641,6 +642,32 @@ export const DiagnosticTrianglePanel: React.FC<DiagnosticTrianglePanelProps> = (
                   value={epiContext.contactHistory || ''}
                   onChange={(e) => onUpdateEpiContext({ ...epiContext, contactHistory: e.target.value })}
                   placeholder="Vd: Người nhà cùng phòng trọ đang sốt xuất huyết"
+                  className="w-full text-xs p-1.5 bg-white border border-slate-200 rounded-md focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="text-[11px] font-semibold text-slate-700 block mb-1">
+                  Nguy cơ nghề nghiệp / Môi trường:
+                </label>
+                <input
+                  type="text"
+                  value={epiContext.occupationalRisk || ''}
+                  onChange={(e) => onUpdateEpiContext({ ...epiContext, occupationalRisk: e.target.value })}
+                  placeholder="Vd: Công nhân xây dựng, lội cống rãnh, làm ruộng, chăn nuôi"
+                  className="w-full text-xs p-1.5 bg-white border border-slate-200 rounded-md focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="text-[11px] font-semibold text-slate-700 block mb-1">
+                  Nguồn nước / Thực phẩm nguy cơ:
+                </label>
+                <input
+                  type="text"
+                  value={epiContext.waterFoodRisk || ''}
+                  onChange={(e) => onUpdateEpiContext({ ...epiContext, waterFoodRisk: e.target.value })}
+                  placeholder="Vd: Uống nước chưa đun sôi, ăn tiết canh, lội nước ngập lụt"
                   className="w-full text-xs p-1.5 bg-white border border-slate-200 rounded-md focus:border-blue-500"
                 />
               </div>

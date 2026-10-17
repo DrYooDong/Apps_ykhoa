@@ -16,5 +16,7 @@ Thư mục này lưu trữ bộ nhớ dự án, bài học kinh nghiệm (Lesson
 - [2026-09-infobox-vertical-stack-and-qa-squad.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-infobox-vertical-stack-and-qa-squad.md): Khắc phục lỗi xếp chồng dọc .infobox và thiết lập hệ thống CliniPortal QA Agent Squad.
 - [2026-09-epidemiology-mdx-and-orthogonal-svg-mastery.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-09-epidemiology-mdx-and-orthogonal-svg-mastery.md): Nâng cấp phân hệ Dịch tễ học Y khoa, triệt tiêu code block thô và chuẩn hóa lưu đồ trực giao SVG Editorial.
 - [2026-10-soap-squad-lessons.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-10-soap-squad-lessons.md): Khắc phục sự cố đồng bộ danh mục ca bệnh (Catalog Drift) và tối ưu hóa giao diện di động (Mobile Viewport) phân hệ Sổ tay SOAP.
+- [2026-10-serena-and-cbm-agent-coding-intelligence.md](file:///i:/Drive%20c%E1%BB%A7a%20t%C3%B4i/apps/Apps_ykhoa/.agents/learnings/2026-10-serena-and-cbm-agent-coding-intelligence.md): Tinh hoa kiến trúc từ Serena (Symbol-Level LSP Refactoring) & Codebase-Memory (Pure C Knowledge Graph 99% Token Reduction) cho AI Coding Agent.
+
 
 

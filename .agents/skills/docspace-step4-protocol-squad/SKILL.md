@@ -5,7 +5,7 @@ description: Đội ngũ AI chuyên trách Phác đồ Điều trị Toàn diệ
 
 # 💊 DocSpace Step 4 — Treatment Protocol & Order Execution Squad
 
-> **Đội ngũ Đa tác tử Chuyên biệt (Multi-Agent Squad)** phụ trách toàn diện **Bước 4: Phác đồ Điều trị Toàn diện & Y Lệnh Lâm sàng** (`src/content/docspace/src/components/Step3Protocol.tsx` và `components/step3/`).
+> **Đội ngũ Đa tác tử Chuyên biệt (Multi-Agent Squad)** phụ trách toàn diện **Bước 4: Phác đồ Điều trị Toàn diện & Y Lệnh Lâm sàng** (`src/content/docspace/src/components/Step4Protocol.tsx` và `components/step3/`).
 
 ---
 

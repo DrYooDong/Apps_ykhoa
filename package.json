@@ -30,7 +30,10 @@
     "docspace:sync": "node tools/scripts/sync-clinical-db.mjs",
     "docspace:validate": "node tools/scripts/validate-docspace-pipeline.mjs",
     "validate:soap": "node tools/scripts/validate-soap-catalog.mjs",
-    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode && npm run validate:cdss && npm run validate:soap"
+    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode && npm run validate:cdss && npm run validate:soap",
+    "agy:audit": "python tools/ai_harness/cli_runner.py audit",
+    "agy:sync": "python tools/ai_harness/cli_runner.py sync",
+    "agy:validate": "python tools/ai_harness/cli_runner.py validate"
   },
   "keywords": [
     "medical",

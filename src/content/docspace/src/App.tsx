@@ -4,8 +4,8 @@ import { StepNav, ClinicalStepId } from './components/StepNav.tsx';
 import { SoapExperienceBoard } from './components/SoapExperienceBoard.tsx';
 import { Step1DataIngestion } from './components/Step1DataIngestion.tsx';
 import { Step2ProblemStatement } from './components/Step2ProblemStatement.tsx';
-import { Step2Analysis } from './components/Step2Analysis.tsx';
-import { Step3Protocol } from './components/Step3Protocol.tsx';
+import { Step3Analysis } from './components/Step3Analysis.tsx';
+import { Step4Protocol } from './components/Step4Protocol.tsx';
 import { Step4KnowledgeBase } from './components/Step4KnowledgeBase.tsx';
 import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
@@ -376,7 +376,7 @@ export function MainApp() {
     setSelected(new Set(sample.sel));
     setNegated(new Set(sample.negated || []));
     setProblems([]);
-    setCompletedSteps(new Set(['t1', 't2']));
+    setCompletedSteps(new Set(['t1']));
     setClinicalStep('t2');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -463,7 +463,7 @@ export function MainApp() {
     setSelectedDiseaseId(diseaseId);
     setTargetProtocolGradeIdx(options?.gradeIdx ?? null);
     setTargetProtocolComplicationId(options?.complicationId ?? null);
-    setCompletedSteps((prev) => new Set(prev).add('t3').add('t4'));
+    setCompletedSteps((prev) => new Set(prev).add('t1').add('t2').add('t3'));
     setClinicalStep('t4');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -491,7 +491,7 @@ export function MainApp() {
         patientSummary={patientSummary}
       />
 
-      {/* 3-Step Clinical Navigation (chỉ hiện khi đang ở Chu trình lâm sàng) */}
+      {/* 4-Step Clinical Navigation (chỉ hiện khi đang ở Chu trình lâm sàng) */}
       {activeMode === 'clinical' && (
         <StepNav
           currentStep={clinicalStep}
@@ -523,8 +523,10 @@ export function MainApp() {
             </button>
             <button
               onClick={() => {
-                if (selectedDiseaseId) {
-                  setClinicalStep('t3');
+                const targetDiseaseId = selectedDiseaseId || (results.length > 0 ? results[0].b.id : null);
+                if (targetDiseaseId) {
+                  setSelectedDiseaseId(targetDiseaseId);
+                  setClinicalStep('t4');
                 } else {
                   setClinicalStep('t1');
                 }
@@ -547,7 +549,7 @@ export function MainApp() {
       {/* Main View Area with Mobile Bottom Padding */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-3 sm:py-5 pb-24 md:pb-6">
         <ErrorBoundary key={`${activeMode}_${clinicalStep}`} onReset={() => setClinicalStep('t1')}>
-        {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 3 BƯỚC */}
+        {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 4 BƯỚC */}
         {activeMode === 'clinical' && (
           <>
             {clinicalStep === 't1' && (
@@ -606,7 +608,7 @@ export function MainApp() {
 
             {/* Bước 3: Phân tích & Biện luận chẩn đoán */}
             {clinicalStep === 't3' && (
-              <Step2Analysis
+              <Step3Analysis
                 kb={kb}
                 results={results}
                 form={form}
@@ -633,9 +635,9 @@ export function MainApp() {
 
             {/* Bước 4: Phác đồ điều trị */}
             {clinicalStep === 't4' && (
-              <Step3Protocol
+              <Step4Protocol
                 kb={kb}
-                selectedDiseaseId={selectedDiseaseId}
+                selectedDiseaseId={selectedDiseaseId || (results.length > 0 ? results[0].b.id : null)}
                 onSelectDisease={setSelectedDiseaseId}
                 initialGradeIdx={targetProtocolGradeIdx}
                 initialComplicationId={targetProtocolComplicationId}

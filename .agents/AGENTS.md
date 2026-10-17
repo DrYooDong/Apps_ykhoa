@@ -55,7 +55,8 @@ d:\Apps_ykhoa\.agents/
 │   ├── html-integrity-rules.md       # 7. Quy tắc kiểm tra toàn vẹn HTML
 │   ├── context-optimization.md       # 8. Quy tắc tối ưu hóa Context AI
 │   ├── guideline-creation-rules.md   # 9. Quy tắc kiểm soát tạo Guideline & chống trùng lặp
-│   └── design-squad-rules.md         # 10. Quy tắc vận hành & Merge Gate Design Squad
+│   ├── design-squad-rules.md         # 10. Quy tắc vận hành & Merge Gate Design Squad
+│   └── antigravity-speed-intelligence.md # 11. Quy tắc tối ưu Tốc độ & Trí tuệ AI (Antigravity Engine)
 └── skills/                           # Thư mục 70+ Skills chuyên môn & workflow
     ├── Agent Intelligence & Memory   # agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
     ├── Healthcare AI & Safety        # cdss-standalone-manager, cdss-ui-sync-squad, cdss-module-builder, docspace-oneclick-ingest-agent, docspace-step1-ingestion-squad, docspace-step2-reasoning-squad, docspace-step3-cdss-squad, docspace-step4-protocol-squad, docspace-treatment-data-engineering-squad, docspace-treatment-protocol-ui-squad, docspace-clinical-simulation-squad, docspace-case-ingestion-squad, docspace-medical-qa-squad, docspace-soap-guardian-squad, cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
