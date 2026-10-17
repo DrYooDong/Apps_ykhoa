@@ -35,6 +35,30 @@ const SYSTEM_NAMES = {
   'tien-can.json': 'Tiền căn & Yếu tố nguy cơ nền'
 };
 
+function sanitizeHtmlEntities(str) {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&gt;/g, '>')
+    .replace(/&lt;/g, '<')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
+function deepSanitize(obj) {
+  if (typeof obj === 'string') return sanitizeHtmlEntities(obj);
+  if (Array.isArray(obj)) return obj.map(deepSanitize);
+  if (obj && typeof obj === 'object') {
+    const res = {};
+    for (const [k, v] of Object.entries(obj)) {
+      res[k] = deepSanitize(v);
+    }
+    return res;
+  }
+  return obj;
+}
+
 function formatMap(map) {
   if (!map) return '—';
   if (map.val !== undefined) return `\`${map.fld} ${map.op} ${map.val}\``;
@@ -160,9 +184,21 @@ export function bundleSymptoms() {
     try {
       const items = JSON.parse(fs.readFileSync(fPath, 'utf8'));
       if (Array.isArray(items)) {
-        summary[file] = items.length;
-        itemsByFile[file] = items;
-        for (const s of items) {
+        let fileModified = false;
+        const sanitizedItems = items.map(s => {
+          const clean = deepSanitize(s);
+          if (JSON.stringify(clean) !== JSON.stringify(s)) {
+            fileModified = true;
+          }
+          return clean;
+        });
+        if (fileModified) {
+          console.log(`🧹 Auto-Sanitizer: Đã làm sạch HTML entities trong ${file}`);
+          fs.writeFileSync(fPath, JSON.stringify(sanitizedItems, null, 2), 'utf8');
+        }
+        summary[file] = sanitizedItems.length;
+        itemsByFile[file] = sanitizedItems;
+        for (const s of sanitizedItems) {
           if (seenIds.has(s.id)) {
             console.warn(`⚠️ Cảnh báo: Trùng lặp mã triệu chứng ID "${s.id}" trong ${file}!`);
           }

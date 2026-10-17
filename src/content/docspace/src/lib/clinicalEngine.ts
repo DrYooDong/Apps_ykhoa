@@ -235,9 +235,12 @@ export function analyzeClinicalCase(
       if (vocabMap[synId] && !present[synId]) {
         present[synId] = { via: '⚙ tự suy' };
       }
-      if (synId === 'hc_warning_signs_dengue') {
+      if (synId === 'hc_warning_signs_dengue' || synId === 'hc_canh_bao_dengue') {
         if (vocabMap['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi'] && !present['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi']) {
           present['tc_dau_hieu_canh_bao_dau_bung_gan_non_oi'] = { via: '⚙ tự suy' };
+        }
+        if (vocabMap['dau_hieu_canh_bao_dau_bung_gan_non_oi'] && !present['dau_hieu_canh_bao_dau_bung_gan_non_oi']) {
+          present['dau_hieu_canh_bao_dau_bung_gan_non_oi'] = { via: '⚙ tự suy' };
         }
       }
       if (synId === 'hc_soc_sxhd') {
@@ -245,9 +248,9 @@ export function analyzeClinicalCase(
           present['tc_soc_mach_nhanh_ha_kep_hoac_tut'] = { via: '⚙ tự suy' };
         }
       }
-      if (synId === 'hc_mang_nao') {
-        if (vocabMap['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao'] && !present['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao']) {
-          present['hcm_sot_dau_dau_cung_gay_hoi_chung_mang_nao'] = { via: '⚙ tự suy' };
+      if (synId === 'hc_mang_nao' || synId === 'hc_kich_thich_mang_nao') {
+        if (vocabMap['cung_gay_dieu_tri_mang_nao'] && !present['cung_gay_dieu_tri_mang_nao']) {
+          present['cung_gay_dieu_tri_mang_nao'] = { via: '⚙ tự suy' };
         }
       }
     }

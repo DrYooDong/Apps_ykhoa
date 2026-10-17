@@ -112,5 +112,154 @@
       "op": "<",
       "val": 95
     }
+  },
+  {
+    "id": "tho_nhanh",
+    "ten": "Thở nhanh (Nhịp thở > 20 lần/phút)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "thở nhanh",
+      "nhịp thở tăng",
+      "tachypnea"
+    ],
+    "aliases": [
+      "thở gấp",
+      "nhịp thở nhanh"
+    ],
+    "map": {
+      "fld": "vTho",
+      "op": ">",
+      "val": 20
+    }
+  },
+  {
+    "id": "tho_nhanh_nang",
+    "ten": "Thở rất nhanh (Nhịp thở ≥ 30 lần/phút)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "thở rất nhanh",
+      "thở co kéo",
+      "severe tachypnea"
+    ],
+    "aliases": [
+      "thở hổn hển",
+      "thở dốc"
+    ],
+    "map": {
+      "fld": "vTho",
+      "op": ">=",
+      "val": 30
+    }
+  },
+  {
+    "id": "tho_cham",
+    "ten": "Thở chậm (Nhịp thở < 10 lần/phút)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "thở chậm",
+      "ức chế hô hấp",
+      "bradypnea"
+    ],
+    "aliases": [
+      "nhịp thở yếu",
+      "thở ngáp"
+    ],
+    "map": {
+      "fld": "vTho",
+      "op": "<",
+      "val": 10
+    }
+  },
+  {
+    "id": "kho_tho_khi_nam",
+    "ten": "Khó thở khi nằm đầu bằng (Orthopnea)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "cn",
+      "tt"
+    ],
+    "tuKhoa": [
+      "khó thở khi nằm",
+      "orthopnea",
+      "phải ngồi thở"
+    ],
+    "aliases": [
+      "ngồi dậy mới thở được",
+      "khó thở kịch phát về đêm"
+    ],
+    "map": null
+  },
+  {
+    "id": "ran_o_phoi",
+    "ten": "Ran ẩm hoặc ran nổ ở phổi",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "ran phổi",
+      "ran ẩm",
+      "ran nổ",
+      "crackles",
+      "rales"
+    ],
+    "aliases": [
+      "nghe phổi có ran",
+      "ran ứ đọng"
+    ],
+    "map": null
+  },
+  {
+    "id": "giam_spo2",
+    "ten": "Giảm SpO₂ máu (< 95%)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "giảm spo2",
+      "tụt oxy máu",
+      "hypoxemia"
+    ],
+    "aliases": [
+      "độ bão hòa oxy giảm",
+      "spo2 dưới 95"
+    ],
+    "map": {
+      "fld": "vSpo2",
+      "op": "<",
+      "val": 95
+    }
+  },
+  {
+    "id": "suy_ho_hap_spo2_thap",
+    "ten": "Suy hô hấp cấp (SpO₂ < 90%)",
+    "nhom": "Hô hấp",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "suy hô hấp",
+      "spo2 tụt sâu",
+      "severe hypoxemia"
+    ],
+    "aliases": [
+      "suy hô hấp cấp tính",
+      "tím tái do thiếu oxy"
+    ],
+    "map": {
+      "fld": "vSpo2",
+      "op": "<",
+      "val": 90
+    }
   }
 ]

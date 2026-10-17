@@ -4,23 +4,407 @@
  * 
  * Chức năng:
  * 1. Khóa giao diện bảo mật phiên làm việc y tế tự động khởi động ngay khi người dùng vào web.
- * 2. Thích ứng theo thiết bị:
- *    - Chế độ Laptop (> 768px): Chỉ nhận mã PIN từ bàn phím vật lý (6 ô input số auto-focus, ẩn hoàn toàn bàn phím ảo).
- *    - Chế độ Tablet & Mobile (<= 768px): Sử dụng bàn phím cảm ứng 9 nút số (Keypad 1-9, 0, Xóa, Xóa hết) kết hợp 6 chấm tròn đèn LED (ẩn ô text input để tránh bật bàn phím ảo của OS).
- * 3. Tuyệt đối không hiển thị gợi ý mật khẩu cho người dùng.
- * 4. Tích hợp đồng hồ trực ca ICU thời gian thực, rung haptic phản hồi cảm ứng, và modal đổi mã PIN bảo mật.
+ * 2. Mở khóa bằng hình vẽ 9 nút (3x3 Pattern Lock):
+ *    - Hỗ trợ mượt mà cả Desktop (kéo chuột, phím số 1-9) và Tablet/Mobile (vuốt cảm ứng chạm).
+ *    - Tự động bắt điểm trung gian khi kéo thẳng qua (vd: 1->3 qua 2, 3->7 qua 5, 7->9 qua 8).
+ *    - Mặc định: Chữ Z (1-2-3-5-7-8-9). Chấp nhận cả chiều ngược lại khi dùng hình mặc định.
+ * 3. Tuyệt đối không hiển thị bất kỳ gợi ý nào làm để lộ mật khẩu.
+ * 4. Hỗ trợ Đổi và Lưu Mẫu Hình Mới vào localStorage với quy trình xác thực 3 bước (Hiện tại -> Mới -> Xác nhận).
+ * 5. Tích hợp đồng hồ ca trực ICU thời gian thực, phản hồi xúc giác Haptics và hoạt ảnh neon hiện đại.
  */
 
 const STORAGE_KEY_LOCKED = 'cliniportal_screen_locked';
-const STORAGE_KEY_PIN = 'cliniportal_lock_pin';
-const DEFAULT_PIN = '123456';
+const STORAGE_KEY_PATTERN = 'cliniportal_lock_pattern';
+const DEFAULT_PATTERN = '1-2-3-5-7-8-9'; // Mẫu hình chữ Z chuẩn 3x3
 
+/**
+ * Bảng tra cứu các điểm trung gian nằm giữa 2 điểm khi vẽ đường thẳng qua
+ */
+const INTERMEDIATE_MAP: Record<string, number> = {
+  '1-3': 2, '3-1': 2,
+  '4-6': 5, '6-4': 5,
+  '7-9': 8, '9-7': 8,
+  '1-7': 4, '7-1': 4,
+  '2-8': 5, '8-2': 5,
+  '3-9': 6, '9-3': 6,
+  '1-9': 5, '9-1': 5,
+  '3-7': 5, '7-3': 5
+};
+
+/**
+ * Component Widget Pattern Lock 9 Nút (Dùng chung cho Màn hình chính & Modal đổi hình)
+ */
+export class PatternLockWidget {
+  private container: HTMLElement;
+  private size: number;
+  private onComplete: (pattern: number[], patternStr: string) => void;
+  private onChange?: (pattern: number[]) => void;
+
+  private wrapperEl: HTMLElement | null = null;
+  private svgEl: SVGSVGElement | null = null;
+  private linesGroup: SVGGElement | null = null;
+  private trackerLine: SVGLineElement | null = null;
+  private nodeEls: HTMLElement[] = [];
+
+  private pattern: number[] = [];
+  private isDrawing: boolean = false;
+  private isBusy: boolean = false;
+
+  constructor(options: {
+    container: HTMLElement;
+    size?: number;
+    onComplete: (pattern: number[], patternStr: string) => void;
+    onChange?: (pattern: number[]) => void;
+  }) {
+    this.container = options.container;
+    this.size = options.size || 280;
+    this.onComplete = options.onComplete;
+    this.onChange = options.onChange;
+
+    this.mount();
+    this.bindEvents();
+  }
+
+  /**
+   * Khởi tạo giao diện DOM và SVG của 9 nút
+   */
+  private mount(): void {
+    this.container.innerHTML = `
+      <div class="pattern-lock-wrapper" style="width: ${this.size}px; height: ${this.size}px;">
+        <svg class="pattern-lock-svg" viewBox="0 0 ${this.size} ${this.size}" preserveAspectRatio="none">
+          <g class="pattern-lines-group"></g>
+          <line class="pattern-tracker-line" x1="0" y1="0" x2="0" y2="0" style="display: none;"></line>
+        </svg>
+        <div class="pattern-nodes-grid" role="group" aria-label="Lưới 9 nút mở khóa">
+          ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => `
+            <button type="button" class="pattern-node" data-index="${i}" aria-label="Nút ${i}">
+              <span class="pattern-ring"></span>
+              <span class="pattern-dot"></span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    this.wrapperEl = this.container.querySelector('.pattern-lock-wrapper');
+    this.svgEl = this.container.querySelector('.pattern-lock-svg');
+    this.linesGroup = this.container.querySelector('.pattern-lines-group');
+    this.trackerLine = this.container.querySelector('.pattern-tracker-line');
+    this.nodeEls = Array.from(this.container.querySelectorAll('.pattern-node'));
+  }
+
+  /**
+   * Gắn sự kiện Pointer Events (hỗ trợ cả Chuột và Cảm ứng mượt mà)
+   */
+  private bindEvents(): void {
+    if (!this.wrapperEl) return;
+
+    this.wrapperEl.addEventListener('pointerdown', this.handlePointerDown);
+    this.wrapperEl.addEventListener('pointermove', this.handlePointerMove);
+    this.wrapperEl.addEventListener('pointerup', this.handlePointerUp);
+    this.wrapperEl.addEventListener('pointercancel', this.handlePointerUp);
+  }
+
+  private handlePointerDown = (e: PointerEvent): void => {
+    if (this.isBusy) return;
+    e.preventDefault();
+    try {
+      this.wrapperEl?.setPointerCapture(e.pointerId);
+    } catch {}
+
+    this.isDrawing = true;
+    this.clear();
+
+    const hit = this.checkHit(e.clientX, e.clientY);
+    if (hit !== null) {
+      this.addNode(hit);
+    }
+  };
+
+  private handlePointerMove = (e: PointerEvent): void => {
+    if (!this.isDrawing || this.isBusy) return;
+    e.preventDefault();
+
+    const hit = this.checkHit(e.clientX, e.clientY);
+    if (hit !== null) {
+      this.addNode(hit);
+    }
+
+    this.updateTracker(e.clientX, e.clientY);
+  };
+
+  private handlePointerUp = (e: PointerEvent): void => {
+    if (!this.isDrawing) return;
+    this.isDrawing = false;
+
+    if (this.trackerLine) {
+      this.trackerLine.style.display = 'none';
+    }
+
+    try {
+      this.wrapperEl?.releasePointerCapture(e.pointerId);
+    } catch {}
+
+    if (this.pattern.length > 0) {
+      this.onComplete([...this.pattern], this.pattern.join('-'));
+    }
+  };
+
+  /**
+   * Tính toán va chạm nút theo khoảng cách hình học từ tâm
+   */
+  private checkHit(clientX: number, clientY: number): number | null {
+    for (let i = 0; i < this.nodeEls.length; i++) {
+      const node = this.nodeEls[i];
+      const idx = i + 1;
+      if (this.pattern.includes(idx)) continue;
+
+      const rect = node.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dist = Math.hypot(clientX - cx, clientY - cy);
+      const hitRadius = Math.max(rect.width * 0.46, 26);
+
+      if (dist <= hitRadius) {
+        return idx;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Thêm điểm vào chuỗi mẫu hình (tự động chèn điểm trung gian nếu có)
+   */
+  public addNode(idx: number): void {
+    if (this.pattern.includes(idx)) return;
+
+    if (this.pattern.length > 0) {
+      const prev = this.pattern[this.pattern.length - 1];
+      const midKey = `${prev}-${idx}`;
+      const mid = INTERMEDIATE_MAP[midKey];
+
+      // Nếu kéo qua điểm giữa chưa được kích hoạt, tự động thêm điểm giữa vào
+      if (mid && !this.pattern.includes(mid)) {
+        this.pattern.push(mid);
+        this.activateNode(mid);
+        this.drawLine(prev, mid);
+
+        this.pattern.push(idx);
+        this.activateNode(idx);
+        this.drawLine(mid, idx);
+        this.triggerHaptic();
+        this.onChange?.([...this.pattern]);
+        return;
+      }
+
+      this.drawLine(prev, idx);
+    }
+
+    this.pattern.push(idx);
+    this.activateNode(idx);
+    this.triggerHaptic();
+    this.onChange?.([...this.pattern]);
+  }
+
+  /**
+   * Đổi trạng thái hiển thị của nút sang active
+   */
+  private activateNode(idx: number): void {
+    const node = this.nodeEls[idx - 1];
+    if (node) {
+      node.classList.add('active');
+    }
+  }
+
+  /**
+   * Lấy tọa độ tâm của nút trong không gian tọa độ SVG
+   */
+  private getNodeCenter(idx: number): { x: number; y: number } {
+    const node = this.nodeEls[idx - 1];
+    if (!node || !this.svgEl) return { x: 0, y: 0 };
+
+    const nodeRect = node.getBoundingClientRect();
+    const svgRect = this.svgEl.getBoundingClientRect();
+    const scaleX = this.size / (svgRect.width || this.size);
+    const scaleY = this.size / (svgRect.height || this.size);
+
+    return {
+      x: (nodeRect.left + nodeRect.width / 2 - svgRect.left) * scaleX,
+      y: (nodeRect.top + nodeRect.height / 2 - svgRect.top) * scaleY
+    };
+  }
+
+  /**
+   * Vẽ đường thẳng nối giữa 2 điểm
+   */
+  private drawLine(fromIdx: number, toIdx: number): void {
+    if (!this.linesGroup) return;
+
+    const p1 = this.getNodeCenter(fromIdx);
+    const p2 = this.getNodeCenter(toIdx);
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', String(p1.x));
+    line.setAttribute('y1', String(p1.y));
+    line.setAttribute('x2', String(p2.x));
+    line.setAttribute('y2', String(p2.y));
+    line.setAttribute('class', 'pattern-line');
+
+    this.linesGroup.appendChild(line);
+  }
+
+  /**
+   * Cập nhật đường theo dõi vị trí ngón tay / con trỏ chuột
+   */
+  private updateTracker(clientX: number, clientY: number): void {
+    if (!this.trackerLine || !this.svgEl || this.pattern.length === 0) return;
+
+    const lastIdx = this.pattern[this.pattern.length - 1];
+    const lastCenter = this.getNodeCenter(lastIdx);
+    const svgRect = this.svgEl.getBoundingClientRect();
+    const scaleX = this.size / (svgRect.width || this.size);
+    const scaleY = this.size / (svgRect.height || this.size);
+
+    const curX = (clientX - svgRect.left) * scaleX;
+    const curY = (clientY - svgRect.top) * scaleY;
+
+    this.trackerLine.setAttribute('x1', String(lastCenter.x));
+    this.trackerLine.setAttribute('y1', String(lastCenter.y));
+    this.trackerLine.setAttribute('x2', String(curX));
+    this.trackerLine.setAttribute('y2', String(curY));
+    this.trackerLine.style.display = 'block';
+  }
+
+  /**
+   * Rung nhẹ phản hồi cảm ứng
+   */
+  private triggerHaptic(): void {
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate(18);
+      } catch {}
+    }
+  }
+
+  /**
+   * Hiển thị trạng thái lỗi (màu đỏ rose, rung lắc)
+   */
+  public showError(): void {
+    this.isBusy = true;
+    if (this.trackerLine) this.trackerLine.style.display = 'none';
+
+    this.wrapperEl?.classList.add('error');
+    this.nodeEls.forEach(n => {
+      if (n.classList.contains('active')) {
+        n.classList.add('error');
+      }
+    });
+
+    const lines = this.linesGroup?.querySelectorAll('.pattern-line');
+    lines?.forEach(l => l.classList.add('error'));
+
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate([70, 40, 70]);
+      } catch {}
+    }
+
+    setTimeout(() => {
+      this.clear();
+      this.isBusy = false;
+    }, 650);
+  }
+
+  /**
+   * Hiển thị trạng thái thành công (màu xanh ngọc emerald)
+   */
+  public showSuccess(): void {
+    this.isBusy = true;
+    if (this.trackerLine) this.trackerLine.style.display = 'none';
+
+    this.wrapperEl?.classList.add('success');
+    this.nodeEls.forEach(n => {
+      if (n.classList.contains('active')) {
+        n.classList.add('success');
+      }
+    });
+
+    const lines = this.linesGroup?.querySelectorAll('.pattern-line');
+    lines?.forEach(l => l.classList.add('success'));
+
+    if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate([25, 25, 45]);
+      } catch {}
+    }
+  }
+
+  /**
+   * Xóa toàn bộ nét vẽ hiện tại
+   */
+  public clear(): void {
+    this.pattern = [];
+    if (this.linesGroup) {
+      this.linesGroup.innerHTML = '';
+    }
+    if (this.trackerLine) {
+      this.trackerLine.style.display = 'none';
+    }
+    this.wrapperEl?.classList.remove('error', 'success');
+    this.nodeEls.forEach(n => {
+      n.classList.remove('active', 'error', 'success');
+    });
+    this.onChange?.([]);
+  }
+
+  /**
+   * Hỗ trợ gõ phím từ bàn phím (1-9)
+   */
+  public addNodeByKey(idx: number): void {
+    if (idx >= 1 && idx <= 9) {
+      this.addNode(idx);
+    }
+  }
+
+  /**
+   * Xóa điểm cuối cùng vừa nhập
+   */
+  public removeLastNode(): void {
+    if (this.pattern.length === 0) return;
+    this.pattern.pop();
+    const activeList = [...this.pattern];
+    this.clear();
+    activeList.forEach(idx => this.addNode(idx));
+  }
+
+  public getPattern(): number[] {
+    return [...this.pattern];
+  }
+
+  public destroy(): void {
+    if (this.wrapperEl) {
+      this.wrapperEl.removeEventListener('pointerdown', this.handlePointerDown);
+      this.wrapperEl.removeEventListener('pointermove', this.handlePointerMove);
+      this.wrapperEl.removeEventListener('pointerup', this.handlePointerUp);
+      this.wrapperEl.removeEventListener('pointercancel', this.handlePointerUp);
+    }
+  }
+}
+
+/**
+ * Controller Quản Lý Màn Hình Khóa Toàn Hệ Thống
+ */
 export class ScreenLockerController {
   private static instance: ScreenLockerController;
   private isLocked: boolean = false;
   private clockInterval: number | null = null;
-  private currentPinInput: string = '';
-  private isMasked: boolean = true;
+
+  private mainPatternWidget: PatternLockWidget | null = null;
+  private modalPatternWidget: PatternLockWidget | null = null;
+
+  // Trạng thái modal đổi hình: 1 = Nhập hiện tại, 2 = Nhập mới, 3 = Xác nhận
+  private changeStep: 1 | 2 | 3 = 1;
+  private tempNewPattern: string = '';
 
   private constructor() {}
 
@@ -32,25 +416,23 @@ export class ScreenLockerController {
   }
 
   /**
-   * Lấy mã PIN hiện tại (mặc định 123456 nếu chưa đổi)
+   * Lấy mã mẫu hình đã lưu trong localStorage (Mặc định: Chữ Z '1-2-3-5-7-8-9')
    */
-  public getStoredPin(): string {
+  public getStoredPattern(): string {
     try {
-      return localStorage.getItem(STORAGE_KEY_PIN) || DEFAULT_PIN;
+      return localStorage.getItem(STORAGE_KEY_PATTERN) || DEFAULT_PATTERN;
     } catch {
-      return DEFAULT_PIN;
+      return DEFAULT_PATTERN;
     }
   }
 
   /**
-   * Lưu mã PIN mới vào localStorage
+   * Lưu mã mẫu hình mới vào localStorage
    */
-  public setStoredPin(newPin: string): boolean {
-    if (!/^\d{6}$/.test(newPin)) {
-      return false;
-    }
+  public setStoredPattern(newPattern: string): boolean {
+    if (!newPattern || newPattern.length < 3) return false;
     try {
-      localStorage.setItem(STORAGE_KEY_PIN, newPin);
+      localStorage.setItem(STORAGE_KEY_PATTERN, newPattern);
       return true;
     } catch {
       return false;
@@ -58,11 +440,28 @@ export class ScreenLockerController {
   }
 
   /**
+   * Kiểm tra mẫu hình nhập vào có khớp với mẫu hình lưu trữ hay không.
+   * Nếu dùng mẫu mặc định chữ Z, chấp nhận cả chiều xuôi và chiều ngược.
+   */
+  public isPatternValid(patternStr: string): boolean {
+    const stored = this.getStoredPattern();
+    if (patternStr === stored) return true;
+
+    // Nếu mật khẩu hiện tại là chữ Z mặc định, chấp nhận vẽ ngược từ dưới lên (9-8-7-5-3-2-1)
+    if (stored === DEFAULT_PATTERN && patternStr === '9-8-7-5-3-2-1') {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * Khởi tạo component màn hình khóa
-   * Khởi động khóa ngay khi người dùng vào web theo yêu cầu!
+   * Khởi động khóa ngay khi vào web theo yêu cầu!
    */
   public init(): void {
     this.ensureLockerHtml();
+    this.initPatternWidgets();
     this.attachHeaderButton();
     this.bindEvents();
     this.startClock();
@@ -73,12 +472,13 @@ export class ScreenLockerController {
 
   /**
    * Tạo cấu trúc HTML Màn hình Khóa nếu chưa có
+   * Tuyệt đối không có bất kỳ dòng text hay hình ảnh nào để lộ mật khẩu!
    */
   private ensureLockerHtml(): void {
     if (document.getElementById('cliniScreenLocker')) return;
 
     const lockerHtml = `
-      <div class="clini-screen-locker" id="cliniScreenLocker" role="dialog" aria-modal="true" aria-labelledby="lockerTitle">
+      <div class="clini-screen-locker" id="cliniScreenLocker" role="dialog" aria-modal="true" aria-labelledby="lockerPatternTitle">
         <div class="locker-backdrop-mesh" aria-hidden="true"></div>
         <div class="locker-card" id="lockerCard">
           
@@ -112,162 +512,83 @@ export class ScreenLockerController {
             <span class="locker-doctor-status-dot"></span>
           </div>
 
-          <!-- Container Nhập PIN 6 số -->
-          <div class="locker-pin-container">
-            <div class="locker-pin-title" id="lockerTitle">
-              <span class="title-laptop">Nhập mã PIN 6 số từ bàn phím</span>
-              <span class="title-mobile">Chạm các nút số để mở khóa</span>
+          <!-- Khu vực Mở Khóa Mẫu Hình 9 Nút -->
+          <div class="locker-pattern-section">
+            <div class="locker-pattern-title" id="lockerPatternTitle">
+              <i class="fa-solid fa-circle-nodes" style="color: #38bdf8;"></i>
+              <span>Vẽ mẫu hình 9 nút để mở khóa</span>
+            </div>
+            <div class="locker-pattern-subtitle">
+              Chạm hoặc kéo chuột để nối các điểm
             </div>
 
-            <!-- 6 Chấm tròn trạng thái đèn LED (Dành cho Mobile & Tablet) -->
-            <div class="locker-pin-dots" id="lockerPinDots" aria-hidden="true">
-              <span class="pin-dot" data-dot="0"><span class="pin-dot-glow"></span></span>
-              <span class="pin-dot" data-dot="1"><span class="pin-dot-glow"></span></span>
-              <span class="pin-dot" data-dot="2"><span class="pin-dot-glow"></span></span>
-              <span class="pin-dot" data-dot="3"><span class="pin-dot-glow"></span></span>
-              <span class="pin-dot" data-dot="4"><span class="pin-dot-glow"></span></span>
-              <span class="pin-dot" data-dot="5"><span class="pin-dot-glow"></span></span>
-            </div>
-
-            <!-- 6 Ô Input số (Dành cho Laptop / Bàn phím vật lý) -->
-            <div class="locker-pin-inputs" id="lockerPinInputs">
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="0" aria-label="Số thứ 1" autocomplete="off" />
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="1" aria-label="Số thứ 2" autocomplete="off" />
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="2" aria-label="Số thứ 3" autocomplete="off" />
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="3" aria-label="Số thứ 4" autocomplete="off" />
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="4" aria-label="Số thứ 5" autocomplete="off" />
-              <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit-box" data-index="5" aria-label="Số thứ 6" autocomplete="off" />
-            </div>
-
-            <!-- Thanh công cụ phụ (Nút Ẩn/Hiện mã PIN) -->
-            <div class="locker-pin-toolbar">
-              <button type="button" class="pin-toggle-visibility-btn" id="pinToggleVisibilityBtn" title="Hiện hoặc ẩn mã PIN" aria-label="Hiện hoặc ẩn mã PIN">
-                <i class="fa-solid fa-eye" id="pinToggleEyeIcon"></i>
-                <span id="pinToggleEyeText">Hiện mã</span>
-              </button>
-            </div>
+            <!-- Khung chứa Widget Pattern Lock chính -->
+            <div id="mainPatternContainer" class="main-pattern-mount"></div>
 
             <!-- Thông báo phản hồi trạng thái -->
             <div class="locker-feedback-msg" id="lockerFeedbackMsg" role="status" aria-live="polite"></div>
           </div>
 
-          <!-- BÀN PHÍM CẢM ỨNG 9 NÚT SỐ (Chỉ hiển thị trên Mobile & Tablet, ẨN trên Laptop) -->
-          <div class="locker-keypad" id="lockerKeypad" aria-label="Bàn phím số cảm ứng">
-            <button type="button" class="keypad-btn" data-key="1" aria-label="Số 1">
-              <span class="keypad-num">1</span>
-              <span class="keypad-sub"></span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="2" aria-label="Số 2 ABC">
-              <span class="keypad-num">2</span>
-              <span class="keypad-sub">ABC</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="3" aria-label="Số 3 DEF">
-              <span class="keypad-num">3</span>
-              <span class="keypad-sub">DEF</span>
-            </button>
-
-            <button type="button" class="keypad-btn" data-key="4" aria-label="Số 4 GHI">
-              <span class="keypad-num">4</span>
-              <span class="keypad-sub">GHI</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="5" aria-label="Số 5 JKL">
-              <span class="keypad-num">5</span>
-              <span class="keypad-sub">JKL</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="6" aria-label="Số 6 MNO">
-              <span class="keypad-num">6</span>
-              <span class="keypad-sub">MNO</span>
-            </button>
-
-            <button type="button" class="keypad-btn" data-key="7" aria-label="Số 7 PQRS">
-              <span class="keypad-num">7</span>
-              <span class="keypad-sub">PQRS</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="8" aria-label="Số 8 TUV">
-              <span class="keypad-num">8</span>
-              <span class="keypad-sub">TUV</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="9" aria-label="Số 9 WXYZ">
-              <span class="keypad-num">9</span>
-              <span class="keypad-sub">WXYZ</span>
-            </button>
-
-            <!-- Hàng chức năng thứ 4 -->
-            <button type="button" class="keypad-btn keypad-fn keypad-clear" data-action="clear" aria-label="Xóa toàn bộ mã">
-              <span class="keypad-num"><i class="fa-solid fa-rotate-left"></i></span>
-              <span class="keypad-sub">XÓA HẾT</span>
-            </button>
-            <button type="button" class="keypad-btn" data-key="0" aria-label="Số 0">
-              <span class="keypad-num">0</span>
-              <span class="keypad-sub">+</span>
-            </button>
-            <button type="button" class="keypad-btn keypad-fn keypad-backspace" data-action="backspace" aria-label="Xóa lùi một số">
-              <span class="keypad-num"><i class="fa-solid fa-delete-left"></i></span>
-              <span class="keypad-sub">XÓA</span>
-            </button>
-          </div>
-
-          <!-- Các nút hành động & Trợ giúp (TUYỆT ĐỐI KHÔNG HIỆN GỢI Ý MÃ MẬT KHẨU) -->
+          <!-- Các nút hành động & Trợ giúp (TUYỆT ĐỐI KHÔNG HIỆN GỢI Ý MẬT KHẨU) -->
           <div class="locker-actions">
-            <button type="button" class="locker-unlock-btn" id="lockerUnlockBtn">
-              <i class="fa-solid fa-lock-open"></i>
-              <span>Mở khóa ca trực</span>
-            </button>
+            <div class="locker-quick-btns">
+              <button type="button" class="locker-clear-btn" id="mainClearPatternBtn">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Xóa vẽ lại</span>
+              </button>
+            </div>
 
             <div class="locker-helpers">
               <div class="locker-security-hint">
                 <i class="fa-solid fa-fingerprint"></i>
                 <span>Bảo mật thiết bị lâm sàng</span>
               </div>
-              <button type="button" class="locker-link-btn" id="lockerOpenChangePinBtn">
+              <button type="button" class="locker-link-btn" id="lockerOpenChangePatternBtn">
                 <i class="fa-solid fa-key"></i>
-                <span>Đổi mã PIN</span>
+                <span>Đổi hình vẽ mở khóa</span>
               </button>
             </div>
           </div>
 
-          <!-- Modal con Đổi mã PIN Bảo Mật -->
-          <div class="locker-change-pin-modal" id="lockerChangePinModal" role="dialog" aria-modal="true" aria-labelledby="changePinTitle">
-            <div class="change-pin-card">
-              <div class="change-pin-header">
-                <div class="change-pin-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3 class="change-pin-title" id="changePinTitle">Đổi Mã PIN Bảo Mật</h3>
-                <p class="change-pin-desc">Mã PIN gồm chính xác 6 chữ số (0-9) dùng để mở khóa nhanh giao diện ca trực.</p>
+          <!-- Modal con Đổi Mẫu Hình 9 Nút Bảo Mật (3 Bước Chuẩn) -->
+          <div class="locker-change-modal" id="lockerChangePatternModal" role="dialog" aria-modal="true" aria-labelledby="changePatternTitle">
+            <div class="change-pattern-card">
+              <div class="change-pattern-header">
+                <div class="change-pattern-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 class="change-pattern-title" id="changePatternTitle">Đổi Mẫu Hình 9 Nút</h3>
+                
+                <!-- Thanh tiến trình 3 bước -->
+                <div class="change-pattern-steps">
+                  <span class="change-step-pill active" id="stepPill1">1. Hiện tại</span>
+                  <span class="change-step-pill" id="stepPill2">2. Hình mới</span>
+                  <span class="change-step-pill" id="stepPill3">3. Xác nhận</span>
+                </div>
+
+                <!-- Hướng dẫn từng bước -->
+                <div class="change-pattern-guide" id="changePatternGuide">
+                  Vẽ mẫu hình hiện tại để xác thực
+                </div>
               </div>
 
-              <div class="change-pin-body">
-                <div class="change-pin-group">
-                  <label class="change-pin-label" for="oldPinInput">
-                    <i class="fa-solid fa-lock"></i> Mã PIN hiện tại
-                  </label>
-                  <input type="password" maxlength="6" inputmode="numeric" class="change-pin-input" id="oldPinInput" placeholder="Nhập mã hiện tại" autocomplete="off" />
-                </div>
-
-                <div class="change-pin-group">
-                  <label class="change-pin-label" for="newPinInput">
-                    <i class="fa-solid fa-key"></i> Mã PIN mới (6 số)
-                  </label>
-                  <input type="password" maxlength="6" inputmode="numeric" class="change-pin-input" id="newPinInput" placeholder="Nhập 6 số mới" autocomplete="off" />
-                </div>
-
-                <div class="change-pin-group">
-                  <label class="change-pin-label" for="confirmPinInput">
-                    <i class="fa-solid fa-circle-check"></i> Xác nhận mã PIN mới
-                  </label>
-                  <input type="password" maxlength="6" inputmode="numeric" class="change-pin-input" id="confirmPinInput" placeholder="Nhập lại 6 số mới" autocomplete="off" />
-                </div>
-
-                <div class="locker-feedback-msg" id="changePinMsg"></div>
+              <!-- Lưới Pattern Lock nhỏ trong Modal -->
+              <div class="modal-pattern-container">
+                <div id="modalPatternContainer" class="modal-pattern-mount"></div>
               </div>
 
-              <div class="change-pin-btn-row">
-                <button type="button" class="change-pin-cancel-btn" id="cancelChangePinBtn">
+              <div class="locker-feedback-msg" id="changePatternMsg" role="status" aria-live="polite"></div>
+
+              <div class="change-pattern-actions">
+                <button type="button" class="change-btn-cancel" id="cancelChangePatternBtn">
                   <i class="fa-solid fa-xmark"></i> Hủy
                 </button>
-                <button type="button" class="change-pin-save-btn" id="saveNewPinBtn">
-                  <i class="fa-solid fa-check"></i> Lưu mã PIN
+                <button type="button" class="change-btn-retry" id="modalClearPatternBtn">
+                  <i class="fa-solid fa-rotate-left"></i> Vẽ lại bước này
                 </button>
               </div>
+
+              <button type="button" class="change-pattern-reset-link" id="modalResetDefaultPatternBtn">
+                Đặt lại về mẫu hình mặc định
+              </button>
             </div>
           </div>
 
@@ -276,6 +597,35 @@ export class ScreenLockerController {
     `;
 
     document.body.insertAdjacentHTML('beforeend', lockerHtml);
+  }
+
+  /**
+   * Khởi tạo các instance PatternLockWidget
+   */
+  private initPatternWidgets(): void {
+    const mainContainer = document.getElementById('mainPatternContainer');
+    if (mainContainer) {
+      const widgetSize = window.innerWidth <= 380 ? 236 : (window.innerWidth <= 768 ? 270 : 280);
+      this.mainPatternWidget = new PatternLockWidget({
+        container: mainContainer,
+        size: widgetSize,
+        onComplete: (_pattern, patternStr) => {
+          this.verifyMainPattern(patternStr);
+        }
+      });
+    }
+
+    const modalContainer = document.getElementById('modalPatternContainer');
+    if (modalContainer) {
+      const modalWidgetSize = window.innerWidth <= 380 ? 190 : 220;
+      this.modalPatternWidget = new PatternLockWidget({
+        container: modalContainer,
+        size: modalWidgetSize,
+        onComplete: (pattern, patternStr) => {
+          this.handleModalPatternComplete(pattern, patternStr);
+        }
+      });
+    }
   }
 
   /**
@@ -293,253 +643,275 @@ export class ScreenLockerController {
   }
 
   /**
-   * Gắn các sự kiện nhập liệu trên Locker
+   * Gắn các sự kiện điều khiển màn hình khóa và modal
    */
   private bindEvents(): void {
-    const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-    const keypad = document.getElementById('lockerKeypad');
-    const unlockBtn = document.getElementById('lockerUnlockBtn');
-    const toggleEyeBtn = document.getElementById('pinToggleVisibilityBtn');
-    const openChangePinBtn = document.getElementById('lockerOpenChangePinBtn');
-    const cancelChangePinBtn = document.getElementById('cancelChangePinBtn');
-    const saveNewPinBtn = document.getElementById('saveNewPinBtn');
+    // 1. Nút Xóa vẽ lại trên màn hình chính
+    const mainClearBtn = document.getElementById('mainClearPatternBtn');
+    if (mainClearBtn) {
+      mainClearBtn.addEventListener('click', () => {
+        this.mainPatternWidget?.clear();
+        this.showMessage('', 'neutral');
+      });
+    }
 
-    // 1. Sự kiện trên 6 ô input số (Laptop / Bàn phím vật lý)
-    inputs.forEach((input, index) => {
-      input.addEventListener('input', () => {
-        const val = input.value.replace(/\D/g, '');
-        input.value = val ? val[0] : '';
-        this.syncInputsToPinString();
+    // 2. Mở Modal Đổi mẫu hình
+    const openChangeModalBtn = document.getElementById('lockerOpenChangePatternBtn');
+    if (openChangeModalBtn) {
+      openChangeModalBtn.addEventListener('click', () => {
+        this.openChangePatternModal();
+      });
+    }
 
-        if (val && index < inputs.length - 1) {
-          inputs[index + 1].focus();
-        }
+    // 3. Đóng Modal
+    const cancelChangeModalBtn = document.getElementById('cancelChangePatternBtn');
+    if (cancelChangeModalBtn) {
+      cancelChangeModalBtn.addEventListener('click', () => {
+        this.closeChangePatternModal();
+      });
+    }
 
-        if (this.currentPinInput.length === 6) {
-          this.verifyPin();
+    // 4. Vẽ lại bước hiện tại trong modal
+    const modalClearBtn = document.getElementById('modalClearPatternBtn');
+    if (modalClearBtn) {
+      modalClearBtn.addEventListener('click', () => {
+        this.modalPatternWidget?.clear();
+        const msg = document.getElementById('changePatternMsg');
+        if (msg) msg.textContent = '';
+      });
+    }
+
+    // 5. Đặt lại về mặc định
+    const resetDefaultBtn = document.getElementById('modalResetDefaultPatternBtn');
+    if (resetDefaultBtn) {
+      resetDefaultBtn.addEventListener('click', () => {
+        if (window.confirm('Bạn có chắc muốn đặt lại mẫu hình mở khóa về mặc định không?')) {
+          this.setStoredPattern(DEFAULT_PATTERN);
+          const msg = document.getElementById('changePatternMsg');
+          if (msg) {
+            msg.textContent = '✅ Đã đặt lại về mẫu hình mặc định thành công!';
+            msg.style.color = '#34d399';
+          }
+          setTimeout(() => {
+            this.closeChangePatternModal();
+            this.showMessage('Đã đặt lại về mẫu hình mặc định.', 'neutral');
+          }, 800);
         }
       });
+    }
 
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace') {
-          if (!input.value && index > 0) {
-            inputs[index - 1].focus();
-            inputs[index - 1].value = '';
-            this.syncInputsToPinString();
-          }
-        } else if (e.key === 'ArrowLeft' && index > 0) {
-          inputs[index - 1].focus();
-        } else if (e.key === 'ArrowRight' && index < inputs.length - 1) {
-          inputs[index + 1].focus();
-        } else if (e.key === 'Enter') {
-          this.verifyPin();
-        }
-      });
-
-      input.addEventListener('paste', (e: ClipboardEvent) => {
-        e.preventDefault();
-        const pastedData = (e.clipboardData?.getData('text') || '').replace(/\D/g, '').slice(0, 6);
-        if (pastedData) {
-          for (let i = 0; i < 6; i++) {
-            if (inputs[i]) {
-              inputs[i].value = pastedData[i] || '';
-            }
-          }
-          this.syncInputsToPinString();
-          const nextIndex = Math.min(pastedData.length, 5);
-          inputs[nextIndex]?.focus();
-          if (pastedData.length === 6) {
-            this.verifyPin();
-          }
-        }
-      });
-    });
-
-    // 1b. Hỗ trợ gõ trực tiếp từ bàn phím Laptop ngay cả khi chưa click vào ô
+    // 6. Hỗ trợ phím số 1-9 và Enter trên bàn phím Laptop
     document.addEventListener('keydown', (e) => {
       if (!this.isLocked) return;
 
-      // Chặn phím Escape không cho thoát màn hình khóa
+      // Chặn Escape không cho đóng màn hình khóa chính
       if (e.key === 'Escape') {
+        const modal = document.getElementById('lockerChangePatternModal');
+        if (modal?.classList.contains('show')) {
+          this.closeChangePatternModal();
+        }
         e.preventDefault();
         e.stopPropagation();
         return;
       }
 
-      // Chỉ áp dụng điều hướng phím gõ nhanh trên Laptop (> 768px)
-      if (window.innerWidth > 768) {
-        const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-        const isAlreadyInPinBox = document.activeElement?.classList.contains('pin-digit-box');
-        const isInChangePinModal = document.activeElement?.closest('#lockerChangePinModal');
+      const modal = document.getElementById('lockerChangePatternModal');
+      const isModalOpen = modal?.classList.contains('show');
 
-        if (isInChangePinModal) return;
-
-        if (!isAlreadyInPinBox && /^[0-9]$/.test(e.key)) {
-          // Người dùng đang bấm phím số khi chưa focus vào ô
-          if (this.currentPinInput.length < 6) {
-            this.currentPinInput += e.key;
-            this.syncPinStringToInputs();
-            const nextIdx = Math.min(this.currentPinInput.length, 5);
-            inputs[nextIdx]?.focus();
-
-            if (this.currentPinInput.length === 6) {
-              this.verifyPin();
-            }
+      // Nhập phím số 1-9
+      if (/^[1-9]$/.test(e.key)) {
+        const num = parseInt(e.key, 10);
+        if (isModalOpen) {
+          this.modalPatternWidget?.addNodeByKey(num);
+        } else {
+          this.mainPatternWidget?.addNodeByKey(num);
+        }
+      } else if (e.key === 'Enter') {
+        if (isModalOpen) {
+          const pat = this.modalPatternWidget?.getPattern() || [];
+          if (pat.length > 0) {
+            this.handleModalPatternComplete(pat, pat.join('-'));
           }
-        } else if (!isAlreadyInPinBox && e.key === 'Backspace') {
-          if (this.currentPinInput.length > 0) {
-            this.currentPinInput = this.currentPinInput.slice(0, -1);
-            this.syncPinStringToInputs();
-            const nextIdx = Math.max(this.currentPinInput.length, 0);
-            inputs[nextIdx]?.focus();
+        } else {
+          const pat = this.mainPatternWidget?.getPattern() || [];
+          if (pat.length > 0) {
+            this.verifyMainPattern(pat.join('-'));
           }
-        } else if (!isAlreadyInPinBox && e.key === 'Enter') {
-          this.verifyPin();
+        }
+      } else if (e.key === 'Backspace') {
+        if (isModalOpen) {
+          this.modalPatternWidget?.removeLastNode();
+        } else {
+          this.mainPatternWidget?.removeLastNode();
         }
       }
     });
 
-    // 2. Sự kiện Bàn phím 9 nút số cảm ứng (Keypad — Cho Mobile & Tablet)
-    if (keypad) {
-      keypad.addEventListener('click', (e) => {
-        const btn = (e.target as HTMLElement).closest('.keypad-btn') as HTMLElement;
-        if (!btn) return;
-
-        const key = btn.getAttribute('data-key');
-        const action = btn.getAttribute('data-action');
-
-        // Phản hồi xúc giác rung nhẹ trên di động (Haptic feedback)
-        if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
-          try {
-            navigator.vibrate(25);
-          } catch {}
-        }
-
-        if (key !== null) {
-          if (this.currentPinInput.length < 6) {
-            this.currentPinInput += key;
-            this.syncPinStringToInputs();
-            if (this.currentPinInput.length === 6) {
-              this.verifyPin();
-            }
-          }
-        } else if (action === 'backspace') {
-          if (this.currentPinInput.length > 0) {
-            this.currentPinInput = this.currentPinInput.slice(0, -1);
-            this.syncPinStringToInputs();
-          }
-        } else if (action === 'clear') {
-          this.clearPin();
-        }
-      });
-    }
-
-    // 3. Nút Unlock
-    if (unlockBtn) {
-      unlockBtn.addEventListener('click', () => {
-        this.verifyPin();
-      });
-    }
-
-    // 4. Toggle hiện/ẩn PIN
-    if (toggleEyeBtn) {
-      toggleEyeBtn.addEventListener('click', () => {
-        this.isMasked = !this.isMasked;
-        const icon = document.getElementById('pinToggleEyeIcon');
-        const text = document.getElementById('pinToggleEyeText');
-        inputs.forEach((input) => {
-          if (this.isMasked) {
-            input.type = 'password';
-            input.classList.remove('show-text');
-          } else {
-            input.type = 'text';
-            input.classList.add('show-text');
-          }
-        });
-        if (icon && text) {
-          icon.className = this.isMasked ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
-          text.textContent = this.isMasked ? 'Hiện mã' : 'Ẩn mã';
-        }
-      });
-    }
-
-    // 5. Đổi mã PIN Modal
-    if (openChangePinBtn) {
-      openChangePinBtn.addEventListener('click', () => {
-        const modal = document.getElementById('lockerChangePinModal');
-        if (modal) {
-          modal.classList.add('show');
-          const oldInput = document.getElementById('oldPinInput') as HTMLInputElement;
-          if (oldInput) {
-            oldInput.value = '';
-            oldInput.focus();
-          }
-        }
-      });
-    }
-
-    if (cancelChangePinBtn) {
-      cancelChangePinBtn.addEventListener('click', () => {
-        document.getElementById('lockerChangePinModal')?.classList.remove('show');
-      });
-    }
-
-    if (saveNewPinBtn) {
-      saveNewPinBtn.addEventListener('click', () => {
-        this.handleSaveNewPin();
-      });
-    }
-  }
-
-  /**
-   * Đồng bộ chuỗi PIN từ các ô input
-   */
-  private syncInputsToPinString(): void {
-    const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-    let str = '';
-    inputs.forEach((inp) => {
-      str += inp.value ? inp.value[0] : '';
+    // Tự động điều chỉnh kích thước khi xoay màn hình hoặc resize
+    window.addEventListener('resize', () => {
+      if (!this.isLocked) return;
+      // Tránh tái khởi tạo liên tục, widget tự co dãn theo CSS aspect-ratio
     });
-    this.currentPinInput = str;
-    this.updateDots();
   }
 
   /**
-   * Đồng bộ chuỗi PIN ngược lại vào các ô input và dots
+   * Xác thực mẫu hình mở khóa trên Màn hình chính
    */
-  private syncPinStringToInputs(): void {
-    const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-    inputs.forEach((inp, idx) => {
-      inp.value = this.currentPinInput[idx] || '';
-    });
-    this.updateDots();
+  private verifyMainPattern(patternStr: string): void {
+    if (this.isPatternValid(patternStr)) {
+      this.mainPatternWidget?.showSuccess();
+      this.unlock();
+    } else {
+      this.mainPatternWidget?.showError();
+      this.triggerShake();
+      this.showMessage('❌ Mẫu hình không chính xác. Vui lòng vẽ lại!', 'error');
+    }
   }
 
   /**
-   * Cập nhật 6 chấm tròn trạng thái (Dots)
+   * Xử lý quy trình đổi mẫu hình 3 bước trong Modal
    */
-  private updateDots(): void {
-    const dots = document.querySelectorAll('.pin-dot');
-    dots.forEach((dot, idx) => {
-      if (idx < this.currentPinInput.length) {
-        dot.classList.add('filled');
+  private handleModalPatternComplete(pattern: number[], patternStr: string): void {
+    const msg = document.getElementById('changePatternMsg');
+    const guide = document.getElementById('changePatternGuide');
+
+    if (this.changeStep === 1) {
+      // BƯỚC 1: Xác nhận mẫu hình hiện tại
+      if (this.isPatternValid(patternStr)) {
+        this.modalPatternWidget?.showSuccess();
+        if (msg) {
+          msg.textContent = '✅ Xác thực thành công! Hãy vẽ hình mới.';
+          msg.style.color = '#34d399';
+        }
+
+        setTimeout(() => {
+          this.changeStep = 2;
+          this.updateChangeStepUI();
+          this.modalPatternWidget?.clear();
+          if (msg) msg.textContent = '';
+        }, 450);
       } else {
-        dot.classList.remove('filled');
+        this.modalPatternWidget?.showError();
+        if (msg) {
+          msg.textContent = '❌ Mẫu hình hiện tại không đúng. Vui lòng vẽ lại!';
+          msg.style.color = '#f87171';
+        }
       }
-    });
+    } else if (this.changeStep === 2) {
+      // BƯỚC 2: Vẽ mẫu hình mới (tối thiểu 4 điểm)
+      if (pattern.length < 4) {
+        this.modalPatternWidget?.showError();
+        if (msg) {
+          msg.textContent = '⚠️ Mẫu hình quá ngắn! Vui lòng nối ít nhất 4 điểm.';
+          msg.style.color = '#fbbf24';
+        }
+        return;
+      }
+
+      this.tempNewPattern = patternStr;
+      this.modalPatternWidget?.showSuccess();
+      if (msg) {
+        msg.textContent = '✅ Mẫu hình hợp lệ. Hãy vẽ lại để xác nhận.';
+        msg.style.color = '#34d399';
+      }
+
+      setTimeout(() => {
+        this.changeStep = 3;
+        this.updateChangeStepUI();
+        this.modalPatternWidget?.clear();
+        if (msg) msg.textContent = '';
+      }, 450);
+    } else if (this.changeStep === 3) {
+      // BƯỚC 3: Vẽ lại để xác nhận
+      if (patternStr === this.tempNewPattern) {
+        this.modalPatternWidget?.showSuccess();
+        this.setStoredPattern(this.tempNewPattern);
+
+        if (msg) {
+          msg.textContent = '🎉 Đã lưu thay đổi mẫu hình 9 nút thành công!';
+          msg.style.color = '#34d399';
+        }
+
+        setTimeout(() => {
+          this.closeChangePatternModal();
+          this.showMessage('Đã lưu mẫu hình mới. Hãy vẽ để mở khóa.', 'neutral');
+        }, 900);
+      } else {
+        this.modalPatternWidget?.showError();
+        if (msg) {
+          msg.textContent = '❌ Mẫu hình xác nhận không khớp! Quay lại vẽ hình mới...';
+          msg.style.color = '#f87171';
+        }
+
+        setTimeout(() => {
+          this.changeStep = 2;
+          this.updateChangeStepUI();
+          this.modalPatternWidget?.clear();
+          if (msg) msg.textContent = '';
+        }, 850);
+      }
+    }
   }
 
   /**
-   * Xóa toàn bộ ký tự PIN đã nhập
+   * Cập nhật UI hướng dẫn và pills trạng thái của Modal
    */
-  private clearPin(): void {
-    this.currentPinInput = '';
-    const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-    inputs.forEach((inp) => (inp.value = ''));
-    this.updateDots();
-    if (window.innerWidth > 768) {
-      inputs[0]?.focus();
+  private updateChangeStepUI(): void {
+    const pill1 = document.getElementById('stepPill1');
+    const pill2 = document.getElementById('stepPill2');
+    const pill3 = document.getElementById('stepPill3');
+    const guide = document.getElementById('changePatternGuide');
+
+    if (!pill1 || !pill2 || !pill3 || !guide) return;
+
+    pill1.className = 'change-step-pill';
+    pill2.className = 'change-step-pill';
+    pill3.className = 'change-step-pill';
+
+    if (this.changeStep === 1) {
+      pill1.classList.add('active');
+      guide.textContent = 'Vẽ mẫu hình hiện tại để xác thực';
+    } else if (this.changeStep === 2) {
+      pill1.classList.add('completed');
+      pill2.classList.add('active');
+      guide.textContent = 'Vẽ mẫu hình mới (nối ít nhất 4 điểm)';
+    } else if (this.changeStep === 3) {
+      pill1.classList.add('completed');
+      pill2.classList.add('completed');
+      pill3.classList.add('active');
+      guide.textContent = 'Vẽ lại mẫu hình mới để xác nhận';
     }
+  }
+
+  /**
+   * Mở Modal Đổi mẫu hình
+   */
+  private openChangePatternModal(): void {
+    const modal = document.getElementById('lockerChangePatternModal');
+    if (!modal) return;
+
+    this.changeStep = 1;
+    this.tempNewPattern = '';
+    this.updateChangeStepUI();
+    this.modalPatternWidget?.clear();
+
+    const msg = document.getElementById('changePatternMsg');
+    if (msg) msg.textContent = '';
+
+    modal.classList.add('show');
+  }
+
+  /**
+   * Đóng Modal Đổi mẫu hình
+   */
+  private closeChangePatternModal(): void {
+    const modal = document.getElementById('lockerChangePatternModal');
+    if (modal) {
+      modal.classList.remove('show');
+    }
+    this.changeStep = 1;
+    this.tempNewPattern = '';
+    this.modalPatternWidget?.clear();
   }
 
   /**
@@ -558,16 +930,8 @@ export class ScreenLockerController {
       sessionStorage.setItem(STORAGE_KEY_LOCKED, 'true');
     } catch {}
 
-    this.clearPin();
+    this.mainPatternWidget?.clear();
     this.showMessage('', 'neutral');
-
-    // Tự động focus vào ô đầu tiên trên Laptop
-    setTimeout(() => {
-      const firstInput = document.querySelector<HTMLInputElement>('.pin-digit-box');
-      if (firstInput && window.innerWidth > 768) {
-        firstInput.focus();
-      }
-    }, 150);
   }
 
   /**
@@ -584,12 +948,6 @@ export class ScreenLockerController {
 
     this.showMessage('✅ Xác thực thành công! Đang vào phiên...', 'success');
 
-    // Đổi màu thành công cho dots và input
-    const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-    inputs.forEach((inp) => inp.classList.add('success'));
-    const dots = document.querySelectorAll('.pin-dot');
-    dots.forEach((dot) => dot.classList.add('success'));
-
     try {
       sessionStorage.setItem(STORAGE_KEY_LOCKED, 'false');
     } catch {}
@@ -602,53 +960,13 @@ export class ScreenLockerController {
       if (icon) {
         icon.className = 'fa-solid fa-lock';
       }
-      inputs.forEach((inp) => inp.classList.remove('success'));
-      dots.forEach((dot) => dot.classList.remove('success'));
-      this.clearPin();
+      this.mainPatternWidget?.clear();
       this.showMessage('', 'neutral');
     }, 380);
   }
 
   /**
-   * Kiểm tra mã PIN đã nhập
-   */
-  private verifyPin(): void {
-    if (this.currentPinInput.length < 6) {
-      this.showMessage('Vui lòng nhập đủ 6 chữ số!', 'error');
-      this.triggerShake();
-      return;
-    }
-
-    const storedPin = this.getStoredPin();
-    if (this.currentPinInput === storedPin) {
-      this.unlock();
-    } else {
-      this.showMessage('❌ Mã PIN không chính xác. Vui lòng thử lại!', 'error');
-      this.triggerShake();
-
-      // Rung phản hồi lỗi trên thiết bị cảm ứng
-      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
-        try {
-          navigator.vibrate([80, 40, 80]);
-        } catch {}
-      }
-
-      // Đổi màu viền lỗi tạm thời
-      const inputs = document.querySelectorAll<HTMLInputElement>('.pin-digit-box');
-      inputs.forEach((inp) => inp.classList.add('error'));
-      const dots = document.querySelectorAll('.pin-dot');
-      dots.forEach((dot) => dot.classList.add('error'));
-
-      setTimeout(() => {
-        inputs.forEach((inp) => inp.classList.remove('error'));
-        dots.forEach((dot) => dot.classList.remove('error'));
-        this.clearPin();
-      }, 600);
-    }
-  }
-
-  /**
-   * Hiệu ứng rung lắc khi sai mã
+   * Hiệu ứng rung lắc khi sai hình
    */
   private triggerShake(): void {
     const card = document.getElementById('lockerCard');
@@ -673,52 +991,6 @@ export class ScreenLockerController {
     feedback.className = 'locker-feedback-msg';
     if (type === 'error') feedback.classList.add('error');
     if (type === 'success') feedback.classList.add('success');
-  }
-
-  /**
-   * Xử lý Đổi mã PIN mới trong Modal
-   */
-  private handleSaveNewPin(): void {
-    const oldInput = document.getElementById('oldPinInput') as HTMLInputElement;
-    const newInput = document.getElementById('newPinInput') as HTMLInputElement;
-    const confirmInput = document.getElementById('confirmPinInput') as HTMLInputElement;
-    const msg = document.getElementById('changePinMsg');
-
-    if (!oldInput || !newInput || !confirmInput || !msg) return;
-
-    const oldVal = oldInput.value.trim();
-    const newVal = newInput.value.trim();
-    const confirmVal = confirmInput.value.trim();
-
-    const storedPin = this.getStoredPin();
-    if (oldVal !== storedPin) {
-      msg.textContent = '❌ Mã PIN hiện tại không đúng!';
-      msg.style.color = '#f87171';
-      return;
-    }
-
-    if (!/^\d{6}$/.test(newVal)) {
-      msg.textContent = '❌ Mã PIN mới phải gồm đúng 6 chữ số (0-9)!';
-      msg.style.color = '#f87171';
-      return;
-    }
-
-    if (newVal !== confirmVal) {
-      msg.textContent = '❌ Xác nhận mã PIN mới không khớp!';
-      msg.style.color = '#f87171';
-      return;
-    }
-
-    this.setStoredPin(newVal);
-    msg.textContent = '✅ Đã đổi mã PIN thành công!';
-    msg.style.color = '#34d399';
-
-    setTimeout(() => {
-      document.getElementById('lockerChangePinModal')?.classList.remove('show');
-      msg.textContent = '';
-      this.clearPin();
-      this.showMessage('Đã cập nhật mã PIN mới. Vui lòng nhập để mở khóa.', 'neutral');
-    }, 1000);
   }
 
   /**

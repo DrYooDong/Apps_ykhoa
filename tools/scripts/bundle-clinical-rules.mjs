@@ -17,6 +17,30 @@ const DOCSPACE_DATA_DIR = path.resolve(__dirname, '../../src/content/docspace/da
 const DISEASES_DIR = path.join(DOCSPACE_DATA_DIR, 'diseases');
 const OUT_KB_PATH = path.join(DOCSPACE_DATA_DIR, 'clinical-rules-kb.json');
 
+function sanitizeHtmlEntities(str) {
+  if (typeof str !== 'string') return str;
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&gt;/g, '>')
+    .replace(/&lt;/g, '<')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
+function deepSanitize(obj) {
+  if (typeof obj === 'string') return sanitizeHtmlEntities(obj);
+  if (Array.isArray(obj)) return obj.map(deepSanitize);
+  if (obj && typeof obj === 'object') {
+    const res = {};
+    for (const [k, v] of Object.entries(obj)) {
+      res[k] = deepSanitize(v);
+    }
+    return res;
+  }
+  return obj;
+}
+
 function bundleDiseases() {
   console.log('🔄 Đang gom các tệp bệnh lý chuyên khoa từ:', DISEASES_DIR);
 
@@ -63,6 +87,15 @@ function bundleDiseases() {
               fileModified = true;
             }
           }
+
+          // Auto-Sanitizer: Khử sạch các ký tự HTML entity
+          const sanitizedD = deepSanitize(d);
+          if (JSON.stringify(sanitizedD) !== JSON.stringify(d)) {
+            console.log(`🧹 Auto-Sanitizer: Đã làm sạch HTML entities trong bệnh "${d.id}" (${file})`);
+            d = sanitizedD;
+            fileModified = true;
+          }
+
           normalizedItems.push(d);
 
           if (seenIds.has(d.id)) {
@@ -100,7 +133,7 @@ function bundleDiseases() {
       delete kb.trieuChung; // Giảm gánh nặng: Triệu chứng đã được quản lý độc lập tại clinical-rules-symptoms.json
 
       if (!kb.meta) kb.meta = {};
-      kb.meta.ten = 'Kho tri thức bệnh học lâm sàng — Master Diseases Database (33 Bệnh lý)';
+      kb.meta.ten = `Kho tri thức bệnh học lâm sàng — Master Diseases Database (${allDiseases.length} Bệnh lý)`;
       kb.meta.capNhat = new Date().toISOString();
       kb.meta.symptomsSource = 'clinical-rules-symptoms.json';
       kb.meta.totalDiseases = allDiseases.length;

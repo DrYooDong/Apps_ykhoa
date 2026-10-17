@@ -88,5 +88,111 @@
       "đầu sứa quanh rốn"
     ],
     "map": null
+  },
+  {
+    "id": "mach_nhanh",
+    "ten": "Mạch nhanh (Nhịp tim > 90 lần/phút)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "mạch nhanh",
+      "nhịp tim nhanh",
+      "tachycardia"
+    ],
+    "aliases": [
+      "tim đập nhanh",
+      "mạch quay nhanh"
+    ],
+    "map": {
+      "fld": "vMach",
+      "op": ">",
+      "val": 90
+    }
+  },
+  {
+    "id": "mach_rat_nhanh",
+    "ten": "Mạch rất nhanh (Nhịp tim > 120 lần/phút)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "mạch rất nhanh",
+      "nhịp tim rất nhanh",
+      "severe tachycardia"
+    ],
+    "aliases": [
+      "mạch nhanh nhỏ",
+      "nhịp tim dồn dập"
+    ],
+    "map": {
+      "fld": "vMach",
+      "op": ">",
+      "val": 120
+    }
+  },
+  {
+    "id": "tut_huyet_ap",
+    "ten": "Tụt huyết áp (HATT < 90 mmHg)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "tụt huyết áp",
+      "huyết áp tụt",
+      "hypotension"
+    ],
+    "aliases": [
+      "ha tụt",
+      "huyết áp thấp cấp tính"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<",
+      "val": 90
+    }
+  },
+  {
+    "id": "ha_huyet_ap",
+    "ten": "Hạ huyết áp (HATT ≤ 100 mmHg)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "hạ huyết áp",
+      "huyết áp giảm",
+      "low blood pressure"
+    ],
+    "aliases": [
+      "huyết áp thấp",
+      "hatt <= 100"
+    ],
+    "map": {
+      "fld": "vHATT",
+      "op": "<=",
+      "val": 100
+    }
+  },
+  {
+    "id": "huyet_ap_kep",
+    "ten": "Huyết áp kẹp (Hiệu áp ≤ 20 mmHg)",
+    "nhom": "Tim mạch",
+    "loai": [
+      "tt"
+    ],
+    "tuKhoa": [
+      "huyết áp kẹp",
+      "ha kẹp",
+      "narrow pulse pressure"
+    ],
+    "aliases": [
+      "hiệu áp kẹp",
+      "khoảng cách ha <= 20"
+    ],
+    "map": null
   }
 ]

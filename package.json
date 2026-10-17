@@ -26,8 +26,11 @@
     "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
     "sync:cdss": "node tools/scripts/sync-clinical-db.mjs",
     "sync:soap": "node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba",
+    "validate:cdss": "node tools/scripts/validate-docspace-pipeline.mjs",
+    "docspace:sync": "node tools/scripts/sync-clinical-db.mjs",
+    "docspace:validate": "node tools/scripts/validate-docspace-pipeline.mjs",
     "validate:soap": "node tools/scripts/validate-soap-catalog.mjs",
-    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode && npm run validate:soap"
+    "validate:all": "npm run typecheck && npm run lint:content && npm run audit:deadcode && npm run validate:cdss && npm run validate:soap"
   },
   "keywords": [
     "medical",

@@ -20,16 +20,20 @@ const ROOT_DIR = path.resolve(__dirname, '../..');
 
 const steps = [
   {
-    title: 'Bước 1/3: Gom cụm 12 tệp triệu chứng & 9 tệp bệnh lý (Master KB)',
+    title: 'Bước 1/4: Gom cụm 12 tệp triệu chứng & 9 tệp bệnh lý (Master KB & Zero HTML Entities)',
     command: 'node tools/scripts/bundle-clinical-rules.mjs'
   },
   {
-    title: 'Bước 2/3: Đồng bộ các tệp enriched/<slug>.json vào CSDL CDSS',
+    title: 'Bước 2/4: Đồng bộ Kho Hội chứng Lâm sàng (Syndrome Registry)',
+    command: 'node tools/scripts/build-syndrome-registry.mjs'
+  },
+  {
+    title: 'Bước 3/4: Đồng bộ các tệp enriched/<slug>.json vào CSDL CDSS',
     command: 'node tools/scripts/build-enriched-cdss.mjs'
   },
   {
-    title: 'Bước 3/3: Kiểm định tính hợp lệ & chất lượng CSDL Kho Chẩn Đoán',
-    command: 'node tools/scripts/validate-kho-db.mjs'
+    title: 'Bước 4/4: Kiểm định Ràng buộc 4 Bước & Tính Toàn Vẹn Biện Luận Lâm Sàng',
+    command: 'node tools/scripts/validate-docspace-pipeline.mjs'
   }
 ];
 

@@ -1,6 +1,6 @@
 # 📘 CLINIPORTAL — DANH MỤC TỪ VỰNG LÂM SÀNG CHUẨN (MASTER SYMPTOM DICTIONARY)
 
-> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-10-17 | **Tổng số triệu chứng chuẩn**: 79
+> **Phiên bản**: v5.0 | **Ngày cập nhật**: 2026-10-17 | **Tổng số triệu chứng chuẩn**: 116
 > **Vị trí lưu trữ**: `src/content/docspace/data/DOCSPACE_MASTER_SYMPTOM_DICTIONARY.md`
 > **Mục đích**: Bản đồ từ vựng tham chiếu chuẩn mực (Anchor Vocabulary). Dùng để nạp trực tiếp vào **Google NotebookLM** cùng với tài liệu Guideline để AI đối chiếu, tái sử dụng mã ID sẵn có và tuyệt đối tránh tạo triệu chứng trùng lặp.
 
@@ -31,7 +31,7 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 
 ## 🗂️ BẢNG TỪ VỰNG CHI TIẾT THEO HỆ CƠ QUAN
 
-### 1. Toàn thân & Sinh hiệu chung (`toan-than.json` — 8 mục)
+### 1. Toàn thân & Sinh hiệu chung (`toan-than.json` — 12 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -43,8 +43,12 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 6 | `met_moi` | Mệt mỏi kéo dài, uể oải, suy nhược | CN | mệt mỏi kéo dài, uể oải suy nhược, fatigue chronic, mệt rũ, người không có sức, suy nhược cơ thể kéo dài | — |
 | 7 | `phu_hai_chan` | Phù mềm hai chi dưới, ấn lõm không đau | TT | phù chân, phù hai chân, phù mắt cá, phù mềm ấn lõm, lower extremity edema, phù mu chân, phù cẳng chân, sưng phù 2 chân | — |
 | 8 | `vu_to_nam_gioi_gynecomastia` | Nữ hóa tuyến vú ở nam giới (Gynecomastia) | TT | vú to nam giới, gynecomastia, tuyến vú phát triển ở nam, nữ hóa tuyến vú, vú to ở đàn ông | — |
+| 9 | `sot` | Sốt (Thân nhiệt ≥ 38.0°C) | CN, TT | sốt, nhiệt độ tăng, nóng sốt, thân nhiệt cao, fever, pyrexia, sốt nhẹ đến vừa, nóng mình | `vNhiet >= 38` |
+| 10 | `sot_cao` | Sốt cao (Thân nhiệt ≥ 39.0°C) | CN, TT | sốt cao, sốt dữ dội, thân nhiệt >= 39, high fever, sốt cao liên tục, sốt 39-40 độ, sốt khó hạ | `vNhiet >= 39` |
+| 11 | `sot_cao_ret_run` | Sốt cao rét run | CN, TT | sốt rét run, rét run, ớn lạnh, chills, rigors, sốt run cầm cập, lên cơn rét run | — |
+| 12 | `sot_nhe_giai_doan_khoi_phat` | Sốt nhẹ khởi phát (Thân nhiệt 37.5 - 38.0°C) | CN, TT | sốt nhẹ, hâm hấp sốt, low grade fever, sốt âm ỉ, người âm ấm | `vNhiet >= 37.5` |
 
-### 2. Hệ Tim mạch & Huyết động (`tim-mach.json` — 4 mục)
+### 2. Hệ Tim mạch & Huyết động (`tim-mach.json` — 9 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -52,8 +56,13 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 2 | `chi_lanh_crt_keo_dai` | Đầu chi lạnh, ẩm, thời gian đổ đầy mao mạch CRT ≥ 2s | TT | chi lạnh, crt kéo dài, đầu chi lạnh ẩm, tưới máu kém, tay chân lạnh, chi mát ẩm, crt >= 2s | — |
 | 3 | `viem_co_tim_suy_tim_dengue` | Viêm cơ tim, suy tim do Dengue (Tim nhanh, men tim Troponin I tăng) | TT, CLS | viêm cơ tim, suy tim, troponin tăng, myocarditis, tổn thương cơ tim do dengue, sốc tim do dengue | `lTrop >= 14` |
 | 4 | `tuan_hoan_bang_he_cua_chu` | Tuần hoàn bàng hệ kiểu gánh - chủ (Cửa - chủ) quanh rốn | TT | tuần hoàn bàng hệ, bàng hệ cửa chủ, caput medusae, tĩnh mạch nổi quanh rốn, tuần hoàn gánh chủ, đầu sứa quanh rốn | — |
+| 5 | `mach_nhanh` | Mạch nhanh (Nhịp tim > 90 lần/phút) | TT | mạch nhanh, nhịp tim nhanh, tachycardia, tim đập nhanh, mạch quay nhanh | `vMach > 90` |
+| 6 | `mach_rat_nhanh` | Mạch rất nhanh (Nhịp tim > 120 lần/phút) | TT | mạch rất nhanh, nhịp tim rất nhanh, severe tachycardia, mạch nhanh nhỏ, nhịp tim dồn dập | `vMach > 120` |
+| 7 | `tut_huyet_ap` | Tụt huyết áp (HATT < 90 mmHg) | TT | tụt huyết áp, huyết áp tụt, hypotension, ha tụt, huyết áp thấp cấp tính | `vHATT < 90` |
+| 8 | `ha_huyet_ap` | Hạ huyết áp (HATT ≤ 100 mmHg) | TT | hạ huyết áp, huyết áp giảm, low blood pressure, huyết áp thấp, hatt <= 100 | `vHATT <= 100` |
+| 9 | `huyet_ap_kep` | Huyết áp kẹp (Hiệu áp ≤ 20 mmHg) | TT | huyết áp kẹp, ha kẹp, narrow pulse pressure, hiệu áp kẹp, khoảng cách ha <= 20 | — |
 
-### 3. Hệ Hô hấp & Lồng ngực (`ho-hap.json` — 5 mục)
+### 3. Hệ Hô hấp & Lồng ngực (`ho-hap.json` — 12 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -62,8 +71,15 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 3 | `phu_phoi_cap_do_qua_tai_dich` | Phù phổi cấp do quá tải dịch truyền (Khó thở, trào bọt hồng, ran ẩm nổ) | TT, CLS | phù phổi cấp, quá tải dịch, bọt hồng, ran ẩm, suy hô hấp do quá tải, phù phổi do truyền dịch | — |
 | 4 | `kho_tho` | Khó thở khi nằm hoặc khi gắng sức | CN | khó thở khi nằm, khó thở gắng sức, hụt hơi khó thở, dyspnea on exertion, thở mệt, khó thở về đêm, thở hụt hơi | — |
 | 5 | `spo2_giam` | Độ bão hòa oxy máu giảm SpO₂ < 95% khi thở khí phòng | TT, CLS | spo2 tụt, giảm oxy máu, hypoxemia, oxy máu thấp, độ bão hòa oxy giảm, spo2 dưới 95% | `vSpo2 < 95` |
+| 6 | `tho_nhanh` | Thở nhanh (Nhịp thở > 20 lần/phút) | TT | thở nhanh, nhịp thở tăng, tachypnea, thở gấp, nhịp thở nhanh | `vTho > 20` |
+| 7 | `tho_nhanh_nang` | Thở rất nhanh (Nhịp thở ≥ 30 lần/phút) | TT | thở rất nhanh, thở co kéo, severe tachypnea, thở hổn hển, thở dốc | `vTho >= 30` |
+| 8 | `tho_cham` | Thở chậm (Nhịp thở < 10 lần/phút) | TT | thở chậm, ức chế hô hấp, bradypnea, nhịp thở yếu, thở ngáp | `vTho < 10` |
+| 9 | `kho_tho_khi_nam` | Khó thở khi nằm đầu bằng (Orthopnea) | CN, TT | khó thở khi nằm, orthopnea, phải ngồi thở, ngồi dậy mới thở được, khó thở kịch phát về đêm | — |
+| 10 | `ran_o_phoi` | Ran ẩm hoặc ran nổ ở phổi | TT | ran phổi, ran ẩm, ran nổ, crackles, rales, nghe phổi có ran, ran ứ đọng | — |
+| 11 | `giam_spo2` | Giảm SpO₂ máu (< 95%) | TT | giảm spo2, tụt oxy máu, hypoxemia, độ bão hòa oxy giảm, spo2 dưới 95 | `vSpo2 < 95` |
+| 12 | `suy_ho_hap_spo2_thap` | Suy hô hấp cấp (SpO₂ < 90%) | TT | suy hô hấp, spo2 tụt sâu, severe hypoxemia, suy hô hấp cấp tính, tím tái do thiếu oxy | `vSpo2 < 90` |
 
-### 4. Hệ Tiêu hóa, Gan mật & Ổ bụng (`tieu-hoa.json` — 8 mục)
+### 4. Hệ Tiêu hóa, Gan mật & Ổ bụng (`tieu-hoa.json` — 12 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -75,8 +91,12 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 6 | `co_truong_bang_bung` | Cổ trướng / Báng bụng mức độ vừa đến nhiều | TT, CLS | báng bụng vừa nhiều, cổ trướng mức độ vừa, cổ trướng lượng nhiều, báng bụng căng, báng bụng tự do, cổ trướng tự do, dịch màng bụng tự do | — |
 | 7 | `gan_nho_bo_sac_nhu_mo_tho` | Gan teo nhỏ, bờ sắc, bề mặt gồ ghề nhu mô thô trên siêu âm | TT, CLS | gan teo nhỏ, bờ sắc, nhu mô thô, gan gồ ghề, xơ teo gan, gan nhỏ bờ sắc, siêu âm gan thô gồ ghề | — |
 | 8 | `dau_tuc_ha_suon_phai` | Đau tức / tức nặng hạ sườn phải âm ỉ | CN | tức hạ sườn phải, đau âm ỉ hạ sườn phải, right upper quadrant pain, nặng hạ sườn phải, tức hsp, đau tức hsp âm ỉ | — |
+| 9 | `co_truong_dich_do_o_bung` | Cổ trướng hoặc tràn dịch tự do màng bụng | TT, CLS | cổ trướng, báng bụng, dịch ổ bụng, ascites, bụng to bè bè, dịch màng bụng tự do | — |
+| 10 | `gan_to_duoi_bo_suon` | Gan to dưới bờ sườn | TT | gan to, hepatomegaly, bờ gan dưới bờ sườn, sờ thấy gan, gan phì đại | — |
+| 11 | `phan_bac_mau` | Phân bạc màu (Phân màu đất sét / Cò cò) | CN | phân bạc màu, clay colored stool, acholic stool, phân trắng bệch, phân màu đất sét | — |
+| 12 | `dau_hieu_canh_bao_dau_bung_gan_non_oi` | Đau bụng hạ sườn phải liên tục và nôn ói nhiều | CN | đau bụng gan, đau hạ sườn phải, nôn ói nhiều, đau tức vùng gan nôn ói, dấu hiệu cảnh báo đau bụng | — |
 
-### 5. Hệ Thần kinh & Ý thức (`than-kinh.json` — 4 mục)
+### 5. Hệ Thần kinh & Ý thức (`than-kinh.json` — 9 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -84,8 +104,13 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 2 | `lu_du_vat_va_li_bi` | Vật vã, lừ đừ, li bì (Dấu hiệu cảnh báo thần kinh) | CN, TT | lừ đừ, vật vã, li bì, thay đổi tri giác, bứt rứt, tri giác lừ đừ, vật vã bứt rứt, li bì khó thức tỉnh | — |
 | 3 | `sxhd_the_nao_roi_loan_tri_giac` | SXHD thể não: Rối loạn tri giác, co giật hoặc hôn mê | CN, TT | sxh thể não, rối loạn tri giác, co giật, hôn mê, viêm não do dengue, bệnh não dengue, hôn mê co giật | — |
 | 4 | `benh_nao_gan_roi_loan_tri_giac` | Bệnh não gan / Hội chứng não gan (Lơ mơ, rối loạn tri giác, rung vẫy Asterixis) | TT, CN | bệnh não gan, hôn mê gan, hepatic encephalopathy, rung vẫy asterixis, flapping tremor, hội chứng não gan, lơ mơ do xơ gan, rối loạn ý thức do xơ gan | — |
+| 5 | `cung_gay` | Cứng gáy hoặc cổ gượng (Nuchal rigidity) | TT | cứng gáy, cổ gượng, nuchal rigidity, kháng cự gấp cổ, dấu cứng gáy | — |
+| 6 | `co_cung_gay_dau_mang_nao` | Dấu cứng gáy màng não (+) | TT | cứng gáy màng não, dấu màng não dương tính, cổ cứng đau, dấu kích thích màng não | — |
+| 7 | `cung_gay_dieu_tri_mang_nao` | Dấu màng não (Cứng gáy, Kernig (+), Brudzinski (+)) | TT | dấu màng não, kernig, brudzinski, meningeal signs, hội chứng màng não, tam chứng màng não | — |
+| 8 | `photophobia_so_anh_sang` | Sợ ánh sáng và sợ tiếng động (Photophobia) | CN | sợ ánh sáng, photophobia, chói mắt, không dám nhìn sáng, sợ tiếng động | — |
+| 9 | `roi_loan_tri_giac` | Rối loạn tri giác (Lơ mơ, li bì, bứt rứt, GCS < 15) | TT | rối loạn tri giác, lơ mơ, li bì, gcs < 15, altered mental status, tri giác u ám, hôn mê, ý thức chậm chạp | — |
 
-### 6. Da niêm & Dị ứng lâm sàng (`da-niem.json` — 7 mục)
+### 6. Da niêm & Dị ứng lâm sàng (`da-niem.json` — 10 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -96,8 +121,11 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 5 | `sa_mach_long_ban_tay_son` | Lòng bàn tay son (Palmar erythema) | TT | lòng bàn tay son, palmar erythema, bàn tay son, đỏ mô cái mô út, ửng đỏ lòng bàn tay, gan bàn tay đỏ | — |
 | 6 | `sao_mach_spider_nevi` | Dấu sao mạch (Spider angioma / Spider nevi) vùng ngực, cổ, vai | TT | sao mạch, spider nevi, spider angioma, sao mạch vùng ngực, u mạch mạng nhện, nốt sao mạch ngực cổ | — |
 | 7 | `ngua_da_do_u_mat` | Ngứa da dai dẳng do ứ mật / tăng acid mật | CN | ngứa do ứ mật, ngứa da dai dẳng, pruritus cholestasis, ngứa tăng về đêm do gan, ngứa ứ mật, ngứa sẩn do bệnh gan | — |
+| 8 | `xuat_huyet_da_niem` | Xuất huyết da niêm mạc | TT | xuất huyết da niêm, chảy máu dưới da, purpura, ecchymosis, chảy máu chân răng mũi, xuất huyết niêm mạc | — |
+| 9 | `cham_xuat_huyet_duoi_da` | Chấm xuất huyết rải rác dưới da (Petechiae) | TT | chấm xuất huyết, petechiae, nốt xuất huyết, chấm đỏ không mất khi căng da, chấm xuất huyết cẳng tay cẳng chân | — |
+| 10 | `ban_do_long_tay_palmar_erythema` | Lòng bàn tay son (Palmar erythema) | TT | lòng bàn tay son, palmar erythema, ban đỏ lòng bàn tay, gan bàn tay đỏ, bàn tay son xơ gan | — |
 
-### 7. Cận lâm sàng (Huyết học, Sinh hóa, Vi sinh, CĐHA) (`can-lam-sang.json` — 27 mục)
+### 7. Cận lâm sàng (Huyết học, Sinh hóa, Vi sinh, CĐHA) (`can-lam-sang.json` — 36 mục)
 
 | STT | Mã ID chuẩn | Tên triệu chứng lâm sàng | Loại | Từ khóa & Biến thể / Aliases | Ngưỡng tự suy |
 |:---:|:---|:---|:---:|:---|:---:|
@@ -128,6 +156,15 @@ Khi bạn (AI / NotebookLM) phân tích tài liệu lâm sàng/Guideline và tr�
 | 25 | `tc_hbv_dna_tren_nguong_phat_hien` | Định lượng HBV DNA trên ngưỡng phát hiện (≥ 2.000 - 20.000 IU/mL) | CLS | hbv dna, định lượng hbv dna, tải lượng virus viêm gan b, hbv dna cao, hbv dna (+), tải lượng hbv dna trên ngưỡng | — |
 | 26 | `xet_nghiem_hbeag_duong_tinh` | Kháng nguyên HBeAg dương tính (HBeAg (+)) | CLS | hbeag, hbeag dương tính, hbeag (+), virus nhân đôi mạnh, kháng nguyên hbeag (+), hbeag huyết thanh (+) | — |
 | 27 | `tc_anti_hbc_igm_duong_tinh` | Kháng thể Anti-HBc IgM dương tính (Viêm gan B cấp hoặc bộc phát) | CLS | anti-hbc igm, anti hbc igm dương tính, anti-hbc igm (+), đợt bộc phát viêm gan b, kháng thể kháng lõi igm (+), anti hbc igm cấp | — |
+| 28 | `co_dac_mau_hct` | Cô đặc máu (Hematocrit tăng cao) | CLS | cô đặc máu, hct tăng, hemoconcentration, hematocrit tăng cao, hct dốc đứng | `lHct >= 42` |
+| 29 | `giam_tieu_cau` | Giảm tiểu cầu (PLT < 150 G/L) | CLS | giảm tiểu cầu, plt giảm, thrombocytopenia, tiểu cầu thấp, hạ tiểu cầu | `lTC < 150` |
+| 30 | `tieu_cau_giam_nang` | Giảm tiểu cầu nặng (PLT < 50 G/L) | CLS | tiểu cầu giảm nặng, plt < 50, severe thrombocytopenia, tiểu cầu tụt sâu, tiểu cầu dưới 50 | `lTC < 50` |
+| 31 | `tieu_cau_giam_nguy_kich` | Tiểu cầu giảm nguy kịch (PLT < 20 G/L) | CLS | tiểu cầu nguy kịch, plt < 20, critical thrombocytopenia, nguy cơ xuất huyết tự nhiên, tiểu cầu dưới 20 | `lTC < 20` |
+| 32 | `giam_tieu_cau_do_trach_gan` | Giảm tiểu cầu do cường lách hoặc bệnh gan | CLS | cường lách, giảm tiểu cầu xơ gan, hypersplenism, giảm tiểu cầu lách to, hạ tiểu cầu do gan | — |
+| 33 | `bach_cau_tang` | Bạch cầu máu tăng (WBC > 10 G/L) | CLS | bạch cầu tăng, wbc tăng, leukocytosis, bạch cầu cao, bạch cầu máu tăng | `lBC > 10` |
+| 34 | `bach_cau_tang_cao` | Bạch cầu máu tăng cao (WBC > 15 G/L) | CLS | bạch cầu rất cao, wbc > 15, severe leukocytosis, bạch cầu tăng vọt, phản ứng giả bạch cầu | `lBC > 15` |
+| 35 | `inr_keo_dai_tren_1_5` | INR kéo dài > 1.5 | CLS | inr tăng, inr > 1.5, rối loạn đông máu, tỷ lệ prothrombin giảm, inr kéo dài | — |
+| 36 | `tang_bilirubin_mau` | Bilirubin toàn phần máu tăng cao | CLS | tăng bilirubin, hyperbilirubinemia, bilirubin máu cao, sắc tố mật tăng, ứ mật huyết thanh | — |
 
 ### 8. Hệ Tiết niệu & Chức năng thận (`tiet-nieu.json` — 3 mục)
 

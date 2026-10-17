@@ -1,10 +1,12 @@
 /* ============================================================
    CLINIPORTAL SCREEN LOCKER & CLINICAL SECURITY STYLES (screen-locker.css)
-   Phiên bản: 2.1 (Tái cấu trúc 2026)
+   Phiên bản: 3.0 (Pattern Lock 9 Nút Chuẩn Y Tế 2026)
    - Khởi động khóa ngay khi vào web
-   - Laptop: Chỉ nhận mã PIN từ bàn phím (Ẩn keypad)
-   - Tablet & Mobile: Lưới 9 nút số cảm ứng + 6 đèn LED Dots (Ẩn input text)
-   - Bảo mật tuyệt đối: Không lộ gợi ý mật khẩu
+   - Mở khóa bằng hình vẽ 9 nút (3x3 Pattern Lock)
+   - Hoạt động mượt mà cả Desktop (Chuột/Phím) & Mobile/Tablet (Cảm ứng)
+   - Tuyệt đối không gợi ý để lộ mật khẩu
+   - Mặc định: Chữ Z (1-2-3-5-7-8-9)
+   - Đổi và lưu mẫu hình mới vào localStorage
    ============================================================ */
 
 /* ── 1. NÚT KHÓA GIAO DIỆN TRÊN HEADER ── */
@@ -35,9 +37,9 @@
   align-items: center;
   justify-content: center;
   padding: 1.25rem 1rem;
-  background: radial-gradient(circle at 50% 15%, rgba(2, 132, 199, 0.22), transparent 60%),
-              radial-gradient(circle at 80% 85%, rgba(99, 102, 241, 0.14), transparent 55%),
-              rgba(7, 13, 27, 0.96);
+  background: radial-gradient(circle at 50% 15%, rgba(2, 132, 199, 0.24), transparent 60%),
+              radial-gradient(circle at 80% 85%, rgba(99, 102, 241, 0.16), transparent 55%),
+              rgba(7, 13, 27, 0.965);
   backdrop-filter: blur(32px) saturate(160%);
   -webkit-backdrop-filter: blur(32px) saturate(160%);
   opacity: 0;
@@ -67,12 +69,12 @@
 /* ── 3. THẺ TRUNG TÂM (LOCKER CARD) ── */
 .locker-card {
   width: 100%;
-  max-width: 450px;
+  max-width: 440px;
   margin: auto;
-  background: linear-gradient(155deg, rgba(17, 28, 68, 0.85) 0%, rgba(11, 18, 43, 0.94) 100%);
+  background: linear-gradient(155deg, rgba(17, 28, 68, 0.88) 0%, rgba(11, 18, 43, 0.96) 100%);
   border: 1px solid rgba(56, 189, 248, 0.22);
   border-radius: 28px;
-  padding: 2rem 1.75rem 1.6rem;
+  padding: 1.85rem 1.75rem 1.5rem;
   box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.8),
               0 0 50px rgba(2, 132, 199, 0.22),
               inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -114,28 +116,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .locker-icon-wrapper {
-  width: 62px;
-  height: 62px;
-  border-radius: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
   background: linear-gradient(135deg, #0284c7, #1d4ed8);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #ffffff;
   box-shadow: 0 10px 25px rgba(2, 132, 199, 0.45);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
   position: relative;
 }
 
 .locker-icon-pulse {
   position: absolute;
-  inset: -7px;
-  border-radius: 26px;
+  inset: -6px;
+  border-radius: 24px;
   border: 2px solid rgba(56, 189, 248, 0.45);
   animation: lockerPulse 2.4s infinite ease-in-out;
 }
@@ -157,25 +159,25 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #38bdf8;
   background: rgba(56, 189, 248, 0.1);
-  padding: 4px 10px;
+  padding: 3.5px 9px;
   border-radius: 9999px;
   border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 /* Đồng hồ điện tử trực ca ICU */
 .locker-clock-box {
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.75rem;
 }
 
 .locker-time {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 2.15rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #ffffff;
@@ -184,26 +186,26 @@
 }
 
 .locker-date {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #94a3b8;
   font-weight: 500;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 /* Chip Bác Sĩ / Trạng Thái Bảo Mật */
 .locker-doctor-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.4rem 0.95rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .locker-doctor-name {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #f1f5f9;
 }
@@ -217,148 +219,197 @@
   display: inline-block;
 }
 
-/* ── 5. CONTAINER NHẬP MÃ PIN ── */
-.locker-pin-container {
+/* ── 5. KHU VỰC MẪU HÌNH 9 NÚT (PATTERN LOCK 3x3) ── */
+.locker-pattern-section {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0.85rem;
 }
 
-.locker-pin-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #cbd5e1;
-  margin-bottom: 0.85rem;
-}
-
-/* ── 6. 6 CHẤM TRÒN ĐÈN LED (PIN DOTS — CHO TABLET & MOBILE) ── */
-.locker-pin-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 0.9rem;
-}
-
-.pin-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.05);
-  position: relative;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pin-dot-glow {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: transparent;
-  transition: all 0.22s ease;
-}
-
-.pin-dot.filled {
-  background: #38bdf8;
-  border-color: #38bdf8;
-  box-shadow: 0 0 14px #38bdf8, 0 0 24px rgba(56, 189, 248, 0.6);
-  transform: scale(1.2);
-}
-
-.pin-dot.filled .pin-dot-glow {
-  background: rgba(56, 189, 248, 0.3);
-}
-
-.pin-dot.error {
-  background: #f43f5e !important;
-  border-color: #f43f5e !important;
-  box-shadow: 0 0 14px #f43f5e !important;
-}
-
-.pin-dot.success {
-  background: #10b981 !important;
-  border-color: #10b981 !important;
-  box-shadow: 0 0 16px #10b981 !important;
-}
-
-/* ── 7. 6 Ô INPUT SỐ (CHO LAPTOP & BÀN PHÍM VẬT LÝ) ── */
-.locker-pin-inputs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 0.85rem;
-  width: 100%;
-}
-
-.pin-digit-box {
-  width: 48px;
-  height: 56px;
-  border-radius: 14px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1.8px solid rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 1.65rem;
+.locker-pattern-title {
+  font-size: 0.92rem;
   font-weight: 700;
-  text-align: center;
-  outline: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.45);
-  -webkit-text-security: disc;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.25rem;
 }
 
-.pin-digit-box.show-text {
-  -webkit-text-security: none;
+.locker-pattern-subtitle {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
 }
 
-.pin-digit-box:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  background: rgba(15, 23, 42, 0.98);
-  transform: translateY(-2px);
+/* Wrapper chứa SVG và Grid 9 nút */
+.pattern-lock-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 20px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.25);
+  touch-action: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
 }
 
-.pin-digit-box.error {
-  border-color: #ef4444 !important;
-  color: #f87171 !important;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.35) !important;
+/* Lớp SVG vẽ đường nối */
+.pattern-lock-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.pin-digit-box.success {
-  border-color: #10b981 !important;
-  color: #34d399 !important;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35) !important;
+.pattern-line {
+  stroke: #38bdf8;
+  stroke-width: 4.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
+  transition: stroke 0.2s ease;
 }
 
-/* Thanh công cụ phụ (Hiện/Ẩn PIN) */
-.locker-pin-toolbar {
+.pattern-line.error {
+  stroke: #f43f5e !important;
+  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.85)) !important;
+}
+
+.pattern-line.success {
+  stroke: #10b981 !important;
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.85)) !important;
+}
+
+.pattern-tracker-line {
+  stroke: rgba(56, 189, 248, 0.75);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 6 4;
+}
+
+/* Lưới 3x3 chứa 9 nút */
+.pattern-nodes-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  z-index: 3;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.pattern-node {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.65rem;
-}
-
-.pin-toggle-visibility-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
-  font-size: 0.78rem;
-  font-weight: 600;
+  position: relative;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 8px;
-  transition: all 0.15s ease;
+  touch-action: none !important;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
-.pin-toggle-visibility-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f1f5f9;
+/* Vòng tròn bên ngoài nút */
+.pattern-ring {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.8px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Điểm chấm ở giữa nút */
+.pattern-dot {
+  position: relative;
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Hover trên Desktop */
+@media (hover: hover) {
+  .pattern-node:hover .pattern-ring {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.1);
+    transform: scale(1.1);
+  }
+
+  .pattern-node:hover .pattern-dot {
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+  }
+}
+
+/* Trạng thái nút ĐANG NỐI (Active) */
+.pattern-node.active .pattern-ring {
+  width: 48px;
+  height: 48px;
+  border-color: #38bdf8;
+  background: rgba(2, 132, 199, 0.28);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+  transform: scale(1.16);
+}
+
+.pattern-node.active .pattern-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 14px #38bdf8, 0 0 22px rgba(56, 189, 248, 0.9);
+  transform: scale(1.25);
+}
+
+/* Trạng thái LỖI (Error) */
+.pattern-lock-wrapper.error {
+  border-color: rgba(244, 63, 94, 0.45);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 25px rgba(244, 63, 94, 0.3);
+}
+
+.pattern-node.error .pattern-ring {
+  border-color: #f43f5e !important;
+  background: rgba(244, 63, 94, 0.28) !important;
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.65) !important;
+}
+
+.pattern-node.error .pattern-dot {
+  background: #f43f5e !important;
+  box-shadow: 0 0 14px #f43f5e, 0 0 22px rgba(244, 63, 94, 0.9) !important;
+}
+
+/* Trạng thái THÀNH CÔNG (Success) */
+.pattern-lock-wrapper.success {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 25px rgba(16, 185, 129, 0.3);
+}
+
+.pattern-node.success .pattern-ring {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.28) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.65) !important;
+}
+
+.pattern-node.success .pattern-dot {
+  background: #10b981 !important;
+  box-shadow: 0 0 14px #10b981, 0 0 22px rgba(16, 185, 129, 0.9) !important;
 }
 
 /* Thông báo phản hồi */
@@ -366,14 +417,14 @@
   font-size: 0.82rem;
   font-weight: 600;
   min-height: 22px;
-  margin-bottom: 0.5rem;
+  margin: 0.65rem 0 0.45rem;
   transition: all 0.2s ease;
   color: #94a3b8;
 }
 
 .locker-feedback-msg.error {
   color: #fb7185;
-  animation: lockerShake 0.4s ease-in-out;
+  animation: lockerShake 0.42s ease-in-out;
 }
 
 .locker-feedback-msg.success {
@@ -391,118 +442,49 @@
   animation: lockerShake 0.42s ease-in-out;
 }
 
-/* ── 8. BÀN PHÍM CẢM ỨNG 9 NÚT SỐ (TOUCH KEYPAD — CHO MOBILE & TABLET) ── */
-.locker-keypad {
-  width: 100%;
-  max-width: 300px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 0.35rem auto 1rem;
-}
-
-.keypad-btn {
-  aspect-ratio: 1;
-  max-height: 66px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.keypad-btn:hover {
-  background: rgba(56, 189, 248, 0.18);
-  border-color: rgba(56, 189, 248, 0.4);
-  transform: translateY(-2px);
-}
-
-.keypad-btn:active {
-  background: rgba(2, 132, 199, 0.45);
-  border-color: #38bdf8;
-  transform: scale(0.92);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
-}
-
-.keypad-num {
-  font-size: 1.55rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.keypad-sub {
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #94a3b8;
-  margin-top: 2px;
-  text-transform: uppercase;
-}
-
-/* Nút chức năng (Xóa hết / Xóa lùi) */
-.keypad-btn.keypad-fn {
-  background: rgba(15, 23, 42, 0.6);
-  border-color: rgba(255, 255, 255, 0.09);
-  color: #94a3b8;
-}
-
-.keypad-btn.keypad-fn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f1f5f9;
-}
-
-.keypad-btn.keypad-fn:active {
-  background: rgba(239, 68, 68, 0.35);
-  color: #fca5a5;
-  border-color: #ef4444;
-}
-
-/* ── 9. THANH HÀNH ĐỘNG DƯỚI CÙNG ── */
+/* ── 6. THANH HÀNH ĐỘNG DƯỚI CÙNG ── */
 .locker-actions {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
+  gap: 0.65rem;
+  margin-top: 0.35rem;
 }
 
-.locker-unlock-btn {
+.locker-quick-btns {
+  display: flex;
+  gap: 10px;
   width: 100%;
-  padding: 0.82rem 1.25rem;
-  border-radius: 14px;
-  border: none;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-  color: #ffffff;
-  font-size: 0.98rem;
-  font-weight: 700;
+}
+
+.locker-clear-btn {
+  width: 100%;
+  padding: 0.68rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 7px;
+  transition: all 0.2s ease;
 }
 
-.locker-unlock-btn:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.6);
-  transform: translateY(-2px);
+.locker-clear-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.locker-unlock-btn:active {
+.locker-clear-btn:active {
   transform: scale(0.98);
 }
 
-/* Hàng bảo mật & Đổi mã PIN (KHÔNG CÓ GỢI Ý MÃ MẬT KHẨU) */
+/* Hàng bảo mật & Đổi mẫu hình (TUYỆT ĐỐI KHÔNG CÓ GỢI Ý MẬT KHẨU) */
 .locker-helpers {
   display: flex;
   align-items: center;
@@ -518,7 +500,7 @@
   align-items: center;
   gap: 5px;
   color: #64748b;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
 }
 
 .locker-link-btn {
@@ -541,15 +523,15 @@
   background: rgba(56, 189, 248, 0.1);
 }
 
-/* ── 10. MODAL THAY ĐỔI MÃ PIN BẢO MẬT ── */
-.locker-change-pin-modal {
+/* ── 7. MODAL THAY ĐỔI MẪU HÌNH 9 NÚT ── */
+.locker-change-modal {
   position: absolute;
   inset: 0;
-  background: rgba(9, 15, 33, 0.98);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(9, 15, 33, 0.985);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border-radius: 28px;
-  padding: 1.75rem 1.5rem;
+  padding: 1.5rem 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -559,109 +541,137 @@
   visibility: hidden;
   transform: scale(0.96);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 
-.locker-change-pin-modal.show {
+.locker-change-modal.show {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
 }
 
-.change-pin-card {
+.change-pattern-card {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.change-pin-header {
+.change-pattern-header {
   text-align: center;
-  margin-bottom: 1.15rem;
+  margin-bottom: 0.75rem;
 }
 
-.change-pin-icon {
-  width: 44px;
-  height: 44px;
+.change-pattern-icon {
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   background: rgba(56, 189, 248, 0.15);
   color: #38bdf8;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  margin: 0 auto 0.6rem;
+  font-size: 1.2rem;
+  margin: 0 auto 0.45rem;
   border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-.change-pin-title {
-  font-size: 1.15rem;
+.change-pattern-title {
+  font-size: 1.1rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
-.change-pin-desc {
-  font-size: 0.78rem;
-  color: #94a3b8;
-  line-height: 1.4;
-  max-width: 320px;
-}
-
-.change-pin-body {
-  width: 100%;
-}
-
-.change-pin-group {
-  width: 100%;
-  text-align: left;
-  margin-bottom: 0.85rem;
-}
-
-.change-pin-label {
+/* Các bước chuyển tiếp (1. Hiện tại -> 2. Mới -> 3. Xác nhận) */
+.change-pattern-steps {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #cbd5e1;
-  margin-bottom: 0.35rem;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.65rem;
+  width: 100%;
 }
 
-.change-pin-input {
-  width: 100%;
-  padding: 0.7rem 0.85rem;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-  color: #ffffff;
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 1.15rem;
-  letter-spacing: 0.22em;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
+.change-step-pill {
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
 }
 
-.change-pin-input:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
-  background: rgba(15, 23, 42, 0.95);
+.change-step-pill.active {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
-.change-pin-btn-row {
+.change-step-pill.completed {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Hướng dẫn từng bước trong modal */
+.change-pattern-guide {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  min-height: 20px;
+}
+
+/* Lưới Pattern Lock nhỏ trong modal */
+.modal-pattern-container {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.modal-pattern-container .pattern-lock-wrapper {
+  width: 220px !important;
+  height: 220px !important;
+  border-radius: 16px;
+}
+
+.modal-pattern-container .pattern-ring {
+  width: 36px;
+  height: 36px;
+}
+
+.modal-pattern-container .pattern-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.modal-pattern-container .pattern-node.active .pattern-ring {
+  width: 40px;
+  height: 40px;
+}
+
+.modal-pattern-container .pattern-node.active .pattern-dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* Các nút điều khiển trong modal */
+.change-pattern-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
   margin-top: 0.65rem;
 }
 
-.change-pin-save-btn,
-.change-pin-cancel-btn {
+.change-btn-cancel,
+.change-btn-retry {
   flex: 1;
-  padding: 0.72rem;
+  padding: 0.6rem;
   border-radius: 10px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   border: none;
@@ -672,75 +682,44 @@
   transition: all 0.16s ease;
 }
 
-.change-pin-save-btn {
-  background: #0284c7;
-  color: #ffffff;
-}
-
-.change-pin-save-btn:hover {
-  background: #0369a1;
-}
-
-.change-pin-cancel-btn {
-  background: rgba(255, 255, 255, 0.1);
+.change-btn-cancel {
+  background: rgba(255, 255, 255, 0.08);
   color: #cbd5e1;
 }
 
-.change-pin-cancel-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
+.change-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.14);
 }
 
-/* ── 11. RESPONSIVE THIẾT KẾ RIÊNG BIỆT (LAPTOP vs. TABLET & MOBILE) ── */
-
-/* MÀN HÌNH LAPTOP / DESKTOP (> 768px):
-   - CHỈ NHẬN MÃ PIN TỪ BÀN PHÍM VẬT LÝ
-   - ẨN HOÀN TOÀN BÀN PHÍM CẢM ỨNG 9 NÚT
-   - ẨN 6 CHẤM TRÒN ĐÈN LED
-   - HIỂN THỊ 6 Ô INPUT SỐ RÕ NÉT
-*/
-@media (min-width: 769px) {
-  .title-mobile {
-    display: none !important;
-  }
-
-  .title-laptop {
-    display: inline-block !important;
-  }
-
-  .locker-pin-inputs {
-    display: flex !important;
-  }
-
-  .locker-pin-dots {
-    display: none !important;
-  }
-
-  .locker-keypad {
-    display: none !important; /* Ẩn triệt để trên laptop */
-  }
-
-  .locker-card {
-    max-width: 450px;
-    padding: 2.2rem 2rem 1.8rem;
-  }
+.change-btn-retry {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-/* MÀN HÌNH TABLET & MOBILE (<= 768px):
-   - DÙNG BÀN PHÍM CẢM ỨNG 9 NÚT SỐ
-   - ẨN 6 Ô INPUT TEXT ĐỂ TRÁNH BÀN PHÍM VẢO OS CHE MÀN HÌNH
-   - HIỂN THỊ 6 CHẤM TRÒN ĐÈN LED ĐẸP MẮT
-*/
+.change-btn-retry:hover {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+.change-pattern-reset-link {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.72rem;
+  cursor: pointer;
+  margin-top: 0.65rem;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.change-pattern-reset-link:hover {
+  color: #94a3b8;
+}
+
+/* ── 8. RESPONSIVE THIẾT KẾ ĐA THIẾT BỊ ── */
 @media (max-width: 768px) {
-  .title-laptop {
-    display: none !important;
-  }
-
-  .title-mobile {
-    display: inline-block !important;
-  }
-
   .locker-card {
-    padding: 1.5rem 1.15rem 1.25rem;
+    padding: 1.5rem 1.2rem 1.35rem;
     max-width: 375px;
     border-radius: 24px;
   }
@@ -749,36 +728,17 @@
     font-size: 1.8rem;
   }
 
-  .locker-pin-inputs {
-    display: none !important; /* Ẩn ô input để không kích hoạt bàn phím ảo của OS */
-  }
-
-  .locker-pin-dots {
-    display: flex !important;
-    margin-bottom: 0.85rem;
-  }
-
-  .locker-keypad {
-    display: grid !important;
-    max-width: 290px;
-    gap: 12px;
-    margin-bottom: 0.85rem;
-  }
-
-  .keypad-btn {
-    max-height: 64px;
-  }
-
-  .keypad-num {
-    font-size: 1.45rem;
+  .pattern-lock-wrapper {
+    width: 270px;
+    height: 270px;
   }
 }
 
-/* MÀN HÌNH NHỎ (<= 380px) */
 @media (max-width: 380px) {
   .locker-card {
-    padding: 1.2rem 0.9rem 1rem;
+    padding: 1.25rem 0.95rem 1.15rem;
     border-radius: 20px;
+    max-width: 330px;
   }
 
   .locker-time {
@@ -790,20 +750,32 @@
   }
 
   .locker-doctor-chip {
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
     padding: 0.3rem 0.75rem;
   }
 
-  .locker-keypad {
-    max-width: 260px;
-    gap: 8px;
+  .pattern-lock-wrapper {
+    width: 236px;
+    height: 236px;
   }
 
-  .keypad-btn {
-    max-height: 54px;
+  .pattern-ring {
+    width: 38px;
+    height: 38px;
   }
 
-  .keypad-num {
-    font-size: 1.25rem;
+  .pattern-dot {
+    width: 11px;
+    height: 11px;
+  }
+
+  .modal-pattern-container {
+    width: 190px;
+    height: 190px;
+  }
+
+  .modal-pattern-container .pattern-lock-wrapper {
+    width: 190px !important;
+    height: 190px !important;
   }
 }
