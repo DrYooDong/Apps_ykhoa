@@ -12,8 +12,18 @@ import {
   ProblemStatementEntry,
   TrieuChung,
   VitalsState,
+  FiveComponentDiagnosis,
+  MultiProblemDiagnosisResult,
+  EtiologyFinding,
+  ClassificationFinding,
+  SeverityFinding,
+  ComplicationFinding,
 } from '../types.ts';
 import { normalizeText } from './normalizeUtils.ts';
+import {
+  findReactionChainByIcd,
+  DIAGNOSTIC_CHAIN_DATABASE,
+} from '../../data/diagnostic-criteria-database.ts';
 
 export interface FluidRateStep {
   label: string;
@@ -122,6 +132,9 @@ export interface ComprehensiveDiagnosisResult {
     }>;
     safeDischargeCriteria: string[];
   };
+
+  // 🔬 Bộ Chẩn Đoán Đa Bệnh × 5 Thành Tố Chuẩn Bệnh Án Nội Khoa (v2.0)
+  multiProblem?: MultiProblemDiagnosisResult;
 }
 
 /**
@@ -894,5 +907,725 @@ export function synthesizeComprehensiveDiagnosis(
         'Cận lâm sàng: Hematocrit ổn định ở mức nền, Tiểu cầu > 50.000/µL và đang có xu hướng tăng liên tục.',
       ],
     },
+    // 🔬 Tự động đồng bộ Bộ chẩn đoán Đa bệnh × 5 Thành tố (v2.0)
+    multiProblem: synthesizeMultiProblemDiagnosis(
+      topResult,
+      allResults,
+      form,
+      vitals,
+      labs,
+      selectedSymptoms,
+      negatedSymptoms,
+      problems,
+      epiContext
+    ),
   };
 }
+
+// ==============================================================================
+// 🔬 MULTI-PROBLEM × 5-COMPONENT CLINICAL SYNTHESIS ENGINE (DOCSPACE v2.0)
+// ==============================================================================
+
+/**
+ * Xây dựng chẩn đoán 5 thành tố hoàn chỉnh cho 1 bệnh lý cụ thể (áp dụng cho cả bệnh chính & bệnh phụ)
+ */
+export function buildFiveComponentDiagnosis(
+  diseaseId: string,
+  diseaseName: string,
+  diseaseIcd: string,
+  isPrimary: boolean,
+  priorityRank: number,
+  confidencePct: number,
+  form: ClinicalFormState,
+  vitals: VitalsState,
+  labs: LabsState,
+  selectedSymptoms: TrieuChung[],
+  negatedSymptoms: TrieuChung[],
+  matchedCriteriaLabels: string[] = [],
+  missingCriteriaLabels: string[] = []
+): FiveComponentDiagnosis {
+  const chain = findReactionChainByIcd(diseaseIcd) || DIAGNOSTIC_CHAIN_DATABASE[diseaseId];
+  const sbp = parseFloat(vitals.vHATT || '');
+  const dbp = parseFloat(vitals.vHATTr || '');
+  const hct = parseFloat(labs.lHct || '');
+  const plt = parseFloat(labs.lTC || '');
+  const wbc = parseFloat(labs.lBC || '');
+  const glu = parseFloat(labs.lGlu || '');
+  const ast = parseFloat(labs.lAST || '');
+  const alt = parseFloat(labs.lALT || '');
+  const cre = parseFloat(labs.lCre || '');
+
+  const normTc = normalizeText(form.text?.tc || '');
+  const normCn = normalizeText(form.text?.cn || '');
+  const normCls = normalizeText(form.text?.cls || '');
+  const normTt = normalizeText(form.text?.tt || '');
+  const allText = `${normCn} ${normTt} ${normTc} ${normCls}`;
+
+  const isDengue =
+    diseaseId.includes('dengue') ||
+    diseaseId.includes('sot_xuat_huyet') ||
+    diseaseName.toLowerCase().includes('dengue') ||
+    diseaseName.toLowerCase().includes('sốt xuất huyết');
+
+  const isTha =
+    diseaseId.includes('huyet_ap') ||
+    diseaseId === 'tang_huyet_ap' ||
+    diseaseName.toLowerCase().includes('tăng huyết áp') ||
+    diseaseName.toLowerCase().includes('cao huyết áp') ||
+    diseaseIcd.startsWith('I10');
+
+  const isDtd =
+    diseaseId.includes('dai_thao_duong') ||
+    diseaseName.toLowerCase().includes('đái tháo đường') ||
+    diseaseName.toLowerCase().includes('tiểu đường') ||
+    diseaseIcd.startsWith('E11');
+
+  const isCkd =
+    diseaseId.includes('than_man') ||
+    diseaseId.includes('ckd') ||
+    diseaseName.toLowerCase().includes('thận mạn') ||
+    diseaseIcd.startsWith('N18');
+
+  // ----------------------------------------------------------------------------
+  // THÀNH TỐ 1: XÁC ĐỊNH BỆNH (Confirmation)
+  // ----------------------------------------------------------------------------
+  let goldStandardMet = false;
+  let goldStandardText = chain?.goldStandard || 'Dựa trên phối hợp triệu chứng lâm sàng đặc trưng và cận lâm sàng chuyên khoa.';
+  const supportingCriteria: string[] = [...matchedCriteriaLabels];
+  const missingCriteria: string[] = [...missingCriteriaLabels];
+  let confirmationLevel: 'definitive' | 'probable' | 'possible' | 'suspected' = 'suspected';
+
+  if (isDengue) {
+    const hasNs1Pos = allText.includes('ns1(+)') || allText.includes('ns1 (+)') || allText.includes('ns1 duong') || allText.includes('dengue ns1 ag (+)');
+    const hasIgmPos = allText.includes('igm(+)') || allText.includes('igm (+)') || allText.includes('igm duong');
+    const hasPcrPos = allText.includes('pcr(+)') || allText.includes('rt-pcr (+) dung') || allText.includes('denv');
+
+    if (hasNs1Pos || hasIgmPos || hasPcrPos) {
+      goldStandardMet = true;
+      supportingCriteria.unshift(
+        hasNs1Pos
+          ? 'Kháng nguyên Dengue NS1 Ag (+)'
+          : hasIgmPos
+          ? 'Kháng thể Dengue IgM (+)'
+          : 'RT-PCR DENV RNA (+)'
+      );
+    }
+
+    if (selectedSymptoms.some((s) => s.id === 'tc_sot_cao_dot_ngot_duoi_7_ngay' || s.ten.toLowerCase().includes('sốt'))) {
+      supportingCriteria.push('Sốt cao đột ngột cấp tính ≤ 7 ngày');
+    }
+    if (!isNaN(hct) && hct >= 44) {
+      supportingCriteria.push(`Cô đặc máu: Hct ${hct}%`);
+    }
+    if (!isNaN(plt) && plt <= 100) {
+      supportingCriteria.push(`Giảm tiểu cầu dốc đứng: PLT ${plt} G/L`);
+    }
+
+    confirmationLevel = goldStandardMet ? 'definitive' : confidencePct >= 60 ? 'probable' : 'possible';
+  } else if (isTha) {
+    const hasElevatedBp = (!isNaN(sbp) && sbp >= 140) || (!isNaN(dbp) && dbp >= 90);
+    const hasHistoryTha = normTc.includes('tang huyet ap') || normTc.includes('tha') || normTc.includes('cao huyet ap');
+
+    if (hasElevatedBp) {
+      goldStandardMet = true;
+      supportingCriteria.unshift(`Huyết áp đo tại viện: ${sbp || '--'}/${dbp || '--'} mmHg (≥ 140/90 mmHg)`);
+    }
+    if (hasHistoryTha) {
+      goldStandardMet = true;
+      supportingCriteria.push('Tiền sử bệnh nhân đã được chẩn đoán Tăng huyết áp / đang điều trị thuốc hạ áp');
+    }
+    confirmationLevel = goldStandardMet ? 'definitive' : 'probable';
+  } else if (isDtd) {
+    const hasHighGlu = !isNaN(glu) && glu >= 7.0;
+    const hasHistoryDtd = normTc.includes('dai thao duong') || normTc.includes('tieu duong') || normTc.includes('dtd');
+    if (hasHighGlu) supportingCriteria.unshift(`Đường huyết đói / ngẫu nhiên: ${glu} mmol/L (≥ 7.0)`);
+    if (hasHistoryDtd) supportingCriteria.push('Tiền căn Đái tháo đường đang theo dõi điều trị');
+    goldStandardMet = hasHighGlu || hasHistoryDtd;
+    confirmationLevel = goldStandardMet ? 'definitive' : 'probable';
+  } else {
+    goldStandardMet = confidencePct >= 65;
+    confirmationLevel = confidencePct >= 70 ? 'definitive' : confidencePct >= 50 ? 'probable' : 'possible';
+  }
+
+  const component1_confirmation = {
+    isConfirmed: confirmationLevel === 'definitive' || confirmationLevel === 'probable',
+    confirmationLevel,
+    goldStandardMet,
+    goldStandardText,
+    supportingCriteria: Array.from(new Set(supportingCriteria)).slice(0, 5),
+    missingCriteria: Array.from(new Set(missingCriteria)).slice(0, 4),
+  };
+
+  // ----------------------------------------------------------------------------
+  // THÀNH TỐ 2: PHÂN ĐỘ / MỨC ĐỘ (Severity)
+  // ----------------------------------------------------------------------------
+  let component2_severity: SeverityFinding;
+
+  if (isDengue) {
+    const hasNarrowBp = !isNaN(sbp) && !isNaN(dbp) && sbp - dbp <= 20;
+    const hasHypotension = !isNaN(sbp) && sbp <= 90 && sbp > 0;
+    const hasSevereBleed = allText.includes('non mau') || allText.includes('phan den') || allText.includes('chay mau');
+    const hasOrganFail = (!isNaN(ast) && ast >= 1000) || (!isNaN(alt) && alt >= 1000);
+    const hasWarning =
+      (!isNaN(hct) && hct >= 44 && !isNaN(plt) && plt <= 100) ||
+      allText.includes('dau bung') ||
+      allText.includes('ha suon phai') ||
+      allText.includes('non oi');
+
+    if (hasNarrowBp || hasHypotension || hasSevereBleed || hasOrganFail) {
+      component2_severity = {
+        grade: 'Nguy kịch (Mức độ 3: Dengue nặng)',
+        score: 'Sốc Dengue / Suy tạng',
+        criteria: [
+          hasNarrowBp ? `Huyết áp kẹp (${sbp}/${dbp} mmHg)` : 'Tụt huyết áp',
+          hasOrganFail ? `Men gan AST/ALT ≥ 1000 U/L` : 'Thoát huyết tương nặng',
+        ],
+        warningFlags: ['Nguy cơ ngừng tuần hoàn do sốc giảm thể tích', 'Báo động đỏ hồi sức tích cực'],
+      };
+    } else if (hasWarning) {
+      component2_severity = {
+        grade: 'Nặng (Mức độ 2: Có dấu hiệu cảnh báo)',
+        score: 'WHO Warning Signs (+)',
+        criteria: [
+          !isNaN(hct) && hct >= 44 ? `Cô đặc máu Hct ${hct}%` : 'Đau bụng nhiều vùng hạ sườn phải',
+          !isNaN(plt) && plt <= 100 ? `Tiểu cầu giảm nhanh ${plt} G/L` : 'Nôn ói liên tục',
+        ],
+        warningFlags: ['Cần nhập viện nội trú 100%', 'Theo dõi sát Hct và lượng nước tiểu mỗi 4-6 giờ'],
+      };
+    } else {
+      component2_severity = {
+        grade: 'Trung bình (Mức độ 1: Chưa có dấu hiệu cảnh báo)',
+        criteria: ['Sốt cấp tính đơn thuần, chưa ghi nhận dấu hiệu cảnh báo nguy hiểm'],
+      };
+    }
+  } else if (isTha) {
+    if ((!isNaN(sbp) && sbp >= 180) || (!isNaN(dbp) && dbp >= 120)) {
+      component2_severity = {
+        grade: 'Nguy kịch (Cơn tăng huyết áp khẩn cấp / cấp cứu)',
+        score: `HA: ${sbp}/${dbp} mmHg (Độ 3)`,
+        criteria: ['HATT ≥ 180 mmHg hoặc HATTr ≥ 120 mmHg', 'Nguy cơ tổn thương cơ quan đích cấp tính'],
+        warningFlags: ['Cần hạ áp có kiểm soát trong phòng hồi sức', 'Tránh hạ áp tụt dốc đột ngột'],
+      };
+    } else if ((!isNaN(sbp) && sbp >= 160) || (!isNaN(dbp) && dbp >= 100)) {
+      component2_severity = {
+        grade: 'Mức độ Trung bình - Nặng (Tăng huyết áp Độ 2)',
+        score: `HA: ${sbp}/${dbp} mmHg`,
+        criteria: ['HATT 160 - 179 mmHg và/hoặc HATTr 100 - 109 mmHg theo ISH/VNHA'],
+      };
+    } else if ((!isNaN(sbp) && sbp >= 140) || (!isNaN(dbp) && dbp >= 90)) {
+      component2_severity = {
+        grade: 'Mức độ Nhẹ (Tăng huyết áp Độ 1)',
+        score: `HA: ${sbp}/${dbp} mmHg`,
+        criteria: ['HATT 140 - 159 mmHg và/hoặc HATTr 90 - 99 mmHg'],
+      };
+    } else {
+      component2_severity = {
+        grade: 'Huyết áp trong giới hạn kiểm soát (Bệnh nền mạn tính)',
+        score: `HA hiện tại: ${sbp || 120}/${dbp || 80} mmHg`,
+        criteria: ['Đang dùng thuốc hạ áp kiểm soát đạt mục tiêu'],
+      };
+    }
+  } else {
+    component2_severity = {
+      grade: confidencePct >= 70 ? 'Mức độ Toàn phát' : 'Mức độ Trung bình',
+      criteria: supportingCriteria.slice(0, 2),
+    };
+  }
+
+  // ----------------------------------------------------------------------------
+  // THÀNH TỐ 3: PHÂN LOẠI (Classification)
+  // ----------------------------------------------------------------------------
+  let component3_classification: ClassificationFinding | undefined;
+
+  if (isDengue) {
+    const isSevere = component2_severity.grade.includes('Nguy kịch');
+    const isWarning = component2_severity.grade.includes('Nặng');
+    component3_classification = {
+      system: 'WHO 2009 / Bộ Y Tế (QĐ 2760/QĐ-BYT 2023)',
+      result: isSevere
+        ? 'Sốt xuất huyết Dengue NẶNG'
+        : isWarning
+        ? 'Sốt xuất huyết Dengue CÓ DẤU HIỆU CẢNH BÁO'
+        : 'Sốt xuất huyết Dengue (Không có dấu hiệu cảnh báo)',
+      icdSuffix: isSevere ? 'A97.2' : isWarning ? 'A97.1' : 'A97.0',
+      criteria: isSevere
+        ? 'Thoát dịch nặng gây sốc hoặc xuất huyết nặng / suy tạng'
+        : isWarning
+        ? 'Có dấu hiệu cảnh báo lâm sàng/cận lâm sàng (đau bụng, nôn ói, Hct tăng, TC giảm)'
+        : 'Sốt Dengue cấp tính không dấu hiệu cảnh báo',
+    };
+  } else if (isTha) {
+    const isStage3 = (!isNaN(sbp) && sbp >= 180) || (!isNaN(dbp) && dbp >= 120);
+    const isStage2 = (!isNaN(sbp) && sbp >= 160) || (!isNaN(dbp) && dbp >= 100);
+    component3_classification = {
+      system: 'Phân loại theo ISH 2020 / ESC 2024 / VNHA 2022',
+      result: isStage3 ? 'Cơn tăng huyết áp (Độ 3)' : isStage2 ? 'Tăng huyết áp Độ 2' : 'Tăng huyết áp Độ 1',
+      icdSuffix: isStage3 ? 'I10.1' : 'I10',
+      criteria: isStage3 ? 'HATT ≥ 180 hoặc HATTr ≥ 120 mmHg' : isStage2 ? 'HATT 160-179 hoặc HATTr 100-109 mmHg' : 'HATT 140-159 hoặc HATTr 90-99 mmHg',
+    };
+  } else if (chain?.classificationSystems && chain.classificationSystems.length > 0) {
+    const firstSys = chain.classificationSystems[0];
+    const firstClass = firstSys.classes[0];
+    component3_classification = {
+      system: firstSys.systemName,
+      result: firstClass.className,
+      icdSuffix: firstClass.icdSuffix || diseaseIcd,
+      criteria: firstClass.criteria,
+    };
+  }
+
+  // ----------------------------------------------------------------------------
+  // THÀNH TỐ 4: NGUYÊN NHÂN (Etiology) — Áp dụng triệt để quyết định User A4
+  // ----------------------------------------------------------------------------
+  let component4_etiology: EtiologyFinding;
+
+  if (isDengue) {
+    component4_etiology = {
+      category: 'Nhiễm vi rút (Flaviviridae / Arbovirus)',
+      specific: 'Vi rút Dengue (DENV-1, DENV-2, DENV-3, DENV-4) lây truyền qua muỗi Aedes aegypti',
+      confidence: goldStandardMet ? 'confirmed' : 'probable',
+      supportingEvidence: [
+        'Véc tơ truyền bệnh: Muỗi vằn Aedes aegypti trong vùng dịch tễ lưu hành',
+        goldStandardMet ? 'Đã có xét nghiệm vi sinh NS1 Ag / IgM (+)' : 'Đặc điểm lâm sàng sốt cấp tính điển hình',
+      ],
+      recommendedWorkup: [
+        'Test nhanh Kháng nguyên Dengue NS1 Ag (tối ưu từ ngày 1 đến ngày 5)',
+        'Kháng thể Dengue IgM/IgG MAC-ELISA (từ ngày 5 trở đi)',
+        'RT-PCR xác định type huyết thanh DENV nếu có chỉ định dịch tễ',
+      ],
+    };
+  } else if (isTha) {
+    // THA: Thiếu CLS loại trừ thứ phát -> Báo "Chưa đủ dữ liệu CLS — Cần thêm xét nghiệm để xác định"
+    component4_etiology = {
+      category: 'Tăng huyết áp nguyên phát (Vô căn) chiếm 90-95% vs Thứ phát (5-10%)',
+      specific: 'Chưa đủ dữ liệu CLS — Cần thêm xét nghiệm để xác định',
+      confidence: 'suspected',
+      missingEvidence: [
+        'Chưa có kết quả Siêu âm Doppler mạch máu thận tầm soát hẹp ĐM thận',
+        'Chưa có Định lượng Aldosterone / Renin (ARR) loại trừ u tuyến thượng thận',
+        'Chưa có Đạm niệu 24h & Tỷ số UACR tầm soát bệnh cầu thận',
+      ],
+      recommendedWorkup: [
+        'Siêu âm Doppler động mạch thận và hệ tiết niệu (tầm soát THA thứ phát)',
+        'Tỷ số Aldosterone / Renin huyết tương (ARR) loại trừ Cường Aldosterone nguyên phát',
+        'Tổng phân tích nước tiểu & Tỷ số Microalbumin/Creatinine niệu (UACR)',
+        'Creatinine huyết thanh & Ước tính eGFR (CKD-EPI) đánh giá tổn thương thận mạn',
+        'Điện tâm đồ 12 chuyển đạo (tầm soát phì đại thất trái Sokolow-Lyon)',
+      ],
+    };
+  } else if (chain?.etiologyOptions && chain.etiologyOptions.length > 0) {
+    const firstCat = chain.etiologyOptions[0];
+    const firstCause = firstCat.specificCauses[0];
+    component4_etiology = {
+      category: firstCat.category,
+      specific: firstCause.name,
+      confidence: firstCause.confidence || 'probable',
+      recommendedWorkup: firstCause.recommendedWorkup || ['Xét nghiệm chuyên khoa xác định căn nguyên'],
+    };
+  } else {
+    component4_etiology = {
+      category: 'Căn nguyên đang khảo sát',
+      specific: 'Chưa đủ dữ liệu CLS — Cần thêm xét nghiệm để xác định',
+      confidence: 'suspected',
+      recommendedWorkup: ['Xét nghiệm cận lâm sàng và thăm dò chức năng chuyên sâu'],
+    };
+  }
+
+  // ----------------------------------------------------------------------------
+  // THÀNH TỐ 5: BIẾN CHỨNG (Complications)
+  // ----------------------------------------------------------------------------
+  const component5_complications: ComplicationFinding[] = [];
+
+  if (isDengue) {
+    if (!isNaN(hct) && hct >= 44) {
+      component5_complications.push({
+        name: `Hội chứng Thoát huyết tương & Cô đặc máu (Hct ${hct}%)`,
+        status: 'present',
+        severity: 'warning',
+        timeframe: 'acute_24h',
+        supportingEvidence: `Hct ${hct}% tăng cao so với trị số nền`,
+        preventiveAction: 'Bù dịch đúng phác đồ, theo dõi Hct mỗi 4-6 giờ',
+      });
+    }
+
+    if (!isNaN(plt) && plt < 50) {
+      component5_complications.push({
+        name: `Hội chứng Giảm tiểu cầu nặng (< 50 G/L, hiện tại: ${plt} G/L)`,
+        status: 'present',
+        severity: 'critical',
+        timeframe: 'acute_24h',
+        supportingEvidence: `Số lượng tiểu cầu ${plt} G/L giảm dốc đứng`,
+        preventiveAction: 'Hạn chế va chạm, tuyệt đối không tiêm bắp, theo dõi dấu hiệu xuất huyết niêm mạc',
+      });
+    } else if (!isNaN(plt) && plt <= 100) {
+      component5_complications.push({
+        name: `Giảm tiểu cầu cảnh báo (${plt} G/L)`,
+        status: 'present',
+        severity: 'warning',
+        timeframe: 'acute_24h',
+        supportingEvidence: `Số lượng tiểu cầu ${plt} G/L`,
+        preventiveAction: 'Theo dõi sát công thức máu mỗi ngày',
+      });
+    }
+
+    if (component2_severity.grade.includes('Nguy kịch')) {
+      component5_complications.push({
+        name: 'Sốc Dengue thoát huyết tương giảm thể tích tuần hoàn cấp tính',
+        status: 'present',
+        severity: 'critical',
+        timeframe: 'acute_24h',
+        supportingEvidence: 'Huyết áp kẹp / tụt huyết áp kèm tưới máu mô kém',
+        preventiveAction: 'Chống sốc khẩn cấp bằng dịch tinh thể Ringer Lactate 15-20 ml/kg/giờ',
+      });
+    } else {
+      component5_complications.push({
+        name: 'Nguy cơ diễn tiến Sốc Dengue trong pha nguy hiểm (Ngày 4 - Ngày 6)',
+        status: 'risk',
+        severity: 'warning',
+        timeframe: 'acute_24h',
+        preventiveAction: 'Đo sinh hiệu Mạch, HA, SpO2, lượng nước tiểu mỗi 1-2 giờ',
+      });
+    }
+  } else if (isTha) {
+    if ((!isNaN(sbp) && sbp >= 180) || (!isNaN(dbp) && dbp >= 120)) {
+      component5_complications.push({
+        name: 'Cơn THA cấp cứu đe dọa tổn thương cơ quan đích cấp (Não, Tim, Thận)',
+        status: 'present',
+        severity: 'critical',
+        timeframe: 'acute_24h',
+        preventiveAction: 'Hạ áp từ từ (giảm tối đa 20-25% MAP trong giờ đầu) bằng thuốc hạ áp tĩnh mạch',
+      });
+    } else {
+      component5_complications.push({
+        name: 'Tổn thương cơ quan đích mạn tính (Phì đại thất trái, Xơ cứng tiểu ĐM thận, Bệnh mạch vành)',
+        status: 'risk',
+        severity: 'info',
+        timeframe: 'chronic',
+        supportingEvidence: 'Tăng huyết áp mạn tính kéo dài',
+        preventiveAction: 'Tạm hoãn đánh giá sâu cơ quan đích trong đợt cấp bệnh chính; tái khám tim mạch sau khi xuất viện',
+      });
+    }
+  }
+
+  // ----------------------------------------------------------------------------
+  // CHUỖI CHẨN ĐOÁN 1 DÒNG CHUẨN EMR / HIS (Full Diagnosis String)
+  // ----------------------------------------------------------------------------
+  const prefix = isPrimary ? `🔴 I. ${diseaseName.toUpperCase()} (${component3_classification?.icdSuffix || diseaseIcd})` : `🔵 II. ${diseaseName} (${component3_classification?.icdSuffix || diseaseIcd})`;
+  const parts: string[] = [prefix];
+
+  if (component3_classification?.result) {
+    parts.push(`Phân loại: ${component3_classification.result}`);
+  }
+  if (component2_severity?.grade) {
+    parts.push(`Mức độ: ${component2_severity.grade}`);
+  }
+  if (component4_etiology?.specific) {
+    parts.push(`Căn nguyên: ${component4_etiology.specific}`);
+  }
+  if (component5_complications.length > 0) {
+    const presentComps = component5_complications.filter((c) => c.status === 'present').map((c) => c.name);
+    if (presentComps.length > 0) {
+      parts.push(`Biến chứng: ${presentComps.join('; ')}`);
+    } else {
+      parts.push(`Biến chứng: Chưa ghi nhận biến chứng cấp`);
+    }
+  }
+
+  const fullDiagnosisString = parts.join(' — ');
+
+  return {
+    diseaseId,
+    diseaseName,
+    diseaseIcd: component3_classification?.icdSuffix || diseaseIcd,
+    confidence: confidencePct,
+    isPrimary,
+    priorityRank,
+    component1_confirmation,
+    component2_severity,
+    component3_classification,
+    component4_etiology,
+    component5_complications,
+    fullDiagnosisString,
+  };
+}
+
+/**
+ * Nhận diện danh sách bệnh phụ / đồng mắc kết hợp cả 2 nguồn:
+ * 1. allResults có độ khớp ≥ 30% (xếp hạng 2, 3)
+ * 2. Bóc tách từ Tiền căn bệnh nền (form.text.tc) & Sinh hiệu/CLS bất thường
+ */
+export function identifyComorbidProblems(
+  primaryDiseaseId: string,
+  primaryIcd: string,
+  allResults: AnalysisResult[],
+  form: ClinicalFormState,
+  vitals: VitalsState,
+  labs: LabsState,
+  selectedSymptoms: TrieuChung[],
+  negatedSymptoms: TrieuChung[]
+): FiveComponentDiagnosis[] {
+  const secondaryList: FiveComponentDiagnosis[] = [];
+  const processedKeys = new Set<string>();
+
+  // Chuẩn hóa ID/ICD bệnh chính để không bị trùng lặp
+  processedKeys.add(primaryDiseaseId);
+  processedKeys.add(primaryIcd.split('.')[0]);
+
+  const normTc = normalizeText(form.text?.tc || '');
+  const sbp = parseFloat(vitals.vHATT || '');
+  const dbp = parseFloat(vitals.vHATTr || '');
+  const glu = parseFloat(labs.lGlu || '');
+  const cre = parseFloat(labs.lCre || '');
+
+  let currentRank = 2;
+
+  // Nguồn 1: Quét tiền căn bệnh nền mạn tính phổ biến & sinh hiệu/CLS tương ứng
+  // 1A. Tăng huyết áp (THA)
+  const isThaTriggered =
+    (!isNaN(sbp) && sbp >= 140) ||
+    (!isNaN(dbp) && dbp >= 90) ||
+    normTc.includes('tang huyet ap') ||
+    normTc.includes('tha') ||
+    normTc.includes('cao huyet ap');
+
+  if (isThaTriggered && !processedKeys.has('tang_huyet_ap') && !processedKeys.has('I10')) {
+    processedKeys.add('tang_huyet_ap');
+    processedKeys.add('I10');
+    const thaDiag = buildFiveComponentDiagnosis(
+      'tang_huyet_ap',
+      'Tăng huyết áp',
+      'I10',
+      false,
+      currentRank++,
+      85,
+      form,
+      vitals,
+      labs,
+      selectedSymptoms,
+      negatedSymptoms,
+      ['Huyết áp tăng cao hoặc có tiền căn THA đang điều trị'],
+      ['Chưa có Siêu âm Doppler mạch máu thận loại trừ thứ phát']
+    );
+    secondaryList.push(thaDiag);
+  }
+
+  // 1B. Đái tháo đường (ĐTĐ)
+  const isDtdTriggered =
+    (!isNaN(glu) && glu >= 7.0) ||
+    normTc.includes('dai thao duong') ||
+    normTc.includes('dtd') ||
+    normTc.includes('tieu duong');
+
+  if (isDtdTriggered && !processedKeys.has('dai_thao_duong') && !processedKeys.has('E11')) {
+    processedKeys.add('dai_thao_duong');
+    processedKeys.add('E11');
+    const dtdDiag = buildFiveComponentDiagnosis(
+      'dai_thao_duong_type_2',
+      'Đái tháo đường type 2',
+      'E11',
+      false,
+      currentRank++,
+      80,
+      form,
+      vitals,
+      labs,
+      selectedSymptoms,
+      negatedSymptoms,
+      ['Đường huyết tăng cao hoặc tiền sử ĐTĐ'],
+      ['Cần định lượng HbA1c đánh giá kiểm soát 3 tháng']
+    );
+    secondaryList.push(dtdDiag);
+  }
+
+  // 1C. Bệnh thận mạn (CKD)
+  const isCkdTriggered =
+    normTc.includes('than man') ||
+    normTc.includes('ckd') ||
+    normTc.includes('suy than man');
+
+  if (isCkdTriggered && !processedKeys.has('benh_than_man') && !processedKeys.has('N18')) {
+    processedKeys.add('benh_than_man');
+    processedKeys.add('N18');
+    const ckdDiag = buildFiveComponentDiagnosis(
+      'benh_than_man',
+      'Bệnh thận mạn',
+      'N18',
+      false,
+      currentRank++,
+      75,
+      form,
+      vitals,
+      labs,
+      selectedSymptoms,
+      negatedSymptoms,
+      ['Tiền sử bệnh thận mạn tính'],
+      ['Cần kiểm tra eGFR và Tỷ số UACR']
+    );
+    secondaryList.push(ckdDiag);
+  }
+
+  // Nguồn 2: Quét allResults có điểm % khớp ≥ 30% (hạng 2, 3)
+  for (const r of allResults) {
+    if (secondaryList.length >= 3) break; // Giới hạn tối đa 3 bệnh phụ để bảo đảm độ tập trung lâm sàng
+    const resId = r.b.id;
+    const resIcd = r.b.icd;
+    const mainIcdPrefix = resIcd.split('.')[0];
+
+    if (!processedKeys.has(resId) && !processedKeys.has(mainIcdPrefix) && r.pct >= 30) {
+      processedKeys.add(resId);
+      processedKeys.add(mainIcdPrefix);
+
+      const matchedLabels = r.matched.map((m) => m.tc.ten);
+      const missingLabels = r.missing.map((m) => m.tc.ten);
+
+      const secDiag = buildFiveComponentDiagnosis(
+        resId,
+        r.b.ten,
+        resIcd,
+        false,
+        currentRank++,
+        r.pct,
+        form,
+        vitals,
+        labs,
+        selectedSymptoms,
+        negatedSymptoms,
+        matchedLabels,
+        missingLabels
+      );
+      secondaryList.push(secDiag);
+    }
+  }
+
+  return secondaryList;
+}
+
+/**
+ * Hàm điều phối chính: Tổng hợp chẩn đoán Đa bệnh × 5 Thành tố (Multi-Problem Diagnosis v2.0)
+ */
+export function synthesizeMultiProblemDiagnosis(
+  topResult: AnalysisResult | null,
+  allResults: AnalysisResult[],
+  form: ClinicalFormState,
+  vitals: VitalsState,
+  labs: LabsState,
+  selectedSymptoms: TrieuChung[],
+  negatedSymptoms: TrieuChung[],
+  problems: ProblemStatementEntry[] = [],
+  epiContext?: EpidemiologyContext
+): MultiProblemDiagnosisResult {
+  const lead = topResult ? topResult.b : null;
+  const leadId = lead ? lead.id : 'chua_xac_dinh';
+  const leadName = lead ? lead.ten : 'Chưa xác định';
+  const leadIcd = lead ? lead.icd : 'R50.9';
+  const leadPct = topResult ? topResult.pct : 0;
+
+  const matchedLabels = topResult ? topResult.matched.map((m) => m.tc.ten) : [];
+  const missingLabels = topResult ? topResult.missing.map((m) => m.tc.ten) : [];
+
+  // 1. Xây dựng Bệnh chính (Primary Problem — Rank 1)
+  const primaryDisease = buildFiveComponentDiagnosis(
+    leadId,
+    leadName,
+    leadIcd,
+    true,
+    1,
+    leadPct,
+    form,
+    vitals,
+    labs,
+    selectedSymptoms,
+    negatedSymptoms,
+    matchedLabels,
+    missingLabels
+  );
+
+  // 2. Nhận diện Bệnh phụ / Đồng mắc (Secondary Problems — Rank 2, 3...)
+  const secondaryDiseases = identifyComorbidProblems(
+    leadId,
+    leadIcd,
+    allResults,
+    form,
+    vitals,
+    labs,
+    selectedSymptoms,
+    negatedSymptoms
+  );
+
+  const problemsList = [primaryDisease, ...secondaryDiseases];
+
+  // 3. Xây dựng Chuỗi chẩn đoán Đa bệnh hoàn chỉnh (fullDiagnosisChain)
+  const chainLines: string[] = [primaryDisease.fullDiagnosisString];
+  for (const sec of secondaryDiseases) {
+    chainLines.push(sec.fullDiagnosisString);
+  }
+  const fullDiagnosisChain = chainLines.join('\n');
+
+  // 4. Chẩn đoán phân biệt cho bệnh chính
+  const differentials = allResults
+    .filter((r) => r.b.id !== leadId)
+    .slice(0, 3)
+    .map((r) => {
+      let confirmatoryTest = 'Cấy máu, Procalcitonin và công thức máu kiểm tra';
+      let urgencyBadge: 'Khẩn cấp' | 'Ưu tiên' | 'Thường quy' = 'Ưu tiên';
+      const dName = r.b.ten.toLowerCase();
+
+      if (dName.includes('nhiễm trùng huyết') || dName.includes('sốc')) {
+        confirmatoryTest = 'Cấy máu 2 vị trí trước kháng sinh & Định lượng Procalcitonin';
+        urgencyBadge = 'Khẩn cấp';
+      } else if (dName.includes('viêm gan')) {
+        confirmatoryTest = 'Bộ dấu ấn HBsAg, Anti-HCV, IgM Anti-HAV & Siêu âm Doppler gan';
+        urgencyBadge = 'Ưu tiên';
+      }
+
+      return {
+        diseaseName: r.b.ten,
+        diseaseIcd: r.b.icd,
+        matchPct: r.pct,
+        pointsInFavor: r.matched.slice(0, 3).map((m) => m.tc.ten),
+        pointsAgainst: r.missing.slice(0, 2).map((m) => m.tc.ten),
+        confirmatoryExclusionTest: confirmatoryTest,
+        urgencyBadge,
+      };
+    });
+
+  // 5. Văn bản tóm tắt EMR đa bệnh có cấu trúc
+  const emrStructuredText = [
+    `=== BỘ CHẨN ĐOÁN TOÀN DIỆN ĐA BỆNH (5 THÀNH TỐ NỘI KHOA) ===`,
+    `Họ và tên: [${form.gioiTinh === 'nam' ? 'Nam' : 'Nữ'}, ${form.tuoi || '--'} tuổi] · BMI: ${(form.text?.tt || '').match(/BMI\s*[:=]?\s*(\d+(\.\d+)?)/i)?.[1] || '--'}`,
+    `Lý do nhập viện: ${form.lyDo || 'Đợt cấp cấp tính'}`,
+    ``,
+    `I. BỆNH CHÍNH (PRIMARY PROBLEM):`,
+    `   + Bệnh danh: ${primaryDisease.diseaseName.toUpperCase()} (ICD-10: ${primaryDisease.diseaseIcd})`,
+    `   + Xác định: ${primaryDisease.component1_confirmation.goldStandardMet ? 'Đạt tiêu chuẩn vàng vi sinh/lâm sàng' : 'Chẩn đoán nghi ngờ lâm sàng'} (${primaryDisease.confidence}% khớp CDSS)`,
+    `   + Phân độ: ${primaryDisease.component2_severity?.grade || 'Chưa phân độ'}`,
+    `   + Phân loại: ${primaryDisease.component3_classification?.result || 'Theo tiêu chuẩn chuyên khoa'}`,
+    `   + Nguyên nhân: ${primaryDisease.component4_etiology?.specific || 'Đang theo dõi'}`,
+    `   + Biến chứng: ${primaryDisease.component5_complications.map((c) => c.name).join('; ') || 'Chưa ghi nhận biến chứng đe dọa sinh mạng'}`,
+    ``,
+    secondaryDiseases.length > 0
+      ? `II. BỆNH PHỤ / BỆNH ĐỒNG MẮC (COMORBIDITIES):`
+      : `II. BỆNH PHỤ / BỆNH ĐỒNG MẮC: Chưa ghi nhận bệnh lý đồng mắc nổi bật.`,
+    ...secondaryDiseases.map(
+      (sec, idx) =>
+        `   ${idx + 1}. ${sec.diseaseName} (ICD-10: ${sec.diseaseIcd}) — ${sec.component3_classification?.result || sec.component2_severity?.grade || 'Bệnh nền'} — Căn nguyên: ${sec.component4_etiology?.specific} — BC: ${sec.component5_complications.map((c) => c.name).join('; ') || 'Không có'}`
+    ),
+    ``,
+    `III. CHẨN ĐOÁN PHÂN BIỆT CẦN LOẠI TRỪ:`,
+    ...differentials.map(
+      (d, i) => `   ${i + 1}. ${d.diseaseName} (${d.matchPct}%): Đề xuất [${d.confirmatoryExclusionTest}]`
+    ),
+  ].join('\n');
+
+  return {
+    problems: problemsList,
+    primaryDisease,
+    secondaryDiseases,
+    differentials,
+    fullDiagnosisChain,
+    emrStructuredText,
+    generatedAt: new Date().toISOString(),
+    engineVersion: '2.0',
+  };
+}
+

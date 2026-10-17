@@ -584,3 +584,105 @@ export interface AppliedDoseAdjustment {
   cautions: string[];
   contraindicatedDrugs?: string[];
 }
+
+// ==============================================================================
+// 🔬 MULTI-PROBLEM × 5-COMPONENT CLINICAL DIAGNOSIS SYSTEM (DOCSPACE v2.0)
+// ==============================================================================
+
+export interface EtiologyFinding {
+  category: string;       // "Nhiễm khuẩn/Vi rút" | "Tự miễn" | "Chuyển hóa" | "Nguyên phát/Vô căn" | "Thứ phát" | "Do thuốc" | "Không rõ"
+  specific: string;       // Căn nguyên cụ thể: "Dengue virus typ 2" | "H. pylori" | "Xơ vữa động mạch" | "Chưa đủ dữ liệu CLS — Cần thêm xét nghiệm"
+  confidence: 'confirmed' | 'probable' | 'suspected' | 'unknown';
+  supportingEvidence?: string[]; // Bằng chứng LS/CLS
+  missingEvidence?: string[];    // Bằng chứng CLS còn thiếu
+  recommendedWorkup?: string[];  // Danh mục XN đề nghị để xác định/loại trừ
+}
+
+export interface ClassificationFinding {
+  system: string;         // Hệ thống phân loại: "WHO 2009 / BYT 2023", "JNC 8", "KDIGO 2024", "GOLD 2023", "NYHA"
+  result: string;         // Kết quả phân loại: "Dengue có DHCB", "THA độ II", "CKD G3a", "Viêm phổi CAP mức độ trung bình"
+  icdSuffix?: string;     // Ký hiệu ICD-10 cụ thể (ví dụ A97.1, I10)
+  criteria?: string;      // Tiêu chuẩn thỏa mãn
+}
+
+export interface SeverityFinding {
+  grade: string;          // "Nhẹ" | "Trung bình" | "Nặng" | "Nguy kịch"
+  score?: string;         // Điểm cụ thể: "NEWS2: 5", "SOFA: 8", "CURB-65: 3", "Child-Pugh B"
+  criteria: string[];     // Tiêu chuẩn phân độ đang thỏa mãn
+  warningFlags?: string[]; // Dấu hiệu báo động đỏ
+}
+
+export interface ComplicationFinding {
+  name: string;
+  status: 'present' | 'risk' | 'resolved';
+  severity: 'critical' | 'warning' | 'info';
+  timeframe: 'acute_24h' | 'subacute_7d' | 'chronic';
+  supportingEvidence?: string;
+  preventiveAction?: string;
+}
+
+export interface FiveComponentDiagnosis {
+  diseaseId: string;
+  diseaseName: string;
+  diseaseIcd: string;
+  confidence: number;       // % khớp CDSS
+  isPrimary: boolean;       // Bệnh chính (true) hay bệnh phụ (false)
+  priorityRank: number;     // 1 = ưu tiên cao nhất, 2, 3...
+
+  // ✅ Thành tố 1: Xác định bệnh
+  component1_confirmation: {
+    isConfirmed: boolean;
+    confirmationLevel: 'definitive' | 'probable' | 'possible' | 'suspected';
+    goldStandardMet: boolean;
+    goldStandardText: string;
+    supportingCriteria: string[];  // Tiêu chuẩn đang thỏa mãn
+    missingCriteria: string[];     // Tiêu chuẩn còn thiếu
+  };
+
+  // ✅ Thành tố 2: Phân độ / Mức độ
+  component2_severity?: SeverityFinding;
+
+  // ✅ Thành tố 3: Phân loại (tùy bệnh)
+  component3_classification?: ClassificationFinding;
+
+  // ✅ Thành tố 4: Nguyên nhân
+  component4_etiology?: EtiologyFinding;
+
+  // ✅ Thành tố 5: Biến chứng
+  component5_complications: ComplicationFinding[];
+
+  // Chuỗi chẩn đoán 1 dòng chuẩn EMR / HIS cho bệnh này
+  fullDiagnosisString: string;
+}
+
+export interface MultiProblemDiagnosisResult {
+  // Danh sách Bệnh chính + Bệnh phụ (có thứ tự ưu tiên)
+  problems: FiveComponentDiagnosis[];
+
+  // Bệnh chính (shortcut)
+  primaryDisease: FiveComponentDiagnosis;
+
+  // Danh sách bệnh phụ / đồng mắc
+  secondaryDiseases: FiveComponentDiagnosis[];
+
+  // Chẩn đoán phân biệt cho bệnh chính
+  differentials: Array<{
+    diseaseName: string;
+    diseaseIcd?: string;
+    matchPct: number;
+    pointsInFavor: string[];
+    pointsAgainst: string[];
+    confirmatoryExclusionTest: string;
+    urgencyBadge: 'Khẩn cấp' | 'Ưu tiên' | 'Thường quy';
+  }>;
+
+  // Chuỗi chẩn đoán đầy đủ đa bệnh chuẩn EMR/HIS
+  fullDiagnosisChain: string;
+
+  // Văn bản biện luận EMR có cấu trúc
+  emrStructuredText: string;
+
+  generatedAt: string;
+  engineVersion: '2.0';
+}
+

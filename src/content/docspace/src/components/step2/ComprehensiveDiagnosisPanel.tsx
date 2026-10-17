@@ -48,6 +48,7 @@ import {
   ComprehensiveDiagnosisResult,
   synthesizeComprehensiveDiagnosis,
 } from '../../lib/diagnosticSynthesis.ts';
+import { FiveComponentDiagnosisCard } from './FiveComponentDiagnosisCard.tsx';
 
 interface ComprehensiveDiagnosisPanelProps {
   topResult: AnalysisResult | null;
@@ -81,6 +82,7 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
   onPrintReport,
 }) => {
   const [activeTab, setActiveTab] = useState<'synthesis' | 'diagnosis' | 'protocol'>('diagnosis');
+  const [problemFilter, setProblemFilter] = useState<'all' | 'primary' | 'secondary'>('all');
   const [copiedDiag, setCopiedDiag] = useState(false);
   const [copiedEmr, setCopiedEmr] = useState(false);
   const [isEditingCustomText, setIsEditingCustomText] = useState(false);
@@ -102,13 +104,14 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
   }, [topResult, results, form, vitals, labs, selectedSymptoms, negatedSymptoms, problems, epiContext]);
 
   const handleCopyDiagnosisLine = () => {
-    navigator.clipboard.writeText(synthesis.fullDiagnosisString);
+    const textToCopy = synthesis.multiProblem?.fullDiagnosisChain || synthesis.fullDiagnosisString;
+    navigator.clipboard.writeText(textToCopy);
     setCopiedDiag(true);
     setTimeout(() => setCopiedDiag(false), 2000);
   };
 
   const handleCopyFullEmr = () => {
-    const textToCopy = customText || synthesis.emrStructuredText;
+    const textToCopy = customText || synthesis.multiProblem?.emrStructuredText || synthesis.emrStructuredText;
     navigator.clipboard.writeText(textToCopy);
     setCopiedEmr(true);
     setTimeout(() => setCopiedEmr(false), 2000);
@@ -204,9 +207,9 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
             }`}
           >
             <Stethoscope className="w-4 h-4 shrink-0" />
-            <span>2. Bộ Chẩn Đoán (5 Thành Tố)</span>
+            <span>2. Chẩn Đoán Toàn Diện (5 Thành Tố)</span>
             <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-mono-custom">
-              {synthesis.definitive.confidencePct}%
+              {synthesis.multiProblem?.problems.length || 1} Bệnh
             </span>
           </button>
 
@@ -533,139 +536,129 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
         )}
 
         {/* ========================================================================= */}
-        {/* TAB 2: BỘ CHẨN ĐOÁN TOÀN DIỆN 5 THÀNH TỐ (COMPREHENSIVE DIAGNOSIS)        */}
+        {/* TAB 2: CHẨN ĐOÁN TOÀN DIỆN ĐA BỆNH (5 THÀNH TỐ NỘI KHOA CHUYÊN SÂU v2.0)  */}
         {/* ========================================================================= */}
         {activeTab === 'diagnosis' && (
-          <div className="space-y-5">
-            {/* THẺ TỔNG HỢP CHẨN ĐOÁN HOÀN CHỈNH 1 DÒNG (ONE-LINE SUMMARY CARD) */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200 shadow-2xs">
-              <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-                <span className="text-xs font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-                  <ClipboardCheck className="w-4 h-4 text-blue-600" />
-                  <span>Bộ chẩn đoán hoàn chỉnh theo chuẩn hồ sơ bệnh án:</span>
-                </span>
-                <span className="text-[11px] text-blue-700 font-semibold bg-blue-100 px-2 py-0.5 rounded">
-                  Quy cách EMR / HIS
-                </span>
-              </div>
-              <div className="p-3 bg-white rounded-lg border border-blue-200/80 text-sm font-semibold text-slate-900 leading-relaxed font-display">
-                {synthesis.fullDiagnosisString}
-              </div>
-            </div>
+          <div className="space-y-6">
+            {/* THẺ TỔNG HỢP CHUỖI CHẨN ĐOÁN ĐA BỆNH HOÀN CHỈNH (MULTI-PROBLEM CHAIN EMR CARD) */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-sm border border-blue-400/30">
+              <div className="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-300">
+                    <ClipboardCheck className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-blue-300 uppercase tracking-wider block">
+                      Chuỗi Chẩn Đoán Đa Bệnh Hoàn Chỉnh (EMR / HIS)
+                    </span>
+                    <h3 className="text-sm sm:text-base font-extrabold text-white">
+                      Bệnh Chính + Bệnh Phụ Đồng Mắc (Đầy Đủ 5 Thành Tố)
+                    </h3>
+                  </div>
+                </div>
 
-            {/* 5 CỘT THÀNH TỐ CHẨN ĐOÁN CHUYÊN SÂU */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Thành tố 1: Chẩn đoán Xác định / Bệnh chính */}
-              <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-2xs space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px]">1</span>
-                    Chẩn đoán xác định / Bệnh chính:
-                  </span>
-                  <span className="text-xs font-mono-custom font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
-                    ICD-10: {synthesis.definitive.diseaseIcd}
-                  </span>
-                </div>
-                <div className="text-base font-extrabold text-blue-950">
-                  {synthesis.definitive.diseaseName.toUpperCase()}
-                </div>
-                <div className="text-xs text-slate-600 space-y-1">
-                  <div>&bull; <span className="font-semibold">Thời điểm:</span> {synthesis.definitive.diseaseDayText}</div>
-                  <div>&bull; <span className="font-semibold">Căn nguyên:</span> {synthesis.definitive.pathogen}</div>
-                  <div>&bull; <span className="font-semibold">Mức độ tương thích CDSS:</span> {synthesis.definitive.confidencePct}%</div>
-                </div>
-              </div>
-
-              {/* Thành tố 2: Phân độ & Giai đoạn bệnh sinh */}
-              <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-2xs space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px]">2</span>
-                    Phân độ lâm sàng & Giai đoạn:
-                  </span>
-                  <span
-                    className={`text-xs font-bold px-2 py-0.5 rounded ${
-                      synthesis.severityAndPhase.severityLevel === 'critical'
-                        ? 'bg-rose-100 text-rose-800'
-                        : synthesis.severityAndPhase.severityLevel === 'severe'
-                        ? 'bg-amber-100 text-amber-800'
-                        : 'bg-emerald-100 text-emerald-800'
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyDiagnosisLine}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      copiedDiag
+                        ? 'bg-emerald-600 text-white shadow-xs'
+                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/20'
                     }`}
                   >
-                    {synthesis.severityAndPhase.severityLevel.toUpperCase()}
-                  </span>
-                </div>
-                <div className="text-sm font-bold text-slate-900">
-                  {synthesis.severityAndPhase.gradeName}
-                </div>
-                <div className="text-xs text-slate-600 space-y-1">
-                  <div>&bull; <span className="font-semibold">Giai đoạn:</span> {synthesis.severityAndPhase.phaseName}</div>
-                  <div>&bull; <span className="font-semibold">Dấu hiệu cảnh báo:</span> {synthesis.severityAndPhase.warningSignsPresent.length > 0 ? synthesis.severityAndPhase.warningSignsPresent.join(', ') : 'Chưa có'}</div>
+                    {copiedDiag ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedDiag ? 'Đã sao chép' : 'Sao chép Chuỗi CĐ'}</span>
+                  </button>
                 </div>
               </div>
 
-              {/* Thành tố 3: Biến chứng hiện tại & Nguy cơ */}
-              <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-2xs space-y-2">
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
-                  <span className="w-5 h-5 rounded-full bg-rose-600 text-white flex items-center justify-center text-[10px]">3</span>
-                  Biến chứng & Dự báo nguy cơ:
-                </span>
-                <div className="text-xs text-slate-700 space-y-1.5">
-                  {synthesis.complications.identified.length > 0 ? (
-                    <div>
-                      <span className="font-semibold text-rose-900">Biến chứng hiện có:</span>
-                      <ul className="list-disc pl-4 mt-0.5 space-y-0.5 text-rose-950 font-medium">
-                        {synthesis.complications.identified.map((c, i) => (
-                          <li key={i}>{c}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : (
-                    <div className="text-slate-500 italic">Chưa phát hiện biến chứng suy cơ quan</div>
-                  )}
-
-                  {synthesis.complications.riskForecast.length > 0 && (
-                    <div className="pt-1 text-amber-900">
-                      <span className="font-semibold">Dự báo nguy cơ:</span>
-                      <span className="ml-1">{synthesis.complications.riskForecast.join('; ')}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Thành tố 4: Cơ địa & Bệnh đồng mắc */}
-              <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-2xs space-y-2">
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
-                  <span className="w-5 h-5 rounded-full bg-amber-600 text-white flex items-center justify-center text-[10px]">4</span>
-                  Cơ địa & Bệnh đồng mắc (Phenotype):
-                </span>
-                <div className="text-xs text-slate-700 space-y-1">
-                  <div>&bull; <span className="font-semibold">Thể trạng:</span> {synthesis.comorbidities.bmiCategoryText}</div>
-                  <div>
-                    &bull; <span className="font-semibold">Cân nặng:</span> Cân nặng thực {fluidPlan?.actualWeightKg} kg &bull; AdjBW tính dịch: <b className="text-indigo-900">{fluidPlan?.prescribedWeightKg} kg</b>
-                  </div>
-                  {synthesis.comorbidities.comorbidDiseases.length > 0 ? (
-                    <div>&bull; <span className="font-semibold">Bệnh nền:</span> {synthesis.comorbidities.comorbidDiseases.join(', ')}</div>
-                  ) : (
-                    <div className="text-slate-500 italic">&bull; Không ghi nhận bệnh lý nền mạn tính nghiêm trọng</div>
-                  )}
-                </div>
+              {/* Hộp chuỗi chẩn đoán chuẩn bệnh án */}
+              <div className="p-3.5 bg-black/30 backdrop-blur-md rounded-xl border border-white/10 font-mono-custom text-xs sm:text-[13px] leading-relaxed text-blue-100 whitespace-pre-line select-all">
+                {synthesis.multiProblem?.fullDiagnosisChain || synthesis.fullDiagnosisString}
               </div>
             </div>
 
-            {/* Thành tố 5: Chẩn đoán Phân biệt & Đề xuất CLS loại trừ */}
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
-                <span className="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px]">5</span>
-                Chẩn đoán phân biệt cần loại trừ (Differentials):
-              </span>
+            {/* BỘ LỌC DANH SÁCH BỆNH LÝ (BỆNH CHÍNH / BỆNH PHỤ) */}
+            {synthesis.multiProblem && synthesis.multiProblem.problems.length > 1 && (
+              <div className="flex items-center justify-between gap-3 flex-wrap bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700">
+                  <span>Xem phân tích 5 thành tố:</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setProblemFilter('all')}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      problemFilter === 'all'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                    }`}
+                  >
+                    Tất cả ({synthesis.multiProblem.problems.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setProblemFilter('primary')}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      problemFilter === 'primary'
+                        ? 'bg-rose-600 text-white shadow-xs'
+                        : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                    }`}
+                  >
+                    🔴 Bệnh chính (1)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setProblemFilter('secondary')}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                      problemFilter === 'secondary'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                    }`}
+                  >
+                    🔵 Bệnh phụ ({synthesis.multiProblem.secondaryDiseases.length})
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* DANH SÁCH CÁC CARD 5 THÀNH TỐ (FIVE COMPONENT DIAGNOSIS CARDS) */}
+            <div className="space-y-4">
+              {synthesis.multiProblem?.problems
+                .filter((prob) => {
+                  if (problemFilter === 'primary') return prob.isPrimary;
+                  if (problemFilter === 'secondary') return !prob.isPrimary;
+                  return true;
+                })
+                .map((prob) => (
+                  <FiveComponentDiagnosisCard
+                    key={`${prob.diseaseId}_${prob.priorityRank}`}
+                    diagnosis={prob}
+                    onOpenVaultDrawer={onOpenVaultDrawer}
+                    onGoToProtocol={onGoToProtocol}
+                  />
+                ))}
+            </div>
+
+            {/* KHỐI CHẨN ĐOÁN PHÂN BIỆT CẦN LOẠI TRỪ (DIFFERENTIALS) */}
+            <div className="p-4 bg-slate-50/80 border border-slate-200 rounded-xl space-y-2.5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+                  <span className="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px]">⚖️</span>
+                  Chẩn Đoán Phân Biệt Cho Bệnh Chính (Differentials):
+                </span>
+                <span className="text-[11px] text-slate-500 font-medium">
+                  Đề xuất xét nghiệm loại trừ chuyên biệt
+                </span>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs pt-1">
                 {synthesis.differentials.map((diff, dIdx) => (
                   <div key={dIdx} className="p-3 bg-white rounded-lg border border-slate-200 shadow-2xs space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="font-bold text-slate-900">{diff.diseaseName}</span>
-                      <span className="text-[10px] font-mono-custom text-slate-500">{diff.matchPct}%</span>
+                      <span className="text-[10px] font-mono-custom text-slate-500 font-bold">{diff.matchPct}%</span>
                     </div>
                     <div className="text-[11px] text-slate-600">
                       <span className="font-semibold text-slate-700">Đề xuất CLS loại trừ:</span>{' '}
@@ -674,6 +667,34 @@ export const ComprehensiveDiagnosisPanel: React.FC<ComprehensiveDiagnosisPanelPr
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* KHỐI SAO CHÉP HỒ SƠ BỆNH ÁN EMR ĐẦY ĐỦ */}
+            <div className="p-4 bg-slate-900 text-white rounded-xl shadow-xs space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <ClipboardCheck className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">
+                    Văn Bản Bệnh Án Điện Tử Cấu Trúc (EMR Note):
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyFullEmr}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    copiedEmr
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs'
+                  }`}
+                >
+                  {copiedEmr ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copiedEmr ? 'Đã sao chép EMR' : 'Sao chép Hồ sơ EMR'}</span>
+                </button>
+              </div>
+
+              <pre className="p-3 bg-slate-950/80 rounded-lg border border-slate-800 text-[11px] text-slate-300 font-mono-custom leading-relaxed overflow-x-auto max-h-56 scrollbar-thin">
+                {customText || synthesis.multiProblem?.emrStructuredText || synthesis.emrStructuredText}
+              </pre>
             </div>
           </div>
         )}

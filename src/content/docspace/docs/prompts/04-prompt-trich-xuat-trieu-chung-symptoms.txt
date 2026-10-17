@@ -81,13 +81,17 @@ Mỗi triệu chứng trích xuất PHẢI được gán đúng vào 1 trong 12 
 6. ĐẦU RA DUY NHẤT:
    Xuất ra DUY NHẤT 01 khối mã JSON hợp lệ (Valid JSON block), không có văn bản giải thích ngoài khối mã.
 
---------------------------------------------------------------------------------
-📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
---------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 MẪU CÂU LỆNH CHÍNH (MASTER SYMPTOM EXTRACTION COMMAND):
+(Sao chép nguyên văn đoạn dưới đây, điền thông số và dán vào ô chat Google NotebookLM):
+
 "Bạn là Chuyên gia Tin học Y tế (Clinical Informatician) và Bác sĩ Trưởng khoa Lâm sàng.
 
 Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy trích xuất:
-TOÀN BỘ các triệu chứng cơ năng, thực thể, cận lâm sàng then chốt, dấu hiệu cảnh báo, tiền căn và dịch tễ liên quan đến bệnh lý [TÊN BỆNH LÝ], phân bổ vào 12 tệp hệ cơ quan của CliniPortal ('symptomsByFile').
+TOÀN BỘ các triệu chứng cơ năng, thực thể, cận lâm sàng then chốt, dấu hiệu cảnh báo, tiền căn và bối cảnh dịch tễ liên quan đến bệnh lý [TÊN BỆNH LÝ], tự động phân bổ vào 12 tệp hệ cơ quan chuẩn của CliniPortal ('symptomsByFile').
 
 Thông số bệnh lý:
 - Tên bệnh: [TÊN BỆNH LÝ]
@@ -96,9 +100,35 @@ Thông số bệnh lý:
 - Slug: [SLUG BỆNH LÝ]
 - Tài liệu nguồn: [HƯỚNG DẪN THAM CHIẾU]
 
-Yêu cầu cấu trúc xuất bản:
-Xuất ra DUY NHẤT 01 khối code JSON (không giải thích thêm ngoài khối code) theo cấu trúc chuẩn bên dưới:
-"
+Yêu cầu xuất bản bắt buộc:
+1. Xuất DUY NHẤT 01 khối code JSON hợp lệ (không giải thích thêm ngoài khối code) theo cấu trúc symptomsByFile bên dưới.
+2. Mã ID chuẩn snake_case: Viết thường không dấu, dùng dấu gạch dưới (VD: 'sot_cao_dot_ngot_duoi_7_ngay', 'dau_bung_vung_gan', 'co_dac_mau_hct_tang').
+3. Tên hiển thị trực diện: Nêu rõ ngưỡng số nếu là CLS/sinh hiệu (VD: 'Cô đặc máu (Hct tăng ≥ 20% hoặc Hct > 45%)', 'Tiểu cầu < 100 G/L'). Bỏ tiền tố thừa như '[Lâm sàng]:', '[CLS]:'.
+4. Tự suy định lượng ('map'): Cung cấp quy tắc tự suy nếu là Sinh hiệu (vNhiet, vMach, vHATT, vHATTr, vTho, vSpo2) hoặc Xét nghiệm (lBC, lTC, lHct, lGlu, lTrop, lAST, lALT, lCre). Nếu là triệu chứng hỏi bệnh/khám: 'map': null.
+5. Khử 100% HTML entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;.
+6. Toán tử & Đơn vị SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L."
+
+---
+
+👉 MẪU CÂU LỆNH TRÍCH XUẤT CẬN LÂM SÀNG & TIỀN CĂN / DỊCH TỄ CHUYÊN SÂU:
+"Từ [HƯỚNG DẪN THAM CHIẾU], hãy tập trung trích xuất chuyên sâu:
+1. Tất cả các mốc ngưỡng cận lâm sàng (Huyết học, Sinh hóa men gan/thận/điện giải, Vi sinh NS1/PCR/Kháng thể, Siêu âm, X-quang) phân vào 'can-lam-sang.json' kèm quy tắc map cụ thể.
+2. Tất cả các yếu tố dịch tễ (vùng lưu hành, mùa vụ, véc-tơ, tiếp xúc nguồn lây) và tiền căn bệnh nền phân vào 'tien-can.json'."
+
+---
+
+👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
+"tiếp tục viết tiếp danh sách triệu chứng JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."
+
+---
+
+👉 MẪU CÂU LỆNH RÀ SOÁT TỪ ĐIỂN TRIỆU CHỨNG (AUDIT COMMAND):
+"Hãy rà soát lại khối JSON triệu chứng vừa xuất:
+1. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Sửa thành <, >, ", &.
+2. Các ID triệu chứng có đúng chuẩn snake_case tiếng Việt không dấu không?
+3. Các quy tắc map có đúng mã trường (vNhiet, vMach, lHct, lTC, lAST, lALT...) không?"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 --------------------------------------------------------------------------------
 [CẤU TRÚC CODE JSON XUẤT BẢN]

@@ -71,22 +71,57 @@ các mã ID triệu chứng đã được trích xuất từ Prompt 04 hoặc c�
    - Nếu là Chế độ 1: Xuất ra DUY NHẤT 01 khối mã JSON cho Hội chứng đó.
    - Nếu là Chế độ 2: Xuất ra MẢNG JSON gồm các object Hội chứng hoàn chỉnh của Bệnh lý.
 
---------------------------------------------------------------------------------
-📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
---------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 MẪU CÂU LỆNH CHẾ ĐỘ 1: HỘI CHỨNG KINH ĐIỂN ĐỘC LẬP (SINGLE MASTER SYNDROME)
+(Dùng khi trích xuất 1 hội chứng lâm sàng kinh điển: HC Thận hư, HC Màng não, ARDS, Suy tế bào gan...):
+
 "Bạn là Chuyên gia Tin học Y tế (Clinical Informatician) và Bác sĩ Trưởng khoa Lâm sàng.
 
-Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên (đặc biệt là [HƯỚNG DẪN / TÀI LIỆU NGUỒN]), hãy trích xuất:
-Các Hội chứng lâm sàng đặc trưng liên quan đến [TÊN HỘI CHỨNG HOẶC TÊN BỆNH LÝ].
+Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên (đặc biệt là [HƯỚNG DẪN / TÀI LIỆU NGUỒN]), hãy trích xuất 01 Hội Chứng Lâm Sàng Chuyên Sâu theo chuẩn SyndromeDefinition của DocSpace:
 
 Thông số yêu cầu:
-- Tên mục tiêu: [TÊN HỘI CHỨNG HOẶC TÊN BỆNH LÝ]
-- Chuyên khoa: [CHUYÊN KHOA]
+- Tên hội chứng: [TÊN HỘI CHỨNG] (Ví dụ: Hội chứng Thận hư / Hội chứng Kích thích màng não)
+- Chuyên khoa: [CHUYÊN KHOA] (chọn: truyen_nhiem | tieu_hoa_gan_mat | ho_hap | tim_mach | than_kinh | huyet_hoc | tiet_nieu | noi_tiet)
 - Tài liệu nguồn: [HƯỚNG DẪN / TÀI LIỆU NGUỒN]
 
-Yêu cầu xuất bản:
-Xuất ra DUY NHẤT khối code JSON chuẩn mực tuân thủ đầy đủ cấu trúc SyndromeDefinition bên dưới:
-"
+Yêu cầu xuất bản bắt buộc:
+1. Xuất DUY NHẤT 01 khối mã JSON hợp lệ khớp chính xác với cấu trúc SyndromeDefinition bên dưới (không có văn bản giải thích ngoài khối code).
+2. ID hội chứng chuẩn: Tiền tố 'hc_' viết thường không dấu (VD: 'hc_than_hu', 'hc_canh_bao_dengue').
+3. Mô tả cơ chế bệnh sinh chi tiết ('coChe'): Giải thích rõ chuỗi sinh lý bệnh liên kết giữa các triệu chứng thành phần.
+4. Tái sử dụng ID triệu chứng ('trieuChung'): BẮT BUỘC dùng ID snake_case tiếng Việt không dấu đã có trong từ điển triệu chứng.
+5. Khử 100% HTML entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;.
+6. Toán tử & Đơn vị SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L."
+
+---
+
+👉 MẪU CÂU LỆNH CHẾ ĐỘ 2: BỘ HỘI CHỨNG THEO MẶT BỆNH (DISEASE SYNDROME SET)
+(Dùng khi trích xuất toàn bộ các hội chứng mà một bệnh lý biểu hiện: ví dụ SXH Dengue -> HC Cảnh báo, HC Sốc, HC Xuất huyết...):
+
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế.
+
+Dựa trên tài liệu y văn [HƯỚNG DẪN / TÀI LIỆU NGUỒN], hãy trích xuất TOÀN BỘ các Hội chứng Lâm sàng kinh điển mà bệnh lý [TÊN BỆNH LÝ] có thể gây ra hoặc biểu hiện.
+- Chuyên khoa: [CHUYÊN KHOA]
+- Xuất ra 01 MẢNG JSON gồm các object SyndromeDefinition hoàn chỉnh.
+- Mỗi hội chứng phải có đầy đủ: tên viết tắt, cơ chế bệnh sinh, ngưỡng tiêu chuẩn (nguong), mảng triệu chứng thành phần (trieuChung) và liên kết bệnh lý (benhLienQuan).
+- Khử 100% HTML entities và xuất đúng chuẩn cú pháp JSON."
+
+---
+
+👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
+"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."
+
+---
+
+👉 MẪU CÂU LỆNH RÀ SOÁT TÍNH TOÀN VẸN HỘI CHỨNG (AUDIT COMMAND):
+"Hãy rà soát lại khối JSON hội chứng vừa xuất:
+1. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Sửa thành <, >, ", &.
+2. Trường 'coChe' đã giải thích rõ cơ chế bệnh sinh chưa?
+3. Các mã ID trong mảng 'trieuChung' có đúng chuẩn snake_case tiếng Việt không dấu không?"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 --------------------------------------------------------------------------------
 [CẤU TRÚC JSON CHUẨN BẮT BUỘC XUẤT RA]

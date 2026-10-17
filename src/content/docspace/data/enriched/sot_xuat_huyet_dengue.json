@@ -19,6 +19,63 @@
     "severity": "emergency",
     "summary": "Sốt xuất huyết Dengue là bệnh truyền nhiễm cấp tính do vi rút Dengue gây nên (với 4 tuýp huyết thanh DEN-1, DEN-2, DEN-3, DEN-4) truyền từ người sang người qua muỗi Aedes aegypti. Bệnh diễn tiến qua 3 giai đoạn: sốt (ngày 1-3), nguy hiểm (ngày 3-7) và hồi phục (ngày 7-10). Đặc trưng lâm sàng gồm sốt cao đột ngột, xuất huyết da niêm, thoát huyết tương gây cô đặc máu, giảm tiểu cầu dốc đứng và nguy cơ diễn tiến sốc giảm thể tích, rối loạn đông máu, suy gan cấp và suy đa tạng theo Quyết định 2760/QĐ-BYT 2023.",
     "goldStandard": "Xác chẩn vi rút học bằng xét nghiệm RT-PCR Dengue RNA (+), kháng nguyên NS1 Ag (+) từ ngày 1 đến ngày 7 (ưu tiên 5 ngày đầu), hoặc xét nghiệm huyết thanh tìm IgM/IgG chuyển đảo (hoặc tăng động độ kháng thể gấp ≥ 4 lần giữa 2 mẫu huyết thanh) theo Quyết định 2760/QĐ-BYT 2023.",
+    "classificationSystems": [
+        {
+            "systemName": "WHO 2009 / Bộ Y Tế (QĐ 2760/QĐ-BYT 2023)",
+            "classes": [
+                {
+                    "classId": "dengue_khong_dhcb",
+                    "className": "Sốt xuất huyết Dengue (Không có dấu hiệu cảnh báo)",
+                    "criteria": "Sốt cao đột ngột 2-7 ngày kèm ≥ 2 dấu hiệu: Buồn nôn, phát ban, đau đầu/hốc mắt, đau cơ khớp, dây thắt (+), bạch cầu giảm; KHÔNG có DHCB và dấu hiệu sốc.",
+                    "icdSuffix": "A97.0",
+                    "symptomTriggers": ["tc_sot_cao_dot_ngot_duoi_7_ngay"]
+                },
+                {
+                    "classId": "dengue_co_dhcb",
+                    "className": "Sốt xuất huyết Dengue CÓ DẤU HIỆU CẢNH BÁO",
+                    "criteria": "Có ≥ 1 dấu hiệu cảnh báo lâm sàng hoặc cận lâm sàng: Đau bụng nhiều/tăng cảm giác đau hạ sườn phải, nôn ói nhiều liên tục, xuất huyết niêm mạc, ứ dịch đa màng, gan to > 2cm, lừ đừ/li bì, Hct tăng cao kèm tiểu cầu giảm nhanh (< 100 G/L).",
+                    "icdSuffix": "A97.1",
+                    "symptomTriggers": [
+                        "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+                        "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+                        "tc_giam_tieu_cau_duoi_100_g_l",
+                        "tc_xuat_huyet_da_niem_lacet_duong_tinh"
+                    ],
+                    "labTriggers": ["lHct", "lTC"]
+                },
+                {
+                    "classId": "dengue_nang",
+                    "className": "Sốt xuất huyết Dengue NẶNG",
+                    "criteria": "Thoát huyết tương nặng dẫn đến SỐC DENGUE (HA kẹp, tụt HA, mạch nhanh nhỏ, CRT > 2s) hoặc ứ dịch gây suy hô hấp cấp; HOẶC Xuất huyết nặng đe dọa sinh mạng; HOẶC Suy tạng cấp nặng (AST/ALT ≥ 1000 U/L, tổn thương thận cấp, rối loạn tri giác).",
+                    "icdSuffix": "A97.2",
+                    "symptomTriggers": [
+                        "tc_soc_mach_nhanh_ha_kep_hoac_tut",
+                        "tc_xuat_huyet_tieu_hoa_nang_hon_me",
+                        "tc_suy_ho_hap_tran_dich_da_mang"
+                    ],
+                    "labTriggers": ["lAST", "lALT", "lLactate"]
+                }
+            ]
+        }
+    ],
+    "etiologyOptions": [
+        {
+            "category": "Nhiễm vi rút (Flaviviridae / Arbovirus)",
+            "specificCauses": [
+                {
+                    "name": "Vi rút Dengue (DENV-1, DENV-2, DENV-3, DENV-4) truyền qua véc tơ muỗi Aedes aegypti / Aedes albopictus",
+                    "triggerKeywords": ["dengue", "muỗi", "ns1", "denv", "aedes"],
+                    "triggerLabIds": ["lNs1Ag", "lIgM_Dengue", "lPcr_Dengue"],
+                    "confidence": "confirmed",
+                    "recommendedWorkup": [
+                        "Test nhanh Kháng nguyên Dengue NS1 Ag (tối ưu từ ngày 1 đến ngày 5 của bệnh)",
+                        "Kháng thể Dengue IgM/IgG MAC-ELISA (từ ngày 5 trở đi khi NS1 Ag giảm)",
+                        "RT-PCR Dengue RNA định type huyết thanh DENV 1-4 (nếu cần nghiên cứu dịch tễ hoặc chẩn đoán xác quyết)"
+                    ]
+                }
+            ]
+        }
+    ],
     "criteriaRule": {
         "mandatoryIds": [
             "tc_sot_cao_dot_ngot_duoi_7_ngay",

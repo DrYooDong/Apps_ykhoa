@@ -1,35 +1,85 @@
 ================================================================================
 CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 02: TIÊU CHUẨN CHẨN ĐOÁN & MA TRẬN CDSS
-(DIAGNOSTIC CRITERIA & CDSS WEIGHT MATRIX EXTRACTOR — CHUẨN EBM 2026)
+(DIAGNOSTIC CRITERIA, 5-COMPONENT DIAGNOSIS & CDSS WEIGHT MATRIX EXTRACTOR — CHUẨN EBM 2026)
 ================================================================================
 
 [MỤC TIÊU CỐT LÕI]
-Prompt này được chuyên biệt hóa để TRÍCH XUẤT ĐỘC LẬP & CHUYÊN SÂU:
+Prompt này được chuyên biệt hóa để TRÍCH XUẤT ĐỘC LẬP & CHUYÊN SÂU theo mô hình Chẩn đoán Nội khoa 5 Thành phần:
 1. BỘ TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (Diagnostic Criteria & Rules):
    - Tiêu chuẩn vàng (goldStandard) khẳng định căn nguyên hoặc tiêu chuẩn xác chẩn.
    - Quy tắc chẩn đoán (criteriaRule): Tiêu chuẩn bắt buộc, số lượng tiêu chuẩn chính/phụ cần thỏa.
    - Danh sách tiêu chuẩn định lượng chi tiết (criteria[]): Ngưỡng CLS, hình ảnh học, vai trò CDSS.
-   -> Nạp trực tiếp vào Bước 3 (Kho Chẩn Đoán & file `src/content/docspace/data/enriched/<slug>.json`).
-
-2. MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Clinical Decision Support Weight Matrix):
-   - Mảng 'dd': Quy định các triệu chứng/xét nghiệm có vai trò Đặc trưng (dt: 4.0 - 5.0), 
-     Gợi ý (gy: 2.5 - 3.5), Hỗ trợ (ht: 1.0 - 2.0), hoặc Loại trừ (loaitru: điểm âm).
+2. HỆ THỐNG PHÂN LOẠI & PHÂN TẦNG NGUY CƠ (Classification Systems & Severity):
+   - Hệ thống phân loại chuẩn quốc tế (classificationSystems): WHO 2009, JNC 8 / ISH 2020, KDIGO, GOLD, GINA...
+3. PHÂN LOẠI NGUYÊN NHÂN & ĐỊNH HƯỚNG CẬN LÂM SÀNG (Etiology Options & Workup):
+   - Căn nguyên nguyên phát vs thứ phát, vi sinh vật, tự miễn kèm cận lâm sàng cần làm khi chưa rõ nguyên nhân.
+4. MA TRẬN TRỌNG SỐ SUY LUẬN CDSS (Clinical Decision Support Weight Matrix):
+   - Mảng 'dd': Triệu chứng Đặc trưng (dt: 4.0 - 5.0), Gợi ý (gy: 2.5 - 3.5), Hỗ trợ (ht: 1.0 - 2.0), Loại trừ (loaitru: -3.0 đến -5.0).
    -> Vận hành động cơ suy luận chẩn đoán phân biệt thời gian thực tại Bước 3.
 
 * LƯU Ý PHỐI HỢP:
-  - Nếu cần sinh Ca lâm sàng mẫu Bước 1 để thực hành & thử nghiệm CDSS: Dùng PROMPT 02b (`02b-prompt-ca-lam-sang-mau.txt`).
+  - Nếu cần sinh Ca lâm sàng mẫu Bước 1 để thực hành & kiểm thử CDSS: Dùng PROMPT 02b (`02b-prompt-ca-lam-sang-mau.txt`).
   - Nếu bệnh lý có triệu chứng mới hoặc hội chứng chưa có trong CSDL: Dùng PROMPT 04 (kèm PROMPT 05).
 
 --------------------------------------------------------------------------------
-[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO NOTEBOOKLM]
 (Tùy chỉnh thông số trong ngoặc vuông bên dưới theo bệnh lý cần xây dựng):
-- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue / Viêm phổi mắc phải cộng đồng / Sốt thương hàn)
-- [MÃ ICD-10 GỐC]: (Ví dụ: A97 / J18 / A01.0)
+- [TÊN BỆNH LÝ]: (Ví dụ: Sốt xuất huyết Dengue / Viêm phổi mắc phải cộng đồng / Tăng huyết áp)
+- [MÃ ICD-10 GỐC]: (Ví dụ: A97 / J18 / I10)
 - [MÃ ICD-10 PHỤ]: (Ví dụ: ["A97.0", "A97.1", "A97.2"] / ["J18.0", "J18.1"])
-- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch / Tiêu hóa / Nhi khoa)
+- [CHUYÊN KHOA]: (Ví dụ: Truyền nhiễm / Hô hấp / Tim mạch / Tiêu hóa / Thận - Tiết niệu)
 - [MỨC ĐỘ KHẨN]: emergency (Cấp cứu) | urgent (Khẩn cấp) | routine (Thông thường)
-- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
-- [SLUG FILE BỆNH LÝ]: (Ví dụ: sot_xuat_huyet_dengue / viem_phoi_cong_dong / sot_thuong_han)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam & WHO 2009)
+- [SLUG FILE BỆNH LÝ]: (Ví dụ: sot_xuat_huyet_dengue / viem_phoi_cong_dong / tang_huyet_ap)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 MẪU CÂU LỆNH CHÍNH (MASTER INVOCATION COMMAND):
+(Sao chép nguyên văn đoạn dưới đây, điền thông số và dán vào ô chat của Google NotebookLM):
+
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế (Clinical Informatics & CDSS).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 02 khối dữ liệu JSON chuẩn xác phục vụ Bộ Tiêu Chuẩn Chẩn Đoán Nội Khoa Toàn Diện (gồm 5 thành phần: Xác định, Phân độ, Phân loại, Nguyên nhân, Biến chứng) và Ma Trận Suy Luận CDSS cho bệnh lý sau:
+
+Thông số đầu vào:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10: [MÃ ICD-10 GỐC]
+- Mã ICD-10 phụ: [MÃ ICD-10 PHỤ]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Mức độ khẩn: [MỨC ĐỘ KHẨN]
+- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản:
+Xuất ra đúng 02 khối code JSON theo cấu trúc bên dưới (không có văn bản giải thích thừa ngoài khối code):
+- KHỐI 1: Bộ Tiêu chuẩn Chẩn đoán Toàn diện (Criteria, Rules, Classification Systems, Etiology Options & Complications) nạp vào Bước 3 Kho Chẩn Đoán & file `src/content/docspace/data/enriched/[SLUG FILE BỆNH LÝ].json`.
+- KHỐI 2: Ma trận trọng số suy luận CDSS Bước 3 (mảng 'dd' phân tầng dt [4.0-5.0], gy [2.5-3.5], ht [1.0-2.0], loaitru [-3.0 đến -5.0]).
+
+Quy chuẩn dữ liệu bắt buộc:
+1. Toán tử & Ký tự SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L.
+2. Khử 100% HTML Entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG xuất &lt;, &gt;, &quot;, &amp;.
+3. Mã ID triệu chứng (symptomIds và dd): Dùng snake_case tiếng Việt không dấu (ví dụ: 'sot_cao_dot_ngot_duoi_7_ngay', 'dau_bung_vung_gan', 'co_dac_mau_hct_tang')."
+
+---
+
+👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
+(Nếu NotebookLM dừng khi đang xuất khối JSON dở dang, dán ngay câu lệnh này):
+
+"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."
+
+---
+
+👉 MẪU CÂU LỆNH RÀ SOÁT CHỐNG SÓT & KHỬ ENTITIES (AUDIT COMMAND):
+(Dán sau khi đã có kết quả để yêu cầu NotebookLM tự kiểm tra):
+
+"Hãy rà soát lại toàn bộ 02 khối JSON vừa sinh:
+1. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Nếu có, hãy sửa thành <, >, ", &.
+2. Đã có đủ classificationSystems (hệ thống phân loại) và etiologyOptions (nguyên nhân & khuyến cáo xét nghiệm) chưa?
+3. Các ID triệu chứng trong mảng 'dd' có khớp với mảng 'criteria' không?"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 --------------------------------------------------------------------------------
 [QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
@@ -58,33 +108,10 @@ Prompt này được chuyên biệt hóa để TRÍCH XUẤT ĐỘC LẬP & CHUY
    Xuất ra đúng 02 khối code JSON chuẩn xác theo cấu trúc bên dưới, không có văn bản giải thích thừa bên ngoài khối code.
 
 --------------------------------------------------------------------------------
-📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
---------------------------------------------------------------------------------
-"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế (Clinical Informatics & CDSS).
-
-Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 02 khối dữ liệu JSON chuẩn xác phục vụ Bộ Tiêu Chuẩn Chẩn Đoán và Ma Trận Suy Luận CDSS cho bệnh lý sau:
-
-Thông số đầu vào:
-- Tên bệnh lý: [TÊN BỆNH LÝ]
-- Mã ICD-10: [MÃ ICD-10 GỐC]
-- Chuyên khoa: [CHUYÊN KHOA]
-- Mức độ khẩn: [MỨC ĐỘ KHẨN]
-- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
-- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
-
-Yêu cầu xuất bản:
-Xuất ra đúng 02 khối code JSON theo cấu trúc bên dưới (không có giải thích ngoài khối code):
-- KHỐI 1: Bộ Tiêu chuẩn Chẩn đoán Xác định (Criteria & Rules) phục vụ Bước 3 Kho Chẩn Đoán & file enriched.
-- KHỐI 2: Ma trận trọng số CDSS Bước 3 (mảng 'dd' phân tầng dt, gy, ht, loaitru).
-
-Cấu trúc JSON chuẩn:
-"
-
---------------------------------------------------------------------------------
 [CẤU TRÚC CODE XUẤT BẢN]
 
-### KHỐI 1: BỘ TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH (CRITERIA & RULES)
-(Phục vụ nạp vào: src/content/docspace/data/enriched/[SLUG FILE].json hoặc Kho Chẩn Đoán)
+### KHỐI 1: BỘ TIÊU CHUẨN CHẨN ĐOÁN XÁC ĐỊNH & 5 THÀNH PHẦN NỘI KHOA
+(Phục vụ nạp vào: src/content/docspace/data/enriched/[SLUG FILE].json hoặc Kho Chẩn Đoán Bước 3)
 
 ```json
 {
@@ -160,6 +187,69 @@ Cấu trúc JSON chuẩn:
       "cdssRole": "dt",
       "weight": 4.0
     }
+  ],
+
+  "classificationSystems": [
+    {
+      "id": "phan_loai_chinh",
+      "name": "Tên hệ thống phân loại chính thức (VD: Phân loại theo WHO 2009 / QĐ 2760/QĐ-BYT / JNC 8 / GOLD)",
+      "guidelineRef": "[HƯỚNG DẪN THAM CHIẾU]",
+      "classes": [
+        {
+          "classId": "the_lam_sang_1",
+          "label": "Tên thể lâm sàng / Phân nhóm 1 (VD: SXH Dengue không có dấu hiệu cảnh báo)",
+          "criteriaSummary": "Mô tả ngắn gọn điều kiện lâm sàng & CLS để xếp vào nhóm này",
+          "requiredSymptomIds": ["id_triệu_chứng_then_chốt_1"]
+        },
+        {
+          "classId": "the_lam_sang_2",
+          "label": "Tên thể lâm sàng / Phân nhóm 2 (VD: SXH Dengue có dấu hiệu cảnh báo)",
+          "criteriaSummary": "Có ít nhất 1 dấu hiệu cảnh báo lâm sàng hoặc cận lâm sàng",
+          "requiredSymptomIds": ["dau_bung_vung_gan", "non_oi_nhieu", "co_dac_mau_hct_tang"]
+        },
+        {
+          "classId": "the_lam_sang_3",
+          "label": "Tên thể lâm sàng / Phân nhóm 3 (VD: SXH Dengue nặng / Sốc Dengue)",
+          "criteriaSummary": "Thoát huyết tương nặng gây sốc, xuất huyết nặng hoặc tổn thương tạng nặng",
+          "requiredSymptomIds": ["soc_dengue_mach_nhanh_ha_kep"]
+        }
+      ]
+    }
+  ],
+
+  "etiologyOptions": [
+    {
+      "category": "Căn nguyên chính / Thường gặp",
+      "causes": [
+        {
+          "name": "Tên căn nguyên vi sinh hoặc bệnh học cụ thể (VD: Virus Dengue DENV-1, DENV-2 / Phế cầu Streptococcus pneumoniae)",
+          "confidence": "confirmed",
+          "rationale": "Căn cứ khẳng định: Xét nghiệm vi sinh, kháng nguyên, nuôi cấy hoặc PCR dương tính",
+          "symptomIds": ["id_xet_nghiem_khang_dinh_duong_tinh"]
+        },
+        {
+          "name": "Tên căn nguyên nghi ngờ / Có thể (VD: Nhiễm Dengue thứ phát / Vi khuẩn không điển hình)",
+          "confidence": "probable",
+          "rationale": "Căn cứ gợi ý: Bối cảnh dịch tễ học, đáp ứng điều trị, hoặc biến đổi kháng thể",
+          "symptomIds": ["id_dau_hieu_goi_y_can_nguyen"]
+        }
+      ]
+    },
+    {
+      "category": "Trường hợp chưa rõ căn nguyên (Chờ kết quả cận lâm sàng)",
+      "recommendedWorkup": "Chiến lược xét nghiệm định hướng căn nguyên cụ thể cần chỉ định ngay (VD: Cấy máu trước khi dùng kháng sinh, NS1Ag STAT ngày 1-5, PCR dịch rửa phế quản, hoặc XQ/CT ngực)."
+    }
+  ],
+
+  "complications": [
+    {
+      "id": "comp_1",
+      "name": "Tên biến chứng cấp tính nguy hiểm (VD: Sốc giảm thể tích do thoát huyết tương / Suy hô hấp cấp / Xuất huyết tiêu hóa nặng)",
+      "timeframe": "acute_24h",
+      "warningSigns": "Dấu hiệu cảnh báo sớm biến chứng (VD: Mạch nhanh nhỏ, huyết áp tụt/kẹt, đau bụng dữ dội, nôn ra máu)",
+      "preventiveAction": "Hành động phòng ngừa và xử trí khẩn cấp ban đầu (VD: Thiết lập đường truyền lớn, bù dịch Ringer Lactate khẩn trương, truyền máu nếu có chỉ định)",
+      "onCallAlertText": "BÁO ĐỘNG ĐỎ TRỰC LÂM SÀNG: Khi người bệnh xuất hiện dấu hiệu này, xử trí khẩn theo phác đồ cấp cứu và hội chẩn Trưởng khoa / Hồi sức."
+    }
   ]
 }
 ```
@@ -198,9 +288,10 @@ Cấu trúc JSON chuẩn:
 
 --------------------------------------------------------------------------------
 [HƯỚNG DẪN NẠP VÀ ĐỒNG BỘ DỮ LIỆU]
-1. Khối 1: Tích hợp vào phần criteria của src/content/docspace/data/enriched/[SLUG FILE].json.
-2. Khối 2: Dán vào mảng benh trong src/content/knowledge-vault/data/diseases/[chuyen_khoa].json.
+1. Khối 1: Tích hợp vào phần criteria, classificationSystems, etiologyOptions của `src/content/docspace/data/enriched/[SLUG FILE].json`.
+2. Khối 2: Dán vào mảng `benh` trong `src/content/knowledge-vault/data/diseases/[chuyen_khoa].json`.
 3. Mở terminal tại thư mục gốc và chạy lệnh đồng bộ:
    node tools/scripts/bundle-clinical-rules.mjs
    node tools/scripts/sync-clinical-db.mjs
 ================================================================================
+

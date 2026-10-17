@@ -251,6 +251,31 @@ export interface DiseaseReactionChainDefinition {
   // Lộ trình & Phác đồ theo phân độ (Nested Protocols)
   timelinePhases?: any[];
   protocols?: any[];
+
+  // 🏷️ HỆ THỐNG PHÂN LOẠI GUIDELINE (Classification Systems - v2.0)
+  classificationSystems?: Array<{
+    systemName: string;      // "WHO 2009", "JNC 8", "GOLD 2023", "KDIGO"
+    classes: Array<{
+      classId: string;
+      className: string;     // "Dengue có DHCB", "THA độ I"
+      criteria: string;
+      icdSuffix?: string;
+      symptomTriggers?: string[];
+      labTriggers?: string[];
+    }>;
+  }>;
+
+  // 🔬 ĐỊNH HƯỚNG CĂN NGUYÊN BỆNH HỌC (Etiology Options - v2.0)
+  etiologyOptions?: Array<{
+    category: string;
+    specificCauses: Array<{
+      name: string;
+      triggerKeywords?: string[];
+      triggerLabIds?: string[];
+      confidence: 'confirmed' | 'probable' | 'suspected';
+      recommendedWorkup?: string[];
+    }>;
+  }>;
 }
 
 import { KHO_CHAN_DOAN_DATABASE } from './kho-chan-doan-db.ts';

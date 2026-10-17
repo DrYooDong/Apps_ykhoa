@@ -29,6 +29,57 @@ Prompt này được tách riêng độc lập để TRÍCH XUẤT HOẶC XÂY D
 - [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Quyết định 2760/QĐ-BYT 2023 của Bộ Y tế Việt Nam)
 
 --------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 MẪU CÂU LỆNH CHÍNH (MASTER CASE GENERATOR):
+(Sao chép nguyên văn đoạn dưới đây, điền thông số và dán vào ô chat Google NotebookLM):
+
+"Bạn là Bác sĩ Trưởng khoa Cấp cứu & Khám bệnh và Chuyên gia Mô phỏng Lâm sàng (Clinical Simulation).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Bệnh Mẫu hoàn chỉnh phục vụ Bước 1 Tiếp nhận và Thử nghiệm Động cơ Suy luận CDSS DocSpace cho bệnh lý sau:
+
+Thông số ca bệnh:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10: [MÃ ICD-10]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Thể bệnh cần mô phỏng: [THỂ BỆNH CẦN MÔ PHỎNG]
+- Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
+- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản bắt buộc:
+1. Xuất DUY NHẤT 01 khối code JSON chuẩn xác theo cấu trúc SampleClinicalCase bên dưới (không có văn bản giải thích ngoài khối code).
+2. Sinh hiệu (vitals) và xét nghiệm ban đầu (labs) phải ăn khớp logic sinh lý bệnh với triệu chứng lâm sàng.
+3. Mảng triệu chứng chọn trước (selected và sel) phải dùng ID snake_case tiếng Việt không dấu (ví dụ: 'sot_cao_dot_ngot_duoi_7_ngay', 'dau_bung_vung_gan').
+4. Khử 100% HTML entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;.
+5. Bao gồm trường expectedDiagnosis (Chẩn đoán mong đợi 5 thành phần: Xác định, Phân độ, Phân loại, Nguyên nhân, Biến chứng) để làm đáp án chuẩn đối soát với CDSS Bước 3."
+
+---
+
+👉 MẪU CÂU LỆNH SINH CA BẪY LÂM SÀNG / ĐA BỆNH ĐỒNG MẮC (PITFALL / COMORBIDITY CASE):
+"Hãy xây dựng 01 Ca bệnh mô phỏng dạng BẪY LÂM SÀNG hoặc ĐA BỆNH ĐỒNG MẮC cho [TÊN BỆNH LÝ]:
+- Bệnh nhân có bệnh nền: [Bệnh nền: ví dụ Tăng huyết áp đang dùng ức chế men chuyển / ĐTĐ type 2 / Bệnh thận mạn].
+- Tình huống cạm bẫy: [VD: Hạ sốt đột ngột nhưng thực chất đang vào sốc thoát huyết tương / Lacet âm tính giả do sốc tụt HA].
+- Xuất đầy đủ khối JSON theo cấu trúc chuẩn, có sinh hiệu và xét nghiệm phản ánh đúng tình trạng bẫy lâm sàng."
+
+---
+
+👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
+"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."
+
+---
+
+👉 MẪU CÂU LỆNH RÀ SOÁT TÍNH HỢP LÝ LÂM SÀNG (AUDIT COMMAND):
+"Hãy rà soát lại ca bệnh vừa tạo:
+1. Giá trị Hematocrit (lHct) và Tiểu cầu (lTC) có khớp với triệu chứng đã chọn trong 'selected' không?
+2. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Hãy đổi thành <, >, ", &.
+3. Bệnh sử 4 phần (form.text: cn, tt, tc, cls) có thể hiện rõ thời điểm xuất hiện các triệu chứng then chốt không?"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+--------------------------------------------------------------------------------
 [QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
 
 1. ĐỒNG NHẤT MÃ ID TRIỆU CHỨNG:
@@ -46,26 +97,6 @@ Prompt này được tách riêng độc lập để TRÍCH XUẤT HOẶC XÂY D
 
 4. ĐẦU RA DUY NHẤT:
    Xuất ra đúng 01 khối code JSON hợp lệ duy nhất, không có văn bản giải thích thừa bên ngoài khối code.
-
---------------------------------------------------------------------------------
-📋 PROMPT CHUẨN DÁN VÀO NOTEBOOKLM:
---------------------------------------------------------------------------------
-"Bạn là Bác sĩ Trưởng khoa Khám bệnh và Hồi sức Cấp cứu.
-
-Dựa DUY NHẤT và CHẶT CHẼ trên tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Lâm Sàng Mẫu hoàn chỉnh phục vụ Bước 1 Tiếp nhận và Thử nghiệm Động cơ CDSS DocSpace cho bệnh lý sau:
-
-Thông số đầu vào:
-- Tên bệnh lý: [TÊN BỆNH LÝ]
-- Mã ICD-10: [MÃ ICD-10]
-- Chuyên khoa: [CHUYÊN KHOA]
-- Thể bệnh cần mô phỏng: [THỂ BỆNH CẦN MÔ PHỎNG]
-- Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
-- Slug bệnh lý: [SLUG FILE BỆNH LÝ]
-- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
-
-Yêu cầu xuất bản:
-Xuất ra đúng 01 khối code JSON chuẩn xác theo cấu trúc bên dưới (không có văn bản giải thích ngoài khối code):
-"
 
 --------------------------------------------------------------------------------
 [CẤU TRÚC JSON XUẤT BẢN]
@@ -126,6 +157,13 @@ Xuất ra đúng 01 khối code JSON chuẩn xác theo cấu trúc bên dưới 
       "tc": "Tiền căn bản thân, gia đình và bối cảnh dịch tễ phơi nhiễm...",
       "cls": "Kết quả các xét nghiệm cận lâm sàng tại thời điểm tiếp nhận..."
     }
+  },
+  "expectedDiagnosis": {
+    "primaryDisease": "[TÊN BỆNH CHÍNH XÁC ĐỊNH]",
+    "severity": "[PHÂN ĐỘ MỨC ĐỘ NẶNG: ví dụ Có dấu hiệu cảnh báo]",
+    "classification": "[THỂ LÂM SÀNG / PHÂN LOẠI]",
+    "etiology": "[CĂN NGUYÊN KHẲNG ĐỊNH HOẶC NGHI NGỜ]",
+    "complications": "[BIẾN CHỨNG NẾU CÓ]"
   }
 }
 ```

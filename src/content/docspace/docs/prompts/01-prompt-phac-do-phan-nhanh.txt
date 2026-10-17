@@ -32,17 +32,78 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
 
 * 2 CHIẾN THUẬT LẤY ĐẦY ĐỦ 100% NỘI DUNG Y KHOA CHUYÊN SÂU:
   👉 CHIẾN THUẬT 1 (KHUYÊN DÙNG NHẤT — CHUẨN 100%): SINH TỪNG NHÁNH (Branch-by-Branch)
-     - Lượt 1: Dán Prompt này và thêm câu lệnh:
-       "Hãy xuất khối JSON gồm phần thông tin chung, tiêu chuẩn chẩn đoán criteria[] và chi tiết của Nhánh 1 (nhẹ/cổ điển) & Nhánh 2 (có cảnh báo)."
-     - Lượt 2: Chat tiếp trong Notebook:
-       "Bây giờ hãy viết tiếp object JSON chi tiết cho Nhánh 3 (Sốc / Nặng / ICU) theo đúng cấu trúc branch, đầy đủ 100% y lệnh dịch truyền nấc thang và bảng 4 cột."
-     -> Sau đó chỉ việc dán object Nhánh 3 vào mảng `branches: [ ... ]` của file JSON!
+     - Xem mẫu câu lệnh số 3 bên dưới để chia nhỏ thành 2 lượt sinh không bao giờ bị cắt ngắn.
 
   👉 CHIẾN THUẬT 2: KỸ THUẬT GÕ "TIẾP TỤC" (KHI BỊ DỪNG NGANG)
      - Nếu NotebookLM đang sinh dở dang mà bị dừng lại (chưa đóng ngoặc `}`), đừng bắt nó viết lại từ đầu!
-     - Chỉ cần gõ lệnh:
-       "tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước"
-     -> AI sẽ viết tiếp đoạn đuôi còn lại, bạn chỉ cần copy nối 2 đoạn lại thành file hoàn chỉnh.
+     - Chỉ cần gõ lệnh tiếp tục bên dưới để AI xuất tiếp đoạn đuôi còn lại.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 MẪU CÂU LỆNH 1: BỆNH LÝ 1 TRỤC PHÂN NHÁNH (SINGLE-AXIS: SXH DENGUE, VIÊM PHỔI, HEN...)
+(Sao chép nguyên văn đoạn dưới đây, điền thông số và dán vào ô chat Google NotebookLM):
+
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Dược Lâm sàng / EBM.
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 TỆP JSON DUY NHẤT phục vụ Phác Đồ Phân Nhánh Lâm Sàng & Đa Phương Án Điều Trị theo chuẩn Dynamic Clinical Branching Engine v4.0 của CliniPortal DocSpace:
+
+Thông số bệnh lý:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10 gốc: [MÃ ICD-10 GỐC]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Mức độ khẩn: [MỨC ĐỘ KHẨN]
+- Slug bệnh lý: [SLUG FILE]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+- Chế độ phân nhánh: mode = 'single' (1 trục phân loại: severity | triage_score | phenotype | treatment_step | stage | comorbidity)
+
+Yêu cầu xuất bản bắt buộc:
+1. Xuất DUY NHẤT 01 khối mã JSON hợp lệ (không có lời mở đầu hay kết luận ngoài khối mã).
+2. Bao gồm đầy đủ 5 thành phần chẩn đoán: Tiêu chuẩn xác định (criteriaRule & criteria), Phân loại (classificationSystems), Nguyên nhân (etiologyOptions), Phân độ (severityGrading / branches) và Biến chứng (complications).
+3. Mỗi nhánh điều trị (branch) BẮT BUỘC có Bảng 4 Cột lộ trình theo ngày (timelinePhases), chỉ định leo thang (escalationCriteria), tiêu chuẩn ra viện (dischargeCriteria), và danh mục thuốc chi tiết (First-line, Alternative, Symptom care).
+4. Khử 100% HTML entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;.
+5. Toán tử & Đơn vị SI chuẩn: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L, mmol/L."
+
+---
+
+👉 MẪU CÂU LỆNH 2: BỆNH LÝ ĐA TRỤC PHỐI HỢP (MULTI-AXIS: XƠ GAN, COPD, SUY TIM, ĐÁI THÁO ĐƯỜNG...)
+(Dùng khi bệnh lý cần phân nhánh theo ≥ 2 trục đồng thời: ví dụ Trục 1 Child-Pugh x Trục 2 Nguyên nhân do rượu/HBV):
+
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Dược Lâm sàng.
+
+Dựa trên tài liệu y văn đã tải lên ([HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng TỆP JSON Phác Đồ Đa Trục Tổ Hợp (mode = 'multi') cho bệnh lý [TÊN BỆNH LÝ]:
+- Trục 1 (axis 1): [Tên trục 1, ví dụ: Phân tầng chức năng gan Child-Pugh A / B / C]
+- Trục 2 (axis 2): [Tên trục 2, ví dụ: Căn nguyên Do rượu / Viêm gan B / Viêm gan C]
+- Xuất đầy đủ cấu trúc 'axes: [ ... ]' và ma trận phác đồ phối hợp 'combinedProtocols: [ ... ]'.
+- Mỗi phác đồ phối hợp phải có Bảng 4 Cột timeline từng ngày và y lệnh thuốc phân bậc.
+- Khử 100% HTML entities và xuất đúng 01 khối JSON duy nhất."
+
+---
+
+👉 MẪU CÂU LỆNH 3: SINH TỪNG NHÁNH CHO MẶT BỆNH LỚN (TRÁNH BỊ DỪNG DO GIỚI HẠN TOKENS):
+
+• LƯỢT 1 (Header + Tiêu chuẩn + Nhánh 1 & 2):
+"Từ [HƯỚNG DẪN THAM CHIẾU], hãy xuất phần đầu của tệp JSON gồm: Thông tin chung, syndromes, criteriaRule, criteria, classificationSystems, etiologyOptions, và chi tiết của Nhánh 1 (thể nhẹ) & Nhánh 2 (có cảnh báo). Chưa cần xuất Nhánh 3 vội."
+
+• LƯỢT 2 (Nhánh 3 Nặng / Sốc / ICU + Clinical Cautions):
+"Bây giờ hãy viết tiếp object JSON chi tiết cho Nhánh 3 (Thể nặng / Sốc / ICU) và khối clinicalCautions, complications, vaultPathways theo đúng cấu trúc schema, đầy đủ 100% y lệnh dịch truyền nấc thang và bảng 4 cột."
+
+---
+
+👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
+"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."
+
+---
+
+👉 MẪU CÂU LỆNH RÀ SOÁT CHỐNG SÓT Y LỆNH & KHỬ ENTITIES (AUDIT COMMAND):
+"Hãy rà soát lại khối JSON phác đồ vừa tạo:
+1. Đã có đủ các lựa chọn kháng sinh/thuốc thay thế (Alternative) khi dị ứng hoặc kháng thuốc chưa?
+2. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Hãy đổi hết thành <, >, ", &.
+3. Mỗi nhánh đã có đủ escalationCriteria (chỉ định leo thang) và dischargeCriteria (tiêu chuẩn xuất viện) chưa?"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 --------------------------------------------------------------------------------
 [QUY TẮC BẮT BUỘC TUÂN THỦ (NON-NEGOTIABLE)]
 
@@ -120,7 +181,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
    - Nếu bệnh có hội chứng đặc thù khác chưa có trong danh sách, đặt ID theo cú pháp chuẩn: "hc_<ten_khong_dau>" (ví dụ: "hc_dong_dac_phoi", "hc_suy_tim_sung_huyet").
 
 9. PHỐI HỢP VỚI PROMPT 02 & PROMPT 04:
-   - Khối tiêu chuẩn chẩn đoán ("criteriaRule", "criteria") có thể lấy trực tiếp từ kết quả của PROMPT 02 để nạp vào tệp JSON này.
+   - Khối tiêu chuẩn chẩn đoán ("criteriaRule", "criteria", "classificationSystems", "etiologyOptions") có thể lấy trực tiếp từ kết quả của PROMPT 02 để nạp vào tệp JSON này.
    - Toàn bộ từ điển triệu chứng chi tiết có thể được quản lý độc lập qua PROMPT 04.
 
 10. ĐẦU RA DUY NHẤT:
@@ -158,7 +219,7 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
       "sourceGuideline": "[HƯỚNG DẪN THAM CHIẾU]",
       "symptomIds": ["id_triệu_chứng_tương_ứng"],
       "cdssRole": "dt",
-      "weight": 4.5
+      "weight": 5.0
     },
     {
       "id": "tc_chinh_1",
@@ -169,6 +230,40 @@ Tệp JSON này sẽ vận hành trực tiếp cả:
       "symptomIds": ["id_triệu_chứng"],
       "cdssRole": "dt",
       "weight": 4.0
+    }
+  ],
+
+  "classificationSystems": [
+    {
+      "id": "phan_loai_chinh",
+      "name": "Tên hệ thống phân loại chính thức (VD: Phân loại theo WHO 2009 / JNC 8 / GOLD)",
+      "guidelineRef": "[HƯỚNG DẪN THAM CHIẾU]",
+      "classes": [
+        {
+          "classId": "the_lam_sang_1",
+          "label": "Tên thể lâm sàng 1",
+          "criteriaSummary": "Mô tả ngắn gọn điều kiện lâm sàng & CLS",
+          "requiredSymptomIds": ["id_triệu_chứng_then_chốt"]
+        }
+      ]
+    }
+  ],
+
+  "etiologyOptions": [
+    {
+      "category": "Căn nguyên chính / Thường gặp",
+      "causes": [
+        {
+          "name": "Tên căn nguyên vi sinh / bệnh học",
+          "confidence": "confirmed",
+          "rationale": "Căn cứ khẳng định (xét nghiệm vàng, nuôi cấy, PCR...)",
+          "symptomIds": ["id_xet_nghiem_khang_dinh"]
+        }
+      ]
+    },
+    {
+      "category": "Trường hợp chưa rõ căn nguyên",
+      "recommendedWorkup": "Chiến lược xét nghiệm định hướng căn nguyên cần làm ngay."
     }
   ],
 
