@@ -1,6 +1,6 @@
 ---
 title: "Sốt xuất huyết Dengue nặng, thể xuất huyết nặng"
-caseId: "soap-sot_xuat_huyet_dengue-05"
+caseId: "soap-sxhd_txh_nh-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 4

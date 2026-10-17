@@ -1,6 +1,6 @@
 ---
 title: "Sốt xuất huyết Dengue nặng - Thể Viêm cơ tim cấp"
-caseId: "soap-sot_xuat_huyet_dengue-04"
+caseId: "soap-sxhd_tvc-01"
 specialty: "Truyền nhiễm / Tim mạch"
 experienceLevel: "advanced"
 difficultyRating: 5

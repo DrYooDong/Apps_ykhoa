@@ -1,6 +1,6 @@
 ---
 title: "Viêm bàng quang cấp tái phát (rUTI)"
-caseId: "soap-viem_bang_quang_cap_taiphat-01"
+caseId: "soap-vbq_cap_taiphat-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3
