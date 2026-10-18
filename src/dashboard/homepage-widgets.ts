@@ -73,37 +73,39 @@ export const CLINICAL_PEARLS: ClinicalPearlItem[] = [
   }
 ];
 
+export const CDSS_STANDALONE_URL = 'https://dryoodong.github.io/CDSS_Standalone/?theme=light';
+
 // ── 2. DATABASE: DOCSPACE CDSS APPS (STANDALONE ARCHITECTURE) ──
 export const CANONICAL_CDSS_URLS: Record<string, string> = {
-  'cdss-dengue': './src/content/docspace/public/cdss/dengue/index.html',
-  'cdss-ecg': './src/content/docspace/public/cdss/ecg/index.html',
-  'cdss-abg': './src/content/docspace/public/cdss/abg/index.html',
-  'cdss-xray': './src/content/docspace/public/cdss/xray/index.html',
-  'cdss-hepa': './src/content/docspace/public/cdss/hepa/index.html',
-  'cdss-neuro': './src/content/docspace/public/cdss/neuro/index.html',
-  'cdss-microbio': './src/content/docspace/public/cdss/microbio/index.html',
-  'cdss-antibiotic': './src/content/docspace/public/cdss/antibiotic/index.html',
-  'cdss-vancomycin': './src/content/docspace/public/cdss/vancomycin/index.html',
-  'cdss-sepsis': './src/content/docspace/public/cdss/sepsis/index.html',
-  'cdss-inpatient': './src/content/docspace/public/cdss/inpatient/index.html',
-  'cdss-diacare': './src/content/docspace/public/cdss/diacare/index.html',
-  'cdss-hub': './src/content/docspace/public/cdss/index.html'
+  'cdss-dengue': CDSS_STANDALONE_URL,
+  'cdss-ecg': CDSS_STANDALONE_URL,
+  'cdss-abg': CDSS_STANDALONE_URL,
+  'cdss-xray': CDSS_STANDALONE_URL,
+  'cdss-hepa': CDSS_STANDALONE_URL,
+  'cdss-neuro': CDSS_STANDALONE_URL,
+  'cdss-microbio': CDSS_STANDALONE_URL,
+  'cdss-antibiotic': CDSS_STANDALONE_URL,
+  'cdss-vancomycin': CDSS_STANDALONE_URL,
+  'cdss-sepsis': CDSS_STANDALONE_URL,
+  'cdss-inpatient': CDSS_STANDALONE_URL,
+  'cdss-diacare': CDSS_STANDALONE_URL,
+  'cdss-hub': CDSS_STANDALONE_URL
 };
 
 export const DEFAULT_LAUNCHER_APPS: LauncherAppItem[] = [
-  { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: "./src/content/docspace/public/cdss/dengue/index.html", icon: "💧", count: 35 },
-  { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", category: "Tim Mạch • 21 Ca & Caliper", url: "./src/content/docspace/public/cdss/ecg/index.html", icon: "📈", count: 32 },
-  { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: "./src/content/docspace/public/cdss/abg/index.html", icon: "🫁", count: 28 },
-  { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: "./src/content/docspace/public/cdss/xray/index.html", icon: "🩻", count: 25 },
-  { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: "./src/content/docspace/public/cdss/hepa/index.html", icon: "🧪", count: 22 },
-  { id: "cdss-neuro", title: "Khám Thần Kinh (NeuroExam)", category: "Thần Kinh • Mô Phỏng 3D", url: "./src/content/docspace/public/cdss/neuro/index.html", icon: "🧠", count: 20 },
-  { id: "cdss-microbio", title: "Vi Sinh & KSĐ (Mahon)", category: "Vi Sinh • CLSI M100", url: "./src/content/docspace/public/cdss/microbio/index.html", icon: "🦠", count: 18 },
-  { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: "./src/content/docspace/public/cdss/antibiotic/index.html", icon: "💊", count: 16 },
-  { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: "./src/content/docspace/public/cdss/vancomycin/index.html", icon: "💉", count: 14 },
-  { id: "cdss-sepsis", title: "Phân Tầng Nguy Cơ Sepsis", category: "Hồi Sức • NICE & SSC 2024", url: "./src/content/docspace/public/cdss/sepsis/index.html", icon: "☣️", count: 13 },
-  { id: "cdss-inpatient", title: "Khám Bệnh Nội Trú (Bates)", category: "Nội Khoa • Bates & Macleod", url: "./src/content/docspace/public/cdss/inpatient/index.html", icon: "🩺", count: 15 },
-  { id: "cdss-diacare", title: "Quản Lý Insulin Nội Viện", category: "Nội Tiết • ADA 2026 & JBDS", url: "./src/content/docspace/public/cdss/diacare/index.html", icon: "💉", count: 17 },
-  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối 12 Module", url: "./src/content/docspace/public/cdss/index.html", icon: "🧬", count: 12 }
+  { id: "cdss-dengue", title: "Dịch Truyền SXHD Dengue", category: "Truyền Nhiễm • BYT 2023", url: CDSS_STANDALONE_URL, icon: "💧", count: 35 },
+  { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", category: "Tim Mạch • 21 Ca & Caliper", url: CDSS_STANDALONE_URL, icon: "📈", count: 32 },
+  { id: "cdss-abg", title: "Khí Máu Động Mạch (ABG Pro)", category: "Hô Hấp • 24 Ca & Nomogram", url: CDSS_STANDALONE_URL, icon: "🫁", count: 28 },
+  { id: "cdss-xray", title: "X-Quang Thông Minh (RadAI)", category: "CĐHA • Trạm Đọc PACS", url: CDSS_STANDALONE_URL, icon: "🩻", count: 25 },
+  { id: "cdss-hepa", title: "Sinh Hóa Gan (HepaCDSS)", category: "Tiêu Hóa • ACG & WHO", url: CDSS_STANDALONE_URL, icon: "🧪", count: 22 },
+  { id: "cdss-neuro", title: "Khám Thần Kinh (NeuroExam)", category: "Thần Kinh • Mô Phỏng 3D", url: CDSS_STANDALONE_URL, icon: "🧠", count: 20 },
+  { id: "cdss-microbio", title: "Vi Sinh & KSĐ (Mahon)", category: "Vi Sinh • CLSI M100", url: CDSS_STANDALONE_URL, icon: "🦠", count: 18 },
+  { id: "cdss-antibiotic", title: "Liều Kháng Sinh & Suy Thận", category: "Dược Lý • WHO AWaRe", url: CDSS_STANDALONE_URL, icon: "💊", count: 16 },
+  { id: "cdss-vancomycin", title: "Dược Động Học Vancomycin", category: "Dược Lâm Sàng • ASHP 2020", url: CDSS_STANDALONE_URL, icon: "💉", count: 14 },
+  { id: "cdss-sepsis", title: "Phân Tầng Nguy Cơ Sepsis", category: "Hồi Sức • NICE & SSC 2024", url: CDSS_STANDALONE_URL, icon: "☣️", count: 13 },
+  { id: "cdss-inpatient", title: "Khám Bệnh Nội Trú (Bates)", category: "Nội Khoa • Bates & Macleod", url: CDSS_STANDALONE_URL, icon: "🩺", count: 15 },
+  { id: "cdss-diacare", title: "Quản Lý Insulin Nội Viện", category: "Nội Tiết • ADA 2026 & JBDS", url: CDSS_STANDALONE_URL, icon: "💉", count: 17 },
+  { id: "cdss-hub", title: "Trung Tâm CDSS Hub", category: "DocSpace • Điều Phối 12 Module", url: CDSS_STANDALONE_URL, icon: "🧬", count: 12 }
 ];
 
 let currentPearlIdx = 0;
@@ -330,12 +332,12 @@ export function getRecentlyUsed(): RecentChipItem[] {
       }
     }
     return [
-      { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: "./src/content/docspace/public/cdss/dengue/index.html" },
-      { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", icon: "📈", url: "./src/content/docspace/public/cdss/ecg/index.html" },
-      { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: "./src/content/docspace/public/cdss/abg/index.html" },
-      { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: "./src/content/docspace/public/cdss/xray/index.html" },
-      { id: "cdss-inpatient", title: "Khám Bệnh Bates", icon: "🩺", url: "./src/content/docspace/public/cdss/inpatient/index.html" },
-      { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: "./src/content/docspace/public/cdss/antibiotic/index.html" }
+      { id: "cdss-dengue", title: "Dịch Truyền SXHD", icon: "💧", url: CDSS_STANDALONE_URL },
+      { id: "cdss-ecg", title: "Phân Tích ECG 12 Chuyển Đạo", icon: "📈", url: CDSS_STANDALONE_URL },
+      { id: "cdss-abg", title: "Khí Máu ABG", icon: "🫁", url: CDSS_STANDALONE_URL },
+      { id: "cdss-xray", title: "RadAI X-Quang", icon: "🩻", url: CDSS_STANDALONE_URL },
+      { id: "cdss-inpatient", title: "Khám Bệnh Bates", icon: "🩺", url: CDSS_STANDALONE_URL },
+      { id: "cdss-antibiotic", title: "Liều Kháng Sinh", icon: "💊", url: CDSS_STANDALONE_URL }
     ];
   } catch (e) {
     return [];

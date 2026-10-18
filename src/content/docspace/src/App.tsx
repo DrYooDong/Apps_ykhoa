@@ -10,7 +10,7 @@ import { Step4KnowledgeBase } from './components/Step4KnowledgeBase.tsx';
 import { AboutModal } from './components/AboutModal.tsx';
 import { PrintReportModal } from './components/PrintReportModal.tsx';
 import { VaultDrawer } from './components/VaultDrawer.tsx';
-import { CdssModal, CdssToolSlug } from './components/CdssModal.tsx';
+import { CdssToolSlug } from './lib/vaultBridge.ts';
 import { ClinicalSimulationModal } from './components/simulation/ClinicalSimulationModal.tsx';
 import { BottomNavBar } from './components/mobile/BottomNavBar.tsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
@@ -106,8 +106,6 @@ export function MainApp() {
   const [vaultQuery, setVaultQuery] = useState('');
   const [vaultDisease, setVaultDisease] = useState('');
   const [vaultKho, setVaultKho] = useState('ALL');
-  const [isCdssOpen, setIsCdssOpen] = useState(false);
-  const [activeCdssTool, setActiveCdssTool] = useState<CdssToolSlug>('hub');
   const [isSimulationOpen, setIsSimulationOpen] = useState(false);
 
   // Active Guideline integration banner state
@@ -143,9 +141,8 @@ export function MainApp() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleOpenCdss = (tool: CdssToolSlug = 'hub') => {
-    setActiveCdssTool(tool);
-    setIsCdssOpen(true);
+  const handleOpenCdss = (_tool?: CdssToolSlug) => {
+    window.open('https://dryoodong.github.io/CDSS_Standalone/?theme=light', '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenVaultDrawer = (diseaseName?: string, query?: string, khoCode?: string) => {
@@ -730,12 +727,6 @@ export function MainApp() {
         initialKho={vaultKho}
         initialDiseaseName={vaultDisease}
         onOpenCdssModal={handleOpenCdss}
-      />
-
-      <CdssModal
-        isOpen={isCdssOpen}
-        onClose={() => setIsCdssOpen(false)}
-        initialTool={activeCdssTool}
       />
 
       <AboutModal

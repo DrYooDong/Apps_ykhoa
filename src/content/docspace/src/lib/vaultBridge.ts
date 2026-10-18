@@ -334,48 +334,13 @@ export type CdssToolSlug =
   | 'diacare'
   | 'hub';
 
+export const CDSS_STANDALONE_BASE_URL = 'https://dryoodong.github.io/CDSS_Standalone/?theme=light';
+
 /**
- * Tạo URL mở trực tiếp công cụ CDSS độc lập (Dengue, ECG, ABG, X-Ray, Hepa, Neuro, Microbio, Antibiotic, Vancomycin, Sepsis, Inpatient, DiaCare hoặc CDSS Hub)
- * Đường dẫn tĩnh nội bộ trong public/cdss/ của DocSpace giúp hoạt động 100% trên cả dev server và production
+ * Tạo URL mở trực tiếp công cụ CDSS độc lập (CDSS Platform Suite Standalone)
  */
-export function getCdssAppUrl(moduleSlug: CdssToolSlug = 'hub'): string {
-  if (moduleSlug === 'dengue') {
-    return `./cdss/dengue/index.html`;
-  }
-  if (moduleSlug === 'ecg') {
-    return `./cdss/ecg/index.html`;
-  }
-  if (moduleSlug === 'abg') {
-    return `./cdss/abg/index.html`;
-  }
-  if (moduleSlug === 'xray') {
-    return `./cdss/xray/index.html`;
-  }
-  if (moduleSlug === 'hepa') {
-    return `./cdss/hepa/index.html`;
-  }
-  if (moduleSlug === 'neuro') {
-    return `./cdss/neuro/index.html`;
-  }
-  if (moduleSlug === 'microbio') {
-    return `./cdss/microbio/index.html`;
-  }
-  if (moduleSlug === 'antibiotic') {
-    return `./cdss/antibiotic/index.html`;
-  }
-  if (moduleSlug === 'vancomycin') {
-    return `./cdss/vancomycin/index.html`;
-  }
-  if (moduleSlug === 'sepsis') {
-    return `./cdss/sepsis/index.html`;
-  }
-  if (moduleSlug === 'inpatient') {
-    return `./cdss/inpatient/index.html`;
-  }
-  if (moduleSlug === 'diacare') {
-    return `./cdss/diacare/index.html`;
-  }
-  return `./cdss/index.html`;
+export function getCdssAppUrl(_moduleSlug: CdssToolSlug = 'hub'): string {
+  return CDSS_STANDALONE_BASE_URL;
 }
 
 /**

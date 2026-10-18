@@ -118,20 +118,19 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right Actions: CDSS Button + OSCE Simulation + Home + Unified Menu Button */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Quick CDSS Studio Button (Desktop) */}
-          {onOpenCdssModal && (
-            <button
-              type="button"
-              id="btn-nav-cdss"
-              onClick={() => onOpenCdssModal('hub')}
-              className="hidden md:flex items-center gap-1 px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-md text-xs font-semibold transition-all cursor-pointer shadow-2xs"
-              title="Mở Trung Tâm Hỗ Trợ Quyết Định Lâm Sàng CDSS (11 Modules)"
-              aria-label="Kho CDSS"
-            >
-              <Zap className="w-3.5 h-3.5 text-blue-600 fill-blue-600/30" />
-              <span>CDSS (11)</span>
-            </button>
-          )}
+          {/* Quick CDSS Studio Button (Desktop) — Standalone Suite */}
+          <a
+            id="btn-nav-cdss"
+            href="https://dryoodong.github.io/CDSS_Standalone/?theme=light"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-md text-xs font-semibold transition-all cursor-pointer shadow-2xs no-underline"
+            title="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập"
+            aria-label="CDSS Platform Suite"
+          >
+            <Zap className="w-3.5 h-3.5 text-blue-600 fill-blue-600/30" />
+            <span>CDSS Platform</span>
+          </a>
 
           {/* OSCE Simulation Button (Desktop) */}
           {onOpenSimulation && (

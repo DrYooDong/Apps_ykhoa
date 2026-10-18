@@ -102,30 +102,28 @@ export const MobileActionSheet: React.FC<MobileActionSheetProps> = ({
             </button>
           </div>
 
-          {/* Quick Access Kho CDSS */}
-          {onOpenCdssModal && (
-            <div className="mt-2.5">
-              <button
-                type="button"
-                onClick={() => {
-                  onClose();
-                  onOpenCdssModal('hub');
-                }}
-                className="w-full flex items-center justify-between p-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200 text-blue-900 active:scale-[0.99] transition-all min-h-[44px]"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
-                    ⚡
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs font-bold text-blue-900">Kho CDSS Lâm Sàng (11 Modules)</div>
-                    <div className="text-[10px] text-blue-700">Khám nội trú Bates &amp; Macleod, Sepsis, Dengue, ECG, Kháng sinh...</div>
-                  </div>
+          {/* Quick Access Kho CDSS — Standalone Platform */}
+          <div className="mt-2.5">
+            <a
+              href="https://dryoodong.github.io/CDSS_Standalone/?theme=light"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200 text-blue-900 active:scale-[0.99] transition-all min-h-[44px] no-underline"
+              title="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+                  ⚡
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
-              </button>
-            </div>
-          )}
+                <div className="text-left">
+                  <div className="text-xs font-bold text-blue-900">CDSS Platform Suite</div>
+                  <div className="text-[10px] text-blue-700">Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập</div>
+                </div>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-blue-600" />
+            </a>
+          </div>
         </div>
 
         {/* Các chức năng bổ trợ */}
