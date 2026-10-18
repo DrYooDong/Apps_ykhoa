@@ -1,0 +1,82 @@
+================================================================================
+CLINIPORTAL DOCSPACE — MASTER PROMPT 00: NẠP NHANH 1-CHẠM TOÀN DIỆN (FAST-TRACK)
+(ALL-IN-ONE COMPACT CLINICAL KNOWLEDGE EXTRACTOR — CHUẨN EBM 2026)
+================================================================================
+
+[MỤC TIÊU CỐT LÕI — FAST-TRACK 1-CHẠM]
+Prompt này được thiết kế dành cho các BỆNH LÝ ĐƠN TRỤC HOẶC QUY MÔ VỪA & NHỎ (ví dụ: Viêm họng cấp, Viêm phế quản cấp, Cúm mùa, Sốt rét thông thường, Viêm da mủ, Viêm bàng quang cấp...):
+- Chỉ cần DÁN 01 LẦN DUY NHẤT vào Google NotebookLM để trích xuất đồng thời:
+  1. KHỐI 1: Tệp dữ liệu Bệnh lý Hoàn Chỉnh (`enriched/<slug>.json`) gồm:
+     - Thông tin hành chính & ICD-10
+     - Khối Tiêu chuẩn Chẩn đoán 5 Thành phần (Criteria, Rules, Gold Standard, Classification Systems, Etiology)
+     - Khối Phác đồ Phân nhánh 6 Đầu Mục Lâm Sàng chuẩn Bộ Y tế
+     - Bảng 4 Cột Lộ trình Điều trị chi tiết từng ngày (Timeline Phases)
+     - Danh mục Kháng sinh & Thuốc nấc thang (First-line, Alternative, Chỉnh liều eGFR, Xuống thang IV-to-PO)
+     - Ma trận trọng số CDSS Bước 3 (mảng 'dd' phân tầng dt, gy, ht, loaitru)
+  2. KHỐI 2: Ca Bệnh Mẫu Bước 1 (Sample Case) để nạp vào `sample-clinical-cases.json` kiểm thử ngay lập tức.
+
+👉 ĐỐI VỚI BỆNH LÝ ĐỒ SỘ / NHIỀU PHÂN ĐỘ NẶNG (như Sốt xuất huyết Dengue, Sốc nhiễm khuẩn, Viêm tụy cấp nặng, Xơ gan mất bù...):
+   Khuyên dùng bộ Prompt Chuyên Sâu Tách Rời (Prompt 01, 02a, 02b, 03, 04, 05) để tránh giới hạn tokens của LLM.
+
+--------------------------------------------------------------------------------
+[HƯỚNG DẪN ĐIỀN THÔNG SỐ TRƯỚC KHI DÁN VÀO AI / NOTEBOOKLM]
+(Tùy chỉnh thông số trong ngoặc vuông bên dưới theo bệnh lý cần xây dựng):
+- [TÊN BỆNH LÝ]: (Ví dụ: Viêm amidan cấp / Viêm bàng quang cấp / Cúm mùa A)
+- [MÃ ICD-10 GỐC]: (Ví dụ: J03 / N30 / J10)
+- [CHUYÊN KHOA]: (Ví dụ: Tai Mũi Họng / Thận - Tiết niệu / Truyền nhiễm / Hô hấp)
+- [MỨC ĐỘ KHẨN]: emergency (Cấp cứu) | urgent (Khẩn cấp) | routine (Thông thường)
+- [HƯỚNG DẪN THAM CHIẾU]: (Ví dụ: Hướng dẫn Chẩn đoán và Điều trị của Bộ Y tế Việt Nam)
+- [SLUG FILE]: (Ví dụ: viem_amidan_cap / viem_bang_quang_cap / cum_mua)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"Bạn là Bác sĩ Trưởng khoa Lâm sàng và Chuyên gia Tin học Y tế (Clinical Informatics).
+
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng trọn bộ dữ liệu y khoa chuẩn EBM 2026 cho bệnh lý sau:
+
+Thông số bệnh lý:
+- Tên bệnh lý: [TÊN BỆNH LÝ]
+- Mã ICD-10 gốc: [MÃ ICD-10 GỐC]
+- Chuyên khoa: [CHUYÊN KHOA]
+- Mức độ khẩn: [MỨC ĐỘ KHẨN]
+- Slug file: [SLUG FILE]
+- Tài liệu tham chiếu: [HƯỚNG DẪN THAM CHIẾU]
+
+Yêu cầu xuất bản:
+Xuất đúng 02 khối code JSON theo chuẩn CliniPortal DocSpace v4.0 (không viết văn bản giải thích thừa ngoài khối code):
+
+KHỐI 1: TỆP DỮ LIỆU ENRICHED JSON (`src/content/docspace/data/enriched/[SLUG FILE].json`)
+Bao gồm đầy đủ các trường:
+1. `icdCode`, `diseaseName`, `specialty`, `severity`, `goldStandard`.
+2. `criteriaRule` (minMajorRequired, minMinorRequired) & `criteria[]` (bỏ tiền tố thừa, đi thẳng vào dấu chứng).
+3. `classificationSystems[]` & `etiologyOptions[]` (chuẩn 5 thành phần chẩn đoán).
+4. `branching`: mode = 'single', axisName, branches[] (mỗi nhánh có criteria, triage, targetVitals, escalationCriteria, dischargeCriteria, drugs, và timelinePhases 4 cột).
+5. `protocol`: cấu trúc 6 Đầu mục (targetGoals, initialManagement, firstLineDrugs, secondLineDrugs, supportiveCare, clinicalCautions).
+6. `dd`: Ma trận trọng số CDSS phân tầng rõ 4 vai trò:
+   - `dt` (Đặc trưng: 4.0 - 5.0 điểm)
+   - `gy` (Gợi ý: 2.5 - 3.5 điểm)
+   - `ht` (Hỗ trợ: 1.0 - 2.0 điểm)
+   - `loaitru` (Loại trừ: -3.0 đến -5.0 điểm).
+7. `complications[]`, `clinicalCautions[]`.
+
+KHỐI 2: CA LÂM SÀNG MẪU BƯỚC 1 (`sample-clinical-cases.json`)
+Một ca bệnh mô phỏng hoàn chỉnh gồm:
+- id: 'sample_[SLUG FILE]_01'
+- title, subtitle, specialty
+- vitals: mạch, nhiệt độ, HATT, HATTr, nhịp thở, SpO₂
+- labs: CTM, sinh hóa, hoặc xét nghiệm đặc thù
+- selected & sel: danh sách ID triệu chứng snake_case
+- form.text: 4 trường bệnh sử (cn, tt, tc, cls)
+- expectedDiagnosis: Chẩn đoán mong đợi 5 thành phần để đối soát CDSS.
+
+Quy chuẩn kỹ thuật bắt buộc:
+1. Toán tử & Ký tự SI: Dùng ≥, ≤, ±, ×, °, °C, µmol/L, mL/kg/h, G/L.
+2. Khử 100% HTML entities: Viết trực tiếp <, >, ", &. Cấm xuất &lt;, &gt;, &quot;, &amp;.
+3. ID triệu chứng: Dùng snake_case tiếng Việt không dấu (ví dụ: 'sot_cao', 'dau_hong_nuot_dau')."
+
+---
+
+👉 LỆNH TIẾP TỤC KHI BỊ DỪNG NGANG:
+"tiếp tục viết tiếp đoạn mã JSON từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo đóng đầy đủ ngoặc nhọn và ngoặc vuông hợp lệ."

@@ -1,6 +1,6 @@
 ---
 title: "Viêm phổi mắc phải cộng đồng, mức độ trung bình"
-caseId: "soap-viem_phoi_cong_dong_tb-01"
+caseId: "soap-nt_hohap-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

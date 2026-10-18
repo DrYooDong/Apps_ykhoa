@@ -1,6 +1,6 @@
 ---
 title: "Viêm gan vi rút B mạn tính - Không đáp ứng vi rút ban đầu sau 3 tháng dùng NAs theo QĐ 1740/QĐ-BYT 2026"
-caseId: "soap-viem_gan_vi_rut_b_that_bai_dieu_tri-01"
+caseId: "soap-vgsv_b_man-02"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 4

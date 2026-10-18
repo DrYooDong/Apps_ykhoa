@@ -7,12 +7,16 @@ interface StepNavProps {
   currentStep: ClinicalStepId;
   completedSteps: Set<ClinicalStepId>;
   onSelectStep: (step: ClinicalStepId) => void;
+  sampleTitle?: string | null;
+  onQuickEditStep1?: () => void;
 }
 
 export const StepNav: React.FC<StepNavProps> = ({
   currentStep,
   completedSteps,
   onSelectStep,
+  sampleTitle,
+  onQuickEditStep1,
 }) => {
   const steps: { id: ClinicalStepId; num: string; title: string; subtitle: string; shortTitle: string }[] = [
     { id: 't1', num: '1', title: '1. Nạp dữ kiện', subtitle: 'LS · Dịch tễ · CLS', shortTitle: 'Nạp dữ kiện' },
@@ -125,6 +129,40 @@ export const StepNav: React.FC<StepNavProps> = ({
         >
           <ChevronRight className="w-4 h-4" />
         </button>
+      </div>
+
+      {/* Status Bar: Sample Case vs Clinical Case Badge & Quick Edit Button */}
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-1 flex items-center justify-between gap-2 text-[11px] border-b border-slate-100 bg-slate-50/60">
+        <div className="flex items-center gap-2">
+          {sampleTitle ? (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-bold bg-amber-50 text-amber-900 border border-amber-300 text-[10.5px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+              <span>📚 Ca lâm sàng mẫu: <strong>{sampleTitle}</strong></span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10.5px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>🩺 Hồ sơ khám lâm sàng thực tế</span>
+            </span>
+          )}
+        </div>
+
+        {(currentStep === 't3' || currentStep === 't4') && (
+          <button
+            type="button"
+            onClick={() => {
+              if (onQuickEditStep1) {
+                onQuickEditStep1();
+              } else {
+                onSelectStep('t1');
+              }
+            }}
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-2xs transition-colors cursor-pointer text-[10.5px]"
+            title="Quay lại Bước 1 để kiểm tra hoặc bổ sung thêm triệu chứng"
+          >
+            <span>✏️ Sửa dữ kiện (B1)</span>
+          </button>
+        )}
       </div>
 
       {/* 2. MÀN HÌNH TABLET & DESKTOP (>= 640px): Standard Compact Stepper */}

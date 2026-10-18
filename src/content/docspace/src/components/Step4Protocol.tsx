@@ -1501,6 +1501,7 @@ export const Step4Protocol: React.FC<Step4ProtocolProps> = ({
       patientAge={form?.tuoi}
       patientGender={form?.gioiTinh}
       patientCreatinine={labs?.lCre}
+      patientMedicationHistory={form?.text?.tc}
       appliedComplications={appliedComplications}
       isRenalAdjustmentApplied={isRenalAdjustmentApplied}
       renalEgfr={patientPhenotype.eGfr}

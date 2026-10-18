@@ -48,16 +48,16 @@ Hệ thống CliniPortal DocSpace vận hành theo chu trình lâm sàng khép k
                                             │
                                             ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ BƯỚC 4: PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN & KHO TRI THỨC (STRATEGY TABLE & 9 SECTIONS)       │
-│ • Bảng Chiến Lược 3 Cột: Tuyến tiếp nhận | Định hướng xử trí | Mục tiêu sinh hiệu      │
-│ • 9 Phân mục điều trị chuyên sâu (Mục 1 chọn phân độ luôn mở; Mục 2-9 collapsible):  │
-│   Mục 1 (Phân độ & Bảng 3 Cột) ➔ Mục 2 (Xử trí biến chứng khẩn & Cờ đỏ On-Call)       │
-│   ➔ Mục 3 (Quy trình cấp cứu & Tuyến: Ngoại trú / Nội trú / ICU)                       │
-│   ➔ Mục 4 (Y lệnh thuốc: Kháng sinh kinh nghiệm, đích, kiểm tra DDI an toàn)           │
-│   ➔ Mục 5 (Thang điểm nguy cơ & CDSS) ➔ Mục 6 (Theo dõi sinh hiệu & CLS)               │
-│   ➔ Mục 7 (Tư vấn xuất viện Teach-Back & Kiểm soát lây nhiễm)                          │
-│   ➔ Mục 8 (Khuyến cáo EBM Guidelines & Clinical Pathways liên kết 16 Phân kho)         │
-│   ➔ Mục 9 (Ca thực chiến SOAP & Prompt AI hội chẩn tại giường bệnh).                   │
+│ BƯỚC 4: PHÁC ĐỒ ĐIỀU TRỊ TOÀN DIỆN & KHO TRI THỨC (6 ĐẦU MỤC & BẢNG 4 CỘT)            │
+│ • Bảng 4 Cột: Phân loại | Giai đoạn & Sinh hiệu đích | Phác đồ & Y lệnh | Theo dõi LS/CLS│
+│ • 6 Đầu mục Lâm sàng chuẩn hoá (Mục 1 & 2 mở mặc định; Mục 3-6 collapsible):          │
+│   Mục 1 (Phân loại & Cá thể hoá: Phân độ nặng, Biến chứng khẩn, Kiểu hình BN, eGFR)   │
+│   ➔ Mục 2 (Phác đồ điều trị chi tiết Bảng 4 Cột: Lộ trình từng ngày, Y lệnh, DDI safe) │
+│   ➔ Mục 3 (Lưu ý lâm sàng: Cảnh báo đỏ, Chống chỉ định CCĐ, Tiêu chuẩn xuất viện)     │
+│   ➔ Mục 4 (Vấn đề người bệnh quan tâm: Tư vấn Teach-Back, kết nối Kho TV)              │
+│   ➔ Mục 5 (Kiến thức cho NVYT: GPSL, SLB, DTH, Chẩn đoán, Dược lý, EBM Guidelines)    │
+│   ➔ Mục 6 (Các ca bệnh liên quan: Hồ sơ thực chiến SOAP & Prompt AI NotebookLM).      │
+│   * Cột 4 của Bảng 4 Cột là Single Source of Truth cho theo dõi LS & CLS.             │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 

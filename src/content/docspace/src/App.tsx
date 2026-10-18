@@ -93,6 +93,7 @@ export function MainApp() {
   const [problems, setProblems] = useState<ProblemStatementEntry[]>([]);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [negated, setNegated] = useState<Set<string>>(new Set());
+  const [currentSampleTitle, setCurrentSampleTitle] = useState<string | null>(null);
 
   // Protocol tab selection
   const [selectedDiseaseId, setSelectedDiseaseId] = useState<string | null>(null);
@@ -326,6 +327,19 @@ export function MainApp() {
 
   // Handlers
   const handleRunAnalysis = () => {
+    // Validation Gate: Kiểm tra tính đầy đủ dữ kiện tối thiểu trước khi sang Bước 2
+    const hasSymptoms = selected.size > 0 || derived.size > 0;
+    const hasVitals = Boolean(vitals.vMach || vitals.vHATT || vitals.vNhiet || vitals.vTho || vitals.vSpo2);
+    const hasText = Boolean(form.lyDo?.trim() || form.text?.cn?.trim() || form.text?.tt?.trim());
+
+    if (!hasSymptoms && !hasVitals && !hasText) {
+      alert(
+        '⚠️ CHƯA ĐỦ DỮ KIỆN LÂM SÀNG TỐI THIỂU:\n\n' +
+        'Vui lòng chọn ít nhất 1 triệu chứng hoặc nhập Lý do vào viện / Sinh hiệu ban đầu để hệ thống tiến hành tóm tắt bệnh án và biện luận chẩn đoán.'
+      );
+      return;
+    }
+
     setCompletedSteps((prev) => new Set(prev).add('t1'));
     setClinicalStep('t2'); // Chuyển sang Bước 2: Tóm tắt & Đặt vấn đề
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -341,12 +355,14 @@ export function MainApp() {
       setSelected(new Set());
       setNegated(new Set());
       setSelectedDiseaseId(null);
+      setCurrentSampleTitle(null);
       setCompletedSteps(new Set(['t1']));
       setClinicalStep('t1');
     }
   };
 
   const handleLoadSample = (sample: SampleCase) => {
+    setCurrentSampleTitle(sample.nhomBenh || sample.ten);
     setForm({
       gioiTinh: sample.form.gioiTinh,
       tuoi: sample.form.tuoi,
@@ -494,6 +510,11 @@ export function MainApp() {
           currentStep={clinicalStep}
           completedSteps={completedSteps}
           onSelectStep={setClinicalStep}
+          sampleTitle={currentSampleTitle}
+          onQuickEditStep1={() => {
+            setClinicalStep('t1');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
         />
       )}
 

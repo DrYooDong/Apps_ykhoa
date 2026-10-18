@@ -210,75 +210,153 @@ export const EpidemiologyPanel: React.FC<EpidemiologyPanelProps> = ({
             </div>
           </div>
 
-          {/* Form nhập chi tiết các chiều Dịch tễ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-            {/* Trường 1: Ổ dịch & Mùa bệnh */}
-            <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-700 block">
-                Ổ dịch bùng phát / Mùa bệnh:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Sốt xuất huyết Dengue đang vào đợt dịch, Mùa mưa lũ..."
-                value={epiContext.outbreakAlert}
-                onChange={(e) =>
-                  onUpdateEpiContext({ ...epiContext, outbreakAlert: e.target.value })
-                }
-                className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
-              />
+          {/* Form nhập chi tiết các chiều Dịch tễ: 4 trường cốt lõi */}
+          <div className="space-y-3 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {/* Cốt lõi 1: Ổ dịch & Mùa bệnh */}
+              <div className="space-y-1">
+                <label className="text-[11px] font-semibold text-slate-700 flex items-center justify-between">
+                  <span>1. Ổ dịch địa phương & Mùa bệnh:</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Cốt lõi</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="VD: Sốt xuất huyết Dengue, Sởi, Cúm mùa, Mùa mưa..."
+                  value={epiContext.outbreakAlert}
+                  onChange={(e) =>
+                    onUpdateEpiContext({ ...epiContext, outbreakAlert: e.target.value })
+                  }
+                  className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                />
+              </div>
+
+              {/* Cốt lõi 2: Vùng lưu hành & Nơi cư trú */}
+              <div className="space-y-1">
+                <label className="text-[11px] font-semibold text-slate-700 flex items-center justify-between">
+                  <span>2. Vùng lưu hành / Nơi cư trú:</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Cốt lõi</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="VD: Tây Nguyên, ĐBSCL, vùng ven sông nước..."
+                  value={epiContext.endemicArea}
+                  onChange={(e) =>
+                    onUpdateEpiContext({ ...epiContext, endemicArea: e.target.value })
+                  }
+                  className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                />
+              </div>
+
+              {/* Cốt lõi 3: Tiếp xúc nguồn lây / Người bệnh */}
+              <div className="space-y-1">
+                <label className="text-[11px] font-semibold text-slate-700 flex items-center justify-between">
+                  <span>3. Tiếp xúc nguồn lây / Người bệnh:</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Cốt lõi</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="VD: Tiếp xúc người ho kéo dài / Lao, người sốt phát ban, người cùng nhà mắc SXH..."
+                  value={epiContext.contactHistory}
+                  onChange={(e) =>
+                    onUpdateEpiContext({ ...epiContext, contactHistory: e.target.value })
+                  }
+                  className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                />
+              </div>
+
+              {/* Cốt lõi 4: Vector truyền bệnh */}
+              <div className="space-y-1">
+                <label className="text-[11px] font-semibold text-slate-700 flex items-center justify-between">
+                  <span>4. Vector truyền bệnh / Côn trùng / Súc vật:</span>
+                  <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">Cốt lõi</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="VD: Muỗi Aedes vằn đốt nhiều, bọ chét, ve mò, chó cắn..."
+                  value={epiContext.vectorExposure}
+                  onChange={(e) =>
+                    onUpdateEpiContext({ ...epiContext, vectorExposure: e.target.value })
+                  }
+                  className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                />
+              </div>
             </div>
 
-            {/* Trường 2: Vùng lưu hành & Địa chỉ */}
-            <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-700 block">
-                Vùng lưu hành / Nơi cư trú:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Tây Nguyên, ĐBSCL, vùng ven ngập nước..."
-                value={epiContext.endemicArea}
-                onChange={(e) =>
-                  onUpdateEpiContext({ ...epiContext, endemicArea: e.target.value })
-                }
-                className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
-              />
-            </div>
+            {/* Khối Mở rộng: 4 chiều bổ sung (Đi lại, Nghề nghiệp, Nước/Thực phẩm, Mùa chi tiết) */}
+            <details className="group border border-slate-200/80 rounded-lg bg-white/70 overflow-hidden">
+              <summary className="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-emerald-700 hover:bg-slate-50 cursor-pointer flex items-center justify-between select-none">
+                <span className="flex items-center gap-1.5">
+                  <Compass className="w-3.5 h-3.5 text-slate-400 group-open:text-emerald-600" />
+                  <span>Bối cảnh dịch tễ mở rộng (Tiền sử đi lại, Nguy cơ nghề nghiệp, Nước/Thực phẩm)</span>
+                </span>
+                <span className="text-[10px] text-slate-400 font-normal group-open:hidden">Nhấn để mở rộng ▾</span>
+              </summary>
+              <div className="p-3 pt-2 grid grid-cols-1 md:grid-cols-2 gap-3 border-t border-slate-100 bg-slate-50/50">
+                {/* Mở rộng 1: Tiền sử đi lại */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-medium text-slate-600 block">
+                    Tiền sử đi lại / Du lịch trong 14–30 ngày:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="VD: Đi trekking rừng núi Tây Nguyên, đi Campuchia..."
+                    value={epiContext.travelHistory}
+                    onChange={(e) =>
+                      onUpdateEpiContext({ ...epiContext, travelHistory: e.target.value })
+                    }
+                    className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                  />
+                </div>
 
-            {/* Trường 3: Tiền sử đi lại / Du lịch */}
-            <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-700 block">
-                Tiền sử đi lại / Du lịch trong 14–30 ngày:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Đi trekking rừng núi Tây Nguyên, đi Campuchia..."
-                value={epiContext.travelHistory}
-                onChange={(e) =>
-                  onUpdateEpiContext({ ...epiContext, travelHistory: e.target.value })
-                }
-                className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
-              />
-            </div>
+                {/* Mở rộng 2: Nguy cơ nghề nghiệp */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-medium text-slate-600 block">
+                    Nguy cơ nghề nghiệp / Môi trường phơi nhiễm:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="VD: Công nhân vệ sinh cống rãnh, làm ruộng phát rẫy, thú y..."
+                    value={epiContext.occupationalRisk}
+                    onChange={(e) =>
+                      onUpdateEpiContext({ ...epiContext, occupationalRisk: e.target.value })
+                    }
+                    className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                  />
+                </div>
 
-            {/* Trường 4: Vector / Nguồn lây / Nước thực phẩm */}
-            <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-700 block">
-                Vector truyền bệnh / Tiếp xúc đặc biệt:
-              </label>
-              <input
-                type="text"
-                placeholder="VD: Muỗi vằn đốt nhiều, lội nước ngập, ăn tiết canh..."
-                value={epiContext.vectorExposure || epiContext.waterFoodRisk}
-                onChange={(e) =>
-                  onUpdateEpiContext({
-                    ...epiContext,
-                    vectorExposure: e.target.value,
-                    waterFoodRisk: e.target.value,
-                  })
-                }
-                className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
-              />
-            </div>
+                {/* Mở rộng 3: Nguồn nước / Thực phẩm */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-medium text-slate-600 block">
+                    Nguồn nước & An toàn thực phẩm:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="VD: Lội nước ngập lụt sau bão, ăn tiết canh, thịt sống..."
+                    value={epiContext.waterFoodRisk}
+                    onChange={(e) =>
+                      onUpdateEpiContext({ ...epiContext, waterFoodRisk: e.target.value })
+                    }
+                    className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                  />
+                </div>
+
+                {/* Mở rộng 4: Mùa bệnh chi tiết */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-medium text-slate-600 block">
+                    Bối cảnh mùa & Khí hậu cụ thể:
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="VD: Mùa đông xuân lạnh ẩm, đợt bão lũ ngập úng..."
+                    value={epiContext.seasonalContext}
+                    onChange={(e) =>
+                      onUpdateEpiContext({ ...epiContext, seasonalContext: e.target.value })
+                    }
+                    className="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                  />
+                </div>
+              </div>
+            </details>
           </div>
         </div>
       )}

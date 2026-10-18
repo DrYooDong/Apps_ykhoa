@@ -1,13 +1,17 @@
 import React, { useMemo, useState } from 'react';
 import {
   Activity,
+  AlertTriangle,
   ArrowRight,
   BookOpen,
+  CheckCircle2,
   ClipboardCheck,
   Droplet,
   Layers,
+  ShieldCheck,
   Sparkles,
   Stethoscope,
+  X,
 } from 'lucide-react';
 import {
   AnalysisResult,
@@ -72,52 +76,23 @@ export const Step3Analysis: React.FC<Step3AnalysisProps> = ({
   // 'both': Hiển thị liên hoàn cả hai khối
   const [analysisViewMode, setAnalysisViewMode] = useState<'synthesis' | 'reasoning' | 'both'>('synthesis');
 
-  const top = results && results.length > 0 ? results[0] : null;
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [selectedConfirmDiseaseId, setSelectedConfirmDiseaseId] = useState<string>('');
 
-  const safeForm: ClinicalFormState = useMemo(() => {
-    return form || {
-      gioiTinh: 'nam',
-      tuoi: '',
-      ngheNghiep: '',
-      lyDo: '',
-      text: { cn: '', tt: '', tc: '', cls: '' },
-    };
-  }, [form]);
-
-  const safeVitals: VitalsState = useMemo(() => {
-    return vitals || {
-      vNhiet: '',
-      vMach: '',
-      vHATT: '',
-      vHATTr: '',
-      vTho: '',
-      vSpo2: '',
-    };
-  }, [vitals]);
-
-  const safeLabs: LabsState = useMemo(() => {
-    return labs || {
-      lBC: '',
-      lTC: '',
-      lHct: '',
-      lGlu: '',
-      lTrop: '',
-    };
-  }, [labs]);
-
-  const selectedSymptoms: TrieuChung[] = useMemo(() => {
-    if (selectedIds && selectedIds.size > 0) {
-      return kb.trieuChung.filter((tc) => selectedIds.has(tc.id));
+  const handleOpenConfirm = () => {
+    if (top) {
+      setSelectedConfirmDiseaseId(top.b.id);
+      setIsConfirmModalOpen(true);
     }
-    return top ? top.matched.map((m) => m.tc) : [];
-  }, [kb.trieuChung, selectedIds, top]);
+  };
 
-  const negatedSymptoms: TrieuChung[] = useMemo(() => {
-    if (negatedIds && negatedIds.size > 0) {
-      return kb.trieuChung.filter((tc) => negatedIds.has(tc.id));
+  const handleConfirmAndProceed = () => {
+    const targetId = selectedConfirmDiseaseId || (top ? top.b.id : '');
+    if (targetId) {
+      setIsConfirmModalOpen(false);
+      onGoToProtocol(targetId);
     }
-    return [];
-  }, [kb.trieuChung, negatedIds]);
+  };
 
   return (
     <div className="space-y-4">
@@ -183,13 +158,13 @@ export const Step3Analysis: React.FC<Step3AnalysisProps> = ({
                 </div>
               </div>
 
-              {/* Nút Chuyển nhanh sang Bước 4 */}
+              {/* Nút Chuyển sang Bước 4 (Có cổng xác nhận Gate chẩn đoán) */}
               <button
                 type="button"
-                onClick={() => onGoToProtocol(top.b.id)}
+                onClick={handleOpenConfirm}
                 className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-xs cursor-pointer transition-all self-start sm:self-center"
               >
-                <span>Chuyển sang Bước 4 (Phác đồ)</span>
+                <span>Xác nhận & Vào Bước 4 (Phác đồ)</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -231,6 +206,111 @@ export const Step3Analysis: React.FC<Step3AnalysisProps> = ({
                 onGoToProtocol={onGoToProtocol}
                 onPrintReport={onPrintReport}
               />
+            )}
+
+            {/* 5. MODAL XÁC NHẬN CHẨN ĐOÁN (DIAGNOSTIC CONFIRMATION GATE) */}
+            {isConfirmModalOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-slate-900/60 backdrop-blur-xs animate-fade-in">
+                <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden animate-scale-up">
+                  <div className="p-4 bg-gradient-to-r from-blue-700 to-indigo-800 text-white flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="w-5 h-5 text-emerald-300" />
+                      <h3 className="font-bold text-sm sm:text-base">
+                        Xác Nhận Định Hướng Chẩn Đoán Vào Phác Đồ
+                      </h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setIsConfirmModalOpen(false)}
+                      className="p-1 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="p-4 sm:p-5 space-y-4 text-xs">
+                    <p className="text-slate-600 leading-relaxed">
+                      Vui lòng xác nhận bệnh lý làm trục điều trị chính. Hệ thống sẽ cá thể hoá y lệnh, Bảng 4 Cột và kiểm tra tương tác thuốc DDI theo đúng bệnh lý được chọn:
+                    </p>
+
+                    {/* Radio group selecting among top candidates */}
+                    <div className="space-y-2">
+                      {results.slice(0, 4).map((r, idx) => {
+                        const isSelected = selectedConfirmDiseaseId === r.b.id;
+                        const isTop = idx === 0;
+                        return (
+                          <label
+                            key={r.b.id}
+                            className={`flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
+                              isSelected
+                                ? 'bg-blue-50/90 border-blue-600 ring-2 ring-blue-500/20 text-blue-950 font-medium'
+                                : 'bg-slate-50 border-slate-200 hover:bg-slate-100 text-slate-700'
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="confirmDiagnosis"
+                              checked={isSelected}
+                              onChange={() => setSelectedConfirmDiseaseId(r.b.id)}
+                              className="mt-1 text-blue-600 focus:ring-blue-500"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="font-bold text-xs sm:text-sm text-slate-900 truncate">
+                                  {r.b.ten}
+                                </span>
+                                <span
+                                  className={`px-2 py-0.5 rounded text-[10.5px] font-mono font-bold ${
+                                    isTop
+                                      ? 'bg-blue-600 text-white'
+                                      : 'bg-slate-200 text-slate-800'
+                                  }`}
+                                >
+                                  {r.pct}%
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2 mt-1 text-[11px] text-slate-500">
+                                <span>ICD-10: <strong>{r.b.icd}</strong></span>
+                                <span>•</span>
+                                <span>Chuyên khoa: {r.b.nhom}</span>
+                                {isTop && (
+                                  <span className="px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">
+                                    Sơ bộ nổi trội
+                                  </span>
+                                )}
+                                {r.isCriticalSafetyNet && (
+                                  <span className="px-1.5 py-0.2 rounded bg-rose-100 text-rose-800 text-[10px] font-bold flex items-center gap-1">
+                                    <AlertTriangle className="w-2.5 h-2.5 text-rose-600" />
+                                    Cấp cứu
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="p-3 sm:p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsConfirmModalOpen(false)}
+                      className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 bg-white border border-slate-300 rounded-lg shadow-2xs hover:bg-slate-100 transition-colors cursor-pointer"
+                    >
+                      Quay lại biện luận
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleConfirmAndProceed}
+                      className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 rounded-lg shadow-xs transition-colors cursor-pointer"
+                    >
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>Xác Nhận & Mở Phác Đồ (B4)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         )

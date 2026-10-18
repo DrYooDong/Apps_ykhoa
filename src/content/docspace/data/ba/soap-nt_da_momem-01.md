@@ -1,6 +1,6 @@
 ---
 title: "Nhiễm trùng da mô mềm có mủ"
-caseId: "soap-nhiem_trung_da_momem-01"
+caseId: "soap-nt_da_momem-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

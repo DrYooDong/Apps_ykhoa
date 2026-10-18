@@ -1,6 +1,6 @@
 ---
 title: "Nhiễm trùng tiêu hóa cấp tính - Ngộ độc thực phẩm"
-caseId: "soap-nhiem_trung_tieu_hoa-01"
+caseId: "soap-nt_tieu_hoa-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 3

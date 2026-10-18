@@ -1,6 +1,6 @@
 ---
 title: "Viêm gan cấp do thuốc chống lao"
-caseId: "soap-viem_gan_cap_do_thuoc_lao-01"
+caseId: "soap-vg_cap_do_thuoc_lao-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "advanced"
 difficultyRating: 4

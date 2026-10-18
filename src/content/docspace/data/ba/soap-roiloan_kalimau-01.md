@@ -1,6 +1,6 @@
 ---
 title: "Hạ Kali Máu Nặng và áp xe cẳng chân"
-caseId: "soap-ha_kali_mau_nang_ap_xe_cang_chan-01"
+caseId: "soap-roiloan_kalimau-01"
 specialty: "Truyền nhiễm"
 experienceLevel: "essential"
 difficultyRating: 4

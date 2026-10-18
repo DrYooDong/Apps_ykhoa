@@ -227,13 +227,19 @@ export const Step1DataIngestion: React.FC<Step1Props> = ({
 
   // Quick normal labs preset
   const handleSetNormalLabs = () => {
-    setLabs({
+    setLabs((prev) => ({
+      ...prev,
       lBC: '7.5',
       lTC: '250',
       lHct: '42',
       lGlu: '5.4',
       lTrop: '8',
-    });
+      lCre: '85',
+      lAST: '28',
+      lALT: '26',
+      lCRP: '2.5',
+      lLactate: '1.2',
+    }));
   };
 
   // Speech Recognition Handler

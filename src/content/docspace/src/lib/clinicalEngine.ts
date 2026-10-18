@@ -22,6 +22,27 @@ import {
 import { SYNDROME_MAP, getSyndromesByDisease } from '../../data/syndromes/index.ts';
 export { normalizeText };
 
+// Danh sách các bệnh lý nguy kịch đe dọa sinh mạng cần bảo vệ bởi Medical Safety Net
+export const CRITICAL_DIAGNOSES_SET = new Set([
+  'viem_mang_nao',
+  'viem-mang-nao-vi-khuan-cap',
+  'viem_mang_nao_mu',
+  'nhoi_mau_co_tim',
+  'nhoi_mau_co_tim_stemi',
+  'soc_nhiem_khuan',
+  'sot_xuat_huyet_dengue_co_dau_hieu_canh_bao',
+  'sot_xuat_huyet_dengue_nang',
+  'soc_sot_xuat_huyet_dengue',
+  'viem_phoi_nang',
+  'con_hen_phe_quan_nang',
+  'suy_ho_hap_cap',
+  'thuyen_tac_phoi',
+  'xuat_huyet_tieu_hoa_nang',
+  'aclf',
+  'suy_gan_cap_tren_nen_man_aclf',
+  'leptospira',
+]);
+
 export function evaluateThreshold(
   tc: TrieuChung,
   vitals: VitalsState,
@@ -753,9 +774,16 @@ export function analyzeClinicalCase(
       notes.push(`Bị trừ điểm do vắng mặt: ${negHits.map((h) => h.tc.ten).join(', ')}`);
     }
 
-    const relevantSyndromes = Object.values(syndromeResults)
-      .filter((s) => s.isMet || s.matchedCount > 0)
-      .sort((s1, s2) => (s2.isMet ? 1 : 0) - (s1.isMet ? 1 : 0) || s2.matchedCount - s1.matchedCount);
+    const isCritical =
+      CRITICAL_DIAGNOSES_SET.has(b.id) ||
+      b.id.includes('soc_') ||
+      b.id.includes('viem_mang_nao') ||
+      b.nhom.toLowerCase().includes('cấp cứu') ||
+      b.nhom.toLowerCase().includes('hồi sức');
+
+    if (isCritical && matched.length > 0) {
+      notes.push('🚨 CẢNH BÁO AN TOÀN Y KHOA (SAFETY NET): Bệnh cảnh nguy kịch đe dọa sinh mạng có dấu chứng trùng khớp — Tuyệt đối không được bỏ sót!');
+    }
 
     results.push({
       b,
@@ -768,12 +796,31 @@ export function analyzeClinicalCase(
       syndromeMatches: syndromeResults,
       leadSyndromes: relevantSyndromes,
       epiBoost: epiBoostInfo,
+      isCriticalSafetyNet: Boolean(isCritical && matched.length > 0),
     });
   }
 
-  const rawResults = results
+  let rawResults = results
     .filter((r) => r.matched.length > 0)
     .sort((a, b) => b.pct - a.pct || b.score - a.score || b.matched.length - a.matched.length);
+
+  // ==========================================
+  // AN TOÀN Y KHOA (SAFETY NET): KHÔNG BỎ SÓT BỆNH LÝ NGUY HIỂM ĐE DỌA SINH MẠNG
+  // Nếu có bệnh thuộc danh sách nguy kịch (Viêm màng não, Nhồi máu cơ tim, Sốc...)
+  // có triệu chứng trùng khớp nhưng bị xếp quá xa phía sau (do bệnh cảm cúm nhiều triệu chứng hơn),
+  // Hệ thống Safety Net đưa bệnh vào Top 3 để bác sĩ luôn luôn nhận diện và loại trừ!
+  // ==========================================
+  const criticalResults = rawResults.filter((r) => r.isCriticalSafetyNet);
+  if (criticalResults.length > 0) {
+    criticalResults.forEach((crit) => {
+      const currentIndex = rawResults.findIndex((r) => r.b.id === crit.b.id);
+      // Nếu bệnh nguy kịch bị đẩy ra ngoài Top 3, kéo lên vị trí số 3 (index 2)
+      if (currentIndex >= 3) {
+        rawResults.splice(currentIndex, 1);
+        rawResults.splice(2, 0, crit);
+      }
+    });
+  }
 
   // ==========================================
   // THUẬT TOÁN PHÂN TÁCH BẬC THANG CHẨN ĐOÁN PHÂN BIỆT (EBM DIFFERENTIAL LADDER)

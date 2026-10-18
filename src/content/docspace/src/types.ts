@@ -380,6 +380,7 @@ export interface AnalysisResult {
     reason: string;
     points: number;
   };
+  isCriticalSafetyNet?: boolean; // Cờ an toàn y khoa: Bệnh lý đe dọa sinh mạng được bảo vệ
 }
 
 // Bối cảnh Dịch tễ học phục vụ Tam giác chẩn đoán Truyền nhiễm
@@ -404,8 +405,9 @@ export interface ProblemStatementEntry {
   isPrimary: boolean;        // Vấn đề CHÍNH được chọn để làm trục biện luận chẩn đoán
   resolved?: boolean;
   evidence: string[];        // Dữ kiện chứng minh (cơ năng, thực thể, CLS)
-  diagnosticPlan?: string;   // Chiến lược chẩn đoán: Đề nghị CLS nào cho vấn đề này?
-  therapeuticPlan?: string;  // Chiến lược điều trị: Can thiệp cấp cứu / Y lệnh ban đầu?
+  suggestedWorkup?: string[]; // Đề xuất CLS mục tiêu cho vấn đề này (chuẩn hóa tinh gọn)
+  diagnosticPlan?: string;   // Kế hoạch chẩn đoán (backward compatibility)
+  therapeuticPlan?: string;  // Kế hoạch điều trị ban đầu (backward compatibility)
   conflictNotes?: string;    // Ghi chú xung đột điều trị với các vấn đề khác
   notes?: string;            // Ghi chú biện luận thêm
 }

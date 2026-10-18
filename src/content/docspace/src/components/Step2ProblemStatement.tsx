@@ -1,11 +1,13 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import {
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Bug,
   Compass,
   FileText,
   Layers,
+  ShieldAlert,
   Sparkles,
   Stethoscope,
 } from 'lucide-react';
@@ -834,8 +836,33 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
     setTimeout(() => setCopiedSummary(false), 2000);
   };
 
+  const lifeThreateningProblems = useMemo(() => {
+    return problems.filter((p) => p.priorityLevel === 'life-threatening');
+  }, [problems]);
+
+  const isEpiEmpty = useMemo(() => {
+    if (!epiContext) return true;
+    return Object.values(epiContext).every((val) => !val || !val.trim());
+  }, [epiContext]);
+
   return (
     <div className="flex flex-col gap-5">
+      {/* 🔴 CẢNH BÁO TẦNG 1: ĐE DỌA SINH MẠNG (LIFE-THREATENING SENTINEL) */}
+      {lifeThreateningProblems.length > 0 && (
+        <div className="p-3.5 bg-rose-600 text-white rounded-xl shadow-md border border-rose-700 flex items-start gap-3 select-none">
+          <ShieldAlert className="w-6 h-6 text-white shrink-0 mt-0.5 animate-bounce" />
+          <div className="flex-1">
+            <div className="font-extrabold text-sm uppercase tracking-wide flex items-center gap-2 flex-wrap">
+              <span>CẢNH BÁO TẦNG 1 — NGUY KỊCH / ĐE DỌA TÍNH MẠNG (LIFE-THREATENING)</span>
+              <span className="px-2 py-0.5 bg-white text-rose-700 rounded-full text-[10px] font-black">ƯU TIÊN HỒI SỨC</span>
+            </div>
+            <p className="text-xs text-rose-100 mt-1 leading-relaxed">
+              Bệnh nhân có vấn đề đe dọa sinh mạng: <strong>{lifeThreateningProblems.map((p) => p.label).join('; ')}</strong>. Bác sĩ cần ưu tiên các can thiệp hồi sức tức thì (ABCDE, giải phóng đường thở, bù dịch chống sốc, hỗ trợ hô hấp oxy) trong 5–15 phút đầu song hành với việc xác định nguyên nhân!
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* SECTION I: TÓM TẮT BỆNH ÁN CHUẨN HÓA */}
       <CaseSummaryPanel
         summaryStructure={summaryStructure}
@@ -853,6 +880,25 @@ export const Step2ProblemStatement: React.FC<Step2ProblemStatementProps> = ({
 
       {/* SECTION II: ĐẶT VẤN ĐỀ & TAM GIÁC CHẨN ĐOÁN (GỘP CHUNG) */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+        {/* ⚠️ CẢNH BÁO DỊCH TỄ HỌC BỊ TRỐNG */}
+        {isEpiEmpty && infectiousMode && (
+          <div className="mx-4 mt-3 p-2.5 bg-amber-50 border border-amber-300 rounded-lg text-xs text-amber-900 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+              <span>
+                <strong>Bối cảnh dịch tễ học chưa được ghi nhận từ Bước 1:</strong> Ổ dịch, vector và tiếp xúc nguồn lây đang để trống. Hệ số nhân Tam giác Dịch tễ (EpiBoost) tạm thời chưa được kích hoạt.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => onGoToStep('t1')}
+              className="px-2.5 py-1 bg-amber-600 hover:bg-amber-700 text-white font-bold text-[10px] rounded shadow-2xs shrink-0 cursor-pointer"
+            >
+              + Bổ sung Dịch tễ (B1)
+            </button>
+          </div>
+        )}
+
         <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Compass className="w-4 h-4 text-blue-600" />

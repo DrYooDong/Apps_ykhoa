@@ -20,11 +20,17 @@ description: Đội ngũ AI chuyên trách Động cơ Suy luận Lâm sàng CDS
 2. **Khối Tiêu Chuẩn Vàng Xác Chẩn (Gold Standard / Criteria Rule)**:
    - Hiển thị rõ ràng định nghĩa Tiêu chuẩn Vàng (PCR, Cấy máu, Kháng thể huỳnh quang, Sinh thiết, Chụp mạch DSA...).
    - Rule chẩn đoán toán học (`minMajorRequired`, `minMinorRequired`, `mandatoryIds`) giúp bác sĩ kiểm tra xem ca bệnh đã đủ tiêu chuẩn xác định hay chưa.
-3. **Khối Tiêu Chuẩn Phân Độ Nặng Lâm Sàng (`severityGrading`)**:
+3. **Màng Lưới An Toàn Y Khoa (Medical Safety Net - Zero Miss)**:
+   - Tự động nhận diện các bệnh lý nguy kịch trong danh mục `CRITICAL_DIAGNOSES_SET` (Viêm màng não, Nhồi máu cơ tim, Sốc nhiễm khuẩn, Sốt xuất huyết nặng, Viêm phổi nặng, ACLF, Leptospira...).
+   - Nếu bệnh nguy kịch có bằng chứng lâm sàng phù hợp nhưng xếp sau do ít triệu chứng phụ, Safety Net tự động bảo lưu đưa vào Top 3 và hiển thị cờ cảnh báo `[⚠ Cảnh Báo An Toàn: Bệnh Lý Nguy Kịch Cần Loại Trừ Trước Tiên]`.
+4. **Khối Tiêu Chuẩn Phân Độ Nặng Lâm Sàng (`severityGrading`)**:
    - Phân tầng bậc thang: Độ 1 (Nhẹ/Ngoại trú), Độ 2 (Trung bình/Nội trú), Độ 3 (Nặng/Cấp cứu), Độ 4 (Nguy kịch/ICU).
-   - Tự động gợi ý phân độ dựa trên sinh hiệu (DHST) và các bất thường cận lâm sàng (Hct tăng, Tiểu cầu giảm, Toan máu, SpO2 giảm).
-4. **Hệ Thống Thang Điểm Lượng Giá Nguy Cơ Đa Tầng**:
-   - Tự động tính toán điểm cảnh báo sớm: **NEWS2** (Người lớn nội khoa), **PEWS** (Nhi khoa), **ESI v4** (Phân loại cấp cứu 5 cấp), **CURB-65** (Viêm phổi), **Killip** (Nhồi máu cơ tim), **Glasgow** (Hôn mê).
+   - Tự động gợi ý phân độ dựa trên sinh hiệu (DHST) và các bất thường cận lâm sàng (Hct tăng, Tiểu cầu giảm, Toan máu, SpO2 giảm, Creatinine tăng, Lactate tăng).
+5. **Hệ Thống Thang Điểm Lượng Giá Nguy Cơ Đa Tầng (Single Source of Truth)**:
+   - Bước 3 là nơi DUY NHẤT tính toán và hiển thị chi tiết các thang điểm cảnh báo sớm: **NEWS2** (Người lớn nội khoa), **PEWS** (Nhi khoa), **ESI v4** (Phân loại cấp cứu 5 cấp), **CURB-65** (Viêm phổi), **Killip** (Nhồi máu cơ tim), **Glasgow** (Hôn mê).
+   - Khi chuyển sang Bước 4, các thang điểm này chỉ được tóm tắt dạng badge chỉ số, tuyệt đối không lặp lại thẻ tính điểm để tránh rối mắt.
+6. **Cổng Xác Nhận Chuyển Giao Lâm Sàng (Diagnosis Confirmation Modal)**:
+   - Trước khi sang Bước 4 (Phác đồ), hiển thị modal xác nhận chẩn đoán chính. Bác sĩ có thể linh hoạt chọn Phác đồ theo Chẩn đoán sơ bộ nổi trội hoặc Chẩn đoán phân biệt cấp cứu.
 
 ---
 

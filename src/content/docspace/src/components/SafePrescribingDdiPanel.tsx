@@ -29,6 +29,7 @@ interface SafePrescribingProps {
   patientAge?: string;
   patientGender?: string;
   patientCreatinine?: string; // µmol/L hoặc mg/dL
+  patientMedicationHistory?: string; // Dược sử / Tiền căn dùng thuốc từ Bước 1
   onOpenVaultDrawer?: (diseaseName?: string, query?: string, khoCode?: string) => void;
   onOpenCdssModal?: (tool: CdssToolSlug) => void;
 }
@@ -39,6 +40,7 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
   patientAge,
   patientGender,
   patientCreatinine,
+  patientMedicationHistory,
   onOpenVaultDrawer,
   onOpenCdssModal,
 }) => {
@@ -55,8 +57,8 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
     return list.filter((n): n is string => typeof n === 'string' && n.trim().length > 0);
   }, [prescribedDrugNames, prescribedDrugs]);
 
-  // Match prescribed strings to DRUG_DATABASE IDs
-  const matchedDrugIds = useMemo(() => {
+  // Match acute prescribed strings to DRUG_DATABASE IDs
+  const acuteMatchedDrugIds = useMemo(() => {
     const ids: string[] = [];
     const normalizedInput = effectiveDrugNames.map((n) => n.toLowerCase());
 
@@ -75,6 +77,31 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
 
     return Array.from(new Set(ids));
   }, [effectiveDrugNames]);
+
+  // Match baseline / chronic medication history strings from Step 1
+  const baselineMatchedDrugIds = useMemo(() => {
+    if (!patientMedicationHistory || !patientMedicationHistory.trim()) return [];
+    const normHistory = patientMedicationHistory.toLowerCase();
+    const ids: string[] = [];
+
+    Object.values(DRUG_DATABASE).forEach((drug) => {
+      const matchGeneric = normHistory.includes(drug.genericName.toLowerCase());
+      const matchBrand = drug.brandNames.some((b) =>
+        normHistory.includes(b.toLowerCase())
+      );
+
+      if (matchGeneric || matchBrand) {
+        ids.push(drug.id);
+      }
+    });
+
+    return Array.from(new Set(ids));
+  }, [patientMedicationHistory]);
+
+  // Combined drug IDs for comprehensive cross-checking
+  const matchedDrugIds = useMemo(() => {
+    return Array.from(new Set([...acuteMatchedDrugIds, ...baselineMatchedDrugIds]));
+  }, [acuteMatchedDrugIds, baselineMatchedDrugIds]);
 
   // Compute or parse eGFR
   const effectiveEgfr = useMemo(() => {
@@ -183,6 +210,11 @@ export const SafePrescribingDdiPanel: React.FC<SafePrescribingProps> = ({
               {renalAlerts.length > 0 && (
                 <span className="px-2 py-0.5 text-[10.5px] font-bold bg-amber-600 text-white rounded-full">
                   ⚡ {renalAlerts.length} THUỐC CẦN CHỈNH LIỀU
+                </span>
+              )}
+              {baselineMatchedDrugIds.length > 0 && (
+                <span className="px-2 py-0.5 text-[10.5px] font-bold bg-indigo-600 text-white rounded-full" title="Các thuốc đang dùng tại nhà được bóc tách từ Tiền căn">
+                  🏠 {baselineMatchedDrugIds.length} THUỐC ĐANG DÙNG TẠI NHÀ
                 </span>
               )}
             </h4>

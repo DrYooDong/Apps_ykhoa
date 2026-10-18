@@ -73,6 +73,7 @@ interface DetailedTreatmentTableProps {
   patientAge?: string;
   patientGender?: string;
   patientCreatinine?: string;
+  patientMedicationHistory?: string;
   appliedComplications?: Array<{
     id: string;
     name: string;
@@ -122,6 +123,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
   patientAge,
   patientGender,
   patientCreatinine,
+  patientMedicationHistory,
   appliedComplications,
   isRenalAdjustmentApplied = false,
   renalEgfr,
@@ -516,6 +518,7 @@ export const DetailedTreatmentTable: React.FC<DetailedTreatmentTableProps> = ({
           patientAge={patientAge}
           patientGender={patientGender}
           patientCreatinine={patientCreatinine}
+          patientMedicationHistory={patientMedicationHistory}
           onOpenVaultDrawer={onOpenVaultDrawer}
           onOpenCdssModal={onOpenCdssModal}
         />
