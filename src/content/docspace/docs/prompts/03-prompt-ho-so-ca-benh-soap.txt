@@ -1,11 +1,13 @@
 # ==============================================================================
-# CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 03: HỒ SƠ CA BỆNH THỰC CHIẾN SOAP
-# (CHUẨN HÓA Y HỌC CHỨNG CỨ EBM 2026 — NẠP 1-CHẠM VÀO SỔ TAY KINH NGHIỆM & HỘI CHẨN AI)
+# CLINIPORTAL DOCSPACE — MASTER LEAN PROMPT 03 (V2 EXTENDED): HỒ SƠ CA BỆNH THỰC CHIẾN SOAP ĐA PHÁC ĐỒ
+# (CHUẨN HÓA Y HỌC CHỨNG CỨ EBM 2026 — ĐA GUIDELINE · PHÂN TẦNG CƠ SỞ Y TẾ · MA TRẬN ĐIỀU TRỊ LINH HOẠT)
 # ==============================================================================
-# MỤC TIÊU:
+# MỤC TIÊU V2:
 # Dán prompt này vào Google NotebookLM để sinh 01 Ca Lâm Sàng Thực Tế theo chuẩn S-O-A-P
-# quốc tế với đầy đủ 4 Hạt ngọc lâm sàng (Pearls & Pitfalls), Bảng đặt vấn đề 3 tầng
-# (trường phái PGS.TS Hoàng Văn Sĩ), Y lệnh thuốc định lượng và Lộ trình điều trị 3 giai đoạn.
+# quốc tế mở rộng. KHÔNG GIỚI HẠN cố định 01 phác đồ duy nhất mà xuất ra "Ma Trận Phương Án
+# Điều Trị Theo Guideline" đa nguồn (Bộ Y Tế, WHO, IDSA, ESCMID, BTS, AHA/ACC, GOLD, KDIGO...).
+# Giúp bác sĩ tại mọi tuyến cơ sở y tế linh hoạt lựa chọn thuốc sẵn có, biết rõ phương án thay thế
+# khi thiếu thuốc/dị ứng/kháng thuốc, kèm trích dẫn nguồn ngắn gọn [Tổ chức, Năm].
 #
 # QUY TRÌNH NẠP VÀO DOCSPACE:
 #   Cách 1: Nạp 1-Chạm trên Giao diện Web (Nhanh nhất & Trực quan nhất):
@@ -31,20 +33,22 @@
 - [ĐỘ KHÓ]: 3 (từ 1 đến 5 sao)
 - [BỐI CẢNH BỆNH NHÂN]: Nam 24 tuổi, sinh viên, sống tại khu trọ đang có dịch lưu hành
 - [KHOA PHÒNG TIẾP NHẬN]: Khoa Cấp cứu / Khoa Bệnh Nhiệt đới
-- [TRỌNG TÂM BIỆN LUẬN]: Nhận diện dấu hiệu cảnh báo vào ngày thứ 4 (hạ sốt nhưng mệt lả, đau bụng vùng gan, Hct tăng cao, tiểu cầu tụt nhanh) và phác đồ hồi sức dịch Ringer Lactate nấc thang.
-- [HƯỚNG DẪN THAM CHIẾU]: Quyết định 2760/QĐ-BYT (2023) của Bộ Y Tế Việt Nam & WHO Dengue Guidelines 2024–2025
+- [TRỌNG TÂM BIỆN LUẬN]: Nhận diện dấu hiệu cảnh báo vào ngày thứ 4 (hạ sốt nhưng mệt lả, đau bụng vùng gan, Hct tăng cao, tiểu cầu tụt nhanh) và phác đồ hồi sức dịch nấc thang, so sánh phác đồ Bộ Y Tế với WHO.
+- [HƯỚNG DẪN THAM CHIẾU CHÍNH (PRIMARY GUIDELINE)]: Quyết định 2760/QĐ-BYT (2023) của Bộ Y Tế Việt Nam
+- [HƯỚNG DẪN THAM CHIẾU MỞ RỘNG (SECONDARY/ALTERNATIVE GUIDELINES)]: WHO Dengue Guidelines 2024–2025 | PAHO/WHO Guidelines 2023
+- [PHÂN TẦNG CƠ SỞ MỤC TIÊU]: standard (chọn: 'basic' [trạm y tế/phòng khám/thiếu thuốc & CLS chuyên sâu] | 'standard' [tuyến huyện-tỉnh đủ thuốc cơ bản & CLS tiêu chuẩn] | 'advanced' [tuyến trung ương/ICU/đầy đủ can thiệp chuyên sâu])
 - [SLUG FILE]: sot_xuat_huyet_dengue
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📋 MẪU CÂU LỆNH YÊU CẦU NOTEBOOKLM THỰC HIỆN (CHÉP & DÁN TRỰC TIẾP VÀO Ô CHAT)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-👉 MẪU CÂU LỆNH CHÍNH (MASTER SOAP INVOCATION COMMAND):
+👉 MẪU CÂU LỆNH CHÍNH V2 (MASTER SOAP V2 INVOCATION COMMAND):
 (Sao chép nguyên văn đoạn dưới đây, điền thông số và dán vào ô chat Google NotebookLM):
 
 "Bạn là Bác sĩ Giảng viên Lâm sàng kỳ cựu và Chuyên gia Y học Chứng cứ (EBM).
 
-Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (đặc biệt là [HƯỚNG DẪN THAM CHIẾU]), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Thực Tế Điển Hình theo cấu trúc SOAP chuẩn quốc tế và định dạng Markdown Frontmatter YAML hoàn chỉnh dưới đây.
+Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này (kết hợp cả [HƯỚNG DẪN THAM CHIẾU CHÍNH] và [HƯỚNG DẪN THAM CHIẾU MỞ RỘNG]), hãy xây dựng 01 Ca Bệnh Án Lâm Sàng Thực Tế Điển Hình theo cấu trúc SOAP chuẩn quốc tế mở rộng (v2) và định dạng Markdown Frontmatter YAML hoàn chỉnh dưới đây.
 
 Thông số ca bệnh:
 - Mặt bệnh cần xây dựng: [TÊN BỆNH LÝ]
@@ -54,15 +58,34 @@ Thông số ca bệnh:
 - Bối cảnh bệnh nhân: [BỐI CẢNH BỆNH NHÂN]
 - Khoa phòng tiếp nhận: [KHOA PHÒNG TIẾP NHẬN]
 - Trọng tâm biện luận: [TRỌNG TÂM BIỆN LUẬN]
-- Tài liệu nguồn ưu tiên trích dẫn: [HƯỚNG DẪN THAM CHIẾU]
+- Hướng dẫn tham chiếu chính: [HƯỚNG DẪN THAM CHIẾU CHÍNH]
+- Hướng dẫn tham chiếu mở rộng: [HƯỚNG DẪN THAM CHIẾU MỞ RỘNG]
+- Phân tầng cơ sở y tế: [PHÂN TẦNG CƠ SỞ MỤC TIÊU] (basic | standard | advanced)
 - Slug file: [SLUG FILE]
 
-Yêu cầu lâm sàng & Cấu trúc xuất bản bắt buộc:
-1. Xuất ĐẦY ĐỦ định dạng Markdown với phần Frontmatter YAML ở đầu (đầy đủ 4 Hạt ngọc lâm sàng: historyPearls, objectivePitfalls, diagnosticPearls, takeawayLessons).
+Yêu cầu lâm sàng & Cấu trúc xuất bản bắt buộc (Phiên bản v2 mở rộng):
+1. Xuất ĐẦY ĐỦ định dạng Markdown với phần Frontmatter YAML ở đầu:
+   - Đầy đủ 4 Hạt ngọc lâm sàng: historyPearls, objectivePitfalls, diagnosticPearls, takeawayLessons (takeawayLessons tóm tắt phương án First-line + Phương án thay thế khi thiếu thuốc/dị ứng).
+   - Đầy đủ các trường metadata v2: guidelineVersion: "v2", guidelineReferences (danh sách các guideline tham chiếu), treatmentTiers, sourceReference.
 2. Phần S (Chủ quan): Bệnh sử diễn tiến theo ngày rõ ràng, lý do vào viện ngắn gọn, tiền căn bản thân, gia đình và bối cảnh dịch tễ phơi nhiễm.
 3. Phần O (Khách quan): Đầy đủ Sinh hiệu, Khám chuyên khoa từng cơ quan, Cận lâm sàng chi tiết (CTM, Đông máu, Sinh hóa men gan thận điện giải, Chẩn đoán hình ảnh SA/XQ/CT, Vi sinh).
-4. Phần A (Đánh giá): BẮT BUỘC chẩn đoán theo mô hình 5 Thành phần (Bệnh chính: Xác định - Phân độ - Phân loại - Nguyên nhân - Biến chứng; Bệnh phụ/đồng mắc); Bảng Đặt vấn đề 3 tầng (Tầng 1 Sinh mạng -> Tầng 2 Cấp tính gom theo Hội chứng -> Tầng 3 Mạn tính) theo trường phái PGS.TS Hoàng Văn Sĩ; Biện luận chẩn đoán phân biệt.
-5. Phần P (Kế hoạch): Y lệnh điều trị nấc thang định lượng, mở rộng các phương án kháng sinh (First-line, Alternative khi dị ứng/kháng thuốc, Chỉnh liều eGFR, IV-to-PO switch), Lộ trình điều trị 3 giai đoạn và Tiêu chuẩn xuất viện an toàn.
+4. Phần A (Đánh giá):
+   - Chẩn đoán theo mô hình 5 Thành phần (Bệnh chính: Xác định - Phân độ - Phân loại - Nguyên nhân - Biến chứng; Bệnh phụ/đồng mắc).
+   - Bảng Đặt vấn đề 3 tầng (Tầng 1 Sinh mạng -> Tầng 2 Cấp tính gom theo Hội chứng -> Tầng 3 Mạn tính) theo trường phái PGS.TS Hoàng Văn Sĩ.
+   - Biện luận chẩn đoán phân biệt và so sánh quan điểm chẩn đoán/phân độ giữa các hướng dẫn (nếu có khác biệt giữa BYT và WHO/quốc tế).
+5. Phần P (Kế hoạch) — NÂNG CẤP V2 TOÀN DIỆN (ĐA PHÁC ĐỒ & MA TRẬN ĐIỀU TRỊ LINH HOẠT):
+   TUYỆT ĐỐI KHÔNG chỉ đưa ra 01 phác đồ duy nhất. Phải xây dựng ĐẦY ĐỦ:
+   a. "Ma Trận Phương Án Điều Trị Theo Guideline" (Treatment Option Matrix) dạng bảng Markdown:
+      - Phân tầng: First-line (Ưu tiên 1), Alternative (Dị ứng/Không dung nạp), Alternative (Kháng thuốc/Thể nặng), Lựa chọn khi cơ sở thiếu thuốc/nguồn lực (Resource-limited alternative).
+      - Mỗi dòng BẮT BUỘC có trích dẫn nguồn ngắn gọn dạng: `[Tên Tổ chức, Năm]`, ví dụ: `[QĐ 2760/BYT 2023]`, `[WHO 2024]`, `[IDSA 2024]`, `[ESCMID 2022]`, `[AHA 2023]`, `[GOLD 2024]`.
+      - Ghi rõ liều lượng, khoảng cách liều, đường dùng (PO/IV/SC/IM) và tổng thời gian điều trị.
+   b. "Bảng Phương Án Thay Thế Theo Tình Huống Thực Tế & Khả Năng Cơ Sở Y Tế":
+      - Tình huống cơ sở thiếu thuốc First-line (không có sẵn tại bệnh viện/trạm y tế) -> Thay bằng thuốc gì, liều ra sao, nguồn guideline nào cho phép?
+      - Tình huống bệnh nhân có thai / cho con bú.
+      - Tình huống người bệnh cao tuổi / có bệnh nền suy gan, suy tim.
+   c. "Bảng Hiệu Chỉnh Liều Theo Chức Năng Thận (eGFR)" (nếu trong phác đồ có thuốc thải qua thận hoặc có độc tính thận).
+   d. "Tiêu Chuẩn Xuống Thang / Chuyển Đường Uống (IV-to-PO Switch)" (nếu điều trị nội trú dùng thuốc tiêm/truyền).
+   e. Lộ trình điều trị 3 giai đoạn (Giờ 1-24, Ngày 2-5, Ngày 6-8/Hồi phục) và Tiêu chuẩn xuất viện an toàn.
 6. Quy chuẩn Typography & Dữ liệu:
    - Dùng toán tử chuẩn: ≥, ≤, ±, ×, °, °C, µmol/L, µg, mL/kg/h, G/L.
    - Khử 100% HTML entities: Viết trực tiếp ký tự <, >, ", &. Tuyệt đối KHÔNG viết &lt;, &gt;, &quot;, &amp;.
@@ -74,29 +97,32 @@ Yêu cầu lâm sàng & Cấu trúc xuất bản bắt buộc:
 "Hãy xây dựng 01 Ca bệnh án thực chiến dạng CẠM BẪY LÂM SÀNG (experienceLevel: 'pitfall', difficultyRating: 4) cho [TÊN BỆNH LÝ]:
 - Điểm cạm bẫy: [VD: Hạ sốt nhưng người bệnh mệt lả và tụt HA; hoặc biểu hiện đau bụng cấp dễ nhầm với viêm ruột thừa cấp].
 - Objective Pitfalls: Nêu rõ sai lầm thường gặp khi đọc cận lâm sàng hoặc bỏ sót dấu hiệu sinh tồn.
-- Biện luận phân định rõ giữa chẩn đoán đúng và chẩn đoán nhầm lẫn."
+- Biện luận phân định rõ giữa chẩn đoán đúng và chẩn đoán nhầm lẫn.
+- Phần P: Nêu rõ phác đồ chuẩn và các phương án thay thế an toàn khi xử trí nhầm hoặc phát hiện muộn."
 
 ---
 
 👉 MẪU CÂU LỆNH KHI BỊ DỪNG NGANG (CONTINUATION COMMAND):
-"tiếp tục viết tiếp nội dung ca bệnh SOAP từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo hoàn thành đầy đủ mục Plan, lộ trình điều trị và tiêu chuẩn xuất viện."
+"tiếp tục viết tiếp nội dung ca bệnh SOAP từ chỗ vừa dừng, không lặp lại đoạn trước, đảm bảo hoàn thành đầy đủ Ma trận điều trị theo Guideline, bảng thay thế theo cơ sở y tế, hiệu chỉnh eGFR, lộ trình điều trị và tiêu chuẩn xuất viện."
 
 ---
 
-👉 MẪU CÂU LỆNH RÀ SOÁT CHỐNG SÓT NỘI DUNG (AUDIT COMMAND):
-"Hãy rà soát lại ca bệnh SOAP vừa xuất:
+👉 MẪU CÂU LỆNH RÀ SOÁT CHỐNG SÓT NỘI DUNG V2 (AUDIT COMMAND):
+"Hãy rà soát lại ca bệnh SOAP vừa xuất theo tiêu chuẩn v2:
 1. Có ký tự HTML entities nào bị rò rỉ (&lt;, &gt;, &quot;, &amp;) không? Sửa lại thành <, >, ", &.
 2. Bảng đặt vấn đề 3 tầng ở phần A đã gom các triệu chứng cấp tính thành HỘI CHỨNG LÂM SÀNG ở Tầng 2 chưa?
-3. Phác đồ thuốc ở phần P đã có đầy đủ phương án thay thế khi dị ứng hoặc kháng thuốc chưa?"
+3. Phần P đã có bảng 'Ma Trận Phương Án Điều Trị Theo Guideline' với đầy đủ nguồn [Tổ chức, Năm] trên từng dòng chưa?
+4. Đã có phương án thay thế cụ thể khi cơ sở y tế thiếu thuốc First-line chưa?
+5. Đã có bảng hiệu chỉnh liều theo eGFR và tiêu chuẩn IV-to-PO switch (nếu có thuốc áp dụng) chưa?"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 --------------------------------------------------------------------------------
-[CẤU TRÚC MARKDOWN XUẤT BẢN]
-(Dưới đây là cấu trúc mẫu mà NotebookLM sẽ xuất ra — Hệ thống DocSpace sẽ tự động bóc tách 1-chạm):
+[CẤU TRÚC MARKDOWN XUẤT BẢN V2]
+(Dưới đây là cấu trúc mẫu v2 mà NotebookLM sẽ xuất ra — Hệ thống DocSpace sẽ tự động bóc tách 1-chạm):
 
 ---
-title: "[TÊN BỆNH LÝ CHUẨN XÁC, NGẮN GỌN (Ví dụ: Sốt xuất huyết Dengue, Sốt thương hàn, Viêm dạ dày ruột cấp)]"
+title: "[TÊN BỆNH LÝ CHUẨN XÁC, NGẮN GỌN (Ví dụ: Sốt xuất huyết Dengue, Sốt thương hàn, Viêm phổi cộng đồng)]"
 caseId: "soap-[SLUG FILE]-01"
 specialty: "[CHUYÊN KHOA]"
 experienceLevel: "[PHÂN LOẠI CA]"
@@ -112,10 +138,18 @@ demographicContext: "[BỐI CẢNH BỆNH NHÂN (Ví dụ: Nam 24 tuổi, sinh v
 historyPearls: "⚡ BỆNH SỬ: [1 câu hỏi vàng hoặc kỹ năng hỏi bệnh giúp nhận diện sớm thời điểm nguy kịch của bệnh]"
 objectivePitfalls: "⚠️ CẬN LÂM SÀNG & KHÁM: [Dấu hiệu cơ thể hoặc cạm bẫy đọc cận lâm sàng rất dễ bị bỏ sót: ví dụ Lacet âm tính giả khi sốc, hoặc Hct tụt do xuất huyết nội ẩn]"
 diagnosticPearls: "🧠 BIỆN LUẬN: [Lập luận chẩn đoán phân biệt cốt lõi, cơ chế phân định giữa bệnh này với các chẩn đoán cạnh tranh]"
-takeawayLessons: "🎯 ĐIỀU TRỊ: [Khuyến cáo điều trị then chốt, phác đồ dùng thuốc/dịch truyền theo bậc thang, tuyệt đối chống chỉ định thuốc nguy hiểm]"
-sourceReference: "[HƯỚNG DẪN THAM CHIẾU]"
+takeawayLessons: "🎯 ĐIỀU TRỊ ĐA PHÁC ĐỒ: [First-line: Tên thuốc/liều + Nguồn] | [Alt khi thiếu thuốc/dị ứng: Tên thuốc/liều + Nguồn] | [Cảnh báo chống chỉ định then chốt]"
+sourceReference: "[HƯỚNG DẪN THAM CHIẾU CHÍNH] | [HƯỚNG DẪN THAM CHIẾU MỞ RỘNG]"
+guidelineVersion: "v2"
+guidelineReferences:
+  - "[HƯỚNG DẪN THAM CHIẾU CHÍNH (Tổ chức, Năm)]"
+  - "[HƯỚNG DẪN THAM CHIẾU MỞ RỘNG (Tổ chức, Năm)]"
+treatmentTiers:
+  - "basic"
+  - "standard"
+  - "advanced"
 clinicalContext: "[KHOA PHÒNG TIẾP NHẬN]"
-updated: "2026-10-11"
+updated: "2026-10-18"
 ---
 
 # 🩺 Ca Lâm Sàng: [TÊN BỆNH LÝ]
@@ -238,36 +272,87 @@ Phân định bắt buộc theo 3 tầng ưu tiên chuẩn mực y khoa (Tầng 
   - *Phân tầng mức độ*: [Nhẹ / Có dấu hiệu cảnh báo / Nặng...]
 
 - **Biện luận lâm sàng chi tiết**:
-  - **Về Chẩn đoán xác định**: [Lập luận dựa trên Tam giác Dịch tễ học, Triệu chứng lâm sàng then chốt và Kết quả xét nghiệm vàng theo đúng [HƯỚNG DẪN THAM CHIẾU]]
+  - **Về Chẩn đoán xác định**: [Lập luận dựa trên Tam giác Dịch tễ học, Triệu chứng lâm sàng then chốt và Kết quả xét nghiệm vàng theo đúng các hướng dẫn tham chiếu]
   - **Về Phân loại & Mức độ nặng**: [Căn cứ phân tầng nguy cơ và tiêu chuẩn phân độ]
+  - **Về Đối chiếu & So sánh Guideline**: [Nêu rõ điểm tương đồng và khác biệt giữa Guideline Bộ Y Tế và Guideline Quốc tế (WHO/IDSA/ESCMID) đối với bệnh lý này]
   - **Về Chẩn đoán phân biệt**: [Lý do và bằng chứng loại trừ các giả thuyết cạnh tranh]
 
 ---
 
 ## 4. 📋 P — KẾ HOẠCH / PLAN
 
-- **Xử trí cấp cứu & Ban đầu**:
-  - Tư thế bệnh nhân và hỗ trợ hô hấp: [Tư thế nằm đầu bằng/cao, thở oxy qua canun nếu SpO₂ < 95%]
-  - Thiết lập đường truyền & Hồi sức ban đầu: [Loại dịch, kích cỡ kim luồn, tốc độ truyền khởi đầu]
-  - Biện pháp không dùng thuốc: [Nghỉ ngơi tại giường, chườm ấm hạ sốt, bù dịch đường uống bằng Oresol]
+### Xử trí cấp cứu & Ban đầu:
+- **Tư thế bệnh nhân và hỗ trợ hô hấp**: [Tư thế nằm đầu bằng/cao, thở oxy canun nếu SpO₂ < 95%]
+- **Thiết lập đường truyền & Hồi sức ban đầu**: [Loại dịch, cỡ kim luồn, tốc độ truyền khởi đầu]
+- **Biện pháp không dùng thuốc**: [Nghỉ ngơi tại giường, chườm ấm hạ sốt, bù dịch đường uống bằng Oresol]
 
 ---
 
-### Y lệnh thuốc điều trị chi tiết & Kháng sinh trị liệu:
-(BẮT BUỘC trích xuất toàn diện từ [HƯỚNG DẪN THAM CHIẾU] — Không chỉ đưa 01 phương án máy móc, mà phải mở rộng đầy đủ các lựa chọn theo phân tầng y khoa):
+### 💊 Ma Trận Phương Án Điều Trị Theo Guideline (Treatment Option Matrix):
+> ⚡ **Nguyên tắc lâm sàng**: Bác sĩ lựa chọn phương án tối ưu dựa trên mức độ bệnh, tình trạng dị ứng/bệnh nền và **danh mục thuốc thực tế sẵn có tại cơ sở y tế**. Mỗi phương án đều được bảo chứng bởi Guideline y khoa chính thức.
 
-- **[Kháng sinh trị liệu / Liệu pháp kháng vi sinh vật]**:
-  - *Nếu là bệnh siêu vi / không có chỉ định*: Ghi rõ `[Kháng sinh]`: **KHÔNG CHỈ ĐỊNH** — Nêu rõ lý do (bệnh lý do virus, không có bằng chứng bội nhiễm) và cảnh báo tuyệt đối không lạm dụng kháng sinh để phòng ngừa kháng thuốc.
-  - *Nếu có chỉ định kháng sinh (nhiễm khuẩn)*: Xuất đầy đủ các phương án trong phác đồ tham khảo:
-    + **Phương án ưu tiên hàng đầu (First-line)**: [Tên kháng sinh 1, ví dụ Ceftriaxone 2g / Cefepime 2g / Amoxicillin-Clavulanic 1g] ([Đường dùng IV/PO]) — *[Liều lượng cụ thể (mg/kg hoặc g), khoảng cách liều (q12h/q8h/q24h), tốc độ truyền]*.
-    + **Các phương án thay thế (Alternative Regimens)**: [Tên kháng sinh thay thế, ví dụ Levofloxacin 750mg / Azithromycin 500mg / Vancomycin] ([Đường dùng IV/PO]) — *[Chỉ định khi dị ứng Penicillin/Beta-lactam, hoặc khi nghi ngờ căn nguyên không điển hình / vi khuẩn kháng thuốc (MRSA, Pseudomonas, vi khuẩn sinh ESBL)]*.
-    + **Kháng sinh phối hợp (Combination Therapy)**: [Nếu guideline chỉ định phối hợp, ví dụ Beta-lactam + Macrolide hoặc Ceftriaxone + Metronidazole] — *[Mục đích phối hợp và liều cụ thể]*.
-    + **Hiệu chỉnh liều theo chức năng thận (eGFR)**: *[Ghi rõ quy tắc chỉnh liều nếu eGFR < 50 mL/min hoặc < 30 mL/min]*.
-    + **Thời gian điều trị & Tiêu chuẩn xuống thang (IV-to-PO switch)**: *[Tổng ngày dùng (ví dụ 5-7 ngày) và điều kiện chuyển sang kháng sinh đường uống khi hết sốt ≥ 48h, lâm sàng cải thiện]*.
+#### 1. Nhóm Kháng Sinh Trị Liệu / Thuốc Kháng Vi Sinh Vật (Antimicrobial Therapy):
+*(Nếu bệnh lý do siêu vi/không có chỉ định: Ghi rõ **KHÔNG CHỈ ĐỊNH KHÁNG SINH**, giải thích cơ chế và cảnh báo chống lạm dụng)*
 
-- **[Liệu pháp hồi sức / Bù dịch / Vận mạch]**: [Tên dịch truyền hoặc thuốc vận mạch] ([Đường IV]) — *[Tốc độ truyền nấc thang (mL/kg/h), đích áp lực động mạch trung bình MAP ≥ 65 mmHg, tiêu chuẩn giảm liều / ngưng dịch để phòng ngừa quá tải thể tích]*.
-- **[Thuốc điều trị triệu chứng & Bổ trợ]**: [Tên thuốc, ví dụ Paracetamol đơn chất, Oresol nhược trương, Thuốc chống nôn, Kẽm...] ([Đường PO/IV]) — *[Liều lượng, khoảng cách dùng, liều tối đa trong 24h, thuốc chống chỉ định tuyệt đối kèm theo]*.
-- **[Thuốc kiểm soát bệnh nền & Đồng mắc]**: [Các thuốc kiểm soát huyết áp, đái tháo đường, suy tim... nếu có, kèm hướng dẫn tạm hoãn hoặc hiệu chỉnh trong đợt cấp]*.
+| Phân tầng lựa chọn | Phương án thuốc & Liều lượng | Đường dùng | Thời gian | Căn cứ Guideline [Tổ chức, Năm] |
+|:---|:---|:---|:---|:---|
+| 🥇 **First-line (Ưu tiên 1)** | [Tên thuốc 1 + Liều chi tiết (VD: Ceftriaxone 2g q24h)] | [IV/PO] | [5 - 7 ngày] | [QĐ 2760/BYT 2023] [WHO 2024] |
+| 🥈 **Alternative (Dị ứng β-lactam)** | [Tên thuốc thay thế + Liều chi tiết (VD: Levofloxacin 750mg q24h)] | [IV/PO] | [5 - 7 ngày] | [IDSA 2024] [ESCMID 2022] |
+| 🥉 **Alternative (Nghi kháng thuốc / Vi khuẩn không điển hình)** | [Tên thuốc phối hợp hoặc thế hệ mới + Liều chi tiết] | [IV/PO] | [7 - 10 ngày] | [IDSA 2023] |
+| ⚡ **Cơ sở thiếu thuốc tiêm / Tuyến cơ sở (Resource-limited)** | [Phương án đường uống hiệu quả tương đương sẵn có tại trạm/phòng khám] | [PO] | [5 - 7 ngày] | [NICE 2023] [BYT 2023] |
+| 🔴 **Ca nặng / ICU / Nghi vi khuẩn đa kháng (MRSA, ESBL, Pseudomonas)** | [Kháng sinh phổ rộng/dự trữ (VD: Meropenem 1g q8h, Vancomycin 15-20mg/kg q12h)] | [IV] | [7 - 14 ngày] | [IDSA AMR 2023] [Sanford Guide 2024] |
+
+#### 2. Nhóm Liệu Pháp Hồi Sức / Bù Dịch / Vận Mạch:
+| Phân tầng | Dung dịch / Thuốc | Tốc độ & Liều lượng | Mục tiêu lâm sàng | Nguồn Guideline |
+|:---|:---|:---|:---|:---|
+| 🥇 **Dịch tinh thể ưu tiên** | Ringer Lactate (hoặc NaCl 0.9%) | [VD: 5-7 mL/kg/h trong 1-2h đầu, hạ bậc dần 3 mL/kg/h] | Hct ổn định, MAP ≥ 65 mmHg, bài niệu ≥ 0.5 mL/kg/h | [QĐ 2760/BYT 2023] [WHO 2024] |
+| 🥈 **Dịch keo thay thế (khi thất bại tinh thể)** | Dextran 40 / HES 130/0.4 (hoặc Albumin 5%) | [VD: 10-15 mL/kg/h khi có sốc tái diễn hoặc cô đặc máu nặng] | Phục hồi thể tích lòng mạch khẩn cấp | [QĐ 2760/BYT 2023] |
+| 🥉 **Vận mạch / Trợ tim (khi bù đủ dịch vẫn tụt HA)** | Noradrenaline 0.05 - 0.5 µg/kg/phút | Truyền tĩnh mạch qua bơm tiêm điện | Đích MAP ≥ 65 mmHg | [Surviving Sepsis 2021] [BYT 2023] |
+
+#### 3. Nhóm Thuốc Điều Trị Triệu Chứng & Hỗ Trợ:
+| Nhóm tác dụng | Tên thuốc & Liều dùng | Đường | Lưu ý an toàn & Chống chỉ định | Nguồn Guideline |
+|:---|:---|:---|:---|:---|
+| Hạ sốt / Giảm đau | Paracetamol 10-15 mg/kg (uống q4-6h, max 60 mg/kg/ngày hoặc 3g/ngày ở người lớn) | PO/IV | **CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI NSAIDs (Aspirin, Ibuprofen, Diclofenac)** vì tăng nguy cơ xuất huyết tiêu hóa và suy thận cấp | [QĐ 2760/BYT 2023] [WHO 2024] |
+| Bù dịch đường uống | Dung dịch Oresol (ORS) áp lực thẩm thấu giảm | PO | Uống từng ngụm nhỏ, bổ sung theo nhu cầu và sau mỗi lần nôn/tiêu lỏng | [WHO 2023] [UNICEF] |
+| Chống nôn (nếu nôn nhiều) | Ondansetron 4 - 8 mg | PO/IV chậm | Cân nhắc khi nôn liên tục không thể uống Oresol | [UpToDate 2024] |
+
+#### 4. Nhóm Thuốc Kiểm Soát Bệnh Nền & Đồng Mắc (nếu có):
+- [Hướng dẫn chi tiết tiếp tục, tạm hoãn hoặc chỉnh liều thuốc huyết áp, đái tháo đường, tim mạch... trong giai đoạn cấp]
+
+---
+
+### 🏥 Bảng Phương Án Thay Thế Theo Tình Huống Thực Tế & Khả Năng Cơ Sở Y Tế:
+*(Giúp nhân viên y tế tại cơ sở thiếu thuốc/trang thiết bị xử trí an toàn, không vi phạm nguyên tắc y khoa)*
+
+| Tình huống thực tế tại cơ sở | Phương án xử trí & Thuốc thay thế cho phép | Cơ sở chứng cứ [Tổ chức, Năm] |
+|:---|:---|:---|
+| **Cơ sở không có thuốc First-line** (Hết thuốc tại kho) | [Tên thuốc thay thế sẵn có + Liều lượng cụ thể] | [BYT / WHO / IDSA] |
+| **Cơ sở không có máy đo điện giải / Khí máu** | Theo dõi sát sinh hiệu, CRT, lượng nước tiểu qua ống thông tiểu, Hct mao quản | [WHO Dengue 2024] |
+| **Bệnh nhân mang thai hoặc đang cho con bú** | [Thuốc an toàn nhóm A/B, liều dùng và theo dõi đặc biệt] | [ACOG / RCOG 2023] |
+| **Bệnh nhân suy gan nặng (Child-Pugh B/C)** | Giảm 50% liều Paracetamol (max 2g/24h), tránh hoàn toàn thuốc chuyển hóa qua gan | [EASL 2023] |
+| **Bệnh nhân có tiền sử dị ứng Penicillin / Cephalosporin** | [Phương án thay thế không thuộc nhóm β-lactam (Macrolide / Quinolone / Glycopeptide)] | [EAACI 2022] [IDSA 2023] |
+
+---
+
+### ⚙️ Bảng Hiệu Chỉnh Liều Theo Chức Năng Thận (eGFR / CrCl):
+*(Áp dụng cho các thuốc trong phác đồ có đào thải qua thận)*
+
+| Tên thuốc | Liều bình thường (eGFR ≥ 60) | eGFR 30 - 59 mL/min | eGFR 15 - 29 mL/min | eGFR < 15 hoặc Lọc máu HD |
+|:---|:---|:---|:---|:---|
+| [Tên thuốc 1 (VD: Levofloxacin)] | 750mg q24h | 500mg q24h | 500mg khởi đầu, sau đó 250mg q24h | 500mg khởi đầu, sau đó 250mg q48h |
+| [Tên thuốc 2 (VD: Entecavir)] | 0.5mg q24h | 0.25mg q24h (hoặc 0.5mg q48h) | 0.15mg q24h (hoặc 0.5mg q72h) | 0.05mg q24h (hoặc 0.5mg mỗi 7 ngày) |
+| [Tên thuốc 3 (VD: Ceftriaxone)] | 2g q24h | Không cần chỉnh liều | Không cần chỉnh liều | Không cần chỉnh (thải trừ kép gan-thận) |
+
+---
+
+### 🔄 Tiêu Chuẩn Xuống Thang / Chuyển Sang Đường Uống (IV-to-PO Switch):
+*(Áp dụng cho bệnh nhân điều trị nội trú dùng thuốc đường tiêm truyền)*
+- **Điều kiện lâm sàng**:
+  1. Hết sốt liên tục ≥ 24 - 48 giờ không cần dùng thuốc hạ sốt.
+  2. Bệnh nhân tỉnh táo, tiếp xúc tốt, phản xạ nuốt và chức năng tiêu hóa tốt (hết nôn ói, ăn uống và dung nạp tốt).
+  3. Huyết động ổn định, không còn nhu cầu dùng vận mạch hay bù dịch nhanh.
+  4. Các chỉ số viêm cải thiện rõ: Bạch cầu xu hướng giảm, CRP/Procalcitonin giảm > 50% so với đỉnh.
+- **Phương án chuyển đổi đường uống**: [Tên thuốc PO tương đương + Liều dùng PO + Nguồn [IDSA / ESCMID / BYT]]
 
 ---
 
@@ -299,7 +384,7 @@ Phân định bắt buộc theo 3 tầng ưu tiên chuẩn mực y khoa (Tầng 
 ---
 
 ### Tiêu chuẩn hội chẩn, chuyển khoa hoặc xuất viện:
-- **Tiêu chuẩn chuyển ICU / Hội chẩn cấp cao**: [Sốc tái diễn, tụt huyết áp kéo dài dù đã bù dịch chuẩn, toan chuyển hóa nặng, suy đa cơ quan, xuất huyết nội tạng nặng]
+- **Tiêu chuẩn chuyển ICU / Bệnh viện tuyến trên**: [Sốc tái diễn, tụt huyết áp kéo dài dù đã bù dịch chuẩn, toan chuyển hóa nặng, suy đa cơ quan, xuất huyết nội tạng nặng, cơ sở thiếu chế phẩm máu hoặc dịch keo]
 - **Tiêu chuẩn ngưng truyền dịch**: [Hết sốt > 48 giờ, huyết động ổn định, tiểu tốt, Hct ổn định, không còn dấu hiệu cảnh báo]
 - **Tiêu chuẩn cho xuất viện an toàn**: [Hết sốt ít nhất 2 ngày không dùng thuốc hạ sốt, tỉnh táo, ăn uống ngon miệng, mạch và huyết áp bình thường, lượng nước tiểu bình thường, số lượng tiểu cầu phục hồi > 50 G/L và không có biến chứng]
 "

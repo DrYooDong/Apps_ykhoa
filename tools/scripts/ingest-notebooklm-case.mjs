@@ -394,10 +394,10 @@ function extractLabGroups(oText) {
 }
 
 /**
- * Trích xuất danh sách thuốc chuyên sâu từ khối Y lệnh thuốc
+ * Trích xuất danh sách thuốc chuyên sâu từ khối Y lệnh thuốc hoặc Ma trận điều trị
  */
 function extractMedications(pText) {
-  const blockRegex = /(?:^|\n)#{2,4}\s*(?:[^\n]*?)?(?:Y lệnh thuốc|Danh mục thuốc|Thuốc điều trị|Medications)[^\n]*\n([\s\S]*?)(?=(?:^|\n)#{2,4}\s|\n\s*---\s*\n|$)/i;
+  const blockRegex = /(?:^|\n)#{2,4}\s*(?:[^\n]*?)?(?:Y lệnh thuốc|Danh mục thuốc|Thuốc điều trị|Ma trận phương án điều trị|Ma trận điều trị|Treatment Option Matrix|Medications)[^\n]*\n([\s\S]*?)(?=(?:^|\n)##\s|\n\s*---\s*\n|$)/i;
   const blockMatch = pText.match(blockRegex);
   const targetText = blockMatch ? blockMatch[1].trim() : pText;
 
@@ -449,7 +449,7 @@ function extractMedications(pText) {
 
   if (meds.length > 0) return meds;
 
-  // Fallback Markdown Table format
+  // Fallback Markdown Table format (Hỗ trợ cả v1 3-4 cột và v2 5 cột có Guideline)
   const lines = targetText.split(/\r?\n/);
   let isTable = false;
   for (const line of lines) {
@@ -464,7 +464,18 @@ function extractMedications(pText) {
           .split('|')
           .map((c) => c.trim())
           .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-        if (cols.length >= 2) {
+        if (cols.length >= 5) {
+          // Bảng Ma trận điều trị v2: | Phân tầng | Phương án | Đường dùng | Thời gian | Căn cứ Guideline |
+          meds.push({
+            tier: cols[0].replace(/[*_`]/g, '').trim(),
+            drug: cols[1].replace(/[*_`]/g, '').trim(),
+            dose: cols[1].replace(/[*_`]/g, '').trim(),
+            route: cols[2].replace(/[*_`]/g, '').trim() || 'PO',
+            duration: cols[3].replace(/[*_`]/g, '').trim() || '',
+            guideline: cols[4].replace(/[*_`]/g, '').trim() || '',
+            note: `${cols[0]} | ${cols[3]} | ${cols[4]}`.replace(/[*_`]/g, '').trim(),
+          });
+        } else if (cols.length >= 2) {
           meds.push({
             drug: cols[0].replace(/[*_`]/g, '').trim(),
             dose: cols[1].replace(/[*_`]/g, '').trim() || '',
@@ -787,6 +798,34 @@ function extractSoapBody(bodyText) {
     ]) ||
     '';
 
+  const facilityAlternatives =
+    extractBlockFuzzy(pText, [
+      'Bảng Phương Án Thay Thế Theo Tình Huống Thực Tế & Khả Năng Cơ Sở Y Tế',
+      'Bảng Phương Án Thay Thế Theo Tình Huống Thực Tế',
+      'Phương Án Thay Thế Theo Tình Huống Thực Tế',
+      'Phương Án Thay Thế Theo Khả Năng Cơ Sở Y Tế',
+      'Bảng Thay Thế Theo Khả Năng Cơ Sở Y Tế',
+      'Phương án thay thế theo tình huống thực tế',
+    ]) || undefined;
+
+  const renalDosing =
+    extractBlockFuzzy(pText, [
+      'Bảng Hiệu Chỉnh Liều Theo Chức Năng Thận',
+      'Hiệu Chỉnh Liều Theo Chức Năng Thận',
+      'Hiệu chỉnh liều theo eGFR',
+      'Hiệu chỉnh liều eGFR',
+      'Renal Dosing Adjustment',
+    ]) || undefined;
+
+  const ivToPoSwitch =
+    extractBlockFuzzy(pText, [
+      'Tiêu Chuẩn Xuống Thang / Chuyển Sang Đường Uống',
+      'Tiêu chuẩn xuống thang kháng sinh',
+      'Tiêu chuẩn xuống thang',
+      'Chuyển sang đường uống',
+      'IV-to-PO Switch',
+    ]) || undefined;
+
   return {
     s: {
       chiefComplaint,
@@ -817,6 +856,9 @@ function extractSoapBody(bodyText) {
     p: {
       immediateActions,
       medications,
+      facilityAlternatives,
+      renalDosing,
+      ivToPoSwitch,
       monitoringAndTargets,
       treatmentRoadmap,
       lifestyleAndCounseling,
@@ -898,6 +940,14 @@ function processMarkdownFile(filePath) {
     objectivePitfalls: frontmatter.objectivePitfalls || '',
     diagnosticPearls: frontmatter.diagnosticPearls || '',
     takeawayLessons: frontmatter.takeawayLessons || '',
+    sourceReference: frontmatter.sourceReference || '',
+    guidelineVersion: frontmatter.guidelineVersion || 'v1',
+    guidelineReferences: Array.isArray(frontmatter.guidelineReferences)
+      ? frontmatter.guidelineReferences
+      : frontmatter.guidelineReferences
+      ? [String(frontmatter.guidelineReferences)]
+      : [],
+    treatmentTiers: Array.isArray(frontmatter.treatmentTiers) ? frontmatter.treatmentTiers : [],
 
     // Lưu toàn bộ S-O-A-P vào trường context dưới dạng JSON
     context: JSON.stringify(parsedSoap),
