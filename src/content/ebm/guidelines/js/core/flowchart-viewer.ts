@@ -5,7 +5,7 @@
 export function hydrateFlowchartViewers(mountEl?: HTMLElement | null): void {
   const container = mountEl || document;
   const viewers = container.querySelectorAll<HTMLElement>(
-    '.flowchart-viewer, [data-flowchart], .flowchart-editorial-card, .flowchart-card, .flowchart-svg-scroll, .flowchart-svg-wrapper, .flowchart-editorial-canvas'
+    '.flowchart-viewer, [data-flowchart], .flowchart-editorial-card, .flowchart-card, .flowchart-svg-scroll, .flowchart-svg-wrapper, .flowchart-editorial-canvas, .clini-flowchart-wrapper'
   );
 
   viewers.forEach(el => {
@@ -36,6 +36,16 @@ export function hydrateFlowchartViewers(mountEl?: HTMLElement | null): void {
       let startX = 0;
       let scrollLeft = 0;
 
+      const updateCursor = () => {
+        if (scrollContainer.scrollWidth > scrollContainer.clientWidth) {
+          if (!isDown) scrollContainer.style.cursor = 'grab';
+        } else {
+          scrollContainer.style.cursor = 'default';
+        }
+      };
+
+      scrollContainer.addEventListener('mouseenter', updateCursor);
+
       scrollContainer.addEventListener('mousedown', (e: MouseEvent) => {
         // Only drag if left click and content overflows
         if (e.button !== 0 || scrollContainer.scrollWidth <= scrollContainer.clientWidth) return;
@@ -49,7 +59,7 @@ export function hydrateFlowchartViewers(mountEl?: HTMLElement | null): void {
       const stopDrag = () => {
         if (!isDown) return;
         isDown = false;
-        scrollContainer.style.cursor = 'grab';
+        updateCursor();
         scrollContainer.style.removeProperty('user-select');
       };
 
@@ -64,10 +74,8 @@ export function hydrateFlowchartViewers(mountEl?: HTMLElement | null): void {
         scrollContainer.scrollLeft = scrollLeft - walk;
       });
 
-      // Default cursor hint if scrollable
-      if (scrollContainer.scrollWidth > scrollContainer.clientWidth) {
-        scrollContainer.style.cursor = 'grab';
-      }
+      // Initial cursor hint if already rendered
+      updateCursor();
     }
   });
 }

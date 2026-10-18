@@ -5978,7 +5978,8 @@ table td.heatmap-cell:hover {
 }
 
 .flowchart-editorial-hdr,
-.flowchart-editorial-header {
+.flowchart-editorial-header,
+.flowchart-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -5989,7 +5990,8 @@ table td.heatmap-cell:hover {
   flex-wrap: wrap;
 }
 
-.flowchart-editorial-title {
+.flowchart-editorial-title,
+.flowchart-card-title {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-weight: 800;
   font-size: 0.92rem;
@@ -6001,7 +6003,10 @@ table td.heatmap-cell:hover {
 }
 
 .flowchart-editorial-canvas,
-.flowchart-editorial-viewport {
+.flowchart-editorial-viewport,
+.flowchart-card-body,
+.flowchart-svg-wrapper,
+.flowchart-svg-scroll {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -6021,7 +6026,8 @@ table td.heatmap-cell:hover {
 }
 
 .flowchart-legend-row,
-.flowchart-editorial-legend {
+.flowchart-editorial-legend,
+.flowchart-card-footer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
@@ -6265,23 +6271,30 @@ table td.heatmap-cell:hover {
 
 [data-theme="dark"] .flowchart-editorial-hdr,
 [data-theme="dark"] .flowchart-editorial-header,
+[data-theme="dark"] .flowchart-card-header,
 [data-theme="dark"] .flowchart-legend-row,
-[data-theme="dark"] .flowchart-editorial-legend {
+[data-theme="dark"] .flowchart-editorial-legend,
+[data-theme="dark"] .flowchart-card-footer {
   background: var(--color-surface-2, #0f172a);
   border-color: var(--color-border, #334155);
 }
 
 [data-theme="dark"] .flowchart-editorial-canvas,
-[data-theme="dark"] .flowchart-editorial-viewport {
+[data-theme="dark"] .flowchart-editorial-viewport,
+[data-theme="dark"] .flowchart-card-body,
+[data-theme="dark"] .flowchart-svg-wrapper,
+[data-theme="dark"] .flowchart-svg-scroll {
   background: var(--color-surface, #1e293b);
 }
 
-[data-theme="dark"] .flowchart-editorial-title {
+[data-theme="dark"] .flowchart-editorial-title,
+[data-theme="dark"] .flowchart-card-title {
   color: var(--color-text, #f8fafc);
 }
 
 [data-theme="dark"] .flowchart-legend-row,
-[data-theme="dark"] .flowchart-editorial-legend {
+[data-theme="dark"] .flowchart-editorial-legend,
+[data-theme="dark"] .flowchart-card-footer {
   color: var(--color-text-muted, #94a3b8);
 }
 

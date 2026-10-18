@@ -25,6 +25,9 @@ export class CliniMdxEngine {
     const title = frontmatter.title || '';
     const description = frontmatter.description || '';
 
+    // 1.5. Loại bỏ JSX comments {/* ... */} để tránh bị bọc thành thẻ <p> in ra màn hình
+    content = content.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+
     // 2. Resolve image URLs & markdown image tags
     content = content.replace(/src=["'](?:\.\/)?images\/([^"']+)["']/g, 'src="kho-guidelines/images/$1"');
     content = content.replace(/!\[(.*?)\]\((?:\.\/)?(?:kho-guidelines\/)?images\/(.*?)\)/g, (_m, alt, imgPath) => {

@@ -103,7 +103,7 @@ export function renderFlowchartViewer(props: FlowchartViewerProps): string {
           ${svgHtml}
         </div>
 
-        <div class="flow-floating-hud" style="position: absolute; bottom: 12px; right: 12px; display: flex; align-items: center; gap: 4px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; padding: 3px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 15;">
+        <div class="flow-floating-hud" style="position: absolute; bottom: 12px; right: 12px; display: flex; align-items: center; gap: 4px; background: var(--color-surface, #ffffff); backdrop-filter: blur(8px); border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; padding: 3px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 15;">
           <span class="flow-zoom-display" style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted, #64748b); font-family: monospace;">100%</span>
         </div>
 
@@ -126,7 +126,7 @@ export function hydrateFlowchartViewers(rootEl: HTMLElement = document.body): vo
     wrapper.dataset.hydrated = 'true';
 
     const canvasWrapper = wrapper.querySelector<HTMLElement>('.flow-canvas-wrapper');
-    const svgEl = wrapper.querySelector<SVGSVGElement>('svg.clinical-flow-svg');
+    const svgEl = wrapper.querySelector<SVGSVGElement>('svg.clinical-flow-svg') || wrapper.querySelector<SVGSVGElement>('svg');
     const transformLayer = svgEl?.querySelector<SVGGElement>('.flow-transform-layer') || svgEl?.querySelector<SVGGElement>('g');
     const zoomDisplay = wrapper.querySelector<HTMLElement>('.flow-zoom-display');
     const rawDslEl = wrapper.querySelector<HTMLTextAreaElement>('.flow-raw-dsl');
