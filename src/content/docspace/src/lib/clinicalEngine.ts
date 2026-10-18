@@ -785,6 +785,10 @@ export function analyzeClinicalCase(
       notes.push('🚨 CẢNH BÁO AN TOÀN Y KHOA (SAFETY NET): Bệnh cảnh nguy kịch đe dọa sinh mạng có dấu chứng trùng khớp — Tuyệt đối không được bỏ sót!');
     }
 
+    const relevantSyndromes = Object.values(syndromeResults)
+      .filter((s) => s.isMet || s.matchedCount > 0)
+      .sort((s1, s2) => (s2.isMet ? 1 : 0) - (s1.isMet ? 1 : 0) || s2.matchedCount - s1.matchedCount);
+
     results.push({
       b,
       pct,

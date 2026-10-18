@@ -44,7 +44,7 @@ export function useMobileLayout(): MobileLayoutState {
       resizeTimer = window.setTimeout(() => {
         const width = window.innerWidth;
         const height = window.innerHeight;
-        setLayoutState((prev) => {
+        setLayoutState((prev: MobileLayoutState) => {
           const isMobile = width < 768;
           const isTablet = width >= 768 && width < 1024;
           const isDesktop = width >= 1024;

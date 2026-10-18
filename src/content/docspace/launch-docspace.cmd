@@ -6,6 +6,6 @@ echo   Connected to Knowledge Vault 2,400+ EBM Articles
 echo ========================================================
 echo.
 cd /d "%~dp0"
-echo Starting Vite dev server at http://localhost:5173 ...
+echo Starting Vite dev server at http://localhost:3000 ...
 npm run dev
 pause

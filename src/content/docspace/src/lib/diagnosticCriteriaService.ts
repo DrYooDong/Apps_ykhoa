@@ -216,7 +216,7 @@ export function buildDiagnosticCards(kb: KnowledgeBase): DiagnosticCardData[] {
       id: b.id,
       ten: b.ten,
       icd: b.icd,
-      nhom: GROUP_NAMES[b.nhom] || b.nhom,
+      nhom: b.nhom,
       nhomColor: GROUP_COLORS[b.nhom] || '#2563eb',
       baoDong: !!b.baoDong,
       tomTat: b.tomTat,
