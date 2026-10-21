@@ -202,6 +202,46 @@ Bệnh nhân SXHD có tình trạng tăng dị hóa mạnh mẽ, tiêu hao năng
 
 ---
 
+
+
+#### Tiêu Chuẩn Cho Người Bệnh Xuất Viện (Discharge Criteria)
+
+Bệnh nhân được xuất viện khi thỏa mãn **toàn bộ 8 tiêu chuẩn vàng** theo Quyết định 2760/QĐ-BYT:
+1. **Hết sốt ít nhất 2 ngày** liên tục (không dùng hạ sốt).
+2. **Tỉnh táo**, sinh hoạt bình thường.
+3. **Ăn uống được**, cảm giác thèm ăn hồi phục.
+4. **Mạch, huyết áp bình thường**.
+5. **Không khó thở** hoặc suy hô hấp do tràn dịch màng bụng, màng phổi.
+6. **Không xuất huyết tiến triển**.
+7. **Men gan ổn định:** $\text{AST, ALT} < 400\text{ U/L}$.
+8. **Cận lâm sàng hồi phục:** Hct trở về bình thường và số lượng tiểu cầu có khuynh hướng hồi phục $> 50.000/\text{mm}^3$.
+
+#### Tiêu Chuẩn Hội Chẩn Tại Khoa, Bệnh Viện (Phụ Lục 13 BYT 2023 - 13 Tiêu Chí)
+
+1. Sốc SXHD nặng ($M=0, HA=0$).
+2. Tái sốc.
+3. SXHD cảnh báo có Hct tiếp tục tăng sau bù dịch điện giải theo phác đồ.
+4. Sốc SXHD thất bại với bù dịch điện giải giờ đầu.
+5. Khó thở xuất hiện khi truyền dịch (nghi ngờ quá tải/phù phổi).
+6. Hct tăng quá cao $\ge 50\%$ hoặc giảm sâu $\le 35\%$.
+7. Xuất huyết tiêu hóa: nôn ra máu, đi cầu phân đen.
+8. Có tổn thương gan (men gan $\text{AST, ALT} \ge 400\text{ U/L}$).
+9. Rối loạn tri giác (thể não).
+10. Chẩn đoán phân biệt với nhiễm khuẩn huyết / sốc nhiễm trùng.
+11. Trẻ nhũ nhi $< 1\text{ tuổi}$ hoặc cơ địa dư cân, béo phì.
+12. Bệnh lý tim, phổi, thận mạn tính kèm theo.
+13. **Bác sĩ lo lắng hoặc không an tâm khi điều trị** (tiêu chuẩn an toàn người bệnh cốt lõi của BYT).
+
+#### Mẫu Giấy Tóm Tắt Theo Dõi Khi Chuyển Tuyến (Phụ Lục 14 BYT 2023)
+
+Bắt buộc đính kèm bảng theo dõi 10 cột khi chuyển bệnh nhân sốc SXHD lên tuyến trên: Ngày giờ, Mạch, Huyết áp, SpO2, CVP, Hct, Lactate, Nhịp thở & hỗ trợ hô hấp, Dịch truyền (loại, tốc độ), Nước tiểu (ml/h), Thuốc vận mạch / chế phẩm máu.
+
+#### Các Dấu Hiệu Cần Theo Dõi Khi Hồi Sức Sốc (Phụ Lục 20 BYT 2023)
+
+- **Mục tiêu hiệu áp:** Duy trì hiệu áp $\ge 30\text{ mmHg}$ suốt giai đoạn nguy hiểm.
+- **Tần suất thử lại Hct:** Sau truyền dịch chống sốc nếu lâm sàng cải thiện thì thử lại sau **2 giờ**; nếu không cải thiện thì thử lại ngay sau **1 giờ**. Khi ra sốc theo dõi mỗi 2 - 4 giờ, sau đó mỗi 4 - 6 giờ.
+- **Lưu lượng nước tiểu mục tiêu:** $0,5 - 1\text{ ml/kg/giờ}$ theo cân nặng tính dịch truyền.
+
 ### 3. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
 
 1. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue_. Quyết định ban hành số 2760/QĐ-BYT ngày 04 tháng 7 năm 2023. Hà Nội: Bộ Y tế; 2023.

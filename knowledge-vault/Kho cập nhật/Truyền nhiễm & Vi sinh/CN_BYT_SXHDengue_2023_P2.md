@@ -181,7 +181,7 @@ Truyền vận mạch được chỉ định khi đã bù dịch đầy đủ m�
 
 - **Dopamin:** Là thuốc vận mạch được lựa chọn đầu tiên trong điều trị sốc SXHD kéo dài ở trẻ em, liều dùng **\(5 - 10\text{ }\mu\text{g/kg/phút}\)**.
 - **Dobutamin:** Chỉ định trong trường hợp có biểu hiện suy tim do quá tải tuần hoàn hoặc thất bại với Dopamin, liều dùng **\(3 - 10\text{ }\mu\text{g/kg/phút}\)**.
-- **Phối hợp nâng cao:** Nếu thất bại với cả hai thuốc trên, phối hợp **Noradrenaline \(0,05 - 1\text{ }\mu\text{g/kg/phút}\)** (khi có giảm kháng lực mạch hệ thống - sốc giãn mạch) hoặc phối hợp **Adrenaline \(0,05 - 0,3\text{ }\mu\text{g/kg/phút}\)** (khi giảm sức co bóp cơ tim).
+- **Phối hợp nâng cao:** Nếu thất bại với cả hai thuốc trên, phối hợp **Noradrenaline (0,05 - 0,3 µg/kg/phút)** (khi có giảm kháng lực mạch hệ thống - sốc giãn mạch) hoặc phối hợp **Adrenaline \(0,05 - 0,3\text{ }\mu\text{g/kg/phút}\)** (khi giảm sức co bóp cơ tim).
 
 ---
 
@@ -252,9 +252,11 @@ Khi bệnh nhân có biểu hiện xuất huyết nặng hoặc nghi ngờ mất
 
 - **Phân độ:** Nhẹ (AST, ALT $120 - < 400\text{ U/L}$); Trung bình (AST, ALT $400 - < 1000\text{ U/L}$); Nặng hoặc suy gan cấp (**AST, ALT $\ge 1000\text{ U/L}$**).
 - **Xử trí:** Tránh dùng các thuốc hại gan, tuyệt đối không dùng Ringer lactate và paracetamol khi có tổn thương gan trung bình, nặng. Dung dịch điện giải thay thế lựa chọn là **NaCl 0,9% hoặc Ringer acetate**. Hạn chế lượng dịch nhập ở mức $2/3 - 3/4$ nhu cầu cơ bản.
-- **Liệu pháp N-Acetylcystein (NAC) tĩnh mạch:** Xem xét truyền NAC khi suy gan cấp:
-    - _Liều tấn công:_ **$150\text{ mg/kg}$** truyền tĩnh mạch trong 1 giờ.
-    - _Liều duy trì:_ **$50\text{ mg/kg}$** truyền trong 4 giờ tiếp theo, sau đó **$100\text{ mg/kg}$** truyền trong 16 giờ. Tiếp tục duy trì **$6,25\text{ mg/kg/giờ}$** trong 48 - 72 giờ.
+- **Liệu pháp N-Acetylcystein (NAC) tĩnh mạch (Phác đồ chuẩn BYT 2023):**
+    - _Chỉ định:_ Khi có biểu hiện suy gan cấp: Bệnh não gan và INR ≥ 1.5, HOẶC MELD score ≥ 15.
+    - _Liều lượng:_ Sử dụng **N-Acetylcystein liều 100 mg/kg/24 giờ** pha trong 1000 ml Glucose 5% hoặc Natriclorid 0.9%, truyền tĩnh mạch liên tục trong **3 - 5 ngày**.
+    - _Lưu ý:_ Theo dõi phản ứng phản vệ; không nên sử dụng NAC ở phụ nữ mang thai hoặc bệnh nhân thiếu men G6PD.
+    - _Xem xét Thay huyết tương (TPE) và/hoặc Lọc máu liên tục (CRRT):_ Khi bệnh nhân thất bại với NAC sau 24 - 48 giờ (không cải thiện tri giác và/hoặc MELD score), hoặc có suy gan cấp kèm AKI, Bilirubin toàn phần ≥ 200 µmol/L, INR ≥ 2.5, NH3 ≥ 150 µmol/L, Lactate ≥ 5 kèm sốc trơ hoặc pH < 7.35 (Phụ lục 26).
 
 ##### Tổn thương thận cấp (AKI)
 
