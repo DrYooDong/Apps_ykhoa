@@ -928,6 +928,22 @@
 
 ---
 
+## 🔬 src/content/ebm/guidelines/ (Hệ Thống Kho Guidelines & Nghiên Cứu Y Học Chứng Cứ)
+
+| File / Thư mục | Vai trò | Phân loại |
+|---|---|---|
+| `guidelines.html` | Cổng thông tin SPA Kho Guidelines, tìm kiếm và hiển thị bài tóm tắt | Hub Interface |
+| `guidelines.css` | Master stylesheet entry point kết nối toàn bộ hệ thống CSS EBM | Master CSS |
+| `src/styles/components/figure-lightbox.css` | Hệ thống Khung Hình Ảnh Y Học & Lightbox toàn màn hình chuẩn Nature/NEJM | Component CSS |
+| `src/styles/components/forest-plot.css` | Hệ thống Biểu đồ Rừng Forest Plot SVG đa tầng cho Landmark RCTs | Component CSS |
+| `src/styles/components/guidelines-print.css` | Bộ style in ấn tiết kiệm mực, ngắt trang thông minh & xuất PDF | Print CSS |
+| `src/content/ebm/guidelines/js/core/figure-lightbox.ts` | Bộ điều khiển Lightbox tương tác (Zoom, Pan, Pinch, Prev/Next, Keyboard Nav) | Core Engine |
+| `src/content/ebm/guidelines/js/core/forest-plot-renderer.ts` | Bộ máy render SVG Biểu đồ Rừng tự động từ dữ liệu endpoints và bảng | Core Engine |
+| `src/content/ebm/guidelines/js/guideline-reader-view.ts` | Trình đọc tóm tắt Hướng dẫn & Landmark RCT toàn màn hình | Reader View |
+| `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` | Quy chuẩn thiết kế bài tóm tắt Guideline & Landmark Trial MDX Native v2.0 | Design Spec |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
 
 

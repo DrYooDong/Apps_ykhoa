@@ -29,3 +29,5 @@ export * from './guideline-cmd-palette';
 export * from './guideline-cdss';
 export * from './guideline-compare-matrix';
 export * from './guideline-tools';
+export * from './core/figure-lightbox';
+export * from './core/forest-plot-renderer';

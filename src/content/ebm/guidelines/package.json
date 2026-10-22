@@ -4,7 +4,8 @@
   "description": "EBM Guidelines Hub — Phân hệ Tra cứu, Phân tích & Đối chiếu Y học chứng cứ Độc lập",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "tsc --noEmit && vite build",
+    "db:sync": "node tools/sync_guidelines_db.js",
+    "build": "node tools/sync_guidelines_db.js && tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",

@@ -1,0 +1,114 @@
+/**
+ * CliniPortal — Guidelines Print & PDF Export Stylesheet
+ * Path: src/styles/components/guidelines-print.css
+ * 
+ * Clean, publication-grade styling for browser printing (Ctrl+P) and PDF export.
+ */
+
+@media print {
+  /* 1. Ẩn toàn bộ các thanh điều khiển tương tác */
+  .guideline-reader-toolbar,
+  .mobile-reader-floating-bar,
+  .reading-progress-container,
+  .guideline-sticky-toc,
+  .ebm-fab-container,
+  .btn-row,
+  .btn,
+  .fig-zoom-hint,
+  .figure-lightbox-overlay,
+  .sidebar,
+  .topnav,
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+
+  /* 2. Ép buộc nền trắng và chữ đen rõ nét để tiết kiệm mực in */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body,
+  html,
+  .guideline-reader-wrapper,
+  #guideline-article-mount,
+  .page-content,
+  .sec-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 3. Hero banner in ấn trang nhã */
+  .guideline-hero-banner {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+    border: 2px solid #0284c7 !important;
+    border-radius: 8px !important;
+    padding: 1.25rem !important;
+  }
+
+  .guideline-hero-banner h1 {
+    color: #0284c7 !important;
+    font-size: 18pt !important;
+  }
+
+  .guideline-hero-banner p {
+    color: #334155 !important;
+  }
+
+  /* 4. Khung Figure và Bảng tránh bị cắt ngang trang (Page Break Control) */
+  .figure-card,
+  .fig-card,
+  figure.ebm-figure,
+  .table-responsive,
+  table,
+  .data-table,
+  .matrix-grid,
+  .pico-bento-grid,
+  .forest-plot-card,
+  .rec-card,
+  .infobox,
+  .rob-card,
+  .verdict-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin: 1.25rem 0 !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  .figure-card-body img,
+  .fig-card img,
+  img.fig-img {
+    max-height: 380px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  /* 5. Section headings */
+  .sec-card {
+    border: none !important;
+    border-bottom: 1.5px solid #cbd5e1 !important;
+    border-radius: 0 !important;
+    padding: 1rem 0 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .sec-hdr {
+    border-bottom: 1.5px solid #0284c7 !important;
+    padding-bottom: 0.4rem !important;
+    break-after: avoid !important;
+  }
+
+  /* 6. Trích dẫn chân trang */
+  a.ebm-link::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #64748b;
+  }
+}

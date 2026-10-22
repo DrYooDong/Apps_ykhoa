@@ -404,6 +404,116 @@
   background: var(--theme-gradient-bar);
 }
 
+/* ── 3.1. STATS STRIP THEME VARIANTS (Guideline, Review, MOH) ── */
+.stats-strip.theme-guideline {
+  --theme-accent: #0284c7;
+  --theme-gradient-bar: linear-gradient(90deg, #0284c7 0%, #0d9488 50%, #10b981 100%);
+  position: relative;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin: 1.25rem 0 2rem 0;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.06);
+  overflow: hidden;
+}
+
+.stats-strip.theme-guideline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--theme-gradient-bar);
+}
+
+.stats-strip.theme-review {
+  --theme-accent: #d97706;
+  --theme-gradient-bar: linear-gradient(90deg, #f59e0b 0%, #ea580c 50%, #e11d48 100%);
+  position: relative;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin: 1.25rem 0 2rem 0;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.06);
+  overflow: hidden;
+}
+
+.stats-strip.theme-review::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--theme-gradient-bar);
+}
+
+.stats-strip.theme-moh {
+  --theme-accent: #dc2626;
+  --theme-gradient-bar: linear-gradient(90deg, #dc2626 0%, #ea580c 50%, #f59e0b 100%);
+  position: relative;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin: 1.25rem 0 2rem 0;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.06);
+  overflow: hidden;
+}
+
+.stats-strip.theme-moh::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--theme-gradient-bar);
+}
+
+[data-theme="dark"] .stats-strip.theme-guideline,
+[data-theme="dark"] .stats-strip.theme-review,
+[data-theme="dark"] .stats-strip.theme-moh {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ── 3.2. HERO ENHANCEMENT & KEY RECS PILLS ── */
+.hero-key-recs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-rec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.hero-rec-pill:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
 /* ── 4. PICO BENTO GRID MATRIX ── */
 .pico-bento-grid {
   display: grid;

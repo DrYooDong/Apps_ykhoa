@@ -18,6 +18,8 @@
 10. [Thành Phần 9: Trích Dẫn Y Văn Chuẩn AMA & Liên Kết Chéo Hệ Sinh Thái](#thành-phần-9-trích-dẫn-y-văn-chuẩn-ama--liên-kết-chéo-hệ-sinh-thái)
 11. [Golden Template: File MDX Guideline Mẫu Chuẩn Toàn Diện](#11-golden-template-file-mdx-guideline-mẫu-chuẩn-toàn-diện)
 12. [Thành Phần Mở Rộng: Thiết Kế Tóm Tắt Nghiên Cứu & Landmark Trial (EBM Study Suite)](#12-thành-phần-mở-rộng-thiết-kế-tóm-tắt-nghiên-cứu--landmark-trial-ebm-study-suite)
+13. [Thành Phần 10: Khung Hình Ảnh Y Học & Lightbox Xuất Bản Chuẩn Nature/NEJM (.figure-card & .fig-card)](#13-thành-phần-10-khung-hình-ảnh-y-học--lightbox-xuất-bản-chuẩn-naturenejm)
+14. [Thành Phần 11: Biểu Đồ Rừng Trực Quan Hóa Thống Kê (Forest Plot SVG Component)](#14-thành-phần-11-biểu-đồ-rừng-trực-quan-hóa-thống-kê-forest-plot-svg-component)
 
 ---
 
@@ -864,3 +866,75 @@ Tổng kết giá trị ứng dụng lâm sàng của nghiên cứu (Practice-Ch
   </div>
 </div>
 ```
+
+---
+
+## 13. THÀNH PHẦN 10: KHUNG HÌNH ẢNH Y HỌC & LIGHTBOX XUẤT BẢN CHUẨN NATURE/NEJM
+
+Mọi hình ảnh y khoa, biểu đồ, sơ đồ và bảng chụp trong Kho Guidelines phải được bọc trong khung chuẩn để bảo đảm tính khoa học, khả năng zoom toàn màn hình và trích dẫn nguồn:
+
+### 13.1. Cấu Trúc Khung Chuẩn Mới (`.figure-card`)
+
+```html
+<div class="figure-card" id="fig-1">
+  <div class="figure-card-header">
+    <span class="figure-card-number">Fig 1</span>
+    <span class="figure-card-title">Sơ Đồ Quản Lý Trung Tâm & Phác Đồ Tứ Trụ FMT</span>
+  </div>
+  <div class="figure-card-body" data-lightbox="fig-1">
+    <img src="./images/2026-esc-hf-fig1-central-mgmt.png" 
+         alt="Fig 1: Central illustration for chronic heart failure management" 
+         loading="lazy" />
+  </div>
+  <div class="figure-card-caption">
+    <strong>Hình 1. Sơ đồ quản lý trung tâm suy tim mạn tính:</strong> Khởi trị đồng thời Tứ trụ FMT cho bệnh nhân LVEF &lt;50% và Nhị trụ cho LVEF ≥50%.
+    <div class="figure-card-source">
+      <i class="fa-solid fa-book-journal-whills"></i> Nguồn: ESC Heart Failure Guidelines 2026, <em>Eur Heart J</em>.
+    </div>
+  </div>
+</div>
+```
+
+### 13.2. Cấu Trúc Tương Thích Nhanh (`.fig-card`)
+
+Hệ thống hỗ trợ 100% cấu trúc ngắn gọn đã được áp dụng trong 45 bài viết hiện có:
+
+```html
+<div class="fig-card" id="tab-4">
+  <img class="fig-img" src="./images/2026-esc-hf-tab4-new-concepts.png" alt="Table 4: New concepts" loading="lazy" />
+  <div class="fig-caption">
+    <div class="fig-title">Table 4. Các khái niệm mới mang tính đột phá của Khuyến cáo ESC 2026</div>
+    So sánh các điểm thay đổi bản lề giữa phiên bản 2021 và 2026...
+  </div>
+</div>
+```
+
+### 13.3. Tính Năng Lightbox Tự Động
+- **Click vào ảnh / khung**: Mở giao diện xem toàn màn hình cao cấp với nền glassmorphism tối (`backdrop-filter: blur(20px)`).
+- **Phím tắt**: `ESC` để đóng, `←` và `→` chuyển qua lại giữa các hình trong bài, `+` và `-` để zoom, `0` để reset.
+- **Tương tác**: Kéo chuột để pan/drag khi đang phóng to, cuộn chuột để zoom, pinch-to-zoom và vuốt trên thiết bị di động.
+
+---
+
+## 14. THÀNH PHẦN 11: BIỂU ĐỒ RỪNG TRỰC QUAN HÓA THỐNG KÊ (FOREST PLOT SVG COMPONENT)
+
+Dành cho các bài báo nghiên cứu, thử nghiệm lâm sàng ngẫu nhiên (**Landmark RCTs**) và phân tích gộp (**Meta-Analyses**).
+
+### 14.1. Tự Động Sinh Từ Bảng Thử Nghiệm (`.trial-endpoints-table`)
+
+Chỉ cần khai báo bảng tiêu chí kết cục chuẩn `.trial-endpoints-table`, bộ máy `forest-plot-renderer.ts` sẽ tự động bóc tách các giá trị `HR (95% CI)` và `p-value` để sinh biểu đồ Forest Plot SVG chất lượng cao đặt ngay bên trên bảng.
+
+### 14.2. Khai Báo Widget Chủ Động (`.forest-plot-widget`)
+
+```html
+<div class="forest-plot-widget"
+     data-title="Biểu Đồ Rừng EMPA-REG OUTCOME: Các Tiêu Chí Kết Cục Tim Mạch & Sống Còn"
+     data-endpoints='[
+       {"name":"3-Point MACE (Tiêu chí chính)","category":"primary","hr":0.86,"ciLow":0.74,"ciHigh":0.99,"pValue":"p = 0.04","interventionEvents":"490/4687 (10.5%)","controlEvents":"282/2333 (12.1%)"},
+       {"name":"Tử vong do Tim mạch","category":"secondary","hr":0.62,"ciLow":0.49,"ciHigh":0.77,"pValue":"p < 0.001","interventionEvents":"172/4687 (3.7%)","controlEvents":"137/2333 (5.9%)"},
+       {"name":"Nhập viện do Suy tim (HHF)","category":"secondary","hr":0.65,"ciLow":0.50,"ciHigh":0.85,"pValue":"p = 0.002","interventionEvents":"126/4687 (2.7%)","controlEvents":"95/2333 (4.1%)"},
+       {"name":"Tử vong do mọi nguyên nhân","category":"secondary","hr":0.68,"ciLow":0.57,"ciHigh":0.82,"pValue":"p < 0.001","interventionEvents":"269/4687 (5.7%)","controlEvents":"194/2333 (8.3%)"}
+     ]'>
+</div>
+```
+

@@ -1,10 +1,33 @@
 import { defineConfig, Plugin } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';
+import { createRequire } from 'module';
+
+const req = createRequire(import.meta.url);
+
+function runMdxSync() {
+  try {
+    const { syncAllFromMdx } = req('./tools/sync_guidelines_db.js');
+    syncAllFromMdx({ silent: true });
+  } catch (e) {
+    console.warn('[Vite Auto-Sync] Warning:', e.message);
+  }
+}
 
 function rawMdxPlugin(): Plugin {
+  // Sync on plugin initialization
+  runMdxSync();
+
   return {
     name: 'raw-mdx-plugin',
+    buildStart() {
+      runMdxSync();
+    },
+    handleHotUpdate({ file }) {
+      if (file.includes('kho-guidelines') && file.endsWith('.mdx')) {
+        runMdxSync();
+      }
+    },
     transform(src, id) {
       if (id.split('?')[0].endsWith('.mdx')) {
         return {

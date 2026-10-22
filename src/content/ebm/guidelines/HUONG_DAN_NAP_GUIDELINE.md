@@ -7,41 +7,49 @@
 
 ## 🏛️ 1. TỔNG QUAN KIẾN TRÚC KHO LƯU TRỮ MỚI
 
-Trước đây, hệ thống hỗ trợ kết nối đám mây Supabase. Từ phiên bản CliniPortal 2.0, hệ thống đã được **chuyển đổi hoàn toàn sang kiến trúc Kho Lưu Trữ Tĩnh Cục Bộ (Local Static Registry)**:
+Hệ thống áp dụng kiến trúc **Single Source of Truth (Nguồn Chân Lý Duy Nhất) từ tệp MDX Native**:
 
 ```
 src/content/ebm/guidelines/
-├── kho-guidelines/                      # 📁 105+ bài tóm tắt nội dung chi tiết dạng Astro MDX Native
+├── kho-guidelines/                      # 📁 118+ bài tóm tắt nội dung & metadata (Single Source of Truth)
 │   ├── images/                          # Thư mục ảnh minh họa, figure, flowchart đã trích xuất
 │   │   ├── <slug>-fig1.png
 │   │   └── <slug>-fig2.png
 │   └── <slug>.mdx                       # Bài viết chuyên sâu (<year>-<org>-<topic>.mdx)
+│                                        # (Chứa trọn vẹn YAML Frontmatter + Nội dung bài học)
+│
+├── tools/
+│   └── sync_guidelines_db.js            # ⚡ Engine đồng bộ tự động từ MDX -> DB JSON & Registry TS
 │
 ├── js/
-│   ├── kho-guidelines-registry.ts       # 🏛️ KHO METADATA TĨNH TRUNG TÂM (KHO_GUIDELINES_STATIC: Study[])
-│   ├── guidelinesdata.ts                # ⚙️ Master Metadata (SAMPLE_STUDIES = KHO_GUIDELINES_STATIC, Chuyên khoa, ICD-10)
+│   ├── kho-guidelines-registry.ts       # 🏛️ KHO METADATA TĨNH (Tự động sinh từ kho-guidelines/*.mdx)
+│   ├── guidelinesdata.ts                # ⚙️ Master Metadata (SAMPLE_STUDIES = KHO_GUIDELINES_STATIC)
 │   ├── guideline-sync.ts                # 🔄 Engine nạp dữ liệu, chống trùng lặp & lưu trữ LocalStorage
 │   ├── guideline-table.ts               # 📋 Render bảng tra cứu, thẻ compact & bộ lọc
 │   └── guidelines.ts                    # 🚀 Controller khởi động trang Hub
 │
+├── data/
+│   └── guidelines-db.json               # 📦 CSDL JSON Snapshot (Tự động sinh từ kho-guidelines/*.mdx)
+│
 ├── guidelines.html                      # 🖥️ Giao diện trang Hub tra cứu độc lập (HTML Shell)
-├── guidelines-view.ts                   # 🌐 Giao diện SPA View (Hash Router CliniPortal: #/ebm/guidelines)
-└── guidelines-db.json                   # 📦 Bản sao lưu CSDL chuẩn JSON (Dùng xuất / nhập dữ liệu dự phòng)
+└── guidelines-view.ts                   # 🌐 Giao diện SPA View (Hash Router CliniPortal: #/ebm/guidelines)
 ```
 
-### 🎯 Luồng Dữ Liệu Tự Động (Data Flow)
+### 🎯 Luồng Dữ Liệu Tự Động (Single Source of Truth Data Flow)
 
-1. **Khởi chạy**: `guideline-sync.ts` thực thi hàm `loadStudies()`.
-2. **Nạp nguồn tĩnh**: Đọc toàn bộ danh sách tài liệu chuẩn từ `kho-guidelines-registry.ts` (`KHO_GUIDELINES_STATIC`) thông qua `guidelinesdata.ts` (`SAMPLE_STUDIES`).
-3. **Hợp nhất tùy biến**: Đọc thêm các bản ghi tùy biến người dùng tạo cục bộ trong `localStorage` (`cliniportal_custom_studies`).
-4. **Khử trùng lặp & Loại trừ**: Tự động loại bỏ các bản ghi trùng lặp và các bài mà người dùng đã bấm xóa trên máy (`cliniportal_deleted_study_ids`).
-5. **Hiển thị**: Lưu vào `window.studies` và cung cấp tức thời cho Bảng tra cứu, Bento Grid, CDSS và Multi-Compare Matrix.
+1. **Quản trị duy nhất tại tệp `.mdx`**: Bác sĩ hoặc AI Agent chỉ cần tạo/sửa **duy nhất 01 tệp `.mdx`** trong `kho-guidelines/<slug>.mdx`.
+2. **Tự động đồng bộ**: 
+   - Khi chạy Vite (`npm run dev`), hệ thống tự động theo dõi và đồng bộ tức thì.
+   - Hoặc chạy lệnh `npm run db:sync` (hoặc từ root: `npm run sync:guidelines`).
+   - Script `tools/sync_guidelines_db.js` sẽ tự động quét tất cả tệp `.mdx` và tạo mới hoàn toàn `guidelines-db.json` và `kho-guidelines-registry.ts`.
+3. **Hiển thị tức thì**: Dữ liệu chuẩn hóa xuất hiện ngay trên Bảng tra cứu, Bento Grid, CDSS và Multi-Compare Matrix mà không sợ lệch dữ liệu.
 
 ---
 
-## ⚡ 2. QUY TRÌNH 5 BƯỚC NẠP GUIDELINE / NGHIÊN CỨU MỚI
+## ⚡ 2. QUY TRÌNH NẠP / SỬA GUIDELINE MỚI (CHỈ CẦN 1 BƯỚC)
 
 Khi bạn có một tài liệu hướng dẫn lâm sàng mới (từ NotebookLM, Bộ Y tế, ESC, AHA, KDIGO, PubMed, tệp Markdown tóm tắt...):
+Bạn **chỉ cần thao tác trên duy nhất 01 tệp MDX**: `src/content/ebm/guidelines/kho-guidelines/<slug>.mdx`. Không cần sửa thủ công `guidelines-db.json` hay `kho-guidelines-registry.ts`.
 
 ```mermaid
 graph TD

@@ -12,6 +12,8 @@
 import { CliniPortalThemeManager } from './core/theme-manager';
 import { cliniMdxEngine } from './core/mdx-engine';
 import { hydrateFlowchartViewers } from './core/flowchart-viewer';
+import { hydrateFigureCards } from './core/figure-lightbox';
+import { hydrateForestPlots } from './core/forest-plot-renderer';
 import { sendClinicalIntent } from './core/clinical-intent';
 import { KHO_GUIDELINES_STATIC } from './kho-guidelines-registry';
 
@@ -549,6 +551,12 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     // Hydrate Flowchart Viewers & Diagram Containers
     hydrateFlowchartViewers(mountEl);
 
+    // Hydrate Interactive Nature/NEJM Figure Cards & Fullscreen Lightbox
+    hydrateFigureCards(mountEl);
+
+    // Hydrate Publication-Grade SVG Forest Plots
+    hydrateForestPlots(mountEl);
+
     // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors & ScrollSpy
     hydrateMdxInteractiveTools(mountEl);
     return;
@@ -850,6 +858,12 @@ function hydrateGuidelineScripts(doc: Document, mountEl: HTMLElement): void {
 
   // 6. Normalize Images & Attach Multi-Tier Fallback Cascade
   normalizeArticleImages(mountEl);
+
+  // 7. Hydrate Interactive Figure Cards & Fullscreen Lightbox
+  hydrateFigureCards(mountEl);
+
+  // 8. Hydrate Publication-Grade SVG Forest Plots
+  hydrateForestPlots(mountEl);
 }
 
 /**
@@ -1133,6 +1147,12 @@ function hydrateMdxInteractiveTools(mountEl: HTMLElement): void {
 
   // 0.1. Hydrate Interactive Clinical Flowcharts (Pan, Zoom, Fullscreen, Copy, Export)
   hydrateFlowchartViewers(mountEl);
+
+  // 0.2. Hydrate Interactive Figure Cards & Fullscreen Lightbox
+  hydrateFigureCards(mountEl);
+
+  // 0.3. Hydrate Publication-Grade SVG Forest Plots
+  hydrateForestPlots(mountEl);
 
   // 1. Replace un-rendered HTML entities like &rarr; in text nodes
   const walker = document.createTreeWalker(mountEl, NodeFilter.SHOW_TEXT);
