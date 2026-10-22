@@ -216,11 +216,7 @@ export function renderUpdates(): void {
     `;
   }).join('');
 
-  container.innerHTML = `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; width: 100%; padding: 0.75rem 1rem;">
-      ${html}
-    </div>
-  `;
+  container.innerHTML = html;
 }
 
 export function toggleRecentUpdatesSec(): void {
