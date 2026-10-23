@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-10-23 (119 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-10-23 (120 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 
@@ -3675,6 +3675,31 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "bookmarked": false,
     "sampleSize": 4553,
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504840/pdf/13017_2017_Article_141.pdf"
+  },
+  {
+    "id": "2014-byt-viem-gan-a",
+    "title": "Hướng Dẫn Chẩn Đoán và Điều Trị Bệnh Viêm Gan Vi Rút A",
+    "titleEn": "Ministry of Health Guidelines for Diagnosis and Treatment of Hepatitis A Virus Infection",
+    "drug": "BDD (Biphenyl Dimethyl Dicarboxylate), L-Ornithin L-Aspartat, Lactulose, Glutathione, Vitamin K, Chophytol, Sorbitol, Vắc xin HAV",
+    "sourceType": "vn-moh",
+    "specialty": "infect",
+    "design": "guideline",
+    "intervention": "Chăm sóc hỗ trợ, dinh dưỡng, điều trị triệu chứng bảo vệ tế bào gan (không có điều trị đặc hiệu); tiêm vắc xin phòng bệnh đặc hiệu",
+    "impact": "practice-changing",
+    "year": 2014,
+    "organization": "Bộ Y Tế Việt Nam",
+    "journal": "Quyết định số 5447/QĐ-BYT",
+    "population": "Tất cả các đối tượng nghi ngờ hoặc chẩn đoán mắc Viêm gan vi rút A, nhóm nguy cơ cao phơi nhiễm và cộng đồng",
+    "summary": "Hướng dẫn chẩn đoán, phân thể lâm sàng, điều trị hỗ trợ và phòng bệnh viêm gan vi rút A theo Quyết định 5447/QĐ-BYT năm 2014 của Bộ Y tế Việt Nam.",
+    "file": "2014-byt-viem-gan-a.mdx",
+    "conditionKey": "hepatitis-a",
+    "icd10": [
+      "B15",
+      "B15.0",
+      "B15.9"
+    ],
+    "asianData": false,
+    "bookmarked": false
   },
   {
     "id": "2014-idsa-ssti",
