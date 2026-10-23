@@ -71,6 +71,8 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 src/content/ebm/guidelines/
 ├── guidelines.html                       # Trang tra cứu Guidelines (Cấp 3)
 ├── guidelines.css                        # CSS cho trang tra cứu
+├── PROMPT_NOTEBOOKLM_MDX_GUIDELINE.md    # 📋 Master Prompt NotebookLM soạn bài .mdx chuẩn EBM
+├── Prompt_Notebook.md                    # Prompt NotebookLM trích xuất JSON Registry
 ├── js/
 │   ├── kho-guidelines-registry.ts        # Kho Metadata tĩnh tập trung (KHO_GUIDELINES_STATIC 105+ bài)
 │   ├── guidelinesdata.ts                 # Danh mục & nạp KHO_GUIDELINES_STATIC -> SAMPLE_STUDIES

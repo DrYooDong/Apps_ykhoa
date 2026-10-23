@@ -92,6 +92,7 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'ibd': { id: 'ibd', name: 'Viêm ruột (IBD) & Ruột kích thích (IBS)', icd10: ["K50", "K51", "K58"], color: '#7e22ce', bg: '#faf5ff', specialty: 'gi' },
   'ugib': { id: 'ugib', name: 'Xuất huyết tiêu hóa trên (UGIB)', icd10: ["I85.0", "K25.0", "K92.0", "K92.2"], color: '#b91c1c', bg: '#fff1f1', specialty: 'gi' },
   'gut-health': { id: 'gut-health', name: 'Sức khỏe đường ruột & Hệ vi sinh', icd10: ["K58.0", "K59.0", "K63.8"], color: '#16a34a', bg: '#f0fdf4', specialty: 'gi' },
+  'acute-gastroenteritis': { id: 'acute-gastroenteritis', name: 'Viêm dạ dày ruột cấp (AGE)', icd10: ["A09", "K52.9"], color: '#d97706', bg: '#fffbeb', specialty: 'gi' },
   'hepatitis-b': { id: 'hepatitis-b', name: 'Viêm gan B (HBV)', icd10: ["B16", "B18.0", "B18.1"], color: '#ca8a04', bg: '#fefce8', specialty: 'infect' },
   'hepatitis-c': { id: 'hepatitis-c', name: 'Viêm gan C (HCV)', icd10: ["B17.1", "B18.2"], color: '#16a34a', bg: '#f0fdf4', specialty: 'infect' },
   'flu': { id: 'flu', name: 'Cúm mùa & Vi rút hô hấp (Influenza / RSV)', icd10: ["J09", "J10", "J11", "J12"], color: '#2563eb', bg: '#eff6ff', specialty: 'infect' },

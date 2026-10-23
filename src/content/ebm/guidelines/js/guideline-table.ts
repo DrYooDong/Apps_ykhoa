@@ -50,6 +50,7 @@ export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
   'diphtheria': ["infect", "pedia"],
   'hiv-aids': ["infect"],
   'infectious-diarrhea': ["infect", "pedia", "gi"],
+  'acute-gastroenteritis': ["gi", "infect", "pedia"],
   'ams-resistance': ["infect", "icu", "pulmo"],
   'uti': ["renal", "infect"],
   'ssti': ["infect", "derma"],
