@@ -111,6 +111,8 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'infectious-diarrhea': { id: 'infectious-diarrhea', name: 'Tiêu chảy nhiễm trùng cấp', icd10: ["A04", "A08", "A09"], color: '#d97706', bg: '#fffbeb', specialty: 'infect' },
   'ams-resistance': { id: 'ams-resistance', name: 'Quản lý KS (AMS), Vi sinh & VK đa kháng', icd10: ["A49.02", "B95", "B96", "U82", "U83", "Y40", "Z16", "Z88.0"], color: '#047857', bg: '#f0fdf4', specialty: 'infect' },
   'uti': { id: 'uti', name: 'Nhiễm khuẩn tiết niệu (UTI)', icd10: ["N10", "N30", "N39.0"], color: '#1d4ed8', bg: '#eff6ff', specialty: 'infect' },
+  'gonorrhea': { id: 'gonorrhea', name: 'Bệnh lậu (Gonorrhea / STI)', icd10: ["A54", "A54.0", "A54.1", "A54.2", "A54.3", "A54.4", "A54.6", "A54.8"], color: '#0284c7', bg: '#f0f9ff', specialty: 'infect' },
+  'syphilis': { id: 'syphilis', name: 'Bệnh giang mai (Syphilis / STI)', icd10: ["A51", "A51.0", "A51.1", "A51.3", "A51.5", "A52", "A53", "A50"], color: '#0d9488', bg: '#f0fdfa', specialty: 'infect' },
   'ssti': { id: 'ssti', name: 'Nhiễm khuẩn da & mô mềm (SSTI / Viêm mô tế bào)', icd10: ["A46", "L02", "L03", "L08"], color: '#e11d48', bg: '#fff1f2', specialty: 'infect' },
   'iai': { id: 'iai', name: 'Nhiễm khuẩn ổ bụng & Áp xe (IAI)', icd10: ["K35", "K65", "K81", "K83"], color: '#059669', bg: '#ecfdf5', specialty: 'infect' },
   'icu': { id: 'icu', name: 'Nhiễm trùng Hồi sức, Sốc NK & Sepsis', icd10: ["A41", "A41.9", "R57.2", "R65.2"], color: '#059669', bg: '#ecfdf5', specialty: 'icu' },
