@@ -1683,15 +1683,15 @@ tr.summary-row td {
   transform: translateY(-1px);
 }
 
-.cor-class-1, .cor-1 { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
-.cor-class-2a, .cor-2a { background: #e0f2fe; color: #0369a1; border: 1.5px solid #7dd3fc; }
-.cor-class-2b, .cor-2b { background: #fef3c7; color: #b45309; border: 1.5px solid #fcd34d; }
-.cor-class-3, .cor-3 { background: #ffe4e6; color: #be123c; border: 1.5px solid #fda4af; }
+.cor-badge.cor-1, .cor-class-1, span.cor-1, :not(.rec-card):not(.ebm-rec-card).cor-1 { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+.cor-badge.cor-2a, .cor-class-2a, span.cor-2a, :not(.rec-card):not(.ebm-rec-card).cor-2a { background: #e0f2fe; color: #0369a1; border: 1.5px solid #7dd3fc; }
+.cor-badge.cor-2b, .cor-class-2b, span.cor-2b, :not(.rec-card):not(.ebm-rec-card).cor-2b { background: #fef3c7; color: #b45309; border: 1.5px solid #fcd34d; }
+.cor-badge.cor-3, .cor-class-3, span.cor-3, :not(.rec-card):not(.ebm-rec-card).cor-3 { background: #ffe4e6; color: #be123c; border: 1.5px solid #fda4af; }
 
-[data-theme="dark"] .cor-class-1, [data-theme="dark"] .cor-1 { background: rgba(22, 101, 52, 0.4); color: #4ade80; border-color: rgba(74, 222, 128, 0.4); }
-[data-theme="dark"] .cor-class-2a, [data-theme="dark"] .cor-2a { background: rgba(3, 105, 161, 0.4); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
-[data-theme="dark"] .cor-class-2b, [data-theme="dark"] .cor-2b { background: rgba(180, 83, 9, 0.4); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
-[data-theme="dark"] .cor-class-3, [data-theme="dark"] .cor-3 { background: rgba(190, 18, 60, 0.4); color: #fb7185; border-color: rgba(251, 113, 133, 0.4); }
+[data-theme="dark"] .cor-badge.cor-1, [data-theme="dark"] .cor-class-1, [data-theme="dark"] span.cor-1, [data-theme="dark"] :not(.rec-card):not(.ebm-rec-card).cor-1 { background: rgba(22, 101, 52, 0.4); color: #4ade80; border-color: rgba(74, 222, 128, 0.4); }
+[data-theme="dark"] .cor-badge.cor-2a, [data-theme="dark"] .cor-class-2a, [data-theme="dark"] span.cor-2a, [data-theme="dark"] :not(.rec-card):not(.ebm-rec-card).cor-2a { background: rgba(3, 105, 161, 0.4); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+[data-theme="dark"] .cor-badge.cor-2b, [data-theme="dark"] .cor-class-2b, [data-theme="dark"] span.cor-2b, [data-theme="dark"] :not(.rec-card):not(.ebm-rec-card).cor-2b { background: rgba(180, 83, 9, 0.4); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+[data-theme="dark"] .cor-badge.cor-3, [data-theme="dark"] .cor-class-3, [data-theme="dark"] span.cor-3, [data-theme="dark"] :not(.rec-card):not(.ebm-rec-card).cor-3 { background: rgba(190, 18, 60, 0.4); color: #fb7185; border-color: rgba(251, 113, 133, 0.4); }
 
 .loe-grade-a { background: rgba(16, 185, 129, 0.15); color: #047857; border: 1.5px solid rgba(16, 185, 129, 0.35); }
 .loe-grade-b { background: rgba(59, 130, 246, 0.15); color: #1d4ed8; border: 1.5px solid rgba(59, 130, 246, 0.35); }
@@ -1701,36 +1701,422 @@ tr.summary-row td {
 [data-theme="dark"] .loe-grade-b { background: rgba(59, 130, 246, 0.25); color: #60a5fa; border-color: rgba(96, 165, 250, 0.4); }
 [data-theme="dark"] .loe-grade-c { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
 
+.rec-card,
 .ebm-rec-card {
-  background: var(--color-surface, #ffffff);
+  position: relative;
+  background: var(--color-surface, #ffffff) !important;
   border: 1px solid var(--color-border, #cbd5e1);
   border-left: 5px solid var(--color-primary, #0284c7);
   border-radius: 14px;
-  padding: 1.15rem 1.45rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  padding: 0;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.rec-card:hover,
 .ebm-rec-card:hover {
-  transform: translateX(4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.ebm-rec-card.class-1 { border-left-color: #059669; background: linear-gradient(90deg, rgba(5, 150, 105, 0.04) 0%, transparent 100%); }
-.ebm-rec-card.class-2a { border-left-color: #0284c7; background: linear-gradient(90deg, rgba(2, 132, 199, 0.04) 0%, transparent 100%); }
-.ebm-rec-card.class-2b { border-left-color: #d97706; background: linear-gradient(90deg, rgba(217, 119, 6, 0.04) 0%, transparent 100%); }
-.ebm-rec-card.class-3 { border-left-color: #dc2626; background: linear-gradient(90deg, rgba(220, 38, 38, 0.04) 0%, transparent 100%); }
+.rec-card.cor-1, .rec-card.class-1, .ebm-rec-card.cor-1, .ebm-rec-card.class-1 { border-left-color: #059669; border-color: rgba(16, 185, 129, 0.32); }
+.rec-card.cor-2a, .rec-card.class-2a, .ebm-rec-card.cor-2a, .ebm-rec-card.class-2a { border-left-color: #0284c7; border-color: rgba(2, 132, 199, 0.32); }
+.rec-card.cor-2b, .rec-card.class-2b, .ebm-rec-card.cor-2b, .ebm-rec-card.class-2b { border-left-color: #d97706; border-color: rgba(245, 158, 11, 0.32); }
+.rec-card.cor-3, .rec-card.class-3, .ebm-rec-card.cor-3, .ebm-rec-card.class-3 { border-left-color: #dc2626; border-color: rgba(239, 68, 68, 0.38); }
 
+[data-theme="dark"] .rec-card,
 [data-theme="dark"] .ebm-rec-card {
-  background: var(--color-surface, #1e293b);
+  background: var(--color-surface, #1e293b) !important;
   border-color: var(--color-border, #334155);
 }
 
-[data-theme="dark"] .ebm-rec-card.class-1 { border-left-color: #10b981; background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 0%, transparent 100%); }
-[data-theme="dark"] .ebm-rec-card.class-2a { border-left-color: #38bdf8; background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, transparent 100%); }
-[data-theme="dark"] .ebm-rec-card.class-2b { border-left-color: #f59e0b; background: linear-gradient(90deg, rgba(245, 158, 11, 0.08) 0%, transparent 100%); }
-[data-theme="dark"] .ebm-rec-card.class-3 { border-left-color: #f43f5e; background: linear-gradient(90deg, rgba(244, 63, 94, 0.08) 0%, transparent 100%); }
+[data-theme="dark"] .rec-card.cor-1, [data-theme="dark"] .rec-card.class-1, [data-theme="dark"] .ebm-rec-card.cor-1, [data-theme="dark"] .ebm-rec-card.class-1 { border-left-color: #10b981; border-color: rgba(16, 185, 129, 0.35); }
+[data-theme="dark"] .rec-card.cor-2a, [data-theme="dark"] .rec-card.class-2a, [data-theme="dark"] .ebm-rec-card.cor-2a, [data-theme="dark"] .ebm-rec-card.class-2a { border-left-color: #38bdf8; border-color: rgba(56, 189, 248, 0.35); }
+[data-theme="dark"] .rec-card.cor-2b, [data-theme="dark"] .rec-card.class-2b, [data-theme="dark"] .ebm-rec-card.cor-2b, [data-theme="dark"] .ebm-rec-card.class-2b { border-left-color: #fbbf24; border-color: rgba(251, 191, 36, 0.35); }
+[data-theme="dark"] .rec-card.cor-3, [data-theme="dark"] .rec-card.class-3, [data-theme="dark"] .ebm-rec-card.cor-3, [data-theme="dark"] .ebm-rec-card.class-3 { border-left-color: #f87171; border-color: rgba(248, 113, 113, 0.4); }
+
+/* --- HEADER CỦA KHUNG KHUYẾN CÁO --- */
+.rec-header,
+.ebm-rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.rec-card.cor-1 .rec-header,
+.rec-card.class-1 .rec-header,
+.ebm-rec-card.cor-1 .ebm-rec-header,
+.ebm-rec-card.class-1 .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border-bottom-color: rgba(16, 185, 129, 0.22);
+}
+
+.rec-card.cor-2a .rec-header,
+.rec-card.class-2a .rec-header,
+.ebm-rec-card.cor-2a .ebm-rec-header,
+.ebm-rec-card.class-2a .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.12) 0%, rgba(2, 132, 199, 0.02) 100%);
+  border-bottom-color: rgba(2, 132, 199, 0.22);
+}
+
+.rec-card.cor-2b .rec-header,
+.rec-card.class-2b .rec-header,
+.ebm-rec-card.cor-2b .ebm-rec-header,
+.ebm-rec-card.class-2b .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0.02) 100%);
+  border-bottom-color: rgba(245, 158, 11, 0.22);
+}
+
+.rec-card.cor-3 .rec-header,
+.rec-card.class-3 .rec-header,
+.ebm-rec-card.cor-3 .ebm-rec-header,
+.ebm-rec-card.class-3 .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.14) 0%, rgba(239, 68, 68, 0.03) 100%);
+  border-bottom-color: rgba(239, 68, 68, 0.26);
+}
+
+/* --- BADGES COR (Class of Recommendation) --- */
+.badge-cor-1,
+.badge-cor-2a,
+.badge-cor-2b,
+.badge-cor-3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.badge-cor-1:hover,
+.badge-cor-2a:hover,
+.badge-cor-2b:hover,
+.badge-cor-3:hover {
+  transform: translateY(-1px);
+}
+
+.badge-cor-1 {
+  background: #059669 !important;
+  color: #ffffff !important;
+  border: 1px solid #047857;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+}
+.badge-cor-1 i {
+  color: #ffffff !important;
+}
+
+.badge-cor-2a {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border: 1px solid #0369a1;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+.badge-cor-2a i {
+  color: #ffffff !important;
+}
+
+.badge-cor-2b {
+  background: #d97706 !important;
+  color: #ffffff !important;
+  border: 1px solid #b45309;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);
+}
+.badge-cor-2b i {
+  color: #ffffff !important;
+}
+
+.badge-cor-3 {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border: 1px solid #b91c1c;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);
+}
+.badge-cor-3 i {
+  color: #ffffff !important;
+}
+
+/* --- BADGES LOE (Level of Evidence) --- */
+.badge-loe-a,
+.badge-loe-b,
+.badge-loe-c,
+.badge-loe-d {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.26rem 0.72rem;
+  border-radius: 9999px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  transition: transform 0.15s ease;
+}
+
+.badge-loe-a:hover,
+.badge-loe-b:hover,
+.badge-loe-c:hover,
+.badge-loe-d:hover {
+  transform: translateY(-1px);
+}
+
+.badge-loe-a {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.badge-loe-a i {
+  color: #059669 !important;
+}
+
+.badge-loe-b {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8 !important;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+.badge-loe-b i {
+  color: #2563eb !important;
+}
+
+.badge-loe-c {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309 !important;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.badge-loe-c i {
+  color: #d97706 !important;
+}
+
+.badge-loe-d {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569 !important;
+  border: 1px solid rgba(100, 116, 139, 0.35);
+}
+.badge-loe-d i {
+  color: #64748b !important;
+}
+
+/* --- BODY CỦA KHUNG KHUYẾN CÁO --- */
+.rec-body,
+.ebm-rec-body {
+  padding: 1.15rem 1.45rem;
+  background: var(--color-surface, #ffffff) !important;
+  color: var(--color-text, #1e293b) !important;
+  font-size: 0.94rem;
+  line-height: 1.68;
+  font-family: var(--font-body, 'Be Vietnam Pro', sans-serif);
+}
+
+.rec-body strong,
+.ebm-rec-body strong {
+  color: var(--color-text, #0f172a) !important;
+  font-weight: 700;
+}
+
+.rec-body ul,
+.rec-body ol,
+.ebm-rec-body ul,
+.ebm-rec-body ol {
+  margin: 0.5rem 0 0.25rem 1.25rem;
+  padding: 0;
+}
+
+.rec-body li,
+.ebm-rec-body li {
+  margin-bottom: 0.45rem;
+  line-height: 1.65;
+  color: var(--color-text, #334155);
+}
+
+.rec-body li:last-child,
+.ebm-rec-body li:last-child {
+  margin-bottom: 0;
+}
+
+/* Nhấn mạnh cảnh báo cấm chỉ định trong Class III (Harm) */
+.rec-card.cor-3 .rec-body > strong:first-child,
+.rec-card.class-3 .rec-body > strong:first-child,
+.ebm-rec-card.class-3 .ebm-rec-body > strong:first-child {
+  color: #dc2626 !important;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.01em;
+}
+
+/* --- 100% DARK MODE (data-theme="dark") --- */
+[data-theme="dark"] .rec-header,
+[data-theme="dark"] .ebm-rec-header {
+  background: rgba(15, 23, 42, 0.65);
+  border-bottom-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .rec-card.cor-1 .rec-header,
+[data-theme="dark"] .rec-card.class-1 .rec-header,
+[data-theme="dark"] .ebm-rec-card.cor-1 .ebm-rec-header,
+[data-theme="dark"] .ebm-rec-card.class-1 .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.04) 100%);
+  border-bottom-color: rgba(16, 185, 129, 0.28);
+}
+
+[data-theme="dark"] .rec-card.cor-2a .rec-header,
+[data-theme="dark"] .rec-card.class-2a .rec-header,
+[data-theme="dark"] .ebm-rec-card.cor-2a .ebm-rec-header,
+[data-theme="dark"] .ebm-rec-card.class-2a .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.18) 0%, rgba(2, 132, 199, 0.04) 100%);
+  border-bottom-color: rgba(56, 189, 248, 0.28);
+}
+
+[data-theme="dark"] .rec-card.cor-2b .rec-header,
+[data-theme="dark"] .rec-card.class-2b .rec-header,
+[data-theme="dark"] .ebm-rec-card.cor-2b .ebm-rec-header,
+[data-theme="dark"] .ebm-rec-card.class-2b .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.04) 100%);
+  border-bottom-color: rgba(251, 191, 36, 0.28);
+}
+
+[data-theme="dark"] .rec-card.cor-3 .rec-header,
+[data-theme="dark"] .rec-card.class-3 .rec-header,
+[data-theme="dark"] .ebm-rec-card.cor-3 .ebm-rec-header,
+[data-theme="dark"] .ebm-rec-card.class-3 .ebm-rec-header {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.22) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border-bottom-color: rgba(248, 113, 113, 0.32);
+}
+
+/* Dark mode COR Badges */
+[data-theme="dark"] .badge-cor-1 {
+  background: #10b981 !important;
+  color: #022c22 !important;
+  border-color: #34d399;
+}
+[data-theme="dark"] .badge-cor-1 i {
+  color: #022c22 !important;
+}
+
+[data-theme="dark"] .badge-cor-2a {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #38bdf8;
+}
+
+[data-theme="dark"] .badge-cor-2b {
+  background: #d97706 !important;
+  color: #ffffff !important;
+  border-color: #fbbf24;
+}
+
+[data-theme="dark"] .badge-cor-3 {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #f87171;
+}
+
+/* Dark mode LOE Badges */
+[data-theme="dark"] .badge-loe-a {
+  background: rgba(16, 185, 129, 0.22);
+  color: #6ee7b7 !important;
+  border-color: rgba(110, 231, 183, 0.35);
+}
+[data-theme="dark"] .badge-loe-a i {
+  color: #6ee7b7 !important;
+}
+
+[data-theme="dark"] .badge-loe-b {
+  background: rgba(59, 130, 246, 0.22);
+  color: #93c5fd !important;
+  border-color: rgba(147, 197, 253, 0.35);
+}
+[data-theme="dark"] .badge-loe-b i {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .badge-loe-c {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fde047 !important;
+  border-color: rgba(253, 224, 71, 0.35);
+}
+[data-theme="dark"] .badge-loe-c i {
+  color: #fde047 !important;
+}
+
+[data-theme="dark"] .badge-loe-d {
+  background: rgba(100, 116, 139, 0.25);
+  color: #cbd5e1 !important;
+  border-color: rgba(203, 213, 225, 0.35);
+}
+[data-theme="dark"] .badge-loe-d i {
+  color: #cbd5e1 !important;
+}
+
+/* Dark mode Body */
+[data-theme="dark"] .rec-body,
+[data-theme="dark"] .ebm-rec-body {
+  background: var(--color-surface, #1e293b) !important;
+  color: var(--color-text, #e2e8f0) !important;
+}
+
+[data-theme="dark"] .rec-body strong,
+[data-theme="dark"] .ebm-rec-body strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .rec-body li,
+[data-theme="dark"] .ebm-rec-body li {
+  color: var(--color-text, #cbd5e1);
+}
+
+[data-theme="dark"] .rec-card.cor-3 .rec-body > strong:first-child,
+[data-theme="dark"] .rec-card.class-3 .rec-body > strong:first-child,
+[data-theme="dark"] .ebm-rec-card.class-3 .ebm-rec-body > strong:first-child {
+  color: #fca5a5 !important;
+}
+
+/* --- MOBILE RESPONSIVE OPTIMIZATION --- */
+@media (max-width: 640px) {
+  .rec-header,
+  .ebm-rec-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+  }
+  
+  .rec-body,
+  .ebm-rec-body {
+    padding: 1rem 1.15rem;
+    font-size: 0.9rem;
+  }
+
+  .badge-cor-1,
+  .badge-cor-2a,
+  .badge-cor-2b,
+  .badge-cor-3 {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.7rem;
+  }
+
+  .badge-loe-a,
+  .badge-loe-b,
+  .badge-loe-c,
+  .badge-loe-d {
+    font-size: 0.7rem;
+    padding: 0.22rem 0.6rem;
+  }
+}
 
 /* --- FIGURES & CITATION --- */
 .fig-card {
