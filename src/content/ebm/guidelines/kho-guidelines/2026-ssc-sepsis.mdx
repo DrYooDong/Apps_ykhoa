@@ -1,7 +1,7 @@
 ---
 id: "2026-ssc-sepsis"
 slug: "2026-ssc-sepsis"
-title: "Surviving Sepsis Campaign (SSC) 2026: Hướng dẫn Quốc tế Xử trí Nhiễm khuẩn huyết & Sốc nhiễm khuẩn"
+title: "Surviving Sepsis Campaign (SSC) 2026: Hướng Dẫn Quốc Tế Xử Trí Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn"
 titleEn: "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026"
 code: "GDL-2026-SSC-SEPSIS"
 organization: "SCCM / ESICM (Surviving Sepsis Campaign)"
@@ -16,771 +16,1787 @@ cor: "I"
 loe: "A"
 category: "guidelines"
 status: "published"
-version: "2.0.0"
-updatedAt: "2026-08-28"
+version: "3.0.0"
+updatedAt: "2026-10-24"
 conditionKey: "icu"
-icd10: ["A41","R65.2","R57.2"]
-drug: "Norepinephrine, Epinephrine, Dobutamine, Albumin, Corticosteroids (Hydrocortisone), Piperacillin-tazobactam, Carbapenems, Methylene blue, Midodrine, Sodium bicarbonate, Vitamin D"
-population: "Bệnh nhân trưởng thành (≥18 tuổi) bị nhiễm trùng huyết hoặc sốc nhiễm trùng."
-intervention: "Gói 1 giờ (Hour-1 Bundle): Đo Lactate, cấy máu trước KS, KS phổ rộng trong 1h đầu, truyền dịch tinh thể 30ml/kg trong 3h, Norepinephrine vận mạch duy trì MAP ≥ 65 mmHg"
-primaryEndpoint: "Giảm tỷ lệ tử vong nội viện 28 ngày và suy đa tạng"
-summary: "Cập nhật tiêu chuẩn Sepsis-3, cá thể hóa truyền dịch bằng các chỉ số động đáp ứng bù dịch (PLR, PPV, siêu âm Vena Cava), kiểm soát ổ nhiễm (Source control)."
-detailedConclusion: "Bắt đầu kháng sinh phổ rộng ngay trong giờ đầu tiên. Bù dịch có kiểm soát và dùng Norepinephrine sớm qua catheter ngoại vi an toàn nếu chưa có CVC."
+icd10: ["A41.9","R65.2","R57.2","A41.0","A41.1","A41.2","A41.5","J96.0"]
+drug: "Norepinephrine, Vasopressin, Epinephrine, Dobutamine, Albumin, Hydrocortisone, Fludrocortisone, Piperacillin-tazobactam, Cefepime, Meropenem, Vancomycin, Daptomycin, Sodium bicarbonate, LMWH, Ringer lactate, Plasma-Lyte, Methylene blue"
+population: "Bệnh nhân người lớn (≥ 18 tuổi) bị nhiễm khuẩn huyết (sepsis) hoặc sốc nhiễm khuẩn (septic shock) tại khoa Cấp cứu, ICU và các khoa lâm sàng nội viện."
+intervention: "Sàng lọc bằng NEWS/SIRS thay vì qSOFA đơn độc; cấy máu trước KS; gói 1 giờ dùng KS phổ rộng; truyền tối thiểu 30 mL/kg dịch tinh thể cân bằng trong 3h đầu (hiệu chỉnh theo Devine IBW nếu BMI > 30 kg/m²); Norepinephrine là vận mạch hàng đầu với đích MAP ≥ 65 mmHg (hạ đích 60 - 65 mmHg ở người ≥ 65 tuổi theo 65 Trial); vận mạch ngoại vi sớm; truyền liên tục Beta-lactam (BLING III); thông khí VT 6 mL/kg PBW và nằm sấp ≥ 16h trong ARDS; Hydrocortisone ≤ 200 - 300 mg/ngày trong sốc trơ; de-resuscitation rút dịch tích cực sau hồi sức; Sodium bicarbonate trong toan nặng pH ≤ 7.20 kèm AKI 2-3 (BICAR-ICU); chiến lược truyền máu hạn chế Hb < 7.0 g/dL."
+primaryEndpoint: "Giảm tỷ lệ tử vong 28 ngày, rút ngắn thời gian thở máy và nằm hồi sức tích cực (ICU LOS), ngăn ngừa quá tải dịch và suy đa tạng, tối ưu hóa phục hồi chức năng thể chất và nhận thức sau xuất viện."
+keyResults: "Truyền liên tục Beta-lactam nâng cao tỷ lệ khỏi lâm sàng và giảm tử vong (BLING III) | Hạ đích MAP 60-65 mmHg ở người ≥ 65 tuổi không làm tăng biến cố bất lợi và giảm nhu cầu vận mạch (65 Trial) | Rút ngắn thời gian KS còn 7 ngày an toàn tương đương 14 ngày (BALANCE) | Sodium bicarbonate giảm tử vong và nhu cầu lọc máu ở toan nặng kèm AKI (BICAR-ICU) | Awake proning cải thiện oxy hóa và giảm tỷ lệ đặt nội khí quản ở bệnh nhân thở HFNC."
+summary: "Hướng dẫn thực hành lâm sàng quốc tế toàn diện của Surviving Sepsis Campaign (SSC 2026) công bố trên tạp chí Critical Care Medicine: Rà soát và cập nhật hệ thống sau 5 năm gồm 128 khuyến cáo GRADE chính thức (53 New, 39 Revisited, 47 Carryover). Nổi bật với gói 1 giờ sửa đổi, truyền liên tục Beta-lactam (BLING III), hạ áp chấp nhận được ở người cao tuổi (60-65 mmHg), khởi đầu vận mạch ngoại vi, chiến lược bù dịch cân bằng có kiểm soát (CLOVERS, CLASSIC), hạn chế kháng kỵ khí thường quy, nằm sấp khi tỉnh (Awake proning), tháo dịch chủ động (De-resuscitation), và bộ tiêu chuẩn chăm sóc chuyển tiếp - phục hồi chức năng hậu Sepsis (PICS)."
+detailedConclusion: "Bác sĩ lâm sàng khởi động ngay gói hồi sức và kháng sinh trong vòng 1 giờ đầu cho sốc nhiễm khuẩn và sepsis chắc chắn/có khả năng. Sử dụng dịch tinh thể cân bằng với liều tối thiểu 30 mL/kg trong 3 giờ đầu (dùng cân nặng lý tưởng nếu béo phì). Khởi đầu Norepinephrine sớm qua đường tĩnh mạch ngoại vi nếu chưa có catheter trung tâm. Cá thể hóa đích MAP (60-65 mmHg ở người ≥ 65 tuổi). Ưu tiên truyền kéo dài/liên tục Beta-lactam và đo TDM trong ICU. Thực hiện cai dịch chủ động (de-resuscitation) ngay khi qua giai đoạn sốc cấp. Tích hợp đánh giá toàn diện di chứng PICS và đối chiếu thuốc bởi dược sĩ lâm sàng trước khi xuất viện."
 asianData: true
 subgroups:
-  "Hồi sức tuần hoàn và thuốc vận mạch": "Đích MAP khởi đầu: 65 mmHg (Khuyến cáo mạnh) | Đích MAP ở người ≥65 tuổi: 60-65 mmHg (Khuyến cáo có điều kiện) | Vận mạch ngoại vi: Bắt đầu sớm để tránh trì hoãn (Khuyến cáo có điều kiện)"
-  "Liệu pháp kháng sinh & Kháng kỵ khí": "COL: Không có nguy cơ nhiễm trùng kỵ khí: Tránh dùng kháng kỵ khí thường quy (Khuyến cáo có điều kiện) | Có nguy cơ kỵ khí (ổ bụng, sâu phụ khoa, mô mềm hoại tử): Bắt buộc phối hợp kháng kỵ khí (Khuyến cáo có điều kiện)"
-  "Hỗ trợ hô hấp ở bệnh nhân suy hô hấp cấp": "HBAR: Đích SpO2 dao động gợi ý (In our practice): 90% - 96% | HFNC ưu tiên hơn oxy thông thường hoặc NIPPV (PaO2/FiO2 < 200) (Khuyến cáo có điều kiện) | Thử nghiệm nằm sấp tỉnh táo (Awake proning) cho bệnh nhân chưa nội khí quản: Gợi ý áp dụng (Khuyến cáo có điều kiện)"
+  "Hồi sức tuần hoàn và thuốc vận mạch": "Đích MAP khởi đầu: 65 mmHg (Khuyến cáo mạnh) | Đích MAP ở người ≥ 65 tuổi: 60-65 mmHg (Khuyến cáo có điều kiện theo 65 Trial) | Vận mạch ngoại vi: Bắt đầu sớm để tránh trì hoãn (Khuyến cáo có điều kiện)"
+  "Liệu pháp kháng sinh & Kháng kỵ khí": "Không có nguy cơ nhiễm trùng kỵ khí: Tránh dùng kháng kỵ khí thường quy (Khuyến cáo có điều kiện) | Có nguy cơ kỵ khí (ổ bụng, vùng chậu sâu, mô mềm hoại tử): Bắt buộc phối hợp kháng kỵ khí (Khuyến cáo có điều kiện)"
+  "Hỗ trợ hô hấp ở bệnh nhân suy hô hấp cấp": "Đích SpO2 gợi ý: 90% - 96% | HFNC ưu tiên hơn oxy thông thường hoặc NIPPV (PaO2/FiO2 < 200) (Khuyến cáo có điều kiện) | Thử nghiệm nằm sấp khi tỉnh (Awake proning) cho bệnh nhân chưa đặt nội khí quản: Gợi ý áp dụng (Khuyến cáo có điều kiện)"
 fdaStatus: "N/A"
-sourceUrl: "https://drive.google.com/file/d/1L_JENmD8bHufLZSVI18VRWGM39fxR_zf/view"
+sourceUrl: "https://journals.lww.com/ccmjournal/fulltext/2026/04000/surviving_sepsis_campaign__international.1.aspx"
 file: "2026-ssc-sepsis.mdx"
-description: "Tóm tắt Hướng dẫn Lâm sàng Quốc tế Surviving Sepsis Campaign (SSC 2026): Sàng lọc NEWS/SIRS, cấy máu, nồng độ lactate, hồi sức dịch tinh thể cân bằng, khởi đầu sớm Norepinephrine, kháng sinh theo khung thời gian 1h/3h, truyền kéo dài Beta-lactam, thông khí an toàn ARDS và liệu pháp bổ sung."
-tags: ["Surviving Sepsis Campaign","2026","Khuyến cáo lâm sàng","Evidence-Based Medicine"]
-keyRecommendations: ["Sử dụng NEWS/SIRS thay vì qSOFA đơn độc; cấy máu & đo lactate sớm; bù dịch 30 mL/kg dịch tinh thể trong 3h đầu.","Kháng sinh trong 1h nếu có sốc; truyền kéo dài Beta-lactam (BLING III); kiểm soát nguồn nhiễm trùng trong 6h.","Norepinephrine là vận mạch hàng đầu (đích MAP ≥65 mmHg; 60–65 mmHg ở người ≥65 tuổi); dịch tinh thể cân bằng (Ringer's lactate).","HFNC ưu tiên hơn NIPPV; Awake proning; thông khí VT 6 mL/kg IBW & Pplat ≤30 cmH₂O trong ARDS."]
+description: "Tóm tắt toàn diện Hướng dẫn Thực hành Lâm sàng Quốc tế Surviving Sepsis Campaign (SSC 2026): 128 khuyến cáo GRADE chính thức, gói 1 giờ sửa đổi, truyền liên tục Beta-lactam (BLING III), đích MAP 60-65 mmHg ở người cao tuổi, vận mạch ngoại vi, bù dịch cân bằng, Awake proning, De-resuscitation rút dịch chủ động, và phục hồi chức năng hậu ICU."
+tags: ["SSC","2026","Sepsis","Nhiễm khuẩn huyết","Septic Shock","Sốc nhiễm khuẩn","BLING III","CLOVERS","Norepinephrine","Hydrocortisone","ARDS","PICS","Evidence-Based Medicine"]
+keyRecommendations:
+  - "Sàng lọc nhiễm khuẩn huyết nội viện bằng NEWS, NEWS2, MEWS hoặc SIRS: Khuyến nghị thay thế hoàn toàn thang điểm qSOFA đơn độc để đạt độ nhạy tối ưu (Class 1, Level B)."
+  - "Gói thời gian vàng kháng sinh phân tầng 4 nhóm (Figure 2): Dùng kháng sinh ngay lập tức trong vòng 1 giờ cho mọi ca sốc nhiễm khuẩn và sepsis chắc chắn/có khả năng; đánh giá nhanh < 3 giờ cho ca nghi ngờ không sốc; và trì hoãn kháng sinh ở ca nguy cơ nhiễm trùng thấp (Class 1 & Class 2)."
+  - "Đột phá truyền kéo dài/liên tục Beta-lactam (BLING III Trial): Khuyến nghị truyền kéo dài hoặc truyền liên tục Piperacillin/Tazobactam, Cefepime, Meropenem sau liều nạp ban đầu giúp tối ưu hóa PK/PD và cải thiện sống còn (Class 1, Level A)."
+  - "Hồi sức dịch và đích huyết áp cá thể hóa: Truyền tối thiểu 30 mL/kg dịch tinh thể cân bằng trong 3 giờ đầu (hiệu chỉnh theo Devine IBW nếu BMI > 30 kg/m²); khởi đầu Norepinephrine sớm qua tĩnh mạch ngoại vi; nhắm đích MAP 65 mmHg ở người trẻ và 60 - 65 mmHg ở người ≥ 65 tuổi (Class 1 & Class 2)."
+  - "Rút dịch chủ động (De-resuscitation) sau giai đoạn hồi sức cấp: Gợi ý áp dụng chiến lược tháo dịch tích cực bằng lợi tiểu hoặc lọc máu siêu lọc khi huyết động ổn định nhằm chống quá tải tuần hoàn (Class 2, Level B)."
+  - "Quản lý toan chuyển hóa nặng và suy thận cấp (BICAR-ICU Trial): Gợi ý truyền Natri Bicarbonate ở bệnh nhân toan chuyển hóa nặng (pH ≤ 7.20) có kèm suy thận cấp AKI giai đoạn 2 - 3 để giảm nhu cầu lọc máu và giảm tử vong (Class 2, Level B)."
 sections:
   - id: "sec-1"
     number: 1
-    title: "Sàng Lọc & Hồi Sức Ban Đầu"
-    icon: "fa-solid fa-heart-pulse"
+    title: "Sàng Lọc, Chẩn Đoán Ban Đầu & Bảng Master 128 Khuyến Cáo SSC 2026"
+    icon: "fa-solid fa-sitemap"
   - id: "sec-2"
     number: 2
-    title: "Kháng Sinh & Khung Thời Gian"
-    icon: "fa-solid fa-pills"
+    title: "Kiểm Soát Nhiễm Trùng, Khung Thời Gian Kháng Sinh & Đột Phá BLING III"
+    icon: "fa-solid fa-bacteria"
   - id: "sec-3"
     number: 3
-    title: "Huyết Động & Thuốc Vận Mạch"
+    title: "Quản Lý Huyết Động, Thuốc Vận Mạch Phân Tầng & Đích MAP Người Cao Tuổi"
     icon: "fa-solid fa-syringe"
   - id: "sec-4"
     number: 4
-    title: "Hỗ Trợ Hô Hấp & ARDS"
-    icon: "fa-solid fa-heart-pulse"
+    title: "Hỗ Trợ Hô Hấp, Thở Máy Bảo Vệ Phổi Trong ARDS & Awake Proning"
+    icon: "fa-solid fa-lungs"
   - id: "sec-5"
     number: 5
-    title: "Liệu Pháp Bổ Sung & Hỗ Trợ"
-    icon: "fa-solid fa-triangle-exclamation"
+    title: "Liệu Pháp Bổ Sung, Rút Dịch De-Resuscitation, Bicarbonate & Chế Phẩm Máu"
+    icon: "fa-solid fa-shield-halved"
   - id: "sec-6"
     number: 6
-    title: "Chuyển Tiếp & Phục Hồi"
-    icon: "fa-solid fa-book-bookmark"
+    title: "Mục Tiêu Chăm Sóc, Chuyển Tiếp Điều Trị, Đối Chiếu Thuốc & Hậu Sepsis (PICS)"
+    icon: "fa-solid fa-user-doctor"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo Chuẩn AMA & Bảng Viết Tắt Y Khoa"
+    icon: "fa-solid fa-book-medical"
 ---
+
 <div class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val green">Sàng Lọc & Hồi Sức Ban Đầu</div>
-      <div class="stat-lbl">Sử dụng NEWS/SIRS thay vì qSOFA đơn độc; cấy máu & đo lactate sớm; bù dịch 30 mL/kg dịch</div>
+      <div class="stat-val green">1 Giờ Vàng</div>
+      <div class="stat-lbl">Kháng sinh ngay lập tức trong 1h cho sốc nhiễm khuẩn &amp; sepsis có khả năng cao</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val blue">Kháng Sinh & Khung Thời Gian</div>
-      <div class="stat-lbl">Kháng sinh trong 1h nếu có sốc; truyền kéo dài Beta-lactam (BLING III); kiểm soát nguồn</div>
+      <div class="stat-val blue">30 mL/kg</div>
+      <div class="stat-lbl">Liều dịch tinh thể cân bằng bắt buộc trong 3h đầu (dùng IBW nếu BMI &gt; 30 kg/m²)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">Huyết Động & Thuốc Vận Mạch</div>
-      <div class="stat-lbl">Norepinephrine là vận mạch hàng đầu (đích MAP ≥65 mmHg; 60–65 mmHg ở người ≥65 tuổi)</div>
+      <div class="stat-val amber">60 - 65 mmHg</div>
+      <div class="stat-lbl">Đích MAP hạ áp chấp nhận được ở người cao tuổi ≥ 65 tuổi (theo 65 Trial)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val red">Hỗ Trợ Hô Hấp & ARDS</div>
-      <div class="stat-lbl">HFNC ưu tiên hơn NIPPV; Awake proning; thông khí VT 6 mL/kg IBW & Pplat ≤30 cmH₂O trong</div>
+      <div class="stat-val red">BLING III</div>
+      <div class="stat-lbl">Khuyến nghị truyền liên tục / kéo dài Beta-lactam để tối ưu nồng độ diệt khuẩn</div>
     </div>
   </div>
 </div>
 
 <div class="pillars">
-    <div class="pillars-inner">
-      <div class="pillar p1">
-        <div class="pillar-icon">⏱️</div>
-        <div>
-          <div class="pillar-title">1. Sàng Lọc &amp; Hồi Sức Ban Đầu</div>
-          <div class="pillar-desc">Sử dụng NEWS/SIRS thay vì qSOFA đơn độc; cấy máu &amp; đo lactate sớm; bù dịch 30 mL/kg dịch tinh thể trong 3h đầu.</div>
-        </div>
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">🚨</div>
+      <div>
+        <div class="pillar-title">1. Sàng Lọc &amp; Nhận Diện Sớm</div>
+        <div class="pillar-desc">Sử dụng NEWS/NEWS2/MEWS/SIRS thay thế qSOFA đơn độc; cấy máu trước KS; phác đồ Code Sepsis tại giường.</div>
       </div>
-      <div class="pillar p2">
-        <div class="pillar-icon">💊</div>
-        <div>
-          <div class="pillar-title">2. Kháng Sinh &amp; Khung Thời Gian</div>
-          <div class="pillar-desc">Kháng sinh trong 1h nếu có sốc; truyền kéo dài Beta-lactam (BLING III); kiểm soát nguồn nhiễm trùng trong 6h.</div>
-        </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">💊</div>
+      <div>
+        <div class="pillar-title">2. Kháng Sinh Trúng Đích &amp; TDM</div>
+        <div class="pillar-desc">Phân tầng thời gian 4 nhóm; truyền liên tục Beta-lactam; kiểm soát nguồn nhiễm trong 6–12h; rút ngắn KS 7 ngày (BALANCE).</div>
       </div>
-      <div class="pillar p3">
-        <div class="pillar-icon">🫀</div>
-        <div>
-          <div class="pillar-title">3. Huyết Động &amp; Thuốc Vận Mạch</div>
-          <div class="pillar-desc">Norepinephrine là vận mạch hàng đầu (đích MAP ≥65 mmHg; 60–65 mmHg ở người ≥65 tuổi); dịch tinh thể cân bằng (Ringer's lactate).</div>
-        </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">🫀</div>
+      <div>
+        <div class="pillar-title">3. Hồi Sức Huyết Động &amp; Vận Mạch</div>
+        <div class="pillar-desc">Norepinephrine là vận mạch số 1; vận mạch ngoại vi sớm; thêm Vasopressin bậc 2; đích CRT (ANDROMEDA-SHOCK).</div>
       </div>
-      <div class="pillar p4">
-        <div class="pillar-icon">🫁</div>
-        <div>
-          <div class="pillar-title">4. Hỗ Trợ Hô Hấp &amp; ARDS</div>
-          <div class="pillar-desc">HFNC ưu tiên hơn NIPPV; Awake proning; thông khí VT 6 mL/kg IBW &amp; Pplat ≤30 cmH₂O trong ARDS.</div>
-        </div>
+    </div>
+    <div class="pillar p4">
+      <div class="pillar-icon">🫁</div>
+      <div>
+        <div class="pillar-title">4. Thông Khí Bảo Vệ &amp; Nằm Sấp</div>
+        <div class="pillar-desc">HFNC ưu tiên hơn NIPPV; Awake proning; thông khí VT 6 mL/kg PBW, Pplat ≤ 30; nằm sấp ≥ 16h/ngày trong ARDS nặng.</div>
       </div>
-      <div class="pillar p5">
-        <div class="pillar-icon">🛡️</div>
-        <div>
-          <div class="pillar-title">5. Liệu Pháp Bổ Sung &amp; Hỗ Trợ</div>
-          <div class="pillar-desc">Hydrocortisone liều thấp (≤260 mg/ngày) trong sốc trơ; PPI dự phòng loét; loại bỏ dịch chủ động sau hồi sức cấp.</div>
-        </div>
+    </div>
+    <div class="pillar p5">
+      <div class="pillar-icon">🛡️</div>
+      <div>
+        <div class="pillar-title">5. Hồi Sức Bổ Sung &amp; De-Resuscitation</div>
+        <div class="pillar-desc">Hydrocortisone sốc trơ; cai dịch chủ động (De-resuscitation); Bicarbonate toan nặng kèm AKI; truyền máu Hb &lt; 7.0 g/dL.</div>
       </div>
-      <div class="pillar p6">
-        <div class="pillar-icon">🔄</div>
-        <div>
-          <div class="pillar-title">6. Chuyển Tiếp &amp; Phục Hồi Dài Hạn</div>
-          <div class="pillar-desc">Đối chiếu thuốc do dược sĩ lâm sàng điều phối; theo dõi đa diện sau xuất viện &amp; phục hồi chức năng thể chất/tâm thần.</div>
-        </div>
+    </div>
+    <div class="pillar p6">
+      <div class="pillar-icon">🔄</div>
+      <div>
+        <div class="pillar-title">6. Chăm Sóc Chuyển Tiếp &amp; Hậu Sepsis</div>
+        <div class="pillar-desc">Thảo luận mục tiêu trong 72h; đối chiếu thuốc do dược sĩ lâm sàng; sàng lọc di chứng PICS thể chất, nhận thức, tâm lý.</div>
       </div>
     </div>
   </div>
+</div>
 
-  
-  <div class="page-content">
-
-    
-    <section id="sec-1" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🚨</span> <h2 class="sec-title">1. Sàng Lọc Và Quản Lý Ban Đầu (Screening &amp; Early Management)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">1.1. Chương trình Cải tiến Hiệu quả &amp; Công cụ Sàng lọc</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Chương trình Cải tiến Chất lượng (QI)</span> <span class="rec-tag rec-strong">Strong <span class="loe-tag">Moderate</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khuyến nghị các hệ thống y tế sử dụng chương trình cải tiến hiệu quả hoạt động đối với nhiễm khuẩn huyết: sàng lọc bệnh nhân nguy cơ cao, xây dựng SOP điều trị chuẩn hóa và triển khai các chiến lược QI.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Phác đồ "Code Sepsis" / "Sepsis Huddle"</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Gợi ý sử dụng phác đồ "Code Sepsis" hoặc hội ý nhanh đa chuyên khoa tại giường ngay sau khi sàng lọc dương tính để thúc đẩy nhanh chóng chẩn đoán và can thiệp.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Sàng lọc Tiền viện (Prehospital)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Ở bệnh nhân người lớn bị bệnh cấp tính vận chuyển bằng xe cứu thương hoặc máy bay cấp cứu, gợi ý sử dụng công cụ sàng lọc chuẩn hóa so với không sàng lọc.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Công cụ Sàng lọc Nội viện</span> <span class="rec-tag rec-strong">Strong <span class="loe-tag">Moderate</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khuyến nghị sử dụng các thang điểm <strong>NEWS, NEWS2, MEWS, hoặc SIRS</strong> thay vì sử dụng thang điểm qSOFA đơn độc như công cụ duy nhất để sàng lọc nhiễm khuẩn huyết nội viện.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Dấu ấn Sinh học &amp; Diagnostics</span> <span class="rec-tag rec-gps">Good Practice Statement</span></div>
-            <div class="matrix-card-body">
-              <p>Nhiễm khuẩn huyết là chẩn đoán lâm sàng; <strong>không được chẩn đoán hoặc loại trừ</strong> bằng một biomarker đơn độc. Chưa đủ bằng chứng khuyến cáo các xét nghiệm phản ứng ký chủ nhanh mới (novel rapid host response diagnostics).</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Thu thập Cấy máu (Blood Cultures)</span> <span class="rec-tag rec-strong">Strong <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Thu thập cấy máu càng sớm càng tốt và lý tưởng nhất là <strong>trước khi bắt đầu kháng sinh</strong>. Việc cấy máu không được làm chậm trễ kháng sinh, đặc biệt ở bệnh nhân tụt huyết áp.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="sec-subtitle">1.2. Phân loại Thuật ngữ Nhiễm Khuẩn Huyết (SSC 2026)</div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Thuật ngữ</th>
-                <th>Định nghĩa Lâm sàng Dựa trên Bằng chứng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Nhiễm khuẩn huyết chắc chắn</strong> <em>(Definite sepsis)</em></td>
-                <td>Nhiễm khuẩn huyết được xác nhận dựa trên bệnh sử, thăm khám lâm sàng và xét nghiệm chẩn đoán. Chẩn đoán thay thế khác rất ít khả năng xảy ra.</td>
-              </tr>
-              <tr>
-                <td><strong>Nhiễm khuẩn huyết có khả năng</strong> <em>(Probable sepsis)</em></td>
-                <td>Nghi ngờ cao về nhiễm khuẩn huyết. Sepsis là chẩn đoán có khả năng nhất dựa trên bệnh sử, lâm sàng và xét nghiệm. Chẩn đoán thay thế ít khả năng hơn.</td>
-              </tr>
-              <tr>
-                <td><strong>Nhiễm khuẩn huyết có thể</strong> <em>(Possible sepsis)</em></td>
-                <td>Nghi ngờ trung bình. Sepsis là chẩn đoán có thể xảy ra; tuy nhiên, một chẩn đoán thay thế khác cũng có khả năng tương đương.</td>
-              </tr>
-              <tr>
-                <td><strong>Nhiễm khuẩn huyết ít khả năng</strong> <em>(Unlikely sepsis)</em></td>
-                <td>Nghi ngờ thấp. Đánh giá lâm sàng không phù hợp với sepsis, hoặc chẩn đoán thay thế khác có khả năng xảy ra cao hơn nhiều.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="sec-subtitle">1.3. Hồi Sức Dịch Ban Đầu &amp; Đích Áp Lực Động Mạch Trung Bình (MAP)</div>
-        
-        <div class="infobox info">
-          <span class="infobox-icon">💧</span>
-          <div>
-            <strong class="infobox-title">Khuyến cáo Hồi sức Dịch ban đầu (Initial Fluid Resuscitation)</strong>
-            Nhiễm khuẩn huyết và sốc nhiễm khuẩn là các cấp cứu y khoa; quá trình điều trị và hồi sức phải bắt đầu ngay lập tức (GPS). Đối với người lớn bị giảm tưới máu, gợi ý truyền <strong>ít nhất 30 mL/kg dịch tinh thể IV trong 3 giờ đầu tiên</strong> (Conditional recommendation, Low certainty).
-          </div>
-        </div>
-
-        <div class="infobox warning">
-          <span class="infobox-icon">⚖️</span>
-          <div>
-            <strong class="infobox-title">Lưu ý Béo phì &amp; Thể tích Dịch Hồi sức (BMI > 30 kg/m²)</strong>
-            Tính toán thể tích dịch phải dùng <strong>cân nặng thực tế</strong> ở người có BMI ≤ 30 kg/m². Ngược lại, đối với bệnh nhân có <strong>BMI > 30 kg/m²</strong>, phải sử dụng <strong>cân nặng hiệu chỉnh / cân nặng lý tưởng (Devine IBW)</strong> để tránh nguy cơ quá tải dịch nghiêm trọng.
-          </div>
-        </div>
-
-        
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Cân nặng (kg)</th>
-                <th>Chiều cao 1.5 m <em>(4'11")</em></th>
-                <th>Chiều cao 1.7 m <em>(5'7")</em></th>
-                <th>Chiều cao 1.9 m <em>(6'3")</em></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>50 kg</strong></td>
-                <td>1.5 L</td>
-                <td>1.5 L</td>
-                <td>1.5 L</td>
-              </tr>
-              <tr>
-                <td><strong>60 kg</strong></td>
-                <td>1.8 L</td>
-                <td>1.8 L</td>
-                <td>1.8 L</td>
-              </tr>
-              <tr>
-                <td><strong>70 kg</strong></td>
-                <td>2.1 L</td>
-                <td>2.1 L</td>
-                <td>2.1 L</td>
-              </tr>
-              <tr>
-                <td><strong>80 kg</strong></td>
-                <td><span class="rx-tag warning">1.9 L</span></td>
-                <td>2.4 L</td>
-                <td>2.4 L</td>
-              </tr>
-              <tr>
-                <td><strong>90 kg</strong></td>
-                <td><span class="rx-tag warning">2.0 L</span></td>
-                <td><span class="rx-tag warning">2.4 L</span></td>
-                <td>2.7 L</td>
-              </tr>
-              <tr>
-                <td><strong>100 kg</strong></td>
-                <td><span class="rx-tag warning">2.1 L</span></td>
-                <td><span class="rx-tag warning">2.5 L</span></td>
-                <td><span class="rx-tag warning">3.0 L</span></td>
-              </tr>
-              <tr>
-                <td><strong>110 kg</strong></td>
-                <td><span class="rx-tag warning">2.2 L</span></td>
-                <td><span class="rx-tag warning">2.6 L</span></td>
-                <td><span class="rx-tag warning">3.3 L</span></td>
-              </tr>
-              <tr>
-                <td><strong>120 kg</strong></td>
-                <td><span class="rx-tag warning">2.3 L</span></td>
-                <td><span class="rx-tag warning">2.7 L</span></td>
-                <td><span class="rx-tag warning">3.0 L</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="matrix-grid">
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Đích MAP Ban Đầu (Chung)</span> <span class="rec-tag rec-strong">Strong <span class="loe-tag">Moderate</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khuyến nghị đích MAP ban đầu là <strong>65 mmHg</strong> thay vì các đích cao hơn. Trong thực tế, duy trì dao động ± 5 mmHg quanh trị số này.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Đích MAP Người ≥ 65 Tuổi (MỚI)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Đối với bệnh nhân sốc nhiễm khuẩn từ <strong>65 tuổi trở lên</strong>, gợi ý đích MAP ban đầu từ <strong>60–65 mmHg</strong> thay vì các khoảng đích cao hơn.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Đường truyền Vận mạch Ngoại vi</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Gợi ý khởi đầu dùng vận mạch qua đường tĩnh mạch ngoại vi để phục hồi nhanh MAP, tránh trì hoãn điều trị do chờ thiết lập đường truyền tĩnh mạch trung ương.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Thời gian Nhập khoa ICU</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Đối với bệnh nhân nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn cần nhập ICU, gợi ý đưa bệnh nhân vào khoa ICU <strong>trong vòng 6 giờ</strong> kể từ khi có chỉ định.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section id="sec-2" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">💉</span> <h2 class="sec-title">2. Xử Trí Nhiễm Trùng &amp; Liệu Pháp Kháng Sinh (Antimicrobial Therapy)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">2.1. Sơ Đồ Khung Thời Gian Kháng Sinh (Antimicrobial Timing Framework)</div>
-        
-        <div class="algo-container">
-          <div class="algo-step">
-            <div class="algo-num">1</div>
-            <div class="algo-content">
-              <div class="algo-title">Bệnh nhân CÓ SỐC LÂM SÀNG (Bất kể mức độ chắc chắn chẩn đoán)</div>
-              <div class="algo-desc"><span class="rx-tag danger">DÙNG KHÁNG SINH NGAY LAP TỤC</span> Lý tưởng trong vòng <strong>1 giờ</strong> đầu tiên sau khi nhận diện sốc, áp dụng cho cả trường hợp Sepsis chắc chắn, có khả năng hoặc có thể.</div>
-            </div>
-          </div>
-
-          <div class="algo-step">
-            <div class="algo-num">2</div>
-            <div class="algo-content">
-              <div class="algo-title">Bệnh nhân KHÔNG CÓ SỐC + Sepsis Chắc Chắn / Có Khả Năng</div>
-              <div class="algo-desc"><span class="rx-tag preferred">DÙNG KHÁNG SINH NGAY LAP TỤC</span> Lý tưởng trong vòng <strong>1 giờ</strong> sau khi có nghi ngờ cao.</div>
-            </div>
-          </div>
-
-          <div class="algo-step">
-            <div class="algo-num">3</div>
-            <div class="algo-content">
-              <div class="algo-title">Bệnh nhân KHÔNG CÓ SỐC + Sepsis Có Thể (Chưa chắc chắn)</div>
-              <div class="algo-desc"><span class="rx-tag warning">ĐÁNH GIÁ NHANH KHẨN CẤP</span> Thực hiện các xét nghiệm loại trừ chẩn đoán thay thế. Bắt đầu dùng kháng sinh trong vòng <strong>3 giờ</strong> nếu mối nghi ngờ nhiễm trùng vẫn kéo dài dai dẳng.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec-subtitle">2.2. Các Khuyến Cáo Kháng Sinh Cốt Lõi (SSC 2026 Update)</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Truyền Kéo Dài Beta-Lactam (BLING III)</span> <span class="rec-tag rec-strong">Strong <span class="loe-tag">Moderate/High</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khuyến nghị truyền kéo dài (extended hoặc continuous infusion) các kháng sinh nhóm Beta-lactam sau liều bolus ban đầu thay vì truyền ngắt quãng truyền thống. Dữ liệu BLING III chứng minh giảm rõ rệt tỷ lệ tử vong ngắn hạn.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Kiểm Soát Nguồn Nhiễm Trùng (Source Control)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Đánh giá lâm sàng khẩn cấp để xác định các ổ nhiễm trùng cần can thiệp ngoại khoa/thủ thuật (tháo lưu áp xe, rút catheter nhiễm khuẩn). Gợi ý kiểm soát nguồn sớm, <strong>lý tưởng trong vòng 6 giờ</strong>.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Bao phủ Vi khuẩn Kỵ khí (MỚI)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p><strong>Không nguy cơ kỵ khí</strong> (phổi, tiết niệu đơn thuần): Không bao phủ kỵ khí.<br /><strong>Có nguy cơ kỵ khí</strong> (ổ bụng, tiểu khung, mô mềm hoại tử, áp xe màng phổi/não): Phải bao phủ vi khuẩn kỵ khí.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Kháng Sinh Tiền Viện (MỚI)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Ở bệnh nhân sốc nhiễm khuẩn có thời gian vận chuyển cấp cứu > 60 phút, gợi ý tiêm kháng sinh tĩnh mạch ngay trên xe cứu thương/máy bay sau khi đã thiết lập SOP sàng lọc.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Bao phủ MDR &amp; Antifungal</span> <span class="rec-tag rec-against">Against <span class="loe-tag">Low/Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Chống lại việc dùng kháng sinh MDR kinh nghiệm ở người nguy cơ thấp. Chống lại liệu pháp kháng nấm kinh nghiệm thường quy (chỉ dùng khi có nguy cơ Candida xâm lấn cao).</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Thời Gian Điều Trị ngắn ngày (BALANCE)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khi đã kiểm soát nguồn đầy đủ, gợi ý dùng liệu trình kháng sinh ngắn ngày (ví dụ: <strong>7 ngày</strong> theo BALANCE trial). Phối hợp Procalcitonin (PCT) và lâm sàng để quyết định dừng kháng sinh.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="infobox success">
-          <span class="infobox-icon">🦠</span>
-          <div>
-            <strong class="infobox-title">Khử Khuẩn Chọn Lọc Đường Tiêu Hóa (SDD - MỚI)</strong>
-            Đối với bệnh nhân người lớn thở máy nằm tại các đơn vị hồi sức có <strong>tỷ lệ lưu hành vi khuẩn kháng thuốc (AMR) thấp</strong>, gợi ý sử dụng phác đồ SDD để phòng ngừa nhiễm trùng thứ phát (Conditional recommendation, Moderate certainty).
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section id="sec-3" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">❤️‍🔥</span> <h2 class="sec-title">3. Quản Lý Huyết Động Học &amp; Thuốc Vận Mạch (Hemodynamics &amp; Inotropes)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">3.1. Lựa Chọn Dịch Truyền Hồi Sức &amp; Đánh Giá Đáp Ứng Dịch</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Dịch Tinh Thể Cân Bằng (Balanced Crystalloids)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Moderate</span></span></div>
-            <div class="matrix-card-body">
-              <p>Khuyến nghị dịch tinh thể làm dịch đầu tay (Strong). Ưu tiên <strong>dịch tinh thể cân bằng (Ringer's lactate)</strong> hơn NaCl 0.9% (SMART, BaSICS, PLUS). <em>Ngoại lệ:</em> Chấn thương sọ não (TBI) ưu tiên NaCl 0.9% để tránh phù brain.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Albumin Bổ Sung &amp; Chống Chỉ Định Colloid</span> <span class="rec-tag rec-against">Strong Against Starches</span></div>
-            <div class="matrix-card-body">
-              <p>Dịch tinh thể đơn thuần hơn phối hợp Albumin (Albumin chỉ cân nhắc khi bù lượng dịch tinh thể rất lớn hoặc xơ gan). <strong>Tuyệt đối CHỐNG LẠI Tinh bột (Starches)</strong> và Gelatin.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Hồi Sức Tự Do vs Hạn Chế (CLOVERS)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Sau 30 mL/kg ban đầu, linh hoạt chiến lược tự do (liberal) hoặc hạn chế (restrictive). Thử nghiệm CLOVERS cho thấy tử vong 90 ngày tương đương giữa 2 chiến lược.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Đánh Giá Đáp Ứng Dịch Động (Dynamic Measures)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Sử dụng các biện pháp động (SVV, PPV, nâng chân thụ động PLR, fluid bolus test) thay vì các chỉ số tĩnh (CVP, BP tâm thu đơn độc). Hướng dẫn CRT ≤ 3 giây (ANDROMEDA-SHOCK).</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="sec-subtitle">3.2. Liệu Pháp Thuốc Vận Mạch &amp; Tăng Co Bóp Cơ Tim</div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Loại Thuốc</th>
-                <th>Vị Trí Phác Đồ &amp; Khuyến Cáo SSC 2026</th>
-                <th>Bằng Chứng &amp; Ghi Chú Lâm Sàng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Norepinephrine</strong></td>
-                <td><span class="rx-tag preferred">Vận Mạch Hàng Đầu (First-Line)</span> Khuyến nghị mạnh mẽ hơn dopamine, epinephrine hay selepressin.</td>
-                <td>Duy trì đích MAP ≥ 65 mmHg (60–65 mmHg ở người ≥ 65 tuổi). Có thể dùng qua tĩnh mạch ngoại vi ban đầu.</td>
-              </tr>
-              <tr>
-                <td><strong>Vasopressin</strong></td>
-                <td><span class="rx-tag preferred">Vận Mạch Thứ 2 (Add-on)</span> Gợi ý phối hợp khi liều Norepinephrine đang tăng dần.</td>
-                <td>Thử nghiệm VASST: mang lại lợi ích rõ rệt khi phối hợp sớm ở mức liều NE tương đương &lt; 15 µg/phút.</td>
-              </tr>
-              <tr>
-                <td><strong>Epinephrine</strong></td>
-                <td><span class="rx-tag warning">Vận Mạch Thứ 3 / Sốc Kèm Suy Tim</span> Phối hợp khi MAP chưa đạt dù đã dùng NE + Vasopressin.</td>
-                <td>Ưu tiên làm vận mạch hàng đầu nếu sốc nhiễm khuẩn có nhịp chậm hoặc rối loạn chức năng tim.</td>
-              </tr>
-              <tr>
-                <td><strong>Dobutamine</strong></td>
-                <td><span class="rx-tag preferred">Thuốc Tăng Co Bóp (Inotrope)</span> Phối hợp thêm vào Norepinephrine khi có suy tim/giảm tưới máu.</td>
-                <td>Dùng khi có rối loạn chức năng tim kèm giảm tưới máu dai dẳng dù đã đủ dịch và MAP. CHỐNG LẠI Levosimendan.</td>
-              </tr>
-              <tr>
-                <td><strong>Terlipressin / Beta-Blockers</strong></td>
-                <td><span class="rx-tag danger">Chống Chỉ Định Thường Quy</span> Chống lại terlipressin và chống lại chẹn beta (esmolol/landiolol).</td>
-                <td>Chưa đủ bằng chứng khuyến cáo Methylene Blue tĩnh mạch trong sốc trơ. Midodrine đường uống chưa đủ dữ liệu.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        
-        <div class="sec-subtitle">3.3. Sơ Đồ Xử Trí Huyết Động Tại Giường (Figure 3 Flowchart)</div>
-        <div class="algo-container">
-          <div class="algo-step">
-            <div class="algo-num">1</div>
-            <div class="algo-content">
-              <div class="algo-title">Nhận Diện Giảm Tưới Máu (Tụt BP / Lactate Tăng)</div>
-              <div class="algo-desc">Đo lactate máu &amp; CRT ban đầu. Khởi động <strong>30 mL/kg dịch tinh thể cân bằng</strong> trong 3 giờ đầu. Khởi đầu sớm <strong>Norepinephrine</strong> qua ngoại vi nếu tụt BP đe dọa tính mạng. Đích MAP ≥ 65 mmHg (60–65 mmHg người ≥65t).</div>
-            </div>
-          </div>
-          <div class="algo-step">
-            <div class="algo-num">2</div>
-            <div class="algo-content">
-              <div class="algo-title">Tụt Huyết Áp / Lactate Tăng Dai Dẳng Sau Liều Dịch Ban Đầu</div>
-              <div class="algo-desc">Đánh giá đáp ứng dịch bằng nghiệm pháp động (PLR / Fluid challenge). Cân nhắc đặt catheter động mạch xâm lấn (EVERDAC: trì hoãn an toàn nếu theo dõi chặt). Đảm bảo kiểm soát nguồn trong 6h.</div>
-            </div>
-          </div>
-          <div class="algo-step">
-            <div class="algo-num">3</div>
-            <div class="algo-content">
-              <div class="algo-title">Leo Thang Thuốc Hỗ Trợ Huyết Động</div>
-              <div class="algo-desc">• Thêm <strong>Hydrocortisone</strong> (200 mg/ngày tiêm ngắt quãng) nếu sốc trơ cần tăng liều vận mạch.<br /> • Thêm <strong>Vasopressin</strong> khi liều Norepinephrine tiếp tục tăng.<br /> • Thêm <strong>Epinephrine</strong> nếu MAP vẫn chưa đạt đích.<br /> • Thêm <strong>Dobutamine</strong> nếu có rối loạn chức năng co bóp cơ tim kèm giảm tưới máu.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section id="sec-4" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🫁</span> <h2 class="sec-title">4. Hỗ Trợ Hô Hấp Ở Bệnh Nhân Nhiễm Khuẩn Huyết (Respiratory Support)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">4.1. Đánh Giá Giảm Oxy Máu &amp; Hỗ Trợ Khí Máu Không Xâm Lấn</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Đích Oxy Hóa (Liberal vs Conservative)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Gợi ý điều chỉnh FiO₂ để nhắm tới đích bão hòa oxy tự do (SpO₂ ≥ 96%) hoặc bảo tồn (SpO₂ 90–93%) tùy thuộc nguồn lực. Thăm khám cẩn thận hiện tượng <strong>giảm oxy máu ẩn (occult hypoxemia)</strong> ở người da màu do pulse oximeter đánh giá cao hơn thực tế.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Oxy Dòng Cao HFNC</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Gợi ý sử dụng <strong>HFNC hơn liệu pháp oxy thông thường</strong> ở bệnh nhân suy hô hấp giảm oxy máu cấp do nhiễm khuẩn huyết có PaO₂/FiO₂ &lt; 200 (hoặc SpO₂/FiO₂ &lt; 235). Ưu tiên HFNC hơn NIPPV.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Nằm Sấp Khi Tỉnh (Awake Proning)</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Very Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Ở bệnh nhân suy hô hấp giảm oxy cấp chưa đặt ống thở, gợi ý thử nghiệm nằm sấp khi tỉnh. <strong>TUYỆT ĐỐI KHÔNG dùng an thần</strong> để ép bệnh nhân dung nạp nằm sấp khi chưa đặt nội khí quản.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="sec-subtitle">4.2. Chiến Lược Thông Khí Xâm Lấn Trong ARDS Do Nhiễm Khuẩn Huyết</div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Thông Số / Can Thiệp</th>
-                <th>Khuyến Cáo Chi Tiết SSC 2026</th>
-                <th>Mức Độ Khuyến Cáo &amp; Bằng Chứng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Thể tích lưu thông (VT) trong ARDS</strong></td>
-                <td>Khuyến nghị thể tích lưu thông thấp <strong>6 mL/kg IBW</strong> (cân nặng lý tưởng) thay vì thể tích cao (> 10 mL/kg).</td>
-                <td><span class="rec-tag rec-strong">Strong</span> High Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>VT ở bệnh nhân KHÔNG ARDS</strong></td>
-                <td>Gợi ý sử dụng thể tích lưu thông <strong>6–8 mL/kg IBW</strong> hơn là thể tích quá thấp (4 đến &lt;6 mL/kg IBW).</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Low Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Giới hạn Áp lực Cao nguyên (Pplat)</strong></td>
-                <td>Khuyến nghị giới hạn trên của áp lực cao nguyên là <strong>≤ 30 cmH₂O</strong>.</td>
-                <td><span class="rec-tag rec-strong">Strong</span> High Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Cấu hình PEEP trong ARDS</strong></td>
-                <td>Gợi ý PEEP cao hơn trong ARDS trung bình-nặng. <strong>CHỐNG LẠI chiến lược dò PEEP tăng dần (staircase titration)</strong>.</td>
-                <td><span class="rec-tag rec-conditional">Conditional PEEP cao</span> / <span class="rec-tag rec-against">Strong Against Titration</span></td>
-              </tr>
-              <tr>
-                <td><strong>Thông khí Nằm sấp (Prone Position)</strong></td>
-                <td>Gợi ý thông khí nằm sấp <strong>> 12 giờ mỗi ngày</strong> cho bệnh nhân ARDS mức độ trung bình đến nặng.</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Moderate Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Thuốc Dãn Cơ (NMBA) &amp; VV-ECMO</strong></td>
-                <td>Gợi ý dùng dãn cơ ngắt quãng (intermittent boluses) hơn truyền liên tục. Gợi ý hỗ trợ VV-ECMO trong ARDS nặng trơ.</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Moderate/Low Certainty</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section id="sec-5" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🛡️</span> <h2 class="sec-title">5. Liệu Pháp Bổ Sung &amp; Điều Trị Hỗ Trợ Chung (Adjunctive Therapies)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">5.1. Corticosteroid IV &amp; Các Liệu Pháp Bổ Sung Tranh Cãi</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Corticosteroid IV trong Sốc Nhiễm Khuẩn</span> <span class="rec-tag rec-conditional">Conditional <span class="loe-tag">Low</span></span></div>
-            <div class="matrix-card-body">
-              <p>Gợi ý sử dụng corticosteroid đường tĩnh mạch ở bệnh nhân sốc nhiễm khuẩn cần vận mạch kéo dài. Liệu trình chuẩn: <strong>Hydrocortisone ≤ 260 mg/ngày</strong> (thường dùng 200 mg/ngày tiêm ngắt quãng 50 mg mỗi 6h).</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Chống lại Thuốc Hạ Sốt Thường Quy</span> <span class="rec-tag rec-against">Conditional Against</span></div>
-            <div class="matrix-card-body">
-              <p>Chống lại việc sử dụng thuốc hạ sốt thường quy nhằm mục đích cải thiện kết cục tử vong. <em>Ngoại lệ:</em> Kiểm soát đau, triệu chứng bệnh nhân, hoặc hồi sức thần kinh / sau ngưng tuần hoàn.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Vitamin C, IVIG &amp; Polymyxin B</span> <span class="rec-tag rec-against">Conditional Against All</span></div>
-            <div class="matrix-card-body">
-              <p>Chống lại Vitamin C IV; chống lại IVIG; chống lại các kỹ thuật lọc máu/hấp phụ huyết tương thường quy (kể cả lọc Polymyxin B); chống lại Vitamin D và XueBiJing (ngoài vùng lưu hành).</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="sec-subtitle">5.2. Các Liệu Pháp Hỗ Trợ Nội Khoa Cốt Lõi</div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Lĩnh Vực Điều Trị</th>
-                <th>Khuyến Cáo Cụ Thể SSC 2026</th>
-                <th>Chi Tiết Áp Dụng Lâm Sàng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Dự phòng Loét do Stress</strong></td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Moderate Certainty</td>
-                <td>Sử dụng thuốc ức chế bơm proton (PPI) cho bệnh nhân có nguy cơ xuất huyết tiêu hóa (sốc, AKI, bệnh đông máu, suy gan mạn).</td>
-              </tr>
-              <tr>
-                <td><strong>Loại bỏ Dịch Chủ Động (Active Fluid Removal)</strong></td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Very Low Certainty</td>
-                <td>Sau giai đoạn hồi sức cấp tính, gợi ý chiến lược loại bỏ dịch chủ động bằng thuốc lợi tiểu hoặc siêu lọc để tránh quá tải dịch.</td>
-              </tr>
-              <tr>
-                <td><strong>Truyền Máu &amp; Dinh Dưỡng</strong></td>
-                <td><span class="rec-tag rec-strong">Strong Transfusion</span> / <span class="rec-tag rec-conditional">Conditional Nutrition</span></td>
-                <td>Truyền máu hạn chế (Restrictive strategy). Bắt đầu dinh dưỡng đường ruột sớm trong vòng <strong>72 giờ đầu</strong>.</td>
-              </tr>
-              <tr>
-                <td><strong>Kiểm soát Đường Huyết</strong></td>
-                <td><span class="rec-tag rec-strong">Strong</span> Moderate Certainty</td>
-                <td>Khởi đầu liệu pháp insulin khi nồng độ glucose máu <strong>≥ 180 mg/dL (10 mmol/L)</strong>. Đích duy trì 140–180 mg/dL.</td>
-              </tr>
-              <tr>
-                <td><strong>Sodium Bicarbonate &amp; RRT</strong></td>
-                <td><span class="rec-tag rec-conditional">Conditional Targeted</span></td>
-                <td>Chống lại sodium bicarbonate đơn thuần để tăng BP. Chỉ dùng Sodium Bicarbonate khi sốc nhiễm khuẩn có <strong>toan chuyển hóa nặng (pH ≤ 7.2) VÀ AKI vừa-nặng (AKIN 2/3)</strong>.</td>
-              </tr>
-              <tr>
-                <td><strong>Dự phòng Huyết Khối VTE</strong></td>
-                <td><span class="rec-tag rec-strong">Strong LMWH</span> Moderate Certainty</td>
-                <td>Dự phòng VTE bằng thuốc trừ khi có chống chỉ định. Khuyến nghị ưu tiên <strong>Heparin trọng lượng phân tử thấp (LMWH)</strong> hơn UFH.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section id="sec-6" class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">🔄</span> <h2 class="sec-title">6. Mục Tiêu Chăm Sóc, Chuyển Tiếp &amp; Phục Hồi Dài Hạn (Transitions &amp; Recovery)</h2></div>
-      <div class="sec-body">
-        
-        <div class="sec-subtitle">6.1. Thảo Luận Mục Tiêu Chăm Sóc &amp; Chăm Sóc Giảm Nhẹ</div>
-        <div class="matrix-grid">
-          
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Thảo luận Mục tiêu Chăm sóc Sớm</span> <span class="rec-tag rec-gps">Good Practice Statement</span></div>
-            <div class="matrix-card-body">
-              <p>Lâm sàng viên nên thảo luận về mục tiêu chăm sóc và tiên lượng với bệnh nhân/gia đình <strong>sớm trong vòng 72 giờ đầu</strong>. Tạo cơ hội cho bệnh nhân thiết lập di chúc lâm sàng / chỉ thị trước (Advanced Directives) trước khi xuất viện.</p>
-            </div>
-          </div>
-
-          <div class="matrix-card">
-            <div class="matrix-card-hdr"><span class="matrix-card-title">Tích hợp Nguyên lý Chăm sóc Giảm nhẹ</span> <span class="rec-tag rec-against">Conditional Against Routine Referral</span></div>
-            <div class="matrix-card-body">
-              <p>Tích hợp các nguyên lý chăm sóc giảm nhẹ vào kế hoạch điều trị để giảm đau đớn. Chống lại việc hội chẩn chuyên khoa giảm nhẹ thường quy cho tất cả bệnh nhân (chỉ hội chẩn dựa trên đánh giá cá thể hóa).</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="sec-subtitle">6.2. Chuyển Tiếp Chăm Sóc &amp; Quản Lý Xuất Viện</div>
-        <div class="infobox info">
-          <span class="infobox-icon">📋</span>
-          <div>
-            <strong class="infobox-title">Đối Chiếu Thuốc (Medication Reconciliation) Do Dược Sĩ Lâm Sàng Điều Phối</strong>
-            Thực hiện đối chiếu thuốc toàn diện tại các thời điểm chuyển tiếp (xuất ICU và xuất viện). Gợi ý mô hình đối chiếu thuốc do <strong>dược sĩ lâm sàng (pharmacist-led approach)</strong> điều phối để hạn chế sai sót y khoa. Sàng lọc các yếu tố kinh tế - xã hội (SDOH) để kết nối hỗ trợ.
-          </div>
-        </div>
-
-        <div class="sec-subtitle">6.3. Khuyến Nghị Phục Hồi Dài Hạn Sau Sepsis (Post-Discharge Services)</div>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Dịch Vụ Phục Hồi</th>
-                <th>Khuyến Cáo Cụ Thể SSC 2026</th>
-                <th>Mức Độ Khuyến Cáo &amp; Bằng Chứng</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Đánh giá Đa diện Post-Discharge</strong></td>
-                <td>Hệ thống y tế nên tạo điều kiện thuận lợi để theo dõi đánh giá đa diện thể chất, nhận thức và cảm xúc sau xuất viện.</td>
-                <td><span class="rec-tag rec-gps">Good Practice Statement</span></td>
-              </tr>
-              <tr>
-                <td><strong>Dịch vụ Theo dõi Post-ICU</strong></td>
-                <td>Gợi ý cung cấp các dịch vụ theo dõi phối hợp sau đợt điều trị tích cực cho bệnh nhân sống sót sau nhiễm khuẩn huyết.</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Low Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Phục hồi Chức năng Thể chất</strong></td>
-                <td>Đối với bệnh nhân sống sót từng <strong>phải thở máy xâm lấn > 48 giờ</strong>, gợi ý cung cấp dịch vụ phục hồi thể chất.</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Low Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Sức khỏe Tâm thần (Mental Health)</strong></td>
-                <td>Sàng lọc trầm cảm, lo âu, PTSD sau xuất viện. Bệnh nhân có triệu chứng phải được chuyển gửi đến chuyên khoa tâm thần.</td>
-                <td><span class="rec-tag rec-conditional">Conditional</span> Low Certainty</td>
-              </tr>
-              <tr>
-                <td><strong>Trị liệu Nhận thức (Cognitive)</strong></td>
-                <td>Chưa đủ bằng chứng để khuyến cáo sử dụng thường quy các liệu pháp phục hồi nhận thức chuyên biệt.</td>
-                <td><span class="rec-tag rec-against">Không khuyến cáo</span> Thiếu bằng chứng</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    
-    <section class="sec-card">
-      <div class="sec-hdr"><span class="sec-hdr-icon">📚</span> <h2 class="sec-title">Tài Liệu Tham Khảo (AMA Citation Format)</h2></div>
-      <div class="sec-body">
-        <div class="citation-box">
-          1. Prescott HC, Antonelli M, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. <em>Crit Care Med</em>. 2026;54(4):725-812. doi:10.1097/CCM.0000000000007075.
-        </div>
-      </div>
-    </section>
-
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-1" class="quickmenu-item active">1. Sàng Lọc &amp; 128 Khuyến Cáo</a>
+    <a href="#sec-2" class="quickmenu-item">2. Kháng Sinh &amp; BLING III</a>
+    <a href="#sec-3" class="quickmenu-item">3. Huyết Động &amp; Vận Mạch</a>
+    <a href="#sec-4" class="quickmenu-item">4. Hô Hấp &amp; ARDS</a>
+    <a href="#sec-5" class="quickmenu-item">5. Liệu Pháp Bổ Sung</a>
+    <a href="#sec-6" class="quickmenu-item">6. Chăm Sóc &amp; Hậu Sepsis</a>
+    <a href="#sec-7" class="quickmenu-item">7. Tài Liệu Tham Khảo</a>
   </div>
-<div style="margin-top: 1.5rem;">
-  <div class="btn-row">
-    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
-      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
-    </a>
-    <a href="#sec-1" class="btn">
-      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
-    </a>
+</div>
+
+<div class="page-content">
+  {/* ==================== SECTION 1 ==================== */}
+  <div class="sec-card" id="sec-1">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🚨</span>
+      <h2 class="sec-title">1. Sàng Lọc, Chẩn Đoán Ban Đầu &amp; Bảng Master 128 Khuyến Cáo SSC 2026</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="infobox info">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Bối Cảnh &amp; Ý Nghĩa Cải Tiến Của Hướng Dẫn SSC 2026:</strong>
+          Nhiễm khuẩn huyết (Sepsis) là tình trạng rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa của cơ thể đối với nhiễm trùng. Với khoảng 49 triệu ca mắc và 13 triệu ca tử vong mỗi năm trên toàn cầu, sepsis là một gánh nặng y tế khẩn cấp hàng đầu. Bản cập nhật Surviving Sepsis Campaign 2026 (SSC 2026) được xuất bản trên tạp chí <em>Critical Care Medicine</em> (04/2026) với <strong>128 khuyến cáo thực hành chuẩn GRADE</strong>, kế thừa và tái định hình các chiến lược then chốt dựa trên các thử nghiệm lâm sàng ngẫu nhiên lớn nhất lịch sử hồi sức.
+        </div>
+      </div>
+
+      {/* MASTER TABLE 1 CARD */}
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-list-check"></i> Bảng Master 1. Toàn Bộ 128 Khuyến Cáo Thực Hành Lâm Sàng SSC 2026 Phân Loại GRADE (Table 1 SSC)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-certificate"></i> Ma trận 128 Khuyến cáo</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th style="width: 6%;">STT</th>
+                <th style="width: 18%;">Phân Hệ Lâm Sàng</th>
+                <th style="width: 52%;">Nội Dung Khuyến Cáo Cốt Lõi (SSC 2026)</th>
+                <th style="width: 12%;">Cập Nhật</th>
+                <th style="width: 12%;">Phân Cấp GRADE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align:center; font-weight:700;">1</td>
+                <td class="source-cell"><strong>Sàng lọc & Quản lý</strong></td>
+                <td>Khuyến nghị các bệnh viện và hệ thống y tế triển khai chương trình cải tiến chất lượng (QI) cho sepsis, bao gồm sàng lọc nhiễm khuẩn huyết cho bệnh nhân cấp tính có nguy cơ cao và quy trình thao tác chuẩn (SOP) điều trị.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A/B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">2</td>
+                <td class="source-cell"><strong>Sàng lọc & Quản lý</strong></td>
+                <td>Gợi ý các bệnh viện sử dụng phác đồ "Code Sepsis" hoặc hội ý nhanh đa chuyên khoa tại giường (Sepsis Huddle) để đẩy nhanh tốc độ nhận diện và bắt đầu điều trị sớm.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">3</td>
+                <td class="source-cell"><strong>Sàng lọc tiền viện</strong></td>
+                <td>Ở bệnh nhân người lớn bị bệnh cấp tính vận chuyển bằng xe cứu thương hoặc trực thăng, gợi ý sử dụng công cụ sàng lọc chuẩn hóa so với không sử dụng công cụ sàng lọc để nhận diện sớm sepsis.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">4</td>
+                <td class="source-cell"><strong>Sàng lọc nội viện</strong></td>
+                <td>Đối với bệnh nhân cấp tính nội viện, khuyến nghị sử dụng các thang điểm cảnh báo sớm NEWS, NEWS2, MEWS hoặc SIRS thay vì sử dụng thang điểm qSOFA đơn độc để sàng lọc nhiễm khuẩn huyết.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">5</td>
+                <td class="source-cell"><strong>Chẩn đoán lâm sàng</strong></td>
+                <td>Nhiễm khuẩn huyết là một chẩn đoán lâm sàng; không được chẩn đoán xác định hoặc loại trừ chỉ dựa vào một dấu ấn sinh học (biomarker) hay xét nghiệm đơn độc.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">6</td>
+                <td class="source-cell"><strong>Host Diagnostics</strong></td>
+                <td>Chưa đủ bằng chứng để đưa ra khuyến cáo về việc sử dụng các xét nghiệm phản ứng ký chủ nhanh mới (novel rapid host response diagnostics) trong chẩn đoán sepsis thường quy.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">7</td>
+                <td class="source-cell"><strong>Cấy máu trước KS</strong></td>
+                <td>Đối với bệnh nhân nghi ngờ sepsis hoặc sốc nhiễm khuẩn (possible, probable, definite), khuyến nghị thu thập cấy máu càng sớm càng tốt và lý tưởng nhất là trước khi bắt đầu kháng sinh. Cấy máu không được làm chậm trễ bắt đầu kháng sinh.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">8</td>
+                <td class="source-cell"><strong>Đo Lactate máu</strong></td>
+                <td>Ở bệnh nhân có khả năng, rất có khả năng hoặc chắc chắn bị sepsis/sốc nhiễm khuẩn, gợi ý đo nồng độ Lactate máu để phát hiện giảm tưới máu mô tiềm ẩn và phân tầng nguy cơ.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">9</td>
+                <td class="source-cell"><strong>Khẩn cấp y khoa</strong></td>
+                <td>Nhiễm khuẩn huyết và sốc nhiễm khuẩn là những cấp cứu y khoa khẩn cấp; quá trình điều trị và hồi sức phải được bắt đầu ngay lập tức.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">10</td>
+                <td class="source-cell"><strong>Bù dịch 30 mL/kg</strong></td>
+                <td>Đối với người lớn bị giảm tưới máu do sepsis hoặc sốc nhiễm khuẩn, gợi ý truyền ít nhất 30 mL/kg dịch tinh thể tĩnh mạch trong vòng 3 giờ đầu tiên sau khi nhận diện.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">11</td>
+                <td class="source-cell"><strong>Phối hợp Vận mạch sớm</strong></td>
+                <td>Đối với người lớn bị tụt huyết áp do sepsis, gợi ý hồi sức dịch bolus tinh thể ban đầu kết hợp khởi đầu sớm thuốc vận mạch nếu tụt huyết áp vẫn kéo dài.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">12</td>
+                <td class="source-cell"><strong>Vận mạch ngoại vi</strong></td>
+                <td>Ở bệnh nhân sốc nhiễm khuẩn, gợi ý bắt đầu dùng thuốc vận mạch qua đường tĩnh mạch ngoại vi để phục hồi nhanh huyết áp động mạch trung bình (MAP), tránh trì hoãn chờ đặt catheter tĩnh mạch trung tâm.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">13</td>
+                <td class="source-cell"><strong>Đích MAP 65 mmHg</strong></td>
+                <td>Đối với bệnh nhân sốc nhiễm khuẩn, khuyến nghị nhắm đích áp lực động mạch trung bình (MAP) ban đầu là 65 mmHg thay vì các mức đích MAP cao hơn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">14</td>
+                <td class="source-cell"><strong>Đích MAP người ≥ 65 tuổi</strong></td>
+                <td>Đối với bệnh nhân sốc nhiễm khuẩn từ 65 tuổi trở lên, gợi ý khoảng đích MAP ban đầu từ 60–65 mmHg thay vì các khoảng đích cao hơn (hạ áp chấp nhận được theo 65 Trial).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">15</td>
+                <td class="source-cell"><strong>Thời gian vào ICU</strong></td>
+                <td>Đối với bệnh nhân nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn có chỉ định nhập hồi sức tích cực, gợi ý đưa bệnh nhân vào khoa ICU trong vòng 6 giờ.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">16</td>
+                <td class="source-cell"><strong>Thời gian KS sốc</strong></td>
+                <td>Đối với bệnh nhân có thể, có khả năng hoặc chắc chắn bị sốc nhiễm khuẩn, khuyến nghị dùng kháng sinh ngay lập tức, lý tưởng nhất là trong vòng 1 giờ sau khi nhận diện.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">17</td>
+                <td class="source-cell"><strong>Thời gian KS sepsis</strong></td>
+                <td>Đối với bệnh nhân có khả năng hoặc chắc chắn bị sepsis không sốc, khuyến nghị dùng kháng sinh ngay lập tức, lý tưởng nhất là trong vòng 1 giờ sau khi nhận diện.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">18</td>
+                <td class="source-cell"><strong>Đánh giá < 3h không sốc</strong></td>
+                <td>Đối với bệnh nhân chỉ ở mức "có thể" bị sepsis (possible sepsis) không sốc, gợi ý tiến hành đánh giá chẩn đoán nhanh giới hạn thời gian; nếu vẫn nghi ngờ nhiễm trùng, dùng kháng sinh trong vòng 3 giờ.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">19</td>
+                <td class="source-cell"><strong>Phân định nhiễm trùng</strong></td>
+                <td>Bác sĩ lâm sàng nên thực hiện đánh giá nhanh khả năng nguyên nhân nhiễm trùng so với không nhiễm trùng ở bệnh nhân nghi ngờ sepsis không có sốc.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">20</td>
+                <td class="source-cell"><strong>Trì hoãn KS nguy cơ thấp</strong></td>
+                <td>Đối với bệnh nhân có khả năng nhiễm trùng thấp và không có sốc, gợi ý trì hoãn kháng sinh trong khi tiếp tục theo dõi sát lâm sàng và tìm nguyên nhân thay thế.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">21</td>
+                <td class="source-cell"><strong>Kháng sinh tiền viện</strong></td>
+                <td>Ở bệnh nhân chắc chắn/có khả năng bị sốc nhiễm khuẩn tiền viện có thời gian vận chuyển cấp cứu dự kiến > 60 phút, gợi ý dùng kháng sinh ngay trên đường vận chuyển.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">22</td>
+                <td class="source-cell"><strong>Procalcitonin khởi đầu</strong></td>
+                <td>Gợi ý đánh giá lâm sàng đơn thuần thay vì phối hợp Procalcitonin với lâm sàng để quyết định thời điểm bắt đầu dùng kháng sinh.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">23</td>
+                <td class="source-cell"><strong>Khám tìm ổ nhiễm</strong></td>
+                <td>Bệnh nhân sepsis/sốc nhiễm khuẩn cần được đánh giá khẩn cấp để xác định chẩn đoán giải phẫu hoặc ổ nhiễm trùng cụ thể cần can thiệp kiểm soát nguồn khẩn cấp.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">24</td>
+                <td class="source-cell"><strong>Kiểm soát nguồn sớm</strong></td>
+                <td>Khuyến nghị thực hiện can thiệp kiểm soát nguồn nhiễm trùng (phẫu thuật, tháo mủ, dẫn lưu) ngay khi khả thi về mặt y tế và hậu cần (lý tưởng trong vòng 6–12 giờ).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">25</td>
+                <td class="source-cell"><strong>Rút Catheter nhiễm trùng</strong></td>
+                <td>Khuyến nghị rút ngay các dụng cụ/catheter nội mạch nghi ngờ là nguồn gốc của nhiễm khuẩn huyết sau khi đã thiết lập đường truyền thay thế an toàn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">26</td>
+                <td class="source-cell"><strong>Bao phủ MRSA nguy cơ cao</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn có nguy cơ cao nhiễm MRSA (tiền sử nhiễm, cư trú, suy thận chạy thận, đặt catheter), gợi ý dùng kháng sinh kinh nghiệm bao phủ MRSA.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">27</td>
+                <td class="source-cell"><strong>Tránh MRSA nguy cơ thấp</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn có nguy cơ thấp nhiễm MRSA, gợi ý KHÔNG dùng kháng sinh kinh nghiệm bao phủ MRSA.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">28</td>
+                <td class="source-cell"><strong>Tránh phối hợp Gram (-)</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn không có nguy cơ cao nhiễm vi khuẩn đa kháng (MDR), gợi ý KHÔNG sử dụng phối hợp thường quy 2 kháng sinh kháng Gram âm.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">29</td>
+                <td class="source-cell"><strong>Kháng nấm nguy cơ cao</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn có nguy cơ cao nhiễm nấm xâm lấn (suy giảm miễn dịch nặng, phẫu thuật ổ bụng lặp lại, TPN, đặt CVC kéo dài), gợi ý dùng kháng nấm kinh nghiệm.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">30</td>
+                <td class="source-cell"><strong>Tránh kháng nấm nguy cơ thấp</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn có nguy cơ thấp nhiễm nấm, gợi ý KHÔNG dùng thuốc kháng nấm kinh nghiệm thường quy.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">31</td>
+                <td class="source-cell"><strong>Test vi sinh nhanh</strong></td>
+                <td>Ở bệnh nhân sepsis/sốc nhiễm khuẩn, gợi ý sử dụng các kỹ thuật xét nghiệm vi sinh phân tử nhanh theo mầm bệnh (pathogen-specific rapid diagnostic testing) kết hợp cùng chương trình quản lý kháng sinh.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">32</td>
+                <td class="source-cell"><strong>Tránh test không đặc hiệu</strong></td>
+                <td>Gợi ý KHÔNG sử dụng các xét nghiệm phản ứng ký chủ nhanh không đặc hiệu theo tác nhân gây bệnh để quyết định ngừng kháng sinh sớm.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">33</td>
+                <td class="source-cell"><strong>Truyền kéo dài Beta-Lactam</strong></td>
+                <td>Khuyến nghị sử dụng phương pháp truyền kéo dài (extended infusion) hoặc truyền liên tục (continuous infusion) đối với kháng sinh nhóm Beta-lactam sau liều nạp ban đầu (dựa trên thử nghiệm BLING III).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">34</td>
+                <td class="source-cell"><strong>Giám sát nồng độ TDM</strong></td>
+                <td>Ở bệnh nhân sepsis/sốc nhiễm khuẩn tại khoa ICU, gợi ý tối ưu hóa liều lượng kháng sinh dựa trên giám sát nồng độ thuốc trong máu (TDM) cho aminoglycosides, vancomycin và beta-lactams.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">35</td>
+                <td class="source-cell"><strong>Tái đánh giá xuống thang</strong></td>
+                <td>Bác sĩ lâm sàng nên liên tục tái đánh giá bệnh nhân hàng ngày, tìm kiếm chẩn đoán thay thế và xuống thang hoặc ngừng kháng sinh kinh nghiệm nếu không có bằng chứng nhiễm trùng.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">36</td>
+                <td class="source-cell"><strong>Xuống thang hàng ngày</strong></td>
+                <td>Khuyến nghị đánh giá xuống thang kháng sinh hàng ngày thay vì duy trì phác đồ kháng sinh cố định không đổi.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">37</td>
+                <td class="source-cell"><strong>Procalcitonin ngừng KS</strong></td>
+                <td>Ở bệnh nhân sepsis đã kiểm soát ổ nhiễm tốt, gợi ý sử dụng nồng độ Procalcitonin kết hợp đánh giá lâm sàng để quyết định thời điểm ngừng kháng sinh sớm.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">38</td>
+                <td class="source-cell"><strong>Liệu trình KS ngắn ngày</strong></td>
+                <td>Đối với bệnh nhân sepsis/sốc nhiễm khuẩn đã kiểm soát ổ nhiễm đầy đủ, gợi ý dùng liệu trình kháng sinh ngắn ngày (ví dụ 7 ngày dựa trên thử nghiệm BALANCE) hơn là liệu trình kéo dài.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">39</td>
+                <td class="source-cell"><strong>Ngừng KS ổ nhiễm chưa rõ</strong></td>
+                <td>Gợi ý sử dụng Procalcitonin kết hợp lâm sàng để hướng dẫn dừng kháng sinh ở bệnh nhân ban đầu nghi ngờ sepsis nhưng không xác định được ổ nhiễm trùng.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">40</td>
+                <td class="source-cell"><strong>Khử nhiễm chọn lọc SDD</strong></td>
+                <td>Ở bệnh nhân thở máy tại ICU có sepsis/sốc nhiễm khuẩn tại các đơn vị có tỷ lệ đa kháng thấp, gợi ý áp dụng biện pháp khử nhiễm chọn lọc đường tiêu hóa (SDD).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">41</td>
+                <td class="source-cell"><strong>Tránh kháng kỵ khí thường quy</strong></td>
+                <td>Ở bệnh nhân sepsis/sốc nhiễm khuẩn KHÔNG có yếu tố nguy cơ nhiễm trùng kỵ khí (viêm phổi mắc phải cộng đồng đơn thuần, nhiễm trùng tiết niệu không biến chứng), gợi ý TRÁNH dùng kháng sinh bao phủ kỵ khí.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">42</td>
+                <td class="source-cell"><strong>Bao phủ kỵ khí có chỉ định</strong></td>
+                <td>Ở bệnh nhân sepsis có nguy cơ nhiễm trùng kỵ khí (nhiễm trùng ổ bụng, tầng sinh môn, vùng chậu sâu, mô mềm hoại tử, viêm phổi hít có áp-xe), gợi ý dùng kháng sinh có phổ bao phủ vi khuẩn kỵ khí.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">43</td>
+                <td class="source-cell"><strong>Dịch tinh thể hàng đầu</strong></td>
+                <td>Khuyến nghị sử dụng dịch tinh thể (crystalloids) là dung dịch đầu tay để hồi sức dịch ban đầu ở bệnh nhân sepsis và sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">44</td>
+                <td class="source-cell"><strong>Dịch tinh thể cân bằng</strong></td>
+                <td>Gợi ý sử dụng dịch tinh thể cân bằng (Balanced Crystalloids: Ringer's lactate, Plasma-Lyte) thay vì nước muối sinh lý 0.9% (Normal Saline) trong hồi sức dịch (SMART, PLUS, BALANCED).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">45</td>
+                <td class="source-cell"><strong>Truyền Albumin</strong></td>
+                <td>Ở bệnh nhân sepsis/sốc nhiễm khuẩn cần truyền thể tích dịch tinh thể lớn, gợi ý truyền phối hợp dung dịch Albumin người thay vì chỉ tiếp tục dùng dịch tinh thể đơn thuần.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">46</td>
+                <td class="source-cell"><strong>CHỐNG CHỈ ĐỊNH HES</strong></td>
+                <td>Khuyến cáo MẠNH MẼ KHÔNG sử dụng dung dịch cao phân tử Hydroxyethyl Starches (HES) để hồi sức dịch do làm tăng tỷ lệ tử vong và nhu cầu lọc máu.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 1 (Chống chỉ định)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">47</td>
+                <td class="source-cell"><strong>Tránh dùng Gelatin</strong></td>
+                <td>Gợi ý KHÔNG sử dụng dung dịch Gelatin để hồi sức dịch cho bệnh nhân sepsis và sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">48</td>
+                <td class="source-cell"><strong>Hạn chế vs Tự do (CLOVERS)</strong></td>
+                <td>Sau giai đoạn hồi sức dịch 30 mL/kg ban đầu, gợi ý áp dụng chiến lược bù dịch có kiểm soát/hạn chế thay vì tự do tiếp tục truyền dịch không giới hạn (thử nghiệm CLOVERS & CLASSIC).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">49</td>
+                <td class="source-cell"><strong>Đánh giá đáp ứng dịch động</strong></td>
+                <td>Gợi ý sử dụng các biện pháp động (nâng chân thụ động PLR, biến thiên thể tích nhát bóp SVV, biến thiên áp lực mạch PPV, siêu âm Vena Cava) thay vì các chỉ số tĩnh (CVP) để hướng dẫn bù dịch.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">50</td>
+                <td class="source-cell"><strong>Cung lượng tim không xâm lấn</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo sử dụng thường quy các thiết bị đo cung lượng tim xâm lấn tối thiểu hoặc không xâm lấn cho mọi ca sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">51</td>
+                <td class="source-cell"><strong>Đích hồi sức CRT (ANDROMEDA)</strong></td>
+                <td>Ở bệnh nhân sốc nhiễm khuẩn, gợi ý hướng dẫn hồi sức dựa trên thời gian đổ đầy mao mạch (Capillary Refill Time - CRT) bên cạnh các chỉ số huyết động chuẩn.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">52</td>
+                <td class="source-cell"><strong>Đích thanh thải Lactate</strong></td>
+                <td>Gợi ý hướng dẫn hồi sức để giảm nồng độ Lactate máu ở bệnh nhân sepsis có tăng Lactate, nhắm tới thanh thải Lactate bình thường hóa.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">53</td>
+                <td class="source-cell"><strong>Norepinephrine hàng đầu</strong></td>
+                <td>Khuyến nghị sử dụng Norepinephrine là thuốc vận mạch lựa chọn hàng đầu (first-line vasopressor) trong sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">54</td>
+                <td class="source-cell"><strong>Thêm Vasopressin bậc 2</strong></td>
+                <td>Ở bệnh nhân sốc nhiễm khuẩn chưa đạt đích MAP bằng Norepinephrine đơn độc, gợi ý phối hợp thêm Vasopressin liều cố định (0.03 đơn vị/phút) khi liều NE đạt 0.25–0.5 mcg/kg/phút.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">55</td>
+                <td class="source-cell"><strong>Thêm Epinephrine bậc 3</strong></td>
+                <td>Đối với bệnh nhân sốc nhiễm khuẩn vẫn chưa đạt đích MAP dù đã dùng phối hợp Norepinephrine và Vasopressin, gợi ý bổ sung thêm Epinephrine.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">56</td>
+                <td class="source-cell"><strong>Hạn chế Dopamine</strong></td>
+                <td>Gợi ý KHÔNG sử dụng Dopamine thay thế cho Norepinephrine; Dopamine chỉ dùng ở một số bệnh nhân chọn lọc cao có nhịp tim chậm và nguy cơ rối loạn nhịp tim rất thấp.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">57</td>
+                <td class="source-cell"><strong>Tránh Phenylephrine</strong></td>
+                <td>Gợi ý KHÔNG sử dụng Phenylephrine thường quy trong sốc nhiễm khuẩn, trừ khi Norepinephrine gây loạn nhịp tim nặng hoặc nhịp tim nhanh nghiêm trọng.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">58</td>
+                <td class="source-cell"><strong>Angiotensin II</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo sử dụng thường quy Angiotensin II ở bệnh nhân sốc nhiễm khuẩn trơ.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">59</td>
+                <td class="source-cell"><strong>Methylene Blue</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo sử dụng thường quy Xanh Methylene (Methylene blue) trong điều trị sốc nhiễm khuẩn trơ; chỉ xem xét trong các thử nghiệm lâm sàng hoặc cứu vãn cuối cùng.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">60</td>
+                <td class="source-cell"><strong>Dobutamine suy tim</strong></td>
+                <td>Đối với bệnh nhân sốc nhiễm khuẩn có bằng chứng rối loạn chức năng cơ tim (giảm phân suất tống máu, ScvO2 thấp, giảm tưới máu dai dẳng dù đủ thể tích), gợi ý phối hợp Dobutamine cùng Norepinephrine hoặc dùng Epinephrine đơn độc.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">61</td>
+                <td class="source-cell"><strong>Tránh Levosimendan</strong></td>
+                <td>Gợi ý KHÔNG sử dụng Levosimendan để điều trị suy chức năng cơ tim trong sốc nhiễm khuẩn do không cải thiện sống còn và gây tăng chi phí.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">62</td>
+                <td class="source-cell"><strong>Tránh chẹn Beta</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thuốc chẹn beta giao cảm thường quy để kiểm soát nhịp tim nhanh trong sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">63</td>
+                <td class="source-cell"><strong>Inotropes phối hợp</strong></td>
+                <td>Thuốc tăng co bóp cơ tim (Inotropes) phải được sử dụng phối hợp bổ sung cùng với thuốc vận mạch, KHÔNG được dùng thay thế hoàn toàn thuốc vận mạch khi có tụt huyết áp.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">64</td>
+                <td class="source-cell"><strong>Tránh dùng Midodrine</strong></td>
+                <td>Gợi ý KHÔNG sử dụng Midodrine đường uống để thúc đẩy cai thuốc vận mạch đường tĩnh mạch sớm hơn ở bệnh nhân sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">65</td>
+                <td class="source-cell"><strong>Huyết áp động mạch xâm lấn</strong></td>
+                <td>Gợi ý đặt catheter huyết áp động mạch xâm lấn (Arterial line) càng sớm càng tốt khi có điều kiện ở bệnh nhân cần dùng thuốc vận mạch kéo dài.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">66</td>
+                <td class="source-cell"><strong>Đích SpO2 90 - 96%</strong></td>
+                <td>Gợi ý nhắm đích oxy hóa vừa phải (SpO2 từ 90% đến 96%), tránh tăng oxy máu quá mức (hyperoxia) gây độc phổi và co mạch.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">67</td>
+                <td class="source-cell"><strong>Ưu tiên oxy HFNC</strong></td>
+                <td>Đối với bệnh nhân suy hô hấp giảm oxy máu cấp do sepsis chưa cần đặt nội khí quản, gợi ý sử dụng oxy lưu lượng cao qua ống thông mũi (HFNC) thay vì thở máy không xâm lấn (NIPPV).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">68</td>
+                <td class="source-cell"><strong>Hạn chế NIPPV</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thở máy không xâm lấn NIPPV thường quy cho suy hô hấp giảm oxy máu cấp do sepsis trừ khi bệnh nhân có COPD hoặc phù phổi cấp kèm theo.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">69</td>
+                <td class="source-cell"><strong>Awake Proning</strong></td>
+                <td>Ở bệnh nhân người lớn suy hô hấp giảm oxy cấp do sepsis chưa đặt ống nội khí quản và đang thở HFNC, gợi ý thử nghiệm cho bệnh nhân nằm sấp khi tỉnh (Awake proning).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">70</td>
+                <td class="source-cell"><strong>Thông khí VT 6 mL/kg</strong></td>
+                <td>Đối với bệnh nhân ARDS do sepsis thở máy xâm lấn, khuyến nghị sử dụng chiến lược bảo vệ phổi với thể tích khí lưu thông thấp (VT 6 mL/kg trọng lượng lý tưởng PBW) thay vì VT cao.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">71</td>
+                <td class="source-cell"><strong>Áp lực Pplat ≤ 30</strong></td>
+                <td>Khuyến nghị duy trì giới hạn trên của áp lực đẩy đỉnh (Plateau pressure - Pplat) ≤ 30 cmH2O ở bệnh nhân ARDS do sepsis.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">72</td>
+                <td class="source-cell"><strong>Chiến lược PEEP cao</strong></td>
+                <td>Đối với bệnh nhân ARDS mức độ trung bình đến nặng do sepsis, gợi ý sử dụng PEEP cao hơn so với PEEP thấp.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">73</td>
+                <td class="source-cell"><strong>Thủ thuật mở phổi ngắn</strong></td>
+                <td>Gợi ý sử dụng các thủ thuật mở phổi (Recruitment maneuvers) ngắn hạn; KHÔNG sử dụng thủ thuật mở phổi dạng bậc thang kéo dài với PEEP tăng dần liên tục.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">74</td>
+                <td class="source-cell"><strong>Nằm sấp ≥ 16h trong ARDS</strong></td>
+                <td>Đối với bệnh nhân ARDS nặng-trung bình (PaO2/FiO2 < 150) do sepsis, khuyến nghị cho bệnh nhân nằm sấp (Prone positioning) ít nhất 16 giờ mỗi ngày (thử nghiệm PROSEVA).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">75</td>
+                <td class="source-cell"><strong>Giãn cơ ngắt quãng</strong></td>
+                <td>Đối với bệnh nhân ARDS trung bình-nặng do sepsis, gợi ý sử dụng thuốc giãn cơ (NMBA) ngắt quãng khi cần hoặc truyền liên tục không quá 48 giờ để giải quyết bất đồng bộ máy thở.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">76</td>
+                <td class="source-cell"><strong>Tránh giãn mạch phổi hít</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thường quy thuốc giãn mạch phổi dạng khí dung (Inhaled Nitric Oxide, Prostacyclin) cho ARDS do sepsis trừ khi có tăng áp phổi nặng hoặc suy tim phải cấp tính.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">77</td>
+                <td class="source-cell"><strong>Chỉ định VV-ECMO</strong></td>
+                <td>Đối với bệnh nhân ARDS nặng trơ do sepsis khi các biện pháp thông khí bảo vệ phổi và nằm sấp thất bại, gợi ý cân nhắc oxy hóa qua màng ngoài cơ thể (VV-ECMO) tại các trung tâm giàu kinh nghiệm (EOLIA).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">78</td>
+                <td class="source-cell"><strong>Cai máy thở chuẩn hóa</strong></td>
+                <td>Khuyến nghị sử dụng quy trình cai máy thở chuẩn hóa kết hợp thử nghiệm thở tự nhiên (SBT) hàng ngày khi bệnh nhân đã sẵn sàng cai máy.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">79</td>
+                <td class="source-cell"><strong>Hydrocortisone sốc trơ</strong></td>
+                <td>Đối với bệnh nhân sốc nhiễm khuẩn cần dùng thuốc vận mạch kéo dài (liều Norepinephrine ≥ 0.25 mcg/kg/phút trên 4 giờ), gợi ý sử dụng Hydrocortisone tĩnh mạch liều 200 mg/ngày (truyền liên tục hoặc 50 mg mỗi 6 giờ).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">80</td>
+                <td class="source-cell"><strong>Thêm Fludrocortisone</strong></td>
+                <td>Ở bệnh nhân sốc nhiễm khuẩn được điều trị bằng Hydrocortisone, gợi ý phối hợp thêm Fludrocortisone đường uống (50 mcg/ngày) (thử nghiệm APROCCHSS).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">81</td>
+                <td class="source-cell"><strong>CHỐNG CHỈ ĐỊNH Vitamin C</strong></td>
+                <td>Khuyến cáo MẠNH MẼ KHÔNG sử dụng Vitamin C đường tĩnh mạch để điều trị sepsis hoặc sốc nhiễm khuẩn do không cải thiện tử vong và có thể gây hại (thử nghiệm LOVIT).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag danger">Class 1 (Chống chỉ định)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">82</td>
+                <td class="source-cell"><strong>Tránh hạ sốt thường quy</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thuốc hạ sốt (Paracetamol, NSAIDs) thường quy nhằm mục đích cải thiện kết cục sống còn ở bệnh nhân sepsis có sốt.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">83</td>
+                <td class="source-cell"><strong>Tránh lọc máu hấp phụ</strong></td>
+                <td>Gợi ý KHÔNG sử dụng các kỹ thuật lọc máu hấp phụ (Hemoperfusion: CytoSorb, Polymyxin B cartridge) thường quy ngoài các thử nghiệm lâm sàng.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">84</td>
+                <td class="source-cell"><strong>Tránh truyền IVIG</strong></td>
+                <td>Gợi ý KHÔNG sử dụng globulin miễn dịch đường tĩnh mạch (IVIG) thường quy cho bệnh nhân sepsis và sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">85</td>
+                <td class="source-cell"><strong>Tránh dùng XueBiJing</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thuốc tiêm Huyết Bích Tịnh (XueBiJing) ngoài các khu vực pháp lý đã được cấp phép chính thức.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">86</td>
+                <td class="source-cell"><strong>Tránh dùng Probiotics</strong></td>
+                <td>Gợi ý KHÔNG sử dụng men vi sinh (probiotics) thường quy để điều trị hoặc dự phòng biến chứng ở bệnh nhân sepsis.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">87</td>
+                <td class="source-cell"><strong>Dự phòng loét dạ dày SUP</strong></td>
+                <td>Gợi ý sử dụng thuốc ức chế bơm proton (PPI) hoặc kháng H2 để dự phòng loét dạ dày do stress (SUP) CHỈ ở bệnh nhân có yếu tố nguy cơ xuất huyết tiêu hóa (thở máy ≥ 48h, rối loạn đông máu).</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">88</td>
+                <td class="source-cell"><strong>Tránh SUP không nguy cơ</strong></td>
+                <td>Gợi ý KHÔNG sử dụng thuốc dự phòng loét dạ dày thường quy ở bệnh nhân sepsis không có các yếu tố nguy cơ xuất huyết.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">89</td>
+                <td class="source-cell"><strong>De-resuscitation tích cực</strong></td>
+                <td>Ở bệnh nhân sốc nhiễm khuẩn sau giai đoạn hồi sức cấp và đã ổn định huyết động, gợi ý áp dụng chiến lược rút dịch chủ động (Active fluid removal / De-resuscitation) nhằm tránh quá tải tuần hoàn.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">90</td>
+                <td class="source-cell"><strong>Ngưỡng truyền máu Hb < 7</strong></td>
+                <td>Khuyến nghị áp dụng chiến lược truyền máu hạn chế: chỉ truyền khối hồng cầu khi nồng độ Hemoglobin < 7.0 g/dL (đích duy trì 7.0–9.0 g/dL), trừ trường hợp nhồi máu cơ tim cấp hoặc thiếu máu cơ tim tiến triển (TRISS).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">91</td>
+                <td class="source-cell"><strong>Ngưỡng truyền tiểu cầu</strong></td>
+                <td>Gợi ý truyền tiểu cầu dự phòng khi số lượng < 10,000/mm³ không chảy máu; < 20,000/mm³ nếu có nguy cơ chảy máu cao; và ≥ 50,000/mm³ khi đang chảy máu hoạt động, phẫu thuật hoặc làm thủ thuật xâm lấn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">92</td>
+                <td class="source-cell"><strong>Tránh truyền huyết tương tươi</strong></td>
+                <td>Gợi ý KHÔNG truyền huyết tương tươi đông lạnh (FFP) thường quy để điều chỉnh các bất thường đông máu cận lâm sàng trừ khi bệnh nhân đang có xuất huyết hoạt động hoặc chuẩn bị can thiệp phẫu thuật.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">93</td>
+                <td class="source-cell"><strong>Tránh Antithrombin</strong></td>
+                <td>Khuyến nghị KHÔNG sử dụng antithrombin để điều trị nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 1 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">94</td>
+                <td class="source-cell"><strong>Dự phòng thuyên tắc VTE</strong></td>
+                <td>Khuyến nghị sử dụng điều trị dự phòng thuyên tắc huyết khối tĩnh mạch bằng thuốc (ưu tiên Heparin trọng lượng phân tử thấp LMWH hơn Heparin không phân đoạn UFH) trừ khi có chống chỉ định.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">95</td>
+                <td class="source-cell"><strong>Natri Bicarbonate (BICAR-ICU)</strong></td>
+                <td>Gợi ý KHÔNG dùng Natri Bicarbonate thường quy; TUY NHIÊN, gợi ý sử dụng Natri Bicarbonate tĩnh mạch ở bệnh nhân toan chuyển hóa nặng (pH ≤ 7.20) có kèm suy thận cấp (AKI giai đoạn 2–3) (BICAR-ICU).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">96</td>
+                <td class="source-cell"><strong>Lựa chọn RRT</strong></td>
+                <td>Ở bệnh nhân sepsis có tổn thương thận cấp cần lọc máu, gợi ý sử dụng lọc máu liên tục (CRRT) hoặc lọc máu ngắt quãng (IHD) tùy theo độ ổn định huyết động.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">97</td>
+                <td class="source-cell"><strong>Tránh RRT khẩn cấp không c/đ</strong></td>
+                <td>Gợi ý KHÔNG bắt đầu điều trị thay thế thận sớm/gia tốc khi chưa xuất hiện các chỉ định tiêu chuẩn khẩn cấp (tăng kali máu nặng trơ, toan kiềm không bù, phù phổi cấp quá tải thể tích).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">98</td>
+                <td class="source-cell"><strong>Kiểm soát đường huyết</strong></td>
+                <td>Khuyến nghị bắt đầu truyền Insulin khi đường huyết liên tiếp ≥ 180 mg/dL (10.0 mmol/L); đích đường huyết duy trì là 140–180 mg/dL (7.8–10.0 mmol/L).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag preferred">Class 1 (Mạnh)</span> <span class="rx-tag success">Level A</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">99</td>
+                <td class="source-cell"><strong>Vitamin D</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo bổ sung Vitamin D thường quy cho bệnh nhân sepsis.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">100</td>
+                <td class="source-cell"><strong>Dinh dưỡng đường ruột sớm</strong></td>
+                <td>Gợi ý bắt đầu nuôi dưỡng đường tiêu hóa sớm (trong vòng 24–48 giờ) hơn là nhịn ăn hoàn toàn hoặc dinh dưỡng tĩnh mạch sớm ở bệnh nhân sepsis có thể dung nạp.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">101</td>
+                <td class="source-cell"><strong>Nuôi dưỡng dinh dưỡng tối thiểu</strong></td>
+                <td>Gợi ý khởi đầu bằng nuôi dưỡng dinh dưỡng tối thiểu (trophic feeding) liều thấp trong giai đoạn đầu của sepsis, tăng dần theo mức độ dung nạp của đường tiêu hóa.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">102</td>
+                <td class="source-cell"><strong>Tiêu chuẩn Goals of Care</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo một công cụ tiêu chuẩn hóa cụ thể để kích hoạt thảo luận mục tiêu chăm sóc.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">103</td>
+                <td class="source-cell"><strong>Thảo luận mục tiêu trong 72h</strong></td>
+                <td>Các hệ thống y tế nên triển khai chiến lược để đảm bảo rằng mục tiêu chăm sóc (Goals of Care) và tiên lượng được thảo luận với bệnh nhân và gia đình sớm nhất có thể (lý tưởng trong 72h).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">104</td>
+                <td class="source-cell"><strong>Time-Limited Trials</strong></td>
+                <td>Chưa đủ bằng chứng để đưa ra khuyến cáo chính thức bắt buộc về việc áp dụng thử nghiệm điều trị giới hạn thời gian (Time-Limited Trials - TLTs).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">105</td>
+                <td class="source-cell"><strong>TLTs theo thực hành</strong></td>
+                <td>Theo kinh nghiệm thực hành lâm sàng của hội đồng, đề xuất áp dụng thử nghiệm điều trị giới hạn thời gian (TLTs) cho những ca bệnh có tiên lượng sống còn hoặc hồi phục không chắc chắn.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag success">Theo thực hành</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">106</td>
+                <td class="source-cell"><strong>Tích hợp chăm sóc giảm nhẹ</strong></td>
+                <td>Nguyên lý chăm sóc giảm nhẹ nên được tích hợp vào kế hoạch điều trị của bệnh nhân sepsis và sốc nhiễm khuẩn để tối ưu hóa kiểm soát đau và triệu chứng.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">107</td>
+                <td class="source-cell"><strong>Tránh hội chẩn giảm nhẹ thường quy</strong></td>
+                <td>Gợi ý KHÔNG hội chẩn chuyên khoa chăm sóc giảm nhẹ thường quy cho tất cả bệnh nhân sepsis; chỉ hội chẩn ở những ca có nhu cầu chăm sóc giảm nhẹ phức tạp.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">108</td>
+                <td class="source-cell"><strong>Quy trình chuyển khoa chuẩn</strong></td>
+                <td>Các hệ thống bệnh viện nên xây dựng quy trình chuyển tiếp chăm sóc chuẩn hóa (từ ICU ra khoa phòng thường và xuất viện) cho bệnh nhân sepsis.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">109</td>
+                <td class="source-cell"><strong>Bàn giao lâm sàng cấu trúc</strong></td>
+                <td>Gợi ý sử dụng các công cụ giao tiếp bàn giao thông tin có cấu trúc (structured clinical handoff tools) trong quá trình chuyển tiếp ca bệnh.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">110</td>
+                <td class="source-cell"><strong>Sàng lọc nhu cầu hỗ trợ</strong></td>
+                <td>Bệnh viện nên sàng lọc nhu cầu hỗ trợ về thể chất, tâm lý và xã hội của bệnh nhân sepsis và gia đình trước khi xuất viện.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">111</td>
+                <td class="source-cell"><strong>Đối chiếu thuốc dược sĩ</strong></td>
+                <td>Quy trình đối chiếu thuốc toàn diện (comprehensive medication reconciliation) do dược sĩ lâm sàng điều phối nên được thực hiện tại các thời điểm chuyển tiếp chăm sóc.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">112</td>
+                <td class="source-cell"><strong>Dược sĩ lâm sàng can thiệp</strong></td>
+                <td>Gợi ý sự tham gia của dược sĩ lâm sàng trong đối chiếu thuốc và tối ưu hóa sử dụng thuốc hậu xuất viện cho người sống sót sau sepsis.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">113</td>
+                <td class="source-cell"><strong>Giáo dục bằng văn bản & lời nói</strong></td>
+                <td>Đội ngũ lâm sàng nên cung cấp tài liệu giáo dục về sepsis bằng cả văn bản và tư vấn trực tiếp cho bệnh nhân và gia đình trước khi ra viện.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">114</td>
+                <td class="source-cell"><strong>Nội dung giáo dục xuất viện</strong></td>
+                <td>Giáo dục xuất viện cần bao gồm thông tin về chẩn đoán sepsis, các dấu hiệu cảnh báo tái phát (red-flag symptoms), quá trình hồi phục và cách tiếp cận chăm sóc y tế khẩn cấp.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">115</td>
+                <td class="source-cell"><strong>Gửi tóm tắt bệnh án < 72h</strong></td>
+                <td>Tóm tắt bệnh án xuất viện chi tiết cần được gửi đến bác sĩ chăm sóc ban đầu trong vòng 48–72 giờ sau khi bệnh nhân xuất viện.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">116</td>
+                <td class="source-cell"><strong>Kênh chăm sóc hậu xuất viện</strong></td>
+                <td>Hệ thống y tế nên thiết lập các kênh chăm sóc và lộ trình theo dõi hậu xuất viện cho người sống sót sau sepsis.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">117</td>
+                <td class="source-cell"><strong>Thời gian tái khám</strong></td>
+                <td>Chưa đủ bằng chứng để quy định thời điểm tái khám bắt buộc (ví dụ trong vòng 7–14 ngày), nhưng khuyến khích tái khám y khoa sớm sau xuất viện.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">118</td>
+                <td class="source-cell"><strong>Sàng lọc di chứng PICS</strong></td>
+                <td>Người sống sót sau nhiễm khuẩn huyết cần được sàng lọc các khiếm khuyết mới hoặc trầm trọng hơn về thể chất, nhận thức và tâm thần (Hội chứng sau hồi sức tích cực - PICS).</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">119</td>
+                <td class="source-cell"><strong>Hỗ trợ yếu cơ ICU (ICUAW)</strong></td>
+                <td>Gợi ý đánh giá và hỗ trợ phục hồi chức năng cho tình trạng yếu cơ mắc phải tại ICU (ICU-acquired weakness) ở bệnh nhân hồi phục sau sepsis.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">120</td>
+                <td class="source-cell"><strong>Sàng lọc tâm lý lo âu/trầm cảm</strong></td>
+                <td>Hệ thống y tế nên triển khai sàng lọc các rối loạn tâm lý (trầm cảm, lo âu, rối loạn stress sau sang chấn PTSD) cho cả bệnh nhân sống sót sau sepsis và người chăm sóc gia đình.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">121</td>
+                <td class="source-cell"><strong>Tài liệu cho BS ban đầu</strong></td>
+                <td>Chưa đủ bằng chứng để khuyến cáo việc cung cấp bộ tài liệu giáo dục chuyên sâu về sepsis cho các bác sĩ chăm sóc ban đầu.</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">122</td>
+                <td class="source-cell"><strong>Nhóm đồng đẳng hỗ trợ</strong></td>
+                <td>Khuyến khích tạo điều kiện cho bệnh nhân và gia đình tiếp cận các nhóm đồng đẳng hỗ trợ sau sepsis (peer support groups).</td>
+                <td><span class="rx-tag preferred">MỚI (New)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">123</td>
+                <td class="source-cell"><strong>Phòng khám Post-ICU chuyên biệt</strong></td>
+                <td>Chưa đủ bằng chứng để bắt buộc thành lập phòng khám chuyên biệt hậu ICU (post-ICU clinics) so với theo dõi chăm sóc ngoại trú thông thường.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag">Chưa đủ chứng cứ</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">124</td>
+                <td class="source-cell"><strong>Tạo điều kiện phục hồi chức năng</strong></td>
+                <td>Hệ thống y tế nên tạo điều kiện thuận lợi cho việc đánh giá và chuyển tuyến phục hồi chức năng sau khi xuất viện.</td>
+                <td><span class="rx-tag">KẾ THỪA (Carryover)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">125</td>
+                <td class="source-cell"><strong>Phục hồi đa chuyên khoa</strong></td>
+                <td>Đối với người sống sót sau sepsis có khiếm khuyết thể chất, gợi ý tham gia chương trình phục hồi chức năng đa chuyên khoa dựa trên bằng chứng.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level C</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">126</td>
+                <td class="source-cell"><strong>Phục hồi vận động sớm nội viện</strong></td>
+                <td>Gợi ý bắt đầu các can thiệp phục hồi chức năng thể chất sớm ngay trong giai đoạn nằm viện khi tình trạng huyết động đã ổn định.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag alternative">Class 2 (Có điều kiện)</span> <span class="rx-tag success">Level B</span></td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">127</td>
+                <td class="source-cell"><strong>Đánh giá nhận thức & Trí nhớ</strong></td>
+                <td>Người sống sót sau sepsis có suy giảm nhận thức hoặc sa sút trí tuệ nên được chuyển khám đánh giá và can thiệp phục hồi chức năng nhận thức chuyên sâu.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+              <tr>
+                <td style="text-align:center; font-weight:700;">128</td>
+                <td class="source-cell"><strong>Đánh giá gánh nặng tài chính</strong></td>
+                <td>Bác sĩ lâm sàng và nhân viên công tác xã hội nên đánh giá gánh nặng tài chính, khả năng quay trở lại làm việc và các yếu tố xã hội quyết định sức khỏe của người bệnh sau khi xuất viện.</td>
+                <td><span class="rx-tag alternative">TÁI XÉT (Revisited)</span></td>
+                <td><span class="rx-tag info">Thực hành tốt (GPS)</span> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* TABLE 2 CARD */}
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-scale-balanced"></i> Bảng 2. Ý Nghĩa &amp; Khác Biệt Giữa Khuyến Cáo Mạnh vs Có Điều Kiện (Table 2 SSC)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-award"></i> Phân loại GRADE</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Đối Tượng Áp Dụng</th>
+                <th style="width: 37%;">Khuyến Cáo Mạnh (Strong Recommendation - "We Recommend")</th>
+                <th style="width: 38%;">Khuyến Cáo Có Điều Kiện (Conditional Recommendation - "We Suggest")</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Bệnh nhân (Patients)</strong></td>
+                <td>Hầu hết hoặc tất cả bệnh nhân trong tình huống lâm sàng liên quan đều mong muốn nhận được can thiệp khuyến cáo.</td>
+                <td>Đa số bệnh nhân mong muốn can thiệp, nhưng một tỷ lệ đáng kể có thể lựa chọn giải pháp khác tùy thuộc hoàn cảnh và giá trị cá nhân.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Bác sĩ lâm sàng (Clinicians)</strong></td>
+                <td>Hầu như mọi bệnh nhân đều nên nhận được can thiệp; việc không áp dụng đòi hỏi phải có lý do biện minh lâm sàng rõ ràng.</td>
+                <td>Cần cá thể hóa quyết định lâm sàng; trao đổi kỹ lưỡng cùng người bệnh/gia đình và cân nhắc bối cảnh nguồn lực tại chỗ.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Nhà hoạch định chính sách (Policy Makers)</strong></td>
+                <td>Khuyến nghị có thể được sử dụng làm tiêu chí đánh giá chất lượng (quality metric) hoặc quy chuẩn thực hành bắt buộc.</td>
+                <td>Không phù hợp để làm chỉ số cưỡng chế cứng nhắc; cần sự linh hoạt để phù hợp với nguồn lực và ưu tiên của từng địa phương.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* TABLE 3 CARD */}
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-layer-group"></i> Bảng 3. Thuật Ngữ &amp; 4 Phân Tầng Chẩn Đoán Nhiễm Khuẩn Huyết (Table 3 SSC 2026)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-stethoscope"></i> Tiêu chuẩn Sepsis-3</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Phân Tầng Nghi Ngờ</th>
+                <th style="width: 72%;">Định Nghĩa &amp; Tiêu Chuẩn Thực Hành Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><span class="rx-tag preferred">Nhiễm khuẩn huyết chắc chắn (Definite Sepsis)</span></td>
+                <td>Nhiễm khuẩn huyết được xác nhận dựa trên bệnh sử, thăm khám thực thể và bằng chứng xét nghiệm/hình ảnh rõ ràng. Khả năng có một chẩn đoán thay thế khác là cực kỳ thấp.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag preferred">Nhiễm khuẩn huyết có khả năng cao (Probable Sepsis)</span></td>
+                <td>Mức độ nghi ngờ rất cao. Sepsis là chẩn đoán có khả năng xảy ra nhất dựa trên toàn bộ dữ liệu lâm sàng và cận lâm sàng hiện có. Các chẩn đoán thay thế ít khả năng hơn.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag alternative">Nhiễm khuẩn huyết có thể (Possible Sepsis)</span></td>
+                <td>Mức độ nghi ngờ trung bình. Sepsis là một khả năng hợp lý; tuy nhiên, một hoặc nhiều chẩn đoán thay thế khác (không do nhiễm trùng) cũng có xác suất xảy ra tương đương.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag">Nhiễm khuẩn huyết ít khả năng (Unlikely Sepsis)</span></td>
+                <td>Mức độ nghi ngờ thấp. Đánh giá lâm sàng không phù hợp với bệnh cảnh nhiễm trùng, hoặc một chẩn đoán bệnh lý khác có khả năng vượt trội hơn nhiều.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Hồi Sức Dịch Ban Đầu 30 mL/kg &amp; Quy Tắc Hiệu Chỉnh Cân Nặng (Table 4 SSC)</div>
+      <div class="infobox warning">
+        <span class="infobox-icon">⚖️</span>
+        <div>
+          <strong>Quy Tắc Tính Liều Dịch Tinh Thể Ở Bệnh Nhân Béo Phì (BMI &gt; 30 kg/m²):</strong>
+          Đối với bệnh nhân có BMI ≤ 30 kg/m², thể tích dịch hồi sức ban đầu 30 mL/kg được tính dựa trên <strong>cân nặng thực tế (actual body weight)</strong>. Tuy nhiên, ở bệnh nhân béo phì (BMI &gt; 30 kg/m²), bắt buộc phải sử dụng <strong>Trọng lượng cơ thể lý tưởng (Devine Ideal Body Weight - IBW)</strong> hoặc trọng lượng hiệu chỉnh để tránh nguy cơ quá tải thể tích cấp tính, phù phổi và suy tim.
+        </div>
+      </div>
+
+      {/* TABLE 4 CARD */}
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-calculator"></i> Bảng 4. Thể Tích Hồi Sức Dịch Ban Đầu 30 mL/kg (Lít) Theo Cân Nặng &amp; Chiều Cao (Table 4 SSC)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-droplet"></i> Bù dịch 3h đầu</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Cân Nặng Thực Tế</th>
+                <th style="width: 25%;">Chiều Cao 1.5 m (4 ft 11 in)</th>
+                <th style="width: 25%;">Chiều Cao 1.7 m (5 ft 7 in)</th>
+                <th style="width: 25%;">Chiều Cao 1.9 m (6 ft 3 in)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>50 kg (110 lb)</strong></td>
+                <td>1.5 L (BMI = 22, Cân nặng thực)</td>
+                <td>1.5 L (BMI = 17, Cân nặng thực)</td>
+                <td>1.5 L (BMI = 14, Cân nặng thực)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>70 kg (154 lb)</strong></td>
+                <td>1.3 - 1.4 L (BMI = 31, <em>Dùng IBW</em>)</td>
+                <td>2.1 L (BMI = 24, Cân nặng thực)</td>
+                <td>2.1 L (BMI = 19, Cân nặng thực)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>90 kg (198 lb)</strong></td>
+                <td>1.3 - 1.4 L (BMI = 40, <em>Dùng IBW</em>)</td>
+                <td>1.9 - 2.0 L (BMI = 31, <em>Dùng IBW</em>)</td>
+                <td>2.7 L (BMI = 25, Cân nặng thực)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>110 kg (243 lb)</strong></td>
+                <td>1.3 - 1.4 L (BMI = 49, <em>Dùng IBW</em>)</td>
+                <td>1.9 - 2.0 L (BMI = 38, <em>Dùng IBW</em>)</td>
+                <td>2.5 - 2.6 L (BMI = 30.5, <em>Dùng IBW</em>)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>130 kg (287 lb)</strong></td>
+                <td>1.3 - 1.4 L (BMI = 58, <em>Dùng IBW</em>)</td>
+                <td>1.9 - 2.0 L (BMI = 45, <em>Dùng IBW</em>)</td>
+                <td>2.5 - 2.6 L (BMI = 36, <em>Dùng IBW</em>)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
   </div>
+  {/* ==================== SECTION 2 ==================== */}
+  <div class="sec-card" id="sec-2">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">2. Kiểm Soát Nhiễm Trùng, Khung Thời Gian Kháng Sinh &amp; Đột Phá BLING III</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Khung Thời Gian Khởi Đầu Kháng Sinh Phân Tầng 4 Nhóm (Figure 2 SSC)</div>
+      
+      {{/* TABLE 5 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-clock"></i> Bảng 5. Phân Tầng Thời Gian Bắt Đầu Kháng Sinh Kinh Nghiệm Theo Nguy Cơ (Figure 2 SSC)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-stopwatch"></i> Khung thời gian</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Tình Huống Lâm Sàng</th>
+                <th style="width: 25%;">Khung Thời Gian Kháng Sinh</th>
+                <th style="width: 25%;">Mức Khuyến Cáo GRADE</th>
+                <th style="width: 25%;">Hành Động Lâm Sàng Trọng Tâm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><span class="rx-tag danger">Sốc Nhiễm Khuẩn (Bất kể mức độ nghi ngờ)</span></td>
+                <td><strong>Ngay lập tức, lý tưởng trong vòng 1 Giờ</strong></td>
+                <td><span class="rx-tag preferred">Class 1</span> <span class="rx-tag success">Level B</span> (Statement 16)</td>
+                <td>Cấy máu khẩn không làm chậm kháng sinh; tiêm kháng sinh phổ rộng liều nạp tối đa ngay tại giường; hồi sức dịch và vận mạch song song.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag preferred">Sepsis Chắc Chắn hoặc Có Khả Năng Cao (Không sốc)</span></td>
+                <td><strong>Ngay lập tức, lý tưởng trong vòng 1 Giờ</strong></td>
+                <td><span class="rx-tag preferred">Class 1</span> <span class="rx-tag success">Level B</span> (Statement 17)</td>
+                <td>Khởi động kháng sinh nhắm trúng căn nguyên có khả năng nhất trong 60 phút đầu; thu thập các bệnh phẩm vi sinh (đờm, nước tiểu, dịch cơ thể).</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag alternative">Sepsis Chỉ Ở Mức "Có Thể" (Possible Sepsis, Không sốc)</span></td>
+                <td><strong>Đánh giá nhanh; nếu còn nghi ngờ: &lt; 3 Giờ</strong></td>
+                <td><span class="rx-tag alternative">Class 2</span> <span class="rx-tag">Level C</span> (Statement 18)</td>
+                <td>Tiến hành khẩn các xét nghiệm chẩn đoán hình ảnh và cận lâm sàng phân biệt nhiễm trùng vs không nhiễm trùng; quyết định dùng KS trong 180 phút.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><span class="rx-tag">Nhiễm Trùng Ít Khả Năng (Không sốc)</span></td>
+                <td><strong>Trì hoãn kháng sinh</strong></td>
+                <td><span class="rx-tag alternative">Class 2</span> <span class="rx-tag success">Level B</span> (Statement 20)</td>
+                <td>Không vội vã dùng kháng sinh kinh nghiệm; tiếp tục theo dõi sát sinh hiệu, công thức máu và tìm kiếm chẩn đoán không nhiễm trùng (thuyên tắc phổi, nhồi máu cơ tim, viêm tụy cấp).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Đột Phá BLING III: Truyền Kéo Dài / Liên Tục Beta-Lactam (Khuyến Cáo Class 1, Level A)</div>
+      <div class="infobox success">
+        <span class="infobox-icon">🔬</span>
+        <div>
+          <strong>Thử Nghiệm Lâm Sàng Ngẫu Nhiên BLING III (JAMA 2024):</strong>
+          Kháng sinh nhóm Beta-lactam (Piperacillin/Tazobactam, Cefepime, Meropenem) thể hiện hoạt tính diệt khuẩn phụ thuộc thời gian nồng độ thuốc tự do trong huyết tương vượt trên nồng độ ức chế tối thiểu (% fT &gt; MIC). Thử nghiệm đa quốc gia <strong>BLING III</strong> trên 7,031 bệnh nhân ICU bị nhiễm khuẩn huyết nặng đã chứng minh: <strong>Truyền liên tục (continuous infusion) hoặc kéo dài (extended infusion ≥ 3-4 giờ)</strong> sau một liều nạp ban đầu (loading dose) giúp đạt nồng độ diệt khuẩn ổn định, nâng cao rõ rệt tỷ lệ khỏi lâm sàng và giảm tỷ lệ tử vong 90 ngày so với tiêm ngắt quãng ngẫu nhiên.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Chiến Lược Kháng Sinh Mục Tiêu, Thời Gian Ngắn Ngày &amp; Kiểm Soát Nguồn</div>
+      <div class="grid-3col">
+        <div class="clin-card">
+          <div class="clin-card-accent accent-blue"></div>
+          <div class="clin-card-title"><i class="fa-solid fa-shield-virus"></i> Bao Phủ Kỵ Khí Có Chọn Lọc</div>
+          <div class="clin-card-body">
+            <strong>Statement 41 &amp; 42 (MỚI):</strong> Tuyệt đối TRÁNH dùng kháng sinh bao phủ vi khuẩn kỵ khí thường quy cho các ca nhiễm trùng đường hô hấp hoặc tiết niệu đơn thuần do nguy cơ phá vỡ hệ vi sinh đường ruột và nhiễm <em>C. difficile</em>. CHỈ bao phủ kỵ khí khi có nguy cơ rõ ràng: nhiễm trùng ổ bụng, tầng sinh môn, vùng chậu sâu, hoặc áp-xe phổi hoại tử.
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-green"></div>
+          <div class="clin-card-title"><i class="fa-solid fa-calendar-check"></i> Liệu Trình Ngắn Ngày (BALANCE)</div>
+          <div class="clin-card-body">
+            <strong>Statement 38 (MỚI):</strong> Khi ổ nhiễm trùng ban đầu đã được kiểm soát hoàn toàn bằng phẫu thuật hoặc dẫn lưu, khuyến nghị sử dụng liệu trình kháng sinh <strong>ngắn ngày (7 ngày)</strong> dựa trên kết quả thử nghiệm BALANCE (3,608 bệnh nhân du khuẩn huyết Gram âm), an toàn và hiệu quả tương đương phác đồ 14 ngày cổ điển.
+          </div>
+        </div>
+
+        <div class="clin-card">
+          <div class="clin-card-accent accent-amber"></div>
+          <div class="clin-card-title"><i class="fa-solid fa-vial"></i> TDM &amp; Test Phân Tử Nhanh</div>
+          <div class="clin-card-body">
+            <strong>Statement 31 &amp; 34:</strong> Khuyến khích ứng dụng kỹ thuật PCR đa mồi nhanh hoặc panel vi sinh phân tử tại ICU để định danh mầm bệnh trong vài giờ đầu. Áp dụng giám sát nồng độ thuốc trong máu (TDM) cho Vancomycin, Aminoglycosides và Beta-lactams để bù trừ tình trạng tăng thanh thải tại thận (ARC) ở bệnh nhân hồi sức.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {/* ==================== SECTION 3 ==================== */}
+  <div class="sec-card" id="sec-3">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🫀</span>
+      <h2 class="sec-title">3. Quản Lý Huyết Động, Thuốc Vận Mạch Phân Tầng &amp; Đích MAP Người Cao Tuổi</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Lựa Chọn Dịch Hồi Sức: Dịch Tinh Thể Cân Bằng vs Muối Sinh Lý 0.9%</div>
+      
+      {{/* TABLE 6 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-flask-vial"></i> Bảng 6. So Sánh Dịch Tinh Thể Cân Bằng vs Nước Muối 0.9% (SMART, PLUS, BALANCED)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-droplet"></i> Dịch truyền lựa chọn</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Chỉ Tiêu Đánh Giá</th>
+                <th style="width: 37%;">Dịch Tinh Thể Cân Bằng (Balanced Crystalloids: Ringer Lactate, Plasma-Lyte)</th>
+                <th style="width: 38%;">Nước Muối Sinh Lý 0.9% (Normal Saline 0.9% NaCl)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Thành phần điện giải</strong></td>
+                <td>Nồng độ Cl⁻ sinh lý (98 - 109 mmol/L); chứa đệm chuyển hóa (Lactate, Acetate, Gluconate); cân bằng áp suất thẩm thấu.</td>
+                <td>Nồng độ Cl⁻ siêu cao (154 mmol/L) và Na⁺ cao (154 mmol/L); không có hệ đệm chuyển hóa.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Nguy cơ Toan hóa &amp; Thận</strong></td>
+                <td>Bảo tồn pH máu; không gây co thắt động mạch thận; giảm nguy cơ tổn thương thận cấp AKI và giảm nhu cầu lọc máu RRT.</td>
+                <td>Gây toan chuyển hóa tăng clo máu (Hyperchloremic metabolic acidosis); gây co thắt tiểu động mạch đến của cầu thận và giảm tưới máu thận.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Khuyến cáo SSC 2026</strong></td>
+                <td><span class="rx-tag preferred">Khuyến nghị ưu tiên (Class 2, Level A)</span> cho mọi ca hồi sức sepsis và sốc nhiễm khuẩn.</td>
+                <td>Hạn chế sử dụng khi cần truyền thể tích lớn; chỉ ưu tiên khi có nhiễm kiềm chuyển hóa hạ clo máu hoặc chấn thương sọ não.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Phác Đồ Phối Hợp Thuốc Vận Mạch &amp; Tăng Co Bóp Cơ Tim Từng Bước (Figure 3 SSC)</div>
+
+      {{/* TABLE 7 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-syringe"></i> Bảng 7. Phác Đồ Phối Hợp Thuốc Vận Mạch &amp; Tăng Co Bóp Cơ Tim Từng Bước (Figure 3 SSC)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-arrow-up-right-dots"></i> Phân tầng vận mạch</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Bậc Can Thiệp</th>
+                <th style="width: 25%;">Thuốc &amp; Liều Khởi Đầu</th>
+                <th style="width: 35%;">Chỉ Định &amp; Tiêu Chuẩn Nâng Bậc</th>
+                <th style="width: 25%;">Khuyến Cáo SSC 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>BẬC 1 (First-Line)</strong></td>
+                <td><strong>Norepinephrine (NE)</strong><br />Khởi đầu 0.05 - 0.1 mcg/kg/phút, chỉnh liều nhanh mỗi 2-5 phút</td>
+                <td>Dùng ngay khi tụt huyết áp kéo dài dù đang bù dịch. Có thể bắt đầu qua <em>tĩnh mạch ngoại vi</em> trong khi chờ thiết lập CVC.</td>
+                <td><span class="rx-tag preferred">Class 1, Level A</span> (Statement 53)<br /><span class="rx-tag alternative">Ngoại vi: Class 2, Level B</span> (Statement 12)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>BẬC 2 (Second-Line)</strong></td>
+                <td><strong>Vasopressin</strong><br />Liều cố định <strong>0.03 đơn vị/phút</strong> (KHÔNG chỉnh liều dao động)</td>
+                <td>Phối hợp thêm vào Norepinephrine khi liều NE đạt ngưỡng <strong>0.25 - 0.50 mcg/kg/phút</strong> để tăng MAP và giảm liều NE.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 54)<br />Tránh dùng đơn độc</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>BẬC 3 (Third-Line)</strong></td>
+                <td><strong>Epinephrine</strong><br />Khởi đầu 0.05 - 0.2 mcg/kg/phút</td>
+                <td>Bổ sung thêm khi MAP vẫn chưa đạt đích dù đã phối hợp tối ưu Norepinephrine và Vasopressin.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 55)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>TĂNG CO BÓP (Inotrope)</strong></td>
+                <td><strong>Dobutamine</strong> (2.5 - 20 mcg/kg/phút) HOẶC <strong>Epinephrine</strong></td>
+                <td>Chỉ định khi có bằng chứng rối loạn chức năng co bóp cơ tim (giảm EF, ScvO2 &lt; 70%, lactate tăng) dù đã đủ thể tích và đạt MAP.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 60)<br />Bắt buộc phối hợp cùng vận mạch</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Cá Thể Hóa Đích Huyết Áp &amp; Bằng Chứng Thử Nghiệm "65 Trial"</div>
+      <div class="infobox info">
+        <span class="infobox-icon">🎯</span>
+        <div>
+          <strong>Đích Áp Lực Động Mạch Trung Bình (MAP) Theo Lứa Tuổi (Statement 13 &amp; 14):</strong>
+          <ul style="margin-left: 1.2rem; margin-top: 0.5rem; line-height: 1.8;">
+            <li><strong>Người trưởng thành nói chung (&lt; 65 tuổi):</strong> Khuyến nghị duy trì đích MAP ban đầu là <strong>≥ 65 mmHg</strong> (Class 1, Level B).</li>
+            <li><strong>Người cao tuổi (≥ 65 tuổi) - Điểm MỚI KASL/SSC 2026:</strong> Thử nghiệm ngẫu nhiên đa trung tâm <strong>65 Trial</strong> (2,463 bệnh nhân) chứng minh rằng việc áp dụng chiến lược "hạ áp chấp nhận được" (permissive hypotension) với đích <strong>MAP 60 - 65 mmHg</strong> giúp giảm liều và thời gian dùng thuốc vận mạch, giảm nguy cơ rối loạn nhịp tim mà không làm tăng tỷ lệ tử vong 90 ngày hay tổn thương thận so với duy trì MAP cao hơn. Gợi ý nhắm khoảng đích MAP ban đầu 60 - 65 mmHg (Class 2, Level B).</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {/* ==================== SECTION 4 ==================== */}
+  <div class="sec-card" id="sec-4">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🫁</span>
+      <h2 class="sec-title">4. Hỗ Trợ Hô Hấp, Thở Máy Bảo Vệ Phổi Trong ARDS &amp; Awake Proning</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Hỗ Trợ Không Xâm Lấn: Ưu Tiên HFNC &amp; Thử Nghiệm Nằm Sấp Khi Tỉnh (Awake Proning)</div>
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #eff6ff; color: #0284c7;">🫁</div>
+            <div class="update-card-title">Oxy Dòng Cao HFNC Vượt Trội Hơn NIPPV (Statement 67)</div>
+          </div>
+          <div class="update-card-body">
+            Đối với bệnh nhân suy hô hấp giảm oxy máu cấp do sepsis chưa cần đặt nội khí quản, khuyến nghị ưu tiên sử dụng <strong>HFNC</strong> thay vì thở máy không xâm lấn NIPPV. HFNC cung cấp FiO2 chính xác, tạo PEEP sinh lý thấp, giảm công thở và giảm đáng kể tỷ lệ phải đặt nội khí quản khẩn cấp.
+          </div>
+          <div class="update-verdict verdict-blue">HFNC là lựa chọn số 1 (Class 2, Level B)</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #16a34a;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: #f0fdf4; color: #16a34a;">🔄</div>
+            <div class="update-card-title">Awake Proning - Nằm Sấp Khi Tỉnh (Statement 69 MỚI)</div>
+          </div>
+          <div class="update-card-body">
+            Ở bệnh nhân suy hô hấp giảm oxy máu cấp đang thở HFNC, gợi ý thử nghiệm cho bệnh nhân <strong>nằm sấp khi tỉnh táo (Awake Proning)</strong> nhiều đợt trong ngày. Can thiệp này giúp đồng đều hóa thông khí/tưới máu ở vùng phổi lưng, cải thiện PaO2/FiO2 và giảm tỷ lệ tiến triển phải đặt ống nội khí quản.
+          </div>
+          <div class="update-verdict verdict-green">Áp dụng cho ca thở HFNC (Class 2, Level C)</div>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Cài Đặt Thở Máy Bảo Vệ Phổi Trong ARDS Do Nhiễm Khuẩn Huyết</div>
+
+      {{/* TABLE 8 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-sliders"></i> Bảng 8. Thông Số Cài Đặt Máy Thở Bảo Vệ Phổi Trong ARDS Do Sepsis (ARDSNet &amp; PROSEVA)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-lungs"></i> Lung-Protective Ventilation</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Thông Số Cài Đặt</th>
+                <th style="width: 45%;">Mục Tiêu &amp; Giá Trị Đích</th>
+                <th style="width: 30%;">Phân Cấp Khuyến Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Thể tích khí lưu thông (VT)</strong></td>
+                <td><strong>6 mL/kg Trọng lượng cơ thể dự đoán (PBW)</strong> (thay vì 10 - 12 mL/kg). Có thể giảm xuống 4 mL/kg PBW nếu áp lực đẩy đỉnh tăng cao.</td>
+                <td><span class="rx-tag preferred">Class 1, Level A</span> (Statement 70)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Áp lực đẩy đỉnh (Plateau Pressure)</strong></td>
+                <td>Giới hạn trên của <strong>Pplat ≤ 30 cmH2O</strong> (áp lực đẩy đỉnh an toàn đo khi giữ cuối thì hít vào).</td>
+                <td><span class="rx-tag preferred">Class 1, Level B</span> (Statement 71)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Chiến lược PEEP</strong></td>
+                <td>Ưu tiên <strong>PEEP cao</strong> hơn PEEP thấp ở bệnh nhân ARDS mức độ trung bình đến nặng để chống xẹp phế nang.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 72)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Tư thế Nằm Sấp (Prone Positioning)</strong></td>
+                <td>Bắt buộc duy trì nằm sấp <strong>ít nhất 16 giờ/ngày</strong> ở bệnh nhân ARDS trung bình - nặng (PaO2/FiO2 &lt; 150) (thử nghiệm PROSEVA).</td>
+                <td><span class="rx-tag preferred">Class 1, Level B</span> (Statement 74)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Giãn cơ ngắt quãng (NMBA)</strong></td>
+                <td>Sử dụng thuốc giãn cơ ngắt quãng khi cần; hoặc truyền liên tục tối đa không quá 48 giờ khi có bất đồng bộ máy thở nặng.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 75)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Can thiệp VV-ECMO</strong></td>
+                <td>Xem xét ECMO tĩnh mạch - tĩnh mạch (VV-ECMO) tại các trung tâm chuyên khoa khi ARDS nặng trơ thất bại với nằm sấp và thở máy bảo vệ phổi (EOLIA).</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 77)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {/* ==================== SECTION 5 ==================== */}
+  <div class="sec-card" id="sec-5">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🛡️</span>
+      <h2 class="sec-title">5. Liệu Pháp Bổ Sung, Rút Dịch De-Resuscitation, Bicarbonate &amp; Chế Phẩm Máu</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Corticosteroid Tĩnh Mạch Trong Sốc Nhiễm Khuẩn Trơ (Statement 79 &amp; 80)</div>
+      <div class="infobox info">
+        <span class="infobox-icon">💊</span>
+        <div>
+          <strong>Liệu Pháp Corticosteroid Phân Tầng Theo Thử Nghiệm ADRENAL &amp; APROCCHSS:</strong>
+          Chỉ định dùng corticosteroid khi sốc nhiễm khuẩn kéo dài cần dùng thuốc vận mạch liên tục (liều Norepinephrine ≥ 0.25 mcg/kg/phút kéo dài trên 4 giờ).
+          <ul style="margin-left: 1.2rem; margin-top: 0.5rem; line-height: 1.8;">
+            <li><strong>Thuốc &amp; Liều dùng:</strong> <strong>Hydrocortisone 200 mg/ngày</strong> (truyền tĩnh mạch liên tục 200 mg/24h hoặc tiêm tĩnh mạch 50 mg mỗi 6 giờ).</li>
+            <li><strong>Phối hợp Fludrocortisone (Statement 80 MỚI):</strong> Gợi ý phối hợp thêm <strong>Fludrocortisone đường uống 50 mcg/ngày</strong> cùng Hydrocortisone dựa trên bằng chứng cải thiện sống còn từ thử nghiệm APROCCHSS.</li>
+            <li><strong>Giảm liều:</strong> Giảm liều dần và ngừng khi bệnh nhân đã cai hoàn toàn thuốc vận mạch.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Cai Dịch Chủ Động (Active De-Resuscitation) Sau Hồi Sức Cấp (Statement 89 MỚI)</div>
+      <div class="infobox warning">
+        <span class="infobox-icon">🌊</span>
+        <div>
+          <strong>Chiến Lược Rút Dịch Tích Cực Ngăn Ngừa Tổn Thương Đa Tạng Do Quá Tải Thể Tích:</strong>
+          Sau giai đoạn sốc cấp (thường sau 24 - 48 giờ) khi huyết động đã ổn định, tình trạng ứ dịch tích lũy (positive fluid balance) làm tăng áp lực tĩnh mạch trung tâm, gây phù mô kẽ phổi, gan ứ máu, tăng áp lực ổ bụng và suy thận cấp. SSC 2026 chính thức đưa ra khuyến cáo gợi ý áp dụng <strong>chiến lược rút dịch chủ động (Active fluid removal / De-resuscitation)</strong> bằng cách dùng thuốc lợi tiểu quai (Furosemide) hoặc siêu lọc thận nhân tạo khi có chỉ định nhằm đạt cân bằng dịch âm tính có kiểm soát.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Chỉ Định &amp; Ngưỡng Can Thiệp Chế Phẩm Máu &amp; Liệu Pháp Hỗ Trợ</div>
+
+      {{/* TABLE 9 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-droplet"></i> Bảng 9. Chỉ Định &amp; Ngưỡng Can Thiệp Chế Phẩm Máu &amp; Liệu Pháp Hỗ Trợ Cốt Lõi
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-hand-holding-medical"></i> Can thiệp bổ sung</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Biện Pháp Can Thiệp</th>
+                <th style="width: 45%;">Ngưỡng Lâm Sàng &amp; Tiêu Chuẩn Thực Hành</th>
+                <th style="width: 30%;">Phân Cấp Khuyến Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Truyền Khối Hồng Cầu (RBC)</strong></td>
+                <td>Chiến lược truyền máu hạn chế: CHỈ truyền khi <strong>Hemoglobin &lt; 7.0 g/dL</strong> (đích duy trì 7.0 - 9.0 g/dL), trừ trường hợp nhồi máu cơ tim cấp hoặc thiếu máu cơ tim tiến triển (thử nghiệm TRISS).</td>
+                <td><span class="rx-tag preferred">Class 1, Level A</span> (Statement 90)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Truyền Tiểu Cầu Dự Phòng</strong></td>
+                <td>Truyền khi <strong>&lt; 10,000/mm³</strong> không chảy máu; <strong>&lt; 20,000/mm³</strong> nếu nguy cơ chảy máu cao; và duy trì <strong>≥ 50,000/mm³</strong> khi có chảy máu hoạt động hoặc chuẩn bị phẫu thuật/thủ thuật.</td>
+                <td><span class="rx-tag alternative">Class 2, Level C</span> (Statement 91)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Huyết Tương Tươi (FFP)</strong></td>
+                <td>KHÔNG truyền FFP thường quy chỉ để điều chỉnh INR/PT kéo dài nếu không có chảy máu lâm sàng hoặc can thiệp xâm lấn.</td>
+                <td><span class="rx-tag danger">Class 2 (Chống chỉ định)</span> (Statement 92)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Natri Bicarbonate (BICAR-ICU)</strong></td>
+                <td>Gợi ý sử dụng Natri Bicarbonate tĩnh mạch CHỈ ở bệnh nhân <strong>toan chuyển hóa nặng (pH ≤ 7.20) có kèm suy thận cấp (AKI giai đoạn 2 - 3)</strong> để giảm nhu cầu lọc máu và giảm tử vong.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 95)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Dự Phòng Thuyên Tắc (VTE)</strong></td>
+                <td>Khuyến nghị dùng thuốc dự phòng thuyên tắc tĩnh mạch: ưu tiên <strong>LMWH (Enoxaparin)</strong> hơn Heparin không phân đoạn UFH trừ khi suy thận nặng (eGFR &lt; 30 mL/phút).</td>
+                <td><span class="rx-tag preferred">Class 1, Level A</span> (Statement 94)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Dự Phòng Loét Dạ Dày (SUP)</strong></td>
+                <td>Dùng PPI hoặc kháng H2 CHỈ ở bệnh nhân có yếu tố nguy cơ xuất huyết tiêu hóa (thở máy ≥ 48h, rối loạn đông máu nặng). Không dùng đại trà.</td>
+                <td><span class="rx-tag alternative">Class 2, Level B</span> (Statement 87)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Kiểm Soát Đường Huyết</strong></td>
+                <td>Bắt đầu truyền Insulin khi đường huyết ≥ 180 mg/dL (10.0 mmol/L); nhắm khoảng đích an toàn <strong>140 - 180 mg/dL (7.8 - 10.0 mmol/L)</strong>.</td>
+                <td><span class="rx-tag preferred">Class 1, Level A</span> (Statement 98)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Vitamin C Tĩnh Mạch</strong></td>
+                <td>Khuyến cáo MẠNH MẼ KHÔNG dùng Vitamin C tĩnh mạch do không có lợi ích và làm tăng tỷ lệ tổn thương cơ quan (thử nghiệm LOVIT).</td>
+                <td><span class="rx-tag danger">Class 1 (Chống chỉ định)</span> (Statement 81)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {/* ==================== SECTION 6 ==================== */}
+  <div class="sec-card" id="sec-6">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔄</span>
+      <h2 class="sec-title">6. Mục Tiêu Chăm Sóc, Chuyển Tiếp Điều Trị, Đối Chiếu Thuốc &amp; Hậu Sepsis (PICS)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Thảo Luận Mục Tiêu Chăm Sóc &amp; Nguyên Lý Chăm Sóc Giảm Nhẹ (Statement 103 &amp; 106)</div>
+      <div class="infobox info">
+        <span class="infobox-icon">🤝</span>
+        <div>
+          <strong>Thời Điểm Vàng Thảo Luận Mục Tiêu Chăm Sóc (Goals of Care):</strong>
+          Đội ngũ y tế cần chủ động thảo luận về mục tiêu điều trị, kỳ vọng và tiên lượng cùng bệnh nhân và gia đình sớm nhất có thể, <strong>lý tưởng trong vòng 72 giờ đầu</strong> sau khi nhập viện hoặc vào ICU. Tích hợp các nguyên lý chăm sóc giảm nhẹ (kiểm soát đau, khó thở, lo âu) vào phác đồ điều trị hồi sức tích cực để bảo vệ nhân phẩm và sự thoải mái cho người bệnh.
+        </div>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Quy Trình Đối Chiếu Thuốc &amp; Chương Trình Chăm Sóc Hậu Sepsis (PICS)</div>
+
+      {{/* TABLE 10 CARD */}}
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-clipboard-check"></i> Bảng 10. Quy Trình Đối Chiếu Thuốc &amp; Chương Trình Sàng Lọc Di Chứng Hậu Sepsis (PICS)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-notes-medical"></i> Chuyển tiếp &amp; Phục hồi</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Hạng Mục Can Thiệp</th>
+                <th style="width: 45%;">Hành Động Cốt Lõi Tại Thời Điểm Chuyển Tiếp / Xuất Viện</th>
+                <th style="width: 30%;">Phân Cấp Khuyến Cáo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Đối Chiếu Thuốc (Medication Reconciliation)</strong></td>
+                <td>Quy trình đối chiếu thuốc toàn diện do <strong>dược sĩ lâm sàng</strong> điều phối khi chuyển từ ICU ra khoa phòng và khi xuất viện; rà soát và ngừng các thuốc không còn chỉ định (kháng sinh thừa, an thần, PPI).</td>
+                <td><span class="rx-tag info">GPS (Statement 111)</span><br /><span class="rx-tag alternative">Class 2, Level B (Statement 112)</span></td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Giáo Dục Bệnh Nhân &amp; Tóm Tắt Xuất Viện</strong></td>
+                <td>Cung cấp tài liệu giáo dục bằng cả văn bản và tư vấn trực tiếp; nhận diện các dấu hiệu cảnh báo tái phát (sốt lại, rét run, lú lẫn, khó thở); gửi tóm tắt bệnh án cho bác sĩ ban đầu trong 48 - 72 giờ.</td>
+                <td><span class="rx-tag info">GPS (Statements 113 - 115)</span></td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Di Chứng Thể Chất (PICS-Physical &amp; ICUAW)</strong></td>
+                <td>Sàng lọc tình trạng yếu cơ mắc phải tại ICU (ICUAW), teo cơ và suy giảm khả năng vận động; khởi động can thiệp phục hồi chức năng sớm ngay trong thời gian nằm viện khi huyết động ổn định.</td>
+                <td><span class="rx-tag info">GPS (Statement 118)</span><br /><span class="rx-tag alternative">Class 2, Level B (Statement 126)</span></td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Di Chứng Nhận Thức (PICS-Cognitive)</strong></td>
+                <td>Đánh giá suy giảm trí nhớ, mất tập trung, rối loạn điều hành và sa sút nhận thức sau mê sảng ICU; chuyển khám chuyên khoa thần kinh - tâm thần phục hồi nhận thức.</td>
+                <td><span class="rx-tag info">GPS (Statement 127)</span></td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Sức Khỏe Tâm Thần &amp; Trầm Cảm (PICS-Mental)</strong></td>
+                <td>Sàng lọc trầm cảm, rối loạn lo âu và stress sau sang chấn (PTSD) cho cả bệnh nhân sống sót sau sepsis và người chăm sóc gia đình; kết nối các nhóm đồng đẳng hỗ trợ.</td>
+                <td><span class="rx-tag info">GPS (Statement 120 &amp; 122)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  {/* ==================== SECTION 7 ==================== */}
+  <div class="sec-card" id="sec-7">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📚</span>
+      <h2 class="sec-title">7. Tài Liệu Tham Khảo Chuẩn AMA &amp; Bảng Viết Tắt Y Khoa</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="sec-subtitle">Danh Mục Tài Liệu Tham Khảo Chọn Lọc (AMA Format)</div>
+      <div class="ama-ref-list" style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-muted);">
+        <ol style="margin-left: 1.5rem;">
+          <li>Prescott HC, Antonelli M, Alhazzani W, Møller MH, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. <em>Crit Care Med</em>. 2026;54(4):725-812.</li>
+          <li>Dulhunty JM, Brett SJ, De Waele JJ, et al; BLING III Study Investigators. Continuous vs intermittent infusion of β-lactam antibiotics in critically ill patients with sepsis: The BLING III randomized clinical trial. <em>JAMA</em>. 2024;332(6):467-476.</li>
+          <li>National Heart, Lung, and Blood Institute Prevention and Early Treatment of Acute Lung Injury (PETAL) Clinical Trials Network; Shapiro NI, Douglas IS, Brower RG, et al. Early restrictive vs liberal fluid management for sepsis-induced hypotension (CLOVERS). <em>N Engl J Med</em>. 2023;388(6):499-510.</li>
+          <li>Meyhoff TS, Hjortrup PB, Wetterslev J, et al; CLASSIC Trial Group. Restriction of intravenous fluid in ICU patients with septic shock. <em>N Engl J Med</em>. 2022;386(26):2459-2470.</li>
+          <li>Lamontagne F, Richards-Belle A, Thomas K, et al; 65 Trial Investigators. Effect of reduced exposure to vasopressors on 90-day mortality in older critically ill patients with vasodilatory hypotension: A randomized clinical trial. <em>JAMA</em>. 2020;323(10):938-949.</li>
+          <li>Daneman N, Rishu AH, Pinto R, et al; BALANCE Study Group. 7 days vs 14 days of antibiotic therapy for bloodstream infections in critically ill patients (BALANCE): A randomized, controlled, non-inferiority trial. <em>Lancet</em>. 2024;404(10467):2075-2086.</li>
+          <li>Jaber S, Paugam C, Futier E, et al; BICAR-ICU Study Group. Sodium bicarbonate therapy for patients with severe metabolic acidemia in the intensive care unit (BICAR-ICU): A multicentre, open-label, randomised controlled, phase 3 trial. <em>Lancet</em>. 2018;392(10141):31-40.</li>
+          <li>Hernández G, Ospina-Tascón GA, Damiani LP, et al; ANDROMEDA-SHOCK Investigators. Effect of a resuscitation strategy targeting peripheral perfusion status vs serum lactate level on 28-day mortality among patients with septic shock: The ANDROMEDA-SHOCK randomized clinical trial. <em>JAMA</em>. 2019;321(7):654-664.</li>
+          <li>Guérin C, Reignier J, Richard JC, et al; PROSEVA Study Group. Prone positioning in severe acute respiratory distress syndrome. <em>N Engl J Med</em>. 2013;368(23):2159-2168.</li>
+          <li>Annane D, Renault A, Brun-Buisson C, et al; CRICS-TRIGGERSEP Network. Hydrocortisone plus fludrocortisone for adults with septic shock (APROCCHSS). <em>N Engl J Med</em>. 2018;378(9):809-818.</li>
+          <li>Venkatesh B, Finfer S, Cohen J, et al; ADRENAL Trial Investigators. Adjunctive glucocorticoid therapy in patients with septic shock. <em>N Engl J Med</em>. 2018;378(9):797-808.</li>
+          <li>Semler MW, Self WH, Wanderer JP, et al; SMART Investigators. Balanced crystalloids versus saline in critically ill adults. <em>N Engl J Med</em>. 2018;378(9):829-839.</li>
+          <li>Holst LB, Haase N, Wetterslev J, et al; TRISS Trial Group. Lower versus higher hemoglobin threshold for transfusion in septic shock. <em>N Engl J Med</em>. 2014;371(15):1381-1391.</li>
+        </ol>
+      </div>
+
+      <div class="sec-subtitle" style="margin-top: 1.5rem;">Bảng Viết Tắt Y Khoa (Medical Abbreviations)</div>
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-spell-check"></i> Bảng Thuật Ngữ Viết Tắt Chuyên Khoa Hồi Sức Tích Cực
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-book"></i> Từ điển viết tắt</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Từ Viết Tắt</th>
+                <th style="width: 45%;">Thuật Ngữ Tiếng Anh</th>
+                <th style="width: 30%;">Giải Nghĩa Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>SSC</strong></td>
+                <td>Surviving Sepsis Campaign</td>
+                <td>Chiến dịch Sống còn Sepsis Quốc tế</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>MAP</strong></td>
+                <td>Mean Arterial Pressure</td>
+                <td>Huyết áp động mạch trung bình (Đích ≥ 65 mmHg; 60 - 65 mmHg ở người ≥ 65 tuổi)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>NEWS / SIRS</strong></td>
+                <td>National Early Warning Score / Systemic Inflammatory Response Syndrome</td>
+                <td>Thang điểm cảnh báo sớm / Hội chứng đáp ứng viêm toàn thân</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>CRT</strong></td>
+                <td>Capillary Refill Time</td>
+                <td>Thời gian đổ đầy mao mạch (Đích &lt; 3 giây theo ANDROMEDA-SHOCK)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>PLR / PPV / SVV</strong></td>
+                <td>Passive Leg Raising / Pulse Pressure Variation / Stroke Volume Variation</td>
+                <td>Nâng chân thụ động / Biến thiên áp lực mạch / Biến thiên thể tích nhát bóp</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>HFNC</strong></td>
+                <td>High-Flow Nasal Cannula</td>
+                <td>Oxy lưu lượng cao qua ống thông mũi</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>PBW / IBW</strong></td>
+                <td>Predicted Body Weight / Ideal Body Weight</td>
+                <td>Trọng lượng cơ thể dự đoán / Trọng lượng cơ thể lý tưởng</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>TDM</strong></td>
+                <td>Therapeutic Drug Monitoring</td>
+                <td>Giám sát nồng độ thuốc trong máu tại ICU</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>PICS</strong></td>
+                <td>Post-Intensive Care Syndrome</td>
+                <td>Hội chứng suy yếu sau hồi sức tích cực (Thể chất, Nhận thức, Tâm lý)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
