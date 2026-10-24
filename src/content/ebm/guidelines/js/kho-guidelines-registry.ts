@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-10-24 (125 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-10-24 (128 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 
@@ -2462,6 +2462,31 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "sourceUrl": "https://iris.who.int/server/api/core/bitstreams/634a55a5-327e-459b-a633-0650fe8ad6c9/content"
   },
   {
+    "id": "2023-aafp-potassium-disorders",
+    "title": "Hướng Dẫn Lâm Sàng AAFP 2023: Chẩn Đoán & Điều Trị Rối Loạn Kali Máu (Hạ Kali & Tăng Kali Máu)",
+    "titleEn": "AAFP 2023 Clinical Guideline: Potassium Disorders - Hypokalemia and Hyperkalemia",
+    "drug": "Potassium chloride, Calcium gluconate, Insulin, Albuterol, Patiromer, Sodium zirconium cyclosilicate, Furosemide, Sodium polystyrene sulfonate",
+    "sourceType": "intl-guideline",
+    "specialty": "renal",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Bồi hoàn Kali đường uống/tĩnh mạch, ức chế tim/dịch chuyển Kali trong cấp cứu tăng Kali máu (Canxi, Insulin + Glucose, Albuterol) và thải Kali bằng thuốc gắn Kali thế hệ mới (Patiromer, SZC).",
+    "impact": "practice-changing",
+    "year": 2023,
+    "organization": "American Academy of Family Physicians (AAFP)",
+    "journal": "American Family Physician (AFP)",
+    "population": "Bệnh nhân trưởng thành có hạ kali máu (K⁺ < 3.5 mEq/L) hoặc tăng kali máu (K⁺ > 5.0 mEq/L) trong cấp cứu, nội trú và quản lý mạn tính.",
+    "summary": "Tóm tắt khuyến cáo thực hành lâm sàng AAFP 2023 về tiếp cận chẩn đoán, phân tầng nguy cơ, cấp cứu biến chứng tim mạch và điều trị tối ưu hạ Kali & tăng Kali máu.",
+    "file": "2023-aafp-potassium-disorders.mdx",
+    "conditionKey": "potassium-disorders",
+    "icd10": [
+      "E87.6",
+      "E87.5"
+    ],
+    "asianData": false,
+    "bookmarked": false
+  },
+  {
     "id": "2023-byt-benh-phoi-mo-ke",
     "title": "BYT 2023: Hướng dẫn Chẩn đoán và Điều trị Bệnh phổi Mô kẽ (ILD)",
     "titleEn": "National Guidelines on Interstitial Lung Disease Diagnosis and Treatment",
@@ -3735,6 +3760,31 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "fdaStatus": "N/A"
   },
   {
+    "id": "2016-sfe-acute-hypercalcaemia",
+    "title": "Hướng Dẫn Lâm Sàng Cấp Cứu SfE 2016: Xử Trí Cấp Cứu Tăng Canxi Máu Cấp Ở Bệnh Nhân Trưởng Thành",
+    "titleEn": "Society for Endocrinology 2016 Emergency Guidance: Emergency Management of Acute Hypercalcaemia in Adult Patients",
+    "drug": "Normal saline 0.9%, Zoledronic acid, Pamidronate, Ibandronic acid, Prednisolone, Calcitonin, Denosumab, Cinacalcet",
+    "sourceType": "intl-guideline",
+    "specialty": "endo",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Bù dịch Saline 0.9% thể tích lớn 4-6 L/24h, Bisphosphonate tĩnh mạch (Zoledronic acid 4mg), Glucocorticoid (Prednisolone 40mg) cho bệnh hạt/lymphoma và lọc máu cấp cứu khi suy thận nặng.",
+    "impact": "practice-changing",
+    "year": 2016,
+    "organization": "Society for Endocrinology (SfE)",
+    "journal": "Endocrine Connections",
+    "population": "Bệnh nhân trưởng thành có tăng Canxi máu cấp tính (Canxi hiệu chỉnh > 3.0 mmol/L hoặc có triệu chứng đe dọa tính mạng) trong cấp cứu và hồi sức tích cực.",
+    "summary": "Tóm tắt hướng dẫn lâm sàng cấp cứu của Hội Nội tiết Anh (SfE 2016) về phân tầng mức độ nặng tăng Canxi máu, quy trình bù dịch khẩn cấp, chỉ định Bisphosphonate và kiểm soát biến chứng rối loạn nhịp tim/hôn mê.",
+    "file": "2016-sfe-acute-hypercalcaemia.mdx",
+    "conditionKey": "hypercalcemia",
+    "icd10": [
+      "E83.5",
+      "E83.52"
+    ],
+    "asianData": false,
+    "bookmarked": false
+  },
+  {
     "id": "2015-byt-dermatology",
     "title": "Hướng Dẫn Chẩn Đoán và Điều Trị Các Bệnh Da Liễu: Quyết Định 75/QĐ-BYT 2015",
     "titleEn": "Vietnam Ministry of Health Guidelines for Diagnosis and Treatment of Dermatological Diseases 2015",
@@ -3883,6 +3933,30 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "B15",
       "B15.0",
       "B15.9"
+    ],
+    "asianData": false,
+    "bookmarked": false
+  },
+  {
+    "id": "2014-esicm-ese-era-hyponatremia",
+    "title": "Hướng Dẫn Lâm Sàng Liên Hội Châu Âu 2014: Chẩn Đoán & Điều Trị Hạ Natri Máu (Hyponatraemia)",
+    "titleEn": "ESICM / ESE / ERA-EDTA 2014 Clinical Practice Guideline on Diagnosis and Treatment of Hyponatraemia",
+    "drug": "Hypertonic saline 3%, Normal saline 0.9%, Glucose 5%, Urea, Desmopressin, Furosemide, Spironolactone",
+    "sourceType": "intl-guideline",
+    "specialty": "renal",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Xử trí cấp cứu bằng Saline ưu trương 3% 150 mL truyền nhanh, bù dịch đẳng trương, tiết chế dịch, bù Urea đường uống và hạ Natri khẩn cấp bằng Glucose 5% + Desmopressin khi quá tốc độ bù.",
+    "impact": "practice-changing",
+    "year": 2014,
+    "organization": "European Society of Intensive Care Medicine (ESICM), European Society of Endocrinology (ESE), ERA-EDTA (ERBP)",
+    "journal": "European Journal of Endocrinology",
+    "population": "Bệnh nhân trưởng thành có hạ Natri máu (Na⁺ < 135 mmol/L) trong cấp cứu, hồi sức tích cực (ICU) và nội trú.",
+    "summary": "Tóm tắt khuyến cáo lâm sàng liên hội ESICM/ESE/ERA-EDTA 2014 về tiếp cận chẩn đoán dựa trên Osmolality/Natri niệu, cấp cứu phù não do hạ Natri máu và phòng ngừa Hội chứng Phân hủy Myelin do Phục hồi Osmosis (ODS).",
+    "file": "2014-esicm-ese-era-hyponatremia.mdx",
+    "conditionKey": "hyponatremia",
+    "icd10": [
+      "E87.1"
     ],
     "asianData": false,
     "bookmarked": false
