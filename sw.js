@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cliniportal-v2.3';
+const CACHE_NAME = 'cliniportal-v2.4';
 
 // Essential App Shell resources to precache
 const PRECACHE_ASSETS = [
@@ -116,6 +116,23 @@ self.addEventListener('fetch', (event) => {
           return caches.match('./index.html').then(homeResp => homeResp || caches.match('./offline.html'));
         });
       })
+    );
+    return;
+  }
+
+  // Strategy 2b: Medical Knowledge Data & Registries -> Network-First with Cache Fallback
+  // Đảm bảo số lượng bài tóm tắt và danh mục trên Laptop & Mobile luôn đồng bộ tức thì khi có mạng
+  if (url.pathname.includes('guidelines-db.json') || 
+      url.pathname.includes('kho-guidelines-registry') ||
+      url.pathname.includes('vault-catalog')) {
+    event.respondWith(
+      fetch(req).then((networkResp) => {
+        if (networkResp && networkResp.status === 200) {
+          const respClone = networkResp.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, respClone));
+        }
+        return networkResp;
+      }).catch(() => caches.match(req))
     );
     return;
   }
