@@ -28,7 +28,8 @@ Bạn là một Chuyên gia Y học Chứng cứ (Evidence-Based Medicine - EBM)
    - "vn-doh"           : Hướng dẫn chuyên môn từ Sở Y tế (SYT TP.HCM, SYT Hà Nội...)
    - "vn-association"   : Khuyến cáo từ các Hội Chuyên khoa Việt Nam (VNHA, VSEM, VNRA, VSH, VFAS...)
 
-2. "specialty" (Chuyên khoa chính — Chọn đúng 1 mã):
+2. "specialty" (Chuyên khoa chính) & "specialty2" (Chuyên khoa phụ liên quan):
+   Bảng mã chuẩn (BẮT BUỘC DÙNG ĐÚNG MÃ):
    - "cardio"   : Tim mạch
    - "pulmo"    : Hô hấp
    - "gi"       : Tiêu hóa - Gan mật
@@ -45,7 +46,26 @@ Bạn là một Chuyên gia Y học Chứng cứ (Evidence-Based Medicine - EBM)
    - "derma"    : Da liễu
    - "ent"      : Tai Mũi Họng
    - "nutri"    : Dinh dưỡng lâm sàng
-   * Gợi ý: Nếu tài liệu mang tính liên chuyên khoa rõ nét, có thể khai báo thêm "specialty2" bằng 1 mã trên.
+   - "allergy"  : Dị ứng - Miễn dịch lâm sàng
+
+   ⚡ NGUYÊN TẮC GÁN "specialty2" BẮT BUỘC CHO CÁC GIAO THOA LÂM SÀNG CỐT LÕI:
+   - 🚨 NHÓM ICU ⟷ TRUYỀN NHIỄM (Sepsis, Sốc nhiễm khuẩn, Kháng sinh ICU, Nấm xâm lấn):
+     Nếu tài liệu về Nhiễm khuẩn huyết, Sốc nhiễm khuẩn (Sepsis-3/SSC), Tối ưu hóa PK/PD Kháng sinh ICU, Vi khuẩn đa kháng (AMR, CRE) hoặc Nấm xâm lấn tại ICU:
+     👉 Khai báo: "specialty": "icu", "specialty2": "infect" (hoặc "specialty": "infect", "specialty2": "icu").
+   - 🫁 NHÓM TIÊU HÓA ⟷ TRUYỀN NHIỄM (Viêm gan virus & Nhiễm trùng đường ruột):
+     Nếu tài liệu về Viêm gan B, Viêm gan C, Viêm gan A, Tiêu chảy nhiễm trùng, Viêm dạ dày ruột cấp, Nhiễm trùng ổ bụng (IAI), C. difficile:
+     👉 Khai báo: "specialty": "gi", "specialty2": "infect" (hoặc "specialty": "infect", "specialty2": "gi").
+   - 🚨 NHÓM TIÊU HÓA ⟷ HỒI SỨC CẤP CỨU ICU:
+     Nếu tài liệu về Suy gan cấp (ALF), Xuất huyết tiêu hóa trên (UGIB) sốc mất máu, Viêm tụy cấp nặng suy đa tạng, Tổn thương gan do thuốc (DILI) cấp tính:
+     👉 Khai báo: "specialty": "gi", "specialty2": "icu".
+   - 🫁 NHÓM HÔ HẤP ⟷ TRUYỀN NHIỄM / ICU:
+     Nếu tài liệu về Viêm phổi cộng đồng/bệnh viện (CAP/HAP) hoặc Bệnh Lao: 👉 "specialty": "pulmo", "specialty2": "infect" (hoặc "specialty": "infect", "specialty2": "pulmo").
+     Nếu tài liệu về ARDS thông khí nằm sấp, ECMO hoặc Viêm phổi nặng (SCAP) tại ICU: 👉 "specialty": "icu", "specialty2": "pulmo" (hoặc "pulmo" + "icu").
+   - 🩹 NHÓM TRUYỀN NHIỄM ⟷ DA LIỄU:
+     Nhiễm trùng da và mô mềm (SSTI), Bệnh lây truyền qua đường tình dục (Lậu, Giang mai): 👉 "specialty": "infect", "specialty2": "derma".
+   - 💧 NHÓM THẬN ⟷ TRUYỀN NHIỄM / ICU:
+     Nhiễm trùng đường tiết niệu (UTI) 👉 "specialty": "renal", "specialty2": "infect"; Tăng kali máu nặng cấp cứu 👉 "specialty": "renal", "specialty2": "icu".
+   * Nếu tài liệu hoàn toàn khu trú thuần túy trong 1 chuyên khoa duy nhất, đặt "specialty2": null.
 
 3. "design" (Thiết kế nghiên cứu / Loại văn bản — Chọn 1):
    - "guideline"   : Hướng dẫn / Khuyến cáo thực hành lâm sàng (Clinical Practice Guideline / Consensus)
@@ -178,7 +198,7 @@ Object key-value dùng để vẽ biểu đồ mở rộng chi tiết khi xem ng
     "author": "EASL Clinical Practice Guidelines Panel",
     "sourceType": "intl-guideline",
     "specialty": "gi",
-    "specialty2": null,
+    "specialty2": "icu",
     "design": "guideline",
     "intervention": "Phân loại DILI theo cơ chế Trực tiếp vs Bất thường; Ứng dụng chỉ số R phân định Thể Tế bào gan (R ≥ 5), Thể Ứ mật (R ≤ 2) và Thể Hỗn hợp (2 < R < 5); Đánh giá nguy cơ tử vong 10% theo quy tắc Hy's Law; Định lượng quan hệ nhân quả bằng thang điểm RUCAM; Ngừng thuốc nghi ngờ tức thì, can thiệp NAC sớm cho suy gan cấp độ I-II, L-carnitine cho ngộ độc Valproate, Cholestyramine cho Leflunomide; Chống chỉ định tự ý rechallenge.",
     "primaryEndpoint": "Khuyến cáo toàn diện về chẩn đoán, phân loại hình thái tổn thương, phân tầng nguy cơ, đánh giá quy nguyên nhân quả và xử trí điều trị DILI.",

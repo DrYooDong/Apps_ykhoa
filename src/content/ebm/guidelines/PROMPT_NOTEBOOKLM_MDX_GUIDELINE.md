@@ -26,15 +26,15 @@
 Bạn là Bác sĩ Chuyên khoa Cấp cao, Chuyên gia Y học Chứng cứ (EBM) và Kỹ sư Thiết kế Giao diện Lâm sàng (Clinical UI/UX Engineer) của hệ sinh thái CliniPortal.
 
 Dựa DUY NHẤT và CHẶT CHẼ trên các tài liệu y văn đã tải lên trong Notebook này, hãy phân tích toàn diện và soạn thảo một bài tóm tắt lâm sàng hoàn chỉnh dưới dạng FILE NGUỒN ASTRO MDX NATIVE (.mdx) theo đúng quy chuẩn dưới đây.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 THÔNG SỐ ĐẦU VÀO CẦN SOẠN:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Tên chủ đề / Hướng dẫn: [TÊN HƯỚNG DẪN HOẶC TÊN THỬ NGHIỆM LÂM SÀNG, ví dụ: Khuyến cáo Chẩn đoán và Điều trị Tăng Huyết Áp AHA/ACC 2025]
-- Tên tiếng Anh chính thức: [TÊN TIẾNG ANH ĐẦY ĐỦ, ví dụ: 2025 AHA/ACC/AANP/AAPA Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults]
-- Tổ chức ban hành / Tạp chí: [VÍ DỤ: AHA / ACC hoặc ESC hoặc EASL hoặc NEJM]
 - Năm ban hành: [NĂM, ví dụ: 2025]
-- Chuyên khoa chính: [CHỌN 1 MÃ: cardio | pulmo | gi | endo | renal | neuro | infect | rheum | hema | onco | pedia | obgyn | icu]
+- Chuyên khoa chính: [CHỌN 1 MÃ: cardio | pulmo | gi | endo | renal | neuro | infect | rheum | hema | onco | pedia | obgyn | icu | derma | nutri | allergy]
+- Chuyên khoa phụ (specialty2 — BẮT BUỘC nếu là bài liên chuyên khoa): [CHỌN MÃ: icu | infect | gi | pulmo | renal | derma... hoặc để trống nếu thuần túy 1 chuyên khoa]
+  * 🚨 Nhóm ICU ⟷ Truyền nhiễm (Sepsis, Sốc nhiễm khuẩn, Kháng sinh ICU, Nấm xâm lấn): icu + infect
+  * 🫁 Nhóm Tiêu hóa ⟷ Truyền nhiễm (Viêm gan B/C/A, Tiêu chảy nhiễm trùng, Viêm dạ dày ruột, IAI): gi + infect
+  * 🚨 Nhóm Tiêu hóa ⟷ Hồi sức cấp cứu ICU (Suy gan cấp ALF, XHTH trên sốc mất máu, Viêm tụy cấp nặng, DILI): gi + icu
+  * 🫁 Nhóm Hô hấp ⟷ ICU / Truyền nhiễm (ARDS nằm sấp, SCAP nặng: icu + pulmo; Viêm phổi CAP, Lao: pulmo + infect)
+  * 🩹 Nhóm Da liễu ⟷ Truyền nhiễm (Nhiễm trùng da mô mềm SSTI, Bệnh lậu, Giang mai): infect + derma
+  * 💧 Nhóm Thận ⟷ Truyền nhiễm / ICU (Nhiễm trùng niệu UTI: renal + infect; Tăng kali máu nặng: renal + icu)
 - Loại tài liệu: [guideline (Hướng dẫn điều trị) HOẶC rct (Thử nghiệm lâm sàng bước ngoặt)]
 - Tên slug file đề xuất: [year]-[org]-[topic] (chữ thường, gạch nối ASCII, ví dụ: 2025-aha-acc-hypertension hoặc 2026-easl-dili)
 
@@ -73,7 +73,8 @@ organization: "[Tên Tổ Chức Ban Hành]"
 journal: "[Tên Tạp Chí Xuất Bản / Nguồn]"
 year: [NĂM_SỐ_NGUYÊN]
 sourceType: "intl-guideline" # intl-guideline | intl-study | vn-moh | vn-doh | vn-association
-specialty: "[MÃ CHUYÊN KHOA: cardio | pulmo | gi | endo | renal | neuro | infect | rheum | hema | onco | pedia | obgyn | icu]"
+specialty: "[MÃ CHUYÊN KHOA CHÍNH: cardio | pulmo | gi | endo | renal | neuro | infect | rheum | hema | onco | pedia | obgyn | icu | derma]"
+specialty2: "[MÃ CHUYÊN KHOA PHỤ NẾU CÓ: icu | infect | gi | pulmo | renal | derma (bỏ dòng này nếu thuần túy 1 chuyên khoa)]"
 design: "guideline"          # guideline | rct | meta | cohort | review
 impact: "practice-changing"  # practice-changing | informative | early-signal | negative | regulatory
 cor: "I"                     # Khuyến cáo cao nhất trong tài liệu (I | IIa | IIb)
