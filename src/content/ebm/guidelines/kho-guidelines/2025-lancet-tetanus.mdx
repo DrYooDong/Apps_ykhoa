@@ -1,0 +1,616 @@
+---
+id: "2025-lancet-tetanus"
+slug: "2025-lancet-tetanus"
+title: "Tổng Quan Bệnh Uốn Ván: Chẩn Đoán Lâm Sàng, Phác Đồ Điều Trị Cấp Cứu, Kiểm Soát Co Thắt & Rối Loạn Thần Kinh Thực Vật"
+titleEn: "Tetanus: Recognition and Management"
+code: "GDL-2025-LANCET-TETANUS"
+organization: "Lancet Infectious Diseases / OUCRU / UCLH"
+journal: "Lancet Infect Dis. 2025;25(11):e645-e657"
+year: 2025
+sourceType: "intl-study"
+specialty: "infect"
+specialty2: "icu"
+design: "review"
+impact: "practice-changing"
+cor: "I"
+loe: "A"
+category: "guidelines"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-10-25"
+conditionKey: "tetanus"
+icd10: ["A35", "A33", "A34"]
+drug: "Metronidazole, Penicillin G, Huyết thanh kháng uốn ván (hTIG / Equine Antitoxin / IVIg), Benzodiazepines (Diazepam, Midazolam), Magnesium sulphate, Labetalol, Fentanyl"
+population: "Bệnh nhân phơi nhiễm hoặc mắc bệnh uốn ván (toàn thân, đầu-mặt-cổ, cục bộ, sơ sinh)"
+intervention: "Xử trí phẫu thuật lọc bỏ mô tử tử, kháng sinh diệt C. tetani, trung hòa độc tố bằng hTIG/equine antitoxin, mở khí quản cấp cứu, kiểm soát co thắt bằng Benzodiazepine/NMB và kiểm soát rối loạn thần kinh thực vật bằng Magnesium sulphate/Labetalol"
+description: "Bài tổng quan y văn toàn diện trên Lancet Infect Dis (2025) về dịch tễ, sinh lý bệnh độc tố TeNT, tiêu chuẩn chẩn đoán lâm sàng, phác đồ điều trị hồi sức tích cực uốn ván và tiên lượng."
+tags:
+  - "Lancet"
+  - "2025"
+  - "Truyền nhiễm"
+  - "Uốn Ván"
+  - "Hồi sức tích cực"
+  - "TeNT"
+keyRecommendations:
+  - "Xử trí vết thương & Kháng sinh: Phẫu thuật lọc bỏ sạch mô hoại tử và sử dụng Metronidazole (ưu tiên hơn Penicillin G) đường uống/tĩnh mạch trong 7–10 ngày để cắt đứt nguồn sản sinh độc tố C. tetani."
+  - "Trung hòa độc tố TeNT: Tiêm tiêm bắp/tĩnh mạch Huyết thanh kháng uốn ván từ người (hTIG) hoặc từ ngựa (Equine Antitoxin) ngay lập tức; Tuyệt đối KHÔNG chỉ định tiêm qua đường tủy sống (Intrathecal) do không mang lại lợi ích lâm sàng."
+  - "Bảo vệ đường thở & Kiểm soát co thắt: Khoảng 50% bệnh nhân uốn ván toàn thân cần thông khí nhân tạo; ưu tiên mở khí quản sớm (Primary Tracheostomy). Dùng Benzodiazepine (Diazepam > 1 mg/kg/ngày hoặc Midazolam) phối hợp thuốc phong bế thần kinh cơ (NMB) khi co thắt kháng trị."
+  - "Kiểm soát rối loạn thần kinh thực vật (ANSD): Sử dụng Magnesium sulphate truyền tĩnh mạch liên tục duy trì nồng độ huyết thanh 2–4 mmol/L phối hợp thuốc chẹn giao cảm ngắn hạn (Labetalol) và Opioid (Fentanyl/Morphine)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Định Nghĩa, Dịch Tễ & Sinh Lý Bệnh Độc Tố Uốn Ván (TeNT)"
+    icon: "fa-solid fa-virus"
+  - id: "sec-2"
+    number: 2
+    title: "Biểu Hiện Lâm Sàng, Phân Loại Ablett & Chẩn Đoán Phân Biệt"
+    icon: "fa-solid fa-calculator"
+  - id: "sec-3"
+    number: 3
+    title: "Phác Đồ Điều Trị Tổng Thể, Kháng Sinh & Huyết Thanh Kháng Độc Tố"
+    icon: "fa-solid fa-pills"
+  - id: "sec-4"
+    number: 4
+    title: "Lưu Đồ Thuật Toán Hồi Sức Tích Cực (Kiểm Soát Co Thắt & Thần Kinh Thực Vật)"
+    icon: "fa-solid fa-diagram-project"
+  - id: "sec-5"
+    number: 5
+    title: "Các Hình Thái Lâm Sàng Đặc Biệt & Biến Chứng Nặng Trong ICU"
+    icon: "fa-solid fa-triangle-exclamation"
+  - id: "sec-6"
+    number: 6
+    title: "Tiên Lượng, Kế Hoạch Phục Hồi Chức Năng & Tài Liệu Tham Khảo"
+    icon: "fa-solid fa-book-medical"
+---
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val red">30,000–50,000</div>
+      <div class="stat-lbl">Số ca tử vong do uốn ván ước tính toàn cầu mỗi năm</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">~ 50%</div>
+      <div class="stat-lbl">Tỷ lệ bệnh nhân uốn ván toàn thân người lớn cần thở máy (MV)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">2–4 mmol/L</div>
+      <div class="stat-lbl">Ngưỡng Magnesium huyết thanh đích để kiểm soát rối loạn giao cảm</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">4–6 Tuần</div>
+      <div class="stat-lbl">Thời gian cần thiết để hồi phục dẫn truyền ức chế thần kinh trung ương</div>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">🧬</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 1: Cắt Nguồn Độc Tố & Trung Hòa</div>
+        <div class="pillar-desc">Phẫu thuật lọc bỏ mô hoại tử, dùng Metronidazole 7–10 ngày và tiêm hTIG / Equine Antitoxin / IVIg ngay lập tức để trung hòa độc tố TeNT tự do trong máu.</div>
+      </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">🫁</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 2: Bảo Vệ Đường Thở & Cắt Co Thắt</div>
+        <div class="pillar-desc">Mở khí quản chủ động sớm phòng ngừa co thắt thanh quản cấp; kiểm soát co thắt cơ bằng Benzodiazepine liều cao (Diazepam/Midazolam) phối hợp thuốc phong bế thần kinh cơ (NMB).</div>
+      </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">⚡</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 3: Kiểm Soát Rối Loạn Giao Cảm</div>
+        <div class="pillar-desc">Điều trị rối loạn thần kinh thực vật (ANSD) bằng Magnesium sulphate tĩnh mạch kết hợp Opioid (Fentanyl) và thuốc chẹn alpha/beta chọn lọc (Labetalol).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-1" class="quickmenu-item active">1. Dịch Tễ & Sinh Lý Bệnh</a>
+    <a href="#sec-2" class="quickmenu-item">2. Lâm Sàng & Phân Biệt</a>
+    <a href="#sec-3" class="quickmenu-item">3. Phác Đồ Điều Trị Core</a>
+    <a href="#sec-4" class="quickmenu-item">4. Thuật Toán Hồi Sức ICU</a>
+    <a href="#sec-5" class="quickmenu-item">5. Thể Bệnh & Biến Chứng</a>
+    <a href="#sec-6" class="quickmenu-item">6. Tiên Lượng & Tham Khảo</a>
+  </div>
+</div>
+
+<div class="page-content">
+
+  <!-- MỤC 1: ĐỊNH NGHĨA, DỊCH TỄ & SINH LÝ BỆNH -->
+  <div class="sec-card" id="sec-1">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔬</span>
+      <h2 class="sec-title">1. Định Nghĩa, Dịch Tễ Học Toàn Cầu & Sinh Lý Bệnh Độc Tố Uốn Ván</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox info">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Bản chất bệnh lý:</strong> Bệnh uốn ván (Tetanus) là bệnh nhiễm trùng thần kinh cấp tính đe dọa tính mạng do vi khuẩn mị khí bào tử <em>Clostridium tetani</em> gây ra qua các vết thương bị ô nhiễm. Nhờ chương trình Loại trừ Uốn ván Sơ sinh và Mẫu thân (MNTE) của WHO, số ca tử vong do uốn ván đã giảm gần 90% (88% tử vong và 93% DALYs) từ năm 1990 đến 2019. Tuy nhiên, gánh nặng uốn ván ở người lớn và trẻ em vẫn tiếp tục kéo dài với khoảng <strong>30,000–50,000 ca tử vong mỗi năm</strong> trên toàn cầu, tập trung hơn 90% tại Nam Á, Đông Nam Á và Châu Phi cận Sahara.
+        </div>
+      </div>
+
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">🧬</div>
+            <div class="update-card-title">Vi Khuẩn & Cơ Chế Độc Tố TeNT</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Tác nhân:</strong> <em>Clostridium tetani</em> là trực khuẩn Gram dương kỵ khí bắt buộc, tạo bào tử đề kháng cao với nhiệt độ, đông lạnh và cồn ethanol. Bào tử nảy mầm trong điều kiện thiếu oxy tại vùng mô hoại tử.</li>
+              <li><strong>Độc tố thần kinh (TeNT):</strong> Độc tố uốn ván (TeNT) là một Metalloproteinase phụ thuộc kẽm nặng 150 kDa gồm chuỗi nặng và chuỗi nhẹ nối bằng cầu nối disulphide.</li>
+              <li><strong>Vận chuyển hướng thần kinh:</strong> TeNT gắn vào thụ thể thần kinh vận động ngoại vi tại vị trí tiếp hợp thần kinh cơ (NMJ) và được <strong>vận chuyển ngược chiều sợi trục (Retrograde transport)</strong> về tủy sống và thân não (tương tự vi rút dại).</li>
+              <li><strong>Cắt đứt Synaptobrevin-2:</strong> Trong tế bào thần kinh trung gian ức chế (Inhibitory interneurons), TeNT cắt đứt protein Synaptobrevin-2 (VAMP2) trên túi synap, làm sụp đổ phức hợp SNARE, ngăn chặn giải phóng neurotransmitter ức chế là <strong>GABA và Glycine</strong>.</li>
+              <li><strong>Hậu quả lâm sàng:</strong> Sự mất ức chế thần kinh dẫn đến hoạt động thần kinh vận động quá mức không kháng cự, gây co cứng cơ, co thắt cơ kịch phát và rối loạn thần kinh thực vật (ANSD). Quá trình hồi phục chức năng synap cần từ <strong>4–6 tuần</strong>.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-blue">Chất độc thần kinh cực mạnh</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #f59e0b;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">📊</div>
+            <div class="update-card-title">Yếu Tố Nguy Cơ & Bảng Phân Lớp Y Văn</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Cửa ngõ xâm nhập:</strong> Vết thương tai nạn giao thông, chấn thương làm nông/làm vườn, tai nạn sinh hoạt, bỏng, cắt bao quy đầu không an toàn, nạo phá thai chui, tiêm chọc ma túy (Heroin ô nhiễm), đâm kim châm cứu hoặc thủ thuật nha khoa. Có tới <strong>30% bệnh nhân không tìm thấy vết thương rõ ràng</strong> khi nhập viện.</li>
+              <li><strong>Đối tượng nguy cơ cao:</strong> Người cao tuổi (do nồng độ kháng thể suy giảm theo thời gian), nam giới (do tiêm chủng chủng ngừa tập trung nhiều hơn ở phụ nữ mang thai), người mắc đái tháo đường và người nghiện ma túy đường tiêm.</li>
+              <li><strong>Bảo vệ vắc xin:</strong> Phác đồ cơ bản 3 mũi vắc xin chứa Tetanus Toxoid cung cấp khả năng bảo vệ gần 100% trong ít nhất 5 năm. WHO khuyến cáo tổng cộng 6 mũi trong suốt cuộc đời để duy trì miễn dịch bền vững. Uốn ván <strong>không tạo ra miễn dịch cộng đồng (Herd immunity)</strong>.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-amber">Không có miễn dịch cộng đồng</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 2: BẢO BẢNG LÂM SÀNG & CHẨN ĐOÁN PHÂN BIỆT -->
+  <div class="sec-card" id="sec-2">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📐</span>
+      <h2 class="sec-title">2. Biểu Hiện Lâm Sàng, Thang Điểm Lượng Giá Ablett & Chẩn Đoán Phân Biệt</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox warning">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <strong>Cảnh báo lâm sàng quan trọng:</strong> Uốn ván hoàn toàn là <strong>một chẩn đoán lâm sàng</strong>. Tuyệt đối không hoãn điều trị hoặc trì hoãn tiêm Huyết thanh kháng độc tố để chờ đợi kết quả xét nghiệm vi sinh hoặc xét nghiệm máu. Nghiệm pháp Thìa (Spatula test) hiện <strong>KHÔNG còn được khuyến cáo</strong> do nguy cơ kích thích co thắt thanh quản gây tắc nghẽn đường thở cấp tính.
+        </div>
+      </div>
+
+      <!-- BẢNG PHÂN LOẠI ABLETT SỬA ĐỔI -->
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-calculator"></i> Bảng 1. Bảng Phân Độ Nặng Uốn Ván Theo Ablett Sửa Đổi (Modified Ablett Score)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-square-check"></i> Tiêu chuẩn phân tầng ICU</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Mức Độ</th>
+                <th style="width: 40%;">Triệu Chứng Co Cứng & Co Thắt Cơ</th>
+                <th style="width: 25%;">Ảnh Hưởng Hô Hấp & Nuốt</th>
+                <th style="width: 20%;">Rối Loạn TNSV (ANSD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Cấp độ I (Nhẹ)</strong></td>
+                <td>Co cứng cơ nhẹ đến vừa, trismus (cứng hàm), không có co thắt cơ kịch phát hoặc co thắt rất nhẹ.</td>
+                <td>Không rối loạn nuốt, không khó thở.</td>
+                <td>Không có.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Cấp độ II (Vừa)</strong></td>
+                <td>Co cứng cơ rõ, cứng hàm nghiêm trọng, xuất hiện các đợt co thắt cơ ngắn tự phát hoặc do kích thích.</td>
+                <td>Khó nuốt nhẹ, tần số thở tăng (> 30 lần/phút).</td>
+                <td>Không có hoặc rất nhẹ.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Cấp độ III (Nặng)</strong></td>
+                <td>Co cứng cơ toàn thân severe, co thắt cơ kịch phát dữ dội kéo dài và lặp lại liên tục.</td>
+                <td>Khó nuốt nặng, nguy cơ sặc cao, co thắt thanh quản, <strong>Cần thở máy (MV)</strong>.</td>
+                <td>Không có hoặc nhẹ.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Cấp độ IV (Cực nặng)</strong></td>
+                <td>Co cứng và co thắt cơ toàn thân kịch phát không kiểm soát.</td>
+                <td>Thở máy phụ thuộc hoàn toàn.</td>
+                <td><span class="score-badge score-pos" style="background: #be123c; color: white;">Rối loạn TNSV nặng (ANSD)</span></td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="2"><strong>DẤU HIỆU LÂM SÀNG ĐẶC TRƯNG</strong></td>
+                <td colspan="2">Cứng hàm Trismus (93–98%), Khó nuốt Dysphagia (83%), Tăng trương lực cơ bụng (có thể nhầm với Bụng ngoại khoa), Nụ cười nham hiểm (Risus sardonicus), Uốn cong người (Opisthotonus). Tri giác hoàn toàn tỉnh táo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- BẢNG CHẨN ĐOÁN PHÂN BIỆT -->
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-layer-group"></i> Bảng 2. Bảng Chẩn Đoán Phân Biệt Bệnh Uốn Ván Toàn Thân
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-vial"></i> Y văn Lancet 2025</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Bệnh Lý Phân Biệt</th>
+                <th style="width: 40%;">Triệu Chứng Trùng Lặp Với Uốn Ván</th>
+                <th style="width: 35%;">Đặc Điểm Loại Trừ Nhận Diện</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Ngộ độc Strychnine</strong></td>
+                <td>Hội chứng co thắt cơ toàn thân kịch phát gần như không thể phân biệt lâm sàng với uốn ván.</td>
+                <td>Khởi phát cực nhanh (trong 30 phút sau khi ăn/uống thuốc trừ chuột strychnine); Xét nghiệm Strychnine dương tính trong nước tiểu/dịch dạ dày.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Rối loạn trương lực do thuốc (Dystonia)</strong></td>
+                <td>Co cứng cơ, trismus, co thắt cơ.</td>
+                <td>Tiền sử dùng thuốc chẹn Dopamine (Metoclopramide, Haloperidol); <strong>Không có co cứng cơ liên tục giữa các đợt co thắt</strong>; Khỏi nhanh với thuốc kháng Cholinergic (Biperiden / Procyclidine / Diphenhydramine).</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Hội chứng Ác tính do Thuốc Bệnh thần kinh (NMS)</strong></td>
+                <td>Co cứng cơ kiểu "ống dẫn clo", rối loạn thần kinh thực vật, sốt cao.</td>
+                <td>Khởi phát từ từ sau dùng thuốc chống rối loạn thần thần; Có <strong>Rối loạn ý thức/Sảng</strong>; Chỉ số Creatine Kinase (CK) tăng rất cao. Uốn ván thuần túy bệnh nhân hoàn toàn tỉnh táo.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Co giật do Hạ Calci máu (Tetany)</strong></td>
+                <td>Co thắt cơ, co thắt thanh quản, loạn nhịp tim.</td>
+                <td>Có dấu hiệu Trousseau và Chvostek dương tính, dị cảm ngọn chi; <strong>Không có cứng hàm (Trismus)</strong>; Calci ion hóa máu giảm rõ.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Bệnh Dại (Rabies)</strong></td>
+                <td>Sốt, tiền sử bị động vật cắn, co thắt cơ hầu họng kịch phát.</td>
+                <td>Thời gian ủ bệnh dài hơn (1–3 tháng); Dấu hiệu đặc trưng <strong>Sợ nước (Hydrophobia), Sợ gió (Aerophobia)</strong>; Tiến triển nhanh đến bệnh não và tử vong.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MỤC 3: PHÁC ĐỒ ĐIỀU TRỊ CỐT LÕI -->
+  <div class="sec-card" id="sec-3">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">3. Phác Đồ Điều Trị Cốt Lõi: Cắt Sản Sinh Độc Tố & Trung Hòa Độc Tố Tự Do</h2>
+    </div>
+    <div class="sec-body">
+
+      <!-- KHUNG KHUYẾN CÁO CẮT ĐỘC TỐ & KHÁNG SINH -->
+      <div class="rec-card cor-1">
+        <div class="rec-header">
+          <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> CẮT NGUỒN SẢN SINH ĐỘC TỐ: PHẪU THUẬT & KHÁNG SINH</span>
+          <span class="badge-loe-a"><i class="fa-solid fa-layer-group"></i> LOE A</span>
+        </div>
+        <div class="rec-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Phẫu thuật cắt lọc (Debridement):</strong> Tiến hành phẫu thuật cắt lọc triệt để các mô hoại tử, loại bỏ dị vật tại vết thương để loại bỏ môi trường kỵ khí nuôi dưỡng bào tử <em>C. tetani</em>. Thu thập mô phẫu thuật gửi xét nghiệm nuôi cấy kỵ khí và RT-PCR.</li>
+            <li><strong>Kháng sinh diệt khuẩn:</strong> Chỉ định kháng sinh đường uống hoặc tĩnh mạch trong <strong>7–10 ngày</strong>.
+              <br />• <em>Lựa chọn ưu tiên đầu tay:</em> <strong>Metronidazole</strong> (500 mg IV/PO mỗi 6–8 giờ). Metronidazole có hiệu quả tối ưu hơn do không có tác dụng đối kháng GABAergic (Penicillin G là chất đối kháng cạnh tranh nhẹ tại thụ thể GABA, có thể làm tăng nguy cơ co thắt).
+              <br />• <em>Lựa chọn thay thế:</em> Penicillin G (2–4 triệu UI IV mỗi 4–6 giờ) là giải pháp thay thế an toàn và hiệu quả nếu không có Metronidazole.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rec-card cor-2a">
+        <div class="rec-header">
+          <span class="badge-cor-2a"><i class="fa-solid fa-syringe"></i> TRUNG HÒA ĐỘC TỐ TỰ DO VÀ NGUYÊN TẮC TIÊM HUYẾT THANH</span>
+          <span class="badge-loe-b"><i class="fa-solid fa-layer-group"></i> LOE B-R</span>
+        </div>
+        <div class="rec-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Liều lượng Huyết thanh kháng uốn ván (hTIG / ERIG):</strong> Tiêm bắp 01 liều duy nhất ngay khi chẩn đoán.
+              <br />• <em>hTIG (Nguồn gốc từ người):</em> Liều 3,000–5,000 UI tiêm bắp (một số hướng dẫn chấp nhận liều 500 UI).
+              <br />• <em>Equine Antitoxin (Nguồn gốc từ ngựa):</em> Liều 10,000–20,000 UI tiêm bắp. <strong>Thử phản ứng mẫn cảm da (Skin test) bắt buộc</strong> trước khi tiêm Equine Antitoxin để phòng ngừa sốc phản vệ.
+            </li>
+            <li><strong>Sử dụng IVIg thay thế:</strong> Khi khan hiếm hTIG, có thể thay thế bằng Kháng thể miễn dịch truyền tĩnh mạch (IVIg) chứa nồng độ kháng thể kháng uốn ván cao: Liều tương đương 5,000 UI (< 50 kg) hoặc 10,000 UI (> 50 kg) anti-tetanus antibodies.</li>
+            <li><strong>KHUYẾN CÁO CẤM (Class III: Harm):</strong> <strong>KHÔNG tiêm Huyết thanh kháng uốn ván qua đường tủy sống (Intrathecal Antitoxin)</strong>. Thử nghiệm lâm sàng ngẫu nhiên lớn tại Việt Nam (272 bệnh nhân) chứng minh tiêm qua đường tủy sống không làm giảm tỷ lệ thở máy hay tỷ lệ tử vong, trong khi làm tăng nguy cơ biến chứng thủ thuật.</li>
+            <li><strong>Tiêm vắc xin tái tạo miễn dịch:</strong> Nhiễm uốn ván tự nhiên <strong>KHÔNG tạo ra miễn dịch bảo vệ</strong>. Tất cả bệnh nhân hồi phục sau uốn ván đều bắt buộc phải được tiêm đầy đủ phác đồ vắc xin Tetanus Toxoid (3 mũi vào Ngày 0, 1 tháng, 6 tháng).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BẢNG PHÁC ĐỒ THUỐC ĐIỀU TRỊ UỐN VÁN CỦA LANCET 2025 -->
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-pills"></i> Bảng 3. Danh Mục Thuốc Dược Lý Cốt Lõi Trong Hồi Sức Điều Trị Uốn Ván
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-prescription-bottle-medical"></i> Hướng dẫn ICU quốc tế</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Nhóm Thuốc</th>
+                <th style="width: 25%;">Hoạt Chất & Liều Lượng</th>
+                <th style="width: 25%;">Đường Dùng & Mục Tiêu Đích</th>
+                <th style="width: 30%;">Lưu Ý An Toàn & Theo Dõi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">Đầu tay</span>
+                  <strong>Cắt nguồn vi khuẩn</strong>
+                </td>
+                <td>Metronidazole 500 mg mỗi 6–8 giờ (hoặc Penicillin G 2–4 triệu UI mỗi 4–6 giờ).</td>
+                <td>Truyền tĩnh mạch hoặc uống trong 7–10 ngày.</td>
+                <td>Theo dõi độc tính thần kinh ngoại vi nếu dùng Metronidazole kéo dài.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">Trung hòa TeNT</span>
+                  <strong>Kháng độc tố uốn ván</strong>
+                </td>
+                <td>
+                  • hTIG: 3,000–5,000 UI tiêm bắp.<br />
+                  • Equine Antitoxin: 10,000–20,000 UI IM.<br />
+                  • IVIg: 5,000–10,000 UI anti-TeNT IV.
+                </td>
+                <td>Tiêm bắp hoặc truyền tĩnh mạch 01 liều duy nhất tại Ngày 0.</td>
+                <td>Kiểm tra dị ứng da trước tiêm Equine Antitoxin. Cấm tiêm qua đường tủy sống (Intrathecal).</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">Cắt co thắt</span>
+                  <strong>Benzodiazepine liều cao</strong>
+                </td>
+                <td>
+                  • Diazepam: 0.5–1.0 mg/kg/ngày (có thể > 100 mg/ngày).<br />
+                  • Midazolam: Truyền liên tục 5–15 mg/giờ.
+                </td>
+                <td>Tiêm tĩnh mạch chậm hoặc truyền tĩnh mạch liên tục.</td>
+                <td>Nguy cơ ức chế hô hấp và tích lũy chuyển hóa kéo dài ở bệnh nhân suy thận khi dùng Diazepam liều cao.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">Co thắt nặng</span>
+                  <strong>Phong bế thần kinh cơ (NMB)</strong>
+                </td>
+                <td>Vecuronium / Rocuronium / Pipecuronium.</td>
+                <td>Truyền tĩnh mạch liên tục ở bệnh nhân thở máy sedated.</td>
+                <td>Chỉ dùng khi bệnh nhân đã được đặt nội khí quản / mở khí quản thở máy hoàn toàn.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">Kiểm soát TNSV</span>
+                  <strong>Magnesium sulphate</strong>
+                </td>
+                <td>Liều tấn công: 40 mg/kg IV trong 30 phút → Truyền duy trì 1.5–2.5 g/giờ.</td>
+                <td>Truyền tĩnh mạch liên tục duy trì <strong>Magnesium máu 2–4 mmol/L</strong>.</td>
+                <td>Kiểm tra phản xạ gân xương bánh chè (Knee jerk) định kỳ để phát hiện ngộ độc Magnesium (mất phản xạ gân xương).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MỤC 4: LƯU ĐỒ THUẬT TOÁN HỒI SỨC ICU -->
+  <div class="sec-card" id="sec-4">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🗺️</span>
+      <h2 class="sec-title">4. Lưu Đồ Thuật Toán Hồi Sức Tích Cực Bệnh Nhân Uốn Ván (ICU Timeline)</h2>
+    </div>
+    <div class="sec-body">
+      <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.25rem;">
+        Tiến trình xử trí nấc thang theo thời gian từ khi tiếp nhận đến giai đoạn phục hồi (Lancet 2025 Workflow):
+      </p>
+
+      <div class="flow-track-container">
+        <!-- Bước 1 -->
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-blue">01</div>
+            <div class="flow-track-line"></div>
+          </div>
+          <div class="flow-track-content accent-blue">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-clock" style="color: #0284c7;"></i> Ngày 0: Cắt Độc Tố & Trung Hòa Độc Tố Tự Do</div>
+              <span class="flow-step-badge flow-badge-blue">Khẩn cấp</span>
+            </div>
+            <div class="flow-step-text">
+              Phẫu thuật cắt lọc vết thương hoại tử → Dùng kháng sinh Metronidazole 500 mg IV q8h trong 7–10 ngày → Tiêm bắp Huyết thanh kháng uốn ván hTIG (3,000–5,000 UI) hoặc Equine Antitoxin (sau skin test).
+            </div>
+          </div>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-teal">02</div>
+            <div class="flow-track-line"></div>
+          </div>
+          <div class="flow-track-content accent-teal">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-wind" style="color: #0d9488;"></i> Ngày 0–1: Kiểm Soát Đường Thở & Thông Khí Nhân Tạo</div>
+              <span class="flow-step-badge flow-badge-amber">Bảo vệ đường thở</span>
+            </div>
+            <div class="flow-step-text">
+              Đánh giá nguy cơ co thắt thanh quản và suy hô hấp → Tiến hành <strong>Mở khí quản chủ động sớm (Primary Tracheostomy)</strong> đối với uốn ván Ablett III/IV để phòng ngừa tắc nghẽn đường thở cấp và tổn thương thanh quản do đặt nội khí quản kéo dài.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-purple">03</div>
+            <div class="flow-track-line"></div>
+          </div>
+          <div class="flow-track-content accent-purple">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-bed-pulse" style="color: #7c3aed;"></i> Ngày 0–28: Kiểm Soát Co Thắt Cơ Kịch Phát</div>
+              <span class="flow-step-badge flow-badge-purple">Khóa co thắt</span>
+            </div>
+            <div class="flow-step-text">
+              Chăm sóc bệnh nhân trong <strong>Phòng tối, yên tĩnh tối đa</strong> tránh ánh sáng và tiếng động → Dùng Benzodiazepine đầu tay (Diazepam / Midazolam) liều tăng dần → Nếu co thắt không kiểm soát: Bổ sung Thuốc phong bế thần kinh cơ NMB (Vecuronium / Rocuronium) trên bệnh nhân thở máy.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bước 4 -->
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-teal">04</div>
+            <div class="flow-track-line"></div>
+          </div>
+          <div class="flow-track-content accent-teal">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-bolt" style="color: #0d9488;"></i> Ngày 3–28: Kiểm Soát Rối Loạn Thần Kinh Thực Vật (ANSD)</div>
+              <span class="flow-step-badge flow-badge-amber">Điều hòa giao cảm</span>
+            </div>
+            <div class="flow-step-text">
+              Truyền tĩnh mạch Magnesium sulphate liên tục duy trì Magnesium máu 2–4 mmol/L → Bổ sung Opioid ngắn hạn (Fentanyl) → Sử dụng thuốc chẹn alpha/beta giao cảm (Labetalol) hoặc Clonidine để kiểm soát nhịp tim nhanh và tăng huyết áp dao động.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bước 5 -->
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-purple">05</div>
+          </div>
+          <div class="flow-track-content accent-purple">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-heart-pulse" style="color: #7c3aed;"></i> Ngày 28+: Chăm Sóc Hỗ Trợ & Phục Hồi Chức Năng</div>
+              <span class="flow-step-badge flow-badge-purple">Phục hồi</span>
+            </div>
+            <div class="flow-step-text">
+              Nuôi dưỡng qua xông dạ dày sớm → Dự phòng huyết khối tĩnh mạch sâu (VTE) bằng Heparin (tránh dùng tất áp lực hơi tự động vì gây kích thích co thắt) → Dự phòng loét do tỳ đè → Bắt đầu tập vật lý trị liệu chủ động khi co thắt giảm → <strong>Tiêm đủ 3 mũi vắc xin uốn ván tái tạo miễn dịch</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MỤC 5: HÌNH THÁI ĐẶC BIỆT & BIẾN CHỨNG -->
+  <div class="sec-card" id="sec-5">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🛡️</span>
+      <h2 class="sec-title">5. Các Hình Thái Lâm Sàng Đặc Biệt & Biến Chứng Nguy Hiểm Trong ICU</h2>
+    </div>
+    <div class="sec-body">
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #ef4444;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">🧠</div>
+            <div class="update-card-title">Uốn Ván Đầu-Mặt-Cổ (Cephalic Tetanus)</div>
+          </div>
+          <div class="update-card-body">
+            <p style="font-size: 0.9rem; line-height: 1.6;">
+              • Là thể lâm sàng hiếm gặp do vết thương vùng đầu, mặt, cổ, nhiễm trùng răng miệng hoặc viêm tai giữa mạn tính.<br />
+              • Khởi phát đặc trưng bởi <strong>Liệt các dây thần kinh sọ</strong> (thường gặp nhất là liệt dây VII mặt, gây nhầm lẫn với Đột quỵ não hoặc Liệt Bell) kết hợp với cứng hàm Trismus và/hoặc risus sardonicus.<br />
+              • Có thể biểu hiện kết hợp vừa liệt nhẽo mặt vừa co cứng cơ do TeNT tác động song song tại tiếp hợp thần kinh cơ ngoại vi và nhân dây thần kinh sọ ở thân não. Tiên lượng nặng và dễ tiến triển thành uốn ván toàn thân.
+            </p>
+          </div>
+          <div class="update-verdict verdict-red">Dễ nhầm lẫn với Đột quỵ</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #8b5cf6;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">⚡</div>
+            <div class="update-card-title">Rối Loạn Thần Kinh Thực Vật (ANSD)</div>
+          </div>
+          <div class="update-card-body">
+            <p style="font-size: 0.9rem; line-height: 1.6;">
+              • Dấu hiệu: Tăng huyết áp kịch phát xen kẽ Tụt huyết áp nghiêm trọng, Nhịp tim nhanh kịch phát xen kẽ Nhịp tim chậm nguy hiểm, Sốt cao liên tục phác đồ không do nhiễm trùng, Vã mồ hôi xối xả, Bí tiểu cấp và Mất kiểm soát cơ vòng.<br />
+              • Là <strong>nguyên nhân tử vong hàng đầu</strong> ở bệnh nhân uốn ván trong điều kiện ICU hiện đại (do gây biến cố tim mạch bất ngờ hoặc ngừng tim).
+            </p>
+          </div>
+          <div class="update-verdict verdict-purple">Nguyên nhân tử vong hàng đầu ICU</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">🚨</div>
+            <div class="update-card-title">Biến Chứng Thứ Phát & Tiêu Cơ Vân</div>
+          </div>
+          <div class="update-card-body">
+            <p style="font-size: 0.9rem; line-height: 1.6;">
+              • <strong>Tiêu cơ vân (Rhabdomyolysis):</strong> Co thắt cơ dữ dội kéo dài gây giải phóng Myoglobin vào máu, dẫn đến Tổn thương thận cấp (AKI). Cần xét nghiệm Nước tiểu (Myoglobin) và Creatine Kinase (CK) máu.<br />
+              • <strong>Nhiễm trùng bệnh viện:</strong> Viêm phổi liên quan thở máy (VAP), nhiễm trùng huyết do catheter, nhiễm trùng tiết niệu.<br />
+              • <strong>Biến chứng nằm lâu:</strong> Huyết khối tĩnh mạch sâu (VTE), loét do tỳ đè, suy kiệt dinh dưỡng và Bệnh lý cơ-thần kinh do hồi sức tích cực (Critical care neuromyopathy).
+            </p>
+          </div>
+          <div class="update-verdict verdict-blue">Cần chăm sóc đa chuyên khoa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 6: TIÊN LƯỢNG & TÀI LIỆU THAM KHẢO -->
+  <div class="sec-card" id="sec-6">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📋</span>
+      <h2 class="sec-title">6. Tiên Lượng Bệnh, Lịch Tái Khám & Trích Dẫn Y Văn Khuyên Dùng</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox success">
+        <span class="infobox-icon">✅</span>
+        <div>
+          <strong>Các yếu tố tiên lượng xấu trong uốn ván (Prognostic Indicators):</strong>
+          <ul style="margin: 0.5rem 0 0 1.2rem; line-height: 1.6;">
+            <li><strong>Thời gian ủ bệnh ngắn (&lt; 7 ngày):</strong> Khoảng thời gian từ lúc bị vết thương đến khi xuất hiện triệu chứng đầu tiên càng ngắn thì bệnh càng nặng.</li>
+            <li><strong>Thời gian khởi phát ngắn (&lt; 48 giờ):</strong> Khoảng thời gian từ triệu chứng đầu tiên (cứng hàm) đến đợt co thắt cơ kịch phát đầu tiên ngắn.</li>
+            <li><strong>Tuổi cao (&gt; 60 tuổi) & Bệnh nền:</strong> Người cao tuổi có tỷ lệ tử vong cao do suy giảm dự trữ tim mạch.</li>
+            <li><strong>Sự xuất hiện của Rối loạn TNSV (ANSD) và Cần thở máy (MV)</strong>.</li>
+            <li><em>Lưu ý hồi phục:</em> Mặc dù quá trình nằm ICU kéo dài (trung bình 16 ngày thở máy), <strong>hầu hết bệnh nhân sống sót đều phục hồi chức năng hoàn toàn</strong> mà không để lại di chứng thần kinh vĩnh viễn. Tỷ lệ tử vong tại các trung tâm ICU chuyên sâu (như Bệnh viện Nhiệt đới TP.HCM) có thể hạ xuống mức kỷ lục <strong>2.4%</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CITATION BOX (AMA FORMAT) -->
+      <div class="citation-box" style="margin-top: 1.5rem;">
+        <strong>Trích dẫn tài liệu tham khảo chính thức (AMA Format):</strong><br />
+        1. Sudarshan R, Sayo AR, Renner DR, de Saram S, Godbole G, Warrell C, Duong HTH, Thwaites CL, Mehta AR, Coughlan C. Tetanus: Recognition and Management. <em>Lancet Infect Dis</em>. 2025 Nov;25(11):e645–e657. doi:10.1016/S1473-3099(25)00292-0.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top: 1.5rem;">
+  <div class="btn-row">
+    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+    </a>
+    <a href="#sec-1" class="btn">
+      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+    </a>
+  </div>
+</div>
+```
