@@ -396,30 +396,16 @@
             </div>
           </div>
 
-          <!-- Tier 2: Quick Filter Strip -->
-          <div class="quick-filter-strip">
-            <span class="quick-filter-label">
-              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Lọc nhanh:
-            </span>
-            <div class="filter-pills" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
-              <button class="filter-pill" id="filter-pill-practice" onclick="setFilter('impact', 'practice-changing')">
-                <i class="fa-solid fa-fire" aria-hidden="true" style="color: var(--color-danger, #ef4444);"></i> Practice-Changing
-              </button>
-              <button class="filter-pill" id="filter-pill-moh" onclick="setFilter('sourceType', 'vn-moh')">
-                <i class="fa-solid fa-star" aria-hidden="true" style="color: var(--color-danger, #ef4444);"></i> Khuyến cáo BYT
-              </button>
-              <button class="filter-pill" id="quick-asian-data-btn" onclick="filterByAsianData()">
-                <i class="fa-solid fa-earth-asia" aria-hidden="true" style="color: var(--color-primary, #0284c7);"></i> Dữ liệu Châu Á
-              </button>
-              <span style="color: var(--border, #cbd5e1); margin: 0 4px;">|</span>
-              <div class="filter-pills" id="source-type-pills" style="display: inline-flex; flex-wrap: wrap; gap: 6px;">
+          <!-- Tier 2: Collapsible Advanced Filter Panel -->
+          <div class="advanced-filter-panel" id="advanced-filter-panel" style="display: none;">
+            <!-- Source Type Filters -->
+            <div class="filter-group-row" id="filter-row-source">
+              <span class="filter-row-label">Phân loại nguồn</span>
+              <div class="filter-pills" id="source-type-pills">
                 <!-- Rendered via JS -->
               </div>
             </div>
-          </div>
 
-          <!-- Tier 3: Collapsible Advanced Filter Panel -->
-          <div class="advanced-filter-panel" id="advanced-filter-panel" style="display: none;">
             <!-- Impact Filters -->
             <div class="filter-group-row" id="filter-row-impact">
               <span class="filter-row-label">Mức ảnh hưởng</span>
