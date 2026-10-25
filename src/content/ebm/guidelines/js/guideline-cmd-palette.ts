@@ -23,7 +23,8 @@ let cmdResultsList: CmdPaletteResultItem[] = [];
 export function initCommandPalette(): void {
   if (typeof document !== 'undefined') {
     document.addEventListener('keydown', (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+      // Phím tắt Command Palette tiêu chuẩn: Ctrl+Shift+P hoặc Cmd+Shift+P
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'p' || e.key === 'P')) {
         e.preventDefault();
         toggleCommandPalette();
       }

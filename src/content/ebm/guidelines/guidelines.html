@@ -138,7 +138,7 @@
                 <div class="settings-item-title">Tìm kiếm & Phím tắt</div>
                 <div class="settings-item-desc">Tra cứu nhanh dữ liệu y khoa</div>
               </div>
-              <kbd class="settings-item-kbd">Ctrl+K</kbd>
+              <kbd class="settings-item-kbd">Ctrl+Shift+P</kbd>
             </button>
 
             <a href="guideline-radar/radar.html" class="settings-menu-item" onclick="closeSettingsMenu();" role="menuitem">
@@ -309,11 +309,11 @@
           <div class="controls-row-1">
             <div class="search-box">
               <i class="fa-solid fa-magnifying-glass search-box-icon" aria-hidden="true"></i>
-              <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, chuyên khoa, đối tượng..." aria-label="Tìm kiếm" oninput="if(window.handleSearch) window.handleSearch(event)">
-              <button type="button" class="search-clear-btn" id="search-clear-btn" onclick="clearSearch()" title="Xóa tìm kiếm" aria-label="Xóa tìm kiếm">
+              <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, khuyến cáo, hoạt chất, ICD-10, tags..." aria-label="Tìm kiếm" autocomplete="off" spellcheck="false" oninput="if(window.handleSearch) window.handleSearch(event)">
+              <button type="button" class="search-clear-btn" id="search-clear-btn" onclick="clearSearch()" title="Xóa tìm kiếm (Esc)" aria-label="Xóa tìm kiếm">
                 <i class="fa-solid fa-xmark" aria-hidden="true"></i>
               </button>
-              <kbd class="search-kbd-shortcut" title="Phím tắt tìm kiếm (Ctrl+K)">⌘K</kbd>
+              <kbd class="search-kbd-shortcut" title="Phím tắt tìm kiếm (Ctrl+K / ⌘K)">⌘K</kbd>
             </div>
 
             <!-- Toolbar Action Groups: Compact, neat icon buttons -->

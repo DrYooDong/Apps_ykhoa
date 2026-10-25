@@ -1366,20 +1366,35 @@ ${mKeyPoints.length > 0 ? mKeyPoints.map((kp, i) => `${i + 1}. ${kp}`).join('\n'
         }
       });
 
+      let heroDebounceTimer = null;
+      let isHeroComposing = false;
+
+      heroInput.addEventListener('compositionstart', () => { isHeroComposing = true; });
+      heroInput.addEventListener('compositionend', () => {
+        isHeroComposing = false;
+        heroInput.dispatchEvent(new Event('input'));
+      });
+
       heroInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim().toLowerCase();
-        if (query.length < 2) {
-          heroResults.style.display = 'none';
-          return;
-        }
+        if (isHeroComposing) return;
+        if (heroDebounceTimer) clearTimeout(heroDebounceTimer);
+        heroDebounceTimer = setTimeout(() => {
+          const query = e.target.value.trim().toLowerCase();
+          if (query.length < 2) {
+            heroResults.style.display = 'none';
+            return;
+          }
 
-        const queryNorm = stripVietnamese(query);
+          const queryTerms = query.split(/\s+/).filter(Boolean);
 
-        const matches = KHO_GUIDELINES_STATIC.filter(g => {
-          const raw = `${g.title} ${g.organization} ${g.specialty} ${g.drug || ''} ${g.summary || ''}`.toLowerCase();
-          const norm = stripVietnamese(raw);
-          return raw.includes(query) || norm.includes(queryNorm);
-        }).slice(0, 8);
+          const matches = KHO_GUIDELINES_STATIC.filter(g => {
+            const raw = `${g.file || ''} ${g.title || ''} ${g.titleEn || ''} ${g.organization || ''} ${g.specialty || ''} ${g.drug || ''} ${g.summary || ''}`.toLowerCase();
+            const norm = stripVietnamese(raw);
+            return queryTerms.every(term => {
+              const termNorm = stripVietnamese(term);
+              return raw.includes(term) || norm.includes(termNorm);
+            });
+          }).slice(0, 8);
 
         if (matches.length === 0) {
           heroResults.innerHTML = `
@@ -1412,6 +1427,7 @@ ${mKeyPoints.length > 0 ? mKeyPoints.map((kp, i) => `${i + 1}. ${kp}`).join('\n'
         }).join('');
 
         heroResults.style.display = 'block';
+        }, 150);
       });
 
       document.addEventListener('click', (e) => {

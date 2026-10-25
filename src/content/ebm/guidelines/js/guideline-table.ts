@@ -734,25 +734,33 @@ export function getFilteredStudies(): Study[] {
     if (window.filters.search) {
       const rawQuery = window.filters.search.trim().toLowerCase();
       if (rawQuery) {
-        // Build comprehensive searchable text
+        // Build comprehensive searchable text across all clinical & bibliographic dimensions
+        const idStr = `${study.id || ''} ${study.file || ''}`.toLowerCase();
         const title = (study.title || '').toLowerCase();
+        const titleEn = (study.titleEn || '').toLowerCase();
+        const code = (study.code || '').toLowerCase();
         const drug = (study.drug || '').toLowerCase();
         const summary = (study.summary || '').toLowerCase();
+        const description = (study.description || '').toLowerCase();
         const detailedConclusion = (study.detailedConclusion || '').toLowerCase();
         const keyResults = (study.keyResults || '').toLowerCase();
+        const keyRecs = Array.isArray(study.keyRecommendations) ? study.keyRecommendations.join(' ').toLowerCase() : '';
+        const tagsStr = Array.isArray(study.tags) ? study.tags.join(' ').toLowerCase() : (typeof study.tags === 'string' ? (study.tags as string).toLowerCase() : '');
         const population = (study.population || '').toLowerCase();
         const intervention = (study.intervention || '').toLowerCase();
-        const org = (study.organization || study.journal || '').toLowerCase();
+        const org = `${study.organization || ''} ${study.journal || ''}`.toLowerCase();
         const author = (study.author || '').toLowerCase();
         const year = String(study.year || '').toLowerCase();
         const primaryEndpoint = (study.primaryEndpoint || '').toLowerCase();
         const icdStr = Array.isArray(study.icd10) ? study.icd10.join(' ').toLowerCase() : (study.icd10 || '').toLowerCase();
         const specName = (window.SPECIALTIES && window.SPECIALTIES[study.specialty]?.name) ? window.SPECIALTIES[study.specialty].name.toLowerCase() : (study.specialty || '').toLowerCase();
+        const spec2Name = (window.SPECIALTIES && study.specialty2 && window.SPECIALTIES[study.specialty2]?.name) ? window.SPECIALTIES[study.specialty2].name.toLowerCase() : (study.specialty2 || '').toLowerCase();
         const condObj = (window.CLINICAL_CONDITIONS && study.conditionKey && window.CLINICAL_CONDITIONS[study.conditionKey]) ? window.CLINICAL_CONDITIONS[study.conditionKey] : null;
         const condName = (condObj?.name || study.conditionKey || '').toLowerCase();
         const partsStr = Array.isArray(study.parts) ? study.parts.map((p: any) => (p.title || p.label || '')).join(' ').toLowerCase() : '';
+        const corLoe = `${study.cor || ''} ${study.loe || ''} ${study.category || ''}`.toLowerCase();
 
-        const fullSearchable = `${title} ${drug} ${summary} ${detailedConclusion} ${keyResults} ${population} ${intervention} ${org} ${author} ${year} ${primaryEndpoint} ${icdStr} ${specName} ${condName} ${partsStr}`;
+        const fullSearchable = `${idStr} ${title} ${titleEn} ${code} ${drug} ${tagsStr} ${summary} ${description} ${keyRecs} ${detailedConclusion} ${keyResults} ${population} ${intervention} ${org} ${author} ${year} ${primaryEndpoint} ${icdStr} ${specName} ${spec2Name} ${condName} ${partsStr} ${corLoe}`;
         const fullSearchableNorm = stripVietnameseDiacritics(fullSearchable);
 
         // Support multiple search words: all words must be found (matching with or without Vietnamese diacritics)

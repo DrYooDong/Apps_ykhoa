@@ -115,7 +115,10 @@ export function selectIcdFilter(code: string, condKey?: string): void {
 
 export function clearSearch(): void {
   const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
-  if (searchInput) searchInput.value = '';
+  if (searchInput) {
+    searchInput.value = '';
+    try { searchInput.focus(); } catch (e) {}
+  }
   if (window.filters) window.filters.search = '';
   const searchBox = document.querySelector('.search-box');
   if (searchBox) searchBox.classList.remove('has-text');

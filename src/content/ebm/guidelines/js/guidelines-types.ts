@@ -55,6 +55,13 @@ export interface Study {
   isCustom?: boolean;
   _userModified?: boolean;
   _userCreated?: boolean;
+  code?: string;
+  tags?: string[];
+  keyRecommendations?: string[];
+  description?: string;
+  category?: string;
+  cor?: string;
+  loe?: string;
 }
 
 export interface JournalLookupResult {

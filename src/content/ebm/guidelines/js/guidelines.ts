@@ -112,10 +112,40 @@ export function filterByStudyId(id: string): void {
   if (typeof window.renderTable === 'function') window.renderTable();
 }
 
-export function handleSearch(e: any): void {
-  const val = (e && e.target) ? e.target.value : (typeof e === 'string' ? e : '');
-  if (window.filters) window.filters.search = val;
-  if (window.renderTable) window.renderTable();
+let searchDebounceTimer: any = null;
+let isComposingSearch = false;
+
+export function handleSearch(e?: any): void {
+  const inputEl = document.getElementById('search-input') as HTMLInputElement | null;
+  const val = (e && e.target && typeof e.target.value === 'string') 
+    ? e.target.value 
+    : (typeof e === 'string' ? e : (inputEl ? inputEl.value : ''));
+
+  // 1. Phản hồi giao diện tức thì (cập nhật trạng thái hiển thị nút Xóa và phím tắt ⌘K)
+  const searchBox = document.querySelector('.search-box');
+  if (searchBox) {
+    searchBox.classList.toggle('has-text', !!(val && val.trim()));
+  }
+
+  // 2. Cập nhật state bộ lọc toàn cục
+  if (window.filters) {
+    window.filters.search = val;
+  }
+
+  // 3. Nếu đang trong quá trình gõ tiếng Việt có dấu (composition), tạm hoãn render để tránh gián đoạn bộ gõ
+  if (isComposingSearch) {
+    return;
+  }
+
+  // 4. Debounce 160ms trước khi renderTable để thao tác gõ mượt mà 60fps
+  if (searchDebounceTimer) {
+    clearTimeout(searchDebounceTimer);
+  }
+  searchDebounceTimer = setTimeout(() => {
+    if (typeof window.renderTable === 'function') {
+      window.renderTable();
+    }
+  }, 160);
 }
 
 export function parseUrlState(): void {
@@ -328,9 +358,29 @@ if (typeof window !== 'undefined') {
     if (window.renderTable) window.renderTable();
     renderUpdates();
 
-    const searchInput = document.getElementById('search-input');
+    const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
     if (searchInput) {
       searchInput.addEventListener('input', handleSearch);
+
+      // Chống nuốt phím / vỡ dấu bộ gõ tiếng Việt (Unikey / EVKey / IME)
+      searchInput.addEventListener('compositionstart', () => {
+        isComposingSearch = true;
+      });
+      searchInput.addEventListener('compositionend', (e: any) => {
+        isComposingSearch = false;
+        handleSearch(e);
+      });
+
+      // Phím Escape: xóa nhanh ô tìm kiếm và giữ focus
+      searchInput.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+          if (typeof window.clearSearch === 'function') {
+            window.clearSearch();
+          }
+        }
+      });
     }
 
     document.addEventListener('click', (e: any) => {
@@ -359,12 +409,21 @@ if (typeof window !== 'undefined') {
     });
 
     document.addEventListener('keydown', (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      // Phím tắt Ctrl+K hoặc Cmd+K: Focus thanh tìm kiếm nghiên cứu
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.select();
+        const cmdModal = document.getElementById('command-palette-modal');
+        if (cmdModal && cmdModal.classList.contains('active')) {
+          cmdModal.classList.remove('active');
+        }
+        const sInput = document.getElementById('search-input') as HTMLInputElement | null;
+        if (sInput) {
+          sInput.focus();
+          sInput.select();
+          const rect = sInput.getBoundingClientRect();
+          if (rect.top < 60 || rect.bottom > window.innerHeight) {
+            sInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         }
       }
       if (e.key === 'Escape') {

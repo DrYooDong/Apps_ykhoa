@@ -25,7 +25,7 @@ const STUDY_FIELDS = [
   'population', 'summary', 'detailedConclusion', 'fdaStatus', 'sourceUrl',
   'file', 'asianData', 'bookmarked', 'parts', 'icd10', 'subgroups',
   'conditionKey', 'impactFactor', 'if', 'quartile', 'sjr', 'snip', 'hIndex',
-  'publisher', 'cor', 'loe', 'code'
+  'publisher', 'cor', 'loe', 'code', 'tags', 'keyRecommendations', 'description', 'category'
 ];
 
 /**
@@ -313,6 +313,13 @@ function extractStudyFromFrontmatter(fm, fileName) {
   if (fm.quartile) study.quartile = fm.quartile;
   if (fm.sjr) study.sjr = fm.sjr;
   if (fm.hIndex) study.hIndex = fm.hIndex;
+  if (fm.code) study.code = fm.code;
+  if (fm.tags) study.tags = Array.isArray(fm.tags) ? fm.tags : [fm.tags];
+  if (fm.keyRecommendations) study.keyRecommendations = Array.isArray(fm.keyRecommendations) ? fm.keyRecommendations : [fm.keyRecommendations];
+  if (fm.description) study.description = fm.description;
+  if (fm.category) study.category = fm.category;
+  if (fm.cor) study.cor = fm.cor;
+  if (fm.loe) study.loe = fm.loe;
 
   return study;
 }
