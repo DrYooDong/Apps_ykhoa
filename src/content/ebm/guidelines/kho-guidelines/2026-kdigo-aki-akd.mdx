@@ -1,0 +1,808 @@
+---
+id: "2026-kdigo-aki-akd"
+slug: "2026-kdigo-aki-akd"
+title: "Hướng Dẫn Lâm Sàng KDIGO 2026 Về Tổn Thương Thận Cấp (AKI) Và Bệnh Thận Cấp (AKD): Định Nghĩa, Phân Loại, Dự Phòng & Liệu Pháp Thay Thế Thận"
+titleEn: "KDIGO 2026 Clinical Practice Guideline for Acute Kidney Injury (AKI) and Acute Kidney Disease (AKD)"
+code: "GDL-2026-KDIGO-AKI-AKD"
+organization: "KDIGO (Kidney Disease: Improving Global Outcomes)"
+journal: "Kidney International / Public Review Draft"
+year: 2026
+sourceType: "intl-guideline"
+specialty: "renal"
+specialty2: "icu"
+design: "guideline"
+impact: "practice-changing"
+cor: "I"
+loe: "A"
+category: "guidelines"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-10-26"
+conditionKey: "acute-kidney-injury"
+icd10: ["N17", "N17.0", "N17.8", "N17.9", "N18.9", "N19"]
+drug: "Buffered Crystalloids, Balanced Crystalloids, Norepinephrine, Terlipressin, Rasburicase, Furosemide, Insulin, Citrate, Heparin, SGLT2i, RASi"
+population: "Bệnh nhân người lớn, trẻ em và trẻ sơ sinh mắc hoặc có nguy cơ mắc tổn thương thận cấp (AKI) và bệnh thận cấp (AKD) trong môi trường cấp cứu, phẫu thuật và hồi sức tích cực (ICU)"
+intervention: "Định nghĩa tiêu chuẩn cấu trúc & chức năng mới, phân tầng nguy cơ bằng biomarker (TIMP-2*IGFBP7, NGAL) & FST, quản lý dịch tinh thể cân bằng, quản lý độc chất thận, kiểm soát huyết động và chuẩn hóa chỉ định/kỹ thuật RRT"
+description: "Hướng dẫn lâm sàng toàn cầu mới nhất của KDIGO 2026 cập nhật toàn diện định nghĩa AKI/AKD, tích hợp biomarker tổn thương cấu trúc tế bào ống thận, Furosemide Stress Test (FST), phác đồ bù dịch cân bằng và chiến lược RRT trì hoãn an toàn."
+tags:
+  - "KDIGO"
+  - "2026"
+  - "Thận học"
+  - "Hồi sức cấp cứu"
+  - "Tổn thương thận cấp"
+  - "Bệnh thận cấp"
+  - "Khuyến cáo lâm sàng"
+  - "Evidence-Based Medicine"
+keyRecommendations:
+  - "Định nghĩa thống nhất AKI/AKD: Thêm tiêu chuẩn cấu trúc (biomarker tổn thương tế bào ống thận dương tính) bên cạnh tiêu chuẩn chức năng (Creatinine/Cystatin C/Nước tiểu trong 7 ngày). AKD bao gồm bất thường thận kéo dài < 3 tháng."
+  - "Dự báo nguy cơ & Dấu ấn sinh học: Sử dụng công thức Furosemide Stress Test (FST - 1.0-1.5 mg/kg IV) và biomarker [TIMP-2]*[IGFBP7] / NGAL để nhận diện sớm bệnh nhân có nguy cơ AKI tiến triển nặng (Stage 2-3)."
+  - "Dự phòng & Quản lý Dịch truyền: Ưu tiên dung dịch tinh thể cân bằng (Buffered Crystalloids) hơn NaCl 0.9%; áp dụng gói bảo vệ thận (KDIGO bundle); tạm ngưng thuốc độc thận/hạ áp trong đợt bệnh cấp (Sick Day Guidance)."
+  - "Liệu pháp Thay thế Thận (RRT): Khuyến cáo chiến lược trì hoãn RRT (Deferred initiation) cho đến khi có chỉ định cấp cứu (K+ ≥ 6.0, pH ≤ 7.20, phù phổi kháng trị); ưu tiên Kháng đông Citrate vùng cho CRRT."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Chương 1: Định Nghĩa, Nhận Diện & Phân Giai Đoạn AKI / AKD"
+    icon: "fa-solid fa-stethoscope"
+  - id: "sec-2"
+    number: 2
+    title: "Chương 2: Dự Đoán Nguy Cơ, Phân Tầng & Đánh Giá Chẩn Đoán"
+    icon: "fa-solid fa-calculator"
+  - id: "sec-3"
+    number: 3
+    title: "Chương 3: Dự Phòng & Điều Trị AKI (Dịch Truyền & Huyết Động)"
+    icon: "fa-solid fa-pills"
+  - id: "sec-4"
+    number: 4
+    title: "Chương 4: Tổn Thương Thận Cấp Do Thuốc & Độc Chất Thận"
+    icon: "fa-solid fa-capsules"
+  - id: "sec-5"
+    number: 5
+    title: "Chương 5: Liệu Pháp Thay Thế Thận (RRT) Cấp Tính"
+    icon: "fa-solid fa-diagram-project"
+  - id: "sec-6"
+    number: 6
+    title: "Chương 6: Chăm Sóc Theo Dõi & Quản Lý Dài Hạn Sau AKI / AKD"
+    icon: "fa-solid fa-book-medical"
+---
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val green">≤ 7 Ngày</div>
+      <div class="stat-lbl">Khung thời gian xác định AKI (So với 3 tháng của AKD)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">20–25 mL/kg/h</div>
+      <div class="stat-lbl">Đích liều CRRT thực nhận (Prescribed 25–30 mL/kg/h)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">FST &lt; 200 mL/2h</div>
+      <div class="stat-lbl">Ngưỡng Furosemide Stress Test dự báo AKI tiến triển Stage 3 / RRT</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Sick Day Guidance</div>
+      <div class="stat-lbl">Tạm ngưng SADMANS (RASi, SGLT2i, NSAIDs, Metformin) khi mất nước</div>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">🎯</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 1: Bổ Sung Tiêu Chuẩn Cấu Trúc & Phân Đoạn Mới</div>
+        <div class="pillar-desc">KDIGO 2026 tích hợp tiêu chuẩn biomarker tổn thương ống thận (B1) bên cạnh Creatinine (C1–C3) và Nước tiểu (U1–U3), mở rộng khái niệm Subclinical AKI.</div>
+      </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">⚖️</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 2: Cá Thể Hóa Dịch Truyền, Huyết Động & Dược Lý</div>
+        <div class="pillar-desc">Ưu tiên dung dịch tinh thể cân bằng, duy trì MAP > 65 mmHg (75–80 mmHg nếu có THA mạn), áp dụng gói KDIGO Bundle và quản lý dược đa phương thức (Drug Stewardship).</div>
+      </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">🛡️</div>
+      <div>
+        <div class="pillar-title">Trụ Cột 3: Chiến Lược Trì Hoãn RRT & Khung KAMPS Post-AKI</div>
+        <div class="pillar-desc">Trì hoãn RRT có kiểm soát (Deferred RRT) cho đến khi có chỉ định cấp cứu; ưu tiên Kháng đông Citrate vùng; áp dụng khung KAMPS theo dõi nguy cơ tiến triển CKD sau 3 tháng.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-1" class="quickmenu-item active">1. Định Nghĩa & Phân Đoạn</a>
+    <a href="#sec-2" class="quickmenu-item">2. Dự Báo & Chẩn Đoán</a>
+    <a href="#sec-3" class="quickmenu-item">3. Dự Phòng & Điều Trị</a>
+    <a href="#sec-4" class="quickmenu-item">4. AKI Do Thuốc & Cản Quang</a>
+    <a href="#sec-5" class="quickmenu-item">5. Thay Thế Thận (RRT)</a>
+    <a href="#sec-6" class="quickmenu-item">6. Khung KAMPS Post-AKI</a>
+  </div>
+</div>
+
+<div class="page-content">
+
+  <!-- MỤC 1: ĐỊNH NGHĨA & PHÂN LOẠI -->
+  <div class="sec-card" id="sec-1">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🔬</span>
+      <h2 class="sec-title">1. Định Nghĩa, Nhận Diện & Phân Giai Đoạn AKI / AKD (Chương 1)</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox info">
+        <span class="infobox-icon">💡</span>
+        <div>
+          <strong>Bước tiến mới trong bản cập nhật KDIGO 2026:</strong>
+          KDIGO 2026 mở rộng định nghĩa AKI truyền thống (vốn chỉ dựa vào hai dấu ấn chức năng là Creatinine máu và Thể tích nước tiểu) bằng việc **bổ sung tiêu chuẩn cấu trúc (Structural criteria)**. Việc gia tăng các dấu ấn sinh học tổn thương tế bào ống thận (biomarkers) cho phép nhận diện giai đoạn **AKI dưới lâm sàng (Subclinical AKI)** trước khi có sự sụt giảm độ lọc cầu thận (GFR).
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-stethoscope"></i> Bảng 1. Tiêu Chuẩn Chẩn Đoán Tổn Thương Thận Cấp (AKI) Ở Trẻ Em Và Người Lớn
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-square-check"></i> Tiêu chuẩn thống nhất</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 50%;">Tiêu Chuẩn Chức Năng (Functional Criteria)</th>
+                <th style="width: 50%;">Tiêu Chuẩn Cấu Trúc (Structural Criteria)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul style="margin-left: 1rem; line-height: 1.7;">
+                    <li><strong>Tăng Creatinine máu ≥ 0.3 mg/dL (≥ 26.5 µmol/L)</strong> trong vòng 48 giờ.</li>
+                    <li><strong>Tăng Creatinine máu ≥ 1.5 lần</strong> so với mức nền trong vòng 7 ngày trước đó.</li>
+                    <li><strong>Tăng Serum Cystatin C ≥ 1.5 lần</strong> so với mức nền trong vòng 7 ngày trước đó.</li>
+                    <li><strong>Thể tích nước tiểu trung bình &lt; 0.5 mL/kg/giờ</strong> (tính theo cân nặng lý tưởng) kéo dài ≥ 6 giờ.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul style="margin-left: 1rem; line-height: 1.7;">
+                    <li><strong>Nồng độ Biomarker tổn thương thận tăng cao</strong> vượt ngưỡng chuẩn hóa lâm sàng/pháp lý, xuất hiện hoặc giả định xảy ra trong vòng 7 ngày trước đó.</li>
+                    <li><em>Ý nghĩa:</em> Nhận diện tổn thương tế bào biểu mô ống thận ngay cả khi Creatinine máu chưa kịp tăng.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-calculator"></i> Bảng 2. Hệ Thống Phân Giai Đoạn Nặng AKI Tích Hợp Chức Năng & Cấu Trúc (KDIGO 2026 Staging)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-sliders"></i> Phân tầng mức độ</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">Giai Đoạn</th>
+                <th style="width: 35%;">Tiêu Chuẩn Creatinine Máu (C)</th>
+                <th style="width: 30%;">Tiêu Chuẩn Nước Tiểu (U)</th>
+                <th style="width: 20%;">Biomarker Tổn Thương (B)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Giai Đoạn 0 (Stage 0)</strong></td>
+                <td>Không tăng Creatinine máu</td>
+                <td>Nước tiểu bình thường</td>
+                <td><span class="score-badge score-pos">B1 (Dương tính)</span></td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Giai Đoạn 1 (Stage 1)</strong></td>
+                <td>Tăng ≥ 0.3 mg/dL (≥ 26.5 µmol/L) HOẶC Tăng 1.5–1.9 lần mức nền</td>
+                <td>&lt; 0.5 mL/kg/h trong 6–12 giờ</td>
+                <td>B0 (Âm) / B1 (Dương)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Giai Đoạn 2 (Stage 2)</strong></td>
+                <td>Tăng 2.0–2.9 lần mức nền</td>
+                <td>&lt; 0.5 mL/kg/h kéo dài ≥ 12 giờ</td>
+                <td>B0 (Âm) / B1 (Dương)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Giai Đoạn 3 (Stage 3)</strong></td>
+                <td>Tăng ≥ 3.0 lần mức nền HOẶC Creatinine ≥ 4.0 mg/dL (≥ 353.6 µmol/L) HOẶC Khởi trị RRT</td>
+                <td>&lt; 0.3 mL/kg/h kéo dài ≥ 24 giờ HOẶC Vô niệu (Anuria) ≥ 12 giờ</td>
+                <td>B0 (Âm) / B1 (Dương)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="updates-grid" style="margin-top: 1.5rem;">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #0284c7;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">⏱️</div>
+            <div class="update-card-title">Phân Định AKI Thoáng Qua vs. AKI Dai Dẳng</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>AKI Thoáng Qua (Transient AKI):</strong> Sự suy giảm chức năng thận (Creatinine/Cystatin C tăng hoặc nước tiểu giảm) phục hồi hoàn toàn về mức nền trong vòng <strong>≤ 48 giờ</strong>.</li>
+              <li><strong>AKI Dai Dẳng (Persistent AKI):</strong> Tình trạng suy giảm chức năng thận kéo dài <strong>từ &gt; 48 giờ đến 7 ngày</strong>. Nguy cơ tiến triển thành AKD và CKD cao gấp 2–4 lần.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-blue">Ngưỡng cắt 48 giờ</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #f59e0b;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">🔄</div>
+            <div class="update-card-title">Tiêu Chuẩn Bệnh Thận Cấp (AKD Criteria)</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.7;">
+              <li><strong>Khái niệm AKD:</strong> Bất kỳ biến đổi cấu trúc hoặc chức năng thận có thời gian diễn tiến <strong>≤ 3 tháng</strong> (AKD bao gồm cả AKI).</li>
+              <li><strong>Tiêu chuẩn:</strong> eGFR &lt; 60 mL/min/1.73m² OR giảm eGFR ≥ 35% OR tăng Creatinine máu &gt; 50% OR có đạm niệu/máu niệu kéo dài ≤ 3 tháng.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-amber">Cầu nối AKI–CKD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 2: DỰ ĐOÁN NGUY CƠ & CHẨN ĐOÁN -->
+  <div class="sec-card" id="sec-2">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📐</span>
+      <h2 class="sec-title">2. Dự Đoán Nguy Cơ, Phân Tầng & Đánh Giá Chẩn Đoán (Chương 2)</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox warning">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <strong>Cảnh báo về Cảnh báo Điện tử (Electronic Alerts):</strong>
+          KDIGO 2026 khuyến cáo **KHÔNG** sử dụng các hệ thống cảnh báo điện tử ngắt quãng (interruptive alerts) dựa đơn độc trên Creatinine máu nếu không đi kèm với quy trình phản hồi lâm sàng chuẩn hóa và phân công trách nhiệm rõ ràng (Khuyến cáo 2.2.1, LOE 1B).
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-calculator"></i> Bảng 3. Nghiệm Pháp Furosemide Stress Test (FST) Phân Tầng Nguy Cơ Tiến Triển AKI
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-vial"></i> Đánh giá chức năng ống thận</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Bối Cảnh Áp Dụng</th>
+                <th style="width: 35%;">Liều Lượng Furosemide Tiêm Tĩnh Mạch</th>
+                <th style="width: 40%;">Đánh Giá Đáp Ứng Nước Tiểu Trong 2 Giờ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Chưa dùng Lợi tiểu quai trước đó</strong></td>
+                <td>Tiêm tĩnh mạch bolus <strong>Furosemide 1.0 mg/kg</strong></td>
+                <td>
+                  <strong>Đạt:</strong> Nước tiểu ≥ 200 mL/2 giờ → Thận còn đáp ứng tốt, nguy cơ tiến triển thấp.<br />
+                  <strong>Không đạt:</strong> Nước tiểu &lt; 200 mL/2 giờ → Nguy cơ cao tiến triển sang Stage 3 AKI hoặc cần RRT.
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Đã sử dụng Lợi tiểu quai trước đó</strong></td>
+                <td>Tiêm tĩnh mạch bolus <strong>Furosemide 1.5 mg/kg</strong></td>
+                <td>
+                  <em>Điều kiện bắt buộc:</em> Bệnh nhân phải được bù đủ thể tích tuần hoàn (Euvolemic hoặc Hypervolemic) trước khi làm test. Cấm làm khi đang thiếu dịch.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-microscope"></i> Bảng 4. Đặc Điểm Các Dấu Ấn Sinh Học Tổn Thương Thận (Kidney Biomarkers)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-dna"></i> Dấu ấn sinh học</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Biomarker</th>
+                <th style="width: 25%;">Mẫu Bệnh Học & Loại</th>
+                <th style="width: 25%;">Thời Gian Đạt Giá Trị Chẩn Đoán</th>
+                <th style="width: 30%;">Chỉ Định & Phê Duyệt Pháp Lý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">TIMP-2 × IGFBP7</span>
+                  <strong>[NephroCheck]</strong>
+                </td>
+                <td>Nước tiểu<br /><em>Dấu ấn Stress tế bào</em></td>
+                <td>4–5 giờ sau tổn thương</td>
+                <td>Phê duyệt FDA / CE: Dự báo nguy cơ tiến triển AKI Stage 2–3 ở bệnh nhân hồi sức/phẫu thuật (Ngưỡng ≥ 0.3).</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">NGAL</span>
+                  <strong>Neutrophil Lipocalin</strong>
+                </td>
+                <td>Nước tiểu / Huyết tương<br /><em>Dấu ấn Tổn thương</em></td>
+                <td>2–4 giờ sau tổn thương</td>
+                <td>Phê duyệt FDA ở nhi khoa và CE ở người lớn: Phát hiện sớm tổn thương ống thận cấp trước khi Creatinine tăng.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">KIM-1</span>
+                  <strong>Kidney Injury Molecule-1</strong>
+                </td>
+                <td>Nước tiểu<br /><em>Dấu ấn Tổn thương ống gần</em></td>
+                <td>12–24 giờ sau tổn thương</td>
+                <td>Phê duyệt FDA trong nghiên cứu độc tính dược lý tiền lâm sàng.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">CCL14</span>
+                  <strong>Chemokine Ligand 14</strong>
+                </td>
+                <td>Nước tiểu<br /><em>Dấu ấn Viêm & Xơ hóa</em></td>
+                <td>Trong vòng 36 giờ</td>
+                <td>Phê duyệt CE ở Châu Âu: Dự báo khả năng AKI Stage 3 dai dẳng (Persistent Severe AKI).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 3: DỰ PHÒNG & ĐIỀU TRỊ AKI -->
+  <div class="sec-card" id="sec-3">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">💊</span>
+      <h2 class="sec-title">3. Dự Phòng & Điều Trị AKI: Dịch Truyền, Huyết Động & Tác Nhân (Chương 3)</h2>
+    </div>
+    <div class="sec-body">
+
+      <div class="rec-card cor-1">
+        <div class="rec-header">
+          <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> KHUYẾN CÁO MẠNH (CLASS 1 - LOE B/C)</span>
+          <span class="badge-loe-a"><i class="fa-solid fa-layer-group"></i> LOE B</span>
+        </div>
+        <div class="rec-body">
+          <ul style="margin-left: 1.2rem; line-height: 1.7;">
+            <li><strong>Lựa chọn dịch truyền (Khuyến cáo 3.1.1 & 3.1.2):</strong> Khuyến cáo sử dụng **dung dịch tinh thể (Crystalloids)** thay vì dung dịch keo (Albumin, Gelatin, Starch) để bù thể tích lòng mạch ban đầu (LOE 1B). Khuyến cáo ưu tiên **dung dịch tinh thể cân bằng (Buffered Crystalloids)** hơn dung dịch NaCl 0.9% (LOE 1B), ngoại trừ bệnh nhân có chấn thương sọ não.</li>
+            <li><strong>Chỉ định Bicarbonate IV (Khuyến cáo 3.1.3):** Ở bệnh nhân AKI có toan chuyển hóa nặng kèm toan máu (pH &lt; 7.20), gợi ý sử dụng Sodium Bicarbonate tiêm tĩnh mạch trước khi quyết định chạy RRT cấp cứu (LOE 2C).</li>
+            <li><strong>Quản lý Huyết động (Khuyến cáo 3.2.1):** Duy trì **Huyết áp trung bình (MAP) &gt; 65 mmHg** làm đích hướng dẫn truyền dịch và vận mạch ở bệnh nhân hồi sức tích cực (LOE 2C). Nâng MAP đích lên 75–80 mmHg ở bệnh nhân có tiền sử tăng huyết áp mạn tính.</li>
+            <li><strong>Hội chứng Gan Thận (Khuyến cáo 3.6.1):** Khuyến cáo sử dụng thuốc co mạch (Terlipressin hoặc Norepinephrine) phối hợp Albumin cho người lớn mắc HRS-AKI (LOE 1C).</li>
+            <li><strong>Hội chứng Ly Giải U (Khuyến cáo 3.7.1):** Khuyến cáo ưu tiên Rasburicase hơn Allopurinol/Febuxostat ở bệnh nhân có nguy cơ cao (LOE 1B), trừ khi có chống chỉ định thiếu hụt men G6PD.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flow-track-container" style="margin-top: 1.5rem;">
+        <div class="flow-track-step">
+          <div class="flow-track-rail">
+            <div class="flow-track-marker marker-blue">01</div>
+            <div class="flow-track-line"></div>
+          </div>
+          <div class="flow-track-content accent-blue">
+            <div class="flow-step-header">
+              <div class="flow-step-title"><i class="fa-solid fa-shield-halved" style="color: #0284c7;"></i> Gói Can Thiệp Bảo Vệ Thận Đa Phương Thức (Multicomponent KDIGO Bundle)</div>
+              <span class="flow-step-badge flow-badge-blue">PrevAKI & BigpAK Protocol</span>
+            </div>
+            <div class="flow-step-text">
+              Thực hiện ngay khi bệnh nhân có nguy cơ cao (đặc biệt khi [TIMP-2]*[IGFBP7] ≥ 0.3):
+              <ul style="margin-left: 1rem; line-height: 1.6; margin-top: 0.5rem;">
+                <li>Ngưng toàn bộ các thuốc gây độc cho thận (Nephrotoxic agents) nếu có thể.</li>
+                <li>Tối ưu hóa thể tích tuần hoàn và áp lực tưới máu thận (Perfusion pressure).</li>
+                <li>Cân nhắc theo dõi huyết động chức năng xâm lấn/bán xâm lấn.</li>
+                <li>Theo dõi sát Creatinine máu và Thể tích nước tiểu mỗi giờ.</li>
+                <li>Duy trì đường huyết mục tiêu 140–180 mg/dL (7.8–10.0 mmol/L).</li>
+                <li>Tránh dùng thuốc cản quang i-ốt hoặc chọn phương pháp chẩn đoán thay thế.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-pills"></i> Bảng 5. Thang Nấc Tăng Bậc Điều Trị Lợi Tiểu Kiểm Soát Quá Tải Thể Tích
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-prescription-bottle-medical"></i> Escalation Pathway</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Nấc Điều Trị</th>
+                <th style="width: 40%;">Liều Lượng & Đường Dùng</th>
+                <th style="width: 40%;">Mục Tiêu & Hướng Xử Trí tiếp theo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Bước 1: Test Lợi Tiểu</strong></td>
+                <td>Furosemide 1.0 mg/kg IV bolus (1.5 mg/kg nếu đã dùng trước đó)</td>
+                <td>Đích: Nước tiểu &gt; 200 mL/2 giờ. Nếu đạt, tiếp tục liều định kỳ.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Bước 2: Tăng Gấp Đôi Liều</strong></td>
+                <td>Gấp đôi liều Furosemide (160–200 mg IV bolus) mỗi 6–12 giờ</td>
+                <td>Liều bolus tối đa 200 mg trước khi chuyển sang truyền liên tục.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Bước 3: Tác Dụng Đồng Vận</strong></td>
+                <td>Bổ sung Thiazide (Metolazone 5–10 mg PO hoặc Chlorothiazide 500 mg IV)</td>
+                <td>Uống trước Furosemide 30–60 phút để ức chế tái hấp thu Natri tại ống lượn xa.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Bước 4: Truyền Tĩnh Mạch</strong></td>
+                <td>Chuyển sang Furosemide truyền tĩnh mạch liên tục 5–10 mg/giờ</td>
+                <td>Chỉnh liều lên tối đa 20 mg/giờ để duy trì bài niệu ổn định.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Thất Bại Lợi Tiểu</strong></td>
+                <td>Không đạt cân bằng dịch âm dù đã tối ưu hóa liều lợi tiểu</td>
+                <td>Đánh giá chỉ định khởi trị Liệu pháp Thay thế Thận (RRT).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 4: AKI DO THUỐC & CẢN QUANG -->
+  <div class="sec-card" id="sec-4">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🧪</span>
+      <h2 class="sec-title">4. Tổn Thương Thận Cấp Do Thuốc & Độc Chất Thận (Chương 4)</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox warning">
+        <span class="infobox-icon">⚠️</span>
+        <div>
+          <strong>Phân biệt Tổn Thương Cấu Trúc vs. Thay Đổi Huyết Động:</strong>
+          KDIGO 2026 nhấn mạnh sự khác biệt giữa thuốc gây **Tổn thương nhu mô thực sự (Damage)** (như Aminoglycoside, Vancomycin, Amphotericin B, Cisplatin) với các thuốc chỉ làm **Thay đổi huyết động đơn thuần (Dysfunction without damage)** (như ACEi/ARB, SGLT2i làm giảm sụt áp lực lọc cầu thận tạm thời).
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-capsules"></i> Bảng 6. Hướng Dẫn Tạm Ngưng Thuốc Trong Đợt Bệnh Cấp Tính (Sick Day Medication Guidance)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-triangle-exclamation"></i> SADMANS Protocol</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Nhóm Thuốc (SADMANS)</th>
+                <th style="width: 35%;">Cơ Chế Tăng Nguy Cơ AKI Khi Mất Nước</th>
+                <th style="width: 40%;">Khuyên Tạm Ngưng & Tái Khởi Trị</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">SGLT2 inhibitors</span>
+                  <strong>Thuốc đồng vận SGLT2</strong>
+                </td>
+                <td>Gây co nhẹ động mạch vào và tăng mất dịch qua đường niệu, nguy cơ euglycemic DKA.</td>
+                <td>Tạm ngưng khi có sốt, nôn mửa, tiêu chảy hoặc 3 ngày trước phẫu thuật lớn. Tái khởi trị khi ăn uống bình thường.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag preferred">ACEi / ARB</span>
+                  <strong>Ức chế hệ RAAS</strong>
+                </td>
+                <td>Làm mất khả năng co động mạch ra cầu thận, gây sụt giảm GFR cấp khi giảm thể tích tuần hoàn.</td>
+                <td>Tạm ngưng trong các đợt bệnh cấp gây giảm thể tích; tái khởi trị sau khi thể tích ổn định 48–72h.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">Diuretics / Metformin</span>
+                  <strong>Lợi tiểu & Metformin</strong>
+                </td>
+                <td>Lợi tiểu làm nặng thêm tình trạng mất nước; Metformin nguy cơ tích lũy gây toan lactic khi GFR giảm.</td>
+                <td>Tạm ngưng lợi tiểu khi mất nước; tạm ngưng Metformin khi eGFR &lt; 30 mL/min hoặc có sốc.</td>
+              </tr>
+              <tr>
+                <td class="source-cell">
+                  <span class="rx-tag alternative">NSAIDs</span>
+                  <strong>Kháng viêm không steroid</strong>
+                </td>
+                <td>Ức chế Prostaglandin gây co động mạch vào, làm triệt tiêu cơ chế tự điều hòa dòng máu thận.</td>
+                <td>Khuyên bệnh nhân Tuyệt đối không tự ý dùng NSAIDs trong đợt bệnh cấp hoặc trước thủ thuật cản quang.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="updates-grid" style="margin-top: 1.5rem;">
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #ef4444;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">📸</div>
+            <div class="update-card-title">Dự Phòng Tổn Thương Thận Do Thuốc Cản Quang (CA-AKI)</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.6;">
+              <li><strong>Phân tầng nguy cơ:</strong> Đo Creatinine/eGFR trước thủ thuật. Nguy cơ cao khi eGFR &lt; 30 mL/min/1.73m² hoặc có AKI Stage 2–3.</li>
+              <li><strong>Truyền dịch dự phòng (Khuyến cáo 4.9.2.1):** Khuyến cáo bù dịch tĩnh mạch bằng **NaCl 0.9%** (1.0–1.5 mL/kg/h trong 12h trước và sau thủ thuật) hơn dung dịch nhược trương hay NaHCO3 ở bệnh nhân nguy cơ cao (LOE 1B).</li>
+              <li><strong>Không hoãn thuốc hạ áp mạn:** Gợi ý không cần thiết phải ngừng rầm rộ thuốc ACEi/ARB trước các thủ thuật cản quang chương trình (LOE 2B).</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-red">NaCl 0.9% IV Protocol</div>
+        </div>
+
+        <div class="update-card">
+          <div class="update-card-accent" style="background: #8b5cf6;"></div>
+          <div class="update-card-header">
+            <div class="update-card-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">💊</div>
+            <div class="update-card-title">Giám Sát Dược Đa Phương Thức (Drug Stewardship)</div>
+          </div>
+          <div class="update-card-body">
+            <ul style="margin-left: 1rem; line-height: 1.6;">
+              <li><strong>Khuyên dùng TDM:</strong> Bắt buộc theo dõi nồng độ thuốc trong máu (TDM) đối với Vancomycin (đích AUC/MIC 400–600) và Aminoglycoside.</li>
+              <li><strong>Cảnh báo phối hợp Triple Whammy:</strong> Tránh phối hợp 3 nhóm thuốc nguy hiểm: NSAIDs + Lợi tiểu + ACEi/ARB.</li>
+            </ul>
+          </div>
+          <div class="update-verdict verdict-purple">TDM & Drug Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 5: THAY THẾ THẬN (RRT) -->
+  <div class="sec-card" id="sec-5">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">🗺️</span>
+      <h2 class="sec-title">5. Liệu Pháp Thay Thế Thận (RRT) Cấp Tính (Chương 5)</h2>
+    </div>
+    <div class="sec-body">
+      
+      <div class="rec-card cor-1">
+        <div class="rec-header">
+          <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> KHUYẾN CÁO MẠNH VỀ THỜI ĐIỂM & LIỀU LƯỢNG RRT</span>
+          <span class="badge-loe-a"><i class="fa-solid fa-layer-group"></i> LOE B / C</span>
+        </div>
+        <div class="rec-body">
+          <ul style="margin-left: 1.2rem; line-height: 1.7;">
+            <li><strong>Chiến lược Trì Hoãn Khởi Trị RRT (Khuyến cáo 5.1.1):** Ở người lớn mắc AKI, khuyến cáo áp dụng chiến lược **trì hoãn RRT có kiểm soát (Deferred RRT strategy)** thay vì khởi trị sớm/phủ đầu (Pre-emptive strategy) khi chưa có chỉ định cấp cứu (LOE 1C).</li>
+            <li><strong>Đích liều CRRT (Khuyến cáo 5.3.1):** Khuyến cáo cung cấp thể tích dịch thoát (Effluent volume) **20–25 mL/kg/giờ** ở bệnh nhân chạy CRRT (LOE 1B). Liều kê đơn (Prescribed dose) cần đạt **25–30 mL/kg/giờ** để bù trừ thời gian dừng máy (Downtime). KHÔNG dùng Lọc máu thể tích cao (HVHF) cho sốc nhiễm trùng (LOE 1B).</li>
+            <li><strong>Đích liều IRRT / SLED (Khuyến cáo 5.3.1):** Khuyến cáo đạt tổng **Kt/V = 3.9 mỗi tuần** (tương đương Kt/V = 1.3 mỗi buổi × 3 buổi/tuần) (LOE 1B).</li>
+            <li><strong>Kháng đông CRRT (Khuyến cáo 5.3.2.2):** Ưu tiên **Kháng đông Citrate vùng (Regional Citrate Anticoagulation)** hơn Heparin nếu không có chống chỉ định (LOE 2B).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-triangle-exclamation"></i> Bảng 7. Chỉ Định Khởi Trị RRT Cấp Cứu vs. Tạm Hoãn
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-clock"></i> Indications for RRT</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 35%;">Chỉ Định Cấp Cứu (Khởi trị RRT Ngay)</th>
+                <th style="width: 65%;">Tiêu Chuẩn Lâm Sàng & Sinh Hóa Tương Ứng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Tăng Kali máu nặng</strong></td>
+                <td>K⁺ ≥ 6.0 mmol/L, tăng nhanh hoặc có biến đổi sóng điện tâm đồ (T nhọn, QRS giãn) kháng trị nội khoa.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Toan chuyển hóa nặng</strong></td>
+                <td>pH arterial ≤ 7.20 hoặc HCO3⁻ ≤ 12 mmol/L kháng trị với bù dịch/Bicarbonate.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Quá tải thể tích / Phù phổi</strong></td>
+                <td>Tình trạng quá tải dịch đe dọa hô hấp, giảm oxy máu nặng kháng trị với lợi tiểu quai liều tối đa.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Hội chứng Uremia cấp</strong></td>
+                <td>Xuất hiện Viêm màng ngoài tim do ure máu cao, Bệnh脑 do ure (Uremic encephalopathy), Xuất huyết do ure.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Ngộ độc chất & Tăng Amoniac</strong></td>
+                <td>Ngộ độc các chất lọc được (Lithium, Salicylate, Metformin, Toxic alcohol) hoặc Tăng Amoniac máu nặng trong suy gan cấp.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-arrows-spin"></i> Bảng 8. Tiêu Chuẩn Dự Báo Cai RRT (RRT Liberation / Discontinuation)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-circle-check"></i> Cai RRT an toàn</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 30%;">Thông Số Đánh Giá</th>
+                <th style="width: 45%;">Ngưỡng Cai RRT Thành Công</th>
+                <th style="width: 25%;">Ý Nghĩa Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>Thể Tích Nước Tiểu (Urine Output)</strong></td>
+                <td>&gt; 450 mL/24 giờ (khi KHÔNG dùng lợi tiểu) HOẶC &gt; 2300 mL/24 giờ (khi CÓ dùng lợi tiểu quai)</td>
+                <td>Chỉ số dự báo phục hồi chức năng thận mạnh nhất trong các nghiên cứu lâm sàng.</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>Độ Thanh Thải Creatinine (CrCl)</strong></td>
+                <td>CrCl nội sinh đo trong mẫu nước tiểu 2–24 giờ đạt <strong>≥ 23 mL/phút</strong></td>
+                <td>Xác nhận cầu thận đã phục hồi đủ khả năng đào thải độc chất nitơ tự nhiên.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MỤC 6: CHĂM SÓC THEO DÕI POST-AKI -->
+  <div class="sec-card" id="sec-6">
+    <div class="sec-hdr">
+      <span class="sec-hdr-icon">📋</span>
+      <h2 class="sec-title">6. Chăm Sóc Theo Dõi & Quản Lý Dài Hạn Sau AKI / AKD (Chương 6)</h2>
+    </div>
+    <div class="sec-body">
+      <div class="infobox success">
+        <span class="infobox-icon">✅</span>
+        <div>
+          <strong>Chăm Sóc Theo Dõi Phối Hợp Dọc (Khuyến cáo 6.1.1, LOE 1B):</strong>
+          Bệnh nhân sau đợt AKI/AKD có nguy cơ cao phát triển Bệnh thận mạn (CKD) de novo, tiến triển CKD sẵn có, biến cố tim mạch và tử vong dài hạn. Khuyến cáo xây dựng kế hoạch chăm sóc chuyển tiếp từ viện về nhà và đánh giá lại chức năng thận toàn diện tại mốc **3 tháng (90 ngày)** post-AKI.
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-heart-pulse"></i> Bảng 9. Khung Đánh Giá Bệnh Lý Thận Post-AKI (Khung KAMPS Framework)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-notes-medical"></i> KAMPS Protocol</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Thành Phần KAMPS</th>
+                <th style="width: 45%;">Nội Dung Đánh Giá & Can Thiệp Cụ Thể</th>
+                <th style="width: 30%;">Thời Điểm Thực Hiện</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>K - Kidney Function Check</strong></td>
+                <td>Đo Creatinine máu, Serum Cystatin C, tính eGFR, thử tổng phân tích nước tiểu và định lượng đạm niệu (UACR).</td>
+                <td>Tại mốc xuất viện & Tái khám sau 3 tháng</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>A - Advocacy</strong></td>
+                <td>Giáo dục sức khỏe thận cho bệnh nhân/người nhà; tư vấn chế độ ăn uống, bù dịch và tránh lối sống hại thận.</td>
+                <td>Pre-discharge & Ngoại trú</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>M - Medications Review</strong></td>
+                <td>Rà soát tái khởi trị các thuốc bảo vệ tim thận (RASi, SGLT2i, GLP-1 RA, MRA); chỉnh liều thuốc theo CrCl thực tế.</td>
+                <td>Xuất viện & Tháng thứ 1–3</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>P - Pressure Control</strong></td>
+                <td>Đo huyết áp và kiểm soát đạt huyết áp mục tiêu theo hướng dẫn KDIGO CKD 2024 (SBP &lt; 120 mmHg nếu cân đối).</td>
+                <td>Theo dõi định kỳ hằng tháng</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>S - Sick Day Protocols</strong></td>
+                <td>Hướng dẫn tự quản lý thuốc khi có biến cố mất nước cấp (SADMANS protocol); dặn dò tái khám ngay khi có dấu hiệu nặng.</td>
+                <td>Trước khi xuất viện</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card" style="margin-top: 1.5rem;">
+        <div class="table-header">
+          <div class="table-title">
+            <i class="fa-solid fa-sliders"></i> Bảng 10. Thang Điểm Dự Báo Chuyển Tiến Triển Sang CKD Giai Đoạn 4–5 (James et al. 6-Variable Model)
+          </div>
+          <span class="table-badge"><i class="fa-solid fa-chart-line"></i> Phân tầng nguy cơ CKD</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 30%;">Biến Số Dự Báo</th>
+                <th style="width: 40%;">Mức Giá Trị & Điểm Số Tương Ứng</th>
+                <th style="width: 30%;">Phân Tầng Nguy Cơ & Hướng Xử Trí</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="source-cell"><strong>1. Tuổi</strong></td>
+                <td>&lt; 50 (0đ) | 50–59 (1đ) | 60–69 (2đ) | 70–79 (3đ) | ≥ 80 (3đ)</td>
+                <td rowspan="6">
+                  <strong>Tổng điểm ≤ 8 (Nguy cơ &lt; 1%):</strong> Theo dõi tại Y tế cơ sở / Phòng khám Tổng quát.<br /><br />
+                  <strong>Tổng điểm 9–14 (Nguy cơ 1–5%):</strong> Quản lý bán chuyên khoa.<br /><br />
+                  <strong>Tổng điểm ≥ 15 (Nguy cơ &gt; 5–20%):</strong> Bắt buộc chuyển khám chuyên khoa Nội Thận định kỳ.
+                </td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>2. Giới tính</strong></td>
+                <td>Nam (0đ) | Nữ (3đ)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>3. Creatinine Nền</strong></td>
+                <td>&lt; 0.6 mg/dL (0đ) | 0.6–0.9 (1–2đ) | 1.0–1.2 (3đ) | ≥ 1.3 mg/dL (5đ)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>4. Mức Độ Albumin niệu</strong></td>
+                <td>Bình thường (0đ) | Nhẹ (1đ) | Nặng / Protein niệu rõ (3đ)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>5. Giai Đoạn AKI</strong></td>
+                <td>Stage 1 (1đ) | Stage 2 (2đ) | Stage 3 (3đ)</td>
+              </tr>
+              <tr>
+                <td class="source-cell"><strong>6. Creatinine Xuất Viện</strong></td>
+                <td>&lt; 1.0 mg/dL (0đ) | 1.0–1.2 (3đ) | 1.3–1.8 (6–7đ) | ≥ 1.9 mg/dL (11đ)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CITATION BOX (AMA FORMAT) -->
+      <div class="citation-box" style="margin-top: 1.5rem;">
+        <strong>Trích dẫn tài liệu tham khảo chính thức (AMA Format):</strong><br />
+        Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury and Acute Kidney Disease Work Group. KDIGO 2026 Clinical Practice Guideline for Acute Kidney Injury (AKI) and Acute Kidney Disease (AKD). <em>Kidney Int</em>. Public Review Draft, March 2026. Available from: https://kdigo.org/guidelines/acute-kidney-injury/
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top: 1.5rem;">
+  <div class="btn-row">
+    <a href="#/ebm/kho-guidelines" class="btn btn-primary">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+    </a>
+    <a href="#sec-1" class="btn">
+      <i class="fa-solid fa-arrow-up"></i> Lên đầu trang
+    </a>
+  </div>
+</div>
+```

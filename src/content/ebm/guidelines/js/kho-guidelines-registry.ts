@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-10-25 (147 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-10-26 (154 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 
@@ -1423,6 +1423,52 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "loe": "A"
   },
   {
+    "id": "2026-ijmpr-dengue-serum-sodium-hyponatremia",
+    "title": "Nồng Độ Natri Máu Trong Sốt Xuất Huyết Dengue & Mối Tương Quan Với Mức Độ Nặng, Biến Chứng & Tử Vong",
+    "titleEn": "Study on Serum Sodium Levels in Dengue Fever in a Tertiary Care Centre",
+    "drug": "Dung dịch ưu trương NaCl 3%, Dung dịch đẳng trương NaCl 0.9%, Ringer Lactate, Dung dịch bù điện giải đường uống (ORS), Furosemide",
+    "sourceType": "intl-study",
+    "specialty": "infect",
+    "specialty2": "icu",
+    "design": "cohort",
+    "intervention": "Xét nghiệm nồng độ Natri máu định kỳ lúc nhập viện và ngày thứ 3; phân tầng mức độ hạ Natri máu, phát hiện sớm nguy cơ chuyển nặng và can thiệp bù điện giải kịp thời",
+    "impact": "informative",
+    "year": 2026,
+    "organization": "Malla Reddy Institute of Medical Sciences",
+    "journal": "International Journal of Medical and Pharmaceutical Research (IJMPR)",
+    "population": "Bệnh nhân người lớn (> 18 tuổi) nhập viện điều trị nội trú do mắc sốt xuất huyết Dengue (DF, DHF, DSS) tại trung tâm y tế tuyến cuối",
+    "summary": "Nghiên cứu cắt ngang trên 50 bệnh nhân Dengue tại Ấn Độ xác định tỷ lệ hạ Natri máu đạt 64% (trung bình 126.1 mEq/L), liên quan chặt chẽ với biến chứng (p = 0.005), mức độ nặng (p < 0.001) và tử vong (p < 0.001).",
+    "file": "2026-ijmpr-dengue-serum-sodium-hyponatremia.mdx",
+    "conditionKey": "dengue-fever",
+    "icd10": [
+      "A90",
+      "A91",
+      "E87.1"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "STD-2026-IJMPR-DENGUE-SODIUM",
+    "tags": [
+      "IJMPR",
+      "2026",
+      "Truyền nhiễm",
+      "Sốt xuất huyết Dengue",
+      "Hạ Natri máu",
+      "Rối loạn điện giải",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Hạ Natri máu (Serum Sodium < 135 mEq/L) là rối loạn điện giải phổ biến nhất ở bệnh nhân Dengue nhập viện, chiếm tỷ lệ tới 64% với nồng độ trung bình 126.1 ± 16.1 mEq/L.",
+      "Mức độ hạ Natri máu có tương quan thuận rõ rệt với mức độ nặng của Dengue (p < 0.001): 100% bệnh nhân hạ Natri máu nặng (< 125 mEq/L) gặp biến chứng lâm sàng (xuất huyết, thần kinh, hô hấp, gan mật).",
+      "Toàn bộ các ca tử vong trong nghiên cứu (6%, 3/50 ca) đều xảy ra ở nhóm có hạ Natri máu nặng; nồng độ Natri máu giảm là chỉ số tiên lượng độc lập cho tỷ lệ tử vong (p < 0.001).",
+      "Khuyến cáo xét nghiệm nồng độ Natri máu thường quy lúc nhập viện và ngày thứ 3 nằm viện cho tất cả bệnh nhân Dengue để sàng lọc sớm đối tượng nguy cơ cao và can thiệp bù điện giải đúng lúc."
+    ],
+    "description": "Nghiên cứu cắt ngang trên 50 bệnh nhân Dengue tại Ấn Độ xác định tỷ lệ hạ Natri máu đạt 64% (trung bình 126.1 mEq/L), liên quan chặt chẽ với biến chứng (p = 0.005), mức độ nặng (p < 0.001) và tử vong (p < 0.001).",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "B-NR"
+  },
+  {
     "id": "2026-jcem-bao-giap",
     "title": "JCEM 2026: Hướng dẫn Chẩn đoán và Xử trí Cấp cứu Bão giáp (Thyroid Storm)",
     "titleEn": "Emergency Management and Contemporary Diagnosis of Thyroid Storm",
@@ -1681,6 +1727,56 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Chiến lược kháng sinh SBP theo phân tầng nguy cơ vi khuẩn đa kháng (MDRO): Cephalosporin thế hệ 3 cho SBP cộng đồng; nâng bậc lên Piperacillin/Tazobactam hoặc Carbapenem (Meropenem) phối hợp Vancomycin/Daptomycin cho SBP bệnh viện; bắt buộc truyền Albumin ngày 1 (1.5 g/kg) và ngày 3 (1.0 g/kg); kiểm tra lại dịch báng sau 48 - 72 giờ (mục tiêu PMN giảm >= 25%)."
     ],
     "description": "Tóm tắt toàn diện Hướng dẫn Thực hành Lâm sàng KASL 2026 về Cổ trướng và các biến chứng liên quan trong xơ gan: Phân độ lâm sàng, chọc dò sớm trong 12-24h, thuật toán SAAG, phác đồ lợi tiểu tỷ lệ vàng 100:40, chọc tháo LVP kèm Albumin phòng ngừa PICD, đồng thuận ADQI-ICA 2024 về AKI & Hội chứng gan thận (HRS-AKI), vai trò NGAL & Cystatin C, Terlipressin truyền liên tục, xử trí SBP thời kỳ đa kháng thuốc và an toàn dùng thuốc hệ thống.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2026-kdigo-aki-akd",
+    "title": "Hướng Dẫn Lâm Sàng KDIGO 2026 Về Tổn Thương Thận Cấp (AKI) Và Bệnh Thận Cấp (AKD): Định Nghĩa, Phân Loại, Dự Phòng & Liệu Pháp Thay Thế Thận",
+    "titleEn": "KDIGO 2026 Clinical Practice Guideline for Acute Kidney Injury (AKI) and Acute Kidney Disease (AKD)",
+    "drug": "Buffered Crystalloids, Balanced Crystalloids, Norepinephrine, Terlipressin, Rasburicase, Furosemide, Insulin, Citrate, Heparin, SGLT2i, RASi",
+    "sourceType": "intl-guideline",
+    "specialty": "renal",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Định nghĩa tiêu chuẩn cấu trúc & chức năng mới, phân tầng nguy cơ bằng biomarker (TIMP-2*IGFBP7, NGAL) & FST, quản lý dịch tinh thể cân bằng, quản lý độc chất thận, kiểm soát huyết động và chuẩn hóa chỉ định/kỹ thuật RRT",
+    "impact": "practice-changing",
+    "year": 2026,
+    "organization": "KDIGO (Kidney Disease: Improving Global Outcomes)",
+    "journal": "Kidney International / Public Review Draft",
+    "population": "Bệnh nhân người lớn, trẻ em và trẻ sơ sinh mắc hoặc có nguy cơ mắc tổn thương thận cấp (AKI) và bệnh thận cấp (AKD) trong môi trường cấp cứu, phẫu thuật và hồi sức tích cực (ICU)",
+    "summary": "Hướng dẫn lâm sàng toàn cầu mới nhất của KDIGO 2026 cập nhật toàn diện định nghĩa AKI/AKD, tích hợp biomarker tổn thương cấu trúc tế bào ống thận, Furosemide Stress Test (FST), phác đồ bù dịch cân bằng và chiến lược RRT trì hoãn an toàn.",
+    "file": "2026-kdigo-aki-akd.mdx",
+    "conditionKey": "acute-kidney-injury",
+    "icd10": [
+      "N17",
+      "N17.0",
+      "N17.8",
+      "N17.9",
+      "N18.9",
+      "N19"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2026-KDIGO-AKI-AKD",
+    "tags": [
+      "KDIGO",
+      "2026",
+      "Thận học",
+      "Hồi sức cấp cứu",
+      "Tổn thương thận cấp",
+      "Bệnh thận cấp",
+      "Khuyến cáo lâm sàng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Định nghĩa thống nhất AKI/AKD: Thêm tiêu chuẩn cấu trúc (biomarker tổn thương tế bào ống thận dương tính) bên cạnh tiêu chuẩn chức năng (Creatinine/Cystatin C/Nước tiểu trong 7 ngày). AKD bao gồm bất thường thận kéo dài < 3 tháng.",
+      "Dự báo nguy cơ & Dấu ấn sinh học: Sử dụng công thức Furosemide Stress Test (FST - 1.0-1.5 mg/kg IV) và biomarker [TIMP-2]*[IGFBP7] / NGAL để nhận diện sớm bệnh nhân có nguy cơ AKI tiến triển nặng (Stage 2-3).",
+      "Dự phòng & Quản lý Dịch truyền: Ưu tiên dung dịch tinh thể cân bằng (Buffered Crystalloids) hơn NaCl 0.9%; áp dụng gói bảo vệ thận (KDIGO bundle); tạm ngưng thuốc độc thận/hạ áp trong đợt bệnh cấp (Sick Day Guidance).",
+      "Liệu pháp Thay thế Thận (RRT): Khuyến cáo chiến lược trì hoãn RRT (Deferred initiation) cho đến khi có chỉ định cấp cứu (K+ ≥ 6.0, pH ≤ 7.20, phù phổi kháng trị); ưu tiên Kháng đông Citrate vùng cho CRRT."
+    ],
+    "description": "Hướng dẫn lâm sàng toàn cầu mới nhất của KDIGO 2026 cập nhật toàn diện định nghĩa AKI/AKD, tích hợp biomarker tổn thương cấu trúc tế bào ống thận, Furosemide Stress Test (FST), phác đồ bù dịch cân bằng và chiến lược RRT trì hoãn an toàn.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
@@ -3938,6 +4034,52 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "loe": "A"
   },
   {
+    "id": "2024-isccm-severe-dengue-icu",
+    "title": "Khuyến Cáo Đồng Thuận ISCCM 2024: Quản Lý Sốt Xuất Huyết Dengue Nặng Tại Khoa Hồi Sức Tích Cực (ICU)",
+    "titleEn": "ISCCM Position Statement: Management of Severe Dengue in Intensive Care Unit",
+    "drug": "Dung dịch tinh thể đẳng trương (0.9% NaCl, Ringer Lactate), Dung dịch keo (Albumin 5%, Dextran 40), Norepinephrine, Acetaminophen, Khối hồng cầu lắng (PRBC), Máu toàn phần, Tiêu cầu",
+    "sourceType": "consensus",
+    "specialty": "icu",
+    "specialty2": "infect",
+    "design": "consensus",
+    "intervention": "Quy trình phân luồng Triage Tốt/Vàng/Đỏ, theo dõi 12 dấu hiệu cảnh báo, bù dịch hồi sức sốc có kiểm soát (POCUS), chỉ định truyền máu/tiểu cầu theo ngưỡng cẩn trọng, chống chỉ định truyền tiểu cầu dự phòng và steroid",
+    "impact": "practice-changing",
+    "year": 2024,
+    "organization": "Indian Society of Critical Care Medicine (ISCCM)",
+    "journal": "Indian Journal of Critical Care Medicine (IJCCM)",
+    "population": "Bệnh nhân người lớn và trẻ em mắc sốt xuất huyết Dengue nặng, sốc Dengue (DSS), DHF III-IV, hoặc có hội chứng Dengue mở rộng nhập viện điều trị tại khoa Hồi sức tích cực (ICU)",
+    "summary": "Khuyến cáo đồng thuận năm 2024 của Hội Hồi sức Tích cực Ấn Độ (ISCCM) về quy trình phân luồng, chỉ định nhập ICU, hồi sức dịch có hướng dẫn POCUS, xử trí sốc Dengue và biến chứng tạng nặng.",
+    "file": "2024-isccm-severe-dengue-icu.mdx",
+    "conditionKey": "dengue-fever",
+    "icd10": [
+      "A90",
+      "A91"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2024-ISCCM-DENGUE-ICU",
+    "tags": [
+      "ISCCM",
+      "2024",
+      "Hồi sức cấp cứu",
+      "Truyền nhiễm",
+      "Sốt xuất huyết Dengue",
+      "Sốc Dengue (DSS)",
+      "Bù dịch hồi sức",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Áp dụng hệ thống phân luồng Triage 3 cấp độ (Xanh - Vàng - Đỏ): Nhập ICU ngay đối với nhóm nguy cơ cao kèm 2+ sinh hiệu bất thường, có giảm tưới máu vi mạch/sốc, hoặc suy ≥ 2 cơ quan (Mức I, B).",
+      "Chỉ định xét nghiệm NS1 Ag trong 5 ngày đầu; chuyển sang Dengue IgG từ ngày 5-7 và Dengue IgM sau ngày 7; khuyến cáo đánh giá hội chứng thực bào máu (HLH thứ phát) khi sốt kéo dài > 7 ngày kèm suy tạng mới (Mức I, B).",
+      "Ưu tiên dung dịch tinh thể đẳng trương (0.9% NaCl, Ringer Lactate) trong bù dịch hồi sức; hướng dẫn tốc độ dịch theo HCT, CRT và POCUS; sử dụng Norepinephrine là thuốc vận mạch ưu tiên đầu tay trong sốc không đáp ứng với bù dịch (Mức I, B).",
+      "TỐI CẤM truyền tiểu cầu dự phòng khi không có xuất huyết lâm sàng dù tiểu cầu < 10.000 /mm³; Chỉ truyền khối hồng cầu khi xuất huyết hoạt động kèm Hb < 8 g/dL; Không khuyến cáo dùng Steroid, Papaya extract hoặc Eltrombopag (Mức I, A)."
+    ],
+    "description": "Khuyến cáo đồng thuận năm 2024 của Hội Hồi sức Tích cực Ấn Độ (ISCCM) về quy trình phân luồng, chỉ định nhập ICU, hồi sức dịch có hướng dẫn POCUS, xử trí sốc Dengue và biến chứng tạng nặng.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "B"
+  },
+  {
     "id": "2024-jama-wikiguidelines-uti",
     "title": "JAMA 2024: Đồng Thuận WikiGuidelines Về Dự Phòng, Chẩn Đoán & Điều Trị Nhiễm Trùng Tiết Niệu",
     "titleEn": "Guidelines for the Prevention, Diagnosis, and Management of Urinary Tract Infections in Pediatrics and Adults: A WikiGuidelines Group Consensus Statement (JAMA 2024)",
@@ -4555,6 +4697,56 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Xử trí suy tạng nặng: Truyền N-Acetylcystein (NAC) liều 100 mg/kg/24h liên tục 3–5 ngày cho suy gan cấp; chống phù não bằng Mannitol 20% và NaCl 3% cho thể não; chỉ định chọc hút màng bụng/màng phổi giảm áp khi suy hô hấp nặng có chèn ép khoang."
     ],
     "description": "Cẩm nang hướng dẫn quốc gia toàn diện chẩn đoán và điều trị Sốt xuất huyết Dengue theo Quyết định số 2760/QĐ-BYT của Bộ Y tế: 3 giai đoạn lâm sàng, 3 phân độ bệnh, cây phân nhóm tuyến điều trị, phác đồ bù dịch DHCB (trẻ nhỏ, thiếu niên, người lớn), quy trình chống sốc và sốc nặng (M=0, HA=0), dung dịch cao phân tử, đo CVP & vận mạch, chế phẩm máu, xử trí suy tạng nặng (suy gan, thể não, AKI, quá tải dịch), hồi sức nhóm đối tượng đặc biệt, can thiệp giảm áp xâm lấn tối thiểu và quy trình điều dưỡng HKKK.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2023-kdigo-aki-akd-scope",
+    "title": "Khung Trình Bày & Phạm Vi Cập Nhật Hướng Dẫn Lâm Sàng KDIGO 2023/2026 Về Tổn Thương Thận Cấp (AKI) Và Bệnh Thận Cấp (AKD)",
+    "titleEn": "KDIGO Clinical Practice Guideline for Acute Kidney Injury (AKI) and Acute Kidney Disease (AKD) - Scope of Work",
+    "drug": "Balanced Crystalloids, Norepinephrine, Insulin, Diuretics, Bicarbonate, Citrate, Heparin, SGLT2i, ACEi/ARB",
+    "sourceType": "intl-guideline",
+    "specialty": "renal",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Hài hòa định nghĩa AKI/AKD/CKD, phân tầng nguy cơ bằng biomarker & máy học, tối ưu dịch truyền & huyết động, quản lý thuốc độc thận, chuẩn hóa thời điểm/liều lượng KRT và mô hình chăm sóc chuyển tiếp",
+    "impact": "practice-changing",
+    "year": 2023,
+    "organization": "KDIGO (Kidney Disease: Improving Global Outcomes)",
+    "journal": "KDIGO Official Scope of Work Document",
+    "population": "Bệnh nhân người lớn, trẻ em và trẻ sơ sinh mắc hoặc có nguy cơ tổn thương thận cấp (AKI) và bệnh thận cấp (AKD) tại cộng đồng, khoa nội/ngoại và hồi sức tích cực (ICU)",
+    "summary": "Văn bản định hướng phạm vi cập nhật toàn diện hướng dẫn KDIGO AKI/AKD (Scope of Work) tích hợp các bằng chứng RCT mới nhất, biomarkers tổn thương ống thận, kiểu hình lâm sàng và chiến lược KRT.",
+    "file": "2023-kdigo-aki-akd-scope.mdx",
+    "conditionKey": "acute-kidney-injury",
+    "icd10": [
+      "N17",
+      "N17.0",
+      "N17.8",
+      "N17.9",
+      "N18.9",
+      "N19"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2023-KDIGO-AKI-AKD-SCOPE",
+    "tags": [
+      "KDIGO",
+      "2023",
+      "Scope of Work",
+      "Tổn thương thận cấp",
+      "Bệnh thận cấp",
+      "Hồi sức tích cực",
+      "Khuyến cáo lâm sàng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Hài hòa thuật ngữ & thời gian: AKI xảy ra trong 7 ngày; AKD bao gồm bất thường cấu trúc/chức năng thận kéo dài < 3 tháng (chứa AKI); CKD kéo dài ≥ 3 tháng.",
+      "Ứng dụng Biomarkers & Phân kiểu hình (Phenotyping): Tích hợp chỉ số stress/tổn thương ống thận (TIMP-2, IGFBP7, NGAL, KIM-1, L-FABP) cùng POCUS để phân biệt các kiểu hình bệnh cơ quan (Cardiorenal, Hepatorenal, SA-AKI).",
+      "Tối ưu hóa Huyết động & Quản lý Dịch truyền: Đánh giá phương pháp quản lý dịch tự do vs. hạn chế, hiệu quả của dung dịch tinh thể cân bằng (Balanced Crystalloids) và ngưng tạm thời các thuốc gây độc thận (Sick Day Guidance).",
+      "Chuẩn hóa KRT & Chăm sóc chuyển tiếp: Đánh giá lại thời điểm khởi trị KRT cấp dựa trên các RCT mới, ưu tiên kháng đông Citrate vùng và xây dựng mô hình theo dõi dọc sau AKI/AKD để phòng ngừa tiến triển CKD."
+    ],
+    "description": "Văn bản định hướng phạm vi cập nhật toàn diện hướng dẫn KDIGO AKI/AKD (Scope of Work) tích hợp các bằng chứng RCT mới nhất, biomarkers tổn thương ống thận, kiểu hình lâm sàng và chiến lược KRT.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
@@ -5736,6 +5928,51 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "loe": "C-EO"
   },
   {
+    "id": "2021-cma-dengue-diagnosis-treatment",
+    "title": "Hướng Dẫn Chẩn Đoán Và Điều Trị Sốt Xuất Huyết Dengue Tại Trung Quốc (CMA 2021)",
+    "titleEn": "Guidelines for the Diagnosis and Treatment of Dengue in China",
+    "drug": "Acetaminophen, Dung dịch tinh thể đẳng trương (0.9% NaCl), Dung dịch keo, Human Albumin, Furosemide, Thuốc Y học cổ truyền (Gan Lu Disinfectant Dan, Da Yuan Drink, Qing Pestis and Defeat Poison Drink)",
+    "sourceType": "intl-guideline",
+    "specialty": "infect",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Sàng lọc sớm NS1/PCR, phân loại Dengue và Dengue nặng, theo dõi 12 dấu hiệu cảnh báo, bù dịch đường uống/tĩnh mạch có kiểm soát, phòng chống quá tải dịch và hồi sức chống sốc",
+    "impact": "practice-changing",
+    "year": 2021,
+    "organization": "Chinese Medical Association (CMA) / CACM",
+    "journal": "Infectious Diseases & Immunity",
+    "population": "Bệnh nhân người lớn và trẻ em mắc hoặc nghi ngờ mắc sốt xuất huyết Dengue tại các cơ sở y tế",
+    "summary": "Hướng dẫn chuẩn hóa năm 2021 của Hiệp hội Y học Trung Quốc (CMA) về chẩn đoán, phân loại lâm sàng, bù dịch có kiểm soát và xử trí hồi sức Dengue nặng.",
+    "file": "2021-cma-dengue-diagnosis-treatment.mdx",
+    "conditionKey": "dengue-fever",
+    "icd10": [
+      "A90",
+      "A91"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2021-CMA-DENGUE",
+    "tags": [
+      "Chinese Medical Association",
+      "2021",
+      "Truyền nhiễm",
+      "Hồi sức cấp cứu",
+      "Sốt xuất huyết Dengue",
+      "Dengue nặng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Chẩn đoán xác định ca bệnh Dengue trong 1-5 ngày đầu dựa trên xét nghiệm phát hiện RNA virut (RT-PCR) hoặc kháng nguyên NS1 trong máu, hoặc phân lập virut, hoặc hiệu số kháng thể IgG tăng ≥ 4 lần ở giai đoạn hồi phục (Mức A1).",
+      "Phân loại lâm sàng gồm 2 thể chính: Dengue thông thường và Dengue nặng (khi có 1 trong 3 biểu hiện: thoát huyết tương nặng gây sốc/tràn dịch, xuất huyết nặng, hoặc tổn thương tạng nặng như suy gan ALT/AST > 1000 U/L, suy thận, viêm cơ tim, ARDS, bệnh não) (Mức A1).",
+      "Bù dịch tĩnh mạch là biện pháp cốt lõi trong xử trí Dengue nặng có sốc hoặc thoát huyết tương, nhưng phải kiểm soát chặt chẽ tốc độ và thể tích để phòng ngừa biến chứng quá tải dịch gây cấp cứu hô hấp (Mức A1).",
+      "KHÔNG khuyến cáo truyền tiểu cầu dự phòng cho bệnh nhân Dengue chỉ có giảm tiểu cầu đơn thuần mà không có xuất huyết rõ rệt trên lâm sàng (Mức A1); Không dùng aspirin, ibuprofen hoặc NSAIDs để hạ sốt do làm tăng nguy cơ xuất huyết tiêu hóa (Mức B1)."
+    ],
+    "description": "Hướng dẫn chuẩn hóa năm 2021 của Hiệp hội Y học Trung Quốc (CMA) về chẩn đoán, phân loại lâm sàng, bù dịch có kiểm soát và xử trí hồi sức Dengue nặng.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
     "id": "2021-diagnostics-cbc-sepsis",
     "title": "Diagnostics 2021: Giá Trị Của Tổng Phân Tích Tế Bào Máu (CBC) & Dữ Liệu Quần Thể Tế Bào Nâng Cao (CPD) Trong Chẩn Đoán & Tiên Lượng Nhiễm Trùng Huyết",
     "titleEn": "The Value of a Complete Blood Count (CBC) for Sepsis Diagnosis and Prognosis (Diagnostics 2021)",
@@ -6006,6 +6243,54 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
+  },
+  {
+    "id": "2020-cureus-dengue-electrolyte-imbalance",
+    "title": "Rối Loạn Điện Giải Lúc Nhập Viện Không Dự Báo Thời Gian Nằm Viện Và Tử Vong Ở Bệnh Nhân Dengue",
+    "titleEn": "Electrolyte Imbalance at Admission Does Not Predict the Length of Stay or Mortality in Dengue-Infected Patients",
+    "drug": "Dung dịch tinh thể đẳng trương (0.9% NaCl), Ringer Lactate, Bù điện giải Natri/Kali, Insulin, Troponin T/I test",
+    "sourceType": "intl-study",
+    "specialty": "infect",
+    "specialty2": "icu",
+    "design": "cohort",
+    "intervention": "Đánh giá rối loạn điện giải (hạ Natri < 135 mEq/L, hạ Kali < 3.5 mEq/L), Troponin, Creatinine lúc nhập viện và phân tích tương quan đa biến với thời gian nằm viện ≥ 3 ngày và tử vong",
+    "impact": "informative",
+    "year": 2020,
+    "organization": "Aga Khan University Hospital",
+    "journal": "Cureus",
+    "population": "Bệnh nhân người lớn (≥ 18 tuổi) nhập viện do mắc sốt xuất huyết Dengue xác định bằng NS1 Ag hoặc IgM (+)",
+    "summary": "Nghiên cứu quan sát trên 1.008 bệnh nhân Dengue tại Pakistan chứng minh hạ Natri (29.3%) và hạ Kali (23.2%) lúc nhập viện không liên quan độc lập đến thời gian nằm viện hay tử vong, trong khi Troponin cao (aOR 5.74), Creatinine tăng (aOR 14.74) và Đái tháo đường (aOR 4.36) là các chỉ số tiên lượng nặng then chốt.",
+    "file": "2020-cureus-dengue-electrolyte-imbalance.mdx",
+    "conditionKey": "dengue-fever",
+    "icd10": [
+      "A90",
+      "A91",
+      "E87.1",
+      "E87.6"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "STD-2020-CUREUS-DENGUE-ELECTROLYTES",
+    "tags": [
+      "Cureus",
+      "2020",
+      "Truyền nhiễm",
+      "Sốt xuất huyết Dengue",
+      "Rối loạn điện giải",
+      "Hạ Natri máu",
+      "Hạ Kali máu",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Rối loạn điện giải lúc nhập viện (Hạ Natri máu 29.3%, Hạ Kali máu 23.2%) không phải là yếu tố dự báo độc lập về kéo dài thời gian nằm viện (≥ 3 ngày) hoặc tử vong ở bệnh nhân Dengue người lớn (p > 0.05), do hiệu quả của việc điều chỉnh dịch truyền và điện giải sớm.",
+      "Nồng độ Troponin máu tăng (> 0.04 ng/mL) lúc nhập viện là yếu tố tiên lượng độc lập mạnh mẽ cho việc kéo dài thời gian nằm viện trên 3 ngày (aOR = 5.74; 95% CI: 2.34–14.11, p < 0.001), phản ảnh tình trạng tổn thương cơ tim do Dengue.",
+      "Nồng độ Creatinine máu tăng (> 1.3 mg/dL) lúc nhập viện gia tăng nguy cơ tử vong trong bệnh viện gấp 14.7 lần (aOR = 14.74; 95% CI: 4.19–51.85, p < 0.001), khẳng định tổn thương thận cấp (AKI) là biến chứng đe dọa tính mạng hàng đầu.",
+      "Tiền sử Đái tháo đường (DM) làm tăng nguy cơ tử vong trong bệnh viện lên 4.36 lần (aOR = 4.36; 95% CI: 1.21–15.74, p = 0.024), đòi hỏi chiến lược theo dõi huyết động và kiểm soát đường huyết chặt chẽ ở nhóm bệnh nhân có bệnh nền này."
+    ],
+    "description": "Nghiên cứu quan sát trên 1.008 bệnh nhân Dengue tại Pakistan chứng minh hạ Natri (29.3%) và hạ Kali (23.2%) lúc nhập viện không liên quan độc lập đến thời gian nằm viện hay tử vong, trong khi Troponin cao (aOR 5.74), Creatinine tăng (aOR 14.74) và Đái tháo đường (aOR 4.36) là các chỉ số tiên lượng nặng then chốt.",
+    "category": "guidelines",
+    "cor": "IIa",
+    "loe": "B-NR"
   },
   {
     "id": "2020-idsa-lao-mang-nao",
@@ -7468,6 +7753,53 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Phác đồ xử trí biến chứng nặng: Viêm não (Gammaglobulin 0.1–0.4 g/kg/ngày × 3 ngày và/hoặc Methylprednisolon 2 mg/kg/ngày × 5–7 ngày); Xuất huyết giảm tiểu cầu (truyền khối tiểu cầu khi có xuất huyết và tiểu cầu < 50 G/L hoặc tiểu cầu < 20 G/L; dùng Methylprednisolon 2 mg/kg/ngày)."
     ],
     "description": "Hướng dẫn quốc gia của Bộ Y tế Việt Nam về chẩn đoán lâm sàng, tiêu chuẩn xét nghiệm IgM/IgG/RT-PCR, xử trí nhiễm Rubella ở phụ nữ mang thai theo tuổi thai, chẩn đoán Hội chứng Rubella bẩm sinh (CRS) và phác đồ vắc xin.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2012-kdigo-aki",
+    "title": "Hướng Dẫn Lâm Sàng KDIGO 2012 Về Tổn Thương Thận Cấp (AKI): Định Nghĩa, Phân Giai Đoạn, Dự Phòng & Quản Lý Liệu Pháp Thay Thế Thận",
+    "titleEn": "KDIGO Clinical Practice Guideline for Acute Kidney Injury",
+    "drug": "Isotonic Crystalloids, Norepinephrine, Insulin, Loop Diuretics, Bicarbonate, NAC, Citrate, Heparin",
+    "sourceType": "intl-guideline",
+    "specialty": "renal",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Phân tầng nguy cơ, bù dịch tinh thể đẳng trương, kiểm soát huyết động, tránh độc chất thận, hiệu chỉnh liều thuốc, liệu pháp thay thế thận (RRT)",
+    "impact": "practice-changing",
+    "year": 2012,
+    "organization": "KDIGO (Kidney Disease: Improving Global Outcomes)",
+    "journal": "Kidney International Supplements",
+    "population": "Bệnh nhân người lớn và trẻ em nhập viện, hồi sức tích cực (ICU) hoặc phẫu thuật có nguy cơ hoặc mắc Tổn thương thận cấp (AKI) và CI-AKI",
+    "summary": "Hướng dẫn lâm sàng toàn cầu của KDIGO 2012 hợp nhất tiêu chuẩn RIFLE/AKIN, xây dựng thang phân độ AKI thống nhất, chiến lược quản lý theo giai đoạn, phòng ngừa CI-AKI và phác đồ RRT chuẩn hóa.",
+    "file": "2012-kdigo-aki.mdx",
+    "conditionKey": "acute-kidney-injury",
+    "icd10": [
+      "N17",
+      "N17.0",
+      "N17.8",
+      "N17.9"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2012-KDIGO-AKI",
+    "tags": [
+      "KDIGO",
+      "2012",
+      "Thận học",
+      "Hồi sức cấp cứu",
+      "Tổn thương thận cấp",
+      "Khuyến cáo lâm sàng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Định nghĩa thống nhất AKI: Tăng Creatinine máu ≥ 0.3 mg/dL (≥ 26.5 µmol/L) trong 48 giờ HOẶC tăng ≥ 1.5 lần so with mức nền trong 7 ngày HOẶC thể tích nước tiểu < 0.5 mL/kg/giờ kéo dài ≥ 6 giờ.",
+      "Dự phòng & Huyết động: Ưu tiên dùng dung dịch tinh thể đẳng trương (Isotonic Crystalloids) bù thể tích lòng mạch; phối hợp thuốc vận mạch (Norepinephrine) trong sốc giãn mạch để đảm bảo áp lực tưới máu thận.",
+      "Ngăn ngừa độc chất & CI-AKI: Ngưng hoặc tránh các thuốc độc thận (Aminoglycoside, Amphotericin B); mở rộng thể tích bằng NaCl 0.9% hoặc NaHCO3 1.4% IV trước/sau dùng thuốc cản quang i-ốt.",
+      "Chỉ định & Liều Lượng RRT: Khởi trị RRT cấp cứu khi có biến chứng đe dọa tính mạng (tăng K+ nặng, toan chuyển hóa nặng, phù phổi cấp, uremia). Đích liều RRT: Kt/V 3.9/tuần (IHD/SLED) hoặc thể tích dịch thoát (effluent) 20-25 mL/kg/giờ (CRRT)."
+    ],
+    "description": "Hướng dẫn lâm sàng toàn cầu của KDIGO 2012 hợp nhất tiêu chuẩn RIFLE/AKIN, xây dựng thang phân độ AKI thống nhất, chiến lược quản lý theo giai đoạn, phòng ngừa CI-AKI và phác đồ RRT chuẩn hóa.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
