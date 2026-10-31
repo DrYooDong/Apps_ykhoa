@@ -13,6 +13,7 @@ export type BasicMedicalTabKey =
   | 'co-che-benh-sinh' 
   | 'hoa-sinh' 
   | 'dich-te-hoc' 
+  | 'khang-sinh'
   | 'simulators' 
   | 'formula-vault' 
   | 'quiz';
@@ -71,6 +72,15 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     hash: '#/basic-medical/dich-te-hoc',
     color: 'var(--dsp-teal)',
     badge: '2×2 Solver'
+  },
+  {
+    key: 'khang-sinh',
+    label: 'Kháng Sinh Học Lâm Sàng (AMS)',
+    shortLabel: 'Kháng Sinh',
+    icon: 'fa-shield-virus',
+    hash: '#/basic-medical/khang-sinh',
+    color: 'var(--dsp-sky)',
+    badge: '6 Modules'
   },
   {
     key: 'simulators',

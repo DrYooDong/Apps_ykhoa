@@ -18,6 +18,7 @@ export * from './views/epidemiology-view';
 export * from './views/epidemiology-tools-view';
 export * from './types/epidemiology.types';
 export * from './data/epidemiology-data';
+export * from './antibiotics';
 export * from './views/formula-vault-view';
 export * from './views/physio-reader-view';
 export * from './views/physio-html-reader-view';

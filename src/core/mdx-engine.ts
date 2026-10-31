@@ -34,6 +34,8 @@ import { renderBiochemAlert } from '../content/basic-medical/biochemistry/compon
 import { renderBiochemQuickNav } from '../content/basic-medical/biochemistry/components/BiochemQuickNav';
 import { renderPathoAlert } from '../content/basic-medical/pathophysiology-cases/components/PathoAlert';
 import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
+import { renderAntibioticQuickNav } from '../content/basic-medical/antibiotics/components/AntibioticQuickNav';
+import { renderAWaRePill } from '../content/basic-medical/antibiotics/components/AWaRePill';
 import { renderFlowchartViewer } from '../components/flowchart/renderFlowchartViewer';
 import type { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
 import type { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
@@ -487,6 +489,17 @@ export class CliniMdxEngine {
         }));
       }
     );
+
+    // 12. <AntibioticQuickNav />
+    result = result.replace(/<AntibioticQuickNav\s*\/?>/gi, () => {
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return stashBlock(renderAntibioticQuickNav(items ? { items } : undefined));
+    });
+
+    // 13. <AWaRePill tier="..." />
+    result = result.replace(/<AWaRePill\s+tier=["']([^"']+)["']\s*\/?>/gi, (_match, tier) => {
+      return stashBlock(renderAWaRePill(tier as any));
+    });
 
     return result;
   }

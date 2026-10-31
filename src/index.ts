@@ -279,7 +279,11 @@ import {
   renderMetabolicNavigatorView,
   initMetabolicNavigator,
   renderPathoQuizView,
-  initPathoQuizView
+  initPathoQuizView,
+  renderAntibioticsHubView,
+  initAntibioticsHubView,
+  renderAntibioticsToolView,
+  initAntibioticsToolsView
 } from './content/basic-medical';
 
 /**
@@ -554,6 +558,48 @@ function initializeRoutes(): void {
       }
     });
 
+    // === ANTIBIOTICS & AMS (KHÁNG SINH HỌC LÂM SÀNG) SUB-ROUTES ===
+    // 1. Hub chính
+    router.register(`/${prefix}/khang-sinh`, 'Kháng Sinh Học Lâm Sàng & Quản Lý Kháng Sinh (AMS)', () => {
+      document.title = 'Kháng Sinh Học Lâm Sàng – CliniPortal';
+      mountToApp(renderAntibioticsHubView());
+      initAntibioticsHubView();
+    });
+
+    router.register(`/${prefix}/antibiotics`, 'Kháng Sinh Học Lâm Sàng & Quản Lý Kháng Sinh (AMS)', () => {
+      document.title = 'Kháng Sinh Học Lâm Sàng – CliniPortal';
+      mountToApp(renderAntibioticsHubView());
+      initAntibioticsHubView();
+    });
+
+    // 2. Tools tương tác (Đăng ký TRƯỚC để router match ưu tiên)
+    router.register(`/${prefix}/khang-sinh/tools/:toolId`, 'Công Cụ Kháng Sinh Tương Tác', (params) => {
+      const toolId = params.toolId || 'd8-safety-wizard';
+      document.title = 'Công Cụ Kháng Sinh Lâm Sàng – CliniPortal';
+      mountToApp(renderAntibioticsToolView(toolId as any));
+      initAntibioticsToolsView(toolId as any);
+    });
+
+    router.register(`/${prefix}/antibiotics/tools/:toolId`, 'Công Cụ Kháng Sinh Tương Tác', (params) => {
+      const toolId = params.toolId || 'd8-safety-wizard';
+      document.title = 'Công Cụ Kháng Sinh Lâm Sàng – CliniPortal';
+      mountToApp(renderAntibioticsToolView(toolId as any));
+      initAntibioticsToolsView(toolId as any);
+    });
+
+    // 3. Bài giảng chi tiết MDX
+    router.register(`/${prefix}/khang-sinh/:module/:slug`, 'Bài Giảng Kháng Sinh Học Lâm Sàng', (params) => {
+      const moduleName = params.module || 'module1-vi-sinh';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(moduleName, slug));
+    });
+
+    router.register(`/${prefix}/antibiotics/:module/:slug`, 'Bài Giảng Kháng Sinh Học Lâm Sàng', (params) => {
+      const moduleName = params.module || 'module1-vi-sinh';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(moduleName, slug));
+    });
+
     router.register(`/${prefix}/formula-vault`, 'Kho Công thức Sinh lý', () => {
       document.title = 'Kho Công thức Sinh lý – CliniPortal';
       mountToApp(renderFormulaVaultView());
@@ -646,6 +692,18 @@ function initializeRoutes(): void {
     document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
     mountToApp(renderEpidemiologyView());
     initEpidemiologyView();
+  });
+
+  router.register('/khang-sinh', 'Kháng Sinh Học Lâm Sàng (AMS)', () => {
+    document.title = 'Kháng Sinh Học Lâm Sàng – CliniPortal';
+    mountToApp(renderAntibioticsHubView());
+    initAntibioticsHubView();
+  });
+
+  router.register('/antibiotics', 'Kháng Sinh Học Lâm Sàng (AMS)', () => {
+    document.title = 'Kháng Sinh Học Lâm Sàng – CliniPortal';
+    mountToApp(renderAntibioticsHubView());
+    initAntibioticsHubView();
   });
 
   // 2.3. Tự động chuyển hướng các phân hệ cũ (TCM, Calculators, Pharmacology...) về DocSpace

@@ -1,0 +1,167 @@
+Bảng kiểm 8 điều (D8 Checklist) là một công cụ chuẩn hóa hành vi lâm sàng do Tổ chức Y tế Thế giới (WHO) ban hành trong tài liệu AWaRe Book, thiết lập quy trình kiểm soát chất lượng kê đơn kháng sinh tại mọi tuyến y tế. Việc lạm dụng và kê đơn kháng sinh không hợp lý đã trực tiếp thúc đẩy sự gia tăng của các chủng vi khuẩn đa kháng thuốc (MDR), làm tăng nguy cơ gặp biến cố bất lợi (ADR), nhiễm trùng thứ phát do *Clostridioides difficile* và gia tăng gánh nặng chi phí y tế. 
+
+Thực hành lâm sàng đòi hỏi người kê đơn phải chuyển dịch từ thói quen "kê đơn theo phản xạ" sang tư duy "kê đơn dựa trên bằng chứng và kiểm soát rủi ro". Bảng kiểm D8 hoạt động như một "rào chắn an toàn" trước khi quyết định viết đơn thuốc, kết hợp chặt chẽ với các nguyên tắc Quản lý Sử dụng Kháng sinh (Antimicrobial Stewardship) của Bộ Y tế và Bệnh viện Bệnh Nhiệt Đới nhằm tối ưu hóa hiệu quả diệt khuẩn, giảm thiểu độc tính và ngăn ngừa sự xuất hiện của các cơ chế đề kháng mới.
+
+---
+
+## 1. Phân Tích Chi Tiết 8 Mắt Xích Của Bảng Kiểm D8 (D8 Checklist)
+
+Bảng kiểm D8 bao gồm 8 chữ D tương ứng với 8 bước tự kiểm tra bắt buộc của người thầy thuốc trước khi hoàn tất một đơn thuốc kháng sinh, áp dụng cho cả điều trị nội trú và ngoại trú.
+
+| Mắt Xích D8 | Nội Dung Kiểm Tra Cốt Lõi | Thực Hành Chuẩn Y Khoa |
+| :--- | :--- | :--- |
+| **1. Diagnosis** *(Chẩn đoán)* | Chẩn đoán lâm sàng là gì? Có bằng chứng nhiễm vi khuẩn đáng kể không? | Phân biệt rõ nhiễm vi khuẩn với nhiễm virus hoặc viêm không nhiễm trùng. Dựa vào triệu chứng, WBC, CRP, Procalcitonin, X-quang và nhuộm Gram. |
+| **2. Decision** *(Quyết định)* | Kháng sinh có thực sự cần thiết? Đã thu thập bệnh phẩm cấy vi sinh chưa? | Áp dụng "Chăm sóc không dùng kháng sinh" với nhiễm trùng virus nhẹ. Bắt buộc cấy máu/đờm/nước tiểu trước kháng sinh (sốc nhiễm khuẩn cho trong 1h). |
+| **3. Medicine** *(Chọn thuốc)* | Kê đơn kháng sinh nào (Access/Watch/Reserve)? Tiền sử dị ứng, chống chỉ định? | Ưu tiên nhóm Access (Đèn xanh). Tiết chế nhóm Watch (Đèn cam). Bảo vệ nhóm Reserve (Đèn đỏ). Sàng lọc dị ứng IgE và nguy cơ độc tính. |
+| **4. Dose** *(Liều dùng)* | Liều lượng đã tối ưu PK/PD? Có cần chỉnh liều suy thận, suy gan hay béo phì? | Tối ưu $fT_{>MIC}$ (Beta-lactam truyền kéo dài), $C_{max}/MIC$ (Aminoglycosides 1 lần/ngày), $AUC_{24}/MIC$ (Vancomycin 400–600). Chỉnh liều theo CrCl/eGFR. |
+| **5. Dispensing** *(Cấp phát)* | Sử dụng dạng bào chế nào? Khi nào chuyển từ tiêm (IV) sang uống (PO)? | Ưu tiên đường uống nếu tiêu hóa tốt. Đánh giá tiêu chuẩn IV-to-PO mỗi 24–48 giờ (hết sốt, huyết động ổn định, lâm sàng cải thiện). |
+| **6. Duration** *(Thời gian)* | Liệu trình điều trị kéo dài bao nhiêu ngày? Khi nào ngừng thuốc an toàn? | Áp dụng liệu trình ngắn ngày theo bằng chứng (CAP: 3–5 ngày, VAP: 7 ngày, UTI: 3–5 ngày). Đánh giá tiêu chuẩn ngừng thuốc lâm sàng/cận lâm sàng. |
+| **7. Discussion** *(Thảo luận)* | Đã tư vấn cho bệnh nhân về cách dùng, tác dụng phụ và dấu hiệu tái khám chưa? | Hướng dẫn uống đúng giờ, đủ ngày. Cảnh báo biến cố bất lợi (tiêu chảy, dị ứng) và các "dấu hiệu cờ đỏ" cần quay lại khám ngay. |
+| **8. Document** *(Lưu hồ sơ)* | Quyết định chỉ định, lý do chọn thuốc và kế hoạch đã ghi vào bệnh án chưa? | Ghi rõ trong bệnh án: Chẩn đoán + Thuốc + Liều dùng + Kế hoạch đánh giá lại sau 48–72h. Hoàn thiện đơn phê duyệt kháng sinh hạn chế nếu có. |
+
+### Bước 1: Diagnosis (Chẩn đoán lâm sàng & Bằng chứng nhiễm khuẩn)
+*   **Câu hỏi cốt lõi:** Chẩn đoán vị trí nhiễm khuẩn chính xác là gì? Có bằng chứng lâm sàng và cận lâm sàng xác nhận tình trạng nhiễm vi khuẩn hay không?
+*   **Yêu cầu lâm sàng:** Người kê đơn phải phân biệt rõ ràng giữa nhiễm trùng do vi khuẩn, nhiễm trùng do virus (như cảm cúm, viêm phế quản cấp thông thường) và các tình trạng viêm không do nhiễm trùng (như gout cấp, bệnh tự miễn).
+*   **Bằng chứng hỗ trợ:** Đánh giá các hội chứng đáp ứng viêm toàn thân, dấu hiệu sinh tồn, bạch cầu (WBC), tỷ lệ bạch cầu trung tính (Neutrophil %), các dấu ấn sinh học viêm như C-reactive Protein (CRP) hoặc Procalcitonin (PCT), kết quả nhuộm Gram và chẩn đoán hình ảnh (X-quang, CT-scan, siêu âm).
+
+### Bước 2: Decision (Quyết định chỉ định & Xét nghiệm vi sinh)
+*   **Câu hỏi cốt lõi:** Sử dụng kháng sinh có thực sự mang lại lợi ích lâm sàng vượt trội so với rủi ro hay không? Đã thu thập bệnh phẩm nuôi cấy vi sinh trước khi tiêm/uống liều kháng sinh đầu tiên chưa?
+*   **Thực hành chuẩn:** 
+    *   *Chăm sóc không dùng kháng sinh (Non-antibiotic care):* Hầu hết các nhiễm trùng đường hô hấp trên thể nhẹ (viêm họng, viêm xoang nhẹ, viêm tai giữa nhẹ ở trẻ lớn) và tiêu chảy cấp không máu có thể quản lý an toàn bằng điều trị triệu chứng mà không cần kháng sinh.
+    *   *Cấy vi sinh trước kháng sinh:* Bắt buộc lấy mẫu bệnh phẩm (máu, đờm, nước tiểu, dịch mủ) trước khi bắt đầu kháng sinh. Trong trường hợp nhiễm khuẩn nặng hoặc sốc nhiễm khuẩn (septic shock), kháng sinh phải được cho ngay trong giờ đầu tiên nhưng việc thu thập mẫu cấy máu không được làm chậm trễ quá 45 phút.
+
+### Bước 3: Medicine (Lựa chọn thuốc & Phân tầng AWaRe WHO)
+*   **Câu hỏi cốt lõi:** Loại kháng sinh nào phù hợp nhất với mô hình vi sinh tại ổ nhiễm trùng? Thuốc thuộc nhóm Access (Tiếp cận), Watch (Giám sát) hay Reserve (Dự trữ)? Bệnh nhân có tiền sử dị ứng, chống chỉ định hoặc tương tác thuốc bất lợi nào không?
+*   **Thực hành chuẩn:**
+    *   *Ưu tiên nhóm Access (Đèn xanh):* Chọn các kháng sinh phổ hẹp hơn, độc tính thấp, ít chọn lọc kháng thuốc cho các nhiễm khuẩn thông thường (Amoxicillin, Cefalexin, Metronidazole, Nitrofurantoin).
+    *   *Tiết chế nhóm Watch (Đèn cam):* Hạn chế dùng Fluoroquinolones, Cephalosporin thế hệ 3/4 trừ khi có chỉ định bắt buộc hoặc nhóm Access thất bại.
+    *   *Bảo vệ nhóm Reserve (Đèn đỏ):* Chỉ sử dụng Colistin, Linezolid, Cefiderocol, Ceftazidime-avibactam cho các chủng vi khuẩn đa kháng (CRE, CRAB, DTR-*P. aeruginosa*) sau khi hội chẩn hoặc phê duyệt quy trình kháng sinh hạn chế.
+    *   *Sàng lọc an toàn:* Kiểm tra tiền sử dị ứng Beta-lactam thực sự (phản ứng IgE cấp tính) và tương tác thuốc (như Fluoroquinolones/Macrolides kéo dài khoảng QTc, Colistin/Aminoglycosides gây độc thận).
+
+### Bước 4: Dose (Liều dùng & Tối ưu hóa Dược động học/Dược lực học - PK/PD)
+*   **Câu hỏi cốt lõi:** Liều lượng đã tối ưu theo chỉ số PK/PD chưa? Đã hiệu chỉnh liều theo chức năng thận (mức lọc cầu thận eGFR/CrCl), chức năng gan, thể tích phân bố hoặc cân nặng (béo phì) chưa?
+*   **Thực hành chuẩn:**
+    *   *Beta-lactam ($fT_{>MIC}$):* Áp dụng chế độ tiêm nạp (loading dose) trong 30–60 phút đầu, sau đó truyền kéo dài 3–4 giờ hoặc truyền liên tục 24 giờ ở bệnh nhân nặng/ICU để tối đa hóa thời gian nồng độ thuốc tự do trên MIC.
+    *   *Aminoglycosides ($C_{max}/MIC$):* Áp dụng chế độ liều cao 1 lần/ngày (dosing once daily) để đạt nồng độ đỉnh cao gấp 8–10 lần MIC và giảm nguy cơ độc thận.
+    *   *Vancomycin ($AUC_{24}/MIC$):* Chỉnh liều hướng tới mục tiêu $AUC_{24}/MIC_{BMD} = 400–600$, sử dụng phần mềm Bayesian hoặc phương trình dược động học bậc 1 thay vì chỉ theo dõi nồng độ đáy đơn thuần.
+    *   *Chỉnh liều suy thận:* Đánh giá CrCl bằng công thức Cockcroft-Gault và tra cứu bảng liều chuẩn để giảm liều duy trì hoặc nới rộng khoảng cách liều.
+
+### Bước 5: Dispensing (Cấp phát dạng bào chế & Chuyển đổi IV sang PO)
+*   **Câu hỏi cốt lõi:** Sử dụng dạng bào chế nào là tối ưu? Nếu đang dùng đường tiêm tĩnh mạch (IV), bệnh nhân đã đủ tiêu chí lâm sàng để chuyển sang đường uống (PO Step-down) chưa?
+*   **Thực hành chuẩn:**
+    *   Ưu tiên dùng đường uống ngay từ đầu cho bệnh nhân ngoại trú hoặc nhiễm trùng nhẹ đến trung bình có đường tiêu hóa hoạt động tốt.
+    *   *Đánh giá tiêu chí IV-to-PO (mỗi 24–48 giờ):* Chuyển sang đường uống khi bệnh nhân đạt đủ 4 điều kiện: (1) Hết sốt $\le 37.8^\circ\text{C}$ trong 24–48h; (2) Huyết động ổn định; (3) Triệu chứng lâm sàng tại ổ nhiễm trùng cải thiện; (4) Dung nạp tốt đường uống, không có hội chứng kém hấp thu hay nôn ói.
+    *   Lựa chọn các kháng sinh đường uống có sinh khả dụng cao ($\ge 90\%$): Fluoroquinolones, Linezolid, Metronidazole, Co-trimoxazole.
+
+### Bước 6: Duration (Thời gian điều trị & Tiêu chuẩn ngừng thuốc)
+*   **Câu hỏi cốt lõi:** Liệu trình điều trị kéo dài bao nhiêu ngày? Khi nào có thể ngừng kháng sinh an toàn mà không làm tăng nguy cơ tái phát?
+*   **Thực hành chuẩn:**
+    *   Áp dụng xu hướng **liệu trình ngắn ngày theo bằng chứng (Short-course therapy)**: Viêm phổi mắc phải cộng đồng (CAP) nhẹ-vừa: 3–5 ngày; Viêm phổi thở máy (VAP): 7 ngày; Nhiễm khuẩn tiết niệu không biến chứng: 3–5 ngày; Nhiễm trùng ổ bụng đã kiểm soát nguồn nhiễm tốt: 4 ngày.
+    *   Tránh thói quen "dùng cho đủ 7–10 ngày" một cách máy móc khi bệnh nhân đã đáp ứng lâm sàng hoàn toàn và hết chỉ định.
+
+### Bước 7: Discussion (Thảo luận & Tư vấn bệnh nhân)
+*   **Câu hỏi cốt lõi:** Bệnh nhân và người nhà đã được giải thích rõ về chẩn đoán, cách sử dụng thuốc, tác dụng phụ thường gặp và các dấu hiệu cảnh báo cần quay lại tái khám chưa?
+*   **Thực hành chuẩn:**
+    *   Tư vấn uống đúng thời điểm (trước/sau ăn tùy loại thuốc), tuân thủ đủ số ngày đơn thuốc quy định, tuyệt đối không tự ý ngừng thuốc khi thấy đỡ hoặc giữ lại thuốc thừa cho lần sau.
+    *   Cảnh báo các tác dụng phụ phổ biến (tiêu chảy nhẹ, buồn nôn, dị ứng da) và các "dấu hiệu cờ đỏ" cần nhập viện ngay (khó thở, phát ban toàn thân, sốt cao trở lại, tiêu chảy phân có máu).
+
+### Bước 8: Document (Ghi chép hồ sơ bệnh án)
+*   **Câu hỏi cốt lõi:** Quyết định chỉ định kháng sinh, vị trí nhiễm trùng nghi ngờ, lý do lựa chọn thuốc và kế hoạch đánh giá lại đã được ghi chép minh bạch vào hồ sơ bệnh án chưa?
+*   **Thực hành chuẩn:**
+    *   Ghi rõ trong hồ sơ: *Chẩn đoán nhiễm trùng + Loại kháng sinh + Liều lượng & đường dùng + Kế hoạch đánh giá lại sau 48–72 giờ*.
+    *   Đối với các kháng sinh nhóm Reserve hoặc kháng sinh hạn chế, phải hoàn tất mẫu đơn phê duyệt duyệt theo quy định Quản lý Kháng sinh của Bệnh viện.
+
+---
+
+## 2. Tích Hợp Bảng Kiểm D8 Với Lưu Đồ Quản Lý Kháng Sinh Bệnh Viện
+
+Bảng kiểm D8 không vận hành đơn độc mà kết nối trực tiếp với **Lưu đồ hướng dẫn sử dụng kháng sinh của Bệnh viện Bệnh Nhiệt Đới** trong chu trình kiểm soát nhiễm trùng 3 giai đoạn: Khởi đầu $\rightarrow$ Đánh giá lại 48–72 giờ $\rightarrow$ Ngừng thuốc.
+
+```
+  [BỆNH NHÂN NGHI NGỜ NHIỄM TRÙNG]
+                 │
+                 ▼
+ ┌────────────────────────────────────────┐
+ │ BƯỚC 1: ĐÁNH GIÁ D8 BAN ĐẦU            │
+ │ • Áp dụng D1, D2, D3, D4, D5, D7, D8   │
+ │ • Cấy mẫu vi sinh trước khi tiêm KS    │
+ │ • Chọn KS kinh nghiệm theo phân tầng   │
+ └──────────────────┬─────────────────────┘
+                    │
+                    ▼
+ ┌────────────────────────────────────────┐
+ │ BƯỚC 2: ĐÁNH GIÁ LẠI SAU 48–72 GIỜ     │
+ │ • Kiểm tra đáp ứng lâm sàng            │
+ │ • Đọc kết quả Kháng sinh đồ (KSĐ)      │
+ └──────────────────┬─────────────────────┘
+                    │
+        ┌───────────┴───────────┐
+        ▼                       ▼
+┌──────────────────┐    ┌──────────────────┐
+│ LÂM SÀNG CẢI THIỆN│    │ LÂM SÀNG KHÔNG   │
+│                  │    │ CẢI THIỆN        │
+├──────────────────┤    ├──────────────────┤
+│ • VK nhạy:       │    │ • Đánh giá lại   │
+│   Xuống thang (D3)│    │   chẩn đoán (D1) │
+│ • Đủ điều kiện:  │    │ • Tầm soát ổ đọng│
+│   Chuyển IV/PO   │    │   nhiễm trùng mới│
+│   (D5)           │    │ • Hội chẩn đổi   │
+│ • Kiểm tra tiêu  │    │   kháng sinh     │
+│   chí Ngừng KS   │    └──────────────────┘
+│   (D6)           │
+└──────────────────┘
+```
+
+### Nguyên Tắc Hành Động Sau 48–72 Giờ (Giờ Vàng Đánh Giá Lại):
+1.  **Nếu lâm sàng cải thiện + Vi khuẩn nhạy cảm:** Tiến hành **Xuống thang kháng sinh (De-escalation)** bằng cách chuyển từ kháng sinh phổ rộng sang kháng sinh phổ hẹp hơn dựa trên kháng sinh đồ, hoặc chuyển từ tiêm tĩnh mạch sang đường uống nếu đạt tiêu chuẩn IV-to-PO.
+2.  **Nếu lâm sàng cải thiện + Cấy vi sinh âm tính:** Đánh giá lại chỉ định kháng sinh ban đầu. Nếu nghi ngờ nhiễm trùng do virus hoặc tác nhân tự giới hạn, cân nhắc ngừng kháng sinh.
+3.  **Nếu lâm sàng không cải thiện:** Tiến hành hội chẩn chuyên khoa, tầm soát ổ nhiễm trùng mới (áp xe, vật thể lạ, catheter), kiểm tra lại sự phù hợp của liều lượng (PK/PD) và xem xét đổi phác đồ theo kết quả vi sinh.
+
+---
+
+## 3. Checklist Tiêu Chí Ngừng Kháng Sinh An Toàn
+
+Dựa trên hướng dẫn của Bệnh viện Bệnh Nhiệt Đới, quyết định ngừng kháng sinh (D6 - Duration) đòi hỏi bệnh nhân phải **đáp ứng đồng thời 3 điều kiện bắt buộc**:
+1.  **Đủ thời gian điều trị tối thiểu theo bằng chứng chứng cứ.**
+2.  **Đạt tối thiểu 5/5 tiêu chí cải thiện lâm sàng.**
+3.  **Đạt tối thiểu 1 tiêu chí cải thiện cận lâm sàng.**
+
+| Nhóm Tiêu Chí Ngừng Kháng Sinh | Tiêu Chí Cụ Thể Cần Đạt | Giá Trị Ngưỡng An Toàn |
+| :--- | :--- | :--- |
+| **A. Thời gian tối thiểu** *(Bắt buộc)* | CAP: 3–5 ngày (khi PCT < 0.25 ng/mL)<br>VAP: 7 ngày (REGARD-VAP)<br>Nhiễm trùng ổ bụng / Áp xe: 4 ngày sau kiểm soát nguồn<br>Nhiễm trùng huyết Gram âm: 7 ngày<br>UTI: 3–7 ngày | Phải hoàn tất thời gian tối thiểu tương ứng với từng thể bệnh lý lâm sàng. |
+| **B. Tiêu chí Lâm sàng** *(Phải đạt đủ 5/5)* | 1. Thân nhiệt quay về bình thường<br>2. Huyết động ổn định<br>3. Chỉ số hô hấp cải thiện<br>4. Triệu chứng tại chỗ giảm<br>5. Dung nạp đường tiêu hóa tốt | 1. $\le 37.8^\circ\text{C}$ kéo dài $\ge 24–48$ giờ<br>2. Không còn cần thuốc vận mạch<br>3. $\text{FiO}_2 \le 40\%$ hoặc $\text{SpO}_2$ đạt mục tiêu<br>4. Giảm sưng, đau, mủ, đờm đục<br>5. Ăn uống được, không nôn/buồn nôn |
+| **C. Tiêu chí Cận lâm sàng** *(Tối thiểu 1/5)* | 1. Procalcitonin (PCT)<br>2. Bạch cầu máu (WBC)<br>3. C-reactive Protein (CRP)<br>4. Lactate máu<br>5. Cấy máu theo dõi | 1. $\text{PCT} < 0.5\text{ ng/mL}$ HOẶC giảm $\ge 80\%$ từ đỉnh<br>2. WBC về ngưỡng bình thường<br>3. $\text{CRP}$ giảm $> 50\%$ HOẶC $< 35\text{ mg/L}$<br>4. Lactate bình thường ($< 2.0\text{ mmol/L}$)<br>5. Cấy máu âm tính sau điều trị |
+
+---
+
+## 4. Ca Lâm Sàng Minh Họa: Ứng Dụng Bảng Kiểm D8 Trong Kê Đơn
+
+### Ca Lâm Sàng: Viêm Phổi Mắc Phải Tại Cộng Đồng (CAP)
+*   **Bệnh nhân:** Nam, 62 tuổi, tiền sử ĐTĐ týp 2, nhập viện vì sốt cao $38.8^\circ\text{C}$, ho đờm đục, đau ngực bón bên phải, thở 24 lần/phút, SpO2 93% khí trời. X-quang ngực có thâm nhiễm thùy dưới phổi phải. WBC 14,500/mm³, CRP 82 mg/L, eGFR 65 mL/min.
+
+| Mắt Xích D8 | Phân Tích Thực Hành Trên Bệnh Nhân Cụ Thể |
+| :--- | :--- |
+| **1. Diagnosis** | Viêm phổi mắc phải cộng đồng (CAP) mức độ trung bình (CURB-65 = 1 điểm). Bằng chứng vi khuẩn: sốt cao, đờm đục, thâm nhiễm X-quang, WBC & CRP tăng cao. |
+| **2. Decision** | Chỉ định kháng sinh ngay. Đã thu thập 2 mẫu cấy máu và 1 mẫu đờm nhuộm Gram/cấy trước khi tiêm liều thuốc đầu tiên. |
+| **3. Medicine** | Lựa chọn phác đồ nhóm Access/Watch: Ceftriaxone (Watch) 2g IV q24h + Azithromycin (Watch) 500mg PO q24h. Bệnh nhân không có tiền sử dị ứng. |
+| **4. Dose** | Ceftriaxone 2g IV q24h; eGFR 65 mL/min không cần chỉnh liều. |
+| **5. Dispensing** | Dùng đường tĩnh mạch Ngày 1-2. Kế hoạch chuyển IV-to-PO sang Amoxicillin-clavulanate 875/125mg PO q12h sau 48h khi lâm sàng ổn định. |
+| **6. Duration** | Dự kiến thời gian điều trị: 5 ngày. Đánh giá lại tiêu chuẩn ngừng thuốc vào Ngày 5. |
+| **7. Discussion** | Tư vấn bệnh nhân về diễn tiến bệnh, hướng dẫn báo cáo ngay nếu có cảm giác buồn nôn, tiêu chảy hoặc phát ban da. |
+| **8. Document** | Ghi chép rõ trong bệnh án: Chẩn đoán CAP, lý do chọn Ceftriaxone + Azithromycin và hẹn đánh giá lại sau 48 giờ. |
+
+*   **Diễn biến Ngày 3 (Sau 48 giờ):** Bệnh nhân hết sốt ($37.2^\circ\text{C}$ trong 24h), ho giảm, ăn uống tốt, SpO2 97% khí trời, CRP giảm xuống 28 mg/L. Cấy đờm mọc *Streptococcus pneumoniae* nhạy cảm với Penicillin/Ceftriaxone. Cấy máu âm tính.
+*   **Hành động theo D8:** 
+    *   *D3 (Medicine) & D5 (Dispensing):* Xuống thang kháng sinh, ngưng Azithromycin, chuyển Ceftriaxone IV sang **Amoxicillin 1g PO q8h** (hoặc Amoxicillin-clavulanate 875/125mg PO q12h).
+    *   *D6 (Duration):* Hoàn tất đủ 5 ngày điều trị và ngưng kháng sinh an toàn vào Ngày 5 khi đạt đủ 5 tiêu chí lâm sàng và CRP < 35 mg/L.
+
+---
+
+## 5. Tài Liệu Tham Khảo (AMA Style)
+
+1. World Health Organization. *The WHO AWaRe Antibiotic Book*. Geneva: World Health Organization; 2023.
+2. Bệnh viện Bệnh Nhiệt Đới. *Lưu đồ Hướng dẫn Sử dụng Kháng sinh*. TPHCM: Bệnh viện Bệnh Nhiệt Đới; 2024.
+3. Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. *Crit Care Med*. 2021;49(11):e1063-e1143.
+4. Metlay JP, Waterer GW, Long AC, et al. Diagnosis and Treatment of Adults with Community-acquired Pneumonia. An Official Clinical Practice Guideline of the American Thoracic Society and Infectious Diseases Society of America. *Am J Respir Crit Care Med*. 2019;200(7):e45-e67.
+5. Barreto EF, McCreary EK, Mangalore RP, et al. Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization in Acutely Ill Patients. *Pharmacotherapy*. 2026;46:e70181.
+6. Tamma PD, Heil EL, Smith JP, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. *Clin Infect Dis*. 2024;79(Supplement_2):S1-S40.

@@ -773,6 +773,13 @@
 | `views/co-che-benh-sinh-view.ts` | View Controller render 64+ ca lâm sàng Cơ chế bệnh sinh | Sinh Lý Bệnh CCBS |
 | `views/biochemistry-view.ts` | View Controller render 7 khối Hóa sinh chuyển hóa | Hóa Sinh Y Học |
 | `views/epidemiology-view.ts` | View Controller render Dịch tễ học & Y tế công cộng | Dịch Tễ Học |
+| `antibiotics/index.ts` | Entry point & Barrel export phân hệ Kháng Sinh Học Lâm Sàng (BMS-ATB) | Kháng Sinh Học AMS |
+| `antibiotics/views/antibiotics-hub-view.ts` | Master Dashboard Hub Kháng sinh (Hero, Bento Grid, Search & Filters) | Kháng Sinh Học AMS |
+| `antibiotics/views/antibiotics-tools-view.ts` | Controller 5 Công cụ Lâm sàng Tương tác (D8, PK/PD, AWaRe, Delabeling, IV-PO) | Kháng Sinh Học AMS |
+| `antibiotics/types/antibiotics.types.ts` | Type definitions cho 6 Modules, 14 Bài học, AWaRe 2023 & PK/PD | Kháng Sinh Học AMS |
+| `antibiotics/data/antibiotics-curriculum-data.ts` | CSDL 6 Modules, 14 Bài học & 5 Công cụ Lâm sàng Tương tác | Kháng Sinh Học AMS |
+| `antibiotics/components/AntibioticQuickNav.ts` | Sticky QuickNav Component cho bài giảng Kháng sinh | Kháng Sinh Học AMS |
+| `antibiotics/components/AWaRePill.ts` | Component hiển thị Huy hiệu Đèn Tín Hiệu AWaRe (Access/Watch/Reserve) | Kháng Sinh Học AMS |
 | `views/formula-vault-view.ts` | View Controller Kho công thức y sinh định lượng | Công Thức Y Sinh |
 | `views/physio-html-reader-view.ts` | Slide-out Reader Controller đọc bài giảng & ca bệnh | Reader Pro |
 | `css/basic-medical-design-tokens.css` | Hệ thống Master Design Tokens 80+ tokens kế thừa DocSpace Medical OS | Basic Medical Tokens |

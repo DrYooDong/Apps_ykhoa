@@ -1,0 +1,171 @@
+
+## 1. Đặt Vấn Đề & Bối Cảnh Ra Đời Của Khung Phân Tầng AWaRe
+
+Tình trạng kháng kháng sinh (Antimicrobial Resistance - AMR) đang là một trong những mối đe dọa sức khỏe cộng đồng và sự phát triển toàn cầu nghiêm trọng nhất trong thế kỷ 21, trực tiếp hoặc gián tiếp gây ra hơn 5 triệu ca tử vong mỗi năm trên toàn thế giới. Việc lạm dụng và sử dụng kháng sinh không hợp lý trong cả chăm sóc sức khỏe ban đầu lẫn điều trị nội trú tại bệnh viện là động lực chính thúc đẩy sự gia tăng và lan rộng của các chủng vi khuẩn đa kháng thuốc (MDR), siêu kháng thuốc (XDR) và toàn kháng thuốc (PDR).
+
+Để giúp các quốc gia tối ưu hóa việc sử dụng kháng sinh, đánh giá chất lượng kê đơn và thiết lập hệ thống giám sát hiệu quả, Tổ chức Y tế Thế giới (WHO) đã giới thiệu công cụ **Phân tầng Kháng sinh AWaRe (Access, Watch, Reserve)** lần đầu tiên vào năm 2017 như một phần bổ trợ cho Danh mục Thuốc Thiết yếu (WHO Model List of Essential Medicines - EML) và Danh mục Thuốc Thiết yếu cho Trẻ em (EMLc). 
+
+Đợt cập nhật lớn năm 2023/2025 của Khung AWaRe và Cuốn sách Hướng dẫn Sử dụng Kháng sinh AWaRe (The WHO AWaRe Antibiotic Book) đã phân loại hơn 250 loại kháng sinh phổ biến thành 3 nhóm chính cùng 1 nhóm cảnh báo bổ sung. Công cụ này cung cấp một khung lý thuyết và thực hành lâm sàng trực quan, hỗ trợ bác sĩ kê đơn, dược sĩ lâm sàng và các nhà quản lý y tế đưa ra quyết định hợp lý, vừa đảm bảo hiệu quả điều trị cho bệnh nhân, vừa bảo tồn giá trị của các kháng sinh dự trữ cho thế hệ tương lai.
+
+---
+
+## 2. Chi Tiết Phân Tầng Kháng Sinh Theo Khung AWaRe WHO
+
+Hệ thống AWaRe phân tầng kháng sinh dựa trên tầm quan trọng trong điều trị lâm sàng, phổ tác dụng dược lý và nguy cơ kích thích sự xuất hiện hoặc lan rộng của tình trạng kháng kháng sinh.
+
+```
+       [ ĐÈN XANH: ACCESSS (TIẾP CẬN) ]
+       • Phổ hẹp, hiệu quả cao, độc tính thấp, ít chọn lọc kháng thuốc.
+       • Lựa chọn hàng đầu cho các nhiễm trùng thông thường.
+       • Mục tiêu quốc gia: Tối thiểu 60% tổng lượng tiêu thụ.
+
+       [ ĐÈN CAM: WATCH (GIÁM SÁT) ]
+       • Phổ rộng, nguy cơ chọn lọc vi khuẩn đa kháng cao.
+       • Chỉ định cho nhiễm trùng nặng hoặc khi nhóm Access không hiệu quả.
+       • Cần giám sát chặt chẽ tỷ lệ kê đơn.
+
+       [ ĐÈN ĐỎ: RESERVE (DỰ TRỮ) ]
+       • "Vũ khí cuối cùng" cho vi khuẩn siêu kháng (CRE, CRAB, DTR-P. aeruginosa).
+       • Chỉ sử dụng khi có bằng chứng vi sinh hoặc hội chẩn chuyên khoa.
+       • Bắt buộc kiểm soát và phê duyệt nghiêm ngặt.
+```
+
+### 2.1. Nhóm Tiếp Cận (Access Group - Đèn Xanh)
+
+Nhóm Tiếp cận bao gồm các kháng sinh có phổ tác dụng hẹp hơn, hồ sơ an toàn tốt về mặt tác dụng phụ, nguy cơ chọn lọc vi khuẩn kháng thuốc thấp và chi phí hợp lý. 
+
+#### Đặc điểm lâm sàng & Dược lý
+- Các kháng sinh thuộc nhóm này được khuyến cáo là **lựa chọn điều trị đầu tay (first-line)** hoặc thứ hai theo kinh nghiệm đối với hầu hết các hội chứng nhiễm khuẩn thông thường trên lâm sàng.
+- Nhóm thuốc này cần phải luôn sẵn có tại mọi cơ sở y tế, từ trạm y tế xã, phòng khám ngoại trú đến các bệnh viện tuyến trung ương với mức giá mà người dân có thể chi trả được.
+
+#### Mục tiêu chiến lược của WHO
+Tổ chức Y tế Thế giới đặt ra chỉ số bắt buộc trong Chương trình Công tác Toàn cầu: **Tối thiểu $60\%$ tổng số lượng kháng sinh tiêu thụ ở cấp quốc gia phải thuộc nhóm Tiếp cận (Access Group)**. Tỷ lệ này phản ánh một hệ thống y tế sử dụng kháng sinh an toàn và tiết kiệm chi phí.
+
+#### Bảng danh mục kháng sinh nhóm Access tiêu biểu
+
+| Nhóm Dược Lý | Thuốc Đại Diện | Chỉ Định Lâm Sàng Thường Gặp |
+| :--- | :--- | :--- |
+| **Penicillins phổ hẹp** | Benzylpenicillin, Phenoxymethylpenicillin, Procaine benzylpenicillin | Viêm họng do liên cầu, Giang mai, Viêm màng não do phế cầu nhạy |
+| **Penicillins chống tụ cầu** | Cloxacillin, Oxacillin, Dicloxacillin, Nafcillin | Nhiễm trùng da mô mềm, Viêm cơ sinh mủ do MSSA |
+| **Aminopenicillins** | Amoxicillin, Ampicillin | Viêm phổi cộng đồng nhẹ, Viêm tai giữa, Viêm xoang, Nhiễm khuẩn *Listeria* |
+| **Penicillin + Chất ức chế** | Amoxicillin-clavulanate, Ampicillin-sulbactam | Nhiễm trùng đường tiết niệu, Viêm xoang, Vết thương do cắn, CAP có bệnh kèm |
+| **Cephalosporin thế hệ 1** | Cefazolin, Cefalexin, Cefadroxil | Dự phòng phẫu thuật, Nhiễm trùng da mô mềm, Viêm mô tế bào nhẹ |
+| **Nhiệt đới & Khác** | Metronidazole, Clindamycin, Nitrofurantoin, Co-trimoxazole, Doxycycline | Nhiễm khuẩn kỵ khí, Tiêu chảy amip, UTI dưới không biến chứng, Bệnh do *Chlamydia*, Bệnh tả |
+
+### 2.2. Nhóm Giám Sát (Watch Group - Đèn Cam)
+
+Nhóm Giám sát bao gồm các kháng sinh có phổ tác dụng rộng hơn, chi phí cao hơn và đặc biệt có nguy cơ cao kích thích sự xuất hiện, chọn lọc và lan rộng của các chủng vi khuẩn kháng thuốc.
+
+#### Đặc điểm lâm sàng & Dược lý
+- Các kháng sinh thuộc nhóm Watch chỉ nên được ưu tiên làm lựa chọn đầu tay đối với những bệnh nhân có biểu hiện lâm sàng nặng (nhiễm khuẩn huyết, sốc nhiễm khuẩn) hoặc nhiễm trùng tại các vị trí mà tác nhân gây bệnh có tỷ lệ kháng kháng sinh nhóm Access cao (như viêm bể thận cấp, viêm phổi bệnh viện).
+- Việc kê đơn kháng sinh nhóm Watch cần được theo dõi và giám sát chặt chẽ tại các khoa lâm sàng nhằm hạn chế tình trạng lạm dụng vô căn cứ ở các nhiễm trùng nhẹ hoặc do virus.
+
+#### Bảng danh mục kháng sinh nhóm Watch tiêu biểu
+
+| Nhóm Dược Lý | Thuốc Đại Diện | Cảnh Báo Đề Kháng & Lưu Ý Lâm Sàng |
+| :--- | :--- | :--- |
+| **Cephalosporins thế hệ 2 & 3** | Cefuroxime, Ceftriaxone, Cefotaxime, Ceftazidime | Tăng nguy cơ chọn lọc vi khuẩn sinh men ESBL và nhiễm *C. difficile* đường ruột |
+| **Cephalosporins thế hệ 4** | Cefepime | Kháng sinh phổ rộng chống *Pseudomonas*, cần chú ý độc tính thần kinh khi suy thận |
+| **Carbapenems** | Meropenem, Imipenem-cilastatin, Ertapenem | Dành cho nhiễm trùng nặng do vi khuẩn sinh ESBL hoặc nhiễm trùng ổ bụng/máu nặng |
+| **Fluoroquinolones** | Ciprofloxacin, Levofloxacin, Moxifloxacin | Nguy cơ tác dụng phụ nghiêm trọng (gân, thần kinh, đường huyết); gia tăng kháng thuốc ở *E. coli* và *S. Typhi* |
+| **Macrolides** | Azithromycin, Clarithromycin, Erythromycin | Nguy cơ kháng thuốc nhanh ở phế cầu; ưu tiên cho vi khuẩn bất điển hình hoặc thay thế khi dị ứng |
+| **Glycopeptides / Khác** | Vancomycin (đường tiêm), Piperacillin-tazobactam | Bao phủ MRSA hoặc *Pseudomonas* nặng; cần TDM AUC/MIC với Vancomycin |
+
+### 2.3. Nhóm Dự Trữ (Reserve Group - Đèn Đỏ)
+
+Nhóm Dự trữ bao gồm các kháng sinh được coi là "lựa chọn cuối cùng" (last-resort options) để điều trị các bệnh nhiễm trùng xâm lấn đe dọa tính mạng do các chủng vi khuẩn đa kháng nghiêm trọng (MDR/XDR/PDR) gây ra.
+
+#### Đặc điểm lâm sàng & Dược lý
+- **Mục đích bảo tồn:** Các thuốc nhóm này phải được bảo vệ nghiêm ngặt để duy trì hiệu lực điều trị. Chúng chỉ được phép sử dụng khi các lựa chọn thuộc nhóm Access và Watch đã thất bại hoặc khi có bằng chứng vi sinh xác nhận vi khuẩn chỉ còn nhạy cảm với kháng sinh nhóm Reserve.
+- **Quy trình quản lý:** Việc kê đơn kháng sinh nhóm Reserve bắt buộc phải tuân theo quy trình phê duyệt khắt khe (Form đăng ký kháng sinh hạn chế, được sự đồng ý của Hội đồng Quản lý Kháng sinh hoặc Bác sĩ Chuyên khoa Truyền nhiễm / Dược sĩ Lâm sàng).
+
+#### Bảng danh mục kháng sinh nhóm Reserve tiêu biểu
+
+| Thuốc Kháng Sinh | Cơ Chế & Phổ Tác Dụng | Ứng Dụng Lâm Sàng Ưu Tiên |
+| :--- | :--- | :--- |
+| **Cefiderocol** | Siderophore cephalosporin ("con ngựa Trojan" vận chuyển qua kênh sắt) | Vi khuẩn Gram âm kháng Carbapenem (CRE, *P. aeruginosa*, *A. baumannii*) sinh men MBL (NDM, VIM, IMP) |
+| **Ceftazidime-avibactam** | Cephalosporin thế hệ 3 + Chất ức chế Beta-lactamase thế hệ mới | Enterobacterales sinh KPC, OXA-48; *P. aeruginosa* DTR (không có tác dụng trên MBL/NDM) |
+| **Meropenem-vaborbactam** | Carbapenem + Chất ức chế Boronic acid | Enterobacterales kháng Carbapenem sinh men KPC |
+| **Colistin & Polymyxin B** | Polymyxin gắn phá vỡ màng ngoài LPS | "Cứu cánh" cuối cùng cho *Acinetobacter baumannii* (CRAB) và *Pseudomonas* siêu kháng |
+| **Linezolid / Tedizolid** | Oxazolidinones ức chế tổng hợp protein tại ribosome 50S | Nhiễm trùng nặng do MRSA, VRE (*Enterococcus* kháng Vancomycin), Lao đa kháng |
+| **Fosfomycin (IV)** | Ức chế MurA tổng hợp tiền chất peptidoglycan | Phối hợp điều trị nhiễm trùng nặng do CRE, MRSA, VRE |
+| **Plazomicin** | Aminoglycoside thế hệ mới chống lại men AME | Nhiễm trùng đường tiết niệu phức tạp do Enterobacterales đa kháng |
+
+### 2.4. Nhóm Không Khuyến Cáo Sử Dụng (Not Recommended Group)
+
+Nhóm này bao gồm các dạng phối hợp liều cố định (Fixed-Dose Combinations - FDCs) chứa hai hoặc nhiều kháng sinh phổ rộng, hoặc kháng sinh phối hợp với thuốc chống nấm/men vi sinh không có cơ sở khoa học, không có trong Danh mục Thuốc Thiết yếu (EML) của WHO và không được các cơ quan quản lý dược phẩm uy tín (như US FDA, EMA) phê duyệt.
+
+Tổ chức Y tế Thế giới nhấn mạnh việc lạm dụng các chế phẩm FDCs bất hợp lý này (chiếm tới $20\%$ lượng tiêu thụ ở một số quốc gia đang phát triển) làm tăng đáng kể độc tính, chi phí điều trị và nguy cơ bộc phát các chủng vi khuẩn siêu kháng thuốc.
+
+---
+
+## 3. Bảng Đèn Tín Hiệu AWaRe Tra Cứu Kháng Sinh Theo Hội Chứng Lâm Sàng
+
+Để giúp các bác sĩ thực hành tra cứu nhanh, dưới đây là bảng tổng hợp định hướng lựa chọn kháng sinh kinh nghiệm theo hệ thống Đèn Tín Hiệu AWaRe cho 15 hội chứng nhiễm trùng phổ biến trong Chăm sóc Sức khỏe Ban đầu và Bệnh viện (trích xuất từ *WHO AWaRe Antibiotic Book*).
+
+| Hội Chứng Nhiễm Trùng | Quyết Định Dùng KS | Lựa Chọn Đầu Tay (First-line) | Lựa Chọn Thay Thế (Second-line) | Phân Tầng AWaRe |
+| :--- | :--- | :--- | :--- | :---: |
+| **Viêm phế quản cấp** | **KHÔNG** (Chăm sóc không KS) | Chỉ điều trị triệu chứng (giảm ho, hạ sốt) | Không chỉ định KS | **ACCESS** |
+| **Viêm tai giữa cấp (nhẹ)** | Theo dõi / Trì hoãn | Amoxicillin (liều cao) | Amoxicillin-clavulanate | **ACCESS** |
+| **Viêm họng (Centor 0–2)** | **KHÔNG** (Chăm sóc không KS) | Điều trị triệu chứng (Paracetamol/Ibuprofen) | Không chỉ định KS | **ACCESS** |
+| **Viêm họng (Centor 3–4)** | Dùng khi nghi do Liên cầu | Amoxicillin hoặc Phenoxymethylpenicillin | Cefalexin hoặc Clarithromycin | **ACCESS / WATCH** |
+| **Viêm xoang cấp (nhẹ)** | **KHÔNG** (Chăm sóc không KS) | Điều trị triệu chứng (rửa mũi, hạ sốt) | Amoxicillin hoặc Amoxicillin-clavulanate | **ACCESS** |
+| **Viêm phổi cộng đồng (CAP nhẹ)** | **CÓ** (Đường uống) | Amoxicillin (đơn trị liệu) | Amoxicillin-clavulanate hoặc Doxycycline | **ACCESS** |
+| **Viêm phổi cộng đồng (CAP nặng - ICU)** | **CÓ** (Đường tiêm tĩnh mạch) | Ceftriaxone (IV) + Azithromycin (IV) | Cefotaxime (IV) + Clarithromycin (IV) | **WATCH** |
+| **Viêm phổi bệnh viện (HAP/VAP)** | **CÓ** (Đường tiêm tĩnh mạch) | Piperacillin-tazobactam hoặc Cefepime | Meropenem $\pm$ Vancomycin (nếu nghi MRSA) | **WATCH / RESERVE** |
+| **UTI dưới không biến chứng** | **CÓ** (Đường uống 3–5 ngày) | Nitrofurantoin hoặc Co-trimoxazole | Amoxicillin-clavulanate hoặc Fosfomycin | **ACCESS** |
+| **Viêm bể thận cấp (UTI trên)** | **CÓ** (Ngoại trú / Nội trú) | Ciprofloxacin (PO) hoặc Ceftriaxone (IV) | Amikacin (IV) hoặc Piperacillin-tazobactam | **WATCH** |
+| **Nhiễm trùng da mô mềm (nhẹ)** | **CÓ** (Đường uống) | Cefalexin hoặc Cloxacillin | Amoxicillin-clavulanate (nếu cắn) | **ACCESS** |
+| **Viêm cân mạc hoại tử** | **CÓ** (Cấp cứu ngoại + IV) | Pip-taz + Clindamycin $\pm$ Vancomycin | Ceftriaxone + Metronidazole + Vancomycin | **WATCH / RESERVE** |
+| **Nhiễm khuẩn huyết / Sốc NK** | **CÓ** (Tiêm tĩnh mạch ngay) | Ceftriaxone + Gentamicin (hoặc Amikacin) | Meropenem $\pm$ Vancomycin (nếu nguy cơ MDR) | **WATCH / RESERVE** |
+| **Nhiễm *C. difficile* đại tràng** | **CÓ** (Đường uống) | Fidaxomicin (PO) hoặc Vancomycin (PO) | Metronidazole (PO - chỉ dùng khi không có sẵn) | **WATCH / RESERVE** |
+| **Sốt giảm bạch cầu (FN)** | **CÓ** (Tiêm tĩnh mạch ngay) | Piperacillin-tazobactam (IV) | Meropenem $\pm$ Amikacin / Vancomycin | **WATCH / RESERVE** |
+
+---
+
+## 4. Ứng Dụng Khung AWaRe Trong Chương Trình Quản Lý Sử Dụng Kháng Sinh (ASP)
+
+Khung phân tầng AWaRe không chỉ là một danh mục lý thuyết mà là công cụ quản trị lâm sàng mạnh mẽ giúp các bệnh viện và cơ sở y tế triển khai Chương trình Quản lý Sử dụng Kháng Sinh (Antimicrobial Stewardship Program - ASP).
+
+```
+   +-----------------------------------------------------------------------+
+   |            QUY TRÌNH QUẢN LÝ KÊ ĐƠN THEO BẢNG KIỂM D8 (WHO)           |
+   +-----------------------------------------------------------------------+
+   |  [D1] Diagnosis   --> Chẩn đoán lâm sàng & bằng chứng nhiễm khuẩn?   |
+   |  [D2] Decision    --> Có thực sự cần kháng sinh không?               |
+   |  [D3] Medicine    --> Ưu tiên chọn kháng sinh nhóm ACCESS (Đèn Xanh).  |
+   |  [D4] Dose        --> Liều lượng chính xác & hiệu chỉnh suy thận?     |
+   |  [D5] Dispensing  --> Dạng bào chế & đánh giá chuyển đổi IV sang PO? |
+   |  [D6] Duration    --> Liệu trình ngắn nhất có hiệu quả lâm sàng?     |
+   |  [D7] Discussion  --> Tư vấn tác dụng phụ & dấu hiệu tái khám?       |
+   |  [D8] Document    --> Ghi chép đầy đủ lý do vào hồ sơ bệnh án?       |
+   +-----------------------------------------------------------------------+
+```
+
+### 4.1. Các Chỉ Số Đo Lường Hiệu Quả Quản Lý
+Để đánh giá sự cải thiện trong kê đơn, bộ phận Quản lý Kháng sinh bệnh viện cần theo dõi các chỉ số cốt lõi sau:
+1. **Tỷ trọng tiêu thụ kháng sinh nhóm Access:**
+   $$\text{Tỷ lệ Access (\%)} = \frac{\text{Số lượng Dạng liều xác định (DDD) nhóm Access}}{\text{Tổng số DDD kháng sinh tiêu thụ toàn viện}} \times 100\%$$
+   *Mục tiêu:* Đạt tối thiểu **$\ge 60\%$** tại cơ sở ngoại trú/ban đầu và tăng dần tỷ trọng tại khối nội trú.
+2. **Tỷ lệ tiêu thụ kháng sinh nhóm Watch & Reserve:**
+   Theo dõi mức giảm theo thời gian của các kháng sinh nhóm Watch (đặc biệt là Cephalosporin thế hệ 3 và Fluoroquinolones) và kiểm soát số lượng DDD/100 ngày-giường của nhóm Reserve.
+
+### 4.2. Trách Nhiệm Của Các Bên Liên Quan
+
+- **Bác sĩ Kê Đơn:** Áp dụng Bảng kiểm D8 trước khi viết đơn; ưu tiên nhóm Access cho các nhiễm trùng thông thường; đánh giá lại tình trạng bệnh nhân sau $48–72$ giờ để xuống thang kháng sinh hoặc ngừng thuốc.
+- **Dược sĩ Lâm Sàng:** Tăng cường giám sát các đơn thuốc chứa kháng sinh nhóm Watch và Reserve; thực hiện can thiệp chuyển đổi từ đường tiêm sang đường uống (IV-to-PO step-down); từ chối cấp phát các dạng phối hợp FDCs không khuyến cáo.
+- **Nhà Quản Lý Bệnh Viện:** Xây dựng Hướng dẫn Điều trị Nội bộ dựa trên Khung AWaRe và Antibiogram địa phương; thiết lập quy trình duyệt đơn tự động đối với kháng sinh nhóm Reserve.
+
+---
+
+## 5. Tài Liệu Tham Khảo (AMA Style)
+
+1. World Health Organization. *The WHO AWaRe (Access, Watch, Reserve) Antibiotic Book*. Geneva, Switzerland: World Health Organization; 2022.
+2. World Health Organization. *WHO Model List of Essential Medicines - 23rd List, 2023*. Geneva, Switzerland: World Health Organization; 2023.
+3. World Health Organization. *WHO Access, Watch, Reserve (AWaRe) Classification of Antibiotics for Evaluation and Monitoring of Use, 2023*. Geneva, Switzerland: World Health Organization; 2023.
+4. World Health Organization. *WHO Medically Important Antimicrobials List for Human Medicine (WHO MIA List)*. Geneva, Switzerland: World Health Organization; 2024.
+5. Sharland M, Pulcini C, Harbarth S, et al. Classifying antibiotics in the WHO Essential Medicines List for Children: Access, Watch, Reserve (AWaRe). *Lancet Infect Dis*. 2018;18(1):18-20. doi:10.1016/S1473-3099(17)30724-7
+6. Hsueh PR, Chen WH, Luh KT. Relationships between antimicrobial consumption and resistance: the AWaRe framework perspective. *Int J Antimicrob Agents*. 2021;58(5):106431. doi:10.1016/j.ijantimicag.2021.106431
+7. Zanichelli V, Sharland M, Cappello B, et al. The WHO AWaRe (Access, Watch, Reserve) antibiotic book and tool for stewardship. *Clin Microbiol Infect*. 2023;29(7):821-826. doi:10.1016/j.cmi.2023.03.012
+8. Bộ Y tế Việt Nam. *Hướng dẫn Sử dụng Kháng sinh (Ban hành kèm theo Quyết định số 708/QĐ-BYT)*. Hà Nội: Nhà xuất bản Y học; 2015.
+9. Bệnh viện Bệnh Nhiệt Đới TP. Hồ Chí Minh. *Lưu đồ Hướng dẫn Sử dụng Kháng sinh và Phân nhóm Nguy cơ Vi khuẩn Đa kháng*. TP. Hồ Chí Minh; 2023.

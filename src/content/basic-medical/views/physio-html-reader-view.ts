@@ -19,6 +19,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   const isCaseStudy = cleanPart === 'cases' || cleanPart === 'co-che-benh-sinh' || cleanPart === 'pathophysiology-cases';
   const isBiochem = cleanPart.startsWith('block') || cleanPart.startsWith('biochem');
   const isEpi = cleanPart === 'epidemiology' || cleanPart === 'dth' || cleanPart === 'dich-te-hoc';
+  const isAntibiotics = cleanPart.startsWith('module') || cleanPart === 'antibiotics' || cleanPart === 'khang-sinh';
 
   // Retrieve saved preferences from localStorage
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
@@ -46,14 +47,22 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     'block7-clinical-biochemistry': 'Khối 7: Hóa Sinh Lâm Sàng',
     'epidemiology': 'Dịch Tễ Bệnh Học',
     'dth': 'Dịch Tễ Bệnh Học',
-    'dich-te-hoc': 'Dịch Tễ Bệnh Học'
+    'dich-te-hoc': 'Dịch Tễ Bệnh Học',
+    'module1-vi-sinh': 'Module 1: Vi Sinh Y Học & Phân Nhóm',
+    'module2-phan-loai-aware': 'Module 2: Bảng Tuần Hoàn & AWaRe 2023',
+    'module3-pk-pd-duong-dung': 'Module 3: PK/PD & Đường Dùng',
+    'module4-ke-don-an-toan-adr': 'Module 4: Kê Đơn An Toàn & ADR',
+    'module5-di-ung-beta-lactam': 'Module 5: Dị Ứng Beta-Lactam',
+    'module6-phac-do-ngoai-tru': 'Module 6: Nhiễm Trùng Ngoại Trú',
+    'antibiotics': 'Kháng Sinh Học Lâm Sàng',
+    'khang-sinh': 'Kháng Sinh Học Lâm Sàng'
   };
 
-  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : (isEpi ? 'Dịch Tễ Bệnh Học' : `Phần ${cleanPart.replace('part', '')}`));
+  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : (isEpi ? 'Dịch Tễ Bệnh Học' : (isAntibiotics ? 'Kháng Sinh Học' : `Phần ${cleanPart.replace('part', '')}`)));
 
   // Trigger async fetch after container mounts to DOM
   setTimeout(() => {
-    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem, isEpi);
+    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem, isEpi, isAntibiotics);
   }, 30);
 
   let parentModuleUrl = '#/basic-medical/giai-phau-sinh-ly';
@@ -72,6 +81,10 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     parentModuleUrl = '#/basic-medical/dich-te-hoc';
     parentModuleName = 'DTH - YTCC';
     partUrl = `#/basic-medical/dich-te-hoc#disease-epidemiology-section`;
+  } else if (isAntibiotics) {
+    parentModuleUrl = '#/basic-medical/khang-sinh';
+    parentModuleName = 'Kháng Sinh (AMS)';
+    partUrl = `#/basic-medical/khang-sinh#${cleanPart}-section`;
   }
 
   return `
@@ -242,7 +255,8 @@ async function fetchAndHydratePhysioArticle(
   partName: string,
   isCaseStudy: boolean,
   isBiochem: boolean,
-  isEpi: boolean
+  isEpi: boolean,
+  isAntibiotics: boolean = false
 ): Promise<void> {
   const mountEl = document.getElementById('physio-article-mount');
   if (!mountEl) return;
@@ -278,6 +292,17 @@ async function fetchAndHydratePhysioArticle(
       `../src/content/basic-medical/epidemiology/${baseSlugName}.mdx`,
       `/src/content/basic-medical/epidemiology/${cleanSlug}`,
       `src/content/basic-medical/epidemiology/${cleanSlug}`
+    ];
+  } else if (isAntibiotics) {
+    candidatePaths = [
+      `/src/content/basic-medical/antibiotics/${part}/${baseSlugName}.mdx`,
+      `src/content/basic-medical/antibiotics/${part}/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/antibiotics/${part}/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/antibiotics/${part}/${baseSlugName}.mdx`,
+      `/src/content/basic-medical/antibiotics/${part}/${cleanSlug}`,
+      `src/content/basic-medical/antibiotics/${part}/${cleanSlug}`,
+      `/src/content/basic-medical/antibiotics/${cleanSlug}`,
+      `src/content/basic-medical/antibiotics/${cleanSlug}`
     ];
   } else {
     candidatePaths = [
@@ -328,6 +353,9 @@ async function fetchAndHydratePhysioArticle(
     } else if (isEpi) {
       returnUrl = '#/basic-medical/dich-te-hoc';
       returnText = 'Dịch Tễ Học (DTH-YTCC)';
+    } else if (isAntibiotics) {
+      returnUrl = '#/basic-medical/khang-sinh';
+      returnText = 'Kháng Sinh Học Lâm Sàng (AMS)';
     }
 
     mountEl.innerHTML = `
@@ -335,7 +363,7 @@ async function fetchAndHydratePhysioArticle(
         <i class="fa-solid fa-triangle-exclamation" style="font-size: 3.2rem; color: #dc2626; margin-bottom: 1.25rem;"></i>
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem;">Không tìm thấy bài giảng</h3>
         <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
-          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : (isBiochem ? 'biochemistry/' + part + '/' : part + '/')}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
+          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : (isBiochem ? 'biochemistry/' + part + '/' : (isAntibiotics ? 'antibiotics/' + part + '/' : part + '/'))}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
         </p>
         <a href="${returnUrl}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 0.65rem 1.35rem; background: var(--color-primary, #0284c7); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 800;">
           <i class="fa-solid fa-arrow-left"></i> Quay lại ${returnText}

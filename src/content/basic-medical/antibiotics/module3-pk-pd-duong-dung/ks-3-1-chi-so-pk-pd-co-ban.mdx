@@ -1,0 +1,165 @@
+---
+title: "Các chỉ số PK/PD cơ bản trong lựa chọn liều và tối ưu hóa hiệu lực diệt khuẩn"
+slug: "ks-3-1-chi-so-pk-pd-co-ban"
+module: "module3-pk-pd-duong-dung"
+moduleLabel: "Module 3: PK/PD & Đường Dùng"
+moduleNumber: 3
+lessonNumber: 1
+order: 5
+tags:
+  - "PK/PD"
+  - "T>MIC"
+  - "Cmax/MIC"
+  - "AUC24/MIC"
+  - "Truyền kéo dài"
+  - "Động học diệt khuẩn"
+difficulty: "advanced"
+estimatedTime: 25
+lastUpdated: "2026-10-31"
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Khái Niệm Nền Tảng về Dược Động Học (PK) và Dược Lực Học (PD)"
+  - id: "sec-2"
+    number: 2
+    title: "Ba Nhóm Chỉ Số PK/PD Cốt Lõi & Cơ Chế Diệt Khuẩn Vi Sinh"
+  - id: "sec-3"
+    number: 3
+    title: "Biến Đổi PK/PD Trên Bệnh Nhân Nặng (ICU) & Chiến Lược Điều Chỉnh Liều"
+  - id: "sec-4"
+    number: 4
+    title: "Bảng Tổng Hợp Chỉ Số PK/PD Mục Tiêu & Chiến Lược Kê Đơn"
+  - id: "sec-5"
+    number: 5
+    title: "Tài Liệu Tham Khảo (AMA Style)"
+---
+
+# 🛡️ CÁC CHỈ SỐ PK/PD CƠ BẢN TRONG LỰA CHỌN LIỀU VÀ TỐI ƯU HÓA HIỆU LỰC DIỆT KHUẨN
+
+<div class="module-badge-group">
+  <span class="badge badge-teal"><i class="fa-solid fa-shield-virus"></i> Kháng Sinh Học Lâm Sàng</span>
+  <span class="badge badge-violet"><i class="fa-solid fa-chart-line"></i> Module 3 • Dược Động/Dược Lực Học</span>
+  <span class="badge badge-sky"><i class="fa-solid fa-clock"></i> %T > MIC & Truyền Kéo Dài</span>
+</div>
+
+<AntibioticQuickNav />
+
+Hiệu quả diệt khuẩn và độ an toàn của một phác đồ kháng sinh không đơn thuần phụ thuộc vào liều lượng tuyệt đối tính bằng milligram, mà được quyết định bởi mối tương quan động giữa dược động học (Pharmacokinetics - PK) của cơ thể người bệnh đối với thuốc và dược lực học (Pharmacodynamics - PD) của thuốc đối với vi khuẩn gây bệnh. Sự kết hợp giữa PK và PD tạo nên các **chỉ số PK/PD (PK/PD indices)**, đóng vai trò là "kim chỉ nam" cho bác sĩ lâm sàng và dược sĩ trong việc thiết kế chế độ liều, lựa chọn đường dùng và tối ưu hóa thời gian truyền thuốc.
+
+Trong bối cảnh tỷ lệ vi khuẩn đa kháng thuốc (MDR) ngày càng gia tăng và tình trạng biến đổi sinh lý phức tạp ở bệnh nhân nặng, việc hiểu rõ và áp dụng các chỉ số PK/PD cơ bản là nền tảng cốt lõi để đạt được mục tiêu diệt khuẩn tối đa, ngăn ngừa thất bại điều trị và hạn chế tối đa nguy cơ chọn lọc chủng vi khuẩn đề kháng.
+
+---
+
+## 1. Khái Niệm Nền Tảng về Dược Động Học (PK) và Dược Lực Học (PD) <span id="sec-1"></span>
+
+Để ứng dụng thành công các chỉ số PK/PD vào thực hành lâm sàng, cần phân biệt rõ hai quá trình song song nhưng có mối quan hệ tương hỗ chặt chẽ:
+
+### Dược Động Học (Pharmacokinetics - PK)
+Dược động học mô tả tác động của cơ thể đối với thuốc theo thời gian, bao gồm 4 quá trình cơ bản: Hấp thu (Absorption), Phân bố (Distribution), Chuyển hóa (Metabolism) và Thải trừ (Elimination). Trong điều trị kháng sinh, ba thông số PK trọng tâm gồm:
+*   **Thể tích phân bố ($V_d$):** Thể tích giả định mà thuốc phân bố trong cơ thể. Kháng sinh thân nước (Hydrophilic - Beta-lactam, Aminoglycosides, Glycopeptides, Colistin) có $V_d$ nhỏ, chủ yếu phân bố trong lòng mạch và dịch kẽ. Kháng sinh thân dầu (Lipophilic - Fluoroquinolones, Macrolides, Tetracyclines, Linezolid) có $V_d$ lớn, xâm nhập tốt vào mô và tế bào.
+*   **Độ thanh thải (Clearance - $CL$):** Thể tích huyết tương được lọc sạch thuốc trong một đơn vị thời gian (chủ yếu qua thận hoặc gan).
+*   **Nồng độ huyết thanh:** Bao gồm nồng độ đỉnh ($C_{max}$), nồng độ đáy ($C_{min}$ hoặc $C_{trough}$), nồng độ trạng thái ổn định ($C_{ss}$) và diện tích dưới đường cong nồng độ-thời gian trong 24 giờ ($AUC_{24}$).
+
+### Dược Lực Học (Pharmacodynamics - PD)
+Dược lực học mô tả tác động của thuốc đối với vi khuẩn gây bệnh. Trong vi sinh y học, chỉ số PD định lượng cơ bản nhất là **Nồng độ ức chế tối thiểu (Minimum Inhibitory Concentration - MIC)** – nồng độ kháng sinh thấp nhất có khả năng ức chế sự phát triển nhìn thấy được của vi khuẩn in vitro sau 18–24 giờ nuôi cấy.
+*   *Lưu ý lâm sàng:* Chỉ có **dạng thuốc tự do không gắn kết với protein huyết tương ($f$ - free fraction)** mới có đặc tính sinh học để băng qua màng tế bào và tạo ra tác dụng diệt khuẩn tại ổ nhiễm trùng.
+
+---
+
+## 2. Ba Nhóm Chỉ Số PK/PD Cốt Lõi & Cơ Chế Diệt Khuẩn Vi Sinh <span id="sec-2"></span>
+
+Dựa trên đặc tính diệt khuẩn theo thời gian hoặc theo nồng độ, cũng như sự hiện diện của **Hiệu ứng hậu kháng sinh (Post-Antibiotic Effect - PAE)** – khả năng tiếp tục ức chế vi khuẩn phát triển ngay cả khi nồng độ thuốc đã giảm xuống dưới MIC, toàn bộ các nhóm kháng sinh được phân thành 3 mẫu hình PK/PD chính:
+
+| Mẫu hình PK/PD | Chỉ số quyết định | Nhóm kháng sinh đại diện | Mục tiêu PK/PD điển hình | Chiến lược tối ưu hóa liều lâm sàng |
+| :--- | :--- | :--- | :--- | :--- |
+| **Phụ thuộc Thời gian** | $\%fT_{>MIC}$ | Beta-lactams (Penicillins, Cephalosporins, Carbapenems, Monobactams) | Penicillins: $>50\% fT_{>MIC}$<br>Cephalosporins: $>60-70\% fT_{>MIC}$<br>Carbapenems: $>40-50\% fT_{>MIC}$<br>*(Bệnh nhân ICU: $100\% fT_{>MIC}$ đến $100\% fT_{>4\times MIC}$)* | • Tiêm nạp (Loading dose) ban đầu<br>• Truyền kéo dài (3–4 giờ) hoặc truyền liên tục (24 giờ)<br>• Chia nhỏ khoảng cách liều |
+| **Phụ thuộc Nồng độ** | $C_{max} / MIC$ | Aminoglycosides (Gentamicin, Tobramycin, Amikacin) | $C_{max} / MIC \ge 8 - 10$<br>(Amikacin $C_{max} \ge 60-80\text{ mg/L}$) | • Dùng liều cao 1 lần/ngày (Once-daily / Extended-interval dosing)<br>• Tối đa hóa nồng độ đỉnh $C_{max}$ |
+| **Phụ thuộc Lượng tiếp xúc tích lũy** | $AUC_{24} / MIC$ | Glycopeptides (Vancomycin), Fluoroquinolones, Daptomycin, Linezolid, Polymyxins, Tigecycline | Vancomycin: $AUC_{24}/MIC_{BMD} = 400 - 600$<br>Fluoroquinolones (Gram âm): $AUC_{24}/MIC \ge 125$<br>Fluoroquinolones (Gram dương): $AUC_{24}/MIC \ge 25 - 30$ | • Tối ưu hóa tổng liều 24 giờ ($TDD = CL \times AUC_{24}$)<br>• Giám sát TDM cá thể hóa (Bayesian hoặc phương trình bậc 1) |
+
+---
+
+### 2.1. Kháng Sinh Phụ Thuộc Thời Gian ($\%fT_{>MIC}$)
+
+Kháng sinh nhóm Beta-lactam thể hiện đặc tính diệt khuẩn phụ thuộc vào thời gian. Tốc độ diệt khuẩn đạt mức tối đa khi nồng độ thuốc tự do đạt khoảng $4 \times MIC$. Việc tiếp tục tăng nồng độ cao hơn nữa không làm tăng thêm tốc độ diệt khuẩn, nhưng việc kéo dài thời gian mà nồng độ thuốc tự do duy trì trên mức MIC trong khoảng cách liều ($\%fT_{>MIC}$) lại quyết định trực tiếp khả năng thành công về mặt lâm sàng.
+
+#### Ngưỡng Mục Tiêu PK/PD
+*   **Bệnh nhân nhiễm trùng thông thường (ngoại trú/khoa thường):**
+    *   Penicillins: Tối thiểu $50\% fT_{>MIC}$
+    *   Cephalosporins: Tối thiểu $60 - 70\% fT_{>MIC}$
+    *   Carbapenems: Tối thiểu $40 - 50\% fT_{>MIC}$
+*   **Bệnh nhân nặng/ICU & Vi khuẩn giảm nhạy cảm (MIC cao):**
+    *   Các hướng dẫn đồng thuận quốc tế (ACCP/ESCMID/IDSA 2026 và Surviving Sepsis Campaign 2021) khuyến cáo mục tiêu tối thiểu phải đạt **$100\% fT_{>MIC}$** (toàn bộ khoảng cách liều nồng độ tự do luôn cao hơn MIC).
+    *   Đối với các nhiễm trùng ở vị trí khó đâm xuyên (như màng nào) hoặc ở bệnh nhân sốc nhiễm khuẩn nguy cơ cao, mục tiêu tối ưu có thể nâng lên **$100\% fT_{>4\times MIC}$** để đảm bảo diệt khuẩn triệt để và ngăn chặn vi khuẩn bộc phát gen đề kháng.
+
+#### Chiến Lược Kê Đơn & Truyền Thuốc Kéo Dài (Extended/Continuous Infusion)
+Do Beta-lactam có thời gian bán thải ($t_{1/2}$) ngắn (thường từ 1–2 giờ) và không có PAE đáng kể trên vi khuẩn Gram âm, việc tiêm ngắt quãng truyền thống (trong 30 phút) khiến nồng độ thuốc sụt giảm rất nhanh dưới MIC ở cuối khoảng liều.
+*   **Tiêm nạp ban đầu (Loading Dose):** Bắt buộc tiêm nạp 1 liều tiêu chuẩn trong 30–60 phút đầu tiên để nhanh chóng đưa nồng độ thuốc đạt đỉnh điều trị, tránh nguy cơ thiếu liều trong những giờ đầu nhiễm trùng nặng.
+*   **Truyền kéo dài (Extended Infusion):** Duy trì thời gian truyền mỗi liều trong **3–4 giờ** (ví dụ: Piperacillin/Tazobactam 4.5g truyền trong 4 giờ mỗi 8 giờ; Cefepime 2g truyền trong 4 giờ mỗi 8 giờ; Meropenem 1g–2g truyền trong 3 giờ mỗi 8 giờ).
+*   **Truyền liên tục (Continuous Infusion):** Truyền tĩnh mạch không gián đoạn trong 24 giờ sau liều nạp ban đầu, giúp duy trì nồng độ huyết thanh luôn ở trạng thái ổn định ($C_{ss} > MIC$).
+
+---
+
+### 2.2. Kháng Sinh Phụ Thuộc Nồng Độ ($C_{max} / MIC$)
+
+Kháng sinh nhóm Aminoglycosides (Gentamicin, Tobramycin, Amikacin) thể hiện mẫu hình diệt khuẩn phụ thuộc hoàn toàn vào nồng độ đỉnh. Nồng độ thuốc tự do càng cao so với MIC của vi khuẩn, tốc độ và khả năng diệt khuẩn càng nhanh và triệt để. Đồng thời, Aminoglycosides có hiệu ứng hậu kháng sinh (PAE) kéo dài từ 0.5 đến 8 giờ, cho phép vi khuẩn tiếp tục bị ức chế ngay cả khi nồng độ thuốc trong máu đã giảm xuống rất thấp.
+
+#### Ngưỡng Mục Tiêu PK/PD
+*   Chỉ số quyết định hiệu quả diệt khuẩn là **$C_{max} / MIC \ge 8 - 10$**.
+*   Ví dụ: Nếu chủng *Pseudomonas aeruginosa* có $MIC = 2\text{ mg/L}$ với Amikacin, nồng độ đỉnh $C_{max}$ cần đạt tối thiểu từ $16 - 20 \text{ mg/L}$ (thực tế lâm sàng với Amikacin liều cao thường hướng tới $C_{max} = 60 - 80\text{ mg/L}$).
+
+#### Tối Ưu Hóa Liều Bằng Chế Độ Liều Cao 1 Lần/Ngày (Once-Daily / Extended-Interval Dosing)
+Trước đây, Aminoglycosides được chia nhỏ dùng 2–3 lần/ngày. Tuy nhiên, các nghiên cứu dược lý hiện đại chứng minh rằng sự tích lũy Aminoglycosides gây độc tính trên tế bào ống thận và tai có tính chất **bão hòa (saturable uptake)**. 
+*   Việc dùng một liều dồn duy nhất trong ngày (ví dụ: Amikacin $15 - 30\text{ mg/kg/ngày}$ hoặc Gentamicin $5 - 7\text{ mg/kg/ngày}$) giúp tạo ra một nồng độ đỉnh $C_{max}$ cực cao (tối ưu chỉ số $C_{max}/MIC$), sau đó nồng độ thuốc sụt giảm sâu về nồng độ đáy rất thấp ($C_{min} < 1\text{ mg/L}$ với Gentamicin/Tobramycin và $< 2.5 - 5\text{ mg/L}$ với Amikacin).
+*   Khoảng thời gian nồng độ đáy thấp giúp các tế bào ống thận thải trừ thuốc, giải phóng độc tính và tái hồi phục, từ đó làm giảm rõ rệt tỷ lệ tổn thương thận cấp (AKI) so với phác đồ chia nhỏ liều.
+
+---
+
+### 2.3. Kháng Sinh Phụ Thuộc Lượng Tiếp Xúc Tích Lũy ($AUC_{24} / MIC$)
+
+Các nhóm kháng sinh như Glycopeptides (Vancomycin), Fluoroquinolones (Levofloxacin, Ciprofloxacin, Moxifloxacin), Daptomycin, Linezolid, Polymyxins và Tigecycline diệt khuẩn dựa trên tổng lượng tiếp xúc tích lũy của thuốc trong vòng 24 giờ so với MIC của vi khuẩn, biểu thị bằng tỷ lệ diện tích dưới đường cong nồng độ-thời gian trên MIC ($AUC_{24} / MIC$).
+
+#### Phác Đồ Giám Sát Nồng Độ Vancomycin TDM Mới (ASHP/IDSA/PIDS/SIDP 2020)
+*   **Thay đổi căn bản:** Hướng dẫn đồng thuận năm 2020 chính thức **loại bỏ việc giám sát nồng độ đáy đơn thuần ($15 - 20\text{ mg/L}$)** trong điều trị các nhiễm trùng MRSA nghiêm trọng (nhiễm khuẩn huyết, viêm nội tâm mạc, viêm phổi, viêm xương tủy), do nồng độ đáy đơn thuần không phản ảnh chính xác AUC và làm tăng nguy cơ tổn thương thận cấp (AKI) lên gấp 2 lần.
+*   **Mục tiêu PK/PD chuẩn:** Duy trì **$AUC_{24} / MIC_{BMD} = 400 - 600$** (với giả định $MIC_{BMD} = 1\text{ mg/L}$, tương ứng $AUC_{24} = 400 - 600\text{ mg}\cdot\text{h/L}$).
+*   **Phương pháp TDM thực hành:** 
+    1.  *Phần mềm Bayesian (Lựa chọn ưu tiên):* Cần 1–2 mẫu máu (ngẫu nhiên hoặc đáy) lấy sớm trong 24–48 giờ đầu điều trị, không cần chờ đạt trạng thái ổn định.
+    2.  *Phương trình dược động học bậc 1:* Thu thập 2 mẫu máu (đỉnh sau truyền 1–2 giờ và đáy ngay trước liều tiếp theo) ở trạng thái gần ổn định để tính $AUC_{24}$ theo công thức tích phân trapezoid.
+
+#### Mục Tiêu Fluoroquinolones
+*   Đối với vi khuẩn Gram âm (như *E. coli*, *Klebsiella*, *Pseudomonas*): Mục tiêu **$AUC_{24} / MIC \ge 125$** (hoặc $C_{max} / MIC \ge 10-12$) để đảm bảo diệt khuẩn và ngăn ngừa đột biến kháng thuốc.
+*   Đối với vi khuẩn Gram dương (như *S. pneumoniae*): Mục tiêu **$AUC_{24} / MIC \ge 25 - 30$**.
+
+---
+
+## 3. Biến Đổi PK/PD Trên Bệnh Nhân Nặng (ICU) & Chiến Lược Điều Chỉnh Liều <span id="sec-3"></span>
+
+Bệnh nhân nằm khoa Hồi sức tích cực (ICU), bệnh nhân Sốc nhiễm khuẩn (Septic Shock) hoặc có suy đa cơ quan trải qua những biến đổi sinh lý sâu sắc, làm phá vỡ các thông số PK/PD chuẩn của người bình thường:
+
+*   **Tăng Thể tích Phân bố ($V_d$):** Do tình trạng rò mao mạch toàn thân (capillary leak syndrome) và hồi sức truyền dịch khối lượng lớn, thể tích nước ngoài tế bào tăng mạnh. Điều này làm pha loãng các kháng sinh thân nước (Beta-lactam, Aminoglycosides, Vancomycin). Bắt buộc dùng **liều nạp (Loading dose)** ngay từ liều đầu tiên (ví dụ: Vancomycin $20-35\text{ mg/kg}$, Piperacillin/Tazobactam $4.5\text{g}$, Amikacin $25-30\text{ mg/kg}$) để nhanh chóng lấp đầy thể tích phân bố mở rộng.
+*   **Tăng Thanh Thải Thận (Augmented Renal Clearance - ARC):** Thường gặp ở bệnh nhân trẻ tuổi, chấn thương, bỏng nặng hoặc nhiễm trùng huyết giai đoạn đầu có $CrCl > 130\text{ mL/phút/1.73m}^2$. Thận đào thải kháng sinh thân nước quá nhanh khiến nồng độ thuốc sụt giảm dưới ngưỡng điều trị ($fT > MIC$ không đạt). Cần tăng tổng liều hàng ngày hoặc chuyển sang phác đồ truyền liên tục 24 giờ.
+*   **Tổn thương Thận Cấp (AKI) & Lọc Máu Liên Tục (CRRT):** AKI làm giảm độ thanh thải, gây tích lũy thuốc và tăng độc tính. Tuy nhiên, trong 24 giờ đầu của sốc nhiễm khuẩn kèm AKI, các chuyên gia khuyến cáo **trì hoãn việc giảm liều Beta-lactam** để tránh nguy cơ thiếu liều diệt khuẩn ban đầu, sau đó mới hiệu chỉnh theo chức năng thận ổn định hoặc thông số quả lọc CRRT.
+
+---
+
+## 4. Bảng Tổng Hợp Chỉ Số PK/PD Mục Tiêu & Chiến Lược Kê Đơn <span id="sec-4"></span>
+
+| Nhóm Kháng Sinh | Chỉ số PK/PD | Mục tiêu PD khuyến cáo | Liều nạp ban đầu ($LD$) | Chiến lược truyền & TDM |
+| :--- | :--- | :--- | :--- | :--- |
+| **Penicillins** (Pip/Taz, Amp/Sulb) | $\%fT_{>MIC}$ | $>50\% fT_{>MIC}$ (Ngoại trú)<br>$100\% fT_{>MIC}$ (ICU) | Pip/Taz $4.5\text{g}$ IV | Truyền kéo dài $3-4$ giờ mỗi $6-8$ giờ hoặc truyền liên tục $24$ giờ |
+| **Cephalosporins** (Cefepime, Ceftriaxone) | $\%fT_{>MIC}$ | $>60-70\% fT_{>MIC}$ (Ngoại trú)<br>$100\% fT_{>4\times MIC}$ (Nặng) | Cefepime $2\text{g}$ IV | Truyền kéo dài $3-4$ giờ mỗi $8$ giờ; Cefepime cần theo dõi độc tính thần kinh khi $C_{trough} > 20-35\text{ mg/L}$ |
+| **Carbapenems** (Meropenem, Imipenem) | $\%fT_{>MIC}$ | $>40-50\% fT_{>MIC}$ (Ngoại trú)<br>$100\% fT_{>MIC}$ (ICU) | Meropenem $1-2\text{g}$ IV | Truyền kéo dài $3$ giờ mỗi $8$ giờ hoặc truyền liên tục |
+| **Aminoglycosides** (Amikacin, Gentamicin) | $C_{max} / MIC$ | $C_{max} / MIC \ge 8 - 10$<br>Amikacin $C_{max} 60-80\text{ mg/L}$ | Amikacin $25-30\text{ mg/kg}$<br>Genta $5-7\text{ mg/kg}$ | Dùng liều cao 1 lần/ngày (Once-daily); TDM đo nồng độ đỉnh ($C_{max}$) và nồng độ đáy ($C_{min} < 1\text{ mg/L}$) |
+| **Glycopeptides** (Vancomycin) | $AUC_{24} / MIC$ | $AUC_{24}/MIC_{BMD} = 400 - 600$<br>(giả định $MIC = 1\text{ mg/L}$) | $20-35\text{ mg/kg}$ TBW<br>(tối đa $3000\text{ mg}$) | TDM hướng dẫn theo AUC (phần mềm Bayesian hoặc 2 điểm đỉnh-đáy); tránh dùng mục tiêu đáy $15-20\text{ mg/L}$ đơn thuần |
+| **Fluoroquinolones** (Levofloxacin, Ciprofloxacin) | $AUC_{24} / MIC$ | $\ge 125$ (Gram âm)<br>$\ge 25-30$ (Gram dương) | Không bắt buộc | Dùng liều tối ưu 1–2 lần/ngày; điều chỉnh liều theo chức năng thận |
+
+---
+
+## 5. Tài Liệu Tham Khảo (AMA Style) <span id="sec-5"></span>
+
+1. Barreto EF, McCreary EK, Mangalore RP, et al. Consensus Guidance for Beta-Lactam Antibiotic Dose Individualization in Acutely Ill Patients: Endorsed by the American College of Clinical Pharmacy, European Society of Clinical Microbiology and Infectious Diseases, European Society of Clinical Microbiology and Infectious Diseases PK/PD of Anti-Infectives Study Group, Infectious Diseases Society of America, International Association of Therapeutic Drug Monitoring and Clinical Toxicology, Society of Critical Care Medicine, and the Society of Infectious Diseases Pharmacists. *Pharmacotherapy*. 2026;46:e70181. doi:10.1002/phar.70181
+2. Rybak MJ, Le J, Lodise TP, et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant *Staphylococcus aureus* infections: A revised consensus guideline and review by the American Society of Health-System Pharmacists, the Infectious Diseases Society of America, the Pediatric Infectious Diseases Society, and the Society of Infectious Diseases Pharmacists. *Am J Health-Syst Pharm*. 2020;77(11):835-864. doi:10.1093/ajhp/zxaa036
+3. Hauser AR. *Antibiotic Basics for Clinicians: The ABCs of Choosing the Right Antibacterial Agent*. 4th ed. Philadelphia, PA: Wolters Kluwer; 2026.
+4. Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. *Crit Care Med*. 2021;49(11):e1063-e1143. doi:10.1097/CCM.0000000000005337
+5. Tamma PD, Abali OS, Ahearn P, et al. Infectious Diseases Society of America 2024 Guidance on the Treatment of Antimicrobial-Resistant Gram-Negative Infections. *Clin Infect Dis*. 2024;79(Suppl 2):S1-S40. doi:10.1093/cid/ciae403
+6. World Health Organization. *The AWaRe Manual: Guidance on the Use of Access, Watch and Reserve Antibiotics in Primary Care and Hospital Settings*. Geneva, Switzerland: World Health Organization; 2023.
+7. Gillett M, Ahearn P, Deresinski S, Holubar M. Antibiotic Considerations in the Critically Ill. *Infect Dis Clin North Am*. 2025;39(3):595-612.

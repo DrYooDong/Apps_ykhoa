@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+  <!-- Title & Header -->
+  <text x="480" y="38" text-anchor="middle" font-size="20" font-weight="900" fill="var(--color-text, #0f172a)">
+    3 MÔ HÌNH DƯỢC ĐỘNG / DƯỢC LỰC HỌC (PK/PD) TRONG DIỆT KHUẨN
+  </text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="var(--color-text-muted, #64748b)">
+    Cơ sở định lượng lựa chọn liều ngắt quãng, truyền kéo dài hoặc liều duy nhất trong ngày
+  </text>
+
+  <!-- PANEL 1: T > MIC (Beta-lactams) -->
+  <g transform="translate(30, 85)">
+    <rect x="0" y="0" width="280" height="360" rx="10" fill="rgba(2, 132, 199, 0.05)" stroke="#0284c7" stroke-width="1.5" />
+    <rect x="12" y="12" width="256" height="30" rx="6" fill="#0284c7" />
+    <text x="140" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">
+      1. THỜI GIAN PHỤ THUỘC (T &gt; MIC)
+    </text>
+
+    <!-- Curve Graph -->
+    <svg x="15" y="55" width="250" height="150" viewBox="0 0 250 150">
+      <line x1="25" y1="130" x2="240" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <line x1="25" y1="10" x2="25" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <!-- MIC line -->
+      <line x1="25" y1="85" x2="240" y2="85" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+      <text x="30" y="80" font-size="10" font-weight="800" fill="#d97706">MIC</text>
+      <!-- Time interval above MIC highlight -->
+      <rect x="42" y="85" width="135" height="45" fill="#0284c7" fill-opacity="0.2" />
+      <!-- Curve -->
+      <path d="M 25 130 Q 55 15 90 25 T 195 130" fill="none" stroke="#0284c7" stroke-width="2.5" />
+      <text x="105" y="112" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">%T &gt; MIC</text>
+    </svg>
+
+    <div style="padding: 0 1rem;">
+      <text x="140" y="225" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
+        Mục tiêu: %T &gt; MIC đạt 40 - 100%
+      </text>
+      <text x="140" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Đại diện: Penicillins, Cephalosporins
+      </text>
+      <text x="140" y="266" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Carbapenems, Monobactams
+      </text>
+      <line x1="20" y1="285" x2="260" y2="285" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
+      <text x="140" y="310" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">
+        CHIẾN LƯỢC KÊ ĐƠN:
+      </text>
+      <text x="140" y="332" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0369a1">
+        Chia nhiều lần dùng / Truyền kéo dài 3-4h
+      </text>
+      <text x="140" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#0369a1">
+        hoặc truyền liên tục 24h ở ICU
+      </text>
+    </div>
+  </g>
+
+  <!-- PANEL 2: Cmax / MIC (Aminoglycosides) -->
+  <g transform="translate(340, 85)">
+    <rect x="0" y="0" width="280" height="360" rx="10" fill="rgba(239, 68, 68, 0.05)" stroke="#ef4444" stroke-width="1.5" />
+    <rect x="12" y="12" width="256" height="30" rx="6" fill="#ef4444" />
+    <text x="140" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">
+      2. NỒNG ĐỘ PHỤ THUỘC (Cmax / MIC)
+    </text>
+
+    <!-- Curve Graph -->
+    <svg x="15" y="55" width="250" height="150" viewBox="0 0 250 150">
+      <line x1="25" y1="130" x2="240" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <line x1="25" y1="10" x2="25" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <!-- MIC line -->
+      <line x1="25" y1="110" x2="240" y2="110" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+      <text x="30" y="105" font-size="10" font-weight="800" fill="#d97706">MIC</text>
+      <!-- Curve (Sharp peak) -->
+      <path d="M 25 130 Q 40 10 70 15 T 230 130" fill="none" stroke="#ef4444" stroke-width="2.5" />
+      <!-- Arrow to Peak -->
+      <line x1="60" y1="12" x2="110" y2="12" stroke="#ef4444" stroke-width="1.5" />
+      <text x="115" y="16" font-size="11" font-weight="800" fill="#dc2626">Cmax ĐỈNH CAO</text>
+    </svg>
+
+    <div style="padding: 0 1rem;">
+      <text x="140" y="225" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
+        Mục tiêu: Cmax / MIC đạt 8 - 10 lần
+      </text>
+      <text x="140" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Đại diện: Aminoglycosides (Gentamicin,
+      </text>
+      <text x="140" y="266" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Tobramycin, Amikacin), Metronidazole
+      </text>
+      <line x1="20" y1="285" x2="260" y2="285" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
+      <text x="140" y="310" text-anchor="middle" font-size="11.5" font-weight="800" fill="#dc2626">
+        CHIẾN LƯỢC KÊ ĐƠN:
+      </text>
+      <text x="140" y="332" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b91c1c">
+        Dồn 1 liều duy nhất trong ngày (ODA)
+      </text>
+      <text x="140" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b91c1c">
+        Tận dụng hiệu ứng hậu kháng sinh (PAE)
+      </text>
+    </div>
+  </g>
+
+  <!-- PANEL 3: AUC24 / MIC (Vancomycin, Quinolones) -->
+  <g transform="translate(650, 85)">
+    <rect x="0" y="0" width="280" height="360" rx="10" fill="rgba(16, 185, 129, 0.05)" stroke="#10b981" stroke-width="1.5" />
+    <rect x="12" y="12" width="256" height="30" rx="6" fill="#10b981" />
+    <text x="140" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">
+      3. TIẾP XÚC TỔNG THỂ (AUC24 / MIC)
+    </text>
+
+    <!-- Curve Graph -->
+    <svg x="15" y="55" width="250" height="150" viewBox="0 0 250 150">
+      <line x1="25" y1="130" x2="240" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <line x1="25" y1="10" x2="25" y2="130" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" />
+      <!-- MIC line -->
+      <line x1="25" y1="115" x2="240" y2="115" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+      <text x="30" y="110" font-size="10" font-weight="800" fill="#d97706">MIC</text>
+      <!-- Shaded Area Under Curve -->
+      <path d="M 25 130 Q 50 35 100 45 T 235 130 Z" fill="#10b981" fill-opacity="0.25" />
+      <path d="M 25 130 Q 50 35 100 45 T 235 130" fill="none" stroke="#10b981" stroke-width="2.5" />
+      <text x="120" y="90" text-anchor="middle" font-size="11" font-weight="800" fill="#047857">AUC24 / MIC</text>
+    </svg>
+
+    <div style="padding: 0 1rem;">
+      <text x="140" y="225" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
+        Mục tiêu: AUC24 / MIC đạt 400 - 600
+      </text>
+      <text x="140" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Đại diện: Vancomycin, Fluoroquinolones,
+      </text>
+      <text x="140" y="266" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Linezolid, Colistin, Tigecycline
+      </text>
+      <line x1="20" y1="285" x2="260" y2="285" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
+      <text x="140" y="310" text-anchor="middle" font-size="11.5" font-weight="800" fill="#059669">
+        CHIẾN LƯỢC KÊ ĐƠN:
+      </text>
+      <text x="140" y="332" text-anchor="middle" font-size="10.5" font-weight="600" fill="#047857">
+        Tối ưu tổng liều 24h &amp; giám sát TDM
+      </text>
+      <text x="140" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#047857">
+        Tránh độc tính thận khi AUC &gt; 600
+      </text>
+    </div>
+  </g>
+</svg>
+
