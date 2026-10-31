@@ -38,7 +38,7 @@ export function renderHeaderHtml(projectRoot = './'): string {
 
           <!-- 2. Basic Sciences (Cơ sở Y khoa + Dropdown Menu) -->
           <div class="header-project-dropdown-wrapper">
-            <a href="${root}#/basic-medical" class="project-tab-btn tab-basic" data-project="basic" title="Cơ sở Y khoa — GP, Sinh lý, Bệnh sinh CCBS, Hóa sinh, Dịch tễ">
+            <a href="${root}#/basic-medical" class="project-tab-btn tab-basic" data-project="basic" title="Cơ sở Y khoa — GP, Sinh lý, Bệnh sinh CCBS, Hóa sinh, Dịch tễ, Kháng sinh">
               <span class="project-tab-icon"><i class="fa-solid fa-dna"></i></span>
               <span class="project-tab-name">Basic Sciences</span>
               <i class="fa-solid fa-chevron-down project-dropdown-arrow" aria-hidden="true"></i>
@@ -70,6 +70,13 @@ export function renderHeaderHtml(projectRoot = './'): string {
                 <div class="pdrop-info">
                   <strong>Dịch Tễ</strong>
                   <span>Dịch tễ học & Y tế công cộng</span>
+                </div>
+              </a>
+              <a href="${root}#/basic-medical/khang-sinh" class="project-dropdown-item">
+                <span class="pdrop-icon">🛡️</span>
+                <div class="pdrop-info">
+                  <strong>Kháng Sinh</strong>
+                  <span>Kháng sinh học &amp; Quản lý (AMS)</span>
                 </div>
               </a>
             </div>

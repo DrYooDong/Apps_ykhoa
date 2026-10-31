@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-10-26 (154 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-10-31 (156 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 
@@ -810,6 +810,55 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Lao bẩm sinh & Sơ sinh: Áp dụng tiêu chuẩn Cantwell, điều trị 4 thuốc 6 tháng; dự phòng INH + Rifampicin 3 tháng cho trẻ phơi nhiễm; chống chỉ định BCG cho thai phụ và trẻ nghi ngờ HIV."
     ],
     "description": "Tổng quan cập nhật EBM 2026 trên tạp chí Diagnostics về bệnh lao trong thai kỳ: dịch tễ học, biến chứng mẹ - thai, thuật toán chẩn đoán tích hợp 6 bước, phác đồ hàng 1, quản lý lao kháng thuốc MDR-TB, đồng nhiễm HIV, lao ngoài phổi, lao bẩm sinh và chăm sóc chu sinh.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2026-ean-escmid-infectious-encephalitis",
+    "title": "Hướng Dẫn Chẩn Đoán & Xử Trí Viêm Não Nhiễm Trùng Ở Người Lớn 2026: Khuyến Cáo Đồng Thuận EAN/ESCMID",
+    "titleEn": "Diagnosis and Management of Infectious Encephalitis in Adults: Guidelines From the European Academy of Neurology and European Society of Clinical Microbiology and Infectious Diseases",
+    "drug": "Aciclovir, Ganciclovir, Foscarnet, Ampicillin, Ceftriaxone, Dexamethasone, Doxycycline, Vancomycin",
+    "sourceType": "intl-guideline",
+    "specialty": "neuro",
+    "specialty2": "infect",
+    "design": "guideline",
+    "intervention": "Khởi trị Aciclovir IV khẩn cấp (< 6 giờ), chọc dò thắt lưng kịp thời, MRI não trong 24-48 giờ, ưu tiên PCR đơn mồi, duy trì Aciclovir tối thiểu 14 ngày cho HSV",
+    "impact": "practice-changing",
+    "year": 2026,
+    "organization": "EAN/ESCMID",
+    "journal": "European Journal of Neurology",
+    "population": "Bệnh nhân người lớn (≥ 18 tuổi) nghi ngờ hoặc xác định viêm não nhiễm trùng cấp tính và bán cấp",
+    "summary": "Hướng dẫn lâm sàng EAN/ESCMID 2026 xây dựng theo chuẩn GRADE cung cấp 16 khuyến cáo bản lề về chỉ định Aciclovir cấp cứu, đánh giá chống chỉ định LP, cảnh báo độ nhạy kém của multiplex PCR panel, phác đồ liều dược lý và quản lý phục hồi chức năng.",
+    "file": "2026-ean-escmid-infectious-encephalitis.mdx",
+    "conditionKey": "infectious-encephalitis",
+    "icd10": [
+      "G04.9",
+      "G05.1",
+      "B00.4",
+      "B02.0"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2026-EAN-ESCMID-ENCEPHALITIS",
+    "tags": [
+      "EAN/ESCMID",
+      "2026",
+      "Thần kinh",
+      "Truyền nhiễm",
+      "Viêm não",
+      "Aciclovir",
+      "GRADE",
+      "Khuyến cáo lâm sàng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Khởi trị Aciclovir IV 10 mg/kg mỗi 8 giờ ngay lập tức khi nghi ngờ viêm não nhiễm trùng (tốt nhất trong vòng 6 giờ nhập viện) mà tuyệt đối không trì hoãn để chờ chẩn đoán hình ảnh hay chọc dò thắt lưng (Khuyến cáo mạnh, LOE thấp).",
+      "Không sử dụng các panel Multiplex PCR DNT thương mại để thay thế hoàn toàn cho xét nghiệm PCR đơn mồi (single-plex) đặc hiệu mầm bệnh trong chẩn đoán ban đầu (Khuyến cáo có điều kiện, LOE thấp; do độ nhạy gộp của multiplex PCR với HSV-1 chỉ đạt 76%).",
+      "Tất cả bệnh nhân nghi ngờ viêm não cần được chọc dò thắt lưng (LP) càng sớm càng tốt sau nhập viện, trừ khi có dấu hiệu tăng áp lực nội sọ gây di lệch não (GCS < 10, dấu thần kinh khu trú, co giật mới xuất hiện, phù gai thị) cần chụp CT/MRI khẩn trước LP.",
+      "Thời gian điều trị Aciclovir IV cho viêm não HSV xác định tối thiểu là 14 ngày (kéo dài 21–28 ngày nếu lâm sàng không cải thiện hoặc suy giảm miễn dịch); xét nghiệm tự kháng thể anti-NMDA receptor DNT bắt buộc khi có triệu chứng thần kinh tái phát sau viêm não HSV."
+    ],
+    "description": "Hướng dẫn lâm sàng EAN/ESCMID 2026 xây dựng theo chuẩn GRADE cung cấp 16 khuyến cáo bản lề về chỉ định Aciclovir cấp cứu, đánh giá chống chỉ định LP, cảnh báo độ nhạy kém của multiplex PCR panel, phác đồ liều dược lý và quản lý phục hồi chức năng.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
@@ -2754,6 +2803,54 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Statin hoàn toàn KHÔNG làm giảm tỷ lệ tái nhập viện do tim mạch (RR 0.97; 95% CI 0.83–1.13; P = 0.68; I² = 0%), đòi hỏi chiến lược quản lý bệnh đồng mắc và tối ưu hóa tuân thủ."
     ],
     "description": "Phân tích hệ thống và phân tích gộp trên 506,813 bệnh nhân từ 7 nghiên cứu (Cureus 2025): Liệu pháp statin giúp giảm 40% nguy cơ tử vong do mọi nguyên nhân (RR 0.60; P=0.002) và giảm 21% biến cố tim mạch chính MACE (RR 0.79; P<0.00001), có xu hướng giảm 26% tử vong tim mạch (RR 0.74; P=0.07), nhưng hoàn toàn KHÔNG làm giảm tỷ lệ tái nhập viện do tim mạch (RR 0.97; P=0.68; I²=0%).",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2025-curropinneurol-viral-encephalitis-update",
+    "title": "Cập Nhật Bệnh Sinh & Chiến Lược Điều Trị Viêm Não Virus 2025: Tổng Quan Y Văn Current Opinion in Neurology",
+    "titleEn": "Viral Encephalitis – Update on Pathogenesis and Treatment",
+    "drug": "Aciclovir, Valaciclovir, Dexamethasone, Intravenous Immunoglobulin (IVIG), Ganciclovir, Foscarnet, Doxycycline",
+    "sourceType": "intl-study",
+    "specialty": "neuro",
+    "specialty2": "infect",
+    "design": "review",
+    "intervention": "Khởi trị Aciclovir IV khẩn cấp (< 6–24 giờ), cá thể hóa liều Aciclovir theo cân nặng (15 mg/kg cho bệnh nhân < 57 kg), đánh giá liệu pháp Corticosteroid hỗ trợ (kết quả thử nghiệm DexEnceph) và tầm soát viêm não tự miễn thứ phát post-HSV",
+    "impact": "practice-changing",
+    "year": 2025,
+    "organization": "University of Liverpool / Curr Opin Neurol",
+    "journal": "Current Opinion in Neurology",
+    "population": "Bệnh nhân nghi ngờ hoặc xác định viêm não do virus cấp tính, bao gồm HSV, VZV, Enteroviruses và Arboviruses",
+    "summary": "Bài tổng quan y văn bản lề năm 2025 công bố trên Current Opinion in Neurology cập nhật toàn diện bệnh sinh, con đường chọc phá hàng rào máu não, yếu tố di truyền ký chủ, tối ưu hóa dược lý Aciclovir IV và triển vọng liệu pháp miễn dịch đích.",
+    "file": "2025-curropinneurol-viral-encephalitis-update.mdx",
+    "conditionKey": "viral-encephalitis",
+    "icd10": [
+      "G04.9",
+      "G05.1",
+      "B00.4",
+      "B02.0"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2025-CON-VIRAL-ENCEPHALITIS",
+    "tags": [
+      "Current Opinion in Neurology",
+      "2025",
+      "Thần kinh",
+      "Truyền nhiễm",
+      "Viêm não virus",
+      "Aciclovir",
+      "Pathogenesis",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Virus là nguyên nhân hàng đầu gây viêm não nhiễm trùng (chiếm ~70% các trường hợp xác định căn nguyên vi sinh), trong đó Herpes Simplex Virus type 1 (HSV-1) là tác nhân rải rác phổ biến nhất (10–20% tổng số ca bệnh).",
+      "Khởi trị Aciclovir IV 10 mg/kg mỗi 8 giờ trong vòng 6–24 giờ nhập viện giúp làm giảm đáng kể tỷ lệ tử vong và biến chứng thần kinh; cân nhắc nâng liều lên 15 mg/kg mỗi 8 giờ ở bệnh nhân có thể trạng nhẹ cân (< 57 kg) dưới sự theo dõi sát chức năng thận.",
+      "Kết quả sơ bộ từ Thử nghiệm lâm sàng ngẫu nhiên DexEnceph (12/2024) cho thấy việc phối hợp Dexamethasone hỗ trợ trong viêm não HSV không làm gia tăng tử vong hay kéo dài sự tồn tại của virus trong DNT, mở ra hướng đi cho các liệu pháp ức chế miễn dịch có mục tiêu.",
+      "Cần tầm soát tự kháng thể anti-NMDA receptor trong DNT khi bệnh nhân có biểu hiện tái phát triệu chứng thần kinh hoặc tâm thần trong vòng vài tuần đến vài tháng sau khi đã điều trị khỏi viêm não HSV cấp (gặp ở 27% bệnh nhân)."
+    ],
+    "description": "Bài tổng quan y văn bản lề năm 2025 công bố trên Current Opinion in Neurology cập nhật toàn diện bệnh sinh, con đường chọc phá hàng rào máu não, yếu tố di truyền ký chủ, tối ưu hóa dược lý Aciclovir IV và triển vọng liệu pháp miễn dịch đích.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"

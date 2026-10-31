@@ -53,6 +53,7 @@ export interface AntibioticModule {
   shortTitle: string;
   icon: string;
   color: string;
+  bgColor?: string;
   badge: string;
   description: string;
   clinicalObjective: string;
