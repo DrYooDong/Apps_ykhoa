@@ -1,6 +1,7 @@
-﻿---
+---
 name: stop-making-ui-slop
-description: Quy chuẩn loại bỏ thiết kế rác (Anti-UI-Slop): Triệt tiêu placeholder vô nghĩa, vi phối màu nhợt nhạt, layout sao chép sáo rỗng. Bắt buộc thiết kế hướng người dùng lâm sàng cụ thể.
+description: >-
+  Quy chuẩn loại bỏ thiết kế rác (Anti-UI-Slop): Triệt tiêu placeholder vô nghĩa, vi phối màu nhợt nhạt, layout sao chép sáo rỗng. Bắt buộc thiết kế hướng người dùng lâm sàng cụ thể.
 ---
 
 # Stop Making UI Slop

@@ -1,3 +1,9 @@
+---
+name: github-skill
+description: >-
+  GitHub CLI (gh) commands and automation for repo management, issues, PRs, and releases.
+---
+
 # GitHub Skill
 
 Use the `gh` CLI to interact with GitHub. Always specify `--repo owner/repo` when not in a git directory, or use URLs directly.
@@ -70,3 +76,4 @@ gh issue list --repo owner/repo --json number,title --jq '.[] | "\(.number): \(.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+

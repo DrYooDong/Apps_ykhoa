@@ -1,10 +1,7 @@
 ---
 name: docspace-prompt-06-07-ingester
-description: >
-  Kỹ năng chuyên sâu tự động hóa tiếp nhận, phân tích cú pháp và tích hợp toàn diện dữ liệu từ Prompt 06 (Ca mẫu & Ma trận trọng số CDSS)
-  và Prompt 07 (Hồ sơ ca thực chiến SOAP Markdown) vào CliniPortal DocSpace. Kích hoạt khi AI hoặc người dùng cung cấp tệp hoặc nội dung
-  Prompt 06 & 07 từ NotebookLM (ví dụ ND_Prompt 06,07.md), cần nạp nhanh ca bệnh mẫu, từ điển triệu chứng, ma trận CDSS chuyên khoa,
-  ca SOAP và kiểm định tự động 10/10 tiêu chí.
+description: >-
+  Kỹ năng chuyên sâu tự động hóa tiếp nhận, phân tích cú pháp và tích hợp toàn diện dữ liệu từ Prompt 06 (Ca mẫu & Ma trận trọng số CDSS) và Prompt 07 (Hồ sơ ca thực chiến SOAP Markdown) vào CliniPortal DocSpace. Kích hoạt khi AI hoặc người dùng cung cấp tệp hoặc nội dung Prompt 06 & 07 từ NotebookLM (ví dụ ND_Prompt 06,07.md), cần nạp nhanh ca bệnh mẫu, từ điển triệu chứng, ma trận CDSS chuyên khoa, ca SOAP và kiểm định tự động 10/10 tiêu chí.
 ---
 
 # DocSpace Prompt 06 & 07 Ingestion Pipeline Skill (Fast-Track & Fully Autonomous)

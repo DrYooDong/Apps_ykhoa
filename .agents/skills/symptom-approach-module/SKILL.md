@@ -1,9 +1,7 @@
 ---
 name: symptom-approach-module
-description: >
-  Tạo và chỉnh sửa các trang tiếp cận triệu chứng lâm sàng (Symptom Approach Pages) trong
-  phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo trang chẩn đoán phân biệt triệu chứng mới,
-  thiết lập layout 7 bước tiếp cận lâm sàng, hoặc làm việc với thư mục pages/Tiếp cận/2. Triệu chứng/.
+description: >-
+  Tạo và chỉnh sửa các trang tiếp cận triệu chứng lâm sàng (Symptom Approach Pages) trong phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo trang chẩn đoán phân biệt triệu chứng mới, thiết lập layout 7 bước tiếp cận lâm sàng, hoặc làm việc với thư mục pages/Tiếp cận/2. Triệu chứng/.
 ---
 
 # Symptom Approach Module Skill

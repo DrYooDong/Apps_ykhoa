@@ -1,6 +1,7 @@
 ---
 name: qa-agent-squad
-description: Đội ngũ AI chuyên trách rà soát, kiểm định chất lượng, chẩn đoán sự cố và đề xuất hướng xử trí tối ưu cho hệ thống CliniPortal (SVG, KaTeX, CSS Stacking, Dark Mode, SPA Router, JSON Schema).
+description: >-
+  Đội ngũ AI chuyên trách rà soát, kiểm định chất lượng, chẩn đoán sự cố và đề xuất hướng xử trí tối ưu cho hệ thống CliniPortal (SVG, KaTeX, CSS Stacking, Dark Mode, SPA Router, JSON Schema).
 ---
 
 # 🛡️ QA Agent Squad — CliniPortal

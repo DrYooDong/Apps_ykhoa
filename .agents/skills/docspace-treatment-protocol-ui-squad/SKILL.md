@@ -1,6 +1,7 @@
 ---
 name: docspace-treatment-protocol-ui-squad
-description: Đội ngũ AI chuyên trách thiết kế giao diện (UI), tối ưu hóa trải nghiệm lâm sàng (UX), công thái học bác sĩ, bảng 4 cột và chuyển động tương tác cho Phân hệ Phác đồ điều trị (Step 4 Protocol) trong CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện bảng y lệnh, thanh điều hướng, cấu trúc 6 đầu mục, responsive mobile và chuyển động vi mô.
+description: >-
+  Đội ngũ AI chuyên trách thiết kế giao diện (UI), tối ưu hóa trải nghiệm lâm sàng (UX), công thái học bác sĩ, bảng 4 cột và chuyển động tương tác cho Phân hệ Phác đồ điều trị (Step 4 Protocol) trong CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện bảng y lệnh, thanh điều hướng, cấu trúc 6 đầu mục, responsive mobile và chuyển động vi mô.
 ---
 
 # 🩺 DocSpace Treatment Protocol UI/UX Squad

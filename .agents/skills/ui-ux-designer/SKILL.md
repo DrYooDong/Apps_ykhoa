@@ -1,6 +1,7 @@
-﻿---
+---
 name: ui-ux-designer
-description: Quy trình thiết kế UI/UX toàn diện: Phân tích hành trình người dùng y tế, wireframe, thiết lập prototype và kiểm thử khả năng sử dụng (Usability testing).
+description: >-
+  Quy trình thiết kế UI/UX toàn diện: Phân tích hành trình người dùng y tế, wireframe, thiết lập prototype và kiểm thử khả năng sử dụng (Usability testing).
 ---
 
 ## Use this skill when

@@ -1,6 +1,7 @@
 ---
 name: systematic-clinical-debugging
-description: Quy trình chẩn đoán và sửa lỗi hệ thống lâm sàng — vỡ layout mobile, xung đột CSS Variables, lỗi Header/Footer dynamic không load, và kiểm thử tác động dây chuyền qua Graphify.
+description: >-
+  Quy trình chẩn đoán và sửa lỗi hệ thống lâm sàng — vỡ layout mobile, xung đột CSS Variables, lỗi Header/Footer dynamic không load, và kiểm thử tác động dây chuyền qua Graphify.
 ---
 
 # Systematic Clinical Debugging — CliniPortal

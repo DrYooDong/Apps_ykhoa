@@ -1,8 +1,7 @@
 ---
 name: debug-skill-generator
-description: >
-  Meta-Skill tự động tạo 01 Skill sửa lỗi mới trong .agents/skills/ mỗi khi dự án xuất hiện dạng lỗi / sự cố mới.
-  Kích hoạt khi AI hoặc Người dùng vừa khắc phục một lỗi mới và muốn đóng gói quy trình sửa lỗi thành một Skill mới cho tương lai.
+description: >-
+  Meta-Skill tự động tạo 01 Skill sửa lỗi mới trong .agents/skills/ mỗi khi dự án xuất hiện dạng lỗi / sự cố mới. Kích hoạt khi AI hoặc Người dùng vừa khắc phục một lỗi mới và muốn đóng gói quy trình sửa lỗi thành một Skill mới cho tương lai.
 ---
 
 # Debug Skill Generator (Meta-Skill)

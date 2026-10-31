@@ -1,6 +1,7 @@
 ---
 name: docspace-step2-reasoning-squad
-description: Đội ngũ AI chuyên trách Tóm tắt Bệnh án Lâm sàng, Đặt Vấn đề 3 Tầng Ưu tiên (theo trường phái PGS.TS Hoàng Văn Sĩ), Đánh giá Hội tụ Tam giác Dịch tễ học (EpiBoost) và Phân giải Mâu thuẫn Xử trí giữa các bệnh đồng mắc cho Bước 2 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 2, cải tiến thuật toán đặt vấn đề hoặc hoàn thiện tóm tắt EMR.
+description: >-
+  Đội ngũ AI chuyên trách Tóm tắt Bệnh án Lâm sàng, Đặt Vấn đề 3 Tầng Ưu tiên (theo trường phái PGS.TS Hoàng Văn Sĩ), Đánh giá Hội tụ Tam giác Dịch tễ học (EpiBoost) và Phân giải Mâu thuẫn Xử trí giữa các bệnh đồng mắc cho Bước 2 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 2, cải tiến thuật toán đặt vấn đề hoặc hoàn thiện tóm tắt EMR.
 ---
 
 # 🧠 DocSpace Step 2 — Problem Statement & Clinical Reasoning Squad

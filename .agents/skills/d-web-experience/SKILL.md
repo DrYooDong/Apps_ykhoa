@@ -1,6 +1,7 @@
-﻿---
+---
 name: d-web-experience
-description: Trải nghiệm không gian 3D Web & Chiều sâu thị giác: Sử dụng CSS 3D Transforms, WebGL/Three.js nhẹ nhàng tạo mô hình giải phẫu và không gian tương tác.
+description: >-
+  Trải nghiệm không gian 3D Web & Chiều sâu thị giác: Sử dụng CSS 3D Transforms, WebGL/Three.js nhẹ nhàng tạo mô hình giải phẫu và không gian tương tác.
 ---
 
 # 3D Web Experience

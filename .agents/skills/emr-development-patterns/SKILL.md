@@ -1,6 +1,7 @@
-﻿---
+---
 name: emr-development-patterns
-description: Quy chuẩn phát triển Hồ sơ Bệnh án Điện tử (EMR/EHR): Cấu trúc SOAP, ghi nhận khám bệnh phân tầng, hiển thị khoảng tham chiếu xét nghiệm cảnh báo đỏ (Panic values), truy vết kiểm toán (Audit trail).
+description: >-
+  Quy chuẩn phát triển Hồ sơ Bệnh án Điện tử (EMR/EHR): Cấu trúc SOAP, ghi nhận khám bệnh phân tầng, hiển thị khoảng tham chiếu xét nghiệm cảnh báo đỏ (Panic values), truy vết kiểm toán (Audit trail).
 ---
 
 # Healthcare EMR Development Patterns

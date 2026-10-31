@@ -1,3 +1,9 @@
+---
+name: github-workflow-automation
+description: >-
+  Patterns for automating GitHub workflows with AI assistance, CI/CD pipelines, and DevOps best practices.
+---
+
 # 🔧 GitHub Workflow Automation
 
 > Patterns for automating GitHub workflows with AI assistance, inspired by [Gemini CLI](https://github.com/google-gemini/gemini-cli) and modern DevOps practices.
@@ -844,3 +850,4 @@ Dockerfile @org/devops-team
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+

@@ -1,6 +1,7 @@
-﻿---
+---
 name: search-first-research
-description: Nguyên tắc nghiên cứu trước khi viết mã (Search First - Research Before You Code): Kiểm tra kho mã nguồn và giải pháp sẵn có trong dự án trước khi viết code mới.
+description: >-
+  Nguyên tắc nghiên cứu trước khi viết mã (Search First - Research Before You Code): Kiểm tra kho mã nguồn và giải pháp sẵn có trong dự án trước khi viết code mới.
 ---
 
 # /search-first â€” Research Before You Code

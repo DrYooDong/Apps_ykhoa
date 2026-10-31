@@ -1,9 +1,7 @@
 ---
 name: cliniportal-architecture
-description: >
-  Hiểu và làm việc với kiến trúc tổng thể của CliniPortal — hệ sinh thái web y khoa
-  tĩnh (pure HTML/CSS/JS). Kích hoạt khi AI cần: tạo trang mới, sửa layout, thêm
-  CSS/JS, cấu hình đường dẫn, hoặc làm bất kỳ tác vụ nào trong project CliniPortal.
+description: >-
+  Hiểu và làm việc với kiến trúc tổng thể của CliniPortal — hệ sinh thái web y khoa tĩnh (pure HTML/CSS/JS). Kích hoạt khi AI cần: tạo trang mới, sửa layout, thêm CSS/JS, cấu hình đường dẫn, hoặc làm bất kỳ tác vụ nào trong project CliniPortal.
 ---
 
 # CliniPortal Architecture & Knowledge Graph Skill

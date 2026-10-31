@@ -1,6 +1,7 @@
 ---
 name: medical-privacy-fl
-description: Kỹ năng tư vấn, thiết kế và triển khai mô hình AI Y tế Bảo vệ Quyền Riêng tư (Privacy-Preserving Healthcare AI), Federated Learning, MAML Meta-Learning cá nhân hóa, Differential Privacy (DP-RDP) và lượng thể hóa gradient nén dữ liệu cho CliniPortal.
+description: >-
+  Kỹ năng tư vấn, thiết kế và triển khai mô hình AI Y tế Bảo vệ Quyền Riêng tư (Privacy-Preserving Healthcare AI), Federated Learning, MAML Meta-Learning cá nhân hóa, Differential Privacy (DP-RDP) và lượng thể hóa gradient nén dữ liệu cho CliniPortal.
 ---
 
 # Medical Privacy & Federated Learning Skill — CliniPortal

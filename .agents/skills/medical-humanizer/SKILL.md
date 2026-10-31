@@ -1,6 +1,7 @@
 ---
 name: medical-humanizer
-description: Tự động phát hiện và loại bỏ các dấu vết văn bản do AI tạo ra (AI-isms, LLM artifacts) khỏi bài viết Y khoa, chuẩn hóa văn phong lâm sàng súc tích, tự nhiên, chính xác và trung thực cho CliniPortal.
+description: >-
+  Tự động phát hiện và loại bỏ các dấu vết văn bản do AI tạo ra (AI-isms, LLM artifacts) khỏi bài viết Y khoa, chuẩn hóa văn phong lâm sàng súc tích, tự nhiên, chính xác và trung thực cho CliniPortal.
 ---
 
 # Medical Humanizer & Clinical Voice Standardizer

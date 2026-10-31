@@ -1,6 +1,7 @@
-﻿---
+---
 name: api-sdk-codegen
-description: Sinh mã tự động SDK và thư viện wrapper: Tạo client code chuẩn TypeScript/JavaScript kết nối các dịch vụ dữ liệu y tế.
+description: >-
+  Sinh mã tự động SDK và thư viện wrapper: Tạo client code chuẩn TypeScript/JavaScript kết nối các dịch vụ dữ liệu y tế.
 ---
 
 # API SDK & Codegen Skill

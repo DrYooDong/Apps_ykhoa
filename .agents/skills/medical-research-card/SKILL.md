@@ -1,9 +1,7 @@
 ---
 name: medical-research-card
-description: >
-  Tạo Thẻ Tóm Tắt & Giải Phẫu Nghiên Cứu Y Khoa Chuyên Sâu 16 Mục (Nature-Grade Medical Paper Card)
-  dành cho các Thử nghiệm Lâm sàng Trọng điểm (Landmark RCTs), Nghiên cứu Bước ngoặt và Hướng dẫn Điều trị
-  trong CliniPortal. Kết hợp chuẩn mực học thuật Nature với hệ thống giao diện Clinical Dashboard Astro MDX Native.
+description: >-
+  Tạo Thẻ Tóm Tắt & Giải Phẫu Nghiên Cứu Y Khoa Chuyên Sâu 16 Mục (Nature-Grade Medical Paper Card) dành cho các Thử nghiệm Lâm sàng Trọng điểm (Landmark RCTs), Nghiên cứu Bước ngoặt và Hướng dẫn Điều trị trong CliniPortal. Kết hợp chuẩn mực học thuật Nature với hệ thống giao diện Clinical Dashboard Astro MDX Native.
 ---
 
 # 🗂️ Medical Research Card — 16 Sections (Nature & EBM Standard)

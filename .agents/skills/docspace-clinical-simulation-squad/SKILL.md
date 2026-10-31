@@ -1,6 +1,7 @@
 ---
 name: docspace-clinical-simulation-squad
-description: Đội ngũ AI chuyên trách thiết kế kịch bản ca bệnh giả lập (Clinical Simulation), xây dựng chế độ thử thách ẩn chẩn đoán (Blind Case Mode), tham số hóa tình huống đa nhánh (Parametric Case Branching), chuẩn hóa bảng kiểm chấm điểm thi lâm sàng OSCE ngẫu nhiên, đúc kết hạt ngọc lâm sàng (Clinical Pearls & Pitfalls) và tối ưu hóa xuất báo cáo bệnh án điện tử (EMR Export) cho CliniPortal DocSpace. Kích hoạt khi cần phát triển tính năng đào tạo y khoa, tạo kịch bản luyện thi lâm sàng đa dạng, hoặc chuẩn hóa tài liệu xuất bản án.
+description: >-
+  Đội ngũ AI chuyên trách thiết kế kịch bản ca bệnh giả lập (Clinical Simulation), xây dựng chế độ thử thách ẩn chẩn đoán (Blind Case Mode), tham số hóa tình huống đa nhánh (Parametric Case Branching), chuẩn hóa bảng kiểm chấm điểm thi lâm sàng OSCE ngẫu nhiên, đúc kết hạt ngọc lâm sàng (Clinical Pearls & Pitfalls) và tối ưu hóa xuất báo cáo bệnh án điện tử (EMR Export) cho CliniPortal DocSpace. Kích hoạt khi cần phát triển tính năng đào tạo y khoa, tạo kịch bản luyện thi lâm sàng đa dạng, hoặc chuẩn hóa tài liệu xuất bản án.
 ---
 
 # 🎓 DocSpace Clinical Simulation & Medical Education Squad

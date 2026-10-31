@@ -1,6 +1,7 @@
 ---
 name: find-bugs
-description: Quy trình kiểm tra rà soát lỗi tĩnh (Static Bug Finder) và chẩn đoán sự cố giao diện, lỗi JS runtime hoặc hỏng liên kết trong CliniPortal.
+description: >-
+  Quy trình kiểm tra rà soát lỗi tĩnh (Static Bug Finder) và chẩn đoán sự cố giao diện, lỗi JS runtime hoặc hỏng liên kết trong CliniPortal.
 ---
 
 # Static Bug Finder & Diagnostic Skill

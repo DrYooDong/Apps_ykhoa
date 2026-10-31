@@ -1,10 +1,7 @@
 ---
 name: medical-scientific-figure
-description: >
-  Thiết kế & Tạo Đồ Họa Xuất Bản Khoa Học & Sơ Đồ Cơ Chế Y Học Đỉnh Cao (Nature-Standard Medical Scientific Figures & Graphical Abstracts).
-  Hấp thu tri thức từ nature-skills (nature-figure): Kiến trúc Đa Bảng (Multi-panel Evidence Architecture), Hero Panel,
-  Bảng Màu Kiềm Chế Chuẩn Xuất Bản (Restrained Accessible Palette), Kiểm Toán Chống Va Chạm Nhãn (Collision Audit),
-  Sơ Đồ PRISMA Flowchart và Đồ Họa Vector SVG Y Học 100% Dark Mode.
+description: >-
+  Thiết kế & Tạo Đồ Họa Xuất Bản Khoa Học & Sơ Đồ Cơ Chế Y Học Đỉnh Cao (Nature-Standard Medical Scientific Figures & Graphical Abstracts). Hấp thu tri thức từ nature-skills (nature-figure): Kiến trúc Đa Bảng (Multi-panel Evidence Architecture), Hero Panel, Bảng Màu Kiềm Chế Chuẩn Xuất Bản (Restrained Accessible Palette), Kiểm Toán Chống Va Chạm Nhãn (Collision Audit), Sơ Đồ PRISMA Flowchart và Đồ Họa Vector SVG Y Học 100% Dark Mode.
 ---
 
 # 🎨 Nature Medical Scientific Figure & Graphical Abstract Studio

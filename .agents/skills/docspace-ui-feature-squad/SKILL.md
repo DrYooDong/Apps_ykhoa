@@ -1,6 +1,7 @@
 ---
 name: docspace-ui-feature-squad
-description: Đội ngũ AI chuyên trách thiết kế, tối ưu hóa giao diện người dùng (UI/UX), tinh chỉnh chuyển động vi mô (Micro-motion) và phát triển/tái cấu trúc tính năng trên nền React 19 + TailwindCSS v4 cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần thiết kế màn hình mới, cải tiến UI/UX, chỉnh sửa/thêm tính năng hoặc refactor các components trong src/content/docspace/.
+description: >-
+  Đội ngũ AI chuyên trách thiết kế, tối ưu hóa giao diện người dùng (UI/UX), tinh chỉnh chuyển động vi mô (Micro-motion) và phát triển/tái cấu trúc tính năng trên nền React 19 + TailwindCSS v4 cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần thiết kế màn hình mới, cải tiến UI/UX, chỉnh sửa/thêm tính năng hoặc refactor các components trong src/content/docspace/.
 ---
 
 # 🩺 DocSpace UI/UX & Feature Engineering Squad

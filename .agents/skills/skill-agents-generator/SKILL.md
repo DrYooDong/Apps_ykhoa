@@ -1,6 +1,7 @@
-﻿---
+---
 name: skill-agents-generator
-description: Meta-Generator sinh tự động cấu hình AGENTS.md và Skills: Khởi tạo bộ rules và tài liệu kỹ thuật chuẩn theo stack công nghệ thực tế của dự án.
+description: >-
+  Meta-Generator sinh tự động cấu hình AGENTS.md và Skills: Khởi tạo bộ rules và tài liệu kỹ thuật chuẩn theo stack công nghệ thực tế của dự án.
 ---
 
 # Skill: agents-generator

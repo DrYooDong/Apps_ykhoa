@@ -1,10 +1,7 @@
 ---
 name: pharmacology-module
-description: >
-  Tạo và chỉnh sửa các trang dược lý (Pharmacology) trong phân hệ Dược lý của CliniPortal.
-  Kích hoạt khi AI cần: tạo trang dược lý theo triệu chứng, công cụ tra cứu thuốc,
-  cập nhật phác đồ thuốc, thêm thông tin thuốc mới, hoặc làm việc với
-  src/content/pharmacology/.
+description: >-
+  Tạo và chỉnh sửa các trang dược lý (Pharmacology) trong phân hệ Dược lý của CliniPortal. Kích hoạt khi AI cần: tạo trang dược lý theo triệu chứng, công cụ tra cứu thuốc, cập nhật phác đồ thuốc, thêm thông tin thuốc mới, hoặc làm việc với src/content/pharmacology/.
 ---
 
 # Pharmacology Module Skill

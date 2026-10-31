@@ -1,6 +1,7 @@
 ---
 name: docspace-step4-protocol-squad
-description: Đội ngũ AI chuyên trách Phác đồ Điều trị Toàn diện, Bảng 4 Cột Chi tiết từng ngày, 6 Đầu mục Lâm sàng chuẩn hóa, An toàn Kê đơn (DDI & eGFR), 3 Nhóm Cảnh báo ranh giới, Tư vấn Kho TV và Liên kết 18 Kho Tri thức cho Bước 4 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 4, mở rộng dữ liệu phác đồ bệnh học hoặc chuẩn hóa y lệnh thuốc.
+description: >-
+  Đội ngũ AI chuyên trách Phác đồ Điều trị Toàn diện, Bảng 4 Cột Chi tiết từng ngày, 6 Đầu mục Lâm sàng chuẩn hóa, An toàn Kê đơn (DDI & eGFR), 3 Nhóm Cảnh báo ranh giới, Tư vấn Kho TV và Liên kết 18 Kho Tri thức cho Bước 4 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 4, mở rộng dữ liệu phác đồ bệnh học hoặc chuẩn hóa y lệnh thuốc.
 ---
 
 # 💊 DocSpace Step 4 — Treatment Protocol & Order Execution Squad

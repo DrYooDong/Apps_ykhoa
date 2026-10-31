@@ -1,6 +1,7 @@
-﻿---
+---
 name: free-tool-strategy
-description: Chiến lược phát triển công cụ tiện ích y tế (Engineering as Marketing): Định hướng xây dựng các máy tính lâm sàng (Clinical Calculators) thu hút người dùng.
+description: >-
+  Chiến lược phát triển công cụ tiện ích y tế (Engineering as Marketing): Định hướng xây dựng các máy tính lâm sàng (Clinical Calculators) thu hút người dùng.
 ---
 
 # Free Tool Strategy (Engineering as Marketing)

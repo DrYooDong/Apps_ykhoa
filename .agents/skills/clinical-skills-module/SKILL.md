@@ -1,10 +1,7 @@
 ---
 name: clinical-skills-module
-description: >
-  Tạo và chỉnh sửa các trang kỹ năng lâm sàng (OSCE & Bedside Skills) trong phân hệ
-  Kỹ năng của CliniPortal. Kích hoạt khi AI cần: tạo trang hướng dẫn kỹ năng mới,
-  bài đọc kết quả cận lâm sàng, trang kỹ năng hồi sức, hoặc làm việc với
-  pages/Kỹ năng/.
+description: >-
+  Tạo và chỉnh sửa các trang kỹ năng lâm sàng (OSCE & Bedside Skills) trong phân hệ Kỹ năng của CliniPortal. Kích hoạt khi AI cần: tạo trang hướng dẫn kỹ năng mới, bài đọc kết quả cận lâm sàng, trang kỹ năng hồi sức, hoặc làm việc với pages/Kỹ năng/.
 ---
 
 # Clinical Skills Module Skill

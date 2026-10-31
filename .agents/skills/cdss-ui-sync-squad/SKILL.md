@@ -1,10 +1,7 @@
 ---
 name: cdss-ui-sync-squad
-description: >
-  Đội ngũ AI chuyên trách bảo đảm tính đồng bộ UI/UX, Design Tokens, Dark Mode, Shell Navigation
-  và trải nghiệm lâm sàng thống nhất trên toàn bộ các web CDSS độc lập trong CliniPortal DocSpace.
-  Kích hoạt khi cần: rà soát giao diện CDSS, sửa lỗi lệch màu/lệch font, cập nhật header/navbar dùng chung,
-  kiểm tra độ tương phản WCAG 2.1 AA/AAA cho y tế, hoặc tối ưu hóa hiển thị responsive mobile/tablet/desktop.
+description: >-
+  Đội ngũ AI chuyên trách bảo đảm tính đồng bộ UI/UX, Design Tokens, Dark Mode, Shell Navigation và trải nghiệm lâm sàng thống nhất trên toàn bộ các web CDSS độc lập trong CliniPortal DocSpace. Kích hoạt khi cần: rà soát giao diện CDSS, sửa lỗi lệch màu/lệch font, cập nhật header/navbar dùng chung, kiểm tra độ tương phản WCAG 2.1 AA/AAA cho y tế, hoặc tối ưu hóa hiển thị responsive mobile/tablet/desktop.
 ---
 
 # CDSS UI Sync Squad Skill

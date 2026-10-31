@@ -1,6 +1,7 @@
 ---
 name: clinical-data-visualization
-description: Hướng dẫn thiết kế và render biểu đồ, thang điểm, đồ thị trực quan y khoa bằng SVG thuần và Canvas 2D API không sử dụng thư viện ngoài trong CliniPortal.
+description: >-
+  Hướng dẫn thiết kế và render biểu đồ, thang điểm, đồ thị trực quan y khoa bằng SVG thuần và Canvas 2D API không sử dụng thư viện ngoài trong CliniPortal.
 ---
 
 # Clinical Data Visualization — CliniPortal

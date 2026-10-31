@@ -1,6 +1,7 @@
 ---
 name: medical-seo-structure
-description: Kỹ năng chuẩn hóa SEO Y khoa, thẻ Meta Semantic, tiêu đề chuẩn mực, dữ liệu có cấu trúc (Schema.org MedicalWebPage) cho CliniPortal.
+description: >-
+  Kỹ năng chuẩn hóa SEO Y khoa, thẻ Meta Semantic, tiêu đề chuẩn mực, dữ liệu có cấu trúc (Schema.org MedicalWebPage) cho CliniPortal.
 ---
 
 # Medical SEO & Semantic Structure — CliniPortal

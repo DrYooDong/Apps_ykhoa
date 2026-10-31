@@ -1,6 +1,7 @@
-﻿---
+---
 name: agent-tool-builder
-description: Hướng dẫn thiết kế custom tools, JSON Schema, error handling và mô tả tool chuẩn xác cho LLM/AI Agent. Kích hoạt khi cần tạo script công cụ hoặc MCP tools mới.
+description: >-
+  Hướng dẫn thiết kế custom tools, JSON Schema, error handling và mô tả tool chuẩn xác cho LLM/AI Agent. Kích hoạt khi cần tạo script công cụ hoặc MCP tools mới.
 ---
 
 # Agent Tool Builder

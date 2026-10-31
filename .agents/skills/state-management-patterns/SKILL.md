@@ -1,6 +1,7 @@
-﻿---
+---
 name: state-management-patterns
-description: Mẫu thiết kế quản lý trạng thái, lưu trữ bền vững (Atomic JSON/localStorage), xử lý crash-recovery và đồng bộ dữ liệu người dùng không phụ thuộc framework.
+description: >-
+  Mẫu thiết kế quản lý trạng thái, lưu trữ bền vững (Atomic JSON/localStorage), xử lý crash-recovery và đồng bộ dữ liệu người dùng không phụ thuộc framework.
 ---
 
 # State Management Patterns Skill

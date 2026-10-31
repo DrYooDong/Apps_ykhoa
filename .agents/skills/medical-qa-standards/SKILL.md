@@ -1,8 +1,7 @@
 ---
 name: medical-qa-standards
-description: >
-  Kỹ năng kiểm tra chất lượng (QA), đánh giá tiêu chuẩn mã nguồn, kiểm tra liên kết tương đối,
-  toàn vẹn thẻ HTML, dark mode và kiểm thử y khoa trước khi hoàn tất hoặc commit bất kỳ tác vụ nào trong CliniPortal.
+description: >-
+  Kỹ năng kiểm tra chất lượng (QA), đánh giá tiêu chuẩn mã nguồn, kiểm tra liên kết tương đối, toàn vẹn thẻ HTML, dark mode và kiểm thử y khoa trước khi hoàn tất hoặc commit bất kỳ tác vụ nào trong CliniPortal.
 ---
 
 # Medical QA Standards & Audit Skill

@@ -1,3 +1,9 @@
+---
+name: multi-agent-architecture-patterns
+description: >-
+  Architectural patterns for multi-agent systems, context isolation, task distribution, and agent coordination.
+---
+
 # Multi-Agent Architecture Patterns
 
 Multi-agent architectures distribute work across multiple language model instances, each with its own context window. When designed well, this distribution enables capabilities beyond single-agent limits. When designed poorly, it introduces coordination overhead that negates benefits. The critical insight is that sub-agents exist primarily to isolate context, not to anthropomorphize role division.
@@ -252,3 +258,4 @@ External resources:
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+

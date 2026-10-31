@@ -1,8 +1,7 @@
 ---
 name: project-error-audit
-description: >
-  Skill kiểm tra toàn diện rủi ro & lỗi kỹ thuật trước khi kết thúc bất kỳ dự án / task nào trong CliniPortal.
-  Kích hoạt khi AI chuẩn bị hoàn thành task, bàn giao tính năng mới, hoặc khi người dùng yêu cầu kiểm tra lỗi trước khi commit.
+description: >-
+  Skill kiểm tra toàn diện rủi ro & lỗi kỹ thuật trước khi kết thúc bất kỳ dự án / task nào trong CliniPortal. Kích hoạt khi AI chuẩn bị hoàn thành task, bàn giao tính năng mới, hoặc khi người dùng yêu cầu kiểm tra lỗi trước khi commit.
 ---
 
 # Project Error Audit & Pre-Completion Verification Skill

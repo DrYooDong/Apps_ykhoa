@@ -1,6 +1,7 @@
 ---
 name: code-reviewer
-description: Quy trình tự động review mã nguồn HTML/CSS/JS y khoa, kiểm tra tính tuân thủ quy tắc workspace, tính toàn vẹn thẻ và tiêu chuẩn EBM. Kích hoạt khi cần review mã nguồn trước khi bàn giao.
+description: >-
+  Quy trình tự động review mã nguồn HTML/CSS/JS y khoa, kiểm tra tính tuân thủ quy tắc workspace, tính toàn vẹn thẻ và tiêu chuẩn EBM. Kích hoạt khi cần review mã nguồn trước khi bàn giao.
 ---
 
 # Code Reviewer & Compliance Checker

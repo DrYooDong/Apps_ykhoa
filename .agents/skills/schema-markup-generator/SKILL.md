@@ -1,15 +1,7 @@
 ---
 name: schema-markup-generator
-description: "Generate and implement JSON-LD structured data for web apps, blogs, FAQs, and SaaS sites. Supports WebSite, SoftwareApplication, BlogPosting, FAQPage, HowTo, and more."
-category: seo
-risk: safe
-source: self
-source_type: self
-date_added: "2026-05-31"
-author: Whoisabhishekadhikari
-tags: [seo, schema, json-ld, structured-data, rich-results, nextjs, technical-seo]
-tools: [claude, cursor, gemini, claude-code]
-version: 1.0.0
+description: >-
+  Generate and implement JSON-LD structured data for web apps, blogs, FAQs, and SaaS sites. Supports WebSite, SoftwareApplication, BlogPosting, FAQPage, HowTo, and more.
 ---
 
 # Schema Markup Generator Skill

@@ -1,6 +1,7 @@
 ---
 name: antigravity-ui-motion-design
-description: Kỹ nghệ chuyển động & không gian Antigravity: Hiệu ứng glassmorphism, 3D CSS transforms, Spring physics, Pulse Shimmer, và Micro-animations 60fps mượt mà trên web y khoa.
+description: >-
+  Kỹ nghệ chuyển động & không gian Antigravity: Hiệu ứng glassmorphism, 3D CSS transforms, Spring physics, Pulse Shimmer, và Micro-animations 60fps mượt mà trên web y khoa.
 ---
 
 # 🚀 Antigravity UI & Motion Engineering Expert

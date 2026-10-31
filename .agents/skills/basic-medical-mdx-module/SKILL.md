@@ -1,9 +1,7 @@
 ---
 name: basic-medical-mdx-module
-description: >
-  Bộ quy chuẩn và quy trình tổng lực soạn thảo, biên tập và kiểm định các bài học Y khoa cơ sở (.mdx)
-  trong src/content/basic-medical/ (Sinh lý học, Hóa sinh y học, Dịch tễ học, Ca bệnh Sinh lý bệnh)
-  theo chuẩn Astro MDX Native, Design Tokens CliniPortal 2.0 và Y học chứng cứ EBM 2026.
+description: >-
+  Bộ quy chuẩn và quy trình tổng lực soạn thảo, biên tập và kiểm định các bài học Y khoa cơ sở (.mdx) trong src/content/basic-medical/ (Sinh lý học, Hóa sinh y học, Dịch tễ học, Ca bệnh Sinh lý bệnh) theo chuẩn Astro MDX Native, Design Tokens CliniPortal 2.0 và Y học chứng cứ EBM 2026.
 ---
 
 # 🧬 Basic Medical MDX Module Master Skill (Cơ Sở Y Khoa — MDX Native)

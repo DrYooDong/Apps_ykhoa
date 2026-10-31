@@ -1,6 +1,7 @@
 ---
 name: debugging-toolkit-smart-debug
-description: Bộ công cụ AI-assisted debugging chuyên sâu: triage lỗi, phân tích stack trace, giả thuyết nguyên nhân gốc (RCA), logpoints và fix validation.
+description: >-
+  Bộ công cụ AI-assisted debugging chuyên sâu: triage lỗi, phân tích stack trace, giả thuyết nguyên nhân gốc (RCA), logpoints và fix validation.
 ---
 
 ## Use this skill when

@@ -1,3 +1,9 @@
+---
+name: frontend-architecture-portable-module-based
+description: >-
+  Portable, framework-agnostic frontend architecture patterns, module boundaries, and state isolation.
+---
+
 # Frontend Architecture (portable, module-based)
 ## When to Use
 
@@ -405,3 +411,4 @@ This skill follows the Anthropic `SKILL.md` format and is portable across agents
 - Use this skill only when the task clearly matches its upstream source and local project context.
 - Verify commands, generated code, dependencies, credentials, and external service behavior before applying changes.
 - Do not treat examples as a substitute for environment-specific tests, security review, or user approval for destructive or costly actions.
+

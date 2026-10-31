@@ -1,6 +1,7 @@
 ---
 name: astro-web-framework
-description: Build high-performance content-driven websites, blogs, documentation, and web apps with Astro (.astro components, Content Collections, Islands architecture, and MDX).
+description: >-
+  Build high-performance content-driven websites, blogs, documentation, and web apps with Astro (.astro components, Content Collections, Islands architecture, and MDX).
 ---
 
 # Astro Web Framework

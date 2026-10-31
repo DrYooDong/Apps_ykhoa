@@ -1,6 +1,7 @@
-﻿---
+---
 name: agent-memory-checkpoint
-description: Quy trình thiết lập checkpoint, session memory bank và đồng bộ hóa kiến thức dự án dài hạn cho AI agents. Kích hoạt khi cần lưu checkpoint tiến trình làm việc hoặc khôi phục session.
+description: >-
+  Quy trình thiết lập checkpoint, session memory bank và đồng bộ hóa kiến thức dự án dài hạn cho AI agents. Kích hoạt khi cần lưu checkpoint tiến trình làm việc hoặc khôi phục session.
 ---
 
 # Agent Memory Skill

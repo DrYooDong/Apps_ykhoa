@@ -152,17 +152,31 @@
 .article-body pre:has(code:not([class*="language-js"]):not([class*="language-html"]):not([class*="language-css"])) {
   margin: 0;
   padding: 1.35rem 1.6rem;
-  background: #f8fafc;
+  background-color: var(--color-surface-offset, #f8fafc);
+  background-image: radial-gradient(rgba(2, 132, 199, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
   color: var(--color-text, #1e293b);
-  font-family: var(--font-mono, 'JetBrains Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace);
-  font-size: 0.88rem;
-  line-height: 1.72;
-  letter-spacing: 0.015em;
+  font-family: var(--font-mono, 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'SF Mono', Consolas, 'Courier New', monospace);
+  font-size: 0.85rem;
+  line-height: 1.2 !important;
+  letter-spacing: 0;
+  font-feature-settings: "liga" 0;
+  font-variant-ligatures: none;
   overflow-x: auto;
   white-space: pre;
-  tab-size: 4;
+  tab-size: 2;
   -webkit-overflow-scrolling: touch;
   border-radius: 0;
+}
+
+.mdx-diagram-canvas code,
+.flowchart-canvas code,
+.blueprint-canvas code {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  white-space: pre !important;
 }
 
 [data-theme="dark"] .mdx-diagram-canvas,
@@ -170,7 +184,8 @@
 [data-theme="dark"] .blueprint-canvas,
 [data-theme="dark"] .article-body pre.ascii-flowchart,
 [data-theme="dark"] .article-body pre:has(code:not([class*="language-js"]):not([class*="language-html"]):not([class*="language-css"])) {
-  background: #090d16;
+  background-color: #090d16;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px);
   color: #e2e8f0;
 }
 
@@ -629,4 +644,43 @@
   border-radius: 50%;
   flex-shrink: 0;
   display: inline-block;
+}
+
+/* --- 9. FLOWCHART SVG CONTAINER COMPATIBILITY (360+ MDX ARTICLES) --- */
+.flowchart-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.5rem 1.25rem;
+  background: var(--color-surface, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 14px 14px;
+}
+
+[data-theme="dark"] .flowchart-svg-container {
+  background: #0b1120;
+}
+
+.flowchart-svg-container svg,
+.flowchart-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.flowchart-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .flowchart-title {
+  color: #f1f5f9;
 }

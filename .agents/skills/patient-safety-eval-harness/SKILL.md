@@ -1,6 +1,7 @@
-﻿---
+---
 name: patient-safety-eval-harness
-description: Bộ khung kiểm thử an toàn bệnh nhân (Patient Safety Evaluation Harness): 5 cổng kiểm định nghiêm ngặt cho thuật toán y khoa, chống sai lệch đơn vị đo (mg/dL sang mmol/L) và kiểm soát tương tác thuốc.
+description: >-
+  Bộ khung kiểm thử an toàn bệnh nhân (Patient Safety Evaluation Harness): 5 cổng kiểm định nghiêm ngặt cho thuật toán y khoa, chống sai lệch đơn vị đo (mg/dL sang mmol/L) và kiểm soát tương tác thuốc.
 ---
 
 # Healthcare Eval Harness â€” Patient Safety Verification

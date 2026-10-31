@@ -1,6 +1,7 @@
 ---
 name: core-components
-description: Thư viện linh kiện UI cốt lõi (Vanilla HTML5 & CSS3) của CliniPortal: Buttons, Cards, Superblock Accordions, Drawers, Skeletons, Form Controls, Badges, và Focus States. Kích hoạt khi cần dựng trang mới hoặc tái sử dụng các linh kiện giao diện chuẩn.
+description: >-
+  Thư viện linh kiện UI cốt lõi (Vanilla HTML5 & CSS3) của CliniPortal: Buttons, Cards, Superblock Accordions, Drawers, Skeletons, Form Controls, Badges, và Focus States. Kích hoạt khi cần dựng trang mới hoặc tái sử dụng các linh kiện giao diện chuẩn.
 ---
 
 # 🏛️ CliniPortal Core Component Library (Vanilla HTML5 & Modern CSS3)

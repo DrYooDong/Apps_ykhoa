@@ -625,22 +625,130 @@
 
 .mdx-diagram-canvas {
   margin: 0 !important;
-  padding: 1.25rem 1.5rem !important;
-  background: var(--color-bg, #f8fafc) !important;
+  padding: 1.35rem 1.6rem !important;
+  background-color: var(--color-surface-offset, #f8fafc) !important;
+  background-image: radial-gradient(rgba(2, 132, 199, 0.1) 1px, transparent 1px) !important;
+  background-size: 16px 16px !important;
   border: none !important;
-  border-radius: 0 0 12px 12px !important;
+  border-radius: 0 0 14px 14px !important;
   overflow-x: auto !important;
   -webkit-overflow-scrolling: touch !important;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace !important;
-  font-size: 0.88rem !important;
-  line-height: 1.55 !important;
-  color: var(--color-text, #334155) !important;
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'SF Mono', Consolas, 'Courier New', monospace !important;
+  font-size: 0.85rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  font-feature-settings: "liga" 0 !important;
+  font-variant-ligatures: none !important;
+  color: var(--color-text, #1e293b) !important;
+  white-space: pre !important;
+  tab-size: 2 !important;
+}
+
+.mdx-diagram-canvas code {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
   white-space: pre !important;
 }
 
 [data-theme="dark"] .mdx-diagram-canvas {
-  background: #090d16 !important;
-  color: #cbd5e1 !important;
+  background-color: #090d16 !important;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px) !important;
+  color: #e2e8f0 !important;
+}
+
+/* ============================================================
+   CLINIPORTAL FLOWCHART & SVG CONTAINER SYSTEM
+   Tương thích 100% với 360+ bài học MDX và Editorial Flowchart SVG
+   ============================================================ */
+.flowchart-card {
+  position: relative;
+  margin: 1.75rem 0;
+  background: var(--color-surface, #ffffff);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.flowchart-card:hover {
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 8px 30px -4px rgba(2, 132, 199, 0.12);
+}
+
+[data-theme="dark"] .flowchart-card {
+  background: #0f172a;
+  border-color: #334155;
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .flowchart-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 8px 30px -4px rgba(56, 189, 248, 0.15);
+}
+
+.flowchart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--color-surface-2, #f8fafc);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .flowchart-header {
+  background: #1e293b;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.flowchart-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+[data-theme="dark"] .flowchart-title {
+  color: #f1f5f9;
+}
+
+.flowchart-title i {
+  color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .flowchart-title i {
+  color: #38bdf8;
+}
+
+.flowchart-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.5rem 1.25rem;
+  background: var(--color-surface, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 14px 14px;
+}
+
+[data-theme="dark"] .flowchart-svg-container {
+  background: #0b1120;
+}
+
+.flowchart-svg-container svg,
+.flowchart-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 /* SYNTAX HIGHLIGHTING CHO CLINICAL DIAGRAMS */

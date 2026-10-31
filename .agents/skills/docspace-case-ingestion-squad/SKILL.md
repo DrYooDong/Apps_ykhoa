@@ -1,6 +1,7 @@
 ---
 name: docspace-case-ingestion-squad
-description: Đội ngũ AI chuyên trách tiếp nhận y văn, khai thác Google NotebookLM với bộ Prompt Master (Prompt 00-08), tự động hóa bóc tách dữ liệu ca bệnh SOAP và nạp CSDL suy luận CDSS có trọng số cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần nạp ca bệnh mới, xử lý file markdown xuất từ NotebookLM, hoặc mở rộng CSDL bệnh học.
+description: >-
+  Đội ngũ AI chuyên trách tiếp nhận y văn, khai thác Google NotebookLM với bộ Prompt Master (Prompt 00-08), tự động hóa bóc tách dữ liệu ca bệnh SOAP và nạp CSDL suy luận CDSS có trọng số cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần nạp ca bệnh mới, xử lý file markdown xuất từ NotebookLM, hoặc mở rộng CSDL bệnh học.
 ---
 
 # 🤖 DocSpace Case Ingestion & Clinical Prompt Squad

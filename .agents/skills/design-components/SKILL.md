@@ -1,6 +1,7 @@
 ---
 name: design-components
-description: Quy chuẩn kích thước, tỷ lệ và ma trận 7 trạng thái linh kiện giao diện y khoa (Buttons, Badges, Chips, Modals, Superblock Accordions, Drawers, Skeletons, Bento Cards) với tỷ lệ padding/font chuẩn Awwwards và WCAG AAA.
+description: >-
+  Quy chuẩn kích thước, tỷ lệ và ma trận 7 trạng thái linh kiện giao diện y khoa (Buttons, Badges, Chips, Modals, Superblock Accordions, Drawers, Skeletons, Bento Cards) với tỷ lệ padding/font chuẩn Awwwards và WCAG AAA.
 ---
 
 # 🧩 Master Design Components Specification v2.0

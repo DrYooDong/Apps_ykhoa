@@ -1,6 +1,7 @@
-﻿---
+---
 name: brand-guidelines
-description: Quy chuẩn bản sắc thương hiệu và tiếng nói sản phẩm (Brand Voice): Phân tầng văn phong giao diện (Plain Speech cho nút/lỗi, Brand Voice cho Empty states).
+description: >-
+  Quy chuẩn bản sắc thương hiệu và tiếng nói sản phẩm (Brand Voice): Phân tầng văn phong giao diện (Plain Speech cho nút/lỗi, Brand Voice cho Empty states).
 ---
 
 # Brand Guidelines

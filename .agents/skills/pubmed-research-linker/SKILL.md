@@ -1,6 +1,7 @@
 ---
 name: pubmed-research-linker
-description: Kỹ năng tích hợp tra cứu y văn, trích dẫn tài liệu tham khảo PubMed REST API (E-utilities), DOI, PMID cho bài viết y học chứng cứ trong CliniPortal.
+description: >-
+  Kỹ năng tích hợp tra cứu y văn, trích dẫn tài liệu tham khảo PubMed REST API (E-utilities), DOI, PMID cho bài viết y học chứng cứ trong CliniPortal.
 ---
 
 # PubMed Research Linker — CliniPortal

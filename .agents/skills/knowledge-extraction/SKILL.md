@@ -1,6 +1,7 @@
-﻿---
+---
 name: knowledge-extraction
-description: Trích xuất tri thức có cấu trúc từ AI và tài liệu (Knowledge Extraction): Chuẩn hóa các thực thể y khoa (bệnh học, triệu chứng, thuốc, phác đồ) thành kho dữ liệu nguyên tử.
+description: >-
+  Trích xuất tri thức có cấu trúc từ AI và tài liệu (Knowledge Extraction): Chuẩn hóa các thực thể y khoa (bệnh học, triệu chứng, thuốc, phác đồ) thành kho dữ liệu nguyên tử.
 ---
 
 # Knowledge Extraction

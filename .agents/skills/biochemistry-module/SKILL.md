@@ -1,10 +1,7 @@
 ---
 name: biochemistry-module
-description: >
-  Quy trình tạo và chỉnh sửa bài viết Hóa sinh Y học & Sinh học phân tử chuẩn MDX Native (Astro Content Collections)
-  trong phân hệ Cơ sở Y khoa (src/content/basic-medical/biochemistry/) của CliniPortal.
-  Kích hoạt khi AI cần: tạo bài Hóa sinh mới thuộc 7 khối (Block 1 - Block 7),
-  thêm sơ đồ cơ chế phân tử SVG Editorial, tích hợp bảng xét nghiệm cận lâm sàng, công thức KaTeX hoặc xử lý layout điều hướng sticky.
+description: >-
+  Quy trình tạo và chỉnh sửa bài viết Hóa sinh Y học & Sinh học phân tử chuẩn MDX Native (Astro Content Collections) trong phân hệ Cơ sở Y khoa (src/content/basic-medical/biochemistry/) của CliniPortal. Kích hoạt khi AI cần: tạo bài Hóa sinh mới thuộc 7 khối (Block 1 - Block 7), thêm sơ đồ cơ chế phân tử SVG Editorial, tích hợp bảng xét nghiệm cận lâm sàng, công thức KaTeX hoặc xử lý layout điều hướng sticky.
 ---
 
 # Biochemistry Module Skill (Hóa Sinh Y Học & Sinh Học Phân Tử — MDX Native)

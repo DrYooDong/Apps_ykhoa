@@ -1,6 +1,7 @@
 ---
 name: next-js-app-router-patterns
-description: Kiến trúc Next.js App Router (Next.js 14/15+): React Server Components, Server Actions, route handlers, caching và streaming SSR.
+description: >-
+  Kiến trúc Next.js App Router (Next.js 14/15+): React Server Components, Server Actions, route handlers, caching và streaming SSR.
 ---
 
 # Next.js App Router Patterns

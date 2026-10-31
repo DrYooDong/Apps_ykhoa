@@ -1,6 +1,7 @@
 ---
 name: bugs-are-annoying
-description: Adversarial QA pass for any codebase to catch hidden edge cases and AI hallucinations.
+description: >-
+  Adversarial QA pass for any codebase to catch hidden edge cases and AI hallucinations.
 ---
 
 # Bugs Are Annoying

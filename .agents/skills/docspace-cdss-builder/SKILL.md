@@ -1,10 +1,7 @@
 ---
 name: docspace-cdss-builder
-description: >
-  Kỹ năng chuyên sâu xây dựng Enriched CDSS JSON (Prompt 05) và Ma trận trọng số suy luận lâm sàng (Prompt 06) cho CliniPortal DocSpace.
-  Kích hoạt khi AI cần: biên soạn file enriched/<slug>.json, chuẩn hóa cấu trúc severityGrading và Bảng Chiến Lược 3 Cột,
-  thiết kế phác đồ 9 phân mục, cấu hình danh mục thuốc kháng sinh/hồi sức, tính toán ma trận trọng số suy luận CDSS (dt, gy, ht, loaitru)
-  và bảo toàn từ điển triệu chứng không mồ côi (Zero-Orphan Symptoms).
+description: >-
+  Kỹ năng chuyên sâu xây dựng Enriched CDSS JSON (Prompt 05) và Ma trận trọng số suy luận lâm sàng (Prompt 06) cho CliniPortal DocSpace. Kích hoạt khi AI cần: biên soạn file enriched/<slug>.json, chuẩn hóa cấu trúc severityGrading và Bảng Chiến Lược 3 Cột, thiết kế phác đồ 9 phân mục, cấu hình danh mục thuốc kháng sinh/hồi sức, tính toán ma trận trọng số suy luận CDSS (dt, gy, ht, loaitru) và bảo toàn từ điển triệu chứng không mồ côi (Zero-Orphan Symptoms).
 ---
 
 # DocSpace CDSS Builder Skill (Prompt 05 & Prompt 06 Specialist)

@@ -1,6 +1,7 @@
-﻿---
+---
 name: debugging-tools
-description: Kỹ thuật và công cụ debug JavaScript/DOM: console methods nâng cao, breakpoint debugging, profiling hiệu năng và phân tích lỗi runtime.
+description: >-
+  Kỹ thuật và công cụ debug JavaScript/DOM: console methods nâng cao, breakpoint debugging, profiling hiệu năng và phân tích lỗi runtime.
 ---
 
 # ðŸ› ï¸ Debugging Tools

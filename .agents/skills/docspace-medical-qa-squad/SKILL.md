@@ -1,6 +1,7 @@
 ---
 name: docspace-medical-qa-squad
-description: Đội ngũ AI chuyên trách kiểm tra tính chính xác y khoa (EBM), rà soát chính tả & thuật ngữ y học, phát hiện và khử trùng lặp triệu chứng/bệnh lý, bảo toàn nguyên tắc Zero-Orphan Symptoms và kiểm định ma trận trọng số CDSS cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần nạp bệnh mới, audit tri thức y khoa, chuẩn hóa từ điển triệu chứng hoặc kiểm duyệt ca bệnh SOAP.
+description: >-
+  Đội ngũ AI chuyên trách kiểm tra tính chính xác y khoa (EBM), rà soát chính tả & thuật ngữ y học, phát hiện và khử trùng lặp triệu chứng/bệnh lý, bảo toàn nguyên tắc Zero-Orphan Symptoms và kiểm định ma trận trọng số CDSS cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần nạp bệnh mới, audit tri thức y khoa, chuẩn hóa từ điển triệu chứng hoặc kiểm duyệt ca bệnh SOAP.
 ---
 
 # 🩺 DocSpace Medical Knowledge Standardization Squad

@@ -1,6 +1,7 @@
-﻿---
+---
 name: api-designer
-description: Chuẩn thiết kế interface và API endpoint: Định hình cấu trúc dữ liệu, tham số đầu vào, mã phản hồi và tài liệu API nhất quán.
+description: >-
+  Chuẩn thiết kế interface và API endpoint: Định hình cấu trúc dữ liệu, tham số đầu vào, mã phản hồi và tài liệu API nhất quán.
 ---
 
 # API Designer Skill

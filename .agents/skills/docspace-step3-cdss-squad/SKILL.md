@@ -1,6 +1,7 @@
 ---
 name: docspace-step3-cdss-squad
-description: Đội ngũ AI chuyên trách Động cơ Suy luận Lâm sàng CDSS, Ma trận Trọng số Suy luận (dt, gy, ht, loaitru), Thang điểm Nguy cơ Đa tầng (NEWS2, PEWS, ESI v4), Tiêu chuẩn Chẩn đoán Vàng (Gold Standard) và Phân tầng Mức độ nặng cho Bước 3 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu thuật toán suy luận chẩn đoán, chuẩn hóa CSDL bệnh học hoặc bổ sung thang điểm lượng giá.
+description: >-
+  Đội ngũ AI chuyên trách Động cơ Suy luận Lâm sàng CDSS, Ma trận Trọng số Suy luận (dt, gy, ht, loaitru), Thang điểm Nguy cơ Đa tầng (NEWS2, PEWS, ESI v4), Tiêu chuẩn Chẩn đoán Vàng (Gold Standard) và Phân tầng Mức độ nặng cho Bước 3 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu thuật toán suy luận chẩn đoán, chuẩn hóa CSDL bệnh học hoặc bổ sung thang điểm lượng giá.
 ---
 
 # ⚖️ DocSpace Step 3 — Diagnostic CDSS & Severity Staging Squad

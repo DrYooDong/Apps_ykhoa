@@ -1,9 +1,7 @@
 ---
 name: docspace-oneclick-ingest-agent
-description: >
-  Đội ngũ AI chuyên trách tiếp nhận và tích hợp 1 chạm (One-Click Ingestion) toàn bộ tri thức y khoa từ Prompt 05, Prompt 06
-  và Prompt 07 (NotebookLM/EBM) vào CliniPortal DocSpace. Tự động nhận diện định dạng, khử HTML entities, tổng hợp frontmatter,
-  bóc tách cấu trúc, đồng bộ CDSS và chạy 2 cổng kiểm định chất lượng (Medical QA Gate 6/6 & Vault Readiness 15/15).
+description: >-
+  Đội ngũ AI chuyên trách tiếp nhận và tích hợp 1 chạm (One-Click Ingestion) toàn bộ tri thức y khoa từ Prompt 05, Prompt 06 và Prompt 07 (NotebookLM/EBM) vào CliniPortal DocSpace. Tự động nhận diện định dạng, khử HTML entities, tổng hợp frontmatter, bóc tách cấu trúc, đồng bộ CDSS và chạy 2 cổng kiểm định chất lượng (Medical QA Gate 6/6 & Vault Readiness 15/15).
 ---
 
 # DocSpace One-Click Master Ingestion Agent & Skill (Autonomous EBM Pipeline)

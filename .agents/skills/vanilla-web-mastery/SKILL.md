@@ -1,6 +1,7 @@
 ---
 name: vanilla-web-mastery
-description: Kỹ năng chuyên sâu về tối ưu Vanilla HTML5/CSS3/JavaScript (ES6+), quản lý DOM thuần không framework, tối ưu hiệu năng và đường dẫn tương đối chuẩn xác cho CliniPortal.
+description: >-
+  Kỹ năng chuyên sâu về tối ưu Vanilla HTML5/CSS3/JavaScript (ES6+), quản lý DOM thuần không framework, tối ưu hiệu năng và đường dẫn tương đối chuẩn xác cho CliniPortal.
 ---
 
 # Vanilla Web Mastery — CliniPortal

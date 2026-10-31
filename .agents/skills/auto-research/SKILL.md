@@ -1,6 +1,7 @@
-﻿---
+---
 name: auto-research
-description: Kỹ năng tự động nghiên cứu có kiểm soát (Auto-Research): Xác định ranh giới tìm kiếm, tra cứu tài liệu/API trước khi viết mã, yêu cầu xác nhận trước khi thay đổi lớn.
+description: >-
+  Kỹ năng tự động nghiên cứu có kiểm soát (Auto-Research): Xác định ranh giới tìm kiếm, tra cứu tài liệu/API trước khi viết mã, yêu cầu xác nhận trước khi thay đổi lớn.
 ---
 
 # Auto-Research Skill

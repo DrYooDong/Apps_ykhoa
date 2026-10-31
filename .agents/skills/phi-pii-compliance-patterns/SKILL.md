@@ -1,6 +1,7 @@
-﻿---
+---
 name: phi-pii-compliance-patterns
-description: Quy chuẩn bảo vệ dữ liệu sức khỏe định danh (PHI/PII): Phân loại dữ liệu nhạy cảm, ẩn danh hóa ca bệnh lâm sàng, kiểm soát quyền truy cập và an toàn lưu trữ localStorage/IndexDB.
+description: >-
+  Quy chuẩn bảo vệ dữ liệu sức khỏe định danh (PHI/PII): Phân loại dữ liệu nhạy cảm, ẩn danh hóa ca bệnh lâm sàng, kiểm soát quyền truy cập và an toàn lưu trữ localStorage/IndexDB.
 ---
 
 # Healthcare PHI/PII Compliance Patterns

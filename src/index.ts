@@ -4,6 +4,9 @@
  */
 
 import './styles/main.css';
+import './styles/components/mdx-base.css';
+import './styles/components/mdx/mdx-diagrams.css';
+import './content/basic-medical/css/editorial-flowchart.css';
 import './styles/components/bottom-nav.css';
 import './styles/components/non-intrusive-ui.css';
 import './styles/components/clinical-cheatsheets.css';

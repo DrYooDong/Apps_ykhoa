@@ -1,6 +1,7 @@
 ---
 name: protocol-reverse-engineering
-description: Kỹ thuật reverse engineering giao thức mạng: bắt gói tin Wireshark/tcpdump, phân tích payload, giải mã cấu trúc dữ liệu và tài liệu hóa protocol.
+description: >-
+  Kỹ thuật reverse engineering giao thức mạng: bắt gói tin Wireshark/tcpdump, phân tích payload, giải mã cấu trúc dữ liệu và tài liệu hóa protocol.
 ---
 
 # Protocol Reverse Engineering

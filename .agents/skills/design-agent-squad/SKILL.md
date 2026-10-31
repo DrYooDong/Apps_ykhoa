@@ -1,6 +1,7 @@
 ---
 name: design-agent-squad
-description: Đội ngũ AI chuyên trách thiết kế, quy hoạch UI/UX, chuyển giao Motion Engineering và kiểm định chất lượng giao diện (Design System & Quality Gate) cho CliniPortal.
+description: >-
+  Đội ngũ AI chuyên trách thiết kế, quy hoạch UI/UX, chuyển giao Motion Engineering và kiểm định chất lượng giao diện (Design System & Quality Gate) cho CliniPortal.
 ---
 
 # 🎨 Design Agent Squad — CliniPortal

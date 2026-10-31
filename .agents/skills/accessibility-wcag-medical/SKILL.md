@@ -1,6 +1,7 @@
 ---
 name: accessibility-wcag-medical
-description: Kỹ năng chuẩn hóa khả năng truy cập khuyết tật (WCAG 2.1 AA/AAA), tương phản màu sắc y tế, hỗ trợ điều hướng bàn phím (Keyboard Navigation) và ARIA roles cho CliniPortal.
+description: >-
+  Kỹ năng chuẩn hóa khả năng truy cập khuyết tật (WCAG 2.1 AA/AAA), tương phản màu sắc y tế, hỗ trợ điều hướng bàn phím (Keyboard Navigation) và ARIA roles cho CliniPortal.
 ---
 
 # Accessibility & WCAG Medical Standard — CliniPortal

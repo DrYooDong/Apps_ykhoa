@@ -1,6 +1,7 @@
 ---
 name: tailwind-css-setup-for-expo-with-react-native-css
-description: Cấu hình Tailwind CSS v4 trong React Native Expo sử dụng react-native-css và NativeWind v5 cho đa nền tảng iOS, Android và Web.
+description: >-
+  Cấu hình Tailwind CSS v4 trong React Native Expo sử dụng react-native-css và NativeWind v5 cho đa nền tảng iOS, Android và Web.
 ---
 
 # Tailwind CSS Setup for Expo with react-native-css

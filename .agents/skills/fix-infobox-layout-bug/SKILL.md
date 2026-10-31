@@ -1,6 +1,6 @@
 ---
 name: fix-infobox-layout-bug
-description: >
+description: >-
   Khắc phục lỗi khung .infobox bị ép méo 2 cột, dồn tiêu đề sang trái và tràn công thức KaTeX trên giao diện CliniPortal.
 ---
 

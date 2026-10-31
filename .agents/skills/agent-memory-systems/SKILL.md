@@ -1,6 +1,7 @@
-﻿---
+---
 name: agent-memory-systems
-description: Kiến trúc hệ thống bộ nhớ cho AI Agent: short-term (context window), long-term (vector stores/JSON), CoALA cognitive framework (semantic, episodic, procedural). Kích hoạt khi cần thiết kế hoặc tối ưu hóa cơ chế lưu nhớ context cho CliniPortal.
+description: >-
+  Kiến trúc hệ thống bộ nhớ cho AI Agent: short-term (context window), long-term (vector stores/JSON), CoALA cognitive framework (semantic, episodic, procedural). Kích hoạt khi cần thiết kế hoặc tối ưu hóa cơ chế lưu nhớ context cho CliniPortal.
 ---
 
 # Agent Memory Systems

@@ -1,6 +1,6 @@
 ---
 name: fix-text-formatting-bug
-description: >
+description: >-
   Khắc phục lỗi định dạng văn bản: Ký tự $ công thức math, Bullets, Numbering và Heading Styles
 ---
 

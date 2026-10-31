@@ -1,9 +1,7 @@
 ---
 name: flowchart-module
-description: >
-  Tạo, chỉnh sửa và vẽ lưu đồ tiếp cận lâm sàng tương tác và sơ đồ trực quan y khoa đồ họa xuất bản (Interactive Clinical Flowcharts & Editorial SVG Studio)
-  trong phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo lưu đồ thuật toán chẩn đoán, phác đồ xử trí cấp cứu, vẽ đường nối mũi tên vector trực giao,
-  hoặc chỉnh sửa bất kỳ lưu đồ/sơ đồ y khoa nào đạt chuẩn Editorial (Pure SVG, 100% Dark Mode, No Shadows, No Mermaid-slop).
+description: >-
+  Tạo, chỉnh sửa và vẽ lưu đồ tiếp cận lâm sàng tương tác và sơ đồ trực quan y khoa đồ họa xuất bản (Interactive Clinical Flowcharts & Editorial SVG Studio) trong phân hệ Tiếp cận của CliniPortal. Kích hoạt khi AI cần: tạo lưu đồ thuật toán chẩn đoán, phác đồ xử trí cấp cứu, vẽ đường nối mũi tên vector trực giao, hoặc chỉnh sửa bất kỳ lưu đồ/sơ đồ y khoa nào đạt chuẩn Editorial (Pure SVG, 100% Dark Mode, No Shadows, No Mermaid-slop).
 ---
 
 # Clinical Flowchart & Medical Editorial Diagram Skill

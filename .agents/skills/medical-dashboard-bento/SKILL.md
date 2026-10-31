@@ -1,6 +1,7 @@
 ---
 name: medical-dashboard-bento
-description: Kỹ năng thiết kế và phát triển giao diện Bento Grid Dashboard Y khoa hiện đại (Vanilla HTML/CSS/JS), linh kiện KPI sinh hiệu, đồng hồ an toàn Gauge SVG, mạng lưới Node IoT và Bảng đối sánh y khoa cho CliniPortal.
+description: >-
+  Kỹ năng thiết kế và phát triển giao diện Bento Grid Dashboard Y khoa hiện đại (Vanilla HTML/CSS/JS), linh kiện KPI sinh hiệu, đồng hồ an toàn Gauge SVG, mạng lưới Node IoT và Bảng đối sánh y khoa cho CliniPortal.
 ---
 
 # Medical Dashboard Bento Mastery — CliniPortal

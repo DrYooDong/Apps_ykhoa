@@ -1,14 +1,7 @@
 ---
 name: html-to-mdx-pipeline
-description: "Quy trình và bộ tiêu chuẩn kỹ thuật toàn diện chuyển đổi HTML Y khoa tĩnh sang Astro MDX Native, xử lý triệt để 100% lỗi cú pháp JSX, KaTeX Math, lồng thẻ HTML, escape ký tự và tối ưu hóa Content Collections."
-category: "Workflow & Engineering"
-tags:
-  - "mdx"
-  - "astro"
-  - "migration"
-  - "jsx"
-  - "content-collections"
-  - "cliniportal"
+description: >-
+  Quy trình và bộ tiêu chuẩn kỹ thuật toàn diện chuyển đổi HTML Y khoa tĩnh sang Astro MDX Native, xử lý triệt để 100% lỗi cú pháp JSX, KaTeX Math, lồng thẻ HTML, escape ký tự và tối ưu hóa Content Collections.
 ---
 
 # ⚡ HTML-TO-MDX MASTER SKILL — QUY CHUẨN KỸ THUẬT CHUYỂN ĐỔI MDX NATIVE

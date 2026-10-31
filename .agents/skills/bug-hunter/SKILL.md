@@ -1,6 +1,7 @@
 ---
 name: bug-hunter
-description: Systematically hunt down and fix bugs using evidence-based debugging techniques.
+description: >-
+  Systematically hunt down and fix bugs using evidence-based debugging techniques.
 ---
 
 # Bug Hunter

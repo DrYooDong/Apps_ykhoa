@@ -1,3 +1,9 @@
+---
+name: tailwind-css-patterns-v-0
+description: >-
+  Modern utility-first CSS styling, CSS-native configuration, and responsive layout patterns.
+---
+
 # Tailwind CSS Patterns (v4 - 2025)
 
 > Modern utility-first CSS with CSS-native configuration.
@@ -269,3 +275,4 @@ Use this skill when configuring Tailwind v4, using CSS-first theme and design to
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+

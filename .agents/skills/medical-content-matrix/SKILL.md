@@ -1,6 +1,7 @@
 ---
 name: medical-content-matrix
-description: Quy hoạch, lập ma trận phân loại nội dung y khoa (7 phân hệ CliniPortal), thiết lập sơ đồ thực thể tri thức (Entity Graph) & kiến trúc Wiki Y khoa hạt nhân (Atomic Medical Facts) cho CliniPortal.
+description: >-
+  Quy hoạch, lập ma trận phân loại nội dung y khoa (7 phân hệ CliniPortal), thiết lập sơ đồ thực thể tri thức (Entity Graph) & kiến trúc Wiki Y khoa hạt nhân (Atomic Medical Facts) cho CliniPortal.
 ---
 
 # Medical Content Matrix & Knowledge Map Planner (Atlas-Inspired)

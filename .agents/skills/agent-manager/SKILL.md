@@ -1,6 +1,7 @@
-﻿---
+---
 name: agent-manager
-description: Quản lý vòng đời agent task, phân luồng công việc song song, theo dõi logs và lập lịch tác vụ cho AI Agent. Kích hoạt khi cần điều phối nhiều tác vụ tự động.
+description: >-
+  Quản lý vòng đời agent task, phân luồng công việc song song, theo dõi logs và lập lịch tác vụ cho AI Agent. Kích hoạt khi cần điều phối nhiều tác vụ tự động.
 ---
 
 # Agent Manager Skill

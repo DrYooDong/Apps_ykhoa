@@ -1,10 +1,7 @@
 ---
 name: scholar-evaluation
-description: >
-  Đội ngũ & Quy trình Thẩm định Y văn & Kiểm định Phương pháp luận Nghiên cứu (Scholar Critical Appraisal & Methodology QA)
-  chuẩn Nature & EBM 2026. Hấp thu tri thức từ nature-skills (nature-statistics, nature-reviewer, nature-ref-verifier):
-  Kiểm định sai lệch Cochrane RoB 2.0 / ROBINS-I, Kiểm toán thống kê (p-value, 95% CI, HR, NNT, Power), Đánh giá chất lượng
-  chứng cứ GRADE, Rà soát trích dẫn y văn AMA/PubMed, và Mô phỏng phản biện chuyên gia độc lập (Nature-Reviewer Simulation).
+description: >-
+  Đội ngũ & Quy trình Thẩm định Y văn & Kiểm định Phương pháp luận Nghiên cứu (Scholar Critical Appraisal & Methodology QA) chuẩn Nature & EBM 2026. Hấp thu tri thức từ nature-skills (nature-statistics, nature-reviewer, nature-ref-verifier): Kiểm định sai lệch Cochrane RoB 2.0 / ROBINS-I, Kiểm toán thống kê (p-value, 95% CI, HR, NNT, Power), Đánh giá chất lượng chứng cứ GRADE, Rà soát trích dẫn y văn AMA/PubMed, và Mô phỏng phản biện chuyên gia độc lập (Nature-Reviewer Simulation).
 ---
 
 # ⚖️ Scholar Critical Appraisal & Methodology QA — Master Skill (Nature & EBM Standard)

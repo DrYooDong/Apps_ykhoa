@@ -1,6 +1,7 @@
-﻿---
+---
 name: agents-md
-description: Chuẩn mực định dạng và cấu trúc tệp AGENTS.md: Hướng dẫn tổ chức rules, conventions, stack công nghệ và chỉ dẫn tối ưu cho AI Assistant.
+description: >-
+  Chuẩn mực định dạng và cấu trúc tệp AGENTS.md: Hướng dẫn tổ chức rules, conventions, stack công nghệ và chỉ dẫn tối ưu cho AI Assistant.
 ---
 
 # ðŸ¤– AGENTS.md

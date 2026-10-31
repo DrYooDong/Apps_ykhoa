@@ -1,6 +1,7 @@
 ---
 name: docspace-treatment-data-engineering-squad
-description: Đội ngũ AI chuyên trách cấu trúc dữ liệu y khoa, chuẩn hóa phác đồ điều trị phân bậc, bóc tách lộ trình từng ngày (Daily Timeline), từ điển thuốc & tương tác DDI, tiêu chuẩn chuyển tuyến và liên kết 18 Kho tri thức cho Phân hệ Phác đồ điều trị CliniPortal DocSpace. Kích hoạt khi cần bổ sung phác đồ bệnh mới, chuẩn hóa bảng 4 cột dữ liệu, cập nhật thuốc hoặc mapping dữ liệu enriched.
+description: >-
+  Đội ngũ AI chuyên trách cấu trúc dữ liệu y khoa, chuẩn hóa phác đồ điều trị phân bậc, bóc tách lộ trình từng ngày (Daily Timeline), từ điển thuốc & tương tác DDI, tiêu chuẩn chuyển tuyến và liên kết 18 Kho tri thức cho Phân hệ Phác đồ điều trị CliniPortal DocSpace. Kích hoạt khi cần bổ sung phác đồ bệnh mới, chuẩn hóa bảng 4 cột dữ liệu, cập nhật thuốc hoặc mapping dữ liệu enriched.
 ---
 
 # 🧬 DocSpace Treatment Data Engineering Squad

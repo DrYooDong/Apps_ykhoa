@@ -1,9 +1,7 @@
 ---
 name: docspace-soap-ingester
-description: >
-  Kỹ năng chuyên sâu tiếp nhận, phân tích cú pháp và tích hợp Hồ sơ Ca bệnh Lâm sàng Thực chiến SOAP Markdown (Prompt 07) vào CliniPortal DocSpace.
-  Kích hoạt khi AI cần: nạp ca bệnh SOAP mới từ NotebookLM, bóc tách cấu trúc S-O-A-P, đồng bộ catalog thực hành (vault-catalog-thuc-hanh.json, vault-catalog.json),
-  vận hành ingest-notebooklm-case.mjs, và kết nối ca thực chiến vào Mục 9 Bước 4 cũng như Sổ tay Kinh nghiệm SOAP.
+description: >-
+  Kỹ năng chuyên sâu tiếp nhận, phân tích cú pháp và tích hợp Hồ sơ Ca bệnh Lâm sàng Thực chiến SOAP Markdown (Prompt 07) vào CliniPortal DocSpace. Kích hoạt khi AI cần: nạp ca bệnh SOAP mới từ NotebookLM, bóc tách cấu trúc S-O-A-P, đồng bộ catalog thực hành (vault-catalog-thuc-hanh.json, vault-catalog.json), vận hành ingest-notebooklm-case.mjs, và kết nối ca thực chiến vào Mục 9 Bước 4 cũng như Sổ tay Kinh nghiệm SOAP.
 ---
 
 # DocSpace SOAP Ingester Skill (Prompt 07 Specialist)

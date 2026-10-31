@@ -1,6 +1,7 @@
 ---
 name: diagnosing-bugs
-description: A structured discipline for diagnosing hard bugs (Reproduce, Isolate, Root Cause, Verify).
+description: >-
+  A structured discipline for diagnosing hard bugs (Reproduce, Isolate, Root Cause, Verify).
 ---
 
 # Diagnosing Bugs

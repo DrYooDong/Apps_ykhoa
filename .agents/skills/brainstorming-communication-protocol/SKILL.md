@@ -1,6 +1,7 @@
-﻿---
+---
 name: brainstorming-communication-protocol
-description: Giao thức Socratic Gate & Giao tiếp: Tạm dừng trước các yêu cầu mơ hồ hoặc phức tạp, đặt 3 câu hỏi làm rõ trọng tâm trước khi bắt đầu thực thi code.
+description: >-
+  Giao thức Socratic Gate & Giao tiếp: Tạm dừng trước các yêu cầu mơ hồ hoặc phức tạp, đặt 3 câu hỏi làm rõ trọng tâm trước khi bắt đầu thực thi code.
 ---
 
 # Brainstorming & Communication Protocol

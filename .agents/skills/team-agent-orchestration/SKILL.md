@@ -1,6 +1,7 @@
-﻿---
+---
 name: team-agent-orchestration
-description: Mô hình phối hợp đội ngũ AI agents chuyên trách (squad), phân chia ranh giới trách nhiệm, quản lý Kanban state và kiểm soát merge gate.
+description: >-
+  Mô hình phối hợp đội ngũ AI agents chuyên trách (squad), phân chia ranh giới trách nhiệm, quản lý Kanban state và kiểm soát merge gate.
 ---
 
 # Team Agent Orchestration

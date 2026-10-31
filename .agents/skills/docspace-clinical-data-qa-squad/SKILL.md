@@ -1,6 +1,7 @@
 ---
 name: docspace-clinical-data-qa-squad
-description: Đội ngũ AI chuyên trách rà soát, chuẩn hóa viết tắt y khoa, lọc trùng biến thể triệu chứng lâm sàng/cận lâm sàng/tiền căn, khử lỗi HTML entities và phân định ranh giới lâm sàng - tiền căn - dịch tễ cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần chuẩn hóa từ điển triệu chứng, audit dữ liệu ca bệnh hoặc kiểm định chất lượng hiển thị lâm sàng.
+description: >-
+  Đội ngũ AI chuyên trách rà soát, chuẩn hóa viết tắt y khoa, lọc trùng biến thể triệu chứng lâm sàng/cận lâm sàng/tiền căn, khử lỗi HTML entities và phân định ranh giới lâm sàng - tiền căn - dịch tễ cho phân hệ CliniPortal DocSpace. Kích hoạt khi cần chuẩn hóa từ điển triệu chứng, audit dữ liệu ca bệnh hoặc kiểm định chất lượng hiển thị lâm sàng.
 ---
 
 # 🩺 DocSpace Clinical Data Verification Squad (Đội ngũ Kiểm định & Chuẩn hóa Dữ liệu Lâm sàng DocSpace)

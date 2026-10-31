@@ -1,6 +1,7 @@
 ---
 name: content-structure-medical
-description: Quy chuẩn phân cấp, tổ chức cấu trúc file, thư mục và điều hướng sidebar cho 7 phân hệ kiến thức y khoa trong CliniPortal.
+description: >-
+  Quy chuẩn phân cấp, tổ chức cấu trúc file, thư mục và điều hướng sidebar cho 7 phân hệ kiến thức y khoa trong CliniPortal.
 ---
 
 # Content Structure Medical — CliniPortal

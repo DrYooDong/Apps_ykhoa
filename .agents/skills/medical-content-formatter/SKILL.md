@@ -1,6 +1,7 @@
 ---
 name: medical-content-formatter
-description: Định dạng bài viết y khoa chuẩn mobile, ngắt dòng trực quan, bổ sung khung chú thích y khoa (Alert, Clinical Pearl, Comparison) & thẻ HTML semantic cho CliniPortal.
+description: >-
+  Định dạng bài viết y khoa chuẩn mobile, ngắt dòng trực quan, bổ sung khung chú thích y khoa (Alert, Clinical Pearl, Comparison) & thẻ HTML semantic cho CliniPortal.
 ---
 
 # Medical Content Formatter & Layout Optimizer

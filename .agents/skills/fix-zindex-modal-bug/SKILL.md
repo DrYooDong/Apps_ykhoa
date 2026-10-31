@@ -1,6 +1,6 @@
 ---
 name: fix-zindex-modal-bug
-description: >
+description: >-
   Khắc phục lỗi z-index che khuất modal và dropdown trên di động
 ---
 

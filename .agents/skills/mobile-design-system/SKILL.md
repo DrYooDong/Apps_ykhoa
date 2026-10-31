@@ -1,6 +1,7 @@
-﻿---
+---
 name: mobile-design-system
-description: Hệ thống thiết kế Mobile-First & Touch-First: Bảng đánh giá rủi ro MFRI, quy chuẩn ngón tay cái (Thumb-zone), touch targets >= 44px và tối ưu pin/CPU thiết bị y tế.
+description: >-
+  Hệ thống thiết kế Mobile-First & Touch-First: Bảng đánh giá rủi ro MFRI, quy chuẩn ngón tay cái (Thumb-zone), touch targets >= 44px và tối ưu pin/CPU thiết bị y tế.
 ---
 
 # Mobile Design System

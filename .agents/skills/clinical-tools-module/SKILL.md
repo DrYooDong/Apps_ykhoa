@@ -1,10 +1,7 @@
 ---
 name: clinical-tools-module
-description: >
-  Tạo và chỉnh sửa các công cụ tính toán lâm sàng (Clinical Calculators & Decision Support)
-  trong phân hệ Công cụ của CliniPortal. Kích hoạt khi AI cần: tạo máy tính lâm sàng mới,
-  thêm phác đồ điều trị động, bộ tính toán chỉ số y khoa, hoặc làm việc với
-  pages/Công cụ/.
+description: >-
+  Tạo và chỉnh sửa các công cụ tính toán lâm sàng (Clinical Calculators & Decision Support) trong phân hệ Công cụ của CliniPortal. Kích hoạt khi AI cần: tạo máy tính lâm sàng mới, thêm phác đồ điều trị động, bộ tính toán chỉ số y khoa, hoặc làm việc với pages/Công cụ/.
 ---
 
 # Clinical Tools Module Skill

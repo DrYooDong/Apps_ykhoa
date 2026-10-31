@@ -1,6 +1,7 @@
 ---
 name: medical-infographic-prompt
-description: Tạo kịch bản Infographic, sơ đồ tư duy & prompt sinh ảnh AI y khoa từ bài viết bệnh lý/lâm sàng cho CliniPortal.
+description: >-
+  Tạo kịch bản Infographic, sơ đồ tư duy & prompt sinh ảnh AI y khoa từ bài viết bệnh lý/lâm sàng cho CliniPortal.
 ---
 
 # Medical Infographic & Visual Script Prompt Generator

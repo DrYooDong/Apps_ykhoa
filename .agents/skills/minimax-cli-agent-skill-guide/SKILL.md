@@ -1,6 +1,7 @@
 ---
 name: minimax-cli-agent-skill-guide
-description: Sử dụng MiniMax CLI (mmx) để sinh văn bản, hình ảnh, video, giọng nói TTS, âm nhạc và tìm kiếm web qua nền tảng MiniMax AI.
+description: >-
+  Sử dụng MiniMax CLI (mmx) để sinh văn bản, hình ảnh, video, giọng nói TTS, âm nhạc và tìm kiếm web qua nền tảng MiniMax AI.
 ---
 
 # MiniMax CLI — Agent Skill Guide

@@ -1,6 +1,7 @@
-﻿---
+---
 name: hypothesis-generation
-description: Khung tạo lập và kiểm thử giả thuyết khoa học: Cấu trúc IF [Hành động/Can thiệp] - THEN [Kết quả lâm sàng] - BECAUSE [Cơ chế bệnh sinh/Dược lý].
+description: >-
+  Khung tạo lập và kiểm thử giả thuyết khoa học: Cấu trúc IF [Hành động/Can thiệp] - THEN [Kết quả lâm sàng] - BECAUSE [Cơ chế bệnh sinh/Dược lý].
 ---
 
 # ðŸ”¬ Hypothesis Generation

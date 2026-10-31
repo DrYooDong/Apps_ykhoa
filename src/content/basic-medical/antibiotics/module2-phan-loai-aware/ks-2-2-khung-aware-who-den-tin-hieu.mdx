@@ -225,20 +225,96 @@ Tổ chức Y tế Thế giới nhấn mạnh việc lạm dụng các chế ph�
 
 Khung phân tầng AWaRe không chỉ là một danh mục lý thuyết mà là công cụ quản trị lâm sàng mạnh mẽ giúp các bệnh viện và cơ sở y tế triển khai Chương trình Quản lý Sử dụng Kháng Sinh (Antimicrobial Stewardship Program - ASP).
 
-```
-   +-----------------------------------------------------------------------+
-   |            QUY TRÌNH QUẢN LÝ KÊ ĐƠN THEO BẢNG KIỂM D8 (WHO)           |
-   +-----------------------------------------------------------------------+
-   |  [D1] Diagnosis   --> Chẩn đoán lâm sàng & bằng chứng nhiễm khuẩn?   |
-   |  [D2] Decision    --> Có thực sự cần kháng sinh không?               |
-   |  [D3] Medicine    --> Ưu tiên chọn kháng sinh nhóm ACCESS (Đèn Xanh).  |
-   |  [D4] Dose        --> Liều lượng chính xác & hiệu chỉnh suy thận?     |
-   |  [D5] Dispensing  --> Dạng bào chế & đánh giá chuyển đổi IV sang PO? |
-   |  [D6] Duration    --> Liệu trình ngắn nhất có hiệu quả lâm sàng?     |
-   |  [D7] Discussion  --> Tư vấn tác dụng phụ & dấu hiệu tái khám?       |
-   |  [D8] Document    --> Ghi chép đầy đủ lý do vào hồ sơ bệnh án?       |
-   +-----------------------------------------------------------------------+
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-list-check" style="color: #0284c7;"></i> QUY TRÌNH QUẢN LÝ KÊ ĐƠN THEO BẢNG KIỂM D8 (WHO AWaRe 2023)</div>
+    <span class="badge badge-teal">WHO AWaRe • 8 BƯỚC VÀNG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <!-- GRID 2x4 FOR 8 D-STEPS -->
+      <!-- D1 -->
+      <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#0284c7"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D1</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">DIAGNOSIS (Chẩn Đoán Xác Định)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Có bằng chứng nhiễm trùng lâm sàng hoặc cận lâm sàng rõ ràng không?</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#0284c7">• Xác định cơ quan nhiễm khuẩn nghi ngờ &amp; cấy vi sinh trước liều đầu</text>
+      </g>
+
+      <!-- D2 -->
+      <g transform="translate(500, 20)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#0284c7"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D2</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">DECISION (Quyết Định Kê Đơn)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Có thực sự cần dùng kháng sinh hay chỉ do nhiễm virus tự giới hạn?</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#dc2626">• Cân nhắc trì hoãn hoặc theo dõi sát nếu không có dấu hiệu nhiễm khuẩn nặng</text>
+      </g>
+
+      <!-- D3 -->
+      <g transform="translate(30, 130)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(5, 150, 105, 0.06)" stroke="#059669" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#059669"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D3</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="#059669">MEDICINE (Lựa Chọn Kháng Sinh)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Ưu tiên lựa chọn kháng sinh nhóm ACCESS (Đèn Xanh) đầu tay</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#059669">• Chỉ dùng nhóm WATCH khi có chỉ định cụ thể • Hạn chế tối đa RESERVE</text>
+      </g>
+
+      <!-- D4 -->
+      <g transform="translate(500, 130)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(217, 119, 6, 0.06)" stroke="#d97706" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#d97706"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D4</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="#d97706">DOSE (Liều Lượng &amp; Chức Năng Thận)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Đảm bảo liều nạp (Loading dose) khi nhiễm khuẩn huyết nặng</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#b45309">• Hiệu chỉnh liều duy trì chuẩn xác theo eGFR và cân nặng bệnh nhân</text>
+      </g>
+
+      <!-- D5 -->
+      <g transform="translate(30, 240)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(124, 58, 237, 0.06)" stroke="#7c3aed" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#7c3aed"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D5</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="#7c3aed">DISPENSING (Đường Dùng &amp; IV to PO)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Ưu tiên đường uống (PO) nếu bệnh nhân tỉnh táo, ruột hấp thu tốt</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#6d28d9">• Đánh giá chuyển đổi IV sang PO sau 48-72 giờ điều trị</text>
+      </g>
+
+      <!-- D6 -->
+      <g transform="translate(500, 240)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#0284c7"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D6</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">DURATION (Thời Gian Liệu Trình Ngắn Nhất)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Tuân thủ nguyên tắc "Shorter is Better" dựa trên chứng cứ mới nhất</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#0284c7">• CAP nhẹ: 3-5 ngày • UTI không biến chứng: 1-5 ngày • SSTI: 5-7 ngày</text>
+      </g>
+
+      <!-- D7 -->
+      <g transform="translate(30, 350)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#0284c7"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D7</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="var(--color-text, #0f172a)">DISCUSSION (Tư Vấn Người Bệnh)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Giải thích rõ cách dùng thuốc, tuân thủ giờ uống, không tự ý ngừng</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#0284c7">• Dặn dò các dấu hiệu cảnh báo tác dụng phụ (phát ban, tiêu chảy nặng)</text>
+      </g>
+
+      <!-- D8 -->
+      <g transform="translate(500, 350)">
+        <rect x="0" y="0" width="430" height="95" rx="8" fill="rgba(16, 185, 129, 0.06)" stroke="#10b981" stroke-width="1.5"/>
+        <rect x="10" y="10" width="70" height="26" rx="4" fill="#10b981"/>
+        <text x="45" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">D8</text>
+        <text x="95" y="28" font-size="13" font-weight="800" fill="#047857">DOCUMENT (Ghi Chép Hồ Sơ Bệnh Án)</text>
+        <text x="15" y="58" font-size="11.5" font-weight="500" fill="var(--color-text-muted, #475569)">• Ghi nhận chỉ định, tên thuốc, liều, ngày dự kiến ngừng và kết quả KSĐ</text>
+        <text x="15" y="78" font-size="11.5" font-weight="600" fill="#047857">• Đánh giá lại vào ngày thứ 3 (Time-out 48-72h) để xuống thang hoặc ngừng</text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 ### 4.1. Các Chỉ Số Đo Lường Hiệu Quả Quản Lý
 Để đánh giá sự cải thiện trong kê đơn, bộ phận Quản lý Kháng sinh bệnh viện cần theo dõi các chỉ số cốt lõi sau:

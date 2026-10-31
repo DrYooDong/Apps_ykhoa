@@ -347,21 +347,100 @@ Nhóm thuốc Sulfonamide và Trimethoprim tác động vào hai bước enzym n
 1.  **Sulfonamides (như Sulfamethoxazole):** Có cấu trúc tương đồng hóa học với PABA, cạnh tranh ức chế enzyme **Dihydropteroate Synthase (DHPS)** ở bước đầu tiên.
 2.  **Trimethoprim:** Cạnh tranh ức chế enzyme **Dihydrofolate Reductase (DHFR)** ở bước thứ hai, ngăn biến đổi Dihydrofolate thành Tetrahydrofolate.
 
-```
-PABA + Dihydropterin
-        │
-        ▼  ◄─── [Sulfamethoxazole ức chế Dihydropteroate Synthase]
-Dihydropteroic Acid
-        │
-        ▼
-Dihydrofolic Acid (DHF)
-        │
-        ▼  ◄─── [Trimethoprim ức chế Dihydrofolate Reductase]
-Tetrahydrofolic Acid (THF)
-        │
-        ▼
-Tổng hợp Purines, Thymidine & DNA
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-dna" style="color: #0284c7;"></i> SƠ ĐỒ CƠ CHẾ HIỆP ĐỒNG DIỆT KHUẨN CỦA CO-TRIMOXAZOLE (SMX + TMP)</div>
+    <span class="badge badge-teal">Dược Lý Học Phân Tử • EBM</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="fArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="fArrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- STEP 1: PABA -->
+      <g transform="translate(60, 25)">
+        <rect x="0" y="0" width="340" height="52" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="170" y="32" text-anchor="middle" font-size="14" font-weight="800" fill="var(--color-text, #0f172a)">
+          PABA + Dihydropterin
+        </text>
+      </g>
+
+      <!-- DOWN ARROW 1 -->
+      <path d="M 230 77 L 230 115" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#fArrBlue)"/>
+
+      <!-- INHIBITOR 1: SULFAMETHOXAZOLE -->
+      <path d="M 470 96 L 245 96" stroke="#dc2626" stroke-width="2" stroke-dasharray="4" fill="none" marker-end="url(#fArrRed)"/>
+      <g transform="translate(480, 70)">
+        <rect x="0" y="0" width="420" height="52" rx="8" fill="rgba(220, 38, 38, 0.08)" stroke="#dc2626" stroke-width="1.8"/>
+        <text x="210" y="24" text-anchor="middle" font-size="12.5" font-weight="900" fill="#dc2626">
+          ⛔ SULFAMETHOXAZOLE (SMX)
+        </text>
+        <text x="210" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #475569)">
+          Ức chế cạnh tranh Enzym Dihydropteroate Synthase (DHPS)
+        </text>
+      </g>
+
+      <!-- STEP 2: DIHYDROPTEROIC ACID -->
+      <g transform="translate(60, 120)">
+        <rect x="0" y="0" width="340" height="52" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="170" y="32" text-anchor="middle" font-size="14" font-weight="800" fill="var(--color-text, #0f172a)">
+          Acid Dihydropteroic
+        </text>
+      </g>
+
+      <!-- DOWN ARROW 2 -->
+      <path d="M 230 172 L 230 205" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#fArrBlue)"/>
+
+      <!-- STEP 3: DIHYDROFOLIC ACID -->
+      <g transform="translate(60, 210)">
+        <rect x="0" y="0" width="340" height="52" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="170" y="32" text-anchor="middle" font-size="14" font-weight="800" fill="var(--color-text, #0f172a)">
+          Acid Dihydrofolic (DHF)
+        </text>
+      </g>
+
+      <!-- DOWN ARROW 3 -->
+      <path d="M 230 262 L 230 295" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#fArrBlue)"/>
+
+      <!-- INHIBITOR 2: TRIMETHOPRIM -->
+      <path d="M 470 278 L 245 278" stroke="#dc2626" stroke-width="2" stroke-dasharray="4" fill="none" marker-end="url(#fArrRed)"/>
+      <g transform="translate(480, 252)">
+        <rect x="0" y="0" width="420" height="52" rx="8" fill="rgba(220, 38, 38, 0.08)" stroke="#dc2626" stroke-width="1.8"/>
+        <text x="210" y="24" text-anchor="middle" font-size="12.5" font-weight="900" fill="#dc2626">
+          ⛔ TRIMETHOPRIM (TMP)
+        </text>
+        <text x="210" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text-muted, #475569)">
+          Ức chế mạnh Enzym Dihydrofolate Reductase (DHFR)
+        </text>
+      </g>
+
+      <!-- STEP 4: TETRAHYDROFOLIC ACID -->
+      <g transform="translate(60, 300)">
+        <rect x="0" y="0" width="340" height="52" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="170" y="32" text-anchor="middle" font-size="14" font-weight="800" fill="var(--color-text, #0f172a)">
+          Acid Tetrahydrofolic (THF - Dạng hoạt tính)
+        </text>
+      </g>
+
+      <!-- DOWN ARROW 4 -->
+      <path d="M 230 352 L 230 380" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#fArrBlue)"/>
+
+      <!-- FINAL TARGET: DNA -->
+      <g transform="translate(60, 385)">
+        <rect x="0" y="0" width="840" height="36" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+        <text x="420" y="23" text-anchor="middle" font-size="12.5" font-weight="800" fill="#047857">
+          ★ KẾT CỤC: TẮT NGHẼN TỔNG HỢP PURINES, THYMIDINE &amp; DNA $ightarrow$ CHUYỂN TỪ KÌM KHUẨN SANG DIỆT KHUẨN (BACTERICIDAL SYNERGY)
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 *   **Hiệu ứng lâm sàng:** Khi dùng đơn độc, từng thuốc chỉ có tác dụng kìm khuẩn. Khi phối hợp **Co-trimoxazole (Trimethoprim-Sulfamethoxazole / TMP-SMX)** theo tỉ lệ liều 1:5, sự phong tỏa hai bước liên tiếp tạo ra **tác dụng diệt khuẩn hiệp đồng mạnh mẽ**, mở rộng phổ trên *S. aureus* (CA-MRSA), Enterobacterales, *Stenotrophomonas maltophilia* và nấm *Pneumocystis jirovecii*.
 

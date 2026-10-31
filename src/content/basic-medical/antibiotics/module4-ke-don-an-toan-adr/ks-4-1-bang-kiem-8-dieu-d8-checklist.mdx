@@ -219,40 +219,91 @@ Bảng kiểm D8 bao gồm 8 chữ D tương ứng với 8 bước tự kiểm t
 
 Bảng kiểm D8 không vận hành đơn độc mà kết nối trực tiếp với **Lưu đồ hướng dẫn sử dụng kháng sinh của Bệnh viện Bệnh Nhiệt Đới** trong chu trình kiểm soát nhiễm trùng 3 giai đoạn: Khởi đầu $\rightarrow$ Đánh giá lại 48–72 giờ $\rightarrow$ Ngừng thuốc.
 
-```
-  [BỆNH NHÂN NGHI NGỜ NHIỄM TRÙNG]
-                 │
-                 ▼
- ┌────────────────────────────────────────┐
- │ BƯỚC 1: ĐÁNH GIÁ D8 BAN ĐẦU            │
- │ • Áp dụng D1, D2, D3, D4, D5, D7, D8   │
- │ • Cấy mẫu vi sinh trước khi tiêm KS    │
- │ • Chọn KS kinh nghiệm theo phân tầng   │
- └──────────────────┬─────────────────────┘
-                    │
-                    ▼
- ┌────────────────────────────────────────┐
- │ BƯỚC 2: ĐÁNH GIÁ LẠI SAU 48–72 GIỜ     │
- │ • Kiểm tra đáp ứng lâm sàng            │
- │ • Đọc kết quả Kháng sinh đồ (KSĐ)      │
- └──────────────────┬─────────────────────┘
-                    │
-        ┌───────────┴───────────┐
-        ▼                       ▼
-┌──────────────────┐    ┌──────────────────┐
-│ LÂM SÀNG CẢI THIỆN│    │ LÂM SÀNG KHÔNG   │
-│                  │    │ CẢI THIỆN        │
-├──────────────────┤    ├──────────────────┤
-│ • VK nhạy:       │    │ • Đánh giá lại   │
-│   Xuống thang (D3)│    │   chẩn đoán (D1) │
-│ • Đủ điều kiện:  │    │ • Tầm soát ổ đọng│
-│   Chuyển IV/PO   │    │   nhiễm trùng mới│
-│   (D5)           │    │ • Hội chẩn đổi   │
-│ • Kiểm tra tiêu  │    │   kháng sinh     │
-│   chí Ngừng KS   │    └──────────────────┘
-│   (D6)           │
-└──────────────────┘
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-code-fork" style="color: #0284c7;"></i> LƯU ĐỒ TRIỂN KHAI BẢNG KIỂM D8 TẠI KHOA LÂM SÀNG</div>
+    <span class="badge badge-teal">ASP Protocol • Giám Sát Lâm Sàng</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="d8Arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="d8Green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="d8Red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- ROOT: BỆNH NHÂN NGHI NGỜ NHIỄM TRÙNG -->
+      <g transform="translate(280, 20)">
+        <rect x="0" y="0" width="400" height="46" rx="8" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="2"/>
+        <text x="200" y="29" text-anchor="middle" font-size="14" font-weight="900" fill="var(--color-text, #0f172a)">
+          BỆNH NHÂN NGHI NGỜ NHIỄM TRÙNG
+        </text>
+      </g>
+
+      <path d="M 480 66 L 480 95" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#d8Arr)"/>
+
+      <!-- STEP 1: ĐÁNH GIÁ BAN ĐẦU -->
+      <g transform="translate(180, 100)">
+        <rect x="0" y="0" width="600" height="85" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="15" y="10" width="570" height="26" rx="4" fill="#0284c7"/>
+        <text x="300" y="28" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">
+          BƯỚC 1: ĐÁNH GIÁ D8 BAN ĐẦU (KHI BẮT ĐẦU KÊ ĐƠN)
+        </text>
+        <text x="25" y="55" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">• Áp dụng D1 (Diagnosis), D2 (Decision), D3 (Medicine), D4 (Dose), D5, D7, D8</text>
+        <text x="25" y="74" font-size="11" font-weight="600" fill="#0284c7">• Cấy mẫu vi sinh trước liều KS đầu • Chọn KS kinh nghiệm nhóm Access/Watch theo phác đồ</text>
+      </g>
+
+      <path d="M 480 185 L 480 215" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#d8Arr)"/>
+
+      <!-- STEP 2: TIME OUT 48-72H -->
+      <g transform="translate(180, 220)">
+        <rect x="0" y="0" width="600" height="75" rx="10" fill="rgba(217, 119, 6, 0.08)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="15" y="10" width="570" height="26" rx="4" fill="#d97706"/>
+        <text x="300" y="28" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">
+          BƯỚC 2: TIME-OUT ĐÁNH GIÁ LẠI SAU 48 - 72 GIỜ
+        </text>
+        <text x="25" y="56" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">• Rà soát đáp ứng lâm sàng &amp; chỉ số sinh hiệu (Hạ sốt, tri giác, hô hấp)</text>
+        <text x="25" y="72" font-size="11" font-weight="600" fill="#b45309">• Đọc kết quả định danh vi khuẩn &amp; Kháng sinh đồ (KSĐ) từ phòng vi sinh</text>
+      </g>
+
+      <!-- SPLIT TO IMPROVED VS NOT IMPROVED -->
+      <path d="M 480 295 L 480 320" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 260 320 L 700 320" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 260 320 L 260 340" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#d8Green)"/>
+      <path d="M 700 320 L 700 340" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#d8Red)"/>
+
+      <!-- BRANCH 1: CẢI THIỆN -->
+      <g transform="translate(60, 345)">
+        <rect x="0" y="0" width="400" height="115" rx="10" fill="rgba(5, 150, 105, 0.06)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="10" y="10" width="380" height="26" rx="4" fill="#059669"/>
+        <text x="200" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">
+          ✓ LÂM SÀNG CẢI THIỆN TỐT
+        </text>
+        <text x="20" y="55" font-size="11.5" font-weight="700" fill="#047857">• Vi khuẩn nhạy cảm: Xuống thang phổ hẹp (D3)</text>
+        <text x="20" y="75" font-size="11.5" font-weight="700" fill="#047857">• Đủ điều kiện: Chuyển đổi từ IV sang PO (D5)</text>
+        <text x="20" y="95" font-size="11.5" font-weight="700" fill="#047857">• Xác định ngày ngừng liệu trình ngắn nhất (D6)</text>
+      </g>
+
+      <!-- BRANCH 2: KHÔNG CẢI THIỆN -->
+      <g transform="translate(500, 345)">
+        <rect x="0" y="0" width="400" height="115" rx="10" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="10" y="10" width="380" height="26" rx="4" fill="#dc2626"/>
+        <text x="200" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#ffffff">
+          ✗ LÂM SÀNG KHÔNG CẢI THIỆN / NẶNG LÊN
+        </text>
+        <text x="20" y="55" font-size="11.5" font-weight="700" fill="#b91c1c">• Đánh giá lại chẩn đoán &amp; nguồn nhiễm (D1)</text>
+        <text x="20" y="75" font-size="11.5" font-weight="700" fill="#b91c1c">• Tầm soát áp-xe, ổ đọng dịch, biến chứng mới</text>
+        <text x="20" y="95" font-size="11.5" font-weight="700" fill="#b91c1c">• Hội chẩn Dược lâm sàng / BS Truyền nhiễm đổi KS</text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 ### Nguyên Tắc Hành Động Sau 48–72 Giờ (Giờ Vàng Đánh Giá Lại):
 1.  **Nếu lâm sàng cải thiện + Vi khuẩn nhạy cảm:** Tiến hành **Xuống thang kháng sinh (De-escalation)** bằng cách chuyển từ kháng sinh phổ rộng sang kháng sinh phổ hẹp hơn dựa trên kháng sinh đồ, hoặc chuyển từ tiêm tĩnh mạch sang đường uống nếu đạt tiêu chuẩn IV-to-PO.

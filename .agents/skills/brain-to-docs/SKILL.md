@@ -1,6 +1,7 @@
-﻿---
+---
 name: brain-to-docs
-description: Chuyển hóa ý tưởng lâm sàng thành tài liệu kỹ thuật (Brain to Docs): Phỏng vấn làm rõ ý đồ thiết kế, ghi nhận ADR (Architecture Decision Record) và README.
+description: >-
+  Chuyển hóa ý tưởng lâm sàng thành tài liệu kỹ thuật (Brain to Docs): Phỏng vấn làm rõ ý đồ thiết kế, ghi nhận ADR (Architecture Decision Record) và README.
 ---
 
 # brain-to-docs

@@ -60,27 +60,106 @@ Tuy nhiên, các nghiên cứu miễn dịch học lâm sàng quy mô lớn kh�
 
 Theo định nghĩa của Tổ chức Y tế Thế giới (WHO), phản ứng bất lợi của thuốc (Adverse Drug Reaction - ADR) là bất kỳ phản ứng độc hại, không định trước và xảy ra ở liều thường dùng cho người để phòng bệnh, chẩn đoán hoặc điều trị. Để tiếp cận lâm sàng một cách hệ thống, toàn bộ các phản ứng bất lợi của kháng sinh được chia thành hai nhóm chính: Phản ứng loại A (Type A) và Phản ứng loại B (Type B).
 
-```
-                      ┌─────────────────────────────────────────┐
-                      │    Phản Ứng Bất Lợi Của Thuốc (ADR)     │
-                      └────────────────────┬────────────────────┘
-                                           │
-                  ┌────────────────────────┴────────────────────────┐
-                  ▼                                                 ▼
-     ┌─────────────────────────┐                       ┌─────────────────────────┐
-     │   Loại A (Predictable)  │                       │  Loại B (Unpredictable) │
-     │  - Phụ thuộc liều lượng │                       │  - Không phụ thuộc liều │
-     │  - Không qua miễn dịch  │                       │  - Qua trung gian MD    │
-     │  - Chiếm > 80-85% ADRs  │                       │  - Chiếm 10-15% ADRs    │
-     └────────────┬────────────┘                       └────────────┬────────────┘
-                  │                                                 │
-        ┌─────────┴─────────┐                             ┌─────────┴─────────┐
-        ▼                   ▼                             ▼                   ▼
-┌──────────────┐    ┌──────────────┐              ┌──────────────┐    ┌──────────────┐
-│Tác Dụng Phụ  │    │Không Dung Nạp│              │Dị Ứng Thật Sự│    │ Giả Dị Ứng  │
-│(Side Effects)│    │(Intolerance) │              │ (Hypersens.) │    │(Pseudoallergy│
-└──────────────┘    └──────────────┘              └──────────────┘    └──────────────┘
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-code-fork" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ PHÂN LOẠI PHẢN ỨNG BẤT LỢI CỦA THUỐC (ADR: TYPE A VS TYPE B)</div>
+    <span class="badge badge-teal">WHO &amp; EBM 2026</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="adrArrowSky" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="adrArrowRose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e11d48"/>
+        </marker>
+      </defs>
+
+      <!-- ROOT NODE -->
+      <g transform="translate(260, 20)">
+        <rect x="0" y="0" width="440" height="54" rx="10" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="2" />
+        <text x="220" y="34" text-anchor="middle" font-size="16" font-weight="900" fill="var(--color-text, #0f172a)">
+          PHẢN ỨNG BẤT LỢI CỦA THUỐC (ADR)
+        </text>
+      </g>
+
+      <!-- CONNECTORS FROM ROOT -->
+      <path d="M 480 74 L 480 95" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 235 95 L 725 95" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 235 95 L 235 125" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#adrArrowSky)"/>
+      <path d="M 725 95 L 725 125" stroke="#e11d48" stroke-width="2" fill="none" marker-end="url(#adrArrowRose)"/>
+
+      <!-- BRANCH A: TYPE A (Predictable) -->
+      <g transform="translate(30, 130)">
+        <rect x="0" y="0" width="410" height="120" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.8"/>
+        <rect x="12" y="12" width="386" height="30" rx="6" fill="#0284c7"/>
+        <text x="205" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">
+          LOẠI A (PREDICTABLE / DỰ ĐOÁN ĐƯỢC)
+        </text>
+        <text x="25" y="66" font-size="12" font-weight="700" fill="var(--color-text, #0f172a)">• Chiếm &gt; 80 - 85% tổng số ADRs lâm sàng</text>
+        <text x="25" y="88" font-size="11.5" font-weight="600" fill="var(--color-text-muted, #475569)">• Cơ chế: Liên quan trực tiếp dược lý thuốc &amp; vi khuẩn đường ruột</text>
+        <text x="25" y="108" font-size="11.5" font-weight="600" fill="#0369a1">✓ Phụ thuộc liều lượng (Dose-dependent) • Có thể dự đoán trước</text>
+      </g>
+
+      <!-- BRANCH B: TYPE B (Unpredictable) -->
+      <g transform="translate(520, 130)">
+        <rect x="0" y="0" width="410" height="120" rx="10" fill="rgba(225, 29, 72, 0.06)" stroke="#e11d48" stroke-width="1.8"/>
+        <rect x="12" y="12" width="386" height="30" rx="6" fill="#e11d48"/>
+        <text x="205" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">
+          LOẠI B (UNPREDICTABLE / BẤT THƯỜNG)
+        </text>
+        <text x="25" y="66" font-size="12" font-weight="700" fill="var(--color-text, #0f172a)">• Chiếm 10 - 15% tổng số ADRs lâm sàng</text>
+        <text x="25" y="88" font-size="11.5" font-weight="600" fill="var(--color-text-muted, #475569)">• Cơ chế: Qua trung gian miễn dịch dị ứng hoặc đột biến di truyền</text>
+        <text x="25" y="108" font-size="11.5" font-weight="600" fill="#be123c">⚠ Không phụ thuộc liều (Dose-independent) • Rất khó dự đoán</text>
+      </g>
+
+      <!-- CONNECTORS TO SUB-NODES -->
+      <path d="M 235 250 L 235 270" stroke="#0284c7" stroke-width="1.5" fill="none"/>
+      <path d="M 125 270 L 345 270" stroke="#0284c7" stroke-width="1.5" fill="none"/>
+      <path d="M 125 270 L 125 290" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#adrArrowSky)"/>
+      <path d="M 345 270 L 345 290" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#adrArrowSky)"/>
+
+      <path d="M 725 250 L 725 270" stroke="#e11d48" stroke-width="1.5" fill="none"/>
+      <path d="M 615 270 L 835 270" stroke="#e11d48" stroke-width="1.5" fill="none"/>
+      <path d="M 615 270 L 615 290" stroke="#e11d48" stroke-width="1.5" fill="none" marker-end="url(#adrArrowRose)"/>
+      <path d="M 835 270 L 835 290" stroke="#e11d48" stroke-width="1.5" fill="none" marker-end="url(#adrArrowRose)"/>
+
+      <!-- SUB-NODES ROW -->
+      <g transform="translate(25, 295)">
+        <rect x="0" y="0" width="200" height="92" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="800" fill="#0284c7">TÁC DỤNG PHỤ</text>
+        <text x="100" y="42" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Side Effects)</text>
+        <text x="15" y="63" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Buồn nôn, nôn mửa</text>
+        <text x="15" y="80" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Tiêu chảy nhẹ, viêm TM</text>
+      </g>
+
+      <g transform="translate(245, 295)">
+        <rect x="0" y="0" width="200" height="92" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0d9488" stroke-width="1.5"/>
+        <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="800" fill="#0d9488">KHÔNG DUNG NẠP</text>
+        <text x="100" y="42" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Intolerance)</text>
+        <text x="15" y="63" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Đau vùng thượng vị</text>
+        <text x="15" y="80" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Nhức đầu, vị giác đắng</text>
+      </g>
+
+      <g transform="translate(515, 295)">
+        <rect x="0" y="0" width="200" height="92" rx="8" fill="var(--color-surface, #ffffff)" stroke="#e11d48" stroke-width="1.5"/>
+        <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">DỊ ỨNG THẬT SỰ</text>
+        <text x="100" y="42" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Hypersensitivity)</text>
+        <text x="15" y="63" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Mề đay cấp, sốc phản vệ</text>
+        <text x="15" y="80" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• SJS/TEN, DRESS, AGEP</text>
+      </g>
+
+      <g transform="translate(735, 295)">
+        <rect x="0" y="0" width="200" height="92" rx="8" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1.5"/>
+        <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">GIẢ DỊ ỨNG</text>
+        <text x="100" y="42" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">(Pseudoallergy)</text>
+        <text x="15" y="63" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• Phóng thích Histamine trực tiếp</text>
+        <text x="15" y="80" font-size="10.5" font-weight="500" fill="var(--color-text, #0f172a)">• HC truyền Vancomycin (VIR)</text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 ### Phản Ứng Loại A (Type A - Predictable / Augmentative)
 Phản ứng loại A chiếm hơn 80% đến 85% tổng số các phản ứng bất lợi của kháng sinh trên lâm sàng. Nhóm phản ứng này có các đặc tính dược lý cốt lõi:
@@ -121,29 +200,115 @@ Tình trạng ghi nhận "dị ứng Penicillin" hoặc "dị ứng Beta-lactam"
 ### Hậu Quả Lâm Sàng Nghiêm Trọng Của Việc Dán Nhãn Sai
 Việc mang một nhãn dị ứng Penicillin giả tạo gây ra những tác động tiêu cực to lớn đối với sức khỏe bệnh nhân và hệ thống y tế:
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   HỒ SƠ BỆNH ÁN: "DÁN NHÃN DỊ ỨNG PENICILLIN"          │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│  Bắt buộc tránh sử dụng toàn bộ nhóm Beta-lactam (Penicillin, Cefs)   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ Chuyển sang kháng sinh thay thế: Quinolones, Vancomycin, Clindamycin   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-            ┌───────────────────────┼───────────────────────┐
-            ▼                       ▼                       ▼
-┌───────────────────────┐ ┌───────────────────┐ ┌───────────────────────┐
-│ Giảm Hiệu Quả Điều Trị│ │ Gia Tăng Độc Tính │ │   Tăng Nguy Cơ Lây    │
-│- Tỷ lệ thất bại cao   │ │- Độc thận (Vanco) │ │- Nhiễm C. difficile   │
-│- Tăng tỷ lệ tử vong   │ │- Độc gân (Quinol) │ │- Chọn lọc MRSA & VRE  │
-└───────────────────────┘ └───────────────────┘ └───────────────────────┘
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-triangle-exclamation" style="color: #e11d48;"></i> SƠ ĐỒ HẬU QUẢ LÂM SÀNG CỦA VIỆC DÁN NHÃN DỊ ỨNG PENICILLIN SAI</div>
+    <span class="badge badge-rose">EBM 2026 • AN TOÀN KÊ ĐƠN</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="hqArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+        </marker>
+        <marker id="hqArrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+        <marker id="hqArrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="hqArrowIndigo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#7c3aed"/>
+        </marker>
+      </defs>
+
+      <!-- NODE 1: NHÃN BỆNH ÁN -->
+      <g transform="translate(140, 20)">
+        <rect x="0" y="0" width="680" height="56" rx="10" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" stroke-width="2" />
+        <text x="340" y="27" text-anchor="middle" font-size="14.5" font-weight="900" fill="#b45309">
+          HỒ SƠ BỆNH ÁN: "DÁN NHÃN DỊ ỨNG PENICILLIN"
+        </text>
+        <text x="340" y="46" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text-muted, #64748b)">
+          (Thực tế &gt; 90-95% không phải dị ứng thật • Chỉ 1-3% có phản ứng IgE đích thực)
+        </text>
+      </g>
+
+      <!-- ARROW 1 -->
+      <path d="M 480 76 L 480 102" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#hqArrow)"/>
+
+      <!-- NODE 2: TRÁNH BETA-LACTAM -->
+      <g transform="translate(140, 106)">
+        <rect x="0" y="0" width="680" height="48" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8" />
+        <text x="340" y="30" text-anchor="middle" font-size="13.5" font-weight="800" fill="var(--color-text, #0f172a)">
+          Bắt Buộc Tránh Sử Dụng Toàn Bộ Nhóm Beta-lactam (Penicillins, Cephalosporins)
+        </text>
+      </g>
+
+      <!-- ARROW 2 -->
+      <path d="M 480 154 L 480 180" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#hqArrow)"/>
+
+      <!-- NODE 3: CHUYỂN KHÁNG SINH THAY THẾ -->
+      <g transform="translate(140, 184)">
+        <rect x="0" y="0" width="680" height="48" rx="8" fill="rgba(100, 116, 139, 0.08)" stroke="#64748b" stroke-width="1.8" />
+        <text x="340" y="30" text-anchor="middle" font-size="13.5" font-weight="800" fill="var(--color-text, #0f172a)">
+          Chuyển Sang Kháng Sinh Thay Thế: Quinolones, Vancomycin, Clindamycin, Carbapenems
+        </text>
+      </g>
+
+      <!-- ARROW 3 SPLIT TO 3 COLUMNS -->
+      <path d="M 480 232 L 480 255" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 170 255 L 790 255" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <!-- Down to Col 1 -->
+      <path d="M 170 255 L 170 280" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#hqArrowRed)"/>
+      <!-- Down to Col 2 -->
+      <path d="M 480 255 L 480 280" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#hqArrowAmber)"/>
+      <!-- Down to Col 3 -->
+      <path d="M 790 255 L 790 280" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#hqArrowIndigo)"/>
+
+      <!-- COL 1: GIẢM HIỆU QUẢ ĐIỀU TRỊ (RED) -->
+      <g transform="translate(30, 285)">
+        <rect x="0" y="0" width="280" height="185" rx="10" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="30" rx="6" fill="#dc2626"/>
+        <text x="140" y="30" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">
+          GIẢM HIỆU QUẢ ĐIỀU TRỊ
+        </text>
+        <text x="20" y="65" font-size="11.5" font-weight="700" fill="#dc2626">• Tỷ lệ thất bại điều trị cao:</text>
+        <text x="28" y="83" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Vancomycin diệt khuẩn chậm hơn Beta-lactam đối với vi khuẩn MSSA</text>
+        <text x="20" y="110" font-size="11.5" font-weight="700" fill="#dc2626">• Tăng tỷ lệ tử vong:</text>
+        <text x="28" y="128" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Bệnh nhân nhiễm khuẩn huyết MSSA dùng Vancomycin có tử vong cao hơn rõ rệt</text>
+        <text x="20" y="155" font-size="11.5" font-weight="700" fill="#991b1b">• Bỏ lỡ kháng sinh diệt khuẩn tối ưu</text>
+      </g>
+
+      <!-- COL 2: GIA TĂNG ĐỘC TÍNH (AMBER) -->
+      <g transform="translate(340, 285)">
+        <rect x="0" y="0" width="280" height="185" rx="10" fill="rgba(217, 119, 6, 0.06)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="30" rx="6" fill="#d97706"/>
+        <text x="140" y="30" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">
+          GIA TĂNG ĐỘC TÍNH CƠ QUAN
+        </text>
+        <text x="20" y="65" font-size="11.5" font-weight="700" fill="#d97706">• Độc tính trên thận (Nephrotoxicity):</text>
+        <text x="28" y="83" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Do Vancomycin và Aminoglycosides, đặc biệt khi phối hợp thuốc</text>
+        <text x="20" y="110" font-size="11.5" font-weight="700" fill="#d97706">• Độc gân &amp; Tim mạch:</text>
+        <text x="28" y="128" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Fluoroquinolones gây đứt gân gót, kéo dài khoảng QT gây loạn nhịp</text>
+        <text x="20" y="155" font-size="11.5" font-weight="700" fill="#b45309">• Tăng gánh nặng giám sát TDM</text>
+      </g>
+
+      <!-- COL 3: TĂNG NGUY CƠ LÂY NHIỄM & KHÁNG THUỐC (INDIGO) -->
+      <g transform="translate(650, 285)">
+        <rect x="0" y="0" width="280" height="185" rx="10" fill="rgba(124, 58, 237, 0.06)" stroke="#7c3aed" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="30" rx="6" fill="#7c3aed"/>
+        <text x="140" y="30" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">
+          TĂNG NGUY CƠ VI SINH &amp; CHI PHÍ
+        </text>
+        <text x="20" y="65" font-size="11.5" font-weight="700" fill="#7c3aed">• Viêm đại tràng giả mạc C. diff:</text>
+        <text x="28" y="83" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Nguy cơ nhiễm Clostridioides difficile tăng gấp 2 - 3 lần</text>
+        <text x="20" y="110" font-size="11.5" font-weight="700" fill="#7c3aed">• Áp lực chọn lọc đa kháng:</text>
+        <text x="28" y="128" font-size="11" font-weight="500" fill="var(--color-text-muted, #475569)">Thúc đẩy sự bùng phát các chủng vi khuẩn MRSA, VRE, CRE</text>
+        <text x="20" y="155" font-size="11.5" font-weight="700" fill="#6d28d9">• Tăng ngày nằm viện +0.5-1.5 ngày</text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 *   **Lựa chọn kháng sinh dưới mức tối ưu:** Beta-lactam là nhóm kháng sinh diệt khuẩn có hiệu quả cao nhất và độc tính thấp nhất cho đa số nhiễm khuẩn nghiêm trọng. Khi bị gắn nhãn dị ứng, bệnh nhân phải dùng các thuốc thay thế như Vancomycin, Fluoroquinolones, Clindamycin hoặc Aminoglycosides—những thuốc có khả năng diệt khuẩn kém hơn đối với một số vi khuẩn Gram dương (như MSSA) và có nguy cơ độc tính cao hơn.
 *   **Gia tăng tỷ lệ thất bại và tử vong:** Bệnh nhân nhiễm khuẩn huyết do MSSA được điều trị bằng Vancomycin (do nhãn dị ứng Penicillin) có tỷ lệ thất bại điều trị và tử vong cao hơn đáng kể so với bệnh nhân được điều trị bằng Beta-lactam chống tụ cầu (Nafcillin, Cefazolin).
@@ -193,39 +358,174 @@ Xóa nhãn dị ứng (Delabeling) là quy trình chủ động đánh giá lạ
 
 ### Sơ Đồ Phân Tầng Nguy Cơ Dị Ứng Penicillin / Beta-Lactam
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│              KHAI THÁC TIỀN SỬ CHI TIẾT TỪ BỆNH NHÂN                  │
-│ - Tên thuốc? Triệu chứng cụ thể? Khởi phát sau bao lâu?               │
-│ - Xảy ra cách đây bao nhiêu năm? Đã từng dùng lại Beta-lactam chưa?   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-            ┌───────────────────────┼───────────────────────┐
-            ▼                       ▼                       ▼
-┌───────────────────────┐ ┌───────────────────┐ ┌───────────────────────┐
-│     NGUY CƠ THẤP      │ │NGUY CƠ TRUNG BÌNH │ │     NGUY CƠ CAO       │
-│- Triệu chứng không    │ │- Mề đay cấp hoặc  │ │- Sốc phản vệ (Anaphyl)│
-│  dung nạp (tiêu chảy, │ │  phù mạch xảy ra  │ │- Phù mạch thanh quản  │
-│  buồn nôn, đau đầu)   │ │  < 10 năm trước   │ │- Co thắt phế quản     │
-│- Ban da muộn > 10 năm │ │- Triệu chứng IgE  │ │- Phản ứng da nặng     │
-│- Tiền sử gia đình     │ │  rõ nhưng không   │ │  (SJS/TEN, DRESS)     │
-│- Ban da do virus (EBV)│ │  gây sốc phản vệ  │ │- Viêm thận kẽ/Nội tạng│
-└───────────┬───────────┘ └─────────┬─────────┘ └───────────┬───────────┘
-            │                       │                       │
-            ▼                       ▼                       ▼
-┌───────────────────────┐ ┌───────────────────┐ ┌───────────────────────┐
-│   Thử Thách Đường     │ │  Khám Chuyên Khoa │ │ CHỐNG CHỈ ĐỊNH DÙNG   │
-│   Uống Trực Tiếp      │ │ Dị Ứng / Test Da  │ │ THUỐC ĐÓ VÀ DÙNG      │
-│(Direct Oral Challenge)│ │ (Skin Prick Test) │ │   TEST DA TRỰC TIẾP   │
-└───────────┬───────────┘ └─────────┬─────────┘ └───────────┬───────────┘
-            │                       │                       │
-            ▼                       ▼                       ▼
-┌───────────────────────┐ ┌───────────────────┐ ┌───────────────────────┐
-│ Âm tính $\rightarrow$ Xóa nhãn│ │ Âm tính $\rightarrow$ Xóa nhãn│ │ Chuyển kháng sinh khác│
-│  Dương tính $\rightarrow$ Giữ │ │ Dương tính $\rightarrow$ Giữ │ │ Hoặc Giải mẫn cảm     │
-│       nhãn dị ứng     │ │       nhãn dị ứng     │ │ (Desensitization)     │
-└───────────────────────┘ └───────────────────┘ └───────────────────────┘
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-clipboard-check" style="color: #059669;"></i> LƯU ĐỒ PHÂN TẦNG NGUY CƠ DỊ ỨNG PENICILLIN &amp; THỰC HÀNH XÓA NHÃN (DELABELING)</div>
+    <span class="badge badge-emerald">AAAAI / IDSA 2026 • PEN-FAST</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="dlbGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+        </marker>
+        <marker id="dlbAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+        </marker>
+        <marker id="dlbRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        </marker>
+      </defs>
+
+      <!-- STEP 1: KHAI THÁC TIỀN SỬ -->
+      <g transform="translate(140, 20)">
+        <rect x="0" y="0" width="680" height="54" rx="10" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="2"/>
+        <text x="340" y="26" text-anchor="middle" font-size="14" font-weight="900" fill="var(--color-text, #0f172a)">
+          BƯỚC 1: KHAI THÁC TIỀN SỬ LÂM SÀNG CHI TIẾT TỪ BỆNH NHÂN (5 CÂU HỎI)
+        </text>
+        <text x="340" y="44" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text-muted, #64748b)">
+          Tên thuốc? Triệu chứng cụ thể? Khởi phát sau bao lâu? Xảy ra bao nhiêu năm trước? Đã từng dùng lại chưa?
+        </text>
+      </g>
+
+      <!-- SPLIT TO 3 RISK TIERS -->
+      <path d="M 480 74 L 480 95" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 170 95 L 790 95" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 170 95 L 170 115" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#dlbGreen)"/>
+      <path d="M 480 95 L 480 115" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#dlbAmber)"/>
+      <path d="M 790 95 L 790 115" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#dlbRed)"/>
+
+      <!-- TIER 1: NGUY CƠ THẤP -->
+      <g transform="translate(30, 120)">
+        <rect x="0" y="0" width="280" height="150" rx="10" fill="rgba(5, 150, 105, 0.06)" stroke="#059669" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="28" rx="6" fill="#059669"/>
+        <text x="140" y="29" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">
+          NGUY CƠ THẤP (PEN-FAST &lt; 3)
+        </text>
+        <text x="15" y="58" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Triệu chứng không dung nạp (buồn nôn, tiêu chảy, đau đầu)</text>
+        <text x="15" y="90" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Ban dát sẩn muộn xảy ra &gt; 10 năm trước</text>
+        <text x="15" y="112" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Tiền sử gia đình (người thân dị ứng)</text>
+        <text x="15" y="134" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Ban da do tương tác virus (EBV)</text>
+      </g>
+
+      <!-- TIER 2: NGUY CƠ TRUNG BÌNH -->
+      <g transform="translate(340, 120)">
+        <rect x="0" y="0" width="280" height="150" rx="10" fill="rgba(217, 119, 6, 0.06)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="28" rx="6" fill="#d97706"/>
+        <text x="140" y="29" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">
+          NGUY CƠ TRUNG BÌNH (PEN-FAST = 3)
+        </text>
+        <text x="15" y="58" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Mề đay cấp hoặc phù mạch xảy ra trong vòng &lt; 10 năm</text>
+        <text x="15" y="90" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Triệu chứng qua trung gian IgE rõ ràng</text>
+        <text x="15" y="112" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Chưa từng gây sốc phản vệ</text>
+        <text x="15" y="134" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Dung nạp chưa rõ ràng</text>
+      </g>
+
+      <!-- TIER 3: NGUY CƠ CAO -->
+      <g transform="translate(650, 120)">
+        <rect x="0" y="0" width="280" height="150" rx="10" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="10" y="10" width="260" height="28" rx="6" fill="#dc2626"/>
+        <text x="140" y="29" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">
+          NGUY CƠ CAO (PEN-FAST ≥ 4)
+        </text>
+        <text x="15" y="58" font-size="11" font-weight="700" fill="#b91c1c">• Sốc phản vệ (Anaphylaxis)</text>
+        <text x="15" y="78" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Phù mạch thanh quản, co thắt phế quản</text>
+        <text x="15" y="98" font-size="11" font-weight="700" fill="#b91c1c">• Phản ứng da nặng (SCARs): SJS/TEN, DRESS, AGEP</text>
+        <text x="15" y="128" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">• Viêm thận kẽ, tổn thương đa tạng</text>
+      </g>
+
+      <!-- CONNECTORS TO ACTIONS -->
+      <path d="M 170 270 L 170 295" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#dlbGreen)"/>
+      <path d="M 480 270 L 480 295" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#dlbAmber)"/>
+      <path d="M 790 270 L 790 295" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#dlbRed)"/>
+
+      <!-- ACTION NODES -->
+      <g transform="translate(30, 300)">
+        <rect x="0" y="0" width="280" height="80" rx="8" fill="rgba(5, 150, 105, 0.12)" stroke="#059669" stroke-width="2"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="900" fill="#065f46">
+          THỬ THÁCH ĐƯỜNG UỐNG TRỰC TIẾP
+        </text>
+        <text x="140" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">
+          (Direct Oral Challenge - Không cần test da)
+        </text>
+        <text x="140" y="64" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #475569)">
+          1 liều Amoxicillin theo dõi 60-120 phút
+        </text>
+      </g>
+
+      <g transform="translate(340, 300)">
+        <rect x="0" y="0" width="280" height="80" rx="8" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" stroke-width="2"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="900" fill="#92400e">
+          KHÁM DỊ ỨNG &amp; XÉT NGHIỆM TEST DA
+        </text>
+        <text x="140" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">
+          (Skin Prick Test &amp; Intradermal Test)
+        </text>
+        <text x="140" y="64" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #475569)">
+          Thực hiện tại cơ sở có phương tiện cấp cứu
+        </text>
+      </g>
+
+      <g transform="translate(650, 300)">
+        <rect x="0" y="0" width="280" height="80" rx="8" fill="rgba(220, 38, 38, 0.12)" stroke="#dc2626" stroke-width="2"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="900" fill="#991b1b">
+          CHỐNG CHỈ ĐỊNH DÙNG LẠI THUỐC
+        </text>
+        <text x="140" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">
+          &amp; CHỐNG CHỈ ĐỊNH TEST DA TRỰC TIẾP
+        </text>
+        <text x="140" y="64" text-anchor="middle" font-size="10.5" font-weight="600" fill="#991b1b">
+          Nguy cơ tái phát phản vệ đe dọa tử vong
+        </text>
+      </g>
+
+      <!-- CONNECTORS TO OUTCOMES -->
+      <path d="M 170 380 L 170 405" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#dlbGreen)"/>
+      <path d="M 480 380 L 480 405" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#dlbAmber)"/>
+      <path d="M 790 380 L 790 405" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#dlbRed)"/>
+
+      <!-- OUTCOME NODES -->
+      <g transform="translate(30, 410)">
+        <rect x="0" y="0" width="280" height="85" rx="8" fill="#ecfdf5" stroke="#059669" stroke-width="1.8"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#047857">
+          ✓ ÂM TÍNH: XÓA NHÃN DỊ ỨNG
+        </text>
+        <text x="140" y="45" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+          Ghi nhận dung nạp an toàn vào EMR
+        </text>
+        <text x="140" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="#dc2626">
+          ✗ Dương tính: Giữ nhãn dị ứng
+        </text>
+      </g>
+
+      <g transform="translate(340, 410)">
+        <rect x="0" y="0" width="280" height="85" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#b45309">
+          ✓ ÂM TÍNH: TIẾP TỤC TEST UỐNG
+        </text>
+        <text x="140" y="45" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+          Nếu test uống dung nạp tốt $ightarrow$ Xóa nhãn
+        </text>
+        <text x="140" y="66" text-anchor="middle" font-size="10.5" font-weight="600" fill="#dc2626">
+          ✗ Dương tính: Giữ nhãn dị ứng vĩnh viễn
+        </text>
+      </g>
+
+      <g transform="translate(650, 410)">
+        <rect x="0" y="0" width="280" height="85" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+        <text x="140" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#b91c1c">
+          CHUYỂN KHÁNG SINH KHÁC
+        </text>
+        <text x="140" y="45" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+          Chọn nhóm thuốc không dị ứng chéo
+        </text>
+        <text x="140" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c3aed">
+          ★ Hoặc Giải mẫn cảm (Desensitization)
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 ### Các Bước Khai Thác Tiền Sử Dị Ứng Lâm Sàng (5 Câu Hỏi Cốt Lõi)
 Khi gặp bệnh nhân có ghi nhận dị ứng kháng sinh, nhân viên y tế cần đặt 5 câu hỏi cụ thể:

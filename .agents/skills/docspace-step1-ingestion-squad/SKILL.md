@@ -1,6 +1,7 @@
 ---
 name: docspace-step1-ingestion-squad
-description: Đội ngũ AI chuyên trách Tiếp nhận Dữ liệu Bệnh nhân, Ca mẫu Lâm sàng, Trích xuất Triệu chứng (Cơ năng - Thực thể - Tiền căn - CLS), Đo lường Sinh hiệu cốt lõi và Bối cảnh Dịch tễ học cho Bước 1 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 1, phát triển tính năng nạp ca bệnh, chuẩn hóa bộ lọc triệu chứng hoặc bổ sung ca lâm sàng mẫu.
+description: >-
+  Đội ngũ AI chuyên trách Tiếp nhận Dữ liệu Bệnh nhân, Ca mẫu Lâm sàng, Trích xuất Triệu chứng (Cơ năng - Thực thể - Tiền căn - CLS), Đo lường Sinh hiệu cốt lõi và Bối cảnh Dịch tễ học cho Bước 1 phân hệ CliniPortal DocSpace. Kích hoạt khi cần tối ưu giao diện Bước 1, phát triển tính năng nạp ca bệnh, chuẩn hóa bộ lọc triệu chứng hoặc bổ sung ca lâm sàng mẫu.
 ---
 
 # 🤖 DocSpace Step 1 — Clinical Ingestion & Case Acquisition Squad

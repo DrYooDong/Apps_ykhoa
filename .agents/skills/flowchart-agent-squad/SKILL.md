@@ -1,6 +1,7 @@
 ---
 name: flowchart-agent-squad
-description: Đội ngũ AI chuyên trách tư duy logic lâm sàng, quy hoạch bố cục trực giao (Orthogonal Routing) và vẽ lưu đồ y khoa đồ họa xuất bản (Pure Editorial SVG) cho CliniPortal.
+description: >-
+  Đội ngũ AI chuyên trách tư duy logic lâm sàng, quy hoạch bố cục trực giao (Orthogonal Routing) và vẽ lưu đồ y khoa đồ họa xuất bản (Pure Editorial SVG) cho CliniPortal.
 ---
 
 # 📐 Medical Flowchart Agent Squad — CliniPortal

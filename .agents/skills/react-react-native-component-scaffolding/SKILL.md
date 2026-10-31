@@ -1,6 +1,7 @@
 ---
 name: react-react-native-component-scaffolding
-description: Scaffolding component React & React Native chuẩn sản xuất: TypeScript typings, unit tests, styling, accessibility và storybook.
+description: >-
+  Scaffolding component React & React Native chuẩn sản xuất: TypeScript typings, unit tests, styling, accessibility và storybook.
 ---
 
 # React/React Native Component Scaffolding

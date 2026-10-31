@@ -1,3 +1,9 @@
+---
+name: cliniportal-debugging
+description: >-
+  Quy trình chẩn đoán tức thì, khắc phục lỗi giao diện, cú pháp HTML/CSS/JS, và mô hình truy vết đồ thị mã nguồn (Graphify Call Graph Tracing) trong hệ sinh thái CliniPortal.
+---
+
 # CliniPortal Debugging & Accelerated Risk Mitigation Skill
 
 Skill này cung cấp các nguyên tắc, phương pháp chẩn đoán tức thì, và quy trình khắc phục các lỗi giao diện, lỗi cú pháp HTML/CSS/JS, cùng **mô hình truy vết đồ thị mã nguồn (Graphify Call Graph Tracing)** trong hệ sinh thái CliniPortal.
@@ -109,3 +115,4 @@ Mỗi khi khắc phục sự cố, cập nhật ngay thông tin vào bảng sau:
 > 1. Đếm lại số thẻ HTML bằng `node tools/tools/scratch/check_tags.js <file>`.
 > 2. Đánh giá mức độ ảnh hưởng bằng `node tools/tools/scratch/query_graph.js <symbol>`.
 > 3. Sửa bằng script patch NodeJS để loại trừ hoàn toàn rủi ro CRLF truncation trên Windows.
+

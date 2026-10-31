@@ -1,10 +1,7 @@
 ---
 name: medical-editorial-diagram
-description: >
-  Tạo sơ đồ Y khoa đồ họa xuất bản cao cấp (Editorial Medical Diagrams) bằng Pure HTML + Inline SVG.
-  Tự động vẽ các dạng sơ đồ: Swimlane cấp cứu, Ma trận phân tầng 2x2 (Quadrant), Chồng tầng bậc thang (Layer Stack),
-  Radar so sánh thuốc, Kim tự tháp chứng cứ EBM (Pyramid), Vòng lặp hồi sức (Clinical Loop) và Lưu đồ trực giao (Orthogonal Flowchart).
-  Tuyệt đối không dùng thư viện ngoài (No Mermaid, No Chart.js), tuân thủ 100% Dark Mode và Design Tokens của CliniPortal.
+description: >-
+  Tạo sơ đồ Y khoa đồ họa xuất bản cao cấp (Editorial Medical Diagrams) bằng Pure HTML + Inline SVG. Tự động vẽ các dạng sơ đồ: Swimlane cấp cứu, Ma trận phân tầng 2x2 (Quadrant), Chồng tầng bậc thang (Layer Stack), Radar so sánh thuốc, Kim tự tháp chứng cứ EBM (Pyramid), Vòng lặp hồi sức (Clinical Loop) và Lưu đồ trực giao (Orthogonal Flowchart). Tuyệt đối không dùng thư viện ngoài (No Mermaid, No Chart.js), tuân thủ 100% Dark Mode và Design Tokens của CliniPortal.
 ---
 
 # Medical Editorial Diagram Skill (Kỹ Năng Tạo Sơ Đồ Y Khoa Xuất Bản Độc Lập)

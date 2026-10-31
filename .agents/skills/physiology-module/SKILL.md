@@ -1,11 +1,7 @@
 ---
 name: physiology-module
-description: >
-  Quy trình tạo và chỉnh sửa bài viết Sinh lý học Y khoa chuẩn MDX Native (Astro Content Collections)
-  trong phân hệ Cơ sở Y khoa (src/content/basic-medical/physiology/) của CliniPortal.
-  Kích hoạt khi AI cần: viết bài học sinh lý mới thuộc 9 khối (Part 1 - Part 9),
-  thêm sơ đồ vòng điều hòa phản hồi (Feedback loops) SVG, công thức toán lý sinh KaTeX (Nernst, GHK, Starling, GFR),
-  hoặc tích hợp các ca lâm sàng / dược lý ứng dụng chuẩn Guyton 14th & Ganong 26th.
+description: >-
+  Quy trình tạo và chỉnh sửa bài viết Sinh lý học Y khoa chuẩn MDX Native (Astro Content Collections) trong phân hệ Cơ sở Y khoa (src/content/basic-medical/physiology/) của CliniPortal. Kích hoạt khi AI cần: viết bài học sinh lý mới thuộc 9 khối (Part 1 - Part 9), thêm sơ đồ vòng điều hòa phản hồi (Feedback loops) SVG, công thức toán lý sinh KaTeX (Nernst, GHK, Starling, GFR), hoặc tích hợp các ca lâm sàng / dược lý ứng dụng chuẩn Guyton 14th & Ganong 26th.
 ---
 
 # Physiology Module Skill (Sinh Lý Học Y Khoa — MDX Native)

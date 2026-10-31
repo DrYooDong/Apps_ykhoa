@@ -1,6 +1,7 @@
 ---
 name: performance-optimizer-medical
-description: Kỹ thuật tối ưu hóa tốc độ tải trang, giảm thiểu thời gian phản hồi (TTFB, LCP, CLS) cho thiết bị y tế cấu hình thấp và máy tính bệnh viện trong CliniPortal.
+description: >-
+  Kỹ thuật tối ưu hóa tốc độ tải trang, giảm thiểu thời gian phản hồi (TTFB, LCP, CLS) cho thiết bị y tế cấu hình thấp và máy tính bệnh viện trong CliniPortal.
 ---
 
 # Performance Optimizer Medical — CliniPortal

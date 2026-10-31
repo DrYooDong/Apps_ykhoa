@@ -1,6 +1,7 @@
 ---
 name: linux-troubleshooting-workflow
-description: Quy trình xử lý sự cố Linux toàn diện: chẩn đoán hiệu năng CPU/RAM/IO, lỗi dịch vụ systemd, mạng network và giới hạn tài nguyên hệ thống.
+description: >-
+  Quy trình xử lý sự cố Linux toàn diện: chẩn đoán hiệu năng CPU/RAM/IO, lỗi dịch vụ systemd, mạng network và giới hạn tài nguyên hệ thống.
 ---
 
 # Linux Troubleshooting Workflow

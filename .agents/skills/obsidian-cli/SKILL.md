@@ -1,6 +1,7 @@
 ---
 name: obsidian-cli
-description: Quản lý, tra cứu và tự động hóa kho tri thức Obsidian (knowledge-vault) trong CliniPortal: Tương tác qua Obsidian CLI, tạo note, cập nhật Metadata YAML/Properties, tra cứu Wikilinks/Backlinks, và đồng bộ 16 Kho kiến thức y khoa.
+description: >-
+  Quản lý, tra cứu và tự động hóa kho tri thức Obsidian (knowledge-vault) trong CliniPortal: Tương tác qua Obsidian CLI, tạo note, cập nhật Metadata YAML/Properties, tra cứu Wikilinks/Backlinks, và đồng bộ 16 Kho kiến thức y khoa.
 ---
 
 # 🧠 Obsidian CLI & Knowledge-Vault Management

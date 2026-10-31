@@ -1,15 +1,7 @@
 ---
 name: mdx-content-architecture
-description: Thiết kế, đánh giá và tái cấu trúc kiến trúc nội dung MDX cho documentation, blog, marketing site, knowledge base hoặc content platform. Dùng khi cần quy hoạch content types, folder structure, routing, frontmatter schema, MDX components, validation, SEO, localization và governance.
-version: 1.0.0
-updated: 2026-08-26
-tags:
-  - mdx
-  - content-architecture
-  - documentation
-  - frontmatter
-  - content-modeling
-  - ia
+description: >-
+  Thiết kế, đánh giá và tái cấu trúc kiến trúc nội dung MDX cho documentation, blog, marketing site, knowledge base hoặc content platform. Dùng khi cần quy hoạch content types, folder structure, routing, frontmatter schema, MDX components, validation, SEO, localization và governance.
 ---
 
 # MDX Content Architecture

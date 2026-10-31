@@ -1,6 +1,7 @@
-﻿---
+---
 name: cdss-development-patterns
-description: Mẫu thiết kế Hệ thống Hỗ trợ Ra Quyết định Lâm sàng (CDSS): Kiểm tra tương tác thuốc, hiệu chỉnh liều theo chức năng thận (eGFR), phân tầng thang điểm y khoa (NEWS2, qSOFA, Wells, CHA2DS2-VASc) bằng pure functions không side-effect.
+description: >-
+  Mẫu thiết kế Hệ thống Hỗ trợ Ra Quyết định Lâm sàng (CDSS): Kiểm tra tương tác thuốc, hiệu chỉnh liều theo chức năng thận (eGFR), phân tầng thang điểm y khoa (NEWS2, qSOFA, Wells, CHA2DS2-VASc) bằng pure functions không side-effect.
 ---
 
 # Healthcare CDSS Development Patterns

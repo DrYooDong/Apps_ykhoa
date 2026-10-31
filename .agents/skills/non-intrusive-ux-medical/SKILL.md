@@ -1,6 +1,7 @@
 ---
 name: non-intrusive-ux-medical
-description: Kỹ năng thiết kế giao diện Y khoa Không Xâm lấn (Non-Intrusive Medical UX) lấy cảm hứng từ Abridge AI. Áp dụng cho CliniPortal: Chế độ Focus Mode (Zen Mode), Slide-over Drawers thay thế Popup Modal, Progressive Disclosure (Tách tầng thông tin), Quick Glance Cards (Tóm tắt ≤5s) và Ambient Toasts.
+description: >-
+  Kỹ năng thiết kế giao diện Y khoa Không Xâm lấn (Non-Intrusive Medical UX) lấy cảm hứng từ Abridge AI. Áp dụng cho CliniPortal: Chế độ Focus Mode (Zen Mode), Slide-over Drawers thay thế Popup Modal, Progressive Disclosure (Tách tầng thông tin), Quick Glance Cards (Tóm tắt ≤5s) và Ambient Toasts.
 ---
 
 # Non-Intrusive Medical UX — CliniPortal

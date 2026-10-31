@@ -1,9 +1,7 @@
 ---
 name: docspace-soap-guardian-squad
-description: >
-  Đội ngũ AI chuyên trách quản trị, bảo trì, kiểm định dữ liệu và tối ưu hóa giao diện cho phân hệ Sổ tay Kinh nghiệm Thực chiến SOAP (DocSpace MedLens).
-  Kích hoạt khi AI cần: sửa lỗi hiển thị/thiếu ca bệnh SOAP, khắc phục lỗi layout mobile/tablet, kiểm tra đồng bộ danh mục catalog (Catalog Drift),
-  chuẩn hóa Frontmatter YAML ca bệnh, hoặc chạy kiểm định chất lượng phân hệ Sổ tay SOAP.
+description: >-
+  Đội ngũ AI chuyên trách quản trị, bảo trì, kiểm định dữ liệu và tối ưu hóa giao diện cho phân hệ Sổ tay Kinh nghiệm Thực chiến SOAP (DocSpace MedLens). Kích hoạt khi AI cần: sửa lỗi hiển thị/thiếu ca bệnh SOAP, khắc phục lỗi layout mobile/tablet, kiểm tra đồng bộ danh mục catalog (Catalog Drift), chuẩn hóa Frontmatter YAML ca bệnh, hoặc chạy kiểm định chất lượng phân hệ Sổ tay SOAP.
 ---
 
 # 🩺 DocSpace SOAP Guardian Squad

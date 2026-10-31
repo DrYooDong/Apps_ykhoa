@@ -1,6 +1,7 @@
-﻿---
+---
 name: ai-agent-development-workflow
-description: Quy trình phát triển và kiểm thử AI Agent chuẩn 5 pha: Thiết kế, Tích hợp công cụ, Bộ nhớ, Kiểm thử an toàn và Triển khai điều phối. Kích hoạt khi xây dựng quy trình agentic mới.
+description: >-
+  Quy trình phát triển và kiểm thử AI Agent chuẩn 5 pha: Thiết kế, Tích hợp công cụ, Bộ nhớ, Kiểm thử an toàn và Triển khai điều phối. Kích hoạt khi xây dựng quy trình agentic mới.
 ---
 
 # AI Agent Development Workflow

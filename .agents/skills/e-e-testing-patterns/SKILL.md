@@ -1,3 +1,9 @@
+---
+name: e-e-testing-patterns
+description: >-
+  Build reliable, fast, and maintainable end-to-end test suites that provide confidence to ship code.
+---
+
 # E2E Testing Patterns
 
 Build reliable, fast, and maintainable end-to-end test suites that provide confidence to ship code quickly and catch regressions before users do.
@@ -39,3 +45,4 @@ Build reliable, fast, and maintainable end-to-end test suites that provide confi
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+

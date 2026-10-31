@@ -1,6 +1,7 @@
-﻿---
+---
 name: karpathy-guidelines
-description: Nguyên tắc lập trình thận trọng của Andrej Karpathy cho AI: Suy nghĩ trước khi code, không tự ý giả định, bộc lộ tradeoffs, sửa đổi vi phẫu chính xác và đơn giản hóa mã nguồn.
+description: >-
+  Nguyên tắc lập trình thận trọng của Andrej Karpathy cho AI: Suy nghĩ trước khi code, không tự ý giả định, bộc lộ tradeoffs, sửa đổi vi phẫu chính xác và đơn giản hóa mã nguồn.
 ---
 
 # Karpathy Guidelines

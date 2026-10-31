@@ -1,11 +1,7 @@
 ---
 name: epidemiology-module
-description: >
-  Quy trình tạo và chỉnh sửa bài viết Dịch tễ học Y khoa & Y tế công cộng chuẩn MDX Native (Astro Content Collections)
-  trong phân hệ Cơ sở Y khoa (src/content/basic-medical/epidemiology/) của CliniPortal.
-  Kích hoạt khi AI cần: tạo bài Dịch tễ học bệnh lý mới từ Knowledge Vault (1.4. Kho dịch tễ học),
-  thêm sơ đồ tam giác dịch tễ / chu kỳ lây truyền vector SVG Editorial, tích hợp bảng đối sánh véc-tơ,
-  dữ liệu tỷ lệ mắc/tử vong, R0, DALYs hoặc xử lý layout điều hướng sticky.
+description: >-
+  Quy trình tạo và chỉnh sửa bài viết Dịch tễ học Y khoa & Y tế công cộng chuẩn MDX Native (Astro Content Collections) trong phân hệ Cơ sở Y khoa (src/content/basic-medical/epidemiology/) của CliniPortal. Kích hoạt khi AI cần: tạo bài Dịch tễ học bệnh lý mới từ Knowledge Vault (1.4. Kho dịch tễ học), thêm sơ đồ tam giác dịch tễ / chu kỳ lây truyền vector SVG Editorial, tích hợp bảng đối sánh véc-tơ, dữ liệu tỷ lệ mắc/tử vong, R0, DALYs hoặc xử lý layout điều hướng sticky.
 ---
 
 # Epidemiology Module Skill (Dịch Tễ Học Y Khoa & Y Tế Công Cộng — MDX Native)

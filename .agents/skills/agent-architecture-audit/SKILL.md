@@ -1,3 +1,9 @@
+---
+name: agent-architecture-audit
+description: >-
+  Diagnostic workflow for agent systems that hide failures behind wrapper layers, stale memory, retry loops, or transport/rendering mutations.
+---
+
 # Agent Architecture Audit
 
 A diagnostic workflow for agent systems that hide failures behind wrapper layers, stale memory, retry loops, or transport/rendering mutations.
@@ -247,3 +253,4 @@ Audits should produce structured reports following this shape:
 - `security-review` — Security audit for code and configuration
 - `autonomous-agent-harness` — Set up autonomous agent operations
 - `agent-harness-construction` — Build agent harnesses from scratch
+

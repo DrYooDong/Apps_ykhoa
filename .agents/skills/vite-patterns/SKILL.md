@@ -1,3 +1,9 @@
+---
+name: vite-patterns
+description: >-
+  Vite build tool and dev server patterns: configuration, environment variables, proxy setup, and bundling.
+---
+
 # Vite Patterns
 
 Build tool and dev server patterns for Vite 8+ projects. Covers configuration, environment variables, proxy setup, library mode, dependency pre-bundling, and common production pitfalls.
@@ -441,3 +447,4 @@ import.meta.hot.data.count = 0                 // CORRECT
 - `frontend-patterns` — React component patterns
 - `docker-patterns` — containerized dev with Vite
 - `nextjs-turbopack` — alternative bundler for Next.js
+

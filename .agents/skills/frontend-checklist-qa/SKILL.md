@@ -1,6 +1,7 @@
 ---
 name: frontend-checklist-qa
-description: Kỹ năng tra cứu Kho Tiêu chuẩn & Bảng kiểm Front-End (Front-End Checklist & Quality Vault) lấy cảm hứng từ thedaviddias/Front-End-Checklist. Kích hoạt khi AI cần kiểm tra toàn diện giao diện, sửa lỗi UI/UX, tối ưu SEO/Performance/Accessibility, hoặc audit trang web trong CliniPortal.
+description: >-
+  Kỹ năng tra cứu Kho Tiêu chuẩn & Bảng kiểm Front-End (Front-End Checklist & Quality Vault) lấy cảm hứng từ thedaviddias/Front-End-Checklist. Kích hoạt khi AI cần kiểm tra toàn diện giao diện, sửa lỗi UI/UX, tối ưu SEO/Performance/Accessibility, hoặc audit trang web trong CliniPortal.
 ---
 
 # Front-End Checklist & Quality Vault Skill

@@ -1,10 +1,7 @@
 ---
 name: cdss-standalone-manager
-description: >
-  Kỹ năng quản lý, kiểm tra, audit và giám sát vòng đời các web CDSS độc lập (Standalone CDSS Web Modules)
-  trong hệ sinh thái CliniPortal DocSpace. Kích hoạt khi cần: tra cứu danh mục CDSS, kiểm tra tính toàn vẹn
-  kết nối giữa Hub và các module con, kiểm tra chế độ chạy offline file:/// và GitHub Pages, rà soát registry
-  (cdss-registry.ts), hoặc bảo trì các module CDSS (Dengue, ECG, ABG, RadAI X-Ray, Hepa, Neuro, Microbio, Antibiotic).
+description: >-
+  Kỹ năng quản lý, kiểm tra, audit và giám sát vòng đời các web CDSS độc lập (Standalone CDSS Web Modules) trong hệ sinh thái CliniPortal DocSpace. Kích hoạt khi cần: tra cứu danh mục CDSS, kiểm tra tính toàn vẹn kết nối giữa Hub và các module con, kiểm tra chế độ chạy offline file:/// và GitHub Pages, rà soát registry (cdss-registry.ts), hoặc bảo trì các module CDSS (Dengue, ECG, ABG, RadAI X-Ray, Hepa, Neuro, Microbio, Antibiotic).
 ---
 
 # CDSS Standalone Manager Skill

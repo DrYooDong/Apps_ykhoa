@@ -1,6 +1,7 @@
 ---
 name: react-next-js-development-workflow
-description: Quy trình phát triển React và Next.js hiện đại: App Router, Server Components, TypeScript, Tailwind CSS và tối ưu hóa hiệu năng.
+description: >-
+  Quy trình phát triển React và Next.js hiện đại: App Router, Server Components, TypeScript, Tailwind CSS và tối ưu hóa hiệu năng.
 ---
 
 # React/Next.js Development Workflow

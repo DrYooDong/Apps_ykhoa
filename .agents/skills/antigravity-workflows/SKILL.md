@@ -1,6 +1,7 @@
 ---
 name: antigravity-workflows
-description: Biến các mục tiêu phức tạp thành chuỗi workflow các skill tuần tự có hướng dẫn (SaaS MVP, Web Security Audit, AI Agent System, E2E QA).
+description: >-
+  Biến các mục tiêu phức tạp thành chuỗi workflow các skill tuần tự có hướng dẫn (SaaS MVP, Web Security Audit, AI Agent System, E2E QA).
 ---
 
 # Antigravity Workflows

@@ -1,6 +1,7 @@
 ---
 name: subagent-coding-workflow
-description: Kỷ luật và quy trình điều phối AI Coding Agent (Subagent Workflow): Cô lập vùng làm việc (Git Worktree Isolation), cấu trúc Task Spec bền vững, báo cáo trạng thái theo milestone và kiểm soát an toàn nhánh trước khi tích hợp.
+description: >-
+  Kỷ luật và quy trình điều phối AI Coding Agent (Subagent Workflow): Cô lập vùng làm việc (Git Worktree Isolation), cấu trúc Task Spec bền vững, báo cáo trạng thái theo milestone và kiểm soát an toàn nhánh trước khi tích hợp.
 ---
 
 # 🤖 Subagent Coding Workflow & Agentic Discipline

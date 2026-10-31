@@ -1,10 +1,7 @@
 ---
 name: research-synthesizer
-description: >
-  Đội ngũ & Quy trình Tổng hợp Nghiên cứu Khoa học Y học Chứng cứ Đỉnh cao (Medical Research Synthesizer)
-  chuẩn Nature & EBM 2026. Hấp thu tri thức từ nature-skills (nature-paper-card, nature-literature-pipeline,
-  nature-shared): Khung PICO, Ma trận Chuỗi Bằng chứng (Claim-Evidence Matrix), Đánh giá GRADE, Forest Plot,
-  và Rút trích Tri thức Chuyển giao Thực hành Lâm sàng (Practice-Changing Insights).
+description: >-
+  Đội ngũ & Quy trình Tổng hợp Nghiên cứu Khoa học Y học Chứng cứ Đỉnh cao (Medical Research Synthesizer) chuẩn Nature & EBM 2026. Hấp thu tri thức từ nature-skills (nature-paper-card, nature-literature-pipeline, nature-shared): Khung PICO, Ma trận Chuỗi Bằng chứng (Claim-Evidence Matrix), Đánh giá GRADE, Forest Plot, và Rút trích Tri thức Chuyển giao Thực hành Lâm sàng (Practice-Changing Insights).
 ---
 
 # 🔬 Medical Research Synthesizer — Master Skill (Nature & EBM 2026 Standard)

@@ -1,6 +1,7 @@
-﻿---
+---
 name: design-engineering
-description: Triết lý và thực thi Kỹ thuật Thiết kế (Design Engineering) của Emil Kowalski: Micro-interactions mượt mà, physics-based springs, layout tokenized, component states & visual hierarchy hoàn mỹ.
+description: >-
+  Triết lý và thực thi Kỹ thuật Thiết kế (Design Engineering) của Emil Kowalski: Micro-interactions mượt mà, physics-based springs, layout tokenized, component states & visual hierarchy hoàn mỹ.
 ---
 
 # Design Engineering

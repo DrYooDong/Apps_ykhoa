@@ -1,6 +1,7 @@
-﻿---
+---
 name: canvas-design
-description: Nguyên lý thiết kế đồ họa thị giác Canvas: Xây dựng triết lý thẩm mỹ thị giác, bố cục tỷ lệ vàng, tương phản hình khối và minh họa trực quan y khoa.
+description: >-
+  Nguyên lý thiết kế đồ họa thị giác Canvas: Xây dựng triết lý thẩm mỹ thị giác, bố cục tỷ lệ vàng, tương phản hình khối và minh họa trực quan y khoa.
 ---
 
 These are instructions for creating design philosophies - aesthetic movements that are then EXPRESSED VISUALLY. Output only .md files, .pdf files, and .png files.

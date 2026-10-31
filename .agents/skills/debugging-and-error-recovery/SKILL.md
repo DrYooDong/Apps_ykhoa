@@ -1,6 +1,7 @@
 ---
 name: debugging-and-error-recovery
-description: Structured triage and safe recovery workflow during critical errors and bug fixing.
+description: >-
+  Structured triage and safe recovery workflow during critical errors and bug fixing.
 ---
 
 # Debugging and Error Recovery

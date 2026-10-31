@@ -1,9 +1,7 @@
 ---
 name: pediatric-approach-module
-description: >
-  Quy trình (Workflow) chuẩn xây dựng và chỉnh sửa các trang tiếp cận chuyên khoa Nhi khoa & Tiếp cận lâm sàng 
-  chất lượng cao trong CliniPortal. Kích hoạt khi AI cần: tạo trang tiếp cận Nhi khoa mới, dựng giao diện CDSS tương tác, 
-  thiết kế Quick Nav Sticky Bar, hoặc phòng tránh các lỗi HTML/CSS/JS phổ biến.
+description: >-
+  Quy trình (Workflow) chuẩn xây dựng và chỉnh sửa các trang tiếp cận chuyên khoa Nhi khoa & Tiếp cận lâm sàng chất lượng cao trong CliniPortal. Kích hoạt khi AI cần: tạo trang tiếp cận Nhi khoa mới, dựng giao diện CDSS tương tác, thiết kế Quick Nav Sticky Bar, hoặc phòng tránh các lỗi HTML/CSS/JS phổ biến.
 ---
 
 # Pediatric & Specialty Approach Workflow Skill

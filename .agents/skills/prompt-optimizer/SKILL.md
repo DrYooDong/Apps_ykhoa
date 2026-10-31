@@ -1,6 +1,7 @@
-﻿---
+---
 name: prompt-optimizer
-description: Tối ưu hóa hiệu suất Prompt và tiết kiệm chi phí token: Phân tích baseline, cắt bỏ câu từ thừa thãi, chuỗi hóa prompt (Prompt chaining) và cấu trúc rõ ràng.
+description: >-
+  Tối ưu hóa hiệu suất Prompt và tiết kiệm chi phí token: Phân tích baseline, cắt bỏ câu từ thừa thãi, chuỗi hóa prompt (Prompt chaining) và cấu trúc rõ ràng.
 ---
 
 # âš¡ Prompt Optimizer

@@ -1,3 +1,9 @@
+---
+name: testing-patterns-and-utilities
+description: >-
+  Testing patterns, test factories, unit testing mocks, and assertions for web applications.
+---
+
 # Testing Patterns and Utilities
 ## When to Use
 
@@ -262,3 +268,4 @@ npm test ComponentName.test.tsx
 - Use this skill only when the task clearly matches its upstream source and local project context.
 - Verify commands, generated code, dependencies, credentials, and external service behavior before applying changes.
 - Do not treat examples as a substitute for environment-specific tests, security review, or user approval for destructive or costly actions.
+

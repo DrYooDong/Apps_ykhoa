@@ -1,6 +1,7 @@
-﻿---
+---
 name: multi-agent-optimization
-description: Bộ công cụ tối ưu hóa chi phí token, giảm độ trễ, gỡ nút thắt cổ chai và nâng cao hiệu suất điều phối nhiều agent trong CliniPortal.
+description: >-
+  Bộ công cụ tối ưu hóa chi phí token, giảm độ trễ, gỡ nút thắt cổ chai và nâng cao hiệu suất điều phối nhiều agent trong CliniPortal.
 ---
 
 # Multi-Agent Optimization Toolkit

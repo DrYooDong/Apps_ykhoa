@@ -1,6 +1,7 @@
-﻿---
+---
 name: maintaining-agents-md
-description: Quy trình duy trì và bảo trì tệp AGENTS.md: Tinh gọn dưới 100 dòng, loại bỏ trùng lặp, đồng bộ tài liệu với thực trạng codebase.
+description: >-
+  Quy trình duy trì và bảo trì tệp AGENTS.md: Tinh gọn dưới 100 dòng, loại bỏ trùng lặp, đồng bộ tài liệu với thực trạng codebase.
 ---
 
 # Maintaining AGENTS.md

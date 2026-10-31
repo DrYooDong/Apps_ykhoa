@@ -1,6 +1,7 @@
 ---
 name: gemini-cli
-description: Automation and workflow execution using Gemini CLI.
+description: >-
+  Automation and workflow execution using Gemini CLI.
 ---
 
 # Gemini CLI

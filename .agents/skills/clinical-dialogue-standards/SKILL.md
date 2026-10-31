@@ -1,6 +1,7 @@
-﻿---
+---
 name: clinical-dialogue-standards
-description: Chuẩn mực đối thoại và tư vấn thông tin y tế: Khung giao tiếp đồng cảm, phân tầng triệu chứng khẩn cấp (Red flags), cảnh báo an toàn y đức và cấu trúc trả lời cho nhân viên y tế.
+description: >-
+  Chuẩn mực đối thoại và tư vấn thông tin y tế: Khung giao tiếp đồng cảm, phân tầng triệu chứng khẩn cấp (Red flags), cảnh báo an toàn y đức và cấu trúc trả lời cho nhân viên y tế.
 ---
 
 # Claude Ally Health

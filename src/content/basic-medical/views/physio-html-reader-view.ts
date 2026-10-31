@@ -8,7 +8,9 @@
 
 import '../../../styles/components/guidelines-article.css';
 import '../../../styles/components/mdx-base.css';
+import '../../../styles/components/mdx/mdx-diagrams.css';
 import '../css/physio-shared.css';
+import '../css/editorial-flowchart.css';
 import { CliniPortalThemeManager } from '../../../main';
 import { cliniMdxEngine } from '../../../core/mdx-engine';
 import { getGuidelinesForPathoTopic, renderPathoGuidelineWidgetHtml } from '../data/patho-guideline-matrix';

@@ -1,6 +1,7 @@
-﻿---
+---
 name: data-structure-protocol-dsp
-description: Giao thức cấu trúc dữ liệu codebase (DSP): Xây dựng bản đồ thực thể (Entity Graph), ranh giới phụ thuộc và lý do liên kết giúp AI định hướng siêu tốc.
+description: >-
+  Giao thức cấu trúc dữ liệu codebase (DSP): Xây dựng bản đồ thực thể (Entity Graph), ranh giới phụ thuộc và lý do liên kết giúp AI định hướng siêu tốc.
 ---
 
 # Data Structure Protocol (DSP)

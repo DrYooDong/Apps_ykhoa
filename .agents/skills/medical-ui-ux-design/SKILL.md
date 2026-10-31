@@ -1,6 +1,7 @@
 ---
 name: medical-ui-ux-design
-description: Kỹ năng thiết kế giao diện UI/UX y khoa hiện đại, ứng dụng Design Tokens (CSS Variables), Dark Mode, không gian màu OKLCH mở rộng, tỷ lệ Line-height động, glassmorphism, 8 Định luật UX và hiệu ứng chuyển động mượt mà cho CliniPortal.
+description: >-
+  Kỹ năng thiết kế giao diện UI/UX y khoa hiện đại, ứng dụng Design Tokens (CSS Variables), Dark Mode, không gian màu OKLCH mở rộng, tỷ lệ Line-height động, glassmorphism, 8 Định luật UX và hiệu ứng chuyển động mượt mà cho CliniPortal.
 ---
 
 # 🩺 Medical UI/UX Design Mastery — CliniPortal Pro Max

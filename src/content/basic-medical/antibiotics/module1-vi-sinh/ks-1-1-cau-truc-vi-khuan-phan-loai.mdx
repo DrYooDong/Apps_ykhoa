@@ -287,20 +287,55 @@ Không phải mọi vi khuẩn gây bệnh đều tuân theo mô hình Gram dư�
 
 Sự am hiểu về cấu trúc màng tế bào cho phép bác sĩ giải thích và dự đoán chính xác hiện tượng **kháng tự nhiên (Intrinsic Resistance)** của các chủng vi khuẩn:
 
-```
-                  +-----------------------------------+
-                  | BẢN ĐỒ CẤU TRÚC VÀ TÁC ĐỘNG THUỐC |
-                  +-----------------------------------+
-                                    |
-         +--------------------------+--------------------------+
-         |                                                     |
-  [ KHÔNG CÓ VÁCH ]                                    [ MÀNG NGOÀI LỚN ]
-   (Mycoplasma spp.)                                   (Gram-negative / P. aeruginosa)
-         |                                                     |
-  * Kháng 100% Beta-lactams                            * Glycopeptides (Vancomycin) không qua được Porin
-  * Kháng 100% Glycopeptides                           * Penicillin G / Nafcillin không qua được màng ngoài
-  * Dùng: Macrolide, Doxycycline                       * Dùng: Anti-pseudomonal Beta-lactams, AGs, FQs
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-shield-virus" style="color: #0284c7;"></i> BẢN ĐỒ CẤU TRÚC VÁCH &amp; TÁC ĐỘNG CHỌN LỌC CỦA KHÁNG SINH</div>
+    <span class="badge badge-teal">Vi Sinh Y Học • Dược Lý</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <!-- ROOT -->
+      <g transform="translate(260, 20)">
+        <rect x="0" y="0" width="440" height="46" rx="8" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="2"/>
+        <text x="220" y="29" text-anchor="middle" font-size="14" font-weight="900" fill="var(--color-text, #0f172a)">
+          ĐẶC ĐIỂM CẤU TRÚC &amp; QUY LUẬT TÁC ĐỘNG THUỐC
+        </text>
+      </g>
+
+      <!-- SPLIT -->
+      <path d="M 480 66 L 480 90" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 240 90 L 720 90" stroke="#94a3b8" stroke-width="2" fill="none"/>
+      <path d="M 240 90 L 240 115" stroke="#d97706" stroke-width="2" fill="none"/>
+      <path d="M 720 90 L 720 115" stroke="#dc2626" stroke-width="2" fill="none"/>
+
+      <!-- BRANCH 1: KHÔNG CÓ VÁCH -->
+      <g transform="translate(40, 120)">
+        <rect x="0" y="0" width="410" height="160" rx="10" fill="rgba(217, 119, 6, 0.06)" stroke="#d97706" stroke-width="1.8"/>
+        <rect x="12" y="10" width="386" height="28" rx="6" fill="#d97706"/>
+        <text x="205" y="29" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">
+          VI KHUẨN KHÔNG CÓ VÁCH PEPTIDOGLYCAN
+        </text>
+        <text x="20" y="60" font-size="12" font-weight="700" fill="#b45309">Đại diện: Mycoplasma pneumoniae, Ureaplasma</text>
+        <text x="20" y="85" font-size="11.5" font-weight="600" fill="#dc2626">✗ Kháng tự nhiên 100% nhóm Beta-lactams</text>
+        <text x="20" y="105" font-size="11.5" font-weight="600" fill="#dc2626">✗ Kháng tự nhiên 100% Glycopeptides (Vancomycin)</text>
+        <text x="20" y="135" font-size="11.5" font-weight="700" fill="#047857">✓ Thuốc hiệu quả: Macrolides (Azithro), Doxycycline, FQs</text>
+      </g>
+
+      <!-- BRANCH 2: MÀNG NGOÀI LỚN GRAM ÂM -->
+      <g transform="translate(510, 120)">
+        <rect x="0" y="0" width="410" height="160" rx="10" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.8"/>
+        <rect x="12" y="10" width="386" height="28" rx="6" fill="#dc2626"/>
+        <text x="205" y="29" text-anchor="middle" font-size="12.5" font-weight="900" fill="#ffffff">
+          VI KHUẨN CÓ MÀNG NGOÀI (LPS) &amp; PORIN
+        </text>
+        <text x="20" y="60" font-size="12" font-weight="700" fill="#991b1b">Đại diện: Trực khuẩn Gram âm, P. aeruginosa, Enterobacterales</text>
+        <text x="20" y="85" font-size="11.5" font-weight="600" fill="#dc2626">✗ Glycopeptides (Vancomycin) quá cồng kềnh, không qua được Porin</text>
+        <text x="20" y="105" font-size="11.5" font-weight="600" fill="#dc2626">✗ Penicillin G / Nafcillin bị màng ngoài lipid ngăn cản</text>
+        <text x="20" y="135" font-size="11.5" font-weight="700" fill="#047857">✓ Thuốc hiệu quả: Beta-lactams kháng trực khuẩn mủ xanh, AGs, FQs</text>
+      </g>
+    </svg>
+  </div>
+</div>
 
 ### Bảng tra cứu kháng tự nhiên dựa trên cấu trúc vỏ tế bào
 

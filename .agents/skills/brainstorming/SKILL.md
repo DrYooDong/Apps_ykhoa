@@ -1,6 +1,7 @@
 ---
 name: brainstorming
-description: Kịch bản và quy trình động não, lập ý tưởng UI/UX y khoa, sơ đồ khối tính năng và giải pháp kiến trúc cho CliniPortal. Kích hoạt khi AI hoặc người dùng cần lên ý tưởng mới.
+description: >-
+  Kịch bản và quy trình động não, lập ý tưởng UI/UX y khoa, sơ đồ khối tính năng và giải pháp kiến trúc cho CliniPortal. Kích hoạt khi AI hoặc người dùng cần lên ý tưởng mới.
 ---
 
 # Brainstorming & Ideation Workflow

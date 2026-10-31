@@ -1,3 +1,9 @@
+---
+name: ui-component-generator
+description: >-
+  Generate new UI components following design system tokens, states, and accessibility standards.
+---
+
 # UI Component Generator
 ## When to Use
 
@@ -62,3 +68,4 @@ Description: $ARGUMENTS
 - Use this skill only when the task clearly matches its upstream source and local project context.
 - Verify commands, generated code, dependencies, credentials, and external service behavior before applying changes.
 - Do not treat examples as a substitute for environment-specific tests, security review, or user approval for destructive or costly actions.
+

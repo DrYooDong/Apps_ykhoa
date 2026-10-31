@@ -1,10 +1,7 @@
 ---
 name: pathology-approach-module
-description: >
-  Tạo, chỉnh sửa và quản lý các phác đồ tiếp cận bệnh lý y khoa (Pathology Matrix, Flowchart & Clinical Infographic Poster Board)
-  trong phân hệ Bệnh lý của CliniPortal. Kích hoạt khi AI cần: tạo trang phác đồ bệnh lý mới,
-  xây dựng Infographic Poster kết hợp Flowchart và các card thông tin xung quanh (Alert Banner,
-  Comparison Card, Dose Table, Process Ribbon, Clinical Pearls), hoặc làm việc với thư mục pages/Tiếp cận/4. Bệnh lý/.
+description: >-
+  Tạo, chỉnh sửa và quản lý các phác đồ tiếp cận bệnh lý y khoa (Pathology Matrix, Flowchart & Clinical Infographic Poster Board) trong phân hệ Bệnh lý của CliniPortal. Kích hoạt khi AI cần: tạo trang phác đồ bệnh lý mới, xây dựng Infographic Poster kết hợp Flowchart và các card thông tin xung quanh (Alert Banner, Comparison Card, Dose Table, Process Ribbon, Clinical Pearls), hoặc làm việc với thư mục pages/Tiếp cận/4. Bệnh lý/.
 ---
 
 # Pathology Approach & Clinical Infographic Board Module Skill

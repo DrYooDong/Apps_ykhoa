@@ -1,10 +1,7 @@
 ---
 name: cdss-module-builder
-description: >
-  Quy trình thiết kế, scaffolding, đóng gói và tích hợp một CDSS web độc lập (Standalone CDSS Web Module) mới
-  vào hệ sinh thái CliniPortal DocSpace. Kích hoạt khi AI hoặc người dùng cần: tạo module CDSS mới từ đầu,
-  nhập (import) một dự án CDSS từ bên ngoài vào, biên dịch bundle tĩnh chạy offline file:///, hoặc cấu hình
-  đăng ký module trong cdss-registry.ts.
+description: >-
+  Quy trình thiết kế, scaffolding, đóng gói và tích hợp một CDSS web độc lập (Standalone CDSS Web Module) mới vào hệ sinh thái CliniPortal DocSpace. Kích hoạt khi AI hoặc người dùng cần: tạo module CDSS mới từ đầu, nhập (import) một dự án CDSS từ bên ngoài vào, biên dịch bundle tĩnh chạy offline file:///, hoặc cấu hình đăng ký module trong cdss-registry.ts.
 ---
 
 # CDSS Module Builder Skill

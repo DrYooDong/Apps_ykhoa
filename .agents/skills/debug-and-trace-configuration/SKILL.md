@@ -1,6 +1,7 @@
 ---
 name: debug-and-trace-configuration
-description: Thiết lập môi trường debugging toàn diện, distributed tracing (OpenTelemetry, Jaeger, Zipkin), log aggregation và chẩn đoán sự cố.
+description: >-
+  Thiết lập môi trường debugging toàn diện, distributed tracing (OpenTelemetry, Jaeger, Zipkin), log aggregation và chẩn đoán sự cố.
 ---
 
 # Debug and Trace Configuration

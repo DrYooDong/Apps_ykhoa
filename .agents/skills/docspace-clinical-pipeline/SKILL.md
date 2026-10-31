@@ -1,11 +1,7 @@
 ---
 name: docspace-clinical-pipeline
-description: >
-  Master Skill điều phối toàn diện Chu trình Lâm sàng 4 Bước của CliniPortal DocSpace (src/content/docspace)
-  và bộ prompt y khoa (src/content/docspace/docs/prompts/). Kích hoạt khi AI cần: nạp dữ liệu bệnh lý từ NotebookLM
-  (Prompt 00, 05, 06, 07, 08, 01-04), tích hợp bệnh mới vào CSDL, kiểm tra tính toàn vẹn 4 Bước lâm sàng
-  (Bước 1 Ca mẫu -> Bước 2 Tóm tắt & Tam giác DTH -> Bước 3 CDSS & Phân độ -> Bước 4 Bảng 3 Cột, Phác đồ 9 phân mục & SOAP),
-  chuẩn hóa chuyên khoa và chạy audit kiểm định tự động.
+description: >-
+  Master Skill điều phối toàn diện Chu trình Lâm sàng 4 Bước của CliniPortal DocSpace (src/content/docspace) và bộ prompt y khoa (src/content/docspace/docs/prompts/). Kích hoạt khi AI cần: nạp dữ liệu bệnh lý từ NotebookLM (Prompt 00, 05, 06, 07, 08, 01-04), tích hợp bệnh mới vào CSDL, kiểm tra tính toàn vẹn 4 Bước lâm sàng (Bước 1 Ca mẫu -> Bước 2 Tóm tắt & Tam giác DTH -> Bước 3 CDSS & Phân độ -> Bước 4 Bảng 3 Cột, Phác đồ 9 phân mục & SOAP), chuẩn hóa chuyên khoa và chạy audit kiểm định tự động.
 ---
 
 # DocSpace Clinical Pipeline — Master Orchestrator Skill

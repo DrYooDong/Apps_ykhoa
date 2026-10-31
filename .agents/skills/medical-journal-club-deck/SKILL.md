@@ -1,10 +1,7 @@
 ---
 name: medical-journal-club-deck
-description: >
-  Thiết Kế & Tạo Bài Thuyết Trình Sinh Hoạt Khoa Học / Journal Club Y Khoa Chuẩn Nature (Medical Journal Club Deck Builder).
-  Hấp thu tri thức từ nature-skills (nature-paper2ppt, nature-image2ppt): Cốt truyện Luận chứng (Argumentative Spine),
-  Giữ nguyên Hình ảnh & Bảng biểu gốc, Ghi chú Báo cáo viên Chuyên sâu (Speaker Notes), Bảng Thuật ngữ Nhất quán,
-  và Xuất bản dạng Slide Web Trực quan (Reveal.js v6 / Pure HTML Presentation) hoặc PPTX Học thuật.
+description: >-
+  Thiết Kế & Tạo Bài Thuyết Trình Sinh Hoạt Khoa Học / Journal Club Y Khoa Chuẩn Nature (Medical Journal Club Deck Builder). Hấp thu tri thức từ nature-skills (nature-paper2ppt, nature-image2ppt): Cốt truyện Luận chứng (Argumentative Spine), Giữ nguyên Hình ảnh & Bảng biểu gốc, Ghi chú Báo cáo viên Chuyên sâu (Speaker Notes), Bảng Thuật ngữ Nhất quán, và Xuất bản dạng Slide Web Trực quan (Reveal.js v6 / Pure HTML Presentation) hoặc PPTX Học thuật.
 ---
 
 # 📽️ Medical Journal Club Deck Builder — Nature & Clinical Seminar Standard

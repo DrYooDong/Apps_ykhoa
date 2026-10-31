@@ -1,6 +1,7 @@
 ---
 name: provenance-auditability
-description: Kỹ năng chuẩn hóa Nguồn gốc và Dấu vết Kiểm toán Y khoa (Provenance & Auditability) lấy cảm hứng từ Abridge AI. Áp dụng cho CliniPortal: Hệ thống 5 nhóm Evidence Badges (Class I, IIa, IIb, III, Expert Consensus), Provenance Audit Bar (Tem kiểm định EBM) và Clinical Changelog Timeline (Lịch sử cập nhật phác đồ đối sánh cũ vs mới).
+description: >-
+  Kỹ năng chuẩn hóa Nguồn gốc và Dấu vết Kiểm toán Y khoa (Provenance & Auditability) lấy cảm hứng từ Abridge AI. Áp dụng cho CliniPortal: Hệ thống 5 nhóm Evidence Badges (Class I, IIa, IIb, III, Expert Consensus), Provenance Audit Bar (Tem kiểm định EBM) và Clinical Changelog Timeline (Lịch sử cập nhật phác đồ đối sánh cũ vs mới).
 ---
 
 # Provenance & Clinical Auditability — CliniPortal
