@@ -154,26 +154,6 @@ export function renderBiochemistryView(): string {
         </span>
       </button>
 
-      <!-- MOBILE BOTTOM SHEET DRAWER -->
-      <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
-      <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn khối hóa sinh">
-        <div class="bm-drawer-header">
-          <h3 class="bm-drawer-title">
-            <i class="fa-solid fa-flask-vial" style="color: var(--dsp-violet, #8b5cf6);"></i>
-            <span>Khối Kiến Thức Hóa Sinh (7 Khối)</span>
-          </h3>
-          <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
-        </div>
-        <div class="bm-drawer-body">
-          ${BIOCHEMISTRY_DATA.blocks.map((b, idx) => `
-            <a href="#${b.id}-section" class="bm-drawer-item ${idx === 0 ? 'active' : ''}">
-              <span><i class="fa-solid ${b.icon}" style="margin-right:8px; color:#8b5cf6;"></i> ${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '')}</span>
-              <span class="bm-drawer-item-badge">${BIOCHEMISTRY_DATA.topics.filter(t => t.blockId === b.id).length}</span>
-            </a>
-          `).join('')}
-        </div>
-      </div>
-
       <!-- DASHBOARD LAYOUT -->
       <div class="dashboard-layout">
         <!-- Navigation Sidebar (Sticky) -->
@@ -276,6 +256,26 @@ export function renderBiochemistryView(): string {
     <!-- QUICK PREVIEW MODAL / DRAWER -->
     <div class="biochem-modal-backdrop" id="biochemModalBackdrop">
       <div class="biochem-modal" id="biochemModalContainer" role="dialog" aria-modal="true"></div>
+    </div>
+
+    <!-- MOBILE BOTTOM SHEET DRAWER (ISOLATED AT ROOT LEVEL) -->
+    <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
+    <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn khối hóa sinh">
+      <div class="bm-drawer-header">
+        <h3 class="bm-drawer-title">
+          <i class="fa-solid fa-flask-vial" style="color: var(--dsp-violet, #8b5cf6);"></i>
+          <span>Khối Kiến Thức Hóa Sinh (7 Khối)</span>
+        </h3>
+        <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="bm-drawer-body">
+        ${BIOCHEMISTRY_DATA.blocks.map((b, idx) => `
+          <a href="#${b.id}-section" class="bm-drawer-item ${idx === 0 ? 'active' : ''}">
+            <span><i class="fa-solid ${b.icon}" style="margin-right:8px; color:#8b5cf6;"></i> ${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '')}</span>
+            <span class="bm-drawer-item-badge">${BIOCHEMISTRY_DATA.topics.filter(t => t.blockId === b.id).length}</span>
+          </a>
+        `).join('')}
+      </div>
     </div>
   `;
 }

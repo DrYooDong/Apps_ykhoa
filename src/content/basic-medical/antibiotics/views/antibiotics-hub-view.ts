@@ -169,26 +169,6 @@ export function renderAntibioticsHubView(): string {
         </span>
       </button>
 
-      <!-- MOBILE BOTTOM SHEET DRAWER -->
-      <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
-      <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn khối kháng sinh">
-        <div class="bm-drawer-header">
-          <h3 class="bm-drawer-title">
-            <i class="fa-solid fa-shield-virus" style="color: var(--dsp-sky, #0284c7);"></i>
-            <span>Khối Chuyên Đề Kháng Sinh (6 Modules)</span>
-          </h3>
-          <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
-        </div>
-        <div class="bm-drawer-body">
-          ${ANTIBIOTIC_MODULES.map((m, idx) => `
-            <a href="#${m.key}-section" class="bm-drawer-item ${idx === 0 ? 'active' : ''}">
-              <span><i class="fa-solid ${m.icon}" style="margin-right:8px; color:#0284c7;"></i> M${m.number}. ${m.shortTitle}</span>
-              <span class="bm-drawer-item-badge">${m.lessons.length}</span>
-            </a>
-          `).join('')}
-        </div>
-      </div>
-
       <!-- DASHBOARD LAYOUT -->
       <div class="dashboard-layout">
         <!-- Navigation Sidebar (Sticky) -->
@@ -284,6 +264,26 @@ export function renderAntibioticsHubView(): string {
     <!-- QUICK PREVIEW MODAL / DRAWER -->
     <div class="biochem-modal-backdrop" id="antibioticsModalBackdrop">
       <div class="biochem-modal" id="antibioticsModalContainer" role="dialog" aria-modal="true"></div>
+    </div>
+
+    <!-- MOBILE BOTTOM SHEET DRAWER (ISOLATED AT ROOT LEVEL) -->
+    <div class="bm-mobile-drawer-backdrop" id="bmMobileDrawerBackdrop"></div>
+    <div class="bm-mobile-drawer-sheet" id="bmMobileDrawerSheet" role="dialog" aria-modal="true" aria-label="Chọn khối kháng sinh">
+      <div class="bm-drawer-header">
+        <h3 class="bm-drawer-title">
+          <i class="fa-solid fa-shield-virus" style="color: var(--dsp-sky, #0284c7);"></i>
+          <span>Khối Chuyên Đề Kháng Sinh (6 Modules)</span>
+        </h3>
+        <button class="bm-drawer-close-btn" id="bmMobileDrawerClose" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="bm-drawer-body">
+        ${ANTIBIOTIC_MODULES.map((m, idx) => `
+          <a href="#${m.key}-section" class="bm-drawer-item ${idx === 0 ? 'active' : ''}">
+            <span><i class="fa-solid ${m.icon}" style="margin-right:8px; color:#0284c7;"></i> M${m.number}. ${m.shortTitle}</span>
+            <span class="bm-drawer-item-badge">${m.lessons.length}</span>
+          </a>
+        `).join('')}
+      </div>
     </div>
   `;
 }

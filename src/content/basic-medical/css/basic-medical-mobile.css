@@ -274,13 +274,15 @@
 /* ==========================================================================
    7. MOBILE BOTTOM SHEET DRAWER FOR ORGAN SYSTEMS (9 HỆ & 16 CHUYÊN KHOA)
    ========================================================================== */
-.bm-mobile-drawer-trigger {
-  display: none;
+.bm-mobile-drawer-trigger,
+.bm-mobile-drawer-backdrop,
+.bm-mobile-drawer-sheet {
+  display: none !important;
 }
 
 @media (max-width: 1023.98px) {
   .bm-mobile-drawer-trigger {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -305,6 +307,7 @@
 
   /* Drawer Backdrop */
   .bm-mobile-drawer-backdrop {
+    display: block !important;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.65);
@@ -323,6 +326,7 @@
 
   /* Drawer Sheet */
   .bm-mobile-drawer-sheet {
+    display: flex !important;
     position: fixed;
     left: 0;
     right: 0;
@@ -335,7 +339,6 @@
     z-index: 1001;
     transform: translateY(100%);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
     flex-direction: column;
     padding-bottom: var(--dsp-safe-bottom, 1rem);
   }

@@ -51,16 +51,97 @@ sections:
 
 Nhiễm khuẩn da và mô mềm (**Skin and Soft Tissue Infections - SSTI**) là lý do phổ biến thứ ba khiến bệnh nhân phải sử dụng kháng sinh tại phòng khám ngoại trú. Theo Hướng dẫn Thực hành của Hội Bệnh Nhiễm trùng Hoa Kỳ (IDSA), bước phân loại quan trọng nhất quyết định toàn bộ phác đồ điều trị là **phân định rõ thể có mủ (Purulent) hay không có mủ (Non-purulent)**:
 
-```mermaid
-flowchart TD
-    SSTI["Bệnh nhân Nhiễm Khuẩn Da & Mô Mềm (SSTI)"] --> Decision{"Có tích tụ ổ mủ hoặc phập phều không?"}
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> LƯU ĐỒ PHÂN ĐÔI LÂM SÀNG: SSTI CÓ MỦ VS KHÔNG MỦ (IDSA GUIDELINES)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="100%" height="100%" class="flowchart-svg" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrSstiBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrSstiAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+    </marker>
+    <marker id="arrSstiEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="480" y="36" text-anchor="middle" font-size="20" font-weight="900" fill="var(--color-text, #0f172a)">
+    LƯU ĐỒ PHÂN ĐÔI ĐIỀU TRỊ NHIỄM KHUẨN DA &amp; MÔ MỀM (SSTI - IDSA 2024)
+  </text>
+  <text x="480" y="58" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--color-text-muted, #64748b)">
+    Quyết định then chốt: Thể có mủ (Rạch tháo mủ là chính) vs Thể không mủ (Kháng sinh là chính)
+  </text>
+
+  <!-- Top Root Node: SSTI Evaluation -->
+  <rect x="300" y="80" width="360" height="52" rx="10" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="2"/>
+  <text x="480" y="102" text-anchor="middle" font-size="13.5" font-weight="800" fill="#0284c7">BỆNH NHÂN NHIỄM KHUẨN DA &amp; MÔ MỀM</text>
+  <text x="480" y="122" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">Đánh giá dấu hiệu phập phều / Ổ tụ mủ dưới da</text>
+
+  <!-- Bifurcation Arrows -->
+  <path d="M 400 132 L 400 160 L 230 160 L 230 185" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrSstiAmber)"/>
+  <path d="M 560 132 L 560 160 L 730 160 L 730 185" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrSstiEmerald)"/>
+
+  <!-- Decision Labels -->
+  <rect x="155" y="148" width="150" height="24" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="230" y="164" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">CÓ TỤ MỦ (PURULENT)</text>
+
+  <rect x="645" y="148" width="170" height="24" rx="4" fill="#d1fae5" stroke="#059669" stroke-width="1"/>
+  <text x="730" y="164" text-anchor="middle" font-size="11" font-weight="800" fill="#065f46">KHÔNG MỦ (NON-PURULENT)</text>
+
+  <!-- Left Branch: Purulent SSTI Card -->
+  <g transform="translate(40, 190)">
+    <rect x="0" y="0" width="380" height="260" rx="12" fill="rgba(245, 158, 11, 0.06)" stroke="#f59e0b" stroke-width="1.8"/>
     
-    Decision -- "CÓ MỦ (Purulent)" --> Purulent["Nhọt, Hậu bối, Áp xe da<br/>(Căn nguyên chính: Tụ cầu S. aureus)"]
-    Decision -- "KHÔNG MỦ (Non-Purulent)" --> NonPurulent["Viêm quầng, Viêm mô tế bào lan tỏa<br/>(Căn nguyên chính: Liên cầu Streptococcus)"]
+    <rect x="15" y="15" width="350" height="34" rx="6" fill="#f59e0b"/>
+    <text x="190" y="37" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">NHỌT, HẬU BỐI, ÁP XE DƯỚI DA</text>
+
+    <text x="20" y="72" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Căn nguyên chủ đạo: Tụ cầu (Staphylococcus aureus)</text>
+    <text x="20" y="90" font-size="11" font-weight="600" fill="#b45309">• Nguy cơ cao nhiễm CA-MRSA cộng đồng</text>
+
+    <line x1="20" y1="102" x2="360" y2="102" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+    <text x="20" y="124" font-size="12" font-weight="800" fill="#b45309">CHIẾN LƯỢC ĐIỀU TRỊ CHUẨN IDSA:</text>
+    <text x="25" y="145" font-size="11" font-weight="700" fill="#dc2626">1. RẠCH &amp; THÁO MỦ (I&amp;D) LÀ BẮT BUỘC SỐ 1</text>
+    <text x="35" y="162" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Áp xe đơn thuần &lt; 2 cm: Chỉ I&amp;D, KHÔNG CẦN kháng sinh</text>
+
+    <text x="25" y="185" font-size="11" font-weight="700" fill="#0284c7">2. CHỈ ĐỊNH KHÁNG SINH TOÀN THÂN KHI:</text>
+    <text x="35" y="202" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Viêm lan rộng &gt; 5cm, có sốt, vị trí mặt/bàn tay, suy giảm MD</text>
+
+    <rect x="15" y="215" width="350" height="32" rx="6" fill="#ffffff" stroke="#f59e0b" stroke-width="1"/>
+    <text x="190" y="235" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">Kháng sinh CA-MRSA: TMP-SMX hoặc Doxycycline (uống)</text>
+  </g>
+
+  <!-- Right Branch: Non-Purulent SSTI Card -->
+  <g transform="translate(540, 190)">
+    <rect x="0" y="0" width="380" height="260" rx="12" fill="rgba(16, 185, 129, 0.06)" stroke="#10b981" stroke-width="1.8"/>
     
-    Purulent --> StepPurulent["1. Rạch & Tháo mủ (I&D) là QUYẾT ĐỊNH<br/>2. Áp xe nhỏ: KHÔNG CẦN kháng sinh<br/>3. Chỉ định thuốc: TMP-SMX / Doxycycline (CA-MRSA)"]
-    NonPurulent --> StepNonPurulent["1. Kháng sinh đường uống đầu tay: Cefalexin<br/>2. Không cần rạch mổ<br/>3. Nâng cao chi bị viêm để giảm phù nề"]
-```
+    <rect x="15" y="15" width="350" height="34" rx="6" fill="#10b981"/>
+    <text x="190" y="37" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">VIÊM QUẦNG, VIÊM MÔ TẾ BÀO LAN TỎA</text>
+
+    <text x="20" y="72" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">• Căn nguyên chủ đạo: Liên cầu (Streptococcus pyogenes)</text>
+    <text x="20" y="90" font-size="11" font-weight="600" fill="#047857">• Ranh giới viêm đỏ phẳng, phù nề nóng rát, không có ổ mủ</text>
+
+    <line x1="20" y1="102" x2="360" y2="102" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
+
+    <text x="20" y="124" font-size="12" font-weight="800" fill="#047857">CHIẾN LƯỢC ĐIỀU TRỊ CHUẨN IDSA:</text>
+    <text x="25" y="145" font-size="11" font-weight="700" fill="#047857">1. ĐIỀU TRỊ NỘI KHOA - TUYỆT ĐỐI KHÔNG RẠCH MỔ</text>
+    <text x="35" y="162" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Không có ổ tụ mủ, can thiệp dao kéo làm tăng nguy cơ vấy nhiễm</text>
+
+    <text x="25" y="185" font-size="11" font-weight="700" fill="#0284c7">2. KHÁNG SINH ĐẦU TAY (DIỆT LIÊN CẦU &amp; MSSA):</text>
+    <text x="35" y="202" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Cefalexin 500mg uống mỗi 6h trong 5 ngày (đáp ứng tốt kéo dài 5-7d)</text>
+
+    <rect x="15" y="215" width="350" height="32" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+    <text x="190" y="235" text-anchor="middle" font-size="11" font-weight="800" fill="#065f46">Biện pháp bổ trợ: Kê cao chi bị viêm để giảm phù ứ trệ</text>
+  </g>
+</svg>
+  </div>
+</div>
 
 ---
 

@@ -847,8 +847,9 @@ export class CliniMdxEngine {
    * Render Block Sơ đồ / Biểu đồ hoặc Khối Code
    */
   private renderDiagramOrCodeBlock(raw: string, lang: string): string {
-    const isDiagram = lang === 'diagram' || lang === 'scheme' || lang === 'flowchart' ||
+    const isDiagram = lang === 'diagram' || lang === 'scheme' || lang === 'flowchart' || lang === 'ascii' ||
       raw.includes('├──') || raw.includes('└──') || raw.includes('──►') || raw.includes('│') ||
+      raw.includes('┌') || raw.includes('└') || raw.includes('╔') || raw.includes('╚') ||
       raw.includes('▼') || raw.includes('▲') || (raw.includes('[') && raw.includes(']') && (raw.includes('|') || raw.includes('->') || raw.includes('►')));
 
     if (isDiagram) {
@@ -896,9 +897,9 @@ export class CliniMdxEngine {
 
     // 1. Highlight Clinical Keywords first
     safe = safe
-      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK)\b/gi, '<span class="diag-success">$1</span>')
-      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu)\b/gi, '<span class="diag-danger">$1</span>')
-      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa)\b/gi, '<span class="diag-warning">$1</span>');
+      .replace(/\b(Phản hồi âm tính|Negative Feedback|BÌNH THƯỜNG|Bù trừ tốt|Hồi phục|Hiệu quả|Tế bào T|Lympho B|Tế bào NK|Dung nạp tốt|Access|Đèn xanh|Âm tính vi sinh|Xóa nhãn an toàn|PEN-FAST &lt; 3)\b/gi, '<span class="diag-success">$1</span>')
+      .replace(/\b(Phản hồi dương|Vòng Luẩn Quẩn|TỬ VONG|Hoại tử|Nguy kịch|Thiếu máu cấp|Sốc|Đột quỵ|Cấp cứu|Dị ứng thật|Phản vệ|Sốc phản vệ|Đa kháng|MDR|XDR|PDR|MRSA|VRE|CRE|ESBL|Đèn đỏ|Reserve)\b/gi, '<span class="diag-danger">$1</span>')
+      .replace(/\b(Cảnh báo|Ngưỡng|Phân cắt|Kích hoạt|Tăng nhịp tim|Co mạch|Enzym|Convertase|Opsonin hóa|Đèn vàng|Watch|Thận trọng|PEN-FAST &gt;= 3|Dị ứng chậm)\b/gi, '<span class="diag-warning">$1</span>');
 
     // 2. Bracketed Node: [Title] or [Node] (avoid newlines)
     safe = safe.replace(/\[([^\]\n]+)\]/g, '<span class="diag-bracket">[$1]</span>');
@@ -909,8 +910,8 @@ export class CliniMdxEngine {
     // 4. Progress / Level Bars
     safe = safe.replace(/(█+)/g, '<span class="diag-bar">$1</span>');
 
-    // 5. Tree Branch Lines, Orthogonal Connectors & Arrows
-    safe = safe.replace(/(├──►|└──►|├──|└──|──►|─►|◄───|◄──|◄───────┘|──┐|──┘|┌──|└──|─┼\/|─┼|──┬|──┴|──|│|▼|▲|&gt;|►|◄)/g, '<span class="diag-branch">$1</span>');
+    // 5. Tree Branch Lines, Box Drawing Borders, Connectors & Arrows
+    safe = safe.replace(/([┌┐└┘├┤┬┴┼═║╔╗╚╝╠╣╦╩╬│─▼▲►◄↑↓←→]|├──►|└──►|├──|└──|──►|─►|◄───|◄──|◄───────┘|──┐|──┘|┌──|└──|─┼\/|─┼|──┬|──┴|──|&gt;|&lt;)/g, '<span class="diag-branch">$1</span>');
 
     return safe;
   }

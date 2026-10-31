@@ -6,6 +6,9 @@
  * các bài giảng HTML trong kho GP-SL (Phần 1 -> Phần 9) và kho CCBS (pathophysiology-cases) mượt mà trong SPA.
  */
 
+import '../../../styles/components/guidelines-article.css';
+import '../../../styles/components/mdx-base.css';
+import '../css/physio-shared.css';
 import { CliniPortalThemeManager } from '../../../main';
 import { cliniMdxEngine } from '../../../core/mdx-engine';
 import { getGuidelinesForPathoTopic, renderPathoGuidelineWidgetHtml } from '../data/patho-guideline-matrix';

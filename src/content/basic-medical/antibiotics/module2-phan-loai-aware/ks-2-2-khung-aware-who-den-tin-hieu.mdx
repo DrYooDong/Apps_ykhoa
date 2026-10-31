@@ -59,22 +59,74 @@ Tình trạng kháng kháng sinh (Antimicrobial Resistance - AMR) đang là mộ
 
 Hệ thống AWaRe phân tầng kháng sinh dựa trên tầm quan trọng trong điều trị lâm sàng, phổ tác dụng dược lý và nguy cơ kích thích sự xuất hiện hoặc lan rộng của tình trạng kháng kháng sinh.
 
-```
-       [ ĐÈN XANH: ACCESSS (TIẾP CẬN) ]
-       • Phổ hẹp, hiệu quả cao, độc tính thấp, ít chọn lọc kháng thuốc.
-       • Lựa chọn hàng đầu cho các nhiễm trùng thông thường.
-       • Mục tiêu quốc gia: Tối thiểu 60% tổng lượng tiêu thụ.
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> KIM TỰ THÁP PHÂN TẦNG KHÁNG SINH THEO KHUNG WHO AWARE 2023</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+  <!-- Title & Header -->
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="900" fill="var(--color-text, #0f172a)">
+    KIM TỰ THÁP PHÂN TẦNG KHÁNG SINH WHO AWARE 2023
+  </text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" font-weight="600" fill="var(--color-text-muted, #64748b)">
+    Chiến lược Đèn Tín Hiệu: Ưu tiên ≥ 60% Access • Giám sát chặt Watch • Dự trữ tối hậu Reserve
+  </text>
 
-       [ ĐÈN CAM: WATCH (GIÁM SÁT) ]
-       • Phổ rộng, nguy cơ chọn lọc vi khuẩn đa kháng cao.
-       • Chỉ định cho nhiễm trùng nặng hoặc khi nhóm Access không hiệu quả.
-       • Cần giám sát chặt chẽ tỷ lệ kê đơn.
+  <!-- Central Pyramid Group -->
+  <g transform="translate(100, 85)">
+    <!-- TIER 3: RESERVE (TOP - RED) -->
+    <polygon points="350,20 280,120 420,120" fill="#ef4444" fill-opacity="0.85" stroke="#dc2626" stroke-width="2" />
+    <text x="350" y="90" text-anchor="middle" font-size="14" font-weight="900" fill="#ffffff">RESERVE</text>
+    <text x="350" y="108" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff">ĐÈN ĐỎ</text>
 
-       [ ĐÈN ĐỎ: RESERVE (DỰ TRỮ) ]
-       • "Vũ khí cuối cùng" cho vi khuẩn siêu kháng (CRE, CRAB, DTR-P. aeruginosa).
-       • Chỉ sử dụng khi có bằng chứng vi sinh hoặc hội chẩn chuyên khoa.
-       • Bắt buộc kiểm soát và phê duyệt nghiêm ngặt.
-```
+    <!-- TIER 2: WATCH (MIDDLE - AMBER) -->
+    <polygon points="280,124 420,124 490,230 210,230" fill="#f59e0b" fill-opacity="0.85" stroke="#d97706" stroke-width="2" />
+    <text x="350" y="172" text-anchor="middle" font-size="16" font-weight="900" fill="#ffffff">WATCH (GIÁM SÁT)</text>
+    <text x="350" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Nguy cơ kháng cao • ĐÈN VÀNG</text>
+
+    <!-- TIER 1: ACCESS (BOTTOM - GREEN) -->
+    <polygon points="210,234 490,234 570,360 130,360" fill="#10b981" fill-opacity="0.9" stroke="#059669" stroke-width="2" />
+    <text x="350" y="285" text-anchor="middle" font-size="19" font-weight="900" fill="#ffffff">ACCESS (TIẾP CẬN)</text>
+    <text x="350" y="310" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">MỤC TIÊU BỆNH VIỆN: &ge; 60% TỔNG TIÊU THỤ</text>
+    <text x="350" y="332" text-anchor="middle" font-size="11.5" font-weight="600" fill="#ffffff">Nền tảng trị liệu • ĐÈN XANH</text>
+  </g>
+
+  <!-- Side Explanatory Cards (Left: Reserve & Watch details, Right: Access details) -->
+  <g transform="translate(40, 100)">
+    <!-- Reserve Card (Left Top) -->
+    <rect x="0" y="5" width="280" height="95" rx="8" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.5" />
+    <text x="15" y="28" font-size="12.5" font-weight="800" fill="#dc2626">🔴 NHÓM DỰ TRỮ (RESERVE)</text>
+    <text x="15" y="48" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Vũ khí tối hậu cho vi khuẩn đa kháng</text>
+    <text x="15" y="66" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Thuốc: Colistin, Linezolid, Cefiderocol</text>
+    <text x="15" y="85" font-size="10" font-weight="700" fill="#b91c1c">⚠️ Bắt buộc duyệt của Hội đồng AMS</text>
+
+    <!-- Watch Card (Left Bottom) -->
+    <rect x="0" y="125" width="280" height="105" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="15" y="148" font-size="12.5" font-weight="800" fill="#d97706">🟡 NHÓM GIÁM SÁT (WATCH)</text>
+    <text x="15" y="168" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Kháng sinh phổ rộng, nguy cơ kháng cao</text>
+    <text x="15" y="186" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Thuốc: Quinolones, Ceph 3rd, Carbapenems</text>
+    <text x="15" y="205" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Macrolides, Vancomycin</text>
+    <text x="15" y="222" font-size="10" font-weight="700" fill="#b45309">⚠️ Giám sát chặt chỉ định &amp; ngày dùng</text>
+  </g>
+
+  <g transform="translate(680, 260)">
+    <!-- Access Card (Right) -->
+    <rect x="0" y="0" width="200" height="185" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5" />
+    <text x="15" y="28" font-size="12.5" font-weight="800" fill="#059669">🟢 NHÓM TIẾP CẬN</text>
+    <text x="15" y="48" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Hoạt phổ hẹp chọn lọc</text>
+    <text x="15" y="66" font-size="10.5" font-weight="500" fill="var(--color-text-muted, #64748b)">Độc tính thấp, chi phí thấp</text>
+    <line x1="15" y1="78" x2="185" y2="78" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
+    <text x="15" y="98" font-size="10.5" font-weight="700" fill="#059669">• Amoxicillin, Amox-Clav</text>
+    <text x="15" y="116" font-size="10.5" font-weight="700" fill="#059669">• Cefalexin, Cefazolin</text>
+    <text x="15" y="134" font-size="10.5" font-weight="700" fill="#059669">• Doxycycline</text>
+    <text x="15" y="152" font-size="10.5" font-weight="700" fill="#059669">• Nitrofurantoin, Metronidazole</text>
+    <text x="15" y="172" font-size="10.5" font-weight="700" fill="#059669">• Co-trimoxazole</text>
+  </g>
+</svg>
+  </div>
+</div>
 
 ### 2.1. Nhóm Tiếp Cận (Access Group - Đèn Xanh)
 
