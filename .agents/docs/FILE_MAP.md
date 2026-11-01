@@ -780,6 +780,8 @@
 | `antibiotics/data/antibiotics-curriculum-data.ts` | CSDL 6 Modules, 14 Bài học & 5 Công cụ Lâm sàng Tương tác | Kháng Sinh Học AMS |
 | `antibiotics/components/AntibioticQuickNav.ts` | Sticky QuickNav Component cho bài giảng Kháng sinh | Kháng Sinh Học AMS |
 | `antibiotics/components/AWaRePill.ts` | Component hiển thị Huy hiệu Đèn Tín Hiệu AWaRe (Access/Watch/Reserve) | Kháng Sinh Học AMS |
+| `antibiotics/ANTIBIOTICS_MDX_DESIGN_SPEC.md` | Tài liệu đặc tả chuẩn thiết kế giao diện, UI/UX, Frontmatter & SVG cho bài học MDX | Kháng Sinh Học AMS |
+| `antibiotics/README.md` | Tài liệu tổng quan phân hệ & chỉ dẫn nạp/chỉnh sửa MDX cho AI | Kháng Sinh Học AMS |
 | `views/formula-vault-view.ts` | View Controller Kho công thức y sinh định lượng | Công Thức Y Sinh |
 | `views/physio-html-reader-view.ts` | Slide-out Reader Controller đọc bài giảng & ca bệnh | Reader Pro |
 | `css/basic-medical-design-tokens.css` | Hệ thống Master Design Tokens 80+ tokens kế thừa DocSpace Medical OS | Basic Medical Tokens |
