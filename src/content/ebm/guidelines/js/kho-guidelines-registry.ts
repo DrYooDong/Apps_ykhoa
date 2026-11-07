@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-11-04 (158 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-11-07 (158 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 

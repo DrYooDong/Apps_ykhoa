@@ -684,3 +684,80 @@
 [data-theme="dark"] .flowchart-title {
   color: #f1f5f9;
 }
+
+/* ============================================================
+   SVG FLOWCHART HARMONIZATION & RECT/TEXT CONTRAST GUARANTEE
+   ============================================================ */
+:root:not([data-theme="dark"]) .med-svg rect[fill*="color-surface"],
+:root:not([data-theme="dark"]) .flowchart-svg rect[fill*="color-surface"],
+:root:not([data-theme="dark"]) .flowchart-card-body svg rect[fill*="color-surface"],
+:root:not([data-theme="dark"]) .flowchart-editorial-canvas svg rect[fill*="color-surface"],
+html[data-theme="light"] .med-svg rect[fill*="color-surface"],
+html[data-theme="light"] .flowchart-svg rect[fill*="color-surface"],
+html[data-theme="light"] .flowchart-card-body svg rect[fill*="color-surface"],
+html[data-theme="light"] .flowchart-editorial-canvas svg rect[fill*="color-surface"] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .med-svg rect[fill*="color-surface"],
+[data-theme="dark"] .flowchart-svg rect[fill*="color-surface"],
+[data-theme="dark"] .flowchart-card-body svg rect[fill*="color-surface"],
+[data-theme="dark"] .flowchart-editorial-canvas svg rect[fill*="color-surface"] {
+  fill: #0f172a !important;
+}
+
+:root:not([data-theme="dark"]) .med-svg text[fill*="color-text"],
+:root:not([data-theme="dark"]) .flowchart-svg text[fill*="color-text"],
+:root:not([data-theme="dark"]) .flowchart-card-body svg text[fill*="color-text"],
+:root:not([data-theme="dark"]) .flowchart-editorial-canvas svg text[fill*="color-text"],
+html[data-theme="light"] .med-svg text[fill*="color-text"],
+html[data-theme="light"] .flowchart-svg text[fill*="color-text"],
+html[data-theme="light"] .flowchart-card-body svg text[fill*="color-text"],
+html[data-theme="light"] .flowchart-editorial-canvas svg text[fill*="color-text"] {
+  fill: #0f172a !important;
+}
+
+:root:not([data-theme="dark"]) .med-svg text[fill*="color-text-muted"],
+:root:not([data-theme="dark"]) .flowchart-svg text[fill*="color-text-muted"],
+:root:not([data-theme="dark"]) .flowchart-card-body svg text[fill*="color-text-muted"],
+:root:not([data-theme="dark"]) .flowchart-editorial-canvas svg text[fill*="color-text-muted"],
+html[data-theme="light"] .med-svg text[fill*="color-text-muted"],
+html[data-theme="light"] .flowchart-svg text[fill*="color-text-muted"],
+html[data-theme="light"] .flowchart-card-body svg text[fill*="color-text-muted"],
+html[data-theme="light"] .flowchart-editorial-canvas svg text[fill*="color-text-muted"] {
+  fill: #475569 !important;
+}
+
+[data-theme="dark"] .med-svg text[fill*="color-text"],
+[data-theme="dark"] .flowchart-svg text[fill*="color-text"],
+[data-theme="dark"] .flowchart-card-body svg text[fill*="color-text"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill*="color-text"] {
+  fill: #f8fafc !important;
+}
+
+[data-theme="dark"] .med-svg text[fill*="color-text-muted"],
+[data-theme="dark"] .flowchart-svg text[fill*="color-text-muted"],
+[data-theme="dark"] .flowchart-card-body svg text[fill*="color-text-muted"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill*="color-text-muted"] {
+  fill: #94a3b8 !important;
+}
+
+[data-theme="dark"] .med-svg text[fill="#1e293b"],
+[data-theme="dark"] .med-svg text[fill="#0f172a"],
+[data-theme="dark"] .med-svg text[fill="#334155"],
+[data-theme="dark"] .med-svg text[fill="#475569"],
+[data-theme="dark"] .flowchart-svg text[fill="#1e293b"],
+[data-theme="dark"] .flowchart-svg text[fill="#0f172a"],
+[data-theme="dark"] .flowchart-svg text[fill="#334155"],
+[data-theme="dark"] .flowchart-svg text[fill="#475569"],
+[data-theme="dark"] .flowchart-card-body svg text[fill="#1e293b"],
+[data-theme="dark"] .flowchart-card-body svg text[fill="#0f172a"],
+[data-theme="dark"] .flowchart-card-body svg text[fill="#334155"],
+[data-theme="dark"] .flowchart-card-body svg text[fill="#475569"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill="#1e293b"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill="#0f172a"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill="#334155"],
+[data-theme="dark"] .flowchart-editorial-canvas svg text[fill="#475569"] {
+  fill: #f1f5f9 !important;
+}
+
