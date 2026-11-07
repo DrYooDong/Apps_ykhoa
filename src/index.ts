@@ -124,7 +124,7 @@ function syncBottomNavActiveState(): void {
       isMatch = true;
     } else if (route === 'docspace' && firstSeg === 'docspace') {
       isMatch = true;
-    } else if (route === 'vault' && (firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
+    } else if ((route === 'handbook' || route === 'vault') && (firstSeg === 'clinical-handbook' || firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
       isMatch = true;
     }
 
@@ -154,7 +154,7 @@ function syncHeaderProjectActiveState(): void {
       isMatch = true;
     } else if (project === 'basic' && (firstSeg === 'basic-medical' || firstSeg === 'pathophysiology')) {
       isMatch = true;
-    } else if (project === 'vault' && (firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
+    } else if ((project === 'handbook' || project === 'vault') && (firstSeg === 'clinical-handbook' || firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
       isMatch = true;
     } else if (project === 'ebm' && (firstSeg === 'ebm' || firstSeg === 'guidelines')) {
       isMatch = true;

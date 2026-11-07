@@ -82,11 +82,11 @@ export function renderHeaderHtml(projectRoot = './'): string {
             </div>
           </div>
 
-          <!-- 3. Knowledge Vault (Kho Tri Thức 14 Chuyên Khoa) -->
-          <a href="${root}#/vault" class="project-tab-btn tab-vault" data-project="vault" title="Knowledge Vault — 14 Kho chuyên khoa, Chuỗi CRCF & Phác đồ">
-            <span class="project-tab-icon"><i class="fa-solid fa-book-open"></i></span>
-            <span class="project-tab-name">Knowledge Vault</span>
-            <span class="project-tab-pill">2.4k+</span>
+          <!-- 3. Clinical Handbook (Sổ Tay Kinh Nghiệm & Đúc Kết) -->
+          <a href="${root}#/clinical-handbook" class="project-tab-btn tab-handbook" data-project="handbook" title="Sổ Tay Lâm Sàng — Kinh nghiệm, Đúc kết & Cạm bẫy thực chiến theo chuyên khoa">
+            <span class="project-tab-icon"><i class="fa-solid fa-book-medical"></i></span>
+            <span class="project-tab-name">Clinical Handbook</span>
+            <span class="project-tab-pill">Đúc Kết</span>
           </a>
 
           <!-- 4. EBM Suite (Y Học Chứng Cứ & Guidelines) -->
