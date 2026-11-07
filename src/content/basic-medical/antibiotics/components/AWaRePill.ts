@@ -26,25 +26,13 @@ export function renderAWaRePill(tier: AWaReTier = 'access'): string {
     bg = 'rgba(100, 116, 139, 0.15)';
     color = '#64748b';
     icon = 'fa-ban';
+  } else if (tier === 'not-applicable') {
+    label = 'N/A (KHÔNG ÁP DỤNG)';
+    bg = 'rgba(100, 116, 139, 0.12)';
+    color = '#64748b';
+    icon = 'fa-minus';
   }
 
-  return `
-    <span class="aware-pill aware-pill--${tier}" style="
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: ${bg};
-      color: ${color};
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    ">
-      <i class="fa-solid ${icon}"></i>
-      <span>${label}</span>
-    </span>
-  `;
+  return `<span class="aware-pill aware-pill--${tier}" style="display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; background: ${bg}; color: ${color}; border: 1px solid ${color}40; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.03em; white-space: nowrap; vertical-align: middle; line-height: 1.4; box-sizing: border-box;"><i class="fa-solid ${icon}"></i><span>${label}</span></span>`;
 }
 

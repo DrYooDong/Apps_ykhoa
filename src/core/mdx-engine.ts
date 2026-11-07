@@ -85,6 +85,14 @@ export class CliniMdxEngine {
       return `\n\n${placeholder}\n\n`;
     };
 
+    const stashInline = (htmlContent: string): string => {
+      const placeholder = `__CLINI_MDX_INLINE_${blockCounter++}__`;
+      // Khử toàn bộ newlines và khoảng trắng dư thừa để bảo toàn cú pháp ô bảng Markdown (Table Cell)
+      const cleanInline = htmlContent.trim().replace(/\r?\n\s*/g, ' ');
+      stash.set(placeholder, cleanInline);
+      return placeholder;
+    };
+
     // 2.5. Bảo vệ các khối <script> và <style> khỏi bị markdown parser và formatInline phá hoại cú pháp
     let preprocessedBody = cleanBody.replace(/<script(?:\s+[^>]*)?>([\s\S]*?)<\/script>/gi, (_full, scriptContent) => {
       let code = scriptContent.trim();
@@ -106,7 +114,7 @@ export class CliniMdxEngine {
     });
 
     // 3. Chuyển đổi Custom MDX Components với Frontmatter Context và lưu vào stash
-    let transformedBody = this.transformCustomComponents(preprocessedBody, frontmatter, stashBlock);
+    let transformedBody = this.transformCustomComponents(preprocessedBody, frontmatter, stashBlock, stashInline);
 
     // 4. Chuyển đổi Markdown cú pháp chuẩn
     const { html, toc } = this.renderMarkdown(transformedBody);
@@ -255,7 +263,8 @@ export class CliniMdxEngine {
   private transformCustomComponents(
     content: string,
     frontmatter: Record<string, any> = {},
-    stashBlock: (html: string) => string
+    stashBlock: (html: string) => string,
+    stashInline: (html: string) => string
   ): string {
     let result = content;
 
@@ -496,9 +505,9 @@ export class CliniMdxEngine {
       return stashBlock(renderAntibioticQuickNav(items ? { items } : undefined));
     });
 
-    // 13. <AWaRePill tier="..." />
-    result = result.replace(/<AWaRePill\s+tier=["']([^"']+)["']\s*\/?>/gi, (_match, tier) => {
-      return stashBlock(renderAWaRePill(tier as any));
+    // 13. <AWaRePill tier="..." /> (Inline Badge Component — bảo toàn cấu trúc bảng Markdown)
+    result = result.replace(/<AWaRePill(?:\s+tier=["']([^"']+)["'])?\s*(?:\/>|><\/AWaRePill>)/gi, (_match, tier) => {
+      return stashInline(renderAWaRePill((tier || 'access') as any));
     });
 
     return result;
@@ -610,20 +619,58 @@ export class CliniMdxEngine {
 
     const flushTable = () => {
       if (inTable && tableRows.length > 0) {
+        // Phân tích căn lề (left, center, right) từ hàng separator thứ 2 (:---:, ---:, :---)
+        let alignments: string[] = [];
+        if (tableRows.length > 1 && tableRows[1].includes('---')) {
+          const sepCells = tableRows[1].trim().split('|').filter((_, cIdx, arr) => cIdx > 0 && cIdx < arr.length - 1);
+          alignments = sepCells.map(c => {
+            const s = c.trim();
+            if (s.startsWith(':') && s.endsWith(':')) return 'center';
+            if (s.endsWith(':')) return 'right';
+            return 'left';
+          });
+        }
+
         let tableHtml = '<div class="table-responsive" style="margin: 1.5rem 0; overflow-x: auto;"><table class="table-modern" style="width: 100%; border-collapse: collapse; margin: 1rem 0;">';
+        let inTbody = false;
+
         for (let idx = 0; idx < tableRows.length; idx++) {
           const row = tableRows[idx].trim();
           if (idx === 1 && row.includes('---')) continue; // Separator row
           
           const cells = row.split('|').filter((_, cIdx, arr) => cIdx > 0 && cIdx < arr.length - 1);
-          const tag = idx === 0 ? 'th' : 'td';
-          const style = idx === 0 ? 'padding: 0.75rem 1rem; background: var(--color-surface-2, #f8fafc); font-weight: 700; color: var(--color-text, #0f172a); border-bottom: 2px solid var(--color-border, #cbd5e1);' : 'padding: 0.75rem 1rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155);';
-          
-          tableHtml += '<tr>';
-          for (const cell of cells) {
-            tableHtml += `<${tag} style="${style}">${this.formatInline(cell.trim())}</${tag}>`;
+          const isHeader = idx === 0;
+
+          if (isHeader) {
+            tableHtml += '<thead><tr>';
+          } else if (!inTbody) {
+            tableHtml += '<tbody>';
+            inTbody = true;
           }
+
+          if (!isHeader) {
+            tableHtml += '<tr>';
+          }
+
+          for (let cIdx = 0; cIdx < cells.length; cIdx++) {
+            const cell = cells[cIdx];
+            const align = alignments[cIdx] || 'left';
+            const tag = isHeader ? 'th' : 'td';
+            const baseStyle = isHeader
+              ? `padding: 0.85rem 1.15rem; background: var(--color-surface-2, #f8fafc); font-weight: 800; color: var(--color-text, #0f172a); border-bottom: 2px solid var(--color-border, #cbd5e1); text-align: ${align};`
+              : `padding: 0.85rem 1.15rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155); text-align: ${align}; vertical-align: middle;`;
+            
+            tableHtml += `<${tag} style="${baseStyle}">${this.formatInline(cell.trim())}</${tag}>`;
+          }
+
           tableHtml += '</tr>';
+          if (isHeader) {
+            tableHtml += '</thead>';
+          }
+        }
+
+        if (inTbody) {
+          tableHtml += '</tbody>';
         }
         tableHtml += '</table></div>';
         htmlLines.push(tableHtml);

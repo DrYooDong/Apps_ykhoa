@@ -435,6 +435,13 @@ async function fetchAndHydratePhysioArticle(
       badgeBorder = 'rgba(45, 212, 191, 0.35)';
       badgeIcon = 'fa-virus-covid';
       badgeText = 'DỊCH TỄ BỆNH HỌC • MDX NATIVE';
+    } else if (isAntibiotics) {
+      headerGradient = 'linear-gradient(135deg, #065f46 0%, #0f172a 50%, #0d9488 100%)';
+      badgeColor = '#2dd4bf';
+      badgeBg = 'rgba(45, 212, 191, 0.18)';
+      badgeBorder = 'rgba(45, 212, 191, 0.35)';
+      badgeIcon = 'fa-shield-virus';
+      badgeText = 'KHÁNG SINH HỌC LÂM SÀNG (AMS) • MDX NATIVE';
     } else if (part.includes('guideline') || part.includes('ebm') || part.includes('stat')) {
       headerGradient = 'linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%)';
       badgeColor = '#fbbf24';

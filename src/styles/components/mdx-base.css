@@ -392,6 +392,73 @@
   background: rgba(56, 189, 248, 0.1);
 }
 
+/* --- WHO AWARE PILL BADGES (Antibiotics & AMS) --- */
+.aware-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  vertical-align: middle;
+  line-height: 1.4;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.aware-pill--access {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.aware-pill--watch {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.aware-pill--reserve {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.aware-pill--discouraged,
+.aware-pill--not-applicable {
+  background: rgba(100, 116, 139, 0.15);
+  color: #64748b;
+  border: 1px solid rgba(100, 116, 139, 0.35);
+}
+
+[data-theme="dark"] .aware-pill--access {
+  background: rgba(16, 185, 129, 0.22);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.45);
+}
+
+[data-theme="dark"] .aware-pill--watch {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+[data-theme="dark"] .aware-pill--reserve {
+  background: rgba(239, 68, 68, 0.22);
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.45);
+}
+
+[data-theme="dark"] .aware-pill--discouraged,
+[data-theme="dark"] .aware-pill--not-applicable {
+  background: rgba(148, 163, 184, 0.22);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
 /* --- MOTION & SCROLL ANIMATIONS (Emil Kowalski Standard) --- */
 @keyframes mdx-fade-up {
   0% {
