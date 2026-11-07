@@ -19,9 +19,9 @@ Khi cần đọc hiểu, biên tập, chỉnh sửa hoặc tạo mới các bài
 - **`ANTIBIOTICS_MDX_DESIGN_SPEC.md`**: Quy chuẩn thiết kế giao diện MDX chi tiết cho AI.
 - **`module1-vi-sinh/`**: 2 bài về Cấu trúc vi khuẩn, Vách Peptidoglycan, Kênh Porin & Nhuộm Gram.
 - **`module2-phan-loai-aware/`**: 2 bài về Cơ chế phân tử & Khung phân tầng WHO AWaRe 2023.
-- **`module3-pk-pd-duong-dung/`**: 2 bài về Chỉ số PK/PD (%T>MIC, Cmax/MIC, AUC/MIC) & Chuyển đổi IV sang PO.
+- **`module3-pk-pd-duong-dung/`**: 3 bài về Chỉ số PK/PD (%T>MIC, Cmax/MIC, AUC/MIC), Phổ tác động của các loại kháng sinh & Chuyển đổi IV sang PO.
 - **`module4-ke-don-an-toan-adr/`**: 3 bài về Bảng kiểm 8 điều D8, Nguyên tắc phối hợp kháng sinh & Tác dụng phụ ADR.
-- **`module5-di-ung-beta-lactam/`**: 2 bài về Dị ứng thật vs Giả dị ứng & Tỷ lệ dị ứng chéo Beta-lactam.
+- **`module5-di-ung-beta-lactam/`**: 3 bài về Dị ứng thật vs Giả dị ứng, Tỷ lệ dị ứng chéo Beta-lactam & Dị ứng Quinolone.
 - **`module6-phac-do-ngoai-tru/`**: 3 bài về Phác đồ điều trị ngoại trú chuẩn EBM (CAP, UTI, SSTI).
 - **`components/`**: Linh kiện TypeScript native (`AntibioticQuickNav.ts`, `AWaRePill.ts`).
 - **`data/`**: CSDL chương trình đào tạo (`antibiotics-curriculum-data.ts`).

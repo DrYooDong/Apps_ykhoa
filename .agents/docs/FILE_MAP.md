@@ -776,8 +776,8 @@
 | `antibiotics/index.ts` | Entry point & Barrel export phân hệ Kháng Sinh Học Lâm Sàng (BMS-ATB) | Kháng Sinh Học AMS |
 | `antibiotics/views/antibiotics-hub-view.ts` | Master Dashboard Hub Kháng sinh (Hero, Bento Grid, Search & Filters) | Kháng Sinh Học AMS |
 | `antibiotics/views/antibiotics-tools-view.ts` | Controller 5 Công cụ Lâm sàng Tương tác (D8, PK/PD, AWaRe, Delabeling, IV-PO) | Kháng Sinh Học AMS |
-| `antibiotics/types/antibiotics.types.ts` | Type definitions cho 6 Modules, 14 Bài học, AWaRe 2023 & PK/PD | Kháng Sinh Học AMS |
-| `antibiotics/data/antibiotics-curriculum-data.ts` | CSDL 6 Modules, 14 Bài học & 5 Công cụ Lâm sàng Tương tác | Kháng Sinh Học AMS |
+| `antibiotics/types/antibiotics.types.ts` | Type definitions cho 6 Modules, 16 Bài học, AWaRe 2023 & PK/PD | Kháng Sinh Học AMS |
+| `antibiotics/data/antibiotics-curriculum-data.ts` | CSDL 6 Modules, 16 Bài học & 5 Công cụ Lâm sàng Tương tác | Kháng Sinh Học AMS |
 | `antibiotics/components/AntibioticQuickNav.ts` | Sticky QuickNav Component cho bài giảng Kháng sinh | Kháng Sinh Học AMS |
 | `antibiotics/components/AWaRePill.ts` | Component hiển thị Huy hiệu Đèn Tín Hiệu AWaRe (Access/Watch/Reserve) | Kháng Sinh Học AMS |
 | `antibiotics/ANTIBIOTICS_MDX_DESIGN_SPEC.md` | Tài liệu đặc tả chuẩn thiết kế giao diện, UI/UX, Frontmatter & SVG cho bài học MDX | Kháng Sinh Học AMS |

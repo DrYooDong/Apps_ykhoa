@@ -28,7 +28,7 @@
 
 ## 1. TỔNG QUAN KIẾN TRÚC PHÂN HỆ KHÁNG SINH HỌC
 
-Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **14 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
+Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **16 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
 
 ```text
 src/content/basic-medical/antibiotics/
@@ -41,16 +41,18 @@ src/content/basic-medical/antibiotics/
 ├── module2-phan-loai-aware/              # Module 2: Bảng Tuần Hoàn & Phân Tầng AWaRe (2 bài)
 │   ├── ks-2-1-co-che-tac-dung-cau-truc-hoa-hoc.mdx
 │   └── ks-2-2-khung-aware-who-den-tin-hieu.mdx
-├── module3-pk-pd-duong-dung/             # Module 3: PK/PD & Tối Ưu Hóa Đường Dùng (2 bài)
+├── module3-pk-pd-duong-dung/             # Module 3: PK/PD & Tối Ưu Hóa Đường Dùng (3 bài)
 │   ├── ks-3-1-chi-so-pk-pd-co-ban.mdx
-│   └── ks-3-2-duong-dung-chuyen-doi-iv-sang-po.mdx
+│   ├── ks-3-2-pho-tac-dong-cua-cac-loai-khang-sinh.mdx
+│   └── ks-3-3-duong-dung-chuyen-doi-iv-sang-po.mdx
 ├── module4-ke-don-an-toan-adr/           # Module 4: Kê Đơn An Toàn, Tương Tác DDI & Độc Tính (3 bài)
 │   ├── ks-4-1-bang-kiem-8-dieu-d8-checklist.mdx
 │   ├── ks-4-2-nguyen-tac-phoi-hop-tranh-trung-lap.mdx
 │   └── ks-4-3-tac-dung-phu-doc-tinh-khang-sinh.mdx
-├── module5-di-ung-beta-lactam/           # Module 5: Dị Ứng Beta-Lactam & Ma Trận Phản Ứng Chéo (2 bài)
+├── module5-di-ung-beta-lactam/           # Module 5: Dị Ứng Beta-Lactam, Quinolone & Phản Ứng Chéo (3 bài)
 │   ├── ks-5-1-phan-biet-di-ung-that-vs-adr.mdx
-│   └── ks-5-2-ty-le-phan-ung-cheo-beta-lactam.mdx
+│   ├── ks-5-2-ty-le-phan-ung-cheo-beta-lactam.mdx
+│   └── ks-5-3-di-ung-khang-sinh-quinolone-va-chien-luoc-thay-the.mdx
 ├── module6-phac-do-ngoai-tru/            # Module 6: Phác Đồ Ngoại Trú Chuẩn EBM (3 bài)
 │   ├── ks-6-1-dieu-tri-cap-the-nhe.mdx
 │   ├── ks-6-2-dieu-tri-uti-khong-bien-chung.mdx
@@ -59,7 +61,7 @@ src/content/basic-medical/antibiotics/
 │   ├── AntibioticQuickNav.ts             # Sticky Nav cho bài giảng kháng sinh
 │   └── AWaRePill.ts                      # Huy hiệu WHO AWaRe 2023
 ├── data/
-│   └── antibiotics-curriculum-data.ts    # CSDL 6 Modules, 14 Bài học & 5 Công cụ
+│   └── antibiotics-curriculum-data.ts    # CSDL 6 Modules, 16 Bài học & 5 Công cụ
 ├── types/
 │   └── antibiotics.types.ts              # Định nghĩa Typescript interfaces
 └── views/                                # Views render Hub và Tools
@@ -135,7 +137,7 @@ module: "moduleX-ten-module"
 moduleLabel: "Module X: Tên Module Đầy Đủ"
 moduleNumber: 1                         # Số thứ tự module (1 đến 6)
 lessonNumber: 1                         # Số thứ tự bài trong module (1, 2, 3...)
-order: 1                                # Số thứ tự toàn khóa (1 đến 14)
+order: 1                                # Số thứ tự toàn khóa (1 đến 16)
 aware: "access"                         # (Tùy chọn) Phân tầng AWaRe nếu bài chuyên đề về nhóm thuốc: "access" | "watch" | "reserve" | "discouraged"
 tags:
   - "Từ khóa 1"
