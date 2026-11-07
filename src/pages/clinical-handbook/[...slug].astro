@@ -1,0 +1,40 @@
+---
+import ArticleLayout from '../../components/layout/ArticleLayout.astro';
+import Alert from '../../components/ui/Alert.astro';
+import QuickNav from '../../components/ui/QuickNav.astro';
+
+export async function getStaticPaths() {
+  const mdxModules = import.meta.glob('/src/content/clinical-handbook/**/*.mdx', { eager: true });
+  
+  return Object.entries(mdxModules).map(([path, mod]: [string, any]) => {
+    // Trích xuất path tương đối từ /src/content/clinical-handbook/
+    const relPath = path.replace(/^\/src\/content\/clinical-handbook\//, '').replace(/\.mdx$/, '');
+    const slug = mod.frontmatter?.slug || relPath.split('/').pop() || 'index';
+    
+    return {
+      params: { slug: relPath },
+      props: {
+        entry: mod,
+        slug
+      }
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, frontmatter } = entry;
+---
+
+<ArticleLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  systemName={`Sổ Tay Lâm Sàng • ${frontmatter.specialtyLabel || 'Truyền Nhiễm'}`}
+  code={frontmatter.diseaseLabel || 'HBV'}
+  clinicalPearls={frontmatter.keyTakeaway ? [frontmatter.keyTakeaway] : []}
+  sections={frontmatter.sections || []}
+>
+  <Content components={{
+    Alert,
+    QuickNav
+  }} />
+</ArticleLayout>

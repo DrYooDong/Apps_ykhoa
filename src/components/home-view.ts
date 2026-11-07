@@ -22,9 +22,21 @@ export function renderHomeView(): string {
       <!-- MODULES GRID (7 PHÂN HỆ) -->
       <section class="modules-section">
         <div class="section-header">
-          <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 7 Phân Hệ Tri Thức Y Khoa</h2>
+          <h2 class="section-title"><i class="fa-solid fa-cubes"></i> Phân Hệ Tri Thức & Sổ Tay Lâm Sàng</h2>
         </div>
         <div class="modules-grid">
+
+          <a href="#/clinical-handbook" class="module-card module-card--handbook" style="border: 1px solid rgba(2, 132, 199, 0.4); box-shadow: 0 4px 16px rgba(2, 132, 199, 0.1);">
+            <div class="module-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-book-medical"></i></div>
+            <div class="module-info">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <h3 style="margin: 0;">Sổ Tay Lâm Sàng (Handbook)</h3>
+                <span style="font-size: 0.65rem; font-weight: 800; background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 1px 6px; border-radius: 4px;">MỚI</span>
+              </div>
+              <p>Đúc kết kinh nghiệm thực chiến theo chuyên khoa & bệnh lý: Viêm gan B, Sốt xuất huyết, cạm bẫy cận lâm sàng.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right module-arrow" style="color: #0284c7;"></i>
+          </a>
           
           <a href="#/calculators" class="module-card">
             <div class="module-icon bg-blue"><i class="fa-solid fa-calculator"></i></div>

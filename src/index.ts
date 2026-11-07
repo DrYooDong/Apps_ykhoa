@@ -19,6 +19,16 @@ import {
   setVaultInitialState 
 } from './content/knowledge-vault/vault-hub-view';
 
+// Clinical Handbook (Sổ Tay Kinh Nghiệm & Đúc Kết Lâm Sàng)
+import { 
+  renderHandbookHubView, 
+  initHandbookHubView, 
+  renderHandbookDiseaseView, 
+  renderHandbookReaderView, 
+  initHandbookReaderView,
+  SpecialtyId 
+} from './content/clinical-handbook';
+
 // Core Subsystems & UI Modules
 import './main';
 import './core/category-mapper';
@@ -478,6 +488,30 @@ function initializeRoutes(): void {
     mountToApp(renderVaultHubView());
     const appContainer = document.getElementById('app');
     if (appContainer) attachVaultEvents(appContainer);
+  });
+
+  // === CLINICAL HANDBOOK (SỔ TAY KINH NGHIỆM & ĐÚC KẾT LÂM SÀNG) ===
+  router.register('/clinical-handbook', 'Sổ Tay Kinh Nghiệm & Đúc Kết Lâm Sàng', () => {
+    document.title = 'Sổ Tay Kinh Nghiệm & Đúc Kết Lâm Sàng – CliniPortal';
+    mountToApp(renderHandbookHubView('truyen-nhiem'));
+    initHandbookHubView();
+  });
+
+  router.register('/clinical-handbook/:specialty', 'Chuyên Khoa Sổ Tay Lâm Sàng', (params) => {
+    document.title = 'Sổ Tay Kinh Nghiệm Lâm Sàng – CliniPortal';
+    mountToApp(renderHandbookHubView(params.specialty as SpecialtyId));
+    initHandbookHubView();
+  });
+
+  router.register('/clinical-handbook/:specialty/:disease', 'Chi Tiết Bệnh Lý & Đúc Kết', (params) => {
+    document.title = 'Đúc Kết Bệnh Lý – Sổ Tay Lâm Sàng CliniPortal';
+    mountToApp(renderHandbookDiseaseView(params.specialty as SpecialtyId, params.disease || ''));
+  });
+
+  router.register('/clinical-handbook/:specialty/:disease/:slug', 'Bài Đúc Kết Lâm Sàng MDX', (params) => {
+    document.title = 'Bài Đúc Kết Lâm Sàng – CliniPortal';
+    mountToApp(renderHandbookReaderView(params.specialty as SpecialtyId, params.disease || '', params.slug || ''));
+    initHandbookReaderView(params.specialty as SpecialtyId, params.disease || '', params.slug || '');
   });
 
 
