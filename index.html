@@ -274,463 +274,299 @@
           </div>
         </div>
 
-        <!-- ── SECTION 2: BENTO BRIEFING BANNER ("CHỈ SỐ NGÀY TỐT & SẴN SÀNG TRỰC CA") ── -->
-        <section class="clinician-briefing-banner" id="clinicianBriefingBanner" aria-label="Bảng Điều Hành Buổi Sáng & Sẵn Sàng Trực Ca">
-          <!-- HEADER ROW -->
-          <div class="briefing-header-row">
-            <div class="briefing-header-left">
-              <div class="briefing-label-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
+        <!-- ══════════════════════════════════════════════════════════
+             TRUNG TÂM CHỈ SỐ NGÀY TỐT & ĐIỀU HÀNH CA TRỰC LÂM SÀNG
+             (Clinical Chronobiology & Auspicious Day Master Workstation)
+        ══════════════════════════════════════════════════════════ -->
+        <section class="chrono-workstation" id="chronoWorkstation" aria-label="Trung tâm Nhịp sinh học & Điều hành Ca trực">
+
+          <!-- ── TOOLBAR: COMMAND BAR & DATE CONTROLS ── -->
+          <div class="chrono-toolbar">
+            <div class="chrono-toolbar-left">
+              <div class="chrono-brand-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Sẵn Sàng Trực Ca</span>
+                <span>Chỉ Số Ngày Tốt &amp; Điều Hành Ca Trực</span>
               </div>
 
-              <!-- Specialty Switcher Dropdown Wrapper -->
-              <div class="briefing-spec-wrapper">
-                <button type="button" class="briefing-spec-btn" id="briefingSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi Chuyên khoa Nội khoa để cập nhật trọng số Biorhythm">
-                  <span id="briefingSpecIcon">🩺</span>
-                  <span id="briefingSpecName">Nội Tổng Quát</span>
+              <!-- Doctor Profile Pill -->
+              <button type="button" class="chrono-doctor-pill" id="chronoDoctorBtn" title="Xem &amp; Tùy chỉnh Bát Tự Bác Sĩ (Can Chi, Bản Mệnh)">
+                <i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i>
+                <span id="chronoDoctorName">BS. Bác sĩ (Canh Ngọ • Mệnh Thổ)</span>
+              </button>
+
+              <!-- Specialty Switcher Dropdown -->
+              <div class="chrono-spec-wrapper">
+                <button type="button" class="chrono-spec-btn" id="chronoSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi chuyên khoa nội khoa để điều chỉnh trọng số nhịp sinh học">
+                  <span id="chronoSpecIcon">🩺</span>
+                  <span id="chronoSpecName">Nội Tổng Quát</span>
                   <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
                 </button>
-                <div class="briefing-spec-menu" id="briefingSpecMenu" role="menu">
-                  <button type="button" class="spec-menu-item is-selected" data-spec="internal_general" role="menuitem">
-                    <span>🩺</span>
-                    <span>Nội Tổng Quát</span>
+                <div class="chrono-spec-menu" id="chronoSpecMenu" role="menu">
+                  <button type="button" class="chrono-spec-item is-selected" data-spec="internal_general" role="menuitem">
+                    <span>🩺</span> <span>Nội Tổng Quát &amp; Ca Phức Tạp</span>
                   </button>
-                  <button type="button" class="spec-menu-item" data-spec="internal_cardio" role="menuitem">
-                    <span>❤️</span>
-                    <span>Nội Tim Mạch</span>
+                  <button type="button" class="chrono-spec-item" data-spec="internal_cardio" role="menuitem">
+                    <span>❤️</span> <span>Nội Tim Mạch &amp; Huyết Động</span>
                   </button>
-                  <button type="button" class="spec-menu-item" data-spec="internal_resp_icu" role="menuitem">
-                    <span>🫁</span>
-                    <span>Hô Hấp & ICU</span>
+                  <button type="button" class="chrono-spec-item" data-spec="internal_resp_icu" role="menuitem">
+                    <span>🫁</span> <span>Hô Hấp &amp; ICU Hồi Sức Nội</span>
                   </button>
-                  <button type="button" class="spec-menu-item" data-spec="internal_gi_hepa" role="menuitem">
-                    <span>🧪</span>
-                    <span>Tiêu Hóa & Gan Mật</span>
+                  <button type="button" class="chrono-spec-item" data-spec="internal_gi_hepa" role="menuitem">
+                    <span>🧪</span> <span>Tiêu Hóa &amp; Gan Mật</span>
                   </button>
-                  <button type="button" class="spec-menu-item" data-spec="internal_endo_nephro" role="menuitem">
-                    <span>🩸</span>
-                    <span>Nội Tiết & Thận</span>
+                  <button type="button" class="chrono-spec-item" data-spec="internal_endo_nephro" role="menuitem">
+                    <span>🩸</span> <span>Nội Tiết &amp; Thận Học</span>
                   </button>
-                  <button type="button" class="spec-menu-item" data-spec="internal_neuro_id" role="menuitem">
-                    <span>🧠</span>
-                    <span>Thần Kinh & Nhiễm</span>
+                  <button type="button" class="chrono-spec-item" data-spec="internal_neuro_id" role="menuitem">
+                    <span>🧠</span> <span>Thần Kinh &amp; Truyền Nhiễm</span>
                   </button>
                 </div>
               </div>
             </div>
 
-            <div class="briefing-header-controls">
-              <!-- Date Picker -->
-              <div class="briefing-date-picker" title="Chọn ngày để xem trước chỉ số trực ca">
-                <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem;"></i>
-                <input type="date" class="briefing-date-input" id="briefingDateInput" aria-label="Chọn ngày đánh giá" />
+            <!-- Date Controls & Action Buttons -->
+            <div class="chrono-toolbar-right">
+              <div class="chrono-date-nav">
+                <button type="button" class="chrono-nav-btn" id="btnChronoPrevDay" title="Xem ngày trước" aria-label="Ngày trước">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="chrono-date-input-wrap" title="Chọn ngày bất kỳ để xem trước chỉ số">
+                  <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem; margin-right: 0.35rem;"></i>
+                  <input type="date" class="chrono-date-input" id="chronoDateInput" aria-label="Chọn ngày đánh giá" />
+                </div>
+                <button type="button" class="chrono-today-btn" id="btnChronoToday" title="Về hôm nay">
+                  Hôm nay
+                </button>
+                <button type="button" class="chrono-nav-btn" id="btnChronoNextDay" title="Xem ngày sau" aria-label="Ngày sau">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
               </div>
 
-              <!-- Nút Mở Modal Chi Tiết -->
-              <button type="button" class="briefing-icon-btn" id="briefingOpenModalBtn" title="Xem chi tiết Lịch Vạn Niên & Vụ Việc Y Khoa Toàn Diện" aria-label="Mở chi tiết ngày tốt">
+              <!-- Quick Action Buttons -->
+              <button type="button" class="chrono-action-btn" id="btnChronoCopySBAR" title="Sao chép toàn bộ tóm tắt chỉ số trực ca chuẩn SBAR vào clipboard">
+                <i class="fa-solid fa-copy"></i>
+                <span>Chép SBAR</span>
+              </button>
+              <button type="button" class="chrono-action-btn" id="btnChronoFinder" title="Tìm ngày đẹp khởi sự hoặc hội chẩn trong 30 ngày tới">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <span>Tìm Ngày Đẹp</span>
+              </button>
+              <button type="button" class="chrono-action-btn" id="btnChronoFullReport" title="Mở bảng Lịch Vạn Niên &amp; Phân Tích Toàn Diện">
                 <i class="fa-solid fa-up-right-from-square"></i>
-              </button>
-
-              <!-- Nút Thu Gọn / Mở Rộng -->
-              <button type="button" class="briefing-icon-btn" id="briefingCollapseBtn" title="Thu gọn / Mở rộng bảng điều hành" aria-expanded="true" aria-controls="briefingBody">
-                <i class="fa-solid fa-chevron-up" id="briefingCollapseIcon"></i>
+                <span>Chi Tiết</span>
               </button>
             </div>
           </div>
 
-          <!-- COLLAPSED COMPACT RIBBON (Chỉ hiện khi thu gọn) -->
-          <div class="briefing-ribbon" id="briefingRibbon">
-            <div class="briefing-ribbon-item">
-              <span id="ribbonScoreVal" style="color: var(--color-primary); font-weight: 800;">--/100</span>
-              <span id="ribbonRatingText" class="gauge-rating-badge rating-great" style="font-size: 0.65rem;">--</span>
-            </div>
-            <span class="briefing-ribbon-sep">•</span>
-            <div class="briefing-ribbon-item" id="ribbonBioPill">
-              <span>🧠 Trí tuệ --%</span>
-            </div>
-            <span class="briefing-ribbon-sep">•</span>
-            <div class="briefing-ribbon-item" id="ribbonHourPill">
-              <span>⏰ --</span>
-            </div>
-            <span class="briefing-ribbon-sep">•</span>
-            <div class="briefing-ribbon-item" id="ribbonTaskPill">
-              <span>🔍 Khám ca khó: --</span>
-            </div>
-          </div>
+          <!-- ── TẦNG 1: HERO DUAL-ENGINE (GAUGE THẦN KHÍ & BIORHYTHM 4 TRỤC) ── -->
+          <div class="chrono-row-hero">
 
-          <!-- BENTO BODY (4-COLUMN GRID) -->
-          <div class="briefing-body" id="briefingBody">
-
-            <!-- ── KHỐI 1: GAUGE CHỈ SỐ THẦN KHÍ & CAN CHI NGÀY ── -->
-            <div class="briefing-col briefing-col-gauge" id="briefingGaugeCol">
-              <div class="col-header-row" style="width: 100%;">
-                <span class="col-title"><i class="fa-solid fa-compass"></i> Thần Khí</span>
-                <span class="meta-pill pill-primary" id="gaugeCanChiPill">--</span>
+            <!-- Thẻ 1: THẦN KHÍ BÁC SĨ & CAN CHI THỜI KHẮC -->
+            <div class="chrono-card chrono-hero-left">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-solid fa-compass"></i>
+                  <span>Thần Khí Bác Sĩ &amp; Can Chi Thời Khắc</span>
+                </span>
+                <span class="chrono-tag tag-primary" id="heroEnergyPill">
+                  <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i>
+                  <span id="chronoEnergyVal">--%</span>
+                </span>
               </div>
 
-              <!-- SVG Radial Gauge -->
-              <div class="gauge-svg-wrap" id="gaugeSvgWrap" title="Bấm để xem phân tích Thần Khí & Can Chi chi tiết">
-                <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
-                  <!-- Background Track (3/4 vòng cung) -->
-                  <circle
-                    class="gauge-track"
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke-dasharray="251.3"
-                    stroke-dashoffset="62.8"
-                  />
-                  <!-- Animated Fill Circle -->
-                  <circle
-                    class="gauge-fill"
-                    id="gaugeFillCircle"
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    stroke-dasharray="251.3"
-                    stroke-dashoffset="251.3"
-                  />
-                </svg>
-                <div class="gauge-center-content">
-                  <span class="gauge-score-val" id="gaugeScoreVal">--</span>
-                  <span class="gauge-rating-badge rating-great" id="gaugeRatingBadge">Đại Cát</span>
-                </div>
-              </div>
-
-              <!-- Meta Pills: Trực, Nạp Âm & Âm Lịch -->
-              <div class="gauge-meta-pills" id="gaugeMetaPills">
-                <span class="meta-pill" id="gaugeLunarPill">Âm lịch: --/--</span>
-                <span class="meta-pill" id="gaugeTrucPill">Trực: --</span>
-                <span class="meta-pill" id="gaugeNapAmPill">Nạp âm: --</span>
-              </div>
-            </div>
-
-            <!-- ── KHỐI 2: BIORHYTHM 4 TRỤC LÂM SÀNG & SPARKLINE ── -->
-            <div class="briefing-col briefing-col-bio" id="briefingBioCol">
-              <div class="col-header-row">
-                <span class="col-title"><i class="fa-solid fa-dna"></i> Biorhythm Nội Khoa</span>
-                <span style="font-size: 0.68rem; font-weight: 700; color: var(--color-primary);" id="bioAvgPill">TB: --%</span>
-              </div>
-
-              <!-- 4 Tracks List -->
-              <div class="bio-tracks-list" id="bioTracksList">
-                <!-- Dynamic render from renderBioTracks -->
-              </div>
-
-              <!-- Sparkline 7 Days & Clinical Pearl -->
-              <div class="bio-sparkline-row">
-                <svg class="sparkline-svg" id="bioSparklineSvg" viewBox="0 0 140 28" preserveAspectRatio="none" aria-label="Biểu đồ Biorhythm 7 ngày">
-                  <!-- Render path dynamically -->
-                </svg>
-              </div>
-
-              <div class="bio-clinical-tip-row" id="bioTipRow" title="">
-                <i class="fa-solid fa-lightbulb" style="color: #f59e0b; flex-shrink: 0;"></i>
-                <span id="bioTipText">Đang tải khuyến nghị...</span>
-              </div>
-            </div>
-
-            <!-- ── KHỐI 3: GIỜ VÀNG Y LỆNH 24H & 12 HOUR CHIP RAIL ── -->
-            <div class="briefing-col briefing-col-hours" id="briefingHoursCol">
-              <div class="col-header-row">
-                <span class="col-title"><i class="fa-regular fa-clock"></i> Khung Giờ Y Lệnh</span>
-                <span style="font-size: 0.66rem; font-weight: 700; color: var(--color-text-muted);">24h</span>
-              </div>
-
-              <!-- Current Hour Banner -->
-              <div class="current-hour-banner" id="currentHourBanner">
-                <div class="current-hour-info">
-                  <span class="current-hour-icon" id="currentHourIcon">⏰</span>
-                  <div>
-                    <div class="current-hour-name" id="currentHourName">--</div>
-                    <div class="current-hour-time" id="currentHourTime">--:--</div>
+              <div class="gauge-hero-body">
+                <!-- SVG Arc Gauge -->
+                <div class="gauge-svg-wrapper" id="gaugeSvgWrapper" title="Bấm để mở phân tích Can Chi toàn diện">
+                  <svg class="gauge-main-svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
+                    <circle class="gauge-track-ring" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="62.8" />
+                    <circle class="gauge-fill-ring" id="gaugeFillRing" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="251.3" />
+                  </svg>
+                  <div class="gauge-data-center">
+                    <span class="gauge-big-num" id="gaugeBigNum">--</span>
+                    <span class="gauge-rating-pill" id="gaugeRatingPill">Đại Cát</span>
                   </div>
                 </div>
-                <span class="current-hour-badge" id="currentHourBadge">Hạng --</span>
+
+                <!-- Analysis Details -->
+                <div class="gauge-analysis-details">
+                  <div class="analysis-detail-item">
+                    <div class="analysis-icon-box"><i class="fa-regular fa-sun"></i></div>
+                    <div>
+                      <strong id="analysisCanChiText">Ngày -- (-- Âm)</strong>
+                    </div>
+                  </div>
+
+                  <div class="analysis-detail-item">
+                    <div class="analysis-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                      <span id="analysisNapAmText">Nạp âm: --</span>
+                    </div>
+                  </div>
+
+                  <div class="analysis-detail-item">
+                    <div class="analysis-icon-box"><i class="fa-solid fa-star"></i></div>
+                    <div>
+                      <span id="analysisTrucSaoText">Trực -- • Sao --</span>
+                    </div>
+                  </div>
+
+                  <div class="analysis-pills-row" id="analysisTagsWrap">
+                    <span class="chrono-tag">Đang tải...</span>
+                  </div>
+                </div>
               </div>
 
-              <!-- 12 Giờ Mini Chips Rail -->
-              <div class="hour-chips-rail" id="hourChipsRail" role="list">
+              <!-- Shift Energy Note -->
+              <div style="font-size: 0.72rem; color: var(--color-text-muted); display: flex; align-items: center; gap: 0.4rem; border-top: 1px dashed var(--glass-border); padding-top: 0.5rem;">
+                <i class="fa-solid fa-battery-half" style="color: #10b981;"></i>
+                <span id="chronoEnergyText">Năng lượng ca trực ổn định</span>
+              </div>
+            </div>
+
+            <!-- Thẻ 2: BẢN ĐỒ NHỊP SINH HỌC 4 TRỤC & SÓNG 7 NGÀY -->
+            <div class="chrono-card chrono-hero-right">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-solid fa-dna"></i>
+                  <span>Bản Đồ Nhịp Sinh Học 4 Trục &amp; Sóng 7 Ngày</span>
+                </span>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-primary);" id="chronoBioAvgBadge">
+                  TB: --%
+                </span>
+              </div>
+
+              <div class="bio-hero-body">
+                <!-- 4 Trục Biorhythm -->
+                <div class="bio-bars-column" id="bioBarsColumn">
+                  <!-- Render dynamic 4 bars -->
+                </div>
+
+                <!-- Đồ thị đa sóng 7 ngày SVG & Clinical Tip -->
+                <div class="bio-wave-column">
+                  <div class="bio-wave-chart-card">
+                    <div class="bio-wave-header">
+                      <span>Xu Hướng 7 Ngày</span>
+                      <div class="bio-wave-legend">
+                        <span class="legend-dot" style="--dot-color: #0284c7;">Trí tuệ</span>
+                        <span class="legend-dot" style="--dot-color: #8b5cf6;">Trực giác</span>
+                        <span class="legend-dot" style="--dot-color: #f59e0b;">Trung bình</span>
+                      </div>
+                    </div>
+                    <svg class="bio-multi-wave-svg" id="bioMultiWaveSvg" viewBox="0 0 260 55" preserveAspectRatio="none" aria-label="Biểu đồ đa sóng 7 ngày">
+                      <!-- Render SVG paths dynamically -->
+                    </svg>
+                  </div>
+
+                  <div class="bio-tip-box" id="bioClinicalTipBox" title="Khuyến nghị lâm sàng dựa trên nhịp sinh học và chuyên khoa">
+                    <i class="fa-solid fa-lightbulb" style="color: #f59e0b; flex-shrink: 0;"></i>
+                    <span id="bioClinicalTipText">Đang tải khuyến nghị...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.chrono-row-hero -->
+
+          <!-- ── TẦNG 2: TACTICAL OPERATIONS (24H TIMELINE & 5 NHIỆM VỤ NỘI KHOA) ── -->
+          <div class="chrono-row-tactical">
+
+            <!-- Thẻ 3: BẢNG 24H CHRONO-TIMELINE & 9 BẬC GIỜ KHỞI SỰ -->
+            <div class="chrono-card">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>Khung Giờ Vàng Lâm Sàng 24H &amp; 9 Bậc Khởi Sự</span>
+                </span>
+                <span class="chrono-tag tag-emerald" title="Tự động nhận diện canh giờ đang trực">
+                  <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981; margin-right: 0.2rem;"></span>
+                  Thời gian thực
+                </span>
+              </div>
+
+              <!-- Banner Giờ Hiện Tại -->
+              <div class="current-hour-highlight-box" id="tacticalCurHourBox">
+                <div class="current-hour-left">
+                  <span class="cur-hour-symbol" id="tacticalCurHourIcon">🌟</span>
+                  <div>
+                    <div class="cur-hour-name" id="tacticalCurHourName">Giờ --</div>
+                    <div class="cur-hour-range" id="tacticalCurHourRange">Khung giờ: --:--</div>
+                  </div>
+                </div>
+                <span class="cur-hour-badge tag-amber" id="tacticalCurHourBadge">Hạng --</span>
+              </div>
+
+              <!-- Lưới 12 Canh Giờ -->
+              <div class="chrono-12hours-grid" id="chrono12HoursGrid" role="list">
                 <!-- Render 12 chips dynamically -->
               </div>
 
-              <div class="hour-advice-line" id="hourAdviceLine" title="">
-                <span id="hourAdviceText">Đang tính toán khung giờ...</span>
+              <!-- Terminal lời khuyên giờ -->
+              <div class="hour-advice-terminal" id="hourAdviceTerminal">
+                <i class="fa-solid fa-terminal" style="color: var(--color-primary); flex-shrink: 0; margin-top: 0.15rem;"></i>
+                <span id="hourAdviceTerminalText">Đang tính toán khung giờ vàng...</span>
               </div>
             </div>
 
-            <!-- ── KHỐI 4: NHIỆM VỤ Y KHOA NỘI KHOA & HÀNH ĐỘNG NHANH ── -->
-            <div class="briefing-col briefing-col-tasks" id="briefingTasksCol">
-              <div class="col-header-row">
-                <span class="col-title"><i class="fa-solid fa-list-check"></i> Nhiệm Vụ Hôm Nay</span>
+            <!-- Thẻ 4: MA TRẬN 5 TÁC VỤ NỘI KHOA CHUYÊN SÂU -->
+            <div class="chrono-card">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-solid fa-list-check"></i>
+                  <span>5 Nghiệp Vụ Y Khoa Trọng Tâm (Chương II)</span>
+                </span>
+                <span class="chrono-tag" title="Đánh giá theo Trực, Sao, Thần Sát &amp; EBM">Chuẩn EBM</span>
               </div>
 
-              <!-- 3 Trọng Tâm Y Khoa -->
-              <div class="medical-tasks-list" id="medicalTasksList">
-                <!-- Render 3 tasks dynamically -->
-              </div>
-
-              <!-- Action Icons Row -->
-              <div class="task-actions-row">
-                <button type="button" class="btn-briefing-action" id="btnActionDetails" title="Xem chi tiết lịch tuần, tháng & tìm ngày tốt hội chẩn">
-                  <i class="fa-solid fa-calendar-day"></i>
-                  <span>Lịch</span>
-                </button>
-                <button type="button" class="btn-briefing-action" id="btnActionCopySummary" title="Sao chép tóm tắt trạng thái trực ca vào clipboard">
-                  <i class="fa-solid fa-copy"></i>
-                  <span>Chép</span>
-                </button>
-                <button type="button" class="btn-briefing-action" id="btnActionProfile" title="Xem & chỉnh sửa hồ sơ Bác sĩ (Can Chi, Bản Mệnh)">
-                  <i class="fa-solid fa-user-doctor"></i>
-                  <span>Hồ sơ</span>
-                </button>
+              <!-- Lưới 5 Cards Tác Vụ -->
+              <div class="medical-tasks-matrix" id="medicalTasksMatrix">
+                <!-- Render 5 tasks dynamically -->
               </div>
             </div>
 
-          </div><!-- /.briefing-body -->
+          </div><!-- /.chrono-row-tactical -->
+
+          <!-- ── TẦNG 3: STRATEGIC SHIFT PLANNING & 4 CLINICAL PILLARS ── -->
+          <div class="chrono-row-strategic">
+
+            <!-- Thẻ 5: LỊCH DỰ BÁO CA TRỰC 7 NGÀY LIÊN TIẾP -->
+            <div class="chrono-card">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-solid fa-calendar-week"></i>
+                  <span>Dự Báo Ca Trực 7 Ngày &amp; Kế Hoạch Tuần</span>
+                </span>
+                <span style="font-size: 0.72rem; color: var(--color-text-muted);">
+                  Bấm vào ngày để xem chi tiết
+                </span>
+              </div>
+
+              <!-- 7-Day Forecast Rail -->
+              <div class="week-forecast-rail" id="weekForecastRail" role="list">
+                <!-- Render 7 days dynamically -->
+              </div>
+            </div>
+
+            <!-- Thẻ 6: 4 TRỤ CỘT HÀNH ĐỘNG LÂM SÀNG & KHUYẾN NGHỊ -->
+            <div class="chrono-card">
+              <div class="chrono-card-header">
+                <span class="chrono-card-title">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>4 Trụ Cột Hành Động Lâm Sàng Nội Khoa</span>
+                </span>
+                <span class="chrono-tag tag-primary">Hành Động Khẩn</span>
+              </div>
+
+              <!-- 4 Action Pillars Grid -->
+              <div class="clinical-pillars-grid" id="clinicalPillarsGrid">
+                <!-- Render 4 pillars dynamically -->
+              </div>
+            </div>
+
+          </div><!-- /.chrono-row-strategic -->
+
         </section>
 
-        <!-- ── SECTION 3: 2-COLUMN WORKSPACE GRID (CẤP CỨU KHẨN & PHÁC ĐỒ CHỨNG CỨ EBM) ── -->
-        <div class="glass-grid-layout">
 
-          <!-- ── CỘT 1: TRẠM CẤP CỨU & TRIAGE GIƯỜNG BỆNH ── -->
-          <div class="glass-col">
-            <div class="glass-card emergency-hub-card">
-              <div class="glass-card-header">
-                <div>
-                  <h3 class="glass-card-title">
-                    <i class="fa-solid fa-truck-medical" style="color: #ef4444;"></i> Cấp Cứu Khẩn &amp; Triage Giường Bệnh
-                  </h3>
-                  <span class="hub-card-subtitle">
-                    Hồi sức phản ứng nhanh • Phân tầng nguy cơ thời gian thực
-                  </span>
-                </div>
-                <button type="button" class="btn-glass-action open-cheatsheet-btn cheatsheet-trigger-btn" id="openCheatsheetModalBtn" onclick="if(window.openCheatsheetModal)window.openCheatsheetModal();" title="Mở bảng tra cứu nhanh lâm sàng">
-                  <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i>
-                  <span>Tra Cứu Nhanh</span>
-                </button>
-              </div>
-
-              <div class="clinical-workspace-grid">
-                <!-- 1. ACLS -->
-                <a href="#/calculators/acls-resus-studio" class="clinical-work-card" style="--card-accent: #ef4444; --card-glow: rgba(239, 68, 68, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">❤️‍🔥</div>
-                    <span class="cwork-badge badge-danger">Sống Còn</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">ACLS Ngừng Tuần Hoàn 2025</span>
-                    <span class="cwork-desc">Sốc điện khử rung, Adrenaline 3-5p &amp; Đè ép tim chất lượng cao</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Mở ACLS Studio</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 2. STROKE -->
-                <a href="#/calculators/stroke-pro-studio" class="clinical-work-card" style="--card-accent: #0284c7; --card-glow: rgba(2, 132, 199, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">🧠</div>
-                    <span class="cwork-badge badge-primary">Giờ Vàng</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Đột Quỵ Cấp FAST-ED &amp; NIHSS</span>
-                    <span class="cwork-desc">Cửa sổ 4.5h Tiêu sợi huyết rTPA &amp; Đánh giá tắc mạch lớn LVO</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Đánh Giá Đột Quỵ</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. DENGUE SHOCK -->
-                <a href="#/calculators/ql-bu-dich-studio" class="clinical-work-card" style="--card-accent: #f59e0b; --card-glow: rgba(245, 158, 11, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">💧</div>
-                    <span class="cwork-badge badge-warning">BYT 2023</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Hồi Sức Sốc SXHD Dengue</span>
-                    <span class="cwork-desc">Lưu lượng truyền ml/kg/h, Động học Hct &amp; Dịch cao phân tử</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Phác Đồ Bù Dịch</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. ABG -->
-                <a href="#/calculators/dg-abg-studio" class="clinical-work-card" style="--card-accent: #10b981; --card-glow: rgba(16, 185, 129, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">🫁</div>
-                    <span class="cwork-badge badge-success">Hô Hấp • ICU</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Khí Máu Động Mạch &amp; SHH</span>
-                    <span class="cwork-desc">Toan kiềm Anion Gap, PaO2/FiO2 &amp; Thông khí thở máy ARDS</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Phân Tích ABG</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 5. SEPSIS -->
-                <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="clinical-work-card" style="--card-accent: #ec4899; --card-glow: rgba(236, 72, 153, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">☣️</div>
-                    <span class="cwork-badge badge-rose">SSC 2024</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Nhiễm Khuẩn Huyết Sepsis</span>
-                    <span class="cwork-desc">qSOFA, SOFA Score, Bó can thiệp 1h &amp; Liều kháng sinh nạp</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Phân Tầng Sepsis</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
-                  </div>
-                </a>
-
-                <!-- 6. GCS -->
-                <a href="#/calculators/gcs-glasgow" class="clinical-work-card" style="--card-accent: #8b5cf6; --card-glow: rgba(139, 92, 246, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">👁️</div>
-                    <span class="cwork-badge badge-purple">Tri Giác</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Hôn Mê Glasgow (GCS)</span>
-                    <span class="cwork-desc">Thang điểm 3–15, Phân độ chấn thương &amp; Chỉ định đặt NKQ bảo vệ</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Tính Điểm GCS</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div><!-- /.glass-col left -->
-
-          <!-- ── CỘT 2: TRUNG TÂM PHÁC ĐỒ BỘ Y TẾ & Y HỌC CHỨNG CỨ ── -->
-          <div class="glass-col">
-            <div class="glass-card ebm-hub-card">
-              <div class="glass-card-header">
-                <div>
-                  <h3 class="glass-card-title">
-                    <i class="fa-solid fa-scale-balanced" style="color: #0284c7;"></i> Phác Đồ Bộ Y Tế &amp; Y Học Chứng Cứ
-                  </h3>
-                  <span class="hub-card-subtitle">
-                    Chuẩn hóa khuyến cáo lâm sàng • Tháp bằng chứng EBM 2026
-                  </span>
-                </div>
-                <a href="#/ebm" class="btn-glass-action" title="Vào trung tâm chứng cứ y khoa">
-                  <span>Kho EBM</span>
-                  <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
-                </a>
-              </div>
-
-              <div class="clinical-workspace-grid">
-                <!-- 1. KHO GUIDELINES -->
-                <a href="#/ebm/kho-guidelines" class="clinical-work-card" style="--card-accent: #0284c7; --card-glow: rgba(2, 132, 199, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">📚</div>
-                    <span class="cwork-badge badge-primary">100+ Phác Đồ</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Kho Guidelines Điều Trị</span>
-                    <span class="cwork-desc">Hướng dẫn chính thức Bộ Y Tế &amp; Quốc tế (ESC, AHA, ADA, GOLD)</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Tra Cứu Phác Đồ</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 2. RADAR DIFF -->
-                <a href="#/ebm/radar" class="clinical-work-card" style="--card-accent: #10b981; --card-glow: rgba(16, 185, 129, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">📡</div>
-                    <span class="cwork-badge badge-success">Diff Viewer</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Guideline Diff Radar</span>
-                    <span class="cwork-desc">Đối chiếu điểm mới, thay đổi chỉ định và phân cấp khuyến cáo Class I/II/III</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Xem So Sánh Radar</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 3. PICO & NNT -->
-                <a href="#/ebm/pico-nnt-lab" class="clinical-work-card" style="--card-accent: #8b5cf6; --card-glow: rgba(139, 92, 246, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">🧪</div>
-                    <span class="cwork-badge badge-purple">EBM Stats</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">PICO &amp; NNT Clinical Lab</span>
-                    <span class="cwork-desc">Tính toán NNT (Number Needed to Treat), RRR, ARR và kiểm định hiệu quả</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Vào Phòng Lab NNT</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 4. FOREST PLOT -->
-                <a href="#/ebm/forest-plot-builder" class="clinical-work-card" style="--card-accent: #ec4899; --card-glow: rgba(236, 72, 153, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">📊</div>
-                    <span class="cwork-badge badge-rose">Meta-Analysis</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Forest Plot Builder</span>
-                    <span class="cwork-desc">Trực quan hóa bằng chứng tổng quan hệ thống SVG thuần &amp; Cochrane RoB</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Vẽ Biểu Đồ Chứng Cứ</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 5. SBAR & DOCSPACE -->
-                <a href="#/docspace" class="clinical-work-card" style="--card-accent: #f59e0b; --card-glow: rgba(245, 158, 11, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">📋</div>
-                    <span class="cwork-badge badge-warning">Workstation</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Trực Ca &amp; Bàn Giao SBAR</span>
-                    <span class="cwork-desc">Mẫu chuẩn hóa giao ban ca trực, SBAR lâm sàng &amp; Command Bar Ctrl+K</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Mở DocSpace Trực</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-
-                <!-- 6. KNOWLEDGE VAULT -->
-                <a href="#/vault" class="clinical-work-card" style="--card-accent: #06b6d4; --card-glow: rgba(6, 182, 212, 0.2);">
-                  <div class="cwork-top">
-                    <div class="cwork-icon-box">🎓</div>
-                    <span class="cwork-badge badge-cyan">2.400+ Bài</span>
-                  </div>
-                  <div class="cwork-info">
-                    <span class="cwork-title">Kho Tri Thức Knowledge Vault</span>
-                    <span class="cwork-desc">14 Kho chuyên khoa, Chuỗi CRCE 5 bước &amp; Trình đọc Reader Pro tối ưu</span>
-                  </div>
-                  <div class="cwork-footer">
-                    <span>Khám Phá Vault</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div><!-- /.glass-col right -->
-
-        </div><!-- /.glass-grid-layout -->
 
       </div>
       <!-- /.bento-homepage -->

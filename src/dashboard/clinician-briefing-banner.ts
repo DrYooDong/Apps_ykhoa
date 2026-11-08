@@ -1,9 +1,9 @@
 /**
- * CliniPortal 2.0 — Clinician Briefing Banner View & Engine
+ * CliniPortal 2.0 — Master Clinician Chronobiology & Auspicious Day Workstation Engine
  * Path: src/dashboard/clinician-briefing-banner.ts
  * 
- * Bảng Điều Hành Buổi Sáng & Sẵn Sàng Trực Ca
- * 100% Tokenized, Precision Biorhythms, SVG Living Charts & Icon-First UI
+ * Trạm Chỉ Huy Nhịp Sinh Học & Thời Khắc Y Lệnh Lâm Sàng (Thay thế hoàn toàn 2 cột cũ)
+ * 100% Tokenized, Pure SVG Living Charts, Biorhythm Wave Dynamics & Precision Engine
  */
 
 import type {
@@ -12,12 +12,15 @@ import type {
   DayScoreEvaluation,
   MedicalTaskType,
   BiorhythmResult,
-  GioRankResult
+  GioRankResult,
+  WeekDaySummary
 } from '../tools/good-day-types';
 
 import {
   evaluateDayScore,
   calculateBiorhythms,
+  getWeekEvaluation,
+  calculateShiftEnergy,
   getDoctorProfile,
   saveDoctorProfile,
   SPECIALTY_METAS
@@ -25,274 +28,279 @@ import {
 
 import { openDayScoreModal } from '../tools/good-day-modal';
 
-const COLLAPSE_KEY = 'cp_briefing_collapsed';
-let currentSelectedDate = new Date();
+let activeDate = new Date();
 
 /**
- * Render cấu trúc khung HTML của Section 2: Clinician Briefing Banner
+ * Khởi tạo toàn bộ Master Chronobiology Workstation
  */
-export function renderClinicianBriefingBanner(): string {
-  const doc = getDoctorProfile();
-  const spec = SPECIALTY_METAS[doc.specialty || 'internal_general'] || SPECIALTY_METAS.internal_general;
-  const todayStr = new Date().toISOString().split('T')[0];
+export function initClinicianBriefingBanner(): void {
+  const workstation = document.getElementById('chronoWorkstation');
+  if (!workstation) return;
 
-  return `
-    <section class="clinician-briefing-banner" id="clinicianBriefingBanner" aria-label="Bảng Điều Hành Buổi Sáng & Sẵn Sàng Trực Ca">
-      <!-- HEADER ROW -->
-      <div class="briefing-header-row">
-        <div class="briefing-header-left">
-          <div class="briefing-label-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>Sẵn Sàng Trực Ca</span>
-          </div>
+  // 1. Gắn sự kiện Date Navigation (Hôm qua / Hôm nay / Ngày mai / Input)
+  const prevBtn = document.getElementById('btnChronoPrevDay');
+  const nextBtn = document.getElementById('btnChronoNextDay');
+  const todayBtn = document.getElementById('btnChronoToday');
+  const dateInput = document.getElementById('chronoDateInput') as HTMLInputElement;
 
-          <!-- Specialty Switcher Dropdown Wrapper -->
-          <div class="briefing-spec-wrapper">
-            <button type="button" class="briefing-spec-btn" id="briefingSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi Chuyên khoa Nội khoa để cập nhật trọng số Biorhythm">
-              <span id="briefingSpecIcon">${spec.icon}</span>
-              <span id="briefingSpecName">${spec.shortName}</span>
-              <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
-            </button>
-            <div class="briefing-spec-menu" id="briefingSpecMenu" role="menu">
-              ${Object.values(SPECIALTY_METAS).map(m => `
-                <button type="button" class="spec-menu-item ${m.id === spec.id ? 'is-selected' : ''}" data-spec="${m.id}" role="menuitem">
-                  <span>${m.icon}</span>
-                  <span>${m.name}</span>
-                </button>
-              `).join('')}
-            </div>
-          </div>
-        </div>
-
-        <div class="briefing-header-controls">
-          <!-- Date Picker -->
-          <div class="briefing-date-picker" title="Chọn ngày để xem trước chỉ số trực ca">
-            <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem;"></i>
-            <input type="date" class="briefing-date-input" id="briefingDateInput" value="${todayStr}" aria-label="Chọn ngày đánh giá" />
-          </div>
-
-          <!-- Nút Mở Modal Chi Tiết -->
-          <button type="button" class="briefing-icon-btn" id="briefingOpenModalBtn" title="Xem chi tiết Lịch Vạn Niên & Vụ Việc Y Khoa Toàn Diện" aria-label="Mở chi tiết ngày tốt">
-            <i class="fa-solid fa-up-right-from-square"></i>
-          </button>
-
-          <!-- Nút Thu Gọn / Mở Rộng -->
-          <button type="button" class="briefing-icon-btn" id="briefingCollapseBtn" title="Thu gọn / Mở rộng bảng điều hành" aria-expanded="true" aria-controls="briefingBody">
-            <i class="fa-solid fa-chevron-up" id="briefingCollapseIcon"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- COLLAPSED COMPACT RIBBON (Chỉ hiện khi thu gọn) -->
-      <div class="briefing-ribbon" id="briefingRibbon">
-        <div class="briefing-ribbon-item">
-          <span id="ribbonScoreVal" style="color: var(--color-primary); font-weight: 800;">--/100</span>
-          <span id="ribbonRatingText" class="gauge-rating-badge rating-great" style="font-size: 0.65rem;">--</span>
-        </div>
-        <span class="briefing-ribbon-sep">•</span>
-        <div class="briefing-ribbon-item" id="ribbonBioPill">
-          <span>🧠 Trí tuệ --%</span>
-        </div>
-        <span class="briefing-ribbon-sep">•</span>
-        <div class="briefing-ribbon-item" id="ribbonHourPill">
-          <span>⏰ --</span>
-        </div>
-        <span class="briefing-ribbon-sep">•</span>
-        <div class="briefing-ribbon-item" id="ribbonTaskPill">
-          <span>🔍 Khám ca khó: --</span>
-        </div>
-      </div>
-
-      <!-- BENTO BODY (4-COLUMN GRID) -->
-      <div class="briefing-body" id="briefingBody">
-
-        <!-- ── KHỐI 1: GAUGE CHỈ SỐ THẦN KHÍ & CAN CHI NGÀY ── -->
-        <div class="briefing-col briefing-col-gauge" id="briefingGaugeCol">
-          <div class="col-header-row" style="width: 100%;">
-            <span class="col-title"><i class="fa-solid fa-compass"></i> Thần Khí</span>
-            <span class="meta-pill pill-primary" id="gaugeCanChiPill">--</span>
-          </div>
-
-          <!-- SVG Radial Gauge -->
-          <div class="gauge-svg-wrap" id="gaugeSvgWrap" title="Bấm để xem phân tích Thần Khí & Can Chi chi tiết">
-            <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
-              <!-- Background Track (3/4 vòng cung) -->
-              <circle
-                class="gauge-track"
-                cx="50"
-                cy="50"
-                r="40"
-                stroke-dasharray="251.3"
-                stroke-dashoffset="62.8"
-              />
-              <!-- Animated Fill Circle -->
-              <circle
-                class="gauge-fill"
-                id="gaugeFillCircle"
-                cx="50"
-                cy="50"
-                r="40"
-                stroke-dasharray="251.3"
-                stroke-dashoffset="251.3"
-              />
-            </svg>
-            <div class="gauge-center-content">
-              <span class="gauge-score-val" id="gaugeScoreVal">--</span>
-              <span class="gauge-rating-badge rating-great" id="gaugeRatingBadge">Đại Cát</span>
-            </div>
-          </div>
-
-          <!-- Meta Pills: Trực, Nạp Âm & Âm Lịch -->
-          <div class="gauge-meta-pills" id="gaugeMetaPills">
-            <span class="meta-pill" id="gaugeLunarPill">Âm lịch: --/--</span>
-            <span class="meta-pill" id="gaugeTrucPill">Trực: --</span>
-            <span class="meta-pill" id="gaugeNapAmPill">Nạp âm: --</span>
-          </div>
-        </div>
-
-        <!-- ── KHỐI 2: BIORHYTHM 4 TRỤC LÂM SÀNG & SPARKLINE ── -->
-        <div class="briefing-col briefing-col-bio" id="briefingBioCol">
-          <div class="col-header-row">
-            <span class="col-title"><i class="fa-solid fa-dna"></i> Biorhythm Nội Khoa</span>
-            <span style="font-size: 0.68rem; font-weight: 700; color: var(--color-primary);" id="bioAvgPill">TB: --%</span>
-          </div>
-
-          <!-- 4 Tracks List -->
-          <div class="bio-tracks-list" id="bioTracksList">
-            <!-- Dynamic render from renderBioTracks -->
-          </div>
-
-          <!-- Sparkline 7 Days & Clinical Pearl -->
-          <div class="bio-sparkline-row">
-            <svg class="sparkline-svg" id="bioSparklineSvg" viewBox="0 0 140 28" preserveAspectRatio="none" aria-label="Biểu đồ Biorhythm 7 ngày">
-              <!-- Render path dynamially -->
-            </svg>
-          </div>
-
-          <div class="bio-clinical-tip-row" id="bioTipRow" title="">
-            <i class="fa-solid fa-lightbulb" style="color: #f59e0b; flex-shrink: 0;"></i>
-            <span id="bioTipText">Đang tải khuyến nghị...</span>
-          </div>
-        </div>
-
-        <!-- ── KHỐI 3: GIỜ VÀNG Y LỆNH 24H & 12 HOUR CHIP RAIL ── -->
-        <div class="briefing-col briefing-col-hours" id="briefingHoursCol">
-          <div class="col-header-row">
-            <span class="col-title"><i class="fa-regular fa-clock"></i> Khung Giờ Y Lệnh</span>
-            <span style="font-size: 0.66rem; font-weight: 700; color: var(--color-text-muted);">24h</span>
-          </div>
-
-          <!-- Current Hour Banner -->
-          <div class="current-hour-banner" id="currentHourBanner">
-            <div class="current-hour-info">
-              <span class="current-hour-icon" id="currentHourIcon">⏰</span>
-              <div>
-                <div class="current-hour-name" id="currentHourName">--</div>
-                <div class="current-hour-time" id="currentHourTime">--:--</div>
-              </div>
-            </div>
-            <span class="current-hour-badge" id="currentHourBadge">Hạng --</span>
-          </div>
-
-          <!-- 12 Giờ Mini Chips Rail -->
-          <div class="hour-chips-rail" id="hourChipsRail" role="list">
-            <!-- Render 12 chips dynamically -->
-          </div>
-
-          <div class="hour-advice-line" id="hourAdviceLine" title="">
-            <span id="hourAdviceText">Đang tính toán khung giờ...</span>
-          </div>
-        </div>
-
-        <!-- ── KHỐI 4: NHIỆM VỤ Y KHOA NỘI KHOA & HÀNH ĐỘNG NHANH ── -->
-        <div class="briefing-col briefing-col-tasks" id="briefingTasksCol">
-          <div class="col-header-row">
-            <span class="col-title"><i class="fa-solid fa-list-check"></i> Nhiệm Vụ Hôm Nay</span>
-          </div>
-
-          <!-- 3 Trọng Tâm Y Khoa -->
-          <div class="medical-tasks-list" id="medicalTasksList">
-            <!-- Render 3 tasks dynamically -->
-          </div>
-
-          <!-- Action Icons Row -->
-          <div class="task-actions-row">
-            <button type="button" class="btn-briefing-action" id="btnActionDetails" title="Xem chi tiết lịch tuần, tháng & tìm ngày tốt hội chẩn">
-              <i class="fa-solid fa-calendar-day"></i>
-              <span>Lịch</span>
-            </button>
-            <button type="button" class="btn-briefing-action" id="btnActionCopySummary" title="Sao chép tóm tắt trạng thái trực ca vào clipboard">
-              <i class="fa-solid fa-copy"></i>
-              <span>Chép</span>
-            </button>
-            <button type="button" class="btn-briefing-action" id="btnActionProfile" title="Xem & chỉnh sửa hồ sơ Bác sĩ (Can Chi, Bản Mệnh)">
-              <i class="fa-solid fa-user-doctor"></i>
-              <span>Hồ sơ</span>
-            </button>
-          </div>
-        </div>
-
-      </div><!-- /.briefing-body -->
-    </section>
-  `;
-}
-
-/**
- * Cập nhật hiển thị SVG Arc Gauge cho Khối 1
- */
-function updateGaugeDisplay(score: number, rating: string): void {
-  const circle = document.getElementById('gaugeFillCircle');
-  const scoreVal = document.getElementById('gaugeScoreVal');
-  const badge = document.getElementById('gaugeRatingBadge');
-  if (!circle || !scoreVal || !badge) return;
-
-  // Chu vi 2*PI*40 = 251.32. Arc 270 độ (3/4 vòng tròn) = 188.49
-  const circumference = 251.32;
-  const arcLength = circumference * 0.75; // 188.49
-  const offset = circumference - (score / 100) * arcLength;
-
-  circle.style.strokeDasharray = `${circumference}`;
-  circle.style.strokeDashoffset = `${offset}`;
-
-  // Phối màu theo điểm số
-  let strokeColor = '#10b981';
-  let badgeClass = 'gauge-rating-badge rating-great';
-  if (score >= 80) {
-    strokeColor = '#10b981'; // Emerald
-    badgeClass = 'gauge-rating-badge rating-great';
-  } else if (score >= 65) {
-    strokeColor = '#0284c7'; // Primary
-    badgeClass = 'gauge-rating-badge rating-good';
-  } else if (score >= 50) {
-    strokeColor = '#f59e0b'; // Amber
-    badgeClass = 'gauge-rating-badge rating-neutral';
-  } else {
-    strokeColor = '#ef4444'; // Red
-    badgeClass = 'gauge-rating-badge rating-caution';
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const d = new Date(activeDate);
+      d.setDate(d.getDate() - 1);
+      updateMasterWorkstation(d);
+    });
   }
 
-  circle.style.stroke = strokeColor;
-  scoreVal.textContent = String(score);
-  badge.textContent = rating;
-  badge.className = badgeClass;
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const d = new Date(activeDate);
+      d.setDate(d.getDate() + 1);
+      updateMasterWorkstation(d);
+    });
+  }
+
+  if (todayBtn) {
+    todayBtn.addEventListener('click', () => {
+      updateMasterWorkstation(new Date());
+    });
+  }
+
+  if (dateInput) {
+    dateInput.addEventListener('change', () => {
+      if (dateInput.value) {
+        const parts = dateInput.value.split('-');
+        const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        updateMasterWorkstation(d);
+      }
+    });
+  }
+
+  // 2. Gắn sự kiện Chuyển đổi Chuyên khoa (Specialty Switcher)
+  const specBtn = document.getElementById('chronoSpecBtn');
+  const specMenu = document.getElementById('chronoSpecMenu');
+  if (specBtn && specMenu) {
+    specBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      specMenu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!specMenu.contains(e.target as Node) && e.target !== specBtn) {
+        specMenu.classList.remove('is-open');
+      }
+    });
+
+    specMenu.querySelectorAll<HTMLButtonElement>('.chrono-spec-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const specId = btn.getAttribute('data-spec') as DoctorSpecialty;
+        if (specId) {
+          saveDoctorProfile({ specialty: specId });
+          specMenu.querySelectorAll('.chrono-spec-item').forEach(b => b.classList.remove('is-selected'));
+          btn.classList.add('is-selected');
+          specMenu.classList.remove('is-open');
+          updateMasterWorkstation(activeDate);
+        }
+      });
+    });
+  }
+
+  // 3. Gắn sự kiện các nút Hành động (Action Toolbar)
+  const doctorBtn = document.getElementById('chronoDoctorBtn');
+  if (doctorBtn) {
+    doctorBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'profile'));
+  }
+
+  const finderBtn = document.getElementById('btnChronoFinder');
+  if (finderBtn) {
+    finderBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'finder'));
+  }
+
+  const reportBtn = document.getElementById('btnChronoFullReport');
+  if (reportBtn) {
+    reportBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'day'));
+  }
+
+  const copyBtn = document.getElementById('btnChronoCopySBAR');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => copySbarBriefing(activeDate, copyBtn));
+  }
+
+  // 4. Click Gauge mở Modal chi tiết
+  const gaugeSvgWrap = document.getElementById('gaugeSvgWrapper');
+  if (gaugeSvgWrap) {
+    gaugeSvgWrap.addEventListener('click', () => openDayScoreModal(activeDate, 'day'));
+  }
+
+  // 5. Cập nhật dữ liệu lần đầu
+  updateMasterWorkstation(new Date());
+
+  // 6. Tự động kiểm tra canh giờ mới mỗi 2 phút
+  setInterval(() => {
+    const now = new Date();
+    if (activeDate.toDateString() === now.toDateString()) {
+      const doc = getDoctorProfile();
+      const evalData = evaluateDayScore(activeDate, doc);
+      renderChrono12Hours(evalData.gioRanks, now.getHours());
+      updateEnergyWidget(now);
+    }
+  }, 120000);
 }
 
 /**
- * Cập nhật 4 thanh Biorhythm cho Khối 2
+ * Cập nhật toàn bộ các Widget trên Master Workstation
  */
-function renderBioTracks(bio: BiorhythmResult): void {
-  const container = document.getElementById('bioTracksList');
-  if (!container) return;
+export function updateMasterWorkstation(targetDate: Date = new Date()): void {
+  activeDate = targetDate;
+  const doc = getDoctorProfile();
+  const evalData = evaluateDayScore(targetDate, doc);
+  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
+  const now = new Date();
+
+  // A. Đồng bộ Date Input & Toolbar
+  const dateInput = document.getElementById('chronoDateInput') as HTMLInputElement;
+  if (dateInput) {
+    const yyyy = targetDate.getFullYear();
+    const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(targetDate.getDate()).padStart(2, '0');
+    dateInput.value = `${yyyy}-${mm}-${dd}`;
+  }
+
+  // Cập nhật Profile Pill
+  const docName = document.getElementById('chronoDoctorName');
+  if (docName) {
+    docName.textContent = `BS. ${doc.name} (${doc.canNam} ${doc.chiNam} • Mệnh ${doc.hanhMenh})`;
+  }
+
+  // Cập nhật Specialty Header Button
+  const spec = SPECIALTY_METAS[doc.specialty || 'internal_general'] || SPECIALTY_METAS.internal_general;
+  const specIcon = document.getElementById('chronoSpecIcon');
+  const specName = document.getElementById('chronoSpecName');
+  if (specIcon) specIcon.textContent = spec.icon;
+  if (specName) specName.textContent = spec.shortName;
+
+  // B. Khối Hero 1: Gauge Thần Khí & Can Chi
+  updateGauge(evalData.total, evalData.rating);
+  updateGaugeMetaDetails(evalData);
+  updateEnergyWidget(targetDate);
+
+  // C. Khối Hero 2: Biorhythm 4 Trục & Đồ Thị Sóng 7 Ngày
+  renderBiorhythmTracks(evalData.bio);
+  renderBiorhythmMultiWave(birthDate, targetDate, doc.specialty || 'internal_general');
+  const bioTip = document.getElementById('bioClinicalTipText');
+  if (bioTip && evalData.bio.clinicalTips.length > 0) {
+    bioTip.textContent = evalData.bio.clinicalTips[0];
+  }
+
+  // D. Khối Row 2 (Trái): 24H Chrono-Timeline 12 Canh Giờ
+  renderChrono12Hours(evalData.gioRanks, now.getHours());
+
+  // E. Khối Row 2 (Phải): Ma Trận 5 Tác Vụ Nội Khoa
+  renderMedicalTasksMatrix(evalData);
+
+  // F. Khối Row 3 (Trái): Lịch Dự Báo 7 Ngày Ca Trực
+  renderWeekForecastRail(targetDate, doc);
+
+  // G. Khối Row 3 (Phải): 4 Trụ Cột Hành Động Lâm Sàng
+  renderClinicalActionPillars(evalData);
+}
+
+/**
+ * 1. Cập nhật Radial Arc Gauge
+ */
+function updateGauge(score: number, rating: string): void {
+  const ring = document.getElementById('gaugeFillRing');
+  const num = document.getElementById('gaugeBigNum');
+  const ratingPill = document.getElementById('gaugeRatingPill');
+  if (!ring || !num || !ratingPill) return;
+
+  const circumference = 251.32; // 2 * PI * 40
+  const arcLength = circumference * 0.75; // 270 độ = 188.49
+  const offset = circumference - (score / 100) * arcLength;
+
+  ring.style.strokeDasharray = `${circumference}`;
+  ring.style.strokeDashoffset = `${offset}`;
+
+  let color = '#10b981';
+  let badgeStyle = 'background: rgba(16, 185, 129, 0.15); color: #10b981;';
+  if (score >= 80) {
+    color = '#10b981';
+    badgeStyle = 'background: rgba(16, 185, 129, 0.15); color: #10b981;';
+  } else if (score >= 65) {
+    color = '#0284c7';
+    badgeStyle = 'background: rgba(2, 132, 199, 0.15); color: #0284c7;';
+  } else if (score >= 50) {
+    color = '#f59e0b';
+    badgeStyle = 'background: rgba(245, 158, 11, 0.15); color: #f59e0b;';
+  } else {
+    color = '#ef4444';
+    badgeStyle = 'background: rgba(239, 68, 68, 0.15); color: #ef4444;';
+  }
+
+  ring.style.stroke = color;
+  num.textContent = String(score);
+  ratingPill.textContent = rating;
+  ratingPill.setAttribute('style', badgeStyle);
+}
+
+/**
+ * Cập nhật thông tin chi tiết Can Chi, Nạp âm, Trực, Thần sát
+ */
+function updateGaugeMetaDetails(evalData: DayScoreEvaluation): void {
+  const canChiEl = document.getElementById('analysisCanChiText');
+  const napAmEl = document.getElementById('analysisNapAmText');
+  const trucSaoEl = document.getElementById('analysisTrucSaoText');
+  const tagsWrap = document.getElementById('analysisTagsWrap');
+
+  if (canChiEl) {
+    canChiEl.textContent = `Ngày ${evalData.canChiDay} (${evalData.lunarDay}/${evalData.lunarMonth} Âm) • ${evalData.b1.text}`;
+  }
+  if (napAmEl) {
+    napAmEl.textContent = `Nạp âm: ${evalData.napAmDay.name} (${evalData.napAmRelation.text})`;
+  }
+  if (trucSaoEl) {
+    const dangVien = evalData.saoTuDangVien.isDangVien ? ' (Đăng Viên)' : '';
+    trucSaoEl.textContent = `Trực ${evalData.trucNgay.name} (${evalData.trucNgay.desc}) • Sao ${evalData.saoTu.name}${dangVien}`;
+  }
+
+  if (tagsWrap) {
+    const tags: string[] = [];
+    if (evalData.quyNhanLoc.thienAt.isMatch) tags.push('Thiên Ất Quý Nhân');
+    if (evalData.quyNhanLoc.locThan.isMatch) tags.push('Lộc Thần Cát Lợi');
+    if (evalData.diaChiRelations.tamHop.isMatch) tags.push('Địa Chi Tam Hợp');
+    if (evalData.diaChiRelations.lucHop.isMatch) tags.push('Địa Chi Lục Hợp');
+    if (evalData.tietKhiInfo.tietKhi.name) tags.push(`Tiết ${evalData.tietKhiInfo.tietKhi.name}`);
+
+    tagsWrap.innerHTML = tags.map(t => `<span class="chrono-tag tag-primary">${t}</span>`).join('') ||
+      `<span class="chrono-tag">Khí tiết bình hòa</span>`;
+  }
+}
+
+/**
+ * Cập nhật Widget Năng Lượng Circadian
+ */
+function updateEnergyWidget(date: Date): void {
+  const energy = calculateShiftEnergy(date);
+  const batteryVal = document.getElementById('chronoEnergyVal');
+  const batteryText = document.getElementById('chronoEnergyText');
+  if (batteryVal) batteryVal.textContent = `${energy.energyPercent}%`;
+  if (batteryText) batteryText.textContent = `${energy.circadianPhase} • ${energy.caffeineTip}`;
+}
+
+/**
+ * 2. Cập nhật 4 thanh Biorhythm Tracks
+ */
+function renderBiorhythmTracks(bio: BiorhythmResult): void {
+  const tracksWrap = document.getElementById('bioBarsColumn');
+  if (!tracksWrap) return;
 
   const tracks = [
-    { icon: '🧠', name: 'Trí tuệ', val: bio.intellectual, color: '#0284c7', tip: 'Tư duy chẩn đoán & ra quyết định phác đồ' },
-    { icon: '🎯', name: 'Trực giác', val: bio.intuitive, color: '#8b5cf6', tip: 'Nhận diện ca khó & suy sụp tiềm ẩn' },
-    { icon: '❤️', name: 'Cảm xúc', val: bio.emotional, color: '#ec4899', tip: 'Giao tiếp, giải thích tiên lượng & thấu cảm' },
-    { icon: '💪', name: 'Thể lực', val: bio.physical, color: '#f59e0b', tip: 'Sức bền ca trực, đi buồng & thủ thuật' }
+    { icon: '🧠', label: 'Trí Tuệ', val: bio.intellectual, color: '#0284c7', tip: 'Tư duy phân tích, chẩn đoán nhiều tầng & y lệnh' },
+    { icon: '🎯', label: 'Trực Giác', val: bio.intuitive, color: '#8b5cf6', tip: 'Nhận diện ca khó & suy sụp tiềm ẩn' },
+    { icon: '❤️', label: 'Cảm Xúc', val: bio.emotional, color: '#ec4899', tip: 'Thấu cảm bệnh nhân mạn & giải thích tiên lượng' },
+    { icon: '💪', label: 'Thể Lực', val: bio.physical, color: '#f59e0b', tip: 'Sức bền ca trực, đi buồng & hồi sức cấp cứu' }
   ];
 
-  container.innerHTML = tracks.map((t, idx) => {
-    // Giá trị -100..+100 chuyển thành % chiều dài từ tâm (50%)
+  tracksWrap.innerHTML = tracks.map((t, idx) => {
     const isNeg = t.val < 0;
     const absVal = Math.min(100, Math.abs(t.val));
     const widthPct = (absVal / 100) * 50;
@@ -300,16 +308,17 @@ function renderBioTracks(bio: BiorhythmResult): void {
     const trackColor = isNeg ? '#ef4444' : t.color;
 
     return `
-      <div class="bio-track-item" title="${t.name}: ${t.val > 0 ? '+' : ''}${t.val}% — ${t.tip}">
-        <span class="bio-icon">${t.icon}</span>
-        <div class="bio-bar-wrap">
-          <div class="bio-center-line"></div>
+      <div class="bio-metric-row" title="${t.label}: ${t.val > 0 ? '+' : ''}${t.val}% — ${t.tip}">
+        <span class="bio-metric-icon">${t.icon}</span>
+        <span class="bio-metric-label">${t.label}</span>
+        <div class="bio-progress-track">
+          <div class="bio-axis-center"></div>
           <div 
-            class="bio-bar-fill" 
+            class="bio-progress-bar"
             style="left: ${leftPct}%; width: ${widthPct}%; background: ${trackColor}; animation-delay: ${idx * 0.1}s;"
           ></div>
         </div>
-        <span class="bio-val-text" style="color: ${trackColor};">
+        <span class="bio-metric-val" style="color: ${trackColor};">
           ${t.val > 0 ? '+' : ''}${t.val}%
         </span>
       </div>
@@ -318,56 +327,69 @@ function renderBioTracks(bio: BiorhythmResult): void {
 }
 
 /**
- * Vẽ Sparkline Biorhythm 7 Ngày cho Khối 2 (SVG)
+ * 3. Vẽ Sơ Đồ Đa Sóng Biorhythm 7 Ngày (Multi-Wave SVG)
  */
-function renderBioSparkline(birthDate: Date, targetDate: Date, specialty: DoctorSpecialty): void {
-  const svg = document.getElementById('bioSparklineSvg');
+function renderBiorhythmMultiWave(birthDate: Date, targetDate: Date, specialty: DoctorSpecialty): void {
+  const svg = document.getElementById('bioMultiWaveSvg');
   if (!svg) return;
 
-  const points: { x: number; y: number; avg: number }[] = [];
-  const width = 140;
-  const height = 28;
+  const width = 260;
+  const height = 55;
+  const numDays = 7;
 
-  for (let i = -6; i <= 0; i++) {
+  // Thu thập điểm cho 4 trục
+  const intPoints: { x: number; y: number }[] = [];
+  const intuitPoints: { x: number; y: number }[] = [];
+  const avgPoints: { x: number; y: number }[] = [];
+
+  for (let i = -3; i <= 3; i++) {
     const d = new Date(targetDate);
     d.setDate(d.getDate() + i);
     const bio = calculateBiorhythms(birthDate, d, specialty);
-    const x = ((i + 6) / 6) * (width - 10) + 5;
-    // Map avgScore (-100..100) sang y (height-4 .. 4)
-    const y = height / 2 - (bio.avgScore / 100) * (height / 2 - 4);
-    points.push({ x, y, avg: bio.avgScore });
+    const x = ((i + 3) / (numDays - 1)) * (width - 20) + 10;
+    
+    // Map -100..100 sang y
+    const yInt = height / 2 - (bio.intellectual / 100) * (height / 2 - 6);
+    const yIntuit = height / 2 - (bio.intuitive / 100) * (height / 2 - 6);
+    const yAvg = height / 2 - (bio.avgScore / 100) * (height / 2 - 6);
+
+    intPoints.push({ x, y: yInt });
+    intuitPoints.push({ x, y: yIntuit });
+    avgPoints.push({ x, y: yAvg });
   }
 
-  const polylineStr = points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-  const lastPoint = points[points.length - 1];
+  const makePath = (pts: { x: number; y: number }[]) => pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+  const todayPoint = avgPoints[3]; // i = 0 là vị trí thứ 4
 
   svg.innerHTML = `
-    <defs>
-      <linearGradient id="sparklineGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
-        <stop offset="100%" stop-color="#0284c7" stop-opacity="1" />
-      </linearGradient>
-    </defs>
     <!-- Baseline giữa (0%) -->
-    <line x1="5" y1="${height / 2}" x2="${width - 5}" y2="${height / 2}" stroke="var(--glass-border, rgba(255,255,255,0.15))" stroke-dasharray="2,2" stroke-width="1" />
-    <!-- Sóng 7 ngày -->
-    <polyline fill="none" stroke="url(#sparklineGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${polylineStr}" />
-    <!-- Điểm mốc Ngày Đang Xem -->
-    <circle cx="${lastPoint.x}" cy="${lastPoint.y}" r="3.5" fill="#0284c7" class="sparkline-pulse-dot" />
+    <line x1="10" y1="${height / 2}" x2="${width - 10}" y2="${height / 2}" stroke="var(--glass-border, rgba(255,255,255,0.15))" stroke-dasharray="3,3" stroke-width="1" />
+    
+    <!-- Sóng Trí Tuệ (Xanh dương) -->
+    <polyline fill="none" stroke="#0284c7" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" points="${makePath(intPoints)}" />
+    
+    <!-- Sóng Trực Giác (Tím) -->
+    <polyline fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" points="${makePath(intuitPoints)}" />
+    
+    <!-- Sóng Điểm Trung Bình Trọng Số (Vàng cam nổi bật) -->
+    <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${makePath(avgPoints)}" />
+    
+    <!-- Điểm mốc Ngày Đang Xem (Pulsing Marker) -->
+    <circle cx="${todayPoint.x}" cy="${todayPoint.y}" r="4" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
   `;
 }
 
 /**
- * Cập nhật Khung Giờ Y Lệnh & 12 Hour Chips Rail cho Khối 3
+ * 4. Cập nhật Lưới 12 Canh Giờ Khởi Sự (24H Chrono-Timeline)
  */
-function renderHourRail(gioRanks: GioRankResult[], currentHour: number): void {
-  const rail = document.getElementById('hourChipsRail');
-  const curIcon = document.getElementById('currentHourIcon');
-  const curName = document.getElementById('currentHourName');
-  const curTime = document.getElementById('currentHourTime');
-  const curBadge = document.getElementById('currentHourBadge');
-  const adviceEl = document.getElementById('hourAdviceText');
-  if (!rail) return;
+function renderChrono12Hours(gioRanks: GioRankResult[], currentHour: number): void {
+  const grid = document.getElementById('chrono12HoursGrid');
+  const curIcon = document.getElementById('tacticalCurHourIcon');
+  const curName = document.getElementById('tacticalCurHourName');
+  const curRange = document.getElementById('tacticalCurHourRange');
+  const curBadge = document.getElementById('tacticalCurHourBadge');
+  const terminalText = document.getElementById('hourAdviceTerminalText');
+  if (!grid) return;
 
   const CHI_HOURS: Record<string, { start: number; end: number; range: string }> = {
     'Tý': { start: 23, end: 1, range: '23:00 - 01:00' },
@@ -384,85 +406,86 @@ function renderHourRail(gioRanks: GioRankResult[], currentHour: number): void {
     'Hợi': { start: 21, end: 23, range: '21:00 - 23:00' }
   };
 
-  let activeGio = gioRanks[0];
+  let activeHour = gioRanks[0];
 
-  rail.innerHTML = gioRanks.map(g => {
-    const hMeta = CHI_HOURS[g.chi] || { start: 0, end: 2, range: '' };
+  grid.innerHTML = gioRanks.map(g => {
+    const meta = CHI_HOURS[g.chi] || { start: 0, end: 2, range: '' };
     let isCurrent = false;
     if (g.chi === 'Tý') {
       isCurrent = currentHour >= 23 || currentHour < 1;
     } else {
-      isCurrent = currentHour >= hMeta.start && currentHour < hMeta.end;
+      isCurrent = currentHour >= meta.start && currentHour < meta.end;
     }
 
-    if (isCurrent) activeGio = g;
+    if (isCurrent) activeHour = g;
 
-    let rankClass = 'rank-good';
     let starSymbol = '★';
+    let starColor = '#f59e0b';
     if (g.rank <= 2) {
-      rankClass = 'rank-great';
       starSymbol = '★';
+      starColor = '#f59e0b';
     } else if (g.rank <= 4) {
-      rankClass = 'rank-good';
       starSymbol = '✦';
+      starColor = '#10b981';
     } else if (g.rank <= 6) {
-      rankClass = 'rank-neutral';
       starSymbol = '·';
+      starColor = '#64748b';
     } else {
-      rankClass = 'rank-caution';
       starSymbol = '⚠️';
+      starColor = '#ef4444';
     }
 
     return `
       <div 
-        class="hour-chip ${rankClass} ${isCurrent ? 'is-current' : ''}" 
-        data-chi="${g.chi}" 
-        title="${g.fullCanChi} (${hMeta.range}) • ${g.rankTitle} • ${g.clinicalNote}"
+        class="hour-tactical-chip ${isCurrent ? 'is-active-hour' : ''}" 
+        data-chi="${g.chi}"
+        title="Giờ ${g.fullCanChi} (${meta.range}) • ${g.rankTitle} • ${g.clinicalNote}"
         tabindex="0"
         role="button"
       >
-        <span class="hour-chip-chi">${g.chi}</span>
-        <span class="hour-chip-star">${starSymbol}</span>
+        <span class="hour-tactical-chi">${g.chi}</span>
+        <span class="hour-tactical-time">${meta.range.split(' - ')[0]}</span>
+        <span class="hour-tactical-star" style="color: ${starColor};">${starSymbol}</span>
       </div>
     `;
   }).join('');
 
-  // Cập nhật thẻ giờ hiện tại
-  if (curIcon && curName && curTime && curBadge && adviceEl && activeGio) {
-    const activeMeta = CHI_HOURS[activeGio.chi] || { range: '' };
-    curIcon.textContent = activeGio.isHoangDao ? '🌟' : '⏰';
-    curName.textContent = `Giờ ${activeGio.fullCanChi}`;
-    curTime.textContent = activeMeta.range;
-    curBadge.textContent = activeGio.rankTitle.split(' ')[0];
-    curBadge.className = `current-hour-badge ${activeGio.rank <= 2 ? 'rating-great' : activeGio.rank <= 4 ? 'rating-good' : 'rating-neutral'}`;
-    adviceEl.textContent = activeGio.clinicalNote;
-    adviceEl.parentElement?.setAttribute('title', activeGio.clinicalNote);
+  // Cập nhật Banner giờ hiện tại
+  if (curIcon && curName && curRange && curBadge && terminalText && activeHour) {
+    const activeMeta = CHI_HOURS[activeHour.chi] || { range: '' };
+    curIcon.textContent = activeHour.isHoangDao ? '🌟' : '⏰';
+    curName.textContent = `Giờ ${activeHour.fullCanChi}`;
+    curRange.textContent = `Khung giờ: ${activeMeta.range} • ${activeHour.isHoangDao ? 'Hoàng Đạo' : 'Hắc Đạo'}`;
+    curBadge.textContent = activeHour.rankTitle;
+    curBadge.className = `cur-hour-badge ${activeHour.rank <= 2 ? 'tag-amber' : activeHour.rank <= 4 ? 'tag-emerald' : 'tag-primary'}`;
+    terminalText.textContent = activeHour.clinicalNote;
   }
 
-  // Gắn sự kiện click vào từng chip giờ để xem note nhanh
-  rail.querySelectorAll<HTMLElement>('.hour-chip').forEach(chip => {
+  // Click vào từng chip để tra cứu lời khuyên
+  grid.querySelectorAll<HTMLElement>('.hour-tactical-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       const chi = chip.getAttribute('data-chi');
       const g = gioRanks.find(item => item.chi === chi);
-      if (g && adviceEl) {
-        adviceEl.textContent = `[${g.fullCanChi} • ${g.rankTitle}]: ${g.clinicalNote}`;
-        adviceEl.parentElement?.setAttribute('title', g.clinicalNote);
+      if (g && terminalText) {
+        terminalText.textContent = `[Giờ ${g.fullCanChi} • ${g.rankTitle}]: ${g.clinicalNote}`;
       }
     });
   });
 }
 
 /**
- * Cập nhật 3 Nhiệm Vụ Y Khoa Trọng Tâm cho Khối 4
+ * 5. Cập nhật Ma Trận 5 Tác Vụ Nội Khoa Trọng Điểm
  */
-function renderMedicalTasks(evalData: DayScoreEvaluation): void {
-  const container = document.getElementById('medicalTasksList');
+function renderMedicalTasksMatrix(evalData: DayScoreEvaluation): void {
+  const container = document.getElementById('medicalTasksMatrix');
   if (!container) return;
 
   const tasks = [
-    { key: 'kham_chandoan' as MedicalTaskType, icon: '🔍', title: 'Khám ca khó' },
-    { key: 'khoi_phacdo' as MedicalTaskType, icon: '💊', title: 'Khởi phác đồ' },
-    { key: 'chinh_lieu_xuatvien' as MedicalTaskType, icon: '📋', title: 'Rà soát toa viện' }
+    { key: 'kham_chandoan' as MedicalTaskType, icon: '🔍', title: 'Khám & Biện Luận Ca Khó', desc: 'Tư duy chẩn đoán nhiều tầng, liên kết đa triệu chứng' },
+    { key: 'khoi_phacdo' as MedicalTaskType, icon: '💊', title: 'Khởi Đầu Phác Đồ Bậc Cao', desc: 'Lựa chọn thuốc bước đầu, liều nạp kháng sinh/chống đông' },
+    { key: 'chinh_lieu_xuatvien' as MedicalTaskType, icon: '📋', title: 'Hiệu Chỉnh Liều & Ra Viện', desc: 'Rà soát tương tác thuốc DDI, chức năng gan thận eGFR' },
+    { key: 'hoi_chan_ebm' as MedicalTaskType, icon: '👥', title: 'Hội Chẩn Đa Chuyên Khoa', desc: 'Tra cứu chứng cứ lâm sàng EBM & sinh hoạt chuyên đề' },
+    { key: 'khai_truong_kthuat' as MedicalTaskType, icon: '🏥', title: 'Kỹ Thuật / Thăm Dò Mới', desc: 'Triển khai kỹ thuật thăm dò chức năng hoặc khai trương' }
   ];
 
   container.innerHTML = tasks.map(t => {
@@ -485,215 +508,128 @@ function renderMedicalTasks(evalData: DayScoreEvaluation): void {
     }
 
     return `
-      <div class="medical-task-row" title="${t.title} (${taskEval.totalScore}đ): ${taskEval.advice}">
-        <div class="task-left">
-          <span class="task-icon">${t.icon}</span>
-          <span class="task-name">${t.title}</span>
+      <div 
+        class="medical-task-card" 
+        title="${t.title} (${taskEval.totalScore}/10đ): ${taskEval.advice}"
+        onclick="if(window.openDayScoreModal) window.openDayScoreModal(undefined, 'tasks');"
+      >
+        <div class="task-card-left">
+          <div class="task-card-icon">${t.icon}</div>
+          <div>
+            <div class="task-card-title">${t.title}</div>
+            <div class="task-card-desc">${t.desc}</div>
+          </div>
         </div>
-        <span class="task-stars" style="color: ${starColor};">${stars}</span>
+        <div class="task-card-right">
+          <span class="task-card-stars" style="color: ${starColor};">${stars}</span>
+          <span class="task-card-score">${taskEval.totalScore}đ</span>
+        </div>
       </div>
     `;
   }).join('');
 }
 
 /**
- * Cập nhật Compact Ribbon khi thu gọn banner
+ * 6. Cập nhật Lịch Dự Báo Ca Trực 7 Ngày Liên Tiếp
  */
-function updateCompactRibbon(evalData: DayScoreEvaluation, now: Date): void {
-  const rScore = document.getElementById('ribbonScoreVal');
-  const rRating = document.getElementById('ribbonRatingText');
-  const rBio = document.getElementById('ribbonBioPill');
-  const rHour = document.getElementById('ribbonHourPill');
-  const rTask = document.getElementById('ribbonTaskPill');
+function renderWeekForecastRail(targetDate: Date, doc: DoctorProfile): void {
+  const rail = document.getElementById('weekForecastRail');
+  if (!rail) return;
 
-  if (rScore) rScore.textContent = `${evalData.total}/100`;
-  if (rRating) {
-    rRating.textContent = evalData.rating;
-    rRating.className = `gauge-rating-badge ${evalData.total >= 80 ? 'rating-great' : evalData.total >= 65 ? 'rating-good' : 'rating-neutral'}`;
-  }
-  if (rBio) {
-    rBio.innerHTML = `<span>🧠 Trí tuệ ${evalData.bio.intellectual > 0 ? '+' : ''}${evalData.bio.intellectual}%</span>`;
-  }
-  if (rHour) {
-    const curHour = evalData.gioTimeline.find(g => g.isCurrent) || evalData.gioTimeline[0];
-    rHour.innerHTML = `<span>⏰ Giờ ${curHour.chi} (${curHour.isHoangDao ? 'Hoàng đạo' : 'Hắc đạo'})</span>`;
-  }
-  if (rTask) {
-    const taskKhó = evalData.medicalTasks.kham_chandoan;
-    rTask.innerHTML = `<span>🔍 Khám ca khó: ${taskKhó.recommendation === 'rat_tot' ? '⭐⭐⭐' : taskKhó.recommendation === 'tot' ? '⭐⭐' : '⭐'}</span>`;
-  }
+  const weekList: WeekDaySummary[] = getWeekEvaluation(targetDate, doc);
+
+  rail.innerHTML = weekList.map(day => {
+    const isSelected = day.date.toDateString() === targetDate.toDateString();
+    const isToday = day.date.toDateString() === new Date().toDateString();
+
+    return `
+      <div 
+        class="forecast-day-card ${isSelected ? 'is-selected-day' : ''} ${isToday ? 'is-today-marker' : ''} ${day.isBestDay ? 'is-best-day' : ''}"
+        data-date="${day.date.toISOString()}"
+        title="${day.dayOfWeek} (${day.dateFormatted}): ${day.score}/100đ • ${day.rating} • ${day.canChi}"
+        tabindex="0"
+        role="button"
+      >
+        <span class="forecast-day-name">${day.dayOfWeek}</span>
+        <span class="forecast-day-canchi">${day.canChi.split(' ')[1]}</span>
+        <span class="forecast-day-icon">${day.icon}</span>
+        <span class="forecast-day-score">${day.score}</span>
+        <span class="forecast-day-truc">${day.truc}</span>
+      </div>
+    `;
+  }).join('');
+
+  // Click vào ngày nào thì cập nhật toàn bộ Dashboard sang ngày đó!
+  rail.querySelectorAll<HTMLElement>('.forecast-day-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const dateStr = card.getAttribute('data-date');
+      if (dateStr) {
+        updateMasterWorkstation(new Date(dateStr));
+      }
+    });
+  });
 }
 
 /**
- * Tính toán và cập nhật toàn bộ Banner theo ngày chỉ định
+ * 7. Cập nhật 4 Trụ Cột Hành Động Lâm Sàng
  */
-export function updateBriefingBanner(targetDate: Date = currentSelectedDate): void {
-  currentSelectedDate = targetDate;
-  const doc = getDoctorProfile();
-  const evalData = evaluateDayScore(targetDate, doc);
-  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
+function renderClinicalActionPillars(evalData: DayScoreEvaluation): void {
+  const container = document.getElementById('clinicalPillarsGrid');
+  if (!container) return;
+
+  const pillars = [
+    { key: 'diagnosis', icon: '🩺', title: 'Chẩn Đoán Ca Khó', data: evalData.advice.diagnosis },
+    { key: 'pharmacotherapy', icon: '💊', title: 'Dược Trị Liệu & Y Lệnh', data: evalData.advice.pharmacotherapy },
+    { key: 'communication', icon: '🗣️', title: 'Giao Tiếp & Tiên Lượng', data: evalData.advice.communication },
+    { key: 'evidence', icon: '📚', title: 'Y Học Chứng Cứ EBM', data: evalData.advice.evidence }
+  ];
+
+  container.innerHTML = pillars.map(p => {
+    const isGood = p.data.status === 'good';
+    const badgeColor = isGood ? 'tag-emerald' : 'tag-primary';
+    const badgeText = isGood ? 'Đại Cát' : 'Ổn Định';
+
+    return `
+      <div class="clinical-pillar-card" title="${p.title}: ${p.data.text}">
+        <div class="pillar-top-row">
+          <span class="pillar-title"><span>${p.icon}</span> ${p.title}</span>
+          <span class="pillar-badge ${badgeColor}">${badgeText}</span>
+        </div>
+        <div class="pillar-text">${p.data.text}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/**
+ * Sao chép Báo cáo SBAR Ca Trực vào Clipboard
+ */
+function copySbarBriefing(date: Date, btn: HTMLElement): void {
+  const evalData = evaluateDayScore(date);
   const now = new Date();
+  const curHour = evalData.gioTimeline.find(g => g.isCurrent) || evalData.gioTimeline[0];
 
-  // 1. Cập nhật Khối 1: Gauge & Pills
-  updateGaugeDisplay(evalData.total, evalData.rating);
+  const text = `🩺 [CLINIPORTAL • BÁO CÁO NHỊP SINH HỌC & SẴN SÀNG TRỰC CA]
+• Thời điểm: ${evalData.formattedDate} (${evalData.lunarDay}/${evalData.lunarMonth} Âm lịch)
+• Điểm Thần Khí: ${evalData.total}/100 (${evalData.rating})
+• Can Chi & Bản Mệnh: Ngày ${evalData.canChiDay} • Trực ${evalData.trucNgay.name} • Sao ${evalData.saoTu.name}
+• Sóng Biorhythm 4 Trục:
+  - 🧠 Trí tuệ: ${evalData.bio.intellectual > 0 ? '+' : ''}${evalData.bio.intellectual}%
+  - 🎯 Trực giác: ${evalData.bio.intuitive > 0 ? '+' : ''}${evalData.bio.intuitive}%
+  - ❤️ Cảm xúc: ${evalData.bio.emotional > 0 ? '+' : ''}${evalData.bio.emotional}%
+  - 💪 Thể lực: ${evalData.bio.physical > 0 ? '+' : ''}${evalData.bio.physical}%
+• Canh Giờ Hiện Tại: Giờ ${curHour.chi} (${curHour.isHoangDao ? '🌟 Hoàng Đạo' : 'Hắc Đạo'})
+• Tác Vụ Y Khoa Trọng Tâm:
+  - Khám ca khó: ${evalData.medicalTasks.kham_chandoan.recommendation} (${evalData.medicalTasks.kham_chandoan.totalScore}đ)
+  - Khởi phác đồ: ${evalData.medicalTasks.khoi_phacdo.recommendation} (${evalData.medicalTasks.khoi_phacdo.totalScore}đ)
+  - Ra toa xuất viện: ${evalData.medicalTasks.chinh_lieu_xuatvien.recommendation} (${evalData.medicalTasks.chinh_lieu_xuatvien.totalScore}đ)
+• Lời Khuyên Hành Động: ${evalData.bio.clinicalTips[0] || 'Tuân thủ y lệnh thường quy an toàn.'}`;
 
-  const canChiPill = document.getElementById('gaugeCanChiPill');
-  const lunarPill = document.getElementById('gaugeLunarPill');
-  const trucPill = document.getElementById('gaugeTrucPill');
-  const napAmPill = document.getElementById('gaugeNapAmPill');
-
-  if (canChiPill) canChiPill.textContent = evalData.canChiDay;
-  if (lunarPill) lunarPill.textContent = `Âm: ${evalData.lunarDay}/${evalData.lunarMonth}`;
-  if (trucPill) trucPill.textContent = `Trực ${evalData.trucNgay.name} (${evalData.trucNgay.rating})`;
-  if (napAmPill) napAmPill.textContent = evalData.napAmDay.name;
-
-  // 2. Cập nhật Khối 2: Biorhythm 4 Trục & Sparkline
-  const bioAvgPill = document.getElementById('bioAvgPill');
-  if (bioAvgPill) {
-    bioAvgPill.textContent = `TB: ${evalData.bio.avgScore > 0 ? '+' : ''}${evalData.bio.avgScore}%`;
-  }
-  renderBioTracks(evalData.bio);
-  renderBioSparkline(birthDate, targetDate, doc.specialty || 'internal_general');
-
-  const tipText = document.getElementById('bioTipText');
-  if (tipText && evalData.bio.clinicalTips.length > 0) {
-    tipText.textContent = evalData.bio.clinicalTips[0];
-    tipText.parentElement?.setAttribute('title', evalData.bio.clinicalTips.join('\n'));
-  }
-
-  // 3. Cập nhật Khối 3: Giờ Hoàng Đạo 24h
-  renderHourRail(evalData.gioRanks, now.getHours());
-
-  // 4. Cập nhật Khối 4: Nhiệm Vụ & Compact Ribbon
-  renderMedicalTasks(evalData);
-  updateCompactRibbon(evalData, now);
-
-  // 5. Cập nhật Specialty Header
-  const spec = SPECIALTY_METAS[doc.specialty || 'internal_general'] || SPECIALTY_METAS.internal_general;
-  const specIcon = document.getElementById('briefingSpecIcon');
-  const specName = document.getElementById('briefingSpecName');
-  if (specIcon) specIcon.textContent = spec.icon;
-  if (specName) specName.textContent = spec.shortName;
+  navigator.clipboard.writeText(text).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> <span>Đã Chép SBAR</span>';
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+    }, 2000);
+  });
 }
-
-/**
- * Gắn kết các sự kiện tương tác của Banner
- */
-export function initClinicianBriefingBanner(): void {
-  const banner = document.getElementById('clinicianBriefingBanner');
-  if (!banner) return;
-
-  // 1. Khởi tạo trạng thái thu gọn từ localStorage
-  const isCollapsed = localStorage.getItem(COLLAPSE_KEY) === 'true';
-  if (isCollapsed) {
-    banner.classList.add('briefing-banner-collapsed');
-    const icon = document.getElementById('briefingCollapseIcon');
-    if (icon) icon.className = 'fa-solid fa-chevron-down';
-  }
-
-  // 2. Toggle Collapse Button
-  const collapseBtn = document.getElementById('briefingCollapseBtn');
-  if (collapseBtn) {
-    collapseBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const collapsed = banner.classList.toggle('briefing-banner-collapsed');
-      const icon = document.getElementById('briefingCollapseIcon');
-      if (icon) {
-        icon.className = collapsed ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up';
-      }
-      localStorage.setItem(COLLAPSE_KEY, String(collapsed));
-    });
-  }
-
-  // 3. Date Input Change
-  const dateInput = document.getElementById('briefingDateInput') as HTMLInputElement;
-  if (dateInput) {
-    dateInput.addEventListener('change', () => {
-      if (dateInput.value) {
-        const parts = dateInput.value.split('-');
-        const selected = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-        updateBriefingBanner(selected);
-      }
-    });
-  }
-
-  // 4. Specialty Dropdown Switcher
-  const specBtn = document.getElementById('briefingSpecBtn');
-  const specMenu = document.getElementById('briefingSpecMenu');
-  if (specBtn && specMenu) {
-    specBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      specMenu.classList.toggle('is-open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!specMenu.contains(e.target as Node) && e.target !== specBtn) {
-        specMenu.classList.remove('is-open');
-      }
-    });
-
-    specMenu.querySelectorAll<HTMLButtonElement>('.spec-menu-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const specId = item.getAttribute('data-spec') as DoctorSpecialty;
-        if (specId) {
-          saveDoctorProfile({ specialty: specId });
-          specMenu.querySelectorAll('.spec-menu-item').forEach(i => i.classList.remove('is-selected'));
-          item.classList.add('is-selected');
-          specMenu.classList.remove('is-open');
-          updateBriefingBanner(currentSelectedDate);
-        }
-      });
-    });
-  }
-
-  // 5. Nút Mở Modal Chi Tiết Toàn Diện
-  const openModalBtn = document.getElementById('briefingOpenModalBtn');
-  const gaugeWrap = document.getElementById('gaugeSvgWrap');
-  if (openModalBtn) {
-    openModalBtn.addEventListener('click', () => openDayScoreModal(currentSelectedDate, 'day'));
-  }
-  if (gaugeWrap) {
-    gaugeWrap.addEventListener('click', () => openDayScoreModal(currentSelectedDate, 'day'));
-  }
-
-  // 6. Action Buttons Khối 4
-  const btnActionDetails = document.getElementById('btnActionDetails');
-  if (btnActionDetails) {
-    btnActionDetails.addEventListener('click', () => openDayScoreModal(currentSelectedDate, 'week'));
-  }
-
-  const btnActionProfile = document.getElementById('btnActionProfile');
-  if (btnActionProfile) {
-    btnActionProfile.addEventListener('click', () => openDayScoreModal(currentSelectedDate, 'profile'));
-  }
-
-  const btnActionCopy = document.getElementById('btnActionCopySummary');
-  if (btnActionCopy) {
-    btnActionCopy.addEventListener('click', () => {
-      const evalData = evaluateDayScore(currentSelectedDate);
-      const text = `🩺 [SẴN SÀNG TRỰC CA • ${evalData.formattedDate}]\n• Điểm ngày: ${evalData.total}/100 (${evalData.rating})\n• Biorhythm: Trí tuệ ${evalData.bio.intellectual > 0 ? '+' : ''}${evalData.bio.intellectual}%, Trực giác ${evalData.bio.intuitive > 0 ? '+' : ''}${evalData.bio.intuitive}%\n• Can Chi: ${evalData.canChiDay} (Âm: ${evalData.lunarDay}/${evalData.lunarMonth})\n• Lời khuyên: ${evalData.bio.clinicalTips[0] || 'Xử trí y lệnh thường quy an toàn.'}`;
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = btnActionCopy.innerHTML;
-        btnActionCopy.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> <span>Đã chép</span>';
-        setTimeout(() => {
-          btnActionCopy.innerHTML = originalText;
-        }, 1800);
-      });
-    });
-  }
-
-  // 7. Chạy cập nhật dữ liệu ban đầu
-  updateBriefingBanner(new Date());
-
-  // 8. Tự động kiểm tra và chuyển giờ sau mỗi 2 phút nếu bước sang canh giờ mới
-  setInterval(() => {
-    const now = new Date();
-    // Chỉ cập nhật nếu đang xem ngày hôm nay
-    if (currentSelectedDate.toDateString() === now.toDateString()) {
-      const evalData = evaluateDayScore(currentSelectedDate);
-      renderHourRail(evalData.gioRanks, now.getHours());
-      updateCompactRibbon(evalData, now);
-    }
-  }, 120000);
-}
-
