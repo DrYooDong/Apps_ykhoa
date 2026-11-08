@@ -64,6 +64,7 @@
   <link rel="stylesheet" href="./src/content/basic-medical/css/basic-medical-mobile.css">
   <link rel="stylesheet" href="./src/styles/components/screen-locker.css">
   <link rel="stylesheet" href="./src/styles/components/clinical-cheatsheets.css">
+  <link rel="stylesheet" href="./src/styles/components/clinician-briefing.css">
 
   <!-- Core Application Entry Point (TypeScript SPA Engine) -->
   <script type="module" src="./src/index.ts"></script>
@@ -272,6 +273,223 @@
             </button>
           </div>
         </div>
+
+        <!-- ── SECTION 2: BENTO BRIEFING BANNER ("CHỈ SỐ NGÀY TỐT & SẴN SÀNG TRỰC CA") ── -->
+        <section class="clinician-briefing-banner" id="clinicianBriefingBanner" aria-label="Bảng Điều Hành Buổi Sáng & Sẵn Sàng Trực Ca">
+          <!-- HEADER ROW -->
+          <div class="briefing-header-row">
+            <div class="briefing-header-left">
+              <div class="briefing-label-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Sẵn Sàng Trực Ca</span>
+              </div>
+
+              <!-- Specialty Switcher Dropdown Wrapper -->
+              <div class="briefing-spec-wrapper">
+                <button type="button" class="briefing-spec-btn" id="briefingSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi Chuyên khoa Nội khoa để cập nhật trọng số Biorhythm">
+                  <span id="briefingSpecIcon">🩺</span>
+                  <span id="briefingSpecName">Nội Tổng Quát</span>
+                  <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
+                </button>
+                <div class="briefing-spec-menu" id="briefingSpecMenu" role="menu">
+                  <button type="button" class="spec-menu-item is-selected" data-spec="internal_general" role="menuitem">
+                    <span>🩺</span>
+                    <span>Nội Tổng Quát</span>
+                  </button>
+                  <button type="button" class="spec-menu-item" data-spec="internal_cardio" role="menuitem">
+                    <span>❤️</span>
+                    <span>Nội Tim Mạch</span>
+                  </button>
+                  <button type="button" class="spec-menu-item" data-spec="internal_resp_icu" role="menuitem">
+                    <span>🫁</span>
+                    <span>Hô Hấp & ICU</span>
+                  </button>
+                  <button type="button" class="spec-menu-item" data-spec="internal_gi_hepa" role="menuitem">
+                    <span>🧪</span>
+                    <span>Tiêu Hóa & Gan Mật</span>
+                  </button>
+                  <button type="button" class="spec-menu-item" data-spec="internal_endo_nephro" role="menuitem">
+                    <span>🩸</span>
+                    <span>Nội Tiết & Thận</span>
+                  </button>
+                  <button type="button" class="spec-menu-item" data-spec="internal_neuro_id" role="menuitem">
+                    <span>🧠</span>
+                    <span>Thần Kinh & Nhiễm</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="briefing-header-controls">
+              <!-- Date Picker -->
+              <div class="briefing-date-picker" title="Chọn ngày để xem trước chỉ số trực ca">
+                <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem;"></i>
+                <input type="date" class="briefing-date-input" id="briefingDateInput" aria-label="Chọn ngày đánh giá" />
+              </div>
+
+              <!-- Nút Mở Modal Chi Tiết -->
+              <button type="button" class="briefing-icon-btn" id="briefingOpenModalBtn" title="Xem chi tiết Lịch Vạn Niên & Vụ Việc Y Khoa Toàn Diện" aria-label="Mở chi tiết ngày tốt">
+                <i class="fa-solid fa-up-right-from-square"></i>
+              </button>
+
+              <!-- Nút Thu Gọn / Mở Rộng -->
+              <button type="button" class="briefing-icon-btn" id="briefingCollapseBtn" title="Thu gọn / Mở rộng bảng điều hành" aria-expanded="true" aria-controls="briefingBody">
+                <i class="fa-solid fa-chevron-up" id="briefingCollapseIcon"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- COLLAPSED COMPACT RIBBON (Chỉ hiện khi thu gọn) -->
+          <div class="briefing-ribbon" id="briefingRibbon">
+            <div class="briefing-ribbon-item">
+              <span id="ribbonScoreVal" style="color: var(--color-primary); font-weight: 800;">--/100</span>
+              <span id="ribbonRatingText" class="gauge-rating-badge rating-great" style="font-size: 0.65rem;">--</span>
+            </div>
+            <span class="briefing-ribbon-sep">•</span>
+            <div class="briefing-ribbon-item" id="ribbonBioPill">
+              <span>🧠 Trí tuệ --%</span>
+            </div>
+            <span class="briefing-ribbon-sep">•</span>
+            <div class="briefing-ribbon-item" id="ribbonHourPill">
+              <span>⏰ --</span>
+            </div>
+            <span class="briefing-ribbon-sep">•</span>
+            <div class="briefing-ribbon-item" id="ribbonTaskPill">
+              <span>🔍 Khám ca khó: --</span>
+            </div>
+          </div>
+
+          <!-- BENTO BODY (4-COLUMN GRID) -->
+          <div class="briefing-body" id="briefingBody">
+
+            <!-- ── KHỐI 1: GAUGE CHỈ SỐ THẦN KHÍ & CAN CHI NGÀY ── -->
+            <div class="briefing-col briefing-col-gauge" id="briefingGaugeCol">
+              <div class="col-header-row" style="width: 100%;">
+                <span class="col-title"><i class="fa-solid fa-compass"></i> Thần Khí</span>
+                <span class="meta-pill pill-primary" id="gaugeCanChiPill">--</span>
+              </div>
+
+              <!-- SVG Radial Gauge -->
+              <div class="gauge-svg-wrap" id="gaugeSvgWrap" title="Bấm để xem phân tích Thần Khí & Can Chi chi tiết">
+                <svg class="gauge-svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
+                  <!-- Background Track (3/4 vòng cung) -->
+                  <circle
+                    class="gauge-track"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke-dasharray="251.3"
+                    stroke-dashoffset="62.8"
+                  />
+                  <!-- Animated Fill Circle -->
+                  <circle
+                    class="gauge-fill"
+                    id="gaugeFillCircle"
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    stroke-dasharray="251.3"
+                    stroke-dashoffset="251.3"
+                  />
+                </svg>
+                <div class="gauge-center-content">
+                  <span class="gauge-score-val" id="gaugeScoreVal">--</span>
+                  <span class="gauge-rating-badge rating-great" id="gaugeRatingBadge">Đại Cát</span>
+                </div>
+              </div>
+
+              <!-- Meta Pills: Trực, Nạp Âm & Âm Lịch -->
+              <div class="gauge-meta-pills" id="gaugeMetaPills">
+                <span class="meta-pill" id="gaugeLunarPill">Âm lịch: --/--</span>
+                <span class="meta-pill" id="gaugeTrucPill">Trực: --</span>
+                <span class="meta-pill" id="gaugeNapAmPill">Nạp âm: --</span>
+              </div>
+            </div>
+
+            <!-- ── KHỐI 2: BIORHYTHM 4 TRỤC LÂM SÀNG & SPARKLINE ── -->
+            <div class="briefing-col briefing-col-bio" id="briefingBioCol">
+              <div class="col-header-row">
+                <span class="col-title"><i class="fa-solid fa-dna"></i> Biorhythm Nội Khoa</span>
+                <span style="font-size: 0.68rem; font-weight: 700; color: var(--color-primary);" id="bioAvgPill">TB: --%</span>
+              </div>
+
+              <!-- 4 Tracks List -->
+              <div class="bio-tracks-list" id="bioTracksList">
+                <!-- Dynamic render from renderBioTracks -->
+              </div>
+
+              <!-- Sparkline 7 Days & Clinical Pearl -->
+              <div class="bio-sparkline-row">
+                <svg class="sparkline-svg" id="bioSparklineSvg" viewBox="0 0 140 28" preserveAspectRatio="none" aria-label="Biểu đồ Biorhythm 7 ngày">
+                  <!-- Render path dynamically -->
+                </svg>
+              </div>
+
+              <div class="bio-clinical-tip-row" id="bioTipRow" title="">
+                <i class="fa-solid fa-lightbulb" style="color: #f59e0b; flex-shrink: 0;"></i>
+                <span id="bioTipText">Đang tải khuyến nghị...</span>
+              </div>
+            </div>
+
+            <!-- ── KHỐI 3: GIỜ VÀNG Y LỆNH 24H & 12 HOUR CHIP RAIL ── -->
+            <div class="briefing-col briefing-col-hours" id="briefingHoursCol">
+              <div class="col-header-row">
+                <span class="col-title"><i class="fa-regular fa-clock"></i> Khung Giờ Y Lệnh</span>
+                <span style="font-size: 0.66rem; font-weight: 700; color: var(--color-text-muted);">24h</span>
+              </div>
+
+              <!-- Current Hour Banner -->
+              <div class="current-hour-banner" id="currentHourBanner">
+                <div class="current-hour-info">
+                  <span class="current-hour-icon" id="currentHourIcon">⏰</span>
+                  <div>
+                    <div class="current-hour-name" id="currentHourName">--</div>
+                    <div class="current-hour-time" id="currentHourTime">--:--</div>
+                  </div>
+                </div>
+                <span class="current-hour-badge" id="currentHourBadge">Hạng --</span>
+              </div>
+
+              <!-- 12 Giờ Mini Chips Rail -->
+              <div class="hour-chips-rail" id="hourChipsRail" role="list">
+                <!-- Render 12 chips dynamically -->
+              </div>
+
+              <div class="hour-advice-line" id="hourAdviceLine" title="">
+                <span id="hourAdviceText">Đang tính toán khung giờ...</span>
+              </div>
+            </div>
+
+            <!-- ── KHỐI 4: NHIỆM VỤ Y KHOA NỘI KHOA & HÀNH ĐỘNG NHANH ── -->
+            <div class="briefing-col briefing-col-tasks" id="briefingTasksCol">
+              <div class="col-header-row">
+                <span class="col-title"><i class="fa-solid fa-list-check"></i> Nhiệm Vụ Hôm Nay</span>
+              </div>
+
+              <!-- 3 Trọng Tâm Y Khoa -->
+              <div class="medical-tasks-list" id="medicalTasksList">
+                <!-- Render 3 tasks dynamically -->
+              </div>
+
+              <!-- Action Icons Row -->
+              <div class="task-actions-row">
+                <button type="button" class="btn-briefing-action" id="btnActionDetails" title="Xem chi tiết lịch tuần, tháng & tìm ngày tốt hội chẩn">
+                  <i class="fa-solid fa-calendar-day"></i>
+                  <span>Lịch</span>
+                </button>
+                <button type="button" class="btn-briefing-action" id="btnActionCopySummary" title="Sao chép tóm tắt trạng thái trực ca vào clipboard">
+                  <i class="fa-solid fa-copy"></i>
+                  <span>Chép</span>
+                </button>
+                <button type="button" class="btn-briefing-action" id="btnActionProfile" title="Xem & chỉnh sửa hồ sơ Bác sĩ (Can Chi, Bản Mệnh)">
+                  <i class="fa-solid fa-user-doctor"></i>
+                  <span>Hồ sơ</span>
+                </button>
+              </div>
+            </div>
+
+          </div><!-- /.briefing-body -->
+        </section>
 
         <!-- ── SECTION 3: 2-COLUMN WORKSPACE GRID (CẤP CỨU KHẨN & PHÁC ĐỒ CHỨNG CỨ EBM) ── -->
         <div class="glass-grid-layout">

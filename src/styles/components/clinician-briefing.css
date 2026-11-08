@@ -1,0 +1,771 @@
+/**
+ * CliniPortal 2.0 — Clinician Briefing Banner (Bento Grid)
+ * Path: src/styles/components/clinician-briefing.css
+ * 100% Tokenized, Dark/Light Mode Compliant & Accessible
+ */
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 2: CLINICIAN BRIEFING BANNER
+══════════════════════════════════════════════════════════ */
+.clinician-briefing-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: var(--glass-bg-card, rgba(22, 33, 54, 0.65));
+  backdrop-filter: var(--glass-blur, blur(20px) saturate(190%));
+  -webkit-backdrop-filter: var(--glass-blur, blur(20px) saturate(190%));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.09));
+  border-radius: var(--glass-radius-xl, 1.25rem);
+  box-shadow: var(--glass-shadow-sm, 0 4px 16px -2px rgba(0, 0, 0, 0.05)),
+              var(--glass-inset-highlight, inset 0 1px 0 rgba(255, 255, 255, 0.08));
+  color: var(--color-text, #0f172a);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+/* Gradient Top Accent Bar */
+.clinician-briefing-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6, #0284c7, #10b981);
+  opacity: 0.85;
+}
+
+/* ── HEADER ROW ── */
+.briefing-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--glass-border, rgba(255, 255, 255, 0.06));
+}
+
+.briefing-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.briefing-label-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-text, #0f172a);
+}
+
+.briefing-label-badge i {
+  color: #f59e0b;
+  font-size: 0.85rem;
+  filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
+}
+
+.briefing-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Specialty Switcher Button */
+.briefing-spec-wrapper {
+  position: relative;
+}
+
+.briefing-spec-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
+  border-radius: var(--glass-radius-pill, 9999px);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.briefing-spec-btn:hover {
+  background: var(--glass-bg-hover, rgba(30, 48, 78, 0.8));
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.18);
+}
+
+/* Specialty Dropdown Popover */
+.briefing-spec-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 240px;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.15));
+  border-radius: var(--glass-radius-lg, 0.75rem);
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.3);
+  padding: 0.35rem;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  backdrop-filter: var(--glass-blur, blur(20px));
+}
+
+.briefing-spec-menu.is-open {
+  display: flex;
+  animation: specMenuDrop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes specMenuDrop {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.spec-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.45rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text, #334155);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.spec-menu-item:hover,
+.spec-menu-item.is-selected {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--color-primary, #0284c7);
+}
+
+.spec-menu-item.is-selected {
+  font-weight: 700;
+}
+
+/* Date Picker Input */
+.briefing-date-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.6rem;
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
+  border-radius: var(--glass-radius-pill, 9999px);
+  color: var(--color-text, #0f172a);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.briefing-date-picker:hover {
+  border-color: var(--color-primary, #0284c7);
+}
+
+.briefing-date-input {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 0.74rem;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Header Action Buttons (Icon-Only) */
+.briefing-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--glass-radius-pill, 9999px);
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.briefing-icon-btn:hover {
+  color: var(--color-text, #0f172a);
+  background: var(--glass-bg-hover, rgba(30, 48, 78, 0.8));
+  border-color: var(--color-primary, #0284c7);
+  transform: translateY(-1px);
+}
+
+/* ── COLLAPSED RIBBON ── */
+.briefing-ribbon {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  flex-wrap: wrap;
+}
+
+.briefing-ribbon-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.briefing-ribbon-sep {
+  opacity: 0.3;
+  color: var(--color-text-muted, #94a3b8);
+}
+
+/* ── BENTO BODY (4-COLUMN GRID) ── */
+.briefing-body {
+  display: grid;
+  grid-template-columns: 210px 1.4fr 1.2fr 180px;
+  gap: 0.95rem;
+  align-items: stretch;
+  transition: all 0.3s ease;
+}
+
+.briefing-banner-collapsed .briefing-body {
+  display: none;
+}
+
+.briefing-banner-collapsed .briefing-ribbon {
+  display: flex;
+}
+
+/* ── KHỐI CHUNG: BENTO CARD ── */
+.briefing-col {
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--glass-radius-lg, 0.85rem);
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.briefing-col:hover {
+  background: var(--glass-bg-hover, rgba(30, 48, 78, 0.4));
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.08);
+}
+
+.col-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.col-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted, #64748b);
+}
+
+/* ══════════════════════════════════════════════════════════
+   KHỐI 1: GAUGE CHỈ SỐ THẦN KHÍ & CAN CHI NGÀY
+══════════════════════════════════════════════════════════ */
+.briefing-col-gauge {
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.gauge-svg-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.1rem 0;
+  cursor: pointer;
+}
+
+.gauge-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.gauge-track {
+  fill: none;
+  stroke: var(--glass-border, rgba(255, 255, 255, 0.12));
+  stroke-width: 9;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--color-primary, #0284c7);
+  stroke-width: 9;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              stroke 0.5s ease;
+}
+
+.gauge-center-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.gauge-score-val {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--color-text, #0f172a);
+  letter-spacing: -0.03em;
+}
+
+.gauge-rating-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--glass-radius-pill, 9999px);
+  margin-top: 0.15rem;
+  letter-spacing: 0.02em;
+}
+
+.gauge-rating-badge.rating-great {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.gauge-rating-badge.rating-good {
+  background: rgba(2, 132, 199, 0.15);
+  color: #0284c7;
+}
+
+.gauge-rating-badge.rating-neutral {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.gauge-rating-badge.rating-caution {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+/* Can Chi & Lunar Pills */
+.gauge-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.18rem 0.45rem;
+  border-radius: var(--glass-radius-pill, 9999px);
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748b);
+}
+
+.meta-pill.pill-primary {
+  color: var(--color-primary, #0284c7);
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.2);
+}
+
+/* ══════════════════════════════════════════════════════════
+   KHỐI 2: BIORHYTHM 4 TRỤC LÂM SÀNG & SPARKLINE 7 NGÀY
+══════════════════════════════════════════════════════════ */
+.briefing-col-bio {
+  justify-content: space-between;
+}
+
+.bio-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bio-track-item {
+  display: grid;
+  grid-template-columns: 22px 1fr 38px;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.bio-icon {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-bar-wrap {
+  position: relative;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.08));
+  overflow: hidden;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.06));
+}
+
+.bio-center-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1.5px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 2;
+}
+
+.bio-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 9999px;
+  transform-origin: left center;
+  animation: bioGrow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes bioGrow {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+.bio-val-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Sparkline 7 Days */
+.bio-sparkline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.35rem;
+  border-top: 1px dashed var(--glass-border, rgba(255, 255, 255, 0.08));
+}
+
+.sparkline-svg {
+  width: 100%;
+  height: 28px;
+  overflow: visible;
+}
+
+.sparkline-pulse-dot {
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { r: 3.5; opacity: 1; }
+  50% { r: 5.5; opacity: 0.7; }
+}
+
+.bio-clinical-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════════════════════════
+   KHỐI 3: GIỜ VÀNG Y LỆNH 24H & 12 HOUR CHIP RAIL
+══════════════════════════════════════════════════════════ */
+.briefing-col-hours {
+  justify-content: space-between;
+}
+
+.current-hour-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: var(--glass-radius-md, 0.6rem);
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.current-hour-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.current-hour-icon {
+  font-size: 1rem;
+}
+
+.current-hour-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+.current-hour-time {
+  font-size: 0.68rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.current-hour-badge {
+  font-size: 0.66rem;
+  font-weight: 800;
+  padding: 0.12rem 0.4rem;
+  border-radius: var(--glass-radius-pill, 9999px);
+}
+
+/* 12 Giờ Mini Rail (2 hàng x 6 cột) */
+.hour-chips-rail {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.28rem;
+}
+
+.hour-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.15rem;
+  border-radius: 0.38rem;
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.hour-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary, #0284c7);
+  background: rgba(2, 132, 199, 0.15);
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+}
+
+.hour-chip-chi {
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hour-chip-star {
+  font-size: 0.58rem;
+  margin-top: 0.1rem;
+  line-height: 1;
+}
+
+/* Giờ Hoàng Đạo Cát Lợi */
+.hour-chip.rank-great {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+
+.hour-chip.rank-good {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #10b981;
+}
+
+.hour-chip.rank-caution {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  opacity: 0.75;
+}
+
+/* Giờ Hiện Tại Đang Trực */
+.hour-chip.is-current {
+  border-color: var(--color-primary, #0284c7) !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.4), 0 4px 12px rgba(2, 132, 199, 0.3);
+  animation: currentPulse 2.5s infinite;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.4); }
+  50%      { box-shadow: 0 0 0 5px rgba(2, 132, 199, 0); }
+}
+
+.hour-advice-line {
+  font-size: 0.68rem;
+  color: var(--color-text-muted, #64748b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════════════════════════
+   KHỐI 4: NHIỆM VỤ Y KHOA NỘI KHOA & HÀNH ĐỘNG NHANH
+══════════════════════════════════════════════════════════ */
+.briefing-col-tasks {
+  justify-content: space-between;
+}
+
+.medical-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.medical-task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0.45rem;
+  border-radius: 0.45rem;
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.06));
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.medical-task-row:hover {
+  background: var(--color-surface, #ffffff);
+  border-color: rgba(2, 132, 199, 0.3);
+  transform: translateX(2px);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.task-icon {
+  font-size: 0.8rem;
+}
+
+.task-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+.task-stars {
+  font-size: 0.68rem;
+  letter-spacing: -0.05em;
+}
+
+/* Action Icons Row */
+.task-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding-top: 0.35rem;
+  border-top: 1px dashed var(--glass-border, rgba(255, 255, 255, 0.08));
+}
+
+.btn-briefing-action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  height: 28px;
+  border-radius: var(--glass-radius-pill, 9999px);
+  background: var(--glass-bg-subtle, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
+  color: var(--color-text, #0f172a);
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-briefing-action:hover {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN (TABLET & MOBILE BREAKPOINTS)
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .briefing-body {
+    grid-template-columns: 190px 1.2fr 1fr 160px;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .briefing-body {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .clinician-briefing-banner {
+    padding: 0.85rem 0.95rem;
+  }
+
+  .briefing-body {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .briefing-col-bio,
+  .briefing-col-hours {
+    display: none; /* Mobile ưu tiên Khối 1 & Khối 4 tinh gọn */
+  }
+
+  .briefing-label-badge span {
+    display: none;
+  }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .gauge-fill,
+  .bio-bar-fill,
+  .hour-chip,
+  .hour-chip.is-current,
+  .sparkline-pulse-dot {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

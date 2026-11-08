@@ -13,6 +13,7 @@ import './styles/components/clinical-cheatsheets.css';
 import './content/docspace/styles/docspace.css';
 import './content/knowledge-vault/css/vault-hub.css';
 import './styles/components/clinical-handbook.css';
+import './styles/components/clinician-briefing.css';
 import { 
   renderVaultHubView, 
   attachVaultEvents, 
@@ -43,6 +44,7 @@ import './tools/good-day-calculator';
 import './effects/premium-interactions';
 import { initHomepageWidgets } from './dashboard/homepage-widgets';
 import { initHomepageEffects } from './dashboard/homepage-effects';
+import { initClinicianBriefingBanner } from './dashboard/clinician-briefing-banner';
 import './core/toc';
 import './core/mui-port';
 
@@ -195,6 +197,7 @@ function mountToApp(html: string): void {
     }
     initHomepageWidgets();
     initHomepageEffects();
+    initClinicianBriefingBanner();
   } else {
     if (mainContent) mainContent.style.display = 'none';
     if (dock) dock.style.display = 'none';
