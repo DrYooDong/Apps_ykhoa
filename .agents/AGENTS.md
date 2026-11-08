@@ -58,7 +58,7 @@ d:\Apps_ykhoa\.agents/
 │   ├── design-squad-rules.md         # 10. Quy tắc vận hành & Merge Gate Design Squad
 │   └── antigravity-speed-intelligence.md # 11. Quy tắc tối ưu Tốc độ & Trí tuệ AI (Antigravity Engine)
 └── skills/                           # Thư mục 70+ Skills chuyên môn & workflow
-    ├── Agent Intelligence & Memory   # agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
+    ├── Agent Intelligence & Memory   # speed-coding-orchestrator, precision-engineering-rca, deep-architecture-reasoning, agent-memory-systems, agent-memory-checkpoint, agent-manager, state-management-patterns...
     ├── Healthcare AI & Safety        # cdss-standalone-manager, cdss-ui-sync-squad, cdss-module-builder, docspace-oneclick-ingest-agent, docspace-step1-ingestion-squad, docspace-step2-reasoning-squad, docspace-step3-cdss-squad, docspace-step4-protocol-squad, docspace-treatment-data-engineering-squad, docspace-treatment-protocol-ui-squad, docspace-clinical-simulation-squad, docspace-case-ingestion-squad, docspace-medical-qa-squad, docspace-soap-guardian-squad, cdss-development-patterns, emr-development-patterns, patient-safety-eval-harness, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
     ├── UI/UX & Design Engineering    # cdss-ui-sync-squad, docspace-step4-protocol-squad, docspace-treatment-protocol-ui-squad, docspace-ui-feature-squad, design-engineering, stop-making-ui-slop, antigravity-ui-motion-design, mobile-design-system, canvas-design, design-components, algorithmic-art, ui-ux-designer, d-web-experience, brand-guidelines...
     ├── Research & Evidence Hub       # medical-research-card, research-synthesizer, scholar-evaluation, medical-scientific-figure, medical-journal-club-deck, guideline-summary-module, pubmed-research-linker, auto-research, hypothesis-generation, knowledge-extraction, brain-to-docs, search-first-research...
@@ -75,6 +75,9 @@ d:\Apps_ykhoa\.agents/
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
+| Coding Siêu Tốc (5x-10x) & Tránh Tràn Context | Skill `speed-coding-orchestrator` & `rules/antigravity-speed-intelligence.md` |
+| Sửa Bug Triệt Để & RCA Chính Xác 100% | Skill `precision-engineering-rca` |
+| Quy Hoạch Tính Năng & Tư Duy C4 Kiến Trúc | Skill `deep-architecture-reasoning` |
 | Nghiên Cứu Khoa Học & Y Học Chứng Cứ (EBM) | Skill `medical-research-card`, `research-synthesizer`, `scholar-evaluation`, `.agents/docs/EBM_RESEARCH_SQUAD_KANBAN.md` & `.agents/docs/RESEARCH_SUMMARY_DESIGN_SYSTEM.md` |
 | Đồ Họa Xuất Bản, Sơ Đồ Cơ Chế & PRISMA | Skill `medical-scientific-figure`, `medical-editorial-diagram`, `flowchart-module` |
 | Báo Cáo Sinh Hoạt Khoa Học / Journal Club | Skill `medical-journal-club-deck` & Reveal.js Presentation Engine |
@@ -121,6 +124,7 @@ d:\Apps_ykhoa\.agents/
 5. **Luôn kiểm tra đường dẫn tương đối**: Đếm chính xác cấp thư mục (cấp 3 → `../../../`, cấp 4 → `../../../../`).
 6. **Cấm tự ý tạo Guideline trùng lặp hoặc không có yêu cầu**: Bắt buộc kiểm tra `guidelinesdata.js` trước khi tạo file mới. Tuyệt đối không tự ý sinh file guideline trùng lặp nếu chưa được Người dùng chỉ định. Xem chi tiết tại `rules/guideline-creation-rules.md`.
 7. **Nguyên tắc Thận Trọng Karpathy & Socratic Gate**: Suy nghĩ trước khi code, không tự ý suy diễn các yêu cầu mơ hồ; đối với thay đổi kiến trúc lớn, bắt buộc làm rõ hoặc lập kế hoạch trước khi chỉnh sửa mã nguồn.
+8. **Quy tắc Tốc độ Siêu Tốc & RCA Chính xác Tuyệt đối**: Bắt buộc tuân thủ `rules/antigravity-speed-intelligence.md`: Dùng chỉnh sửa vi phẫu (`edit_file`, cấm overwrite file lớn); phân tích nguyên nhân gốc rễ (4-Step RCA); và định vị kiến trúc theo C4 để đưa ra giải pháp toàn diện.
 
 
 ---

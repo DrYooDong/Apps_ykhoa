@@ -1,36 +1,51 @@
 # Quy tắc Tối ưu Tốc độ & Trí tuệ Nhân tạo (Antigravity Speed & Intelligence Engine)
 
-> Áp dụng trực tiếp từ kiến trúc Google Antigravity SDK & Antigravity CLI cho hệ sinh thái CliniPortal (Apps_ykhoa).
+> Áp dụng trực tiếp từ kiến trúc Google Antigravity SDK, Conductor Workflow & Kho Antigravity Skills (rmyndharis/antigravity-skills) cho hệ sinh thái CliniPortal (Apps_ykhoa).
 
 ---
 
-## ⚡ 1. NGUYÊN TẮC TỐC ĐỘ (SPEED & THROUGHPUT)
+## ⚡ 1. NGUYÊN TẮC TỐC ĐỘ X5 - X10 (SPEED & HIGH THROUGHPUT)
 
-1. **Progressive Disclosure (Không gây tràn ngữ cảnh)**:
-   - Chỉ nạp các rules hoặc skills thực sự liên quan đến tác vụ đang xử lý.
-   - Không lặp lại các đoạn giải thích dài dòng mang tính lý thuyết; trả lời tập trung, cô đọng, ưu tiên code runnable và kết quả thực thi.
-2. **Sử dụng Công cụ CLI Chuyên Biệt**:
-   - Sử dụng `python tools/ai_harness/cli_runner.py validate <file>` để kiểm tra JSON trong 50ms thay vì đọc và đối chiếu thủ công.
-   - Sử dụng `tools/scripts/medical-linter.mjs` và `tools/scratch/check_tags.js` để tự động hóa khâu QA.
-3. **Chỉnh sửa Tối thiểu & Cấp độ Ký hiệu (Symbol-Level & Surgical Edits — Serena Pattern)**:
-   - Bắt buộc dùng `replace_file_content` hoặc `multi_replace_file_content` để thay thế đúng khối code/thân hàm cần sửa (`replace_symbol_body`). Tuyệt đối không ghi đè toàn bộ file lớn gây lãng phí tokens, tăng độ trễ và làm mất các logic phụ trợ.
-4. **Định hướng Đồ thị Tri thức Trước khi Sửa (Graph-First Dependency Trace — Codebase-Memory Pattern)**:
-   - Trước khi sửa hoặc đổi tên một export/interface/component, bắt buộc khảo sát nhanh chuỗi gọi hàm và downstream references (`find_referencing_symbols`) qua ripgrep có định hướng, đảm bảo không làm gãy các module phụ thuộc.
-   - Khi tiếp cận file lớn (>300 dòng), trích xuất danh sách signatures/types trước (`get_symbols_overview`) thay vì đọc toàn bộ nội dung file.
+1. **Chu trình 3 Nhịp Conductor (3-Beat Cadence)**:
+   - **Nhịp 1 (Micro-Scoping)**: Xác định đúng 1-2 file và signature cần can thiệp. Không đọc lan man các file không liên quan.
+   - **Nhịp 2 (Micro-Spec)**: Định hình trước trong đầu 3 yếu tố: Input/State -> Exact Mutation -> Acceptance Criteria trước khi gõ code.
+   - **Nhịp 3 (Surgical Edit & Check)**: Dùng `edit_file` vi phẫu chính xác đúng khối code cần sửa. Chạy ngay kiểm tra tự động (`astro check`, linter).
+2. **Progressive Disclosure & Zero Context Thrashing**:
+   - Khi tiếp cận file lớn (>300 dòng), trích xuất danh sách signatures/types trước hoặc đọc đúng khoảng dòng (`StartLine`, `EndLine`).
+   - Tuyệt đối không đọc toàn bộ file nếu chỉ cần kiểm tra một hàm hay interface.
+3. **Chỉnh sửa Vi phẫu Tối thiểu (Symbol-Level & Surgical Edits)**:
+   - Bắt buộc dùng `edit_file` để thay thế đúng đoạn target (10-30 dòng). Tuyệt đối không dùng `write_file` để ghi đè toàn bộ file lớn, tránh lãng phí hàng ngàn tokens, giảm 90% độ trễ và triệt tiêu nguy cơ xóa mất code cũ.
+4. **Tận dụng Công cụ Kiểm tra Tự động Siêu tốc (Instant CLI Checks)**:
+   - Sử dụng `tools/scripts/medical-linter.mjs`, `tools/scratch/check_tags.js` hoặc `npx astro check` để thẩm định kết quả trong 1-2 giây.
 
 ---
 
-## 🧠 2. NGUYÊN TẮC TRÍ TUỆ (INTELLIGENCE & EBM ACCURACY)
+## 🎯 2. NGUYÊN TẮC CHÍNH XÁC TUYỆT ĐỐI (PRECISION & ZERO-HALLUCINATION RCA)
 
-1. **Ràng buộc Hợp đồng Dữ liệu (Schema Contracts via Pydantic)**:
-   - Mọi dữ liệu bệnh lý sinh ra cho DocSpace bắt buộc phải thỏa mãn các tiêu chuẩn trong `tools/ai_harness/schemas.py`:
-     - **Prompt 05**: `icdCode`, `diseaseName`, `goldStandard` (không placeholder), `severityGrading`, `timelinePhases` (Bảng 4 Cột: D1-D3, D4-D5...), `protocol` (đủ 6-9 đầu mục), `warnings`.
-     - **Prompt 06**: `weight_matrix` (`dt`, `gy`, `ht`, `loaitru`), zero-orphan symptoms.
-     - **Prompt 07**: `subjective`, `objective`, `assessment`, `plan`, `clinical_pearls`.
-2. **Quy trình Lập luận Y khoa 4 Tầng (4-Tier Clinical Reasoning)**:
-   - **Tầng 1 (Evidence Survey)**: Rà soát cấp độ chứng cứ từ Hướng dẫn Bộ Y tế / AHA / ESC / NICE gốc.
-   - **Tầng 2 (Pathophysiology)**: Biện luận cơ chế sinh lý bệnh (ví dụ: thoát huyết tương, bão cytokine, kháng kháng sinh).
-   - **Tầng 3 (Differential & Grading)**: Phân tầng nguy cơ và tiêu chuẩn vàng loại trừ.
-   - **Tầng 4 (Code/Data Synthesis)**: Tiến hành sinh code/markup không lỗi.
-3. **Vòng lặp Tự Phục Hồi (Auto-Healing Loop)**:
-   - Sau khi ghi hoặc sửa file, nếu hook hoặc compiler trả về lỗi (JSX syntax, tag unclosed, schema mismatch), AI phải chủ động phân tích nguyên nhân gốc và tự sửa chữa ngay lập tức trước khi thông báo hoàn tất.
+1. **Chu trình 4 Bước Phân Tích Nguyên Nhân Gốc Rễ (4-Step RCA Cycle)**:
+   - **Bước 1 (Reproduce & Inspect)**: Đối chiếu trạng thái thực tế với Hợp đồng thiết kế (Type Contract, DOM, Schema). Tuyệt đối không "đoán mò" (zero guessing).
+   - **Bước 2 (Isolate Root Cause)**: Phân định rõ lỗi do Data Flow, Type Mismatch, Lifecycle hay CSS Stacking. Sửa ở nơi sinh ra lỗi (Source of Truth), không chắp vá ở nơi hiển thị cuối.
+   - **Bước 3 (Surgical Root Fix)**: Thay đổi tối thiểu nhưng triệt để nguồn cơn. Bảo toàn tính toàn vẹn của mã nguồn.
+   - **Bước 4 (Regression & Downstream Audit)**: Rà soát downstream callers (các component/hàm gọi nó) để đảm bảo không làm gãy tính năng khác.
+2. **Ràng buộc Hợp đồng Kiểu Dữ liệu & Schema (Strict Type Contracts)**:
+   - Không lạm dụng `any`; định nghĩa rõ interface và kiểu trả về trong TypeScript.
+   - Mọi dữ liệu bệnh lý, CDSS và ca bệnh DocSpace bắt buộc phải thỏa mãn schema chuẩn (Pydantic / Zod / JSON Schema).
+3. **Vòng lặp Tự Phục Hồi Tức thì (Auto-Healing Loop)**:
+   - Sau khi sửa code, nếu xuất hiện lỗi compiler, syntax hoặc style, AI phải chủ động phân tích nguyên nhân gốc và tự sửa chữa ngay lập tức trước khi kết thúc phiên.
+
+---
+
+## 🏛️ 3. TƯ DUY KIẾN TRÚC ĐA TẦNG & CHIỀU SÂU Ý TƯỞNG (DEEP ARCHITECTURE REASONING)
+
+1. **Lăng Kính Kiến Trúc 4 Tầng C4 (C4 Architectural Zoom Lens)**:
+   - **Level 1 (System Context)**: Hiểu đối tượng người dùng (bác sĩ cấp cứu, sinh viên Y) và ràng buộc môi trường (offline-first `file:///`, tra cứu $\le$ 5s, Dark Mode chống chói mắt).
+   - **Level 2 (Container)**: Nắm rõ luồng dữ liệu giữa Astro Static Pages, Content Collections, Markdown Frontmatter, IndexedDB/localStorage và Client SPAs.
+   - **Level 3 (Component)**: Phân định ranh giới trách nhiệm rõ ràng (Separation of Concerns) giữa các Views (Hub, Reader, Disease), Services, và Renderers.
+   - **Level 4 (Code & Logic)**: Bảo đảm tính bất biến (Immutability), Pure Functions cho các công thức điểm số lâm sàng (NEWS2, Wells, eGFR).
+2. **Giao thức Đề xuất Ý tưởng ADR (Architecture Decision Protocol)**:
+   - Khi tham mưu giải pháp, không trả lời hời hợt; luôn phân tích theo cấu trúc ADR:
+     - *Bối cảnh & Vấn đề (Context & Drivers)*.
+     - *Các phương án khả thi (Options)* kèm phân tích *Đánh đổi (Tradeoffs)* về tốc độ, bộ nhớ và khả năng mở rộng.
+     - *Khuyến nghị tối ưu (Recommendation)* và *Lộ trình triển khai phân tầng (Phased Roadmap)*.
+3. **Gắn kết Sâu sắc với Domain Y khoa (Clinical Domain Synergy)**:
+   - Mọi giải pháp kỹ thuật phải phụng sự trải nghiệm lâm sàng: Tối ưu công thái học (giảm số clicks), minh bạch chứng cứ EBM (Class I-III, trích dẫn rõ ràng), và ưu tiên an toàn người bệnh (Red flags hiển thị nổi bật).
