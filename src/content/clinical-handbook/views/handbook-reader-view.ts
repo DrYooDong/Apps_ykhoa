@@ -225,6 +225,59 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
     });
   }
 
+  // Smooth scroll for Sticky Pillars Quick Nav
+  document.querySelectorAll('.pillar-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = (link as HTMLAnchorElement).getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', `#${targetId}`);
+
+          document.querySelectorAll('.pillar-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          // Sync TOC sidebar active state
+          document.querySelectorAll('.handbook-toc-link').forEach(l => {
+            if ((l as HTMLElement).getAttribute('data-target') === targetId) {
+              document.querySelectorAll('.handbook-toc-link').forEach(x => x.classList.remove('is-active'));
+              l.classList.add('is-active');
+            }
+          });
+        }
+      }
+    });
+  });
+
+  // IntersectionObserver to auto-highlight TOC and Pillars on scroll
+  const sections = mountEl.querySelectorAll('.mdx-section, h2[id], h3[id]');
+  if ('IntersectionObserver' in window && sections.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.id;
+          if (activeId) {
+            // Update TOC link
+            document.querySelectorAll('.handbook-toc-link').forEach(l => {
+              const target = (l as HTMLElement).getAttribute('data-target');
+              l.classList.toggle('is-active', target === activeId);
+            });
+            // Update Pillar link
+            document.querySelectorAll('.pillar-link').forEach(l => {
+              const href = (l as HTMLAnchorElement).getAttribute('href');
+              l.classList.toggle('active', href === `#${activeId}`);
+            });
+          }
+        }
+      });
+    }, { rootMargin: '-10% 0px -75% 0px' });
+
+    sections.forEach(sec => observer.observe(sec));
+  }
+
   // Font-size Resizer Controls
   let currentFontSize = 16;
   const proseEl = mountEl.querySelector('.handbook-prose') as HTMLElement | null;

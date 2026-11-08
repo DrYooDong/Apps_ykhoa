@@ -1135,50 +1135,763 @@
   font-weight: 700;
 }
 
-/* Callouts in Handbook */
-.handbook-prose .callout {
-  padding: 1.1rem 1.35rem;
+/* Callouts & Infoboxes in Handbook */
+.handbook-prose .callout,
+.handbook-prose .infobox {
+  padding: 1.15rem 1.4rem;
   border-radius: var(--handbook-radius-md);
-  margin: 1.5rem 0;
-  border-left: 4px solid transparent;
+  margin: 1.6rem 0;
+  border-left: 4.5px solid transparent;
+  background: var(--handbook-surface-2);
+  border-top: 1px solid var(--handbook-border-subtle);
+  border-right: 1px solid var(--handbook-border-subtle);
+  border-bottom: 1px solid var(--handbook-border-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.handbook-prose .callout-success {
-  background: rgba(16, 185, 129, 0.08);
+/* Callout Success */
+.handbook-prose .callout-success,
+.handbook-prose .infobox.success {
+  background: rgba(16, 185, 129, 0.07);
   border-left-color: #10b981;
 }
 
-.handbook-prose .callout-warning {
+/* Callout Warning */
+.handbook-prose .callout-warning,
+.handbook-prose .infobox.warning {
   background: rgba(245, 158, 11, 0.08);
   border-left-color: #f59e0b;
 }
 
-.handbook-prose .callout-danger {
+/* Callout Danger & Red Flags */
+.handbook-prose .callout-danger,
+.handbook-prose .infobox.danger {
   background: rgba(239, 68, 68, 0.08);
   border-left-color: #ef4444;
 }
 
-.handbook-prose .callout-title {
+/* Callout Pearl (Điểm ngọc lâm sàng) */
+.handbook-prose .callout-pearl,
+.handbook-prose .infobox.pearl {
+  background: rgba(2, 132, 199, 0.07);
+  border-left-color: #0284c7;
+}
+
+/* Callout Info */
+.handbook-prose .callout-info,
+.handbook-prose .infobox.info {
+  background: rgba(13, 148, 136, 0.07);
+  border-left-color: #0d9488;
+}
+
+/* Callout Rule (Nguyên tắc bỏ túi) */
+.handbook-prose .callout-rule,
+.handbook-prose .infobox.rule {
+  background: rgba(139, 92, 246, 0.07);
+  border-left-color: #8b5cf6;
+}
+
+.handbook-prose .callout-title,
+.handbook-prose .infobox-title {
   font-weight: 800;
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.98rem;
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.handbook-prose .callout-success .callout-title,
+.handbook-prose .infobox.success .infobox-title { color: #059669; }
+[data-theme="dark"] .handbook-prose .callout-success .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.success .infobox-title { color: #34d399; }
+
+.handbook-prose .callout-warning .callout-title,
+.handbook-prose .infobox.warning .infobox-title { color: #d97706; }
+[data-theme="dark"] .handbook-prose .callout-warning .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.warning .infobox-title { color: #fbbf24; }
+
+.handbook-prose .callout-danger .callout-title,
+.handbook-prose .infobox.danger .infobox-title { color: #dc2626; }
+[data-theme="dark"] .handbook-prose .callout-danger .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.danger .infobox-title { color: #f87171; }
+
+.handbook-prose .callout-pearl .callout-title,
+.handbook-prose .infobox.pearl .infobox-title { color: #0284c7; }
+[data-theme="dark"] .handbook-prose .callout-pearl .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.pearl .infobox-title { color: #38bdf8; }
+
+.handbook-prose .callout-info .callout-title,
+.handbook-prose .infobox.info .infobox-title { color: #0d9488; }
+[data-theme="dark"] .handbook-prose .callout-info .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.info .infobox-title { color: #2dd4bf; }
+
+.handbook-prose .callout-rule .callout-title,
+.handbook-prose .infobox.rule .infobox-title { color: #7c3aed; }
+[data-theme="dark"] .handbook-prose .callout-rule .callout-title,
+[data-theme="dark"] .handbook-prose .infobox.rule .infobox-title { color: #a78bfa; }
+
+.handbook-prose .callout-body,
+.handbook-prose .infobox-body {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--handbook-text);
+}
+
+/* Module Badges */
+.module-badge-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.handbook-prose .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--handbook-radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.handbook-prose .badge-teal {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0d9488;
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+[data-theme="dark"] .handbook-prose .badge-teal {
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.handbook-prose .badge-amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+[data-theme="dark"] .handbook-prose .badge-amber {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.handbook-prose .badge-purple {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+[data-theme="dark"] .handbook-prose .badge-purple {
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* ============================================================
+   9.1 STATS STRIP & METRIC CARDS (Kế thừa basic-medical & EBM)
+   ============================================================ */
+.stats-strip {
+  margin: 1.5rem 0 2rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.15rem 1rem;
+  text-align: center;
+  box-shadow: var(--handbook-card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--handbook-primary);
+}
+
+.stat-val {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-val.blue   { color: #0284c7; }
+[data-theme="dark"] .stat-val.blue { color: #38bdf8; }
+
+.stat-val.green  { color: #059669; }
+[data-theme="dark"] .stat-val.green { color: #34d399; }
+
+.stat-val.amber  { color: #d97706; }
+[data-theme="dark"] .stat-val.amber { color: #fbbf24; }
+
+.stat-val.red    { color: #dc2626; }
+[data-theme="dark"] .stat-val.red { color: #f87171; }
+
+.stat-val.purple { color: #7c3aed; }
+[data-theme="dark"] .stat-val.purple { color: #a78bfa; }
+
+.stat-lbl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--handbook-muted);
+  line-height: 1.35;
+}
+
+/* ============================================================
+   9.2 PILLARS QUICK NAV BAR (Sticky Quick Navigation)
+   ============================================================ */
+.pillars-nav {
+  position: sticky;
+  top: 1rem;
+  z-index: 20;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-full);
+  padding: 6px 10px;
+  margin: 1.5rem 0 2.25rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pillars-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.pillars-nav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.pillar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--handbook-radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--handbook-muted);
+  text-decoration: none;
+  transition: all 0.16s ease;
+}
+
+.pillar-link i {
+  font-size: 0.85rem;
+}
+
+.pillar-link:hover {
+  color: var(--handbook-primary);
+  background: var(--handbook-primary-hl);
+}
+
+.pillar-link.active {
+  color: #ffffff;
+  background: var(--handbook-primary);
+}
+
+/* ============================================================
+   9.3 EDITORIAL FLOWCHART STUDIO 2.0 (Pure SVG Clinical Maps)
+   ============================================================ */
+.flowchart-editorial-card {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-lg);
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.flowchart-editorial-header {
+  padding: 0.95rem 1.35rem;
+  background: var(--handbook-surface);
+  border-bottom: 1px solid var(--handbook-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.flowchart-editorial-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+  letter-spacing: -0.01em;
+}
+
+.flowchart-editorial-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flowchart-editorial-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--handbook-primary-hl);
+  color: var(--handbook-primary);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.flowchart-editorial-viewport {
+  padding: 1.5rem 1rem;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--handbook-surface-offset);
+}
+
+.flowchart-editorial-svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flowchart-legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--handbook-surface);
+  border-top: 1px solid var(--handbook-border-subtle);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--handbook-muted);
+}
+
+.flowchart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   9.4 LINEAR FLOW TRACK & DECISION STEPPERS
+   ============================================================ */
+.flow-track-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1.75rem 0;
+  position: relative;
+}
+
+.flow-track-step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.flow-track-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-track-marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: #ffffff;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.marker-blue  { background: #0284c7; }
+.marker-teal  { background: #0d9488; }
+.marker-amber { background: #d97706; }
+.marker-red   { background: #dc2626; }
+
+.flow-track-line {
+  width: 2px;
+  flex: 1;
+  background: var(--handbook-border);
+  margin: 4px 0;
+}
+
+.flow-track-step:last-child .flow-track-line {
+  display: none;
+}
+
+.flow-track-content {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.flow-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.flow-step-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-step-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.flow-badge-blue  { background: rgba(2, 132, 199, 0.1); color: #0284c7; }
+.flow-badge-amber { background: rgba(245, 158, 11, 0.1); color: #d97706; }
+.flow-badge-green { background: rgba(16, 185, 129, 0.1); color: #059669; }
+
+.flow-step-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--handbook-text);
+}
+
+/* Branch Grid in Stepper */
+.flow-branch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flow-branch-card {
+  padding: 1rem 1.15rem;
+  border-radius: var(--handbook-radius-sm);
+  border: 1px solid var(--handbook-border);
+  background: var(--handbook-surface);
+}
+
+.flow-branch-card.accent-green {
+  border-left: 4px solid #10b981;
+}
+
+.flow-branch-card.accent-rose {
+  border-left: 4px solid #ef4444;
+}
+
+.flow-branch-title {
+  font-weight: 800;
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.handbook-prose .callout-success .callout-title { color: #059669; }
-[data-theme="dark"] .handbook-prose .callout-success .callout-title { color: #34d399; }
+.flow-branch-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--handbook-muted);
+}
 
-.handbook-prose .callout-warning .callout-title { color: #d97706; }
-[data-theme="dark"] .handbook-prose .callout-warning .callout-title { color: #fbbf24; }
+/* ============================================================
+   9.5 COMPARISON TABLES & TABLE CARDS
+   ============================================================ */
+.table-card {
+  margin: 2rem 0;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  overflow: hidden;
+  box-shadow: var(--handbook-card-shadow);
+}
 
-.handbook-prose .callout-danger .callout-title { color: #dc2626; }
-[data-theme="dark"] .handbook-prose .callout-danger .callout-title { color: #f87171; }
+.table-header {
+  padding: 0.9rem 1.35rem;
+  background: var(--handbook-surface-offset);
+  border-bottom: 1px solid var(--handbook-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
 
-.handbook-prose .callout-body {
+.table-title {
   font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.comparison-table,
+.diagnostic-table,
+.dose-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.comparison-table th,
+.diagnostic-table th,
+.dose-table th {
+  background: var(--handbook-surface-2);
+  color: var(--handbook-text);
+  font-weight: 700;
+  padding: 11px 16px;
+  border-bottom: 2px solid var(--handbook-border);
+}
+
+.comparison-table td,
+.diagnostic-table td,
+.dose-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--handbook-border-subtle);
+  color: var(--handbook-text);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.highlight-cell {
+  background: var(--handbook-surface-offset);
+  font-weight: 600;
+}
+
+.dose-table-wrapper {
+  margin: 1.75rem 0;
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  overflow: hidden;
+}
+
+/* ============================================================
+   9.6 CLINICAL PITFALL CARDS (Lưới cạm bẫy lâm sàng)
+   ============================================================ */
+.pitfall-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.pitfall-card {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--handbook-card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.pitfall-card.danger {
+  border-top: 4px solid #ef4444;
+}
+
+.pitfall-card.warning {
+  border-top: 4px solid #f59e0b;
+}
+
+.pitfall-header {
+  margin-bottom: 0.75rem;
+}
+
+.pitfall-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.pitfall-card.danger .pitfall-badge  { color: #dc2626; }
+.pitfall-card.warning .pitfall-badge { color: #d97706; }
+
+.pitfall-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+  line-height: 1.35;
+}
+
+.pitfall-body {
+  font-size: 0.88rem;
   line-height: 1.6;
+  color: var(--handbook-text);
+  flex: 1;
+  margin-bottom: 0.85rem;
+}
+
+.pitfall-consequence {
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--handbook-radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.pitfall-card.danger .pitfall-consequence {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+}
+[data-theme="dark"] .pitfall-card.danger .pitfall-consequence {
+  color: #f87171;
+}
+
+.pitfall-card.warning .pitfall-consequence {
+  background: rgba(245, 158, 11, 0.08);
+  color: #d97706;
+}
+[data-theme="dark"] .pitfall-card.warning .pitfall-consequence {
+  color: #fbbf24;
+}
+
+/* ============================================================
+   9.7 BEDSIDE CASE SCENARIOS (Ca bệnh thực chiến)
+   ============================================================ */
+.case-study-card {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-lg);
+  padding: 1.5rem 1.6rem;
+  margin: 2rem 0;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.case-header {
+  margin-bottom: 1rem;
+}
+
+.case-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.case-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+}
+
+.case-scenario-box {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border-subtle);
+  border-radius: var(--handbook-radius-sm);
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--handbook-text);
+}
+
+.case-analysis {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 1.15rem;
+  color: var(--handbook-text);
+}
+
+.case-takeaway {
+  padding: 0.85rem 1.15rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--handbook-radius-sm);
+  color: #059669;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+[data-theme="dark"] .case-takeaway {
+  color: #34d399;
+}
+
+/* ============================================================
+   9.8 KATEX MATH DISPLAY CARDS
+   ============================================================ */
+.katex-display-card {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.35rem 1.5rem;
+  margin: 1.75rem 0;
+  text-align: center;
+}
+
+.equation-box {
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  font-size: 1.15rem;
+}
+
+.equation-legend {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--handbook-border-subtle);
+  font-size: 0.85rem;
+  color: var(--handbook-muted);
+  text-align: left;
+  line-height: 1.5;
 }
 
 /* Handbook Tables */
@@ -1263,6 +1976,53 @@
   .disease-hero-left {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* MDX Responsive Additions */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .pitfall-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .flow-branch-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .flow-track-step {
+    grid-template-columns: 32px 1fr;
+    gap: 0.85rem;
+  }
+
+  .flow-track-marker {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-val {
+    font-size: 1.25rem;
+  }
+
+  .pillars-nav {
+    padding: 4px 6px;
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .pillar-link {
+    padding: 4px 10px;
+    font-size: 0.74rem;
   }
 }
 

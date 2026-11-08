@@ -241,120 +241,127 @@
       <!-- ===================== GLASSMORPHISM HOMEPAGE ===================== -->
       <div class="bento-homepage" id="mainContent">
 
-        <!-- ── SECTION 1: STATUS BAR THÔNG MINH (CLOCK, SHIFT & ENERGY) ── -->
-        <div class="glass-status-bar" id="statusBar">
-          <div class="status-left">
-            <span class="status-greeting" id="statusGreeting">
-              <span>🌅</span> <span id="statusGreetingText">Chào buổi sáng, Bác sĩ!</span>
-            </span>
-            <span class="status-clock-badge">
-              <i class="fa-regular fa-clock"></i>
-              <span id="statusClockTime">--:--:--</span>
-              <span>•</span>
-              <span id="statusClockDate">--/--</span>
-            </span>
-          </div>
-
-          <div class="status-right">
-            <div class="status-pill shift-active" id="statusShiftPill" title="Ca trực hiện tại & Thời gian còn lại">
-              <span class="status-pill-dot"></span>
-              <i class="fa-solid fa-hospital-user" style="font-size: 0.75rem;"></i>
-              <span id="statusShiftText">Ca Sáng</span>
-            </div>
-            <button class="status-pill day-score-active" id="heroDayScoreBtn" type="button" title="Xem phân tích Chỉ số Ngày Tốt Nội Khoa, Bát Tự Bác Sĩ & Biorhythms">
-              <span class="day-score-icon" id="heroDayScoreIcon">🩺</span>
-              <span class="day-score-val" id="heroDayScoreVal" style="font-weight: 800;">--/100</span>
-              <span class="day-score-text" id="heroDayScoreText">Chỉ số Ngày</span>
-            </button>
-            <button class="status-pill energy-active" id="heroEnergyScoreBtn" type="button" title="Xem Mức Sẵn Sàng Trực Ca Nội Trú & Nhịp Sinh Học Circadian">
-              <span class="energy-score-icon" id="heroEnergyScoreIcon">⚡</span>
-              <span class="energy-score-val" id="heroEnergyScoreVal" style="font-weight: 800;">--%</span>
-              <span class="energy-score-text" id="heroEnergyScoreText">Năng Lượng</span>
-            </button>
-          </div>
-        </div>
-
         <!-- ══════════════════════════════════════════════════════════
              TRUNG TÂM CHỈ SỐ NGÀY TỐT & ĐIỀU HÀNH CA TRỰC LÂM SÀNG
              (Clinical Chronobiology & Auspicious Day Master Workstation)
+             - Gộp Thống Nhất Status Bar & Command Toolbar Thành 1 Khối
         ══════════════════════════════════════════════════════════ -->
         <section class="chrono-workstation" id="chronoWorkstation" aria-label="Trung tâm Nhịp sinh học & Điều hành Ca trực">
 
-          <!-- ── TOOLBAR: COMMAND BAR & DATE CONTROLS ── -->
-          <div class="chrono-toolbar">
-            <div class="chrono-toolbar-left">
-              <div class="chrono-brand-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Chỉ Số Ngày Tốt &amp; Điều Hành Ca Trực</span>
+          <!-- ── UNIFIED MASTER BRIEFING & COMMAND BAR (GỘP THỐNG NHẤT HÌNH 1) ── -->
+          <div class="chrono-master-header" id="statusBar">
+            <!-- Hàng 1: Live Status & Shift Energy Briefing -->
+            <div class="chrono-header-briefing-row">
+              <div class="status-left">
+                <span class="status-greeting" id="statusGreeting">
+                  <span>🌅</span> <span id="statusGreetingText">Chào buổi sáng, Bác sĩ!</span>
+                </span>
+                <span class="status-clock-badge">
+                  <i class="fa-regular fa-clock"></i>
+                  <span id="statusClockTime">--:--:--</span>
+                  <span>•</span>
+                  <span id="statusClockDate">--/--</span>
+                </span>
               </div>
 
-              <!-- Doctor Profile Pill -->
-              <button type="button" class="chrono-doctor-pill" id="chronoDoctorBtn" title="Xem &amp; Tùy chỉnh Bát Tự Bác Sĩ (Can Chi, Bản Mệnh)">
-                <i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i>
-                <span id="chronoDoctorName">BS. Bác sĩ (Canh Ngọ • Mệnh Thổ)</span>
-              </button>
-
-              <!-- Specialty Switcher Dropdown -->
-              <div class="chrono-spec-wrapper">
-                <button type="button" class="chrono-spec-btn" id="chronoSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi chuyên khoa nội khoa để điều chỉnh trọng số nhịp sinh học">
-                  <span id="chronoSpecIcon">🩺</span>
-                  <span id="chronoSpecName">Nội Tổng Quát</span>
-                  <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
-                </button>
-                <div class="chrono-spec-menu" id="chronoSpecMenu" role="menu">
-                  <button type="button" class="chrono-spec-item is-selected" data-spec="internal_general" role="menuitem">
-                    <span>🩺</span> <span>Nội Tổng Quát &amp; Ca Phức Tạp</span>
-                  </button>
-                  <button type="button" class="chrono-spec-item" data-spec="internal_cardio" role="menuitem">
-                    <span>❤️</span> <span>Nội Tim Mạch &amp; Huyết Động</span>
-                  </button>
-                  <button type="button" class="chrono-spec-item" data-spec="internal_resp_icu" role="menuitem">
-                    <span>🫁</span> <span>Hô Hấp &amp; ICU Hồi Sức Nội</span>
-                  </button>
-                  <button type="button" class="chrono-spec-item" data-spec="internal_gi_hepa" role="menuitem">
-                    <span>🧪</span> <span>Tiêu Hóa &amp; Gan Mật</span>
-                  </button>
-                  <button type="button" class="chrono-spec-item" data-spec="internal_endo_nephro" role="menuitem">
-                    <span>🩸</span> <span>Nội Tiết &amp; Thận Học</span>
-                  </button>
-                  <button type="button" class="chrono-spec-item" data-spec="internal_neuro_id" role="menuitem">
-                    <span>🧠</span> <span>Thần Kinh &amp; Truyền Nhiễm</span>
-                  </button>
+              <div class="status-right">
+                <div class="status-pill shift-active" id="statusShiftPill" title="Ca trực hiện tại & Thời gian còn lại">
+                  <span class="status-pill-dot"></span>
+                  <i class="fa-solid fa-hospital-user" style="font-size: 0.75rem;"></i>
+                  <span id="statusShiftText">Ca Sáng</span>
                 </div>
+                <button class="status-pill day-score-active" id="heroDayScoreBtn" type="button" title="Xem phân tích Chỉ số Ngày Tốt Nội Khoa, Bát Tự Bác Sĩ & Biorhythms">
+                  <span class="day-score-icon" id="heroDayScoreIcon">🩺</span>
+                  <span class="day-score-val" id="heroDayScoreVal" style="font-weight: 800;">--/100</span>
+                  <span class="day-score-text" id="heroDayScoreText">Chỉ số Ngày</span>
+                </button>
+                <button class="status-pill energy-active" id="heroEnergyScoreBtn" type="button" title="Xem Mức Sẵn Sàng Trực Ca Nội Trú & Nhịp Sinh Học Circadian">
+                  <span class="energy-score-icon" id="heroEnergyScoreIcon">⚡</span>
+                  <span class="energy-score-val" id="heroEnergyScoreVal" style="font-weight: 800;">--%</span>
+                  <span class="energy-score-text" id="heroEnergyScoreText">Năng Lượng</span>
+                </button>
               </div>
             </div>
 
-            <!-- Date Controls & Action Buttons -->
-            <div class="chrono-toolbar-right">
-              <div class="chrono-date-nav">
-                <button type="button" class="chrono-nav-btn" id="btnChronoPrevDay" title="Xem ngày trước" aria-label="Ngày trước">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <div class="chrono-date-input-wrap" title="Chọn ngày bất kỳ để xem trước chỉ số">
-                  <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem; margin-right: 0.35rem;"></i>
-                  <input type="date" class="chrono-date-input" id="chronoDateInput" aria-label="Chọn ngày đánh giá" />
+            <!-- Đường phân cách tinh tế giữa 2 tầng công năng -->
+            <div class="chrono-header-divider"></div>
+
+            <!-- Hàng 2: Command Toolbar & Date Operations -->
+            <div class="chrono-header-operations-row">
+              <div class="chrono-toolbar-left">
+                <div class="chrono-brand-badge" title="Chỉ số Thần khí, Nhịp sinh học lâm sàng & Thời khắc y lệnh">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span>Chỉ Số Ngày Tốt &amp; Điều Hành Ca Trực</span>
                 </div>
-                <button type="button" class="chrono-today-btn" id="btnChronoToday" title="Về hôm nay">
-                  Hôm nay
+
+                <!-- Doctor Profile Pill -->
+                <button type="button" class="chrono-doctor-pill" id="chronoDoctorBtn" title="Xem &amp; Tùy chỉnh Bát Tự Bác Sĩ (Can Chi, Bản Mệnh)">
+                  <i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i>
+                  <span id="chronoDoctorName">BS. Bác sĩ (Canh Ngọ • Mệnh Thổ)</span>
                 </button>
-                <button type="button" class="chrono-nav-btn" id="btnChronoNextDay" title="Xem ngày sau" aria-label="Ngày sau">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
+
+                <!-- Specialty Switcher Dropdown -->
+                <div class="chrono-spec-wrapper">
+                  <button type="button" class="chrono-spec-btn" id="chronoSpecBtn" aria-haspopup="true" aria-expanded="false" title="Đổi chuyên khoa nội khoa để điều chỉnh trọng số nhịp sinh học">
+                    <span id="chronoSpecIcon">🩺</span>
+                    <span id="chronoSpecName">Nội Tổng Quát</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.6rem; opacity: 0.7;"></i>
+                  </button>
+                  <div class="chrono-spec-menu" id="chronoSpecMenu" role="menu">
+                    <button type="button" class="chrono-spec-item is-selected" data-spec="internal_general" role="menuitem">
+                      <span>🩺</span> <span>Nội Tổng Quát &amp; Ca Phức Tạp</span>
+                    </button>
+                    <button type="button" class="chrono-spec-item" data-spec="internal_cardio" role="menuitem">
+                      <span>❤️</span> <span>Nội Tim Mạch &amp; Huyết Động</span>
+                    </button>
+                    <button type="button" class="chrono-spec-item" data-spec="internal_resp_icu" role="menuitem">
+                      <span>🫁</span> <span>Hô Hấp &amp; ICU Hồi Sức Nội</span>
+                    </button>
+                    <button type="button" class="chrono-spec-item" data-spec="internal_gi_hepa" role="menuitem">
+                      <span>🧪</span> <span>Tiêu Hóa &amp; Gan Mật</span>
+                    </button>
+                    <button type="button" class="chrono-spec-item" data-spec="internal_endo_nephro" role="menuitem">
+                      <span>🩸</span> <span>Nội Tiết &amp; Thận Học</span>
+                    </button>
+                    <button type="button" class="chrono-spec-item" data-spec="internal_neuro_id" role="menuitem">
+                      <span>🧠</span> <span>Thần Kinh &amp; Truyền Nhiễm</span>
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              <!-- Quick Action Buttons -->
-              <button type="button" class="chrono-action-btn" id="btnChronoCopySBAR" title="Sao chép toàn bộ tóm tắt chỉ số trực ca chuẩn SBAR vào clipboard">
-                <i class="fa-solid fa-copy"></i>
-                <span>Chép SBAR</span>
-              </button>
-              <button type="button" class="chrono-action-btn" id="btnChronoFinder" title="Tìm ngày đẹp khởi sự hoặc hội chẩn trong 30 ngày tới">
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                <span>Tìm Ngày Đẹp</span>
-              </button>
-              <button type="button" class="chrono-action-btn" id="btnChronoFullReport" title="Mở bảng Lịch Vạn Niên &amp; Phân Tích Toàn Diện">
-                <i class="fa-solid fa-up-right-from-square"></i>
-                <span>Chi Tiết</span>
-              </button>
+              <!-- Date Controls & Action Buttons -->
+              <div class="chrono-toolbar-right">
+                <div class="chrono-date-nav">
+                  <button type="button" class="chrono-nav-btn" id="btnChronoPrevDay" title="Xem ngày trước" aria-label="Ngày trước">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <div class="chrono-date-input-wrap" title="Chọn ngày bất kỳ để xem trước chỉ số">
+                    <i class="fa-regular fa-calendar" style="color: var(--color-primary); font-size: 0.72rem; margin-right: 0.35rem;"></i>
+                    <input type="date" class="chrono-date-input" id="chronoDateInput" aria-label="Chọn ngày đánh giá" />
+                  </div>
+                  <button type="button" class="chrono-today-btn" id="btnChronoToday" title="Về hôm nay">
+                    Hôm nay
+                  </button>
+                  <button type="button" class="chrono-nav-btn" id="btnChronoNextDay" title="Xem ngày sau" aria-label="Ngày sau">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <button type="button" class="chrono-action-btn" id="btnChronoCopySBAR" title="Sao chép toàn bộ tóm tắt chỉ số trực ca chuẩn SBAR vào clipboard">
+                  <i class="fa-solid fa-copy"></i>
+                  <span>Chép SBAR</span>
+                </button>
+                <button type="button" class="chrono-action-btn" id="btnChronoFinder" title="Tìm ngày đẹp khởi sự hoặc hội chẩn trong 30 ngày tới">
+                  <i class="fa-solid fa-magnifying-glass-chart"></i>
+                  <span>Tìm Ngày Đẹp</span>
+                </button>
+                <button type="button" class="chrono-action-btn" id="btnChronoFullReport" title="Mở bảng Lịch Vạn Niên &amp; Phân Tích Toàn Diện">
+                  <i class="fa-solid fa-up-right-from-square"></i>
+                  <span>Chi Tiết</span>
+                </button>
+              </div>
             </div>
           </div>
 
