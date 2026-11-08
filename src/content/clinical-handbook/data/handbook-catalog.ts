@@ -150,16 +150,16 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
         order: 1,
         filePath: 'truyen-nhiem/viem-gan-b/hbv-01-tieu-chuan-chan-doan-va-cam-bay.mdx',
         isFeatured: true,
-        lastUpdated: '2026-11-07',
+        lastUpdated: '2026-11-08',
         evidenceLevel: 'EBM 2026 • AASLD / EASL / BYT',
         sections: [
           { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)', icon: 'fa-bolt' },
           { id: 'sec-4-phases', number: 2, title: 'Bản Đồ 4 Pha Tự Nhiên Của Nhiễm HBV Mạn Tính', icon: 'fa-diagram-project' },
-          { id: 'sec-diagnostic-criteria', number: 3, title: 'Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi (AASLD / EASL / BYT)', icon: 'fa-clipboard-check' },
-          { id: 'sec-serology-pitfalls', number: 4, title: 'Cạm Bẫy Huyết Thanh Học (Serology & Bẫy Anti-HBc IgM)', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-diagnostic-criteria', number: 3, title: 'Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi & Chỉ Định Khởi Trị', icon: 'fa-clipboard-check' },
+          { id: 'sec-serology-pitfalls', number: 4, title: 'Cạm Bẫy Huyết Thanh Học (Serology & Anti-HBc IgM)', icon: 'fa-triangle-exclamation' },
           { id: 'sec-alt-fibroscan-pitfalls', number: 5, title: 'Bẫy Ngưỡng ALT Phòng Xét Nghiệm & Bẫy Đo Độ Cứng Gan', icon: 'fa-wave-square' },
-          { id: 'sec-qhbsag-role', number: 6, title: 'Vai Trò Định Lượng HBsAg (qHBsAg) Trong Phân Tầng Nguy Cơ', icon: 'fa-chart-pie' },
-          { id: 'sec-bedside-matrix', number: 7, title: 'Bảng Ma Trận Đối Chiếu & Bảng Kiểm Tại Giường Bệnh', icon: 'fa-table-list' },
+          { id: 'sec-qhbsag-role', number: 6, title: 'Tái Hoạt HBV & Phân Tuyến Ngoại Trú - Nội Viện (QĐ 1740)', icon: 'fa-chart-pie' },
+          { id: 'sec-bedside-matrix', number: 7, title: 'Bảng Ma Trận Phân Biệt Cấp vs Bùng Phát Mạn', icon: 'fa-table-list' },
           { id: 'sec-case-scenarios', number: 8, title: 'Ca Lâm Sàng Thực Tế & Đúc Kết Xương Máu', icon: 'fa-user-doctor' }
         ]
       },

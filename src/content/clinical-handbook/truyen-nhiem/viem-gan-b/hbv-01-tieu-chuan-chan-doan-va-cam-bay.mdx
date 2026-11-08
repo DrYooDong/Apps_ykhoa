@@ -7,19 +7,18 @@ disease: "viem-gan-b"
 diseaseLabel: "Viêm Gan Siêu Vi B (HBV)"
 order: 1
 tags:
-  - "Viêm gan B"
   - "HBV"
   - "Tiêu chuẩn chẩn đoán"
   - "4 Pha tự nhiên"
   - "Bẫy ALT"
   - "Bẫy FibroScan"
   - "Anti-HBc IgM"
-  - "qHBsAg"
+  - "Quyết định 1740/QĐ-BYT"
   - "EBM 2026"
 difficulty: "advanced"
 estimatedTime: 25
 lastUpdated: "2026-11-08"
-evidenceLevel: "AASLD / EASL 2024"
+evidenceLevel: "EBM 2026 • AASLD / EASL / BYT"
 sections:
   - id: "sec-takeaway"
     number: 1
@@ -31,11 +30,11 @@ sections:
     icon: "fa-diagram-project"
   - id: "sec-diagnostic-criteria"
     number: 3
-    title: "Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi (AASLD / EASL / BYT)"
+    title: "Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi & Chỉ Định Khởi Trị"
     icon: "fa-clipboard-check"
   - id: "sec-serology-pitfalls"
     number: 4
-    title: "Cạm Bẫy Huyết Thanh Học & Giải Mã Anti-HBc IgM"
+    title: "Cạm Bẫy Huyết Thanh Học (Serology & Anti-HBc IgM)"
     icon: "fa-triangle-exclamation"
   - id: "sec-alt-fibroscan-pitfalls"
     number: 5
@@ -43,11 +42,11 @@ sections:
     icon: "fa-wave-square"
   - id: "sec-qhbsag-role"
     number: 6
-    title: "Vai Trò Định Lượng HBsAg (qHBsAg) Trong Tiên Lượng"
+    title: "Tái Hoạt HBV & Phân Tuyến Ngoại Trú - Nội Viện (QĐ 1740)"
     icon: "fa-chart-pie"
   - id: "sec-bedside-matrix"
     number: 7
-    title: "Lưu Đồ Tiếp Cận 5 Bước Tại Giường Bệnh"
+    title: "Bảng Ma Trận Phân Biệt Cấp vs Bùng Phát Mạn"
     icon: "fa-table-list"
   - id: "sec-case-scenarios"
     number: 8
@@ -57,303 +56,427 @@ sections:
 
 # 🧬 TIÊU CHUẨN CHẨN ĐOÁN VIÊM GAN SIÊU VI B & CẠM BẪY CẬN LÂM SÀNG
 
-<div class="module-badge-group">
-  <span class="badge badge-teal"><i class="fa-solid fa-virus"></i> Truyền Nhiễm &amp; Gan Mật</span>
-  <span class="badge badge-amber"><i class="fa-solid fa-lightbulb"></i> Đúc Kết Thực Chiến</span>
-  <span class="badge badge-purple"><i class="fa-solid fa-shield-halved"></i> AASLD 2024 / EASL 2024 / BYT</span>
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-virus-covid"></i> Bệnh Truyền Nhiễm</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> QĐ 1740/QĐ-BYT (2026)</span>
+  <span class="badge" style="background: rgba(245, 158, 11, 0.12); color: #d97706; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25);"><i class="fa-solid fa-shield-halved"></i> EBM 2026 AASLD / EASL / WHO</span>
 </div>
 
-<!-- DẢI CHỈ SỐ NHANH (QUICK STATS STRIP) -->
+<!-- DẢI CHỈ SỐ NHANH 30S -->
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-val blue">≤ 35 / ≤ 25 U/L</div>
-      <div class="stat-lbl">Ngưỡng ALT bình thường thực tế theo AASLD (Nam / Nữ)</div>
+      <div class="stat-val blue">254 Tr</div>
+      <div class="stat-lbl">Người nhiễm HBV mạn toàn cầu (WHO)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val red">ALT &gt; 5× ULN</div>
-      <div class="stat-lbl">Chống chỉ định đo FibroScan (Độ cứng giả vọt báo F4)</div>
+      <div class="stat-val red">9.4%</div>
+      <div class="stat-lbl">Tỷ lệ lưu hành người lớn tại Việt Nam</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val amber">20 – 30%</div>
-      <div class="stat-lbl">Tỷ lệ bùng phát mạn có Anti-HBc IgM (+) gây nhầm cấp</div>
+      <div class="stat-val amber">35 / 25</div>
+      <div class="stat-lbl">Ngưỡng ULN ALT chuẩn AASLD Nam/Nữ (U/L)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val green">&lt; 1.000 IU/mL</div>
-      <div class="stat-lbl">Ngưỡng qHBsAg kết hợp DNA thấp tiên lượng thải sạch</div>
+      <div class="stat-val green">-77%</div>
+      <div class="stat-lbl">Giảm nguy cơ ung thư gan khi dùng NAs sớm</div>
     </div>
   </div>
 </section>
 
-<!-- THANH ĐIỀU HƯỚNG NHANH NEO CỐ ĐỊNH -->
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
 <nav class="pillars-nav">
   <div class="pillars-nav-inner">
     <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
-    <a href="#sec-4-phases" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 2. Bản Đồ 4 Pha</a>
-    <a href="#sec-diagnostic-criteria" class="pillar-link"><i class="fa-solid fa-clipboard-check"></i> 3. Tiêu Chuẩn Vàng</a>
+    <a href="#sec-4-phases" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 2. 4 Pha Tự Nhiên</a>
+    <a href="#sec-diagnostic-criteria" class="pillar-link"><i class="fa-solid fa-clipboard-check"></i> 3. Tiêu Chuẩn & Khởi Trị</a>
     <a href="#sec-serology-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 4. Bẫy Huyết Thanh</a>
-    <a href="#sec-alt-fibroscan-pitfalls" class="pillar-link"><i class="fa-solid fa-wave-square"></i> 5. Bẫy ALT &amp; Scan</a>
-    <a href="#sec-qhbsag-role" class="pillar-link"><i class="fa-solid fa-chart-pie"></i> 6. Vai Trò qHBsAg</a>
-    <a href="#sec-bedside-matrix" class="pillar-link"><i class="fa-solid fa-table-list"></i> 7. Tiếp Cận 5 Bước</a>
+    <a href="#sec-alt-fibroscan-pitfalls" class="pillar-link"><i class="fa-solid fa-wave-square"></i> 5. Bẫy ALT & Scan</a>
+    <a href="#sec-qhbsag-role" class="pillar-link"><i class="fa-solid fa-chart-pie"></i> 6. Tái Hoạt & Tuyến BYT</a>
+    <a href="#sec-bedside-matrix" class="pillar-link"><i class="fa-solid fa-table-list"></i> 7. Cấp vs Flare Mạn</a>
     <a href="#sec-case-scenarios" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 8. Ca Thực Chiến</a>
   </div>
 </nav>
 
 ---
 
-<section id="sec-takeaway" class="mdx-section">
-
-## ⚡ 1. ĐÚC KẾT 30 GIÂY (THE BOTTOM LINE & RULE OF THUMB)
+## ⚡ 1. ĐÚC KẾT 30 GIÂY (THE BOTTOM LINE & RULE OF THUMB) {#sec-takeaway}
 
 <div class="callout callout-pearl">
-  <div class="callout-title"><i class="fa-solid fa-gem"></i> 5 Nguyên Tắc Vàng Khi Đứng Trước Bệnh Nhân HBsAg (+)</div>
-  <div class="callout-body">
-    <ol>
-      <li><strong>Ngưỡng ALT bình thường thực tế theo AASLD:</strong> Nam $\le 35\text{ U/L}$, Nữ $\le 25\text{ U/L}$. Phòng xét nghiệm thường lấy ngưỡng $40 - 50\text{ U/L}$ cho cả hai giới; nếu tin vào chữ "bình thường" trên phiếu lab, bạn sẽ bỏ sót tới <strong>35% bệnh nhân có viêm gan và xơ hóa tiến triển</strong>.</li>
-      <li><strong>Không bao giờ đo độ cứng gan (FibroScan) khi ALT $> 5 \times \text{ULN}$:</strong> Khi tế bào gan đang viêm hoại tử và phù nề cấp tính, bao Glisson căng ra làm độ cứng giả tạo vọt lên $15 - 25\text{ kPa}$ (báo xơ gan F4 giả). Bắt buộc phải chờ men gan hạ hoặc kết hợp chỉ số sinh hóa máu (APRI, FIB-4).</li>
-      <li><strong>Anti-HBc IgM (+) KHÔNG ĐỒNG NGHĨA 100% với Viêm gan B cấp:</strong> Khoảng $20 - 30\%$ đợt bùng phát cấp trên nền mạn tính (acute-on-chronic flares) có Anti-HBc IgM dương tính nồng độ thấp đến vừa. Nhầm lẫn tai hại này có thể khiến bác sĩ trì hoãn thuốc kháng virus và dẫn đến suy gan tối cấp.</li>
-      <li><strong>Tải lượng HBV DNA dao động rất mạnh:</strong> Một lần xét nghiệm HBV DNA thấp không đủ để dán nhãn "người mang virus không hoạt động". Cần ít nhất 3 lần kiểm tra trong vòng 12 tháng kèm theo dõi ALT.</li>
-      <li><strong>Định lượng HBsAg (qHBsAg) là chìa khóa phân biệt:</strong> Ở bệnh nhân HBeAg (-), nếu $\text{qHBsAg} < 1.000\text{ IU/mL}$ kết hợp $\text{HBV DNA} < 2.000\text{ IU/mL}$ và ALT bình thường thì mới chắc chắn là thể "Nhiễm mạn không hoạt động" có tiên lượng đào thải HBsAg tự nhiên cao.</li>
-    </ol>
-  </div>
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC VÀNG TRONG TIẾP CẬN VIÊM GAN SIÊU VI B (HBV)</div>
+  <p>
+    Viêm gan virus B (HBV) là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô tế bào gan (HCC) tại Việt Nam. Theo <strong>Quyết định 1740/QĐ-BYT (16/06/2026)</strong> và khuyến cáo <strong>WHO (2024/2026)</strong>, dịch vụ chẩn đoán và quản lý HBV đã được <strong>phân cấp mở rộng về y tế cơ sở và phòng khám ngoại trú</strong>, cho phép khởi trị thuốc kháng virus (NAs) sớm để giảm đến 77% nguy cơ ung thư gan.
+  </p>
+  <ul>
+    <li><strong>Quy tắc ngưỡng ALT:</strong> Tuyệt đối không dùng khoảng tham chiếu chung của phòng xét nghiệm (&lt; 40–50 U/L). Phải áp dụng chuẩn giới tính AASLD: <strong>Nam &le; 35 U/L, Nữ &le; 25 U/L</strong>. Phụ nữ có ALT = 30 U/L thực tế đã tăng 1.2 lần ULN!</li>
+    <li><strong>Quy tắc cấm kỵ FibroScan:</strong> Không bao giờ đo độ đàn hồi gan khi ALT đang tăng vọt <strong>&gt; 5&times; ULN</strong> vì tế bào gan phù nề làm tăng áp lực giả tạo, máy sẽ báo xơ gan F4 giả.</li>
+    <li><strong>Quy tắc giải mã Anti-HBc IgM:</strong> Anti-HBc IgM (+) không đồng nghĩa 100% với viêm gan B cấp tính. Khoảng <strong>20–30% đợt bùng phát cấp trên nền mạn (Acute Flare / ACLF)</strong> cũng có Anti-HBc IgM dương tính (thường ở hiệu giá thấp/vừa).</li>
+  </ul>
 </div>
-
-</section>
 
 ---
 
-<section id="sec-4-phases" class="mdx-section">
+## 🗺️ 2. BẢN ĐỒ 4 PHA TỰ NHIÊN CỦA NHIỄM HBV MẠN TÍNH {#sec-4-phases}
 
-## 🗺️ 2. BẢN ĐỒ 4 PHA TỰ NHIÊN CỦA NHIỄM HBV MẠN TÍNH
+Nhiễm HBV mạn tính (tồn tại HBsAg &gt; 6 tháng) diễn tiến qua 4 pha sinh học dựa trên sự tương tác giữa virus và hệ miễn dịch ký chủ:
 
-Theo đồng thuận mới nhất của Hiệp hội Nghiên cứu Bệnh Gan Châu Âu (EASL) và Hiệp hội Gan Mật Hoa Kỳ (AASLD), danh pháp diễn tiến tự nhiên của HBV đã được chuẩn hóa lại dựa trên hai trục: **Tình trạng HBeAg** và **Mức độ viêm gan (Nhiễm trùng mạn vs Viêm gan mạn)**.
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
 
-<!-- EDITORIAL SVG STUDIO: BẢN ĐỒ 4 PHA HBV -->
-<div class="flowchart-editorial-card">
-  <div class="flowchart-editorial-header">
-    <div class="flowchart-editorial-title">
-      <i class="fa-solid fa-diagram-project" style="color: var(--handbook-primary);"></i>
-      <span>BẢN ĐỒ 4 PHA DIỄN TIẾN TỰ NHIÊN CỦA NHIỄM HBV MẠN TÍNH (EASL / AASLD)</span>
+  <!-- PHA 1 -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 1 &bull; HBeAg DƯƠNG TÍNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Nhiễm Mạn Dung Nạp Miễn Dịch</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Rất cao (&gt; 10<sup>7</sup> IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Hoàn toàn bình thường</div>
+      <div>&bull; <strong>Tổn thương mô gan:</strong> Tối thiểu hoặc không có</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Thái độ: Theo dõi ALT mỗi 3–6 tháng (Chỉ điều trị nếu &ge; 30–35 tuổi hoặc gia đình có HCC).
+      </div>
     </div>
-    <div class="flowchart-editorial-badges">
-      <span class="flowchart-editorial-badge">EASL 2024 • AASLD 2024</span>
+  </div>
+
+  <!-- PHA 2 -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 2 &bull; HBeAg DƯƠNG TÍNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Viêm Gan Mạn Thể Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Cao (10<sup>4</sup> – 10<sup>7</sup> IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Tăng từng đợt hoặc liên tục</div>
+      <div>&bull; <strong>Mô học:</strong> Viêm hoại tử &amp; xơ hóa tiến triển</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 4px; font-weight: 700; color: #dc2626;">
+        Thái độ: CHỈ ĐỊNH KHỞI TRỊ NAs NGAY (TDF / TAF / ETV).
+      </div>
     </div>
   </div>
-  
-  <div class="flowchart-editorial-viewport">
-    <svg class="flowchart-editorial-svg" viewBox="0 0 940 340" width="940" height="340" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', -apple-system, sans-serif">
-      <!-- Cột HBeAg (+) -->
-      <rect x="20" y="20" width="435" height="40" rx="8" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="1.5" />
-      <text x="237" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#0284c7">HBeAg DƯƠNG TÍNH</text>
 
-      <!-- Pha 1 -->
-      <rect x="20" y="80" width="435" height="110" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.2" />
-      <text x="35" y="105" font-size="13" font-weight="700" fill="#059669">PHA 1: NHIỄM MẠN HBeAg (+) (Dung Nạp Miễn Dịch)</text>
-      <text x="35" y="130" font-size="12" font-weight="500" fill="var(--handbook-text)">• HBV DNA rất cao (&gt; 10⁷ IU/mL), ALT bình thường dai dẳng</text>
-      <text x="35" y="152" font-size="12" font-weight="500" fill="var(--handbook-text)">• Tổn thương hoại tử/xơ hóa gan: Không hoặc tối thiểu</text>
-      <text x="35" y="174" font-size="12" font-weight="700" fill="#059669">► Chưa chỉ định điều trị ngay, theo dõi mỗi 3–6 tháng</text>
-
-      <!-- Pha 2 -->
-      <rect x="20" y="205" width="435" height="115" rx="8" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.2" />
-      <text x="35" y="230" font-size="13" font-weight="700" fill="#dc2626">PHA 2: VIÊM GAN MẠN HBeAg (+) (Thải Trừ Miễn Dịch)</text>
-      <text x="35" y="255" font-size="12" font-weight="500" fill="var(--handbook-text)">• HBV DNA 10⁴ – 10⁷ IU/mL, ALT tăng ngắt quãng hoặc liên tục</text>
-      <text x="35" y="277" font-size="12" font-weight="500" fill="var(--handbook-text)">• Xơ hóa tiến triển nhanh, nguy cơ xơ gan mất bù</text>
-      <text x="35" y="299" font-size="12" font-weight="700" fill="#dc2626">► CHỈ ĐỊNH ĐIỀU TRỊ THUỐC KHÁNG VIRUS NGAY</text>
-
-      <!-- Cột HBeAg (-) -->
-      <rect x="485" y="20" width="435" height="40" rx="8" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="1.5" />
-      <text x="702" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#8b5cf6">HBeAg ÂM TÍNH / ANTI-HBe (+)</text>
-
-      <!-- Pha 3 -->
-      <rect x="485" y="80" width="435" height="110" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.2" />
-      <text x="500" y="105" font-size="13" font-weight="700" fill="#059669">PHA 3: NHIỄM MẠN HBeAg (-) (Người Mang Không Hoạt Động)</text>
-      <text x="500" y="130" font-size="12" font-weight="500" fill="var(--handbook-text)">• HBV DNA thấp (&lt; 2.000 IU/mL), ALT bình thường dai dẳng ≥ 12th</text>
-      <text x="500" y="152" font-size="12" font-weight="500" fill="var(--handbook-text)">• qHBsAg &lt; 1.000 IU/mL, nguy cơ ung thư gan thấp</text>
-      <text x="500" y="174" font-size="12" font-weight="700" fill="#059669">► Chưa chỉ định điều trị, kiểm tra định kỳ mỗi 6–12 tháng</text>
-
-      <!-- Pha 4 -->
-      <rect x="485" y="205" width="435" height="115" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.2" />
-      <text x="500" y="230" font-size="13" font-weight="700" fill="#d97706">PHA 4: VIÊM GAN MẠN HBeAg (-) (Đột Biến Precore / BCP)</text>
-      <text x="500" y="255" font-size="12" font-weight="500" fill="var(--handbook-text)">• HBV DNA &gt; 2.000 IU/mL dao động mạnh, ALT tăng từng đợt</text>
-      <text x="500" y="277" font-size="12" font-weight="500" fill="var(--handbook-text)">• Diễn tiến âm thầm dẫn thẳng tới xơ gan F4 và ung thư gan HCC</text>
-      <text x="500" y="299" font-size="12" font-weight="700" fill="#d97706">► CHỈ ĐỊNH ĐIỀU TRỊ KHÁNG VIRUS LÂU DÀI</text>
-    </svg>
-  </div>
-  
-  <div class="flowchart-legend-row">
-    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Thể Nhiễm trùng mạn (Theo dõi)</div>
-    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #ef4444;"></span> Thể Viêm gan mạn (Điều trị ngay)</div>
-    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Đột biến Precore/BCP (Nguy hiểm ngầm)</div>
-  </div>
-</div>
-
-### Bảng Phân Định 4 Pha Theo EASL & AASLD
-
-<div class="table-card">
-  <div class="table-header">
-    <div class="table-title">
-      <i class="fa-solid fa-table-list"></i> Bảng Đối Chiếu 4 Pha Nhiễm HBV Mạn Tính
+  <!-- PHA 3 -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 3 &bull; HBeAg ÂM / ANTI-HBe (+)</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Người Mang Virus Không Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Thấp (&lt; 2.000 IU/mL hoặc không phát hiện)</div>
+      <div>&bull; <strong>ALT:</strong> Liên tục bình thường theo chuẩn AASLD</div>
+      <div>&bull; <strong>qHBsAg:</strong> Thường &lt; 1.000 IU/mL</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; font-weight: 700; color: #059669;">
+        Thái độ: Theo dõi ALT &amp; Siêu âm/AFP định kỳ mỗi 6–12 tháng.
+      </div>
     </div>
-    <span class="table-badge">EASL 2024 / AASLD 2024</span>
   </div>
-  <div class="table-wrapper">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>Tiêu chí</th>
-          <th>Pha 1: Nhiễm mạn HBeAg (+)</th>
-          <th>Pha 2: Viêm gan mạn HBeAg (+)</th>
-          <th>Pha 3: Nhiễm mạn HBeAg (-)</th>
-          <th>Pha 4: Viêm gan mạn HBeAg (-)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="highlight-cell"><strong>Tên cũ</strong></td>
-          <td>Dung nạp miễn dịch</td>
-          <td>Thải trừ miễn dịch</td>
-          <td>Người mang không hoạt động</td>
-          <td>Đột biến tiền lõi</td>
-        </tr>
-        <tr>
-          <td class="highlight-cell"><strong>HBeAg / Anti-HBe</strong></td>
-          <td>HBeAg (+), Anti-HBe (-)</td>
-          <td>HBeAg (+), Anti-HBe (-)</td>
-          <td>HBeAg (-), Anti-HBe (+)</td>
-          <td>HBeAg (-), Anti-HBe (+)</td>
-        </tr>
-        <tr>
-          <td class="highlight-cell"><strong>HBV DNA</strong></td>
-          <td>Cực cao ($> 10^7\text{ IU/mL}$)</td>
-          <td>Cao ($10^4 - 10^7\text{ IU/mL}$)</td>
-          <td>Thấp ($< 2.000\text{ IU/mL}$)</td>
-          <td>Dao động ($> 2.000\text{ IU/mL}$)</td>
-        </tr>
-        <tr>
-          <td class="highlight-cell"><strong>Mức ALT</strong></td>
-          <td>Bình thường dai dẳng</td>
-          <td>Tăng ngắt quãng hoặc liên tục</td>
-          <td>Bình thường dai dẳng ($\ge 12$ tháng)</td>
-          <td>Tăng dao động từng đợt</td>
-        </tr>
-        <tr>
-          <td class="highlight-cell"><strong>Tổn thương gan</strong></td>
-          <td>Không hoặc tối thiểu</td>
-          <td>Viêm hoại tử, xơ hóa tiến triển</td>
-          <td>Không hoặc xơ hóa nhẹ</td>
-          <td>Viêm hoại tử, xơ hóa tiến triển nặng</td>
-        </tr>
-        <tr>
-          <td class="highlight-cell"><strong>Chỉ định điều trị</strong></td>
-          <td>Chưa chỉ định (trừ $>30$ tuổi hoặc có tiền sử HCC gia đình)</td>
-          <td><strong style="color: #ef4444;">Chỉ định điều trị ngay</strong></td>
-          <td>Chưa chỉ định, theo dõi định kỳ</td>
-          <td><strong style="color: #ef4444;">Chỉ định điều trị ngay</strong></td>
-        </tr>
-      </tbody>
-    </table>
+
+  <!-- PHA 4 -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 4 &bull; HBeAg ÂM / ĐỘT BIẾN PRECORE</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Viêm Gan Mạn Thể Tái Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Dao động (2.000 – &gt; 20.000 IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Tăng bất thường từng đợt (dễ bỏ sót)</div>
+      <div>&bull; <strong>Cơ chế:</strong> Đột biến vùng Precore/BCP ngừng tiết HBeAg</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(245, 158, 11, 0.08); border-radius: 4px; font-weight: 700; color: #d97706;">
+        Thái độ: KHỞI TRỊ NAs KÉO DÀI (Nguy cơ xơ gan âm thầm rất cao).
+      </div>
+    </div>
   </div>
+
 </div>
 
 <div class="callout callout-warning">
-  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Kinh Nghiệm Nhận Diện Pha 4 (HBeAg Âm Tính)</div>
-  <div class="callout-body">
-    Pha 4 cực kỳ phổ biến tại Việt Nam và Đông Nam Á do virus mang <strong>đột biến vùng Precore (G1896A) hoặc Basal Core Promoter (BCP - A1762T/G1764A)</strong>. Đột biến này khiến virus không sản xuất được protein HBeAg nhưng vẫn nhân đôi mạnh mẽ.<br />
-    Bác sĩ không có kinh nghiệm thường nhìn thấy HBeAg (-) và Anti-HBe (+) liền vội vàng an ủi bệnh nhân là "đã khỏi hoặc virus ngủ yên", trong khi thực tế bệnh nhân đang bị xơ hóa tiến triển âm thầm dẫn thẳng tới xơ gan và ung thư tế bào gan (HCC).
-  </div>
+  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> CẢNH BÁO: VÙNG XÁM LÂM SÀNG (GRAY ZONE / UNCLASSIFIED)</div>
+  <p>
+    Là tình trạng người bệnh có các chỉ số lâm sàng không khớp hoàn toàn với 4 giai đoạn trên (ví dụ: ALT bình thường nhưng HBV DNA cao, hoặc ALT tăng nhưng HBV DNA thấp). 
+    Các bằng chứng sinh thiết gan quốc tế chứng minh <strong>&gt; 70% bệnh nhân ở vùng xám vẫn có xơ hóa gan tiến triển (&ge; F2)</strong>. Bắt buộc phải đánh giá xơ hóa không xâm lấn (APRI, FIB-4, FibroScan) để không bỏ lỡ chỉ định khởi trị sớm!
+  </p>
 </div>
-
-</section>
 
 ---
 
-<section id="sec-diagnostic-criteria" class="mdx-section">
+## 📋 3. BỘ TIÊU CHUẨN CHẨN ĐOÁN CỐT LÕI & CHỈ ĐỊNH KHỞI TRỊ {#sec-diagnostic-criteria}
 
-## 📋 3. BỘ TIÊU CHUẨN CHẨN ĐOÁN CỐT LÕI (AASLD / EASL / BYT)
+### Sàng Lọc Đối Tượng Nguy Cơ Tại Tuyến Ban Đầu
+Theo chỉ đạo phân cấp của Bộ Y tế, các nhóm ưu tiên sàng lọc HBsAg ngoại trú gồm:
+1. **Người sinh trước năm 2003** (trước khi triển khai tiêm chủng mở rộng sơ sinh toàn quốc).
+2. **Phụ nữ mang thai** trong các kỳ khám thai định kỳ (phòng lây truyền mẹ sang con).
+3. **Người đến khám bệnh lao, HIV, hoặc bệnh lây truyền qua đường tình dục (STIs)**.
+4. **Nhóm nguy cơ cao**: Tiêm chích ma túy, nam quan hệ đồng tính (MSM), người quan hệ tình dục không an toàn.
+5. **Người có biểu hiện tăng AST/ALT, gan thô trên siêu âm**, hoặc bệnh nhân chạy thận nhân tạo.
 
-### A. Tiêu chuẩn chẩn đoán Viêm gan B Mạn tính (Chronic Hepatitis B)
+### Đánh Giá Xơ Hóa Gan Không Xâm Lấn
+Đánh giá độ xơ hóa mô gan (F0–F4) là điều kiện then chốt để quyết định điều trị:
 
-Theo Hướng dẫn Bộ Y tế (QĐ 3310/QĐ-BYT) và AASLD, chẩn đoán xác định khi thỏa mãn 1 trong 2 tiêu chuẩn sau:
+<div class="katex-display-card">
+  <div class="equation-box">
+    $$\text{APRI} = \frac{\left( \frac{\text{AST (U/L)}}{\text{AST ULN (U/L)}} \right)}{\text{Tiểu Cầu } (10^9/\text{L})} \times 100$$
+  </div>
+  <div class="equation-legend">
+    <strong>Quy chuẩn tính APRI:</strong> Sử dụng ngưỡng quy chuẩn $\text{AST ULN} = 40\text{ U/L}$.<br />
+    &bull; $\text{APRI} \le 0.5$: F0–F1 (Nguy cơ xơ hóa thấp).<br />
+    &bull; $0.5 < \text{APRI} \le 1.0$: F2–F3 (Xơ hóa đáng kể).<br />
+    &bull; $\text{APRI} > 1.0$: <strong>F4 (Xơ gan)</strong>.
+  </div>
+</div>
 
-1. **Tiêu chuẩn thời gian:** $\text{HBsAg}(+)$ và/hoặc $\text{HBV DNA}(+)$ kéo dài **trên 6 tháng**.
-2. **Tiêu chuẩn huyết thanh tức thời (khi không có tiền sử 6 tháng trước):**
-   - $\text{HBsAg}(+)$ VÀ $\text{Anti-HBc IgG}(+)$ dương tính.
-   - $\text{Anti-HBc IgM}(-)$ (hoặc dương tính hiệu giá thấp).
+* **Chỉ số FIB-4**: Dựa trên Tuổi, AST, ALT và Tiểu cầu. Ngưỡng $\text{FIB-4} < 1.45$ loại trừ xơ hóa nặng; $\text{FIB-4} \ge 3.25$ dự đoán xơ hóa tiến triển/xơ gan.
+* **Độ đàn hồi gan FibroScan (LSM)**:
+  * $\le 7.0\text{ kPa}$: F0–F1.
+  * $7.1 - 9.5\text{ kPa}$: F2 (Xơ hóa đáng kể &ge; F2).
+  * $9.6 - 12.5\text{ kPa}$: F3 (Xơ hóa tiến triển).
+  * $> 12.5\text{ kPa}$: F4 (Xơ gan).
 
-### B. Tiêu chuẩn chẩn đoán Viêm gan B Cấp tính (Acute Hepatitis B)
+### Tiêu Chuẩn Khởi Trị Thuốc Kháng Virus (NAs) Theo Quyết Định 1740/QĐ-BYT (2026)
+Chỉ định điều trị thuốc kháng virus đường uống (**Tenofovir TDF 300mg, Tenofovir alafenamide TAF 25mg, hoặc Entecavir ETV 0.5mg**) cho bệnh nhân &ge; 12 tuổi khi thỏa **BẤT KỲ 1 TRONG 3 ĐIỀU KIỆN SAU**:
 
-1. Tiền sử không mắc HBV trước đây (hoặc xét nghiệm HBsAg âm tính trong vòng 6 tháng gần nhất).
-2. Hội chứng tổn thương tế bào gan cấp: ALT tăng rất cao (thường $> 10 \times \text{ULN}$, thậm chí $> 1.000\text{ U/L}$).
-3. Dấu ấn sinh học quyết định:
-   - $\text{HBsAg}(+)$ (có thể âm tính nếu thể tối cấp đào thải nhanh).
-   - **$\text{Anti-HBc IgM}(+)$ hiệu giá cao** (thường $\text{S/CO} > 10$ hoặc titer $> 1:1.000$).
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
 
-</section>
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-certificate"></i> TIÊU CHUẨN 1: XƠ HÓA GAN &ge; F2</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Có bằng chứng xơ gan (F4) hoặc xơ hóa đáng kể (&ge; F2) xác định qua:
+      <div>&bull; Lâm sàng / Siêu âm có dấu hiệu xơ gan</div>
+      <div>&bull; <strong>APRI &gt; 0.5</strong> hoặc FIB-4 &ge; 1.45</div>
+      <div>&bull; <strong>FibroScan &gt; 7.0 kPa</strong></div>
+      <div style="margin-top: 0.6rem; color: #0284c7; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY (Không phụ thuộc nồng độ HBV DNA hay mức men gan ALT).
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-dna"></i> TIÊU CHUẨN 2: DNA + ALT TĂNG</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Thỏa mãn đồng thời cả 2 tiêu chí:
+      <div>&bull; <strong>HBV DNA &gt; 2.000 IU/mL</strong> (hoặc &gt; 10<sup>4</sup> copies/mL)</div>
+      <div>&bull; <strong>VÀ ALT &gt; ULN</strong> kéo dài hoặc ngắt quãng (Nam &gt; 35 U/L, Nữ &gt; 25 U/L)</div>
+      <div style="margin-top: 0.6rem; color: #d97706; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY (Phù hợp Viêm gan mạn Pha 2 và Pha 4).
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> TIÊU CHUẨN 3: DNA TRÊN NGƯỠNG + YẾU TỐ NGUY CƠ</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      HBV DNA trên ngưỡng phát hiện kèm bất kỳ yếu tố:
+      <div>&bull; Tiền sử gia đình có người bị ung thư gan (HCC) hoặc xơ gan</div>
+      <div>&bull; Đồng nhiễm HIV, HCV hoặc HDV</div>
+      <div>&bull; Bệnh nhân &ge; 30–35 tuổi có ALT tăng dai dẳng</div>
+      <div>&bull; Biểu hiện ngoài gan (viêm cầu thận, viêm đa nút động mạch...)</div>
+      <div style="margin-top: 0.6rem; color: #dc2626; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY ĐỂ BẢO VỆ MÔ GAN.
+      </div>
+    </div>
+  </div>
+
+</div>
 
 ---
 
-<section id="sec-serology-pitfalls" class="mdx-section">
+## ⚠️ 4. CẠM BẪY HUYẾT THANH HỌC (SEROLOGY & ANTI-HBC IGM) {#sec-serology-pitfalls}
 
-## ⚠️ 4. CẠM BẪY HUYẾT THANH HỌC & GIẢI MÃ ANTI-HBc IgM
-
-### Bẫy 1: Anti-HBc IgM Dương Tính Trong Đợt Bùng Phát Mạn Tính (Acute Flare)
-
-Đây là cạm bẫy gây nhầm lẫn kinh điển nhất giữa Viêm gan B cấp và Đợt bùng phát cấp của Viêm gan B mạn tính.
-
-<div class="callout callout-danger">
-  <div class="callout-title"><i class="fa-solid fa-skull-crossbones"></i> Hậu Quả Lâm Sàng Tai Hại</div>
-  <div class="callout-body">
-    Nếu chẩn đoán nhầm đợt bùng phát của viêm gan mạn thành viêm gan cấp, bác sĩ sẽ có xu hướng <em>"theo dõi chờ đợi tự hồi phục"</em> vì hơn 95% viêm gan B cấp ở người lớn tự khỏi.<br />
-    Trong khi đó, đợt bùng phát của viêm gan mạn nếu không được dùng ngay thuốc kháng virus (Tenofovir/Entecavir) thì nguy cơ hoại tử tế bào gan ồ ạt dẫn đến suy gan cấp trên nền mạn (ACLF) và tử vong có thể lên tới <strong>30 - 50%</strong>.
-  </div>
-</div>
+### Phiên Giải Bộ Huyết Thanh Học Cơ Bản 3 Thành Phần
 
 <div class="table-card">
   <div class="table-header">
-    <div class="table-title">
-      <i class="fa-solid fa-code-compare"></i> Bảng Đối Chiếu: Viêm Gan B Cấp Tính Thật Sự vs Đợt Bùng Phát Trên Nền Mạn
-    </div>
-    <span class="table-badge">Cực Kỳ Quan Trọng</span>
+    <div class="table-title"><i class="fa-solid fa-table-list"></i> BẢNG PHIÊN GIẢI HUYẾT THANH HỌC HBV TẠI PHÒNG KHÁM BAN ĐẦU</div>
   </div>
-  <div class="table-wrapper">
-    <table class="comparison-table">
+  <div class="handbook-table-container">
+    <table class="handbook-table">
       <thead>
         <tr>
-          <th>Dấu hiệu</th>
-          <th>Viêm Gan B Cấp Tính Thật Sự</th>
-          <th>Đợt Bùng Phát Trên Nền Mạn Tính (Acute-on-Chronic Flare)</th>
+          <th style="width: 12%; text-align: center;">HBsAg</th>
+          <th style="width: 12%; text-align: center;">Anti-HBc</th>
+          <th style="width: 14%; text-align: center;">Anti-HBs</th>
+          <th style="width: 32%;">Phiên Giải Lâm Sàng</th>
+          <th style="width: 30%;">Khuyến Cáo Hành Động</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="highlight-cell"><strong>Tiền căn xét nghiệm</strong></td>
-          <td>HBsAg (-) trong 6 tháng qua</td>
-          <td>HBsAg (+) $> 6$ tháng hoặc người nhà nhiễm HBV</td>
+          <td style="text-align: center;"><strong style="color: #dc2626;">Dương</strong></td>
+          <td style="text-align: center;"><strong style="color: #dc2626;">Dương</strong></td>
+          <td style="text-align: center;">Âm</td>
+          <td><strong>Đang nhiễm HBV</strong> (Cấp tính hoặc Mạn tính)</td>
+          <td>Tư vấn, làm HBV DNA, HBeAg, ALT và đánh giá độ xơ hóa gan.</td>
         </tr>
         <tr>
-          <td class="highlight-cell"><strong>Hiệu giá Anti-HBc IgM</strong></td>
-          <td><strong style="color: #0284c7;">Rất cao</strong> ($\text{S/CO} > 10$, titer cao)</td>
-          <td><strong style="color: #d97706;">Thấp đến trung bình</strong> ($\text{S/CO} < 5 - 8$)</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;"><strong style="color: #059669;">&ge; 10 IU/L</strong></td>
+          <td><strong>Không nhiễm, có miễn dịch do tiêm vắc xin</strong></td>
+          <td>An toàn. Không cần tiêm nhắc lại nếu người bình thường khỏe mạnh.</td>
         </tr>
         <tr>
-          <td class="highlight-cell"><strong>Định lượng HBsAg (qHBsAg)</strong></td>
-          <td>Thường rất cao, sau đó tụt dốc nhanh</td>
-          <td>Cao và ổn định</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;"><strong style="color: #059669;">Dương</strong></td>
+          <td style="text-align: center;"><strong style="color: #059669;">&ge; 10 IU/L</strong></td>
+          <td><strong>Nhiễm HBV cũ tự nhiên đã hồi phục</strong></td>
+          <td>An toàn. Thận trọng theo dõi nguy cơ tái hoạt nếu hóa trị ung thư.</td>
         </tr>
         <tr>
-          <td class="highlight-cell"><strong>Dấu ấn xơ hóa / Bệnh gan mạn</strong></td>
-          <td>Siêu âm gan mịn, lách không to, tiểu cầu bình thường</td>
-          <td>Gan thô, bờ không đều, tiểu cầu giảm, có sao mạch</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;">&lt; 10 IU/L</td>
+          <td><strong>Chưa nhiễm, chưa có miễn dịch bảo vệ</strong></td>
+          <td><strong>Chỉ định tiêm phòng vắc xin HBV ngay</strong> (Phác đồ 0, 1, 6 tháng).</td>
         </tr>
         <tr>
-          <td class="highlight-cell"><strong>HBV DNA trước bùng phát</strong></td>
-          <td>Mới xuất hiện</td>
-          <td>Đã hiện diện từ trước, tăng vọt đột ngột</td>
+          <td style="text-align: center;">Âm</td>
+          <td style="text-align: center;"><strong style="color: #d97706;">Dương</strong></td>
+          <td style="text-align: center;">&lt; 10 IU/L</td>
+          <td><strong>Anti-HBc đơn độc</strong> (Nhiễm cũ xa xôi hoặc thể ẩn OBI)</td>
+          <td>Làm HBV DNA nếu men gan tăng không rõ nguyên nhân hoặc bị suy giảm miễn dịch.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+### Lưới Cạm Bẫy Huyết Thanh Học
+<div class="pitfall-grid">
+
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-triangle-exclamation"></i> CẠM BẪY HUYẾT THANH 01</div>
+      <div class="pitfall-title">Hiểu Nhầm Anti-HBc IgM (+) Luôn Là Viêm Gan B Cấp</div>
+    </div>
+    <div class="pitfall-body">
+      Nhiều bác sĩ chẩn đoán nhầm viêm gan B cấp khi thấy kết quả Anti-HBc IgM (+). Thực tế, khoảng <strong>20–30% bệnh nhân viêm gan B mạn tính trải qua đợt bùng phát cấp (Acute Flare)</strong> có thể tái xuất hiện Anti-HBc IgM trong máu.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-shield-virus"></i> HÀNH ĐỘNG: Xem hiệu giá định lượng S/CO. Nếu S/CO &gt; 10 thường là cấp thật sự; nếu S/CO &lt; 5–8 kèm tiền sử hoặc hình ảnh xơ gan thì đây là đợt bùng phát mạn!
+    </div>
+  </div>
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-ban"></i> CẠM BẪY HUYẾT THANH 02</div>
+      <div class="pitfall-title">Bỏ Quên Viêm Gan B Thể Ẩn (Occult Hepatitis B - OBI)</div>
+    </div>
+    <div class="pitfall-body">
+      Bệnh nhân có HBsAg (-) nhưng HBV DNA vẫn tồn tại trong máu (&lt; 200 IU/mL) hoặc tích tụ trong nhân tế bào gan dưới dạng cccDNA. Nhóm bệnh nhân này thường chỉ có Anti-HBc total (+) đơn độc.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-circle-exclamation"></i> HÀNH ĐỘNG: Khi bệnh nhân chuẩn bị hóa trị hoặc dùng thuốc sinh học Rituximab, bắt buộc định lượng HBV DNA dù HBsAg âm tính!
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 📉 5. BẪY NGƯỠNG ALT PHÒNG XÉT NGHIỆM & BẪY ĐO ĐỘ CỨNG GAN {#sec-alt-fibroscan-pitfalls}
+
+<div class="pitfall-grid">
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-circle-radiation"></i> CẠM BẪY SINH HÓA 03</div>
+      <div class="pitfall-title">Ngộ Nhận Khoảng Tham Chiếu ALT Của Phòng Xét Nghiệm</div>
+    </div>
+    <div class="pitfall-body">
+      Các phiếu trả kết quả labo bệnh viện thường in ngưỡng bình thường chung: ALT &lt; 40 U/L hoặc &lt; 50 U/L. Ngưỡng này gom chung cả nhóm người béo phì, thoái hóa mỡ gan. Khuyến cáo AASLD và QĐ 1740/QĐ-BYT quy định ngưỡng chuẩn thực tế: <strong>Nam &le; 35 U/L, Nữ &le; 25 U/L</strong>. Một bệnh nhân nữ có ALT 32 U/L thực chất đã tăng men gan 1.28 lần và có nguy cơ tổn thương gan âm thầm!
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-check-double"></i> HÀNH ĐỘNG: Luôn phiên giải kết quả men gan theo giới tính (35/25 U/L) khi quản lý bệnh nhân viêm gan B.
+    </div>
+  </div>
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-wave-square"></i> CẠM BẪY CHẨN ĐOÁN HÌNH ẢNH 04</div>
+      <div class="pitfall-title">Đo Độ Đàn Hồi Gan (FibroScan) Khi Men Gan Đang Tăng Vọt</div>
+    </div>
+    <div class="pitfall-body">
+      Khi tế bào gan bị viêm phù nề cấp tính, bao Glisson căng phồng làm vận tốc sóng biến dạng tăng vọt giả tạo. Máy FibroScan sẽ cho kết quả độ cứng gan 18–25 kPa (báo nhầm xơ gan mất bù F4), gây hoang mang cực độ cho bệnh nhân.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-ban"></i> HÀNH ĐỘNG: Tuyệt đối hoãn đo FibroScan khi ALT &gt; 5&times; ULN. Tạm thời sử dụng APRI hoặc FIB-4, đợi khi men gan hạ về dưới 2–3&times; ULN mới tiến hành đo lại scan.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🎯 6. TÁI HOẠT HBV & PHÂN TUYẾN NGOẠI TRÚ - NỘI VIỆN (QĐ 1740) {#sec-qhbsag-role}
+
+### Sơ Đồ Dự Phòng Tái Hoạt HBV Khi Dùng Thuốc Ức Chế Miễn Dịch / Hóa Trị
+Khi bệnh nhân ung thư hoặc bệnh tự miễn chuẩn bị điều trị hóa chất, ghép tế bào gốc hoặc thuốc ức chế miễn dịch mạnh (Anti-CD20 Rituximab, Anti-TNF, Corticoid liều cao kéo dài), virus HBV có thể bùng phát dữ dội:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #ef4444; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.92rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-shield-virus"></i> NHÓM HBsAg DƯƠNG TÍNH</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; <strong>Nguy cơ cao (&gt; 10%):</strong> Bất kỳ phác đồ hóa trị toàn thân nào, thuốc sinh học Rituximab, ghép tủy.</div>
+      <div>&bull; <strong>Nguy cơ trung bình (1–10%):</strong> Dùng Corticoid &ge; 4 tuần, thuốc ức chế kinase.</div>
+      <div style="margin-top: 0.6rem; padding: 0.45rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 4px; font-weight: 700; color: #dc2626;">
+        Khởi trị NAs dự phòng (TDF / TAF / ETV) TRƯỚC 2 TUẦN khi bắt đầu thuốc miễn dịch, duy trì 6–12 tháng sau khi kết thúc liệu trình.
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #f59e0b; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.92rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-shield-halved"></i> NHÓM HBsAg ÂM, ANTI-HBc DƯƠNG</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; <strong>Nguy cơ cao (&gt; 10%):</strong> Điều trị thuốc kháng CD20 (Rituximab, Obinutuzumab) hoặc ghép tế bào gốc tạo máu.</div>
+      <div>&bull; <strong>Hành động:</strong> Khởi trị NAs dự phòng ngay như nhóm HBsAg (+).</div>
+      <div>&bull; <strong>Nguy cơ trung bình/thấp (&lt; 10%):</strong> Theo dõi ALT và HBV DNA định kỳ mỗi 1–3 tháng; chỉ khởi trị NAs nếu phát hiện HBV DNA dương tính trở lại.</div>
+    </div>
+  </div>
+
+</div>
+
+### Tiêu Chuẩn Hội Chẩn & Chuyển Tuyến Hai Chiều Theo Quyết Định 1740/QĐ-BYT
+* **Cấp ban đầu và Cấp cơ bản (Phòng khám ngoại trú / TTYT Huyện)**:
+  * Quản lý, khởi trị và cấp phát thuốc kháng virus NAs định kỳ cho bệnh nhân viêm gan B mạn chưa xơ gan hoặc xơ gan còn bù (Child-Pugh A).
+* **Bắt buộc chuyển tuyến cấp chuyên sâu (Nội viện tuyến Tỉnh / Trung ương)** khi bệnh nhân có các dấu hiệu:
+  1. **Xơ gan mất bù (Child-Pugh B hoặc C)**: Cổ trướng, phù chân, xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản, bệnh não gan.
+  2. **Nghi ngờ thất bại điều trị hoặc kháng thuốc**: Tải lượng HBV DNA không giảm (&lt; 1 log<sub>10</sub> IU/mL sau 3 tháng) hoặc bùng phát trở lại dù tuân thủ thuốc tốt.
+  3. **Viêm gan B thể tối cấp / Suy gan cấp**: INR &gt; 1.5, Bilirubin toàn phần &gt; 3 mg/dL, ngủ gà hoặc rối loạn tri giác.
+  4. **Nghi ngờ Ung thư tế bào gan (HCC)**: Khối u gan trên siêu âm hoặc AFP / PIVKA-II tăng vọt bất thường.
+
+---
+
+## 📊 7. BẢNG MA TRẬN PHÂN BIỆT CẤP VS BÙNG PHÁT MẠN {#sec-bedside-matrix}
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-code-compare"></i> ĐỐI CHIẾU VIÊM GAN B CẤP TÍNH THẬT SỰ VS ĐỢT BÙNG PHÁT CẤP TRÊN NỀN MẠN (FLARE / ACLF)</div>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Tiêu Chí Phân Định</th>
+          <th style="width: 40%;">Viêm Gan B Cấp Tính Thật Sự</th>
+          <th style="width: 40%;">Đợt Bùng Phát Cấp Trên Nền Mạn (Flare / ACLF)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tiền sử HBsAg</strong></td>
+          <td>HBsAg âm tính trước đó trong vòng 6 tháng gần nhất.</td>
+          <td>HBsAg (+) kéo dài &gt; 6 tháng hoặc có tiền sử người thân gia đình nhiễm HBV.</td>
         </tr>
         <tr>
-          <td class="highlight-cell"><strong>Hành động lâm sàng</strong></td>
-          <td>Hồi sức hỗ trợ, chỉ dùng NUCs nếu suy gan tối cấp</td>
-          <td><strong style="color: #ef4444;">DÙNG NGAY NUCs (TDF/TAF/ETV) CÀNG SỚM CÀNG TỐT</strong></td>
+          <td><strong>Hiệu giá Anti-HBc IgM</strong></td>
+          <td><strong style="color: #059669;">Dương tính mạnh</strong> (Hiệu giá S/CO rất cao, thường &gt; 10).</td>
+          <td><strong style="color: #d97706;">Dương tính yếu / vừa</strong> (Hiệu giá S/CO thấp, thường 2 – 8) hoặc Âm tính.</td>
+        </tr>
+        <tr>
+          <td><strong>Hình thái siêu âm gan</strong></td>
+          <td>Nhu mô gan mịn đồng nhất, kích thước bình thường hoặc hơi to nhẹ.</td>
+          <td>Gan thô bất cân đối, bờ mấp mô, lách to, có dấu hiệu tăng áp lực tĩnh mạch cửa hoặc xơ gan.</td>
+        </tr>
+        <tr>
+          <td><strong>Tải lượng HBV DNA</strong></td>
+          <td>Dao động cao rồi giảm rất nhanh khi hệ miễn dịch dập tắt virus.</td>
+          <td>Bùng phát tăng vọt rất cao (10<sup>6</sup> – 10<sup>8</sup> IU/mL), không tự hạ nếu không có NAs.</td>
+        </tr>
+        <tr>
+          <td><strong>Thái độ điều trị NAs</strong></td>
+          <td>Hồi sức hỗ trợ; <strong>chỉ dùng NAs khi diễn tiến nặng</strong> (Bilirubin &gt; 3 mg/dL, INR &gt; 1.5, bệnh não gan).</td>
+          <td><strong style="color: #dc2626;">CHỈ ĐỊNH KHỞI TRỊ NUCs CẤP CỨU NGAY LẬP TỨC (TDF / TAF / ETV)</strong> để cứu vãn tế bào gan!</td>
         </tr>
       </tbody>
     </table>
@@ -362,316 +485,62 @@ Theo Hướng dẫn Bộ Y tế (QĐ 3310/QĐ-BYT) và AASLD, chẩn đoán xác
 
 ---
 
-### Bẫy 2: Anti-HBc Đơn Độc (Isolated Anti-HBc)
+## 🩺 8. CA LÂM SÀNG THỰC TẾ & ĐÚC KẾT XƯƠNG MÁU {#sec-case-scenarios}
 
-Khi xét nghiệm ra kết quả: $\text{HBsAg}(-)$, $\text{Anti-HBs}(-)$, nhưng **$\text{Anti-HBc IgG}(+)$**. Có 4 khả năng lâm sàng:
-
-1. **Khả năng hay gặp nhất:** Nhiễm HBV trong quá khứ đã hồi phục, nhưng kháng thể bảo vệ Anti-HBs đã giảm xuống dưới ngưỡng phát hiện ($< 10\text{ mIU/mL}$).
-2. **Khả năng nguy hiểm nhất:** **Viêm gan B thể ẩn (Occult Hepatitis B Infection - OBI)**: Virus vẫn tồn tại dạng cccDNA trong nhân tế bào gan và giải phóng lượng nhỏ HBV DNA vào máu. Nếu bệnh nhân này phải dùng thuốc ức chế miễn dịch (đặc biệt là Rituximab, kháng CD20, ghép tạng, corticoid liều cao), virus sẽ bùng phát dữ dội.
-3. **Dương tính giả:** Xét nghiệm Anti-HBc bị nhiễu chéo (gặp ở người có nguy cơ nhiễm HBV thấp).
-4. **Giai đoạn cửa sổ:** Sau khi HBsAg biến mất nhưng Anti-HBs chưa kịp xuất hiện (ít gặp ở thể mạn).
-
-<div class="callout callout-info">
-  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> Thái Độ Xử Trí Khi Gặp Anti-HBc Đơn Độc</div>
-  <div class="callout-body">
-    Bắt buộc kiểm tra <strong>HBV DNA độ nhạy cao</strong> (ngưỡng phát hiện $\le 10 - 20\text{ IU/mL}$).<br />
-    - Nếu HBV DNA (+): Chẩn đoán OBI. Cần theo dõi sát hoặc điều trị nếu có tổn thương gan.<br />
-    - Nếu bệnh nhân chuẩn bị hóa trị hoặc dùng Rituximab: Bắt buộc dùng thuốc kháng virus dự phòng bất kể nồng độ HBV DNA.
-  </div>
-</div>
-
-</section>
-
----
-
-<section id="sec-alt-fibroscan-pitfalls" class="mdx-section">
-
-## 📊 5. BẪY NGƯỠNG ALT PHÒNG XÉT NGHIỆM & BẪY ĐO ĐỘ CỨNG GAN
-
-<!-- LƯỚI CẠM BẪY LÂM SÀNG -->
-<div class="pitfall-grid">
-  <div class="pitfall-card danger">
-    <div class="pitfall-header">
-      <div class="pitfall-badge"><i class="fa-solid fa-triangle-exclamation"></i> CẠM BẪY LAB 01</div>
-      <div class="pitfall-title">Tin Vào Chữ "Bình Thường" Của Ngưỡng ALT Phòng Xét Nghiệm</div>
-    </div>
-    <div class="pitfall-body">
-      Hầu hết máy sinh hóa cài ngưỡng chung $40 - 50\text{ U/L}$ cho cả hai giới. Chuẩn người khỏe mạnh thực tế theo AASLD là <strong>Nam ≤ 35 U/L, Nữ ≤ 25 U/L</strong>. Một bệnh nhân nữ có ALT 34 U/L là đã tổn thương gan nhưng thường bị cho về vì lab ghi bình thường.
-    </div>
-    <div class="pitfall-consequence">
-      <i class="fa-solid fa-skull-crossbones"></i> HẬU QUẢ: Bỏ sót tới 35% bệnh nhân viêm gan mạn đang âm thầm xơ hóa.
-    </div>
-  </div>
-
-  <div class="pitfall-card warning">
-    <div class="pitfall-header">
-      <div class="pitfall-badge"><i class="fa-solid fa-wave-square"></i> CẠM BẪY SCAN 02</div>
-      <div class="pitfall-title">Đo Độ Cứng Gan (FibroScan) Khi Men Gan Đang Tăng Vọt</div>
-    </div>
-    <div class="pitfall-body">
-      Khi tế bào gan viêm phù nề cấp, bao Glisson căng phồng làm vận tốc sóng biến dạng tăng vọt giả tạo, máy báo độ cứng 18–25 kPa (báo xơ gan F4 giả), làm hoang mang cho người bệnh.
-    </div>
-    <div class="pitfall-consequence">
-      <i class="fa-solid fa-ban"></i> QUY TẮC: Tuyệt đối hoãn đo FibroScan khi ALT &gt; 5× ULN; dùng APRI hoặc FIB-4 thay thế.
-    </div>
-  </div>
-</div>
-
-<!-- EDITORIAL SVG: CƠ CHẾ BẪY FIBROSCAN KHI GAN VIÊM -->
-<div class="flowchart-editorial-card">
-  <div class="flowchart-editorial-header">
-    <div class="flowchart-editorial-title">
-      <i class="fa-solid fa-wave-square" style="color: #ef4444;"></i>
-      <span>CƠ CHẾ TĂNG ÁP LỰC BAO GLISSON GÂY ĐO ĐỘ CỨNG GAN GIẢ VỌT</span>
-    </div>
-    <div class="flowchart-editorial-badges">
-      <span class="flowchart-editorial-badge">Cơ Chế Bẫy FibroScan</span>
-    </div>
-  </div>
-  <div class="flowchart-editorial-viewport">
-    <svg class="flowchart-editorial-svg" viewBox="0 0 860 170" width="860" height="170" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', sans-serif">
-      <!-- Bước 1 -->
-      <rect x="20" y="30" width="240" height="110" rx="8" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.5" />
-      <text x="140" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">1. ALT TĂNG VỌT (&gt; 5× ULN)</text>
-      <text x="140" y="85" text-anchor="middle" font-size="11" fill="var(--handbook-text)">Hoại tử tế bào gan cấp</text>
-      <text x="140" y="105" text-anchor="middle" font-size="11" fill="var(--handbook-text)">Tế bào gan sưng phù nề</text>
-
-      <!-- Mũi tên 1 -> 2 -->
-      <path d="M 265 85 L 305 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)" />
-
-      <!-- Bước 2 -->
-      <rect x="310" y="30" width="240" height="110" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.5" />
-      <text x="430" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">2. TĂNG ÁP BAO GLISSON</text>
-      <text x="430" y="85" text-anchor="middle" font-size="11" fill="var(--handbook-text)">Bao gan bị kéo căng cực đại</text>
-      <text x="430" y="105" text-anchor="middle" font-size="11" fill="var(--handbook-text)">Vận tốc sóng âm tăng tốc</text>
-
-      <!-- Mũi tên 2 -> 3 -->
-      <path d="M 555 85 L 595 85" stroke="#f59e0b" stroke-width="2" />
-
-      <!-- Bước 3 -->
-      <rect x="600" y="30" width="240" height="110" rx="8" fill="rgba(139, 92, 246, 0.08)" stroke="#8b5cf6" stroke-width="1.5" />
-      <text x="720" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#7c3aed">3. KẾT QUẢ ĐO LSM BỊ NHIỄU</text>
-      <text x="720" y="85" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">Báo F4 Xơ Gan (18–25 kPa)</text>
-      <text x="720" y="105" text-anchor="middle" font-size="11" fill="var(--handbook-text)">Thực chất mô học chỉ là F1–F2</text>
-    </svg>
-  </div>
-</div>
-
-<div class="katex-display-card">
-  <div class="equation-box">
-    $$\text{APRI} = \frac{\left( \frac{\text{AST (U/L)}}{\text{AST ULN (U/L)}} \right)}{\text{Tiểu Cầu } (10^9/\text{L})} \times 100 \qquad \text{FIB-4} = \frac{\text{Tuổi (Năm)} \times \text{AST (U/L)}}{\text{Tiểu Cầu } (10^9/\text{L}) \times \sqrt{\text{ALT (U/L)}}}$$
-  </div>
-  <div class="equation-legend">
-    <strong>Kinh nghiệm thay thế khi không đo được FibroScan:</strong> Khi ALT đang tăng vọt $> 5\times\text{ULN}$, hãy tính $\text{APRI}$ và $\text{FIB-4}$. Nếu $\text{FIB-4} < 1.45$, giá trị tiên đoán âm loại trừ xơ gan tiến triển đạt trên $90\%$.
-  </div>
-</div>
-
-</section>
-
----
-
-<section id="sec-qhbsag-role" class="mdx-section">
-
-## 🔬 6. VAI TRÒ ĐỊNH LƯỢNG HBsAg (qHBsAg) TRONG TIÊN LƯỢNG
-
-Xét nghiệm định lượng HBsAg ($\text{qHBsAg}$, đơn vị $\text{IU/mL}$) phản ánh trực tiếp lượng **cccDNA** trong nhân tế bào gan và lượng **mRNA tích hợp vào bộ gen người**.
-
-### 3 Ứng Dụng Lâm Sàng Cốt Lõi Của qHBsAg:
-
-1. **Xác nhận người mang virus không hoạt động thực sự (Inactive Carrier):**
-   - Tiêu chuẩn chuẩn xác: $\text{HBeAg}(-)$, $\text{Anti-HBe}(+)$, $\text{ALT bình thường}$, $\text{HBV DNA} < 2.000\text{ IU/mL}$ **VÀ $\text{qHBsAg} < 1.000\text{ IU/mL}$**.
-   - Nhóm bệnh nhân này có tỷ lệ đào thải HBsAg tự nhiên cao nhất và nguy cơ ung thư gan cực thấp.
-2. **Nhận diện sớm bệnh nhân có nguy cơ bùng phát:**
-   - Nếu $\text{HBeAg}(-)$, $\text{HBV DNA} < 2.000\text{ IU/mL}$ nhưng $\text{qHBsAg} \ge 1.000\text{ IU/mL}$ $\rightarrow$ Bệnh nhân có nguy cơ cao chuyển thành Pha 4 trong tương lai; cần theo dõi sát mỗi 3 - 6 tháng thay vì 1 năm.
-3. **Tiên lượng ngừng thuốc kháng virus:**
-   - Bệnh nhân điều trị NUCs lâu năm đạt tiêu chuẩn ngừng thuốc, nếu $\text{qHBsAg} < 100\text{ IU/mL}$ (thậm chí $< 10\text{ IU/mL}$) thì tỷ lệ duy trì đáp ứng và mất HBsAg sau dừng thuốc cao gấp nhiều lần so với người có $\text{qHBsAg}$ cao.
-
-</section>
-
----
-
-<section id="sec-bedside-matrix" class="mdx-section">
-
-## 🗂️ 7. LƯU ĐỒ TIẾP CẬN 5 BƯỚC TẠI GIƯỜNG BỆNH
-
-<!-- LINEAR FLOW TRACK STEPPER: TIẾP CẬN 5 BƯỚC -->
-<div class="flow-track-container">
-  <!-- BƯỚC 1 -->
-  <div class="flow-track-step">
-    <div class="flow-track-rail">
-      <div class="flow-track-marker marker-blue">01</div>
-      <div class="flow-track-line"></div>
-    </div>
-    <div class="flow-track-content accent-blue">
-      <div class="flow-step-header">
-        <div class="flow-step-title"><i class="fa-solid fa-stethoscope" style="color: #0284c7;"></i> Bước 1: Xác Định Tình Trạng Nhiễm Mạn Hay Cấp</div>
-        <span class="flow-step-badge flow-badge-blue">Khởi đầu</span>
-      </div>
-      <div class="flow-step-text">
-        Khai thác tiền sử người thân/mẹ nhiễm HBV. Chỉ định đồng thời bộ đôi: <strong>Anti-HBc IgG</strong> (chứng nhận mạn) và <strong>Anti-HBc IgM</strong> (phân biệt bùng phát cấp vs viêm gan cấp thật sự).
-      </div>
-    </div>
-  </div>
-
-  <!-- BƯỚC 2 -->
-  <div class="flow-track-step">
-    <div class="flow-track-rail">
-      <div class="flow-track-marker marker-teal">02</div>
-      <div class="flow-track-line"></div>
-    </div>
-    <div class="flow-track-content accent-teal">
-      <div class="flow-step-header">
-        <div class="flow-step-title"><i class="fa-solid fa-dna" style="color: #0d9488;"></i> Bước 2: Đo Lường Nhân Đôi Virus &amp; Tình Trạng HBeAg</div>
-        <span class="flow-step-badge flow-badge-blue">Tải lượng</span>
-      </div>
-      <div class="flow-step-text">
-        Xét nghiệm <strong>HBeAg, Anti-HBe</strong> và định lượng <strong>HBV DNA</strong> bằng Real-time PCR độ nhạy cao (ngưỡng phát hiện $\le 20\text{ IU/mL}$). Cảnh giác đột biến Precore nếu HBeAg âm tính nhưng DNA $> 2.000\text{ IU/mL}$.
-      </div>
-    </div>
-  </div>
-
-  <!-- BƯỚC 3 -->
-  <div class="flow-track-step">
-    <div class="flow-track-rail">
-      <div class="flow-track-marker marker-amber">03</div>
-      <div class="flow-track-line"></div>
-    </div>
-    <div class="flow-track-content accent-amber">
-      <div class="flow-step-header">
-        <div class="flow-step-title"><i class="fa-solid fa-flask" style="color: #d97706;"></i> Bước 3: Đánh Giá Men Gan Theo Chuẩn AASLD</div>
-        <span class="flow-step-badge flow-badge-amber">Phân tầng Men Gan</span>
-      </div>
-      <div class="flow-step-text">
-        <div class="flow-branch-grid">
-          <div class="flow-branch-card accent-green">
-            <div class="flow-branch-title" style="color: #047857;"><i class="fa-solid fa-circle-check"></i> Men Gan Chuẩn AASLD</div>
-            <div class="flow-branch-desc">Nam $\le 35\text{ U/L}$, Nữ $\le 25\text{ U/L}$. Theo dõi định kỳ nếu DNA thấp.</div>
-          </div>
-          <div class="flow-branch-card accent-rose">
-            <div class="flow-branch-title" style="color: #be123c;"><i class="fa-solid fa-triangle-exclamation"></i> Men Gan Vượt Ngưỡng AASLD</div>
-            <div class="flow-branch-desc">Nam $> 35\text{ U/L}$, Nữ $> 25\text{ U/L}$. Nguy cơ viêm mạn tiến triển; chuẩn bị khởi trị.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BƯỚC 4 -->
-  <div class="flow-track-step">
-    <div class="flow-track-rail">
-      <div class="flow-track-marker marker-red">04</div>
-      <div class="flow-track-line"></div>
-    </div>
-    <div class="flow-track-content accent-red">
-      <div class="flow-step-header">
-        <div class="flow-step-title"><i class="fa-solid fa-wave-square" style="color: #dc2626;"></i> Bước 4: Đánh Giá Xơ Hóa Gan &amp; Thận Trọng FibroScan</div>
-        <span class="flow-step-badge flow-badge-amber">Xơ hóa</span>
-      </div>
-      <div class="flow-step-text">
-        Tính ngay chỉ số <strong>FIB-4</strong> và <strong>APRI</strong>. Chỉ đo FibroScan khi $\text{ALT} < 5\times\text{ULN}$ và nhịn ăn $\ge 2$ giờ. Nếu $\text{LSM} \ge 7.0 - 9.0\text{ kPa}$ (F2 - F4) kết hợp HBV DNA: <strong>Khởi trị thuốc kháng virus ngay</strong>.
-      </div>
-    </div>
-  </div>
-
-  <!-- BƯỚC 5 -->
-  <div class="flow-track-step">
-    <div class="flow-track-rail">
-      <div class="flow-track-marker marker-blue">05</div>
-    </div>
-    <div class="flow-track-content accent-blue">
-      <div class="flow-step-header">
-        <div class="flow-step-title"><i class="fa-solid fa-shield-virus" style="color: #0284c7;"></i> Bước 5: Sàng Lọc Ung Thư Biểu Mô Tế Bào Gan (HCC Surveillance)</div>
-        <span class="flow-step-badge flow-badge-green">Tầm soát</span>
-      </div>
-      <div class="flow-step-text">
-        Siêu âm gan tổng quát kết hợp định lượng <strong>AFP</strong> mỗi 6 tháng cho mọi bệnh nhân xơ gan hoặc nam $>40$ tuổi / nữ $>50$ tuổi có nhiễm HBV mạn.
-      </div>
-    </div>
-  </div>
-</div>
-
-### Bảng Tra Cứu Liều Thuốc Kháng Virus NUCs Thế Hệ Mới
-
-<div class="dose-table-wrapper">
-  <table class="dose-table">
-    <thead>
-      <tr>
-        <th>Thuốc Kháng Virus</th>
-        <th>Liều Dùng Chuẩn Người Lớn</th>
-        <th>Hiệu Chỉnh Liều Theo Thận (eGFR)</th>
-        <th>Ưu Tiên Lâm Sàng Đặc Biệt</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Tenofovir Alafenamide (TAF)</strong></td>
-        <td>25 mg / ngày (uống cùng bữa ăn)</td>
-        <td>Không cần chỉnh liều nếu $\text{eGFR} \ge 15\text{ mL/min}$</td>
-        <td>Bệnh nhân cao tuổi, có bệnh lý xương khớp, suy thận mạn</td>
-      </tr>
-      <tr>
-        <td><strong>Tenofovir Disoproxil (TDF)</strong></td>
-        <td>300 mg / ngày (uống lúc đói hoặc no)</td>
-        <td>$\text{eGFR} < 50$: Giãn liều mỗi 48h–72h</td>
-        <td>Phụ nữ dự định có thai hoặc đang cho con bú, đồng nhiễm HIV</td>
-      </tr>
-      <tr>
-        <td><strong>Entecavir (ETV)</strong></td>
-        <td>0.5 mg / ngày (chưa dùng NUCs)<br />1.0 mg / ngày (từng kháng Lamivudine)</td>
-        <td>$\text{eGFR} < 50$: Giảm liều theo bậc</td>
-        <td>Uống lúc đói (cách bữa ăn 2 giờ)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</section>
-
----
-
-<section id="sec-case-scenarios" class="mdx-section">
-
-## 🩺 8. CA LÂM SÀNG THỰC TẾ & ĐÚC KẾT XƯƠNG MÁU
-
-<!-- CA BỆNH 1 -->
+<!-- CA LÂM SÀNG 1 -->
 <div class="case-study-card">
   <div class="case-header">
-    <div class="case-badge"><i class="fa-solid fa-user-doctor"></i> CA THỰC CHIẾN 01</div>
-    <div class="case-title">Bẫy "Người Lành Mang Trùng" Do Tin Vào Ngưỡng ALT Của Phòng Xét Nghiệm</div>
+    <div class="case-badge"><i class="fa-solid fa-stethoscope"></i> CA THỰC CHIẾN 01 &bull; KHÁM NGOẠI TRÚ</div>
+    <div class="case-title">Bệnh nhân nữ 35 tuổi, phát hiện HBsAg (+) tình cờ khi khám sức khỏe định kỳ</div>
   </div>
   <div class="case-scenario-box">
-    <strong>Bệnh nhân:</strong> Nữ, 32 tuổi, nhân viên văn phòng. Khám sức khỏe định kỳ phát hiện $\text{HBsAg}(+)$.<br />
-    <strong>Kết quả tuyến trước:</strong> $\text{AST} = 28\text{ U/L}$, $\text{ALT} = 31\text{ U/L}$ (Phiếu lab ghi bình thường $< 40\text{ U/L}$). Tuyến trước kết luận: <em>"Men gan tốt, virus ngủ yên, không cần điều trị gì, 1 năm sau tái khám"</em>.
+    <strong>Tình huống:</strong> Bệnh nhân hoàn toàn không có triệu chứng lâm sàng. Khám sức khỏe công ty có HBsAg (+). Kết quả labo phòng khám tư: AST = 38 U/L, ALT = 32 U/L (Phiếu lab ghi khoảng tham chiếu bình thường &lt; 40 U/L), HBeAg (-), Anti-HBe (+), HBV DNA = 45.000 IU/mL. Bác sĩ phòng khám dặn: <em>"Virus ngủ yên, men gan bình thường, về ăn uống nghỉ ngơi 6 tháng sau khám lại"</em>. Tiền sử gia đình: Mẹ ruột mất vì ung thư gan năm 52 tuổi.
   </div>
   <div class="case-analysis">
-    <strong>Phân tích của Chuyên khoa Gan Mật:</strong><br />
-    - Với nữ giới, $\text{ALT} = 31\text{ U/L}$ thực chất đã <strong>tăng $1.24 \times \text{ULN}$ AASLD</strong> ($> 25\text{ U/L}$).<br />
-    - Làm thêm: $\text{HBeAg}(-)$, $\text{Anti-HBe}(+)$, $\text{HBV DNA} = 120.000\text{ IU/mL}$. Đo FibroScan: $\text{LSM} = 8.6\text{ kPa}$ (Xơ hóa gan giai đoạn $\mathbf{F2 - F3}$!).<br />
-    - Bệnh nhân thực chất ở <strong>Pha 4 (Viêm gan mạn HBeAg âm tính đột biến Precore)</strong> chứ không phải người mang virus ngủ yên!
+    <strong>Phân tích lâm sàng tại phòng khám chuyên khoa:</strong>
+    <ul>
+      <li><strong>Bẫy men gan:</strong> Bệnh nhân là nữ, ALT = 32 U/L thực chất là <strong>tăng 1.28 lần ULN AASLD</strong> (&gt; 25 U/L).</li>
+      <li><strong>Bẫy giai đoạn:</strong> Kết hợp HBeAg (-) và HBV DNA = 45.000 IU/mL (&gt; 2.000 IU/mL) chứng minh bệnh nhân đang ở <strong>Pha 4: Viêm gan B mạn HBeAg âm tính (Thể đột biến Precore/BCP)</strong>, hoàn toàn không phải người mang virus ngủ yên!</li>
+      <li><strong>Đánh giá xơ hóa:</strong> APRI = 0.45 (thấp). Tiến hành đo độ đàn hồi FibroScan (do ALT &lt; 5&times; ULN nên FibroScan hoàn toàn tin cậy): <strong>LSM = 8.2 kPa &rArr; Xác định xơ hóa gan đáng kể giai đoạn F2</strong>.</li>
+    </ul>
   </div>
   <div class="case-takeaway">
-    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Luôn áp dụng ngưỡng ALT theo giới tính (Nam $\le 35$, Nữ $\le 25$). Khởi trị ngay <strong>TAF 25mg/ngày</strong>, sau 12 tháng HBV DNA âm tính, ALT giảm về $16\text{ U/L}$, FibroScan cải thiện về $5.4\text{ kPa}$ (F0–F1).
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Luôn áp dụng ngưỡng ALT theo giới tính (Nam &le; 35, Nữ &le; 25) và kiểm tra xơ hóa gan trên mọi bệnh nhân có tải lượng virus &gt; 2.000 IU/mL. Bệnh nhân được khởi trị ngay <strong>Tenofovir alafenamide (TAF) 25 mg/ngày</strong>, giúp ngăn ngừa xơ gan và chặn đứng nguy cơ ung thư gan di truyền từ mẹ.
   </div>
 </div>
 
-<!-- CA BỆNH 2 -->
+<!-- CA LÂM SÀNG 2 -->
 <div class="case-study-card">
   <div class="case-header">
-    <div class="case-badge"><i class="fa-solid fa-user-doctor"></i> CA THỰC CHIẾN 02</div>
-    <div class="case-title">Bẫy "Viêm Gan Cấp" Do Nhầm Lẫn Anti-HBc IgM Hiệu Giá Thấp</div>
+    <div class="case-badge"><i class="fa-solid fa-truck-medical"></i> CA THỰC CHIẾN 02 &bull; CẤP CỨU NỘI VIỆN</div>
+    <div class="case-title">Bệnh nhân nam 48 tuổi, vào viện vì suy gan cấp sau khi uống rượu và dùng thuốc nam</div>
   </div>
   <div class="case-scenario-box">
-    <strong>Bệnh nhân:</strong> Nam, 46 tuổi. Nhập viện vì vàng mắt, vàng da tăng dần, mệt mỏi, nước tiểu sẫm màu.<br />
-    <strong>Cận lâm sàng cấp cứu:</strong> $\text{Total Bilirubin} = 145\ \mu\text{mol/L}$, $\text{ALT} = 980\text{ U/L}$, $\text{AST} = 720\text{ U/L}$. $\text{HBsAg}(+)$, $\text{Anti-HBc IgM}(+)$ với $\text{S/CO} = 3.2$ (dương tính yếu). Tiểu cầu $110 \times 10^9/\text{L}$, Siêu âm gan thô nhẹ, lách to độ I.
+    <strong>Tình huống:</strong> Bệnh nhân nhập viện cấp cứu vì vàng da, vàng mắt sậm tăng dần trong 10 ngày, mệt lả, ngủ gà. Tiền sử: Biết nhiễm HBV 5 năm trước nhưng không điều trị, 2 tuần trước có uống nhiều rượu và dùng thuốc nam tán bột không rõ nguồn gốc. Khám tại ICU: Lơ mơ nhẹ (Bệnh não gan độ 1–2), dấu sao mạch ở ngực, bụng chướng gõ đục vùng thấp. Xét nghiệm: AST = 1.450 U/L, ALT = 1.680 U/L (&gt; 40&times; ULN), Bilirubin toàn phần = 215 &mu;mol/L (12.6 mg/dL), INR = 1.95, HBV DNA = $8.5 \times 10^7\text{ IU/mL}$, Anti-HBc IgM (+) với S/CO = 4.2.
   </div>
   <div class="case-analysis">
-    <strong>Sai lầm ban đầu &amp; Phân tích cấp cứu:</strong><br />
-    - Tua trực chẩn đoán nhầm thành <em>"Viêm gan B cấp tính"</em> do thấy $\text{ALT} > 10\times\text{ULN}$ và $\text{Anti-HBc IgM}(+)$, dự kiến chỉ bù dịch và theo dõi tự hồi phục.<br />
-    - Bác sĩ chuyên khoa nhận định: $\text{Anti-HBc IgM}$ chỉ dương tính yếu ($\text{S/CO} = 3.2$, trong khi viêm gan cấp thật sự thường $> 10$). Bệnh nhân có dấu ấn bệnh gan mạn (gan thô, tiểu cầu giảm, lách to). Đây là <strong>Đợt bùng phát cấp trên nền Viêm gan B mạn tính (Acute-on-Chronic Flare)</strong>.
+    <strong>Phân tích lâm sàng tại Hồi sức tích cực (ICU):</strong>
+    <ul>
+      <li><strong>Chẩn đoán phân biệt:</strong> Dù Anti-HBc IgM (+), nhưng hiệu giá S/CO chỉ đạt 4.2 (&lt; 8), kết hợp tiền sử nhiễm HBV 5 năm và siêu âm gan có bờ mấp mô, lách to &rArr; Đây là <strong>Đợt bùng phát cấp trên nền mạn (Acute Flare / ACLF)</strong> do ngộ độc thuốc nam và rượu bia kích hoạt, không phải viêm gan B cấp mới mắc.</li>
+      <li><strong>Mức độ nặng:</strong> Bệnh nhân có suy chức năng gan nặng + Bệnh não gan + INR = 1.95 (&gt; 1.5) + Bilirubin 12.6 mg/dL &rArr; <strong>Suy gan cấp trên nền xơ gan mất bù (Child-Pugh C = 11 điểm)</strong>, nguy cơ tử vong &gt; 60% nếu không can thiệp kịp thời.</li>
+    </ul>
   </div>
   <div class="case-takeaway">
-    <i class="fa-solid fa-lightbulb"></i> <strong>HÀNH ĐỘNG CỨU MẠNG:</strong> Khởi trị khẩn cấp <strong>TDF 300mg/ngày</strong>. Sau 5 ngày INR giữ ổn định $1.25$, Bilirubin thoái lui, bệnh nhân thoát khỏi nguy cơ suy gan tối cấp (ACLF).
+    <i class="fa-solid fa-triangle-exclamation"></i> <strong>XỬ TRÍ CẤP CỨU SỐNG CÒN:</strong> Đặt sonde dạ dày cho uống ngay <strong>Tenofovir TDF 300 mg/ngày</strong> (hoặc TAF 25mg / ETV 1.0mg), truyền Plasma tươi đông lạnh bù đông máu, truyền Albumin 20%, dùng Lactulose thụt tháo kiểm soát bệnh não gan và đưa bệnh nhân vào danh sách hội chẩn ghép gan khẩn cấp.
   </div>
 </div>
 
-</section>
+---
+
+## 📚 9. TÀI LIỆU THAM KHẢO (CHUẨN AMA FORMAT) {#sec-references}
+
+1. World Health Organization. *Guidelines for the Prevention, Care and Treatment of Persons with Chronic Hepatitis B Infection*. Geneva, Switzerland: World Health Organization; 2024.
+2. World Health Organization. *Consolidated Guidance on Hepatitis B and C Prevention, Testing, Treatment and Monitoring: An Implementation Handbook for a Public Health Approach*. Geneva, Switzerland: World Health Organization; 2026.
+3. Bộ Y tế Việt Nam. *Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B* (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 6 năm 2026 của Bộ trưởng Bộ Y tế). Hà Nội, Việt Nam: Bộ Y tế; 2026.
+4. European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatitis B virus infection. *J Hepatol*. 2025;83(2):502-583. doi:10.1016/j.jhep.2025.03.018.
+5. Terrault NA, Lok ASF, McMahon BJ, et al. Update on prevention, diagnosis, and treatment of chronic hepatitis B: AASLD 2018 hepatitis B guidance. *Hepatology*. 2018;67(4):1560-1599. doi:10.1002/hep.29800.
+6. Sarin SK, Kumar M, Lau GK, et al. Asian-Pacific clinical practice guidelines on the management of hepatitis B: a 2015 update. *Hepatol Int*. 2016;10(1):1-98. doi:10.1007/s12072-015-9675-4.
+7. Ali FS, Nguyen MH, Hernaez R, et al. AGA Clinical Practice Guideline on the prevention and treatment of hepatitis B virus reactivation in at-risk individuals. *Gastroenterology*. 2025;168(2):267-284. doi:10.1053/j.gastro.2024.11.008.
+8. Bộ Y tế Việt Nam. *Hướng dẫn kỹ thuật các can thiệp dự phòng lây truyền HIV, viêm gan B và giang mai từ mẹ sang con* (Ban hành kèm theo Quyết định số 678/QĐ-BYT ngày 26 tháng 2 năm 2025). Hà Nội, Việt Nam: Bộ Y tế; 2025.
+9. Săndulescu O, Boesecke C, Bhagani S, et al. The present and future of HIV and viral hepatitis co-infection. *Lancet HIV*. 2026;13(11):e820-e834. doi:10.1016/S2352-3018(26)00182-4.
+10. Bùi Hữu Hoàng. Chiến lược điều trị Viêm gan virus B: Cập nhật hướng dẫn mới và mở rộng chỉ định điều trị. *AloBacsi Academy / Hội Gan Mật TP. Hồ Chí Minh*. Xuất bản 2026.

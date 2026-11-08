@@ -14,12 +14,14 @@
 4. [Thành Phần 2: Thanh Điều Hướng Nhanh Neo Cố Định (`.pillars-nav`)](#thành-phần-2-thanh-điều-hướng-nhanh-neo-cố-định)
 5. [Thành Phần 3: Hệ Thống Khung Cảnh Báo & Hộp Ghi Nhớ (`.infobox` & `.callout`)](#thành-phần-3-hệ-thống-khung-cảnh-báo--hộp-ghi-nhớ)
 6. [Thành Phần 4: Lưu Đồ Editorial SVG & Cơ Chế Bệnh Học 2.0](#thành-phần-4-lưu-đồ-editorial-svg--cơ-chế-bệnh-học-20)
-7. [Thành Phần 5: Ray Dẫn Đường & Thuật Toán Quyết Định Từng Bước (`.flow-track`)](#thành-phần-5-ray-dẫn-đường--thuật-toán-quyết-định-từng-bước)
-8. [Thành Phần 6: Bảng Chẩn Đoán, Đối Sánh & Dược Lý Liều Dùng](#thành-phần-6-bảng-chẩn-đoán-đối-sánh--dược-lý-liều-dùng)
-9. [Thành Phần 7: Thẻ Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong (`.pitfall-card`)](#thành-phần-7-thẻ-cạm-bẫy-lâm-sàng--cờ-đỏ-tử-vong)
-10. [Thành Phần 8: Ca Bệnh Thực Chiến & Trực Cảm Bên Giường Bệnh (`.case-study-card`)](#thành-phần-8-ca-bệnh-thực-chiến--trực-cảm-bên-giường-bệnh)
-11. [Thành Phần 9: Biểu Thức Toán Y Sinh KaTeX Math Notation](#thành-phần-9-biểu-thức-toán-y-sinh-katex-math-notation)
-12. [Golden Template: Cấu Trúc File MDX Mẫu Chuẩn Cho Mọi Bài Đúc Kết](#12-golden-template-cấu-trúc-file-mdx-mẫu-chuẩn-cho-mọi-bài-đúc-kết)
+7. [Thành Phần 4B: Lưới Thẻ Quyết Định Đa Cột (Responsive Decision Grid Cards) — Chuẩn Anti-ASCII](#thành-phần-4b-lưới-thẻ-quyết-định-đa-cột-responsive-decision-grid-cards--chuẩn-anti-ascii)
+8. [Thành Phần 5: Ray Dẫn Đường & Thuật Toán Quyết Định Từng Bước (`.flow-track`)](#thành-phần-5-ray-dẫn-đường--thuật-toán-quyết-định-từng-bước)
+9. [Thành Phần 6: Bảng Chẩn Đoán, Đối Sánh & Dược Lý Liều Dùng](#thành-phần-6-bảng-chẩn-đoán-đối-sánh--dược-lý-liều-dùng)
+10. [Thành Phần 7: Thẻ Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong (`.pitfall-card`)](#thành-phần-7-thẻ-cạm-bẫy-lâm-sàng--cờ-đỏ-tử-vong)
+11. [Thành Phần 8: Ca Bệnh Thực Chiến & Trực Cảm Bên Giường Bệnh (`.case-study-card`)](#thành-phần-8-ca-bệnh-thực-chiến--trực-cảm-bên-giường-bệnh)
+12. [Thành Phần 9: Biểu Thức Toán Y Sinh KaTeX Math Notation](#thành-phần-9-biểu-thức-toán-y-sinh-katex-math-notation)
+13. [Quy Chuẩn Đặt ID Tiêu Đề Cho CliniMdxEngine (`{#sec-id}`)](#quy-chuẩn-đặt-id-tiêu-đề-cho-clinimdxengine-sec-id)
+14. [Golden Template: Cấu Trúc File MDX Mẫu Chuẩn Cho Mọi Bài Đúc Kết](#14-golden-template-cấu-trúc-file-mdx-mẫu-chuẩn-cho-mọi-bài-đúc-kết)
 
 ---
 
@@ -95,7 +97,7 @@ tags:
 difficulty: "advanced"             # beginner | intermediate | advanced
 estimatedTime: 25                  # phút đọc & phân tích
 lastUpdated: "2026-11-08"
-evidenceLevel: "AASLD / EASL 2024"
+evidenceLevel: "EBM 2026 • AASLD / EASL / BYT"
 sections:
   - id: "sec-takeaway"
     number: 1
@@ -107,22 +109,26 @@ sections:
     icon: "fa-diagram-project"
   - id: "sec-diagnostic-criteria"
     number: 3
-    title: "Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi (AASLD / EASL / BYT)"
+    title: "Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi & Chỉ Định Khởi Trị"
     icon: "fa-clipboard-check"
   - id: "sec-serology-pitfalls"
     number: 4
-    title: "Cạm Bẫy Huyết Thanh Học & Giải Mã Anti-HBc IgM"
+    title: "Cạm Bẫy Huyết Thanh Học (Serology & Anti-HBc IgM)"
     icon: "fa-triangle-exclamation"
   - id: "sec-alt-fibroscan-pitfalls"
     number: 5
     title: "Bẫy Ngưỡng ALT Phòng Xét Nghiệm & Bẫy Đo Độ Cứng Gan"
     icon: "fa-wave-square"
-  - id: "sec-bedside-matrix"
+  - id: "sec-qhbsag-role"
     number: 6
-    title: "Bảng Ma Trận Đối Chiếu & Bảng Kiểm Tại Giường Bệnh"
+    title: "Tái Hoạt HBV & Phân Tuyến Ngoại Trú - Nội Viện (QĐ 1740)"
+    icon: "fa-chart-pie"
+  - id: "sec-bedside-matrix"
+    number: 7
+    title: "Bảng Ma Trận Phân Biệt Cấp vs Bùng Phát Mạn"
     icon: "fa-table-list"
   - id: "sec-case-scenarios"
-    number: 7
+    number: 8
     title: "Ca Lâm Sàng Thực Tế & Đúc Kết Xương Máu"
     icon: "fa-user-doctor"
 ---
@@ -321,6 +327,117 @@ Tuyệt đối không dùng ASCII art hay ảnh chụp mờ. Dùng Pure Inline S
     <div class="flowchart-legend-item"><span class="legend-dot" style="background: #ef4444;"></span> Thể Viêm gan mạn (Điều trị ngay)</div>
     <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Đột biến Precore/BCP (Nguy hiểm ngầm)</div>
   </div>
+</div>
+```
+
+---
+
+## THÀNH PHẦN 4B: LƯỚI THẺ QUYẾT ĐỊNH ĐA CỘT (RESPONSIVE DECISION GRID CARDS) — CHUẨN ANTI-ASCII
+
+> ⚠️ **Quy Chuẩn Chống ASCII Art (Anti-ASCII Rule)**:  
+> Khi tiếp nhận bản thiết kế hoặc nội dung tóm tắt từ **NotebookLM / LLM**, AI thường có xu hướng vẽ sơ đồ bằng ký tự đơn dòng `+----+----|`.  
+> Trên màn hình di động (width $\le$ 375px), các khối ASCII này sẽ bị vỡ dòng nghiêm trọng hoặc bắt người dùng cuộn ngang rất khó chịu.  
+> **Quy định bắt buộc:** Phải chuyển hóa 100% sơ đồ phân loại, phân tầng giai đoạn hoặc tiêu chuẩn chỉ định thành **Responsive Grid Cards** tự động co giãn (`auto-fit, minmax(280px, 1fr)`).
+
+### Mẫu 1: Lưới 4 Pha Diễn Tiến Sinh Học (4-Phase Bio Grid)
+
+```html
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- PHA 1 (Dung nạp - Xanh dương) -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 1 &bull; HBeAg DƯƠNG TÍNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Nhiễm Mạn Dung Nạp Miễn Dịch</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Rất cao (&gt; 10⁷ IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Hoàn toàn bình thường theo chuẩn AASLD</div>
+      <div>&bull; <strong>Tổn thương gan:</strong> Không hoặc tối thiểu</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Thái độ: Theo dõi định kỳ mỗi 3–6 tháng.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHA 2 (Hoạt động - Đỏ) -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 2 &bull; HBeAg DƯƠNG TÍNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Viêm Gan Mạn Thể Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Cao (10⁴ – 10⁷ IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Tăng từng đợt hoặc liên tục</div>
+      <div>&bull; <strong>Mô học:</strong> Viêm hoại tử &amp; xơ hóa tiến triển</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 4px; font-weight: 700; color: #dc2626;">
+        Thái độ: CHỈ ĐỊNH KHỞI TRỊ NAs NGAY (TDF/TAF/ETV).
+      </div>
+    </div>
+  </div>
+
+  <!-- PHA 3 (Không hoạt động - Xanh lá) -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 3 &bull; HBeAg ÂM TÍNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Người Mang Virus Không Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Thấp (&lt; 2.000 IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Luôn trong ngưỡng bình thường chuẩn AASLD</div>
+      <div>&bull; <strong>qHBsAg:</strong> Thường &lt; 1.000 IU/mL</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; font-weight: 700; color: #059669;">
+        Thái độ: Theo dõi ALT &amp; Siêu âm/AFP mỗi 6–12 tháng.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHA 4 (Đột biến Precore - Hổ phách) -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;">PHA 4 &bull; HBeAg ÂM / ĐỘT BIẾN PRECORE</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Viêm Gan Mạn Thể Tái Hoạt Động</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      <div>&bull; <strong>HBV DNA:</strong> Dao động (2.000 – &gt; 20.000 IU/mL)</div>
+      <div>&bull; <strong>ALT:</strong> Tăng bất thường từng đợt (dễ bỏ sót)</div>
+      <div>&bull; <strong>Nguy cơ:</strong> Âm thầm tiến triển xơ gan và ung thư gan</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(245, 158, 11, 0.08); border-radius: 4px; font-weight: 700; color: #d97706;">
+        Thái độ: KHỞI TRỊ NAs KÉO DÀI.
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+### Mẫu 2: Lưới 3 Tiêu Chuẩn Vàng Khởi Trị (3-Criteria Gold Grid)
+
+```html
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-certificate"></i> TIÊU CHUẨN 1: XƠ HÓA &ge; F2</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Xơ gan (F4) hoặc xơ hóa gan đáng kể (&ge; F2) xác định qua APRI &gt; 0.5, FIB-4 &ge; 1.45 hoặc FibroScan &gt; 7.0 kPa.
+      <div style="margin-top: 0.6rem; color: #0284c7; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY (Bất kể mức HBV DNA hay ALT).
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-dna"></i> TIÊU CHUẨN 2: DNA + ALT TĂNG</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Thỏa đồng thời HBV DNA &gt; 2.000 IU/mL VÀ ALT &gt; ULN chuẩn (Nam &gt; 35, Nữ &gt; 25 U/L).
+      <div style="margin-top: 0.6rem; color: #d97706; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY (Đặc trưng Pha 2 và Pha 4).
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> TIÊU CHUẨN 3: DNA TRÊN NGƯỠNG + NGUY CƠ</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      HBV DNA phát hiện kèm tiền sử gia đình HCC, đồng nhiễm HIV/HCV/HDV hoặc &ge; 30–35 tuổi.
+      <div style="margin-top: 0.6rem; color: #dc2626; font-weight: 700;">
+        &rArr; KHỞI TRỊ NGAY ĐỂ BẢO VỆ MÔ GAN.
+      </div>
+    </div>
+  </div>
+
 </div>
 ```
 
@@ -556,97 +673,251 @@ Hiển thị công thức tính chỉ số APRI, FIB-4, Child-Pugh, GFR bằng k
 
 ---
 
-## 12. GOLDEN TEMPLATE: CẤU TRÚC FILE MDX MẪU CHUẨN
+## 13. QUY CHUẨN ĐẶT ID TIÊU ĐỀ CHO CLINIMDXENGINE (`{#sec-id}`)
 
-Người biên soạn chỉ cần copy khung mẫu dưới đây để xây dựng bất kỳ bài đúc kết lâm sàng mới nào:
+`CliniMdxEngine` của CliniPortal hỗ trợ tự động bóc tách các Heading cấp 2 (`##`) có đuôi `{#custom-id}` để:
+1. Tự động bọc khối nội dung vào thẻ HTML `<section class="article-section" id="sec-id">`.
+2. Tạo danh mục liên kết tự động trong **Mục lục (TOC)** ở sidebar.
+3. Đồng bộ chính xác với các đường link neo `#sec-id` trên thanh điều hướng dính `.pillars-nav`.
+
+> ⚠️ **Lưu ý cú pháp quan trọng**:  
+> **ĐÚNG**: `## ⚡ 1. Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb) {#sec-takeaway}`  
+> **SAI**: Không được gõ thẻ lồng thủ công `<section id="sec-takeaway">` trước `##`, vì parser sẽ tạo ra 2 thẻ section lồng nhau gây lỗi DOM!
+
+---
+
+## 14. GOLDEN TEMPLATE: CẤU TRÚC FILE MDX MẪU CHUẨN
+
+Người biên soạn chỉ cần copy khung mẫu 8 phần dưới đây để đắp nội dung từ NotebookLM / y văn vào:
 
 ```markdown
 ---
-title: "Tên Bài Viết Đúc Kết Lâm Sàng"
+title: "Tiêu Chuẩn Chẩn Đoán [Tên Bệnh Lý] & Cạm Bẫy Lâm Sàng"
 slug: "slug-bai-viet"
 specialty: "chuyen-khoa"
 specialtyLabel: "Tên Chuyên Khoa Đầy Đủ"
 disease: "ten-benh-slug"
 diseaseLabel: "Tên Bệnh Lý Đầy Đủ"
 order: 1
-tags: ["Tag1", "Tag2", "EBM 2026"]
-difficulty: "intermediate"
-estimatedTime: 20
+tags:
+  - "Tên bệnh"
+  - "Tiêu chuẩn chẩn đoán"
+  - "Cạm bẫy lâm sàng"
+  - "Phác đồ điều trị"
+  - "EBM 2026"
+difficulty: "advanced"             # beginner | intermediate | advanced
+estimatedTime: 25                  # phút đọc & phân tích
 lastUpdated: "2026-11-08"
-evidenceLevel: "AASLD / ESC / KDIGO"
+evidenceLevel: "EBM 2026 • AASLD / ESC / KDIGO"
 sections:
   - id: "sec-takeaway"
     number: 1
-    title: "Đúc Kết 30 Giây (The Bottom Line)"
+    title: "Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)"
     icon: "fa-bolt"
-  - id: "sec-pathway"
+  - id: "sec-4-phases"
     number: 2
-    title: "Lưu Đồ Tiếp Cận & Thuật Toán Chẩn Đoán"
+    title: "Bản Đồ Phân Tầng Giai Đoạn / Cơ Chế Bệnh Học"
     icon: "fa-diagram-project"
-  - id: "sec-pitfalls"
+  - id: "sec-diagnostic-criteria"
     number: 3
-    title: "Cạm Bẫy Cận Lâm Sàng & Cờ Đỏ Tử Vong"
-    icon: "fa-triangle-exclamation"
-  - id: "sec-bedside-table"
+    title: "Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi & Chỉ Định Khởi Trị"
+    icon: "fa-clipboard-check"
+  - id: "sec-serology-pitfalls"
     number: 4
-    title: "Bảng Ma Trận Đối Chiếu & Bảng Liều Thuốc"
-    icon: "fa-table-list"
-  - id: "sec-case-scenario"
+    title: "Cạm Bẫy Xét Nghiệm & Chẩn Đoán Phân Biệt"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-alt-fibroscan-pitfalls"
     number: 5
-    title: "Ca Thực Chiến & Đúc Kết Xương Máu"
+    title: "Bẫy Ngưỡng Cận Lâm Sàng & Thăm Dò Chức Năng"
+    icon: "fa-wave-square"
+  - id: "sec-qhbsag-role"
+    number: 6
+    title: "Chiến Lược Dự Phòng Tái Phát & Phân Cấp Chuyển Tuyến"
+    icon: "fa-chart-pie"
+  - id: "sec-bedside-matrix"
+    number: 7
+    title: "Bảng Ma Trận Đối Chiếu & Bảng Kiểm Tại Giường Bệnh"
+    icon: "fa-table-list"
+  - id: "sec-case-scenarios"
+    number: 8
+    title: "Ca Lâm Sàng Thực Tế & Đúc Kết Xương Máu"
     icon: "fa-user-doctor"
 ---
 
-# 🧬 TIÊU ĐỀ BÀI VIẾT ĐÚC KẾT LÂM SÀNG
+# 🧬 TIÊU CHUẨN CHẨN ĐOÁN [TÊN BỆNH LÝ] & CẠM BẪY LÂM SÀNG
 
-<div class="module-badge-group">
-  <span class="badge badge-teal"><i class="fa-solid fa-stethoscope"></i> Chuyên Khoa</span>
-  <span class="badge badge-amber"><i class="fa-solid fa-lightbulb"></i> Đúc Kết Thực Chiến</span>
-  <span class="badge badge-purple"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-stethoscope"></i> Chuyên Khoa</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> Hướng Dẫn BYT</span>
+  <span class="badge" style="background: rgba(245, 158, 11, 0.12); color: #d97706; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25);"><i class="fa-solid fa-shield-halved"></i> EBM 2026</span>
 </div>
 
-<!-- DẢI CHỈ SỐ NHANH -->
+<!-- DẢI CHỈ SỐ NHANH 30S -->
 <section class="stats-strip">
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-val blue">Chỉ số 1</div>
-      <div class="stat-lbl">Mô tả chỉ số 1</div>
+      <div class="stat-lbl">Mô tả chỉ số dịch tễ then chốt</div>
     </div>
     <div class="stat-card">
       <div class="stat-val red">Chỉ số 2</div>
-      <div class="stat-lbl">Mô tả chỉ số 2</div>
+      <div class="stat-lbl">Tỷ lệ tử vong hoặc gánh nặng bệnh tật</div>
     </div>
     <div class="stat-card">
       <div class="stat-val amber">Chỉ số 3</div>
-      <div class="stat-lbl">Mô tả chỉ số 3</div>
+      <div class="stat-lbl">Ngưỡng cut-off xét nghiệm quyết định</div>
     </div>
     <div class="stat-card">
       <div class="stat-val green">Chỉ số 4</div>
-      <div class="stat-lbl">Mô tả chỉ số 4</div>
+      <div class="stat-lbl">Hiệu quả cải thiện khi can thiệp sớm</div>
     </div>
   </div>
 </section>
 
-<!-- THANH ĐIỀU HƯỚNG NHANH -->
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
 <nav class="pillars-nav">
   <div class="pillars-nav-inner">
     <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
-    <a href="#sec-pathway" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 2. Lưu Đồ</a>
-    <a href="#sec-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 3. Cạm Bẫy</a>
-    <a href="#sec-bedside-table" class="pillar-link"><i class="fa-solid fa-table-list"></i> 4. Bảng Tra</a>
-    <a href="#sec-case-scenario" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 5. Ca Thực Chiến</a>
+    <a href="#sec-4-phases" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 2. Phân Tầng</a>
+    <a href="#sec-diagnostic-criteria" class="pillar-link"><i class="fa-solid fa-clipboard-check"></i> 3. Tiêu Chuẩn & Khởi Trị</a>
+    <a href="#sec-serology-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 4. Bẫy Xét Nghiệm</a>
+    <a href="#sec-alt-fibroscan-pitfalls" class="pillar-link"><i class="fa-solid fa-wave-square"></i> 5. Bẫy Cận Lâm Sàng</a>
+    <a href="#sec-qhbsag-role" class="pillar-link"><i class="fa-solid fa-chart-pie"></i> 6. Phòng Ngừa & Chuyển Tuyến</a>
+    <a href="#sec-bedside-matrix" class="pillar-link"><i class="fa-solid fa-table-list"></i> 7. Bảng Đối Chiếu</a>
+    <a href="#sec-case-scenarios" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 8. Ca Thực Chiến</a>
   </div>
 </nav>
 
 ---
 
-<section id="sec-takeaway" class="mdx-section">
-## ⚡ 1. ĐÚC KẾT 30 GIÂY (THE BOTTOM LINE)
-<div class="callout callout-pearl">
-  ...
-</div>
-</section>
+## ⚡ 1. ĐÚC KẾT 30 GIÂY (THE BOTTOM LINE & RULE OF THUMB) {#sec-takeaway}
 
-<!-- CÁC SECTION TIẾP THEO -->
+<div class="callout callout-pearl">
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC VÀNG TRONG TIẾP CẬN LÂM SÀNG</div>
+  <p>Tóm tắt ngắn gọn trong 3–5 câu về bối cảnh dịch tễ, mục tiêu can thiệp và lưu ý sống còn...</p>
+  <ul>
+    <li><strong>Quy tắc 1:</strong> ...</li>
+    <li><strong>Quy tắc 2:</strong> ...</li>
+    <li><strong>Quy tắc 3:</strong> ...</li>
+  </ul>
+</div>
+
+---
+
+## 🗺️ 2. BẢN ĐỒ PHÂN TẦNG GIAI ĐOẠN / CƠ CHẾ BỆNH HỌC {#sec-4-phases}
+
+<!-- DÙNG LƯỚI RESPONSIVE GRID CARDS (THÀNH PHẦN 4B) -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+  <!-- Các card phân tầng ở đây -->
+</div>
+
+---
+
+## 📋 3. BỘ TIÊU CHUẨN CHẨN ĐOÁN CỐT LÕI & CHỈ ĐỊNH KHỞI TRỊ {#sec-diagnostic-criteria}
+
+<!-- KaTeX Card tính điểm / công thức y sinh -->
+<div class="katex-display-card">
+  <div class="equation-box">
+    $$\text{Công thức KaTeX}$$
+  </div>
+  <div class="equation-legend">
+    <strong>Ý nghĩa lâm sàng:</strong> Giải thích các ngưỡng cut-off...
+  </div>
+</div>
+
+---
+
+## ⚠️ 4. CẠM BẪY XÉT NGHIỆM & CHẨN ĐOÁN PHÂN BIỆT {#sec-serology-pitfalls}
+
+<!-- Lưới cạm bẫy lâm sàng -->
+<div class="pitfall-grid">
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-triangle-exclamation"></i> CẠM BẪY 01</div>
+      <div class="pitfall-title">Tên cạm bẫy 1</div>
+    </div>
+    <div class="pitfall-body">Mô tả cơ chế gây hiểu nhầm...</div>
+    <div class="pitfall-consequence"><i class="fa-solid fa-shield-virus"></i> HÀNH ĐỘNG KHUYẾN CÁO: ...</div>
+  </div>
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-ban"></i> CẠM BẪY 02</div>
+      <div class="pitfall-title">Tên cạm bẫy 2</div>
+    </div>
+    <div class="pitfall-body">Mô tả cạm bẫy trí mạng...</div>
+    <div class="pitfall-consequence"><i class="fa-solid fa-circle-exclamation"></i> HÀNH ĐỘNG KHUYẾN CÁO: ...</div>
+  </div>
+</div>
+
+---
+
+## 📉 5. BẪY NGƯỠNG CẬN LÂM SÀNG & THĂM DÒ CHỨC NĂNG {#sec-alt-fibroscan-pitfalls}
+
+<!-- Bổ sung thẻ pitfall-card nguy hiểm -->
+
+---
+
+## 🎯 6. CHIẾN LƯỢC DỰ PHÒNG TÁI PHÁT & PHÂN CẤP CHUYỂN TUYẾN {#sec-qhbsag-role}
+
+<!-- Phân định tuyến ban đầu vs tuyến chuyên sâu -->
+
+---
+
+## 📊 7. BẢNG MA TRẬN ĐỐI CHIẾU & BẢNG KIỂM TẠI GIƯỜNG BỆNH {#sec-bedside-matrix}
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-table-list"></i> BẢNG ĐỐI CHIẾU LÂM SÀNG</div>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th>Tiêu Chí</th>
+          <th>Thể A</th>
+          <th>Thể B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+---
+
+## 🩺 8. CA LÂM SÀNG THỰC TẾ & ĐÚC KẾT XƯƠNG MÁU {#sec-case-scenarios}
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-stethoscope"></i> CA THỰC CHIẾN 01</div>
+    <div class="case-title">Tiêu đề tình huống lâm sàng</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Tình huống:</strong> Mô tả bệnh nhân, triệu chứng và kết quả xét nghiệm ban đầu...
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích lâm sàng:</strong>
+    <ul>
+      <li>Điểm mấu chốt 1...</li>
+      <li>Điểm mấu chốt 2...</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Đúc kết hành động thực hành...
+  </div>
+</div>
+
+---
+
+## 📚 9. TÀI LIỆU THAM KHẢO (CHUẨN AMA FORMAT) {#sec-references}
+
+1. Tổ chức / Tác giả. *Tiêu đề nghiên cứu / Guideline*. Nơi xuất bản; Năm. doi:...
 ```
+
 

@@ -1,0 +1,681 @@
+---
+id: "2026-aasld-hdv-diagnosis-management"
+slug: "2026-aasld-hdv-diagnosis-management"
+title: "Hướng Dẫn AASLD 2026: Chẩn Đoán Và Quản Lý Toàn Diện Nhiễm Virus Viêm Gan Delta (HDV)"
+titleEn: "AASLD EXPO: Diagnosis and Management of Hepatitis Delta Virus (HDV) Infection"
+code: "GDL-2026-AASLD-HDV"
+organization: "AASLD"
+journal: "Hepatology"
+year: 2026
+sourceType: "intl-guideline"
+specialty: "gi"
+specialty2: "infect"
+design: "guideline"
+impact: "practice-changing"
+cor: "I"
+loe: "A"
+category: "guidelines"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-11-08"
+conditionKey: "hdv-infection"
+icd10: ["B18.0", "B17.0", "B18.1"]
+drug: "Bulevirtide (BLV / Hepcludex), Pegylated Interferon alfa-2a (peg-IFN), Tenofovir disoproxil fumarate (TDF), Tenofovir alafenamide (TAF), Entecavir (ETV), Lonafarnib"
+population: "Bệnh nhân có HBsAg dương tính, người nhiễm HBV mạn tính đồng nhiễm hoặc bội nhiễm virus viêm gan Delta (HDV)"
+intervention: "Tầm soát hệ thống HDV Ab & Reflex HDV RNA, đánh giá xơ hóa LSM ≥ 14 kPa, điều trị Bulevirtide 8.5 mg/ngày đơn trị hoặc phối hợp Peg-IFN alfa-2a 180 µg/tuần"
+description: "Khuyến cáo chính thức AASLD 2026 (Expert Practice Opinion) về tầm soát hệ thống, chẩn đoán reflex, đánh giá xơ hóa, điều trị Bulevirtide và quản lý các quần thể đặc biệt đồng nhiễm HDV."
+tags:
+  - "AASLD"
+  - "2026"
+  - "Tiêu hóa - Gan mật"
+  - "Truyền nhiễm"
+  - "Viêm gan Delta"
+  - "HDV"
+  - "Bulevirtide"
+  - "Khuyến cáo lâm sàng"
+  - "Evidence-Based Medicine"
+keyRecommendations:
+  - "Tất cả cá nhân có HBsAg dương tính phải được xét nghiệm tầm soát HDV Antibody (Anti-HDV) ít nhất một lần trong đời; áp dụng quy trình Reflex testing (tự động làm Anti-HDV nếu HBsAg dương) và Double Reflex testing (tự động làm HDV RNA nếu Anti-HDV dương)."
+  - "Tất cả người trưởng thành nhiễm HDV mạn tính có HDV RNA dương tính và bệnh gan còn bù (kể cả xơ gan còn bù) đều là ứng viên điều trị kháng virus HDV với Bulevirtide (BLV 8.5 mg/ngày tiêm dưới da) đơn trị liệu kéo dài hoặc phối hợp Peg-IFN alfa-2a 180 µg/tuần trong 48 tuần đầu."
+  - "Đánh giá xơ hóa gan không xâm lấn ưu tiên bằng đo độ đàn hồi gan (VCTE/FibroScan) với ngưỡng LSM ≥ 14.0 kPa để xác định xơ gan ở bệnh nhân HDV mạn."
+  - "Tầm soát ung thư biểu mô tế bào gan (HCC) bằng siêu âm ổ bụng kết hợp xét nghiệm AFP định kỳ mỗi 6 tháng cho tất cả bệnh nhân nhiễm HDV mạn tính có HDV RNA dương tính."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "1. Đại Cương, Dịch Tễ Học & Quy Trình Tầm Soát Hệ Thống HDV (Reflex Testing)"
+    icon: "fa-solid fa-stethoscope"
+  - id: "sec-2"
+    number: 2
+    title: "2. Tiếp Cận Chẩn Đoán Huyết Thanh, Tải Lượng Virus & Đánh Giá Xơ Hóa Gan (LSM)"
+    icon: "fa-solid fa-calculator"
+  - id: "sec-3"
+    number: 3
+    title: "3. Tầm Soát Ung Thư Gan (HCC), Can Thiệp Lối Sống & Kế Hoạch Theo Dõi Lâm Sàng"
+    icon: "fa-solid fa-chart-line"
+  - id: "sec-4"
+    number: 4
+    title: "4. Phác Đồ Điều Trị Kháng Virus HDV: Bulevirtide, Peg-IFN & Thuốc NAs Kháng HBV"
+    icon: "fa-solid fa-pills"
+  - id: "sec-5"
+    number: 5
+    title: "5. Quản Lý Đồng Nhiễm Trong Các Quần Thể Đặc Biệt & Định Hướng Thuốc Mới"
+    icon: "fa-solid fa-users"
+  - id: "sec-6"
+    number: 6
+    title: "6. Lộ Trình Giám Sát Sau Ngưng Thuốc, Tiêu Chuẩn Tái Trị & Trích Dẫn Y Văn AMA"
+    icon: "fa-solid fa-book-medical"
+---
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val green">100% HBsAg(+)</div>
+      <div class="stat-lbl">Khuyến cáo tầm soát Anti-HDV ít nhất 1 lần trong đời</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">LSM ≥ 14.0 kPa</div>
+      <div class="stat-lbl">Ngưỡng VCTE xác định xơ gan ở bệnh nhân HDV (AUROC 0.90)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">8.5 mg/ngày</div>
+      <div class="stat-lbl">Liều Bulevirtide (BLV) tiêm dưới da được FDA phê duyệt</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">Cấm Peg-IFN</div>
+      <div class="stat-lbl">Chống chỉ định tuyệt đối Peg-IFN ở xơ gan mất bù</div>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar p1">
+      <div class="pillar-icon">🎯</div>
+      <div>
+        <div class="pillar-title">Tầm Soát Hệ Thống & Double Reflex Testing</div>
+        <div class="pillar-desc">Loại bỏ chiến lược tầm soát dựa trên yếu tố nguy cơ vốn bỏ sót > 20–60% ca bệnh; tự động hóa xét nghiệm Anti-HDV khi HBsAg(+) và HDV RNA khi Anti-HDV(+).</div>
+      </div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">⚖️</div>
+      <div>
+        <div class="pillar-title">Điều Trị Ức Chế Virus Ván Bài Đầu Tiên</div>
+        <div class="pillar-desc">Bulevirtide (BLV) 8.5 mg/ngày là lựa chọn ưu tiên hàng đầu cho người bệnh HDV mạn có virus hoạt động và bệnh gan còn bù.</div>
+      </div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">🛡️</div>
+      <div>
+        <div class="pillar-title">Dự Phòng Biến Cố & Giám Sát HCC Định Kỳ</div>
+        <div class="pillar-desc">Siêu âm bụng + AFP mỗi 6 tháng cho mọi trường hợp HDV RNA(+); duy trì thuốc NAs (TDF/TAF) để kiểm soát HBV đồng thời.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quickmenu" id="quickmenu">
+  <div class="quickmenu-inner">
+    <a href="#sec-1" class="quickmenu-item active">1. Đại Cương & Tầm Soát</a>
+    <a href="#sec-2" class="quickmenu-item">2. Chẩn Đoán & Xơ Hóa Gan</a>
+    <a href="#sec-3" class="quickmenu-item">3. Tầm Soát HCC & Theo Dõi</a>
+    <a href="#sec-4" class="quickmenu-item">4. Phác Đồ Điều Trị Antiviral</a>
+    <a href="#sec-5" class="quickmenu-item">5. Quần Thể Đặc Biệt & Thuốc Mới</a>
+    <a href="#sec-6" class="quickmenu-item">6. Giám Sát Sau Ngưng & Trích Dẫn</a>
+  </div>
+</div>
+
+<div class="page-content">
+
+<div class="sec-card" id="sec-1">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">🩺</span>
+    <h2 class="sec-title">1. Đại Cương, Dịch Tễ Học & Quy Trình Tầm Soát Hệ Thống HDV (Reflex Testing)</h2>
+    <span class="sec-badge">AASLD EXPO 2026 Statements 1–5</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox info">
+      <span class="infobox-icon">💡</span>
+      <div>
+        <strong>Đột phá trong chiến lược tầm soát:</strong> Tầm soát dựa trên yếu tố nguy cơ truyền thống đã thất bại khi bỏ sót ít nhất 20–60% trường hợp nhiễm HDV. Hướng dẫn AASLD 2026 khuyến cáo <strong>tầm soát hệ thống toàn bộ cá nhân có HBsAg dương tính ít nhất một lần</strong> bằng xét nghiệm kháng thể Anti-HDV.
+      </div>
+    </div>
+
+    <p>Virus viêm gan Delta (HDV) là một loại virus RNA khiếm khuyết phụ thuộc hoàn toàn vào kháng nguyên bề mặt virus viêm gan B (HBsAg) để lắp ráp vỏ bọc, xâm nhập và nhân lên trong tế bào gan. Trên thế giới ước tính có khoảng 12 đến 72 triệu người nhiễm HDV mạn tính. Nhiễm HDV đại diện cho thể viêm gan virus mạn tính tiến triển nhanh và nặng nề nhất, với 30–70% bệnh nhân đã có xơ gan tại thời điểm chẩn đoán ban đầu.</p>
+
+    <div class="updates-grid">
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #0284c7;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">🧬</div>
+          <div class="update-card-title">Đồng Nhiễm Cấp (Coinfection)</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Định nghĩa:</strong> Mắc đồng thời HBV và HDV cùng một lúc trên người chưa từng nhiễm.</li>
+            <li><strong>Diễn tiến mạn tính:</strong> Rất thấp, chỉ khoảng <strong>2–5%</strong> chuyển sang mạn tính.</li>
+            <li><strong>Biểu hiện:</strong> Thường là viêm gan cấp tự khỏi, hiếm khi cần điều trị kháng virus.</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-blue">Mạn tính hóa 2–5%</div>
+      </div>
+
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #ef4444;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">🚨</div>
+          <div class="update-card-title">Bội Nhiễm Cấp (Superinfection)</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Định nghĩa:</strong> HDV xâm nhiễm trên nền người bệnh đã bị nhiễm HBV mạn tính.</li>
+            <li><strong>Diễn tiến mạn tính:</strong> Rất cao, lên tới <strong>90%</strong> chuyển thành viêm gan Delta mạn.</li>
+            <li><strong>Hậu quả:</strong> Bùng phát đợt suy gan cấp và thúc đẩy tiến triển nhanh đến xơ gan trong 5 năm.</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-red">Mạn tính hóa 90%</div>
+      </div>
+    </div>
+
+    <div class="rec-card cor-1">
+      <div class="rec-header">
+        <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> EXPO STATEMENT 1 & 4 (CLASS I)</span>
+        <span class="badge-loe-a"><i class="fa-solid fa-layer-group"></i> LOE A</span>
+      </div>
+      <div class="rec-body">
+        <strong>Tầm soát 100% đối tượng HBsAg(+):</strong> Tất cả cá nhân có HBsAg dương tính phải được xét nghiệm tầm soát HDV Antibody (Anti-HDV) ít nhất một lần trong đời. Các cơ sở y tế nên triển khai quy trình <strong>Reflex Testing</strong> tự động (xét nghiệm HBsAg dương tính sẽ tự động kích hoạt xét nghiệm Anti-HDV từ cùng một mẫu máu).
+      </div>
+    </div>
+
+    <div class="rec-card cor-2a">
+      <div class="rec-header">
+        <span class="badge-cor-2a"><i class="fa-solid fa-circle-info"></i> EXPO STATEMENT 2 & 5 (CLASS IIa)</span>
+        <span class="badge-loe-b"><i class="fa-solid fa-layer-group"></i> LOE B-NR</span>
+      </div>
+      <div class="rec-body">
+        <strong>Double Reflex Testing & Tầm soát định kỳ:</strong> Khuyến cáo áp dụng mô hình <strong>Double Reflex Testing</strong> (HBsAg+ ➔ tự động làm Anti-HDV; nếu Anti-HDV+ ➔ tự động làm định lượng HDV RNA) tại các hệ thống phòng xét nghiệm. Đối với nhóm người có nguy cơ tiếp xúc liên tục (PWID, MSM, chạy thận) hoặc người có ALT tăng nhưng HBV DNA đã bị ức chế, cần lặp lại xét nghiệm Anti-HDV định kỳ mỗi 1–2 năm.
+      </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; color: #0284c7;">Thuật Toán Tầm Soát Hệ Thống HDV Tự Động (Reflex Algorithm)</h3>
+
+    <div class="flow-track-container">
+      <div class="flow-track-step">
+        <div class="flow-track-rail">
+          <div class="flow-track-marker marker-blue">01</div>
+          <div class="flow-track-line"></div>
+        </div>
+        <div class="flow-track-content accent-blue">
+          <div class="flow-step-header">
+            <div class="flow-step-title"><i class="fa-solid fa-vial" style="color: #0284c7;"></i> Bước 1: Xét Nghiệm HBsAg Ban Đầu</div>
+            <span class="flow-step-badge flow-badge-blue">Tầm soát diện rộng</span>
+          </div>
+          <div class="flow-step-text">
+            Thực hiện xét nghiệm HBsAg cho tất cả bệnh nhân. Nếu HBsAg âm tính ➔ Không nhiễm HDV (xem xét tiêm vắc xin HBV). Nếu HBsAg dương tính ➔ Tự động chuyển Bước 2 (Reflex Level 1).
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-track-step">
+        <div class="flow-track-rail">
+          <div class="flow-track-marker marker-teal">02</div>
+          <div class="flow-track-line"></div>
+        </div>
+        <div class="flow-track-content accent-teal">
+          <div class="flow-step-header">
+            <div class="flow-step-title"><i class="fa-solid fa-microscope" style="color: #0d9488;"></i> Bước 2: Tự Động Làm Anti-HDV Total (Reflex Level 1)</div>
+            <span class="flow-step-badge flow-badge-teal">Xác định phơi nhiễm</span>
+          </div>
+          <div class="flow-step-text">
+            Phòng xét nghiệm tự động chạy mẫu Anti-HDV đã có. Nếu Anti-HDV âm tính ➔ Chưa từng nhiễm HDV (xem xét thử lại mỗi 1–2 năm nếu có yếu tố nguy cơ). Nếu Anti-HDV dương tính ➔ Tự động chuyển Bước 3 (Reflex Level 2).
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-track-step">
+        <div class="flow-track-rail">
+          <div class="flow-track-marker marker-purple">03</div>
+        </div>
+        <div class="flow-track-content accent-purple">
+          <div class="flow-step-header">
+            <div class="flow-step-title"><i class="fa-solid fa-dna" style="color: #7c3aed;"></i> Bước 3: Tự Động Định Lượng HDV RNA Khảo Sát (Double Reflex Level 2)</div>
+            <span class="flow-step-badge flow-badge-purple">Xác nhận nhiễm hoạt động</span>
+          </div>
+          <div class="flow-step-text">
+            Chạy định lượng HDV RNA bằng kỹ thuật RT-PCR độ nhạy cao. Nếu HDV RNA dương tính ➔ Xác nhận **Nhiễm HDV hoạt động**, lập tức chuyển sang đánh giá xơ hóa gan và xét chỉ định điều trị kháng virus.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-2">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">🧮</span>
+    <h2 class="sec-title">2. Tiếp Cận Chẩn Đoán Huyết Thanh, Tải Lượng Virus & Đánh Giá Xơ Hóa Gan (LSM)</h2>
+    <span class="sec-badge">AASLD EXPO 2026 Statements 6–9</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox warning">
+      <span class="infobox-icon">⚠️</span>
+      <div>
+        <strong>Thận trọng khi phiên giải HDV RNA:</strong> Một kết quả HDV RNA âm tính đơn lẻ không đủ để kết luận đã khỏi bệnh. Cần làm lại xét nghiệm HDV RNA sau 3–6 tháng và 12 tháng để phân biệt giữa sự biến động tạm thời của tải lượng virus với sự loại trừ virus thật sự.
+      </div>
+    </div>
+
+    <div class="table-card" style="margin-top: 1.5rem;">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-vial-virus"></i> Bảng 2.1: Phân Loại Trạng Thái Nhiễm HDV Dựa Trên Bộ Xét Nghiệm Huyết Thanh & Sinh Học Phân Tử (AASLD 2026 Table 1)
+        </div>
+        <span class="table-badge"><i class="fa-solid fa-square-check"></i> Tiêu chuẩn chẩn đoán</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Trạng Thái Lâm Sàng</th>
+              <th style="width: 15%;">HBsAg</th>
+              <th style="width: 15%;">Anti-HDV Total</th>
+              <th style="width: 15%;">Anti-HDV IgM</th>
+              <th style="width: 18%;">HDV RNA</th>
+              <th style="width: 15%;">Anti-HBc IgM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Đồng nhiễm HBV/HDV cấp</strong></td>
+              <td>Dương tính</td>
+              <td>Dương tính (chậm)</td>
+              <td>Dương tính</td>
+              <td>Dương tính</td>
+              <td><span class="score-badge score-pos">Dương tính</span></td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Bội nhiễm HDV cấp</strong></td>
+              <td>Dương tính</td>
+              <td>Dương tính</td>
+              <td>Dương tính</td>
+              <td>Dương tính</td>
+              <td><span class="score-badge score-neg">Âm tính</span></td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Viêm gan Delta mạn tính</strong></td>
+              <td>Dương tính</td>
+              <td>Dương tính</td>
+              <td>Âm / Dương yếu</td>
+              <td><span class="score-badge score-pos">Dương tính (≥ 2 lần)</span></td>
+              <td><span class="score-badge score-neg">Âm tính</span></td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Nhiễm HDV đã thoái triển</strong></td>
+              <td>Âm / Dương</td>
+              <td>Dương tính</td>
+              <td>Âm tính</td>
+              <td><span class="score-badge score-neg">Âm tính</span></td>
+              <td><span class="score-badge score-neg">Âm tính</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; color: #0284c7;">Đánh Giá Xơ Hóa Gan Không Xâm Lấn (Non-Invasive Fibrosis Assessment)</h3>
+    <p>Tất cả bệnh nhân được chẩn đoán nhiễm HDV mạn tính bắt buộc phải được đánh giá mức độ xơ hóa gan. Phương pháp ưu tiên hàng đầu là đo độ đàn hồi gan thoáng qua (VCTE / Transient Elastography / FibroScan).</p>
+
+    <div class="table-card">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-calculator"></i> Bảng 2.2: Hiệu Năng Chẩn Đoán Xơ Gan Bằng VCTE (FibroScan) Với Ngưỡng LSM ≥ 14.0 kPa Ở Bệnh Nhân HDV (AASLD 2026 Data)
+        </div>
+        <span class="table-badge"><i class="fa-solid fa-chart-pie"></i> Thông số sinh học</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Thông Số Đo Đạc</th>
+              <th style="width: 35%;">Giá Trị Ngưỡng & Chỉ Số Chẩn Đoán</th>
+              <th style="width: 40%;">Ý Nghĩa Lâm Sàng & Lưu Ý</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Ngưỡng LSM Chẩn Đoán Xơ Gan</strong></td>
+              <td><strong>≥ 14.0 kPa</strong> (Dao động 12.0–15.2 kPa)</td>
+              <td>Được chọn làm ngưỡng tối ưu cho bệnh nhân HDV mạn tính dựa trên các lô hội NIH.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Diện Tích Dưới Đường Cong (AUROC)</strong></td>
+              <td><strong>AUROC = 0.90</strong></td>
+              <td>Hiệu năng phân tách xơ gan xuất sắc.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Độ Nhạy & Độ Đặc Hiệu</strong></td>
+              <td>Độ nhạy: 0.78 | Độ đặc hiệu: 0.86</td>
+              <td>Giá trị dự báo âm tính (NPV) cao đạt 0.93.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Chỉ Số Huyết Thanh Thay Thế</strong></td>
+              <td>FIB-4, APRI, ELF</td>
+              <td>Hiệu năng chẩn đoán hạn chế ở HDV do phản ứng viêm hoại tử gan mạnh làm tăng giả tạo chỉ số.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-3">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">📈</span>
+    <h2 class="sec-title">3. Tầm Soát Ung Thư Gan (HCC), Can Thiệp Lối Sống & Kế Hoạch Theo Dõi Lâm Sàng</h2>
+    <span class="sec-badge">AASLD EXPO 2026 Statements 10–13</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox info">
+      <span class="infobox-icon">💡</span>
+      <div>
+        <strong>Gánh nặng ung thư biểu mô tế bào gan (HCC):</strong> Đồng nhiễm HDV làm tăng 30% nguy cơ HCC so với đơn nhiễm HBV (OR 1.28). Tỷ lệ tích lũy HCC trong 10 năm ở bệnh nhân HDV lên tới 14% (so với 3% ở nhóm đơn nhiễm HBV). Sự hiện diện của HDV RNA làm tăng nguy cơ HCC gấp 2.97 lần.
+      </div>
+    </div>
+
+    <div class="rec-card cor-1">
+      <div class="rec-header">
+        <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> EXPO STATEMENT 10 (CLASS I)</span>
+        <span class="badge-loe-a"><i class="fa-solid fa-layer-group"></i> LOE A</span>
+      </div>
+      <div class="rec-body">
+        <strong>Tầm soát HCC định kỳ mỗi 6 tháng:</strong> Tất cả người trưởng thành nhiễm HDV mạn tính có HDV RNA dương tính bắt buộc phải tầm soát HCC bằng <strong>siêu âm ổ bụng phối hợp định lượng Alpha-Fetoprotein (AFP) serum định kỳ mỗi 6 tháng</strong>. Đối với trường hợp Anti-HDV(+) nhưng HDV RNA(-), tầm soát HCC áp dụng theo hướng dẫn của đơn nhiễm HBV.
+      </div>
+    </div>
+
+    <div class="rec-card cor-1">
+      <div class="rec-header">
+        <span class="badge-cor-1"><i class="fa-solid fa-circle-check"></i> EXPO STATEMENT 11 & 12 (CLASS I)</span>
+        <span class="badge-loe-b"><i class="fa-solid fa-layer-group"></i> LOE B-NR</span>
+      </div>
+      <div class="rec-body">
+        <strong>Can thiệp lối sống & Lịch theo dõi:</strong> Yêu cầu bệnh nhân <strong>tuyệt đối ngưng tiêu thụ đồ uống có cồn</strong> và tối ưu hóa chế độ ăn uống, tập luyện để phòng tránh bệnh gan nhiễm mỡ liên quan rối loạn chuyển hóa (MASLD) và Đái tháo đường týp 2. Theo dõi định kỳ mỗi 6–12 tháng gồm: men gan, HBV DNA, HDV RNA; và đo lại độ đàn hồi gan (LSM) mỗi 1–2 năm.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-4">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">💊</span>
+    <h2 class="sec-title">4. Phác Đồ Điều Trị Kháng Virus HDV: Bulevirtide, Peg-IFN & Thuốc NAs Kháng HBV</h2>
+    <span class="sec-badge">AASLD EXPO 2026 Statements 14–21</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox success">
+      <span class="infobox-icon">🎉</span>
+      <div>
+        <strong>Phê duyệt lịch sử của FDA (Tháng 5/2026):</strong> Bulevirtide (BLV; Hepcludex) - thuốc ức chế thụ thể xâm nhập NTCP đầu tiên trong phân lớp - đã chính thức được US FDA phê duyệt điều trị viêm gan Delta mạn tính ở người lớn với liều tiêm dưới da <strong>8.5 mg/ngày</strong>.
+      </div>
+    </div>
+
+    <p>Mục tiêu cốt lõi của điều trị kháng virus HDV là ức chế bền vững sự nhân lên của HDV RNA, bình thường hóa men gan ALT, ngăn ngừa tiến triển xơ gan và giảm thiểu biến cố tử vong do gan.</p>
+
+    <div class="table-card" style="margin-top: 1.5rem;">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-list-check"></i> Bảng 4.1: Định Nghĩa Các Tiêu Chí Kết Cục Điều Trị HDVTheo AASLD 2026 (Table 2)
+        </div>
+        <span class="table-badge"><i class="fa-solid fa-bullseye"></i> Tiêu chuẩn kết cục</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Thuật Ngữ Kết Cục</th>
+              <th style="width: 50%;">Định Nghĩa Tiêu Chuẩn Sinh Học</th>
+              <th style="width: 25%;">Ý Nghĩa Lâm Sàng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>Virologic Response</strong></td>
+              <td>Giảm HDV RNA ≥ 2 log10 IU/mL so với ban đầu hoặc HDV RNA dưới ngưỡng phát hiện</td>
+              <td>Đáp ứng virus ban đầu</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Complete Virologic Response</strong></td>
+              <td>HDV RNA đạt ngưỡng không phát hiện (Undetectable)</td>
+              <td>Ức chế hoàn toàn</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Biochemical Response</strong></td>
+              <td>Bình thường hóa nồng độ ALT huyết thanh</td>
+              <td>Giảm hoại tử tế bào gan</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Combined Response</strong></td>
+              <td>Virologic response KÈM THEO Biochemical response (ALT bình thường)</td>
+              <td>Mục tiêu lâm sàng thực tế</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Sustained Virologic Response (SVR24)</strong></td>
+              <td>HDV RNA tiếp tục dưới ngưỡng phát hiện ≥ 24 tuần sau khi ngưng điều trị</td>
+              <td>Đáp ứng bền vững</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>HDV Cure (Chữa Khỏi HDV)</strong></td>
+              <td>HBsAg âm tính (&lt; 0.05 IU/mL) KÈM HDV RNA và HBV DNA không phát hiện ≥ 24 tuần off-tx</td>
+              <td>Chữa khỏi hoàn toàn</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="table-card" style="margin-top: 1.5rem;">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-pills"></i> Bảng 4.2: Các Phác Đồ Điều Trị Kháng Virus Thuốc Khuyên Dùng & Thay Thế (AASLD 2026)
+        </div>
+        <span class="table-badge"><i class="fa-solid fa-prescription"></i> Phác đồ dược lý</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="regimen-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Phác Đồ & Liều Dùng</th>
+              <th style="width: 20%;">Thời Gian Điều Trị</th>
+              <th style="width: 28%;">Hiệu Quả Lâm Sàng (Thử Nghiệm MYR301/MYR204)</th>
+              <th style="width: 30%;">Chống Chỉ Định & Lưu Ý Tác Dụng Phụ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell">
+                <span class="rx-tag preferred">Đầu tay (Đơn trị)</span>
+                <strong>Bulevirtide (BLV)</strong><br />8.5 mg tiêm dưới da 1 lần/ngày
+              </td>
+              <td>Kéo dài dài hạn (Long-term) cho tới khi đạt tiêu chuẩn ngưng</td>
+              <td>82% đạt giảm HDV RNA ≥ 2 log; 36% HDV RNA không phát hiện; 56% đạt Combined Response tại tuần 96.</td>
+              <td>An toàn cao; tăng Axit mật huyết thanh phụ thuộc liều (không gây ngứa), phản ứng tại vị trí tiêm.</td>
+            </tr>
+            <tr>
+              <td class="source-cell">
+                <span class="rx-tag preferred">Đầu tay (Phối hợp)</span>
+                <strong>BLV + Peg-IFN alfa-2a</strong><br />BLV 8.5 mg/ngày + Peg-IFN 180 µg/tuần
+              </td>
+              <td>48 tuần phối hợp ➔ tiếp 48 tuần BLV đơn trị (Tổng 96 tuần)</td>
+              <td>46% duy trì HDV RNA âm tính tại tuần 48 sau ngưng thuốc; 7–11% mất HBsAg (HBsAg loss).</td>
+              <td>Chống chỉ định ở xơ gan mất bù, trầm cảm nặng, bệnh tự miễn. Hội chứng giả cúm, giảm bạch cầu/tiểu cầu.</td>
+            </tr>
+            <tr>
+              <td class="source-cell">
+                <span class="rx-tag alternative">Thay thế</span>
+                <strong>Peg-IFN alfa-2a Đơn trị</strong><br />180 µg tiêm dưới da 1 lần/tuần
+              </td>
+              <td>48 – 96 tuần (Cho người không tiếp cận được BLV)</td>
+              <td>29% đạt SVR24 và 33% đạt Biochemical Response; tuy nhiên &gt; 50% bị bùng phát lại sau ngưng.</td>
+              <td>Chống chỉ định tuyệt đối ở xơ gan mất bù. Tác dụng phụ toàn thân nhiều.</td>
+            </tr>
+            <tr>
+              <td class="source-cell">
+                <span class="rx-tag alternative">Bắt buộc kèm</span>
+                <strong>Thuốc NAs Kháng HBV</strong><br />Tenofovir TDF / TAF / Entecavir
+              </td>
+              <td>Theo tiêu chuẩn điều trị HBV mạn</td>
+              <td>Ức chế HBV DNA đồng thời. NAs không trực tiếp ức chế HDV RNA nhưng bắt buộc nếu có xơ gan hoặc HBV DNA &gt; 2.000 IU/mL.</td>
+              <td>Duy trì ít nhất 12 tháng sau khi ngưng BLV hoặc cho tới khi mất HBsAg.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-5">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">👥</span>
+    <h2 class="sec-title">5. Quản Lý Đồng Nhiễm Trong Các Quần Thể Đặc Biệt & Định Hướng Thuốc Mới</h2>
+    <span class="sec-badge">AASLD EXPO 2026 Statements 22–28</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox warning">
+      <span class="infobox-icon">⚠️</span>
+      <div>
+        <strong>Xơ gan mất bù & Đột phá ghép gan:</strong> Peg-IFN chống chỉ định tuyệt đối ở xơ gan mất bù (Child-Pugh B/C). Bulevirtide 2 mg có thể cân nhắc từng ca trong khi chờ ghép gan. Sau ghép gan, phối hợp thuốc NAs mạnh và HBIG là tiêu chuẩn; ở bệnh nhân nguy cơ thấp, có thể ngưng HBIG an toàn sau 1 năm nếu duy trì NAs liên tục.
+      </div>
+    </div>
+
+    <div class="updates-grid">
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #3b82f6;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(59, 130, 246, 0.1); color: #3b82f6;">🎗️</div>
+          <div class="update-card-title">Đồng Nhiễm HIV / HDV / HBV</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Điều trị ART:</strong> Bắt buộc dùng phác đồ ART có chứa TDF hoặc TAF phối hợp 3TC/FTC.</li>
+            <li><strong>Quản lý HDV:</strong> Chỉ định Bulevirtide ± Peg-IFN tương tự như người không nhiễm HIV.</li>
+            <li><strong>Tương tác thuốc:</strong> Không có tương tác PK đáng kể giữa BLV và các thuốc ART hiện hành.</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-blue">Bắt buộc ART chứa Tenofovir</div>
+      </div>
+
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #10b981;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">🩺</div>
+          <div class="update-card-title">Suy Thận Mạn (CKD)</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Chỉnh liều BLV:</strong> Không cần chỉnh liều Bulevirtide khi eGFR &gt; 15 mL/phút.</li>
+            <li><strong>Lọc máu:</strong> Bệnh nhân eGFR &lt; 15 mL/phút hoặc chạy thận chưa có đủ dữ liệu liều chuẩn.</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-green">Không chỉnh liều nếu eGFR > 15</div>
+      </div>
+
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #ec4899;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">🤰</div>
+          <div class="update-card-title">Thai Kỳ & Cho Con Bú</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Khuyến cáo:</strong> Tránh khởi trị Bulevirtide trong thai kỳ và khi cho con bú do thiếu dữ liệu an toàn.</li>
+            <li><strong>Trường hợp lỡ có thai:</strong> Quyết định dựa trên thảo luận chia sẻ nguy cơ/lợi ích (Shared decision-making).</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-purple">Tránh dùng trong thai kỳ</div>
+      </div>
+
+      <div class="update-card">
+        <div class="update-card-accent" style="background: #f59e0b;"></div>
+        <div class="update-card-header">
+          <div class="update-card-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">🔬</div>
+          <div class="update-card-title">Các Thuốc Mới Đang Thử Nghiệm</div>
+        </div>
+        <div class="update-card-body">
+          <ul style="margin-left: 1rem; line-height: 1.7;">
+            <li><strong>Lonafarnib:</strong> Thuốc uống ức chế Prenylation (Thử nghiệm Pha 3 D-LIVR).</li>
+            <li><strong>Kháng thể đơn dòng:</strong> Brelovitug, Libevitug, Tobevibart kết hợp Elebsiran (siRNA).</li>
+            <li><strong>NAPs & Peg-IFN Lambda:</strong> REP-2139 nhằm mục tiêu hạ thấp HBsAg triệt để.</li>
+          </ul>
+        </div>
+        <div class="update-verdict verdict-amber">Hứa hẹn chữa khỏi HDV</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-card" id="sec-6">
+  <div class="sec-hdr">
+    <span class="sec-hdr-icon">📚</span>
+    <h2 class="sec-title">6. Lộ Trình Giám Sát Sau Ngưng Thuốc, Tiêu Chuẩn Tái Trị & Trích Dẫn Y Văn AMA</h2>
+    <span class="sec-badge">Post-Treatment Guidelines</span>
+  </div>
+  <div class="sec-body">
+    <div class="infobox danger">
+      <span class="infobox-icon">🚨</span>
+      <div>
+        <strong>Nguy cơ bùng phát viêm gan cấp sau ngưng thuốc (Severe Hepatic Flares):</strong> Đã có báo cáo về các đợt bùng phát viêm gan nặng do HBV/HDV sau khi ngưng Bulevirtide. Bắt buộc phải theo dõi sát men gan, HDV RNA và HBV DNA tại các mốc **1, 3, 6 và 12 tháng** sau khi ngưng điều trị.
+      </div>
+    </div>
+
+    <div class="table-card" style="margin-top: 1.5rem;">
+      <div class="table-header">
+        <div class="table-title">
+          <i class="fa-solid fa-clock-rotate-left"></i> Bảng 6.1: Tiêu Chuẩn Ngưng Thuốc, Lịch Theo Dõi & Điều Kiện Khởi Trị Lại (AASLD 2026 Table 4)
+        </div>
+        <span class="table-badge"><i class="fa-solid fa-arrows-rotate"></i> Quy trình ngưng & Tái trị</span>
+      </div>
+      <div class="table-wrapper">
+        <table class="diagnostic-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Liệu Pháp Đã Dùng</th>
+              <th style="width: 28%;">Tiêu Chuẩn Xem Xét Ngưng Thuốc</th>
+              <th style="width: 27%;">Lịch Theo Dõi Sau Ngưng</th>
+              <th style="width: 25%;">Tiêu Chuẩn Tái Trị (Restart)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="source-cell"><strong>BLV Đơn trị liệu</strong></td>
+              <td>HDV RNA dưới ngưỡng phát hiện liên tục <strong>≥ 24 tháng</strong> KÈM ALT bình thường.</td>
+              <td>HDV RNA, ALT, AST tại 1, 3, 6, 12 tháng off-tx, sau đó mỗi 6 tháng.</td>
+              <td>Khởi trị lại BLV nếu <strong>HDV RNA bùng phát &gt; 1.000 IU/mL</strong>, đặc biệt nếu có tăng ALT.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>BLV + Peg-IFN Phối hợp</strong></td>
+              <td>Hoàn thành 48W combo + 48W BLV đơn trị VÀ HDV RNA âm tính tại W96.</td>
+              <td>HDV RNA, HBV DNA, ALT mỗi 3 tháng trong năm đầu, sau đó mỗi 6 tháng.</td>
+              <td>Nhập lại phác đồ BLV đơn trị hoặc BLV + Peg-IFN nếu HDV RNA tái phát &gt; 1.000 IU/mL.</td>
+            </tr>
+            <tr>
+              <td class="source-cell"><strong>Mọi Phác Đồ</strong></td>
+              <td>Mất HBsAg hoàn toàn (&lt; 0.05 IU/mL) và HDV RNA âm tính.</td>
+              <td>HDV RNA, HBV DNA, HBsAg tại mốc 3, 6, 12 tháng.</td>
+              <td>Tái trị nếu có tái xuất hiện HBsAg (Seroreversion). Tái trị NAs nếu HBV DNA &gt; 2.000 IU/mL.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="citation-box" style="margin-top: 1.5rem;">
+      <strong>Trích dẫn tài liệu tham khảo chính thức (AMA Format):</strong><br />
+      1. Lim JK, Debes JD, Feld JJ, Idilman R, Terrault NA. AASLD EXPO: Diagnosis and Management of Hepatitis Delta Virus (HDV) Infection. <em>Hepatology</em>. 2026. doi:10.1097/HEP.0000000000001909.<br />
+      2. European Association for the Study of the Liver. EASL clinical practice guidelines on hepatitis delta virus. <em>J Hepatol</em>. 2023;79(2):433-460. doi:10.1016/j.jhep.2023.05.001.<br />
+      3. Wedemeyer H, Aleman S, Brunetto M, et al. Bulevirtide monotherapy in patients with chronic HDV: efficacy and safety results through week 96 from a phase III randomized trial. <em>J Hepatol</em>. 2024;81(4):621-629. doi:10.1016/j.jhep.2024.05.012.<br />
+      4. Asselah T, Chulanov V, Lampertico P, et al. Bulevirtide combined with pegylated interferon for chronic hepatitis D. <em>N Engl J Med</em>. 2024;391(2):133-143. doi:10.1056/NEJMoa2314168.
+    </div>
+  </div>
+</div>
+
+</div>
+```
