@@ -1,0 +1,1268 @@
+/**
+ * CliniPortal — Clinical Handbook Unified Stylesheet
+ * Path: src/styles/components/clinical-handbook.css
+ * 
+ * 100% Design Tokens & Dark/Light Mode Compliant
+ * Follows Emil Kowalski Design Engineering & CliniPortal Design Standards
+ */
+
+/* ============================================================
+   1. DESIGN TOKENS & COLOR ROLES
+   ============================================================ */
+:root {
+  --handbook-primary:           var(--color-primary, #0284c7);
+  --handbook-primary-hover:     var(--color-primary-hover, #0369a1);
+  --handbook-primary-hl:        var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  --handbook-primary-rgb:       var(--color-primary-rgb, 2, 132, 199);
+  
+  --handbook-bg:                var(--color-bg, #f0f4f8);
+  --handbook-surface:           var(--color-surface, #ffffff);
+  --handbook-surface-2:         var(--color-surface-2, #f8fafc);
+  --handbook-surface-offset:    var(--color-surface-offset, #f1f5f9);
+  
+  --handbook-border:            var(--color-border, #cbd5e1);
+  --handbook-border-subtle:     var(--color-divider, #e2e8f0);
+  --handbook-divider:           var(--color-divider, #e2e8f0);
+  
+  --handbook-text:              var(--color-text, #0f172a);
+  --handbook-muted:             var(--color-text-muted, #475569);
+  --handbook-faint:             var(--color-text-faint, #94a3b8);
+  
+  --handbook-radius-xs:         4px;
+  --handbook-radius-sm:         8px;
+  --handbook-radius-md:         12px;
+  --handbook-radius-lg:         16px;
+  --handbook-radius-full:       9999px;
+  
+  /* Light Mode Hero & Card Styling */
+  --handbook-hero-gradient:     linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(240, 249, 255, 0.95) 50%, rgba(224, 242, 254, 0.65) 100%);
+  --handbook-hero-border:       rgba(2, 132, 199, 0.22);
+  --handbook-badge-bg:          rgba(2, 132, 199, 0.1);
+  --handbook-badge-text:        #0284c7;
+  --handbook-badge-border:      rgba(2, 132, 199, 0.25);
+  
+  --handbook-card-shadow:       0 2px 8px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --handbook-card-hover-shadow: 0 12px 28px -4px rgba(2, 132, 199, 0.14), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  
+  --handbook-pearl-bg:          rgba(2, 132, 199, 0.04);
+  --handbook-pearl-border:      #0284c7;
+  --handbook-pearl-title:       #0284c7;
+  
+  --handbook-icd-bg:            rgba(2, 132, 199, 0.08);
+  --handbook-icd-text:          #0284c7;
+  --handbook-icd-border:        rgba(2, 132, 199, 0.2);
+}
+
+[data-theme="dark"] {
+  --handbook-primary:           var(--color-primary, #38bdf8);
+  --handbook-primary-hover:     var(--color-primary-hover, #7dd3fc);
+  --handbook-primary-hl:        var(--color-primary-hl, rgba(56, 189, 248, 0.12));
+  --handbook-primary-rgb:       var(--color-primary-rgb, 56, 189, 248);
+  
+  --handbook-bg:                var(--color-bg, #080e1a);
+  --handbook-surface:           var(--color-surface, #101828);
+  --handbook-surface-2:         var(--color-surface-2, #162032);
+  --handbook-surface-offset:    var(--color-surface-offset, #1a2840);
+  
+  --handbook-border:            var(--color-border, #263a57);
+  --handbook-border-subtle:     var(--color-divider, #1e2d47);
+  --handbook-divider:           var(--color-divider, #1e2d47);
+  
+  --handbook-text:              var(--color-text, #e2e8f0);
+  --handbook-muted:             var(--color-text-muted, #94a3b8);
+  --handbook-faint:             var(--color-text-faint, #4a5d78);
+  
+  /* Dark Mode Hero & Card Styling */
+  --handbook-hero-gradient:     linear-gradient(135deg, rgba(2, 132, 199, 0.18) 0%, rgba(16, 24, 40, 0.88) 50%, rgba(22, 32, 50, 0.75) 100%);
+  --handbook-hero-border:       rgba(56, 189, 248, 0.25);
+  --handbook-badge-bg:          rgba(56, 189, 248, 0.14);
+  --handbook-badge-text:        #38bdf8;
+  --handbook-badge-border:      rgba(56, 189, 248, 0.3);
+  
+  --handbook-card-shadow:       0 2px 8px rgba(0, 0, 0, 0.35);
+  --handbook-card-hover-shadow: 0 12px 28px -4px rgba(56, 189, 248, 0.2), 0 4px 12px rgba(0, 0, 0, 0.45);
+  
+  --handbook-pearl-bg:          rgba(56, 189, 248, 0.08);
+  --handbook-pearl-border:      #38bdf8;
+  --handbook-pearl-title:       #38bdf8;
+  
+  --handbook-icd-bg:            rgba(56, 189, 248, 0.12);
+  --handbook-icd-text:          #38bdf8;
+  --handbook-icd-border:        rgba(56, 189, 248, 0.25);
+}
+
+/* ============================================================
+   2. MAIN CONTAINER & BREADCRUMB
+   ============================================================ */
+.handbook-hub-container,
+.handbook-main-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem 1rem;
+}
+
+.handbook-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--handbook-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.handbook-breadcrumb a {
+  color: var(--handbook-muted);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.handbook-breadcrumb a:hover {
+  color: var(--handbook-primary);
+}
+
+.handbook-breadcrumb .separator {
+  color: var(--handbook-faint);
+  font-size: 0.75rem;
+}
+
+.handbook-breadcrumb .current {
+  color: var(--handbook-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   3. HERO SECTION & KPI METRICS
+   ============================================================ */
+.handbook-hero {
+  background: var(--handbook-hero-gradient);
+  border: 1px solid var(--handbook-hero-border);
+  border-radius: var(--handbook-radius-lg);
+  padding: 2.25rem 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--handbook-card-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.handbook-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: var(--handbook-radius-full);
+  background: var(--handbook-badge-bg);
+  border: 1px solid var(--handbook-badge-border);
+  color: var(--handbook-badge-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.handbook-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--handbook-badge-text);
+  display: inline-block;
+  animation: handbookPulse 2s infinite ease-in-out;
+}
+
+@keyframes handbookPulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 8px var(--handbook-badge-text);
+  }
+}
+
+.handbook-hero h1 {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem);
+  font-weight: 800;
+  margin: 0 0 0.75rem 0;
+  color: var(--handbook-text);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.handbook-hero p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--handbook-muted);
+  max-width: 860px;
+  margin: 0 0 1.5rem 0;
+}
+
+.handbook-kpi-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.handbook-kpi-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--handbook-radius-md);
+  box-shadow: var(--handbook-card-shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.handbook-kpi-pill:hover {
+  transform: translateY(-1px);
+  border-color: var(--handbook-primary);
+}
+
+.handbook-kpi-pill i {
+  font-size: 1.25rem;
+  color: var(--handbook-primary);
+}
+
+.handbook-kpi-pill strong {
+  font-size: 1.18rem;
+  font-weight: 800;
+  display: block;
+  color: var(--handbook-text);
+  line-height: 1.15;
+}
+
+.handbook-kpi-pill span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--handbook-muted);
+}
+
+/* ============================================================
+   4. SEARCH BAR & CONTROLS
+   ============================================================ */
+.handbook-search-bar {
+  margin-bottom: 2rem;
+  position: relative;
+  max-width: 640px;
+}
+
+.handbook-search-bar i.search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--handbook-muted);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.handbook-search-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem 0.85rem 2.85rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  color: var(--handbook-text);
+  font-size: 0.95rem;
+  outline: none;
+  box-shadow: var(--handbook-card-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.handbook-search-input::placeholder {
+  color: var(--handbook-faint);
+}
+
+.handbook-search-input:focus {
+  border-color: var(--handbook-primary);
+  box-shadow: 0 0 0 3px var(--handbook-primary-hl);
+}
+
+.handbook-search-counter {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--handbook-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ============================================================
+   5. SPECIALTY SEGMENTED RAIL / TABS
+   ============================================================ */
+.handbook-specialty-section {
+  margin-bottom: 2.25rem;
+}
+
+.handbook-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid var(--handbook-divider);
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.handbook-section-title-row h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--handbook-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.handbook-section-title-row h2 i {
+  color: var(--handbook-primary);
+}
+
+.handbook-specialty-rail {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.15rem 0.75rem 0.15rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.handbook-specialty-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--handbook-radius-full);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  color: var(--handbook-text);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--handbook-card-shadow);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.handbook-specialty-pill:hover {
+  border-color: var(--handbook-primary);
+  color: var(--handbook-primary);
+  transform: translateY(-1px);
+}
+
+.handbook-specialty-pill.is-active {
+  background: var(--handbook-primary);
+  color: #ffffff;
+  border-color: var(--handbook-primary);
+  box-shadow: 0 4px 14px rgba(var(--handbook-primary-rgb), 0.3);
+}
+
+[data-theme="dark"] .handbook-specialty-pill.is-active {
+  background: var(--handbook-primary-hl);
+  color: var(--handbook-primary);
+  border-color: var(--handbook-primary);
+  box-shadow: 0 0 16px rgba(var(--handbook-primary-rgb), 0.25);
+}
+
+.handbook-specialty-pill.is-active .pill-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .handbook-specialty-pill.is-active .pill-count {
+  background: rgba(var(--handbook-primary-rgb), 0.25);
+  color: var(--handbook-primary);
+}
+
+.handbook-specialty-pill .pill-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--handbook-radius-full);
+  background: var(--handbook-surface-offset);
+  color: var(--handbook-muted);
+  border: 1px solid var(--handbook-border-subtle);
+  transition: all 0.2s;
+}
+
+/* Toggle Overview Button */
+.btn-toggle-specialties {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  color: var(--handbook-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--handbook-radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-specialties:hover {
+  border-color: var(--handbook-primary);
+  color: var(--handbook-primary);
+}
+
+/* Expandable Grid for Specialties */
+.handbook-specialties-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+}
+
+.spec-overview-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-sm);
+  padding: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.spec-overview-card:hover {
+  border-color: var(--handbook-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.spec-overview-card.is-active {
+  border-color: var(--handbook-primary);
+  background: var(--handbook-primary-hl);
+}
+
+.spec-overview-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.spec-overview-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--handbook-text);
+  margin: 0 0 0.2rem 0;
+}
+
+.spec-overview-card p {
+  font-size: 0.76rem;
+  color: var(--handbook-muted);
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================================
+   6. DISEASES SECTION & CARDS
+   ============================================================ */
+.handbook-disease-section {
+  margin-top: 2rem;
+}
+
+.handbook-diseases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.handbook-disease-card {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-lg);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--handbook-card-shadow);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease,
+              box-shadow 0.22s ease;
+  position: relative;
+}
+
+.handbook-disease-card:hover {
+  border-color: var(--handbook-primary);
+  box-shadow: var(--handbook-card-hover-shadow);
+  transform: translateY(-3px);
+}
+
+.disease-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.disease-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--handbook-badge-bg);
+  color: var(--handbook-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.disease-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.handbook-icd-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--handbook-icd-bg);
+  color: var(--handbook-icd-text);
+  border: 1px solid var(--handbook-icd-border);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+}
+
+.handbook-status-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--handbook-radius-full);
+}
+
+[data-theme="dark"] .handbook-status-badge {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.handbook-disease-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 0.2rem 0;
+  color: var(--handbook-text);
+  letter-spacing: -0.01em;
+}
+
+.disease-name-en {
+  font-size: 0.8rem;
+  color: var(--handbook-muted);
+  margin: 0 0 0.75rem 0;
+  font-style: italic;
+}
+
+.disease-card-desc {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--handbook-muted);
+  margin: 0 0 1rem 0;
+}
+
+/* Clinical Pearl Preview Box */
+.handbook-pearl-preview-box {
+  background: var(--handbook-pearl-bg);
+  border-left: 3px solid var(--handbook-pearl-border);
+  padding: 9px 12px;
+  border-radius: 0 var(--handbook-radius-sm) var(--handbook-radius-sm) 0;
+  margin-bottom: 1.25rem;
+}
+
+.pearl-box-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--handbook-pearl-title);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pearl-box-title i {
+  color: #f59e0b;
+}
+
+.handbook-pearl-preview-box ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.77rem;
+  color: var(--handbook-text);
+  line-height: 1.48;
+}
+
+.handbook-pearl-preview-box ul li {
+  margin-bottom: 3px;
+}
+
+.disease-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--handbook-divider);
+  padding-top: 0.95rem;
+}
+
+.article-count-label {
+  font-size: 0.78rem;
+  color: var(--handbook-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.article-count-label i {
+  color: var(--handbook-primary);
+}
+
+.btn-handbook-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--handbook-primary);
+  padding: 7px 15px;
+  border-radius: var(--handbook-radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(var(--handbook-primary-rgb), 0.25);
+}
+
+.btn-handbook-read:hover {
+  background: var(--handbook-primary-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(var(--handbook-primary-rgb), 0.35);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   7. DISEASE DETAIL VIEW (CẤP 3)
+   ============================================================ */
+.handbook-disease-hero {
+  background: var(--handbook-hero-gradient);
+  border: 1px solid var(--handbook-hero-border);
+  border-radius: var(--handbook-radius-lg);
+  padding: 2rem 2.2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.disease-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.disease-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.disease-hero-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: var(--handbook-badge-bg);
+  color: var(--handbook-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  border: 1px solid var(--handbook-badge-border);
+}
+
+.disease-hero-title h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--handbook-text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.disease-hero-title .en-name {
+  font-size: 0.9rem;
+  color: var(--handbook-muted);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.btn-handbook-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--handbook-muted);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--handbook-radius-sm);
+  border: 1px solid var(--handbook-border);
+  background: var(--handbook-surface);
+  transition: all 0.2s ease;
+}
+
+.btn-handbook-back:hover {
+  border-color: var(--handbook-primary);
+  color: var(--handbook-primary);
+  background: var(--handbook-surface-2);
+}
+
+.disease-hero-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--handbook-text);
+  margin: 0 0 1.25rem 0;
+  max-width: 900px;
+}
+
+.guideline-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.guideline-tags-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--handbook-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.guideline-tag-chip {
+  font-size: 0.75rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  color: var(--handbook-text);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Article Cards inside Disease Detail */
+.handbook-article-card {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.35rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--handbook-card-shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.handbook-article-card.is-active-card {
+  border-color: var(--handbook-primary);
+}
+
+.handbook-article-card.is-active-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--handbook-primary);
+}
+
+.handbook-article-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--handbook-primary);
+  box-shadow: var(--handbook-card-hover-shadow);
+}
+
+.article-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.article-card-left-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.article-order-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--handbook-primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.article-order-badge.is-draft {
+  background: var(--handbook-faint);
+}
+
+.featured-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #d97706;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .featured-pill {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.reading-time-pill {
+  font-size: 0.75rem;
+  color: var(--handbook-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.article-status-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.article-status-pill.is-verified {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+[data-theme="dark"] .article-status-pill.is-verified {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.article-status-pill.is-draft {
+  background: var(--handbook-surface-offset);
+  color: var(--handbook-muted);
+  border: 1px solid var(--handbook-border);
+}
+
+.handbook-article-card h3 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--handbook-text);
+  margin: 0 0 0.25rem 0;
+}
+
+.article-card-sub {
+  font-size: 0.85rem;
+  color: var(--handbook-muted);
+  margin-bottom: 0.4rem;
+}
+
+.article-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--handbook-muted);
+  margin: 0;
+}
+
+/* Key Takeaway box */
+.article-takeaway-highlight {
+  background: var(--handbook-pearl-bg);
+  border-left: 3px solid var(--handbook-pearl-border);
+  padding: 7px 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+  color: var(--handbook-text);
+  line-height: 1.48;
+}
+
+.article-takeaway-highlight strong {
+  color: var(--handbook-pearl-title);
+}
+
+.article-card-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  border-top: 1px solid var(--handbook-divider);
+  padding-top: 0.75rem;
+}
+
+.article-topic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.topic-tag-chip {
+  font-size: 0.72rem;
+  color: var(--handbook-muted);
+  background: var(--handbook-surface-offset);
+  border: 1px solid var(--handbook-border-subtle);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   8. READER VIEW (CẤP 4)
+   ============================================================ */
+.handbook-reader-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem 1rem;
+}
+
+.handbook-reader-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--handbook-surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--handbook-radius-md);
+  border: 1px solid var(--handbook-border);
+  margin-bottom: 1.75rem;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.font-size-control-group {
+  display: inline-flex;
+  border-radius: var(--handbook-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--handbook-border);
+  background: var(--handbook-surface);
+}
+
+.font-size-control-group button {
+  background: transparent;
+  border: none;
+  color: var(--handbook-text);
+  padding: 5px 11px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.font-size-control-group button:hover {
+  background: var(--handbook-surface-offset);
+  color: var(--handbook-primary);
+}
+
+.font-size-control-group button + button {
+  border-left: 1px solid var(--handbook-border);
+}
+
+.btn-reader-action {
+  background: var(--handbook-surface-2);
+  border: 1px solid var(--handbook-border);
+  color: var(--handbook-text);
+  padding: 6px 14px;
+  border-radius: var(--handbook-radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.btn-reader-action:hover {
+  border-color: var(--handbook-primary);
+  color: var(--handbook-primary);
+}
+
+.handbook-reader-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.handbook-article-body {
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-lg);
+  padding: 2.25rem 2.5rem;
+  min-height: 500px;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.handbook-reader-sidebar {
+  position: sticky;
+  top: 1.5rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-md);
+  padding: 1.25rem;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  box-shadow: var(--handbook-card-shadow);
+}
+
+.reader-sidebar-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--handbook-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.handbook-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.handbook-toc-link {
+  color: var(--handbook-muted);
+  text-decoration: none;
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  transition: all 0.15s ease;
+  border-left: 2px solid transparent;
+}
+
+.handbook-toc-link:hover,
+.handbook-toc-link.is-active {
+  color: var(--handbook-primary);
+  background: var(--handbook-primary-hl);
+  border-left-color: var(--handbook-primary);
+}
+
+/* ============================================================
+   9. PROSE & MDX TYPOGRAPHY IN HANDBOOK
+   ============================================================ */
+.handbook-prose {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--handbook-text);
+}
+
+.handbook-prose h1,
+.handbook-prose h2,
+.handbook-prose h3,
+.handbook-prose h4 {
+  color: var(--handbook-text);
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.handbook-prose h2 {
+  font-size: 1.45rem;
+  border-bottom: 1px solid var(--handbook-divider);
+  padding-bottom: 0.5rem;
+}
+
+.handbook-prose h3 {
+  font-size: 1.2rem;
+}
+
+.handbook-prose p {
+  margin-bottom: 1.25rem;
+}
+
+.handbook-prose ul,
+.handbook-prose ol {
+  padding-left: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.handbook-prose li {
+  margin-bottom: 0.4rem;
+}
+
+.handbook-prose strong {
+  color: var(--handbook-text);
+  font-weight: 700;
+}
+
+/* Callouts in Handbook */
+.handbook-prose .callout {
+  padding: 1.1rem 1.35rem;
+  border-radius: var(--handbook-radius-md);
+  margin: 1.5rem 0;
+  border-left: 4px solid transparent;
+}
+
+.handbook-prose .callout-success {
+  background: rgba(16, 185, 129, 0.08);
+  border-left-color: #10b981;
+}
+
+.handbook-prose .callout-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-left-color: #f59e0b;
+}
+
+.handbook-prose .callout-danger {
+  background: rgba(239, 68, 68, 0.08);
+  border-left-color: #ef4444;
+}
+
+.handbook-prose .callout-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.handbook-prose .callout-success .callout-title { color: #059669; }
+[data-theme="dark"] .handbook-prose .callout-success .callout-title { color: #34d399; }
+
+.handbook-prose .callout-warning .callout-title { color: #d97706; }
+[data-theme="dark"] .handbook-prose .callout-warning .callout-title { color: #fbbf24; }
+
+.handbook-prose .callout-danger .callout-title { color: #dc2626; }
+[data-theme="dark"] .handbook-prose .callout-danger .callout-title { color: #f87171; }
+
+.handbook-prose .callout-body {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Handbook Tables */
+.handbook-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+  background: var(--handbook-surface);
+  border: 1px solid var(--handbook-border);
+  border-radius: var(--handbook-radius-sm);
+  overflow: hidden;
+}
+
+.handbook-prose th {
+  background: var(--handbook-surface-offset);
+  color: var(--handbook-text);
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--handbook-border);
+}
+
+.handbook-prose td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--handbook-border-subtle);
+  color: var(--handbook-text);
+  line-height: 1.5;
+}
+
+.handbook-prose tr:nth-child(even) td {
+  background: var(--handbook-surface-2);
+}
+
+/* ============================================================
+   10. RESPONSIVE DESIGN (MOBILE-FIRST BREAKPOINTS)
+   ============================================================ */
+@media (max-width: 992px) {
+  .handbook-reader-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .handbook-reader-sidebar {
+    position: static;
+    max-height: none;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .handbook-hub-container,
+  .handbook-main-container,
+  .handbook-reader-container {
+    padding: 1rem 0.75rem 2.5rem 0.75rem;
+  }
+
+  .handbook-hero {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .handbook-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .handbook-hero p {
+    font-size: 0.9rem;
+  }
+
+  .handbook-diseases-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .handbook-disease-card {
+    padding: 1.15rem;
+  }
+
+  .handbook-article-body {
+    padding: 1.5rem 1.15rem;
+  }
+
+  .disease-hero-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

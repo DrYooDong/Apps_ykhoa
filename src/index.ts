@@ -12,6 +12,7 @@ import './styles/components/non-intrusive-ui.css';
 import './styles/components/clinical-cheatsheets.css';
 import './content/docspace/styles/docspace.css';
 import './content/knowledge-vault/css/vault-hub.css';
+import './styles/components/clinical-handbook.css';
 import { 
   renderVaultHubView, 
   attachVaultEvents, 

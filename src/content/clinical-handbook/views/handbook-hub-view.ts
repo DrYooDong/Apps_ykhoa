@@ -3,10 +3,10 @@
  * Path: src/content/clinical-handbook/views/handbook-hub-view.ts
  * 
  * Màn hình Cấp 1 & Cấp 2: Mục lục 8 Chuyên khoa & Danh mục Bệnh lý thực chiến
+ * 100% Design Tokens & Dark/Light Mode Compliant
  */
 
-import '../../../styles/components/module-dashboard.css';
-import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/clinical-handbook.css';
 import { 
   HANDBOOK_SPECIALTIES, 
   getHandbookSpecialtyById 
@@ -18,114 +18,122 @@ export function renderHandbookHubView(activeSpecialtyId: SpecialtyId = 'truyen-n
   const totalDiseases = HANDBOOK_SPECIALTIES.reduce((acc, s) => acc + s.diseases.length, 0);
 
   return `
-    <div class="promax-wrapper" id="handbookMainContent">
+    <div class="handbook-hub-container" id="handbookMainContent">
 
       <!-- BREADCRUMB -->
-      <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
-        <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
-        <span style="color: #0284c7; font-weight: 600;">Sổ Tay Kinh Nghiệm & Đúc Kết Lâm Sàng</span>
-      </div>
+      <nav class="handbook-breadcrumb" aria-label="Breadcrumb">
+        <a href="#/">🏠 Trang chủ</a>
+        <span class="separator">/</span>
+        <span class="current">Sổ Tay Kinh Nghiệm & Đúc Kết Lâm Sàng</span>
+      </nav>
 
       <!-- PROMAX LUXURY HERO SECTION -->
-      <section class="promax-hero hero-handbook-theme" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%); border: 1px solid rgba(2, 132, 199, 0.25); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; position: relative; overflow: hidden;">
-        <div style="position: relative; z-index: 2;">
-          <div class="promax-badge-pulse" style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); border-radius: 999px; font-size: 0.8rem; color: #38bdf8; margin-bottom: 1rem;">
-            <span class="pulse-dot" style="width: 8px; height: 8px; background: #38bdf8; border-radius: 50%; display: inline-block;"></span>
-            <span>Clinical Pearls & Decision Handbook • EBM 2026</span>
+      <header class="handbook-hero">
+        <div class="handbook-hero-badge">
+          <span class="handbook-pulse-dot"></span>
+          <span>Clinical Pearls & Decision Handbook • EBM 2026</span>
+        </div>
+
+        <h1>🩺 SỔ TAY KINH NGHIỆM & ĐÚC KẾT LÂM SÀNG</h1>
+        <p>
+          Kho tích lũy tri thức thực chiến theo từng <strong>Chuyên khoa & Bệnh lý cụ thể</strong>. 
+          Đúc kết những <strong>vùng xám ra quyết định, cạm bẫy cận lâm sàng, sai lầm kê đơn thường gặp</strong> và bảng đối chiếu nhanh tại giường bệnh theo chuẩn Y học chứng cứ mới nhất.
+        </p>
+
+        <!-- KPI METRIC BAR -->
+        <div class="handbook-kpi-row">
+          <div class="handbook-kpi-pill">
+            <i class="fa-solid fa-stethoscope"></i>
+            <div>
+              <strong>${HANDBOOK_SPECIALTIES.length}</strong>
+              <span>Chuyên Khoa</span>
+            </div>
           </div>
 
-          <h1 style="font-size: 2rem; font-weight: 800; margin: 0 0 0.75rem 0; color: var(--color-text, #f8fafc); letter-spacing: -0.02em;">
-            🩺 SỔ TAY KINH NGHIỆM & ĐÚC KẾT LÂM SÀNG
-          </h1>
-          <p style="font-size: 1rem; line-height: 1.6; color: var(--color-text-muted, #94a3b8); max-width: 860px; margin-bottom: 1.5rem;">
-            Kho tích lũy tri thức thực chiến theo từng <strong>Chuyên khoa & Bệnh lý cụ thể</strong>. 
-            Đúc kết những <strong>vùng xám ra quyết định, cạm bẫy cận lâm sàng, sai lầm kê đơn thường gặp</strong> và bảng đối chiếu nhanh tại giường bệnh theo chuẩn Y học chứng cứ mới nhất.
-          </p>
-
-          <!-- KPI METRIC BAR -->
-          <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; background: var(--color-surface, rgba(30, 41, 59, 0.7)); padding: 0.6rem 1.2rem; border-radius: 10px; border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));">
-              <i class="fa-solid fa-stethoscope" style="font-size: 1.25rem; color: #38bdf8;"></i>
-              <div>
-                <div style="font-size: 1.15rem; font-weight: 700; color: var(--color-text);">${HANDBOOK_SPECIALTIES.length}</div>
-                <div style="font-size: 0.75rem; color: var(--color-text-muted);">Chuyên Khoa</div>
-              </div>
+          <div class="handbook-kpi-pill">
+            <i class="fa-solid fa-viruses"></i>
+            <div>
+              <strong>${totalDiseases}</strong>
+              <span>Bệnh Lý Trọng Tâm</span>
             </div>
+          </div>
 
-            <div style="display: flex; align-items: center; gap: 0.75rem; background: var(--color-surface, rgba(30, 41, 59, 0.7)); padding: 0.6rem 1.2rem; border-radius: 10px; border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));">
-              <i class="fa-solid fa-viruses" style="font-size: 1.25rem; color: #34d399;"></i>
-              <div>
-                <div style="font-size: 1.15rem; font-weight: 700; color: var(--color-text);">${totalDiseases}</div>
-                <div style="font-size: 0.75rem; color: var(--color-text-muted);">Bệnh Lý Trọng Tâm</div>
-              </div>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 0.75rem; background: var(--color-surface, rgba(30, 41, 59, 0.7)); padding: 0.6rem 1.2rem; border-radius: 10px; border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));">
-              <i class="fa-solid fa-lightbulb" style="font-size: 1.25rem; color: #f59e0b;"></i>
-              <div>
-                <div style="font-size: 1.15rem; font-weight: 700; color: var(--color-text);">MDX Native</div>
-                <div style="font-size: 0.75rem; color: var(--color-text-muted);">Đúc Kết Thực Chiến</div>
-              </div>
+          <div class="handbook-kpi-pill">
+            <i class="fa-solid fa-book-medical"></i>
+            <div>
+              <strong>MDX Native</strong>
+              <span>Đúc Kết Thực Chiến</span>
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       <!-- SEARCH BAR -->
-      <div style="margin-bottom: 2rem;">
-        <div style="position: relative; max-width: 600px;">
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); font-size: 0.95rem;"></i>
-          <input 
-            type="text" 
-            id="handbook-search-input" 
-            placeholder="Tìm kiếm bệnh lý hoặc kinh nghiệm (Viêm gan B, Sốt xuất huyết, ALT, FibroScan...)" 
-            style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.75rem; background: var(--color-surface, #1e293b); border: 1px solid var(--color-border, #334155); border-radius: 10px; color: var(--color-text, #f8fafc); font-size: 0.95rem; outline: none; transition: border-color 0.2s;"
-          />
+      <div class="handbook-search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input 
+          type="text" 
+          id="handbook-search-input" 
+          class="handbook-search-input"
+          placeholder="Tìm kiếm bệnh lý hoặc kinh nghiệm (Viêm gan B, Sốt xuất huyết, ALT, FibroScan...)" 
+          aria-label="Tìm kiếm bệnh lý trong sổ tay"
+        />
+        <div class="handbook-search-counter" id="handbook-search-counter">
+          <span>Hiển thị tất cả <strong>${currentSpecialty.diseases.length}</strong> bệnh lý</span>
         </div>
       </div>
 
-      <!-- TẦNG 1: MỤC LỤC 8 CHUYÊN KHOA (SPECIALTIES TABS / PILLS) -->
-      <section style="margin-bottom: 2rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-text, #f8fafc); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-layer-group" style="color: #0284c7;"></i>
+      <!-- TẦNG 1: MỤC LỤC CHUYÊN KHOA (SPECIALTIES SEGMENTED RAIL) -->
+      <section class="handbook-specialty-section">
+        <div class="handbook-section-title-row">
+          <h2>
+            <i class="fa-solid fa-layer-group"></i>
             <span>1. Chọn Chuyên Khoa Y Khoa</span>
           </h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">${HANDBOOK_SPECIALTIES.length} chuyên khoa</span>
+          <button type="button" class="btn-toggle-specialties" id="btn-toggle-overview">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>Tổng quan 8 Chuyên khoa</span>
+          </button>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem;">
+        <!-- SPECIALTY HORIZONTAL RAIL -->
+        <div class="handbook-specialty-rail" role="tablist">
           ${HANDBOOK_SPECIALTIES.map(specialty => {
             const isActive = specialty.id === currentSpecialty.id;
             return `
               <a 
                 href="#/clinical-handbook/${specialty.id}" 
-                class="handbook-specialty-card"
-                style="
-                  display: block; 
-                  padding: 1.1rem; 
-                  border-radius: 12px; 
-                  text-decoration: none; 
-                  background: ${isActive ? 'linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(15, 23, 42, 0.8) 100%)' : 'var(--color-surface, #1e293b)'}; 
-                  border: 1px solid ${isActive ? '#0284c7' : 'var(--color-border, rgba(255, 255, 255, 0.08))'}; 
-                  transition: all 0.2s ease;
-                  box-shadow: ${isActive ? '0 4px 16px rgba(2, 132, 199, 0.25)' : 'none'};
-                "
+                class="handbook-specialty-pill ${isActive ? 'is-active' : ''}"
+                role="tab"
+                aria-selected="${isActive ? 'true' : 'false'}"
+                title="${specialty.name} — ${specialty.description}"
               >
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                  <div style="width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: ${specialty.bgColor || 'rgba(2, 132, 199, 0.15)'}; color: ${specialty.color}; font-size: 1.2rem;">
-                    <i class="fa-solid ${specialty.icon}"></i>
-                  </div>
-                  <span style="font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); color: var(--color-text-muted); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    ${specialty.diseases.length} bệnh
-                  </span>
+                <i class="fa-solid ${specialty.icon}" style="color: ${isActive ? 'inherit' : specialty.color};"></i>
+                <span>${specialty.shortName}</span>
+                <span class="pill-count">
+                  ${specialty.diseases.length > 0 ? `${specialty.diseases.length} bệnh` : 'Sắp có'}
+                </span>
+              </a>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- EXPANDABLE OVERVIEW GRID (COLLAPSIBLE) -->
+        <div class="handbook-specialties-overview-grid" id="handbook-overview-grid" style="display: none;">
+          ${HANDBOOK_SPECIALTIES.map(spec => {
+            const isActive = spec.id === currentSpecialty.id;
+            return `
+              <a 
+                href="#/clinical-handbook/${spec.id}" 
+                class="spec-overview-card ${isActive ? 'is-active' : ''}"
+              >
+                <div class="spec-overview-icon" style="background: ${spec.bgColor}; color: ${spec.color};">
+                  <i class="fa-solid ${spec.icon}"></i>
                 </div>
-                <h3 style="font-size: 1rem; font-weight: 700; color: ${isActive ? '#38bdf8' : 'var(--color-text, #f8fafc)'}; margin: 0 0 0.25rem 0;">
-                  ${specialty.name}
-                </h3>
-                <p style="font-size: 0.78rem; color: var(--color-text-muted, #94a3b8); margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                  ${specialty.description}
-                </p>
+                <div>
+                  <h4>${spec.name}</h4>
+                  <p>${spec.description}</p>
+                </div>
               </a>
             `;
           }).join('')}
@@ -133,113 +141,105 @@ export function renderHandbookHubView(activeSpecialtyId: SpecialtyId = 'truyen-n
       </section>
 
       <!-- TẦNG 2: DANH MỤC BỆNH LÝ TRONG CHUYÊN KHOA ĐANG CHỌN -->
-      <section style="margin-top: 2.5rem;" id="disease-list-section">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border, rgba(255, 255, 255, 0.08)); padding-bottom: 0.75rem;">
+      <section class="handbook-disease-section" id="disease-list-section">
+        <div class="handbook-section-title-row">
           <div>
-            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: ${currentSpecialty.color}; font-weight: 700; margin-bottom: 0.2rem;">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--handbook-primary); font-weight: 700; margin-bottom: 0.2rem;">
               Chuyên khoa đang chọn
             </div>
-            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--color-text, #f8fafc); margin: 0; display: flex; align-items: center; gap: 0.6rem;">
+            <h2>
               <i class="fa-solid ${currentSpecialty.icon}" style="color: ${currentSpecialty.color};"></i>
               <span>${currentSpecialty.name}</span>
             </h2>
           </div>
-          <span style="font-size: 0.85rem; padding: 4px 12px; border-radius: 6px; background: rgba(2, 132, 199, 0.12); color: #38bdf8; font-weight: 600;">
+          <span class="handbook-status-badge">
             ${currentSpecialty.badge}
           </span>
         </div>
 
         <!-- DANH SÁCH BỆNH LÝ DẠNG CARDS -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.25rem;" id="handbook-disease-cards-container">
-          ${currentSpecialty.diseases.map(disease => `
-            <div 
-              class="handbook-disease-card"
-              style="
-                background: var(--color-surface, #1e293b); 
-                border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08)); 
-                border-radius: 14px; 
-                padding: 1.4rem; 
-                display: flex; 
-                flex-direction: column; 
-                justify-content: space-between; 
-                transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-              "
-            >
-              <div>
-                <!-- Top Meta -->
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
-                  <div style="display: flex; align-items: center; gap: 0.6rem;">
-                    <div style="width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(2, 132, 199, 0.12); color: ${disease.color || '#0284c7'}; font-size: 1.1rem;">
-                      <i class="fa-solid ${disease.icon}"></i>
-                    </div>
-                    <div>
-                      <span style="font-size: 0.72rem; font-weight: 700; color: #38bdf8; background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 4px;">
+        ${currentSpecialty.diseases.length > 0 ? `
+          <div class="handbook-diseases-grid" id="handbook-disease-cards-container">
+            ${currentSpecialty.diseases.map(disease => `
+              <div 
+                class="handbook-disease-card"
+                data-name="${disease.name.toLowerCase()}"
+                data-icd="${disease.icd10.toLowerCase()}"
+                data-summary="${disease.summary.toLowerCase()}"
+              >
+                <div>
+                  <!-- Top Meta -->
+                  <div class="disease-card-header">
+                    <div style="display: flex; align-items: center; gap: 0.6rem;">
+                      <div class="disease-card-icon" style="color: ${disease.color || 'var(--handbook-primary)'};">
+                        <i class="fa-solid ${disease.icon}"></i>
+                      </div>
+                      <span class="handbook-icd-badge">
                         ICD-10: ${disease.icd10}
                       </span>
                     </div>
+
+                    ${disease.badge ? `
+                      <span class="handbook-status-badge">
+                        ${disease.badge}
+                      </span>
+                    ` : ''}
                   </div>
 
-                  ${disease.badge ? `
-                    <span style="font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
-                      ${disease.badge}
-                    </span>
-                  ` : ''}
-                </div>
+                  <!-- Tên bệnh lý -->
+                  <h3>${disease.name}</h3>
+                  <div class="disease-name-en">${disease.nameEn}</div>
 
-                <!-- Tên bệnh lý -->
-                <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text, #f8fafc); margin: 0 0 0.2rem 0;">
-                  ${disease.name}
-                </h3>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted, #94a3b8); margin-bottom: 0.75rem; font-style: italic;">
-                  ${disease.nameEn}
-                </div>
+                  <!-- Tóm tắt ngắn -->
+                  <p class="disease-card-desc">${disease.summary}</p>
 
-                <!-- Tóm tắt ngắn -->
-                <p style="font-size: 0.84rem; line-height: 1.5; color: var(--color-text-muted, #cbd5e1); margin: 0 0 1rem 0;">
-                  ${disease.summary}
-                </p>
-
-                <!-- Key Pearls Preview -->
-                <div style="background: rgba(2, 132, 199, 0.05); border-left: 3px solid #0284c7; padding: 8px 10px; border-radius: 0 8px 8px 0; margin-bottom: 1rem;">
-                  <div style="font-size: 0.72rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;">
-                    <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Đúc kết cốt lõi:
+                  <!-- Key Pearls Preview -->
+                  <div class="handbook-pearl-preview-box">
+                    <div class="pearl-box-title">
+                      <i class="fa-solid fa-lightbulb"></i>
+                      <span>Đúc kết cốt lõi:</span>
+                    </div>
+                    <ul>
+                      ${disease.keyPearlsPreview.slice(0, 2).map(pearl => `<li>${pearl}</li>`).join('')}
+                    </ul>
                   </div>
-                  <ul style="margin: 0; padding-left: 1rem; font-size: 0.75rem; color: var(--color-text, #e2e8f0); line-height: 1.45;">
-                    ${disease.keyPearlsPreview.slice(0, 2).map(pearl => `<li style="margin-bottom: 3px;">${pearl}</li>`).join('')}
-                  </ul>
+                </div>
+
+                <!-- Action Link -->
+                <div class="disease-card-footer">
+                  <span class="article-count-label">
+                    <i class="fa-solid fa-book-medical"></i>
+                    ${disease.articles.length > 0 ? `<strong>${disease.articles.length}</strong> bài đúc kết` : 'Đang biên soạn'}
+                  </span>
+
+                  <a 
+                    href="#/clinical-handbook/${currentSpecialty.id}/${disease.slug}" 
+                    class="btn-handbook-read"
+                  >
+                    <span>Xem đúc kết</span>
+                    <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+                  </a>
                 </div>
               </div>
-
-              <!-- Action Link -->
-              <div style="border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.06)); padding-top: 0.85rem; display: flex; align-items: center; justify-content: space-between;">
-                <span style="font-size: 0.75rem; color: var(--color-text-muted);">
-                  <i class="fa-solid fa-book-medical" style="margin-right: 4px; color: #38bdf8;"></i>
-                  ${disease.articles.length > 0 ? `<strong>${disease.articles.length}</strong> bài đúc kết` : 'Đang cập nhật'}
-                </span>
-
-                <a 
-                  href="#/clinical-handbook/${currentSpecialty.id}/${disease.slug}" 
-                  style="
-                    display: inline-flex; 
-                    align-items: center; 
-                    gap: 6px; 
-                    font-size: 0.85rem; 
-                    font-weight: 700; 
-                    color: #fff; 
-                    background: #0284c7; 
-                    padding: 6px 14px; 
-                    border-radius: 8px; 
-                    text-decoration: none; 
-                    transition: background 0.2s;
-                  "
-                >
-                  <span>Xem đúc kết</span>
-                  <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
-                </a>
-              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <div style="text-align: center; padding: 3rem 1.5rem; background: var(--handbook-surface); border: 1px dashed var(--handbook-border); border-radius: var(--handbook-radius-lg);">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--handbook-primary-hl); color: var(--handbook-primary); display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem;">
+              <i class="fa-solid fa-pen-ruler"></i>
             </div>
-          `).join('')}
-        </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--handbook-text); margin: 0 0 0.5rem 0;">
+              Chuyên khoa ${currentSpecialty.name} Đang Được Biên Soạn
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--handbook-muted); max-width: 600px; margin: 0 auto 1.5rem auto;">
+              Hội đồng Y học chứng cứ CliniPortal đang chuẩn hóa các bài đúc kết thực chiến theo khuyến cáo 2026. Mời bạn tham khảo 8 Bệnh lý Trọng tâm thuộc Chuyên khoa Truyền Nhiễm.
+            </p>
+            <a href="#/clinical-handbook/truyen-nhiem" class="btn-handbook-read">
+              <i class="fa-solid fa-virus-covid"></i>
+              <span>Xem Chuyên Khoa Truyền Nhiễm</span>
+            </a>
+          </div>
+        `}
       </section>
 
     </div>
@@ -247,21 +247,53 @@ export function renderHandbookHubView(activeSpecialtyId: SpecialtyId = 'truyen-n
 }
 
 export function initHandbookHubView(): void {
+  // 1. Search Bar Filter
   const searchInput = document.getElementById('handbook-search-input') as HTMLInputElement | null;
-  if (!searchInput) return;
+  const searchCounter = document.getElementById('handbook-search-counter');
 
-  searchInput.addEventListener('input', (e) => {
-    const val = (e.target as HTMLInputElement).value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.handbook-disease-card');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const val = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.handbook-disease-card');
+      let visibleCount = 0;
 
-    cards.forEach(card => {
-      const el = card as HTMLElement;
-      const text = el.innerText.toLowerCase();
-      if (!val || text.includes(val)) {
-        el.style.display = 'flex';
-      } else {
-        el.style.display = 'none';
+      cards.forEach(card => {
+        const el = card as HTMLElement;
+        const name = el.getAttribute('data-name') || '';
+        const icd = el.getAttribute('data-icd') || '';
+        const summary = el.getAttribute('data-summary') || '';
+        const text = el.innerText.toLowerCase();
+
+        const isMatch = !val || name.includes(val) || icd.includes(val) || summary.includes(val) || text.includes(val);
+        if (isMatch) {
+          el.style.display = 'flex';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (searchCounter) {
+        if (val) {
+          searchCounter.innerHTML = `Tìm thấy <strong>${visibleCount}</strong> kết quả phù hợp cho "<em>${val}</em>"`;
+        } else {
+          searchCounter.innerHTML = `Hiển thị tất cả <strong>${cards.length}</strong> bệnh lý`;
+        }
       }
     });
-  });
+  }
+
+  // 2. Toggle Overview Grid
+  const btnToggle = document.getElementById('btn-toggle-overview');
+  const overviewGrid = document.getElementById('handbook-overview-grid');
+
+  if (btnToggle && overviewGrid) {
+    btnToggle.addEventListener('click', () => {
+      const isHidden = overviewGrid.style.display === 'none';
+      overviewGrid.style.display = isHidden ? 'grid' : 'none';
+      btnToggle.innerHTML = isHidden 
+        ? '<i class="fa-solid fa-chevron-up"></i><span>Thu gọn 8 Chuyên khoa</span>'
+        : '<i class="fa-solid fa-table-cells-large"></i><span>Tổng quan 8 Chuyên khoa</span>';
+    });
+  }
 }
