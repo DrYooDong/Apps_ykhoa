@@ -17,6 +17,7 @@ export interface Props {
   guytonChapter?: string;
   clinicalPearls?: string[];
   sections?: SectionMeta[];
+  hideSidebar?: boolean;
 }
 
 const {
@@ -26,8 +27,11 @@ const {
   code,
   guytonChapter,
   clinicalPearls = [],
-  sections = []
+  sections = [],
+  hideSidebar = false
 } = Astro.props;
+
+const hasSidebar = !hideSidebar && sections.length > 0;
 ---
 
 <BaseLayout title={`${title} — CliniPortal`} description={description}>
@@ -73,14 +77,14 @@ const {
     )}
 
     <!-- Article Body with Sidebar TOC -->
-    <div class="article-layout-grid">
+    <div class:list={["article-layout-grid", { "no-sidebar": !hasSidebar }]}>
       <div class="article-content-wrapper">
         <article class="article-prose">
           <slot />
         </article>
       </div>
 
-      {sections.length > 0 && (
+      {hasSidebar && (
         <aside class="article-sidebar" aria-label="Mục lục bài viết">
           <div class="toc-sticky-box">
             <div class="toc-title">
@@ -169,6 +173,12 @@ const {
     grid-template-columns: 1fr 280px;
     gap: var(--space-10);
     align-items: start;
+  }
+
+  .article-layout-grid.no-sidebar {
+    grid-template-columns: 1fr;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .article-content-wrapper {

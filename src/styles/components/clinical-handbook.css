@@ -1019,10 +1019,10 @@
 }
 
 .handbook-reader-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 2rem;
-  align-items: start;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .handbook-article-body {
@@ -1035,15 +1035,7 @@
 }
 
 .handbook-reader-sidebar {
-  position: sticky;
-  top: 1.5rem;
-  background: var(--handbook-surface);
-  border: 1px solid var(--handbook-border);
-  border-radius: var(--handbook-radius-md);
-  padding: 1.25rem;
-  max-height: calc(100vh - 3rem);
-  overflow-y: auto;
-  box-shadow: var(--handbook-card-shadow);
+  display: none !important;
 }
 
 .reader-sidebar-title {
@@ -1931,13 +1923,11 @@
    ============================================================ */
 @media (max-width: 992px) {
   .handbook-reader-layout {
-    grid-template-columns: 1fr;
+    width: 100%;
   }
   
   .handbook-reader-sidebar {
-    position: static;
-    max-height: none;
-    margin-bottom: 1.5rem;
+    display: none !important;
   }
 }
 

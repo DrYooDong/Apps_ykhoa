@@ -75,7 +75,7 @@ export function renderHandbookReaderView(specialtyId: SpecialtyId, diseaseSlug: 
         </div>
       </header>
 
-      <!-- TWO COLUMN LAYOUT: SIDEBAR TOC + ARTICLE BODY -->
+      <!-- ARTICLE BODY CONTAINER (1 COLUMN FULLWIDTH - PILLARS QUICK NAV ONLY) -->
       <div class="handbook-reader-layout">
         
         <!-- MAIN ARTICLE BODY CONTAINER -->
@@ -87,28 +87,6 @@ export function renderHandbookReaderView(specialtyId: SpecialtyId, diseaseSlug: 
           </div>
         </main>
 
-        <!-- STICKY TABLE OF CONTENTS (TOC) -->
-        <aside class="handbook-reader-sidebar" aria-label="Mục lục bài viết">
-          <div class="reader-sidebar-title">
-            <i class="fa-solid fa-bars-staggered"></i>
-            <span>Mục lục bài viết</span>
-          </div>
-
-          <div id="handbook-toc-container">
-            <p style="color: var(--handbook-muted); font-size: 0.8rem;">Đang tạo mục lục...</p>
-          </div>
-
-          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--handbook-divider);">
-            <div style="font-size: 0.75rem; color: var(--handbook-muted); margin-bottom: 0.4rem;">
-              <i class="fa-solid fa-graduation-cap" style="color: #34d399; margin-right: 4px;"></i>
-              <strong style="color: var(--handbook-text);">Sổ Tay Lâm Sàng CliniPortal</strong>
-            </div>
-            <p style="font-size: 0.72rem; color: var(--handbook-muted); margin: 0; line-height: 1.45;">
-              Biên soạn theo nguyên tắc Y học chứng cứ (EBM), đối chiếu AASLD 2024 / EASL 2024.
-            </p>
-          </div>
-        </aside>
-
       </div>
 
     </div>
@@ -117,7 +95,6 @@ export function renderHandbookReaderView(specialtyId: SpecialtyId, diseaseSlug: 
 
 export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSlug: string, articleSlug: string): Promise<void> {
   const mountEl = document.getElementById('handbook-rendered-body');
-  const tocEl = document.getElementById('handbook-toc-container');
   if (!mountEl) return;
 
   const cleanArticleSlug = articleSlug.replace(/\.mdx$/i, '');
@@ -188,43 +165,6 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
     </article>
   `;
 
-  // Render TOC
-  if (tocEl && parsed.toc && parsed.toc.length > 0) {
-    tocEl.innerHTML = `
-      <ul class="handbook-toc-list">
-        ${parsed.toc.map(item => `
-          <li style="margin-left: ${item.level === 3 ? '12px' : '0'};">
-            <a 
-              href="#${item.id}" 
-              class="handbook-toc-link"
-              data-target="${item.id}"
-            >
-              ${item.text}
-            </a>
-          </li>
-        `).join('')}
-      </ul>
-    `;
-
-    // Smooth scroll for TOC links
-    document.querySelectorAll('.handbook-toc-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = (link as HTMLElement).getAttribute('data-target');
-        if (targetId) {
-          const targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.replaceState(null, '', `#${targetId}`);
-
-            document.querySelectorAll('.handbook-toc-link').forEach(l => l.classList.remove('is-active'));
-            link.classList.add('is-active');
-          }
-        }
-      });
-    });
-  }
-
   // Smooth scroll for Sticky Pillars Quick Nav
   document.querySelectorAll('.pillar-link').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -239,20 +179,12 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
 
           document.querySelectorAll('.pillar-link').forEach(l => l.classList.remove('active'));
           link.classList.add('active');
-
-          // Sync TOC sidebar active state
-          document.querySelectorAll('.handbook-toc-link').forEach(l => {
-            if ((l as HTMLElement).getAttribute('data-target') === targetId) {
-              document.querySelectorAll('.handbook-toc-link').forEach(x => x.classList.remove('is-active'));
-              l.classList.add('is-active');
-            }
-          });
         }
       }
     });
   });
 
-  // IntersectionObserver to auto-highlight TOC and Pillars on scroll
+  // IntersectionObserver to auto-highlight Pillars Quick Nav on scroll
   const sections = mountEl.querySelectorAll('.mdx-section, h2[id], h3[id]');
   if ('IntersectionObserver' in window && sections.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -260,11 +192,6 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
         if (entry.isIntersecting) {
           const activeId = entry.target.id;
           if (activeId) {
-            // Update TOC link
-            document.querySelectorAll('.handbook-toc-link').forEach(l => {
-              const target = (l as HTMLElement).getAttribute('data-target');
-              l.classList.toggle('is-active', target === activeId);
-            });
             // Update Pillar link
             document.querySelectorAll('.pillar-link').forEach(l => {
               const href = (l as HTMLAnchorElement).getAttribute('href');

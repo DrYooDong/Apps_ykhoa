@@ -258,7 +258,65 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
     ],
     guidelines: ['WHO 2024 Dengue Guidelines', 'Quyết định 2760/QĐ-BYT'],
     order: 2,
-    articles: []
+    articles: [
+      {
+        id: 'dengue-01-chan-doan-phan-do-va-dong-hoc',
+        slug: 'dengue-01-chan-doan-phan-do-va-dong-hoc',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Chẩn Đoán Xác Định, Phân Độ & Động Học Sốt Xuất Huyết Dengue',
+        subtitle: 'Giá trị các yếu tố lâm sàng, cận lâm sàng, dấu hiệu cảnh báo (DWS) và nhận diện sớm sốc thoát huyết tương theo QĐ 2760/QĐ-BYT',
+        description: 'Hướng dẫn toàn diện từ cơ chế thoát huyết tương, động học Hct - Tiểu cầu - NS1Ag, bộ dấu hiệu cảnh báo (DWS), phân độ BYT 2760 / WHO 2009 đến 3 ca lâm sàng thực chiến có bẫy tán huyết Coombs (+).',
+        estimatedMinutes: 25,
+        tags: ['Sốt xuất huyết Dengue', 'Tiêu chuẩn chẩn đoán', 'Dấu hiệu cảnh báo DWS', 'Hematocrit', 'Tiểu cầu', 'NS1Ag', 'Sốc SXHD', 'QĐ 2760/QĐ-BYT', 'EBM 2026'],
+        keyTakeaway: 'Thời điểm nguy hiểm nhất là khi bắt đầu hạ sốt (N3-N7); Hct tăng ≥ 20% là tiêu chuẩn vàng cô đặc máu; tuyệt đối ngưng bù dịch ở pha tái hấp thu để ngừa phù phổi cấp.',
+        order: 1,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-01-chan-doan-phan-do-va-dong-hoc.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-09',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2024/2025',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)', icon: 'fa-bolt' },
+          { id: 'sec-pathophysiology-3phases', number: 2, title: 'Tổng Quan Sinh Lý Bệnh & Động Học 3 Giai Đoạn Bệnh', icon: 'fa-diagram-project' },
+          { id: 'sec-clinical-dws-staging', number: 3, title: 'Giá Trị Yếu Tố Lâm Sàng, Dấu Hiệu Cảnh Báo (DWS) & Phân Độ', icon: 'fa-clipboard-check' },
+          { id: 'sec-lab-biomarkers-cbc', number: 4, title: 'Giá Trị Cận Lâm Sàng: Dấu Ấn Vi Sinh & Động Học Công Thức Máu', icon: 'fa-vial-virus' },
+          { id: 'sec-biochem-imaging-pitfalls', number: 5, title: 'Sinh Hóa Máu, Chẩn Đoán Hình Ảnh & Cạm Bẫy Lâm Sàng', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-decision-flow', number: 6, title: 'Lưu Đồ Thuật Toán Phân Tầng & Ray Dẫn Đường Quyết Định', icon: 'fa-route' },
+          { id: 'sec-case-scenarios', number: 7, title: 'Tuyển Tập 3 Ca Lâm Sàng Thực Chiến & Biện Luận Phức Tạp', icon: 'fa-user-doctor' },
+          { id: 'sec-self-assessment', number: 8, title: 'Bộ Câu Hỏi Tự Đánh Giá & Đáp Án Biện Luận Y Khoa', icon: 'fa-circle-question' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'hh',
+        slug: 'hh',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Bệnh Nhân Sốt Xuất Huyết Dengue Có Men Gan > 1000 U/L (Viêm Gan Nặng & Suy Gan Cấp)',
+        subtitle: 'Phân tầng DISH vs ALF, bẫy Ringer Lactate/Paracetamol, phác đồ N-Acetylcysteine và lọc máu cấp cứu (QĐ 2760/QĐ-BYT)',
+        description: 'Hướng dẫn toàn diện từ cơ chế 5 tầng hoại tử tế bào gan, thang điểm MELD, tiêu chuẩn chẩn đoán Viêm gan nặng (DISH) và Suy gan cấp (ALF) đến phác đồ dịch truyền NaCl 0.9%, NAC tĩnh mạch, TPE/CRRT và phân tích 3 ca thực chiến có bẫy tán huyết.',
+        estimatedMinutes: 25,
+        tags: ['Sốt xuất huyết Dengue', 'Men gan > 1000 U/L', 'Viêm gan nặng (DISH)', 'Suy gan cấp (ALF)', 'N-Acetylcysteine (NAC)', 'Thay huyết tương (TPE)', 'MELD Score', 'Bẫy Ringer Lactate', 'QĐ 2760/QĐ-BYT', 'EBM 2026'],
+        keyTakeaway: 'Men gan AST/ALT ≥ 1000 U/L là SXHD nặng; chống chỉ định Ringer Lactate và ngưng tuyệt đối Paracetamol; dùng ngay NAC khi có Bệnh não gan + INR ≥ 1.5 hoặc MELD ≥ 15.',
+        order: 2,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/hh.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-09',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2025',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)', icon: 'fa-bolt' },
+          { id: 'sec-definition-staging', number: 2, title: 'Định Nghĩa, Phân Tầng DISH - ALF & Gánh Nặng Dịch Tễ', icon: 'fa-layer-group' },
+          { id: 'sec-pathophysiology', number: 3, title: 'Cơ Chế Bệnh Sinh 5 Tầng Tổn Thương Gan & Editorial SVG', icon: 'fa-diagram-project' },
+          { id: 'sec-clinical-biomarkers', number: 4, title: 'Đặc Điểm Lâm Sàng, Động Học AST > ALT & Thang Điểm MELD', icon: 'fa-chart-line' },
+          { id: 'sec-diagnostic-flowtrack', number: 5, title: 'Quy Trình 4 Bước Phân Tầng & Bảng Chẩn Đoán Phân Biệt', icon: 'fa-route' },
+          { id: 'sec-treatment-protocol', number: 6, title: 'Phác Đồ Hồi Sức Tích Cực, Liệu Pháp NAC & Thay Huyết Tương', icon: 'fa-heart-pulse' },
+          { id: 'sec-pitfalls-grid', number: 7, title: 'Lưới 4 Cạm Bẫy Lâm Sàng Tử Vong Trong Suy Gan Dengue', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenarios', number: 8, title: 'Tuyển Tập 3 Ca Lâm Sàng Thực Chiến & Biện Luận Phức Tạp', icon: 'fa-user-doctor' },
+          { id: 'sec-self-assessment', number: 9, title: 'Bộ Câu Hỏi Tự Đánh Giá & Đáp Án Biện Luận Y Khoa', icon: 'fa-circle-question' },
+          { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   },
   {
     id: 'nhiem-khuan-huyet',
