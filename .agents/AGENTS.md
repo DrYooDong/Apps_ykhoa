@@ -65,7 +65,7 @@ d:\Apps_ykhoa\.agents/
     ├── Workflow & Quality Skills     # brainstorming, code-reviewer, find-bugs, ui-review, simplify-code, multi-agent-optimization, subagent-coding-workflow...
     ├── Performance & Standards       # performance-optimizer, wcag-audit-patterns, accessibility-wcag-medical...
     ├── Medical Content & SEO         # schema-markup-generator, medical-seo-structure, pubmed-research-linker...
-    └── Medical Domain Modules        # pathology-approach-module, symptom-approach-module, clinical-tools, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
+    └── Medical Domain Modules        # clinical-handbook-mdx-module, basic-medical-mdx-module, pathology-approach-module, symptom-approach-module, clinical-tools, docspace-clinical-pipeline, docspace-cdss-builder, docspace-soap-ingester, docspace-prompt-06-07-ingester...
 ```
 
 ---
@@ -89,6 +89,7 @@ d:\Apps_ykhoa\.agents/
 | Nạp Ca & Khai thác NotebookLM DocSpace | Skill `docspace-case-ingestion-squad`, `.agents/docs/DOCSPACE_CASE_INGESTION_KANBAN.md` & `src/content/docspace/docs/CASE_INGESTION_SOP.md` |
 | Giả lập Lâm sàng, OSCE & EMR DocSpace | Skill `docspace-clinical-simulation-squad`, `.agents/docs/DOCSPACE_CLINICAL_SIMULATION_KANBAN.md` & `src/content/docspace/docs/CLINICAL_SIMULATION_GUIDELINES.md` |
 | Sổ tay Kinh nghiệm SOAP & Quản trị Ca bệnh | Skill `docspace-soap-guardian-squad`, `docspace-soap-ingester`, `.agents/docs/DOCSPACE_SOAP_SQUAD_KANBAN.md` & `tools/scripts/validate-soap-catalog.mjs` |
+| Sổ Tay Lâm Sàng (Clinical Handbook MDX) | Skill `clinical-handbook-mdx-module`, `src/content/clinical-handbook/HANDBOOK_MDX_DESIGN_SPEC.md` & `handbook-catalog.ts` |
 | DocSpace, CDSS, Prompts, Bệnh học | Skill `docspace-clinical-pipeline`, `docspace-cdss-builder`, `docspace-soap-ingester`, `docspace-prompt-06-07-ingester` |
 | Thiết kế UI/UX, Component CliniPortal | `.agents/docs/design-vault/0.0_DESIGN_VAULT_INDEX.md` & Skill `core-components` |
 | Quản lý Task Design CliniPortal | `.agents/docs/DESIGN_SQUAD_KANBAN.md` |

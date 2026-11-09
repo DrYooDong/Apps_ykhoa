@@ -1,0 +1,776 @@
+---
+title: "Phác Đồ Điều Trị Viêm Gan Siêu Vi B Mạn Ngoại Trú & Quản Lý Tình Huống Đặc Biệt"
+slug: "hbv-02-phac-do-dieu-tri-ngoai-tru"
+specialty: "truyen-nhiem"
+specialtyLabel: "Bệnh Truyền Nhiễm & Nhiệt Đới"
+disease: "viem-gan-b"
+diseaseLabel: "Viêm Gan Siêu Vi B (HBV)"
+order: 2
+tags:
+  - "HBV"
+  - "Điều trị ngoại trú"
+  - "Tenofovir TDF"
+  - "Tenofovir TAF"
+  - "Entecavir"
+  - "Chỉnh liều suy thận"
+  - "Phụ nữ mang thai"
+  - "Dự phòng PMTCT"
+  - "Đồng nhiễm HIV/HCV"
+  - "Tiêu chuẩn ngưng NAs"
+  - "Tầm soát HCC"
+  - "QĐ 1740/QĐ-BYT"
+  - "EBM 2026"
+difficulty: "advanced"
+estimatedTime: 25
+lastUpdated: "2026-11-09"
+evidenceLevel: "EBM 2026 • QĐ 1740/QĐ-BYT • EASL / AASLD"
+sections:
+  - id: "sec-takeaway"
+    number: 1
+    title: "Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)"
+    icon: "fa-bolt"
+  - id: "sec-outpatient-goals"
+    number: 2
+    title: "Mục Tiêu & Bộ Tiêu Chuẩn Chỉ Định NAs Ngoại Trú"
+    icon: "fa-clipboard-check"
+  - id: "sec-firstline-nas"
+    number: 3
+    title: "Phác Đồ Thuốc NAs Hàng Một (TDF vs TAF vs ETV)"
+    icon: "fa-pills"
+  - id: "sec-renal-dosing"
+    number: 4
+    title: "Bảng Hiệu Chỉnh Liều Dùng Theo eGFR & Thận Nhân Tạo"
+    icon: "fa-droplet"
+  - id: "sec-special-populations"
+    number: 5
+    title: "Phác Đồ 6 Tình Huống Đặc Biệt Thường Gặp Ngoại Trú"
+    icon: "fa-hospital-user"
+  - id: "sec-stopping-criteria"
+    number: 6
+    title: "Tiêu Chuẩn Cân Nhắc Ngưng NAs & Theo Dõi Sau Ngưng"
+    icon: "fa-door-open"
+  - id: "sec-monitoring-hcc"
+    number: 7
+    title: "Lịch Tái Khám Định Kỳ & Tầm Soát Ung Thư Gan (HCC)"
+    icon: "fa-calendar-check"
+  - id: "sec-decision-algorithm"
+    number: 8
+    title: "Sơ Đồ Thuật Toán Quyết Định & Ray Dẫn Đường Tiếp Cận"
+    icon: "fa-diagram-project"
+  - id: "sec-case-scenarios"
+    number: 9
+    title: "Ca Lâm Sàng Thực Chiến & Đúc Kết Xương Máu"
+    icon: "fa-user-doctor"
+  - id: "sec-references"
+    number: 10
+    title: "Tài Liệu Tham Khảo (Chuẩn AMA Format)"
+    icon: "fa-book-bookmark"
+---
+
+# 💊 PHÁC ĐỒ ĐIỀU TRỊ VIÊM GAN SIÊU VI B MẠN NGOẠI TRÚ & QUẢN LÝ TÌNH HUỐNG ĐẶC BIỆT
+
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-virus-covid"></i> Bệnh Truyền Nhiễm</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> QĐ 1740/QĐ-BYT (2026)</span>
+  <span class="badge" style="background: rgba(245, 158, 11, 0.12); color: #d97706; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25);"><i class="fa-solid fa-shield-halved"></i> EBM 2026 EASL / AASLD / APASL</span>
+</div>
+
+<!-- DẢI CHỈ SỐ NHANH 30S -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">&lt; 20 IU/mL</div>
+      <div class="stat-lbl">Mục tiêu ức chế tối đa HBV DNA dưới ngưỡng nhạy cao</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">CẤM NGƯNG</div>
+      <div class="stat-lbl">Chống chỉ định ngưng NAs tuyệt đối ở bệnh nhân xơ gan (F4)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">Tuần 14–28</div>
+      <div class="stat-lbl">Cửa sổ khởi trị NAs dự phòng lây truyền mẹ sang con (PMTCT)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">TAF 25 mg</div>
+      <div class="stat-lbl">Không cần chỉnh liều nếu eGFR &ge; 15 mL/phút hoặc chạy thận</div>
+    </div>
+  </div>
+</section>
+
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
+<nav class="pillars-nav">
+  <div class="pillars-nav-inner">
+    <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
+    <a href="#sec-outpatient-goals" class="pillar-link"><i class="fa-solid fa-clipboard-check"></i> 2. Tiêu Chuẩn NAs</a>
+    <a href="#sec-firstline-nas" class="pillar-link"><i class="fa-solid fa-pills"></i> 3. Phác Đồ NAs</a>
+    <a href="#sec-renal-dosing" class="pillar-link"><i class="fa-solid fa-droplet"></i> 4. Chỉnh Liều Thận</a>
+    <a href="#sec-special-populations" class="pillar-link"><i class="fa-solid fa-hospital-user"></i> 5. Nhóm Đặc Biệt</a>
+    <a href="#sec-stopping-criteria" class="pillar-link"><i class="fa-solid fa-door-open"></i> 6. Ngưng Thuốc NAs</a>
+    <a href="#sec-monitoring-hcc" class="pillar-link"><i class="fa-solid fa-calendar-check"></i> 7. Tầm Soát HCC</a>
+    <a href="#sec-decision-algorithm" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 8. Sơ Đồ Tiếp Cận</a>
+    <a href="#sec-case-scenarios" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 9. Ca Thực Chiến</a>
+  </div>
+</nav>
+
+---
+
+## ⚡ 1. ĐÚC KẾT 30 GIÂY (THE BOTTOM LINE & RULE OF THUMB) {#sec-takeaway}
+
+<div class="callout callout-pearl">
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC VÀNG TRONG ĐIỀU TRỊ VIÊM GAN B MẠN NGOẠI TRÚ</div>
+  <p>
+    Quản lý viêm gan virus B mạn tính tại phòng khám ngoại trú theo <strong>Quyết định 1740/QĐ-BYT (2026)</strong> và khuyến cáo quốc tế <strong>EASL 2025 / AASLD 2025</strong> đặt trọng tâm vào <strong>ức chế virus liên tục, ngăn ngừa xơ hóa tiến triển và tầm soát phát hiện sớm ung thư gan (HCC)</strong>.
+  </p>
+  <ul>
+    <li><strong>Quy tắc chọn thuốc hàng một:</strong> Lựa chọn đơn trị liệu bằng một trong ba thuốc Nucleot(s)ide Analogues (NAs) có rào cản kháng thuốc cao: <strong>TDF (300 mg/ngày)</strong>, <strong>TAF (25 mg/ngày)</strong>, hoặc <strong>ETV (0.5 mg/ngày)</strong>.</li>
+    <li><strong>Quy tắc bảo vệ thận và xương:</strong> Ưu tiên chọn <strong>TAF hoặc ETV</strong> cho bệnh nhân &gt; 60 tuổi, người có tiền sử hoặc nguy cơ bệnh thận mạn ($\text{eGFR} &lt; 60\text{ mL/phút}$) hoặc loãng xương. TDF là lựa chọn hàng đầu cho phụ nữ có thai.</li>
+    <li><strong>Quy tắc tuân thủ điều trị:</strong> NAs là điều trị dài hạn, đa số kéo dài suốt đời. Ngưng thuốc bừa bãi có thể kích hoạt đợt bùng phát viêm gan cấp (Rebound flare) dẫn đến suy gan tối cấp tử vong.</li>
+    <li><strong>Quy tắc tầm soát HCC song hành:</strong> Mọi bệnh nhân nhiễm HBV mạn tính (dù chưa điều trị, đang điều trị hay đã ngưng thuốc) bắt buộc phải <strong>siêu âm ổ bụng kết hợp định lượng AFP &plusmn; PIVKA-II định kỳ mỗi 6 tháng</strong>.</li>
+  </ul>
+</div>
+
+<div class="callout callout-danger">
+  <div class="callout-title"><i class="fa-solid fa-skull-crossbones"></i> CẠM BẪY CHẾT NGƯỜI: TỰ Ý NGƯNG THUỐC NAs Ở BỆNH NHÂN XƠ GAN</div>
+  <div class="callout-body">
+    Tuyệt đối <strong>KHÔNG BAO GIỜ ngưng thuốc NAs</strong> ở bệnh nhân đã có xơ gan (F4) hoặc xơ hóa gan tiến triển (F3), ngay cả khi tải lượng HBV DNA đã âm tính liên tục nhiều năm và HBeAg đã chuyển đổi huyết thanh. Tái hoạt virus ở bệnh nhân xơ gan có tỷ lệ suy gan mất bù và tử vong lên tới <strong>40–60%</strong>!
+  </div>
+</div>
+
+---
+
+## 📋 2. MỤC TIÊU & BỘ TIÊU CHUẨN CHỈ ĐỊNH NAs NGOẠI TRÚ {#sec-outpatient-goals}
+
+### Chuỗi Mục Tiêu Điều Trị Ngoại Trú Chuẩn Hóa
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">MỤC TIÊU 1 &bull; VI RÚT HỌC</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Ức Chế Bền Vững HBV DNA</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      Duy trì nồng độ virus dưới ngưỡng phát hiện của kỹ thuật Realtime-PCR nhạy cao (&lt; 20 IU/mL).
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 0.35rem;">MỤC TIÊU 2 &bull; SINH HÓA & MÔ HỌC</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Bình Thường Hóa Men Gan</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      Hạ ALT về ngưỡng tối ưu theo giới tính (Nam &le; 35, Nữ &le; 25 U/L), làm thoái triển viêm hoại tử và xơ hóa gan.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase; margin-bottom: 0.35rem;">MỤC TIÊU 3 &bull; LÂU DÀI</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Ngăn Xơ Gan &amp; Ung Thư Gan</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      Ngăn ngừa tiến triển thành xơ gan mất bù, giảm tới 77% biến cố phát sinh ung thư biểu mô tế bào gan (HCC).
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;">MỤC TIÊU 4 &bull; CỘNG ĐỒNG</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Chặn Lây Truyền Ngang &amp; Dọc</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-muted);">
+      Cắt đứt chuỗi lây truyền mẹ sang con (PMTCT) và giảm nguy cơ lây nhiễm qua đường tình dục/đường máu.
+    </div>
+  </div>
+
+</div>
+
+### Công Thức Đánh Giá Xơ Hóa Gan Không Xâm Lấn
+
+<div class="katex-display-card">
+  <div class="equation-box">
+    $$\text{APRI} = \frac{\left( \frac{\text{AST (U/L)}}{\text{AST ULN (U/L)}} \right)}{\text{Tiểu Cầu } (10^9/\text{L})} \times 100$$
+  </div>
+  <div class="equation-legend">
+    <strong>Phiên giải lâm sàng (Sử dụng ngưỡng quy chuẩn $\text{AST ULN} = 40\text{ U/L}$):</strong><br />
+    &bull; $\text{APRI} \le 0.5$: Nguy cơ xơ hóa thấp (F0–F1).<br />
+    &bull; $0.5 &lt; \text{APRI} \le 1.0$: <strong>Xơ hóa đáng kể (&ge; F2)</strong> &rArr; <em>Chỉ định NAs ngay!</em><br />
+    &bull; $\text{APRI} &gt; 1.0$: <strong>Xơ gan (F4)</strong> &rArr; <em>Chỉ định NAs ngay và duy trì suốt đời!</em>
+  </div>
+</div>
+
+### Tiêu Chuẩn Chỉ Định NAs Ngoại Trú (QĐ 1740/QĐ-BYT 2026)
+
+Chỉ định điều trị NAs cho người lớn, vị thành niên và trẻ em &ge; 12 tuổi nhiễm HBV mạn tính khi thỏa **Ít nhất 1 trong 4 nhóm tiêu chuẩn** sau:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- TC1 -->
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-certificate"></i> TC 1: XƠ HÓA &ge; F2 HOẶC XƠ GAN F4</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Xác nhận qua biểu hiện lâm sàng/siêu âm, $\text{APRI} &gt; 0.5$, $\text{FIB-4} \ge 1.45$ hoặc $\text{FibroScan} &gt; 7.0\text{ kPa}$.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        &rArr; KHỞI TRỊ NAs NGAY (Bất kể nồng độ HBV DNA hay men gan ALT).
+      </div>
+    </div>
+  </div>
+
+  <!-- TC2 -->
+  <div style="background: var(--handbook-surface); border: 2px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-dna"></i> TC 2: TẢI LƯỢNG VIRUS + ALT TĂNG</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Thỏa đồng thời cả 2 tiêu chí:
+      <div>&bull; <strong>HBV DNA &gt; 2.000 IU/mL</strong> (&gt; $10^4\text{ copies/mL}$)</div>
+      <div>&bull; <strong>VÀ ALT &gt; ULN</strong> (Nam &gt; 35 U/L, Nữ &gt; 25 U/L)</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(245, 158, 11, 0.08); border-radius: 4px; font-weight: 700; color: #d97706;">
+        &rArr; KHỞI TRỊ NAs NGAY (Thể hoạt động Pha 2 hoặc Pha 4).
+      </div>
+    </div>
+  </div>
+
+  <!-- TC3 -->
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> TC 3: DNA TRÊN NGƯỠNG + NGUY CƠ</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      HBV DNA phát hiện được (&gt; 20 IU/mL) kèm bất kỳ yếu tố:
+      <div>&bull; Gia đình có người xơ gan hoặc ung thư gan (HCC)</div>
+      <div>&bull; Đồng nhiễm HIV, HCV hoặc HDV</div>
+      <div>&bull; Người &ge; 30–35 tuổi có ALT tăng dai dẳng</div>
+      <div>&bull; Chuẩn bị dùng thuốc ức chế miễn dịch / hóa trị</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 4px; font-weight: 700; color: #dc2626;">
+        &rArr; KHỞI TRỊ NAs ĐỂ BẢO VỆ MÔ GAN.
+      </div>
+    </div>
+  </div>
+
+  <!-- TC4 -->
+  <div style="background: var(--handbook-surface); border: 2px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-hospital"></i> TC 4: NƠI CHƯA ĐO ĐƯỢC HBV DNA</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Tại trạm y tế / tuyến huyện chưa làm được PCR định lượng:
+      <div>&bull; <strong>ALT &gt; ULN dai dẳng 6–12 tháng</strong></div>
+      <div>&bull; Đã loại trừ gan nhiễm mỡ, rượu bia, thuốc gây độc gan</div>
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; font-weight: 700; color: #059669;">
+        &rArr; KHỞI TRỊ NAs HÀNG MỘT (Phân cấp điều trị).
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BẢNG TỔNG HỢP RA QUYẾT ĐỊNH -->
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-table-list"></i> MA TRẬN CHỈ ĐỊNH ĐIỀU TRỊ NAs THEO BỐI CẢNH LÂM SÀNG</div>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Nhóm Bệnh Nhân</th>
+          <th style="width: 20%;">HBV DNA</th>
+          <th style="width: 15%;">Men Gan ALT</th>
+          <th style="width: 20%;">Độ Xơ Hóa Gan</th>
+          <th style="width: 20%;">Quyết Định Điều Trị</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Xơ gan (F4)</strong></td>
+          <td>Phát hiện được (&gt; 0)</td>
+          <td>Bất kỳ mức nào</td>
+          <td>F4 ($\text{LSM} &gt; 12.5\text{ kPa}$)</td>
+          <td><strong style="color: #dc2626;">ĐIỀU TRỊ NAs NGAY SUỐT ĐỜI</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Xơ hóa đáng kể (&ge; F2)</strong></td>
+          <td>Bất kỳ mức nào</td>
+          <td>Bất kỳ mức nào</td>
+          <td>&ge; F2 ($\text{LSM} &gt; 7.0\text{ kPa}$)</td>
+          <td><strong style="color: #dc2626;">ĐIỀU TRỊ NAs NGAY</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Chưa xơ hóa (F0–F1)</strong></td>
+          <td>&gt; 2.000 IU/mL</td>
+          <td>&gt; ULN</td>
+          <td>F0–F1</td>
+          <td><strong style="color: #d97706;">ĐIỀU TRỊ NAs NGAY</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Có yếu tố nguy cơ</strong></td>
+          <td>Trên ngưỡng phát hiện</td>
+          <td>Bất kỳ mức nào</td>
+          <td>Bất kỳ mức nào</td>
+          <td><strong style="color: #0284c7;">ĐIỀU TRỊ NAs NGAY</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Không xơ hóa, không nguy cơ</strong></td>
+          <td>&lt; 2.000 IU/mL</td>
+          <td>Bình thường</td>
+          <td>F0–F1</td>
+          <td><span style="color: #059669; font-weight: 700;">Trì hoãn - Theo dõi định kỳ 6–12 tháng</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+---
+
+## 💊 3. PHÁC ĐỒ THUỐC NAs HÀNG MỘT (TDF VS TAF VS ETV) {#sec-firstline-nas}
+
+Bộ Y tế Việt Nam (2026), EASL (2025) và AASLD (2025) thống nhất khuyến cáo sử dụng **đơn trị liệu bằng thuốc kháng virus đường uống có hàng rào kháng thuốc cao**:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- TDF -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">THUỐC 1 &bull; NUCLEOTIDE ANALOGUE</div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Tenofovir Disoproxil (TDF)</div>
+    <div style="font-size: 0.88rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; <strong>Liều dùng:</strong> 300 mg &times; 1 lần/ngày (uống cùng hoặc xa bữa ăn).</div>
+      <div>&bull; <strong>Ưu điểm:</strong> Hiệu lực kháng virus cực mạnh, kháng thuốc ~0%, giá thành rẻ, phủ rộng BHYT. <strong>Lựa chọn số 1 cho phụ nữ mang thai</strong>.</div>
+      <div>&bull; <strong>Nhược điểm:</strong> Thải trừ qua thận; gây tổn thương ống thận gần (hội chứng Fanconi), giảm nhẹ eGFR và giảm mật độ khoáng xương.</div>
+      <div style="margin-top: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Tránh dùng cho người &gt; 60 tuổi, suy thận hoặc loãng xương.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAF -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 0.35rem;">THUỐC 2 &bull; TIỀN CHẤT TENOFOVIR THẾ HỆ MỚI</div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Tenofovir Alafenamide (TAF)</div>
+    <div style="font-size: 0.88rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; <strong>Liều dùng:</strong> 25 mg &times; 1 lần/ngày (<strong>uống cùng bữa ăn</strong> để tăng hấp thu).</div>
+      <div>&bull; <strong>Ưu điểm:</strong> Nồng độ trong tế bào gan cao gấp nhiều lần với liều bằng 1/12 TDF; <strong>rất an toàn cho thận và xương</strong>. Không cần chỉnh liều khi $\text{eGFR} \ge 15\text{ mL/phút}$ hoặc chạy thận.</div>
+      <div>&bull; <strong>Chỉ định ưu tiên:</strong> Người &gt; 60 tuổi, bệnh thận mạn, đái tháo đường, loãng xương.</div>
+      <div style="margin-top: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; font-weight: 700; color: #059669;">
+        Lưu ý: Có thể gây tăng nhẹ lipid máu và cân nặng.
+      </div>
+    </div>
+  </div>
+
+  <!-- ETV -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase; margin-bottom: 0.35rem;">THUỐC 3 &bull; CYCLOPENTYL GUANOSINE</div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Entecavir (ETV)</div>
+    <div style="font-size: 0.88rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; <strong>Liều chuẩn:</strong> 0.5 mg &times; 1 lần/ngày (chưa từng dùng NAs).</div>
+      <div>&bull; <strong>Liều cao:</strong> 1.0 mg &times; 1 lần/ngày (từng dùng Lamivudine hoặc xơ gan mất bù).</div>
+      <div>&bull; <strong>Cách uống:</strong> <strong>Uống khi bụng đói</strong> (trước ăn 2 giờ hoặc sau ăn ít nhất 2 giờ).</div>
+      <div>&bull; <strong>Ưu điểm:</strong> An toàn cao cho thận và xương.</div>
+      <div style="margin-top: 0.75rem; padding: 0.45rem 0.65rem; background: rgba(139, 92, 246, 0.08); border-radius: 4px; font-weight: 700; color: #8b5cf6;">
+        Chống chỉ định thai kỳ. Không dùng nếu đã kháng Lamivudine.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 💧 4. BẢNG HIỆU CHỈNH LIỀU DÙNG THEO eGFR & THẬN NHÂN TẠO {#sec-renal-dosing}
+
+Khi bệnh nhân ngoại trú có suy giảm mức lọc cầu thận ($\text{eGFR} &lt; 50\text{ mL/phút}$), bác sĩ bắt buộc phải giãn khoảng cách đưa thuốc TDF, giảm liều ETV hoặc chuyển sang dùng TAF theo **Phụ lục 4 - Quyết định 1740/QĐ-BYT (2026)**:
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-droplet"></i> BẢNG HIỆU CHỈNH LIỀU NAs THEO MỨC LỌC CẦU THẬN (CrCl / eGFR)</div>
+    <span class="table-badge"><i class="fa-solid fa-triangle-exclamation"></i> An toàn kê đơn</span>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Độ Thanh Thải Creatinin (CrCl / eGFR)</th>
+          <th style="width: 25%;">Tenofovir Disoproxil (TDF 300 mg)</th>
+          <th style="width: 25%;">Entecavir (ETV 0.5 mg)</th>
+          <th style="width: 25%;">Tenofovir Alafenamide (TAF 25 mg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&ge; 50 mL/phút</strong></td>
+          <td>300 mg mỗi 24 giờ</td>
+          <td>0.5 mg mỗi 24 giờ</td>
+          <td rowspan="3" style="vertical-align: middle; background: rgba(16, 185, 129, 0.05);">
+            <strong style="color: #059669;">25 mg mỗi 24 giờ</strong><br />
+            <small>(Không cần chỉnh liều nếu $\text{CrCl} \ge 15\text{ mL/phút}$)</small>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>30 – 49 mL/phút</strong></td>
+          <td><strong style="color: #d97706;">300 mg mỗi 48 giờ</strong></td>
+          <td><strong style="color: #d97706;">0.25 mg mỗi 24 giờ</strong><br /><small>(hoặc 0.5 mg mỗi 48 giờ)</small></td>
+        </tr>
+        <tr>
+          <td><strong>10 – 29 mL/phút</strong></td>
+          <td><strong style="color: #dc2626;">300 mg mỗi 72–96 giờ</strong></td>
+          <td><strong style="color: #dc2626;">0.15 mg mỗi 24 giờ</strong><br /><small>(hoặc 0.5 mg mỗi 72 giờ)</small></td>
+        </tr>
+        <tr>
+          <td><strong>Thận nhân tạo chu kỳ</strong></td>
+          <td>300 mg mỗi 7 ngày<br /><small>(Uống sau buổi lọc máu)</small></td>
+          <td>0.05 mg mỗi 24 giờ<br /><small>(hoặc 0.5 mg mỗi 7 ngày sau lọc)</small></td>
+          <td><strong style="color: #059669;">25 mg mỗi 24 giờ</strong><br /><small>(Uống sau buổi lọc máu)</small></td>
+        </tr>
+        <tr>
+          <td><strong>&lt; 15 mL/phút (chưa lọc máu)</strong></td>
+          <td colspan="2" style="text-align: center; color: #dc2626;">Hiệu chỉnh liều theo chuyên khoa Thận</td>
+          <td style="color: #94a3b8;">Chưa đủ dữ liệu khuyến cáo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="callout callout-warning">
+  <div class="callout-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> CHIẾN LƯỢC CHUYỂN ĐỔI THUỐC BẢO VỆ THẬN</div>
+  <div class="callout-body">
+    Nếu bệnh nhân đang dùng TDF mà xuất hiện một trong các dấu hiệu: $\text{eGFR} &lt; 60\text{ mL/phút}$, protein niệu mới xuất hiện, hạ phospho máu hoặc mật độ xương giảm nặng (T-score &lt; -2.5) &rArr; <strong>Bắt buộc chuyển đổi ngay sang TAF 25 mg/ngày hoặc Entecavir 0.5 mg/ngày</strong>.
+  </div>
+</div>
+
+### Lưới Cạm Bẫy Trong Lựa Chọn & Kê Đơn Thuốc NAs
+
+<div class="pitfall-grid">
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-skull-crossbones"></i> CẠM BẪY KÊ ĐƠN 01</div>
+      <div class="pitfall-title">Dùng Kéo Dài TDF Ở Bệnh Nhân Cao Tuổi, Suy Thận Hoặc Loãng Xương</div>
+    </div>
+    <div class="pitfall-body">
+      TDF tích lũy gây độc ty thể tế bào ống thận gần, dẫn đến hội chứng Fanconi mất phospho và loãng xương nặng. Bệnh nhân &gt; 60 tuổi hoặc có $\text{eGFR} &lt; 60\text{ mL/phút}$ dùng TDF kéo dài có nguy cơ suy thận mạn tiến triển và gãy xương bệnh lý.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-circle-check"></i> HÀNH ĐỘNG: Chủ động chọn TAF 25 mg/ngày hoặc Entecavir ngay từ đầu cho đối tượng nguy cơ thận/xương.
+    </div>
+  </div>
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-ban"></i> CẠM BẪY THAI KỲ 02</div>
+      <div class="pitfall-title">Tự Ý Ngưng NAs Khi Phát Hiện Có Thai Vì Sợ Độc Thai Nhi</div>
+    </div>
+    <div class="pitfall-body">
+      Nhiều bệnh nhân nữ đang uống TDF khi biết có thai đã vội vã ngưng thuốc. Hậu quả là virus bùng phát dữ dội trong thai kỳ (Rebound flare), gây suy gan cấp đe dọa tính mạng cả mẹ và thai nhi, đồng thời tăng vọt nguy cơ lây truyền sang con.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-shield-virus"></i> HÀNH ĐỘNG: Trấn an thai phụ, tiếp tục duy trì TDF 300 mg/ngày suốt thai kỳ; nếu đang dùng Entecavir thì chuyển ngay sang TDF.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🏥 5. PHÁC ĐỒ 6 TÌNH HUỐNG ĐẶC BIỆT THƯỜNG GẶP NGOẠI TRÚ {#sec-special-populations}
+
+### Case 1: Phụ Nữ Mang Thai & Dự Phòng Lây Truyền Mẹ Sang Con (PMTCT)
+
+<div style="background: var(--handbook-surface); border-left: 4px solid #0284c7; border-radius: var(--handbook-radius-sm); padding: 1.25rem; box-shadow: var(--handbook-card-shadow); margin-bottom: 1.25rem;">
+  <div style="font-weight: 800; color: #0284c7; font-size: 1.05rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-person-pregnant"></i> QUẢN LÝ THAI KỲ &amp; CAN THIỆP SƠ SINH THEO QĐ 678/QĐ-BYT</div>
+  <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+    <ul>
+      <li><strong>Sàng lọc:</strong> Xét nghiệm HBsAg cho mọi thai phụ ở 3 tháng đầu thai kỳ. Nếu HBsAg (+), định lượng HBV DNA ở tuần thai 14–24.</li>
+      <li><strong>Thai phụ đủ tiêu chuẩn điều trị CHB mạn</strong> (xơ gan, xơ hóa $\ge$ F2 hoặc ALT tăng + DNA cao): Khởi trị ngay <strong>Tenofovir TDF 300 mg/ngày</strong> (hoặc TAF 25 mg/ngày) và duy trì suốt thai kỳ và sau sinh.</li>
+      <li><strong>Thai phụ CHƯA đủ tiêu chuẩn điều trị nhưng có tải lượng virus cao</strong> ($\text{HBV DNA} \ge 200.000\text{ IU/mL}$ hoặc HBeAg dương tính):
+        <div>&bull; Khởi trị <strong>TDF 300 mg/ngày</strong> từ <strong>tuần thai thứ 14 đến chậm nhất tuần thứ 28</strong>.</div>
+        <div>&bull; Duy trì thuốc đến sau sinh 1–3 tháng; đánh giá lại men gan trước khi ngưng.</div>
+      </li>
+      <li><strong>Đang dùng Entecavir (ETV) mà phát hiện có thai:</strong> Đổi ngay sang <strong>TDF 300 mg/ngày</strong>.</li>
+      <li><strong>Xử trí trẻ sơ sinh trong 24 giờ đầu:</strong> Tiêm đồng thời <strong>Vắc xin viêm gan B</strong> VÀ <strong>Huyết thanh kháng viêm gan B (HBIG 100 IU)</strong> tại 2 vị trí đùi khác nhau trong vòng 24 giờ đầu (tốt nhất trong 12 giờ đầu sau sinh). Tái kiểm tra HBsAg và Anti-HBs lúc trẻ 9–12 tháng tuổi.</li>
+    </ul>
+  </div>
+</div>
+
+### Case 2: Bệnh Nhân Đồng Nhiễm HBV/HCV
+* **Nguyên tắc:** Điều trị NAs (TDF, TAF, ETV) cho mọi ca đồng nhiễm HBV/HCV, **không phụ thuộc mức ALT hay HBV DNA**.
+* **Phối hợp thuốc DAA:** Dùng phác đồ DAA (SOF/VEL hoặc SOF/DAC) chữa viêm gan C theo QĐ 2855/QĐ-BYT.
+* **Cảnh báo tái hoạt HBV ở người HBsAg (-), Anti-HBc (+):** Khi diệt sạch HCV bằng DAA, sự ức chế chéo biến mất có thể làm bùng phát HBV. Theo dõi sát ALT mỗi 4–8 tuần trong khi dùng DAA và kéo dài 12 tuần sau khi hoàn tất liệu trình.
+
+### Case 3: Bệnh Nhân Đồng Nhiễm HBV/HIV
+* Bắt buộc điều trị phác đồ kháng HIV (ARV) có chứa **TDF (hoặc TAF) kết hợp Lamivudine (3TC) hoặc Emtricitabine (FTC)** (ví dụ phác đồ TLD: TDF + 3TC + DTG) **suốt đời**, không phụ thuộc số lượng CD4.
+* Nếu chống chỉ định TDF (suy thận nặng): Thay bằng **TAF 25 mg/ngày** trong phác đồ ARV hoặc bổ sung **Entecavir 0.5 mg/ngày** (chỉ dùng ETV khi HIV RNA đã bị ức chế hoàn toàn dưới ngưỡng để tránh kháng chéo).
+
+### Case 4: Dự Phòng Tái Hoạt Khi Dùng Thuốc Ức Chế Miễn Dịch / Hóa Trị Ung Thư
+* **Sàng lọc bắt buộc:** Làm HBsAg, Anti-HBc total và HBV DNA trước khi bắt đầu hóa trị hoặc thuốc sinh học.
+* **Nhóm nguy cơ cao (&gt; 10%)** (kháng CD20 Rituximab, ghép tế bào gốc, hóa trị ung thư): Khởi trị NAs dự phòng (TDF, TAF, ETV) cho cả bệnh nhân HBsAg (+) HOẶC HBsAg (-) kèm Anti-HBc (+).
+* **Thời điểm bắt đầu:** Trước ít nhất **2 tuần** khi khởi động liệu pháp ức chế miễn dịch.
+* **Thời gian duy trì:** Ít nhất **6 tháng** sau khi ngưng hóa trị thông thường, hoặc ít nhất **12 tháng** nếu dùng kháng thể kháng CD20 (Rituximab).
+
+### Case 5: Xử Trí Thất Bại Điều Trị & Đổi Phác Đồ NAs
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> PHÁC ĐỒ ĐỔI THUỐC KHI THẤT BẠI ĐIỀU TRỊ NAs (BẢNG 6 - QĐ 1740/QĐ-BYT)</div>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 35%;">Thuốc Thất Bại / Đang Sử Dụng</th>
+          <th style="width: 35%;">Phác Đồ Đổi Thuốc Ưu Tiên</th>
+          <th style="width: 30%;">Phác Đồ Phối Hợp (Cân Nhắc Khi Đa Kháng)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Entecavir (ETV)</strong></td>
+          <td>Đổi sang <strong>Tenofovir (TDF 300 mg hoặc TAF 25 mg)</strong></td>
+          <td>Entecavir + Tenofovir (TDF/TAF)</td>
+        </tr>
+        <tr>
+          <td><strong>Tenofovir Disoproxil (TDF)</strong></td>
+          <td>Đổi sang <strong>Entecavir (1.0 mg/ngày)</strong> hoặc <strong>TAF</strong></td>
+          <td>Tenofovir (TDF/TAF) + Entecavir</td>
+        </tr>
+        <tr>
+          <td><strong>Từng dùng Lamivudine / Đa kháng thuốc</strong></td>
+          <td>Đổi sang <strong>Tenofovir (TDF hoặc TAF)</strong></td>
+          <td>Tenofovir (TDF/TAF) + Entecavir (1.0 mg)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+### Case 6: Quản Lý Bệnh Nhân Chưa Có Chỉ Định Điều Trị Thuốc NAs
+* **Tư vấn lâm sàng:** Giải thích rõ tình trạng nhiễm virus mạn thể yên lặng, trấn an tâm lý, khẳng định chưa dùng thuốc không đồng nghĩa đã khỏi bệnh.
+* **Lối sống:** Tuyệt đối kiêng rượu bia, thuốc lá; không tự ý uống các loại thuốc nam, thảo dược không rõ nguồn gốc gây tổn thương gan cấp.
+* **Lịch theo dõi định kỳ bắt buộc mỗi 6–12 tháng:** Xét nghiệm ALT, AST, Công thức máu; định lượng HBV DNA; tính APRI/FibroScan hàng năm và siêu âm gan + AFP tầm soát ung thư gan.
+
+---
+
+## 🚪 6. TIÊU CHUẨN CÂN NHẮC NGƯNG NAs & THEO DÕI SAU NGƯNG {#sec-stopping-criteria}
+
+<div class="callout callout-warning">
+  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> CẢNH BÁO NGUY HIỂM: NGUY CƠ BÙNG PHÁT VIÊM GAN CẤP SAU KHI DỪNG THUỐC</div>
+  <div class="callout-body">
+    Quyết định ngưng thuốc NAs là một trong những quyết định lâm sàng khó khăn nhất. Ngưng thuốc sai thời điểm có thể dẫn đến bùng phát virus dữ dội, suy gan cấp và tử vong. Do đó, <strong>nguyên tắc chung vẫn là điều trị duy trì lâu dài</strong>.
+  </div>
+</div>
+
+### Bộ Tiêu Chuẩn Ngưng Thuốc NAs Khắt Khe (QĐ 1740/QĐ-BYT 2026)
+
+Chỉ xem xét ngưng thuốc khi bệnh nhân đáp ứng **ĐẦY ĐỦ CẢ 2 ĐIỀU KIỆN TIÊN QUYẾT VÀ 1 TIÊU CHUẨN HUYẾT THANH HỌC**:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- ĐIỀU KIỆN TIÊN QUYẾT -->
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-ban"></i> ĐIỀU KIỆN BẮT BUỘC: KHÔNG XƠ GAN</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      <div>&bull; <strong>Chưa xơ gan (F0–F2):</strong> Đo độ đàn hồi $\text{FibroScan} \le 9.5\text{ kPa}$. Tuyệt đối không ngưng ở bệnh nhân F3–F4.</div>
+      <div>&bull; <strong>Cam kết theo dõi:</strong> Bệnh nhân có điều kiện tái khám định kỳ hàng tháng trong 6 tháng đầu sau ngưng.</div>
+    </div>
+  </div>
+
+  <!-- TIÊU CHUẨN HUYẾT THANH -->
+  <div style="background: var(--handbook-surface); border: 2px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-check-double"></i> ĐẠT 1 TRONG CÁC MỐC SAU</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      <div>&bull; <strong>Mất HBsAg:</strong> Tải lượng HBV DNA &lt; ngưỡng VÀ mất HBsAg trong 2 lần đo cách nhau &ge; 6 tháng.</div>
+      <div>&bull; <strong>HBeAg (+):</strong> Chuyển đổi huyết thanh (HBeAg âm, Anti-HBe dương), DNA &lt; ngưỡng VÀ đã <strong>uống củng cố thêm &ge; 12 tháng</strong>.</div>
+      <div>&bull; <strong>HBeAg (-):</strong> HBV DNA &lt; ngưỡng liên tục <strong>&ge; 3–4 năm</strong> VÀ $\text{qHBsAg} &lt; 100\text{ IU/mL}$.</div>
+    </div>
+  </div>
+
+</div>
+
+### Quy Trình Giám Sát Sát Sao Sau Khi Dừng NAs
+* **Trong 6 tháng đầu:** Tái khám, kiểm tra ALT, AST và Bilirubin **mỗi 4 tuần (1 tháng/lần)**. Định lượng HBV DNA mỗi 8–12 tuần.
+* **Từ tháng thứ 7 đến 24:** Tái khám xét nghiệm ALT và HBV DNA **mỗi 12 tuần (3 tháng/lần)**.
+* **Định nghĩa tái hoạt:** HBV DNA xuất hiện trở lại $\ge 2.000\text{ IU/mL}$.
+* **Chỉ định điều trị lại khẩn cấp:** Khi $\text{HBV DNA} &gt; 10.000\text{ IU/mL}$ (bất kể mức ALT), HOẶC ALT tăng $&gt; 5\times\text{ ULN}$, hoặc xuất hiện bất kỳ dấu hiệu suy giảm chức năng gan.
+
+---
+
+## 📅 7. LỊCH TÁI KHÁM ĐỊNH KỲ & TẦM SOÁT UNG THƯ GAN (HCC) {#sec-monitoring-hcc}
+
+### Phân Cấp Lịch Tái Khám Ngoại Trú (Bảng 5 - QĐ 1740/QĐ-BYT)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #f59e0b; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-clock-rotate-left"></i> NHÓM TÁI KHÁM MỖI 12 TUẦN (3 THÁNG/LẦN)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; Bệnh nhân mới bắt đầu điều trị NAs trong năm đầu tiên.</div>
+      <div>&bull; Bệnh nhân đã có xơ gan (còn bù Child-Pugh A).</div>
+      <div>&bull; Bệnh nhân từng tuân thủ kém hoặc có đáp ứng virus chậm.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #10b981; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-calendar-check"></i> NHÓM TÁI KHÁM MỖI 12–24 TUẦN (3–6 THÁNG/LẦN)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      <div>&bull; Bệnh nhân điều trị ổn định liên tục &gt; 1 năm.</div>
+      <div>&bull; Chưa có xơ gan, tuân thủ thuốc tốt.</div>
+      <div>&bull; HBV DNA duy trì liên tục dưới ngưỡng phát hiện.</div>
+    </div>
+  </div>
+
+</div>
+
+### Quy Trình Tầm Soát Ung Thư Gan (HCC) Bắt Buộc Mỗi 6 Tháng
+Tất cả bệnh nhân nhiễm HBV mạn tính (dù virus đang ngủ yên hay đang dùng NAs) đều có nguy cơ phát sinh HCC do cccDNA tích hợp vào bộ gen tế bào gan ký chủ:
+1. **Siêu âm ổ bụng Doppler màu:** Thực hiện định kỳ mỗi 6 tháng bởi bác sĩ chẩn đoán hình ảnh giàu kinh nghiệm.
+2. **Bộ dấu ấn sinh học phối hợp:** Định lượng **AFP** kết hợp với **PIVKA-II (DCP)** hoặc **AFP-L3** để tăng tối đa độ nhạy phát hiện khối u gan giai đoạn sớm &lt; 2 cm.
+3. **Xử trí khi nghi ngờ:** Nếu siêu âm phát hiện nhân giáp hạt $\ge 1\text{ cm}$ hoặc AFP tăng bất thường &rArr; Chỉ định chụp ngay **CT-scan đa dãy (4 pha có cản quang)** hoặc **MRI gan có tiêm thuốc đối quang từ đặc hiệu gan mật (Primovist)**.
+
+---
+
+## 🗺️ 8. SƠ ĐỒ THUẬT TOÁN QUYẾT ĐỊNH & RAY DẪN ĐƯỜNG TIẾP CẬN {#sec-decision-algorithm}
+
+Hệ thống ray dẫn đường từng bước tiếp cận và ra quyết định điều trị tại phòng khám ngoại trú:
+
+<div class="flow-track-container">
+
+  <!-- BƯỚC 1 -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-blue">01</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content accent-blue">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-hospital-user" style="color: #0284c7;"></i> Bước 1: Tiếp Nhận HBsAg (+) &ge; 6 Tháng</div>
+        <span class="flow-step-badge flow-badge-blue">Đánh giá ban đầu</span>
+      </div>
+      <div class="flow-step-text">
+        Làm đồng thời: HBeAg, Anti-HBe, ALT/AST, Bilirubin, Công thức máu/Tiểu cầu, HBV DNA và đánh giá độ xơ hóa gan (APRI / FibroScan).
+      </div>
+    </div>
+  </div>
+
+  <!-- BƯỚC 2 -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-rose">02</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content accent-rose">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-code-branch" style="color: #be123c;"></i> Bước 2: Phân Tầng Xơ Gan (F4)</div>
+        <span class="flow-step-badge flow-badge-amber">Phân nhánh sống còn</span>
+      </div>
+      <div class="flow-step-text">
+        <div class="flow-branch-grid">
+          <div class="flow-branch-card accent-rose">
+            <div class="flow-branch-title" style="color: #be123c;">
+              <i class="fa-solid fa-skull-crossbones"></i> Có Xơ Gan (F4)
+            </div>
+            <div class="flow-branch-desc">
+              $\text{APRI} &gt; 1.0$ hoặc $\text{FibroScan} &gt; 12.5\text{ kPa}$.<br />
+              &rArr; <strong>ĐIỀU TRỊ NAs NGAY LẬP TỨC (TDF/TAF/ETV), DUY TRÌ SUỐT ĐỜI.</strong>
+            </div>
+          </div>
+          <div class="flow-branch-card accent-teal">
+            <div class="flow-branch-title" style="color: #0d9488;">
+              <i class="fa-solid fa-shield-halved"></i> Chưa Xơ Gan (F0–F3)
+            </div>
+            <div class="flow-branch-desc">
+              Chuyển sang Bước 3 đánh giá tiêu chuẩn virus và men gan.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BƯỚC 3 -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-teal">03</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content accent-teal">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-clipboard-check" style="color: #0d9488;"></i> Bước 3: Đánh Giá Tiêu Chuẩn NAs</div>
+        <span class="flow-step-badge flow-badge-green">Quyết định phác đồ</span>
+      </div>
+      <div class="flow-step-text">
+        <div class="flow-branch-grid">
+          <div class="flow-branch-card accent-green">
+            <div class="flow-branch-title" style="color: #047857;">
+              <i class="fa-solid fa-check"></i> Thỏa Tiêu Chuẩn Khởi Trị
+            </div>
+            <div class="flow-branch-desc">
+              Xơ hóa $\ge$ F2 HOẶC ($\text{DNA} &gt; 2.000$ + $\text{ALT} &gt; \text{ULN}$) HOẶC Có yếu tố nguy cơ.<br />
+              &rArr; <strong>Khởi trị NAs hàng một (Cá thể hóa TAF/TDF/ETV).</strong>
+            </div>
+          </div>
+          <div class="flow-branch-card accent-amber">
+            <div class="flow-branch-title" style="color: #b45309;">
+              <i class="fa-solid fa-clock"></i> Chưa Đủ Tiêu Chuẩn
+            </div>
+            <div class="flow-branch-desc">
+              $\text{DNA} &lt; 2.000\text{ IU/mL}$ và ALT bình thường dai dẳng.<br />
+              &rArr; <strong>Tư vấn lối sống, tái khám và tầm soát HCC mỗi 6 tháng.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🩺 9. CA LÂM SÀNG THỰC CHIẾN & ĐÚC KẾT XƯƠNG MÁU {#sec-case-scenarios}
+
+<!-- CA 1 -->
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-person-pregnant"></i> CA THỰC CHIẾN 01 &bull; DỰ PHÒNG LÂY TRUYỀN MẸ SANG CON</div>
+    <div class="case-title">Thai phụ 26 tuổi, mang thai con đầu lòng 16 tuần phát hiện HBsAg (+)</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Tình huống:</strong> Thai phụ 26 tuổi, khám thai định kỳ ở tuần 16 phát hiện HBsAg (+). Xét nghiệm: AST = 24 U/L, ALT = 22 U/L, HBeAg (+), nồng độ $\text{HBV DNA} = 8.6 \times 10^7\text{ IU/mL}$ (rất cao). Siêu âm gan bình thường, tiểu cầu $240 \times 10^9/\text{L}$. Bác sĩ sản khoa tuyến dưới khuyên: "Men gan bình thường, sinh xong rồi tính".
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích chuyên khoa Truyền nhiễm / Gan Mật:</strong>
+    <ul>
+      <li><strong>Nguy cơ lây nhiễm:</strong> Mẹ có HBeAg (+) và $\text{HBV DNA} &gt; 200.000\text{ IU/mL}$ khiến tỷ lệ lây truyền sang con lên tới <strong>80–90%</strong> nếu chỉ tiêm vắc xin thông thường.</li>
+      <li><strong>Thời điểm vàng can thiệp:</strong> Tuần thai 16–28 là thời điểm bắt buộc khởi động thuốc kháng virus dự phòng (PMTCT) theo QĐ 1740/QĐ-BYT.</li>
+      <li><strong>Lựa chọn thuốc:</strong> Khởi trị ngay <strong>Tenofovir Disoproxil Fumarate (TDF) 300 mg/ngày</strong>. TDF có độ an toàn thai kỳ tuyệt đối (nhóm B), không gây dị tật thai nhi.</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>KẾT QUẢ ĐẠT ĐƯỢC:</strong> Thai phụ uống TDF đều đặn đến sau sinh 1 tháng. Khi sinh, tải lượng virus giảm xuống $450\text{ IU/mL}$. Bé chào đời được tiêm ngay vắc xin HBV + HBIG trong vòng 4 giờ đầu. Xét nghiệm lúc bé 12 tháng tuổi: HBsAg (-) và Anti-HBs &gt; 500 IU/L &rArr; Bảo vệ thành công 100%!
+  </div>
+</div>
+
+<!-- CA 2 -->
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-user-doctor"></i> CA THỰC CHIẾN 02 &bull; NGOẠI TRÚ NGƯỜI CAO TUỔI</div>
+    <div class="case-title">Bệnh nhân nam 64 tuổi, dùng TDF 4 năm xuất hiện đau nhức xương và suy giảm chức năng thận</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Tình huống:</strong> Bệnh nhân nam 64 tuổi điều trị viêm gan B mạn bằng Tenofovir TDF 300 mg/ngày liên tục 4 năm, HBV DNA đã âm tính dưới ngưỡng 3 năm qua. Gần đây bệnh nhân mệt mỏi, đau nhức khớp háng hai bên, đi lại khó khăn. Xét nghiệm tái khám: ALT = 22 U/L, Creatinin máu tăng từ 85 lên $138\ \mu\text{mol/L}$, tính $\text{eGFR} = 44\text{ mL/phút}$ (suy giảm mức lọc cầu thận độ 3a), Phospho máu giảm nhẹ $0.68\text{ mmol/L}$, đo mật độ xương T-score cổ xương đùi = -2.8 (Loãng xương nặng).
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích lâm sàng tại phòng khám:</strong>
+    <ul>
+      <li><strong>Độc tính ống thận của TDF:</strong> TDF tích tụ gây tổn thương ty thể tế bào ống lượn gần, dẫn đến mất phospho qua nước tiểu và hủy khoáng xương (hội chứng Fanconi bán phần).</li>
+      <li><strong>Chỉ định chuyển đổi phác đồ cấp thiết:</strong> Bệnh nhân &gt; 60 tuổi kèm suy thận ($\text{eGFR} &lt; 50\text{ mL/phút}$) và loãng xương nặng là chống chỉ định tiếp tục TDF.</li>
+      <li><strong>Lựa chọn phác đồ thay thế:</strong> Chuyển sang <strong>Tenofovir Alafenamide (TAF 25 mg/ngày)</strong> hoặc <strong>Entecavir (0.5 mg/ngày chỉnh theo eGFR)</strong>. Bác sĩ quyết định chọn TAF 25 mg/ngày vì hiệu quả tương đương TDF mà không cần chỉnh liều khi eGFR còn $44\text{ mL/phút}$.</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-triangle-exclamation"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Luôn kiểm tra Creatinin, eGFR và Phospho máu định kỳ mỗi 6 tháng cho mọi bệnh nhân đang dùng TDF dài hạn. Nếu eGFR &lt; 60 mL/phút hoặc có bệnh xương chuyển hóa, chủ động chuyển sang TAF hoặc ETV ngay để cứu vãn chức năng thận.
+  </div>
+</div>
+
+---
+
+## 📚 10. TÀI LIỆU THAM KHẢO (CHUẨN AMA FORMAT) {#sec-references}
+
+1. Bộ Y tế Việt Nam. *Hướng dẫn Chẩn đoán và Điều trị Viêm gan Vi rút B* (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 6 năm 2026). Hà Nội, Việt Nam: Bộ Y tế; 2026.
+2. European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatitis B virus infection. *J Hepatol*. 2025;83(2):502-583. doi:10.1016/j.jhep.2025.03.018.
+3. American Association for the Study of Liver Diseases. AASLD practice guideline on treatment of chronic hepatitis B: 2025 update. *Hepatology*. 2025;81(4):988-1015. doi:10.1097/HEP.0000000000000912.
+4. Asian Pacific Association for the Study of the Liver. APASL clinical practice guidelines on the management of chronic hepatitis B infection: 2026 update. *Hepatol Int*. 2026;20(1):1-68. doi:10.1007/s12072-025-10822-8.
+5. World Health Organization. *Guidelines for the Prevention, Care and Treatment of Persons with Chronic Hepatitis B Infection*. Geneva, Switzerland: World Health Organization; 2024.
+6. Bộ Y tế Việt Nam. *Hướng dẫn Kỹ thuật các Can thiệp Dự phòng Lây truyền HIV, Viêm gan B và Giang mai từ Mẹ sang Con* (Ban hành kèm theo Quyết định số 678/QĐ-BYT ngày 26 tháng 02 năm 2025). Hà Nội, Việt Nam: Bộ Y tế; 2025.
+7. Bộ Y tế Việt Nam. *Hướng dẫn Chẩn đoán và Điều trị Bệnh Viêm gan Vi rút C* (Ban hành kèm theo Quyết định số 2855/QĐ-BYT ngày 01 tháng 11 năm 2024). Hà Nội, Việt Nam: Bộ Y tế; 2024.
+8. Terrault NA, Lok ASF, McMahon BJ, et al. Update on prevention, diagnosis, and treatment of chronic hepatitis B: AASLD 2018 hepatitis B guidance. *Hepatology*. 2018;67(4):1560-1599. doi:10.1002/hep.29800.
+9. Ali FS, Nguyen MH, Hernaez R, et al. AGA Clinical Practice Guideline on the prevention and treatment of hepatitis B virus reactivation in at-risk individuals. *Gastroenterology*. 2025;168(2):267-284. doi:10.1053/j.gastro.2024.11.008.
+10. Jonas MM, Chang MH, Sokal E, et al. Entecavir for pediatric patients with chronic hepatitis B virus infection. *Hepatology*. 2016;63(2):377-387. doi:10.1002/hep.28014.
