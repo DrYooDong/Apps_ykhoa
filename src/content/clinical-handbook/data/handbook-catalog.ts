@@ -288,8 +288,8 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
         ]
       },
       {
-        id: 'hh',
-        slug: 'hh',
+        id: 'dengue-02-viem-gan-nang-va-suy-gan-cap',
+        slug: 'dengue-02-viem-gan-nang-va-suy-gan-cap',
         diseaseId: 'sot-xuat-huyet-dengue',
         specialtyId: 'truyen-nhiem',
         title: 'Tiếp Cận Bệnh Nhân Sốt Xuất Huyết Dengue Có Men Gan > 1000 U/L (Viêm Gan Nặng & Suy Gan Cấp)',
@@ -299,7 +299,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
         tags: ['Sốt xuất huyết Dengue', 'Men gan > 1000 U/L', 'Viêm gan nặng (DISH)', 'Suy gan cấp (ALF)', 'N-Acetylcysteine (NAC)', 'Thay huyết tương (TPE)', 'MELD Score', 'Bẫy Ringer Lactate', 'QĐ 2760/QĐ-BYT', 'EBM 2026'],
         keyTakeaway: 'Men gan AST/ALT ≥ 1000 U/L là SXHD nặng; chống chỉ định Ringer Lactate và ngưng tuyệt đối Paracetamol; dùng ngay NAC khi có Bệnh não gan + INR ≥ 1.5 hoặc MELD ≥ 15.',
         order: 2,
-        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/hh.mdx',
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-02-viem-gan-nang-va-suy-gan-cap.mdx',
         isFeatured: true,
         lastUpdated: '2026-11-09',
         evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2025',
@@ -314,6 +314,34 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-case-scenarios', number: 8, title: 'Tuyển Tập 3 Ca Lâm Sàng Thực Chiến & Biện Luận Phức Tạp', icon: 'fa-user-doctor' },
           { id: 'sec-self-assessment', number: 9, title: 'Bộ Câu Hỏi Tự Đánh Giá & Đáp Án Biện Luận Y Khoa', icon: 'fa-circle-question' },
           { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'dengue-03-chi-dinh-truyen-tieu-cau',
+        slug: 'dengue-03-chi-dinh-truyen-tieu-cau',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Chỉ Định Truyền Tiểu Cầu Trong Sốt Xuất Huyết Dengue: Từ Bằng Chứng Đến Thực Hành Lâm Sàng',
+        subtitle: 'Động học giảm tiểu cầu, sự phân ly lâm sàng, ngưỡng truyền điều trị vs chống truyền dự phòng (ADEPT), biến chứng TACO/TRALI, chỉ số IPF và HLH thứ phát',
+        description: 'Hướng dẫn thực hành toàn diện dựa trên QĐ 2760/QĐ-BYT (Phụ lục 17 & mục C.2.7), WHO 2024–2025 và thử nghiệm ADEPT (Lancet 2017): phân tích 3 cơ chế giảm tiểu cầu, 5 ngưỡng chỉ định truyền tiểu cầu, hồi sức đa chế phẩm, lựa chọn RDP/SDP và 4 ca lâm sàng thực chiến.',
+        estimatedMinutes: 25,
+        tags: ['Sốt xuất huyết Dengue', 'Truyền tiểu cầu', 'Ngưỡng tiểu cầu', 'ADEPT Trial', 'Chỉ số IPF', 'TACO & TRALI', 'HLH thứ phát', 'QĐ 2760/QĐ-BYT', 'WHO 2024–2025', 'EBM 2026'],
+        keyTakeaway: 'Tuyệt đối không truyền tiểu cầu dự phòng theo con số nếu không có xuất huyết nặng; truyền khi xuất huyết nặng (< 50.000/mm³), chọc dò giảm áp (< 50.000/mm³), thủ thuật xâm lấn (< 30.000/mm³), trước mổ cấp cứu (đích > 75.000/mm³) hoặc cá thể hóa khi < 5.000/mm³ kèm nguy cơ cao.',
+        order: 3,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-03-chi-dinh-truyen-tieu-cau.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-10',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2024–2025',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Đặt Vấn Đề Lâm Sàng', icon: 'fa-bolt' },
+          { id: 'sec-pathophysiology', number: 2, title: 'Sinh Lý Bệnh Giảm Tiểu Cầu, Động Học & Sự Phân Ly Lâm Sàng', icon: 'fa-dna' },
+          { id: 'sec-indications', number: 3, title: 'Các Trường Hợp Có Chỉ Định Truyền Tiểu Cầu & Ngưỡng Mục Tiêu', icon: 'fa-bullseye' },
+          { id: 'sec-evidence-risks', number: 4, title: 'Bằng Chứng Chống Truyền Dự Phòng (ADEPT), Biến Chứng & Chỉ Số IPF', icon: 'fa-shield-halved' },
+          { id: 'sec-protocol-dosing', number: 5, title: 'Quy Trình, Lựa Chọn Chế Phẩm, Liều Lượng & Theo Dõi An Toàn', icon: 'fa-droplet' },
+          { id: 'sec-case-scenarios', number: 6, title: 'Tuyển Tập 4 Ca Lâm Sàng Minh Họa Thực Tế', icon: 'fa-user-doctor' },
+          { id: 'sec-bedside-checklist', number: 7, title: 'Bảng Kiểm Thực Hành & Lưu Đồ Ra Quyết Định Tại Giường Bệnh', icon: 'fa-route' },
+          { id: 'sec-take-home', number: 8, title: 'Kết Luận & 5 Thông Điệp Thực Hành Cốt Lõi', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
         ]
       }
     ]

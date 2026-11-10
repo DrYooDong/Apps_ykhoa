@@ -1,7 +1,7 @@
 ---
 name: clinical-handbook-mdx-module
 description: >-
-  Quy chuẩn và quy trình toàn diện biên tập, tái cấu trúc và hoàn thiện bài học Sổ tay Lâm sàng (.mdx) trong src/content/clinical-handbook/ gắn kết chặt chẽ với Design Tokens CliniPortal 2.0, HANDBOOK_MDX_DESIGN_SPEC.md, Responsive Decision Grid Cards, Editorial SVG Flowcharts, Bảng Dược lý & Cạm bẫy thực chiến. Kích hoạt khi AI cần: tạo mới hoặc chỉnh sửa bài học MDX sổ tay, chuyển đổi bản draft/raw markdown (như hh.mdx) thành bài học chuẩn hoàn chỉnh, áp dụng design tokens, hoặc đăng ký catalog bài viết.
+  Quy chuẩn và quy trình toàn diện biên tập, tái cấu trúc và hoàn thiện bài học Sổ tay Lâm sàng (.mdx) trong src/content/clinical-handbook/ gắn kết chặt chẽ với Design Tokens CliniPortal 2.0, HANDBOOK_MDX_DESIGN_SPEC.md, Responsive Decision Grid Cards, Editorial SVG Flowcharts, Bảng Dược lý & Cạm bẫy thực chiến. Kích hoạt khi AI cần: tạo mới hoặc chỉnh sửa bài học MDX sổ tay, chuyển đổi bản draft/raw markdown (như hh.mdx, dengue-03.mdx) thành bài học chuẩn hoàn chỉnh, áp dụng design tokens, đổi tên file ngữ nghĩa sau khi thêm design, hoặc đăng ký catalog bài viết.
 ---
 
 # 📘 Clinical Handbook MDX Module Skill (Sổ Tay Lâm Sàng & Đúc Kết Thực Chiến)
@@ -48,9 +48,9 @@ src/content/clinical-handbook/
 
 ---
 
-## 🛑 2. BỘ 10 QUY TẮC VÀNG BẮT BUỘC (MODULE HARD RULES)
+## 🛑 2. BỘ 11 QUY TẮC VÀNG BẮT BUỘC (MODULE HARD RULES)
 
-Khi biên tập, tiếp nhận hoặc chuyển đổi bất kỳ file `.mdx` nào trong `src/content/clinical-handbook/`, AI **bắt buộc tuân thủ 10 quy tắc sau**:
+Khi biên tập, tiếp nhận hoặc chuyển đổi bất kỳ file `.mdx` nào trong `src/content/clinical-handbook/`, AI **bắt buộc tuân thủ 11 quy tắc sau**:
 
 ### Quy tắc 1: CẤM TUYỆT ĐỐI ASCII ART (Anti-ASCII Rule)
 - Tuyệt đối **không** dùng sơ đồ vẽ bằng ký tự đơn dòng `+----+----|` hoặc `──>` trong khối code block.
@@ -116,6 +116,18 @@ Một bài học chuẩn hoàn chỉnh **bắt buộc phải có đủ 6 tầng 
 - Chạy `node .agents/skills/clinical-handbook-mdx-module/scripts/validate_handbook_mdx.mjs <file>.mdx` để kiểm định toàn diện.
 - Chạy `npm run build` để xác nhận Vite biên dịch thành công 100% không vướng lỗi TypeScript hay import.
 
+### Quy tắc 11: ĐỔI TÊN FILE NGỮ NGHĨA SAU KHI THÊM DESIGN (Semantic File Renaming Rule)
+- Khi thêm design / hoàn thiện một file bản thảo có tên chung chung hoặc tên rút gọn đánh số (ví dụ: `hh.mdx`, `draft.mdx`, `note.mdx`, `dengue-03.mdx`, `hbv-04.mdx`), AI **bắt buộc phải đổi tên file `.mdx`** sao cho phản ánh đúng chủ đề lâm sàng của bài viết theo chuẩn đặt tên thống nhất của phân hệ:
+  - **Cấu trúc tên file chuẩn**: `<ma-benh>-<STT-2-chu-so>-<chu-de-ngan-kebab-case>.mdx` (chữ thường 100%, ASCII thuần không dấu tiếng Việt, nối bằng dấu gạch nối `-`).
+  - **Ví dụ chuẩn**:
+    - `hh.mdx` / `dengue-02.mdx` $\rightarrow$ `dengue-02-viem-gan-nang-va-suy-gan-cap.mdx`
+    - `dengue-03.mdx` $\rightarrow$ `dengue-03-chi-dinh-truyen-tieu-cau.mdx`
+    - `hbv-01.mdx` $\rightarrow$ `hbv-01-tieu-chuan-chan-doan-va-cam-bay.mdx`
+- **Đồng bộ bắt buộc ngay khi đổi tên file**:
+  1. Cập nhật trường `slug` (và kiểm tra `order`) trong Frontmatter YAML khớp chính xác 100% với tên file mới (không kèm `.mdx`).
+  2. Cập nhật đồng bộ `id`, `slug` và `filePath` trong `src/content/clinical-handbook/data/handbook-catalog.ts` (vì `handbook-reader-view.ts` nạp bài viết theo mẫu `${specialtyId}/${diseaseSlug}/${slug}.mdx`).
+  3. Xóa/di chuyển file tên thô cũ (không để tồn tại song song 2 bản cũ và mới gây rác kho nội dung) và rà soát toàn repo xem có đường dẫn cũ nào cần cập nhật.
+
 ---
 
 ## 🚀 3. QUY TRÌNH 5 BƯỚC HOÀN THIỆN BÀI HỌC (THE 5-STEP PIPELINE)
@@ -146,8 +158,9 @@ Một bài học chuẩn hoàn chỉnh **bắt buộc phải có đủ 6 tầng 
   ├── Chuyển công thức vào .katex-display-card
   └── Gắn anchor {#sec-id} vào mọi tiêu đề H2
 
-[BƯỚC 5: CẬP NHẬT CATALOG & CHẠY QUALITY GATE]
-  ├── Cập nhật bản ghi trong src/content/clinical-handbook/data/handbook-catalog.ts
+[BƯỚC 5: ĐỔI TÊN FILE NGỮ NGHĨA, CẬP NHẬT CATALOG & CHẠY QUALITY GATE]
+  ├── Đổi tên file draft/tạm (như hh.mdx, dengue-03.mdx) sang <ma-benh>-<NN>-<chu-de-kebab-case>.mdx & đồng bộ `slug` trong YAML
+  ├── Cập nhật đồng bộ `id`, `slug`, `filePath` và metadata trong src/content/clinical-handbook/data/handbook-catalog.ts
   ├── Chạy test kiểm tra thẻ: node tools/scratch/check_tags.js <file>.mdx
   ├── Chạy validator: node .agents/skills/clinical-handbook-mdx-module/scripts/validate_handbook_mdx.mjs <file>.mdx
   └── Kiểm tra render hiển thị trên trình duyệt hoặc dev server
@@ -468,8 +481,8 @@ Các tiêu chí script tự động rà soát:
 
 Trước khi xác nhận hoàn thành bất kỳ bài học nào trong Sổ tay Lâm sàng, hãy đánh dấu kiểm tra bảng checklist sau:
 
-- [ ] File MDX nằm đúng thư mục `src/content/clinical-handbook/<specialty>/<disease>/<slug>.mdx`.
-- [ ] Tiêu đề và slug dùng tiếng Việt không dấu chuẩn kebab-case.
+- [ ] File MDX nằm đúng thư mục `src/content/clinical-handbook/<specialty>/<disease>/<ma-benh>-<NN>-<chu-de-kebab-case>.mdx` (đã đổi tên từ file thô/nháp như `hh.mdx`, `dengue-03.mdx` và xóa file tên cũ).
+- [ ] Tên file, trường `slug` trong Frontmatter YAML và `id`/`slug`/`filePath` trong `handbook-catalog.ts` khớp nhau 100%, dùng tiếng Việt không dấu chuẩn kebab-case.
 - [ ] Khối Frontmatter YAML đầy đủ 100% metadata và mảng `sections` khớp với các `## ... {#sec-id}`.
 - [ ] Có dải chỉ số 30s `.stats-strip` với 4 thẻ `.stat-card` chứa số liệu dịch tễ / cut-off then chốt.
 - [ ] Có thanh điều hướng nhanh cố định `.pillars-nav` với các nút bấm neo liên kết.

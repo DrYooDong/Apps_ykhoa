@@ -53,6 +53,21 @@ if (!rawContent.startsWith('---')) {
       }
     }
 
+    // Validate filename vs slug & semantic kebab-case naming
+    const fileBaseName = path.basename(resolvedPath, '.mdx');
+    const slugMatch = yamlStr.match(/^\s*slug:\s*["']?([^"'\n\r]+)["']?/m);
+    if (slugMatch) {
+      const yamlSlug = slugMatch[1].trim();
+      if (yamlSlug !== fileBaseName) {
+        errors.push(`Tên file "${fileBaseName}.mdx" không khớp với slug "${yamlSlug}" trong YAML frontmatter`);
+      } else {
+        successes.push(`Tên file khớp 100% với slug YAML ("${fileBaseName}").`);
+      }
+    }
+    if (/^(hh|draft|note|temp|[a-z]+-\d{2})$/i.test(fileBaseName)) {
+      warnings.push(`Tên file "${fileBaseName}.mdx" còn ở dạng tạm/rút gọn. Hãy đổi sang tên ngữ nghĩa <ma-benh>-<NN>-<chu-de-kebab-case>.mdx và đồng bộ slug + handbook-catalog.ts!`);
+    }
+
     // Extract section IDs from YAML
     const sectionIdMatches = [...yamlStr.matchAll(/id:\s*["']?([^"'\n\r]+)["']?/g)].map(m => m[1].trim());
     if (sectionIdMatches.length === 0) {

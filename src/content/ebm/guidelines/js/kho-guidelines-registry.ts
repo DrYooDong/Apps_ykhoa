@@ -3,7 +3,7 @@
  * Path: src/content/ebm/guidelines/kho-guidelines-registry.ts
  *
  * TỰ ĐỘNG SINH TỪ TẬP TỆP MDX NATIVE (Single Source of Truth)
- * Cập nhật: 2026-11-08 (159 tài liệu lâm sàng chuẩn hóa 1:1)
+ * Cập nhật: 2026-11-10 (160 tài liệu lâm sàng chuẩn hóa 1:1)
  * KHÔNG SỬA TAY FILE NÀY — Chỉnh sửa trực tiếp tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
  */
 
@@ -1315,6 +1315,58 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
       "Hạ ngưỡng SpO2 <92% (mục tiêu 92–95%), phòng toan lactic SABA, thang điểm PRAM & Epinephrine phản vệ."
     ],
     "description": "Tóm tắt khuyến cáo GINA 2026 & 2025 về chẩn đoán, phân bậc điều trị Track 1/Track 2, thuốc sinh học mới Depemokimab, xử trí cơn hen cấp và quản lý OCS/SABA.",
+    "category": "guidelines",
+    "cor": "I",
+    "loe": "A"
+  },
+  {
+    "id": "2026-global-multisociety-aclf-consensus",
+    "title": "Đồng Thuận Toàn Cầu Đa Hội Về Định Nghĩa Suy Gan Cấp Trên Nền Mạn (ACLF 2026): Chuẩn Hóa Chẩn Đoán, Phân Tầng Suy Tạng & Chiến Lược Hồi Sức Ghép Gan",
+    "titleEn": "Acute-on-chronic liver failure: A global multisociety consensus on definitions",
+    "drug": "Norepinephrine, Vasopressin, Human Albumin 20%, Hydrocortisone, Entecavir, Tenofovir (TDF/TAF), N-acetylcysteine, Corticosteroids, Ribavirin, Ganciclovir, Acyclovir, Lactulose, L-ornithine L-aspartate, Propofol, Dexmedetomidine",
+    "sourceType": "intl-guideline",
+    "specialty": "gi",
+    "specialty2": "icu",
+    "design": "guideline",
+    "intervention": "Xác lập điều kiện tiên quyết suy gan (Bilirubin ≥ 5 mg/dL và INR ≥ 1.5), phân loại Type A/B, phân tầng suy/rối loạn chức năng tạng ngoài gan, hồi sức tuần hoàn (MAP ≥ 65 mmHg với Norepinephrine), thở máy bảo vệ phổi, tầm soát nhiễm trùng toàn diện, trao đổi huyết tương (TPE) và ghép gan cấp cứu",
+    "impact": "practice-changing",
+    "year": 2026,
+    "organization": "EASL, AASLD, APASL, ALEH, SOLDA",
+    "journal": "Journal of Hepatology / Hepatology / Annals of Hepatology / Hepatology International",
+    "population": "Bệnh nhân có bệnh gan mạn tiến triển (ACLD, xơ hóa gan ≥F3 hoặc xơ gan còn bù/mất bù) tiến triển suy sụp lâm sàng cấp tính và suy tạng",
+    "summary": "Đồng thuận lịch sử giữa 5 hiệp hội gan mật toàn cầu (EASL, AASLD, APASL, ALEH, SOLDA) thống nhất định nghĩa cốt lõi, tiêu chuẩn phân độ và phác đồ xử trí ACLF.",
+    "file": "2026-global-multisociety-aclf-consensus.mdx",
+    "conditionKey": "aclf",
+    "icd10": [
+      "K72.0",
+      "K70.4",
+      "K74.6",
+      "K76.7"
+    ],
+    "asianData": false,
+    "bookmarked": false,
+    "code": "GDL-2026-MULTISOCIETY-ACLF",
+    "tags": [
+      "EASL",
+      "AASLD",
+      "APASL",
+      "ALEH",
+      "SOLDA",
+      "2026",
+      "Tiêu hóa - Gan mật",
+      "Hồi sức cấp cứu",
+      "ACLF",
+      "Suy gan cấp trên nền mạn",
+      "Khuyến cáo lâm sàng",
+      "Evidence-Based Medicine"
+    ],
+    "keyRecommendations": [
+      "Xác lập suy gan là điều kiện tiên quyết bắt buộc để chẩn đoán ACLF: định nghĩa bởi Bilirubin ≥ 5 mg/dL VÀ INR ≥ 1.5 trên nền bệnh gan mạn tiến triển (ACLD, xơ hóa ≥F3).",
+      "Phân tầng độ nặng ACLF dựa trên số lượng rối loạn chức năng / suy tạng ngoài gan: Độ 1 (suy gan + 1 rối loạn chức năng tạng ngoài gan), Độ 2 (suy gan + 1 suy tạng ngoài gan), Độ 3 (suy gan + ≥2 suy tạng ngoài gan).",
+      "Khởi trị kháng vi-rút trong vòng 24 giờ cho đợt bùng phát viêm gan vi-rút; chống chỉ định Corticosteroid ở bệnh nhân ACLF Độ 3 do viêm gan rượu nặng (SAH) vì tỷ lệ đáp ứng Lille cực thấp.",
+      "Hồi sức tuần hoàn ưu tiên dịch tinh thể cân bằng, Norepinephrine đầu tay đích MAP ≥ 65 mmHg; đánh giá động tiên lượng tại ngày 3–7 để xác định tính vô ích lâm sàng (futility) hoặc chỉ định ghép gan cấp cứu trong 'cửa sổ vàng' 7 ngày."
+    ],
+    "description": "Đồng thuận lịch sử giữa 5 hiệp hội gan mật toàn cầu (EASL, AASLD, APASL, ALEH, SOLDA) thống nhất định nghĩa cốt lõi, tiêu chuẩn phân độ và phác đồ xử trí ACLF.",
     "category": "guidelines",
     "cor": "I",
     "loe": "A"
