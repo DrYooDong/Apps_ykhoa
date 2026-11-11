@@ -16,7 +16,7 @@ export const HANDBOOK_SPECIALTIES: HandbookSpecialty[] = [
     icon: 'fa-virus-covid',
     color: '#0284c7',
     bgColor: 'rgba(2, 132, 199, 0.1)',
-    badge: 'Khởi điểm 8 Bệnh lý Trọng tâm',
+    badge: '9 Bệnh lý Trọng tâm',
     description: 'Đúc kết lâm sàng thực chiến từ chẩn đoán huyết thanh học, bẫy xét nghiệm, phác đồ điều trị và nghệ thuật kiểm soát biến chứng truyền nhiễm tại Việt Nam.',
     order: 1,
     diseases: [] // Populated below
@@ -343,6 +343,81 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-take-home', number: 8, title: 'Kết Luận & 5 Thông Điệp Thực Hành Cốt Lõi', icon: 'fa-lightbulb' },
           { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
         ]
+      },
+      {
+        id: 'dengue-04-sot-cap-ns1-am-tinh-giam-tieu-cau',
+        slug: 'dengue-04-sot-cap-ns1-am-tinh-giam-tieu-cau',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Chẩn Đoán Sốt Cấp Tính Có NS1Ag Âm Tính & Tiểu Cầu Giảm Dần',
+        subtitle: 'Giải mã hiện tượng NS1Ag âm tính giả trong nhiễm thứ phát, hệ thống 3 nhóm chẩn đoán phân biệt nhiệt đới và lưu đồ xử trí 3 bước',
+        description: 'Chiến lược tiếp cận sốt cấp kèm giảm tiểu cầu khi NS1Ag âm tính: động học NS1 và phức hợp miễn dịch IgG, 3 chiến lược xét nghiệm giải cứu (RDT bộ ba, RT-PCR, huyết thanh kép), phân biệt Arbovirus, nhiễm khuẩn huyết, sốt mò, sốt rét, Leptospirosis, thương hàn, HLH, TMA, G6PD và 4 ca lâm sàng thực chiến.',
+        estimatedMinutes: 25,
+        tags: ['Sốt xuất huyết Dengue', 'NS1Ag âm tính', 'Giảm tiểu cầu', 'Âm tính giả', 'Chẩn đoán phân biệt', 'Nhiễm khuẩn huyết', 'Sốt mò', 'Leptospirosis', 'HLH thứ phát', 'TMA & G6PD', 'WHO 2025', 'QĐ 2760/QĐ-BYT'],
+        keyTakeaway: 'Tuyệt đối không loại trừ SXHD chỉ vì NS1Ag (-) từ ngày 4–7 hay nhiễm thứ phát (độ nhạy giảm còn 67,1–77,3%); phối hợp bộ ba NS1+IgM+IgG hoặc RT-PCR, đồng thời sàng lọc nhiễm khuẩn huyết, sốt mò, sốt rét, Leptospirosis, HLH và TMA.',
+        order: 4,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-04-sot-cap-ns1-am-tinh-giam-tieu-cau.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-11',
+        evidenceLevel: 'EBM 2026 • WHO 2025 • QĐ 2760/QĐ-BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Thách Thức Chẩn Đoán', icon: 'fa-bolt' },
+          { id: 'sec-ns1-kinetics', number: 2, title: 'Giải Mã Hiện Tượng NS1Ag Âm Tính Giả & Chiến Lược Khắc Phục', icon: 'fa-vial-virus' },
+          { id: 'sec-differential-system', number: 3, title: 'Hệ Thống 3 Nhóm Chẩn Đoán Phân Biệt Sốt Cấp Giảm Tiểu Cầu', icon: 'fa-layer-group' },
+          { id: 'sec-diagnostic-flow', number: 4, title: 'Lưu Đồ & Chiến Lược Cận Lâm Sàng Tiếp Cận Từng Bước', icon: 'fa-route' },
+          { id: 'sec-pitfalls', number: 5, title: 'Lưới Cạm Bẫy Lâm Sàng Sống Còn Cần Tránh', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenarios', number: 6, title: 'Tuyển Tập 4 Ca Lâm Sàng Thực Chiến & Biện Luận Phức Tạp', icon: 'fa-user-doctor' },
+          { id: 'sec-recommendations', number: 7, title: '5 Khuyến Cáo Thực Hành Lâm Sàng Cho Bác Sĩ Điều Trị', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'ap-xe-gan',
+    slug: 'ap-xe-gan',
+    specialtyId: 'truyen-nhiem',
+    name: 'Áp Xe Gan (Liver Abscess)',
+    nameEn: 'Amoebic, Pyogenic, Fasciola & Fungal Liver Abscess',
+    icd10: 'K75.0 / A06.4',
+    icon: 'fa-microscope',
+    color: '#0d9488',
+    badge: 'EBM 2026 • Đa căn nguyên',
+    summary: 'Tiếp cận tam giác chẩn đoán truyền nhiễm (Dịch tễ – Lâm sàng – Cận lâm sàng) phân biệt 4 căn nguyên gây áp xe gan: Amip (ALA), Vi khuẩn sinh mủ (PLA), Sán lá gan lớn (Fasciola) và Nấm (Aspergillus).',
+    keyPearlsPreview: [
+      'Áp xe gan Amip (ALA): ưu thế nam trẻ uống rượu (4:1–14:1), ổ đơn độc thùy phải dấu "bia đôi", mủ nâu "sốt cá cơm" vô khuẩn, tiêu chảy chỉ < 1/3 ca',
+      'Áp xe vi khuẩn (PLA): lớn tuổi, ĐTĐ/sỏi mật, dấu "cụm" (cluster sign), cảnh giác Klebsiella pneumoniae sinh khí & di căn mắt/màng não',
+      'Sán lá gan lớn (Fasciola): ăn rau thủy sinh, tăng mạnh Eosinophil, cụm "hình tổ ong" dễ nhầm u gan — dùng Triclabendazole, tránh chọc hút',
+      'Áp xe gan do Nấm (Aspergillus): 86% suy giảm miễn dịch sâu, cấy máu nhạy chỉ 11% — định hướng Galactomannan & sinh thiết sợi nấm 45°'
+    ],
+    guidelines: ['Quyết định 1203/QĐ-BYT (2022)', 'Quyết định 487/QĐ-BYT (2021)', 'IDSA / EBM 2026'],
+    order: 3,
+    articles: [
+      {
+        id: 'ap-xe-gan-01-tam-giac-chan-doan-phan-biet-can-nguyen',
+        slug: 'ap-xe-gan-01-tam-giac-chan-doan-phan-biet-can-nguyen',
+        diseaseId: 'ap-xe-gan',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Tam Giác Chẩn Đoán Truyền Nhiễm Trong Phân Biệt Các Căn Nguyên Gây Áp Xe Gan',
+        subtitle: 'Phân biệt Amip (ALA), Vi khuẩn sinh mủ (PLA), Sán lá gan lớn (Fasciola) và Nấm (Aspergillus) qua 3 đỉnh Dịch tễ – Lâm sàng – Cận lâm sàng',
+        description: 'Vận dụng mô hình tam giác chẩn đoán truyền nhiễm để nhận diện và điều trị trúng đích 4 căn nguyên gây áp xe gan, bảng ma trận so sánh 7 tiêu chí, cạm bẫy chẩn đoán và 4 ca lâm sàng thực tế (vỡ màng phổi, Actinomyces, Fasciola, Aspergillus).',
+        estimatedMinutes: 25,
+        tags: ['Áp xe gan', 'Tam giác chẩn đoán', 'Áp xe gan Amip (ALA)', 'Áp xe gan vi khuẩn (PLA)', 'Sán lá gan lớn (Fasciola)', 'Áp xe gan do nấm (Aspergillus)', 'Klebsiella pneumoniae', 'Actinomyces', 'QĐ 1203/QĐ-BYT', 'EBM 2026'],
+        keyTakeaway: 'Kết hợp 3 đỉnh Dịch tễ – Lâm sàng – Cận lâm sàng/CT ("bia đôi" ALA, "cụm" PLA, "tổ ong" + Eosinophil Fasciola, Galactomannan + SGMD Aspergillus) giúp chọn đúng điều trị đặc hiệu và tránh chọc hút hay kháng sinh mù quáng.',
+        order: 1,
+        filePath: 'truyen-nhiem/ap-xe-gan/ap-xe-gan-01-tam-giac-chan-doan-phan-biet-can-nguyen.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-11',
+        evidenceLevel: 'EBM 2026 • QĐ 1203/QĐ-BYT • QĐ 487/QĐ-BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Bài Học', icon: 'fa-bolt' },
+          { id: 'sec-diagnostic-triangle', number: 2, title: 'Mô Hình Tam Giác Chẩn Đoán Truyền Nhiễm', icon: 'fa-diagram-project' },
+          { id: 'sec-four-etiologies', number: 3, title: 'Phân Tích 4 Căn Nguyên Theo Tam Giác Chẩn Đoán', icon: 'fa-layer-group' },
+          { id: 'sec-comparison-matrix', number: 4, title: 'Bảng Tổng Hợp So Sánh & Lưu Đồ Tiếp Cận Tại Giường', icon: 'fa-table-list' },
+          { id: 'sec-pitfalls', number: 5, title: 'Lưới Cạm Bẫy Chẩn Đoán & Điều Trị Sống Còn', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenarios', number: 6, title: 'Tuyển Tập 4 Ca Lâm Sàng Minh Họa & Biện Luận', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 7, title: 'Tài Liệu Tham Khảo (Theo Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
       }
     ]
   },
@@ -363,7 +438,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Bù dịch ban đầu 30 mL/kg tinh thể cân bằng, sau đó đánh giá đáp ứng dịch động (PLR)'
     ],
     guidelines: ['Surviving Sepsis Campaign 2026', 'IDSA Sepsis Guidance'],
-    order: 3,
+    order: 4,
     articles: []
   },
   {
@@ -383,7 +458,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Đường huyết máu phải đo cùng lúc với chọc dịch não tủy để tính tỷ lệ Glucose DNT / Máu (bình thường > 0.6)'
     ],
     guidelines: ['EAN/ESCMID 2026 Encephalitis Guidelines', 'IDSA Meningitis Guidelines'],
-    order: 4,
+    order: 5,
     articles: []
   },
   {
@@ -403,7 +478,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Hạ sốt 48-72h + huyết động ổn định + ăn uống được là chỉ định vàng chuyển sang kháng sinh uống (IV-to-PO)'
     ],
     guidelines: ['ATS/IDSA CAP Guidelines', 'Quyết định 4815/QĐ-BYT'],
-    order: 5,
+    order: 6,
     articles: []
   },
   {
@@ -422,7 +497,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Bệnh nhân cúm có dấu hiệu sốt lại sau khi đã lui sốt kèm đờm mủ phải cảnh giác bội nhiễm Tụ cầu vàng (MRSA) hoặc Phế cầu'
     ],
     guidelines: ['WHO Influenza Guidelines', 'CDC Influenza Antiviral Guidance'],
-    order: 6,
+    order: 7,
     articles: []
   },
   {
@@ -441,7 +516,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Ưu tiên dùng Kháng thể uốn ván người (TIG) nếu có điều kiện để tránh nguy cơ sốc phản vệ so với huyết thanh ngựa (SAT)'
     ],
     guidelines: ['Hướng dẫn Chẩn đoán & Điều trị Uốn ván Bộ Y tế'],
-    order: 7,
+    order: 8,
     articles: []
   },
   {
@@ -460,7 +535,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Bắt buộc xét nghiệm men G6PD trước khi dùng Primaquine điều trị tiệt căn thể ngủ P. vivax để ngừa tán huyết cấp'
     ],
     guidelines: ['WHO Guidelines for Malaria 2024', 'Quyết định 2699/QĐ-BYT'],
-    order: 8,
+    order: 9,
     articles: []
   }
 ];

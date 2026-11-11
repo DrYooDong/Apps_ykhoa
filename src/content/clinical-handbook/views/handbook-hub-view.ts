@@ -232,7 +232,7 @@ export function renderHandbookHubView(activeSpecialtyId: SpecialtyId = 'truyen-n
               Chuyên khoa ${currentSpecialty.name} Đang Được Biên Soạn
             </h3>
             <p style="font-size: 0.9rem; color: var(--handbook-muted); max-width: 600px; margin: 0 auto 1.5rem auto;">
-              Hội đồng Y học chứng cứ CliniPortal đang chuẩn hóa các bài đúc kết thực chiến theo khuyến cáo 2026. Mời bạn tham khảo 8 Bệnh lý Trọng tâm thuộc Chuyên khoa Truyền Nhiễm.
+              Hội đồng Y học chứng cứ CliniPortal đang chuẩn hóa các bài đúc kết thực chiến theo khuyến cáo 2026. Mời bạn tham khảo ${HANDBOOK_SPECIALTIES[0].diseases.length} Bệnh lý Trọng tâm thuộc Chuyên khoa Truyền Nhiễm.
             </p>
             <a href="#/clinical-handbook/truyen-nhiem" class="btn-handbook-read">
               <i class="fa-solid fa-virus-covid"></i>
