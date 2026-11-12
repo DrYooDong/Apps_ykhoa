@@ -16,7 +16,7 @@ export const HANDBOOK_SPECIALTIES: HandbookSpecialty[] = [
     icon: 'fa-virus-covid',
     color: '#0284c7',
     bgColor: 'rgba(2, 132, 199, 0.1)',
-    badge: '9 Bệnh lý Trọng tâm',
+    badge: '10 Bệnh lý Trọng tâm',
     description: 'Đúc kết lâm sàng thực chiến từ chẩn đoán huyết thanh học, bẫy xét nghiệm, phác đồ điều trị và nghệ thuật kiểm soát biến chứng truyền nhiễm tại Việt Nam.',
     order: 1,
     diseases: [] // Populated below
@@ -457,9 +457,38 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       'Nghi ngờ viêm não do Herpes simplex (HSV-1) phải tiêm ngay Acyclovir tĩnh mạch không chờ kết quả PCR DNT',
       'Đường huyết máu phải đo cùng lúc với chọc dịch não tủy để tính tỷ lệ Glucose DNT / Máu (bình thường > 0.6)'
     ],
-    guidelines: ['EAN/ESCMID 2026 Encephalitis Guidelines', 'IDSA Meningitis Guidelines'],
+    guidelines: ['WHO 2024 Meningitis Manual', 'Quyết định 4068/QĐ-BYT', 'EAN/ESCMID 2026 Encephalitis Guidelines', 'IDSA Meningitis Guidelines'],
     order: 5,
-    articles: []
+    articles: [
+      {
+        id: 'vmn-01-phan-tich-ket-qua-dich-nao-tuy',
+        slug: 'vmn-01-phan-tich-ket-qua-dich-nao-tuy',
+        diseaseId: 'viem-nao-mang-nao',
+        specialtyId: 'truyen-nhiem',
+        title: 'Phân Tích Các Kết Quả Chọc Dò Dịch Não Tủy Thường Gặp',
+        subtitle: 'Áp lực mở, đại thể, tế bào – sinh hóa, vi sinh, bảng đối chiếu 6 hội chứng, công thức hiệu chỉnh chạm mạch và bẫy phân ly đạm - tế bào',
+        description: 'Hướng dẫn thực chiến đọc kết quả dịch não tủy (DNT): đo áp lực mở & đại thể (xanthochromia, màng mạng nhện), tế bào học, tỷ số Glucose DNT/máu, Lactate, ADA, nhuộm Gram/CrAg/GeneXpert, phân biệt chạm mạch vs xuất huyết dưới nhện, ảnh hưởng kháng sinh trước LP và biện luận ca bệnh phân ly đạm - tế bào.',
+        estimatedMinutes: 22,
+        tags: ['Dịch não tủy (DNT)', 'Chọc dò tủy sống', 'Viêm màng não vi khuẩn', 'Viêm màng não virus', 'Viêm màng não lao', 'Cryptococcus', 'Xuất huyết dưới nhện (SAH)', 'Chạm mạch thủ thuật', 'Phân ly đạm - tế bào', 'QĐ 4068/QĐ-BYT', 'WHO 2024'],
+        keyTakeaway: 'Luôn đo đường huyết tĩnh mạch cùng lúc chọc dò để tính tỷ số Glucose DNT/máu (< 0,4 gợi ý vi khuẩn/lao); hiệu chỉnh trừ 1 WBC mỗi 500–1.000 RBC khi chạm mạch và cảnh giác phân ly đạm - tế bào để tránh lạm dụng kháng sinh.',
+        order: 1,
+        filePath: 'truyen-nhiem/viem-nao-mang-nao/vmn-01-phan-tich-ket-qua-dich-nao-tuy.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-12',
+        evidenceLevel: 'EBM 2026 • WHO 2024 • IDSA / ESCMID • QĐ 4068/QĐ-BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Bài Học', icon: 'fa-bolt' },
+          { id: 'sec-collection-gross', number: 2, title: 'Quy Trình Thu Thập, Áp Lực Mở & Đại Thể DNT', icon: 'fa-droplet' },
+          { id: 'sec-routine-params', number: 3, title: 'Thông Số Tế Bào, Sinh Hóa & Vi Sinh Chuyên Sâu', icon: 'fa-vial-virus' },
+          { id: 'sec-syndrome-matrix', number: 4, title: 'Bảng Đối Chiếu 6 Hội Chứng Dịch Não Tủy Kinh Điển', icon: 'fa-table-list' },
+          { id: 'sec-diagnostic-svg', number: 5, title: 'Lưu Đồ Tiếp Cận DNT & Định Hướng Xử Trí Sớm', icon: 'fa-diagram-project' },
+          { id: 'sec-pitfalls', number: 6, title: 'Tình Huống Đặc Biệt & Cạm Bẫy Đọc Kết Quả', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Thực Chiến: Phân Ly Đạm - Tế Bào & Chạm Mạch', icon: 'fa-user-doctor' },
+          { id: 'sec-key-pearls', number: 8, title: '4 Thông Điệp Thực Hành Cốt Lõi (Key Pearls)', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   },
   {
     id: 'viem-phoi-cong-dong',
@@ -537,6 +566,56 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
     guidelines: ['WHO Guidelines for Malaria 2024', 'Quyết định 2699/QĐ-BYT'],
     order: 9,
     articles: []
+  },
+  {
+    id: 'roi-loan-tri-giac',
+    slug: 'roi-loan-tri-giac',
+    specialtyId: 'truyen-nhiem',
+    name: 'Rối Loạn Tri Giác & Hôn Mê',
+    nameEn: 'Altered Mental Status & Coma',
+    icd10: 'R40.2',
+    icon: 'fa-brain',
+    color: '#6366f1',
+    badge: 'Cấp cứu Thần kinh – Truyền nhiễm',
+    summary: 'Tiếp cận nguyên nhân và xử trí cấp cứu bệnh nhân rối loạn tri giác / hôn mê: giải phẫu aRAS, ABCDE & Coma Cocktail, phân biệt tổn thương cấu trúc vs chuyển hóa (AEIOU-TIPS, Toxidromes), khám GCS/FOUR/đồng tử và bẫy tắc động mạch thân nền.',
+    keyPearlsPreview: [
+      'Thử đường huyết mao mạch & đánh giá SpO2 trong 2 phút đầu tiên; đặt NKQ khi GCS ≤ 8 và cố định cột sống cổ nếu nghi chấn thương',
+      'Bộ ba Coma Cocktail: Dextrose 50% (glucose < 70 mg/dL), Thiamine 100–500 mg IV trước/cùng truyền đường, Naloxone 0,4–2 mg IV nếu nghi Opioid',
+      'Tổn thương vỏ não 1 bên đơn độc KHÔNG gây hôn mê trừ khi có hiệu ứng khối gây tụt não chèn ép thân não (aRAS)',
+      'Đồng tử đầu kim kèm apneustic, ocular bobbing và duỗi cứng mất não: cảnh giác tắc động mạch thân nền hoặc xuất huyết cầu não'
+    ],
+    guidelines: ['ENLS Coma Protocol v6.0 (2024)', 'Quyết định 5331/QĐ-BYT'],
+    order: 10,
+    articles: [
+      {
+        id: 'roi-loan-tri-giac-01-tiep-can-nguyen-nhan-va-cap-cuu',
+        slug: 'roi-loan-tri-giac-01-tiep-can-nguyen-nhan-va-cap-cuu',
+        diseaseId: 'roi-loan-tri-giac',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Nguyên Nhân & Xử Trí Cấp Cứu Bệnh Nhân Rối Loạn Tri Giác / Hôn Mê',
+        subtitle: 'Giải phẫu aRAS, quy trình ABCDE & Coma Cocktail, phân biệt Cấu trúc vs AEIOU-TIPS / Toxidromes, thang điểm GCS/FOUR và ca thực chiến tắc ĐM thân nền',
+        description: 'Hướng dẫn toàn diện tiếp cận bệnh nhân rối loạn tri giác và hôn mê: từ sinh lý bệnh aRAS, lưu đồ cấp cứu 2 phút đầu, bảng AEIOU-TIPS, 5 hội chứng độc học (Toxidromes), thăm khám đồng tử – kiểu thở – Coma Mimics đến chiến lược cận lâm sàng 3 bậc và ca lâm sàng tắc động mạch thân nền.',
+        estimatedMinutes: 25,
+        tags: ['Rối loạn tri giác', 'Hôn mê', 'aRAS', 'ABCDE & Coma Cocktail', 'AEIOU-TIPS', 'Toxidromes', 'GCS & FOUR', 'Tắc động mạch thân nền', 'ENLS v6.0', 'QĐ 5331/QĐ-BYT'],
+        keyTakeaway: 'Ổn định ABCDE và đo đường huyết mao mạch/SpO2 trong 2 phút đầu; phân biệt tổn thương cấu trúc (dấu khu trú/CT) với chuyển hóa-độc chất (AEIOU-TIPS); bắt buộc chụp CT sọ trước khi chọc dò dịch não tủy.',
+        order: 1,
+        filePath: 'truyen-nhiem/roi-loan-tri-giac/roi-loan-tri-giac-01-tiep-can-nguyen-nhan-va-cap-cuu.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-12',
+        evidenceLevel: 'EBM 2026 • ENLS v6.0 (2024) • QĐ 5331/QĐ-BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Bài Học', icon: 'fa-bolt' },
+          { id: 'sec-neuroanatomy', number: 2, title: 'Giải Phẫu & Sinh Lý Bệnh Học Của Tri Giác', icon: 'fa-brain' },
+          { id: 'sec-abcde', number: 3, title: 'Cấp Cứu Ban Đầu ABCDE & Điều Trị Đảo Ngược Tức Thì', icon: 'fa-truck-medical' },
+          { id: 'sec-etiologies', number: 4, title: 'Phân Loại Hệ Thống Nguyên Nhân (Cấu Trúc, AEIOU-TIPS & Toxidromes)', icon: 'fa-layer-group' },
+          { id: 'sec-neuro-exam', number: 5, title: 'Thăm Khám Thần Kinh Có Định Hướng Nguyên Nhân', icon: 'fa-eye' },
+          { id: 'sec-workup', number: 6, title: 'Chiến Lược Cận Lâm Sàng Theo 3 Bậc', icon: 'fa-microscope' },
+          { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Thực Chiến: Hôn Mê Do Tắc Động Mạch Thân Nền', icon: 'fa-user-doctor' },
+          { id: 'sec-pitfalls', number: 8, title: 'Cạm Bẫy Lâm Sàng & Điểm Then Chốt Cần Nhớ', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   }
 ];
 
