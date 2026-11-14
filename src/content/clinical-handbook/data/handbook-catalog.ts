@@ -819,6 +819,35 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-bedside-case', number: 9, title: 'Ca Lâm Sàng Thực Chiến: Viêm Động Mạch Tế Bào Khổng Lồ (GCA)', icon: 'fa-user-doctor' },
           { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
         ]
+      },
+      {
+        id: 'fuo-02-tam-soat-o-nhiem-trung-source-control',
+        slug: 'fuo-02-tam-soat-o-nhiem-trung-source-control',
+        diseaseId: 'sot-crnn',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tầm Soát Các Ổ Nhiễm Trùng Từ Cơ Bản Đến Nâng Cao & Kiểm Soát Nguồn Nhiễm (Source Control)',
+        subtitle: 'Mô hình 3 tầng bậc, động học biomarkers (CRP, PCT, Presepsin, IG%), hướng dẫn vi sinh IDSA/ASM, hình ảnh học chuyên sâu và ca thực chiến',
+        description: 'Hướng dẫn toàn diện quy trình tầm soát ổ nhiễm trùng theo 3 tầng bậc từ lâm sàng, dấu ấn sinh học phản ứng viêm đến kỹ thuật vi sinh phân tử và PET/CT, tuân thủ nguyên tắc giờ vàng kiểm soát nguồn nhiễm (Source Control) theo Surviving Sepsis Campaign.',
+        estimatedMinutes: 30,
+        tags: ['Tầm soát ổ nhiễm trùng', 'Source Control', 'Nhiễm trùng huyết', 'Dấu ấn sinh học', 'Procalcitonin', 'Presepsin', 'IG%', 'IDSA/ASM', '18F-FDG PET/CT', 'MALDI-TOF', 'mNGS', 'EBM 2026'],
+        keyTakeaway: 'Kiểm soát ổ nhiễm trùng (Source control) trong 6 giờ đầu quyết định tử vong; không dấu ấn nào đơn độc thay thế lâm sàng; phân ly PCT/CRP gợi ý ổ áp-xe kín; cấy máu đủ thể tích trước kháng sinh.',
+        order: 2,
+        filePath: 'truyen-nhiem/sot-crnn/fuo-02-tam-soat-o-nhiem-trung-source-control.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • SSC / IDSA / ASM',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Học Tập (The Bottom Line)', icon: 'fa-bolt' },
+          { id: 'sec-source-control', number: 2, title: 'Đại Cương & Giờ Vàng Kiểm Soát Ổ Nhiễm Trùng (Source Control)', icon: 'fa-crosshairs' },
+          { id: 'sec-stepwise-model', number: 3, title: 'Mô Hình Tiếp Cận Tầm Soát Theo 3 Tầng Bậc', icon: 'fa-diagram-project' },
+          { id: 'sec-level-1-biomarkers', number: 4, title: 'Tầng 1: Khám Hệ Thống, Động Học Biomarkers & Vi Sinh Cơ Bản', icon: 'fa-vial' },
+          { id: 'sec-level-2-advanced-imaging', number: 5, title: 'Tầng 2: Thăm Dò Nâng Cao Định Hướng Mô & Vi Sinh Nhanh', icon: 'fa-microscope' },
+          { id: 'sec-level-3-deep-exploration', number: 6, title: 'Tầng 3: Thăm Dò Chuyên Sâu Ổ Ẩn Kín & Thủ Thuật Xâm Lấn', icon: 'fa-radiation' },
+          { id: 'sec-idsa-asm-guidelines', number: 7, title: 'Bảng Hướng Dẫn Thu Thập Bệnh Phẩm & Tầm Soát Theo IDSA/ASM', icon: 'fa-table-list' },
+          { id: 'sec-clinical-cases', number: 8, title: 'Phân Tích Các Ca Lâm Sàng Thực Chiến Tại Giường Bệnh', icon: 'fa-user-doctor' },
+          { id: 'sec-clinical-pitfalls', number: 9, title: 'Lưới Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong Cần Tránh', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
       }
     ]
   }

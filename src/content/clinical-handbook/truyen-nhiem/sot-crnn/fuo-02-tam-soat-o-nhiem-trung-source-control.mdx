@@ -1,0 +1,872 @@
+---
+title: "Tầm Soát Các Ổ Nhiễm Trùng Từ Cơ Bản Đến Nâng Cao & Kiểm Soát Nguồn Nhiễm (Source Control)"
+slug: "fuo-02-tam-soat-o-nhiem-trung-source-control"
+specialty: "truyen-nhiem"
+specialtyLabel: "Bệnh Truyền Nhiễm & Nhiệt Đới"
+disease: "sot-crnn"
+diseaseLabel: "Sốt Không Rõ Nguyên Nhân (FUO)"
+order: 2
+tags:
+  - "Tầm soát ổ nhiễm trùng"
+  - "Source Control"
+  - "Nhiễm trùng huyết"
+  - "Dấu ấn sinh học"
+  - "Procalcitonin"
+  - "Presepsin"
+  - "IG%"
+  - "IDSA/ASM"
+  - "18F-FDG PET/CT"
+  - "MALDI-TOF"
+  - "mNGS"
+  - "EBM 2026"
+difficulty: "advanced"
+estimatedTime: 30
+lastUpdated: "2026-11-14"
+evidenceLevel: "EBM 2026 • SSC / IDSA / ASM"
+sections:
+  - id: "sec-takeaway"
+    number: 1
+    title: "Đúc Kết 30 Giây & Mục Tiêu Học Tập (The Bottom Line)"
+    icon: "fa-bolt"
+  - id: "sec-source-control"
+    number: 2
+    title: "Đại Cương & Giờ Vàng Kiểm Soát Ổ Nhiễm Trùng (Source Control)"
+    icon: "fa-crosshairs"
+  - id: "sec-stepwise-model"
+    number: 3
+    title: "Mô Hình Tiếp Cận Tầm Soát Theo 3 Tầng Bậc (Stepwise Screening)"
+    icon: "fa-diagram-project"
+  - id: "sec-level-1-biomarkers"
+    number: 4
+    title: "Tầng 1: Khám Hệ Thống, Động Học Biomarkers & Vi Sinh Cơ Bản"
+    icon: "fa-vial"
+  - id: "sec-level-2-advanced-imaging"
+    number: 5
+    title: "Tầng 2: Thăm Dò Nâng Cao Định Hướng Mô & Vi Sinh Nhanh"
+    icon: "fa-microscope"
+  - id: "sec-level-3-deep-exploration"
+    number: 6
+    title: "Tầng 3: Thăm Dò Chuyên Sâu Ổ Ẩn Kín & Thủ Thuật Xâm Lấn"
+    icon: "fa-radiation"
+  - id: "sec-idsa-asm-guidelines"
+    number: 7
+    title: "Bảng Hướng Dẫn Thu Thập Bệnh Phẩm & Tầm Soát Theo IDSA/ASM"
+    icon: "fa-table-list"
+  - id: "sec-clinical-cases"
+    number: 8
+    title: "Phân Tích Các Ca Lâm Sàng Thực Chiến Tại Giường Bệnh"
+    icon: "fa-user-doctor"
+  - id: "sec-clinical-pitfalls"
+    number: 9
+    title: "Lưới Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong Cần Tránh"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-references"
+    number: 10
+    title: "Tài Liệu Tham Khảo (Chuẩn AMA Format)"
+    icon: "fa-book-bookmark"
+---
+
+# 🎯 TẦM SOÁT CÁC Ổ NHIỄM TRÙNG TỪ CƠ BẢN ĐẾN NÂNG CAO & KIỂM SOÁT NGUỒN NHIỄM (SOURCE CONTROL)
+
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-virus-covid"></i> Bệnh Truyền Nhiễm &amp; Nhiệt Đới</span>
+  <span class="badge" style="background: rgba(239, 68, 68, 0.12); color: #dc2626; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.25);"><i class="fa-solid fa-crosshairs"></i> Source Control Khẩn Cấp</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> Surviving Sepsis Campaign (SSC 2026)</span>
+  <span class="badge" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(139, 92, 246, 0.25);"><i class="fa-solid fa-vial-virus"></i> Hướng Dẫn Vi Sinh IDSA / ASM</span>
+</div>
+
+<!-- DẢI CHỈ SỐ NHANH 30S -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val red">&le; 6 Giờ</div>
+      <div class="stat-lbl">Khung thời gian vàng kiểm soát ổ nhiễm khuẩn can thiệp (SSC)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val blue">50% &ndash; 60%</div>
+      <div class="stat-lbl">Đường hô hấp dưới (Phổi) là ổ nhiễm khuẩn nguyên phát hàng đầu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">15% &ndash; 20%</div>
+      <div class="stat-lbl">Tỷ lệ nhiễm trùng ẩn kín ban đầu (Occult focus) đòi hỏi tầm soát nâng cao</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">8 &ndash; 10 mL</div>
+      <div class="stat-lbl">Thể tích máu tối thiểu mỗi chai cấy (2&ndash;3 bộ) quyết định độ nhạy vi sinh</div>
+    </div>
+  </div>
+</section>
+
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
+<nav class="pillars-nav">
+  <div class="pillars-nav-inner">
+    <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
+    <a href="#sec-source-control" class="pillar-link"><i class="fa-solid fa-crosshairs"></i> 2. Source Control</a>
+    <a href="#sec-stepwise-model" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 3. Mô Hình 3 Tầng</a>
+    <a href="#sec-level-1-biomarkers" class="pillar-link"><i class="fa-solid fa-vial"></i> 4. Tầng 1: Biomarkers</a>
+    <a href="#sec-level-2-advanced-imaging" class="pillar-link"><i class="fa-solid fa-microscope"></i> 5. Tầng 2: CT &amp; TEE</a>
+    <a href="#sec-level-3-deep-exploration" class="pillar-link"><i class="fa-solid fa-radiation"></i> 6. Tầng 3: PET/CT &amp; mNGS</a>
+    <a href="#sec-idsa-asm-guidelines" class="pillar-link"><i class="fa-solid fa-table-list"></i> 7. Chuẩn IDSA/ASM</a>
+    <a href="#sec-clinical-cases" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 8. Ca Thực Chiến</a>
+    <a href="#sec-clinical-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 9. Cạm Bẫy Sống Còn</a>
+    <a href="#sec-references" class="pillar-link"><i class="fa-solid fa-book-bookmark"></i> 10. Tài Liệu</a>
+  </div>
+</nav>
+
+---
+
+## ⚡ 1. ĐÚC KẾT 30 GIÂY & MỤC TIÊU HỌC TẬP (THE BOTTOM LINE) {#sec-takeaway}
+
+<div class="callout callout-pearl">
+  <div class="callout-title"><i class="fa-solid fa-gem"></i> NGUYÊN TẮC VÀNG: KIỂM SOÁT NGUỒN NHIỄM KHUẨN (SOURCE CONTROL)</div>
+  <div class="callout-body">
+    Trong tiếp cận bệnh nhân nhiễm trùng cấp tính hoặc nhiễm trùng huyết, <strong>việc xác định chính xác vị trí giải phẫu của ổ nhiễm khuẩn là mắt xích quyết định hiệu quả điều trị</strong>. Kháng sinh phổ rộng mạnh nhất thế giới cũng không thể thẩm thấu vào một ổ áp-xe kín áp lực cao, mô hoại tử vô mạch hoặc bám dính biofilm trên dị vật nhân tạo.
+    <ul>
+      <li><strong>Thời gian là sự sống:</strong> Kiểm soát ổ nhiễm trùng có khả năng can thiệp (dẫn lưu mủ, mổ viêm phúc mạc, giải áp sỏi tắc nghẽn, cắt lọc mô hoại tử, rút bỏ catheter nhiễm trùng) phải được thực hiện <strong>ngay khi khả thi, tối ưu nhất trong vòng 6 giờ đầu</strong>.</li>
+      <li><strong>Quy trình tầm soát bậc thang (Stepwise Screening):</strong> Tiếp cận từ Tầng 1 (lâm sàng tỉ mỉ, động học biomarkers, cấy máu trước kháng sinh, POCUS) &rarr; Tầng 2 (CT cản quang ngực-bụng-chậu, TEE, PCR đa tác nhân, MALDI-TOF) &rarr; Tầng 3 (18F-FDG PET/CT, MRI, can thiệp điện quang và mNGS).</li>
+      <li><strong>Động học kết hợp biomarkers:</strong> Phối hợp CRP (nhạy cao) với Procalcitonin/Presepsin (đặc hiệu vi khuẩn) và IG% (chuyển trái tủy xương) giúp nhận diện sớm nhiễm trùng huyết và phát hiện các ổ nhiễm trùng khoang kín có sự phân ly dấu ấn sinh học.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout callout-danger">
+  <div class="callout-title"><i class="fa-solid fa-skull-crossbones"></i> CẠM BẪY CHẾT NGƯỜI: TRÌ HOÃN CAN THIỆP CƠ HỌC VÌ QUÁ DỰA DẪM VÀO KHÁNG SINH</div>
+  <div class="callout-body">
+    Mỗi giờ trì hoãn can thiệp kiểm soát ổ nhiễm trùng đối với các bệnh lý ngoại khoa (viêm mủ màng phổi khu trú, ứ mủ thận do sỏi, áp-xe gan vỡ, thủng tạng rỗng, hoại tử Fournier) đều <strong>làm gia tăng độc lập tỷ lệ tử vong 28 ngày và 90 ngày</strong>. Tăng liều hoặc đổi kháng sinh phổ rộng bậc cao không bao giờ thay thế được mũi kim dẫn lưu hoặc đường dao mổ giải áp!
+  </div>
+</div>
+
+### Bốn Mục Tiêu Học Tập Trọng Tâm
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 3px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-bullseye"></i> MỤC TIÊU 1</div>
+    <div style="font-size: 1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.45rem;">Vai Trò Sống Còn Của Source Control</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Phân tích được cơ chế bệnh sinh và giá trị quyết định của việc phát hiện sớm, can thiệp giải áp, dẫn lưu ổ mủ trong giảm thiểu tử vong do nhiễm trùng huyết và sốc nhiễm trùng theo Surviving Sepsis Campaign.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 3px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-layer-group"></i> MỤC TIÊU 2</div>
+    <div style="font-size: 1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.45rem;">Quy Trình Tầm Soát 3 Tầng Bậc</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Nắm vững lưu đồ phân tầng chẩn đoán: từ thăm khám vùng khuất, phối hợp động học biomarkers (CRP, PCT, Presepsin, IG%) đến chỉ định hợp lý CT, TEE, PET/CT và MRI đối quang.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 3px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-vial"></i> MỤC TIÊU 3</div>
+    <div style="font-size: 1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.45rem;">Chuẩn Hóa Kỹ Thuật Vi Sinh IDSA/ASM</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Ứng dụng thành thạo hướng dẫn vi sinh: cấy máu đủ thể tích trước kháng sinh, thu thập dịch vô trùng màng bụng/màng phổi/dịch khớp, sinh thiết mô sâu thay vì phết tăm bông bề mặt.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 3px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #7c3aed; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-user-doctor"></i> MỤC TIÊU 4</div>
+    <div style="font-size: 1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.45rem;">Biện Luận Ca Bệnh Phức Tạp</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Chẩn đoán phân biệt và xử trí thuần thục các ca bệnh có sự phân ly dấu ấn sinh học (ổ áp-xe sâu kín đáo) hoặc nhiễm khuẩn huyết tụ cầu liên quan thiết bị nhân tạo có ổ di căn xa.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## ⏱️ 2. ĐẠI CƯƠNG & GIỜ VÀNG KIỂM SOÁT Ổ NHIỄM TRÙNG (SOURCE CONTROL) {#sec-source-control}
+
+### 2.1. Phân Bố Giải Phẫu Các Ổ Nhiễm Trùng Thường Gặp
+
+Theo các nghiên cứu đa trung tâm quốc tế về dịch tễ học nhiễm trùng huyết và sốc nhiễm trùng, các vị trí giải phẫu khởi phát được phân bố như sau:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- HÔ HẤP -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #0284c7; text-transform: uppercase;"><i class="fa-solid fa-lungs"></i> VỊ TRÍ SỐ 1</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #0284c7;">50% &ndash; 60%</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Đường Hô Hấp Dưới (Phổi)</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Viêm phổi cộng đồng nặng (CAP), viêm phổi bệnh viện/thở máy (HAP/VAP), áp-xe phổi, viêm mủ màng phổi khu trú.
+    </div>
+  </div>
+
+  <!-- Ổ BỤNG -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #d97706; text-transform: uppercase;"><i class="fa-solid fa-bacon"></i> VỊ TRÍ SỐ 2</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #d97706;">15% &ndash; 25%</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Ổ Bụng &amp; Vùng Chậu</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Áp-xe gan/lách, viêm túi mật hoại tử, nhiễm trùng đường mật, viêm phúc mạc thứ phát, áp-xe túi cùng Douglas, viêm ruột thừa vỡ.
+    </div>
+  </div>
+
+  <!-- TIẾT NIỆU -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #059669; text-transform: uppercase;"><i class="fa-solid fa-toilet-paper"></i> VỊ TRÍ SỐ 3</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #059669;">10% &ndash; 20%</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Đường Tiết Niệu &amp; Sinh Dục</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Viêm đài bể thận sinh hơi, ứ mủ thận do sỏi niệu quản tắc nghẽn, áp-xe quanh thận, viêm tuyến tiền liệt cấp tính.
+    </div>
+  </div>
+
+  <!-- DA & MÔ MỀM -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #7c3aed; text-transform: uppercase;"><i class="fa-solid fa-hand-dots"></i> VỊ TRÍ SỐ 4</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #7c3aed;">5% &ndash; 10%</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Da, Mô Mềm &amp; Xương Khớp</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Viêm cân mạc hoại tử (Necrotizing Fasciitis), hoại tử Fournier, loét tì đè độ 3&ndash;4 ăn sâu vào xương, viêm khớp nhiễm trùng, viêm tủy xương.
+    </div>
+  </div>
+
+  <!-- CATHETER / DỊ VẬT -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #06b6d4; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #0891b2; text-transform: uppercase;"><i class="fa-solid fa-syringe"></i> THIẾT BỊ NỘI MẠCH</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #0891b2;">Nguy cơ cao</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Ống Thông &amp; Thiết Bị Cấy Ghép (CRBSI)</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Catheter tĩnh mạch trung tâm hầm/không hầm, dây máy tạo nhịp tim (CIED), mảnh ghép mạch máu nhân tạo, khớp nhân tạo.
+    </div>
+  </div>
+
+  <!-- OCCULT FOCUS -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.1rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+      <span style="font-size: 0.75rem; font-weight: 800; color: #dc2626; text-transform: uppercase;"><i class="fa-solid fa-mask"></i> THÁCH THỨC LỚN</span>
+      <span style="font-size: 0.95rem; font-weight: 800; color: #dc2626;">15% &ndash; 20%</span>
+    </div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.3rem;">Ổ Nhiễm Trùng Ẩn Kín (Occult Focus)</div>
+    <div style="font-size: 0.85rem; color: var(--handbook-muted); line-height: 1.5;">
+      Không tìm thấy ổ nhiễm khuẩn rõ ràng trong 24&ndash;48 giờ đầu. Cần áp dụng quy trình tầm soát nâng cao (Tầng 2 &amp; Tầng 3).
+    </div>
+  </div>
+
+</div>
+
+### 2.2. Nguyên Tắc "Ubi pus, ibi evacua" & Giờ Vàng Can Thiệp
+
+<div class="callout callout-rule">
+  <div class="callout-title"><i class="fa-solid fa-ruler-combined"></i> NGUYÊN TẮC NGOẠI KHOA CỔ ĐIỂN: "UBI PUS, IBI EVACUA" (NƠI NÀO CÓ MỦ, NƠI ĐÓ PHẢI DẪN LƯU)</div>
+  <div class="callout-body">
+    Kháng sinh tĩnh mạch không thể thay thế được can thiệp cơ học đối với các ổ mủ kín, mô hoại tử hoặc dị vật nhiễm trùng vì:
+    <ol>
+      <li><strong>Hàng rào tưới máu bị phá hủy:</strong> Trung tâm ổ áp-xe là dịch mủ đặc hoại tử hoàn toàn vô mạch, nồng độ kháng sinh tại chỗ chỉ đạt dưới 10% nồng độ huyết tương.</li>
+      <li><strong>Môi trường toan hóa và enzym phân hủy:</strong> pH thấp (&lt; 6.0) tại ổ mủ làm bất hoạt mạnh các nhóm kháng sinh chính như Aminoglycoside, Macrolide, Quinolone và Beta-lactam.</li>
+      <li><strong>Quần thể vi khuẩn không nhân đôi (Persisters &amp; Biofilm):</strong> Vi khuẩn trong biofilm ở trạng thái chuyển hóa bất hoạt, có khả năng đề kháng kiểu hình gấp hàng nghìn lần so với vi khuẩn dạng phù du tự do.</li>
+    </ol>
+  </div>
+</div>
+
+#### Khuyến Cáo Cốt Lõi Của Surviving Sepsis Campaign (SSC)
+* **Khung thời gian vàng $\le 6$ giờ:** Nhanh chóng đánh giá chẩn đoán giải phẫu và **tiến hành kiểm soát nguồn nhiễm khuẩn ngay khi khả thi về mặt nội - ngoại khoa, tốt nhất là trong vòng 6 giờ đầu** sau khi xác lập chẩn đoán.
+* **Tác động tỷ lệ tử vong:** Mỗi giờ trì hoãn kiểm soát ổ nhiễm trùng có khả năng can thiệp (dẫn lưu áp-xe qua da hoặc phẫu thuật, mổ mở làm sạch viêm phúc mạc, đặt stent/mở bể thận giải áp sỏi tắc nghẽn, cắt lọc mô hoại tử) đều làm gia tăng độc lập nguy cơ tử vong nội viện.
+* **Rút bỏ ngay đường truyền nghi ngờ:** Rút bỏ ngay lập tức các catheter tĩnh mạch trung tâm hoặc ống thông tiểu nghi ngờ là nguồn khởi phát nhiễm khuẩn huyết sau khi đã thiết lập được đường tiếp cận thay thế an toàn.
+
+---
+
+## 🗺️ 3. MÔ HÌNH TIẾP CẬN TẦM SOÁT THEO 3 TẦNG BẬC (STEPWISE SCREENING) {#sec-stepwise-model}
+
+Quy trình tầm soát các ổ nhiễm trùng được thiết kế theo cấu trúc phân tầng tiến dần (Stepwise Screening Architecture), bảo đảm cân bằng giữa tốc độ can thiệp cấp cứu, chi phí y tế và độ chính xác chẩn đoán:
+
+<!-- SƠ ĐỒ EDITORIAL SVG 3 TẦNG BẬC -->
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project" style="color: var(--handbook-primary);"></i>
+      <span>LƯU ĐỒ TẦM SOÁT Ổ NHIỄM TRÙNG THEO 3 TẦNG BẬC (STEPWISE SCREENING)</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">SSC 2026 • IDSA / ASM Consensus</span>
+    </div>
+  </div>
+  
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 940 480" width="940" height="480" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', -apple-system, sans-serif">
+      <defs>
+        <marker id="arrow-down-tier" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+        <marker id="arrow-down-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b" />
+        </marker>
+        <marker id="arrow-down-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#8b5cf6" />
+        </marker>
+      </defs>
+
+      <!-- TẦNG 1: KHỞI ĐẦU TẠI GIƯỜNG -->
+      <rect x="30" y="20" width="880" height="115" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+      <rect x="45" y="32" width="230" height="26" rx="6" fill="#0284c7" />
+      <text x="55" y="50" font-size="12" font-weight="800" fill="#ffffff">TẦNG 1: TIẾP CẬN CƠ BẢN TẠI GIƯỜNG</text>
+      <text x="290" y="50" font-size="13" font-weight="700" fill="#0284c7">Áp Dụng Cho 100% Bệnh Nhân Ngay Giờ Đầu</text>
+      <text x="50" y="80" font-size="12" font-weight="600" fill="var(--handbook-text)">• Khám toàn diện vùng khuất: Chân catheter, vùng cùng cụt/ Fournier, răng xoang, trực tràng, sọ não &amp; tim mạch</text>
+      <text x="50" y="100" font-size="12" font-weight="600" fill="var(--handbook-text)">• Dấu ấn sinh học pha cấp: CBC, Tỷ lệ IG%, CRP, Procalcitonin (PCT), Presepsin và Động học Lactate máu</text>
+      <text x="50" y="120" font-size="12" font-weight="600" fill="var(--handbook-text)">• Vi sinh &amp; Hình ảnh ban đầu: Cấy máu 2&ndash;3 bộ TRƯỚC kháng sinh (8&ndash;10 mL/chai), Cấy nước tiểu, X-quang phổi, POCUS</text>
+
+      <!-- Mũi tên từ Tầng 1 xuống Tầng 2 -->
+      <line x1="470" y1="135" x2="470" y2="168" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrow-down-amber)" />
+      <rect x="300" y="142" width="340" height="20" rx="4" fill="var(--handbook-surface)" stroke="#cbd5e1" stroke-width="1" />
+      <text x="470" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">Chưa rõ ổ nhiễm khuẩn HOẶC Không đáp ứng sau 48&ndash;72h</text>
+
+      <!-- TẦNG 2: THĂM DÒ NÂNG CAO ĐỊNH HƯỚNG MÔ -->
+      <rect x="30" y="175" width="880" height="115" rx="10" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="2" />
+      <rect x="45" y="187" width="280" height="26" rx="6" fill="#f59e0b" />
+      <text x="55" y="205" font-size="12" font-weight="800" fill="#ffffff">TẦNG 2: THĂM DÒ NÂNG CAO &amp; VI SINH NHANH</text>
+      <text x="340" y="205" font-size="13" font-weight="700" fill="#d97706">Định Hướng Vị Trí Giải Phẫu &amp; Kháng Thuốc</text>
+      <text x="50" y="235" font-size="12" font-weight="600" fill="var(--handbook-text)">• Chụp CT Scan có cản quang: Ngực - Bụng - Tiểu khung (Tiêu chuẩn vàng bộc lộ áp-xe sâu, viêm hoại tử, rò tạng)</text>
+      <text x="50" y="255" font-size="12" font-weight="600" fill="var(--handbook-text)">• Siêu âm tim chuyên sâu: TTE &amp; TEE qua thực quản (Bắt buộc khi cấy máu S. aureus, nấm Candida, có van nhân tạo)</text>
+      <text x="50" y="275" font-size="12" font-weight="600" fill="var(--handbook-text)">• Vi sinh phân tử nhanh: Syndromic Multiplex PCR (Hô hấp, Màng não, Chai cấy máu), Kháng nguyên niệu, MALDI-TOF MS</text>
+
+      <!-- Mũi tên từ Tầng 2 xuống Tầng 3 -->
+      <line x1="470" y1="290" x2="470" y2="323" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrow-down-purple)" />
+      <rect x="305" y="297" width="330" height="20" rx="4" fill="var(--handbook-surface)" stroke="#cbd5e1" stroke-width="1" />
+      <text x="470" y="311" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">Ổ nhiễm khuẩn sâu ẩn kín / Nghi ngờ nhiễm trùng thiết bị cấy ghép</text>
+
+      <!-- TẦNG 3: THĂM DÒ CHUYÊN SÂU & XÂM LẤN -->
+      <rect x="30" y="330" width="880" height="120" rx="10" fill="rgba(139, 92, 246, 0.08)" stroke="#8b5cf6" stroke-width="2" />
+      <rect x="45" y="342" width="280" height="26" rx="6" fill="#8b5cf6" />
+      <text x="55" y="360" font-size="12" font-weight="800" fill="#ffffff">TẦNG 3: THĂM DÒ CHUYÊN SÂU &amp; XÂM LẤN</text>
+      <text x="340" y="360" font-size="13" font-weight="700" fill="#7c3aed">Hoa Tiêu Can Thiệp Mô &amp; Giải Trình Tự Gen</text>
+      <text x="50" y="390" font-size="12" font-weight="600" fill="var(--handbook-text)">• Chụp 18F-FDG PET/CT toàn thân: Định vị ổ chuyển hóa viêm sâu, viêm đốt sống đĩa đệm, nhiễm trùng mảnh ghép/máy tạo nhịp</text>
+      <text x="50" y="410" font-size="12" font-weight="600" fill="var(--handbook-text)">• MRI có đối quang từ: Phương tiện số 1 cho áp-xe ngoài màng cứng tủy, áp-xe não sớm, rò phức tạp cơ thắt lưng chậu</text>
+      <text x="50" y="430" font-size="12" font-weight="600" fill="var(--handbook-text)">• Can thiệp xâm lấn &amp; mNGS: Chọc hút mủ sâu qua da hướng dẫn CT, sinh thiết xương, giải trình tự gen không nuôi cấy mNGS</text>
+    </svg>
+  </div>
+  
+  <div class="flowchart-legend-row">
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Tầng 1: Thường quy tại giường 100% bệnh nhân</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Tầng 2: Hình ảnh cắt lớp &amp; PCR nhanh định hướng mô</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Tầng 3: PET/CT, MRI, Thủ thuật xâm lấn &amp; mNGS</div>
+  </div>
+</div>
+
+---
+
+## 🩸 4. TẦNG 1: KHÁM LÂM SÀNG HỆ THỐNG, BIOMARKERS & VI SINH CƠ BẢN {#sec-level-1-biomarkers}
+
+### 4.1. Thăm Khám Lâm Sàng Hệ Thống Tìm Các "Vùng Khuất"
+
+Không bao giờ được bỏ qua các vị trí cơ thể kín đáo khi khám bệnh nhân sốt cao, tụt huyết áp hoặc nhiễm khuẩn huyết:
+
+* **Vết chọc mạch & Catheter:** Khám tỉ mỉ từng chân kim luồn, catheter tĩnh mạch trung tâm, đường truyền thẩm tách máu. Tìm dấu hiệu phù nề, viêm đỏ chân ống, chảy mủ hoặc viêm tắc tĩnh mạch huyết khối mủ dọc theo đường đi mạch máu (*Suppurative Thrombophlebitis*).
+* **Da và mô mềm:** Bắt buộc bộc lộ và quan sát kỹ các nếp bẹn, nếp dưới vú, bìu và tầng sinh môn (để phát hiện sớm hoại tử Fournier giai đoạn đầu khi da chỉ mới căng bóng, đau mất cân xứng), vùng cùng cụt (loét tì đè độ 3–4 ăn sâu vào màng xương) và các kẽ ngón chân.
+* **Răng miệng & Tai mũi họng:** Dùng đè lưỡi gõ nhẹ từng răng tìm điểm đau chói của áp-xe cuống răng, khám sưng nề amidan, thành sau họng, ấn các điểm xoang hàm, xoang trán.
+* **Khám trực tràng & Vùng chậu:** Khám hậu môn tìm khối áp-xe quanh hậu môn sâu; thăm trực tràng bằng ngón tay (*DRE*) phát hiện viêm tuyến tiền liệt cấp (tuyến tiền liệt sưng to, nóng, ấn đau chói) và khám tụ mủ túi cùng Douglas.
+* **Khám tim mạch & Khớp cột sống:** Lắng nghe kỹ âm thổi mới của hở van tim (gợi ý viêm nội tâm mạc); khám vận động thụ động toàn bộ các khớp lớn và nhỏ; dùng ngón tay ấn dọc từng mỏm gai sau cột sống để tìm điểm đau chói định khu của viêm đĩa đệm đốt sống (*Spondylodiscitis*).
+
+### 4.2. Động Học & Phối Hợp Dấu Ấn Sinh Học Phản Ứng Viêm (Host-Response Biomarkers)
+
+<div class="callout callout-info">
+  <div class="callout-title"><i class="fa-solid fa-circle-info"></i> NGUYÊN TẮC ĐỘNG HỌC BIOMARKERS TRONG LÂM SÀNG</div>
+  <div class="callout-body">
+    Không có một dấu ấn sinh học đơn độc nào có thể khẳng định hoặc loại trừ 100% tình trạng nhiễm khuẩn nặng. Giá trị chẩn đoán và tiên lượng cao nhất đạt được khi <strong>kết hợp động học (Kinetics) và phân tích sự tương quan giữa các dấu ấn</strong>.
+  </div>
+</div>
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title">
+      <i class="fa-solid fa-chart-line"></i> Bảng Động Học &amp; Giá Trị Lâm Sàng Của 6 Dấu Ấn Sinh Học Cốt Lõi
+    </div>
+    <span class="table-badge"><i class="fa-solid fa-shield-halved"></i> EBM 2026 Biomarkers</span>
+  </div>
+  <div class="table-wrapper">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="width: 22%;">Dấu Ấn Sinh Học</th>
+          <th style="width: 25%;">Động Học &amp; Nguồn Gốc</th>
+          <th style="width: 28%;">Ngưỡng Lâm Sàng &amp; Ý Nghĩa</th>
+          <th style="width: 25%;">Giới Hạn &amp; Yếu Tố Gây Nhiễu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Bạch Cầu (WBC) &amp;<br />Neutrophil (Neu#)</strong>
+          </td>
+          <td>Tủy xương phóng thích dự trữ; biến động nhanh sau vài giờ kích thích viêm.</td>
+          <td>
+            <span class="badge badge-teal">&gt; 12 &times; 10⁹/L</span> hoặc <span class="badge badge-rose">&lt; 4 &times; 10⁹/L</span>.<br />
+            Tỷ số <strong>NLR &gt; 10 &ndash; 15</strong> gợi ý phản ứng viêm hệ thống nghiêm trọng.
+          </td>
+          <td>Dễ bị nhiễu bởi dùng Corticosteroid, stress tâm lý/phẫu thuật, thuốc kích tủy G-CSF.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Bạch Cầu Hạt Non<br />(IG# và IG%)</strong>
+          </td>
+          <td>Tế bào tủy chưa trưởng thành (Metamyelocyte, Myelocyte, Promyelocyte) thoát ra máu ngoại vi do kích thích viêm nặng (hiện tượng chuyển trái).</td>
+          <td>
+            <span class="badge badge-rose">IG% &gt; 0,5% &ndash; 1,0%</span> hoặc <span class="badge badge-rose">IG# &gt; 0,1 G/L</span>.<br />
+            Cảnh báo sớm nhiễm khuẩn nặng và nhiễm khuẩn huyết; đo tự động trên máy huyết học không tốn thêm chi phí.
+          </td>
+          <td>Có thể tăng trong bệnh lý ác tính dòng tủy xương (Leukemia, Myeloproliferative).</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>C-reactive Protein<br />(CRP)</strong>
+          </td>
+          <td>Do gan tổng hợp dưới tác động của IL-6, TNF-$\alpha$; tăng sau 4&ndash;6h, đỉnh sau 36&ndash;50h, thời gian bán thải \(t_{1/2} \approx 19\text{h}\).</td>
+          <td>
+            <span class="badge badge-amber">&gt; 50 &ndash; 100 mg/L</span>: Gợi ý mạnh nhiễm khuẩn vi khuẩn hoặc tổn thương mô cấp.<br />
+            <strong>Động học giảm &gt; 50% sau 48h</strong> phản ánh đáp ứng điều trị tốt.
+          </td>
+          <td>Độ đặc hiệu kém; tăng trong bệnh tự miễn, chấn thương, phẫu thuật, ung thư. Suy gan nặng làm giảm khả năng sinh CRP.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Procalcitonin<br />(PCT)</strong>
+          </td>
+          <td>Tiền hormone Calcitonin, tổng hợp từ mô nhu mô khi có độc tố vi khuẩn và IL-1$\beta$, TNF-$\alpha$; bị ức chế chọn lọc bởi IFN-$\gamma$ (đáp ứng virus).</td>
+          <td>
+            • <span class="badge badge-teal">&lt; 0,25 &mu;g/L</span>: Ít nghĩ do vi khuẩn.<br />
+            • <span class="badge badge-amber">&gt; 0,5 &mu;g/L</span>: Nguy cơ nhiễm khuẩn nặng.<br />
+            • <span class="badge badge-rose">&gt; 2,0 &mu;g/L</span>: Nguy cơ cao sốc nhiễm trùng.
+          </td>
+          <td>Tăng giả trong sốc tim, bỏng nặng, phẫu thuật lớn, ung thư biểu mô tủy tuyến giáp. <strong>Âm tính giả trong ổ áp-xe kín hoặc nhiễm trùng khu trú</strong>.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Presepsin<br />(sCD14-ST)</strong>
+          </td>
+          <td>Phân tử thụ thể sCD14 phân cắt phóng thích từ màng monocyte/macrophage khi thực bào phức hợp LPS-TLR4 của vi khuẩn.</td>
+          <td>
+            <span class="badge badge-rose">&gt; 350 &ndash; 600 pg/mL</span>: Báo hiệu nhiễm trùng huyết.<br />
+            Tăng rất sớm (sau 2h); hỗ trợ chẩn đoán vượt trội khi có sự phân ly giữa CRP và PCT.
+          </td>
+          <td>Bị thải trừ qua thận; nồng độ tăng giả tạo khi bệnh nhân có suy thận nặng hoặc giảm mức lọc cầu thận (eGFR thấp).</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Lactate Máu<br />(Lactate kinetics)</strong>
+          </td>
+          <td>Chuyển hóa kỵ khí mô do giảm tưới máu tế bào hoặc kích thích thụ thể Adrenergic $\beta_2$ trong stress chuyển hóa nặng.</td>
+          <td>
+            <span class="badge badge-rose">&ge; 2,0 mmol/L</span>: Dấu hiệu suy giảm tưới máu cơ quan; chỉ định bù dịch khẩn trương.<br />
+            <strong>Độ thanh thải Lactate &gt; 20% mỗi 2h</strong> là đích hồi sức.
+          </td>
+          <td>Tăng không do sốc: suy gan cấp, co giật kéo dài, ngộ độc rượu, thuốc (Metformin, Linezolid), đái tháo đường nhiễm toan ceton.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+### 4.3. Chiến Lược Vi Sinh Ban Đầu: Quy Tắc Cấy Máu Tiêu Chuẩn Vàng
+
+* **Số lượng bộ cấy:** Bắt buộc thu thập **2 – 3 bộ cấy máu** (mỗi bộ gồm 1 chai ái khí và 1 chai kỵ khí). Lấy tại các vị trí chọc tĩnh mạch ngoại vi độc lập nhau.
+* **Thể tích máu là yếu tố quyết định độ nhạy:** Phải đảm bảo **8 – 10 mL máu cho mỗi chai** (tương đương 20 – 30 mL máu toàn phần cho mỗi bộ ở người lớn). Lấy thiếu thể tích máu là nguyên nhân hàng đầu gây âm tính giả cấy vi sinh.
+* **Thời điểm thu thập:** Bắt buộc cấy máu **TRƯỚC liều kháng sinh đầu tiên**. Tuy nhiên, ở bệnh nhân có sốc nhiễm trùng hoặc nguy cơ tử vong cao, quá trình thu thập cấy máu không được làm chậm trễ khởi trị kháng sinh quá 1 giờ.
+* **Bệnh phẩm khu trú:** Nước tiểu giữa dòng (hoặc qua sonde sạch vô trùng), đờm sâu/dịch hút khí quản, mủ ổ áp-xe trước khi rửa sát khuẩn dung dịch povidone iodine.
+
+### 4.4. Thăm Dò Hình Ảnh Tại Giường (Point-of-Care Ultrasound - POCUS)
+
+* **X-quang ngực thẳng:** Sàng lọc thâm nhiễm đông đặc phế nang, hình ảnh áp-xe phổi có mức khí-dịch, tràn dịch màng phổi.
+* **Point-of-Care Ultrasound (POCUS):** Siêu âm tại giường mang lại giá trị định hướng tức thì trong vòng 5 phút:
+  * Khảo sát túi mật (dày thành &gt; 3 mm, sỏi kẹt cổ túi mật, dấu Murphy siêu âm dương tính).
+  * Khảo sát hệ tiết niệu (thận ứ nước, sỏi niệu quản giãn đài bể thận, áp-xe quanh thận).
+  * Phát hiện dịch tự do màng bụng, tụ dịch khu trú vùng hố chậu.
+  * Siêu âm tim định hướng nhanh (FATE protocol) đánh giá chức năng co bóp thất trái, tràn dịch màng ngoài tim và xẹp tĩnh mạch chủ dưới (IVC).
+
+---
+
+## 🔬 5. TẦNG 2: THĂM DÒ NÂNG CAO ĐỊNH HƯỚNG MÔ & VI SINH NHANH {#sec-level-2-advanced-imaging}
+
+Khi thăm khám và xét nghiệm Tầng 1 chưa làm rõ vị trí giải phẫu hoặc bệnh nhân diễn tiến sốt dai dẳng, không đáp ứng với phác đồ kháng sinh ban đầu sau 48 – 72 giờ:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- CT SCAN -->
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-desktop"></i> CT SCAN CÓ CẢN QUANG TOÀN DIỆN</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      <strong>Chụp cắt lớp vi tính Ngực - Bụng - Chậu có thuốc cản quang</strong> là phương tiện hình ảnh hàng đầu để tìm kiếm các ổ mủ sâu:
+      <ul style="margin: 0.5rem 0; padding-left: 1.2rem;">
+        <li><em>Lồng ngực:</em> Áp-xe phổi, hoại tử nhu mô, viêm mủ màng phổi khu trú vách hóa, viêm trung thất.</li>
+        <li><em>Ổ bụng &amp; Tiểu khung:</em> Áp-xe gan vi trùng, áp-xe đường mật, viêm hoại tử tụy nhiễm trùng, viêm túi thừa đại tràng vỡ thành khối áp-xe sâu, áp-xe cơ thắt lưng chậu (Psoas), tụ mủ túi cùng Douglas.</li>
+      </ul>
+      <div style="color: #0284c7; font-weight: 700; margin-top: 0.5rem;">
+        &rArr; Hoa tiêu số 1 cho can thiệp chọc hút hoặc phẫu thuật dẫn lưu.
+      </div>
+    </div>
+  </div>
+
+  <!-- TEE TIM MẠCH -->
+  <div style="background: var(--handbook-surface); border: 2px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #7c3aed; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-heart-pulse"></i> SIÊU ÂM TIM QUA THỰC QUẢN (TEE)</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Chỉ định bắt buộc khi: cấy máu dương tính với <em>S. aureus</em>, <em>Enterococcus faecalis</em>, <em>Streptococcus viridans</em>, <em>Candida</em> spp., hoặc bệnh nhân có van nhân tạo, máy tạo nhịp tim.
+      <div style="margin: 0.5rem 0; padding: 0.5rem; background: rgba(139, 92, 246, 0.08); border-radius: 6px;">
+        <strong>Độ nhạy TEE vượt trội (&gt; 90% &ndash; 95%)</strong> so với TTE thành ngực (chỉ 60% &ndash; 70%) trong phát hiện:
+        <br />• Nốt sùi nhỏ &lt; 5 mm trên lá van hoặc dây chằng.
+        <br />• Áp-xe vòng van tim, rò vách liên thất.
+        <br />• Tổn thương sùi bám dọc dây điện cực máy tạo nhịp.
+      </div>
+    </div>
+  </div>
+
+  <!-- VI SINH PHÂN TỬ NHANH -->
+  <div style="background: var(--handbook-surface); border: 2px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-dna"></i> VI SINH PHÂN TỬ NHANH (RDTs)</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Rút ngắn thời gian xác định căn nguyên từ 48h xuống còn vài giờ:
+      <ul style="margin: 0.5rem 0; padding-left: 1.2rem;">
+        <li><strong>Multiplex PCR Panels:</strong> Phát hiện đồng thời nhiều mầm bệnh và gen kháng thuốc (<em>mecA</em>, <em>vanA/B</em>, <em>blaKPC</em>, <em>blaNDM</em>) trực tiếp từ chai cấy máu dương hoặc dịch não tủy.</li>
+        <li><strong>Kháng nguyên niệu:</strong> <em>S. pneumoniae</em> (nhạy 70&ndash;80%, đặc hiệu &gt;90%) và <em>Legionella pneumophila serogroup 1</em>, không bị ảnh hưởng bởi kháng sinh đã dùng trước.</li>
+        <li><strong>MALDI-TOF MS:</strong> Định danh vi khuẩn chỉ trong 15&ndash;30 phút ngay khi khuẩn lạc mọc.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🧲 6. TẦNG 3: THĂM DÒ CHUYÊN SÂU Ổ ẨN KÍN & THỦ THUẬT XÂM LẤN {#sec-level-3-deep-exploration}
+
+### 6.1. Chụp 18F-FDG PET/CT Toàn Thân
+
+* **Cơ chế sinh học:** Tế bào viêm hoạt hóa (đại thực bào, bạch cầu trung tính) tăng biểu hiện chất vận chuyển Glucose (GLUT-1 và GLUT-3) và enzym Hexokinase gấp hàng chục lần so với tế bào lành, dẫn đến sự bắt giữ chất đồng vị phóng xạ Fluorodeoxyglucose (18F-FDG) cao bất thường tại ổ nhiễm trùng.
+* **Chỉ định tối ưu:**
+  * Sốt kéo dài / Viêm chưa rõ nguyên nhân sau khi CT Scan ngực-bụng-chậu cản quang vẫn âm tính hoặc chưa rõ ràng.
+  * Nghi ngờ nhiễm trùng liên quan thiết bị nhân tạo tim mạch: Dây điện cực máy tạo nhịp (CIED), mảnh ghép mạch máu nhân tạo, van tim nhân tạo.
+  * Ổ nhiễm trùng sâu khó tiếp cận: Viêm đốt sống đĩa đệm (*Spondylodiscitis*), áp-xe cơ sâu đa ổ, viêm mạch máu lớn.
+* **Giá trị then chốt:** Định vị tọa độ giải phẫu 3D chính xác để dẫn đường cho kim sinh thiết hoặc catheter dẫn lưu.
+
+### 6.2. Chụp Cộng Hưởng Từ (MRI) Có Đối Quang Từ
+
+Là phương tiện hình ảnh học có độ phân giải mô mềm cao nhất, ưu tiên tuyệt đối cho các nhóm bệnh lý:
+* **Hệ thần kinh trung ương:** Áp-xe não giai đoạn sớm (viêm não viền), viêm màng não mủ biến chứng tụ mủ dưới màng cứng, viêm tắc xoang tĩnh mạch màng cứng.
+* **Cột sống và tủy sống:** Phương tiện vàng chẩn đoán viêm đĩa đệm đốt sống và **áp-xe ngoài màng cứng tủy (Spinal Epidural Abscess)** – một cấp cứu ngoại thần kinh tối khẩn để tránh liệt tủy vĩnh viễn.
+* **Vùng chậu & Tầng sinh môn:** Lỗ rò hậu môn phức tạp tái phát, áp-xe cơ thắt lưng chậu ăn sâu vào khớp háng.
+
+### 6.3. Thủ Thuật Can Thiệp Xâm Lấn Dưới Hướng Dẫn Hình Ảnh (Interventional Radiology)
+
+<div class="callout callout-rule">
+  <div class="callout-title"><i class="fa-solid fa-syringe"></i> NGUYÊN TẮC BỆNH PHẨM VÔ TRÙNG TRONG VI SINH LÂM SÀNG</div>
+  <div class="callout-body">
+    Bệnh phẩm <strong>mô sinh thiết hoặc dịch mủ chọc hút qua kim vô trùng</strong> dưới hướng dẫn của CT/Siêu âm luôn có giá trị vi sinh vượt trội gấp nhiều lần so với mẫu phết bề mặt bằng tăm bông:
+    <ul>
+      <li><strong>Chọc dò dịch màng phổi:</strong> Bắt buộc khi có tràn dịch màng phổi trên bệnh nhân sốt để loại trừ viêm mủ màng phổi vách hóa (pH &lt; 7.2, Glucose &lt; 40 mg/dL, LDH &gt; 1000 U/L).</li>
+      <li><strong>Chọc dò dịch màng bụng:</strong> Đếm số lượng tế bào bạch cầu đa nhân trung tính (\(\text{Neutrophil} \ge 250/\mu\text{L}\)) xác nhận viêm phúc mạc nhiễm khuẩn.</li>
+      <li><strong>Chọc hút dịch khớp vô trùng:</strong> Phân tích dịch khớp, soi tìm vi tinh thể và cấy dịch khớp vào chai cấy máu để tăng độ nhạy phân lập vi khuẩn.</li>
+      <li><strong>Sinh thiết xương (Bone biopsy):</strong> Bắt buộc trong viêm xương tủy xương trước khi bắt đầu kháng sinh kéo dài 6–12 tuần.</li>
+    </ul>
+  </div>
+</div>
+
+### 6.4. Giải Trình Tự Gen Thế Hệ Mới Không Qua Nuôi Cấy (Metagenomic NGS - mNGS)
+
+Kỹ thuật giải trình tự toàn bộ DNA/RNA của vi sinh vật trực tiếp từ mẫu bệnh phẩm vô trùng (dịch não tủy, dịch khớp, mủ sâu, mô mổ, huyết tương):
+* **Đặc tính kỹ thuật:** Không phụ thuộc vào khả năng nuôi cấy sống của vi sinh vật; phát hiện đồng thời hàng nghìn loài vi khuẩn, nấm, virus và ký sinh trùng.
+* **Thời điểm chỉ định:** Bệnh nhân đã dùng kháng sinh phổ rộng nhiều ngày làm âm tính hóa các kỹ thuật nuôi cấy kinh điển; hoặc nghi ngờ các tác nhân khó mọc (*Coxiella burnetii*, *Bartonella*, *Tropheryma whipplei*, vi khuẩn kỵ khí sâu, nấm sợi hiếm gặp).
+
+---
+
+## 📋 7. BẢNG HƯỚNG DẪN THU THẬP BỆNH PHẨM & TẦM SOÁT THEO IDSA/ASM {#sec-idsa-asm-guidelines}
+
+Dưới đây là bảng tổng hợp chuẩn hóa quy trình thu thập mẫu vi sinh và thăm dò hình ảnh học theo khuyến cáo của **Hội Bệnh Truyền Nhiễm Hoa Kỳ (IDSA)** và **Hiệp Hội Vi Sinh Vật Học Hoa Kỳ (ASM)**:
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title">
+      <i class="fa-solid fa-vial-virus"></i> Bảng Tiêu Chuẩn Thu Thập Mẫu &amp; Thăm Dò Hình Ảnh Theo Hệ Cơ Quan (IDSA/ASM)
+    </div>
+    <span class="table-badge"><i class="fa-solid fa-circle-check"></i> Chuẩn Lab Vàng</span>
+  </div>
+  <div class="table-wrapper">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="width: 16%;">Hệ Cơ Quan</th>
+          <th style="width: 20%;">Ổ Nhiễm Trùng Thường Gặp</th>
+          <th style="width: 20%;">Hình Ảnh Học Ưu Tiên</th>
+          <th style="width: 24%;">Bệnh Phẩm &amp; Kỹ Thuật Vi Sinh</th>
+          <th style="width: 20%;">Lưu Ý Kỹ Thuật Thu Thập &amp; Bảo Quản</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Hô Hấp<br />(Respiratory)</strong>
+          </td>
+          <td>Viêm phổi thùy, viêm phổi hoại tử, áp-xe phổi, viêm mủ màng phổi vách hóa.</td>
+          <td>X-quang ngực thẳng; CT ngực có thuốc cản quang; Siêu âm màng phổi định vị dịch.</td>
+          <td>
+            • Đờm sâu chất lượng tốt (&lt; 10 tế bào biểu mô, &gt; 25 bạch cầu/quang trường 100&times;).<br />
+            • Dịch hút khí quản (ETA) hoặc dịch rửa phế quản phế nang (BAL).<br />
+            • Cấy vi khuẩn ái khí, nhuộm Gram.<br />
+            • Kháng nguyên niệu Phế cầu &amp; Legionella.
+          </td>
+          <td>Chuyển mẫu đến phòng xét nghiệm trong vòng <strong>&le; 2 giờ</strong>. Nếu chậm phải bảo quản \(4^\circ\text{C}\). Không lấy nước bọt làm mẫu xét nghiệm đờm.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Ổ Bụng &amp; Chậu<br />(Abdominal &amp; Pelvic)</strong>
+          </td>
+          <td>Áp-xe gan/lách, viêm túi mật hoại tử, viêm đường mật, viêm phúc mạc, áp-xe Douglas.</td>
+          <td>Siêu âm ổ bụng; CT Scan ngực-bụng-chậu có thuốc cản quang tĩnh mạch và đường uống.</td>
+          <td>
+            • Dịch chọc hút ổ áp-xe, dịch màng bụng (tối thiểu 10 &ndash; 50 mL).<br />
+            • Bơm trực tiếp một phần dịch vào chai cấy máu ái khí &amp; kỵ khí tại giường.<br />
+            • Nhuộm Gram soi tươi, cấy vi khuẩn kỵ khí và ái khí.
+          </td>
+          <td><strong style="color: #ef4444;">TUYỆT ĐỐI KHÔNG DÙNG TĂM BÔNG QUỆT MỦ</strong>. Phải hút bằng xi-lanh vô trùng, đóng nút kín để tránh oxy làm chết vi khuẩn kỵ khí.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Tiết Niệu &amp; Sinh Dục<br />(Genitourinary)</strong>
+          </td>
+          <td>Viêm đài bể thận sinh hơi, áp-xe quanh thận, ứ mủ thận do sỏi tắc nghẽn, viêm tuyến tiền liệt.</td>
+          <td>Siêu âm hệ tiết niệu; CT Scan hệ niệu không cản quang và có cản quang.</td>
+          <td>
+            • Nước tiểu giữa dòng sau khi vệ sinh bộ phận sinh dục ngoài.<br />
+            • Nước tiểu chọc hút qua sonde bàng quang vô trùng.<br />
+            • Tổng phân tích nước tiểu (Leukocyte esterase, Nitrite), nhuộm Gram, cấy định lượng vi khuẩn (\(\ge 10^5\text{ CFU/mL}\)).
+          </td>
+          <td>Không để mẫu nước tiểu ở nhiệt độ phòng quá <strong>30 phút</strong> để tránh vi khuẩn nhân đôi giả tạo; giữ \(4^\circ\text{C}\) nếu chưa cấy ngay (tối đa 24h).</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Tim Mạch &amp; Mạch Máu<br />(Cardiovascular &amp; CRBSI)</strong>
+          </td>
+          <td>Viêm nội tâm mạc nhiễm trùng (IE), nhiễm trùng catheter hầm/không hầm (CRBSI), viêm tắc tĩnh mạch mủ.</td>
+          <td>Siêu âm tim qua thành ngực (TTE) &amp; Siêu âm tim qua thực quản (TEE); Siêu âm Doppler mạch máu.</td>
+          <td>
+            • Cấy máu 3 bộ từ 3 vị trí chọc tĩnh mạch độc lập.<br />
+            • Cấy máu đồng thời qua lòng catheter và qua tĩnh mạch ngoại vi tính thời gian mọc chênh lệch (<strong>DTTP &ge; 2 giờ</strong>).<br />
+            • Cắt đoạn đầu tip catheter dài 5 cm cấy bán định lượng (Maki's roll-plate &gt; 15 CFU).
+          </td>
+          <td>Thể tích máu <strong>8 &ndash; 10 mL mỗi chai</strong>. Tuyệt đối không cấy máu từ đường truyền đang truyền dịch nuôi dưỡng hoặc thuốc kháng sinh.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Cơ Xương Khớp<br />(Musculoskeletal)</strong>
+          </td>
+          <td>Viêm khớp nhiễm trùng, viêm bao hoạt dịch mủ, viêm tủy xương, viêm đốt sống đĩa đệm.</td>
+          <td>X-quang khớp/cột sống; MRI vùng nghi ngờ có đối quang từ; Chụp 18F-FDG PET/CT.</td>
+          <td>
+            • Dịch khớp chọc hút vô trùng: đếm tế bào bạch cầu (\(&gt; 50.000/\mu\text{L}\)), nhuộm Gram, cấy ái khí/kỵ khí, soi tìm vi tinh thể Urate/CPPD.<br />
+            • Sinh thiết xương hoặc mô bao hoạt dịch.
+          </td>
+          <td>Bơm một phần dịch khớp vào chai cấy máu làm tăng tỷ lệ phân lập vi khuẩn lên thêm 20&ndash;30%.</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">
+            <strong>Thần Kinh Trung Ương<br />(Central Nervous System)</strong>
+          </td>
+          <td>Viêm màng não mủ, áp-xe não giai đoạn sớm, áp-xe ngoài màng cứng tủy sống.</td>
+          <td>CT/MRI sọ não có đối quang từ; MRI tủy sống toàn đoạn khẩn cấp.</td>
+          <td>
+            • Chọc dò dịch não tủy (sau khi chụp CT loại trừ phù não/nguy cơ tụt kẹt não nặng).<br />
+            • Xét nghiệm tế bào, sinh hóa (Protein, Glucose dịch não tủy/máu &lt; 0.4), nhuộm Gram, cấy vi sinh.<br />
+            • Multiplex PCR màng não (FilmArray ME panel).
+          </td>
+          <td>Chuyển ngay mẫu dịch não tủy đến lab xét nghiệm khẩn cấp. <strong>Không bảo quản trong tủ lạnh</strong> vì làm chết phế cầu và não mô cầu.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+---
+
+## 🩺 8. PHÂN TÍCH CÁC CA LÂM SÀNG THỰC CHIẾN TẠI GIƯỜNG BỆNH {#sec-clinical-cases}
+
+### Ca Lâm Sàng 1: Ổ Nhiễm Trùng Ổ Bụng Kín Đáo Với Sự Phân Ly Dấu Ấn Sinh Học
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-user-doctor"></i> CA THỰC CHIẾN 01 &bull; KHOA HỒI SỨC NHIỄM</div>
+    <div class="case-title">Bệnh nhân nữ 52 tuổi, sốc nhiễm trùng có sự phân ly dấu ấn sinh học do áp-xe sâu túi cùng Douglas</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Tình huống bệnh nhân:</strong>
+    <ul>
+      <li><strong>Hành chính &amp; Tiền sử:</strong> Nữ, 52 tuổi, tiền sử đái tháo đường típ 2 kiểm soát kém (HbA1c 9.2%).</li>
+      <li><strong>Bệnh sử:</strong> Sốt cao rét run liên tục 5 ngày, mệt mỏi lả người, không ho, không đau ngực, tiểu tiện bình thường, đau âm ỉ mơ hồ vùng hạ vị lệch trái. Đã uống Amoxicillin/Clavulanate 3 ngày tại nhà không hạ sốt. Nhập viện cấp cứu trong tình trạng tụt huyết áp.</li>
+      <li><strong>Khám lâm sàng:</strong> Mạch 115 lần/phút, Huyết áp 85/50 mmHg (phải bù dịch Ringer's Lactate và duy trì Noradrenaline liều 0.1 &mu;g/kg/phút), Thân nhiệt \(39,2^\circ\text{C}\), SpO2 96%. Bụng mềm, chướng nhẹ, ấn đau tức sâu vùng hạ vị lệch trái, không có phản ứng thành bụng rõ rệt. Khám tim phổi chưa phát hiện bất thường.</li>
+      <li><strong>Cận lâm sàng Tầng 1:</strong>
+        <br />• WBC: \(10,8 \times 10^9/\text{L}\) (Neutrophil 78%); <strong>IG%: 2.4%</strong> (tăng rất cao); <strong>IG#: \(0,26\text{ G/L}\)</strong>.
+        <br />• <strong>CRP: \(185\text{ mg/L}\)</strong> (tăng cực độ).
+        <br />• <strong>Procalcitonin (PCT): \(0,8\ \mu\text{g/L}\)</strong> (tăng nhẹ, hoàn toàn không tương xứng với tình trạng tụt huyết áp sốc).
+        <br />• <strong>Presepsin: \(1320\text{ pg/mL}\)</strong> (phù hợp hoàn toàn với sốc nhiễm trùng nặng).
+        <br />• Lactate máu: \(2,8\text{ mmol/L}\). X-quang phổi bình thường. Tổng phân tích nước tiểu bình thường.
+        <br />• Siêu âm bụng tổng quát tại giường: Các tạng đặc bình thường, khó quan sát tiểu khung do nhiều hơi trong đại tràng.
+      </li>
+    </ul>
+  </div>
+  <div class="case-analysis">
+    <strong>Biện Luận Lâm Sàng &amp; Tiến Hành Tầng 2:</strong>
+    <ol>
+      <li><strong>Nhận diện hiện tượng phân ly Biomarkers:</strong> Tình trạng sốc nhiễm trùng với WBC và PCT chỉ tăng nhẹ, trong khi CRP, Presepsin và IG% tăng vọt là hình ảnh kinh điển của một <strong>ổ nhiễm trùng khoang kín hoặc khối áp-xe sâu</strong>. Vỏ xơ bao bọc ổ mủ ngăn cản độc tố vi khuẩn tràn ngập hệ tuần hoàn nên nhu mô gan và phổi chưa bị kích thích giải phóng ồ ạt Procalcitonin hệ thống, nhưng đáp ứng viêm tại chỗ vẫn kích hoạt phóng thích IL-6 (tăng CRP) và kích thích tủy giải phóng tế bào hạt non (tăng IG%).</li>
+      <li><strong>Chỉ định CT Scan bụng - chậu có cản quang khẩn cấp:</strong> Phát hiện hình ảnh viêm túi thừa đại tràng sigma vỡ tạo thành <strong>khối áp-xe kích thước \(5 \times 6\text{ cm}\) nằm sâu tại túi cùng Douglas</strong>, kèm thâm nhiễm mỡ phúc mạc tiểu khung nặng nề.</li>
+      <li><strong>Source Control triệt để:</strong> Bác sĩ can thiệp điện quang (IR) tiến hành chọc hút và đặt ống dẫn lưu qua da vào ổ áp-xe dưới hướng dẫn CT, rút ra 60 mL dịch mủ đặc màu nâu sẫm, mùi hôi thối đặc trưng của vi khuẩn kỵ khí.</li>
+      <li><strong>Điều trị nội khoa đích:</strong> Cấy mủ mọc <em>Escherichia coli</em> sinh men ESBL và <em>Bacteroides fragilis</em>. Bệnh nhân được điều trị đích bằng Meropenem phối hợp Metronidazole. Sau 24h dẫn lưu, huyết động ổn định hoàn toàn, cai được vận mạch Noradrenaline; sau 48h CRP giảm xuống còn \(68\text{ mg/L}\).</li>
+    </ol>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Khi bệnh nhân có sốc nhiễm trùng nhưng Procalcitonin không tăng cao tương xứng, đừng vội loại trừ nhiễm khuẩn vi khuẩn. Hãy luôn nghĩ đến ổ nhiễm trùng khoang kín/áp-xe sâu và chỉ định ngay CT Scan cản quang để kiểm soát nguồn nhiễm!
+  </div>
+</div>
+
+---
+
+### Ca Lâm Sàng 2: Nhiễm Khuẩn Huyết Tụ Cầu Liên Quan Thiết Bị Với Ổ Di Căn Xa Kín Đáo
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-user-doctor"></i> CA THỰC CHIẾN 02 &bull; KHOA TRUYỀN NHIỄM &amp; TIM MẠCH</div>
+    <div class="case-title">Bệnh nhân nam 64 tuổi mang máy tạo nhịp tim và catheter hầm lọc máu, nhiễm khuẩn huyết S. aureus gây viêm đĩa đệm cột sống L3–L4</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Tình huống bệnh nhân:</strong>
+    <ul>
+      <li><strong>Hành chính &amp; Tiền sử:</strong> Nam, 64 tuổi, có máy tạo nhịp tim vĩnh viễn (đặt cách đây 2 năm); suy thận mạn giai đoạn cuối đang chạy thận nhân tạo định kỳ qua catheter hầm tĩnh mạch cảnh trong phải.</li>
+      <li><strong>Bệnh sử:</strong> Sốt gai rét từng cơn 10 ngày nay, kèm theo đau âm ỉ vùng thắt lưng, cúi gập khó khăn. Chân catheter tĩnh mạch cảnh không thấy sưng đỏ hay chảy mủ rõ rệt. Đã được trạm y tế cho uống Cefixime nhưng sốt tái phát liên tục.</li>
+      <li><strong>Khám lâm sàng:</strong> Mạch 95 lần/phút, Huyết áp 120/75 mmHg, Thân nhiệt \(38,5^\circ\text{C}\). Vùng túi máy tạo nhịp dưới đòn trái da bình thường, không đau. Nghe tim phát hiện tiếng thổi tâm thu mới 2/6 ở mỏm. <strong>Ấn đau chói tại gai sau đốt sống thắt lưng L3–L4</strong>, co cứng nhẹ cơ cạnh sống hai bên.</li>
+    </ul>
+  </div>
+  <div class="case-analysis">
+    <strong>Tiến Trình Thăm Dò Từng Bậc (Tầng 1 &rarr; Tầng 2 &rarr; Tầng 3):</strong>
+    <ol>
+      <li><strong>Tầng 1:</strong>
+        <br />• WBC: \(14,2 \times 10^9/\text{L}\) (Neutrophil 85%).
+        <br />• CRP: \(142\text{ mg/L}\); Procalcitonin: \(4,5\ \mu\text{g/L}\).
+        <br />• Cấy máu 3 bộ: <strong>Cả 3/3 bộ đều báo động dương tính sau 14h mọc <em>Staphylococcus aureus</em> nhạy cảm Methicillin (MSSA)</strong>.
+        <br />• X-quang cột sống thắt lưng: Chưa phát hiện tổn thương xẹp hay tiêu xương rõ rệt (giai đoạn sớm hình ảnh X-quang thường âm tính giả).
+      </li>
+      <li><strong>Tầng 2 (Thăm dò tim mạch chuyên sâu):</strong>
+        <br />• Siêu âm tim qua thành ngực (TTE): Các van tim bình thường, không thấy khối sùi.
+        <br />• Do <em>S. aureus</em> có ái lực cực mạnh với nội mạc và dị vật nhân tạo, chỉ định tiếp <strong>Siêu âm tim qua thực quản (TEE)</strong>: Phát hiện khối sùi kích thước \(8\text{ mm}\) bám trên dây dẫn máy tạo nhịp tại buồng nhĩ phải, kèm hở nhẹ van 3 lá mới xuất hiện.
+      </li>
+      <li><strong>Tầng 3 (Xác định ổ di căn xa):</strong>
+        <br />• Nhằm giải thích triệu chứng đau thắt lưng khu trú, chỉ định <strong>chụp MRI cột sống thắt lưng có tiêm đối quang từ Gadolinium</strong>: Xác nhận hình ảnh <strong>viêm đĩa đệm đốt sống (Spondylodiscitis) L3–L4 kèm áp-xe ngoài màng cứng tủy (Spinal Epidural Phlegmon)</strong> gây hẹp nhẹ ống sống.
+      </li>
+      <li><strong>Xử trí can thiệp triệt để:</strong>
+        <br />• <em>Source Control:</em> Rút bỏ ngay catheter hầm tĩnh mạch cảnh; hội chẩn phẫu thuật tim mạch can thiệp rút bỏ toàn bộ hệ thống máy tạo nhịp và dây dẫn nhiễm trùng.
+        <br />• <em>Kháng sinh đích:</em> Cloxacillin tĩnh mạch liều cao (\(2\text{g}\) mỗi 4 giờ qua bơm tiêm điện).
+        <br />• Bệnh nhân cắt sốt hoàn toàn sau 72h, cấy máu kiểm tra lại sau 48h âm tính. Duy trì kháng sinh đủ 6 tuần để điều trị triệt để tổn thương viêm đĩa đệm cột sống.
+      </li>
+    </ol>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-triangle-exclamation"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Khi cấy máu mọc <em>Staphylococcus aureus</em> trên bệnh nhân có thiết bị cấy ghép nhân tạo, luôn coi đây là nhiễm khuẩn huyết có biến chứng. Bắt buộc làm TEE tầm soát viêm nội tâm mạc và luôn chủ động truy tìm các ổ di căn xa (đặc biệt là viêm đĩa đệm cột sống) bằng MRI!
+  </div>
+</div>
+
+---
+
+## ⚠️ 9. LƯỚI CẠM BẪY LÂM SÀNG & CỜ ĐỎ TỬ VONG CẦN TRÁNH {#sec-clinical-pitfalls}
+
+<div class="pitfall-grid">
+
+  <!-- PITFALL 1 -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-triangle-exclamation"></i> CẠM BẪY SỐNG CÒN 01</div>
+      <div class="pitfall-title">Dùng Kháng Sinh Thay Thế Cho Can Thiệp Kiểm Soát Ổ Nhiễm Cơ Học</div>
+    </div>
+    <div class="pitfall-body">
+      Ảo tưởng rằng nâng liều kháng sinh carbapenem hoặc kháng sinh phổ rộng bậc cao có thể "tiêu mủ" một ổ áp-xe lớn, sỏi niệu quản kẹt gây ứ mủ thận hoặc hoại tử Fournier. Kháng sinh không thể ngấm vào mô hoại tử vô mạch.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-skull-crossbones"></i> HẬU QUẢ: Tỷ lệ tử vong sốc nhiễm trùng tăng thêm 7.6% cho mỗi giờ trì hoãn can thiệp kiểm soát nguồn nhiễm.
+    </div>
+  </div>
+
+  <!-- PITFALL 2 -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-vial-circle-check"></i> CẠM BẪY SỐNG CÒN 02</div>
+      <div class="pitfall-title">Bị Đánh Lừa Bởi Chỉ Số Procalcitonin Bình Thường Trong Ổ Áp-xe Kín</div>
+    </div>
+    <div class="pitfall-body">
+      Chỉ số Procalcitonin (PCT) có thể chỉ tăng nhẹ (&lt; 0.5 &mu;g/L) hoặc bình thường trong các ổ mủ được bao bọc kín (áp-xe Douglas, áp-xe gan bao xơ dày, viêm mủ màng phổi vách hóa). Nếu dựa vào PCT để loại trừ nhiễm khuẩn sẽ bỏ sót chẩn đoán ngoại khoa.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-triangle-exclamation"></i> NGUYÊN TẮC: Luôn phối hợp CRP, IG% và Presepsin; chỉ định CT Scan khi lâm sàng nghi ngờ.
+    </div>
+  </div>
+
+  <!-- PITFALL 3 -->
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-ban"></i> CẠM BẪY VI SINH 03</div>
+      <div class="pitfall-title">Lấy Mẫu Phết Bề Mặt Bằng Tăm Bông Thay Vì Hút Mủ Sâu Hoặc Sinh Thiết</div>
+    </div>
+    <div class="pitfall-body">
+      Quệt tăm bông bề mặt vết loét hay bờ miệng lỗ rò chỉ nuôi cấy ra các vi khuẩn cộng sinh tạp nhiễm da (như <em>Staphylococcus epidermidis</em>, <em>Pseudomonas</em> bề mặt) chứ không phản ánh đúng tác nhân gây bệnh thực sự nằm sâu trong mô hoại tử.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-circle-xmark"></i> HÀNH ĐỘNG: Luôn dùng kim chọc hút mủ sâu vô trùng hoặc gửi mảnh mô sinh thiết phòng mổ.
+    </div>
+  </div>
+
+  <!-- PITFALL 4 -->
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-syringe"></i> CẠM BẪY VI SINH 04</div>
+      <div class="pitfall-title">Lấy Thể Tích Máu Không Đủ (&lt; 8–10 mL/chai) Hoặc Cấy Sau Khi Đã Dùng Kháng Sinh</div>
+    </div>
+    <div class="pitfall-body">
+      Cấy máu sau liều kháng sinh đầu tiên làm giảm tỷ lệ mọc vi khuẩn tới 50%. Lấy thể tích máu dưới 5 mL/chai làm giảm độ nhạy phát hiện vi khuẩn huyết tới 40% do mật độ vi khuẩn trong máu người lớn thường rất thấp (&lt; 1&ndash;10 CFU/mL).
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-check-double"></i> TIÊU CHUẨN: Lấy đủ 8&ndash;10 mL máu/chai, 2&ndash;3 bộ cấy độc lập trước khi truyền kháng sinh.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 📌 10. TỔNG KẾT & THÔNG ĐIỆP MANG VỀ (TAKE-HOME MESSAGES)
+
+<div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.5rem; margin: 1.5rem 0; box-shadow: var(--handbook-card-shadow);">
+  <div style="font-size: 1.15rem; font-weight: 800; color: #0284c7; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+    <i class="fa-solid fa-clipboard-check"></i> 5 THÔNG ĐIỆP LÂM SÀNG CỐT LÕI BÊN GIƯỜNG BỆNH
+  </div>
+  <ol style="margin: 0; padding-left: 1.3rem; line-height: 1.8; color: var(--handbook-text); font-size: 0.95rem;">
+    <li><strong>Khám lâm sàng có hệ thống là nền tảng:</strong> Không bao giờ bỏ qua các "vùng khuất" giải phẫu: chân catheter mạch máu, vùng cùng cụt/tầng sinh môn, răng miệng, xoang hàm, khớp và các mỏm gai cột sống.</li>
+    <li><strong>Phối hợp động học dấu ấn sinh học:</strong> Kết hợp CRP (độ nhạy cao) với Procalcitonin/Presepsin (độ đặc hiệu vi khuẩn) và IG% (chuyển trái tủy xương) giúp nhận diện sớm nhiễm trùng huyết và nhận biết hiện tượng phân ly trong ổ áp-xe kín.</li>
+    <li><strong>Tôn trọng kỹ thuật vi sinh IDSA/ASM:</strong> Bắt buộc cấy máu 2–3 bộ đủ thể tích (8–10 mL/chai) TRƯỚC liều kháng sinh đầu tiên. Lấy mẫu dịch mủ sâu qua kim vô trùng hoặc sinh thiết mô thay vì phết bề mặt.</li>
+    <li><strong>Chỉ định hình ảnh học theo bậc tiến dần:</strong> Khi X-quang và siêu âm tại giường (POCUS) không giải thích được tình trạng sốt hoặc tụt huyết áp, phải tiến hành sớm CT Scan ngực-bụng-chậu có cản quang, TEE, MRI hoặc 18F-FDG PET/CT.</li>
+    <li><strong>Kiểm soát nguồn nhiễm (Source Control) là mệnh lệnh sống còn:</strong> Dẫn lưu mủ, loại bỏ dị vật nhiễm trùng trong vòng 6 giờ đầu quyết định sự thành bại và giảm tỷ lệ tử vong trong nhiễm trùng huyết.</li>
+  </ol>
+</div>
+
+---
+
+## 📚 11. TÀI LIỆU THAM KHẢO (CHUẨN AMA FORMAT) {#sec-references}
+
+<div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-radius: var(--handbook-radius-md); padding: 1.25rem; font-size: 0.88rem; line-height: 1.7; color: var(--handbook-text);">
+
+1. Miller JM, Binnicker MJ, Campbell S, et al. A guide to utilization of the microbiology laboratory for diagnosis of infectious diseases: 2018 update by the Infectious Diseases Society of America and the American Society for Microbiology. *Clin Infect Dis*. 2018;67(6):e1-e94. doi:10.1093/cid/ciy381
+2. Evans L, Rhodes A, Alhazzani W, et al. Surviving sepsis campaign: international guidelines for management of sepsis and septic shock 2021. *Crit Care Med*. 2021;49(11):e1063-e1143. doi:10.1097/CCM.0000000000005337
+3. Póvoa P, Coelho L, Dal-Pizzol F, et al. How to use biomarkers of infection or sepsis at the bedside: guide to clinicians. *Intensive Care Med*. 2023;49(2):142-153. doi:10.1007/s00134-022-06956-y
+4. Shivam D, Shakir SM. Role of C-reactive protein and procalcitonin in differentiating infectious and non-infectious conditions: a diagnostic accuracy study. *Acta Med Int*. 2026;13(1):1012-1018.
+5. Burillo A, Bouza E. Use of rapid diagnostic techniques in ICU patients with infections. *BMC Infect Dis*. 2014;14:593. doi:10.1186/12879-014-0593-1
+6. Rhee C. Using procalcitonin to guide antibiotic therapy. *Open Forum Infect Dis*. 2017;4(1):ofw249. doi:10.1093/ofid/ofw249
+7. Nguyen TMT, Tran MG, Tran TTKP, Le TS, Nguyen TN. The correlation between immature granulocytes and white blood cell indices, C-reactive protein levels in patients with infections. *Hong Bang Int Univ J Sci*. 2025;Special Issue:13-20.
+8. Simon L, Gauvin F, Amre DK, Saint-Louis P, Lacroix J. Serum procalcitonin and C-reactive protein levels as markers of bacterial infection: a systematic review and meta-analysis. *Clin Infect Dis*. 2004;39(2):206-217. doi:10.1086/421997
+9. Bourika EC, Tsitsiklis A, Tsangaris I, et al. Biomarkers in sepsis: from early diagnosis to personalized therapy. *Ann Intensive Care*. 2025;15(1):103. doi:10.1186/s13613-025-01524-x
+10. Wright WF, Stelmash L, Betrains A, et al. Recommendations for updating fever and inflammation of unknown origin from a modified Delphi consensus panel. *Open Forum Infect Dis*. 2024;11(6):ofae298. doi:10.1093/ofae298
+
+</div>
