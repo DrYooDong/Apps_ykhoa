@@ -241,6 +241,117 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
     ]
   },
   {
+    id: 'viem-gan-c',
+    slug: 'viem-gan-c',
+    specialtyId: 'truyen-nhiem',
+    name: 'Viêm Gan Siêu Vi C (HCV)',
+    nameEn: 'Chronic Hepatitis C Virus Infection',
+    icd10: 'B18.2',
+    icon: 'fa-virus-slash',
+    color: '#059669',
+    badge: 'EBM 2026 • Đột phá DAA',
+    summary: 'Đúc kết toàn diện từ động học HCV RNA vs Anti-HCV, xét nghiệm phản xạ Reflex Testing, phác đồ DAA toàn bộ kiểu gen 8-12 tuần, điều trị suy thận lọc máu đến dự phòng bùng phát HBV và kiểm soát tương tác thuốc tim mạch.',
+    keyPearlsPreview: [
+      'Anti-HCV (+) chỉ là sẹo huyết thanh; tuyệt đối không khởi trị DAA nếu chưa có xét nghiệm khẳng định vi rút sống (HCV RNA định lượng)',
+      '30-50% người bệnh HCV mạn có ALT hoàn toàn bình thường nhưng xơ hóa vẫn âm thầm tiến triển (không dùng ALT để loại trừ bệnh)',
+      'Phác đồ DAA pangenotypic (SOF/VEL, G/P) dùng liều tiêu chuẩn an toàn cho mọi mức eGFR kể cả bệnh nhân lọc máu chu kỳ',
+      '100% bệnh nhân HCV trước khi dùng DAA phải được tầm soát HBsAg và kê NAs che chắn nếu HBsAg (+) để ngừa viêm gan bùng phát tối cấp'
+    ],
+    guidelines: ['Quyết định 2855/QĐ-BYT (2024)', 'AASLD-IDSA 2025/2026 HCV Guidance', 'EASL 2024 CPG', 'WHO 2024/2026 Consolidated Guidelines'],
+    order: 2,
+    articles: [
+      {
+        id: 'hcv-01-tieu-chuan-chan-doan-va-cam-bay',
+        slug: 'hcv-01-tieu-chuan-chan-doan-va-cam-bay',
+        diseaseId: 'viem-gan-c',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiêu Chuẩn Chẩn Đoán Viêm Gan Siêu Vi C & Cạm Bẫy Cận Lâm Sàng',
+        subtitle: 'Nhận diện động học HCV RNA vs Anti-HCV, xét nghiệm phản xạ Reflex Testing, phân tầng xơ hóa APRI/FIB-4/FibroScan và 9 cạm bẫy thực chiến',
+        description: 'Hướng dẫn toàn diện từ động học phân tử, tiêu chuẩn chẩn đoán cấp/mạn/lọc máu, xét nghiệm phản xạ reflex testing đến các cạm bẫy men gan bình thường và tiền phân tích men RNase.',
+        estimatedMinutes: 25,
+        tags: ['HCV', 'Tiêu chuẩn chẩn đoán', 'Reflex Testing', 'Anti-HCV', 'HCV RNA', 'HCVcAg', 'Bẫy Men Gan', 'FibroScan & APRI', 'QĐ 2855/QĐ-BYT', 'EBM 2026'],
+        keyTakeaway: 'Anti-HCV (+) chỉ là sẹo huyết thanh (không điều trị DAA nếu chưa có HCV RNA); 30-50% bệnh nhân có men gan bình thường nhưng xơ hóa vẫn âm thầm tiến triển.',
+        order: 1,
+        filePath: 'truyen-nhiem/viem-gan-c/hcv-01-tieu-chuan-chan-doan-va-cam-bay.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • AASLD / EASL / BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)', icon: 'fa-bolt' },
+          { id: 'sec-kinetics', number: 2, title: 'Động Học Dấu Ấn Sinh Học & Ý Nghĩa Lâm Sàng (HCV RNA, HCVcAg, Anti-HCV)', icon: 'fa-dna' },
+          { id: 'sec-criteria', number: 3, title: 'Bộ Tiêu Chuẩn Chẩn Đoán Cốt Lõi (Cấp, Mạn, Quần Thể Đặc Biệt)', icon: 'fa-clipboard-check' },
+          { id: 'sec-fibrosis', number: 4, title: 'Đánh Giá Giai Đoạn Xơ Hóa Gan Không Xâm Lấn (APRI, FIB-4, FibroScan)', icon: 'fa-wave-square' },
+          { id: 'sec-reflex-testing', number: 5, title: 'Chiến Lược Sàng Lọc & Xét Nghiệm Phản Xạ (Reflex HCV RNA Testing)', icon: 'fa-arrows-spin' },
+          { id: 'sec-outpatient-pitfalls', number: 6, title: 'Năm Sai Lầm Thường Gặp Tại Phòng Khám Ngoại Trú', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-inpatient-pitfalls', number: 7, title: 'Bốn Lỗ Hổng & Cơ Hội Bị Bỏ Sót Tại Nội Viện', icon: 'fa-hospital-user' },
+          { id: 'sec-preanalytical', number: 8, title: 'Cạm Bẫy Tiền Phân Tích & Giới Hạn Kỹ Thuật (Men RNase, LOD vs LLOQ)', icon: 'fa-flask-vial' },
+          { id: 'sec-serology-matrix', number: 9, title: 'Ma Trận 7 Tổ Hợp Xét Nghiệm & Hành Động Lâm Sàng', icon: 'fa-table-list' },
+          { id: 'sec-flowchart-steps', number: 10, title: 'Lưu Đồ 6 Bước Tiếp Cận Chuẩn Hóa Ngoại Trú & Nội Viện', icon: 'fa-diagram-project' },
+          { id: 'sec-case-scenarios', number: 11, title: 'Ca Lâm Sàng Thực Tế & Bài Học Xương Máu', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 12, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'hcv-02-phac-do-dieu-tri-ngoai-tru',
+        slug: 'hcv-02-phac-do-dieu-tri-ngoai-tru',
+        diseaseId: 'viem-gan-c',
+        specialtyId: 'truyen-nhiem',
+        title: 'Phác Đồ Điều Trị Viêm Gan Siêu Vi C Ngoại Trú & Giám Sát SVR12',
+        subtitle: 'Lựa chọn phác đồ DAA toàn bộ kiểu gen (SOF/VEL, G/P, SOF/DAC), quản lý 7 quần thể ngoại trú đặc biệt, xử trí quên liều và tầm soát HCC',
+        description: 'Đặc tả phác đồ DAA đường uống 8-12 tuần, không cần giảm liều ở người suy thận lọc máu, kiểm soát tương tác PPI/Amiodarone/Statin và thuật toán xử trí gián đoạn thuốc.',
+        estimatedMinutes: 25,
+        tags: ['HCV', 'Phác đồ DAA', 'Pangenotypic', 'SOF/VEL', 'Glecaprevir/Pibrentasvir', 'SOF/DAC', 'SVR12', 'Suy thận lọc máu', 'Xử trí quên liều', 'QĐ 2855/QĐ-BYT'],
+        keyTakeaway: 'Phác đồ DAA toàn bộ kiểu gen dùng liều chuẩn cho mọi mức eGFR kể cả lọc máu; cấm dùng thuốc ức chế Protease ở xơ gan mất bù; tầm soát HCC mỗi 6 tháng suốt đời cho nhóm F3-F4.',
+        order: 2,
+        filePath: 'truyen-nhiem/viem-gan-c/hcv-02-phac-do-dieu-tri-ngoai-tru.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • AASLD / EASL / BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & DAA Rules)', icon: 'fa-bolt' },
+          { id: 'sec-pre-treatment', number: 2, title: 'Quy Trình Đánh Giá & Danh Mục Xét Nghiệm Tiền Trị (QĐ 2855)', icon: 'fa-stethoscope' },
+          { id: 'sec-regimens', number: 3, title: 'Phác Đồ DAA Ngoại Trú Chuẩn Mực (SOF/VEL, G/P, SOF/DAC, SOF/LED)', icon: 'fa-pills' },
+          { id: 'sec-pediatric', number: 4, title: 'Phác Đồ Phân Liều Cho Trẻ Em & Thanh Thiếu Niên (3 - 17 Tuổi)', icon: 'fa-child' },
+          { id: 'sec-special-populations', number: 5, title: 'Quản Lý 7 Quần Thể Ngoại Trú Đặc Biệt (HBV, HIV, CKD, DDI, Quên Liều, Thai Kỳ, Rescue)', icon: 'fa-shield-halved' },
+          { id: 'sec-monitoring-svr12', number: 6, title: 'Lịch Trình Tái Khám, Tiêu Chuẩn Ngừng Thuốc & Xác Định SVR12', icon: 'fa-clock-rotate-left' },
+          { id: 'sec-post-svr12-hcc', number: 7, title: 'Chiến Lược Quản Lý Dài Hạn & Tầm Soát HCC Sau SVR12 (F3 - F4)', icon: 'fa-crosshairs' },
+          { id: 'sec-bedside-cases', number: 8, title: 'Ca Lâm Sàng Ngoại Trú Thực Chiến & Đúc Kết Xương Máu', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'hcv-03-quan-ly-dong-nhiem-va-dong-mac',
+        slug: 'hcv-03-quan-ly-dong-nhiem-va-dong-mac',
+        diseaseId: 'viem-gan-c',
+        specialtyId: 'truyen-nhiem',
+        title: 'Quản Lý Bệnh Lý Đồng Nhiễm & Đồng Mắc Với Viêm Gan Siêu Vi C',
+        subtitle: 'Khung bệnh sinh hệ thống, phác đồ đồng nhiễm HBV/HIV/HDV, suy thận mạn eGFR ≤ 30, rối loạn chuyển hóa MASLD/ĐTĐ týp 2, viêm mạch Cryoglobulinemia và tương tác tim mạch',
+        description: 'Hướng dẫn quản lý toàn diện các bệnh đồng nhiễm qua đường máu, an toàn kê đơn DAA trên bệnh nhân suy thận nặng/lọc máu, cạm bẫy tương tác thuốc và bảng kiểm 6 bước ngoại trú.',
+        estimatedMinutes: 30,
+        tags: ['HCV', 'Đồng nhiễm HBV', 'Đồng nhiễm HIV', 'Suy thận CKD', 'MASLD', 'Đái tháo đường', 'Cryoglobulinemia', 'Amiodarone & Statin', 'QĐ 2855/QĐ-BYT', 'EBM 2026'],
+        keyTakeaway: 'Bắt buộc khởi trị NAs che chắn cho 100% ca HBsAg (+) để ngăn bùng phát viêm gan B; chủ động giảm 15-30% liều insulin khi bắt đầu DAA; chống chỉ định tuyệt đối Amiodarone với Sofosbuvir.',
+        order: 3,
+        filePath: 'truyen-nhiem/viem-gan-c/hcv-03-quan-ly-dong-nhiem-va-dong-mac.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • AASLD / EASL / BYT',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Comorbidity Rules)', icon: 'fa-bolt' },
+          { id: 'sec-pathophysiology', number: 2, title: 'Khung Bệnh Sinh Học Hệ Thống Của Nhiễm HCV & Gia Tốc Xơ Hóa', icon: 'fa-network-wired' },
+          { id: 'sec-viral-coinfections', number: 3, title: 'Đồng Nhiễm Vi Rút Qua Đường Máu: HBV, HIV Và HDV', icon: 'fa-virus-slash' },
+          { id: 'sec-ckd-dialysis', number: 4, title: 'Bệnh Thận Mạn Tính (CKD) & Quản Lý Trên Bệnh Nhân Lọc Máu Chu Kỳ', icon: 'fa-kidneys' },
+          { id: 'sec-metabolic-masld', number: 5, title: 'Rối Loạn Chuyển Hóa, Đái Tháo Đường Týp 2 & Gan Nhiễm Mỡ (MASLD)', icon: 'fa-droplet' },
+          { id: 'sec-cardiovascular-ddi', number: 6, title: 'Bệnh Tim Mạch & Các Cạm Bẫy Tương Tác Thuốc DAA Chí Mạng', icon: 'fa-heart-pulse' },
+          { id: 'sec-extrahepatic', number: 7, title: 'Biểu Hiện Ngoài Gan: Viêm Mạch Cryoglobulinemia & U Lympho B', icon: 'fa-snowflake' },
+          { id: 'sec-tb-alcohol-pwid', number: 8, title: 'Các Tình Huống Đặc Thù: Lao Phổi (Rifampicin), Rượu & Quần Thể PWID', icon: 'fa-capsules' },
+          { id: 'sec-bedside-cases', number: 9, title: 'Bảy Ca Lâm Sàng Ngoại Trú Thực Chiến Minh Họa', icon: 'fa-user-doctor' },
+          { id: 'sec-checklist', number: 10, title: 'Bảng Kiểm 6 Bước Quản Lý Bệnh Đồng Mắc Ngoại Trú (Checklist DAA)', icon: 'fa-clipboard-check' },
+          { id: 'sec-references', number: 11, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
+  },
+  {
     id: 'sot-xuat-huyet-dengue',
     slug: 'sot-xuat-huyet-dengue',
     specialtyId: 'truyen-nhiem',
@@ -423,7 +534,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
   },
   {
     id: 'nhiem-khuan-huyet',
-    slug: 'nhiem-khuan-huyet',
+    slug: 'sepsis',
     specialtyId: 'truyen-nhiem',
     name: 'Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn',
     nameEn: 'Sepsis & Septic Shock (Sepsis-3)',
@@ -439,7 +550,50 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
     ],
     guidelines: ['Surviving Sepsis Campaign 2026', 'IDSA Sepsis Guidance'],
     order: 4,
-    articles: []
+    articles: [
+      {
+        id: 'sepsis-01-tiep-can-ban-dau-va-quan-ly-ssc-2026',
+        slug: 'sepsis-01-tiep-can-ban-dau-va-quan-ly-ssc-2026',
+        diseaseId: 'nhiem-khuan-huyet',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Ban Đầu & Quản Lý Nhiễm Trùng Huyết - Sốc Nhiễm Trùng Theo Surviving Sepsis Campaign (SSC) 2026',
+        subtitle: 'Đồng thuận Sepsis-3, sàng lọc NEWS2 vs qSOFA, kháng sinh 1 giờ vs 3 giờ, Noradrenalin ngoại vi sớm, hồi sức dịch 30 mL/kg và kiểm soát nguồn nhiễm trong 6 giờ',
+        description: 'Cẩm nang thực chiến chẩn đoán và hồi sức nhiễm trùng huyết & sốc nhiễm trùng theo hướng dẫn mới nhất SSC 2026: tối ưu hóa PK/PD kháng sinh, nghiệm pháp PLR đánh giá đáp ứng dịch, phân tầng thuốc vận mạch 3 bậc và ca lâm sàng thực tế tại khoa cấp cứu.',
+        estimatedMinutes: 30,
+        keyTakeaway: 'Dùng kháng sinh trong vòng 1 giờ cho mọi ca sốc hoặc sepsis chắc chắn; Noradrenalin sớm qua ngoại vi nếp khuỷu; bù 30 mL/kg Ringer Lactate trong 3h rồi đánh giá động (PLR); kiểm soát nguồn nhiễm triệt để ≤ 6 giờ.',
+        order: 1,
+        filePath: 'truyen-nhiem/sepsis/sepsis-01-tiep-can-ban-dau-va-quan-ly-ssc-2026.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • Surviving Sepsis Campaign (SSC) • Sepsis-3',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Học Tập', icon: 'fa-bolt' },
+          { id: 'sec-definitions-framework', number: 2, title: 'Định Nghĩa Sepsis-3 & Khung Phân Tầng SSC 2026', icon: 'fa-diagram-project' },
+          { id: 'sec-screening-early-warning', number: 3, title: 'Nhận Diện & Sàng Lọc: NEWS2 vs qSOFA', icon: 'fa-clipboard-check' },
+          { id: 'sec-antimicrobial-timing', number: 4, title: 'Kháng Sinh 1 Giờ vs 3 Giờ & Tối Ưu Hóa PK/PD', icon: 'fa-clock' },
+          { id: 'sec-fluid-resuscitation', number: 5, title: 'Hồi Sức Dịch Ban Đầu & Đánh Giá Động (PLR)', icon: 'fa-droplet' },
+          { id: 'sec-vasopressors-inotropes', number: 6, title: 'Vận Mạch Ngoại Vi Sớm & Thuốc Bổ Trợ', icon: 'fa-heart-pulse' },
+          { id: 'sec-source-control', number: 7, title: 'Kiểm Soát Nguồn Nhiễm Khẩn Cấp ≤ 6 Giờ', icon: 'fa-crosshairs' },
+          { id: 'sec-clinical-pitfalls', number: 8, title: 'Lưới Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenario', number: 9, title: 'Ca Lâm Sàng Thực Chiến: Sốc Nhiễm Trùng Đường Mật', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ],
+        tags: [
+          'Nhiễm trùng huyết',
+          'Sốc nhiễm trùng',
+          'Surviving Sepsis Campaign 2026',
+          'Sepsis-3',
+          'NEWS2',
+          'qSOFA',
+          'Kháng sinh 1 giờ',
+          'Norepinephrine ngoại vi',
+          'Hồi sức dịch 30 mL/kg',
+          'Đánh giá PLR',
+          'Source Control',
+          'EBM 2026'
+        ]
+      }
+    ]
   },
   {
     id: 'viem-nao-mang-nao',
@@ -613,6 +767,57 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Thực Chiến: Hôn Mê Do Tắc Động Mạch Thân Nền', icon: 'fa-user-doctor' },
           { id: 'sec-pitfalls', number: 8, title: 'Cạm Bẫy Lâm Sàng & Điểm Then Chốt Cần Nhớ', icon: 'fa-triangle-exclamation' },
           { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'sot-crnn',
+    slug: 'sot-crnn',
+    specialtyId: 'truyen-nhiem',
+    name: 'Sốt Không Rõ Nguyên Nhân (FUO)',
+    nameEn: 'Fever of Unknown Origin',
+    icd10: 'R50.9',
+    icon: 'fa-temperature-arrow-up',
+    color: '#f59e0b',
+    badge: 'EBM 2026 • Delphi Consensus',
+    summary: 'Quy trình tiếp cận từng bước sốt kéo dài (FUO) và viêm chưa rõ nguyên nhân (IUO): 5 nhóm căn nguyên kinh điển, bộ xét nghiệm tối thiểu tiêu chuẩn, khai thác manh mối PDCs, ứng dụng 18F-FDG PET/CT, sinh thiết đích và nghệ thuật điều trị thử.',
+    keyPearlsPreview: [
+      'Sốt kéo dài không đồng nghĩa với nhiễm trùng: bệnh tự miễn/viêm mạch và bệnh lý ác tính chiếm tỷ trọng lớn',
+      'Khám lâm sàng có hệ thống lặp lại mỗi ngày để tìm manh mối PDCs (đáy mắt, ĐM thái dương, hạch, mào tinh hoàn)',
+      'Bộ xét nghiệm tối thiểu (cấy máu 3 bộ, CT ngực-bụng-chậu cản quang) phải hoàn tất trước khi nghĩ đến FUO',
+      '18F-FDG PET/CT có giá trị then chốt trong định vị mục tiêu sinh thiết mô khi các thăm dò cơ bản âm tính'
+    ],
+    guidelines: ['Delphi Consensus 2024 (FUO/IUO Update)', 'Mandell Infectious Diseases 9th Ed', 'Petersdorf & Durack Consensus'],
+    order: 11,
+    articles: [
+      {
+        id: 'fuo-01-tiep-can-chan-doan-va-xu-tri',
+        slug: 'fuo-01-tiep-can-chan-doan-va-xu-tri',
+        diseaseId: 'sot-crnn',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Bệnh Nhân Sốt Kéo Dài & Sốt Không Rõ Nguyên Nhân (FUO)',
+        subtitle: 'Đồng thuận quốc tế Delphi 2024, phân loại 5 nhóm nguyên nhân, khai thác manh mối PDCs, bộ xét nghiệm tối thiểu, vai trò 18F-FDG PET/CT và ca thực chiến GCA',
+        description: 'Hướng dẫn toàn diện tiếp cận sốt không rõ nguyên nhân (FUO) và viêm chưa rõ nguyên nhân (IUO) theo đồng thuận Delphi 2024, từ bộ xét nghiệm tối thiểu, khai thác manh mối PDCs, chỉ định 18F-FDG PET/CT đến ca lâm sàng viêm động mạch tế bào khổng lồ (GCA).',
+        estimatedMinutes: 25,
+        tags: ['FUO', 'Sốt kéo dài', 'IUO', 'PDCs', '18F-FDG PET/CT', 'Viêm mạch GCA', 'Bộ xét nghiệm tối thiểu', 'Sốt do thuốc', 'EBM 2026'],
+        keyTakeaway: 'Sốt kéo dài không đồng nghĩa nhiễm trùng; khám lâm sàng lặp lại mỗi ngày tìm PDCs; CT ngực-bụng-chậu cản quang là tối thiểu; cấm kháng sinh/corticoid bao vây khi bệnh nhân ổn định.',
+        order: 1,
+        filePath: 'truyen-nhiem/sot-crnn/fuo-01-tiep-can-chan-doan-va-xu-tri.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-14',
+        evidenceLevel: 'EBM 2026 • Delphi Consensus / Mandell',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây (The Bottom Line & Rule of Thumb)', icon: 'fa-bolt' },
+          { id: 'sec-definitions', number: 2, title: 'Định Nghĩa Cổ Điển & Cập Nhật Đồng Thuận Quốc Tế (FUO & IUO)', icon: 'fa-temperature-arrow-up' },
+          { id: 'sec-etiology', number: 3, title: 'Năm Nhóm Căn Nguyên Kinh Điển Gây Sốt Kéo Dài', icon: 'fa-viruses' },
+          { id: 'sec-pdcs', number: 4, title: 'Khai Thác Manh Mối Tiềm Tàng (PDCs) & Khám Thực Thể Toàn Diện', icon: 'fa-magnifying-glass' },
+          { id: 'sec-minimum-workup', number: 5, title: 'Bộ Xét Nghiệm Tối Thiểu Bắt Buộc (Bậc 1 Minimum Workup)', icon: 'fa-vial' },
+          { id: 'sec-advanced-workup', number: 6, title: 'Thăm Dò Nâng Cao: 18F-FDG PET/CT, TEE, Sinh Thiết & NGS', icon: 'fa-microscope' },
+          { id: 'sec-treatment-trials', number: 7, title: 'Nguyên Tắc Xử Trí, Sốt Do Thuốc & Nghệ Thuật Điều Trị Thử', icon: 'fa-pills' },
+          { id: 'sec-pitfalls', number: 8, title: 'Bốn Cạm Bẫy Nguy Hiểm Cần Tránh Khi Tiếp Cận FUO', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-bedside-case', number: 9, title: 'Ca Lâm Sàng Thực Chiến: Viêm Động Mạch Tế Bào Khổng Lồ (GCA)', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
         ]
       }
     ]

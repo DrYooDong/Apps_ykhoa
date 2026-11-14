@@ -1,0 +1,850 @@
+---
+title: "Tiếp Cận Ban Đầu & Quản Lý Nhiễm Trùng Huyết - Sốc Nhiễm Trùng Theo Surviving Sepsis Campaign (SSC) 2026"
+slug: "sepsis-01-tiep-can-ban-dau-va-quan-ly-ssc-2026"
+specialty: "truyen-nhiem"
+specialtyLabel: "Bệnh Truyền Nhiễm & Nhiệt Đới"
+disease: "sepsis"
+diseaseLabel: "Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis & Septic Shock)"
+order: 1
+tags:
+  - "Nhiễm trùng huyết"
+  - "Sốc nhiễm trùng"
+  - "Surviving Sepsis Campaign 2026"
+  - "Sepsis-3"
+  - "NEWS2"
+  - "qSOFA"
+  - "Kháng sinh 1 giờ"
+  - "Norepinephrine ngoại vi"
+  - "Hồi sức dịch 30 mL/kg"
+  - "Đánh giá PLR"
+  - "Source Control"
+  - "EBM 2026"
+difficulty: "advanced"
+estimatedTime: 30
+lastUpdated: "2026-11-14"
+evidenceLevel: "EBM 2026 • Surviving Sepsis Campaign (SSC) • Sepsis-3"
+sections:
+  - id: "sec-takeaway"
+    number: 1
+    title: "Đúc Kết 30 Giây & Mục Tiêu Học Tập (The Bottom Line & Learning Goals)"
+    icon: "fa-bolt"
+  - id: "sec-definitions-framework"
+    number: 2
+    title: "Định Nghĩa Sepsis-3 & Khung Phân Tầng Nghi Ngờ SSC 2026"
+    icon: "fa-diagram-project"
+  - id: "sec-screening-early-warning"
+    number: 3
+    title: "Nhận Diện & Sàng Lọc Ban Đầu: Cảnh Báo Sớm (NEWS2) vs qSOFA"
+    icon: "fa-clipboard-check"
+  - id: "sec-antimicrobial-timing"
+    number: 4
+    title: "Chiến Lược Kháng Sinh, Cấy Vi Sinh & Tối Ưu Hóa PK/PD"
+    icon: "fa-clock"
+  - id: "sec-fluid-resuscitation"
+    number: 5
+    title: "Hồi Sức Dịch Ban Đầu & Đánh Giá Đáp Ứng Động (PLR / POCUS)"
+    icon: "fa-droplet"
+  - id: "sec-vasopressors-inotropes"
+    number: 6
+    title: "Thuốc Vận Mạch Ngoại Vi Sớm, Tăng Co Bóp & Corticosteroid Bổ Trợ"
+    icon: "fa-heart-pulse"
+  - id: "sec-source-control"
+    number: 7
+    title: "Kiểm Soát Nguồn Nhiễm Khẩn Cấp Trong 6 Giờ Đầu (Source Control)"
+    icon: "fa-crosshairs"
+  - id: "sec-clinical-pitfalls"
+    number: 8
+    title: "Lưới Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong Trong Nhiễm Trùng Huyết"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-case-scenario"
+    number: 9
+    title: "Ca Lâm Sàng Thực Chiến: Sốc Nhiễm Trùng Đường Mật & Giờ Vàng Cấp Cứu"
+    icon: "fa-user-doctor"
+  - id: "sec-references"
+    number: 10
+    title: "Tài Liệu Tham Khảo (Theo Chuẩn AMA Format)"
+    icon: "fa-book-bookmark"
+---
+
+# 🛡️ TIẾP CẬN BAN ĐẦU & QUẢN LÝ NHIỄM TRÙNG HUYẾT - SỐC NHIỄM TRÙNG THEO SURVIVING SEPSIS CAMPAIGN (SSC) 2026
+
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(139, 92, 246, 0.25);"><i class="fa-solid fa-shield-halved"></i> Hồi Sức Cấp Cứu &amp; Truyền Nhiễm</span>
+  <span class="badge" style="background: rgba(239, 68, 68, 0.12); color: #dc2626; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(239, 68, 68, 0.25);"><i class="fa-solid fa-triangle-exclamation"></i> Cấp Cứu Tối Khẩn</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> Surviving Sepsis Campaign 2026</span>
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-book-medical"></i> Sepsis-3 Consensus</span>
+</div>
+
+<!-- DẢI CHỈ SỐ NHANH 30S -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">&le; 1 Giờ</div>
+      <div class="stat-lbl">Khung thời gian vàng khởi động kháng sinh khi có sốc hoặc chắc chắn Sepsis</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">&gt; 40%</div>
+      <div class="stat-lbl">Tỷ lệ tử vong nội viện của Sốc nhiễm trùng nếu chậm trễ can thiệp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">30 mL/kg</div>
+      <div class="stat-lbl">Thể tích dịch tinh thể cân bằng (Ringer's Lactate) truyền trong 3 giờ đầu</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">MAP &ge; 65</div>
+      <div class="stat-lbl">Mục tiêu huyết áp trung bình (60–65 mmHg ở người &ge; 65 tuổi)</div>
+    </div>
+  </div>
+</section>
+
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
+<nav class="pillars-nav">
+  <div class="pillars-nav-inner">
+    <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
+    <a href="#sec-definitions-framework" class="pillar-link"><i class="fa-solid fa-diagram-project"></i> 2. Định Nghĩa &amp; Khung SSC</a>
+    <a href="#sec-screening-early-warning" class="pillar-link"><i class="fa-solid fa-clipboard-check"></i> 3. NEWS2 vs qSOFA</a>
+    <a href="#sec-antimicrobial-timing" class="pillar-link"><i class="fa-solid fa-clock"></i> 4. Kháng Sinh 1h vs 3h</a>
+    <a href="#sec-fluid-resuscitation" class="pillar-link"><i class="fa-solid fa-droplet"></i> 5. Hồi Sức Dịch &amp; PLR</a>
+    <a href="#sec-vasopressors-inotropes" class="pillar-link"><i class="fa-solid fa-heart-pulse"></i> 6. Vận Mạch Ngoại Vi</a>
+    <a href="#sec-source-control" class="pillar-link"><i class="fa-solid fa-crosshairs"></i> 7. Kiểm Soát Nguồn 6h</a>
+    <a href="#sec-clinical-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 8. Cạm Bẫy Sống Còn</a>
+    <a href="#sec-case-scenario" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 9. Ca Thực Chiến 62T</a>
+    <a href="#sec-references" class="pillar-link"><i class="fa-solid fa-book-bookmark"></i> 10. Tài Liệu Tham Khảo</a>
+  </div>
+</nav>
+
+---
+
+## ⚡ 1. ĐÚC KẾT 30 GIÂY & MỤC TIÊU HỌC TẬP (THE BOTTOM LINE & LEARNING GOALS) {#sec-takeaway}
+
+<div class="callout callout-pearl">
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC VÀNG TRONG TIẾP CẬN &amp; HỒI SỨC NHIỄM TRÙNG HUYẾT (SSC 2026)</div>
+  <p>
+    Nhiễm trùng huyết (Sepsis) và Sốc nhiễm trùng (Septic Shock) là <strong>các cấp cứu y khoa tối khẩn</strong> tương tự như nhồi máu cơ tim cấp hay đột quỵ não. Mỗi giờ chậm trễ can thiệp đều làm gia tăng tỷ lệ tử vong có ý nghĩa thống kê. Bản cập nhật <strong>Surviving Sepsis Campaign (SSC) 2026</strong> tái khẳng định các trụ cột thực hành then chốt:
+  </p>
+  <ul>
+    <li><strong>Quy tắc sàng lọc:</strong> Tuyệt đối <em>không sử dụng qSOFA đơn độc</em> để sàng lọc bệnh nhân tại khoa cấp cứu hoặc khoa nội trú vì độ nhạy rất thấp (~23%). Bắt buộc sử dụng các thang điểm cảnh báo sớm đa thông số như <strong>NEWS2, MEWS hoặc tiêu chuẩn SIRS</strong>.</li>
+    <li><strong>Quy tắc kháng sinh 1 giờ vs 3 giờ:</strong> Dùng kháng sinh phổ rộng ngay lập tức <strong>trong vòng 1 giờ</strong> cho mọi bệnh nhân có sốc nhiễm trùng hoặc nhiễm trùng huyết ở mức chắc chắn/nhiều khả năng (Definite/Probable). Chỉ áp dụng cửa sổ đánh giá khẩn trương <strong>trong vòng 3 giờ</strong> nếu bệnh nhân ở mức "có thể" (Possible sepsis) và hoàn toàn chưa có tụt huyết áp.</li>
+    <li><strong>Quy tắc cấy máu:</strong> Luôn lấy 02 bộ cấy máu trước liều kháng sinh đầu tiên nếu việc này không làm trì hoãn kháng sinh quá 45 phút.</li>
+    <li><strong>Quy tắc vận mạch sớm qua ngoại vi:</strong> <strong>Norepinephrine</strong> là thuốc vận mạch số 1. Ở bệnh nhân sốc không ổn định, hãy khởi kích Norepinephrine ngay qua đường <strong>tĩnh mạch ngoại vi (nếp khuỷu)</strong> song song với bù dịch, tuyệt đối không trì hoãn chờ đặt catheter tĩnh mạch trung tâm (CVC).</li>
+    <li><strong>Quy tắc hồi sức dịch thông minh:</strong> Khởi đầu bằng <strong>30 mL/kg dịch tinh thể cân bằng (Ringer's Lactate)</strong> trong 3 giờ đầu (hiệu chỉnh theo cân nặng lý tưởng nếu BMI &gt; 30). Sau liều này, <strong>ngừng xả dịch tự do</strong>; bắt buộc dùng các biện pháp động (như nghiệm pháp nâng chân thụ động PLR) để đánh giá khả năng đáp ứng dịch. Chống chỉ định tuyệt đối tinh bột hydroxyethyl (HES) và gelatin.</li>
+    <li><strong>Quy tắc kiểm soát nguồn nhiễm (Source Control):</strong> Phải can thiệp giải phẫu triệt để (dẫn lưu mủ, giải áp sỏi mật/tiết niệu, cắt lọc mô hoại tử, rút bỏ catheter nhiễm trùng) <strong>càng sớm càng tốt, lý tưởng trong vòng 6 giờ đầu tiên</strong>.</li>
+  </ul>
+</div>
+
+<div class="callout callout-info" style="margin-top: 1.25rem;">
+  <div class="callout-title"><i class="fa-solid fa-graduation-cap"></i> 5 MỤC TIÊU HỌC TẬP CỐT LÕI</div>
+  <div style="font-size: 0.9rem; line-height: 1.6; color: var(--handbook-text);">
+    <div><strong>1. Nắm vững định nghĩa &amp; tiêu chuẩn chẩn đoán:</strong> Phân định ranh giới giữa Nhiễm trùng huyết (SOFA tăng cấp tính &ge; 2 điểm) và Sốc nhiễm trùng (cần vận mạch giữ MAP &ge; 65 mmHg kèm Lactate &gt; 2 mmol/L) theo đồng thuận Sepsis-3 và khung phân tầng 4 mức độ nghi ngờ của SSC 2026.</div>
+    <div><strong>2. Ứng dụng công cụ sàng lọc hiệu quả:</strong> Hiểu rõ ưu thế vượt trội về độ nhạy của NEWS2/MEWS/SIRS so với hạn chế bỏ sót của qSOFA trong thực hành lâm sàng.</div>
+    <div><strong>3. Thực hành thành thạo gói can thiệp ban đầu:</strong> Kỹ thuật cấy máu trước điều trị, phân tầng khung thời gian dùng kháng sinh 1 giờ vs 3 giờ, và chiến lược tối ưu hóa dược động học/dược lực học (PK/PD) với liều nạp ban đầu và truyền kéo dài beta-lactam.</div>
+    <div><strong>4. Xây dựng chiến lược huyết động cá thể hóa:</strong> Lựa chọn dịch tinh thể cân bằng, mục tiêu MAP &ge; 65 mmHg (60–65 mmHg ở người cao tuổi), phân tầng vận mạch 3 bậc (Norepinephrine &rarr; Vasopressin &rarr; Epinephrine), chỉ định Dobutamine và Hydrocortisone bổ trợ.</div>
+    <div><strong>5. Ra quyết định can thiệp thực chiến:</strong> Phân tích và xử trí toàn diện ca bệnh sốc nhiễm trùng đường mật cấp tính theo trục thời gian thực tế (Giờ 0, Giờ 1, Mốc 3–6 giờ và 24–48 giờ tại ICU).</div>
+  </div>
+</div>
+
+---
+
+## 🧬 2. ĐỊNH NGHĨA SEPSIS-3 & KHUNG PHÂN TẦNG NGHI NGỜ SSC 2026 {#sec-definitions-framework}
+
+### 2.1. Định Nghĩa Chuẩn Mực Theo Đồng Thuận Sepsis-3
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+
+  <!-- KHỐI SEPSIS -->
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-virus"></i> ĐỒNG THUẬN SEPSIS-3</div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.6rem;">Nhiễm Trùng Huyết (Sepsis)</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Là tình trạng <strong>rối loạn chức năng cơ quan đe dọa tính mạng</strong> gây ra bởi đáp ứng mất điều hòa của cơ thể vật chủ đối với tình trạng nhiễm trùng.
+      <div style="margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(2, 132, 199, 0.08); border-radius: 6px; font-weight: 600;">
+        <span style="color: #0284c7;">Tiêu chuẩn xác định:</span> Điểm đánh giá suy cơ quan liên quan nhiễm trùng (<strong>SOFA</strong>) tăng cấp tính <strong>&ge; 2 điểm</strong> so với mức nền (mức nền được coi là 0 điểm nếu trước đó bệnh nhân không có suy cơ quan mạn tính).
+      </div>
+      <div style="margin-top: 0.5rem; font-size: 0.82rem; color: #dc2626; font-weight: 700;">
+        <i class="fa-solid fa-triangle-exclamation"></i> Điểm SOFA tăng &ge; 2 điểm gắn liền với tỷ lệ tử vong nội viện &gt; 10%.
+      </div>
+    </div>
+  </div>
+
+  <!-- KHỐI SEPTIC SHOCK -->
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.75rem; font-weight: 800; color: #dc2626; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-skull-crossbones"></i> PHÂN NHÓM TỐI NGUY</div>
+    <div style="font-size: 1.15rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.6rem;">Sốc Nhiễm Trùng (Septic Shock)</div>
+    <div style="font-size: 0.88rem; line-height: 1.6; color: var(--handbook-text);">
+      Là phân nhóm nghiêm trọng của nhiễm trùng huyết, trong đó <strong>những bất thường sâu sắc về tuần hoàn và chuyển hóa tế bào</strong> làm gia tăng đáng kể nguy cơ tử vong.
+      <div style="margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(239, 68, 68, 0.08); border-radius: 6px; font-weight: 600;">
+        <span style="color: #dc2626;">Tiêu chuẩn kép (dù đã bù đủ dịch):</span><br />
+        1. Cần dùng <strong>thuốc vận mạch</strong> để duy trì MAP &ge; 65 mmHg.<br />
+        2. Nồng độ <strong>Lactate huyết thanh &gt; 2 mmol/L</strong> (&gt; 18 mg/dL).
+      </div>
+      <div style="margin-top: 0.5rem; font-size: 0.82rem; color: #dc2626; font-weight: 700;">
+        <i class="fa-solid fa-skull-crossbones"></i> Sự kết hợp đồng thời này tương ứng với tỷ lệ tử vong nội viện &gt; 40%.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+### 2.2. Khung Phân Loại Mức Độ Nghi Ngờ Nhiễm Trùng Huyết Của SSC 2026
+
+Do biểu hiện ban đầu của nhiễm trùng huyết thường không điển hình và dễ bị che lấp bởi các bệnh lý nội khoa cấp tính (như nhồi máu cơ tim, suy tim cấp, xuất huyết tiêu hóa, viêm tụy cấp), SSC 2026 đưa vào khung phân tầng 4 mức độ nghi ngờ để chuẩn hóa quyết định lâm sàng:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- MỨC 1: DEFINITE -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">CẤP ĐỘ 1 &bull; RẤT RÕ RÀNG</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Sepsis Chắc Chắn (Definite)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Chẩn đoán nhiễm trùng huyết đã được xác nhận chắc chắn dựa trên bệnh sử, triệu chứng lâm sàng rõ và bằng chứng cận lâm sàng / hình ảnh / vi sinh tin cậy; các chẩn đoán phân biệt không nhiễm trùng khác gần như bị loại trừ.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Thái độ: KHỞI ĐỘNG KHÁNG SINH NGAY TRONG 1 GIỜ.
+      </div>
+    </div>
+  </div>
+
+  <!-- MỨC 2: PROBABLE -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase; margin-bottom: 0.35rem;">CẤP ĐỘ 2 &bull; KHẢ NĂNG CAO</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Sepsis Nhiều Khả Năng (Probable)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Mức độ nghi ngờ nhiễm trùng huyết rất cao. Dữ liệu hiện có cho thấy nhiễm khuẩn là căn nguyên có khả năng xảy ra nhất; các nguyên nhân khác ít có khả năng hơn dù chưa có kết quả vi sinh định danh cuối cùng.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(139, 92, 246, 0.08); border-radius: 4px; font-weight: 700; color: #7c3aed;">
+        Thái độ: KHỞI ĐỘNG KHÁNG SINH NGAY TRONG 1 GIỜ.
+      </div>
+    </div>
+  </div>
+
+  <!-- MỨC 3: POSSIBLE -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;">CẤP ĐỘ 3 &bull; VÙNG XÁM TRUNG BÌNH</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Sepsis Có Thể (Possible)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Nhiễm trùng huyết là một khả năng hợp lý, nhưng các chẩn đoán phân biệt không nhiễm trùng khác (như phù phổi cấp, thuyên tắc phổi, đợt cấp COPD không nhiễm trùng) cũng có khả năng tương đương.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(245, 158, 11, 0.08); border-radius: 4px; font-weight: 700; color: #d97706;">
+        Thái độ: ĐÁNH GIÁ NHANH TRONG 3 GIỜ (Khởi trị nếu có sốc).
+      </div>
+    </div>
+  </div>
+
+  <!-- MỨC 4: UNLIKELY -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase; margin-bottom: 0.35rem;">CẤP ĐỘ 4 &bull; ÍT CĂN CỨ</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Ít Khả Năng (Unlikely)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Ít hoặc không có căn cứ ủng hộ nhiễm trùng huyết. Các bằng chứng lâm sàng và xét nghiệm hướng về một chẩn đoán bệnh lý nền hoặc căn nguyên cấp tính không do nhiễm trùng khác.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; font-weight: 700; color: #059669;">
+        Thái độ: Tạm hoãn kháng sinh, tập trung điều trị bệnh căn nguyên.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🚨 3. NHẬN DIỆN & SÀNG LỌC BAN ĐẦU: CẢNH BÁO SỚM (NEWS2) VS QSOFA {#sec-screening-early-warning}
+
+### 3.1. Chương Trình Cải Tiến Chất Lượng Bệnh Viện
+SSC 2026 khuyến cáo mạnh mẽ rằng mọi cơ sở điều trị cần triển khai **Chương trình cải tiến chất lượng (Performance Improvement Program)** bao gồm:
+* Quy trình sàng lọc hệ thống tự động tại khoa cấp cứu và các khoa điều trị nội trú.
+* Quy trình thao tác chuẩn (SOP) hồi sức theo giờ vàng.
+* Cảnh báo sớm điện tử tích hợp trên hệ thống Hồ sơ bệnh án điện tử (EMR) giúp rút ngắn đáng kể thời gian khởi trị kháng sinh và cải thiện tỷ lệ sống sót.
+
+### 3.2. Đối Chiếu Công Cụ Sàng Lọc: Cảnh Báo Sớm vs qSOFA
+
+<div class="callout callout-danger">
+  <div class="callout-title"><i class="fa-solid fa-skull-crossbones"></i> KHUYẾN CÁO MẠNH MẼ TỪ SSC 2026 VỀ SÀNG LỌC</div>
+  <p>
+    Đối với bệnh nhân nhập viện có tình trạng cấp tính, SSC 2026 <strong>khuyến cáo sử dụng các thang điểm cảnh báo sớm như NEWS, NEWS2, MEWS hoặc tiêu chuẩn SIRS thay vì sử dụng qSOFA đơn độc</strong> để sàng lọc nhiễm trùng huyết (<em>Khuyến cáo mạnh, bằng chứng độ tin cậy trung bình</em>).
+  </p>
+</div>
+
+<div class="table-card" style="margin: 1.5rem 0;">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-table-list"></i> BẢNG ĐỐI CHIẾU CÁC CÔNG CỤ SÀNG LỌC NHẬN DIỆN SỚM NHIỄM TRÙNG HUYẾT</div>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 18%;">Thang Điểm</th>
+          <th style="width: 25%;">Các Yếu Tố Cấu Thành</th>
+          <th style="width: 14%; text-align: center;">Độ Nhạy Sàng Lọc</th>
+          <th style="width: 14%; text-align: center;">Độ Đặc Hiệu</th>
+          <th style="width: 29%;">Khuyến Cáo &amp; Vai Trò Thực Tế</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color: #0284c7;">NEWS / NEWS2</strong><br /><small>National Early Warning Score</small></td>
+          <td>Nhịp thở, SpO<sub>2</sub>, Thở oxy hỗ trợ, Thân nhiệt, Huyết áp tâm thu, Nhịp tim, Tri giác (ACVPU).</td>
+          <td style="text-align: center;"><strong style="color: #059669;">Rất cao (80–90%)</strong></td>
+          <td style="text-align: center;">Trung bình (60–70%)</td>
+          <td><strong style="color: #059669;">Lựa chọn ưu tiên hàng đầu</strong> của SSC 2026. Nhận diện sớm suy sụp sinh hiệu trước khi tổn thương cơ quan không thể hồi phục.</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #8b5cf6;">MEWS</strong><br /><small>Modified Early Warning Score</small></td>
+          <td>Huyết áp tâm thu, Nhịp tim, Tần số thở, Thân nhiệt, Tri giác (AVPU).</td>
+          <td style="text-align: center;"><strong style="color: #059669;">Cao (70–80%)</strong></td>
+          <td style="text-align: center;">Trung bình (65%)</td>
+          <td>Công cụ thay thế tốt khi bệnh viện chưa chuẩn hóa hệ thống bảng tính NEWS2 điện tử.</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #d97706;">Tiêu chuẩn SIRS</strong><br /><small>Đáp ứng viêm toàn thân</small></td>
+          <td>Thân nhiệt (&gt; 38&deg;C hoặc &lt; 36&deg;C), Nhịp tim &gt; 90, Nhịp thở &gt; 20, Bạch cầu (&gt; 12.000 hoặc &lt; 4.000 hoặc &gt; 10% gậy). Thỏa &ge; 2 tiêu chí.</td>
+          <td style="text-align: center;"><strong style="color: #059669;">Cao (&gt; 80%)</strong></td>
+          <td style="text-align: center;"><strong style="color: #dc2626;">Thấp (&lt; 50%)</strong></td>
+          <td>Rất nhạy nhưng không đặc hiệu (dễ dương tính giả trong bỏng, chấn thương, viêm tụy vô khuẩn).</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #dc2626;">qSOFA</strong><br /><small>Quick SOFA</small></td>
+          <td>1. Nhịp thở &ge; 22 lần/phút.<br />2. Rối loạn tri giác (GCS &lt; 15).<br />3. HA tâm thu &le; 100 mmHg.<br />Thỏa &ge; 2 tiêu chí.</td>
+          <td style="text-align: center;"><strong style="color: #dc2626;">RẤT THẤP (~23% tiền viện, ~50% nội viện)</strong></td>
+          <td style="text-align: center;"><strong style="color: #059669;">Cao (&gt; 85%)</strong></td>
+          <td><strong style="color: #dc2626;">KHÔNG DÙNG ĐƠN ĐỘC ĐỂ SÀNG LỌC!</strong> qSOFA chỉ có giá trị tiên lượng tử vong. Nếu qSOFA (+) &ge; 2: Dấu hiệu báo động đỏ bệnh nhân đang nguy kịch!</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+### 3.3. Đánh Giá Toàn Diện &amp; Dấu Ấn Sinh Học Mới
+* **Nguyên tắc vàng lâm sàng:** Nhiễm trùng huyết là một **chẩn đoán lâm sàng tổng thể**. Không bao giờ được phép loại trừ hoặc khẳng định nhiễm trùng huyết chỉ dựa vào một xét nghiệm hay một dấu ấn sinh học đơn độc (GPS).
+* **Xét nghiệm chẩn đoán nhanh đáp ứng vật chủ:** Đối với các xét nghiệm mới như kích thước bạch cầu đơn nhân (MDW), độ biến dạng bạch cầu trung tính (IntelliSep) hay các xét nghiệm phiên mã mRNA (SeptiCyte, TriVerity), SSC 2026 kết luận **chưa đủ bằng chứng** để đưa ra khuyến cáo áp dụng thường quy tại giường bệnh.
+
+---
+
+## ⏱️ 4. CHIẾN LƯỢC KHÁNG SINH, CẤY VI SINH & TỐI ƯU HÓA PK/PD {#sec-antimicrobial-timing}
+
+### 4.1. Thời Điểm Cấy Vi Sinh Trước Điều Trị
+* **Khuyến cáo:** Thu thập mẫu cấy máu càng sớm càng tốt và **lý tưởng nhất là trước khi bắt đầu dùng kháng sinh** ở mọi bệnh nhân nghi ngờ nhiễm trùng huyết hoặc sốc nhiễm trùng (<em>Khuyến cáo mạnh, bằng chứng độ tin cậy thấp</em>).
+* **Giá trị lâm sàng:** Cấy máu trước kháng sinh giúp **tăng gấp đôi khả năng phân lập được vi khuẩn gây bệnh**, cung cấp kháng sinh đồ để thu hẹp phổ an toàn.
+* **Quy tắc an toàn thời gian:** Nỗ lực lấy mẫu vi sinh **không được làm chậm trễ kháng sinh quá 45 phút**. 
+* **Nghi ngờ nhiễm trùng đường truyền (CRBSI):** Bắt buộc cấy máu theo cặp: 01 mẫu lấy từ catheter tĩnh mạch trung tâm và 01 mẫu từ tĩnh mạch ngoại vi để đánh giá thời gian phát hiện vi khuẩn dương tính chênh lệch (DTP &gt; 2 giờ).
+
+### 4.2. Khung Thời Gian Khởi Trị Kháng Sinh (Antimicrobial Timing Framework)
+
+<!-- LƯU ĐỒ EDITORIAL SVG KHUNG THỜI GIAN KHÁNG SINH SSC 2026 -->
+<div class="flowchart-editorial-card" style="margin: 1.5rem 0;">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project" style="color: var(--handbook-primary);"></i>
+      <span>KHUNG THỜI GIAN KHỞI TRỊ KHÁNG SINH THEO SURVIVING SEPSIS CAMPAIGN 2026</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">SSC 2026 • 1-Hour vs 3-Hour Bundle</span>
+    </div>
+  </div>
+  
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 940 380" width="940" height="380" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', -apple-system, sans-serif">
+      <!-- Node Root -->
+      <rect x="220" y="15" width="500" height="52" rx="10" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="1.8" />
+      <text x="470" y="37" text-anchor="middle" font-size="14" font-weight="800" fill="#7c3aed">BỆNH NHÂN NGHI NGỜ NHIỄM TRÙNG HUYẾT (SUSPECTED SEPSIS)</text>
+      <text x="470" y="55" text-anchor="middle" font-size="11.5" font-weight="500" fill="var(--handbook-text)">Đánh giá sinh hiệu, điểm NEWS2, tri giác và dấu hiệu giảm tưới máu mô</text>
+
+      <!-- Đường dẫn xuống 2 nhánh -->
+      <line x1="470" y1="67" x2="470" y2="92" stroke="#64748b" stroke-width="1.8" />
+      <line x1="240" y1="92" x2="700" y2="92" stroke="#64748b" stroke-width="1.8" />
+      <line x1="240" y1="92" x2="240" y2="115" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-red-2)" />
+      <line x1="700" y1="92" x2="700" y2="115" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-blue-2)" />
+
+      <!-- Marker defs -->
+      <defs>
+        <marker id="arrow-red-2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+        </marker>
+        <marker id="arrow-blue-2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+      </defs>
+
+      <!-- Nhánh Trái: CÓ SỐC NHIỄM TRÙNG -->
+      <rect x="40" y="115" width="400" height="75" rx="8" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="1.5" />
+      <text x="55" y="140" font-size="13" font-weight="800" fill="#dc2626">🚨 CÓ SỐC NHIỄM TRÙNG (SEPTIC SHOCK)</text>
+      <text x="55" y="160" font-size="11.5" font-weight="600" fill="var(--handbook-text)">(Bất kể mức độ nghi ngờ: Definite, Probable hay Possible)</text>
+      <text x="55" y="178" font-size="11" font-weight="500" fill="var(--handbook-muted)">&bull; Tụt HA cần vận mạch giữ MAP &ge; 65 mmHg và/hoặc Lactate &gt; 2 mmol/L</text>
+
+      <!-- Mũi tên xuống Action Trái -->
+      <line x1="240" y1="190" x2="240" y2="218" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red-2)" />
+
+      <!-- Khối Action Trái (1 GIỜ) -->
+      <rect x="40" y="218" width="400" height="135" rx="8" fill="rgba(239, 68, 68, 0.16)" stroke="#dc2626" stroke-width="2" />
+      <text x="55" y="244" font-size="13.5" font-weight="800" fill="#b91c1c">⚡ KHỞI TRỊ KHÁNG SINH NGAY LẬP TỨC</text>
+      <rect x="55" y="254" width="280" height="22" rx="4" fill="#dc2626" />
+      <text x="195" y="269" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">MỤC TIÊU TRONG VÒNG 1 GIỜ (HOUR-1 BUNDLE)</text>
+      <text x="55" y="295" font-size="11.5" font-weight="600" fill="var(--handbook-text)">&bull; Lấy 02 bộ cấy máu trước liều đầu (không trễ quá 45 phút)</text>
+      <text x="55" y="315" font-size="11.5" font-weight="600" fill="var(--handbook-text)">&bull; Dùng KS phổ rộng liều nạp tĩnh mạch; tối ưu hóa PK/PD</text>
+      <text x="55" y="335" font-size="11.5" font-weight="700" fill="#b91c1c">&bull; Khởi kích Norepinephrine sớm qua ngoại vi song song bù dịch</text>
+
+      <!-- Nhánh Phải: KHÔNG CÓ SỐC -->
+      <rect x="480" y="115" width="420" height="75" rx="8" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="1.5" />
+      <text x="495" y="140" font-size="13" font-weight="800" fill="#0284c7">🩺 KHÔNG CÓ SỐC NHIỄM TRÙNG (Huyết Động Ổn Định)</text>
+      <text x="495" y="160" font-size="11.5" font-weight="600" fill="var(--handbook-text)">Phân tầng theo mức độ chắc chắn của chẩn đoán nhiễm trùng</text>
+      <text x="495" y="178" font-size="11" font-weight="500" fill="var(--handbook-muted)">&bull; Huyết áp động mạch trung bình MAP &ge; 65 mmHg, Lactate &le; 2 mmol/L</text>
+
+      <!-- Đường phân nhánh con của nhánh Phải -->
+      <line x1="690" y1="190" x2="690" y2="208" stroke="#0284c7" stroke-width="1.8" />
+      <line x1="585" y1="208" x2="795" y2="208" stroke="#0284c7" stroke-width="1.8" />
+      <line x1="585" y1="208" x2="585" y2="218" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-blue-2)" />
+      <line x1="795" y1="208" x2="795" y2="218" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-blue-2)" />
+
+      <!-- Sub-action 1: Definite/Probable (1 GIỜ) -->
+      <rect x="480" y="218" width="205" height="135" rx="8" fill="rgba(2, 132, 199, 0.15)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="490" y="240" font-size="11.5" font-weight="800" fill="#0369a1">Definite / Probable</text>
+      <text x="490" y="258" font-size="10.5" font-weight="600" fill="var(--handbook-muted)">(Chắc chắn / Nhiều kn)</text>
+      <rect x="490" y="267" width="185" height="20" rx="3" fill="#0284c7" />
+      <text x="582" y="281" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff">DÙNG KS TRONG 1 GIỜ</text>
+      <text x="490" y="306" font-size="10.5" font-weight="500" fill="var(--handbook-text)">&bull; Dùng KS ngay dù chưa</text>
+      <text x="490" y="322" font-size="10.5" font-weight="500" fill="var(--handbook-text)">  tụt huyết áp.</text>
+      <text x="490" y="340" font-size="10.5" font-weight="700" fill="#0369a1">&bull; Chậm trễ làm tăng tử vong</text>
+
+      <!-- Sub-action 2: Possible (3 GIỜ) -->
+      <rect x="695" y="218" width="205" height="135" rx="8" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="1.8" />
+      <text x="705" y="240" font-size="11.5" font-weight="800" fill="#d97706">Possible Sepsis</text>
+      <text x="705" y="258" font-size="10.5" font-weight="600" fill="var(--handbook-muted)">(Mức độ "Có thể")</text>
+      <rect x="705" y="267" width="185" height="20" rx="3" fill="#f59e0b" />
+      <text x="797" y="281" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff">ĐÁNH GIÁ TRONG 3 GIỜ</text>
+      <text x="705" y="306" font-size="10.5" font-weight="500" fill="var(--handbook-text)">&bull; Thăm khám, làm XQ/CT</text>
+      <text x="705" y="322" font-size="10.5" font-weight="500" fill="var(--handbook-text)">&bull; Khởi trị KS trong 3 giờ</text>
+      <text x="705" y="340" font-size="10.5" font-weight="700" fill="#d97706">&bull; Nếu nghi ngờ vẫn còn</text>
+    </svg>
+  </div>
+  
+  <div class="flowchart-legend-row">
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #dc2626;"></span> Sốc nhiễm trùng / Khởi trị kháng sinh trong 1 giờ</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #0284c7;"></span> Sepsis chắc chắn hoặc nhiều khả năng (Hour-1)</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Sepsis có thể (Possible) / Cửa sổ đánh giá khẩn 3 giờ</div>
+  </div>
+</div>
+
+* **Vai trò của Procalcitonin (PCT) khi bắt đầu điều trị:** SSC 2026 gợi ý sử dụng đánh giá lâm sàng đơn thuần thay vì phối hợp Procalcitonin với lâm sàng để quyết định có khởi đầu kháng sinh hay không (do PCT có thể âm tính giả ở giai đoạn rất sớm và dương tính giả trong bỏng, chấn thương, phẫu thuật lớn).
+
+### 4.3. Lựa Chọn Kháng Sinh &amp; Tối Ưu Hóa PK/PD Ở Bệnh Nhân Nặng
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #0284c7; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-syringe"></i> 1. LIỀU NẠP BAN ĐẦU (LOADING DOSE)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Ở bệnh nhân sepsis, hiện tượng tăng tính thấm thành mạch gây thoát quản dịch ồ ạt làm <strong>thể tích phân bố (V<sub>d</sub>) giãn nở rất lớn</strong>. Bắt buộc dùng liều nạp ban đầu cho toàn bộ kháng sinh ưa nước (beta-lactam, aminoglycoside, glycopeptide) <em>bất kể mức độ suy thận của bệnh nhân</em>.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #8b5cf6; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #8b5cf6; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-hourglass-half"></i> 2. TRUYỀN KÉO DÀI (PROLONGED INFUSION)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Kháng sinh nhóm beta-lactam có hoạt tính phụ thuộc thời gian (%fT &gt; MIC). Khuyến cáo <strong>truyền liên tục hoặc truyền kéo dài trong 3–4 giờ</strong> (sau khi đã tiêm liều nạp nhanh ban đầu) để duy trì nồng độ thuốc tự do trong máu vượt ngưỡng MIC liên tục suốt chu kỳ phân liều.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-left: 4px solid #10b981; border-radius: var(--handbook-radius-sm); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-calendar-check"></i> 3. XUỐNG THANG &amp; LIỆU TRÌNH NGẮN</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Đánh giá lâm sàng và kết quả vi sinh hàng ngày để tích cực thu hẹp phổ kháng sinh hoặc ngừng thuốc nếu xác định nguyên nhân không nhiễm trùng. Ưu tiên <strong>liệu trình ngắn ngày (7 ngày thay vì 14 ngày)</strong> khi nguồn nhiễm đã được kiểm soát triệt để.
+    </div>
+  </div>
+
+</div>
+
+<!-- BẢNG TRA CỨU LIỀU PK/PD KHÁNG SINH HỒI SỨC CỐT LÕI -->
+<div class="dose-table-wrapper" style="margin: 1.5rem 0;">
+  <div style="padding: 0.75rem 1rem; background: var(--handbook-surface-2); border-bottom: 1px solid var(--handbook-border); font-weight: 800; color: var(--handbook-text); font-size: 0.9rem;">
+    <i class="fa-solid fa-pills" style="color: #0284c7; margin-right: 6px;"></i> BẢNG DƯỢC LÝ TỐI ƯU HÓA LIỀU NẠP &amp; TRUYỀN KÉO DÀI KHÁNG SINH HỒI SỨC CỐT LÕI (SSC 2026)
+  </div>
+  <table class="dose-table">
+    <thead>
+      <tr>
+        <th style="width: 22%;">Kháng Sinh</th>
+        <th style="width: 22%;">Liều Nạp Ban Đầu</th>
+        <th style="width: 28%;">Chế Độ Truyền Kéo Dài Duy Trì</th>
+        <th style="width: 28%;">Lưu Ý Lâm Sàng &amp; Mục Tiêu PK/PD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Piperacillin / Tazobactam</strong></td>
+        <td>4.5 g TMC trong 30 phút</td>
+        <td>4.5 g mỗi 8 giờ truyền trong 4 giờ<br />(hoặc 13.5 g truyền liên tục 24h)</td>
+        <td>Mục tiêu 100% fT &gt; MIC. Bắt buộc chỉnh liều từ ngày thứ 2 nếu eGFR &lt; 50 mL/min.</td>
+      </tr>
+      <tr>
+        <td><strong>Meropenem</strong></td>
+        <td>1.0 g – 2.0 g TMC trong 30 phút</td>
+        <td>1.0 g – 2.0 g mỗi 8 giờ truyền trong 3–4 giờ</td>
+        <td>Tăng liều 2.0 g mỗi 8 giờ khi nghi ngờ nhiễm <em>P. aeruginosa</em> hoặc vi khuẩn Gram âm đa kháng.</td>
+      </tr>
+      <tr>
+        <td><strong>Cefepime</strong></td>
+        <td>2.0 g TMC trong 30 phút</td>
+        <td>2.0 g mỗi 8 giờ truyền trong 3–4 giờ</td>
+        <td>Theo dõi tri giác và điện não đồ do nguy cơ độc tính thần kinh (Neurotoxicity) khi suy giảm chức năng thận.</td>
+      </tr>
+      <tr>
+        <td><strong>Vancomycin</strong></td>
+        <td>25 – 30 mg/kg (tính theo TBW, tối đa 2.0 g)</td>
+        <td>15 – 20 mg/kg mỗi 8–12 giờ</td>
+        <td>Mục tiêu AUC<sub>24</sub> / MIC = 400 – 600 mg&middot;h/L. Tránh duy trì trough &gt; 20 &mu;g/mL kéo dài gây hoại tử ống thận.</td>
+      </tr>
+      <tr>
+        <td><strong>Amikacin</strong></td>
+        <td>20 – 25 mg/kg (liều duy nhất một lần trong ngày)</td>
+        <td>Truyền TM trong 60 phút, đo C<sub>peak</sub> và C<sub>trough</sub></td>
+        <td>Mục tiêu đỉnh C<sub>peak</sub> / MIC &ge; 8–10. Không dùng lặp lại liều nếu chưa có kết quả nồng độ đáy C<sub>trough</sub> &lt; 2.5 mg/L.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## 💧 5. HỒI SỨC DỊCH BAN ĐẦU & ĐÁNH GIÁ ĐÁP ỨNG ĐỘNG (PLR / POCUS) {#sec-fluid-resuscitation}
+
+### 5.1. Liệu Pháp Hồi Sức Dịch Ban Đầu
+
+* **Thời gian &amp; Liều lượng:** Đối với bệnh nhân người lớn có hạ tưới máu do sepsis (tụt huyết áp hoặc lactate &ge; 4 mmol/L, hoặc lactate trung gian 2–4 mmol/L), khuyến cáo truyền tĩnh mạch **ít nhất 30 mL/kg dịch tinh thể cân bằng trong 3 giờ đầu tiên** (<em>Khuyến cáo có điều kiện, bằng chứng độ tin cậy thấp</em>).
+* **Hiệu chỉnh theo cân nặng ở bệnh nhân béo phì:** Khi bệnh nhân có chỉ số khối cơ thể $\text{BMI} &gt; 30\text{ kg/m}^2$, thể tích dịch 30 mL/kg phải được tính dựa trên **Cân nặng lý tưởng (Ideal Body Weight - IBW)** để phòng ngừa biến cố quá tải dịch gây phù phổi cấp:
+
+<div class="katex-display-card" style="margin: 1.5rem 0;">
+  <div class="equation-box">
+    $$\text{IBW (Nam)} = 50 + 0.91 \times (\text{Chiều cao [cm]} - 152.4)$$
+    $$\text{IBW (Nữ)} = 45.5 + 0.91 \times (\text{Chiều cao [cm]} - 152.4)$$
+  </div>
+  <div class="equation-legend">
+    <strong>Ví dụ thực hành:</strong> Một bệnh nhân nam cao 170 cm nhưng nặng 105 kg (BMI = 36.3 kg/m&sup2;).<br />
+    &bull; Cân nặng lý tưởng: $\text{IBW} = 50 + 0.91 \times (170 - 152.4) \approx 66\text{ kg}$.<br />
+    &bull; Thể tích dịch ban đầu cần truyền: $30\text{ mL/kg} \times 66\text{ kg} \approx 2000\text{ mL}$ (thay vì $30 \times 105 = 3150\text{ mL}$, tránh quá tải hơn 1 lít dịch).
+  </div>
+</div>
+
+* **Lựa chọn loại dịch:**
+  * **Dịch tinh thể cân bằng (Balanced crystalloids - như Ringer's Lactate):** Là lựa chọn đầu tay vượt trội hơn NaCl 0.9% nhằm làm giảm nguy cơ toan chuyển hóa tăng clo máu (Hyperchloremic metabolic acidosis) và giảm tỷ lệ tổn thương thận cấp (AKI) cần lọc máu.
+  * **Ngoại lệ:** Bệnh nhân chấn thương sọ não (TBI) đi kèm nhiễm trùng huyết bắt buộc dùng NaCl 0.9% để tránh giảm áp lực thẩm thấu nội sọ gây phù não.
+  * **Chống chỉ định tuyệt đối:** Không sử dụng tinh bột Hydroxyethyl (HES) (<em>Khuyến cáo mạnh chống lại</em>) và không sử dụng Gelatin (<em>Khuyến cáo có điều kiện chống lại</em>).
+  * **Albumin:** Cân nhắc bổ sung Albumin 20% ở bệnh nhân đã phải nhận một lượng dịch tinh thể rất lớn (&gt; 3–4 lít) hoặc bệnh nhân có xơ gan cổ trướng kèm theo; không dùng Albumin cho chấn thương sọ não.
+
+### 5.2. Đánh Giá Đáp Ứng Dịch Sau Giai Đoạn Ban Đầu Bằng Thông Số Động
+
+<div class="callout callout-warning">
+  <div class="callout-title"><i class="fa-solid fa-ban"></i> NGUYÊN TẮC: KHÔNG TRUYỀN DỊCH THEO QUÁN TÍNH</div>
+  <p>
+    Sau khi đã hoàn thành liều dịch 30 mL/kg ban đầu, <strong>tuyệt đối không được tiếp tục xả dịch tự do theo quán tính</strong>. Việc quá tải dịch làm tăng áp lực tĩnh mạch trung tâm, gây ứ trệ tuần hoàn vi mạch tạng, phù phổi và làm tăng tỷ lệ tử vong. SSC 2026 khuyến cáo bắt buộc phải sử dụng các <strong>thông số động (Dynamic measures)</strong> để xác định bệnh nhân còn khả năng đáp ứng bù dịch hay không.
+  </p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-person-walking-arrow-right"></i> 1. NGHIỆM PHÁP NÂNG CHÂN THỤ ĐỘNG (PLR)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Cho bệnh nhân từ tư thế nửa ngồi (45&deg;) chuyển sang nằm ngửa và nâng hai chân lên 45&deg; trong 60–90 giây. Động tác này huy động khoảng <strong>300 mL máu tự thân</strong> từ chi dưới về tim (như một liều truyền dịch thử nghiệm tạm thời có thể đảo ngược).
+      <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Dương tính khi Thể tích nhát bóp (&Delta;SV) hoặc Cung lượng tim (CO) tăng &ge; 10%.
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #8b5cf6; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-wave-square"></i> 2. BIẾN THIÊN ÁP LỰC MẠCH &amp; NHÁT BÓP (PPV / SVV)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Áp dụng cho bệnh nhân đặt nội khí quản, thở máy kiểm soát thể tích hoàn toàn, không có nhịp tự thở và không có loạn nhịp tim.
+      <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: rgba(139, 92, 246, 0.08); border-radius: 4px; font-weight: 700; color: #7c3aed;">
+        Ngưỡng cut-off: PPV &gt; 13% hoặc SVV &gt; 12% dự báo khả năng tăng cung lượng tim khi truyền thêm dịch.
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 2px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #059669; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-faucet-drip"></i> 3. RÚT DỊCH TÍCH CỰC (ACTIVE FLUID REMOVAL)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Ở giai đoạn sau hồi sức cấp (khi sốc đã ổn định, liều vận mạch giảm dần), cần chủ động đánh giá cân bằng dịch vào - ra hàng ngày. Nếu bệnh nhân có biểu hiện quá tải dịch (+3 đến +5 lít), tích cực rút dịch bằng lợi tiểu quai hoặc lọc máu để hỗ trợ cai máy thở.
+    </div>
+  </div>
+
+</div>
+
+### 5.3. Mục Tiêu Hồi Sức Tuần Hoàn &amp; Dấu Ấn Tưới Máu Mô
+* **Mục tiêu MAP ban đầu:** Khuyến cáo duy trì huyết áp động mạch trung bình ban đầu là **65 mmHg** (<em>Khuyến cáo mạnh</em>).
+* **Mục tiêu MAP ở người cao tuổi (&ge; 65 tuổi):** SSC 2026 gợi ý mục tiêu MAP có thể dao động trong khoảng **60–65 mmHg** để giảm thiểu việc phơi nhiễm liều vận mạch quá mức và hạn chế nguy cơ rung nhĩ hay loạn nhịp tim.
+* **Động học thanh thải Lactate máu (Lactate clearance):** Đo lại lactate máu động mạch mỗi 2–4 giờ. Mục tiêu thanh thải lactate &gt; 20% sau mỗi 2 giờ hồi sức là dấu hiệu hồi phục tưới máu tế bào tốt.
+* **Thời gian đổ đầy mao mạch (Capillary Refill Time - CRT):** Là dấu ấn ngoại vi nhạy bén, không xâm lấn. Hướng tới bình thường hóa CRT (&le; 2–3 giây) giúp giảm thiểu suy đa cơ quan và rút ngắn thời gian nằm ICU (theo thử nghiệm ANDROMEDA-SHOCK).
+
+---
+
+## 💉 6. THUỐC VẬN MẠCH NGOẠI VI SỚM, TĂNG CO BÓP & CORTICOSTEROID BỔ TRỢ {#sec-vasopressors-inotropes}
+
+### 6.1. Thời Điểm Khởi Kích &amp; Đường Truyền Ngoại Vi Sớm
+
+<div class="callout callout-danger">
+  <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> THỰC HÀNH CẤP CỨU: KHÔNG TRÌ HOÃN ĐỂ CHỜ ĐẶT CVC</div>
+  <p>
+    Ở bệnh nhân sốc nhiễm trùng không ổn định (hạ huyết áp sâu, da nổi vân tím mottling, chi lạnh, nhịp tim quá nhanh, rối loạn tri giác), <strong>SSC 2026 khuyến cáo khởi kích ngay lập tức thuốc vận mạch song song với quá trình truyền dịch tinh thể</strong> mà không chờ truyền xong 30 mL/kg dịch.
+  </p>
+  <p>
+    Khuyến cáo bắt đầu truyền Norepinephrine qua <strong>đường tĩnh mạch ngoại vi lớn (tại nếp khuỷu hoặc gần khuỷu)</strong> với nồng độ chuẩn hóa, không được phép trì hoãn việc hồi sức huyết động để chờ đặt catheter tĩnh mạch trung tâm (CVC). Khi điều kiện cho phép, nhanh chóng đặt CVC dưới hướng dẫn của siêu âm và chuyển đường truyền vào CVC an toàn.
+  </p>
+</div>
+
+### 6.2. Phân Tầng Thuốc Vận Mạch 3 Bậc (Vasopressor Escalation)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- BẬC 1: NOREPINEPHRINE -->
+  <div style="background: var(--handbook-surface); border: 2px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-1"></i> LỰA CHỌN ĐẦU TAY (FIRST-LINE)</div>
+    <div style="font-size: 1.1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Norepinephrine (Noradrenalin)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Là thuốc vận mạch lựa chọn hàng đầu vượt trội so với Dopamine và Epinephrine (<em>Khuyến cáo mạnh</em>) nhờ tác dụng co mạch chọn lọc mạnh trên thụ thể &alpha;<sub>1</sub>, ít gây loạn nhịp tim và ít làm tăng tiêu thụ oxy cơ tim.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(2, 132, 199, 0.08); border-radius: 4px; font-weight: 700; color: #0284c7;">
+        Liều khởi đầu: 0.05 – 0.1 &mu;g/kg/phút; chỉnh liều nhanh mỗi 2–5 phút để đạt MAP &ge; 65 mmHg.
+      </div>
+    </div>
+  </div>
+
+  <!-- BẬC 2: VASOPRESSIN -->
+  <div style="background: var(--handbook-surface); border: 2px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-2"></i> PHỐI HỢP BẬC HAI (SECOND-LINE)</div>
+    <div style="font-size: 1.1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Vasopressin (AVP)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Khi liều Norepinephrine tăng dần đạt mức <strong>0.25 – 0.5 &mu;g/kg/phút</strong>, gợi ý bổ sung thêm Vasopressin liều cố định thay vì tiếp tục tăng liều Norepinephrine đơn độc, giúp phục hồi trương lực mạch qua thụ thể V<sub>1a</sub> và giảm gánh nặng adrenergic.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(139, 92, 246, 0.08); border-radius: 4px; font-weight: 700; color: #7c3aed;">
+        Liều cố định: 0.03 đơn vị/phút (không tự ý chỉnh liều lên xuống).
+      </div>
+    </div>
+  </div>
+
+  <!-- BẬC 3: EPINEPHRINE -->
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.25rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #dc2626; text-transform: uppercase; margin-bottom: 0.35rem;"><i class="fa-solid fa-3"></i> PHỐI HỢP BẬC BA (THIRD-LINE)</div>
+    <div style="font-size: 1.1rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Epinephrine (Adrenalin)</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Nếu đã phối hợp Norepinephrine và Vasopressin mà huyết áp trung bình MAP vẫn chưa đạt mục tiêu &ge; 65 mmHg, gợi ý bổ sung thêm Epinephrine truyền tĩnh mạch.
+      <div style="margin-top: 0.6rem; padding: 0.4rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 4px; font-weight: 700; color: #dc2626;">
+        Liều dùng: 0.05 – 0.3 &mu;g/kg/phút. Cần lưu ý Epinephrine có thể làm tăng lactate thoáng qua do kích thích thụ thể &beta;<sub>2</sub>.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+* **Thuốc chống chỉ định / Không khuyến cáo:**
+  * **Không sử dụng Terlipressin:** Do làm tăng nguy cơ thiếu máu cục bộ tạng và hoại tử ngón chi.
+  * **Không sử dụng Dopamine:** Làm tăng nguy cơ loạn nhịp tim (nhĩ và thất) gấp 2–3 lần so với Norepinephrine.
+  * **Không dùng Phenylephrine đơn độc:** Trừ trường hợp bệnh nhân có nhịp nhanh trên thất nặng nề chống chỉ định với thuốc kích thích thụ thể beta.
+
+### 6.3. Thuốc Tăng Co Bóp Cơ Tim (Inotropes)
+* Ở những bệnh nhân sốc nhiễm trùng có bằng chứng **suy giảm chức năng co bóp thất trái hoặc giảm cung lượng tim** kèm theo dấu hiệu giảm tưới máu mô dai dẳng dù đã được bù đủ thể tích dịch và đạt mục tiêu MAP &ge; 65 mmHg:
+  * Gợi ý **bổ sung Dobutamine vào phác đồ Norepinephrine** đang dùng (liều khởi đầu 2.5–5 &mu;g/kg/phút, chỉnh liều đến tối đa 20 &mu;g/kg/phút), **HOẶC** chuyển sang dùng **Epinephrine đơn độc**.
+  * Khuyến cáo **chống lại việc sử dụng Levosimendan** trong sốc nhiễm trùng do không cải thiện tỷ lệ tử vong và làm tăng nguy cơ loạn nhịp.
+
+### 6.4. Liệu Pháp Corticosteroid Bổ Trợ
+* **Chỉ định:** Đối với bệnh nhân sốc nhiễm trùng kháng trị, vẫn **duy trì nhu cầu dùng thuốc vận mạch liều cao kéo dài** (liều Norepinephrine &ge; 0.25 &mu;g/kg/phút trong ít nhất 4 giờ sau khi khởi động):
+  * Gợi ý sử dụng **Hydrocortisone đường tĩnh mạch với liều 200 mg/ngày** (thường chia liều ngắt quãng 50 mg tiêm tĩnh mạch mỗi 6 giờ hoặc truyền liên tục 8.3 mg/giờ).
+  * Corticosteroid giúp phục hồi độ nhạy của thụ thể adrenergic thành mạch, đẩy nhanh quá trình thoát sốc và rút ngắn thời gian nằm hồi sức tích cực (ICU). Ngừng thuốc khi đã cai được thuốc vận mạch.
+
+---
+
+## 🎯 7. KIỂM SOÁT NGUỒN NHIỄM KHẨN CẤP TRONG 6 GIỜ ĐẦU (SOURCE CONTROL) {#sec-source-control}
+
+<div class="callout callout-rule">
+  <div class="callout-title"><i class="fa-solid fa-crosshairs"></i> NGUYÊN TẮC: KHÁNG SINH KHÔNG THỂ THAY THẾ KIỂM SOÁT NGUỒN NHIỄM</div>
+  <p>
+    Dù có sử dụng kháng sinh thế hệ mới nhất và hồi sức dịch tối ưu, bệnh nhân nhiễm trùng huyết vẫn sẽ tử vong nếu ổ mủ, mô hoại tử hay tắc nghẽn giải phẫu chưa được giải phóng. Kiểm soát nguồn nhiễm (Source Control) là <strong>trụ cột mang tính quyết định sự sống còn</strong>.
+  </p>
+</div>
+
+* **Khung thời gian vàng:** Bắt buộc tiến hành can thiệp kiểm soát nguồn nhiễm **càng sớm càng tốt ngay sau khi hồi sức ban đầu ổn định, lý tưởng trong vòng 6 giờ đầu tiên** kể từ khi xác lập chẩn đoán (<em>Khuyến cáo có điều kiện, bằng chứng độ tin cậy rất thấp</em>). Trì hoãn quá 6–12 giờ có liên quan trực tiếp đến sự gia tăng tuyến tính của tỷ lệ tử vong.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #0284c7; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-syringe"></i> 1. DẪN LƯU Ổ MỦ &amp; ÁP XE</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Ưu tiên can thiệp xâm lấn tối thiểu qua da dưới hướng dẫn của siêu âm hoặc cắt lớp vi tính (PCD - Percutaneous Catheter Drainage) đối với áp xe gan, tụ mủ sau phúc mạc, áp xe quanh thận thay vì mổ mở.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-top: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #8b5cf6; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-arrows-split-up-and-left"></i> 2. GIẢI ÁP TẮC NGHẼN CẤP CỨU</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Nội soi mật tụy ngược dòng (ERCP) cấp cứu đặt stent giải áp đường mật khi nhiễm trùng đường mật do sỏi kẹt; đặt thông JJ niệu quản hoặc dẫn lưu bể thận qua da cấp cứu khi ứ mủ thận do sỏi niệu quản.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-scissors"></i> 3. PHẪU THUẬT &amp; CẮT LỌC MÔ HOẠI TỬ</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Phẫu thuật khâu lỗ thủng tạng rỗng, cắt đoạn ruột hoại tử do tắc mạch mạc treo, và phẫu thuật cắt lọc triệt để mô mềm hoại tử (Necrotizing fasciitis / Viêm cân mạc hoại tử Fournier) không chậm trễ.
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.95rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-ban"></i> 4. THÁO BỎ THIẾT BỊ NỘI MẠCH</div>
+    <div style="font-size: 0.86rem; line-height: 1.55; color: var(--handbook-text);">
+      Nếu nghi ngờ đường truyền mạch máu (catheter tĩnh mạch trung tâm CVC, catheter lọc máu, đường truyền động mạch) là nguồn gốc gây nhiễm khuẩn huyết, bắt buộc phải nhanh chóng rút bỏ catheter ngay sau khi đã thiết lập được đường truyền thay thế an toàn.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## ⚠️ 8. LƯỚI CẠM BẪY LÂM SÀNG & CỜ ĐỎ TỬ VONG TRONG NHIỄM TRÙNG HUYẾT {#sec-clinical-pitfalls}
+
+<div class="pitfall-grid">
+
+  <!-- BẪY 1: QSOFA -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-triangle-exclamation"></i> CẠM BẪY SÀNG LỌC 01</div>
+      <div class="pitfall-title">Dùng qSOFA Đơn Độc Để Loại Trừ Nhiễm Trùng Huyết</div>
+    </div>
+    <div class="pitfall-body">
+      Nhiều bác sĩ thấy bệnh nhân có điểm qSOFA = 0 hoặc 1 điểm thì yên tâm kết luận "không nhiễm trùng huyết" và cho theo dõi thông thường. Thực tế, <strong>độ nhạy của qSOFA chỉ đạt khoảng 23% ở tiền viện và dưới 50% tại khoa cấp cứu</strong>.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-skull-crossbones"></i> HẬU QUẢ: Bỏ sót tới 3/4 số bệnh nhân nhiễm trùng huyết ở giai đoạn cửa sổ vàng. Luôn dùng NEWS2 hoặc MEWS để sàng lọc!
+    </div>
+  </div>
+
+  <!-- BẪY 2: CHẬM TRỄ KHÁNG SINH -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-clock"></i> CẠM BẪY THỜI GIAN 02</div>
+      <div class="pitfall-title">Trì Hoãn Kháng Sinh Để Chờ Kết Quả Lab &amp; Chẩn Đoán Hình Ảnh</div>
+    </div>
+    <div class="pitfall-body">
+      Chờ bệnh nhân đi chụp CT, chờ kết quả xét nghiệm sinh hóa máu hoặc chờ lấy đủ bệnh phẩm cấy vi sinh rồi mới phát y lệnh kháng sinh. Mỗi giờ chậm trễ dùng kháng sinh thích hợp trong sốc nhiễm trùng làm tăng tỷ lệ tử vong thêm 7.6%.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-ban"></i> HÀNH ĐỘNG: Khởi trị kháng sinh ngay trong 1 giờ đầu tiên khi có sốc. Không để việc cấy máu làm trễ quá 45 phút.
+    </div>
+  </div>
+
+  <!-- BẪY 3: CHỜ ĐẶT CVC -->
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-heart-pulse"></i> CẠM BẪY VẬN MẠCH 03</div>
+      <div class="pitfall-title">Trì Hoãn Norepinephrine Để Chờ Đặt Catheter Tĩnh Mạch Trung Tâm</div>
+    </div>
+    <div class="pitfall-body">
+      Tình trạng tụt huyết áp kéo dài gây tổn thương thận cấp thiếu máu cục bộ và toan lactic nặng. Việc lo sợ biến chứng hoại tử da do thoát mạch làm bác sĩ ngần ngại truyền Norepinephrine qua tĩnh mạch ngoại vi.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-check"></i> HÀNH ĐỘNG: Bắt đầu Norepinephrine ngay qua tĩnh mạch lớn nếp khuỷu tay; kiểm tra vị trí kim thường xuyên và chuyển sang CVC sau khi đã đặt an toàn.
+    </div>
+  </div>
+
+  <!-- BẪY 4: TRUYỀN DỊCH QUÁN TÍNH -->
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-droplet"></i> CẠM BẪY HỒI SỨC 04</div>
+      <div class="pitfall-title">Truyền Dịch Theo Quán Tính Vượt Quá 30 mL/kg Mà Không Đánh Giá Động</div>
+    </div>
+    <div class="pitfall-body">
+      Tiếp tục cắm các chai dịch tinh thể xả tự do khi thấy huyết áp chưa lên. Khi bệnh nhân đã hết khả năng đáp ứng bù dịch (Fluid non-responder), dịch truyền sẽ thoát vào phế nang gây phù phổi, làm suy giảm chức năng thận và tăng áp lực ổ bụng.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-ban"></i> HÀNH ĐỘNG: Sau 30 mL/kg, bắt buộc làm nghiệm pháp nâng chân thụ động (PLR) hoặc siêu âm POCUS trước khi quyết định bù thêm dịch.
+    </div>
+  </div>
+
+  <!-- BẪY 5: DÙNG NACL 0.9% DIỆN RỘNG -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-bottle-droplet"></i> CẠM BẪY DỊCH TRUYỀN 05</div>
+      <div class="pitfall-title">Lạm Dụng Natri Clorid 0.9% Làm Dung Dịch Hồi Sức Thể Tích Lớn</div>
+    </div>
+    <div class="pitfall-body">
+      Nồng độ Clo trong NaCl 0.9% rất cao (154 mmol/L) so với huyết tương (98–106 mmol/L). Truyền nhiều lít NaCl 0.9% sẽ gây toan chuyển hóa tăng clo máu, co thắt tiểu động mạch thận đến và làm nặng thêm tổn thương thận cấp.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-check-double"></i> HÀNH ĐỘNG: Luôn ưu tiên dịch tinh thể cân bằng (Ringer's Lactate). Chỉ dùng NaCl 0.9% khi có chấn thương sọ não kèm theo.
+    </div>
+  </div>
+
+  <!-- BẪY 6: BỎ QUÊN SOURCE CONTROL -->
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-crosshairs"></i> CẠM BẪY CAN THIỆP 06</div>
+      <div class="pitfall-title">Chỉ Tập Trung Dùng Thuốc Mà Bỏ Quên Ổ Nhiễm Trùng Giải Phẫu</div>
+    </div>
+    <div class="pitfall-body">
+      Chỉ tập trung vào máy thở, máy lọc máu và các thang thuốc vận mạch đắt tiền mà không khẩn trương mời hội chẩn ngoại khoa / can thiệp để dẫn lưu ổ mủ đường mật, tắc nghẽn sỏi thận hay viêm ruột hoại tử.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-skull-crossbones"></i> HẬU QUẢ: Tỷ lệ tử vong tiến sát 100% nếu nguồn nhiễm không được giải quyết trong vòng 6–12 giờ đầu.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🩺 9. CA LÂM SÀNG THỰC CHIẾN: SỐC NHIỄM TRÙNG ĐƯỜNG MẬT & GIỜ VÀNG CẤP CỨU {#sec-case-scenario}
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-truck-medical"></i> CA THỰC CHIẾN GIỜ VÀNG &bull; KHOA CẤP CỨU &amp; ICU</div>
+    <div class="case-title">Bệnh nhân nam 62 tuổi, nhập viện vì sốt cao, vàng da và tụt huyết áp nặng</div>
+  </div>
+
+  <div class="case-scenario-box">
+    <strong>Bệnh cảnh ban đầu (Giờ thứ 0:00 tại Cấp cứu):</strong><br />
+    &bull; <strong>Hành chính &amp; Tiền sử:</strong> Bệnh nhân nam, 62 tuổi, nặng 70 kg, cao 170 cm (BMI 24.2 kg/m&sup2;). Tiền sử Đái tháo đường type 2 điều trị ngắt quãng.<br />
+    &bull; <strong>Bệnh sử:</strong> Khởi phát 2 ngày trước với sốt rét run, đau quặn dữ dội vùng hạ sườn phải và vàng mắt tăng dần. Sáng nay người nhà phát hiện bệnh nhân li bì, thở dốc, gọi hỏi phản ứng chậm nên gọi cấp cứu 115.<br />
+    &bull; <strong>Ghi nhận tại Giờ 0:00:</strong><br />
+    - <em>Tri giác:</em> Kích thích, lơ mơ (GCS 13 điểm: E3V4M6).<br />
+    - <em>Sinh hiệu:</em> Mạch 128 lần/phút; Huyết áp: 78/46 mmHg (MAP = 56.6 mmHg); Tần số thở: 26 lần/phút; Thân nhiệt: 39.2&deg;C; SpO<sub>2</sub>: 93% (khí phòng).<br />
+    - <em>Khám thực thể:</em> Da niêm vàng đậm, củng mạc mắt vàng; da đầu chi lạnh, nổi bông nhẹ ở 2 đầu gối (Mottling score 1); Thời gian đổ đầy mao mạch (CRT): 4.5 giây (kéo dài). Bụng mềm, ấn đau chói và có đề kháng rõ vùng hạ sườn phải (<strong>Tam chứng Charcot: Sốt - Vàng da - Đau hạ sườn phải</strong>).<br />
+    - <em>Đánh giá thang điểm:</em> <strong>NEWS2 = 12 điểm</strong> (nguy cơ rất cao); <strong>qSOFA = 3/3 tiêu chuẩn</strong>.<br />
+    - <em>Chẩn đoán xác định ban đầu:</em> Nhiễm trùng đường mật cấp biến chứng <strong>Nhiễm trùng huyết nhiều khả năng (Probable sepsis)</strong> có <strong>Sốc nhiễm trùng (Septic shock)</strong>.
+  </div>
+
+  <div class="case-analysis">
+    <strong>Kế hoạch hành động tại Giờ thứ 1 (Hour-1 Management):</strong>
+    <ul>
+      <li><strong>Hỗ trợ hô hấp:</strong> Cho thở oxy gọng kính 3 L/phút, đưa SpO<sub>2</sub> lên 96%.</li>
+      <li><strong>Lấy mẫu vi sinh (0:15):</strong> Lấy ngay 02 bộ cấy máu ngoại vi tại hai vị trí tĩnh mạch khác nhau trước khi truyền kháng sinh (hoàn thành trong 15 phút).</li>
+      <li><strong>Xét nghiệm khẩn (0:35):</strong> Khí máu có toan chuyển hóa kèm tăng Lactate máu động mạch: <strong>4.8 mmol/L</strong>. Bạch cầu: 19.8 &times; 10<sup>9</sup>/L (Neutrophil 89%); Bilirubin toàn phần: 86 &mu;mol/L; Creatinine: 182 &mu;mol/L. Điểm SOFA cấp tính lúc vào viện: <strong>8 điểm</strong> (Hô hấp 0, Gan 2, Tim mạch 3, Thần kinh 1, Thận 2) &rarr; Xác nhận chẩn đoán Sốc nhiễm trùng theo Sepsis-3.</li>
+      <li><strong>Hồi sức dịch ban đầu (0:20):</strong> Tính thể tích: $30\text{ mL/kg} \times 70\text{ kg} = 2100\text{ mL}$ Ringer's Lactate. Bắt đầu xả nhanh túi thứ nhất 1000 mL trong 45 phút, phần còn lại truyền liên tục trong 2–3 giờ đầu dưới sự theo dõi sát nhịp thở và nghe phổi.</li>
+      <li><strong>Vận mạch sớm qua ngoại vi (0:25):</strong> Do bệnh nhân có sốc sâu (MAP 56.6 mmHg, da nổi vân tím mottling, lơ mơ), bác sĩ khởi kích ngay <strong>Norepinephrine truyền qua tĩnh mạch lớn nếp khuỷu tay phải</strong> với liều khởi đầu 0.1 &mu;g/kg/phút song song với bù dịch, không chờ đặt CVC. Huyết áp trung bình MAP nâng lên 64–66 mmHg sau 15 phút.</li>
+      <li><strong>Kháng sinh phổ rộng ngay lập tức (0:40):</strong> Hoàn thành trong 40 phút kể từ lúc tiếp nhận (thỏa tiêu chí &le; 1 giờ). Phác đồ: <strong>Piperacillin/Tazobactam</strong> liều nạp ban đầu 4.5 g TMC trong 30 phút, sau đó duy trì chế độ truyền kéo dài 4.5 g mỗi 8 giờ (mỗi cữ truyền trong 4 giờ). Phối hợp thêm <strong>Amikacin</strong> liều duy nhất 20 mg/kg (1400 mg) truyền TM một lần để hiệp đồng bao phủ trực khuẩn Gram âm trong sốc sâu.</li>
+    </ul>
+
+    <strong>Đánh giá &amp; Kiểm soát nguồn nhiễm tại Mốc 3 Giờ và 6 Giờ:</strong>
+    <ul>
+      <li><strong>Tại mốc 3 giờ:</strong> Đã truyền đủ 2100 mL Ringer's Lactate. Norepinephrine ngoại vi đang duy trì 0.22 &mu;g/kg/phút, MAP đạt 66–68 mmHg. Tiến hành đặt CVC dưới hướng dẫn siêu âm và đặt catheter động mạch quay theo dõi huyết áp xâm lấn.</li>
+      <li><strong>Đánh giá đáp ứng dịch bằng nghiệm pháp động (PLR):</strong> Làm nghiệm pháp nâng chân thụ động kết hợp siêu âm tim tại giường (POCUS). Kết quả: Biến thiên thể tích nhát bóp (&Delta;SV) chỉ tăng 5% (&lt; 10%) &rarr; Bệnh nhân <strong>không còn đáp ứng bù dịch (Fluid non-responder)</strong>. Lập tức ngừng xả dịch tự do để phòng ngừa phù phổi. Xét nghiệm lại Lactate: giảm từ 4.8 xuống 3.4 mmol/L (thanh thải &gt; 29%).</li>
+      <li><strong>Kiểm soát nguồn nhiễm khẩn cấp (Lúc 4:30 - trong vòng 6 giờ):</strong> Chụp CT ổ bụng xác định ống mật chủ giãn 16 mm, đoạn cuối có sỏi kẹt đường kính 14 mm gây ứ mủ đường mật nặng. Bệnh nhân được chuyển phòng can thiệp, tiến hành <strong>ERCP cấp cứu đặt stent giải áp đường mật</strong> và dẫn lưu mủ thành công.</li>
+    </ul>
+
+    <strong>Diễn tiến tại Khoa Hồi sức tích cực (ICU) (24–48 giờ):</strong>
+    <ul>
+      <li>Sau 24 giờ: Ổ nhiễm trùng đường mật được giải phóng, huyết động cải thiện rõ rệt, giảm dần liều Norepinephrine và <strong>cai hoàn toàn vận mạch sau 30 giờ</strong>; không cần bổ sung Vasopressin hay Hydrocortisone.</li>
+      <li>Lactate máu trở về bình thường: 1.4 mmol/L; CRT 2 giây; tri giác tỉnh táo hoàn toàn (GCS 15 điểm).</li>
+      <li>Bệnh nhân có dấu hiệu ứ dịch nhẹ (+3.5 lít), tiến hành <strong>rút dịch tích cực</strong> với Furosemide liều thấp.</li>
+      <li>Sau 48 giờ: Kết quả cấy máu và cấy mủ đường mật phân lập được <em>Klebsiella pneumoniae</em> nhạy Ceftriaxone, Piperacillin/Tazobactam. Tiến hành <strong>xuống thang kháng sinh sang Ceftriaxone 2 g/ngày</strong>, ngừng Amikacin. Liệu trình kháng sinh được rút ngắn an toàn còn 7 ngày.</li>
+    </ul>
+  </div>
+
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Thành công của ca bệnh nằm ở việc phối hợp nhịp nhàng 4 trụ cột: (1) Nhận diện sớm nguy cơ sốc; (2) Dùng kháng sinh liều nạp đúng thời điểm trong 1 giờ đầu; (3) Khởi kích Norepinephrine ngoại vi sớm song song bù dịch và ngưng xả dịch kịp thời qua test PLR; (4) Giải áp đường mật cấp cứu bằng ERCP trong khung giờ vàng &le; 6 giờ.
+  </div>
+</div>
+
+---
+
+## 📚 10. TÀI LIỆU THAM KHẢO (THEO CHUẨN AMA FORMAT) {#sec-references}
+
+1. Prescott HC, Antonelli M, Alhazzani W, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2026. *Intensive Care Med*. 2026;52(4):872-930. doi:10.1007/s00134-026-08361-1.
+2. Singer M, Deutschman CS, Seymour CW, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). *JAMA*. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.
+3. Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. *Crit Care Med*. 2021;49(11):e1063-e1143. doi:10.1097/CCM.0000000000005337.
+4. Tabah A, De Waele J, Ssi Yan Kai N, et al. Source control in bloodstream infections in patients with sepsis, septic shock, or requiring ICU admission: a scoping review with recommendations for standardizing research. *Intensive Care Med*. 2025;51(10):1462-1475. doi:10.1007/s00134-025-08026-5.
+5. Gillett S, Rhee C, Klompas M. Antibiotic considerations in the critically ill. *Crit Care Clin*. 2024;40(4):587-610.
+6. Weiss SL, Peters MJ, Alhazzani W, et al. Surviving Sepsis Campaign international guidelines for the management of septic shock and sepsis-associated organ dysfunction in children 2026. *Pediatr Crit Care Med*. 2026;27(4):385-434. doi:10.1097/PCC.0000000000003450.
+7. Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of clinical criteria for sepsis: for the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). *JAMA*. 2016;315(8):762-774. doi:10.1001/jama.2016.0288.
+8. Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a new definition and assessing new clinical criteria for septic shock: for the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). *JAMA*. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.
+9. Hager DN, Hooper MH, Bernard GR, et al. The Vitamin C, Thiamine and Steroids in Sepsis (VICTAS) Protocol: a prospective, multi-center, double-blind, adaptive sample size, randomized, placebo-controlled, clinical trial. *Trials*. 2019;20(1):197. doi:10.1186/s13063-019-3254-2.
+10. Gordon AC, Mason AJ, Thirunavukkarasu N, et al. Effect of early vasopressin vs norepinephrine on kidney failure in patients with septic shock: the VANISH randomized clinical trial. *JAMA*. 2016;316(5):509-518. doi:10.1001/jama.2016.10485.
