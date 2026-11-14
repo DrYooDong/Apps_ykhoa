@@ -28,7 +28,7 @@
 
 ## 1. TỔNG QUAN KIẾN TRÚC PHÂN HỆ KHÁNG SINH HỌC
 
-Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **16 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
+Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **17 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
 
 ```text
 src/content/basic-medical/antibiotics/
@@ -45,10 +45,11 @@ src/content/basic-medical/antibiotics/
 │   ├── ks-3-1-chi-so-pk-pd-co-ban.mdx
 │   ├── ks-3-2-pho-tac-dong-cua-cac-loai-khang-sinh.mdx
 │   └── ks-3-3-duong-dung-chuyen-doi-iv-sang-po.mdx
-├── module4-ke-don-an-toan-adr/           # Module 4: Kê Đơn An Toàn, Tương Tác DDI & Độc Tính (3 bài)
+├── module4-ke-don-an-toan-adr/           # Module 4: Kê Đơn An Toàn, Tương Tác DDI & Độc Tính (4 bài)
 │   ├── ks-4-1-bang-kiem-8-dieu-d8-checklist.mdx
 │   ├── ks-4-2-nguyen-tac-phoi-hop-tranh-trung-lap.mdx
-│   └── ks-4-3-tac-dung-phu-doc-tinh-khang-sinh.mdx
+│   ├── ks-4-3-tac-dung-phu-doc-tinh-khang-sinh.mdx
+│   └── ks-4-4.mdx
 ├── module5-di-ung-beta-lactam/           # Module 5: Dị Ứng Beta-Lactam, Quinolone & Phản Ứng Chéo (3 bài)
 │   ├── ks-5-1-phan-biet-di-ung-that-vs-adr.mdx
 │   ├── ks-5-2-ty-le-phan-ung-cheo-beta-lactam.mdx

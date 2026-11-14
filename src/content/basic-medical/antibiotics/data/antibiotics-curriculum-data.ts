@@ -2,7 +2,7 @@
  * CliniPortal — Antibiotics Curriculum & Master Registry
  * Path: src/content/basic-medical/antibiotics/data/antibiotics-curriculum-data.ts
  * 
- * Toàn bộ CSDL 6 Modules, 16 Bài học & 5 Công cụ Lâm sàng Tương tác
+ * Toàn bộ CSDL 6 Modules, 17 Bài học & 5 Công cụ Lâm sàng Tương tác
  * Đối soát 1:1 với Đề cương Kế hoạch & Kho Knowledge Vault 1.5
  */
 
@@ -276,7 +276,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
     shortTitle: 'Kê Đơn An Toàn & ADR',
     icon: 'fa-clipboard-check',
     color: 'var(--dsp-emerald)',
-    badge: '3 Bài giảng',
+    badge: '4 Bài giảng',
     description: 'Bảng kiểm 8 bước D8 trước khi ký đơn, ma trận phối hợp kháng sinh hợp lý (tránh trùng lặp phổ kỵ khí/Gram âm) và theo dõi độc tính thận, thính giác, kéo dài khoảng QT.',
     clinicalObjective: 'Loại bỏ hoàn toàn các lỗi phối hợp thuốc trùng lặp và cá thể hóa liều kháng sinh dựa trên chức năng thận (eGFR/CrCl).',
     lessons: [
@@ -344,6 +344,30 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
           { id: 'sec-4', number: 4, title: 'Cảnh báo FDA về Quinolone: Gân cơ, Khớp, Thần kinh & Phình mạch', icon: 'fa-triangle-exclamation' },
           { id: 'sec-5', number: 5, title: 'Nhiễm khuẩn Clostridioides difficile: Cơ chế, Dự phòng & Xử trí', icon: 'fa-biohazard' }
         ]
+      },
+      {
+        id: 'ks-4-4',
+        slug: 'ks-4-4',
+        title: 'Các lưu ý, tương kỵ & chống chỉ định khi sử dụng kháng sinh',
+        moduleNumber: 4,
+        moduleKey: 'module4-ke-don-an-toan-adr',
+        moduleTitle: 'Module 4: Kê Đơn An Toàn & ADR',
+        lessonNumber: 4,
+        order: 11,
+        description: 'Tương kỵ lý hóa ngoài cơ thể (Ceftriaxone-Canxi, Beta-lactam và Aminoglycoside), tương kỵ dung môi và Y-site; tương tác dược động học CYP450, tương tác dược lực học (Linezolid - Serotonin, xoắn đỉnh QT); chống chỉ định tuyệt đối và lưu ý trên thai kỳ, trẻ sơ sinh, suy thận, suy gan và béo phì.',
+        estimatedMinutes: 25,
+        tags: ['Tương kỵ thuốc', 'Chống chỉ định', 'Ceftriaxone & Canxi', 'Hội chứng Serotonin', 'Phụ nữ mang thai', 'Hiệu chỉnh suy thận'],
+        isNewEbm2026: true,
+        keyTakeaway: 'Tương kỵ lý hóa Ceftriaxone + Canxi ở trẻ sơ sinh là chống chỉ định tuyệt đối gây tử vong; tuân thủ quy tắc xả rửa nòng ống (flush) và cách ly thời gian uống 2-4h đối với ion kim loại đa hóa trị.',
+        sections: [
+          { id: 'sec-1', number: 1, title: 'An Toàn & Biến Cố Bất Lợi', icon: 'fa-shield-halved' },
+          { id: 'sec-2', number: 2, title: 'Tương Kỵ Lý Hóa & Đường Truyền', icon: 'fa-vial-circle-check' },
+          { id: 'sec-3', number: 3, title: 'Tương Tác Thuốc Dược Động & Dược Lực', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-4', number: 4, title: 'Bản Đồ Chống Chỉ Định Tuyệt Đối', icon: 'fa-ban' },
+          { id: 'sec-5', number: 5, title: 'Quần Thể Bệnh Nhân Đặc Biệt', icon: 'fa-hospital-user' },
+          { id: 'sec-6', number: 6, title: 'Bảng Kiểm 5 Bước Tại Giường', icon: 'fa-list-check' },
+          { id: 'sec-7', number: 7, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-book-medical' }
+        ]
       }
     ]
   },
@@ -367,7 +391,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module5-di-ung-beta-lactam',
         moduleTitle: 'Module 5: Dị Ứng Beta-Lactam & Quinolone',
         lessonNumber: 1,
-        order: 11,
+        order: 12,
         description: 'Hơn 90% bệnh nhân mang nhãn "dị ứng Penicillin" không thực sự có dị ứng IgE. Phân loại 4 nhóm phản ứng miễn dịch Gell & Coombs, phân biệt với tác dụng phụ tiêu hóa (buồn nôn, tiêu chảy) và ban da lành tính sau nhiễm virus.',
         estimatedMinutes: 25,
         tags: ['Dị ứng Penicillin', 'Gell Coombs', 'Delabeling', 'Phản vệ', 'IgE', 'SCARs'],
@@ -390,7 +414,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module5-di-ung-beta-lactam',
         moduleTitle: 'Module 5: Dị Ứng Beta-Lactam & Quinolone',
         lessonNumber: 2,
-        order: 12,
+        order: 13,
         description: 'Dữ liệu y học chứng cứ hiện đại chứng minh phản ứng chéo giữa Penicillin và Cephalosporin thực tế chỉ < 2.5%, Carbapenem < 1% và Aztreonam 0% (trừ Ceftazidime vì có cùng chuỗi bên R1). Bảng tra cứu phác đồ Non-Beta-lactam và lưu đồ thuật toán 4 bước tại giường bệnh.',
         estimatedMinutes: 25,
         tags: ['Phản ứng chéo', 'Chuỗi bên R1', 'Cephalosporin', 'Carbapenem', 'Aztreonam', 'EBM 2026'],
@@ -416,7 +440,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module5-di-ung-beta-lactam',
         moduleTitle: 'Module 5: Dị Ứng Beta-Lactam & Quinolone',
         lessonNumber: 3,
-        order: 13,
+        order: 14,
         description: 'Cơ chế dị ứng IgE thật sự vs giả dị ứng kích hoạt thụ thể MRGPRX2; tỷ lệ phản ứng chéo nội nhóm cực cao (40-80%); 5 cảnh báo hộp đen FDA (đứt gân Achilles, bệnh thần kinh ngoại biên, phình bóc tách ĐMC); và thuật toán kê đơn thay thế Non-Quinolone chuẩn WHO AWaRe 2026.',
         estimatedMinutes: 30,
         tags: ['Dị ứng Quinolone', 'Fluoroquinolone', 'Black Box Warnings', 'MRGPRX2', 'Phản ứng chéo nội nhóm', 'Chiến lược thay thế', 'WHO AWaRe 2026'],
@@ -454,7 +478,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module6-phac-do-ngoai-tru',
         moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
         lessonNumber: 1,
-        order: 14,
+        order: 15,
         description: 'Tiêu chuẩn chẩn đoán CAP thể nhẹ (CRB-65 = 0); vi khuẩn gây bệnh chính (Phế cầu, Hemophilus, vi khuẩn không điển hình); phác đồ đầu tay Amoxicillin liều cao (1g x 3 lần/ngày) hoặc Amox-Clav phối hợp Doxycycline/Macrolide; thời gian điều trị tối ưu 5 ngày.',
         estimatedMinutes: 25,
         tags: ['CAP', 'Viêm phổi', 'CRB-65', 'Amoxicillin liều cao', 'Doxycycline', 'IDSA ATS'],
@@ -476,7 +500,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module6-phac-do-ngoai-tru',
         moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
         lessonNumber: 2,
-        order: 15,
+        order: 16,
         description: 'Chẩn đoán viêm bàng quang cấp ở phụ nữ tiền mãn kinh; loại trừ viêm đài bể thận (sốt, đau hông lưng); lựa chọn đầu tay nhóm Access: Nitrofurantoin (5 ngày), Fosfomycin trometamol (3g liều duy nhất), Co-trimoxazole (3 ngày nếu nhạy). Cảnh báo không dùng Quinolone cho UTI không biến chứng.',
         estimatedMinutes: 20,
         tags: ['UTI', 'Viêm bàng quang', 'Nitrofurantoin', 'Fosfomycin', 'E. coli', 'IDSA UTI'],
@@ -498,7 +522,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
         moduleKey: 'module6-phac-do-ngoai-tru',
         moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
         lessonNumber: 3,
-        order: 16,
+        order: 17,
         description: 'Phân loại SSTI có mủ (áp xe, mụn nhọt - nguyên nhân tụ cầu S. aureus) vs không mủ (viêm mô tế bào lan tỏa, viêm quầng - nguyên nhân liên cầu Streptococcus); nguyên tắc rạch tháo mủ là chính cho áp xe nhỏ; phác đồ Cefalexin/Cloxacillin; xử trí vết thương súc vật cắn bằng Amox-Clav.',
         estimatedMinutes: 20,
         tags: ['SSTI', 'Viêm mô tế bào', 'Áp xe', 'Tụ cầu', 'Liên cầu', 'Vết cắn động vật'],
