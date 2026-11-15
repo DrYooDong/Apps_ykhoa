@@ -36,22 +36,22 @@
 
 /* Nâng cấp UI/UX: Hiệu ứng thẻ (Cards) & Search Box */
 .tool-card {
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr);
   background: var(--color-surface);
 }
 
 .tool-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(var(--part-color-rgb, 2, 132, 199), 0.25);
-  border-color: rgba(var(--part-color-rgb, 2, 132, 199), 0.5);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(var(--part-color-rgb, var(--color-primary-rgb)), 0.45);
 }
 
 .tool-card .specialty-icon {
-  transition: transform 0.3s ease;
+  transition: transform var(--tr-fast);
 }
 
 .tool-card:hover .specialty-icon {
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.06);
 }
 
 .search-box-container {

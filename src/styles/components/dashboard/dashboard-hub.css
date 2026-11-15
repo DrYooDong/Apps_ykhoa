@@ -8,71 +8,64 @@
    SECTION 1: PHYSIOLOGY & PATHOPHYSIOLOGY MODULE HUB (Sinhly-sinhlybenh.html)
    ============================================================ */
 
-/* Nâng cấp: Hero Section & Glassmorphism & 3D Tilt */
+/* Nâng cấp: Hero Section & Clinical Editorial Surface */
 .hero-physio {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.9) 0%, rgba(var(--color-info-rgb), 0.7) 100%);
+    background: var(--gradient-hero);
 }
 
 .hero-physio::before {
     content: '';
     position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 10.01%);
-    background-size: 20px 20px;
-    animation: particles-drift 30s linear infinite;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
     z-index: 1;
-}
-
-@keyframes particles-drift {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-50%) rotate(10deg); }
+    pointer-events: none;
 }
 
 .hero-physio .tcm-hero-content {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-lg, 14px);
+    padding: clamp(1.35rem, 2.5vw, 2.15rem);
+    box-shadow: var(--shadow-sm);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 [data-theme="dark"] .hero-physio .tcm-hero-content {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-sm);
 }
 
 .hero-physio .dna-svg {
-    animation: dna-spin 8s linear infinite;
+    animation: dna-spin 16s linear infinite;
 }
 
 @keyframes dna-spin {
-    from { transform: rotateY(0deg) scale(1.1); }
-    to { transform: rotateY(360deg) scale(1.1); }
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
 }
 
-/* Nâng cấp: 3D Hover Tilt cho Card */
+/* Precision Hover cho Card */
 .module-card {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s;
+    transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
 }
 
 .module-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(var(--color-primary-rgb), 0.45);
 }
 
 [data-theme="dark"] .module-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-card-hover);
 }
 
 /* Nâng cấp: Progress Bar trên Thẻ Bài học */

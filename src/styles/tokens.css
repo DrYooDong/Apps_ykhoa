@@ -1,61 +1,79 @@
 /* ============================================================
    CLINIPORTAL UNIFIED DESIGN TOKENS (tokens.css)
-   Awwwards-tier Design System with OKLCH Palette & Dark Theme
+   Clinical Precision & Editorial System • Teal-Blue Hybrid
+   Single Source of Truth for Light & Night Shift Dark Themes
 ============================================================ */
 
 :root,
 [data-theme="light"] {
-  /* --- Canvas & Surfaces --- */
-  --color-bg:             oklch(97.5% 0.008 225);
+  /* --- Canvas & Crisp Low-Glare Editorial Surfaces --- */
+  --color-bg:             oklch(98.2% 0.004 215);
   --color-surface:        #ffffff;
-  --color-surface-2:      oklch(98.5% 0.005 225);
-  --color-surface-offset: oklch(95.5% 0.012 225);
-  --color-divider:        oklch(91% 0.015 225);
-  --color-border:         oklch(86% 0.02 225);
+  --color-surface-2:      oklch(96.8% 0.006 215);
+  --color-surface-offset: oklch(95% 0.01 215);
+  --color-divider:        oklch(92% 0.01 220);
+  --color-border:         oklch(88% 0.014 220);
 
-  /* --- Text & Contrast --- */
-  --color-text:           oklch(20% 0.03 240);
-  --color-text-muted:     oklch(45% 0.04 240);
-  --color-text-faint:     oklch(65% 0.03 240);
+  /* --- Text & Contrast (WCAG AAA Editorial Hierarchy) --- */
+  --color-text:           oklch(20% 0.025 235);
+  --color-text-muted:     oklch(44% 0.03 235);
+  --color-text-faint:     oklch(62% 0.025 235);
   --color-text-inverse:   #ffffff;
 
-  /* --- Brand & Primary Accent (Medical Blue) --- */
-  --color-primary:        oklch(58% 0.18 225);
-  --color-primary-hover:  oklch(50% 0.18 225);
-  --color-primary-hl:     oklch(95% 0.04 225);
-  --color-primary-rgb:    2, 132, 199;
+  /* --- Brand & Primary Accent (Clinical Teal-Blue Hybrid) --- */
+  --color-primary:        oklch(54% 0.14 208);    /* #087f9c Clinical Teal-Blue */
+  --color-primary-hover:  oklch(46% 0.14 208);    /* #06667e */
+  --color-primary-hl:     oklch(95.5% 0.03 205);
+  --color-primary-rgb:    8, 127, 156;
 
   /* --- Clinical Semantic Tiers --- */
-  --clinical-critical:    oklch(62% 0.22 25);   /* Cấp cứu / Chống chỉ định */
-  --clinical-critical-hl: oklch(96% 0.04 25);
-  --clinical-warning:     oklch(72% 0.18 70);   /* Cảnh báo / Theo dõi */
-  --clinical-warning-hl:  oklch(96% 0.05 70);
-  --clinical-normal:      oklch(60% 0.17 160);  /* Bình thường / An toàn */
-  --clinical-normal-hl:   oklch(95% 0.04 160);
-  --clinical-research:    oklch(55% 0.22 290);  /* Y học chứng cứ / EBM */
-  --clinical-research-hl: oklch(95% 0.04 290);
-  --clinical-info:        oklch(58% 0.18 225);  /* Thông tin bổ trợ */
-  --clinical-info-hl:     oklch(95% 0.04 225);
-  --clinical-pearl:       oklch(60% 0.15 190);  /* Điểm nhấn lâm sàng */
-  --clinical-pearl-hl:    oklch(95% 0.04 190);
+  --clinical-critical:    oklch(58% 0.21 25);     /* Cấp cứu / Chống chỉ định */
+  --clinical-critical-hl: oklch(96% 0.035 25);
+  --clinical-warning:     oklch(70% 0.17 70);     /* Cảnh báo / Theo dõi */
+  --clinical-warning-hl:  oklch(96.5% 0.04 70);
+  --clinical-normal:      oklch(58% 0.16 162);    /* Bình thường / An toàn */
+  --clinical-normal-hl:   oklch(95.5% 0.035 162);
+  --clinical-research:    oklch(54% 0.19 285);    /* Y học chứng cứ / EBM */
+  --clinical-research-hl: oklch(95.5% 0.035 285);
+  --clinical-info:        oklch(56% 0.17 230);    /* Medical Blue hỗ trợ */
+  --clinical-info-hl:     oklch(95.5% 0.035 230);
+  --clinical-pearl:       oklch(58% 0.14 190);    /* Điểm nhấn lâm sàng Teal */
+  --clinical-pearl-hl:    oklch(95.5% 0.035 190);
 
   /* Legacy & Common MDX Variable Mappings */
   --color-success:        var(--clinical-normal);
   --color-success-hl:     var(--clinical-normal-hl);
+  --color-success-rgb:    5, 150, 105;
   --color-warning:        var(--clinical-warning);
   --color-warning-hl:     var(--clinical-warning-hl);
+  --color-warning-rgb:    217, 119, 6;
   --color-danger:         var(--clinical-critical);
   --color-danger-hl:      var(--clinical-critical-hl);
+  --color-danger-rgb:     220, 38, 38;
   --color-purple:         var(--clinical-research);
   --color-purple-hl:      var(--clinical-research-hl);
+  --color-purple-rgb:     109, 40, 217;
+  --color-rose:           oklch(58% 0.20 15);
+  --color-rose-hl:        oklch(96% 0.035 15);
+  --color-rose-rgb:       225, 29, 72;
   --color-teal:           var(--clinical-pearl);
   --color-teal-hl:        var(--clinical-pearl-hl);
+  --color-teal-rgb:       13, 148, 136;
   --color-info:           var(--clinical-info);
   --color-info-hl:        var(--clinical-info-hl);
+  --color-info-rgb:       2, 132, 199;
 
-  /* Common Color Aliases for Rich Guidelines & Medical MDX */
+  /* Semantic Color Roles */
+  --role-primary-filled:       var(--color-primary);
+  --role-primary-filled-hover: var(--color-primary-hover);
+  --role-primary-light:        var(--color-primary-hl);
+  --role-primary-light-text:   var(--color-primary);
+  --role-primary-outline:      var(--color-primary);
+  --role-primary-outline-hover: rgba(var(--color-primary-rgb), 0.08);
+
+  /* Common Color Aliases for Rich Guidelines & Medical MDX (Preserved 100%) */
   --blue:                 #0284c7;
-  --blue-bg:              var(--color-primary-hl, #eff6ff);
+  --blue-bg:              var(--color-info-hl, #eff6ff);
   --blue-light:           #bfdbfe;
   --green:                #10b981;
   --green-bg:             var(--color-success-hl, #f0fdf4);
@@ -75,7 +93,7 @@
   --teal:                 #0d9488;
   --teal-bg:              var(--color-teal-hl, #f0fdfa);
   --teal-light:           #99f6e4;
-  --cyan:                 #06b6d4;
+  --cyan:                 #0891b2;
   --cyan-bg:              #ecfeff;
   --emerald:              #059669;
   --emerald-bg:           #ecfdf5;
@@ -83,51 +101,53 @@
   --indigo-bg:            #eef2ff;
   --rose:                 #f43f5e;
   --rose-bg:              #fff1f2;
-  --accent:               var(--color-primary, #0284c7);
-  --primary:              var(--color-primary, #0284c7);
+  --accent:               var(--color-primary, #087f9c);
+  --primary:              var(--color-primary, #087f9c);
   --surface:              var(--color-surface, #ffffff);
-  --surface-2:            var(--color-surface-2, #f8fafc);
+  --surface-2:            var(--color-surface-2, #f8fafb);
   --surface-3:            var(--color-surface-offset, #f1f5f9);
   --text:                 var(--color-text, #0f172a);
   --text-muted:           var(--color-text-muted, #64748b);
   --text-faint:           var(--color-text-faint, #94a3b8);
   --border:               var(--color-border, #cbd5e1);
-  --border-light:         var(--color-border, #e2e8f0);
+  --border-light:         var(--color-divider, #e2e8f0);
 
   /* --- MDX Semantic Borders & Alpha Tokens --- */
-  --color-primary-border: rgba(2, 132, 199, 0.2);
-  --color-primary-shadow: rgba(2, 132, 199, 0.25);
+  --color-primary-border: rgba(8, 127, 156, 0.24);
+  --color-primary-shadow: rgba(8, 127, 156, 0.16);
   --color-danger-border:  rgba(220, 38, 38, 0.3);
   --color-success-border: rgba(5, 150, 105, 0.3);
   --color-warning-border: rgba(217, 119, 6, 0.3);
-  --color-info-border:    rgba(59, 130, 246, 0.3);
+  --color-info-border:    rgba(2, 132, 199, 0.3);
   --color-surface-elevated: rgba(255, 255, 255, 0.96);
   --color-surface-elevated-dark: rgba(30, 41, 59, 0.7);
 
-  /* --- Premium Gradients --- */
-  --gradient-hero:        linear-gradient(135deg, oklch(58% 0.18 225) 0%, oklch(55% 0.20 270) 50%, oklch(55% 0.22 290) 100%);
-  --gradient-pearl:       linear-gradient(135deg, oklch(60% 0.15 190) 0%, oklch(58% 0.18 225) 100%);
-  --gradient-critical:    linear-gradient(135deg, oklch(62% 0.22 25) 0%, oklch(58% 0.22 15) 100%);
-  --gradient-card-glow:   linear-gradient(135deg, rgba(2,132,199,0.08), rgba(124,58,237,0.08));
+  /* --- Restrained Clinical Gradients --- */
+  --gradient-hero:        linear-gradient(135deg, oklch(52% 0.14 205) 0%, oklch(50% 0.16 228) 100%);
+  --gradient-hero-dark:   linear-gradient(135deg, oklch(26% 0.08 210) 0%, oklch(24% 0.10 232) 100%);
+  --gradient-accent:      linear-gradient(135deg, oklch(54% 0.14 208), oklch(54% 0.16 230));
+  --gradient-pearl:       linear-gradient(135deg, oklch(58% 0.14 190) 0%, oklch(54% 0.14 208) 100%);
+  --gradient-critical:    linear-gradient(135deg, oklch(58% 0.21 25) 0%, oklch(54% 0.20 15) 100%);
+  --gradient-card-glow:   linear-gradient(135deg, rgba(8,127,156,0.06), rgba(2,132,199,0.05));
 
-  /* --- Glassmorphism --- */
-  --glass-bg:             rgba(255, 255, 255, 0.75);
-  --glass-border:         rgba(255, 255, 255, 0.35);
-  --glass-blur:           blur(16px) saturate(180%);
+  /* --- Frosted Shell Surfaces --- */
+  --glass-bg:             rgba(255, 255, 255, 0.88);
+  --glass-border:         rgba(15, 23, 42, 0.08);
+  --glass-blur:           blur(12px) saturate(140%);
 
   /* --- Typography --- */
   --font-display:         'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono:            'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
-  --text-xs:              clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
-  --text-sm:              clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
-  --text-base:            clamp(0.92rem, 0.88rem + 0.2vw, 1.02rem);
-  --text-md:              clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
-  --text-lg:              clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
-  --text-xl:              clamp(1.4rem, 1.25rem + 0.7vw, 1.75rem);
-  --text-2xl:             clamp(1.75rem, 1.5rem + 1.2vw, 2.3rem);
-  --text-3xl:             clamp(2.2rem, 1.8rem + 1.8vw, 3rem);
+  --text-xs:              clamp(0.72rem, 0.68rem + 0.18vw, 0.78rem);
+  --text-sm:              clamp(0.81rem, 0.78rem + 0.18vw, 0.88rem);
+  --text-base:            clamp(0.92rem, 0.88rem + 0.18vw, 1rem);
+  --text-md:              clamp(1.02rem, 0.98rem + 0.22vw, 1.12rem);
+  --text-lg:              clamp(1.15rem, 1.08rem + 0.45vw, 1.35rem);
+  --text-xl:              clamp(1.35rem, 1.22rem + 0.6vw, 1.68rem);
+  --text-2xl:             clamp(1.65rem, 1.45rem + 1vw, 2.15rem);
+  --text-3xl:             clamp(2.05rem, 1.75rem + 1.5vw, 2.75rem);
 
   /* --- Spacing Scale --- */
   --space-1:              0.25rem;
@@ -141,43 +161,44 @@
   --space-12:             3rem;
   --space-16:             4rem;
 
-  /* --- Radii --- */
+  /* --- Radii (Crisp Clinical Geometry) --- */
   --radius-xs:            4px;
   --radius-sm:            8px;
-  --radius-md:            12px;
-  --radius-lg:            16px;
-  --radius-xl:            24px;
+  --radius-md:            10px;
+  --radius-lg:            14px;
+  --radius-xl:            18px;
   --radius-full:          9999px;
 
-  /* --- Shadows & Depth --- */
-  --shadow-sm:            0 1px 2px 0 rgba(15, 23, 42, 0.05);
-  --shadow-md:            0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --shadow-lg:            0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-  --shadow-xl:            0 20px 25px -5px rgba(15, 23, 42, 0.10), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover:    0 12px 28px -4px rgba(2, 132, 199, 0.14), 0 4px 8px -2px rgba(2, 132, 199, 0.06);
-  --shadow-glow:          0 0 24px rgba(2, 132, 199, 0.18);
+  /* --- Restrained Precision Elevation --- */
+  --shadow-xs:            0 1px 1px 0 rgba(15, 23, 42, 0.03);
+  --shadow-sm:            0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+  --shadow-md:            0 3px 8px -2px rgba(15, 23, 42, 0.06), 0 1px 3px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg:            0 10px 22px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+  --shadow-xl:            0 18px 32px -6px rgba(15, 23, 42, 0.10), 0 6px 12px -4px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:    0 6px 16px -4px rgba(8, 127, 156, 0.11), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  --shadow-glow:          0 0 0 1px rgba(8, 127, 156, 0.16), 0 4px 14px -2px rgba(8, 127, 156, 0.10);
 
-  /* --- Inset Shadows & Text Shadows (Tailwind v4 Standard) --- */
-  --inset-shadow-xs:      inset 0 1px 1px rgb(0 0 0 / 0.05);
-  --inset-shadow-sm:      inset 0 2px 4px rgb(0 0 0 / 0.05);
-  --text-shadow-xs:       0px 1px 1px rgb(0 0 0 / 0.15);
-  --text-shadow-sm:       0px 1px 0px rgb(0 0 0 / 0.075), 0px 1px 1px rgb(0 0 0 / 0.075), 0px 2px 2px rgb(0 0 0 / 0.075);
-  --text-shadow-md:       0px 1px 1px rgb(0 0 0 / 0.1), 0px 1px 2px rgb(0 0 0 / 0.1), 0px 2px 4px rgb(0 0 0 / 0.1);
+  /* --- Inset Shadows & Text Shadows --- */
+  --inset-shadow-xs:      inset 0 1px 1px rgb(0 0 0 / 0.04);
+  --inset-shadow-sm:      inset 0 1px 2px rgb(0 0 0 / 0.05);
+  --text-shadow-xs:       0px 1px 1px rgb(0 0 0 / 0.12);
+  --text-shadow-sm:       0px 1px 1px rgb(0 0 0 / 0.08);
+  --text-shadow-md:       0px 1px 2px rgb(0 0 0 / 0.1);
 
   /* --- Focus Accessibility Tokens (WCAG 2.2 AAA Standard) --- */
   --focus-outline-color:  var(--color-primary);
-  --focus-ring-width:     3px;
-  --focus-outline:        3px solid var(--focus-outline-color);
+  --focus-ring-width:     2px;
+  --focus-outline:        2px solid var(--focus-outline-color);
   --focus-outline-offset: 2px;
 
-  /* --- Motion & Spring Timings (Emil Kowalski Standard) --- */
+  /* --- Motion & Spring Timings --- */
   --ease-out:             cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out:          cubic-bezier(0.77, 0, 0.175, 1);
   --ease-spring:          cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-drawer:          cubic-bezier(0.32, 0.72, 0, 1);
-  --duration-fast:        150ms;
-  --duration-base:        220ms;
-  --duration-slow:        380ms;
+  --duration-fast:        140ms;
+  --duration-base:        200ms;
+  --duration-slow:        320ms;
 
   --tr:                   var(--duration-base) var(--ease-out);
   --tr-fast:              var(--duration-fast) var(--ease-out);
@@ -200,9 +221,13 @@
   --container-6xl:        72rem;
   --container-7xl:        80rem;
 
-  /* --- Layout Bounds --- */
-  --header-height:        64px;
-  --sidebar-w:            280px;
+  /* --- Fluid Shell Bounds (Aspect-Ratio & Viewport Aware) --- */
+  --header-height:        58px;
+  --sidebar-w:            260px;
+  --sidebar-col-w:        72px;
+  --shell-gutter:         clamp(0.75rem, 2vw, 1.75rem);
+  --shell-max-w:          1380px;
+  --section-gap:          clamp(1rem, 2.2vw, 1.75rem);
   --content-max-width:    780px;
   --content-wide-width:   1120px;
   --content-line-height:  1.75;
@@ -220,25 +245,25 @@
 }
 
 /* ============================================================
-   DARK THEME PALETTE
+   NIGHT SHIFT DARK THEME PALETTE
 ============================================================ */
 [data-theme="dark"] {
-  --color-bg:             oklch(14% 0.02 240);
-  --color-surface:        oklch(18% 0.025 240);
-  --color-surface-2:      oklch(22% 0.03 240);
-  --color-surface-offset: oklch(25% 0.035 240);
-  --color-divider:        oklch(27% 0.03 240);
-  --color-border:         oklch(32% 0.035 240);
+  --color-bg:             oklch(13.5% 0.018 235);
+  --color-surface:        oklch(17.5% 0.022 235);
+  --color-surface-2:      oklch(21% 0.025 235);
+  --color-surface-offset: oklch(24% 0.028 235);
+  --color-divider:        oklch(26% 0.024 235);
+  --color-border:         oklch(31% 0.028 235);
 
-  --color-text:           oklch(94% 0.01 240);
-  --color-text-muted:     oklch(72% 0.03 240);
-  --color-text-faint:     oklch(50% 0.03 240);
-  --color-text-inverse:   oklch(14% 0.02 240);
+  --color-text:           oklch(94% 0.01 230);
+  --color-text-muted:     oklch(72% 0.025 230);
+  --color-text-faint:     oklch(52% 0.025 230);
+  --color-text-inverse:   oklch(13.5% 0.018 235);
 
-  --color-primary:        oklch(75% 0.16 225);
-  --color-primary-hover:  oklch(82% 0.14 225);
-  --color-primary-hl:     oklch(25% 0.07 225);
-  --color-primary-rgb:    56, 189, 248;
+  --color-primary:        oklch(74% 0.13 202);    /* Luminous Clinical Teal-Cyan */
+  --color-primary-hover:  oklch(81% 0.11 202);
+  --color-primary-hl:     oklch(25% 0.06 205);
+  --color-primary-rgb:    45, 212, 191;
 
   --clinical-critical:    oklch(75% 0.18 25);
   --clinical-critical-hl: oklch(26% 0.08 25);
@@ -246,16 +271,45 @@
   --clinical-warning-hl:  oklch(27% 0.08 70);
   --clinical-normal:      oklch(78% 0.16 160);
   --clinical-normal-hl:   oklch(25% 0.08 160);
-  --clinical-research:    oklch(75% 0.18 290);
-  --clinical-research-hl: oklch(25% 0.08 290);
+  --clinical-research:    oklch(75% 0.18 285);
+  --clinical-research-hl: oklch(25% 0.08 285);
   --clinical-info:        oklch(75% 0.16 225);
   --clinical-info-hl:     oklch(25% 0.07 225);
   --clinical-pearl:       oklch(78% 0.14 190);
   --clinical-pearl-hl:    oklch(25% 0.08 190);
 
+  --color-success:        var(--clinical-normal);
+  --color-success-hl:     var(--clinical-normal-hl);
+  --color-success-rgb:    52, 211, 153;
+  --color-warning:        var(--clinical-warning);
+  --color-warning-hl:     var(--clinical-warning-hl);
+  --color-warning-rgb:    251, 191, 36;
+  --color-danger:         var(--clinical-critical);
+  --color-danger-hl:      var(--clinical-critical-hl);
+  --color-danger-rgb:     248, 113, 113;
+  --color-purple:         var(--clinical-research);
+  --color-purple-hl:      var(--clinical-research-hl);
+  --color-purple-rgb:     167, 139, 250;
+  --color-rose:           oklch(75% 0.18 15);
+  --color-rose-hl:        oklch(24% 0.08 15);
+  --color-rose-rgb:       251, 113, 133;
+  --color-teal:           var(--clinical-pearl);
+  --color-teal-hl:        var(--clinical-pearl-hl);
+  --color-teal-rgb:       45, 212, 191;
+  --color-info:           var(--clinical-info);
+  --color-info-hl:        var(--clinical-info-hl);
+  --color-info-rgb:       56, 189, 248;
+
+  --role-primary-filled:       var(--color-primary);
+  --role-primary-filled-hover: var(--color-primary-hover);
+  --role-primary-light:        var(--color-primary-hl);
+  --role-primary-light-text:   var(--color-primary);
+  --role-primary-outline:      var(--color-primary);
+  --role-primary-outline-hover: rgba(var(--color-primary-rgb), 0.12);
+
   /* Dark Theme Color Aliases for Rich Guidelines & Medical MDX */
   --blue:                 #38bdf8;
-  --blue-bg:              var(--color-primary-hl, rgba(56, 189, 248, 0.15));
+  --blue-bg:              var(--color-info-hl, rgba(56, 189, 248, 0.15));
   --blue-light:           rgba(56, 189, 248, 0.3);
   --green:                #34d399;
   --green-bg:             var(--color-success-hl, rgba(52, 211, 153, 0.15));
@@ -283,8 +337,8 @@
   --indigo-bg:            rgba(129, 140, 248, 0.15);
   --rose:                 #fb7185;
   --rose-bg:              rgba(251, 113, 133, 0.15);
-  --accent:               var(--color-primary, #38bdf8);
-  --primary:              var(--color-primary, #38bdf8);
+  --accent:               var(--color-primary, #2dd4bf);
+  --primary:              var(--color-primary, #2dd4bf);
   --surface:              var(--color-surface, #1e293b);
   --surface-2:            var(--color-surface-2, #0f172a);
   --surface-3:            var(--color-surface-offset, #1e293b);
@@ -292,11 +346,11 @@
   --text-muted:           var(--color-text-muted, #94a3b8);
   --text-faint:           var(--color-text-faint, #64748b);
   --border:               var(--color-border, #334155);
-  --border-light:         var(--color-border, #334155);
+  --border-light:         var(--color-divider, #334155);
 
   /* --- MDX Semantic Borders & Alpha Tokens (Dark Mode) --- */
-  --color-primary-border: rgba(56, 189, 248, 0.25);
-  --color-primary-shadow: rgba(56, 189, 248, 0.3);
+  --color-primary-border: rgba(45, 212, 191, 0.25);
+  --color-primary-shadow: rgba(45, 212, 191, 0.22);
   --color-danger-border:  rgba(248, 113, 113, 0.35);
   --color-success-border: rgba(52, 211, 153, 0.35);
   --color-warning-border: rgba(251, 191, 36, 0.35);
@@ -304,20 +358,23 @@
   --color-surface-elevated: rgba(30, 41, 59, 0.95);
   --color-surface-elevated-dark: rgba(15, 23, 42, 0.85);
 
-  --gradient-hero:        linear-gradient(135deg, oklch(35% 0.14 225) 0%, oklch(30% 0.16 270) 50%, oklch(28% 0.16 290) 100%);
-  --gradient-pearl:       linear-gradient(135deg, oklch(35% 0.12 190) 0%, oklch(32% 0.14 225) 100%);
+  --gradient-hero:        linear-gradient(135deg, oklch(32% 0.09 205) 0%, oklch(28% 0.11 228) 100%);
+  --gradient-hero-dark:   linear-gradient(135deg, oklch(26% 0.08 205) 0%, oklch(22% 0.10 230) 100%);
+  --gradient-accent:      linear-gradient(135deg, oklch(68% 0.12 202), oklch(68% 0.14 225));
+  --gradient-pearl:       linear-gradient(135deg, oklch(34% 0.10 190) 0%, oklch(30% 0.11 208) 100%);
   --gradient-critical:    linear-gradient(135deg, oklch(35% 0.16 25) 0%, oklch(30% 0.16 15) 100%);
-  --gradient-card-glow:   linear-gradient(135deg, rgba(56,189,248,0.12), rgba(167,139,250,0.12));
+  --gradient-card-glow:   linear-gradient(135deg, rgba(45,212,191,0.08), rgba(56,189,248,0.08));
 
-  --glass-bg:             rgba(24, 30, 48, 0.78);
+  --glass-bg:             rgba(18, 26, 39, 0.86);
   --glass-border:         rgba(255, 255, 255, 0.08);
 
-  --shadow-sm:            0 1px 2px 0 rgba(0, 0, 0, 0.35);
-  --shadow-md:            0 4px 8px -1px rgba(0, 0, 0, 0.45);
-  --shadow-lg:            0 12px 20px -3px rgba(0, 0, 0, 0.55);
-  --shadow-xl:            0 24px 32px -4px rgba(0, 0, 0, 0.65);
-  --shadow-card-hover:    0 12px 28px -4px rgba(56, 189, 248, 0.22), 0 4px 8px -2px rgba(56, 189, 248, 0.12);
-  --shadow-glow:          0 0 28px rgba(56, 189, 248, 0.22);
+  --shadow-xs:            0 1px 1px 0 rgba(0, 0, 0, 0.25);
+  --shadow-sm:            0 1px 2px 0 rgba(0, 0, 0, 0.32);
+  --shadow-md:            0 4px 10px -2px rgba(0, 0, 0, 0.42);
+  --shadow-lg:            0 12px 24px -4px rgba(0, 0, 0, 0.50);
+  --shadow-xl:            0 20px 32px -6px rgba(0, 0, 0, 0.60);
+  --shadow-card-hover:    0 8px 20px -4px rgba(45, 212, 191, 0.14), 0 2px 6px -2px rgba(0, 0, 0, 0.35);
+  --shadow-glow:          0 0 0 1px rgba(45, 212, 191, 0.22), 0 6px 18px -4px rgba(45, 212, 191, 0.16);
 
   --inset-shadow-xs:      inset 0 1px 1px rgba(0, 0, 0, 0.25);
   --inset-shadow-sm:      inset 0 2px 4px rgba(0, 0, 0, 0.35);
@@ -325,5 +382,5 @@
   --text-shadow-sm:       0px 1px 2px rgba(0, 0, 0, 0.7);
 
   --focus-outline-color:  var(--color-primary);
-  --focus-outline:        3px solid var(--focus-outline-color);
+  --focus-outline:        2px solid var(--focus-outline-color);
 }

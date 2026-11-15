@@ -8,24 +8,24 @@
 
 .studio-container,
 .studio-workspace {
-  max-width: 1480px;
+  max-width: var(--shell-max-w, 1380px);
   margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding: clamp(0.9rem, 2vw, 1.5rem) var(--shell-gutter, 1rem);
   box-sizing: border-box;
 }
 
 .studio-card {
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-divider, #e5e7eb);
-  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
   padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-xs);
   margin-bottom: 1.25rem;
-  transition: border-color var(--tr, 0.2s ease), box-shadow var(--tr, 0.2s ease);
+  transition: border-color var(--tr), box-shadow var(--tr);
 }
 
 .studio-card:hover {
-  border-color: var(--color-primary-hover, #0284c7);
+  border-color: rgba(var(--color-primary-rgb), 0.42);
 }
 
 .studio-header-bar {

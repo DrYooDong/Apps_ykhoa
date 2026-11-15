@@ -1,0 +1,276 @@
+/* ============================================================
+   CLINIPORTAL ADAPTIVE SHELL & CLINICAL PRECISION SYSTEM
+   Aspect-Ratio Aware Layout + Unified Hub & Project Surfaces
+   Scope: App Shell, Project Hubs, SPA Views (DOES NOT alter MDX prose)
+============================================================ */
+
+/* ── 1. Fluid Viewport & Root Safety ──────────────────────── */
+.app-container,
+.cp-shell-viewport {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.cp-shell-container {
+  width: 100%;
+  max-width: var(--shell-max-w, 1380px);
+  margin-inline: auto;
+  padding-inline: var(--shell-gutter, clamp(0.75rem, 2vw, 1.75rem));
+  box-sizing: border-box;
+}
+
+/* ── 2. Unified Clinical Precision Card & Surface ─────────── */
+.cp-precision-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr), background-color var(--tr);
+}
+
+.cp-precision-card:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.42);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ── 3. Unified Project Hub Shell (Shared by Astro Hubs & SPA) ── */
+.hub-container {
+  max-width: var(--shell-max-w, 1380px);
+  margin: 0 auto;
+  padding: clamp(1rem, 2.5vw, 2rem) var(--shell-gutter, clamp(0.75rem, 2vw, 1.75rem));
+  container-type: inline-size;
+  container-name: hub-workspace;
+}
+
+.hub-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1rem, 2.2vw, 1.65rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-xs);
+}
+
+.hub-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.15rem + 1vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.hub-header p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 72ch;
+  line-height: 1.55;
+}
+
+.hub-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.hub-search-input,
+#toolSearchInput,
+.cp-search-input {
+  width: 100%;
+  max-width: 440px;
+  min-height: var(--touch-min, 44px);
+  padding: 0.55rem 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 10px);
+  transition: border-color var(--tr-fast), box-shadow var(--tr-fast);
+}
+
+.hub-search-input:focus,
+#toolSearchInput:focus,
+.cp-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.14);
+}
+
+/* Unified Articles & Tools Grid inside Hubs */
+.articles-grid,
+.tools-grid,
+.cp-project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.15rem);
+}
+
+.article-card,
+.articles-grid .article-card,
+.tools-grid .tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: clamp(0.95rem, 1.8vw, 1.25rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 10px);
+  text-decoration: none;
+  color: var(--color-text);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr);
+}
+
+.article-card:hover,
+.articles-grid .article-card:hover,
+.tools-grid .tool-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.article-card .badge,
+.tools-grid .badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs, 4px);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.22);
+}
+
+.article-card h3,
+.tools-grid .tool-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-text);
+  margin: 0.1rem 0 0;
+}
+
+.article-card p,
+.tools-grid .tool-card p {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.article-card .meta,
+.tools-grid .tool-card .meta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-divider);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-text-faint);
+}
+
+/* ── 4. Safe Horizontal Table Scroll Wrapper (Non-MDX Apps) ── */
+.cp-table-scroll,
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 10px);
+}
+
+/* ── 5. Container Queries for Modular Panels & Split Views ── */
+@container hub-workspace (max-width: 680px) {
+  .articles-grid,
+  .tools-grid,
+  .cp-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container hub-workspace (min-width: 681px) and (max-width: 1020px) {
+  .articles-grid,
+  .tools-grid,
+  .cp-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── 6. Aspect-Ratio & Multi-Device Ergonomics ─────────────── */
+
+/* Laptop 16:10 / 16:9 Short Viewport (e.g. 1280x720, 1440x800) */
+@media (min-aspect-ratio: 16/10) and (max-height: 820px) {
+  :root {
+    --header-height: 54px;
+    --section-gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  }
+
+  .hub-header {
+    padding: 0.95rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Tablet Portrait 3:4 & Split-Screen (640px – 1023px) */
+@media (max-aspect-ratio: 4/5) and (min-width: 640px) {
+  .clinical-workspace-grid,
+  .studio-main-grid,
+  .homepage-wrapper {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .bento-grid-container,
+  .tools-grid,
+  .articles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablet Landscape 4:3 & iPad Pro (768px – 1179px) */
+@media (min-width: 768px) and (max-width: 1179px) {
+  .studio-main-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile Tall Aspect-Ratio (<= 639px) — Thumb-Zone & Safe Area */
+@media (max-width: 639px) {
+  :root {
+    --shell-gutter: 0.85rem;
+  }
+
+  .hub-header {
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-md, 10px);
+  }
+
+  .hub-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hub-search-input,
+  #toolSearchInput,
+  .cp-search-input {
+    max-width: 100%;
+    font-size: 16px; /* Prevent iOS auto-zoom */
+  }
+}

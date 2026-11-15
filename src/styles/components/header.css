@@ -6,27 +6,27 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height, 56px);
+  height: var(--header-height, 58px);
   z-index: 200;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  background: var(--glass-bg, rgba(255, 255, 255, 0.92));
+  backdrop-filter: var(--glass-blur, blur(12px));
+  -webkit-backdrop-filter: var(--glass-blur, blur(12px));
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
   border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 var(--shell-gutter, 1rem);
   gap: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: all var(--tr);
+  box-shadow: var(--shadow-xs);
+  transition: background var(--tr), border-color var(--tr);
   box-sizing: border-box;
 }
 
 [data-theme="dark"] .global-header {
-  background: rgba(15, 23, 42, 0.95);
-  border-bottom-color: var(--color-border, #334155);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  background: var(--glass-bg, rgba(18, 26, 39, 0.88));
+  border-bottom-color: var(--color-divider);
+  box-shadow: var(--shadow-xs);
 }
 
 /* ── Zone 1: Header Left (Brand, Logo Box & Live Knowledge Stats) ── */
@@ -58,14 +58,14 @@
 .logo-icon-box {
   width: 32px;
   height: 32px;
-  background: var(--color-primary, #0284c7);
-  border-radius: 7px;
+  background: var(--color-primary);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--color-text-inverse, #ffffff);
   font-size: 0.95rem;
-  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.25);
+  box-shadow: var(--shadow-xs);
   flex-shrink: 0;
 }
 
@@ -94,19 +94,19 @@
 }
 
 .logo-title .text-primary-accent {
-  color: var(--color-primary, #0284c7);
+  color: var(--color-primary);
   font-weight: 800;
 }
 
 .brand-badge {
   display: none;
   padding: 0.12rem 0.45rem;
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(2, 132, 199, 0.25);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.24);
   border-radius: 4px;
   font-size: 9.5px;
   font-weight: 800;
-  color: var(--color-primary, #0284c7);
+  color: var(--color-primary);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -284,19 +284,12 @@
   transform: scale(1.1);
 }
 
-.tab-docspace .project-tab-icon { color: #0284c7; }
-.tab-basic .project-tab-icon { color: #8b5cf6; }
-.tab-handbook .project-tab-icon { color: #0284c7; }
-.tab-vault .project-tab-icon { color: #059669; }
-.tab-ebm .project-tab-icon { color: #e11d48; }
-.tab-cdss .project-tab-icon { color: #0284c7; }
-
-[data-theme="dark"] .tab-docspace .project-tab-icon { color: #38bdf8; }
-[data-theme="dark"] .tab-basic .project-tab-icon { color: #a78bfa; }
-[data-theme="dark"] .tab-handbook .project-tab-icon { color: #38bdf8; }
-[data-theme="dark"] .tab-vault .project-tab-icon { color: #34d399; }
-[data-theme="dark"] .tab-ebm .project-tab-icon { color: #fb7185; }
-[data-theme="dark"] .tab-cdss .project-tab-icon { color: #38bdf8; }
+.tab-docspace .project-tab-icon { color: var(--color-primary); }
+.tab-basic .project-tab-icon { color: var(--color-purple); }
+.tab-handbook .project-tab-icon { color: var(--color-primary); }
+.tab-vault .project-tab-icon { color: var(--color-success); }
+.tab-ebm .project-tab-icon { color: var(--color-rose); }
+.tab-cdss .project-tab-icon { color: var(--color-primary); }
 
 /* Tên tab */
 .project-tab-name {
@@ -1601,8 +1594,29 @@
 }
 
 /* ============================================================
-   RESPONSIVE HEADER FOR MOBILE & TABLETS (<= 768px)
+   RESPONSIVE HEADER FOR TABLETS & MOBILE
    ============================================================ */
+@media (min-width: 769px) and (max-width: 1179px) {
+  .global-header {
+    padding: 0 0.75rem;
+    gap: 0.45rem;
+  }
+
+  .header-project-switcher {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-project-switcher::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-tab-btn {
+    padding: 0.3rem 0.52rem;
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 768px) {
   .global-header {
     top: 0;
@@ -1610,7 +1624,7 @@
     transform: none;
     width: 100%;
     height: 56px;
-    border-radius: 0 0 16px 16px;
+    border-radius: 0;
     padding: 0 0.65rem;
     gap: 0.5rem;
     border-top: none;

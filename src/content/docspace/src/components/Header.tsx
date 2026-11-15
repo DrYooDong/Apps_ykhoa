@@ -46,17 +46,17 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <a
             href="../../../index.html"
-            className="flex items-center gap-2 text-slate-800 hover:text-blue-600 transition-colors shrink-0"
+            className="flex items-center gap-2 text-slate-800 hover:text-[#087f9c] transition-colors shrink-0"
             title="Quay về Trang chủ CliniPortal"
           >
-            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-xs shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#087f9c] rounded-lg flex items-center justify-center text-white shadow-2xs shrink-0">
               <Stethoscope className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </div>
             <div className="flex items-baseline gap-1.5">
               <h1 className="text-sm sm:text-base font-bold tracking-tight text-slate-900 flex items-center">
-                DocSpace <span className="text-blue-600 ml-1">MedLens</span>
+                DocSpace <span className="text-[#087f9c] ml-1">MedLens</span>
               </h1>
-              <span className="hidden sm:inline-block px-1.5 py-0.2 bg-blue-50 border border-blue-100 rounded text-[10px] font-semibold text-blue-700 uppercase tracking-wider">
+              <span className="hidden sm:inline-block px-1.5 py-0.2 bg-cyan-50 border border-cyan-200/70 rounded text-[10px] font-semibold text-[#087f9c] uppercase tracking-wider">
                 EBM OS
               </span>
             </div>
@@ -65,10 +65,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Active Patient Summary Pill */}
           {patientSummary && (
             <div
-              className="hidden lg:flex items-center gap-1.5 px-2.5 py-0.5 bg-blue-50 border border-blue-200/80 rounded-full text-xs text-blue-900 font-medium max-w-[260px] truncate animate-fade-in"
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-0.5 bg-cyan-50 border border-cyan-200/80 rounded-full text-xs text-cyan-950 font-medium max-w-[260px] truncate animate-fade-in"
               title={`Hồ sơ ca: ${patientSummary}`}
             >
-              <User className="w-3 h-3 text-blue-600 shrink-0" />
+              <User className="w-3 h-3 text-[#087f9c] shrink-0" />
               <span className="truncate">{patientSummary}</span>
             </div>
           )}
@@ -80,12 +80,12 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onChangeMode('clinical')}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold transition-all cursor-pointer ${
               activeMode === 'clinical'
-                ? 'bg-white text-blue-700 shadow-2xs ring-1 ring-slate-200/80 font-bold'
+                ? 'bg-white text-[#087f9c] shadow-2xs ring-1 ring-slate-200/80 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
             title="Chu trình lâm sàng 4 bước"
           >
-            <Activity className="w-3.5 h-3.5 text-blue-600" />
+            <Activity className="w-3.5 h-3.5 text-[#087f9c]" />
             <span>Lâm Sàng</span>
           </button>
 
@@ -106,12 +106,12 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onChangeMode('kb')}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-md font-semibold transition-all cursor-pointer ${
               activeMode === 'kb'
-                ? 'bg-white text-blue-700 shadow-2xs ring-1 ring-slate-200/80 font-bold'
+                ? 'bg-white text-[#087f9c] shadow-2xs ring-1 ring-slate-200/80 font-bold'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
             title="Kho tri thức EBM 2.400+ bài viết"
           >
-            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+            <BookOpen className="w-3.5 h-3.5 text-[#087f9c]" />
             <span>Kho Tri Thức</span>
           </button>
         </div>
@@ -124,11 +124,11 @@ export const Header: React.FC<HeaderProps> = ({
             href="https://dryoodong.github.io/CDSS_Standalone/?theme=light"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 rounded-md text-xs font-semibold transition-all cursor-pointer shadow-2xs no-underline"
+            className="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-cyan-50 hover:bg-cyan-100 text-cyan-900 border border-cyan-200 rounded-md text-xs font-semibold transition-all cursor-pointer shadow-2xs no-underline"
             title="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập"
             aria-label="CDSS Platform Suite"
           >
-            <Zap className="w-3.5 h-3.5 text-blue-600 fill-blue-600/30" />
+            <Zap className="w-3.5 h-3.5 text-[#087f9c] fill-[#087f9c]/25" />
             <span>CDSS Platform</span>
           </a>
 

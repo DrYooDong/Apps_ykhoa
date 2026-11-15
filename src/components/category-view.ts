@@ -84,32 +84,32 @@ export async function renderCategoryView(categoryKey: string): Promise<string> {
       const cardsHtml = groupItems.map(item => {
         const cleanName = item.name.replace(/\.(html|md)$/i, '').replace(/_/g, ' ');
         return `
-          <a href="#/${categoryKey}/${item.id}" class="content-item-card category-card-item" 
+          <a href="#/${categoryKey}/${item.id}" class="content-item-card category-card-item cp-precision-card" 
              data-title="${cleanName.toLowerCase()}" 
              data-desc="${(item.description || '').toLowerCase()}" 
              data-sub="${subKey.toLowerCase()}"
-             style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.25rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.75rem; text-decoration: none; color: inherit; transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
+             style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.15rem; text-decoration: none; color: inherit;">
             <div>
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border-radius: 0.35rem; background: ${getTypeBadgeBg(item.type)}; color: ${getTypeBadgeColor(item.type)};">
+                <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border-radius: 4px; background: ${getTypeBadgeBg(item.type)}; color: ${getTypeBadgeColor(item.type)}; border: 1px solid var(--color-border);">
                   ${formatTypeLabel(item.type, item.path)}
                 </span>
-                <i class="fa-solid fa-arrow-right" style="font-size: 0.825rem; color: var(--color-text-muted, #94a3b8);"></i>
+                <i class="fa-solid fa-arrow-right" style="font-size: 0.825rem; color: var(--color-text-muted);"></i>
               </div>
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text, #0f172a); margin-bottom: 0.5rem; line-height: 1.4;">${cleanName}</h3>
-              ${item.description ? `<p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); line-height: 1.5; margin: 0;">${item.description}</p>` : ''}
+              <h3 style="font-size: 1.02rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.45rem; line-height: 1.38;">${cleanName}</h3>
+              ${item.description ? `<p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">${item.description}</p>` : ''}
             </div>
           </a>
         `;
       }).join('');
 
       return `
-        <section class="category-subgroup-section" data-sub="${subKey}" style="margin-bottom: 2.5rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary, #0284c7); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-border, #e2e8f0); display: flex; align-items: center; gap: 0.5rem;">
+        <section class="category-subgroup-section" data-sub="${subKey}" style="margin-bottom: 2.25rem;">
+          <h2 style="font-size: 1.18rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 0.5rem;">
             <i class="fa-solid fa-folder-open"></i> ${groupTitle}
-            <span style="font-size: 0.75rem; font-weight: 600; background: var(--color-surface-offset, #f1f5f9); color: var(--color-text-muted, #64748b); padding: 0.2rem 0.6rem; border-radius: 1rem;">${groupItems.length}</span>
+            <span style="font-size: 0.75rem; font-weight: 600; background: var(--color-surface-offset); color: var(--color-text-muted); padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid var(--color-divider);">${groupItems.length}</span>
           </h2>
-          <div class="category-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem;">
+          <div class="category-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr)); gap: 1rem;">
             ${cardsHtml}
           </div>
         </section>
@@ -118,28 +118,28 @@ export async function renderCategoryView(categoryKey: string): Promise<string> {
   }
 
   return `
-    <div class="category-hub-container" style="max-width: 1320px; margin: 0 auto; padding: 1.5rem 1rem;">
-      <header class="category-header" style="margin-bottom: 2rem;">
-        <div class="breadcrumb" style="font-size: 0.875rem; color: var(--color-text-muted, #64748b); margin-bottom: 0.5rem;">
-          <a href="#/" style="color: inherit; text-decoration: none;">Trang chủ</a> &nbsp;/&nbsp; <span style="color: var(--color-primary, #0284c7); font-weight: 600;">${categoryName}</span>
+    <div class="category-hub-container hub-container">
+      <header class="category-header hub-header">
+        <div class="breadcrumb" style="font-size: 0.84rem; color: var(--color-text-muted); margin-bottom: 0.25rem;">
+          <a href="#/" style="color: inherit; text-decoration: none;">Trang chủ</a> &nbsp;/&nbsp; <span style="color: var(--color-primary); font-weight: 600;">${categoryName}</span>
         </div>
         <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
           <div>
-            <h1 style="font-size: 2rem; font-weight: 700; color: var(--color-text, #0f172a); margin-bottom: 0.5rem;"><i class="fa-solid fa-folder-open"></i> Phân Hệ: ${categoryName}</h1>
-            <p style="color: var(--color-text-muted, #64748b); margin: 0;">Danh sách toàn bộ các bài học, phác đồ và công cụ lâm sàng thuộc chuyên khoa ${categoryName} (${items.length} công cụ).</p>
+            <h1><i class="fa-solid fa-folder-open"></i> Phân Hệ: ${categoryName}</h1>
+            <p>Danh sách toàn bộ các bài học, phác đồ và công cụ lâm sàng thuộc chuyên khoa ${categoryName} (${items.length} công cụ).</p>
           </div>
-          <a href="#/" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.1rem; font-size: 0.875rem; border-radius: 0.5rem; text-decoration: none; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #0f172a); background: var(--color-surface, #fff);">
+          <a href="#/" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; min-height: 40px; padding: 0.5rem 1rem; font-size: 0.86rem; border-radius: 8px; text-decoration: none; border: 1px solid var(--color-border); color: var(--color-text); background: var(--color-surface-2);">
             <i class="fa-solid fa-house"></i> Về Trang chủ
           </a>
         </div>
       </header>
 
       ${items.length > 0 ? `
-        <div class="category-filter-bar" style="margin-bottom: 2rem;">
+        <div class="category-filter-bar" style="margin-bottom: 1.5rem;">
           <div style="position: relative; max-width: 520px;">
-            <i class="fa-solid fa-filter" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted, #64748b);"></i>
-            <input type="search" id="category-filter-input" placeholder="Lọc nhanh trong ${categoryName} (ví dụ: An thần, eGFR, ECG)..." 
-              style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.75rem; border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.5rem; font-size: 0.925rem; background: var(--color-surface, #ffffff); color: var(--color-text, #0f172a); outline: none; box-shadow: 0 1px 2px rgba(0,0,0,0.05);" />
+            <i class="fa-solid fa-filter" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted);"></i>
+            <input type="search" id="category-filter-input" class="cp-search-input" placeholder="Lọc nhanh trong ${categoryName} (ví dụ: An thần, eGFR, ECG)..." 
+              style="padding-left: 2.75rem; max-width: 100%;" />
           </div>
         </div>
       ` : ''}

@@ -5,48 +5,46 @@
 @import url('../../css/vault-design-tokens.css');
 
 .cdss-hub-container {
-  max-width: 1300px;
+  max-width: var(--shell-max-w, 1380px);
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
+  padding: clamp(1.15rem, 2.5vw, 2rem) var(--shell-gutter, 1.25rem) 4rem;
 }
 
 /* Hero Section */
 .cdss-hub-hero {
   text-align: center;
-  margin-bottom: 3.5rem;
-  padding: 3rem 1.5rem;
-  background: radial-gradient(circle at 50% 0%, var(--dsp-sky-light) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 100%);
-  border-radius: var(--dsp-radius-xl);
-  border: 1px solid var(--dsp-border);
-  box-shadow: var(--dsp-shadow-md);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 3vw, 2.35rem) 1.5rem;
+  background: var(--vault-surface);
+  border-radius: var(--radius-lg, 14px);
+  border: 1px solid var(--vault-border);
+  border-top: 3px solid var(--dsp-primary);
+  box-shadow: var(--dsp-shadow-sm);
 }
 
 .cdss-hero-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 0.4rem 1rem;
+  padding: 0.35rem 0.9rem;
   border-radius: var(--dsp-radius-full);
   background: var(--dsp-sky-light);
-  color: var(--dsp-sky);
-  border: 1px solid rgba(2, 132, 199, 0.25);
-  margin-bottom: 1.25rem;
+  color: var(--dsp-primary);
+  border: 1px solid rgba(8, 127, 156, 0.25);
+  margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .cdss-hero-title {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.25rem);
   font-weight: 800;
   color: var(--vault-text);
-  letter-spacing: -0.02em;
-  margin: 0 0 1rem;
-  background: linear-gradient(135deg, var(--vault-text) 30%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.85rem;
 }
 
 .cdss-hero-subtitle {
@@ -88,8 +86,8 @@
 
 .cdss-modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 @media (max-width: 640px) {
@@ -102,20 +100,20 @@
 .cdss-module-card {
   background: var(--vault-surface);
   border: 1px solid var(--vault-border);
-  border-radius: 16px;
-  padding: 1.75rem;
+  border-radius: var(--radius-lg, 14px);
+  padding: clamp(1.15rem, 2vw, 1.5rem);
   display: flex;
   flex-direction: column;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  transition: border-color var(--tr, 0.2s ease), box-shadow var(--tr, 0.2s ease), transform var(--tr, 0.2s ease);
+  box-shadow: var(--dsp-shadow-sm);
   position: relative;
   overflow: hidden;
 }
 
 .cdss-module-card:hover {
-  transform: translateY(-4px);
-  border-color: #0284c7;
-  box-shadow: 0 16px 32px -4px rgba(2, 132, 199, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--dsp-primary);
+  box-shadow: var(--shadow-card-hover, 0 8px 20px -4px rgba(8, 127, 156, 0.14));
 }
 
 .cdss-card-top {
@@ -262,18 +260,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
+  min-height: 40px;
+  padding: 0.45rem 1rem;
   border-radius: 8px;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  background: var(--dsp-primary);
   color: #ffffff;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  transition: background-color 0.18s ease, transform 0.18s ease;
+  box-shadow: var(--dsp-shadow-sm);
 }
 
 .cdss-open-btn:hover {
+  background: var(--dsp-primary-dark);
   transform: translateX(2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
 }

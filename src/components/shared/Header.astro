@@ -164,18 +164,18 @@ const navLinks = [
   }
 
   .text-primary-accent {
-    color: var(--color-primary, #0284c7);
+    color: var(--color-primary);
   }
 
   .brand-badge {
     display: none;
     padding: 0.12rem 0.45rem;
-    background: rgba(2, 132, 199, 0.08);
-    border: 1px solid rgba(2, 132, 199, 0.25);
+    background: rgba(var(--color-primary-rgb, 8, 127, 156), 0.08);
+    border: 1px solid rgba(var(--color-primary-rgb, 8, 127, 156), 0.25);
     border-radius: 4px;
     font-size: 9.5px;
     font-weight: 800;
-    color: var(--color-primary, #0284c7);
+    color: var(--color-primary);
     text-transform: uppercase;
   }
   @media (min-width: 640px) {
@@ -209,8 +209,7 @@ const navLinks = [
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--color-primary, #0284c7);
-    box-shadow: 0 0 6px var(--color-primary, #0284c7);
+    background: var(--color-primary);
     animation: live-pulse 2s infinite ease-in-out;
   }
 
@@ -219,7 +218,7 @@ const navLinks = [
     50% { opacity: 0.35; transform: scale(0.8); }
   }
 
-  .stat-blue { color: var(--color-primary, #0284c7); font-weight: 700; }
+  .stat-blue { color: var(--color-primary); font-weight: 700; }
   .stat-rose { color: #e11d48; font-weight: 700; }
 
   /* Center */
