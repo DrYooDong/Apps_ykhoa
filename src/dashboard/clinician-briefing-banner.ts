@@ -1,635 +1,900 @@
 /**
- * CliniPortal 2.0 — Master Clinician Chronobiology & Auspicious Day Workstation Engine
+ * CliniPortal 2.0 — Chronobiology & Infectious Diseases Bento Cockpit Controller (v3.0)
+ * - Bố cục Interactive Bento Cockpit (không lặp lại Modal)
+ * - 60% Con Người, Môi Trường & Đời Sống • 40% Bác Sĩ Truyền Nhiễm (Cố định)
+ * - Idempotent across SPA route mounts
  * Path: src/dashboard/clinician-briefing-banner.ts
- * 
- * Trạm Chỉ Huy Nhịp Sinh Học & Thời Khắc Y Lệnh Lâm Sàng (Thay thế hoàn toàn 2 cột cũ)
- * 100% Tokenized, Pure SVG Living Charts, Biorhythm Wave Dynamics & Precision Engine
  */
 
 import type {
-  DoctorSpecialty,
-  DoctorProfile,
   DayScoreEvaluation,
-  MedicalTaskType,
-  BiorhythmResult,
+  FinderPurpose,
   GioRankResult,
-  WeekDaySummary
+  MedicalTaskScoreEvaluation
 } from '../tools/good-day-types';
 
 import {
   evaluateDayScore,
-  calculateBiorhythms,
   getWeekEvaluation,
+  getMonthEvaluation,
+  findBestClinicalDays,
   calculateShiftEnergy,
   getDoctorProfile,
-  saveDoctorProfile,
-  SPECIALTY_METAS
+  getHourChiIndexFromHour,
+  downloadICSFile,
+  copyDaySummaryText
 } from '../tools/good-day-engine';
 
-import { openDayScoreModal } from '../tools/good-day-modal';
+import {
+  openDoctorProfileDrawer,
+  openEnergyModal,
+  updateDayScoreBadge,
+  updateHeroEnergyBadge
+} from '../tools/good-day-modal';
 
-let activeDate = new Date();
+type CockpitMode = 'now' | 'calendar' | 'finder';
 
-/**
- * Khởi tạo toàn bộ Master Chronobiology Workstation
- */
-export function initClinicianBriefingBanner(): void {
-  const workstation = document.getElementById('chronoWorkstation');
-  if (!workstation) return;
-
-  // 1. Gắn sự kiện Date Navigation (Hôm qua / Hôm nay / Ngày mai / Input)
-  const prevBtn = document.getElementById('btnChronoPrevDay');
-  const nextBtn = document.getElementById('btnChronoNextDay');
-  const todayBtn = document.getElementById('btnChronoToday');
-  const dateInput = document.getElementById('chronoDateInput') as HTMLInputElement;
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      const d = new Date(activeDate);
-      d.setDate(d.getDate() - 1);
-      updateMasterWorkstation(d);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      const d = new Date(activeDate);
-      d.setDate(d.getDate() + 1);
-      updateMasterWorkstation(d);
-    });
-  }
-
-  if (todayBtn) {
-    todayBtn.addEventListener('click', () => {
-      updateMasterWorkstation(new Date());
-    });
-  }
-
-  if (dateInput) {
-    dateInput.addEventListener('change', () => {
-      if (dateInput.value) {
-        const parts = dateInput.value.split('-');
-        const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-        updateMasterWorkstation(d);
-      }
-    });
-  }
-
-  // 2. Gắn sự kiện Chuyển đổi Chuyên khoa (Specialty Switcher)
-  const specBtn = document.getElementById('chronoSpecBtn');
-  const specMenu = document.getElementById('chronoSpecMenu');
-  if (specBtn && specMenu) {
-    specBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      specMenu.classList.toggle('is-open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!specMenu.contains(e.target as Node) && e.target !== specBtn) {
-        specMenu.classList.remove('is-open');
-      }
-    });
-
-    specMenu.querySelectorAll<HTMLButtonElement>('.chrono-spec-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const specId = btn.getAttribute('data-spec') as DoctorSpecialty;
-        if (specId) {
-          saveDoctorProfile({ specialty: specId });
-          specMenu.querySelectorAll('.chrono-spec-item').forEach(b => b.classList.remove('is-selected'));
-          btn.classList.add('is-selected');
-          specMenu.classList.remove('is-open');
-          updateMasterWorkstation(activeDate);
-        }
-      });
-    });
-  }
-
-  // 3. Gắn sự kiện các nút Hành động (Action Toolbar)
-  const doctorBtn = document.getElementById('chronoDoctorBtn');
-  if (doctorBtn) {
-    doctorBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'profile'));
-  }
-
-  const finderBtn = document.getElementById('btnChronoFinder');
-  if (finderBtn) {
-    finderBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'finder'));
-  }
-
-  const reportBtn = document.getElementById('btnChronoFullReport');
-  if (reportBtn) {
-    reportBtn.addEventListener('click', () => openDayScoreModal(activeDate, 'day'));
-  }
-
-  const copyBtn = document.getElementById('btnChronoCopySBAR');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => copySbarBriefing(activeDate, copyBtn));
-  }
-
-  // 4. Click Gauge mở Modal chi tiết
-  const gaugeSvgWrap = document.getElementById('gaugeSvgWrapper');
-  if (gaugeSvgWrap) {
-    gaugeSvgWrap.addEventListener('click', () => openDayScoreModal(activeDate, 'day'));
-  }
-
-  // 5. Cập nhật dữ liệu lần đầu
-  updateMasterWorkstation(new Date());
-
-  // 6. Tự động kiểm tra canh giờ mới mỗi 2 phút
-  setInterval(() => {
-    const now = new Date();
-    if (activeDate.toDateString() === now.toDateString()) {
-      const doc = getDoctorProfile();
-      const evalData = evaluateDayScore(activeDate, doc);
-      renderChrono12Hours(evalData.gioRanks, now.getHours());
-      updateEnergyWidget(now);
-    }
-  }, 120000);
+interface CockpitState {
+  selectedDate: Date;
+  selectedHourIdx: number;
+  activeMode: CockpitMode;
+  calendarYear: number;
+  calendarMonth: number; // 1..12
+  finderPurpose: FinderPurpose;
+  showBreakdown: boolean;
 }
 
-/**
- * Cập nhật toàn bộ các Widget trên Master Workstation
- */
-export function updateMasterWorkstation(targetDate: Date = new Date()): void {
-  activeDate = targetDate;
-  const doc = getDoctorProfile();
-  const evalData = evaluateDayScore(targetDate, doc);
-  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
+const nowInit = new Date();
+const state: CockpitState = {
+  selectedDate: new Date(nowInit.getFullYear(), nowInit.getMonth(), nowInit.getDate()),
+  selectedHourIdx: getHourChiIndexFromHour(nowInit.getHours()),
+  activeMode: 'now',
+  calendarYear: nowInit.getFullYear(),
+  calendarMonth: nowInit.getMonth() + 1,
+  finderPurpose: 'life_balance',
+  showBreakdown: false
+};
+
+let cockpitClockInterval: number | null = null;
+let globalEventsBound = false;
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function toInputDateStr(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function formatDayOfWeekShort(d: Date): string {
+  const map = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  return map[d.getDay()] || 'CN';
+}
+
+function getScoreToneClass(score: number): string {
+  if (score >= 80) return 'tone-high';
+  if (score >= 68) return 'tone-good';
+  if (score >= 55) return 'tone-avg';
+  return 'tone-low';
+}
+
+function getRecLabel(rec: MedicalTaskScoreEvaluation['recommendation']): { text: string; cls: string } {
+  switch (rec) {
+    case 'rat_tot':
+      return { text: 'Rất Thuận Lợi', cls: 'rec-rat-tot' };
+    case 'tot':
+      return { text: 'Khả Quan', cls: 'rec-tot' };
+    case 'binh_thuong':
+      return { text: 'Bình Hòa', cls: 'rec-binh-thuong' };
+    default:
+      return { text: 'Cần Thận Trọng', cls: 'rec-khong-nen' };
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 1. LIVE CLOCK & SHIFT BAR UPDATER
+// ═══════════════════════════════════════════════════════════════════════════
+
+function updateLiveBar(): void {
   const now = new Date();
+  const energy = calculateShiftEnergy(now);
 
-  // A. Đồng bộ Date Input & Toolbar
-  const dateInput = document.getElementById('chronoDateInput') as HTMLInputElement;
-  if (dateInput) {
-    const yyyy = targetDate.getFullYear();
-    const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
-    const dd = String(targetDate.getDate()).padStart(2, '0');
-    dateInput.value = `${yyyy}-${mm}-${dd}`;
+  const timeEl = document.getElementById('ckLiveTime');
+  const shiftEl = document.getElementById('ckLiveShift');
+  const energyChip = document.getElementById('ckShiftEnergyChip');
+
+  if (timeEl) {
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    timeEl.textContent = `${hh}:${mm}:${ss}`;
   }
-
-  // Cập nhật Profile Pill
-  const docName = document.getElementById('chronoDoctorName');
-  if (docName) {
-    docName.textContent = `BS. ${doc.name} (${doc.canNam} ${doc.chiNam} • Mệnh ${doc.hanhMenh})`;
+  if (shiftEl) {
+    shiftEl.textContent = `${energy.shiftName} • ${energy.shiftRemainingText}`;
   }
-
-  // Cập nhật Specialty Header Button
-  const spec = SPECIALTY_METAS[doc.specialty || 'internal_general'] || SPECIALTY_METAS.internal_general;
-  const specIcon = document.getElementById('chronoSpecIcon');
-  const specName = document.getElementById('chronoSpecName');
-  if (specIcon) specIcon.textContent = spec.icon;
-  if (specName) specName.textContent = spec.shortName;
-
-  // B. Khối Hero 1: Gauge Thần Khí & Can Chi
-  updateGauge(evalData.total, evalData.rating);
-  updateGaugeMetaDetails(evalData);
-  updateEnergyWidget(targetDate);
-
-  // C. Khối Hero 2: Biorhythm 4 Trục & Đồ Thị Sóng 7 Ngày
-  renderBiorhythmTracks(evalData.bio);
-  renderBiorhythmMultiWave(birthDate, targetDate, doc.specialty || 'internal_general');
-  const bioTip = document.getElementById('bioClinicalTipText');
-  if (bioTip && evalData.bio.clinicalTips.length > 0) {
-    bioTip.textContent = evalData.bio.clinicalTips[0];
-  }
-
-  // D. Khối Row 2 (Trái): 24H Chrono-Timeline 12 Canh Giờ
-  renderChrono12Hours(evalData.gioRanks, now.getHours());
-
-  // E. Khối Row 2 (Phải): Ma Trận 5 Tác Vụ Nội Khoa
-  renderMedicalTasksMatrix(evalData);
-
-  // F. Khối Row 3 (Trái): Lịch Dự Báo 7 Ngày Ca Trực
-  renderWeekForecastRail(targetDate, doc);
-
-  // G. Khối Row 3 (Phải): 4 Trụ Cột Hành Động Lâm Sàng
-  renderClinicalActionPillars(evalData);
-}
-
-/**
- * 1. Cập nhật Radial Arc Gauge
- */
-function updateGauge(score: number, rating: string): void {
-  const ring = document.getElementById('gaugeFillRing');
-  const num = document.getElementById('gaugeBigNum');
-  const ratingPill = document.getElementById('gaugeRatingPill');
-  if (!ring || !num || !ratingPill) return;
-
-  const circumference = 251.32; // 2 * PI * 40
-  const arcLength = circumference * 0.75; // 270 độ = 188.49
-  const offset = circumference - (score / 100) * arcLength;
-
-  ring.style.strokeDasharray = `${circumference}`;
-  ring.style.strokeDashoffset = `${offset}`;
-
-  let color = '#10b981';
-  let badgeStyle = 'background: rgba(16, 185, 129, 0.15); color: #10b981;';
-  if (score >= 80) {
-    color = '#10b981';
-    badgeStyle = 'background: rgba(16, 185, 129, 0.15); color: #10b981;';
-  } else if (score >= 65) {
-    color = '#0284c7';
-    badgeStyle = 'background: rgba(2, 132, 199, 0.15); color: #0284c7;';
-  } else if (score >= 50) {
-    color = '#f59e0b';
-    badgeStyle = 'background: rgba(245, 158, 11, 0.15); color: #f59e0b;';
-  } else {
-    color = '#ef4444';
-    badgeStyle = 'background: rgba(239, 68, 68, 0.15); color: #ef4444;';
-  }
-
-  ring.style.stroke = color;
-  num.textContent = String(score);
-  ratingPill.textContent = rating;
-  ratingPill.setAttribute('style', badgeStyle);
-}
-
-/**
- * Cập nhật thông tin chi tiết Can Chi, Nạp âm, Trực, Thần sát
- */
-function updateGaugeMetaDetails(evalData: DayScoreEvaluation): void {
-  const canChiEl = document.getElementById('analysisCanChiText');
-  const napAmEl = document.getElementById('analysisNapAmText');
-  const trucSaoEl = document.getElementById('analysisTrucSaoText');
-  const tagsWrap = document.getElementById('analysisTagsWrap');
-
-  if (canChiEl) {
-    canChiEl.textContent = `Ngày ${evalData.canChiDay} (${evalData.lunarDay}/${evalData.lunarMonth} Âm) • ${evalData.b1.text}`;
-  }
-  if (napAmEl) {
-    napAmEl.textContent = `Nạp âm: ${evalData.napAmDay.name} (${evalData.napAmRelation.text})`;
-  }
-  if (trucSaoEl) {
-    const dangVien = evalData.saoTuDangVien.isDangVien ? ' (Đăng Viên)' : '';
-    trucSaoEl.textContent = `Trực ${evalData.trucNgay.name} (${evalData.trucNgay.desc}) • Sao ${evalData.saoTu.name}${dangVien}`;
-  }
-
-  if (tagsWrap) {
-    const tags: string[] = [];
-    if (evalData.quyNhanLoc.thienAt.isMatch) tags.push('Thiên Ất Quý Nhân');
-    if (evalData.quyNhanLoc.locThan.isMatch) tags.push('Lộc Thần Cát Lợi');
-    if (evalData.diaChiRelations.tamHop.isMatch) tags.push('Địa Chi Tam Hợp');
-    if (evalData.diaChiRelations.lucHop.isMatch) tags.push('Địa Chi Lục Hợp');
-    if (evalData.tietKhiInfo.tietKhi.name) tags.push(`Tiết ${evalData.tietKhiInfo.tietKhi.name}`);
-
-    tagsWrap.innerHTML = tags.map(t => `<span class="chrono-tag tag-primary">${t}</span>`).join('') ||
-      `<span class="chrono-tag">Khí tiết bình hòa</span>`;
+  if (energyChip) {
+    energyChip.setAttribute('data-level', energy.statusClass);
+    energyChip.innerHTML = `<span class="ck-energy-dot"></span><span>${energy.energyPercent}% Tỉnh Táo</span>`;
   }
 }
 
-/**
- * Cập nhật Widget Năng Lượng Circadian
- */
-function updateEnergyWidget(date: Date): void {
-  const energy = calculateShiftEnergy(date);
-  const batteryVal = document.getElementById('chronoEnergyVal');
-  const batteryText = document.getElementById('chronoEnergyText');
-  if (batteryVal) batteryVal.textContent = `${energy.energyPercent}%`;
-  if (batteryText) batteryText.textContent = `${energy.circadianPhase} • ${energy.caffeineTip}`;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 2. RENDER LEFT COLUMN (HERO DIAL + 60% CON NGƯỜI, MÔI TRƯỜNG & ĐỜI SỐNG)
+// ═══════════════════════════════════════════════════════════════════════════
 
-/**
- * 2. Cập nhật 4 thanh Biorhythm Tracks
- */
-function renderBiorhythmTracks(bio: BiorhythmResult): void {
-  const tracksWrap = document.getElementById('bioBarsColumn');
-  if (!tracksWrap) return;
+function renderHeroScoreAndSplit(ev: DayScoreEvaluation): void {
+  const arc = document.getElementById('ckScoreGaugeArc') as SVGPathElement | null;
+  const numEl = document.getElementById('ckTotalScoreNum');
+  const ratingEl = document.getElementById('ckTotalRatingBadge');
+  const summaryEl = document.getElementById('ckScoreSummaryLine');
 
-  const tracks = [
-    { icon: '🧠', label: 'Trí Tuệ', val: bio.intellectual, color: '#0284c7', tip: 'Tư duy phân tích, chẩn đoán nhiều tầng & y lệnh' },
-    { icon: '🎯', label: 'Trực Giác', val: bio.intuitive, color: '#8b5cf6', tip: 'Nhận diện ca khó & suy sụp tiềm ẩn' },
-    { icon: '❤️', label: 'Cảm Xúc', val: bio.emotional, color: '#ec4899', tip: 'Thấu cảm bệnh nhân mạn & giải thích tiên lượng' },
-    { icon: '💪', label: 'Thể Lực', val: bio.physical, color: '#f59e0b', tip: 'Sức bền ca trực, đi buồng & hồi sức cấp cứu' }
-  ];
+  if (numEl) numEl.textContent = String(ev.total);
+  if (ratingEl) {
+    ratingEl.textContent = `${ev.icon} ${ev.rating}`;
+    ratingEl.className = `ck-rating-pill ${getScoreToneClass(ev.total)}`;
+  }
+  if (summaryEl) {
+    summaryEl.textContent = `${ev.canChiDay} • Hành ${ev.hanhNgay} • Sao ${ev.saoTu.name} • Trực ${ev.trucNgay.name}`;
+  }
 
-  tracksWrap.innerHTML = tracks.map((t, idx) => {
-    const isNeg = t.val < 0;
-    const absVal = Math.min(100, Math.abs(t.val));
-    const widthPct = (absVal / 100) * 50;
-    const leftPct = isNeg ? (50 - widthPct) : 50;
-    const trackColor = isNeg ? '#ef4444' : t.color;
+  // 270 deg SVG arc radius = 52 -> arc length ~ 245.04
+  if (arc) {
+    const maxLen = 245.04;
+    const filled = (Math.max(0, Math.min(100, ev.total)) / 100) * maxLen;
+    arc.style.strokeDasharray = `${filled.toFixed(1)} ${maxLen}`;
+    arc.setAttribute('data-tone', getScoreToneClass(ev.total));
+  }
 
-    return `
-      <div class="bio-metric-row" title="${t.label}: ${t.val > 0 ? '+' : ''}${t.val}% — ${t.tip}">
-        <span class="bio-metric-icon">${t.icon}</span>
-        <span class="bio-metric-label">${t.label}</span>
-        <div class="bio-progress-track">
-          <div class="bio-axis-center"></div>
-          <div 
-            class="bio-progress-bar"
-            style="left: ${leftPct}%; width: ${widthPct}%; background: ${trackColor}; animation-delay: ${idx * 0.1}s;"
-          ></div>
-        </div>
-        <span class="bio-metric-val" style="color: ${trackColor};">
-          ${t.val > 0 ? '+' : ''}${t.val}%
-        </span>
-      </div>
+  // Dual 60/40 Bars
+  const hNum = document.getElementById('ckHumanScoreNum');
+  const hBar = document.getElementById('ckHumanScoreBar');
+  const hRate = document.getElementById('ckHumanRating');
+  if (hNum) hNum.textContent = `${ev.humanEnv.score}/60đ`;
+  if (hBar) hBar.style.width = `${ev.humanEnv.percent}%`;
+  if (hRate) hRate.textContent = `${ev.humanEnv.percent}% • ${ev.humanEnv.rating}`;
+
+  const cNum = document.getElementById('ckClinicalScoreNum');
+  const cBar = document.getElementById('ckClinicalScoreBar');
+  const cRate = document.getElementById('ckClinicalRating');
+  if (cNum) cNum.textContent = `${ev.clinicalID.score}/40đ`;
+  if (cBar) cBar.style.width = `${ev.clinicalID.percent}%`;
+  if (cRate) cRate.textContent = `${ev.clinicalID.percent}% • ${ev.clinicalID.rating}`;
+
+  // Can Chi & Nạp Âm Harmony Chips
+  const pillRow = document.getElementById('ckCanChiPillRow');
+  if (pillRow) {
+    const napTone =
+      ev.napAmRelation.score >= 6 ? 'is-pos' : ev.napAmRelation.score < 0 ? 'is-neg' : 'is-neutral';
+    pillRow.innerHTML = `
+      <span class="ck-meta-chip ${napTone}" title="${escapeHtml(ev.napAmRelation.text)}">
+        <i class="fa-solid fa-yin-yang"></i> Nạp Âm: ${ev.napAmDay.name} (${ev.napAmDay.element})
+      </span>
+      <span class="ck-meta-chip ${ev.saoTu.type === 'cat' ? 'is-pos' : 'is-neg'}" title="${escapeHtml(ev.saoTu.desc)}">
+        <i class="fa-regular fa-star"></i> Tú ${ev.saoTu.name} (${ev.saoTu.type === 'cat' ? 'Cát' : 'Hung'})
+      </span>
+      <span class="ck-meta-chip ${ev.trucNgay.type === 'cat' ? 'is-pos' : ev.trucNgay.type === 'hung' ? 'is-neg' : 'is-neutral'}" title="${escapeHtml(ev.trucNgay.desc)}">
+        <i class="fa-solid fa-layer-group"></i> Trực ${ev.trucNgay.name}
+      </span>
     `;
-  }).join('');
-}
-
-/**
- * 3. Vẽ Sơ Đồ Đa Sóng Biorhythm 7 Ngày (Multi-Wave SVG)
- */
-function renderBiorhythmMultiWave(birthDate: Date, targetDate: Date, specialty: DoctorSpecialty): void {
-  const svg = document.getElementById('bioMultiWaveSvg');
-  if (!svg) return;
-
-  const width = 260;
-  const height = 55;
-  const numDays = 7;
-
-  // Thu thập điểm cho 4 trục
-  const intPoints: { x: number; y: number }[] = [];
-  const intuitPoints: { x: number; y: number }[] = [];
-  const avgPoints: { x: number; y: number }[] = [];
-
-  for (let i = -3; i <= 3; i++) {
-    const d = new Date(targetDate);
-    d.setDate(d.getDate() + i);
-    const bio = calculateBiorhythms(birthDate, d, specialty);
-    const x = ((i + 3) / (numDays - 1)) * (width - 20) + 10;
-    
-    // Map -100..100 sang y
-    const yInt = height / 2 - (bio.intellectual / 100) * (height / 2 - 6);
-    const yIntuit = height / 2 - (bio.intuitive / 100) * (height / 2 - 6);
-    const yAvg = height / 2 - (bio.avgScore / 100) * (height / 2 - 6);
-
-    intPoints.push({ x, y: yInt });
-    intuitPoints.push({ x, y: yIntuit });
-    avgPoints.push({ x, y: yAvg });
   }
 
-  const makePath = (pts: { x: number; y: number }[]) => pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-  const todayPoint = avgPoints[3]; // i = 0 là vị trí thứ 4
+  // Breakdown Factors
+  const bdBox = document.getElementById('ckBreakdownChips');
+  if (bdBox) {
+    bdBox.classList.toggle('is-open', state.showBreakdown);
+    bdBox.innerHTML = ev.breakdown
+      .map(
+        (b) => `
+      <div class="ck-bd-item is-${b.tone}" title="${escapeHtml(b.detail)}">
+        <span class="ck-bd-pillar">${b.pillar === 'human_env' ? '🌿 60%' : '🦠 40%'}</span>
+        <span class="ck-bd-label">${escapeHtml(b.label)}</span>
+        <strong class="ck-bd-delta">${b.delta >= 0 ? `+${b.delta}` : b.delta}đ</strong>
+      </div>
+    `
+      )
+      .join('');
+  }
+}
+
+function renderEnvironmentAndCompass(ev: DayScoreEvaluation): void {
+  const tk = ev.tietKhiInfo.tietKhi;
+  const tltt = ev.tietKhiInfo.tuLyTuTuyet;
+
+  const iconEl = document.getElementById('ckTietKhiIcon');
+  const nameEl = document.getElementById('ckTietKhiName');
+  const specialEl = document.getElementById('ckTietKhiSpecialBadge');
+  const descEl = document.getElementById('ckTietKhiDesc');
+  const ecoEl = document.getElementById('ckEcoHealthNote');
+
+  if (iconEl) iconEl.textContent = tk.icon;
+  if (nameEl) nameEl.textContent = `Tiết ${tk.name}`;
+  if (specialEl) {
+    if (tltt) {
+      specialEl.hidden = false;
+      specialEl.textContent = `${tltt.type}: ${tltt.name}`;
+    } else {
+      specialEl.hidden = true;
+    }
+  }
+  if (descEl) descEl.textContent = tltt ? `${tk.climateDesc} ${tltt.desc}` : tk.climateDesc;
+  if (ecoEl) ecoEl.textContent = ev.humanEnv.climate.ecoNote;
+
+  const dirHy = document.getElementById('ckDirHyThan');
+  const dirTai = document.getElementById('ckDirTaiThan');
+  const dirHac = document.getElementById('ckDirHacThan');
+  const dirTip = document.getElementById('ckDirTip');
+
+  if (dirHy) dirHy.textContent = ev.humanEnv.directions.hyThan;
+  if (dirTai) dirTai.textContent = ev.humanEnv.directions.taiThan;
+  if (dirHac) dirHac.textContent = ev.humanEnv.directions.hacThan;
+  if (dirTip) dirTip.textContent = ev.humanEnv.directions.travelTip;
+}
+
+function renderBiorhythmAndWave(ev: DayScoreEvaluation, weekData: ReturnType<typeof getWeekEvaluation>): void {
+  const setTrack = (valId: string, barId: string, pct: number) => {
+    const valEl = document.getElementById(valId);
+    const barEl = document.getElementById(barId);
+    if (valEl) valEl.textContent = `${pct >= 0 ? '+' : ''}${pct}%`;
+    if (barEl) {
+      // Map -100..+100 -> width 10%..100%
+      const w = Math.max(8, Math.round((pct + 100) / 2));
+      barEl.style.width = `${w}%`;
+      barEl.setAttribute('data-sign', pct >= 25 ? 'high' : pct <= -25 ? 'low' : 'mid');
+    }
+  };
+
+  setTrack('ckBioPhysVal', 'ckBioPhysBar', ev.bio.physical);
+  setTrack('ckBioEmotVal', 'ckBioEmotBar', ev.bio.emotional);
+  setTrack('ckBioIntelVal', 'ckBioIntelBar', ev.bio.intellectual);
+  setTrack('ckBioIntuitVal', 'ckBioIntuitBar', ev.bio.intuitive);
+
+  const alertEl = document.getElementById('ckBioAlertTag');
+  if (alertEl) {
+    const alerts: string[] = [];
+    if (ev.bio.isCriticalPhysical) alerts.push('Giao pha Thể chất');
+    if (ev.bio.isCriticalEmotional) alerts.push('Giao pha Cảm xúc');
+    if (ev.bio.isCriticalIntellectual) alerts.push('Giao pha Trí tuệ');
+    if (alerts.length > 0) {
+      alertEl.hidden = false;
+      alertEl.textContent = `⚠ ${alerts.join(' • ')}`;
+    } else {
+      alertEl.hidden = true;
+    }
+  }
+
+  // SVG 7-Day Multi-Wave (Physical, Emotional, Intellectual)
+  const svg = document.getElementById('ckBioWaveSvg');
+  const caption = document.getElementById('ckBioWaveCaption');
+  if (!svg || weekData.length < 2) return;
+
+  const W = 320;
+  const H = 92;
+  const padX = 16;
+  const padY = 12;
+  const usableW = W - padX * 2;
+  const midY = H / 2;
+  const amp = (H - padY * 2) / 2;
+
+  const xAt = (i: number) => padX + (i / (weekData.length - 1)) * usableW;
+  const yAt = (pct: number) => midY - (pct / 100) * amp;
+
+  const buildPath = (getter: (d: (typeof weekData)[number]) => number) =>
+    weekData
+      .map((d, i) => `${i === 0 ? 'M' : 'L'}${xAt(i).toFixed(1)},${yAt(getter(d)).toFixed(1)}`)
+      .join(' ');
+
+  const physPath = buildPath((d) => d.evalData.bio.physical);
+  const emotPath = buildPath((d) => d.evalData.bio.emotional);
+  const intelPath = buildPath((d) => d.evalData.bio.intellectual);
+
+  const hitDots = weekData
+    .map(
+      (d, i) => `
+    <g class="ck-wave-point" data-wave-idx="${i}">
+      <line x1="${xAt(i).toFixed(1)}" y1="8" x2="${xAt(i).toFixed(1)}" y2="${H - 12}" class="ck-wave-guide" />
+      <circle cx="${xAt(i).toFixed(1)}" cy="${yAt(d.evalData.bio.physical).toFixed(1)}" r="3.2" class="ck-dot-phys" />
+      <circle cx="${xAt(i).toFixed(1)}" cy="${yAt(d.evalData.bio.intellectual).toFixed(1)}" r="3.2" class="ck-dot-intel" />
+      <circle cx="${xAt(i).toFixed(1)}" cy="${yAt(d.evalData.bio.emotional).toFixed(1)}" r="3.2" class="ck-dot-emot" />
+      <text x="${xAt(i).toFixed(1)}" y="${H - 1}" text-anchor="middle" class="ck-wave-xlabel">${formatDayOfWeekShort(d.date)}</text>
+    </g>
+  `
+    )
+    .join('');
 
   svg.innerHTML = `
-    <!-- Baseline giữa (0%) -->
-    <line x1="10" y1="${height / 2}" x2="${width - 10}" y2="${height / 2}" stroke="var(--glass-border, rgba(255,255,255,0.15))" stroke-dasharray="3,3" stroke-width="1" />
-    
-    <!-- Sóng Trí Tuệ (Xanh dương) -->
-    <polyline fill="none" stroke="#0284c7" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" points="${makePath(intPoints)}" />
-    
-    <!-- Sóng Trực Giác (Tím) -->
-    <polyline fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" points="${makePath(intuitPoints)}" />
-    
-    <!-- Sóng Điểm Trung Bình Trọng Số (Vàng cam nổi bật) -->
-    <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="${makePath(avgPoints)}" />
-    
-    <!-- Điểm mốc Ngày Đang Xem (Pulsing Marker) -->
-    <circle cx="${todayPoint.x}" cy="${todayPoint.y}" r="4" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
+    <line x1="${padX}" y1="${midY}" x2="${W - padX}" y2="${midY}" class="ck-wave-zero" />
+    <path d="${emotPath}" class="ck-wave-line is-emot" fill="none" />
+    <path d="${intelPath}" class="ck-wave-line is-intel" fill="none" />
+    <path d="${physPath}" class="ck-wave-line is-phys" fill="none" />
+    ${hitDots}
+  `;
+
+  if (caption) {
+    caption.textContent = `Điểm sinh học hôm nay: TB ${ev.bio.avgScore >= 0 ? '+' : ''}${ev.bio.avgScore}% • Di chuột lên từng ngày để xem nhanh.`;
+  }
+
+  svg.querySelectorAll('.ck-wave-point').forEach((pt) => {
+    pt.addEventListener('mouseenter', () => {
+      const idx = Number(pt.getAttribute('data-wave-idx'));
+      const item = weekData[idx];
+      if (item && caption) {
+        const b = item.evalData.bio;
+        caption.textContent = `${item.dayOfWeek} (${item.dateFormatted}): Thể chất ${b.physical}% • Cảm xúc ${b.emotional}% • Trí tuệ ${b.intellectual}%`;
+      }
+    });
+  });
+}
+
+function renderLifeGuidance(ev: DayScoreEvaluation): void {
+  const doEl = document.getElementById('ckDoList');
+  const avoidEl = document.getElementById('ckAvoidList');
+  const pillarsEl = document.getElementById('ckLifePillarsGrid');
+
+  if (doEl) {
+    doEl.innerHTML = ev.humanEnv.doList
+      .slice(0, 3)
+      .map((item) => `<li><i class="fa-solid fa-circle-check"></i><span>${escapeHtml(item)}</span></li>`)
+      .join('');
+  }
+  if (avoidEl) {
+    avoidEl.innerHTML = ev.humanEnv.avoidList
+      .slice(0, 3)
+      .map((item) => `<li><i class="fa-solid fa-circle-exclamation"></i><span>${escapeHtml(item)}</span></li>`)
+      .join('');
+  }
+  if (pillarsEl) {
+    const items = [
+      ev.humanEnv.pillars.bodyAndSpace,
+      ev.humanEnv.pillars.relationships,
+      ev.humanEnv.pillars.lifeAndFinance
+    ];
+    pillarsEl.innerHTML = items
+      .map(
+        (p) => `
+      <div class="ck-life-pillar-row is-${p.status}">
+        <div class="ck-pillar-head">
+          <strong>${escapeHtml(p.title)}</strong>
+          <span class="ck-status-dot is-${p.status}"></span>
+        </div>
+        <p>${escapeHtml(p.text)}</p>
+      </div>
+    `
+      )
+      .join('');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 3. RENDER RIGHT COLUMN — MODE 1: 12 CANH GIỜ & CHUYÊN MÔN TRUYỀN NHIỄM (40%)
+// ═══════════════════════════════════════════════════════════════════════════
+
+function renderHourInspector(gio: GioRankResult): void {
+  const box = document.getElementById('ckGioInspector');
+  if (!box) return;
+
+  box.innerHTML = `
+    <div class="ck-hour-inspect-head">
+      <div>
+        <span class="ck-hour-tag ${gio.isHoangDao ? 'is-hd' : 'is-hac'}">
+          ${gio.isHoangDao ? '✨ Hoàng Đạo' : '🌑 Hắc Đạo'} • ${gio.starName}
+        </span>
+        <h4>Giờ ${gio.chi} (${gio.timeRange}) — ${gio.fullCanChi}</h4>
+        <small>Nạp Âm Giờ: ${gio.napAm} (${gio.napAmElement})</small>
+      </div>
+      <span class="ck-rank-pill ${gio.badgeClass}">${gio.rankTitle}</span>
+    </div>
+
+    <div class="ck-hour-dual-notes">
+      <div class="ck-hour-note is-life">
+        <span><i class="fa-solid fa-sun"></i> 60% Đời Sống & Giao Tiếp</span>
+        <p>${escapeHtml(gio.lifeNote)}</p>
+      </div>
+      <div class="ck-hour-note is-id">
+        <span><i class="fa-solid fa-virus"></i> 40% Lâm Sàng Truyền Nhiễm</span>
+        <p>${escapeHtml(gio.clinicalNote)}</p>
+      </div>
+    </div>
+
+    <div class="ck-hour-factors">
+      ${gio.goodFactors.map((f) => `<span class="ck-factor-tag is-pos">+ ${escapeHtml(f)}</span>`).join('')}
+      ${gio.badFactors.map((f) => `<span class="ck-factor-tag is-neg">- ${escapeHtml(f)}</span>`).join('')}
+    </div>
   `;
 }
 
-/**
- * 4. Cập nhật Lưới 12 Canh Giờ Khởi Sự (24H Chrono-Timeline)
- */
-function renderChrono12Hours(gioRanks: GioRankResult[], currentHour: number): void {
-  const grid = document.getElementById('chrono12HoursGrid');
-  const curIcon = document.getElementById('tacticalCurHourIcon');
-  const curName = document.getElementById('tacticalCurHourName');
-  const curRange = document.getElementById('tacticalCurHourRange');
-  const curBadge = document.getElementById('tacticalCurHourBadge');
-  const terminalText = document.getElementById('hourAdviceTerminalText');
-  if (!grid) return;
-
-  const CHI_HOURS: Record<string, { start: number; end: number; range: string }> = {
-    'Tý': { start: 23, end: 1, range: '23:00 - 01:00' },
-    'Sửu': { start: 1, end: 3, range: '01:00 - 03:00' },
-    'Dần': { start: 3, end: 5, range: '03:00 - 05:00' },
-    'Mão': { start: 5, end: 7, range: '05:00 - 07:00' },
-    'Thìn': { start: 7, end: 9, range: '07:00 - 09:00' },
-    'Tỵ': { start: 9, end: 11, range: '09:00 - 11:00' },
-    'Ngọ': { start: 11, end: 13, range: '11:00 - 13:00' },
-    'Mùi': { start: 13, end: 15, range: '13:00 - 15:00' },
-    'Thân': { start: 15, end: 17, range: '15:00 - 17:00' },
-    'Dậu': { start: 17, end: 19, range: '17:00 - 19:00' },
-    'Tuất': { start: 19, end: 21, range: '19:00 - 21:00' },
-    'Hợi': { start: 21, end: 23, range: '21:00 - 23:00' }
-  };
-
-  let activeHour = gioRanks[0];
-
-  grid.innerHTML = gioRanks.map(g => {
-    const meta = CHI_HOURS[g.chi] || { start: 0, end: 2, range: '' };
-    let isCurrent = false;
-    if (g.chi === 'Tý') {
-      isCurrent = currentHour >= 23 || currentHour < 1;
-    } else {
-      isCurrent = currentHour >= meta.start && currentHour < meta.end;
-    }
-
-    if (isCurrent) activeHour = g;
-
-    let starSymbol = '★';
-    let starColor = '#f59e0b';
-    if (g.rank <= 2) {
-      starSymbol = '★';
-      starColor = '#f59e0b';
-    } else if (g.rank <= 4) {
-      starSymbol = '✦';
-      starColor = '#10b981';
-    } else if (g.rank <= 6) {
-      starSymbol = '·';
-      starColor = '#64748b';
-    } else {
-      starSymbol = '⚠️';
-      starColor = '#ef4444';
-    }
-
-    return `
-      <div 
-        class="hour-tactical-chip ${isCurrent ? 'is-active-hour' : ''}" 
-        data-chi="${g.chi}"
-        title="Giờ ${g.fullCanChi} (${meta.range}) • ${g.rankTitle} • ${g.clinicalNote}"
-        tabindex="0"
-        role="button"
-      >
-        <span class="hour-tactical-chi">${g.chi}</span>
-        <span class="hour-tactical-time">${meta.range.split(' - ')[0]}</span>
-        <span class="hour-tactical-star" style="color: ${starColor};">${starSymbol}</span>
-      </div>
-    `;
-  }).join('');
-
-  // Cập nhật Banner giờ hiện tại
-  if (curIcon && curName && curRange && curBadge && terminalText && activeHour) {
-    const activeMeta = CHI_HOURS[activeHour.chi] || { range: '' };
-    curIcon.textContent = activeHour.isHoangDao ? '🌟' : '⏰';
-    curName.textContent = `Giờ ${activeHour.fullCanChi}`;
-    curRange.textContent = `Khung giờ: ${activeMeta.range} • ${activeHour.isHoangDao ? 'Hoàng Đạo' : 'Hắc Đạo'}`;
-    curBadge.textContent = activeHour.rankTitle;
-    curBadge.className = `cur-hour-badge ${activeHour.rank <= 2 ? 'tag-amber' : activeHour.rank <= 4 ? 'tag-emerald' : 'tag-primary'}`;
-    terminalText.textContent = activeHour.clinicalNote;
+function renderModeNow(ev: DayScoreEvaluation): void {
+  const ribbon = document.getElementById('ckGioRibbon');
+  if (ribbon) {
+    ribbon.innerHTML = ev.gioRanks
+      .map((g, idx) => {
+        const isCurr = ev.gioTimeline[idx]?.isCurrent;
+        const isSelected = idx === state.selectedHourIdx;
+        return `
+        <button
+          type="button"
+          class="ck-gio-chip ${g.isHoangDao ? 'is-hd' : 'is-hac'} ${isSelected ? 'is-selected' : ''} ${isCurr ? 'is-current' : ''}"
+          data-gio-idx="${idx}"
+          aria-pressed="${isSelected ? 'true' : 'false'}"
+        >
+          <span class="ck-gio-name">${g.chi}${isCurr ? ' •' : ''}</span>
+          <span class="ck-gio-time">${g.timeRange}</span>
+          <span class="ck-gio-rank ${g.badgeClass}">B${g.rank}</span>
+        </button>
+      `;
+      })
+      .join('');
   }
 
-  // Click vào từng chip để tra cứu lời khuyên
-  grid.querySelectorAll<HTMLElement>('.hour-tactical-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const chi = chip.getAttribute('data-chi');
-      const g = gioRanks.find(item => item.chi === chi);
-      if (g && terminalText) {
-        terminalText.textContent = `[Giờ ${g.fullCanChi} • ${g.rankTitle}]: ${g.clinicalNote}`;
-      }
-    });
-  });
+  const chosenGio = ev.gioRanks[state.selectedHourIdx] || ev.gioRanks[0]!;
+  renderHourInspector(chosenGio);
+
+  // Infectious Diseases Focus & 4 Pillars
+  const focusBox = document.getElementById('ckIdShiftFocusBox');
+  if (focusBox) {
+    focusBox.innerHTML = `
+      <div class="ck-id-focus-head">
+        <span><i class="fa-solid fa-microscope"></i> Định Hướng Chuyên Khoa Truyền Nhiễm (40%)</span>
+        <strong>${ev.clinicalID.score}/40đ</strong>
+      </div>
+      <p>${escapeHtml(ev.clinicalID.idShiftFocus)}</p>
+    `;
+  }
+
+  const idPillarsGrid = document.getElementById('ckIdPillarsGrid');
+  if (idPillarsGrid) {
+    const pArr = [
+      ev.clinicalID.pillars.fuoAndSepsis,
+      ev.clinicalID.pillars.amsStewardship,
+      ev.clinicalID.pillars.sourceControl,
+      ev.clinicalID.pillars.ipcAndEbm
+    ];
+    idPillarsGrid.innerHTML = pArr
+      .map(
+        (p) => `
+      <div class="ck-id-pillar-card is-${p.status}">
+        <div class="ck-pillar-head">
+          <strong>${escapeHtml(p.title)}</strong>
+          <span class="ck-status-dot is-${p.status}"></span>
+        </div>
+        <p>${escapeHtml(p.text)}</p>
+      </div>
+    `
+      )
+      .join('');
+  }
+
+  // 5 Infectious Diseases Tasks
+  const tasksGrid = document.getElementById('ckIdTasksGrid');
+  if (tasksGrid) {
+    const taskArr = Object.values(ev.clinicalID.tasks);
+    tasksGrid.innerHTML = taskArr
+      .map((t) => {
+        const rec = getRecLabel(t.recommendation);
+        return `
+        <article class="ck-task-card ${rec.cls}">
+          <div class="ck-task-head">
+            <span class="ck-task-icon">${t.task.icon}</span>
+            <div class="ck-task-title-wrap">
+              <h4>${escapeHtml(t.task.shortTitle)}</h4>
+              <small>${escapeHtml(t.trucNote)} • ${escapeHtml(t.thanSatNote)}</small>
+            </div>
+            <div class="ck-task-score-box">
+              <strong>${t.totalScore}đ</strong>
+              <span class="ck-rec-badge ${rec.cls}">${rec.text}</span>
+            </div>
+          </div>
+          <p class="ck-task-advice">${escapeHtml(t.advice)}</p>
+        </article>
+      `;
+      })
+      .join('');
+  }
 }
 
-/**
- * 5. Cập nhật Ma Trận 5 Tác Vụ Nội Khoa Trọng Điểm
- */
-function renderMedicalTasksMatrix(evalData: DayScoreEvaluation): void {
-  const container = document.getElementById('medicalTasksMatrix');
-  if (!container) return;
+// ═══════════════════════════════════════════════════════════════════════════
+// 4. MODE 2: LỊCH 7 NGÀY & HEATMAP 30 NGÀY
+// ═══════════════════════════════════════════════════════════════════════════
 
-  const tasks = [
-    { key: 'kham_chandoan' as MedicalTaskType, icon: '🔍', title: 'Khám & Biện Luận Ca Khó', desc: 'Tư duy chẩn đoán nhiều tầng, liên kết đa triệu chứng' },
-    { key: 'khoi_phacdo' as MedicalTaskType, icon: '💊', title: 'Khởi Đầu Phác Đồ Bậc Cao', desc: 'Lựa chọn thuốc bước đầu, liều nạp kháng sinh/chống đông' },
-    { key: 'chinh_lieu_xuatvien' as MedicalTaskType, icon: '📋', title: 'Hiệu Chỉnh Liều & Ra Viện', desc: 'Rà soát tương tác thuốc DDI, chức năng gan thận eGFR' },
-    { key: 'hoi_chan_ebm' as MedicalTaskType, icon: '👥', title: 'Hội Chẩn Đa Chuyên Khoa', desc: 'Tra cứu chứng cứ lâm sàng EBM & sinh hoạt chuyên đề' },
-    { key: 'khai_truong_kthuat' as MedicalTaskType, icon: '🏥', title: 'Kỹ Thuật / Thăm Dò Mới', desc: 'Triển khai kỹ thuật thăm dò chức năng hoặc khai trương' }
+function renderModeCalendar(ev: DayScoreEvaluation, weekData: ReturnType<typeof getWeekEvaluation>): void {
+  const weekGrid = document.getElementById('ckWeekStripGrid');
+  if (weekGrid) {
+    weekGrid.innerHTML = weekData
+      .map((w) => {
+        const isSelected = w.dateKey === ev.dateKey;
+        return `
+        <button
+          type="button"
+          class="ck-week-card ${getScoreToneClass(w.score)} ${isSelected ? 'is-selected' : ''} ${w.isBestDay ? 'is-best' : ''}"
+          data-jump-date="${w.dateKey}"
+        >
+          <div class="ck-week-top">
+            <span>${w.dayOfWeek}</span>
+            ${w.isBestDay ? '<span class="ck-best-tag">Đẹp nhất</span>' : ''}
+          </div>
+          <strong class="ck-week-solar">${w.dateFormatted}</strong>
+          <small class="ck-week-lunar">Âm ${w.lunarFormatted} • ${w.canChi}</small>
+          <div class="ck-week-score-row">
+            <span class="ck-week-total">${w.score}đ</span>
+            <span class="ck-week-split">${w.humanScore}/60 • ${w.clinicalScore}/40</span>
+          </div>
+        </button>
+      `;
+      })
+      .join('');
+  }
+
+  // Monthly 30-Day Heatmap
+  const titleEl = document.getElementById('ckMonthCalTitle');
+  const monthGrid = document.getElementById('ckMonthGrid');
+  if (!monthGrid) return;
+
+  if (titleEl) {
+    titleEl.textContent = `Tháng ${String(state.calendarMonth).padStart(2, '0')} / ${state.calendarYear}`;
+  }
+
+  const monthDays = getMonthEvaluation(state.calendarYear, state.calendarMonth);
+  const firstWeekday = new Date(state.calendarYear, state.calendarMonth - 1, 1).getDay(); // 0 = Sun
+  const mondayFirstOffset = (firstWeekday + 6) % 7;
+  const todayKey = toInputDateStr(new Date());
+
+  const blanks = Array.from({ length: mondayFirstOffset })
+    .map(() => '<div class="ck-cal-cell is-empty" aria-hidden="true"></div>')
+    .join('');
+
+  const cells = monthDays
+    .map((d) => {
+      const isSelected = d.dateKey === ev.dateKey;
+      const isToday = d.dateKey === todayKey;
+      return `
+      <button
+        type="button"
+        class="ck-cal-cell ${getScoreToneClass(d.total)} ${isSelected ? 'is-selected' : ''} ${isToday ? 'is-today' : ''}"
+        data-jump-date="${d.dateKey}"
+        title="${d.formattedDate} (${d.canChiDay}) — ${d.total}/100đ"
+      >
+        <div class="ck-cal-cell-top">
+          <span class="ck-cal-solar">${d.dateObj.getDate()}</span>
+          <span class="ck-cal-score">${d.total}</span>
+        </div>
+        <span class="ck-cal-lunar">${d.lunarDay}/${d.lunarMonth}${d.lunar.isLeap ? 'N' : ''}</span>
+        <span class="ck-cal-canchi">${d.canChiDay}</span>
+      </button>
+    `;
+    })
+    .join('');
+
+  monthGrid.innerHTML = blanks + cells;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 5. MODE 3: BỘ TÌM NGÀY ĐẸP 6 MỤC ĐÍCH
+// ═══════════════════════════════════════════════════════════════════════════
+
+function renderModeFinder(): void {
+  const pillsBox = document.getElementById('ckFinderPills');
+  const resultsBox = document.getElementById('ckFinderResults');
+  if (!pillsBox || !resultsBox) return;
+
+  const purposes: { id: FinderPurpose; label: string; group: string }[] = [
+    { id: 'life_balance', label: '🌿 Đời Sống & Gia Đạo', group: '60%' },
+    { id: 'travel_meeting', label: '🧭 Xuất Hành & Ký Kết', group: '60%' },
+    { id: 'fuo_diagnosis', label: '🌡️ Biện Luận Sốt CRNN', group: '40%' },
+    { id: 'ams_therapy', label: '💊 Tối Ưu Kháng Sinh', group: '40%' },
+    { id: 'source_control', label: '🩺 Thủ Thuật & LP', group: '40%' },
+    { id: 'ebm_rounds', label: '🦠 Hội Chẩn & EBM', group: '40%' }
   ];
 
-  container.innerHTML = tasks.map(t => {
-    const taskEval = evalData.medicalTasks[t.key];
-    let stars = '⭐⭐⭐';
-    let starColor = '#10b981';
+  pillsBox.innerHTML = purposes
+    .map(
+      (p) => `
+    <button
+      type="button"
+      class="ck-finder-pill ${state.finderPurpose === p.id ? 'is-active' : ''}"
+      data-finder-purpose="${p.id}"
+    >
+      <span class="ck-pill-weight">${p.group}</span>
+      <span>${p.label}</span>
+    </button>
+  `
+    )
+    .join('');
 
-    if (taskEval.recommendation === 'rat_tot') {
-      stars = '⭐⭐⭐';
-      starColor = '#10b981';
-    } else if (taskEval.recommendation === 'tot') {
-      stars = '⭐⭐';
-      starColor = '#0284c7';
-    } else if (taskEval.recommendation === 'binh_thuong') {
-      stars = '⭐';
-      starColor = '#f59e0b';
-    } else {
-      stars = '⚠️';
-      starColor = '#ef4444';
-    }
-
-    return `
-      <div 
-        class="medical-task-card" 
-        title="${t.title} (${taskEval.totalScore}/10đ): ${taskEval.advice}"
-        onclick="if(window.openDayScoreModal) window.openDayScoreModal(undefined, 'tasks');"
-      >
-        <div class="task-card-left">
-          <div class="task-card-icon">${t.icon}</div>
-          <div>
-            <div class="task-card-title">${t.title}</div>
-            <div class="task-card-desc">${t.desc}</div>
+  const topDays = findBestClinicalDays(state.finderPurpose, 30);
+  resultsBox.innerHTML = topDays
+    .map((item) => {
+      const e = item.evalData;
+      return `
+      <div class="ck-finder-card ${getScoreToneClass(item.score)}">
+        <div class="ck-finder-rank">#${item.rank}</div>
+        <div class="ck-finder-info">
+          <div class="ck-finder-date-line">
+            <strong>${formatDayOfWeekShort(e.dateObj)}, ${e.formattedDate}</strong>
+            <span>• Âm ${e.lunarDay}/${e.lunarMonth}${e.lunar.isLeap ? 'N' : ''} (${e.canChiDay})</span>
+          </div>
+          <div class="ck-finder-reasons">
+            ${item.matchReasons.map((r) => `<span class="ck-reason-tag">${escapeHtml(r)}</span>`).join('')}
           </div>
         </div>
-        <div class="task-card-right">
-          <span class="task-card-stars" style="color: ${starColor};">${stars}</span>
-          <span class="task-card-score">${taskEval.totalScore}đ</span>
+        <div class="ck-finder-actions">
+          <div class="ck-finder-score-num">
+            <strong>${item.score}đ</strong>
+            <small>${e.humanEnv.score}/60 • ${e.clinicalID.score}/40</small>
+          </div>
+          <button type="button" class="ck-jump-btn" data-jump-date="${e.dateKey}">
+            Xem chi tiết
+          </button>
         </div>
       </div>
     `;
-  }).join('');
+    })
+    .join('');
 }
 
-/**
- * 6. Cập nhật Lịch Dự Báo Ca Trực 7 Ngày Liên Tiếp
- */
-function renderWeekForecastRail(targetDate: Date, doc: DoctorProfile): void {
-  const rail = document.getElementById('weekForecastRail');
-  if (!rail) return;
+// ═══════════════════════════════════════════════════════════════════════════
+// 6. FULL ORCHESTRATED RENDER & EVENT BINDING
+// ═══════════════════════════════════════════════════════════════════════════
 
-  const weekList: WeekDaySummary[] = getWeekEvaluation(targetDate, doc);
+function syncModeTabs(): void {
+  document.querySelectorAll<HTMLButtonElement>('[data-cockpit-mode]').forEach((btn) => {
+    const mode = btn.getAttribute('data-cockpit-mode') as CockpitMode;
+    const isActive = mode === state.activeMode;
+    btn.classList.toggle('is-active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
 
-  rail.innerHTML = weekList.map(day => {
-    const isSelected = day.date.toDateString() === targetDate.toDateString();
-    const isToday = day.date.toDateString() === new Date().toDateString();
+  const nowPanel = document.getElementById('ckModeNow');
+  const calPanel = document.getElementById('ckModeCalendar');
+  const finderPanel = document.getElementById('ckModeFinder');
 
-    return `
-      <div 
-        class="forecast-day-card ${isSelected ? 'is-selected-day' : ''} ${isToday ? 'is-today-marker' : ''} ${day.isBestDay ? 'is-best-day' : ''}"
-        data-date="${day.date.toISOString()}"
-        title="${day.dayOfWeek} (${day.dateFormatted}): ${day.score}/100đ • ${day.rating} • ${day.canChi}"
-        tabindex="0"
-        role="button"
-      >
-        <span class="forecast-day-name">${day.dayOfWeek}</span>
-        <span class="forecast-day-canchi">${day.canChi.split(' ')[1]}</span>
-        <span class="forecast-day-icon">${day.icon}</span>
-        <span class="forecast-day-score">${day.score}</span>
-        <span class="forecast-day-truc">${day.truc}</span>
-      </div>
-    `;
-  }).join('');
+  if (nowPanel) nowPanel.hidden = state.activeMode !== 'now';
+  if (calPanel) calPanel.hidden = state.activeMode !== 'calendar';
+  if (finderPanel) finderPanel.hidden = state.activeMode !== 'finder';
+}
 
-  // Click vào ngày nào thì cập nhật toàn bộ Dashboard sang ngày đó!
-  rail.querySelectorAll<HTMLElement>('.forecast-day-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const dateStr = card.getAttribute('data-date');
-      if (dateStr) {
-        updateMasterWorkstation(new Date(dateStr));
+function renderAll(): void {
+  const root = document.getElementById('chronoWorkstation');
+  if (!root) return;
+
+  const doc = getDoctorProfile();
+  const ev = evaluateDayScore(state.selectedDate, doc);
+  const weekData = getWeekEvaluation(state.selectedDate, doc);
+
+  // Command Bar
+  const dateInput = document.getElementById('ckDatePicker') as HTMLInputElement | null;
+  if (dateInput) dateInput.value = ev.dateKey;
+
+  const solarDisp = document.getElementById('ckSolarDisplay');
+  const lunarDisp = document.getElementById('ckLunarDisplay');
+  if (solarDisp) solarDisp.textContent = `${formatDayOfWeekShort(ev.dateObj)}, ${ev.formattedDate}`;
+  if (lunarDisp) {
+    lunarDisp.textContent = `Âm ${ev.lunarDay}/${ev.lunarMonth}${ev.lunar.isLeap ? 'N' : ''} • ${ev.canChiDay}`;
+  }
+
+  const profName = document.getElementById('ckProfileName');
+  const profMeta = document.getElementById('ckProfileMeta');
+  if (profName) profName.textContent = doc.name;
+  if (profMeta) profMeta.textContent = `Truyền Nhiễm • ${doc.canNam} ${doc.chiNam} (${doc.napAmName})`;
+
+  // Left Column
+  renderHeroScoreAndSplit(ev);
+  renderEnvironmentAndCompass(ev);
+  renderBiorhythmAndWave(ev, weekData);
+  renderLifeGuidance(ev);
+
+  // Right Column
+  syncModeTabs();
+  if (state.activeMode === 'now') {
+    renderModeNow(ev);
+  } else if (state.activeMode === 'calendar') {
+    renderModeCalendar(ev, weekData);
+  } else {
+    renderModeFinder();
+  }
+
+  updateLiveBar();
+  updateDayScoreBadge();
+  updateHeroEnergyBadge();
+}
+
+function jumpToDateKey(dateKey: string): void {
+  const [y, m, d] = dateKey.split('-').map(Number);
+  if (!y || !m || !d) return;
+  state.selectedDate = new Date(y, m - 1, d);
+  state.calendarYear = y;
+  state.calendarMonth = m;
+  renderAll();
+}
+
+function bindWorkstationEvents(): void {
+  const root = document.getElementById('chronoWorkstation');
+  if (!root || root.getAttribute('data-cockpit-bound') === '1') return;
+  root.setAttribute('data-cockpit-bound', '1');
+
+  root.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    const modeBtn = target.closest('[data-cockpit-mode]') as HTMLElement | null;
+    if (modeBtn) {
+      const mode = modeBtn.getAttribute('data-cockpit-mode') as CockpitMode;
+      if (mode) {
+        state.activeMode = mode;
+        renderAll();
       }
+      return;
+    }
+
+    const gioBtn = target.closest('[data-gio-idx]') as HTMLElement | null;
+    if (gioBtn) {
+      const idx = Number(gioBtn.getAttribute('data-gio-idx'));
+      if (!Number.isNaN(idx)) {
+        state.selectedHourIdx = idx;
+        renderAll();
+      }
+      return;
+    }
+
+    const jumpBtn = target.closest('[data-jump-date]') as HTMLElement | null;
+    if (jumpBtn) {
+      const dk = jumpBtn.getAttribute('data-jump-date');
+      if (dk) {
+        jumpToDateKey(dk);
+        if (state.activeMode === 'finder') {
+          state.activeMode = 'now';
+          renderAll();
+        }
+      }
+      return;
+    }
+
+    const finderBtn = target.closest('[data-finder-purpose]') as HTMLElement | null;
+    if (finderBtn) {
+      const purpose = finderBtn.getAttribute('data-finder-purpose') as FinderPurpose;
+      if (purpose) {
+        state.finderPurpose = purpose;
+        renderModeFinder();
+      }
+      return;
+    }
+
+    if (target.closest('#ckPrevDayBtn')) {
+      state.selectedDate = new Date(
+        state.selectedDate.getFullYear(),
+        state.selectedDate.getMonth(),
+        state.selectedDate.getDate() - 1
+      );
+      state.calendarYear = state.selectedDate.getFullYear();
+      state.calendarMonth = state.selectedDate.getMonth() + 1;
+      renderAll();
+      return;
+    }
+
+    if (target.closest('#ckNextDayBtn')) {
+      state.selectedDate = new Date(
+        state.selectedDate.getFullYear(),
+        state.selectedDate.getMonth(),
+        state.selectedDate.getDate() + 1
+      );
+      state.calendarYear = state.selectedDate.getFullYear();
+      state.calendarMonth = state.selectedDate.getMonth() + 1;
+      renderAll();
+      return;
+    }
+
+    if (target.closest('#ckTodayBtn')) {
+      const today = new Date();
+      state.selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      state.selectedHourIdx = getHourChiIndexFromHour(today.getHours());
+      state.calendarYear = today.getFullYear();
+      state.calendarMonth = today.getMonth() + 1;
+      renderAll();
+      return;
+    }
+
+    if (target.closest('#ckMonthPrevBtn')) {
+      if (state.calendarMonth === 1) {
+        state.calendarMonth = 12;
+        state.calendarYear -= 1;
+      } else {
+        state.calendarMonth -= 1;
+      }
+      renderModeCalendar(evaluateDayScore(state.selectedDate), getWeekEvaluation(state.selectedDate));
+      return;
+    }
+
+    if (target.closest('#ckMonthNextBtn')) {
+      if (state.calendarMonth === 12) {
+        state.calendarMonth = 1;
+        state.calendarYear += 1;
+      } else {
+        state.calendarMonth += 1;
+      }
+      renderModeCalendar(evaluateDayScore(state.selectedDate), getWeekEvaluation(state.selectedDate));
+      return;
+    }
+
+    if (target.closest('#ckProfileBtn')) {
+      openDoctorProfileDrawer(() => renderAll());
+      return;
+    }
+
+    if (target.closest('#ckShiftEnergyChip') || target.closest('#ckToggleEnergyBtn')) {
+      openEnergyModal();
+      return;
+    }
+
+    if (target.closest('#ckToggleBreakdownBtn')) {
+      state.showBreakdown = !state.showBreakdown;
+      const btn = document.getElementById('ckToggleBreakdownBtn');
+      const box = document.getElementById('ckBreakdownChips');
+      if (btn) btn.setAttribute('aria-expanded', state.showBreakdown ? 'true' : 'false');
+      if (box) box.classList.toggle('is-open', state.showBreakdown);
+      return;
+    }
+
+    if (target.closest('#ckCopySbarBtn')) {
+      const ev = evaluateDayScore(state.selectedDate);
+      const txt = copyDaySummaryText(ev);
+      navigator.clipboard?.writeText(txt).then(() => {
+        const btn = document.getElementById('ckCopySbarBtn');
+        if (btn) {
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã chép';
+          setTimeout(() => {
+            btn.innerHTML = orig;
+          }, 1800);
+        }
+      });
+      return;
+    }
+
+    if (target.closest('#ckDownloadIcsBtn')) {
+      downloadICSFile(evaluateDayScore(state.selectedDate));
+      return;
+    }
+  });
+
+  const datePicker = document.getElementById('ckDatePicker') as HTMLInputElement | null;
+  if (datePicker) {
+    datePicker.addEventListener('change', () => {
+      if (datePicker.value) jumpToDateKey(datePicker.value);
     });
-  });
+  }
 }
 
-/**
- * 7. Cập nhật 4 Trụ Cột Hành Động Lâm Sàng
- */
-function renderClinicalActionPillars(evalData: DayScoreEvaluation): void {
-  const container = document.getElementById('clinicalPillarsGrid');
-  if (!container) return;
+export function initClinicianBriefingBanner(): void {
+  const root = document.getElementById('chronoWorkstation');
+  if (!root) return;
 
-  const pillars = [
-    { key: 'diagnosis', icon: '🩺', title: 'Chẩn Đoán Ca Khó', data: evalData.advice.diagnosis },
-    { key: 'pharmacotherapy', icon: '💊', title: 'Dược Trị Liệu & Y Lệnh', data: evalData.advice.pharmacotherapy },
-    { key: 'communication', icon: '🗣️', title: 'Giao Tiếp & Tiên Lượng', data: evalData.advice.communication },
-    { key: 'evidence', icon: '📚', title: 'Y Học Chứng Cứ EBM', data: evalData.advice.evidence }
-  ];
+  bindWorkstationEvents();
+  renderAll();
 
-  container.innerHTML = pillars.map(p => {
-    const isGood = p.data.status === 'good';
-    const badgeColor = isGood ? 'tag-emerald' : 'tag-primary';
-    const badgeText = isGood ? 'Đại Cát' : 'Ổn Định';
+  if (cockpitClockInterval !== null) {
+    window.clearInterval(cockpitClockInterval);
+  }
+  cockpitClockInterval = window.setInterval(updateLiveBar, 1000);
 
-    return `
-      <div class="clinical-pillar-card" title="${p.title}: ${p.data.text}">
-        <div class="pillar-top-row">
-          <span class="pillar-title"><span>${p.icon}</span> ${p.title}</span>
-          <span class="pillar-badge ${badgeColor}">${badgeText}</span>
-        </div>
-        <div class="pillar-text">${p.data.text}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-/**
- * Sao chép Báo cáo SBAR Ca Trực vào Clipboard
- */
-function copySbarBriefing(date: Date, btn: HTMLElement): void {
-  const evalData = evaluateDayScore(date);
-  const now = new Date();
-  const curHour = evalData.gioTimeline.find(g => g.isCurrent) || evalData.gioTimeline[0];
-
-  const text = `🩺 [CLINIPORTAL • BÁO CÁO NHỊP SINH HỌC & SẴN SÀNG TRỰC CA]
-• Thời điểm: ${evalData.formattedDate} (${evalData.lunarDay}/${evalData.lunarMonth} Âm lịch)
-• Điểm Thần Khí: ${evalData.total}/100 (${evalData.rating})
-• Can Chi & Bản Mệnh: Ngày ${evalData.canChiDay} • Trực ${evalData.trucNgay.name} • Sao ${evalData.saoTu.name}
-• Sóng Biorhythm 4 Trục:
-  - 🧠 Trí tuệ: ${evalData.bio.intellectual > 0 ? '+' : ''}${evalData.bio.intellectual}%
-  - 🎯 Trực giác: ${evalData.bio.intuitive > 0 ? '+' : ''}${evalData.bio.intuitive}%
-  - ❤️ Cảm xúc: ${evalData.bio.emotional > 0 ? '+' : ''}${evalData.bio.emotional}%
-  - 💪 Thể lực: ${evalData.bio.physical > 0 ? '+' : ''}${evalData.bio.physical}%
-• Canh Giờ Hiện Tại: Giờ ${curHour.chi} (${curHour.isHoangDao ? '🌟 Hoàng Đạo' : 'Hắc Đạo'})
-• Tác Vụ Y Khoa Trọng Tâm:
-  - Khám ca khó: ${evalData.medicalTasks.kham_chandoan.recommendation} (${evalData.medicalTasks.kham_chandoan.totalScore}đ)
-  - Khởi phác đồ: ${evalData.medicalTasks.khoi_phacdo.recommendation} (${evalData.medicalTasks.khoi_phacdo.totalScore}đ)
-  - Ra toa xuất viện: ${evalData.medicalTasks.chinh_lieu_xuatvien.recommendation} (${evalData.medicalTasks.chinh_lieu_xuatvien.totalScore}đ)
-• Lời Khuyên Hành Động: ${evalData.bio.clinicalTips[0] || 'Tuân thủ y lệnh thường quy an toàn.'}`;
-
-  navigator.clipboard.writeText(text).then(() => {
-    const originalHtml = btn.innerHTML;
-    btn.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> <span>Đã Chép SBAR</span>';
-    setTimeout(() => {
-      btn.innerHTML = originalHtml;
-    }, 2000);
-  });
+  if (!globalEventsBound) {
+    globalEventsBound = true;
+    window.addEventListener('cliniportal:doctor-profile-updated', () => {
+      renderAll();
+    });
+    window.addEventListener('cliniportal:cockpit-switch-mode', (evt: Event) => {
+      const custom = evt as CustomEvent<{ mode?: CockpitMode; dateObj?: Date }>;
+      if (custom.detail?.mode) state.activeMode = custom.detail.mode;
+      if (custom.detail?.dateObj instanceof Date) {
+        const d = custom.detail.dateObj;
+        state.selectedDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        state.calendarYear = d.getFullYear();
+        state.calendarMonth = d.getMonth() + 1;
+      }
+      renderAll();
+    });
+  }
 }

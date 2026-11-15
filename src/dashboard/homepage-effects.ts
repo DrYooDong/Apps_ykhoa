@@ -7,10 +7,18 @@ import {
   updateDayScoreBadge,
   updateHeroEnergyBadge,
   openDayScoreModal,
-  openEnergyModal
+  openEnergyModal,
+  calculateShiftEnergy
 } from '../tools/good-day-calculator';
 
+let heroClockTimer: number | null = null;
+
 export function initHeroClock(): void {
+  if (heroClockTimer !== null) {
+    window.clearInterval(heroClockTimer);
+    heroClockTimer = null;
+  }
+
   const timeEl = document.getElementById('statusClockTime');
   const dateEl = document.getElementById('statusClockDate');
   const greetEl = document.getElementById('statusGreetingText');
@@ -34,42 +42,17 @@ export function initHeroClock(): void {
       else greetEl.textContent = 'Chào buổi tối, Bác sĩ!';
     }
 
-    // Shift Calculation
+    const energy = calculateShiftEnergy(now);
     if (shiftText) {
-      let shiftName = '';
-      let endH = 0;
-      if (h >= 7 && h < 13) {
-        shiftName = 'Ca Sáng';
-        endH = 13;
-      } else if (h >= 13 && h < 21) {
-        shiftName = 'Ca Chiều';
-        endH = 21;
-      } else {
-        shiftName = 'Ca Đêm';
-        endH = (h >= 21) ? 31 : 7;
-      }
-
-      const currentMins = (h < 7 && endH === 7) ? (h + 24) * 60 + m : h * 60 + m;
-      const targetMins = endH * 60;
-      const diffMins = Math.max(0, targetMins - currentMins);
-      const remH = Math.floor(diffMins / 60);
-      const remM = diffMins % 60;
-      shiftText.textContent = `${shiftName} (còn ${remH}h${remM}p)`;
+      shiftText.textContent = `${energy.shiftName} (${energy.shiftRemainingText})`;
     }
-
-    // Circadian Energy Calculation
     if (energyText) {
-      let energyPercent = 85;
-      if (h >= 8 && h <= 11) energyPercent = 95;
-      else if (h >= 13 && h <= 15) energyPercent = 70;
-      else if (h >= 16 && h <= 19) energyPercent = 88;
-      else if (h >= 22 || h <= 4) energyPercent = 55;
-      energyText.textContent = `${energyPercent}% Năng lượng`;
+      energyText.textContent = `${energy.energyPercent}% • ${energy.statusText}`;
     }
   }
 
   update();
-  setInterval(update, 1000);
+  heroClockTimer = window.setInterval(update, 1000);
 }
 
 export function initGoodDayAndEnergyButtons(): void {

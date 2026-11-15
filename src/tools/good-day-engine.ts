@@ -1,84 +1,39 @@
 /**
- * CliniPortal 2.0 — Good Day Calculation Engine & Clinical Biorhythms (Chuyên Ngành Nội Khoa)
+ * CliniPortal 2.0 — Chronobiology, Astronomical Lunar & Infectious Diseases Engine (v3.0)
+ * - Lịch Âm Thiên Văn Việt Nam chuẩn UTC+7 (Hồ Ngọc Đức): Sóc, Nhuận, 24 Tiết Khí theo kinh độ Mặt Trời
+ * - Tự động lập Bát Tự Tứ Trụ (Năm - Tháng - Ngày - Giờ) & Nạp Âm 60 Hoa Giáp
+ * - Tỷ trọng 60/40: 60% Con Người, Môi Trường & Đời Sống (0–60đ) • 40% Bác Sĩ Truyền Nhiễm (0–40đ)
  * Path: src/tools/good-day-engine.ts
  */
 
 import type {
+  ElementType,
+  LunarDateInfo,
+  NapAmDetail,
+  BatTuPillars,
   DoctorProfile,
-  DoctorSpecialty,
-  SpecialtyMeta,
   TrucItem,
   TietKhiItem,
   ThanSatItem,
   SaoTuItem,
   GioDetailItem,
   BiorhythmResult,
-  ClinicalAdvice,
   ClinicalAdviceItem,
   DiaChiRelationResult,
   QuyNhanLocResult,
+  MedicalTaskType,
+  MedicalTaskScoreEvaluation,
+  GioRankResult,
+  ScoreBreakdownFactor,
+  DirectionGuide,
+  HumanEnvironmentEval,
+  InfectiousClinicalEval,
   DayScoreEvaluation,
   WeekDaySummary,
+  FinderPurpose,
   BestClinicalDayResult,
-  ShiftEnergyData,
-  NapAmElement,
-  NapAmDetail,
-  MedicalTaskType,
-  MedicalTaskConfig,
-  MedicalTaskScoreEvaluation,
-  GioRankResult
+  ShiftEnergyData
 } from './good-day-types';
-
-export const SPECIALTY_METAS: Record<DoctorSpecialty, SpecialtyMeta> = {
-  internal_general: {
-    id: 'internal_general',
-    name: 'Nội Tổng Quát & Ca Bệnh Phức Tạp',
-    shortName: 'Nội Tổng Quát',
-    icon: '🩺',
-    description: 'Ưu tiên tư duy chẩn đoán nhiều tầng, tiếp cận đa bệnh lý đồng mắc và tối ưu hóa phối hợp thuốc.',
-    weights: { physical: 0.10, intellectual: 0.50, emotional: 0.15, intuitive: 0.25 }
-  },
-  internal_cardio: {
-    id: 'internal_cardio',
-    name: 'Nội Tim Mạch & Huyết Động Học',
-    shortName: 'Nội Tim Mạch',
-    icon: '❤️',
-    description: 'Ưu tiên nhận định biến đổi ECG, siêu âm POCUS huyết động và kiểm soát tứ trụ suy tim / mạch vành.',
-    weights: { physical: 0.10, intellectual: 0.45, emotional: 0.15, intuitive: 0.30 }
-  },
-  internal_resp_icu: {
-    id: 'internal_resp_icu',
-    name: 'Nội Hô Hấp & Hồi Sức Nội Khoa (ICU)',
-    shortName: 'Hô Hấp & ICU Nội',
-    icon: '🫁',
-    description: 'Ưu tiên phân tích khí máu động mạch, điều chỉnh thông khí cơ học và can thiệp giờ vàng sốc nhiễm khuẩn.',
-    weights: { physical: 0.15, intellectual: 0.40, emotional: 0.10, intuitive: 0.35 }
-  },
-  internal_gi_hepa: {
-    id: 'internal_gi_hepa',
-    name: 'Nội Tiêu Hóa & Gan Mật',
-    shortName: 'Tiêu Hóa & Gan Mật',
-    icon: '🧪',
-    description: 'Ưu tiên biện luận chức năng gan, phân tầng xuất huyết tiêu hóa và kiểm soát biến chứng xơ gan / viêm tụy cấp.',
-    weights: { physical: 0.10, intellectual: 0.50, emotional: 0.15, intuitive: 0.25 }
-  },
-  internal_endo_nephro: {
-    id: 'internal_endo_nephro',
-    name: 'Nội Tiết, Chuyển Hóa & Thận Học',
-    shortName: 'Nội Tiết & Thận',
-    icon: '🩸',
-    description: 'Ưu tiên cân bằng điện giải toan kiềm, phác đồ insulin nội viện và hiệu chỉnh dược lý theo eGFR/CrCl.',
-    weights: { physical: 0.10, intellectual: 0.55, emotional: 0.15, intuitive: 0.20 }
-  },
-  internal_neuro_id: {
-    id: 'internal_neuro_id',
-    name: 'Nội Thần Kinh & Bệnh Truyền Nhiễm',
-    shortName: 'Thần Kinh & Nhiễm',
-    icon: '🧠',
-    description: 'Ưu tiên định vị tổn thương thần kinh khu trú, dược động học kháng sinh màng não và quản lý nhiễm trùng nặng.',
-    weights: { physical: 0.10, intellectual: 0.45, emotional: 0.15, intuitive: 0.30 }
-  }
-};
 
 import {
   CAN,
@@ -89,6 +44,9 @@ import {
   GIO_TIME,
   HOANG_DAO_MAP,
   GIO_THAN_SAT,
+  HY_THAN_MAP,
+  TAI_THAN_MAP,
+  HAC_THAN_MAP,
   NHI_THAP_BAT_TU,
   TRUC_LIST,
   TIET_KHI_LIST,
@@ -110,730 +68,798 @@ import {
   MEDICAL_TASKS_CONFIG
 } from './good-day-data';
 
-export function getJDN(day: number, month: number, year: number): number {
-  const a = Math.floor((14 - month) / 12);
-  const y = year + 4800 - a;
-  const m = month + 12 * a - 3;
-  return day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+const PI = Math.PI;
+const clamp = (val: number, min: number, max: number): number => Math.max(min, Math.min(max, val));
+
+function formatDateKey(dateObj: Date): string {
+  const y = dateObj.getFullYear();
+  const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const d = String(dateObj.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 }
 
-export function getCanChiYear(year: number): { can: string; chi: string; full: string } {
-  const canIdx = (year - 4) % 10;
-  const chiIdx = (year - 4) % 12;
-  const can = CAN[(canIdx + 10) % 10]!;
-  const chi = CHI[(chiIdx + 12) % 12]!;
+function formatDateVN(dateObj: Date): string {
+  const d = String(dateObj.getDate()).padStart(2, '0');
+  const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+  return `${d}/${m}/${dateObj.getFullYear()}`;
+}
+
+function formatDayOfWeekVN(dateObj: Date): string {
+  const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+  return days[dateObj.getDay()] || 'Chủ Nhật';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 1. LỊCH ÂM THIÊN VĂN VIỆT NAM (UTC+7) — HỒ NGỌC ĐỨC ALGORITHM
+// ═══════════════════════════════════════════════════════════════════════════
+
+export function getJDN(dd: number, mm: number, yy: number): number {
+  const a = Math.floor((14 - mm) / 12);
+  const y = yy + 4800 - a;
+  const m = mm + 12 * a - 3;
+  let jd =
+    dd +
+    Math.floor((153 * m + 2) / 5) +
+    365 * y +
+    Math.floor(y / 4) -
+    Math.floor(y / 100) +
+    Math.floor(y / 400) -
+    32045;
+  if (jd < 2299161) {
+    jd = dd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - 32083;
+  }
+  return jd;
+}
+
+function jdToDate(jd: number): { day: number; month: number; year: number } {
+  let a: number, b: number, c: number;
+  if (jd > 2299160) {
+    a = jd + 32044;
+    b = Math.floor((4 * a + 3) / 146097);
+    c = a - Math.floor((b * 146097) / 4);
+  } else {
+    b = 0;
+    c = jd + 32082;
+  }
+  const d = Math.floor((4 * c + 3) / 1461);
+  const e = c - Math.floor((1461 * d) / 4);
+  const m = Math.floor((5 * e + 2) / 153);
+  const day = e - Math.floor((153 * m + 2) / 5) + 1;
+  const month = m + 3 - 12 * Math.floor(m / 10);
+  const year = b * 100 + d - 4800 + Math.floor(m / 10);
+  return { day, month, year };
+}
+
+function newMoon(k: number): number {
+  const T = k / 1236.85;
+  const T2 = T * T;
+  const T3 = T2 * T;
+  const dr = PI / 180;
+  let Jd1 = 2415020.75933 + 29.53058868 * k + 0.0001178 * T2 - 0.000000155 * T3;
+  Jd1 += 0.00033 * Math.sin((166.56 + 132.87 * T - 0.009173 * T2) * dr);
+  const M = 359.2242 + 29.10535608 * k - 0.0000333 * T2 - 0.00000347 * T3;
+  const Mpr = 306.0253 + 385.81691806 * k + 0.0107306 * T2 + 0.00001236 * T3;
+  const F = 21.2964 + 390.67050646 * k - 0.0016528 * T2 - 0.00000239 * T3;
+  let C1 = (0.1734 - 0.000393 * T) * Math.sin(M * dr) + 0.0021 * Math.sin(2 * dr * M);
+  C1 -= 0.4068 * Math.sin(Mpr * dr) + 0.0161 * Math.sin(dr * 2 * Mpr);
+  C1 -= 0.0004 * Math.sin(dr * 3 * Mpr);
+  C1 += 0.0104 * Math.sin(dr * 2 * F) - 0.0051 * Math.sin(dr * (M + Mpr));
+  C1 -= 0.0074 * Math.sin(dr * (M - Mpr)) + 0.0004 * Math.sin(dr * (2 * F + M));
+  C1 -= 0.0004 * Math.sin(dr * (2 * F - M)) - 0.0006 * Math.sin(dr * (2 * F + Mpr));
+  C1 += 0.001 * Math.sin(dr * (2 * F - Mpr)) + 0.0005 * Math.sin(dr * (2 * Mpr + M));
+  const deltat =
+    T < -11
+      ? 0.001 + 0.000839 * T + 0.0002261 * T2 - 0.00000845 * T3 - 0.000000081 * T * T3
+      : -0.000278 + 0.000265 * T + 0.000262 * T2;
+  return Jd1 + C1 - deltat;
+}
+
+function getNewMoonDay(k: number, timeZone = 7): number {
+  return Math.floor(newMoon(k) + 0.5 + timeZone / 24);
+}
+
+function sunLongitudeDeg(jdn: number): number {
+  const T = (jdn - 2451545.0) / 36525;
+  const T2 = T * T;
+  const dr = PI / 180;
+  const M = 357.5291 + 35999.0503 * T - 0.0001559 * T2 - 0.00000048 * T * T2;
+  const L0 = 280.46645 + 36000.76983 * T + 0.0003032 * T2;
+  let DL = (1.9146 - 0.004817 * T - 0.000014 * T2) * Math.sin(dr * M);
+  DL += (0.019993 - 0.000101 * T) * Math.sin(dr * 2 * M) + 0.00029 * Math.sin(dr * 3 * M);
+  let L = (L0 + DL) * dr;
+  L -= PI * 2 * Math.floor(L / (PI * 2));
+  return (L * 180) / PI;
+}
+
+function getSunLongitudeSector(dayNumber: number, timeZone = 7): number {
+  const deg = sunLongitudeDeg(dayNumber - 0.5 - timeZone / 24);
+  return Math.floor(deg / 30);
+}
+
+function getLunarMonth11(yy: number, timeZone = 7): number {
+  const off = getJDN(31, 12, yy) - 2415021;
+  const k = Math.floor(off / 29.530588853);
+  let nm = getNewMoonDay(k, timeZone);
+  const sunLong = getSunLongitudeSector(nm, timeZone);
+  if (sunLong >= 9) {
+    nm = getNewMoonDay(k - 1, timeZone);
+  }
+  return nm;
+}
+
+function getLeapMonthOffset(a11: number, timeZone = 7): number {
+  const k = Math.floor((a11 - 2415021.076998695) / 29.530588853 + 0.5);
+  let last = 0;
+  let i = 1;
+  let arc = getSunLongitudeSector(getNewMoonDay(k + i, timeZone), timeZone);
+  do {
+    last = arc;
+    i++;
+    arc = getSunLongitudeSector(getNewMoonDay(k + i, timeZone), timeZone);
+  } while (arc !== last && i < 14);
+  return i - 1;
+}
+
+export function convertSolar2Lunar(dd: number, mm: number, yy: number, timeZone = 7): LunarDateInfo {
+  const dayNumber = getJDN(dd, mm, yy);
+  const k = Math.floor((dayNumber - 2415021.076998695) / 29.530588853);
+  let monthStart = getNewMoonDay(k + 1, timeZone);
+  if (monthStart > dayNumber) {
+    monthStart = getNewMoonDay(k, timeZone);
+  }
+  let a11 = getLunarMonth11(yy, timeZone);
+  let b11 = a11;
+  let lunarYear: number;
+  if (a11 >= monthStart) {
+    lunarYear = yy;
+    a11 = getLunarMonth11(yy - 1, timeZone);
+  } else {
+    lunarYear = yy + 1;
+    b11 = getLunarMonth11(yy + 1, timeZone);
+  }
+  const lunarDay = dayNumber - monthStart + 1;
+  const diff = Math.floor((monthStart - a11) / 29);
+  let lunarLeap = false;
+  let lunarMonth = diff + 11;
+  if (b11 - a11 > 365) {
+    const leapMonthDiff = getLeapMonthOffset(a11, timeZone);
+    if (diff >= leapMonthDiff) {
+      lunarMonth = diff + 10;
+      if (diff === leapMonthDiff) {
+        lunarLeap = true;
+      }
+    }
+  }
+  if (lunarMonth > 12) {
+    lunarMonth -= 12;
+  }
+  if (lunarMonth >= 11 && diff < 4) {
+    lunarYear -= 1;
+  }
+
+  const monthNames = [
+    '',
+    'Giêng',
+    'Hai',
+    'Ba',
+    'Tư',
+    'Năm',
+    'Sáu',
+    'Bảy',
+    'Tám',
+    'Chín',
+    'Mười',
+    'Một',
+    'Chạp'
+  ];
+  const mLabel = monthNames[lunarMonth] || String(lunarMonth);
+  return {
+    day: lunarDay,
+    month: lunarMonth,
+    year: lunarYear,
+    isLeap: lunarLeap,
+    jd: dayNumber,
+    monthLabel: lunarLeap ? `Tháng ${mLabel} (Nhuận)` : `Tháng ${mLabel}`
+  };
+}
+
+export function convertLunar2Solar(
+  lunarDay: number,
+  lunarMonth: number,
+  lunarYear: number,
+  lunarLeap: boolean,
+  timeZone = 7
+): { day: number; month: number; year: number } {
+  let a11: number, b11: number;
+  if (lunarMonth < 11) {
+    a11 = getLunarMonth11(lunarYear - 1, timeZone);
+    b11 = getLunarMonth11(lunarYear, timeZone);
+  } else {
+    a11 = getLunarMonth11(lunarYear, timeZone);
+    b11 = getLunarMonth11(lunarYear + 1, timeZone);
+  }
+  let off = lunarMonth - 11;
+  if (off < 0) off += 12;
+  if (b11 - a11 > 365) {
+    const leapOff = getLeapMonthOffset(a11, timeZone);
+    let leapMonth = leapOff - 2;
+    if (leapMonth < 0) leapMonth += 12;
+    if (lunarLeap && lunarMonth !== leapMonth) {
+      return { day: 0, month: 0, year: 0 };
+    } else if (lunarLeap || off >= leapOff) {
+      off += 1;
+    }
+  }
+  const k = Math.floor(0.5 + (a11 - 2415021.076998695) / 29.530588853);
+  const monthStart = getNewMoonDay(k + off, timeZone);
+  return jdToDate(monthStart + lunarDay - 1);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 2. CAN CHI, NẠP ÂM 60 HOA GIÁP & TỰ ĐỘNG LẬP BÁT TỰ TỨ TRỤ
+// ═══════════════════════════════════════════════════════════════════════════
+
+export function getCanChiYear(lunarYear: number): { can: string; chi: string; full: string } {
+  const can = CAN[(lunarYear + 6) % 10] || 'Giáp';
+  const chi = CHI[(lunarYear + 8) % 12] || 'Tý';
   return { can, chi, full: `${can} ${chi}` };
 }
 
-export function getCanChiDay(dateObj: Date): { can: string; chi: string; full: string; hanh: string; jdn: number } {
-  const jdn = getJDN(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear());
-  const canIdx = (jdn + 9) % 10;
-  const chiIdx = (jdn + 1) % 12;
-  const can = CAN[canIdx]!;
-  const chi = CHI[chiIdx]!;
-  return {
-    can,
-    chi,
-    full: `${can} ${chi}`,
-    hanh: NGU_HANH_CAN[can] || 'Thổ',
-    jdn
-  };
+export function getCanChiMonth(
+  lunarMonth: number,
+  yearCan: string
+): { can: string; chi: string; full: string } {
+  const yearCanIdx = CAN.indexOf(yearCan as (typeof CAN)[number]);
+  const startMonthCanIdx = ((yearCanIdx % 5) * 2 + 2) % 10; // Dần (tháng 1 Âm)
+  const canIdx = (startMonthCanIdx + lunarMonth - 1) % 10;
+  const chiIdx = (lunarMonth + 1) % 12; // Tháng 1 = Dần (idx 2)
+  const can = CAN[canIdx] || 'Bính';
+  const chi = CHI[chiIdx] || 'Dần';
+  return { can, chi, full: `${can} ${chi}` };
 }
 
-export function getApproxLunarDate(dateObj: Date): { day: number; month: number } {
-  const jdn = getJDN(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear());
-  const refJDN = 2461089;
-  const diffDays = jdn - refJDN;
-  const synodicMonth = 29.530588853;
-
-  const cycle = diffDays / synodicMonth;
-  const monthOffset = Math.floor(cycle);
-  let dayInMonth = Math.floor((cycle - monthOffset) * synodicMonth) + 1;
-  if (dayInMonth > 30) dayInMonth = 30;
-  if (dayInMonth < 1) dayInMonth = 1;
-
-  let lunarMonth = ((1 + monthOffset) % 12);
-  if (lunarMonth <= 0) lunarMonth += 12;
-
-  return { day: dayInMonth, month: lunarMonth };
+export function getCanChiDay(dateObj: Date): { can: string; chi: string; full: string; jd: number } {
+  const jd = getJDN(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear());
+  const can = CAN[(jd + 9) % 10] || 'Giáp';
+  const chi = CHI[(jd + 1) % 12] || 'Tý';
+  return { can, chi, full: `${can} ${chi}`, jd };
 }
 
-// ─── TÍNH 28 NHỊ THẬP BÁT TÚ ───────────────────────────────────────────
-
-export function getSaoTu(dateObj: Date, jdn?: number): SaoTuItem {
-  const calcJdn = jdn ?? getJDN(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear());
-  const saoTuIdx = ((calcJdn + 12) % 28 + 28) % 28;
-  return NHI_THAP_BAT_TU[saoTuIdx] || NHI_THAP_BAT_TU[0]!;
+export function getHourChiIndexFromHour(hour24: number): number {
+  const h = ((hour24 % 24) + 24) % 24;
+  if (h === 23 || h === 0) return 0; // Tý
+  return Math.floor((h + 1) / 2);
 }
 
-// ─── SAO ĐĂNG VIÊN (CHƯƠNG III: HOÁN HUNG THÀNH CÁT) ───────────────────
-export function checkSaoDangVien(saoName: string, chiNgay: string): { isDangVien: boolean; bonusScore: number; note: string } {
-  const dangVienInfo = SAO_DANG_VIEN_MAP[saoName];
-  if (dangVienInfo && dangVienInfo.chiList.includes(chiNgay)) {
-    return {
-      isDangVien: true,
-      bonusScore: dangVienInfo.bonus,
-      note: `Sao ${saoName} Đăng Viên tại ${chiNgay}: ${dangVienInfo.meaning} (+${dangVienInfo.bonus}đ)`
-    };
-  }
-  return { isDangVien: false, bonusScore: 0, note: '' };
+export function getCanChiHour(dayCan: string, hour24: number): { can: string; chi: string; full: string } {
+  const dayCanIdx = Math.max(0, CAN.indexOf(dayCan as (typeof CAN)[number]));
+  const chiIdx = getHourChiIndexFromHour(hour24);
+  const tyCanIdx = (dayCanIdx % 5) * 2;
+  const canIdx = (tyCanIdx + chiIdx) % 10;
+  const can = CAN[canIdx] || 'Giáp';
+  const chi = CHI[chiIdx] || 'Tý';
+  return { can, chi, full: `${can} ${chi}` };
 }
 
-// ─── NẠP ÂM 60 HOA GIÁP & ĐỐI CHIẾU (CHƯƠNG VI) ────────────────────────
 export function getNapAm(canChi: string): NapAmDetail {
-  if (LUC_THAP_HOA_GIAP_NAP_AM[canChi]) {
-    return LUC_THAP_HOA_GIAP_NAP_AM[canChi]!;
-  }
-  const trimmed = canChi.trim();
-  if (LUC_THAP_HOA_GIAP_NAP_AM[trimmed]) {
-    return LUC_THAP_HOA_GIAP_NAP_AM[trimmed]!;
-  }
+  return (
+    LUC_THAP_HOA_GIAP_NAP_AM[canChi] || {
+      canChi,
+      name: 'Bình Địa Mộc',
+      element: 'Mộc',
+      meaning: 'Cân bằng, ổn định và phát triển hài hòa.'
+    }
+  );
+}
+
+export function getBatTuFourPillars(dateObj: Date, hour24?: number): BatTuPillars {
+  const hr = typeof hour24 === 'number' ? hour24 : dateObj.getHours();
+  const lunar = convertSolar2Lunar(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear(), 7);
+  const yearCC = getCanChiYear(lunar.year);
+  const monthCC = getCanChiMonth(lunar.month, yearCC.can);
+  const dayCC = getCanChiDay(dateObj);
+  const hourCC = getCanChiHour(dayCC.can, hr);
+
   return {
-    canChi,
-    name: "Lộ Bàng Thổ",
-    element: "Thổ",
-    meaning: "Nền tảng bình ổn, vững chãi."
+    yearCan: yearCC.can,
+    yearChi: yearCC.chi,
+    yearFull: yearCC.full,
+    monthCan: monthCC.can,
+    monthChi: monthCC.chi,
+    monthFull: monthCC.full,
+    dayCan: dayCC.can,
+    dayChi: dayCC.chi,
+    dayFull: dayCC.full,
+    hourCan: hourCC.can,
+    hourChi: hourCC.chi,
+    hourFull: hourCC.full,
+    napAmYear: getNapAm(yearCC.full),
+    napAmDay: getNapAm(dayCC.full),
+    napAmHour: getNapAm(hourCC.full)
   };
 }
 
-export function evaluateNapAmRelation(
-  napAmDoc: NapAmDetail,
-  napAmDay: NapAmDetail
-): { score: number; text: string; relationType: 'sinh_nhap' | 'dong_hanh' | 'sinh_xuat' | 'khac_xuat' | 'khac_nhap' } {
-  const hDoc = napAmDoc.element;
-  const hDay = napAmDay.element;
-
-  // 1. Sinh Nhập: Nạp Âm Ngày tương sinh Nạp Âm Bác Sĩ (Cực Tốt)
-  if (HANH_SINH_KHAC.sinh[hDay] === hDoc) {
-    return {
-      score: 12,
-      relationType: 'sinh_nhap',
-      text: `Nạp Âm Sinh Nhập (+12đ): ${napAmDay.name} (${hDay}) ngày sinh ${napAmDoc.name} (${hDoc}) tuổi thầy thuốc — Khí tiết tiếp sức, tư duy chẩn đoán sắc bén và điều trị đại hanh thông.`
-    };
-  }
-
-  // 2. Đồng Khí: Cùng hành Nạp Âm (Khá Tốt)
-  if (hDay === hDoc) {
-    return {
-      score: 6,
-      relationType: 'dong_hanh',
-      text: `Nạp Âm Đồng Khí (+6đ): Cùng hành ${hDoc} (${napAmDay.name} & ${napAmDoc.name}) — Tương hòa, bình ổn, hỗ trợ tập trung y vụ nội trú.`
-    };
-  }
-
-  // 3. Sinh Xuất: Nạp Âm Bác Sĩ sinh Nạp Âm Ngày
-  if (HANH_SINH_KHAC.sinh[hDoc] === hDay) {
-    return {
-      score: 2,
-      relationType: 'sinh_xuat',
-      text: `Nạp Âm Sinh Xuất (+2đ): ${napAmDoc.name} (${hDoc}) sinh ${napAmDay.name} (${hDay}) ngày — Thầy thuốc dốc tâm huyết cho người bệnh, hiệu quả hồi phục tích cực.`
-    };
-  }
-
-  // 4. Khắc Xuất: Nạp Âm Bác Sĩ khắc Nạp Âm Ngày
-  if (HANH_SINH_KHAC.khac[hDoc] === hDay) {
-    return {
-      score: -4,
-      relationType: 'khac_xuat',
-      text: `Nạp Âm Khắc Xuất (-4đ): Tuổi (${hDoc}) khắc chế Khí ngày (${hDay}) — Cần chú ý giữ gìn thể lực, tránh căng thẳng kéo dài trong ca trực.`
-    };
-  }
-
-  // 5. Khắc Nhập: Nạp Âm Ngày khắc Nạp Âm Bác Sĩ
-  return {
-    score: -10,
-    relationType: 'khac_nhap',
-    text: `Nạp Âm Khắc Nhập (-10đ): Khí ngày ${napAmDay.name} (${hDay}) tương khắc Tuổi ${napAmDoc.name} (${hDoc}) — Áp lực công việc cao, cẩn trọng rà soát kỹ tương tác thuốc và y lệnh.`
-  };
-}
-
-// ─── TÍNH TRỰC & TIẾT KHÍ ──────────────────────────────────────────────
-
-export function getTrucNgay(lunarMonth: number, chiNgay: string): TrucItem {
-  const monthChiIdx = (lunarMonth + 1) % 12;
-  const dayChiIdx = CHI.indexOf(chiNgay as any);
-  const trucIdx = (dayChiIdx - monthChiIdx + 12) % 12;
-  return TRUC_LIST[trucIdx] || TRUC_LIST[0]!;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 3. 24 TIẾT KHÍ CHUẨN KINH ĐỘ MẶT TRỜI & TỨ LY / TỨ TUYỆT
+// ═══════════════════════════════════════════════════════════════════════════
 
 export function getTietKhiInfo(dateObj: Date): {
   tietKhi: TietKhiItem;
   tuLyTuTuyet: { type: string; name: string; score: number; desc: string } | null;
 } {
-  const m = dateObj.getMonth() + 1;
-  const d = dateObj.getDate();
+  const jdToday = getJDN(dateObj.getDate(), dateObj.getMonth() + 1, dateObj.getFullYear());
+  // Kinh độ mặt trời lúc 12h trưa UTC+7
+  const lonToday = sunLongitudeDeg(jdToday - 0.5 + 5 / 24);
+  const lonTomorrow = sunLongitudeDeg(jdToday + 0.5 + 5 / 24);
 
-  let closest = TIET_KHI_LIST[0]!;
-  let minDiff = 999;
+  const sectorIndex = Math.floor(((lonToday % 360) + 360) % 360 / 15) % 24;
+  const tietKhi = TIET_KHI_LIST[sectorIndex] || TIET_KHI_LIST[0]!;
 
-  for (const tk of TIET_KHI_LIST) {
-    const monthDiff = Math.abs(tk.m - m);
-    const dayDiff = Math.abs(tk.d - d);
-    const diff = monthDiff * 30 + dayDiff;
-    if (diff < minDiff) {
-      minDiff = diff;
-      closest = tk;
-    }
-  }
-
+  const sectorTomorrow = Math.floor(((lonTomorrow % 360) + 360) % 360 / 15) % 24;
   let tuLyTuTuyet: { type: string; name: string; score: number; desc: string } | null = null;
-  const tomorrow = new Date(dateObj.getTime() + 86400000);
-  const tm = tomorrow.getMonth() + 1;
-  const td = tomorrow.getDate();
 
-  for (const tk of TIET_KHI_LIST) {
-    if (tk.m === tm && tk.d === td) {
-      if (tk.special === 'Ly') {
-        tuLyTuTuyet = { type: 'Tứ Ly', name: `Tứ Ly (Trước ${tk.name})`, score: -12, desc: "Cực điểm chuyển giao Âm Dương, kiêng khởi đầu phác đồ liều cao hoặc sự kiện lớn." };
-      } else if (tk.special === 'Tuet') {
-        tuLyTuTuyet = { type: 'Tứ Tuyệt', name: `Tứ Tuyệt (Trước ${tk.name})`, score: -8, desc: "Khí tiết cạn kiệt trước mốc Lập, thận trọng y lệnh phức tạp nhiều tương tác." };
-      }
+  if (sectorTomorrow !== sectorIndex) {
+    const nextTk = TIET_KHI_LIST[sectorTomorrow];
+    if (nextTk?.special === 'Ly') {
+      tuLyTuTuyet = {
+        type: 'Tứ Ly',
+        name: `Tiền ${nextTk.name}`,
+        score: -4,
+        desc: `Ngày chuyển giao trước tiết ${nextTk.name} (Tứ Ly): Khí trời phân tách, ưu tiên nhịp sống ổn định, tránh quyết định lớn đột ngột.`
+      };
+    } else if (nextTk?.special === 'Tuet') {
+      tuLyTuTuyet = {
+        type: 'Tứ Tuyệt',
+        name: `Tiền ${nextTk.name}`,
+        score: -6,
+        desc: `Ngày chuyển giao trước tiết ${nextTk.name} (Tứ Tuyệt): Khí hậu giao mùa rõ rệt, giữ ấm/điều hòa thân nhiệt và tránh khởi sự mạo hiểm.`
+      };
     }
   }
 
-  return { tietKhi: closest, tuLyTuTuyet };
+  return { tietKhi, tuLyTuTuyet };
 }
 
-// ─── TƯƠNG TÁC ĐỊA CHI CHUYÊN SÂU ────────────────────────────────────
-
-export function kiemTraDiaChi(chiNamDoc: string, chiNgay: string): DiaChiRelationResult {
-  const tamHopGroups = [
-    ["Thân", "Tý", "Thìn"],
-    ["Dần", "Ngọ", "Tuất"],
-    ["Tỵ", "Dậu", "Sửu"],
-    ["Hợi", "Mão", "Mùi"]
-  ];
-  let tamHop = { isMatch: false, text: "Không thuộc Tam Hợp", score: 0 };
-  for (const grp of tamHopGroups) {
-    if (grp.includes(chiNamDoc) && grp.includes(chiNgay) && chiNamDoc !== chiNgay) {
-      tamHop = { isMatch: true, text: `Tam Hợp (${chiNamDoc} - ${chiNgay}): Đồng nghiệp hòa thuận, hội chẩn ăn ý (+15đ)`, score: 15 };
-      break;
-    }
-  }
-
-  const lucHopPairs = [
-    ["Tý", "Sửu"], ["Dần", "Hợi"], ["Mão", "Tuất"],
-    ["Thìn", "Dậu"], ["Tỵ", "Thân"], ["Ngọ", "Mùi"]
-  ];
-  let lucHop = { isMatch: false, text: "Không thuộc Lục Hợp", score: 0 };
-  for (const pair of lucHopPairs) {
-    if ((pair[0] === chiNamDoc && pair[1] === chiNgay) || (pair[1] === chiNamDoc && pair[0] === chiNgay)) {
-      lucHop = { isMatch: true, text: `Lục Hợp (${chiNamDoc} hợp ${chiNgay}): Mọi sự hanh thông, thân nhân người bệnh tin tưởng (+10đ)`, score: 10 };
-      break;
-    }
-  }
-
-  const lucXungPairs = [
-    ["Tý", "Ngọ"], ["Sửu", "Mùi"], ["Dần", "Thân"],
-    ["Mão", "Dậu"], ["Thìn", "Tuất"], ["Tỵ", "Hợi"]
-  ];
-  let lucXung = { isMatch: false, text: "Không phạm Lục Xung", score: 0 };
-  for (const pair of lucXungPairs) {
-    if ((pair[0] === chiNamDoc && pair[1] === chiNgay) || (pair[1] === chiNamDoc && pair[0] === chiNgay)) {
-      lucXung = { isMatch: true, text: `Lục Xung (${chiNamDoc} xung ${chiNgay}): Trực xung, dễ phát sinh bất đồng chuyên môn (-15đ)`, score: -15 };
-      break;
-    }
-  }
-
-  const lucHaiPairs = [
-    ["Tý", "Mùi"], ["Sửu", "Ngọ"], ["Dần", "Tỵ"],
-    ["Mão", "Thìn"], ["Thân", "Hợi"], ["Dậu", "Tuất"]
-  ];
-  let lucHai = { isMatch: false, text: "Không phạm Lục Hại", score: 0 };
-  for (const pair of lucHaiPairs) {
-    if ((pair[0] === chiNamDoc && pair[1] === chiNgay) || (pair[1] === chiNamDoc && pair[0] === chiNgay)) {
-      lucHai = { isMatch: true, text: `Lục Hại (${chiNamDoc} hại ${chiNgay}): Dễ có sự cố giao tiếp, cần giải thích cặn kẽ (-10đ)`, score: -10 };
-      break;
-    }
-  }
-
-  const hinhGroups = [
-    ["Dần", "Tỵ", "Thân"],
-    ["Sửu", "Tuất", "Mùi"]
-  ];
-  let tuongHinh = { isMatch: false, text: "Không phạm Tương Hình", score: 0 };
-  for (const grp of hinhGroups) {
-    if (grp.includes(chiNamDoc) && grp.includes(chiNgay) && chiNamDoc !== chiNgay) {
-      tuongHinh = { isMatch: true, text: `Tương Hình (${chiNamDoc} hình ${chiNgay}): Áp lực hành chính, cẩn trọng sai sót (-8đ)`, score: -8 };
-      break;
-    }
-  }
-  if (!tuongHinh.isMatch) {
-    if ((chiNamDoc === "Tý" && chiNgay === "Mão") || (chiNamDoc === "Mão" && chiNgay === "Tý")) {
-      tuongHinh = { isMatch: true, text: `Vô Lễ Chi Hình (Tý - Mão): Cẩn trọng văn hóa giao tiếp khoa phòng (-8đ)`, score: -8 };
-    } else if (chiNamDoc === chiNgay && ["Thìn", "Ngọ", "Dậu", "Hợi"].includes(chiNamDoc)) {
-      tuongHinh = { isMatch: true, text: `Tự Hình (${chiNamDoc} tự hình): Dễ tự gây áp lực tâm lý cho bản thân (-6đ)`, score: -6 };
-    }
-  }
-
-  const totalScore = tamHop.score + lucHop.score + lucXung.score + lucHai.score + tuongHinh.score;
-  return { tamHop, lucHop, lucXung, lucHai, tuongHinh, totalScore };
+export function getDirectionsGuide(canNgay: string, chiNgay: string): DirectionGuide {
+  const hyThan = HY_THAN_MAP[canNgay] || 'Đông Nam';
+  const taiThan = TAI_THAN_MAP[canNgay] || 'Chính Đông';
+  const hacThan = HAC_THAN_MAP[chiNgay] || 'Tây Bắc';
+  return {
+    hyThan,
+    taiThan,
+    hacThan,
+    travelTip: `Ưu tiên xuất hành hoặc bố trí góc làm việc hướng ${hyThan} (Hỷ Thần) / ${taiThan} (Tài Thần); tránh hướng ${hacThan} (Hắc Thần) khi đi xa.`
+  };
 }
 
-// ─── THIÊN ẤT QUÝ NHÂN & LỘC THẦN ────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════
+// 4. HỒ SƠ BÁC SĨ TRUYỀN NHIỄM & TỰ ĐỘNG TÍNH BÁT TỰ
+// ═══════════════════════════════════════════════════════════════════════════
 
-export function kiemTraQuyNhanLoc(canNamDoc: string, canNgay: string, chiNgay: string): QuyNhanLocResult {
-  const qnList = THIEN_AT_MAP[canNamDoc] || [];
-  let thienAt = { isMatch: false, text: "Không gặp Thiên Ất Quý Nhân", score: 0 };
-  if (qnList.includes(chiNgay)) {
-    thienAt = { isMatch: true, text: `Đắc Thiên Ất Quý Nhân tại ${chiNgay}: Gặp thầy giỏi bạn tốt, ca bệnh khó có hướng xử trí tối ưu (+15đ)`, score: 15 };
-  }
+const DEFAULT_BIRTH = {
+  name: 'BS. Nguyễn Phúc',
+  gender: 'Nam' as const,
+  birthDay: 15,
+  birthMonth: 8,
+  birthYear: 1995,
+  birthHour: 8,
+  birthMinute: 30
+};
 
-  const locChi = LOC_THAN_MAP[canNamDoc];
-  let locThan = { isMatch: false, text: "Không gặp Lộc Thần", score: 0 };
-  if (locChi === chiNgay) {
-    locThan = { isMatch: true, text: `Đắc Lộc Thần tại ${chiNgay}: Y nghiệp phát triển vững bền, công tác điều trị hanh thông (+12đ)`, score: 12 };
-  }
+function enrichProfile(raw: Partial<DoctorProfile>): DoctorProfile {
+  const birthDay = clamp(Number(raw.birthDay) || DEFAULT_BIRTH.birthDay, 1, 31);
+  const birthMonth = clamp(Number(raw.birthMonth) || DEFAULT_BIRTH.birthMonth, 1, 12);
+  const birthYear = clamp(Number(raw.birthYear) || DEFAULT_BIRTH.birthYear, 1940, 2025);
+  const birthHour = clamp(Number(raw.birthHour ?? DEFAULT_BIRTH.birthHour), 0, 23);
+  const birthMinute = clamp(Number(raw.birthMinute ?? DEFAULT_BIRTH.birthMinute), 0, 59);
 
-  return { thienAt, locThan, totalScore: thienAt.score + locThan.score };
-}
-
-// ─── KIỂM TRA THẦN SÁT Y KHOA CHUYÊN SÂU ──────────────────────────────
-
-export function kiemTraThanSat(lunarMonth: number, canNgay: string, chiNgay: string, canNamDoc: string): { list: ThanSatItem[]; score: number } {
-  const list: ThanSatItem[] = [];
-  let score = 0;
-
-  if (THIEN_DUC_MAP[lunarMonth] === canNgay) {
-    list.push({ name: "Thiên Đức", type: "pos", score: 12, desc: "Cát thần tối thượng: Hóa giải tai ương, bệnh nhân nguy kịch chuyển hóa nhẹ." });
-    score += 12;
-  }
-
-  if (NGUYET_DUC_MAP[lunarMonth] === canNgay) {
-    list.push({ name: "Nguyệt Đức", type: "pos", score: 10, desc: "Cát thần phúc đức: Mọi sự bình an, điều hòa sinh khí nội môi." });
-    score += 10;
-  }
-
-  if (THIEN_Y_MAP[lunarMonth] === chiNgay) {
-    list.push({ name: "Thiên Y", type: "pos", score: 15, desc: "Thần Sao Y Dược Cát Tinh: Trị bệnh thần hiệu, dùng thuốc đúng đích, bệnh mau dứt điểm." });
-    score += 15;
-  }
-
-  if (SINH_KHI_MAP[lunarMonth] === chiNgay) {
-    list.push({ name: "Sinh Khí", type: "pos", score: 10, desc: "Sinh khí dồi dào: Thúc đẩy tái tạo tế bào, nâng cao đề kháng tự nhiên." });
-    score += 10;
-  }
-
-  if (SAT_CHU_MAP[lunarMonth] === chiNgay) {
-    list.push({ name: "Sát Chủ Ngày", type: "neg", score: -15, desc: "Đại sát: Thận trọng cao độ khi ra y lệnh liều cao hoặc thuốc độc tính tích lũy." });
-    score -= 15;
-  }
-
-  if (THO_TU_MAP[lunarMonth] === chiNgay) {
-    list.push({ name: "Thọ Tử Ngày", type: "neg", score: -15, desc: "Đại hung: Tránh đổi phác đồ mạo hiểm, chú ý bám sát dấu hiệu sinh hiệu suy sụp." });
-    score -= 15;
-  }
-
-  const daoChiemList = DAO_CHIEM_SAT_DAYS[lunarMonth] || [];
-  if (daoChiemList.includes(chiNgay)) {
-    list.push({ name: "Đao Chiêm Sát", type: "neg", score: -8, desc: "Khí tiết phân tán: Kiểm tra kỹ 5 Đúng và tương tác thuốc trước khi phát thuốc." });
-    score -= 8;
-  }
-
-  const isThapAc = THAP_AC_DAI_BAI.some(item =>
-    item.yearCans.includes(canNamDoc) && item.month === lunarMonth && item.dayCanChi === `${canNgay} ${chiNgay}`
-  );
-  if (isThapAc) {
-    list.push({ name: "Thập Ác Đại Bại", type: "neg", score: -18, desc: "Đại hung nhật hạn: Kiêng khởi đầu liệu trình lớn, tập trung duy trì phác đồ an toàn." });
-    score -= 18;
-  }
-
-  return { list, score };
-}
-
-// ─── TÍNH NHỊP SINH HỌC BIORHYTHMS (CHUYÊN KHOA NỘI KHOA) ─────────────
-
-export function calculateBiorhythms(
-  birthDate: Date,
-  targetDate: Date = new Date(),
-  specialty: DoctorSpecialty = 'internal_general'
-): BiorhythmResult {
-  const diffTime = targetDate.getTime() - birthDate.getTime();
-  const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-  const physical = Math.round(Math.sin((2 * Math.PI * days) / 23) * 100);
-  const emotional = Math.round(Math.sin((2 * Math.PI * days) / 28) * 100);
-  const intellectual = Math.round(Math.sin((2 * Math.PI * days) / 33) * 100);
-  const intuitive = Math.round(Math.sin((2 * Math.PI * days) / 38) * 100);
-
-  const meta = SPECIALTY_METAS[specialty] || SPECIALTY_METAS.internal_general;
-  const w = meta.weights;
-  const weightedBio = physical * w.physical + intellectual * w.intellectual + emotional * w.emotional + intuitive * w.intuitive;
-  const avg = Math.round(weightedBio);
-
-  let physBonus = 0;
-  let intBonus = 0;
-  let emoBonus = 0;
-  let intuitBonus = 0;
-  const clinicalTips: string[] = [];
-
-  // Trí tuệ (Intellectual) — Trọng số cốt lõi số 1 của Bác sĩ Nội khoa (40-55%)
-  if (intellectual >= 40) {
-    intBonus = 5;
-    clinicalTips.push(`🧠 Trí tuệ sáng suốt đỉnh cao (+${intellectual}%): Tư duy chẩn đoán nhiều tầng mạch lạc, phân tích cận lâm sàng sắc bén và tối ưu hóa phối hợp thuốc.`);
-  } else if (intellectual <= -40) {
-    intBonus = -4;
-    clinicalTips.push(`⚠️ Trí tuệ vùng trũng sinh học (${intellectual}%): Thận trọng đọc kỹ lại kết quả xét nghiệm, kiểm tra chéo liều thuốc theo eGFR trước khi ký y lệnh.`);
-  } else {
-    clinicalTips.push(`🧠 Trí tuệ ổn định (${intellectual}%): Tiến hành thăm khám, đi buồng và rà soát phác đồ điều trị thường quy vững vàng.`);
-  }
-
-  // Trực giác lâm sàng (Intuitive) — Nhận diện suy sụp sớm và ca khó (20-35%)
-  if (intuitive >= 30) {
-    intuitBonus = 4;
-    clinicalTips.push(`🎯 Trực giác lâm sàng nhạy bén (+${intuitive}%): Nhận diện sớm dấu hiệu suy sụp sinh hiệu âm thầm, phát hiện triệu chứng không điển hình.`);
-  } else if (intuitive <= -30) {
-    intuitBonus = -3;
-    clinicalTips.push(`⚠️ Trực giác trầm lắng (${intuitive}%): Hãy bám sát triệt để các thang điểm định lượng (NEWS2, Glasgow, SOFA, Child-Pugh) thay vì cảm tính.`);
-  }
-
-  // Cảm xúc & Giao tiếp (Emotional) — Thấu cảm bệnh mạn tính & gia đình (15%)
-  if (emotional >= 35) {
-    emoBonus = 3;
-    clinicalTips.push(`❤️ Năng lượng thấu cảm dồi dào (+${emotional}%): Rất thuận lợi giải thích tiên lượng cho gia đình, nâng cao tỷ lệ tuân thủ điều trị của bệnh nhân mạn.`);
-  } else if (emotional <= -35) {
-    emoBonus = -2;
-    clinicalTips.push(`⚠️ Nguy cơ căng thẳng cảm xúc (${emotional}%): Cần giữ tâm thái điềm tĩnh, tuân thủ mô hình SPIKES khi thông báo tin xấu.`);
-  }
-
-  // Thể lực (Physical) — Sức bền đi buồng & trực ca (10-15%)
-  if (physical >= 40) {
-    physBonus = 2;
-    clinicalTips.push(`💪 Thể lực sung mãn (+${physical}%): Duy trì sức bền đi buồng nội trú đông và sự tập trung suốt ca trực đêm.`);
-  } else if (physical <= -40) {
-    physBonus = -2;
-    clinicalTips.push(`⚠️ Thể lực mệt mỏi (${physical}%): Chú ý uống đủ nước, tranh thủ chợp mắt ngắn (Power Nap) khi khoa phòng ổn định.`);
-  }
-
-  // Khuyến nghị chuyên biệt theo phân hệ Nội khoa
-  if (specialty === 'internal_cardio') {
-    clinicalTips.push(`❤️ Chuyên khoa Tim Mạch: Ưu tiên rà soát tương tác thuốc chống đông / kháng kết tập tiểu cầu kép và cân bằng dịch vào ra.`);
-  } else if (specialty === 'internal_resp_icu') {
-    clinicalTips.push(`🫁 Chuyên khoa Hô Hấp & ICU: Luôn theo dõi sát tỷ lệ PaO2/FiO2, áp lực đường thở đỉnh và cân bằng toan kiềm trên ABG.`);
-  } else if (specialty === 'internal_endo_nephro') {
-    clinicalTips.push(`🩸 Chuyên khoa Nội Tiết & Thận: Kiểm tra kỹ kali máu và tốc độ lọc cầu thận (eGFR) trước khi dùng thuốc hạ áp nhóm RAASi hoặc SGLT2i.`);
-  } else if (specialty === 'internal_gi_hepa') {
-    clinicalTips.push(`🧪 Chuyên khoa Tiêu Hóa & Gan: Dự phòng xuất huyết tiêu hóa do stress ở bệnh nhân nặng và kiểm soát chặt bilan đông máu PT/INR.`);
-  } else if (specialty === 'internal_neuro_id') {
-    clinicalTips.push(`🧠 Chuyên khoa Thần Kinh & Nhiễm: Đánh giá thang điểm NIHSS / GCS thường quy và tối ưu liều kháng sinh qua hàng rào máu não.`);
-  }
-
-  const weightedBonus = Math.round(weightedBio / 25);
-  const totalBioScore = weightedBonus + physBonus + intBonus + emoBonus + intuitBonus;
+  const safeDay = Math.min(birthDay, new Date(birthYear, birthMonth, 0).getDate());
+  const birthDate = new Date(birthYear, birthMonth - 1, safeDay, birthHour, birthMinute);
+  const batTu = getBatTuFourPillars(birthDate, birthHour);
 
   return {
-    daysLived: days,
+    name: (raw.name || DEFAULT_BIRTH.name).trim() || DEFAULT_BIRTH.name,
+    gender: raw.gender === 'Nữ' ? 'Nữ' : 'Nam',
+    birthDay: safeDay,
+    birthMonth,
+    birthYear,
+    birthHour,
+    birthMinute,
+    canNam: batTu.yearCan,
+    chiNam: batTu.yearChi,
+    hanhMenh: batTu.napAmYear.element,
+    napAmName: batTu.napAmYear.name,
+    batTu,
+    specialty: 'infectious_diseases'
+  };
+}
+
+export function getDoctorProfile(): DoctorProfile {
+  try {
+    const rawStr = localStorage.getItem(PROFILE_KEY);
+    if (rawStr) {
+      const parsed = JSON.parse(rawStr) as Partial<DoctorProfile>;
+      return enrichProfile(parsed);
+    }
+  } catch {
+    // Fallback to default
+  }
+  return enrichProfile(DEFAULT_BIRTH);
+}
+
+export function saveDoctorProfile(partial: Partial<DoctorProfile>): DoctorProfile {
+  const current = getDoctorProfile();
+  const merged = enrichProfile({ ...current, ...partial, specialty: 'infectious_diseases' });
+  try {
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(merged));
+  } catch {
+    // Ignore storage quota errors
+  }
+  return merged;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 5. NHỊP SINH HỌC (BIORHYTHM) & TƯƠNG TÁC CAN CHI - NẠP ÂM
+// ═══════════════════════════════════════════════════════════════════════════
+
+export function calculateBiorhythms(birthDate: Date, targetDate: Date = new Date()): BiorhythmResult {
+  const tTarget = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate()).getTime();
+  const tBirth = new Date(birthDate.getFullYear(), birthDate.getMonth(), birthDate.getDate()).getTime();
+  const daysLived = Math.max(1, Math.round((tTarget - tBirth) / 86400000));
+
+  const sinPct = (period: number): number => Math.round(Math.sin((2 * PI * daysLived) / period) * 100);
+  const physical = sinPct(23);
+  const emotional = sinPct(28);
+  const intellectual = sinPct(33);
+  const intuitive = sinPct(38);
+  const avgScore = Math.round((physical + emotional + intellectual + intuitive) / 4);
+
+  const isCritical = (period: number): boolean => Math.abs(Math.sin((2 * PI * daysLived) / period)) < 0.14;
+  const isCriticalPhysical = isCritical(23);
+  const isCriticalEmotional = isCritical(28);
+  const isCriticalIntellectual = isCritical(33);
+
+  let bioScore = Math.round((avgScore / 100) * 8);
+  if (isCriticalPhysical) bioScore -= 2;
+  if (isCriticalEmotional) bioScore -= 1;
+  if (isCriticalIntellectual) bioScore -= 2;
+
+  const lifeTips: string[] = [];
+  const clinicalTips: string[] = [];
+
+  if (physical >= 40) lifeTips.push(`Thể chất +${physical}%: Sung sức, phù hợp vận động thể thao và đi lại ngoài trời.`);
+  else if (physical <= -40) lifeTips.push(`Thể chất ${physical}%: Giảm cường độ vận động nặng, ưu tiên ngủ đủ giấc.`);
+  else lifeTips.push(`Thể chất ${physical}%: Duy trì nhịp vận động điều độ 20–30 phút.`);
+
+  if (emotional >= 40) lifeTips.push(`Cảm xúc +${emotional}%: Tinh thần lạc quan, gắn kết tốt với gia đình và đồng nghiệp.`);
+  else if (emotional <= -40) lifeTips.push(`Cảm xúc ${emotional}%: Giữ nhịp thở chậm, tránh phản ứng nóng vội khi giao tiếp.`);
+
+  if (intellectual >= 40) clinicalTips.push(`Trí tuệ +${intellectual}%: Rất bén nhạy để biện luận ca FUO phức tạp và đọc EBM.`);
+  else if (intellectual <= -40) clinicalTips.push(`Trí tuệ ${intellectual}%: Dùng checklist y lệnh và kiểm tra chéo liều kháng sinh theo eGFR.`);
+
+  if (isCriticalPhysical || isCriticalIntellectual) {
+    clinicalTips.push('Ngày giao pha sinh học: Kiểm tra kép chống chỉ định thủ thuật xâm lấn (LP, dẫn lưu).');
+  } else if (clinicalTips.length === 0) {
+    clinicalTips.push('Nhịp trí tuệ - trực giác ổn định cho đi buồng Truyền Nhiễm và hội chẩn liên khoa.');
+  }
+
+  return {
+    daysLived,
     physical,
     emotional,
     intellectual,
     intuitive,
-    avgScore: avg,
-    physBonus,
-    intBonus,
-    emoBonus,
-    intuitBonus,
-    totalBioScore,
+    avgScore,
+    isCriticalPhysical,
+    isCriticalEmotional,
+    isCriticalIntellectual,
+    totalBioScore: clamp(bioScore, -8, 8),
+    lifeTips,
     clinicalTips
   };
 }
 
-// ─── TIMELINE 12 GIỜ HOÀNG ĐẠO REAL-TIME ──────────────────────────────
+function evaluateNapAmRelation(
+  napAmDay: NapAmDetail,
+  napAmDoc: NapAmDetail
+): DayScoreEvaluation['napAmRelation'] {
+  const eDay = napAmDay.element;
+  const eDoc = napAmDoc.element;
 
-export function calculateGioTimeline(chiNgay: string, currentHour: number = new Date().getHours()): GioDetailItem[] {
-  const hoangDaoList = HOANG_DAO_MAP[chiNgay] || [];
-  const dayChiIdx = CHI.indexOf(chiNgay as any);
-  const startOffset = (dayChiIdx * 2) % 12;
-
-  return CHI.map((chi, idx) => {
-    const starIdx = (idx + startOffset) % 12;
-    const star = GIO_THAN_SAT[starIdx] || GIO_THAN_SAT[0]!;
-    const isHoangDao = hoangDaoList.includes(chi);
-
-    let isCurrent = false;
-    if (idx === 0) {
-      isCurrent = currentHour >= 23 || currentHour < 1;
-    } else {
-      const startH = idx * 2 - 1;
-      const endH = idx * 2 + 1;
-      isCurrent = currentHour >= startH && currentHour < endH;
-    }
-
+  if (eDay === eDoc) {
     return {
-      chi,
-      timeRange: GIO_TIME[chi] || '',
-      starName: star.name,
-      isHoangDao,
-      type: isHoangDao ? 'hoang_dao' : 'hac_dao',
-      icon: isHoangDao ? '🌟' : '🌑',
-      meaning: star.meaning,
-      isCurrent
+      score: 6,
+      relationType: 'dong_hanh',
+      text: `Đồng Hành (${eDay} – ${eDoc}): Tương trợ hòa hợp, tinh thần ổn định.`
     };
-  });
-}
-
-// ─── MA TRẬN 9 BẬC GIỜ KHỞI SỰ NỘI KHOA (CHƯƠNG VII) ─────────────────
-export function calculateGioRanks9Bậc(
-  canNgay: string,
-  chiNgay: string,
-  doc: DoctorProfile
-): GioRankResult[] {
-  const hoangDaoList = HOANG_DAO_MAP[chiNgay] || [];
-  const dayChiIdx = CHI.indexOf(chiNgay as any);
-  const startOffset = (dayChiIdx * 2) % 12;
-
-  const START_CAN_HOUR: Record<string, number> = {
-    "Giáp": 0, "Kỷ": 0,
-    "Ất": 2, "Canh": 2,
-    "Bính": 4, "Tân": 4,
-    "Đinh": 6, "Nhâm": 6,
-    "Mậu": 8, "Quý": 8
+  }
+  if (HANH_SINH_KHAC.sinh[eDay] === eDoc) {
+    return {
+      score: 9,
+      relationType: 'sinh_nhap',
+      text: `Ngày Sinh Bản Mệnh (${eDay} sinh ${eDoc}): Đắc thiên thời, nâng đỡ sức khỏe & công việc.`
+    };
+  }
+  if (HANH_SINH_KHAC.sinh[eDoc] === eDay) {
+    return {
+      score: 3,
+      relationType: 'sinh_xuat',
+      text: `Bản Mệnh Sinh Xuất (${eDoc} sinh ${eDay}): Cống hiến năng lượng nhiều, nhớ nghỉ ngơi bù sức.`
+    };
+  }
+  if (HANH_SINH_KHAC.khac[eDoc] === eDay) {
+    return {
+      score: 1,
+      relationType: 'khac_xuat',
+      text: `Bản Mệnh Khắc Ngày (${eDoc} khắc ${eDay}): Chủ động kiểm soát được tình huống nhưng hơi hao tâm.`
+    };
+  }
+  return {
+    score: -6,
+    relationType: 'khac_nhap',
+    text: `Ngày Khắc Bản Mệnh (${eDay} khắc ${eDoc}): Tránh ôm đồm việc nặng, chú trọng an toàn và giữ nhịp chậm.`
   };
-  const startCanIdx = START_CAN_HOUR[canNgay] ?? 0;
-  const docCan = doc.canNam;
-  const docChi = doc.chiNam;
-  const napAmDoc = getNapAm(`${docCan} ${docChi}`);
-
-  return CHI.map((chi, idx) => {
-    const starIdx = (idx + startOffset) % 12;
-    const star = GIO_THAN_SAT[starIdx] || GIO_THAN_SAT[0]!;
-    const isHoangDao = hoangDaoList.includes(chi);
-
-    const hourCanIdx = (startCanIdx + idx) % 10;
-    const hourCan = CAN[hourCanIdx]!;
-    const fullCanChi = `${hourCan} ${chi}`;
-    const napAmHour = getNapAm(fullCanChi);
-
-    const goodFactors: string[] = [];
-    const badFactors: string[] = [];
-
-    // 1. So Can Giờ vs Can Bác Sĩ
-    if (THIEN_CAN_HOP_HOA[hourCan]?.partner === docCan) {
-      goodFactors.push(`Can ngũ hợp (${hourCan} hợp ${docCan})`);
-    } else if (THIEN_CAN_XUNG_PHA[hourCan]?.includes(docCan)) {
-      badFactors.push(`Can xung khắc (${hourCan} phá ${docCan})`);
-    }
-
-    // 2. So Chi Giờ vs Chi Bác Sĩ
-    const lucHopPairs = [
-      ["Tý", "Sửu"], ["Dần", "Hợi"], ["Mão", "Tuất"],
-      ["Thìn", "Dậu"], ["Tỵ", "Thân"], ["Ngọ", "Mùi"]
-    ];
-    if (lucHopPairs.some(p => (p[0] === chi && p[1] === docChi) || (p[1] === chi && p[0] === docChi))) {
-      goodFactors.push(`Chi lục hợp (${chi} hợp ${docChi})`);
-    }
-
-    const tamHopGroups = [
-      ["Thân", "Tý", "Thìn"], ["Dần", "Ngọ", "Tuất"],
-      ["Tỵ", "Dậu", "Sửu"], ["Hợi", "Mão", "Mùi"]
-    ];
-    if (tamHopGroups.some(g => g.includes(chi) && g.includes(docChi) && chi !== docChi)) {
-      goodFactors.push(`Chi tam hợp (${chi} - ${docChi})`);
-    }
-
-    const lucXungPairs = [
-      ["Tý", "Ngọ"], ["Sửu", "Mùi"], ["Dần", "Thân"],
-      ["Mão", "Dậu"], ["Thìn", "Tuất"], ["Tỵ", "Hợi"]
-    ];
-    if (lucXungPairs.some(p => (p[0] === chi && p[1] === docChi) || (p[1] === chi && p[0] === docChi))) {
-      badFactors.push(`Chi trực xung (${chi} xung ${docChi})`);
-    }
-
-    const lucHaiPairs = [
-      ["Tý", "Mùi"], ["Sửu", "Ngọ"], ["Dần", "Tỵ"],
-      ["Mão", "Thìn"], ["Thân", "Hợi"], ["Dậu", "Tuất"]
-    ];
-    if (lucHaiPairs.some(p => (p[0] === chi && p[1] === docChi) || (p[1] === chi && p[0] === docChi))) {
-      badFactors.push(`Chi lục hại (${chi} hại ${docChi})`);
-    }
-
-    // 3. So Nạp Âm Giờ vs Nạp Âm Bác Sĩ
-    if (HANH_SINH_KHAC.sinh[napAmHour.element] === napAmDoc.element) {
-      goodFactors.push(`Nạp âm giờ sinh Tuổi (${napAmHour.element} sinh ${napAmDoc.element})`);
-    } else if (HANH_SINH_KHAC.sinh[napAmDoc.element] === napAmHour.element) {
-      goodFactors.push(`Tuổi sinh Nạp âm giờ (${napAmDoc.element} sinh ${napAmHour.element})`);
-    } else if (napAmHour.element === napAmDoc.element) {
-      goodFactors.push(`Nạp âm đồng khí (${napAmHour.element})`);
-    } else if (HANH_SINH_KHAC.khac[napAmHour.element] === napAmDoc.element) {
-      badFactors.push(`Nạp âm giờ khắc Tuổi (${napAmHour.element} khắc ${napAmDoc.element})`);
-    }
-
-    const nGood = goodFactors.length;
-    const nBad = badFactors.length;
-
-    let rank = 5;
-    let rankTitle = 'Hạng Năm (Tạm Dùng)';
-    let badgeClass = 'gio-rank-neutral';
-    let clinicalNote = 'Khung giờ bình hòa: Tiến hành đi buồng, khám bệnh và xử trí y lệnh thường quy.';
-
-    if (nGood >= 3 && nBad === 0) {
-      rank = 1;
-      rankTitle = 'Hạng Nhất (Rất Nên Dùng)';
-      badgeClass = 'gio-rank-great';
-      clinicalNote = 'Khung giờ hoàng kim: Cực kỳ đại cát tiếp nhận ca khó, quyết định phác đồ đầu tay, hội chẩn liên viện hoặc giao ban ca trực.';
-    } else if (nGood >= 2 && nBad === 0) {
-      rank = 2;
-      rankTitle = 'Hạng Nhì (Nên Dùng)';
-      badgeClass = 'gio-rank-great';
-      clinicalNote = 'Khung giờ rất tốt: Thích hợp hiệu chỉnh phác đồ phức tạp, thực hiện thăm dò chức năng chuyên sâu, ra y lệnh liều cao.';
-    } else if (nGood >= 1 && nBad === 0) {
-      rank = 3;
-      rankTitle = 'Hạng Ba (Khá Nên Dùng)';
-      badgeClass = 'gio-rank-good';
-      clinicalNote = 'Khung giờ thuận lợi, tư duy sáng suốt, xử lý y lệnh nội trú nhịp nhàng.';
-    } else if (nGood >= 2 && nBad === 1) {
-      rank = 4;
-      rankTitle = 'Hạng Tư (Khá Nên Dùng)';
-      badgeClass = 'gio-rank-good';
-      clinicalNote = 'Được nhiều hơn mất; chỉ cần rà soát lại tương tác thuốc và chức năng gan thận trước khi ký duyệt.';
-    } else if (nGood === 1 && nBad === 1) {
-      rank = 5;
-      rankTitle = 'Hạng Năm (Tạm Dùng)';
-      badgeClass = 'gio-rank-neutral';
-      clinicalNote = 'Trạng thái cân bằng, y lệnh thường quy và đi buồng thực hiện ổn định.';
-    } else if (nGood === 0 && nBad === 1) {
-      rank = 6;
-      rankTitle = 'Hạng Sáu (Chẳng Nên Dùng)';
-      badgeClass = 'gio-rank-warn';
-      clinicalNote = 'Có lực cản nhẹ; thận trọng khi xử trí các tình huống cấp bách, tránh hấp tấp.';
-    } else if (nGood === 1 && nBad >= 2) {
-      rank = 7;
-      rankTitle = 'Hạng Bảy (Chẳng Nên Dùng)';
-      badgeClass = 'gio-rank-warn';
-      clinicalNote = 'Khắc nhiều hơn hợp; nếu là thay đổi phác đồ lớn nên cân nhắc dời sang khung giờ kế tiếp nếu ca không khẩn.';
-    } else if (nGood === 0 && nBad === 2) {
-      rank = 8;
-      rankTitle = 'Hạng Tám (Quyết Không Dùng)';
-      badgeClass = 'gio-rank-bad';
-      clinicalNote = 'Phạm 2 cách xấu; không nên đổi thuốc mạo hiểm, cẩn trọng sai sót hành chính toa thuốc.';
-    } else if (nBad >= 3) {
-      rank = 9;
-      rankTitle = 'Hạng Chín (Tuyệt Đối Chẳng Dùng)';
-      badgeClass = 'gio-rank-bad';
-      clinicalNote = 'Phạm đại xung khắc; chỉ can thiệp khi cấp cứu sinh mạng tối khẩn, bám sát hỗ trợ nhóm trực.';
-    }
-
-    return {
-      chi,
-      can: hourCan,
-      fullCanChi,
-      timeRange: GIO_TIME[chi] || '',
-      starName: star.name,
-      isHoangDao,
-      napAm: napAmHour.name,
-      napAmElement: napAmHour.element,
-      rank,
-      rankTitle,
-      badgeClass,
-      goodFactors,
-      badFactors,
-      clinicalNote
-    };
-  });
 }
 
-// ─── ĐÁNH GIÁ 5 TÁC VỤ LÂM SÀNG NỘI KHOA (CHƯƠNG II: 83 VỤ) ───────────
-export function evaluateMedicalTasks(
-  dateObj: Date,
-  canNgay: string,
-  chiNgay: string,
-  trucNgay: TrucItem,
-  saoTu: SaoTuItem,
-  thanSatList: ThanSatItem[],
-  doc: DoctorProfile,
-  lunarDay: number,
-  lunarMonth: number
-): Record<MedicalTaskType, MedicalTaskScoreEvaluation> {
-  const fullCanChi = `${canNgay} ${chiNgay}`;
-  const results: Partial<Record<MedicalTaskType, MedicalTaskScoreEvaluation>> = {};
-
-  const taskKeys: MedicalTaskType[] = [
-    'kham_chandoan',
-    'khoi_phacdo',
-    'chinh_lieu_xuatvien',
-    'khai_truong_kthuat',
-    'hoi_chan_ebm'
+function evaluateDiaChiRelation(chiDoc: string, chiDay: string): DiaChiRelationResult {
+  const tamHopGroups = [
+    ['Thân', 'Tý', 'Thìn'],
+    ['Dần', 'Ngọ', 'Tuất'],
+    ['Hợi', 'Mão', 'Mùi'],
+    ['Tỵ', 'Dậu', 'Sửu']
+  ];
+  const lucHopPairs: [string, string][] = [
+    ['Tý', 'Sửu'],
+    ['Dần', 'Hợi'],
+    ['Mão', 'Tuất'],
+    ['Thìn', 'Dậu'],
+    ['Tỵ', 'Thân'],
+    ['Ngọ', 'Mùi']
+  ];
+  const lucXungPairs: [string, string][] = [
+    ['Tý', 'Ngọ'],
+    ['Sửu', 'Mùi'],
+    ['Dần', 'Thân'],
+    ['Mão', 'Dậu'],
+    ['Thìn', 'Tuất'],
+    ['Tỵ', 'Hợi']
+  ];
+  const lucHaiPairs: [string, string][] = [
+    ['Tý', 'Mùi'],
+    ['Sửu', 'Ngọ'],
+    ['Dần', 'Tỵ'],
+    ['Mão', 'Thìn'],
+    ['Thân', 'Hợi'],
+    ['Dậu', 'Tuất']
   ];
 
-  for (const key of taskKeys) {
-    const cfg = MEDICAL_TASKS_CONFIG[key];
-    const isSpecialDay = !!cfg.specialDays?.includes(fullCanChi);
-    const isBaseDay = cfg.baseDays.includes(fullCanChi);
+  const hasPair = (pairs: [string, string][]) =>
+    pairs.some(([a, b]) => (a === chiDoc && b === chiDay) || (a === chiDay && b === chiDoc));
 
-    let baseScore = isSpecialDay ? 8 : (isBaseDay ? 5 : 3);
+  const isTamHop = chiDoc !== chiDay && tamHopGroups.some((g) => g.includes(chiDoc) && g.includes(chiDay));
+  const isLucHop = hasPair(lucHopPairs);
+  const isLucXung = hasPair(lucXungPairs);
+  const isLucHai = hasPair(lucHaiPairs);
+  const isTuHinh = ['Thìn', 'Ngọ', 'Dậu', 'Hợi'].includes(chiDoc) && chiDoc === chiDay;
 
-    // 1. Sao Score
-    let saoScore = 0;
-    let saoNote = '';
-    const dangVien = checkSaoDangVien(saoTu.name, chiNgay);
-    if (dangVien.isDangVien) {
-      saoScore += 2;
-      saoNote = `Sao ${saoTu.name} Đăng Viên (+2đ): Khí tiết rạng rỡ, hoán hung hóa kiết.`;
-    } else if (saoTu.type === 'cat') {
-      saoScore += 1;
-      saoNote = `Gặp Kiết Tú ${saoTu.name} (+1đ): Cát khí trợ lực.`;
-    } else {
-      saoScore -= 1;
-      saoNote = `Gặp Hung Tú ${saoTu.name} (-1đ): Cần kiểm soát rủi ro.`;
+  const tamHopScore = isTamHop ? 6 : 0;
+  const lucHopScore = isLucHop ? 5 : 0;
+  const lucXungScore = isLucXung ? -7 : 0;
+  const lucHaiScore = isLucHai ? -4 : 0;
+  const hinhScore = isTuHinh ? -3 : 0;
+
+  return {
+    tamHop: { isMatch: isTamHop, text: isTamHop ? `Tam Hợp ${chiDoc}–${chiDay}` : 'Không', score: tamHopScore },
+    lucHop: { isMatch: isLucHop, text: isLucHop ? `Lục Hợp ${chiDoc}–${chiDay}` : 'Không', score: lucHopScore },
+    lucXung: { isMatch: isLucXung, text: isLucXung ? `Lục Xung ${chiDoc}–${chiDay}` : 'Không', score: lucXungScore },
+    lucHai: { isMatch: isLucHai, text: isLucHai ? `Lục Hại ${chiDoc}–${chiDay}` : 'Không', score: lucHaiScore },
+    tuongHinh: { isMatch: isTuHinh, text: isTuHinh ? `Tự Hình ${chiDoc}` : 'Không', score: hinhScore },
+    totalScore: tamHopScore + lucHopScore + lucXungScore + lucHaiScore + hinhScore
+  };
+}
+
+function evaluateQuyNhanLoc(canDoc: string, chiDay: string): QuyNhanLocResult {
+  const isThienAt = (THIEN_AT_MAP[canDoc] || []).includes(chiDay);
+  const isLocThan = LOC_THAN_MAP[canDoc] === chiDay;
+  return {
+    thienAt: {
+      isMatch: isThienAt,
+      text: isThienAt ? `Thiên Ất Quý Nhân (${chiDay}): Có người trợ lực` : 'Không',
+      score: isThienAt ? 5 : 0
+    },
+    locThan: {
+      isMatch: isLocThan,
+      text: isLocThan ? `Lộc Thần (${chiDay}): Tài lộc & thuận lợi` : 'Không',
+      score: isLocThan ? 4 : 0
+    },
+    totalScore: (isThienAt ? 5 : 0) + (isLocThan ? 4 : 0)
+  };
+}
+
+function evaluateThanSat(
+  lunarMonth: number,
+  canNgay: string,
+  chiNgay: string,
+  canChiDay: string,
+  canNamDoc: string
+): { list: ThanSatItem[]; score: number; lifeDelta: number; clinicalDelta: number } {
+  const list: ThanSatItem[] = [];
+  if (THIEN_Y_MAP[lunarMonth] === chiNgay) {
+    list.push({
+      name: 'Thiên Y',
+      type: 'pos',
+      score: 7,
+      scope: 'clinical',
+      desc: 'Cát tinh y học: Khám chữa bệnh, hội chẩn và lựa chọn phác đồ chuẩn xác.'
+    });
+  }
+  if (SINH_KHI_MAP[lunarMonth] === chiNgay) {
+    list.push({
+      name: 'Sinh Khí',
+      type: 'pos',
+      score: 6,
+      scope: 'both',
+      desc: 'Sinh khí dồi dào: Phục hồi thể lực nhanh, thuận lợi cả đời sống lẫn điều trị.'
+    });
+  }
+  if (THIEN_DUC_MAP[lunarMonth] === canNgay || THIEN_DUC_MAP[lunarMonth] === chiNgay) {
+    list.push({
+      name: 'Thiên Đức',
+      type: 'pos',
+      score: 7,
+      scope: 'both',
+      desc: 'Phúc đức bảo hộ: Gặp hung hóa cát, giao tiếp đồng thuận, xuất hành bình an.'
+    });
+  }
+  if (NGUYET_DUC_MAP[lunarMonth] === canNgay) {
+    list.push({
+      name: 'Nguyệt Đức',
+      type: 'pos',
+      score: 6,
+      scope: 'both',
+      desc: 'Nguyệt Đức chiếu mệnh: Hóa giải trắc trở, tăng uy tín chuyên môn.'
+    });
+  }
+  if (SAT_CHU_MAP[lunarMonth] === chiNgay) {
+    list.push({
+      name: 'Sát Chủ',
+      type: 'neg',
+      score: -8,
+      scope: 'clinical',
+      desc: 'Cảnh báo rủi ro thủ thuật xâm lấn không cấp cứu; rà soát vô khuẩn cực kỹ.'
+    });
+  }
+  if (THO_TU_MAP[lunarMonth] === chiNgay) {
+    list.push({
+      name: 'Thọ Tử',
+      type: 'neg',
+      score: -8,
+      scope: 'both',
+      desc: 'Hung tinh: Tránh khởi sự trọng đại hay làm thủ thuật mạo hiểm.'
+    });
+  }
+  if ((DAO_CHIEM_SAT_DAYS[lunarMonth] || []).includes(chiNgay)) {
+    list.push({
+      name: 'Đao Chiêm Sát',
+      type: 'neg',
+      score: -6,
+      scope: 'clinical',
+      desc: 'Thận trọng khi cầm kim chọc dò tủy sống (LP), dẫn lưu áp xe và vật sắc nhọn.'
+    });
+  }
+  const isThapAc = THAP_AC_DAI_BAI.some(
+    (item) => item.month === lunarMonth && item.dayCanChi === canChiDay && item.yearCans.includes(canNamDoc)
+  );
+  if (isThapAc) {
+    list.push({
+      name: 'Thập Ác Đại Bại',
+      type: 'neg',
+      score: -7,
+      scope: 'life',
+      desc: 'Hạn chế quyết định tài chính lớn, giữ an toàn giao thông và sinh hoạt.'
+    });
+  }
+
+  let score = 0;
+  let lifeDelta = 0;
+  let clinicalDelta = 0;
+  list.forEach((item) => {
+    score += item.score;
+    if (item.scope === 'life') lifeDelta += item.score;
+    else if (item.scope === 'clinical') clinicalDelta += item.score;
+    else {
+      lifeDelta += Math.round(item.score * 0.6);
+      clinicalDelta += Math.round(item.score * 0.4);
     }
+  });
+  return { list, score, lifeDelta, clinicalDelta };
+}
 
-    // 2. Trực Score
+function getSaoTuByJDN(jd: number): SaoTuItem {
+  const idx = (jd + 11) % 28;
+  return NHI_THAP_BAT_TU[idx] || NHI_THAP_BAT_TU[0]!;
+}
+
+function getTrucByMonthAndDay(lunarMonth: number, chiNgay: string): TrucItem {
+  const monthChiIdx = (lunarMonth + 1) % 12; // Tháng 1 = Dần (2)
+  const dayChiIdx = Math.max(0, CHI.indexOf(chiNgay as (typeof CHI)[number]));
+  const trucIdx = (dayChiIdx - monthChiIdx + 12) % 12;
+  return TRUC_LIST[trucIdx] || TRUC_LIST[0]!;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 6. ĐÁNH GIÁ 5 TÁC VỤ BÁC SĨ TRUYỀN NHIỄM & 12 CANH GIỜ 9 BẬC
+// ═══════════════════════════════════════════════════════════════════════════
+
+function evaluateInfectiousTasks(
+  canChiDay: string,
+  saoTu: SaoTuItem,
+  trucNgay: TrucItem,
+  thanSatList: ThanSatItem[],
+  gender: 'Nam' | 'Nữ',
+  bio: BiorhythmResult
+): Record<MedicalTaskType, MedicalTaskScoreEvaluation> {
+  const results = {} as Record<MedicalTaskType, MedicalTaskScoreEvaluation>;
+  const tsNames = thanSatList.map((t) => t.name);
+
+  (Object.keys(MEDICAL_TASKS_CONFIG) as MedicalTaskType[]).forEach((taskId) => {
+    const cfg = MEDICAL_TASKS_CONFIG[taskId];
+    const isSpecialDay = Boolean(cfg.specialDays?.includes(canChiDay));
+    const isBaseDay = cfg.baseDays.includes(canChiDay);
+    const baseScore = isSpecialDay ? 22 : isBaseDay ? 14 : 6;
+
+    const saoScore = Math.round(saoTu.score * 0.7);
+    const saoNote = `Sao ${saoTu.name} (${saoTu.type === 'cat' ? 'Cát' : 'Hung'})`;
+
     let trucScore = 0;
-    let trucNote = '';
+    let trucNote = `Trực ${trucNgay.name}`;
     if (cfg.hapTruc.includes(trucNgay.name)) {
-      trucScore += 2;
-      trucNote = `Trực ${trucNgay.name} Hạp Vụ (+2đ): Khởi đầu thuận lợi.`;
+      trucScore = 10;
+      trucNote = `Hợp Trực ${trucNgay.name}`;
     } else if (cfg.kyTruc?.includes(trucNgay.name)) {
-      trucScore -= 2;
-      trucNote = `Trực ${trucNgay.name} Kỵ Vụ (-2đ): Kiêng kỵ theo quy tắc cổ truyền.`;
+      trucScore = -10;
+      trucNote = `Kỵ Trực ${trucNgay.name}`;
     }
-
     if (cfg.genderRules) {
-      if (doc.gender === 'Nam' && cfg.genderRules.maleKyTruc?.includes(trucNgay.name)) {
-        trucScore -= 1;
-        trucNote += ' (Nam nhân phạm kỵ Trực Trừ -1đ)';
-      } else if (doc.gender === 'Nữ' && cfg.genderRules.femaleKyTruc?.includes(trucNgay.name)) {
-        trucScore -= 1;
-        trucNote += ' (Nữ nhân phạm kỵ Trực Thâu -1đ)';
+      if (gender === 'Nam' && cfg.genderRules.maleKyTruc?.includes(trucNgay.name)) {
+        trucScore -= 4;
+        trucNote += ' (Nam thận trọng)';
+      } else if (gender === 'Nữ' && cfg.genderRules.femaleKyTruc?.includes(trucNgay.name)) {
+        trucScore -= 4;
+        trucNote += ' (Nữ thận trọng)';
       }
     }
 
-    // 3. Thần Sát Score
     let thanSatScore = 0;
-    const thanNotes: string[] = [];
-    for (const ts of thanSatList) {
-      if (cfg.hapThanSat?.includes(ts.name) || (ts.type === 'pos' && cfg.hapThanSat?.some(h => ts.name.includes(h)))) {
-        thanSatScore += 1;
-        thanNotes.push(`Đắc ${ts.name} (+1đ)`);
-      }
-      if (cfg.kyThanSat?.includes(ts.name) || (ts.type === 'neg' && cfg.kyThanSat?.some(k => ts.name.includes(k)))) {
-        thanSatScore -= 2;
-        thanNotes.push(`Phạm ${ts.name} (-2đ)`);
-      }
-    }
-    const thanSatNote = thanNotes.length > 0 ? thanNotes.join(', ') : 'Thần sát bình hòa';
+    const matchedPos = (cfg.hapThanSat || []).filter((n) => tsNames.includes(n));
+    const matchedNeg = (cfg.kyThanSat || []).filter((n) => tsNames.includes(n));
+    thanSatScore += matchedPos.length * 6 - matchedNeg.length * 8;
+    const thanSatNote =
+      matchedPos.length > 0
+        ? `Cát tinh: ${matchedPos.join(', ')}`
+        : matchedNeg.length > 0
+          ? `Lưu ý: ${matchedNeg.join(', ')}`
+          : 'Thần sát bình hòa';
 
-    const totalScore = Math.max(0, baseScore + saoScore + trucScore + thanSatScore);
+    const bioBonus = Math.round(bio.intellectual * 0.05);
+    const totalScore = clamp(48 + baseScore + saoScore + trucScore + thanSatScore + bioBonus, 18, 98);
 
-    let recommendation: 'rat_tot' | 'tot' | 'binh_thuong' | 'khong_nen' = 'binh_thuong';
-    let advice = '';
+    let recommendation: MedicalTaskScoreEvaluation['recommendation'] = 'binh_thuong';
+    if (totalScore >= 80) recommendation = 'rat_tot';
+    else if (totalScore >= 64) recommendation = 'tot';
+    else if (totalScore < 45) recommendation = 'khong_nen';
 
-    if (totalScore >= 8 || isSpecialDay) {
-      recommendation = 'rat_tot';
-      advice = isSpecialDay
-        ? `🌟 Ngày Tối Thượng ${fullCanChi} cho ${cfg.shortTitle}: Đại cát đại lợi, biện luận hanh thông, người bệnh mau hồi phục.`
-        : `Thời điểm rất tốt (${totalScore}đ): Hội tụ nhiều yếu tố hạp vụ, rất nên tiến hành.`;
-    } else if (totalScore >= 6) {
-      recommendation = 'tot';
-      advice = `Ngày thuận lợi (${totalScore}đ): Thích hợp khởi động, mọi việc diễn ra suôn sẻ.`;
-    } else if (totalScore >= 4) {
-      recommendation = 'binh_thuong';
-      advice = `Ngày ổn định (${totalScore}đ): Thực hiện theo đúng quy trình thường quy tiêu chuẩn.`;
-    } else {
-      recommendation = 'khong_nen';
-      advice = `Khí tiết chưa thuận (${totalScore}đ): Nếu là thay đổi phác đồ lớn không cấp bách, nên cân nhắc chọn ngày cát lợi hơn.`;
-    }
+    const noteBase = cfg.specialNotes[0] || cfg.description;
+    const advice =
+      recommendation === 'rat_tot'
+        ? `Rất thuận lợi triển khai. ${noteBase}`
+        : recommendation === 'tot'
+          ? `Khả quan, làm theo quy trình chuẩn. ${noteBase}`
+          : recommendation === 'binh_thuong'
+            ? `Bình hòa — chú ý kiểm tra chéo y lệnh. ${noteBase}`
+            : `Cẩn trọng cao: chỉ làm khi có chỉ định cấp cứu/bắt buộc và kiểm tra 2 lớp. ${noteBase}`;
 
-    results[key] = {
+    results[taskId] = {
       task: cfg,
       isSpecialDay,
       isBaseDay,
@@ -848,664 +874,821 @@ export function evaluateMedicalTasks(
       recommendation,
       advice
     };
-  }
+  });
 
-  return results as Record<MedicalTaskType, MedicalTaskScoreEvaluation>;
+  return results;
 }
 
-// ─── ĐÁNH GIÁ 4 TRỤ CỘT HÀNH ĐỘNG LÂM SÀNG NỘI KHOA ───────────────────
-
-export function evaluateClinicalAdvice(
-  totalScore: number,
-  truc: TrucItem,
-  saoTu: SaoTuItem,
-  bio: BiorhythmResult,
-  diaChi: DiaChiRelationResult,
-  specialty: DoctorSpecialty = 'internal_general'
-): ClinicalAdvice {
-  const isGreatDay = totalScore >= 65 && ['Định', 'Thành', 'Khai', 'Kiến'].includes(truc.name) && saoTu.type === 'cat';
-  const isCautionDay = truc.type === 'hung' || saoTu.type === 'hung' || diaChi.lucXung.isMatch;
-
-  let diagnosis: ClinicalAdviceItem;
-  let pharmacotherapy: ClinicalAdviceItem;
-  let communication: ClinicalAdviceItem;
-  let evidence: ClinicalAdviceItem;
-
-  // 1. Trụ Cột: Chẩn Đoán & Biện Luận Ca Khó (Diagnostic Workup)
-  if (isGreatDay && bio.intellectual >= 20) {
-    diagnosis = {
-      status: 'good',
-      title: 'Chẩn Đoán Phân Biệt & Ca Khó',
-      text: 'Tư duy sắc sảo, liên kết triệu chứng đa cơ quan mạch lạc; thời điểm vàng tìm ra căn nguyên ẩn giấu của ca bệnh khó.'
-    };
-  } else if (isCautionDay || bio.intellectual <= -35) {
-    diagnosis = {
-      status: 'caution',
-      title: 'Chẩn Đoán Phân Biệt & Ca Khó',
-      text: 'Cẩn trọng bẫy thiên lệch nhận thức (Anchoring Bias); rà soát kỹ chẩn đoán phân biệt và đối chiếu xét nghiệm bất thường.'
-    };
-  } else {
-    diagnosis = {
-      status: 'neutral',
-      title: 'Chẩn Đoán Phân Biệt & Ca Khó',
-      text: 'Phân tích cận lâm sàng và triệu chứng theo quy trình tiếp cận chuẩn, theo dõi sát diễn biến lâm sàng.'
-    };
-  }
-
-  // 2. Trụ Cột: Dược Trị Liệu & Tối Ưu Y Lệnh (Pharmacotherapy)
-  if (isGreatDay && bio.intuitive >= 15) {
-    pharmacotherapy = {
-      status: 'good',
-      title: 'Dược Trị Liệu & Tối Ưu Phác Đồ',
-      text: 'Thời điểm rất thuận lợi khởi động phác đồ kháng sinh đích, thuốc hạ áp mới, thuốc sinh học hoặc hiệu chỉnh insulin.'
-    };
-  } else if (isCautionDay) {
-    pharmacotherapy = {
-      status: 'caution',
-      title: 'Dược Trị Liệu & Tối Ưu Phác Đồ',
-      text: 'Kiểm tra chéo chức năng thận (eGFR), gan và tương tác thuốc (DDI) trước khi tăng liều các thuốc có khoảng trị liệu hẹp.'
-    };
-  } else {
-    pharmacotherapy = {
-      status: 'neutral',
-      title: 'Dược Trị Liệu & Tối Ưu Phác Đồ',
-      text: 'Duy trì y lệnh thuốc theo protocol hiện tại, đánh giá đáp ứng sau 48–72 giờ điều trị.'
-    };
-  }
-
-  // 3. Trụ Cột: Giao Tiếp Bệnh Mạn & Tiên Lượng (Communication)
-  if (bio.emotional >= 20 && !diaChi.lucHai.isMatch) {
-    communication = {
-      status: 'good',
-      title: 'Giao Tiếp & Tư Vấn Bệnh Mạn',
-      text: 'Năng lượng thấu cảm dồi dào, giải thích cặn kẽ cơ chế bệnh và kế hoạch dùng thuốc, người bệnh tin tưởng và tuân thủ cao.'
-    };
-  } else if (diaChi.lucHai.isMatch || bio.emotional <= -30) {
-    communication = {
-      status: 'caution',
-      title: 'Giao Tiếp & Tư Vấn Bệnh Mạn',
-      text: 'Nguy cơ hiểu lầm thông tin; cần giải thích ngắn gọn, từ tốn, ghi chép biên bản hội chẩn rõ ràng và có điều dưỡng chứng kiến.'
-    };
-  } else {
-    communication = {
-      status: 'neutral',
-      title: 'Giao Tiếp & Tư Vấn Bệnh Mạn',
-      text: 'Hướng dẫn kỹ toa thuốc điều trị, dặn dò các dấu hiệu cảnh báo đỏ cần tái khám ngay.'
-    };
-  }
-
-  // 4. Trụ Cột: Tra Cứu EBM & Sinh Hoạt Khoa Phòng (Evidence & Grand Rounds)
-  if (saoTu.name === 'Bích' || saoTu.name === 'Đẩu' || bio.intellectual >= 30) {
-    evidence = {
-      status: 'good',
-      title: 'Tra Cứu EBM & Hội Chẩn Liên Khoa',
-      text: 'Thời điểm rất tốt cập nhật thử nghiệm RCTs mới, sinh hoạt khoa học Grand Rounds và bảo vệ phác đồ trên bằng chứng EBM.'
-    };
-  } else {
-    evidence = {
-      status: 'neutral',
-      title: 'Tra Cứu EBM & Hội Chẩn Liên Khoa',
-      text: 'Duy trì rà soát các khuyến cáo chuyên khoa (AHA/ACC, ESC, GOLD, ADA, KDIGO) áp dụng cho ca lâm sàng.'
-    };
-  }
-
-  return { diagnosis, pharmacotherapy, communication, evidence };
-}
-
-// ─── DOCTOR PROFILE STORAGE ───────────────────────────────────────────
-
-export function getDoctorProfile(): DoctorProfile {
-  try {
-    const saved = localStorage.getItem(PROFILE_KEY);
-    if (saved) return JSON.parse(saved);
-  } catch {}
-  return {
-    name: "Bác sĩ",
-    gender: "Nam",
-    birthDay: 15,
-    birthMonth: 8,
-    birthYear: 1990,
-    birthHour: 8,
-    birthMinute: 30,
-    canNam: "Canh",
-    chiNam: "Ngọ",
-    hanhMenh: "Thổ",
-    specialty: "internal_general"
+function buildGioTimelineAndRanks(
+  chiDay: string,
+  canDay: string,
+  napAmDoc: NapAmDetail,
+  dateObj: Date
+): { gioTimeline: GioDetailItem[]; gioRanks: GioRankResult[]; hoangDaoHours: string[] } {
+  const hdList = HOANG_DAO_MAP[chiDay] || ['Tý', 'Sửu', 'Mão', 'Ngọ', 'Thân', 'Dậu'];
+  const startThanhLongMap: Record<string, number> = {
+    Dần: 0,
+    Thân: 0,
+    Mão: 2,
+    Dậu: 2,
+    Thìn: 4,
+    Tuất: 4,
+    Tỵ: 6,
+    Hợi: 6,
+    Ngọ: 8,
+    Tý: 8,
+    Sửu: 10,
+    Mùi: 10
   };
+  const offset = startThanhLongMap[chiDay] ?? 0;
+  const now = new Date();
+  const isToday = formatDateKey(now) === formatDateKey(dateObj);
+  const currentChiIdx = isToday ? getHourChiIndexFromHour(now.getHours()) : -1;
+
+  const gioTimeline: GioDetailItem[] = [];
+  const gioRanks: GioRankResult[] = [];
+  const hoangDaoHours: string[] = [];
+
+  CHI.forEach((chiHour, idx) => {
+    const tsIdx = (idx - offset + 12) % 12;
+    const star = GIO_THAN_SAT[tsIdx] || GIO_THAN_SAT[0]!;
+    const isHoangDao = hdList.includes(chiHour);
+    const timeRange = GIO_TIME[chiHour] || '00h-02h';
+    const hourCC = getCanChiHour(canDay, idx === 0 ? 0 : idx * 2 - 1);
+    const napAmH = getNapAm(hourCC.full);
+
+    if (isHoangDao) hoangDaoHours.push(`${chiHour} (${timeRange})`);
+
+    gioTimeline.push({
+      chi: chiHour,
+      timeRange,
+      starName: star.name,
+      isHoangDao,
+      type: isHoangDao ? 'hoang_dao' : 'hac_dao',
+      icon: isHoangDao ? '✨' : '🌑',
+      meaning: star.meaning,
+      isCurrent: idx === currentChiIdx
+    });
+
+    const goodFactors: string[] = [];
+    const badFactors: string[] = [];
+    let pts = 50;
+
+    if (isHoangDao) {
+      pts += 22;
+      goodFactors.push(`Hoàng Đạo (${star.name})`);
+    } else {
+      pts -= 16;
+      badFactors.push(`Hắc Đạo (${star.name})`);
+    }
+
+    if (HANH_SINH_KHAC.sinh[napAmH.element] === napAmDoc.element) {
+      pts += 12;
+      goodFactors.push(`Nạp Âm Giờ sinh Mệnh`);
+    } else if (napAmH.element === napAmDoc.element) {
+      pts += 8;
+      goodFactors.push(`Nạp Âm Đồng Hành`);
+    } else if (HANH_SINH_KHAC.khac[napAmH.element] === napAmDoc.element) {
+      pts -= 10;
+      badFactors.push(`Nạp Âm Giờ khắc Mệnh`);
+    }
+
+    const dcRel = evaluateDiaChiRelation(napAmDoc.canChi.split(' ')[1] || 'Tý', chiHour);
+    if (dcRel.tamHop.isMatch || dcRel.lucHop.isMatch) {
+      pts += 10;
+      goodFactors.push(dcRel.tamHop.isMatch ? 'Tam Hợp Tuổi' : 'Lục Hợp Tuổi');
+    }
+    if (dcRel.lucXung.isMatch) {
+      pts -= 12;
+      badFactors.push('Xung Tuổi');
+    }
+
+    // Phân hạng 1..9 (1 = Thượng Thượng Cát, 9 = Đại Hung)
+    let rank = 5;
+    if (pts >= 88) rank = 1;
+    else if (pts >= 78) rank = 2;
+    else if (pts >= 70) rank = 3;
+    else if (pts >= 62) rank = 4;
+    else if (pts >= 52) rank = 5;
+    else if (pts >= 44) rank = 6;
+    else if (pts >= 36) rank = 7;
+    else if (pts >= 28) rank = 8;
+    else rank = 9;
+
+    const rankTitles: Record<number, { title: string; badge: string }> = {
+      1: { title: 'Bậc 1 • Đại Cát Đỉnh Cao', badge: 'rank-1' },
+      2: { title: 'Bậc 2 • Thượng Cát', badge: 'rank-2' },
+      3: { title: 'Bậc 3 • Cát Lợi', badge: 'rank-3' },
+      4: { title: 'Bậc 4 • Khá Thuận Lợi', badge: 'rank-4' },
+      5: { title: 'Bậc 5 • Bình Hòa', badge: 'rank-5' },
+      6: { title: 'Bậc 6 • Hơi Chậm Nhịp', badge: 'rank-6' },
+      7: { title: 'Bậc 7 • Cẩn Trọng', badge: 'rank-7' },
+      8: { title: 'Bậc 8 • Hạn Chế Khởi Sự', badge: 'rank-8' },
+      9: { title: 'Bậc 9 • Đại Kỵ / Nghỉ Ngơi', badge: 'rank-9' }
+    };
+    const rMeta = rankTitles[rank] || rankTitles[5]!;
+
+    let lifeNote = '';
+    let clinicalNote = '';
+    if (idx <= 1 || idx >= 11) {
+      lifeNote = isHoangDao
+        ? 'Đêm thanh tĩnh: rất tốt để phục hồi giấc ngủ sâu hoặc thu xếp tâm trí yên bình.'
+        : 'Khung giờ khuya: giữ ấm, hạn chế di chuyển đường dài và tắt màn hình xanh sớm.';
+      clinicalNote =
+        rank <= 4
+          ? 'Trực đêm đầu óc vẫn sáng; theo dõi sát dấu hiệu cảnh báo Sepsis / qSOFA và sốt xuất huyết tái sốc.'
+          : 'Khung giờ mệt sinh học: dùng checklist liều nạp kháng sinh và kiểm tra chéo y lệnh 2 lần.';
+    } else if (idx >= 3 && idx <= 5) {
+      lifeNote = isHoangDao
+        ? 'Buổi sáng vượng khí: cực tốt cho xuất hành, thể dục đón nắng và trao đổi việc quan trọng.'
+        : 'Khởi đầu chậm rãi, ăn sáng đủ chất và rà soát lịch hẹn trước khi ra khỏi nhà.';
+      clinicalNote =
+        rank <= 4
+          ? 'Khung giờ vàng giao ban Truyền Nhiễm, đi buồng biện luận ca FUO và xét xuống thang kháng sinh.'
+          : 'Hoàn tất cấy máu, đọc kết quả vi sinh thường quy và rà soát eGFR chỉnh liều.';
+    } else if (idx >= 6 && idx <= 8) {
+      lifeNote = isHoangDao
+        ? 'Buổi chiều hanh thông: thuận lợi gặp gỡ bạn bè, ký kết giấy tờ và giải quyết tài chính.'
+        : 'Tránh tranh luận căng thẳng lúc đầu giờ chiều; dành 15 phút chợp mắt tái tạo năng lượng.';
+      clinicalNote =
+        rank <= 4
+          ? 'Thuận lợi tiến hành thủ thuật Kiểm soát ổ nhiễm (chọc dò LP, dẫn lưu, rút catheter) & hội chẩn.'
+          : 'Ưu tiên hoàn thiện hồ sơ xuất viện OPAT, tư vấn bệnh nhân và cập nhật y văn EBM.';
+    } else {
+      lifeNote = isHoangDao
+        ? 'Buổi tối đầm ấm: rất đẹp để quây quần bên gia đình, đọc sách hoặc lên kế hoạch ngày mai.'
+        : 'Thư giãn nhẹ nhàng, tránh quyết định mua sắm lớn hoặc thức khuya quá 23h.';
+      clinicalNote =
+        rank <= 4
+          ? 'Bàn giao ca trực mạch lạc (SBAR), kiểm tra lại kết quả cấy máu chiều và liều kháng sinh đêm.'
+          : 'Kiểm soát nhiễm khuẩn tay, hoàn thành ghi chép bệnh án sạch sẽ và bảo toàn thể lực trực.';
+    }
+
+    gioRanks.push({
+      chi: chiHour,
+      can: hourCC.can,
+      fullCanChi: hourCC.full,
+      timeRange,
+      starName: star.name,
+      isHoangDao,
+      napAm: napAmH.name,
+      napAmElement: napAmH.element,
+      rank,
+      rankTitle: rMeta.title,
+      badgeClass: rMeta.badge,
+      goodFactors,
+      badFactors,
+      lifeNote,
+      clinicalNote
+    });
+  });
+
+  return { gioTimeline, gioRanks, hoangDaoHours };
 }
 
-export function saveDoctorProfile(profile: Partial<DoctorProfile>): DoctorProfile {
-  const year = profile.birthYear || 1990;
-  const canChi = getCanChiYear(year);
-  const updated: DoctorProfile = {
-    name: profile.name || "Bác sĩ",
-    gender: profile.gender || "Nam",
-    birthDay: Number(profile.birthDay) || 15,
-    birthMonth: Number(profile.birthMonth) || 8,
-    birthYear: year,
-    birthHour: Number(profile.birthHour) || 8,
-    birthMinute: Number(profile.birthMinute) || 0,
-    canNam: canChi.can,
-    chiNam: canChi.chi,
-    hanhMenh: (profile.hanhMenh as any) || "Thổ",
-    specialty: (profile.specialty as DoctorSpecialty) || "internal_general"
-  };
-  try {
-    localStorage.setItem(PROFILE_KEY, JSON.stringify(updated));
-  } catch {}
-  return updated;
-}
+// ═══════════════════════════════════════════════════════════════════════════
+// 7. HÀM ĐÁNH GIÁ NGÀY TỔNG HỢP (60% CON NGƯỜI/MÔI TRƯỜNG • 40% TRUYỀN NHIỄM)
+// ═══════════════════════════════════════════════════════════════════════════
 
-// ─── ĐÁNH GIÁ CHỈ SỐ NGÀY TỔNG HỢP NỘI KHOA ───────────────────────────
-
-export function evaluateDayScore(dateObj: Date = new Date(), customDoc?: DoctorProfile): DayScoreEvaluation {
-  const doc = customDoc || getDoctorProfile();
-  const specialty = doc.specialty || 'internal_general';
-  const canChiDay = getCanChiDay(dateObj);
-  const lunar = getApproxLunarDate(dateObj);
-
-  // 1. So sánh Can Ngày vs Can Tuổi
-  const hanhNgay = NGU_HANH_CAN[canChiDay.can] || 'Thổ';
-  const hanhNamSinh = NGU_HANH_CAN[doc.canNam] || 'Thổ';
-  let b1 = { level: 3, text: "Bình hòa", score: 25 };
-  if (HANH_SINH_KHAC.sinh[hanhNgay] === hanhNamSinh) {
-    b1 = { level: 1, text: "Can ngày sinh Can tuổi (Rất tốt)", score: 40 };
-  } else if (HANH_SINH_KHAC.sinh[hanhNamSinh] === hanhNgay) {
-    b1 = { level: 2, text: "Can tuổi sinh Can ngày (Khá tốt)", score: 32 };
-  } else if (hanhNgay === hanhNamSinh) {
-    b1 = { level: 3, text: "Can ngày đồng hành Can tuổi", score: 25 };
-  } else if (HANH_SINH_KHAC.khac[hanhNamSinh] === hanhNgay) {
-    b1 = { level: 4, text: "Can tuổi khắc Can ngày", score: 15 };
-  } else if (HANH_SINH_KHAC.khac[hanhNgay] === hanhNamSinh) {
-    b1 = { level: 5, text: "Can ngày khắc Can tuổi", score: 5 };
-  }
-
-  // 2. Can Chi Ngày
-  const hanhChi = NGU_HANH_CHI[canChiDay.chi] || 'Thổ';
-  let canChiNgayScore = { level: 3, text: "Bình hòa", score: 0 };
-  if (HANH_SINH_KHAC.sinh[hanhNgay] === hanhChi) {
-    canChiNgayScore = { level: 1, text: "Bảo Nhật (Can sinh Chi - Cát)", score: 12 };
-  } else if (HANH_SINH_KHAC.sinh[hanhChi] === hanhNgay) {
-    canChiNgayScore = { level: 2, text: "Thoa Nhật (Chi sinh Can - Khá)", score: 8 };
-  } else if (hanhNgay === hanhChi) {
-    canChiNgayScore = { level: 3, text: "Bát Chuyên (Đồng khí)", score: 4 };
-  } else if (HANH_SINH_KHAC.khac[hanhChi] === hanhNgay) {
-    canChiNgayScore = { level: 4, text: "Chế Nhật (Chi khắc Can - Thận trọng)", score: -8 };
-  } else if (HANH_SINH_KHAC.khac[hanhNgay] === hanhChi) {
-    canChiNgayScore = { level: 5, text: "Phạt Nhật (Can khắc Chi - Xấu)", score: -12 };
-  }
-
-  // 3. Tương tác Địa Chi Bác Sĩ vs Ngày
-  const diaChiRelations = kiemTraDiaChi(doc.chiNam, canChiDay.chi);
-
-  // 4. Thiên Ất Quý Nhân & Lộc Thần
-  const quyNhanLoc = kiemTraQuyNhanLoc(doc.canNam, canChiDay.can, canChiDay.chi);
-
-  // 5. Ngũ Hành Bản Mệnh
-  let b3Point = 0;
-  const b3Detail: string[] = [];
-  if (HANH_SINH_KHAC.sinh[hanhNgay] === doc.hanhMenh) {
-    b3Point += 8;
-    b3Detail.push("Hành ngày tương sinh Bản Mệnh (+8đ)");
-  } else if (hanhNgay === doc.hanhMenh) {
-    b3Point += 4;
-    b3Detail.push("Hành ngày đồng hành Bản Mệnh (+4đ)");
-  }
-
-  // 6. Ngày Kỵ / Cát Âm Lịch
-  const tamNuong = [3, 7, 13, 18, 22, 27];
-  const tamCuong = [8, 18, 28];
-  const nguyetKy = [5, 14, 23];
-  const lucNhamCat = [6, 16, 26];
-  const b4Errors: string[] = [];
-  const b4Bonuses: string[] = [];
-  let b4Penalty = 0;
-  let b4BonusPoint = 0;
-
-  if (tamNuong.includes(lunar.day)) { b4Errors.push("Phạm ngày Tam Nương (-15đ)"); b4Penalty += 15; }
-  if (tamCuong.includes(lunar.day)) { b4Errors.push("Phạm ngày Tam Cường (-10đ)"); b4Penalty += 10; }
-  if (nguyetKy.includes(lunar.day)) { b4Errors.push("Phạm ngày Nguyệt Kỵ (-12đ)"); b4Penalty += 12; }
-  if (lunar.day === 1) { b4Errors.push("Mùng 1 đầu tháng (Sóc) (-4đ)"); b4Penalty += 4; }
-  if (canChiDay.can === "Quý" && canChiDay.chi === "Hợi") { b4Errors.push("Ngày Quý Hợi (Cùng Cực) (-15đ)"); b4Penalty += 15; }
-  if (lunar.day === 15) { b4Bonuses.push("Ngày Vọng (Trăng tròn đại cát) (+4đ)"); b4BonusPoint += 4; }
-  if (lucNhamCat.includes(lunar.day)) { b4Bonuses.push("Ngày Lục Nhâm Cát (+5đ)"); b4BonusPoint += 5; }
-
-  // 7. Nhị Thập Bát Tú & Sao Đăng Viên
-  const saoTu = getSaoTu(dateObj, canChiDay.jdn);
-  const saoTuDangVien = checkSaoDangVien(saoTu.name, canChiDay.chi);
-
-  // 8. Trực Ngày, Tiết Khí, Thần Sát Y Khoa Chuyên Sâu
-  const trucNgay = getTrucNgay(lunar.month, canChiDay.chi);
-  const tietKhiInfo = getTietKhiInfo(dateObj);
-  const thanSat = kiemTraThanSat(lunar.month, canChiDay.can, canChiDay.chi, doc.canNam);
-
-  // 9. Nạp Âm 60 Hoa Giáp Đối Chiếu
-  const napAmDay = getNapAm(canChiDay.full);
-  const napAmDoc = getNapAm(`${doc.canNam} ${doc.chiNam}`);
-  const napAmRelation = evaluateNapAmRelation(napAmDoc, napAmDay);
-
-  // 10. Biorhythms 4 Trục Nội Khoa Chuyên Sâu
-  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
-  const bio = calculateBiorhythms(birthDate, dateObj, specialty);
-
-  // Tổng hợp điểm chuẩn hóa
-  const basePoint = 20;
-  const rawTotal = basePoint + b1.score + canChiNgayScore.score
-                 + diaChiRelations.totalScore + quyNhanLoc.totalScore
-                 + b3Point - b4Penalty + b4BonusPoint
-                 + saoTu.score + saoTuDangVien.bonusScore
-                 + trucNgay.score + tietKhiInfo.tietKhi.score
-                 + (tietKhiInfo.tuLyTuTuyet ? tietKhiInfo.tuLyTuTuyet.score : 0)
-                 + thanSat.score + bio.totalBioScore
-                 + napAmRelation.score;
-
-  const total = Math.round(Math.min(100, Math.max(0, rawTotal)));
-
-  let rating = "Bình Hòa";
-  let badgeClass = "day-rating-neutral";
-  let icon = "⚖️";
-  let summaryText = "Ngày cân bằng, mọi công việc lâm sàng nội trú diễn ra theo đúng protocol chuẩn.";
-
-  if (total >= 82) {
-    rating = "Đại Cát";
-    badgeClass = "day-rating-great";
-    icon = "🌟";
-    summaryText = `Đại cát hanh thông (${saoTu.name} Tinh${saoTuDangVien.isDangVien ? ' Đăng Viên' : ''} & Trực ${trucNgay.name}): Thời điểm vàng cho các quyết định điều trị phức tạp, tiếp nhận ca khó & hội chẩn EBM.`;
-  } else if (total >= 65) {
-    rating = "Cát Lành";
-    badgeClass = "day-rating-good";
-    icon = "✨";
-    summaryText = `Khí tiết thuận hòa (${saoTu.name} Tinh): Năng lượng làm việc và độ tập trung chẩn đoán nội khoa đạt hiệu suất cao.`;
-  } else if (total >= 45) {
-    rating = "Bình Hòa";
-    badgeClass = "day-rating-neutral";
-    icon = "⚖️";
-    summaryText = `Trạng thái ổn định: Thích hợp tái khám, ra y lệnh định kỳ, rà soát hồ sơ & sinh hoạt chuyên đề EBM.`;
-  } else if (total >= 25) {
-    rating = "Thận Trọng";
-    badgeClass = "day-rating-warn";
-    icon = "⚠️";
-    summaryText = `Có yếu tố khắc nhẹ hoặc khí tiết phân tán: Chú ý rà soát kỹ bảng kiểm an toàn thuốc và chức năng tạng.`;
-  } else {
-    rating = "Đại Hung";
-    badgeClass = "day-rating-bad";
-    icon = "⛔";
-    summaryText = `Phạm nhiều hung tinh / Lục xung: Thận trọng cao độ, kiểm tra chéo y lệnh thuốc 2 lần trước khi ký duyệt.`;
-  }
-
-  const advice = evaluateClinicalAdvice(total, trucNgay, saoTu, bio, diaChiRelations, specialty);
-  const hoangDaoList = HOANG_DAO_MAP[canChiDay.chi] || [];
-  const hoangDaoHours = hoangDaoList.map(chi => `${chi} (${GIO_TIME[chi] || ''})`);
-  const gioTimeline = calculateGioTimeline(canChiDay.chi, dateObj.getHours());
-
-  const gioRanks = calculateGioRanks9Bậc(canChiDay.can, canChiDay.chi, doc);
-  const medicalTasks = evaluateMedicalTasks(
-    dateObj,
-    canChiDay.can,
-    canChiDay.chi,
-    trucNgay,
-    saoTu,
-    thanSat.list,
-    doc,
-    lunar.day,
-    lunar.month
+export function evaluateDayScore(
+  dateObj: Date = new Date(),
+  customDoc?: DoctorProfile
+): DayScoreEvaluation {
+  const doc = customDoc ? enrichProfile(customDoc) : getDoctorProfile();
+  const targetDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 9, 0, 0);
+  const lunar = convertSolar2Lunar(
+    targetDate.getDate(),
+    targetDate.getMonth() + 1,
+    targetDate.getFullYear(),
+    7
   );
 
-  const dateKey = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}-${String(dateObj.getDate()).padStart(2, '0')}`;
-  const formattedDate = dateObj.toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+  const yearCC = getCanChiYear(lunar.year);
+  const monthCC = getCanChiMonth(lunar.month, yearCC.can);
+  const dayCC = getCanChiDay(targetDate);
+  const hanhNgay = NGU_HANH_CAN[dayCC.can] || 'Mộc';
+
+  const napAmDay = getNapAm(dayCC.full);
+  const napAmDoc = doc.batTu?.napAmYear || getNapAm(`${doc.canNam} ${doc.chiNam}`);
+  const napAmRelation = evaluateNapAmRelation(napAmDay, napAmDoc);
+
+  const diaChiRelations = evaluateDiaChiRelation(doc.chiNam, dayCC.chi);
+  const quyNhanLoc = evaluateQuyNhanLoc(doc.canNam, dayCC.chi);
+
+  const canHop = THIEN_CAN_HOP_HOA[doc.canNam]?.partner === dayCC.can;
+  const canXung = (THIEN_CAN_XUNG_PHA[doc.canNam] || []).includes(dayCC.can);
+  const canScore = canHop ? 5 : canXung ? -5 : 0;
+
+  const saoTu = getSaoTuByJDN(dayCC.jd);
+  const dangVienCfg = SAO_DANG_VIEN_MAP[saoTu.name];
+  const isDangVien = Boolean(dangVienCfg?.chiList.includes(dayCC.chi));
+  const saoTuDangVien = {
+    isDangVien,
+    bonusScore: isDangVien ? Math.round((dangVienCfg?.bonus || 8) * 0.5) : 0,
+    note: isDangVien ? dangVienCfg!.meaning : 'Không phạm/đắc Đăng Viên'
+  };
+
+  const trucNgay = getTrucByMonthAndDay(lunar.month, dayCC.chi);
+  const tietKhiInfo = getTietKhiInfo(targetDate);
+  const thanSatEval = evaluateThanSat(lunar.month, dayCC.can, dayCC.chi, dayCC.full, doc.canNam);
+
+  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
+  const bio = calculateBiorhythms(birthDate, targetDate);
+
+  const { gioTimeline, gioRanks, hoangDaoHours } = buildGioTimelineAndRanks(
+    dayCC.chi,
+    dayCC.can,
+    napAmDoc,
+    targetDate
+  );
+
+  const tasks = evaluateInfectiousTasks(
+    dayCC.full,
+    saoTu,
+    trucNgay,
+    thanSatEval.list,
+    doc.gender,
+    bio
+  );
+
+  // ── TÍNH ĐIỂM PHẦN 1: 60% CON NGƯỜI, MÔI TRƯỜNG & ĐỜI SỐNG (MAX 60đ) ──
+  const breakdown: ScoreBreakdownFactor[] = [];
+  let humanRaw = 34; // Baseline trung tính
+
+  // 1. Nạp Âm Bản Mệnh
+  humanRaw += Math.round(napAmRelation.score * 0.7);
+  breakdown.push({
+    id: 'nap_am',
+    pillar: 'human_env',
+    label: `Nạp Âm (${napAmDay.name})`,
+    delta: Math.round(napAmRelation.score * 0.7),
+    tone: napAmRelation.score > 2 ? 'pos' : napAmRelation.score < 0 ? 'neg' : 'neutral',
+    detail: napAmRelation.text
+  });
+
+  // 2. Địa Chi & Thiên Can & Quý Nhân
+  const canChiDelta = diaChiRelations.totalScore + quyNhanLoc.totalScore + canScore;
+  humanRaw += canChiDelta;
+  if (canChiDelta !== 0) {
+    const parts: string[] = [];
+    if (diaChiRelations.tamHop.isMatch) parts.push(diaChiRelations.tamHop.text);
+    if (diaChiRelations.lucHop.isMatch) parts.push(diaChiRelations.lucHop.text);
+    if (diaChiRelations.lucXung.isMatch) parts.push(diaChiRelations.lucXung.text);
+    if (quyNhanLoc.thienAt.isMatch) parts.push('Thiên Ất Quý Nhân');
+    if (quyNhanLoc.locThan.isMatch) parts.push('Lộc Thần');
+    if (canHop) parts.push('Thiên Can Hợp Hóa');
+    if (canXung) parts.push('Thiên Can Xung Khắc');
+    breakdown.push({
+      id: 'can_chi',
+      pillar: 'human_env',
+      label: parts[0] || `Can Chi (${dayCC.full})`,
+      delta: canChiDelta,
+      tone: canChiDelta > 0 ? 'pos' : 'neg',
+      detail: parts.join(' • ')
+    });
+  }
+
+  // 3. Nhịp Sinh Học (Con người)
+  const bioLifeDelta = bio.totalBioScore;
+  humanRaw += bioLifeDelta;
+  breakdown.push({
+    id: 'bio_life',
+    pillar: 'human_env',
+    label: `Nhịp Sinh Học (${bio.avgScore >= 0 ? '+' : ''}${bio.avgScore}%)`,
+    delta: bioLifeDelta,
+    tone: bioLifeDelta > 1 ? 'pos' : bioLifeDelta < -1 ? 'neg' : 'neutral',
+    detail: `Thể chất ${bio.physical}% • Cảm xúc ${bio.emotional}% • Trí tuệ ${bio.intellectual}%`
+  });
+
+  // 4. Khí hậu 24 Tiết Khí & Tứ Ly/Tứ Tuyệt (Môi trường)
+  const envDelta = Math.round(tietKhiInfo.tietKhi.score * 0.6) + (tietKhiInfo.tuLyTuTuyet?.score || 0);
+  humanRaw += envDelta;
+  breakdown.push({
+    id: 'climate_env',
+    pillar: 'human_env',
+    label: `Tiết ${tietKhiInfo.tietKhi.name}${tietKhiInfo.tuLyTuTuyet ? ` (${tietKhiInfo.tuLyTuTuyet.type})` : ''}`,
+    delta: envDelta,
+    tone: envDelta >= 3 ? 'pos' : envDelta < 0 ? 'neg' : 'neutral',
+    detail: tietKhiInfo.tuLyTuTuyet ? tietKhiInfo.tuLyTuTuyet.desc : tietKhiInfo.tietKhi.climateDesc
+  });
+
+  // 5. Trực Ngày & Sao Tú (60% ảnh hưởng đời sống)
+  const trucLifeDelta = Math.round(trucNgay.score * 0.45);
+  const saoLifeDelta = Math.round(saoTu.score * 0.35) + saoTuDangVien.bonusScore;
+  humanRaw += trucLifeDelta + saoLifeDelta + thanSatEval.lifeDelta;
+  breakdown.push({
+    id: 'truc_sao_life',
+    pillar: 'human_env',
+    label: `Trực ${trucNgay.name} • Sao ${saoTu.name}`,
+    delta: trucLifeDelta + saoLifeDelta + thanSatEval.lifeDelta,
+    tone: trucLifeDelta + saoLifeDelta >= 0 ? 'pos' : 'neg',
+    detail: `${trucNgay.lifeHint} ${saoTu.desc}`
+  });
+
+  const humanScore = clamp(Math.round(humanRaw), 8, 60);
+  const humanPct = Math.round((humanScore / 60) * 100);
+
+  // ── TÍNH ĐIỂM PHẦN 2: 40% BÁC SĨ TRUYỀN NHIỄM (MAX 40đ) ──────────────
+  const taskArr = Object.values(tasks);
+  const avgTaskScore = taskArr.reduce((acc, t) => acc + t.totalScore, 0) / Math.max(1, taskArr.length);
+  // Map avgTaskScore (~30..92) -> baseline ~16..34
+  let clinicalRaw = Math.round(((avgTaskScore - 20) / 75) * 20) + 14;
+  clinicalRaw += thanSatEval.clinicalDelta;
+  const bioClinicalDelta = Math.round(((bio.intellectual + bio.intuitive) / 200) * 4);
+  clinicalRaw += bioClinicalDelta;
+
+  const clinicalScore = clamp(Math.round(clinicalRaw), 6, 40);
+  const clinicalPct = Math.round((clinicalScore / 40) * 100);
+
+  breakdown.push({
+    id: 'id_tasks',
+    pillar: 'clinical_id',
+    label: `5 Tác Vụ Truyền Nhiễm (${Math.round(avgTaskScore)}đ TB)`,
+    delta: clinicalScore - 24,
+    tone: clinicalScore >= 28 ? 'pos' : clinicalScore < 20 ? 'neg' : 'neutral',
+    detail: `FUO ${tasks.bien_luan_fuo.totalScore}đ • AMS ${tasks.toi_uu_khang_sinh.totalScore}đ • Source Control ${tasks.kiem_soat_o_nhiem.totalScore}đ`
+  });
+
+  if (thanSatEval.clinicalDelta !== 0) {
+    const posNames = thanSatEval.list.filter((t) => t.type === 'pos').map((t) => t.name);
+    const negNames = thanSatEval.list.filter((t) => t.type === 'neg').map((t) => t.name);
+    breakdown.push({
+      id: 'id_thansat',
+      pillar: 'clinical_id',
+      label: thanSatEval.clinicalDelta > 0 ? `Cát Tinh Y Khoa (${posNames.join(', ')})` : `Cảnh Báo Y Khoa (${negNames.join(', ')})`,
+      delta: thanSatEval.clinicalDelta,
+      tone: thanSatEval.clinicalDelta > 0 ? 'pos' : 'neg',
+      detail:
+        thanSatEval.list.find((t) => t.scope === 'clinical' || t.scope === 'both')?.desc ||
+        'Yếu tố thời khắc lâm sàng.'
+    });
+  }
+
+  // ── TỔNG ĐIỂM 0–100 ──────────────────────────────────────────────────────
+  const total = clamp(humanScore + clinicalScore, 0, 100);
+
+  let rating = 'Bình Hòa';
+  let icon = '🌤️';
+  let badgeClass = 'score-avg';
+  if (total >= 82) {
+    rating = 'Đại Cát — Rất Thuận Lợi';
+    icon = '🌟';
+    badgeClass = 'score-high';
+  } else if (total >= 70) {
+    rating = 'Cát Lợi — Khả Quan';
+    icon = '✨';
+    badgeClass = 'score-good';
+  } else if (total >= 55) {
+    rating = 'Bình Hòa — Ổn Định';
+    icon = '🌤️';
+    badgeClass = 'score-avg';
+  } else {
+    rating = 'Cẩn Trọng — Ưu Tiên An Toàn';
+    icon = '🛡️';
+    badgeClass = 'score-low';
+  }
+
+  const directions = getDirectionsGuide(dayCC.can, dayCC.chi);
+
+  const doList: string[] = [];
+  const avoidList: string[] = [];
+  if (trucNgay.type === 'cat') doList.push(`Trực ${trucNgay.name}: ${trucNgay.lifeHint}`);
+  else avoidList.push(`Trực ${trucNgay.name}: ${trucNgay.lifeHint}`);
+
+  if (saoTu.type === 'cat') doList.push(`Sao ${saoTu.name}: ${saoTu.desc}`);
+  else avoidList.push(`Sao ${saoTu.name}: ${saoTu.desc}`);
+
+  doList.push(`Xuất hành hướng ${directions.hyThan} (Hỷ Thần) hoặc ${directions.taiThan} (Tài Thần).`);
+  avoidList.push(`Hạn chế đi xa khởi sự hướng ${directions.hacThan} (Hắc Thần).`);
+  if (bio.isCriticalPhysical || bio.isCriticalEmotional) {
+    avoidList.push('Ngày giao pha sinh học: tránh thức khuya hoặc quyết định cảm tính.');
+  } else {
+    doList.push(tietKhiInfo.tietKhi.healthTip);
+  }
+
+  const humanEnv: HumanEnvironmentEval = {
+    score: humanScore,
+    maxScore: 60,
+    percent: humanPct,
+    rating: humanPct >= 75 ? 'Vượng Khí' : humanPct >= 58 ? 'Hài Hòa' : 'Cần Dưỡng Sức',
+    climate: {
+      tietKhi: tietKhiInfo.tietKhi,
+      tuLyTuTuyet: tietKhiInfo.tuLyTuTuyet,
+      ecoNote: `${tietKhiInfo.tietKhi.envImpact} ${tietKhiInfo.tietKhi.healthTip}`
+    },
+    directions,
+    pillars: {
+      bodyAndSpace: {
+        status: bio.physical >= 15 && !bio.isCriticalPhysical ? 'good' : bio.physical <= -25 ? 'caution' : 'neutral',
+        title: 'Thể Chất & Không Gian Sống',
+        text: `${bio.lifeTips[0] || ''} ${tietKhiInfo.tietKhi.healthTip}`
+      },
+      relationships: {
+        status: diaChiRelations.totalScore >= 0 && !canXung ? 'good' : 'caution',
+        title: 'Gia Đạo, Giao Tiếp & Đồng Nghiệp',
+        text:
+          diaChiRelations.totalScore > 0 || canHop
+            ? 'Nhân duyên hòa hợp, thuận lợi trò chuyện sâu với người thân và tạo đồng thuận nhóm.'
+            : canXung || diaChiRelations.lucXung.isMatch
+              ? 'Có xung nhẹ về giao tiếp: lắng nghe trọn vẹn trước khi phản hồi để giữ hòa khí.'
+              : 'Mối quan hệ êm ả, phù hợp chia sẻ hỏi thăm gia đình và giữ kết nối tích cực.'
+      },
+      lifeAndFinance: {
+        status: quyNhanLoc.totalScore > 0 || saoTu.score >= 10 ? 'good' : saoTu.score <= -10 ? 'caution' : 'neutral',
+        title: 'Đời Sống, Di Chuyển & Tài Chính',
+        text: `${directions.travelTip} ${
+          saoTu.score >= 10
+            ? 'Thuận lợi lập kế hoạch tài chính, học kỹ năng mới và sắp xếp việc nhà.'
+            : 'Chi tiêu theo kế hoạch, tránh mua sắm bốc đồng.'
+        }`
+      }
+    },
+    doList,
+    avoidList
+  };
+
+  const clinicalID: InfectiousClinicalEval = {
+    score: clinicalScore,
+    maxScore: 40,
+    percent: clinicalPct,
+    rating: clinicalPct >= 75 ? 'Sáng Suốt Lâm Sàng' : clinicalPct >= 58 ? 'Ổn Định Ca Trực' : 'Tăng Cường Checklist',
+    tasks,
+    pillars: {
+      fuoAndSepsis: {
+        status: tasks.bien_luan_fuo.totalScore >= 72 ? 'good' : tasks.bien_luan_fuo.totalScore < 50 ? 'caution' : 'neutral',
+        title: 'Biện Luận Sốt CRNN (FUO) & Sepsis',
+        text: tasks.bien_luan_fuo.advice
+      },
+      amsStewardship: {
+        status: tasks.toi_uu_khang_sinh.totalScore >= 72 ? 'good' : tasks.toi_uu_khang_sinh.totalScore < 50 ? 'caution' : 'neutral',
+        title: 'Quản Lý Kháng Sinh (AMS & PK/PD)',
+        text: tasks.toi_uu_khang_sinh.advice
+      },
+      sourceControl: {
+        status: tasks.kiem_soat_o_nhiem.totalScore >= 72 ? 'good' : tasks.kiem_soat_o_nhiem.totalScore < 50 ? 'caution' : 'neutral',
+        title: 'Kiểm Soát Ổ Nhiễm & Thủ Thuật',
+        text: tasks.kiem_soat_o_nhiem.advice
+      },
+      ipcAndEbm: {
+        status: tasks.hoi_chan_dich_te.totalScore >= 72 ? 'good' : tasks.hoi_chan_dich_te.totalScore < 50 ? 'caution' : 'neutral',
+        title: 'Cảnh Giác Dịch Tễ, IPC & EBM',
+        text: tasks.hoi_chan_dich_te.advice
+      }
+    },
+    idShiftFocus:
+      clinicalPct >= 75
+        ? 'Trọng tâm Truyền Nhiễm: Thuận lợi giải mã ca FUO khó, hội chẩn đa chuyên khoa và tối ưu phổ kháng sinh.'
+        : clinicalPct >= 58
+          ? 'Trọng tâm Truyền Nhiễm: Bám sát thời gian vàng cấy máu - liều nạp Sepsis và rà soát eGFR.'
+          : 'Trọng tâm Truyền Nhiễm: Bật cảnh giác kép với thủ thuật xâm lấn (LP/dẫn lưu), kiểm tra DDI và vệ sinh tay vô khuẩn.'
+  };
+
+  const summaryText = `Ngày ${dayCC.full} (${lunar.day}/${lunar.month} Âm): Đời sống & Môi trường ${humanScore}/60đ • Truyền Nhiễm ${clinicalScore}/40đ — Tổng ${total}/100đ (${rating}).`;
 
   return {
     total,
-    rawTotal,
+    rawTotal: humanRaw + clinicalRaw,
     rating,
     icon,
     badgeClass,
     summaryText,
-    dateObj,
-    dateKey,
-    formattedDate,
+    dateObj: targetDate,
+    dateKey: formatDateKey(targetDate),
+    formattedDate: formatDateVN(targetDate),
+    lunar,
     lunarDay: lunar.day,
     lunarMonth: lunar.month,
-    canChiDay: canChiDay.full,
-    canNgay: canChiDay.can,
-    chiNgay: canChiDay.chi,
+    canChiYear: yearCC.full,
+    canChiMonth: monthCC.full,
+    canChiDay: dayCC.full,
+    canNgay: dayCC.can,
+    chiNgay: dayCC.chi,
     hanhNgay,
     docProfile: doc,
-    b1,
-    canChiNgayScore,
+    b1: { level: humanPct >= 70 ? 1 : 2, text: napAmRelation.text, score: napAmRelation.score },
+    canChiNgayScore: { level: canChiDelta >= 0 ? 1 : 2, text: `${dayCC.full} (${napAmDay.name})`, score: canChiDelta },
     diaChiRelations,
     quyNhanLoc,
-    b3: { point: b3Point, detail: b3Detail },
-    b4: { errors: b4Errors, bonuses: b4Bonuses, penalty: b4Penalty, bonusPoint: b4BonusPoint },
+    b3: { point: Math.round(avgTaskScore), detail: taskArr.map((t) => `${t.task.shortTitle}: ${t.totalScore}đ`) },
+    b4: {
+      errors: thanSatEval.list.filter((t) => t.type === 'neg').map((t) => t.name),
+      bonuses: thanSatEval.list.filter((t) => t.type === 'pos').map((t) => t.name),
+      penalty: thanSatEval.list.filter((t) => t.type === 'neg').reduce((s, t) => s + t.score, 0),
+      bonusPoint: thanSatEval.list.filter((t) => t.type === 'pos').reduce((s, t) => s + t.score, 0)
+    },
     saoTu,
     saoTuDangVien,
     trucNgay,
     tietKhiInfo,
-    thanSat,
+    thanSat: { list: thanSatEval.list, score: thanSatEval.score },
     bio,
-    advice,
-    hoangDaoHours,
-    gioTimeline,
     napAmDay,
     napAmDoc,
     napAmRelation,
-    medicalTasks,
+    humanEnv,
+    clinicalID,
+    breakdown,
+    hoangDaoHours,
+    gioTimeline,
     gioRanks
   };
 }
 
-// ─── TÍNH TOÁN DỰ BÁO 7 NGÀY ──────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════
+// 8. DỰ BÁO 7 NGÀY, LỊCH THÁNG 30 NGÀY & BỘ TÌM NGÀY ĐẸP (6 MỤC ĐÍCH)
+// ═══════════════════════════════════════════════════════════════════════════
 
-export function getWeekEvaluation(startDate: Date = new Date(), customDoc?: DoctorProfile): WeekDaySummary[] {
-  const doc = customDoc || getDoctorProfile();
-  const weekList: WeekDaySummary[] = [];
-  const todayKey = new Date().toDateString();
-
-  let highestScore = -1;
-  let bestIndex = 0;
+export function getWeekEvaluation(
+  startDate: Date = new Date(),
+  customDoc?: DoctorProfile
+): WeekDaySummary[] {
+  const doc = customDoc ? enrichProfile(customDoc) : getDoctorProfile();
+  const todayKey = formatDateKey(new Date());
+  const list: WeekDaySummary[] = [];
 
   for (let i = 0; i < 7; i++) {
-    const d = new Date(startDate.getTime() + i * 86400000);
-    const evalData = evaluateDayScore(d, doc);
-    const dayOfWeek = d.toLocaleDateString('vi-VN', { weekday: 'short' });
-    const dateFormatted = `${d.getDate()}/${d.getMonth() + 1}`;
-    const lunarFormatted = `${evalData.lunarDay}/${evalData.lunarMonth} Âm`;
-
-    if (evalData.total > highestScore) {
-      highestScore = evalData.total;
-      bestIndex = i;
-    }
-
-    weekList.push({
+    const d = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
+    const ev = evaluateDayScore(d, doc);
+    list.push({
       date: d,
-      dateKey: evalData.dateKey,
-      dayOfWeek,
-      dateFormatted,
-      lunarFormatted,
-      canChi: evalData.canChiDay,
-      saoTu: evalData.saoTu.name,
-      truc: evalData.trucNgay.name,
-      score: evalData.total,
-      rating: evalData.rating,
-      badgeClass: evalData.badgeClass,
-      icon: evalData.icon,
-      isToday: d.toDateString() === todayKey,
+      dateKey: ev.dateKey,
+      dayOfWeek: formatDayOfWeekVN(d),
+      dateFormatted: `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`,
+      lunarFormatted: `${ev.lunarDay}/${ev.lunarMonth}${ev.lunar.isLeap ? 'N' : ''}`,
+      canChi: ev.canChiDay,
+      saoTu: ev.saoTu.name,
+      truc: ev.trucNgay.name,
+      score: ev.total,
+      humanScore: ev.humanEnv.score,
+      clinicalScore: ev.clinicalID.score,
+      rating: ev.rating,
+      badgeClass: ev.badgeClass,
+      icon: ev.icon,
+      isToday: ev.dateKey === todayKey,
       isBestDay: false,
-      evalData
+      evalData: ev
     });
   }
 
-  if (weekList[bestIndex]) {
-    weekList[bestIndex]!.isBestDay = true;
-  }
-
-  return weekList;
+  let bestIdx = 0;
+  list.forEach((item, i) => {
+    if (item.score > (list[bestIdx]?.score ?? -1)) bestIdx = i;
+  });
+  if (list[bestIdx]) list[bestIdx]!.isBestDay = true;
+  return list;
 }
-
-// ─── BỘ TÌM NGÀY ĐẸP LÂM SÀNG NỘI KHOA (CLINICAL DATE FINDER) ─────────
-
-export function findBestClinicalDays(
-  purpose: 'diagnosis' | 'pharmacotherapy' | 'discharge' | 'ebm' | 'clinic' = 'diagnosis',
-  daysAhead: number = 30,
-  customDoc?: DoctorProfile
-): BestClinicalDayResult[] {
-  const doc = customDoc || getDoctorProfile();
-  const today = new Date();
-  const scoredDays: { evalData: DayScoreEvaluation; matchScore: number; matchReasons: string[] }[] = [];
-
-  const purposeNames: Record<string, string> = {
-    diagnosis: "Tiếp Nhận & Chẩn Đoán Ca Khó Nội Khoa",
-    pharmacotherapy: "Khởi Đầu Phác Đồ Trị Liệu / Thuốc Mới",
-    discharge: "Đánh Giá Xuất Viện An Toàn & Xuống Thang",
-    ebm: "Hội Chẩn Liên Khoa & Báo Cáo EBM",
-    clinic: "Khai Trương Phòng Khám / Thăm Dò Chức Năng"
-  };
-
-  for (let i = 0; i < daysAhead; i++) {
-    const d = new Date(today.getTime() + i * 86400000);
-    const evalData = evaluateDayScore(d, doc);
-    let matchScore = evalData.total;
-    const matchReasons: string[] = [];
-
-    if (purpose === 'diagnosis') {
-      const taskEval = evalData.medicalTasks.kham_chandoan;
-      matchScore += taskEval.totalScore * 3;
-      if (taskEval.isSpecialDay) {
-        matchScore += 30;
-        matchReasons.push(`🌟 Ngày Tối Thượng ${evalData.canChiDay} (Vụ 81: Khám & Biện Luận Ca Khó)`);
-      }
-      if (evalData.bio.intellectual >= 30) {
-        matchScore += 12;
-        matchReasons.push(`Trí tuệ sáng suốt đỉnh cao (${evalData.bio.intellectual}%)`);
-      }
-      if (evalData.bio.intuitive >= 25) {
-        matchScore += 8;
-        matchReasons.push(`Trực giác lâm sàng nhạy bén (${evalData.bio.intuitive}%)`);
-      }
-      if (evalData.saoTu.type === 'cat') {
-        matchReasons.push(`Sao ${evalData.saoTu.name} Tinh (Cát tinh trợ lực)`);
-      }
-    } else if (purpose === 'pharmacotherapy') {
-      const taskEval = evalData.medicalTasks.khoi_phacdo;
-      matchScore += taskEval.totalScore * 3;
-      if (['Trừ', 'Khai', 'Thành'].includes(evalData.trucNgay.name)) {
-        matchScore += 15;
-        matchReasons.push(`Trực ${evalData.trucNgay.name} (Hạp khởi đầu phác đồ)`);
-      }
-      if (evalData.bio.intellectual >= 20) {
-        matchScore += 10;
-        matchReasons.push(`Tư duy dược lý an toàn (${evalData.bio.intellectual}%)`);
-      }
-      if (taskEval.thanSatScore > 0) {
-        matchReasons.push(taskEval.thanSatNote);
-      }
-    } else if (purpose === 'discharge') {
-      const taskEval = evalData.medicalTasks.chinh_lieu_xuatvien;
-      matchScore += taskEval.totalScore * 3;
-      if (['Thành', 'Bình', 'Trừ'].includes(evalData.trucNgay.name)) {
-        matchScore += 15;
-        matchReasons.push(`Trực ${evalData.trucNgay.name} (An định, thích hợp ra viện)`);
-      }
-      if (evalData.bio.emotional >= 20) {
-        matchScore += 10;
-        matchReasons.push(`Giao tiếp thân nhân chu đáo (${evalData.bio.emotional}%)`);
-      }
-    } else if (purpose === 'ebm') {
-      const taskEval = evalData.medicalTasks.hoi_chan_ebm;
-      matchScore += taskEval.totalScore * 3;
-      if (['Bích', 'Trương', 'Đẩu', 'Cơ'].includes(evalData.saoTu.name)) {
-        matchScore += 20;
-        matchReasons.push(`Sao ${evalData.saoTu.name} (Văn chương y thuật & nghiên cứu đỗ đạt)`);
-      }
-      if (evalData.diaChiRelations.tamHop.isMatch) {
-        matchScore += 15;
-        matchReasons.push("Tam Hợp Cát Tinh (Đồng nghiệp & chuyên gia đồng thuận cao)");
-      }
-    } else if (purpose === 'clinic') {
-      const taskEval = evalData.medicalTasks.khai_truong_kthuat;
-      matchScore += taskEval.totalScore * 3;
-      if (evalData.quyNhanLoc.locThan.isMatch) {
-        matchScore += 20;
-        matchReasons.push("Đắc Lộc Thần (Y nghiệp hưng vượng, người bệnh tin tưởng)");
-      }
-      if (['Khai', 'Thành', 'Mãn'].includes(evalData.trucNgay.name)) {
-        matchScore += 15;
-        matchReasons.push(`Trực ${evalData.trucNgay.name} (Khai trương đại cát)`);
-      }
-    }
-
-    scoredDays.push({ evalData, matchScore, matchReasons });
-  }
-
-  scoredDays.sort((a, b) => b.matchScore - a.matchScore);
-  const top5 = scoredDays.slice(0, 5);
-
-  return top5.map((item, idx) => ({
-    rank: idx + 1,
-    purpose,
-    purposeName: purposeNames[purpose] || "Lâm sàng Nội khoa",
-    evalData: item.evalData,
-    matchReasons: item.matchReasons,
-    score: item.evalData.total
-  }));
-}
-
-// ─── LỊCH THÁNG HEATMAP (30-DAY MATRIX) ────────────────────────────────
 
 export function getMonthEvaluation(
   year: number = new Date().getFullYear(),
   month: number = new Date().getMonth() + 1,
   customDoc?: DoctorProfile
 ): DayScoreEvaluation[] {
-  const doc = customDoc || getDoctorProfile();
+  const doc = customDoc ? enrichProfile(customDoc) : getDoctorProfile();
   const daysInMonth = new Date(year, month, 0).getDate();
-  const result: DayScoreEvaluation[] = [];
-
+  const results: DayScoreEvaluation[] = [];
   for (let d = 1; d <= daysInMonth; d++) {
-    const dateObj = new Date(year, month - 1, d);
-    result.push(evaluateDayScore(dateObj, doc));
+    results.push(evaluateDayScore(new Date(year, month - 1, d), doc));
   }
-
-  return result;
+  return results;
 }
 
-// ─── XUẤT FILE LỊCH ICAL (.ICS) & SAO CHÉP TÓM TẮT BÁO CÁO ────────────
+const PURPOSE_LABELS: Record<FinderPurpose, string> = {
+  life_balance: 'Đời Sống, Gia Đạo & Nghỉ Dưỡng (60%)',
+  travel_meeting: 'Xuất Hành, Ký Kết & Gặp Gỡ (60%)',
+  fuo_diagnosis: 'Biện Luận Sốt CRNN (FUO) & Ca Khó (40%)',
+  ams_therapy: 'Khởi & Tối Ưu Kháng Sinh AMS/PK-PD (40%)',
+  source_control: 'Kiểm Soát Ổ Nhiễm & Thủ Thuật LP (40%)',
+  ebm_rounds: 'Hội Chẩn Liên Khoa & Báo Cáo EBM (40%)'
+};
 
-export function generateICSContent(evalData: DayScoreEvaluation): string {
-  const d = evalData.dateObj;
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  const dtStr = `${year}${month}${day}`;
+export function findBestClinicalDays(
+  purpose: FinderPurpose = 'life_balance',
+  daysAhead = 30,
+  customDoc?: DoctorProfile
+): BestClinicalDayResult[] {
+  const doc = customDoc ? enrichProfile(customDoc) : getDoctorProfile();
+  const today = new Date();
+  const candidates: BestClinicalDayResult[] = [];
 
-  const hdText = evalData.hoangDaoHours.slice(0, 4).join(', ');
-  const desc = `Điểm số Nội khoa: ${evalData.total}/100 (${evalData.rating})\\nCan Chi: ${evalData.canChiDay} (Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth})\\nSao: ${evalData.saoTu.name} • Trực: ${evalData.trucNgay.name}\\nGiờ Hoàng Đạo: ${hdText}\\n\\nKhuyến nghị Nội khoa: ${evalData.summaryText}`;
+  for (let i = 0; i < daysAhead; i++) {
+    const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+    const ev = evaluateDayScore(d, doc);
+    let score = ev.total;
+    const reasons: string[] = [];
+
+    if (purpose === 'life_balance') {
+      score = Math.round(ev.humanEnv.percent * 0.75 + ev.total * 0.25);
+      reasons.push(`Con người & Đời sống ${ev.humanEnv.score}/60đ`);
+      if (ev.napAmRelation.score >= 6) reasons.push('Nạp Âm tương trợ bản mệnh');
+      if (ev.bio.emotional >= 25) reasons.push(`Cảm xúc +${ev.bio.emotional}%`);
+    } else if (purpose === 'travel_meeting') {
+      const hasThienAt = ev.quyNhanLoc.thienAt.isMatch;
+      score = Math.round(ev.humanEnv.percent * 0.65 + (hasThienAt ? 14 : 0) + ev.saoTu.score * 0.8 + ev.total * 0.2);
+      reasons.push(`Hỷ Thần: ${ev.humanEnv.directions.hyThan} • Tài Thần: ${ev.humanEnv.directions.taiThan}`);
+      if (hasThienAt) reasons.push('Có Thiên Ất Quý Nhân trợ lực');
+      if (['Khai', 'Thành', 'Định', 'Kiến'].includes(ev.trucNgay.name)) reasons.push(`Trực ${ev.trucNgay.name} vượng xuất hành`);
+    } else if (purpose === 'fuo_diagnosis') {
+      const task = ev.clinicalID.tasks.bien_luan_fuo;
+      score = Math.round(task.totalScore * 0.7 + ev.total * 0.3);
+      reasons.push(`Điểm biện luận FUO: ${task.totalScore}đ`);
+      reasons.push(task.trucNote);
+      if (ev.bio.intellectual >= 20) reasons.push(`Trí tuệ +${ev.bio.intellectual}%`);
+    } else if (purpose === 'ams_therapy') {
+      const task = ev.clinicalID.tasks.toi_uu_khang_sinh;
+      score = Math.round(task.totalScore * 0.7 + ev.total * 0.3);
+      reasons.push(`Điểm tối ưu AMS: ${task.totalScore}đ`);
+      reasons.push(task.thanSatNote);
+    } else if (purpose === 'source_control') {
+      const task = ev.clinicalID.tasks.kiem_soat_o_nhiem;
+      score = Math.round(task.totalScore * 0.75 + ev.total * 0.25);
+      reasons.push(`Điểm Source Control / LP: ${task.totalScore}đ`);
+      if (ev.b4.errors.length === 0) reasons.push('Không phạm Đao Chiêm Sát / Sát Chủ');
+    } else if (purpose === 'ebm_rounds') {
+      const task = ev.clinicalID.tasks.hoi_chan_dich_te;
+      score = Math.round(task.totalScore * 0.65 + ev.clinicalID.percent * 0.35);
+      reasons.push(`Hội chẩn & EBM: ${task.totalScore}đ`);
+      reasons.push(`Sao ${ev.saoTu.name} • Trực ${ev.trucNgay.name}`);
+    }
+
+    candidates.push({
+      rank: 0,
+      purpose,
+      purposeName: PURPOSE_LABELS[purpose],
+      evalData: ev,
+      matchReasons: reasons.slice(0, 3),
+      score: clamp(score, 10, 99)
+    });
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates.slice(0, 5).map((item, idx) => ({ ...item, rank: idx + 1 }));
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 9. NĂNG LƯỢNG CA TRỰC & NHỊP SINH HỌC CIRCADIAN (SINGLE SOURCE OF TRUTH)
+// ═══════════════════════════════════════════════════════════════════════════
+
+export function calculateShiftEnergy(dateObj: Date = new Date()): ShiftEnergyData {
+  const h = dateObj.getHours();
+  const m = dateObj.getMinutes();
+  const totalMin = h * 60 + m;
+
+  let shiftName = 'Ca Hành Chính Sáng';
+  let endMin = 17 * 60;
+  let circadianPhase = 'Đỉnh Tỉnh Táo Sinh Học';
+  let peakHours = '08:30 – 11:30 & 14:30 – 16:30';
+  let energyPercent = 85;
+  let fatigueWarning: string | null = null;
+  let caffeineTip = 'Có thể dùng 1 ly cà phê/trà nhẹ trước 14h00 để không ảnh hưởng giấc ngủ đêm.';
+  let safetyChecklist: string[] = [];
+
+  if (h >= 7 && h < 12) {
+    shiftName = 'Ca Sáng • Giao Ban & Đi Buồng';
+    endMin = 12 * 60;
+    energyPercent = h < 9 ? 84 : 92;
+    circadianPhase = 'Cortisol & Tỉnh Táo Đạt Đỉnh';
+    caffeineTip = 'Uống 250ml nước lọc khi thức dậy; cà phê phù hợp nhất từ 09:00–10:30.';
+    safetyChecklist = [
+      'Rà soát kết quả cấy máu/vi sinh sáng & dấu hiệu nặng Sốt xuất huyết/Sepsis.',
+      'Chỉnh liều kháng sinh theo eGFR mới và đánh giá xuống thang IV-to-PO.'
+    ];
+  } else if (h >= 12 && h < 17) {
+    shiftName = 'Ca Chiều • Hội Chẩn & Thủ Thuật';
+    endMin = 17 * 60;
+    const postLunchDip = h === 13 || (h === 14 && m < 30);
+    energyPercent = postLunchDip ? 68 : 82;
+    circadianPhase = postLunchDip ? 'Trũng Sinh Học Sau Trưa (Post-Lunch Dip)' : 'Phục Hồi Tập Trung Chiều';
+    fatigueWarning = postLunchDip
+      ? 'Độ tỉnh táo giảm nhẹ 13:00–14:30: kiểm tra kỹ đơn vị liều thuốc và chống chỉ định thủ thuật.'
+      : null;
+    caffeineTip = h >= 15 ? 'Hạn chế caffeine sau 15:00 để bảo vệ giấc ngủ sâu tối nay.' : 'Uống đủ nước, nghỉ mắt 5 phút sau mỗi 50 phút đọc hồ sơ.';
+    safetyChecklist = [
+      'Hoàn tất thủ thuật Source Control / chọc dò tủy sống trong khung giờ ánh sáng tốt.',
+      'Chốt danh sách bệnh nhân đủ điều kiện xuất viện hoặc OPAT.'
+    ];
+  } else if (h >= 17 && h < 22) {
+    shiftName = 'Ca Trực Tối • Bàn Giao & Theo Dõi';
+    endMin = 22 * 60;
+    energyPercent = h < 20 ? 74 : 64;
+    circadianPhase = 'Chuyển Pha Melatonin Chiều Tối';
+    caffeineTip = 'Tránh caffeine buổi tối; ưu tiên nước ấm hoặc trái cây nhẹ để giữ tỉnh táo dịu.';
+    safetyChecklist = [
+      'Rà soát y lệnh kháng sinh cữ đêm và các ca nguy cơ sốc nhiễm khuẩn.',
+      'Ghi chú ngắn gọn diễn biến sốt - mạch - huyết áp vào bảng bàn giao SBAR.'
+    ];
+  } else {
+    shiftName = 'Ca Trực Đêm Khuya';
+    endMin = h >= 22 ? 31 * 60 : 7 * 60; // đến 07:00 sáng hôm sau
+    const currentAdjusted = h >= 22 ? totalMin : totalMin + 24 * 60;
+    const remMinRaw = Math.max(0, endMin - currentAdjusted);
+    const remH = Math.floor(remMinRaw / 60);
+    const remM = remMinRaw % 60;
+    const isWindowOfDeath = h >= 2 && h <= 5;
+    energyPercent = isWindowOfDeath ? 44 : 56;
+    circadianPhase = isWindowOfDeath ? 'Đáy Sinh Học Đêm (02:00 – 05:00)' : 'Pha Duy Trì Đêm';
+    fatigueWarning = isWindowOfDeath
+      ? 'Khung 02:00–05:00 dễ nhầm số thập phân liều thuốc: bắt buộc kiểm tra kép (Double-check) trước khi ký y lệnh.'
+      : 'Giữ nhịp hít thở sâu và tranh thủ chợp mắt luân phiên 20 phút nếu phòng bệnh ổn định.';
+    caffeineTip = 'Không dùng caffeine nếu sắp tan ca lúc 07:00 để ngủ bù hiệu quả.';
+    safetyChecklist = [
+      'Double-check liều Vancomycin / Aminoglycoside / Meropenem và tốc độ truyền.',
+      'Theo dõi sát SpO2, lactat, nước tiểu ở bệnh nhân Sepsis nặng.'
+    ];
+
+    const statusClassNight: ShiftEnergyData['statusClass'] =
+      energyPercent >= 75 ? 'high' : energyPercent >= 55 ? 'med' : 'low';
+    return {
+      shiftName,
+      shiftRemainingText: `Còn ${remH}h ${remM}p`,
+      energyPercent,
+      statusText: isWindowOfDeath ? 'Cảnh Giác Đáy Đêm' : 'Duy Trì Tỉnh Táo',
+      statusClass: statusClassNight,
+      icon: '🌙',
+      circadianPhase,
+      peakHours,
+      fatigueWarning,
+      caffeineTip,
+      safetyChecklist
+    };
+  }
+
+  const rem = Math.max(0, endMin - totalMin);
+  const remH = Math.floor(rem / 60);
+  const remM = rem % 60;
+  const statusClass: ShiftEnergyData['statusClass'] =
+    energyPercent >= 75 ? 'high' : energyPercent >= 55 ? 'med' : 'low';
+
+  return {
+    shiftName,
+    shiftRemainingText: `Còn ${remH}h ${remM}p`,
+    energyPercent,
+    statusText: energyPercent >= 75 ? 'Sung Sức' : energyPercent >= 55 ? 'Ổn Định' : 'Cần Nghỉ Ngơi',
+    statusClass,
+    icon: energyPercent >= 75 ? '⚡' : energyPercent >= 55 ? '🔋' : '🛌',
+    circadianPhase,
+    peakHours,
+    fatigueWarning,
+    caffeineTip,
+    safetyChecklist
+  };
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 10. XUẤT LỊCH .ICS & TÓM TẮT SBAR / ĐỜI SỐNG
+// ═══════════════════════════════════════════════════════════════════════════
+
+export function copyDaySummaryText(evalData: DayScoreEvaluation): string {
+  const bestHours = evalData.gioRanks
+    .filter((g) => g.rank <= 3)
+    .slice(0, 3)
+    .map((g) => `${g.chi} (${g.timeRange})`)
+    .join(', ');
 
   return [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//CliniPortal//Internal Medicine Clinical Date Intelligence//VI",
-    "CALSCALE:GREGORIAN",
-    "BEGIN:VEVENT",
-    `UID:cliniportal-internal-${evalData.dateKey}@cliniportal.vn`,
-    `DTSTAMP:${dtStr}T080000Z`,
-    `DTSTART;VALUE=DATE:${dtStr}`,
-    `DTEND;VALUE=DATE:${dtStr}`,
-    `SUMMARY:🌟 [Ngày Tốt Nội Khoa ${evalData.total}đ] ${evalData.canChiDay} - ${evalData.rating}`,
+    `📅 BÁO CÁO NHỊP SINH HỌC & LÂM SÀNG TRUYỀN NHIỄM — ${evalData.formattedDate}`,
+    `• Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth}${evalData.lunar.isLeap ? ' (Nhuận)' : ''} (${evalData.canChiDay}) • Tiết ${evalData.tietKhiInfo.tietKhi.name}`,
+    `• Bác sĩ: ${evalData.docProfile.name} (${evalData.docProfile.canNam} ${evalData.docProfile.chiNam} — ${evalData.docProfile.napAmName})`,
+    `• TỔNG ĐIỂM: ${evalData.total}/100 (${evalData.rating})`,
+    `  ├─ Con người, Môi trường & Đời sống (60%): ${evalData.humanEnv.score}/60đ`,
+    `  └─ Chuyên môn Truyền Nhiễm (40%): ${evalData.clinicalID.score}/40đ`,
+    `• Hướng cát: Hỷ Thần ${evalData.humanEnv.directions.hyThan} | Tài Thần ${evalData.humanEnv.directions.taiThan} (Tránh ${evalData.humanEnv.directions.hacThan})`,
+    `• Giờ tốt ưu tiên: ${bestHours || evalData.hoangDaoHours.slice(0, 3).join(', ')}`,
+    `• Tác vụ Truyền Nhiễm nổi bật: FUO ${evalData.clinicalID.tasks.bien_luan_fuo.totalScore}đ | AMS ${evalData.clinicalID.tasks.toi_uu_khang_sinh.totalScore}đ | Source Control ${evalData.clinicalID.tasks.kiem_soat_o_nhiem.totalScore}đ`,
+    `• Trọng tâm: ${evalData.clinicalID.idShiftFocus}`
+  ].join('\n');
+}
+
+export function generateICSContent(evalData: DayScoreEvaluation): string {
+  const y = evalData.dateObj.getFullYear();
+  const m = String(evalData.dateObj.getMonth() + 1).padStart(2, '0');
+  const d = String(evalData.dateObj.getDate()).padStart(2, '0');
+  const dt = `${y}${m}${d}`;
+  const desc = copyDaySummaryText(evalData).replace(/\n/g, '\\n');
+
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//CliniPortal//Chronobiology ID v3.0//VI',
+    'BEGIN:VEVENT',
+    `UID:cliniportal-${dt}@cliniportal.local`,
+    `DTSTART;VALUE=DATE:${dt}`,
+    `DTEND;VALUE=DATE:${dt}`,
+    `SUMMARY:CliniPortal ${evalData.total}/100 — ${evalData.canChiDay} (Âm ${evalData.lunarDay}/${evalData.lunarMonth})`,
     `DESCRIPTION:${desc}`,
-    "STATUS:CONFIRMED",
-    "TRANSP:TRANSPARENT",
-    "END:VEVENT",
-    "END:VCALENDAR"
-  ].join("\r\n");
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
 }
 
 export function downloadICSFile(evalData: DayScoreEvaluation): void {
   const content = generateICSContent(evalData);
   const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.setAttribute('download', `NgayTot_NoiKhoa_${evalData.dateKey}_CliniPortal.ics`);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cliniportal-nhip-ngay-${evalData.dateKey}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
-}
-
-export function copyDaySummaryText(evalData: DayScoreEvaluation): string {
-  const hdText = evalData.hoangDaoHours.join(' • ');
-  const text = `🌟 [CLINIPORTAL NỘI KHOA] PHÂN TÍCH CHỈ SỐ NGÀY TỐT\n📅 Ngày: ${evalData.formattedDate}\n☯️ Bát tự: ${evalData.canChiDay} (Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth})\n🎯 Điểm sẵn sàng Nội khoa: ${evalData.total}/100 — ${evalData.rating} ${evalData.icon}\n✨ Nhị thập bát tú: Sao ${evalData.saoTu.name} (${evalData.saoTu.desc})\n📜 12 Trực: Trực ${evalData.trucNgay.name} (${evalData.trucNgay.desc})\n⏰ Giờ Hoàng Đạo: ${hdText}\n💡 Kế hoạch lâm sàng Nội khoa: ${evalData.summaryText}`;
-
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text);
-  }
-  return text;
-}
-
-// ─── WIDGET NĂNG LƯỢNG CA TRỰC NỘI KHOA & CIRCADIAN ───────────────────
-
-export function calculateShiftEnergy(dateObj: Date = new Date()): ShiftEnergyData {
-  const h = dateObj.getHours();
-  const doc = getDoctorProfile();
-  const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
-  const bio = calculateBiorhythms(birthDate, dateObj, doc.specialty);
-
-  let circVal = 75;
-  let phase = "Ban ngày — Bình ổn";
-  let peak = "08:30 - 11:30";
-  let fatigue: string | null = null;
-  let caffeine = "Bổ sung đủ nước (500ml), hạn chế caffeine sau 16:00.";
-
-  if (h >= 8 && h < 12) {
-    circVal = 92;
-    phase = "Đỉnh Cao Buổi Sáng (Peak Focus)";
-    peak = "08:30 - 11:30 (Khung giờ vàng đi buồng, hội chẩn & phân tích ca khó)";
-    caffeine = "1 tách trà xanh hoặc cà phê sáng giúp tối ưu tư duy chẩn đoán.";
-  } else if (h >= 12 && h < 14) {
-    circVal = 62;
-    phase = "Trầm Lắng Giữa Ngày (Post-Lunch Dip)";
-    peak = "14:30 - 17:00";
-    fatigue = "Sinh lý buồn ngủ tự nhiên sau ăn trưa, nên nghỉ ngơi 15-20 phút.";
-    caffeine = "Tránh uống cà phê đặc ngay sau ăn, ưu tiên đi dạo nhẹ.";
-  } else if (h >= 14 && h < 18) {
-    circVal = 85;
-    phase = "Hưng Phấn Chiều (Afternoon Surge)";
-    peak = "15:00 - 17:30 (Thích hợp khám phòng khám nội & giao ban ca trực)";
-    caffeine = "Uống nước ấm, vận động co giãn cơ bắp cổ vai gáy.";
-  } else if (h >= 18 && h < 22) {
-    circVal = 70;
-    phase = "Ca Trực Tối (Evening Shift)";
-    peak = "19:00 - 21:00 (Tiếp nhận phân loại & rà soát y lệnh cấp cứu)";
-    caffeine = "Uống nước lọc, không dùng nước tăng lực kích thích mạnh.";
-  } else {
-    circVal = 50;
-    phase = "Ca Đêm Sâu (Night Shift Window)";
-    peak = "Duy trì trạng thái tỉnh táo an toàn";
-    fatigue = "Khung giờ 02:00 - 05:00 là điểm đáy sinh học, chú ý kiểm tra chéo y lệnh cấp cứu.";
-    caffeine = "Chợp mắt ngắn 15 phút (Power Nap) khi khoa phòng yên tĩnh.";
-  }
-
-  const bioMod = (bio.physical + bio.intellectual) / 10;
-  const energyPercent = Math.min(99, Math.max(35, Math.round(circVal + bioMod)));
-
-  let statusText = "Sung Sức";
-  let statusClass = "high";
-  let icon = "⚡";
-  if (energyPercent >= 85) {
-    statusText = "Sung Sức";
-    statusClass = "high";
-    icon = "⚡";
-  } else if (energyPercent >= 70) {
-    statusText = "Sẵn Sàng";
-    statusClass = "high";
-    icon = "🔋";
-  } else if (energyPercent >= 55) {
-    statusText = "Vừa Phải";
-    statusClass = "med";
-    icon = "☕";
-  } else {
-    statusText = "Cần Nghỉ";
-    statusClass = "low";
-    icon = "🛌";
-  }
-
-  const safetyChecklist = [
-    "✅ Kiểm tra định danh người bệnh (Họ tên + Năm sinh)",
-    "✅ Rà soát chức năng thận (eGFR) & dị ứng trước khi ký y lệnh",
-    "✅ Đối chiếu thuốc 5 Đúng & giải trừ tương tác thuốc (DDI)",
-    "✅ Bàn giao ca trực nội trú chuẩn mực theo mô hình SBAR"
-  ];
-
-  return {
-    energyPercent,
-    statusText,
-    statusClass,
-    icon,
-    circadianPhase: phase,
-    peakHours: peak,
-    fatigueWarning: fatigue,
-    caffeineTip: caffeine,
-    safetyChecklist
-  };
 }
