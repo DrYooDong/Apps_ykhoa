@@ -297,20 +297,18 @@
 }
 
 .ck-card {
-  background: var(--glass-bg-card, var(--color-surface));
-  backdrop-filter: blur(var(--glass-blur, 14px));
-  -webkit-backdrop-filter: blur(var(--glass-blur, 14px));
-  border: 1px solid var(--glass-border, var(--color-border));
-  border-radius: var(--glass-radius-xl, 18px);
-  padding: 1.1rem 1.15rem;
-  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.04);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
+  padding: 1.05rem 1.15rem;
+  box-shadow: var(--shadow-xs);
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
 }
 
 [data-theme="dark"] .ck-card {
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.32);
+  box-shadow: var(--shadow-xs);
 }
 
 .ck-card-head {

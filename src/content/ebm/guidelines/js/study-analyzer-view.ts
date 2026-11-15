@@ -11,7 +11,8 @@ function escapeHtml(str?: string): string {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
-import { EbmStatisticsEngine, Rob2Evaluator, GradeProfiler, EbmReportGenerator, EbmStatisticalResults, Rob2Assessment, GradeAssessment } from './study-analyzer-suite';
+import { EbmStatisticsEngine, Rob2Evaluator, GradeProfiler, Agree2Evaluator, EbmReportGenerator, EbmStatisticalResults, Rob2Assessment, GradeAssessment, Agree2Assessment } from './study-analyzer-suite';
+import { KHO_GUIDELINES_STATIC } from './kho-guidelines-registry';
 
 export function renderStudyAnalyzerView(): string {
   return `
@@ -56,16 +57,19 @@ export function renderStudyAnalyzerView(): string {
       <!-- Main Navigation Tabs -->
       <div style="display: flex; gap: 8px; margin-bottom: 1.5rem; border-bottom: 2px solid var(--color-border, #e2e8f0); padding-bottom: 8px; overflow-x: auto;">
         <button type="button" class="dsp-btn dsp-btn-primary js-analyzer-tab active" data-tab="stats" style="font-weight: 700; font-size: 13px; border-radius: 8px;">
-          <i class="fa-solid fa-calculator" style="margin-right: 6px;"></i> 1. Hiệu Quả Lâm Sàng &amp; NNT (Effect Size)
+          <i class="fa-solid fa-calculator" style="margin-right: 6px;"></i> 1. Hiệu Quả, NNT &amp; Fragility Index
         </button>
         <button type="button" class="dsp-btn dsp-btn-ghost js-analyzer-tab" data-tab="rob2" style="font-weight: 700; font-size: 13px; border-radius: 8px;">
-          <i class="fa-solid fa-scale-balanced" style="margin-right: 6px; color: #f59e0b;"></i> 2. Đánh Giá Sai Lệch (Cochrane RoB 2)
+          <i class="fa-solid fa-scale-balanced" style="margin-right: 6px; color: #f59e0b;"></i> 2. Sai Lệch RCT (Cochrane RoB 2)
+        </button>
+        <button type="button" class="dsp-btn dsp-btn-ghost js-analyzer-tab" data-tab="agree2" style="font-weight: 700; font-size: 13px; border-radius: 8px;">
+          <i class="fa-solid fa-clipboard-check" style="margin-right: 6px; color: #0ea5e9;"></i> 3. Thẩm Định Guideline (AGREE II)
         </button>
         <button type="button" class="dsp-btn dsp-btn-ghost js-analyzer-tab" data-tab="grade" style="font-weight: 700; font-size: 13px; border-radius: 8px;">
-          <i class="fa-solid fa-award" style="margin-right: 6px; color: #10b981;"></i> 3. Phân Tầng Bằng Chứng (GRADE)
+          <i class="fa-solid fa-award" style="margin-right: 6px; color: #10b981;"></i> 4. Phân Tầng Bằng Chứng (GRADE)
         </button>
         <button type="button" class="dsp-btn dsp-btn-ghost js-analyzer-tab" data-tab="report" style="font-weight: 700; font-size: 13px; border-radius: 8px;">
-          <i class="fa-solid fa-file-lines" style="margin-right: 6px; color: #8b5cf6;"></i> 4. Xuất Báo Cáo Phê Bình EBM
+          <i class="fa-solid fa-file-lines" style="margin-right: 6px; color: #8b5cf6;"></i> 5. Xuất Báo Cáo Phê Bình EBM
         </button>
       </div>
 
@@ -79,7 +83,7 @@ export function renderStudyAnalyzerView(): string {
 }
 
 export function initStudyAnalyzerController(): void {
-  let currentTab: 'stats' | 'rob2' | 'grade' | 'report' = 'stats';
+  let currentTab: 'stats' | 'rob2' | 'agree2' | 'grade' | 'report' = 'stats';
 
   let currentTable = {
     studyTitle: 'DAPA-HF Trial (Dapagliflozin in Heart Failure with Reduced Ejection Fraction)',
@@ -92,6 +96,44 @@ export function initStudyAnalyzerController(): void {
     e2: 502,
     n2: 2371
   };
+
+  let cachedAgree2: Agree2Assessment = Agree2Evaluator.evaluate({
+    d1_scope: 92,
+    d2_stakeholder: 88,
+    d3_rigour: 90,
+    d4_clarity: 95,
+    d5_applicability: 84,
+    d6_independence: 90,
+    coiAuditNote: 'Công bố minh bạch xung đột lợi ích (COI) của hội đồng biên soạn, không bị chi phối bởi nhà tài trợ dược phẩm.'
+  });
+
+  // Nhận diện tham số ?slug=...&tab=... khi người dùng mở từ bài đọc Guideline/Study
+  try {
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    const qIdx = hash.indexOf('?');
+    if (qIdx !== -1) {
+      const params = new URLSearchParams(hash.slice(qIdx + 1));
+      const slugParam = params.get('slug');
+      const tabParam = params.get('tab') as any;
+      if (tabParam && ['stats', 'rob2', 'agree2', 'grade', 'report'].includes(tabParam)) {
+        currentTab = tabParam;
+      }
+      if (slugParam && Array.isArray(KHO_GUIDELINES_STATIC)) {
+        const cleanSlug = slugParam.replace(/\.(mdx|html)$/i, '');
+        const matched = KHO_GUIDELINES_STATIC.find((item: any) => {
+          const fSlug = (item.file || '').replace(/^.*\//, '').replace(/\.(mdx|html)$/i, '');
+          return fSlug === cleanSlug || item.id === cleanSlug || item.slug === cleanSlug;
+        });
+        if (matched) {
+          currentTable.studyTitle = `${matched.title} (${matched.organization || 'EBM'} ${matched.year || ''})`.trim();
+          currentTable.population = matched.population || currentTable.population;
+          currentTable.intervention = matched.intervention || matched.drug || currentTable.intervention;
+          currentTable.comparator = matched.oldRegimen || 'Chăm sóc tiêu chuẩn trước đây (Standard of Care)';
+          currentTable.outcomeName = matched.primaryEndpoint || matched.keyResults || currentTable.outcomeName;
+        }
+      }
+    }
+  } catch {}
 
   let cachedStats: EbmStatisticalResults | null = null;
   let cachedRob2: Rob2Assessment = {
@@ -176,6 +218,9 @@ export function initStudyAnalyzerController(): void {
     } else if (currentTab === 'rob2') {
       container.innerHTML = renderRob2Tab();
       bindRob2Events();
+    } else if (currentTab === 'agree2') {
+      container.innerHTML = renderAgree2Tab();
+      bindAgree2Events();
     } else if (currentTab === 'grade') {
       container.innerHTML = renderGradeTab();
       bindGradeEvents();
@@ -284,6 +329,20 @@ export function initStudyAnalyzerController(): void {
                   </div>
                   <div style="font-size: 20px; font-weight: 800; color: ${s.nnt ? '#7e22ce' : '#be123c'};">
                     ${s.nnt ? s.nnt : s.nnh || 'N/A'} <span style="font-size: 11.5px; font-weight: normal;">bệnh nhân</span>
+                  </div>
+                </div>
+
+                <div style="grid-column: 1 / -1; background: rgba(124, 58, 237, 0.06); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(124, 58, 237, 0.25);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 4px;">
+                    <span style="font-size: 11.5px; font-weight: 800; color: #6d28d9;">
+                      <i class="fa-solid fa-shield-virus"></i> Chỉ Số Mong Manh Thống Kê (Fragility Index &amp; Fragility Quotient)
+                    </span>
+                    <span style="font-size: 12px; font-weight: 800; color: #5b21b6; background: rgba(124, 58, 237, 0.14); padding: 2px 8px; border-radius: 6px;">
+                      FI = ${s.fragilityIndex} biến cố • FQ = ${(s.fragilityQuotient * 100).toFixed(2)}%
+                    </span>
+                  </div>
+                  <div style="font-size: 11.5px; color: var(--color-text); line-height: 1.45;">
+                    ${s.fragilityVerdict}
                   </div>
                 </div>
               </div>
@@ -442,6 +501,101 @@ export function initStudyAnalyzerController(): void {
     });
 
     document.getElementById('btnNextToGrade')?.addEventListener('click', () => {
+      currentTab = 'agree2';
+      updateTabButtons();
+      renderCurrentTab();
+    });
+  }
+
+  // ─── TAB 2B: AGREE II GUIDELINE APPRAISAL (6 DOMAINS + COI AUDIT) ─────────
+  function renderAgree2Tab(): string {
+    const ag = cachedAgree2;
+    return `
+      <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.2rem; font-weight: 800; color: var(--color-text);">
+              <i class="fa-solid fa-clipboard-check" style="color: #0284c7;"></i> Thẩm Định Chất Lượng Hướng Dẫn Thực Hành Lâm Sàng (AGREE II)
+            </h3>
+            <p style="margin: 2px 0 0 0; font-size: 12px; color: var(--color-text-muted);">
+              Chấm điểm 6 miền chuẩn quốc tế AGREE II &amp; Kiểm toán Xung đột lợi ích (COI) cho các bài Guideline (${escapeHtml(currentTable.studyTitle)})
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 12.5px; font-weight: 800; padding: 6px 12px; border-radius: 8px; background: rgba(2,132,199,0.12); color: var(--color-primary);">
+              Tổng điểm AGREE II: ${ag.overallScore}% — ${ag.statusLabel}
+            </span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; margin-bottom: 16px;">
+          ${renderAgreeSlider('d1_scope', 'Miền 1: Phạm vi & Mục tiêu (Scope & Purpose)', 'Mục tiêu tổng thể, câu hỏi lâm sàng và quần thể đích rõ ràng', ag.d1_scope)}
+          ${renderAgreeSlider('d2_stakeholder', 'Miền 2: Hội đồng Đa chuyên khoa (Stakeholder Involvement)', 'Sự tham gia của bác sĩ lâm sàng, dược sĩ, nhà phương pháp học và góc nhìn người bệnh', ag.d2_stakeholder)}
+          ${renderAgreeSlider('d3_rigour', 'Miền 3: Tính nghiêm ngặt phương pháp (Rigour of Development)', 'Tìm kiếm y văn hệ thống, tiêu chuẩn chọn bằng chứng và liên kết trực tiếp với khuyến cáo', ag.d3_rigour)}
+          ${renderAgreeSlider('d4_clarity', 'Miền 4: Sự rõ ràng trình bày (Clarity of Presentation)', 'Khuyến cáo cụ thể, không mơ hồ, có bảng phân liều và lưu đồ quyết định', ag.d4_clarity)}
+          ${renderAgreeSlider('d5_applicability', 'Miền 5: Tính khả thi áp dụng tại Việt Nam (Applicability)', 'Phù hợp danh mục thuốc BHYT, chi phí - hiệu quả và trang thiết bị bệnh viện', ag.d5_applicability)}
+          ${renderAgreeSlider('d6_independence', 'Miền 6: Độc lập biên tập & Minh bạch COI (Editorial Independence)', 'Độc lập với đơn vị tài trợ dược phẩm và công khai xung đột lợi ích của tác giả', ag.d6_independence)}
+        </div>
+
+        <div style="background: var(--color-bg); padding: 12px 14px; border-radius: 8px; border: 1px solid var(--color-border); margin-bottom: 18px;">
+          <label style="font-size: 12.5px; font-weight: 800; display: block; margin-bottom: 6px;">
+            <i class="fa-solid fa-magnifying-glass-dollar" style="color: #7c3aed;"></i> Ghi chú Kiểm toán Xung đột lợi ích (COI) &amp; Nguồn tài trợ:
+          </label>
+          <input type="text" id="txtAgreeCoiNote" class="dsp-input" value="${escapeHtml(ag.coiAuditNote)}" style="width: 100%; font-size: 12.5px;" />
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: 14px;">
+          <button type="button" id="btnAgreeBackToRob" class="dsp-btn dsp-btn-outline dsp-btn-sm">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại RoB 2
+          </button>
+          <button type="button" id="btnAgreeNextToGrade" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight: 700;">
+            Chuyển sang Bước 4: Phân Tầng GRADE <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderAgreeSlider(id: string, title: string, help: string, val: number): string {
+    return `
+      <div style="background: var(--color-bg); padding: 12px 14px; border-radius: 8px; border: 1px solid var(--color-border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <strong style="font-size: 12.5px; color: var(--color-text);">${escapeHtml(title)}</strong>
+          <span id="lbl_${id}" style="font-size: 12px; font-weight: 800; color: var(--color-primary);">${val}%</span>
+        </div>
+        <div style="font-size: 11px; color: var(--color-text-muted); margin-bottom: 8px;">${escapeHtml(help)}</div>
+        <input type="range" id="rng_${id}" class="js-agree-range" data-field="${id}" min="0" max="100" step="5" value="${val}" style="width: 100%; accent-color: var(--color-primary);" />
+      </div>
+    `;
+  }
+
+  function bindAgree2Events() {
+    const recalc = () => {
+      const getVal = (id: string) => parseInt((document.getElementById(`rng_${id}`) as HTMLInputElement)?.value || '85', 10);
+      const coi = (document.getElementById('txtAgreeCoiNote') as HTMLInputElement)?.value || '';
+      cachedAgree2 = Agree2Evaluator.evaluate({
+        d1_scope: getVal('d1_scope'),
+        d2_stakeholder: getVal('d2_stakeholder'),
+        d3_rigour: getVal('d3_rigour'),
+        d4_clarity: getVal('d4_clarity'),
+        d5_applicability: getVal('d5_applicability'),
+        d6_independence: getVal('d6_independence'),
+        coiAuditNote: coi
+      });
+      renderCurrentTab();
+    };
+
+    document.querySelectorAll('.js-agree-range').forEach(rng => {
+      rng.addEventListener('change', recalc);
+    });
+    document.getElementById('txtAgreeCoiNote')?.addEventListener('change', recalc);
+
+    document.getElementById('btnAgreeBackToRob')?.addEventListener('click', () => {
+      currentTab = 'rob2';
+      updateTabButtons();
+      renderCurrentTab();
+    });
+    document.getElementById('btnAgreeNextToGrade')?.addEventListener('click', () => {
       currentTab = 'grade';
       updateTabButtons();
       renderCurrentTab();
@@ -595,7 +749,8 @@ export function initStudyAnalyzerController(): void {
       statistics: cachedStats || undefined,
       rob2: cachedRob2,
       grade: cachedGrade,
-      clinicalBottomLine: `Bằng chứng có độ tin cậy ${cachedGrade.gradeLabel}. Can thiệp chứng minh hiệu quả lâm sàng vượt trội làm giảm đáng kể biến cố ${currentTable.outcomeName} với chỉ số NNT = ${cachedStats?.nnt || 'N/A'}. Khuyến cáo áp dụng vào phác đồ điều trị thường quy.`,
+      agree2: cachedAgree2,
+      clinicalBottomLine: `Bằng chứng có độ tin cậy ${cachedGrade.gradeLabel} (AGREE II: ${cachedAgree2.overallScore}%). Can thiệp chứng minh hiệu quả lâm sàng vượt trội làm giảm đáng kể biến cố ${currentTable.outcomeName} với chỉ số NNT = ${cachedStats?.nnt || 'N/A'} và Fragility Index FI = ${cachedStats?.fragilityIndex ?? 'N/A'}. Khuyến cáo áp dụng vào phác đồ điều trị thường quy.`,
       generatedAt: new Date().toLocaleString('vi-VN')
     });
 
@@ -688,5 +843,6 @@ export function initStudyAnalyzerController(): void {
   });
 
   // Initial Render
+  updateTabButtons();
   renderCurrentTab();
 }

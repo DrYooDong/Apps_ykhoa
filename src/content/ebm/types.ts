@@ -30,6 +30,7 @@ export interface ClinicalConditionMeta {
   icd10: string[];
   color: string;
   bg: string;
+  specialty?: string;
 }
 
 export interface JournalMetric {

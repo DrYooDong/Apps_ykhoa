@@ -385,22 +385,22 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   SECTION 2.5: 4 MODULE NAVIGATION TETRAD (HERO BENTO COMMAND CARDS)
+   SECTION 2.5: 5 MODULE CLINICAL PRECISION BENTO ARCHITECTURE
 ══════════════════════════════════════════════════════════ */
 .module-triad-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
   width: 100%;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
   .module-triad-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 639px) {
   .module-triad-grid {
     grid-template-columns: 1fr;
   }
@@ -409,18 +409,16 @@
 .module-triad-card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1.35rem;
-  background: var(--glass-bg-card);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius-xl);
+  padding: 1.1rem 1.2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
   text-decoration: none;
   color: var(--color-text);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--glass-shadow-sm), var(--glass-inset-highlight);
+  box-shadow: var(--shadow-xs);
 }
 
 .module-triad-card::before {
@@ -431,36 +429,22 @@
   right: 0;
   height: 3px;
   background: var(--mod-accent, var(--color-primary));
-  opacity: 0.9;
-  transition: height 0.25s ease;
+  opacity: 0.92;
+  transition: height 0.2s ease;
 }
 
 .module-triad-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, var(--mod-glow, rgba(2, 132, 199, 0.18)) 0%, transparent 70%);
-  opacity: 0.5;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
 }
 
 .module-triad-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   border-color: var(--mod-accent, var(--color-primary));
-  box-shadow: 0 16px 36px -6px var(--mod-glow, rgba(2, 132, 199, 0.35)), var(--glass-inset-highlight);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .module-triad-card:hover::before {
-  height: 5px;
-}
-
-.module-triad-card:hover::after {
-  opacity: 1;
-  transform: scale(1.3);
+  height: 4px;
 }
 
 .module-triad-header {
@@ -471,49 +455,51 @@
 }
 
 .module-triad-icon {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--glass-radius-md);
-  background: var(--mod-icon-bg, rgba(2, 132, 199, 0.14));
+  border-radius: var(--radius-md, 10px);
+  background: var(--mod-icon-bg, rgba(var(--color-primary-rgb), 0.12));
   color: var(--mod-accent, var(--color-primary));
-  font-size: 1.25rem;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 12px var(--mod-glow, rgba(2, 132, 199, 0.15));
-  transition: transform 0.3s ease;
+  border: 1px solid color-mix(in srgb, var(--mod-accent, var(--color-primary)) 22%, transparent);
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
 }
 
 .module-triad-card:hover .module-triad-icon {
-  transform: scale(1.1) rotate(-4deg);
+  transform: scale(1.06);
 }
 
 .module-triad-badge {
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--glass-radius-pill);
-  background: var(--glass-bg-subtle);
-  border: 1px solid var(--glass-border);
-  color: var(--color-text);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .module-triad-title {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.35rem;
   letter-spacing: -0.02em;
   color: var(--color-text);
+  line-height: 1.3;
 }
 
 .module-triad-desc {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--color-text-muted);
-  line-height: 1.5;
-  margin-bottom: 0.85rem;
+  line-height: 1.52;
+  margin: 0 0 0.85rem;
   font-weight: 500;
 }
 
@@ -522,11 +508,17 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  font-size: 0.82rem;
-  font-weight: 800;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--mod-accent, var(--color-primary));
-  padding-top: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-divider, var(--color-border));
   transition: transform 0.2s ease;
+}
+
+.module-triad-card.mod-cdss {
+  --mod-accent: var(--color-primary);
+  --mod-icon-bg: rgba(var(--color-primary-rgb), 0.12);
 }
 
 .module-triad-card:hover .module-triad-footer i {
@@ -1627,6 +1619,532 @@
 
 .clinical-work-card:hover .cwork-footer i {
   transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 6: EDITORIAL WORKSPACE MASTHEAD & PRECISION SHELL
+   ("Thay Áo Mới" — Clinical Precision & Multi-Ratio Bento)
+══════════════════════════════════════════════════════════ */
+.cp-workspace-masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(300px, 0.92fr);
+  gap: 1.15rem;
+  align-items: stretch;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-xl, 18px);
+  padding: clamp(1.1rem, 2.2vw, 1.65rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.cp-masthead-lead {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.cp-masthead-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.28rem 0.7rem;
+  background: var(--color-primary-hl);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25);
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+}
+
+.cp-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(var(--color-success-rgb, 16, 185, 129), 0.2);
+}
+
+.cp-masthead-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.5rem, 1.2rem + 1.45vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.cp-title-accent {
+  color: var(--color-primary);
+}
+
+.cp-masthead-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 64ch;
+}
+
+.cp-masthead-cmd-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.15rem;
+}
+
+.cp-cmd-search-btn {
+  flex: 1 1 250px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 10px);
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--tr-fast), background-color var(--tr-fast), color var(--tr-fast);
+}
+
+.cp-cmd-search-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.cp-cmd-search-btn span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cp-cmd-search-btn kbd {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  color: var(--color-text-muted);
+}
+
+.cp-btn-editorial-primary,
+.cp-btn-editorial-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-md, 10px);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--tr-fast), background-color var(--tr-fast), border-color var(--tr-fast);
+}
+
+.cp-btn-editorial-primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse, #ffffff);
+  border: 1px solid var(--color-primary);
+}
+
+.cp-btn-editorial-primary:hover {
+  background: var(--color-primary-hover);
+  color: var(--color-text-inverse, #ffffff);
+  transform: translateY(-1px);
+}
+
+.cp-btn-editorial-ghost {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.cp-btn-editorial-ghost:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-hl);
+}
+
+.cp-quick-bedside-rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.42rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-divider, var(--color-border));
+}
+
+.cp-rail-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+  margin-right: 0.2rem;
+}
+
+.cp-rail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: border-color var(--tr-fast), color var(--tr-fast), background-color var(--tr-fast);
+}
+
+.cp-rail-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-hl);
+}
+
+.cp-rail-chip.cp-chip-urgent i {
+  color: var(--color-danger);
+}
+
+/* Right Column: Clinical Suite Telemetry HUD */
+.cp-masthead-hud {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
+  padding: 0.9rem;
+}
+
+.cp-hud-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.cp-hud-version {
+  padding: 0.15rem 0.45rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-primary);
+}
+
+.cp-hud-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.cp-hud-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  padding: 0.65rem 0.72rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 10px);
+  text-decoration: none;
+  transition: border-color var(--tr-fast), transform var(--tr-fast);
+}
+
+.cp-hud-cell:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.cp-hud-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.cp-hud-label {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+.cp-hud-meta {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cp-hud-cdss-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.62rem 0.78rem;
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.35);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md, 10px);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: border-color var(--tr-fast), background-color var(--tr-fast);
+}
+
+.cp-hud-cdss-bar:hover {
+  background: var(--color-primary-hl);
+}
+
+.cp-hud-cdss-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.cp-hud-cdss-left strong {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.cp-hud-cdss-left small {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Section Headers */
+.cp-section-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.25rem 0 0.75rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cp-section-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cp-section-index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.cp-section-heading {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.cp-section-caption {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--color-text-faint);
+}
+
+.cp-collapse-cockpit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 36px;
+  padding: 0.35rem 0.8rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color var(--tr-fast), color var(--tr-fast), background-color var(--tr-fast);
+}
+
+.cp-collapse-cockpit-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-hl);
+}
+
+#chronoWorkstation.is-compact .ck-mode-panels-wrap,
+#chronoWorkstation.is-compact .ck-cmd-ops-row,
+#chronoWorkstation.is-compact .ck-cmd-divider {
+  display: none;
+}
+
+/* Ecosystem Asymmetric Layout (Left: 5 Indexed Cards | Right: Clinical Pearl) */
+.cp-ecosystem-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.95fr) minmax(280px, 0.85fr);
+  gap: 0.95rem;
+  align-items: stretch;
+}
+
+.cp-card-index-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cp-card-index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--mod-accent, var(--color-primary));
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  padding: 0.18rem 0.42rem;
+  border-radius: 5px;
+}
+
+.cp-indexed-bento .cp-card-featured {
+  grid-column: span 2;
+}
+
+.cp-pearl-editorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-left: 3px solid var(--color-primary) !important;
+  border-radius: var(--radius-lg, 14px) !important;
+  padding: 1.15rem 1.2rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.cp-pearl-editorial .pearl-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.cp-pearl-editorial .pearl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cp-pearl-editorial .pearl-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.cp-pearl-editorial .pearl-card-body {
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--color-text);
+  margin: 0 0 1rem;
+  flex: 1;
+}
+
+.cp-pearl-editorial .pearl-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--color-divider, var(--color-border));
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+/* Aspect-Ratio & Breakpoint Adaptation for Workspace Masthead + Bento */
+@media (max-width: 1179px) {
+  .cp-workspace-masthead {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-ecosystem-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cp-indexed-bento .cp-card-featured {
+    grid-column: span 2;
+  }
+}
+
+@media (max-aspect-ratio: 4/5) and (min-width: 640px) {
+  .cp-hud-matrix {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .cp-indexed-bento .cp-card-featured {
+    grid-column: span 1;
+  }
+
+  .cp-workspace-masthead {
+    padding: 1rem;
+    border-radius: var(--radius-lg, 14px);
+  }
+
+  .cp-cmd-search-btn {
+    flex-basis: 100%;
+  }
+
+  .cp-btn-editorial-primary,
+  .cp-btn-editorial-ghost {
+    flex: 1;
+  }
+
+  .cp-hud-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 

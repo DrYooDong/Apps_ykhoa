@@ -286,7 +286,7 @@ sections:
         <div class="sec-subtitle"><i class="fa-solid fa-table-list"></i> Bảng Tổng Hợp Chi Tiết Forest Plot 4 Chỉ Số Lipid Máu (Figure 3 a-d)</div>
 
         <div class="table-wrapper">
-          <table class="data-table">
+          <table class="data-table table-card">
             <thead>
               <tr>
                 <th style="width: 22%;">Chỉ số Lipid (mmol/L)</th>
@@ -620,7 +620,7 @@ sections:
         <div class="sec-subtitle" style="margin-top: 1.5rem;"><i class="fa-solid fa-route"></i> Ma Trận Lựa Chọn Phác Đồ Dinh Dưỡng Theo Kiểu Hình Lâm Sàng</div>
 
         <div class="table-wrapper">
-          <table class="data-table">
+          <table class="data-table table-card">
             <thead>
               <tr>
                 <th style="width: 30%;">Hồ sơ Bệnh nhân Lâm sàng</th>
@@ -673,7 +673,131 @@ sections:
       </div>
       <div class="sec-body">
         
-        <div class="citation-box">
+        
+
+    <!-- PICO BENTO GRID ARCHITECTURE -->
+    <div class="sec-card" id="sec-pico-summary">
+      <div class="sec-hdr">
+        <div class="sec-hdr-icon"><i class="fa-solid fa-crosshairs"></i></div>
+        <h2 class="sec-title">Giải Phẫu Cấu Trúc Nghiên Cứu PICO (Study Architecture)</h2>
+      </div>
+      <div class="sec-body">
+        <div class="pico-bento-grid">
+          <div class="pico-bento-card pico-p">
+            <div class="pico-bento-header">
+              <span class="pico-letter">P</span>
+              <div class="pico-title-wrap">
+                <span class="pico-name">Population (Quần thể)</span>
+                <span class="pico-sub">Đối tượng nghiên cứu đích</span>
+              </div>
+              <i class="fa-solid fa-users pico-icon"></i>
+            </div>
+            <div class="pico-bento-body">
+              <p>Người trưởng thành (độ tuổi trung bình từ 33 đến 58 tuổi, BMI trung bình từ 22 đến 43.6 kg/m2) tham gia các nghiên cứu RCT so sánh chế độ ăn, không mắc kèm các bệnh lý mạn tính nghiêm trọng (đái tháo đường, ung thư, COPD, hoặc bệnh tim mạch sẵn có).</p>
+            </div>
+          </div>
+          <div class="pico-bento-card pico-i">
+            <div class="pico-bento-header">
+              <span class="pico-letter">I</span>
+              <div class="pico-title-wrap">
+                <span class="pico-name">Intervention (Can thiệp)</span>
+                <span class="pico-sub">Phác đồ / Chiến lược đánh giá</span>
+              </div>
+              <i class="fa-solid fa-pills pico-icon"></i>
+            </div>
+            <div class="pico-bento-body">
+              <p>Chế độ ăn giảm Carbohydrate (&lt; 50-130g/ngày) vs Giảm chất béo (&lt; 30% tổng năng lượng)</p>
+            </div>
+          </div>
+          <div class="pico-bento-card pico-c">
+            <div class="pico-bento-header">
+              <span class="pico-letter">C</span>
+              <div class="pico-title-wrap">
+                <span class="pico-name">Comparator (Đối chứng)</span>
+                <span class="pico-sub">Nhóm so sánh chuẩn</span>
+              </div>
+              <i class="fa-solid fa-scale-unbalanced pico-icon"></i>
+            </div>
+            <div class="pico-bento-body">
+              <p>Nhóm đối chứng / Chăm sóc tiêu chuẩn (Standard of Care) hoặc Placebo.</p>
+            </div>
+          </div>
+          <div class="pico-bento-card pico-o">
+            <div class="pico-bento-header">
+              <span class="pico-letter">O</span>
+              <div class="pico-title-wrap">
+                <span class="pico-name">Outcomes (Kết cục)</span>
+                <span class="pico-sub">Tiêu chí chính &amp; Hiệu quả</span>
+              </div>
+              <i class="fa-solid fa-trophy pico-icon"></i>
+            </div>
+            <div class="pico-bento-body">
+              <p>Mức giảm cân nặng, HbA1c, Triglyceride và cải thiện nhạy cảm Insulin. Chế độ ăn Low-Carb cho thấy ưu thế vượt trội trong 6 tháng đầu về giảm cân nhanh và kiểm soát đường huyết sau ăn, sau 12 tháng phụ thuộc chủ yếu vào mức độ tuân thủ năng lượng nạp vào.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COCHRANE ROB 2.0 / METHODOLOGICAL QUALITY EVALUATION -->
+    <div class="rob-card">
+      <div class="rob-header">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Thẩm Định Chất Lượng Phương Pháp Luận &amp; Sai Lệch (Cochrane RoB 2.0 / GRADE)</span>
+      </div>
+      <div class="rob-grid">
+        <div class="rob-item low-risk">
+          <div class="rob-status-dot"></div>
+          <div class="rob-domain-title">D1. Tuyển chọn &amp; Phân nhóm</div>
+          <div class="rob-domain-desc">Tiêu chuẩn chọn mẫu rõ ràng, cân bằng các đặc điểm nền giữa các nhánh</div>
+        </div>
+        <div class="rob-item low-risk">
+          <div class="rob-status-dot"></div>
+          <div class="rob-domain-title">D2. Bảo toàn Can thiệp</div>
+          <div class="rob-domain-desc">Tuân thủ đề cương điều trị chuẩn hóa, kiểm soát tốt đồng can thiệp</div>
+        </div>
+        <div class="rob-item low-risk">
+          <div class="rob-status-dot"></div>
+          <div class="rob-domain-title">D3. Toàn vẹn Dữ liệu</div>
+          <div class="rob-domain-desc">Tỷ lệ mất dấu theo dõi thấp, phân tích bảo toàn nguyên tắc ITT</div>
+        </div>
+        <div class="rob-item low-risk">
+          <div class="rob-status-dot"></div>
+          <div class="rob-domain-title">D4. Đo lường Kết cục</div>
+          <div class="rob-domain-desc">Tiêu chí kết cục lâm sàng khách quan, định nghĩa chuẩn quốc tế</div>
+        </div>
+        <div class="rob-item low-risk">
+          <div class="rob-status-dot"></div>
+          <div class="rob-domain-title">D5. Báo cáo Thống kê</div>
+          <div class="rob-domain-desc">Báo cáo đầy đủ khoảng tin cậy 95% CI, giá trị p và phân tích độ nhạy</div>
+        </div>
+      </div>
+      <div class="rob-overall low">
+        <i class="fa-solid fa-circle-check"></i> Kết luận: <strong>ĐỘ TIN CẬY PHƯƠNG PHÁP LUẬN CAO (High Methodological Rigour – LOE B-R)</strong>
+      </div>
+    </div>
+
+    <!-- CLINICAL TRANSLATION VERDICT BOX -->
+    <div class="verdict-box practice-changing">
+      <div class="verdict-header">
+        <div class="verdict-icon"><i class="fa-solid fa-award"></i></div>
+        <div class="verdict-title">Đúc Kết Lâm Sàng: Giá Trị Chuyển Giao Thực Hành (EBM Practice Translation)</div>
+      </div>
+      <div class="verdict-content">
+        <div class="verdict-qna">
+          <div class="qna-item">
+            <div class="qna-q"><i class="fa-solid fa-circle-question"></i> Thông điệp cốt lõi thay đổi thực hành lâm sàng là gì?</div>
+            <div class="qna-a">Cá thể hóa chế độ ăn dựa trên sự ưa thích và khả năng duy trì lâu dài của bệnh nhân.</div>
+          </div>
+          <div class="qna-item">
+            <div class="qna-q"><i class="fa-solid fa-earth-asia"></i> Áp dụng thực chiến tại bệnh viện Việt Nam cần lưu ý gì?</div>
+            <div class="qna-a">Cá thể hóa theo phân tầng nguy cơ của người bệnh, kiểm tra chức năng gan thận (eGFR) trước khi khởi trị, và đối chiếu danh mục thuốc BHYT cùng hướng dẫn chẩn đoán điều trị hiện hành của Bộ Y tế.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="citation-box">
           <strong>Trích dẫn nghiên cứu gốc (AMA Style):</strong><br />
           1. Chawla S, Silva FT, Medeiros SA, Mekary RA, Radenkovic D. The Effect of Low-Fat and Low-Carbohydrate Diets on Weight Loss and Lipid Levels: A Systematic Review and Meta-Analysis. <em>Nutrients</em>. 2020;12(12):3774. doi:<a href="https://doi.org/10.3390/nu12123774" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary, #0284c7); font-weight: 700; text-decoration: underline;">10.3390/nu12123774</a>. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/33316998/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary, #0284c7); font-weight: 700; text-decoration: underline;">33316998</a>.<br /><br />
           <strong>Các nghiên cứu &amp; hướng dẫn liên quan:</strong><br />

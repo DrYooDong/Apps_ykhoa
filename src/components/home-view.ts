@@ -5,35 +5,48 @@
 
 export function renderHomeView(): string {
   return `
-    <div class="homepage-left">
-      <!-- HERO BANNER -->
-      <section class="hero-banner">
-        <div class="hero-content">
-          <span class="hero-badge"><i class="fa-solid fa-bolt"></i> CliniPortal 2.0 SPA Engine</span>
-          <h1 class="hero-title">Hệ Sinh Thái Y Khoa & Công Cụ Lâm Sàng Offline-First</h1>
-          <p class="hero-desc">Tra cứu công cụ tính toán y khoa, phác đồ tiếp cận, dược lý, kỹ năng lâm sàng và bài học sinh lý bệnh tức thì không cần Internet.</p>
-          <div class="hero-actions">
-            <a href="#/calculators" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Bộ Công Cụ Lâm Sàng</a>
-            <a href="#/approaches" class="btn btn-secondary"><i class="fa-solid fa-diagram-project"></i> Phác Đồ Tiếp Cận</a>
+    <div class="homepage-left cp-precision-spa-home">
+      <!-- ASYMMETRIC EDITORIAL HERO BANNER -->
+      <section class="hero-banner hub-header" style="border-top: 3px solid var(--color-primary); border-left: 1px solid var(--color-border);">
+        <div class="hero-content" style="display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.8fr); gap: 1.25rem; align-items: center;">
+          <div>
+            <span class="hero-badge" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;"><i class="fa-solid fa-bolt"></i> CliniPortal Clinical OS • Offline-First</span>
+            <h1 class="hero-title" style="margin: 0.45rem 0 0.5rem;">Hệ Sinh Thái Y Khoa &amp; Công Cụ Lâm Sàng</h1>
+            <p class="hero-desc" style="margin: 0 0 1rem;">Tra cứu công cụ tính toán y khoa, phác đồ tiếp cận, dược lý, kỹ năng lâm sàng và bài học sinh lý bệnh tức thì không cần Internet.</p>
+            <div class="hero-actions" style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+              <a href="#/calculators" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Bộ Công Cụ Lâm Sàng</a>
+              <a href="#/approaches" class="btn btn-secondary"><i class="fa-solid fa-diagram-project"></i> Phác Đồ Tiếp Cận</a>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; background: var(--color-surface-offset); padding: 0.75rem; border-radius: 12px; border: 1px solid var(--color-border);">
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.6rem 0.7rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-primary); font-weight: 700;">01–04</div>
+              <div style="font-weight: 800; font-size: 0.85rem; color: var(--color-text);">CDSS &amp; Thuốc</div>
+            </div>
+            <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 0.6rem 0.7rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-primary); font-weight: 700;">05–08</div>
+              <div style="font-weight: 800; font-size: 0.85rem; color: var(--color-text);">EBM &amp; Handbook</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- MODULES GRID (7 PHÂN HỆ) -->
+      <!-- MODULES GRID (8 PHÂN HỆ PRECISION) -->
       <section class="modules-section">
-        <div class="section-header">
-          <h2 class="section-title"><i class="fa-solid fa-cubes"></i> Phân Hệ Tri Thức & Sổ Tay Lâm Sàng</h2>
+        <div class="section-header" style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); padding-bottom: 0.6rem; margin-bottom: 1rem;">
+          <h2 class="section-title" style="margin: 0;"><i class="fa-solid fa-cubes"></i> Phân Hệ Tri Thức &amp; Sổ Tay Lâm Sàng</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted);">8 MODULES</span>
         </div>
-        <div class="modules-grid">
+        <div class="modules-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 0.9rem;">
 
-          <a href="#/clinical-handbook" class="module-card module-card--handbook" style="border: 1px solid rgba(var(--color-primary-rgb), 0.35); box-shadow: var(--shadow-sm);">
-            <div class="module-icon" style="background: rgba(var(--color-primary-rgb), 0.12); color: var(--color-primary);"><i class="fa-solid fa-book-medical"></i></div>
+          <a href="#/clinical-handbook" class="module-card module-card--handbook cp-precision-card" style="border-top: 3px solid var(--color-primary);">
+            <div class="module-icon" style="background: var(--color-primary-hl); color: var(--color-primary);"><i class="fa-solid fa-book-medical"></i></div>
             <div class="module-info">
               <div style="display: flex; align-items: center; gap: 6px;">
-                <h3 style="margin: 0;">Sổ Tay Lâm Sàng (Handbook)</h3>
+                <h3 style="margin: 0;">01 • Sổ Tay Lâm Sàng</h3>
                 <span style="font-size: 0.65rem; font-weight: 800; background: var(--color-success-hl); color: var(--color-success); padding: 1px 6px; border-radius: 4px;">MỚI</span>
               </div>
-              <p>Đúc kết kinh nghiệm thực chiến theo chuyên khoa & bệnh lý: Viêm gan B, Sốt xuất huyết, cạm bẫy cận lâm sàng.</p>
+              <p>Đúc kết kinh nghiệm thực chiến theo chuyên khoa &amp; bệnh lý: Viêm gan B, Sốt xuất huyết, cạm bẫy cận lâm sàng.</p>
             </div>
             <i class="fa-solid fa-arrow-right module-arrow" style="color: var(--color-primary);"></i>
           </a>

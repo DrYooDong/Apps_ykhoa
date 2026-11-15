@@ -104,12 +104,14 @@ export async function renderCategoryView(categoryKey: string): Promise<string> {
       }).join('');
 
       return `
-        <section class="category-subgroup-section" data-sub="${subKey}" style="margin-bottom: 2.25rem;">
-          <h2 style="font-size: 1.18rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-folder-open"></i> ${groupTitle}
-            <span style="font-size: 0.75rem; font-weight: 600; background: var(--color-surface-offset); color: var(--color-text-muted); padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid var(--color-divider);">${groupItems.length}</span>
-          </h2>
-          <div class="category-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr)); gap: 1rem;">
+        <section class="category-subgroup-section" data-sub="${subKey}" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-border);">
+            <h2 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-text); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-folder-open" style="color: var(--color-primary);"></i> ${groupTitle}
+            </h2>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; background: var(--color-surface-offset); color: var(--color-text-muted); padding: 0.18rem 0.55rem; border-radius: 6px; border: 1px solid var(--color-border);">${groupItems.length} MỤC</span>
+          </div>
+          <div class="category-cards-grid articles-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr)); gap: 0.9rem;">
             ${cardsHtml}
           </div>
         </section>

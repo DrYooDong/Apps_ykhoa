@@ -45,9 +45,9 @@ export function renderEbmView(): string {
             </div>
 
             <!-- KHO GUIDELINE HERO BUTTON -->
-            <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 59+ Guidelines & Nghiên cứu tóm tắt chi tiết">
+            <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 160+ Guidelines & Nghiên cứu tóm tắt chi tiết">
               <i class="fa-solid fa-folder-open"></i>
-              <span>Kho Tóm Tắt Guidelines</span>
+              <span>Kho Tóm Tắt Guidelines (160+)</span>
             </a>
           </div>
 

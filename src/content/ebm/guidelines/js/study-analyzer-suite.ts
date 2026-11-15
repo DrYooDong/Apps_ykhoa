@@ -32,9 +32,26 @@ export interface EbmStatisticalResults {
   orUpper95: number;             // OR 95% CI Upper
   nnt: number | null;            // Number Needed to Treat (NNT = 1 / ARR)
   nnh: number | null;            // Number Needed to Harm (NNH = 1 / ARI)
+  pValueTwoSided: number;        // p-value kiểm định 2 phía (Two-sided Chi-square / Z-test)
+  fragilityIndex: number;        // Chỉ số Mong manh (Fragility Index - FI: số biến cố cần đảo chiều để p >= 0.05)
+  fragilityQuotient: number;     // Thương số Mong manh (Fragility Quotient - FQ = FI / (N1 + N2))
+  fragilityVerdict: string;      // Nhận định độ bền vững thống kê (Robust vs Fragile)
   interpretation: string;        // Nhận xét lâm sàng chi tiết
   isBeneficial: boolean;
   isStatisticallySignificant: boolean;
+}
+
+export interface Agree2Assessment {
+  d1_scope: number;              // Miền 1: Phạm vi và Mục tiêu (0 - 100%)
+  d2_stakeholder: number;        // Miền 2: Sự tham gia của các bên liên quan (0 - 100%)
+  d3_rigour: number;             // Miền 3: Tính nghiêm ngặt của phương pháp xây dựng (0 - 100%)
+  d4_clarity: number;            // Miền 4: Sự rõ ràng trong trình bày (0 - 100%)
+  d5_applicability: number;      // Miền 5: Tính khả thi áp dụng thực tế (0 - 100%)
+  d6_independence: number;       // Miền 6: Tính độc lập biên tập & Xung đột lợi ích COI (0 - 100%)
+  coiAuditNote: string;          // Ghi chú kiểm toán Xung đột lợi ích (COI)
+  overallScore: number;          // Điểm trung bình tổng hợp (%)
+  recommendationStatus: 'recommended' | 'recommended_with_modifications' | 'not_recommended';
+  statusLabel: string;
 }
 
 export type RobDomainScore = 'low' | 'some_concerns' | 'high';
@@ -76,8 +93,80 @@ export interface EbmCriticalAppraisalReport {
   statistics?: EbmStatisticalResults;
   rob2?: Rob2Assessment;
   grade?: GradeAssessment;
+  agree2?: Agree2Assessment;
   clinicalBottomLine: string;
   generatedAt: string;
+}
+
+// Hàm xấp xỉ p-value hai phía từ bảng 2x2 (Two-proportion Z-test / Chi-square)
+function computeTwoSidedPValue(a: number, n1: number, c: number, n2: number): number {
+  const N = n1 + n2;
+  const E = a + c;
+  const nonE = N - E;
+  if (N <= 0 || E <= 0 || nonE <= 0) return 1.0;
+
+  const p1 = a / n1;
+  const p2 = c / n2;
+  const pPool = E / N;
+  const se = Math.sqrt(pPool * (1 - pPool) * (1 / n1 + 1 / n2));
+  if (se <= 0) return 1.0;
+
+  const z = Math.abs(p1 - p2) / se;
+  // Abramowitz & Stegun normal CDF approximation
+  const t = 1 / (1 + 0.2316419 * z);
+  const d = 0.3989422804014327 * Math.exp(-z * z / 2);
+  const prob = d * t * (0.31938153 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
+  return Math.min(1, Math.max(0, 2 * prob));
+}
+
+function computeFragilityIndex(a: number, n1: number, c: number, n2: number): {
+  pValue: number;
+  fi: number;
+  fq: number;
+  verdict: string;
+} {
+  const pValue = computeTwoSidedPValue(a, n1, c, n2);
+  const totalN = n1 + n2;
+  if (pValue >= 0.05) {
+    return {
+      pValue,
+      fi: 0,
+      fq: 0,
+      verdict: '⚪ FI = 0 (Kết quả ban đầu chưa đạt ý nghĩa thống kê p < 0.05)'
+    };
+  }
+
+  // Walsh et al. (J Clin Epidemiol 2014): cộng dần biến cố vào nhóm có ít biến cố hơn cho tới khi p >= 0.05
+  const group1HasFewerRate = (a / n1) <= (c / n2);
+  let curA = a;
+  let curC = c;
+  let steps = 0;
+  const maxSteps = group1HasFewerRate ? (n1 - a) : (n2 - c);
+
+  while (steps < maxSteps && steps < 2000) {
+    steps++;
+    if (group1HasFewerRate) {
+      curA++;
+    } else {
+      curC++;
+    }
+    const pNow = computeTwoSidedPValue(curA, n1, curC, n2);
+    if (pNow >= 0.05) {
+      break;
+    }
+  }
+
+  const fq = totalN > 0 ? steps / totalN : 0;
+  let verdict = '';
+  if (steps <= 3) {
+    verdict = `🔴 RẤT MONG MANH (FI = ${steps}): Chỉ cần ${steps} bệnh nhân đổi kết cục là mất ý nghĩa thống kê! Nếu mất dấu theo dõi (Loss to follow-up) > ${steps} ca, kết quả không đáng tin cậy.`;
+  } else if (steps <= 10) {
+    verdict = `🟡 ĐỘ BỀN VỮNG TRUNG BÌNH (FI = ${steps}, FQ = ${(fq * 100).toFixed(2)}%): Cần đối chiếu số ca mất dấu theo dõi trong nghiên cứu.`;
+  } else {
+    verdict = `🟢 RẤT BỀN VỮNG (FI = ${steps}, FQ = ${(fq * 100).toFixed(2)}%): Bằng chứng thống kê vững chắc, cần tới ${steps} biến cố đảo chiều mới làm mất ý nghĩa p < 0.05.`;
+  }
+
+  return { pValue, fi: steps, fq, verdict };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -141,15 +230,17 @@ export class EbmStatisticsEngine {
     }
 
     const isBeneficial = eer < cer;
-    const isStatisticallySignificant = !(rrLower95 <= 1 && rrUpper95 >= 1);
+    const fragility = computeFragilityIndex(a, n1, c, n2);
+    const isStatisticallySignificant = fragility.pValue < 0.05 && !(rrLower95 <= 1 && rrUpper95 >= 1);
 
     // Xây dựng nhận xét lâm sàng súc tích chuẩn EBM
     let interpretation = '';
     if (isBeneficial) {
-      interpretation = `Can thiệp giúp làm GIẢM ${(arrPercent).toFixed(1)}% nguy cơ tuyệt đối (ARR) và giảm ${(rrrPercent).toFixed(1)}% nguy cơ tương đối (RRR) so với nhóm đối chứng (RR = ${rr.toFixed(2)}, 95% CI: ${rrLower95.toFixed(2)} - ${rrUpper95.toFixed(2)}).`;
+      interpretation = `Can thiệp giúp làm GIẢM ${(arrPercent).toFixed(1)}% nguy cơ tuyệt đối (ARR) và giảm ${(rrrPercent).toFixed(1)}% nguy cơ tương đối (RRR) so với nhóm đối chứng (RR = ${rr.toFixed(2)}, 95% CI: ${rrLower95.toFixed(2)} - ${rrUpper95.toFixed(2)}, p = ${fragility.pValue < 0.0001 ? '< 0.0001' : fragility.pValue.toFixed(4)}).`;
       if (nnt) {
         interpretation += ` Chỉ số NNT = ${nnt} (Cần điều trị cho ${nnt} bệnh nhân để ngăn ngừa 1 biến cố bất lợi).`;
       }
+      interpretation += ` Chỉ số mong manh Fragility Index (FI) = ${fragility.fi} biến cố.`;
     } else if (eer > cer) {
       interpretation = `Can thiệp làm TĂNG nguy cơ biến cố (EER ${ (eer*100).toFixed(1)}% vs CER ${(cer*100).toFixed(1)}%, RR = ${rr.toFixed(2)}).`;
       if (nnh) {
@@ -178,6 +269,10 @@ export class EbmStatisticsEngine {
       orUpper95,
       nnt,
       nnh,
+      pValueTwoSided: fragility.pValue,
+      fragilityIndex: fragility.fi,
+      fragilityQuotient: fragility.fq,
+      fragilityVerdict: fragility.verdict,
       interpretation,
       isBeneficial,
       isStatisticallySignificant
@@ -317,9 +412,60 @@ export class EbmReportGenerator {
       md += `- **Giải thích:** ${g.rationale}\n\n`;
     }
 
-    md += `#### 5. KẾT LUẬN & ĐỀ XUẤT ÁP DỤNG LÂM SÀNG:\n`;
+    if (report.agree2) {
+      const ag = report.agree2;
+      md += `#### 5. THẨM ĐỊNH HƯỚNG DẪN LÂM SÀNG CHUẨN AGREE II (6 MIỀN):\n`;
+      md += `- Miền 1 (Phạm vi & Mục tiêu): **${ag.d1_scope}%**\n`;
+      md += `- Miền 2 (Hội đồng Đa chuyên khoa): **${ag.d2_stakeholder}%**\n`;
+      md += `- Miền 3 (Tính nghiêm ngặt phương pháp): **${ag.d3_rigour}%**\n`;
+      md += `- Miền 4 (Sự rõ ràng trình bày): **${ag.d4_clarity}%**\n`;
+      md += `- Miền 5 (Tính khả thi áp dụng): **${ag.d5_applicability}%**\n`;
+      md += `- Miền 6 (Độc lập biên tập & COI): **${ag.d6_independence}%** (${ag.coiAuditNote})\n`;
+      md += `- **Điểm AGREE II tổng hợp:** **${ag.overallScore}%** ➔ **${ag.statusLabel}**\n\n`;
+    }
+
+    md += `#### 6. KẾT LUẬN & ĐỀ XUẤT ÁP DỤNG LÂM SÀNG:\n`;
     md += `${report.clinicalBottomLine || 'Chưa có ghi chú kết luận lâm sàng.'}\n`;
 
     return md;
+  }
+}
+
+export class Agree2Evaluator {
+  public static evaluate(domains: {
+    d1_scope: number;
+    d2_stakeholder: number;
+    d3_rigour: number;
+    d4_clarity: number;
+    d5_applicability: number;
+    d6_independence: number;
+    coiAuditNote: string;
+  }): Agree2Assessment {
+    const overallScore = Math.round(
+      (domains.d1_scope * 0.15) +
+      (domains.d2_stakeholder * 0.15) +
+      (domains.d3_rigour * 0.25) +
+      (domains.d4_clarity * 0.15) +
+      (domains.d5_applicability * 0.15) +
+      (domains.d6_independence * 0.15)
+    );
+
+    let recommendationStatus: Agree2Assessment['recommendationStatus'] = 'recommended';
+    let statusLabel = '🟢 KHUYẾN CÁO ÁP DỤNG NGAY (Strongly Recommended)';
+
+    if (overallScore < 50 || domains.d3_rigour < 50) {
+      recommendationStatus = 'not_recommended';
+      statusLabel = '🔴 KHÔNG KHUYẾN CÁO (Chất lượng phương pháp luận hoặc COI không đạt)';
+    } else if (overallScore < 75 || domains.d5_applicability < 65) {
+      recommendationStatus = 'recommended_with_modifications';
+      statusLabel = '🟡 KHUYẾN CÁO CÓ ĐIỀU CHỈNH (Cần cá thể hóa theo BHYT & nguồn lực địa phương)';
+    }
+
+    return {
+      ...domains,
+      overallScore,
+      recommendationStatus,
+      statusLabel
+    };
   }
 }

@@ -239,14 +239,225 @@
       <div id="app" class="main-wrapper"
         style="display: none; width: 100%; max-width: 1600px; margin: 0 auto; padding: 1rem 1.25rem;"></div>
 
-      <!-- ===================== GLASSMORPHISM HOMEPAGE ===================== -->
+      <!-- ===================== CLINICAL PRECISION WORKSPACE ===================== -->
       <div class="bento-homepage" id="mainContent">
 
         <!-- ════════════════════════════════════════════════════════════════════════
-             CHRONOBIOLOGY & INFECTIOUS DISEASES BENTO COCKPIT (v3.0)
+             01. EDITORIAL CLINICAL WORKSPACE MASTHEAD (ASYMMETRIC LAUNCHPAD)
+        ════════════════════════════════════════════════════════════════════════ -->
+        <section class="cp-workspace-masthead" aria-label="Trung tâm điều phối lâm sàng">
+          <div class="cp-masthead-lead">
+            <div class="cp-masthead-eyebrow">
+              <span class="cp-live-dot" aria-hidden="true"></span>
+              <span>CLINIPORTAL CLINICAL OS • OFFLINE-FIRST PRECISION</span>
+            </div>
+            <h1 class="cp-masthead-title">
+              Không Gian Thực Hành Lâm Sàng &amp; <span class="cp-title-accent">Y Học Chứng Cứ</span>
+            </h1>
+            <p class="cp-masthead-desc">
+              Truy cập tức thì trạm suy luận CDSS 4 bước, thư viện Khoa học Y cơ sở, Sổ tay Kinh nghiệm và Kho Guidelines quốc tế — đồng bộ xuyên suốt Laptop, Tablet &amp; Mobile.
+            </p>
+
+            <div class="cp-masthead-cmd-row">
+              <button
+                type="button"
+                class="cp-cmd-search-btn"
+                onclick="document.querySelector('.search-container .input')?.focus();"
+                aria-label="Tìm kiếm nhanh toàn hệ sinh thái"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Tra cứu phác đồ, thuốc, bệnh học hoặc công cụ…</span>
+                <kbd>Ctrl K</kbd>
+              </button>
+              <a href="#/docspace" class="cp-btn-editorial-primary">
+                <i class="fa-solid fa-id-badge"></i>
+                <span>Mở DocSpace Pro</span>
+              </a>
+              <a href="#chronoWorkstation" class="cp-btn-editorial-ghost">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Lịch Ca Trực</span>
+              </a>
+            </div>
+
+            <div class="cp-quick-bedside-rail" aria-label="Truy cập nhanh đầu giường">
+              <span class="cp-rail-label">Đầu giường:</span>
+              <a href="#/calculators/dg-abg-studio" class="cp-rail-chip"><i class="fa-solid fa-lungs"></i> ABG Pro</a>
+              <a href="#/calculators/acls-resus-studio" class="cp-rail-chip cp-chip-urgent"><i class="fa-solid fa-heart-pulse"></i> ACLS Ngừng tim</a>
+              <a href="#/calculators/ql-bu-dich-studio" class="cp-rail-chip"><i class="fa-solid fa-droplet"></i> Phác đồ SXHD</a>
+              <a href="#/ebm" class="cp-rail-chip"><i class="fa-solid fa-scale-balanced"></i> IDSA / ESC / KDIGO</a>
+              <a href="#/skills/luachon-khangsinh" class="cp-rail-chip"><i class="fa-solid fa-capsules"></i> Kháng sinh</a>
+            </div>
+          </div>
+
+          <aside class="cp-masthead-hud" aria-label="Tổng quan phân hệ lâm sàng">
+            <div class="cp-hud-head">
+              <span class="cp-hud-tag">WORKBENCH ARCHITECTURE</span>
+              <span class="cp-hud-version">5 MODULES</span>
+            </div>
+            <div class="cp-hud-matrix">
+              <a href="#/docspace" class="cp-hud-cell">
+                <span class="cp-hud-num">01</span>
+                <span class="cp-hud-label">DocSpace Pro</span>
+                <span class="cp-hud-meta">CDSS 4 bước • SOAP</span>
+              </a>
+              <a href="#/basic-medical" class="cp-hud-cell">
+                <span class="cp-hud-num">02</span>
+                <span class="cp-hud-label">Basic Sciences</span>
+                <span class="cp-hud-meta">Sinh lý • Hóa sinh • CCBS</span>
+              </a>
+              <a href="#/clinical-handbook" class="cp-hud-cell">
+                <span class="cp-hud-num">03</span>
+                <span class="cp-hud-label">Clinical Handbook</span>
+                <span class="cp-hud-meta">Truyền nhiễm • Cạm bẫy</span>
+              </a>
+              <a href="#/ebm" class="cp-hud-cell">
+                <span class="cp-hud-num">04</span>
+                <span class="cp-hud-label">EBM Suite</span>
+                <span class="cp-hud-meta">Guidelines • RCT Cards</span>
+              </a>
+            </div>
+            <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="cp-hud-cdss-bar">
+              <div class="cp-hud-cdss-left">
+                <span class="cp-hud-num">05</span>
+                <div>
+                  <strong>CDSS Standalone Platform</strong>
+                  <small>Dengue • ABG • ECG • X-Ray AI • Microbio</small>
+                </div>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </aside>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════════════════════════
+             02. CLINICAL ECOSYSTEM BENTO SUITE (5 INDEXED CARDS + CLINICAL PEARL)
+        ════════════════════════════════════════════════════════════════════════ -->
+        <section class="clinical-ecosystem-strip cp-suite-section" aria-label="Lối tắt hệ sinh thái CliniPortal & Ngọc Lâm Sàng">
+          <div class="cp-section-bar">
+            <div class="cp-section-title-group">
+              <span class="cp-section-index">01 — ECOSYSTEM</span>
+              <h2 class="cp-section-heading">Hệ Sinh Thái Phân Hệ Chuyên Biệt</h2>
+            </div>
+            <span class="cp-section-caption">Bố cục thích ứng 16:9 Laptop • 3:4 Tablet • 20:9 Mobile</span>
+          </div>
+
+          <div class="cp-ecosystem-layout">
+            <div class="module-triad-grid cp-indexed-bento">
+              <a href="#/docspace" class="module-triad-card mod-docspace cp-card-featured">
+                <div class="module-triad-header">
+                  <div class="cp-card-index-wrap">
+                    <span class="cp-card-index">01</span>
+                    <div class="module-triad-icon"><i class="fa-solid fa-id-badge"></i></div>
+                  </div>
+                  <span class="module-triad-badge">Workstation</span>
+                </div>
+                <h3 class="module-triad-title">DocSpace Pro — Suy Luận Lâm Sàng</h3>
+                <p class="module-triad-desc">Phân tầng Triage 3 tầng, động cơ suy luận CDSS có trọng số, tóm tắt SBAR &amp; phác đồ điều trị trực ca 4 bước.</p>
+                <div class="mod-chips-container">
+                  <span class="mod-chip-pill">Triage</span>
+                  <span class="mod-chip-pill">CDSS Engine</span>
+                  <span class="mod-chip-pill">SBAR / SOAP</span>
+                </div>
+                <span class="module-triad-footer">Mở Workstation <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+
+              <a href="#/basic-medical" class="module-triad-card mod-coso">
+                <div class="module-triad-header">
+                  <div class="cp-card-index-wrap">
+                    <span class="cp-card-index">02</span>
+                    <div class="module-triad-icon"><i class="fa-solid fa-dna"></i></div>
+                  </div>
+                  <span class="module-triad-badge">Nền tảng</span>
+                </div>
+                <h3 class="module-triad-title">Basic Sciences</h3>
+                <p class="module-triad-desc">Giải phẫu, Sinh lý Guyton, Cơ chế bệnh sinh CCBS, Hóa sinh Harper, Dịch tễ học &amp; Kháng sinh AMS.</p>
+                <span class="module-triad-footer">Khám phá Cơ sở <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+
+              <a href="#/clinical-handbook" class="module-triad-card mod-vault">
+                <div class="module-triad-header">
+                  <div class="cp-card-index-wrap">
+                    <span class="cp-card-index">03</span>
+                    <div class="module-triad-icon"><i class="fa-solid fa-book-medical"></i></div>
+                  </div>
+                  <span class="module-triad-badge">Thực chiến</span>
+                </div>
+                <h3 class="module-triad-title">Clinical Handbook</h3>
+                <p class="module-triad-desc">Đúc kết kinh nghiệm Truyền Nhiễm, cạm bẫy cận lâm sàng &amp; tiếp cận xử trí tại giường bệnh.</p>
+                <span class="module-triad-footer">Xem Sổ Tay <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+
+              <a href="#/ebm" class="module-triad-card mod-ebm">
+                <div class="module-triad-header">
+                  <div class="cp-card-index-wrap">
+                    <span class="cp-card-index">04</span>
+                    <div class="module-triad-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                  </div>
+                  <span class="module-triad-badge">Chứng cứ</span>
+                </div>
+                <h3 class="module-triad-title">EBM Suite</h3>
+                <p class="module-triad-desc">Tóm tắt Guidelines IDSA/WHO/BYT, Landmark RCTs &amp; thẻ giải phẫu nghiên cứu chuẩn Nature.</p>
+                <span class="module-triad-footer">Tra cứu EBM <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+
+              <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="module-triad-card mod-cdss">
+                <div class="module-triad-header">
+                  <div class="cp-card-index-wrap">
+                    <span class="cp-card-index">05</span>
+                    <div class="module-triad-icon"><i class="fa-solid fa-microchip"></i></div>
+                  </div>
+                  <span class="module-triad-badge">Standalone</span>
+                </div>
+                <h3 class="module-triad-title">CDSS Platform</h3>
+                <p class="module-triad-desc">8 ứng dụng CDSS độc lập: Sốt xuất huyết, ABG, ECG Smith-Sgarbossa, RadAI X-Ray, Gan mật &amp; Vi sinh.</p>
+                <span class="module-triad-footer">Mở CDSS Suite <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+            </div>
+
+            <!-- Clinical Pearl Editorial Brief (được đồng bộ bởi homepage-widgets.ts) -->
+            <aside class="glass-card glass-pearl-card cp-pearl-editorial" aria-label="Điểm sáng lâm sàng trong ngày">
+              <div class="pearl-card-header">
+                <span class="pearl-badge"><i class="fa-solid fa-gem"></i> Clinical Pearl • <span id="glassPearlSpec">Truyền Nhiễm</span></span>
+                <div class="pearl-controls">
+                  <button type="button" class="btn-glass-action" id="btnPearlDone">
+                    <i class="fa-regular fa-circle-check"></i> Ghi nhớ
+                  </button>
+                  <button type="button" class="btn-glass-action" id="btnNextPearl" title="Xem điểm sáng tiếp theo">
+                    Tiếp theo <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="pearl-card-body" id="glassPearlBody">Đang tải thông điệp lâm sàng...</p>
+              <div class="pearl-card-footer">
+                <i class="fa-solid fa-book-open"></i>
+                <span id="glassPearlSource">IDSA / Surviving Sepsis Campaign</span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════════════════════════
+             03. CHRONOBIOLOGY & INFECTIOUS DISEASES BENTO COCKPIT (v3.0)
              - Tỷ trọng 60% Con Người, Môi Trường & Đời Sống • 40% Bác Sĩ Truyền Nhiễm
              - Interactive Bento Cockpit + Inline Mode Switcher (Zero Modal Duplication)
         ════════════════════════════════════════════════════════════════════════ -->
+        <div class="cp-section-bar cp-cockpit-section-bar">
+          <div class="cp-section-title-group">
+            <span class="cp-section-index">02 — SHIFT BRIEFING</span>
+            <h2 class="cp-section-heading">Bảng Điều Hành Ca Trực &amp; Nhịp Sinh Học</h2>
+          </div>
+          <button
+            type="button"
+            class="cp-collapse-cockpit-btn"
+            id="cpToggleCockpitBtn"
+            aria-expanded="true"
+            aria-controls="chronoWorkstation"
+            onclick="const el=document.getElementById('chronoWorkstation');if(el){const c=el.classList.toggle('is-compact');this.setAttribute('aria-expanded',String(!c));this.querySelector('span').textContent=c?'Mở rộng Cockpit':'Thu gọn Cockpit';}"
+          >
+            <i class="fa-solid fa-sliders"></i>
+            <span>Thu gọn Cockpit</span>
+          </button>
+        </div>
         <section class="chrono-workstation ck-cockpit" id="chronoWorkstation" aria-label="Bảng Điều Hành Nhịp Sinh Học & Truyền Nhiễm">
 
           <!-- 1. UNIFIED COMMAND & LIVE BRIEFING BAR -->
@@ -624,73 +835,6 @@
                 </article>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        <!-- ════════════════════════════════════════════════════════════════════════
-             QUICK CLINICAL ECOSYSTEM STRIP (4 TRỤ CỘT DỰ ÁN + CLINICAL PEARL)
-        ════════════════════════════════════════════════════════════════════════ -->
-        <section class="clinical-ecosystem-strip" aria-label="Lối tắt hệ sinh thái CliniPortal & Ngọc Lâm Sàng">
-          <div class="module-triad-grid">
-            <a href="#/docspace" class="module-triad-card mod-docspace">
-              <div class="module-triad-header">
-                <div class="module-triad-icon"><i class="fa-solid fa-id-badge"></i></div>
-                <span class="module-triad-badge">Workstation</span>
-              </div>
-              <h3 class="module-triad-title">DocSpace Pro</h3>
-              <p class="module-triad-desc">Phân tầng Triage, chẩn đoán suy luận CDSS 4 bước, SBAR &amp; phác đồ điều trị trực ca.</p>
-              <span class="module-triad-footer">Mở Workstation <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#/basic-medical" class="module-triad-card mod-coso">
-              <div class="module-triad-header">
-                <div class="module-triad-icon"><i class="fa-solid fa-dna"></i></div>
-                <span class="module-triad-badge">Nền tảng</span>
-              </div>
-              <h3 class="module-triad-title">Basic Sciences</h3>
-              <p class="module-triad-desc">Giải phẫu, Sinh lý, Cơ chế bệnh sinh, Hóa sinh, Dịch tễ học &amp; Kháng sinh AMS.</p>
-              <span class="module-triad-footer">Khám phá Cơ sở <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#/clinical-handbook" class="module-triad-card mod-vault">
-              <div class="module-triad-header">
-                <div class="module-triad-icon"><i class="fa-solid fa-book-medical"></i></div>
-                <span class="module-triad-badge">Thực chiến</span>
-              </div>
-              <h3 class="module-triad-title">Clinical Handbook</h3>
-              <p class="module-triad-desc">Đúc kết kinh nghiệm Truyền Nhiễm, cạm bẫy cận lâm sàng &amp; tiếp cận giường bệnh.</p>
-              <span class="module-triad-footer">Xem Sổ Tay <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-
-            <a href="#/ebm" class="module-triad-card mod-ebm">
-              <div class="module-triad-header">
-                <div class="module-triad-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                <span class="module-triad-badge">Chứng cứ</span>
-              </div>
-              <h3 class="module-triad-title">EBM Suite</h3>
-              <p class="module-triad-desc">Tóm tắt Guidelines IDSA/WHO/BYT, Landmark RCTs &amp; thẻ nghiên cứu chuẩn Nature.</p>
-              <span class="module-triad-footer">Tra cứu EBM <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-          </div>
-
-          <!-- Clinical Pearl Card (được đồng bộ bởi homepage-widgets.ts) -->
-          <div class="glass-card glass-pearl-card" aria-label="Điểm sáng lâm sàng trong ngày">
-            <div class="pearl-card-header">
-              <span class="pearl-badge"><i class="fa-solid fa-gem"></i> Clinical Pearl • <span id="glassPearlSpec">Truyền Nhiễm</span></span>
-              <div class="pearl-controls">
-                <button type="button" class="btn-glass-action" id="btnPearlDone">
-                  <i class="fa-regular fa-circle-check"></i> Ghi nhớ
-                </button>
-                <button type="button" class="btn-glass-action" id="btnNextPearl" title="Xem điểm sáng tiếp theo">
-                  Tiếp theo <i class="fa-solid fa-forward-step"></i>
-                </button>
-              </div>
-            </div>
-            <p class="pearl-card-body" id="glassPearlBody">Đang tải thông điệp lâm sàng...</p>
-            <div class="pearl-card-footer">
-              <i class="fa-solid fa-book-open"></i>
-              <span id="glassPearlSource">IDSA / Surviving Sepsis Campaign</span>
             </div>
           </div>
         </section>

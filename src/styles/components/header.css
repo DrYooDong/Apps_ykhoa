@@ -6,12 +6,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height, 58px);
+  height: var(--header-height, 56px);
   z-index: 200;
-  background: var(--glass-bg, rgba(255, 255, 255, 0.92));
-  backdrop-filter: var(--glass-blur, blur(12px));
-  -webkit-backdrop-filter: var(--glass-blur, blur(12px));
-  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -24,8 +22,8 @@
 }
 
 [data-theme="dark"] .global-header {
-  background: var(--glass-bg, rgba(18, 26, 39, 0.88));
-  border-bottom-color: var(--color-divider);
+  background: var(--color-surface);
+  border-bottom-color: var(--color-border);
   box-shadow: var(--shadow-xs);
 }
 
@@ -308,24 +306,24 @@
 }
 
 .tab-docspace .project-tab-pill {
-  background: rgba(2, 132, 199, 0.1);
-  color: #0284c7;
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
 }
 .tab-handbook .project-tab-pill {
-  background: rgba(2, 132, 199, 0.12);
-  color: #0284c7;
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
 }
 .tab-vault .project-tab-pill {
-  background: rgba(5, 150, 105, 0.1);
-  color: #059669;
+  background: var(--color-success-hl);
+  color: var(--color-success);
 }
 .tab-ebm .project-tab-pill {
-  background: rgba(225, 29, 72, 0.1);
-  color: #e11d48;
+  background: var(--color-rose-hl);
+  color: var(--color-rose);
 }
 .tab-cdss .project-tab-pill {
-  background: rgba(2, 132, 199, 0.1);
-  color: #0284c7;
+  background: var(--color-primary-hl);
+  color: var(--color-primary);
 }
 
 [data-theme="dark"] .tab-docspace .project-tab-pill {
