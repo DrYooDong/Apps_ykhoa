@@ -814,6 +814,95 @@ function initializeRoutes(): void {
 function setupGlobalQuickSearch(): void {
   const searchInput = document.querySelector('.search-bar-container .input') as HTMLInputElement;
   const dropdown = document.getElementById('searchResultsDropdown');
+  const searchContainer = document.getElementById('headerSearchTrigger') || document.querySelector('.search-bar-container .search-container');
+  const cmdOverlay = document.getElementById('cmdPaletteOverlay');
+  const cmdInput = document.getElementById('cmdSearchInput') as HTMLInputElement | null;
+  const cmdResults = document.getElementById('cmdResults');
+
+  const renderCommandPaletteResults = (query: string) => {
+    if (!cmdResults) return;
+    const trimmed = query.trim();
+
+    if (!trimmed) {
+      const quickItems = [
+        { title: 'DocSpace Pro Workstation', sub: 'Trực ca, Triage, SOAP & CDSS 4 bước', url: '#/docspace', badge: 'Workstation' },
+        { title: 'Basic Sciences — Cơ sở Y khoa', sub: 'Giải phẫu, Sinh lý, CCBS, Hóa sinh, Dịch tễ, Kháng sinh', url: '#/basic-medical', badge: 'Cơ sở' },
+        { title: 'Clinical Handbook — Sổ Tay Lâm Sàng', sub: 'Kinh nghiệm & đúc kết thực chiến theo chuyên khoa', url: '#/clinical-handbook', badge: 'Đúc kết' },
+        { title: 'EBM Suite & Kho Guidelines 2026', sub: 'Khuyến cáo BYT, ESC, KDIGO, IDSA & EBM Lab', url: '#/ebm/kho-guidelines', badge: 'EBM' },
+        { title: 'CDSS Platform Suite', sub: 'Bộ công cụ hỗ trợ quyết định lâm sàng độc lập', url: 'https://dryoodong.github.io/CDSS_Standalone/?theme=light', badge: 'CDSS', external: true },
+      ];
+      cmdResults.innerHTML = `
+        <div class="cmd-section-label" style="padding: 0.45rem 0.65rem; font-size: 0.7rem; font-weight: 800; color: var(--color-text-faint); text-transform: uppercase;">Điều hướng nhanh 5 Phân hệ</div>
+        ${quickItems.map((item) => `
+          <a href="${item.url}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''} class="cmd-result-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.75rem; border-radius: 8px; text-decoration: none; color: var(--color-text); gap: 0.75rem;">
+            <div style="min-width: 0;">
+              <div style="font-weight: 700; font-size: 0.88rem;">${item.title}</div>
+              <div style="font-size: 0.75rem; color: var(--color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.sub}</div>
+            </div>
+            <span style="font-size: 0.68rem; font-weight: 700; padding: 0.18rem 0.5rem; border-radius: 6px; background: var(--color-primary-hl); color: var(--color-primary); flex-shrink: 0;">${item.badge}</span>
+          </a>
+        `).join('')}
+      `;
+      cmdResults.querySelectorAll('a.cmd-result-item').forEach((el) => {
+        el.addEventListener('click', () => cmdOverlay?.classList.remove('active'));
+      });
+      return;
+    }
+
+    const results = searchEngine.search(trimmed, 12);
+    if (results.length === 0) {
+      cmdResults.innerHTML = `
+        <div style="padding: 1.5rem 1rem; text-align: center; color: var(--color-text-muted); font-size: 0.875rem;">
+          Không tìm thấy kết quả phù hợp với <strong>"${trimmed}"</strong>.
+        </div>
+      `;
+      return;
+    }
+
+    cmdResults.innerHTML = results.map((r) => `
+      <a href="${r.doc.url}" class="cmd-result-item" style="display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.75rem; border-radius: 8px; text-decoration: none; color: var(--color-text); gap: 0.75rem;">
+        <div style="min-width: 0;">
+          <div style="font-weight: 700; font-size: 0.88rem;">${r.doc.title}</div>
+          <div style="font-size: 0.75rem; color: var(--color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.doc.contentSnippet || r.doc.category}</div>
+        </div>
+        <span style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 6px; background: var(--color-surface-offset); color: var(--color-primary); flex-shrink: 0;">${r.doc.category}</span>
+      </a>
+    `).join('');
+
+    cmdResults.querySelectorAll('a.cmd-result-item').forEach((el) => {
+      el.addEventListener('click', () => {
+        cmdOverlay?.classList.remove('active');
+        if (cmdInput) cmdInput.value = '';
+      });
+    });
+  };
+
+  const openCommandPalette = () => {
+    if (!cmdOverlay) return;
+    cmdOverlay.classList.add('active');
+    renderCommandPaletteResults(cmdInput?.value || '');
+    setTimeout(() => cmdInput?.focus(), 60);
+  };
+
+  if (searchContainer) {
+    searchContainer.addEventListener('click', () => {
+      if (window.innerWidth < 1024 && cmdOverlay) {
+        openCommandPalette();
+      }
+    });
+  }
+
+  if (cmdInput) {
+    cmdInput.addEventListener('input', () => renderCommandPaletteResults(cmdInput.value));
+  }
+
+  if (cmdOverlay) {
+    cmdOverlay.addEventListener('click', (e) => {
+      if (e.target === cmdOverlay) {
+        cmdOverlay.classList.remove('active');
+      }
+    });
+  }
 
   if (!searchInput || !dropdown) return;
 
@@ -870,15 +959,19 @@ function setupGlobalQuickSearch(): void {
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes((document.activeElement?.tagName || ''))) {
       e.preventDefault();
-      searchInput.focus();
+      if (window.innerWidth < 1024 && cmdOverlay) {
+        openCommandPalette();
+      } else {
+        searchInput.focus();
+      }
     }
     if (e.key === 'Escape') {
       if (dropdown.style.display === 'block') {
         dropdown.style.display = 'none';
         searchInput.blur();
       }
-      document.querySelectorAll('.notepad-drawer.show, .clini-drawer-jaw.is-open, .cmd-palette-overlay.show, .hotkey-modal-overlay.show, .cheatsheets-modal-overlay, .cp-modal-overlay.show').forEach((el) => {
-        el.classList.remove('show', 'is-open');
+      document.querySelectorAll('.notepad-drawer.show, .clini-drawer-jaw.is-open, .cmd-palette-overlay.show, .cmd-palette-overlay.active, .hotkey-modal-overlay.show, .hotkey-modal-overlay.active, .cheatsheets-modal-overlay, .cp-modal-overlay.show').forEach((el) => {
+        el.classList.remove('show', 'is-open', 'active');
         if (el.id === 'cheatsheetsModalOverlay' && (el as HTMLElement).style.display === 'block') {
           (el as HTMLElement).style.display = 'none';
         }
@@ -889,7 +982,11 @@ function setupGlobalQuickSearch(): void {
   const cmdTrigger = document.getElementById('cmdPaletteTrigger');
   if (cmdTrigger) {
     cmdTrigger.addEventListener('click', () => {
-      searchInput.focus();
+      if (window.innerWidth < 1024 && cmdOverlay) {
+        openCommandPalette();
+      } else {
+        searchInput.focus();
+      }
     });
   }
 }

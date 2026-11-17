@@ -26,9 +26,9 @@ function renderHeaderHtml(projectRoot = './') {
         </a>
       </div>
 
-      <!-- GIỮA: ZONE 2 — BỘ CHUYỂN ĐỔI 4 DỰ ÁN (PROJECT SWITCHER TABS) -->
+      <!-- GIỮA: ZONE 2 — BỘ CHUYỂN ĐỔI 5 DỰ ÁN (PROJECT SWITCHER TABS) -->
       <div class="header-center">
-        <nav class="header-project-switcher" id="headerProjectSwitcher" aria-label="Bộ chuyển đổi 4 dự án cốt lõi">
+        <nav class="header-project-switcher" id="headerProjectSwitcher" aria-label="Bộ chuyển đổi 5 dự án cốt lõi">
           <!-- 1. DocSpace Pro (Lâm sàng / Workstation) -->
           <a href="${root}index.html#/docspace" class="project-tab-btn tab-docspace" data-project="docspace" title="DocSpace Pro — Trực ca, Phân tầng Triage, SBAR & Ca lâm sàng">
             <span class="project-tab-icon"><i class="fa-solid fa-id-badge"></i></span>
@@ -48,28 +48,28 @@ function renderHeaderHtml(projectRoot = './') {
                 <span class="pdrop-icon">🧬</span>
                 <div class="pdrop-info">
                   <strong>GP - SL</strong>
-                  <span>Giải phẫu & Sinh lý học</span>
+                  <span>Giải phẫu &amp; Sinh lý học</span>
                 </div>
               </a>
               <a href="${root}index.html#/basic-medical/co-che-benh-sinh" class="project-dropdown-item">
                 <span class="pdrop-icon">🔬</span>
                 <div class="pdrop-info">
                   <strong>CCBS - SBL</strong>
-                  <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
+                  <span>Cơ chế bệnh sinh &amp; Sinh lý bệnh</span>
                 </div>
               </a>
               <a href="${root}index.html#/basic-medical/hoa-sinh" class="project-dropdown-item">
                 <span class="pdrop-icon">🧪</span>
                 <div class="pdrop-info">
                   <strong>Hóa Sinh</strong>
-                  <span>Hóa sinh Y học & Chuyển hóa</span>
+                  <span>Hóa sinh Y học &amp; Chuyển hóa</span>
                 </div>
               </a>
               <a href="${root}index.html#/basic-medical/dich-te-hoc" class="project-dropdown-item">
                 <span class="pdrop-icon">🦠</span>
                 <div class="pdrop-info">
                   <strong>Dịch Tễ</strong>
-                  <span>Dịch tễ học & Y tế công cộng</span>
+                  <span>Dịch tễ học &amp; Y tế công cộng</span>
                 </div>
               </a>
               <a href="${root}index.html#/basic-medical/khang-sinh" class="project-dropdown-item">
@@ -94,6 +94,13 @@ function renderHeaderHtml(projectRoot = './') {
             <span class="project-tab-icon"><i class="fa-solid fa-scale-balanced"></i></span>
             <span class="project-tab-name">EBM Suite</span>
             <span class="project-tab-pill">Chứng Cứ</span>
+          </a>
+
+          <!-- 5. CDSS Platform Suite (Hỗ Trợ Quyết Định Lâm Sàng Độc Lập) -->
+          <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="project-tab-btn tab-cdss" data-project="cdss" title="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập">
+            <span class="project-tab-icon"><i class="fa-solid fa-microchip"></i></span>
+            <span class="project-tab-name">CDSS Platform</span>
+            <span class="project-tab-pill">Suite</span>
           </a>
         </nav>
       </div>
@@ -166,8 +173,8 @@ function syncHeaderBottomNavActive() {
       isMatch = currentPath.includes('ebm') || currentPath.includes('yhcc') || currentPath.includes('guidelines') || currentHash.includes('ebm') || currentHash.includes('guidelines');
     } else if (route === 'docspace') {
       isMatch = currentPath.includes('docspace') || currentHash.includes('docspace');
-    } else if (route === 'vault') {
-      isMatch = currentPath.includes('vault') || currentPath.includes('knowledge') || currentHash.includes('knowledge-vault') || currentHash.includes('vault');
+    } else if (route === 'handbook' || route === 'vault') {
+      isMatch = currentPath.includes('clinical-handbook') || currentPath.includes('vault') || currentPath.includes('knowledge') || currentHash.includes('clinical-handbook') || currentHash.includes('knowledge-vault') || currentHash.includes('vault');
     }
 
     if (isMatch) {
@@ -190,8 +197,8 @@ function syncHeaderBottomNavActive() {
       isMatch = currentPath.includes('ebm') || currentPath.includes('yhcc') || currentPath.includes('guidelines') || currentHash.includes('ebm') || currentHash.includes('guidelines');
     } else if (project === 'docspace') {
       isMatch = currentPath.includes('docspace') || currentHash.includes('docspace');
-    } else if (project === 'vault') {
-      isMatch = currentPath.includes('vault') || currentPath.includes('knowledge') || currentHash.includes('knowledge-vault') || currentHash.includes('vault');
+    } else if (project === 'handbook' || project === 'vault') {
+      isMatch = currentPath.includes('clinical-handbook') || currentPath.includes('vault') || currentPath.includes('knowledge') || currentHash.includes('clinical-handbook') || currentHash.includes('knowledge-vault') || currentHash.includes('vault');
     }
 
     if (isMatch) {

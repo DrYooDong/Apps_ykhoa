@@ -16,6 +16,14 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '';
+const isBasic =
+  currentPath.startsWith('/sinh-ly') ||
+  currentPath.startsWith('/hoa-sinh') ||
+  currentPath.startsWith('/dich-te-hoc');
+const isHandbook = currentPath.startsWith('/clinical-handbook');
+const isEbm = currentPath.startsWith('/ebm');
+const isTools = currentPath.startsWith('/cong-cu');
 ---
 
 <!DOCTYPE html>
@@ -49,6 +57,30 @@ const currentPath = Astro.url.pathname;
     </main>
     <Footer />
   </div>
+
+  <!-- Mobile Fixed Thumb-Zone Bottom Navigation (< 768px) -->
+  <nav class="astro-bottom-nav" aria-label="Điều hướng chính trên di động">
+    <a href="/" class={`astro-bnav-item ${isHome ? 'active' : ''}`} aria-current={isHome ? 'page' : undefined}>
+      <i class="fa-solid fa-house"></i>
+      <span>Trang chủ</span>
+    </a>
+    <a href="/sinh-ly" class={`astro-bnav-item ${isBasic ? 'active' : ''}`} aria-current={isBasic ? 'page' : undefined}>
+      <i class="fa-solid fa-dna"></i>
+      <span>Cơ sở</span>
+    </a>
+    <a href="/clinical-handbook" class={`astro-bnav-item ${isHandbook ? 'active' : ''}`} aria-current={isHandbook ? 'page' : undefined}>
+      <i class="fa-solid fa-book-medical"></i>
+      <span>Sổ Tay</span>
+    </a>
+    <a href="/ebm/kho-guidelines" class={`astro-bnav-item ${isEbm ? 'active' : ''}`} aria-current={isEbm ? 'page' : undefined}>
+      <i class="fa-solid fa-scale-balanced"></i>
+      <span>Guidelines</span>
+    </a>
+    <a href="/cong-cu" class={`astro-bnav-item ${isTools ? 'active' : ''}`} aria-current={isTools ? 'page' : undefined}>
+      <i class="fa-solid fa-calculator"></i>
+      <span>Công Cụ</span>
+    </a>
+  </nav>
 </body>
 </html>
 
@@ -61,5 +93,72 @@ const currentPath = Astro.url.pathname;
 
   .app-main {
     flex: 1;
+  }
+
+  .astro-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--glass-bg, rgba(255, 255, 255, 0.92));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-top: 1px solid var(--color-border, #cbd5e1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    z-index: 950;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  :global([data-theme="dark"]) .astro-bottom-nav {
+    background: rgba(15, 23, 42, 0.92);
+    border-top-color: var(--color-border, #1e293b);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .astro-bnav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 44px;
+    padding: 5px 4px;
+    color: var(--color-text-muted, #64748b);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .astro-bnav-item i {
+    font-size: 1.05rem;
+  }
+
+  .astro-bnav-item.active {
+    color: var(--color-primary, #087f9c);
+    font-weight: 700;
+  }
+
+  .astro-bnav-item.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 2.5px;
+    border-radius: 0 0 3px 3px;
+    background: var(--color-primary, #087f9c);
+  }
+
+  @media (max-width: 767px) {
+    .astro-bottom-nav {
+      display: flex;
+    }
   }
 </style>

@@ -26,6 +26,7 @@ if (typeof window !== 'undefined') {
 export function initHeaderModals(): void {
   setupCheatsheetsModal();
   setupSettingsSyncModal();
+  setupMobileNavDrawer();
   setupGlobalShortcuts();
 }
 
@@ -446,7 +447,7 @@ function setupSettingsSyncModal(): void {
   if (modalHotkeyBtn) {
     modalHotkeyBtn.addEventListener('click', () => {
       closeSettingsModal();
-      const hotkeysModal = document.getElementById('hotkeysModal');
+      const hotkeysModal = document.getElementById('hotkeyModalOverlay') || document.getElementById('hotkeysModal');
       if (hotkeysModal) {
         hotkeysModal.classList.add('active');
       }
@@ -494,7 +495,182 @@ function setupSettingsSyncModal(): void {
 }
 
 /**
- * 3. GLOBAL KEYBOARD SHORTCUTS
+ * 3. MOBILE & TABLET NAVIGATION DRAWER (#mobileMenuBtn)
+ */
+function setupMobileNavDrawer(): void {
+  if (!document.getElementById('cpNavDrawerOverlay')) {
+    const drawerHtml = `
+      <div class="cp-nav-drawer-overlay" id="cpNavDrawerOverlay" aria-hidden="true">
+        <aside class="cp-nav-drawer" role="dialog" aria-modal="true" aria-label="Menu điều hướng CliniPortal">
+          <div class="cp-nav-drawer-header">
+            <div class="cp-nav-drawer-brand">
+              <div class="logo-icon-box"><i class="fa-solid fa-stethoscope"></i></div>
+              <span>CliniPortal <span class="text-primary-accent">MedLens</span></span>
+            </div>
+            <button type="button" class="cp-nav-drawer-close" id="cpNavDrawerCloseBtn" aria-label="Đóng menu">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="cp-nav-drawer-body">
+            <div>
+              <div class="cp-drawer-section-label">5 Trụ Cột Hệ Sinh Thái</div>
+              <div class="cp-drawer-list">
+                <a href="#/" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-house" style="color: var(--color-primary);"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Trang Chủ Launchpad</span>
+                    <small>Bảng điều phối &amp; Ca lâm sàng nhanh</small>
+                  </div>
+                </a>
+                <a href="#/docspace" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-id-badge" style="color: #0284c7;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>DocSpace Pro</span>
+                    <small>Trực ca, Triage, SOAP &amp; CDSS 4 bước</small>
+                  </div>
+                </a>
+                <a href="#/basic-medical" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-dna" style="color: #8b5cf6;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Basic Sciences</span>
+                    <small>Khoa học Y cơ sở &amp; Mô phỏng</small>
+                  </div>
+                </a>
+                <a href="#/clinical-handbook" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-book-medical" style="color: #087f9c;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Clinical Handbook</span>
+                    <small>Sổ tay kinh nghiệm &amp; Đúc kết thực chiến</small>
+                  </div>
+                </a>
+                <a href="#/ebm" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-scale-balanced" style="color: #e11d48;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>EBM Suite</span>
+                    <small>Tháp 6S, Guidelines &amp; Thống kê Y học</small>
+                  </div>
+                </a>
+                <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="cp-drawer-link">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-microchip" style="color: #0284c7;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>CDSS Platform Suite</span>
+                    <small>Bộ công cụ tính toán &amp; chẩn đoán độc lập</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div class="cp-drawer-section-label">Chuyên Mục Cơ Sở Y Khoa</div>
+              <div class="cp-drawer-subgrid">
+                <a href="#/basic-medical/giai-phau-sinh-ly" class="cp-drawer-chip">🧬 GP - SL</a>
+                <a href="#/basic-medical/co-che-benh-sinh" class="cp-drawer-chip">🔬 CCBS - SBL</a>
+                <a href="#/basic-medical/hoa-sinh" class="cp-drawer-chip">🧪 Hóa Sinh</a>
+                <a href="#/basic-medical/dich-te-hoc" class="cp-drawer-chip">🦠 Dịch Tễ</a>
+                <a href="#/basic-medical/khang-sinh" class="cp-drawer-chip">🛡️ Kháng Sinh</a>
+                <a href="#/ebm/kho-guidelines" class="cp-drawer-chip">📚 Guidelines</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="cp-drawer-section-label">Tiện Ích Nhanh</div>
+              <div class="cp-drawer-list">
+                <button type="button" class="cp-drawer-link" id="cpDrawerCheatsheetBtn">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Tra Cứu Siêu Tốc</span>
+                    <small>Phác đồ cấp cứu &amp; Thang điểm nhanh</small>
+                  </div>
+                </button>
+                <button type="button" class="cp-drawer-link" id="cpDrawerLockBtn">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-lock" style="color: #64748b;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Khóa Giao Diện Lâm Sàng</span>
+                    <small>Bảo vệ màn hình trực ca</small>
+                  </div>
+                </button>
+                <button type="button" class="cp-drawer-link" id="cpDrawerSettingsBtn">
+                  <span class="cp-drawer-link-icon"><i class="fa-solid fa-gear" style="color: #64748b;"></i></span>
+                  <div class="cp-drawer-link-meta">
+                    <span>Cài Đặt &amp; Đồng Bộ PWA</span>
+                    <small>Giao diện Sáng/Tối &amp; Dữ liệu offline</small>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cp-nav-drawer-footer">
+            <span><i class="fa-solid fa-circle-check" style="color: var(--color-success, #059669);"></i> Offline-First Ready</span>
+            <span>CliniPortal v2.0</span>
+          </div>
+        </aside>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', drawerHtml);
+  }
+
+  const overlay = document.getElementById('cpNavDrawerOverlay');
+  const closeBtn = document.getElementById('cpNavDrawerCloseBtn');
+
+  function openDrawer(): void {
+    if (!overlay) return;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.getElementById('mobileMenuBtn')?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer(): void {
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.getElementById('mobileMenuBtn')?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('#mobileMenuBtn')) {
+      e.preventDefault();
+      if (overlay?.classList.contains('open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    }
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeDrawer();
+  });
+
+  overlay?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.getElementById('cpDrawerCheatsheetBtn')?.addEventListener('click', () => {
+    closeDrawer();
+    (window as any).openCheatsheetModal?.();
+  });
+
+  document.getElementById('cpDrawerLockBtn')?.addEventListener('click', () => {
+    closeDrawer();
+    document.getElementById('headerLockBtn')?.click();
+  });
+
+  document.getElementById('cpDrawerSettingsBtn')?.addEventListener('click', () => {
+    closeDrawer();
+    (window as any).openSettingsModal?.();
+  });
+
+  window.addEventListener('hashchange', closeDrawer);
+}
+
+/**
+ * 4. GLOBAL KEYBOARD SHORTCUTS
  */
 function setupGlobalShortcuts(): void {
   document.addEventListener('keydown', (e) => {
@@ -505,16 +681,25 @@ function setupGlobalShortcuts(): void {
     if ((isCmdOrCtrl && e.key.toLowerCase() === 'k') || (e.key === '/' && !isInput)) {
       e.preventDefault();
       const targetInput = document.querySelector('.search-bar-container input, .search-container input, #search-input') as HTMLInputElement | null;
-      if (targetInput) {
+      const cmdOverlay = document.getElementById('cmdPaletteOverlay');
+      const cmdInput = document.getElementById('cmdSearchInput') as HTMLInputElement | null;
+
+      if (window.innerWidth < 1024 && cmdOverlay) {
+        cmdOverlay.classList.add('active');
+        setTimeout(() => cmdInput?.focus(), 60);
+      } else if (targetInput && targetInput.offsetParent !== null) {
         targetInput.focus();
         targetInput.select();
+      } else if (cmdOverlay) {
+        cmdOverlay.classList.add('active');
+        setTimeout(() => cmdInput?.focus(), 60);
       }
     }
 
     // ? for hotkey table
     if (e.key === '?' && !isInput) {
       e.preventDefault();
-      const hotkeysModal = document.getElementById('hotkeysModal');
+      const hotkeysModal = document.getElementById('hotkeyModalOverlay') || document.getElementById('hotkeysModal');
       if (hotkeysModal) {
         hotkeysModal.classList.toggle('active');
       }
@@ -522,6 +707,19 @@ function setupGlobalShortcuts(): void {
 
     // Escape closes modals
     if (e.key === 'Escape') {
+      const navDrawer = document.getElementById('cpNavDrawerOverlay');
+      if (navDrawer?.classList.contains('open')) {
+        navDrawer.classList.remove('open');
+        navDrawer.setAttribute('aria-hidden', 'true');
+        document.getElementById('mobileMenuBtn')?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      const cmdOverlay = document.getElementById('cmdPaletteOverlay');
+      if (cmdOverlay?.classList.contains('active')) {
+        cmdOverlay.classList.remove('active');
+      }
+
       const cheatsheetsModal = document.getElementById('cheatsheetsModalOverlay');
       if (cheatsheetsModal && cheatsheetsModal.classList.contains('active')) {
         cheatsheetsModal.classList.remove('active');
@@ -537,7 +735,7 @@ function setupGlobalShortcuts(): void {
         setTimeout(() => { settingsModal.style.display = 'none'; }, 200);
       }
 
-      const hotkeysModal = document.getElementById('hotkeysModal');
+      const hotkeysModal = document.getElementById('hotkeyModalOverlay') || document.getElementById('hotkeysModal');
       if (hotkeysModal && hotkeysModal.classList.contains('active')) {
         hotkeysModal.classList.remove('active');
       }
@@ -548,6 +746,7 @@ function setupGlobalShortcuts(): void {
   const hotkeyCloseBtn = document.getElementById('hotkeyCloseBtn');
   if (hotkeyCloseBtn) {
     hotkeyCloseBtn.addEventListener('click', () => {
+      document.getElementById('hotkeyModalOverlay')?.classList.remove('active');
       document.getElementById('hotkeysModal')?.classList.remove('active');
     });
   }

@@ -11,7 +11,7 @@ export function renderHeaderHtml(projectRoot = './'): string {
     <header class="global-header" id="siteHeader">
       <!-- TRÁI: Brand Logo & Mobile Toggle -->
       <div class="header-left">
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu điều hướng">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu điều hướng" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
 
@@ -26,9 +26,9 @@ export function renderHeaderHtml(projectRoot = './'): string {
         </a>
       </div>
 
-      <!-- GIỮA: ZONE 2 — BỘ CHUYỂN ĐỔI 4 DỰ ÁN (PROJECT SWITCHER TABS) -->
+      <!-- GIỮA: ZONE 2 — BỘ CHUYỂN ĐỔI 5 DỰ ÁN (PROJECT SWITCHER TABS) -->
       <div class="header-center">
-        <nav class="header-project-switcher" id="headerProjectSwitcher" aria-label="Bộ chuyển đổi 4 dự án cốt lõi">
+        <nav class="header-project-switcher" id="headerProjectSwitcher" aria-label="Bộ chuyển đổi 5 dự án cốt lõi">
           <!-- 1. DocSpace Pro (Lâm sàng / Workstation) -->
           <a href="${root}#/docspace" class="project-tab-btn tab-docspace" data-project="docspace" title="DocSpace Pro — Trực ca, Phân tầng Triage, SBAR & Ca lâm sàng">
             <span class="project-tab-icon"><i class="fa-solid fa-id-badge"></i></span>
@@ -48,28 +48,28 @@ export function renderHeaderHtml(projectRoot = './'): string {
                 <span class="pdrop-icon">🧬</span>
                 <div class="pdrop-info">
                   <strong>GP - SL</strong>
-                  <span>Giải phẫu & Sinh lý học</span>
+                  <span>Giải phẫu &amp; Sinh lý học</span>
                 </div>
               </a>
               <a href="${root}#/basic-medical/co-che-benh-sinh" class="project-dropdown-item">
                 <span class="pdrop-icon">🔬</span>
                 <div class="pdrop-info">
                   <strong>CCBS - SBL</strong>
-                  <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
+                  <span>Cơ chế bệnh sinh &amp; Sinh lý bệnh</span>
                 </div>
               </a>
               <a href="${root}#/basic-medical/hoa-sinh" class="project-dropdown-item">
                 <span class="pdrop-icon">🧪</span>
                 <div class="pdrop-info">
                   <strong>Hóa Sinh</strong>
-                  <span>Hóa sinh Y học & Chuyển hóa</span>
+                  <span>Hóa sinh Y học &amp; Chuyển hóa</span>
                 </div>
               </a>
               <a href="${root}#/basic-medical/dich-te-hoc" class="project-dropdown-item">
                 <span class="pdrop-icon">🦠</span>
                 <div class="pdrop-info">
                   <strong>Dịch Tễ</strong>
-                  <span>Dịch tễ học & Y tế công cộng</span>
+                  <span>Dịch tễ học &amp; Y tế công cộng</span>
                 </div>
               </a>
               <a href="${root}#/basic-medical/khang-sinh" class="project-dropdown-item">
@@ -95,18 +95,28 @@ export function renderHeaderHtml(projectRoot = './'): string {
             <span class="project-tab-name">EBM Suite</span>
             <span class="project-tab-pill">Chứng Cứ</span>
           </a>
+
+          <!-- 5. CDSS Platform Suite (Hỗ Trợ Quyết Định Lâm Sàng Độc Lập) -->
+          <a href="https://dryoodong.github.io/CDSS_Standalone/?theme=light" target="_blank" rel="noopener noreferrer" class="project-tab-btn tab-cdss" data-project="cdss" title="CDSS Platform Suite — Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Độc Lập">
+            <span class="project-tab-icon"><i class="fa-solid fa-microchip"></i></span>
+            <span class="project-tab-name">CDSS Platform</span>
+            <span class="project-tab-pill">Suite</span>
+          </a>
         </nav>
       </div>
 
-      <!-- PHẢI: Search, Theme, Doctor Profile & Settings -->
+      <!-- PHẢI: Search, Theme, Cheatsheets, Lock & Settings -->
       <div class="header-right">
         <div class="search-bar-container">
-          <div class="search-container">
+          <div class="search-container" id="headerSearchTrigger" role="search">
             <svg viewBox="0 0 24 24" class="search__icon" aria-hidden="true">
-              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365-7.5-7.5-7.5-7.5 3.365-7.5 7.5z" />
+              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
             </svg>
-            <input class="input" type="search" placeholder="Tìm kiếm hệ sinh thái..." aria-label="Tìm kiếm hệ sinh thái" />
-            <kbd class="search-kbd-hint" title="Bấm phím Ctrl K hoặc / để tìm kiếm">Ctrl K</kbd>
+            <input class="input" type="search" placeholder="Tìm kiếm hệ sinh thái…" aria-label="Tìm kiếm hệ sinh thái" />
+            <kbd class="search-kbd-hint" id="searchKbdHint" title="Bấm phím Ctrl K hoặc / để tìm kiếm">Ctrl K</kbd>
+            <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa" aria-label="Voice Search">
+              <i class="fa-solid fa-microphone"></i>
+            </button>
           </div>
           <div class="search-results-dropdown" id="searchResultsDropdown"></div>
         </div>
@@ -116,12 +126,16 @@ export function renderHeaderHtml(projectRoot = './'): string {
             <i class="fa-solid fa-moon"></i>
           </button>
 
+          <button id="header-cheatsheets-btn" class="header-settings-btn open-cheatsheet-btn" title="Tra Cứu Siêu Tốc (Clinical Cheatsheets)" aria-label="Tra cứu siêu tốc">
+            <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
+          </button>
+
           <!-- Nút Icon Khóa Giao Diện Lâm Sàng -->
-          <button type="button" class="header-settings-btn header-lock-btn" id="headerLockBtn" title="Khóa giao diện lâm sàng (Mã PIN 6 số)" aria-label="Khóa giao diện lâm sàng">
+          <button type="button" class="header-settings-btn header-lock-btn" id="headerLockBtn" title="Khóa giao diện lâm sàng (Mã PIN)" aria-label="Khóa giao diện lâm sàng">
             <i class="fa-solid fa-lock"></i>
           </button>
 
-          <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Cài đặt">
+          <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt &amp; Đồng bộ" aria-label="Cài đặt">
             <i class="fa-solid fa-gear"></i>
           </button>
         </div>

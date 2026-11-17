@@ -7,21 +7,30 @@ export interface Props {
 
 const { currentPath = '/' } = Astro.props;
 
-const navLinks = [
-  { href: '/', label: 'Trang Chủ', icon: 'fa-house' },
-  { href: '/sinh-ly/sl-tb-daicuong-tb', label: 'Sinh Lý', icon: 'fa-dna' },
-  { href: '/sinh-ly-benh', label: 'Sinh Lý Bệnh', icon: 'fa-heart-pulse' },
-  { href: '/hoa-sinh', label: 'Hóa Sinh', icon: 'fa-atom' },
-  { href: '/dich-te-hoc/dth-dengue', label: 'Dịch Tễ', icon: 'fa-virus' },
-  { href: '/ebm/kho-guidelines', label: 'EBM Guidelines', icon: 'fa-book-medical' },
-  { href: '/cong-cu', label: 'Công Cụ CDSS', icon: 'fa-calculator' }
-];
+const isBasicActive =
+  currentPath.startsWith('/sinh-ly') ||
+  currentPath.startsWith('/hoa-sinh') ||
+  currentPath.startsWith('/dich-te-hoc');
+const isHandbookActive = currentPath.startsWith('/clinical-handbook');
+const isEbmActive = currentPath.startsWith('/ebm');
+const isToolsActive = currentPath.startsWith('/cong-cu');
+const isHomeActive = currentPath === '/' || currentPath === '';
 ---
 
-<header class="app-header">
+<header class="app-header" id="astroSiteHeader">
   <div class="header-inner">
-    <!-- TRÁI: Brand & Live Knowledge Stats -->
+    <!-- TRÁI: Hamburger (Tablet/Mobile) & Brand -->
     <div class="header-brand">
+      <button
+        type="button"
+        class="mobile-menu-btn"
+        id="astroMobileMenuBtn"
+        aria-label="Mở menu điều hướng"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <a href="/" class="brand-link" title="Về Trang chủ CliniPortal">
         <div class="brand-logo">
           <i class="fa-solid fa-stethoscope"></i>
@@ -31,88 +40,244 @@ const navLinks = [
           <span class="brand-badge">CLINIPORTAL</span>
         </div>
       </a>
-
-      <div class="live-knowledge-stats">
-        <span class="live-dot-pulse"></span>
-        <span>Tri thức:</span>
-        <b>14</b> bệnh · <b>92</b> từ vựng · <span class="stat-blue">2.400+</span> bài · <span class="stat-rose">78</span> Guidelines
-      </div>
     </div>
 
-    <!-- GIỮA: 4 Shortcuts + Navigation Bridges -->
+    <!-- GIỮA: 5-Pillar Segmented Project Switcher -->
     <div class="header-center">
-      <div class="clinical-shortcuts-strip">
-        <a href="/ebm/kho-guidelines" class="shortcut-chip chip-guidelines" title="Kho Guidelines EBM">
-          <span>📚</span><span>Guidelines</span>
+      <nav class="astro-project-switcher" aria-label="Điều hướng 5 phân hệ y khoa">
+        <a
+          href="/"
+          class={`astro-tab-btn tab-home ${isHomeActive ? 'active' : ''}`}
+          aria-current={isHomeActive ? 'page' : undefined}
+        >
+          <span class="astro-tab-icon"><i class="fa-solid fa-house"></i></span>
+          <span class="astro-tab-name">Trang Chủ</span>
         </a>
-        <a href="/cong-cu" class="shortcut-chip chip-tools" title="Kho Công cụ & Thang điểm CDSS">
-          <span>🧮</span><span>Công cụ</span>
-        </a>
-        <a href="/#/docspace" class="shortcut-chip chip-icd" title="Kho ICD-10">
-          <span>🏷️</span><span>ICD-10</span>
-        </a>
-        <a href="/#/docspace" class="shortcut-chip chip-cdss" title="Kho CDSS">
-          <span>⚡</span><span>CDSS</span>
-        </a>
-      </div>
 
-      <div class="header-v-divider"></div>
+        <div class="astro-dropdown-wrapper">
+          <a
+            href="/sinh-ly"
+            class={`astro-tab-btn tab-basic ${isBasicActive ? 'active' : ''}`}
+            aria-current={isBasicActive ? 'page' : undefined}
+          >
+            <span class="astro-tab-icon"><i class="fa-solid fa-dna"></i></span>
+            <span class="astro-tab-name">Cơ Sở Y Khoa</span>
+            <i class="fa-solid fa-chevron-down astro-dropdown-arrow" aria-hidden="true"></i>
+          </a>
+          <div class="astro-dropdown-menu">
+            <a href="/sinh-ly" class="astro-dropdown-item">
+              <span class="adrop-icon">🧬</span>
+              <div>
+                <strong>Sinh Lý Học</strong>
+                <span>Guyton &amp; Ganong Systems</span>
+              </div>
+            </a>
+            <a href="/sinh-ly-benh" class="astro-dropdown-item">
+              <span class="adrop-icon">🔬</span>
+              <div>
+                <strong>Sinh Lý Bệnh (CCBS)</strong>
+                <span>34+ Ca Cơ chế bệnh sinh</span>
+              </div>
+            </a>
+            <a href="/hoa-sinh" class="astro-dropdown-item">
+              <span class="adrop-icon">🧪</span>
+              <div>
+                <strong>Hóa Sinh Y Học</strong>
+                <span>Chuyển hóa &amp; Dấu ấn lâm sàng</span>
+              </div>
+            </a>
+            <a href="/dich-te-hoc" class="astro-dropdown-item">
+              <span class="adrop-icon">🦠</span>
+              <div>
+                <strong>Dịch Tễ Học</strong>
+                <span>Dịch tễ lâm sàng &amp; Thống kê</span>
+              </div>
+            </a>
+          </div>
+        </div>
 
-      <nav class="header-nav-bridges">
-        <a href="/#/clinical-handbook" class="nav-bridge-btn bridge-handbook" title="Sổ Tay Lâm Sàng — Kinh nghiệm & Đúc kết thực chiến">
-          <i class="fa-solid fa-book-medical"></i>
-          <span>Sổ tay đúc kết</span>
+        <a
+          href="/clinical-handbook"
+          class={`astro-tab-btn tab-handbook ${isHandbookActive ? 'active' : ''}`}
+          aria-current={isHandbookActive ? 'page' : undefined}
+        >
+          <span class="astro-tab-icon"><i class="fa-solid fa-book-medical"></i></span>
+          <span class="astro-tab-name">Sổ Tay Đúc Kết</span>
+          <span class="astro-tab-pill">Handbook</span>
         </a>
-        <a href="/#/docspace" class="nav-bridge-btn bridge-cases" title="DocSpace & Kho ca lâm sàng">
-          <i class="fa-solid fa-notes-medical"></i>
-          <span>Kho ca lâm sàng</span>
-          <span class="bridge-pulse-dot"></span>
+
+        <a
+          href="/ebm/kho-guidelines"
+          class={`astro-tab-btn tab-ebm ${isEbmActive ? 'active' : ''}`}
+          aria-current={isEbmActive ? 'page' : undefined}
+        >
+          <span class="astro-tab-icon"><i class="fa-solid fa-scale-balanced"></i></span>
+          <span class="astro-tab-name">EBM Guidelines</span>
+          <span class="astro-tab-pill">Chứng Cứ</span>
         </a>
-        <a href="/sinh-ly/sl-tb-daicuong-tb" class="nav-bridge-btn bridge-basic" title="Cơ sở Y khoa">
-          <i class="fa-solid fa-dna"></i>
-          <span>Cơ sở</span>
+
+        <a
+          href="/cong-cu"
+          class={`astro-tab-btn tab-cdss ${isToolsActive ? 'active' : ''}`}
+          aria-current={isToolsActive ? 'page' : undefined}
+        >
+          <span class="astro-tab-icon"><i class="fa-solid fa-calculator"></i></span>
+          <span class="astro-tab-name">Công Cụ CDSS</span>
+          <span class="astro-tab-pill">Suite</span>
         </a>
       </nav>
     </div>
 
-    <!-- PHẢI: Actions, Doctor User Profile & Theme -->
+    <!-- PHẢI: Quick Search Link, CDSS External & Theme -->
     <div class="header-actions">
-      <ThemeToggle />
-
-      <a href="/#/docspace" class="doctor-profile-badge" title="Thông tin Bác sĩ Lâm sàng">
-        <div class="doctor-avatar">Đ</div>
-        <div class="doctor-meta">
-          <span class="doctor-name">BS.CKII Nguyễn Văn ...</span>
-          <span class="doctor-sub">Tim mạch & Cấp cứu</span>
-        </div>
+      <a
+        href="/#portalQuickSearch"
+        class="header-action-btn search-trigger-btn"
+        title="Tìm nhanh phân hệ & bài giảng"
+        aria-label="Tìm nhanh"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="search-trigger-label">Tìm nhanh</span>
       </a>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu điều hướng">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <ThemeToggle />
+
+      <a
+        href="https://dryoodong.github.io/CDSS_Standalone/?theme=light"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header-cdss-pill"
+        title="Mở CDSS Platform Suite Độc Lập"
+      >
+        <i class="fa-solid fa-microchip"></i>
+        <span>CDSS Live</span>
+      </a>
     </div>
   </div>
 </header>
 
+<!-- Mobile & Tablet Slide-Over Navigation Drawer -->
+<div class="astro-drawer-overlay" id="astroNavDrawerOverlay" aria-hidden="true">
+  <aside class="astro-drawer" role="dialog" aria-modal="true" aria-label="Menu điều hướng CliniPortal">
+    <div class="astro-drawer-header">
+      <div class="astro-drawer-brand">
+        <div class="brand-logo"><i class="fa-solid fa-stethoscope"></i></div>
+        <span>CliniPortal <span class="text-primary-accent">MedLens</span></span>
+      </div>
+      <button type="button" class="astro-drawer-close" id="astroDrawerCloseBtn" aria-label="Đóng menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="astro-drawer-body">
+      <div class="astro-drawer-label">Phân Hệ Chính</div>
+      <div class="astro-drawer-links">
+        <a href="/" class={`astro-drawer-link ${isHomeActive ? 'active' : ''}`}>
+          <i class="fa-solid fa-house"></i>
+          <span>Trang Chủ Launchpad</span>
+        </a>
+        <a href="/clinical-handbook" class={`astro-drawer-link ${isHandbookActive ? 'active' : ''}`}>
+          <i class="fa-solid fa-book-medical"></i>
+          <span>Sổ Tay Đúc Kết Lâm Sàng</span>
+        </a>
+        <a href="/ebm/kho-guidelines" class={`astro-drawer-link ${isEbmActive ? 'active' : ''}`}>
+          <i class="fa-solid fa-scale-balanced"></i>
+          <span>Kho Guidelines EBM 2026</span>
+        </a>
+        <a href="/cong-cu" class={`astro-drawer-link ${isToolsActive ? 'active' : ''}`}>
+          <i class="fa-solid fa-calculator"></i>
+          <span>Công Cụ &amp; Lưu Đồ CDSS</span>
+        </a>
+        <a
+          href="https://dryoodong.github.io/CDSS_Standalone/?theme=light"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="astro-drawer-link"
+        >
+          <i class="fa-solid fa-microchip"></i>
+          <span>CDSS Platform Suite (External)</span>
+        </a>
+      </div>
+
+      <div class="astro-drawer-label">Khoa Học Y Cơ Sở</div>
+      <div class="astro-drawer-subgrid">
+        <a href="/sinh-ly" class="astro-drawer-chip">🧬 Sinh Lý</a>
+        <a href="/sinh-ly-benh" class="astro-drawer-chip">🔬 Sinh Lý Bệnh</a>
+        <a href="/hoa-sinh" class="astro-drawer-chip">🧪 Hóa Sinh</a>
+        <a href="/dich-te-hoc" class="astro-drawer-chip">🦠 Dịch Tễ</a>
+      </div>
+    </div>
+
+    <div class="astro-drawer-footer">
+      <span><i class="fa-solid fa-circle-check"></i> Offline-First MDX</span>
+      <span>CliniPortal v2.0</span>
+    </div>
+  </aside>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('astroMobileMenuBtn');
+    const overlay = document.getElementById('astroNavDrawerOverlay');
+    const closeBtn = document.getElementById('astroDrawerCloseBtn');
+
+    if (!menuBtn || !overlay) return;
+
+    const openDrawer = () => {
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeDrawer = () => {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    menuBtn.addEventListener('click', () => {
+      if (overlay.classList.contains('open')) closeDrawer();
+      else openDrawer();
+    });
+
+    closeBtn?.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeDrawer();
+    });
+    overlay.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeDrawer);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        closeDrawer();
+      }
+    });
+  });
+</script>
+
 <style>
   .app-header {
     height: 56px;
-    background-color: var(--glass-bg, rgba(255, 255, 255, 0.95));
+    background-color: var(--glass-bg, rgba(255, 255, 255, 0.92));
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border, #e2e8f0);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 150;
   }
 
-  [data-theme="dark"] .app-header {
-    background-color: rgba(15, 23, 42, 0.95);
-    border-bottom-color: var(--color-border, #334155);
+  :global([data-theme="dark"]) .app-header {
+    background-color: rgba(15, 23, 42, 0.92);
+    border-bottom-color: var(--color-border, #1e293b);
   }
 
   .header-inner {
     width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
     height: 100%;
     padding: 0 1rem;
     display: flex;
@@ -125,51 +290,70 @@ const navLinks = [
   .header-brand {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.55rem;
     flex: 0 0 auto;
+    min-width: 0;
   }
 
-  .header-brand .brand-link {
+  .mobile-menu-btn {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--color-surface-offset, #f1f5f9);
+    border: 1px solid var(--color-border, #e2e8f0);
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted, #64748b);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .brand-link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
+    min-width: 0;
   }
 
   .brand-logo {
     width: 32px;
     height: 32px;
-    border-radius: 7px;
-    background: var(--color-primary, #0284c7);
-    color: white;
+    border-radius: 8px;
+    background: var(--color-primary, #087f9c);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.95rem;
-    box-shadow: 0 1px 3px rgba(2, 132, 199, 0.25);
+    font-size: 0.92rem;
+    box-shadow: 0 1px 4px rgba(8, 127, 156, 0.25);
+    flex-shrink: 0;
   }
 
   .brand-text {
     display: flex;
     align-items: baseline;
     gap: 0.4rem;
+    min-width: 0;
   }
 
   .brand-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     letter-spacing: -0.025em;
     color: var(--color-text, #0f172a);
+    white-space: nowrap;
   }
 
   .text-primary-accent {
-    color: var(--color-primary);
+    color: var(--color-primary, #087f9c);
   }
 
   .brand-badge {
     display: none;
-    padding: 0.12rem 0.45rem;
+    padding: 0.12rem 0.42rem;
     background: rgba(var(--color-primary-rgb, 8, 127, 156), 0.08);
     border: 1px solid rgba(var(--color-primary-rgb, 8, 127, 156), 0.25);
     border-radius: 4px;
@@ -178,215 +362,429 @@ const navLinks = [
     color: var(--color-primary);
     text-transform: uppercase;
   }
-  @media (min-width: 640px) {
+  @media (min-width: 1180px) {
     .brand-badge {
       display: inline-flex;
     }
   }
 
-  /* Live Stats */
-  .live-knowledge-stats {
-    display: none;
-    align-items: center;
-    gap: 0.35rem;
-    font-family: var(--font-mono, monospace);
-    font-size: 11px;
-    color: var(--color-text-muted, #64748b);
-    background: var(--color-surface-offset, #f8fafc);
-    padding: 0.25rem 0.6rem;
-    border-radius: 6px;
-    border: 1px solid var(--color-border, #e2e8f0);
-    margin-left: 0.25rem;
-    white-space: nowrap;
-  }
-  @media (min-width: 1440px) {
-    .live-knowledge-stats {
-      display: inline-flex;
-    }
-  }
-
-  .live-dot-pulse {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    animation: live-pulse 2s infinite ease-in-out;
-  }
-
-  @keyframes live-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.8); }
-  }
-
-  .stat-blue { color: var(--color-primary); font-weight: 700; }
-  .stat-rose { color: #e11d48; font-weight: 700; }
-
-  /* Center */
+  /* Center Switcher */
   .header-center {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    flex: 1 1 auto;
     justify-content: center;
+    flex: 1 1 auto;
     min-width: 0;
   }
 
-  .clinical-shortcuts-strip {
-    display: none;
-    align-items: center;
-    gap: 0.35rem;
-    background: var(--color-surface-offset, #f1f5f9);
-    padding: 0.2rem 0.35rem;
-    border-radius: 8px;
-    border: 1px solid var(--color-border, #e2e8f0);
-  }
-  @media (min-width: 1080px) {
-    .clinical-shortcuts-strip {
-      display: inline-flex;
-    }
-  }
-
-  .shortcut-chip {
+  .astro-project-switcher {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    padding: 0.22rem 0.55rem;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 10px;
+    background: var(--color-surface-offset, #f1f5f9);
+    border: 1px solid var(--color-border, #e2e8f0);
+    max-width: 100%;
+  }
+
+  :global([data-theme="dark"]) .astro-project-switcher {
+    background: rgba(30, 41, 59, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .astro-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.34rem 0.62rem;
+    border-radius: 7px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-text-muted, #64748b);
     text-decoration: none;
-    transition: all 0.15s ease;
     white-space: nowrap;
-  }
-  .shortcut-chip.chip-guidelines { color: #881337; background: #fff1f2; }
-  .shortcut-chip.chip-tools { color: #78350f; background: #fffbeb; }
-  .shortcut-chip.chip-icd { color: #0c4a6e; background: #f0f9ff; }
-  .shortcut-chip.chip-cdss { color: #581c87; background: #faf5ff; }
-
-  .header-v-divider {
-    width: 1px;
-    height: 16px;
-    background: var(--color-border, #cbd5e1);
-    display: none;
-  }
-  @media (min-width: 1080px) {
-    .header-v-divider {
-      display: block;
-    }
+    border: 1px solid transparent;
+    transition: all 0.16s ease;
   }
 
-  .header-nav-bridges {
+  .astro-tab-btn:hover {
+    color: var(--color-text, #0f172a);
+    background: rgba(255, 255, 255, 0.65);
+  }
+
+  :global([data-theme="dark"]) .astro-tab-btn:hover {
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .astro-tab-btn.active {
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text, #0f172a);
+    font-weight: 700;
+    border-color: rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid var(--color-primary, #087f9c);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  :global([data-theme="dark"]) .astro-tab-btn.active {
+    background: var(--color-surface, #1e293b);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.12);
+    border-bottom: 2px solid var(--color-primary, #38bdf8);
+  }
+
+  .astro-tab-icon {
+    font-size: 0.82rem;
+    color: var(--color-primary);
+  }
+  .tab-basic .astro-tab-icon { color: var(--color-purple, #8b5cf6); }
+  .tab-ebm .astro-tab-icon { color: var(--color-rose, #e11d48); }
+
+  .astro-tab-pill {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: var(--color-primary-hl);
+    color: var(--color-primary);
+  }
+  .tab-ebm .astro-tab-pill {
+    background: var(--color-rose-hl);
+    color: var(--color-rose);
+  }
+
+  /* Dropdown */
+  .astro-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .astro-dropdown-arrow {
+    font-size: 0.6rem;
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+  }
+  .astro-dropdown-wrapper:hover .astro-dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .astro-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    min-width: 225px;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.16s ease;
+    z-index: 999;
+  }
+
+  .astro-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+
+  .astro-dropdown-wrapper:hover .astro-dropdown-menu,
+  .astro-dropdown-wrapper:focus-within .astro-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .astro-dropdown-item {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-  }
-
-  .nav-bridge-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.38rem;
-    padding: 0.28rem 0.7rem;
-    border-radius: 6px;
-    font-size: 11.5px;
-    font-weight: 700;
+    gap: 0.6rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 7px;
     text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.15s ease;
+    color: var(--color-text);
   }
-  .nav-bridge-btn.bridge-vault { background: #eef2ff; color: #4338ca; }
-  .nav-bridge-btn.bridge-cases { background: #eff6ff; color: #1d4ed8; }
-  .nav-bridge-btn.bridge-basic { background: var(--color-surface-offset, #f8fafc); color: var(--color-text, #0f172a); }
-
-  .bridge-pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #10b981;
-    animation: live-pulse 1.8s infinite ease-in-out;
+  .astro-dropdown-item:hover {
+    background: var(--color-surface-offset);
+  }
+  .astro-dropdown-item strong {
+    display: block;
+    font-size: 12px;
+  }
+  .astro-dropdown-item span {
+    display: block;
+    font-size: 10.5px;
+    color: var(--color-text-muted);
+  }
+  .adrop-icon {
+    font-size: 1.1rem;
   }
 
-  /* Right & Doctor Profile */
+  /* Right Actions */
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     flex: 0 0 auto;
   }
 
-  .doctor-profile-badge {
+  .header-action-btn,
+  .header-cdss-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.2rem 0.6rem 0.2rem 0.3rem;
-    background: var(--color-surface-offset, #f8fafc);
-    border: 1px solid var(--color-border, #cbd5e1);
-    border-radius: 7px;
-    text-decoration: none;
-  }
-
-  .doctor-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--color-primary, #0284c7);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 11px;
+    gap: 0.4rem;
+    height: 36px;
+    padding: 0 0.7rem;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s ease;
   }
 
-  .doctor-meta {
-    display: none;
-    flex-direction: column;
-    line-height: 1.15;
-    text-align: left;
+  .header-action-btn {
+    background: var(--color-surface-offset, #f1f5f9);
+    border: 1px solid var(--color-border, #e2e8f0);
+    color: var(--color-text-muted);
   }
-  @media (min-width: 1280px) {
-    .doctor-meta {
-      display: flex;
+  .header-action-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: var(--color-primary-hl);
+  }
+
+  .header-cdss-pill {
+    background: var(--color-primary-hl, rgba(8, 127, 156, 0.1));
+    border: 1px solid rgba(var(--color-primary-rgb, 8, 127, 156), 0.25);
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+  .header-cdss-pill:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1279px) {
+    .astro-tab-pill {
+      display: none;
     }
   }
 
-  .doctor-name {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--color-text, #0f172a);
-    max-width: 130px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .doctor-sub {
-    font-size: 9.5px;
-    color: var(--color-text-muted, #64748b);
-    max-width: 130px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .mobile-menu-btn {
-    display: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 6px;
-    background-color: var(--color-surface-offset);
-    border: 1px solid var(--color-border);
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-muted);
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    .header-center {
-      display: none;
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .header-inner {
+      padding: 0 0.75rem;
+      gap: 0.5rem;
     }
     .mobile-menu-btn {
       display: inline-flex;
     }
+    .astro-project-switcher {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .astro-project-switcher::-webkit-scrollbar {
+      display: none;
+    }
+    .astro-tab-btn {
+      padding: 0.3rem 0.5rem;
+      font-size: 11px;
+    }
+    .search-trigger-label,
+    .header-cdss-pill span {
+      display: none;
+    }
+    .header-action-btn,
+    .header-cdss-pill {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .app-header {
+      height: 52px;
+    }
+    .header-inner {
+      padding: 0 0.6rem;
+      gap: 0.45rem;
+    }
+    .mobile-menu-btn {
+      display: inline-flex;
+      width: 44px;
+      height: 44px;
+    }
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+    }
+    .brand-title {
+      font-size: 0.96rem;
+    }
+    .header-center {
+      display: none;
+    }
+    .search-trigger-label,
+    .header-cdss-pill span {
+      display: none;
+    }
+    .header-action-btn,
+    .header-cdss-pill {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 10px;
+    }
+  }
+
+  @media (max-width: 379px) {
+    .brand-title .text-primary-accent,
+    .header-cdss-pill {
+      display: none;
+    }
+  }
+
+  /* Slide-over Drawer */
+  .astro-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+  .astro-drawer-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .astro-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(310px, 86vw);
+    background: var(--color-surface, #ffffff);
+    border-right: 1px solid var(--color-border);
+    box-shadow: 16px 0 40px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .astro-drawer-overlay.open .astro-drawer {
+    transform: translateX(0);
+  }
+  .astro-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--color-divider);
+    background: var(--color-surface-offset);
+  }
+  .astro-drawer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.98rem;
+  }
+  .astro-drawer-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .astro-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .astro-drawer-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-faint);
+  }
+  .astro-drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .astro-drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .astro-drawer-link.active,
+  .astro-drawer-link:hover {
+    background: var(--color-primary-hl);
+    color: var(--color-primary);
+  }
+  .astro-drawer-subgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.45rem;
+  }
+  .astro-drawer-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 42px;
+    padding: 0.4rem 0.65rem;
+    border-radius: 8px;
+    background: var(--color-surface-offset);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .astro-drawer-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-divider);
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .astro-drawer-footer i {
+    color: var(--color-success, #059669);
   }
 </style>

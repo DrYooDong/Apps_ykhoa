@@ -36,20 +36,27 @@
 }
 
 .mobile-menu-btn {
-  width: 34px; height: 34px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 6px;
-  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.05rem;
   color: var(--color-text-muted);
-  background: transparent;
-  border: none;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
   cursor: pointer;
-  transition: background var(--tr), color var(--tr), transform var(--tr);
+  transition: background var(--tr), color var(--tr), border-color var(--tr), transform var(--tr);
   flex-shrink: 0;
 }
 .mobile-menu-btn:hover {
-  background: var(--color-surface-offset);
+  background: var(--color-primary-hl);
+  border-color: rgba(var(--color-primary-rgb), 0.35);
   color: var(--color-primary);
+}
+.mobile-menu-btn:active {
+  transform: scale(0.95);
 }
 
 /* DocSpace Stethoscope Logo Icon Box */
@@ -1165,135 +1172,6 @@
 }
 
 /* ============================================================
-   HEADER — RESPONSIVE
-============================================================ */
-
-/* Laptop & Large Tablet (1024px – 1280px) */
-@media (max-width: 1280px) {
-  .search-bar-container {
-    width: 200px;
-    max-width: 200px;
-  }
-}
-
-/* Tablet (768px – 1023px) */
-@media (max-width: 1023px) {
-  .global-header {
-    padding: 0 1rem;
-    gap: 0.75rem;
-  }
-  .search-bar-container {
-    width: 180px;
-    max-width: 180px;
-  }
-}
-
-/* Mobile (≤ 767px) */
-@media (max-width: 767px) {
-  .global-header {
-    top: 0;
-    width: 100%;
-    left: 0;
-    transform: none;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    padding: 0 0.75rem;
-    gap: 0.5rem;
-    justify-content: space-between;
-  }
-
-  .header-left {
-    flex: 1;
-    min-width: 0;
-    gap: 0.4rem;
-  }
-
-  .logo-brand {
-    min-width: 0;
-    gap: 0.35rem;
-  }
-
-  .logo-text {
-    font-size: 0.95rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .header-nav-modules {
-    display: none; /* Ẩn bớt thanh pill module trên màn hình điện thoại nhỏ để thanh header thoáng */
-  }
-
-  .header-right {
-    gap: 0.35rem;
-  }
-
-  .btn-back {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.78rem;
-    height: 32px;
-    flex-shrink: 0;
-    margin-left: 0;
-  }
-
-  .btn-back span {
-    display: inline !important;
-    font-size: 0.75rem;
-  }
-
-  .search-bar-container {
-    flex: 0 0 auto;
-    width: 36px;
-    max-width: 36px;
-    min-width: 36px;
-  }
-
-  .search-container {
-    width: 36px;
-    padding: 0;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .search-container .input,
-  .search-kbd-hint,
-  .voice-search-btn {
-    display: none;
-  }
-
-  .search__icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .header-actions {
-    flex-shrink: 0;
-    gap: 0.15rem;
-  }
-
-  .mobile-menu-btn,
-  .header-settings-btn,
-  .search-container {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-  }
-
-  /* Ẩn text label logo nếu màn hình quá nhỏ (< 360px) */
-  @media (max-width: 359px) {
-    .logo-text {
-      display: none;
-    }
-  }
-}
-
-/* ============================================================
    FEATURE 3 & 4: SMART MEDICAL SEARCH MODAL & EVIDENCE BADGES
 ============================================================ */
 
@@ -1592,85 +1470,450 @@
 }
 
 /* ============================================================
-   RESPONSIVE HEADER FOR TABLETS & MOBILE
+   RESPONSIVE HEADER — UNIFIED BREAKPOINTS (LAPTOP / TABLET / MOBILE)
    ============================================================ */
-@media (min-width: 769px) and (max-width: 1179px) {
+
+/* 1. Laptop Chuẩn (1024px – 1279px) */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .global-header {
+    padding: 0 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .project-tab-pill {
+    display: none;
+  }
+
+  .project-tab-btn {
+    padding: 0.32rem 0.55rem;
+    font-size: 11px;
+  }
+
+  .search-bar-container {
+    flex: 0 1 190px;
+    width: 190px;
+    max-width: 190px;
+    min-width: 150px;
+  }
+}
+
+/* 2. Tablet / iPad Buồng Bệnh (768px – 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
   .global-header {
     padding: 0 0.75rem;
-    gap: 0.45rem;
+    gap: 0.5rem;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-badge {
+    display: none;
+  }
+
+  .header-center {
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   .header-project-switcher {
     overflow-x: auto;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-width: 100%;
   }
 
   .header-project-switcher::-webkit-scrollbar {
     display: none;
   }
 
+  .project-tab-pill {
+    display: none;
+  }
+
   .project-tab-btn {
-    padding: 0.3rem 0.52rem;
+    padding: 0.3rem 0.5rem;
     font-size: 11px;
+  }
+
+  /* Thu gọn ô tìm kiếm thành Pill Trigger bấm mở Command Palette */
+  .search-bar-container {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .search-container {
+    width: auto;
+    height: 38px;
+    padding: 0 0.65rem;
+    gap: 0.4rem;
+    cursor: pointer;
+  }
+
+  .search-container .input,
+  .voice-search-btn {
+    display: none;
+  }
+
+  .search-kbd-hint {
+    display: inline-flex;
+    font-size: 10px;
+  }
+
+  .header-settings-btn,
+  .theme-toggle-btn,
+  .header-bookmark-btn {
+    width: 38px;
+    height: 38px;
   }
 }
 
-@media (max-width: 768px) {
+/* 3. Mobile Đi Buồng (<= 767px) */
+@media (max-width: 767px) {
   .global-header {
     top: 0;
     left: 0;
     transform: none;
     width: 100%;
-    height: 56px;
+    height: 52px;
     border-radius: 0;
-    padding: 0 0.65rem;
-    gap: 0.5rem;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    padding: 0 0.6rem;
+    gap: 0.45rem;
+    justify-content: space-between;
   }
 
+  .header-left {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0.45rem;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .logo-brand {
+    min-width: 0;
+    gap: 0.4rem;
+  }
+
+  .logo-icon-box {
+    width: 30px;
+    height: 30px;
+    font-size: 0.88rem;
+  }
+
+  .logo-title {
+    font-size: 0.96rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-badge {
+    display: none;
+  }
+
+  .header-center,
   .header-nav-modules {
     display: none !important;
   }
 
-  .logo-text {
-    font-size: 1rem;
+  .header-right {
+    gap: 0.3rem;
+    flex-shrink: 0;
   }
 
   .btn-back {
-    padding: 0.35rem 0.5rem;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.55rem;
     min-height: 40px;
     min-width: 40px;
-    justify-content: center;
+    margin-left: 0;
   }
 
-  .mobile-menu-btn,
-  .theme-toggle-btn,
-  .header-bookmark-btn {
+  /* Nút Kính Lúp mở Command Palette (Touch Target 44px) */
+  .search-bar-container {
+    flex: 0 0 auto;
+    width: 44px;
+    max-width: 44px;
     min-width: 44px;
-    min-height: 44px;
-  }
-
-  .search-kbd-hint {
-    display: none;
   }
 
   .search-container {
-    max-width: 140px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: var(--radius-md, 10px);
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
   }
 
-  .search-container:focus-within {
-    max-width: 200px;
+  .search-container .input,
+  .search-kbd-hint,
+  .voice-search-btn {
+    display: none;
+  }
+
+  .search__icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .header-actions {
+    gap: 0.3rem;
+    flex-shrink: 0;
+  }
+
+  .header-settings-btn,
+  .theme-toggle-btn,
+  .header-bookmark-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: var(--radius-md, 10px);
   }
 }
 
-@media (max-width: 420px) {
+/* Màn hình điện thoại hẹp (<= 479px): chuyển các nút phụ vào Drawer để tránh chật */
+@media (max-width: 479px) {
+  .header-actions .open-cheatsheet-btn,
+  .header-actions .header-lock-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 379px) {
+  .logo-title .text-primary-accent,
   .btn-back span {
     display: none;
   }
-  
-  .search-container {
-    max-width: 110px;
+
+  .mobile-menu-btn,
+  .search-bar-container,
+  .search-container,
+  .header-settings-btn,
+  .theme-toggle-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
   }
+}
+
+/* ============================================================
+   MOBILE & TABLET SLIDE-OVER NAVIGATION DRAWER
+   ============================================================ */
+.cp-nav-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.cp-nav-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cp-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 86vw);
+  z-index: 2101;
+  background: var(--color-surface, #ffffff);
+  border-right: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: 16px 0 40px rgba(15, 23, 42, 0.22);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.cp-nav-drawer-overlay.open .cp-nav-drawer {
+  transform: translateX(0);
+}
+
+.cp-nav-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  background: var(--color-surface-offset, #f8fafc);
+}
+
+.cp-nav-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--color-text, #0f172a);
+}
+
+.cp-nav-drawer-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text-muted, #64748b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.cp-nav-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.cp-drawer-section-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint, #94a3b8);
+  margin-bottom: 0.45rem;
+  padding-left: 0.25rem;
+}
+
+.cp-drawer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cp-drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: var(--color-text, #0f172a);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+}
+
+.cp-drawer-link:hover,
+.cp-drawer-link.active {
+  background: var(--color-primary-hl, rgba(8, 127, 156, 0.08));
+  border-color: rgba(var(--color-primary-rgb, 8, 127, 156), 0.25);
+  color: var(--color-primary, #087f9c);
+}
+
+.cp-drawer-link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-surface-offset, #f1f5f9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.cp-drawer-link-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.cp-drawer-link-meta small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-text-muted, #64748b);
+}
+
+.cp-drawer-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  padding-left: 0.25rem;
+}
+
+.cp-drawer-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  color: var(--color-text, #0f172a);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cp-drawer-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cp-nav-drawer-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--color-divider, #e2e8f0);
+  font-size: 0.74rem;
+  color: var(--color-text-muted, #64748b);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="dark"] .cp-nav-drawer {
+  background: #0f172a;
+  border-right-color: #1e293b;
+}
+
+[data-theme="dark"] .cp-nav-drawer-header {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .cp-nav-drawer-close,
+[data-theme="dark"] .cp-drawer-chip,
+[data-theme="dark"] .cp-drawer-link-icon {
+  background: #1e293b;
+  border-color: #334155;
 }

@@ -491,7 +491,7 @@ export function MainApp() {
   }, [form.gioiTinh, form.tuoi, form.lyDo]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans antialiased">
+    <div className="docspace-shell min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans antialiased">
       {/* App Header */}
       <Header
         kb={kb}
@@ -715,19 +715,28 @@ export function MainApp() {
         </ErrorBoundary>
       </main>
 
-      {/* Desktop Footer (Ẩn trên di động để nhường chỗ cho BottomNavBar) */}
-      <footer className="hidden md:flex h-9 bg-white border-t border-slate-200 items-center justify-between px-4 sm:px-6 shrink-0 text-xs text-slate-500 no-print">
+      {/* Desktop & Tablet Micro Status Footer (Ẩn trên di động để nhường chỗ cho BottomNavBar) */}
+      <footer className="docspace-footer hidden md:flex min-h-9 bg-white border-t border-slate-200 items-center justify-between px-4 sm:px-6 py-1.5 shrink-0 text-xs text-slate-500 no-print">
         <div className="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1.5 font-medium text-emerald-700">
-              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> 100% Client-Side
+          <div className="flex items-center gap-3.5 text-[11px]">
+            <span className="flex items-center gap-1.5 font-semibold text-emerald-700">
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+              Offline-First Client
             </span>
-            <span className="hidden sm:flex items-center gap-1.5 font-medium text-indigo-700">
-              <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span> Knowledge Vault Single Source of Truth
+            <span className="hidden lg:inline-flex items-center gap-1.5 font-medium text-[#087f9c]">
+              <span className="w-1.5 h-1.5 bg-[#087f9c] rounded-full"></span>
+              {kb.benh.length} Bệnh lý · {kb.trieuChung.length} Triệu chứng EBM
             </span>
+            <button
+              type="button"
+              onClick={() => setIsAboutOpen(true)}
+              className="text-slate-500 hover:text-[#087f9c] underline underline-offset-2 cursor-pointer transition-colors"
+            >
+              Chuẩn mực &amp; Giới thiệu
+            </button>
           </div>
-          <div className="text-[11px] text-slate-400 font-medium">
-            CliniPortal DocSpace MedLens Pro · High Density Clinical Core · Chuẩn Bộ Y tế
+          <div className="text-[11px] text-slate-500 font-medium truncate">
+            CliniPortal DocSpace MedLens · Hỗ trợ quyết định lâm sàng, không thay thế phán xét y khoa
           </div>
         </div>
       </footer>

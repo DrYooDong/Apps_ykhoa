@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Layers, BookOpen, Compass, Award } from 'lucide-react';
+import { Activity, Layers, BookOpen, Award } from 'lucide-react';
 import { MainViewMode } from '../Header.tsx';
 
 interface BottomNavBarProps {
@@ -19,25 +19,25 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
     <nav
       role="navigation"
       aria-label="Điều hướng chính di động"
-      className="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden select-none no-print transition-all"
+      className="docspace-bottom-nav fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden select-none no-print transition-all"
       style={{
         paddingBottom: 'env(safe-area-inset-bottom, 0px)',
       }}
     >
-      <div className="grid grid-cols-4 h-14 items-stretch px-1">
+      <div className="grid grid-cols-4 h-15 items-stretch px-1">
         {/* Tab 1: Chu Trình Lâm Sàng */}
         <button
           type="button"
           onClick={() => onChangeMode('clinical')}
           className={`flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer touch-manipulation relative min-h-[44px] ${
             activeMode === 'clinical'
-              ? 'text-blue-600 font-bold'
+              ? 'text-[#087f9c] font-bold'
               : 'text-slate-500 hover:text-slate-800 font-medium'
           }`}
           aria-current={activeMode === 'clinical' ? 'page' : undefined}
         >
           {activeMode === 'clinical' && (
-            <span className="absolute top-1 w-8 h-1 bg-blue-600 rounded-full animate-fade-in" />
+            <span className="absolute top-0 w-8 h-0.5 bg-[#087f9c] rounded-b-full animate-fade-in" />
           )}
           <Activity className={`w-5 h-5 transition-transform ${activeMode === 'clinical' ? 'scale-110' : ''}`} />
           <span className="text-[10px] tracking-tight truncate max-w-[80px]">Lâm Sàng</span>
@@ -55,7 +55,7 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           aria-current={activeMode === 'soap' ? 'page' : undefined}
         >
           {activeMode === 'soap' && (
-            <span className="absolute top-1 w-8 h-1 bg-emerald-600 rounded-full animate-fade-in" />
+            <span className="absolute top-0 w-8 h-0.5 bg-emerald-600 rounded-b-full animate-fade-in" />
           )}
           <Layers className={`w-5 h-5 transition-transform ${activeMode === 'soap' ? 'scale-110' : ''}`} />
           <span className="text-[10px] tracking-tight truncate max-w-[80px]">Sổ Tay SOAP</span>
@@ -67,13 +67,13 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
           onClick={() => onChangeMode('kb')}
           className={`flex flex-col items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer touch-manipulation relative min-h-[44px] ${
             activeMode === 'kb'
-              ? 'text-blue-600 font-bold'
+              ? 'text-[#087f9c] font-bold'
               : 'text-slate-500 hover:text-slate-800 font-medium'
           }`}
           aria-current={activeMode === 'kb' ? 'page' : undefined}
         >
           {activeMode === 'kb' && (
-            <span className="absolute top-1 w-8 h-1 bg-blue-600 rounded-full animate-fade-in" />
+            <span className="absolute top-0 w-8 h-0.5 bg-[#087f9c] rounded-b-full animate-fade-in" />
           )}
           <BookOpen className={`w-5 h-5 transition-transform ${activeMode === 'kb' ? 'scale-110' : ''}`} />
           <span className="text-[10px] tracking-tight truncate max-w-[80px]">Kho Vault</span>
