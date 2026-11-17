@@ -28,22 +28,30 @@ export default {
           if (!req.url) return next();
           const cleanPath = decodeURIComponent(req.url.split('?')[0]);
 
-          // 1. Phục vụ nội dung MDX thô (raw text/plain)
+          // 1. Phục vụ nội dung MDX thô (raw text/plain) cho fetch trực tiếp, bỏ qua các module import (?raw / ?import / script) để Vite tự transform
           if (cleanPath.endsWith('.mdx') || cleanPath.endsWith('.md')) {
-            const fileName = cleanPath.split('/').pop() || '';
-            const candidates = [
-              resolve(__dirname, cleanPath.startsWith('/') ? cleanPath.slice(1) : cleanPath),
-              resolve(__dirname, 'src/content/ebm/guidelines/kho-guidelines', fileName),
-              resolve(__dirname, 'src/content/basic-medical/physiology', fileName),
-              resolve(__dirname, 'src/content/basic-medical/biochemistry', fileName),
-              resolve(__dirname, 'src/content/basic-medical/epidemiology', fileName)
-            ];
+            const isViteModuleReq =
+              req.url.includes('?raw') ||
+              req.url.includes('&raw') ||
+              req.url.includes('?import') ||
+              req.url.includes('&import') ||
+              req.headers['sec-fetch-dest'] === 'script';
+            if (!isViteModuleReq) {
+              const fileName = cleanPath.split('/').pop() || '';
+              const candidates = [
+                resolve(__dirname, cleanPath.startsWith('/') ? cleanPath.slice(1) : cleanPath),
+                resolve(__dirname, 'src/content/ebm/guidelines/kho-guidelines', fileName),
+                resolve(__dirname, 'src/content/basic-medical/physiology', fileName),
+                resolve(__dirname, 'src/content/basic-medical/biochemistry', fileName),
+                resolve(__dirname, 'src/content/basic-medical/epidemiology', fileName)
+              ];
 
-            for (const targetPath of candidates) {
-              if (fs.existsSync(targetPath) && fs.statSync(targetPath).isFile()) {
-                res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                return fs.createReadStream(targetPath).pipe(res);
+              for (const targetPath of candidates) {
+                if (fs.existsSync(targetPath) && fs.statSync(targetPath).isFile()) {
+                  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+                  res.setHeader('Access-Control-Allow-Origin', '*');
+                  return fs.createReadStream(targetPath).pipe(res);
+                }
               }
             }
           }

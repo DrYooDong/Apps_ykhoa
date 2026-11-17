@@ -16,11 +16,16 @@ import { getHandbookArticle, getHandbookDisease, getHandbookSpecialtyById } from
 import { SpecialtyId } from '../types/handbook.types';
 
 // Eager load all handbook MDX files in Vite for zero-latency offline loading
-const handbookMdxModules = ((import.meta as any).glob?.('/src/content/clinical-handbook/**/*.mdx', {
-  query: '?raw',
-  import: 'default',
-  eager: true
-}) || {}) as Record<string, string>;
+// IMPORTANT: Use `(import.meta as any).glob(...)` directly without `?.` or `import.meta.glob ? ...` ternary,
+// because `import.meta.glob` is undefined at browser runtime (Vite only transforms the direct call).
+const handbookMdxModules: Record<string, string> = (import.meta as any).glob(
+  '/src/content/clinical-handbook/**/*.mdx',
+  {
+    query: '?raw',
+    import: 'default',
+    eager: true
+  }
+);
 
 export function renderHandbookReaderView(specialtyId: SpecialtyId, diseaseSlug: string, articleSlug: string): string {
   const specialty = getHandbookSpecialtyById(specialtyId);
@@ -98,13 +103,20 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
   if (!mountEl) return;
 
   const cleanArticleSlug = articleSlug.replace(/\.mdx$/i, '');
+  const article = getHandbookArticle(specialtyId, diseaseSlug, cleanArticleSlug);
+  const catalogFilePath = article?.filePath;
 
   // 1. Try finding raw MDX from eager glob
   let rawMdx = '';
   const searchPattern = `${specialtyId}/${diseaseSlug}/${cleanArticleSlug}.mdx`;
 
   for (const [key, val] of Object.entries(handbookMdxModules)) {
-    if (key.includes(searchPattern) || key.endsWith(`${cleanArticleSlug}.mdx`)) {
+    if (
+      (catalogFilePath && key.includes(catalogFilePath)) ||
+      key.includes(searchPattern) ||
+      key.endsWith(`/${cleanArticleSlug}.mdx`) ||
+      key.endsWith(`${cleanArticleSlug}.mdx`)
+    ) {
       rawMdx = val;
       break;
     }
@@ -113,6 +125,13 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
   // 2. Fallback to fetch if not found in glob
   if (!rawMdx) {
     const candidatePaths = [
+      ...(catalogFilePath
+        ? [
+            `/src/content/clinical-handbook/${catalogFilePath}`,
+            `src/content/clinical-handbook/${catalogFilePath}`,
+            `./src/content/clinical-handbook/${catalogFilePath}`
+          ]
+        : []),
       `/src/content/clinical-handbook/${specialtyId}/${diseaseSlug}/${cleanArticleSlug}.mdx`,
       `src/content/clinical-handbook/${specialtyId}/${diseaseSlug}/${cleanArticleSlug}.mdx`,
       `./src/content/clinical-handbook/${specialtyId}/${diseaseSlug}/${cleanArticleSlug}.mdx`,
@@ -121,12 +140,13 @@ export async function initHandbookReaderView(specialtyId: SpecialtyId, diseaseSl
 
     for (const p of candidatePaths) {
       try {
-        const fetchUrl = `${p}?raw`;
-        let resp = await fetch(fetchUrl);
-        if (!resp.ok) resp = await fetch(p);
+        const resp = await fetch(p);
         if (resp.ok) {
-          rawMdx = await resp.text();
-          break;
+          const text = await resp.text();
+          if (text && !text.trimStart().startsWith('<!DOCTYPE') && !text.trimStart().startsWith('export default')) {
+            rawMdx = text;
+            break;
+          }
         }
       } catch {
         // Continue searching
