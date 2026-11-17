@@ -481,6 +481,63 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-recommendations', number: 7, title: '5 Khuyến Cáo Thực Hành Lâm Sàng Cho Bác Sĩ Điều Trị', icon: 'fa-lightbulb' },
           { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
         ]
+      },
+      {
+        id: 'dengue-05-tien-luong-that-bai-chong-soc',
+        slug: 'dengue-05-tien-luong-that-bai-chong-soc',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Các Yếu Tố Tiên Lượng Thất Bại Khi Chống Sốc Ở Bệnh Nhân Sốc Sốt Xuất Huyết Dengue',
+        subtitle: 'Phân định sốc thất bại bù dịch, sốc kéo dài, tái sốc, 18 yếu tố tiên lượng độc lập và quy trình hồi sức bậc thang 4 bước có POCUS/CVP',
+        description: 'Phân tích chuyên sâu 4 cơ chế thất bại hồi sức tuần hoàn (phá hủy glycocalyx, viêm cơ tim Dengue, toan lactic trơ vận mạch, xuất huyết nội ẩn), 6 nhóm yếu tố tiên lượng (aOR Albumin ≤ 30 g/L = 26,1; Hct giảm > 20%; Lactate ≥ 2–4 mmol/L), công thức cân nặng hiệu chỉnh béo phì, quy trình bậc thang 4 bước và 4 ca ICU thực chiến.',
+        estimatedMinutes: 30,
+        tags: ['Sốt xuất huyết Dengue', 'Thất bại chống sốc', 'Sốc kéo dài', 'Tái sốc', 'Xuất huyết nội ẩn giấu', 'Viêm cơ tim Dengue', 'Lactate & Toan chuyển hóa', 'Albumin máu', 'Cân nặng hiệu chỉnh', 'POCUS & CVP', 'QĐ 2760/QĐ-BYT', 'WHO 2025'],
+        keyTakeaway: 'Khi sốc thất bại giờ đầu hay kéo dài ≥ 6 giờ / > 40–60 mL/kg, tuyệt đối không tăng dịch máy móc: kiểm tra Hct giảm > 20% (xuất huyết nội ẩn cần hồng cầu lắng), tầm soát viêm cơ tim (POCUS/Troponin I), chỉnh tam chứng ACS và dùng cân nặng hiệu chỉnh ở người béo phì.',
+        order: 5,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-05-tien-luong-that-bai-chong-soc.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-17',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2025',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Định Nghĩa 3 Nhóm Thất Bại Chống Sốc', icon: 'fa-bolt' },
+          { id: 'sec-pathophysiology', number: 2, title: 'Cơ Chế Bệnh Sinh 4 Tầng Của Thất Bại Hồi Sức Tuần Hoàn', icon: 'fa-diagram-project' },
+          { id: 'sec-prognostic-pillars', number: 3, title: '6 Nhóm Yếu Tố Tiên Lượng Thất Bại Chống Sốc Bên Giường Bệnh', icon: 'fa-layer-group' },
+          { id: 'sec-prognostic-matrix', number: 4, title: 'Bảng Tổng Hợp 18 Thông Số Tiên Lượng & Ngưỡng Cắt Sống Còn', icon: 'fa-table-list' },
+          { id: 'sec-rescue-protocol', number: 5, title: 'Quy Trình Hồi Sức Bậc Thang 4 Bước & Chiến Lược Cứu Vãn', icon: 'fa-route' },
+          { id: 'sec-pitfalls', number: 6, title: 'Lưới Cạm Bẫy Chết Người Trong Chống Sốc Dengue Kháng Trị', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenarios', number: 7, title: 'Tuyển Tập 4 Ca Lâm Sàng Thực Chiến & Biện Luận ICU', icon: 'fa-user-doctor' },
+          { id: 'sec-recommendations', number: 8, title: 'Kết Luận & 5 Khuyến Cáo Thực Hành Hồi Sức Cá Thể Hóa', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'dengue-06-thai-ky-san-khoa-va-chu-sinh',
+        slug: 'dengue-06-thai-ky-san-khoa-va-chu-sinh',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tiếp Cận Và Quản Lý Sốt Xuất Huyết Dengue Ở Phụ Nữ Có Thai: Sinh Lý Bệnh, Chiến Lược Sản Khoa & Hồi Sức Chu Sinh',
+        subtitle: 'Bẫy Hct pha loãng sinh lý thai kỳ, phân biệt SXHD vs HELLP/AFLP, bù dịch theo cân nặng hiệu chỉnh (ABW), xử trí chuyển dạ pha nguy hiểm & Dengue sơ sinh',
+        description: 'Hướng dẫn toàn diện quản lý SXHD ở thai phụ (nguy cơ nặng & tử vong gấp 3 lần): biến đổi sinh lý che lấp sốc và cô đặc máu (Hct quý 3: 28–40%), chẩn đoán phân biệt với HELLP và AFLP, công thức ABW chống sốc quý 3, phác đồ bù dịch có POCUS, chiến lược trì hoãn chuyển dạ/xử trí PPH (tiểu cầu > 50k/75k, bóng Bakri), lây truyền dọc chu sinh (18,5–56,2%) và 4 ca lâm sàng thực chiến.',
+        estimatedMinutes: 30,
+        tags: ['Sốt xuất huyết Dengue', 'Thai kỳ', 'Sản khoa', 'Hội chứng HELLP', 'AFLP', 'Cân nặng hiệu chỉnh ABW', 'Băng huyết sau sinh', 'Lây truyền dọc', 'Dengue sơ sinh', 'POCUS', 'QĐ 2760/QĐ-BYT', 'WHO 2025'],
+        keyTakeaway: 'Nhập viện 100% thai phụ SXHD (Nhóm B/C); cảnh giác Hct 38–40% ở quý 3 đã là cô đặc máu nặng; cấm mổ nhầm HELLP; chống sốc quý 3 theo cân nặng hiệu chỉnh (ABW) & nằm nghiêng trái; trì hoãn chuyển dạ pha nguy hiểm; theo dõi trẻ sơ sinh 7–10 ngày và duy trì bú mẹ.',
+        order: 6,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-06-thai-ky-san-khoa-va-chu-sinh.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-17',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2025',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Thách Thức Cốt Lõi Khi Thai Phụ Mắc Dengue', icon: 'fa-bolt' },
+          { id: 'sec-physiology', number: 2, title: 'Tương Tác Sinh Lý Thai Kỳ & Cơ Chế Bệnh Sinh Tại Bánh Nhau', icon: 'fa-person-pregnant' },
+          { id: 'sec-differential', number: 3, title: 'Phân Tầng Nguy Cơ & Chẩn Đoán Phân Biệt Với HELLP / AFLP', icon: 'fa-scale-balanced' },
+          { id: 'sec-resuscitation', number: 4, title: 'Nguyên Tắc Hồi Sức, Hạ Sốt & Liệu Pháp Dịch Truyền Thai Kỳ', icon: 'fa-droplet' },
+          { id: 'sec-obstetrics', number: 5, title: 'Chiến Lược Sản Khoa, Chuyển Dạ & Băng Huyết Sau Sinh', icon: 'fa-baby-carriage' },
+          { id: 'sec-neonatal', number: 6, title: 'Lây Truyền Dọc & Quản Lý Trẻ Sơ Sinh Từ Mẹ Mắc Dengue', icon: 'fa-baby' },
+          { id: 'sec-pitfalls', number: 7, title: 'Lưới Cạm Bẫy Lâm Sàng Sống Còn Trong Dengue Thai Kỳ', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenarios', number: 8, title: 'Tuyển Tập 4 Ca Lâm Sàng Thực Chiến & Biện Luận Chu Sinh', icon: 'fa-user-doctor' },
+          { id: 'sec-checklist', number: 9, title: 'Bảng Tổng Hợp Khuyến Cáo Thực Hành Lâm Sàng Cốt Lõi (Checklist)', icon: 'fa-clipboard-check' },
+          { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
       }
     ]
   },
@@ -673,15 +730,45 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
     icd10: 'J10',
     icon: 'fa-head-side-cough',
     color: '#10b981',
-    badge: 'Dịch tễ Mùa',
-    summary: 'Chỉ định thuốc ức chế Neuraminidase (Oseltamivir), nhận diện dấu hiệu chuyển nặng, bội nhiễm vi khuẩn thứ phát (tụ cầu vàng, phế cầu).',
+    badge: 'EBM 2026 • Dịch tễ Mùa',
+    summary: 'Chỉ định thuốc kháng virus đặc hiệu theo phân tầng mức độ nặng (WHO 2024, CDC/IDSA), cửa sổ vàng 48 giờ, bảng phác đồ Oseltamivir/Baloxavir/Zanamivir/Peramivir và tránh lạm dụng Corticosteroid.',
     keyPearlsPreview: [
-      'Oseltamivir đạt hiệu quả tối ưu nếu dùng trong 48 giờ đầu từ khi khởi phát triệu chứng',
-      'Bệnh nhân cúm có dấu hiệu sốt lại sau khi đã lui sốt kèm đờm mủ phải cảnh giác bội nhiễm Tụ cầu vàng (MRSA) hoặc Phế cầu'
+      'Cúm nặng / nội trú: Khởi động Oseltamivir 75 mg x 2/ngày NGAY trong Ngày 0, không chờ RT-PCR (trì hoãn làm tăng tử vong 14%–40%)',
+      'Cúm nhẹ ngoại trú nguy cơ cao: Ưu tiên Baloxavir marboxil liều đơn (40/80 mg) trong 48h (WHO 2024) hoặc Oseltamivir (CDC/IDSA)',
+      'Không dùng kháng virus thường quy cho người khỏe mạnh nguy cơ thấp; tránh tuyệt đối Corticosteroid thường quy và Zanamivir hít ở hen/COPD',
+      'Bệnh nhân cúm có dấu hiệu sốt lại sau khi đã lui sốt kèm đờm mủ, PCT tăng cao hoặc đông đặc mới X-quang phải cảnh giác bội nhiễm vi khuẩn'
     ],
-    guidelines: ['WHO Influenza Guidelines', 'CDC Influenza Antiviral Guidance'],
+    guidelines: ['WHO Influenza Guidelines 2024', 'CDC Influenza Antiviral Guidance', 'IDSA Influenza Guidelines'],
     order: 7,
-    articles: []
+    articles: [
+      {
+        id: 'cum-01-khi-nao-can-dieu-tri-dac-hieu',
+        slug: 'cum-01-khi-nao-can-dieu-tri-dac-hieu',
+        diseaseId: 'cum-mua',
+        specialtyId: 'truyen-nhiem',
+        title: 'Cúm Mùa: Khi Nào Cần Điều Trị Đặc Hiệu?',
+        subtitle: 'Phân tầng cúm nặng vs không nặng (WHO 2024), nhóm nguy cơ cao, cửa sổ 48h (FluSurv-NET), Oseltamivir vs Baloxavir và cạm bẫy Corticosteroid',
+        description: 'Hướng dẫn toàn diện chỉ định thuốc kháng virus đặc hiệu trong cúm mùa: phân tầng mức độ nặng và yếu tố nguy cơ, lưu đồ quyết định WHO 2024 & CDC/IDSA, bằng chứng tử vong theo thời gian từ FluSurv-NET (26.233 ca), bảng dược lý 4 thuốc (Oseltamivir, Baloxavir, Zanamivir, Peramivir), dự phòng PEP và ca thực chiến cúm A/H3N2 trên nền COPD.',
+        estimatedMinutes: 20,
+        tags: ['Cúm mùa', 'Oseltamivir', 'Baloxavir marboxil', 'Zanamivir & Peramivir', 'Cửa sổ 48 giờ', 'Phân tầng nguy cơ', 'WHO 2024', 'CDC / IDSA'],
+        keyTakeaway: 'Cúm nặng/nội trú: dùng Oseltamivir ngay Ngày 0 không chờ RT-PCR; ngoại trú nguy cơ cao: Baloxavir liều đơn trong 48h; khỏe mạnh nguy cơ thấp: không dùng kháng virus; nói KHÔNG với Corticosteroid thường quy.',
+        order: 1,
+        filePath: 'truyen-nhiem/cum/cum-01-khi-nao-can-dieu-tri-dac-hieu.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-17',
+        evidenceLevel: 'EBM 2026 • WHO 2024 • CDC / IDSA',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Đặt Vấn Đề Lâm Sàng', icon: 'fa-bolt' },
+          { id: 'sec-risk-stratification', number: 2, title: 'Phân Tầng Lâm Sàng & Nhận Diện Nhóm Nguy Cơ Cao', icon: 'fa-layer-group' },
+          { id: 'sec-antiviral-indications', number: 3, title: 'Chỉ Định Điều Trị Đặc Hiệu & Lưu Đồ Thuật Toán', icon: 'fa-diagram-project' },
+          { id: 'sec-golden-window', number: 4, title: 'Cửa Sổ Thời Gian Vàng 48 Giờ & Bằng Chứng FluSurv-NET', icon: 'fa-clock' },
+          { id: 'sec-antiviral-pharmacology', number: 5, title: 'Chi Tiết Thuốc Kháng Virus & Các Thực Hành Cần Tránh', icon: 'fa-pills' },
+          { id: 'sec-case-study', number: 6, title: 'Ca Lâm Sàng Thực Chiến: Cúm A/H3N2 Nặng Trên Nền COPD', icon: 'fa-user-doctor' },
+          { id: 'sec-take-home', number: 7, title: 'Năm Thông Điệp Thực Hành Cốt Lõi (Take-Home Messages)', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   },
   {
     id: 'uon-van',
