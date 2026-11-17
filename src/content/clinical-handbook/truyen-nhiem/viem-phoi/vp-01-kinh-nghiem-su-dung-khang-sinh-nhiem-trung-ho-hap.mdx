@@ -1,0 +1,914 @@
+---
+title: "Kinh Nghiệm Sử Dụng Kháng Sinh Ở Bệnh Nhân Nhiễm Trùng Hô Hấp (CAP, HAP & VAP)"
+slug: "vp-01-kinh-nghiem-su-dung-khang-sinh-nhiem-trung-ho-hap"
+specialty: "truyen-nhiem"
+specialtyLabel: "Bệnh Truyền Nhiễm & Nhiệt Đới"
+disease: "viem-phoi-cong-dong"
+diseaseLabel: "Viêm Phổi & Nhiễm Trùng Hô Hấp Dưới (CAP / HAP / VAP)"
+order: 1
+tags:
+  - "Viêm phổi cộng đồng (CAP)"
+  - "Viêm phổi bệnh viện (HAP/VAP)"
+  - "Tối ưu PK/PD"
+  - "Thâm nhập mô phổi ELF"
+  - "Kháng sinh đa kháng (CRAB/CRE)"
+  - "CURB-65"
+  - "Xuống thang & IV-to-PO"
+  - "Procalcitonin"
+  - "QĐ 4815/QĐ-BYT"
+  - "ATS/IDSA & ERS 2023"
+difficulty: "advanced"
+estimatedTime: 28
+lastUpdated: "2026-11-17"
+evidenceLevel: "EBM 2026 • QĐ 4815/QĐ-BYT • Hội Hô Hấp VN 2023–2024 • ATS/IDSA • ERS 2023"
+sections:
+  - id: "sec-takeaway"
+    number: 1
+    title: "Đúc Kết 30 Giây & Mục Tiêu Bài Học"
+    icon: "fa-bolt"
+  - id: "sec-epidemiology"
+    number: 2
+    title: "Đại Cương & Dịch Tễ Vi Sinh Đề Kháng Tại Việt Nam"
+    icon: "fa-virus-covid"
+  - id: "sec-pkpd-pharmacology"
+    number: 3
+    title: "Nguyên Tắc PK/PD, Thâm Nhập Phổi (ELF) & Tương Tác Thuốc"
+    icon: "fa-flask-vial"
+  - id: "sec-cap-regimens"
+    number: 4
+    title: "Phác Đồ Kháng Sinh Viêm Phổi Cộng Đồng (CAP)"
+    icon: "fa-lungs"
+  - id: "sec-hap-vap-mdr"
+    number: 5
+    title: "Phác Đồ HAP / VAP & Xử Trí Vi Khuẩn Đa Kháng (CRAB / CRE)"
+    icon: "fa-hospital"
+  - id: "sec-deescalation-duration"
+    number: 6
+    title: "Xuống Thang, Chuyển Đường Uống (IV-to-PO) & Thời Gian Điều Trị"
+    icon: "fa-arrows-rotate"
+  - id: "sec-pitfalls"
+    number: 7
+    title: "Lưới Cạm Bẫy Lâm Sàng Sống Còn Trong Kháng Sinh Hô Hấp"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-case-scenarios"
+    number: 8
+    title: "Tuyển Tập 3 Ca Lâm Sàng Thực Chiến Tại Giường Bệnh"
+    icon: "fa-user-doctor"
+  - id: "sec-takeaways-references"
+    number: 9
+    title: "Thông Điệp Thực Hành & Tài Liệu Tham Khảo (Chuẩn AMA)"
+    icon: "fa-book-bookmark"
+---
+
+# 🫁 KINH NGHIỆM SỬ DỤNG KHÁNG SINH Ở BỆNH NHÂN NHIỄM TRÙNG HÔ HẤP
+
+<div class="module-badge-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+  <span class="badge" style="background: rgba(2, 132, 199, 0.12); color: #0284c7; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(2, 132, 199, 0.25);"><i class="fa-solid fa-lungs-virus"></i> Bệnh Truyền Nhiễm &amp; Hô Hấp</span>
+  <span class="badge" style="background: rgba(16, 185, 129, 0.12); color: #059669; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);"><i class="fa-solid fa-file-shield"></i> QĐ 4815/QĐ-BYT &amp; Hội Hô Hấp VN</span>
+  <span class="badge" style="background: rgba(245, 158, 11, 0.12); color: #d97706; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.25);"><i class="fa-solid fa-shield-halved"></i> ATS/IDSA &amp; ERS/ESICM 2023</span>
+  <span class="badge" style="background: rgba(139, 92, 246, 0.12); color: #7c3aed; padding: 4px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(139, 92, 246, 0.25);"><i class="fa-solid fa-flask-vial"></i> Tối Ưu PK/PD &amp; TDM</span>
+</div>
+
+<!-- DẢI CHỈ SỐ NHANH 30S -->
+<section class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val blue">&gt; 90%</div>
+      <div class="stat-lbl">Tỷ lệ phế cầu tại Việt Nam kháng Macrolide (Cấm đơn trị Macrolide cho CAP)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val red">&lt; 10&ndash;15%</div>
+      <div class="stat-lbl">Tỷ lệ <em>A. baumannii</em> HAP/VAP còn nhạy Carbapenem tại VN (Cần phối hợp CRAB)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">&le; 1h / &le; 4h</div>
+      <div class="stat-lbl">Giờ vàng kháng sinh TM: &le; 1h nếu sốc/HAP-VAP nặng; &le; 4h nếu CAP nhập viện</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">48&ndash;72 giờ</div>
+      <div class="stat-lbl">Mốc đánh giá lâm sàng: Xuống thang (De-escalation), IV-to-PO &amp; động học PCT</div>
+    </div>
+  </div>
+</section>
+
+<!-- THANH ĐIỀU HƯỚNG NHANH CỐ ĐỊNH -->
+<nav class="pillars-nav">
+  <div class="pillars-nav-inner">
+    <a href="#sec-takeaway" class="pillar-link active"><i class="fa-solid fa-bolt"></i> 1. Đúc Kết 30s</a>
+    <a href="#sec-epidemiology" class="pillar-link"><i class="fa-solid fa-virus-covid"></i> 2. Dịch Tễ VN</a>
+    <a href="#sec-pkpd-pharmacology" class="pillar-link"><i class="fa-solid fa-flask-vial"></i> 3. PK/PD &amp; ELF</a>
+    <a href="#sec-cap-regimens" class="pillar-link"><i class="fa-solid fa-lungs"></i> 4. Phác Đồ CAP</a>
+    <a href="#sec-hap-vap-mdr" class="pillar-link"><i class="fa-solid fa-hospital"></i> 5. HAP/VAP &amp; MDR</a>
+    <a href="#sec-deescalation-duration" class="pillar-link"><i class="fa-solid fa-arrows-rotate"></i> 6. Xuống Thang</a>
+    <a href="#sec-pitfalls" class="pillar-link"><i class="fa-solid fa-triangle-exclamation"></i> 7. Cạm Bẫy</a>
+    <a href="#sec-case-scenarios" class="pillar-link"><i class="fa-solid fa-user-doctor"></i> 8. Ca Thực Chiến</a>
+    <a href="#sec-takeaways-references" class="pillar-link"><i class="fa-solid fa-book-bookmark"></i> 9. Tham Khảo</a>
+  </div>
+</nav>
+
+---
+
+## ⚡ 1. ĐÚC KẾT 30 GIÂY &amp; MỤC TIÊU BÀI HỌC {#sec-takeaway}
+
+<div class="callout callout-pearl">
+  <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC VÀNG 30 GIÂY: KHÁNG SINH ĐÚNG BỆNH NHÂN &ndash; ĐÚNG ĐÍCH PHỔI &ndash; ĐÚNG THỜI ĐIỂM</div>
+  <div class="callout-body">
+    <ul style="margin-bottom: 0;">
+      <li><strong>Cấp cứu đúng giờ:</strong> Tiêm kháng sinh tĩnh mạch trong <strong>&le; 4 giờ</strong> với CAP nhập viện và trong <strong>&le; 1 giờ</strong> khi có sốc nhiễm khuẩn hoặc HAP/VAP nặng.</li>
+      <li><strong>Tôn trọng dịch tễ Việt Nam:</strong> Tuyệt đối <strong>không đơn trị Macrolide</strong> cho CAP ngoại trú (phế cầu kháng &gt; 90%), và không đơn trị Amoxicillin ở bệnh nhân lớn tuổi/đồng mắc (~50% <em>H. influenzae</em> sinh beta-lactamase).</li>
+      <li><strong>Đạt đích tại mô phổi (ELF):</strong> Beta-lactam và Aminoglycoside thấm vào phế nang kém &rarr; bắt buộc dùng <strong>liều tải đủ cao</strong>, <strong>truyền kéo dài 3&ndash;4 giờ</strong> (Beta-lactam) hoặc <strong>liều cao 1 lần/ngày</strong> (Aminoglycoside).</li>
+      <li><strong>Chủ động xuống thang &amp; rút ngắn:</strong> Đánh giá lại tại mốc <strong>48&ndash;72 giờ</strong> để thu hẹp phổ, chuyển đường uống sớm (IV-to-PO) và dùng động học Procalcitonin (PCT &lt; 0,25 ng/mL hoặc giảm &ge; 80%) để ngưng thuốc an toàn.</li>
+    </ul>
+  </div>
+</div>
+
+### 1.1 Năm Mục Tiêu Bài Học Trọng Tâm
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem; margin: 1.25rem 0;">
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1rem;">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">MỤC TIÊU 01 &bull; VI SINH</div>
+    <div style="font-size: 0.88rem; color: var(--handbook-text); margin-top: 0.3rem; line-height: 1.55;">Phân tích đặc điểm vi sinh vật và xu hướng đề kháng kháng sinh của các căn nguyên nhiễm trùng hô hấp dưới (<strong>CAP, HAP, VAP</strong>) tại Việt Nam.</div>
+  </div>
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1rem;">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #7c3aed; text-transform: uppercase;">MỤC TIÊU 02 &bull; DƯỢC LÝ</div>
+    <div style="font-size: 0.88rem; color: var(--handbook-text); margin-top: 0.3rem; line-height: 1.55;">Nắm vững nguyên tắc <strong>PK/PD</strong>, đặc tính thâm nhập mô phổi (ELF) và các <strong>tương tác thuốc nguy hiểm</strong> để tối ưu hóa liều và đường dùng.</div>
+  </div>
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #059669; border-radius: var(--handbook-radius-md); padding: 1rem;">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase;">MỤC TIÊU 03 &bull; PHÂN TẦNG</div>
+    <div style="font-size: 0.88rem; color: var(--handbook-text); margin-top: 0.3rem; line-height: 1.55;">Vận dụng thành thạo phác đồ kinh nghiệm và điều trị đích cho từng phân tầng: <strong>ngoại trú, nội trú khoa thường và ICU</strong>.</div>
+  </div>
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1rem;">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase;">MỤC TIÊU 04 &bull; STEWARDSHIP</div>
+    <div style="font-size: 0.88rem; color: var(--handbook-text); margin-top: 0.3rem; line-height: 1.55;">Áp dụng chiến lược <strong>xuống thang</strong>, <strong>chuyển đổi đường uống (IV-to-PO)</strong> và tối ưu thời gian điều trị dựa trên lâm sàng &amp; động học Procalcitonin.</div>
+  </div>
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-left: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1rem;">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #dc2626; text-transform: uppercase;">MỤC TIÊU 05 &bull; THỰC CHIẾN</div>
+    <div style="font-size: 0.88rem; color: var(--handbook-text); margin-top: 0.3rem; line-height: 1.55;">Giải quyết và phân tích thành thạo các tình huống lâm sàng phức tạp thông qua <strong>3 ca bệnh điển hình</strong> từ ngoại trú đến ICU.</div>
+  </div>
+</div>
+
+---
+
+## 🦠 2. ĐẠI CƯƠNG &amp; DỊCH TỄ VI SINH ĐỀ KHÁNG TẠI VIỆT NAM {#sec-epidemiology}
+
+Chọn đúng kháng sinh kinh nghiệm phải xuất phát từ bản đồ vi sinh thực tế tại cộng đồng và bệnh viện Việt Nam, nơi tỷ lệ đề kháng cao hơn đáng kể so với các nước phương Tây.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <!-- THẺ CAP -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.2rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">BỐI CẢNH CỘNG ĐỒNG &bull; CAP</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.6rem;">Viêm Phổi Mắc Phải Cộng Đồng (CAP)</div>
+    <div style="font-size: 0.87rem; line-height: 1.6; color: var(--handbook-muted);">
+      <div style="margin-bottom: 0.45rem;">&bull; <strong>Tác nhân điển hình:</strong> Hàng đầu là <em>Streptococcus pneumoniae</em> (phế cầu), kế tiếp là <em>Haemophilus influenzae</em>, <em>Moraxella catarrhalis</em> và <em>Klebsiella pneumoniae</em>.</div>
+      <div style="margin-bottom: 0.45rem;">&bull; <strong>Tác nhân không điển hình:</strong> <em>Mycoplasma pneumoniae</em> (chiếm <strong>16,2%</strong> số ca trong các nghiên cứu gần đây tại VN), <em>Chlamydia pneumoniae</em>, <em>Legionella pneumophila</em> ở mọi lứa tuổi.</div>
+      <div style="margin-bottom: 0.45rem;">&bull; <strong>Tác nhân đa kháng (MDR) trong CAP (~6%):</strong> Thường gặp nhất là tụ cầu vàng kháng methicillin cộng đồng (<strong>CA-MRSA</strong>) và <em>Pseudomonas aeruginosa</em> (chiếm <strong>1,8&ndash;8,3%</strong> các ca điều trị tại ICU với tỷ lệ tử vong rất cao).</div>
+      <div style="margin-top: 0.65rem; padding: 0.55rem 0.7rem; background: rgba(2, 132, 199, 0.08); border-radius: 6px; color: var(--handbook-text);">
+        <strong>Xu hướng đề kháng tại cộng đồng VN:</strong><br />
+        &bull; <em>S. pneumoniae:</em> Còn nhạy cao với <strong>Penicillin tiêm (&gt; 86,9&ndash;92%)</strong> và <strong>Ceftriaxone (&gt; 92%)</strong>, nhưng <strong>kháng Macrolide &gt; 90%</strong>.<br />
+        &bull; <em>H. influenzae:</em> Gần <strong>50%</strong> chủng sinh beta-lactamase &rarr; kháng Ampicillin/Amoxicillin đơn thuần.
+      </div>
+    </div>
+  </div>
+
+  <!-- THẺ HAP / VAP -->
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.2rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #dc2626; text-transform: uppercase; margin-bottom: 0.35rem;">BỐI CẢNH BỆNH VIỆN &bull; HAP / VAP</div>
+    <div style="font-size: 1.05rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.6rem;">Viêm Phổi Bệnh Viện &amp; Thở Máy (HAP / VAP)</div>
+    <div style="font-size: 0.87rem; line-height: 1.6; color: var(--handbook-muted);">
+      <div style="margin-bottom: 0.45rem;">&bull; <strong>Ưu thế tuyệt đối:</strong> Trực khuẩn Gram âm chiếm áp đảo (<strong>&gt; 70&ndash;80%</strong>) trong các bệnh phẩm đường hô hấp dưới tại Việt Nam.</div>
+      <div style="margin-bottom: 0.45rem;">&bull; <strong>Mô hình vi khuẩn hàng đầu:</strong> <em>Acinetobacter baumannii</em> (<strong>24,4%&ndash;59%</strong>), <em>Pseudomonas aeruginosa</em> (<strong>13,8%&ndash;27,9%</strong>), <em>Klebsiella pneumoniae</em> (<strong>11,6%&ndash;20%</strong>) và <em>Staphylococcus aureus</em> (<strong>MRSA chiếm 60%&ndash;100%</strong> chủng tụ cầu tại nhiều bệnh viện).</div>
+      <div style="margin-top: 0.65rem; padding: 0.55rem 0.7rem; background: rgba(239, 68, 68, 0.08); border-radius: 6px; color: var(--handbook-text);">
+        <strong>Báo động mức độ đề kháng:</strong><br />
+        &bull; <em>A. baumannii:</em> Kháng cephalosporin, aminoglycoside, quinolone và carbapenem (nhạy meropenem/imipenem <strong>&lt; 10&ndash;15%</strong>), chủ yếu chỉ còn nhạy <strong>Colistin</strong>.<br />
+        &bull; <em>K. pneumoniae:</em> Tỷ lệ sinh <strong>ESBL</strong> và carbapenemase (<strong>CRE</strong>) tăng cao.<br />
+        &bull; <em>P. aeruginosa:</em> Kháng carbapenem và beta-lactam chống mủ xanh <strong>40&ndash;50%</strong>.<br />
+        &bull; <em>MRSA:</em> Gia tăng chủng có MIC Vancomycin cao (<strong>MIC &gt; 1&ndash;1,5 mg/L</strong>) làm tăng nguy cơ thất bại điều trị liều thông thường.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="callout callout-danger">
+  <div class="callout-title"><i class="fa-solid fa-skull-crossbones"></i> CẢNH BÁO DỊCH TỄ TẠI VIỆT NAM: CẤM ĐƠN TRỊ LIỆU MACROLIDE TRONG CAP</div>
+  <div class="callout-body">
+    Do tỷ lệ <em>Streptococcus pneumoniae</em> kháng Macrolide tại Việt Nam đã <strong>vượt trên 90%</strong>, <strong>không khuyến cáo đơn trị liệu bằng Macrolide</strong> (azithromycin, clarithromycin, erythromycin) cho bệnh nhân CAP ngoại trú. Tương tự, do ~50% <em>H. influenzae</em> sinh beta-lactamase, người &gt; 65 tuổi hoặc có bệnh đồng mắc cần dùng Beta-lactam phối hợp chất ức chế beta-lactamase (Amoxicillin/acid clavulanic) hoặc Cephalosporin thế hệ 2&ndash;3 kết hợp với thuốc bao phủ tác nhân không điển hình.
+  </div>
+</div>
+
+---
+
+## 🧪 3. NGUYÊN TẮC PK/PD, THÂM NHẬP PHỔI (ELF) &amp; TƯƠNG TÁC THUỐC {#sec-pkpd-pharmacology}
+
+Sử dụng kháng sinh hợp lý trong nhiễm trùng hô hấp đòi hỏi bác sĩ **không chỉ nhìn vào kháng sinh đồ (in vitro)** mà phải bảo đảm **nồng độ thuốc tự do tại mô đích** (dịch lót biểu mô phế nang &ndash; **ELF** và đại thực bào phế nang) đạt đích dược lực học.
+
+### 3.1 Phân Loại Kháng Sinh Theo Thông Số PK/PD
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-chart-area"></i> BẢNG TỐI ƯU HÓA LIỀU KHÁNG SINH THEO ĐẶC TÍNH PK/PD</div>
+    <span class="table-badge">Dược Lý Lâm Sàng</span>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 18%;">Nhóm PK/PD</th>
+          <th style="width: 22%;">Thông Số Đặc Trưng</th>
+          <th style="width: 22%;">Kháng Sinh Đại Diện</th>
+          <th style="width: 38%;">Chiến Lược Tối Ưu Hóa Liều Lâm Sàng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Phụ thuộc thời gian</strong></td>
+          <td><strong>%T &gt; MIC</strong><br /><span style="font-size: 0.8rem; color: var(--handbook-muted);">(Tỷ lệ % thời gian nồng độ thuốc tự do vượt MIC trong khoảng liều)</span></td>
+          <td>Beta-lactam (Penicillin, Cephalosporin, Carbapenem), Linezolid</td>
+          <td>
+            &bull; Tăng số lần dùng thuốc trong ngày.<br />
+            &bull; Áp dụng chế độ <strong>truyền kéo dài (3&ndash;4 giờ)</strong> hoặc <strong>truyền liên tục</strong> sau liều nạp ban đầu (bolus) để tối đa hóa %T &gt; MIC, đặc biệt với nhiễm khuẩn nặng do trực khuẩn Gram âm.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phụ thuộc nồng độ</strong></td>
+          <td><strong>C<sub>max</sub> / MIC</strong><br /><span style="font-size: 0.8rem; color: var(--handbook-muted);">(Tỷ lệ giữa nồng độ đỉnh và MIC)</span></td>
+          <td>Aminoglycoside (Amikacin, Gentamicin, Tobramycin)</td>
+          <td>
+            &bull; Dùng <strong>liều cao 1 lần duy nhất trong ngày</strong> (Once-Daily Dosing: Amikacin 15&ndash;20 mg/kg/ngày, Gentamicin 5&ndash;7 mg/kg/ngày).<br />
+            &bull; Tối ưu hóa nồng độ đỉnh diệt khuẩn, tận dụng hiệu ứng hậu kháng sinh (<strong>PAE</strong>) và giảm độc tính trên thận.
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phụ thuộc tổng phơi nhiễm</strong></td>
+          <td><strong>AUC / MIC</strong><br /><span style="font-size: 0.8rem; color: var(--handbook-muted);">(Tỷ lệ diện tích dưới đường cong 24h và MIC)</span></td>
+          <td>Fluoroquinolone, Macrolide, Vancomycin, Colistin</td>
+          <td>
+            &bull; Tối ưu hóa tổng liều hàng ngày.<br />
+            &bull; <strong>Vancomycin:</strong> Duy trì đích <strong>AUC<sub>24</sub>/MIC = 400&ndash;600</strong> (khuyến cáo chuyển từ theo dõi nồng độ đáy C<sub>trough</sub> sang theo dõi dựa trên AUC theo hướng dẫn IDSA/ASHP để giảm độc thận và tăng hiệu quả).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="katex-display-card">
+  <div class="equation-box">
+    $$\text{Đích Vancomycin (IDSA/ASHP): } \frac{\text{AUC}_{24}}{\text{MIC}} = 400 \text{ – } 600 \quad\bigg|\quad \text{Beta-lactam: } \%T_{>\text{MIC}} \uparrow \text{ qua truyền } 3\text{–}4\text{h}$$
+  </div>
+  <div class="equation-legend">
+    <strong>Quy chuẩn thực hành TDM tại khoa:</strong><br />
+    &bull; Khi chủng MRSA có $\text{MIC}_{\text{Vancomycin}} \ge 1,5\text{ mg/L}$, việc đạt đích $\text{AUC}_{24}/\text{MIC} \ge 400$ bằng Vancomycin dễ gây độc thận &rarr; ưu tiên chuyển sang <strong>Linezolid 600 mg q12h</strong>.<br />
+    &bull; Ở bệnh nhân nặng hoặc tăng thanh thải thận (ARC), bolus liều nạp Beta-lactam rồi truyền tĩnh mạch kéo dài <strong>3&ndash;4 giờ</strong> giúp giữ nồng độ tự do vượt MIC bền vững tại mô phổi.
+  </div>
+</div>
+
+### 3.2 Khả Năng Thâm Nhập Mô Phổi (Dịch Lót Biểu Mô Phế Nang &ndash; ELF)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase; margin-bottom: 0.35rem;">NHÓM 1 &bull; THẤM TỐT VÀO PHẾ NANG</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Tỷ Lệ ELF / Huyết Thanh Cao (&ge; 1,0)</div>
+    <div style="font-size: 0.86rem; line-height: 1.58; color: var(--handbook-muted);">
+      <div>&bull; <strong>Macrolide:</strong> Azithromycin đạt nồng độ trong ELF/huyết thanh <strong>&gt; 5 đến 30 lần</strong>, tập trung cao trong đại thực bào phế nang.</div>
+      <div>&bull; <strong>Fluoroquinolone:</strong> Levofloxacin đạt tỷ lệ ELF/huyết thanh xấp xỉ <strong>1,0&ndash;1,3</strong>.</div>
+      <div>&bull; <strong>Linezolid:</strong> Tỷ lệ ELF/huyết thanh xấp xỉ <strong>1,0</strong> &rarr; rất ưu thế trong viêm phổi bệnh viện do MRSA.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #d97706; text-transform: uppercase; margin-bottom: 0.35rem;">NHÓM 2 &bull; THẤM KÉM HOẶC TRUNG BÌNH</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Tỷ Lệ ELF / Huyết Thanh Thấp (&lt; 0,7)</div>
+    <div style="font-size: 0.86rem; line-height: 1.58; color: var(--handbook-muted);">
+      <div>&bull; <strong>Beta-lactam:</strong> Piperacillin/tazobactam (~<strong>0,43&ndash;0,57</strong>), Meropenem (~<strong>0,3&ndash;0,5</strong>), Ceftazidime (~<strong>0,22</strong>).</div>
+      <div>&bull; <strong>Vancomycin:</strong> (~<strong>0,2&ndash;0,7</strong>).</div>
+      <div>&bull; <strong>Aminoglycoside:</strong> (~<strong>0,1&ndash;0,3</strong>) &ndash; thâm nhập mô phổi rất kém.</div>
+      <div style="margin-top: 0.6rem; padding: 0.45rem 0.6rem; background: rgba(245, 158, 11, 0.1); border-radius: 5px; font-weight: 700; color: #d97706;">
+        Hệ quả lâm sàng: Bắt buộc dùng liều cao đủ tải, cân nhắc truyền kéo dài hoặc bổ sung khí dung tại chỗ (VAP đa kháng); không dùng Aminoglycoside đơn trị.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+### 3.3 Hiệu Chỉnh Theo Chức Năng Thận &amp; Các Tương Tác Thuốc Nguy Hiểm
+
+<div class="callout callout-info">
+  <div class="callout-title"><i class="fa-solid fa-kidneys"></i> NGUYÊN TẮC HIỆU CHỈNH LIỀU THEO CHỨC NĂNG THẬN (ClCr)</div>
+  <div class="callout-body">
+    Hầu hết các kháng sinh đều thải trừ qua thận và <strong>bắt buộc phải hiệu chỉnh khoảng cách liều hoặc giảm liều</strong> dựa trên độ thanh thải creatinin (ClCr), <strong>ngoại trừ 5 thuốc không cần chỉnh liều theo thận</strong>: <strong>Ceftriaxone, Moxifloxacin, Azithromycin, Linezolid và Doxycycline</strong>.
+  </div>
+</div>
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-triangle-exclamation"></i> SÁU TƯƠNG TÁC THUỐC NGUY HIỂM CẦN TRÁNH TRONG ĐIỀU TRỊ HÔ HẤP</div>
+    <span class="table-badge">An Toàn Kê Đơn</span>
+  </div>
+  <div class="handbook-table-container">
+    <table class="handbook-table">
+      <thead>
+        <tr>
+          <th style="width: 26%;">Cặp Thuốc Tương Tác</th>
+          <th style="width: 38%;">Cơ Chế &amp; Hậu Quả Lâm Sàng</th>
+          <th style="width: 36%;">Biện Pháp Phòng Ngừa / Xử Trí</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ceftriaxone + Calci</strong></td>
+          <td>Kết tủa muối calci-ceftriaxone tại phổi và thận gây tử vong ở trẻ sơ sinh.</td>
+          <td><strong style="color: #dc2626;">Chống chỉ định</strong> dùng đồng thời TM ở trẻ sơ sinh. Ở người lớn, không pha chung hoặc truyền cùng đường truyền (tráng dây kỹ).</td>
+        </tr>
+        <tr>
+          <td><strong>Macrolide / Fluoroquinolone + Thuốc kéo dài QT</strong></td>
+          <td>Clarithromycin, Erythromycin, Moxifloxacin, Levofloxacin phối hợp với Amiodarone, Haloperidol, Citalopram, Domperidone &rarr; <strong>kéo dài QT, xoắn đỉnh</strong>.</td>
+          <td>Đo ECG trước và theo dõi QTc; chỉnh điện giải (K<sup>+</sup>, Mg<sup>2+</sup>) hoặc chọn kháng sinh ít kéo dài QT hơn (ví dụ Doxycycline).</td>
+        </tr>
+        <tr>
+          <td><strong>Clarithromycin (ức chế CYP3A4) + Thuốc nền</strong></td>
+          <td>Tăng vọt nồng độ <strong>Colchicin</strong> (ngộ độc tử vong ở suy gan/thận), dẫn chất nấm cựa gà, Ranolazine, Felodipine/Lercanidipine (tụt huyết áp nặng).</td>
+          <td>Thay Clarithromycin bằng Azithromycin (không ức chế mạnh CYP3A4) hoặc tạm ngưng thuốc tương tác nếu có thể.</td>
+        </tr>
+        <tr>
+          <td><strong>Linezolid + SSRI/SNRI hoặc Cường giao cảm</strong></td>
+          <td>Linezolid có hoạt tính ức chế MAO không chọn lọc &rarr; tăng huyết áp kịch phát hoặc <strong>hội chứng Serotonin</strong> khi dùng với Pseudoephedrine, Ephedrine, SSRI/SNRI.</td>
+          <td><strong style="color: #dc2626;">Chống chỉ định</strong> phối hợp. Nếu bắt buộc điều trị MRSA mà bệnh nhân đang dùng SSRI, cân nhắc Vancomycin hoặc Teicoplanin.</td>
+        </tr>
+        <tr>
+          <td><strong>Tetracycline / Doxycycline + Retinoid</strong></td>
+          <td>Hiệp đồng gây <strong>tăng áp lực nội sọ lành tính</strong> (Pseudotumor cerebri).</td>
+          <td><strong style="color: #dc2626;">Chống chỉ định</strong> phối hợp đồng thời với các dẫn chất retinoid (isotretinoin, acitretin...).</td>
+        </tr>
+        <tr>
+          <td><strong>Vancomycin + Piperacillin/tazobactam (hoặc Aminoglycoside)</strong></td>
+          <td>Tác dụng cộng hưởng làm <strong>tăng vọt độc tính trên thận (AKI)</strong>, đặc biệt khi kéo dài quá 48&ndash;72 giờ.</td>
+          <td>Tránh phối hợp kéo dài nếu không thực sự cần thiết; nếu dùng tạm thời, theo dõi sát creatinin hàng ngày, giám sát AUC Vancomycin và xuống thang sớm.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+---
+
+## 🫁 4. PHÁC ĐỒ KHÁNG SINH VIÊM PHỔI CỘNG ĐỒNG (CAP) {#sec-cap-regimens}
+
+### 4.1 Phân Tầng Mức Độ Nặng (CURB-65) &amp; Tiêu Chuẩn Nhập ICU (ATS/IDSA)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">THANG ĐIỂM 5 YẾU TỐ &bull; CURB-65</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Phân Tầng Nơi Điều Trị CAP</div>
+    <div style="font-size: 0.86rem; line-height: 1.6; color: var(--handbook-muted);">
+      <div><strong>5 tiêu chí (mỗi tiêu chí 1 điểm):</strong></div>
+      <div>&bull; <strong>C</strong>onfusion: Rối loạn ý thức mới xuất hiện.</div>
+      <div>&bull; <strong>U</strong>remia: Ure máu <strong>&gt; 7 mmol/L</strong>.</div>
+      <div>&bull; <strong>R</strong>espiratory rate: Tần số thở <strong>&ge; 30 lần/phút</strong>.</div>
+      <div>&bull; <strong>B</strong>lood pressure: HATT <strong>&lt; 90</strong> hoặc HATTr <strong>&le; 60 mmHg</strong>.</div>
+      <div>&bull; <strong>65</strong> Age: Tuổi <strong>&ge; 65 tuổi</strong>.</div>
+      <div style="margin-top: 0.6rem; padding: 0.5rem 0.65rem; background: rgba(2, 132, 199, 0.08); border-radius: 6px; color: var(--handbook-text);">
+        &bull; <strong style="color: #059669;">0&ndash;1 điểm:</strong> Nhẹ (tử vong 1,5%) &rarr; Điều trị <strong>ngoại trú</strong>.<br />
+        &bull; <strong style="color: #d97706;">2 điểm:</strong> Trung bình (tử vong 9,2%) &rarr; Cân nhắc <strong>nhập viện khoa Nội</strong>.<br />
+        &bull; <strong style="color: #dc2626;">3&ndash;5 điểm:</strong> Nặng (tử vong 22%) &rarr; Nhập viện, cân nhắc <strong>chuyển ICU</strong>.
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #dc2626; text-transform: uppercase; margin-bottom: 0.35rem;">TIÊU CHUẨN ATS/IDSA &bull; SEVERE CAP</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Chỉ Định Nhập Hồi Sức Tích Cực (ICU)</div>
+    <div style="font-size: 0.86rem; line-height: 1.6; color: var(--handbook-muted);">
+      <div style="margin-bottom: 0.45rem;">Bệnh nhân cần vào ICU khi có <strong>&ge; 1 tiêu chuẩn chính</strong> HOẶC <strong>&ge; 3 tiêu chuẩn phụ</strong>:</div>
+      <div style="padding: 0.45rem 0.6rem; background: rgba(239, 68, 68, 0.08); border-radius: 5px; margin-bottom: 0.45rem; color: var(--handbook-text);">
+        <strong style="color: #dc2626;">2 Tiêu chuẩn chính:</strong><br />
+        1. Suy hô hấp cần <strong>thở máy xâm nhập</strong>.<br />
+        2. <strong>Sốc nhiễm khuẩn</strong> cần dùng thuốc vận mạch.
+      </div>
+      <div>
+        <strong>9 Tiêu chuẩn phụ:</strong> Thở nhanh &ge; 30 l/p; PaO<sub>2</sub>/FiO<sub>2</sub> &le; 250; tổn thương nhiều thùy phổi; lú lẫn/mất định hướng; urê máu cao; giảm bạch cầu; giảm tiểu cầu; hạ thân nhiệt; tụt huyết áp cần bù dịch tích cực.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+### 4.2 Phác Đồ Kháng Sinh Kinh Nghiệm Ban Đầu Trong CAP (3 Tầng)
+
+<div class="flow-track-container">
+
+  <!-- TẦNG 1: NGOẠI TRÚ -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-teal">01</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-house-medical" style="color: #0d9488;"></i> Tầng 1: CAP Ngoại Trú (Mức Độ Nhẹ &bull; CURB-65 0&ndash;1)</div>
+        <span class="flow-step-badge flow-badge-green">Đường uống</span>
+      </div>
+      <div class="flow-step-text">
+        <div class="flow-branch-grid">
+          <div class="flow-branch-card accent-green">
+            <div class="flow-branch-title" style="color: #059669;"><i class="fa-solid fa-user-check"></i> Trẻ (&lt; 65 tuổi), Không Bệnh Đồng Mắc, Không KS 3 Tháng Qua</div>
+            <div class="flow-branch-desc">
+              &bull; <strong>Ưu tiên:</strong> <strong>Amoxicillin</strong> 1g uống 3 lần/ngày.<br />
+              &bull; <strong>Thay thế:</strong> <strong>Doxycycline</strong> 100mg uống 2 lần/ngày (liều nạp 200mg ngày đầu).<br />
+              &bull; <em>Lưu ý:</em> Hạn chế Quinolone hô hấp đơn trị để tránh áp lực đề kháng. <strong>Không dùng Macrolide đơn trị</strong> tại Việt Nam.
+            </div>
+          </div>
+          <div class="flow-branch-card accent-amber">
+            <div class="flow-branch-title" style="color: #d97706;"><i class="fa-solid fa-user-shield"></i> &gt; 65 Tuổi, Có Đồng Mắc Hoặc Đã Dùng KS Trong 3 Tháng</div>
+            <div class="flow-branch-desc">
+              <em>(Đồng mắc: COPD, ĐTĐ, suy tim, bệnh gan/thận mạn, nghiện rượu)</em><br />
+              &bull; <strong>Phối hợp:</strong> <strong>Amoxicillin/acid clavulanic</strong> (875/125 mg &times; 2 lần/ngày hoặc 1g &times; 3 lần/ngày) HOẶC <strong>Cephalosporin thế hệ 2, 3 uống</strong> (Cefpodoxime 200mg &times; 2, Cefuroxime 500mg &times; 2, Cefdinir 300mg &times; 2) <strong>KẾT HỢP</strong> <strong>Macrolide</strong> (Azithromycin 500mg N1 rồi 250mg/ngày; Clarithromycin 500mg &times; 2) hoặc <strong>Doxycycline</strong>.<br />
+              &bull; <strong>Hoặc đơn trị:</strong> <strong>Fluoroquinolone hô hấp</strong> (Levofloxacin 750mg/ngày hoặc Moxifloxacin 400mg/ngày).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TẦNG 2: NỘI TRÚ KHOA NỘI -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-blue">02</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-hospital" style="color: #0284c7;"></i> Tầng 2: CAP Nội Trú Khoa Nội (Mức Độ Trung Bình &bull; CURB-65 = 2)</div>
+        <span class="flow-step-badge flow-badge-blue">TM sớm &le; 4 giờ đầu</span>
+      </div>
+      <div class="flow-step-text">
+        <div style="margin-bottom: 0.45rem;">&bull; <strong>Phác đồ chuẩn:</strong> <strong>Beta-lactam truyền tĩnh mạch</strong> (Ceftriaxone 1&ndash;2g/ngày, Cefotaxime 1&ndash;2g mỗi 8h, hoặc Ampicillin/sulbactam 1,5&ndash;3g mỗi 6h) <strong>PHỐI HỢP VỚI</strong> <strong>Macrolide truyền tĩnh mạch</strong> (Azithromycin 500mg/ngày).</div>
+        <div style="margin-bottom: 0.45rem;">&bull; <strong>Phác đồ thay thế:</strong> Đơn trị liệu <strong>Fluoroquinolone hô hấp truyền tĩnh mạch</strong> (Levofloxacin 750mg/ngày hoặc Moxifloxacin 400mg/ngày).</div>
+        <div style="padding: 0.45rem 0.65rem; background: rgba(2, 132, 199, 0.08); border-radius: 5px; font-size: 0.86rem;">
+          <strong>Điểm mới ERS/ESICM/ESCMID/ALAT 2023:</strong> Ưu tiên phối hợp <strong>Beta-lactam + Macrolide</strong> hơn Quinolone vì macrolide có tác dụng điều biến miễn dịch (immunomodulatory effects), giảm bão cytokin và cải thiện sống còn sớm.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TẦNG 3: NỘI TRÚ ICU -->
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-red">03</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-truck-medical" style="color: #dc2626;"></i> Tầng 3: CAP Nặng Nhập ICU (Severe CAP)</div>
+        <span class="flow-step-badge" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">Phối hợp TM tức thì</span>
+      </div>
+      <div class="flow-step-text">
+        <div style="margin-bottom: 0.45rem;">&bull; <strong>Phác đồ nền tảng bắt buộc:</strong> <strong>Beta-lactam phổ rộng</strong> (Ceftriaxone, Cefotaxime, hoặc Ampicillin/sulbactam) <strong>+ Macrolide TM</strong> (Azithromycin 500mg/ngày) HOẶC <strong>+ Fluoroquinolone hô hấp TM</strong> (Levofloxacin 750mg/ngày hoặc Moxifloxacin 400mg/ngày).</div>
+        <div style="margin-bottom: 0.45rem;">&bull; <strong>Nếu có nguy cơ nhiễm <em>P. aeruginosa</em>:</strong> Thay bằng <strong>Beta-lactam chống Pseudomonas</strong> (Piperacillin/tazobactam 4,5g q6h, Cefepime 2g q8h, Ceftazidime 2g q8h, hoặc Meropenem 1g q8h) phối hợp <strong>Ciprofloxacin 400mg q8h</strong> hoặc <strong>Levofloxacin 750mg/ngày</strong> (hoặc phối hợp với Aminoglycoside + Macrolide).</div>
+        <div style="margin-bottom: 0.45rem;">&bull; <strong>Nếu có nguy cơ nhiễm CA-MRSA:</strong> Bổ sung ngay <strong>Vancomycin</strong> (liều nạp 25&ndash;30 mg/kg, sau đó 15&ndash;20 mg/kg q8&ndash;12h có TDM) HOẶC <strong>Linezolid 600mg q12h</strong> HOẶC <strong>Teicoplanin</strong>.</div>
+        <div class="flow-branch-card accent-rose" style="margin-top: 0.5rem;">
+          <div class="flow-branch-title" style="color: #dc2626;"><i class="fa-solid fa-syringe"></i> Liệu Pháp Corticoid Bổ Trợ Trong CAP Nặng (ERS 2023 &amp; BYT)</div>
+          <div class="flow-branch-desc">
+            Chỉ định sớm <strong>Hydrocortisone (200 mg/ngày)</strong> hoặc <strong>Methylprednisolone (0,5 mg/kg mỗi 12 giờ)</strong> cho CAP nặng có <strong>sốc nhiễm khuẩn</strong> hoặc <strong>phản ứng viêm hệ thống bùng phát</strong> (thời gian dùng <strong>8&ndash;14 ngày</strong>, giảm liều dần).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🏥 5. PHÁC ĐỒ HAP / VAP &amp; XỬ TRÍ VI KHUẨN ĐA KHÁNG (CRAB / CRE) {#sec-hap-vap-mdr}
+
+### 5.1 Đánh Giá Nguy Cơ Tử Vong Cao &amp; Nguy Cơ Vi Khuẩn Đa Kháng (MDR)
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+  <div style="background: var(--handbook-surface); border: 2px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem;">
+    <div style="font-weight: 800; color: #dc2626; font-size: 0.92rem; margin-bottom: 0.45rem;"><i class="fa-solid fa-heart-crack"></i> NGUY CƠ TỬ VONG CAO</div>
+    <div style="font-size: 0.87rem; line-height: 1.58; color: var(--handbook-text);">
+      &bull; Có <strong>sốc nhiễm khuẩn</strong>, HOẶC<br />
+      &bull; Cần can thiệp <strong>thở máy</strong> do viêm phổi.
+    </div>
+  </div>
+  <div style="background: var(--handbook-surface); border: 2px solid #f59e0b; border-radius: var(--handbook-radius-md); padding: 1.15rem;">
+    <div style="font-weight: 800; color: #d97706; font-size: 0.92rem; margin-bottom: 0.45rem;"><i class="fa-solid fa-bacterium"></i> NGUY CƠ NHIỄM VI KHUẨN ĐA KHÁNG (MDR)</div>
+    <div style="font-size: 0.87rem; line-height: 1.58; color: var(--handbook-text);">
+      &bull; Đã dùng <strong>kháng sinh tĩnh mạch trong vòng 90 ngày</strong> trước đó.<br />
+      &bull; Thời gian nằm viện <strong>&ge; 5 ngày</strong>.<br />
+      &bull; Tỷ lệ MRSA tại khoa <strong>&gt; 10%</strong>, hoặc cơ sở có tỷ lệ trực khuẩn Gram âm kháng thuốc cao (<strong>&gt; 10&ndash;25%</strong>).
+    </div>
+  </div>
+</div>
+
+### 5.2 Lưu Đồ Phác Đồ Kháng Sinh Kinh Nghiệm Ban Đầu (HAP / VAP)
+
+<div class="flowchart-editorial-card">
+  <div class="flowchart-editorial-header">
+    <div class="flowchart-editorial-title">
+      <i class="fa-solid fa-diagram-project" style="color: var(--handbook-primary);"></i>
+      <span>LƯU ĐỒ CHỌN KHÁNG SINH KINH NGHIỆM BAN ĐẦU TRONG HAP / VAP</span>
+    </div>
+    <div class="flowchart-editorial-badges">
+      <span class="flowchart-editorial-badge">Hội Hô Hấp VN 2023 &bull; IDSA/ATS</span>
+    </div>
+  </div>
+
+  <div class="flowchart-editorial-viewport">
+    <svg class="flowchart-editorial-svg" viewBox="0 0 920 390" width="920" height="390" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans', -apple-system, sans-serif">
+      <defs>
+        <marker id="hapArrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+        </marker>
+        <marker id="hapArrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
+        </marker>
+      </defs>
+
+      <!-- Root -->
+      <rect x="270" y="16" width="380" height="44" rx="10" fill="rgba(2, 132, 199, 0.14)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="460" y="43" text-anchor="middle" font-size="14" font-weight="800" fill="#0284c7">BỆNH NHÂN NGHI NGỜ HAP / VAP</text>
+
+      <!-- Orthogonal Split -->
+      <path d="M 460 60 L 460 88 L 220 88 L 220 112" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#hapArrowGreen)" />
+      <path d="M 460 60 L 460 88 L 690 88 L 690 112" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#hapArrowRed)" />
+
+      <!-- Left Condition -->
+      <rect x="30" y="114" width="380" height="66" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.6" />
+      <text x="220" y="140" text-anchor="middle" font-size="13" font-weight="800" fill="#059669">KHÔNG CÓ NGUY CƠ MDR</text>
+      <text x="220" y="162" text-anchor="middle" font-size="12" font-weight="600" fill="var(--handbook-text)">VÀ KHÔNG CÓ NGUY CƠ TỬ VONG CAO</text>
+
+      <!-- Right Condition -->
+      <rect x="460" y="114" width="430" height="66" rx="10" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="1.6" />
+      <text x="675" y="140" text-anchor="middle" font-size="13" font-weight="800" fill="#dc2626">CÓ NGUY CƠ MDR HOẶC</text>
+      <text x="675" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">NGUY CƠ TỬ VONG CAO (SỐC / THỞ MÁY)</text>
+
+      <!-- Arrows down -->
+      <path d="M 220 180 L 220 208" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#hapArrowGreen)" />
+      <path d="M 675 180 L 675 208" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#hapArrowRed)" />
+
+      <!-- Left Regimen -->
+      <rect x="30" y="210" width="380" height="162" rx="10" fill="var(--handbook-surface)" stroke="#10b981" stroke-width="1.8" />
+      <rect x="30" y="210" width="380" height="32" rx="8" fill="rgba(16, 185, 129, 0.14)" />
+      <text x="220" y="231" text-anchor="middle" font-size="12.5" font-weight="800" fill="#059669">ĐƠN TRỊ LIỆU (BAO PHỦ P. AERUGINOSA &amp; MSSA)</text>
+      <text x="48" y="266" font-size="12.5" font-weight="700" fill="var(--handbook-text)">• Piperacillin/tazobactam 4,5g q6h</text>
+      <text x="48" y="290" font-size="12.5" font-weight="700" fill="var(--handbook-text)">• Cefepime 2g q8h</text>
+      <text x="48" y="314" font-size="12.5" font-weight="700" fill="var(--handbook-text)">• Levofloxacin 750mg q24h</text>
+      <text x="48" y="338" font-size="12.5" font-weight="700" fill="var(--handbook-text)">• Hoặc Meropenem 1g q8h</text>
+
+      <!-- Right Regimen -->
+      <rect x="460" y="210" width="430" height="162" rx="10" fill="var(--handbook-surface)" stroke="#ef4444" stroke-width="1.8" />
+      <rect x="460" y="210" width="430" height="32" rx="8" fill="rgba(239, 68, 68, 0.14)" />
+      <text x="675" y="231" text-anchor="middle" font-size="12.5" font-weight="800" fill="#dc2626">LIỆU PHÁP PHỐI HỢP (2 HOẶC 3 THUỐC)</text>
+      <text x="478" y="262" font-size="12" font-weight="700" fill="var(--handbook-text)">1. Một Beta-lactam chống Pseudomonas:</text>
+      <text x="492" y="280" font-size="11.5" font-weight="500" fill="var(--handbook-muted)">(Pip/Taz, Cefepime, Ceftazidime, Meropenem)</text>
+      <text x="478" y="303" font-size="12" font-weight="700" fill="var(--handbook-text)">2. + Một thuốc Gram (-) thứ hai (tránh 2 beta-lactam):</text>
+      <text x="492" y="321" font-size="11.5" font-weight="500" fill="var(--handbook-muted)">(Levofloxacin / Ciprofloxacin HOẶC Amikacin)</text>
+      <text x="478" y="344" font-size="12" font-weight="700" fill="#dc2626">3. + Bổ sung thuốc kháng MRSA:</text>
+      <text x="492" y="362" font-size="11.5" font-weight="500" fill="var(--handbook-muted)">(Vancomycin truyền TDM hoặc Linezolid 600mg q12h)</text>
+    </svg>
+  </div>
+
+  <div class="flowchart-legend-row">
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #10b981;"></span> Không MDR &amp; Không nguy cơ tử vong cao: Đơn trị liệu</div>
+    <div class="flowchart-legend-item"><span class="legend-dot" style="background: #ef4444;"></span> Có MDR / Sốc / Thở máy: Phối hợp 2&ndash;3 thuốc khác nhóm</div>
+  </div>
+</div>
+
+### 5.3 Bảng Liều Tối Ưu Hóa PK/PD Trong HAP / VAP
+
+<div class="table-card">
+  <div class="table-header">
+    <div class="table-title"><i class="fa-solid fa-pills"></i> LIỀU LƯỢNG &amp; CÁCH TRUYỀN TỐI ƯU PK/PD CHO HAP / VAP</div>
+    <span class="table-badge">Truyền Kéo Dài &amp; TDM</span>
+  </div>
+  <div class="handbook-table-container">
+    <table class="dose-table">
+      <thead>
+        <tr>
+          <th style="width: 24%;">Kháng Sinh</th>
+          <th style="width: 34%;">Liều Dùng &amp; Tốc Độ Truyền Tối Ưu</th>
+          <th style="width: 42%;">Ghi Chú Thực Chiến &amp; Giám Sát</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Piperacillin/tazobactam</strong></td>
+          <td><strong>4,5g</strong> truyền tĩnh mạch trong <strong>3 giờ</strong> mỗi 6 giờ</td>
+          <td>Tối ưu %T &gt; MIC cho trực khuẩn Gram âm; tránh phối hợp kéo dài với Vancomycin nếu không cần thiết.</td>
+        </tr>
+        <tr>
+          <td><strong>Meropenem</strong></td>
+          <td><strong>1&ndash;2g</strong> truyền tĩnh mạch trong <strong>3 giờ</strong> mỗi 8 giờ</td>
+          <td>Dùng mức 2g q8h truyền kéo dài cho VAP do vi khuẩn giảm nhạy cảm hoặc CRAB khi MIC &le; 8 mg/L.</td>
+        </tr>
+        <tr>
+          <td><strong>Cefepime</strong></td>
+          <td><strong>2g</strong> truyền tĩnh mạch trong <strong>3 giờ</strong> mỗi 8 giờ</td>
+          <td>Chỉnh liều theo ClCr; cảnh giác độc tính thần kinh (lú lẫn, co giật) ở người suy thận.</td>
+        </tr>
+        <tr>
+          <td><strong>Amikacin</strong></td>
+          <td><strong>15&ndash;20 mg/kg</strong> truyền tĩnh mạch <strong>1 lần/ngày</strong></td>
+          <td>Theo dõi nồng độ thuốc và creatinin máu để phòng tránh độc thận và độc tai.</td>
+        </tr>
+        <tr>
+          <td><strong>Vancomycin</strong></td>
+          <td>Liều nạp <strong>25&ndash;30 mg/kg</strong>, duy trì <strong>15&ndash;20 mg/kg</strong> q8&ndash;12h</td>
+          <td>Giám sát TDM đạt đích <strong>AUC/MIC = 400&ndash;600</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Linezolid</strong></td>
+          <td><strong>600 mg</strong> truyền tĩnh mạch mỗi 12 giờ</td>
+          <td>Đặc biệt ưu tiên khi <strong>MIC Vancomycin &ge; 1,5 mg/L</strong> hoặc bệnh nhân có tổn thương thận; thấm ELF ~ 1,0.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+### 5.4 Chiến Lược Xử Trí Các Chủng Vi Khuẩn Đa Kháng Chuyên Sâu
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #ef4444; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #dc2626; text-transform: uppercase; margin-bottom: 0.35rem;">CRAB &bull; XDR ACINETOBACTER</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;"><em>A. baumannii</em> Kháng Carbapenem</div>
+    <div style="font-size: 0.86rem; line-height: 1.58; color: var(--handbook-muted);">
+      <div style="color: #dc2626; font-weight: 700; margin-bottom: 0.35rem;">Tuyệt đối KHÔNG dùng đơn trị liệu!</div>
+      <div>&bull; <strong>Phác đồ phối hợp nền tảng:</strong></div>
+      <div>1. <strong>Colistin:</strong> Liều nạp <strong>9 triệu IU</strong>, duy trì <strong>9 triệu IU/ngày</strong> chia 2&ndash;3 lần (chỉnh theo ClCr).</div>
+      <div>2. <strong>+ Meropenem liều cao truyền kéo dài:</strong> <strong>2g mỗi 8h</strong> truyền trong 3&ndash;4h (áp dụng khi MIC meropenem &le; 8 mg/L).</div>
+      <div>3. <strong>+ Ampicillin/sulbactam liều cao:</strong> Tính theo sulbactam đạt <strong>6&ndash;9 g/ngày</strong> (VD: 3g sulbactam mỗi 8h truyền trong 4h).</div>
+      <div style="margin-top: 0.45rem;">&bull; <strong>Thay thế / bổ trợ:</strong> Doxycycline / Minocycline hoặc Tigecycline.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #8b5cf6; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #7c3aed; text-transform: uppercase; margin-bottom: 0.35rem;">CRE &bull; ENTEROBACTERALES</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Trực Khuẩn Đường Ruột Kháng Carbapenem</div>
+    <div style="font-size: 0.86rem; line-height: 1.58; color: var(--handbook-muted);">
+      <div style="margin-bottom: 0.45rem;">Lựa chọn dựa vào <strong>loại enzym carbapenemase</strong>:</div>
+      <div>&bull; <strong>Chủng sinh KPC hoặc OXA-48:</strong> Ưu tiên <strong>Ceftazidime/avibactam</strong> 2,5g mỗi 8 giờ truyền 3 giờ.</div>
+      <div>&bull; <strong>Chủng sinh Metallo-beta-lactamase (NDM):</strong> Phối hợp <strong>Ceftazidime/avibactam + Aztreonam</strong> hoặc dùng <strong>Cefiderocol</strong>.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #0284c7; border-radius: var(--handbook-radius-md); padding: 1.15rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase; margin-bottom: 0.35rem;">AEROSOLIZED &bull; KHÍ DUNG BỔ TRỢ</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.5rem;">Kháng Sinh Dạng Khí Dung (VAP)</div>
+    <div style="font-size: 0.86rem; line-height: 1.58; color: var(--handbook-muted);">
+      <div>&bull; <strong>Chỉ định hỗ trợ:</strong> VAP do <em>P. aeruginosa</em> hoặc <em>A. baumannii</em> đa kháng, chỉ còn nhạy với colistin hoặc aminoglycoside.</div>
+      <div>&bull; <strong>Liều dùng:</strong> <strong>Colistin 1&ndash;2 triệu IU</strong> pha trong 6 mL NaCl 0,9% khí dung mỗi 8&ndash;12h; hoặc <strong>Amikacin khí dung</strong> (ưu tiên máy khí dung màng rung &ndash; <em>vibrating mesh</em>) phối hợp với thuốc đường tĩnh mạch.</div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🔄 6. XUỐNG THANG, CHUYỂN ĐƯỜNG UỐNG (IV-TO-PO) &amp; THỜI GIAN ĐIỀU TRỊ {#sec-deescalation-duration}
+
+### 6.1 Đánh Giá Đáp Ứng Lâm Sàng Tại Mốc Vàng 48&ndash;72 Giờ
+
+<div class="flow-track-container">
+
+  <div class="flow-track-step">
+    <div class="flow-track-rail">
+      <div class="flow-track-marker marker-blue">01</div>
+      <div class="flow-track-line"></div>
+    </div>
+    <div class="flow-track-content">
+      <div class="flow-step-header">
+        <div class="flow-step-title"><i class="fa-solid fa-stethoscope" style="color: #0284c7;"></i> Đánh Giá Toàn Diện Sau 48&ndash;72 Giờ Khởi Trị</div>
+        <span class="flow-step-badge flow-badge-blue">Mốc kiểm định</span>
+      </div>
+      <div class="flow-step-text">
+        <div style="margin-bottom: 0.5rem;">Theo dõi đồng bộ 7 thông số: <strong>mạch, nhiệt độ, huyết áp, tần số thở, oxy hóa máu, lượng/tính chất đờm và bạch cầu</strong>.</div>
+        <div class="flow-branch-grid">
+          <div class="flow-branch-card accent-green">
+            <div class="flow-branch-title" style="color: #059669;"><i class="fa-solid fa-arrow-down-short-wide"></i> Lâm Sàng Cải Thiện + Có Vi Sinh</div>
+            <div class="flow-branch-desc">
+              Thực hiện <strong>xuống thang (De-escalation) ngay</strong>: thu hẹp phổ kháng sinh theo kháng sinh đồ, chuyển sang đơn trị liệu hoặc cắt bỏ nhóm bao phủ MRSA / <em>Pseudomonas</em> nếu kết quả cấy âm tính.
+            </div>
+          </div>
+          <div class="flow-branch-card accent-rose">
+            <div class="flow-branch-title" style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Không Cải Thiện Hoặc Xấu Đi</div>
+            <div class="flow-branch-desc">
+              Đánh giá toàn diện, chụp lại <strong>X-quang / CT ngực</strong> tìm biến chứng (tràn mủ màng phổi, áp xe hóa, viêm phổi hoại tử), cấy lại vi sinh và xét các căn nguyên không do vi khuẩn thông thường (<strong>lao, nấm, virus, nhồi máu phổi</strong>).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+### 6.2 Năm Tiêu Chuẩn Chuyển Đổi Đường Uống (IV-to-PO Switch) &amp; Thời Gian Điều Trị
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #10b981; border-radius: var(--handbook-radius-md); padding: 1.2rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase; margin-bottom: 0.35rem;">5 TIÊU CHUẨN ĐỒNG THỜI &bull; IV-TO-PO</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.55rem;">Điều Kiện Chuyển Sang Kháng Sinh Uống</div>
+    <div style="font-size: 0.86rem; line-height: 1.62; color: var(--handbook-text);">
+      <div><strong>1.</strong> Hết sốt liên tục trong ít nhất <strong>24&ndash;48 giờ</strong> (2 lần đo cách nhau 8h thân nhiệt <strong>&lt; 38&deg;C</strong>).</div>
+      <div><strong>2.</strong> Sinh hiệu ổn định: Nhịp tim <strong>&le; 100 l/p</strong>, tần số thở <strong>&le; 24 l/p</strong>, HATT <strong>&ge; 90 mmHg</strong>.</div>
+      <div><strong>3.</strong> <strong>SpO<sub>2</sub> &ge; 90%</strong> (hoặc PaO<sub>2</sub> &gt; 60 mmHg) ở điều kiện khí trời.</div>
+      <div><strong>4.</strong> Tri giác trở về mức cơ bản ban đầu.</div>
+      <div><strong>5.</strong> Đường tiêu hóa hấp thu tốt, ăn uống được và dung nạp thuốc đường uống.</div>
+    </div>
+  </div>
+
+  <div style="background: var(--handbook-surface); border: 1px solid var(--handbook-border); border-top: 4px solid #6366f1; border-radius: var(--handbook-radius-md); padding: 1.2rem; box-shadow: var(--handbook-card-shadow);">
+    <div style="font-size: 0.72rem; font-weight: 800; color: #6366f1; text-transform: uppercase; margin-bottom: 0.35rem;">THỜI LƯỢNG &amp; ĐỘNG HỌC PROCALCITONIN</div>
+    <div style="font-size: 1.02rem; font-weight: 800; color: var(--handbook-text); margin-bottom: 0.55rem;">Thời Gian Điều Trị Kháng Sinh Tối Ưu</div>
+    <div style="font-size: 0.86rem; line-height: 1.6; color: var(--handbook-muted);">
+      <div>&bull; <strong>CAP thông thường:</strong> <strong>5&ndash;7 ngày</strong> là đủ nếu ổn định lâm sàng trong 48&ndash;72 giờ đầu.</div>
+      <div>&bull; <strong>HAP / VAP:</strong> Liệu trình chuẩn thường là <strong>7 ngày</strong> nếu đáp ứng tốt.</div>
+      <div>&bull; <strong>Kéo dài (&gt; 14&ndash;28 ngày) khi:</strong>
+        <br />&ndash; <em>Burkholderia pseudomallei:</em> Tấn công TM &ge; 2 tuần (ceftazidime/carbapenem), duy trì uống TMP-SMX 3&ndash;6 tháng.
+        <br />&ndash; <em>S. aureus</em> kèm nhiễm khuẩn huyết, viêm nội tâm mạc, áp xe hóa hoặc tràn mủ màng phổi.
+        <br />&ndash; Viêm phổi hoại tử hoặc áp xe phổi (<strong>4 tuần</strong> hoặc đến khi phim hồi phục đáng kể).
+      </div>
+      <div style="margin-top: 0.55rem; padding: 0.45rem 0.65rem; background: rgba(99, 102, 241, 0.1); border-radius: 5px; color: var(--handbook-text);">
+        <strong>Vai trò Procalcitonin (PCT):</strong> Cân nhắc dừng hoặc rút ngắn kháng sinh khi <strong>PCT &lt; 0,25 ng/mL</strong> hoặc <strong>giảm &ge; 80%</strong> so với đỉnh ban đầu kết hợp cải thiện lâm sàng.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+---
+
+## ⚠️ 7. LƯỚI CẠM BẪY LÂM SÀNG SỐNG CÒN TRONG KHÁNG SINH HÔ HẤP {#sec-pitfalls}
+
+<div class="pitfall-grid">
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-skull-crossbones"></i> CẠM BẪY 01 &bull; DỊCH TỄ</div>
+      <div class="pitfall-title">Kê Đơn Trị Macrolide Cho CAP Ngoại Trú Tại Việt Nam</div>
+    </div>
+    <div class="pitfall-body">
+      Áp dụng rập khuôn khuyến cáo cũ từ phương Tây để kê đơn Azithromycin hoặc Clarithromycin đơn độc cho viêm phổi cộng đồng tại Việt Nam, trong khi tỷ lệ phế cầu kháng Macrolide đã vượt <strong>90%</strong>.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-ban"></i> HẬU QUẢ &amp; XỬ TRÍ: Thất bại điều trị, nhập viện vì CAP tiến triển nặng. Ưu tiên Amoxicillin liều cao (người trẻ khỏe) hoặc phối hợp Beta-lactam + Macrolide/Doxycycline ở nhóm có đồng mắc.
+    </div>
+  </div>
+
+  <div class="pitfall-card danger">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-lungs-virus"></i> CẠM BẪY 02 &bull; PK/PD PHỔI</div>
+      <div class="pitfall-title">Nhìn Kháng Sinh Đồ In Vitro Mà Bỏ Quên Nồng Độ Tại ELF</div>
+    </div>
+    <div class="pitfall-body">
+      Beta-lactam (ELF/huyết thanh 0,22&ndash;0,57), Vancomycin (0,2&ndash;0,7) và đặc biệt Aminoglycoside (0,1&ndash;0,3) thấm vào phế nang rất kém. Dùng liều thấp hoặc truyền bolus thông thường làm nồng độ tại phổi dưới MIC dù kháng sinh đồ ghi "Nhạy".
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-shield-virus"></i> HÀNH ĐỘNG: Dùng liều cao đủ tải, truyền kéo dài Beta-lactam 3&ndash;4 giờ, không dùng Aminoglycoside đơn trị, và chuyển Linezolid nếu MIC Vancomycin &ge; 1,5 mg/L.
+    </div>
+  </div>
+
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-pills"></i> CẠM BẪY 03 &bull; ĐA KHÁNG CRAB</div>
+      <div class="pitfall-title">Dùng Colistin Đơn Trị Hoặc Liều Thường Cho VAP Do <em>A. baumannii</em></div>
+    </div>
+    <div class="pitfall-body">
+      Tại nhiều ICU Việt Nam, <em>A. baumannii</em> nhạy Carbapenem chỉ còn &lt; 10&ndash;15%. Dùng Colistin đơn trị thiếu liều nạp hoặc không phối hợp hiệp đồng dễ dẫn đến thất bại diệt khuẩn và bùng phát kháng thuốc.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-circle-check"></i> XỬ TRÍ CHUẨN: Nạp Colistin 9 triệu IU, phối hợp Ampicillin/sulbactam liều cao (6&ndash;9g sulbactam/ngày truyền 4h) &plusmn; Meropenem liều cao truyền 3&ndash;4h &plusmn; Colistin khí dung màng rung.
+    </div>
+  </div>
+
+  <div class="pitfall-card warning">
+    <div class="pitfall-header">
+      <div class="pitfall-badge"><i class="fa-solid fa-clock-rotate-left"></i> CẠM BẪY 04 &bull; STEWARDSHIP</div>
+      <div class="pitfall-title">Quên Đánh Giá Xuống Thang Sau 48&ndash;72 Giờ &amp; Kéo Dài Phổ Rộng</div>
+    </div>
+    <div class="pitfall-body">
+      Duy trì bộ ba kháng sinh phổ rộng (Carbapenem + Vancomycin + Amikacin) đến hết 10&ndash;14 ngày dù kết quả cấy đã định danh tác nhân nhạy cảm hoặc âm tính MRSA, làm tăng vọt độc thận (Vancomycin + Pip/Taz) và chọn lọc CRE.
+    </div>
+    <div class="pitfall-consequence">
+      <i class="fa-solid fa-arrow-down-short-wide"></i> HÀNH ĐỘNG: Kiểm định bắt buộc lúc 48&ndash;72h: cắt thuốc MRSA/Pseudomonas khi cấy âm, chuyển IV-to-PO khi đủ 5 tiêu chuẩn và rút ngắn còn 5&ndash;7 ngày theo lâm sàng/PCT.
+    </div>
+  </div>
+
+</div>
+
+---
+
+## 🩺 8. TUYỂN TẬP 3 CA LÂM SÀNG THỰC CHIẾN TẠI GIƯỜNG BỆNH {#sec-case-scenarios}
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-stethoscope"></i> CA THỰC CHIẾN 01 &bull; CAP NGOẠI / NỘI TRÚ NGẮN HẠN</div>
+    <div class="case-title">Bệnh nhân nam 68 tuổi, ĐTĐ týp 2 &amp; COPD: CURB-65 = 1 nhưng có đa bệnh đồng mắc</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Bệnh sử &amp; Thăm khám:</strong> Bệnh nhân nam, 68 tuổi, tiền sử đái tháo đường týp 2 và COPD đang điều trị kiểm soát đều đặn. Nhập viện vì sốt 38,5&deg;C, ho khạc đờm vàng đục 3 ngày, khó thở nhẹ. Không dùng kháng sinh trong 3 tháng qua. Khám: tỉnh táo, tiếp xúc tốt; mạch 88 l/p, HA 125/75 mmHg, thở 22 l/p, SpO<sub>2</sub> 93% (khí trời); phổi phải nghe ran nổ đáy phổi.<br />
+    <strong>Cận lâm sàng:</strong> X-quang ngực đông đặc phế nang phân thùy dưới phổi phải. Bạch cầu 12.500/&mu;L (82% neutrophil). Ure máu 5,2 mmol/L.
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích &amp; Quyết định điều trị:</strong>
+    <ul>
+      <li><strong>Đánh giá mức độ nặng:</strong> CURB-65 = <strong>1 điểm</strong> (chỉ có tuổi &ge; 65). Dù điểm số thuộc nhóm nguy cơ thấp, bệnh nhân có hai bệnh đồng mắc mạn tính (COPD, ĐTĐ) &rarr; khuyến cáo điều trị nội trú ngắn hạn hoặc ngoại trú kiểm soát chặt chẽ.</li>
+      <li><strong>Lựa chọn kinh nghiệm:</strong> Cần bao phủ phế cầu (<em>S. pneumoniae</em>), <em>H. influenzae</em> sinh beta-lactamase và trực khuẩn Gram âm &rarr; khởi đầu <strong>Ceftriaxone 1g/ngày tĩnh mạch</strong> kết hợp <strong>Azithromycin 500mg/ngày uống</strong>.</li>
+      <li><strong>Diễn tiến &amp; Chuyển đổi IV-to-PO:</strong> Sau 48 giờ, bệnh nhân cắt sốt hoàn toàn (36,8&deg;C), hết khó thở, đờm trong, ăn uống tốt. Cấy đờm ra <em>Streptococcus pneumoniae</em> nhạy penicillin và ceftriaxone. Đạt đủ 5 tiêu chuẩn ổn định lâm sàng &rarr; chuyển sang đường uống <strong>Amoxicillin/acid clavulanic 875/125 mg &times; 2 lần/ngày</strong> hoàn thành tổng liệu trình <strong>5 ngày</strong> rồi xuất viện.</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Không dựa máy móc vào riêng điểm CURB-65 khi người bệnh có nhiều bệnh nền (COPD + ĐTĐ); khi hết sốt và ổn định ở mốc 48 giờ, chủ động chuyển sang đường uống để hoàn tất liệu trình ngắn 5 ngày.
+  </div>
+</div>
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-truck-medical"></i> CA THỰC CHIẾN 02 &bull; SEVERE CAP TẠI ICU</div>
+    <div class="case-title">Bệnh nhân nữ 55 tuổi, không bệnh nền, vào sốc nhiễm khuẩn &amp; suy hô hấp nặng</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Bệnh sử &amp; Thăm khám:</strong> Bệnh nhân nữ, 55 tuổi, tiền sử khỏe mạnh. Khởi phát sốt cao, rét run, ho khạc đờm màu gỉ sắt, đau ngực kiểu màng phổi phải từ 4 ngày trước. Sáng nhập viện lơ mơ, khó thở dữ dội. Khám: kích thích, lú lẫn; thở co kéo 36 l/p, tím tái, SpO<sub>2</sub> 84% dưới oxy cannula, tụt huyết áp 80/50 mmHg trơ với truyền nhanh 1.000 mL dịch đẳng trương &rarr; đặt nội khí quản thở máy xâm nhập và duy trì Noradrenaline.<br />
+    <strong>Cận lâm sàng:</strong> Khí máu động mạch PaO<sub>2</sub>/FiO<sub>2</sub> = <strong>145</strong>. X-quang ngực: đông đặc thùy giữa và dưới phổi phải kèm thâm nhiễm đáy phổi trái. Bạch cầu 18.200/&mu;L, Procalcitonin <strong>12,8 ng/mL</strong>.
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích &amp; Quyết định điều trị:</strong>
+    <ul>
+      <li><strong>Phân tầng mức độ:</strong> Đạt tiêu chuẩn <strong>Severe CAP nhập ICU</strong> (có cả 2 tiêu chuẩn chính: thở máy xâm nhập và sốc nhiễm khuẩn cần vận mạch).</li>
+      <li><strong>Nguyên tắc giờ vàng:</strong> Tiêm kháng sinh tĩnh mạch ngay trong <strong>giờ đầu tiên</strong> sau khi đã cấy máu 2 vị trí và hút dịch nội khí quản soi nhuộm Gram, nuôi cấy, multiplex PCR.</li>
+      <li><strong>Phác đồ kinh nghiệm ban đầu:</strong> (1) <strong>Meropenem 1g TM mỗi 8h</strong> (truyền kéo dài 3h); (2) <strong>Levofloxacin 750mg TM mỗi 24h</strong>; (3) <strong>Vancomycin</strong> nạp 25 mg/kg sau đó 15 mg/kg q12h (bao phủ CA-MRSA); (4) <strong>Hydrocortisone 200 mg/ngày</strong> (truyền liên tục hoặc 50mg q6h) do sốc nhiễm khuẩn kém đáp ứng bù dịch.</li>
+      <li><strong>Xuống thang ngày thứ 3:</strong> Huyết động ổn định, cai vận mạch. Cấy máu và dịch phế quản âm tính MRSA; PCR &amp; cấy xác định <em>Streptococcus pneumoniae</em> nhạy penicillin và ceftriaxone &rarr; <strong>ngưng Vancomycin</strong>, <strong>ngưng Levofloxacin</strong>, <strong>xuống thang Meropenem thành Ceftriaxone 2g/ngày TM</strong> và theo dõi PCT để rút ngắn ngày dùng thuốc.</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Sốc nhiễm khuẩn do Severe CAP cần đánh phủ đủ phổ ngay giờ đầu + Hydrocortisone 200 mg/ngày, nhưng bắt buộc phải xuống thang dứt khoát ngay khi có vi sinh ngày thứ 3 để bảo vệ thận và hệ sinh thái vi khuẩn.
+  </div>
+</div>
+
+<div class="case-study-card">
+  <div class="case-header">
+    <div class="case-badge"><i class="fa-solid fa-lungs-virus"></i> CA THỰC CHIẾN 03 &bull; VAP DO CRAB TOÀN KHÁNG (XDR)</div>
+    <div class="case-title">Bệnh nhân nam 62 tuổi, thở máy ngày thứ 8 sau chấn thương sọ não</div>
+  </div>
+  <div class="case-scenario-box">
+    <strong>Bệnh sử &amp; Thăm khám:</strong> Bệnh nhân nam 62 tuổi, phẫu thuật cấp cứu chấn thương sọ não, thở máy tại ICU. Ngày thứ 8 sau thở máy: sốt cao 39,2&deg;C, tăng tiết đờm mủ đục qua ống nội khí quản, FiO<sub>2</sub> phải tăng từ 40% lên 70% để duy trì SpO<sub>2</sub> &gt; 92%. Phổi nhiều ran ẩm lan tỏa hai bên.<br />
+    <strong>Cận lâm sàng:</strong> X-quang phổi xuất hiện thâm nhiễm mới hai phế trường. Bạch cầu tăng vọt từ 8.500 lên 19.400/&mu;L. Soi nhuộm dịch hút phế quản sâu thấy trực khuẩn Gram âm đậm đặc.
+  </div>
+  <div class="case-analysis">
+    <strong>Phân tích &amp; Quyết định điều trị:</strong>
+    <ul>
+      <li><strong>Chẩn đoán &amp; Phác đồ kinh nghiệm:</strong> VAP xuất hiện muộn (ngày thứ 8), nguy cơ rất cao nhiễm vi khuẩn đa kháng BV (<em>A. baumannii, P. aeruginosa</em>, ESBL/CRE) &rarr; khởi đầu <strong>Meropenem 2g q8h (truyền 3h) + Amikacin 20 mg/kg q24h + Vancomycin 15 mg/kg q12h</strong> (có liều nạp).</li>
+      <li><strong>Kết quả vi sinh sau 48 giờ:</strong> Cấy dịch phế quản định lượng &gt; 10<sup>6</sup> CFU/mL <em>Acinetobacter baumannii</em> toàn kháng (XDR), kháng toàn bộ cephalosporin, quinolone, ampicillin/sulbactam thường và carbapenem (MIC Meropenem = 16 mg/L), chỉ còn nhạy <strong>Colistin (MIC = 1 mg/L)</strong>; âm tính MRSA.</li>
+      <li><strong>Điều chỉnh phác đồ đích diệt CRAB:</strong> Ngưng Vancomycin và Amikacin; thiết lập phối hợp 3 mũi nhọn:
+        <br />1. <strong>Colistin TM:</strong> Liều nạp <strong>9 triệu IU</strong>, duy trì <strong>4,5 triệu IU mỗi 12h</strong> (hiệu chỉnh theo ClCr).
+        <br />2. <strong>Ampicillin/sulbactam liều cao:</strong> <strong>3g sulbactam</strong> (tương đương 6g ampicillin/sulbactam tỷ lệ 2:1) truyền TM chậm trong <strong>4 giờ</strong> mỗi 8h (tổng 9g sulbactam/ngày để ức chế PBP của <em>Acinetobacter</em>).
+        <br />3. <strong>Colistin khí dung bổ trợ:</strong> <strong>1 triệu IU</strong> pha trong 6 mL NaCl 0,9% khí dung qua máy màng rung mỗi 8h nhằm tăng nồng độ tại mô phổi.
+      </li>
+      <li><strong>Kết cục:</strong> Giám sát creatinin hàng ngày. Sau 7 ngày điều trị, bệnh nhân hết sốt, đờm trong, tổn thương phổi thoái triển và cai thở máy thành công.</li>
+    </ul>
+  </div>
+  <div class="case-takeaway">
+    <i class="fa-solid fa-lightbulb"></i> <strong>BÀI HỌC XƯƠNG MÁU:</strong> Với VAP do CRAB chỉ còn nhạy Colistin, tuyệt đối không đơn trị liệu: phối hợp Colistin TM (có liều nạp) + Sulbactam liều cao truyền 4 giờ + Colistin khí dung màng rung mang lại hiệu quả hiệp đồng cứu sống người bệnh.
+  </div>
+</div>
+
+---
+
+## 💡 9. THÔNG ĐIỆP THỰC HÀNH &amp; TÀI LIỆU THAM KHẢO (CHUẨN AMA) {#sec-takeaways-references}
+
+### 9.1 Năm Thông Điệp Thực Hành Cốt Lõi (Key Takeaways)
+
+<div class="callout callout-success">
+  <div class="callout-title"><i class="fa-solid fa-circle-check"></i> TỔNG KẾT THỰC HÀNH KHÁNG SINH HÔ HẤP</div>
+  <div class="callout-body">
+    <ol style="margin-bottom: 0;">
+      <li><strong>Đúng bệnh nhân &ndash; Đúng thời điểm:</strong> Điều trị kháng sinh sớm trong vòng <strong>4 giờ</strong> đối với CAP nhập viện và trong vòng <strong>1 giờ</strong> đối với trường hợp có sốc nhiễm khuẩn hoặc HAP/VAP nặng.</li>
+      <li><strong>Cân nhắc dịch tễ đề kháng tại chỗ:</strong> Tuyệt đối không dùng đơn trị liệu Macrolide cho CAP tại Việt Nam do phế cầu kháng macrolide <strong>&gt; 90%</strong>. Không dùng Aminoglycoside đơn trị trong nhiễm khuẩn hô hấp do thâm nhập mô phổi kém.</li>
+      <li><strong>Tối ưu hóa PK/PD:</strong> Tận dụng truyền kéo dài hoặc truyền liên tục đối với Beta-lactam để đạt %T &gt; MIC tối đa; dùng liều đơn hàng ngày cho Aminoglycoside; và kiểm soát TDM để đạt đích <strong>AUC/MIC 400&ndash;600</strong> đối với Vancomycin.</li>
+      <li><strong>Phối hợp thuốc đúng cơ chế trong vi khuẩn đa kháng:</strong> Đối với <em>A. baumannii</em> kháng carbapenem, bắt buộc phối hợp ít nhất 2&ndash;3 kháng sinh còn nhạy cảm hoặc có hiệp đồng lâm sàng (Colistin + Meropenem liều cao truyền kéo dài + Sulbactam liều cao &plusmn; Colistin khí dung).</li>
+      <li><strong>Chủ động xuống thang và cắt ngắn liệu trình:</strong> Đánh giá lại lâm sàng sau 48&ndash;72 giờ, thu hẹp phổ kháng sinh khi có kết quả vi sinh, chuyển sang đường uống sớm khi bệnh nhân ổn định và dùng động học Procalcitonin để ngừng thuốc an toàn, tránh áp lực chọn lọc đề kháng.</li>
+    </ol>
+  </div>
+</div>
+
+### 9.2 Tài Liệu Tham Khảo (Chuẩn AMA)
+
+1. Bộ Y tế Việt Nam. *Hướng dẫn chẩn đoán và điều trị viêm phổi mắc phải cộng đồng ở người lớn*. Ban hành kèm theo Quyết định số 4815/QĐ-BYT. Nhà xuất bản Y học; 2020.
+2. Hội Hô hấp Việt Nam. *Hướng dẫn chẩn đoán và điều trị viêm phổi mắc phải cộng đồng ở người lớn (Bản cập nhật năm 2024)*. Tạp chí Y học Việt Nam. 2024;542(Chuyên đề):1-85.
+3. Hội Hô hấp Việt Nam, Hội Hồi sức Cấp cứu và Chống độc Việt Nam. *Khuyến cáo chẩn đoán và điều trị viêm phổi bệnh viện và viêm phổi liên quan đến thở máy*. Ban hành tháng 10/2023. vnras; 2023.
+4. Metlay JP, Waterer GW, Long AC, et al. Diagnosis and treatment of adults with community-acquired pneumonia. An official clinical practice guideline of the American Thoracic Society and Infectious Diseases Society of America. *Am J Respir Crit Care Med*. 2019;200(7):e45-e67. doi:10.1164/rccm.201908-1581ST.
+5. Martin-Loeches I, Torres A, Nagavci B, et al. ERS/ESICM/ESCMID/ALAT guidelines for the management of severe community-acquired pneumonia. *Eur Respir J*. 2023;61(4):2200735. doi:10.1183/13993003.00735-2022.
+6. National Institute for Health and Care Excellence (NICE). *Pneumonia: diagnosis and management (NICE Guideline NG250)*. Published 2019, updated 2024/2026. Accessed 2026.
+7. Kalil AC, Metersky ML, Klompas M, et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 clinical practice guidelines by the Infectious Diseases Society of America and the American Thoracic Society. *Clin Infect Dis*. 2016;63(5):e61-e111. doi:10.1093/cid/ciw353.
+8. Rybak MJ, Le J, Lodise TP, et al. Therapeutic monitoring of vancomycin for serious methicillin-resistant Staphylococcus aureus infections: A revised consensus guideline and review by the American Society of Health-System Pharmacists, the Infectious Diseases Society of America, the Pediatric Infectious Diseases Society, and the Society of Infectious Diseases Pharmacists. *Am J Health-Syst Pharm*. 2020;77(11):835-864. doi:10.1093/ajhp/zxaa036.
+9. Wiersinga WJ, Bonten MJ, Boersma WG, et al. SWAB/NVALT guideline Community Acquired Pneumonia in Adults 2024. *SWAB Guidelines*. Published July 2024.
+10. Lim WS, Baudouin SV, George RC, et al. British Thoracic Society guidelines for the management of community acquired pneumonia in adults: update 2009. *Thorax*. 2009;64(Suppl 3):iii1-iii55. doi:10.1136/thx.2009.121434.
