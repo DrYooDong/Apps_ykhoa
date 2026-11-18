@@ -1,26 +1,23 @@
 /* ============================================================
    CLINIPORTAL SCREEN LOCKER & CLINICAL SECURITY STYLES (screen-locker.css)
-   Phiên bản: 3.0 (Pattern Lock 9 Nút Chuẩn Y Tế 2026)
-   - Khởi động khóa ngay khi vào web
-   - Mở khóa bằng hình vẽ 9 nút (3x3 Pattern Lock)
-   - Hoạt động mượt mà cả Desktop (Chuột/Phím) & Mobile/Tablet (Cảm ứng)
-   - Tuyệt đối không gợi ý để lộ mật khẩu
-   - Mặc định: Chữ Z (1-2-3-5-7-8-9)
-   - Đổi và lưu mẫu hình mới vào localStorage
+   Phiên bản: 4.0 (Minimalist Floating Glass Card • Dual Auth: Pattern 3x3 & PIN 6 Số)
+   - 100% Design Tokens Light & Dark Mode Glassmorphism (không hardcode màu)
+   - Zero Vertical Scroll trên Laptop & Mobile <= 375px
+   - Touch Targets >= 44px cho thao tác trực ca
    ============================================================ */
 
 /* ── 1. NÚT KHÓA GIAO DIỆN TRÊN HEADER ── */
 .header-lock-btn {
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--tr-fast), background-color var(--tr-fast), border-color var(--tr-fast), color var(--tr-fast);
   position: relative;
 }
 
 .header-lock-btn:hover {
-  background: var(--color-primary-hl, rgba(2, 132, 199, 0.12)) !important;
-  border-color: var(--color-primary, #0284c7) !important;
-  color: var(--color-primary, #0284c7) !important;
+  background: var(--color-primary-hl) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
   transform: scale(1.06);
 }
 
@@ -28,26 +25,80 @@
   transform: scale(0.95);
 }
 
-/* ── 2. MÀN HÌNH KHÓA TOÀN PHẦN (SCREEN LOCKER OVERLAY) ── */
+/* ── 2. MÀN HÌNH KHÓA TOÀN PHẦN & DESIGN TOKENS ── */
 .clini-screen-locker {
+  --sl-accent: var(--color-primary);
+  --sl-accent-rgb: var(--color-primary-rgb);
+  --sl-accent-hl: var(--color-primary-hl);
+  --sl-success: var(--color-success);
+  --sl-success-rgb: var(--color-success-rgb);
+  --sl-danger: var(--color-danger);
+  --sl-danger-rgb: var(--color-danger-rgb);
+  --sl-warning: var(--color-warning);
+  --sl-warning-rgb: var(--color-warning-rgb);
+
+  --sl-backdrop-bg: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  --sl-card-bg: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  --sl-card-border: rgba(var(--color-primary-rgb), 0.22);
+  --sl-card-highlight: rgba(255, 255, 255, 0.85);
+  --sl-card-shadow:
+    0 24px 60px -16px rgba(var(--color-primary-rgb), 0.16),
+    0 12px 30px -10px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 var(--sl-card-highlight);
+
+  --sl-well-bg: color-mix(in srgb, var(--color-surface-2) 86%, transparent);
+  --sl-well-border: var(--color-border);
+  --sl-key-bg: var(--color-surface);
+  --sl-key-border: var(--color-border);
+  --sl-key-shadow: var(--shadow-sm);
+  --sl-text: var(--color-text);
+  --sl-text-muted: var(--color-text-muted);
+  --sl-text-faint: var(--color-text-faint);
+  --sl-mesh-dot: rgba(var(--color-primary-rgb), 0.12);
+  --sl-ring-idle: rgba(var(--color-primary-rgb), 0.22);
+  --sl-dot-idle: var(--color-text-muted);
+  --sl-modal-bg: color-mix(in srgb, var(--color-surface) 97%, transparent);
+
   position: fixed;
   inset: 0;
   z-index: 99999999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 1rem;
-  background: radial-gradient(circle at 50% 15%, rgba(2, 132, 199, 0.24), transparent 60%),
-              radial-gradient(circle at 80% 85%, rgba(99, 102, 241, 0.16), transparent 55%),
-              rgba(7, 13, 27, 0.965);
-  backdrop-filter: blur(32px) saturate(160%);
-  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  padding: max(0.75rem, env(safe-area-inset-top, 0px)) 0.85rem max(0.75rem, env(safe-area-inset-bottom, 0px));
+  background:
+    radial-gradient(circle at 20% 15%, rgba(var(--sl-accent-rgb), 0.18), transparent 52%),
+    radial-gradient(circle at 82% 85%, rgba(var(--color-info-rgb), 0.14), transparent 52%),
+    var(--sl-backdrop-bg);
+  backdrop-filter: blur(26px) saturate(165%);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  transition: opacity 0.28s var(--ease-out), visibility 0.28s ease;
   overflow-y: auto;
   box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+[data-theme="dark"] .clini-screen-locker {
+  --sl-backdrop-bg: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  --sl-card-bg: color-mix(in srgb, var(--color-surface) 84%, transparent);
+  --sl-card-border: rgba(var(--color-primary-rgb), 0.28);
+  --sl-card-highlight: rgba(255, 255, 255, 0.1);
+  --sl-card-shadow:
+    0 32px 72px -18px rgba(0, 0, 0, 0.72),
+    0 0 42px rgba(var(--color-primary-rgb), 0.16),
+    inset 0 1px 0 var(--sl-card-highlight);
+
+  --sl-well-bg: color-mix(in srgb, var(--color-bg) 68%, transparent);
+  --sl-well-border: rgba(var(--color-primary-rgb), 0.18);
+  --sl-key-bg: color-mix(in srgb, var(--color-surface-2) 90%, transparent);
+  --sl-key-border: var(--color-border);
+  --sl-mesh-dot: rgba(255, 255, 255, 0.06);
+  --sl-ring-idle: rgba(var(--color-primary-rgb), 0.26);
+  --sl-dot-idle: var(--color-text);
+  --sl-modal-bg: color-mix(in srgb, var(--color-surface) 97%, transparent);
 }
 
 .clini-screen-locker.active {
@@ -56,210 +107,286 @@
   pointer-events: auto;
 }
 
-/* Mạng lưới nền mờ trang trí tinh tế */
 .locker-backdrop-mesh {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(var(--sl-mesh-dot) 1px, transparent 1px);
+  background-size: 26px 26px;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* ── 3. THẺ TRUNG TÂM (LOCKER CARD) ── */
+/* ── 3. MINIMALIST FLOATING GLASS CARD ── */
 .locker-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 404px;
   margin: auto;
-  background: linear-gradient(155deg, rgba(17, 28, 68, 0.88) 0%, rgba(11, 18, 43, 0.96) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  border-radius: 28px;
-  padding: 1.85rem 1.75rem 1.5rem;
-  box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.8),
-              0 0 50px rgba(2, 132, 199, 0.22),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: var(--sl-card-bg);
+  border: 1px solid var(--sl-card-border);
+  border-radius: 24px;
+  padding: 1.25rem 1.35rem 1rem;
+  box-shadow: var(--sl-card-shadow);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: #f8fafc;
-  transform: translateY(22px) scale(0.96);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--sl-text);
+  transform: translateY(18px) scale(0.96);
+  transition: transform 0.3s var(--ease-out);
   position: relative;
   overflow: hidden;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 .clini-screen-locker.active .locker-card {
   transform: translateY(0) scale(1);
 }
 
-/* Thanh ánh sáng gradient chạy trên đỉnh thẻ */
+/* Thanh ánh sáng gradient mảnh trên đỉnh thẻ */
 .locker-card-glow-bar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3.5px;
-  background: linear-gradient(90deg, #0284c7, #38bdf8, #818cf8, #06b6d4, #0284c7);
-  background-size: 250% 100%;
-  animation: lockerGradientMove 3.5s linear infinite;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sl-accent), var(--color-info), var(--sl-accent));
+  background-size: 200% 100%;
+  animation: lockerGradientMove 4s linear infinite;
 }
 
 @keyframes lockerGradientMove {
   0% { background-position: 0% 0%; }
-  100% { background-position: 250% 0%; }
+  100% { background-position: 200% 0%; }
 }
 
-/* ── 4. PHẦN ĐỈNH: ICON KHÓA & THỜI GIAN ── */
-.locker-header-zone {
+/* ── 4. COMPACT CLINICAL TOP BAR ── */
+.locker-top-bar {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-bottom: 0.75rem;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 0.95rem;
+}
+
+.locker-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  text-align: left;
 }
 
 .locker-icon-wrapper {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #0284c7, #1d4ed8);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gradient-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: #ffffff;
-  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.45);
-  margin-bottom: 0.55rem;
+  font-size: 1.05rem;
+  color: var(--color-text-inverse);
+  box-shadow: 0 6px 16px rgba(var(--sl-accent-rgb), 0.32);
   position: relative;
+  flex-shrink: 0;
 }
 
 .locker-icon-pulse {
   position: absolute;
-  inset: -6px;
-  border-radius: 24px;
-  border: 2px solid rgba(56, 189, 248, 0.45);
-  animation: lockerPulse 2.4s infinite ease-in-out;
+  inset: -4px;
+  border-radius: 15px;
+  border: 1.5px solid rgba(var(--sl-accent-rgb), 0.42);
+  animation: lockerPulse 2.6s infinite ease-in-out;
+  pointer-events: none;
 }
 
 @keyframes lockerPulse {
-  0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.12); opacity: 0.15; }
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.1); opacity: 0.1; }
 }
 
-.locker-icon-inner {
-  position: relative;
-  z-index: 2;
+.locker-brand-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.locker-brand-title {
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--sl-text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.locker-shift-date {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--sl-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.locker-top-right {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
 }
 
-.locker-system-tag {
+.locker-clock-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 3.5px 9px;
-  border-radius: 9999px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  gap: 0.4rem;
+  padding: 0.32rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--sl-well-bg);
+  border: 1px solid var(--sl-well-border);
 }
 
-/* Đồng hồ điện tử trực ca ICU */
-.locker-clock-box {
-  margin-bottom: 0.75rem;
+.locker-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sl-success);
+  box-shadow: 0 0 8px rgba(var(--sl-success-rgb), 0.75);
+  flex-shrink: 0;
 }
 
 .locker-time {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 2rem;
-  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--sl-text);
   letter-spacing: 0.02em;
-  color: #ffffff;
-  line-height: 1.1;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-.locker-date {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  font-weight: 500;
-  margin-top: 0.2rem;
-}
-
-/* Chip Bác Sĩ / Trạng Thái Bảo Mật */
-.locker-doctor-chip {
+.locker-theme-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--sl-well-border);
+  background: var(--sl-well-bg);
+  color: var(--sl-text-muted);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 9999px;
-  margin-bottom: 1rem;
+  justify-content: center;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--tr-fast);
 }
 
-.locker-doctor-name {
-  font-size: 0.78rem;
+.locker-theme-btn:hover {
+  border-color: var(--sl-accent);
+  color: var(--sl-accent);
+  background: var(--sl-accent-hl);
+}
+
+/* ── 5. SEGMENTED AUTH TAB SWITCHER ── */
+.locker-auth-tabs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  background: var(--sl-well-bg);
+  border: 1px solid var(--sl-well-border);
+  margin-bottom: 0.85rem;
+  box-sizing: border-box;
+}
+
+.locker-auth-tab {
+  min-height: 40px;
+  padding: 0.42rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--sl-text-muted);
+  font-size: 0.82rem;
   font-weight: 600;
-  color: #f1f5f9;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all var(--tr-fast);
 }
 
-.locker-doctor-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  display: inline-block;
+.locker-auth-tab:hover {
+  color: var(--sl-text);
 }
 
-/* ── 5. KHU VỰC MẪU HÌNH 9 NÚT (PATTERN LOCK 3x3) ── */
-.locker-pattern-section {
+.locker-auth-tab.active {
+  background: var(--sl-key-bg);
+  color: var(--sl-accent);
+  border-color: rgba(var(--sl-accent-rgb), 0.25);
+  box-shadow: var(--shadow-xs);
+  font-weight: 700;
+}
+
+/* ── 6. INTERACTIVE AUTH STAGE (ZERO LAYOUT SHIFT) ── */
+.locker-stage {
+  width: 100%;
+  min-height: 274px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.locker-panel {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: lockerPanelFade 0.18s var(--ease-out);
 }
 
-.locker-pattern-title {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #e2e8f0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 0.25rem;
+.locker-panel[hidden] {
+  display: none !important;
 }
 
-.locker-pattern-subtitle {
+@keyframes lockerPanelFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.locker-instruction {
   font-size: 0.76rem;
-  color: #94a3b8;
-  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--sl-text-muted);
+  margin: 0 0 0.55rem 0;
 }
 
-/* Wrapper chứa SVG và Grid 9 nút */
+/* ── 7. PATTERN LOCK 9 NÚT (3x3) ── */
 .pattern-lock-wrapper {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 248px;
+  height: 248px;
   margin: 0 auto;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(56, 189, 248, 0.16);
+  background: var(--sl-well-bg);
+  border: 1px solid var(--sl-well-border);
   border-radius: 20px;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--inset-shadow-sm);
   touch-action: none !important;
   user-select: none;
   -webkit-user-select: none;
   overflow: hidden;
+  transition: border-color var(--tr-fast), box-shadow var(--tr-fast);
 }
 
-/* Lớp SVG vẽ đường nối */
 .pattern-lock-svg {
   position: absolute;
   inset: 0;
@@ -270,32 +397,31 @@
 }
 
 .pattern-line {
-  stroke: #38bdf8;
+  stroke: var(--sl-accent);
   stroke-width: 4.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8));
-  transition: stroke 0.2s ease;
+  filter: drop-shadow(0 0 5px rgba(var(--sl-accent-rgb), 0.55));
+  transition: stroke 0.18s ease;
 }
 
 .pattern-line.error {
-  stroke: #f43f5e !important;
-  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.85)) !important;
+  stroke: var(--sl-danger) !important;
+  filter: drop-shadow(0 0 7px rgba(var(--sl-danger-rgb), 0.65)) !important;
 }
 
 .pattern-line.success {
-  stroke: #10b981 !important;
-  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.85)) !important;
+  stroke: var(--sl-success) !important;
+  filter: drop-shadow(0 0 7px rgba(var(--sl-success-rgb), 0.65)) !important;
 }
 
 .pattern-tracker-line {
-  stroke: rgba(56, 189, 248, 0.75);
+  stroke: rgba(var(--sl-accent-rgb), 0.7);
   stroke-width: 3.5px;
   stroke-linecap: round;
   stroke-dasharray: 6 4;
 }
 
-/* Lưới 3x3 chứa 9 nút */
 .pattern-nodes-grid {
   position: absolute;
   inset: 0;
@@ -323,225 +449,415 @@
   outline: none;
 }
 
-/* Vòng tròn bên ngoài nút */
 .pattern-ring {
   position: absolute;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1.8px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.8px solid var(--sl-ring-idle);
+  background: rgba(var(--sl-accent-rgb), 0.04);
+  transition: all 0.2s var(--ease-out);
   pointer-events: none;
 }
 
-/* Điểm chấm ở giữa nút */
 .pattern-dot {
   position: relative;
   z-index: 2;
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--sl-dot-idle);
+  box-shadow: 0 0 6px rgba(var(--sl-accent-rgb), 0.22);
+  transition: all 0.2s var(--ease-spring);
   pointer-events: none;
 }
 
-/* Hover trên Desktop */
 @media (hover: hover) {
   .pattern-node:hover .pattern-ring {
-    border-color: rgba(56, 189, 248, 0.5);
-    background: rgba(56, 189, 248, 0.1);
-    transform: scale(1.1);
+    border-color: rgba(var(--sl-accent-rgb), 0.55);
+    background: rgba(var(--sl-accent-rgb), 0.1);
+    transform: scale(1.08);
   }
-
   .pattern-node:hover .pattern-dot {
-    background: #38bdf8;
-    box-shadow: 0 0 10px #38bdf8;
+    background: var(--sl-accent);
   }
 }
 
-/* Trạng thái nút ĐANG NỐI (Active) */
 .pattern-node.active .pattern-ring {
-  width: 48px;
-  height: 48px;
-  border-color: #38bdf8;
-  background: rgba(2, 132, 199, 0.28);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
-  transform: scale(1.16);
+  width: 46px;
+  height: 46px;
+  border-color: var(--sl-accent);
+  background: rgba(var(--sl-accent-rgb), 0.18);
+  box-shadow: 0 0 14px rgba(var(--sl-accent-rgb), 0.35);
+  transform: scale(1.12);
 }
 
 .pattern-node.active .pattern-dot {
-  background: #38bdf8;
-  box-shadow: 0 0 14px #38bdf8, 0 0 22px rgba(56, 189, 248, 0.9);
-  transform: scale(1.25);
+  background: var(--sl-accent);
+  box-shadow: 0 0 10px rgba(var(--sl-accent-rgb), 0.75);
+  transform: scale(1.24);
 }
 
-/* Trạng thái LỖI (Error) */
 .pattern-lock-wrapper.error {
-  border-color: rgba(244, 63, 94, 0.45);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 25px rgba(244, 63, 94, 0.3);
+  border-color: rgba(var(--sl-danger-rgb), 0.5);
+  box-shadow: var(--inset-shadow-sm), 0 0 20px rgba(var(--sl-danger-rgb), 0.2);
 }
 
 .pattern-node.error .pattern-ring {
-  border-color: #f43f5e !important;
-  background: rgba(244, 63, 94, 0.28) !important;
-  box-shadow: 0 0 18px rgba(244, 63, 94, 0.65) !important;
+  border-color: var(--sl-danger) !important;
+  background: rgba(var(--sl-danger-rgb), 0.2) !important;
 }
 
 .pattern-node.error .pattern-dot {
-  background: #f43f5e !important;
-  box-shadow: 0 0 14px #f43f5e, 0 0 22px rgba(244, 63, 94, 0.9) !important;
+  background: var(--sl-danger) !important;
+  box-shadow: 0 0 12px rgba(var(--sl-danger-rgb), 0.75) !important;
 }
 
-/* Trạng thái THÀNH CÔNG (Success) */
 .pattern-lock-wrapper.success {
-  border-color: rgba(16, 185, 129, 0.45);
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 25px rgba(16, 185, 129, 0.3);
+  border-color: rgba(var(--sl-success-rgb), 0.5);
+  box-shadow: var(--inset-shadow-sm), 0 0 20px rgba(var(--sl-success-rgb), 0.22);
 }
 
 .pattern-node.success .pattern-ring {
-  border-color: #10b981 !important;
-  background: rgba(16, 185, 129, 0.28) !important;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.65) !important;
+  border-color: var(--sl-success) !important;
+  background: rgba(var(--sl-success-rgb), 0.2) !important;
 }
 
 .pattern-node.success .pattern-dot {
-  background: #10b981 !important;
-  box-shadow: 0 0 14px #10b981, 0 0 22px rgba(16, 185, 129, 0.9) !important;
+  background: var(--sl-success) !important;
+  box-shadow: 0 0 12px rgba(var(--sl-success-rgb), 0.75) !important;
 }
 
-/* Thông báo phản hồi */
+/* ── 8. PIN 6 SỐ & NUMPAD CÔNG THÁI HỌC ── */
+.pin-widget-root {
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pin-display-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.pin-dots-track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.42rem;
+  flex: 1;
+}
+
+.pin-slot {
+  height: 40px;
+  border-radius: 10px;
+  background: var(--sl-well-bg);
+  border: 1.5px solid var(--sl-well-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--sl-text);
+  position: relative;
+  transition: all 0.16s var(--ease-spring);
+}
+
+.pin-slot.filled {
+  border-color: var(--sl-accent);
+  background: var(--sl-accent-hl);
+  transform: scale(1.03);
+}
+
+.pin-slot.filled::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sl-accent);
+  box-shadow: 0 0 8px rgba(var(--sl-accent-rgb), 0.55);
+}
+
+.pin-slot.revealed.filled::after {
+  display: none;
+}
+
+.pin-slot.error {
+  border-color: var(--sl-danger) !important;
+  background: var(--color-danger-hl) !important;
+  color: var(--sl-danger) !important;
+}
+
+.pin-slot.error.filled::after {
+  background: var(--sl-danger) !important;
+}
+
+.pin-slot.success {
+  border-color: var(--sl-success) !important;
+  background: var(--color-success-hl) !important;
+  color: var(--sl-success) !important;
+}
+
+.pin-slot.success.filled::after {
+  background: var(--sl-success) !important;
+}
+
+.pin-eye-btn {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--sl-well-border);
+  background: var(--sl-well-bg);
+  color: var(--sl-text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--tr-fast);
+}
+
+.pin-eye-btn:hover {
+  border-color: var(--sl-accent);
+  color: var(--sl-accent);
+  background: var(--sl-accent-hl);
+}
+
+.pin-numpad-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pin-key {
+  min-height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--sl-key-border);
+  background: var(--sl-key-bg);
+  color: var(--sl-text);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: var(--sl-key-shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s var(--ease-out), background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+}
+
+.pin-key:hover:not(:disabled) {
+  background: var(--sl-accent-hl);
+  border-color: rgba(var(--sl-accent-rgb), 0.45);
+  color: var(--sl-accent);
+}
+
+.pin-key:active:not(:disabled) {
+  transform: scale(0.93);
+}
+
+.pin-key-fn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--sl-text-muted);
+  background: var(--sl-well-bg);
+}
+
+.pin-key:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── 9. COOLDOWN SHIELD OVERLAY (CHỐNG DÒ MÃ) ── */
+.locker-cooldown-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--sl-danger-rgb), 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  animation: lockerPanelFade 0.2s var(--ease-out);
+}
+
+.locker-cooldown-overlay[hidden] {
+  display: none !important;
+}
+
+.cooldown-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-danger-hl);
+  border: 1px solid rgba(var(--sl-danger-rgb), 0.35);
+  color: var(--sl-danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.65rem;
+}
+
+.cooldown-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--sl-danger);
+  margin-bottom: 0.25rem;
+}
+
+.cooldown-desc {
+  font-size: 0.78rem;
+  color: var(--sl-text-muted);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.cooldown-timer {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--sl-text);
+  padding: 0.28rem 0.9rem;
+  border-radius: 12px;
+  background: var(--sl-well-bg);
+  border: 1px solid rgba(var(--sl-danger-rgb), 0.3);
+}
+
+/* ── 10. FEEDBACK & FOOTER BAR ── */
 .locker-feedback-msg {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   min-height: 22px;
-  margin: 0.65rem 0 0.45rem;
-  transition: all 0.2s ease;
-  color: #94a3b8;
+  margin: 0.65rem 0 0.5rem;
+  color: var(--sl-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: color 0.18s ease;
 }
 
 .locker-feedback-msg.error {
-  color: #fb7185;
-  animation: lockerShake 0.42s ease-in-out;
+  color: var(--sl-danger);
 }
 
 .locker-feedback-msg.success {
-  color: #34d399;
+  color: var(--sl-success);
 }
 
-/* Hiệu ứng rung lắc khi sai mã */
+.locker-feedback-msg.warning {
+  color: var(--sl-warning);
+}
+
 @keyframes lockerShake {
   0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-9px); }
-  40%, 80% { transform: translateX(9px); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
 }
 
 .shake-animation {
-  animation: lockerShake 0.42s ease-in-out;
+  animation: lockerShake 0.4s ease-in-out;
 }
 
-/* ── 6. THANH HÀNH ĐỘNG DƯỚI CÙNG ── */
-.locker-actions {
+.locker-footer {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-top: 0.35rem;
-}
-
-.locker-quick-btns {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.locker-clear-btn {
-  width: 100%;
-  padding: 0.68rem 1rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  transition: all 0.2s ease;
-}
-
-.locker-clear-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.locker-clear-btn:active {
-  transform: scale(0.98);
-}
-
-/* Hàng bảo mật & Đổi mẫu hình (TUYỆT ĐỐI KHÔNG CÓ GỢI Ý MẬT KHẨU) */
-.locker-helpers {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  font-size: 0.75rem;
-  color: #94a3b8;
-  padding: 0 4px;
+  gap: 0.5rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--sl-well-border);
+  box-sizing: border-box;
 }
 
-.locker-security-hint {
+.locker-idle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sl-text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.locker-footer-actions {
   display: flex;
   align-items: center;
-  gap: 5px;
-  color: #64748b;
-  font-size: 0.74rem;
+  gap: 0.35rem;
+  flex-shrink: 0;
 }
 
 .locker-link-btn {
-  background: none;
-  border: none;
-  color: #38bdf8;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--sl-text-muted);
   font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
-  padding: 4px 6px;
+  min-height: 36px;
+  padding: 0.3rem 0.55rem;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  border-radius: 6px;
-  transition: all 0.15s ease;
+  gap: 0.35rem;
+  border-radius: 8px;
+  transition: all var(--tr-fast);
 }
 
 .locker-link-btn:hover {
-  color: #7dd3fc;
-  background: rgba(56, 189, 248, 0.1);
+  color: var(--sl-text);
+  background: var(--sl-well-bg);
 }
 
-/* ── 7. MODAL THAY ĐỔI MẪU HÌNH 9 NÚT ── */
+.locker-link-primary {
+  color: var(--sl-accent);
+  background: var(--sl-accent-hl);
+  border-color: rgba(var(--sl-accent-rgb), 0.22);
+}
+
+.locker-link-primary:hover {
+  color: var(--sl-accent);
+  border-color: var(--sl-accent);
+}
+
+/* ── 11. MODAL ĐỔI MÃ BẢO MẬT (3 BƯỚC CHO CẢ PATTERN & PIN) ── */
 .locker-change-modal {
   position: absolute;
   inset: 0;
-  background: rgba(9, 15, 33, 0.985);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border-radius: 28px;
-  padding: 1.5rem 1.35rem;
+  background: var(--sl-modal-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: inherit;
+  padding: 1.15rem 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   z-index: 10;
   opacity: 0;
   visibility: hidden;
   transform: scale(0.96);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s var(--ease-out);
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .locker-change-modal.show {
@@ -550,97 +866,147 @@
   transform: scale(1);
 }
 
-.change-pattern-card {
+.change-modal-top {
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
 }
 
-.change-pattern-header {
-  text-align: center;
-  margin-bottom: 0.75rem;
-}
-
-.change-pattern-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
+.change-modal-heading {
   display: flex;
   align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--sl-text);
+  margin: 0;
+}
+
+.change-modal-heading i {
+  color: var(--sl-accent);
+}
+
+.change-modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--sl-well-border);
+  background: var(--sl-well-bg);
+  color: var(--sl-text-muted);
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  margin: 0 auto 0.45rem;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  cursor: pointer;
 }
 
-.change-pattern-title {
-  font-size: 1.1rem;
+.change-modal-close:hover {
+  color: var(--sl-danger);
+  border-color: rgba(var(--sl-danger-rgb), 0.4);
+}
+
+.change-target-tabs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--sl-well-bg);
+  border: 1px solid var(--sl-well-border);
+  margin-bottom: 0.55rem;
+}
+
+.change-target-tab {
+  min-height: 34px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--sl-text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tr-fast);
+}
+
+.change-target-tab.active {
+  background: var(--sl-key-bg);
+  color: var(--sl-accent);
+  border-color: rgba(var(--sl-accent-rgb), 0.24);
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.2rem;
 }
 
-/* Các bước chuyển tiếp (1. Hiện tại -> 2. Mới -> 3. Xác nhận) */
+.change-target-tab:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .change-pattern-steps {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 0.65rem;
+  gap: 6px;
+  margin-bottom: 0.45rem;
   width: 100%;
 }
 
 .change-step-pill {
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #64748b;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
+  color: var(--sl-text-faint);
+  background: var(--sl-well-bg);
+  border: 1px solid var(--sl-well-border);
+  transition: all 0.18s ease;
 }
 
 .change-step-pill.active {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--sl-accent);
+  background: var(--sl-accent-hl);
+  border-color: rgba(var(--sl-accent-rgb), 0.4);
 }
 
 .change-step-pill.completed {
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--sl-success);
+  background: var(--color-success-hl);
+  border-color: rgba(var(--sl-success-rgb), 0.35);
 }
 
-/* Hướng dẫn từng bước trong modal */
 .change-pattern-guide {
-  font-size: 0.8rem;
-  color: #cbd5e1;
+  font-size: 0.78rem;
+  color: var(--sl-text-muted);
   font-weight: 600;
-  margin-bottom: 0.65rem;
-  min-height: 20px;
+  margin-bottom: 0.45rem;
+  min-height: 18px;
 }
 
-/* Lưới Pattern Lock nhỏ trong modal */
+.modal-auth-stage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+}
+
 .modal-pattern-container {
-  width: 220px;
-  height: 220px;
+  width: 196px;
+  height: 196px;
   margin: 0 auto;
 }
 
 .modal-pattern-container .pattern-lock-wrapper {
-  width: 220px !important;
-  height: 220px !important;
+  width: 196px !important;
+  height: 196px !important;
   border-radius: 16px;
 }
 
 .modal-pattern-container .pattern-ring {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
 }
 
 .modal-pattern-container .pattern-dot {
@@ -649,114 +1015,160 @@
 }
 
 .modal-pattern-container .pattern-node.active .pattern-ring {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
 }
 
-.modal-pattern-container .pattern-node.active .pattern-dot {
-  width: 12px;
-  height: 12px;
+.modal-pin-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/* Các nút điều khiển trong modal */
+.modal-pin-container .pin-widget-root {
+  max-width: 248px;
+}
+
+.modal-pin-container .pin-slot {
+  height: 34px;
+  border-radius: 8px;
+}
+
+.modal-pin-container .pin-key {
+  min-height: 38px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
 .change-pattern-actions {
   display: flex;
   gap: 8px;
   width: 100%;
-  margin-top: 0.65rem;
+  margin-top: 0.25rem;
 }
 
 .change-btn-cancel,
 .change-btn-retry {
   flex: 1;
-  padding: 0.6rem;
+  min-height: 40px;
+  padding: 0.5rem;
   border-radius: 10px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  border: none;
+  border: 1px solid var(--sl-well-border);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  transition: all 0.16s ease;
+  transition: all var(--tr-fast);
 }
 
 .change-btn-cancel {
-  background: rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
+  background: var(--sl-well-bg);
+  color: var(--sl-text-muted);
 }
 
 .change-btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.14);
+  color: var(--sl-text);
 }
 
 .change-btn-retry {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.change-btn-retry:hover {
-  background: rgba(56, 189, 248, 0.25);
+  background: var(--sl-accent-hl);
+  color: var(--sl-accent);
+  border-color: rgba(var(--sl-accent-rgb), 0.3);
 }
 
 .change-pattern-reset-link {
   background: none;
   border: none;
-  color: #64748b;
+  color: var(--sl-text-faint);
   font-size: 0.72rem;
   cursor: pointer;
-  margin-top: 0.65rem;
+  margin-top: 0.4rem;
+  padding: 4px 8px;
   text-decoration: underline;
   transition: color 0.15s ease;
 }
 
 .change-pattern-reset-link:hover {
-  color: #94a3b8;
+  color: var(--sl-danger);
 }
 
-/* ── 8. RESPONSIVE THIẾT KẾ ĐA THIẾT BỊ ── */
-@media (max-width: 768px) {
+.change-pattern-reset-link[hidden] {
+  display: none !important;
+}
+
+/* ── 12. RESPONSIVE THIẾT BỊ NHỎ (<= 400px & <= 375px) ── */
+@media (max-width: 420px) {
   .locker-card {
-    padding: 1.5rem 1.2rem 1.35rem;
-    max-width: 375px;
-    border-radius: 24px;
+    max-width: 360px;
+    padding: 1.05rem 1rem 0.9rem;
+    border-radius: 22px;
   }
 
-  .locker-time {
-    font-size: 1.8rem;
+  .locker-stage {
+    min-height: 260px;
   }
 
   .pattern-lock-wrapper {
-    width: 270px;
-    height: 270px;
+    width: 232px;
+    height: 232px;
+  }
+
+  .pin-widget-root {
+    max-width: 264px;
+  }
+
+  .pin-key {
+    min-height: 44px;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 375px) {
+  .clini-screen-locker {
+    padding: 0.5rem;
+  }
+
   .locker-card {
-    padding: 1.25rem 0.95rem 1.15rem;
+    max-width: 344px;
+    padding: 0.95rem 0.85rem 0.85rem;
     border-radius: 20px;
-    max-width: 330px;
+  }
+
+  .locker-top-bar {
+    margin-bottom: 0.75rem;
+  }
+
+  .locker-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .locker-brand-title {
+    font-size: 0.88rem;
+  }
+
+  .locker-clock-pill {
+    padding: 0.25rem 0.5rem;
   }
 
   .locker-time {
-    font-size: 1.55rem;
+    font-size: 0.76rem;
   }
 
-  .locker-clock-box {
-    margin-bottom: 0.5rem;
+  .locker-auth-tabs {
+    margin-bottom: 0.65rem;
   }
 
-  .locker-doctor-chip {
-    margin-bottom: 0.75rem;
-    padding: 0.3rem 0.75rem;
+  .locker-stage {
+    min-height: 244px;
   }
 
   .pattern-lock-wrapper {
-    width: 236px;
-    height: 236px;
+    width: 214px;
+    height: 214px;
   }
 
   .pattern-ring {
@@ -764,18 +1176,39 @@
     height: 38px;
   }
 
-  .pattern-dot {
-    width: 11px;
-    height: 11px;
+  .pin-slot {
+    height: 36px;
+  }
+
+  .pin-key {
+    min-height: 44px;
+    font-size: 1.05rem;
+  }
+
+  .locker-idle-badge {
+    font-size: 0.68rem;
   }
 
   .modal-pattern-container {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
   }
 
   .modal-pattern-container .pattern-lock-wrapper {
-    width: 190px !important;
-    height: 190px !important;
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .locker-card-glow-bar,
+  .locker-icon-pulse {
+    animation: none;
+  }
+  .clini-screen-locker,
+  .locker-card,
+  .locker-panel {
+    transition: none;
+    animation: none;
   }
 }

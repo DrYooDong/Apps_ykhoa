@@ -10,6 +10,7 @@
 
 import { CLINICAL_CHEATSHEETS_DATA, ClinicalCheatsheetItem } from '../data/clinical-cheatsheets-data';
 import { CliniPortalThemeManager } from '../main';
+import { cliniScreenLocker, AuthMethod } from './screen-locker';
 
 let deferredPwaPrompt: any = null;
 
@@ -328,6 +329,37 @@ function setupSettingsSyncModal(): void {
             </div>
 
             <div class="cp-modal-section">
+              <h4 class="cp-section-title">🔒 Bảo mật & Khóa Trạm</h4>
+              <p class="cp-section-desc">Quản lý phương thức mở khóa, tự động khóa khi treo máy và đổi mã bảo mật (Phiên ca trực 8 giờ).</p>
+              <div class="cp-form-row" style="margin-bottom: 0.65rem; display: flex; align-items: center; justify-content: space-between;">
+                <span class="cp-form-label">Phương thức ưu tiên</span>
+                <select class="cp-select" id="cpAuthMethodSelect" style="padding: 0.4rem 1.75rem 0.4rem 0.75rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); background-color: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-weight: 600; font-size: 0.85rem;">
+                  <option value="pattern">Mẫu hình 9 nút</option>
+                  <option value="pin">Mã PIN 6 số</option>
+                </select>
+              </div>
+              <div class="cp-form-row" style="margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+                <span class="cp-form-label">Tự động khóa khi rảnh</span>
+                <select class="cp-select" id="cpIdleLockSelect" style="padding: 0.4rem 1.75rem 0.4rem 0.75rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); background-color: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-weight: 600; font-size: 0.85rem;">
+                  <option value="5">Sau 5 phút</option>
+                  <option value="15">Sau 15 phút (Mặc định)</option>
+                  <option value="30">Sau 30 phút</option>
+                  <option value="0">Tắt tự động khóa</option>
+                </select>
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button type="button" class="cp-setting-btn" id="cpChangeCodeBtn" style="flex: 1; min-height: 40px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-weight: 700; font-size: 0.82rem;">
+                  <i class="fa-solid fa-key" style="color: var(--color-primary, #087f9c);"></i>
+                  <span>Đổi mã bảo mật</span>
+                </button>
+                <button type="button" class="cp-setting-btn" id="cpLockNowBtn" style="flex: 1; min-height: 40px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid rgba(var(--color-primary-rgb, 8, 127, 156), 0.3); background: var(--color-primary-hl, #ecfeff); color: var(--color-primary, #087f9c); font-weight: 700; font-size: 0.82rem;">
+                  <i class="fa-solid fa-lock"></i>
+                  <span>Khóa ngay (Alt+L)</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="cp-modal-section">
               <h4 class="cp-section-title">⌨️ Phím tắt Hệ thống</h4>
               <p class="cp-section-desc">Tra cứu các phím tắt nhanh để điều hướng ứng dụng.</p>
               <button class="cp-setting-btn" id="modalHotkeyBtn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 0.45rem 0.9rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); background: var(--color-surface, #fff); color: var(--color-text, #0f172a); font-weight: 700; font-size: 0.85rem;">
@@ -379,6 +411,19 @@ function setupSettingsSyncModal(): void {
   const modalThemeIcon = document.getElementById('modalThemeIcon');
   const modalThemeText = document.getElementById('modalThemeText');
   const modalHotkeyBtn = document.getElementById('modalHotkeyBtn');
+  const authMethodSelect = document.getElementById('cpAuthMethodSelect') as HTMLSelectElement | null;
+  const idleLockSelect = document.getElementById('cpIdleLockSelect') as HTMLSelectElement | null;
+  const changeCodeBtn = document.getElementById('cpChangeCodeBtn');
+  const lockNowBtn = document.getElementById('cpLockNowBtn');
+
+  function syncModalSecurityUI(): void {
+    if (authMethodSelect) {
+      authMethodSelect.value = cliniScreenLocker.getAuthMethod();
+    }
+    if (idleLockSelect) {
+      idleLockSelect.value = String(cliniScreenLocker.getIdleTimeoutMinutes());
+    }
+  }
 
   function syncModalThemeUI(): void {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
@@ -398,6 +443,7 @@ function setupSettingsSyncModal(): void {
   function openSettingsModal(): void {
     if (!modal) return;
     syncModalThemeUI();
+    syncModalSecurityUI();
     modal.style.display = 'flex';
     requestAnimationFrame(() => {
       modal.classList.add('show');
@@ -443,6 +489,26 @@ function setupSettingsSyncModal(): void {
       syncModalThemeUI();
     });
   }
+
+  authMethodSelect?.addEventListener('change', () => {
+    const val = authMethodSelect.value === 'pin' ? 'pin' : 'pattern';
+    cliniScreenLocker.setAuthMethod(val as AuthMethod);
+  });
+
+  idleLockSelect?.addEventListener('change', () => {
+    const mins = parseInt(idleLockSelect.value, 10);
+    cliniScreenLocker.setIdleTimeoutMinutes(Number.isFinite(mins) ? mins : 15);
+  });
+
+  changeCodeBtn?.addEventListener('click', () => {
+    closeSettingsModal();
+    cliniScreenLocker.openChangeCredentialsModal(true);
+  });
+
+  lockNowBtn?.addEventListener('click', () => {
+    closeSettingsModal();
+    cliniScreenLocker.lock('Đã khóa trạm làm việc lâm sàng');
+  });
 
   if (modalHotkeyBtn) {
     modalHotkeyBtn.addEventListener('click', () => {
@@ -658,7 +724,7 @@ function setupMobileNavDrawer(): void {
 
   document.getElementById('cpDrawerLockBtn')?.addEventListener('click', () => {
     closeDrawer();
-    document.getElementById('headerLockBtn')?.click();
+    cliniScreenLocker.lock('Đã khóa trạm làm việc lâm sàng');
   });
 
   document.getElementById('cpDrawerSettingsBtn')?.addEventListener('click', () => {

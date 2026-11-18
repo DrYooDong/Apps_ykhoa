@@ -131,7 +131,7 @@ export function renderHeaderHtml(projectRoot = './'): string {
           </button>
 
           <!-- Nút Icon Khóa Giao Diện Lâm Sàng -->
-          <button type="button" class="header-settings-btn header-lock-btn" id="headerLockBtn" title="Khóa giao diện lâm sàng (Mã PIN)" aria-label="Khóa giao diện lâm sàng">
+          <button type="button" class="header-settings-btn header-lock-btn" id="headerLockBtn" title="Khóa giao diện lâm sàng (Alt+L)" aria-label="Khóa giao diện lâm sàng">
             <i class="fa-solid fa-lock"></i>
           </button>
 
