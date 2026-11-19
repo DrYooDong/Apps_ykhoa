@@ -1018,6 +1018,67 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'nhiem-trung-tieu',
+    slug: 'nhiem-trung-tieu',
+    specialtyId: 'truyen-nhiem',
+    name: 'Nhiễm Trùng Đường Tiết Niệu (UTI)',
+    nameEn: 'Adult Urinary Tract Infections',
+    icd10: 'N39.0 / N10',
+    icon: 'fa-droplet',
+    color: '#0d9488',
+    badge: 'EBM 2026 • EAU / IDSA / VUNA',
+    summary: 'Hướng dẫn các hệ thống phân loại UTI ở người lớn: giải phẫu trên/dưới, ORENUC (EAU 2011), mô hình mới Localised vs Systemic UTI (EAU 2025/2026 & IDSA 2025), phân tầng nguy cơ đa kháng VUNA và xử trí ABU/CAUTI/Urosepsis.',
+    keyPearlsPreview: [
+      'EAU 2025/2026 bỏ hẳn "đơn thuần / phức tạp", chuyển sang Nhiễm trùng tiểu khu trú (Localised) vs Toàn thân (Systemic) kèm đánh giá Yếu tố nguy cơ độc lập',
+      'Giới tính nam không còn bị mặc định là nhiễm trùng phức tạp nếu chỉ viêm bàng quang khu trú không kèm bệnh lý tuyến tiền liệt',
+      'Tuyệt đối không tầm soát và không điều trị kháng sinh cho Khuẩn niệu không triệu chứng (ABU), trừ 2 chỉ định: phụ nữ có thai và trước thủ thuật niệu khoa xâm lấn niêm mạc',
+      'Urosepsis do sỏi niệu quản kẹt là cấp cứu niệu khoa 3 mũi nhọn: hồi sức tuần hoàn, kháng sinh tĩnh mạch giờ đầu và giải áp khẩn cấp (JJ/PCN)'
+    ],
+    guidelines: ['EAU Urological Infections 2026', 'IDSA cUTI Guideline 2025', 'Hướng dẫn Điều trị Nhiễm khuẩn Đường tiết niệu (VUNA)'],
+    order: 12,
+    articles: [
+      {
+        id: 'nt-tieu-01-he-thong-phan-loai-nhiem-trung-tieu-nguoi-lon',
+        slug: 'nt-tieu-01-he-thong-phan-loai-nhiem-trung-tieu-nguoi-lon',
+        diseaseId: 'nhiem-trung-tieu',
+        specialtyId: 'truyen-nhiem',
+        title: 'Nhiễm Trùng Tiểu Ở Người Lớn: Hướng Dẫn Các Hệ Thống Phân Loại (EAU 2025/2026, IDSA 2025 & VUNA)',
+        subtitle: 'Từ phân loại giải phẫu & nhị phân truyền thống đến ORENUC, Localised vs Systemic UTI (EAU 2026), phân tầng đa kháng VUNA và xử trí ABU/CAUTI/Urosepsis',
+        description: 'Hướng dẫn toàn diện các hệ thống phân loại nhiễm trùng đường tiết niệu ở người lớn: khắc phục bẫy Undertreatment/Overtreatment của phân loại nhị phân, bảng ORENUC, mô hình EAU 2025/2026 & IDSA 2025, phân tầng nguy cơ đa kháng VUNA, các hội chứng đặc biệt (ABU, CAUTI, viêm bàng quang tái phát, urosepsis) và ca lâm sàng sốc nhiễm khuẩn do sỏi niệu quản kẹt.',
+        estimatedMinutes: 25,
+        tags: [
+          'Nhiễm trùng tiểu (UTI)',
+          'EAU 2025/2026',
+          'Localised vs Systemic UTI',
+          'IDSA 2025',
+          'ORENUC',
+          'Phân tầng đa kháng VUNA',
+          'Khuẩn niệu không triệu chứng (ABU)',
+          'CAUTI',
+          'Urosepsis',
+          'EBM 2026'
+        ],
+        keyTakeaway: 'Chuyển từ "đơn thuần / phức tạp" sang "khu trú / toàn thân" theo EAU 2025/2026; đánh giá độc lập yếu tố nguy cơ & phân tầng đa kháng VUNA; không điều trị ABU ngoài thai kỳ/thủ thuật niệu khoa; giải áp khẩn cấp (JJ/PCN) trong urosepsis do tắc nghẽn.',
+        order: 1,
+        filePath: 'truyen-nhiem/nhiem-trung-tieu/nt-tieu-01-he-thong-phan-loai-nhiem-trung-tieu-nguoi-lon.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-19',
+        evidenceLevel: 'EBM 2026 • EAU 2025/2026 • IDSA 2025 • VUNA',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Tầm Quan Trọng Của Phân Loại UTI', icon: 'fa-bolt' },
+          { id: 'sec-anatomical-traditional', number: 2, title: 'Phân Loại Giải Phẫu, Truyền Thống & Bất Cập Nhị Phân', icon: 'fa-layer-group' },
+          { id: 'sec-orenuc', number: 3, title: 'Hệ Thống Phân Loại ORENUC (EAU 2011)', icon: 'fa-table-list' },
+          { id: 'sec-modern-eau-idsa', number: 4, title: 'Bước Chuyển Dịch Hiện Đại: EAU 2025/2026 & Cập Nhật IDSA 2025', icon: 'fa-diagram-project' },
+          { id: 'sec-vuna-mdr', number: 5, title: 'Hoàn Cảnh Mắc Bệnh & Phân Tầng Nguy Cơ Đa Kháng (VUNA)', icon: 'fa-shield-virus' },
+          { id: 'sec-special-syndromes', number: 6, title: 'Các Phân Nhóm & Hội Chứng Lâm Sàng Đặc Biệt (ABU, CAUTI, Urosepsis)', icon: 'fa-notes-medical' },
+          { id: 'sec-bedside-algorithm', number: 7, title: 'Thuật Toán Tiếp Cận & Xử Trí Phân Tầng Tại Giường Bệnh', icon: 'fa-route' },
+          { id: 'sec-clinical-case', number: 8, title: 'Ca Lâm Sàng Thực Chiến: Sốc Nhiễm Khuẩn Do Sỏi Niệu Quản Kẹt', icon: 'fa-user-doctor' },
+          { id: 'sec-take-home-references', number: 9, title: 'Tổng Kết Bài Học & Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   }
 ];
 
