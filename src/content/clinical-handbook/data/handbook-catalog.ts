@@ -649,6 +649,47 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           'Source Control',
           'EBM 2026'
         ]
+      },
+      {
+        id: 'sepsis-02-10-van-de-quan-trong-tiep-can-soc-nhiem-trung',
+        slug: 'sepsis-02-10-van-de-quan-trong-tiep-can-soc-nhiem-trung',
+        diseaseId: 'nhiem-khuan-huyet',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tổng Hợp 10 Vấn Đề Quan Trọng Trong Tiếp Cận Sốc Nhiễm Trùng (Septic Shock)',
+        subtitle: 'Sepsis-3, sàng lọc SIRS/NEWS, cấy máu 2 bộ, kháng sinh 1 giờ PK/PD, dịch tinh thể 30 mL/kg, Norepinephrine ngoại vi, PLR/CRT, Source Control 6 giờ & sốc kháng trị',
+        description: 'Tổng hợp 10 vấn đề thực chiến cốt lõi khi tiếp cận một trường hợp nghi ngờ sốc nhiễm trùng theo Surviving Sepsis Campaign (SSC 2021/2026): tối ưu hóa truyền kéo dài Beta-lactam, phân tầng đích MAP 60–65 mmHg ở người ≥ 65 tuổi, nghiệm pháp PLR, CRT ≤ 3 giây (ANDROMEDA-SHOCK), bậc thang Vasopressin/Dobutamine/Hydrocortisone và ca lâm sàng sốc nhiễm trùng tiết niệu tắc nghẽn.',
+        estimatedMinutes: 25,
+        keyTakeaway: 'Kháng sinh phổ rộng + Lactate trong 1 giờ; truyền kéo dài Beta-lactam sau liều tải; bù 30 mL/kg tinh thể cân bằng & khởi động Norepinephrine ngoại vi sớm (MAP 60–65 mmHg nếu ≥ 65 tuổi); đánh giá PLR/CRT; Source Control & nhập ICU trong 6 giờ.',
+        order: 2,
+        filePath: 'truyen-nhiem/sepsis/sepsis-02-10-van-de-quan-trong-tiep-can-soc-nhiem-trung.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-20',
+        evidenceLevel: 'EBM 2026 • Surviving Sepsis Campaign (SSC 2021/2026) • Sepsis-3',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Định Nghĩa Sepsis-3 (The Bottom Line)', icon: 'fa-bolt' },
+          { id: 'sec-screening-microbiology', number: 2, title: 'Vấn Đề 1–2: Sàng Lọc Sớm, Lactate Giờ Đầu & Cấy Vi Sinh Chuẩn', icon: 'fa-vial-virus' },
+          { id: 'sec-antibiotics-fluids', number: 3, title: 'Vấn Đề 3–4: Kháng Sinh 1 Giờ Vàng (PK/PD) & Hồi Sức Dịch 30 mL/kg', icon: 'fa-droplet' },
+          { id: 'sec-vasopressors-dynamic', number: 4, title: 'Vấn Đề 5–7: Vận Mạch Sớm, Chỉ Số Động Lực Học (PLR) & Đích Tưới Máu Mô', icon: 'fa-heart-pulse' },
+          { id: 'sec-source-refractory-icu', number: 5, title: 'Vấn Đề 8–10: Source Control 6 Giờ, Sốc Kháng Trị & Chăm Sóc ICU', icon: 'fa-crosshairs' },
+          { id: 'sec-pitfalls', number: 6, title: 'Lưới Cạm Bẫy Chết Người Trong Hồi Sức Sốc Nhiễm Trùng', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Thực Chiến: Sốc Nhiễm Trùng Tiết Niệu Tắc Nghẽn (Nam 68 Tuổi)', icon: 'fa-user-doctor' },
+          { id: 'sec-summary-matrix', number: 8, title: 'Bảng Tổng Kết: 10 Nguyên Tắc Hành Động Cốt Lõi (SSC)', icon: 'fa-table-list' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Định Dạng AMA)', icon: 'fa-book-bookmark' }
+        ],
+        tags: [
+          'Sốc nhiễm trùng',
+          'Septic Shock',
+          'Sepsis-3',
+          'Surviving Sepsis Campaign 2026',
+          'Kháng sinh 1 giờ',
+          'PK/PD Beta-lactam',
+          'Hồi sức dịch 30 mL/kg',
+          'Norepinephrine & Vasopressin',
+          'PLR & CRT',
+          'Source Control 6 giờ',
+          'Hydrocortisone',
+          'EBM 2026'
+        ]
       }
     ]
   },
@@ -1015,6 +1056,45 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-clinical-cases', number: 8, title: 'Phân Tích Các Ca Lâm Sàng Thực Chiến Tại Giường Bệnh', icon: 'fa-user-doctor' },
           { id: 'sec-clinical-pitfalls', number: 9, title: 'Lưới Cạm Bẫy Lâm Sàng & Cờ Đỏ Tử Vong Cần Tránh', icon: 'fa-triangle-exclamation' },
           { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'fuo-03-tiep-can-chan-doan-va-dieu-tri-sot-mo',
+        slug: 'fuo-03-tiep-can-chan-doan-va-dieu-tri-sot-mo',
+        diseaseId: 'sot-crnn',
+        specialtyId: 'truyen-nhiem',
+        title: 'Khi Nào Nghĩ Đến Sốt Mò? Tiếp Cận Chẩn Đoán & Điều Trị Bệnh Nhân Nghi Ngờ Sốt Mò (Scrub Typhus)',
+        subtitle: 'Ba trụ cột nhận diện, kỹ thuật tìm vết loét Eschar, tiêu chuẩn ICMR/CDC, phác đồ Doxycycline/Azithromycin (INTREST Trial) & ca thực chiến viêm phổi kẽ',
+        description: 'Bài giảng lâm sàng toàn diện về Sốt mò (Orientia tsutsugamushi) tại Việt Nam: dịch tễ Tam giác Tsutsugamushi, 3 trụ cột nghi ngờ sớm, giải phẫu vết loét eschar, lưu đồ chẩn đoán & phân tầng ICMR/CDC, phác đồ kháng sinh kinh nghiệm thể nhẹ/nặng/thai kỳ (INTREST NEJM 2023) và ca lâm sàng thực chiến nam 42 tuổi cắt sốt ngoạn mục sau 48 giờ.',
+        estimatedMinutes: 25,
+        tags: [
+          'Sốt mò',
+          'Scrub Typhus',
+          'Orientia tsutsugamushi',
+          'Vết loét Eschar',
+          'Sốt cấp không rõ nguyên nhân (AUFI)',
+          'Doxycycline',
+          'Azithromycin',
+          'Thử nghiệm INTREST',
+          'PCR dịch nốt loét',
+          'ICMR / CDC',
+          'EBM 2026'
+        ],
+        keyTakeaway: 'Nghĩ đến sốt mò trước mọi ca sốt cấp > 5 ngày vùng nông thôn/đồi núi kèm đau đầu dữ dội – tăng men gan – giảm tiểu cầu; bộc lộ toàn thân tìm eschar nhưng không thấy eschar không loại trừ bệnh; khởi trị Doxycycline ngay (Azithromycin cho thai phụ) không chờ PCR/IgM.',
+        order: 3,
+        filePath: 'truyen-nhiem/sot-crnn/fuo-03-tiep-can-chan-doan-va-dieu-tri-sot-mo.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-20',
+        evidenceLevel: 'EBM 2026 • DHR-ICMR • US CDC • INTREST Trial (NEJM)',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Dịch Tễ Học Lâm Sàng Sốt Mò (The Bottom Line)', icon: 'fa-bolt' },
+          { id: 'sec-clinical-suspicion', number: 2, title: 'Khi Nào Nghĩ Đến Sốt Mò? Ba Trụ Cột Định Hướng & Cờ Đỏ Biến Chứng', icon: 'fa-magnifying-glass' },
+          { id: 'sec-diagnostic-approach', number: 3, title: 'Tiếp Cận Chẩn Đoán & Lưu Đồ Phân Tầng Xử Trí (ICMR / CDC)', icon: 'fa-diagram-project' },
+          { id: 'sec-treatment-strategy', number: 4, title: 'Chiến Lược Điều Trị Kháng Sinh Kinh Nghiệm & Hồi Sức Thể Nặng', icon: 'fa-pills' },
+          { id: 'sec-pitfalls', number: 5, title: 'Lưới Cạm Bẫy Lâm Sàng Sống Còn Khi Tiếp Cận Sốt Mò', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 6, title: 'Ca Lâm Sàng Thực Chiến: Sốt Mò Ngày 8 Biến Chứng Viêm Phổi Kẽ (Nam 42 Tuổi)', icon: 'fa-user-doctor' },
+          { id: 'sec-key-takeaways', number: 7, title: 'Bốn Thông Điệp Lâm Sàng Cốt Lõi (Key Takeaways)', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Theo Chuẩn AMA)', icon: 'fa-book-bookmark' }
         ]
       }
     ]
