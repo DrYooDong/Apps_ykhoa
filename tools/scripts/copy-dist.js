@@ -139,12 +139,30 @@ if (!fs.existsSync(distNoJekyll)) {
   console.log('[Post-Build] Created dist/.nojekyll');
 }
 
-// Create 404.html fallback for GitHub Pages SPA routing
-const distIndex = path.join(distDir, 'index.html');
+// Create 404.html fallback redirector for GitHub Pages SPA routing
+// Redirecting to app root ensures relative ./assets/* paths always resolve
+// (and self-heals legacy mobile shortcuts pointing to /Apps_ykhoa/assets/index.html)
 const dist404 = path.join(distDir, '404.html');
-if (fs.existsSync(distIndex)) {
-  fs.copyFileSync(distIndex, dist404);
-  console.log('[Post-Build] Created dist/404.html (SPA Fallback for GitHub Pages)');
-}
+const redirect404Html = `<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CliniPortal — Đang chuyển hướng...</title>
+  <script>
+    (function () {
+      var path = window.location.pathname || '/';
+      var hash = window.location.hash || '';
+      var match = path.match(/^(\\/Apps_ykhoa)(?:\\/.*)?$/i);
+      var base = match ? match[1] + '/' : '/';
+      window.location.replace(window.location.origin + base + hash);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
+`;
+fs.writeFileSync(dist404, redirect404Html, 'utf8');
+console.log('[Post-Build] Created dist/404.html (SPA Root Redirector for GitHub Pages)');
 
 console.log('[Post-Build] All static assets copied to dist/ successfully!');

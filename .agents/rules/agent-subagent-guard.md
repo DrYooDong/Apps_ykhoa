@@ -9,7 +9,7 @@
 1. **Ràng buộc Read-Only nghiêm ngặt**:
    - Khi Agent chính đang ở giai đoạn **Nghiên cứu (Research)**, **Lập kế hoạch (Plan Mode)**, hoặc **Đánh giá (Audit/Review)**, mọi Subagent được khởi tạo bắt buộc phải **kế thừa 100% chế độ Read-Only**.
    - Subagent trong trạng thái này **tuyệt đối không được phép**:
-     - Sử dụng công cụ chỉnh sửa (`write_to_file`, `replace_file_content`, `multi_replace_file_content`).
+     - Sử dụng công cụ chỉnh sửa (`write_file`, `edit_file`).
      - Chạy các lệnh shell mang tính thay đổi trạng thái workspace (như `git checkout`, `npm install`, `rm`, xóa thư mục).
 
 2. **Cổng Phê Duyệt Tường Minh (Socratic Gate & Approval)**:

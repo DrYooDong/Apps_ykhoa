@@ -23,6 +23,7 @@ if not os.path.exists(skills_dir):
 
 items = sorted(os.listdir(skills_dir))
 errors = []
+warnings = []
 success = []
 
 for item in items:
@@ -81,6 +82,9 @@ for item in items:
         if not re.match(r'^[a-zA-Z0-9_-]+$', name):
             errors.append((item, f"Name contains invalid characters: {name}"))
             continue
+
+        if name != item:
+            warnings.append((item, f"Folder '{item}' != frontmatter name '{name}' (Harness2 hygiene)"))
             
         body = "\n".join(lines[end_idx+1:]).strip()
         if len(body) < 10:
@@ -91,12 +95,37 @@ for item in items:
     except Exception as e:
         errors.append((item, f"YAML parse error: {str(e)}"))
 
+# Harness² Always-On Budget Audit (AGENTS.md + rules/*.md)
+agents_root = os.path.abspath(os.path.join(skills_dir, ".."))
+always_on_chars = 0
+always_on_files = []
+agents_md = os.path.join(agents_root, "AGENTS.md")
+if os.path.isfile(agents_md):
+    sz = len(open(agents_md, "r", encoding="utf-8", errors="replace").read())
+    always_on_chars += sz
+    always_on_files.append(("AGENTS.md", sz))
+rules_dir = os.path.join(agents_root, "rules")
+if os.path.isdir(rules_dir):
+    for rf in sorted(os.listdir(rules_dir)):
+        if rf.endswith(".md"):
+            sz = len(open(os.path.join(rules_dir, rf), "r", encoding="utf-8", errors="replace").read())
+            always_on_chars += sz
+            always_on_files.append((f"rules/{rf}", sz))
+
 print("==========================================")
-print(f"CLINIPORTAL SKILLS VALIDATION REPORT")
+print(f"CLINIPORTAL SKILLS & HARNESS HYGIENE REPORT")
 print(f"Total skills audited: {len(items)}")
-print(f"Passed clean: {len(success)}")
-print(f"Failed errors: {len(errors)}")
+print(f"Passed clean:         {len(success)}")
+print(f"Warnings (hygiene):   {len(warnings)}")
+print(f"Failed errors:        {len(errors)}")
+print(f"Always-on footprint:  {always_on_chars:,} chars (~{always_on_chars // 4:,} tokens across {len(always_on_files)} files)")
 print("==========================================")
+
+if warnings:
+    for name, warn in warnings[:10]:
+        print(f"  ⚠️  [{name}]: {warn}")
+    if len(warnings) > 10:
+        print(f"  ⚠️  ... và {len(warnings) - 10} cảnh báo khác.")
 
 if errors:
     for name, err in errors:

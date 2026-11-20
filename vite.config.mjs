@@ -112,6 +112,33 @@ export default {
         });
       },
     },
+    {
+      name: 'clini-preserve-root-manifest',
+      enforce: 'post',
+      transformIndexHtml: {
+        order: 'post',
+        handler(html) {
+          return html.replace(
+            /<link\s+rel="manifest"\s+href="[^"]*manifest[^"]*\.json"\s*\/?>/i,
+            '<link rel="manifest" href="./manifest.json">'
+          );
+        },
+      },
+      generateBundle(_options, bundle) {
+        for (const fileName of Object.keys(bundle)) {
+          if (/^assets\/manifest-[^/]+\.json$/i.test(fileName)) {
+            delete bundle[fileName];
+          }
+        }
+        const indexHtmlAsset = bundle['index.html'];
+        if (indexHtmlAsset && indexHtmlAsset.type === 'asset' && typeof indexHtmlAsset.source === 'string') {
+          indexHtmlAsset.source = indexHtmlAsset.source.replace(
+            /<link\s+rel="manifest"\s+href="[^"]*manifest[^"]*\.json"\s*\/?>/i,
+            '<link rel="manifest" href="./manifest.json">'
+          );
+        }
+      },
+    },
   ],
 
   server: {

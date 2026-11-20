@@ -1,28 +1,6 @@
 # Guideline Creation & Duplicate Prevention Rules
 
-## 🛑 Quy Tắc Bắt Buộc Về Tạo Guideline Mới
+> Quy chuẩn trình bày `.mdx`, EBM badges (`.ebm-rec-card`, `.cor-badge`, `.loe-badge`), Image Asset Pipeline và Image-to-Code Flowchart nạp từ skill `guideline-summary-module`.
 
-1. **CẤM TỰ Ý TẠO GUIDELINE MỚI KHÔNG CÓ YÊU CẦU TRỰC TIẾP**: 
-   - AI **TUYỆT ĐỐI KHÔNG ĐƯỢC** tự động sinh ra hoặc tạo file `.html` guideline mới trừ khi Người dùng có yêu cầu rõ ràng ("Hãy tạo tóm tắt guideline...", "Xây dựng tóm tắt guidelines...").
-   - Khi Người dùng cung cấp tài liệu `.md`, AI phải **HỎI Ý KIẾN HOẶC XÁC NHẬN TÊN FILE / SLUG** trước khi tự ý khởi tạo file trong Kho Guidelines.
-
-2. **KIỂM TRA TRÙNG LẶP (DUPLICATE CHECK) BẮT BUỘC**:
-   - Trước khi tạo bất kỳ trang Guideline mới nào hoặc nạp mảng JSON, AI **BẮT BUỘC** phải sử dụng Phép Kiểm Trùng Lặp 3 yếu tố (`detectStudyDuplicate` / `batchCheckDuplicates`):
-     1. **Bệnh / Vấn đề y khoa / Thuốc / Tiêu đề** (`conditionKey`, `specialty`, `icd10`, `drug`, `title`)
-     2. **Năm công bố** (`year`)
-     3. **Nguồn / Tổ chức / Tạp chí phát hành** (`organization`, `journal`, `sourceType`)
-   - Nếu đã tồn tại file guideline hoặc bản ghi tương tự: **KHÔNG ĐƯỢC TẠO FILE MỚI KHÁC SLUG** gây rác hệ thống. Hãy thực thi cơ chế **Ghi đè/Cập nhật** (Overwrite) hoặc hỏi ý kiến Người dùng.
-
-3. **BẢO VỆ REGISTRY & TỰ ĐỘNG DỌN DẸP**:
-   - Khi tạo file theo yêu cầu, phải kiểm tra danh sách `KHO_GUIDELINES_STATIC` trong `src/content/ebm/guidelines/js/kho-guidelines-registry.ts` để tránh ghi trùng lặp các key ID / slug.
-
-4. **BẮT BUỘC CHUẨN HÓA PHÂN CẤP BẰNG CHỨNG (EBM EVIDENCE HIERARCHY)**:
-   - Mọi trang Guideline được khởi tạo hoặc cập nhật từ nay về sau **BẮT BUỘC** phải tích hợp bộ linh kiện Phân cấp Bằng chứng EBM trực quan: Thẻ khuyến cáo `.ebm-rec-card`, nhãn Khuyến cáo `.cor-badge` (Class I, IIa, IIb, III) và nhãn Bằng chứng `.loe-badge` (Level/Grade A, B, C, E) theo đúng chuẩn thiết kế trong Skill `guideline-summary-module`.
-
-5. **QUY TẮC CHUYỂN ĐỔI LƯU ĐỒ HÌNH ẢNH SANG CODE TRỰC QUAN (IMAGE-TO-CODE FLOWCHART RULE)**:
-   - Khi tài liệu nguồn có hình ảnh lưu đồ (lưu đồ chẩn đoán, tiếp cận phân tầng, thuật toán điều trị, quy trình PRISMA flow, visual summary...) kèm theo khối text/ASCII mô tả:
-   - **Xác định vai trò**: Đoạn text/ASCII mô tả chỉ đóng vai trò tóm tắt ý lại (fallback) để tham khảo khi không có ảnh.
-   - **Thực thi khi CÓ ẢNH**: Bắt buộc nhúng ảnh (`.fig-card`) VÀ **ưu tiên chuyển đổi/sửa thành CODE trực quan** (Inline SVG Editorial Flowchart chuẩn `flowchart-module` hoặc linh kiện HTML/CSS visual flowchart nodes/cards) mô phỏng chính xác cấu trúc thiết kế, phân nhánh và màu sắc của lưu đồ trong ảnh. Tuyệt đối không giữ lại khối text/ASCII sơ sài làm mất đi tính trực quan cao cấp của CliniPortal khi đã có ảnh.
-   - **Thực thi khi KHÔNG CÓ ẢNH**: Chỉ khi tài liệu nguồn hoàn toàn không có ảnh lưu đồ đính kèm, AI mới sử dụng đoạn text mô tả / khối ASCII chuẩn hóa để tái hiện logic lưu đồ.
-
-
+1. **Cấm Tự Ý Tạo Guideline Mới**: Tuyệt đối không sinh file guideline mới trừ khi Người dùng yêu cầu trực tiếp. Khi nhận file `.md` nguồn, phải xác nhận tên file/slug trước khi tạo.
+2. **Bắt Buộc Kiểm Tra Trùng Lặp 3 Yếu Tố**: Trước khi tạo mới hoặc nạp JSON, đối chiếu `KHO_GUIDELINES_STATIC` (`src/content/ebm/guidelines/js/kho-guidelines-registry.ts`) theo 3 tiêu chí: *(1) Bệnh/Chủ đề/ICD-10, (2) Năm công bố, (3) Tổ chức/Tạp chí*. Nếu đã tồn tại → cập nhật ghi đè hoặc hỏi Người dùng, cấm tạo slug trùng lặp gây rác hệ thống.
