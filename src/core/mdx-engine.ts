@@ -977,103 +977,109 @@ export class CliniMdxEngine {
 
     let formatted = math;
 
-    // 1. Text & Font Styles
+    // 1. Text & Font Styles (process first so inner text has no remaining braces)
     formatted = formatted.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-weight: 800; color: var(--color-primary, #0284c7);">$1</strong>');
     formatted = formatted.replace(/\\mathit\{([^{}]+)\}/g, '<em>$1</em>');
     formatted = formatted.replace(/\\mathrm\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif);">$1</span>');
     formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif); font-style: normal; font-size: 0.92em; margin: 0 2px;">$1</span>');
 
-    // 2. Fractions \frac{A}{B} & Roots \sqrt{A} (nested loop)
-    while (/\\frac\{([^{}]+)\}\{([^{}]+)\}/.test(formatted)) {
-      formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
-    }
+    // 2. Escaped Percent, Degree & Delimiters (must run before \le and ^ so \left( and ^\circ resolve cleanly)
+    formatted = formatted
+      .replace(/\\%/g, '%')
+      .replace(/\^\\circ\b/g, '°')
+      .replace(/\\left\(/g, '(')
+      .replace(/\\right\)/g, ')')
+      .replace(/\\left\[/g, '[')
+      .replace(/\\right\]/g, ']')
+      .replace(/\\(?:Big|bigg|big|Bigg)[lr]?\s*([|()\[\]])/g, '$1');
+
+    // 3. Superscripts & Subscripts (must run BEFORE \frac/\sqrt so nested _{...}/^{...} inside \frac resolve cleanly)
+    formatted = formatted.replace(/\^{([^{}]+)}/g, '<sup>$1</sup>');
+    formatted = formatted.replace(/\^([0-9a-zA-Z+-]+)/g, '<sup>$1</sup>');
+    formatted = formatted.replace(/_{([^{}]+)}/g, '<sub>$1</sub>');
+    formatted = formatted.replace(/_([0-9a-zA-Z+-]+)/g, '<sub>$1</sub>');
+
+    // 4. Roots \sqrt{A} & Fractions \frac{A}{B} (nested loop after inner braces are resolved)
     while (/\\sqrt\{([^{}]+)\}/.test(formatted)) {
       formatted = formatted.replace(/\\sqrt\{([^{}]+)\}/g, '√($1)');
     }
+    while (/\\frac\{([^{}]+)\}\{([^{}]+)\}/.test(formatted)) {
+      formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
+    }
 
-    // 3. Arrows & Directions
+    // 5. Arrows & Directions
     formatted = formatted
       .replace(/\\xrightarrow\{([^{}]*)\}/g, (_m, label) => {
         const trimmed = label.trim();
         return trimmed ? `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 4px; font-size: 0.88em;"><span style="font-size: 0.78em; line-height: 1.1; border-bottom: 1px solid currentColor; padding: 0 4px;">${trimmed}</span><span style="font-size: 1.1em; line-height: 0.8;">→</span></span>` : '→';
       })
-      .replace(/\\implies/g, '⟹')
-      .replace(/\\Longrightarrow/g, '⟹')
-      .replace(/\\Longleftarrow/g, '⟸')
-      .replace(/\\(Long|long)?rightarrow/g, '→')
-      .replace(/\\(Long|long)?leftarrow/g, '←')
-      .replace(/\\(Long|long)?leftrightarrow/g, '⟺')
-      .replace(/\\Rightarrow/g, '⇒')
-      .replace(/\\Leftarrow/g, '⇐')
+      .replace(/\\implies\b/g, '⟹')
+      .replace(/\\Longrightarrow\b/g, '⟹')
+      .replace(/\\Longleftarrow\b/g, '⟸')
+      .replace(/\\(Long|long)?rightarrow\b/g, '→')
+      .replace(/\\(Long|long)?leftarrow\b/g, '←')
+      .replace(/\\(Long|long)?leftrightarrow\b/g, '⟺')
+      .replace(/\\Rightarrow\b/g, '⇒')
+      .replace(/\\Leftarrow\b/g, '⇐')
       .replace(/\\to\b/g, '→')
-      .replace(/\\iff/g, '⟺')
-      .replace(/\\uparrow/g, '↑')
-      .replace(/\\downarrow/g, '↓');
+      .replace(/\\iff\b/g, '⟺')
+      .replace(/\\uparrow\b/g, '↑')
+      .replace(/\\downarrow\b/g, '↓');
 
-    // 4. Greek Symbols
+    // 6. Greek Symbols & Big Operators
     formatted = formatted
-      .replace(/\\Gamma/g, 'Γ')
-      .replace(/\\gamma/g, 'γ')
-      .replace(/\\Delta/g, 'Δ')
-      .replace(/\\delta/g, 'δ')
-      .replace(/\\Theta/g, 'Θ')
-      .replace(/\\theta/g, 'θ')
-      .replace(/\\Lambda/g, 'Λ')
-      .replace(/\\lambda/g, 'λ')
-      .replace(/\\Sigma/g, 'Σ')
-      .replace(/\\sigma/g, 'σ')
-      .replace(/\\Omega/g, 'Ω')
-      .replace(/\\omega/g, 'ω')
-      .replace(/\\Phi/g, 'Φ')
-      .replace(/\\phi/g, 'φ')
-      .replace(/\\Pi/g, 'Π')
-      .replace(/\\pi/g, 'π')
-      .replace(/\\alpha/g, 'α')
-      .replace(/\\beta/g, 'β')
-      .replace(/\\kappa/g, 'κ')
-      .replace(/\\mu/g, 'µ')
-      .replace(/\\eta/g, 'η')
-      .replace(/\\(var)?epsilon/g, 'ε')
-      .replace(/\\rho/g, 'ρ')
-      .replace(/\\tau/g, 'τ');
+      .replace(/\\sum\b/g, '∑')
+      .replace(/\\prod\b/g, '∏')
+      .replace(/\\Gamma\b/g, 'Γ')
+      .replace(/\\gamma\b/g, 'γ')
+      .replace(/\\Delta\b/g, 'Δ')
+      .replace(/\\delta\b/g, 'δ')
+      .replace(/\\Theta\b/g, 'Θ')
+      .replace(/\\theta\b/g, 'θ')
+      .replace(/\\Lambda\b/g, 'Λ')
+      .replace(/\\lambda\b/g, 'λ')
+      .replace(/\\Sigma\b/g, 'Σ')
+      .replace(/\\sigma\b/g, 'σ')
+      .replace(/\\Omega\b/g, 'Ω')
+      .replace(/\\omega\b/g, 'ω')
+      .replace(/\\Phi\b/g, 'Φ')
+      .replace(/\\phi\b/g, 'φ')
+      .replace(/\\Pi\b/g, 'Π')
+      .replace(/\\pi\b/g, 'π')
+      .replace(/\\alpha\b/g, 'α')
+      .replace(/\\beta\b/g, 'β')
+      .replace(/\\kappa\b/g, 'κ')
+      .replace(/\\mu\b/g, 'µ')
+      .replace(/\\eta\b/g, 'η')
+      .replace(/\\(var)?epsilon\b/g, 'ε')
+      .replace(/\\rho\b/g, 'ρ')
+      .replace(/\\tau\b/g, 'τ');
 
-    // 5. Operators & Relations
+    // 7. Operators & Relations
     formatted = formatted
-      .replace(/\\approx/g, '≈')
-      .replace(/\\propto/g, '∝')
-      .replace(/\\sim/g, '∼')
-      .replace(/\\times/g, '×')
-      .replace(/\\cdot/g, '·')
-      .replace(/\\pm/g, '±')
-      .replace(/\\le(q)?/g, '≤')
-      .replace(/\\ge(q)?/g, '≥')
-      .replace(/\\gg/g, '≫')
-      .replace(/\\ll/g, '≪')
-      .replace(/\\neq/g, '≠')
-      .replace(/\\infty/g, '∞')
-      .replace(/\\circ/g, '°');
+      .replace(/\\approx\b/g, '≈')
+      .replace(/\\propto\b/g, '∝')
+      .replace(/\\sim\b/g, '∼')
+      .replace(/\\times\b/g, '×')
+      .replace(/\\cdot\b/g, '·')
+      .replace(/\\pm\b/g, '±')
+      .replace(/\\le(q)?\b/g, '≤')
+      .replace(/\\ge(q)?\b/g, '≥')
+      .replace(/\\lt\b/g, '&lt;')
+      .replace(/\\gt\b/g, '&gt;')
+      .replace(/\\gg\b/g, '≫')
+      .replace(/\\ll\b/g, '≪')
+      .replace(/\\neq\b/g, '≠')
+      .replace(/\\infty\b/g, '∞')
+      .replace(/\\circ\b/g, '°');
 
-    // 6. Spacing & Functions
+    // 8. Spacing & Functions
     formatted = formatted
-      .replace(/\\qquad/g, '&emsp;&emsp;')
-      .replace(/\\quad/g, '&emsp;')
+      .replace(/\\qquad\b/g, '&emsp;&emsp;')
+      .replace(/\\quad\b/g, '&emsp;')
       .replace(/\\[,; ]/g, '&nbsp;')
-      .replace(/\\left\(/g, '(')
-      .replace(/\\right\)/g, ')')
-      .replace(/\\left\[/g, '[')
-      .replace(/\\right\]/g, ']')
       .replace(/\\ln\b/g, 'ln')
       .replace(/\\log\b/g, 'log');
-
-    // 7. Superscripts (Số mũ: Rh+, Ca2+, 10^-3, etc.)
-    // Handle ^{...} first, then single token ^...
-    formatted = formatted.replace(/\^{([^}]+)}/g, '<sup>$1</sup>');
-    formatted = formatted.replace(/\^([0-9a-zA-Z+-]+)/g, '<sup>$1</sup>');
-
-    // 8. Subscripts (Số dưới: T3, T4, FT3, FT4, PaO2, etc.)
-    // Handle _{...} first, then single token _...
-    formatted = formatted.replace(/_{([^}]+)}/g, '<sub>$1</sub>');
-    formatted = formatted.replace(/_([0-9a-zA-Z+-]+)/g, '<sub>$1</sub>');
 
     return formatted;
   }
