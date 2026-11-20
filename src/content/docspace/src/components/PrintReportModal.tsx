@@ -1,7 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { Download, Loader2, Printer, ShieldAlert, X } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 import { AnalysisResult, ClinicalFormState, KnowledgeBase, LabsState, VitalsState } from '../types.ts';
 import {
   calculateClinicalRiskScore,
@@ -66,6 +64,12 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
     try {
       setIsGeneratingPdf(true);
 
+      // Lazy-load heavy PDF & canvas libraries only when user triggers PDF export
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf'),
+      ]);
+
       // Create high-res canvas from paper element
       const canvas = await html2canvas(reportElement, {
         scale: 2, // High resolution for sharp text & charts
@@ -120,26 +124,26 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
   const diffs = results && results.length > 1 ? results.slice(1, 4) : [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-white rounded-lg max-w-4xl w-full shadow-xl overflow-hidden border border-slate-200 my-auto">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[94dvh] flex flex-col shadow-xl overflow-hidden border border-slate-200 my-auto">
         {/* Modal Toolbar (hidden when printing) */}
-        <div className="bg-white border-b border-slate-200 px-6 py-3 flex items-center justify-between no-print">
-          <div className="flex items-center gap-2">
-            <span className="font-display font-bold text-sm text-slate-800">
+        <div className="bg-white border-b border-slate-200 px-3 sm:px-6 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-2 shrink-0 no-print">
+          <div className="flex items-center gap-2 min-w-0 flex-1">
+            <span className="font-display font-bold text-xs sm:text-sm text-slate-800 truncate">
               Xem trước Phiếu báo cáo phân tích bệnh án
             </span>
-            <span className="text-[11px] font-mono-custom text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+            <span className="hidden sm:inline-block text-[11px] font-mono-custom text-slate-500 bg-slate-100 px-2 py-0.5 rounded shrink-0">
               Khổ in A4 Chuẩn y tế
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Download PDF Button */}
             <button
               id="btn-download-pdf-modal"
               onClick={handleDownloadPdf}
               disabled={isGeneratingPdf}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 text-white text-xs font-semibold rounded-md shadow-xs cursor-pointer transition-colors"
+              className="flex items-center gap-1.5 px-3 sm:px-3.5 min-h-[40px] sm:min-h-[34px] py-1.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 text-white text-xs font-semibold rounded-md shadow-xs cursor-pointer transition-colors"
               title="Tải về file PDF chất lượng cao để lưu trữ hoặc gửi qua email"
             >
               {isGeneratingPdf ? (
@@ -150,7 +154,8 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
               ) : (
                 <>
                   <Download className="w-3.5 h-3.5" />
-                  <span>Tải file PDF (A4)</span>
+                  <span className="hidden xs:inline sm:inline">Tải PDF</span>
+                  <span className="hidden md:inline">(A4)</span>
                 </>
               )}
             </button>
@@ -159,16 +164,18 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
             <button
               id="btn-print-modal"
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-md shadow-xs cursor-pointer transition-colors"
+              className="flex items-center gap-1.5 px-3 sm:px-3.5 min-h-[40px] sm:min-h-[34px] py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-md shadow-xs cursor-pointer transition-colors"
               title="In trực tiếp ra máy in bệnh viện"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>In ra giấy</span>
+              <span>In</span>
             </button>
 
             <button
+              type="button"
               onClick={onClose}
-              className="p-1 text-slate-400 hover:text-slate-700 rounded transition-colors cursor-pointer"
+              aria-label="Đóng cửa sổ xem trước"
+              className="min-w-[44px] min-h-[44px] sm:min-w-[34px] sm:min-h-[34px] flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-md transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -178,10 +185,10 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
         {/* Clinical Document Paper (Printed & Exported Area) */}
         <div
           id="clinical-report-paper"
-          className="p-8 sm:p-12 text-[#1c2e33] font-sans text-xs sm:text-sm leading-normal print-paper bg-white"
+          className="flex-1 overflow-y-auto p-4 sm:p-8 md:p-12 text-[#1c2e33] font-sans text-xs sm:text-sm leading-normal print-paper bg-white"
         >
           {/* Official Medical Header */}
-          <div className="flex items-start justify-between border-b-2 border-neutral-900 pb-4 mb-5">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-3 border-b-2 border-neutral-900 pb-4 mb-5">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-neutral-600">
                 SỞ Y TẾ · BỆNH VIỆN ĐA KHOA
@@ -192,7 +199,7 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
               </div>
             </div>
 
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <div className="text-[11px] font-bold uppercase tracking-wider text-neutral-600">
                 CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
               </div>

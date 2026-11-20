@@ -900,7 +900,7 @@ div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:n
   bottom: 0;
   background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(4px);
-  z-index: 290;
+  z-index: 960;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--tr-fast);
@@ -918,7 +918,7 @@ div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:n
     top: 56px;
     left: 0;
     bottom: 0;
-    z-index: 300;
+    z-index: 970;
     width: 280px;
     max-width: 85vw;
     box-shadow: var(--shadow-xl);
@@ -944,6 +944,7 @@ div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:n
   }
   .app-shell {
     height: calc(100vh - 52px);
+    height: calc(100dvh - 52px);
   }
   .sidebar-backdrop {
     top: 52px;
@@ -1009,11 +1010,11 @@ div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:n
     flex-shrink: 0 !important;
     border-radius: 8px !important;
   }
-  .theme-toggle-btn {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
+  .topnav .theme-toggle-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
     flex-shrink: 0 !important;
   }
   .settings-menu {
@@ -1041,12 +1042,12 @@ div:nth-of-type(2) > nav#left-nav:nth-of-type(1) > div:nth-of-type(2) > button:n
 /* ════════════════════════════════════════════════════════════════
    📱 MOBILE BOTTOM NAVIGATION BAR (Thumb Zone Ergonomics)
    ════════════════════════════════════════════════════════════════ */
-.mobile-bottom-nav {
+#mobile-bottom-nav.mobile-bottom-nav {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .mobile-bottom-nav {
+@media (max-width: 767px) {
+  #mobile-bottom-nav.mobile-bottom-nav {
     display: flex;
     position: fixed;
     bottom: 0;

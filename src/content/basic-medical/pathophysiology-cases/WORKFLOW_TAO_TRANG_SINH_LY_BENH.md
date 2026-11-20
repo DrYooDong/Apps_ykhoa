@@ -39,7 +39,7 @@ flowchart TD
 4. **Xử lý Hình ảnh Đính kèm từ Markdown / Knowledge Vault**:
    - Quét toàn bộ tệp `.md` nguồn để tìm thẻ hình ảnh (ví dụ: `![[Pasted image ...]]` hoặc `![alt](...)`).
    - Sao chép tệp ảnh từ `knowledge-vault/_resources/attachments/` vào thư mục `src/content/pathophysiology/images/[slug]/`.
-   - Đổi tên tệp ảnh thành tên có nghĩa (kebab-case tiếng Anh/Việt không dấu, ví dụ: `hp-pathogenesis-nobel.png`).
+   - Đổi tên tệp ảnh thành tên có nghĩa (kebab-case tiếng Anh/Việt không dấu, ví dụ: `hp-pathogenesis-nobel.webp`).
    - Đặt thẻ `<figure class="physio-figure">` vào đúng vị trí tương ứng trong bài học HTML.
 
 ---

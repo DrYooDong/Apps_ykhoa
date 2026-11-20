@@ -60,7 +60,7 @@ export const StepNav: React.FC<StepNavProps> = ({
           type="button"
           onClick={handlePrevStep}
           disabled={currentStepIndex === 0}
-          className={`p-2 rounded-lg border transition-all cursor-pointer min-w-[40px] min-h-[40px] flex items-center justify-center ${
+          className={`p-2 rounded-lg border transition-all cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center ${
             currentStepIndex === 0
               ? 'opacity-25 border-slate-200 text-slate-400 cursor-not-allowed'
               : 'border-slate-200 text-slate-700 active:bg-slate-100'
@@ -71,9 +71,9 @@ export const StepNav: React.FC<StepNavProps> = ({
         </button>
 
         {/* Trung tâm: 4 Touch Dots + Tiêu đề bước hiện tại */}
-        <div className="flex flex-col items-center justify-center px-1">
+        <div className="flex flex-col items-center justify-center px-1 min-w-0">
           {/* 4 Dots Stepper with 44px touch targets */}
-          <div className="flex items-center gap-1 mb-0.5">
+          <div className="flex items-center gap-0.5 mb-0.5">
             {steps.map((step) => {
               const isActive = currentStep === step.id;
               const isDone = completedSteps.has(step.id);
@@ -85,7 +85,7 @@ export const StepNav: React.FC<StepNavProps> = ({
                     onSelectStep(step.id);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="p-1 min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer touch-manipulation"
+                  className="p-1 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer touch-manipulation"
                   aria-label={`Bước ${step.num}: ${step.title}`}
                 >
                   <span
@@ -109,9 +109,9 @@ export const StepNav: React.FC<StepNavProps> = ({
           </div>
 
           {/* Current Step Label */}
-          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-            <span className="text-[#087f9c]">Bước {activeStepObj.num}:</span>
-            <span className="text-slate-800 font-semibold">{activeStepObj.shortTitle}</span>
+          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5 max-w-full truncate">
+            <span className="text-[#087f9c] shrink-0">Bước {activeStepObj.num}:</span>
+            <span className="text-slate-800 font-semibold truncate">{activeStepObj.shortTitle}</span>
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export const StepNav: React.FC<StepNavProps> = ({
           type="button"
           onClick={handleNextStep}
           disabled={currentStepIndex === steps.length - 1}
-          className={`p-2 rounded-lg border transition-all cursor-pointer min-w-[40px] min-h-[40px] flex items-center justify-center ${
+          className={`p-2 rounded-lg border transition-all cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center ${
             currentStepIndex === steps.length - 1
               ? 'opacity-25 border-slate-200 text-slate-400 cursor-not-allowed'
               : 'border-cyan-200 bg-cyan-50 text-[#087f9c] active:bg-cyan-100'
@@ -132,17 +132,17 @@ export const StepNav: React.FC<StepNavProps> = ({
       </div>
 
       {/* Status Bar: Sample Case vs Clinical Case Badge & Quick Edit Button */}
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-1 flex items-center justify-between gap-2 text-[11px] border-b border-slate-100 bg-slate-50/60">
-        <div className="flex items-center gap-2">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-1 flex flex-wrap items-center justify-between gap-2 text-[11px] border-b border-slate-100 bg-slate-50/60">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
           {sampleTitle ? (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-bold bg-amber-50 text-amber-900 border border-amber-300 text-[10.5px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-              <span>📚 Ca lâm sàng mẫu: <strong>{sampleTitle}</strong></span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-bold bg-amber-50 text-amber-900 border border-amber-300 text-[10.5px] max-w-full min-w-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
+              <span className="truncate">📚 Ca lâm sàng mẫu: <strong>{sampleTitle}</strong></span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10.5px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>🩺 Hồ sơ khám lâm sàng thực tế</span>
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10.5px] max-w-full min-w-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="truncate">🩺 Hồ sơ khám lâm sàng thực tế</span>
             </span>
           )}
         </div>
@@ -157,7 +157,7 @@ export const StepNav: React.FC<StepNavProps> = ({
                 onSelectStep('t1');
               }
             }}
-            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-2xs transition-colors cursor-pointer text-[10.5px]"
+            className="inline-flex items-center gap-1 px-2.5 py-1 min-h-[32px] sm:min-h-[26px] rounded-md font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-2xs transition-colors cursor-pointer text-[10.5px] shrink-0"
             title="Quay lại Bước 1 để kiểm tra hoặc bổ sung thêm triệu chứng"
           >
             <span>✏️ Sửa dữ kiện (B1)</span>

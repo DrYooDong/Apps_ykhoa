@@ -24,6 +24,8 @@
     "migrate:validate": "tsc --noEmit",
     "lint:content": "node tools/scripts/medical-linter.mjs",
     "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
+    "audit:perf": "node tools/scripts/perf-budget-audit.mjs",
+    "optimize:media": "python tools/scripts/optimize-media.py",
     "sync:cdss": "node tools/scripts/sync-clinical-db.mjs",
     "sync:soap": "node tools/scripts/ingest-notebooklm-case.mjs src/content/docspace/data/ba",
     "sync:guidelines": "node src/content/ebm/guidelines/tools/sync_guidelines_db.js",

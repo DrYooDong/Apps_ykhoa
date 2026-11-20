@@ -226,6 +226,32 @@ export default defineConfig(() => {
         '@data': path.resolve(__dirname, './data'),
       },
     },
+    build: {
+      sourcemap: false,
+      chunkSizeWarningLimit: 900,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react-dom') || id.includes('node_modules/react/') || id.includes('scheduler')) return 'vendor-react';
+              if (id.includes('lucide-react')) return 'vendor-icons';
+              if (id.includes('motion') || id.includes('framer-motion')) return 'vendor-motion';
+              if (id.includes('jspdf') || id.includes('html2canvas') || id.includes('canvg') || id.includes('dompurify')) return 'vendor-pdf';
+              if (id.includes('@google/genai')) return 'vendor-ai';
+              return undefined;
+            }
+            if (id.includes('vault-catalog-co-so')) return 'data-vault-co-so';
+            if (id.includes('vault-catalog-chuyen-sau')) return 'data-vault-chuyen-sau';
+            if (id.includes('vault-catalog-thuc-hanh')) return 'data-vault-thuc-hanh';
+            if (id.includes('vault-catalog-ho-tro')) return 'data-vault-ho-tro';
+            if (id.includes('vault-catalog')) return 'data-vault-catalog';
+            if (id.includes('/data/enriched/') || id.includes('/data/diseases/') || id.includes('clinical-rules-')) {
+              return 'data-clinical-kb';
+            }
+          },
+        },
+      },
+    },
     server: {
       port: 3000,
       host: '0.0.0.0',

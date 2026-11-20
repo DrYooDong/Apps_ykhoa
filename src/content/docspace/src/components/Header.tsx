@@ -174,11 +174,11 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          {/* Theme Toggle (Mobile >= 44px touch target, Tablet/Desktop 36px) */}
+          {/* Theme Toggle (Mobile & Tablet >= 44px touch target, Desktop 36px) */}
           <button
             type="button"
             onClick={() => setIsDark((prev) => !prev)}
-            className="docspace-icon-btn flex items-center justify-center w-11 h-11 sm:w-9 sm:h-9 text-slate-600 hover:text-[#087f9c] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
+            className="docspace-icon-btn flex items-center justify-center w-11 h-11 lg:w-9 lg:h-9 text-slate-600 hover:text-[#087f9c] bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors cursor-pointer shadow-2xs"
             title={isDark ? 'Chuyển sang Chế độ Sáng' : 'Chuyển sang Chế độ Tối'}
             aria-label={isDark ? 'Chuyển sang Chế độ Sáng' : 'Chuyển sang Chế độ Tối'}
           >
@@ -188,18 +188,18 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Home Link (Desktop & Tablet) */}
           <a
             href="../../../index.html#/"
-            className="docspace-icon-btn hidden sm:flex w-9 h-9 items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg transition-colors no-underline shadow-2xs"
+            className="docspace-icon-btn hidden sm:flex w-11 h-11 lg:w-9 lg:h-9 items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg transition-colors no-underline shadow-2xs"
             title="Về Trang chủ CliniPortal"
             aria-label="Trang chủ"
           >
             <Home className="w-4 h-4" />
           </a>
 
-          {/* Unified Action Menu Button (Mobile >= 44px touch target) */}
+          {/* Unified Action Menu Button (Mobile & Tablet >= 44px touch target) */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="docspace-icon-btn flex items-center justify-center w-11 h-11 sm:w-9 sm:h-9 text-slate-700 hover:text-[#087f9c] bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 rounded-lg transition-colors cursor-pointer border border-slate-200"
+            className="docspace-icon-btn flex items-center justify-center w-11 h-11 lg:w-9 lg:h-9 text-slate-700 hover:text-[#087f9c] bg-slate-100 hover:bg-slate-200/80 active:bg-slate-200 rounded-lg transition-colors cursor-pointer border border-slate-200"
             title="Menu tiện ích & Tra cứu nhanh"
             aria-label="Mở menu tiện ích"
           >

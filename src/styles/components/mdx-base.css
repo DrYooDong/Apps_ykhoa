@@ -328,10 +328,32 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.88rem;
-  min-width: 540px;
   text-align: left;
   line-height: 1.6;
   margin: 0;
+}
+
+.table-wrapper table,
+.mdx-table-wrapper table,
+.data-table-wrapper table,
+.table-container table,
+.table-responsive table,
+.hemo-table-wrap table,
+.physio-table-wrap table {
+  min-width: 540px;
+}
+
+/* Safe self-scrolling fallback for unwrapped raw Markdown/MDX tables on mobile */
+@media (max-width: 767px) {
+  .mdx-rendered-article > table,
+  .mdx-rendered-article section > table,
+  .mdx-rendered-article div:not(.table-wrapper):not(.mdx-table-wrapper):not(.data-table-wrapper):not(.table-container):not(.table-responsive):not(.hemo-table-wrap):not(.physio-table-wrap) > table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .mdx-rendered-article table thead th {
@@ -978,3 +1000,13 @@
 }
 
 
+
+
+/* --- PERFORMANCE: CONTENT-VISIBILITY FOR LONG MDX ARTICLES & DIAGRAMS --- */
+.mdx-rendered-article > section,
+.mdx-rendered-article .table-responsive,
+.mdx-rendered-article .med-svg-container,
+.mdx-rendered-article .editorial-diagram-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}

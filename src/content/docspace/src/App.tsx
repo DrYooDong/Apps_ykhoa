@@ -1,19 +1,50 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import { Header, MainViewMode } from './components/Header.tsx';
 import { StepNav, ClinicalStepId } from './components/StepNav.tsx';
-import { SoapExperienceBoard } from './components/SoapExperienceBoard.tsx';
 import { Step1DataIngestion } from './components/Step1DataIngestion.tsx';
-import { Step2ProblemStatement } from './components/Step2ProblemStatement.tsx';
-import { Step3Analysis } from './components/Step3Analysis.tsx';
-import { Step4Protocol } from './components/Step4Protocol.tsx';
-import { Step4KnowledgeBase } from './components/Step4KnowledgeBase.tsx';
-import { AboutModal } from './components/AboutModal.tsx';
-import { PrintReportModal } from './components/PrintReportModal.tsx';
-import { VaultDrawer } from './components/VaultDrawer.tsx';
 import { CdssToolSlug } from './lib/vaultBridge.ts';
-import { ClinicalSimulationModal } from './components/simulation/ClinicalSimulationModal.tsx';
 import { BottomNavBar } from './components/mobile/BottomNavBar.tsx';
 import { ErrorBoundary } from './components/common/ErrorBoundary.tsx';
+
+// Lazy-loaded Steps, Hubs & Modals for faster initial paint & smaller entry bundle
+const SoapExperienceBoard = lazy(() =>
+  import('./components/SoapExperienceBoard.tsx').then((m) => ({ default: m.SoapExperienceBoard }))
+);
+const Step2ProblemStatement = lazy(() =>
+  import('./components/Step2ProblemStatement.tsx').then((m) => ({ default: m.Step2ProblemStatement }))
+);
+const Step3Analysis = lazy(() =>
+  import('./components/Step3Analysis.tsx').then((m) => ({ default: m.Step3Analysis }))
+);
+const Step4Protocol = lazy(() =>
+  import('./components/Step4Protocol.tsx').then((m) => ({ default: m.Step4Protocol }))
+);
+const Step4KnowledgeBase = lazy(() =>
+  import('./components/Step4KnowledgeBase.tsx').then((m) => ({ default: m.Step4KnowledgeBase }))
+);
+const AboutModal = lazy(() =>
+  import('./components/AboutModal.tsx').then((m) => ({ default: m.AboutModal }))
+);
+const PrintReportModal = lazy(() =>
+  import('./components/PrintReportModal.tsx').then((m) => ({ default: m.PrintReportModal }))
+);
+const VaultDrawer = lazy(() =>
+  import('./components/VaultDrawer.tsx').then((m) => ({ default: m.VaultDrawer }))
+);
+const ClinicalSimulationModal = lazy(() =>
+  import('./components/simulation/ClinicalSimulationModal.tsx').then((m) => ({
+    default: m.ClinicalSimulationModal,
+  }))
+);
+
+const LazyViewFallback = () => (
+  <div className="w-full py-12 flex items-center justify-center text-sm text-slate-500">
+    <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-xs">
+      <span className="w-2 h-2 rounded-full bg-[#087f9c] animate-pulse" />
+      <span>Đang tải phân hệ lâm sàng...</span>
+    </div>
+  </div>
+);
 import { DEFAULT_KNOWLEDGE_BASE, SampleCase } from '../data/seedData.ts';
 import {
   ClinicalFormState,
@@ -567,6 +598,7 @@ export function MainApp() {
       {/* Main View Area with Mobile Bottom Padding */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-3 sm:py-5 pb-24 md:pb-6">
         <ErrorBoundary key={`${activeMode}_${clinicalStep}`} onReset={() => setClinicalStep('t1')}>
+        <Suspense fallback={<LazyViewFallback />}>
         {/* PHÂN HỆ 1: CHU TRÌNH LÂM SÀNG 4 BƯỚC */}
         {activeMode === 'clinical' && (
           <>
@@ -712,6 +744,7 @@ export function MainApp() {
             onOpenCdssModal={handleOpenCdss}
           />
         )}
+        </Suspense>
         </ErrorBoundary>
       </main>
 
@@ -749,37 +782,47 @@ export function MainApp() {
         onOpenSimulation={() => setIsSimulationOpen(true)}
       />
 
-      {/* Modals & Drawers */}
-      <VaultDrawer
-        isOpen={isVaultDrawerOpen}
-        onClose={() => setIsVaultDrawerOpen(false)}
-        initialQuery={vaultQuery}
-        initialKho={vaultKho}
-        initialDiseaseName={vaultDisease}
-        onOpenCdssModal={handleOpenCdss}
-      />
+      {/* Modals & Drawers (Lazy-mounted only when opened) */}
+      <Suspense fallback={null}>
+        {isVaultDrawerOpen && (
+          <VaultDrawer
+            isOpen={isVaultDrawerOpen}
+            onClose={() => setIsVaultDrawerOpen(false)}
+            initialQuery={vaultQuery}
+            initialKho={vaultKho}
+            initialDiseaseName={vaultDisease}
+            onOpenCdssModal={handleOpenCdss}
+          />
+        )}
 
-      <AboutModal
-        isOpen={isAboutOpen}
-        onClose={() => setIsAboutOpen(false)}
-      />
+        {isAboutOpen && (
+          <AboutModal
+            isOpen={isAboutOpen}
+            onClose={() => setIsAboutOpen(false)}
+          />
+        )}
 
-      <PrintReportModal
-        isOpen={isPrintOpen}
-        onClose={() => setIsPrintOpen(false)}
-        form={form}
-        vitals={vitals}
-        labs={labs}
-        results={results}
-        kb={kb}
-        summaryText={summaryText}
-      />
+        {isPrintOpen && (
+          <PrintReportModal
+            isOpen={isPrintOpen}
+            onClose={() => setIsPrintOpen(false)}
+            form={form}
+            vitals={vitals}
+            labs={labs}
+            results={results}
+            kb={kb}
+            summaryText={summaryText}
+          />
+        )}
 
-      <ClinicalSimulationModal
-        isOpen={isSimulationOpen}
-        onClose={() => setIsSimulationOpen(false)}
-        onLoadBranchIntoWorkspace={handleLoadBranchIntoWorkspace}
-      />
+        {isSimulationOpen && (
+          <ClinicalSimulationModal
+            isOpen={isSimulationOpen}
+            onClose={() => setIsSimulationOpen(false)}
+            onLoadBranchIntoWorkspace={handleLoadBranchIntoWorkspace}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

@@ -82,7 +82,7 @@ Mỗi module có logo riêng với màu sắc đặc trưng:
 ### Favicon
 ```html
 <link rel="icon" type="image/svg+xml" href="/assets/logos/favicons/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/assets/logos/app-icons/icon-180x180.png">
+<link rel="apple-touch-icon" href="/assets/logos/favicons/favicon-180x180.png">
 ```
 
 ## 📋 Quy định sử dụng

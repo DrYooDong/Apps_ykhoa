@@ -107,24 +107,24 @@ export const ClinicalSimulationModal: React.FC<ClinicalSimulationModalProps> = (
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto animate-fadeIn">
-      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-5xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-slate-900/80 backdrop-blur-sm p-2 sm:p-6 overflow-y-auto animate-fadeIn">
+      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-5xl shadow-2xl flex flex-col max-h-[94dvh] sm:max-h-[92dvh] overflow-hidden my-auto">
         {/* Modal Top Header */}
-        <div className="bg-gradient-to-r from-slate-900 to-blue-950 p-4 sm:p-5 text-white flex items-center justify-between gap-4 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-300 shadow-inner">
+        <div className="bg-gradient-to-r from-slate-900 to-blue-950 p-3.5 sm:p-5 text-white flex items-center justify-between gap-3 shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-300 shadow-inner shrink-0">
               <Award className="w-5 h-5 text-blue-300" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-blue-500/30 text-blue-200 border border-blue-400/30 uppercase tracking-wider">
                   OSCE Simulation Ground
                 </span>
-                <span className="text-xs font-mono-custom text-blue-300">
+                <span className="text-xs font-mono-custom text-blue-300 truncate">
                   {blueprint.icdCode} · {blueprint.diseaseName}
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold font-display tracking-tight text-white mt-0.5">
+              <h2 className="text-sm sm:text-lg font-bold font-display tracking-tight text-white mt-0.5 leading-snug">
                 {blueprint.title}
               </h2>
             </div>
@@ -133,7 +133,8 @@ export const ClinicalSimulationModal: React.FC<ClinicalSimulationModalProps> = (
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
+            aria-label="Đóng phòng giả lập OSCE"
+            className="min-w-[44px] min-h-[44px] sm:min-w-[36px] sm:min-h-[36px] rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>

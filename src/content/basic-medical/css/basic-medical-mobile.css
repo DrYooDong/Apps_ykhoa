@@ -32,14 +32,15 @@
     display: none !important;
   }
 
-  /* Universal Touch Target Guarantee */
-  button, 
-  .btn, 
-  .promax-tool-pill-btn, 
+  /* Scoped Touch Target Guarantee (avoid leaking globally to unrelated app buttons) */
+  .promax-wrapper button,
+  .promax-wrapper .btn,
+  .basic-medical-universal-nav button,
+  .promax-tool-pill-btn,
   .epi-tool-pill-btn,
   .bm-nav-link,
   .part-nav-item,
-  .toggle-btn {
+  .promax-wrapper .toggle-btn {
     min-height: var(--dsp-touch-min, 44px) !important;
     touch-action: manipulation;
   }
@@ -223,8 +224,8 @@
   }
 
   .promax-search-input {
-    height: 42px !important;
-    font-size: 0.84rem !important;
+    height: 44px !important;
+    font-size: 16px !important; /* Prevent iOS Safari auto-zoom on focus */
     padding-left: 2.4rem !important;
     padding-right: 2rem !important;
   }
@@ -576,6 +577,11 @@
 
   /* Hide top desktop toolbar actions on mobile; replace with bottom bar */
   .reader-toolbar-actions .reader-settings-dropdown-wrapper {
+    display: none !important;
+  }
+
+  /* Avoid overlapping global .mobile-bottom-nav when reader bottom bar is active */
+  body:has(.physio-reader-bottom-bar) .mobile-bottom-nav {
     display: none !important;
   }
 

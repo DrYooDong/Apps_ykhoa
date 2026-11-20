@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Tổng hợp hướng dẫn điều trị Bộ Y tế, các hiệp hội và tài liệu y khoa Việt Nam cùng các nghiên cứu lâm sàng quốc tế">
   <title>Hướng Dẫn & Nghiên Cứu Lâm Sàng — CliniPortal</title>
 
@@ -1616,8 +1616,8 @@
 
   <script src="js/core/cliniportal-sync.js"></script>
   <script type="module" src="js/ebm-format-loader.ts"></script>
-  <!-- Load ICD-10 Data -->
-  <script src="data/icd10-data.js"></script>
+  <!-- Load ICD-10 Data (Single Source of Truth) -->
+  <script src="../../knowledge-vault/tools/icd10/icd10-data.js" defer></script>
   <!-- Main Guidelines TypeScript Entry -->
   <script type="module" src="./js/guidelines.ts"></script>
   <script type="module">

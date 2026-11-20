@@ -3,27 +3,117 @@
   "icdCode": "A97.1",
   "diseaseName": "Sốt xuất huyết Dengue có dấu hiệu cảnh báo (Người lớn)",
   "specialty": "Truyền nhiễm & Hồi sức cấp cứu",
+  "severity": "urgent",
+  "summary": "Sốt xuất huyết Dengue có dấu hiệu cảnh báo ở người lớn (≥ 16 tuổi) là giai đoạn chuyển tiếp nguy hiểm (thường từ ngày 3-7 của bệnh) khi hiện tượng thoát huyết tương tăng mạnh, dễ diễn tiến nhanh sang sốc Dengue hoặc suy tạng nếu không nhập viện theo dõi sát và bù dịch tĩnh mạch theo phác đồ bậc thang Quyết định 2760/QĐ-BYT 2023.",
   "goldStandard": "Khẳng định bằng NS1Ag (+) trong 1-5 ngày đầu, hoặc Mac-ELISA IgM Dengue (+) từ ngày 5, hoặc RT-PCR Dengue RNA dương tính.",
+  "criteriaRule": {
+    "mandatoryIds": [
+      "tc_sot_cao_dot_ngot_duoi_7_ngay",
+      "tien_can_song_o_dich_luu_hanh"
+    ],
+    "minMajorRequired": 1,
+    "minMinorRequired": 0,
+    "ruleDescription": "Bệnh nhân có chẩn đoán Sốt xuất huyết Dengue kèm ít nhất 01 dấu hiệu cảnh báo lâm sàng hoặc cận lâm sàng theo Quyết định 2760/QĐ-BYT 2023."
+  },
+  "criteria": [
+    {
+      "id": "tc_sot_cao_dot_ngot_duoi_7_ngay",
+      "type": "mandatory",
+      "label": "Sốt cao đột ngột, liên tục ≤ 7 ngày",
+      "description": "Sốt cao 39-40°C đột ngột, liên tục từ 2-7 ngày, thường giảm sốt khi bước vào ngày 3-7 (giai đoạn nguy hiểm).",
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_sot_cao_dot_ngot_duoi_7_ngay"
+      ],
+      "cdssRole": "dt",
+      "weight": 5.0
+    },
+    {
+      "id": "tc_dau_hieu_canh_bao_dws",
+      "type": "major",
+      "label": "Có ≥ 1 dấu hiệu cảnh báo lâm sàng (DWS)",
+      "description": "Vật vã/lừ đừ/li bì; đau bụng nhiều liên tục hoặc tăng cảm giác đau vùng gan; nôn ói nhiều (≥ 3 lần/1h hoặc ≥ 4 lần/6h); xuất huyết niêm mạc; gan to > 2 cm dưới bờ sườn; tiểu ít (< 0.5 mL/kg/giờ).",
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_dau_hieu_canh_bao_dau_bung_gan_non_oi",
+        "lu_du_vat_va_li_bi",
+        "gan_to_dau",
+        "tieu_it"
+      ],
+      "cdssRole": "dt",
+      "weight": 5.0
+    },
+    {
+      "id": "tc_cls_co_dac_mau_hct",
+      "type": "lab",
+      "label": "Hct tăng cao kèm tiểu cầu giảm nhanh (< 100.000/mm³)",
+      "description": "Hematocrit tăng ≥ 20% so với nền hoặc Hct > 45% kèm số lượng tiểu cầu giảm nhanh dưới 100 G/L, men gan AST/ALT ≥ 400 U/L hoặc tràn dịch màng phổi/màng bụng trên siêu âm.",
+      "labThreshold": "Hct tăng ≥ 20% và PLT < 100 G/L",
+      "sourceGuideline": "Quyết định 2760/QĐ-BYT 2023",
+      "symptomIds": [
+        "tc_co_dac_mau_hct_tang_tren_20_phan_tram",
+        "tc_giam_tieu_cau_duoi_100_g_l"
+      ],
+      "cdssRole": "dt",
+      "weight": 4.5
+    }
+  ],
   "severityGrading": [
     {
       "grade_id": "grade_warning_adult",
+      "grade": "Mức độ 2: SXHD có dấu hiệu cảnh báo ở người lớn (≥ 16 tuổi)",
       "grade_name": "SXHD có dấu hiệu cảnh báo ở người lớn (≥ 16 tuổi)",
-      "criteria": [
-        "Vật vã, lừ đừ, li bì",
-        "Đau bụng nhiều và liên tục hoặc tăng cảm giác đau vùng gan",
-        "Nôn ói nhiều (≥ 3 lần/1 giờ hoặc ≥ 4 lần/6 giờ)",
-        "Xuất huyết niêm mạc: chảy máu chân răng, mũi, nôn ra máu, đi ngoài phân đen",
-        "Gan to > 2 cm dưới bờ sườn",
-        "Tiểu ít (< 0.5 ml/kg/giờ)",
-        "Hct tăng cao kèm tiểu cầu giảm nhanh (< 100.000/mm³)"
-      ],
-      "triage_action": "Bắt buộc nhập viện theo dõi tại khoa Lâm sàng / Cấp cứu, không điều trị ngoại trú."
+      "criteria": "Có ≥ 1 dấu hiệu cảnh báo: Vật vã/lừ đừ/li bì; đau bụng nhiều liên tục hoặc đau vùng gan; nôn ói nhiều (≥ 3 lần/1h hoặc ≥ 4 lần/6h); xuất huyết niêm mạc; gan to > 2 cm; tiểu ít (< 0.5 ml/kg/giờ); Hct tăng cao kèm tiểu cầu giảm nhanh (< 100.000/mm³).",
+      "triage": "Nhập viện nội trú khoa Truyền nhiễm / Cấp cứu (Nhóm B), không điều trị ngoại trú.",
+      "triage_action": "Bắt buộc nhập viện theo dõi tại khoa Lâm sàng / Cấp cứu, không điều trị ngoại trú.",
+      "primaryAction": "Lập đường truyền tĩnh mạch, bù dịch Ringer Lactate/Acetate hoặc NaCl 0.9% bậc thang 6 → 3 → 1.5 mL/kg/giờ và theo dõi Hct mỗi 1-4 giờ."
+    },
+    {
+      "grade_id": "grade_severe_progression",
+      "grade": "Mức độ 3: Chuyển độ SXHD nặng (Cần chuyển ICU ngay)",
+      "grade_name": "SXHD nặng (Sốc / Xuất huyết nặng / Suy tạng)",
+      "criteria": "Mạch nhanh nhỏ, HA kẹp (hiệu áp ≤ 20 mmHg) hoặc tụt HA (< 90 mmHg), chi lạnh ẩm, CRT ≥ 2s; hoặc xuất huyết nặng; hoặc AST/ALT ≥ 1000 U/L, rối loạn tri giác, suy thận cấp.",
+      "triage": "Chuyển khẩn khoa Hồi sức tích cực (ICU - Nhóm C).",
+      "triage_action": "Chuyển khoa Hồi sức tích cực (ICU) ngay lập tức.",
+      "primaryAction": "Chống sốc ngay bằng điện giải 15-20 mL/kg/giờ hoặc Cao phân tử 10-15 mL/kg/giờ, thở oxy, theo dõi huyết động xâm lấn."
+    }
+  ],
+  "specialPopulations": [
+    {
+      "population": "Người thừa cân / Béo phì (BMI ≥ 25 kg/m²)",
+      "recommendation": "Bắt buộc tính tốc độ dịch truyền dựa trên Cân nặng hiệu chỉnh (Adjusted Body Weight) để tránh quá tải dịch và phù phổi cấp."
+    },
+    {
+      "population": "Phụ nữ mang thai",
+      "recommendation": "Nhập viện theo dõi sát tại cơ sở có phối hợp Sản khoa và Hồi sức; chú ý sinh lý tăng thể tích huyết tương làm Hct nền thấp hơn bình thường."
+    },
+    {
+      "population": "Người cao tuổi / Bệnh nền tim mạch, suy thận mạn (eGFR < 60), xơ gan",
+      "recommendation": "Thận trọng tối đa khi truyền dịch, đánh giá thường xuyên rale ẩm phổi, tĩnh mạch cổ nổi và cân bằng dịch xuất nhập; ưu tiên Ringer Acetate nếu có bệnh gan."
     }
   ],
   "timelinePhases": [
     {
+      "dayRange": "Ngày 4-5 (Giờ 1-2)",
       "day_range": "D4-D5 (Giai đoạn Nguy hiểm - Giờ 1-2)",
+      "phaseName": "Giai đoạn Nguy hiểm — Bù dịch khởi đầu",
+      "clinicalGoal": "Khắc phục thoát huyết tương, ngăn ngừa sốc Dengue và hạ dần Hct về ngưỡng an toàn.",
       "clinical_focus": "Theo dõi sát thoát huyết tương, Hct tăng cao và dọa sốc. Bù dịch truyền ban đầu.",
+      "treatments": [
+        "Lập đường truyền tĩnh mạch kim luồn lớn (G18-G20).",
+        "Ringer lactate hoặc Ringer acetate hoặc NaCl 0.9%: Truyền tĩnh mạch 6 ml/kg/giờ trong 1 - 2 giờ đầu.",
+        "Hạ sốt bằng Paracetamol 10-15 mg/kg/lần khi sốt ≥ 38.5°C (tuyệt đối không dùng NSAID/Aspirin)."
+      ],
+      "monitoring": [
+        {
+          "type": "LS",
+          "detail": "Theo dõi Mạch, HA, hiệu áp, Nhịp thở, SpO2, tri giác và lượng nước tiểu mỗi 1 - 2 giờ; đo dịch xuất nhập chính xác."
+        },
+        {
+          "type": "CLS",
+          "detail": "Kiểm tra lại dung tích hồng cầu (Hct) sau 1 - 2 giờ truyền dịch; làm Tổng phân tích tế bào máu, AST/ALT, Điện giải đồ, Chức năng thận."
+        }
+      ],
       "nursing_orders": [
         "Theo dõi Mạch, HA, Nhịp thở, SpO2, lượng nước tiểu mỗi 1 - 2 giờ.",
         "Lập đường truyền tĩnh mạch kim luồn lớn (G18-G20).",
@@ -38,8 +128,25 @@
       ]
     },
     {
+      "dayRange": "Ngày 4-5 (Giờ 3-6)",
       "day_range": "D4-D5 (Giai đoạn Nguy hiểm - Giờ 3-6)",
+      "phaseName": "Giai đoạn Nguy hiểm — Đánh giá đáp ứng & Giảm nấc dịch",
+      "clinicalGoal": "Giảm tốc độ truyền khi huyết động và Hct cải thiện, hoặc chuyển ngay phác đồ chống sốc nếu diễn tiến xấu.",
       "clinical_focus": "Đánh giá đáp ứng bù dịch lâm sàng và xu hướng Hct.",
+      "treatments": [
+        "Nếu lâm sàng cải thiện và Hct giảm: Giảm tốc độ truyền xuống 3 ml/kg/giờ trong 2 - 4 giờ tiếp theo.",
+        "Nếu mạch nhanh, HA kẹt/tụt, Hct tiếp tục tăng: Chuyển ngay phác đồ sốc SXHD (Cao phân tử 10-15 ml/kg/giờ)."
+      ],
+      "monitoring": [
+        {
+          "type": "LS",
+          "detail": "Theo dõi sinh hiệu và lượng nước tiểu mỗi 2 - 4 giờ; khám phổi phát hiện dấu hiệu quá tải dịch (ran ẩm, thở nhanh, tĩnh mạch cổ nổi)."
+        },
+        {
+          "type": "CLS",
+          "detail": "Kiểm tra Hct mỗi 2 - 4 giờ để đánh giá xu hướng cô đặc máu và đáp ứng dịch truyền."
+        }
+      ],
       "nursing_orders": [
         "Theo dõi sinh hiệu và lượng nước tiểu mỗi 2 - 4 giờ.",
         "Kiểm tra dấu hiệu quá tải dịch: ran ẩm phổi, thở nhanh, tĩnh mạch cổ nổi."
@@ -53,8 +160,26 @@
       ]
     },
     {
+      "dayRange": "Ngày 5-6 (6-24 giờ tiếp)",
       "day_range": "D5-D6 (Giai đoạn Duy trì & Giảm dịch)",
+      "phaseName": "Giai đoạn Duy trì — Ngưng dịch & Chuyển hồi phục",
+      "clinicalGoal": "Duy trì tưới máu cơ quan tối thiểu và ngưng dịch đúng thời điểm để tránh phù phổi cấp giai đoạn tái hấp thu.",
       "clinical_focus": "Giảm dần lưu lượng dịch, chuẩn bị ngưng dịch khi bước sang giai đoạn tái hấp thu.",
+      "treatments": [
+        "Giảm tốc độ truyền xuống 1.5 ml/kg/giờ trong 6 - 18 giờ.",
+        "Ngưng hẳn dịch truyền sau 12 - 24 giờ khi mạch, HA ổn định và Hct về mức bình thường.",
+        "Chuyển bù dịch đường uống bằng Oresol, nước trái cây, dinh dưỡng mềm lỏng dễ tiêu."
+      ],
+      "monitoring": [
+        {
+          "type": "LS",
+          "detail": "Theo dõi nước tiểu (duy trì ≥ 0.5 - 1 ml/kg/giờ); khám tim phổi định kỳ phát hiện sớm phù phổi cấp do quá tải tuần hoàn."
+        },
+        {
+          "type": "CLS",
+          "detail": "Kiểm tra Hct và số lượng tiểu cầu trước khi quyết định ngưng dịch truyền."
+        }
+      ],
       "nursing_orders": [
         "Theo dõi nước tiểu (duy trì ≥ 0.5 - 1 ml/kg/giờ).",
         "Khám tim phổi định kỳ phát hiện sớm phù phổi cấp do quá tải tuần hoàn."
@@ -85,9 +210,77 @@
     "theoDoiVaTieuChiChuyenTuyen": "Chuyển khoa Hồi sức cấp cứu (ICU) ngay khi: Huyết áp kẹt (chênh lệch ≤ 20 mmHg) hoặc tụt (HA tâm thu < 90 mmHg), Hct tăng > 20% so với ban đầu không cải thiện sau bù dịch, xuất huyết nặng hoặc suy gan cấp.",
     "tieuChuanXuatVien": "Hết sốt ít nhất 48 giờ không dùng thuốc hạ sốt, tỉnh táo, ăn uống tốt, mạch và huyết áp ổn định, tiểu tiện bình thường, Hct ổn định và số lượng tiểu cầu có xu hướng tăng (> 50.000/mm³)."
   },
+  "complications": [
+    {
+      "id": "comp_dws_shock",
+      "name": "Tiến triển Sốc sốt xuất huyết Dengue",
+      "timeframe": "acute_24h",
+      "warningSigns": "Mạch nhanh nhỏ, HA kẹt (hiệu áp ≤ 20 mmHg) hoặc tụt HA, chi lạnh ẩm, CRT ≥ 2s, Hct tiếp tục tăng.",
+      "preventiveAction": "Chuyển ngay phác đồ chống sốc (Ringer Lactate/Acetate 15-20 mL/kg/giờ hoặc Cao phân tử 10-15 mL/kg/giờ) và chuyển ICU.",
+      "onCallAlertText": "BÁO ĐỘNG ĐỎ: CHUYỂN ĐỘ SỐC SXHD — KHỞI ĐỘNG PHÁC ĐỒ CHỐNG SỐC VÀ CHUYỂN ICU NGAY!"
+    },
+    {
+      "id": "comp_dws_overload",
+      "name": "Quá tải dịch & Phù phổi cấp giai đoạn tái hấp thu",
+      "timeframe": "subacute_7d",
+      "warningSigns": "Khó thở, SpO2 < 92%, rale ẩm 2 đáy phổi, tĩnh mạch cổ nổi.",
+      "preventiveAction": "Ngưng dịch truyền ngay, nằm đầu cao, thở oxy/NCPAP, cân nhắc Furosemide IV khi huyết động ổn định.",
+      "onCallAlertText": "BÁO ĐỘNG QUÁ TẢI DỊCH: NGƯNG DỊCH TRUYỀN NGAY LẬP TỨC, ĐÁNH GIÁ HÔ HẤP!"
+    },
+    {
+      "id": "comp_dws_bleeding",
+      "name": "Xuất huyết tiêu hóa nặng / Xuất huyết nội tạng",
+      "timeframe": "subacute_7d",
+      "warningSigns": "Nôn ra máu, đi cầu phân đen, Hct tụt nhanh không tương xứng lượng dịch truyền.",
+      "preventiveAction": "Định nhóm máu, truyền khối hồng cầu lắng 5-10 mL/kg, PPI tĩnh mạch và hội chẩn Huyết học/Hồi sức.",
+      "onCallAlertText": "BÁO ĐỘNG XUẤT HUYẾT NẶNG: DỰ TRÙ MÁU KHẨN VÀ HỒI SỨC TÍCH CỰC!"
+    }
+  ],
+  "monitoringLabs": [
+    "Hct (Dung tích hồng cầu): Mỗi 1-2 giờ trong giai đoạn khởi đầu, sau đó mỗi 2-4 giờ cho đến khi ổn định.",
+    "Tổng phân tích tế bào máu (PLT, WBC, Hgb): Mỗi 6-12 giờ trong giai đoạn nguy hiểm.",
+    "Men gan AST/ALT, Điện giải đồ, Creatinine: Hàng ngày hoặc mỗi 12 giờ nếu AST/ALT ≥ 400 U/L.",
+    "Đông máu toàn bộ (PT/INR, aPTT, Fibrinogen): Ngay khi có xuất huyết niêm mạc nặng hoặc nghi ngờ suy gan."
+  ],
+  "clinicalCautions": {
+    "cautions": [
+      "NGUY HIỂM: Thoát huyết tương ồ ạt dẫn đến SỐC thường xuất hiện từ ngày 3 đến ngày 7 của bệnh, trùng thời điểm bệnh nhân HẾT SỐT.",
+      "QUÁ TẢI DỊCH: Thận trọng bù dịch quá mức khi bệnh nhân bước vào giai đoạn tái hấp thu (từ ngày 6-7), có thể dẫn đến phù phổi cấp và suy hô hấp tử vong.",
+      "Không dùng dung dịch Glucose đơn thuần để bù dịch chống thoát huyết tương."
+    ],
+    "contraindications": [
+      "Chống chỉ định tuyệt đối Aspirin, Ibuprofen, NSAID và Corticoid đường toàn thân.",
+      "Chống chỉ định tiêm bắp (IM) để tránh khối máu tụ sâu và chảy máu khó cầm."
+    ],
+    "dischargeCriteria": [
+      "Hết sốt ít nhất 48 giờ mà không dùng thuốc hạ sốt.",
+      "Tỉnh táo, ăn uống tốt, mạch và huyết áp ổn định, tiểu tiện bình thường.",
+      "Không còn tràn dịch gây khó thở, Hct ổn định và số lượng tiểu cầu có xu hướng tăng (> 50.000/mm³)."
+    ]
+  },
   "warnings": [
     "NGUY HIỂM: Thoát huyết tương ồ ạt dẫn đến SỐC thường xuất hiện từ ngày 3 đến ngày 7 của bệnh, trùng thời điểm bệnh nhân HẾT SỐT.",
     "QUÁ TẢI DỊCH: Thận trọng bù dịch quá mức khi bệnh nhân bước vào giai đoạn tái hấp thu (từ ngày 6-7), có thể dẫn đến phù phổi cấp và suy hô hấp tử vong.",
     "CHỐNG CHỈ ĐỊNH: Tuyệt đối không tiêm bắp để tránh khối máu tụ sâu."
+  ],
+  "vaultPathways": [
+    {
+      "khoCode": "CD",
+      "khoName": "Kho Tiêu Chuẩn CĐ",
+      "articleTitle": "Bộ tiêu chuẩn chẩn đoán & dấu hiệu cảnh báo Sốt xuất huyết Dengue",
+      "searchKeyword": "chẩn đoán sot_xuat_huyet_dengue"
+    },
+    {
+      "khoCode": "PDDT",
+      "khoName": "Kho Phác Đồ Điều Trị",
+      "articleTitle": "Phác đồ truyền dịch bậc thang SXHD có dấu hiệu cảnh báo (QĐ 2760/QĐ-BYT 2023)",
+      "searchKeyword": "phác đồ điều trị sot_xuat_huyet_dengue"
+    },
+    {
+      "khoCode": "BC",
+      "khoName": "Kho Biến Chứng",
+      "articleTitle": "Nhận diện sớm sốc SXHD và phòng ngừa quá tải dịch giai đoạn tái hấp thu",
+      "searchKeyword": "biến chứng sot_xuat_huyet_dengue"
+    }
   ]
 }
