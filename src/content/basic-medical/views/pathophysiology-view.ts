@@ -147,6 +147,14 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' |
             <i class="fa-solid fa-virus-covid" style="color: #0d9488;"></i>
             <span>4. Dịch Tễ Học (6 Khối, 2×2 Solver)</span>
           </a>
+          <a href="#/basic-medical/khang-sinh" class="hub-tab-btn" style="padding: 0.65rem 1.3rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; white-space: nowrap;">
+            <i class="fa-solid fa-shield-virus" style="color: #0284c7;"></i>
+            <span>5. Kháng Sinh Học (6 Modules)</span>
+          </a>
+          <a href="#/basic-medical/tiep-can" class="hub-tab-btn" style="padding: 0.65rem 1.3rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 10px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; white-space: nowrap;">
+            <i class="fa-solid fa-stethoscope" style="color: #e11d48;"></i>
+            <span>6. Tiếp Cận Lâm Sàng (13 Chuyên Khoa)</span>
+          </a>
         </div>
       </div>
 

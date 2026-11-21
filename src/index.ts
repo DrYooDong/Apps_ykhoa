@@ -300,7 +300,9 @@ import {
   renderAntibioticsHubView,
   initAntibioticsHubView,
   renderAntibioticsToolView,
-  initAntibioticsToolsView
+  initAntibioticsToolsView,
+  renderApproachHubView,
+  initApproachHubView
 } from './content/basic-medical';
 
 /**
@@ -641,6 +643,31 @@ function initializeRoutes(): void {
       mountToApp(renderPhysioHtmlReader(moduleName, slug));
     });
 
+    // === CLINICAL APPROACH (TIẾP CẬN LÂM SÀNG) SUB-ROUTES ===
+    router.register(`/${prefix}/tiep-can`, 'Tiếp Cận Lâm Sàng (13 Chuyên Khoa)', () => {
+      document.title = 'Tiếp Cận Lâm Sàng – CliniPortal';
+      mountToApp(renderApproachHubView());
+      initApproachHubView();
+    });
+
+    router.register(`/${prefix}/approach`, 'Tiếp Cận Lâm Sàng (13 Chuyên Khoa)', () => {
+      document.title = 'Tiếp Cận Lâm Sàng – CliniPortal';
+      mountToApp(renderApproachHubView());
+      initApproachHubView();
+    });
+
+    router.register(`/${prefix}/tiep-can/:specialty/:slug`, 'Bài Học Tiếp Cận Lâm Sàng', (params) => {
+      const specialty = params.specialty || 'ck01-nguyen-ly';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(specialty, slug));
+    });
+
+    router.register(`/${prefix}/approach/:specialty/:slug`, 'Bài Học Tiếp Cận Lâm Sàng', (params) => {
+      const specialty = params.specialty || 'ck01-nguyen-ly';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(specialty, slug));
+    });
+
     router.register(`/${prefix}/formula-vault`, 'Kho Công thức Sinh lý', () => {
       document.title = 'Kho Công thức Sinh lý – CliniPortal';
       mountToApp(renderFormulaVaultView());
@@ -745,6 +772,18 @@ function initializeRoutes(): void {
     document.title = 'Kháng Sinh Học Lâm Sàng – CliniPortal';
     mountToApp(renderAntibioticsHubView());
     initAntibioticsHubView();
+  });
+
+  router.register('/tiep-can', 'Tiếp Cận Lâm Sàng (13 Chuyên Khoa)', () => {
+    document.title = 'Tiếp Cận Lâm Sàng – CliniPortal';
+    mountToApp(renderApproachHubView());
+    initApproachHubView();
+  });
+
+  router.register('/approach', 'Tiếp Cận Lâm Sàng (13 Chuyên Khoa)', () => {
+    document.title = 'Tiếp Cận Lâm Sàng – CliniPortal';
+    mountToApp(renderApproachHubView());
+    initApproachHubView();
   });
 
   // 2.3. Tự động chuyển hướng các phân hệ cũ (TCM, Calculators, Pharmacology...) về DocSpace

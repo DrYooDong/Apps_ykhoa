@@ -956,6 +956,24 @@
 
 ---
 
+## 🩺 src/content/basic-medical/approach/ (Phân Hệ Tiếp Cận Lâm Sàng — 13 Chuyên Khoa MDX)
+
+| File / Thư mục | Vai trò | Phân loại |
+|---|---|---|
+| `APPROACH_MDX_DESIGN_SPEC.md` | Quy chuẩn thiết kế bài học Tiếp Cận Lâm Sàng 9 mục MDX Native v2.0 | Design Spec |
+| `README.md` | Hướng dẫn kiến trúc & bản đồ 13 chuyên khoa (`ck01-` → `ck13-`) | Documentation |
+| `index.ts` | Barrel export phân hệ Tiếp cận lâm sàng | Entry Point |
+| `types/approach.types.ts` | Định nghĩa kiểu TypeScript cho chuyên khoa, bài học, mức khẩn cấp & frontmatter | Types |
+| `data/approach-curriculum-data.ts` | CSDL Registry 13 chuyên khoa & 111 chuyên đề tiếp cận đối soát Vault 2.1 | Registry Data |
+| `components/ApproachQuickNav.ts` | Thanh mục lục bám dính 9 mục cho bài đọc MDX Tiếp cận | MDX Component |
+| `components/UrgencyPill.ts` | Huy hiệu phân tầng khẩn cấp (`emergent` \| `urgent` \| `routine`) | MDX Component |
+| `views/approach-hub-view.ts` | Giao diện Hub tổng quan Promax, bộ lọc khẩn cấp/trạng thái, tìm kiếm & modal xem trước | SPA Hub View |
+| `ck04-tim-mach/tc-04-01-dau-nguc.mdx` | Bài mẫu Golden #1: Tiếp cận Đau ngực cấp & 6 Sát thủ đe dọa tính mạng | Golden MDX |
+| `ck07-than-dien-giai/tc-07-09-ha-natri-mau.mdx` | Bài mẫu Golden #2: Tiếp cận Hạ Natri máu (UOsm/UNa, NaCl 3%, phòng ODS) | Golden MDX |
+| `ck13-nhi-khoa/tc-13-01-tre-sot.mdx` | Bài mẫu Golden #3: Tiếp cận Trẻ Sốt (NICE Traffic Light, < 2 tháng, FUO) | Golden MDX |
+
+---
+
 *Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*
 
 

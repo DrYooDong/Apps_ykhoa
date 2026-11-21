@@ -25,6 +25,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   const isBiochem = cleanPart.startsWith('block') || cleanPart.startsWith('biochem');
   const isEpi = cleanPart === 'epidemiology' || cleanPart === 'dth' || cleanPart === 'dich-te-hoc';
   const isAntibiotics = cleanPart.startsWith('module') || cleanPart === 'antibiotics' || cleanPart === 'khang-sinh';
+  const isApproach = cleanPart.startsWith('ck') || cleanPart === 'approach' || cleanPart === 'tiep-can';
 
   // Retrieve saved preferences from localStorage
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
@@ -60,14 +61,29 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     'module5-di-ung-beta-lactam': 'Module 5: Dị Ứng Beta-Lactam',
     'module6-phac-do-ngoai-tru': 'Module 6: Nhiễm Trùng Ngoại Trú',
     'antibiotics': 'Kháng Sinh Học Lâm Sàng',
-    'khang-sinh': 'Kháng Sinh Học Lâm Sàng'
+    'khang-sinh': 'Kháng Sinh Học Lâm Sàng',
+    'ck01-nguyen-ly': 'CK01: Nguyên Lý Tiếp Cận',
+    'ck02-cap-cuu-doc-chat': 'CK02: Cấp Cứu – Hồi Sức – Độc Chất',
+    'ck03-truyen-nhiem-sot': 'CK03: Truyền Nhiễm – Sốt',
+    'ck04-tim-mach': 'CK04: Tim Mạch',
+    'ck05-ho-hap': 'CK05: Hô Hấp',
+    'ck06-tieu-hoa-gan-mat': 'CK06: Tiêu Hóa – Gan Mật',
+    'ck07-than-dien-giai': 'CK07: Thận – Tiết Niệu & Nước – Điện Giải',
+    'ck08-than-kinh': 'CK08: Thần Kinh',
+    'ck09-huyet-hoc-mien-dich': 'CK09: Huyết Học – Miễn Dịch',
+    'ck10-noi-tiet-dinh-duong': 'CK10: Nội Tiết – Chuyển Hóa – Dinh Dưỡng',
+    'ck11-co-xuong-khop': 'CK11: Cơ Xương Khớp',
+    'ck12-da-lieu': 'CK12: Da Liễu',
+    'ck13-nhi-khoa': 'CK13: Nhi Khoa',
+    'approach': 'Tiếp Cận Lâm Sàng',
+    'tiep-can': 'Tiếp Cận Lâm Sàng'
   };
 
-  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : (isEpi ? 'Dịch Tễ Bệnh Học' : (isAntibiotics ? 'Kháng Sinh Học' : `Phần ${cleanPart.replace('part', '')}`)));
+  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : (isEpi ? 'Dịch Tễ Bệnh Học' : (isAntibiotics ? 'Kháng Sinh Học' : (isApproach ? 'Tiếp Cận Lâm Sàng' : `Phần ${cleanPart.replace('part', '')}`))));
 
   // Trigger async fetch after container mounts to DOM
   setTimeout(() => {
-    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem, isEpi, isAntibiotics);
+    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem, isEpi, isAntibiotics, isApproach);
   }, 30);
 
   let parentModuleUrl = '#/basic-medical/giai-phau-sinh-ly';
@@ -90,6 +106,10 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     parentModuleUrl = '#/basic-medical/khang-sinh';
     parentModuleName = 'Kháng Sinh (AMS)';
     partUrl = `#/basic-medical/khang-sinh#${cleanPart}-section`;
+  } else if (isApproach) {
+    parentModuleUrl = '#/basic-medical/tiep-can';
+    parentModuleName = 'Tiếp Cận (TC)';
+    partUrl = `#/basic-medical/tiep-can#${cleanPart}-section`;
   }
 
   return `
@@ -261,7 +281,8 @@ async function fetchAndHydratePhysioArticle(
   isCaseStudy: boolean,
   isBiochem: boolean,
   isEpi: boolean,
-  isAntibiotics: boolean = false
+  isAntibiotics: boolean = false,
+  isApproach: boolean = false
 ): Promise<void> {
   const mountEl = document.getElementById('physio-article-mount');
   if (!mountEl) return;
@@ -308,6 +329,17 @@ async function fetchAndHydratePhysioArticle(
       `src/content/basic-medical/antibiotics/${part}/${cleanSlug}`,
       `/src/content/basic-medical/antibiotics/${cleanSlug}`,
       `src/content/basic-medical/antibiotics/${cleanSlug}`
+    ];
+  } else if (isApproach) {
+    candidatePaths = [
+      `/src/content/basic-medical/approach/${part}/${baseSlugName}.mdx`,
+      `src/content/basic-medical/approach/${part}/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/approach/${part}/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/approach/${part}/${baseSlugName}.mdx`,
+      `/src/content/basic-medical/approach/${part}/${cleanSlug}`,
+      `src/content/basic-medical/approach/${part}/${cleanSlug}`,
+      `/src/content/basic-medical/approach/${cleanSlug}`,
+      `src/content/basic-medical/approach/${cleanSlug}`
     ];
   } else {
     candidatePaths = [
@@ -361,6 +393,9 @@ async function fetchAndHydratePhysioArticle(
     } else if (isAntibiotics) {
       returnUrl = '#/basic-medical/khang-sinh';
       returnText = 'Kháng Sinh Học Lâm Sàng (AMS)';
+    } else if (isApproach) {
+      returnUrl = '#/basic-medical/tiep-can';
+      returnText = 'Tiếp Cận Lâm Sàng (13 Chuyên Khoa)';
     }
 
     mountEl.innerHTML = `
@@ -368,7 +403,7 @@ async function fetchAndHydratePhysioArticle(
         <i class="fa-solid fa-triangle-exclamation" style="font-size: 3.2rem; color: #dc2626; margin-bottom: 1.25rem;"></i>
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem;">Không tìm thấy bài giảng</h3>
         <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
-          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : (isBiochem ? 'biochemistry/' + part + '/' : (isAntibiotics ? 'antibiotics/' + part + '/' : part + '/'))}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
+          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : (isBiochem ? 'biochemistry/' + part + '/' : (isAntibiotics ? 'antibiotics/' + part + '/' : (isApproach ? 'approach/' + part + '/' : part + '/')) )}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
         </p>
         <a href="${returnUrl}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 0.65rem 1.35rem; background: var(--color-primary, #0284c7); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 800;">
           <i class="fa-solid fa-arrow-left"></i> Quay lại ${returnText}
@@ -442,6 +477,13 @@ async function fetchAndHydratePhysioArticle(
       badgeBorder = 'rgba(45, 212, 191, 0.35)';
       badgeIcon = 'fa-shield-virus';
       badgeText = 'KHÁNG SINH HỌC LÂM SÀNG (AMS) • MDX NATIVE';
+    } else if (isApproach) {
+      headerGradient = 'linear-gradient(135deg, #881337 0%, #0f172a 52%, #be123c 100%)';
+      badgeColor = '#fda4af';
+      badgeBg = 'rgba(253, 164, 175, 0.18)';
+      badgeBorder = 'rgba(253, 164, 175, 0.35)';
+      badgeIcon = 'fa-stethoscope';
+      badgeText = 'TIẾP CẬN LÂM SÀNG • MDX NATIVE';
     } else if (part.includes('guideline') || part.includes('ebm') || part.includes('stat')) {
       headerGradient = 'linear-gradient(135deg, #78350f 0%, #0f172a 50%, #92400e 100%)';
       badgeColor = '#fbbf24';

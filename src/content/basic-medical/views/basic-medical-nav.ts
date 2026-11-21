@@ -14,6 +14,7 @@ export type BasicMedicalTabKey =
   | 'hoa-sinh' 
   | 'dich-te-hoc' 
   | 'khang-sinh'
+  | 'tiep-can'
   | 'simulators' 
   | 'formula-vault' 
   | 'quiz';
@@ -81,6 +82,15 @@ export const BASIC_MEDICAL_TABS: BasicMedicalTabItem[] = [
     hash: '#/basic-medical/khang-sinh',
     color: 'var(--dsp-sky)',
     badge: '6 Modules'
+  },
+  {
+    key: 'tiep-can',
+    label: 'Tiếp Cận Lâm Sàng (TC)',
+    shortLabel: 'Tiếp Cận',
+    icon: 'fa-stethoscope',
+    hash: '#/basic-medical/tiep-can',
+    color: 'var(--dsp-rose, #e11d48)',
+    badge: '13 CK'
   },
   {
     key: 'simulators',

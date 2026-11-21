@@ -36,14 +36,17 @@ import { renderPathoAlert } from '../content/basic-medical/pathophysiology-cases
 import { renderPathoQuickNav } from '../content/basic-medical/pathophysiology-cases/components/PathoQuickNav';
 import { renderAntibioticQuickNav } from '../content/basic-medical/antibiotics/components/AntibioticQuickNav';
 import { renderAWaRePill } from '../content/basic-medical/antibiotics/components/AWaRePill';
+import { renderApproachQuickNav } from '../content/basic-medical/approach/components/ApproachQuickNav';
+import { renderUrgencyPill } from '../content/basic-medical/approach/components/UrgencyPill';
 import { renderFlowchartViewer } from '../components/flowchart/renderFlowchartViewer';
 import type { EpidemiologyMdxFrontmatter } from '../content/basic-medical/types/epidemiology.types';
 import type { PhysioMdxFrontmatter } from '../content/basic-medical/types/physiology.types';
 import type { BiochemistryMdxFrontmatter } from '../content/basic-medical/types/biochemistry.types';
 import type { CcbsMdxFrontmatter } from '../content/basic-medical/types/ccbs.types';
+import type { ApproachMdxFrontmatter } from '../content/basic-medical/approach/types/approach.types';
 
 export interface ParsedMdxResult {
-  frontmatter: Partial<EpidemiologyMdxFrontmatter | PhysioMdxFrontmatter | BiochemistryMdxFrontmatter | CcbsMdxFrontmatter> & Record<string, any>;
+  frontmatter: Partial<EpidemiologyMdxFrontmatter | PhysioMdxFrontmatter | BiochemistryMdxFrontmatter | CcbsMdxFrontmatter | ApproachMdxFrontmatter> & Record<string, any>;
   title: string;
   description: string;
   html: string;
@@ -508,6 +511,17 @@ export class CliniMdxEngine {
     // 13. <AWaRePill tier="..." /> (Inline Badge Component — bảo toàn cấu trúc bảng Markdown)
     result = result.replace(/<AWaRePill(?:\s+tier=["']([^"']+)["'])?\s*(?:\/>|><\/AWaRePill>)/gi, (_match, tier) => {
       return stashInline(renderAWaRePill((tier || 'access') as any));
+    });
+
+    // 14. <ApproachQuickNav />
+    result = result.replace(/<ApproachQuickNav\s*\/?>/gi, () => {
+      const items = Array.isArray(sections) && sections.length > 0 ? sections : undefined;
+      return stashBlock(renderApproachQuickNav(items ? { items } : undefined));
+    });
+
+    // 15. <UrgencyPill level="..." label="..." /> (Inline Badge Component — an toàn trong bảng Markdown)
+    result = result.replace(/<UrgencyPill(?:\s+level=["']([^"']+)["'])?(?:\s+label=["']([^"']+)["'])?\s*(?:\/>|><\/UrgencyPill>)/gi, (_match, level, label) => {
+      return stashInline(renderUrgencyPill((level || 'urgent') as any, label));
     });
 
     return result;
