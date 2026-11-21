@@ -226,16 +226,22 @@ export function renderApproachHubView(): string {
                     <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                       <h3 id="${spec.key}-heading" style="margin: 0;">CK${String(spec.number).padStart(2, '0')}. ${spec.title}</h3>
                       <span style="font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--color-bg, #f1f5f9); color: var(--color-text-muted, #64748b); border: 1px solid var(--color-border, #e2e8f0);">
-                        ${pubInSpec > 0 ? `${pubInSpec}/${spec.lessons.length} đã xuất bản` : `${spec.lessons.length} chuyên đề`}
+                        ${spec.lessons.length > 0 ? `${pubInSpec}/${spec.lessons.length} đã xuất bản` : 'Chưa có bài MDX'}
                       </span>
                     </div>
                     <p style="margin: 0.2rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">${spec.clinicalObjective || spec.description}</p>
                   </div>
                 </div>
 
-                <div class="specialty-grid">
-                  ${spec.lessons.map(lesson => renderApproachLessonCard(spec.color, spec.bgColor || 'rgba(225,29,72,0.1)', spec.icon, lesson)).join('')}
-                </div>
+                ${spec.lessons.length > 0
+                  ? `<div class="specialty-grid">
+                      ${spec.lessons.map(lesson => renderApproachLessonCard(spec.color, spec.bgColor || 'rgba(225,29,72,0.1)', spec.icon, lesson)).join('')}
+                    </div>`
+                  : `<div style="padding: 1rem 1.25rem; border-radius: 12px; border: 1px dashed var(--color-border, #cbd5e1); background: var(--color-bg, #f8fafc); color: var(--color-text-muted, #64748b); font-size: 0.85rem; display: flex; align-items: center; gap: 0.6rem;">
+                      <i class="fa-regular fa-folder-open" style="color: ${spec.color};"></i>
+                      <span>Chưa có bài học MDX nào trong chuyên khoa này.</span>
+                    </div>`
+                }
               </div>
             </section>
           `;
@@ -384,11 +390,12 @@ export function initApproachHubView(): void {
         }
       });
 
-      sectionEl.style.display = sectionVisibleCount > 0 ? '' : 'none';
+      const showEmptySpecialty = activeFilter === 'all' && !q;
+      sectionEl.style.display = (sectionVisibleCount > 0 || showEmptySpecialty) ? '' : 'none';
     });
 
     if (emptyState) {
-      emptyState.style.display = totalVisible === 0 ? 'block' : 'none';
+      emptyState.style.display = (totalVisible === 0 && (activeFilter !== 'all' || !!q)) ? 'block' : 'none';
     }
   }
 

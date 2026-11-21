@@ -19,18 +19,18 @@ Khi cần biên tập, nhập nguồn từ `knowledge-vault/2.1. Kho tiếp cậ
 
 ## 📂 Bản Đồ Thư Mục 13 Chuyên Khoa
 
-| Thư mục | Chuyên khoa | Mã bài | Số bài dự kiến |
+| Thư mục | Chuyên khoa | Mã bài | Số bài MDX hiện có |
 |---|---|---|---|
-| `ck01-nguyen-ly/` | Nguyên lý tiếp cận | `TC-NL-xx` | 2 |
-| `ck02-cap-cuu-doc-chat/` | Cấp cứu – Hồi sức – Độc chất | `TC-CC-xx` | 6 |
-| `ck03-truyen-nhiem-sot/` | Truyền nhiễm – Sốt | `TC-TN-xx` | 19 |
-| `ck04-tim-mach/` | Tim mạch | `TC-TM-xx` | 5 |
-| `ck05-ho-hap/` | Hô hấp | `TC-HH-xx` | 8 |
-| `ck06-tieu-hoa-gan-mat/` | Tiêu hóa – Gan mật | `TC-TH-xx` | 22 |
-| `ck07-than-dien-giai/` | Thận – Tiết niệu & Nước – Điện giải | `TC-TDG-xx` | 13 |
-| `ck08-than-kinh/` | Thần kinh | `TC-TK-xx` | 4 |
-| `ck09-huyet-hoc-mien-dich/` | Huyết học – Miễn dịch | `TC-HM-xx` | 4 |
-| `ck10-noi-tiet-dinh-duong/` | Nội tiết – Chuyển hóa – Dinh dưỡng | `TC-NT-xx` | 7 |
-| `ck11-co-xuong-khop/` | Cơ xương khớp | `TC-CXK-xx` | 3 |
-| `ck12-da-lieu/` | Da liễu | `TC-DL-xx` | 2 |
-| `ck13-nhi-khoa/` | Nhi khoa | `TC-NK-xx` | 17 |
+| `ck01-nguyen-ly/` | Nguyên lý tiếp cận | `TC-NL-xx` | 0 |
+| `ck02-cap-cuu-doc-chat/` | Cấp cứu – Hồi sức – Độc chất | `TC-CC-xx` | 0 |
+| `ck03-truyen-nhiem-sot/` | Truyền nhiễm – Sốt | `TC-TN-xx` | 2 (`tc-03-sot-cap-tinh-nl.mdx`, `tc-03-sot-keo-dai-nl.mdx`) |
+| `ck04-tim-mach/` | Tim mạch | `TC-TM-xx` | 1 (`tc-04-01-dau-nguc.mdx`) |
+| `ck05-ho-hap/` | Hô hấp | `TC-HH-xx` | 0 |
+| `ck06-tieu-hoa-gan-mat/` | Tiêu hóa – Gan mật | `TC-TH-xx` | 0 |
+| `ck07-than-dien-giai/` | Thận – Tiết niệu & Nước – Điện giải | `TC-TDG-xx` | 1 (`tc-07-09-ha-natri-mau.mdx`) |
+| `ck08-than-kinh/` | Thần kinh | `TC-TK-xx` | 0 |
+| `ck09-huyet-hoc-mien-dich/` | Huyết học – Miễn dịch | `TC-HM-xx` | 0 |
+| `ck10-noi-tiet-dinh-duong/` | Nội tiết – Chuyển hóa – Dinh dưỡng | `TC-NT-xx` | 0 |
+| `ck11-co-xuong-khop/` | Cơ xương khớp | `TC-CXK-xx` | 0 |
+| `ck12-da-lieu/` | Da liễu | `TC-DL-xx` | 0 |
+| `ck13-nhi-khoa/` | Nhi khoa | `TC-NK-xx` | 1 (`tc-13-01-tre-sot.mdx`) |
