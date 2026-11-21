@@ -112,7 +112,7 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
     icon: 'fa-virus',
     color: '#0d9488',
     bgColor: 'rgba(13, 148, 136, 0.12)',
-    badge: '2 bài MDX',
+    badge: '3 bài MDX',
     description: 'Tiếp cận bệnh nhân sốt tổng quát, sốt kéo dài FUO và chuỗi hội chứng Sốt kèm triệu chứng định vị cơ quan.',
     clinicalObjective: 'Định vị nhanh ổ nhiễm trùng, nhận diện Sepsis sớm và phân biệt tác nhân vi khuẩn, siêu vi, ký sinh trùng.',
     lessons: buildLessons(3, 'ck03-truyen-nhiem-sot', 'Truyền Nhiễm – Tiếp Cận Sốt', 'TN', [
@@ -144,6 +144,20 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
         tags: ['Sốt kéo dài', 'FUO', 'PDCs', 'Lao', 'Tự miễn'],
         minutes: 25,
         status: 'published'
+      },
+      {
+        n: 5,
+        slug: 'sot-vang-da',
+        exactSlug: 'tc-03-sot-vang-da',
+        title: 'Tiếp Cận Bệnh Nhân Người Lớn Có Sốt Kèm Vàng Da (Fever and Jaundice)',
+        desc: 'Tiếp cận cấp cứu sốt kèm vàng da ở người lớn: 3 cơ chế (trước gan, tại gan, sau gan), Tam chứng Charcot & Ngũ chứng Reynolds, 4 kiểu hình sinh hóa, siêu âm đường mật và giải áp ERCP khẩn cấp.',
+        keyTakeaway: 'Sốt kèm vàng da là cấp cứu nội – ngoại khoa: nhận diện sớm Ngũ chứng Reynolds & Suy gan cấp; kháng sinh phổ rộng trong 1 giờ kết hợp giải áp đường mật khẩn cấp (ERCP).',
+        urgency: 'emergent',
+        hasVault: true,
+        tags: ['Sốt kèm vàng da', 'Viêm đường mật cấp', 'Ngũ chứng Reynolds', 'Leptospirosis', 'ERCP'],
+        minutes: 25,
+        status: 'published',
+        redFlags: 'Ngũ chứng Reynolds (đau HSP + sốt rét run + vàng da + tụt HA + rối loạn tri giác), Suy gan cấp (bệnh não gan + INR ≥ 1.5), sốt rét ác tính, hội chứng Weil suy thận/xuất huyết phổi.'
       }
     ], 1)
   },

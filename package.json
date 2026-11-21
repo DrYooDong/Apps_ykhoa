@@ -23,6 +23,7 @@
     "migrate": "node -e \"require('esbuild').buildSync({entryPoints:['tools/scripts/ume-migrate.ts'],outfile:'tools/scripts/ume-migrate.cjs',bundle:true,platform:'node'}); require('./tools/scripts/ume-migrate.cjs'); require('fs').unlinkSync('tools/scripts/ume-migrate.cjs');\"",
     "migrate:validate": "tsc --noEmit",
     "lint:content": "node tools/scripts/medical-linter.mjs",
+    "validate:mdx": "node tools/scripts/validate-mdx.mjs",
     "audit:deadcode": "node tools/scripts/tree-shake-audit.mjs",
     "audit:perf": "node tools/scripts/perf-budget-audit.mjs",
     "optimize:media": "python tools/scripts/optimize-media.py",

@@ -112,8 +112,8 @@ Một bài học chuẩn hoàn chỉnh **bắt buộc phải có đủ 6 tầng 
   - Cập nhật đúng `filePath`, `title`, `description`, `keyTakeaway`, `tags`, `sections`.
 
 ### Quy tắc 10: KIỂM TOÁN CHẤT LƯỢNG TRƯỚC KHI BÀN GIAO (Quality Gate)
-- Chạy `node tools/scratch/check_tags.js <file>.mdx` để đảm bảo không lệch thẻ HTML.
-- Chạy `node .agents/skills/clinical-handbook-mdx-module/scripts/validate_handbook_mdx.mjs <file>.mdx` để kiểm định toàn diện.
+- Chạy `npm run validate:mdx -- <file>.mdx` (kiểm tra tự động 30 quy tắc cú pháp AST `@mdx-js/mdx`, công thức KaTeX/LaTeX, ký hiệu/HTML entities, thẻ void `<br />`, comment `{/* */}`, trùng DOM ID và ảnh cục bộ).
+- Chạy `node .agents/skills/clinical-handbook-mdx-module/scripts/validate_handbook_mdx.mjs <file>.mdx` (tích hợp sẵn `validate-mdx.mjs` + kiểm định linh kiện Sổ tay lâm sàng).
 - Chạy `npm run build` để xác nhận Vite biên dịch thành công 100% không vướng lỗi TypeScript hay import.
 
 ### Quy tắc 11: ĐỔI TÊN FILE NGỮ NGHĨA SAU KHI THÊM DESIGN (Semantic File Renaming Rule)

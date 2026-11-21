@@ -635,6 +635,7 @@ function setupMobileNavDrawer(): void {
                 <a href="#/basic-medical/hoa-sinh" class="cp-drawer-chip">🧪 Hóa Sinh</a>
                 <a href="#/basic-medical/dich-te-hoc" class="cp-drawer-chip">🦠 Dịch Tễ</a>
                 <a href="#/basic-medical/khang-sinh" class="cp-drawer-chip">🛡️ Kháng Sinh</a>
+                <a href="#/basic-medical/tiep-can" class="cp-drawer-chip">🩺 Tiếp Cận</a>
                 <a href="#/ebm/kho-guidelines" class="cp-drawer-chip">📚 Guidelines</a>
               </div>
             </div>

@@ -121,7 +121,7 @@ function syncBottomNavActiveState(): void {
 
     if (route === 'home' && (clean === '' || clean === '/')) {
       isMatch = true;
-    } else if (route === 'basic' && (firstSeg === 'basic-medical' || firstSeg === 'pathophysiology')) {
+    } else if (route === 'basic' && ['basic-medical', 'pathophysiology', 'biochemistry', 'epidemiology', 'dich-te-hoc', 'khang-sinh', 'antibiotics', 'tiep-can', 'approach'].includes(firstSeg)) {
       isMatch = true;
     } else if (route === 'ebm' && (firstSeg === 'ebm' || firstSeg === 'guidelines')) {
       isMatch = true;
@@ -155,7 +155,7 @@ function syncHeaderProjectActiveState(): void {
 
     if (project === 'docspace' && firstSeg === 'docspace') {
       isMatch = true;
-    } else if (project === 'basic' && (firstSeg === 'basic-medical' || firstSeg === 'pathophysiology')) {
+    } else if (project === 'basic' && ['basic-medical', 'pathophysiology', 'biochemistry', 'epidemiology', 'dich-te-hoc', 'khang-sinh', 'antibiotics', 'tiep-can', 'approach'].includes(firstSeg)) {
       isMatch = true;
     } else if ((project === 'handbook' || project === 'vault') && (firstSeg === 'clinical-handbook' || firstSeg === 'knowledge-vault' || firstSeg === 'vault')) {
       isMatch = true;
@@ -865,7 +865,7 @@ function setupGlobalQuickSearch(): void {
     if (!trimmed) {
       const quickItems = [
         { title: 'DocSpace Pro Workstation', sub: 'Trực ca, Triage, SOAP & CDSS 4 bước', url: '#/docspace', badge: 'Workstation' },
-        { title: 'Basic Sciences — Cơ sở Y khoa', sub: 'Giải phẫu, Sinh lý, CCBS, Hóa sinh, Dịch tễ, Kháng sinh', url: '#/basic-medical', badge: 'Cơ sở' },
+        { title: 'Basic Sciences — Cơ sở Y khoa', sub: 'Giải phẫu, Sinh lý, CCBS, Hóa sinh, Dịch tễ, Kháng sinh, Tiếp cận', url: '#/basic-medical', badge: 'Cơ sở' },
         { title: 'Clinical Handbook — Sổ Tay Lâm Sàng', sub: 'Kinh nghiệm & đúc kết thực chiến theo chuyên khoa', url: '#/clinical-handbook', badge: 'Đúc kết' },
         { title: 'EBM Suite & Kho Guidelines 2026', sub: 'Khuyến cáo BYT, ESC, KDIGO, IDSA & EBM Lab', url: '#/ebm/kho-guidelines', badge: 'EBM' },
         { title: 'CDSS Platform Suite', sub: 'Bộ công cụ hỗ trợ quyết định lâm sàng độc lập', url: 'https://dryoodong.github.io/CDSS_Standalone/?theme=light', badge: 'CDSS', external: true },

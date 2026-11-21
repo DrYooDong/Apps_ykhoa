@@ -826,12 +826,22 @@ export class CliniMdxEngine {
         flushTable();
       }
 
-      // Headings with custom ID {#sec-X}
+      // Headings with custom ID {#sec-X} or legacy <span id="sec-X"></span>
       const headingMatch = line.match(/^(#{1,6})\s+(.*?)(?:\s+\{#([a-zA-Z0-9_-]+)\})?$/);
       if (headingMatch) {
         const level = headingMatch[1].length;
-        const text = headingMatch[2].trim();
-        const customId = headingMatch[3] || `sec-${toc.length + 1}`;
+        let text = headingMatch[2].trim();
+        let customId = headingMatch[3] || '';
+        if (!customId) {
+          const spanIdMatch = text.match(/<span\s+id=["']([a-zA-Z0-9_-]+)["']\s*>\s*<\/span>/i);
+          if (spanIdMatch) {
+            customId = spanIdMatch[1];
+            text = text.replace(spanIdMatch[0], '').trim();
+          }
+        }
+        if (!customId) {
+          customId = `heading-${toc.length + 1}`;
+        }
 
         toc.push({ id: customId, text, level });
 
@@ -989,17 +999,20 @@ export class CliniMdxEngine {
       }
     }
 
-    let formatted = math;
+    let formatted = math
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
 
-    // 1. Text & Font Styles (process first so inner text has no remaining braces)
-    formatted = formatted.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-weight: 800; color: var(--color-primary, #0284c7);">$1</strong>');
-    formatted = formatted.replace(/\\mathit\{([^{}]+)\}/g, '<em>$1</em>');
-    formatted = formatted.replace(/\\mathrm\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif);">$1</span>');
+    // 1. Text & Font Styles (process inner \text/\mathrm/\mathit first so nested \mathbf{...\text{...}} resolves cleanly)
     formatted = formatted.replace(/\\text\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif); font-style: normal; font-size: 0.92em; margin: 0 2px;">$1</span>');
+    formatted = formatted.replace(/\\mathrm\{([^{}]+)\}/g, '<span style="font-family: var(--font-body, sans-serif);">$1</span>');
+    formatted = formatted.replace(/\\mathit\{([^{}]+)\}/g, '<em>$1</em>');
+    formatted = formatted.replace(/\\mathbf\{([^{}]+)\}/g, '<strong style="font-weight: 800; color: var(--color-primary, #0284c7);">$1</strong>');
 
-    // 2. Escaped Percent, Degree & Delimiters (must run before \le and ^ so \left( and ^\circ resolve cleanly)
+    // 2. Escaped Percent, Degree & Delimiters (must run before \le and ^ so \left(, ^{\circ} and ^\circ resolve cleanly)
     formatted = formatted
       .replace(/\\%/g, '%')
+      .replace(/\^\{\\circ\}/g, '°')
       .replace(/\^\\circ\b/g, '°')
       .replace(/\\left\(/g, '(')
       .replace(/\\right\)/g, ')')
@@ -1099,16 +1112,44 @@ export class CliniMdxEngine {
   }
 
   /**
-   * Format bold, italic, code, math symbols
+   * Format bold, italic, code, links, math symbols
    */
   private formatInline(text: string): string {
-    return text
+    const tokens: string[] = [];
+    const protect = (html: string): string => {
+      const idx = tokens.length;
+      tokens.push(html);
+      return `\u0000IMDX_${idx}\u0000`;
+    };
+
+    let out = text
+      // 1. Inline code (protect first so $ and * inside code are untouched)
+      .replace(/`([^`]+)`/g, (_m, code) =>
+        protect(`<code style="background: var(--color-surface-2, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0284c7; border: 1px solid var(--color-border, #cbd5e1);">${code}</code>`)
+      )
+      // 2. Display math inside blockquote/inline line ($$...$$)
+      .replace(/\$\$([^\n$]+?)\$\$/g, (_m, math) =>
+        protect(`<span class="mdx-math-inline mdx-math-display-inline" style="display: inline-block; font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1.08em; color: var(--color-primary, #0284c7); padding: 0.25rem 0.35rem;">${this.formatMathContent(math.trim())}</span>`)
+      )
+      // 3. Inline math ($...$)
+      .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, (_m, math) =>
+        protect(`<span class="mdx-math-inline" style="font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1.05em; color: var(--color-primary, #0284c7); padding: 0 2px;">${this.formatMathContent(math)}</span>`)
+      )
+      // 4. Markdown links [text](url) (excluding images ![alt](url))
+      .replace(/(?<!!)\[([^\]]+)\]\(([^)\s]+)\)/g, (_m, label, url) => {
+        const isExternal = /^https?:\/\//i.test(url);
+        const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return `<a href="${url}"${targetAttr} style="color: var(--color-primary, #0284c7); font-weight: 600; text-decoration: underline; text-underline-offset: 2px;">${label}</a>`;
+      })
+      // 5. Bold & Italic
       .replace(/\*\*\s*([^*]+?)\s*\*\*/g, '<strong style="font-weight: 700; color: var(--color-text, #0f172a);">$1</strong>')
-      .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code style="background: var(--color-surface-2, #f1f5f9); padding: 0.15rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.88em; color: #0284c7; border: 1px solid var(--color-border, #cbd5e1);">$1</code>')
-      .replace(/(?<!\$)\$(?!\$)([^\n$]+)(?<!\$)\$(?!\$)/g, (_m, math) => {
-        return `<span class="mdx-math-inline" style="font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 1.05em; color: var(--color-primary, #0284c7); padding: 0 2px;">${this.formatMathContent(math)}</span>`;
-      });
+      .replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, '<em>$1</em>');
+
+    // 6. Restore protected tokens
+    if (tokens.length > 0) {
+      out = out.replace(/\u0000IMDX_(\d+)\u0000/g, (_m, idx) => tokens[Number(idx)] ?? '');
+    }
+    return out;
   }
 
   private escapeHtml(str: string): string {

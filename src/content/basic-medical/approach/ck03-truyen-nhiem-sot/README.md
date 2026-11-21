@@ -12,3 +12,4 @@
 | :--- | :--- | :--- | :---: | :---: |
 | `TC-TN-01` | `tc-03-sot-cap-tinh-nl.mdx` | Tiếp Cận Sốt Cấp Tính Ở Người Lớn (Acute Fever in Adults) | Urgent | Published |
 | `TC-TN-02` | `tc-03-sot-keo-dai-nl.mdx` | Tiếp Cận Sốt Bán Cấp và Sốt Kéo Dài Ở Người Lớn (FUO) | Routine | Published |
+| `TC-TN-05` | `tc-03-sot-vang-da.mdx` | Tiếp Cận Bệnh Nhân Người Lớn Có Sốt Kèm Vàng Da (Fever and Jaundice) | Emergent | Published |

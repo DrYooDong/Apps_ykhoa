@@ -594,3 +594,22 @@ sections:
 
 </div>
 ```
+
+---
+
+## 11. CỔNG KIỂM ĐỊNH LỖI MDX TỰ ĐỘNG TRONG QUY TRÌNH NẠP DESIGN
+
+Sau khi soạn mới hoặc áp dụng Design cho bất kỳ file `.mdx` nào, **bắt buộc** chạy trình kiểm tra hợp nhất `tools/scripts/validate-mdx.mjs` để chặn sớm 100% lỗi cú pháp, công thức và ký hiệu:
+
+```bash
+# Kiểm tra 1 file MDX hoặc cả thư mục phân hệ
+npm run validate:mdx -- <path/to/file-or-dir>
+
+# Chế độ nghiêm ngặt (cảnh báo cũng fail)
+npm run validate:mdx -- <path/to/file-or-dir> --strict
+```
+
+**Phạm vi kiểm tra tự động (30 quy tắc):**
+1. **Cú pháp MDX/JSX & HTML**: Frontmatter YAML, khớp `slug` vs tên file, khớp `sections` vs `{#sec-X}`, phát hiện trùng DOM ID, thẻ void tự đóng (`<br />`, `<img ... />`), comment MDX `{/* ... */}`, cân bằng thẻ HTML/SVG, biên dịch trực tiếp qua `@mdx-js/mdx` AST.
+2. **Công thức Toán học (KaTeX/LaTeX)**: Chặn dấu phân tách sai `\\(...\\)`/`\(...\)`, số `$` lẻ, `$$...$$` lồng trong blockquote, lệnh LaTeX thô rò rỉ ngoài `$...$`, lệnh gõ thiếu `\` (`rac{`, `ext{`), HTML entity trong `$...$` (`$&lt;`), ngoặc `{}` lệch, `^\circC`, lệnh chưa hỗ trợ trên `CliniMdxEngine`.
+3. **Ký hiệu, Entities & Design**: Chặn `<` chưa escape trước số, entity escape kép (`&amp;lt;`), `&` trần trong HTML/SVG, tàn dư Obsidian (`[[...]]`, `==...==`), sơ đồ ASCII art trong bài published, lệch cột bảng Markdown, ảnh cục bộ bị thiếu.

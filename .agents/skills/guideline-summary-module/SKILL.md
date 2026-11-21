@@ -356,9 +356,10 @@ node .agents/skills/guideline-summary-module/scripts/register_guideline.js \
   --intervention="[Can thiệp cốt lõi]"
 ```
 
-### 5. Chạy Cổng Kiểm Định Chất Lượng 8 Điểm (8-Point QA Gate):
-- Chạy lệnh kiểm tra tổng thể toàn bộ bài viết trước khi bàn giao:
+### 5. Chạy Cổng Kiểm Định Chất Lượng 8 Điểm & Trình Kiểm Tra Lỗi MDX Hợp Nhất:
+- Chạy đồng thời cả 2 lệnh kiểm định trước khi bàn giao:
 ```bash
+npm run validate:mdx -- src/content/ebm/guidelines/kho-guidelines/<slug>.mdx
 node .agents/skills/guideline-summary-module/scripts/qa_guideline.js --slug=<slug>
 ```
 - **Bộ 8 Tiêu chí Đánh giá Tự động**:

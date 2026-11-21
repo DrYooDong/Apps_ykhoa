@@ -38,7 +38,7 @@ function renderHeaderHtml(projectRoot = './') {
 
           <!-- 2. Basic Sciences (Cơ sở Y khoa + Dropdown Menu) -->
           <div class="header-project-dropdown-wrapper">
-            <a href="${root}index.html#/basic-medical" class="project-tab-btn tab-basic" data-project="basic" title="Cơ sở Y khoa — GP, Sinh lý, Bệnh sinh CCBS, Hóa sinh, Dịch tễ, Kháng sinh">
+            <a href="${root}index.html#/basic-medical" class="project-tab-btn tab-basic" data-project="basic" title="Cơ sở Y khoa — GP, Sinh lý, Bệnh sinh CCBS, Hóa sinh, Dịch tễ, Kháng sinh, Tiếp cận">
               <span class="project-tab-icon"><i class="fa-solid fa-dna"></i></span>
               <span class="project-tab-name">Basic Sciences</span>
               <i class="fa-solid fa-chevron-down project-dropdown-arrow" aria-hidden="true"></i>
@@ -77,6 +77,13 @@ function renderHeaderHtml(projectRoot = './') {
                 <div class="pdrop-info">
                   <strong>Kháng Sinh</strong>
                   <span>Kháng sinh học &amp; Quản lý (AMS)</span>
+                </div>
+              </a>
+              <a href="${root}index.html#/basic-medical/tiep-can" class="project-dropdown-item">
+                <span class="pdrop-icon">🩺</span>
+                <div class="pdrop-info">
+                  <strong>Tiếp Cận</strong>
+                  <span>Tiếp cận lâm sàng (13 chuyên khoa)</span>
                 </div>
               </a>
             </div>
@@ -168,7 +175,7 @@ function syncHeaderBottomNavActive() {
     if (route === 'home') {
       isMatch = (currentHash === '' || currentHash === '#/' || currentHash === '#') && currentPath.endsWith('index.html');
     } else if (route === 'basic') {
-      isMatch = currentPath.includes('sinh lý') || currentPath.includes('basic') || currentPath.includes('pathophysiology') || currentHash.includes('basic') || currentHash.includes('pathophysiology');
+      isMatch = currentPath.includes('sinh lý') || currentPath.includes('basic') || currentPath.includes('pathophysiology') || currentHash.includes('basic') || currentHash.includes('pathophysiology') || currentHash.includes('khang-sinh') || currentHash.includes('tiep-can') || currentHash.includes('approach');
     } else if (route === 'ebm') {
       isMatch = currentPath.includes('ebm') || currentPath.includes('yhcc') || currentPath.includes('guidelines') || currentHash.includes('ebm') || currentHash.includes('guidelines');
     } else if (route === 'docspace') {
@@ -192,7 +199,7 @@ function syncHeaderBottomNavActive() {
     let isMatch = false;
 
     if (project === 'basic') {
-      isMatch = currentPath.includes('sinh lý') || currentPath.includes('basic') || currentPath.includes('pathophysiology') || currentHash.includes('basic') || currentHash.includes('pathophysiology');
+      isMatch = currentPath.includes('sinh lý') || currentPath.includes('basic') || currentPath.includes('pathophysiology') || currentHash.includes('basic') || currentHash.includes('pathophysiology') || currentHash.includes('khang-sinh') || currentHash.includes('tiep-can') || currentHash.includes('approach');
     } else if (project === 'ebm') {
       isMatch = currentPath.includes('ebm') || currentPath.includes('yhcc') || currentPath.includes('guidelines') || currentHash.includes('ebm') || currentHash.includes('guidelines');
     } else if (project === 'docspace') {

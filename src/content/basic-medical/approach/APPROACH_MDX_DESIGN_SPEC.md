@@ -85,15 +85,15 @@ sections:
 ## 3. Khung Nội Dung 9 Mục Chuẩn (Golden 9-Section Skeleton)
 
 1. **Header + Badges + `<ApproachQuickNav />` + `<section class="stats-strip">`** (4 chỉ số định lượng then chốt).
-2. **`## 1. Định Nghĩa & Phân Loại <span id="sec-1"></span>`**: Định nghĩa lâm sàng, ngưỡng chẩn đoán, phân loại theo thời gian/nguy cơ/cơ chế.
-3. **`## 2. Cơ Chế Sinh Lý Bệnh <span id="sec-2"></span>`**: Kết nối trực tiếp cơ chế phân tử/sinh lý với triệu chứng; gắn liên kết chéo sang Sinh lý (`#/basic-medical/giai-phau-sinh-ly`) hoặc CCBS (`#/basic-medical/co-che-benh-sinh`).
-4. **`## 3. Dấu Hiệu Báo Động (Red Flags) & Phân Tầng <span id="sec-3"></span>`**: Đặt **Red Flags** rõ ràng trong `<div class="infobox danger">`, phân tầng khẩn cấp dùng `<UrgencyPill level="emergent|urgent|routine" />`.
-5. **`## 4. Khai Thác Bệnh Sử & Khám Định Hướng <span id="sec-4"></span>`**: Cấu trúc SOCRATES / OPQRST / SAMPLE, tiền căn thuốc, yếu tố dịch tễ và khám định hướng theo hệ cơ quan.
-6. **`## 5. Chẩn Đoán Phân Biệt <span id="sec-5"></span>`**: Bảng `.table-modern` đối sánh 2 tầng: (a) Nhóm không được bỏ sót (Must-Not-Miss), (b) Nhóm nguyên nhân thường gặp.
-7. **`## 6. Cận Lâm Sàng Theo Bậc <span id="sec-6"></span>`**: Bảng phân bậc First-line (Tại giường/Cấp cứu) → Second-line (Định hướng chuyên sâu) → Third-line (Tiêu chuẩn vàng/Xâm lấn).
-8. **`## 7. Lưu Đồ Tiếp Cận <span id="sec-7"></span>`**: Bắt buộc vẽ **Pure Editorial SVG** trong `<div class="flowchart-card">`, đường nối trực giao, dùng CSS tokens (`var(--color-surface)`, `var(--color-text)`, `var(--color-border)`), không dùng thẻ HTML trong `<text>` SVG, tương thích 100% Dark Mode.
-9. **`## 8. Xử Trí Ban Đầu & Chuyển Tuyến <span id="sec-8"></span>`**: Ổn định ABCDE, xử trí cứu mạng trước khi có chẩn đoán xác định, chống sai lệch nhận thức (Cognitive Biases) và tiêu chuẩn nhập ICU/chuyển tuyến.
-10. **`## 9. Ca Minh Họa, Pearls & Trích Dẫn <span id="sec-9"></span>`**: 1 ca lâm sàng ngắn ứng dụng thuật toán + Pearls/Flashcards + `<div class="citation-box">` theo chuẩn AMA + liên kết sang Sổ tay Lâm sàng / Kháng sinh.
+2. **`## 1. Định Nghĩa & Phân Loại {#sec-1}`**: Định nghĩa lâm sàng, ngưỡng chẩn đoán, phân loại theo thời gian/nguy cơ/cơ chế.
+3. **`## 2. Cơ Chế Sinh Lý Bệnh {#sec-2}`**: Kết nối trực tiếp cơ chế phân tử/sinh lý với triệu chứng; gắn liên kết chéo sang Sinh lý (`#/basic-medical/giai-phau-sinh-ly`) hoặc CCBS (`#/basic-medical/co-che-benh-sinh`).
+4. **`## 3. Dấu Hiệu Báo Động (Red Flags) & Phân Tầng {#sec-3}`**: Đặt **Red Flags** rõ ràng trong `<div class="infobox danger">`, phân tầng khẩn cấp dùng `<UrgencyPill level="emergent|urgent|routine" />`.
+5. **`## 4. Khai Thác Bệnh Sử & Khám Định Hướng {#sec-4}`**: Cấu trúc SOCRATES / OPQRST / SAMPLE, tiền căn thuốc, yếu tố dịch tễ và khám định hướng theo hệ cơ quan.
+6. **`## 5. Chẩn Đoán Phân Biệt {#sec-5}`**: Bảng `.table-modern` đối sánh 2 tầng: (a) Nhóm không được bỏ sót (Must-Not-Miss), (b) Nhóm nguyên nhân thường gặp.
+7. **`## 6. Cận Lâm Sàng Theo Bậc {#sec-6}`**: Bảng phân bậc First-line (Tại giường/Cấp cứu) → Second-line (Định hướng chuyên sâu) → Third-line (Tiêu chuẩn vàng/Xâm lấn).
+8. **`## 7. Lưu Đồ Tiếp Cận {#sec-7}`**: Bắt buộc vẽ **Pure Editorial SVG** trong `<div class="flowchart-card">`, đường nối trực giao, dùng CSS tokens (`var(--color-surface)`, `var(--color-text)`, `var(--color-border)`), không dùng thẻ HTML trong `<text>` SVG, tương thích 100% Dark Mode.
+9. **`## 8. Xử Trí Ban Đầu & Chuyển Tuyến {#sec-8}`**: Ổn định ABCDE, xử trí cứu mạng trước khi có chẩn đoán xác định, chống sai lệch nhận thức (Cognitive Biases) và tiêu chuẩn nhập ICU/chuyển tuyến.
+10. **`## 9. Ca Minh Họa, Pearls & Trích Dẫn {#sec-9}`**: 1 ca lâm sàng ngắn ứng dụng thuật toán + Pearls/Flashcards + `<div class="citation-box">` theo chuẩn AMA + liên kết sang Sổ tay Lâm sàng / Kháng sinh.
 
 ---
 
@@ -106,9 +106,36 @@ sections:
 
 ---
 
-## 5. Quy Tắc An Toàn Cú Pháp & Dark Mode
+## 5. Quy Tắc An Toàn Cú Pháp, Công Thức, Ký Hiệu & Dark Mode
 
-- **Escape ký tự JSX**: Trong khối HTML raw (`<div>`, `<td>`, `<svg>`), thay `<` thành `&lt;`, `>` thành `&gt;`, `&` thành `&amp;`.
-- **KaTeX**: Công thức khối dùng `$$ ... $$` riêng dòng; công thức nội tuyến dùng `$ ... $`; bọc chữ có dấu trong `\text{...}` hoặc dùng ký tự Unicode (`≥`, `≤`, `±`, `→`, `Δ`).
+- **Tiêu đề & Neo ID**: Bắt buộc dùng `## X. Tiêu Đề {#sec-X}` (không dùng `<span id="sec-X"></span>` để tránh trùng lặp DOM ID làm lệch `<ApproachQuickNav />`).
+- **Escape ký tự JSX & Thẻ Void**:
+  - Ngoài khối công thức `$...$`, thay `<` trước số thành `&lt;`, `>` thành `&gt;`, `&` trong HTML/SVG thành `&amp;`.
+  - Mọi thẻ void HTML phải tự đóng theo chuẩn JSX: `<br />`, `<hr />`, `<img ... />`.
+  - Dùng comment MDX `{/* ... */}` thay cho `<!-- ... -->` (kể cả trong `<svg>`).
+- **Công thức KaTeX / LaTeX**:
+  - Chỉ dùng `$ ... $` (inline) và `$$ ... $$` (dòng độc lập — **không** đặt `$$...$$` bên trong blockquote `>`).
+  - **Cấm** dùng dấu phân tách `\\(...\\)`, `\(...\)`, `\\[...\\]`, `\[...\]`.
+  - **Cấm** đặt HTML entities (`&lt;`, `&gt;`, `&le;`, `&ge;`) bên trong `$...$` (dùng `<`, `>`, `\le`, `\ge`).
+  - Viết `^\circ\text{C}` (không viết dính `^\circC`), và tách `\mathbf{72/40}\text{ mmHg}` thay vì lồng `\mathbf{72/40\text{ mmHg}}`.
 - **Dark Mode**: Nền SVG và khung box dùng `var(--color-surface, #ffffff)`, chữ dùng `var(--color-text, #0f172a)` và `var(--color-text-muted, #64748b)`, viền dùng `var(--color-border, #e2e8f0)`.
-- **Loại bỏ Wikilinks Obsidian**: Khi chuyển từ `knowledge-vault/*.md`, xóa hoàn toàn `[[...]]` và `==...==` (chuyển sang văn bản sạch hoặc `**in đậm**`).
+- **Loại bỏ Wikilinks Obsidian & ASCII Art**: Xóa hoàn toàn `[[...]]`, `==...==` và chuyển toàn bộ lưu đồ ASCII (`┌─`, `├─`, `│`) sang Pure Editorial SVG trước khi đổi `status: "published"`.
+
+---
+
+## 6. Cổng Kiểm Định Lỗi Tự Động (Mandatory MDX Quality Gate)
+
+Sau khi nạp Design cho bất kỳ file `.mdx` nào, **bắt buộc** chạy bộ kiểm định tự động (kiểm tra 30 quy tắc cú pháp AST `@mdx-js/mdx`, công thức KaTeX, ký hiệu/HTML entities, cân bằng thẻ, ảnh cục bộ và chuẩn thiết kế):
+
+```bash
+# Kiểm tra 1 file MDX cụ thể
+npm run validate:mdx -- src/content/basic-medical/approach/<ck>/<slug>.mdx
+
+# Hoặc kiểm tra toàn bộ phân hệ Tiếp cận (chế độ nghiêm ngặt)
+npm run validate:mdx -- src/content/basic-medical/approach --strict
+
+# Hoặc qua Developer CLI
+node tools/dev.mjs check src/content/basic-medical/approach/<ck>/<slug>.mdx
+```
+
+Chỉ được chuyển `status: "published"` và đăng ký vào `data/approach-curriculum-data.ts` khi đạt **0 errors** và `npm run typecheck` pass.

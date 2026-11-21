@@ -23,7 +23,7 @@ Khi cần biên tập, nhập nguồn từ `knowledge-vault/2.1. Kho tiếp cậ
 |---|---|---|---|
 | `ck01-nguyen-ly/` | Nguyên lý tiếp cận | `TC-NL-xx` | 0 |
 | `ck02-cap-cuu-doc-chat/` | Cấp cứu – Hồi sức – Độc chất | `TC-CC-xx` | 0 |
-| `ck03-truyen-nhiem-sot/` | Truyền nhiễm – Sốt | `TC-TN-xx` | 2 (`tc-03-sot-cap-tinh-nl.mdx`, `tc-03-sot-keo-dai-nl.mdx`) |
+| `ck03-truyen-nhiem-sot/` | Truyền nhiễm – Sốt | `TC-TN-xx` | 3 (`tc-03-sot-cap-tinh-nl.mdx`, `tc-03-sot-keo-dai-nl.mdx`, `tc-03-sot-vang-da.mdx`) |
 | `ck04-tim-mach/` | Tim mạch | `TC-TM-xx` | 1 (`tc-04-01-dau-nguc.mdx`) |
 | `ck05-ho-hap/` | Hô hấp | `TC-HH-xx` | 0 |
 | `ck06-tieu-hoa-gan-mat/` | Tiêu hóa – Gan mật | `TC-TH-xx` | 0 |

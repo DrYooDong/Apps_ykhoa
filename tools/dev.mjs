@@ -80,12 +80,22 @@ switch (command) {
   case 'check': {
     printBanner();
     if (!targetArg) {
-      console.error('Cách dùng: node tools/dev.mjs check <path/to/file.html|mdx>');
+      console.error('Cách dùng: node tools/dev.mjs check <path/to/file.html|mdx|dir>');
       process.exit(1);
     }
     const targetPath = path.isAbsolute(targetArg) ? targetArg : path.join(ROOT_DIR, targetArg);
+    const isDir = fs.existsSync(targetPath) && fs.statSync(targetPath).isDirectory();
+    if (targetPath.toLowerCase().endsWith('.mdx') || isDir) {
+      try {
+        execSync(`node tools/scripts/validate-mdx.mjs "${targetPath}"`, { stdio: 'inherit', cwd: ROOT_DIR });
+      } catch {
+        process.exit(1);
+      }
+      break;
+    }
     const ok = checkFileIntegrity(targetPath);
     console.log(ok ? '\n✨ KẾT QUẢ: HỢP LỆ (PASS)\n' : '\n⚠️ KẾT QUẢ: PHÁT HIỆN LỖI CẦN SỬA\n');
+    if (!ok) process.exit(1);
     break;
   }
 

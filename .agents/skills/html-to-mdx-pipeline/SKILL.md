@@ -114,8 +114,8 @@ Văn bản vẽ sơ đồ dạng Text/ASCII chứa nhiều ký tự gạch chéo
   ├── Áp dụng toàn bộ 10 Quy Tắc Vàng ở Mục 2.
   └── Ghép Frontmatter YAML hoàn chỉnh lên đầu file .mdx.
 
-[BƯỚC 4: KIỂM THỬ BIÊN DỊCH MDX TẠI CHỖ (ON-THE-FLY TEST)]
-  └── Dùng thư viện @mdx-js/mdx compile(content, { jsx: true }) để bắt lỗi cú pháp tức thì.
+[BƯỚC 4: KIỂM THỬ BIÊN DỊCH MDX & QUÉT LỖI CÚ PHÁP / CÔNG THỨC / KÝ HIỆU]
+  └── Chạy `npm run validate:mdx -- <file_hoặc_thư_mục>` (biên dịch @mdx-js/mdx AST + quét 30 quy tắc KaTeX, ký hiệu, thẻ HTML/SVG, entities).
 
 [BƯỚC 5: KIỂM THỬ HỆ THỐNG (BUILD & TYPECHECK)]
   ├── Chạy `npm run typecheck` (tsc --noEmit) đảm bảo 0 lỗi kiểu dữ liệu.

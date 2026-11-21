@@ -57,14 +57,16 @@ src/content/basic-medical/
    - Mảng `sections: [{ id: "sec-X", number: X, title: "...", icon: "fa-..." }]` bắt buộc phải khớp 100% với các thẻ `## X. Tiêu Đề {#sec-X}` trong bài.
 
 3. **Cú Pháp KaTeX Toán Y Sinh Chuẩn**:
-   - Công thức khối: Đặt trong `$$ ... $$` riêng một dòng.
-   - Ký hiệu trong dòng: Đặt trong `$ ... $` (ví dụ: `$NADH$`, `$V_m \approx -90\text{ mV}$`, `$P_{GC}$`).
-   - Tuyệt đối không để chữ tiếng Việt có dấu thô trong khối KaTeX (chuyển sang `\text{...}` hoặc ký tự Unicode `≥, ≤, ±, ×, →, α, β, Δ`).
+   - Công thức khối: Đặt trong `$$ ... $$` riêng một dòng độc lập (**cấm** đặt `$$...$$` bên trong blockquote `>`).
+   - Ký hiệu trong dòng: Đặt trong `$ ... $` (ví dụ: `$NADH$`, `$V_m \approx -90\text{ mV}$`, `$36.8^\circ\text{C}$`).
+   - **Cấm** dùng dấu phân tách `\\(...\\)` / `\(...\)`, **cấm** nhét HTML entity (`&lt;`, `&gt;`, `&le;`, `&ge;`) vào trong `$...$`, **cấm** viết dính `^\circC` (phải viết `^\circ\text{C}`), và tách `\mathbf{X}\text{ unit}` thay vì lồng `\mathbf{X\text{ unit}}`.
 
-4. **Escape Ký Tự JSX Bắt Buộc**:
-   - Dấu so sánh nhỏ hơn: `<` $\rightarrow$ `&lt;` (ví dụ: `eGFR &lt; 30 mL/min`, `pH &lt; 7.35`).
-   - Dấu so sánh lớn hơn: `>` $\rightarrow$ `&gt;` (ví dụ: `ScvO2 &gt; 85%`).
+4. **Escape Ký Tự JSX & Cú Pháp MDX Bắt Buộc**:
+   - Dấu so sánh nhỏ hơn ngoài `$...$`: `<` $\rightarrow$ `&lt;` (ví dụ: `eGFR &lt; 30 mL/min`, `pH &lt; 7.35`).
+   - Dấu so sánh lớn hơn trong HTML/SVG: `>` $\rightarrow$ `&gt;`; dấu `&` trần $\rightarrow$ `&amp;`.
+   - Thẻ void HTML bắt buộc tự đóng: `<br />`, `<hr />`, `<img ... />`; comment MDX dùng `{/* ... */}` thay vì `<!-- ... -->`.
    - Dấu ngoặc nhọn ngoài JSX props: `{` $\rightarrow$ `&#123;`, `}` $\rightarrow$ `&#125;`.
+   - Tiêu đề neo dùng `## X. Tiêu Đề {#sec-X}` (không dùng `<span id="sec-X"></span>`).
 
 5. **Linh Kiện Điều Hướng QuickNav & Stats Strip**:
    - Đặt `<BiochemQuickNav />` hoặc `<PhysioQuickNav />` hoặc `<QuickNav />` ngay sau tiêu đề `<h1>`.
@@ -85,9 +87,13 @@ src/content/basic-medical/
    - **Nhúng chuẩn thẻ Figure**: Bọc ảnh trong `<figure class="physio-figure">` với thẻ `<img src="./images/..." class="physio-img lightbox-trigger" ... />` và `<figcaption>` ghi rõ chú thích giải phẫu/bệnh học và nguồn trích dẫn EBM.
    - **Tuyệt đối không được bỏ quên ảnh đính kèm khi chuyển từ `.md` sang `.mdx`.**
 
-9. **Kiểm Định Bản Build Cuối Cùng**:
-   - Sau khi hoàn thành, bắt buộc chạy `npm run build` (`tsc --noEmit && vite build`).
-   - Chỉ bàn giao khi kết quả trả về **Exit code 0**.
+9. **Kiểm Định Lỗi MDX Tự Động & Bản Build Cuối Cùng (Mandatory Quality Gate)**:
+   - Sau khi nạp Design / chỉnh sửa bài `.mdx`, **bắt buộc** chạy trình kiểm tra hợp nhất (kiểm tra 30 quy tắc cú pháp AST `@mdx-js/mdx`, công thức KaTeX, ký hiệu/HTML entities, cân bằng thẻ, ảnh cục bộ):
+     ```bash
+     npm run validate:mdx -- <đường_dẫn_file_hoặc_thư_mục>
+     ```
+   - Chạy `npm run typecheck` / `npm run build` (`tsc --noEmit && vite build`).
+   - Chỉ bàn giao khi cả `validate:mdx` (0 errors) và build trả về **Exit code 0**.
 
 ---
 
@@ -111,9 +117,9 @@ src/content/basic-medical/
   ├── Tích hợp KaTeX math, bảng đối sánh .table-modern, ma trận .matrix-grid và lưu đồ .flow-steps.
   └── Khung trích dẫn AMA Citation Box & Nút quay lại SPA.
 
-[BƯỚC 4: KIỂM ĐỊNH TOÀN DIỆN & BUILD TEST]
-  ├── Rà soát escape ký tự (<, >, {, }) và làm sạch lỗi Math.
-  ├── Chạy `npm run build` kiểm tra TypeScript và biên dịch MDX.
+[BƯỚC 4: KIỂM ĐỊNH TOÀN DIỆN (SYNTAX • MATH • SYMBOLS) & BUILD TEST]
+  ├── Chạy `npm run validate:mdx -- <file_hoặc_thư_mục>` (0 errors: AST JSX, KaTeX, ký hiệu, thẻ, ảnh).
+  ├── Chạy `npm run typecheck` / `npm run build` kiểm tra TypeScript và biên dịch.
   └── Xác nhận trang hiển thị hoàn hảo ở cả Light Mode và Dark Mode.
 ```
 

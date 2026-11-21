@@ -52,5 +52,5 @@
 
 - [ ] Đường dẫn tương đối chính xác; không hardcode màu; Dark Mode (`data-theme="dark"`) sắc nét.
 - [ ] Responsive mobile `≤ 375px` không tràn ngang, touch target `≥ 44px`.
-- [ ] Kiểm chứng cơ học pass: `node tools/scratch/check_tags.js <file>`, `npm run validate:all` hoặc `python tools/scripts/validate-skills.py` (khi sửa `.agents/`).
+- [ ] Kiểm chứng cơ học pass: `npm run validate:mdx -- <file_or_dir>` (cho mọi file `.mdx`), `node tools/dev.mjs check <file>`, `npm run validate:all` hoặc `python tools/scripts/validate-skills.py` (khi sửa `.agents/`).
 - [ ] Cập nhật `FILE_MAP.md` / Registry liên quan nếu thêm file mới.

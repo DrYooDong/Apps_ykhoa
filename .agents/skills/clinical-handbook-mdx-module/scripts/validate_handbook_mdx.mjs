@@ -12,6 +12,13 @@
 
 import fs from 'fs';
 import path from 'path';
+import { spawnSync } from 'child_process';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '../../../../');
+const UNIFIED_MDX_VALIDATOR = path.join(ROOT_DIR, 'tools/scripts/validate-mdx.mjs');
 
 const filePath = process.argv[2];
 if (!filePath) {
@@ -131,6 +138,31 @@ for (const comp of requiredComponents) {
     successes.push(`Có linh kiện: ${comp.name}`);
   } else {
     warnings.push(`Chưa có linh kiện khuyến nghị: ${comp.name}`);
+  }
+}
+
+// 6. UNIFIED MDX SYNTAX / MATH / SYMBOLS / AST GATE (tools/scripts/validate-mdx.mjs)
+if (fs.existsSync(UNIFIED_MDX_VALIDATOR)) {
+  const unifiedRun = spawnSync(process.execPath, [UNIFIED_MDX_VALIDATOR, resolvedPath, '--json'], {
+    cwd: ROOT_DIR,
+    encoding: 'utf8'
+  });
+  try {
+    const parsed = JSON.parse(unifiedRun.stdout || '{}');
+    const fileReport = parsed.reports?.[0];
+    if (fileReport) {
+      for (const e of fileReport.errors || []) {
+        errors.push(`[${e.rule}] L${e.line}: ${e.message}`);
+      }
+      for (const w of fileReport.warnings || []) {
+        warnings.push(`[${w.rule}] L${w.line}: ${w.message}`);
+      }
+      if ((fileReport.errors || []).length === 0) {
+        successes.push('Đạt 100% cổng kiểm định cú pháp MDX AST, công thức KaTeX & ký hiệu (validate-mdx.mjs).');
+      }
+    }
+  } catch {
+    warnings.push('Không đọc được kết quả JSON từ tools/scripts/validate-mdx.mjs — hãy chạy trực tiếp npm run validate:mdx.');
   }
 }
 
