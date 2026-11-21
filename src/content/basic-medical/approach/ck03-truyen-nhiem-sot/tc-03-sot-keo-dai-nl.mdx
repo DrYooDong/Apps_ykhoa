@@ -1,280 +1,736 @@
-# BÀI GIẢNG LÂM SÀNG: TIẾP CẬN SỐT BÁN CẤP VÀ SỐT KÉO DÀI Ở NGƯỜI LỚN
-*(Approach to Subacute and Prolonged Fever / Fever of Unknown Origin in Adults)*
+---
+title: "Tiếp Cận Sốt Bán Cấp và Sốt Kéo Dài Ở Người Lớn (FUO)"
+slug: "tc-03-sot-keo-dai-nl"
+code: "TC-TN-02"
+specialty: "ck03-truyen-nhiem-sot"
+specialtyLabel: "CK03: Truyền Nhiễm – Tiếp Cận Sốt"
+specialtyNumber: 3
+lessonNumber: 2
+order: 10
+urgency: "routine"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-11-21"
+estimatedTime: 25
+description: "Định nghĩa sốt bán cấp, sốt kéo dài và FUO (Durack & Street), 4 nhóm căn nguyên chính, chiến lược truy tìm manh mối PDCs, cận lâm sàng theo bậc (CT, TEE, FDG-PET/CT) và nguyên tắc tránh điều trị thử."
+tags:
+  - "Truyền nhiễm"
+  - "Sốt kéo dài"
+  - "FUO"
+  - "PDCs"
+  - "Lao"
+  - "Tự miễn"
+  - "FDG-PET/CT"
+  - "Viêm nội tâm mạc bán cấp"
+icd10:
+  - "R50.9"
+  - "R50.81"
+  - "R50.2"
+clinicalPearls:
+  - "Phần lớn các trường hợp sốt kéo dài là biểu hiện không điển hình của một bệnh lý phổ biến (lao ngoài phổi, áp xe sâu, u lympho, viêm nội tâm mạc bán cấp, sốt do thuốc), hiếm khi do bệnh cực kỳ hiếm."
+  - "Khám lâm sàng phải lặp lại hàng ngày để truy tìm các Manh mối chẩn đoán tiềm năng (PDCs) vốn thường xuất hiện muộn theo diễn tiến bệnh."
+  - "Luôn rà soát toàn bộ danh mục thuốc và cân nhắc ngừng thử các thuốc không thiết yếu trong 72 giờ để loại trừ sốt do thuốc."
+  - "Tránh tuyệt đối điều trị thử bằng kháng sinh, thuốc kháng lao hoặc corticoid khi bệnh nhân huyết động ổn định (chỉ trừ 3 ngoại lệ khẩn cấp)."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Định Nghĩa & Phân Nhóm FUO"
+    icon: "fa-book-medical"
+  - id: "sec-2"
+    number: 2
+    title: "4 Nhóm Căn Nguyên Sốt Kéo Dài"
+    icon: "fa-layer-group"
+  - id: "sec-3"
+    number: 3
+    title: "Xác Nhận Sốt & Bệnh Sử Dịch Tễ"
+    icon: "fa-clipboard-question"
+  - id: "sec-4"
+    number: 4
+    title: "Thăm Khám Lặp Lại Tìm PDCs"
+    icon: "fa-stethoscope"
+  - id: "sec-5"
+    number: 5
+    title: "Cận Lâm Sàng Theo 3 Giai Đoạn"
+    icon: "fa-vial"
+  - id: "sec-6"
+    number: 6
+    title: "Lưu Đồ Tiếp Cận FUO"
+    icon: "fa-diagram-project"
+  - id: "sec-7"
+    number: 7
+    title: "Nguyên Tắc Quản Lý & Ngoại Lệ"
+    icon: "fa-shield-halved"
+  - id: "sec-8"
+    number: 8
+    title: "Ca Lâm Sàng Minh Họa (PVE)"
+    icon: "fa-user-doctor"
+  - id: "sec-9"
+    number: 9
+    title: "Take-Home Messages & Trích Dẫn"
+    icon: "fa-gem"
+---
+
+# 🩺 TIẾP CẬN SỐT BÁN CẤP VÀ SỐT KÉO DÀI Ở NGƯỜI LỚN (FUO)
+
+<div class="module-badge-group">
+  <span class="badge badge-red"><i class="fa-solid fa-stethoscope"></i> Tiếp Cận Lâm Sàng • TC-TN-02</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-virus"></i> CK03 • Truyền Nhiễm – Sốt</span>
+  <span class="badge badge-purple"><i class="fa-solid fa-certificate"></i> Harrison's • Conn's 2026 • EBM</span>
+</div>
+
+<ApproachQuickNav />
+
+<section class="stats-strip" aria-label="Thông số chốt lâm sàng sốt kéo dài và FUO ở người lớn">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val">&gt; 38.3&deg;C</div>
+      <div class="stat-lbl">Ngưỡng thân nhiệt FUO lặp lại (&gt; 101&deg;F)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">&ge; 3 tuần</div>
+      <div class="stat-lbl">Diễn tiến FUO (chưa rõ sau 3 ngày nội trú / 3 lần khám)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">72 giờ</div>
+      <div class="stat-lbl">Ngừng thuốc không thiết yếu loại trừ Sốt do thuốc</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">3 bộ cấy</div>
+      <div class="stat-lbl">Cấy máu cách &ge; 1h, ủ dài 7–14 ngày (vi khuẩn kén)</div>
+    </div>
+  </div>
+</section>
+
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-bullseye"></i> MỤC TIÊU HỌC TẬP</div>
+  <ol>
+    <li><strong>Trình bày được định nghĩa</strong> và tiêu chuẩn phân loại sốt bán cấp, sốt kéo dài và sốt không rõ nguyên nhân (<em>Fever of Unknown Origin – FUO</em>) theo các đồng thuận kinh điển và cập nhật quốc tế.</li>
+    <li><strong>Phân tích được 4 nhóm nguyên nhân chính</strong> gây sốt kéo dài ở người lớn (Nhiễm trùng, Bệnh lý viêm không nhiễm trùng/Tự miễn, Bệnh ác tính và Nhóm căn nguyên khác).</li>
+    <li><strong>Áp dụng thành thạo chiến lược tiếp cận lâm sàng theo từng bước</strong>, trọng tâm là tìm kiếm các "Manh mối chẩn đoán tiềm năng" (<em>Potentially Diagnostic Clues – PDCs</em>) qua hỏi bệnh và thăm khám tỉ mỉ, lặp lại nhiều lần.</li>
+    <li><strong>Chỉ định và biện luận cận lâm sàng theo từng giai đoạn</strong>, hiểu rõ vai trò của các kỹ thuật hình ảnh hiện đại (CT ngực/bụng, siêu âm tim qua thực quản, FDG-PET/CT) và sinh thiết mô đích.</li>
+    <li><strong>Hiểu rõ nguyên tắc điều trị:</strong> Lý giải vì sao cần tránh sử dụng kháng sinh hoặc corticoid theo kinh nghiệm một cách bừa bãi khi chưa có chẩn đoán xác định.</li>
+    <li><strong>Vận dụng lưu đồ tiếp cận để giải quyết thành công một ca bệnh lâm sàng thực tế.</strong></li>
+  </ol>
+</div>
+
+## 1. Đại Cương, Định Nghĩa & Phân Nhóm FUO <span id="sec-1"></span>
+
+### 1.1. Phân Loại Sốt Theo Thời Gian
+
+Trong thực hành lâm sàng, việc xác định chính xác thời gian sốt có ý nghĩa quyết định trong việc định hướng nhóm nguyên nhân và lựa chọn chiến lược tiếp cận:
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Phân loại</th>
+      <th>Mốc thời gian</th>
+      <th>Đặc điểm lâm sàng &amp; Căn nguyên định hướng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sốt cấp tính</strong><br>(<em>Acute Fever</em>)</td>
+      <td><strong>&lt; 7 – 14 ngày</strong></td>
+      <td>Phần lớn do nhiễm siêu vi tự giới hạn (cúm, sốt xuất huyết, enterovirus) hoặc nhiễm khuẩn cấp tính thông thường (viêm phổi, viêm đài bể thận, nhiễm khuẩn da – mô mềm).</td>
+    </tr>
+    <tr>
+      <td><strong>Sốt bán cấp</strong><br>(<em>Subacute Fever</em>)</td>
+      <td><strong>&gt; 1 tuần đến &lt; 3 tuần</strong><br>(khoảng 7–21 ngày)</td>
+      <td><strong>"Vùng xám" lâm sàng:</strong> Nhiễm siêu vi cấp đã bắt đầu thoái triển, nhưng các ổ nhiễm trùng sâu (áp xe nội tạng, viêm nội tâm mạc bán cấp, lao sơ nhiễm), sốt do thuốc hoặc bệnh tự miễn hệ thống bắt đầu bộc lộ triệu chứng rõ rệt.</td>
+    </tr>
+    <tr>
+      <td><strong>Sốt kéo dài</strong><br>(<em>Prolonged / Persistent Fever</em>)</td>
+      <td><strong>&ge; 2 – 3 tuần</strong></td>
+      <td>Tình trạng sốt kéo dài liên tục hoặc ngắt quãng từ 2–3 tuần trở lên; cần chuyển sang tư duy truy tìm hệ thống theo khung tiếp cận FUO.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+### 1.2. Tiêu Chuẩn Chẩn Đoán Sốt Không Rõ Nguyên Nhân (FUO)
+
+Khái niệm **FUO kinh điển** được Petersdorf và Beeson đề xuất năm 1961, sau đó được Durack và Street hiệu chỉnh năm 1991 và tiếp tục được sử dụng rộng rãi trong các tài liệu kinh điển như *Harrison's Principles of Internal Medicine*:
+
+1. **Thân nhiệt đo được:** Nhiệt độ ghi nhận nhiều lần **$> 38.3^\circ\text{C}$** ($> 101^\circ\text{F}$).
+2. **Thời gian diễn tiến:** Sốt kéo dài **$\ge 3$ tuần**.
+3. **Không tìm ra nguyên nhân:** Sau ít nhất **1 tuần điều tra tích cực tại bệnh viện** (hoặc sau **3 lần khám ngoại trú toàn diện** hoặc **3 ngày nằm viện** theo tiêu chuẩn hiện đại).
+
+### 1.3. Bốn Phân Nhóm FUO Theo Durack & Street
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Phân nhóm FUO</th>
+      <th>Tiêu chuẩn nhận diện</th>
+      <th>Căn nguyên thường gặp cần lưu ý</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. FUO kinh điển</strong><br>(<em>Classic FUO</em>)</td>
+      <td>Người bệnh <strong>không có</strong> tình trạng suy giảm miễn dịch đã biết từ trước; đáp ứng đủ 3 tiêu chuẩn FUO trên.</td>
+      <td>Lao ngoài phổi, áp xe sâu, viêm nội tâm mạc bán cấp, GCA/PMR, bệnh Still, u lympho, sốt do thuốc.</td>
+    </tr>
+    <tr>
+      <td><strong>2. FUO bệnh viện</strong><br>(<em>Nosocomial / Healthcare-associated</em>)</td>
+      <td>Nhập viện không sốt và không trong thời kỳ ủ bệnh; sốt <strong>&ge; 38.3&deg;C</strong> xuất hiện sau <strong>&ge; 24–48 giờ</strong> nằm viện và chưa rõ nguyên nhân sau 3 ngày đánh giá.</td>
+      <td>Viêm đại tràng do <em>C. difficile</em>, viêm tắc tĩnh mạch huyết khối nhiễm khuẩn, sốt do thuốc, viêm xoang do đặt sonde mũi – dạ dày.</td>
+    </tr>
+    <tr>
+      <td><strong>3. FUO giảm bạch cầu hạt</strong><br>(<em>Neutropenic FUO</em>)</td>
+      <td>Sốt <strong>&ge; 38.3&deg;C</strong> trên bệnh nhân có số lượng bạch cầu trung tính <strong>ANC &le; 500/&mu;L</strong> (hoặc dự kiến giảm dưới mức này trong 48 giờ), chưa thấy ổ nhiễm sau 3 ngày điều tra tích cực.</td>
+      <td>Vi nấm xâm lấn, vi khuẩn Gram âm huyết thanh (<em>Pseudomonas aeruginosa</em>, trực khuẩn đường ruột).</td>
+    </tr>
+    <tr>
+      <td><strong>4. FUO liên quan đến HIV</strong><br>(<em>HIV-associated FUO</em>)</td>
+      <td>Người bệnh nhiễm HIV xác định, sốt kéo dài <strong>&ge; 4 tuần</strong> (ngoại trú) hoặc <strong>&ge; 3 ngày</strong> (nội trú) mà chưa rõ căn nguyên.</td>
+      <td><em>Mycobacterium avium-intracellulare</em> (MAC), lao ngoài phổi, nấm <em>Cryptococcus</em>, u lympho.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+*Liên kết nền tảng:* Xem thêm tiếp cận pha cấp tại [Tiếp Cận Sốt Cấp Tính Ở Người Lớn](#/basic-medical/tiep-can/ck03-truyen-nhiem-sot/tc-03-sot-cap-tinh-nl) và cơ chế đáp ứng viêm hệ thống tại [Cơ Chế Bệnh Sinh (CCBS)](#/basic-medical/co-che-benh-sinh).
 
 ---
 
-## 1. MỤC TIÊU HỌC TẬP
-Sau khi hoàn thành bài giảng này, học viên có khả năng:
-1. **Trình bày được định nghĩa** và tiêu chuẩn phân loại sốt bán cấp, sốt kéo dài và sốt không rõ nguyên nhân (Fever of Unknown Origin – FUO) theo các đồng thuận kinh điển và cập nhật quốc tế.
-2. **Phân tích được 4 nhóm nguyên nhân chính** gây sốt kéo dài ở người lớn (Nhiễm trùng, Bệnh lý viêm không nhiễm trùng/Tự miễn, Bệnh ác tính và Nhóm căn nguyên khác).
-3. **Áp dụng thành thạo chiến lược tiếp cận lâm sàng theo từng bước**, trọng tâm là tìm kiếm các "Manh mối chẩn đoán tiềm năng" (Potentially Diagnostic Clues – PDCs) qua hỏi bệnh và thăm khám tỉ mỉ, lặp lại nhiều lần.
-4. **Chỉ định và biện luận cận lâm sàng theo từng giai đoạn**, hiểu rõ vai trò của các kỹ thuật hình ảnh hiện đại (CT ngực/bụng, siêu âm tim qua thực quản, FDG-PET/CT) và sinh thiết mô đích.
-5. **Hiểu rõ nguyên tắc điều trị:** Lý giải vì sao cần tránh sử dụng kháng sinh hoặc corticoid theo kinh nghiệm một cách bừa bãi khi chưa có chẩn đoán xác định.
-6. **Vận dụng lưu đồ tiếp cận để giải quyết thành công một ca bệnh lâm sàng thực tế.**
+## 2. Bốn Nhóm Căn Nguyên Gây Sốt Kéo Dài Ở Người Lớn <span id="sec-2"></span>
+
+Sốt kéo dài có thể là biểu hiện của hàng trăm bệnh lý khác nhau, nhưng luôn xoay quanh một quy luật lâm sàng bất di bất dịch:
+
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> NGUYÊN LÝ CỐT LÕI KHI BIỆN LUẬN FUO</div>
+  <p style="margin: 0;"><strong>Phần lớn các trường hợp sốt kéo dài là biểu hiện không điển hình của một bệnh lý phổ biến</strong> (lao ngoài phổi, áp xe sâu, u lympho, viêm nội tâm mạc bán cấp, sốt do thuốc), chứ hiếm khi là biểu hiện kinh điển của một bệnh lý cực kỳ hiếm gặp.</p>
+</div>
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-sitemap" style="color: var(--color-primary, #0d9488);"></i> SƠ ĐỒ 4 TRỤ CỘT CĂN NGUYÊN SỐT BÁN CẤP &amp; KÉO DÀI (FUO)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 392" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="fuoEtArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-text-muted, #64748b)" />
+        </marker>
+      </defs>
+
+      <!-- Title -->
+      <text x="480" y="27" text-anchor="middle" font-size="15.5" font-weight="800" fill="var(--color-text, #0f172a)">
+        CĂN NGUYÊN SỐT BÁN CẤP &amp; SỐT KÉO DÀI (FUO) Ở NGƯỜI LỚN
+      </text>
+
+      <!-- Root Node -->
+      <rect x="260" y="42" width="440" height="46" rx="10" fill="rgba(13, 148, 136, 0.12)" stroke="#0d9488" stroke-width="2" />
+      <text x="480" y="63" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0d9488">
+        PHÂN TẦNG 4 NHÓM NGUYÊN NHÂN CHÍNH
+      </text>
+      <text x="480" y="80" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        T &gt; 38.3°C kéo dài ≥ 3 tuần • Chẩn đoán từ bệnh phổ biến thể không điển hình
+      </text>
+
+      <!-- Orthogonal 4-Way Bus -->
+      <line x1="480" y1="88" x2="480" y2="108" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="130" y1="108" x2="830" y2="108" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="130" y1="108" x2="130" y2="130" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoEtArr)" />
+      <line x1="363" y1="108" x2="363" y2="130" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoEtArr)" />
+      <line x1="597" y1="108" x2="597" y2="130" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoEtArr)" />
+      <line x1="830" y1="108" x2="830" y2="130" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoEtArr)" />
+
+      <!-- Column 1: Infections -->
+      <rect x="20" y="132" width="220" height="176" rx="10" fill="rgba(13, 148, 136, 0.09)" stroke="#0d9488" stroke-width="1.8" />
+      <text x="130" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="#0d9488">1. NHIỄM TRÙNG</text>
+      <text x="130" y="172" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text-muted, #64748b)">(Infections • 25% – 45%)</text>
+      <text x="34" y="196" font-size="10.8" fill="var(--color-text, #0f172a)">• Lao (kê, ngoài phổi, Pott)</text>
+      <text x="34" y="216" font-size="10.8" fill="var(--color-text, #0f172a)">• Áp xe sâu (gan, psoas)</text>
+      <text x="34" y="236" font-size="10.8" fill="var(--color-text, #0f172a)">• Viêm nội tâm mạc (SBE)</text>
+      <text x="34" y="256" font-size="10.8" fill="var(--color-text, #0f172a)">• Brucella, Q fever, Bartonella</text>
+      <text x="34" y="276" font-size="10.8" fill="var(--color-text, #0f172a)">• Sốt rét, Thương hàn, CMV/HIV</text>
+
+      <!-- Column 2: NIIDs -->
+      <rect x="253" y="132" width="220" height="176" rx="10" fill="rgba(2, 132, 199, 0.09)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="363" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="#0284c7">2. TỰ MIỄN / VIÊM</text>
+      <text x="363" y="172" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text-muted, #64748b)">(NIIDs • 15% – 30%)</text>
+      <text x="267" y="196" font-size="10.8" fill="var(--color-text, #0f172a)">• Viêm ĐM khổng lồ (GCA/PMR)</text>
+      <text x="267" y="216" font-size="10.8" fill="var(--color-text, #0f172a)">• Bệnh Still người lớn (AOSD)</text>
+      <text x="267" y="236" font-size="10.8" fill="var(--color-text, #0f172a)">• Lupus ban đỏ hệ thống (SLE)</text>
+      <text x="267" y="256" font-size="10.8" fill="var(--color-text, #0f172a)">• Viêm đa động mạch nút (PAN)</text>
+      <text x="267" y="276" font-size="10.8" fill="var(--color-text, #0f172a)">• Sarcoidosis, Crohn ruột non</text>
+
+      <!-- Column 3: Malignancies -->
+      <rect x="487" y="132" width="220" height="176" rx="10" fill="rgba(225, 29, 72, 0.09)" stroke="#e11d48" stroke-width="1.8" />
+      <text x="597" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">3. ÁC TÍNH</text>
+      <text x="597" y="172" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text-muted, #64748b)">(Malignancies • 15% – 25%)</text>
+      <text x="501" y="196" font-size="10.8" fill="var(--color-text, #0f172a)">• U Lympho (HL &amp; NHL)</text>
+      <text x="501" y="216" font-size="10.8" fill="var(--color-text, #0f172a)">• Sốt chu kỳ Pel-Ebstein</text>
+      <text x="501" y="236" font-size="10.8" fill="var(--color-text, #0f172a)">• Ung thư tế bào thận (RCC)</text>
+      <text x="501" y="256" font-size="10.8" fill="var(--color-text, #0f172a)">• Ung thư gan (HCC), đại tràng</text>
+      <text x="501" y="276" font-size="10.8" fill="var(--color-text, #0f172a)">• U nhầy nhĩ trái, Leukemia/MDS</text>
+
+      <!-- Column 4: Miscellaneous -->
+      <rect x="720" y="132" width="220" height="176" rx="10" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="1.8" />
+      <text x="830" y="155" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">4. CĂN NGUYÊN KHÁC</text>
+      <text x="830" y="172" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text-muted, #64748b)">(Miscellaneous • 10% – 15%)</text>
+      <text x="734" y="196" font-size="10.8" fill="var(--color-text, #0f172a)">• Sốt do thuốc (rất phổ biến)</text>
+      <text x="734" y="216" font-size="10.8" fill="var(--color-text, #0f172a)">• Huyết khối / Thuyên tắc (PE)</text>
+      <text x="734" y="236" font-size="10.8" fill="var(--color-text, #0f172a)">• Viêm giáp bán cấp</text>
+      <text x="734" y="256" font-size="10.8" fill="var(--color-text-muted, #64748b)">  (De Quervain — đau cổ trước)</text>
+      <text x="734" y="276" font-size="10.8" fill="var(--color-text, #0f172a)">• Sốt giả tạo (Munchausen)</text>
+
+      <!-- Bottom Takeaway Bar -->
+      <rect x="20" y="324" width="920" height="50" rx="10" fill="rgba(124, 58, 237, 0.08)" stroke="#7c3aed" stroke-width="1.5" />
+      <text x="480" y="346" text-anchor="middle" font-size="11.5" font-weight="800" fill="#7c3aed">
+        PHÂN BỔ THEO BỐI CẢNH: NHIỄM TRÙNG (Lao) CHIẾM ƯU THẾ Ở NƯỚC ĐANG PHÁT TRIỂN • NIIDs (GCA) NỔI TRỘI Ở NGƯỜI ≥ 50–55 TUỔI
+      </text>
+      <text x="480" y="364" text-anchor="middle" font-size="10.8" font-weight="600" fill="var(--color-text, #0f172a)">
+        Đừng bỏ quên Sốt do thuốc (chữa khỏi hoàn toàn bằng ngừng thuốc) và Thuyên tắc phổi tái diễn nhiều đợt nhỏ (DVT/PE).
+      </text>
+    </svg>
+  </div>
+</div>
+
+### 2.1. Các Bệnh Lý Nhiễm Trùng (Chiếm 25% – 45%)
+
+- **Lao (Tuberculosis):** Nguyên nhân nhiễm trùng hàng đầu gây FUO tại các nước đang phát triển và khu vực lưu hành bệnh cao. Thường gặp các thể lao khó chẩn đoán: **lao kê** (X-quang phổi có thể bình thường trong giai đoạn đầu), **lao màng bụng**, **lao hạch sâu trong ổ bụng**, **lao hệ thần kinh trung ương** và **lao cột sống (bệnh Pott)**.
+- **Ổ áp xe sâu và nhiễm trùng nội tạng kín đáo:** Áp xe gan (do vi khuẩn hoặc amip), áp xe dưới cơ hoành, áp xe cơ thắt lưng chậu (*psoas abscess*), áp xe quanh thận, áp xe túi thừa đại tràng hoặc viêm túi mật hoại tử không sỏi.
+- **Viêm nội tâm mạc nhiễm khuẩn bán cấp (SBE):** Thường xảy ra trên van tim nhân tạo hoặc tổn thương van tim thoái hóa/bẩm sinh từ trước. Cấy máu có thể âm tính nếu bệnh nhân đã dùng kháng sinh trước đó hoặc do vi khuẩn khó mọc (nhóm **HACEK**, *Bartonella*, *Coxiella burnetii* gây Q fever mạn tính).
+- **Nhiễm trùng nội bào và ký sinh trùng đặc thù:** Sốt rét bán cấp (do điều trị dở dang), nhiễm *Salmonella* thể thương hàn kéo dài, bệnh sốt vẹt (*Psittacosis*), *Brucellosis*, *Bartonellosis* (bệnh mèo cào, sốt chiến hào).
+- **Nhiễm virus tiềm tàng:** Nhiễm Cytomegalovirus (**CMV**), Epstein-Barr Virus (**EBV**) kéo dài ở người lớn hoặc nhiễm **HIV** giai đoạn sơ nhiễm/chuyển đoạn.
+
+### 2.2. Bệnh Lý Viêm Không Nhiễm Trùng & Tự Miễn — NIIDs (Chiếm 15% – 30%)
+
+- **Viêm động mạch tế bào khổng lồ (*Giant Cell Arteritis – GCA / Temporal Arteritis*):** Nguyên nhân tự miễn hàng đầu gây FUO ở người bệnh **$\ge 50 - 55$ tuổi**. Thường kèm đau đầu vùng thái dương, đau cơ dạng thấp (*Polymyalgia Rheumatica – PMR*), đau khập khiễng hàm khi nhai, tốc độ lắng máu (ESR) tăng rất cao (thường **$> 100\text{ mm/h}$**).
+- **Bệnh Still khởi phát ở người lớn (*Adult-onset Still's Disease – AOSD*):** Điển hình với tam chứng: sốt cao dao động hàng ngày kèm rét run, **ban màu hồng cá hồi (*salmon-pink rash*)** thoáng qua xuất hiện lúc sốt cao, đau/viêm đa khớp, kèm đau họng, hạch to và nồng độ **Ferritin huyết thanh tăng cực cao**.
+- **Lupus ban đỏ hệ thống (SLE) và Viêm mạch máu hệ thống:** SLE, viêm đa động mạch nút (PAN), viêm khớp dạng thấp thể khớp hoặc ngoài khớp nặng.
+- **Bệnh hạt (*Granulomatous diseases*):** Bệnh Sarcoidosis, bệnh Crohn ruột non thể kín đáo.
+
+### 2.3. Các Bệnh Lý Ác Tính (Chiếm 15% – 25%)
+
+- **U lympho ác tính (*Lymphomas*):** Cả u lympho Hodgkin (HL) và Non-Hodgkin (NHL) đều là nguyên nhân ác tính phổ biến nhất gây sốt kéo dài. Sốt có thể xuất hiện hàng tuần đến hàng tháng trước khi hạch to bộc lộ ra ngoại vi (u lympho mạc treo hoặc sau phúc mạc). **Sốt kiểu Pel-Ebstein** (từng đợt sốt xen kẽ các ngày không sốt) là biểu hiện kinh điển.
+- **Ung thư tạng đặc:** Ung thư biểu mô tế bào thận (*Renal Cell Carcinoma / Hypernephroma* — tế bào u tiết **IL-6** gây sốt), ung thư biểu mô tế bào gan (HCC), ung thư đại tràng, **u nhầy nhĩ trái (*Atrial Myxoma*)**.
+- **Bệnh bạch cầu và hội chứng rối loạn sinh tủy:** Leukemia cấp/mạn, loạn sinh tủy (MDS).
+
+### 2.4. Nhóm Căn Nguyên Khác & Sốt Giả Tạo (Chiếm 10% – 15%)
+
+- **Sốt do thuốc (*Drug Fever*):** Một trong những nguyên nhân dễ bị bỏ sót nhất nhưng có thể **chữa khỏi hoàn toàn bằng cách ngừng thuốc**. Thường liên quan đến kháng sinh nhóm **beta-lactam, sulfonamide**, **allopurinol**, thuốc chống động kinh (**carbamazepine, phenytoin**), thuốc tim mạch (**quinidine, hydralazine, methyldopa**). Bệnh nhân thường tỉnh táo, toàn trạng tương đối tốt so với nhiệt độ sốt, có thể có **dấu hiệu phân ly mạch – nhiệt** hoặc **tăng bạch cầu ái toan**.
+- **Huyết khối và Thuyên tắc mạch:** Huyết khối tĩnh mạch sâu chi dưới (DVT), thuyên tắc phổi (PE) tái diễn nhiều đợt nhỏ.
+- **Nội tiết:** Viêm tuyến giáp bán cấp (*Subacute Thyroiditis / De Quervain*) gây đau vùng cổ trước, sốt nhẹ đến sốt vừa.
+- **Sốt giả tạo (*Factitious Fever / Munchausen Syndrome*):** Người bệnh tự gây sốt (nhúng nhiệt kế vào nước nóng, tự tiêm chất gây viêm hoặc tạp khuẩn). **Dấu hiệu gợi ý:** sốt rất cao nhưng da mát, nhịp tim không tăng tương ứng, không đổ mồ hôi sau sốt, tốc độ lắng máu (ESR) bình thường.
 
 ---
 
-## 2. ĐẠI CƯƠNG VÀ CÁC ĐỊNH NGHĨA QUAN TRỌNG
-
-### 2.1. Phân loại sốt theo thời gian
-Trong thực hành lâm sàng, việc xác định thời gian sốt có ý nghĩa quyết định trong việc định hướng nhóm nguyên nhân và lựa chọn chiến lược tiếp cận:
-*   **Sốt cấp tính (Acute Fever):** Kéo dài **dưới 7 đến 14 ngày**. Phần lớn do nhiễm siêu vi tự giới hạn (cúm, sốt xuất huyết, enterovirus) hoặc nhiễm khuẩn cấp tính thông thường (viêm phổi, viêm đài bể thận, nhiễm khuẩn da - mô mềm).
-*   **Sốt bán cấp (Subacute Fever):** Kéo dài từ **trên 1 tuần đến dưới 3 tuần** (khoảng 7–21 ngày). Đây là "vùng xám" lâm sàng, nơi các nhiễm siêu vi cấp đã bắt đầu thoái triển, nhưng các ổ nhiễm trùng sâu (áp xe nội tạng, viêm nội tâm mạc bán cấp, lao sơ nhiễm), sốt do thuốc, hoặc các bệnh tự miễn hệ thống bắt đầu bộc lộ triệu chứng rõ rệt.
-*   **Sốt kéo dài (Prolonged/Persistent Fever):** Tình trạng sốt kéo dài liên tục hoặc ngắt quãng **từ 2 đến 3 tuần trở lên**.
-
-### 2.2. Tiêu chuẩn chẩn đoán Sốt không rõ nguyên nhân (FUO)
-Khái niệm FUO kinh điển được Petersdorf và Beeson đề xuất năm 1961, sau đó được Durack và Street hiệu chỉnh năm 1991 và tiếp tục được sử dụng rộng rãi trong các tài liệu kinh điển như *Harrison's Principles of Internal Medicine*:
-1.  **Thân nhiệt đo được:** Nhiệt độ ghi nhận nhiều lần **\\(> 38,3^{\circ}\text{C}\\)** (\\(> 101^{\circ}\text{F}\\)).
-2.  **Thời gian diễn tiến:** Sốt kéo dài **\\(\ge 3\\) tuần**.
-3.  **Không tìm ra nguyên nhân:** Sau ít nhất **1 tuần điều tra tích cực tại bệnh viện** (hoặc sau 3 lần khám ngoại trú toàn diện hoặc 3 ngày nằm viện theo tiêu chuẩn hiện đại).
-
-**Bốn phân nhóm FUO theo Durack & Street:**
-*   **FUO kinh điển (Classic FUO):** Người bệnh không có tình trạng suy giảm miễn dịch đã biết từ trước.
-*   **FUO bệnh viện (Nosocomial/Healthcare-associated FUO):** Bệnh nhân nhập viện không có sốt hoặc không trong thời kỳ ủ bệnh lúc nhập viện, sốt \\(\ge 38,3^{\circ}\text{C}\\) xuất hiện sau \\(\ge 24-48\\) giờ nằm viện và không rõ căn nguyên sau 3 ngày đánh giá (thường gặp: viêm đại tràng do *C. difficile*, viêm tắc tĩnh mạch huyết khối nhiễm khuẩn, sốt do thuốc, viêm xoang do đặt sonde mũi - dạ dày).
-*   **FUO giảm bạch cầu hạt (Neutropenic FUO):** Sốt \\(\ge 38,3^{\circ}\text{C}\\) trên bệnh nhân có số lượng bạch cầu trung tính \\(\text{ANC} \le 500/\mu\text{L}\\) (hoặc dự kiến giảm dưới mức này trong 48 giờ) và không tìm thấy ổ nhiễm sau 3 ngày điều tra tích cực (thường do vi nấm xâm lấn, vi khuẩn gram âm huyết thanh).
-*   **FUO liên quan đến HIV (HIV-associated FUO):** Người bệnh nhiễm HIV xác định, sốt kéo dài \\(\ge 4\\) tuần (ngoại trú) hoặc \\(\ge 3\\) ngày (nội trú) mà chưa rõ nguyên nhân (thường do *Mycobacterium avium-intracellulare* - MAC, lao ngoài phổi, nấm *Cryptococcus*, u lympho).
-
----
-
-## 3. CĂN NGUYÊN GÂY SỐT KÉO DÀI Ở NGƯỜI LỚN
-
-Sốt kéo dài có thể là biểu hiện của hàng trăm bệnh lý khác nhau. Tuy nhiên, **nguyên lý cốt lõi cần nhớ là: Phần lớn các trường hợp sốt kéo dài là biểu hiện không điển hình của một bệnh lý phổ biến, chứ hiếm khi là biểu hiện kinh điển của một bệnh lý cực kỳ hiếm gặp**.
-
-```
-                     CĂN NGUYÊN SỐT BÁN CẤP & KÉO DÀI (FUO)
-                                    │
-    ┌───────────────────┬───────────┴───────────┬───────────────────┐
-    ▼                   ▼                       ▼                   ▼
-1. NHIỄM TRÙNG       2. TỰ MIỄN / VIÊM       3. ÁC TÍNH          4. KHÁC
-(Infections)         (NIIDs)                 (Malignancies)      (Miscellaneous)
-• Lao (kê, ngoài     • Viêm ĐM tế bào khổng  • U Lympho (HL,     • Sốt do thuốc (rất
-  phổi, cột sống)      lồ (GCA / PMR)          NHL)                phổ biến)
-• Áp xe sâu (gan,    • Bệnh Still người lớn  • Ung thư biểu mô   • Huyết khối / Thuyên
-  dưới cơ hoành)     • Lupus ban đỏ (SLE)      thận (RCC)          tắc mạch (PE/DVT)
-• Viêm nội tâm mạc   • Viêm đa nút quanh ĐM  • Ung thư gan (HCC) • Viêm giáp bán cấp
-• Brucella, Q fever  • Sarcoidosis           • Bạch cầu cấp/mạn  • Sốt giả tạo
-```
-
-### 3.1. Các bệnh lý Nhiễm trùng ( chiếm 25% – 45% )
-*   **Lao (Tuberculosis):** Là nguyên nhân nhiễm trùng hàng đầu gây FUO tại các nước đang phát triển và khu vực lưu hành bệnh cao. Thường là các thể lao khó chẩn đoán: lao kê (hình ảnh X-quang phổi có thể bình thường trong giai đoạn đầu), lao màng bụng, lao hạch sâu trong ổ bụng, lao hệ thần kinh trung ương và lao cột sống (bệnh Pott).
-*   **Ổ áp xe sâu và nhiễm trùng nội tạng kín đáo:** Áp xe gan (do vi khuẩn hoặc amip), áp xe dưới cơ hoành, áp xe cơ thắt lưng chậu (psoas abscess), áp xe quanh thận, áp xe túi thừa đại tràng hoặc viêm túi mật hoại tử không sỏi.
-*   **Viêm nội tâm mạc nhiễm khuẩn bán cấp (SBE):** Thường xảy ra trên van tim nhân tạo hoặc tổn thương van tim thoái hóa/bẩm sinh từ trước. Cấy máu có thể âm tính nếu bệnh nhân đã dùng kháng sinh trước đó hoặc do các vi khuẩn khó mọc (nhóm HACEK, *Bartonella*, *Coxiella burnetii* gây Q fever mạn tính).
-*   **Các nhiễm trùng nội bào và ký sinh trùng đặc thù:** Sốt rét bán cấp (do điều trị dở dang), nhiễm *Salmonella* thể thương hàn kéo dài, bệnh sốt vẹt (*Psittacosis*), *Brucellosis*, *Bartonellosis* (bệnh mèo cào, sốt chiến hào).
-*   **Nhiễm virus tiềm tàng:** Nhiễm Cytomegalovirus (CMV), Epstein-Barr Virus (EBV) kéo dài ở người lớn hoặc nhiễm HIV giai đoạn sơ nhiễm/chuyển đoạn.
-
-### 3.2. Bệnh lý Viêm không nhiễm trùng và Tự miễn (NIIDs) ( chiếm 15% – 30% )
-*   **Viêm động mạch tế bào khổng lồ (Giant Cell Arteritis - GCA / Temporal Arteritis):** Nguyên nhân tự miễn hàng đầu gây FUO ở người bệnh \\(\ge 50 - 55\\) tuổi. Thường kèm đau đầu vùng thái dương, đau cơ dạng thấp (Polymyalgia Rheumatica - PMR), đau khập khiễng hàm khi nhai, tốc độ lắng máu (ESR) tăng rất cao (thường \\(> 100\text{ mm/h}\\)).
-*   **Bệnh Still khởi phát ở người lớn (Adult-onset Still's Disease - AOSD):** Điển hình với tam chứng: sốt cao dao động hàng ngày kèm rét run, ban màu hồng cá hồi (salmon-pink rash) thoáng qua xuất hiện lúc sốt cao, đau/viêm đa khớp, kèm đau họng, hạch to và nồng độ Ferritin huyết thanh tăng cực cao.
-*   **Lupus ban đỏ hệ thống (SLE) và Viêm mạch máu hệ thống:** SLE, viêm đa động mạch nút (PAN), viêm khớp dạng thấp thể khớp hoặc ngoài khớp nặng.
-*   **Bệnh hạt (Granulomatous diseases):** Bệnh Sarcoidosis, bệnh Crohn ruột non thể kín đáo.
-
-### 3.3. Các bệnh lý Ác tính ( chiếm 15% – 25% )
-*   **U lympho ác tính (Lymphomas):** Cả u lympho Hodgkin và Non-Hodgkin đều là nguyên nhân ác tính phổ biến nhất gây sốt kéo dài. Sốt có thể xuất hiện hàng tuần đến hàng tháng trước khi hạch to bộc lộ ra ngoại vi (u lympho mạc treo hoặc sau phúc mạc). Sốt kiểu Pel-Ebstein (từng đợt sốt xen kẽ các ngày không sốt) là biểu hiện kinh điển.
-*   **Ung thư tạng đặc:** Ung thư biểu mô tế bào thận (Renal Cell Carcinoma / Hypernephroma - tế bào u tiết IL-6 gây sốt), ung thư biểu mô tế bào gan (HCC), ung thư đại tràng, u nhầy nhĩ trái (Atrial Myxoma).
-*   **Bệnh bạch cầu và hội chứng rối loạn sinh tủy:** Leukemia, loạn sinh tủy (MDS).
-
-### 3.4. Nhóm căn nguyên khác và Sốt giả tạo ( chiếm 10% – 15% )
-*   **Sốt do thuốc (Drug Fever):** Là một trong những nguyên nhân dễ bị bỏ sót nhất nhưng có thể chữa khỏi hoàn toàn bằng cách ngừng thuốc. Thường liên quan đến kháng sinh nhóm beta-lactam, sulfonamide, allopurinol, thuốc chống động kinh (carbamazepine, phenytoin), thuốc tim mạch (quinidine, hydralazine, methyldopa). Bệnh nhân thường vẫn tỉnh táo, toàn trạng tương đối tốt so với nhiệt độ sốt, có thể có dấu hiệu phân ly mạch - nhiệt hoặc tăng bạch cầu ái toan.
-*   **Huyết khối và Thuyên tắc mạch:** Huyết khối tĩnh mạch sâu chi dưới (DVT), thuyên tắc phổi tái diễn nhiều đợt nhỏ.
-*   **Nội tiết:** Viêm tuyến giáp bán cấp (Subacute Thyroiditis / De Quervain) gây đau vùng cổ trước, sốt nhẹ đến sốt vừa.
-*   **Sốt giả tạo (Factitious Fever / Munchausen Syndrome):** Người bệnh tự gây sốt (nhúng nhiệt kế vào nước nóng, tự tiêm chất gây viêm hoặc tạp khuẩn). Dấu hiệu gợi ý: sốt rất cao nhưng da mát, nhịp tim không tăng tương ứng, không đổ mồ hôi sau sốt, tốc độ lắng máu (ESR) bình thường.
-
----
-
-## 4. CHIẾN LƯỢC TIẾP CẬN LÂM SÀNG CÓ HỆ THỐNG
+## 3. Bước 1: Xác Nhận Sốt Thực Sự & Khai Thác Bệnh Sử Dịch Tễ <span id="sec-3"></span>
 
 Khác với tiếp cận sốt cấp tính (nơi việc hồi sức và điều trị kinh nghiệm phải thực hiện ngay để cứu sống tính mạng), **tiếp cận sốt kéo dài đòi hỏi tư duy phân tích thấu đáo, tính kiên nhẫn và việc truy tìm liên tục các manh mối chẩn đoán tiềm năng (PDCs)**.
 
-```
-                TIẾP CẬN BỆNH NHÂN SỐT KÉO DÀI / FUO
-                                │
-    ┌───────────────────────────┴───────────────────────────┐
-    ▼                                                       ▼
-1. ĐÁNH GIÁ ĐIỀU KIỆN TIÊU CHUẨN                      2. TRUY TÌM PDCs
-- Xác thực sốt (tự đo hay báo?)                     (Hỏi bệnh sử dịch tễ,
-- Đo thân nhiệt trực tiếp tại viện                   thuốc men, nghề nghiệp,
-- Thân nhiệt ≥ 38,3°C, kéo dài ≥ 3 tuần              vết côn trùng, vật nuôi)
-    │                                                       │
-    └───────────────────────────┬───────────────────────────┘
-                                ▼
-3. BẬC 1: BỘ XÉT NGHIỆM TẦM SOÁT BẮT BUỘC (Obligatory Tests)
-- CTM, Máu lắng (ESR), CRP, Men gan, Creatinine, Ferritin, Protein điện di
-- Cấy máu x 3 bộ (lấy các thời điểm khác nhau, ủ lâu tìm vi khuẩn kén)
-- Tổng phân tích nước tiểu + cấy nước tiểu
-- X-quang phổi thẳng, Siêu âm bụng tổng quát, TST hoặc IGRA
-- NGỪNG HOẶC THAY THẾ CÁC THUỐC ĐANG DÙNG (Loại trừ sốt do thuốc)
-                                │
-        ┌───────────────────────┴───────────────────────┐
-        ▼ CÓ PDCs                                       ▼ KHÔNG CÓ PDCs
-4. XÉT NGHIỆM ĐỊNH HƯỚNG THEO PDCs             5. BẬC 2: CHẨN ĐOÁN HÌNH ẢNH TOÀN DIỆN
-- Đau đầu/PMR (≥50t) → Sinh thiết ĐM thái dương  - CT có cản quang Ngực - Bụng - Chậu
-- Tiếng thổi tim/cấy (+) → Siêu âm tim qua thực - Kháng thể tự miễn (ANA, RF, ANCA)
-  quản (TEE)                                   - Huyết thanh chẩn đoán (HIV, CMV, EBV)
-- Hạch to / Tổn thương da → Sinh thiết hạch/da  
-        │                                               │
-        └───────────────────────┬───────────────────────┘
-                                ▼ VẪN CHƯA CÓ CHẨN ĐOÁN
-6. BẬC 3: KỸ THUẬT PHÂN TỬ VÀ XÂM LẤN CHUYÊN SÂU
-- Chụp FDG-PET/CT toàn thân (định vị ổ viêm sâu, viêm mạch máu lớn, hạch ẩn)
-- Chọc tủy / Sinh thiết tủy xương (tìm u lympho, lao tủy, hội chứng thực bào)
-- Sinh thiết gan qua da hoặc nội soi ổ bụng thăm dò
-```
+1. **Kiểm chứng cơn sốt thực sự:**
+   - Đo thân nhiệt trực tiếp tại cơ sở y tế bằng kỹ thuật chuẩn dưới sự giám sát của nhân viên y tế để loại trừ hiện tượng "cảm thấy sốt" cơ năng hoặc **sốt giả tạo** do gian lận nhiệt kế.
+2. **Lược sử dùng thuốc chi tiết:**
+   - Lập danh sách **toàn bộ** thuốc theo đơn, thuốc không kê đơn (OTC), thực phẩm chức năng và thảo dược người bệnh đã sử dụng trong vòng **2 tháng gần nhất**.
+3. **Tiền sử dịch tễ, phơi nhiễm & can thiệp y khoa:**
+   - **Di chuyển & vùng dịch tễ:** Vùng sốt rét, vùng lưu hành sốt xuất huyết, hang động dơi có nấm *Histoplasma*, vùng nông thôn có ve mò.
+   - **Tiếp xúc thú cưng & gia súc:** Mèo cào $\rightarrow$ *Bartonella*; tiếp xúc bò dê, uống sữa tươi chưa tiệt trùng $\rightarrow$ *Brucella*, Q fever (*Coxiella burnetii*).
+   - **Thủ thuật & dị vật y khoa:** Thủ thuật răng miệng gần đây, cấy ghép thiết bị y khoa (**van tim nhân tạo, máy tạo nhịp, khớp nhân tạo, catheter tĩnh mạch**).
 
 ---
 
-### BƯỚC 1: Xác nhận sốt thực sự và Khai thác bệnh sử tỉ mỉ
-*   **Kiểm chứng cơn sốt:** Cần đo thân nhiệt trực tiếp tại cơ sở y tế bằng kỹ thuật chuẩn để loại trừ hiện tượng "cảm thấy sốt" cơ năng hoặc sốt giả tạo do gian lận nhiệt kế.
-*   **Lược sử dùng thuốc chi tiết:** Lập danh sách toàn bộ các loại thuốc theo đơn, thuốc không kê đơn, thực phẩm chức năng, thảo dược mà người bệnh đã dùng trong 2 tháng gần nhất.
-*   **Tiền sử dịch tễ và phơi nhiễm môi trường:**
-    *   Tiền sử di chuyển đến vùng dịch tễ (vùng sốt rét, vùng lưu hành sốt xuất huyết, hang động dơi có nấm *Histoplasma*, vùng nông thôn có ve mò).
-    *   Tiếp xúc thú cưng, gia súc (mèo cào \\(\rightarrow\\) *Bartonella*; bò dê, uống sữa tươi chưa tiệt trùng \\(\rightarrow\\) *Brucella*, *Q fever*).
-    *   Tiền sử thủ thuật răng miệng gần đây, cấy ghép thiết bị y khoa (van tim nhân tạo, máy tạo nhịp, khớp nhân tạo, catheter tĩnh mạch).
+## 4. Bước 2: Thăm Khám Thực Thể Lặp Lại Truy Tìm PDCs <span id="sec-4"></span>
+
+Khám lâm sàng trong sốt kéo dài **phải được thực hiện lặp lại hàng ngày**, vì nhiều manh mối chẩn đoán tiềm năng (PDCs) thường chưa có ở ngày đầu mà xuất hiện muộn hoặc biến đổi theo thời gian:
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Cơ quan / Hệ thống</th>
+      <th>Dấu hiệu thực thể cần truy tìm (PDCs)</th>
+      <th>Căn nguyên định hướng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mắt (Soi đáy mắt)</strong></td>
+      <td>Nốt Roth; củ lao màng mạch (<em>choroid tubercles</em>); viêm màng bồ đào.</td>
+      <td>Viêm nội tâm mạc nhiễm khuẩn; Lao kê (miliary TB); Sarcoidosis &amp; bệnh tự miễn.</td>
+    </tr>
+    <tr>
+      <td><strong>Mạch &amp; Thân nhiệt</strong></td>
+      <td><strong>Dấu hiệu phân ly mạch – nhiệt</strong> (mạch chậm tương đối so với thân nhiệt tăng cao).</td>
+      <td>Thương hàn, <em>Legionella</em>, <em>Psittacosis</em>, Sốt do thuốc, U lympho.</td>
+    </tr>
+    <tr>
+      <td><strong>Da, Móng &amp; Niêm mạc</strong></td>
+      <td>• Vết loét hoại tử vảy đen (<em>Eschar</em>) vùng kín.<br>• Xuất huyết vệt dưới móng (<em>Splinter hemorrhages</em>), tổn thương Janeway, nốt Osler.<br>• Ban hồng cá hồi thoái triển nhanh / Ban cánh bướm ở mặt.</td>
+      <td>• Sốt mò (<em>Scrub typhus</em>).<br>• Viêm nội tâm mạc nhiễm khuẩn (SBE).<br>• Bệnh Still người lớn (AOSD) / Lupus ban đỏ (SLE).</td>
+    </tr>
+    <tr>
+      <td><strong>Đầu – Mặt – Cổ</strong></td>
+      <td>• Sờ nắn động mạch thái dương dày cứng, giảm đập hoặc ấn đau chói (người cao tuổi).<br>• Sờ tuyến giáp tìm điểm đau khu trú vùng cổ trước.</td>
+      <td>• Viêm động mạch tế bào khổng lồ (<strong>GCA</strong>).<br>• Viêm tuyến giáp bán cấp (<strong>De Quervain</strong>).</td>
+    </tr>
+    <tr>
+      <td><strong>Hạch lympho</strong></td>
+      <td>Khám kỹ mọi chuỗi hạch nông: dọc cơ ức đòn chũm, hố thượng đòn, nách, bẹn và <strong>hạch ròng rọc khuỷu tay</strong>.</td>
+      <td>U lympho (HL/NHL), Lao hạch, HIV, Bệnh mèo cào, Bệnh Still.</td>
+    </tr>
+    <tr>
+      <td><strong>Tim mạch &amp; Lồng ngực</strong></td>
+      <td>Nghe kỹ tiếng thổi tim — đặc biệt <strong>tiếng thổi tâm trương mới xuất hiện</strong> (hở van ĐM chủ) hoặc thay đổi tính chất tiếng thổi tâm thu.</td>
+      <td>Viêm nội tâm mạc nhiễm khuẩn bán cấp (SBE), U nhầy nhĩ trái.</td>
+    </tr>
+    <tr>
+      <td><strong>Cơ xương khớp &amp; Cột sống</strong></td>
+      <td>Gõ dọc các gai đốt sống tìm điểm đau chói khu trú; khám sưng nóng đỏ đau các khớp ngoại vi.</td>
+      <td>Viêm đốt sống đĩa đệm do lao (bệnh Pott) hoặc vi khuẩn; Bệnh tự miễn hệ thống.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ---
 
-### BƯỚC 2: Thăm khám thực thể toàn diện và phát hiện PDCs
-Khám lâm sàng trong sốt kéo dài phải được thực hiện lặp lại hàng ngày vì các manh mối thường xuất hiện muộn hoặc biến đổi theo thời gian:
-*   **Mắt:** Soi đáy mắt tìm nốt Roth (viêm nội tâm mạc), củ lao màng mạch (choroid tubercles trong lao miliary), viêm màng bồ đào (sarcoidosis, bệnh tự miễn).
-*   **Mạch và Thân nhiệt:** Tìm dấu hiệu phân ly mạch - nhiệt (mạch chậm tương đối so với nhiệt độ cao) gợi ý thương hàn, *Legionella*, *Psittacosis*, sốt do thuốc, hoặc u lympho.
-*   **Da, Móng và Niêm mạc:**
-    *   Tìm vết loét hoại tử có vảy đen (Eschar) vùng kín (sốt mò).
-    *   Xuất huyết dạng vệt dưới móng (Splinter hemorrhages), tổn thương Janeway, nốt Osler ở lòng bàn tay, bàn chân (viêm nội tâm mạc).
-    *   Ban đỏ dạng dải gờ nhẹ màu hồng cá hồi thoái triển nhanh (bệnh Still) hoặc ban cánh bướm ở mặt (lupus).
-*   **Đầu - Mặt - Cổ:** Sờ nắn động mạch thái dương tìm dấu hiệu dày cứng, giảm đập hoặc ấn đau chói ở bệnh nhân lớn tuổi (nghi ngờ GCA); sờ tuyến giáp tìm điểm đau khu trú (viêm giáp bán cấp).
-*   **Hạch lympho:** Khám cẩn thận tất cả các chuỗi hạch nông (dọc cơ ức đòn chũm, hố thượng đòn, nách, bẹn, hạch ròng rọc khuỷu tay).
-*   **Hệ tim mạch và Lồng ngực:** Nghe kỹ các tiếng thổi tim (đặc biệt là tiếng thổi tâm trương mới xuất hiện do hở van chủ hoặc thay đổi tính chất của tiếng thổi tâm thu).
-*   **Cơ xương khớp và Cột sống:** Gõ dọc các gai đốt sống tìm điểm đau chói khu trú (viêm đốt sống đĩa đệm do lao hoặc vi khuẩn); khám sưng đau các khớp ngoại vi.
+## 5. Bước 3: Chỉ Định Cận Lâm Sàng Theo 3 Giai Đoạn (Stepwise Workup) <span id="sec-5"></span>
+
+Cận lâm sàng trong FUO cần triển khai theo **lộ trình 3 giai đoạn chặt chẽ**, từ bộ xét nghiệm tầm soát tối thiểu bắt buộc đến chẩn đoán hình ảnh mở rộng, y học hạt nhân và sinh thiết mô đích:
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Giai đoạn</th>
+      <th>Hạng mục cận lâm sàng</th>
+      <th>Giá trị biện luận &amp; Lưu ý kỹ thuật bắt buộc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5"><strong>Giai đoạn 1: Tầm soát cơ bản bắt buộc</strong><br>(<em>Obligatory Testing</em>)</td>
+      <td><strong>Huyết học &amp; Dấu ấn viêm</strong></td>
+      <td>Tổng phân tích tế bào máu ngoại vi + <strong>phết máu quan sát hình thái</strong>; <strong>ESR &amp; CRP</strong> (tăng rất cao gợi ý viêm mạch hoặc bệnh Still); <strong>Ferritin huyết thanh</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Sinh hóa tổng quát</strong></td>
+      <td>Điện giải đồ, Ure, Creatinine, AST, ALT, Bilirubin, <strong>Alkaline Phosphatase (ALP)</strong>, Albumin, <strong>Điện di Protein huyết thanh</strong> (đỉnh đơn dòng / tăng đa dòng gammaglobulin), <strong>LDH</strong> (tăng cao trong u lympho).</td>
+    </tr>
+    <tr>
+      <td><strong>Vi sinh học cơ bản</strong></td>
+      <td>• <strong>Cấy máu tối thiểu 3 bộ</strong> (mỗi bộ 1 chai ái khí + 1 chai kỵ khí) từ các vị trí tĩnh mạch khác nhau, cách nhau <strong>&ge; 1 giờ</strong>; yêu cầu phòng lab <strong>ủ kéo dài 7–14 ngày</strong> tìm vi khuẩn kén mọc.<br>• Tổng phân tích nước tiểu + cấy nước tiểu.</td>
+    </tr>
+    <tr>
+      <td><strong>Tầm soát nhiễm trùng chuyên biệt</strong></td>
+      <td>Tuberculin skin test (<strong>TST</strong>) hoặc <strong>IGRA</strong> (<em>QuantiFERON-TB</em>); Huyết thanh chẩn đoán <strong>HIV</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>Chẩn đoán hình ảnh ban đầu</strong></td>
+      <td>X-quang tim phổi thẳng; Siêu âm ổ bụng tổng quát.</td>
+    </tr>
+    <tr>
+      <td rowspan="4"><strong>Giai đoạn 2: Định hướng theo PDCs hoặc mở rộng</strong><br>(<em>Second-line</em>)</td>
+      <td><strong>CT Scanner có cản quang toàn thân</strong></td>
+      <td>Chụp <strong>Ngực – Bụng – Tiểu khung</strong> để phát hiện hạch sâu sau phúc mạc, khối u đặc nội tạng hoặc ổ áp xe kín đáo.</td>
+    </tr>
+    <tr>
+      <td><strong>Siêu âm tim qua thực quản (TEE)</strong></td>
+      <td>Bắt buộc làm khi nghi ngờ viêm nội tâm mạc nhiễm khuẩn, đặc biệt ở người mang <strong>van tim nhân tạo</strong>, tiếng thổi tim mới hoặc cấy máu dương tính với tụ cầu/liên cầu.</td>
+    </tr>
+    <tr>
+      <td><strong>Tầm soát tự miễn chuyên sâu</strong></td>
+      <td>Kháng thể kháng nhân (<strong>ANA</strong>), Yếu tố dạng thấp (<strong>RF</strong>), Kháng thể kháng bào tương bạch cầu trung tính (<strong>ANCA</strong>).</td>
+    </tr>
+    <tr>
+      <td><strong>Huyết thanh học virus &amp; vi khuẩn nội bào</strong></td>
+      <td>Titer huyết thanh cho <strong>CMV, EBV</strong>, <em>Coxiella burnetii</em> (Q fever), <em>Brucella</em>, <em>Bartonella</em>.</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>Giai đoạn 3: Y học hạt nhân &amp; Sinh thiết mô đích</strong><br>(<em>Third-line</em>)</td>
+      <td><strong>Chụp PET/CT với <sup>18</sup>F-FDG</strong></td>
+      <td>Tiến bộ đột phá được <em>Harrison</em> &amp; <em>Conn's Current Therapy</em> khuyến cáo hàng đầu khi hình ảnh thông thường âm tính: độ nhạy vượt trội định vị <strong>viêm mạch máu lớn</strong> (Takayasu, GCA), <strong>u lympho tiềm ẩn</strong> hoặc <strong>ổ nhiễm trùng sâu</strong> ngoài tầm siêu âm.</td>
+    </tr>
+    <tr>
+      <td><strong>Sinh thiết mô đích</strong></td>
+      <td>• <em>Động mạch thái dương:</em> Người &ge; 50–55 tuổi sốt kéo dài + ESR tăng vọt, ngay cả khi chưa đau đầu rõ.<br>• <em>Hút &amp; sinh thiết tủy xương:</em> Tìm u lympho, lao tủy xương, nấm nội tạng (<em>Histoplasma</em>), hội chứng thực bào máu (<strong>HLH</strong>).<br>• <em>Sinh thiết hạch, gan hoặc nội soi ổ bụng thăm dò:</em> Khi phát hiện tổn thương đích trên CT hoặc PET/CT.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-radiation"></i> VAI TRÒ ĐỘT PHÁ CỦA <sup>18</sup>F-FDG PET/CT TRONG FUO</div>
+  <p style="margin: 0;">Chụp PET/CT với <strong><sup>18</sup>F-fluorodeoxyglucose (<sup>18</sup>F-FDG)</strong> giúp phát hiện các ổ tăng chuyển hóa glucose bất thường trên toàn cơ thể, cho hiệu suất định vị vượt trội để dẫn đường sinh thiết mô đích khi bộ xét nghiệm bậc 1–2 chưa tìm ra căn nguyên.</p>
+</div>
 
 ---
 
-### BƯỚC 3: Chỉ định cận lâm sàng theo từng bậc (Stepwise Workup)
+## 6. Lưu Đồ Tiếp Cận Lâm Sàng Bệnh Nhân Sốt Kéo Dài / FUO <span id="sec-6"></span>
 
-#### Giai đoạn 1: Bộ xét nghiệm tầm soát cơ bản bắt buộc (Obligatory Testing)
-Tất cả các bệnh nhân nghi ngờ FUO cần được làm bộ xét nghiệm đầu tay này trước khi chuyển sang các biện pháp xâm lấn:
-1.  **Huyết học và Dấu ấn viêm:** Tổng phân tích tế bào máu ngoại vi + phết tế bào máu quan sát hình thái; Tốc độ lắng máu (ESR) và CRP (giá trị rất cao gợi ý viêm mạch hoặc bệnh Still); Ferritin huyết thanh.
-2.  **Sinh hóa tổng quát:** Điện giải đồ, chức năng thận (Ure, Creatinine), men gan (AST, ALT, Bilirubin), Alkaline Phosphatase, Albumin và Điện di Protein huyết thanh (tìm đỉnh đơn dòng hoặc tăng đa dòng gammaglobulin), LDH (tăng cao trong u lympho).
-3.  **Vi sinh học cơ bản:**
-    *   **Cấy máu:** Bắt buộc lấy ít nhất 3 bộ cấy máu (mỗi bộ gồm 1 chai ái khí và 1 chai kỵ khí) từ các vị trí tĩnh mạch khác nhau, lấy cách nhau tối thiểu 1 giờ, và yêu cầu phòng xét nghiệm nuôi cấy kéo dài (ít nhất 7–14 ngày) để tìm các vi khuẩn kén mọc.
-    *   Tổng phân tích nước tiểu và cấy nước tiểu.
-4.  **Tầm soát nhiễm trùng chuyên biệt:** Tuberculin skin test (TST) hoặc xét nghiệm giải phóng Interferon-gamma (IGRA - QuantiFERON-TB); Huyết thanh chẩn đoán HIV.
-5.  **Chẩn đoán hình ảnh ban đầu:** X-quang tim phổi thẳng; Siêu âm ổ bụng tổng quát.
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0d9488);"></i> LƯU ĐỒ TIẾP CẬN BỆNH NHÂN SỐT KÉO DÀI / FUO (STEPWISE WORKUP)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 756" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="fuoArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-text-muted, #64748b)" />
+        </marker>
+        <marker id="fuoBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+        <marker id="fuoAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#d97706" />
+        </marker>
+      </defs>
 
-#### Giai đoạn 2: Cận lâm sàng định hướng theo PDCs hoặc mở rộng
-Nếu bước 1 chưa tìm ra căn nguyên và không có PDCs rõ ràng:
-*   **Chụp cắt lớp vi tính (CT Scanner) có cản quang toàn thân:** Ngực, bụng và tiểu khung để phát hiện các hạch sâu sau phúc mạc, khối u đặc nội tạng, hoặc các ổ áp xe kín đáo.
-*   **Siêu âm tim qua thực quản (Transesophageal Echocardiography - TEE):** Bắt buộc làm nếu nghi ngờ viêm nội tâm mạc nhiễm khuẩn, đặc biệt trên bệnh nhân có van tim nhân tạo, tiếng thổi tim mới hoặc cấy máu dương tính với tụ cầu/liên cầu.
-*   **Tầm soát tự miễn chuyên sâu:** Kháng thể kháng nhân (ANA), Yếu tố dạng thấp (RF), kháng thể kháng bào tương bạch cầu đa nhân trung tính (ANCA).
-*   **Huyết thanh học virus và vi khuẩn nội bào:** Titer huyết thanh cho CMV, EBV, *Coxiella burnetii* (Q fever), *Brucella*, *Bartonella*.
+      <!-- Main Title -->
+      <text x="480" y="27" text-anchor="middle" font-size="15.5" font-weight="800" fill="var(--color-text, #0f172a)">
+        TIẾP CẬN HỆ THỐNG BỆNH NHÂN SỐT KÉO DÀI / FUO (T &gt; 38.3°C, ≥ 3 TUẦN)
+      </text>
 
-#### Giai đoạn 3: Kỹ thuật y học hạt nhân và Sinh thiết mô đích
-*   **Chụp PET/CT với \\(^{18}\text{F}\text{-FDG}\\) (\\(^{18}\text{F}\text{-fluorodeoxyglucose PET/CT}\\)):** Đây là tiến bộ đột phá được đồng thuận quốc tế (*Harrison*, *Conn's Current Therapy*) khuyến cáo hàng đầu trong FUO khi các xét nghiệm hình ảnh thông thường âm tính. PET/CT có độ nhạy vượt trội trong việc phát hiện tình trạng tăng chuyển hóa glucose tại các ổ viêm mạch máu lớn (viêm động mạch Takayasu, GCA), các khối u lympho tiềm ẩn, hoặc các ổ nhiễm trùng sâu ngoài tầm với của siêu âm.
-*   **Sinh thiết mô đích:**
-    *   *Sinh thiết động mạch thái dương:* Ở người bệnh \\(\ge 50 - 55\\) tuổi có sốt kéo dài kèm lắng máu tăng vọt, ngay cả khi chưa có triệu chứng đau đầu rõ.
-    *   *Hút tủy và Sinh thiết tủy xương:* Giúp xác định chẩn đoán u lympho, lao tủy xương, nấm nội tạng (*Histoplasma*), hoặc hội chứng thực bào máu (HLH).
-    *   *Sinh thiết hạch hoặc sinh thiết gan:* Khi phát hiện tổn thương nghi ngờ trên CT hoặc PET/CT.
+      <!-- Step 1 (Left) -->
+      <rect x="40" y="44" width="410" height="86" rx="10" fill="rgba(13, 148, 136, 0.1)" stroke="#0d9488" stroke-width="2" />
+      <text x="245" y="66" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0d9488">
+        1. ĐÁNH GIÁ ĐIỀU KIỆN TIÊU CHUẨN
+      </text>
+      <text x="58" y="87" font-size="11" fill="var(--color-text, #0f172a)">• Xác thực sốt thực sự (đo trực tiếp tại viện, loại sốt giả)</text>
+      <text x="58" y="105" font-size="11" fill="var(--color-text, #0f172a)">• Thân nhiệt &gt; 38.3°C nhiều lần, kéo dài ≥ 3 tuần</text>
+      <text x="58" y="122" font-size="11" fill="var(--color-text-muted, #64748b)">• Phân nhóm FUO: Kinh điển / BV / ANC ≤ 500 / HIV</text>
+
+      <!-- Step 2 (Right) -->
+      <rect x="510" y="44" width="410" height="86" rx="10" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="2" />
+      <text x="715" y="66" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0284c7">
+        2. TRUY TÌM MANH MỐI TIỀM NĂNG (PDCs)
+      </text>
+      <text x="528" y="87" font-size="11" fill="var(--color-text, #0f172a)">• Dịch tễ, du lịch, thú nuôi, nghề nghiệp, vết côn trùng</text>
+      <text x="528" y="105" font-size="11" fill="var(--color-text, #0f172a)">• Rà soát toàn bộ thuốc men (2 tháng), thủ thuật / van tim</text>
+      <text x="528" y="122" font-size="11" fill="var(--color-text-muted, #64748b)">• Thăm khám thực thể LẶP LẠI HÀNG NGÀY tìm PDCs muộn</text>
+
+      <!-- Merge Step 1 + 2 -> Step 3 -->
+      <line x1="245" y1="130" x2="245" y2="150" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="715" y1="130" x2="715" y2="150" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="245" y1="150" x2="715" y2="150" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="480" y1="150" x2="480" y2="172" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoArr)" />
+
+      <!-- Step 3: Tier 1 Obligatory Tests -->
+      <rect x="70" y="174" width="820" height="114" rx="10" fill="rgba(13, 148, 136, 0.08)" stroke="#0d9488" stroke-width="2" />
+      <text x="480" y="196" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0d9488">
+        3. GIAI ĐOẠN 1: BỘ XÉT NGHIỆM TẦM SOÁT BẮT BUỘC (OBLIGATORY TESTS)
+      </text>
+      <text x="480" y="217" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • CTM + phết máu, ESR, CRP, Ferritin, Men gan, ALP, Creatinine, Điện di Protein, LDH
+      </text>
+      <text x="480" y="236" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Cấy máu × 3 bộ (vị trí khác nhau, cách ≥ 1h, ủ 7–14 ngày) • TPTNT + cấy nước tiểu • TST/IGRA • HIV
+      </text>
+      <text x="480" y="255" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • X-quang phổi thẳng • Siêu âm ổ bụng tổng quát
+      </text>
+      <text x="480" y="276" text-anchor="middle" font-size="11.2" font-weight="800" fill="#e11d48">
+        ★ NGỪNG HOẶC THAY THẾ CÁC THUỐC KHÔNG THIẾT YẾU TRONG 72 GIỜ (LOẠI TRỪ SỐT DO THUỐC)
+      </text>
+
+      <!-- Split Step 3 -> Step 4A (PDCs) / Step 4B (No PDCs) -->
+      <line x1="480" y1="288" x2="480" y2="306" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="245" y1="306" x2="715" y2="306" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="245" y1="306" x2="245" y2="344" stroke="#0284c7" stroke-width="2" marker-end="url(#fuoBlue)" />
+      <line x1="715" y1="306" x2="715" y2="344" stroke="#d97706" stroke-width="2" marker-end="url(#fuoAmber)" />
+
+      <rect x="195" y="313" width="100" height="20" rx="4" fill="#0284c7" />
+      <text x="245" y="327" text-anchor="middle" font-size="10.2" font-weight="800" fill="#ffffff">CÓ PDCs</text>
+
+      <rect x="650" y="313" width="130" height="20" rx="4" fill="#d97706" />
+      <text x="715" y="327" text-anchor="middle" font-size="10.2" font-weight="800" fill="#ffffff">KHÔNG CÓ PDCs</text>
+
+      <!-- Step 4A: Targeted PDCs -->
+      <rect x="40" y="346" width="410" height="124" rx="10" fill="rgba(2, 132, 199, 0.09)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="245" y="369" text-anchor="middle" font-size="12.2" font-weight="800" fill="#0284c7">
+        4. XÉT NGHIỆM ĐỊNH HƯỚNG THEO PDCs
+      </text>
+      <text x="58" y="392" font-size="11" fill="var(--color-text, #0f172a)">• Đau đầu / PMR (≥ 50t) → Sinh thiết ĐM thái dương</text>
+      <text x="58" y="412" font-size="11" fill="var(--color-text, #0f172a)">• Tiếng thổi tim / van nhân tạo / cấy (+) → Siêu âm TEE</text>
+      <text x="58" y="432" font-size="11" fill="var(--color-text, #0f172a)">• Hạch ngoại vi to / Tổn thương da → Sinh thiết hạch/da</text>
+      <text x="58" y="452" font-size="11" fill="var(--color-text, #0f172a)">• Đau khu trú cột sống → Hình ảnh tìm lao / viêm đĩa đệm</text>
+
+      <!-- Step 4B: Tier 2 Comprehensive Imaging -->
+      <rect x="510" y="346" width="410" height="124" rx="10" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="1.8" />
+      <text x="715" y="369" text-anchor="middle" font-size="12.2" font-weight="800" fill="#d97706">
+        5. GIAI ĐOẠN 2: HÌNH ẢNH &amp; MIỄN DỊCH MỞ RỘNG
+      </text>
+      <text x="528" y="392" font-size="11" fill="var(--color-text, #0f172a)">• CT có cản quang toàn thân: Ngực – Bụng – Tiểu khung</text>
+      <text x="528" y="412" font-size="11" fill="var(--color-text, #0f172a)">• Kháng thể tự miễn chuyên sâu: ANA, RF, ANCA</text>
+      <text x="528" y="432" font-size="11" fill="var(--color-text, #0f172a)">• Huyết thanh: HIV, CMV, EBV, Q fever, Brucella, Bartonella</text>
+      <text x="528" y="452" font-size="11" fill="var(--color-text, #0f172a)">• Siêu âm tim qua thực quản (TEE) nếu nghi SBE kín đáo</text>
+
+      <!-- Merge Step 4A + 4B -> Step 6 (Tier 3) -->
+      <line x1="245" y1="470" x2="245" y2="490" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="715" y1="470" x2="715" y2="490" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="245" y1="490" x2="715" y2="490" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="480" y1="490" x2="480" y2="528" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#fuoArr)" />
+
+      <rect x="380" y="497" width="200" height="20" rx="4" fill="#7c3aed" />
+      <text x="480" y="511" text-anchor="middle" font-size="10.2" font-weight="800" fill="#ffffff">VẪN CHƯA CÓ CHẨN ĐOÁN</text>
+
+      <!-- Step 6: Tier 3 Nuclear & Biopsy -->
+      <rect x="70" y="530" width="820" height="112" rx="10" fill="rgba(124, 58, 237, 0.09)" stroke="#7c3aed" stroke-width="2" />
+      <text x="480" y="553" text-anchor="middle" font-size="12.5" font-weight="800" fill="#7c3aed">
+        6. GIAI ĐOẠN 3: Y HỌC HẠT NHÂN &amp; XÂM LẤN SINH THIẾT MÔ ĐÍCH
+      </text>
+      <text x="480" y="576" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        • Chụp 18F-FDG PET/CT toàn thân (định vị ổ viêm sâu, viêm mạch máu lớn GCA/Takayasu, hạch ẩn)
+      </text>
+      <text x="480" y="597" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Hút tủy / Sinh thiết tủy xương (tìm u lympho, lao tủy xương, nấm Histoplasma, hội chứng thực bào máu HLH)
+      </text>
+      <text x="480" y="618" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Sinh thiết ĐM thái dương (≥ 50–55t, ESR tăng vọt) • Sinh thiết gan qua da hoặc nội soi ổ bụng thăm dò
+      </text>
+
+      <!-- Safety & Prognosis Footer -->
+      <rect x="40" y="662" width="880" height="78" rx="10" fill="rgba(225, 29, 72, 0.09)" stroke="#e11d48" stroke-width="1.8" />
+      <text x="480" y="684" text-anchor="middle" font-size="11.8" font-weight="800" fill="#e11d48">
+        NGUYÊN TẮC VÀNG: KHÔNG ĐIỀU TRỊ THỬ KHÁNG SINH / KHÁNG LAO / CORTICOID KHI HUYẾT ĐỘNG ỔN ĐỊNH
+      </text>
+      <text x="480" y="704" text-anchor="middle" font-size="10.8" font-weight="600" fill="var(--color-text, #0f172a)">
+        3 Ngoại lệ: (1) Nghi GCA đe dọa thị giác (Prednisone 1 mg/kg/ngày) • (2) Lao kê tối cấp suy kiệt nặng • (3) Mất ổn định huyết động / ANC &lt; 500/µL
+      </text>
+      <text x="480" y="724" text-anchor="middle" font-size="10.8" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Nếu toàn bộ quy trình (gồm CT/PET) âm tính &amp; thể trạng ổn định → Tiên lượng lâu dài rất tốt (~50% sốt tự thoái lui sau vài tháng).
+      </text>
+    </svg>
+  </div>
+</div>
 
 ---
 
-## 5. NGUYÊN TẮC QUẢN LÝ VÀ ĐIỀU TRỊ
+## 7. Nguyên Tắc Quản Lý, Các Ngoại Lệ Điều Trị Thử & Tiên Lượng <span id="sec-7"></span>
 
-### 5.1. Nguyên tắc "Vàng": Trì hoãn điều trị thử theo kinh nghiệm
-*   Một sai lầm rất phổ biến trong thực hành là tự ý đổi hết kháng sinh này sang kháng sinh khác hoặc vội vàng cho Glucocorticoid liều cao khi thấy bệnh nhân sốt dai dẳng.
-*   **Khuyến cáo:** **Tuyệt đối tránh điều trị thử bằng kháng sinh, thuốc kháng lao hoặc corticosteroid ở bệnh nhân sốt kéo dài có huyết động ổn định**. Việc dùng thuốc bao vây không những không chữa khỏi bệnh mà còn:
-    *   Làm biến đổi hình ảnh giải phẫu bệnh và vi sinh, làm kết quả cấy máu bị âm tính giả.
-    *   Làm mất đi phản ứng sốt tự nhiên – thước đo quan trọng để đánh giá đáp ứng lâm sàng.
-    *   Nguy cơ độc tính của thuốc và làm phát sinh "Sốt do thuốc" mới đè lên bệnh cảnh cũ.
-*   *Hành động đúng:* Ngừng tất cả các thuốc không thực sự cần thiết trong vòng 72 giờ để theo dõi xem cơn sốt có thoái lui hay không (nhằm loại trừ sốt do thuốc).
+### 7.1. Nguyên Tắc "Vàng": Trì Hoãn Điều Trị Thử Theo Kinh Nghiệm
 
-### 5.2. Các trường hợp ngoại lệ cho phép điều trị thử
+Một sai lầm rất phổ biến trong thực hành là tự ý đổi hết kháng sinh này sang kháng sinh khác hoặc vội vàng dùng Glucocorticoid liều cao khi thấy bệnh nhân sốt dai dẳng.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-ban"></i> TUYỆT ĐỐI TRÁNH ĐIỀU TRỊ BAO VÂY KHI HUYẾT ĐỘNG ỔN ĐỊNH</div>
+  <p style="margin: 0 0 8px 0;"><strong>Khuyến cáo:</strong> Tuyệt đối tránh điều trị thử bằng kháng sinh, thuốc kháng lao hoặc corticosteroid ở bệnh nhân sốt kéo dài có huyết động ổn định. Việc dùng thuốc bao vây gây ra 3 hệ lụy nghiêm trọng:</p>
+  <ul style="margin: 0;">
+    <li>Làm biến đổi hình ảnh giải phẫu bệnh và vi sinh, khiến kết quả <strong>cấy máu bị âm tính giả</strong>.</li>
+    <li>Làm mất đi <strong>phản ứng sốt tự nhiên</strong> — thước đo quan trọng để đánh giá đáp ứng lâm sàng.</li>
+    <li>Tăng nguy cơ độc tính thuốc và làm phát sinh <strong>"Sốt do thuốc" mới</strong> đè chồng lên bệnh cảnh cũ.</li>
+  </ul>
+</div>
+
+- **Hành động đúng trước tiên:** Ngừng tất cả các thuốc không thực sự cần thiết trong vòng **72 giờ** để theo dõi xem cơn sốt có thoái lui hay không nhằm loại trừ **sốt do thuốc**.
+
+### 7.2. Ba Trường Hợp Ngoại Lệ Cho Phép Điều Trị Thử Theo Kinh Nghiệm
+
 Chỉ được phép can thiệp điều trị theo kinh nghiệm trong các tình huống đặc biệt sau:
-1.  **Nghi ngờ viêm động mạch thái dương (GCA) có đe dọa biến chứng thị giác:** Dùng ngay Prednisone liều cao (\\(1\text{ mg/kg/ngày}\\)) để bảo tồn thị lực trong khi chuẩn bị làm sinh thiết mạch máu.
-2.  **Nghi ngờ lao kê tối cấp (Cryptic Miliary Tuberculosis):** Người bệnh suy kiệt nặng, suy hô hấp tiến triển nhanh hoặc giảm miễn dịch nặng mà các xét nghiệm vi sinh chưa kịp có kết quả.
-3.  **Người bệnh có huyết động không ổn định hoặc sốt giảm bạch cầu hạt nặng (\\(\text{ANC} < 500/\mu\text{L}\\)):** Bắt buộc điều trị kháng sinh phổ rộng chống *Pseudomonas aeruginosa* ngay sau khi lấy cấy máu.
 
-### 5.3. Tiên lượng của FUO không tìm ra nguyên nhân
-Khi người bệnh đã trải qua toàn bộ quy trình điều tra chuyên sâu (bao gồm cả CT/PET) mà vẫn không phát hiện được bệnh lý ác tính hay nhiễm trùng nguy hiểm, và thể trạng bệnh nhân vẫn duy trì ổn định, **tiên lượng lâu dài nhìn chung là rất tốt**. Khoảng 50% các trường hợp này sốt sẽ tự thoái lui dần sau vài tháng mà không để lại di chứng.
+| Tình huống ngoại lệ | Mức độ khẩn | Tiêu chuẩn lâm sàng nhận diện | Can thiệp tức thì cho phép |
+| :--- | :---: | :--- | :--- |
+| **1. Nghi viêm động mạch thái dương (GCA) đe dọa thị giác** | <UrgencyPill level="emergent" label="CỨU THỊ LỰC NGAY" /> | Người bệnh $\ge 50 - 55$ tuổi, ESR tăng rất cao, có dấu hiệu đe dọa biến chứng thị lực | Dùng ngay **Prednisone liều cao ($1\text{ mg/kg/ngày}$)** để bảo tồn thị lực trong khi chuẩn bị sinh thiết mạch máu |
+| **2. Mất ổn định huyết động / Sốt giảm bạch cầu hạt nặng** | <UrgencyPill level="emergent" label="CẤP CỨU TỐI KHẨN" /> | Tụt huyết áp/sốc nhiễm khuẩn hoặc $\text{ANC} < 500/\mu\text{L}$ | Kháng sinh phổ rộng chống ***Pseudomonas aeruginosa*** ngay lập tức sau khi lấy cấy máu |
+| **3. Nghi lao kê tối cấp (*Cryptic Miliary TB*)** | <UrgencyPill level="urgent" label="CAN THIỆP SỚM" /> | Suy kiệt nặng, suy hô hấp tiến triển nhanh hoặc suy giảm miễn dịch nặng khi xét nghiệm vi sinh chưa kịp có kết quả | Cân nhắc khởi trị phác đồ kháng lao theo kinh nghiệm song song hoàn thiện bằng chứng vi sinh |
+| **4. FUO cổ điển huyết động ổn định** | <UrgencyPill level="routine" label="TRÌ HOÃN ĐIỀU TRỊ THỬ" /> | Sinh hiệu ổn, không dấu đe dọa cơ quan, chưa có chẩn đoán xác định | Ngừng thuốc không thiết yếu 72h, khám lặp lại tìm PDCs và hoàn thiện cận lâm sàng bậc 1–3 |
 
----
+### 7.3. Tiên Lượng Của FUO Không Tìm Ra Nguyên Nhân
 
-## 6. CA LÂM SÀNG MINH HỌA (CLINICAL CASE STUDY)
-
-### 6.1. Bệnh cảnh lâm sàng
-*   **Hành chính:** Bệnh nhân nam, 64 tuổi, hưu trí (nguyên là kỹ sư cầu đường).
-*   **Lý do vào viện:** Sốt kéo dài 4 tuần kèm sút cân và mệt mỏi.
-*   **Bệnh sử:** Bệnh khởi phát cách nhập viện khoảng 1 tháng với sốt âm ỉ hàng ngày, thường sốt vã mồ hôi về chiều và ban đêm, nhiệt độ dao động \\(38,2^{\circ}\text{C} - 38,7^{\circ}\text{C}\\). Bệnh nhân thấy ăn uống kém ngon miệng, sút \\(4\text{ kg}\\) trong 1 tháng, đau mỏi cơ hai bên bả vai và vùng hông. Bệnh nhân đã đi khám tại 2 phòng khám tư nhân, được chẩn đoán "nhiễm siêu vi" và "viêm phế quản", đã uống 2 đợt kháng sinh (Amoxicillin/Clavulanate và Ciprofloxacin) cùng thuốc hạ sốt nhưng sốt chỉ tạm giảm trong vài giờ rồi tái phát liên tục. Đợt này bệnh nhân cảm thấy mệt lả nên đến bệnh viện đa khoa tuyến trên.
-*   **Tiền sử:** Tăng huyết áp 10 năm điều trị bằng Amlodipine \\(5\text{ mg/ngày}\\). Có tiền sử thay van hai lá sinh học cách đây 4 năm, sau mổ ổn định, không dùng thuốc chống đông. Cách đây 2 tháng có làm thủ thuật nhổ răng hàm dưới bên phải nhưng không dùng kháng sinh dự phòng.
-
-### 6.2. Thăm khám lâm sàng lúc nhập viện
-*   **Sinh hiệu:** Huyết áp \\(130/70\text{ mmHg}\\); Mạch \\(88\text{ lần/phút}\\), đều; Nhịp thở \\(18\text{ lần/phút}\\); **Thân nhiệt: \\(38,5^{\circ}\text{C}\\)**; \\(SpO_2: 98\%\\) khí trời.
-*   **Khám toàn trạng:** Thể trạng gầy, niêm mạc mắt nhợt nhẹ, không phù, không vàng da.
-*   **Khám tim mạch:** Lồng ngực cân đối, mỏm tim ở khoang liên sườn V đường trung đòn trái. Nghe tim: Tiếng T1, T2 rõ; **nghe thấy tiếng thổi tâm thu cường độ 3/6 ở mỏm tim lan ra nách (nghi ngờ hở van hai lá tiến triển)**.
-*   **Khám đầu mặt cổ và các cơ quan:**
-    *   Động mạch thái dương hai bên mềm mại, đập rõ, không ấn đau.
-    *   Không thấy hạch ngoại vi to.
-    *   Khám đáy mắt: Không thấy xuất huyết hay nốt Roth.
-    *   **Khám da - chi:** Phát hiện **2 vệt xuất huyết dạng đường chỉ (Splinter hemorrhages) ở móng tay ngón trỏ và ngón giữa bàn tay phải**. Lòng bàn tay, bàn chân không thấy nốt Osler hay tổn thương Janeway.
-    *   Bụng mềm, gan không to, **lách mấp mé bờ sườn dưới khi hít sâu (lách to độ I)**.
-    *   Khám cột sống và các khớp không sưng đỏ, không có điểm đau khu trú.
-
-### 6.3. Biện luận chẩn đoán phân biệt
-Bệnh nhân nam 64 tuổi có tiền sử thay van tim nhân tạo, sốt kéo dài \\(> 4\\) tuần kèm sút cân, lách to, xuất huyết dưới móng và tiếng thổi tim mới:
-1.  **Viêm nội tâm mạc nhiễm khuẩn bán cấp trên van nhân tạo (Prosthetic Valve Endocarditis - PVE):** Là **giả thuyết chẩn đoán hàng đầu**. Bệnh nhân có yếu tố nguy cơ tim mạch rất cao (van sinh học), tiền sử làm thủ thuật nha khoa không dự phòng, khởi phát bán cấp với sốt kéo dài, kèm các hiện tượng mạch máu và miễn dịch học (xuất huyết dưới móng, lách to, tiếng thổi tim hở van hai lá).
-2.  **Lao kê hoặc lao ngoài phổi (Miliary / Extrapulmonary TB):** Bệnh nhân lớn tuổi có sốt kéo dài, sút cân, vã mồ hôi ban đêm, thiếu máu. Cần chụp X-quang phổi và làm xét nghiệm IGRA để loại trừ.
-3.  **U lympho ác tính (Lymphoma):** Cần nghĩ đến trước bệnh cảnh sốt kéo dài, sút cân, lách to. Tuy nhiên, bệnh nhân không có hạch to ngoại vi và có các dấu hiệu hướng đến van tim rõ ràng hơn.
-4.  **Bệnh tự miễn hệ thống / Viêm động mạch tế bào khổng lồ (GCA):** Bệnh nhân trên 50 tuổi có đau mỏi vùng gốc chi, nhưng không đau đầu khu trú vùng thái dương và dấu hiệu tim mạch nổi trội hơn.
-
-### 6.4. Kết quả cận lâm sàng
-*   **Huyết học:** Thiếu máu đẳng sắc đẳng bào nhẹ: Hemoglobin \\(10,2\text{ g/dL}\\); Bạch cầu: \\(9.800/\mu\text{L}\\) (Neutrophil \\(74\%\\)); Tiểu cầu: \\(185.000/\mu\text{L}\\).
-*   **Dấu ấn viêm:** **Tốc độ lắng máu (ESR) tăng rất cao: \\(85\text{ mm/h}\\)**; CRP: \\(48\text{ mg/L}\\) (bình thường \\(< 5\text{ mg/L}\\)).
-*   **Tổng phân tích nước tiểu:** Có hồng cầu vi thể rải rác (Microscopic hematuria \\(2+\\)), Protein niệu vết (biểu hiện của viêm cầu thận do phức hợp miễn dịch lắng đọng).
-*   **X-quang ngực thẳng:** Bóng tim hơi to nhẹ, nhu mô phổi hai bên sáng đều, không có nốt kê hay thâm nhiễm.
-*   **Vi sinh:** Lấy 3 bộ cấy máu độc lập từ 3 vị trí tĩnh mạch khác nhau trong vòng 24 giờ đầu. Kết quả sau 48 giờ: **Cả 3 bộ cấy máu đều mọc vi khuẩn *Streptococcus viridans* (nhạy cảm cao với Penicillin, \\(\text{MIC} \le 0,12\text{ }\mu\text{g/mL}\\))**.
-*   **Chẩn đoán hình ảnh tim mạch:**
-    *   *Siêu âm tim qua thành ngực (TTE):* Hình ảnh van hai lá sinh học, ghi nhận dòng hở hai lá vừa, nghi ngờ có cấu trúc tăng âm bám trên lá van nhưng hình ảnh không rõ nét.
-    *   *Siêu âm tim qua thực quản (TEE):* Phát hiện **khối sùi (vegetation) kích thước \\(8 \times 12\text{ mm}\\) bám ở mặt nhĩ của lá van hai lá sinh học**, gây hở van hai lá mức độ vừa đến nặng, không thấy áp xe quanh vòng van.
-
-### 6.5. Chẩn đoán xác định
-Theo tiêu chuẩn Duke hiệu chỉnh (Modified Duke Criteria):
-*   **2 tiêu chuẩn chính:** 
-    1. Cấy máu dương tính điển hình với *Streptococcus viridans* ở 3 mẫu cấy máu riêng biệt.
-    2. Bằng chứng tổn thương nội tâm mạc rõ rệt trên siêu âm tim qua thực quản (khối sùi trên van nhân tạo).
-*   **3 tiêu chuẩn phụ:** Cơ địa có van tim nhân tạo, sốt \\(\ge 38,0^{\circ}\text{C}\\), hiện tượng mạch máu (xuất huyết dưới móng) và hiện tượng miễn dịch (lách to, hồng cầu niệu do viêm cầu thận).
-
-\\(\rightarrow\\) **Chẩn đoán xác định:** **Viêm nội tâm mạc nhiễm khuẩn bán cấp trên van hai lá sinh học do *Streptococcus viridans* nhạy Penicillin (biến chứng hở van hai lá vừa, thiếu máu mạn)**.
-
-### 6.6. Kế hoạch điều trị và Kết quả theo dõi
-1.  **Phác đồ kháng sinh đặc hiệu:**
-    *   Kháng sinh nhắm đích theo kháng sinh đồ: **Ceftriaxone \\(2\text{ g}\\) tiêm tĩnh mạch 1 lần/ngày** phối hợp với **Gentamicin \\(3\text{ mg/kg}\\) tiêm tĩnh mạch 1 lần/ngày** trong 2 tuần đầu, sau đó tiếp tục Ceftriaxone đơn độc đủ tổng liệu trình **6 tuần** (do bệnh nhân mang van tim nhân tạo).
-2.  **Theo dõi lâm sàng và cận lâm sàng:**
-    *   Bệnh nhân hết sốt hoàn toàn sau 4 ngày điều trị kháng sinh nhắm trúng đích.
-    *   Lấy cấy máu lại sau 48–72 giờ điều trị: Kết quả vô khuẩn.
-    *   Các chỉ số viêm (CRP, ESR) giảm dần về bình thường sau 3 tuần.
-    *   Được theo dõi sát bởi bác sĩ tim mạch và phẫu thuật lồng ngực: Do kích thước khối sùi dưới \\(15\text{ mm}\\), không có biến chứng tắc mạch lớn, huyết động ổn định và đáp ứng tốt với kháng sinh nên bệnh nhân được điều trị nội khoa bảo tồn thành công mà không cần phẫu thuật thay lại van cấp.
+Khi người bệnh đã trải qua toàn bộ quy trình điều tra chuyên sâu (bao gồm cả **CT cản quang và FDG-PET/CT**) mà vẫn không phát hiện được bệnh lý ác tính hay nhiễm trùng nguy hiểm, và thể trạng duy trì ổn định, **tiên lượng lâu dài nhìn chung là rất tốt**: khoảng **50%** các trường hợp này cơn sốt sẽ **tự thoái lui dần sau vài tháng** mà không để lại di chứng.
 
 ---
 
-## 7. TÓM TẮT & THÔNG ĐIỆP LÂM SÀNG (TAKE-HOME MESSAGES)
-1. **Bản chất của FUO:** Đa phần sốt kéo dài không phải do bệnh lý kỳ lạ mà là **biểu hiện không điển hình của các bệnh lý thường gặp** (lao ngoài phổi, áp xe sâu, u lympho, viêm nội tâm mạc bán cấp, sốt do thuốc).
-2. **Giá trị của việc khám lại nhiều lần:** Các manh mối chẩn đoán (PDCs) như xuất huyết dưới móng, nốt bầm máu, tiếng thổi tim mới, hay vết loét sẹo đen thường không xuất hiện lúc ban đầu mà bộc lộ dần trong quá trình nằm viện.
-3. **Cẩn trọng với sốt do thuốc:** Luôn rà soát danh mục thuốc và sẵn sàng ngừng thử các thuốc không thiết yếu trong 72 giờ; đây là phương pháp chẩn đoán vừa nhanh vừa không tốn kém.
-4. **Không điều trị thử kháng sinh hoặc corticoid khi bệnh nhân ổn định:** Việc dùng thuốc bao vây làm mờ nhạt triệu chứng, cấy vi sinh âm tính giả và làm chậm trễ cơ hội tìm ra căn nguyên thực sự.
-5. **Tận dụng kỹ thuật hình ảnh hiện đại:** Khi các xét nghiệm thông thường bế tắc, chụp CT cản quang toàn thân ngực - bụng - chậu và \\(^{18}\text{F}\text{-FDG PET/CT}\\) là những công cụ có giá trị hàng đầu giúp định vị chính xác vị trí sinh thiết mô đích.
+## 8. Ca Lâm Sàng Minh Họa (Clinical Case Study) <span id="sec-8"></span>
+
+### 8.1. Bệnh Cảnh Lâm Sàng
+
+> **Hành chính & Lý do vào viện:** Bệnh nhân **nam, 64 tuổi**, hưu trí (nguyên là kỹ sư cầu đường), nhập viện vì **sốt kéo dài 4 tuần kèm sút cân và mệt mỏi**.
+> - **Bệnh sử:** Khởi phát cách nhập viện khoảng 1 tháng với sốt âm ỉ hàng ngày, thường sốt vã mồ hôi về chiều và ban đêm, nhiệt độ dao động **$38.2^\circ\text{C} - 38.7^\circ\text{C}$**. Ăn uống kém ngon miệng, **sút $4\text{ kg}$ trong 1 tháng**, đau mỏi cơ hai bên bả vai và vùng hông. Đã khám tại 2 phòng khám tư với chẩn đoán "nhiễm siêu vi" và "viêm phế quản", uống 2 đợt kháng sinh (**Amoxicillin/Clavulanate** và **Ciprofloxacin**) cùng thuốc hạ sốt nhưng sốt chỉ tạm giảm vài giờ rồi tái phát liên tục.
+> - **Tiền sử:** Tăng huyết áp 10 năm điều trị **Amlodipine $5\text{ mg/ngày}$**. **Thay van hai lá sinh học cách đây 4 năm**, sau mổ ổn định, không dùng thuốc chống đông. Cách đây **2 tháng có nhổ răng hàm dưới bên phải nhưng không dùng kháng sinh dự phòng**.
+
+### 8.2. Thăm Khám Lâm Sàng Lúc Nhập Viện (Phát Hiện Các PDCs)
+
+| Cơ quan / Thông số | Ghi nhận lúc nhập viện | Giá trị PDCs định hướng |
+| :--- | :--- | :--- |
+| **Sinh hiệu** | HA $130/70\text{ mmHg}$; Mạch $88\text{ lần/phút}$ đều; Nhịp thở $18\text{ lần/phút}$; **Thân nhiệt $38.5^\circ\text{C}$**; $\text{SpO}_2\ 98\%$ khí trời | Xác thực sốt tại viện; huyết động ổn định → **không dùng kháng sinh bao vây vội** |
+| **Toàn trạng** | Thể trạng gầy, niêm mạc mắt nhợt nhẹ, không phù, không vàng da | Thiếu máu mạn tính do viêm/nhiễm trùng kéo dài |
+| **Tim mạch** | Mỏm tim KLS V đường trung đòn trái; T1, T2 rõ; **tiếng thổi tâm thu 3/6 ở mỏm tim lan ra nách** | **PDC tim mạch cực mạnh:** nghi hở van hai lá tiến triển trên nền van sinh học |
+| **Da – Chi** | **2 vệt xuất huyết dạng đường chỉ (*Splinter hemorrhages*)** ở móng tay ngón trỏ và ngón giữa tay phải; không nốt Osler/Janeway | **Hiện tượng mạch máu** gợi ý cao viêm nội tâm mạc nhiễm khuẩn |
+| **Bụng** | Bụng mềm, gan không to, **lách mấp mé bờ sườn dưới khi hít sâu (lách to độ I)** | Phản ứng miễn dịch – liên võng nội mô kéo dài |
+| **Đầu mặt cổ &amp; Xương khớp** | ĐM thái dương hai bên mềm, đập rõ, không đau; không hạch ngoại vi; đáy mắt không nốt Roth; cột sống &amp; khớp không điểm đau khu trú | Giảm khả năng GCA, u lympho ngoại vi và viêm đốt sống đĩa đệm |
+
+### 8.3. Biện Luận Chẩn Đoán Phân Biệt
+
+1. **Viêm nội tâm mạc nhiễm khuẩn bán cấp trên van nhân tạo (*Prosthetic Valve Endocarditis – PVE*):** Là **giả thuyết chẩn đoán hàng đầu**. Bệnh nhân có yếu tố nguy cơ tim mạch rất cao (van sinh học), tiền sử thủ thuật nha khoa không dự phòng, khởi phát bán cấp sốt kéo dài kèm hiện tượng mạch máu & miễn dịch học (xuất huyết dưới móng, lách to, tiếng thổi hở van hai lá mới).
+2. **Lao kê hoặc lao ngoài phổi (*Miliary / Extrapulmonary TB*):** Bệnh nhân lớn tuổi, sốt kéo dài, sút cân, vã mồ hôi ban đêm, thiếu máu. Cần chụp X-quang phổi và làm xét nghiệm IGRA để loại trừ.
+3. **U lympho ác tính (*Lymphoma*):** Cần nghĩ tới trước bệnh cảnh sốt kéo dài, sút cân, lách to; tuy nhiên không có hạch ngoại vi và dấu hiệu định khu tại van tim nổi trội hơn.
+4. **Bệnh tự miễn hệ thống / Viêm động mạch tế bào khổng lồ (GCA):** Bệnh nhân $> 50$ tuổi có đau mỏi vùng gốc chi, nhưng không đau đầu vùng thái dương, động mạch thái dương mềm mại và dấu hiệu tim mạch chiếm ưu thế.
+
+### 8.4. Kết Quả Cận Lâm Sàng & Chẩn Đoán Xác Định
+
+- **Huyết học:** Thiếu máu đẳng sắc đẳng bào nhẹ — $\text{Hb } 10.2\text{ g/dL}$; Bạch cầu $9.800/\mu\text{L}$ (Neutrophil $74\%$); Tiểu cầu $185.000/\mu\text{L}$.
+- **Dấu ấn viêm:** **ESR tăng rất cao: $85\text{ mm/h}$**; **CRP: $48\text{ mg/L}$** (bình thường $< 5\text{ mg/L}$).
+- **Tổng phân tích nước tiểu:** **Hồng cầu vi thể rải rác ($2+$)**, Protein niệu vết (biểu hiện của **viêm cầu thận do lắng đọng phức hợp miễn dịch**).
+- **X-quang ngực thẳng:** Bóng tim hơi to nhẹ, nhu mô phổi hai bên sáng đều, không có nốt kê hay thâm nhiễm.
+- **Vi sinh:** Lấy **3 bộ cấy máu độc lập** từ 3 vị trí tĩnh mạch khác nhau trong 24 giờ đầu. Kết quả sau 48 giờ: **cả 3 bộ đều mọc *Streptococcus viridans*** (nhạy cảm cao với Penicillin, **$\text{MIC} \le 0.12\ \mu\text{g/mL}$**).
+- **Chẩn đoán hình ảnh tim mạch:**
+  - *Siêu âm tim qua thành ngực (TTE):* Van hai lá sinh học, dòng hở hai lá vừa, nghi ngờ cấu trúc tăng âm bám lá van nhưng hình ảnh không rõ nét.
+  - *Siêu âm tim qua thực quản (TEE):* Phát hiện **khối sùi (*vegetation*) kích thước $8 \times 12\text{ mm}$ bám ở mặt nhĩ của lá van hai lá sinh học**, gây hở van hai lá vừa đến nặng, không thấy áp xe quanh vòng van.
+
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-clipboard-check"></i> CHẨN ĐOÁN XÁC ĐỊNH THEO TIÊU CHUẨN DUKE HIỆU CHỈNH (MODIFIED DUKE CRITERIA)</div>
+  <ul>
+    <li><strong>2 Tiêu chuẩn chính:</strong> (1) Cấy máu dương tính điển hình với <em>Streptococcus viridans</em> ở 3 mẫu riêng biệt; (2) Bằng chứng tổn thương nội tâm mạc rõ rệt trên siêu âm tim qua thực quản TEE (khối sùi trên van nhân tạo).</li>
+    <li><strong>3 Tiêu chuẩn phụ:</strong> Cơ địa van tim nhân tạo; sốt &ge; 38.0&deg;C; hiện tượng mạch máu (xuất huyết dưới móng) &amp; hiện tượng miễn dịch (lách to, hồng cầu niệu do viêm cầu thận).</li>
+  </ul>
+  <p style="margin: 6px 0 0 0;">&rarr; <strong>Chẩn đoán xác định:</strong> <strong>Viêm nội tâm mạc nhiễm khuẩn bán cấp trên van hai lá sinh học do <em>Streptococcus viridans</em> nhạy Penicillin</strong> (biến chứng hở van hai lá vừa, thiếu máu mạn).</p>
+</div>
+
+### 8.5. Kế Hoạch Điều Trị & Kết Quả Theo Dõi
+
+1. **Phác đồ kháng sinh đặc hiệu (nhắm đích theo kháng sinh đồ):**
+   - **Ceftriaxone $2\text{ g}$ tiêm tĩnh mạch 1 lần/ngày** phối hợp **Gentamicin $3\text{ mg/kg}$ tiêm tĩnh mạch 1 lần/ngày** trong **2 tuần đầu**, sau đó tiếp tục **Ceftriaxone đơn độc** đủ tổng liệu trình **6 tuần** (do bệnh nhân mang van tim nhân tạo).
+2. **Theo dõi lâm sàng & cận lâm sàng:**
+   - Bệnh nhân **hết sốt hoàn toàn sau 4 ngày** điều trị kháng sinh nhắm trúng đích.
+   - Lấy cấy máu kiểm tra lại sau **48–72 giờ** điều trị: kết quả **vô khuẩn**.
+   - Các chỉ số viêm (CRP, ESR) giảm dần về bình thường sau **3 tuần**.
+   - Hội chẩn theo dõi sát giữa Tim mạch và Phẫu thuật lồng ngực: do kích thước khối sùi **$< 15\text{ mm}$**, không có biến chứng tắc mạch lớn, huyết động ổn định và đáp ứng tốt kháng sinh $\rightarrow$ **điều trị nội khoa bảo tồn thành công**, không cần phẫu thuật thay lại van cấp cứu.
 
 ---
 
-## 8. TÀI LIỆU THAM KHẢO (THEO CHUẨN AMA)
+## 9. Thông Điệp Lâm Sàng & Tài Liệu Tham Khảo <span id="sec-9"></span>
 
-1. Loscalzo J, Fauci AS, Kasper DL, Hauser SL, Longo DL, Jameson JL, eds. Fever of unknown origin. In: *Harrison's Manual of Medicine*. 20th ed. McGraw-Hill Education; 2020:130-135.
-2. Roth AR, Basello GM. Fever. In: Bope ET, Kellerman RD, eds. *Conn's Current Therapy 2026*. Elsevier; 2026:1-8.
-3. Betrains A, Moreel L, De Langhe E, et al. Rheumatic disorders among patients with fever of unknown origin: a systematic review and meta-analysis. *Semin Arthritis Rheum*. 2022;56:152066. doi:10.1016/j.semarthrit.2022.152066
-4. Betrains A, Mulders-Manders CM, Aarntzen EH, et al. Update on imaging in fever and inflammation of unknown origin: focus on infectious disorders. *Clin Microbiol Infect*. 2024;30(3):288-295. doi:10.1016/j.cmi.2023.11.018
-5. Ryan K. Fever of unknown origin. *Med Clin North Am*. 2024;108(1):79-92. doi:10.1016/j.mcna.2023.08.006
-6. Wright WF, Betrains A, Stelmash L, et al. Development of a consensus-based list of potential quality indicators for fever and inflammation of unknown origin. *Open Forum Infect Dis*. 2024;11(2):ofad671. doi:10.1093/ofid/ofad671
-7. Stern SDC, Cifu AS, Altkorn D. *Symptoms to Diagnosis: An Evidence-Based Guide*. 4th ed. McGraw-Hill Education; 2020:64-75, 120-135.
-8. Thomas RM, Wyatt JP, Glucksman EE. Fever. In: *Algorithms for Emergency Medicine*. Oxford University Press; 2023:188-195.
-9. Gomella LG, Haist SA. Fever of unknown origin. In: *Internal Medicine On Call*. 4th ed. Lange Medical Books/McGraw-Hill; 2004:133-138.
-10. Unger M, Karanikas G, Kerschbaumer A, Winkler S, Aletaha D. Fever of unknown origin (FUO) revised. *Wien Klin Wochenschr*. 2016;128(21-22):796-801. doi:10.1007/s00508-016-1083-9
-11. Trường Đại học Y khoa Phạm Ngọc Thạch. Sốt và tiếp cận bệnh nhân sốt. Trong: *Các Vấn Đề Lâm Sàng Thiết Yếu của Chương Trình Đào Tạo Bác Sĩ Y Khoa*. Nhà xuất bản Y học; 2022:45-58.
-12. World Health Organization. Fever lasting longer than 7 days. In: *Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Illnesses with Limited Resources*. 2nd ed. World Health Organization; 2013:153-157.
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> 5 THÔNG ĐIỆP VÀNG KHI TIẾP CẬN SỐT BÁN CẤP &amp; SỐT KÉO DÀI (TAKE-HOME MESSAGES)</div>
+  <ol>
+    <li><strong>Bản chất của FUO:</strong> Đa phần sốt kéo dài không phải do bệnh lý kỳ lạ mà là <strong>biểu hiện không điển hình của các bệnh lý thường gặp</strong> (lao ngoài phổi, áp xe sâu, u lympho, viêm nội tâm mạc bán cấp, sốt do thuốc).</li>
+    <li><strong>Giá trị của việc khám lại nhiều lần:</strong> Các manh mối chẩn đoán (PDCs) như xuất huyết dưới móng, nốt bầm máu, tiếng thổi tim mới hay vết loét vảy đen thường không có ngay lúc đầu mà bộc lộ dần trong quá trình theo dõi.</li>
+    <li><strong>Cẩn trọng với sốt do thuốc:</strong> Luôn rà soát toàn bộ danh mục thuốc và sẵn sàng ngừng thử các thuốc không thiết yếu trong <strong>72 giờ</strong>; đây là biện pháp chẩn đoán vừa nhanh vừa không tốn kém.</li>
+    <li><strong>Không điều trị thử kháng sinh hoặc corticoid khi bệnh nhân ổn định:</strong> Dùng thuốc bao vây làm mờ nhạt triệu chứng, cấy vi sinh âm tính giả và đánh mất cơ hội tìm ra căn nguyên thực sự.</li>
+    <li><strong>Tận dụng kỹ thuật hình ảnh hiện đại:</strong> Khi xét nghiệm thông thường bế tắc, chụp <strong>CT cản quang toàn thân ngực – bụng – chậu</strong> và <strong><sup>18</sup>F-FDG PET/CT</strong> là những công cụ hàng đầu giúp định vị chính xác vị trí sinh thiết mô đích.</li>
+  </ol>
+</div>
 
----
+<div class="citation-box">
+  <strong>Tài Liệu Tham Khảo (Chuẩn AMA):</strong>
+  <ol>
+    <li>Loscalzo J, Fauci AS, Kasper DL, Hauser SL, Longo DL, Jameson JL, eds. Fever of unknown origin. In: <em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2020:130-135.</li>
+    <li>Roth AR, Basello GM. Fever. In: Bope ET, Kellerman RD, eds. <em>Conn's Current Therapy 2026</em>. Elsevier; 2026:1-8.</li>
+    <li>Betrains A, Moreel L, De Langhe E, et al. Rheumatic disorders among patients with fever of unknown origin: a systematic review and meta-analysis. <em>Semin Arthritis Rheum</em>. 2022;56:152066. doi:10.1016/j.semarthrit.2022.152066</li>
+    <li>Betrains A, Mulders-Manders CM, Aarntzen EH, et al. Update on imaging in fever and inflammation of unknown origin: focus on infectious disorders. <em>Clin Microbiol Infect</em>. 2024;30(3):288-295. doi:10.1016/j.cmi.2023.11.018</li>
+    <li>Ryan K. Fever of unknown origin. <em>Med Clin North Am</em>. 2024;108(1):79-92. doi:10.1016/j.mcna.2023.08.006</li>
+    <li>Wright WF, Betrains A, Stelmash L, et al. Development of a consensus-based list of potential quality indicators for fever and inflammation of unknown origin. <em>Open Forum Infect Dis</em>. 2024;11(2):ofad671. doi:10.1093/ofid/ofad671</li>
+    <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020:64-75, 120-135.</li>
+    <li>Thomas RM, Wyatt JP, Glucksman EE. Fever. In: <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023:188-195.</li>
+    <li>Gomella LG, Haist SA. Fever of unknown origin. In: <em>Internal Medicine On Call</em>. 4th ed. Lange Medical Books/McGraw-Hill; 2004:133-138.</li>
+    <li>Unger M, Karanikas G, Kerschbaumer A, Winkler S, Aletaha D. Fever of unknown origin (FUO) revised. <em>Wien Klin Wochenschr</em>. 2016;128(21-22):796-801. doi:10.1007/s00508-016-1083-9</li>
+    <li>Trường Đại học Y khoa Phạm Ngọc Thạch. Sốt và tiếp cận bệnh nhân sốt. Trong: <em>Các Vấn Đề Lâm Sàng Thiết Yếu của Chương Trình Đào Tạo Bác Sĩ Y Khoa</em>. Nhà xuất bản Y học; 2022:45-58.</li>
+    <li>World Health Organization. Fever lasting longer than 7 days. In: <em>Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Illnesses with Limited Resources</em>. 2nd ed. World Health Organization; 2013:153-157.</li>
+  </ol>
+</div>
+
+<div class="btn-row">
+  <a href="#/basic-medical/tiep-can" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Tiếp Cận Lâm Sàng</a>
+  <a href="#/basic-medical/tiep-can/ck03-truyen-nhiem-sot/tc-03-sot-cap-tinh-nl" class="btn"><i class="fa-solid fa-temperature-high"></i> Tiếp Cận Sốt Cấp Tính (TC-TN-01)</a>
+  <a href="#/basic-medical/khang-sinh" class="btn"><i class="fa-solid fa-capsules"></i> Mở Kháng Sinh Học Lâm Sàng</a>
+</div>
