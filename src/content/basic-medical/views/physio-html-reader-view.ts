@@ -820,7 +820,7 @@ async function fetchAndHydratePhysioArticle(
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Normalize and fallback images in MDX content
-    normalizePhysioImages(mountEl);
+    normalizePhysioImages(mountEl, part, isApproach);
 
     setupInPageAnchorScrolling(mountEl);
     return;
@@ -1646,7 +1646,7 @@ async function fetchAndHydratePhysioArticle(
 /**
  * Chuẩn hóa và thiết lập Fallback đa tầng cho hình ảnh Cơ sở Y khoa (Sinh lý, Hóa sinh, CCBS)
  */
-function normalizePhysioImages(mountEl: HTMLElement): void {
+function normalizePhysioImages(mountEl: HTMLElement, part: string = '', isApproach: boolean = false): void {
   mountEl.querySelectorAll<HTMLImageElement>('img').forEach(img => {
     const rawSrc = img.getAttribute('src') || '';
     if (!rawSrc || rawSrc.startsWith('data:') || rawSrc.startsWith('http://') || rawSrc.startsWith('https://')) return;
@@ -1654,7 +1654,19 @@ function normalizePhysioImages(mountEl: HTMLElement): void {
     const rawFileName = rawSrc.split('/').pop()?.split('?')[0] || '';
     if (!rawFileName) return;
 
+    const approachPaths = isApproach
+      ? [
+          ...(part ? [
+            `./src/content/basic-medical/approach/${part}/images/${rawFileName}`,
+            `/src/content/basic-medical/approach/${part}/images/${rawFileName}`
+          ] : []),
+          `./src/content/basic-medical/approach/images/${rawFileName}`,
+          `/src/content/basic-medical/approach/images/${rawFileName}`
+        ]
+      : [];
+
     const candidatePaths = [
+      ...approachPaths,
       `./assets/images/${rawFileName}`,
       `/assets/images/${rawFileName}`,
       `assets/images/${rawFileName}`,

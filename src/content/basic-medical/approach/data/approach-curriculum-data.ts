@@ -112,7 +112,7 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
     icon: 'fa-virus',
     color: '#0d9488',
     bgColor: 'rgba(13, 148, 136, 0.12)',
-    badge: '3 bài MDX',
+    badge: '4 bài MDX',
     description: 'Tiếp cận bệnh nhân sốt tổng quát, sốt kéo dài FUO và chuỗi hội chứng Sốt kèm triệu chứng định vị cơ quan.',
     clinicalObjective: 'Định vị nhanh ổ nhiễm trùng, nhận diện Sepsis sớm và phân biệt tác nhân vi khuẩn, siêu vi, ký sinh trùng.',
     lessons: buildLessons(3, 'ck03-truyen-nhiem-sot', 'Truyền Nhiễm – Tiếp Cận Sốt', 'TN', [
@@ -144,6 +144,20 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
         tags: ['Sốt kéo dài', 'FUO', 'PDCs', 'Lao', 'Tự miễn'],
         minutes: 25,
         status: 'published'
+      },
+      {
+        n: 4,
+        slug: 'sot-phat-ban',
+        exactSlug: 'tc-03-sot-phat-ban',
+        title: 'Tiếp Cận Bệnh Nhân Người Lớn Sốt Kèm Phát Ban (Fever and Rash)',
+        desc: 'Tiếp cận cấp cứu sốt kèm phát ban ở người lớn: 5 cơ chế bệnh sinh, 8 Red Flags (não mô cầu, SJS/TEN, viêm cân hoại tử), phân loại 5 hình thái ban, cận lâm sàng theo bậc, xử trí cấp cứu và ca lâm sàng sốt mò.',
+        keyTakeaway: 'Sàng lọc Red Flags trước khi phân tích hình thái ban; kháng sinh TM phổ rộng trong 1 giờ nếu nghi não mô cầu, soi kỹ nếp gấp tìm Eschar (sốt mò) và chống chỉ định NSAIDs khi chưa loại trừ Dengue.',
+        urgency: 'emergent',
+        hasVault: true,
+        tags: ['Sốt kèm phát ban', 'Não mô cầu', 'SJS/TEN', 'Sốt mò', 'DRESS'],
+        minutes: 25,
+        status: 'published',
+        redFlags: 'Tụt huyết áp/sốc, rối loạn tri giác/cổ gượng, tử ban không mất khi ấn kính, trợt ≥ 2 hốc niêm mạc, dấu Nikolsky (+), bong da > 10% BSA, đau da dữ dội không tương xứng.'
       },
       {
         n: 5,
@@ -302,10 +316,38 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
     icon: 'fa-droplet',
     color: '#be123c',
     bgColor: 'rgba(190, 18, 60, 0.12)',
-    badge: '0 bài',
-    description: 'Tiếp cận thiếu máu theo MCV & hồng cầu lưới, bất thường bạch cầu, bất thường tiểu cầu và rối loạn đông cầm máu.',
-    clinicalObjective: 'Đọc sâu huyết đồ ngoại biên và nhận diện các cấp cứu huyết học (TTP, DIC, sốt giảm bạch cầu hạt).',
-    lessons: []
+    badge: '2 bài MDX',
+    description: 'Tiếp cận thiếu máu theo MCV & hồng cầu lưới, bất thường bạch cầu, bất thường tiểu cầu, rối loạn đông cầm máu và dị ứng thuốc – miễn dịch lâm sàng.',
+    clinicalObjective: 'Đọc sâu huyết đồ ngoại biên, nhận diện các cấp cứu huyết học – miễn dịch (TTP, DIC, sốt giảm bạch cầu hạt, phản vệ, SJS/TEN, DRESS).',
+    lessons: buildLessons(9, 'ck09-huyet-hoc-mien-dich', 'Huyết Học – Miễn Dịch', 'HM', [
+      {
+        n: 1,
+        slug: 'thieu-mau-hong-cau-nho',
+        title: 'Tiếp Cận Thiếu Máu Hồng Cầu Nhỏ Nhược Sắc Ở Người Lớn',
+        desc: 'Tiêu chuẩn WHO/BYT, 4 nhóm căn nguyên TAIL, biện giải huyết đồ (RDW, Mentzer, PBS), Bilan sắt cập nhật ASH 2026 & AGA 2024, lưu đồ chẩn đoán và truy tìm ổ mất máu đường tiêu hóa.',
+        keyTakeaway: 'Thiếu máu thiếu sắt ở nam giới lớn tuổi và phụ nữ sau mãn kinh luôn là cờ đỏ của ung thư đường tiêu hóa — bắt buộc nội soi tiêu hóa hai chiều; không bao giờ chỉ kê đơn sắt rồi cho về.',
+        urgency: 'routine',
+        hasVault: true,
+        tags: ['Thiếu máu', 'Hồng cầu nhỏ nhược sắc', 'IDA', 'Thalassemia', 'Bilan sắt', 'ASH 2026'],
+        minutes: 25,
+        status: 'published',
+        redFlags: 'Hb < 70 g/L hoặc < 80 g/L kèm bệnh mạch vành/suy tim, bất ổn huyết động, xuất huyết tiêu hóa đang tiến triển, IDA ở nam lớn tuổi / nữ sau mãn kinh.'
+      },
+      {
+        n: 2,
+        slug: 'di-ung-thuoc',
+        exactSlug: 'tc-09-di-ung-thuoc',
+        title: 'Tiếp Cận Chẩn Đoán & Điều Trị Dị Ứng Thuốc (Drug Allergy)',
+        desc: 'Cơ chế Gell & Coombs & giả dị ứng, phân loại nhanh/chậm (Phản vệ, SJS/TEN, DRESS, AGEP), thang điểm SCORTEN & RegiSCAR, xét nghiệm In vivo/In vitro, bảng thay thế Beta-lactam và giảm mẫn cảm nhanh 12–16 bước (QĐ 3592/QĐ-BYT).',
+        keyTakeaway: 'Ngừng ngay thuốc nghi ngờ; tiêm bắp Adrenaline tức thì cho phản vệ từ độ II trở lên; thay thế Beta-lactam theo tương đồng chuỗi bên R1/R2 và chống chỉ định tuyệt đối DPT/giảm mẫn cảm ở tiền sử SCARs.',
+        urgency: 'emergent',
+        hasVault: true,
+        tags: ['Dị ứng thuốc', 'Phản vệ', 'SJS/TEN', 'DRESS', 'SCORTEN', 'RegiSCAR', 'Beta-lactam'],
+        minutes: 30,
+        status: 'published',
+        redFlags: 'Phản vệ độ II–IV (khó thở, tụt HA < 90 mmHg), loét đa hốc niêm mạc & bong tróc thượng bì (SJS/TEN), sốt cao + ban thâm nhiễm > 50% BSA + tổn thương nội tạng (DRESS), giảm bạch cầu hạt < 0.5 G/L.'
+      }
+    ], 8)
   },
 
   // =========================================================================

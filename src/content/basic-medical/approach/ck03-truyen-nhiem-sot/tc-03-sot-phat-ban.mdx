@@ -1,5 +1,5 @@
 ---
-title: "Tiếp Cận Bệnh Nhân Người Lớn Sốt Kèm Phát Ban"
+title: "Tiếp Cận Bệnh Nhân Người Lớn Sốt Kèm Phát Ban (Fever and Rash in Adults)"
 slug: "tc-03-sot-phat-ban"
 code: "TC-TN-04"
 category: "approach"
@@ -9,11 +9,11 @@ specialtyNumber: 3
 lessonNumber: 4
 order: 13
 urgency: "emergent"
-status: "draft"
-version: "1.0.0"
+status: "published"
+version: "2.0.0"
 updatedAt: "2026-11-21"
 estimatedTime: 25
-description: "Bài giảng lâm sàng tiếp cận cấp cứu sốt kèm phát ban ở người lớn: 5 cơ chế bệnh sinh, Red Flags (SJS/TEN, não mô cầu, viêm cân hoại tử), phân loại hình thái ban, cận lâm sàng và xử trí."
+description: "Tiếp cận cấp cứu bệnh nhân người lớn sốt kèm phát ban: 5 cơ chế bệnh sinh, nhận diện Red Flags (não mô cầu, SJS/TEN, viêm cân hoại tử), khai thác bệnh sử – khám da niêm, phân loại 5 hình thái ban, cận lâm sàng theo bậc và xử trí cấp cứu."
 tags:
   - "Truyền nhiễm"
   - "Sốt kèm phát ban"
@@ -21,261 +21,777 @@ tags:
   - "SJS/TEN"
   - "Sốt mò"
   - "DRESS"
+  - "Dengue"
 icd10:
   - "R50.9"
   - "R21"
 clinicalPearls:
-  - "Luôn sàng lọc Red Flags trước khi phân tích hình thái ban: sốc/tụt huyết áp, tử ban không mất khi ấn kính, tổn thương ≥ 2 hốc niêm mạc, dấu Nikolsky (+) và đau da không tương xứng."
-  - "Thăm khám kỹ các vùng nếp gấp (nách, bẹn, bìu, quanh rốn) tìm vết loét vảy đen không đau (Eschar) ở bệnh nhân sốt phát ban có dịch tễ đi rừng/đồi núi."
-  - "Chống chỉ định NSAIDs và Aspirin khi chưa loại trừ Sốt xuất huyết Dengue."
+  - "Luôn sàng lọc Red Flags trước khi phân tích hình thái ban: sốc/tụt huyết áp, tử ban không mất khi ấn kính, tổn thương ≥ 2 hốc niêm mạc, dấu Nikolsky (+) và đau da dữ dội không tương xứng."
+  - "Nghiệm pháp ấn kính (Diascopy) và sờ nắn ban xuất huyết giúp tách nhanh 3 nhóm: hồng ban giãn mạch (mất khi ấn), ban xuất huyết phẳng (giảm tiểu cầu / DIC) và ban xuất huyết nổi gờ (viêm mạch / tắc mạch vi khuẩn)."
+  - "Thăm khám kỹ các vùng nếp gấp ẩm kín (nách, bẹn, bìu, dưới vú, quanh rốn) tìm vết loét vảy đen không đau (Eschar) ở bệnh nhân sốt phát ban có dịch tễ đi rừng / đồi núi."
+  - "Chống chỉ định NSAIDs và Aspirin khi chưa loại trừ Sốt xuất huyết Dengue; không trì hoãn kháng sinh tĩnh mạch phổ rộng trong 1 giờ đầu khi nghi ngờ nhiễm não mô cầu."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Đại Cương & Định Hướng Tiếp Cận"
+    icon: "fa-book-medical"
+  - id: "sec-2"
+    number: 2
+    title: "Sinh Lý Bệnh: 5 Nhóm Cơ Chế"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Triage ABCDE & Red Flags Tối Cấp"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-4"
+    number: 4
+    title: "Bệnh Sử & Khám Da – Niêm Mạc"
+    icon: "fa-user-doctor"
+  - id: "sec-5"
+    number: 5
+    title: "Chẩn Đoán Phân Biệt: 5 Hình Thái Ban"
+    icon: "fa-list-check"
+  - id: "sec-6"
+    number: 6
+    title: "Chiến Lược Cận Lâm Sàng Theo Bậc"
+    icon: "fa-vial"
+  - id: "sec-7"
+    number: 7
+    title: "Lưu Đồ Tiếp Cận & Phân Nhánh"
+    icon: "fa-diagram-project"
+  - id: "sec-8"
+    number: 8
+    title: "Xử Trí Cấp Cứu, Kháng Sinh & SCARs"
+    icon: "fa-truck-medical"
+  - id: "sec-9"
+    number: 9
+    title: "Ca Lâm Sàng, Pearls & Trích Dẫn"
+    icon: "fa-gem"
 ---
 
-# BÀI GIẢNG LÂM SÀNG: TIẾP CẬN BỆNH NHÂN NGƯỜI LỚN SỐT KÈM PHÁT BAN (APPROACH TO FEVER AND RASH IN ADULTS)
+# 🔴 TIẾP CẬN BỆNH NHÂN NGƯỜI LỚN SỐT KÈM PHÁT BAN
 
----
+<div class="module-badge-group">
+  <span class="badge badge-red"><i class="fa-solid fa-stethoscope"></i> Tiếp Cận Lâm Sàng • TC-TN-04</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-virus"></i> CK03 • Truyền Nhiễm – Sốt</span>
+  <span class="badge badge-purple"><i class="fa-solid fa-certificate"></i> Harrison • Manson • Conn's 2026 • EBM</span>
+</div>
 
-## I. MỤC TIÊU HỌC TẬP
-Sau khi hoàn thành bài học, người học có khả năng:
-1. **Nhận diện ngay lập tức các dấu hiệu báo động đỏ (Red Flags)** đe dọa tính mạng ở bệnh nhân người lớn có sốt kèm phát ban.
-2. **Khai thác đầy đủ bệnh sử và thăm khám da - niêm mạc có hệ thống**, xác định chính xác hình thái thương tổn cơ bản và phân bố không gian – thời gian của ban.
-3. **Phân tích và lập luận chẩn đoán phân biệt** có định hướng dựa trên hình thái học của thương tổn da.
-4. **Chỉ định và biện luận các xét nghiệm cận lâm sàng** phù hợp theo từng bước tiếp cận.
-5. **Đưa ra quyết định xử trí cấp cứu ban đầu** và định hướng điều trị căn nguyên kịp thời, an toàn.
+<ApproachQuickNav />
 
----
+<section class="stats-strip" aria-label="Thông số chốt lâm sàng sốt kèm phát ban ở người lớn">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val">Trong 1 giờ</div>
+      <div class="stat-lbl">Khởi trị kháng sinh TM phổ rộng khi nghi não mô cầu / tử ban tối cấp</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">&ge; 2 hốc niêm mạc</div>
+      <div class="stat-lbl">Cảnh báo SJS/TEN khi kèm dấu Nikolsky (+) hoặc bong da &gt; 10% BSA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">2 – 8 tuần</div>
+      <div class="stat-lbl">Cửa sổ khai thác tiền sử dùng thuốc gây phản ứng nặng (DRESS, SJS/TEN)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">Tránh NSAIDs</div>
+      <div class="stat-lbl">Chống chỉ định Aspirin / Ibuprofen khi chưa loại trừ Sốt xuất huyết Dengue</div>
+    </div>
+  </div>
+</section>
 
-## II. ĐẠI CƯƠNG VÀ CƠ CHẾ BỆNH SINH
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-bullseye"></i> MỤC TIÊU HỌC TẬP</div>
+  <ol>
+    <li><strong>Nhận diện ngay lập tức các dấu hiệu báo động đỏ (<em>Red Flags</em>)</strong> đe dọa tính mạng ở bệnh nhân người lớn có sốt kèm phát ban.</li>
+    <li><strong>Khai thác đầy đủ bệnh sử và thăm khám da – niêm mạc có hệ thống</strong>, xác định chính xác hình thái thương tổn cơ bản và phân bố không gian – thời gian của ban.</li>
+    <li><strong>Phân tích và lập luận chẩn đoán phân biệt</strong> có định hướng dựa trên hình thái học của thương tổn da.</li>
+    <li><strong>Chỉ định và biện luận các xét nghiệm cận lâm sàng</strong> phù hợp theo từng bước tiếp cận.</li>
+    <li><strong>Đưa ra quyết định xử trí cấp cứu ban đầu</strong> và định hướng điều trị căn nguyên kịp thời, an toàn.</li>
+  </ol>
+</div>
 
-Sốt kèm phát ban ở người lớn là một trong những tình huống lâm sàng thường gặp và phức tạp, căn nguyên trải rộng từ các bệnh nhiễm trùng tự giới hạn đến các tình trạng cấp cứu nội khoa và da liễu có tỷ lệ tử vong rất cao nếu chậm trễ xử trí.
+## 1. Đại Cương & Định Hướng Tiếp Cận Lâm Sàng {#sec-1}
 
-Cơ chế bệnh sinh gây ban ở bệnh nhân sốt bao gồm 5 nhóm chính:
-1. **Xâm lấn trực tiếp của tác nhân vi sinh vào vi mạch da**: Vi khuẩn hoặc vi nấm gây tắc mạch, viêm mạch hoại tử hoặc vỡ mao mạch (như *Neisseria meningitidis*, *Rickettsia*, *Pseudomonas aeruginosa* trong *ecthyma gangrenosum*).
-2. **Tác động của ngoại độc tố (Exotoxin-mediated)**: Độc tố vi khuẩn lưu hành trong máu hoạt động như một siêu kháng nguyên (superantigen) gây kích hoạt ồ ạt tế bào T và giải phóng cơn bão cytokine (ví dụ: Hội chứng sốc nhiễm độc - TSS do *Staphylococcus aureus* hoặc *Streptococcus pyogenes*, Hội chứng bong vảy da do tụ cầu - SSSS).
-3. **Phức hợp miễn dịch và viêm mạch (Immune complex & Vasculitis)**: Sự lắng đọng phức hợp miễn dịch kháng nguyên - kháng thể tại thành mao mạch và tiểu tĩnh mạch hậu mao mạch gây hoạt hóa bổ thể và tổn thương nội mô, điển hình là ban xuất huyết sờ thấy được (Palpable purpura) trong viêm mạch do quá mẫn, bệnh huyết thanh, viêm nội tâm mạc nhiễm khuẩn, viêm mao mạch dị ứng.
-4. **Phản ứng miễn dịch qua trung gian tế bào (Dị ứng thuốc qua tế bào T)**: Quá mẫn chậm (Type IV) đối với thuốc dẫn đến hoại tử tế bào sừng thượng bì diện rộng (Hội chứng Stevens-Johnson - SJS / Hoại tử thượng bì nhiễm độc - TEN) hoặc phản ứng thuốc kèm tăng bạch cầu ái toan và triệu chứng toàn thân (Hội chứng DRESS).
-5. **Đáp ứng miễn dịch toàn thân không đặc hiệu**: Phản ứng giãn mạch tăng tính thấm mao mạch do phóng thích cytokine trong các bệnh nhiễm siêu vi cấp tính.
+**Sốt kèm phát ban ở người lớn (*Fever and Rash in Adults*)** là một trong những tình huống lâm sàng thường gặp và thách thức nhất tại khoa Cấp cứu cũng như nội trú. Phổ căn nguyên trải rộng từ các **bệnh nhiễm siêu vi tự giới hạn** đến các **tình trạng cấp cứu nội khoa và da liễu tối cấp** có tỷ lệ tử vong rất cao nếu chẩn đoán hoặc xử trí chậm trễ:
 
----
+- **Cấp cứu nhiễm trùng tối cấp:** Nhiễm não mô cầu (*Neisseria meningitidis*), sốc nhiễm khuẩn kèm đông máu nội mạch rải rác (**DIC**), hội chứng sốc nhiễm độc (**TSS**), sốt đốm Rocky Mountain (**RMSF**), viêm cân mạc hoại tử (*Necrotizing fasciitis*).
+- **Cấp cứu da liễu – dị ứng thuốc nặng (*SCARs*):** Hội chứng Stevens-Johnson (**SJS**), hoại tử thượng bì nhiễm độc (**TEN**), hội chứng phản ứng thuốc kèm tăng bạch cầu ái toan và triệu chứng toàn thân (**DRESS**).
+- **Bệnh nhiễm trùng nhiệt đới lưu hành tại Việt Nam:** Sốt xuất huyết **Dengue**, **sốt mò** (*Orientia tsutsugamushi*), sởi, thủy đậu, thương hàn, giang mai giai đoạn II.
 
-## III. ĐÁNH GIÁ BAN ĐẦU VÀ NHẬN DIỆN CÁC DẤU HIỆU BÁO ĐỘNG ĐỎ ("RED FLAGS")
-
-Trước khi tiến hành phân tích chi tiết hình thái ban, bác sĩ lâm sàng phải **ưu tiên đánh giá ngay sinh hiệu và tình trạng huyết động (Airway – Breathing – Circulation – Neurological status)**.
-
-```
-                  BỆNH NHÂN SỐT KÈM PHÁT BAN
-                              │
-             Đánh giá ngay Sinh hiệu & Dấu hiệu Sinh tồn
-                              ▼
-    ┌────────────────────────────────────────────────────────┐
-    │  CÓ BẤT KỲ DẤU HIỆU BÁO ĐỘNG ĐỎ (RED FLAGS) NÀO KHÔNG?   │
-    └─────────────────────────┬──────────────────────────────┘
-                              │
-             ┌────────────────┴────────────────┐
-             ▼                                 ▼
-          【CÓ】                             【KHÔNG】
-   Cấp cứu khẩn cấp:                   Tiếp cận tuần tự:
-   - Hồi sức ABC, thở oxy      - Khai thác bệnh sử kỹ lưỡng
-   - Thiết lập 2 đường truyền lớn  - Khám da toàn diện theo hệ thống
-   - Cấy máu ngay              - Phân loại hình thái ban
-   - Kháng sinh phổ rộng ngay - Chỉ định cận lâm sàng
-   - Cách ly nếu nghi ngờ dịch     - Điều trị theo căn nguyên
-```
-
-### Các dấu hiệu báo động đỏ cần nhận biết ngay lập tức:
-* **Tình trạng nhiễm độc (Toxic appearance), sốc hoặc tụt huyết áp**: Huyết áp tâm thu &lt; 90 mmHg, mạch nhanh nhỏ, thời gian đổ đầy mao mạch (CRT) kéo dài &gt; 2–3 giây, dấu hiệu hạ tư thế.
-* **Rối loạn tri giác / Thần kinh trung ương**: Lơ mơ, li bì, kích động, hôn mê, co giật hoặc dấu hiệu màng não (cổ gượng, Kernig (+), Brudzinski (+)).
-* **Ban xuất huyết hoặc tử ban không mất màu khi ấn kính (Petechial / Purpuric rash)**: Đặc biệt là ban xuất huyết dạng mảng hoại tử hình sao phát triển nhanh (gợi ý nhiễm não mô cầu tối cấp, sốc nhiễm khuẩn, DIC).
-* **Tổn thương niêm mạc**: Trợt loét, chảy máu hoặc có màng giả ở từ 2 hốc tự nhiên trở lên (mắt, mũi họng, khoang miệng, sinh dục, hậu môn).
-* **Dấu hiệu Nikolsky dương tính**: Thượng bì bong tróc, nhăn nheo như giấy cuốn thuốc lá khi miết nhẹ lên vùng da đỏ hoặc da lành cạnh thương tổn (gợi ý SJS/TEN, SSSS).
-* **Diện tích da bị bong trợt hoặc tổn thương diện rộng**: Bất kỳ thương tổn hoại tử hay bong thượng bì nào > 10% diện tích bề mặt cơ thể (BSA).
-* **Đau da dữ dội không tương xứng**: Đau nhức vượt mức tổn thương nhìn thấy kèm phù nề cứng, mất cảm giác da cục bộ hoặc tiếng lạo xạo dưới da (cảnh báo viêm cân mạc hoại tử).
-* **Cơ địa suy giảm miễn dịch**: Bệnh nhân nhiễm HIV, giảm bạch cầu trung tính, đang điều trị thuốc ức chế miễn dịch hoặc corticoid liều cao.
-
----
-
-## IV. TIẾP CẬN LÂM SÀNG CÓ HỆ THỐNG
-
-### 1. Khai thác bệnh sử tỉ mỉ (Detailed History)
-* **Trình tự xuất hiện và diễn tiến của ban (Chronology and Spread)**:
-  - Vị trí ban đầu xuất hiện và hướng lan: Khởi phát ở ngực/thân mình lan ra ngoại vi (hướng tâm - central) hay khởi phát ở cổ tay, cổ chân rồi lan vào thân mình (ly tâm - peripheral)?
-  - Tốc độ phát triển: Lan tỏa trong vài giờ (não mô cầu, sốc nhiễm độc) hay vài ngày đến vài tuần (DRESS, giang mai)?
-  - Mối tương quan thời gian giữa sốt và ban: Ban xuất hiện cùng lúc với sốt (nhiễm trùng huyết), sốt trước 2–4 ngày rồi mới phát ban (sởi, Dengue, RMSF), hay ban xuất hiện khi sốt vừa hạ (sốt phát ban do virus/Roseola)?
-* **Tiền sử dùng thuốc (Medication history)**:
-  - Khai thác tất cả các loại thuốc kê đơn, không kê đơn, thực phẩm chức năng hoặc vắc xin được dùng trong vòng 2–8 tuần trước đó.
-  - Các thuốc có nguy cơ cao: Allopurinol, thuốc chống động kinh (carbamazepine, phenobarbital, phenytoin), kháng sinh (sulfonamide, beta-lactam, vancomycin, minocycline), NSAIDs.
-* **Tiền sử tiếp xúc và dịch tễ (Epidemiological & Exposure history)**:
-  - Tiền sử du lịch đến vùng lưu hành sốt rét, Dengue, Rickettsia.
-  - Tiếp xúc với động vật, gia súc, vết côn trùng đốt hoặc ve cắn (sốt đốm, bệnh Lyme, sốt mò).
-  - Hành vi tình dục không an toàn (nhiễm HIV cấp, giang mai, lậu cầu lan tỏa).
-  - Tiền sử tiêm chủng vaccine (sởi, rubella, não mô cầu).
-* **Triệu chứng cơ năng và dấu ấn đi kèm**:
-  - Ngứa nhiều (thường gặp trong dị ứng thuốc, mày đay, viêm da tiếp xúc) so với đau rát da dữ dội (thường gặp trong SJS/TEN, zona, viêm mô tế bào).
-  - Đau khớp, sưng khớp (viêm nội tâm mạc, hội chứng DRESS, lậu cầu lan tỏa, bệnh huyết thanh, parvovirus).
-  - Hiện tượng phân ly mạch - nhiệt (mạch chậm tương đối so với nhiệt độ sốt cao): Gợi ý thương hàn, sốt mò, brucellosis, leptospirosis, sốt do thuốc.
-
-### 2. Thăm khám thực thể toàn diện (Physical Examination)
-* **Khám toàn diện da và niêm mạc**:
-  - Cần cởi bỏ hoàn toàn quần áo người bệnh dưới ánh sáng đầy đủ để khám kỹ các nếp gấp (nách, bẹn, dưới vú), kẽ ngón tay/chân, lòng bàn tay, lòng bàn chân, da đầu.
-  - Khám kỹ tất cả các hốc niêm mạc: Kết mạc mắt, niêm mạc mũi, môi, khoang miệng (tìm hạt Koplik trong sởi, vết loét trợt), vùng tầng sinh môn và cơ quan sinh dục.
-  - Tìm vết loét nguyên phát có vảy đen (Eschar) đặc trưng của sốt mò (*Orientia tsutsugamushi*) ở vùng nếp gấp ẩm kín.
-* **Đánh giá tính chất của thương tổn da**:
-  - *Thương tổn cơ bản*: Dát (macule), sẩn (papule), mảng (plaque), mụn nước (vesicle), bóng nước (bulla), mụn mủ (pustule), nốt (nodule), mày đay (wheal), chấm xuất huyết (petechiae), ban xuất huyết (purpura), vảy tiết (crust), vết trợt/loét (erosion/ulcer).
-  - *Kiểm tra nghiệm pháp ấn kính (Blanching test / Diascopy)*: Phân biệt hồng ban giãn mạch (biến mất khi ấn kính) với ban xuất huyết mao mạch (không đổi màu khi ấn kính).
-  - *Sờ nắn thương tổn xuất huyết*: Phân biệt ban xuất huyết phẳng (Non-palpable purpura - do giảm tiểu cầu hoặc đông máu rải rác) với ban xuất huyết nổi gờ sờ thấy được (Palpable purpura - tổn thương thành mạch/viêm mạch).
-  - *Kiểm tra dấu hiệu Nikolsky*: Miết nhẹ ngón tay lên bề mặt da đỏ hoặc vùng da cạnh bóng nước để xem thượng bì có bị trượt lột hay không.
-* **Thăm khám các cơ quan hệ thống**:
-  - Khám hạch ngoại vi (hạch góc hàm, nách, bẹn).
-  - Khám tim mạch: Nghe tim tìm tiếng thổi mới xuất hiện (viêm nội tâm mạc nhiễm khuẩn).
-  - Khám bụng: Gan to, lách to, điểm đau bụng khu trú.
-  - Khám cơ xương khớp: Viêm bao gân, sưng nóng đỏ đau các khớp.
-  - Khám thần kinh: Đánh giá tri giác (thang điểm GCS), phản xạ đồng tử, dấu hiệu kích thích màng não, dấu thần kinh khu trú.
+Chiến lược tiếp cận cốt lõi tuân theo trình tự 3 tầng bắt buộc: **(1) Sàng lọc Red Flags & Hồi sức ABCDE trước** $\rightarrow$ **(2) Xác định hình thái thương tổn cơ bản & phân bố không gian – thời gian** $\rightarrow$ **(3) Đối chiếu tiền sử thuốc, dịch tễ & xét nghiệm theo bậc**.
 
 ---
 
-## V. TIẾP CẬN CHẨN ĐOÁN PHÂN BIỆT THEO HÌNH THÁI BAN
+## 2. Sinh Lý Bệnh: 5 Nhóm Cơ Chế Gây Ban Ở Bệnh Nhân Sốt {#sec-2}
 
-Phân loại theo hình thái học thương tổn cơ bản là trụ cột lâm sàng quan trọng nhất giúp khoanh vùng nguyên nhân một cách khoa học:
+Hiểu rõ cơ chế tạo thương tổn da giúp bác sĩ giải mã bản chất bệnh cảnh ngay khi nhìn và sờ nắn ban tại giường bệnh:
 
-| Hình thái thương tổn da | Tác nhân nhiễm trùng chính | Tác nhân không nhiễm trùng / Miễn dịch | Điểm nhận dạng lâm sàng then chốt |
-| :--- | :--- | :--- | :--- |
-| **1. Ban dát - sẩn lan tỏa (Maculopapular)** | • Nhiễm virus cấp: Sởi, Rubella, Dengue, EBV, CMV, Parvovirus B19, HIV cấp<br />• Vi khuẩn/Rickettsia: Sốt mò, Thương hàn, Giang mai giai đoạn II, Bệnh Lyme | • Phát ban dị ứng do thuốc thể thông thường<br />• Hội chứng DRESS<br />• Bệnh Still người lớn, Lupus ban đỏ hệ thống (SLE) | • Khám hạch to, viêm long hô hấp, tiền sử dùng thuốc trong vòng 2–8 tuần.<br />• Dấu hiệu eschar đặc trưng ở nếp gấp trong sốt mò.<br />• Hạt Koplik trong sởi.<br />• Tương quan phân ly mạch - nhiệt. |
-| **2. Ban xuất huyết / Tử ban (Petechial / Purpuric)** | • **Cấp cứu sống còn:** Nhiễm não mô cầu (*N. meningitidis*)<br />• Nhiễm trùng huyết kèm DIC (Gram âm, Tụ cầu, Liên cầu)<br />• Sốt xuất huyết Dengue nặng<br />• Sốt đốm Rocky Mountain (RMSF)<br />• Viêm nội tâm mạc nhiễm khuẩn | • Viêm mạch do quá mẫn / Viêm mạch IgA (Henoch-Schönlein)<br />• Xuất huyết giảm tiểu cầu huyết khối (TTP)<br />• Bệnh huyết thanh do thuốc | • **Palpable purpura**: gợi ý viêm mạch hoặc tắc mạch vi khuẩn (não mô cầu, lậu cầu lan tỏa, Osler nodes).<br />• **Non-palpable purpura**: gợi ý giảm tiểu cầu, rối loạn đông máu nặng (Dengue, DIC).<br />• Dấu hiệu Janeway, xuất huyết dưới móng dạng mảnh vụn (Splinter hemorrhages). |
-| **3. Mụn nước - Bóng nước (Vesiculobullous)** | • Thủy đậu (Varicella), Herpes simplex (HSV), Zona lan tỏa<br />• Hội chứng SSSS do độc tố tụ cầu<br />• Chốc bóng nước<br />• *Ecthyma gangrenosum* (*Pseudomonas*) | • **Cấp cứu da liễu:** Hội chứng Stevens-Johnson (SJS) và Hoại tử thượng bì nhiễm độc (TEN)<br />• Hồng ban đa dạng (Erythema multiforme)<br />• Pemphigus thông thường | • **SJS/TEN:** Thường do thuốc, tổn thương niêm mạc trợt loét nặng ≥ 2 vị trí, Nikolsky (+).<br />• **SSSS:** Không tổn thương niêm mạc, độc tố tác động lớp hạt thượng bì nông.<br />• **Thủy đậu:** Mụn nước nhiều lứa tuổi (dát đỏ, mụn nước trong, mụn nước đục, vảy tiết) phân bố ly tâm. |
-| **4. Đỏ da lan tỏa bong vảy (Diffuse Erythema / Desquamative)** | • Hội chứng sốc nhiễm độc do tụ cầu/liên cầu (TSS)<br />• Tinh hồng nhiệt (Scarlet fever do GAS)<br />• Viêm quầng, viêm mô tế bào lan tỏa | • Đỏ da toàn thân do thuốc<br />• Vảy nến thể mủ lan tỏa (Zumbusch) | • Đỏ da như tôm luộc, sốt cao, tụt huyết áp kịch phát, bong da ở lòng bàn tay bàn chân sau 1–2 tuần trong TSS.<br />• Lưỡi dâu tây, viêm họng hạch đỏ rực trong tinh hồng nhiệt. |
-| **5. Thương tổn loét hoặc có vảy đen (Eschars / Ulcers)** | • Sốt mò (*Orientia tsutsugamushi*)<br />• Bệnh than (*Bacillus anthracis*)<br />• Rickettsia khác | • Viêm da mủ hoại thư (Pyoderma gangrenosum)<br />• Loét do viêm mạch hoại tử hệ thống | • Vết loét hình tròn/bầu dục có vảy đen hoại tử ở trung tâm, viền đỏ gờ nhẹ, không đau, kèm viêm hạch vùng lân cận. |
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #e11d48);"></i> SƠ ĐỒ 5 NHÓM CƠ CHẾ BỆNH SINH GÂY PHÁT BAN KÈM SỐT</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="frArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-text-muted, #64748b)" />
+        </marker>
+      </defs>
 
----
+      {/* Root Box */}
+      <rect x="270" y="16" width="420" height="48" rx="10" fill="rgba(225, 29, 72, 0.12)" stroke="#e11d48" stroke-width="2" />
+      <text x="480" y="38" text-anchor="middle" font-size="14" font-weight="800" fill="#e11d48">
+        5 CƠ CHẾ BỆNH SINH GÂY BAN Ở BỆNH NHÂN SỐT
+      </text>
+      <text x="480" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Định hình trực tiếp kiểu thương tổn da (xuất huyết, bóng nước, đỏ da, dát sẩn, loét)
+      </text>
 
-## VI. CHIẾN LƯỢC CẬN LÂM SÀNG
+      {/* Orthogonal 5-Way Connector */}
+      <line x1="480" y1="64" x2="480" y2="88" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="104" y1="88" x2="856" y2="88" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="104" y1="88" x2="104" y2="112" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#frArr)" />
+      <line x1="292" y1="88" x2="292" y2="112" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#frArr)" />
+      <line x1="480" y1="88" x2="480" y2="112" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#frArr)" />
+      <line x1="668" y1="88" x2="668" y2="112" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#frArr)" />
+      <line x1="856" y1="88" x2="856" y2="112" stroke="var(--color-text-muted, #64748b)" stroke-width="1.8" marker-end="url(#frArr)" />
 
-Cận lâm sàng được chỉ định theo từng lớp nhằm xác định mức độ nặng, đánh giá biến chứng đa cơ quan và tìm kiếm nguyên nhân vi sinh hoặc miễn dịch cụ thể:
+      {/* Col 1: Direct Invasion */}
+      <rect x="18" y="114" width="172" height="226" rx="10" fill="rgba(225, 29, 72, 0.08)" stroke="#e11d48" stroke-width="1.8" />
+      <rect x="18" y="114" width="172" height="44" rx="10" fill="rgba(225, 29, 72, 0.16)" />
+      <text x="104" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#e11d48">1. XÂM LẤN TRỰC TIẾP</text>
+      <text x="104" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Vi mạch da / Nội mô</text>
+      <text x="104" y="178" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">Tắc mạch, viêm mạch</text>
+      <text x="104" y="194" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">hoại tử, vỡ mao mạch</text>
+      <text x="104" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#e11d48">• N. meningitidis</text>
+      <text x="104" y="240" text-anchor="middle" font-size="10.5" font-weight="700" fill="#e11d48">• Rickettsia / Sốt mò</text>
+      <text x="104" y="258" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• P. aeruginosa</text>
+      <text x="104" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">(Ecthyma gangrenosum)</text>
+      <text x="104" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">→ Tử ban / Loét Eschar</text>
 
-### 1. Xét nghiệm đánh giá mức độ nặng và tổn thương cơ quan (Bắt buộc)
-* **Tổng phân tích tế bào máu ngoại vi (CBC)**: Số lượng bạch cầu tăng cao chuyển trái (nhiễm khuẩn), giảm bạch cầu (sốt rét, Dengue, virus, thương hàn), tăng bạch cầu ái toan (> 700–1500/$\mu$L gợi ý hội chứng DRESS hoặc dị ứng thuốc), số lượng tiểu cầu (giảm nặng trong Dengue, DIC, RMSF, nhiễm khuẩn huyết).
-* **Các dấu ấn viêm**: CRP, Procalcitonin (hỗ trợ phân biệt nhiễm khuẩn với nhiễm virus hoặc bệnh tự miễn), tốc độ máu lắng (ESR).
-* **Đông máu toàn bộ**: PT, aPTT, Fibrinogen, D-dimer (sàng lọc tình trạng đông máu nội mạch rải rác - DIC).
-* **Chức năng cơ quan**: Men gan (AST, ALT), Bilirubin, Creatinine, Ure, Điện giải đồ, Creatine Kinase (CK - đánh giá tiêu cơ vân hoặc tổn thương cơ vân trong sốc nhiễm độc, viêm cơ), Khí máu động mạch và Lactate máu (đánh giá tưới máu mô và toan chuyển hóa).
-* **Tổng phân tích nước tiểu**: Tìm protein niệu, hồng cầu niệu, bạch cầu niệu (viêm cầu thận trong viêm mạch IgA, viêm thận kẽ do thuốc, tổn thương thận cấp).
+      {/* Col 2: Exotoxin */}
+      <rect x="206" y="114" width="172" height="226" rx="10" fill="rgba(217, 119, 6, 0.08)" stroke="#d97706" stroke-width="1.8" />
+      <rect x="206" y="114" width="172" height="44" rx="10" fill="rgba(217, 119, 6, 0.16)" />
+      <text x="292" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#d97706">2. NGOẠI ĐỘC TỐ</text>
+      <text x="292" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Exotoxin / Superantigen</text>
+      <text x="292" y="178" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">Hoạt hóa ồ ạt tế bào T,</text>
+      <text x="292" y="194" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">cơn bão cytokine / tách lớp</text>
+      <text x="292" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#d97706">• Sốc nhiễm độc (TSS)</text>
+      <text x="292" y="240" text-anchor="middle" font-size="10.5" font-weight="700" fill="#d97706">• SSSS (Tụ cầu)</text>
+      <text x="292" y="258" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Tinh hồng nhiệt</text>
+      <text x="292" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">(S. aureus / S. pyogenes)</text>
+      <text x="292" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">→ Đỏ da lan tỏa / Bong vảy</text>
 
-### 2. Xét nghiệm vi sinh và huyết thanh học
-* **Cấy máu**: Cần lấy tối thiểu 2–3 bộ cấy máu tại các vị trí khác nhau trước khi truyền kháng sinh (tìm vi khuẩn gây nhiễm trùng huyết, viêm nội tâm mạc, não mô cầu).
-* **Nhuộm soi và nuôi cấy dịch tổn thương da**: Nhuộm Gram dịch mụn mủ/mụn nước, cấy mủ tìm tụ cầu, liên cầu.
-* **Chẩn đoán sốt xuất huyết Dengue**: Test nhanh Dengue NS1 Ag (ngày 1–5 của sốt) hoặc Dengue IgM/IgG (từ ngày thứ 5 trở đi).
-* **Kéo lam máu nhuộm Giemsa hoặc test nhanh tìm ký sinh trùng sốt rét** ở bệnh nhân có tiền sử sốt dịch tễ.
-* **Xét nghiệm huyết thanh chẩn đoán vi sinh / PCR**:
-  - Huyết thanh học hoặc PCR phát hiện rickettsia, *Orientia tsutsugamushi* trong sốt mò.
-  - Xét nghiệm huyết thanh sởi, rubella, EBV, CMV, Parvovirus B19, HIV (kháng nguyên/kháng thể hoặc tải lượng virus).
-  - Huyết thanh học giang mai (RPR/VDRL và khẳng định bằng TPHA/FTA-ABS).
-* **Tế bào học Tzanck (Tzanck smear)**: Cạo đáy mụn nước nhuộm soi tìm tế bào biểu mô đa nhân khổng lồ (khẳng định nhiễm HSV hoặc VZV).
-* **Chọc dịch não tủy (Lumbar Puncture)**: Chỉ định bắt buộc khi nghi ngờ viêm màng não (sốt, phát ban xuất huyết hoại tử, đau đầu dữ dội, cổ cứng hoặc biến đổi tri giác) sau khi đã loại trừ chống chỉ định phù não.
+      {/* Col 3: Immune Complex */}
+      <rect x="394" y="114" width="172" height="226" rx="10" fill="rgba(124, 58, 237, 0.08)" stroke="#7c3aed" stroke-width="1.8" />
+      <rect x="394" y="114" width="172" height="44" rx="10" fill="rgba(124, 58, 237, 0.16)" />
+      <text x="480" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#7c3aed">3. PHỨC HỢP MIỄN DỊCH</text>
+      <text x="480" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Quá mẫn Type III / Viêm mạch</text>
+      <text x="480" y="178" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">Lắng đọng KN-KT thành</text>
+      <text x="480" y="194" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">tiểu TM hậu mao mạch</text>
+      <text x="480" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c3aed">• Viêm mạch IgA (HSP)</text>
+      <text x="480" y="240" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Bệnh huyết thanh</text>
+      <text x="480" y="258" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Viêm nội tâm mạc NK</text>
+      <text x="480" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">(Hoạt hóa bổ thể)</text>
+      <text x="480" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">→ Palpable purpura</text>
 
-### 3. Sinh thiết da và chẩn đoán hình ảnh
-* **Sinh thiết da (Skin Biopsy)**: Xét nghiệm tiêu chuẩn giúp phân biệt viêm mạch hoại tử hủy bạch cầu (leukocytoclastic vasculitis), hoại tử thượng bì toàn phần (trong SJS/TEN), hoại tử nông dưới lớp hạt (trong SSSS), thâm nhiễm bạch cầu ái toan (trong DRESS) hay lắng đọng miễn dịch huỳnh quang (IgA, IgG, C3).
-* **Chẩn đoán hình ảnh**:
-  - X-quang phổi: Tìm ổ đông đặc phổi, lao kê, thâm nhiễm kẽ.
-  - Siêu âm tim (transthoracic hoặc transesophageal echocardiography): Đánh giá nốt sùi van tim khi nghi ngờ viêm nội tâm mạc nhiễm khuẩn.
-  - Siêu âm ổ bụng, CT-scan ổ bụng: Tìm các ổ áp xe sâu hoặc huyết khối.
+      {/* Col 4: Cell-Mediated (Type IV) */}
+      <rect x="582" y="114" width="172" height="226" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8" />
+      <rect x="582" y="114" width="172" height="44" rx="10" fill="rgba(2, 132, 199, 0.16)" />
+      <text x="668" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">4. TRUNG GIAN TẾ BÀO T</text>
+      <text x="668" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Quá mẫn chậm (Type IV)</text>
+      <text x="668" y="178" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">Hoại tử tế bào sừng</text>
+      <text x="668" y="194" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">thượng bì / Tăng Eos</text>
+      <text x="668" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0284c7">• Hội chứng SJS / TEN</text>
+      <text x="668" y="240" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0284c7">• Hội chứng DRESS</text>
+      <text x="668" y="258" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Dị ứng thuốc nặng</text>
+      <text x="668" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">(Cửa sổ 2–8 tuần)</text>
+      <text x="668" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">→ Bóng nước / Nikolsky (+)</text>
 
----
+      {/* Col 5: Non-specific Immune */}
+      <rect x="770" y="114" width="172" height="226" rx="10" fill="rgba(13, 148, 136, 0.08)" stroke="#0d9488" stroke-width="1.8" />
+      <rect x="770" y="114" width="172" height="44" rx="10" fill="rgba(13, 148, 136, 0.16)" />
+      <text x="856" y="133" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0d9488">5. ĐÁP ỨNG CYTOKINE</text>
+      <text x="856" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Miễn dịch không đặc hiệu</text>
+      <text x="856" y="178" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">Giãn mạch và tăng tính</text>
+      <text x="856" y="194" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">thấm mao mạch da</text>
+      <text x="856" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0d9488">• Sởi, Rubella, Dengue</text>
+      <text x="856" y="240" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• EBV, CMV, HIV cấp</text>
+      <text x="856" y="258" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Parvovirus B19</text>
+      <text x="856" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">(Nhiễm siêu vi cấp)</text>
+      <text x="856" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">→ Ban dát – sẩn lan tỏa</text>
+    </svg>
+  </div>
+</div>
 
-## VII. NGUYÊN TẮC XỬ TRÍ VÀ ĐIỀU TRỊ
+1. **Xâm lấn trực tiếp của tác nhân vi sinh vào vi mạch da:** Vi khuẩn hoặc vi nấm gây tắc mạch, viêm mạch hoại tử hoặc vỡ mao mạch (như *Neisseria meningitidis*, *Rickettsia*, *Pseudomonas aeruginosa* trong *ecthyma gangrenosum*).
+2. **Tác động của ngoại độc tố (*Exotoxin-mediated*):** Độc tố vi khuẩn lưu hành trong máu hoạt động như một **siêu kháng nguyên (*superantigen*)** gây kích hoạt ồ ạt tế bào T và giải phóng cơn bão cytokine (ví dụ: Hội chứng sốc nhiễm độc – **TSS** do *Staphylococcus aureus* hoặc *Streptococcus pyogenes*, Hội chứng bong vảy da do tụ cầu – **SSSS**).
+3. **Phức hợp miễn dịch và viêm mạch (*Immune complex & Vasculitis*):** Sự lắng đọng phức hợp miễn dịch kháng nguyên – kháng thể tại thành mao mạch và tiểu tĩnh mạch hậu mao mạch gây hoạt hóa bổ thể và tổn thương nội mô, điển hình là **ban xuất huyết sờ thấy được (*Palpable purpura*)** trong viêm mạch do quá mẫn, bệnh huyết thanh, viêm nội tâm mạc nhiễm khuẩn, viêm mao mạch dị ứng (IgA).
+4. **Phản ứng miễn dịch qua trung gian tế bào (Dị ứng thuốc qua tế bào T):** Quá mẫn chậm (**Type IV**) đối với thuốc dẫn đến hoại tử tế bào sừng thượng bì diện rộng (**Hội chứng Stevens-Johnson – SJS** / **Hoại tử thượng bì nhiễm độc – TEN**) hoặc phản ứng thuốc kèm tăng bạch cầu ái toan và triệu chứng toàn thân (**Hội chứng DRESS**).
+5. **Đáp ứng miễn dịch toàn thân không đặc hiệu:** Phản ứng giãn mạch, tăng tính thấm mao mạch do phóng thích cytokine trong các bệnh nhiễm siêu vi cấp tính.
 
-### 1. Hồi sức cấp cứu và ổn định huyết động
-* Kiểm soát đường thở, thở oxy mục tiêu giữ $SpO_2 \ge 92-95\%$.
-* Đặt 2 đường truyền tĩnh mạch lớn; truyền dịch tinh thể (Normal Saline 0,9% hoặc Ringer Lactate) nhanh nếu có biểu hiện hạ huyết áp hoặc tụt thể tích tuần hoàn.
-* Dùng thuốc vận mạch (như Noradrenaline) nếu tụt huyết áp không đáp ứng với bù đủ dịch.
-
-### 2. Liệu pháp kháng sinh theo kinh nghiệm kịp thời (Empiric Antimicrobial Therapy)
-* Ở bệnh nhân sốt kèm ban xuất huyết/tử ban, nghi ngờ nhiễm khuẩn huyết hoặc viêm màng não do não mô cầu: **Bắt buộc dùng kháng sinh tĩnh mạch phổ rộng trong vòng 1 giờ đầu tiên ngay sau khi cấy máu (hoặc không trì hoãn nếu cấy máu gặp khó khăn)**.
-  - Phác đồ kinh nghiệm thường dùng: **Ceftriaxone** 2g IV mỗi 12 giờ phối hợp với **Vancomycin** 15–20 mg/kg IV mỗi 8–12 giờ (bao phủ phế cầu kháng thuốc và tụ cầu).
-  - Nếu nghi ngờ sốt mò hoặc bệnh rickettsia: Bổ sung ngay **Doxycycline** 100 mg uống hoặc truyền tĩnh mạch mỗi 12 giờ.
-  - Nếu nghi ngờ sốc nhiễm độc do tụ cầu/liên cầu (TSS): Phối hợp thêm **Clindamycin** (ức chế tổng hợp ngoại độc tố của vi khuẩn).
-
-### 3. Xử trí đặc hiệu cho các phản ứng có hại của thuốc nặng trên da (SCARs)
-* **Ngừng ngay lập tức toàn bộ các thuốc nghi ngờ hoặc mới sử dụng trong thời gian gần đây**.
-* Đối với SJS/TEN:
-  - Nhập khoa hồi sức tích cực (ICU) hoặc đơn vị bỏng để chăm sóc vô trùng.
-  - Bù dịch và điện giải tích cực để bù lại lượng dịch thất thoát qua bề mặt da trợt loét.
-  - Chăm sóc da không dính, chống nhiễm khuẩn thứ phát, giữ ẩm và rửa mắt thường xuyên bằng nước muối sinh lý hoặc thuốc mỡ kháng sinh để phòng ngừa dính kết mạc và mù lòa.
-  - Điều trị điều hòa miễn dịch: Cân nhắc Cyclosporine A, IVIG hoặc Corticoid liều cao ngắn ngày tùy theo phác đồ chuyên khoa và thang điểm SCORTEN.
-* Đối với Hội chứng DRESS:
-  - Corticoid toàn thân (Methylprednisolone 0,5–1 mg/kg/ngày), giảm liều dần chậm trong vòng 2–3 tháng để phòng ngừa bùng phát tái phát.
-
-### 4. Kiểm soát thân nhiệt và triệu chứng
-* **Thuốc hạ sốt ưu tiên**: **Paracetamol (Acetaminophen)** 10–15 mg/kg (người lớn 500–650 mg mỗi 4–6 giờ, không quá 3–4g/ngày).
-* **Chống chỉ định dùng Aspirin hoặc các thuốc NSAIDs khác** (như Ibuprofen) khi chưa loại trừ sốt xuất huyết Dengue do nguy cơ làm nặng thêm tình trạng xuất huyết tiêu hóa và suy giảm chức năng tiểu cầu.
-* Chườm mát, làm mát bằng phương pháp bay hơi khi thân nhiệt $> 40^\circ\text{C}$.
-
-### 5. Cách ly và phòng chống lây lan
-* Cách ly hô hấp nghiêm ngặt đối với các trường hợp nghi ngờ sởi, thủy đậu hoặc viêm màng não do não mô cầu.
-* Điều trị dự phòng kháng sinh cho những người tiếp xúc gần với bệnh nhân viêm màng não do não mô cầu (Ciprofloxacin hoặc Rifampicin).
-
----
-
-## VIII. CA LÂM SÀNG MINH HỌA (CLINICAL CASE VIGNETTE)
-
-### 1. Bệnh sử và Thăm khám lâm sàng
-* **Bệnh nhân**: Nam, 34 tuổi, kỹ sư công trình.
-* **Lý do vào viện**: Sốt cao ngày thứ 5 và nổi ban rải rác toàn thân kèm đau đầu dữ dội.
-* **Bệnh sử**: Cách nhập viện 5 ngày, bệnh nhân khởi phát sốt cao liên tục $39 - 40^\circ\text{C}$, kèm ớn lạnh, đau đầu dữ dội vùng thái dương và hai hốc mắt, đau mỏi toàn thân. Bệnh nhân tự uống Paracetamol nhưng sốt hạ ít rồi tăng lại. Đến ngày thứ 4 của bệnh, người nhà phát hiện các chấm đỏ xuất hiện ở cẳng tay và cẳng chân, sau đó lan dần lên thân mình. Sáng ngày nhập viện, bệnh nhân mệt nhiều, buồn nôn, li bì nhẹ nên được đưa vào khoa Cấp cứu. Bệnh nhân mới trở về từ một công trường vùng đồi núi trung du cách đây 2 tuần. Chưa ghi nhận tiền sử dị ứng thuốc.
-* **Thăm khám lúc vào viện**:
-  - *Sinh hiệu*: Mạch 88 lần/phút; Huyết áp: 100/65 mmHg; Nhiệt độ: $39,2^\circ\text{C}$; Nhịp thở: 20 lần/phút; $SpO_2$: 97% (khí trời). Mạch có xu hướng chậm tương đối so với nhiệt độ sốt cao ($39,2^\circ\text{C}$).
-  - *Tri giác*: Bệnh nhân tỉnh nhưng tiếp xúc chậm, li bì nhẹ (GCS 14 điểm). Không có dấu thần kinh khu trú, cổ mềm, Kernig (-).
-  - *Khám da - niêm mạc*:
-    + Da vùng mặt và ngực xung huyết đỏ.
-    + Rải rác khắp thân mình và tứ chi có nhiều dát đỏ và chấm sẩn kích thước 2–5 mm, xen kẽ một số chấm xuất huyết nhỏ không mất màu khi ấn kính. Lòng bàn tay, bàn chân và niêm mạc miệng không có tổn thương bóng nước hay trợt loét.
-    + **Thăm khám kỹ vùng nếp gấp**: Phát hiện tại vùng bẹn phải có một vết loét kích thước khoảng $1 \times 1,5$ cm, hình bầu dục, trung tâm có vảy hoại tử màu nâu đen, bờ viền xung quanh hơi gờ đỏ, hoàn toàn không đau, không ngứa.
-  - *Hệ thống hạch*: Sờ thấy hạch bẹn bên phải kích thước khoảng $2 \times 2$ cm, chắc, hơi đau nhẹ khi ấn, di động tốt; sờ thấy vài hạch nách nhỏ hai bên.
-  - *Các cơ quan khác*: Tim đều, không âm thổi; phổi trong; bụng mềm, lách mấp mé bờ sườn.
-
-### 2. Tóm tắt bệnh án & Đặt vấn đề
-Bệnh nhân nam 34 tuổi, có yếu tố dịch tễ đi rừng/vùng đồi núi về, vào viện vì sốt cao ngày thứ 5 kèm ban dát sẩn và chấm xuất huyết. Các vấn đề lâm sàng chính gồm:
-1. Hội chứng nhiễm trùng - sốt cao cấp tính có phân ly mạch - nhiệt.
-2. Thương tổn da đặc trưng: Vết loét có vảy đen (Eschar) tại bẹn phải kèm sưng hạch vùng bẹn cùng bên.
-3. Phát ban dát sẩn xen kẽ chấm xuất huyết rải rác thân mình và chi.
-4. Rối loạn tri giác nhẹ (li bì).
-
-### 3. Biện luận chẩn đoán phân biệt
-* **Sốt mò (Scrub Typhus do *Orientia tsutsugamushi*)**: Đây là chẩn đoán nghĩ đến nhiều nhất. Bệnh nhân có dịch tễ đồi núi, khởi phát sốt cao cấp tính, đau đầu dữ dội, ban dát sẩn xuất hiện vào cuối tuần đầu của bệnh, phân ly mạch - nhiệt và đặc biệt là tổn thương vảy đen hoại tử điển hình (Eschar) ở vùng bẹn kèm viêm hạch vùng. Tình trạng li bì cho thấy bệnh có thể bắt đầu có biến chứng thần kinh/nhiễm độc phủ tạng.
-* **Sốt xuất huyết Dengue**: Rất phổ biến ở bệnh nhân sốt ngày thứ 5 có ban xung huyết và chấm xuất huyết. Tuy nhiên, Dengue không giải thích được vết loét hoại tử có vảy đen (Eschar) và hạch to cục bộ. Cần làm xét nghiệm công thức máu và huyết thanh để loại trừ hoặc phát hiện đồng nhiễm.
-* **Nhiễm khuẩn huyết do Não mô cầu (*Neisseria meningitidis*)**: Cần cảnh giác vì có sốt và ban xuất huyết. Tuy nhiên, ban não mô cầu thường diễn tiến tối cấp, hình thái ban xuất huyết hoại tử hình sao lan rất nhanh, cổ gượng rõ, trong khi bệnh nhân này tiến triển sang ngày thứ 5 và có vết eschar đặc thù.
-* **Nhiễm Rickettsia khác (Sốt phát ban chuột, Sốt đốm)**: Cũng có sốt và phát ban dát sẩn, nhưng vết loét vảy đen hoại tử hiếm gặp hơn nhiều so với sốt mò.
-* **Thương hàn (Typhoid fever)**: Có sốt cao và phân ly mạch - nhiệt, ban đào (rose spots), nhưng vết loét hoại tử không có trong thương hàn.
-
-### 4. Kết quả cận lâm sàng
-* **Công thức máu**:
-  - Bạch cầu (WBC): $8,2 \times 10^9$/L (tỷ lệ Lympho 42%, Mono 12% - tăng nhẹ).
-  - Hemoglobin: 142 g/L; Hematocrit: 41%.
-  - Tiểu cầu: $92 \times 10^9$/L (giảm nhẹ).
-* **Sinh hóa máu**:
-  - AST: 184 U/L; ALT: 165 U/L (men gan tăng gấp 3–4 lần giới hạn trên).
-  - Bilirubin toàn phần: $18,4\ \mu\text{mol/L}$; Creatinine: $86\ \mu\text{mol/L}$; Điện giải đồ bình thường.
-  - CRP: 68 mg/L (tăng cao).
-* **Khí máu và Lactate**: pH 7,41; Lactate máu: 1,6 mmol/L.
-* **Test nhanh Dengue NS1 & IgM/IgG**: Âm tính.
-* **Lam máu giọt dày/mỏng tìm ký sinh trùng sốt rét**: Âm tính.
-* **Xét nghiệm huyết thanh chẩn đoán sốt mò (Test nhanh Rickettsia Ab / RT-PCR *Orientia tsutsugamushi*)**: RT-PCR máu phát hiện vật liệu di truyền của *Orientia tsutsugamushi*.
-
-### 5. Chẩn đoán xác định
-* **Sốt mò (*Scrub Typhus*) ngày thứ 5 có biến chứng viêm gan cấp và tổn thương thần kinh mức độ nhẹ**.
-
-### 6. Điều trị và Tiến triển
-* **Kháng sinh đặc hiệu**: Bệnh nhân được chỉ định dùng ngay **Doxycycline** 100 mg uống 1 viên x 2 lần/ngày (sau khi ăn no) trong thời gian 7 ngày.
-* **Hạ sốt & Hỗ trợ**: Paracetamol 500 mg khi sốt $\ge 38,5^\circ\text{C}$, truyền dung dịch Ringer Lactate duy trì thể tích tuần hoàn.
-* **Tiến triển**: Sau 36–48 giờ điều trị Doxycycline, bệnh nhân cắt sốt hoàn toàn, tri giác tỉnh táo, hết đau đầu, ban trên da nhạt dần và lặn mất, men gan cải thiện sau 1 tuần xuất viện.
+*Liên kết nền tảng:* Xem thêm cơ chế sốc nhiễm khuẩn & suy đa tạng tại [Cơ Chế Bệnh Sinh (CCBS)](#/basic-medical/co-che-benh-sinh) và tiếp cận pha cấp tổng quát tại [Tiếp Cận Sốt Cấp Tính Ở Người Lớn](#/basic-medical/tiep-can/ck03-truyen-nhiem-sot/tc-03-sot-cap-tinh-nl).
 
 ---
 
-## IX. TÀI LIỆU THAM KHẢO (THEO CHUẨN AMA)
+## 3. Triage ABCDE & Nhận Diện Red Flags Tối Cấp {#sec-3}
 
-1. Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J, eds. *Harrison's Principles of Internal Medicine*. 20th ed. McGraw-Hill Education; 2018.
-2. Stern SDC, Cifu AS, Altkorn D. *Symptoms to Diagnosis: An Evidence-Based Guide*. 4th ed. McGraw-Hill Education; 2020.
-3. Celenza A, Jelinek GA, eds. *Algorithms for Emergency Medicine*. Oxford University Press; 2023.
-4. Farrar J, Hotez PJ, Junghanss T, Kang G, Lalloo D, White NJ, eds. *Manson's Tropical Diseases*. 24th ed. Elsevier Saunders; 2024.
-5. Rakel RE, Rakel DP, eds. *Conn's Current Therapy 2026*. Elsevier; 2026.
-6. Cifuentes M, ed. *Algorithmic Diagnosis of Symptoms and Signs: A Cost-Effective Approach*. 3rd ed. Wolters Kluwer; 2017.
-7. Bộ Y tế Việt Nam. *Hướng dẫn chẩn đoán và điều trị các bệnh da liễu* (Ban hành kèm theo Quyết định số 75/QĐ-BYT). Nhà xuất bản Y học; 2015.
-8. Bộ Y tế Việt Nam. *Hướng dẫn chẩn đoán và điều trị bệnh sốt xuất huyết Dengue* (Ban hành kèm theo Quyết định số 2760/QĐ-BYT). Nhà xuất bản Y học; 2020.
-9. World Health Organization. *Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Illnesses with Limited Resources*. 2nd ed. World Health Organization; 2013.
+Trước khi tiến hành phân tích chi tiết hình thái ban, bác sĩ lâm sàng phải **ưu tiên đánh giá ngay sinh hiệu, huyết động và thần kinh (*Airway – Breathing – Circulation – Disability – Exposure*)** để phát hiện tức thì nhóm bệnh đe dọa tử vong trong vài giờ đầu.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-triangle-exclamation"></i> 8 DẤU HIỆU BÁO ĐỘNG ĐỎ (RED FLAGS) PHẢI NHẬN BIẾT NGAY LẬP TỨC</div>
+  <ol>
+    <li><strong>Tình trạng nhiễm độc (<em>Toxic appearance</em>), sốc hoặc tụt huyết áp:</strong> Huyết áp tâm thu <strong>&lt; 90 mmHg</strong>, mạch nhanh nhỏ, thời gian đổ đầy mao mạch (CRT) kéo dài <strong>&gt; 2–3 giây</strong>, dấu hiệu hạ áp tư thế.</li>
+    <li><strong>Rối loạn tri giác / Thần kinh trung ương:</strong> Lơ mơ, li bì, kích động, hôn mê, co giật hoặc dấu hiệu màng não (cổ gượng, Kernig (+), Brudzinski (+)).</li>
+    <li><strong>Ban xuất huyết hoặc tử ban không mất màu khi ấn kính (<em>Petechial / Purpuric rash</em>):</strong> Đặc biệt là ban xuất huyết dạng mảng hoại tử hình sao phát triển nhanh (gợi ý <strong>nhiễm não mô cầu tối cấp</strong>, sốc nhiễm khuẩn, <strong>DIC</strong>).</li>
+    <li><strong>Tổn thương niêm mạc đa hốc:</strong> Trợt loét, chảy máu hoặc có màng giả ở từ <strong>&ge; 2 hốc tự nhiên</strong> trở lên (mắt, mũi họng, khoang miệng, sinh dục, hậu môn).</li>
+    <li><strong>Dấu hiệu Nikolsky dương tính:</strong> Thượng bì bong tróc, nhăn nheo như giấy cuốn thuốc lá khi miết nhẹ lên vùng da đỏ hoặc da lành cạnh thương tổn (gợi ý <strong>SJS/TEN</strong>, <strong>SSSS</strong>).</li>
+    <li><strong>Diện tích da bong trợt / hoại tử diện rộng:</strong> Bất kỳ thương tổn hoại tử hay bong thượng bì nào <strong>&gt; 10% diện tích bề mặt cơ thể (BSA)</strong>.</li>
+    <li><strong>Đau da dữ dội không tương xứng:</strong> Đau nhức vượt mức tổn thương nhìn thấy kèm phù nề cứng, mất cảm giác da cục bộ hoặc tiếng lạo xạo dưới da (cảnh báo <strong>viêm cân mạc hoại tử</strong>).</li>
+    <li><strong>Cơ địa suy giảm miễn dịch:</strong> Bệnh nhân nhiễm HIV, giảm bạch cầu trung tính, đang điều trị thuốc ức chế miễn dịch hoặc corticoid liều cao.</li>
+  </ol>
+</div>
+
+### Phân Tầng Mức Độ Khẩn Cấp Tại Tiếp Nhận
+
+| Tầng lâm sàng | Mức độ | Tiêu chuẩn nhận diện | Thái độ xử trí tức thì |
+| :--- | :---: | :--- | :--- |
+| **Nhiễm trùng tối cấp / SCARs nặng / Hoại tử da** | <UrgencyPill level="emergent" label="TỐI KHẨN (CẤP CỨU)" /> | Tụt HA / sốc, rối loạn tri giác, tử ban hoại tử hình sao, Nikolsky (+), trợt niêm mạc &ge; 2 hốc, bong da &gt; 10% BSA, đau da dữ dội không tương xứng | Hồi sức **ABCDE**, 02 IV nòng lớn, cấy máu 2–3 bộ, **kháng sinh TM phổ rộng trong 1 giờ đầu** (nếu nghi nhiễm khuẩn), **ngừng mọi thuốc nghi ngờ** (nếu nghi SJS/TEN), cách ly &amp; hội chẩn ICU / ngoại khoa khẩn |
+| **Sốt phát ban nghi nhiễm khuẩn / Tổn thương tạng** | <UrgencyPill level="urgent" label="KHẨN CẤP (NỘI TRÚ)" /> | Huyết động tạm ổn nhưng có sốt cao ngày 4–6, giảm tiểu cầu, tăng men gan, vết loét Eschar nghi sốt mò, nghi Dengue dấu hiệu cảnh báo, nghi DRESS có tăng Eosinophil | Nhập viện theo dõi sát sinh hiệu &amp; tiến triển ban mỗi 2–4 giờ; xét nghiệm CBC, đông máu, chức năng gan – thận, Dengue NS1/IgM; khởi trị sớm **Doxycycline** nếu nghi sốt mò/Rickettsia |
+| **Phát ban siêu vi / Dị ứng thuốc nhẹ, sinh hiệu ổn** | <UrgencyPill level="routine" label="ĐÁNH GIÁ HỆ THỐNG" /> | Sinh hiệu hoàn toàn ổn định, không có bất kỳ Red Flag nào, không tổn thương niêm mạc, ban dát sẩn lành tính nghi siêu vi tự giới hạn hoặc dị ứng nhẹ | Ngừng thuốc nghi ngờ nếu có, hạ sốt bằng **Paracetamol** (tránh NSAIDs nếu chưa loại trừ Dengue), xét nghiệm định hướng phù hợp và dặn kỹ dấu hiệu tái khám cấp cứu |
 
 ---
+
+## 4. Khai Thác Bệnh Sử & Thăm Khám Da – Niêm Mạc Có Hệ Thống {#sec-4}
+
+### 4.1. Bốn Trụ Cột Khai Thác Bệnh Sử Tỉ Mỉ (*Detailed History*)
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #e11d48;"><i class="fa-solid fa-clock-rotate-left"></i> 1. Trình Tự &amp; Hướng Lan</div>
+    <div class="matrix-card-desc">
+      • <strong>Hướng tâm (thân &rarr; chi):</strong> Sởi, Rubella, Dengue, dị ứng thuốc.<br />
+      • <strong>Ly tâm (cổ tay/chân &rarr; thân):</strong> RMSF, giang mai II.<br />
+      • <strong>Tốc độ:</strong> Vài giờ (não mô cầu, TSS) vs vài ngày–tuần (DRESS, giang mai).
+    </div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #0284c7;"><i class="fa-solid fa-pills"></i> 2. Tiền Sử Thuốc (2–8 Tuần)</div>
+    <div class="matrix-card-desc">
+      • Rà soát toàn bộ thuốc kê đơn, OTC, thực phẩm chức năng, vắc xin.<br />
+      • <strong>Nguy cơ cao:</strong> Allopurinol, chống động kinh (carbamazepine, phenobarbital, phenytoin), kháng sinh (sulfonamide, beta-lactam, vancomycin, minocycline), NSAIDs.
+    </div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #0d9488;"><i class="fa-solid fa-earth-asia"></i> 3. Dịch Tễ &amp; Tiếp Xúc</div>
+    <div class="matrix-card-desc">
+      • Du lịch vùng lưu hành sốt rét, Dengue, Rickettsia.<br />
+      • Vết côn trùng đốt / ve cắn / rừng núi (sốt mò, Lyme, RMSF).<br />
+      • Hành vi tình dục không an toàn (HIV cấp, giang mai, lậu cầu lan tỏa) &amp; lịch tiêm chủng (sởi, rubella, não mô cầu).
+    </div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #d97706;"><i class="fa-solid fa-notes-medical"></i> 4. Triệu Chứng &amp; Dấu Ấn Kèm</div>
+    <div class="matrix-card-desc">
+      • <strong>Ngứa nhiều:</strong> Dị ứng thuốc, mày đay, viêm da tiếp xúc.<br />
+      • <strong>Đau rát da dữ dội:</strong> SJS/TEN, zona, viêm mô tế bào / viêm cân hoại tử.<br />
+      • <strong>Đau khớp:</strong> DRESS, VNTMNK, lậu cầu, parvovirus.<br />
+      • <strong>Phân ly mạch – nhiệt:</strong> Thương hàn, sốt mò, brucellosis, leptospirosis, sốt do thuốc.
+    </div>
+  </div>
+</div>
+
+Chú ý mối tương quan thời gian giữa **sốt và thời điểm mọc ban**:
+- **Ban xuất hiện cùng lúc với sốt:** Thường gặp trong nhiễm trùng huyết, não mô cầu tối cấp, sốc nhiễm độc.
+- **Sốt trước 2–4 ngày rồi mới phát ban:** Sởi, Sốt xuất huyết Dengue, sốt đốm Rocky Mountain (RMSF), sốt mò.
+- **Ban xuất hiện khi sốt vừa hạ:** Sốt phát ban do virus (*Roseola*).
+
+### 4.2. Thăm Khám Thực Thể Toàn Diện (*Physical Examination*)
+
+1. **Khám toàn diện da và niêm mạc dưới ánh sáng đầy đủ:**
+   - Cởi bỏ hoàn toàn quần áo (đảm bảo kín đáo) để kiểm tra kỹ các **nếp gấp kín** (nách, bẹn, bìu, dưới vú, quanh rốn), kẽ ngón tay/chân, **lòng bàn tay, lòng bàn chân** và da đầu.
+   - Kiểm tra toàn bộ các **hốc niêm mạc**: kết mạc mắt, niêm mạc mũi, môi, khoang miệng (tìm **hạt Koplik** trong sởi, vết trợt loét, màng giả), vùng tầng sinh môn và cơ quan sinh dục.
+   - Chủ động tìm **vết loét nguyên phát có vảy đen (*Eschar*)** đặc trưng của sốt mò (*Orientia tsutsugamushi*) ẩn trong các vùng nếp gấp ẩm kín.
+2. **Đánh giá tính chất hình thái thương tổn da:**
+   - *Xác định thương tổn cơ bản:* Dát (*macule*), sẩn (*papule*), mảng (*plaque*), mụn nước (*vesicle*), bóng nước (*bulla*), mụn mủ (*pustule*), nốt (*nodule*), mày đay (*wheal*), chấm xuất huyết (*petechiae*), ban xuất huyết (*purpura*), vảy tiết (*crust*), vết trợt/loét (*erosion/ulcer*).
+   - *Nghiệm pháp ấn kính (Blanching test / Diascopy):* Dùng lam kính trong ép nhẹ lên thương tổn để phân biệt **hồng ban giãn mạch** (mất màu khi ấn) với **ban xuất huyết mao mạch** (không đổi màu khi ấn).
+   - *Sờ nắn thương tổn xuất huyết:* Phân biệt **ban xuất huyết phẳng (*Non-palpable purpura*)** — do giảm tiểu cầu hoặc DIC — với **ban xuất huyết nổi gờ sờ thấy được (*Palpable purpura*)** — gợi ý viêm mạch hoặc tắc mạch vi khuẩn.
+   - *Dấu hiệu Nikolsky:* Miết nhẹ ngón tay lên vùng da đỏ hoặc da lành cạnh bóng nước để kiểm tra hiện tượng trượt lột thượng bì.
+3. **Thăm khám các cơ quan hệ thống:**
+   - **Hệ hạch ngoại vi:** Hạch góc hàm, cổ, nách, bẹn (chú ý hạch vùng lân cận vết Eschar).
+   - **Tim mạch:** Nghe tim tìm tiếng thổi mới xuất hiện (viêm nội tâm mạc nhiễm khuẩn).
+   - **Bụng:** Đánh giá gan to, lách to, điểm đau khu trú.
+   - **Cơ xương khớp:** Tìm viêm bao gân, sưng nóng đỏ đau các khớp.
+   - **Thần kinh:** Đánh giá tri giác theo thang điểm **Glasgow (GCS)**, đồng tử, dấu kích thích màng não và dấu thần kinh khu trú.
+
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> 3 THAO TÁC THĂM KHÁM CỨU MẠNG TẠI GIƯỜNG BỆNH</div>
+  <ul>
+    <li><strong>Ấn kính (Diascopy) + Sờ nắn tử ban:</strong> Không mất màu khi ấn &rarr; ban xuất huyết; nếu sờ nổi gờ (<em>palpable purpura</em>) kèm diễn tiến nhanh tính bằng giờ &rarr; xử trí khẩn như <strong>nhiễm não mô cầu / viêm mạch hoại tử</strong>.</li>
+    <li><strong>Soi đủ các hốc niêm mạc &amp; thử dấu Nikolsky:</strong> Trợt loét &ge; 2 hốc niêm mạc kèm thượng bì trượt lột khi miết &rarr; <strong>SJS/TEN</strong>, ngừng thuốc nghi ngờ ngay và chuyển đơn vị bỏng / ICU.</li>
+    <li><strong>Lật kiểm tra nếp gấp nách – bẹn – bìu – dưới vú:</strong> Tìm vết loét vảy đen không đau (<strong>Eschar</strong>) kèm hạch vùng &rarr; chìa khóa chẩn đoán đặc hiệu <strong>Sốt mò</strong> để khởi trị Doxycycline sớm.</li>
+  </ul>
+</div>
+
+---
+
+## 5. Chẩn Đoán Phân Biệt Theo 5 Hình Thái Thương Tổn Da {#sec-5}
+
+Phân loại theo **hình thái học thương tổn cơ bản** là trụ cột lâm sàng quan trọng nhất giúp khoanh vùng căn nguyên khoa học và không bỏ sót các nhóm bệnh nguy hiểm (*Must-Not-Miss*):
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Hình thái thương tổn da</th>
+      <th>Tác nhân nhiễm trùng chính</th>
+      <th>Tác nhân không nhiễm trùng / Miễn dịch</th>
+      <th>Điểm nhận dạng lâm sàng then chốt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Ban dát – sẩn lan tỏa</strong><br /><em>(Maculopapular)</em></td>
+      <td>• <strong>Virus cấp:</strong> Sởi, Rubella, Dengue, EBV, CMV, Parvovirus B19, HIV cấp.<br />• <strong>Vi khuẩn / Rickettsia:</strong> Sốt mò, Thương hàn, Giang mai giai đoạn II, Bệnh Lyme.</td>
+      <td>• Phát ban dị ứng do thuốc thể thông thường.<br />• <strong>Hội chứng DRESS</strong>.<br />• Bệnh Still người lớn, Lupus ban đỏ hệ thống (SLE).</td>
+      <td>• Khám hạch to, viêm long hô hấp, tiền sử dùng thuốc trong 2–8 tuần.<br />• Vết <strong>Eschar</strong> ở nếp gấp trong sốt mò; <strong>hạt Koplik</strong> trong sởi.<br />• Dấu hiệu phân ly mạch – nhiệt.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Ban xuất huyết / Tử ban</strong><br /><em>(Petechial / Purpuric)</em></td>
+      <td>• <strong>Cấp cứu sống còn:</strong> Nhiễm não mô cầu (<em>N. meningitidis</em>).<br />• Nhiễm trùng huyết kèm DIC (Gram âm, Tụ cầu, Liên cầu).<br />• Sốt xuất huyết Dengue nặng.<br />• Sốt đốm Rocky Mountain (RMSF).<br />• Viêm nội tâm mạc nhiễm khuẩn.</td>
+      <td>• Viêm mạch do quá mẫn / Viêm mạch IgA (Henoch-Schönlein).<br />• Xuất huyết giảm tiểu cầu huyết khối (<strong>TTP</strong>).<br />• Bệnh huyết thanh do thuốc.</td>
+      <td>• <strong>Palpable purpura:</strong> Gợi ý viêm mạch hoặc tắc mạch vi khuẩn (não mô cầu, lậu cầu lan tỏa, Osler nodes).<br />• <strong>Non-palpable purpura:</strong> Gợi ý giảm tiểu cầu, rối loạn đông máu nặng (Dengue, DIC).<br />• Tìm dấu Janeway, xuất huyết dưới móng dạng mảnh vụn (<em>Splinter hemorrhages</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>3. Mụn nước – Bóng nước</strong><br /><em>(Vesiculobullous)</em></td>
+      <td>• Thủy đậu (Varicella), Herpes simplex (HSV), Zona lan tỏa.<br />• Hội chứng bong vảy da tụ cầu (<strong>SSSS</strong>).<br />• Chốc bóng nước.<br />• <em>Ecthyma gangrenosum</em> (<em>Pseudomonas</em>).</td>
+      <td>• <strong>Cấp cứu da liễu:</strong> Hội chứng Stevens-Johnson (<strong>SJS</strong>) và Hoại tử thượng bì nhiễm độc (<strong>TEN</strong>).<br />• Hồng ban đa dạng (<em>Erythema multiforme</em>).<br />• Pemphigus thông thường.</td>
+      <td>• <strong>SJS/TEN:</strong> Thường do thuốc, trợt loét niêm mạc nặng &ge; 2 vị trí, <strong>Nikolsky (+)</strong>.<br />• <strong>SSSS:</strong> Không tổn thương niêm mạc, độc tố tách lớp hạt thượng bì nông.<br />• <strong>Thủy đậu:</strong> Mụn nước nhiều lứa tuổi (dát đỏ, mụn nước trong, đục, vảy tiết) phân bố ly tâm.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Đỏ da lan tỏa bong vảy</strong><br /><em>(Diffuse Erythema / Desquamative)</em></td>
+      <td>• <strong>Hội chứng sốc nhiễm độc (TSS)</strong> do tụ cầu / liên cầu.<br />• Tinh hồng nhiệt (<em>Scarlet fever</em> do GAS).<br />• Viêm quầng, viêm mô tế bào lan tỏa.</td>
+      <td>• Đỏ da toàn thân do thuốc.<br />• Vảy nến thể mủ lan tỏa (Zumbusch).</td>
+      <td>• Đỏ da như tôm luộc, sốt cao, tụt huyết áp kịch phát, bong da lòng bàn tay – bàn chân sau 1–2 tuần trong <strong>TSS</strong>.<br />• Lưỡi dâu tây, viêm họng hạch đỏ rực trong tinh hồng nhiệt.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Thương tổn loét hoặc có vảy đen</strong><br /><em>(Eschars / Ulcers)</em></td>
+      <td>• <strong>Sốt mò</strong> (<em>Orientia tsutsugamushi</em>).<br />• Bệnh than (<em>Bacillus anthracis</em>).<br />• Rickettsia khác.</td>
+      <td>• Viêm da mủ hoại thư (<em>Pyoderma gangrenosum</em>).<br />• Loét do viêm mạch hoại tử hệ thống.</td>
+      <td>• Vết loét hình tròn / bầu dục có <strong>vảy đen hoại tử ở trung tâm</strong>, viền đỏ gờ nhẹ, <strong>không đau</strong>, kèm viêm hạch vùng lân cận.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+---
+
+## 6. Chiến Lược Cận Lâm Sàng Theo Bậc {#sec-6}
+
+Cận lâm sàng được chỉ định theo **3 bậc** nhằm đồng thời đánh giá mức độ nặng – suy cơ quan, sàng lọc biến chứng cấp cứu và định danh căn nguyên vi sinh hoặc miễn dịch:
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Bậc chỉ định</th>
+      <th>Nhóm xét nghiệm</th>
+      <th>Chỉ số trọng tâm &amp; Ý nghĩa biện luận</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bậc 1: Đánh giá nặng &amp; tổn thương cơ quan</strong><br /><em>(Bắt buộc ngay tại cấp cứu)</em></td>
+      <td>• Tổng phân tích tế bào máu (CBC)<br />• Dấu ấn viêm (CRP, PCT, ESR)<br />• Đông máu toàn bộ (PT, aPTT, Fibrinogen, D-dimer)<br />• Sinh hóa gan – thận, Điện giải, CK, Khí máu &amp; Lactate<br />• Tổng phân tích nước tiểu</td>
+      <td>• <strong>WBC tăng chuyển trái:</strong> nhiễm khuẩn; <strong>giảm WBC:</strong> Dengue, virus, sốt rét, thương hàn.<br />• <strong>Eosinophil &gt; 700–1500/&mu;L:</strong> gợi ý hội chứng <strong>DRESS</strong> / dị ứng thuốc.<br />• <strong>Giảm tiểu cầu + rối loạn đông máu:</strong> Dengue nặng, <strong>DIC</strong>, RMSF, nhiễm khuẩn huyết.<br />• <strong>AST/ALT, Creatinine, CK, Lactate:</strong> đánh giá tổn thương gan, AKI, tiêu cơ vân (TSS), giảm tưới máu mô.<br />• <strong>Protein/hồng cầu/bạch cầu niệu:</strong> viêm cầu thận (IgA), viêm thận kẽ do thuốc.</td>
+    </tr>
+    <tr>
+      <td><strong>Bậc 2: Vi sinh &amp; Huyết thanh học định hướng</strong><br /><em>(Theo dịch tễ &amp; hình thái ban)</em></td>
+      <td>• <strong>Cấy máu 2–3 bộ</strong> (trước kháng sinh)<br />• Nhuộm Gram &amp; cấy dịch mủ / mụn nước<br />• Test nhanh <strong>Dengue NS1 Ag</strong> / IgM–IgG<br />• Lam máu Giemsa / test nhanh <strong>Sốt rét</strong><br />• Huyết thanh / PCR (Rickettsia, <em>O. tsutsugamushi</em>, Sởi, Rubella, EBV, CMV, Parvovirus B19, HIV, RPR/TPHA)<br />• <strong>Tzanck smear</strong> &amp; <strong>Chọc dịch não tủy (LP)</strong></td>
+      <td>• <strong>Cấy máu:</strong> phát hiện nhiễm khuẩn huyết, não mô cầu, viêm nội tâm mạc.<br />• <strong>Dengue NS1 Ag</strong> nhạy cao ngày 1–5; <strong>IgM/IgG</strong> từ ngày thứ 5 trở đi.<br />• <strong>Tzanck smear:</strong> tìm tế bào biểu mô đa nhân khổng lồ (xác nhận HSV / VZV).<br />• <strong>Chọc dịch não tủy (LP):</strong> bắt buộc khi nghi viêm màng não (sốt, tử ban hoại tử, đau đầu dữ dội, cổ cứng, rối loạn tri giác) sau khi đã loại trừ chống chỉ định phù não.</td>
+    </tr>
+    <tr>
+      <td><strong>Bậc 3: Mô bệnh học &amp; Hình ảnh học chuyên sâu</strong><br /><em>(Chẩn đoán xác định / Tìm ổ sâu)</em></td>
+      <td>• <strong>Sinh thiết da (<em>Skin Biopsy</em>)</strong> &amp; miễn dịch huỳnh quang trực tiếp<br />• X-quang ngực thẳng<br />• Siêu âm tim (TTE / TEE)<br />• Siêu âm / CT-scan ổ bụng</td>
+      <td>• <strong>Sinh thiết da:</strong> tiêu chuẩn vàng phân biệt viêm mạch hủy bạch cầu (<em>leukocytoclastic vasculitis</em>), hoại tử thượng bì toàn phần (<strong>SJS/TEN</strong>), tách nông lớp hạt (<strong>SSSS</strong>), thâm nhiễm Eosinophil (<strong>DRESS</strong>), lắng đọng IgA/IgG/C3.<br />• <strong>X-quang phổi:</strong> ổ đông đặc, lao kê, thâm nhiễm kẽ.<br />• <strong>TTE/TEE:</strong> tìm nốt sùi van tim khi nghi viêm nội tâm mạc nhiễm khuẩn.<br />• <strong>Siêu âm / CT bụng:</strong> phát hiện ổ áp xe sâu hoặc huyết khối.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+---
+
+## 7. Lưu Đồ Tiếp Cận Cấp Cứu & Phân Nhánh Theo Hình Thái Ban {#sec-7}
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #e11d48);"></i> LƯU ĐỒ TIẾP CẬN CẤP CỨU &amp; PHÂN NHÁNH HÌNH THÁI BAN Ở NGƯỜI LỚN SỐT KÈM PHÁT BAN</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 710" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="srArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-text-muted, #64748b)" />
+        </marker>
+        <marker id="srRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48" />
+        </marker>
+        <marker id="srTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0d9488" />
+        </marker>
+      </defs>
+
+      {/* Main Title */}
+      <text x="480" y="28" text-anchor="middle" font-size="16" font-weight="800" fill="var(--color-text, #0f172a)">
+        THUẬT TOÁN TIẾP CẬN NGƯỜI LỚN SỐT KÈM PHÁT BAN (Triage Red Flags → Hình Thái → Xử Trí)
+      </text>
+
+      {/* Entry Node */}
+      <rect x="290" y="44" width="380" height="46" rx="10" fill="rgba(225, 29, 72, 0.12)" stroke="#e11d48" stroke-width="2" />
+      <text x="480" y="64" text-anchor="middle" font-size="13" font-weight="800" fill="#e11d48">
+        BỆNH NHÂN NGƯỜI LỚN SỐT KÈM PHÁT BAN
+      </text>
+      <text x="480" y="81" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Đánh giá ngay Sinh hiệu • Huyết động ABCDE • Tri giác (GCS) • Dấu màng não
+      </text>
+
+      {/* Down to Gate 1 */}
+      <line x1="480" y1="90" x2="480" y2="116" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#srArr)" />
+
+      {/* Gate 1: Red Flags */}
+      <rect x="285" y="118" width="390" height="72" rx="10" fill="rgba(225, 29, 72, 0.1)" stroke="#e11d48" stroke-width="2" />
+      <text x="480" y="139" text-anchor="middle" font-size="12.5" font-weight="800" fill="#e11d48">
+        BƯỚC 1: CÓ BẤT KỲ DẤU HIỆU BÁO ĐỘNG ĐỎ (RED FLAGS) NÀO KHÔNG?
+      </text>
+      <text x="480" y="158" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Sốc / Tụt HA (&lt; 90 mmHg) • Rối loạn tri giác / Cổ gượng • Tử ban không mất khi ấn kính
+      </text>
+      <text x="480" y="176" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Trợt &ge; 2 hốc niêm mạc • Nikolsky (+) • Bong da &gt; 10% BSA • Đau da dữ dội • SGMD
+      </text>
+
+      {/* Left Branch: YES */}
+      <line x1="285" y1="154" x2="230" y2="154" stroke="#e11d48" stroke-width="2" marker-end="url(#srRed)" />
+      <rect x="242" y="132" width="34" height="18" rx="4" fill="#e11d48" />
+      <text x="259" y="144" text-anchor="middle" font-size="10" font-weight="800" fill="#ffffff">CÓ</text>
+
+      <rect x="18" y="108" width="210" height="148" rx="10" fill="rgba(225, 29, 72, 0.12)" stroke="#e11d48" stroke-width="2" />
+      <text x="123" y="130" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">
+        CẤP CỨU KHẨN CẤP TỨC THÌ
+      </text>
+      <text x="123" y="150" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Hồi sức ABC, Oxy (SpO2 &ge; 92–95%)
+      </text>
+      <text x="123" y="168" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Đặt 2 đường truyền IV lớn + Dịch
+      </text>
+      <text x="123" y="186" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Cấy máu 2–3 bộ ngay lập tức
+      </text>
+      <text x="123" y="204" text-anchor="middle" font-size="10.5" font-weight="700" fill="#e11d48">
+        • Kháng sinh TM phổ rộng &le; 1 giờ
+      </text>
+      <text x="123" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#e11d48">
+        • Ngừng thuốc nghi ngờ (SCARs)
+      </text>
+      <text x="123" y="242" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Cách ly nếu nghi dịch (não mô cầu/sởi)
+      </text>
+
+      {/* Right Box: Parallel History & Lab */}
+      <rect x="712" y="114" width="230" height="122" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.6" />
+      <text x="827" y="135" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">
+        KHAI THÁC &amp; XÉT NGHIỆM BẬC 1
+      </text>
+      <text x="827" y="155" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">
+        • Tiền sử thuốc 2–8 tuần &amp; Dịch tễ
+      </text>
+      <text x="827" y="173" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">
+        • CBC (Eos, Tiểu cầu), CRP/PCT
+      </text>
+      <text x="827" y="191" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">
+        • Đông máu (DIC), Gan – Thận, CK
+      </text>
+      <text x="827" y="209" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">
+        • Khí máu, Lactate, Dengue NS1/IgM
+      </text>
+      <text x="827" y="226" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">
+        (Làm song song cả nhóm CÓ &amp; KHÔNG)
+      </text>
+      <line x1="675" y1="154" x2="710" y2="154" stroke="#0284c7" stroke-width="1.6" stroke-dasharray="4,3" />
+
+      {/* Down to Step 2: Morphology */}
+      <line x1="480" y1="190" x2="480" y2="242" stroke="#0d9488" stroke-width="2" marker-end="url(#srTeal)" />
+      <rect x="492" y="204" width="112" height="20" rx="4" fill="rgba(13, 148, 136, 0.14)" />
+      <text x="548" y="218" text-anchor="middle" font-size="10" font-weight="800" fill="#0d9488">KHÔNG / SONG SONG</text>
+
+      {/* Step 2: Morphology Box */}
+      <rect x="275" y="244" width="410" height="54" rx="10" fill="rgba(13, 148, 136, 0.12)" stroke="#0d9488" stroke-width="2" />
+      <text x="480" y="266" text-anchor="middle" font-size="13" font-weight="800" fill="#0d9488">
+        BƯỚC 2: KHÁM DA – NIÊM TOÀN DIỆN &amp; PHÂN LOẠI HÌNH THÁI BAN
+      </text>
+      <text x="480" y="285" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Nghiệm pháp ấn kính (Diascopy) • Sờ nắn thương tổn • Kiểm tra Nikolsky • Soi nếp gấp tìm Eschar
+      </text>
+
+      {/* Orthogonal 5-Way Split */}
+      <line x1="480" y1="298" x2="480" y2="322" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="104" y1="322" x2="856" y2="322" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="104" y1="322" x2="104" y2="348" stroke="#e11d48" stroke-width="1.8" marker-end="url(#srRed)" />
+      <line x1="292" y1="322" x2="292" y2="348" stroke="#7c3aed" stroke-width="1.8" marker-end="url(#srArr)" />
+      <line x1="480" y1="322" x2="480" y2="348" stroke="#d97706" stroke-width="1.8" marker-end="url(#srArr)" />
+      <line x1="668" y1="322" x2="668" y2="348" stroke="#0284c7" stroke-width="1.8" marker-end="url(#srArr)" />
+      <line x1="856" y1="322" x2="856" y2="348" stroke="#0d9488" stroke-width="1.8" marker-end="url(#srTeal)" />
+
+      {/* Leaf 1: Petechial/Purpuric */}
+      <rect x="18" y="350" width="172" height="260" rx="10" fill="rgba(225, 29, 72, 0.08)" stroke="#e11d48" stroke-width="1.8" />
+      <text x="104" y="373" text-anchor="middle" font-size="11.5" font-weight="800" fill="#e11d48">1. XUẤT HUYẾT / TỬ BAN</text>
+      <text x="104" y="390" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Không mất khi ấn kính</text>
+      <text x="104" y="418" text-anchor="middle" font-size="10.5" font-weight="700" fill="#e11d48">• Não mô cầu / DIC</text>
+      <text x="104" y="436" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Dengue nặng / RMSF</text>
+      <text x="104" y="454" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• VNTMNK / Viêm mạch</text>
+      <text x="104" y="472" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• TTP / Bệnh huyết thanh</text>
+      <line x1="34" y1="490" x2="174" y2="490" stroke="var(--color-border, #e2e8f0)" stroke-width="1.2" />
+      <text x="104" y="512" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Xử trí định hướng:</text>
+      <text x="104" y="532" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Ceftriaxone + Vancomycin</text>
+      <text x="104" y="548" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">± Doxycycline (RMSF)</text>
+      <text x="104" y="566" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">LP nếu nghi VMN</text>
+      <text x="104" y="594" text-anchor="middle" font-size="10" font-weight="800" fill="#e11d48">→ Cấp cứu tối khẩn!</text>
+
+      {/* Leaf 2: Vesiculobullous */}
+      <rect x="206" y="350" width="172" height="260" rx="10" fill="rgba(124, 58, 237, 0.08)" stroke="#7c3aed" stroke-width="1.8" />
+      <text x="292" y="373" text-anchor="middle" font-size="11.5" font-weight="800" fill="#7c3aed">2. MỤN / BÓNG NƯỚC</text>
+      <text x="292" y="390" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Thử Nikolsky &amp; Niêm mạc</text>
+      <text x="292" y="418" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c3aed">• SJS / TEN (SCARs)</text>
+      <text x="292" y="436" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• SSSS (không loét niêm)</text>
+      <text x="292" y="454" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Thủy đậu / HSV / Zona</text>
+      <text x="292" y="472" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Ecthyma gangrenosum</text>
+      <line x1="222" y1="490" x2="362" y2="490" stroke="var(--color-border, #e2e8f0)" stroke-width="1.2" />
+      <text x="292" y="512" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Xử trí định hướng:</text>
+      <text x="292" y="532" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Ngừng thuốc + ICU / Bỏng</text>
+      <text x="292" y="548" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Chăm sóc da &amp; mắt vô trùng</text>
+      <text x="292" y="566" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Tzanck / Sinh thiết da</text>
+      <text x="292" y="594" text-anchor="middle" font-size="10" font-weight="800" fill="#7c3aed">→ Tính điểm SCORTEN</text>
+
+      {/* Leaf 3: Diffuse Erythema */}
+      <rect x="394" y="350" width="172" height="260" rx="10" fill="rgba(217, 119, 6, 0.08)" stroke="#d97706" stroke-width="1.8" />
+      <text x="480" y="373" text-anchor="middle" font-size="11.5" font-weight="800" fill="#d97706">3. ĐỎ DA LAN TỎA</text>
+      <text x="480" y="390" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Đỏ như tôm luộc / Bong vảy</text>
+      <text x="480" y="418" text-anchor="middle" font-size="10.5" font-weight="700" fill="#d97706">• Sốc nhiễm độc (TSS)</text>
+      <text x="480" y="436" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Tinh hồng nhiệt (GAS)</text>
+      <text x="480" y="454" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Viêm quầng / Mô tế bào</text>
+      <text x="480" y="472" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Đỏ da thuốc / Zumbusch</text>
+      <line x1="410" y1="490" x2="550" y2="490" stroke="var(--color-border, #e2e8f0)" stroke-width="1.2" />
+      <text x="480" y="512" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Xử trí định hướng:</text>
+      <text x="480" y="532" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Hồi sức dịch / Vận mạch</text>
+      <text x="480" y="548" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Phối hợp Clindamycin</text>
+      <text x="480" y="566" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">(ức chế ngoại độc tố)</text>
+      <text x="480" y="594" text-anchor="middle" font-size="10" font-weight="800" fill="#d97706">→ Tìm &amp; dẫn lưu ổ nhiễm</text>
+
+      {/* Leaf 4: Maculopapular */}
+      <rect x="582" y="350" width="172" height="260" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="668" y="373" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0284c7">4. DÁT – SẨN LAN TỎA</text>
+      <text x="668" y="390" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Mất màu khi ấn kính</text>
+      <text x="668" y="418" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0284c7">• Virus (Sởi, Dengue, HIV)</text>
+      <text x="668" y="436" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Giang mai II / Thương hàn</text>
+      <text x="668" y="454" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Hội chứng DRESS</text>
+      <text x="668" y="472" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Dị ứng thuốc / Still / SLE</text>
+      <line x1="598" y1="490" x2="738" y2="490" stroke="var(--color-border, #e2e8f0)" stroke-width="1.2" />
+      <text x="668" y="512" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Xử trí định hướng:</text>
+      <text x="668" y="532" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Huyết thanh virus / RPR</text>
+      <text x="668" y="548" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">DRESS: Corticoid toàn thân</text>
+      <text x="668" y="566" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Cách ly hô hấp nếu Sởi</text>
+      <text x="668" y="594" text-anchor="middle" font-size="10" font-weight="800" fill="#0284c7">→ Luôn soi tìm Eschar!</text>
+
+      {/* Leaf 5: Eschar / Ulcer */}
+      <rect x="770" y="350" width="172" height="260" rx="10" fill="rgba(13, 148, 136, 0.08)" stroke="#0d9488" stroke-width="1.8" />
+      <text x="856" y="373" text-anchor="middle" font-size="11.5" font-weight="800" fill="#0d9488">5. LOÉT VẢY ĐEN</text>
+      <text x="856" y="390" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Eschar ở vùng nếp gấp</text>
+      <text x="856" y="418" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0d9488">• Sốt mò (O. tsutsugamushi)</text>
+      <text x="856" y="436" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Rickettsia khác</text>
+      <text x="856" y="454" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Bệnh than (B. anthracis)</text>
+      <text x="856" y="472" text-anchor="middle" font-size="10.5" fill="var(--color-text, #0f172a)">• Viêm mạch hoại tử</text>
+      <line x1="786" y1="490" x2="926" y2="490" stroke="var(--color-border, #e2e8f0)" stroke-width="1.2" />
+      <text x="856" y="512" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Xử trí định hướng:</text>
+      <text x="856" y="532" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Khởi trị ngay Doxycycline</text>
+      <text x="856" y="548" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">100 mg x 2 lần/ngày (7 ngày)</text>
+      <text x="856" y="566" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">PCR / Test nhanh Rickettsia</text>
+      <text x="856" y="594" text-anchor="middle" font-size="10" font-weight="800" fill="#0d9488">→ Cắt sốt sau 36–48 giờ</text>
+
+      {/* Safety Footer Banner */}
+      <rect x="18" y="632" width="924" height="58" rx="10" fill="rgba(225, 29, 72, 0.09)" stroke="#e11d48" stroke-width="1.6" />
+      <text x="480" y="655" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">
+        NGUYÊN TẮC AN TOÀN TỐI THƯỢNG: KHÔNG TRÌ HOÃN KHÁNG SINH Ở TỬ BAN NGHI NÃO MÔ CẦU &amp; TRÁNH NSAIDs KHI CHƯA LOẠI TRỪ DENGUE
+      </text>
+      <text x="480" y="675" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Hạ sốt an toàn bằng Paracetamol 10–15 mg/kg • Đánh giá lại tiến triển thương tổn da &amp; huyết động mỗi 2–4 giờ trong 24 giờ đầu.
+      </text>
+    </svg>
+  </div>
+</div>
+
+---
+
+## 8. Nguyên Tắc Xử Trí Cấp Cứu, Kháng Sinh & Phản Ứng Thuốc Nặng {#sec-8}
+
+### 8.1. Hồi Sức Cấp Cứu và Ổn Định Huyết Động
+- Kiểm soát đường thở, thở oxy mục tiêu giữ **$\text{SpO}_2 \ge 92 - 95\%$**.
+- Thiết lập **02 đường truyền tĩnh mạch nòng lớn**; truyền dịch tinh thể (**Natri Clorid 0.9%** hoặc **Ringer Lactate**) nhanh nếu có hạ huyết áp hoặc giảm thể tích tuần hoàn.
+- Phối hợp thuốc vận mạch (**Noradrenaline**) nếu tụt huyết áp không đáp ứng với bù đủ dịch.
+
+### 8.2. Liệu Pháp Kháng Sinh Theo Kinh Nghiệm Kịp Thời (*Empiric Antimicrobial Therapy*)
+- Ở bệnh nhân sốt kèm **ban xuất huyết / tử ban**, nghi ngờ nhiễm khuẩn huyết hoặc viêm màng não do não mô cầu: **bắt buộc dùng kháng sinh tĩnh mạch phổ rộng trong vòng 1 giờ đầu tiên ngay sau khi cấy máu** (không trì hoãn nếu cấy máu hoặc chọc dịch não tủy gặp khó khăn).
+  - **Phác đồ kinh nghiệm chuẩn:** **Ceftriaxone $2\text{ g}$ tiêm tĩnh mạch mỗi 12 giờ** phối hợp **Vancomycin $15 - 20\text{ mg/kg}$ tiêm tĩnh mạch mỗi 8–12 giờ** (bao phủ não mô cầu, phế cầu kháng thuốc và tụ cầu).
+  - **Nghi ngờ sốt mò hoặc bệnh Rickettsia:** Bổ sung ngay **Doxycycline $100\text{ mg}$** uống hoặc truyền tĩnh mạch **mỗi 12 giờ**.
+  - **Nghi ngờ sốc nhiễm độc do tụ cầu / liên cầu (TSS):** Phối hợp thêm **Clindamycin** để ức chế tổng hợp ngoại độc tố của vi khuẩn.
+
+### 8.3. Xử Trí Đặc Hiệu Phản Ứng Có Hại Nặng Của Thuốc Trên Da (*SCARs*)
+- **Ngừng ngay lập tức toàn bộ các thuốc nghi ngờ** hoặc mới sử dụng trong vòng 2–8 tuần gần đây.
+- **Đối với SJS / TEN:**
+  - Nhập khoa **Hồi sức tích cực (ICU)** hoặc **Đơn vị bỏng** để chăm sóc vô trùng nghiêm ngặt.
+  - Bù dịch và điện giải tích cực bù lại lượng dịch thất thoát qua bề mặt da trợt loét.
+  - Chăm sóc da không dính, chống nhiễm khuẩn thứ phát; **giữ ẩm và rửa mắt thường xuyên** bằng nước muối sinh lý hoặc thuốc mỡ kháng sinh nhằm phòng ngừa dính kết mạc và mù lòa.
+  - Điều hòa miễn dịch: cân nhắc **Cyclosporine A**, **IVIG** hoặc **Corticoid** liều cao ngắn ngày tùy phác đồ chuyên khoa và **thang điểm tiên lượng SCORTEN**.
+- **Đối với Hội chứng DRESS:**
+  - **Corticoid toàn thân** (**Methylprednisolone $0.5 - 1\text{ mg/kg/ngày}$**), giảm liều dần rất chậm trong vòng **2–3 tháng** để phòng ngừa hội chứng bùng phát tái phát.
+
+### 8.4. Kiểm Soát Thân Nhiệt, Triệu Chứng & Cách Ly Phòng Dịch
+- **Thuốc hạ sốt ưu tiên:** **Paracetamol (*Acetaminophen*)** liều **$10 - 15\text{ mg/kg}$** (người lớn **$500 - 650\text{ mg}$ mỗi 4–6 giờ**, tối đa không quá **$3 - 4\text{ g/ngày}$**).
+- **Chống chỉ định tuyệt đối Aspirin hoặc các thuốc NSAIDs khác (Ibuprofen...)** khi chưa loại trừ sốt xuất huyết Dengue do nguy cơ nặng thêm xuất huyết tiêu hóa và rối loạn chức năng tiểu cầu.
+- Chườm mát, làm mát bằng phương pháp bay hơi khi thân nhiệt **$> 40^\circ\text{C}$**.
+- **Cách ly hô hấp nghiêm ngặt** với các trường hợp nghi sởi, thủy đậu hoặc viêm màng não do não mô cầu; **dự phòng kháng sinh** cho người tiếp xúc gần bệnh nhân não mô cầu bằng **Ciprofloxacin** hoặc **Rifampicin**.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-hospital-user"></i> TIÊU CHUẨN NHẬP ICU &amp; CHUYỂN TUYẾN KHẨN</div>
+  <ul>
+    <li>Bất kỳ biểu hiện nào của <strong>sốc nhiễm khuẩn / tụt huyết áp cần vận mạch</strong>, suy hô hấp, rối loạn tri giác, co giật, đông máu nội mạch rải rác (<strong>DIC</strong>) hoặc tử ban hoại tử lan nhanh.</li>
+    <li><strong>SJS / TEN</strong> có diện tích bong trợt thượng bì <strong>&gt; 10% BSA</strong>, điểm <strong>SCORTEN &ge; 2</strong> hoặc tổn thương niêm mạc mắt – đường thở nặng &rarr; chuyển <strong>Đơn vị bỏng / ICU</strong> chuyên sâu.</li>
+    <li>Nghi <strong>viêm cân mạc hoại tử</strong> (đau dữ dội không tương xứng, phù cứng, lạo xạo dưới da) &rarr; hội chẩn <strong>phẫu thuật cắt lọc cấp cứu</strong> ngay, không chờ chẩn đoán hình ảnh kéo dài.</li>
+  </ul>
+</div>
+
+---
+
+## 9. Ca Lâm Sàng Minh Họa, Pearls & Trích Dẫn {#sec-9}
+
+### 9.1. Ca Lâm Sàng Thực Chiến (*Clinical Case Vignette*)
+
+> **Bệnh cảnh lâm sàng:** Bệnh nhân **nam, 34 tuổi**, kỹ sư công trình, vào viện vì **sốt cao ngày thứ 5, nổi ban rải rác toàn thân kèm đau đầu dữ dội**.
+> - **Bệnh sử:** Cách nhập viện 5 ngày, bệnh nhân khởi phát sốt cao liên tục $39 - 40^\circ\text{C}$, kèm ớn lạnh, đau đầu dữ dội vùng thái dương và hai hốc mắt, đau mỏi toàn thân. Tự uống Paracetamol nhưng sốt hạ ít rồi tăng lại. Ngày thứ 4 xuất hiện các chấm đỏ ở cẳng tay và cẳng chân, lan dần lên thân mình. Sáng nhập viện, bệnh nhân mệt nhiều, buồn nôn, li bì nhẹ nên vào khoa Cấp cứu.
+> - **Dịch tễ & Tiền sử:** Mới trở về từ công trường vùng **đồi núi trung du cách đây 2 tuần**. Chưa ghi nhận tiền sử dị ứng thuốc.
+
+#### Thăm Khám & Dấu Hiệu Sinh Tồn Lúc Nhập Viện
+
+| Thông số | Kết quả ghi nhận | Ý nghĩa lâm sàng |
+| :--- | :--- | :--- |
+| **Sinh hiệu** | Mạch **$88\text{ lần/phút}$** • HA **$\mathbf{100/65}\text{ mmHg}$** • Nhiệt độ **$39.2^\circ\text{C}$** • Nhịp thở **$20\text{ lần/phút}$** • $\text{SpO}_2\ 97\%$ (khí trời) | **Phân ly mạch – nhiệt** rõ rệt (mạch chậm tương đối so với sốt $39.2^\circ\text{C}$) |
+| **Tri giác & Thần kinh** | Tỉnh nhưng tiếp xúc chậm, li bì nhẹ (**Glasgow 14 điểm**). Không dấu thần kinh khu trú, cổ mềm, Kernig (&minus;) | Dấu hiệu tổn thương thần kinh / nhiễm độc nhẹ; không rõ hội chứng màng não |
+| **Khám da – niêm mạc** | Mặt và ngực xung huyết đỏ; thân mình và tứ chi có nhiều dát đỏ và chấm sẩn $2 - 5\text{ mm}$ xen kẽ vài chấm xuất huyết nhỏ không mất khi ấn kính. Lòng bàn tay – chân và niêm mạc miệng không bóng nước hay trợt loét. **Vùng bẹn phải** có 01 vết loét $1 \times 1.5\text{ cm}$ hình bầu dục, trung tâm **vảy hoại tử màu nâu đen**, viền hơi gờ đỏ, **không đau, không ngứa** | Phát hiện **vết loét vảy đen điển hình (Eschar)** nhờ thăm khám kỹ vùng nếp gấp kín |
+| **Hạch & Cơ quan khác** | Hạch bẹn phải **$2 \times 2\text{ cm}$**, chắc, hơi đau nhẹ khi ấn, di động tốt; vài hạch nách nhỏ hai bên. Tim đều không âm thổi; phổi trong; bụng mềm, **lách mấp mé bờ sườn** | Viêm hạch vùng dẫn lưu cùng bên vết Eschar + lách to nhẹ |
+
+#### Kết Quả Cận Lâm Sàng Ban Đầu
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Xét nghiệm</th>
+      <th>Kết quả của bệnh nhân</th>
+      <th>Ý nghĩa biện luận lâm sàng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Bạch cầu (WBC)</strong></td>
+      <td>8.2 &times; 10<sup>9</sup>/L (Lympho 42%, Mono 12%)</td>
+      <td>Không tăng cao kiểu nhiễm khuẩn sinh mủ điển hình; tăng nhẹ dòng đơn nhân.</td>
+    </tr>
+    <tr>
+      <td><strong>Hemoglobin / Hematocrit</strong></td>
+      <td>142 g/L / 41%</td>
+      <td>Chưa có tình trạng cô đặc máu hay xuất huyết nặng.</td>
+    </tr>
+    <tr>
+      <td><strong>Tiểu cầu (Platelets)</strong></td>
+      <td><strong>92 &times; 10<sup>9</sup>/L</strong></td>
+      <td>Giảm tiểu cầu nhẹ (gặp trong cả sốt mò và Dengue).</td>
+    </tr>
+    <tr>
+      <td><strong>AST / ALT</strong></td>
+      <td><strong>184 U/L / 165 U/L</strong></td>
+      <td>Men gan tăng gấp 3–4 lần ULN &rarr; tổn thương viêm gan cấp mức độ trung bình.</td>
+    </tr>
+    <tr>
+      <td><strong>Bilirubin TP / Creatinine / Điện giải</strong></td>
+      <td>18.4 &mu;mol/L / 86 &mu;mol/L / Bình thường</td>
+      <td>Chức năng thận và bài tiết mật còn bảo tồn.</td>
+    </tr>
+    <tr>
+      <td><strong>CRP / Khí máu &amp; Lactate</strong></td>
+      <td><strong>CRP 68 mg/L</strong> • pH 7.41 • Lactate 1.6 mmol/L</td>
+      <td>Phản ứng viêm rõ; chưa có toan chuyển hóa hay sốc giảm tưới máu mô.</td>
+    </tr>
+    <tr>
+      <td><strong>Dengue NS1 &amp; IgM/IgG • Lam sốt rét</strong></td>
+      <td>Âm tính</td>
+      <td>Loại trừ Sốt xuất huyết Dengue và Sốt rét cấp.</td>
+    </tr>
+    <tr>
+      <td><strong>RT-PCR máu <em>Orientia tsutsugamushi</em></strong></td>
+      <td><strong>Dương tính (+)</strong></td>
+      <td>Khẳng định xác định căn nguyên <strong>Sốt mò (<em>Scrub Typhus</em>)</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+#### Biện Luận Chẩn Đoán Phân Biệt & Điều Trị
+
+1. **Tóm tắt vấn đề cốt lõi:** (a) Hội chứng nhiễm trùng sốt cao cấp tính có phân ly mạch – nhiệt; (b) Vết loét vảy đen (**Eschar**) tại bẹn phải kèm viêm hạch vùng cùng bên; (c) Ban dát sẩn xen kẽ chấm xuất huyết rải rác; (d) Rối loạn tri giác nhẹ (li bì, GCS 14) và tăng men gan gấp 3–4 lần.
+2. **Biện luận phân biệt:**
+   - **Sốt mò (*Scrub Typhus* do *Orientia tsutsugamushi*):** Nghĩ đến hàng đầu nhờ hội tụ dịch tễ đồi núi, sốt cao đau đầu dữ dội, phân ly mạch – nhiệt, ban dát sẩn cuối tuần đầu và đặc biệt là **vết Eschar kinh điển ở nếp gấp bẹn kèm hạch vùng**.
+   - *Sốt xuất huyết Dengue:* Phổ biến ở sốt ngày 5 có ban và giảm tiểu cầu, nhưng không giải thích được vết Eschar và hạch vùng; đã loại trừ bằng NS1/IgM âm tính.
+   - *Nhiễm khuẩn huyết do Não mô cầu:* Cần cảnh giác khi có sốt + chấm xuất huyết + li bì, nhưng không có ban hoại tử hình sao lan nhanh hay cổ gượng, bệnh diễn tiến đến ngày thứ 5 và có Eschar đặc thù.
+   - *Nhiễm Rickettsia khác / Thương hàn:* Thương hàn có phân ly mạch – nhiệt và ban đào (*rose spots*) nhưng không tạo vết loét vảy đen hoại tử.
+3. **Chẩn đoán xác định:** **Sốt mò (*Scrub Typhus*) ngày thứ 5 có biến chứng viêm gan cấp và tổn thương thần kinh mức độ nhẹ.**
+4. **Điều trị & Tiến triển:**
+   - **Kháng sinh đặc hiệu:** **Doxycycline $100\text{ mg}$** uống 1 viên $\times$ 2 lần/ngày (sau ăn no) trong **7 ngày**.
+   - **Hỗ trợ:** Paracetamol $500\text{ mg}$ khi sốt $\ge 38.5^\circ\text{C}$, truyền dịch Ringer Lactate duy trì thể tích tuần hoàn.
+   - **Diễn tiến:** Sau **36–48 giờ** dùng Doxycycline, bệnh nhân **cắt sốt hoàn toàn**, tỉnh táo, hết đau đầu, ban nhạt dần và lặn mất; men gan hồi phục sau 1 tuần.
+
+### 9.2. Thông Điệp Lâm Sàng Cốt Lõi (*Take-Home Messages*)
+
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> 5 THÔNG ĐIỆP VÀNG KHI TIẾP CẬN SỐT KÈM PHÁT BAN Ở NGƯỜI LỚN</div>
+  <ol>
+    <li><strong>Red Flags trước, hình thái ban sau:</strong> Sàng lọc ngay tụt huyết áp, rối loạn tri giác, tử ban không mất khi ấn kính, trợt &ge; 2 hốc niêm mạc, dấu Nikolsky (+), bong da &gt; 10% BSA và đau da dữ dội không tương xứng.</li>
+    <li><strong>Hình thái học thương tổn cơ bản là la bàn phân tầng:</strong> Dùng nghiệm pháp ấn kính (<em>Diascopy</em>) và sờ nắn ban xuất huyết để tách rạch ròi 5 nhóm hình thái ban.</li>
+    <li><strong>Cởi áo khám đủ các vùng nếp gấp &amp; hốc niêm mạc:</strong> Không bỏ sót vết loét vảy đen <strong>Eschar</strong> (sốt mò), hạt Koplik (sởi) hay trợt niêm mạc sớm của <strong>SJS/TEN</strong>.</li>
+    <li><strong>Nguyên tắc giờ vàng &amp; an toàn thuốc:</strong> Kháng sinh tĩnh mạch phổ rộng trong <strong>1 giờ đầu</strong> khi nghi não mô cầu; ngừng ngay thuốc nghi ngờ trong cửa sổ <strong>2–8 tuần</strong> khi nghi SCARs; <strong>chống chỉ định NSAIDs / Aspirin</strong> khi chưa loại trừ Dengue.</li>
+    <li><strong>Cách ly và dự phòng kịp thời:</strong> Thiết lập cách ly hô hấp sớm ở bệnh nhân nghi sởi, thủy đậu, não mô cầu và xử trí dự phòng cho người tiếp xúc gần.</li>
+  </ol>
+</div>
+
+<div class="citation-box">
+  <strong>Tài Liệu Tham Khảo (Chuẩn AMA):</strong>
+  <ol>
+    <li>Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J, eds. <em>Harrison's Principles of Internal Medicine</em>. 20th ed. McGraw-Hill Education; 2018.</li>
+    <li>Stern SDC, Cifu AS, Altkorn D. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020.</li>
+    <li>Celenza A, Jelinek GA, eds. <em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023.</li>
+    <li>Farrar J, Hotez PJ, Junghanss T, Kang G, Lalloo D, White NJ, eds. <em>Manson's Tropical Diseases</em>. 24th ed. Elsevier Saunders; 2024.</li>
+    <li>Rakel RE, Rakel DP, eds. <em>Conn's Current Therapy 2026</em>. Elsevier; 2026.</li>
+    <li>Cifuentes M, ed. <em>Algorithmic Diagnosis of Symptoms and Signs: A Cost-Effective Approach</em>. 3rd ed. Wolters Kluwer; 2017.</li>
+    <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị các bệnh da liễu</em> (Ban hành kèm theo Quyết định số 75/QĐ-BYT). Nhà xuất bản Y học; 2015.</li>
+    <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị bệnh sốt xuất huyết Dengue</em> (Ban hành kèm theo Quyết định số 2760/QĐ-BYT). Nhà xuất bản Y học; 2020.</li>
+    <li>World Health Organization. <em>Pocket Book of Hospital Care for Children: Guidelines for the Management of Common Illnesses with Limited Resources</em>. 2nd ed. World Health Organization; 2013.</li>
+  </ol>
+</div>
+
+<div class="btn-row">
+  <a href="#/basic-medical/tiep-can" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Tiếp Cận Lâm Sàng</a>
+  <a href="#/basic-medical/tiep-can/ck03-truyen-nhiem-sot/tc-03-sot-cap-tinh-nl" class="btn"><i class="fa-solid fa-temperature-high"></i> Xem Tiếp Cận Sốt Cấp Tính</a>
+  <a href="#/basic-medical/khang-sinh" class="btn"><i class="fa-solid fa-capsules"></i> Mở Kháng Sinh Học Lâm Sàng</a>
+</div>
