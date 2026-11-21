@@ -316,9 +316,9 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
     icon: 'fa-droplet',
     color: '#be123c',
     bgColor: 'rgba(190, 18, 60, 0.12)',
-    badge: '2 bài MDX',
+    badge: '3 bài MDX',
     description: 'Tiếp cận thiếu máu theo MCV & hồng cầu lưới, bất thường bạch cầu, bất thường tiểu cầu, rối loạn đông cầm máu và dị ứng thuốc – miễn dịch lâm sàng.',
-    clinicalObjective: 'Đọc sâu huyết đồ ngoại biên, nhận diện các cấp cứu huyết học – miễn dịch (TTP, DIC, sốt giảm bạch cầu hạt, phản vệ, SJS/TEN, DRESS).',
+    clinicalObjective: 'Đọc sâu huyết đồ ngoại biên, nhận diện các cấp cứu huyết học – miễn dịch (TTP, DIC, sốt giảm bạch cầu hạt, phản vệ, SJS/TEN, DRESS) và vận dụng chuẩn xác các test chẩn đoán dị ứng – tự miễn.',
     lessons: buildLessons(9, 'ck09-huyet-hoc-mien-dich', 'Huyết Học – Miễn Dịch', 'HM', [
       {
         n: 1,
@@ -346,6 +346,20 @@ export const APPROACH_SPECIALTIES: ApproachSpecialty[] = [
         minutes: 30,
         status: 'published',
         redFlags: 'Phản vệ độ II–IV (khó thở, tụt HA < 90 mmHg), loét đa hốc niêm mạc & bong tróc thượng bì (SJS/TEN), sốt cao + ban thâm nhiễm > 50% BSA + tổn thương nội tạng (DRESS), giảm bạch cầu hạt < 0.5 G/L.'
+      },
+      {
+        n: 3,
+        slug: 'chan-doan-di-ung-tu-mien',
+        exactSlug: 'tc-09-chan-doan',
+        title: 'Các Phương Pháp Chẩn Đoán Bệnh Dị Ứng & Tự Miễn (In Vivo & In Vitro)',
+        desc: '8 phương pháp chẩn đoán chuyên sâu theo QĐ 3592/QĐ-BYT (2026): Test lẩy da (SPT), Test nội bì (IDT), Test áp da (Patch test), Test kích thích thuốc (DPT), Giảm mẫn cảm nhanh 12–16 bước, ASST, định lượng sIgE và bộ tự kháng thể ANA (IFA trên tế bào Hep-2).',
+        keyTakeaway: 'Tuân thủ thời gian ngừng kháng H1 trước test da; không làm IDT với dị nguyên thức ăn/hô hấp; chống chỉ định tuyệt đối DPT ở phản vệ ≥ Độ 3 & SCARs; sàng lọc tự miễn hệ thống đầu tay bằng ANA (IFA).',
+        urgency: 'urgent',
+        hasVault: true,
+        tags: ['Test lẩy da', 'Test nội bì', 'Patch test', 'Test kích thích', 'Giảm mẫn cảm', 'ASST', 'sIgE', 'ANA IFA'],
+        minutes: 30,
+        status: 'published',
+        redFlags: 'Chống chỉ định tuyệt đối DPT ở tiền sử phản vệ ≥ Độ 3, SJS/TEN, DRESS, AGEP, tổn thương cơ quan nặng; lưu theo dõi đủ 40 phút sau IDT nguy cơ cao.'
       }
     ], 8)
   },

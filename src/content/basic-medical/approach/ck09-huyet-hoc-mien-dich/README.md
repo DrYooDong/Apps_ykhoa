@@ -12,3 +12,4 @@
 | :--- | :--- | :--- | :---: | :---: |
 | `TC-HM-01` | `tc-09-01-thieu-mau-hong-cau-nho.mdx` | Tiếp Cận Thiếu Máu Hồng Cầu Nhỏ Nhược Sắc Ở Người Lớn | Routine | Published |
 | `TC-HM-02` | `tc-09-di-ung-thuoc.mdx` | Tiếp Cận Chẩn Đoán & Điều Trị Dị Ứng Thuốc (Drug Allergy) | Emergent | Published |
+| `TC-HM-03` | `tc-09-chan-doan.mdx` | Các Phương Pháp Chẩn Đoán Bệnh Dị Ứng & Tự Miễn (In Vivo & In Vitro) | Urgent | Published |
