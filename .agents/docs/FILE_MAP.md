@@ -940,19 +940,44 @@
 
 ---
 
-## 🔬 src/content/ebm/guidelines/ (Hệ Thống Kho Guidelines & Nghiên Cứu Y Học Chứng Cứ)
+## 🔬 src/content/ebm/guidelines/ (Phân Hệ 1: Kho Guidelines & Phác Đồ Chính Thức)
 
 | File / Thư mục | Vai trò | Phân loại |
 |---|---|---|
-| `guidelines.html` | Cổng thông tin SPA Kho Guidelines, tìm kiếm và hiển thị bài tóm tắt | Hub Interface |
-| `guidelines.css` | Master stylesheet entry point kết nối toàn bộ hệ thống CSS EBM | Master CSS |
+| `guidelines.html` | Cổng thông tin SPA Kho Guidelines & Phác đồ Bộ Y tế (133 tài liệu CPG thuần khiết) | Hub Interface |
+| `guidelines.css` | Master stylesheet entry point kết nối toàn bộ hệ thống CSS EBM Guidelines | Master CSS |
 | `src/styles/components/figure-lightbox.css` | Hệ thống Khung Hình Ảnh Y Học & Lightbox toàn màn hình chuẩn Nature/NEJM | Component CSS |
-| `src/styles/components/forest-plot.css` | Hệ thống Biểu đồ Rừng Forest Plot SVG đa tầng cho Landmark RCTs | Component CSS |
+| `src/styles/components/forest-plot.css` | Hệ thống Biểu đồ Rừng Forest Plot SVG đa tầng | Component CSS |
 | `src/styles/components/guidelines-print.css` | Bộ style in ấn tiết kiệm mực, ngắt trang thông minh & xuất PDF | Print CSS |
 | `src/content/ebm/guidelines/js/core/figure-lightbox.ts` | Bộ điều khiển Lightbox tương tác (Zoom, Pan, Pinch, Prev/Next, Keyboard Nav) | Core Engine |
 | `src/content/ebm/guidelines/js/core/forest-plot-renderer.ts` | Bộ máy render SVG Biểu đồ Rừng tự động từ dữ liệu endpoints và bảng | Core Engine |
-| `src/content/ebm/guidelines/js/guideline-reader-view.ts` | Trình đọc tóm tắt Hướng dẫn & Landmark RCT toàn màn hình | Reader View |
-| `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` | Quy chuẩn thiết kế bài tóm tắt Guideline & Landmark Trial MDX Native v2.0 | Design Spec |
+| `src/content/ebm/guidelines/js/guideline-reader-view.ts` | Trình đọc tóm tắt Hướng dẫn & Phác đồ toàn màn hình | Reader View |
+| `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` | Quy chuẩn thiết kế bài tóm tắt Guideline MDX Native v2.0 | Design Spec |
+
+---
+
+## 🧪 src/content/ebm/research/ (Phân Hệ 2: CliniResearch Studio — Kho Phân Tích Nghiên Cứu & Đối Sánh Nhãn)
+
+| File / Thư mục | Vai trò | Phân loại |
+|---|---|---|
+| `src/content/ebm/shared-core/` | Tầng engine dùng chung (MDX Parser cấu hình ảnh động, Cross-Study Forest Plot SVG, Journal Lookup) | Shared Core |
+| `src/content/ebm/research/index.ts` | Barrel export phân hệ Kho Phân tích Nghiên cứu Y khoa | Entry Point |
+| `src/content/ebm/research/css/research-tokens.css` | Design Tokens riêng tông Scholarly Indigo & Bio-Emerald (Light & Dark Mode) | Design Tokens |
+| `src/content/ebm/research/css/research-studio.css` | Master CSS cho 3-Zone Faceted Explorer, PICO Cards, Comparison Studio & 3-Column Academic Reader | Studio CSS |
+| `src/content/ebm/research/js/research-types.ts` | TypeScript Schema cho 7 trục Nhãn chung, PICO, PrimaryMetric & Comparison Clusters | Types |
+| `src/content/ebm/research/js/research-taxonomy.ts` | Từ điển chuẩn hóa Thiết kế, Hướng kết quả, Mức tác động, Bệnh lý & Nhóm can thiệp | Taxonomy |
+| `src/content/ebm/research/js/research-registry.ts` | Registry tĩnh tự động sinh từ `kho-nghien-cuu/*.mdx` (Single Source of Truth) | Registry Data |
+| `src/content/ebm/research/js/research-store.ts` | Quản lý State độc lập, lọc đa nhãn, tự phát hiện Cụm Nhãn Chung & Khay So Sánh bền vững | Store Engine |
+| `src/content/ebm/research/js/research-compare-engine.ts` | Động cơ So Sánh 4 chế độ (Ma trận PICO lọc khác biệt, Cross-Study Forest Plot SVG, Timeline, Giải mã bất đồng thuận) | Compare Engine |
+| `src/content/ebm/research/js/research-studio-view.ts` | Giao diện chính CliniResearch Studio (Khám phá nhãn, Xem nhanh 5s Drawer, Khay so sánh nổi) | SPA Studio View |
+| `src/content/ebm/research/js/research-reader-view.ts` | Trình đọc bài báo học thuật 3 cột + Hồ sơ định lượng + Gợi ý nghiên cứu cùng nhãn | SPA Reader View |
+| `src/content/ebm/research/kho-nghien-cuu/` | Kho lưu trữ lâu dài các bài phân tích chuyên sâu nghiên cứu (`.mdx` & `images/`) | MDX Content |
+| `src/content/ebm/research/kho-nghien-cuu/RESEARCH_MDX_SPEC.md` | Quy chuẩn soạn thảo bài phân tích nghiên cứu & Schema 7 trục Nhãn chung | Design Spec |
+| `src/content/ebm/research/tools/sync_research_db.js` | CLI đồng bộ tự động từ `.mdx` sang `research-db.json` & `research-registry.ts` | Build Tool |
+| `src/content/ebm/research/tools/qa_research_mdx.js` | Cổng kiểm định 7 trục nhãn, trùng lặp DOI/Slug và toàn vẹn ảnh cho Kho Nghiên cứu | QA Gate |
+| `src/pages/ebm/kho-nghien-cuu/index.astro` | Trang danh mục tĩnh Astro cho Kho Phân tích Nghiên cứu | Astro Page |
+| `src/pages/ebm/kho-nghien-cuu/[...slug].astro` | Trang chi tiết tĩnh Astro cho từng bài nghiên cứu MDX | Astro Page |
+| `.agents/skills/research-analysis-module/SKILL.md` | AI Agent Skill chuyên thu thập, giải phẫu nghiên cứu mới & gắn 7 trục Nhãn chung | Agent Skill |
 
 ---
 

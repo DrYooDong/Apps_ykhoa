@@ -501,7 +501,7 @@ export function switchTab(tabName: string): void {
     if (typeof window.renderTimeline === 'function') window.renderTimeline();
   } else {
     if (panelStudies) panelStudies.classList.add('active');
-    if (pageTitle) pageTitle.textContent = tabName === 'saved' ? 'Tài Liệu Đã Lưu' : 'Hướng Dẫn & Nghiên Cứu Lâm Sàng';
+    if (pageTitle) pageTitle.textContent = tabName === 'saved' ? 'Phác Đồ Đã Lưu' : 'Hướng Dẫn Thực Hành & Phác Đồ Lâm Sàng';
     renderTable();
   }
 }

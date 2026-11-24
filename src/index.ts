@@ -274,7 +274,10 @@ import {
   renderStatisticsReader,
   renderGuidelineReader,
   renderStudyAnalyzerView,
-  initStudyAnalyzerController
+  initStudyAnalyzerController,
+  renderResearchStudioView,
+  initResearchStudioController,
+  renderResearchReaderView
 } from './content/ebm';
 
 import { 
@@ -352,6 +355,24 @@ function initializeRoutes(): void {
   router.register('/kho-guidelines/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
     const slug = params.slug || '';
     mountToApp(renderGuidelineReader(slug));
+  });
+  router.register('/ebm/research', 'Kho Phân Tích Nghiên Cứu Y Khoa (CliniResearch Studio)', () => {
+    document.title = 'Kho Phân Tích Nghiên Cứu Chuyên Sâu (CliniResearch Studio) – CliniPortal';
+    mountToApp(renderResearchStudioView());
+    initResearchStudioController();
+  });
+  router.register('/ebm/kho-nghien-cuu', 'Kho Phân Tích Nghiên Cứu Y Khoa', () => {
+    document.title = 'Kho Phân Tích Nghiên Cứu Chuyên Sâu (CliniResearch Studio) – CliniPortal';
+    mountToApp(renderResearchStudioView());
+    initResearchStudioController();
+  });
+  router.register('/ebm/kho-nghien-cuu/:slug', 'Giải Phẫu Nghiên Cứu Y Khoa', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderResearchReaderView(slug));
+  });
+  router.register('/kho-nghien-cuu/:slug', 'Giải Phẫu Nghiên Cứu Y Khoa', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderResearchReaderView(slug));
   });
   router.register('/ebm/journal-quality', 'Đánh Giá Chất Lượng Tạp Chí', () => {
     document.title = 'Đánh Giá Tạp Chí Y Khoa (Journal QA) – CliniPortal';
@@ -867,7 +888,8 @@ function setupGlobalQuickSearch(): void {
         { title: 'DocSpace Pro Workstation', sub: 'Trực ca, Triage, SOAP & CDSS 4 bước', url: '#/docspace', badge: 'Workstation' },
         { title: 'Basic Sciences — Cơ sở Y khoa', sub: 'Giải phẫu, Sinh lý, CCBS, Hóa sinh, Dịch tễ, Kháng sinh, Tiếp cận', url: '#/basic-medical', badge: 'Cơ sở' },
         { title: 'Clinical Handbook — Sổ Tay Lâm Sàng', sub: 'Kinh nghiệm & đúc kết thực chiến theo chuyên khoa', url: '#/clinical-handbook', badge: 'Đúc kết' },
-        { title: 'EBM Suite & Kho Guidelines 2026', sub: 'Khuyến cáo BYT, ESC, KDIGO, IDSA & EBM Lab', url: '#/ebm/kho-guidelines', badge: 'EBM' },
+        { title: 'EBM Suite & Kho Guidelines 2026', sub: 'Khuyến cáo BYT, ESC, KDIGO, IDSA & Phác đồ chính thức', url: '#/ebm/kho-guidelines', badge: 'GUIDELINES' },
+  { title: 'CliniResearch Studio — Kho Nghiên Cứu Y Khoa', sub: 'Giải phẫu chuyên sâu RCT, Meta-Analysis & Bàn cân Đối sánh 7 trục Nhãn', url: '#/ebm/research', badge: 'RESEARCH' },
         { title: 'CDSS Platform Suite', sub: 'Bộ công cụ hỗ trợ quyết định lâm sàng độc lập', url: 'https://dryoodong.github.io/CDSS_Standalone/?theme=light', badge: 'CDSS', external: true },
       ];
       cmdResults.innerHTML = `

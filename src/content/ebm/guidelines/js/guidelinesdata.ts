@@ -40,21 +40,17 @@ export const SPECIALTIES: Record<string, SpecialtyMeta> = {
 };
 
 export const SOURCE_TYPES: Record<string, SourceTypeMeta> = {
-  'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#475569', bg: 'rgba(71, 85, 105, 0.08)' },
   'intl-guideline': { name: 'Guideline Quốc tế', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
   'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#059669', bg: 'rgba(5, 150, 105, 0.1)' },
   'vn-doh': { name: 'Sở Y tế Việt Nam', color: '#059669', bg: 'rgba(5, 150, 105, 0.08)' },
-  'vn-association': { name: 'Hội chuyên khoa VN', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' }
+  'vn-association': { name: 'Hội chuyên khoa VN', color: '#0284c7', bg: 'rgba(2, 132, 199, 0.08)' },
+  'consensus': { name: 'Đồng thuận Liên hội', color: '#0d9488', bg: 'rgba(13, 148, 136, 0.08)' }
 };
 
 export const DESIGNS: Record<string, DesignMeta> = {
-  'rct': { name: 'Thử nghiệm lâm sàng (RCT)' },
-  'meta': { name: 'Tổng quan / Meta-Analysis' },
-  'cohort': { name: 'Nghiên cứu quan sát / Thuần tập' },
-  'guideline': { name: 'Hướng dẫn / Khuyến cáo' },
-  'review': { name: 'Bài tổng quan y khoa (Review)' },
-  'case-report': { name: 'Case Report / Series' },
-  'other': { name: 'Khác' }
+  'guideline': { name: 'Hướng dẫn / Khuyến cáo (CPG)' },
+  'consensus': { name: 'Đồng thuận chuyên gia (Consensus)' },
+  'other': { name: 'Văn bản chuyên môn khác' }
 };
 
 export const IMPACTS: Record<string, ImpactMeta> = {

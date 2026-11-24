@@ -45,19 +45,19 @@ export function renderKhoGuidelinesHubView(): string {
           <div style="position: relative; z-index: 2;">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
               <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fde047; border: 1.5px solid rgba(251, 191, 36, 0.4); font-weight: 800; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em;">
-                <i class="fa-solid fa-folder-open" style="color: #facc15;"></i> Kho Tài Liệu Tóm Tắt Chuyên Sâu
+                <i class="fa-solid fa-folder-open" style="color: #facc15;"></i> Kho Phác Đồ &amp; Khuyến Cáo Chính Thức
               </span>
               <span class="badge" style="background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-weight: 700; font-size: 0.78rem; padding: 0.35rem 0.75rem; border-radius: 999px;">
-                ${totalSummaries} Hướng Dẫn &amp; RCT Landmark
+                ${totalSummaries} Guidelines &amp; Phác Đồ BYT
               </span>
             </div>
 
             <h1 style="font-family: var(--dsp-font-display, 'Space Grotesk', sans-serif); font-size: clamp(1.8rem, 3.5vw, 2.35rem); font-weight: 800; color: #ffffff; margin: 0.5rem 0 0.85rem 0; line-height: 1.25; letter-spacing: -0.02em;">
-              Kho Tóm Tắt Hướng Dẫn Điều Trị &amp; Nghiên Cứu Lâm Sàng (EBM Guidelines)
+              Kho Tóm Tắt Hướng Dẫn Điều Trị &amp; Phác Đồ Lâm Sàng (EBM Guidelines)
             </h1>
 
             <p style="margin: 0; font-size: 1rem; color: rgba(255, 255, 255, 0.9); line-height: 1.7; max-width: 980px;">
-              Tổng hợp đầy đủ các bài tóm tắt khuyến cáo y học chứng cứ, phác đồ điều trị và các thử nghiệm lâm sàng Landmark từ Bộ Y Tế Việt Nam, ESC, AHA/ACC, KDIGO, GOLD, GINA, NEJM. Trình bày trực quan với sơ đồ phác đồ, cấu trúc PICO, bảng liều dùng và phân loại COR / LOE.
+              Tổng hợp hệ thống các hướng dẫn thực hành lâm sàng (CPGs), đồng thuận hội chuyên khoa và phác đồ chẩn đoán - điều trị chính thức từ Bộ Y Tế Việt Nam, ESC, AHA/ACC, ADA, KDIGO, GOLD, GINA, IDSA, WHO. Trình bày trực quan với lưu đồ quyết định, bảng liều thuốc và phân tầng khuyến cáo COR / LOE.
             </p>
           </div>
         </header>
@@ -100,8 +100,8 @@ export function renderKhoGuidelinesHubView(): string {
             </span>
             <button class="kho-filter-pill active" data-filter-type="source" data-filter-val="all">Tất cả nguồn</button>
             <button class="kho-filter-pill" data-filter-type="source" data-filter-val="vn-moh">🇻🇳 Bộ Y Tế Việt Nam</button>
-            <button class="kho-filter-pill" data-filter-type="source" data-filter-val="intl-guideline">🌐 Hướng Dẫn Quốc Tế</button>
-            <button class="kho-filter-pill" data-filter-type="source" data-filter-val="intl-study">🏆 Thử Nghiệm Landmark RCT</button>
+            <button class="kho-filter-pill" data-filter-type="source" data-filter-val="intl-guideline">🌐 Hiệp Hội Quốc Tế</button>
+            <button class="kho-filter-pill" data-filter-type="source" data-filter-val="vn-association">🏛️ Hội Chuyên Khoa VN</button>
             
             <span id="khoResultsCount" style="margin-left: auto; font-size: 0.82rem; font-weight: 700; color: var(--color-primary, #0284c7);">
               Hiển thị: <strong>${totalSummaries}</strong> bài tóm tắt

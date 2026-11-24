@@ -1,7 +1,7 @@
 ---
 name: guideline-summary-module
 description: >-
-  Tạo, cập nhật và tổng hợp các trang tóm tắt khuyến cáo lâm sàng và nghiên cứu y khoa (Guidelines / RCT Landmark) theo chuẩn Astro MDX Native tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx của CliniPortal. Kích hoạt khi AI cần tạo mới hoặc cập nhật guideline, tổng hợp từ file markdown đơn/đa phần (P1, P2, P3...), trích xuất ảnh đính kèm, hoặc làm việc với Kho Guidelines EBM.
+  Tạo, cập nhật và tổng hợp các trang tóm tắt khuyến cáo thực hành lâm sàng và phác đồ điều trị (CPGs / Phác đồ Bộ Y tế / Đồng thuận Hội chuyên khoa) theo chuẩn Astro MDX Native tại src/content/ebm/guidelines/kho-guidelines/<slug>.mdx của CliniPortal. Lưu ý: Đối với các bài nghiên cứu khoa học (RCT, Meta-Analysis, Cohort), bắt buộc dùng skill research-analysis-module tại src/content/ebm/research/.
 ---
 
 # Guideline Summary Module Skill (Astro MDX Native Flagship)

@@ -44,11 +44,17 @@ export function renderEbmView(): string {
               </h1>
             </div>
 
-            <!-- KHO GUIDELINE HERO BUTTON -->
-            <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 160+ Guidelines & Nghiên cứu tóm tắt chi tiết">
-              <i class="fa-solid fa-folder-open"></i>
-              <span>Kho Tóm Tắt Guidelines (160+)</span>
-            </a>
+            <!-- KHO GUIDELINE & RESEARCH HERO BUTTONS -->
+            <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+              <a href="#/ebm/kho-guidelines" class="hub-hero-btn-kho" title="Truy cập Kho 133 Guidelines & Phác đồ Bộ Y tế">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Kho Guidelines &amp; BYT (133)</span>
+              </a>
+              <a href="#/ebm/research" class="hub-hero-btn-kho" style="background: rgba(99, 102, 241, 0.24); border-color: rgba(129, 140, 248, 0.55);" title="Mở Kho Phân Tích Nghiên Cứu Chuyên Sâu & Bàn Cân Đối Sánh Nhãn">
+                <i class="fa-solid fa-microscope"></i>
+                <span>Kho Nghiên Cứu &amp; Đối Sánh</span>
+              </a>
+            </div>
           </div>
 
           <p class="hub-hero-desc">
@@ -58,9 +64,9 @@ export function renderEbmView(): string {
         </div>
       </section>
 
-      <!-- 2 PRIMARY PILLAR CARDS (WEB GUIDELINES & THỐNG KÊ Y HỌC) -->
+      <!-- 3 PRIMARY PILLAR CARDS (GUIDELINES, CLINIRESEARCH STUDIO & THỐNG KÊ Y HỌC) -->
       <section style="margin-bottom: 1.25rem;" aria-label="Phân hệ trọng tâm Y học chứng cứ">
-        <div class="ebm-bento-2-grid">
+        <div class="ebm-bento-2-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));">
           
           <!-- Pillar 1: Web Guidelines & Cơ Sở Dữ Liệu Phác Đồ -->
           <a href="#/ebm/guidelines" class="ebm-pillar-card ebm-holo-bento" style="--card-accent:var(--dsp-sky); --card-icon-bg:var(--dsp-sky-light); --card-glow:var(--dsp-sky-glow);">
@@ -69,28 +75,62 @@ export function renderEbmView(): string {
                 <div class="ebm-pillar-icon-box">
                   <i class="fa-solid fa-book-medical"></i>
                 </div>
-                <span class="ebm-pillar-badge">Khuyến Cáo Lâm Sàng</span>
+                <span class="ebm-pillar-badge">Khuyến Cáo &amp; Phác Đồ</span>
               </div>
               <h2 class="ebm-pillar-title">
-                <span>Web Guidelines</span>
+                <span>Kho Guidelines &amp; BYT</span>
                 <i class="fa-solid fa-circle-check" style="font-size: 0.85rem; color: var(--dsp-sky);"></i>
               </h2>
               <p class="ebm-pillar-desc">
-                Cơ sở dữ liệu phác đồ điều trị và khuyến cáo lâm sàng thực hành chuẩn hóa từ Bộ Y Tế, ESC, AHA/ACC, KDIGO, GOLD, GINA với bộ lọc chuyên khoa đa chiều.
+                Cơ sở dữ liệu thuần túy các hướng dẫn thực hành lâm sàng (CPGs) và phác đồ điều trị chính thức từ Bộ Y Tế, ESC, AHA/ACC, ADA, KDIGO, GOLD, GINA, IDSA, WHO.
               </p>
               <div class="ebm-pillar-tags">
-                <span class="ebm-pillar-tag"><i class="fa-solid fa-filter" style="color: var(--dsp-sky); margin-right: 4px;"></i>Bộ Lọc Đa Chiều</span>
-                <span class="ebm-pillar-tag"><i class="fa-solid fa-hospital" style="color: var(--dsp-sky); margin-right: 4px;"></i>Bộ Y Tế &amp; Quốc Tế</span>
-                <span class="ebm-pillar-tag"><i class="fa-solid fa-layer-group" style="color: var(--dsp-sky); margin-right: 4px;"></i>Phân Tầng GRADE</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-hospital" style="color: var(--dsp-sky); margin-right: 4px;"></i>Phác Đồ Bộ Y Tế</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-globe" style="color: var(--dsp-sky); margin-right: 4px;"></i>Hiệp Hội Quốc Tế</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-layer-group" style="color: var(--dsp-sky); margin-right: 4px;"></i>COR &amp; LOE</span>
               </div>
             </div>
             <div class="ebm-pillar-footer">
               <div class="ebm-pillar-stats">
                 <i class="fa-solid fa-database" style="color: var(--dsp-sky);"></i>
-                <span>Kho dữ liệu hướng dẫn điều trị chính thức</span>
+                <span>133 phác đồ &amp; khuyến cáo chuẩn hóa</span>
               </div>
               <div class="ebm-pillar-cta">
                 <span>Tra cứu phác đồ</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <!-- Pillar 2 (MỚI): CliniResearch Studio — Kho Phân Tích Nghiên Cứu Chuyên Sâu -->
+          <a href="#/ebm/research" class="ebm-pillar-card ebm-holo-bento" style="--card-accent:var(--dsp-indigo, #6366f1); --card-icon-bg:rgba(99, 102, 241, 0.14); --card-glow:rgba(99, 102, 241, 0.28);">
+            <div>
+              <div class="ebm-pillar-top">
+                <div class="ebm-pillar-icon-box" style="color: var(--dsp-indigo, #6366f1); background: rgba(99, 102, 241, 0.14);">
+                  <i class="fa-solid fa-microscope"></i>
+                </div>
+                <span class="ebm-pillar-badge" style="color: var(--dsp-indigo, #6366f1); border-color: var(--dsp-indigo, #6366f1); background: rgba(99, 102, 241, 0.12);">Phân Tích &amp; Đối Sánh</span>
+              </div>
+              <h2 class="ebm-pillar-title">
+                <span>Kho Nghiên Cứu Y Khoa</span>
+                <i class="fa-solid fa-bolt" style="font-size: 0.85rem; color: var(--dsp-indigo, #6366f1);"></i>
+              </h2>
+              <p class="ebm-pillar-desc">
+                Không gian độc lập giải phẫu chuyên sâu các thử nghiệm RCT, Meta-Analysis, Đoàn hệ (MDX) và Bàn cân Đối sánh đa chiều theo 7 trục Nhãn chung (Năm, Bệnh, Thiết kế, Kết quả).
+              </p>
+              <div class="ebm-pillar-tags">
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-flask-vial" style="color: var(--dsp-indigo, #6366f1); margin-right: 4px;"></i>Giải Phẫu PICO &amp; RoB 2</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-scale-balanced" style="color: var(--dsp-indigo, #6366f1); margin-right: 4px;"></i>So Sánh Theo Nhãn</span>
+                <span class="ebm-pillar-tag"><i class="fa-solid fa-chart-gantt" style="color: var(--dsp-indigo, #6366f1); margin-right: 4px;"></i>Forest Plot Động</span>
+              </div>
+            </div>
+            <div class="ebm-pillar-footer">
+              <div class="ebm-pillar-stats">
+                <i class="fa-solid fa-tags" style="color: var(--dsp-indigo, #6366f1);"></i>
+                <span>CliniResearch Studio • 7 trục Nhãn</span>
+              </div>
+              <div class="ebm-pillar-cta" style="color: var(--dsp-indigo, #6366f1);">
+                <span>Mở Studio</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </div>
             </div>
@@ -141,7 +181,11 @@ export function renderEbmView(): string {
           <div class="ebm-quick-strip-actions">
             <a href="#/ebm/kho-guidelines" class="ebm-quick-link-btn">
               <i class="fa-solid fa-folder-open" style="color: var(--dsp-sky);"></i>
-              <span>Kho Tóm Tắt Chuyên Sâu</span>
+              <span>Kho Tóm Tắt Guidelines</span>
+            </a>
+            <a href="#/ebm/research" class="ebm-quick-link-btn">
+              <i class="fa-solid fa-microscope" style="color: #6366f1;"></i>
+              <span>Kho Nghiên Cứu &amp; Đối Sánh</span>
             </a>
             <a href="#frameworkViewPyramid" class="ebm-quick-link-btn" onclick="document.querySelector('[data-tab=\'pyramid\']')?.click();">
               <i class="fa-solid fa-cubes-stacked" style="color: #f59e0b;"></i>

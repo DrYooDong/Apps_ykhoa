@@ -1,0 +1,156 @@
+/**
+ * CliniPortal 2.0 — CliniResearch Studio Type Definitions (7-Axis Shared Label Schema)
+ * Path: src/content/ebm/research/js/research-types.ts
+ */
+
+export type ResearchDesignType =
+  | 'rct'
+  | 'meta-analysis'
+  | 'systematic-review'
+  | 'prospective-cohort'
+  | 'retrospective-cohort'
+  | 'case-control'
+  | 'cross-sectional'
+  | 'diagnostic-accuracy'
+  | 'clinical-review';
+
+export type OutcomeDirectionType =
+  | 'positive-superior'
+  | 'non-inferior'
+  | 'neutral-null'
+  | 'harm-negative'
+  | 'mixed-coprimary';
+
+export type ImpactVerdictType =
+  | 'practice-changing'
+  | 'practice-informing'
+  | 'confirmatory'
+  | 'hypothesis-generating';
+
+export type RobLevelType = 'low' | 'some-concerns' | 'high' | 'not-applicable';
+export type GradeCertaintyType = 'high' | 'moderate' | 'low' | 'very-low';
+
+export interface ResearchPrimaryMetric {
+  measure?: string; // HR | RR | OR | ARR | AUC | MD
+  interventionRate?: string;
+  controlRate?: string;
+  effectEstimate?: number | null;
+  ciLower?: number | null;
+  ciUpper?: number | null;
+  rawDiffText?: string;
+  pValue?: string;
+  nnt?: number | null;
+  nnh?: number | null;
+}
+
+export interface ResearchSectionItem {
+  id: string;
+  number?: number;
+  title: string;
+  icon?: string;
+}
+
+export interface ResearchStudyRecord {
+  id: string;
+  slug: string;
+  code?: string;
+  trialAcronym?: string;
+  title: string;
+  titleEn?: string;
+  authors?: string;
+  journal: string;
+  organization?: string;
+  year: number;
+  doi?: string;
+  pmid?: string;
+  nctId?: string;
+  sourceUrl?: string;
+  file: string;
+
+  // Axis 1: Clinical Problem & Condition Labels
+  specialty: string;
+  specialty2?: string;
+  conditionKey: string;
+  problemLabels: string[];
+  icd10: string[];
+
+  // Axis 2: Study Design & Methodological Labels
+  design: ResearchDesignType | string;
+  phase?: string;
+  blinding?: string;
+  centerScope?: string;
+  hypothesisType?: string;
+  sampleSize?: number | null;
+  followUpDuration?: string;
+  asianData?: boolean;
+
+  // Axis 3: Structured PICO Labels
+  populationTags: string[];
+  population?: string;
+  interventionClass: string;
+  drug?: string;
+  intervention?: string;
+  comparatorType?: string;
+  comparatorDetail?: string;
+  primaryEndpointCategory: string;
+  primaryEndpoint?: string;
+
+  // Axis 4: Outcome Direction & Quantitative Metrics
+  outcomeDirection: OutcomeDirectionType | string;
+  impactVerdict: ImpactVerdictType | string;
+  keyResults?: string;
+  primaryMetric?: ResearchPrimaryMetric;
+  safetyHighlight?: string;
+
+  // Axis 5: Critical Appraisal & Quality Labels
+  robOverall: RobLevelType | string;
+  gradeCertainty: GradeCertaintyType | string;
+  fragilityIndex?: number | null;
+  fundingSource?: string;
+
+  // Axis 6: Custom Topic Clusters
+  topicTags: string[];
+  tags: string[];
+
+  // Axis 7: Synthesis Content & Sections
+  summary?: string;
+  detailedConclusion?: string;
+  description?: string;
+  keyRecommendations?: string[];
+  clinicalPearls?: string[];
+  subgroups?: Record<string, string>;
+  sections?: ResearchSectionItem[];
+  updatedAt?: string;
+
+  // User Local State
+  bookmarked?: boolean;
+  personalNote?: string;
+}
+
+export interface ResearchFilterState {
+  search: string;
+  specialty: string | null;
+  conditionKey: string | null;
+  design: string | null;
+  outcomeDirection: string | null;
+  impactVerdict: string | null;
+  interventionClass: string | null;
+  endpointCategory: string | null;
+  robOverall: string | null;
+  yearPeriod: string | null;
+  topicTag: string | null;
+  asianOnly: boolean;
+  savedOnly: boolean;
+}
+
+export type ResearchViewMode = 'cards' | 'matrix';
+export type ResearchCompareTab = 'matrix' | 'forest' | 'timeline' | 'discordance';
+
+export interface LabelClusterGroup {
+  clusterKey: string;
+  axisLabel: string;
+  title: string;
+  badgeText: string;
+  studies: ResearchStudyRecord[];
+  hasDiscordance: boolean;
+}

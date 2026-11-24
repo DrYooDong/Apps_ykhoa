@@ -441,6 +441,13 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   }
 
   if (!htmlText) {
+    // Kiểm tra xem tài liệu có thuộc phân hệ Kho Nghiên Cứu Chuyên Sâu mới không (hỗ trợ link cũ)
+    const migratedResearchSlugs = (window as any).__CLINIPORTAL_RESEARCH_SLUGS__ as Set<string> | undefined;
+    if (migratedResearchSlugs && migratedResearchSlugs.has(baseSlugName)) {
+      window.location.hash = `#/ebm/kho-nghien-cuu/${baseSlugName}`;
+      return;
+    }
+
     mountEl.innerHTML = `
       <div style="max-width: 680px; margin: 4rem auto; text-align: center; padding: 3rem 2rem; background: var(--color-surface, #fff); border-radius: 16px; border: 1px solid #fca5a5; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
         <i class="fa-solid fa-triangle-exclamation" style="font-size: 3.2rem; color: #dc2626; margin-bottom: 1.25rem;"></i>

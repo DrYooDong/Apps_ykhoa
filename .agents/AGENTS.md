@@ -22,8 +22,8 @@
 | Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md`, `.agents/docs/FILE_MAP.md`, `.agents/rules/*.md` |
 | Coding siêu tốc, RCA lỗi khó, Kiến trúc C4 | Skills `speed-coding-orchestrator`, `precision-engineering-rca`, `deep-architecture-reasoning` |
 | Tiến hóa Harness, `/retro`, tối ưu Skill/Context | Skill `harness-evolution-engine` & `tools/ai_harness/experience_library.py` |
-| Nghiên cứu EBM, Landmark RCT, Đồ họa khoa học | Skills `medical-research-card`, `research-synthesizer`, `medical-scientific-figure`, `medical-journal-club-deck` |
-| Tóm tắt Guideline MDX | Skill `guideline-summary-module` & `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` |
+| Nghiên cứu EBM, Phân tích RCT/Meta/Cohort MDX | Skills `research-analysis-module`, `medical-research-card`, `research-synthesizer`, `medical-scientific-figure` & `src/content/ebm/research/kho-nghien-cuu/RESEARCH_MDX_SPEC.md` |
+| Tóm tắt Guideline / Phác đồ BYT MDX | Skill `guideline-summary-module` & `src/content/ebm/guidelines/kho-guidelines/GUIDELINE_MDX_DESIGN_SPEC.md` |
 | Sổ tay Lâm sàng / Cơ sở Y khoa MDX | Skills `clinical-handbook-mdx-module`, `basic-medical-mdx-module`, `physiology-module`, `biochemistry-module` |
 | DocSpace (Nạp 1-chạm, UI, CDSS, SOAP, QA) | Skills `docspace-oneclick-ingest-agent`, `docspace-ui-feature-squad`, `docspace-medical-qa-squad`, `docspace-soap-guardian-squad` |
 | Thiết kế UI/UX, Lưu đồ SVG, QA giao diện | `.agents/docs/design-vault/0.0_DESIGN_VAULT_INDEX.md`, Skills `design-agent-squad`, `flowchart-module`, `code-reviewer` |

@@ -23,6 +23,7 @@ export * from './ebm-lab/ebm-lab-engine';
 export * from './ebm-lab/chart-views';
 export * from './guidelines/js/kho-guidelines-hub-view';
 export * from './guidelines/js/kho-guidelines-registry';
+export * from './research';
 export * from './medical-statistics/statistics-hub-view';
 export * from './medical-statistics/statistics-reader-view';
 
