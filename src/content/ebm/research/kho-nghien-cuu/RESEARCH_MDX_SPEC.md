@@ -9,7 +9,9 @@
 ## 1. Quy Tắc Đặt Tên Tệp & Tài Nguyên
 
 - **Đường dẫn lưu bài**: `src/content/ebm/research/kho-nghien-cuu/<year>-<journal>-<trial-or-topic>.mdx`
-  - Ví dụ: `2026-nejm-staree-atorvastatin-elderly.mdx`, `2023-nejm-cape-cod-hydrocortisone-severe-cap.mdx`
+  - Ví dụ: `2026-nejm-staree-atorvastatin-elderly.mdx`, `2026-ihi-tak003-dengue-vaccine-prisma.mdx`, `2023-nejm-cape-cod-hydrocortisone-severe-cap.mdx`
+  - **Tự động đổi tên khi nạp design**: Nếu tệp đầu vào mang tên tạm/nháp (như `new.mdx`, `draft.mdx`), bắt buộc đổi tên tệp theo cấu trúc `<year>-<journal>-<trial-or-topic>.mdx` khớp nội dung nghiên cứu và đồng bộ `id` / `slug` trong Frontmatter.
+- **Mô típ Design chuẩn ưu tiên**: Sử dụng khuôn mẫu 3 phần **Case-Driven Clinical Peer-Review** (`src/content/ebm/research/tools/templates/template-research-case-review.mdx`): *Masthead & KPI Strip → Phần 1: Ca lâm sàng & Ngã rẽ Q1–Q3 → Phần 2: Mổ xẻ nghiên cứu, SVG PRISMA/Evidence & Phản biện RoB → Phần 3: Giải quyết 1-1 Q1–Q3 & Clinical Verdict*.
 - **Hình ảnh đính kèm**: Đặt tại `src/content/ebm/research/kho-nghien-cuu/images/<slug>-fig1.png` và nhúng bằng đường dẫn tương đối `./images/<slug>-fig1.png`.
 - **Đồng bộ tự động**: Sau khi thêm hoặc chỉnh sửa bất kỳ file `.mdx` nào, chạy:
   ```bash

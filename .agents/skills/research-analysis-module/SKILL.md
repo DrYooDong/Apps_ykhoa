@@ -20,8 +20,10 @@ Kỹ năng này vận hành quy trình thu thập, giải phẫu học thuật c
 ## 2. Quy Trình 5 Bước Thu Thập & Xuất Bản Nghiên Cứu Mới
 
 1. **Kiểm tra trùng lặp**: Đối chiếu `DOI`, `PMID`, `NCT` và `slug` trong `src/content/ebm/research/js/research-registry.ts`.
-2. **Đặt tên file chuẩn**: `<year>-<journal>-<trial-or-topic>.mdx` (ASCII chữ thường kebab-case) đặt tại `src/content/ebm/research/kho-nghien-cuu/`. Ảnh minh họa lưu tại `src/content/ebm/research/kho-nghien-cuu/images/<slug>-figX.png`.
-3. **Gắn đầy đủ 7 Trục Nhãn Chung trong YAML Frontmatter** (xem `src/content/ebm/research/kho-nghien-cuu/RESEARCH_MDX_SPEC.md` và mẫu `src/content/ebm/research/tools/templates/template-research-study.mdx`):
+2. **Đặt / Tự động đổi tên file chuẩn theo nội dung**: `<year>-<journal>-<trial-or-topic>.mdx` (ASCII chữ thường kebab-case) đặt tại `src/content/ebm/research/kho-nghien-cuu/`.
+   - **Quy tắc bắt buộc khi "nạp design" cho file nháp (ví dụ `new.mdx`, `draft.mdx`, `untitled.mdx`)**: Tự động đổi tên tệp sang `<year>-<journal>-<trial-or-topic>.mdx` khớp với nội dung công trình, đồng bộ tuyệt đối `id` và `slug` trong YAML Frontmatter với tên file mới, rồi chạy `npm run sync:research` để không để lại slug rác trong registry.
+   - Ảnh minh họa lưu tại `src/content/ebm/research/kho-nghien-cuu/images/<slug>-figX.png`.
+3. **Gắn đầy đủ 7 Trục Nhãn Chung trong YAML Frontmatter** (xem `src/content/ebm/research/kho-nghien-cuu/RESEARCH_MDX_SPEC.md` và khuôn mẫu chuẩn mới `src/content/ebm/research/tools/templates/template-research-case-review.mdx` hoặc `template-research-study.mdx`):
    - `conditionKey` & `problemLabels` (Nhãn Bệnh / Vấn đề)
    - `design`, `blinding`, `sampleSize`, `followUpDuration` (Nhãn Thiết kế)
    - `interventionClass`, `comparatorType`, `primaryEndpointCategory` (Nhãn PICO chuẩn hóa)
@@ -29,7 +31,13 @@ Kỹ năng này vận hành quy trình thu thập, giải phẫu học thuật c
    - `primaryMetric` (`measure`, `effectEstimate`, `ciLower`, `ciUpper`, `pValue`, `nnt`) để tự động vẽ **Cross-Study Forest Plot SVG** trên Bàn Cân Đối Sánh.
    - `robOverall` & `gradeCertainty` (Nhãn Thẩm định sai lệch)
    - `topicTags` (Nhãn gom cụm chủ đề so sánh)
-4. **Biên tập Giải phẫu Chuyên sâu**: Bảo toàn 100% dữ liệu định lượng từ bài gốc, phân tách rõ phát biểu của tác giả và thẩm định phản biện độc lập (RoB 2.0 / ROBINS-I, Fragility Index, giới hạn quần thể), làm sạch 100% lỗi ký tự math `$` thừa.
+4. **Biên tập Giải phẫu Chuyên sâu theo Mô típ 3 Phần (Case-Driven Peer-Review Motif)**:
+   - Mặc định ưu tiên áp dụng mô típ giao diện chuẩn trong `src/content/ebm/research/tools/templates/template-research-case-review.mdx` & `research-article.css`:
+     - **Masthead Bình duyệt + Stats Strip + 3 Pillars + Sticky Quickmenu**
+     - **Phần 1 (Clinical Vignette)**: Hồ sơ ca lâm sàng (`.res-vignette-dossier`, `.res-patient-strip`) + 3 Ngã rẽ quyết định (`Q1`–`Q3`, `.res-crossroads-list`).
+     - **Phần 2 (Study Analysis & Peer-Review)**: Đặt vấn đề → Phương pháp luận & Sơ đồ PRISMA/Flowchart **Pure Editorial SVG** (100% `--res-*` tokens, tuyệt đối không để ASCII art) + `.pico-bento-grid` → Bảng tổng hợp kết quả + Biểu đồ SVG trực quan + Phân tích theo chủ đề (`.res-theme-grid`) → Phản biện Điểm mạnh/Hạn chế (`.res-split-grid`) & `.rob-card`.
+     - **Phần 3 (Clinical Decision & Conclusion)**: Đối chiếu giải đáp 1-1 (`Q1`–`Q3`, `.res-resolution-grid`) + `.verdict-box` + trích dẫn chuẩn AMA.
+   - Bảo toàn 100% dữ liệu định lượng từ bài gốc, phân tách rõ phát biểu của tác giả và thẩm định phản biện độc lập (RoB 2.0 / ROBINS-I, Fragility Index, giới hạn quần thể), làm sạch 100% lỗi ký tự math `\\(...\\)` / `$` thừa và lỗi chính tả.
 5. **Đồng bộ & Kiểm định Cơ học Bắt buộc**:
    ```bash
    npm run sync:research

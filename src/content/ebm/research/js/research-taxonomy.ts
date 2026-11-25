@@ -220,7 +220,8 @@ export const INTERVENTION_CLASSES: Record<string, string> = {
   'biomarker-diagnostics': 'Dấu ấn sinh học & Chẩn đoán hình ảnh',
   'nutrition-microbiome': 'Can thiệp Dinh dưỡng & Hệ vi sinh',
   'neuro-critical-care': 'Điều trị Thần kinh & Chống co thắt',
-  'hepatology-portal': 'Quản lý Bệnh gan, Cổ trướng & Đồng nhiễm'
+  'hepatology-portal': 'Quản lý Bệnh gan, Cổ trướng & Đồng nhiễm',
+  'vaccine-immunization': 'Vắc-xin & Miễn dịch dự phòng'
 };
 
 export const COMPARATOR_TYPES: Record<string, string> = {
@@ -230,7 +231,8 @@ export const COMPARATOR_TYPES: Record<string, string> = {
   'standard-of-care': 'Điều trị nền tiêu chuẩn (SoC)',
   'severity-strata': 'Phân tầng theo mức độ nặng',
   'normal-electrolytes': 'Nhóm điện giải bình thường',
-  'crp-wbc-standard': 'Xét nghiệm chuẩn (WBC / CRP)'
+  'crp-wbc-standard': 'Xét nghiệm chuẩn (WBC / CRP)',
+  'placebo-and-active-coadmin': 'Giả dược & Tiêm đơn độc đối chứng'
 };
 
 export const ENDPOINT_CATEGORIES: Record<string, string> = {
@@ -240,7 +242,8 @@ export const ENDPOINT_CATEGORIES: Record<string, string> = {
   'diagnostic-performance': 'Hiệu năng chẩn đoán (AUC / Sens / Spec)',
   'clinical-recovery': 'Phục hồi lâm sàng & Thời gian nằm viện',
   'metabolic-control': 'Kiểm soát chuyển hóa, Huyết áp & Cân nặng',
-  'organ-protection': 'Bảo vệ tạng (Thận, Phổi, Gan, Thần kinh)'
+  'organ-protection': 'Bảo vệ tạng (Thận, Phổi, Gan, Thần kinh)',
+  'vaccine-efficacy-safety': 'Hiệu lực vắc-xin (VE), Miễn dịch & An toàn (AEFI)'
 };
 
 export const RESEARCH_CONDITIONS: Record<string, string> = {
@@ -290,7 +293,10 @@ export const PROBLEM_LABELS_VI: Record<string, string> = {
   'dietary-comparison': 'Đối chiếu chế độ ăn',
   'gut-barrier-integrity': 'Toàn vẹn hàng rào ruột',
   'bowel-regularity': 'Điều hòa tính chất phân (BSFS)',
-  microbiome: 'Hệ vi sinh vật ruột'
+  microbiome: 'Hệ vi sinh vật ruột',
+  'dengue-vaccination': 'Tiêm chủng phòng Dengue (TAK-003)',
+  'vaccine-coadministration': 'Tiêm đồng thời nhiều vắc-xin',
+  'post-marketing-safety': 'An toàn hậu lưu hành (AEFI)'
 };
 
 export const POPULATION_TAGS_VI: Record<string, string> = {
@@ -310,11 +316,18 @@ export const POPULATION_TAGS_VI: Record<string, string> = {
   'hospitalized-fever': 'BN sốt nhập viện',
   'ed-adults': 'Người lớn cấp cứu (ED)',
   t2dm: 'Đái tháo đường típ 2',
-  'established-ascvd': 'Đã xác lập ASCVD'
+  'established-ascvd': 'Đã xác lập ASCVD',
+  'pediatric-adolescent': 'Trẻ em & Thanh thiếu niên (4–16t)',
+  'endemic-population': 'Dân số vùng lưu hành dịch tễ',
+  'seropositive-and-seronegative': 'Cả huyết thanh dương & âm tính'
 };
 
 export const TOPIC_TAGS_VI: Record<string, string> = {
   dengue: 'Sốt xuất huyết Dengue',
+  'vac-xin-dengue': 'Vắc-xin Dengue (TAK-003)',
+  'tiem-dong-thoi': 'Tiêm đồng thời (Co-administration)',
+  'an-toan-aefi': 'Giám sát an toàn AEFI',
+  'tong-quan-prisma': 'Tổng quan hệ thống PRISMA',
   'ha-natri-mau': 'Hạ Natri máu',
   'roi-loan-dien-giai': 'Rối loạn điện giải',
   'tien-luong': 'Tiên lượng nặng',
