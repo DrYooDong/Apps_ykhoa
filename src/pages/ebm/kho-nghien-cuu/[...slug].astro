@@ -3,6 +3,12 @@ import ArticleLayout from '../../../components/layout/ArticleLayout.astro';
 import Alert from '../../../components/ui/Alert.astro';
 import QuickNav from '../../../components/ui/QuickNav.astro';
 import FlowchartViewer from '../../../components/flowchart/FlowchartViewer.astro';
+import '../../../content/ebm/research/css/research-article.css';
+import {
+  ATOMIC_AXIS_META,
+  decomposeStudyLabels
+} from '../../../content/ebm/research/js/research-taxonomy';
+import type { AtomicLabelAxis, ResearchStudyRecord } from '../../../content/ebm/research/js/research-types';
 
 export async function getStaticPaths() {
   const mdxModules = import.meta.glob('/src/content/ebm/research/kho-nghien-cuu/*.mdx', { eager: true });
@@ -12,14 +18,71 @@ export async function getStaticPaths() {
     return {
       params: { slug },
       props: {
-        entry: mod
+        entry: mod,
+        slug
       }
     };
   });
 }
 
-const { entry } = Astro.props;
+const { entry, slug } = Astro.props;
 const { Content, frontmatter } = entry;
+
+const studyRecord: ResearchStudyRecord = {
+  id: frontmatter.id || slug,
+  slug,
+  trialAcronym: frontmatter.trialAcronym,
+  title: frontmatter.title || slug,
+  journal: frontmatter.journal || frontmatter.organization || 'Medical Journal',
+  year: Number(frontmatter.year) || 2026,
+  file: `${slug}.mdx`,
+  specialty: frontmatter.specialty || 'cardio',
+  conditionKey: frontmatter.conditionKey || '',
+  problemLabels: Array.isArray(frontmatter.problemLabels) ? frontmatter.problemLabels : [],
+  icd10: Array.isArray(frontmatter.icd10) ? frontmatter.icd10 : [],
+  design: frontmatter.design || 'rct',
+  sampleSize: frontmatter.sampleSize ? Number(frontmatter.sampleSize) : null,
+  populationTags: Array.isArray(frontmatter.populationTags) ? frontmatter.populationTags : [],
+  interventionClass: frontmatter.interventionClass || '',
+  comparatorType: frontmatter.comparatorType,
+  primaryEndpointCategory: frontmatter.primaryEndpointCategory || '',
+  outcomeDirection: frontmatter.outcomeDirection || 'positive-superior',
+  impactVerdict: frontmatter.impactVerdict || 'practice-informing',
+  robOverall: frontmatter.robOverall || 'low',
+  gradeCertainty: frontmatter.gradeCertainty || 'high',
+  fundingSource: frontmatter.fundingSource,
+  topicTags: Array.isArray(frontmatter.topicTags) ? frontmatter.topicTags : [],
+  tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : []
+};
+
+const decomposedLabels = decomposeStudyLabels(studyRecord);
+const axesOrder: AtomicLabelAxis[] = [
+  'condition',
+  'population',
+  'design',
+  'intervention',
+  'comparator',
+  'endpoint',
+  'outcome',
+  'quality',
+  'topic'
+];
+
+const facetParamMap: Record<string, string> = {
+  conditionKey: 'condition',
+  problemLabel: 'problem',
+  populationTag: 'population',
+  design: 'design',
+  interventionClass: 'intervention',
+  comparatorType: 'comparator',
+  endpointCategory: 'endpoint',
+  outcomeDirection: 'outcome',
+  impactVerdict: 'verdict',
+  robOverall: 'rob',
+  gradeCertainty: 'grade',
+  fundingSource: 'funding',
+  topicTag: 'topic'
+};
 ---
 
 <ArticleLayout
@@ -30,9 +93,54 @@ const { Content, frontmatter } = entry;
   clinicalPearls={frontmatter.clinicalPearls || frontmatter.keyRecommendations || []}
   sections={frontmatter.sections || []}
 >
-  <Content components={{
-    Alert,
-    QuickNav,
-    FlowchartViewer
-  }} />
+  <section class="res-label-anatomy-card" style="margin-bottom: 1.5rem;" aria-label="Tách nhãn nguyên tử 9 trục">
+    <div class="res-label-anatomy-hdr">
+      <div class="res-label-anatomy-title">
+        <i class="fa-solid fa-tags" style="color: var(--res-primary);"></i>
+        <span>Tách Nhãn Nghiên Cứu Theo 9 Trục ({decomposedLabels.length} nhãn)</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+        <a href={`/#/ebm/research?mode=compare&ids=${encodeURIComponent(slug)}`} class="res-atomic-pill tone-indigo">
+          <i class="fa-solid fa-scale-balanced"></i> Mở Bàn Cân So Sánh
+        </a>
+        <a href="/#/ebm/research?mode=labels" class="res-atomic-pill tone-teal">
+          <i class="fa-solid fa-diagram-project"></i> Bản Đồ Tách Nhãn
+        </a>
+      </div>
+    </div>
+
+    <div class="res-label-anatomy-grid">
+      {axesOrder.map((axis) => {
+        const axisItems = decomposedLabels.filter((l) => l.axis === axis);
+        if (axisItems.length === 0) return null;
+        const meta = ATOMIC_AXIS_META[axis];
+        return (
+          <div class="res-label-axis-cell">
+            <div class="res-label-axis-name">
+              <i class={meta.icon} style="color: var(--res-primary);"></i>
+              <span>{meta.short}</span>
+            </div>
+            <div class="res-label-axis-pills">
+              {axisItems.map((lbl) => (
+                <a
+                  href={`/#/ebm/research?${facetParamMap[lbl.facetKey] || 'topic'}=${encodeURIComponent(lbl.value)}`}
+                  class={`res-atomic-pill tone-${lbl.tone}`}
+                >
+                  {lbl.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <div class="research-mdx-article">
+    <Content components={{
+      Alert,
+      QuickNav,
+      FlowchartViewer
+    }} />
+  </div>
 </ArticleLayout>

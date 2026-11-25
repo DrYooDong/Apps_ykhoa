@@ -1,0 +1,1042 @@
+/* ==========================================================================
+   CliniResearch Studio — Publication-Grade MDX Article Stylesheet (v3.0)
+   Path: src/content/ebm/research/css/research-article.css
+   Scoped cleanly for .research-mdx-article & .res-astro-article
+   100% CSS Variables • NEJM/Nature Editorial Precision • Full Dark Mode
+   ========================================================================== */
+
+@import './research-tokens.css';
+
+/* ── 1. Reading Progress Bar (Fixed Top Hairline) ── */
+.res-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--res-gradient-accent);
+  z-index: 320;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* ── 2. Decomposed 9-Axis Atomic Label Strip inside Article Reader ── */
+.res-label-anatomy-card {
+  max-width: 1520px;
+  margin: 0 auto 1.25rem;
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  box-shadow: var(--res-shadow-sm);
+}
+
+.res-label-anatomy-hdr {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--res-border);
+}
+
+.res-label-anatomy-title {
+  font-family: var(--res-font-display);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--res-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.res-label-anatomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.65rem;
+}
+
+.res-label-axis-cell {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.res-label-axis-name {
+  font-family: var(--res-font-mono);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--res-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.res-label-axis-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.res-atomic-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.26rem 0.56rem;
+  border-radius: 8px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  line-height: 1.25;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+  text-decoration: none;
+}
+
+.res-atomic-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--res-shadow-xs);
+}
+
+.res-atomic-pill.is-selected {
+  box-shadow: 0 0 0 2px var(--res-primary);
+}
+
+.res-atomic-pill-count {
+  font-family: var(--res-font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.06rem 0.34rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] .res-atomic-pill-count {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Inline Label Match Bar (expands under anatomy card when user clicks a label) */
+.res-label-match-panel {
+  margin-top: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--res-surface-code);
+  border: 1px solid var(--res-primary-border);
+  animation: resFadeSlide 0.2s ease;
+}
+
+@keyframes resFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.res-label-match-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  gap: 0.65rem;
+  margin-top: 0.65rem;
+}
+
+.res-label-match-item {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+/* ── 3. Reading Depth Bar (Basic 30s / Clinical / Full Deep Dissection) ── */
+.res-depth-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1.25rem;
+  border-radius: 14px;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+}
+
+.res-depth-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.res-depth-btn {
+  min-height: 36px;
+  padding: 0.32rem 0.78rem;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--res-text-secondary);
+  font-family: var(--res-font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.res-depth-btn:hover {
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+}
+
+.res-depth-btn.is-active {
+  background: var(--res-primary);
+  color: var(--res-on-primary);
+}
+
+/* 30-second Quick Summary Deck (Shown when depth = basic) */
+.res-quick-brief-deck {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-primary-border);
+  border-left: 4px solid var(--res-primary);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 1.35rem;
+}
+
+.res-reader-root.depth-basic .research-mdx-article .page-content > .sec-card:nth-child(n + 2) {
+  display: none;
+}
+
+.res-reader-root.depth-basic .research-mdx-article .quickmenu {
+  display: none;
+}
+
+/* Focus / Zen Mode */
+.res-reader-root.is-zen-mode .res-reader-3col {
+  grid-template-columns: minmax(0, 960px);
+  justify-content: center;
+}
+
+.res-reader-root.is-zen-mode .res-reader-toc-card,
+.res-reader-root.is-zen-mode .res-reader-dossier-card,
+.res-reader-root.is-zen-mode .res-label-anatomy-card {
+  display: none;
+}
+
+/* ── 4. Core MDX Article Editorial Canvas Typography ── */
+.research-mdx-article {
+  color: var(--res-text);
+  line-height: 1.75;
+  font-family: var(--res-font-body);
+  word-wrap: break-word;
+}
+
+/* Hide redundant legacy badges/quickmenu inside SPA reader where Masthead + Sticky TOC already shine */
+.res-reader-root .research-mdx-article > .module-badge-group.study-badges {
+  display: none;
+}
+
+.res-reader-root .research-mdx-article .quickmenu {
+  position: relative;
+  top: 0;
+  margin: 0.75rem 0 1.4rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 12px;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  box-shadow: none;
+}
+
+.research-mdx-article .quickmenu-inner {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.research-mdx-article .quickmenu-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.research-mdx-article .quickmenu-item {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--res-text-secondary);
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.research-mdx-article .quickmenu-item:hover,
+.research-mdx-article .quickmenu-item.active {
+  background: var(--res-primary);
+  border-color: var(--res-primary);
+  color: var(--res-on-primary);
+}
+
+/* ── 5. Stats Strip (Executive Quantitative Banner) ── */
+.research-mdx-article .stats-strip {
+  position: relative;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 0 0 1.35rem;
+  overflow: hidden;
+}
+
+.research-mdx-article .stats-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--res-gradient-accent);
+}
+
+.research-mdx-article .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr));
+  gap: 0.75rem;
+}
+
+.research-mdx-article .stat-card {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+
+.research-mdx-article .stat-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--res-primary-border);
+}
+
+.research-mdx-article .stat-val {
+  font-family: var(--res-font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--res-primary);
+  line-height: 1.25;
+}
+
+.research-mdx-article .stat-val.emerald,
+.research-mdx-article .stat-val.green {
+  color: var(--res-emerald);
+}
+
+.research-mdx-article .stat-val.blue,
+.research-mdx-article .stat-val.indigo {
+  color: var(--res-primary);
+}
+
+.research-mdx-article .stat-val.teal {
+  color: var(--res-teal);
+}
+
+.research-mdx-article .stat-val.amber {
+  color: var(--res-amber);
+}
+
+.research-mdx-article .stat-val.rose,
+.research-mdx-article .stat-val.red {
+  color: var(--res-rose);
+}
+
+.research-mdx-article .stat-val.purple {
+  color: var(--res-violet);
+}
+
+.research-mdx-article .stat-lbl {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--res-text-secondary);
+}
+
+/* ── 6. Pillars Strip (3-Column Core Takeaway Cards) ── */
+.research-mdx-article .pillars {
+  margin: 0 0 1.45rem;
+}
+
+.research-mdx-article .pillars-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+  gap: 0.85rem;
+}
+
+.research-mdx-article .pillar {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-top: 3px solid var(--res-primary);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.research-mdx-article .pillar.p1 {
+  border-top-color: var(--res-emerald);
+}
+
+.research-mdx-article .pillar.p2 {
+  border-top-color: var(--res-primary);
+}
+
+.research-mdx-article .pillar.p3 {
+  border-top-color: var(--res-amber);
+}
+
+.research-mdx-article .pillar-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.research-mdx-article .pillar-title {
+  font-family: var(--res-font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--res-text);
+  margin-bottom: 0.3rem;
+}
+
+.research-mdx-article .pillar-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--res-text-secondary);
+}
+
+/* ── 7. Section Cards (.sec-card) — Editorial Dissection Blocks ── */
+.research-mdx-article .page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.research-mdx-article .sec-card {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-margin-top: 84px;
+  box-shadow: var(--res-shadow-xs);
+  transition: border-color 0.18s ease;
+}
+
+.research-mdx-article .sec-card:target,
+.research-mdx-article .sec-card.is-active-sec {
+  border-color: var(--res-primary-border);
+}
+
+.research-mdx-article .sec-hdr {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.2rem;
+  background: var(--res-surface-subtle);
+  border-bottom: 1px solid var(--res-border);
+}
+
+.research-mdx-article .sec-hdr-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.research-mdx-article .sec-title {
+  font-family: var(--res-font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--res-text);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.research-mdx-article .sec-body {
+  padding: 1.15rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .research-mdx-article .sec-hdr,
+  .research-mdx-article .sec-body {
+    padding: 0.9rem 0.95rem;
+  }
+}
+
+.research-mdx-article .sec-body p {
+  margin: 0 0 0.85rem;
+  color: var(--res-text-secondary);
+}
+
+.research-mdx-article .sec-body p:last-child {
+  margin-bottom: 0;
+}
+
+.research-mdx-article .sec-body ul,
+.research-mdx-article .sec-body ol {
+  margin: 0.4rem 0 0.9rem 1.2rem;
+  padding: 0;
+  list-style: disc;
+  color: var(--res-text-secondary);
+}
+
+.research-mdx-article .sec-body ol {
+  list-style: decimal;
+}
+
+.research-mdx-article .sec-body li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+
+.research-mdx-article .sec-subtitle,
+.research-mdx-article .sec-body h3,
+.research-mdx-article .sec-body h4 {
+  font-family: var(--res-font-display);
+  font-weight: 800;
+  color: var(--res-text);
+  margin: 1.25rem 0 0.65rem;
+  line-height: 1.35;
+}
+
+.research-mdx-article .sec-subtitle,
+.research-mdx-article .sec-body h3 {
+  font-size: 0.98rem;
+  padding-left: 0.65rem;
+  border-left: 3px solid var(--res-primary);
+}
+
+/* ── 8. PICO Bento Grid & Cards ── */
+.research-mdx-article .pico-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0 1.25rem;
+}
+
+.research-mdx-article .pico-bento-card,
+.research-mdx-article .pico-item {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-left: 4px solid var(--res-primary);
+  border-radius: 14px;
+  padding: 0.95rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.research-mdx-article .pico-p {
+  border-left-color: var(--res-primary);
+}
+
+.research-mdx-article .pico-i {
+  border-left-color: var(--res-teal);
+}
+
+.research-mdx-article .pico-c {
+  border-left-color: var(--res-amber);
+}
+
+.research-mdx-article .pico-o {
+  border-left-color: var(--res-emerald);
+}
+
+.research-mdx-article .pico-bento-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed var(--res-border);
+}
+
+.research-mdx-article .pico-letter {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--res-primary);
+  color: var(--res-on-primary);
+  font-family: var(--res-font-mono);
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.research-mdx-article .pico-i .pico-letter {
+  background: var(--res-teal);
+}
+
+.research-mdx-article .pico-c .pico-letter {
+  background: var(--res-amber);
+}
+
+.research-mdx-article .pico-o .pico-letter {
+  background: var(--res-emerald);
+}
+
+.research-mdx-article .pico-title-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.research-mdx-article .pico-name {
+  font-family: var(--res-font-display);
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--res-text);
+}
+
+.research-mdx-article .pico-sub {
+  font-size: 0.74rem;
+  color: var(--res-text-muted);
+}
+
+.research-mdx-article .pico-highlight {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--res-text);
+  margin-bottom: 0.3rem;
+}
+
+.research-mdx-article .pico-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  padding: 0.22rem 0.6rem;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+}
+
+.research-mdx-article .pico-text {
+  font-size: 0.86rem;
+  color: var(--res-text-secondary);
+  line-height: 1.6;
+}
+
+/* ── 9. Infoboxes, Updates Grid, One-Sentence Summary & Meta Bento ── */
+.research-mdx-article .infobox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.95rem 1.05rem;
+  border-radius: 13px;
+  margin: 1rem 0;
+  border: 1px solid var(--res-primary-border);
+  border-left: 4px solid var(--res-primary);
+  background: var(--res-primary-soft);
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: var(--res-text);
+}
+
+.research-mdx-article .infobox.warning,
+.research-mdx-article .infobox.amber {
+  border-color: var(--res-amber-border);
+  border-left-color: var(--res-amber);
+  background: var(--res-amber-soft);
+}
+
+.research-mdx-article .infobox.danger,
+.research-mdx-article .infobox.rose {
+  border-color: var(--res-rose-border);
+  border-left-color: var(--res-rose);
+  background: var(--res-rose-soft);
+}
+
+.research-mdx-article .infobox.success,
+.research-mdx-article .infobox.pearl,
+.research-mdx-article .infobox.emerald {
+  border-color: var(--res-emerald-border);
+  border-left-color: var(--res-emerald);
+  background: var(--res-emerald-soft);
+}
+
+.research-mdx-article .infobox-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.research-mdx-article .updates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 0.9rem;
+  margin: 1rem 0;
+}
+
+.research-mdx-article .update-card {
+  position: relative;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 14px;
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.research-mdx-article .update-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.research-mdx-article .update-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.research-mdx-article .update-card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.research-mdx-article .update-card-title {
+  font-family: var(--res-font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--res-text);
+  line-height: 1.35;
+}
+
+.research-mdx-article .update-card-body {
+  font-size: 0.84rem;
+  color: var(--res-text-secondary);
+}
+
+.research-mdx-article .update-verdict {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+}
+
+.research-mdx-article .update-verdict.verdict-red {
+  background: var(--res-rose-soft);
+  color: var(--res-rose);
+}
+
+.research-mdx-article .update-verdict.verdict-green {
+  background: var(--res-emerald-soft);
+  color: var(--res-emerald);
+}
+
+.research-mdx-article .one-sentence-summary-box {
+  background: var(--res-surface-code);
+  border: 1px solid var(--res-primary-border);
+  border-left: 4px solid var(--res-primary);
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.research-mdx-article .one-sentence-summary-box .summary-label {
+  font-family: var(--res-font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--res-primary);
+  margin-bottom: 0.4rem;
+}
+
+.research-mdx-article .meta-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 0.7rem;
+  margin: 0.9rem 0;
+}
+
+.research-mdx-article .meta-item {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.82rem;
+  color: var(--res-text-secondary);
+}
+
+/* ── 10. Academic Clinical Data Tables (.regimen-table, .pico-table, .data-table, .trial-endpoints-table) ── */
+.research-mdx-article .table-wrapper,
+.research-mdx-article .table-wrap,
+.research-mdx-article .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0.9rem 0 1.15rem;
+  border: 1px solid var(--res-border);
+  border-radius: 13px;
+  background: var(--res-surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.research-mdx-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.research-mdx-article table thead th {
+  background: var(--res-surface-subtle);
+  color: var(--res-text);
+  font-family: var(--res-font-display);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.78rem 0.9rem;
+  border-bottom: 2px solid var(--res-border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.research-mdx-article table tbody td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--res-border);
+  color: var(--res-text-secondary);
+  vertical-align: top;
+}
+
+.research-mdx-article table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.research-mdx-article table tbody tr:hover td {
+  background: var(--res-surface-subtle);
+}
+
+.research-mdx-article .rx-tag,
+.research-mdx-article .pico-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  font-family: var(--res-font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+}
+
+.research-mdx-article .rx-tag.alternative {
+  background: var(--res-amber-soft);
+  color: var(--res-amber);
+}
+
+.research-mdx-article .p-val.sig,
+.research-mdx-article .favors-exp {
+  font-family: var(--res-font-mono);
+  font-weight: 800;
+  color: var(--res-emerald);
+}
+
+.research-mdx-article .p-val.ns,
+.research-mdx-article .favors-ctrl {
+  font-family: var(--res-font-mono);
+  color: var(--res-text-muted);
+}
+
+/* ── 11. Cochrane RoB 2.0 Card, Verdict Box & Figures ── */
+.research-mdx-article .rob-card {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 14px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.research-mdx-article .rob-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.research-mdx-article .rob-title {
+  font-family: var(--res-font-display);
+  font-weight: 800;
+  color: var(--res-text);
+}
+
+.research-mdx-article .rob-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 0.65rem;
+}
+
+.research-mdx-article .rob-domain-card {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-top: 3px solid var(--res-emerald);
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+.research-mdx-article .rob-domain-card.some-concerns {
+  border-top-color: var(--res-amber);
+}
+
+.research-mdx-article .rob-domain-card.high-risk {
+  border-top-color: var(--res-rose);
+}
+
+.research-mdx-article .rob-domain-title {
+  font-weight: 800;
+  color: var(--res-text);
+  margin-bottom: 0.2rem;
+}
+
+.research-mdx-article .rob-status {
+  font-family: var(--res-font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--res-emerald);
+  margin-bottom: 0.35rem;
+}
+
+.research-mdx-article .rob-domain-card.some-concerns .rob-status {
+  color: var(--res-amber);
+}
+
+.research-mdx-article .rob-domain-card.high-risk .rob-status {
+  color: var(--res-rose);
+}
+
+.research-mdx-article .verdict-box {
+  background: var(--res-surface-code);
+  border: 1px solid var(--res-primary-border);
+  border-left: 5px solid var(--res-primary);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.research-mdx-article .verdict-badge {
+  font-family: var(--res-font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--res-primary);
+  margin-bottom: 0.45rem;
+}
+
+.research-mdx-article .figure-card,
+.research-mdx-article .res-figure-card {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 14px;
+  padding: 0.85rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.research-mdx-article .figure-card img,
+.research-mdx-article .res-figure-card img {
+  margin: 0 auto;
+  border-radius: 10px;
+  max-height: 520px;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.research-mdx-article .fig-caption,
+.research-mdx-article figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--res-text-muted);
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* ── 12. Interactive EBM Statistical Glossary Term Highlight ── */
+.res-article-canvas .ebm-glossary-term {
+  border-bottom: 1.5px dashed var(--res-primary);
+  color: var(--res-primary);
+  font-weight: 700;
+  cursor: help;
+  padding: 0 1px;
+  border-radius: 3px;
+  transition: background-color 0.14s ease;
+}
+
+.res-article-canvas .ebm-glossary-term:hover {
+  background: var(--res-primary-soft);
+}
+
+/* ── 13. Print Optimization (Clean Journal Club Handout) ── */
+@media print {
+  .res-reading-progress,
+  .res-reader-topbar,
+  .res-reader-toc-card,
+  .res-depth-bar,
+  .res-label-match-panel,
+  .res-compare-dock {
+    display: none !important;
+  }
+
+  .res-reader-3col {
+    display: block !important;
+  }
+
+  .res-article-canvas {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+}

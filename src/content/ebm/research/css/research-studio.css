@@ -1196,4 +1196,356 @@
   border-radius: 12px;
   padding: 0.75rem;
   margin-top: 0.65rem;
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.res-related-item:hover {
+  border-color: var(--res-primary-border);
+}
+
+/* ── 14. Active TOC ScrollSpy Highlight & Personal Notes Widget ── */
+.res-toc-link.is-active {
+  background: var(--res-primary-soft);
+  color: var(--res-primary);
+  font-weight: 800;
+  border-left: 3px solid var(--res-primary);
+}
+
+.res-notes-textarea {
+  width: 100%;
+  min-height: 82px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--res-border);
+  background: var(--res-surface-subtle);
+  color: var(--res-text);
+  font-family: var(--res-font-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+}
+
+.res-notes-textarea:focus {
+  border-color: var(--res-primary);
+  background: var(--res-surface);
+}
+
+.res-cite-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.res-cite-btn {
+  min-height: 32px;
+  padding: 0.22rem 0.58rem;
+  border-radius: 7px;
+  border: 1px solid var(--res-border);
+  background: var(--res-surface-subtle);
+  color: var(--res-text-secondary);
+  font-family: var(--res-font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.res-cite-btn:hover {
+  border-color: var(--res-primary);
+  color: var(--res-primary);
+}
+
+/* ── 15. Decomposed Card Label Strip (Compact 4-Axis Anatomy on Cards) ── */
+.res-card-label-anatomy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--res-border);
+}
+
+@media (max-width: 440px) {
+  .res-card-label-anatomy {
+    grid-template-columns: 1fr;
+  }
+}
+
+.res-card-label-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.res-card-label-slot-k {
+  font-family: var(--res-font-mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--res-text-muted);
+}
+
+/* ── 16. Mode 3: Interactive Label Atlas / Taxonomy Decomposer View ── */
+.res-atlas-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.res-atlas-hero-card {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-left: 4px solid var(--res-primary);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--res-shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.res-atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 1rem;
+}
+
+.res-atlas-axis-card {
+  background: var(--res-surface);
+  border: 1px solid var(--res-border);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--res-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.res-atlas-axis-hdr {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--res-border);
+}
+
+.res-atlas-label-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.res-atlas-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 11px;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  transition: border-color 0.15s ease;
+}
+
+.res-atlas-label-row:hover {
+  border-color: var(--res-primary-border);
+}
+
+.res-atlas-label-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.res-mini-action-btn {
+  min-height: 32px;
+  padding: 0.2rem 0.52rem;
+  border-radius: 8px;
+  border: 1px solid var(--res-border);
+  background: var(--res-surface);
+  color: var(--res-text-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.14s ease;
+}
+
+.res-mini-action-btn:hover {
+  border-color: var(--res-primary);
+  color: var(--res-primary);
+}
+
+.res-mini-action-btn.is-primary {
+  background: var(--res-primary-soft);
+  border-color: var(--res-primary-border);
+  color: var(--res-primary);
+}
+
+/* ── 17. Enhanced Comparison Studio: Label DNA Banner, Axis Toggles, Inline Picker & Quant Bars ── */
+.res-dna-banner {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 16px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .res-dna-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.res-similarity-ring {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: conic-gradient(var(--res-primary) calc(var(--sim-pct, 50) * 1%), var(--res-border) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.res-similarity-ring::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: var(--res-surface);
+}
+
+.res-similarity-ring-val {
+  position: relative;
+  z-index: 1;
+  font-family: var(--res-font-mono);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--res-primary);
+}
+
+.res-axis-toggle-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+}
+
+.res-axis-chip {
+  min-height: 32px;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--res-border);
+  background: var(--res-surface);
+  color: var(--res-text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.res-axis-chip.is-on {
+  background: var(--res-primary-soft);
+  border-color: var(--res-primary-border);
+  color: var(--res-primary);
+}
+
+.res-cmp-baseline-th {
+  background: var(--res-primary-soft) !important;
+  border-top: 3px solid var(--res-primary) !important;
+}
+
+.res-cmp-picker-card {
+  background: var(--res-surface-subtle);
+  border: 1px dashed var(--res-primary-border);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.res-select {
+  min-height: 40px;
+  padding: 0.38rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--res-border);
+  background: var(--res-surface);
+  color: var(--res-text);
+  font-family: var(--res-font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.res-select:focus {
+  border-color: var(--res-primary);
+}
+
+.res-label-venn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 1rem;
+}
+
+.res-label-venn-box {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.res-quant-bars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.res-quant-panel {
+  background: var(--res-surface-subtle);
+  border: 1px solid var(--res-border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+}
+
+.res-bar-track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--res-border);
+  overflow: hidden;
+  margin-top: 0.35rem;
+}
+
+.res-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--res-gradient-accent);
+  transition: width 0.35s ease;
 }

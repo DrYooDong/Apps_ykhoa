@@ -1,37 +1,57 @@
 /**
- * CliniPortal 2.0 — CliniResearch Studio Main Explorer & Comparison Workspace
+ * CliniPortal 2.0 — CliniResearch Studio Main Explorer, Label Atlas & Comparison Workspace (v3.0)
  * Path: src/content/ebm/research/js/research-studio-view.ts
  *
  * Distinct Academic Journal & Quantitative Trial Studio UI:
- *  - Editorial Masthead with live trial metrics & total pooled sample size (N)
+ *  - Editorial Masthead with live trial metrics, pooled N, and unique atomic label count
+ *  - 3 Workspace Modes: (1) Khám Phá Nghiên Cứu, (2) Bản Đồ Tách Nhãn 9 Trục, (3) Bàn Cân Đối Sánh
  *  - Auto-discovered Smart Label Clusters strip (1-click multi-study comparison)
- *  - 3-Zone Faceted Tag Explorer (Outcome, Design, Condition, Intervention, Year, RoB)
- *  - PICO Evidence Cards & Quantitative Matrix Views
- *  - Slide-over 5-second Quick-Appraisal Drawer + Persistent Floating Compare Dock
+ *  - Decomposed Label Anatomy Cards + Multi-Criteria Sorting + Deep URL Hash Sync
+ *  - Slide-over Quick-Appraisal Drawer (with Personal Notes & Related Label Matches) + Floating Compare Dock
  */
 
 import '../css/research-studio.css';
 import { lookupSharedJournalMetric } from '../../shared-core';
 import {
+  buildCsvComparisonExport,
   buildMarkdownComparisonExport,
+  buildShareableCompareHash,
   renderComparisonStudioSection
 } from './research-compare-engine';
 import {
+  ATOMIC_AXIS_META,
+  COMPARATOR_TYPES,
+  decomposeStudyLabels,
+  ENDPOINT_CATEGORIES,
+  FUNDING_LABELS,
   GRADE_LABELS,
+  humanizeSlugLabel,
   IMPACT_VERDICTS,
   INTERVENTION_CLASSES,
   OUTCOME_DIRECTIONS,
+  POPULATION_TAGS_VI,
+  PROBLEM_LABELS_VI,
   RESEARCH_CONDITIONS,
   RESEARCH_DESIGNS,
   RESEARCH_SPECIALTIES,
-  ROB_LABELS
+  ROB_LABELS,
+  TOPIC_TAGS_VI
 } from './research-taxonomy';
 import { researchStore } from './research-store';
-import type { ResearchCompareTab, ResearchStudyRecord } from './research-types';
+import type {
+  AtomicLabelAxis,
+  CompareMatrixGroupKey,
+  FilterableFacetKey,
+  ResearchCompareTab,
+  ResearchSortKey,
+  ResearchStudyRecord
+} from './research-types';
 
-type StudioMainMode = 'explore' | 'compare';
+type StudioMainMode = 'explore' | 'labels' | 'compare';
 let currentMainMode: StudioMainMode = 'explore';
 let isMobileFacetsOpen = false;
+let atlasComparableOnly = false;
+let atlasSearchQuery = '';
 
 function escapeHtml(val?: string | number | null): string {
   if (val === undefined || val === null) return '';
@@ -49,31 +69,59 @@ function parseHashQueryParams(): void {
   if (qIdx === -1) return;
 
   const params = new URLSearchParams(hash.slice(qIdx + 1));
-  if (params.get('mode') === 'compare') {
+  const mode = params.get('mode');
+  if (mode === 'compare') {
     currentMainMode = 'compare';
+  } else if (mode === 'labels') {
+    currentMainMode = 'labels';
   }
-  const cond = params.get('condition');
-  if (cond) {
-    researchStore.filters.conditionKey = cond;
-    currentMainMode = 'explore';
+
+  const idsParam = params.get('ids');
+  if (idsParam) {
+    const ids = idsParam
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (ids.length > 0) {
+      researchStore.loadClusterIntoCompare(ids);
+      currentMainMode = 'compare';
+    }
   }
-  const intv = params.get('intervention');
-  if (intv) {
-    researchStore.filters.interventionClass = intv;
+
+  const directFacetMap: Array<[string, FilterableFacetKey]> = [
+    ['condition', 'conditionKey'],
+    ['problem', 'problemLabel'],
+    ['population', 'populationTag'],
+    ['design', 'design'],
+    ['intervention', 'interventionClass'],
+    ['comparator', 'comparatorType'],
+    ['endpoint', 'endpointCategory'],
+    ['outcome', 'outcomeDirection'],
+    ['verdict', 'impactVerdict'],
+    ['rob', 'robOverall'],
+    ['grade', 'gradeCertainty'],
+    ['funding', 'fundingSource'],
+    ['specialty', 'specialty'],
+    ['topic', 'topicTag']
+  ];
+
+  let appliedFacet = false;
+  for (const [paramKey, facetKey] of directFacetMap) {
+    const val = params.get(paramKey);
+    if (val) {
+      if (!appliedFacet) researchStore.resetFilters();
+      researchStore.filters[facetKey] = val;
+      appliedFacet = true;
+    }
+  }
+  if (appliedFacet && mode !== 'compare') {
     currentMainMode = 'explore';
   }
 }
 
 function renderFacetGroup(
   title: string,
-  facetKey:
-    | 'outcomeDirection'
-    | 'design'
-    | 'conditionKey'
-    | 'interventionClass'
-    | 'specialty'
-    | 'yearPeriod'
-    | 'robOverall',
+  facetKey: FilterableFacetKey,
   options: Array<{ value: string; label: string; count: number }>
 ): string {
   const activeVal = researchStore.filters[facetKey];
@@ -141,6 +189,14 @@ function renderLeftFacetRail(allStudies: ResearchStudyRecord[]): string {
     }))
     .sort((a, b) => b.count - a.count);
 
+  const endpointOpts = Object.entries(ENDPOINT_CATEGORIES)
+    .map(([k, label]) => ({
+      value: k,
+      label,
+      count: countBy((s) => s.primaryEndpointCategory === k)
+    }))
+    .sort((a, b) => b.count - a.count);
+
   const specOpts = Object.entries(RESEARCH_SPECIALTIES)
     .map(([k, v]) => ({
       value: k,
@@ -156,9 +212,15 @@ function renderLeftFacetRail(allStudies: ResearchStudyRecord[]): string {
     { value: 'pre-2020', label: 'Landmark trước 2020', count: countBy((s) => s.year < 2020) }
   ];
 
+  const gradeOpts = Object.entries(GRADE_LABELS).map(([k, v]) => ({
+    value: k,
+    label: `${v.stars} ${v.shortLabel}`,
+    count: countBy((s) => s.gradeCertainty === k)
+  }));
+
   const robOpts = Object.entries(ROB_LABELS).map(([k, v]) => ({
     value: k,
-    label: v.label,
+    label: v.shortLabel,
     count: countBy((s) => s.robOverall === k)
   }));
 
@@ -166,7 +228,7 @@ function renderLeftFacetRail(allStudies: ResearchStudyRecord[]): string {
     <aside class="res-facet-rail ${isMobileFacetsOpen ? 'is-mobile-open' : ''}" id="res-facet-rail" aria-label="Bộ lọc nhãn nghiên cứu">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
         <strong style="font-family: var(--res-font-display); font-size: 0.9rem;">
-          <i class="fa-solid fa-sliders" style="color: var(--res-primary);"></i> Trục Nhãn Nghiên Cứu
+          <i class="fa-solid fa-sliders" style="color: var(--res-primary);"></i> Bộ Lọc Tách Nhãn
         </strong>
         ${
           researchStore.getActiveFilterCount() > 0
@@ -192,13 +254,15 @@ function renderLeftFacetRail(allStudies: ResearchStudyRecord[]): string {
         </div>
       </div>
 
-      ${renderFacetGroup('1. Kết Quả Nghiên Cứu', 'outcomeDirection', outcomeOpts)}
+      ${renderFacetGroup('1. Hướng Kết Quả', 'outcomeDirection', outcomeOpts)}
       ${renderFacetGroup('2. Thiết Kế Nghiên Cứu', 'design', designOpts)}
       ${renderFacetGroup('3. Bệnh / Vấn Đề Lâm Sàng', 'conditionKey', condOpts)}
-      ${renderFacetGroup('4. Nhóm Can Thiệp / Cơ Chế', 'interventionClass', intvOpts)}
-      ${renderFacetGroup('5. Năm Công Bố', 'yearPeriod', yearOpts)}
-      ${renderFacetGroup('6. Chuyên Khoa', 'specialty', specOpts)}
+      ${renderFacetGroup('4. Nhóm Can Thiệp (I)', 'interventionClass', intvOpts)}
+      ${renderFacetGroup('5. Nhóm Kết Cục (O)', 'endpointCategory', endpointOpts)}
+      ${renderFacetGroup('6. Mức Độ Chắc Chắn GRADE', 'gradeCertainty', gradeOpts)}
       ${renderFacetGroup('7. Nguy Cơ Sai Lệch (RoB)', 'robOverall', robOpts)}
+      ${renderFacetGroup('8. Năm Công Bố', 'yearPeriod', yearOpts)}
+      ${renderFacetGroup('9. Chuyên Khoa', 'specialty', specOpts)}
     </aside>
   `;
 }
@@ -225,9 +289,11 @@ function renderStudyCard(s: ResearchStudyRecord): string {
   };
   const gradeMeta = GRADE_LABELS[s.gradeCertainty] || {
     label: s.gradeCertainty,
+    shortLabel: s.gradeCertainty,
     stars: '⊕⊕⊕◯',
     tone: 'teal' as const
   };
+  const robMeta = ROB_LABELS[s.robOverall] || { label: s.robOverall, shortLabel: s.robOverall, tone: 'slate' as const };
 
   const isCompared = researchStore.isInCompare(s.id);
   const pm = s.primaryMetric;
@@ -235,9 +301,14 @@ function renderStudyCard(s: ResearchStudyRecord): string {
     ? `${pm.measure || 'HR'} ${pm.effectEstimate}${
         pm.ciLower && pm.ciUpper ? ` (95% CI: ${pm.ciLower}–${pm.ciUpper})` : ''
       }${pm.pValue ? ` • p=${pm.pValue}` : ''}${pm.nnt ? ` • NNT=${pm.nnt}` : ''}`
-    : s.sampleSize
-      ? `Cỡ mẫu N = ${s.sampleSize.toLocaleString('en-US')} • ${verdictMeta.shortLabel || s.impactVerdict}`
-      : `${verdictMeta.shortLabel || s.impactVerdict} • GRADE ${gradeMeta.stars}`;
+    : pm?.rawDiffText
+      ? `${pm.measure ? `[${pm.measure}] ` : ''}${pm.rawDiffText}`
+      : s.sampleSize
+        ? `Cỡ mẫu N = ${s.sampleSize.toLocaleString('en-US')} • ${verdictMeta.shortLabel || s.impactVerdict}`
+        : `${verdictMeta.shortLabel || s.impactVerdict} • GRADE ${gradeMeta.stars}`;
+
+  const peerMatches = researchStore.getRelatedStudiesByLabels(s, 3);
+  const peerIds = [s.id, ...peerMatches.slice(0, 2).map((p) => p.study.id)];
 
   return `
     <article class="res-study-card ${isCompared ? 'is-compared' : ''}">
@@ -299,34 +370,69 @@ function renderStudyCard(s: ResearchStudyRecord): string {
 
         <!-- Quantitative Metric Strip -->
         <div class="res-metric-banner" style="margin-top: 0.65rem;">
-          <span>📊 ${escapeHtml(quantBannerText)}</span>
-          <span>${gradeMeta.stars}</span>
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">📊 ${escapeHtml(quantBannerText)}</span>
+          <span style="flex-shrink: 0;">${gradeMeta.stars}</span>
         </div>
 
-        <!-- Clickable Shared Label Chips -->
-        <div class="res-card-labels-row" style="margin-top: 0.65rem;">
-          <button type="button" class="res-tag res-tag-clickable tone-slate js-quick-label" data-facet="conditionKey" data-val="${escapeHtml(
-            s.conditionKey
-          )}">
-            🩺 ${escapeHtml(RESEARCH_CONDITIONS[s.conditionKey] || s.conditionKey)}
-          </button>
-          <button type="button" class="res-tag res-tag-clickable tone-violet js-quick-label" data-facet="interventionClass" data-val="${escapeHtml(
-            s.interventionClass
-          )}">
-            💊 ${escapeHtml(INTERVENTION_CLASSES[s.interventionClass] || s.interventionClass)}
-          </button>
-          ${s.topicTags
-            .slice(0, 2)
-            .map(
-              (tag) => `
-            <button type="button" class="res-tag res-tag-clickable tone-teal js-quick-label" data-facet="topicTag" data-val="${escapeHtml(
-              tag
-            )}">
-              #${escapeHtml(tag)}
-            </button>
-          `
-            )
-            .join('')}
+        <!-- Decomposed 4-Slot Atomic Label Anatomy on Card -->
+        <div class="res-card-label-anatomy" aria-label="Nhãn đã tách theo trục">
+          <div class="res-card-label-slot">
+            <span class="res-card-label-slot-k">🩺 Bệnh lý &amp; Vấn đề</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+              <button type="button" class="res-tag res-tag-clickable tone-indigo js-quick-label" data-facet="conditionKey" data-val="${escapeHtml(
+                s.conditionKey
+              )}" style="font-size: 0.69rem; padding: 0.16rem 0.45rem;">
+                ${escapeHtml(RESEARCH_CONDITIONS[s.conditionKey] || s.conditionKey)}
+              </button>
+            </div>
+          </div>
+
+          <div class="res-card-label-slot">
+            <span class="res-card-label-slot-k">💊 Can thiệp &amp; Đối chứng</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+              <button type="button" class="res-tag res-tag-clickable tone-violet js-quick-label" data-facet="interventionClass" data-val="${escapeHtml(
+                s.interventionClass
+              )}" style="font-size: 0.69rem; padding: 0.16rem 0.45rem;">
+                ${escapeHtml(INTERVENTION_CLASSES[s.interventionClass] || s.interventionClass)}
+              </button>
+            </div>
+          </div>
+
+          <div class="res-card-label-slot">
+            <span class="res-card-label-slot-k">🎯 Kết cục &amp; RoB</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+              <button type="button" class="res-tag res-tag-clickable tone-teal js-quick-label" data-facet="endpointCategory" data-val="${escapeHtml(
+                s.primaryEndpointCategory
+              )}" style="font-size: 0.69rem; padding: 0.16rem 0.45rem;">
+                ${escapeHtml(
+                  (ENDPOINT_CATEGORIES[s.primaryEndpointCategory] || s.primaryEndpointCategory).split(' (')[0]
+                )}
+              </button>
+              <button type="button" class="res-tag res-tag-clickable tone-${robMeta.tone} js-quick-label" data-facet="robOverall" data-val="${escapeHtml(
+                s.robOverall
+              )}" style="font-size: 0.69rem; padding: 0.16rem 0.45rem;">
+                ${escapeHtml(robMeta.shortLabel)}
+              </button>
+            </div>
+          </div>
+
+          <div class="res-card-label-slot">
+            <span class="res-card-label-slot-k">🏷️ Chủ đề đối chiếu</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem;">
+              ${(s.topicTags || [])
+                .slice(0, 2)
+                .map(
+                  (tag) => `
+                <button type="button" class="res-tag res-tag-clickable tone-rose js-quick-label" data-facet="topicTag" data-val="${escapeHtml(
+                  tag
+                )}" style="font-size: 0.69rem; padding: 0.16rem 0.45rem;">
+                  #${escapeHtml(TOPIC_TAGS_VI[tag] || tag)}
+                </button>
+              `
+                )
+                .join('')}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -340,7 +446,7 @@ function renderStudyCard(s: ResearchStudyRecord): string {
           </button>
           <button type="button" class="res-btn js-preview-study" data-id="${escapeHtml(
             s.id
-          )}" title="Xem nhanh PICO & Thẩm định 5 giây">
+          )}" title="Xem nhanh PICO, Nhãn tách bạch & Ghi chú">
             <i class="fa-solid fa-eye"></i> Xem nhanh
           </button>
           <button type="button" class="res-btn ${
@@ -349,6 +455,15 @@ function renderStudyCard(s: ResearchStudyRecord): string {
             <i class="fa-solid fa-scale-balanced"></i>
             <span>${isCompared ? 'Đã chọn' : 'So sánh'}</span>
           </button>
+          ${
+            peerMatches.length > 0
+              ? `<button type="button" class="res-btn js-load-cluster" data-ids="${escapeHtml(
+                  peerIds.join(',')
+                )}" title="Nạp bài này cùng ${Math.min(2, peerMatches.length)} bài tương đồng nhãn nhất vào Bàn Cân">
+                  <i class="fa-solid fa-code-compare"></i>
+                </button>`
+              : ''
+          }
         </div>
 
         <a href="#/ebm/kho-nghien-cuu/${escapeHtml(s.slug)}" class="res-btn res-btn-primary">
@@ -370,7 +485,7 @@ function renderMatrixTable(studies: ResearchStudyRecord[]): string {
               <th>So sánh</th>
               <th>Nghiên cứu &amp; Tạp chí</th>
               <th>Thiết kế &amp; Cỡ mẫu</th>
-              <th>Bệnh / Vấn đề &amp; Can thiệp</th>
+              <th>Bệnh lý &amp; Can thiệp</th>
               <th>Hướng Kết quả &amp; Chỉ số</th>
               <th>RoB / GRADE</th>
               <th>Mở bài</th>
@@ -382,6 +497,7 @@ function renderMatrixTable(studies: ResearchStudyRecord[]): string {
                 const dm = RESEARCH_DESIGNS[s.design];
                 const dir = OUTCOME_DIRECTIONS[s.outcomeDirection];
                 const gr = GRADE_LABELS[s.gradeCertainty];
+                const rob = ROB_LABELS[s.robOverall];
                 const isCmp = researchStore.isInCompare(s.id);
                 return `
                   <tr>
@@ -426,17 +542,20 @@ function renderMatrixTable(studies: ResearchStudyRecord[]): string {
                       <span class="res-tag tone-${dir?.tone || 'teal'}">${escapeHtml(
                         dir?.shortLabel || s.outcomeDirection
                       )}</span>
-                      <div style="font-size: 0.76rem; color: var(--res-text-secondary); margin-top: 4px; max-width: 270px;">
+                      <div style="font-size: 0.76rem; color: var(--res-text-secondary); margin-top: 4px; max-width: 280px;">
                         ${escapeHtml(
                           s.primaryMetric?.effectEstimate
                             ? `${s.primaryMetric.measure || 'HR'} ${s.primaryMetric.effectEstimate} (${
                                 s.primaryMetric.ciLower || ''
                               }–${s.primaryMetric.ciUpper || ''})`
-                            : (s.summary || '').slice(0, 95) + '…'
+                            : s.primaryMetric?.rawDiffText || (s.summary || '').slice(0, 95) + '…'
                         )}
                       </div>
                     </td>
                     <td>
+                      <span class="res-tag tone-${rob?.tone || 'slate'}" style="margin-bottom: 4px;">${escapeHtml(
+                        rob?.shortLabel || s.robOverall
+                      )}</span><br/>
                       <span class="res-tag tone-${gr?.tone || 'teal'}">${gr?.stars || '⊕⊕⊕◯'}</span>
                     </td>
                     <td>
@@ -455,14 +574,160 @@ function renderMatrixTable(studies: ResearchStudyRecord[]): string {
   `;
 }
 
+/**
+ * Mode 2 (NEW): Interactive 9-Axis Atomic Label Atlas / Decomposer View
+ */
+function renderLabelAtlasView(): string {
+  const index = researchStore.getAtomicLabelIndex();
+  const axesOrder: AtomicLabelAxis[] = [
+    'condition',
+    'intervention',
+    'population',
+    'design',
+    'comparator',
+    'endpoint',
+    'outcome',
+    'quality',
+    'topic'
+  ];
+
+  const qNorm = atlasSearchQuery.trim().toLowerCase();
+  const totalUniqueLabels = axesOrder.reduce((acc, ax) => acc + index[ax].length, 0);
+  const comparableLabelsCount = axesOrder.reduce(
+    (acc, ax) => acc + index[ax].filter((item) => item.studies.length >= 2).length,
+    0
+  );
+
+  return `
+    <section class="res-atlas-shell">
+      <div class="res-atlas-hero-card">
+        <div>
+          <h2 style="font-family: var(--res-font-display); font-size: 1.15rem; margin: 0 0 0.3rem;">
+            <i class="fa-solid fa-diagram-project" style="color: var(--res-primary);"></i>
+            Bản Đồ Tách Nhãn Nguyên Tử 9 Trục (${totalUniqueLabels} nhãn • ${comparableLabelsCount} nhãn có ≥ 2 bài so sánh)
+          </h2>
+          <p style="margin: 0; font-size: 0.84rem; color: var(--res-text-muted); max-width: 720px; line-height: 1.55;">
+            Mỗi nghiên cứu được tách thành các nhãn độc lập theo 9 trục chuẩn hóa. Chọn <strong>Lọc</strong> để xem danh sách hoặc bấm <strong>So sánh</strong> để nạp trực tiếp toàn bộ nghiên cứu mang cùng nhãn lên Bàn Cân Đối Sánh!
+          </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+          <input
+            type="search"
+            id="js-atlas-search"
+            class="res-search-input"
+            style="min-height: 40px; padding-left: 0.85rem; width: 230px;"
+            value="${escapeHtml(atlasSearchQuery)}"
+            placeholder="Tìm nhãn (statin, dengue, placebo...)"
+          />
+          <button type="button" class="res-btn ${
+            atlasComparableOnly ? 'res-btn-primary' : ''
+          }" id="js-atlas-comparable-toggle" style="min-height: 40px;">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <span>Chỉ nhãn ≥ 2 bài (${comparableLabelsCount})</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="res-atlas-grid">
+        ${axesOrder
+          .map((axis) => {
+            const meta = ATOMIC_AXIS_META[axis];
+            const items = index[axis].filter((it) => {
+              if (atlasComparableOnly && it.studies.length < 2) return false;
+              if (qNorm) {
+                const hay = `${it.label.label} ${it.label.value} ${meta.title}`.toLowerCase();
+                if (!hay.includes(qNorm)) return false;
+              }
+              return true;
+            });
+
+            if (items.length === 0) return '';
+
+            return `
+              <div class="res-atlas-axis-card">
+                <div class="res-atlas-axis-hdr">
+                  <div>
+                    <div style="font-family: var(--res-font-display); font-weight: 800; font-size: 0.94rem; color: var(--res-text); display: flex; align-items: center; gap: 0.45rem;">
+                      <i class="${meta.icon}" style="color: var(--res-primary);"></i>
+                      <span>${escapeHtml(meta.title)}</span>
+                    </div>
+                    <div style="font-size: 0.74rem; color: var(--res-text-muted); margin-top: 2px;">${escapeHtml(
+                      meta.description
+                    )}</div>
+                  </div>
+                  <span class="res-facet-count">${items.length} nhãn</span>
+                </div>
+
+                <div class="res-atlas-label-list">
+                  ${items
+                    .map((it) => {
+                      const studyIds = it.studies.map((s) => s.id).join(',');
+                      return `
+                        <div class="res-atlas-label-row">
+                          <div style="min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;">
+                            <span class="res-tag tone-${it.label.tone}" style="font-size: 0.72rem;">
+                              ${escapeHtml(it.label.label)}
+                            </span>
+                            <span class="res-facet-count">${it.studies.length} bài</span>
+                            ${
+                              it.hasDiscordance
+                                ? `<span class="res-cluster-discord" title="Các nghiên cứu mang nhãn này có hướng kết quả khác nhau">⚡ Trái chiều</span>`
+                                : ''
+                            }
+                          </div>
+
+                          <div class="res-atlas-label-actions">
+                            <button
+                              type="button"
+                              class="res-mini-action-btn js-quick-label"
+                              data-facet="${it.label.facetKey}"
+                              data-val="${escapeHtml(it.label.value)}"
+                              title="Lọc danh sách theo nhãn này"
+                            >
+                              <i class="fa-solid fa-filter"></i> Lọc
+                            </button>
+                            ${
+                              it.studies.length >= 2
+                                ? `<button
+                                    type="button"
+                                    class="res-mini-action-btn is-primary js-load-cluster"
+                                    data-ids="${escapeHtml(studyIds)}"
+                                    title="Nạp ${it.studies.length} nghiên cứu cùng nhãn này vào Bàn Cân"
+                                  >
+                                    <i class="fa-solid fa-scale-balanced"></i> So sánh (${it.studies.length})
+                                  </button>`
+                                : ''
+                            }
+                          </div>
+                        </div>
+                      `;
+                    })
+                    .join('')}
+                </div>
+              </div>
+            `;
+          })
+          .join('')}
+      </div>
+    </section>
+  `;
+}
+
 function renderActiveFilterChips(): string {
   const f = researchStore.filters;
-  const chips: Array<{ key: string; label: string }> = [];
+  const chips: Array<{ key: FilterableFacetKey; label: string }> = [];
 
   if (f.outcomeDirection) {
     chips.push({
       key: 'outcomeDirection',
-      label: `Kết quả: ${OUTCOME_DIRECTIONS[f.outcomeDirection]?.shortLabel || f.outcomeDirection}`
+      label: `Hướng KQ: ${OUTCOME_DIRECTIONS[f.outcomeDirection]?.shortLabel || f.outcomeDirection}`
+    });
+  }
+  if (f.impactVerdict) {
+    chips.push({
+      key: 'impactVerdict',
+      label: `Phán quyết: ${IMPACT_VERDICTS[f.impactVerdict]?.shortLabel || f.impactVerdict}`
     });
   }
   if (f.design) {
@@ -477,10 +742,34 @@ function renderActiveFilterChips(): string {
       label: `Bệnh: ${RESEARCH_CONDITIONS[f.conditionKey] || f.conditionKey}`
     });
   }
+  if (f.problemLabel) {
+    chips.push({
+      key: 'problemLabel',
+      label: `Vấn đề: ${humanizeSlugLabel(f.problemLabel, PROBLEM_LABELS_VI)}`
+    });
+  }
+  if (f.populationTag) {
+    chips.push({
+      key: 'populationTag',
+      label: `Quần thể: ${humanizeSlugLabel(f.populationTag, POPULATION_TAGS_VI)}`
+    });
+  }
   if (f.interventionClass) {
     chips.push({
       key: 'interventionClass',
       label: `Can thiệp: ${INTERVENTION_CLASSES[f.interventionClass] || f.interventionClass}`
+    });
+  }
+  if (f.comparatorType) {
+    chips.push({
+      key: 'comparatorType',
+      label: `Đối chứng: ${COMPARATOR_TYPES[f.comparatorType] || f.comparatorType}`
+    });
+  }
+  if (f.endpointCategory) {
+    chips.push({
+      key: 'endpointCategory',
+      label: `Kết cục: ${ENDPOINT_CATEGORIES[f.endpointCategory] || f.endpointCategory}`
     });
   }
   if (f.specialty) {
@@ -493,10 +782,22 @@ function renderActiveFilterChips(): string {
     chips.push({ key: 'yearPeriod', label: `Năm: ${f.yearPeriod}` });
   }
   if (f.robOverall) {
-    chips.push({ key: 'robOverall', label: `RoB: ${ROB_LABELS[f.robOverall]?.label || f.robOverall}` });
+    chips.push({ key: 'robOverall', label: `RoB: ${ROB_LABELS[f.robOverall]?.shortLabel || f.robOverall}` });
+  }
+  if (f.gradeCertainty) {
+    chips.push({
+      key: 'gradeCertainty',
+      label: `GRADE: ${GRADE_LABELS[f.gradeCertainty]?.shortLabel || f.gradeCertainty}`
+    });
+  }
+  if (f.fundingSource) {
+    chips.push({
+      key: 'fundingSource',
+      label: `Tài trợ: ${FUNDING_LABELS[f.fundingSource]?.label || f.fundingSource}`
+    });
   }
   if (f.topicTag) {
-    chips.push({ key: 'topicTag', label: `Nhãn: #${f.topicTag}` });
+    chips.push({ key: 'topicTag', label: `Chủ đề: #${TOPIC_TAGS_VI[f.topicTag] || f.topicTag}` });
   }
 
   if (chips.length === 0) return '';
@@ -525,6 +826,9 @@ function renderQuickPreviewDrawer(): string {
   const dm = RESEARCH_DESIGNS[study.design];
   const dir = OUTCOME_DIRECTIONS[study.outcomeDirection];
   const isCmp = researchStore.isInCompare(study.id);
+  const atomicLabels = decomposeStudyLabels(study);
+  const related = researchStore.getRelatedStudiesByLabels(study, 3);
+  const noteVal = researchStore.getPersonalNote(study.id);
 
   return `
     <div class="res-drawer-backdrop" id="js-preview-backdrop">
@@ -543,9 +847,29 @@ function renderQuickPreviewDrawer(): string {
           <div style="font-family: var(--res-font-mono); font-size: 0.78rem; color: var(--res-primary); font-weight: 700;">
             ${escapeHtml(study.journal)} • ${study.year}${study.sampleSize ? ` • N = ${study.sampleSize.toLocaleString('en-US')}` : ''}
           </div>
-          <h3 style="font-family: var(--res-font-display); font-size: 1.2rem; line-height: 1.35; margin: 0.35rem 0 0;">
+          <h3 style="font-family: var(--res-font-display); font-size: 1.15rem; line-height: 1.35; margin: 0.35rem 0 0;">
             ${escapeHtml(study.title)}
           </h3>
+        </div>
+
+        <!-- Decomposed Atomic Labels inside Quick Preview -->
+        <div>
+          <div style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--res-text-muted); margin-bottom: 0.45rem;">
+            🏷️ Nhãn Nguyên Tử Đã Tách (${atomicLabels.length} nhãn)
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.32rem;">
+            ${atomicLabels
+              .map(
+                (lbl) => `
+              <button type="button" class="res-tag res-tag-clickable tone-${lbl.tone} js-quick-label" data-facet="${lbl.facetKey}" data-val="${escapeHtml(
+                  lbl.value
+                )}" style="font-size: 0.7rem;">
+                <span style="opacity: 0.7;">${escapeHtml(lbl.axisShort)}:</span> ${escapeHtml(lbl.label)}
+              </button>
+            `
+              )
+              .join('')}
+          </div>
         </div>
 
         <div class="res-mini-pico">
@@ -556,7 +880,7 @@ function renderQuickPreviewDrawer(): string {
 
         ${
           study.keyResults
-            ? `<div style="background: var(--res-surface-code); border: 1px solid var(--res-primary-border); border-radius: 12px; padding: 0.85rem; font-size: 0.84rem; line-height: 1.55;">
+            ? `<div style="background: var(--res-surface-code); border: 1px solid var(--res-primary-border); border-radius: 12px; padding: 0.85rem; font-size: 0.83rem; line-height: 1.55;">
                 <strong style="color: var(--res-primary);">📈 Kết quả định lượng cốt lõi:</strong><br/>
                 ${escapeHtml(study.keyResults)}
               </div>`
@@ -564,27 +888,56 @@ function renderQuickPreviewDrawer(): string {
         }
 
         ${
-          (study.keyRecommendations || []).length > 0
+          related.length > 0
             ? `<div>
-                <strong style="font-size: 0.84rem;">🎯 Điểm nhấn giải phẫu:</strong>
-                <ul style="margin: 0.45rem 0 0 1.1rem; padding: 0; font-size: 0.83rem; line-height: 1.6; color: var(--res-text-secondary);">
-                  ${(study.keyRecommendations || []).map((r) => `<li>${escapeHtml(r)}</li>`).join('')}
-                </ul>
+                <div style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--res-text-muted); margin-bottom: 0.4rem;">
+                  ⚖️ Đối chiếu nhanh với bài cùng nhãn
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+                  ${related
+                    .map(
+                      (r) => `
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.55rem 0.7rem; border-radius: 10px; background: var(--res-surface-subtle); border: 1px solid var(--res-border);">
+                      <div style="min-width: 0;">
+                        <div style="font-size: 0.8rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                          ${escapeHtml(r.study.trialAcronym || r.study.title)}
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--res-text-muted);">
+                          Tương đồng ${r.similarityPercent}% nhãn${r.isDiscordant ? ' • ⚡ Trái chiều KQ' : ''}
+                        </div>
+                      </div>
+                      <button type="button" class="res-mini-action-btn is-primary js-load-cluster" data-ids="${escapeHtml(
+                        `${study.id},${r.study.id}`
+                      )}">
+                        <i class="fa-solid fa-scale-balanced"></i> So đôi
+                      </button>
+                    </div>
+                  `
+                    )
+                    .join('')}
+                </div>
               </div>`
             : ''
         }
+
+        <div>
+          <label for="js-drawer-note-input" style="font-size: 0.74rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--res-text-muted); display: block; margin-bottom: 0.35rem;">
+            📝 Ghi chú cá nhân (tự lưu trình duyệt)
+          </label>
+          <textarea id="js-drawer-note-input" data-id="${escapeHtml(study.id)}" class="res-notes-textarea" placeholder="Ghi nhận điểm cần nhớ cho Journal Club hoặc thực hành lâm sàng...">${escapeHtml(noteVal)}</textarea>
+        </div>
 
         <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--res-border); display: flex; flex-wrap: wrap; gap: 0.6rem;">
           <button type="button" class="res-btn ${
             isCmp ? 'res-btn-primary' : 'res-btn-teal'
           } js-compare-toggle" data-id="${escapeHtml(study.id)}" style="flex: 1;">
             <i class="fa-solid fa-scale-balanced"></i>
-            <span>${isCmp ? 'Đã ghim vào Bàn Cân' : '+ Đưa vào Bàn Cân So Sánh'}</span>
+            <span>${isCmp ? 'Đã ghim vào Bàn Cân' : '+ Đưa vào Bàn Cân'}</span>
           </button>
           <a href="#/ebm/kho-nghien-cuu/${escapeHtml(
             study.slug
           )}" class="res-btn res-btn-primary" style="flex: 1;">
-            <i class="fa-solid fa-book-open"></i> Đọc Bài Phân Tích Đầy Đủ
+            <i class="fa-solid fa-book-open"></i> Đọc Bài MDX Đầy Đủ
           </a>
         </div>
       </aside>
@@ -632,6 +985,8 @@ function buildStudioInnerMarkup(): string {
   const filtered = researchStore.getFilteredStudies();
   const cmpStudies = researchStore.getCompareStudies();
   const clusters = researchStore.getSmartComparableClusters();
+  const labelIndex = researchStore.getAtomicLabelIndex();
+  const totalAtomicLabels = Object.values(labelIndex).reduce((acc, arr) => acc + arr.length, 0);
 
   const rctAndMetaCount = allStudies.filter(
     (s) => s.design === 'rct' || s.design === 'meta-analysis' || s.design === 'systematic-review'
@@ -645,7 +1000,7 @@ function buildStudioInnerMarkup(): string {
         <nav class="res-breadcrumb" aria-label="Breadcrumb">
           <a href="#/ebm"><i class="fa-solid fa-scale-balanced"></i> Trung Tâm Y Học Chứng Cứ</a>
           <span>/</span>
-          <span style="font-weight: 800; color: var(--res-text);">Kho Phân Tích Nghiên Cứu Chuyên Sâu (CliniResearch Studio)</span>
+          <span style="font-weight: 800; color: var(--res-text);">CliniResearch Studio v3.0</span>
         </nav>
 
         <div class="res-mode-switcher" role="tablist">
@@ -653,14 +1008,21 @@ function buildStudioInnerMarkup(): string {
             currentMainMode === 'explore' ? 'is-active' : ''
           }" id="js-mode-explore">
             <i class="fa-solid fa-microscope"></i>
-            <span>Khám Phá Nghiên Cứu</span>
+            <span>Khám Phá</span>
             <span class="res-mode-count">${allStudies.length}</span>
+          </button>
+          <button type="button" class="res-mode-tab ${
+            currentMainMode === 'labels' ? 'is-active' : ''
+          }" id="js-mode-labels">
+            <i class="fa-solid fa-tags"></i>
+            <span>Bản Đồ Tách Nhãn</span>
+            <span class="res-mode-count">${totalAtomicLabels}</span>
           </button>
           <button type="button" class="res-mode-tab ${
             currentMainMode === 'compare' ? 'is-active' : ''
           }" id="js-mode-compare">
             <i class="fa-solid fa-scale-balanced"></i>
-            <span>Bàn Cân Đối Sánh Nhãn</span>
+            <span>Bàn Cân Đối Sánh</span>
             <span class="res-mode-count">${cmpStudies.length}</span>
           </button>
         </div>
@@ -671,14 +1033,14 @@ function buildStudioInnerMarkup(): string {
         <div class="res-masthead-grid">
           <div>
             <div class="res-eyebrow-row">
-              <span class="res-eyebrow-pill"><i class="fa-solid fa-flask-vial"></i> CLINIRESEARCH ARCHIVE • MDX NATIVE</span>
-              <span class="res-eyebrow-pill">7-AXIS SHARED LABEL TAXONOMY</span>
+              <span class="res-eyebrow-pill"><i class="fa-solid fa-flask-vial"></i> CLINIRESEARCH STUDIO 3.0 • MDX NATIVE</span>
+              <span class="res-eyebrow-pill">9-AXIS ATOMIC LABEL ENGINE</span>
             </div>
             <h1 class="res-masthead-title">
-              Kho Giải Phẫu Nghiên Cứu Y Khoa &amp; Đối Sánh Bằng Chứng Đa Chiều
+              Kho Giải Phẫu Nghiên Cứu Y Khoa &amp; Hệ Tách Nhãn Đối Sánh Đa Chiều
             </h1>
             <p class="res-masthead-desc">
-              Không gian độc lập chuyên thu thập, mổ xẻ chuyên sâu các thử nghiệm lâm sàng (RCT), phân tích gộp (Meta-Analysis) và đoàn hệ dưới định dạng MDX. Tích hợp hệ nhãn chung chuẩn hóa giúp đối chiếu trực tiếp PICO, Forest Plot và lý giải nguyên nhân bất đồng thuận giữa các nghiên cứu.
+              Không gian chuyên biệt mổ xẻ sâu các thử nghiệm lâm sàng (RCT), phân tích gộp (Meta-Analysis), đoàn hệ và nghiên cứu chẩn đoán. Mỗi bài báo được tách nhãn nguyên tử theo 9 trục chuẩn hóa để đối chiếu PICO, Forest Plot SVG, DNA Giao – Khác và giải mã bất đồng thuận chỉ với 1 chạm.
             </p>
           </div>
 
@@ -692,8 +1054,8 @@ function buildStudioInnerMarkup(): string {
               <div class="res-kpi-lbl">RCT, Systematic Review &amp; Meta</div>
             </div>
             <div class="res-kpi-box">
-              <div class="res-kpi-num">${clusters.length}</div>
-              <div class="res-kpi-lbl">Cụm Nhãn Chung sẵn sàng so sánh</div>
+              <div class="res-kpi-num">${totalAtomicLabels}</div>
+              <div class="res-kpi-lbl">Nhãn nguyên tử tách trên 9 trục</div>
             </div>
             <div class="res-kpi-box">
               <div class="res-kpi-num">${(totalPooledN / 1000).toFixed(1)}k+</div>
@@ -708,9 +1070,11 @@ function buildStudioInnerMarkup(): string {
         <div class="res-cluster-hdr">
           <div class="res-cluster-title">
             <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--res-teal);"></i>
-            <span>Gợi Ý So Sánh Nhanh Theo Nhãn Chung (1-Chạm Nạp Vào Bàn Cân)</span>
+            <span>So Sánh Nhanh 1-Chạm Theo Cụm Nhãn Chung (${clusters.length} cụm phát hiện tự động)</span>
           </div>
-          <span style="font-size: 0.75rem; color: var(--res-text-muted);">Tự động gom nhóm từ YAML Frontmatter</span>
+          <button type="button" class="res-mini-action-btn is-primary" id="js-open-atlas-shortcut">
+            <i class="fa-solid fa-tags"></i> Mở Bản Đồ Tách Nhãn 9 Trục →
+          </button>
         </div>
         <div class="res-cluster-scroll">
           ${clusters
@@ -718,7 +1082,7 @@ function buildStudioInnerMarkup(): string {
               (c) => `
             <button type="button" class="res-cluster-pill js-load-cluster" data-ids="${escapeHtml(
               c.studies.map((s) => s.id).join(',')
-            )}" title="Bấm để mở Bàn cân so sánh nhóm nghiên cứu này">
+            )}" title="${escapeHtml(c.axisLabel)}: Bấm để nạp vào Bàn Cân Đối Sánh">
               <span style="color: var(--res-primary); font-weight: 800;">${escapeHtml(c.title)}</span>
               <span class="res-facet-count">${c.studies.length} bài</span>
               ${c.hasDiscordance ? `<span class="res-cluster-discord">⚡ Trái chiều KQ</span>` : ''}
@@ -732,12 +1096,14 @@ function buildStudioInnerMarkup(): string {
       ${
         currentMainMode === 'compare'
           ? renderComparisonStudioSection()
-          : `
+          : currentMainMode === 'labels'
+            ? renderLabelAtlasView()
+            : `
         <div class="res-workspace-grid">
           ${renderLeftFacetRail(allStudies)}
 
           <div>
-            <!-- Search & View Switch Toolbar -->
+            <!-- Search, Sort & View Switch Toolbar -->
             <div class="res-toolbar-card">
               <div class="res-toolbar-row">
                 <button type="button" class="res-btn res-mobile-filter-btn" id="js-mob-facets-btn">
@@ -752,9 +1118,16 @@ function buildStudioInnerMarkup(): string {
                     id="js-res-search-input"
                     class="res-search-input"
                     value="${escapeHtml(researchStore.filters.search)}"
-                    placeholder="Tìm tên thử nghiệm (EMPA-REG, STAREE, CAPE COD), hoạt chất, bệnh, kết cục, nhãn..."
+                    placeholder="Tìm thử nghiệm (EMPA-REG, STAREE, CAPE COD), thuốc, bệnh, kết cục, nhãn..."
                   />
                 </div>
+
+                <select class="res-select" id="js-res-sort-select" aria-label="Sắp xếp nghiên cứu">
+                  <option value="year-desc" ${researchStore.getSortBy() === 'year-desc' ? 'selected' : ''}>Sắp xếp: Mới nhất</option>
+                  <option value="sample-desc" ${researchStore.getSortBy() === 'sample-desc' ? 'selected' : ''}>Sắp xếp: Cỡ mẫu (N) lớn nhất</option>
+                  <option value="if-desc" ${researchStore.getSortBy() === 'if-desc' ? 'selected' : ''}>Sắp xếp: Impact Factor cao nhất</option>
+                  <option value="grade-desc" ${researchStore.getSortBy() === 'grade-desc' ? 'selected' : ''}>Sắp xếp: GRADE cao nhất</option>
+                </select>
 
                 <div style="display: flex; align-items: center; gap: 0.4rem;">
                   <button type="button" class="res-btn ${
@@ -765,12 +1138,12 @@ function buildStudioInnerMarkup(): string {
                   <button type="button" class="res-btn ${
                     researchStore.getViewMode() === 'matrix' ? 'res-btn-primary' : ''
                   }" id="js-view-matrix" title="Chế độ Bảng định lượng">
-                    <i class="fa-solid fa-table-list"></i> Bảng số liệu
+                    <i class="fa-solid fa-table-list"></i> Bảng
                   </button>
                 </div>
 
                 <span style="font-family: var(--res-font-mono); font-size: 0.8rem; font-weight: 700; color: var(--res-text-muted);">
-                  Hiển thị <strong style="color: var(--res-primary);">${filtered.length}</strong>/${allStudies.length}
+                  <strong style="color: var(--res-primary);">${filtered.length}</strong>/${allStudies.length}
                 </span>
               </div>
 
@@ -811,16 +1184,16 @@ export function initResearchStudioController(): void {
   const mount = document.getElementById('res-studio-mount');
   if (!mount) return;
 
-  const rerender = (preserveSearchFocus = false): void => {
+  const rerender = (focusInputId?: string): void => {
     let cursorPos: number | null = null;
-    if (preserveSearchFocus) {
-      const oldInp = document.getElementById('js-res-search-input') as HTMLInputElement | null;
+    if (focusInputId) {
+      const oldInp = document.getElementById(focusInputId) as HTMLInputElement | null;
       cursorPos = oldInp?.selectionStart ?? null;
     }
     mount.innerHTML = buildStudioInnerMarkup();
     bindStudioEvents();
-    if (preserveSearchFocus) {
-      const newInp = document.getElementById('js-res-search-input') as HTMLInputElement | null;
+    if (focusInputId) {
+      const newInp = document.getElementById(focusInputId) as HTMLInputElement | null;
       if (newInp) {
         newInp.focus();
         if (cursorPos !== null) newInp.setSelectionRange(cursorPos, cursorPos);
@@ -831,6 +1204,16 @@ export function initResearchStudioController(): void {
   const bindStudioEvents = (): void => {
     document.getElementById('js-mode-explore')?.addEventListener('click', () => {
       currentMainMode = 'explore';
+      rerender();
+    });
+
+    document.getElementById('js-mode-labels')?.addEventListener('click', () => {
+      currentMainMode = 'labels';
+      rerender();
+    });
+
+    document.getElementById('js-open-atlas-shortcut')?.addEventListener('click', () => {
+      currentMainMode = 'labels';
       rerender();
     });
 
@@ -847,7 +1230,25 @@ export function initResearchStudioController(): void {
     const searchInp = document.getElementById('js-res-search-input') as HTMLInputElement | null;
     searchInp?.addEventListener('input', () => {
       researchStore.filters.search = searchInp.value;
-      rerender(true);
+      rerender('js-res-search-input');
+    });
+
+    const sortSel = document.getElementById('js-res-sort-select') as HTMLSelectElement | null;
+    sortSel?.addEventListener('change', () => {
+      researchStore.setSortBy(sortSel.value as ResearchSortKey);
+      rerender();
+    });
+
+    // Label Atlas controls
+    const atlasSearchInp = document.getElementById('js-atlas-search') as HTMLInputElement | null;
+    atlasSearchInp?.addEventListener('input', () => {
+      atlasSearchQuery = atlasSearchInp.value;
+      rerender('js-atlas-search');
+    });
+
+    document.getElementById('js-atlas-comparable-toggle')?.addEventListener('click', () => {
+      atlasComparableOnly = !atlasComparableOnly;
+      rerender();
     });
 
     document.getElementById('js-view-cards')?.addEventListener('click', () => {
@@ -880,14 +1281,15 @@ export function initResearchStudioController(): void {
       rerender();
     });
 
-    // Facet buttons & clickable card label tags
+    // Facet buttons & clickable card / atlas / venn label tags
     mount.querySelectorAll<HTMLButtonElement>('.js-facet-select, .js-quick-label').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const facet = btn.getAttribute('data-facet') as keyof typeof researchStore.filters | null;
+        const facet = btn.getAttribute('data-facet') as FilterableFacetKey | null;
         const val = btn.getAttribute('data-val') || '';
-        if (!facet || facet === 'asianOnly' || facet === 'savedOnly' || facet === 'search') return;
+        if (!facet) return;
         const current = researchStore.filters[facet];
         researchStore.filters[facet] = current === val || !val ? null : val;
+        researchStore.setPreviewStudyId(null);
         currentMainMode = 'explore';
         rerender();
       });
@@ -895,8 +1297,8 @@ export function initResearchStudioController(): void {
 
     mount.querySelectorAll<HTMLButtonElement>('.js-clear-single-facet').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const k = btn.getAttribute('data-key') as keyof typeof researchStore.filters | null;
-        if (k && k !== 'asianOnly' && k !== 'savedOnly' && k !== 'search') {
+        const k = btn.getAttribute('data-key') as FilterableFacetKey | null;
+        if (k) {
           researchStore.filters[k] = null;
           rerender();
         }
@@ -910,6 +1312,7 @@ export function initResearchStudioController(): void {
         const ids = rawIds.split(',').filter(Boolean);
         if (ids.length > 0) {
           researchStore.loadClusterIntoCompare(ids);
+          researchStore.setPreviewStudyId(null);
           currentMainMode = 'compare';
           rerender();
         }
@@ -938,6 +1341,37 @@ export function initResearchStudioController(): void {
       });
     });
 
+    // Inline Study Picker inside Compare Studio
+    const inlineAddSel = document.getElementById('js-cmp-inline-add') as HTMLSelectElement | null;
+    inlineAddSel?.addEventListener('change', () => {
+      if (inlineAddSel.value) {
+        researchStore.toggleCompare(inlineAddSel.value);
+        rerender();
+      }
+    });
+
+    // Pin Baseline Study in Compare Matrix
+    mount.querySelectorAll<HTMLButtonElement>('.js-pin-baseline').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        if (id) {
+          researchStore.togglePinnedBaseline(id);
+          rerender();
+        }
+      });
+    });
+
+    // Toggle Matrix Axis Groups
+    mount.querySelectorAll<HTMLButtonElement>('.js-toggle-cmp-group').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const g = btn.getAttribute('data-group') as CompareMatrixGroupKey | null;
+        if (g) {
+          researchStore.toggleCompareGroup(g);
+          rerender();
+        }
+      });
+    });
+
     // Quick-Preview Drawer
     mount.querySelectorAll<HTMLButtonElement>('.js-preview-study').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -945,6 +1379,12 @@ export function initResearchStudioController(): void {
         researchStore.setPreviewStudyId(id);
         rerender();
       });
+    });
+
+    const drawerNote = document.getElementById('js-drawer-note-input') as HTMLTextAreaElement | null;
+    drawerNote?.addEventListener('input', () => {
+      const id = drawerNote.getAttribute('data-id');
+      if (id) researchStore.setPersonalNote(id, drawerNote.value);
     });
 
     document.getElementById('js-close-preview')?.addEventListener('click', () => {
@@ -991,17 +1431,50 @@ export function initResearchStudioController(): void {
       rerender();
     });
 
+    const copyLinkBtn = document.getElementById('js-copy-cmp-link');
+    copyLinkBtn?.addEventListener('click', () => {
+      const studies = researchStore.getCompareStudies();
+      const hash = buildShareableCompareHash(studies);
+      const fullUrl =
+        typeof window !== 'undefined'
+          ? `${window.location.origin}${window.location.pathname}${hash}`
+          : hash;
+      if (navigator.clipboard) {
+        void navigator.clipboard.writeText(fullUrl).then(() => {
+          copyLinkBtn.innerHTML = '<i class="fa-solid fa-check"></i> Đã chép Link!';
+          setTimeout(() => {
+            copyLinkBtn.innerHTML = '<i class="fa-solid fa-link"></i> Link';
+          }, 1800);
+        });
+      }
+    });
+
     const exportBtn = document.getElementById('js-export-cmp-md');
     exportBtn?.addEventListener('click', () => {
       const md = buildMarkdownComparisonExport(researchStore.getCompareStudies());
       if (navigator.clipboard && md) {
         void navigator.clipboard.writeText(md).then(() => {
-          exportBtn.innerHTML = '<i class="fa-solid fa-check"></i> Đã chép Markdown!';
+          exportBtn.innerHTML = '<i class="fa-solid fa-check"></i> Đã chép!';
           setTimeout(() => {
-            exportBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Sao chép Bảng Markdown';
+            exportBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Markdown';
           }, 1800);
         });
       }
+    });
+
+    const exportCsvBtn = document.getElementById('js-export-cmp-csv');
+    exportCsvBtn?.addEventListener('click', () => {
+      const studies = researchStore.getCompareStudies();
+      const csv = buildCsvComparisonExport(studies);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `cliniresearch-compare-${studies.length}studies.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     });
   };
 

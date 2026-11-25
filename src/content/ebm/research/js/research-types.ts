@@ -1,5 +1,5 @@
 /**
- * CliniPortal 2.0 — CliniResearch Studio Type Definitions (7-Axis Shared Label Schema)
+ * CliniPortal 2.0 — CliniResearch Studio Type Definitions (Atomic Label Decomposition & 7-Axis Schema)
  * Path: src/content/ebm/research/js/research-types.ts
  */
 
@@ -30,8 +30,66 @@ export type ImpactVerdictType =
 export type RobLevelType = 'low' | 'some-concerns' | 'high' | 'not-applicable';
 export type GradeCertaintyType = 'high' | 'moderate' | 'low' | 'very-low';
 
+export type LabelTone = 'indigo' | 'emerald' | 'teal' | 'amber' | 'rose' | 'violet' | 'slate';
+
+export type AtomicLabelAxis =
+  | 'condition'
+  | 'population'
+  | 'design'
+  | 'intervention'
+  | 'comparator'
+  | 'endpoint'
+  | 'outcome'
+  | 'quality'
+  | 'topic';
+
+export type FilterableFacetKey =
+  | 'specialty'
+  | 'conditionKey'
+  | 'problemLabel'
+  | 'populationTag'
+  | 'design'
+  | 'comparatorType'
+  | 'interventionClass'
+  | 'endpointCategory'
+  | 'outcomeDirection'
+  | 'impactVerdict'
+  | 'robOverall'
+  | 'gradeCertainty'
+  | 'fundingSource'
+  | 'yearPeriod'
+  | 'topicTag';
+
+export interface ResearchAtomicLabel {
+  /** Stable composite key: `${axis}:${value}` */
+  key: string;
+  axis: AtomicLabelAxis;
+  axisTitle: string;
+  axisShort: string;
+  facetKey: FilterableFacetKey;
+  value: string;
+  label: string;
+  icon: string;
+  tone: LabelTone;
+  isPrimary?: boolean;
+}
+
+export interface LabelOverlapReport {
+  similarityPercent: number;
+  sharedLabels: ResearchAtomicLabel[];
+  divergentAxes: Array<{
+    axis: AtomicLabelAxis;
+    axisTitle: string;
+    valuesByStudy: Array<{
+      studyId: string;
+      studyLabel: string;
+      labels: ResearchAtomicLabel[];
+    }>;
+  }>;
+}
+
 export interface ResearchPrimaryMetric {
-  measure?: string; // HR | RR | OR | ARR | AUC | MD
+  measure?: string; // HR | RR | OR | aOR | ARR | AUC | WMD | MD | Prevalence
   interventionRate?: string;
   controlRate?: string;
   effectEstimate?: number | null;
@@ -131,26 +189,49 @@ export interface ResearchFilterState {
   search: string;
   specialty: string | null;
   conditionKey: string | null;
+  problemLabel: string | null;
+  populationTag: string | null;
   design: string | null;
+  comparatorType: string | null;
   outcomeDirection: string | null;
   impactVerdict: string | null;
   interventionClass: string | null;
   endpointCategory: string | null;
   robOverall: string | null;
+  gradeCertainty: string | null;
+  fundingSource: string | null;
   yearPeriod: string | null;
   topicTag: string | null;
   asianOnly: boolean;
   savedOnly: boolean;
 }
 
+export type ResearchSortKey = 'year-desc' | 'sample-desc' | 'if-desc' | 'grade-desc';
 export type ResearchViewMode = 'cards' | 'matrix';
-export type ResearchCompareTab = 'matrix' | 'forest' | 'timeline' | 'discordance';
+export type ResearchCompareTab = 'matrix' | 'labels' | 'forest' | 'timeline' | 'discordance';
+export type CompareMatrixGroupKey =
+  | 'identity'
+  | 'condition'
+  | 'design'
+  | 'pico'
+  | 'quant'
+  | 'appraisal'
+  | 'clinical';
 
 export interface LabelClusterGroup {
   clusterKey: string;
   axisLabel: string;
+  axis: AtomicLabelAxis;
   title: string;
   badgeText: string;
   studies: ResearchStudyRecord[];
   hasDiscordance: boolean;
+}
+
+export interface IndexedLabelSummary {
+  label: ResearchAtomicLabel;
+  studies: ResearchStudyRecord[];
+  hasDiscordance: boolean;
+  positiveCount: number;
+  neutralOrHarmCount: number;
 }

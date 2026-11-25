@@ -1,7 +1,8 @@
-# CliniResearch Studio — Quy Chuẩn Soạn Thảo & Hệ Nhãn Chung 7 Trục (MDX Specification)
+# CliniResearch Studio 3.0 — Quy Chuẩn Soạn Thảo & Hệ Tách Nhãn Nguyên Tử 9 Trục (MDX Specification)
 
 > **Phân hệ**: Kho Phân Tích Nghiên Cứu Y Khoa Chuyên Sâu (`src/content/ebm/research/kho-nghien-cuu/`)  
-> **Độc lập hoàn toàn với**: Kho Guidelines & Phác Đồ (`src/content/ebm/guidelines/`)
+> **Độc lập hoàn toàn với**: Kho Guidelines & Phác Đồ (`src/content/ebm/guidelines/`)  
+> **Tính năng cốt lõi**: Bản Đồ Tách Nhãn 9 Trục (Label Atlas) • Tách Nhãn Ngay Trong Bài Học MDX • Bàn Cân Đối Sánh 5 Tab (Ma Trận PICO, Tách Nhãn Giao–Khác, Forest Plot & Định Lượng, Tiến Hóa Theo Năm, Giải Mã Bất Đồng Thuận) • Xuất Markdown/CSV/Link Chia Sẻ.
 
 ---
 

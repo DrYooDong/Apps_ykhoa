@@ -37,6 +37,9 @@ function sanitizeBody(body) {
   // 4. Fix double-escaped HTML entities (&amp;nbsp;, &amp;mu;, &amp;bull;, &amp;lt;, etc.)
   text = text.replace(/&amp;([a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);/g, '&$1;');
 
+  // 4b. Escape raw standalone ' & ' in HTML text nodes (avoiding URLs / query params / existing entities)
+  text = text.replace(/(?<=[^\s"'=])\s+&\s+(?=[^\s"'=])/g, ' &amp; ');
+
   // 5. Escape bare '<' followed by optional spaces and a digit (e.g. <0.001, < 90, < 0.8) outside math $...$
   text = text.split('\n').map((line) => {
     if (line.includes('$')) return line;
@@ -46,7 +49,7 @@ function sanitizeBody(body) {
   // 6. Prevent trailing footnote '*' before </td> from opening cross-cell Markdown emphasis
   text = text.replace(/\)\*(?:&#8203;)?<\/td>/g, ')&#42;</td>');
 
-  // 7. Normalize <li> symmetry for MDX v3 AST parser:
+  // 7. Normalize <li> symmetry for MDX v3 AST parser (keep block children on separate lines):
   text = text.replace(/<li>\r?\n[ \t]*(?!<(?:div|ul|ol|p|table)\b)/g, '<li>');
   text = text.replace(/([^\s>]|<\/(?:strong|em|code|span|a|i|small|sup|sub)>)\r?\n[ \t]*<\/li>/g, '$1</li>');
 
