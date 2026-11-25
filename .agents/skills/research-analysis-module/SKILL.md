@@ -12,8 +12,8 @@ Kỹ năng này vận hành quy trình thu thập, giải phẫu học thuật c
 
 ## 1. Phân Định Ranh Giới Nghiêm Ngặt Với Kho Guidelines
 
-- **Dùng `guideline-summary-module`** (`src/content/ebm/guidelines/kho-guidelines/`): CHỈ dành cho Hướng dẫn thực hành lâm sàng chính thức (CPGs) từ các Hiệp hội lớn (ESC, AHA/ACC, ADA, KDIGO, GOLD, GINA, IDSA, WHO...), Phác đồ Bộ Y tế / Sở Y tế và Đồng thuận Hội chuyên khoa.
-- **Dùng `research-analysis-module` (Skill này)** (`src/content/ebm/research/kho-nghien-cuu/`): Dành cho toàn bộ các **bài báo nghiên cứu khoa học** (Landmark RCT, Pragmatic Trial, Systematic Review, Meta-Analysis, Prospective/Retrospective Cohort, Case-Control, Nghiên cứu Chẩn đoán / Biomarker, State-of-the-Art Review).
+- **Dùng `guideline-summary-module`** (`src/content/ebm/guidelines/kho-guidelines/`): Dành cho Hướng dẫn thực hành lâm sàng chính thức (CPGs) từ các Hiệp hội lớn (ESC, AHA/ACC, ADA, KDIGO, GOLD, GINA, IDSA, WHO...), Phác đồ Bộ Y tế / Sở Y tế, Đồng thuận Hội chuyên khoa, **bài hướng dẫn tiếp cận / thực hành lâm sàng** (NEJM Clinical Practice, CHEST How I Do It, AJR Algorithmic Approach, Nature Reviews Disease Primers, Lancet Seminar, Narrative Clinical Reviews & Sách hướng dẫn thực hành).
+- **Dùng `research-analysis-module` (Skill này)** (`src/content/ebm/research/kho-nghien-cuu/`): CHỈ dành cho các **bài báo nghiên cứu khoa học gốc hoặc phân tích tổng hợp định lượng** (Landmark RCT, Pragmatic Trial, Systematic Review & Meta-Analysis định lượng, Prospective/Retrospective Cohort, Case-Control, Nghiên cứu Chẩn đoán / Biomarker gốc).
 
 ---
 

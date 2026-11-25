@@ -12,6 +12,7 @@ import { sharedEbmMdxEngine, lookupSharedJournalMetric } from '../../shared-core
 import { hydrateFlowchartViewers } from '../../guidelines/js/core/flowchart-viewer';
 import { hydrateFigureCards } from '../../guidelines/js/core/figure-lightbox';
 import { hydrateForestPlots } from '../../guidelines/js/core/forest-plot-renderer';
+import { KHO_GUIDELINES_STATIC } from '../../guidelines/js/kho-guidelines-registry';
 import {
   GRADE_LABELS,
   IMPACT_VERDICTS,
@@ -77,6 +78,31 @@ export function renderResearchReaderView(rawSlug: string): string {
   }, 20);
 
   if (!study) {
+    // Hỗ trợ chuyển hướng tự động nếu tài liệu dạng Hướng dẫn / Tiếp cận đã được xếp về Kho Guidelines
+    const movedGuideline = KHO_GUIDELINES_STATIC.find((item) => {
+      const fileSlug = (item.file || '').replace(/\.(mdx|html)$/i, '');
+      return fileSlug === cleanSlug || item.id === cleanSlug;
+    });
+    if (movedGuideline && typeof window !== 'undefined') {
+      setTimeout(() => {
+        window.location.hash = `#/ebm/kho-guidelines/${cleanSlug}`;
+      }, 0);
+      return `
+        <div class="res-reader-root">
+          <div class="res-shell-container" style="max-width: 720px; padding-top: 3rem;">
+            <div class="res-article-canvas" style="text-align: center; padding: 3rem 1.5rem;">
+              <i class="fa-solid fa-arrow-right-arrow-left" style="font-size: 2.2rem; color: var(--res-primary); margin-bottom: 1rem;"></i>
+              <h2 style="font-family: var(--res-font-display); margin-bottom: 0.5rem;">Đang chuyển sang Kho Guidelines...</h2>
+              <p style="color: var(--res-text-muted); margin-bottom: 1.5rem;">Tài liệu <code>${escapeHtml(cleanSlug)}</code> thuộc nhóm Hướng dẫn / Tiếp cận lâm sàng.</p>
+              <a href="#/ebm/kho-guidelines/${escapeHtml(cleanSlug)}" class="res-btn res-btn-primary">
+                Mở trong Kho Guidelines
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="res-reader-root">
         <div class="res-shell-container" style="max-width: 720px; padding-top: 3rem;">
