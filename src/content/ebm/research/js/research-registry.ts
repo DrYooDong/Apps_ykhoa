@@ -732,8 +732,9 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
     "slug": "2023-nejm-cape-cod-hydrocortisone-severe-cap",
     "code": "GDL-2023-NEJM-CAPE-COD-HYDROCORTISONE-SEVERE-CAP",
     "trialAcronym": "CAPE COD",
-    "title": "CAPE COD: Thử nghiệm Lâm sàng Hydrocortisone trong Viêm Phổi Mắc Phải Cộng Đồng Nặng (SCAP)",
+    "title": "CAPE COD (NEJM 2023): Hydrocortisone Truyền Liên Tục Sớm Trong Viêm Phổi Mắc Phải Cộng Đồng Nặng (sCAP) Tại ICU",
     "titleEn": "Hydrocortisone in Severe Community-Acquired Pneumonia (CAPE COD Trial)",
+    "authors": "Pierre-François Dequin, Ferhat Meziani, Jean-Pierre Quenot, et al. (CRICS-TriGGERSep Network)",
     "journal": "N Engl J Med",
     "organization": "Mạng lưới Nghiên cứu CRICS-TriGGERSep (Pháp) / NEJM",
     "year": 2023,
@@ -759,22 +760,22 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
     "centerScope": "multicenter-national",
     "hypothesisType": "superiority",
     "sampleSize": 795,
-    "followUpDuration": "28 ngày",
+    "followUpDuration": "28 ngày & 90 ngày",
     "asianData": false,
     "populationTags": [
       "icu-adults",
       "severe-cap-non-septic-shock"
     ],
-    "population": "Bệnh nhân trưởng thành nhập khoa hồi sức tích cực (ICU) do viêm phổi cộng đồng nặng (đáp ứng tiêu chuẩn thở máy xâm nhập/không xâm nhập, oxy dòng cao hoặc mặt nạ túi dự trữ), loại trừ các trường hợp có sốc nhiễm trùng kèm theo.",
+    "population": "795 bệnh nhân người lớn (≥ 18 tuổi) nhập 31 trung tâm ICU tại Pháp do viêm phổi mắc phải cộng đồng nặng (sCAP) đạt ≥ 1/4 tiêu chuẩn độ nặng (thở máy PEEP ≥ 5, HFNC PaO2/FiO2 < 300 & FiO2 ≥ 50%, mặt nạ túi dự trữ PaO2/FiO2 < 300, hoặc PSI > 130 Class V), loại trừ sốc nhiễm trùng ban đầu và viêm phổi do cúm.",
     "interventionClass": "systemic-corticosteroid",
     "drug": "Hydrocortisone, Insulin",
-    "intervention": "Hydrocortisone 200 mg/ngày truyền tĩnh mạch liên tục trong 4 ngày đầu -> giảm liều 8-14 ngày vs Placebo trên nền điều trị chuẩn tại ICU",
+    "intervention": "Hydrocortisone 200 mg/ngày truyền tĩnh mạch liên tục (8.3 mg/giờ) khởi đầu trong 24 giờ đầu (trung vị 15.3 giờ sau nhập ICU), đánh giá lại vào ngày thứ 4 để điều trị tổng 8 hoặc 14 ngày kèm giảm liều dần (tapering).",
     "comparatorType": "placebo",
     "primaryEndpointCategory": "mortality",
-    "primaryEndpoint": "Tử vong do mọi nguyên nhân ở ngày thứ 28 (Day 28 all-cause mortality)",
+    "primaryEndpoint": "Tử vong do mọi nguyên nhân tại ngày thứ 28 (Day-28 all-cause mortality)",
     "outcomeDirection": "positive-superior",
     "impactVerdict": "practice-changing",
-    "keyResults": "Giảm 5.6% tử vong ngày 28 (6.2% vs 11.9%, P=0.006); giảm 41% đặt nội khí quản (HR 0.59); giảm 41% khởi đầu dùng vận mạch (HR 0.59); an toàn không tăng nhiễm trùng bệnh viện hay xuất huyết tiêu hóa.",
+    "keyResults": "Giảm tuyệt đối 5.6% tử vong ngày 28 (6.2% vs 11.9%; 95% CI -9.6 đến -1.7; P = 0.006; RRR ~49%; NNT = 18) và duy trì đến ngày 90 (9.3% vs 14.7%; ARR -5.4%) | Giảm 41% nguy cơ đặt nội khí quản (18.0% vs 29.5%; HR 0.59) | Giảm 41% nguy cơ khởi đầu vận mạch (15.3% vs 25.0%; HR 0.59) | Rút ngắn nằm ICU (HR 1.33) | Không tăng nhiễm trùng bệnh viện (9.8% vs 11.1%) hay xuất huyết tiêu hóa (2.2% vs 3.3%), chỉ tăng nhu cầu Insulin tuần đầu (35.5 vs 20.5 UI/ngày; P < 0.001).",
     "primaryMetric": {
       "measure": "RR",
       "interventionRate": "6.2% (25/400)",
@@ -782,11 +783,11 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
       "effectEstimate": 0.53,
       "ciLower": 0.33,
       "ciUpper": 0.84,
-      "rawDiffText": "ARR -5.6% (95% CI -9.6% đến -1.7%)",
+      "rawDiffText": "ARR -5.6% (95% CI -9.6% đến -1.7%) | Đặt NKQ: HR 0.59 | Vận mạch: HR 0.59",
       "pValue": "0.006",
       "nnt": 18
     },
-    "safetyHighlight": "Tăng nhu cầu Insulin nội viện; không tăng nhiễm trùng bệnh viện hoặc xuất huyết tiêu hóa",
+    "safetyHighlight": "Tăng đường huyết cần liều Insulin cao hơn trong 7 ngày đầu (trung vị 35.5 vs 20.5 UI/ngày; P < 0.001); không làm tăng nhiễm trùng bệnh viện (P = 0.54) hay xuất huyết tiêu hóa (P = 0.38).",
     "robOverall": "low",
     "gradeCertainty": "high",
     "fragilityIndex": 7,
@@ -799,19 +800,28 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
     "tags": [
       "NEJM",
       "2023",
-      "Khuyến cáo lâm sàng",
+      "CAPE COD",
+      "Hydrocortisone",
+      "sCAP",
+      "ICU",
+      "Corticosteroid",
       "Evidence-Based Medicine"
     ],
-    "summary": "Thử nghiệm pha 3 ngẫu nhiên mù đôi bản lề chứng minh liệu pháp hydrocortisone truyền liên tục sớm (bắt đầu < 15 giờ sau nhập ICU) giúp cải thiện rõ rệt sống còn ở bệnh nhân SCAP nặng nhập ICU không có sốc nhiễm trùng ban đầu.",
-    "detailedConclusion": "Chỉ định Hydrocortisone 200 mg/ngày truyền liên tục sớm cho bệnh nhân SCAP nhập ICU có PaO2/FiO2 < 300 hoặc PSI > 130 không có sốc nhiễm trùng hay cúm để giảm tử vong và giảm nguy cơ đặt ống thở máy.",
-    "description": "CAPE COD (NEJM 2023) — Thử nghiệm lâm sàng Pha 3 bản lề về Hydrocortisone trong Viêm phổi mắc phải cộng đồng nặng (SCAP) nhập ICU: Giảm 5.6% tử vong ngày 28 (P=0.006), giảm 41% đặt nội khí quản và giảm 41% nhu cầu vận mạch.",
+    "summary": "Thử nghiệm pha 3 ngẫu nhiên mù đôi bản lề tại 31 ICU Pháp (N = 795) chứng minh Hydrocortisone 200 mg/ngày truyền tĩnh mạch liên tục khởi đầu sớm (trung vị 15.3 giờ sau nhập ICU) giúp giảm mạnh tử vong ngày 28 (6.2% vs 11.9%, P = 0.006), giảm 41% đặt nội khí quản và 41% tiến triển sốc cần vận mạch ở bệnh nhân sCAP chưa có sốc nhiễm trùng hay cúm.",
+    "detailedConclusion": "Thiết lập chuẩn mực điều trị mới tại ICU: Khởi đầu ngay Hydrocortisone 200 mg/24 giờ truyền tĩnh mạch liên tục trong 24 giờ đầu cho bệnh nhân sCAP nặng (PaO2/FiO2 < 300 trên HFNC/thở máy hoặc PSI > 130) chưa có sốc nhiễm trùng và không phải viêm phổi cúm; đánh giá lại ngày thứ 4 để hoàn tất liệu trình 8 hoặc 14 ngày kèm giảm liều dần và chủ động kiểm soát đường huyết bằng Insulin.",
+    "description": "CAPE COD (NEJM 2023) — Thử nghiệm Pha 3 mù đôi trên 795 bệnh nhân sCAP tại 31 ICU Pháp: Hydrocortisone 200 mg/ngày truyền liên tục sớm giảm 5.6% tử vong ngày 28 (P = 0.006), giảm 41% đặt nội khí quản và 41% nhu cầu vận mạch.",
     "keyRecommendations": [
-      "Khác biệt tuyệt đối tử vong ngày 28 (6.2% vs 11.9%, P = 0.006)",
-      "Giảm 41% nguy cơ đặt nội khí quản ở BN chưa thở máy ban đầu",
-      "Giảm 41% nguy cơ phải khởi đầu dùng thêm thuốc vận mạch",
-      "Thời gian vàng khởi đầu Hydrocortisone 200mg/ngày sau nhập ICU"
+      "Khởi đầu sớm Hydrocortisone tĩnh mạch truyền liên tục 200 mg/24 giờ (8.3 mg/giờ) trong vòng 24 giờ đầu ở bệnh nhân sCAP nhập ICU chưa có sốc nhiễm trùng giúp giảm tuyệt đối 5.6% tử vong ngày 28 (6.2% vs 11.9%; P = 0.006; NNT = 18).",
+      "Lợi ích bảo vệ bền vững đến ngày 90 (9.3% vs 14.7%; ARR -5.4%), giảm 41% nguy cơ phải đặt nội khí quản (HR 0.59; 95% CI 0.40–0.86) và giảm 41% nguy cơ khởi đầu thuốc vận mạch (HR 0.59; 95% CI 0.43–0.82).",
+      "Đánh giá đáp ứng lâm sàng vào ngày thứ 4 để chọn tổng thời gian điều trị 8 ngày (cải thiện tốt) hoặc 14 ngày (cải thiện chậm) kèm phác đồ giảm liều dần (tapering) nhằm tránh dội ngược viêm.",
+      "Hồ sơ an toàn rất cao (không tăng nhiễm trùng bệnh viện hay xuất huyết tiêu hóa), nhưng bắt buộc chủ động thiết lập phác đồ Insulin kiểm soát tăng đường huyết trong 7 ngày đầu (liều trung vị 35.5 vs 20.5 UI/ngày; P < 0.001)."
     ],
-    "clinicalPearls": [],
+    "clinicalPearls": [
+      "Bí quyết vượt trội của CAPE COD nằm ở 4 trụ cột: cân bằng Glucocorticoid/Mineralocorticoid của Hydrocortisone truyền liên tục 200 mg/ngày, cửa sổ vàng < 15 giờ sau nhập ICU, loại trừ sốc nhiễm trùng ban đầu và tỷ lệ nữ giới 30.6%.",
+      "Truyền tĩnh mạch liên tục (8.3 mg/giờ) ổn định nồng độ huyết tương, giảm dao động đỉnh đường huyết cấp tính và hạn chế hiện tượng dội ngược viêm (inflammatory rebound) so với tiêm bolus ngắt quãng.",
+      "Tuyệt đối không tự động ngoại suy sang viêm phổi do Virus Cúm (Influenza) vì nhóm này bị loại trừ khỏi thử nghiệm do lo ngại nguy cơ bất lợi của corticosteroid.",
+      "Thận trọng khi đánh giá hiệu quả tuyệt đối: Tỷ lệ tử vong nhóm giả dược thực tế (11.9%) thấp hơn nhiều so với giả định cỡ mẫu ban đầu (27%), và 44.9% ca không phân lập được căn nguyên vi sinh."
+    ],
     "subgroups": {
       "Kết cục lâm sàng chính tại ngày thứ 28": "Hydrocortisone: Tử vong 6.2%, Đặt nội khí quản 18.0%, Dùng thuốc vận mạch 15.3% | Giả dược: Tử vong 11.9%, Đặt nội khí quản 29.5%, Dùng thuốc vận mạch 25.0%",
       "Tần suất các biến cố an toàn và tác dụng phụ": "COL: Nhiễm trùng bệnh viện (Hydrocortisone): 9.8% | Nhiễm trùng bệnh viện (Giả dược): 11.1% | Xuất huyết tiêu hóa (Hydrocortisone): 2.2% | Xuất huyết tiêu hóa (Giả dược): 3.3%",
@@ -821,47 +831,41 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
       {
         "id": "sec-1",
         "number": 1,
-        "title": "Bối Cảnh & PICO",
-        "icon": "fa-solid fa-stethoscope"
+        "title": "Phần 1: Tình Huống & Ca Lâm Sàng Thực Hành",
+        "icon": "fa-solid fa-user-doctor"
       },
       {
         "id": "sec-2",
         "number": 2,
-        "title": "Tiêu Chuẩn & Sàng Lọc",
-        "icon": "fa-solid fa-vials"
+        "title": "Phần 2.I: Bối Cảnh Khoa Học & Giả Thuyết",
+        "icon": "fa-solid fa-book-medical"
       },
       {
         "id": "sec-3",
         "number": 3,
-        "title": "Phác Đồ Hydrocortisone",
-        "icon": "fa-solid fa-pills"
+        "title": "Phần 2.II: Thiết Kế, Phác Đồ & Khung PICO",
+        "icon": "fa-solid fa-diagram-project"
       },
       {
         "id": "sec-4",
         "number": 4,
-        "title": "Kết Quả & Forest Plot",
-        "icon": "fa-solid fa-heart-pulse"
+        "title": "Phần 2.III: Kết Quả Hiệu Quả & Hồ Sơ An Toàn",
+        "icon": "fa-solid fa-chart-column"
       },
       {
         "id": "sec-5",
         "number": 5,
-        "title": "Tính An Toàn & Tích Lũy",
-        "icon": "fa-solid fa-shield-virus"
+        "title": "Phần 2.IV: Bình Luận Phản Biện & Thẩm Định RoB",
+        "icon": "fa-solid fa-scale-balanced"
       },
       {
         "id": "sec-6",
         "number": 6,
-        "title": "Bàn Luận & Bài Học",
-        "icon": "fa-solid fa-book-bookmark"
-      },
-      {
-        "id": "sec-7",
-        "number": 7,
-        "title": "Bedside SCAP Calculator",
-        "icon": "fa-solid fa-book-bookmark"
+        "title": "Phần 3: Kết Luận & Giải Quyết Ca Lâm Sàng",
+        "icon": "fa-solid fa-gavel"
       }
     ],
-    "updatedAt": "2026-08-28"
+    "updatedAt": "2026-11-26"
   },
   {
     "id": "2020-nutrients-lowcarb-vs-lowfat",
@@ -1105,10 +1109,11 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
     "slug": "2017-infection-nlr-mlr-fever",
     "code": "STUDY-2017-INFECTION-NLR-MLR",
     "trialAcronym": "NLR-MLR FEVER",
-    "title": "Infection 2017: Vai Trò Của Tỷ Lệ Neutrophil/Lympho (NLR) & Monocyte/Lympho (MLR) Trong Chẩn Đoán Phân Biệt Sốt Do Nhiễm Trùng & Không Nhiễm Trùng",
+    "title": "Infection 2017: Vai Trò Của Tỷ Số Neutrophil/Lymphocyte (NLR) & Monocyte/Lymphocyte (MLR) Trong Chẩn Đoán Nhiễm Khuẩn Ở Bệnh Nhân Sốt",
     "titleEn": "Role of neutrophil to lymphocyte and monocyte to lymphocyte ratios in the diagnosis of bacterial infection in patients with fever",
+    "authors": "S. S. Nilssen, R. Mo, G. E. Eide, A. Naess, H. Sjursen",
     "journal": "Infection",
-    "organization": "Infection / Haukeland University Hospital",
+    "organization": "Infection / Haukeland University Hospital (Bergen, Na Uy)",
     "year": 2017,
     "doi": "10.1007/s15010-016-0972-1",
     "file": "2017-infection-nlr-mlr-fever.mdx",
@@ -1126,33 +1131,35 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
       "B34.9"
     ],
     "design": "diagnostic-accuracy",
-    "phase": "Prospective Observational Cohort Study",
+    "phase": "Retrospective Observational Cohort (Prospective Diagnostic Follow-up)",
+    "blinding": "open-label",
     "centerScope": "single-center",
+    "hypothesisType": "diagnostic-discrimination",
     "sampleSize": 299,
-    "followUpDuration": "Nhập viện cấp cứu (sốt < 7 ngày vs ≥ 7 ngày)",
+    "followUpDuration": "Nhập viện đến chẩn đoán xác định (sốt < 7 ngày vs 7–21 ngày)",
     "asianData": false,
     "populationTags": [
       "hospitalized-fever",
       "ed-adults"
     ],
-    "population": "299 bệnh nhân người lớn nhập viện vì sốt chưa rõ nguyên nhân tại Bệnh viện Đại học Haukeland, Bergen, Na Uy.",
+    "population": "299 bệnh nhân nhập viện vì sốt chưa rõ nguyên nhân tại Bệnh viện Đại học Haukeland (Bergen, Na Uy, 2001–2004), loại trừ bệnh bạch cầu cấp (leukemia), giữ lại 26 bệnh nhân suy giảm miễn dịch (24 ghép tạng/tủy, 2 HIV).",
     "interventionClass": "biomarker-diagnostics",
     "drug": "NLR (Neutrophil-to-Lymphocyte Ratio), MLR (Monocyte-to-Lymphocyte Ratio), Complete Blood Count",
-    "intervention": "Trích xuất và tính toán tỷ số NLR và MLR từ công thức máu cơ bản lúc nhập viện để phân biệt nhiễm vi khuẩn, nhiễm vi rút và bệnh phi nhiễm trùng ở bệnh nhân sốt.",
+    "intervention": "Tính toán tỷ số NLR và MLR từ công thức máu ngoại vi tự động lúc nhập viện (Cell-Dyn 4000, Advia 120) để phân biệt nhiễm khuẩn, nhiễm virus và sốt phi nhiễm trùng, đồng thời đánh giá tương tác theo thời gian sốt trước nhập viện (< 7 ngày vs 7–21 ngày).",
     "comparatorType": "crp-wbc-standard",
     "primaryEndpointCategory": "diagnostic-performance",
-    "primaryEndpoint": "Độ chính xác chẩn đoán nhiễm khuẩn (AUROC), phát hiện nhiễm trùng huyết (septicemia) và tương tác với thời gian sốt trước nhập viện (< 7 ngày).",
+    "primaryEndpoint": "Hiệu năng phân biệt nhiễm khuẩn (ROC AUC), phát hiện sớm nhiễm trùng huyết (septicemia) so với WBC/Neutrophils/CRP truyền thống và ảnh hưởng của thời gian sốt trước nhập viện.",
     "outcomeDirection": "positive-superior",
     "impactVerdict": "practice-informing",
-    "keyResults": "NLR vi khuẩn median 7.94 vs không nhiễm trùng 3.78 vs vi rút 0.63 (p < 0.001) | Septicemia có NLR vọt lên 15.69 vs 8.42 ở sốt < 7 ngày (p = 0.006) trong khi WBC (p = 0.559) và CRP (p = 0.615) thất bại hoàn toàn | Giảm lympho bào máu cấp tính (median 0.7 vs 1.3 × 10⁹/L, p < 0.001) là cơ chế cốt lõi | AUC NLR = 0.708, MLR = 0.688.",
+    "keyResults": "NLR nhiễm khuẩn trung vị 7.94 (IQR 4.47–15.02) vs không nhiễm trùng 3.78 (p < 0.001) vs virus 0.63 (p = 0.010) | MLR nhiễm khuẩn 0.70 vs không nhiễm trùng 0.35 (p < 0.001) vs virus 0.14 (p = 0.005) | Sốt cấp < 7 ngày: Septicemia (n = 18) có NLR vọt lên 15.69 (p = 0.006) trong khi WBC (p = 0.559), Neutrophils (p = 0.677) và CRP (p = 0.615) thất bại hoàn toàn | Cơ chế cốt lõi: giảm lympho nghiêm trọng (0.7 vs 1.3 × 10⁹/L; p < 0.001) | AUC NLR = 0.708, MLR = 0.688.",
     "primaryMetric": {
       "measure": "AUC",
-      "interventionRate": "NLR Septicemia: 15.69",
-      "controlRate": "Nhiễm khuẩn khác: 8.42",
-      "rawDiffText": "AUC NLR = 0.708 | AUC MLR = 0.688 | Septicemia (<7d): NLR 15.69 vs 8.42 (p = 0.006)",
+      "interventionRate": "NLR Septicemia (<7d): 15.69",
+      "controlRate": "Nhiễm khuẩn khác: 7.88–8.18",
+      "rawDiffText": "AUC NLR = 0.708 | AUC MLR = 0.688 | Septicemia (<7d): NLR 15.69 (p = 0.006) vs WBC/CRP thất bại (p > 0.55)",
       "pValue": "0.006"
     },
-    "safetyHighlight": "Độ chính xác NLR/MLR suy giảm ở bệnh nhân sốt kéo dài ≥ 7 ngày hoặc dùng corticoid/suy giảm miễn dịch",
+    "safetyHighlight": "Độ đặc hiệu tổng thể ở mức trung bình (AUC ~0.69–0.71) do chồng lấp với bệnh tự miễn/ung thư và hiệu lực suy giảm rõ khi sốt kéo dài ≥ 7 ngày; cần phiên giải chặt chẽ theo mốc thời gian sốt.",
     "robOverall": "some-concerns",
     "gradeCertainty": "moderate",
     "fragilityIndex": null,
@@ -1164,124 +1171,70 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
       "sepsis"
     ],
     "tags": [
-      "Infection 2017",
+      "Infection",
+      "2017",
       "NLR",
       "MLR",
-      "Sốt Chưa Rõ Nguyên Nhân",
-      "Nhiễm Khuẩn Huyết",
+      "Sốt Cấp Tính",
+      "Nhiễm Trùng Huyết",
       "Sepsis",
       "Công Thức Máu",
       "Evidence-Based Medicine"
     ],
-    "summary": "Nghiên cứu của Nilssen và cộng sự (Infection 2017) chứng minh NLR và MLR từ công thức máu thông thường phân biệt hiệu quả nhiễm vi khuẩn với nhiễm vi rút và phi nhiễm trùng. Đặc biệt, NLR nhận diện nhạy bén bệnh nhân nhiễm trùng huyết (septicemia) ở giai đoạn sốt < 7 ngày khi cả tổng bạch cầu (WBC) và CRP đều hoàn toàn thất bại.",
-    "detailedConclusion": "Không bao giờ được phép chỉ nhìn vào WBC hay CRP đơn thuần khi tiếp cận bệnh nhân sốt cấp tính. Tỷ lệ NLR > 13–15 ở bệnh nhân sốt < 7 ngày là cờ đỏ báo động nhiễm trùng huyết cần cấy máu và dùng kháng sinh sớm; trong khi NLR < 1.0 và MLR < 0.20 gợi ý mạnh mẽ căn nguyên vi rút để tránh lạm dụng kháng sinh.",
-    "description": "Nghiên cứu quan sát trên 299 bệnh nhân sốt nhập viện tại Đại học Haukeland (Na Uy): NLR và MLR phân biệt vượt trội nhiễm khuẩn vs nhiễm vi rút/phi nhiễm trùng, đặc biệt NLR nhận diện nhạy bén nhiễm trùng huyết (septicemia) khi tổng bạch cầu (WBC) và CRP hoàn toàn thất bại.",
+    "summary": "Nghiên cứu quan sát trên 299 bệnh nhân sốt nhập viện tại Đại học Haukeland (Na Uy) chứng minh NLR và MLR phân biệt có ý nghĩa nhiễm khuẩn với nhiễm virus và nguyên nhân phi nhiễm trùng. Đặc biệt ở bệnh nhân sốt cấp < 7 ngày, NLR phát hiện xuất sắc nhiễm trùng huyết (trung vị 15.69, p = 0.006) nhờ bắt trọn tín hiệu giảm lympho (0.7 vs 1.3 × 10⁹/L), trong khi WBC, bạch cầu trung tính và CRP hoàn toàn thất bại.",
+    "detailedConclusion": "Ở bệnh nhân sốt cấp tính (< 7 ngày) có WBC và CRP nằm ở vùng xám, không bao giờ chỉ dừng lại ở hai chỉ số này. Giá trị NLR tăng vọt (đặc biệt ≥ 13–15, thúc đẩy bởi giảm lympho bào sâu) là cờ đỏ chỉ điểm nhiễm trùng huyết/nhiễm khuẩn nặng cần cấy máu khẩn và khởi đầu kháng sinh phổ rộng tĩnh mạch ngay lập tức; luôn phiên giải gắn liền thời gian sốt và bệnh cảnh lâm sàng tổng thể.",
+    "description": "Phân tích chuyên sâu nghiên cứu của Nilssen et al. (Infection 2017, N = 299): Tỷ số NLR & MLR từ công thức máu cơ bản phân biệt nhiễm khuẩn vs virus/phi nhiễm trùng và phát hiện vượt trội nhiễm trùng huyết (NLR 15.69) khi WBC và CRP thất bại.",
     "keyRecommendations": [
-      "NLR và MLR ở nhóm nhiễm khuẩn cao hơn rõ rệt so với không nhiễm trùng (NLR trung vị 7.94 vs 3.78, p < 0.001; MLR 0.70 vs 0.35, p < 0.001); nhóm vi rút giảm sâu nhất (NLR 0.63, MLR 0.14).",
-      "NLR nhận diện nhiễm trùng huyết (septicemia) vượt trội với trung vị 15.69 vs 8.42 (p = 0.006), trong khi tổng bạch cầu (WBC 11.4 vs 13.1, p = 0.559) và CRP (125.5 vs 135.0, p = 0.615) hoàn toàn thất bại không phân biệt được.",
-      "Cơ chế cốt lõi là tình trạng giảm lympho bào máu ngoại vi nghiêm trọng trong nhiễm trùng huyết (Lymphocytes trung vị 0.7 vs 1.3 × 10⁹/L, p < 0.001).",
-      "Thời gian sốt < 7 ngày trước nhập viện có sức mạnh dự báo cao nhất; tương tác có ý nghĩa thống kê giữa NLR/MLR và thời gian sốt (p = 0.005 cho NLR, p = 0.001 cho MLR)."
+      "Tỷ số NLR và MLR ở nhóm nhiễm khuẩn cao vượt trội so với nhóm không nhiễm trùng (NLR 7.94 vs 3.78, p < 0.001; MLR 0.70 vs 0.35, p < 0.001) và nhóm nhiễm virus (NLR 0.63, p = 0.010; MLR 0.14, p = 0.005).",
+      "Với bệnh nhân sốt cấp tính (< 7 ngày), NLR tăng vọt (trung vị 15.69 ở nhóm nhiễm trùng huyết; p = 0.006) vượt xa khả năng phân biệt của WBC (p = 0.559), Neutrophils (p = 0.677) và CRP (p = 0.615).",
+      "Cơ chế then chốt tạo nên sức mạnh của NLR là tình trạng giảm bạch cầu lympho nghiêm trọng (lymphopenia: trung vị 0.7 vs 1.3 × 10⁹/L; p < 0.001) phản ánh stress miễn dịch/chết tế bào theo chương trình trong nhiễm trùng nặng.",
+      "Bắt buộc phiên giải NLR và MLR theo thời gian khởi phát sốt: hiệu năng đạt tối ưu trong tuần đầu (< 7 ngày) và suy giảm có ý nghĩa khi sốt kéo dài 7–21 ngày (NLR 8.43 vs 4.33, p = 0.005; MLR 0.71 vs 0.41, p = 0.001)."
     ],
-    "clinicalPearls": [],
+    "clinicalPearls": [
+      "NLR và MLR là hai chỉ số '0 đồng' chiết xuất ngay từ công thức máu ngoại vi tại mọi tuyến y tế, giúp giải tỏa vùng xám khi WBC tăng nhẹ và CRP ở ngưỡng trung gian.",
+      "Đừng bao giờ bỏ sót cột Lymphocytes trên tờ công thức máu: chính sự sụt giảm sâu lympho (< 0.7 × 10⁹/L) mới là động lực đẩy NLR vượt ngưỡng 15 trong nhiễm trùng huyết sớm.",
+      "Do tương quan nội tại rất mạnh giữa NLR và MLR (Spearman's rho = 0.78, p < 0.001), trong thực hành lâm sàng và mô hình hồi quy chỉ nên dùng độc lập từng chỉ số (ưu tiên NLR vì AUC nhỉnh hơn: 0.708 vs 0.688).",
+      "Hiệu năng phân loại chung ở mức khá (AUC ~0.69–0.71) và có chồng lấp với bệnh tự miễn/ác tính, do đó NLR/MLR là công cụ bổ trợ phân tầng nguy cơ chứ không thay thế khám lâm sàng và cấy máu."
+    ],
     "sections": [
       {
-        "id": "sec-tongquan",
+        "id": "sec-1",
         "number": 1,
-        "title": "Thông Tin Nghiên Cứu, Tóm Tắt Một Câu & Khung PICO",
-        "icon": "fa-solid fa-file-contract"
+        "title": "Phần 1: Tình Huống & Ca Lâm Sàng Thực Hành",
+        "icon": "fa-solid fa-user-doctor"
       },
       {
-        "id": "sec-sinhly-benhsinh",
+        "id": "sec-2",
         "number": 2,
-        "title": "Cơ Sở Sinh Lý & Miễn Dịch Học Đáp Ứng Tế Bào Máu",
-        "icon": "fa-solid fa-microscope"
+        "title": "Phần 2.I: Bối Cảnh & Đặt Vấn Đề Nghiên Cứu",
+        "icon": "fa-solid fa-book-medical"
       },
       {
-        "id": "sec-diem-nghen",
+        "id": "sec-3",
         "number": 3,
-        "title": "Bối Cảnh Y Học & Ma Trận Điểm Nghẽn Lâm Sàng",
-        "icon": "fa-solid fa-triangle-exclamation"
-      },
-      {
-        "id": "sec-thietke-mau",
-        "number": 4,
-        "title": "Thiết Kế Mẫu, Thu Thập Dữ Liệu & Phân Tích Thống Kê",
-        "icon": "fa-solid fa-flask-vial"
-      },
-      {
-        "id": "sec-so-sanh-nlr-mlr",
-        "number": 5,
-        "title": "So Sánh NLR & MLR Giữa Các Nhóm Bệnh Lý (Table 1)",
-        "icon": "fa-solid fa-chart-simple"
-      },
-      {
-        "id": "sec-tuong-quan-fig1",
-        "number": 6,
-        "title": "Mối Tương Quan NLR - MLR & Biểu Đồ Phân Tán (Figure 1)",
-        "icon": "fa-solid fa-chart-line"
-      },
-      {
-        "id": "sec-thoi-gian-sot",
-        "number": 7,
-        "title": "Tác Động Của Thời Gian Sốt & Cửa Sổ < 7 Ngày (Table 2)",
-        "icon": "fa-solid fa-clock"
-      },
-      {
-        "id": "sec-septicemia-table3",
-        "number": 8,
-        "title": "Khả Năng Nhận Diện Nhiễm Trùng Huyết Vượt Trội (Table 3)",
-        "icon": "fa-solid fa-heart-pulse"
-      },
-      {
-        "id": "sec-hoi-quy-nlr",
-        "number": 9,
-        "title": "Mô Hình Hồi Quy Đa Thức Đa Biến Của NLR (Table 4)",
-        "icon": "fa-solid fa-calculator"
-      },
-      {
-        "id": "sec-hoi-quy-mlr",
-        "number": 10,
-        "title": "Mô Hình Hồi Quy Đa Thức Đa Biến Của MLR (Table 5)",
-        "icon": "fa-solid fa-square-root-variable"
-      },
-      {
-        "id": "sec-xac-suat-fig23",
-        "number": 11,
-        "title": "Đồ Thị Dự Báo Xác Suất Lâm Sàng (Figures 2 & 3)",
-        "icon": "fa-solid fa-chart-area"
-      },
-      {
-        "id": "sec-roc-fig4",
-        "number": 12,
-        "title": "Phân Tích Đường Cong ROC & Diện Tích AUC (Figure 4)",
-        "icon": "fa-solid fa-chart-pie"
-      },
-      {
-        "id": "sec-doi-chieu-gurol",
-        "number": 13,
-        "title": "Đối Chiếu Nghiên Cứu Quốc Tế & Ngưỡng Cắt Gürol et al.",
-        "icon": "fa-solid fa-scale-balanced"
-      },
-      {
-        "id": "sec-luodo-thuat-toan",
-        "number": 14,
-        "title": "Lưu Đồ Cây Quyết Định Xử Trí Kháng Sinh Ban Đầu",
+        "title": "Phần 2.II: Thiết Kế, Quần Thể & Khung PICO",
         "icon": "fa-solid fa-diagram-project"
       },
       {
-        "id": "sec-rob-appraisal",
-        "number": 15,
-        "title": "Thẩm Định Phương Pháp Luận & Hạn Chế Thừa Nhận",
-        "icon": "fa-solid fa-shield-halved"
+        "id": "sec-4",
+        "number": 4,
+        "title": "Phần 2.III: Kết Quả Cốt Lõi & So Sánh Sinh Học",
+        "icon": "fa-solid fa-chart-column"
       },
       {
-        "id": "sec-phan-quyet-pearls",
-        "number": 16,
-        "title": "Phán Quyết Lâm Sàng, Hạt Ngọc Thực Chiến & Y Văn AMA",
+        "id": "sec-5",
+        "number": 5,
+        "title": "Phần 2.IV: Phản Biện Học Thuật & Thẩm Định RoB",
+        "icon": "fa-solid fa-scale-balanced"
+      },
+      {
+        "id": "sec-6",
+        "number": 6,
+        "title": "Phần 3: Kết Luận & Giải Quyết Ca Lâm Sàng",
         "icon": "fa-solid fa-gavel"
       }
     ],
-    "updatedAt": "2026-10-10"
+    "updatedAt": "2026-11-26"
   },
   {
     "id": "2015-nejm-empareg-outcome",

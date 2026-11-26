@@ -538,6 +538,33 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-checklist', number: 9, title: 'Bảng Tổng Hợp Khuyến Cáo Thực Hành Lâm Sàng Cốt Lõi (Checklist)', icon: 'fa-clipboard-check' },
           { id: 'sec-references', number: 10, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
         ]
+      },
+      {
+        id: 'dengue-07-dung-dich-cao-phan-tu-trong-soc-dengue',
+        slug: 'dengue-07-dung-dich-cao-phan-tu-trong-soc-dengue',
+        diseaseId: 'sot-xuat-huyet-dengue',
+        specialtyId: 'truyen-nhiem',
+        title: 'Có Nên Sử Dụng Dung Dịch Cao Phân Tử Trong Sốc Sốt Xuất Huyết Dengue?',
+        subtitle: 'So sánh dược lý Tinh thể vs Cao phân tử, bằng chứng WHO 2025 vs ISCCM 2024, phác đồ QĐ 2760/Phụ lục 10, ngưỡng trần 60 mL/kg & chỉ định Albumin',
+        description: 'Phân tích toàn diện vai trò vũ khí hồi sức bậc 2 (Rescue Therapy) của dung dịch cao phân tử (Dextran 40/70, HES 6%, Albumin) trong sốc sốt xuất huyết Dengue: dược động học áp lực keo, phân tích gộp WHO 2025 (RR phản vệ/đông máu = 7,75), phác đồ chuyển dịch trẻ em & người lớn QĐ 2760/QĐ-BYT, tiêu chuẩn Phụ lục 10, 4 nhóm độc tính và ca thực chiến hạ liều bậc thang.',
+        estimatedMinutes: 25,
+        tags: ['Sốc sốt xuất huyết Dengue', 'Dung dịch cao phân tử', 'Tinh thể vs Cao phân tử', 'Dextran 40', 'HES 6%', 'Albumin', 'Phụ lục 10 BYT', 'WHO 2025', 'QĐ 2760/QĐ-BYT', 'ISCCM 2024'],
+        keyTakeaway: 'CÓ sử dụng cao phân tử nhưng chỉ làm Rescue Therapy bậc 2 (sốc thất bại tinh thể giờ đầu kèm Hct cao, sốc nặng M=0/HA=0 hoặc tái sốc); giới hạn tổng liều HES/Dextran < 60 mL/kg và chuyển lại điện giải ngay khi đạt Phụ lục 10.',
+        order: 7,
+        filePath: 'truyen-nhiem/sot-xuat-huyet-dengue/dengue-07-dung-dich-cao-phan-tu-trong-soc-dengue.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-26',
+        evidenceLevel: 'EBM 2026 • QĐ 2760/QĐ-BYT • WHO 2025 • ISCCM 2024',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Sinh Lý Bệnh Thoát Huyết Tương', icon: 'fa-bolt' },
+          { id: 'sec-pharmacology', number: 2, title: 'So Sánh Dược Lý & Áp Lực Keo: Tinh Thể vs Cao Phân Tử', icon: 'fa-flask-vial' },
+          { id: 'sec-evidence', number: 3, title: 'Bằng Chứng Lâm Sàng Quốc Tế (WHO 2025) vs Thực Tiễn Sốc Trơ', icon: 'fa-scale-balanced' },
+          { id: 'sec-protocol', number: 4, title: 'Chỉ Định & Phác Đồ Bộ Y Tế (QĐ 2760/QĐ-BYT & Phụ Lục 10)', icon: 'fa-route' },
+          { id: 'sec-safety-pitfalls', number: 5, title: 'Tác Dụng Bất Lợi, Cạm Bẫy & Cảnh Báo An Toàn Khi Dùng Cao Phân Tử', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-scenario', number: 6, title: 'Ca Lâm Sàng Thực Chiến & Diễn Tiến Hạ Liều Bậc Thang', icon: 'fa-user-doctor' },
+          { id: 'sec-recommendations', number: 7, title: 'Kết Luận & 5 Thông Điệp Lâm Sàng Cốt Lõi', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
       }
     ]
   },
