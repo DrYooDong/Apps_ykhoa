@@ -1,368 +1,508 @@
 ---
-title: "Tiếp Cận Hạ Natri Máu (Hyponatremia): Thuật Toán UOsm/UNa & Phòng Ngừa ODS"
+title: "Tiếp Cận và Điều Trị Hạ Natri Máu Ở Người Lớn (Hyponatremia)"
 slug: "tc-07-09-ha-natri-mau"
 code: "TC-TDG-09"
+category: "approach"
 specialty: "ck07-than-dien-giai"
 specialtyLabel: "CK07: Thận – Tiết Niệu & Nước – Điện Giải"
 specialtyNumber: 7
 lessonNumber: 9
-order: 71
+order: 4
 urgency: "emergent"
 status: "published"
 version: "2.0.0"
-updatedAt: "2026-11-21"
+updatedAt: "2026-11-27"
 estimatedTime: 25
-description: "Tiếp cận hạ natri máu theo tư duy sinh lý Edelman, loại trừ hạ natri giả, thuật toán UOsm & UNa chính xác hơn khám thể tích, cấp cứu NaCl 3% và giới hạn tốc độ chống hủy myelin ODS."
+description: "Tiếp cận có hệ thống và điều trị hạ natri máu ở người lớn chuẩn ERBP/ESE/ESICM: phân loại đa chiều, sinh lý bệnh phù não – ODS, thuật toán 3 bước (Posm, UOsm, UNa), cấp cứu NaCl 3%, công thức Adrogué–Madias và xử trí nâng Natri quá nhanh."
 tags:
-  - "Thận - Điện giải"
   - "Hạ Natri máu"
+  - "Hyponatremia"
+  - "SIAD"
   - "SIADH"
   - "NaCl 3%"
   - "ODS"
-  - "Edelman"
+  - "Adrogué-Madias"
+  - "ERBP/ESE/ESICM"
 icd10:
   - "E87.1"
+  - "E22.2"
 clinicalPearls:
-  - "Cấp cứu não trước, chỉnh con số sau: triệu chứng thần kinh nặng quyết định bolus 150 mL NaCl 3% ngay lập tức, bỏ qua phân loại nguyên nhân."
-  - "SIADH là chẩn đoán loại trừ: bắt buộc loại trừ Suy thượng thận (Cortisol) và Suy giáp (TSH/FT4) trước khi kết luận."
-  - "Giới hạn tốc độ KHÔNG phải là mục tiêu: giữ mức tăng Na+ ≤ 8–10 mmol/L/24h (và ≤ 6–8 mmol/L ở nhóm nguy cơ cao ODS)."
+  - "Nếu không xác định được thời điểm khởi phát hạ natri máu, luôn mặc định phân loại là mạn tính (≥ 48 giờ) để chọn tốc độ bù an toàn, phòng ngừa Hội chứng thoát myelin do thẩm thấu (ODS)."
+  - "Bất kể cấp hay mạn tính, khi có triệu chứng thần kinh nặng (co giật, hôn mê, nôn mửa dữ dội), nguy cơ tử vong do phù não vượt trội nguy cơ ODS — bolus ngay 150 mL NaCl 3% trong 20 phút, mục tiêu tăng +5 mmol/L."
+  - "Giới hạn tốc độ tăng Natri máu bắt buộc: không vượt quá 10 mmol/L trong 24 giờ đầu và không vượt quá 8 mmol/L mỗi 24 giờ tiếp theo cho đến khi Na+ đạt 130 mmol/L."
+  - "Khi nâng Natri quá nhanh (> 10 mmol/L/24h hoặc > 18 mmol/L/48h), tái hạ cấp cứu bằng ngừng dịch truyền hiện tại, truyền Glucose 5% 10 mL/kg trong 1 giờ và tiêm TM Desmopressin (dDAVP) 2 mcg mỗi 8 giờ."
 sections:
   - id: "sec-1"
     number: 1
-    title: "Định Nghĩa & Phân Loại"
+    title: "Định Nghĩa & Phân Loại Đa Chiều"
     icon: "fa-book-medical"
   - id: "sec-2"
     number: 2
-    title: "Cơ Chế Sinh Lý Bệnh"
-    icon: "fa-dna"
+    title: "Sinh Lý Bệnh & Bảo Vệ Não"
+    icon: "fa-brain"
   - id: "sec-3"
     number: 3
-    title: "Red Flags & Phân Tầng"
+    title: "Red Flags & Phân Tầng Khẩn Cấp"
     icon: "fa-triangle-exclamation"
   - id: "sec-4"
     number: 4
-    title: "Bệnh Sử & Khám Định Hướng"
-    icon: "fa-user-doctor"
+    title: "Lưu Đồ Chẩn Đoán 3 Bước"
+    icon: "fa-diagram-project"
   - id: "sec-5"
     number: 5
-    title: "Chẩn Đoán Phân Biệt"
-    icon: "fa-list-check"
+    title: "Biện Luận Posm, UOsm & UNa"
+    icon: "fa-vial"
   - id: "sec-6"
     number: 6
-    title: "Cận Lâm Sàng Theo Bậc"
-    icon: "fa-vial"
+    title: "Chiến Lược Điều Trị Chuyên Sâu"
+    icon: "fa-truck-medical"
   - id: "sec-7"
     number: 7
-    title: "Lưu Đồ Tiếp Cận"
-    icon: "fa-diagram-project"
+    title: "Adrogué–Madias & Xử Trí Quá Nhanh"
+    icon: "fa-calculator"
   - id: "sec-8"
     number: 8
-    title: "Xử Trí Ban Đầu & Chuyển Tuyến"
-    icon: "fa-truck-medical"
-  - id: "sec-9"
-    number: 9
-    title: "Ca Minh Họa, Pearls & EBM"
+    title: "Ca Lâm Sàng, Pearls & Trích Dẫn"
     icon: "fa-gem"
 ---
 
-# 💧 TIẾP CẬN HẠ NATRI MÁU (HYPONATREMIA)
+# 💧 TIẾP CẬN VÀ ĐIỀU TRỊ HẠ NATRI MÁU Ở NGƯỜI LỚN
 
 <div class="module-badge-group">
   <span class="badge badge-red"><i class="fa-solid fa-stethoscope"></i> Tiếp Cận Lâm Sàng • TC-TDG-09</span>
-  <span class="badge badge-blue"><i class="fa-solid fa-droplet"></i> CK07 • Thận &amp; Điện Giải</span>
-  <span class="badge badge-purple"><i class="fa-solid fa-certificate"></i> ESE Guideline &amp; JAMA Review</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-droplet"></i> CK07 • Thận – Tiết Niệu &amp; Điện Giải</span>
+  <span class="badge badge-purple"><i class="fa-solid fa-certificate"></i> ERBP/ESE/ESICM • Dutch Guideline • EBM</span>
 </div>
 
 <ApproachQuickNav />
 
-<section class="stats-strip" aria-label="Thông số chốt lâm sàng hạ natri máu">
+<section class="stats-strip" aria-label="Thông số chốt lâm sàng hạ natri máu ở người lớn">
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-val">&lt; 135 mmol/L</div>
-      <div class="stat-lbl">Ngưỡng chẩn đoán Hạ Natri máu</div>
+      <div class="stat-lbl">Ngưỡng chẩn đoán Hạ Natri máu (Sâu &lt; 125)</div>
     </div>
     <div class="stat-card">
       <div class="stat-val">150 mL 3%</div>
-      <div class="stat-lbl">Bolus cấp cứu trong 20 phút khi phù não</div>
+      <div class="stat-lbl">Bolus NaCl 3% trong 20 phút khi triệu chứng nặng</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val">&le; 8–10</div>
-      <div class="stat-lbl">Giới hạn tăng tối đa (mmol/L/24h)</div>
+      <div class="stat-val">&le; 10 mmol/L</div>
+      <div class="stat-lbl">Trần tăng Na⁺ 24h đầu (&le; 8 mmol/L mỗi 24h sau)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val">48 giờ</div>
-      <div class="stat-lbl">Mốc phân định Cấp tính vs Mạn tính</div>
+      <div class="stat-val">3 Bước</div>
+      <div class="stat-lbl">Thuật toán Posm &rarr; UOsm &rarr; UNa chuẩn Châu Âu</div>
     </div>
   </div>
 </section>
 
-## 1. Định Nghĩa & Phân Loại {#sec-1}
-**Hạ Natri máu (Hyponatremia)** được định nghĩa khi nồng độ Natri huyết thanh $\text{Na}^+ < 135\text{ mmol/L}$. Đây là rối loạn điện giải thường gặp nhất ở bệnh nhân nội trú (15–30%), và bản chất chủ yếu là **rối loạn cân bằng nước** (thừa nước tự do tương đối so với tổng lượng cation trao đổi).
-
-Phân loại theo **4 trục lâm sàng** quyết định trực tiếp thái độ xử trí:
-
-| Trục phân loại | Các nhóm | Ý nghĩa quyết định xử trí |
-| :--- | :--- | :--- |
-| **1. Theo triệu chứng (Quan trọng nhất)** | • **Nặng:** Co giật, hôn mê, ngủ gà sâu, suy hô hấp, nôn nhiều<br />• **Trung bình:** Buồn nôn không nôn, lú lẫn, đau đầu | Có triệu chứng nặng → **Bolus NaCl 3% ngay lập tức** cứu não |
-| **2. Theo thời gian diễn biến** | • **Cấp tính:** &lt; 48 giờ (nguy cơ phù não cao)<br />• **Mạn tính:** ≥ 48 giờ hoặc không rõ thời gian | Mặc định coi là **mạn tính** nếu không có xét nghiệm Na bình thường trong 48h gần nhất → nguy cơ cao hủy myelin ODS |
-| **3. Theo sinh hóa (Con số)** | Nhẹ (130–134), Trung bình (125–129), Nặng (&lt; 125 mmol/L) | Đánh giá nguy cơ nền và mức độ theo dõi (Na &lt; 120 cần theo dõi sát/ICU) |
-| **4. Theo Áp lực thẩm thấu (ALTT) máu** | • **Nhược trương (&lt; 275 mOsm/kg):** Hạ Na thật sự<br />• **Đẳng trương / Ưu trương:** Hạ Na "giả" hoặc chuyển dịch thẩm thấu | Loại trừ tăng đường huyết, truyền Mannitol, tăng Lipid/Protein máu trước khi điều trị |
-
----
-
-## 2. Cơ Chế Sinh Lý Bệnh {#sec-2}
-### Phương Trình Edelman & Vai Trò Của ADH (Arginine Vasopressin)
-
-Nồng độ Natri huyết thanh phản ánh tỷ lệ giữa tổng lượng cation trao đổi được (Natri ngoại bào + Kali nội bào) trên tổng lượng nước cơ thể (TBW):
-
-$$[\text{Na}^+]_{\text{huyết thanh}} \approx \frac{\text{Na}^+_{\text{trao đổi}} + \text{K}^+_{\text{trao đổi}}}{\text{TBW (Tổng lượng nước cơ thể)}}$$
-
-- **Thụ thể áp lực "ghi đè" thụ thể thẩm thấu:** Bình thường khi ALTT máu giảm, tuyến yên ức chế hoàn toàn tiết ADH để thận thải nước tự do tối đa ($U_{\text{Osm}} \le 100\text{ mOsm/kg}$). Tuy nhiên khi thể tích tuần hoàn hiệu dụng (**EABV**) giảm (mất dịch, suy tim, xơ gan), tín hiệu từ thụ thể áp lực xoang cảnh sẽ **ghi đè** tín hiệu thẩm thấu, kích thích tiết ADH ồ ạt giữ nước bất chấp Natri máu đang tụt.
-- **Thích nghi thẩm thấu của tế bào não &amp; Biến chứng ODS:**
-  - *Giai đoạn cấp (&lt; 48h):* Nước tràn vào tế bào thần kinh gây **phù não cấp**, tăng áp lực nội sọ và thoát vị não.
-  - *Giai đoạn mạn (≥ 48h):* Tế bào não thích nghi bằng cách bơm chất thẩm thấu hữu cơ (*myo-inositol, taurine, glutamine*) ra ngoại bào để đưa thể tích tế bào về bình thường. Nếu bù Natri quá nhanh, tế bào não không kịp thu hồi chất thẩm thấu → mất nước đột ngột, co rút tế bào thần kinh đệm ít nhánh gây **Hội chứng hủy myelin do thẩm thấu (ODS)**.
-
-*Liên kết nền tảng:* Xem thêm sinh lý điều hòa thẩm thấu ống góp tại [Sinh Lý Thận & Thể Dịch](#/basic-medical/giai-phau-sinh-ly).
-
----
-
-## 3. Dấu Hiệu Báo Động (Red Flags) & Phân Tầng {#sec-3}
-<div class="infobox danger">
-  <div class="infobox-title"><i class="fa-solid fa-triangle-exclamation"></i> RED FLAGS TỐI KHẨN — NGUY CƠ PHÙ NÃO &amp; HỦY MYELIN (ODS)</div>
-  <ul>
-    <li><strong>Báo động phù não cấp (Cần NaCl 3% ngay):</strong> Co giật, hôn mê, ngủ gà sâu (GCS giảm), nôn ói dữ dội, suy hô hấp hoặc dấu hiệu Cushing (THA + mạch chậm).</li>
-    <li><strong>Nhóm nguy cơ cực cao mắc ODS khi điều chỉnh nhanh:</strong> Natri máu khởi đầu &lt; 105 mmol/L, nghiện rượu mạn, suy dinh dưỡng nặng, bệnh gan mạn, và <strong>hạ Kali máu đi kèm</strong> (khi bù Kali, K<sup>+</sup> đẩy Na<sup>+</sup> tăng nhanh hơn dự kiến theo công thức Edelman).</li>
-    <li><strong>Bẫy đái tháo nước tự phát (Autocorrection):</strong> Lượng nước tiểu tăng vọt &gt; 100 mL/giờ sau khi truyền dịch hoặc ngừng thuốc lợi tiểu → dấu hiệu ADH đã bị ức chế đột ngột, Natri máu có thể vọt &gt; 10–15 mmol/L chỉ trong vài giờ!</li>
-  </ul>
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-user-graduate"></i> BÀI HỌC LÂM SÀNG CHUYÊN SÂU — BIÊN SOẠN: PGS. TS. BS. Y KHOA</div>
+  <p style="margin: 0;">Hệ thống hóa toàn diện tiếp cận chẩn đoán và xử trí cấp cứu <strong>Hạ Natri máu ở người lớn</strong> dựa trên đồng thuận quốc tế (<strong>ERBP/ESE/ESICM</strong> và <strong>Hướng dẫn Quốc gia Hà Lan</strong>): nhận diện triệu chứng phù não tối cấp, giải mã thuật toán 3 bước <code>Posm &rarr; UOsm &rarr; UNa</code>, áp dụng phác đồ NaCl 3% an toàn và phòng ngừa – cứu vãn Hội chứng thoát myelin do thẩm thấu (ODS).</p>
 </div>
 
-| Phân tầng | Mức độ | Tiêu chuẩn | Chiến lược tức thì |
-| :--- | :---: | :--- | :--- |
-| **Có triệu chứng thần kinh nặng** | <UrgencyPill level="emergent" label="CẤP CỨU NÃO NGAY" /> | Co giật, hôn mê, lơ mơ sâu, suy hô hấp | Bolus **150 mL NaCl 3% TM trong 20 phút** (không chờ xét nghiệm nguyên nhân) |
-| **Triệu chứng trung bình / Na &lt; 120** | <UrgencyPill level="urgent" label="THEO DÕI SÁT ICU/HDU" /> | Lú lẫn nhẹ, đau đầu, buồn nôn, Na &lt; 120 mmol/L | Cân nhắc 1 liều NaCl 3% thận trọng, làm đồng thời bilan máu + niệu trước khi truyền dịch |
-| **Không triệu chứng / Mạn tính ổn** | <UrgencyPill level="routine" label="CHỈNH CHẬM AN TOÀN" /> | Na 125–134 mmol/L, tỉnh táo hoàn toàn | Tìm nguyên nhân theo $U_{\text{Osm}}/U_{\text{Na}}$, hạn chế dịch hoặc điều trị nguyên nhân |
-
 ---
 
-## 4. Khai Thác Bệnh Sử & Khám Định Hướng {#sec-4}
-### Loại Trừ Hạ Natri "Giả" & Hiệu Chỉnh Đường Huyết
+## 1. Đặt Vấn Đề, Định Nghĩa & Phân Loại Đa Chiều {#sec-1}
 
-Luôn kiểm tra đường huyết ngay lập tức. Glucose tăng kéo nước từ nội bào ra ngoại bào làm pha loãng Natri máu. Công thức hiệu chỉnh **Katz / Hillier**:
+### 1.1. Đặt Vấn Đề & Định Nghĩa
 
-$$\text{Na}^+_{\text{hiệu chỉnh}} = \text{Na}^+_{\text{đo}} + 1.6 \times \frac{\text{Glucose (mg/dL)} - 100}{100} \quad (\text{dùng hệ số } 2.4 \text{ khi Glucose} > 400\text{ mg/dL})$$
+Hạ natri máu (*hyponatremia*) là **rối loạn điện giải thường gặp nhất** trong thực hành lâm sàng, đặc biệt tại các khoa Hồi sức tích cực (*Intensive Care Unit – ICU*) và Cấp cứu.
 
-Nếu có tăng Triglyceride máu nặng hoặc tăng Protein toàn phần (Đa u tủy xương) gây hiệu ứng loại trừ thể tích trên máy sinh hóa gián tiếp → đo trực tiếp bằng **điện cực chọn lọc ion trên máy khí máu động mạch**.
+- **Định nghĩa:** Hạ natri máu được xác định khi nồng độ Natri huyết thanh (*serum sodium concentration*) **$[\text{Na}^+]_s < 135\text{ mmol/L}$**.
+- **Vai trò sinh lý của Natri:** Natri là cation chính của dịch ngoại bào (*Extracellular Fluid – ECF*), đóng vai trò quyết định **áp lực thẩm thấu hiệu dụng** (*effective osmolality / tonicity*) và **thể tích dịch ngoại bào**.
+- **Ý nghĩa lâm sàng:** Hạ natri máu không chỉ phản ánh sự mất cân bằng nước – điện giải mà còn là **yếu tố tiên lượng độc lập** làm tăng tỷ lệ tử vong, tỷ lệ biến chứng thần kinh và kéo dài thời gian nằm viện.
 
-### Khai Thác Trọng Tâm & Giới Hạn Của Khám Thể Tích
+### 1.2. Phân Loại Hạ Natri Máu Đa Chiều
 
-1. **Tiền sử dùng thuốc thủ phạm:** Lợi tiểu **Thiazide** (nguyên nhân rất phổ biến ở người cao tuổi), SSRI/SNRI, Carbamazepine/Oxcarbazepine, thuốc chống loạn thần (Haloperidol), Cyclophosphamide, Desmopressin, thuốc lắc (MDMA).
-2. **Tiền sử bệnh nền &amp; mất dịch:** Nôn ói, tiêu chảy, suy tim, xơ gan, hội chứng thận hư, u phổi tế bào nhỏ (SIADH), phẫu thuật thần kinh gần đây, thói quen uống nhiều nước hoặc chỉ uống bia/ăn ít đạm (*tea-and-toast*).
-3. **Khám lâm sàng thể tích dịch:** Đánh giá da niêm, tĩnh mạch cổ, huyết áp tư thế, phù, báng bụng. **Lưu ý quan trọng:** Khám lâm sàng đánh giá thể tích ngoại bào có **độ nhạy và độ đặc hiệu rất thấp (chỉ 30–50%)** — tuyệt đối không dựa đơn độc vào khám thể tích mà phải kết hợp chỉ số khách quan $U_{\text{Osm}}$ và $U_{\text{Na}}$.
-
----
-
-## 5. Chẩn Đoán Phân Biệt {#sec-5}
-Phân biệt chuẩn xác theo **thuật toán sinh lý ống thận ($U_{\text{Osm}}$ và $U_{\text{Na}}$)** của Hội Nội tiết Châu Âu (ESE):
+Dựa trên các Hướng dẫn Lâm sàng Quốc tế (**ERBP/ESE/ESICM**) và **Hướng dẫn Quốc gia Hà Lan**, hạ natri máu được phân loại theo **3 trục độc lập** nhằm định hướng xử trí khẩn cấp và kiểm soát tốc độ bù dịch an toàn:
 
 <div class="table-responsive">
 <table class="table-modern">
   <thead>
     <tr>
-      <th>Áp lực thẩm thấu niệu ($U_{\text{Osm}}$)</th>
-      <th>Natri niệu ($U_{\text{Na}}$)</th>
-      <th>Tình trạng thể tích (ECF)</th>
-      <th>Chẩn đoán ưu tiên</th>
+      <th>Trục phân loại</th>
+      <th>Phân nhóm lâm sàng</th>
+      <th>Ngưỡng / Tiêu chuẩn xác định</th>
+      <th>Ý nghĩa thực hành</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>&le; 100 mOsm/kg</strong><br />(ADH bị ức chế hoàn toàn)</td>
-      <td>Bất kỳ (thường thấp)</td>
-      <td>Đẳng tích</td>
-      <td>Uống nước quá mức nguyên phát (<em>Primary polydipsia</em>), chế độ ăn ít chất tan (<em>Tea &amp; toast</em>, nghiện bia <em>Beer potomania</em>).</td>
+      <td rowspan="3"><strong>1. Mức độ sinh hóa</strong><br />(<em>Biochemical severity</em>)</td>
+      <td><strong>Hạ natri máu nhẹ</strong> (<em>Mild</em>)</td>
+      <td><strong>130 – 134 mmol/L</strong></td>
+      <td>Thường kín đáo; chú ý nguy cơ té ngã, rối loạn dáng đi ở người cao tuổi.</td>
     </tr>
     <tr>
-      <td rowspan="4"><strong>&gt; 100 mOsm/kg</strong><br />(Có hoạt động của ADH)</td>
-      <td rowspan="2"><strong>&le; 30 mmol/L</strong><br />(Thận giữ muối tối đa — EABV giảm)</td>
-      <td>Giảm thể tích thật</td>
-      <td>Mất dịch tiêu hóa (nôn, tiêu chảy), bỏng, mất vào khoang thứ 3 (viêm tụy cấp), mất qua da.</td>
+      <td><strong>Hạ natri máu trung bình</strong> (<em>Moderate</em>)</td>
+      <td><strong>125 – 129 mmol/L</strong></td>
+      <td>Tăng nguy cơ xuất hiện triệu chứng thần kinh trung ương và nhập viện.</td>
     </tr>
     <tr>
-      <td>Tăng thể tích (Phù/Báng)</td>
-      <td><strong>Suy tim sung huyết</strong>, <strong>Xơ gan</strong>, Hội chứng thận hư.</td>
+      <td><strong>Hạ natri máu nặng / sâu</strong> (<em>Profound</em>)</td>
+      <td><strong>&lt; 125 mmol/L</strong></td>
+      <td>Nguy cơ cao phù não cấp (nếu cấp) hoặc ODS khi bù quá nhanh (nếu mạn).</td>
     </tr>
     <tr>
-      <td rowspan="2"><strong>&gt; 30 mmol/L</strong><br />(Thận đang thải muối)</td>
-      <td>Đẳng tích (không dùng lợi tiểu)</td>
-      <td><strong>SIADH</strong> (chỉ chẩn đoán sau khi loại trừ <strong>Suy thượng thận</strong> và <strong>Suy giáp</strong>), lợi tiểu Thiazide.</td>
+      <td rowspan="2"><strong>2. Thời gian diễn tiến</strong><br />(<em>Duration</em>)</td>
+      <td><strong>Cấp tính</strong> (<em>Acute</em>)</td>
+      <td>Khởi phát xác định <strong>&lt; 48 giờ</strong></td>
+      <td>Não chưa kịp thích ứng thẩm thấu &rarr; nguy cơ cao <strong>phù não cấp</strong>.</td>
     </tr>
     <tr>
-      <td>Giảm thể tích</td>
-      <td>Dùng thuốc lợi tiểu, <strong>Suy thượng thận tiên phát</strong> (kèm tăng K+), Bệnh não mất muối (CSW), nôn ói kiềm chuyển hóa.</td>
+      <td><strong>Mạn tính</strong> (<em>Chronic</em>)</td>
+      <td>Khởi phát <strong>&ge; 48 giờ</strong> (hoặc <em>không rõ thời điểm</em>)</td>
+      <td>Não đã đẩy chất thẩm thấu ra ngoài &rarr; nguy cơ cao <strong>ODS</strong> nếu nâng Na⁺ quá nhanh.</td>
+    </tr>
+    <tr>
+      <td rowspan="2"><strong>3. Mức độ triệu chứng</strong><br />(<em>Symptomatic severity</em>)</td>
+      <td><strong>Triệu chứng trung bình</strong> (<em>Moderately severe</em>)</td>
+      <td>Buồn nôn không kèm nôn mửa dữ dội (<em>nausea without vomiting</em>), lú lẫn (<em>confusion</em>), đau đầu (<em>headache</em>).</td>
+      <td>Chỉ định đơn liều <strong>150 mL NaCl 3%</strong> trong 20 phút + điều trị căn nguyên.</td>
+    </tr>
+    <tr>
+      <td><strong>Triệu chứng nặng</strong> (<em>Severe</em>)</td>
+      <td>Nôn mửa dữ dội (<em>vomiting</em>), suy hô hấp – tuần hoàn (<em>cardiorespiratory distress</em>), ngủ lịm sâu bất thường (<em>abnormal &amp; deep somnolence</em>), co giật (<em>seizures</em>), hôn mê (<strong>GCS &le; 8</strong>).</td>
+      <td><strong>CẤP CỨU TỐI KHẨN</strong>: Bolus 150 mL NaCl 3% trong 20 phút ngay lập tức (tối đa 3 liều).</td>
     </tr>
   </tbody>
 </table>
 </div>
 
----
-
-## 6. Cận Lâm Sàng Theo Bậc {#sec-6}
-| Bậc | Xét nghiệm | Lưu ý kỹ thuật bắt buộc |
-| :--- | :--- | :--- |
-| **Bậc 1 (First-line — Lấy đồng thời)** | Điện giải đồ máu ($\text{Na}^+, \text{K}^+, \text{Cl}^-$), **Glucose máu**, ALTT máu ($S_{\text{Osm}}$), **ALTT niệu ($U_{\text{Osm}}$)**, **Natri niệu ($U_{\text{Na}}$)** | **Bắt buộc lấy mẫu máu và nước tiểu cùng thời điểm TRƯỚC KHI truyền dịch hay dùng lợi tiểu.** |
-| **Bậc 2 (Khi $U_{\text{Na}} > 30$ &amp; đẳng tích)** | **Cortisol máu 8h sáng** (hoặc nghiệm pháp Synacthen), **TSH &amp; FT4**, Acid Uric máu, Ure, Creatinin | Loại trừ suy thượng thận &amp; suy giáp trước khi kết luận SIADH; trong SIADH Acid Uric (&lt; 4 mg/dL) và Ure thường giảm sâu. |
-| **Bậc 3 (Truy tìm nguyên nhân SIADH)** | X-quang / CT ngực (u phổi, lao, viêm phổi), CT/MRI sọ não (u, xuất huyết, nhiễm trùng TKTW) | Thực hiện ở bệnh nhân SIADH không rõ thuốc gây bệnh. |
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-clock"></i> QUY TẮC MẶC ĐỊNH KHI KHÔNG RÕ THỜI ĐIỂM KHỞI PHÁT</div>
+  <p style="margin: 0;">Nếu không xác định được chắc chắn thời điểm khởi phát hạ natri máu, <strong>bắt buộc mặc định phân loại là mạn tính (&ge; 48 giờ)</strong> để áp dụng tốc độ nâng Natri an toàn (&le; 10 mmol/L/24 giờ đầu), tránh biến chứng tổn thương thần kinh không hồi phục do ODS.</p>
+</div>
 
 ---
 
-## 7. Lưu Đồ Tiếp Cận {#sec-7}
+## 2. Sinh Lý Bệnh & Cơ Chế Bảo Vệ Não Thần Kinh {#sec-2}
+
+Hạ natri máu bản chất là sự **dư thừa nước tự do tương đối** so với tổng lượng Natri và Kali trao đổi được của cơ thể. Tương tác giữa tốc độ giảm $[\text{Na}^+]_s$ và khả năng thích ứng của mô não quyết định hoàn toàn chiến lược điều trị:
+
+<div class="matrix-grid">
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #e11d48;"><i class="fa-solid fa-head-side-virus"></i> 1. Phù Não Cấp (&lt; 48 giờ)</div>
+    <div class="matrix-card-desc">Khi Natri máu giảm cấp tính (<strong>&lt; 48 giờ</strong>), áp lực thẩm thấu ngoại bào giảm nhanh tạo độ chênh áp lực thẩm thấu giữa huyết tương và mô não. Nước tự do dịch chuyển từ ngoại bào vào trong tế bào não gây <strong>phù tế bào thần kinh</strong>, <strong>tăng áp lực nội sọ</strong> và nguy cơ thoát vị não.</div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #0284c7;"><i class="fa-solid fa-shield-halved"></i> 2. Sự Thích Ứng Của Tế Bào Não (24–48 giờ)</div>
+    <div class="matrix-card-desc">Trong vòng <strong>24–48 giờ</strong>, tế bào não tự bảo vệ bằng cách đẩy các ion vô cơ (<strong>$\text{K}^+$</strong>, <strong>$\text{Cl}^-$</strong>) và các chất thẩm thấu hữu cơ (<em>organic osmolytes</em> như <strong>myo-inositol, glutamate, taurine</strong>) ra khỏi tế bào để giảm độ chênh thẩm thấu và khôi phục thể tích tế bào.</div>
+  </div>
+  <div class="matrix-card">
+    <div class="matrix-card-title" style="color: #d97706;"><i class="fa-solid fa-bolt"></i> 3. Hội Chứng Thoát Myelin Do Thẩm Thấu (ODS)</div>
+    <div class="matrix-card-desc">Khi điều trị nâng Natri máu <strong>quá nhanh</strong> ở hạ natri máu mạn tính (não đã mất chất thẩm thấu nội bào), ngoại bào trở nên ưu trương tương đối và <strong>rút nước cấp tập khỏi tế bào não</strong> &rarr; thoái hóa vỏ myelin, hủy myelin cầu não trung tâm (<em>Central Pontine Myelinolysis</em>), liệt tứ chi, tổn thương thần kinh vĩnh viễn hoặc tử vong.</div>
+  </div>
+</div>
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-skull-crossbones"></i> CƠN ĐAU ĐẦU KÉP CỦA LÂM SÀNG: PHÙ NÃO vs. ODS</div>
+  <p style="margin: 0;">Điều trị hạ natri máu luôn đi trên ranh giới sinh tử giữa hai cực: <strong>bù quá chậm</strong> ở hạ natri nặng có triệu chứng gây <strong>tử vong do phù não – tụt kẹt</strong>, trong khi <strong>bù quá nhanh</strong> ở hạ natri mạn tính gây <strong>tổn thương thần kinh vĩnh viễn do ODS</strong>. Do đó, phải tách bạch giữa mục tiêu <em>cấp cứu giờ đầu (+5 mmol/L)</em> và <em>giới hạn trần 24 giờ (&le; 10 mmol/L)</em>.</p>
+</div>
+
+*Liên kết nền tảng:* Ôn lại cơ chế điều hòa thẩm thấu, trục ADH – Aquaporin-2 và phân bố dịch cơ thể tại [Giải Phẫu &amp; Sinh Lý Thận – Thể Dịch](#/basic-medical/giai-phau-sinh-ly) và [Cơ Chế Bệnh Sinh (CCBS)](#/basic-medical/co-che-benh-sinh).
+
+---
+
+## 3. Dấu Hiệu Báo Động (Red Flags) & Phân Tầng Khẩn Cấp {#sec-3}
+
+Trước khi thực hiện xét nghiệm truy tìm nguyên nhân, bác sĩ lâm sàng **bắt buộc sàng lọc ngay triệu chứng thần kinh nặng** để quyết định có cần truyền cấp cứu Saline ưu trương 3% trong giờ đầu hay không.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-triangle-exclamation"></i> RED FLAGS TỐI CẤP — PHÙ NÃO DO HẠ NATRI MÁU NẶNG</div>
+  <ul>
+    <li><strong>Nôn mửa dữ dội</strong> (<em>Vomiting</em>) — dấu hiệu cảnh báo tăng áp lực nội sọ đang tiến triển.</li>
+    <li><strong>Suy hô hấp – tuần hoàn</strong> (<em>Cardiorespiratory distress</em>) — dấu hiệu chèn ép thân não nguy kịch.</li>
+    <li><strong>Ngủ lịm sâu bất thường</strong> (<em>Abnormal and deep somnolence</em>) hoặc suy giảm tri giác nhanh.</li>
+    <li><strong>Co giật</strong> (<em>Seizures</em>) toàn thể hoặc cục bộ.</li>
+    <li><strong>Hôn mê</strong> (<em>Coma</em>, thang điểm <strong>GCS &le; 8</strong>).</li>
+  </ul>
+</div>
+
+### Phân Tầng Xử Trí Lâm Sàng Tại Tiếp Nhận
+
+| Tầng lâm sàng | Mức độ | Tiêu chuẩn nhận diện | Thái độ xử trí tức thì |
+| :--- | :---: | :--- | :--- |
+| **Triệu chứng thần kinh nặng** | <UrgencyPill level="emergent" label="TỐI KHẨN (CẤP CỨU)" /> | Co giật, hôn mê ($\text{GCS} \le 8$), ngủ lịm sâu, suy hô hấp – tuần hoàn, nôn mửa dữ dội (bất kể cấp hay mạn) | Bolus ngay **150 mL NaCl 3%** trong 20 phút; đo lại $\text{Na}^+$ sau 20 phút; lặp tối đa 2 lần đến khi tăng **+5 mmol/L** hoặc cải thiện triệu chứng |
+| **Triệu chứng mức độ trung bình** | <UrgencyPill level="urgent" label="KHẨN CẤP (THEO DÕI SÁT)" /> | Buồn nôn không nôn mửa dữ dội, lú lẫn, đau đầu | Truyền đơn liều **150 mL NaCl 3%** trong 20 phút; mục tiêu tăng **5 mmol/L/24h**, kiểm soát trần $\le 10\text{ mmol/L/24h}$; tìm nguyên nhân ngay |
+| **Mạn tính, không triệu chứng / nhẹ** | <UrgencyPill level="routine" label="TIẾP CẬN THEO NGUYÊN NHÂN" /> | Tỉnh táo, không dấu hiệu thần kinh cấp, khởi phát $\ge 48\text{ giờ}$ hoặc không rõ thời điểm | Hoàn tất thuật toán 3 bước ($\text{Posm} \rightarrow \text{UOsm} \rightarrow \text{UNa}$), điều trị hướng căn nguyên (hạn chế dịch, bù dịch đẳng trương, điều trị bệnh nền) |
+
+---
+
+## 4. Lưu Đồ Thuật Toán Chẩn Đoán 3 Bước (ERBP/ESE/ESICM) {#sec-4}
+
+Quy trình tiếp cận chẩn đoán có hệ thống theo Hướng dẫn Châu Âu (**ERBP/ESE/ESICM**) ưu tiên **3 xét nghiệm sinh hóa khách quan** ($\text{Posm} \rightarrow \text{UOsm} \rightarrow \text{UNa}$) trước khi dựa vào đánh giá thể tích dịch ngoại bào (ECF) trên lâm sàng (vốn có độ nhạy và độ đặc hiệu thấp hơn).
+
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0891b2);"></i> LƯU ĐỒ CHẨN ĐOÁN &amp; XỬ TRÍ HẠ NATRI MÁU (THEO ESE GUIDELINE)</div>
+    <div class="flowchart-title"><i class="fa-solid fa-diagram-project" style="color: var(--color-primary, #0891b2);"></i> THUẬT TOÁN CHẨN ĐOÁN HẠ NATRI MÁU 3 BƯỚC (ERBP / ESE / ESICM)</div>
     <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 806" width="100%" height="100%" style="background: var(--color-surface, #ffffff); border-radius: 12px; font-family: system-ui, -apple-system, sans-serif;">
       <defs>
-        <marker id="naArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker id="hnArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--color-text-muted, #64748b)" />
         </marker>
-        <marker id="naRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker id="hnTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0891b2" />
+        </marker>
+        <marker id="hnAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#d97706" />
+        </marker>
+        <marker id="hnGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+        </marker>
+        <marker id="hnRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48" />
         </marker>
       </defs>
 
-      <text x="480" y="28" text-anchor="middle" font-size="16" font-weight="800" fill="var(--color-text, #0f172a)">
-        THUẬT TOÁN TIẾP CẬN HẠ NATRI MÁU (Na+ &lt; 135 mmol/L)
+      {/* Main Title */}
+      <text x="490" y="28" text-anchor="middle" font-size="16" font-weight="800" fill="var(--color-text, #0f172a)">
+        THUẬT TOÁN TIẾP CẬN CHẨN ĐOÁN HẠ NATRI MÁU 3 BƯỚC (Na⁺ &lt; 135 mmol/L)
       </text>
 
-      {/* Step 1: Red Flags */}
-      <rect x="260" y="46" width="440" height="52" rx="10" fill="rgba(225, 29, 72, 0.1)" stroke="#e11d48" stroke-width="2" />
-      <text x="480" y="68" text-anchor="middle" font-size="13" font-weight="800" fill="#e11d48">
-        BƯỚC 1: CÓ TRIỆU CHỨNG THẦN KINH NẶNG (Co giật, hôn mê, nôn nhiều)?
+      {/* Entry Node */}
+      <rect x="260" y="42" width="460" height="50" rx="10" fill="rgba(8, 145, 178, 0.12)" stroke="#0891b2" stroke-width="2" />
+      <text x="490" y="64" text-anchor="middle" font-size="13" font-weight="800" fill="#0891b2">
+        HẠ NATRI MÁU (Na⁺ &lt; 135 mmol/L)
       </text>
-      <text x="480" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
-        (Đồng thời loại trừ tăng đường huyết bằng Glucose mao mạch)
-      </text>
-
-      {/* Left: YES */}
-      <path d="M 260 72 L 125 72 L 125 130" fill="none" stroke="#e11d48" stroke-width="2" marker-end="url(#naRed)" />
-      <rect x="165" y="54" width="44" height="19" rx="4" fill="#e11d48" />
-      <text x="187" y="67" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">CÓ</text>
-
-      <rect x="20" y="132" width="220" height="106" rx="10" fill="rgba(225, 29, 72, 0.12)" stroke="#e11d48" stroke-width="2" />
-      <text x="130" y="156" text-anchor="middle" font-size="12.5" font-weight="800" fill="#e11d48">
-        CẤP CỨU NaCl 3% NGAY
-      </text>
-      <text x="130" y="178" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
-        Bolus 150 mL TM trong 20 phút
-      </text>
-      <text x="130" y="196" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
-        Mục tiêu tăng nhanh 5 mmol/L
-      </text>
-      <text x="130" y="214" text-anchor="middle" font-size="11" font-weight="700" fill="#e11d48">
-        Trần 24h: ≤ 8–10 mmol/L
+      <text x="490" y="82" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Sàng lọc Red Flags thần kinh nặng trước • Nếu CÓ: Bolus ngay 150 mL 3% NaCl
       </text>
 
-      {/* Down: NO */}
-      <line x1="480" y1="98" x2="480" y2="140" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#naArr)" />
-      <rect x="490" y="108" width="56" height="19" rx="4" fill="#0284c7" />
-      <text x="518" y="121" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">KHÔNG</text>
+      {/* Arrow Entry -> Step 1 */}
+      <line x1="490" y1="92" x2="490" y2="120" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#hnArr)" />
 
-      {/* Step 2: True Hypotonic */}
-      <rect x="290" y="142" width="380" height="48" rx="8" fill="rgba(8, 145, 178, 0.1)" stroke="#0891b2" stroke-width="1.8" />
-      <text x="480" y="163" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0891b2">
-        BƯỚC 2: XÁC NHẬN HẠ NATRI NHƯỢC TRƯƠNG (S_Osm &lt; 275)
+      {/* Step 1 Node */}
+      <rect x="225" y="122" width="530" height="52" rx="10" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="2" />
+      <text x="490" y="144" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0284c7">
+        BƯỚC 1: ÁP LỰC THẨM THẤU MÁU (Posm) &amp; ĐƯỜNG HUYẾT
       </text>
-      <text x="480" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
-        Đánh giá Áp lực thẩm thấu niệu (U_Osm)
+      <text x="490" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Xác định hạ natri máu nhược trương thực sự &amp; loại trừ tăng đường huyết / giả hạ Na⁺
       </text>
 
-      {/* Split UOsm */}
-      <line x1="480" y1="190" x2="480" y2="225" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
-      <line x1="175" y1="225" x2="650" y2="225" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
-      <line x1="175" y1="225" x2="175" y2="262" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#naArr)" />
-      <line x1="650" y1="225" x2="650" y2="262" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#naArr)" />
+      {/* Orthogonal Split from Step 1 */}
+      <line x1="490" y1="174" x2="490" y2="196" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="280" y1="196" x2="792" y2="196" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="280" y1="196" x2="280" y2="222" stroke="#0891b2" stroke-width="2" marker-end="url(#hnTeal)" />
+      <line x1="792" y1="196" x2="792" y2="222" stroke="#d97706" stroke-width="2" marker-end="url(#hnAmber)" />
 
-      {/* UOsm <= 100 */}
-      <rect x="45" y="264" width="260" height="106" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#059669" stroke-width="1.8" />
-      <text x="175" y="288" text-anchor="middle" font-size="12.5" font-weight="800" fill="#059669">
-        U_Osm ≤ 100 mOsm/kg
-      </text>
-      <text x="175" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
-        ADH bị ức chế hoàn toàn
-      </text>
-      <text x="175" y="328" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">
-        • Uống nước quá mức (Polydipsia)
-      </text>
-      <text x="175" y="346" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">
-        • Tea &amp; toast / Nghiện bia
-      </text>
+      {/* Badges on Step 1 Branches */}
+      <rect x="292" y="185" width="150" height="20" rx="4" fill="#0891b2" />
+      <text x="367" y="199" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">Posm &lt; 275 mOsm/kg</text>
 
-      {/* UOsm > 100 */}
-      <rect x="470" y="264" width="360" height="50" rx="10" fill="rgba(2, 132, 199, 0.1)" stroke="#0284c7" stroke-width="1.8" />
-      <text x="650" y="286" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0284c7">
-        U_Osm &gt; 100 mOsm/kg (Có ADH)
-      </text>
-      <text x="650" y="304" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
-        BƯỚC 3: Đánh giá Natri niệu (U_Na)
-      </text>
+      <rect x="628" y="185" width="152" height="20" rx="4" fill="#d97706" />
+      <text x="704" y="199" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">Posm ≥ 275 mOsm/kg</text>
 
-      {/* Split UNa */}
-      <line x1="650" y1="314" x2="650" y2="348" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
-      <line x1="420" y1="348" x2="780" y2="348" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
-      <line x1="420" y1="348" x2="420" y2="386" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#naArr)" />
-      <line x1="780" y1="348" x2="780" y2="386" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#naArr)" />
-
-      {/* UNa <= 30 */}
-      <rect x="260" y="388" width="320" height="165" rx="10" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="1.8" />
-      <text x="420" y="412" text-anchor="middle" font-size="12.5" font-weight="800" fill="#d97706">
-        U_Na ≤ 30 mmol/L (EABV Giảm)
+      {/* Step 1 Right Leaf: Non-hypotonic */}
+      <rect x="625" y="224" width="335" height="148" rx="10" fill="rgba(245, 158, 11, 0.1)" stroke="#d97706" stroke-width="1.8" />
+      <text x="792" y="247" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">
+        KHÔNG NHƯỢC TRƯƠNG (Đẳng / Ưu trương)
       </text>
-      <text x="420" y="434" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
-        1. Giảm thể tích thật (Khô):
+      <text x="792" y="269" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        • Tăng đường huyết (Hyperglycemia):
       </text>
-      <text x="420" y="452" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">
-        Nôn, tiêu chảy, mất khoang 3 → Truyền NaCl 0.9%
+      <text x="792" y="286" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        Na⁺ hiệu chỉnh = Na⁺ đo + 0.024 × (Glu − 5.5)
       </text>
-      <text x="420" y="482" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
-        2. Tăng thể tích (Phù / Báng):
+      <text x="792" y="309" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        • Chất thẩm thấu ngoại bào khác:
       </text>
-      <text x="420" y="500" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">
-        Suy tim, Xơ gan, Thận hư
+      <text x="792" y="326" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        Mannitol, Glycine (Hội chứng TURP)
       </text>
-      <text x="420" y="520" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">
-        → Hạn chế dịch + Lợi tiểu quai
+      <text x="792" y="349" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">
+        • Giả hạ Na⁺: Tăng Triglyceride / Protein máu
       </text>
 
-      {/* UNa > 30 */}
-      <rect x="615" y="388" width="320" height="165" rx="10" fill="rgba(124, 58, 237, 0.1)" stroke="#7c3aed" stroke-width="1.8" />
-      <text x="775" y="412" text-anchor="middle" font-size="12.5" font-weight="800" fill="#7c3aed">
-        U_Na &gt; 30 mmol/L (Thải muối)
+      {/* Step 2 Node (Hypotonic) */}
+      <rect x="110" y="224" width="340" height="52" rx="10" fill="rgba(8, 145, 178, 0.1)" stroke="#0891b2" stroke-width="2" />
+      <text x="280" y="246" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0891b2">
+        BƯỚC 2: ÁP LỰC THẨM THẤU NƯỚC TIỂU (UOsm)
       </text>
-      <text x="775" y="434" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
-        1. Kiểm tra thuốc lợi tiểu / Bệnh thận
-      </text>
-      <text x="775" y="452" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">
-        Ngưng Thiazide ngay nếu đang dùng
-      </text>
-      <text x="775" y="482" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
-        2. Đẳng tích → Nghĩ tới SIADH
-      </text>
-      <text x="775" y="500" text-anchor="middle" font-size="11" font-weight="700" fill="#e11d48">
-        Loại trừ Suy thượng thận + Suy giáp!
-      </text>
-      <text x="775" y="520" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed">
-        → Hạn chế dịch (&lt; 1L/ngày) ± Urea uống
+      <text x="280" y="265" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Khẳng định hạ natri máu nhược trương thực sự
       </text>
 
-      {/* Safety Footer */}
-      <rect x="45" y="582" width="890" height="54" rx="10" fill="rgba(225, 29, 72, 0.08)" stroke="#e11d48" stroke-width="1.5" />
-      <text x="490" y="605" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">
-        QUÁ LIỀU ĐIỀU CHỈNH (OVERCORRECTION &gt; 10 mmol/L/24h hoặc nước tiểu &gt; 100 mL/h):
+      {/* Orthogonal Split from Step 2 */}
+      <line x1="280" y1="276" x2="280" y2="298" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="152" y1="298" x2="460" y2="298" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="152" y1="298" x2="152" y2="324" stroke="#059669" stroke-width="2" marker-end="url(#hnGreen)" />
+      <line x1="460" y1="298" x2="460" y2="324" stroke="#0284c7" stroke-width="2" marker-end="url(#hnArr)" />
+
+      {/* Badges on Step 2 Branches */}
+      <rect x="163" y="287" width="110" height="20" rx="4" fill="#059669" />
+      <text x="218" y="301" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">UOsm ≤ 100</text>
+
+      <rect x="330" y="287" width="116" height="20" rx="4" fill="#4f46e5" />
+      <text x="388" y="301" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">UOsm &gt; 100</text>
+
+      {/* Step 2 Left Leaf: Suppressed ADH */}
+      <rect x="20" y="326" width="265" height="110" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#059669" stroke-width="1.8" />
+      <text x="152" y="348" text-anchor="middle" font-size="12" font-weight="800" fill="#059669">
+        ỨC CHẾ ADH TỐI ĐA
       </text>
-      <text x="490" y="624" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">
-        Dừng dịch chứa Na → Truyền Glucose 5% (10 mL/kg/h) và/hoặc Desmopressin (DDAVP) 2–4 mcg TM mỗi 8h để hãm thải nước!
+      <text x="152" y="366" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        (Dư thừa nước tự do đưa vào)
+      </text>
+      <text x="152" y="387" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Cuồng uống nguyên phát
+      </text>
+      <text x="152" y="405" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Ăn ít chất hòa tan (Tea &amp; toast)
+      </text>
+      <text x="152" y="423" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Nghiện bia (Beer potomania)
+      </text>
+
+      {/* Step 3 Node (UNa) */}
+      <rect x="320" y="326" width="280" height="58" rx="10" fill="rgba(79, 70, 229, 0.1)" stroke="#4f46e5" stroke-width="2" />
+      <text x="460" y="349" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4f46e5">
+        BƯỚC 3: NATRI NƯỚC TIỂU (UNa)
+      </text>
+      <text x="460" y="369" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Không ức chế hoàn toàn ADH (UOsm &gt; 100)
+      </text>
+
+      {/* Orthogonal Split from Step 3 (clean corridor below y=436) */}
+      <line x1="460" y1="384" x2="460" y2="456" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="241" y1="456" x2="725" y2="456" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="241" y1="456" x2="241" y2="482" stroke="#0891b2" stroke-width="2" marker-end="url(#hnTeal)" />
+      <line x1="725" y1="456" x2="725" y2="482" stroke="#e11d48" stroke-width="2" marker-end="url(#hnRed)" />
+
+      {/* Badges on Step 3 Branches */}
+      <rect x="275" y="445" width="136" height="20" rx="4" fill="#0891b2" />
+      <text x="343" y="459" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">UNa ≤ 30 mmol/L</text>
+
+      <rect x="520" y="445" width="136" height="20" rx="4" fill="#e11d48" />
+      <text x="588" y="459" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">UNa &gt; 30 mmol/L</text>
+
+      {/* UNa <= 30 Header */}
+      <rect x="60" y="484" width="363" height="44" rx="8" fill="rgba(8, 145, 178, 0.1)" stroke="#0891b2" stroke-width="1.8" />
+      <text x="241" y="503" text-anchor="middle" font-size="12" font-weight="800" fill="#0891b2">
+        GIẢM THỂ TÍCH ĐỘNG MẠCH HIỆU DỤNG
+      </text>
+      <text x="241" y="520" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        Đánh giá thể tích dịch ngoại bào (ECF) trên lâm sàng
+      </text>
+
+      {/* Split under UNa <= 30 */}
+      <line x1="241" y1="528" x2="241" y2="546" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="127" y1="546" x2="355" y2="546" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="127" y1="546" x2="127" y2="566" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#hnArr)" />
+      <line x1="355" y1="546" x2="355" y2="566" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#hnArr)" />
+
+      {/* Leaf 1: ECF Decreased (UNa <= 30) */}
+      <rect x="20" y="568" width="215" height="148" rx="10" fill="rgba(245, 158, 11, 0.09)" stroke="#d97706" stroke-width="1.8" />
+      <text x="127" y="591" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">
+        ECF GIẢM (Hypovolemic)
+      </text>
+      <text x="127" y="614" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Mất qua tiêu hóa (GI):
+      </text>
+      <text x="127" y="631" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        Nôn ói, tiêu chảy
+      </text>
+      <text x="127" y="652" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Mất qua da / Bỏng
+      </text>
+      <text x="127" y="672" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Mất khoang thứ ba (Tụy)
+      </text>
+      <text x="127" y="692" text-anchor="middle" font-size="11" fill="var(--color-text, #0f172a)">
+        • Lợi tiểu giai đoạn muộn
+      </text>
+
+      {/* Leaf 2: ECF Increased (UNa <= 30) */}
+      <rect x="248" y="568" width="215" height="148" rx="10" fill="rgba(2, 132, 199, 0.09)" stroke="#0284c7" stroke-width="1.8" />
+      <text x="355" y="591" text-anchor="middle" font-size="12" font-weight="800" fill="#0284c7">
+        ECF TĂNG (Hypervolemic)
+      </text>
+      <text x="355" y="618" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Suy tim sung huyết
+      </text>
+      <text x="355" y="635" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        (Heart failure)
+      </text>
+      <text x="355" y="658" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Xơ gan (Liver cirrhosis)
+      </text>
+      <text x="355" y="681" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Hội chứng thận hư
+      </text>
+      <text x="355" y="698" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        (Nephrotic syndrome)
+      </text>
+
+      {/* UNa > 30 Header */}
+      <rect x="505" y="484" width="440" height="44" rx="8" fill="rgba(225, 29, 72, 0.1)" stroke="#e11d48" stroke-width="1.8" />
+      <text x="725" y="503" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">
+        KIỂM TRA LỢI TIỂU / BỆNH THẬN MẠN
+      </text>
+      <text x="725" y="520" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">
+        Nếu có dùng lợi tiểu hoặc bệnh thận: đánh giá lại • Nếu KHÔNG dùng lợi tiểu:
+      </text>
+
+      {/* Split under UNa > 30 */}
+      <line x1="725" y1="528" x2="725" y2="546" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="604" y1="546" x2="845" y2="546" stroke="var(--color-text-muted, #64748b)" stroke-width="2" />
+      <line x1="604" y1="546" x2="604" y2="566" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#hnArr)" />
+      <line x1="845" y1="546" x2="845" y2="566" stroke="var(--color-text-muted, #64748b)" stroke-width="2" marker-end="url(#hnArr)" />
+
+      {/* Leaf 3: ECF Decreased (UNa > 30) */}
+      <rect x="492" y="568" width="225" height="148" rx="10" fill="rgba(225, 29, 72, 0.08)" stroke="#e11d48" stroke-width="1.8" />
+      <text x="604" y="591" text-anchor="middle" font-size="12" font-weight="800" fill="#e11d48">
+        ECF GIẢM (Mất muối qua thận)
+      </text>
+      <text x="604" y="618" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Mất muối do thận / do não
+      </text>
+      <text x="604" y="635" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        (Renal / Cerebral salt wasting)
+      </text>
+      <text x="604" y="660" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Suy thượng thận nguyên phát
+      </text>
+      <text x="604" y="677" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        (Primary adrenal insufficiency)
+      </text>
+      <text x="604" y="698" text-anchor="middle" font-size="10.5" fill="#e11d48" font-weight="700">
+        → Bù dịch đẳng trương &amp; Hydrocortisone
+      </text>
+
+      {/* Leaf 4: ECF Normal (UNa > 30) */}
+      <rect x="730" y="568" width="230" height="148" rx="10" fill="rgba(124, 58, 237, 0.09)" stroke="#7c3aed" stroke-width="1.8" />
+      <text x="845" y="591" text-anchor="middle" font-size="12" font-weight="800" fill="#7c3aed">
+        ECF BÌNH THƯỜNG (Euvolemic)
+      </text>
+      <text x="845" y="618" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
+        • Hội chứng SIAD / SIADH
+      </text>
+      <text x="845" y="640" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Suy thượng thận thứ phát
+      </text>
+      <text x="845" y="657" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+        (Secondary adrenal insufficiency)
+      </text>
+      <text x="845" y="678" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        • Suy giáp nặng
+      </text>
+      <text x="845" y="698" text-anchor="middle" font-size="10.5" fill="#7c3aed" font-weight="700">
+        → Chẩn đoán loại trừ (Cortisol, TSH)
+      </text>
+
+      {/* Safety Footer Banner */}
+      <rect x="20" y="732" width="940" height="58" rx="10" fill="rgba(8, 145, 178, 0.09)" stroke="#0891b2" stroke-width="1.6" />
+      <text x="490" y="756" text-anchor="middle" font-size="12" font-weight="800" fill="#0891b2">
+        CHỐT LÂM SÀNG: LUÔN LOẠI TRỪ SUY THƯỢNG THẬN (CORTISOL) &amp; SUY GIÁP (TSH) TRƯỚC KHI KẾT LUẬN SIAD
+      </text>
+      <text x="490" y="776" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">
+        Tốc độ tăng Na⁺ an toàn: ≤ 10 mmol/L trong 24 giờ đầu và ≤ 8 mmol/L mỗi 24 giờ tiếp theo cho đến khi đạt 130 mmol/L.
       </text>
     </svg>
   </div>
@@ -370,61 +510,331 @@ Phân biệt chuẩn xác theo **thuật toán sinh lý ống thận ($U_{\text{
 
 ---
 
-## 8. Xử Trí Ban Đầu & Chuyển Tuyến {#sec-8}
-### 1. Xử Trí Cấp Cứu (Triệu Chứng Thần Kinh Nặng)
+## 5. Biện Luận Chi Tiết Theo 3 Bước Chẩn Đoán {#sec-5}
 
-- **Liều khởi đầu:** Tiêm truyền nhanh (bolus) **150 mL NaCl 3% trong 20 phút** (hoặc $2\text{ mL/kg}$).
-- **Đánh giá lại:** Đo lại $\text{Na}^+$ máu sau 20 phút; có thể lặp lại 1–2 lần cho đến khi triệu chứng cải thiện hoặc $\text{Na}^+$ tăng được **5 mmol/L**.
-- **Ngưng ngay khi đạt 5 mmol/L:** Mức tăng 5 mmol/L đủ để giảm áp lực nội sọ cứu não; lập tức dừng NaCl 3%, giữ đường truyền chậm và theo dõi $\text{Na}^+$ mỗi 4–6 giờ.
+### 5.1. Bước 1: Xác Định Bản Chất Nhược Trương & Loại Trừ Không Nhược Trương
 
-### 2. Xử Trí Duy Trì & Chống Quá Liều (Overcorrection)
+Đo **Áp lực thẩm thấu máu (*Serum Osmolality* – $\text{Posm}$)** cùng với đường huyết:
 
-- **Giới hạn an toàn tuyệt đối:** Không tăng quá **10 mmol/L trong 24 giờ đầu** và **8 mmol/L mỗi 24 giờ tiếp theo**. Với nhóm nguy cơ cao ODS (nghiện rượu, suy gan, suy dinh dưỡng, hạ K+, Na &lt; 105): giới hạn nghiêm ngặt **≤ 6–8 mmol/L/24h**.
-- **Theo nguyên nhân:**
-  - *Giảm thể tích:* Truyền NaCl 0.9%, theo dõi sát lượng nước tiểu mỗi giờ vì nguy cơ "đái tháo nước" ngay khi đủ thể tích.
-  - *SIADH:* Hạn chế dịch (&lt; 0.8–1 L/ngày) là lựa chọn đầu tay; nếu thất bại dùng Urea uống ($0.25 - 0.5\text{ g/kg/ngày}$) hoặc viên muối + lợi tiểu quai.
-  - *Tăng thể tích (Suy tim, Xơ gan):* Hạn chế dịch + lợi tiểu quai; **tuyệt đối không truyền NaCl 0.9%** vì làm nặng thêm phù và hạ Na.
-- **Cứu vãn khi tăng quá nhanh:** Truyền nước tự do **Glucose 5%** ($10\text{ mL/kg}$ trong 1 giờ) và/hoặc tiêm tĩnh mạch **Desmopressin (DDAVP) 2–4 mcg mỗi 8 giờ** để khóa đường thải nước tự do ở ống góp.
+- **$\text{Posm} < 275\text{ mOsm/kg H}_2\text{O}$:** Khẳng định **hạ natri máu nhược trương thực sự** (*hypotonic hyponatremia*) — chuyển ngay sang Bước 2.
+- **$\text{Posm} \ge 275\text{ mOsm/kg H}_2\text{O}$:** Hạ natri máu **không nhược trương** (*non-hypotonic hyponatremia*), gồm 3 nhóm cần nhận diện:
+  1. **Tăng đường huyết (*Hyperglycemia*):** Đường huyết tăng kéo nước từ nội bào ra ngoại bào gây pha loãng Natri huyết thanh. Bắt buộc tính Natri hiệu chỉnh trước khi can thiệp:
 
-### 3. Chống 3 Sai Lệch Nhận Thức Thường Gặp
+$$[\text{Na}^+]_{\text{hiệu chỉnh}} = [\text{Na}^+]_{\text{đo được}} + 0.024 \times (\text{Glucose} - 5.5\text{ mmol/L})$$
 
-<div class="infobox pearl">
-  <div class="infobox-title"><i class="fa-solid fa-brain"></i> 3 THIÊN KIẾN CẦN TRÁNH KHI TIẾP CẬN HẠ NATRI MÁU</div>
-  <ul>
-    <li><strong>Premature Closure (Đóng khung sớm):</strong> Thấy đẳng tích + U<sub>Na</sub> &gt; 30 mmol/L liền kết luận SIADH mà quên đo Cortisol và TSH/FT4 → bỏ sót suy thượng thận cấp gây tử vong.</li>
-    <li><strong>Anchoring (Bám víu khám thể tích):</strong> Quá tin vào dấu hiệu khô niêm/xẹp TM cổ (độ đặc hiệu thấp) mà bỏ qua chỉ số khách quan U<sub>Osm</sub> và U<sub>Na</sub>.</li>
-    <li><strong>Confirmation Bias với Thiazide:</strong> Tự động truyền NaCl 0.9% cho bệnh nhân hạ Na do Thiazide có kiểu hình giống SIADH → nước tự do bị giữ lại làm Na tụt sâu hơn.</li>
-  </ul>
+  2. **Chất thẩm thấu ngoại bào khác:** Mannitol, Glycine (Hội chứng TURP sau phẫu thuật nội soi cắt đốt tiền liệt tuyến / bàng quang).
+  3. **Giả hạ natri máu (*Pseudohyponatremia*):** Do tăng triglyceride máu nặng hoặc tăng protein máu (bệnh Đa u tủy xương) làm sai lệch phép đo điện cực chọn lọc ion gián tiếp (*indirect ISE*).
+
+### 5.2. Bước 2: Đánh Giá Áp Lực Thẩm Thấu Nước Tiểu ($\text{UOsm}$)
+
+- **$\text{UOsm} \le 100\text{ mOsm/kg H}_2\text{O}$:** Phản ánh trục hạ đồi – tuyến yên – thận hoạt động hoàn toàn bình thường, vasopressin (ADH) đã bị **ức chế tối đa**. Nguyên nhân do **dư thừa lượng nước đưa vào tương đối** vượt quá khả năng đào thải chất hòa tan của thận:
+  - Chứng cuồng uống nguyên phát (*primary polydipsia*).
+  - Chế độ ăn quá thiếu chất hòa tan (*low solute intake / tea and toast syndrome*).
+  - Chứng nghiện bia (*beer potomania*).
+- **$\text{UOsm} > 100\text{ mOsm/kg H}_2\text{O}$:** Tiết ADH **không bị ức chế hoàn toàn** (thận mất khả năng pha loãng nước tiểu tối đa) — chuyển sang Bước 3.
+
+### 5.3. Bước 3: Đánh Giá Nồng Độ Natri Nước Tiểu ($\text{UNa}$) & Thể Tích Dịch Ngoại Bào (ECF)
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Ngưỡng $\text{UNa}$</th>
+      <th>Trạng thái ECF lâm sàng</th>
+      <th>Cơ chế sinh lý bệnh</th>
+      <th>Các căn nguyên chính cần chẩn đoán phân biệt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2"><strong>$\text{UNa} \le 30\text{ mmol/L}$</strong></td>
+      <td><strong>ECF giảm</strong> (<em>Hypovolemic</em>)</td>
+      <td rowspan="2">Thận tăng cường tái hấp thu Natri do <strong>giảm thể tích tuần hoàn động mạch hiệu dụng</strong> (<em>low effective arterial blood volume</em>).</td>
+      <td>Mất qua đường tiêu hóa (nôn, tiêu chảy), mất qua da, mất qua khoang thứ ba (viêm tụy cấp, bỏng), dùng lợi tiểu giai đoạn muộn.</td>
+    </tr>
+    <tr>
+      <td><strong>ECF tăng</strong> (<em>Hypervolemic</em>)</td>
+      <td><strong>Suy tim sung huyết</strong> (<em>heart failure</em>), <strong>xơ gan</strong> (<em>liver cirrhosis</em>), <strong>hội chứng thận hư</strong> (<em>nephrotic syndrome</em>).</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>$\text{UNa} > 30\text{ mmol/L}$</strong></td>
+      <td><em>Cạm bẫy cần loại trừ</em></td>
+      <td>Làm tăng $\text{UNa}$ giả tạo bất kể thể tích dịch.</td>
+      <td>Tiền sử sử dụng <strong>thuốc lợi tiểu</strong> (<em>diuretics</em>) hoặc <strong>bệnh thận mạn</strong> (<em>kidney disease</em>) — cần đánh giá lại (có thể xét thêm thải trừ acid uric phân suất $\text{FE}_{\text{UA}}$).</td>
+    </tr>
+    <tr>
+      <td><strong>ECF giảm</strong> (<em>Không dùng lợi tiểu</em>)</td>
+      <td>Mất muối nguyên phát qua thận hoặc suy giảm mineralocorticoid.</td>
+      <td><strong>Suy thượng thận nguyên phát</strong> (<em>primary adrenal insufficiency</em>), hội chứng mất muối do thận hoặc do não (<em>renal / cerebral salt wasting</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>ECF bình thường</strong> (<em>Euvolemic, không lợi tiểu</em>)</td>
+      <td>Tiết ADH không thích hợp dù áp lực thẩm thấu máu giảm.</td>
+      <td><strong>Hội chứng tiết ADH không thích hợp (SIAD / SIADH)</strong>, suy thượng thận thứ phát (<em>secondary adrenal insufficiency</em>), suy giáp nặng.</td>
+    </tr>
+  </tbody>
+</table>
 </div>
-
-### Chỉ Định Nhập ICU / Hội Chẩn Chuyên Khoa
-
-- Hạ Natri máu có triệu chứng thần kinh hoặc $\text{Na}^+ < 120\text{ mmol/L}$.
-- Xuất hiện điều chỉnh quá mức (Overcorrection) cần phác đồ Glucose 5% + Desmopressin.
-- Suy tim hoặc xơ gan mất bù nặng không đáp ứng hạn chế dịch.
 
 ---
 
-## 9. Ca Minh Họa, Pearls & Trích Dẫn {#sec-9}
-### Ca Lâm Sàng Ngắn
+## 6. Chiến Lược Điều Trị Cấp Cứu & Chuyên Sâu Theo Nguyên Nhân {#sec-6}
 
-> **Bệnh nhân:** Nữ 72 tuổi, tăng huyết áp đang uống Hydrochlorothiazide 25 mg/ngày, nhập viện vì mệt mỏi, buồn nôn và lú lẫn nhẹ 2 ngày nay. Sinh hiệu ổn, không phù. Xét nghiệm: $\text{Na}^+ = 114\text{ mmol/L}$, $\text{K}^+ = 2.9\text{ mmol/L}$, Glucose = 104 mg/dL, $S_{\text{Osm}} = 242\text{ mOsm/kg}$, $U_{\text{Osm}} = 410\text{ mOsm/kg}$, $U_{\text{Na}} = 48\text{ mmol/L}$.
->
-> **Biện luận theo khung 9 bước:**
-> - **Phân tầng:** Hạ Natri nhược trương nặng, diễn biến nhiều khả năng mạn tính (≥ 48h), có hạ Kali máu đi kèm → **nguy cơ rất cao ODS** nếu bù nhanh.
-> - **Xử trí an toàn:** Ngưng ngay Hydrochlorothiazide; lấy mẫu Cortisol và TSH; bù Kali thận trọng và theo dõi $\text{Na}^+$ mỗi 2–4 giờ vì **bù Kali sẽ tự đẩy Natri máu tăng lên** theo phương trình Edelman; giữ tốc độ tăng $\le 6 - 8\text{ mmol/L/24h}$ và sẵn sàng Desmopressin nếu lượng nước tiểu vọt &gt; 100 mL/giờ.
+### 6.1. Xử Trí Cấp Cứu Hạ Natri Máu Có Triệu Chứng Nặng (Severely Symptomatic)
+
+Bất kể hạ natri máu là cấp tính hay mạn tính, khi có triệu chứng thần kinh nặng (co giật, hôn mê, nôn mửa dữ dội, suy hô hấp – tuần hoàn, ngủ lịm sâu), **nguy cơ đe dọa tính mạng do phù não vượt trội nguy cơ ODS**.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-syringe"></i> PHÁC ĐỒ XỬ TRÍ GIỜ ĐẦU (FIRST-HOUR MANAGEMENT — NaCl 3%)</div>
+  <ol>
+    <li>Tiêm truyền tĩnh mạch nhanh <strong>150 mL Saline ưu trương 3% (3% NaCl)</strong> trong <strong>20 phút</strong>.</li>
+    <li>Kiểm tra lại nồng độ Natri huyết thanh ngay <strong>sau 20 phút</strong>.</li>
+    <li>Nếu triệu chứng chưa cải thiện và Natri máu chưa tăng đạt <strong>5 mmol/L</strong>, lặp lại liều <strong>150 mL NaCl 3% trong 20 phút</strong>.</li>
+    <li>Có thể lặp lại <strong>tối đa 2 lần</strong> (tổng cộng không quá <strong>3 liều &times; 150 mL = 450 mL NaCl 3%</strong>) cho đến khi $[\text{Na}^+]_s$ tăng thêm <strong>5 mmol/L</strong> hoặc triệu chứng lâm sàng cải thiện rõ.</li>
+  </ol>
+</div>
+
+**Duy trì và Giới hạn an toàn sau giờ đầu (*Follow-up management*):**
+- Khi triệu chứng cải thiện hoặc Natri máu đã tăng **5 mmol/L**: **Ngừng ngay Saline ưu trương 3%**.
+- Duy trì đường truyền tĩnh mạch bằng dung dịch **NaCl 0.9%** ở tốc độ tối thiểu (giữ ven).
+- **Giới hạn tốc độ tăng Natri máu bắt buộc:**
+  - Không vượt quá **$10\text{ mmol/L}$ trong 24 giờ đầu tiên**.
+  - Không vượt quá **$8\text{ mmol/L}$ cho mỗi 24 giờ tiếp theo** cho đến khi Natri máu đạt **$130\text{ mmol/L}$**.
+- Kiểm tra lại điện giải đồ Natri máu định kỳ **mỗi 4–6 giờ** trong giai đoạn cấp cứu.
+
+### 6.2. Điều Trị Hạ Natri Máu Có Triệu Chứng Mức Độ Trung Bình
+
+- Truyền tĩnh mạch đơn liều **150 mL NaCl 3%** trong 20 phút.
+- Ngừng saline ưu trương ngay sau liều bolus và bắt đầu điều trị hướng nguyên nhân.
+- Mục tiêu tăng Natri máu **$5\text{ mmol/L}$ trong 24 giờ**, kiểm soát nghiêm ngặt **không vượt quá trần $10\text{ mmol/L/24 giờ}$**.
+
+### 6.3. Điều Trị Mạn Tính Không Triệu Chứng Theo Nguyên Nhân (Cause-Specific Management)
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Nhóm nguyên nhân</th>
+      <th>Lựa chọn hàng đầu (First-line)</th>
+      <th>Lựa chọn hàng hai / Phối hợp</th>
+      <th>Chống chỉ định / Khuyến cáo tránh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hội chứng SIAD / SIADH</strong><br />(<em>Euvolemic</em>)</td>
+      <td><strong>Hạn chế dịch</strong> (<em>fluid restriction</em>), khởi đầu ở mức <strong>800 – 1000 mL/ngày</strong>.</td>
+      <td>Bổ sung chất hòa tan đường uống với <strong>Urea ($0.25 - 0.50\text{ g/kg/ngày}$)</strong> hoặc phối hợp lợi tiểu quai liều thấp + NaCl viên uống.</td>
+      <td><strong>Chống chỉ định Vaptans</strong> (đối kháng thụ thể V2 vasopressin) do nguy cơ nâng Na⁺ quá nhanh không kiểm soát &amp; độc tính gan (tolvaptan). Tránh <strong>Demeclocycline</strong> và <strong>Lithium</strong> do độc thận.</td>
+    </tr>
+    <tr>
+      <td><strong>Giảm thể tích tuần hoàn</strong><br />(<em>Hypovolemic</em>)</td>
+      <td>Bù thể tích ngoại bào bằng truyền TM <strong>NaCl 0.9%</strong> hoặc dung dịch tinh thể cân bằng tốc độ <strong>$0.5 - 1.0\text{ mL/kg/giờ}$</strong>.</td>
+      <td>Ngừng lợi tiểu; xử trí nguyên nhân mất dịch (tiêu hóa, bỏng); bổ sung corticosteroid nếu suy thượng thận.</td>
+      <td>Tránh tăng bài niệu nước tự do đột ngột (<em>aquaresis</em>) sau khi phục hồi thể tích — theo dõi sát $[\text{Na}^+]_s$ và lượng nước tiểu để ngăn overcorrection.</td>
+    </tr>
+    <tr>
+      <td><strong>Tăng thể tích dịch ngoại bào</strong><br />(<em>Hypervolemic: Suy tim, Xơ gan</em>)</td>
+      <td><strong>Hạn chế dịch</strong> kết hợp điều trị tối ưu bệnh lý nền (suy tim, xơ gan, hội chứng thận hư).</td>
+      <td>Lợi tiểu quai theo đáp ứng huyết động và cân bằng dịch – điện giải.</td>
+      <td><strong>Không khuyến cáo dùng Vaptans</strong> cho hạ natri máu tăng thể tích (nguy cơ độc gan đặc biệt ở bệnh nhân xơ gan và nâng Na⁺ quá nhanh).</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+---
+
+## 7. Công Thức Adrogué–Madias & Xử Trí Nâng Natri Quá Nhanh {#sec-7}
+
+### 7.1. Công Thức Adrogué–Madias Dự Đoán Mức Tăng Natri Huyết Thanh
+
+Công thức ước tính mức thay đổi nồng độ Natri huyết thanh ($\Delta[\text{Na}^+]_s$) sau khi truyền **1 lít** dung dịch dịch truyền:
+
+$$\Delta[\text{Na}^+]_s = \frac{[\text{Na}^+]_{\text{dịch truyền}} + [\text{K}^+]_{\text{dịch truyền}} - [\text{Na}^+]_s}{\text{TBW} + 1}$$
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Tham số công thức</th>
+      <th>Giá trị chuẩn áp dụng lâm sàng</th>
+      <th>Lưu ý tính toán</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Dung dịch NaCl 3%</strong></td>
+      <td><strong>513 mEq/L</strong> $\text{Na}^+$</td>
+      <td>Dùng cho cấp cứu phù não (bolus 150 mL chứa $\approx 77\text{ mEq Na}^+$).</td>
+    </tr>
+    <tr>
+      <td><strong>Dung dịch NaCl 0.9%</strong></td>
+      <td><strong>154 mEq/L</strong> $\text{Na}^+$</td>
+      <td>Dùng bù thể tích trong hạ natri máu giảm thể tích (<em>hypovolemic</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>$\text{TBW}$ (Tổng lượng nước cơ thể)</strong></td>
+      <td>• Nam trẻ: <strong>$0.6 \times \text{Cân nặng (kg)}$</strong><br />• Nữ trẻ / Nam cao tuổi: <strong>$0.5 \times \text{Cân nặng (kg)}$</strong><br />• Nữ cao tuổi: <strong>$0.45 \times \text{Cân nặng (kg)}$</strong></td>
+      <td>Công thức là ước tính khởi đầu (hệ thống đóng) — <strong>bắt buộc kiểm tra lại $[\text{Na}^+]_s$ thực tế mỗi 4–6 giờ</strong> vì lượng nước tiểu đào thải có thể làm $\text{Na}^+$ tăng nhanh hơn dự kiến.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+### 7.2. Xử Trí Tình Trạng Nâng Natri Máu Quá Nhanh (Overcorrection)
+
+Khi nồng độ Natri máu tăng **$> 10\text{ mmol/L}$ trong 24 giờ đầu** hoặc **$> 18\text{ mmol/L}$ trong 48 giờ**, bệnh nhân đối mặt với **nguy cơ tử vong hoặc tàn phế vĩnh viễn do Hội chứng thoát myelin do thẩm thấu (ODS)**.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-rotate-left"></i> PHÁC ĐỒ CẤP CỨU TÁI HẠ NATRI MÁU (RE-LOWERING STRATEGY)</div>
+  <ol>
+    <li><strong>Ngừng ngay lập tức</strong> mọi dung dịch ưu trương hoặc đẳng trương đang truyền.</li>
+    <li><strong>Truyền tĩnh mạch dung dịch không chứa điện giải:</strong> <strong>Glucose 5%</strong> với liều <strong>$10\text{ mL/kg}$ trong 1 giờ</strong> dưới sự theo dõi sát lượng nước tiểu và bilan dịch.</li>
+    <li><strong>Khóa thải nước tự do qua thận:</strong> Tiêm tĩnh mạch <strong>Desmopressin (dDAVP) 2 mcg mỗi 8 giờ</strong> để đóng băng khả năng bài niệu nước tự do, chủ động đưa Natri máu trở lại ngưỡng trần an toàn cho phép.</li>
+  </ol>
+</div>
+
+---
+
+## 8. Ca Lâm Sàng Minh Họa, Pearls & Tài Liệu Tham Khảo {#sec-8}
+
+### 8.1. Ca Lâm Sàng Minh Họa (Clinical Case Study)
+
+> **Hành chính &amp; Bệnh sử:**
+> - **Bệnh nhân:** Nam, **68 tuổi**, cân nặng **60 kg**.
+> - **Tiền sử:** Ung thư phổi tế bào nhỏ (*Small Cell Lung Carcinoma – SCLC*) chẩn đoán cách đây 2 tháng.
+> - **Bệnh sử:** Người nhà đưa vào khoa Cấp cứu trong tình trạng lơ mơ, tiếp xúc chậm, nói nhảm, kèm **nôn mửa dữ dội** (*vomiting*) và xuất hiện **1 cơn co giật toàn thể** (*generalized seizure*) kéo dài khoảng 2 phút trước khi vào viện.
+
+#### Khám Lâm Sàng &amp; Kết Quả Cận Lâm Sàng Tại Khoa Cấp Cứu
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Hạng mục đánh giá</th>
+      <th>Kết quả ghi nhận</th>
+      <th>Biện luận lâm sàng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Dấu hiệu sinh tồn</strong></td>
+      <td>Mạch 88 l/p • HA 125/80 mmHg • $\text{SpO}_2$ 96% (khí trời) • $36.8^\circ\text{C}$</td>
+      <td>Huyết động ổn định; không có dấu sốc giảm thể tích.</td>
+    </tr>
+    <tr>
+      <td><strong>Thần kinh</strong></td>
+      <td>Lơ mơ, không đáp ứng lời nói chính xác, <strong>GCS = 9 điểm</strong> ($\text{E}_2\text{V}_3\text{M}_4$); không dấu thần kinh định vị</td>
+      <td><strong>Triệu chứng thần kinh nặng</strong> (kèm nôn mửa dữ dội &amp; co giật) &rarr; chỉ định cấp cứu 3% NaCl.</td>
+    </tr>
+    <tr>
+      <td><strong>Thể tích dịch ngoại bào (ECF)</strong></td>
+      <td>Niêm mạc miệng ẩm, tĩnh mạch cổ không nổi, phản hồi gan – tĩnh mạch cổ (&minus;), phổi trong, không phù ngoại biên</td>
+      <td>Đánh giá lâm sàng: <strong>Thể tích dịch ngoại bào bình thường</strong> (<em>clinical euvolemia</em>).</td>
+    </tr>
+    <tr>
+      <td><strong>Sinh hóa máu</strong></td>
+      <td><strong>$\text{Na}^+$ = 112 mmol/L</strong> • $\text{K}^+$ = 4.1 mmol/L • Glucose = 5.6 mmol/L • <strong>$\text{Posm}$ = 238 mOsm/kg $\text{H}_2\text{O}$</strong> • Urea 2.8 mmol/L • Creatinine 52 $\mu\text{mol/L}$ • Cortisol 8h = 480 nmol/L • TSH = 2.1 mIU/L</td>
+      <td>Hạ natri máu <strong>mức độ sâu</strong> (&lt; 125), <strong>nhược trương thực sự</strong> ($\text{Posm} < 275$); loại trừ tăng đường huyết, suy thượng thận và suy giáp.</td>
+    </tr>
+    <tr>
+      <td><strong>Nước tiểu ngẫu nhiên (Spot urine)</strong></td>
+      <td><strong>$\text{UOsm}$ = 420 mOsm/kg $\text{H}_2\text{O}$</strong> (&gt; 100) • <strong>$\text{UNa}$ = 68 mmol/L</strong> (&gt; 30)</td>
+      <td>Tiết ADH không bị ức chế + thải Natri niệu cao + ECF bình thường &rarr; thỏa mãn đầy đủ tiêu chuẩn <strong>Hội chứng SIAD</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+#### Lập Luận Chẩn Đoán &amp; Chẩn Đoán Xác Định
+
+1. **Mức độ &amp; Bối cảnh:** Hạ natri máu mức độ sâu ($112\text{ mmol/L}$) kèm triệu chứng thần kinh nguy hiểm cấp tính (co giật, nôn mửa dữ dội, lơ mơ GCS 9 điểm).
+2. **Loại trừ hạ natri không nhược trương:** $\text{Posm} = 238\text{ mOsm/kg}$ và Glucose máu bình thường ($5.6\text{ mmol/L}$) loại trừ hạ natri do tăng đường huyết hay giả hạ natri máu.
+3. **Phân tích nước tiểu:** $\text{UOsm} = 420\text{ mOsm/kg} > 100$ cho thấy ADH vẫn hoạt động bất thường, loại trừ cuồng uống nguyên phát. $\text{UNa} = 68\text{ mmol/L} > 30$ kết hợp thể tích dịch ngoại bào bình thường (*euvolemia*) và Cortisol/TSH bình thường thỏa mãn đầy đủ tiêu chuẩn chẩn đoán **Hội chứng tiết ADH không thích hợp (SIAD)**.
+4. **Căn nguyên:** Hội chứng SIAD thứ phát do **ung thư phổi tế bào nhỏ (SCLC)** tiết ADH dị vị.
+5. **Chẩn đoán xác định:** **Hạ natri máu nhược trương mức độ sâu, mạn tính, có triệu chứng thần kinh nặng đe dọa tính mạng do Hội chứng SIAD thứ phát sau Ung thư phổi tế bào nhỏ (SCLC).**
+
+#### Kế Hoạch Điều Trị &amp; Diễn Tiến Sinh Hóa – Lâm Sàng
+
+<div class="table-responsive">
+<table class="table-modern">
+  <thead>
+    <tr>
+      <th>Mốc thời gian</th>
+      <th>Hành động xử trí</th>
+      <th>$\text{Na}^+$ huyết thanh</th>
+      <th>Mức tăng tích lũy &amp; Lâm sàng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>0 phút</strong> (Nhập cấp cứu)</td>
+      <td>Mục tiêu: nâng khẩn cấp +5 mmol/L để giảm phù nội sọ, ngưng co giật. Bolus TM <strong>150 mL NaCl 3%</strong> trong 20 phút (liều 1).</td>
+      <td><strong>112 mmol/L</strong></td>
+      <td>Lơ mơ, GCS 9 ($\text{E}_2\text{V}_3\text{M}_4$), co giật &amp; nôn mửa dữ dội.</td>
+    </tr>
+    <tr>
+      <td><strong>20 phút</strong></td>
+      <td>Đo lại $\text{Na}^+$; bệnh nhân còn lơ mơ, chưa đạt mục tiêu +5 mmol/L &rarr; truyền bolus <strong>150 mL NaCl 3%</strong> lần 2 trong 20 phút.</td>
+      <td><strong>114 mmol/L</strong></td>
+      <td>+2 mmol/L; còn lơ mơ.</td>
+    </tr>
+    <tr>
+      <td><strong>40 phút</strong></td>
+      <td>Đạt mục tiêu +5 mmol/L &rarr; <strong>NGỪNG NGAY NaCl 3%</strong>. Bắt đầu <strong>hạn chế dịch nghiêm ngặt (&lt; 800 mL/ngày)</strong>; đặt trần 24h là $112 + 10 = 122\text{ mmol/L}$; kiểm tra $\text{Na}^+$ mỗi 4 giờ.</td>
+      <td><strong>117 mmol/L</strong></td>
+      <td><strong>+5 mmol/L</strong>; tỉnh hơn, ngưng co giật, hết nôn mửa, <strong>GCS 13</strong> ($\text{E}_3\text{V}_4\text{M}_6$).</td>
+    </tr>
+    <tr>
+      <td><strong>12 giờ</strong></td>
+      <td>Duy trì hạn chế dịch nghiêm ngặt, theo dõi sát lượng nước tiểu và điện giải đồ định kỳ.</td>
+      <td><strong>118 mmol/L</strong></td>
+      <td>+6 mmol/L; diễn tiến kiểm soát tốt.</td>
+    </tr>
+    <tr>
+      <td><strong>24 giờ</strong></td>
+      <td>Tiếp tục hạn chế dịch &amp; theo dõi (mức trần cho phép 24h đầu $\le 10\text{ mmol/L}$).</td>
+      <td><strong>120 mmol/L</strong></td>
+      <td><strong>+8 mmol/L trong 24h đầu</strong> (an toàn &lt; 10 mmol/L); tỉnh táo hoàn toàn, <strong>GCS 15</strong>.</td>
+    </tr>
+    <tr>
+      <td><strong>48 giờ</strong></td>
+      <td>Hoàn tất giai đoạn cấp cứu an toàn, chuyển kế hoạch điều trị căn nguyên SCLC dài hạn.</td>
+      <td><strong>126 mmol/L</strong></td>
+      <td>+6 mmol/L ngày 2; tổng tăng <strong>14 mmol/L trong 48h</strong> (&lt; 18 mmol/L), không có biến chứng ODS.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+### 8.2. Thông Điệp Lâm Sàng Cốt Lõi (Clinical Pearls)
+
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> 4 THÔNG ĐIỆP VÀNG KHI TIẾP CẬN &amp; ĐIỀU TRỊ HẠ NATRI MÁU</div>
+  <ol>
+    <li><strong>Triệu chứng thần kinh quyết định tốc độ giờ đầu:</strong> Co giật, hôn mê, nôn mửa dữ dội là chỉ định bolus ngay <strong>150 mL NaCl 3%</strong> trong 20 phút (mục tiêu +5 mmol/L), bất kể cấp hay mạn tính.</li>
+    <li><strong>Chẩn đoán dựa trên 3 xét nghiệm khách quan trước:</strong> Luôn đi theo trình tự <strong>$\text{Posm} \rightarrow \text{UOsm} \rightarrow \text{UNa}$</strong> và nhớ hiệu chỉnh Natri theo đường huyết trước khi kết luận nhược trương thực sự.</li>
+    <li><strong>Khống chế nghiêm ngặt tốc độ bù:</strong> Mặc định là mạn tính khi không rõ thời điểm khởi phát; giữ giới hạn <strong>&le; 10 mmol/L trong 24h đầu</strong> và <strong>&le; 8 mmol/L mỗi 24h tiếp theo</strong>, đo lại điện giải mỗi 4–6 giờ.</li>
+    <li><strong>Phản xạ cứu vãn Overcorrection:</strong> Khi tăng quá trần cho phép, ngừng ngay dịch ưu trương/đẳng trương, truyền <strong>Glucose 5% $10\text{ mL/kg}$ trong 1 giờ</strong> phối hợp <strong>Desmopressin 2 mcg TM mỗi 8 giờ</strong> để ngăn ODS.</li>
+  </ol>
+</div>
+
+### 8.3. Tài Liệu Tham Khảo
 
 <div class="citation-box">
   <strong>Tài Liệu Tham Khảo (Chuẩn AMA):</strong>
   <ol>
-    <li>Spasovski G, Vanholder R, Allolio B, et al; Hyponatraemia Guideline Development Group. Clinical practice guideline on diagnosis and treatment of hyponatraemia. <em>Eur J Endocrinol</em>. 2014;170(3):G1-G47.</li>
-    <li>Adrogué HJ, Tucker BM, Madias NE. Diagnosis and Management of Hyponatremia: A Review. <em>JAMA</em>. 2022;328(3):280-291.</li>
-    <li>Verbalis JG, Goldsmith SR, Greenberg A, et al. Diagnosis, evaluation, and treatment of hyponatremia: expert panel recommendations. <em>Am J Med</em>. 2013;126(10 Suppl 1):S1-S42.</li>
-    <li>Biggins SW, Angeli P, Garcia-Tsao G, et al. Diagnosis, Evaluation, and Management of Ascites, Spontaneous Bacterial Peritonitis and Hepatorenal Syndrome: 2021 AASLD Practice Guidance. <em>Hepatology</em>. 2021;74(2):1014-1048.</li>
+    <li>Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. <em>Eur J Endocrinol</em>. 2014;170(3):G1-G47. doi:10.1530/EJE-13-1020</li>
+    <li>Hoorn EJ, Tuut MK, Hoorntje SJ, van Saase JL, Zietse R, Geers AB. Dutch guideline for the management of electrolyte disorders – 2012 revision. <em>Neth J Med</em>. 2012;70(10):437-445.</li>
+    <li>Adrogué HJ, Madias NE. Hyponatremia. <em>N Engl J Med</em>. 2000;342(21):1581-1589. doi:10.1056/NEJM200005253422107</li>
+    <li>Fenske W, Stork S, Koschker AC, et al. Value of fractional uric acid excretion in differential diagnosis of hyponatremic patients on diuretics. <em>J Clin Endocrinol Metab</em>. 2008;93(8):2991-2997. doi:10.1210/jc.2008-0330</li>
+    <li>Tomkins M, Mc Donald D, Green D, O'Reilly MW, Sherlock M. Diagnosis and treatment of hypernatremia. <em>Best Pract Res Clin Endocrinol Metab</em>. 2026;40:102065. doi:10.1016/j.beem.2025.102065</li>
+    <li>Bornstein SR, Allolio B, Arlt W, et al. Diagnosis and treatment of primary adrenal insufficiency: an Endocrine Society clinical practice guideline. <em>J Clin Endocrinol Metab</em>. 2016;101(2):364-389. doi:10.1210/jc.2015-1710</li>
   </ol>
 </div>
 
 <div class="btn-row">
   <a href="#/basic-medical/tiep-can" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Tiếp Cận Lâm Sàng</a>
-  <a href="#/basic-medical/formula-vault" class="btn"><i class="fa-solid fa-calculator"></i> Mở Kho Công Thức Định Lượng</a>
+  <a href="#/basic-medical/giai-phau-sinh-ly" class="btn"><i class="fa-solid fa-dna"></i> Mở Giải Phẫu &amp; Sinh Lý</a>
 </div>

@@ -1186,6 +1186,68 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'hiv',
+    slug: 'hiv',
+    specialtyId: 'truyen-nhiem',
+    name: 'Nhiễm HIV / AIDS & Bệnh HIV Tiến Triển (AHD)',
+    nameEn: 'HIV/AIDS & Advanced HIV Disease',
+    icd10: 'B20 – B24',
+    icon: 'fa-shield-virus',
+    color: '#dc2626',
+    badge: 'EBM 2026 • Chiến lược III BYT',
+    summary: 'Tiếp cận lâm sàng sốt ở người lớn nghi nhiễm HIV (ARS vs AHD/FUO), phổ căn nguyên nhiễm trùng cơ hội phân tầng theo T-CD4 tại Việt Nam, hiện tượng đồng nhiễm, thuật toán Chiến lược III (QĐ 2674/QĐ-BYT) và gói tầm soát AHD.',
+    keyPearlsPreview: [
+      'Nghi nhiễm HIV cấp (ARS) khi sốt giống cúm sau 2–6 tuần phơi nhiễm — chỉ định HIV Ag/Ab thế hệ 4 hoặc HIV-RNA NAT để tránh âm tính giả giai đoạn cửa sổ',
+      'Sốt kéo dài ≥ 38,3°C > 4 tuần ngoại trú / > 3 ngày nội trú (hoặc > 38,5°C trên 14 ngày theo BYT) chưa rõ nguyên nhân bắt buộc tầm soát HIV',
+      '93,3% FUO ở BN HIV là nhiễm trùng cơ hội (Lao 46,7%, T. marneffei 29,2%, PCP 20,5%) và 46,2% đồng nhiễm ≥ 2 tác nhân',
+      'Khẳng định HIV người lớn bằng Chiến lược III (phản ứng cả SP1 + SP2 + SP3 khác nguyên lý, bỏ Western Blot); tăng gấp đôi liều DTG (50 mg × 2/ngày) khi đồng điều trị Rifampicin'
+    ],
+    guidelines: ['Quyết định 2674/QĐ-BYT (2018)', 'Quyết định 5456/QĐ-BYT (2019)', 'WHO Consolidated HIV & AHD Toolkit 2021–2025', 'DHHS HIV Guidelines 2024'],
+    order: 13,
+    articles: [
+      {
+        id: 'hiv-01-sot-o-nguoi-lon-va-tiep-can-chan-doan-hiv',
+        slug: 'hiv-01-sot-o-nguoi-lon-va-tiep-can-chan-doan-hiv',
+        diseaseId: 'hiv',
+        specialtyId: 'truyen-nhiem',
+        title: 'Khi Nào Sốt Ở Người Lớn Nghĩ Tới HIV? — Tiếp Cận Chẩn Đoán HIV',
+        subtitle: 'Sinh lý bệnh sốt trong ARS vs AHD, phổ căn nguyên FUO phân tầng theo T-CD4 tại Việt Nam, thuật toán Chiến lược III (QĐ 2674), gói tầm soát AHD và ca thực chiến Lao phổi / CD4 = 18',
+        description: 'Hướng dẫn tiếp cận toàn diện bệnh nhân người lớn sốt nghi ngờ nhiễm HIV: nhận diện Hội chứng nhiễm HIV cấp (ARS) tránh bẫy cửa sổ, phổ 9 căn nguyên OIs và tỷ lệ đồng nhiễm 46,2% (BV Nhiệt đới TW), thuật toán khẳng định Chiến lược III & nguyên tắc 5 Cs, 4 dấu hiệu nguy hiểm WHO, 5 bước tầm soát AHD và ca lâm sàng Lao phổi trên nền CD4 = 18 chỉnh liều DTG với Rifampicin.',
+        estimatedMinutes: 25,
+        tags: [
+          'HIV / AIDS',
+          'Sốt ở người lớn',
+          'Hội chứng nhiễm HIV cấp (ARS)',
+          'Bệnh HIV tiến triển (AHD)',
+          'Sốt chưa rõ nguyên nhân (FUO)',
+          'Nhiễm trùng cơ hội (OIs)',
+          'Chiến lược III',
+          'QĐ 2674/QĐ-BYT',
+          'QĐ 5456/QĐ-BYT',
+          'Lao & Talaromyces marneffei',
+          'CrAg & LF-LAM',
+          'WHO 2025'
+        ],
+        keyTakeaway: 'Nghi HIV trong 2 kịch bản: sốt giống cúm 2–6 tuần sau phơi nhiễm (ARS — làm Ag/Ab hoặc NAT) và sốt kéo dài/FUO; khẳng định bằng Chiến lược III (3 sinh phẩm); tầm soát đồng nhiễm (46,2%), Lao (Xpert + LF-LAM), CrAg (CD4 < 200) và tăng gấp đôi liều DTG khi dùng Rifampicin.',
+        order: 1,
+        filePath: 'truyen-nhiem/hiv/hiv-01-sot-o-nguoi-lon-va-tiep-can-chan-doan-hiv.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-27',
+        evidenceLevel: 'EBM 2026 • QĐ 2674 & 5456/QĐ-BYT • WHO 2021–2025 • DHHS 2024',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây, Mục Tiêu & Sinh Lý Bệnh Của Sốt Trong Nhiễm HIV', icon: 'fa-bolt' },
+          { id: 'sec-when-to-suspect', number: 2, title: 'Khi Nào Sốt Ở Người Lớn Cần Nghĩ Tới Nhiễm HIV? (ARS vs FUO)', icon: 'fa-magnifying-glass' },
+          { id: 'sec-fuo-spectrum', number: 3, title: 'Phổ Căn Nguyên Sốt Kéo Dài Theo T-CD4 & Hiện Tượng Đồng Nhiễm', icon: 'fa-table-list' },
+          { id: 'sec-strategy-iii', number: 4, title: 'Quy Trình Chẩn Đoán Nhiễm HIV Ở Người Lớn (Chiến Lược III & 5 Cs)', icon: 'fa-diagram-project' },
+          { id: 'sec-ahd-workup', number: 5, title: 'Tiếp Cận Tầm Soát Căn Nguyên Sốt Ở Bệnh Nhân HIV Tiến Triển (AHD)', icon: 'fa-route' },
+          { id: 'sec-pitfalls', number: 6, title: 'Lưới Cạm Bẫy Lâm Sàng Sống Còn Cần Tránh', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Minh Họa: Lao Phổi Trên Nền AHD (CD4 = 18 Tế Bào/mm³)', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      }
+    ]
   }
 ];
 
