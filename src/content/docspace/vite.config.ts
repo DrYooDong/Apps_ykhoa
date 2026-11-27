@@ -237,7 +237,6 @@ export default defineConfig(() => {
               if (id.includes('lucide-react')) return 'vendor-icons';
               if (id.includes('motion') || id.includes('framer-motion')) return 'vendor-motion';
               if (id.includes('jspdf') || id.includes('html2canvas') || id.includes('canvg') || id.includes('dompurify')) return 'vendor-pdf';
-              if (id.includes('@google/genai')) return 'vendor-ai';
               return undefined;
             }
             if (id.includes('vault-catalog-co-so')) return 'data-vault-co-so';
