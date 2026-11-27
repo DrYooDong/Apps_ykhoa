@@ -1204,7 +1204,7 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
       '93,3% FUO ở BN HIV là nhiễm trùng cơ hội (Lao 46,7%, T. marneffei 29,2%, PCP 20,5%) và 46,2% đồng nhiễm ≥ 2 tác nhân',
       'Khẳng định HIV người lớn bằng Chiến lược III (phản ứng cả SP1 + SP2 + SP3 khác nguyên lý, bỏ Western Blot); tăng gấp đôi liều DTG (50 mg × 2/ngày) khi đồng điều trị Rifampicin'
     ],
-    guidelines: ['Quyết định 2674/QĐ-BYT (2018)', 'Quyết định 5456/QĐ-BYT (2019)', 'WHO Consolidated HIV & AHD Toolkit 2021–2025', 'DHHS HIV Guidelines 2024'],
+    guidelines: ['Quyết định 2674/QĐ-BYT (2018)', 'Quyết định 5456/QĐ-BYT (2019)', 'Quyết định 5968/QĐ-BYT (2021)', 'WHO Consolidated HIV & AHD Toolkit 2021–2025', 'DHHS HIV Guidelines 2024'],
     order: 13,
     articles: [
       {
@@ -1245,6 +1245,45 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-pitfalls', number: 6, title: 'Lưới Cạm Bẫy Lâm Sàng Sống Còn Cần Tránh', icon: 'fa-triangle-exclamation' },
           { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Minh Họa: Lao Phổi Trên Nền AHD (CD4 = 18 Tế Bào/mm³)', icon: 'fa-user-doctor' },
           { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
+        ]
+      },
+      {
+        id: 'hiv-02-tam-soat-va-chan-doan-nhiem-trung-co-hoi-o-ahd',
+        slug: 'hiv-02-tam-soat-va-chan-doan-nhiem-trung-co-hoi-o-ahd',
+        diseaseId: 'hiv',
+        specialtyId: 'truyen-nhiem',
+        title: 'Tầm Soát và Chẩn Đoán Các Nhiễm Trùng Cơ Hội Ở Bệnh Nhân HIV/AIDS Tiến Triển (AHD)',
+        subtitle: 'Tiêu chuẩn AHD (WHO 2025 & BYT), 4 dấu hiệu nguy hiểm, phổ 9 căn nguyên OIs theo T-CD4 tại Việt Nam, chiến lược Xpert + LF-LAM đồng thời, CrAg, T. marneffei & ca đồng nhiễm CD4 = 12',
+        description: 'Hướng dẫn thực chiến tầm soát và chẩn đoán hệ thống các nhiễm trùng cơ hội ở bệnh nhân Bệnh HIV tiến triển (AHD): lưu đồ phân loại AHD, 4 dấu hiệu nguy hiểm và Gói Chăm sóc Thiết yếu WHO, dữ liệu dịch tễ 195 ca FUO tại BV Nhiệt đới TW và tỷ lệ đồng nhiễm 46,2%, thuật toán Xpert MTB/RIF Ultra + LF-LAM đồng thời, tầm soát CrAg máu/DNT, nấm Talaromyces marneffei, PCP, CMV, Toxoplasma, MAC và ca lâm sàng đồng nhiễm Lao phổi + T. marneffei (CD4 = 12).',
+        estimatedMinutes: 25,
+        tags: [
+          'HIV / AIDS',
+          'Bệnh HIV tiến triển (AHD)',
+          'Nhiễm trùng cơ hội (OIs)',
+          'Sốt chưa rõ nguyên nhân (FUO)',
+          'Xpert MTB/RIF Ultra & LF-LAM',
+          'CrAg & Cryptococcus',
+          'Talaromyces marneffei',
+          'Viêm phổi PCP',
+          'CMV, Toxoplasma & MAC',
+          'Đồng nhiễm AHD',
+          'QĐ 5456 & 5968/QĐ-BYT',
+          'WHO AHD Toolkit 2025'
+        ],
+        keyTakeaway: 'Xác định AHD (CD4 ≤ 200 hoặc GĐ 3–4 WHO; mọi trẻ < 5 tuổi chưa ổn định ARV), triển khai ngay Xpert + LF-LAM đồng thời tìm Lao, CrAg máu trước ARV, truy tìm đồng nhiễm (46,2%) khi sốt không lui và tăng gấp đôi liều DTG khi dùng Rifampicin.',
+        order: 2,
+        filePath: 'truyen-nhiem/hiv/hiv-02-tam-soat-va-chan-doan-nhiem-trung-co-hoi-o-ahd.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-27',
+        evidenceLevel: 'EBM 2026 • WHO 2021–2025 • QĐ 5456 & 5968/QĐ-BYT • DHHS 2024',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Mục Tiêu Bài Học', icon: 'fa-bolt' },
+          { id: 'sec-ahd-definition', number: 2, title: 'Bệnh HIV Tiến Triển (AHD): Tiêu Chuẩn, Dấu Hiệu Nguy Hiểm & Gói Chăm Sóc', icon: 'fa-shield-virus' },
+          { id: 'sec-epidemiology', number: 3, title: 'Phổ Dịch Tễ Học Nhiễm Trùng Cơ Hội & Hiện Tượng Đồng Nhiễm Tại Việt Nam', icon: 'fa-table-list' },
+          { id: 'sec-oi-screening', number: 4, title: 'Quy Trình Tầm Soát & Chẩn Đoán Các Nhiễm Trùng Cơ Hội Chính', icon: 'fa-microscope' },
+          { id: 'sec-pitfalls', number: 5, title: 'Lưới Cạm Bẫy Lâm Sàng & Xét Nghiệm Sống Còn Ở AHD', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 6, title: 'Ca Lâm Sàng Minh Họa: Đồng Nhiễm Lao Phổi & Nấm T. marneffei (CD4 = 12)', icon: 'fa-user-doctor' },
+          { id: 'sec-references', number: 7, title: 'Tài Liệu Tham Khảo (Chuẩn AMA Format)', icon: 'fa-book-bookmark' }
         ]
       }
     ]
