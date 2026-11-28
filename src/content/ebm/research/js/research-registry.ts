@@ -3,13 +3,292 @@
  * Path: src/content/ebm/research/js/research-registry.ts
  *
  * AUTO-GENERATED FROM MDX FRONTMATTER (Single Source of Truth)
- * Total Research Studies: 4
+ * Total Research Studies: 6
  * DO NOT EDIT MANUALLY — Run: npm run sync:research
  */
 
 import type { ResearchStudyRecord } from './research-types';
 
 export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
+  {
+    "id": "2026-aic-furosemide-stress-test-de-resuscitation",
+    "slug": "2026-aic-furosemide-stress-test-de-resuscitation",
+    "code": "STUDY-2026-AIC-FST-DERESUSCITATION",
+    "trialAcronym": "FST-DRT",
+    "title": "Annals of Intensive Care 2026: Khung Lý Thuyết Và Ứng Dụng Lâm Sàng Của Nghiệm Pháp Furosemide (FST) Trong Giải Hồi Sức (De-Resuscitation)",
+    "titleEn": "Furosemide stress test and de-resuscitation",
+    "authors": "Prashant Nasa, Saikat Mitra, Jean-Louis Teboul, Manu L.N.G. Malbrain",
+    "journal": "Ann Intensive Care",
+    "organization": "Annals of Intensive Care (International Critical Care Expert Panel)",
+    "year": 2026,
+    "doi": "10.1016/j.aicoj.2026.100202",
+    "sourceUrl": "https://dx.doi.org/10.1016/j.aicoj.2026.100202",
+    "file": "2026-aic-furosemide-stress-test-de-resuscitation.mdx",
+    "specialty": "icu",
+    "specialty2": "renal",
+    "conditionKey": "aki-fluid-overload",
+    "problemLabels": [
+      "fluid-accumulation-syndrome",
+      "de-resuscitation",
+      "aki-progression",
+      "furosemide-stress-test",
+      "rrt-prediction"
+    ],
+    "icd10": [
+      "N17.9",
+      "E87.7",
+      "R65.21"
+    ],
+    "design": "clinical-review",
+    "phase": "State-of-the-Art Narrative Review & Hypothesis-Generating Framework",
+    "blinding": "not-applicable",
+    "centerScope": "multicenter-intl",
+    "hypothesisType": "conceptual-framework",
+    "sampleSize": null,
+    "followUpDuration": "Đánh giá đáp ứng bài niệu trong 2 giờ (liên kết tiên lượng RRT & MAKE 30 ngày)",
+    "asianData": false,
+    "populationTags": [
+      "icu-adults",
+      "aki-fluid-overload",
+      "resolving-septic-shock",
+      "adults"
+    ],
+    "population": "Bệnh nhân người lớn nằm Khoa Hồi sức tích cực (ICU) có Hội chứng tích tụ dịch (Fluid Accumulation Syndrome — FAS) hoặc Hội chứng tăng tính thấm mao mạch toàn thể (GIPS), đang trong giai đoạn huyết động ổn định/thoái triển sốc (resolving shock), có hoặc chưa có Tổn thương thận cấp (AKI).",
+    "interventionClass": "fluid-electrolyte-acidbase",
+    "drug": "Furosemide IV (liều thấp 0.25–0.5 mg/kg không AKI; liều chuẩn 1.0–1.5 mg/kg có AKI), Albumin 20%, CRRT",
+    "intervention": "Chuyển đổi Nghiệm pháp Furosemide Stress Test (FST) thành Nghiệm pháp Giải hồi sức (De-resuscitation Test — DRT) 4 bước tích hợp đánh giá đa mô thức tại giường (PLR âm tính, VExUS/CVP/EVLWI, phân tầng liều FST, theo dõi nước tiểu 2 giờ & chỉ số FRI).",
+    "comparatorType": "severity-strata",
+    "primaryEndpointCategory": "organ-protection",
+    "primaryEndpoint": "Xác định dự trữ chức năng ống thận và trạng thái sẵn sàng giải hồi sức an toàn bằng lợi tiểu quai (Responder: UO > 200 mL/2h hoặc FRI > 4 mL/mg/2h) so với không đáp ứng (Negative DRT: UO ≤ 200 mL/2h) cùng năng lực dự báo nhu cầu lọc máu (RRT).",
+    "outcomeDirection": "positive-superior",
+    "impactVerdict": "hypothesis-generating",
+    "keyResults": "Đề xuất giao thức DRT 4 bước phân tầng liều FST theo trạng thái AKI & tiền sử dùng Furosemide trong 7 ngày (Không AKI: 0.25 vs 0.5 mg/kg; Có AKI: 1.0 vs 1.5 mg/kg) | Ngưỡng đáp ứng Responder: UO > 200 mL/2h hoặc FRI > 4 mL/mg/2h → khởi động giải hồi sức lợi tiểu; Negative DRT (≤ 200 mL/2h) → KHÔNG bù dịch mù quáng, rà soát kháng lợi tiểu / chuyển CRRT | Bằng chứng phân tích gộp (Zhao 2026; 14 nghiên cứu, > 3,500 BN): FST dự đoán nhu cầu RRT với AUROC 0.83, độ nhạy 0.76 (95% CI 0.67–0.83), độ đặc hiệu 0.77 (95% CI 0.69–0.84).",
+    "primaryMetric": {
+      "measure": "AUC",
+      "interventionRate": "AUROC 0.83 (Zhao 2026 • 14 nghiên cứu, > 3,500 BN)",
+      "controlRate": "Ngưỡng Responder: UO > 200 mL/2h hoặc FRI > 4 mL/mg/2h",
+      "rawDiffText": "Dự báo nhu cầu RRT: AUROC 0.83 | Độ nhạy 0.76 (95% CI 0.67–0.83) • Độ đặc hiệu 0.77 (95% CI 0.69–0.84)",
+      "pValue": "N/A (Tổng quan khung lý thuyết)"
+    },
+    "safetyHighlight": "Nghịch lý an toàn cốt lõi (Core Safety Paradox): FST chẩn đoán AKI kinh điển (Chawla 2013) bù lại 1:1 toàn bộ lượng nước tiểu trong 6 giờ đầu để tránh tụt thể tích, trong khi DRT cố tình KHÔNG bù dịch để đạt bilan âm. Vì vậy dữ liệu an toàn từ FST chẩn đoán không thể suy rộng trực tiếp sang DRT.",
+    "robOverall": "not-applicable",
+    "gradeCertainty": "low",
+    "fragilityIndex": null,
+    "fundingSource": "public-academic",
+    "topicTags": [
+      "giai-hoi-suc",
+      "furosemide-stress-test",
+      "ton-thuong-than-cap",
+      "qua-tai-dich",
+      "sepsis"
+    ],
+    "tags": [
+      "Ann Intensive Care",
+      "2026",
+      "FST",
+      "DRT",
+      "De-resuscitation",
+      "Fluid Accumulation Syndrome",
+      "AKI",
+      "VExUS",
+      "ICU",
+      "Evidence-Based Medicine"
+    ],
+    "summary": "Bài tổng quan chuyên sâu của Nasa và cộng sự (Ann Intensive Care 2026) tái định vị Furosemide Stress Test (FST) từ công cụ tiên lượng AKI thành Nghiệm pháp Giải hồi sức (DRT) 4 bước tích hợp đánh giá đa mô thức (PLR, VExUS, CVP, EVLWI). Tuy FST đạt AUROC 0.83 dự báo nhu cầu RRT (> 3,500 bệnh nhân), nhóm tác giả nhấn mạnh khung DRT mang tính gợi mở giả thuyết và vạch rõ Nghịch lý an toàn do không bù lại nước tiểu 1:1 như FST chẩn đoán.",
+    "detailedConclusion": "FST là công cụ đánh giá dự trữ chức năng ống thận tại giường đầy triển vọng để định hướng giải hồi sức, nhưng bắt buộc lồng ghép trong khung đa mô thức (chứng minh không còn đáp ứng bù dịch qua PLR âm tính và có sung huyết rõ qua VExUS/CVP/EVLWI). Kết quả DRT âm tính (UO ≤ 200 mL/2h) là tín hiệu rà soát nguyên nhân kháng lợi tiểu hoặc cân nhắc CRRT sớm — tuyệt đối không phải chỉ định bù thêm dịch mù quáng.",
+    "description": "Phân tích chuyên sâu bài tổng quan của Nasa, Mitra, Teboul & Malbrain (Ann Intensive Care 2026): Chuyển đổi Nghiệm pháp Furosemide Stress Test (FST) thành Nghiệm pháp Giải hồi sức (DRT) 4 bước tại ICU và cảnh báo Nghịch lý an toàn cốt lõi.",
+    "keyRecommendations": [
+      "Chuyển dịch tư duy từ FST chẩn đoán AKI sang giao thức Giải hồi sức DRT 4 bước: (1) Thỏa điều kiện đa mô thức (FAS + resolving shock + PLR âm tính + sung huyết VExUS/CVP/EVLWI); (2) Phân tầng liều FST theo AKI và tiền sử dùng thuốc 7 ngày; (3) Đo nước tiểu giờ trong 2h, tính FRI và theo dõi điện giải; (4) Quyết định rút dịch lợi tiểu hay rà soát kháng lợi tiểu/CRRT.",
+      "Phân tầng liều FST chính xác: Không AKI rõ rệt dùng liều thấp 0.25 mg/kg IV (chưa dùng 7 ngày) hoặc 0.5 mg/kg IV (đã dùng); đã có AKI dùng liều chuẩn 1.0 mg/kg IV (chưa dùng) hoặc 1.5 mg/kg IV (đã dùng).",
+      "Ngưỡng Responder là thể tích nước tiểu > 200 mL trong 2 giờ hoặc chỉ số FRI > 4 mL/mg/2h; kết quả Negative DRT (≤ 200 mL/2h) KHÔNG phải chống chỉ định rút dịch và CÀNG KHÔNG ĐƯỢC tự động bù thêm dịch mù quáng.",
+      "Cảnh giác cao độ với Nghịch lý an toàn cốt lõi: Khác với FST chẩn đoán kinh điển có bù nước tiểu 1:1 trong 6 giờ đầu, DRT cố tình tạo bilan dịch âm nên không được suy rộng trực tiếp hồ sơ an toàn cũ và chưa thay thế cho các RCT kiểm chứng tương lai."
+    ],
+    "clinicalPearls": [
+      "Phân biệt 2 kiểu hình tích tụ dịch trước khi dùng lợi tiểu: Sung huyết do tăng áp lực (CVP cao, VExUS 2–3) dung nạp rút dịch tốt, còn tích tụ dịch do tăng tính thấm mao mạch (GIPS) có giảm thể tích tuần hoàn hiệu dụng rất dễ tụt huyết áp nếu rút dịch thô bạo.",
+      "Cơ chế dược lý cốt lõi: Furosemide gắn > 95% Albumin máu và được bơm chủ động vào lòng ống thận gần qua kênh vận chuyển anion hữu cơ (OATs) trước khi ức chế NKCC2 ở nhánh lên dày quai Henle — do đó hạ Albumin máu nặng hoặc thuốc cạnh tranh OATs là nguyên nhân kháng lợi tiểu có thể đảo ngược.",
+      "Tích tụ dịch quá mức và sung huyết tĩnh mạch thận làm tăng áp lực mô kẽ thận và khoang Bowman, sụt giảm áp lực lọc cầu thận xuyên màng và tăng gấp đôi nguy cơ biến cố thận nặng 30 ngày (MAKE-30).",
+      "Khi bệnh nhân âm tính với DRT (UO ≤ 200 mL/2h) dù đang quá tải dịch đe dọa chức năng sống, cần đánh giá Albumin máu, tối ưu áp lực tưới máu thận và xem xét khởi động siêu lọc chủ động qua CRRT sớm thay vì cố nâng đơn độc liều lợi tiểu quai."
+    ],
+    "sections": [
+      {
+        "id": "sec-1",
+        "number": 1,
+        "title": "Phần 1: Tình Huống & Ca Lâm Sàng Thực Hành",
+        "icon": "fa-solid fa-user-doctor"
+      },
+      {
+        "id": "sec-2",
+        "number": 2,
+        "title": "Phần 2.I: Sinh Lý Bệnh Tích Tụ Dịch & Dược Lý FST",
+        "icon": "fa-solid fa-book-medical"
+      },
+      {
+        "id": "sec-3",
+        "number": 3,
+        "title": "Phần 2.II: Giao Thức DRT 4 Bước & Khung PICO",
+        "icon": "fa-solid fa-diagram-project"
+      },
+      {
+        "id": "sec-4",
+        "number": 4,
+        "title": "Phần 2.III: Bằng Chứng Dự Báo & Nghịch Lý An Toàn",
+        "icon": "fa-solid fa-chart-column"
+      },
+      {
+        "id": "sec-5",
+        "number": 5,
+        "title": "Phần 2.IV: Phản Biện Học Thuật & Thẩm Định Bằng Chứng",
+        "icon": "fa-solid fa-scale-balanced"
+      },
+      {
+        "id": "sec-6",
+        "number": 6,
+        "title": "Phần 3: Kết Luận & Giải Quyết Ca Lâm Sàng",
+        "icon": "fa-solid fa-gavel"
+      }
+    ],
+    "updatedAt": "2026-11-28"
+  },
+  {
+    "id": "2026-ccm-samu-save-sepsis-prehospital-1h-bundle",
+    "slug": "2026-ccm-samu-save-sepsis-prehospital-1h-bundle",
+    "code": "STUDY-2026-CCM-SAMU-SAVE-SEPSIS",
+    "trialAcronym": "SAMU Save Sepsis",
+    "title": "Critical Care Medicine 2026 (SAMU Save Sepsis): Hiệu Quả Của Gói Hồi Sức 1 Giờ Tiền Viện Ở Bệnh Nhân Sốc Nhiễm Khuẩn",
+    "titleEn": "A 1-hour resuscitation bundle for prehospital management of septic shock",
+    "authors": "Romain Jouffroy, Djillali Annane, Caroline Elie, Jean-Paul Mira, Léa Jilet, Papa Gueye, Benoît Vivien; SAMU Save Sepsis Study Group",
+    "journal": "Crit Care Med",
+    "organization": "SAMU Save Sepsis Study Group / AP-HP (Pháp) / Critical Care Medicine",
+    "year": 2026,
+    "doi": "10.1097/CCM.0000000000007283",
+    "sourceUrl": "https://doi.org/10.1097/CCM.0000000000007283",
+    "file": "2026-ccm-samu-save-sepsis-prehospital-1h-bundle.mdx",
+    "specialty": "icu",
+    "specialty2": "infect",
+    "conditionKey": "sepsis",
+    "problemLabels": [
+      "septic-shock-prehospital",
+      "resuscitation-bundle-1h",
+      "mortality-28d",
+      "mortality-90d",
+      "protocol-adherence"
+    ],
+    "icd10": [
+      "R65.21",
+      "A41.9",
+      "J22"
+    ],
+    "design": "rct",
+    "phase": "Multicenter Open-Label Cluster-Randomized Trial",
+    "blinding": "open-label",
+    "centerScope": "multicenter-national",
+    "hypothesisType": "superiority",
+    "sampleSize": 381,
+    "followUpDuration": "Tử vong ngày 28 (chính) & ngày 90 (phụ) • Tuyển mẫu 09/05/2016–02/11/2018",
+    "asianData": false,
+    "populationTags": [
+      "prehospital-micu",
+      "septic-shock",
+      "adults"
+    ],
+    "population": "381 bệnh nhân người lớn (≥ 18 tuổi, trong tổng số 398 bệnh nhân tuyển vào; tuổi trung bình 67 ± 15) nghi ngờ sốc nhiễm khuẩn có tụt huyết áp (HATT < 90 mmHg hoặc MBP < 65 mmHg trước bù dịch, lactate > 4 mmol/L nếu có, GCS < 13, hoặc nổi vân tím > 2) kèm rối loạn ≥ 1 cơ quan được đội cấp cứu lưu động (MICU) thuộc 22 trung tâm SAMU tại Pháp tiếp nhận tiền viện.",
+    "interventionClass": "vasopressor-hemodynamics",
+    "drug": "Ceftriaxone 2 g / Piperacillin-Tazobactam 4.5 g IV, Dịch tinh thể đẳng trương (1,000 mL đến 35 mL/kg IBW), Norepinephrine, Hydrocortisone hemisuccinate 100 mg IV",
+    "intervention": "Triển khai tuần tự trọn vẹn Gói hồi sức 1 giờ ngay tại hiện trường từ thời điểm 0: (1) Cấy máu + Ceftriaxone 2 g hoặc Piperacillin-Tazobactam 4.5 g IV; (2) Truyền nhanh ≥ 1,000 mL trong 30 phút và tối đa 35 mL/kg IBW trong 60 phút; (3) Norepinephrine liên tục nếu MBP < 65 hoặc HATTr < 40 mmHg; (4) Hydrocortisone 100 mg IV nếu MBP < 65 dù Norepinephrine ≥ 1.5 mg/giờ.",
+    "comparatorType": "standard-of-care",
+    "primaryEndpointCategory": "mortality",
+    "primaryEndpoint": "Tỷ lệ tử vong do mọi nguyên nhân tại ngày thứ 28 (28-day all-cause mortality) phân tích theo nguyên tắc ý định điều trị (ITT); tiêu chí phụ: tử vong ngày 90, tử vong tại ICU/xuất viện, số ngày sống không lệ thuộc máy thở/RRT/vận mạch, thời gian nằm ICU và nằm viện.",
+    "outcomeDirection": "neutral-null",
+    "impactVerdict": "practice-informing",
+    "keyResults": "Tử vong 28 ngày (ITT, N = 381): 22% (23/103) nhóm Gói 1 giờ vs 27% (76/278) nhóm Điều trị thông thường → RR 0.81 (95% CI 0.61–1.08; p = 0.16; ICC 0.005 ± 0.002) | Per-protocol: RR 0.78 (95% CI 0.59–1.04; p = 0.10) | Tiêu chí phụ không khác biệt: Tử vong 90 ngày RR 0.93 (0.72–1.21), tử vong ICU RR 1.13 (0.83–1.53), tử vong xuất viện RR 0.81 (0.63–1.05) | Rào cản triển khai lớn: chỉ 25.6% (20/78) tuân thủ trọn vẹn Gói 1 giờ (40% đạt ≥ 1,000 mL trong 30 phút), 35% nhóm đối chứng vẫn được cho kháng sinh tiền viện, dừng sớm ở 72% cỡ mẫu (381/554) vì thiếu kinh phí AP-HP.",
+    "primaryMetric": {
+      "measure": "RR",
+      "interventionRate": "22% (23/103)",
+      "controlRate": "27% (76/278)",
+      "effectEstimate": 0.81,
+      "ciLower": 0.61,
+      "ciUpper": 1.08,
+      "rawDiffText": "Tử vong 28d (ITT): 22% vs 27% • RR 0.81 (95% CI 0.61–1.08; p = 0.16) | Per-protocol: RR 0.78 (0.59–1.04; p = 0.10)",
+      "pValue": "0.16"
+    },
+    "safetyHighlight": "Chỉ 2% (8/398 bệnh nhân) ghi nhận biến cố bất lợi (giảm EtCO2, nhịp tim chậm, suy thận, da tái xám, nổi vân tím lan rộng, tụt huyết áp, thuyên tắc phổi hai bên và ARDS). Tuy nhiên thử nghiệm dừng sớm (72% mẫu), mất cân bằng cụm nghiêm trọng (103 vs 278) và tuân thủ gói đầy đủ rất thấp (25.6%).",
+    "robOverall": "high",
+    "gradeCertainty": "low",
+    "fragilityIndex": null,
+    "fundingSource": "public-academic",
+    "topicTags": [
+      "soc-nhiem-khuan",
+      "cap-cuu-tien-vien",
+      "goi-hoi-suc-1-gio",
+      "ket-qua-am-tinh",
+      "sepsis"
+    ],
+    "tags": [
+      "Crit Care Med",
+      "2026",
+      "SAMU Save Sepsis",
+      "Septic Shock",
+      "Prehospital",
+      "MICU",
+      "1-Hour Bundle",
+      "Cluster RCT",
+      "Evidence-Based Medicine"
+    ],
+    "summary": "Thử nghiệm ngẫu nhiên phân cụm đa trung tâm SAMU Save Sepsis tại 22 trung tâm SAMU Pháp (N = 381 ITT) cho thấy áp dụng cứng nhắc Gói hồi sức 1 giờ tiền viện cho bệnh nhân sốc nhiễm khuẩn không làm giảm có ý nghĩa thống kê tử vong ngày 28 (22% vs 27%; RR 0.81; 95% CI 0.61–1.08; p = 0.16) hay ngày 90 (RR 0.93). Dừng sớm do thiếu kinh phí (72% cỡ mẫu), lệch cụm (103 vs 278), tuân thủ gói thấp (25.6%) và nhiễm chéo kháng sinh 35% ở nhóm đối chứng là các yếu tố giải mã then chốt.",
+    "detailedConclusion": "Không nên cố gắng hoàn tất cứng nhắc toàn bộ Gói hồi sức 1 giờ phức tạp ngay trên xe cấp cứu (đặc biệt khâu truyền nhanh 35 mL/kg dịch vốn có tỷ lệ thất bại kỹ thuật cao và dễ kéo dài thời gian vận chuyển). Thay vào đó, cấp cứu tiền viện nên áp dụng chiến lược tinh gọn tác động cao: khởi động sớm kháng sinh tĩnh mạch phổ rộng và thuốc vận mạch khi huyết áp không đáp ứng, đồng thời nhanh chóng bàn giao bệnh nhân an toàn cho khoa Cấp cứu hoặc ICU.",
+    "description": "Phân tích chuyên sâu thử nghiệm ngẫu nhiên phân cụm SAMU Save Sepsis (Crit Care Med 2026, N = 381): Gói hồi sức 1 giờ tiền viện không làm giảm có ý nghĩa tử vong 28 ngày (22% vs 27%; RR 0.81; p = 0.16) với tỷ lệ tuân thủ trọn gói chỉ 25.6%.",
+    "keyRecommendations": [
+      "Gói hồi sức 1 giờ tiền viện không tạo khác biệt có ý nghĩa thống kê về tử vong 28 ngày theo phân tích ITT (22% vs 27%; RR 0.81; 95% CI 0.61–1.08; p = 0.16) cũng như theo đúng giao thức per-protocol (RR 0.78; 95% CI 0.59–1.04; p = 0.10).",
+      "Tất cả tiêu chí phụ — gồm tử vong 90 ngày (RR 0.93), tử vong tại ICU (RR 1.13), tử vong khi xuất viện (RR 0.81), ngày không máy thở/RRT/vận mạch và thời gian nằm viện — đều không khác biệt giữa hai nhánh.",
+      "Rào cản thực thi tại hiện trường cực lớn: Chỉ 25.6% (20/78) bệnh nhân nhóm can thiệp tuân thủ trọn vẹn Gói 1 giờ, chủ yếu vướng khâu truyền nhanh dịch lớn trên xe cấp cứu đang di chuyển (chỉ 40% đạt ≥ 1,000 mL trong 30 phút đầu).",
+      "Ưu tiên chuyển dịch từ hoàn thành gói cứng nhắc sang chiến lược tiền viện đơn giản, tác động cao: dùng sớm kháng sinh IV thích hợp và thuốc vận mạch khi tụt huyết áp kháng dịch, không trì hoãn vận chuyển về ED/ICU chỉ để truyền đủ 35 mL/kg."
+    ],
+    "clinicalPearls": [
+      "Sức mạnh thống kê thực tế bị bào mòn bởi 4 yếu tố đồng thời: dừng sớm ở 72% mẫu (381/554) vì thiếu kinh phí AP-HP, mất cân bằng cụm nghiêm trọng (103 vs 278), tuân thủ gói chỉ 25.6% và nhóm đối chứng đã chủ động dùng kháng sinh tiền viện tới 35%.",
+      "Khác với PHANTASi vốn tuyển bệnh nhân nhiễm khuẩn nhẹ hơn, SAMU Save Sepsis tuyển đúng quần thể sốc nhiễm khuẩn rất nặng với tỷ lệ tử vong 28 ngày lên tới 22–27% (gấp đôi các thử nghiệm tiền viện trước đó).",
+      "Mất cân bằng dữ liệu Lactate nền (73% nhóm đối chứng có đo Lactate so với chỉ 20% nhóm Gói 1 giờ) phản ánh thói quen thực hành của một trung tâm đối chứng tuyển mẫu áp đảo, làm khó kiểm soát yếu tố nhiễu về độ nặng nền.",
+      "Hồ sơ an toàn của can thiệp tiền viện tích cực tương đối chấp nhận được (chỉ 8/398 ca [2%] có biến cố bất lợi), nhưng lợi ích sinh tồn tăng thêm so với bác sĩ MICU xử trí linh hoạt chuẩn chưa được chứng minh."
+    ],
+    "sections": [
+      {
+        "id": "sec-1",
+        "number": 1,
+        "title": "Phần 1: Tình Huống & Ca Lâm Sàng Thực Hành",
+        "icon": "fa-solid fa-user-doctor"
+      },
+      {
+        "id": "sec-2",
+        "number": 2,
+        "title": "Phần 2.I: Bối Cảnh & Mục Tiêu Nghiên Cứu",
+        "icon": "fa-solid fa-book-medical"
+      },
+      {
+        "id": "sec-3",
+        "number": 3,
+        "title": "Phần 2.II: Thiết Kế Phân Cụm, Quy Trình & PICO",
+        "icon": "fa-solid fa-diagram-project"
+      },
+      {
+        "id": "sec-4",
+        "number": 4,
+        "title": "Phần 2.III: Kết Quả Hiệu Quả, An Toàn & Rào Cản",
+        "icon": "fa-solid fa-chart-column"
+      },
+      {
+        "id": "sec-5",
+        "number": 5,
+        "title": "Phần 2.IV: Phản Biện Học Thuật & Thẩm Định RoB 2.0",
+        "icon": "fa-solid fa-scale-balanced"
+      },
+      {
+        "id": "sec-6",
+        "number": 6,
+        "title": "Phần 3: Kết Luận & Giải Quyết Ca Lâm Sàng",
+        "icon": "fa-solid fa-gavel"
+      }
+    ],
+    "updatedAt": "2026-11-28"
+  },
   {
     "id": "2024-scirep-crp-pct-saa-bioscore-trauma-sepsis",
     "slug": "2024-scirep-crp-pct-saa-bioscore-trauma-sepsis",

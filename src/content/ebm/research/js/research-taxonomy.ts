@@ -255,6 +255,7 @@ export const RESEARCH_CONDITIONS: Record<string, string> = {
   pneumonia: 'Viêm phổi cộng đồng nặng (SCAP)',
   ards: 'Hội chứng suy hô hấp cấp (ARDS)',
   sepsis: 'Nhiễm khuẩn huyết & Sốc nhiễm khuẩn (Sepsis)',
+  'aki-fluid-overload': 'Tổn thương thận cấp (AKI) & Quá tải dịch ICU',
   'metabolic-acidosis': 'Toan chuyển hóa nặng & AKI tại ICU',
   'dengue-fever': 'Sốt xuất huyết Dengue',
   'amr-mrsa': 'Vi khuẩn kháng thuốc (MRSA / Đa kháng)',
@@ -305,7 +306,16 @@ export const PROBLEM_LABELS_VI: Record<string, string> = {
   'adrop-vs-curb65': 'Thang điểm A-DROP vs CURB-65',
   'ed-revisit-72h': 'Tái khám Cấp cứu 72 giờ',
   'mortality-30d': 'Tử vong 30 ngày',
-  'elderly-cap': 'CAP ở người cao tuổi (≥ 65)'
+  'mortality-90d': 'Tử vong 90 ngày',
+  'elderly-cap': 'CAP ở người cao tuổi (≥ 65)',
+  'fluid-accumulation-syndrome': 'Hội chứng tích tụ dịch (FAS)',
+  'de-resuscitation': 'Giải hồi sức (De-resuscitation)',
+  'aki-progression': 'Tiến triển tổn thương thận cấp (AKI)',
+  'furosemide-stress-test': 'Nghiệm pháp Furosemide (FST / DRT)',
+  'rrt-prediction': 'Tiên lượng nhu cầu lọc máu (RRT)',
+  'septic-shock-prehospital': 'Sốc nhiễm khuẩn tiền viện (MICU)',
+  'resuscitation-bundle-1h': 'Gói hồi sức 1 giờ (SSC Bundle)',
+  'protocol-adherence': 'Tuân thủ phác đồ thực địa'
 };
 
 export const POPULATION_TAGS_VI: Record<string, string> = {
@@ -330,7 +340,11 @@ export const POPULATION_TAGS_VI: Record<string, string> = {
   'established-ascvd': 'Đã xác lập ASCVD',
   'pediatric-adolescent': 'Trẻ em & Thanh thiếu niên (4–16t)',
   'endemic-population': 'Dân số vùng lưu hành dịch tễ',
-  'seropositive-and-seronegative': 'Cả huyết thanh dương & âm tính'
+  'seropositive-and-seronegative': 'Cả huyết thanh dương & âm tính',
+  'aki-fluid-overload': 'AKI & Quá tải dịch ICU',
+  'resolving-septic-shock': 'Sốc nhiễm khuẩn giai đoạn ổn định',
+  'prehospital-micu': 'Cấp cứu tiền viện (MICU / SAMU)',
+  'septic-shock': 'Sốc nhiễm khuẩn (Septic Shock)'
 };
 
 export const TOPIC_TAGS_VI: Record<string, string> = {
@@ -371,7 +385,14 @@ export const TOPIC_TAGS_VI: Record<string, string> = {
   'xuat-vien-an-toan': 'Xuất viện an toàn từ ED',
   'tai-kham-72h': 'Tái khám Cấp cứu 72 giờ',
   sglt2i: 'Ức chế SGLT2 (SGLT2i)',
-  'bao-ve-tim-than': 'Bảo vệ Tim - Thận'
+  'bao-ve-tim-than': 'Bảo vệ Tim - Thận',
+  'giai-hoi-suc': 'Giải hồi sức (De-resuscitation)',
+  'furosemide-stress-test': 'Nghiệm pháp Furosemide (FST)',
+  'ton-thuong-than-cap': 'Tổn thương thận cấp (AKI)',
+  'qua-tai-dich': 'Hội chứng tích tụ dịch (FAS)',
+  'soc-nhiem-khuan': 'Sốc nhiễm khuẩn (Septic Shock)',
+  'cap-cuu-tien-vien': 'Cấp cứu tiền viện (Prehospital)',
+  'goi-hoi-suc-1-gio': 'Gói hồi sức 1 giờ (1h Bundle)'
 };
 
 export const FUNDING_LABELS: Record<string, { label: string; tone: LabelTone }> = {
