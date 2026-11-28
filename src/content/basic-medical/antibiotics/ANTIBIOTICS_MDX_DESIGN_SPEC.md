@@ -28,7 +28,7 @@
 
 ## 1. TỔNG QUAN KIẾN TRÚC PHÂN HỆ KHÁNG SINH HỌC
 
-Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **15 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
+Toàn bộ nội dung phân hệ Kháng Sinh Học Lâm Sàng (Antimicrobial Stewardship - AMS) nằm tại `src/content/basic-medical/antibiotics/`, được tổ chức thành **6 Modules đào tạo** gồm **19 bài học `.mdx`** cùng hệ sinh thái linh kiện, dữ liệu và công cụ tương tác:
 
 ```text
 src/content/basic-medical/antibiotics/
@@ -54,13 +54,17 @@ src/content/basic-medical/antibiotics/
 │   ├── ks-5-1-phan-biet-di-ung-that-vs-adr.mdx
 │   ├── ks-5-2-ty-le-phan-ung-cheo-beta-lactam.mdx
 │   └── ks-5-3-di-ung-khang-sinh-quinolone-va-chien-luoc-thay-the.mdx
-├── module6-cac-nhom-khang-sinh/          # Module 6: Các Nhóm Kháng Sinh (1 bài)
-│   └── ks-6-1-nhom-khang-sinh-beta-lactam.mdx
+├── module6-cac-nhom-khang-sinh/          # Module 6: Các Nhóm Kháng Sinh (5 bài)
+│   ├── ks-6-1-nhom-khang-sinh-beta-lactam.mdx
+│   ├── ks-6-2-nhom-khang-sinh-aminoglycoside.mdx
+│   ├── ks-6-3-nhom-khang-sinh-quinolone.mdx
+│   ├── ks-6-4-nhom-khang-sinh-tetracycline-glycylcycline.mdx
+│   └── ks-6-5-nhom-khang-sinh-macrolide.mdx
 ├── components/                           # Linh kiện UI chuyên biệt phân hệ
 │   ├── AntibioticQuickNav.ts             # Sticky Nav cho bài giảng kháng sinh
 │   └── AWaRePill.ts                      # Huy hiệu WHO AWaRe 2023
 ├── data/
-│   └── antibiotics-curriculum-data.ts    # CSDL 6 Modules, 15 Bài học & 5 Công cụ
+│   └── antibiotics-curriculum-data.ts    # CSDL 6 Modules, 19 Bài học & 5 Công cụ
 ├── types/
 │   └── antibiotics.types.ts              # Định nghĩa Typescript interfaces
 └── views/                                # Views render Hub và Tools

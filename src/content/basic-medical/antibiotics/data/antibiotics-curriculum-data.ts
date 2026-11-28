@@ -2,7 +2,7 @@
  * CliniPortal — Antibiotics Curriculum & Master Registry
  * Path: src/content/basic-medical/antibiotics/data/antibiotics-curriculum-data.ts
  * 
- * Toàn bộ CSDL 6 Modules, 15 Bài học & 5 Công cụ Lâm sàng Tương tác
+ * Toàn bộ CSDL 6 Modules, 19 Bài học & 5 Công cụ Lâm sàng Tương tác
  * Đối soát 1:1 với Đề cương Kế hoạch & Kho Knowledge Vault 1.5
  */
 
@@ -466,7 +466,7 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
     shortTitle: 'Các Nhóm Kháng Sinh',
     icon: 'fa-capsules',
     color: 'var(--dsp-teal)',
-    badge: '1 Bài giảng',
+    badge: '5 Bài giảng',
     description: 'Hệ thống hóa dược lý lâm sàng từng nhóm kháng sinh kinh điển và thế hệ mới: cấu trúc hóa học (SAR), cơ chế diệt khuẩn, đề kháng, tối ưu hóa PK/PD ở bệnh nhân nặng, độc tính và áp dụng ca lâm sàng.',
     clinicalObjective: 'Làm chủ đặc tính dược lý, phổ tác dụng, mục tiêu PK/PD và ranh giới an toàn của từng nhóm kháng sinh để cá thể hóa điều trị tại giường bệnh.',
     lessons: [
@@ -496,6 +496,119 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
           { id: 'sec-5', number: 5, title: 'Độc Tính, Dị Ứng Chéo R1 & An Toàn Lâm Sàng', icon: 'fa-solid fa-triangle-exclamation' },
           { id: 'sec-6', number: 6, title: 'Ca Lâm Sàng Minh Họa & Quy Trình Giám Sát', icon: 'fa-solid fa-stethoscope' },
           { id: 'sec-7', number: 7, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
+        ]
+      },
+      {
+        id: 'ks-6-2',
+        slug: 'ks-6-2-nhom-khang-sinh-aminoglycoside',
+        title: 'Tổng quan về nhóm kháng sinh Aminoglycoside: Cơ chế dược lý, tối ưu hóa PK/PD và quản trị độc tính lâm sàng',
+        moduleNumber: 6,
+        moduleKey: 'module6-cac-nhom-khang-sinh',
+        moduleTitle: 'Module 6: Các Nhóm Kháng Sinh',
+        lessonNumber: 2,
+        order: 16,
+        description: 'Toàn diện nhóm Aminoglycoside (Gentamicin, Tobramycin, Amikacin, Plazomicin): cấu trúc đa cation, cơ chế diệt khuẩn 6 bước trên 30S ribosome & hiệp đồng Gram dương, 4 cơ chế đề kháng (AMEs, 16S-RMTases), chiến lược Extended-Interval (Cmax/MIC ≥ 8–10) & TDM 2 điểm mẫu, quản trị độc tính thận–tai–thần kinh cơ (MT-RNR1) và ca lâm sàng VAP do MDR P. aeruginosa.',
+        estimatedMinutes: 35,
+        tags: ['Aminoglycoside', 'Gentamicin', 'Tobramycin', 'Amikacin', 'Plazomicin', 'Cmax/MIC', 'Extended-Interval', 'TDM', 'MT-RNR1'],
+        awareTier: 'access',
+        pkpdModel: 'Cmax/MIC',
+        isNewEbm2026: true,
+        hasInteractiveTool: true,
+        toolId: 'pkpd-simulator',
+        keyTakeaway: 'Dùng liều cao kéo dài khoảng cách (Extended-Interval) tối ưu Cmax/MIC ≥ 8–10, bão hòa thụ thể Megalin ống thận để giảm AKI và xóa đề kháng thích ứng; giám sát TDM 2 điểm mẫu, ngưng sớm sau 72h khi thoát sốc và tầm soát nguy cơ đột biến ty thể MT-RNR1.',
+        sections: [
+          { id: 'sec-1', number: 1, title: 'Cấu Trúc Hóa Học & Phân Loại Dược Lý', icon: 'fa-solid fa-atom' },
+          { id: 'sec-2', number: 2, title: 'Cơ Chế Diệt Khuẩn & Phổ Kháng Khuẩn', icon: 'fa-solid fa-bacteria' },
+          { id: 'sec-3', number: 3, title: '4 Cơ Chế Đề Kháng Vi Sinh (AMEs & 16S-RMTases)', icon: 'fa-solid fa-shield-virus' },
+          { id: 'sec-4', number: 4, title: 'PK/PD (Cmax/MIC), Extended-Interval & TDM', icon: 'fa-solid fa-chart-line' },
+          { id: 'sec-5', number: 5, title: 'Độc Tính Lâm Sàng & Quản Trị Rủi Ro', icon: 'fa-solid fa-triangle-exclamation' },
+          { id: 'sec-6', number: 6, title: 'Ca Lâm Sàng VAP MDR P. aeruginosa & Tính TDM', icon: 'fa-solid fa-stethoscope' },
+          { id: 'sec-7', number: 7, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
+        ]
+      },
+      {
+        id: 'ks-6-3',
+        slug: 'ks-6-3-nhom-khang-sinh-quinolone',
+        title: 'Tổng quan về nhóm kháng sinh Fluoroquinolone: Cơ chế dược lý, tối ưu hóa PK/PD và quản trị rủi ro độc tính lâm sàng',
+        moduleNumber: 6,
+        moduleKey: 'module6-cac-nhom-khang-sinh',
+        moduleTitle: 'Module 6: Các Nhóm Kháng Sinh',
+        lessonNumber: 3,
+        order: 17,
+        description: 'Toàn diện nhóm Fluoroquinolone (Ciprofloxacin, Levofloxacin, Moxifloxacin, Delafloxacin): tương quan cấu trúc–hoạt tính (SAR C-6/C-7/N-1/C-8) & 4 thế hệ, cơ chế ức chế DNA Gyrase/Topoisomerase IV và 3 cơ chế đề kháng (QRDR, RND Efflux, PMQR), tối ưu hóa PK/PD (fAUC0–24/MIC, MSW, IV-to-PO 1:1 & tương tác chelate cation), Cảnh báo Hộp đen US FDA và ca lâm sàng CAP điều trị Levofloxacin liều cao ngắn ngày.',
+        estimatedMinutes: 35,
+        tags: ['Fluoroquinolone', 'Ciprofloxacin', 'Levofloxacin', 'Moxifloxacin', 'Delafloxacin', 'fAUC/MIC', 'FDA Black Box', 'IV-to-PO'],
+        awareTier: 'watch',
+        pkpdModel: 'AUC24/MIC',
+        isNewEbm2026: true,
+        hasInteractiveTool: true,
+        toolId: 'iv-po-stepdown',
+        keyTakeaway: 'Tối ưu hóa fAUC0–24/MIC (≥ 100–125 Gram âm, ≥ 30–40 phế cầu) & Cmax/MIC ≥ 8–10 để vượt Cửa sổ chọn lọc đột biến (MSW); tận dụng F = 99–100% chuyển IV-to-PO 1:1 (cách ly cation kim loại 2h trước / 4–6h sau) và tuân thủ nghiêm Cảnh báo Hộp đen FDA (gân Achilles, QTc/ĐMC, thần kinh, rối loạn đường huyết).',
+        sections: [
+          { id: 'sec-1', number: 1, title: 'Cấu Trúc Hóa Học (SAR) & Phân Loại 4 Thế Hệ', icon: 'fa-solid fa-atom' },
+          { id: 'sec-2', number: 2, title: 'Cơ Chế Diệt Khuẩn & 3 Con Đường Đề Kháng', icon: 'fa-solid fa-shield-virus' },
+          { id: 'sec-3', number: 3, title: 'PK/PD (fAUC/MIC), Dược Động Học & IV-to-PO', icon: 'fa-solid fa-chart-line' },
+          { id: 'sec-4', number: 4, title: 'Cảnh Báo Hộp Đen FDA & Độc Tính Hệ Thống', icon: 'fa-solid fa-triangle-exclamation' },
+          { id: 'sec-5', number: 5, title: 'Ca Lâm Sàng CAP & Quy Trình Giám Sát An Toàn', icon: 'fa-solid fa-stethoscope' },
+          { id: 'sec-6', number: 6, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
+        ]
+      },
+      {
+        id: 'ks-6-4',
+        slug: 'ks-6-4-nhom-khang-sinh-tetracycline-glycylcycline',
+        title: 'Tổng quan về nhóm kháng sinh Tetracycline & Glycylcycline: Dược lý học phân tử, đề kháng vi sinh, tối ưu hóa PK/PD và quản trị độc tính lâm sàng',
+        moduleNumber: 6,
+        moduleKey: 'module6-cac-nhom-khang-sinh',
+        moduleTitle: 'Module 6: Các Nhóm Kháng Sinh',
+        lessonNumber: 4,
+        order: 18,
+        description: 'Toàn diện nhóm Tetracycline & Glycylcycline (Doxycycline, Minocycline, Tigecycline, Eravacycline, Omadacycline): tiến hóa 3 thế hệ & SAR 4 vòng hydronaphthacene, ức chế 30S ribosome, 4 cơ chế đề kháng Tet resistome (MFS/RND, RPPs, Tet(X), 16S rRNA), PK/PD fAUC24h/MIC & phác đồ Tigecycline liều cao (200 mg → 100 mg q12h), Cảnh báo Hộp đen US FDA và ca lâm sàng sốc nhiễm khuẩn cIAI/VAP do CRAB & CRE.',
+        estimatedMinutes: 35,
+        tags: ['Tetracycline', 'Doxycycline', 'Minocycline', 'Glycylcycline', 'Tigecycline', 'Eravacycline', 'Omadacycline', 'fAUC/MIC', 'FDA Black Box', 'CRAB', 'CRE'],
+        awareTier: 'access',
+        pkpdModel: 'AUC24/MIC',
+        isNewEbm2026: true,
+        hasInteractiveTool: true,
+        toolId: 'aware-navigator',
+        keyTakeaway: 'Doxycycline (Access) là trụ cột cho vi khuẩn không điển hình, Rickettsia & CA-MRSA; Tigecycline (Reserve) thấm mô cực sâu (Vd 7–10 L/kg) nhưng Cmax máu & thải thận thấp (cấm đơn trị BSI/cUTI) — khi dùng cứu cánh CRAB/CRE cần phác đồ liều cao (200 → 100 mg q12h) phối hợp thuốc theo IDSA 2024–2026.',
+        sections: [
+          { id: 'sec-1', number: 1, title: 'Lịch Sử & Tiến Hóa 3 Thế Hệ Tetracycline–Glycylcycline', icon: 'fa-solid fa-timeline' },
+          { id: 'sec-2', number: 2, title: 'Cấu Trúc Phân Tử (SAR) & Cơ Chế Ribosome 30S', icon: 'fa-solid fa-atom' },
+          { id: 'sec-3', number: 3, title: '4 Cơ Chế Đề Kháng Vi Sinh (Tet Resistome)', icon: 'fa-solid fa-shield-virus' },
+          { id: 'sec-4', number: 4, title: 'PK/PD (fAUC/MIC), Dược Động Học & Liều Cao', icon: 'fa-solid fa-chart-line' },
+          { id: 'sec-5', number: 5, title: 'Phổ Kháng Khuẩn & Phân Tầng Chỉ Định Lâm Sàng', icon: 'fa-solid fa-bacteria' },
+          { id: 'sec-6', number: 6, title: 'Độc Tính, FDA Black Box & Tương Tác Thuốc', icon: 'fa-solid fa-triangle-exclamation' },
+          { id: 'sec-7', number: 7, title: 'Ca Lâm Sàng CRAB/CRE & Kế Hoạch Giám Sát', icon: 'fa-solid fa-stethoscope' },
+          { id: 'sec-8', number: 8, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
+        ]
+      },
+      {
+        id: 'ks-6-5',
+        slug: 'ks-6-5-nhom-khang-sinh-macrolide',
+        title: 'Tổng quan về nhóm kháng sinh Macrolide: Dược lý học phân tử, đề kháng vi sinh, tối ưu hóa PK/PD và quản trị độc tính lâm sàng',
+        moduleNumber: 6,
+        moduleKey: 'module6-cac-nhom-khang-sinh',
+        moduleTitle: 'Module 6: Các Nhóm Kháng Sinh',
+        lessonNumber: 5,
+        order: 19,
+        description: 'Toàn diện nhóm Macrolide (Erythromycin, Clarithromycin, Azithromycin, Ketolide): cấu trúc vòng lactone 14–15–16C & cơ chế khóa kênh thoát peptide 23S rRNA (50S), 3 cơ chế đề kháng (erm/MLSB/D-test, bơm mef(A), đột biến 23S rRNA), PK/PD fAUC24/MIC & tích tụ bạch cầu hướng hóa của Azithromycin (Vd 31.1 L/kg, t1/2 68–72h), độc tính tim mạch QTc/TdP, ranh giới CYP3A4, điều hòa miễn dịch trên CF/COPD và ca lâm sàng CAP nội trú.',
+        estimatedMinutes: 35,
+        tags: ['Macrolide', 'Erythromycin', 'Clarithromycin', 'Azithromycin', 'Ketolide', 'fAUC/MIC', 'MLSB', 'D-test', 'QTc', 'CYP3A4', 'Điều hòa miễn dịch'],
+        awareTier: 'watch',
+        pkpdModel: 'AUC24/MIC',
+        isNewEbm2026: true,
+        hasInteractiveTool: true,
+        toolId: 'iv-po-stepdown',
+        keyTakeaway: 'Azithromycin tích tụ nội bào bạch cầu gấp 10–100× huyết tương (t1/2 68–72h) cho phép liệu trình ngắn 3–5 ngày và không ức chế CYP3A4 (an toàn với Statin); luôn giám sát QTc (ngưng nếu > 500 ms hoặc tăng > 60 ms) và làm D-test tầm soát kháng Clindamycin cảm ứng (gen erm).',
+        sections: [
+          { id: 'sec-1', number: 1, title: 'Vị Trí Dược Lý & Hoàn Cảnh Lâm Sàng Macrolide', icon: 'fa-solid fa-compass' },
+          { id: 'sec-2', number: 2, title: 'Cấu Trúc Vòng Lactone (SAR) & Cơ Chế Ribosome 50S', icon: 'fa-solid fa-atom' },
+          { id: 'sec-3', number: 3, title: 'Phổ Kháng Khuẩn & 3 Cơ Chế Đề Kháng (erm, mef, 23S)', icon: 'fa-solid fa-shield-virus' },
+          { id: 'sec-4', number: 4, title: 'Dược Động Học (PK) & Dược Lực Học (fAUC/MIC)', icon: 'fa-solid fa-chart-line' },
+          { id: 'sec-5', number: 5, title: 'Độc Tính Tim Mạch (QTc), ADR & Tương Tác CYP3A4', icon: 'fa-solid fa-triangle-exclamation' },
+          { id: 'sec-6', number: 6, title: 'Điều Hòa Miễn Dịch & Ứng Dụng Ngoài Kháng Khuẩn', icon: 'fa-solid fa-lungs' },
+          { id: 'sec-7', number: 7, title: 'Ca Lâm Sàng CAP Nội Trú & Chiến Lược Step-Down', icon: 'fa-solid fa-stethoscope' },
+          { id: 'sec-8', number: 8, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
         ]
       }
     ]

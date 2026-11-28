@@ -22,7 +22,7 @@ Khi cần đọc hiểu, biên tập, chỉnh sửa hoặc tạo mới các bài
 - **`module3-pk-pd-duong-dung/`**: 3 bài về Chỉ số PK/PD (%T>MIC, Cmax/MIC, AUC/MIC), Phổ tác động của các loại kháng sinh & Chuyển đổi IV sang PO.
 - **`module4-ke-don-an-toan-adr/`**: 4 bài về Bảng kiểm 8 điều D8, Nguyên tắc phối hợp kháng sinh, Tác dụng phụ ADR & Các lưu ý, tương kỵ và chống chỉ định (ks-4-4.mdx).
 - **`module5-di-ung-beta-lactam/`**: 3 bài về Dị ứng thật vs Giả dị ứng, Tỷ lệ dị ứng chéo Beta-lactam & Dị ứng Quinolone.
-- **`module6-cac-nhom-khang-sinh/`**: Module 6 — Các Nhóm Kháng Sinh (mở đầu với bài `ks-6-1-nhom-khang-sinh-beta-lactam.mdx`: Tổng quan nhóm Beta-lactam).
+- **`module6-cac-nhom-khang-sinh/`**: Module 6 — Các Nhóm Kháng Sinh (5 bài: `ks-6-1` Beta-lactam; `ks-6-2` Aminoglycoside; `ks-6-3` Fluoroquinolone; `ks-6-4` Tetracycline & Glycylcycline; `ks-6-5` Macrolide).
 - **`components/`**: Linh kiện TypeScript native (`AntibioticQuickNav.ts`, `AWaRePill.ts`).
 - **`data/`**: CSDL chương trình đào tạo (`antibiotics-curriculum-data.ts`).
 - **`types/`**: Định nghĩa kiểu TypeScript (`antibiotics.types.ts`).

@@ -1,0 +1,842 @@
+---
+title: "Tổng Quan Về Nhóm Kháng Sinh Aminoglycoside: Cơ Chế Dược Lý, Tối Ưu Hóa PK/PD & Quản Trị Độc Tính Lâm Sàng"
+slug: "ks-6-2-nhom-khang-sinh-aminoglycoside"
+category: "antibiotics"
+module: "module6-cac-nhom-khang-sinh"
+moduleLabel: "Module 6: Các Nhóm Kháng Sinh"
+moduleNumber: 6
+lessonNumber: 2
+order: 16
+aware: "access"
+tags:
+  - "Aminoglycoside"
+  - "Gentamicin"
+  - "Tobramycin"
+  - "Amikacin"
+  - "Plazomicin"
+  - "PK/PD"
+  - "Cmax/MIC"
+  - "Extended-Interval"
+  - "TDM"
+  - "Độc tính thận"
+  - "Độc tính tai"
+  - "MT-RNR1"
+difficulty: "advanced"
+estimatedTime: 35
+lastUpdated: "2026-11-28"
+description: "Tổng quan chuyên sâu nhóm kháng sinh Aminoglycoside: cấu trúc đa cation & phân loại 3 thế hệ (Gentamicin, Tobramycin, Amikacin, Plazomicin), cơ chế diệt khuẩn 6 bước trên 30S ribosome & tác dụng đồng công Gram dương, 4 cơ chế đề kháng (AMEs, 16S-RMTases), tối ưu hóa PK/PD liều cao kéo dài khoảng cách (Extended-Interval) & TDM 2 điểm mẫu, quản trị độc tính thận–tai–thần kinh cơ (CPIC MT-RNR1) và ca lâm sàng VAP do MDR P. aeruginosa."
+sections:
+  - id: "sec-1"
+    number: 1
+    title: "Cấu Trúc Hóa Học & Phân Loại Dược Lý"
+    icon: "fa-solid fa-atom"
+  - id: "sec-2"
+    number: 2
+    title: "Cơ Chế Diệt Khuẩn & Phổ Kháng Khuẩn"
+    icon: "fa-solid fa-bacteria"
+  - id: "sec-3"
+    number: 3
+    title: "4 Cơ Chế Đề Kháng Vi Sinh (AMEs & 16S-RMTases)"
+    icon: "fa-solid fa-shield-virus"
+  - id: "sec-4"
+    number: 4
+    title: "PK/PD (Cmax/MIC), Extended-Interval & TDM"
+    icon: "fa-solid fa-chart-line"
+  - id: "sec-5"
+    number: 5
+    title: "Độc Tính Lâm Sàng & Quản Trị Rủi Ro"
+    icon: "fa-solid fa-triangle-exclamation"
+  - id: "sec-6"
+    number: 6
+    title: "Ca Lâm Sàng VAP MDR P. aeruginosa & Tính TDM"
+    icon: "fa-solid fa-stethoscope"
+  - id: "sec-7"
+    number: 7
+    title: "Tài Liệu Tham Khảo (AMA Style)"
+    icon: "fa-solid fa-book-medical"
+---
+
+# 🛡️ TỔNG QUAN VỀ NHÓM KHÁNG SINH AMINOGLYCOSIDE: CƠ CHẾ DƯỢC LÝ, TỐI ƯU HÓA PK/PD & QUẢN TRỊ ĐỘC TÍNH LÂM SÀNG
+
+<div class="module-badge-group">
+  <span class="badge badge-teal"><i class="fa-solid fa-shield-virus"></i> Kháng Sinh Học Lâm Sàng</span>
+  <span class="badge badge-blue"><i class="fa-solid fa-capsules"></i> Module 6 • Các Nhóm Kháng Sinh</span>
+  <span class="badge badge-purple"><i class="fa-solid fa-chart-line"></i> PK/PD Cmax/MIC &amp; TDM</span>
+  <span class="badge badge-emerald"><i class="fa-solid fa-award"></i> IDSA • SSC • CPIC EBM 2026</span>
+</div>
+
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-user-doctor"></i> THÔNG TIN CHUYÊN ĐỀ &amp; HỘI ĐỒNG BIÊN SOẠN</div>
+  <p><strong>Tác giả:</strong> Phó Giáo sư, Tiến sĩ, Bác sĩ Y khoa — Bộ môn Dược lý Lâm sàng &amp; Phân môn Bệnh Nhiễm trùng.</p>
+  <p style="margin-top: 0.35rem;"><strong>Chuẩn hóa EBM:</strong> Cập nhật theo Hướng dẫn IDSA/ATS, Surviving Sepsis Campaign (SSC), AHA Infective Endocarditis, CPIC <em>MT-RNR1</em> Pharmacogenetics &amp; Phân tầng WHO AWaRe 2023.</p>
+</div>
+
+<AntibioticQuickNav />
+
+<section class="stats-strip" aria-label="Thông số cốt lõi nhóm Aminoglycoside">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val">Cmax / MIC ≥ 8–10</div>
+      <div class="stat-lbl">PK/PD phụ thuộc nồng độ &amp; kéo dài PAE (2–8 giờ)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">AUC0–24 / MIC 80–100+</div>
+      <div class="stat-lbl">Đích điều trị sốc nhiễm khuẩn, HAP/VAP (UTI: 30–50)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">5% – 15% AKI</div>
+      <div class="stat-lbl">Độc thận hồi phục qua Megalin (tới 50% ở bệnh nhân ICU)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">MT-RNR1 m.1555A&gt;G</div>
+      <div class="stat-lbl">Đột biến ty thể gây điếc vĩnh viễn chỉ sau 1 liều đơn</div>
+    </div>
+  </div>
+</section>
+
+---
+
+## 1. Cấu Trúc Hóa Học & Phân Loại Dược Lý (Chemical Structure & Classification) {#sec-1}
+
+### 1.1. Đặc Tính Lý Hóa Đa Cation & Hệ Quả Dược Động Học
+
+Nhóm kháng sinh **Aminoglycoside** là các hợp chất **đa cation (*polycationic*)**, mang tính kiềm mạnh và phân tử rất phân cực (**ưa nước mạnh — *highly hydrophilic***). Về mặt cấu trúc hóa học, nhân khung trung tâm của phân tử là một vòng **aminocyclitol** (thường là **2-deoxystreptamine**; riêng đối với **Streptomycin** là nhân **streptidine**), liên kết qua cầu nối glycoside với một hoặc nhiều **đường amino (*aminosugars*)**.
+
+Tính chất lý hóa đặc trưng này quy định **4 đặc tính dược động học nền tảng** của toàn nhóm:
+
+* **Hấp thu đường uống cực kỳ kém:** Sinh khả dụng đường tiêu hóa ($F$) **$< 1\%$** — muốn đạt tác dụng toàn thân bắt buộc dùng đường tiêm truyền tĩnh mạch (IV) hoặc tiêm bắp (IM).
+* **Phân bố chủ yếu ở khoang ngoại bào:** Thể tích phân bố nhỏ ($V_d \approx 0.2\text{--}0.3\text{ L/kg}$ ở người trưởng thành khỏe mạnh), tương ứng với thể tích dịch ngoại bào; thuốc phân bố kém vào mô mỡ.
+* **Thâm nhập kém qua màng sinh học &amp; tế bào ký chủ:** Ít qua hàng rào máu–não, dịch não tủy (CSF) và dịch lót biểu mô phế nang (ELF).
+* **Tích lũy chọn lọc tại 2 cơ quan đích gây độc:** Ngoại lệ tập trung nồng độ cao trong **tế bào ống lượn gần tại thận (*proximal tubular cells*)** qua thụ thể **Megalin** và **tế bào lông cảm giác của tai trong (*inner ear sensory hair cells*)** do sự hiện diện của các thụ thể vận chuyển nội bào đặc hiệu.
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-atom" style="color: var(--dsp-sky, #0284c7);"></i>
+      CẤU TRÚC PHÂN TỬ ĐA CATION &amp; PHÂN LOẠI 3 THẾ HỆ AMINOGLYCOSIDE LÂM SÀNG
+    </div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 415" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <text x="480" y="32" text-anchor="middle" font-size="18" font-weight="900" fill="var(--color-text, #0f172a)">
+        KIẾN TRÚC ĐA CATION (AMINOCYCLITOL + AMINOSUGARS) &amp; 3 THẾ HỆ LÂM SÀNG
+      </text>
+      <text x="480" y="54" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Phân cực mạnh (F đường uống &lt; 1%, Vd ≈ 0.2–0.3 L/kg) • Cải tiến cấu trúc HABA giúp kháng enzym AMEs
+      </text>
+
+      <g transform="translate(30, 72)">
+        <rect x="0" y="0" width="900" height="92" rx="12" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" />
+        <rect x="20" y="20" width="205" height="52" rx="8" fill="rgba(16, 185, 129, 0.14)" stroke="#10b981" stroke-width="1.8" />
+        <text x="122" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#059669">Đường Amino (Aminosugar)</text>
+        <text x="122" y="60" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Mang nhóm -NH3+ &amp; -OH</text>
+
+        <line x1="225" y1="46" x2="295" y2="46" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="5 3" />
+        <text x="260" y="38" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0284c7">Nối glycoside</text>
+
+        <rect x="295" y="14" width="310" height="64" rx="10" fill="#0284c7" />
+        <text x="450" y="39" text-anchor="middle" font-size="13" font-weight="900" fill="#ffffff">NHÂN KHUNG AMINOCYCLITOL (+)</text>
+        <text x="450" y="58" text-anchor="middle" font-size="11" font-weight="600" fill="#e0f2fe">2-Deoxystreptamine (Đa số) • Streptidine (Streptomycin)</text>
+
+        <line x1="605" y1="46" x2="675" y2="46" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="5 3" />
+        <text x="640" y="38" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0284c7">Nối glycoside</text>
+
+        <rect x="675" y="20" width="205" height="52" rx="8" fill="rgba(139, 92, 246, 0.14)" stroke="#8b5cf6" stroke-width="1.8" />
+        <text x="777" y="42" text-anchor="middle" font-size="12" font-weight="800" fill="#7c3aed">Đường Amino / Nhóm HABA</text>
+        <text x="777" y="60" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">C-1 HABA che chắn enzym AME</text>
+      </g>
+
+      <g transform="translate(30, 182)">
+        <rect x="0" y="0" width="286" height="212" rx="12" fill="rgba(245, 158, 11, 0.06)" stroke="#d97706" stroke-width="1.5" />
+        <rect x="12" y="12" width="262" height="32" rx="6" fill="#d97706" />
+        <text x="143" y="32" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">1. THẾ HỆ CỔ ĐIỂN (LEGACY)</text>
+        <text x="18" y="68" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Streptomycin (Streptidine)</text>
+        <text x="26" y="86" font-size="10.5" fill="var(--color-text-muted, #64748b)">Lao (TB), Dịch hạch, Tularaemia, IE</text>
+        <text x="18" y="114" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Neomycin &amp; Kanamycin</text>
+        <text x="26" y="132" font-size="10.5" fill="var(--color-text-muted, #64748b)">Độc thận/tai toàn thân rất cao</text>
+        <text x="26" y="150" font-size="10.5" fill="var(--color-text-muted, #64748b)">Neomycin chỉ dùng tại chỗ / uống ruột</text>
+        <rect x="18" y="168" width="250" height="30" rx="6" fill="rgba(245, 158, 11, 0.14)" />
+        <text x="143" y="187" text-anchor="middle" font-size="10.5" font-weight="800" fill="#b45309">Hạn chế toàn thân • Dễ bị AME bất hoạt</text>
+      </g>
+
+      <g transform="translate(337, 182)">
+        <rect x="0" y="0" width="286" height="212" rx="12" fill="rgba(16, 185, 129, 0.07)" stroke="#10b981" stroke-width="1.6" />
+        <rect x="12" y="12" width="262" height="32" rx="6" fill="#059669" />
+        <text x="143" y="32" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">2. THẾ HỆ 2 &amp; 3 (CHỦ LỰC)</text>
+        <text x="18" y="68" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Gentamicin (-micin)</text>
+        <text x="26" y="86" font-size="10.5" fill="var(--color-text-muted, #64748b)">Phổ biến nhất • Đồng công IE Gram (+)</text>
+        <text x="18" y="110" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Tobramycin (IV &amp; Phun hít)</text>
+        <text x="26" y="128" font-size="10.5" fill="var(--color-text-muted, #64748b)">Mạnh hơn Gentamicin 2–4× trên PsA</text>
+        <text x="18" y="152" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Amikacin (Bán tổng hợp + HABA)</text>
+        <rect x="18" y="168" width="250" height="30" rx="6" fill="rgba(16, 185, 129, 0.14)" />
+        <text x="143" y="187" text-anchor="middle" font-size="10.5" font-weight="800" fill="#059669">Kháng hầu hết AME • Trụ cột Gram (-) MDR</text>
+      </g>
+
+      <g transform="translate(644, 182)">
+        <rect x="0" y="0" width="286" height="212" rx="12" fill="rgba(139, 92, 246, 0.07)" stroke="#8b5cf6" stroke-width="1.6" />
+        <rect x="12" y="12" width="262" height="32" rx="6" fill="#7c3aed" />
+        <text x="143" y="32" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">3. THẾ HỆ MỚI (NEOGLYCOSIDE)</text>
+        <text x="18" y="68" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Plazomicin (US-FDA 2018)</text>
+        <text x="26" y="86" font-size="10.5" fill="var(--color-text-muted, #64748b)">Tái cấu trúc từ Sisomicin</text>
+        <text x="18" y="112" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">• Che chắn kép C-1 &amp; 6&apos;</text>
+        <text x="26" y="130" font-size="10.5" fill="var(--color-text-muted, #64748b)">Nhóm HABA tại C-1 + Hydroxyethyl 6&apos;</text>
+        <text x="26" y="148" font-size="10.5" fill="var(--color-text-muted, #64748b)">Kháng AAC, ANT, APH phổ biến</text>
+        <rect x="18" y="168" width="250" height="30" rx="6" fill="rgba(239, 68, 68, 0.14)" />
+        <text x="143" y="187" text-anchor="middle" font-size="10.5" font-weight="800" fill="#dc2626">Dự trữ (Reserve) cho CRE &amp; ESBL nặng</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+### 1.2. Phân Loại Các Đại Diện Chính Trong Lâm Sàng
+
+* **Thế hệ cổ điển (*Legacy Aminoglycosides*):**
+  * **Streptomycin:** Kháng sinh đầu tiên của nhóm, trích xuất từ *Streptomyces griseus*. Hiện nay chỉ định bị hạn chế trong điều trị **Bệnh lao** (*Mycobacterium tuberculosis*), **Bệnh Dịch hạch** (*Yersinia pestis*), **Bệnh Tularaemia** (*Francisella tularensis*) hoặc phối hợp trong Viêm nội tâm mạc nhiễm khuẩn.
+  * **Neomycin &amp; Kanamycin:** Có độc tính trên thận và tai rất cao khi dùng đường toàn thân, do đó **Neomycin** chỉ dùng tại chỗ (uống để sát khuẩn ruột hoặc bôi ngoài da) và **Kanamycin** hiện ít còn sử dụng.
+* **Thế hệ hai và ba (*Mainstream Systemic Aminoglycosides*):**
+  * **Gentamicin:** Trích xuất từ *Micromonospora purpurea* (do đó danh pháp kết thúc bằng **`-micin`** thay vì **`-mycin`**). Là đại diện được sử dụng rộng rãi nhất cho các nhiễm trùng Gram âm nặng và phối hợp đồng công (*synergy*) với Beta-lactam/Glycopeptide trong điều trị vi khuẩn Gram dương.
+  * **Tobramycin:** Trích xuất từ *Streptomyces tenebrarius*. Có hoạt tính *in vitro* trên *Pseudomonas aeruginosa* mạnh hơn Gentamicin từ **2 đến 4 lần**. Được bào chế dạng tiêm truyền toàn thân và dạng phun hít (*aerosolized/nebulized*) chuyên biệt cho bệnh nhân Xơ nang (*Cystic Fibrosis*) hoặc Viêm phổi liên quan đến thở máy (VAP).
+  * **Amikacin:** Kháng sinh bán tổng hợp từ Kanamycin A bằng cách gắn thêm chuỗi **L-hydroxyaminobutyryl amide (HABA)** tại vị trí **C-1**. Cấu trúc cồng kềnh này giúp Amikacin kháng lại hầu hết các enzym biến đổi kháng sinh (*Aminoglycoside Modifying Enzymes — AMEs*) thông thường, duy trì hoạt tính cao trên các chủng vi khuẩn Gram âm đa kháng (MDR).
+* **Thế hệ mới — Neoglycoside:**
+  * **Plazomicin:** Đại diện mới nhất thuộc phân nhóm Neoglycoside, được phê duyệt bởi **US-FDA năm 2018**. Phân tử Plazomicin được tái cấu trúc từ **Sisomicin** với việc bổ sung nhóm **HABA tại C-1** và nhóm **hydroxyethyl tại vị trí 6'**, giúp bảo vệ phân tử triệt để trước sự tấn công của hầu hết các AME (bao gồm AAC, ANT, APH) phổ biến ở vi khuẩn họ *Enterobacterales* kháng Carbapenem (**CRE**) hoặc tiết **ESBL**.
+
+| Thế Hệ / Phân Nhóm | Hoạt Chất | Nguồn Gốc / Cấu Trúc Đặc Trưng | Phân Tầng AWaRe | Đặc Điểm Hoạt Tính &amp; Chỉ Định Lâm Sàng Chính |
+| :--- | :--- | :--- | :---: | :--- |
+| **Thế hệ cổ điển** | **Streptomycin** | *Streptomyces griseus* (nhân **streptidine**) | <AWaRePill tier="watch" /> | Bệnh lao (*M. tuberculosis*), Dịch hạch (*Y. pestis*), Tularaemia (*F. tularensis*), phối hợp IE |
+| **Thế hệ cổ điển** | **Neomycin / Kanamycin** | Tự nhiên; độc tính thận–tai toàn thân cực cao | <AWaRePill tier="watch" /> | **Neomycin** chỉ dùng tại chỗ (sát khuẩn ruột PO, bôi ngoài da); Kanamycin ít còn sử dụng |
+| **Thế hệ 2–3 (Chủ lực)** | **Gentamicin** | *Micromonospora purpurea* (đuôi `-micin`) | <AWaRePill tier="access" /> | Phổ biến nhất cho Gram (-) nặng &amp; phối hợp **đồng công (synergy)** với Beta-lactam/Vancomycin trên Gram (+) |
+| **Thế hệ 2–3 (Chủ lực)** | **Tobramycin** | *Streptomyces tenebrarius* (IV &amp; phun hít) | <AWaRePill tier="watch" /> | Hoạt tính *in vitro* trên *P. aeruginosa* mạnh hơn Gentamicin **2–4 lần**; có dạng khí dung cho Xơ nang &amp; VAP |
+| **Thế hệ 2–3 (Chủ lực)** | **Amikacin** | Bán tổng hợp từ Kanamycin A + chuỗi **HABA (C-1)** | <AWaRePill tier="access" /> | Kháng hầu hết AMEs thông thường; lựa chọn chủ lực cho Gram (-) đa kháng (MDR) &amp; *Mycobacteria* (MAC, *M. abscessus*) |
+| **Thế hệ mới (Neoglycoside)** | **Plazomicin** | Tái cấu trúc từ Sisomicin (**C-1 HABA** + **6'-hydroxyethyl**) | <AWaRePill tier="reserve" /> | US-FDA 2018; kháng hầu hết AMEs (AAC, ANT, APH) ở *Enterobacterales* kháng Carbapenem (**CRE**) &amp; **ESBL** |
+
+---
+
+## 2. Cơ Chế Diệt Khuẩn & Phổ Kháng Khuẩn (Mechanism of Action & Spectrum) {#sec-2}
+
+### 2.1. Cơ Chế Tác Dụng Mức Độ Phân Tử (2 Giai Đoạn &amp; 6 Bước)
+
+Aminoglycoside là nhóm kháng sinh **diệt khuẩn phụ thuộc nồng độ (*concentration-dependent bactericidal activity*)** duy nhất tác động trực tiếp lên quá trình tổng hợp protein của vi khuẩn. Quá trình diệt khuẩn diễn ra qua **2 giai đoạn nối tiếp**:
+
+1. **Vận chuyển qua màng tế bào vi khuẩn (*Bacterial Uptake*):**
+   * **Giai đoạn 1 (*Phase I — Tĩnh điện*):** Phân tử Aminoglycoside tích điện dương liên kết tĩnh điện với các đầu phosphat mang điện âm của **Lipopolysaccharide (LPS)** ở màng ngoài vi khuẩn Gram âm (hoặc **Teichoic acid** ở vi khuẩn Gram dương). Sự gắn kết này làm biến dạng và gia tăng tính thấm của màng ngoài, mở đường cho thuốc đi vào khoảng chu chất (*periplasm*).
+   * **Giai đoạn 2 (*Phase II — Vận chuyển phụ thuộc năng lượng EDP1 &amp; EDP2*):** Phân tử thuốc được vận chuyển chủ động qua màng tế bào nội chất nhờ **thế điện màng (*membrane potential*, $\Delta\Psi$)** sinh ra bởi chuỗi hô hấp tế bào hiếu khí. Do đó, quá trình vận chuyển này bị **ức chế hoàn toàn** trong môi trường kỵ khí, môi trường có pH acid (như ổ áp xe) hoặc nồng độ cation hóa trị hai ($\text{Ca}^{2+}$, $\text{Mg}^{2+}$) cao.
+2. **Gắn kết Ribosome và phá hủy tổng hợp Protein:**
+   * Khi vào trong khối tương bào, Aminoglycoside gắn cố định và bất khả nghịch vào **vị trí A (*A-site*) của RNA ribosomal 16S** thuộc **tiểu đơn vị 30S ribosome**.
+   * Sự gắn kết này gây ra **3 hậu quả dược lý quan trọng**: (1) Cản trở phức hợp mở đầu tổng hợp chuỗi polypeptide; (2) Gây **đọc sai mã di truyền trên mRNA (*misreading of codons*)**, làm lắp ráp nhầm các amino acid bất thường vào chuỗi protein; (3) Chấm dứt sớm quá trình dịch mã. Các protein biến tính lỗi này sau đó **chen vào màng tế bào nội chất**, phá hủy hoàn toàn tính vẹn toàn của màng vi khuẩn, dẫn đến thoát dịch nội bào và làm vi khuẩn chết nhanh chóng.
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-bacteria" style="color: var(--dsp-violet, #8b5cf6);"></i>
+      TRÌNH TỰ DIỆT KHUẨN 6 BƯỚC TRÊN RIBOSOME 30S &amp; HIỆP ĐỒNG PHÁ VÁCH TRÊN GRAM DƯƠNG
+    </div>
+    <span class="badge badge-purple">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 455" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="agArrowSky" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7" />
+        </marker>
+        <marker id="agArrowViolet" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#7c3aed" />
+        </marker>
+        <marker id="agArrowRose" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626" />
+        </marker>
+      </defs>
+
+      <text x="480" y="30" text-anchor="middle" font-size="17" font-weight="900" fill="var(--color-text, #0f172a)">
+        TIẾN TRÌNH DIỆT KHUẨN 6 BƯỚC CỦA AMINOGLYCOSIDE (PHỤ THUỘC OXY &amp; THẾ ĐIỆN MÀNG ΔΨ)
+      </text>
+
+      <g transform="translate(30, 52)">
+        <rect x="0" y="0" width="278" height="104" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.6" />
+        <rect x="12" y="10" width="68" height="22" rx="5" fill="#0284c7" />
+        <text x="46" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 1</text>
+        <text x="90" y="25" font-size="12" font-weight="800" fill="#0284c7">Liên Kết Tĩnh Điện</text>
+        <text x="14" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Aminoglycoside (+) gắn tĩnh điện</text>
+        <text x="14" y="70" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">vào nhóm phosphat (-) của LPS</text>
+        <text x="14" y="88" font-size="10.5" fill="var(--color-text-muted, #64748b)">(Màng ngoài Gram âm / Teichoic Gram +)</text>
+
+        <line x1="278" y1="52" x2="306" y2="52" stroke="#0284c7" stroke-width="2.2" marker-end="url(#agArrowSky)" />
+
+        <rect x="311" y="0" width="278" height="104" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.6" />
+        <rect x="323" y="10" width="68" height="22" rx="5" fill="#0284c7" />
+        <text x="357" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 2</text>
+        <text x="401" y="25" font-size="12" font-weight="800" fill="#0284c7">Tăng Thấm Màng Ngoài</text>
+        <text x="325" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Đẩy ion Mg2+/Ca2+ làm biến dạng</text>
+        <text x="325" y="70" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">và tăng tính thấm màng ngoài</text>
+        <text x="325" y="88" font-size="10.5" fill="var(--color-text-muted, #64748b)">Thuốc xâm nhập khoảng chu chất (periplasm)</text>
+
+        <line x1="589" y1="52" x2="617" y2="52" stroke="#0284c7" stroke-width="2.2" marker-end="url(#agArrowSky)" />
+
+        <rect x="622" y="0" width="278" height="104" rx="10" fill="rgba(13, 148, 136, 0.1)" stroke="#0d9488" stroke-width="1.6" />
+        <rect x="634" y="10" width="68" height="22" rx="5" fill="#0d9488" />
+        <text x="668" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 3</text>
+        <text x="712" y="25" font-size="12" font-weight="800" fill="#0f766e">Vận Chuyển EDP1/EDP2</text>
+        <text x="636" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Vận chuyển chủ động qua màng nội</text>
+        <text x="636" y="70" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">chất nhờ hô hấp hiếu khí &amp; ΔΨ</text>
+        <text x="636" y="88" font-size="10.5" font-weight="700" fill="#dc2626">Tắc nghẽn khi kỵ khí / pH acid / Ca2+ cao</text>
+      </g>
+
+      <path d="M 791 156 L 791 184 L 169 184 L 169 204" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#agArrowViolet)" />
+
+      <g transform="translate(30, 210)">
+        <rect x="0" y="0" width="278" height="108" rx="10" fill="rgba(139, 92, 246, 0.09)" stroke="#7c3aed" stroke-width="1.6" />
+        <rect x="12" y="10" width="68" height="22" rx="5" fill="#7c3aed" />
+        <text x="46" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 4</text>
+        <text x="90" y="25" font-size="12" font-weight="800" fill="#7c3aed">Gắn 30S Ribosome</text>
+        <text x="14" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Gắn bất khả nghịch vào vị trí</text>
+        <text x="14" y="70" font-size="11" font-weight="800" fill="#7c3aed">A-site trên 16S rRNA (30S)</text>
+        <text x="14" y="90" font-size="10.5" fill="var(--color-text-muted, #64748b)">Cản trở phức hợp mở đầu dịch mã</text>
+
+        <line x1="278" y1="54" x2="306" y2="54" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#agArrowViolet)" />
+
+        <rect x="311" y="0" width="278" height="108" rx="10" fill="rgba(245, 158, 11, 0.09)" stroke="#d97706" stroke-width="1.6" />
+        <rect x="323" y="10" width="68" height="22" rx="5" fill="#d97706" />
+        <text x="357" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 5</text>
+        <text x="401" y="25" font-size="12" font-weight="800" fill="#b45309">Đọc Sai Mã mRNA</text>
+        <text x="325" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Misreading of codons &amp; chấm dứt</text>
+        <text x="325" y="70" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">sớm chuỗi polypeptide</text>
+        <text x="325" y="90" font-size="10.5" fill="var(--color-text-muted, #64748b)">Tạo hàng loạt protein biến tính lỗi</text>
+
+        <line x1="589" y1="54" x2="617" y2="54" stroke="#dc2626" stroke-width="2.2" marker-end="url(#agArrowRose)" />
+
+        <rect x="622" y="0" width="278" height="108" rx="10" fill="rgba(220, 38, 38, 0.1)" stroke="#dc2626" stroke-width="1.8" />
+        <rect x="634" y="10" width="68" height="22" rx="5" fill="#dc2626" />
+        <text x="668" y="25" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff">BƯỚC 6</text>
+        <text x="712" y="25" font-size="12" font-weight="800" fill="#dc2626">Thủng Màng &amp; Diệt Khuẩn</text>
+        <text x="636" y="52" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Protein lỗi chèn vào màng nội chất</text>
+        <text x="636" y="70" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">gây rò rỉ ion (khuếch đại EDP2)</text>
+        <text x="636" y="90" font-size="10.5" font-weight="800" fill="#dc2626">Chết tế bào vi khuẩn cấp tính</text>
+      </g>
+
+      <g transform="translate(30, 338)">
+        <rect x="0" y="0" width="900" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="#10b981" stroke-width="1.5" />
+        <rect x="14" y="14" width="225" height="26" rx="6" fill="#059669" />
+        <text x="126" y="31" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">CƠ CHẾ ĐỒNG CÔNG (SYNERGY)</text>
+        <text x="252" y="31" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">Trên Vi Khuẩn Gram Dương (Enterococcus, Viridans Streptococci, S. aureus van nhân tạo)</text>
+        <text x="18" y="58" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">• Đơn trị liệu: Lớp Peptidoglycan dày cản trở Aminoglycoside xuyên vào nội bào → Hiệu lực yếu.</text>
+        <text x="18" y="79" font-size="11.5" font-weight="700" fill="#059669">• Phối hợp Beta-lactam (Ampicillin/Penicillin G) hoặc Vancomycin: Phá vỡ thành Peptidoglycan → Mở cửa cho Aminoglycoside ồ ạt xâm nhập diệt khuẩn!</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="infobox warning">
+  <div class="infobox-title"><i class="fa-solid fa-flask"></i> NGUYÊN LÝ MÔI TRƯỜNG: TẠI SAO AMINOGLYCOSIDE VÔ HIỆU TRÊN KỴ KHÍ &amp; Ổ ÁP XE?</div>
+  <p>Quá trình vận chuyển chủ động <strong>EDP1/EDP2</strong> đòi hỏi chuỗi hô hấp tế bào hiếu khí tạo thế điện màng ($\Delta\Psi$). Vì vậy: (1) Aminoglycoside <strong>không có bất kỳ hoạt tính nào</strong> trên vi khuẩn kỵ khí bắt buộc (<em>Bacteroides fragilis</em>, <em>Clostridium</em>); (2) Môi trường pH acid, giàu mủ/DNA tự do và giàu cation $\text{Ca}^{2+}/\text{Mg}^{2+}$ tại ổ áp xe chưa dẫn lưu sẽ <strong>triệt tiêu hiệu quả diệt khuẩn</strong> — bắt buộc kiểm soát ổ nhiễm (<em>source control</em>) song song với kháng sinh.</p>
+</div>
+
+### 2.2. Phổ Kháng Khuẩn Lâm Sàng
+
+* **Vi khuẩn Gram âm hiếu khí (*Aerobic Gram-Negative Bacilli*):** Đây là phổ tác dụng cốt lõi của Aminoglycoside. Thuốc có hoạt tính diệt khuẩn cực mạnh trên họ *Enterobacterales* (*Escherichia coli*, *Klebsiella pneumoniae*, *Enterobacter cloacae*, *Proteus mirabilis*, *Serratia marcescens*) và các trực khuẩn Gram âm không lên men (*Pseudomonas aeruginosa*, *Acinetobacter baumannii*).
+* **Tác dụng Đồng công (*Synergy*) trên Vi khuẩn Gram dương:** Khi dùng đơn độc, Aminoglycoside không thể thâm nhập hiệu quả qua lớp peptidoglycan dày của vi khuẩn Gram dương (mức độ nhạy cảm yếu/tự nhiên). Tuy nhiên, khi phối hợp với một kháng sinh tác động lên thành tế bào như **Beta-lactam** (Ampicillin, Penicillin G, Cefepime) hoặc **Glycopeptide** (Vancomycin), thuốc phá thành sẽ phá hủy cấu trúc peptidoglycan, mở đường cho Aminoglycoside ồ ạt thâm nhập vào nội bào. Sự phối hợp này tạo nên **tác dụng diệt khuẩn đồng công triệt để (*synergistic bactericidal effect*)**, là nền tảng kinh điển trong điều trị **Viêm nội tâm mạc nhiễm khuẩn (*Infective Endocarditis*)** do *Enterococcus faecalis*, *Viridans group streptococci*, hoặc *Staphylococcus aureus* / *Staphylococcus epidermidis* mang vật liệu nhân tạo.
+* **Trực khuẩn Kháng cồn kháng acid (*Mycobacteria*):** **Amikacin** và **Streptomycin** có hoạt tính lâm sàng quan trọng trên *Mycobacterium tuberculosis* và các chủng Mycobacteria không lao (**NTM**) như *Mycobacterium avium complex* (**MAC**) và *Mycobacterium abscessus*.
+
+---
+
+## 3. Cơ Chế Đề Kháng Vi Sinh (Mechanisms of Resistance) {#sec-3}
+
+Vi khuẩn phát triển cơ chế đề kháng Aminoglycoside thông qua **4 con đường phân tử chính**:
+
+1. **Sản sinh Enzym biến đổi Aminoglycoside (*Aminoglycoside Modifying Enzymes — AMEs*):**
+   * Đây là cơ chế đề kháng **phổ biến và quan trọng nhất** trên lâm sàng, thường nằm trên plasmid truyền ngang giữa các chủng vi khuẩn.
+   * Các AME biến đổi hóa học các nhóm chức amino ($-\text{NH}_2$) hoặc hydroxyl ($-\text{OH}$) tự do trên phân tử Aminoglycoside, làm mất hoàn toàn khả năng gắn kết của thuốc vào 30S ribosome. AME gồm **3 lớp chính**:
+     * **AAC (*N*-Acetyltransferases):** Acetyl hóa các nhóm $-\text{NH}_2$.
+     * **ANT (*O*-Nucleotidyltransferases):** Adenylyl hóa các nhóm $-\text{OH}$.
+     * **APH (*O*-Phosphotransferases):** Phosphoryl hóa các nhóm $-\text{OH}$.
+   * **Amikacin** kháng lại hầu hết các AME này nhờ chuỗi **HABA** cồng kềnh. **Plazomicin** có khả năng kháng lại cả **AAC(6')-I**, **ANT(2")-I** và **APH(3')-III**.
+2. **Methyl hóa điểm gắn Ribosome (*16S rRNA Methyltransferases — 16S-RMTases*):**
+   * Các enzym 16S-RMTases (như **ArmA**, **RmtB**, **RmtC**, **RmtD**) gắn một nhóm methyl vào vị trí **guanine G1405** hoặc **adenine A1408** trên 16S rRNA.
+   * Sự methyl hóa này tạo ra cản trở không gian (*steric hindrance*) ngăn cản hoàn toàn sự gắn kết của **mọi Aminoglycoside** (kể cả **Amikacin**, **Tobramycin**, **Gentamicin** và **Plazomicin**), gây ra **kháng toàn bộ nhóm Aminoglycoside nồng độ cao (*pan-aminoglycoside high-level resistance*)**. Gen mã hóa 16S-RMTases thường nằm trên cùng plasmid mang gen mã hóa Metallo-beta-lactamase (như **NDM-1**) ở trực khuẩn Gram âm đa kháng.
+3. **Bơm đẩy Tích cực (*Efflux Pumps*) &amp; Suy giảm Tính thấm:**
+   * Tăng hoạt hệ thống bơm đẩy đa thuốc thuộc họ **RND (*Resistance-Nodulation-Division*)**, điển hình là hệ thống **MexXY-OprM** ở *Pseudomonas aeruginosa*, chủ động đào thải Aminoglycoside ra khỏi khoảng chu chất (*periplasm*).
+   * Đột biến gây mất hoặc giảm biểu hiện kênh porin màng ngoài, hoặc giảm thế điện màng nội chất ($\Delta\Psi$), làm suy giảm quá trình vận chuyển EDP1/EDP2.
+4. **Đề kháng Thích ứng (*Adaptive Resistance*):**
+   * Là hiện tượng vi khuẩn tiếp xúc với nồng độ Aminoglycoside dưới mức ức chế tối thiểu (*sub-MIC*) hoặc kéo dài không có khoảng nghỉ, dẫn đến sự **sụt giảm tạm thời** quá trình vận chuyển thuốc vào tế bào ở các liều kế tiếp.
+   * Hiện tượng này diễn ra trong vài giờ sau liều đầu tiên và sẽ **biến mất hoàn toàn** khi vi khuẩn trải qua khoảng thời gian **"trống thuốc" (*drug-free interval*)**. Đây là cơ sở sinh học then chốt ủng hộ chiến lược dùng liều cao kéo dài khoảng cách thay vì chia nhỏ liều trong ngày.
+
+| Cơ Chế Đề Kháng | Phân Tử / Gen Điển Hình | Tác Động Lên Các Aminoglycoside | Ý Nghĩa Lâm Sàng &amp; Chiến Lược Khắc Phục |
+| :--- | :--- | :--- | :--- |
+| **1. Enzym biến đổi (AMEs)** | Plasmid mã hóa **AAC**, **ANT**, **APH** | Bất hoạt Gentamicin/Tobramycin; **Amikacin** &amp; **Plazomicin** phần lớn còn nhạy | Cơ chế phổ biến nhất; ưu tiên **Amikacin** hoặc **Plazomicin** theo kháng sinh đồ |
+| **2. Methyl hóa 16S rRNA** | **16S-RMTases** (*ArmA*, *RmtB*, *RmtC*, *RmtD*) tại G1405 / A1408 | **Kháng toàn nhóm** (Gentamicin, Tobramycin, Amikacin &amp; cả **Plazomicin**) | Thường đồng cư trên plasmid mang **NDM-1**; cần chuyển sang phác đồ thay thế không chứa Aminoglycoside |
+| **3. Bơm đẩy RND &amp; giảm thấm** | Bơm **MexXY-OprM** (*P. aeruginosa*), mất porin, giảm $\Delta\Psi$ | Tăng MIC toàn nhóm ở mức trung bình–cao | Phối hợp Beta-lactam chống *Pseudomonas* &amp; tối ưu $C_{\max}/\text{MIC} \ge 8\text{--}10$ |
+| **4. Đề kháng thích ứng** | Giảm tạm thời vận chuyển EDP1/EDP2 sau phơi nhiễm *sub-MIC* | Giảm hiệu quả diệt khuẩn ở các liều chia nhỏ liên tiếp | Áp dụng chế độ **Extended-Interval (Once-Daily)** để tạo khoảng **"trống thuốc"** khôi phục độ nhạy |
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-biohazard"></i> CẢNH BÁO ĐỀ KHÁNG TOÀN NHÓM: BỘ ĐÔI PLASMID NDM-1 + 16S-RMTases</div>
+  <p>Khi gặp trực khuẩn Gram âm sinh Metallo-beta-lactamase (<strong>NDM-1</strong>), không mặc định cho rằng <strong>Amikacin</strong> hay thậm chí <strong>Plazomicin</strong> sẽ còn hiệu lực. Plasmid mang gen <em>bla</em><sub>NDM-1</sub> thường đồng mang gen <em>armA</em> hoặc <em>rmtB</em> gây <strong>pan-aminoglycoside resistance</strong> (MIC cực cao với mọi Aminoglycoside). Bắt buộc xác nhận bằng kháng sinh đồ định lượng MIC trước khi tin dùng.</p>
+</div>
+
+---
+
+## 4. Đặc Tính Dược Động Học / Dược Lực Học (PK/PD) & Chiến Lược Liều Lượng {#sec-4}
+
+### 4.1. Chỉ Số PK/PD Driver &amp; Hiệu Ứng Hậu Kháng Sinh (PAE)
+
+Khác với nhóm Beta-lactam phụ thuộc thời gian duy trì nồng độ trên MIC ($\%fT > \text{MIC}$), Aminoglycoside sở hữu đặc tính **dược lực học phụ thuộc nồng độ tuyệt đối**:
+
+$$
+\text{PK/PD Drivers} = \frac{C_{\max}}{\text{MIC}} \quad \text{và} \quad \frac{\text{AUC}_{0\text{--}24}}{\text{MIC}}
+$$
+
+* **Chỉ số $C_{\max}/\text{MIC}$:** Để đạt hiệu quả diệt khuẩn tối đa và tối thiểu hóa sự xuất hiện của các biến thể vi khuẩn đề kháng tái phát triển, tỷ số $C_{\max}/\text{MIC}$ đỉnh sau tiêm truyền phải đạt ngưỡng **$\ge 8\text{--}10$** (ví dụ: nếu MIC của *P. aeruginosa* là $2\ \mu\text{g/mL}$, nồng độ đỉnh $C_{\max}$ mục tiêu phải đạt từ $16\text{--}20\ \mu\text{g/mL}$).
+* **Chỉ số $\text{AUC}_{0\text{--}24}/\text{MIC}$:** Mối tương quan diện tích dưới đường cong nồng độ–thời gian trên MIC là yếu tố tiên đoán chính xác nhất đáp ứng lâm sàng và vi sinh. Mục tiêu $\text{AUC}_{0\text{--}24}/\text{MIC}$ đạt từ **$30\text{--}50$** đối với nhiễm trùng nhẹ / nhiễm trùng đường tiết niệu (**UTI**) ở bệnh nhân không suy giảm miễn dịch, và phải đạt **$80\text{--}100+$** đối với nhiễm trùng nặng, sốc nhiễm khuẩn hoặc viêm phổi bệnh viện / viêm phổi liên quan thở máy (**HAP/VAP**).
+* **Hiệu ứng Hậu kháng sinh (*Post-Antibiotic Effect — PAE*):** Aminoglycoside sở hữu PAE kéo dài (**$2\text{--}8\text{ giờ}$** trên vi khuẩn Gram âm hiếu khí). Ngay cả khi nồng độ thuốc trong huyết tương giảm xuống dưới mức MIC, vi khuẩn vẫn tiếp tục bị ức chế tăng trưởng và tổn thương không thể khôi phục. **PAE càng kéo dài khi nồng độ đỉnh $C_{\max}$ đạt được càng cao.**
+
+### 4.2. Chiến Lược Liều Cao Kéo Dài Khoảng Cách (*Extended-Interval / Once-Daily Dosing*)
+
+Đây là **chuẩn điều trị hàng đầu (*standard of care*)** hiện nay cho các nhiễm trùng Gram âm toàn thân ở bệnh nhân có chức năng thận bình thường hoặc suy giảm nhẹ–trung bình.
+
+**Cơ sở sinh học và dược lý 3 trụ cột của chế độ *Extended-Interval*:**
+
+1. **Tối ưu hóa $C_{\max}/\text{MIC}$ và PAE:** Dồn toàn bộ tổng liều ngày thành một lần truyền duy nhất đẩy nồng độ đỉnh $C_{\max}$ lên rất cao, tối đa hóa tốc độ diệt khuẩn và kéo dài thời gian PAE.
+2. **Tối thiểu hóa độc tính trên thận (*Nephrotoxicity*):** Sự thu nhận Aminoglycoside vào tế bào ống lượn gần qua thụ thể **Megalin** là một **quá trình bão hòa (*saturable process*)** tuân theo động học Michaelis–Menten. Khi tiêm một liều cao đơn độc, thụ thể Megalin nhanh chóng bị bão hòa, phần lớn lượng thuốc dư sẽ đào thải qua nước tiểu mà không hấp thu thêm vào tế bào thận. Đồng thời, khoảng cách liều kéo dài ($24\text{--}48\text{ giờ}$) tạo ra khoảng thời gian nồng độ đáy cực thấp hoặc không đo được ($C_{\text{min}} < 0.3\text{--}0.5\ \mu\text{g/mL}$), cho phép thuốc tích tụ trong tế bào ống thận có đủ thời gian tái khuếch tán trở lại lòng mạch và đào thải ra ngoài.
+3. **Giảm đề kháng thích ứng (*Adaptive Resistance*):** Khoảng nghỉ **"trống thuốc"** đủ dài giúp vi khuẩn khôi phục hoàn toàn hệ thống vận chuyển thuốc EDP1/EDP2 cho liều kế tiếp.
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-chart-line" style="color: var(--dsp-emerald, #10b981);"></i>
+      ĐỘNG HỌC PK/PD: LIỀU CAO KÉO DÀI KHOẢNG CÁCH (ONCE-DAILY) VS CHIA LIỀU TRUYỀN THỐNG (q8h)
+    </div>
+    <span class="badge badge-emerald">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <linearGradient id="agPeakArea" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0284c7" stop-opacity="0.26" />
+          <stop offset="100%" stop-color="#0284c7" stop-opacity="0.02" />
+        </linearGradient>
+        <marker id="agAxisArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#64748b" />
+        </marker>
+      </defs>
+
+      <text x="480" y="30" text-anchor="middle" font-size="17" font-weight="900" fill="var(--color-text, #0f172a)">
+        SO SÁNH ĐƯỜNG CONG NỒNG ĐỘ: EXTENDED-INTERVAL (q24h) VS CHIA LIỀU TRUYỀN THỐNG (q8h)
+      </text>
+      <text x="480" y="50" text-anchor="middle" font-size="12" font-weight="600" fill="var(--color-text-muted, #64748b)">
+        Liều cao 1 lần/ngày đạt Cmax/MIC ≥ 10, bão hòa thụ thể Megalin &amp; tạo khoảng đáy &lt; 0.5 µg/mL bảo vệ thận
+      </text>
+
+      <line x1="90" y1="330" x2="880" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#agAxisArrow)" />
+      <line x1="90" y1="330" x2="90" y2="75" stroke="#64748b" stroke-width="2" marker-end="url(#agAxisArrow)" />
+      <text x="875" y="354" text-anchor="end" font-size="12" font-weight="800" fill="var(--color-text, #0f172a)">Thời gian (0 → 24 giờ)</text>
+      <text x="78" y="90" text-anchor="end" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">Nồng độ</text>
+      <text x="78" y="106" text-anchor="end" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">(µg/mL)</text>
+
+      <line x1="90" y1="115" x2="855" y2="115" stroke="#10b981" stroke-width="1.8" stroke-dasharray="7 5" />
+      <rect x="655" y="95" width="200" height="22" rx="5" fill="rgba(16, 185, 129, 0.16)" />
+      <text x="755" y="110" text-anchor="middle" font-size="11" font-weight="800" fill="#059669">Mục tiêu Cmax ≥ 8–10× MIC</text>
+
+      <line x1="90" y1="242" x2="855" y2="242" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="7 5" />
+      <rect x="705" y="222" width="150" height="22" rx="5" fill="rgba(245, 158, 11, 0.16)" />
+      <text x="780" y="237" text-anchor="middle" font-size="11" font-weight="800" fill="#b45309">Ngưỡng 1× MIC</text>
+
+      <line x1="90" y1="296" x2="855" y2="296" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="4 4" />
+      <rect x="630" y="276" width="225" height="21" rx="5" fill="rgba(220, 38, 38, 0.14)" />
+      <text x="742" y="290" text-anchor="middle" font-size="10.5" font-weight="800" fill="#dc2626">Ngưỡng độc đáy Trough (&gt; 1–2 µg/mL)</text>
+
+      <rect x="385" y="242" width="215" height="88" rx="6" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="4 3" />
+      <text x="492" y="264" text-anchor="middle" font-size="11.5" font-weight="800" fill="#7c3aed">Vùng PAE (2 – 8 giờ)</text>
+      <text x="492" y="282" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text-muted, #64748b)">Vi khuẩn tiếp tục bị ức chế</text>
+
+      <rect x="605" y="300" width="245" height="26" rx="5" fill="rgba(16, 185, 129, 0.14)" />
+      <text x="727" y="317" text-anchor="middle" font-size="10.5" font-weight="800" fill="#059669">Khoảng trống thuốc: Bảo vệ thận &amp; Xóa đề kháng thích ứng</text>
+
+      <path d="M 90 330 L 128 96 Q 210 215 390 282 Q 550 318 840 326 L 840 330 Z" fill="url(#agPeakArea)" />
+      <path d="M 90 330 L 128 96 Q 210 215 390 282 Q 550 318 840 326" fill="none" stroke="#0284c7" stroke-width="3.6" stroke-linecap="round" />
+
+      <circle cx="128" cy="96" r="5.5" fill="#0284c7" />
+      <rect x="142" y="76" width="270" height="26" rx="6" fill="#0284c7" />
+      <text x="277" y="93" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Cmax Đỉnh Cao → Bão hòa thụ thể Megalin</text>
+
+      <circle cx="178" cy="148" r="5" fill="#0d9488" />
+      <text x="190" y="148" font-size="10.5" font-weight="800" fill="#0f766e">Mẫu TDM 1 (C1: 1h sau truyền)</text>
+      <circle cx="342" cy="264" r="5" fill="#0d9488" />
+      <text x="352" y="232" font-size="10.5" font-weight="800" fill="#0f766e">Mẫu TDM 2 (C2: 6–10h)</text>
+
+      <path d="M 90 330 L 125 188 Q 205 262 325 278 L 355 186 Q 435 260 560 276 L 590 186 Q 675 260 820 276" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 4" />
+      <text x="470" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#64748b">Chia liều q8h: Đỉnh thấp + Đáy tích lũy cao (tăng độc thận)</text>
+
+      <g transform="translate(95, 368)">
+        <line x1="0" y1="8" x2="28" y2="8" stroke="#0284c7" stroke-width="3.6" />
+        <text x="36" y="12" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Extended-Interval (Once-Daily q24h — Chuẩn hàng đầu)</text>
+        <line x1="395" y1="8" x2="423" y2="8" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 4" />
+        <text x="431" y="12" font-size="11" font-weight="600" fill="var(--color-text-muted, #64748b)">Chia liều truyền thống q8h (Chỉ dùng cho chỉ định đặc thù)</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+### 4.3. Bảng Liều Khuyến Cáo Chế Độ Extended-Interval (Chức Năng Thận Bình Thường)
+
+| Dược Chất | Phân Tầng AWaRe | Liều Khởi Đầu (Extended-Interval) | Mục Tiêu $C_{\max}$ Đỉnh | Mục Tiêu $C_{\text{min}}$ Đáy (Trough) |
+| :--- | :---: | :--- | :--- | :--- |
+| **Gentamicin** | <AWaRePill tier="access" /> | **$5\text{--}7\text{ mg/kg}$** IV q24h | $16\text{--}20\ \mu\text{g/mL}$ | $< 0.3\text{--}0.5\ \mu\text{g/mL}$ ($< 1\ \mu\text{g/mL}$) |
+| **Tobramycin** | <AWaRePill tier="watch" /> | **$5\text{--}7\text{ mg/kg}$** IV q24h *(10 mg/kg ở bệnh nhân Xơ nang)* | $16\text{--}20\ \mu\text{g/mL}$ | $< 0.3\text{--}0.5\ \mu\text{g/mL}$ ($< 1\ \mu\text{g/mL}$) |
+| **Amikacin** | <AWaRePill tier="access" /> | **$15\text{--}20\text{ mg/kg}$** *(hoặc tới $25\text{--}30\text{ mg/kg}$)* IV q24h | $40\text{--}60\ \mu\text{g/mL}$ | $< 5\ \mu\text{g/mL}$ |
+| **Plazomicin** | <AWaRePill tier="reserve" /> | **$15\text{ mg/kg}$** IV q24h | Theo dõi $\text{AUC}$ | $< 3\ \mu\text{g/mL}$ |
+
+#### Hiệu Chỉnh Cân Nặng Khi Tính Liều (Weight-Based Dosing)
+
+* **Bệnh nhân cân nặng bình thường:** Sử dụng **Cân nặng thực tế (*Actual Body Weight — ABW*)**.
+* **Bệnh nhân béo phì ($\text{BMI} \ge 30\text{ kg/m}^2$ hoặc $\text{ABW} > 120\%$ Cân nặng lý tưởng IBW):** Bắt buộc sử dụng **Cân nặng Hiệu chỉnh (*Adjusted Body Weight — AdjBW*)** để tránh quá liều do Aminoglycoside phân bố kém vào mô mỡ:
+
+$$
+\text{IBW (Nam)} = 50 + 0.91 \times (\text{Chiều cao cm} - 152.4)
+$$
+
+$$
+\text{IBW (Nữ)} = 45.5 + 0.91 \times (\text{Chiều cao cm} - 152.4)
+$$
+
+$$
+\text{AdjBW} = \text{IBW} + 0.4 \times (\text{ABW} - \text{IBW})
+$$
+
+### 4.4. Chế Độ Chia Liều Truyền Thống (*Traditional Divided Dosing*) &amp; 4 Chỉ Định Đặc Thù
+
+Chế độ chia liều cổ điển ($1.5\text{--}2\text{ mg/kg}$ q8h đối với Gentamicin/Tobramycin; $15\text{ mg/kg/ngày}$ chia q8h–q12h đối với Amikacin) hiện nay **chỉ còn hạn chế trong 4 trường hợp lâm sàng đặc biệt**:
+
+1. **Phối hợp Đồng công (*Synergy*) trong Viêm nội tâm mạc nhiễm khuẩn (IE):** Gentamicin liều thấp ($3\text{ mg/kg/ngày}$ chia q8h hoặc q12h, nồng độ đỉnh $C_{\max}$ mục tiêu $3\text{--}5\ \mu\text{g/mL}$, nồng độ đáy $C_{\text{min}} < 1\ \mu\text{g/mL}$) phối hợp với Ampicillin/Penicillin G hoặc Vancomycin.
+2. **Phụ nữ có thai:** Do biến đổi rất lớn về thể tích phân bố ($V_d$) và tốc độ lọc cầu thận (GFR).
+3. **Bệnh nhân báng bụng nặng (*Severe Ascites*) hoặc bỏng diện rộng ($> 20\%$ TBSA):** Làm thay đổi sâu sắc thể tích khoang dịch ngoại bào.
+4. **Bệnh nhân suy thận nặng ($\text{CrCl} < 20\text{ mL/phút}$)** không lọc máu hoặc đang can thiệp **Lọc máu liên tục (CRRT)**.
+
+### 4.5. Giám Sát Nồng Độ Thuốc Trong Máu (*Therapeutic Drug Monitoring — TDM*)
+
+TDM là **bắt buộc** khi điều trị Aminoglycoside kéo dài **$> 3\text{ ngày}$**, bệnh nhân suy thận, hoặc bệnh nhân hồi sức tích cực (ICU) có động lực học biến đổi ($V_d$ tăng, sốc nhiễm khuẩn).
+
+* **Phương pháp lấy mẫu TDM 2 điểm cho chế độ *Extended-Interval*:**
+  * **Mẫu 1 (*Peak / Post-distributional*, $C_1$):** Lấy sau khi kết thúc tiêm truyền **$30\text{--}60\text{ phút}$** (tức $1\text{--}1.5\text{ giờ}$ sau khi bắt đầu truyền IV 30 phút).
+  * **Mẫu 2 (*Mid-to-late clearance*, $C_2$):** Lấy sau tiêm truyền **$6\text{--}10\text{ giờ}$**.
+* **Phân tích &amp; điều chỉnh cá thể hóa:** Nồng độ thu được đưa vào các phương trình dược động học bậc nhất (*First-order PK equations*) hoặc **mô hình Bayesian** để ước tính chính xác hằng số tốc độ thải trừ ($k$), thời gian bán thải ($t_{1/2}$), giá trị $\text{AUC}_{0\text{--}24}$ thực tế và hiệu chỉnh khoảng cách đưa liều (**q24h, q36h, hoặc q48h**) nhằm bảo đảm $C_{\text{min}}$ rớt xuống dưới ngưỡng gây độc trước liều kế tiếp.
+
+---
+
+## 5. Độc Tính Lâm Sàng & Quản Trị Rủi Ro (Clinical Toxicity & Risk Management) {#sec-5}
+
+Độc tính là rào cản lâm sàng lớn nhất của nhóm Aminoglycoside, tập trung vào **3 cơ quan đích**: Thận, Tai trong (Ốc tai – Tiền đình) và Khớp nối Thần kinh – Cơ.
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-triangle-exclamation" style="color: var(--dsp-rose, #ef4444);"></i>
+      MA TRẬN CƠ CHẾ 3 ĐỘC TÍNH CƠ QUAN ĐÍCH CỦA AMINOGLYCOSIDE &amp; BIỆN PHÁP XỬ TRÍ
+    </div>
+    <span class="badge badge-rose">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <text x="480" y="30" text-anchor="middle" font-size="17" font-weight="900" fill="var(--color-text, #0f172a)">
+        3 HỘI CHỨNG ĐỘC TÍNH CỐT LÕI CỦA AMINOGLYCOSIDE: THẬN • TAI TRONG • THẦN KINH – CƠ
+      </text>
+
+      <g transform="translate(24, 52)">
+        <rect x="0" y="0" width="292" height="318" rx="12" fill="rgba(245, 158, 11, 0.06)" stroke="#d97706" stroke-width="1.6" />
+        <rect x="12" y="12" width="268" height="34" rx="7" fill="#d97706" />
+        <text x="146" y="33" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">1. ĐỘC TÍNH THẬN (AKI — HỒI PHỤC)</text>
+
+        <text x="16" y="70" font-size="11.5" font-weight="800" fill="#b45309">Tần suất: 5–15% (ICU lên tới 50%)</text>
+        <text x="16" y="94" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Cơ chế bệnh sinh:</text>
+        <text x="20" y="112" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Gắn thụ thể Megalin bờ bàn chải ống lượn gần</text>
+        <text x="20" y="129" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Nhập bào → Ức chế phospholipase lysosome</text>
+        <text x="20" y="146" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Hình thành "thể tủy" (Myeloid bodies)</text>
+        <text x="20" y="163" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Vỡ lysosome → Hoại tử ống thận cấp (ATN)</text>
+
+        <text x="16" y="190" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Lâm sàng đặc trưng:</text>
+        <text x="20" y="208" font-size="10.5" fill="var(--color-text-muted, #64748b)">• AKI thể KHÔNG thiểu niệu, xuất hiện ngày 3–5</text>
+        <text x="20" y="225" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Tăng Scr, giảm eGFR, mất Mg2+ &amp; K+ niệu</text>
+
+        <rect x="14" y="246" width="264" height="58" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="1.2" />
+        <text x="146" y="266" text-anchor="middle" font-size="11" font-weight="800" fill="#059669">CÓ KHẢ NĂNG HỒI PHỤC</text>
+        <text x="146" y="284" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Dự phòng: Extended-Interval • TDM • Ngưng sớm</text>
+        <text x="146" y="298" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">Tránh phối hợp Vancomycin, Colistin, NSAID</text>
+      </g>
+
+      <g transform="translate(334, 52)">
+        <rect x="0" y="0" width="292" height="318" rx="12" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.8" />
+        <rect x="12" y="12" width="268" height="34" rx="7" fill="#dc2626" />
+        <text x="146" y="33" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">2. ĐỘC TÍNH TAI (KHÔNG HỒI PHỤC)</text>
+
+        <text x="16" y="70" font-size="11.5" font-weight="800" fill="#dc2626">Ốc Tai (Cochleotoxicity — 22–62% HF):</text>
+        <text x="20" y="88" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Phá hủy tế bào lông vòng đáy cơ quan Corti</text>
+        <text x="20" y="105" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Mất tần số cao (&gt; 8 kHz) → ù tai, điếc 2 bên</text>
+        <text x="20" y="122" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Mạnh nhất: Amikacin, Kanamycin, Neomycin</text>
+
+        <text x="16" y="150" font-size="11.5" font-weight="800" fill="#dc2626">Tiền Đình (Vestibulotoxicity):</text>
+        <text x="20" y="168" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Tổn thương tế bào lông Type I mào tiền đình</text>
+        <text x="20" y="185" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Chóng mặt, thất điều (ataxia), oscillopsia</text>
+        <text x="20" y="202" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">Mạnh nhất: Streptomycin, Gentamicin, Tobra</text>
+
+        <rect x="14" y="224" width="264" height="80" rx="8" fill="rgba(220, 38, 38, 0.14)" stroke="#dc2626" stroke-width="1.3" />
+        <text x="146" y="244" text-anchor="middle" font-size="11" font-weight="900" fill="#dc2626">ĐỘT BIẾN TY THỂ MT-RNR1 m.1555A&gt;G</text>
+        <text x="146" y="263" text-anchor="middle" font-size="10" font-weight="600" fill="var(--color-text, #0f172a)">rRNA ty thể người giống 16S rRNA vi khuẩn</text>
+        <text x="146" y="279" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">→ ĐIẾC VĨNH VIỄN NGAY SAU 1 LIỀU DUY NHẤT</text>
+        <text x="146" y="295" text-anchor="middle" font-size="9.8" font-weight="600" fill="var(--color-text-muted, #64748b)">Tế bào lông tai trong KHÔNG tái sinh</text>
+      </g>
+
+      <g transform="translate(644, 52)">
+        <rect x="0" y="0" width="292" height="318" rx="12" fill="rgba(139, 92, 246, 0.06)" stroke="#7c3aed" stroke-width="1.6" />
+        <rect x="12" y="12" width="268" height="34" rx="7" fill="#7c3aed" />
+        <text x="146" y="33" text-anchor="middle" font-size="12.5" font-weight="800" fill="#ffffff">3. ỨC CHẾ THẦN KINH – CƠ</text>
+
+        <text x="16" y="70" font-size="11.5" font-weight="800" fill="#7c3aed">Cơ chế tiền &amp; hậu synap:</text>
+        <text x="20" y="88" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Chẹn kênh Ca2+ vào tận cùng tiền synap</text>
+        <text x="20" y="105" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Ngăn giải phóng Acetylcholine (ACh)</text>
+        <text x="20" y="122" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Giảm nhạy cảm thụ thể ACh màng sau synap</text>
+
+        <text x="16" y="150" font-size="11.5" font-weight="800" fill="var(--color-text, #0f172a)">Yếu tố nguy cơ cao:</text>
+        <text x="20" y="168" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Tiêm IV bolus trực tiếp quá nhanh</text>
+        <text x="20" y="185" font-size="10.5" font-weight="700" fill="#dc2626">• Bệnh Nhược cơ (Myasthenia Gravis)</text>
+        <text x="20" y="202" font-size="10.5" fill="var(--color-text-muted, #64748b)">• Phối hợp Rocuronium / Vecuronium / Mê NKQ</text>
+
+        <rect x="14" y="224" width="264" height="80" rx="8" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="1.3" />
+        <text x="146" y="244" text-anchor="middle" font-size="11" font-weight="900" fill="#0284c7">XỬ TRÍ CẤP CỨU LIỆT CƠ HÔ HẤP</text>
+        <text x="146" y="264" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">1. Calcium gluconate 10%: 10–20 mL IV chậm</text>
+        <text x="146" y="281" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">2. Phối hợp Neostigmine (kháng cholinesterase)</text>
+        <text x="146" y="297" text-anchor="middle" font-size="9.8" font-weight="600" fill="var(--color-text-muted, #64748b)">Hỗ trợ thông khí ngay nếu suy hô hấp cấp</text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+### 5.1. Độc Tính Trên Thận (*Nephrotoxicity / Acute Kidney Injury — AKI*)
+
+* **Tần suất:** Xảy ra ở **$5\%\text{--}15\%$** bệnh nhân dùng thuốc (có thể lên tới **$50\%$** ở bệnh nhân ICU có nhiều yếu tố nguy cơ).
+* **Cơ chế bệnh sinh:** Aminoglycoside tự do trong lòng ống thận liên kết với **thụ thể tích điện âm Megalin** tại **bờ bàn chải** của tế bào biểu mô **ống lượn gần**. Phức hợp thuốc–Megalin được nhập bào (*endocytosis*) vào tế bào rồi dung hợp với lysosome. Tại đây, Aminoglycoside ức chế enzym phospholipase của lysosome, làm tích tụ phospholipid và hình thành cấu trúc màng cuộn tụ đặc trưng gọi là **"thể tủy" (*myeloid bodies*)**. Sự vỡ lysosome giải phóng enzym thủy phân và Aminoglycoside vào tương bào, kích hoạt con đường hoại tử và chết tế bào theo chương trình (*apoptosis*), dẫn đến **Hoại tử ống thận cấp (*Acute Tubular Necrosis — ATN*)**.
+* **Đặc điểm lâm sàng:**
+  * Tổn thương thận thường là **suy thận cấp thể không thiểu niệu (*non-oliguric AKI*)**, biểu hiện bằng tăng Creatinine huyết thanh nhẹ–trung bình, giảm eGFR, kèm **mất $\text{Mg}^{2+}$ và $\text{K}^{+}$ qua nước tiểu**.
+  * Thường xuất hiện muộn, sau **$3\text{--}5\text{ ngày}$** điều trị liên tục.
+  * **Có tính chất hồi phục (*reversible*)** sau khi ngừng thuốc do tế bào biểu mô ống thận có khả năng tái tạo.
+* **Yếu tố nguy cơ:** Dùng thuốc kéo dài ($> 7\text{--}10\text{ ngày}$); nồng độ đáy $C_{\text{min}}$ cao tích lũy; tuổi cao; bệnh thận có sẵn; giảm thể tích tuần hoàn / mất nước; dùng đồng thời các thuốc độc thận khác (**Vancomycin**, **Amphotericin B**, **Polymyxin B/Colistin**, **Furosemide**, **thuốc cản quang**, **NSAIDs**, **thuốc ức chế Calcineurin**).
+
+### 5.2. Độc Tính Trên Tai (*Ototoxicity*)
+
+Khác với độc tính trên thận, độc tính trên tai của Aminoglycoside là **không thể hồi phục (*irreversible*)** do các tế bào lông cảm giác tại tai trong không có khả năng tái sinh.
+
+* **Độc tính trên ốc tai (*Cochleotoxicity*):**
+  * Thuốc tích tụ trong dịch ngoại bạch huyết (*perilymph*) và nội bạch huyết (*endolymph*), phá hủy tế bào lông ngoài và tế bào lông trong ở vòng đáy của xoắn ốc tai (*organ of Corti*).
+  * **Biểu hiện lâm sàng:** **Mất thính lực ở tần số cao ($> 8.000\text{ Hz}$)** trước, bệnh nhân hoàn toàn chưa nhận ra trên lâm sàng. Nếu tiếp tục dùng thuốc, tổn thương tiến triển sang dải tần hội thoại ($0.3\text{--}3\text{ kHz}$), gây ù tai (*tinnitus*) và điếc tiếp nhận vĩnh viễn cả hai bên. Tần suất ghi nhận trên thính lực đồ tần số cao lên tới **$22\%\text{--}62\%$**.
+  * **Đại diện gây độc ốc tai mạnh nhất:** **Amikacin**, **Kanamycin**, **Neomycin**.
+* **Độc tính trên tiền đình (*Vestibulotoxicity*):**
+  * Tổn thương tế bào lông Type I ở mào nhú tiền đình (*ampullary cristae*).
+  * **Biểu hiện lâm sàng:** Chóng mặt, buồn nôn, mất thăng bằng dáng đi (*ataxia*) và mất nhìn cố định khi chuyển động đầu (*oscillopsia*).
+  * **Đại diện gây độc tiền đình mạnh nhất:** **Streptomycin**, **Gentamicin**, **Tobramycin**.
+* **Yếu tố di truyền nhạy cảm đặc biệt (CPIC 2022):** Đột biến gen ty thể **`MT-RNR1 m.1555A>G`** làm cho RNA ribosomal ty thể của người ký chủ mang cấu trúc giống hệt **16S rRNA của vi khuẩn**, khiến Aminoglycoside gắn chặt và phá hủy tế bào tai trong **ngay cả chỉ sau một liều duy nhất**.
+
+### 5.3. Ức Chế Thần Kinh – Cơ (*Neuromuscular Blockade*)
+
+* **Cơ chế:** Aminoglycoside ức chế sự xâm nhập của ion $\text{Ca}^{2+}$ vào tận cùng thần kinh tiền synap, ngăn cản giải phóng **Acetylcholine (ACh)** vào khe synap, đồng thời giảm độ nhạy cảm của thụ thể ACh tại màng sau synap.
+* **Biểu hiện lâm sàng:** Yếu cơ cấp tính, liệt cơ hô hấp và ngừng thở.
+* **Yếu tố nguy cơ:** Tiêm IV trực tiếp quá nhanh; bệnh nhân mắc bệnh **Nhược cơ (*Myasthenia Gravis*)**; bệnh nhân đang dùng thuốc phong bế thần kinh–cơ (**rocuronium**, **vecuronium**) hoặc gây mê toàn thân.
+* **Xử trí cấp cứu:** Tiêm tĩnh mạch chậm **Calcium gluconate ($10\text{--}20\text{ mL}$ dung dịch $10\%$)** để đối kháng cạnh tranh tại kênh Canxi, phối hợp với **Neostigmine**.
+
+<div class="infobox danger">
+  <div class="infobox-title"><i class="fa-solid fa-triangle-exclamation"></i> CẢNH BÁO AN TOÀN ĐỎ: MT-RNR1 &amp; CHỐNG CHỈ ĐỊNH TRONG NHƯỢC CƠ (MYASTHENIA GRAVIS)</div>
+  <p><strong>1. Dược di truyền học (CPIC Guideline 2022):</strong> Ở người mang biến thể ty thể <strong><em>MT-RNR1 m.1555A&gt;G</em></strong> (di truyền theo dòng mẹ), <strong>CHỐNG CHỈ ĐỊNH</strong> dùng Aminoglycoside trừ khi không còn lựa chọn thay thế cứu mạng, vì chỉ 1 liều đơn cũng có thể gây điếc sâu vĩnh viễn.</p>
+  <p style="margin-top: 0.45rem;"><strong>2. Truyền tĩnh mạch an toàn:</strong> Luôn pha loãng Aminoglycoside truyền tĩnh mạch tối thiểu trong <strong>30 phút</strong> — tuyệt đối không tiêm IV bolus nhanh. Tránh sử dụng trên bệnh nhân <strong>Nhược cơ (Myasthenia Gravis)</strong> do nguy cơ kích hoạt cơn nhược cơ kịch phát gây ngừng thở.</p>
+</div>
+
+---
+
+## 6. Ca Lâm Sàng Minh Họa (Clinical Case Study — VAP Sốc Nhiễm Khuẩn Do MDR *P. aeruginosa*) {#sec-6}
+
+### 6.1. Bệnh Cảnh Lâm Sàng
+
+<div class="infobox info">
+  <div class="infobox-title"><i class="fa-solid fa-file-medical"></i> HỒ SƠ CA BỆNH ICU — SỐC NHIỄM KHUẨN THỨ PHÁT SAU VIÊM PHỔI THỞ MÁY (VAP)</div>
+  <p><strong>Hành chính &amp; Nhân trắc:</strong> Bệnh nhân nam, 68 tuổi, nặng $78\text{ kg}$, chiều cao $172\text{ cm}$ ($\text{IBW} = 67.8\text{ kg}$, $\text{ABW/IBW} = 115\%$, $\text{BMI} = 26.4\text{ kg/m}^2$). Tiền sử Đái tháo đường týp 2.</p>
+  <p style="margin-top: 0.35rem;"><strong>Bệnh sử:</strong> Nhập viện ICU vì <strong>Sốc nhiễm khuẩn</strong> thứ phát sau <strong>Viêm phổi liên quan thở máy (VAP)</strong> ngày thứ 6 hậu phẫu bắc cầu động mạch vành (CABG).</p>
+</div>
+
+* **Dấu hiệu sinh tồn lúc đánh giá:** Huyết áp $90/55\text{ mmHg}$ (đang duy trì Norepinephrine $0.25\ \mu\text{g/kg/phút}$), Nhịp tim $115\text{ lần/phút}$, Sốt $38.9^\circ\text{C}$.
+* **Cận lâm sàng:** Bạch cầu $18.500/\mu\text{L}$ ($88\%$ Neutrophil), Procalcitonin $12.4\text{ ng/mL}$. Creatinine huyết thanh ($\text{S}_{\text{cr}}$) $1.1\text{ mg/dL}$ (ước tính $\text{CrCl} \approx 68\text{ mL/phút}$ theo công thức Cockcroft–Gault).
+* **Vi sinh:** Soi tươi dịch hút khí quản (**ETA**) thấy nhiều trực khuẩn Gram âm. Cấy định lượng ngày hôm sau mọc ***Pseudomonas aeruginosa* ($\ge 10^6\text{ CFU/mL}$)**. Kháng sinh đồ (VITEK-2) ghi nhận chủng *P. aeruginosa* đa kháng (**MDR**):
+  * **Kháng:** Ceftazidime, Ciprofloxacin.
+  * **Nhạy cảm trung gian (I):** Meropenem ($\text{MIC} = 4\ \mu\text{g/mL}$).
+  * **Nhạy cảm (S):** **Tobramycin ($\text{MIC} = 1.5\ \mu\text{g/mL}$)** và **Cefepime ($\text{MIC} = 4\ \mu\text{g/mL}$)**.
+
+### 6.2. Quyết Định Điều Trị, Phác Đồ Phối Hợp &amp; Tính Toán Liều Khởi Đầu
+
+Do bệnh nhân trong tình trạng **Sốc nhiễm khuẩn** do trực khuẩn Gram âm đa kháng *P. aeruginosa*, theo Hướng dẫn **IDSA/ATS 2016** và **Surviving Sepsis Campaign (SSC) 2021**, chỉ định ngay **phác đồ phối hợp kép (*empiric double coverage*)** để đảm bảo bao phủ vi sinh tối đa:
+
+1. **Beta-lactam cốt lõi:** **Cefepime $2\text{ g}$ IV** truyền kéo dài **3 giờ** mỗi 8 giờ ($2\text{ g}$ IV q8h *extended infusion*).
+2. **Aminoglycoside phối hợp:** **Tobramycin** tiêm truyền tĩnh mạch theo chế độ **Liều cao kéo dài khoảng cách (*Extended-Interval Dosing*)**.
+
+**Tính toán liều lượng Tobramycin:**
+
+* **Lựa chọn cân nặng tính liều:** Dùng **$\text{ABW} = 78\text{ kg}$** (do $\text{BMI} = 26.4\text{ kg/m}^2 < 30$ và $\text{ABW/IBW} = 115\% < 120\%$).
+* **Liều khởi đầu:** $7\text{ mg/kg} \times 78\text{ kg} = 546\text{ mg} \rightarrow$ Làm tròn **$550\text{ mg}$ Tobramycin** pha trong $100\text{ mL}$ NaCl $0.9\%$, truyền tĩnh mạch trong **30 phút**, khoảng cách liều ban đầu **q24h**.
+
+### 6.3. Quy Trình Giám Sát Dược Động Học (TDM 2 Điểm Mẫu) &amp; Tính Toán Cá Thể Hóa
+
+#### Bước 1: Lấy Mẫu &amp; Kết Quả TDM Tobramycin (Liều Thứ Nhất)
+
+* Thời gian truyền thuốc: **08:00 đến 08:30** ($t_{\text{inf}} = 0.5\text{ giờ}$).
+* **Mẫu 1 ($C_1$ — *Post-distributional*):** Lấy lúc **09:30** ($1.0\text{ giờ}$ sau khi kết thúc truyền). Kết quả: **$C_1 = 18.2\ \mu\text{g/mL}$**.
+* **Mẫu 2 ($C_2$ — *Mid-point*):** Lấy lúc **16:30** ($8.0\text{ giờ}$ sau khi kết thúc truyền). Kết quả: **$C_2 = 3.1\ \mu\text{g/mL}$**.
+
+#### Bước 2: Tính Toán Tham Số Dược Động Học Cá Thể Hóa (*Individualized PK Calculation*)
+
+* **Hằng số tốc độ thải trừ ($k$):**
+
+$$
+k = \frac{\ln(C_1) - \ln(C_2)}{\Delta t} = \frac{\ln(18.2) - \ln(3.1)}{16.5 - 9.5} = \frac{2.901 - 1.131}{7.0\text{ giờ}} = 0.253\text{ giờ}^{-1}
+$$
+
+* **Thời gian bán thải ($t_{1/2}$):**
+
+$$
+t_{1/2} = \frac{0.693}{k} = \frac{0.693}{0.253} = 2.74\text{ giờ}
+$$
+
+* **Ước tính nồng độ đỉnh thực sự ngay khi kết thúc truyền ($C_{\max}$ tại 08:30, ngoại suy ngược $\Delta t = 1.0\text{ giờ}$ từ $C_1$):**
+
+$$
+C_{\max} = C_1 \times e^{k \cdot \Delta t} = 18.2 \times e^{0.253 \times 1.0} = 23.44\ \mu\text{g/mL}
+$$
+
+*(Nếu ngoại suy về mốc kết thúc pha phân bố 30 phút lúc 09:00 với $\Delta t_1 = 0.5\text{ giờ}$: $C_{\text{peak, 30p}} = 18.2 \times e^{0.253 \times 0.5} = 20.65\ \mu\text{g/mL}$ — đều vượt ngưỡng đỉnh mục tiêu $16\text{--}20\ \mu\text{g/mL}$.)*
+
+* **Đánh giá Tỷ lệ PK/PD Driver ($C_{\max}/\text{MIC}$):**
+
+$$
+\frac{C_{\max}}{\text{MIC}} = \frac{23.44}{1.5} = 15.63 \quad (\text{Đạt vượt mục tiêu tối ưu } \ge 8\text{--}10)
+$$
+
+* **Ước tính Nồng độ đáy ($C_{\text{min}}$ tại $t = 24\text{ giờ}$, tức $23.5\text{ giờ}$ sau kết thúc truyền):**
+
+$$
+C_{\text{min}} = C_{\max} \times e^{-k \cdot (24 - 0.5)} = 23.44 \times e^{-0.253 \times 23.5} = 23.44 \times e^{-5.9455} = 0.061\ \mu\text{g/mL} \quad (< 0.5\ \mu\text{g/mL})
+$$
+
+* **Ước tính $\text{AUC}_{0\text{--}24}$ theo quy tắc hình thang–logarit và tỷ số $\text{AUC}_{0\text{--}24}/\text{MIC}$:**
+
+$$
+\text{AUC}_{0\text{--}24} \approx \frac{t_{\text{inf}} \cdot C_{\max}}{2} + \frac{C_{\max} - C_{\text{min}}}{k} = \frac{0.5 \times 23.44}{2} + \frac{23.44 - 0.061}{0.253} = 5.86 + 92.41 \approx 98.3\ \mu\text{g}\cdot\text{h/mL}
+$$
+
+$$
+\frac{\text{AUC}_{0\text{--}24}}{\text{MIC}} = \frac{98.3}{1.5} \approx 65.5
+$$
+
+<div class="infobox pearl">
+  <div class="infobox-title"><i class="fa-solid fa-gem"></i> KẾT LUẬN TDM &amp; QUYẾT ĐỊNH HIỆU CHỈNH LÂM SÀNG</div>
+  <p>Chế độ liều <strong>Tobramycin 550 mg IV q24h</strong> đạt vượt mức chỉ số diệt khuẩn đỉnh ($C_{\max}/\text{MIC} = 15.63 \ge 8\text{--}10$), đồng thời nồng độ đáy $C_{\text{min}} = 0.061\ \mu\text{g/mL}$ ($< 0.5\ \mu\text{g/mL}$) đảm bảo an toàn tối đa cho ống thận. Trong bối cảnh <strong>phối hợp kép cùng Cefepime truyền kéo dài</strong> (không dùng Tobramycin đơn trị liệu), tiếp tục duy trì liều <strong>550 mg IV q24h</strong> mà không cần tăng liều gây rủi ro độc tính.</p>
+</div>
+
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title">
+      <i class="fa-solid fa-stethoscope" style="color: var(--dsp-teal, #0d9488);"></i>
+      LƯU ĐỒ XỬ TRÍ, TDM 2 ĐIỂM MẪU &amp; XUỐNG THANG SỚM 72H CA BỆNH VAP DO MDR P. AERUGINOSA
+    </div>
+    <span class="badge badge-teal">IDSA/ATS &amp; SSC 2021</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 405" width="100%" height="100%" style="background:var(--color-surface, #ffffff); border-radius:12px; font-family:system-ui, -apple-system, sans-serif;">
+      <defs>
+        <marker id="agCaseTeal" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#0d9488" />
+        </marker>
+        <marker id="agCaseGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981" />
+        </marker>
+      </defs>
+
+      <rect x="130" y="16" width="700" height="50" rx="10" fill="rgba(220, 38, 38, 0.09)" stroke="#dc2626" stroke-width="1.8" />
+      <text x="480" y="38" text-anchor="middle" font-size="13.5" font-weight="900" fill="var(--color-text, #0f172a)">
+        BN Nam 68t (78 kg, CrCl ~68) • Sốc nhiễm khuẩn sau VAP • MDR P. aeruginosa (MIC Tobra = 1.5 µg/mL)
+      </text>
+      <text x="480" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#dc2626">
+        Chỉ định Phối hợp kép (Double Coverage): Cefepime 2g IV q8h (truyền 3h) + Tobramycin 550 mg IV q24h (7 mg/kg)
+      </text>
+
+      <line x1="480" y1="66" x2="480" y2="94" stroke="#0d9488" stroke-width="2.2" marker-end="url(#agCaseTeal)" />
+
+      <g transform="translate(65, 100)">
+        <rect x="0" y="0" width="830" height="82" rx="10" fill="rgba(2, 132, 199, 0.07)" stroke="#0284c7" stroke-width="1.6" />
+        <text x="415" y="23" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0284c7">
+          GIÁM SÁT TDM 2 ĐIỂM MẪU NGAY TỪ LIỀU THỨ NHẤT (TRUYỀN 08:00 – 08:30)
+        </text>
+        <rect x="20" y="34" width="245" height="36" rx="7" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.2" />
+        <text x="142" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">C1 (09:30 • +1h): 18.2 µg/mL</text>
+
+        <rect x="292" y="34" width="245" height="36" rx="7" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.2" />
+        <text x="414" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">C2 (16:30 • +8h): 3.1 µg/mL</text>
+
+        <rect x="564" y="34" width="246" height="36" rx="7" fill="rgba(16, 185, 129, 0.14)" stroke="#10b981" stroke-width="1.3" />
+        <text x="687" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#059669">k = 0.253/h • t1/2 = 2.74h</text>
+      </g>
+
+      <line x1="480" y1="182" x2="480" y2="210" stroke="#0d9488" stroke-width="2.2" marker-end="url(#agCaseTeal)" />
+
+      <g transform="translate(65, 216)">
+        <rect x="0" y="0" width="830" height="58" rx="10" fill="rgba(13, 148, 136, 0.08)" stroke="#0d9488" stroke-width="1.6" />
+        <text x="415" y="23" text-anchor="middle" font-size="12.5" font-weight="800" fill="#0f766e">
+          XÁC NHẬN ĐẠT ĐÍCH PK/PD &amp; AN TOÀN THẬN → DUY TRÌ TOBRAMYCIN 550 mg IV q24h
+        </text>
+        <text x="415" y="44" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--color-text, #0f172a)">
+          Cmax = 23.44 µg/mL • Cmax/MIC = 15.63 (Đạt ≥ 8–10) • Cmin(24h) = 0.061 µg/mL (&lt; 0.5) • AUC0–24 ≈ 98.3 µg·h/mL
+        </text>
+      </g>
+
+      <line x1="480" y1="274" x2="480" y2="302" stroke="#10b981" stroke-width="2.2" marker-end="url(#agCaseGreen)" />
+
+      <g transform="translate(65, 308)">
+        <rect x="0" y="0" width="830" height="80" rx="10" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="1.8" />
+        <rect x="16" y="10" width="798" height="26" rx="6" fill="#059669" />
+        <text x="415" y="27" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">
+          NGÀY 3 (72 GIỜ) — THOÁT SỐC &amp; XUỐNG THANG SỚM (DE-ESCALATION) BẢO VỆ THẬN–TAI
+        </text>
+        <text x="415" y="54" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--color-text, #0f172a)">
+          • Cắt sốt, ngưng Norepinephrine, Scr = 1.0 mg/dL, nước tiểu 1.8 mL/kg/giờ → NGƯNG TOBRAMYCIN sau đúng 72 giờ
+        </text>
+        <text x="415" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="#059669">
+          • Tiếp tục đơn trị liệu Cefepime 2g IV q8h (truyền kéo dài 3h) hoàn tất đủ liệu trình 7 ngày
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
+
+### 6.4. Diễn Tiến Lâm Sàng, Xuống Thang &amp; Quản Trị Rủi Ro
+
+* **Ngày 3 điều trị:** Bệnh nhân cắt sốt, huyết áp ổn định, đã ngưng hoàn toàn Norepinephrine. Chức năng thận duy trì ổn định ($\text{S}_{\text{cr}} = 1.0\text{ mg/dL}$, lượng nước tiểu $1.8\text{ mL/kg/giờ}$).
+* **Xuống thang (*De-escalation*):** Do bệnh nhân đã thoát sốc, đáp ứng lâm sàng tốt và có kết quả kháng sinh đồ rõ ràng, tiến hành **ngưng Tobramycin sau đúng 3 ngày (72 giờ)** điều trị phối hợp, tiếp tục duy trì đơn trị liệu **Cefepime $2\text{ g}$ IV q8h truyền kéo dài** cho đủ liệu trình **7 ngày**. Việc ngưng Aminoglycoside sớm sau 72 giờ giúp **triệt tiêu tối đa rủi ro độc tính tích lũy trên thận và tai**.
+
+---
+
+## 7. Tài Liệu Tham Khảo (References — AMA Style) {#sec-7}
+
+<div class="citation-box">
+  <ol style="margin: 0; padding-left: 1.35rem; line-height: 1.75;">
+    <li>Bland CM, Pai MP, Lodise TP. Reappraisal of contemporary pharmacokinetic and pharmacodynamic principles for informing aminoglycoside dosing. <em>Pharmacotherapy</em>. 2018;38(12):1229-1238.</li>
+    <li>Kalil AC, Metersky ML, Klompas M, et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 clinical practice guidelines by the Infectious Diseases Society of America and the American Thoracic Society. <em>Clin Infect Dis</em>. 2016;63(5):e61-e111.</li>
+    <li>Tamma PD, Aitken SL, Bonomo RA, Mathers AJ, van Duin D, Clancy CJ. Infectious Diseases Society of America 2022 guidance on the treatment of extended-spectrum beta-lactamase producing Enterobacterales (ESBL-E), carbapenem-resistant Enterobacterales (CRE), and <em>Pseudomonas aeruginosa</em> with difficult-to-treat resistance (DTR-<em>P. aeruginosa</em>). <em>Clin Infect Dis</em>. 2022;75(2):187-212.</li>
+    <li>Baddour LM, Wilson WR, Bayer AS, et al. Infective endocarditis in adults: diagnosis, antimicrobial therapy, and management of complications: a scientific statement for healthcare professionals from the American Heart Association. <em>Circulation</em>. 2015;132(15):1435-1486.</li>
+    <li>Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. <em>Crit Care Med</em>. 2021;49(11):e1063-e1143.</li>
+    <li>Mingeot-Leclercq MP, Tulkens PM. Aminoglycosides: nephrotoxicity. <em>Antimicrob Agents Chemother</em>. 1999;43(5):1003-1012.</li>
+    <li>Drusano GL, Louie A. Optimization of aminoglycoside therapy. <em>Antimicrob Agents Chemother</em>. 2011;55(6):2528-2531.</li>
+    <li>Rybak MJ, Abate BJ, Kang SL, Ruffing MJ, Lerner SA, Drusano GL. Prospective evaluation of the effect of an aminoglycoside dosing regimen on rates of observed nephrotoxicity and ototoxicity. <em>Antimicrob Agents Chemother</em>. 1999;43(7):1549-1555.</li>
+    <li>McDermott JH, Wolf J, Hoshitsuki K, et al. Clinical Pharmacogenetics Implementation Consortium guideline for the use of aminoglycosides based on <em>MT-RNR1</em> genotype. <em>Clin Pharmacol Ther</em>. 2022;111(2):366-372.</li>
+    <li>Galløe AM, Graudal N, Christensen HR, Kampmann JP. Aminoglycosides: single or multiple daily dosing? A meta-analysis on efficacy and safety. <em>Eur J Clin Pharmacol</em>. 1995;48(1):39-43.</li>
+    <li>Kraut JA, Madias NE. Serum creatinine: cautions in its interpretation in acute kidney injury. <em>Am J Kidney Dis</em>. 2012;59(2):162-164.</li>
+    <li>Wagenlehner FME, Cloutier DJ, Komirenko AS, et al. Once-daily plazomicin for complicated urinary tract infections. <em>N Engl J Med</em>. 2019;380(8):729-740.</li>
+    <li>Pai MP, Rodvold KA. Aminoglycoside dosing in patients by kidney function and area under the curve: the Sawchuk-Zaske dosing method revisited in the era of obesity. <em>Diagn Microbiol Infect Dis</em>. 2014;78(2):178-187.</li>
+    <li>South Australian Expert Advisory Group on Antimicrobial Resistance (SAAGAR). <em>Aminoglycoside: Recommendations for Use, Dosing and Monitoring Clinical Guideline</em>. SA Health; 2017.</li>
+  </ol>
+</div>
+
+<div class="btn-row" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+  <a href="#/basic-medical/khang-sinh" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Kháng Sinh Học (AMS)</a>
+  <a href="#/basic-medical/khang-sinh/tools/pkpd-simulator" class="btn"><i class="fa-solid fa-chart-line"></i> Mở Bộ Mô Phỏng PK/PD</a>
+  <a href="#/basic-medical/khang-sinh/tools/aware-navigator" class="btn"><i class="fa-solid fa-traffic-light"></i> Tra Cứu Phân Tầng WHO AWaRe</a>
+</div>
