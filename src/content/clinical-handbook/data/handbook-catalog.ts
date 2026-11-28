@@ -1123,6 +1123,47 @@ export const INFECTIOUS_DISEASES: HandbookDisease[] = [
           { id: 'sec-key-takeaways', number: 7, title: 'Bốn Thông Điệp Lâm Sàng Cốt Lõi (Key Takeaways)', icon: 'fa-lightbulb' },
           { id: 'sec-references', number: 8, title: 'Tài Liệu Tham Khảo (Theo Chuẩn AMA)', icon: 'fa-book-bookmark' }
         ]
+      },
+      {
+        id: 'fuo-04-gia-tri-dong-hoc-marker-viem-nhiem',
+        slug: 'fuo-04-gia-tri-dong-hoc-marker-viem-nhiem',
+        diseaseId: 'sot-crnn',
+        specialtyId: 'truyen-nhiem',
+        title: 'Giá Trị & Động Học Của Các Marker Viêm Nhiễm Trong Lâm Sàng (CRP, PCT, NLR, IG%, Presepsin, MDW)',
+        subtitle: 'Biểu đồ động học cửa sổ thời gian, hiệu suất chẩn đoán CRP/PCT và phối hợp CRP+PCT (AUC 0.91), quản lý kháng sinh theo SSC 2021, NLR/IG% và ca thực chiến bất tương hợp biomarker',
+        description: 'Phân tích chuyên sâu giá trị chẩn đoán, tiên lượng và động học sinh học của 6 marker viêm nhiễm cốt lõi (CRP, PCT, NLR, IG%, Presepsin, MDW), vai trò thuật toán PCT rút ngắn thời gian kháng sinh (16 RCTs, 6.885 BN), khuyến cáo SSC 2021 và ca lâm sàng thực chiến áp xe túi cùng Douglas giải mã hiện tượng bất tương hợp biomarker.',
+        estimatedMinutes: 25,
+        tags: [
+          'Marker viêm nhiễm',
+          'Động học Biomarker',
+          'CRP',
+          'Procalcitonin (PCT)',
+          'NLR',
+          'IG%',
+          'Presepsin (sCD14-ST)',
+          'MDW',
+          'Quản lý kháng sinh',
+          'Sepsis & Septic Shock',
+          'SSC 2021',
+          'EBM 2026'
+        ],
+        keyTakeaway: 'Phối hợp đa bảng chỉ điểm (CRP + PCT đạt AUC 0.91; IG% báo động sớm -24h; NLR ≥ 6 tiên lượng tử vong 72h với NPV 97%); dùng động học PCT để ngừng kháng sinh an toàn (không để trì hoãn khởi trị); cảnh giác ổ áp xe khu trú kín khi các marker bất tương hợp.',
+        order: 4,
+        filePath: 'truyen-nhiem/sot-crnn/fuo-04-gia-tri-dong-hoc-marker-viem-nhiem.mdx',
+        isFeatured: true,
+        lastUpdated: '2026-11-28',
+        evidenceLevel: 'EBM 2026 • SSC 2021 • Meta-Analysis 16 RCTs (n = 6.885)',
+        sections: [
+          { id: 'sec-takeaway', number: 1, title: 'Đúc Kết 30 Giây & Tổng Quan Biomarker Viêm Trong Giờ Vàng', icon: 'fa-bolt' },
+          { id: 'sec-kinetics-timeline', number: 2, title: 'Biểu Đồ Động Học Sinh Học & Cửa Sổ Thời Gian (IG%, PCT, CRP)', icon: 'fa-chart-line' },
+          { id: 'sec-crp-pct', number: 3, title: 'C-Reactive Protein (CRP), Procalcitonin (PCT) & Phối Hợp CRP + PCT', icon: 'fa-vial-virus' },
+          { id: 'sec-cbc-markers', number: 4, title: 'Chỉ Điểm Từ Công Thức Máu: NLR, IG% & Vai Trò Tiên Lượng Sớm', icon: 'fa-microscope' },
+          { id: 'sec-comparison-matrix', number: 5, title: 'Bảng So Sánh Tổng Hợp 6 Marker Viêm Nhiễm Cốt Lõi', icon: 'fa-table-list' },
+          { id: 'sec-pitfalls', number: 6, title: 'Lưới Cạm Bẫy Lâm Sàng & Hiện Tượng Bất Tương Hợp Biomarker', icon: 'fa-triangle-exclamation' },
+          { id: 'sec-case-study', number: 7, title: 'Ca Lâm Sàng Thực Chiến & Bình Luận Chuyên Gia (Áp Xe Túi Cùng Douglas)', icon: 'fa-user-doctor' },
+          { id: 'sec-key-recommendations', number: 8, title: 'Bốn Kết Luận & Khuyến Cáo Thực Hành Lâm Sàng', icon: 'fa-lightbulb' },
+          { id: 'sec-references', number: 9, title: 'Tài Liệu Tham Khảo (Theo Chuẩn AMA)', icon: 'fa-book-bookmark' }
+        ]
       }
     ]
   },

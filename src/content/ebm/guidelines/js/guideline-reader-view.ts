@@ -16,13 +16,7 @@ import { hydrateFigureCards } from './core/figure-lightbox';
 import { hydrateForestPlots } from './core/forest-plot-renderer';
 import { sendClinicalIntent } from './core/clinical-intent';
 import { KHO_GUIDELINES_STATIC } from './kho-guidelines-registry';
-import {
-  renderDepthSwitcherBar,
-  renderDeepAppraisalPanel,
-  applyReadingDepthMode,
-  hydrateEbmGlossaryTooltips,
-  type EbmReadingDepth
-} from './core/ebm-depth-and-glossary';
+import { hydrateEbmGlossaryTooltips } from './core/ebm-depth-and-glossary';
 
 // Lazy-loaded raw MDX modules khi chạy trong môi trường Vite (Dev server & Bundled build)
 const viteRawMdxModules: Record<string, () => Promise<string>> = (import.meta as any).glob
@@ -522,10 +516,6 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
       `;
     }
 
-    const savedDepth: EbmReadingDepth = (typeof localStorage !== 'undefined'
-      ? (localStorage.getItem('cp_ebm_reading_depth') as EbmReadingDepth)
-      : null) || 'clinical';
-
     mountEl.innerHTML = `
       <div class="reading-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 3.5px; max-height: 3.5px; z-index: 10001; pointer-events: none; overflow: hidden; background: transparent;">
         <div class="reading-progress-bar" id="reading-progress-bar" style="position: absolute; top: 0; left: 0; height: 3.5px; max-height: 3.5px; min-height: 0; width: 0%; pointer-events: none;"></div>
@@ -554,14 +544,8 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
           </p>
         </div>
 
-        <!-- 3-TIER EBM DEPTH SWITCHER (CƠ BẢN -> LÂM SÀNG -> CHUYÊN SÂU) -->
-        ${renderDepthSwitcherBar(savedDepth, baseSlugName)}
-
         <!-- STICKY HORIZONTAL QUICK NAVIGATION (MỤC LỤC ĐÓNG BĂNG KHI CUỘN) -->
         ${stickyTocHtml}
-
-        <!-- TẦNG 3: BẢNG ĐIỀU KHIỂN GIẢI PHẪU HỌC THUẬT CHUYÊN SÂU -->
-        ${renderDeepAppraisalPanel(matchedStatic, frontmatter, baseSlugName)}
 
         <!-- RENDERED CONTENT -->
         <div class="mdx-rendered-article">
@@ -585,8 +569,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     // Hydrate MDX Interactive CDSS Calculators & Smooth Anchors & ScrollSpy
     hydrateMdxInteractiveTools(mountEl);
 
-    // Apply 3-Tier Reading Depth & Interactive Statistical Glossary Tooltips
-    applyReadingDepthMode(savedDepth, document.getElementById('guideline-reader-wrapper') || mountEl);
+    // Hydrate Interactive Statistical Glossary Tooltips
     hydrateEbmGlossaryTooltips(mountEl);
     return;
   }
