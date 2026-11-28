@@ -59,7 +59,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     'module3-pk-pd-duong-dung': 'Module 3: PK/PD & Đường Dùng',
     'module4-ke-don-an-toan-adr': 'Module 4: Kê Đơn An Toàn & ADR',
     'module5-di-ung-beta-lactam': 'Module 5: Dị Ứng Beta-Lactam',
-    'module6-phac-do-ngoai-tru': 'Module 6: Nhiễm Trùng Ngoại Trú',
+    'module6-cac-nhom-khang-sinh': 'Module 6: Các Nhóm Kháng Sinh',
     'antibiotics': 'Kháng Sinh Học Lâm Sàng',
     'khang-sinh': 'Kháng Sinh Học Lâm Sàng',
     'ck01-nguyen-ly': 'CK01: Nguyên Lý Tiếp Cận',

@@ -2,7 +2,7 @@
  * CliniPortal — Antibiotics Curriculum & Master Registry
  * Path: src/content/basic-medical/antibiotics/data/antibiotics-curriculum-data.ts
  * 
- * Toàn bộ CSDL 6 Modules, 17 Bài học & 5 Công cụ Lâm sàng Tương tác
+ * Toàn bộ CSDL 6 Modules, 15 Bài học & 5 Công cụ Lâm sàng Tương tác
  * Đối soát 1:1 với Đề cương Kế hoạch & Kho Knowledge Vault 1.5
  */
 
@@ -459,81 +459,43 @@ export const ANTIBIOTIC_MODULES: AntibioticModule[] = [
     ]
   },
   {
-    id: 'module6-phac-do-ngoai-tru',
+    id: 'module6-cac-nhom-khang-sinh',
     number: 6,
-    key: 'module6-phac-do-ngoai-tru',
-    title: 'Module 6: Phác Đồ Tiếp Cận & Điều Trị 3 Nhiễm Trùng Ngoại Trú Thường Gặp',
-    shortTitle: 'Nhiễm Trùng Ngoại Trú',
-    icon: 'fa-stethoscope',
+    key: 'module6-cac-nhom-khang-sinh',
+    title: 'Module 6: Các Nhóm Kháng Sinh',
+    shortTitle: 'Các Nhóm Kháng Sinh',
+    icon: 'fa-capsules',
     color: 'var(--dsp-teal)',
-    badge: '3 Bài giảng',
-    description: 'Hướng dẫn kê đơn cụ thể, liều lượng, thời gian dùng thuốc theo IDSA & BYT cho 3 bệnh lý ngoại trú chiếm 70% lượng kháng sinh cộng đồng: Viêm phổi nhẹ (CAP), Nhiễm khuẩn tiết niệu không biến chứng (UTI) và Nhiễm khuẩn da mô mềm (SSTI).',
-    clinicalObjective: 'Kê đơn chính xác thuốc nhóm Access đầu tay, đúng liều lượng, đúng thời gian cho các nhiễm trùng ngoại trú thường gặp mà không lạm dụng Quinolone hay Cephalosporin thế hệ 3.',
+    badge: '1 Bài giảng',
+    description: 'Hệ thống hóa dược lý lâm sàng từng nhóm kháng sinh kinh điển và thế hệ mới: cấu trúc hóa học (SAR), cơ chế diệt khuẩn, đề kháng, tối ưu hóa PK/PD ở bệnh nhân nặng, độc tính và áp dụng ca lâm sàng.',
+    clinicalObjective: 'Làm chủ đặc tính dược lý, phổ tác dụng, mục tiêu PK/PD và ranh giới an toàn của từng nhóm kháng sinh để cá thể hóa điều trị tại giường bệnh.',
     lessons: [
       {
         id: 'ks-6-1',
-        slug: 'ks-6-1-dieu-tri-cap-the-nhe',
-        title: 'Hướng dẫn điều trị Viêm phổi mắc phải cộng đồng (CAP) thể nhẹ ngoại trú',
+        slug: 'ks-6-1-nhom-khang-sinh-beta-lactam',
+        title: 'Tổng quan về nhóm kháng sinh Beta-lactam: Từ cơ chế dược lý đến tối ưu hóa lâm sàng và điều trị bệnh nhân nặng',
         moduleNumber: 6,
-        moduleKey: 'module6-phac-do-ngoai-tru',
-        moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
+        moduleKey: 'module6-cac-nhom-khang-sinh',
+        moduleTitle: 'Module 6: Các Nhóm Kháng Sinh',
         lessonNumber: 1,
         order: 15,
-        description: 'Tiêu chuẩn chẩn đoán CAP thể nhẹ (CRB-65 = 0); vi khuẩn gây bệnh chính (Phế cầu, Hemophilus, vi khuẩn không điển hình); phác đồ đầu tay Amoxicillin liều cao (1g x 3 lần/ngày) hoặc Amox-Clav phối hợp Doxycycline/Macrolide; thời gian điều trị tối ưu 5 ngày.',
-        estimatedMinutes: 25,
-        tags: ['CAP', 'Viêm phổi', 'CRB-65', 'Amoxicillin liều cao', 'Doxycycline', 'IDSA ATS'],
+        description: 'Toàn diện về 4 phân nhóm Beta-lactam (Penicillins, Cephalosporins, Carbapenems, Monobactams): tương quan cấu trúc–hoạt tính (SAR R1/R2), ức chế PBP, 4 cơ chế đề kháng Ambler A–D, mục tiêu PK/PD 100% fT > 4×MIC (ACCP 2026), dị ứng chéo chuỗi bên R1, độc tính thần kinh và ca lâm sàng CAP chuẩn IDSA/ATS.',
+        estimatedMinutes: 35,
+        tags: ['Beta-Lactam', 'Penicillins', 'Cephalosporins', 'Carbapenems', 'Monobactams', 'PK/PD', 'Truyền kéo dài', 'ACCP 2026'],
+        awareTier: 'access',
+        pkpdModel: 'T>MIC',
         isNewEbm2026: true,
-        keyTakeaway: 'Phế cầu kháng Penicillin ở mức độ trung gian tại Việt Nam có thể vượt qua bằng Amoxicillin liều cao (3g/ngày); thời gian điều trị CAP thể nhẹ chỉ cần 5 ngày khi bệnh nhân đã ổn định lâm sàng.',
+        hasInteractiveTool: true,
+        toolId: 'pkpd-simulator',
+        keyTakeaway: 'Ở bệnh nhân nặng ICU/sepsis, cần liều nạp (Loading Dose) kèm truyền kéo dài 3–4h hoặc liên tục 24h để đạt 100% fT > MIC (hoặc 4×MIC); phản ứng chéo Beta-lactam phụ thuộc chuỗi bên R1 chứ không phải vòng trung tâm.',
         sections: [
-          { id: 'sec-1', number: 1, title: 'Chẩn đoán xác định & Phân tầng nguy cơ ngoại trú bằng thang điểm CRB-65', icon: 'fa-lungs-virus' },
-          { id: 'sec-2', number: 2, title: 'Bản đồ vi sinh CAP ngoại trú: Phế cầu, Haemophilus & Vi khuẩn không điển hình', icon: 'fa-bacterium' },
-          { id: 'sec-3', number: 3, title: 'Phác đồ đầu tay cho người khỏe mạnh không bệnh đồng mắc', icon: 'fa-capsules' },
-          { id: 'sec-4', number: 4, title: 'Phác đồ cho người có bệnh đồng mắc mạn tính hoặc nghi ngờ kháng thuốc', icon: 'fa-user-injured' },
-          { id: 'sec-5', number: 5, title: 'Thời gian điều trị 5 ngày chuẩn EBM & Tiêu chí ngưng kháng sinh', icon: 'fa-calendar-check' }
-        ]
-      },
-      {
-        id: 'ks-6-2',
-        slug: 'ks-6-2-dieu-tri-uti-khong-bien-chung',
-        title: 'Hướng dẫn điều trị Nhiễm khuẩn đường tiết niệu dưới (Viêm bàng quang không biến chứng)',
-        moduleNumber: 6,
-        moduleKey: 'module6-phac-do-ngoai-tru',
-        moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
-        lessonNumber: 2,
-        order: 16,
-        description: 'Chẩn đoán viêm bàng quang cấp ở phụ nữ tiền mãn kinh; loại trừ viêm đài bể thận (sốt, đau hông lưng); lựa chọn đầu tay nhóm Access: Nitrofurantoin (5 ngày), Fosfomycin trometamol (3g liều duy nhất), Co-trimoxazole (3 ngày nếu nhạy). Cảnh báo không dùng Quinolone cho UTI không biến chứng.',
-        estimatedMinutes: 20,
-        tags: ['UTI', 'Viêm bàng quang', 'Nitrofurantoin', 'Fosfomycin', 'E. coli', 'IDSA UTI'],
-        isNewEbm2026: true,
-        keyTakeaway: 'Nitrofurantoin và Fosfomycin chỉ đạt nồng độ cao trong nước tiểu mà không ngấm vào mô nhu mô thận, là vũ khí hoàn hảo cho viêm bàng quang để tránh chọn lọc vi khuẩn đường ruột kháng thuốc.',
-        sections: [
-          { id: 'sec-1', number: 1, title: 'Định nghĩa Viêm bàng quang không biến chứng & Tiêu chí phân biệt Viêm đài bể thận', icon: 'fa-toilet' },
-          { id: 'sec-2', number: 2, title: 'Phổ vi khuẩn gây bệnh hàng đầu (UPEC - Uropathogenic E. coli)', icon: 'fa-bacteria' },
-          { id: 'sec-3', number: 3, title: 'Phác đồ lựa chọn đầu tay nhóm Access: Nitrofurantoin vs Fosfomycin', icon: 'fa-prescription-bottle-medical' },
-          { id: 'sec-4', number: 4, title: 'Tại sao FDA và IDSA khuyến cáo CHỐNG LẠI việc dùng Ciprofloxacin cho UTI nhẹ?', icon: 'fa-circle-xmark' },
-          { id: 'sec-5', number: 5, title: 'Theo dõi đáp ứng, giáo dục bệnh nhân dự phòng tái phát', icon: 'fa-shield-heart' }
-        ]
-      },
-      {
-        id: 'ks-6-3',
-        slug: 'ks-6-3-dieu-tri-ssti-the-nhe',
-        title: 'Hướng dẫn điều trị Nhiễm khuẩn Da & Mô mềm (SSTI) thể nhẹ ngoại trú',
-        moduleNumber: 6,
-        moduleKey: 'module6-phac-do-ngoai-tru',
-        moduleTitle: 'Module 6: Nhiễm Trùng Ngoại Trú',
-        lessonNumber: 3,
-        order: 17,
-        description: 'Phân loại SSTI có mủ (áp xe, mụn nhọt - nguyên nhân tụ cầu S. aureus) vs không mủ (viêm mô tế bào lan tỏa, viêm quầng - nguyên nhân liên cầu Streptococcus); nguyên tắc rạch tháo mủ là chính cho áp xe nhỏ; phác đồ Cefalexin/Cloxacillin; xử trí vết thương súc vật cắn bằng Amox-Clav.',
-        estimatedMinutes: 20,
-        tags: ['SSTI', 'Viêm mô tế bào', 'Áp xe', 'Tụ cầu', 'Liên cầu', 'Vết cắn động vật'],
-        isNewEbm2026: true,
-        keyTakeaway: 'Áp xe có mủ nhỏ thì rạch thoát mủ (I&D) là biện pháp điều trị quyết định, kháng sinh chỉ là thứ yếu; với viêm mô tế bào không mủ thì liên cầu là nguyên nhân chính, dùng Cefalexin bao phủ tốt.',
-        sections: [
-          { id: 'sec-1', number: 1, title: 'Phân đôi con đường: SSTI có mủ (Purulent) vs SSTI không mủ (Non-purulent)', icon: 'fa-code-branch' },
-          { id: 'sec-2', number: 2, title: 'Vai trò tối thượng của Rạch và Tháo mủ (Incision & Drainage)', icon: 'fa-scalpel' },
-          { id: 'sec-3', number: 3, title: 'Phác đồ kháng sinh đường uống cho Viêm mô tế bào không mủ (Liên cầu)', icon: 'fa-capsules' },
-          { id: 'sec-4', number: 4, title: 'Đánh giá nguy cơ CA-MRSA & Lựa chọn Co-trimoxazole / Clindamycin / Doxycycline', icon: 'fa-shield-virus' },
-          { id: 'sec-5', number: 5, title: 'Phác đồ đặc thù cho vết thương do chó, mèo hoặc người cắn (Bao phủ Pasteurella & Kỵ khí)', icon: 'fa-dog' }
+          { id: 'sec-1', number: 1, title: 'Đặt Vấn Đề & Cấu Trúc Hóa Học Dược Lý (SAR)', icon: 'fa-solid fa-atom' },
+          { id: 'sec-2', number: 2, title: 'Cơ Chế Diệt Khuẩn & 4 Cơ Chế Đề Kháng', icon: 'fa-solid fa-shield-virus' },
+          { id: 'sec-3', number: 3, title: 'PK/PD (%fT > MIC) & Tối Ưu Liều Bệnh Nhân Nặng', icon: 'fa-solid fa-chart-line' },
+          { id: 'sec-4', number: 4, title: 'Phân Loại Lâm Sàng & Phổ Kháng Khuẩn Chi Tiết', icon: 'fa-solid fa-table-list' },
+          { id: 'sec-5', number: 5, title: 'Độc Tính, Dị Ứng Chéo R1 & An Toàn Lâm Sàng', icon: 'fa-solid fa-triangle-exclamation' },
+          { id: 'sec-6', number: 6, title: 'Ca Lâm Sàng Minh Họa & Quy Trình Giám Sát', icon: 'fa-solid fa-stethoscope' },
+          { id: 'sec-7', number: 7, title: 'Tài Liệu Tham Khảo (AMA Style)', icon: 'fa-solid fa-book-medical' }
         ]
       }
     ]
