@@ -296,7 +296,10 @@ export const PROBLEM_LABELS_VI: Record<string, string> = {
   microbiome: 'Hệ vi sinh vật ruột',
   'dengue-vaccination': 'Tiêm chủng phòng Dengue (TAK-003)',
   'vaccine-coadministration': 'Tiêm đồng thời nhiều vắc-xin',
-  'post-marketing-safety': 'An toàn hậu lưu hành (AEFI)'
+  'post-marketing-safety': 'An toàn hậu lưu hành (AEFI)',
+  'post-traumatic-sepsis': 'Nhiễm khuẩn huyết sau chấn thương',
+  'multimarker-bioscore': 'Thang điểm đa chỉ dấu (Bioscore)',
+  'sterile-sirs-vs-sepsis': 'Phân biệt SIRS vô khuẩn vs Sepsis'
 };
 
 export const POPULATION_TAGS_VI: Record<string, string> = {
@@ -310,6 +313,7 @@ export const POPULATION_TAGS_VI: Record<string, string> = {
   'no-prior-cvd': 'Chưa có bệnh tim mạch',
   'high-cvd-risk': 'Nguy cơ tim mạch cao',
   'icu-adults': 'Người lớn tại ICU',
+  'severe-trauma': 'Đa chấn thương nặng (ISS ≥ 16)',
   'severe-cap-non-septic-shock': 'SCAP chưa sốc nhiễm khuẩn',
   'overweight-obesity': 'Thừa cân / Béo phì',
   'metabolic-syndrome': 'Hội chứng chuyển hóa',
@@ -352,6 +356,9 @@ export const TOPIC_TAGS_VI: Record<string, string> = {
   'nlr-mlr': 'Tỷ số NLR / MLR',
   'chan-doan-sot': 'Chẩn đoán sốt cấp',
   sepsis: 'Nhiễm khuẩn huyết / Sepsis',
+  'da-chan-thuong': 'Đa chấn thương nặng (ISS ≥ 16)',
+  'bioscore-saa-crp-pct': 'Bioscore (SAA + CRP + PCT)',
+  'poct-icu': 'Xét nghiệm tại giường (POCT)',
   sglt2i: 'Ức chế SGLT2 (SGLT2i)',
   'bao-ve-tim-than': 'Bảo vệ Tim - Thận'
 };
