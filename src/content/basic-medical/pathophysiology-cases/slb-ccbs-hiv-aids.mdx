@@ -100,7 +100,7 @@ sections:
 
 ---
 
-## 1. Cấu Trúc Virion HIV & Hệ Gen Điều Hòa / Phụ Trợ (Tat, Rev, Nef, Vif, Vpr, Vpu)
+## 1. Cấu Trúc Virion HIV & Hệ Gen Điều Hòa / Phụ Trợ (Tat, Rev, Nef, Vif, Vpr, Vpu) {#sec-1}
 Virus gây suy giảm miễn dịch ở người (*Human Immunodeficiency Virus* - HIV) thuộc chi *Lentivirus*, họ *Retroviridae*. Dưới góc độ sinh học phân tử lâm sàng, virion HIV là một cỗ máy xâm nhập tinh vi với cấu trúc hình cầu có đường kính khoảng $100\text{ - }120\text{ nm}$.
 
 <div class="matrix-grid">
@@ -122,12 +122,47 @@ Virus gây suy giảm miễn dịch ở người (*Human Immunodeficiency Virus*
   </div>
 </div>
 
-```
-                     ┌ gag > Mã hóa Polyprotein Ma trận (MA-p17), Capsid (CA-p24), Nucleocapsid (NC-p7/p9)
-                      pol > Mã hóa Bộ 3 Enzyme Xúc tác: Protease (PR), Reverse Transcriptase (RT), Integrase (IN)
-Bộ Gen HIV (~10 kb)   env > Mã hóa Tiền chất gp160 (Furin Tế bào chủ)> gp120 (Bề mặt) + gp41 (Xuyên màng)
-                     └ Gen Phụ trợ (Accessory Genes) > Tat, Rev, Nef, Vif, Vpr, Vpu (Quyết định độc lực & Lẩn tránh)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-dna" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC BỘ GEN HIV-1 (~10 KB): 3 GEN CẤU TRÚC &amp; GEN PHỤ TRỢ</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="hivArr1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="92" width="170" height="66" rx="12" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="105" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13" fill="var(--color-primary, #0284c7)">BỘ GEN HIV-1</text>
+      <text x="105" y="140" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">~10 kb (ssRNA dương)</text>
+
+      {/* Orthogonal trunk */}
+      <path d="M 190 125 L 220 125 L 220 40 L 252 40" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#hivArr1)"/>
+      <path d="M 220 96 L 252 96" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#hivArr1)"/>
+      <path d="M 220 154 L 252 154" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#hivArr1)"/>
+      <path d="M 220 125 L 220 212 L 252 212" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#hivArr1)"/>
+
+      <rect x="260" y="16" width="600" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
+      <text x="276" y="36" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">gen gag</text>
+      <text x="276" y="53" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Mã hóa Polyprotein Ma trận (MA-p17), Capsid (CA-p24), Nucleocapsid (NC-p7/p9)</text>
+
+      <rect x="260" y="73" width="600" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-success, #059669)" stroke-width="1.5"/>
+      <text x="276" y="93" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-success, #059669)">gen pol</text>
+      <text x="276" y="110" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Mã hóa Bộ 3 Enzyme Xúc tác: Protease (PR), Reverse Transcriptase (RT), Integrase (IN)</text>
+
+      <rect x="260" y="131" width="600" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-warning, #d97706)" stroke-width="1.5"/>
+      <text x="276" y="151" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">gen env</text>
+      <text x="276" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Mã hóa Tiền chất gp160 (Furin tế bào chủ cắt) ➔ gp120 (Bề mặt) + gp41 (Xuyên màng)</text>
+
+      <rect x="260" y="189" width="600" height="46" rx="10" fill="var(--purple-bg, #faf5ff)" stroke="var(--color-purple, #7c3aed)" stroke-width="1.5"/>
+      <text x="276" y="209" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-purple, #7c3aed)">Gen Phụ Trợ (Accessory Genes)</text>
+      <text x="276" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Tat, Rev, Nef, Vif, Vpr, Vpu — Quyết định độc lực, điều hòa phiên mã &amp; lẩn tránh miễn dịch</text>
+    </svg>
+  </div>
+</div>
 
 <div class="table-responsive">
   <table class="table-modern">
@@ -175,22 +210,76 @@ Bộ Gen HIV (~10 kb)   env > Mã hóa Tiền chất gp160 (Furin Tế bào ch�
 
 ---
 
-## 2. Chu Kỳ Nhân Lên Phân Tử: Hòa Màng gp41, Capsid Tàng Hình & Tích Hợp Provirus
+## 2. Chu Kỳ Nhân Lên Phân Tử: Hòa Màng gp41, Capsid Tàng Hình & Tích Hợp Provirus {#sec-2}
 Chu kỳ sống của HIV là một chuỗi sự kiện phân tử phối hợp tinh vi, bắt đầu từ sự gắn kết trên màng tế bào cho đến khi nảy chồi và trưởng thành virion.
 
-```
-[Virion Tự Do] (gp120 + CD4)> [Gắn CCR5 / CXCR4] (gp41 Thò Fusion Peptide)> [Hòa Màng Tế Bào]
-                                                                                            
-                                                                                    (Lõi Capsid Nguyên Vẹn)
-                                                                                            
-[Tích Hợp Provirus (Integrase)] <(Chui Qua Lỗ Nhân Nhờ CPSF6) [Phiên Mã Ngược (RT: ssRNA ➔ dsDNA)]
-             
-             └> [Phiên Mã mRNA (Tat/Rev)] > [Dịch Mã Gag/Pol/Env] > [Lắp Ráp Màng & Nảy Chồi (ESCRT)]
-                                                                                            
-                                                                                (Protease Tự Cắt Polyprotein)
-                                                                                            
-                                                                               [Virion Trưởng Thành Chín]
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0284c7);"></i> CHU TRÌNH NHÂN LÊN 7 BƯỚC CỦA HIV-1 TRONG TẾ BÀO LYMPHO T CD4+</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 350" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="hivArr2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+        </marker>
+        <marker id="hivArrRed2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #dc2626)"/>
+        </marker>
+      </defs>
+
+      {/* Row 1: Entry */}
+      <rect x="24" y="20" width="230" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="139" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">1. VIRION TỰ DO GẮN CD4</text>
+      <text x="139" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">gp120 nhận diện thụ thể CD4</text>
+      <path d="M 254 50 L 316 50" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#hivArr2)"/>
+
+      <rect x="324" y="20" width="232" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">2. GẮN ĐỒNG THỤ THỂ</text>
+      <text x="440" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">CCR5 / CXCR4 ➔ gp41 mở Fusion</text>
+      <path d="M 556 50 L 618 50" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#hivArr2)"/>
+
+      <rect x="626" y="20" width="230" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.8"/>
+      <text x="741" y="44" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">3. HÒA MÀNG TẾ BÀO</text>
+      <text x="741" y="64" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Giải phóng lõi Capsid nguyên vẹn</text>
+
+      {/* Connector down right */}
+      <path d="M 741 80 L 741 116" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#hivArr2)"/>
+
+      {/* Row 2: Reverse Transcription & Integration (Right -> Left) */}
+      <rect x="520" y="124" width="336" height="62" rx="10" fill="var(--purple-bg, #faf5ff)" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8"/>
+      <text x="688" y="149" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-purple, #7c3aed)">4. PHIÊN MÃ NGƯỢC (RT)</text>
+      <text x="688" y="169" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">ssRNA ➔ dsDNA (Chui qua lỗ nhân nhờ CPSF6)</text>
+      <path d="M 520 155 L 392 155" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#hivArr2)"/>
+
+      <rect x="24" y="124" width="360" height="62" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="1.8"/>
+      <text x="204" y="149" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">5. TÍCH HỢP PROVIRUS (INTEGRASE)</text>
+      <text x="204" y="169" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Chèn vĩnh viễn dsDNA vào nhiễm sắc thể tế bào chủ</text>
+
+      {/* Connector down left */}
+      <path d="M 204 186 L 204 222" fill="none" stroke="var(--color-danger, #dc2626)" stroke-width="2" marker-end="url(#hivArrRed2)"/>
+
+      {/* Row 3: Transcription, Assembly, Maturation */}
+      <rect x="24" y="230" width="246" height="58" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="147" y="253" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">6. PHIÊN MÃ &amp; DỊCH MÃ</text>
+      <text x="147" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">mRNA (Tat/Rev) ➔ Gag / Pol / Env</text>
+      <path d="M 270 259 L 314 259" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#hivArr2)"/>
+
+      <rect x="322" y="230" width="246" height="58" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-warning, #d97706)" stroke-width="1.6"/>
+      <text x="445" y="253" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #b45309)">7. LẮP RÁP &amp; NẢY CHỒI</text>
+      <text x="445" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Phức hợp ESCRT cắt nảy chồi khỏi màng</text>
+      <path d="M 568 259 L 612 259" fill="none" stroke="var(--color-danger, #dc2626)" stroke-width="2" marker-end="url(#hivArrRed2)"/>
+
+      <rect x="620" y="230" width="236" height="58" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="2"/>
+      <text x="738" y="253" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">VIRION TRƯỞNG THÀNH</text>
+      <text x="738" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Protease tự cắt Polyprotein ➔ Chín</text>
+
+      <rect x="24" y="304" width="832" height="32" rx="8" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="1.2"/>
+      <text x="440" y="324" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-success, #059669)">Đích tác động ARV: CCR5i (Maraviroc) • NRTI/NNRTI (ức chế RT) • INSTI (Dolutegravir) • PI (ức chế Protease)</text>
+    </svg>
+  </div>
+</div>
 
 <div class="flow-steps">
   <div class="flow-step">
@@ -242,7 +331,7 @@ Chu kỳ sống của HIV là một chuỗi sự kiện phân tử phối hợp 
 
 ---
 
-## 3. Cơ Chế Suy Giảm Tế Bào CD4+: Pyroptosis (Caspase-1) vs. Apoptosis (Caspase-3)
+## 3. Cơ Chế Suy Giảm Tế Bào CD4+: Pyroptosis (Caspase-1) vs. Apoptosis (Caspase-3) {#sec-3}
 Trong nhiều thập kỷ, quan niệm kinh điển cho rằng sự suy giảm tế bào $\text{CD4}^+$ chủ yếu do virus nhân lên làm ly giải tế bào hoặc do tế bào chết theo chương trình (Apoptosis qua trung gian Caspase-3). Tuy nhiên, các công trình nghiên cứu miễn dịch học hiện đại (Doitsh et al.) đã tạo nên bước ngoặt thay đổi hoàn toàn mô hình bệnh sinh:
 
 <div class="matrix-grid">
@@ -277,7 +366,7 @@ Trong nhiều thập kỷ, quan niệm kinh điển cho rằng sự suy giảm t
 
 ---
 
-## 4. Động Học Miễn Dịch & Ba Giai Đoạn Bệnh: Đỉnh Tải Lượng, Setpoint & Phá Vỡ GALT
+## 4. Động Học Miễn Dịch & Ba Giai Đoạn Bệnh: Đỉnh Tải Lượng, Setpoint & Phá Vỡ GALT {#sec-4}
 Quá trình tiến triển tự nhiên của nhiễm HIV khi không có điều trị ART trải qua 3 giai đoạn động học sinh lý bệnh:
 
 <div class="flowchart-card">
@@ -371,15 +460,49 @@ Quá trình tiến triển tự nhiên của nhiễm HIV khi không có điều 
 
 ---
 
-## 5. Hồ Chứa Virus (Viral Reservoir): Clonal Expansion & Mô Hình "Active Reservoir"
+## 5. Hồ Chứa Virus (Viral Reservoir): Clonal Expansion & Mô Hình "Active Reservoir" {#sec-5}
 Sự tồn tại của **Hồ chứa virus tiềm ẩn (Viral Reservoir)** là nguyên nhân duy nhất khiến các thuốc ART hiện đại không thể chữa khỏi dứt điểm bệnh HIV và giải thích tại sao tải lượng virus luôn bùng phát trở lại nếu ngừng thuốc.
 
-```
-                    ┌ Defective Provirus (>90%) > Đột biến mất chức năng phiên mã
-                     Latent Reservoir > Provirus tích hợp vùng dị nhiễm sắc thể (Tắt hoàn toàn)
-HIV Proviral DNA    Clonal Expansion > Phân chia tế bào T nhớ tự nhiên, nhân đôi Provirus nguyên vẹn
-                    └ Active Reservoir > Vẫn rò rỉ phiên mã protein Gag/Env (Gây Viêm mạn & Viral Blips)
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-layer-group" style="color: var(--color-purple, #7c3aed);"></i> PHÂN LOẠI 4 TRẠNG THÁI Ổ CHỨA TIỀM ẨN (HIV PROVIRAL DNA RESERVOIR)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 250" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="hivArr3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-purple, #7c3aed)"/>
+        </marker>
+      </defs>
+
+      <rect x="20" y="92" width="175" height="66" rx="12" fill="var(--purple-bg, #faf5ff)" stroke="var(--color-purple, #7c3aed)" stroke-width="2"/>
+      <text x="107" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-purple, #7c3aed)">HIV PROVIRAL DNA</text>
+      <text x="107" y="140" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Trong tế bào T nhớ CD4+</text>
+
+      <path d="M 195 125 L 224 125 L 224 40 L 254 40" fill="none" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8" marker-end="url(#hivArr3)"/>
+      <path d="M 224 96 L 254 96" fill="none" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8" marker-end="url(#hivArr3)"/>
+      <path d="M 224 154 L 254 154" fill="none" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8" marker-end="url(#hivArr3)"/>
+      <path d="M 224 125 L 224 212 L 254 212" fill="none" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8" marker-end="url(#hivArr3)"/>
+
+      <rect x="262" y="16" width="598" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.6"/>
+      <text x="278" y="36" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-text, #0f172a)">1. Defective Provirus (&gt; 90%)</text>
+      <text x="278" y="53" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Đột biến mất đoạn/siêu đột biến làm mất chức năng phiên mã sinh virion</text>
+
+      <rect x="262" y="73" width="598" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="278" y="93" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">2. Latent Reservoir (Ổ chứa ngủ yên)</text>
+      <text x="278" y="110" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Provirus tích hợp vùng dị nhiễm sắc thể (Heterochromatin) — Tắt hoàn toàn, né miễn dịch &amp; ARV</text>
+
+      <rect x="262" y="131" width="598" height="46" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.6"/>
+      <text x="278" y="151" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">3. Clonal Expansion (Nhân dòng tế bào chủ)</text>
+      <text x="278" y="168" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Phân chia tế bào T nhớ tự nhiên nhân đôi Provirus nguyên vẹn mà không cần nhân lên virus</text>
+
+      <rect x="262" y="189" width="598" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="1.6"/>
+      <text x="278" y="209" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">4. Active Reservoir (Ổ chứa rò rỉ)</text>
+      <text x="278" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Vẫn rò rỉ phiên mã protein Gag/Env ➔ Gây viêm mạn tính hệ thống &amp; đợt bùng phát nhẹ (Viral Blips)</text>
+    </svg>
+  </div>
+</div>
 
 <div class="matrix-grid">
   <div class="matrix-card">
@@ -429,7 +552,7 @@ HIV Proviral DNA    Clonal Expansion > Phân chia tế bào T nhớ tự nhiên,
 
 ---
 
-## 6. Sinh Lý Bệnh So Sánh HIV-1 vs. HIV-2: Bài Học Từ Nef & Yếu Tố SAMHD1/Vpx
+## 6. Sinh Lý Bệnh So Sánh HIV-1 vs. HIV-2: Bài Học Từ Nef & Yếu Tố SAMHD1/Vpx {#sec-6}
 HIV-2 có nguồn gốc từ virus SIVsmm ở khỉ Sooty Mangabey, chủ yếu lưu hành tại Tây Phi. Mặc dù cả hai đều có thể dẫn đến AIDS, nhưng HIV-2 có độc lực thấp hơn nhiều, tốc độ sụt giảm $\text{CD4}^+$ rất chậm và tỷ lệ lớn người nhiễm là "người kiểm soát ưu tú" (Elite Controllers). Hai cơ chế phân tử cốt lõi tạo nên sự khác biệt này gồm:
 
 <div class="matrix-grid">
@@ -452,7 +575,7 @@ HIV-2 có nguồn gốc từ virus SIVsmm ở khỉ Sooty Mangabey, chủ yếu 
 
 ---
 
-## 7. Bệnh Đồng Mắc Ở PLWH Lão Hóa: Tim Mạch (REPRIEVE) & Đồng Nhiễm Lao (WHO 2025/2026)
+## 7. Bệnh Đồng Mắc Ở PLWH Lão Hóa: Tim Mạch (REPRIEVE) & Đồng Nhiễm Lao (WHO 2025/2026) {#sec-7}
 Nhờ sự phổ cập của thuốc kháng virus ART, tuổi thọ của người sống chung với HIV (PLWH) đã tiệm cận người bình thường. Đến năm 2030, trên $70\%$ PLWH tại các nước phát triển sẽ trên 50 tuổi. Trọng tâm sinh lý bệnh học hiện đại đã chuyển dịch sang các bệnh đồng mắc mạn tính:
 
 <div class="table-responsive">
@@ -473,7 +596,7 @@ Nhờ sự phổ cập của thuốc kháng virus ART, tuổi thọ của ngư�
       <tr>
         <td><strong>2. Đồng Nhiễm Lao (TB in Advanced HIV)</strong></td>
         <td>Suy giảm nghiêm trọng tế bào T $\text{CD4}^+$ Th1 và Th17 $\to$ thiếu hụt $IFN-\gamma$ để hoạt hóa đại thực bào $\to$ tan rã cấu trúc u hạt (Granuloma) $\to$ vi khuẩn lao phát tán lan tỏa ngoài phổi và màng não.</td>
-        <td><strong>Guideline WHO 2025/2026:</strong> Bệnh nhân HIV tiến triển ($\text{CD4} &lt; 200$) bắt buộc chỉ định song song: <strong>NAATs (Xpert Ultra/Truenat)</strong> trên mẫu đờm/dịch phối hợp <strong>LF-LAM trên nước tiểu</strong> để phát hiện sớm lao.</td>
+        <td><strong>Guideline WHO 2025/2026:</strong> Bệnh nhân HIV tiến triển ($\text{CD4} < 200$) bắt buộc chỉ định song song: <strong>NAATs (Xpert Ultra/Truenat)</strong> trên mẫu đờm/dịch phối hợp <strong>LF-LAM trên nước tiểu</strong> để phát hiện sớm lao.</td>
       </tr>
       <tr>
         <td><strong>3. Hội Chứng Viêm Phục Hồi Miễn Dịch (TB-IRIS)</strong></td>
@@ -486,7 +609,7 @@ Nhờ sự phổ cập của thuốc kháng virus ART, tuổi thọ của ngư�
 
 ---
 
-## 8. Bản Đồ Điều Trị ART Nhắm Trúng Đích Cơ Chế & Đột Phá Mới (Lenacapavir)
+## 8. Bản Đồ Điều Trị ART Nhắm Trúng Đích Cơ Chế & Đột Phá Mới (Lenacapavir) {#sec-8}
 Dựa trên từng mắt xích trong chu kỳ phân tử của HIV, các nhóm thuốc kháng virus (ART) đã được thiết kế để triệt tiêu hoàn toàn khả năng sao chép của virus:
 
 <div class="matrix-grid">
@@ -523,7 +646,7 @@ Dựa trên từng mắt xích trong chu kỳ phân tử của HIV, các nhóm t
 
 ---
 
-## 9. Tranh Luận Học Thuật & Tài Liệu Tham Khảo EBM
+## 9. Tranh Luận Học Thuật & Tài Liệu Tham Khảo EBM {#sec-9}
 <div class="infobox pearl">
   <div class="infobox-title">💎 Phân Tích Điểm Tranh Luận Học Thuật Giữa Các Nghiên Cứu Lớn</div>
   <div class="infobox-body">

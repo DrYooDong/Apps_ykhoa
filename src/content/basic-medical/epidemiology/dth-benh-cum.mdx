@@ -110,7 +110,7 @@ Dịch tễ học bệnh Cúm được định hình bởi sự tương tác đ�
     title: "Vật Chủ (Host)",
     items: [
       "Người là ký chủ chính của Cúm A, B, C; Động vật hoang dã/gia cầm/heo là ổ chứa Cúm A",
-      "Phân bố thụ thể Sialic Acid: $\\alpha$-2,6 SA (đường hô hấp trên ở người) vs $\\alpha$-2,3 SA (chim/đường hô hấp dưới)",
+      "Phân bố thụ thể Sialic Acid: α-2,6 SA (đường hô hấp trên ở người) vs α-2,3 SA (chim/đường hô hấp dưới)",
       "Nhóm nguy cơ cao: Trẻ &lt; 5 tuổi, người &ge; 65 tuổi, phụ nữ mang thai, bệnh mạn tính",
       "Miễn dịch chủng đặc hiệu ngắn hạn; suy giảm theo thời gian (waning immunity)"
     ]
@@ -221,27 +221,74 @@ Vi rút cúm lây truyền giữa người với người qua 3 đường chính
 
 ### 3.3. Thang Bậc Tiến Triển Lâm Sàng &amp; Cột Mốc Can Thiệp (Care Cascade)
 
-```
-[Phơi Nhiễm Vi Rút Cúm]
-       │
-       ▼
-[Ủ Bệnh Âm Thầm: 1 - 4 Ngày (Trung bình 48h)]
-       │
-       ▼
-[Khởi Phát Đột Ngột (Ngày 1 - 3)] ──► [CỬA SỔ VÀNG THUỐC KHÁNG VI RÚT: < 48H]
- Sốt cao, ớn lạnh, đau đầu, đau cơ nhức mỏi, ho khan, đau họng    │ (Oseltamivir / Baloxavir / Zanamivir)
-       │                                                         ▼
-       ├─────────────────────────────────────────► [Phục Hồi Hoàn Toàn (7 - 14 Ngày)]
-       │                                            (Hầu hết trường hợp cúm mùa nhẹ)
-       ▼
-[Giai Đoạn Biến Chứng (Ngày 4 - 8)]
- ├─ Viêm phổi nguyên phát do vi rút Cúm (Thâm nhiễm kẽ, ARDS, Suy đa tạng)
- ├─ Viêm phổi thứ phát do vi khuẩn (S. pneumoniae, S. aureus, H. influenzae)
- └─ Bội nhiễm, Bùng phát đợt cấp bệnh nền (Suy tim, COPD, ĐTĐ)
-       │
-       ▼
-[Hồi Sức Cấp Cứu ICU / Tử Vong]
-```
+<div class="flowchart-card">
+  <div class="flowchart-header">
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> DIỄN TIẾN TỰ NHIÊN &amp; CỬA SỔ VÀNG ĐIỀU TRỊ BỆNH CÚM</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
+  </div>
+  <div class="flowchart-svg-container">
+    <svg class="flowchart-svg" viewBox="0 0 880 430" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="fluArrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
+        </marker>
+        <marker id="fluArrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-success, #059669)"/>
+        </marker>
+        <marker id="fluArrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-warning, #d97706)"/>
+        </marker>
+        <marker id="fluArrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-danger, #dc2626)"/>
+        </marker>
+      </defs>
+
+      {/* Step 1: Phơi nhiễm */}
+      <rect x="40" y="16" width="380" height="44" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="230" y="43" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">PHƠI NHIỄM VI RÚT CÚM (GIỌT BẮN / KHÍ DUNG)</text>
+      <path d="M 230 60 L 230 82" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#fluArrBlue)"/>
+
+      {/* Step 2: Ủ bệnh */}
+      <rect x="40" y="88" width="380" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="230" y="109" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Ủ BỆNH ÂM THẦM: 1 – 4 NGÀY (TRUNG BÌNH 48H)</text>
+      <text x="230" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Đã bắt đầu đào thải virus 24h trước khi khởi phát triệu chứng</text>
+      <path d="M 230 134 L 230 158" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#fluArrBlue)"/>
+
+      {/* Step 3: Khởi phát */}
+      <rect x="40" y="164" width="380" height="62" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.8"/>
+      <text x="230" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-warning, #b45309)">KHỞI PHÁT ĐỘT NGỘT (NGÀY 1 – 3)</text>
+      <text x="230" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">Sốt cao, ớn lạnh, đau đầu, đau cơ nhức mỏi toàn thân</text>
+      <text x="230" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Ho khan, đau rát họng, kiệt sức nhanh</text>
+
+      {/* Branch Right: Golden Window */}
+      <path d="M 420 195 L 478 195" fill="none" stroke="var(--color-warning, #d97706)" stroke-width="2" marker-end="url(#fluArrAmber)"/>
+      <rect x="486" y="164" width="354" height="62" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="2"/>
+      <text x="663" y="186" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-warning, #b45309)">CỬA SỔ VÀNG KHÁNG VI RÚT (&lt; 48 GIỜ)</text>
+      <text x="663" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Oseltamivir / Baloxavir / Zanamivir</text>
+      <text x="663" y="219" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Giảm thời gian bệnh, giảm biến chứng &amp; tỷ lệ tử vong</text>
+
+      {/* Branch to Recovery */}
+      <path d="M 663 226 L 663 260" fill="none" stroke="var(--color-success, #059669)" stroke-width="2" marker-end="url(#fluArrGreen)"/>
+      <path d="M 420 212 L 452 212 L 452 296 L 478 296" fill="none" stroke="var(--color-success, #059669)" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#fluArrGreen)"/>
+      <rect x="486" y="268" width="354" height="62" rx="10" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="1.8"/>
+      <text x="663" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #059669)">PHỤC HỒI HOÀN TOÀN (7 – 14 NGÀY)</text>
+      <text x="663" y="312" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Hầu hết trường hợp cúm mùa nhẹ tự giới hạn</text>
+
+      {/* Branch Down: Complications */}
+      <path d="M 230 226 L 230 260" fill="none" stroke="var(--color-danger, #dc2626)" stroke-width="2" marker-end="url(#fluArrRed)"/>
+      <rect x="40" y="268" width="380" height="84" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="1.8"/>
+      <text x="230" y="288" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">GIAI ĐOẠN BIẾN CHỨNG (NGÀY 4 – 8)</text>
+      <text x="54" y="306" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Viêm phổi nguyên phát do cúm (Thâm nhiễm kẽ, ARDS, MODS)</text>
+      <text x="54" y="323" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Viêm phổi bội nhiễm vi khuẩn (S. pneumoniae, S. aureus, H. influenzae)</text>
+      <text x="54" y="340" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Bùng phát đợt cấp bệnh nền (Suy tim, COPD, Đái tháo đường)</text>
+
+      {/* ICU */}
+      <path d="M 230 352 L 230 374" fill="none" stroke="var(--color-danger, #dc2626)" stroke-width="2" marker-end="url(#fluArrRed)"/>
+      <rect x="80" y="380" width="300" height="36" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="2"/>
+      <text x="230" y="403" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-danger, #dc2626)">HỒI SỨC CẤP CỨU ICU / TỬ VONG</text>
+    </svg>
+  </div>
+</div>
 
 ---
 

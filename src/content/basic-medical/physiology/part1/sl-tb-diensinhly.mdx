@@ -84,7 +84,7 @@ sections:
 
 ---
 
-## 1. Điện Thế Màng Lúc Nghỉ (RMP)
+## 1. Điện Thế Màng Lúc Nghỉ (RMP) {#sec-1}
 Ở trạng thái nghỉ không bị kích thích, tất cả các tế bào sống trong cơ thể đều duy trì một hiệu điện thế qua màng, trong đó **mặt trong màng tế bào tích điện âm hơn so với mặt ngoài màng**.
 
 - **Sợi thần kinh lớn & Tế bào cơ vân**: $V_m \approx -70\text{ đến }-90\text{ mV}$.
@@ -109,7 +109,7 @@ sections:
 
       {/*  */}
       <line x1="30" y1="78" x2="870" y2="78" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8,6" />
-      <rect x="350" y="68" width="200" height="22" rx="4" fill="#ffffff" stroke="#64748b" stroke-width="1" />
+      <rect x="350" y="68" width="200" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#64748b" stroke-width="1" />
       <text x="450" y="83" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">MÀNG TẾ BÀO (TÍNH THẤM K⁺ &gt;&gt; Na⁺)</text>
 
       {/*  */}
@@ -128,7 +128,7 @@ sections:
 
 ---
 
-## 2. Phương Trình Nernst & GHK
+## 2. Phương Trình Nernst & GHK {#sec-2}
 ### A. Phương Trình Nernst (Điện Thế Cân Bằng Của Từng Ion)
 
 Điện thế cân bằng (*Equilibrium Potential - $E_{ion}$*) là mức hiệu điện thế màng mà tại đó lực đẩy do chênh lệch nồng độ cân bằng hoàn toàn với lực hút tĩnh điện, khiến dòng ion di chuyển ròng bằng 0:
@@ -153,7 +153,7 @@ Vì ở trạng thái nghỉ $P_K \gg P_{Na}$, điện thế màng thực tế (
 
 ---
 
-## 3. Các Pha Điện Thế Hoạt Động
+## 3. Các Pha Điện Thế Hoạt Động {#sec-3}
 Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*), tế bào thần kinh và cơ sẽ phát sinh một biến đổi điện thế bùng phát cực nhanh tuân theo **Quy luật Tất cả hoặc Không (All-or-None Law)**:
 
 
@@ -192,7 +192,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
       {/*  */}
       <line x1="90" y1="80" x2="800" y2="80" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4,4"/>
       <text x="80" y="85" text-anchor="end" font-size="11" font-weight="700" fill="#ef4444">+35 mV</text>
-      <rect x="360" y="66" width="160" height="24" rx="4" fill="#ffffff" stroke="#ef4444" stroke-width="1"/>
+      <rect x="360" y="66" width="160" height="24" rx="4" fill="var(--color-surface, #ffffff)" stroke="#ef4444" stroke-width="1"/>
       <text x="440" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444">▲ Đỉnh Vượt Ngưỡng (+35 mV)</text>
 
       {/*  */}
@@ -202,7 +202,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
       {/*  */}
       <line x1="90" y1="230" x2="800" y2="230" stroke="#d97706" stroke-width="1.5" stroke-dasharray="6,4"/>
       <text x="80" y="235" text-anchor="end" font-size="11" font-weight="700" fill="#d97706">-55 mV</text>
-      <rect x="180" y="218" width="130" height="22" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+      <rect x="180" y="218" width="130" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1"/>
       <text x="245" y="233" text-anchor="middle" font-size="10" font-weight="700" fill="#d97706">Ngưỡng Khử Cực</text>
 
       {/*  */}
@@ -222,21 +222,21 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
       {/*  */}
       {/*  */}
       <circle cx="270" cy="155" r="5" fill="#ef4444"/>
-      <rect x="200" y="115" width="130" height="34" rx="6" fill="#ffffff" stroke="#ef4444" stroke-width="1"/>
+      <rect x="200" y="115" width="130" height="34" rx="6" fill="var(--color-surface, #ffffff)" stroke="#ef4444" stroke-width="1"/>
       <text x="265" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">1. KHỬ CỰC</text>
-      <text x="265" y="143" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">Na⁺ ùa vào qua NaV</text>
+      <text x="265" y="143" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #334155)">Na⁺ ùa vào qua NaV</text>
 
       {/*  */}
       <circle cx="410" cy="180" r="5" fill="#059669"/>
-      <rect x="420" y="150" width="130" height="34" rx="6" fill="#ffffff" stroke="#059669" stroke-width="1"/>
+      <rect x="420" y="150" width="130" height="34" rx="6" fill="var(--color-surface, #ffffff)" stroke="#059669" stroke-width="1"/>
       <text x="485" y="165" text-anchor="middle" font-size="10" font-weight="700" fill="#059669">2. TÁI CỰC</text>
-      <text x="485" y="178" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">K⁺ thoát ra qua KV</text>
+      <text x="485" y="178" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #334155)">K⁺ thoát ra qua KV</text>
 
       {/*  */}
       <circle cx="550" cy="320" r="5" fill="#6366f1"/>
-      <rect x="520" y="340" width="150" height="34" rx="6" fill="#ffffff" stroke="#6366f1" stroke-width="1"/>
+      <rect x="520" y="340" width="150" height="34" rx="6" fill="var(--color-surface, #ffffff)" stroke="#6366f1" stroke-width="1"/>
       <text x="595" y="355" text-anchor="middle" font-size="10" font-weight="700" fill="#6366f1">3. ƯU PHÂN CỰC</text>
-      <text x="595" y="368" text-anchor="middle" font-size="9" font-weight="600" fill="#334155">Kênh K⁺ đóng chậm (-90 mV)</text>
+      <text x="595" y="368" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #334155)">Kênh K⁺ đóng chậm (-90 mV)</text>
 
       {/*  */}
       <line x1="220" y1="385" x2="440" y2="385" stroke="#ef4444" stroke-width="2"/>
@@ -268,7 +268,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 
 ---
 
-## 4. Thời Kỳ Trơ & Dẫn Truyền Nhảy Cóc
+## 4. Thời Kỳ Trơ & Dẫn Truyền Nhảy Cóc {#sec-4}
 ### A. Thời Kỳ Trơ (Refractory Period)
 
 - **Thời kỳ trơ tuyệt đối (Absolute Refractory Period - ARP)**: Kéo dài từ lúc bắt đầu khử cực đến 1/3 giai đoạn tái cực. Trong giai đoạn này, **cổng bất hoạt h của kênh $Na^+$ đang đóng chặt**, tế bào **hoàn toàn không thể phát sinh thêm một điện thế hoạt động thứ hai** dù cường độ kích thích mạnh đến đâu. ARP quyết định giới hạn tần số phát xung tối đa và đảm bảo xung động thần kinh chỉ dẫn truyền theo 1 chiều duy nhất.
@@ -285,7 +285,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 
 ---
 
-## 5. Điện Sinh Lý Tim Mạch Đặc Thù
+## 5. Điện Sinh Lý Tim Mạch Đặc Thù {#sec-5}
 1. **Điện thế hoạt động đáp ứng nhanh (Cơ tâm thất, tâm nhĩ, Mạng Purkinje)**:
      - *Pha 0*: Khử cực nhanh do dòng $Na^+$ ồ ạt qua kênh $Na_V1.5$.
      - *Pha 1*: Tái cực sớm ngắn do dòng $K^+$ thoát ra qua kênh $I_{to}$.
@@ -299,7 +299,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
 
 ---
 
-## 6. Ứng Dụng Dược Lý & Cấp Cứu EBM
+## 6. Ứng Dụng Dược Lý & Cấp Cứu EBM {#sec-6}
 - **Tăng Kali máu ($K^+ > 5.5\text{ mmol/L}$)**: Làm giảm gradient nồng độ $K^+$ qua màng ► Theo phương trình Nernst, điện thế nghỉ $V_m$ bị bớt âm hóa (kéo từ $-90\text{ mV}$ lên $-70\text{ mV}$). Tình trạng khử cực mạn tính này làm **bất hoạt liên tục cổng h của kênh $Na^+$**, khiến cơ tim trơ hoàn toàn, xuất hiện sóng T cao nhọn đối xứng, giãn rộng phức bộ QRS và dẫn đến **Rung thất / Vô tâm thu ngừng tim**.
   - **Chỉ định cấp cứu khẩn cấp**: Tiêm ngay **Calcium Gluconate hoặc Calcium Chloride tĩnh mạch** để ổn định màng tế bào cơ tim (kéo ngưỡng kích thích Threshold lên cao tương ứng để ngăn loạn nhịp).
 
@@ -308,7 +308,7 @@ Khi kích thích đạt ngưỡng (*Threshold Potential $\approx -55\text{ mV}$*
   - **Thuốc gây tê tại chỗ (Lidocaine, Bupivacaine)**: Xâm nhập qua màng dưới dạng không tích điện, sau đó ion hóa bên trong bào tương và gắn vào thụ thể ức chế **ở mặt trong lỗ kênh $Na^+$ điện thế**, khóa chặt kênh ở trạng thái bất hoạt và chặn đứng dẫn truyền cảm giác đau.
   - **Độc tố Cá nóc (Tetrodotoxin - TTX)**: Gắn cực kỳ chặt vào **mặt ngoài của kênh $Na^+$**, làm tê liệt hoàn toàn hệ thần kinh và cơ hô hấp gây tử vong do ngạt thở trong vòng vài giờ nếu không được thở máy hỗ trợ.
 
-## 7. Tài Liệu Tham Khảo EBM
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
 <div class="citation-box">
   <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.8; color: var(--color-text-muted, #475569); font-size: 0.88rem;">
     <li><strong>Hall, J. E., & Hall, M. E. (2021)</strong>. <em>Guyton and Hall Textbook of Medical Physiology</em> (14th ed.). Philadelphia: Elsevier. Chapter 5: Membrane Potentials and Action Potentials.</li>

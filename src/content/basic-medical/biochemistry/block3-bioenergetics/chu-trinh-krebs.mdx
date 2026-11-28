@@ -112,58 +112,51 @@ sections:
 
 ---
 
-## 1. Nhập Khẩu Pyruvat Vào Ty Thể & Cấu Trúc Siêu Phân Tử PDC
+## 1. Nhập Khẩu Pyruvat Vào Ty Thể & Cấu Trúc Siêu Phân Tử PDC {#sec-1}
 Pyruvat là sản phẩm cuối cùng của con đường đường phân kỵ khí diễn ra tại bào tương. Để tiếp tục thoái hóa hoàn toàn theo con đường hiếu khí và khai thác tối đa năng lượng, pyruvat bắt buộc phải được vận chuyển vào bên trong **chất nền ty thể (*mitochondrial matrix*)** – nơi định vị toàn bộ hệ thống enzyme của Chu trình Krebs và Chuỗi truyền điện tử.
 
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BÀO TƯƠNG</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> VẬN CHUYỂN PYRUVAT TỪ BÀO TƯƠNG VÀO CHẤT NỀN TY THỂ (ĐI VÀO PHỨC HỢP PDC)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 266" width="880" height="266" xmlns="http://www.w3.org/2000/svg">
+<svg class="flowchart-svg" viewBox="0 0 880 185" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="krbArr1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
+      <rect x="20" y="24" width="175" height="136" rx="12" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="107" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BÀO TƯƠNG</text>
+      <text x="107" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="12" fill="var(--color-text, #0f172a)">Pyruvat (3C)</text>
+      <text x="107" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Sản phẩm cuối</text>
+      <text x="107" y="124" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">của đường phân</text>
 
-      <rect x="30" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">BÀO TƯƠNG</text>
-      <line x1="45" y1="50" x2="265" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Pyruvat (Bào</text>
-      <rect x="315" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">KHOẢNG GIAN MÀNG</text>
-      <line x1="330" y1="50" x2="550" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• tương)            Pyruvat</text>
-      <rect x="600" y="20" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">CHẤT NỀN TY THỂ</text>
-      <line x1="615" y1="50" x2="835" y2="50" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="66" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Pyruvat</text>
-      {/* Bifurcation Path */}
-      <path d="M 440 110 L 440 124 L 235 124 L 235 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 124 L 645 124 L 645 138" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Left Column: Màng Ngoài */}
-      <rect x="40" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="235" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng Ngoài</text>
-      <line x1="60" y1="174" x2="410" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="60" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Qua Pori</text>
-      {/* Right Column: Màng Trong */}
-      <rect x="450" y="138" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="645" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng Trong</text>
-      <line x1="470" y1="174" x2="820" y2="174" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="470" y="190" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• n) (Pyruvate Translocase</text>
-      <text x="470" y="208" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• đồng vận H+)</text>
+      <path d="M 195 92 L 236 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#krbArr1)"/>
+
+      <rect x="244" y="34" width="150" height="116" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="319" y="62" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">MÀNG NGOÀI</text>
+      <text x="319" y="86" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Kênh Porin (VDAC)</text>
+      <text x="319" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Khuếch tán tự do vào</text>
+      <text x="319" y="124" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">khoảng gian màng</text>
+
+      <path d="M 394 92 L 435 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#krbArr1)"/>
+
+      <rect x="443" y="34" width="192" height="116" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.8"/>
+      <text x="539" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">MÀNG TRONG TY THỂ</text>
+      <text x="539" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Pyruvate Translocase</text>
+      <text x="539" y="106" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Đồng vận chuyển (Symport)</text>
+      <text x="539" y="124" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-warning, #b45309)">Pyruvat⁻ + H⁺ (MPC1/2)</text>
+
+      <path d="M 635 92 L 676 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#krbArr1)"/>
+
+      <rect x="684" y="24" width="176" height="136" rx="12" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="2"/>
+      <text x="772" y="52" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-success, #059669)">CHẤT NỀN TY THỂ</text>
+      <text x="772" y="84" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Đi vào phức hợp PDC</text>
+      <text x="772" y="108" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">Khử carboxyl oxy hóa</text>
+      <text x="772" y="126" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.5" fill="var(--color-success, #059669)">➔ Acetyl-CoA + NADH</text>
     </svg>
   </div>
 </div>
@@ -195,50 +188,44 @@ Phức hợp Pyruvate Dehydrogenase (PDC) có khối lượng phân tử lên t�
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: E1: PYRUVATE DEHYDROGENASE</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> CẤU TRÚC ĐA ENZYME PHỨC HỢP PYRUVATE DEHYDROGENASE (PDC)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 222" width="880" height="222" xmlns="http://www.w3.org/2000/svg">
+<svg class="flowchart-svg" viewBox="0 0 880 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="krbArr2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
+      <rect x="220" y="14" width="440" height="40" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="2"/>
+      <text x="440" y="39" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">CẤU TRÚC ĐA ENZYME PHỨC HỢP PDC</text>
 
-      {/* Single Node: CẤU TRÚC ĐA ENZYME PHỨC HỢP PD */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CẤU TRÚC ĐA ENZYME PHỨC HỢP PDC</text>
-      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <rect x="30" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">E1: PYRUVATE DEHYDROGENASE</text>
-      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Heterotetramer α2β2</text>
-      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Gắn Coenzyme TPP (Vit B1)</text>
-      <text x="42" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Khử carboxyl tạo CO2 &amp; HETDP - Ch</text>
-      <rect x="315" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">E2: DIHYDROLIPOYL TRANSACETYLASE</text>
-      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Khung lõi 60 Subunits (Khối 12</text>
-      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Gắn Lipoamide (Cánh tay 1.4 n</text>
-      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• uyển Acetyl sang CoA-SH (Vit B5) - Tái</text>
-      <rect x="600" y="94" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
-      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">E3: DIHYDROLIPOYL DEHYDROGENASE</text>
-      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• mặt) - Homodimer α2 gắn qua E3BP</text>
-      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• m)   - Gắn Coenzyme FAD (Vit B2)</text>
-      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• oxy hóa Lipoamide, truyền e- sang NAD+</text>
+      <path d="M 440 54 L 440 72 M 155 72 L 725 72" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <path d="M 155 72 L 155 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr2)"/>
+      <path d="M 440 72 L 440 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr2)"/>
+      <path d="M 725 72 L 725 92" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr2)"/>
+
+      <rect x="22" y="98" width="266" height="148" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="155" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">E1: PYRUVATE DEHYDROGENASE</text>
+      <text x="36" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Cấu trúc: Heterotetramer α₂β₂</text>
+      <text x="36" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Coenzyme: TPP (Vitamin B1)</text>
+      <text x="36" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Xúc tác khử carboxyl Pyruvat</text>
+      <text x="44" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">tạo CO₂ ↑ &amp; trung gian HETDP</text>
+
+      <rect x="307" y="98" width="266" height="148" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-success, #059669)" stroke-width="1.8"/>
+      <text x="440" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">E2: DIHYDROLIPOYL TRANSACETYLASE</text>
+      <text x="321" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Khung lõi 60 Subunits (khối 12 mặt)</text>
+      <text x="321" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Gắn Lipoamide (cánh tay 1.4 nm)</text>
+      <text x="321" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Chuyển nhóm Acetyl sang CoA-SH</text>
+      <text x="329" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">(Vitamin B5) tạo Acetyl-CoA</text>
+
+      <rect x="592" y="98" width="266" height="148" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-warning, #d97706)" stroke-width="1.8"/>
+      <text x="725" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #b45309)">E3: DIHYDROLIPOYL DEHYDROGENASE</text>
+      <text x="606" y="148" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Homodimer α₂ gắn qua E3BP</text>
+      <text x="606" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Coenzyme: FAD (Vitamin B2)</text>
+      <text x="606" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">• Tái oxy hóa Lipoamide (–S–S–)</text>
+      <text x="614" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text-muted, #475569)">và truyền e⁻ sang NAD⁺ (Vit B3)</text>
     </svg>
   </div>
 </div>
@@ -255,7 +242,7 @@ Phức hợp Pyruvate Dehydrogenase (PDC) có khối lượng phân tử lên t�
 
 ---
 
-## 2. Cơ Chế 5 Bước & Hệ Thống 5 Coenzyme Của Phức Hợp PDC
+## 2. Cơ Chế 5 Bước & Hệ Thống 5 Coenzyme Của Phức Hợp PDC {#sec-2}
 ### A. Bảng Hệ Thống 5 Coenzyme Của Phức Hợp PDC
 
 <div class="table-responsive">
@@ -310,56 +297,39 @@ Phức hợp Pyruvate Dehydrogenase (PDC) có khối lượng phân tử lên t�
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: BƯỚC 1: KHỬ CARBOXYL PYRUVAT (Xúc tác bởi E1 - TPP)</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> CƠ CHẾ 5 BƯỚC XÚC TÁC CỦA PHỨC HỢP PYRUVATE DEHYDROGENASE (PDC)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 578" width="880" height="578" xmlns="http://www.w3.org/2000/svg">
+<svg class="flowchart-svg" viewBox="0 0 880 390" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="krbArr3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
+      <rect x="40" y="14" width="800" height="56" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="58" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">BƯỚC 1: KHỬ CARBOXYL PYRUVAT (Xúc tác bởi E1 – TPP)</text>
+      <text x="58" y="56" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Pyruvat + TPP ➔ Hydroxyethyl-TPP (HETDP) + CO₂ ↑</text>
+      <path d="M 440 70 L 440 84" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr3)"/>
 
-      {/* Single Node: BƯỚC 1: KHỬ CARBOXYL PYRUVAT ( */}
-      <rect x="165" y="20" width="550" height="60" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BƯỚC 1: KHỬ CARBOXYL PYRUVAT (Xúc tác bởi E1 - TPP)</text>
-      <text x="189" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pyruvat + TPP ► Hydroxyethyl-TPP (HETDP) + CO2 ↑</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BƯỚC 2: OXY HÓA VÀ CHUYỂN SANG */}
-      <rect x="155" y="108" width="570" height="96" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BƯỚC 2: OXY HÓA VÀ CHUYỂN SANG LIPOAMIDE (Xúc tác bởi</text>
-      <text x="440" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-primary, #0284c7)">E1 &amp; E2)</text>
-      <text x="179" y="170" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Hydroxyethyl-TPP + Lipoamide (Oxy hóa: -S-S-) ► TPP</text>
-      <text x="179" y="188" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  + Acetyl-dihydrolipoamide</text>
-      <line x1="440" y1="204" x2="440" y2="232" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BƯỚC 3: TẠO ACETYL-COA (Xúc tá */}
-      <rect x="156.5" y="232" width="567" height="78" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="254" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BƯỚC 3: TẠO ACETYL-COA (Xúc tác bởi E2)</text>
-      <text x="180.5" y="276" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Acetyl-dihydrolipoamide + CoA-SH ► Dihydrolipoamide</text>
-      <text x="180.5" y="294" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  (Khử: 2 -SH) + Acetyl-CoA (Giải phóng)</text>
-      <line x1="440" y1="310" x2="440" y2="338" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BƯỚC 4: TÁI OXY HÓA DIHYDROLIP */}
-      <rect x="150" y="338" width="580" height="96" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BƯỚC 4: TÁI OXY HÓA DIHYDROLIPOAMIDE (Xúc tác bởi E3 -</text>
-      <text x="440" y="378" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-primary, #0284c7)">FAD)</text>
-      <text x="174" y="400" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Dihydrolipoamide + E3-FAD ► Lipoamide (Phục hồi</text>
-      <text x="174" y="418" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  -S-S-) + E3-FADH2</text>
-      <line x1="440" y1="434" x2="440" y2="462" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      {/* Single Node: BƯỚC 5: TRUYỀN ĐIỆN TỬ TẠO NAD */}
-      <rect x="156.5" y="462" width="567" height="78" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
-      <text x="440" y="484" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">BƯỚC 5: TRUYỀN ĐIỆN TỬ TẠO NADH (Xúc tác bởi E3)</text>
-      <text x="180.5" y="506" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• E3-FADH2 + NAD+ ► E3-FAD (Phục hồi) + NADH + H+ (Đi</text>
-      <text x="180.5" y="524" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">  vào Chuỗi hô hấp)</text>
+      <rect x="40" y="90" width="800" height="56" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.6"/>
+      <text x="58" y="111" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-primary, #0284c7)">BƯỚC 2: OXY HÓA &amp; CHUYỂN SANG LIPOAMIDE (Xúc tác bởi E1 &amp; E2)</text>
+      <text x="58" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Hydroxyethyl-TPP + Lipoamide (Oxy hóa: –S–S–) ➔ TPP + Acetyl-dihydrolipoamide</text>
+      <path d="M 440 146 L 440 160" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr3)"/>
+
+      <rect x="40" y="166" width="800" height="56" rx="10" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="1.6"/>
+      <text x="58" y="187" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-success, #059669)">BƯỚC 3: TẠO ACETYL-CoA (Xúc tác bởi E2)</text>
+      <text x="58" y="208" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Acetyl-dihydrolipoamide + CoA-SH ➔ Dihydrolipoamide (Khử: 2 –SH) + Acetyl-CoA (Giải phóng)</text>
+      <path d="M 440 222 L 440 236" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr3)"/>
+
+      <rect x="40" y="242" width="800" height="56" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.6"/>
+      <text x="58" y="263" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">BƯỚC 4: TÁI OXY HÓA DIHYDROLIPOAMIDE (Xúc tác bởi E3 – FAD)</text>
+      <text x="58" y="284" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">Dihydrolipoamide + E3-FAD ➔ Lipoamide (Phục hồi cầu –S–S–) + E3-FADH₂</text>
+      <path d="M 440 298 L 440 312" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr3)"/>
+
+      <rect x="40" y="318" width="800" height="58" rx="10" fill="var(--purple-bg, #faf5ff)" stroke="var(--color-purple, #7c3aed)" stroke-width="1.8"/>
+      <text x="58" y="339" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-purple, #7c3aed)">BƯỚC 5: TRUYỀN ĐIỆN TỬ TẠO NADH (Xúc tác bởi E3)</text>
+      <text x="58" y="360" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">E3-FADH₂ + NAD⁺ ➔ E3-FAD (Phục hồi) + NADH + H⁺ (Đi vào Chuỗi hô hấp ETC)</text>
     </svg>
   </div>
 </div>
@@ -410,56 +380,52 @@ Phức hợp Pyruvate Dehydrogenase (PDC) có khối lượng phân tử lên t�
 
 ---
 
-## 3. Cơ Chế Điều Hòa Phức Hợp PDC & Cân Bằng Trao Đổi Chất
+## 3. Cơ Chế Điều Hòa Phức Hợp PDC & Cân Bằng Trao Đổi Chất {#sec-3}
 Do là điểm chốt kiểm soát phân phối carbon glucid (thoái hóa sinh năng lượng hay tích lũy mỡ), hoạt tính của PDC được kiểm soát cực kỳ nghiêm ngặt qua 2 tầng điều hòa:
 
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: KÍCH HOẠT DỊ LẬP THỂ</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> ĐIỀU HÒA HOẠT TÍNH PHỨC HỢP PDC (DỊ LẬP THỂ &amp; ĐỒNG HÓA TRỊ)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 230" width="880" height="230" xmlns="http://www.w3.org/2000/svg">
+<svg class="flowchart-svg" viewBox="0 0 880 310" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="krbArr4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
+      <rect x="260" y="14" width="360" height="38" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <text x="440" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-primary, #0284c7)">Pyruvat + NAD⁺ + CoA-SH</text>
 
-      {/* Single Node: Pyruvat + NAD+ + CoA-SH */}
-      <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Pyruvat + NAD+ + CoA-SH</text>
-      <path d="M 440 66 L 440 80 L 155 80 L 155 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 80 L 440 80 L 440 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <path d="M 440 80 L 725 80 L 725 94" fill="none" stroke="var(--amber, #f59e0b)" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <rect x="30" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">KÍCH HOẠT DỊ LẬP THỂ</text>
-      <line x1="45" y1="124" x2="265" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="42" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• AMP, ADP</text>
-      <text x="42" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• NAD+, CoA-SH</text>
-      <rect x="315" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">ỨC CHẾ DỊ LẬP THỂ</text>
-      <line x1="330" y1="124" x2="550" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="327" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Acetyl-CoA                  - P</text>
-      <text x="327" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• NADH, ATP                   - PDP (</text>
-      <text x="327" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Ace</text>
-      <rect x="600" y="94" width="250" height="98" rx="8" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.5"/>
-      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--amber, #d97706)">ĐIỀU HÒA ĐỒNG HÓA TRỊ</text>
-      <line x1="615" y1="124" x2="835" y2="124" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <text x="612" y="140" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• DK (Kinase) phosphoryl hóa bất hoạt E1</text>
-      <text x="612" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Phosphatase) khử phosphate kích hoạt E1</text>
-      <text x="612" y="176" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• Acid béo mạch dài</text>
-      <text x="612" y="194" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• tyl-CoA + NADH + CO2</text>
+      <path d="M 440 52 L 440 68 M 155 68 L 725 68" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8"/>
+      <path d="M 155 68 L 155 86" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr4)"/>
+      <path d="M 440 68 L 440 86" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr4)"/>
+      <path d="M 725 68 L 725 86" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#krbArr4)"/>
+
+      <rect x="24" y="92" width="262" height="128" rx="10" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="1.8"/>
+      <text x="155" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-success, #059669)">KÍCH HOẠT DỊ LẬP THỂ (+)</text>
+      <text x="38" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• AMP, ADP (thiếu năng lượng)</text>
+      <text x="38" y="164" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NAD⁺, CoA-SH (cơ chất dồi dào)</text>
+      <text x="38" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Pyruvat &amp; Ca²⁺ (co cơ)</text>
+
+      <rect x="309" y="92" width="262" height="128" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--color-danger, #dc2626)" stroke-width="1.8"/>
+      <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-danger, #dc2626)">ỨC CHẾ DỊ LẬP THỂ (–)</text>
+      <text x="323" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Acetyl-CoA (sản phẩm thừa)</text>
+      <text x="323" y="164" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• NADH, ATP (giàu năng lượng)</text>
+      <text x="323" y="186" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Acid béo mạch dài</text>
+
+      <rect x="594" y="92" width="262" height="128" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.8"/>
+      <text x="725" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" fill="var(--color-warning, #b45309)">ĐIỀU HÒA ĐỒNG HÓA TRỊ</text>
+      <text x="608" y="142" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• PDK (Kinase): Phosphoryl hóa</text>
+      <text x="616" y="159" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-danger, #dc2626)">➔ BẤT HOẠT E1</text>
+      <text x="608" y="182" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• PDP (Phosphatase): Khử P</text>
+      <text x="616" y="199" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-success, #059669)">➔ KÍCH HOẠT E1 (Ca²⁺, Insulin)</text>
+
+      <path d="M 440 220 L 440 248" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#krbArr4)"/>
+      <rect x="260" y="256" width="360" height="40" rx="10" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="2"/>
+      <text x="440" y="281" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.5" fill="var(--color-success, #059669)">Acetyl-CoA + NADH + H⁺ + CO₂</text>
     </svg>
   </div>
 </div>
@@ -501,7 +467,7 @@ Do là điểm chốt kiểm soát phân phối carbon glucid (thoái hóa sinh 
 
 ---
 
-## 4. Diễn Biến Chi Tiết 8 Phản Ứng Của Chu Trình Krebs
+## 4. Diễn Biến Chi Tiết 8 Phản Ứng Của Chu Trình Krebs {#sec-4}
 Chu trình Acid Citric là con đường dị hóa chung cuối cùng oxy hóa nhóm Acetyl (2C) thành $2\text{ CO}_2$, giải phóng các tương đương khử để nạp vào Chuỗi truyền điện tử.
 
 
@@ -513,16 +479,16 @@ Chu trình Acid Citric là con đường dị hóa chung cuối cùng oxy hóa n
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 808" width="880" height="808" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -530,42 +496,42 @@ Chu trình Acid Citric là con đường dị hóa chung cuối cùng oxy hóa n
       {/* Single Node: Acetyl-CoA (2C) + Oxaloacetat  */}
       <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Acetyl-CoA (2C) + Oxaloacetat (4C)</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 1 */}
       <rect x="250" y="94" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 1</text>
       <text x="274" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Citrat (6C)</text>
-      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 2 */}
       <rect x="250" y="182" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 2</text>
       <text x="274" y="226" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Isocitrat (6C)</text>
-      <line x1="440" y1="242" x2="440" y2="270" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="242" x2="440" y2="270" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 3 */}
       <rect x="250" y="270" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="292" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 3</text>
       <text x="274" y="314" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• α-Ketoglutarate (5C)</text>
-      <line x1="440" y1="330" x2="440" y2="358" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="330" x2="440" y2="358" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 4 */}
       <rect x="250" y="358" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="380" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 4</text>
       <text x="274" y="402" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Succinyl-CoA (4C)</text>
-      <line x1="440" y1="418" x2="440" y2="446" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="418" x2="440" y2="446" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 5 */}
       <rect x="250" y="446" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="468" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 5</text>
       <text x="274" y="490" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Succinat (4C)</text>
-      <line x1="440" y1="506" x2="440" y2="534" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="506" x2="440" y2="534" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 6 */}
       <rect x="250" y="534" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="556" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 6</text>
       <text x="274" y="578" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Fumarate (4C)</text>
-      <line x1="440" y1="594" x2="440" y2="622" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="594" x2="440" y2="622" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 7 */}
       <rect x="250" y="622" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="644" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 7</text>
       <text x="274" y="666" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• L-Malate (4C)</text>
-      <line x1="440" y1="682" x2="440" y2="710" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="682" x2="440" y2="710" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s5)"/>
       {/* Single Node: Phản ứng 8 */}
       <rect x="250" y="710" width="380" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="732" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">Phản ứng 8</text>
@@ -652,7 +618,7 @@ Chu trình Acid Citric là con đường dị hóa chung cuối cùng oxy hóa n
 
 ---
 
-## 5. Điều Hòa Tích Hợp & Tổng Kết Năng Lượng Chu Trình Krebs
+## 5. Điều Hòa Tích Hợp & Tổng Kết Năng Lượng Chu Trình Krebs {#sec-5}
 ### A. Cân Bằng Năng Lượng Chi Tiết Của Chu Trình Krebs
 
 Phương trình phản ứng tổng quát sau khi oxy hóa hoàn toàn 1 phân tử Acetyl-CoA:
@@ -706,16 +672,16 @@ $$\text{Acetyl-CoA} + 3\text{NAD}^+ + \text{FAD} + \text{GDP/ADP} + \text{P}_i +
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 404" width="880" height="404" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -723,18 +689,18 @@ $$\text{Acetyl-CoA} + 3\text{NAD}^+ + \text{FAD} + \text{GDP/ADP} + \text{P}_i +
       {/* Single Node: Acetyl-CoA + Oxaloacetat */}
       <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Acetyl-CoA + Oxaloacetat</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s6)"/>
       {/* Single Node: 1 */}
       <rect x="203.25" y="94" width="473.5" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">1</text>
       <text x="227.25" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Citrat (Ức chế: ATP, NADH, Succinyl-CoA, Citrate)</text>
       <text x="227.25" y="156" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• Isocitrat</text>
-      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="172" x2="440" y2="200" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s6)"/>
       {/* Single Node: 2 */}
       <rect x="169.25" y="200" width="541.5" height="60" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">2</text>
       <text x="193.25" y="244" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• α-Ketoglutarate (Kích hoạt: ADP, Ca2+; Ức chế: ATP, NADH)</text>
-      <line x1="440" y1="260" x2="440" y2="288" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="260" x2="440" y2="288" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s6)"/>
       {/* Single Node: 3 */}
       <rect x="165" y="288" width="550" height="78" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--amber, #f59e0b)" stroke-width="1.8"/>
       <text x="440" y="310" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--amber, #d97706)">3</text>
@@ -754,7 +720,7 @@ $$\text{Acetyl-CoA} + 3\text{NAD}^+ + \text{FAD} + \text{GDP/ADP} + \text{P}_i +
 
 ---
 
-## 6. Vai Trò Lưỡng Hóa (Amphibolic) & Các Phản Ứng Bù Đắp (Anaplerotic)
+## 6. Vai Trò Lưỡng Hóa (Amphibolic) & Các Phản Ứng Bù Đắp (Anaplerotic) {#sec-6}
 ### A. Tính Lưỡng Hóa (Amphibolic Nature) & Phản Ứng Tiêu Hao (Cataplerotic)
 
 Chu trình Krebs vừa là lò đốt dị hóa carbon, vừa là "ngã tư chuyển hóa" cung cấp các mảnh carbon trung gian cho các con đường sinh tổng hợp:
@@ -768,16 +734,16 @@ Chu trình Krebs vừa là lò đốt dị hóa carbon, vừa là "ngã tư chuy
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 280" width="880" height="280" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -857,7 +823,7 @@ Khi các chất trung gian bị rút đi cho đồng hóa (*Cataplerosis*), chu 
 
 ---
 
-## 7. Bệnh Học Phân Tử, Oncometabolites, Cận Lâm Sàng
+## 7. Bệnh Học Phân Tử, Oncometabolites, Cận Lâm Sàng {#sec-7}
 ### A. Đột Biến Gen Chu Trình Krebs & Các Oncometabolites Sinh Ung Thư
 
 <div class="table-responsive">
@@ -947,6 +913,8 @@ Khi các chất trung gian bị rút đi cho đồng hóa (*Cataplerosis*), chu 
 </div>
 
 ---
+
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
 
 {/* KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) */}
 <div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">

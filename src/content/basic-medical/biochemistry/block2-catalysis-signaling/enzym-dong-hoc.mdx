@@ -108,7 +108,7 @@ sections:
 
 ---
 
-## 1. Bản Chất Xúc Tác, Năng Lượng Hoạt Hóa & Hệ Thống Phân Loại 7 Lớp IUBMB
+## 1. Bản Chất Xúc Tác, Năng Lượng Hoạt Hóa & Hệ Thống Phân Loại 7 Lớp IUBMB {#sec-1}
 Enzym là những chất xúc tác sinh học có bản chất hầu hết là **protein** (ngoại lệ là các phân tử RNA xúc tác gọi là **Ribozym** như trong cấu trúc spliceosome hoặc peptidyl transferase của ribosome).
 
 <div class="flowchart-card">
@@ -133,7 +133,7 @@ Enzym là những chất xúc tác sinh học có bản chất hầu hết là *
       {/* Trục tọa độ */}
       <line x1="80" y1="210" x2="80" y2="25" stroke="var(--color-text, #0f172a)" stroke-width="2" marker-end="url(#arrAxis)"/>
       <line x1="80" y1="210" x2="820" y2="210" stroke="var(--color-text, #0f172a)" stroke-width="2" marker-end="url(#arrAxis)"/>
-      <text x="70" y="20" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-text, #0f172a)">Năng Lượng Tự Do (G)</text>
+      <text x="70" y="15" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="var(--color-text, #0f172a)"><tspan x="70" dy="0">Năng Lượng</tspan><tspan x="70" dy="12.5">Tự Do (G)</tspan></text>
       <text x="820" y="228" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="var(--color-text, #0f172a)">Tiến Trình Phản Ứng ➔</text>
 
       {/* Đường mức mức cơ chất S */}
@@ -165,7 +165,7 @@ Enzym là những chất xúc tác sinh học có bản chất hầu hết là *
 
       {/* Độ chênh lệch ΔG phản ứng tổng thể */}
       <line x1="790" y1="140" x2="790" y2="180" stroke="var(--color-text-muted, #475569)" stroke-width="1.5" stroke-dasharray="3,3"/>
-      <text x="800" y="163" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10" fill="var(--color-text, #0f172a)">ΔG &lt; 0 (Tự phát, không đổi)</text>
+      <text x="800" y="158" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="9" fill="var(--color-text, #0f172a)"><tspan x="800" dy="0">ΔG &lt; 0 (Tự</tspan><tspan x="800" dy="11.5">phát, không đổi)</tspan></text>
     </svg>
   </div>
 </div>
@@ -239,7 +239,7 @@ Enzym là những chất xúc tác sinh học có bản chất hầu hết là *
 
 ---
 
-## 2. Cấu Trúc Holoenzym, Trung Tâm Hoạt Động & Cơ Chế Xúc Tác Cảm Ứng
+## 2. Cấu Trúc Holoenzym, Trung Tâm Hoạt Động & Cơ Chế Xúc Tác Cảm Ứng {#sec-2}
 $$\mathbf{\text{Holoenzym (Hoạt tính đầy đủ)}} = \mathbf{\text{Apoenzym (Protein)}} + \mathbf{\text{Cofactor (Phi protein)}}$$
 
 <div class="flowchart-card">
@@ -295,7 +295,7 @@ $$\mathbf{\text{Holoenzym (Hoạt tính đầy đủ)}} = \mathbf{\text{Apoenzym
 
 ---
 
-## 3. Động Học Michaelis-Menten, Đồ Thị Lineweaver-Burk & Ý Nghĩa Km, Vmax, kcat
+## 3. Động Học Michaelis-Menten, Đồ Thị Lineweaver-Burk & Ý Nghĩa Km, Vmax, kcat {#sec-3}
 Mô hình tạo phức hợp trung gian Enzym - Cơ chất ($ES$):
 $$\text{E} + \text{S} \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} \text{ES} \xrightarrow{k_2\,(k_{cat})} \text{E} + \text{P}$$
 
@@ -310,16 +310,16 @@ $$\mathbf{v_0 = \frac{V_{max}[S]}{K_m + [S]}} \quad \text{với} \quad \mathbf{K
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 316" width="880" height="316" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -357,7 +357,7 @@ $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 150" width="880" height="150" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
       </defs>
@@ -374,7 +374,7 @@ $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac
 
 ---
 
-## 4. Cơ Chế Ức Chế Enzym Thuận Nghịch: Cạnh Tranh, Không Cạnh Tranh & Bất Cạnh Tranh
+## 4. Cơ Chế Ức Chế Enzym Thuận Nghịch: Cạnh Tranh, Không Cạnh Tranh & Bất Cạnh Tranh {#sec-4}
 <div class="table-responsive">
   <table class="table-modern">
     <thead>
@@ -419,7 +419,7 @@ $$\mathbf{\frac{1}{v_0} = \left(\frac{K_m}{V_{max}}\right) \frac{1}{[S]} + \frac
 
 ---
 
-## 5. Điều Hòa Dị Lập Thể (Allosteric R/T), Đường Cong Sigmoid & Ức Chế Hồi Tiếp
+## 5. Điều Hòa Dị Lập Thể (Allosteric R/T), Đường Cong Sigmoid & Ức Chế Hồi Tiếp {#sec-5}
 Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm hoạt động và **vị trí điều hòa dị lập thể (Allosteric site)** tách biệt.
 
 
@@ -431,16 +431,16 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 154" width="880" height="154" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s5" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -464,16 +464,16 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 266" width="880" height="266" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -482,11 +482,11 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
       <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Vận tốc (v0)</text>
       <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• ▲ / Trạng thái R (Được hoạt hóa: Đường dốc hơn)</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s6)"/>
       {/* Single Node: ĐƯỜNG CONG CHỮ S (SIGMOID) */}
       <rect x="250" y="108" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐƯỜNG CONG CHỮ S (SIGMOID)</text>
-      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s6)"/>
       {/* Single Node: S */}
       <rect x="250" y="182" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">S</text>
@@ -499,7 +499,7 @@ Các enzym dị lập thể là các protein đa bán đơn vị có trung tâm 
 
 ---
 
-## 6. Điều Hòa Biến Đổi Đồng Hóa Trị, Dòng Thác Zymogen Dịch Tụy & Kiểm Soát Gen
+## 6. Điều Hòa Biến Đổi Đồng Hóa Trị, Dòng Thác Zymogen Dịch Tụy & Kiểm Soát Gen {#sec-6}
 ### A. Phosphoryl Hóa & Khử Phosphoryl Hóa
 
 $$\text{Protein-OH} + \text{ATP} \xrightarrow{\text{Protein Kinase}} \text{Protein-O-PO}_3^{2-} + \text{ADP}$$
@@ -545,16 +545,16 @@ $$\text{Protein-O-PO}_3^{2-} + \text{H}_2\text{O} \xrightarrow{\text{Protein Pho
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 302" width="880" height="302" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s7" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -562,11 +562,11 @@ $$\text{Protein-O-PO}_3^{2-} + \text{H}_2\text{O} \xrightarrow{\text{Protein Pho
       {/* Single Node: Màng vi nhung mao ruột tá tràn */}
       <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">Màng vi nhung mao ruột tá tràng</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s7)"/>
       {/* Single Node: ENTEROPEPTIDASE */}
       <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ENTEROPEPTIDASE</text>
-      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="140" x2="440" y2="168" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s7)"/>
       {/* Single Node: TRYPSIN HOẠT ĐỘNG */}
       <rect x="186.25" y="168" width="507.5" height="96" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TRYPSIN HOẠT ĐỘNG</text>
@@ -581,7 +581,7 @@ $$\text{Protein-O-PO}_3^{2-} + \text{H}_2\text{O} \xrightarrow{\text{Protein Pho
 
 ---
 
-## 7. Enzym Học Lâm Sàng (ALT, AST, CK-MB, LDH, ALP, GGT, Lipase)
+## 7. Enzym Học Lâm Sàng (ALT, AST, CK-MB, LDH, ALP, GGT, Lipase) {#sec-7}
 ### A. Các Enzym Huyết Tương Chẩn Đoán Cốt Lõi
 
 <div class="table-responsive">
@@ -636,6 +636,8 @@ $$\text{Protein-O-PO}_3^{2-} + \text{H}_2\text{O} \xrightarrow{\text{Protein Pho
 </div>
 
 ---
+
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
 
 {/* KHUNG TRÍCH DẪN Y VĂN CHUẨN AMA (CITATION BOX) */}
 <div class="citation-box" style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-left: 4px solid var(--color-primary, #0284c7); border-radius: 12px; font-size: 0.88rem; line-height: 1.8; color: var(--color-text-muted, #475569);">

@@ -81,7 +81,7 @@ sections:
 
 ---
 
-## 1. Cấu Trúc Virion VZV & Vòng Đời Tế Bào
+## 1. Cấu Trúc Virion VZV & Vòng Đời Tế Bào {#sec-1}
 Varicella Zoster Virus (VZV), danh pháp quốc tế chính thức là **Human alphaherpesvirus 3**, là một trong 9 herpesvirus gây bệnh trên người, thuộc phân họ *Alphaherpesvirinae*, họ *Herpesviridae*, chi *Varicellovirus*. VZV là tác nhân gây ra hai thực thể bệnh học lâm sàng khác biệt: **Thủy đậu (Varicella / Chickenpox)** trong đợt nhiễm trùng tiên phát toàn thân và **Zona (Herpes Zoster / Shingles)** khi virus tái hoạt động từ trạng thái ẩn nấp suốt đời trong hệ thần kinh cảm giác.
 
 ### Đặc Điểm Sinh Học & Cấu Trúc Hạt Virus (Virion)
@@ -111,34 +111,45 @@ Quá trình xâm nhập và nhân lên của VZV tại tế bào đích tuân th
 
 <div class="flowchart-card">
   <div class="flowchart-header">
-    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> SƠ ĐỒ LÂM SÀNG: VZV XÂM NHẬP</div>
-    <span class="badge badge-blue">Pure Orthogonal SVG</span>
+    <div class="flowchart-title"><i class="fa-solid fa-route" style="color: var(--color-primary, #0284c7);"></i> CHU TRÌNH XÂM NHẬP &amp; NHÂN LÊN 6 BƯỚC CỦA VIRUS VARICELLA-ZOSTER (VZV)</div>
+    <span class="badge badge-blue">Pure Editorial SVG</span>
   </div>
   <div class="flowchart-svg-container">
-    <svg class="flowchart-svg" viewBox="0 0 880 190" width="880" height="190" xmlns="http://www.w3.org/2000/svg">
+    <svg class="flowchart-svg" viewBox="0 0 880 236" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
-        </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
-        </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
-        </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+        <marker id="vzv1Arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-primary, #0284c7)"/>
         </marker>
       </defs>
-
-      {/* Single Node: [VZV XÂM NHẬP] ► [BÁM MÀNG &amp; */}
-      <rect x="155" y="20" width="570" height="132" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
-      <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">[VZV XÂM NHẬP] ► [BÁM MÀNG &amp; HÒA MÀNG] ► [BƠM DNA</text>
-      <text x="440" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">QUA LỖ NHÂN] ► [PHIÊN MÃ IE ➔ E ➔ L] ► [ĐÓNG GÓI</text>
-      <text x="440" y="78" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="12" fill="var(--color-text, #0f172a)">CAPSID] ► [TẠO VỎ TẠI TRANS-GOLGI &amp; XUẤT BÀO]</text>
-      <text x="179" y="100" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (Khí dung / Tiếp xúc) (gB + gH/gL gắn IDE / HS) (Capsid cập</text>
-      <text x="179" y="118" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• bến) (IE62/IE63 hoạt hóa) (Lắp ráp trong nhân) (TGN bao bọc</text>
-      <text x="179" y="136" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• / Post-Golgi)</text>
+      <rect x="20" y="16" width="256" height="84" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.7"/>
+      <text x="148" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">1. VZV XÂM NHẬP</text>
+      <text x="148" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Qua đường khí dung / tiếp xúc trực tiếp dịch</text>
+      <text x="148" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">bóng nước</text>
+      <path d="M 276 58 L 306 58" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#vzv1Arr)"/>
+      <rect x="312" y="16" width="256" height="84" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--color-primary, #0284c7)" stroke-width="1.7"/>
+      <text x="440" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-primary, #0284c7)">2. BÁM &amp; HÒA MÀNG</text>
+      <text x="440" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Glycoprotein gB + gH/gL gắn thụ thể IDE /</text>
+      <text x="440" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Heparan Sulfate</text>
+      <path d="M 568 58 L 598 58" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#vzv1Arr)"/>
+      <rect x="604" y="16" width="256" height="84" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.7"/>
+      <text x="732" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #b45309)">3. BƠM DNA VÀO NHÂN</text>
+      <text x="732" y="59" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Capsid vận chuyển dọc vi ống cập bến lỗ nhân tế</text>
+      <text x="732" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">bào</text>
+      <path d="M 732 100 L 732 116 L 148 116 L 148 128" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="1.8" marker-end="url(#vzv1Arr)"/>
+      <rect x="20" y="134" width="256" height="84" rx="10" fill="var(--purple-bg, #faf5ff)" stroke="var(--color-purple, #7c3aed)" stroke-width="1.7"/>
+      <text x="148" y="158" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-purple, #7c3aed)">4. PHIÊN MÃ IE ➔ E ➔ L</text>
+      <text x="148" y="177" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Protein điều hòa IE62 / IE63 hoạt hóa thác phiên</text>
+      <text x="148" y="191" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">mã gen</text>
+      <path d="M 276 176 L 306 176" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#vzv1Arr)"/>
+      <rect x="312" y="134" width="256" height="84" rx="10" fill="var(--amber-bg, #fffbeb)" stroke="var(--color-warning, #d97706)" stroke-width="1.7"/>
+      <text x="440" y="158" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-warning, #b45309)">5. ĐÓNG GÓI CAPSID</text>
+      <text x="440" y="177" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Lắp ráp nucleocapsid chứa DNA mới bên trong</text>
+      <text x="440" y="191" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">nhân tế bào</text>
+      <path d="M 568 176 L 598 176" fill="none" stroke="var(--color-primary, #0284c7)" stroke-width="2" marker-end="url(#vzv1Arr)"/>
+      <rect x="604" y="134" width="256" height="84" rx="10" fill="var(--green-bg, #f0fdf4)" stroke="var(--color-success, #059669)" stroke-width="1.7"/>
+      <text x="732" y="158" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="var(--color-success, #059669)">6. TẠO VỎ &amp; XUẤT BÀO</text>
+      <text x="732" y="177" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">Bao bọc màng tại mạng Trans-Golgi (TGN) &amp; xuất</text>
+      <text x="732" y="191" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">bào Post-Golgi</text>
     </svg>
   </div>
 </div>
@@ -166,7 +177,7 @@ Quá trình xâm nhập và nhân lên của VZV tại tế bào đích tuân th
 
 ---
 
-## 2. Sinh Bệnh Học Toàn Thân, Hướng Tế Bào T & Hướng Da
+## 2. Sinh Bệnh Học Toàn Thân, Hướng Tế Bào T & Hướng Da {#sec-2}
 ### Động Học Lây Truyền & Dòng Thác Virus Huyết (Viremia Cascade)
 
 VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đường hô hấp với hệ số lây nhiễm cơ bản $R_0 \approx 10 - 12$. Diễn tiến bệnh sinh từ lúc phơi nhiễm đến khi xuất hiện triệu chứng toàn thân trải qua chuỗi 4 giai đoạn nối tiếp:
@@ -180,16 +191,16 @@ VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đư�
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 606" width="880" height="606" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -197,13 +208,13 @@ VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đư�
       {/* Single Node: PHƠI NHIỄM KHÍ DUNG */}
       <rect x="250" y="20" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHƠI NHIỄM KHÍ DUNG</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
       {/* Single Node: NHÂN LÊN NIÊM MẠC HÔ HẤP TRÊN */}
       <rect x="250" y="94" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHÂN LÊN NIÊM MẠC HÔ HẤP TRÊN</text>
       {/* Bifurcation Path */}
-      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 140 L 440 154 L 235 154 L 235 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
+      <path d="M 440 154 L 645 154 L 645 168" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
       {/* Left Column: LÂY NHIỄM AMIDAN / VÒNG WALDEY */}
       <rect x="40" y="168" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="235" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">LÂY NHIỄM AMIDAN / VÒNG WALDEYER</text>
@@ -213,8 +224,8 @@ VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đư�
       <text x="645" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CHUYỂN GIAO SANG TẾ BÀO T</text>
       <line x1="470" y1="204" x2="820" y2="204" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       {/* Bifurcation Path */}
-      <path d="M 440 258 L 440 272 L 235 272 L 235 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 272 L 645 272 L 645 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 258 L 440 272 L 235 272 L 235 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
+      <path d="M 440 272 L 645 272 L 645 286" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
       {/* Left Column: NHIỄM VIRUS HUYẾT TIÊN PHÁT */}
       <rect x="40" y="286" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="235" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHIỄM VIRUS HUYẾT TIÊN PHÁT</text>
@@ -224,8 +235,8 @@ VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đư�
       <text x="645" y="308" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">GAN, LÁCH, HỆ LƯỚI NỘI MÔ</text>
       <line x1="470" y1="322" x2="820" y2="322" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       {/* Bifurcation Path */}
-      <path d="M 440 376 L 440 390 L 235 390 L 235 404" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 390 L 645 390 L 645 404" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 376 L 440 390 L 235 390 L 235 404" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
+      <path d="M 440 390 L 645 390 L 645 404" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
       {/* Left Column: NHIỄM VIRUS HUYẾT THỨ PHÁT */}
       <rect x="40" y="404" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="235" y="426" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">NHIỄM VIRUS HUYẾT THỨ PHÁT</text>
@@ -234,7 +245,7 @@ VZV là tác nhân truyền nhiễm lây lan mạnh mẽ bậc nhất qua đư�
       <rect x="450" y="404" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="645" y="426" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">BIỂU BÌ DA TOÀN THÂN</text>
       <line x1="470" y1="440" x2="820" y2="440" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="494" x2="440" y2="522" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="494" x2="440" y2="522" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s2)"/>
       {/* Single Node: PHÁT BAN THỦY ĐẬU ĐA LỨA TUỔI */}
       <rect x="250" y="522" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="544" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHÁT BAN THỦY ĐẬU ĐA LỨA TUỔI</text>
@@ -291,7 +302,7 @@ Khi tiếp cận lớp biểu bì, virus lây nhiễm các tế bào sừng (ker
        style="display: block; margin: 0 auto; max-width: 90%; height: auto; border-radius: 12px; border: 1px solid var(--color-border, #cbd5e1); box-shadow: 0 4px 16px rgba(0,0,0,0.08);" 
        loading="lazy" />
   <figcaption style="margin-top: 0.75rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b); font-style: italic; text-align: center; max-width: 800px;">
-    <strong>Hình 4 (Figure 3 | VZV skin tropism): Hướng da của VZV.</strong> Bên trái: Các yếu tố virus (ORF61 phá hủy thể nhân PML-NBs, đuôi gB điều hòa hòa màng polykaryocytes, giảm M6PR giải phóng cell-free virus). Bên phải: Tế bào nhiễm kích hoạt pSTAT3/survivin chống apoptosis; các tế bào biểu mô xung quanh tạo hàng rào cytokine bẩm sinh (IFN-α, pSTAT1, pre-IL-1α, PML-NBs). Nguồn: Zerboni et al. (Nature Reviews Microbiology, 2014).
+    <strong>Hình 4 (Figure 3 | VZV skin tropism): Hướng da của VZV.</strong> Bên trái: Các yếu tố virus (ORF61 phá hủy thể nhân PML-NBs, đuôi gB điều hòa sự hòa màng polykaryocytes, giảm M6PR giải phóng cell-free virus). Bên phải: Tế bào nhiễm kích hoạt pSTAT3/survivin chống apoptosis; các tế bào biểu mô xung quanh tạo hàng rào cytokine bẩm sinh (IFN-α, pSTAT1, pre-IL-1α, PML-NBs). Nguồn: Zerboni et al. (Nature Reviews Microbiology, 2014).
   </figcaption>
 </figure>
 
@@ -308,7 +319,7 @@ Khi tiếp cận lớp biểu bì, virus lây nhiễm các tế bào sừng (ker
 
 ---
 
-## 3. Hướng Thần Kinh, Trạng Thái Ẩn Nấp & Tái Hoạt Zona
+## 3. Hướng Thần Kinh, Trạng Thái Ẩn Nấp & Tái Hoạt Zona {#sec-3}
 ### Vận Chuyển Ngược Chiều Sợi Trục & Thiết Lập Ẩn Nấp (Latency)
 
 Trong giai đoạn mụn nước bùng phát ở da, lượng virus tự do dồi dào trong khoang dịch mụn nước tiếp xúc trực tiếp với các đầu tận cùng sợi thần kinh cảm giác (sensory nerve terminals) phân bố tại nhú bì và thượng bì:
@@ -459,7 +470,7 @@ Khi miễn dịch qua trung gian tế bào (T-cell CMI) toàn thân suy giảm x
 
 ---
 
-## 4. Chiến Lược Vắc-Xin & Dự Phòng Sau Phơi Nhiễm (PEP)
+## 4. Chiến Lược Vắc-Xin & Dự Phòng Sau Phơi Nhiễm (PEP) {#sec-4}
 ### Vắc-Xin Thủy Đậu Trẻ Em (Varicella Vaccine)
 
 Tất cả các vắc-xin thủy đậu lưu hành hiện nay đều là **vắc-xin sống giảm độc lực (Live Attenuated Vaccines)** sử dụng **chủng Oka** (phân lập bởi GS. Michiaki Takahashi năm 1974):
@@ -577,16 +588,16 @@ Tất cả các vắc-xin thủy đậu lưu hành hiện nay đều là **vắc
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 298" width="880" height="298" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -595,11 +606,11 @@ Tất cả các vắc-xin thủy đậu lưu hành hiện nay đều là **vắc
       <rect x="199.00000000000003" y="20" width="481.99999999999994" height="60" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">ĐỘ BAO PHỦ VẮC-XIN CỘNG ĐỒNG</text>
       <text x="223.00000000000003" y="64" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• &lt; 20%: Chưa đủ tạo tác động dịch tễ học rõ rệt.</text>
-      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="80" x2="440" y2="108" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s3)"/>
       {/* Single Node: VÙNG NGUY HIỂM: DỊCH CHUYỂN TU */}
       <rect x="200" y="108" width="480" height="46" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
       <text x="440" y="130" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">VÙNG NGUY HIỂM: DỊCH CHUYỂN TUỔI (Age Shift)</text>
-      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="154" x2="440" y2="182" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s3)"/>
       {/* Single Node: MỤC TIÊU BẮT BUỘC */}
       <rect x="165" y="182" width="550" height="78" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
       <text x="440" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">MỤC TIÊU BẮT BUỘC</text>
@@ -624,16 +635,16 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
   <div class="flowchart-svg-container">
     <svg class="flowchart-svg" viewBox="0 0 880 1018" width="880" height="1018" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrBlue-s4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
         </marker>
-        <marker id="arrGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrGreen-s4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
         </marker>
-        <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrAmber-s4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
         </marker>
-        <marker id="arrRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrRed-s4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
         </marker>
       </defs>
@@ -641,14 +652,14 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
       {/* Single Node: PHƠI NHIỄM VỚI BỆNH NHÂN THỦY  */}
       <rect x="220" y="20" width="440" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHƠI NHIỄM VỚI BỆNH NHÂN THỦY ĐẬU / ZONA</text>
-      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="66" x2="440" y2="94" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Single Node: ĐÁNH GIÁ BẰNG CHỨNG MIỄN DỊCH */}
       <rect x="177.75" y="94" width="524.5" height="60" rx="10" fill="var(--red-bg, #fef2f2)" stroke="var(--red, #ef4444)" stroke-width="1.8"/>
       <text x="440" y="116" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--red, #dc2626)">ĐÁNH GIÁ BẰNG CHỨNG MIỄN DỊCH</text>
       <text x="201.75" y="138" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text, #0f172a)">• (Đã tiêm đủ 2 mũi / Kháng thể (+) / Tiền sử mắc xác định)</text>
       {/* Bifurcation Path */}
-      <path d="M 440 154 L 440 168 L 235 168 L 235 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 168 L 645 168 L 645 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 154 L 440 168 L 235 168 L 235 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 168 L 645 168 L 645 182" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Left Column: CÓ */}
       <rect x="40" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="235" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">CÓ</text>
@@ -657,17 +668,17 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
       <rect x="450" y="182" width="390" height="90" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="645" y="204" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KHÔNG</text>
       <line x1="470" y1="218" x2="820" y2="218" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
-      <line x1="440" y1="272" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="272" x2="440" y2="300" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Single Node: KHÔNG CẦN PEP */}
       <rect x="250" y="300" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="322" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">KHÔNG CẦN PEP</text>
-      <line x1="440" y1="346" x2="440" y2="374" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="346" x2="440" y2="374" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Single Node: PHÂN TẦNG ĐỐI TƯỢNG NGUY CƠ */}
       <rect x="250" y="374" width="380" height="46" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8"/>
       <text x="440" y="396" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">PHÂN TẦNG ĐỐI TƯỢNG NGUY CƠ</text>
-      <path d="M 440 420 L 440 434 L 155 434 L 155 448" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 434 L 440 434 L 440 448" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 434 L 725 434 L 725 448" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed)"/>
+      <path d="M 440 420 L 440 434 L 155 434 L 155 448" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 434 L 440 434 L 440 448" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 434 L 725 434 L 725 448" fill="none" stroke="var(--red, #ef4444)" stroke-width="1.8" marker-end="url(#arrRed-s4)"/>
       <rect x="30" y="448" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="155" y="470" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-text, #0f172a)">NGƯỜI KHỎE MẠNH ≥ 12 THÁNG</text>
       <line x1="45" y1="478" x2="265" y2="478" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
@@ -680,8 +691,8 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
       <line x1="615" y1="478" x2="835" y2="478" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
       <text x="612" y="494" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">• hụ nữ mang thai chưa có miễn dịch</text>
       {/* Bifurcation Path */}
-      <path d="M 440 538 L 440 552 L 235 552 L 235 566" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 552 L 645 552 L 645 566" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 538 L 440 552 L 235 552 L 235 566" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 552 L 645 552 L 645 566" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Left Column: TIÊM VẮC-XIN THỦY ĐẬU */}
       <rect x="40" y="566" width="390" height="98" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5"/>
       <text x="235" y="588" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-text, #0f172a)">TIÊM VẮC-XIN THỦY ĐẬU</text>
@@ -696,13 +707,13 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
       <text x="470" y="618" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trẻ sơ sinh mẹ mắc thủy đậu sát sinh</text>
       <text x="470" y="636" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• (-5 đến +2 ngày)</text>
       <text x="470" y="654" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="var(--color-text-muted, #475569)">• Trẻ sinh non nằm viện nguy cơ cao</text>
-      <line x1="440" y1="664" x2="440" y2="692" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="440" y1="664" x2="440" y2="692" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Single Node: ĐÁNH GIÁ KHẢ NĂNG TIẾP CẬN THU */}
       <rect x="250" y="692" width="380" height="46" rx="10" fill="var(--blue-bg, #eff6ff)" stroke="var(--blue, #0284c7)" stroke-width="1.8"/>
       <text x="440" y="714" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--color-primary, #0284c7)">ĐÁNH GIÁ KHẢ NĂNG TIẾP CẬN THUỐC</text>
-      <path d="M 440 738 L 440 752 L 155 752 L 155 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 752 L 440 752 L 440 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
-      <path d="M 440 752 L 725 752 L 725 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <path d="M 440 738 L 440 752 L 155 752 L 155 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 752 L 440 752 L 440 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
+      <path d="M 440 752 L 725 752 L 725 766" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       <rect x="30" y="766" width="250" height="90" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-primary, #0284c7)" stroke-width="1.5"/>
       <text x="155" y="788" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11.5" fill="var(--color-primary, #0284c7)">ƯU TIÊN 1: VZIG (VariZIG)</text>
       <line x1="45" y1="796" x2="265" y2="796" stroke="var(--color-border, #cbd5e1)" stroke-width="1"/>
@@ -721,7 +732,7 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
       <text x="612" y="814" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Khi không có VZIG / IVIG hoặc &gt; 10 ngày</text>
       <text x="612" y="832" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text, #0f172a)">• Khởi động từ ngày thứ 7 sau tiếp xúc</text>
       <text x="612" y="850" text-anchor="start" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="var(--color-text-muted, #475569)">• Chặn đỉnh Viraemia thứ cấp đợt 2</text>
-      <line x1="725" y1="856" x2="725" y2="870 L 440 870 L 440 884" stroke="var(--purple, #7c3aed)" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+      <line x1="725" y1="856" x2="725" y2="870 L 440 870 L 440 884" stroke="var(--purple, #7c3aed)" stroke-width="1.8" marker-end="url(#arrBlue-s4)"/>
       {/* Single Node: ACYCLOVIR HOẶC VALACYCLOVIR */}
       <rect x="165" y="884" width="550" height="74" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--purple, #7c3aed)" stroke-width="1.8"/>
       <text x="440" y="906" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" fill="var(--purple, #7c3aed)">PHÁC ĐỒ KHÁNG VIRUS PHÒNG NGỪA ĐÓN ĐẦU (PREEMPTIVE)</text>
@@ -742,7 +753,7 @@ Khi một người tiếp xúc trực tiếp với bệnh nhân thủy đậu ho
 
 ---
 
-## 5. Trích Dẫn Y Văn AMA & Liên Kết Đa Chuyên Khoa
+## 5. Trích Dẫn Y Văn AMA & Liên Kết Đa Chuyên Khoa {#sec-5}
 <div class="ref-section" style="background: var(--color-surface-2, #f8fafc); border: 1px solid var(--color-border, #cbd5e1); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;">
   <h3 style="color: var(--color-primary, #0284c7); font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
     <i class="fa-solid fa-book-bookmark"></i> Danh Mục Tài Liệu Tham Khảo Quốc Tế Chuẩn AMA

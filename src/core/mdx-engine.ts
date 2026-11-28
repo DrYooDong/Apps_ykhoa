@@ -1034,13 +1034,28 @@ export class CliniMdxEngine {
       formatted = formatted.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, '<span class="mdx-math-fraction" style="display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 4px;"><span class="mdx-math-num" style="border-bottom: 1.5px solid currentColor; padding-bottom: 2px;">$1</span><span class="mdx-math-den" style="padding-top: 2px;">$2</span></span>');
     }
 
-    // 5. Arrows & Directions
+    // 5. Arrows & Directions (including equilibrium & stacked arrows)
     formatted = formatted
+      .replace(/\\underset\{([^{}]*)\}\{\\overset\{([^{}]*)\}\{\\rightleftharpoons\}\}/g, (_m, bot, top) =>
+        `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 4px; font-size: 0.85em; line-height: 1;"><span style="font-size: 0.78em;">${top}</span><span style="font-size: 1.15em;">⇌</span><span style="font-size: 0.78em;">${bot}</span></span>`
+      )
+      .replace(/\\overset\{([^{}]*)\}\{([^{}]*)\}/g, (_m, top, base) =>
+        `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 3px; font-size: 0.88em; line-height: 1;"><span style="font-size: 0.75em;">${top}</span><span>${base}</span></span>`
+      )
+      .replace(/\\underset\{([^{}]*)\}\{([^{}]*)\}/g, (_m, bot, base) =>
+        `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 3px; font-size: 0.88em; line-height: 1;"><span>${base}</span><span style="font-size: 0.75em;">${bot}</span></span>`
+      )
+      .replace(/\\xrightleftharpoons\{([^{}]*)\}/g, (_m, label) => {
+        const trimmed = label.trim();
+        return trimmed ? `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 4px; font-size: 0.88em;"><span style="font-size: 0.78em; line-height: 1.1; border-bottom: 1px solid currentColor; padding: 0 4px;">${trimmed}</span><span style="font-size: 1.1em; line-height: 0.85;">⇌</span></span>` : '⇌';
+      })
+      .replace(/\\rightleftharpoons\b/g, '⇌')
       .replace(/\\xrightarrow\{([^{}]*)\}/g, (_m, label) => {
         const trimmed = label.trim();
         return trimmed ? `<span class="mdx-math-arrow-labeled" style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 4px; font-size: 0.88em;"><span style="font-size: 0.78em; line-height: 1.1; border-bottom: 1px solid currentColor; padding: 0 4px;">${trimmed}</span><span style="font-size: 1.1em; line-height: 0.8;">→</span></span>` : '→';
       })
       .replace(/\\implies\b/g, '⟹')
+      .replace(/\\Longleftrightarrow\b/g, '⟺')
       .replace(/\\Longrightarrow\b/g, '⟹')
       .replace(/\\Longleftarrow\b/g, '⟸')
       .replace(/\\(Long|long)?rightarrow\b/g, '→')
@@ -1071,10 +1086,13 @@ export class CliniMdxEngine {
       .replace(/\\omega\b/g, 'ω')
       .replace(/\\Phi\b/g, 'Φ')
       .replace(/\\phi\b/g, 'φ')
+      .replace(/\\Psi\b/g, 'Ψ')
+      .replace(/\\psi\b/g, 'ψ')
       .replace(/\\Pi\b/g, 'Π')
       .replace(/\\pi\b/g, 'π')
       .replace(/\\alpha\b/g, 'α')
       .replace(/\\beta\b/g, 'β')
+      .replace(/\\zeta\b/g, 'ζ')
       .replace(/\\kappa\b/g, 'κ')
       .replace(/\\mu\b/g, 'µ')
       .replace(/\\eta\b/g, 'η')
@@ -1085,10 +1103,12 @@ export class CliniMdxEngine {
     // 7. Operators & Relations
     formatted = formatted
       .replace(/\\approx\b/g, '≈')
+      .replace(/\\equiv\b/g, '≡')
       .replace(/\\propto\b/g, '∝')
       .replace(/\\sim\b/g, '∼')
       .replace(/\\times\b/g, '×')
       .replace(/\\cdot\b/g, '·')
+      .replace(/\\bullet\b/g, '•')
       .replace(/\\pm\b/g, '±')
       .replace(/\\le(q)?\b/g, '≤')
       .replace(/\\ge(q)?\b/g, '≥')
@@ -1098,6 +1118,9 @@ export class CliniMdxEngine {
       .replace(/\\ll\b/g, '≪')
       .replace(/\\neq\b/g, '≠')
       .replace(/\\infty\b/g, '∞')
+      .replace(/\\prime\b/g, '′')
+      .replace(/\\ddagger\b/g, '‡')
+      .replace(/\\AA\b/g, 'Å')
       .replace(/\\circ\b/g, '°');
 
     // 8. Spacing & Functions
@@ -1105,6 +1128,7 @@ export class CliniMdxEngine {
       .replace(/\\qquad\b/g, '&emsp;&emsp;')
       .replace(/\\quad\b/g, '&emsp;')
       .replace(/\\[,; ]/g, '&nbsp;')
+      .replace(/\\max\b/g, 'max')
       .replace(/\\ln\b/g, 'ln')
       .replace(/\\log\b/g, 'log');
 
