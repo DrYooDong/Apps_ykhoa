@@ -3,7 +3,7 @@
  * Path: src/content/ebm/research/js/research-registry.ts
  *
  * AUTO-GENERATED FROM MDX FRONTMATTER (Single Source of Truth)
- * Total Research Studies: 3
+ * Total Research Studies: 4
  * DO NOT EDIT MANUALLY — Run: npm run sync:research
  */
 
@@ -281,6 +281,145 @@ export const KHO_RESEARCH_STATIC: ResearchStudyRecord[] = [
         "id": "sec-5",
         "number": 5,
         "title": "Phần 2.IV: Bình Luận Phản Biện & Thẩm Định RoB",
+        "icon": "fa-solid fa-scale-balanced"
+      },
+      {
+        "id": "sec-6",
+        "number": 6,
+        "title": "Phần 3: Kết Luận & Giải Quyết Ca Lâm Sàng",
+        "icon": "fa-solid fa-gavel"
+      }
+    ],
+    "updatedAt": "2026-11-28"
+  },
+  {
+    "id": "2022-emi-adrop-curb65-cap-safe-discharge",
+    "slug": "2022-emi-adrop-curb65-cap-safe-discharge",
+    "code": "STUDY-2022-EMI-ADROP-CURB65-CAP",
+    "trialAcronym": "A-DROP vs CURB-65",
+    "title": "Emergency Medicine International 2022: So Sánh Thang Điểm A-DROP Và CURB-65 Trong Tiên Lượng Xuất Viện An Toàn Tại Khoa Cấp Cứu Cho Bệnh Nhân Viêm Phổi Cộng Đồng",
+    "titleEn": "Comparison between the Severity Scoring Systems A-DROP and CURB-65 for Predicting Safe Discharge from the Emergency Department in Patients with Community-Acquired Pneumonia",
+    "authors": "Thanya Limapichat, Suvanun Supavajana",
+    "journal": "Emerg Med Int",
+    "organization": "Emergency Medicine International / Songklanagarind Hospital, Prince of Songkla University (Thái Lan)",
+    "year": 2022,
+    "doi": "10.1155/2022/6391141",
+    "sourceUrl": "https://doi.org/10.1155/2022/6391141",
+    "file": "2022-emi-adrop-curb65-cap-safe-discharge.mdx",
+    "specialty": "pulmo",
+    "specialty2": "infect",
+    "conditionKey": "pneumonia",
+    "problemLabels": [
+      "cap-safe-discharge",
+      "adrop-vs-curb65",
+      "ed-revisit-72h",
+      "mortality-30d",
+      "elderly-cap"
+    ],
+    "icd10": [
+      "J18.9",
+      "J15.9",
+      "J18.1"
+    ],
+    "design": "retrospective-cohort",
+    "phase": "Single-Center Retrospective Observational Cohort",
+    "blinding": "open-label",
+    "centerScope": "single-center",
+    "hypothesisType": "prognostic-discrimination",
+    "sampleSize": 408,
+    "followUpDuration": "Tái khám Cấp cứu trong 72 giờ & Tử vong trong 30 ngày (Dữ liệu 01/2015–04/2021)",
+    "asianData": true,
+    "populationTags": [
+      "ed-adults",
+      "outpatient-cap",
+      "asian-cohort",
+      "adults"
+    ],
+    "population": "408 bệnh nhân người lớn (≥ 18 tuổi) được chẩn đoán xác định viêm phổi mắc phải cộng đồng (CAP) và xuất viện điều trị ngoại trú từ Khoa Cấp cứu Bệnh viện Songklanagarind (Đại học Prince of Songkla, Thái Lan; 01/2015–04/2021); loại trừ HAP, ung thư lồng ngực tiến triển, suy giảm miễn dịch, lao phổi hoạt động, PE, COVID-19, nhà dưỡng lão và thiếu dữ liệu hồ sơ.",
+    "interventionClass": "prognostic-scoring",
+    "drug": "Thang điểm A-DROP (JRS 2006), Thang điểm CURB-65 (BTS 2002)",
+    "intervention": "Tính toán và so sánh trực diện năng lực phân tầng nguy cơ của thang điểm A-DROP (0–5 điểm) với CURB-65 (0–5 điểm) trong dự đoán xuất viện an toàn từ Khoa Cấp cứu qua phân tích ROC/AUC cho tử vong 30 ngày và tái khám Cấp cứu trong 72 giờ.",
+    "comparatorType": "active-control",
+    "primaryEndpointCategory": "severity-prognosis",
+    "primaryEndpoint": "Tỷ lệ tử vong trong vòng 30 ngày (30-day mortality) và tỷ lệ tái khám Khoa Cấp cứu trong vòng 72 giờ (72-hour ED revisit rate) sau xuất viện; tiêu chí phụ: phân tích đặc điểm lâm sàng/cận lâm sàng của nhóm tái khám 72 giờ.",
+    "outcomeDirection": "non-inferior",
+    "impactVerdict": "practice-informing",
+    "keyResults": "Tử vong 30 ngày chung 1.47% (6/408), tái khám ED trong 72 giờ 7.1% (29/408 — trong đó 4/29 ca [13.7%] tử vong trong 30 ngày) | Dự đoán tử vong 30 ngày: CURB-65 AUC 0.808 (95% CI 0.647–0.970; p = 0.003) vs A-DROP AUC 0.756 (95% CI 0.526–0.987; p = 0.011; không khác biệt có ý nghĩa) | Dự đoán tái khám 72 giờ đều khiêm tốn: CURB-65 AUC 0.639 (p = 0.004) vs A-DROP AUC 0.617 (p = 0.013) | Đặc điểm nhóm tái khám 72h: tuổi ≥ 65 chiếm 72.4% (21/29), nhịp thở ≥ 30 l/p chiếm 48.3% (14/29), BUN > 20 mg/dL chiếm 34.5% (10/29) | Thực địa: 59% (90/153) bệnh nhân nhóm nguy cơ không thấp (≥ 2 điểm) xuất viện mà không hề được chấm điểm nguy cơ (3.3% tử vong, 10% tái khám).",
+    "primaryMetric": {
+      "measure": "AUC",
+      "interventionRate": "A-DROP: AUC 0.756 (30d) • 0.617 (72h)",
+      "controlRate": "CURB-65: AUC 0.808 (30d) • 0.639 (72h)",
+      "rawDiffText": "Tử vong 30d: CURB-65 0.808 vs A-DROP 0.756 (tương đương) | Tái khám 72h: 0.639 vs 0.617 (khiêm tốn)",
+      "pValue": "0.003 / 0.011"
+    },
+    "safetyHighlight": "Cả A-DROP lẫn CURB-65 chỉ dự báo tái khám 72 giờ ở mức khiêm tốn (AUC ~0.62–0.64). Đáng báo động: 72.4% ca tái khám 72h thuộc nhóm ≥ 65 tuổi và 13.7% nhóm tái khám 72h tử vong trong 30 ngày; 59% ca nguy cơ ≥ 2 bị xuất viện mà không được ghi nhận điểm số trong hồ sơ.",
+    "robOverall": "some-concerns",
+    "gradeCertainty": "low",
+    "fragilityIndex": null,
+    "fundingSource": "public-academic",
+    "topicTags": [
+      "viem-phoi-cong-dong",
+      "adrop-curb65",
+      "xuat-vien-an-toan",
+      "tai-kham-72h",
+      "tien-luong"
+    ],
+    "tags": [
+      "Emerg Med Int",
+      "2022",
+      "A-DROP",
+      "CURB-65",
+      "CAP",
+      "Emergency Department",
+      "Safe Discharge",
+      "72h Revisit",
+      "30-day Mortality",
+      "Evidence-Based Medicine"
+    ],
+    "summary": "Nghiên cứu hồi cứu đơn trung tâm trên 408 bệnh nhân CAP xuất viện từ Khoa Cấp cứu tại Bệnh viện Songklanagarind (Thái Lan) chứng minh A-DROP và CURB-65 có hiệu năng tương đương trong tiên lượng tử vong 30 ngày (AUC 0.756 vs 0.808), nhưng cả hai đều dự báo tái khám 72 giờ ở mức khiêm tốn (AUC 0.617 vs 0.639). Tuổi ≥ 65 (72.4%), nhịp thở ≥ 30 l/p (48.3%) và BUN > 20 mg/dL (34.5%) là các cờ đỏ chủ đạo của nhóm tái khám.",
+    "detailedConclusion": "A-DROP tương đương CURB-65 khi hỗ trợ quyết định xuất viện cho bệnh nhân CAP tại Khoa Cấp cứu, nhưng tuyệt đối không phụ thuộc máy móc vào điểm nguy cơ thấp (0–1 điểm) ở người cao tuổi ≥ 65 tuổi. Với bệnh nhân cao tuổi hoặc có sinh hiệu tiệm cận ngưỡng nguy cơ (nhịp thở cao, BUN tăng, bệnh đồng mắc), cần ưu tiên theo dõi 24–48 giờ tại đơn vị lưu bệnh ngắn hạn hoặc nhập viện nội trú thay vì cho xuất viện ngay lập tức.",
+    "description": "Phân tích chuyên sâu nghiên cứu của Limapichat & Supavajana (Emerg Med Int 2022, N = 408): So sánh trực tiếp A-DROP và CURB-65 trong quyết định xuất viện an toàn cho bệnh nhân CAP tại Khoa Cấp cứu.",
+    "keyRecommendations": [
+      "Thang điểm A-DROP và CURB-65 có hiệu năng tiên lượng tương đương trong dự đoán tử vong 30 ngày (AUC 0.756 vs 0.808; đều đạt ý nghĩa thống kê p < 0.05) ở bệnh nhân CAP xuất viện từ Khoa Cấp cứu.",
+      "Khả năng dự đoán tái khám Cấp cứu trong 72 giờ của cả hai thang điểm chỉ ở mức trung bình–khiêm tốn (CURB-65 AUC 0.639 vs A-DROP AUC 0.617), vì tái khám chịu chi phối bởi bệnh đồng mắc, tuân thủ điều trị và hỗ trợ xã hội.",
+      "Cảnh giác đặc biệt với 3 lá cờ đỏ ở nhóm tái khám 72 giờ (29/408 ca, trong đó 13.7% tử vong trong 30 ngày): bệnh nhân ≥ 65 tuổi (72.4%), tần số thở ≥ 30 lần/phút (48.3%) và BUN > 20 mg/dL (34.5%).",
+      "Cần chuẩn hóa bắt buộc việc ghi nhận thang điểm phân tầng nguy cơ tại Khoa Cấp cứu: thực địa ghi nhận tới 59% (90/153) bệnh nhân nguy cơ không thấp (≥ 2 điểm) bị cho xuất viện mà không hề chấm điểm, kéo theo 3.3% tử vong 30 ngày và 10% tái khám."
+    ],
+    "clinicalPearls": [
+      "Điểm mù ngưỡng tuổi ở nam giới 65–69 tuổi: A-DROP chỉ cộng 1 điểm tuổi khi Nam ≥ 70 tuổi (Nữ ≥ 75 tuổi), nên một bệnh nhân nam 68 tuổi có thể đạt A-DROP = 0 và CURB-65 = 1 dù vẫn thuộc nhóm ≥ 65 tuổi chiếm 72.4% số ca tái khám 72 giờ.",
+      "Tái khám Cấp cứu trong 72 giờ không phải biến cố nhẹ: 4/29 bệnh nhân (13.7%) tái khám trong 72 giờ đã tử vong trong 30 ngày — chiếm tới 2/3 tổng số ca tử vong (4/6) của toàn bộ nghiên cứu.",
+      "Đơn vị theo dõi ngắn hạn (Short-term observation unit) 24–48 giờ là vùng đệm an toàn cho bệnh nhân CAP ≥ 65 tuổi đạt điểm 0–1 nhưng có nhịp thở tiệm cận ngưỡng nguy cơ hoặc có nhiều bệnh đồng mắc (ĐTĐ, bệnh phổi mạn, bệnh TKTW).",
+      "Bắt buộc kết hợp phán đoán lâm sàng toàn diện (sinh hiệu, đặc biệt RR ≥ 30 l/p & BUN > 20 mg/dL, bệnh nền và mạng lưới chăm sóc tại nhà) thay vì phó thác quyết định xuất viện cho một con số duy nhất."
+    ],
+    "sections": [
+      {
+        "id": "sec-1",
+        "number": 1,
+        "title": "Phần 1: Tình Huống & Ca Lâm Sàng Thực Hành",
+        "icon": "fa-solid fa-user-doctor"
+      },
+      {
+        "id": "sec-2",
+        "number": 2,
+        "title": "Phần 2.I: Bối Cảnh & Động Lực Nghiên Cứu",
+        "icon": "fa-solid fa-book-medical"
+      },
+      {
+        "id": "sec-3",
+        "number": 3,
+        "title": "Phần 2.II: Thiết Kế, Quần Thể & Khung PICO",
+        "icon": "fa-solid fa-diagram-project"
+      },
+      {
+        "id": "sec-4",
+        "number": 4,
+        "title": "Phần 2.III: Hiệu Năng ROC/AUC & Cờ Đỏ Tái Khám 72h",
+        "icon": "fa-solid fa-chart-column"
+      },
+      {
+        "id": "sec-5",
+        "number": 5,
+        "title": "Phần 2.IV: Phản Biện Học Thuật & Thẩm Định RoB",
         "icon": "fa-solid fa-scale-balanced"
       },
       {

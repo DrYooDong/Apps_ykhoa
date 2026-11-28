@@ -218,6 +218,7 @@ export const INTERVENTION_CLASSES: Record<string, string> = {
   'vasopressor-hemodynamics': 'Thuốc vận mạch & Huyết động',
   'respiratory-support': 'Thông khí bảo vệ phổi & Nằm sấp (ARDS)',
   'biomarker-diagnostics': 'Dấu ấn sinh học & Chẩn đoán hình ảnh',
+  'prognostic-scoring': 'Thang điểm Tiên lượng & Phân tầng Nguy cơ',
   'nutrition-microbiome': 'Can thiệp Dinh dưỡng & Hệ vi sinh',
   'neuro-critical-care': 'Điều trị Thần kinh & Chống co thắt',
   'hepatology-portal': 'Quản lý Bệnh gan, Cổ trướng & Đồng nhiễm',
@@ -299,7 +300,12 @@ export const PROBLEM_LABELS_VI: Record<string, string> = {
   'post-marketing-safety': 'An toàn hậu lưu hành (AEFI)',
   'post-traumatic-sepsis': 'Nhiễm khuẩn huyết sau chấn thương',
   'multimarker-bioscore': 'Thang điểm đa chỉ dấu (Bioscore)',
-  'sterile-sirs-vs-sepsis': 'Phân biệt SIRS vô khuẩn vs Sepsis'
+  'sterile-sirs-vs-sepsis': 'Phân biệt SIRS vô khuẩn vs Sepsis',
+  'cap-safe-discharge': 'Xuất viện an toàn CAP',
+  'adrop-vs-curb65': 'Thang điểm A-DROP vs CURB-65',
+  'ed-revisit-72h': 'Tái khám Cấp cứu 72 giờ',
+  'mortality-30d': 'Tử vong 30 ngày',
+  'elderly-cap': 'CAP ở người cao tuổi (≥ 65)'
 };
 
 export const POPULATION_TAGS_VI: Record<string, string> = {
@@ -319,6 +325,7 @@ export const POPULATION_TAGS_VI: Record<string, string> = {
   'metabolic-syndrome': 'Hội chứng chuyển hóa',
   'hospitalized-fever': 'BN sốt nhập viện',
   'ed-adults': 'Người lớn cấp cứu (ED)',
+  'outpatient-cap': 'CAP xuất viện ngoại trú',
   t2dm: 'Đái tháo đường típ 2',
   'established-ascvd': 'Đã xác lập ASCVD',
   'pediatric-adolescent': 'Trẻ em & Thanh thiếu niên (4–16t)',
@@ -359,6 +366,10 @@ export const TOPIC_TAGS_VI: Record<string, string> = {
   'da-chan-thuong': 'Đa chấn thương nặng (ISS ≥ 16)',
   'bioscore-saa-crp-pct': 'Bioscore (SAA + CRP + PCT)',
   'poct-icu': 'Xét nghiệm tại giường (POCT)',
+  'viem-phoi-cong-dong': 'Viêm phổi cộng đồng (CAP)',
+  'adrop-curb65': 'Thang điểm A-DROP / CURB-65',
+  'xuat-vien-an-toan': 'Xuất viện an toàn từ ED',
+  'tai-kham-72h': 'Tái khám Cấp cứu 72 giờ',
   sglt2i: 'Ức chế SGLT2 (SGLT2i)',
   'bao-ve-tim-than': 'Bảo vệ Tim - Thận'
 };
